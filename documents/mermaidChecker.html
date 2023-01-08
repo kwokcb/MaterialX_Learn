@@ -9,9 +9,55 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+
+    <style>
+        body { font-size: 90%; }
+        .col-form-label-sm { font-size: 90%; }
+        .form-control { font-size: 90%; }
+        .card-body { font-size: 80%; } 
+        .btn { font-size: 90%; }
+        .nav-link { font-size: 100%; }
+        a{ text-decoration: none; } 
+        a:hover { text-decoration: none; cursor: pointer;}
+        .text-left { text-align: left !important; }
+        .greyhover { text-decoration: none; }
+        .greyhover:hover { text-decoration: none; cursor: pointer; background: rgb(239, 239, 239); }
+        </style>
+           
 </head>
 
 <body class="min-vh-100">
+    <nav class="navbar sticky-top navbar-expand-lg bg-light">
+        <div class="container-md container-fluid">
+            <a class="navbar-brand" href="#">
+                <h4>MaterialX Plus</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+                aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenuContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link greyhover active" aria-current="page" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link greyhover" href="nodeDefinitionLibrary.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                <path
+                                    d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                            </svg>
+                            Library Definitions
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container-fluid ms-2">
         <h2>Mermaid Graph Checker</h2>
 
@@ -29,7 +75,8 @@
                     });
                 </script>
                 <textarea class="mermaid_input form-control form-control-sm"
-                    style="width:95%; height:200px; font-size: 14px;" placeholder="Enter mermaid text here..."></textarea>
+                    style="width:95%; height:200px; font-size: 14px;"
+                    placeholder="Enter mermaid text here..."></textarea>
                 <button id="rendergraph" class="btn btn-outline-primary">Render Graph</button>
                 <p></p>
                 <br>
@@ -42,7 +89,7 @@
                     <!-- <button id="savePNG" class="btn btn-outline-primary">Save PNG</button> -->
                 </div>
             </div>
-        </div>    
+        </div>
 
         <script>
             function savePNG(elem, name) {
@@ -67,8 +114,7 @@
                 saveURL(url, name);
             }
 
-            function saveURL(url, name)
-            {
+            function saveURL(url, name) {
                 console.log('Save:', url);
                 var downloadLink = document.createElement("a");
                 downloadLink.href = url;
@@ -78,8 +124,7 @@
                 document.body.removeChild(downloadLink);
             }
 
-            function createSvgBlob(elem)
-            {
+            function createSvgBlob(elem) {
                 elem.setAttribute("xmlns", "http://www.w3.org/2000/svg");
                 var svgData = elem.outerHTML;
                 var preface = '<?xml version="1.0" standalone="no"?>\r\n';
@@ -87,10 +132,9 @@
                 return svgBlob;
             }
 
-            function saveSvg(elem, name) 
-            {
+            function saveSvg(elem, name) {
                 svgBlob = createSvgBlob(elem);
-                
+
                 // Save to disk
                 var url = URL.createObjectURL(svgBlob);
                 saveURL(url, name);
