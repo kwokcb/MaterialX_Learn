@@ -1,0 +1,107 @@
+<script>
+    function filterTOC() 
+    {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("searchTOC");
+        filter = input.value;
+        console.log("Look for: ", filter)
+        li = document.querySelectorAll('.idx');
+        for (i = 0; i < li.length; i++) {
+            a = li[i];
+            if (a.innerHTML.match(filter)) {
+                if (filter.length > 0)
+                {
+                    var parent = a.parentElement
+                    while (parent) {
+                        if (parent.className && parent.classList.contains("collapse")) {
+                            console.log("Show: ", parent)
+                            parent.classList.add("show");
+                        }
+                        parent = parent.parentElement;
+                    }
+                }
+                a.style.display = "";
+            } 
+            else 
+            {
+                if (filter.length > 0) 
+                    a.style.display = "none";
+                else
+                    a.style.display = "";
+            }
+        }       
+    }
+
+    function filterOnEnter(event) 
+    {
+        if (event.code === 'Enter') 
+        {
+            event.preventDefault();
+            filterTOC();
+        }
+    };    
+
+    function renderMermaid(event)
+    {
+        buttonId = event.target.id;
+
+        var mermaidinput = document.getElementById(buttonId + "_mermaid_input"); 
+        var mermaidoutput = document.getElementById(buttonId + "_mermaid_output"); 
+        if (mermaidinput && mermaidoutput)
+        {
+            const code = mermaidinput.textContent;
+            let generateDiagram = function (code) {
+                mermaidoutput.innerHTML = code;
+                mermaidoutput.hidden = false;
+            };
+            mermaid.render(buttonId + "_mermaid_output_rendered", code, generateDiagram);
+            
+            var button = document.getElementById(event.target.id);
+            button.hidden = true;
+            button.remove;
+        }
+    }    
+</script>
+
+<nav class="navbar sticky-top navbar-expand-lg bg-light ">
+    <div class="container-md container-fluid">
+        <a class="navbar-brand" href="#">
+            <h4>MaterialX</h4>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+            aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenuContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link greyhover active" aria-current="page" href="#">Home</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link greyhover" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                            <path
+                                d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                        </svg>
+                        Node Graphs
+                    </a> 
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link greyhover" href="#" data-bs-target="#sidebar" data-bs-toggle="collapse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-layout-text-sidebar text-primary" viewBox="0 0 16 16">
+                            <path
+                                d="M3.5 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM3 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z" />
+                            <path
+                                d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm12-1v14h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zm-1 0H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h9V1z" />
+                        </svg>
+                        Index
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
