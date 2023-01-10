@@ -3,7 +3,7 @@
 Print markdown documentation for each nodedef in the given document or documents in a folder
 '''
 
-import sys, os, argparse
+import sys, os, argparse, shutil, io
 import MaterialX as mx
 
 class libraryHtml:
@@ -55,7 +55,24 @@ def getNodeDictionary(doc):
 
 def printNodeDictionary(nodegroupdict, opts, f):
     if opts.documentType == "html":
+
+        # Add in left column
+        if opts.documentType == "html":
+            print('   <div class="col-auto px-0">', file=f)
+            print('     <div class="row vh-100 overflow-auto">', file=f)
+            print('       <div class="col-12 pt-2 pl-2">', file=f)
+            print('         <div class="container-md">', file=f)
+            print('           <div id="sidebar" class="collapse show collapse-horizontal">', file=f)   
+
         printNodeDictionaryHTML(nodegroupdict, opts, f)
+
+        if opts.documentType == "html":
+            print('           </div>', file=f)
+            print('         </div>', file=f)
+            print('       </div>', file=f)
+            print('     </div>', file=f)
+            print('   </div>', file=f)
+
     else:
         printNodeDictionaryMD(nodegroupdict, opts, f)
 
@@ -119,7 +136,7 @@ def printNodeDictionaryHTML(nodegroupdict, opts, f):
         print('<div class="d-grid gap-0 col-6">', file=f)
         nl = nodegroupdict[ng]
         for n in nl:
-            print('<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="#%s">%s</a>' % (n, n), file=f)
+            print('<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="%s">%s</a>' % (n+".html", n), file=f)
         print('</div>', file=f)
         print('</div>', file=f)
 
@@ -160,8 +177,23 @@ def printNodeDictionaryHTML(nodegroupdict, opts, f):
     #else:
     #    print(' ')
 
+
+def printNodeDefHeader(f):
+    print('   <div class="col ps-md-2 pt-2">', file=f)
+    print('       <div class="row vh-100 overflow-auto">', file=f)
+    print('           <div class="col-12 pt-2 pl-2">', file=f)
+    print('               <div class="container-md">', file=f)
+
+
+def printNodeDefFooter(f):
+    print('               </div>', file=f)
+    print('           </div>', file=f)
+    print('       </div>', file=f)
+    print('   </div>', file=f)
+
+
 # Print the document for node definitions in a file
-def printNodeDefs(doc, opts, f):
+def printNodeDefs(doc, opts, nodedict):
 
     currentNodeString = ""
 
@@ -171,17 +203,49 @@ def printNodeDefs(doc, opts, f):
     graphOptions.setOrientation(mx.GraphOrientation.LEFT_RIGHT)
     graphio.setGenOptions(graphOptions)
 
-    for nd in doc.getNodeDefs():
+    outputPath = opts.outputPath + "/"
+    if not os.path.exists(outputPath):
+        os.mkdir(outputPath)
 
-        # HTML output
-        if opts.documentType == 'html':
+    # Output index.html page. 
+    f = open("outputPath/index.html", "w")
+    printHeader(opts, f)
+    printNodeDictionary(nodedict, opts, f)
+    printFooter(opts, f)
+    f.close()    
+
+    # Dictionary of string buffer outputs to use for file output after
+    # being filled in.
+    filedict = {}
+    # HTML output
+    if opts.documentType == 'html':
+
+        for nd in doc.getNodeDefs():
+
             nodeString = nd.getNodeString()
-            if currentNodeString != nodeString:
+            filename = "outputPath/" + nodeString + ".html"
+            appendToFile = False
+
+            if not nodeString in filedict.keys():
+                f = io.StringIO(filename)
+                filedict[nodeString] = f
+
+                # Add header, dictionary
+                printHeader(opts, f)
+                printNodeDictionary(nodedict, opts, f)
+
+                # Add nodedef container
+                printNodeDefHeader(f)
+
+                # Add node header
                 print("<br>", file=f)
                 print('<b><a id="%s" class="m-4 mb-0">' % nodeString, file=f)
                 print('Node: %s' % nodeString, file=f)
                 print('</a></b>', file=f)
-                currentNodeString = nodeString  
+
+            else:
+                appendToFile = True
+                f = filedict[nodeString]
 
             # Implementation name    
             print('<details>'
@@ -600,11 +664,20 @@ def printNodeDefs(doc, opts, f):
             print('</div>', file=f)
             print('</details>', file=f)
 
-            # Parameter Information
+        # Write all buffers to disk files
+        for nodeString in filedict.keys():
+            buf = filedict[nodeString]
+            printNodeDefFooter(buf)
+            printFooter(opts, buf)
+            f = open(outputPath + nodeString + '.html', 'w')
+            buf.seek(0)
+            shutil.copyfileobj(buf, f)            
+            print('Wrote file: ' + outputPath + nodeString + '.html')
+            f.close()
 
-
-        # Markdown output
-        elif opts.documentType == 'md':
+    # Markdown output
+    elif opts.documentType == 'md':
+        for nd in doc.getNodeDefs():
             nodeString = nd.getNodeString()
             if currentNodeString != nodeString:
                 print('### Node: *%s*' % nodeString, file=f)
@@ -778,58 +851,17 @@ def main():
     parser.add_argument('--showInherited', default=False, action='store_true', help='Show inherited inputs. Default is False')
     parser.add_argument('--nodegraph', default=False, action='store_true', help='Show nodegraph implementation if any. Default is False')
     parser.add_argument('--printIndex', default=False, action='store_true', help="Print nodedef index. Default is False")
-    parser.add_argument('--outputFile', default="", help="Output file name")
+    parser.add_argument('--outputPath', default="", help="Output file name")
 
     opts = parser.parse_args()
-
-    outputFileName = ""
-    if len(opts.outputFile) > 0:
-        outputFileName = opts.outputFile + "." + opts.documentType
-        f = open(outputFileName, "w")
-        print('Writing output to file: ', outputFileName)
-    else:
-        f = sys.stdout
-
-    printHeader(opts, f)
 
     rootPath = opts.inputFilename;
     doc = mx.createDocument()
     readDocuments(rootPath, doc)    
 
-    # Add in left column
-    if opts.documentType == "html":
-        print('   <div class="col-auto px-0">', file=f)
-        print('     <div class="row vh-100 overflow-auto">', file=f)
-        print('       <div class="col-12 pt-2 pl-2">', file=f)
-        print('         <div class="container-md">', file=f)
-        print('           <div id="sidebar" class="collapse show collapse-horizontal">', file=f)   
-
     nodedict = getNodeDictionary(doc)
-    printNodeDictionary(nodedict, opts, f)
-
-    if opts.documentType == "html":
-        print('           </div>', file=f)
-        print('         </div>', file=f)
-        print('       </div>', file=f)
-        print('     </div>', file=f)
-        print('   </div>', file=f)
-
-    # Add in right colunn
-    if opts.documentType == "html":
-        print('   <div class="col ps-md-2 pt-2">', file=f)
-        print('       <div class="row vh-100 overflow-auto">', file=f)
-        print('           <div class="col-12 pt-2 pl-2">', file=f)
-        print('               <div class="container-md">', file=f)
-
-    printNodeDefs(doc, opts, f) 
-
-    if opts.documentType == "html":
-        print('               </div>', file=f)
-        print('           </div>', file=f)
-        print('       </div>', file=f)
-        print('   </div>', file=f)
-
-    printFooter(opts, f) 
+    #printNodeDictionary(nodedict, opts, f)
+    printNodeDefs(doc, opts, nodedict) 
 
 if __name__ == '__main__':
     main()
