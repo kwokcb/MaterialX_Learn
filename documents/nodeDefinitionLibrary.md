@@ -31,9 +31,6 @@
 ### Node Group: math
 * [UsdTransform2d](#UsdTransform2d) [absval](#absval) [acos](#acos) [add](#add) [arrayappend](#arrayappend) [asin](#asin) [atan2](#atan2) [ceil](#ceil) [clamp](#clamp) [cos](#cos) [crossproduct](#crossproduct) [determinant](#determinant) [divide](#divide) [dotproduct](#dotproduct) [exp](#exp) [floor](#floor) [invert](#invert) [invertmatrix](#invertmatrix) [ln](#ln) [magnitude](#magnitude) [max](#max) [min](#min) [modulo](#modulo) [multiply](#multiply) [normalize](#normalize) [normalmap](#normalmap) [place2d](#place2d) [power](#power) [rotate2d](#rotate2d) [rotate3d](#rotate3d) [sign](#sign) [sin](#sin) [sqrt](#sqrt) [subtract](#subtract) [tan](#tan) [transformmatrix](#transformmatrix) [transformnormal](#transformnormal) [transformpoint](#transformpoint) [transformvector](#transformvector) [transpose](#transpose) 
 ---------
-### Node Group: no group
-* [LamaMix](#LamaMix) [standard_surface_to_UsdPreviewSurface](#standard_surface_to_UsdPreviewSurface) [standard_surface_to_gltf_pbr](#standard_surface_to_gltf_pbr) 
----------
 ### Node Group: organization
 * [dot](#dot) 
 ---------
@@ -58,6 +55,9 @@
 ### Node Group: texture3d
 * [triplanarprojection](#triplanarprojection) 
 ---------
+### Node Group: undefined
+* [LamaMix](#LamaMix) [standard_surface_to_UsdPreviewSurface](#standard_surface_to_UsdPreviewSurface) [standard_surface_to_gltf_pbr](#standard_surface_to_gltf_pbr) 
+---------
  
 ### Node: *disney_brdf_2012*
 <details><summary>ND_disney_brdf_2012_surface</summary>
@@ -68,6 +68,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -95,6 +96,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -126,6 +128,179 @@
 * *Node Group*: pbr
 * *Version*: 2.0.1. Is default: True
 * *Doc*: glTF PBR
+* *Nodegraph*: IMPL_gltf_pbr_surfaceshader
+
+
+```mermaid
+graph LR; 
+    IMPL_gltf_pbr_surfaceshader_shader_constructor[surface] --> IMPL_gltf_pbr_surfaceshader_out([out])
+    style IMPL_gltf_pbr_surfaceshader_out fill:#1b1, color:#111
+    IMPL_gltf_pbr_surfaceshader_clearcoat_layer[layer] --".bsdf"--> IMPL_gltf_pbr_surfaceshader_shader_constructor[surface]
+    IMPL_gltf_pbr_surfaceshader_clearcoat_bsdf[dielectric_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_clearcoat_layer[layer]
+    IMPL_gltf_pbr_surfaceshader_clearcoatINT([clearcoat]) ==.weight==> IMPL_gltf_pbr_surfaceshader_clearcoat_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_clearcoatINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_clearcoat_normalINT([clearcoat_normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_clearcoat_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_clearcoat_normalINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_clearcoat_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_clearcoat_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_clearcoat_bsdf[dielectric_bsdf]
+    IMPL_gltf_pbr_surfaceshader_clearcoat_roughnessINT([clearcoat_roughness]) ==.roughness==> IMPL_gltf_pbr_surfaceshader_clearcoat_roughness_uv[roughness_anisotropy]
+    style IMPL_gltf_pbr_surfaceshader_clearcoat_roughnessINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_sheen_layer[layer] --".base"--> IMPL_gltf_pbr_surfaceshader_clearcoat_layer[layer]
+    IMPL_gltf_pbr_surfaceshader_sheen_bsdf[sheen_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_sheen_layer[layer]
+    IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_sheen_bsdf[sheen_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_sheen_intensity[max] --".weight"--> IMPL_gltf_pbr_surfaceshader_sheen_bsdf[sheen_bsdf]
+    IMPL_gltf_pbr_surfaceshader_sheen_color_max_rg[max] --".in1"--> IMPL_gltf_pbr_surfaceshader_sheen_intensity[max]
+    IMPL_gltf_pbr_surfaceshader_sheen_color_r[extract] --".in1"--> IMPL_gltf_pbr_surfaceshader_sheen_color_max_rg[max]
+    IMPL_gltf_pbr_surfaceshader_sheen_colorINT([sheen_color]) ==.in==> IMPL_gltf_pbr_surfaceshader_sheen_color_r[extract]
+    style IMPL_gltf_pbr_surfaceshader_sheen_colorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_sheen_color_g[extract] --".in2"--> IMPL_gltf_pbr_surfaceshader_sheen_color_max_rg[max]
+    IMPL_gltf_pbr_surfaceshader_sheen_colorINT([sheen_color]) ==.in==> IMPL_gltf_pbr_surfaceshader_sheen_color_g[extract]
+    style IMPL_gltf_pbr_surfaceshader_sheen_colorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_sheen_color_b[extract] --".in2"--> IMPL_gltf_pbr_surfaceshader_sheen_intensity[max]
+    IMPL_gltf_pbr_surfaceshader_sheen_colorINT([sheen_color]) ==.in==> IMPL_gltf_pbr_surfaceshader_sheen_color_b[extract]
+    style IMPL_gltf_pbr_surfaceshader_sheen_colorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_sheen_color_normalized[divide] --".color"--> IMPL_gltf_pbr_surfaceshader_sheen_bsdf[sheen_bsdf]
+    IMPL_gltf_pbr_surfaceshader_sheen_colorINT([sheen_color]) ==.in1==> IMPL_gltf_pbr_surfaceshader_sheen_color_normalized[divide]
+    style IMPL_gltf_pbr_surfaceshader_sheen_colorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_sheen_intensity[max] --".in2"--> IMPL_gltf_pbr_surfaceshader_sheen_color_normalized[divide]
+    IMPL_gltf_pbr_surfaceshader_sheen_roughness_sq[multiply] --".roughness"--> IMPL_gltf_pbr_surfaceshader_sheen_bsdf[sheen_bsdf]
+    IMPL_gltf_pbr_surfaceshader_sheen_roughnessINT([sheen_roughness]) ==.in1==> IMPL_gltf_pbr_surfaceshader_sheen_roughness_sq[multiply]
+    style IMPL_gltf_pbr_surfaceshader_sheen_roughnessINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_sheen_roughnessINT([sheen_roughness]) ==.in2==> IMPL_gltf_pbr_surfaceshader_sheen_roughness_sq[multiply]
+    style IMPL_gltf_pbr_surfaceshader_sheen_roughnessINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_base_mix[mix] --".base"--> IMPL_gltf_pbr_surfaceshader_sheen_layer[layer]
+    IMPL_gltf_pbr_surfaceshader_metallicINT([metallic]) ==.mix==> IMPL_gltf_pbr_surfaceshader_base_mix[mix]
+    style IMPL_gltf_pbr_surfaceshader_metallicINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix] --".bg"--> IMPL_gltf_pbr_surfaceshader_base_mix[mix]
+    IMPL_gltf_pbr_surfaceshader_iridescenceINT([iridescence]) ==.mix==> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix]
+    style IMPL_gltf_pbr_surfaceshader_iridescenceINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_dielectric_bsdf[layer] --".bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix]
+    IMPL_gltf_pbr_surfaceshader_reflection_bsdf[generalized_schlick_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_dielectric_bsdf[layer]
+    IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_reflection_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_reflection_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_dielectric_f0[multiply] --".color0"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf[generalized_schlick_bsdf]
+    IMPL_gltf_pbr_surfaceshader_specularINT([specular]) ==.in2==> IMPL_gltf_pbr_surfaceshader_dielectric_f0[multiply]
+    style IMPL_gltf_pbr_surfaceshader_specularINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_clamped_dielectric_f0_from_ior_specular_color[min] --".in1"--> IMPL_gltf_pbr_surfaceshader_dielectric_f0[multiply]
+    IMPL_gltf_pbr_surfaceshader_dielectric_f0_from_ior_specular_color[multiply] --".in1"--> IMPL_gltf_pbr_surfaceshader_clamped_dielectric_f0_from_ior_specular_color[min]
+    IMPL_gltf_pbr_surfaceshader_specular_colorINT([specular_color]) ==.in1==> IMPL_gltf_pbr_surfaceshader_dielectric_f0_from_ior_specular_color[multiply]
+    style IMPL_gltf_pbr_surfaceshader_specular_colorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_dielectric_f0_from_ior[multiply] --".in2"--> IMPL_gltf_pbr_surfaceshader_dielectric_f0_from_ior_specular_color[multiply]
+    IMPL_gltf_pbr_surfaceshader_ior_div[divide] --".in1"--> IMPL_gltf_pbr_surfaceshader_dielectric_f0_from_ior[multiply]
+    IMPL_gltf_pbr_surfaceshader_one_minus_ior[subtract] --".in1"--> IMPL_gltf_pbr_surfaceshader_ior_div[divide]
+    IMPL_gltf_pbr_surfaceshader_iorINT([ior]) ==.in2==> IMPL_gltf_pbr_surfaceshader_one_minus_ior[subtract]
+    style IMPL_gltf_pbr_surfaceshader_iorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_one_plus_ior[add] --".in2"--> IMPL_gltf_pbr_surfaceshader_ior_div[divide]
+    IMPL_gltf_pbr_surfaceshader_iorINT([ior]) ==.in2==> IMPL_gltf_pbr_surfaceshader_one_plus_ior[add]
+    style IMPL_gltf_pbr_surfaceshader_iorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_ior_div[divide] --".in2"--> IMPL_gltf_pbr_surfaceshader_dielectric_f0_from_ior[multiply]
+    IMPL_gltf_pbr_surfaceshader_dielectric_f90[multiply] --".color90"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf[generalized_schlick_bsdf]
+    IMPL_gltf_pbr_surfaceshader_specularINT([specular]) ==.in2==> IMPL_gltf_pbr_surfaceshader_dielectric_f90[multiply]
+    style IMPL_gltf_pbr_surfaceshader_specularINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf[generalized_schlick_bsdf]
+    IMPL_gltf_pbr_surfaceshader_roughnessINT([roughness]) ==.roughness==> IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy]
+    style IMPL_gltf_pbr_surfaceshader_roughnessINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_transmission_mix[mix] --".base"--> IMPL_gltf_pbr_surfaceshader_dielectric_bsdf[layer]
+    IMPL_gltf_pbr_surfaceshader_transmissionINT([transmission]) ==.mix==> IMPL_gltf_pbr_surfaceshader_transmission_mix[mix]
+    style IMPL_gltf_pbr_surfaceshader_transmissionINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".bg"--> IMPL_gltf_pbr_surfaceshader_transmission_mix[mix]
+    IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.color==> IMPL_gltf_pbr_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf] --".fg"--> IMPL_gltf_pbr_surfaceshader_transmission_mix[mix]
+    IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.tint==> IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_iorINT([ior]) ==.ior==> IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_iorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf]
+    IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf[layer] --".fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix]
+    IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf[thin_film_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf[layer]
+    IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT([iridescence_thickness]) ==.thickness==> IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf[thin_film_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_iridescence_iorINT([iridescence_ior]) ==.ior==> IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf[thin_film_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_iridescence_iorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[layer] --".base"--> IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf[layer]
+    IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[layer]
+    IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_dielectric_f0[multiply] --".color0"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
+    IMPL_gltf_pbr_surfaceshader_dielectric_f90[multiply] --".color90"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
+    IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
+    IMPL_gltf_pbr_surfaceshader_tf_transmission_mix[mix] --".base"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[layer]
+    IMPL_gltf_pbr_surfaceshader_transmissionINT([transmission]) ==.mix==> IMPL_gltf_pbr_surfaceshader_tf_transmission_mix[mix]
+    style IMPL_gltf_pbr_surfaceshader_transmissionINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_tf_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".bg"--> IMPL_gltf_pbr_surfaceshader_tf_transmission_mix[mix]
+    IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.color==> IMPL_gltf_pbr_surfaceshader_tf_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_tf_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf] --".fg"--> IMPL_gltf_pbr_surfaceshader_tf_transmission_mix[mix]
+    IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.tint==> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_iorINT([ior]) ==.ior==> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_iorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix] --".fg"--> IMPL_gltf_pbr_surfaceshader_base_mix[mix]
+    IMPL_gltf_pbr_surfaceshader_iridescenceINT([iridescence]) ==.mix==> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix]
+    style IMPL_gltf_pbr_surfaceshader_iridescenceINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_metal_bsdf[generalized_schlick_bsdf] --".bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix]
+    IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.color0==> IMPL_gltf_pbr_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
+    IMPL_gltf_pbr_surfaceshader_iridescent_metal_bsdf[layer] --".fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix]
+    IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf[thin_film_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_iridescent_metal_bsdf[layer]
+    IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT([iridescence_thickness]) ==.thickness==> IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf[thin_film_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_iridescence_iorINT([iridescence_ior]) ==.ior==> IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf[thin_film_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_iridescence_iorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf] --".base"--> IMPL_gltf_pbr_surfaceshader_iridescent_metal_bsdf[layer]
+    IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.color0==> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
+    IMPL_gltf_pbr_surfaceshader_emission[uniform_edf] --".edf"--> IMPL_gltf_pbr_surfaceshader_shader_constructor[surface]
+    IMPL_gltf_pbr_surfaceshader_emission_color[multiply] --".color"--> IMPL_gltf_pbr_surfaceshader_emission[uniform_edf]
+    IMPL_gltf_pbr_surfaceshader_emissiveINT([emissive]) ==.in1==> IMPL_gltf_pbr_surfaceshader_emission_color[multiply]
+    style IMPL_gltf_pbr_surfaceshader_emissiveINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_emissive_strengthINT([emissive_strength]) ==.in2==> IMPL_gltf_pbr_surfaceshader_emission_color[multiply]
+    style IMPL_gltf_pbr_surfaceshader_emissive_strengthINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_opacity{ifequal} --".opacity"--> IMPL_gltf_pbr_surfaceshader_shader_constructor[surface]
+    IMPL_gltf_pbr_surfaceshader_alpha_modeINT([alpha_mode]) ==.value1==> IMPL_gltf_pbr_surfaceshader_opacity[ifequal]
+    style IMPL_gltf_pbr_surfaceshader_alpha_modeINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_opacity_mask{ifequal} --".in2"--> IMPL_gltf_pbr_surfaceshader_opacity{ifequal}
+    IMPL_gltf_pbr_surfaceshader_alpha_modeINT([alpha_mode]) ==.value1==> IMPL_gltf_pbr_surfaceshader_opacity_mask[ifequal]
+    style IMPL_gltf_pbr_surfaceshader_alpha_modeINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_alphaINT([alpha]) ==.in2==> IMPL_gltf_pbr_surfaceshader_opacity_mask[ifequal]
+    style IMPL_gltf_pbr_surfaceshader_alphaINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_opacity_mask_cutoff{ifgreatereq} --".in1"--> IMPL_gltf_pbr_surfaceshader_opacity_mask{ifequal}
+    IMPL_gltf_pbr_surfaceshader_alphaINT([alpha]) ==.value1==> IMPL_gltf_pbr_surfaceshader_opacity_mask_cutoff[ifgreatereq]
+    style IMPL_gltf_pbr_surfaceshader_alphaINT fill:#0bb, color:#111
+    IMPL_gltf_pbr_surfaceshader_alpha_cutoffINT([alpha_cutoff]) ==.value2==> IMPL_gltf_pbr_surfaceshader_opacity_mask_cutoff[ifgreatereq]
+    style IMPL_gltf_pbr_surfaceshader_alpha_cutoffINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -168,6 +343,52 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_gltf_colorimage
+
+
+```mermaid
+graph LR; 
+    NG_gltf_colorimage_combine_color[combine3] --> NG_gltf_colorimage_outcolor([outcolor])
+    style NG_gltf_colorimage_outcolor fill:#1b1, color:#111
+    NG_gltf_colorimage_separate_color[separate4] --> NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutr([outr])
+    style NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutr fill:#1b1, color:#111
+    NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutr --".in1"--> NG_gltf_colorimage_combine_color[combine3]
+    NG_gltf_colorimage_modulate_geomcolor[multiply] --".in"--> NG_gltf_colorimage_separate_color[separate4]
+    NG_gltf_colorimage_geomcolorINT([geomcolor]) ==.in2==> NG_gltf_colorimage_modulate_geomcolor[multiply]
+    style NG_gltf_colorimage_geomcolorINT fill:#0bb, color:#111
+    NG_gltf_colorimage_modulate_color[multiply] --".in1"--> NG_gltf_colorimage_modulate_geomcolor[multiply]
+    NG_gltf_colorimage_colorINT([color]) ==.in1==> NG_gltf_colorimage_modulate_color[multiply]
+    style NG_gltf_colorimage_colorINT fill:#0bb, color:#111
+    NG_gltf_colorimage_image[gltf_image] --".in2"--> NG_gltf_colorimage_modulate_color[multiply]
+    NG_gltf_colorimage_fileINT([file]) ==.file==> NG_gltf_colorimage_image[gltf_image]
+    style NG_gltf_colorimage_fileINT fill:#0bb, color:#111
+    NG_gltf_colorimage_dfaultINT([default]) ==.default==> NG_gltf_colorimage_image[gltf_image]
+    style NG_gltf_colorimage_dfaultINT fill:#0bb, color:#111
+    NG_gltf_colorimage_uvindexINT([uvindex]) ==.uvindex==> NG_gltf_colorimage_image[gltf_image]
+    style NG_gltf_colorimage_uvindexINT fill:#0bb, color:#111
+    NG_gltf_colorimage_pivotINT([pivot]) ==.pivot==> NG_gltf_colorimage_image[gltf_image]
+    style NG_gltf_colorimage_pivotINT fill:#0bb, color:#111
+    NG_gltf_colorimage_scaleINT([scale]) ==.scale==> NG_gltf_colorimage_image[gltf_image]
+    style NG_gltf_colorimage_scaleINT fill:#0bb, color:#111
+    NG_gltf_colorimage_rotateINT([rotate]) ==.rotate==> NG_gltf_colorimage_image[gltf_image]
+    style NG_gltf_colorimage_rotateINT fill:#0bb, color:#111
+    NG_gltf_colorimage_offsetINT([offset]) ==.offset==> NG_gltf_colorimage_image[gltf_image]
+    style NG_gltf_colorimage_offsetINT fill:#0bb, color:#111
+    NG_gltf_colorimage_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_colorimage_image[gltf_image]
+    style NG_gltf_colorimage_filtertypeINT fill:#0bb, color:#111
+    NG_gltf_colorimage_separate_color[separate4] --> NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutg([outg])
+    style NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutg fill:#1b1, color:#111
+    NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutg --".in2"--> NG_gltf_colorimage_combine_color[combine3]
+    NG_gltf_colorimage_separate_color[separate4] --> NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutb([outb])
+    style NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutb fill:#1b1, color:#111
+    NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutb --".in3"--> NG_gltf_colorimage_combine_color[combine3]
+    NG_gltf_colorimage_separate_alpha[dot] --> NG_gltf_colorimage_outa([outa])
+    style NG_gltf_colorimage_outa fill:#1b1, color:#111
+    NG_gltf_colorimage_separate_color[separate4] --> NG_gltf_colorimage_NG_gltf_colorimage_separate_colorouta([outa])
+    style NG_gltf_colorimage_NG_gltf_colorimage_separate_colorouta fill:#1b1, color:#111
+    NG_gltf_colorimage_NG_gltf_colorimage_separate_colorouta --".in"--> NG_gltf_colorimage_separate_alpha[dot]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -198,6 +419,45 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_NG_gltf_image_color3_color3_1_0
+
+
+```mermaid
+graph LR; 
+    NG_NG_gltf_image_color3_color3_1_0_scale_image[multiply] --> NG_NG_gltf_image_color3_color3_1_0_out([out])
+    style NG_NG_gltf_image_color3_color3_1_0_out fill:#1b1, color:#111
+    NG_NG_gltf_image_color3_color3_1_0_factorINT([factor]) ==.in1==> NG_NG_gltf_image_color3_color3_1_0_scale_image[multiply]
+    style NG_NG_gltf_image_color3_color3_1_0_factorINT fill:#0bb, color:#111
+    NG_NG_gltf_image_color3_color3_1_0_image[image] --".in2"--> NG_NG_gltf_image_color3_color3_1_0_scale_image[multiply]
+    NG_NG_gltf_image_color3_color3_1_0_fileINT([file]) ==.file==> NG_NG_gltf_image_color3_color3_1_0_image[image]
+    style NG_NG_gltf_image_color3_color3_1_0_fileINT fill:#0bb, color:#111
+    NG_NG_gltf_image_color3_color3_1_0_dfaultINT([default]) ==.default==> NG_NG_gltf_image_color3_color3_1_0_image[image]
+    style NG_NG_gltf_image_color3_color3_1_0_dfaultINT fill:#0bb, color:#111
+    NG_NG_gltf_image_color3_color3_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_NG_gltf_image_color3_color3_1_0_image[image]
+    style NG_NG_gltf_image_color3_color3_1_0_uaddressmodeINT fill:#0bb, color:#111
+    NG_NG_gltf_image_color3_color3_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_NG_gltf_image_color3_color3_1_0_image[image]
+    style NG_NG_gltf_image_color3_color3_1_0_vaddressmodeINT fill:#0bb, color:#111
+    NG_NG_gltf_image_color3_color3_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_NG_gltf_image_color3_color3_1_0_image[image]
+    style NG_NG_gltf_image_color3_color3_1_0_filtertypeINT fill:#0bb, color:#111
+    NG_NG_gltf_image_color3_color3_1_0_place2d[place2d] --".texcoord"--> NG_NG_gltf_image_color3_color3_1_0_image[image]
+    NG_NG_gltf_image_color3_color3_1_0_pivotINT([pivot]) ==.pivot==> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
+    style NG_NG_gltf_image_color3_color3_1_0_pivotINT fill:#0bb, color:#111
+    NG_NG_gltf_image_color3_color3_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
+    style NG_NG_gltf_image_color3_color3_1_0_operationorderINT fill:#0bb, color:#111
+    NG_NG_gltf_image_color3_color3_1_0_texcoord1[texcoord] --".texcoord"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
+    NG_NG_gltf_image_color3_color3_1_0_uvindexINT([uvindex]) ==.index==> NG_NG_gltf_image_color3_color3_1_0_texcoord1[texcoord]
+    style NG_NG_gltf_image_color3_color3_1_0_uvindexINT fill:#0bb, color:#111
+    NG_NG_gltf_image_color3_color3_1_0_invert_scale[divide] --".scale"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
+    NG_NG_gltf_image_color3_color3_1_0_scaleINT([scale]) ==.in2==> NG_NG_gltf_image_color3_color3_1_0_invert_scale[divide]
+    style NG_NG_gltf_image_color3_color3_1_0_scaleINT fill:#0bb, color:#111
+    NG_NG_gltf_image_color3_color3_1_0_negate_rotate[multiply] --".rotate"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
+    NG_NG_gltf_image_color3_color3_1_0_rotateINT([rotate]) ==.in1==> NG_NG_gltf_image_color3_color3_1_0_negate_rotate[multiply]
+    style NG_NG_gltf_image_color3_color3_1_0_rotateINT fill:#0bb, color:#111
+    NG_NG_gltf_image_color3_color3_1_0_negate_offset[multiply] --".offset"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
+    NG_NG_gltf_image_color3_color3_1_0_offsetINT([offset]) ==.in1==> NG_NG_gltf_image_color3_color3_1_0_negate_offset[multiply]
+    style NG_NG_gltf_image_color3_color3_1_0_offsetINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -225,6 +485,45 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_gltf_image_color4_color4_1_0
+
+
+```mermaid
+graph LR; 
+    NG_gltf_image_color4_color4_1_0_scale_image[multiply] --> NG_gltf_image_color4_color4_1_0_out([out])
+    style NG_gltf_image_color4_color4_1_0_out fill:#1b1, color:#111
+    NG_gltf_image_color4_color4_1_0_factorINT([factor]) ==.in1==> NG_gltf_image_color4_color4_1_0_scale_image[multiply]
+    style NG_gltf_image_color4_color4_1_0_factorINT fill:#0bb, color:#111
+    NG_gltf_image_color4_color4_1_0_image[image] --".in2"--> NG_gltf_image_color4_color4_1_0_scale_image[multiply]
+    NG_gltf_image_color4_color4_1_0_fileINT([file]) ==.file==> NG_gltf_image_color4_color4_1_0_image[image]
+    style NG_gltf_image_color4_color4_1_0_fileINT fill:#0bb, color:#111
+    NG_gltf_image_color4_color4_1_0_dfaultINT([default]) ==.default==> NG_gltf_image_color4_color4_1_0_image[image]
+    style NG_gltf_image_color4_color4_1_0_dfaultINT fill:#0bb, color:#111
+    NG_gltf_image_color4_color4_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_image_color4_color4_1_0_image[image]
+    style NG_gltf_image_color4_color4_1_0_uaddressmodeINT fill:#0bb, color:#111
+    NG_gltf_image_color4_color4_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_image_color4_color4_1_0_image[image]
+    style NG_gltf_image_color4_color4_1_0_vaddressmodeINT fill:#0bb, color:#111
+    NG_gltf_image_color4_color4_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_image_color4_color4_1_0_image[image]
+    style NG_gltf_image_color4_color4_1_0_filtertypeINT fill:#0bb, color:#111
+    NG_gltf_image_color4_color4_1_0_place2d[place2d] --".texcoord"--> NG_gltf_image_color4_color4_1_0_image[image]
+    NG_gltf_image_color4_color4_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_image_color4_color4_1_0_place2d[place2d]
+    style NG_gltf_image_color4_color4_1_0_pivotINT fill:#0bb, color:#111
+    NG_gltf_image_color4_color4_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_image_color4_color4_1_0_place2d[place2d]
+    style NG_gltf_image_color4_color4_1_0_operationorderINT fill:#0bb, color:#111
+    NG_gltf_image_color4_color4_1_0_texcoord1[texcoord] --".texcoord"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
+    NG_gltf_image_color4_color4_1_0_uvindexINT([uvindex]) ==.index==> NG_gltf_image_color4_color4_1_0_texcoord1[texcoord]
+    style NG_gltf_image_color4_color4_1_0_uvindexINT fill:#0bb, color:#111
+    NG_gltf_image_color4_color4_1_0_invert_scale[divide] --".scale"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
+    NG_gltf_image_color4_color4_1_0_scaleINT([scale]) ==.in2==> NG_gltf_image_color4_color4_1_0_invert_scale[divide]
+    style NG_gltf_image_color4_color4_1_0_scaleINT fill:#0bb, color:#111
+    NG_gltf_image_color4_color4_1_0_negate_rotate[multiply] --".rotate"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
+    NG_gltf_image_color4_color4_1_0_rotateINT([rotate]) ==.in1==> NG_gltf_image_color4_color4_1_0_negate_rotate[multiply]
+    style NG_gltf_image_color4_color4_1_0_rotateINT fill:#0bb, color:#111
+    NG_gltf_image_color4_color4_1_0_negate_offset[multiply] --".offset"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
+    NG_gltf_image_color4_color4_1_0_offsetINT([offset]) ==.in1==> NG_gltf_image_color4_color4_1_0_negate_offset[multiply]
+    style NG_gltf_image_color4_color4_1_0_offsetINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -252,6 +551,45 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_gltf_image_float_float_1_0
+
+
+```mermaid
+graph LR; 
+    NG_gltf_image_float_float_1_0_scale_image[multiply] --> NG_gltf_image_float_float_1_0_out([out])
+    style NG_gltf_image_float_float_1_0_out fill:#1b1, color:#111
+    NG_gltf_image_float_float_1_0_factorINT([factor]) ==.in1==> NG_gltf_image_float_float_1_0_scale_image[multiply]
+    style NG_gltf_image_float_float_1_0_factorINT fill:#0bb, color:#111
+    NG_gltf_image_float_float_1_0_image[image] --".in2"--> NG_gltf_image_float_float_1_0_scale_image[multiply]
+    NG_gltf_image_float_float_1_0_fileINT([file]) ==.file==> NG_gltf_image_float_float_1_0_image[image]
+    style NG_gltf_image_float_float_1_0_fileINT fill:#0bb, color:#111
+    NG_gltf_image_float_float_1_0_dfaultINT([default]) ==.default==> NG_gltf_image_float_float_1_0_image[image]
+    style NG_gltf_image_float_float_1_0_dfaultINT fill:#0bb, color:#111
+    NG_gltf_image_float_float_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_image_float_float_1_0_image[image]
+    style NG_gltf_image_float_float_1_0_uaddressmodeINT fill:#0bb, color:#111
+    NG_gltf_image_float_float_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_image_float_float_1_0_image[image]
+    style NG_gltf_image_float_float_1_0_vaddressmodeINT fill:#0bb, color:#111
+    NG_gltf_image_float_float_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_image_float_float_1_0_image[image]
+    style NG_gltf_image_float_float_1_0_filtertypeINT fill:#0bb, color:#111
+    NG_gltf_image_float_float_1_0_place2d[place2d] --".texcoord"--> NG_gltf_image_float_float_1_0_image[image]
+    NG_gltf_image_float_float_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_image_float_float_1_0_place2d[place2d]
+    style NG_gltf_image_float_float_1_0_pivotINT fill:#0bb, color:#111
+    NG_gltf_image_float_float_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_image_float_float_1_0_place2d[place2d]
+    style NG_gltf_image_float_float_1_0_operationorderINT fill:#0bb, color:#111
+    NG_gltf_image_float_float_1_0_texcoord1[texcoord] --".texcoord"--> NG_gltf_image_float_float_1_0_place2d[place2d]
+    NG_gltf_image_float_float_1_0_uvindexINT([uvindex]) ==.index==> NG_gltf_image_float_float_1_0_texcoord1[texcoord]
+    style NG_gltf_image_float_float_1_0_uvindexINT fill:#0bb, color:#111
+    NG_gltf_image_float_float_1_0_invert_scale[divide] --".scale"--> NG_gltf_image_float_float_1_0_place2d[place2d]
+    NG_gltf_image_float_float_1_0_scaleINT([scale]) ==.in2==> NG_gltf_image_float_float_1_0_invert_scale[divide]
+    style NG_gltf_image_float_float_1_0_scaleINT fill:#0bb, color:#111
+    NG_gltf_image_float_float_1_0_negate_rotate[multiply] --".rotate"--> NG_gltf_image_float_float_1_0_place2d[place2d]
+    NG_gltf_image_float_float_1_0_rotateINT([rotate]) ==.in1==> NG_gltf_image_float_float_1_0_negate_rotate[multiply]
+    style NG_gltf_image_float_float_1_0_rotateINT fill:#0bb, color:#111
+    NG_gltf_image_float_float_1_0_negate_offset[multiply] --".offset"--> NG_gltf_image_float_float_1_0_place2d[place2d]
+    NG_gltf_image_float_float_1_0_offsetINT([offset]) ==.in1==> NG_gltf_image_float_float_1_0_negate_offset[multiply]
+    style NG_gltf_image_float_float_1_0_offsetINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -279,6 +617,42 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_gltf_image_vector3_vector3_1_0
+
+
+```mermaid
+graph LR; 
+    NG_gltf_image_vector3_vector3_1_0_image[image] --> NG_gltf_image_vector3_vector3_1_0_out([out])
+    style NG_gltf_image_vector3_vector3_1_0_out fill:#1b1, color:#111
+    NG_gltf_image_vector3_vector3_1_0_fileINT([file]) ==.file==> NG_gltf_image_vector3_vector3_1_0_image[image]
+    style NG_gltf_image_vector3_vector3_1_0_fileINT fill:#0bb, color:#111
+    NG_gltf_image_vector3_vector3_1_0_dfaultINT([default]) ==.default==> NG_gltf_image_vector3_vector3_1_0_image[image]
+    style NG_gltf_image_vector3_vector3_1_0_dfaultINT fill:#0bb, color:#111
+    NG_gltf_image_vector3_vector3_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_image_vector3_vector3_1_0_image[image]
+    style NG_gltf_image_vector3_vector3_1_0_uaddressmodeINT fill:#0bb, color:#111
+    NG_gltf_image_vector3_vector3_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_image_vector3_vector3_1_0_image[image]
+    style NG_gltf_image_vector3_vector3_1_0_vaddressmodeINT fill:#0bb, color:#111
+    NG_gltf_image_vector3_vector3_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_image_vector3_vector3_1_0_image[image]
+    style NG_gltf_image_vector3_vector3_1_0_filtertypeINT fill:#0bb, color:#111
+    NG_gltf_image_vector3_vector3_1_0_place2d[place2d] --".texcoord"--> NG_gltf_image_vector3_vector3_1_0_image[image]
+    NG_gltf_image_vector3_vector3_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
+    style NG_gltf_image_vector3_vector3_1_0_pivotINT fill:#0bb, color:#111
+    NG_gltf_image_vector3_vector3_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
+    style NG_gltf_image_vector3_vector3_1_0_operationorderINT fill:#0bb, color:#111
+    NG_gltf_image_vector3_vector3_1_0_texcoord1[texcoord] --".texcoord"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
+    NG_gltf_image_vector3_vector3_1_0_uvindexINT([uvindex]) ==.index==> NG_gltf_image_vector3_vector3_1_0_texcoord1[texcoord]
+    style NG_gltf_image_vector3_vector3_1_0_uvindexINT fill:#0bb, color:#111
+    NG_gltf_image_vector3_vector3_1_0_invert_scale[divide] --".scale"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
+    NG_gltf_image_vector3_vector3_1_0_scaleINT([scale]) ==.in2==> NG_gltf_image_vector3_vector3_1_0_invert_scale[divide]
+    style NG_gltf_image_vector3_vector3_1_0_scaleINT fill:#0bb, color:#111
+    NG_gltf_image_vector3_vector3_1_0_negate_rotate[multiply] --".rotate"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
+    NG_gltf_image_vector3_vector3_1_0_rotateINT([rotate]) ==.in1==> NG_gltf_image_vector3_vector3_1_0_negate_rotate[multiply]
+    style NG_gltf_image_vector3_vector3_1_0_rotateINT fill:#0bb, color:#111
+    NG_gltf_image_vector3_vector3_1_0_negate_offset[multiply] --".offset"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
+    NG_gltf_image_vector3_vector3_1_0_offsetINT([offset]) ==.in1==> NG_gltf_image_vector3_vector3_1_0_negate_offset[multiply]
+    style NG_gltf_image_vector3_vector3_1_0_offsetINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -306,6 +680,43 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_gltf_normalmap_vector3_1_0
+
+
+```mermaid
+graph LR; 
+    NG_gltf_normalmap_vector3_1_0_normalmap[normalmap] --> NG_gltf_normalmap_vector3_1_0_out([out])
+    style NG_gltf_normalmap_vector3_1_0_out fill:#1b1, color:#111
+    NG_gltf_normalmap_vector3_1_0_image[image] --".in"--> NG_gltf_normalmap_vector3_1_0_normalmap[normalmap]
+    NG_gltf_normalmap_vector3_1_0_fileINT([file]) ==.file==> NG_gltf_normalmap_vector3_1_0_image[image]
+    style NG_gltf_normalmap_vector3_1_0_fileINT fill:#0bb, color:#111
+    NG_gltf_normalmap_vector3_1_0_dfaultINT([default]) ==.default==> NG_gltf_normalmap_vector3_1_0_image[image]
+    style NG_gltf_normalmap_vector3_1_0_dfaultINT fill:#0bb, color:#111
+    NG_gltf_normalmap_vector3_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_normalmap_vector3_1_0_image[image]
+    style NG_gltf_normalmap_vector3_1_0_uaddressmodeINT fill:#0bb, color:#111
+    NG_gltf_normalmap_vector3_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_normalmap_vector3_1_0_image[image]
+    style NG_gltf_normalmap_vector3_1_0_vaddressmodeINT fill:#0bb, color:#111
+    NG_gltf_normalmap_vector3_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_normalmap_vector3_1_0_image[image]
+    style NG_gltf_normalmap_vector3_1_0_filtertypeINT fill:#0bb, color:#111
+    NG_gltf_normalmap_vector3_1_0_place2d[place2d] --".texcoord"--> NG_gltf_normalmap_vector3_1_0_image[image]
+    NG_gltf_normalmap_vector3_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
+    style NG_gltf_normalmap_vector3_1_0_pivotINT fill:#0bb, color:#111
+    NG_gltf_normalmap_vector3_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
+    style NG_gltf_normalmap_vector3_1_0_operationorderINT fill:#0bb, color:#111
+    NG_gltf_normalmap_vector3_1_0_texcoord1[texcoord] --".texcoord"--> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
+    NG_gltf_normalmap_vector3_1_0_uvindexINT([uvindex]) ==.index==> NG_gltf_normalmap_vector3_1_0_texcoord1[texcoord]
+    style NG_gltf_normalmap_vector3_1_0_uvindexINT fill:#0bb, color:#111
+    NG_gltf_normalmap_vector3_1_0_invert_scale[divide] --".scale"--> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
+    NG_gltf_normalmap_vector3_1_0_scaleINT([scale]) ==.in2==> NG_gltf_normalmap_vector3_1_0_invert_scale[divide]
+    style NG_gltf_normalmap_vector3_1_0_scaleINT fill:#0bb, color:#111
+    NG_gltf_normalmap_vector3_1_0_negate_rotate[multiply] --".rotate"--> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
+    NG_gltf_normalmap_vector3_1_0_rotateINT([rotate]) ==.in1==> NG_gltf_normalmap_vector3_1_0_negate_rotate[multiply]
+    style NG_gltf_normalmap_vector3_1_0_rotateINT fill:#0bb, color:#111
+    NG_gltf_normalmap_vector3_1_0_negate_offset[multiply] --".offset"--> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
+    NG_gltf_normalmap_vector3_1_0_offsetINT([offset]) ==.in1==> NG_gltf_normalmap_vector3_1_0_negate_offset[multiply]
+    style NG_gltf_normalmap_vector3_1_0_offsetINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -333,6 +744,41 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_gltf_iridescence_thickness_float_1_0
+
+
+```mermaid
+graph LR; 
+    NG_gltf_iridescence_thickness_float_1_0_mixThickness[mix] --> NG_gltf_iridescence_thickness_float_1_0_out([out])
+    style NG_gltf_iridescence_thickness_float_1_0_out fill:#1b1, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_thicknessMinINT([thicknessMin]) ==.fg==> NG_gltf_iridescence_thickness_float_1_0_mixThickness[mix]
+    style NG_gltf_iridescence_thickness_float_1_0_thicknessMinINT fill:#0bb, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_thicknessMaxINT([thicknessMax]) ==.bg==> NG_gltf_iridescence_thickness_float_1_0_mixThickness[mix]
+    style NG_gltf_iridescence_thickness_float_1_0_thicknessMaxINT fill:#0bb, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_extract[extract] --".mix"--> NG_gltf_iridescence_thickness_float_1_0_mixThickness[mix]
+    NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image] --".in"--> NG_gltf_iridescence_thickness_float_1_0_extract[extract]
+    NG_gltf_iridescence_thickness_float_1_0_fileINT([file]) ==.file==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
+    style NG_gltf_iridescence_thickness_float_1_0_fileINT fill:#0bb, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_dfaultINT([default]) ==.default==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
+    style NG_gltf_iridescence_thickness_float_1_0_dfaultINT fill:#0bb, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_uvindexINT([uvindex]) ==.uvindex==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
+    style NG_gltf_iridescence_thickness_float_1_0_uvindexINT fill:#0bb, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
+    style NG_gltf_iridescence_thickness_float_1_0_pivotINT fill:#0bb, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_scaleINT([scale]) ==.scale==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
+    style NG_gltf_iridescence_thickness_float_1_0_scaleINT fill:#0bb, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_rotateINT([rotate]) ==.rotate==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
+    style NG_gltf_iridescence_thickness_float_1_0_rotateINT fill:#0bb, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_offsetINT([offset]) ==.offset==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
+    style NG_gltf_iridescence_thickness_float_1_0_offsetINT fill:#0bb, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
+    style NG_gltf_iridescence_thickness_float_1_0_uaddressmodeINT fill:#0bb, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
+    style NG_gltf_iridescence_thickness_float_1_0_vaddressmodeINT fill:#0bb, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
+    style NG_gltf_iridescence_thickness_float_1_0_filtertypeINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -362,6 +808,208 @@
 * *Version*: 1.0.1. Is default: True
 - *Inherits From*: ND_standard_surface_surfaceshader_100
 * *Doc*: Autodesk standard surface shader
+* *Nodegraph*: NG_standard_surface_surfaceshader_100
+
+
+```mermaid
+graph LR; 
+    NG_standard_surface_surfaceshader_100_shader_constructor[surface] --> NG_standard_surface_surfaceshader_100_out([out])
+    style NG_standard_surface_surfaceshader_100_out fill:#1b1, color:#111
+    NG_standard_surface_surfaceshader_100_coat_layer[layer] --".bsdf"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
+    NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_coat_layer[layer]
+    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.weight==> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_normalINT([coat_normal]) ==.normal==> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_coat_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_roughness_vector[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
+    NG_standard_surface_surfaceshader_100_coat_roughnessINT([coat_roughness]) ==.roughness==> NG_standard_surface_surfaceshader_100_coat_roughness_vector[roughness_anisotropy]
+    style NG_standard_surface_surfaceshader_100_coat_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_anisotropyINT([coat_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_coat_roughness_vector[roughness_anisotropy]
+    style NG_standard_surface_surfaceshader_100_coat_anisotropyINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_tangent{ifgreater} --".tangent"--> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
+    NG_standard_surface_surfaceshader_100_coat_anisotropyINT([coat_anisotropy]) ==.value1==> NG_standard_surface_surfaceshader_100_coat_tangent[ifgreater]
+    style NG_standard_surface_surfaceshader_100_coat_anisotropyINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_tangent[ifgreater]
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_tangent_rotate_normalize[normalize] --".in1"--> NG_standard_surface_surfaceshader_100_coat_tangent{ifgreater}
+    NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d] --".in"--> NG_standard_surface_surfaceshader_100_coat_tangent_rotate_normalize[normalize]
+    NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d]
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_normalINT([coat_normal]) ==.axis==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d]
+    style NG_standard_surface_surfaceshader_100_coat_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_tangent_rotate_degree[multiply] --".amount"--> NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d]
+    NG_standard_surface_surfaceshader_100_coat_rotationINT([coat_rotation]) ==.in1==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate_degree[multiply]
+    style NG_standard_surface_surfaceshader_100_coat_rotationINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply] --".base"--> NG_standard_surface_surfaceshader_100_coat_layer[layer]
+    NG_standard_surface_surfaceshader_100_thin_film_layer[layer] --".in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply]
+    NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_thin_film_layer[layer]
+    NG_standard_surface_surfaceshader_100_thin_film_thicknessINT([thin_film_thickness]) ==.thickness==> NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_IORINT([thin_film_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_metalness_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_thin_film_layer[layer]
+    NG_standard_surface_surfaceshader_100_metalnessINT([metalness]) ==.mix==> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
+    style NG_standard_surface_surfaceshader_100_metalnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior] --> NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior([ior])
+    style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior fill:#1b1, color:#111
+    NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior --".ior"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    NG_standard_surface_surfaceshader_100_metal_reflectivity[multiply] --".reflectivity"--> NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior]
+    NG_standard_surface_surfaceshader_100_base_colorINT([base_color]) ==.in1==> NG_standard_surface_surfaceshader_100_metal_reflectivity[multiply]
+    style NG_standard_surface_surfaceshader_100_base_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_baseINT([base]) ==.in2==> NG_standard_surface_surfaceshader_100_metal_reflectivity[multiply]
+    style NG_standard_surface_surfaceshader_100_baseINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_metal_edgecolor[multiply] --".edge_color"--> NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior]
+    NG_standard_surface_surfaceshader_100_specular_colorINT([specular_color]) ==.in1==> NG_standard_surface_surfaceshader_100_metal_edgecolor[multiply]
+    style NG_standard_surface_surfaceshader_100_specular_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_specularINT([specular]) ==.in2==> NG_standard_surface_surfaceshader_100_metal_edgecolor[multiply]
+    style NG_standard_surface_surfaceshader_100_specularINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior] --> NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction([extinction])
+    style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction fill:#1b1, color:#111
+    NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction --".extinction"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy]
+    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affected_roughness[mix] --".roughness"--> NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy]
+    NG_standard_surface_surfaceshader_100_specular_roughnessINT([specular_roughness]) ==.bg==> NG_standard_surface_surfaceshader_100_coat_affected_roughness[mix]
+    style NG_standard_surface_surfaceshader_100_specular_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply] --".mix"--> NG_standard_surface_surfaceshader_100_coat_affected_roughness[mix]
+    NG_standard_surface_surfaceshader_100_coat_roughnessINT([coat_roughness]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply]
+    style NG_standard_surface_surfaceshader_100_coat_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply1[multiply] --".in1"--> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply]
+    NG_standard_surface_surfaceshader_100_coat_affect_roughnessINT([coat_affect_roughness]) ==.in1==> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply1[multiply]
+    style NG_standard_surface_surfaceshader_100_coat_affect_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply1[multiply]
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_main_tangent{ifgreater} --".tangent"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.value1==> NG_standard_surface_surfaceshader_100_main_tangent[ifgreater]
+    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in2==> NG_standard_surface_surfaceshader_100_main_tangent[ifgreater]
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_tangent_rotate_normalize[normalize] --".in1"--> NG_standard_surface_surfaceshader_100_main_tangent{ifgreater}
+    NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d] --".in"--> NG_standard_surface_surfaceshader_100_tangent_rotate_normalize[normalize]
+    NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in==> NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d]
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.axis==> NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_tangent_rotate_degree[multiply] --".amount"--> NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d]
+    NG_standard_surface_surfaceshader_100_specular_rotationINT([specular_rotation]) ==.in1==> NG_standard_surface_surfaceshader_100_tangent_rotate_degree[multiply]
+    style NG_standard_surface_surfaceshader_100_specular_rotationINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_specular_layer[layer] --".bg"--> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
+    NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_specular_layer[layer]
+    NG_standard_surface_surfaceshader_100_specularINT([specular]) ==.weight==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_specularINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_specular_colorINT([specular_color]) ==.tint==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_specular_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_specular_IORINT([specular_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    NG_standard_surface_surfaceshader_100_main_tangent{ifgreater} --".tangent"--> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    NG_standard_surface_surfaceshader_100_transmission_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_specular_layer[layer]
+    NG_standard_surface_surfaceshader_100_transmissionINT([transmission]) ==.mix==> NG_standard_surface_surfaceshader_100_transmission_mix[mix]
+    style NG_standard_surface_surfaceshader_100_transmissionINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_transmission_mix[mix]
+    NG_standard_surface_surfaceshader_100_transmission_colorINT([transmission_color]) ==.tint==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_transmission_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_specular_IORINT([specular_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy]
+    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affected_transmission_roughness[mix] --".roughness"--> NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy]
+    NG_standard_surface_surfaceshader_100_transmission_roughness_clamped[clamp] --".bg"--> NG_standard_surface_surfaceshader_100_coat_affected_transmission_roughness[mix]
+    NG_standard_surface_surfaceshader_100_transmission_roughness_add[add] --".in"--> NG_standard_surface_surfaceshader_100_transmission_roughness_clamped[clamp]
+    NG_standard_surface_surfaceshader_100_specular_roughnessINT([specular_roughness]) ==.in1==> NG_standard_surface_surfaceshader_100_transmission_roughness_add[add]
+    style NG_standard_surface_surfaceshader_100_specular_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_transmission_extra_roughnessINT([transmission_extra_roughness]) ==.in2==> NG_standard_surface_surfaceshader_100_transmission_roughness_add[add]
+    style NG_standard_surface_surfaceshader_100_transmission_extra_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply] --".mix"--> NG_standard_surface_surfaceshader_100_coat_affected_transmission_roughness[mix]
+    NG_standard_surface_surfaceshader_100_main_tangent{ifgreater} --".tangent"--> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    NG_standard_surface_surfaceshader_100_sheen_layer[layer] --".bg"--> NG_standard_surface_surfaceshader_100_transmission_mix[mix]
+    NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_sheen_layer[layer]
+    NG_standard_surface_surfaceshader_100_sheenINT([sheen]) ==.weight==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
+    style NG_standard_surface_surfaceshader_100_sheenINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_sheen_colorINT([sheen_color]) ==.color==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
+    style NG_standard_surface_surfaceshader_100_sheen_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_sheen_roughnessINT([sheen_roughness]) ==.roughness==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
+    style NG_standard_surface_surfaceshader_100_sheen_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_subsurface_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_sheen_layer[layer]
+    NG_standard_surface_surfaceshader_100_subsurfaceINT([subsurface]) ==.mix==> NG_standard_surface_surfaceshader_100_subsurface_mix[mix]
+    style NG_standard_surface_surfaceshader_100_subsurfaceINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix] --".fg"--> NG_standard_surface_surfaceshader_100_subsurface_mix[mix]
+    NG_standard_surface_surfaceshader_100_translucent_bsdf[translucent_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix]
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_translucent_bsdf[translucent_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power] --".color"--> NG_standard_surface_surfaceshader_100_translucent_bsdf[translucent_bsdf]
+    NG_standard_surface_surfaceshader_100_subsurface_color_nonnegative[max] --".in1"--> NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power]
+    NG_standard_surface_surfaceshader_100_subsurface_colorINT([subsurface_color]) ==.in1==> NG_standard_surface_surfaceshader_100_subsurface_color_nonnegative[max]
+    style NG_standard_surface_surfaceshader_100_subsurface_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_gamma[add] --".in2"--> NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power]
+    NG_standard_surface_surfaceshader_100_coat_gamma_multiply[multiply] --".in1"--> NG_standard_surface_surfaceshader_100_coat_gamma[add]
+    NG_standard_surface_surfaceshader_100_coat_affect_colorINT([coat_affect_color]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_gamma_multiply[multiply]
+    style NG_standard_surface_surfaceshader_100_coat_affect_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_clamped[clamp] --".in1"--> NG_standard_surface_surfaceshader_100_coat_gamma_multiply[multiply]
+    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.in==> NG_standard_surface_surfaceshader_100_coat_clamped[clamp]
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf] --".bg"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix]
+    NG_standard_surface_surfaceshader_100_subsurface_anisotropyINT([subsurface_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
+    style NG_standard_surface_surfaceshader_100_subsurface_anisotropyINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power] --".color"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
+    NG_standard_surface_surfaceshader_100_subsurface_radius_scaled[multiply] --".radius"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
+    NG_standard_surface_surfaceshader_100_subsurface_scaleINT([subsurface_scale]) ==.in2==> NG_standard_surface_surfaceshader_100_subsurface_radius_scaled[multiply]
+    style NG_standard_surface_surfaceshader_100_subsurface_scaleINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_subsurface_radius_vector[convert] --".in1"--> NG_standard_surface_surfaceshader_100_subsurface_radius_scaled[multiply]
+    NG_standard_surface_surfaceshader_100_subsurface_radiusINT([subsurface_radius]) ==.in==> NG_standard_surface_surfaceshader_100_subsurface_radius_vector[convert]
+    style NG_standard_surface_surfaceshader_100_subsurface_radiusINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_subsurface_selector[convert] --".mix"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix]
+    NG_standard_surface_surfaceshader_100_thin_walledINT([thin_walled]) ==.in==> NG_standard_surface_surfaceshader_100_subsurface_selector[convert]
+    style NG_standard_surface_surfaceshader_100_thin_walledINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".bg"--> NG_standard_surface_surfaceshader_100_subsurface_mix[mix]
+    NG_standard_surface_surfaceshader_100_baseINT([base]) ==.weight==> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style NG_standard_surface_surfaceshader_100_baseINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_diffuse_roughnessINT([diffuse_roughness]) ==.roughness==> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style NG_standard_surface_surfaceshader_100_diffuse_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color[power] --".color"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    NG_standard_surface_surfaceshader_100_base_color_nonnegative[max] --".in1"--> NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color[power]
+    NG_standard_surface_surfaceshader_100_base_colorINT([base_color]) ==.in1==> NG_standard_surface_surfaceshader_100_base_color_nonnegative[max]
+    style NG_standard_surface_surfaceshader_100_base_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_gamma[add] --".in2"--> NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color[power]
+    NG_standard_surface_surfaceshader_100_coat_attenuation[mix] --".in2"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply]
+    NG_standard_surface_surfaceshader_100_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_surfaceshader_100_coat_attenuation[mix]
+    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_coat_attenuation[mix]
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf] --".edf"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
+    NG_standard_surface_surfaceshader_100_emission_weight_attenuated[multiply] --".color"--> NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf]
+    NG_standard_surface_surfaceshader_100_emission_weight[multiply] --".in1"--> NG_standard_surface_surfaceshader_100_emission_weight_attenuated[multiply]
+    NG_standard_surface_surfaceshader_100_emission_colorINT([emission_color]) ==.in1==> NG_standard_surface_surfaceshader_100_emission_weight[multiply]
+    style NG_standard_surface_surfaceshader_100_emission_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_emissionINT([emission]) ==.in2==> NG_standard_surface_surfaceshader_100_emission_weight[multiply]
+    style NG_standard_surface_surfaceshader_100_emissionINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_emission_attenuation[mix] --".in2"--> NG_standard_surface_surfaceshader_100_emission_weight_attenuated[multiply]
+    NG_standard_surface_surfaceshader_100_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_surfaceshader_100_coat_emission_attenuation[mix]
+    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_coat_emission_attenuation[mix]
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_opacity_luminance[luminance] --".r -> .opacity"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
+    NG_standard_surface_surfaceshader_100_opacityINT([opacity]) ==.in==> NG_standard_surface_surfaceshader_100_opacity_luminance[luminance]
+    style NG_standard_surface_surfaceshader_100_opacityINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -378,6 +1026,208 @@
 * *Node Group*: pbr
 * *Version*: 1.0.0. Is default: False
 * *Doc*: Autodesk standard surface shader
+* *Nodegraph*: NG_standard_surface_surfaceshader_100
+
+
+```mermaid
+graph LR; 
+    NG_standard_surface_surfaceshader_100_shader_constructor[surface] --> NG_standard_surface_surfaceshader_100_out([out])
+    style NG_standard_surface_surfaceshader_100_out fill:#1b1, color:#111
+    NG_standard_surface_surfaceshader_100_coat_layer[layer] --".bsdf"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
+    NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_coat_layer[layer]
+    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.weight==> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_normalINT([coat_normal]) ==.normal==> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_coat_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_roughness_vector[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
+    NG_standard_surface_surfaceshader_100_coat_roughnessINT([coat_roughness]) ==.roughness==> NG_standard_surface_surfaceshader_100_coat_roughness_vector[roughness_anisotropy]
+    style NG_standard_surface_surfaceshader_100_coat_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_anisotropyINT([coat_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_coat_roughness_vector[roughness_anisotropy]
+    style NG_standard_surface_surfaceshader_100_coat_anisotropyINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_tangent{ifgreater} --".tangent"--> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
+    NG_standard_surface_surfaceshader_100_coat_anisotropyINT([coat_anisotropy]) ==.value1==> NG_standard_surface_surfaceshader_100_coat_tangent[ifgreater]
+    style NG_standard_surface_surfaceshader_100_coat_anisotropyINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_tangent[ifgreater]
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_tangent_rotate_normalize[normalize] --".in1"--> NG_standard_surface_surfaceshader_100_coat_tangent{ifgreater}
+    NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d] --".in"--> NG_standard_surface_surfaceshader_100_coat_tangent_rotate_normalize[normalize]
+    NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d]
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_normalINT([coat_normal]) ==.axis==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d]
+    style NG_standard_surface_surfaceshader_100_coat_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_tangent_rotate_degree[multiply] --".amount"--> NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d]
+    NG_standard_surface_surfaceshader_100_coat_rotationINT([coat_rotation]) ==.in1==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate_degree[multiply]
+    style NG_standard_surface_surfaceshader_100_coat_rotationINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply] --".base"--> NG_standard_surface_surfaceshader_100_coat_layer[layer]
+    NG_standard_surface_surfaceshader_100_thin_film_layer[layer] --".in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply]
+    NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_thin_film_layer[layer]
+    NG_standard_surface_surfaceshader_100_thin_film_thicknessINT([thin_film_thickness]) ==.thickness==> NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_IORINT([thin_film_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_metalness_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_thin_film_layer[layer]
+    NG_standard_surface_surfaceshader_100_metalnessINT([metalness]) ==.mix==> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
+    style NG_standard_surface_surfaceshader_100_metalnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior] --> NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior([ior])
+    style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior fill:#1b1, color:#111
+    NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior --".ior"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    NG_standard_surface_surfaceshader_100_metal_reflectivity[multiply] --".reflectivity"--> NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior]
+    NG_standard_surface_surfaceshader_100_base_colorINT([base_color]) ==.in1==> NG_standard_surface_surfaceshader_100_metal_reflectivity[multiply]
+    style NG_standard_surface_surfaceshader_100_base_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_baseINT([base]) ==.in2==> NG_standard_surface_surfaceshader_100_metal_reflectivity[multiply]
+    style NG_standard_surface_surfaceshader_100_baseINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_metal_edgecolor[multiply] --".edge_color"--> NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior]
+    NG_standard_surface_surfaceshader_100_specular_colorINT([specular_color]) ==.in1==> NG_standard_surface_surfaceshader_100_metal_edgecolor[multiply]
+    style NG_standard_surface_surfaceshader_100_specular_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_specularINT([specular]) ==.in2==> NG_standard_surface_surfaceshader_100_metal_edgecolor[multiply]
+    style NG_standard_surface_surfaceshader_100_specularINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior] --> NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction([extinction])
+    style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction fill:#1b1, color:#111
+    NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction --".extinction"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy]
+    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affected_roughness[mix] --".roughness"--> NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy]
+    NG_standard_surface_surfaceshader_100_specular_roughnessINT([specular_roughness]) ==.bg==> NG_standard_surface_surfaceshader_100_coat_affected_roughness[mix]
+    style NG_standard_surface_surfaceshader_100_specular_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply] --".mix"--> NG_standard_surface_surfaceshader_100_coat_affected_roughness[mix]
+    NG_standard_surface_surfaceshader_100_coat_roughnessINT([coat_roughness]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply]
+    style NG_standard_surface_surfaceshader_100_coat_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply1[multiply] --".in1"--> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply]
+    NG_standard_surface_surfaceshader_100_coat_affect_roughnessINT([coat_affect_roughness]) ==.in1==> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply1[multiply]
+    style NG_standard_surface_surfaceshader_100_coat_affect_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply1[multiply]
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_main_tangent{ifgreater} --".tangent"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.value1==> NG_standard_surface_surfaceshader_100_main_tangent[ifgreater]
+    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in2==> NG_standard_surface_surfaceshader_100_main_tangent[ifgreater]
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_tangent_rotate_normalize[normalize] --".in1"--> NG_standard_surface_surfaceshader_100_main_tangent{ifgreater}
+    NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d] --".in"--> NG_standard_surface_surfaceshader_100_tangent_rotate_normalize[normalize]
+    NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in==> NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d]
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.axis==> NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_tangent_rotate_degree[multiply] --".amount"--> NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d]
+    NG_standard_surface_surfaceshader_100_specular_rotationINT([specular_rotation]) ==.in1==> NG_standard_surface_surfaceshader_100_tangent_rotate_degree[multiply]
+    style NG_standard_surface_surfaceshader_100_specular_rotationINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_specular_layer[layer] --".bg"--> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
+    NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_specular_layer[layer]
+    NG_standard_surface_surfaceshader_100_specularINT([specular]) ==.weight==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_specularINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_specular_colorINT([specular_color]) ==.tint==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_specular_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_specular_IORINT([specular_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    NG_standard_surface_surfaceshader_100_main_tangent{ifgreater} --".tangent"--> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    NG_standard_surface_surfaceshader_100_transmission_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_specular_layer[layer]
+    NG_standard_surface_surfaceshader_100_transmissionINT([transmission]) ==.mix==> NG_standard_surface_surfaceshader_100_transmission_mix[mix]
+    style NG_standard_surface_surfaceshader_100_transmissionINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_transmission_mix[mix]
+    NG_standard_surface_surfaceshader_100_transmission_colorINT([transmission_color]) ==.tint==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_transmission_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_specular_IORINT([specular_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy]
+    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affected_transmission_roughness[mix] --".roughness"--> NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy]
+    NG_standard_surface_surfaceshader_100_transmission_roughness_clamped[clamp] --".bg"--> NG_standard_surface_surfaceshader_100_coat_affected_transmission_roughness[mix]
+    NG_standard_surface_surfaceshader_100_transmission_roughness_add[add] --".in"--> NG_standard_surface_surfaceshader_100_transmission_roughness_clamped[clamp]
+    NG_standard_surface_surfaceshader_100_specular_roughnessINT([specular_roughness]) ==.in1==> NG_standard_surface_surfaceshader_100_transmission_roughness_add[add]
+    style NG_standard_surface_surfaceshader_100_specular_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_transmission_extra_roughnessINT([transmission_extra_roughness]) ==.in2==> NG_standard_surface_surfaceshader_100_transmission_roughness_add[add]
+    style NG_standard_surface_surfaceshader_100_transmission_extra_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply] --".mix"--> NG_standard_surface_surfaceshader_100_coat_affected_transmission_roughness[mix]
+    NG_standard_surface_surfaceshader_100_main_tangent{ifgreater} --".tangent"--> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    NG_standard_surface_surfaceshader_100_sheen_layer[layer] --".bg"--> NG_standard_surface_surfaceshader_100_transmission_mix[mix]
+    NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_sheen_layer[layer]
+    NG_standard_surface_surfaceshader_100_sheenINT([sheen]) ==.weight==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
+    style NG_standard_surface_surfaceshader_100_sheenINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_sheen_colorINT([sheen_color]) ==.color==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
+    style NG_standard_surface_surfaceshader_100_sheen_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_sheen_roughnessINT([sheen_roughness]) ==.roughness==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
+    style NG_standard_surface_surfaceshader_100_sheen_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_subsurface_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_sheen_layer[layer]
+    NG_standard_surface_surfaceshader_100_subsurfaceINT([subsurface]) ==.mix==> NG_standard_surface_surfaceshader_100_subsurface_mix[mix]
+    style NG_standard_surface_surfaceshader_100_subsurfaceINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix] --".fg"--> NG_standard_surface_surfaceshader_100_subsurface_mix[mix]
+    NG_standard_surface_surfaceshader_100_translucent_bsdf[translucent_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix]
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_translucent_bsdf[translucent_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power] --".color"--> NG_standard_surface_surfaceshader_100_translucent_bsdf[translucent_bsdf]
+    NG_standard_surface_surfaceshader_100_subsurface_color_nonnegative[max] --".in1"--> NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power]
+    NG_standard_surface_surfaceshader_100_subsurface_colorINT([subsurface_color]) ==.in1==> NG_standard_surface_surfaceshader_100_subsurface_color_nonnegative[max]
+    style NG_standard_surface_surfaceshader_100_subsurface_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_gamma[add] --".in2"--> NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power]
+    NG_standard_surface_surfaceshader_100_coat_gamma_multiply[multiply] --".in1"--> NG_standard_surface_surfaceshader_100_coat_gamma[add]
+    NG_standard_surface_surfaceshader_100_coat_affect_colorINT([coat_affect_color]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_gamma_multiply[multiply]
+    style NG_standard_surface_surfaceshader_100_coat_affect_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_clamped[clamp] --".in1"--> NG_standard_surface_surfaceshader_100_coat_gamma_multiply[multiply]
+    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.in==> NG_standard_surface_surfaceshader_100_coat_clamped[clamp]
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf] --".bg"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix]
+    NG_standard_surface_surfaceshader_100_subsurface_anisotropyINT([subsurface_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
+    style NG_standard_surface_surfaceshader_100_subsurface_anisotropyINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power] --".color"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
+    NG_standard_surface_surfaceshader_100_subsurface_radius_scaled[multiply] --".radius"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
+    NG_standard_surface_surfaceshader_100_subsurface_scaleINT([subsurface_scale]) ==.in2==> NG_standard_surface_surfaceshader_100_subsurface_radius_scaled[multiply]
+    style NG_standard_surface_surfaceshader_100_subsurface_scaleINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_subsurface_radius_vector[convert] --".in1"--> NG_standard_surface_surfaceshader_100_subsurface_radius_scaled[multiply]
+    NG_standard_surface_surfaceshader_100_subsurface_radiusINT([subsurface_radius]) ==.in==> NG_standard_surface_surfaceshader_100_subsurface_radius_vector[convert]
+    style NG_standard_surface_surfaceshader_100_subsurface_radiusINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_subsurface_selector[convert] --".mix"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix]
+    NG_standard_surface_surfaceshader_100_thin_walledINT([thin_walled]) ==.in==> NG_standard_surface_surfaceshader_100_subsurface_selector[convert]
+    style NG_standard_surface_surfaceshader_100_thin_walledINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".bg"--> NG_standard_surface_surfaceshader_100_subsurface_mix[mix]
+    NG_standard_surface_surfaceshader_100_baseINT([base]) ==.weight==> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style NG_standard_surface_surfaceshader_100_baseINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_diffuse_roughnessINT([diffuse_roughness]) ==.roughness==> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style NG_standard_surface_surfaceshader_100_diffuse_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color[power] --".color"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    NG_standard_surface_surfaceshader_100_base_color_nonnegative[max] --".in1"--> NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color[power]
+    NG_standard_surface_surfaceshader_100_base_colorINT([base_color]) ==.in1==> NG_standard_surface_surfaceshader_100_base_color_nonnegative[max]
+    style NG_standard_surface_surfaceshader_100_base_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_gamma[add] --".in2"--> NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color[power]
+    NG_standard_surface_surfaceshader_100_coat_attenuation[mix] --".in2"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply]
+    NG_standard_surface_surfaceshader_100_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_surfaceshader_100_coat_attenuation[mix]
+    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_coat_attenuation[mix]
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf] --".edf"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
+    NG_standard_surface_surfaceshader_100_emission_weight_attenuated[multiply] --".color"--> NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf]
+    NG_standard_surface_surfaceshader_100_emission_weight[multiply] --".in1"--> NG_standard_surface_surfaceshader_100_emission_weight_attenuated[multiply]
+    NG_standard_surface_surfaceshader_100_emission_colorINT([emission_color]) ==.in1==> NG_standard_surface_surfaceshader_100_emission_weight[multiply]
+    style NG_standard_surface_surfaceshader_100_emission_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_emissionINT([emission]) ==.in2==> NG_standard_surface_surfaceshader_100_emission_weight[multiply]
+    style NG_standard_surface_surfaceshader_100_emissionINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_emission_attenuation[mix] --".in2"--> NG_standard_surface_surfaceshader_100_emission_weight_attenuated[multiply]
+    NG_standard_surface_surfaceshader_100_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_surfaceshader_100_coat_emission_attenuation[mix]
+    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_coat_emission_attenuation[mix]
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_opacity_luminance[luminance] --".r -> .opacity"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
+    NG_standard_surface_surfaceshader_100_opacityINT([opacity]) ==.in==> NG_standard_surface_surfaceshader_100_opacity_luminance[luminance]
+    style NG_standard_surface_surfaceshader_100_opacityINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -436,6 +1286,107 @@
 * *Node Group*: pbr
 * *Version*: 2.3. Is default: True
 * *Doc*: USD preview surface shader
+* *Nodegraph*: IMP_UsdPreviewSurface_surfaceshader
+
+
+```mermaid
+graph LR; 
+    IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface] --> IMP_UsdPreviewSurface_surfaceshader_out([out])
+    style IMP_UsdPreviewSurface_surfaceshader_out fill:#1b1, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_coat_bsdf[layer] --".bsdf"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface]
+    IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf] --".top"--> IMP_UsdPreviewSurface_surfaceshader_coat_bsdf[layer]
+    IMP_UsdPreviewSurface_surfaceshader_clearcoatINT([clearcoat]) ==.weight==> IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf]
+    style IMP_UsdPreviewSurface_surfaceshader_clearcoatINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_coat_F0[convert] --".color0"--> IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_R_sq[multiply] --".in"--> IMP_UsdPreviewSurface_surfaceshader_coat_F0[convert]
+    IMP_UsdPreviewSurface_surfaceshader_R[divide] --".in1"--> IMP_UsdPreviewSurface_surfaceshader_R_sq[multiply]
+    IMP_UsdPreviewSurface_surfaceshader_one_minus_ior[subtract] --".in1"--> IMP_UsdPreviewSurface_surfaceshader_R[divide]
+    IMP_UsdPreviewSurface_surfaceshader_iorINT([ior]) ==.in2==> IMP_UsdPreviewSurface_surfaceshader_one_minus_ior[subtract]
+    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_one_plus_ior[add] --".in2"--> IMP_UsdPreviewSurface_surfaceshader_R[divide]
+    IMP_UsdPreviewSurface_surfaceshader_iorINT([ior]) ==.in2==> IMP_UsdPreviewSurface_surfaceshader_one_plus_ior[add]
+    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_R[divide] --".in2"--> IMP_UsdPreviewSurface_surfaceshader_R_sq[multiply]
+    IMP_UsdPreviewSurface_surfaceshader_coat_roughness[roughness_anisotropy] --".roughness"--> IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_clearcoatRoughnessINT([clearcoatRoughness]) ==.roughness==> IMP_UsdPreviewSurface_surfaceshader_coat_roughness[roughness_anisotropy]
+    style IMP_UsdPreviewSurface_surfaceshader_clearcoatRoughnessINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_bias_normal[add] --".in"--> IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap]
+    IMP_UsdPreviewSurface_surfaceshader_scale_normal[multiply] --".in1"--> IMP_UsdPreviewSurface_surfaceshader_bias_normal[add]
+    IMP_UsdPreviewSurface_surfaceshader_normalINT([normal]) ==.in1==> IMP_UsdPreviewSurface_surfaceshader_scale_normal[multiply]
+    style IMP_UsdPreviewSurface_surfaceshader_normalINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_workflow_selector_bsdf[mix] --".base"--> IMP_UsdPreviewSurface_surfaceshader_coat_bsdf[layer]
+    IMP_UsdPreviewSurface_surfaceshader_specular_workflow_bsdf[layer] --".fg"--> IMP_UsdPreviewSurface_surfaceshader_workflow_selector_bsdf[mix]
+    IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[generalized_schlick_bsdf] --".top"--> IMP_UsdPreviewSurface_surfaceshader_specular_workflow_bsdf[layer]
+    IMP_UsdPreviewSurface_surfaceshader_specularColorINT([specularColor]) ==.color0==> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[generalized_schlick_bsdf]
+    style IMP_UsdPreviewSurface_surfaceshader_specularColorINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_specular_roughness[roughness_anisotropy] --".roughness"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[generalized_schlick_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_roughnessINT([roughness]) ==.roughness==> IMP_UsdPreviewSurface_surfaceshader_specular_roughness[roughness_anisotropy]
+    style IMP_UsdPreviewSurface_surfaceshader_roughnessINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[generalized_schlick_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix] --".base"--> IMP_UsdPreviewSurface_surfaceshader_specular_workflow_bsdf[layer]
+    IMP_UsdPreviewSurface_surfaceshader_opacityINT([opacity]) ==.mix==> IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix]
+    style IMP_UsdPreviewSurface_surfaceshader_opacityINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".fg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix]
+    IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT([diffuseColor]) ==.color==> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[mix] --".weight"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_inverse_metalness[subtract] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[mix]
+    IMP_UsdPreviewSurface_surfaceshader_metallicINT([metallic]) ==.in2==> IMP_UsdPreviewSurface_surfaceshader_inverse_metalness[subtract]
+    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float[convert] --".mix"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[mix]
+    IMP_UsdPreviewSurface_surfaceshader_useSpecularWorkflowINT([useSpecularWorkflow]) ==.in==> IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float[convert]
+    style IMP_UsdPreviewSurface_surfaceshader_useSpecularWorkflowINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[dielectric_bsdf] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix]
+    IMP_UsdPreviewSurface_surfaceshader_iorINT([ior]) ==.ior==> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[dielectric_bsdf]
+    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[dielectric_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_metalness_workflow_bsdf[mix] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_workflow_selector_bsdf[mix]
+    IMP_UsdPreviewSurface_surfaceshader_metallicINT([metallic]) ==.mix==> IMP_UsdPreviewSurface_surfaceshader_metalness_workflow_bsdf[mix]
+    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf] --".fg"--> IMP_UsdPreviewSurface_surfaceshader_metalness_workflow_bsdf[mix]
+    IMP_UsdPreviewSurface_surfaceshader_artistic_ior[artistic_ior] --> IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorior([ior])
+    style IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorior fill:#1b1, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorior --".ior"--> IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT([diffuseColor]) ==.reflectivity==> IMP_UsdPreviewSurface_surfaceshader_artistic_ior[artistic_ior]
+    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT([diffuseColor]) ==.edge_color==> IMP_UsdPreviewSurface_surfaceshader_artistic_ior[artistic_ior]
+    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_artistic_ior[artistic_ior] --> IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorextinction([extinction])
+    style IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorextinction fill:#1b1, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorextinction --".extinction"--> IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_specular_roughness[roughness_anisotropy] --".roughness"--> IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_metalness_specular_bsdf[layer] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_metalness_workflow_bsdf[mix]
+    IMP_UsdPreviewSurface_surfaceshader_specular_bsdf2[generalized_schlick_bsdf] --".top"--> IMP_UsdPreviewSurface_surfaceshader_metalness_specular_bsdf[layer]
+    IMP_UsdPreviewSurface_surfaceshader_F0[mix] --".color0"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf2[generalized_schlick_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_metallicINT([metallic]) ==.mix==> IMP_UsdPreviewSurface_surfaceshader_F0[mix]
+    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix] --".fg"--> IMP_UsdPreviewSurface_surfaceshader_F0[mix]
+    IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT([diffuseColor]) ==.fg==> IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix]
+    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_metallicINT([metallic]) ==.mix==> IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix]
+    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic_R_sq[multiply] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_F0[mix]
+    IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix] --".in1"--> IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic_R_sq[multiply]
+    IMP_UsdPreviewSurface_surfaceshader_R_sq[multiply] --".in2"--> IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic_R_sq[multiply]
+    IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix] --".color90"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf2[generalized_schlick_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_specular_roughness[roughness_anisotropy] --".roughness"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf2[generalized_schlick_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf2[generalized_schlick_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix] --".base"--> IMP_UsdPreviewSurface_surfaceshader_metalness_specular_bsdf[layer]
+    IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float[convert] --".mix"--> IMP_UsdPreviewSurface_surfaceshader_workflow_selector_bsdf[mix]
+    IMP_UsdPreviewSurface_surfaceshader_emission_edf[uniform_edf] --".edf"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface]
+    IMP_UsdPreviewSurface_surfaceshader_emissiveColorINT([emissiveColor]) ==.color==> IMP_UsdPreviewSurface_surfaceshader_emission_edf[uniform_edf]
+    style IMP_UsdPreviewSurface_surfaceshader_emissiveColorINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_cutout_opacity{ifgreatereq} --".opacity"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface]
+    IMP_UsdPreviewSurface_surfaceshader_opacityThresholdINT([opacityThreshold]) ==.value2==> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity[ifgreatereq]
+    style IMP_UsdPreviewSurface_surfaceshader_opacityThresholdINT fill:#0bb, color:#111
+    IMP_UsdPreviewSurface_surfaceshader_opacity_clamped[clamp] --".value1"--> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity{ifgreatereq}
+    IMP_UsdPreviewSurface_surfaceshader_opacityINT([opacity]) ==.in==> IMP_UsdPreviewSurface_surfaceshader_opacity_clamped[clamp]
+    style IMP_UsdPreviewSurface_surfaceshader_opacityINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -467,6 +1418,41 @@
 * *Version*: 2.2. Is default: False
 - *Inherits From*: ND_UsdUVTexture_23
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: IMP_UsdUVTexture_22
+
+
+```mermaid
+graph LR; 
+    IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_r([r])
+    style IMP_UsdUVTexture_22_r fill:#1b1, color:#111
+    IMP_UsdUVTexture_22_biasINT([bias]) ==.in2==> IMP_UsdUVTexture_22_image_bias[add]
+    style IMP_UsdUVTexture_22_biasINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_22_image_scale[multiply] --".in1"--> IMP_UsdUVTexture_22_image_bias[add]
+    IMP_UsdUVTexture_22_scaleINT([scale]) ==.in2==> IMP_UsdUVTexture_22_image_scale[multiply]
+    style IMP_UsdUVTexture_22_scaleINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_22_image_reader[image] --".in1"--> IMP_UsdUVTexture_22_image_scale[multiply]
+    IMP_UsdUVTexture_22_fileINT([file]) ==.file==> IMP_UsdUVTexture_22_image_reader[image]
+    style IMP_UsdUVTexture_22_fileINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_22_fallbackINT([fallback]) ==.default==> IMP_UsdUVTexture_22_image_reader[image]
+    style IMP_UsdUVTexture_22_fallbackINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_22_stINT([st]) ==.texcoord==> IMP_UsdUVTexture_22_image_reader[image]
+    style IMP_UsdUVTexture_22_stINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_22_wrapSINT([wrapS]) ==.uaddressmode==> IMP_UsdUVTexture_22_image_reader[image]
+    style IMP_UsdUVTexture_22_wrapSINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_22_wrapTINT([wrapT]) ==.vaddressmode==> IMP_UsdUVTexture_22_image_reader[image]
+    style IMP_UsdUVTexture_22_wrapTINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_g([g])
+    style IMP_UsdUVTexture_22_g fill:#1b1, color:#111
+    IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_b([b])
+    style IMP_UsdUVTexture_22_b fill:#1b1, color:#111
+    IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_a([a])
+    style IMP_UsdUVTexture_22_a fill:#1b1, color:#111
+    IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_rgb([rgb])
+    style IMP_UsdUVTexture_22_rgb fill:#1b1, color:#111
+    IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_rgba([rgba])
+    style IMP_UsdUVTexture_22_rgba fill:#1b1, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -487,6 +1473,39 @@
 * *Node Group*: texture2d
 * *Version*: 2.3. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: IMP_UsdUVTexture_23
+
+
+```mermaid
+graph LR; 
+    IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_r([r])
+    style IMP_UsdUVTexture_23_r fill:#1b1, color:#111
+    IMP_UsdUVTexture_23_biasINT([bias]) ==.in2==> IMP_UsdUVTexture_23_image_bias[add]
+    style IMP_UsdUVTexture_23_biasINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_23_image_scale[multiply] --".in1"--> IMP_UsdUVTexture_23_image_bias[add]
+    IMP_UsdUVTexture_23_scaleINT([scale]) ==.in2==> IMP_UsdUVTexture_23_image_scale[multiply]
+    style IMP_UsdUVTexture_23_scaleINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_23_image_reader[image] --".in1"--> IMP_UsdUVTexture_23_image_scale[multiply]
+    IMP_UsdUVTexture_23_fileINT([file]) ==.file==> IMP_UsdUVTexture_23_image_reader[image]
+    style IMP_UsdUVTexture_23_fileINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_23_fallbackINT([fallback]) ==.default==> IMP_UsdUVTexture_23_image_reader[image]
+    style IMP_UsdUVTexture_23_fallbackINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_23_stINT([st]) ==.texcoord==> IMP_UsdUVTexture_23_image_reader[image]
+    style IMP_UsdUVTexture_23_stINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_23_wrapSINT([wrapS]) ==.uaddressmode==> IMP_UsdUVTexture_23_image_reader[image]
+    style IMP_UsdUVTexture_23_wrapSINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_23_wrapTINT([wrapT]) ==.vaddressmode==> IMP_UsdUVTexture_23_image_reader[image]
+    style IMP_UsdUVTexture_23_wrapTINT fill:#0bb, color:#111
+    IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_g([g])
+    style IMP_UsdUVTexture_23_g fill:#1b1, color:#111
+    IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_b([b])
+    style IMP_UsdUVTexture_23_b fill:#1b1, color:#111
+    IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_a([a])
+    style IMP_UsdUVTexture_23_a fill:#1b1, color:#111
+    IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_rgb([rgb])
+    style IMP_UsdUVTexture_23_rgb fill:#1b1, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -514,6 +1533,19 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: IMP_UsdPrimvarReader_integer
+
+
+```mermaid
+graph LR; 
+    IMP_UsdPrimvarReader_integer_primvar[geompropvalue] --> IMP_UsdPrimvarReader_integer_out([out])
+    style IMP_UsdPrimvarReader_integer_out fill:#1b1, color:#111
+    IMP_UsdPrimvarReader_integer_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_integer_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_integer_varnameINT fill:#0bb, color:#111
+    IMP_UsdPrimvarReader_integer_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_integer_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_integer_fallbackINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -531,6 +1563,19 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: IMP_UsdPrimvarReader_boolean
+
+
+```mermaid
+graph LR; 
+    IMP_UsdPrimvarReader_boolean_primvar[geompropvalue] --> IMP_UsdPrimvarReader_boolean_out([out])
+    style IMP_UsdPrimvarReader_boolean_out fill:#1b1, color:#111
+    IMP_UsdPrimvarReader_boolean_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_boolean_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_boolean_varnameINT fill:#0bb, color:#111
+    IMP_UsdPrimvarReader_boolean_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_boolean_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_boolean_fallbackINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -548,6 +1593,19 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: IMP_UsdPrimvarReader_string
+
+
+```mermaid
+graph LR; 
+    IMP_UsdPrimvarReader_string_primvar[geompropvalue] --> IMP_UsdPrimvarReader_string_out([out])
+    style IMP_UsdPrimvarReader_string_out fill:#1b1, color:#111
+    IMP_UsdPrimvarReader_string_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_string_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_string_varnameINT fill:#0bb, color:#111
+    IMP_UsdPrimvarReader_string_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_string_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_string_fallbackINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -565,6 +1623,19 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: IMP_UsdPrimvarReader_float
+
+
+```mermaid
+graph LR; 
+    IMP_UsdPrimvarReader_float_primvar[geompropvalue] --> IMP_UsdPrimvarReader_float_out([out])
+    style IMP_UsdPrimvarReader_float_out fill:#1b1, color:#111
+    IMP_UsdPrimvarReader_float_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_float_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_float_varnameINT fill:#0bb, color:#111
+    IMP_UsdPrimvarReader_float_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_float_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_float_fallbackINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -582,6 +1653,19 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: IMP_UsdPrimvarReader_vector2
+
+
+```mermaid
+graph LR; 
+    IMP_UsdPrimvarReader_vector2_primvar[geompropvalue] --> IMP_UsdPrimvarReader_vector2_out([out])
+    style IMP_UsdPrimvarReader_vector2_out fill:#1b1, color:#111
+    IMP_UsdPrimvarReader_vector2_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_vector2_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_vector2_varnameINT fill:#0bb, color:#111
+    IMP_UsdPrimvarReader_vector2_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_vector2_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_vector2_fallbackINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -599,6 +1683,19 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: IMP_UsdPrimvarReader_vector3
+
+
+```mermaid
+graph LR; 
+    IMP_UsdPrimvarReader_vector3_primvar[geompropvalue] --> IMP_UsdPrimvarReader_vector3_out([out])
+    style IMP_UsdPrimvarReader_vector3_out fill:#1b1, color:#111
+    IMP_UsdPrimvarReader_vector3_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_vector3_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_vector3_varnameINT fill:#0bb, color:#111
+    IMP_UsdPrimvarReader_vector3_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_vector3_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_vector3_fallbackINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -616,6 +1713,19 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: IMP_UsdPrimvarReader_vector4
+
+
+```mermaid
+graph LR; 
+    IMP_UsdPrimvarReader_vector4_primvar[geompropvalue] --> IMP_UsdPrimvarReader_vector4_out([out])
+    style IMP_UsdPrimvarReader_vector4_out fill:#1b1, color:#111
+    IMP_UsdPrimvarReader_vector4_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_vector4_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_vector4_varnameINT fill:#0bb, color:#111
+    IMP_UsdPrimvarReader_vector4_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_vector4_primvar[geompropvalue]
+    style IMP_UsdPrimvarReader_vector4_fallbackINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -634,6 +1744,23 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: IMP_UsdTransform2d
+
+
+```mermaid
+graph LR; 
+    IMP_UsdTransform2d_placement[place2d] --> IMP_UsdTransform2d_out([out])
+    style IMP_UsdTransform2d_out fill:#1b1, color:#111
+    IMP_UsdTransform2d_inINT([in]) ==.texcoord==> IMP_UsdTransform2d_placement[place2d]
+    style IMP_UsdTransform2d_inINT fill:#0bb, color:#111
+    IMP_UsdTransform2d_scaleINT([scale]) ==.scale==> IMP_UsdTransform2d_placement[place2d]
+    style IMP_UsdTransform2d_scaleINT fill:#0bb, color:#111
+    IMP_UsdTransform2d_rotationINT([rotation]) ==.rotate==> IMP_UsdTransform2d_placement[place2d]
+    style IMP_UsdTransform2d_rotationINT fill:#0bb, color:#111
+    IMP_UsdTransform2d_translationINT([translation]) ==.offset==> IMP_UsdTransform2d_placement[place2d]
+    style IMP_UsdTransform2d_translationINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -654,6 +1781,25 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_lama_add_bsdf
+
+
+```mermaid
+graph LR; 
+    NG_lama_add_bsdf_add1[add] --> NG_lama_add_bsdf_out([out])
+    style NG_lama_add_bsdf_out fill:#1b1, color:#111
+    NG_lama_add_bsdf_mul1[multiply] --".in1"--> NG_lama_add_bsdf_add1[add]
+    NG_lama_add_bsdf_material1INT([material1]) ==.in1==> NG_lama_add_bsdf_mul1[multiply]
+    style NG_lama_add_bsdf_material1INT fill:#0bb, color:#111
+    NG_lama_add_bsdf_weight1INT([weight1]) ==.in2==> NG_lama_add_bsdf_mul1[multiply]
+    style NG_lama_add_bsdf_weight1INT fill:#0bb, color:#111
+    NG_lama_add_bsdf_mul2[multiply] --".in2"--> NG_lama_add_bsdf_add1[add]
+    NG_lama_add_bsdf_material2INT([material2]) ==.in1==> NG_lama_add_bsdf_mul2[multiply]
+    style NG_lama_add_bsdf_material2INT fill:#0bb, color:#111
+    NG_lama_add_bsdf_weight2INT([weight2]) ==.in2==> NG_lama_add_bsdf_mul2[multiply]
+    style NG_lama_add_bsdf_weight2INT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -673,6 +1819,25 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_lama_add_edf
+
+
+```mermaid
+graph LR; 
+    NG_lama_add_edf_add1[add] --> NG_lama_add_edf_out([out])
+    style NG_lama_add_edf_out fill:#1b1, color:#111
+    NG_lama_add_edf_mul1[multiply] --".in1"--> NG_lama_add_edf_add1[add]
+    NG_lama_add_edf_material1INT([material1]) ==.in1==> NG_lama_add_edf_mul1[multiply]
+    style NG_lama_add_edf_material1INT fill:#0bb, color:#111
+    NG_lama_add_edf_weight1INT([weight1]) ==.in2==> NG_lama_add_edf_mul1[multiply]
+    style NG_lama_add_edf_weight1INT fill:#0bb, color:#111
+    NG_lama_add_edf_mul2[multiply] --".in2"--> NG_lama_add_edf_add1[add]
+    NG_lama_add_edf_material2INT([material2]) ==.in1==> NG_lama_add_edf_mul2[multiply]
+    style NG_lama_add_edf_material2INT fill:#0bb, color:#111
+    NG_lama_add_edf_weight2INT([weight2]) ==.in2==> NG_lama_add_edf_mul2[multiply]
+    style NG_lama_add_edf_weight2INT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -693,6 +1858,90 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: Lama conductor
+* *Nodegraph*: IMPL_lama_conductor
+
+
+```mermaid
+graph LR; 
+    IMPL_lama_conductor_tinted_bsdf[multiply] --> IMPL_lama_conductor_out([out])
+    style IMPL_lama_conductor_out fill:#1b1, color:#111
+    IMPL_lama_conductor_tintINT([tint]) ==.in2==> IMPL_lama_conductor_tinted_bsdf[multiply]
+    style IMPL_lama_conductor_tintINT fill:#0bb, color:#111
+    IMPL_lama_conductor_thin_film_conductor_bsdf[layer] --".in1"--> IMPL_lama_conductor_tinted_bsdf[multiply]
+    IMPL_lama_conductor_thin_film_bsdf[thin_film_bsdf] --".top"--> IMPL_lama_conductor_thin_film_conductor_bsdf[layer]
+    IMPL_lama_conductor_iridescenceThicknessINT([iridescenceThickness]) ==.thickness==> IMPL_lama_conductor_thin_film_bsdf[thin_film_bsdf]
+    style IMPL_lama_conductor_iridescenceThicknessINT fill:#0bb, color:#111
+    IMPL_lama_conductor_iridescence_relative_ior[divide] --".ior"--> IMPL_lama_conductor_thin_film_bsdf[thin_film_bsdf]
+    IMPL_lama_conductor_iridescenceIORINT([iridescenceIOR]) ==.in1==> IMPL_lama_conductor_iridescence_relative_ior[divide]
+    style IMPL_lama_conductor_iridescenceIORINT fill:#0bb, color:#111
+    IMPL_lama_conductor_exteriorIORINT([exteriorIOR]) ==.in2==> IMPL_lama_conductor_iridescence_relative_ior[divide]
+    style IMPL_lama_conductor_exteriorIORINT fill:#0bb, color:#111
+    IMPL_lama_conductor_conductor_bsdf[conductor_bsdf] --".base"--> IMPL_lama_conductor_thin_film_conductor_bsdf[layer]
+    IMPL_lama_conductor_normalINT([normal]) ==.normal==> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
+    style IMPL_lama_conductor_normalINT fill:#0bb, color:#111
+    IMPL_lama_conductor_relative_eta[divide] --".ior"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
+    IMPL_lama_conductor_eta_switch{switch} --".in1"--> IMPL_lama_conductor_relative_eta[divide]
+    IMPL_lama_conductor_fresnelModeINT([fresnelMode]) ==.which==> IMPL_lama_conductor_eta_switch[switch]
+    style IMPL_lama_conductor_fresnelModeINT fill:#0bb, color:#111
+    IMPL_lama_conductor_convert_ior[convert] --".in1"--> IMPL_lama_conductor_eta_switch{switch}
+    IMPL_lama_conductor_IORINT([IOR]) ==.in==> IMPL_lama_conductor_convert_ior[convert]
+    style IMPL_lama_conductor_IORINT fill:#0bb, color:#111
+    IMPL_lama_conductor_artistic_ior[artistic_ior] --> IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorior([ior])
+    style IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorior fill:#1b1, color:#111
+    IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorior --".in2"--> IMPL_lama_conductor_eta_switch{switch}
+    IMPL_lama_conductor_reflectivityINT([reflectivity]) ==.reflectivity==> IMPL_lama_conductor_artistic_ior[artistic_ior]
+    style IMPL_lama_conductor_reflectivityINT fill:#0bb, color:#111
+    IMPL_lama_conductor_edgeColorINT([edgeColor]) ==.edge_color==> IMPL_lama_conductor_artistic_ior[artistic_ior]
+    style IMPL_lama_conductor_edgeColorINT fill:#0bb, color:#111
+    IMPL_lama_conductor_exterior_ior_switch{ifgreater} --".in2"--> IMPL_lama_conductor_relative_eta[divide]
+    IMPL_lama_conductor_iridescenceIORINT([iridescenceIOR]) ==.in1==> IMPL_lama_conductor_exterior_ior_switch[ifgreater]
+    style IMPL_lama_conductor_iridescenceIORINT fill:#0bb, color:#111
+    IMPL_lama_conductor_exteriorIORINT([exteriorIOR]) ==.in2==> IMPL_lama_conductor_exterior_ior_switch[ifgreater]
+    style IMPL_lama_conductor_exteriorIORINT fill:#0bb, color:#111
+    IMPL_lama_conductor_iridescenceThicknessINT([iridescenceThickness]) ==.value1==> IMPL_lama_conductor_exterior_ior_switch[ifgreater]
+    style IMPL_lama_conductor_iridescenceThicknessINT fill:#0bb, color:#111
+    IMPL_lama_conductor_relative_kappa[divide] --".extinction"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
+    IMPL_lama_conductor_kappa_switch{switch} --".in1"--> IMPL_lama_conductor_relative_kappa[divide]
+    IMPL_lama_conductor_fresnelModeINT([fresnelMode]) ==.which==> IMPL_lama_conductor_kappa_switch[switch]
+    style IMPL_lama_conductor_fresnelModeINT fill:#0bb, color:#111
+    IMPL_lama_conductor_convert_extinction[convert] --".in1"--> IMPL_lama_conductor_kappa_switch{switch}
+    IMPL_lama_conductor_extinctionINT([extinction]) ==.in==> IMPL_lama_conductor_convert_extinction[convert]
+    style IMPL_lama_conductor_extinctionINT fill:#0bb, color:#111
+    IMPL_lama_conductor_artistic_ior[artistic_ior] --> IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorextinction([extinction])
+    style IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorextinction fill:#1b1, color:#111
+    IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorextinction --".in2"--> IMPL_lama_conductor_kappa_switch{switch}
+    IMPL_lama_conductor_exterior_ior_switch{ifgreater} --".in2"--> IMPL_lama_conductor_relative_kappa[divide]
+    IMPL_lama_conductor_roughness_anisotropic_squared_clamped[max] --".roughness"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
+    IMPL_lama_conductor_roughness_anisotropic_squared[power] --".in1"--> IMPL_lama_conductor_roughness_anisotropic_squared_clamped[max]
+    IMPL_lama_conductor_roughness_linear[combine2] --".in1"--> IMPL_lama_conductor_roughness_anisotropic_squared[power]
+    IMPL_lama_conductor_roughnessINT([roughness]) ==.in1==> IMPL_lama_conductor_roughness_linear[combine2]
+    style IMPL_lama_conductor_roughnessINT fill:#0bb, color:#111
+    IMPL_lama_conductor_roughness_bitangent_clamped[clamp] --".in2"--> IMPL_lama_conductor_roughness_linear[combine2]
+    IMPL_lama_conductor_roughness_bitangent[add] --".in"--> IMPL_lama_conductor_roughness_bitangent_clamped[clamp]
+    IMPL_lama_conductor_roughnessINT([roughness]) ==.in1==> IMPL_lama_conductor_roughness_bitangent[add]
+    style IMPL_lama_conductor_roughnessINT fill:#0bb, color:#111
+    IMPL_lama_conductor_roughness_additional[multiply] --".in2"--> IMPL_lama_conductor_roughness_bitangent[add]
+    IMPL_lama_conductor_anisotropyINT([anisotropy]) ==.in1==> IMPL_lama_conductor_roughness_additional[multiply]
+    style IMPL_lama_conductor_anisotropyINT fill:#0bb, color:#111
+    IMPL_lama_conductor_delta{ifgreatereq} --".in2"--> IMPL_lama_conductor_roughness_additional[multiply]
+    IMPL_lama_conductor_roughnessINT([roughness]) ==.in2==> IMPL_lama_conductor_delta[ifgreatereq]
+    style IMPL_lama_conductor_roughnessINT fill:#0bb, color:#111
+    IMPL_lama_conductor_anisotropyINT([anisotropy]) ==.value1==> IMPL_lama_conductor_delta[ifgreatereq]
+    style IMPL_lama_conductor_anisotropyINT fill:#0bb, color:#111
+    IMPL_lama_conductor_roughness_inverse[subtract] --".in1"--> IMPL_lama_conductor_delta{ifgreatereq}
+    IMPL_lama_conductor_roughnessINT([roughness]) ==.in2==> IMPL_lama_conductor_roughness_inverse[subtract]
+    style IMPL_lama_conductor_roughnessINT fill:#0bb, color:#111
+    IMPL_lama_conductor_tangent_rotate_normalize[normalize] --".tangent"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
+    IMPL_lama_conductor_tangent_rotate[rotate3d] --".in"--> IMPL_lama_conductor_tangent_rotate_normalize[normalize]
+    IMPL_lama_conductor_anisotropyDirectionINT([anisotropyDirection]) ==.in==> IMPL_lama_conductor_tangent_rotate[rotate3d]
+    style IMPL_lama_conductor_anisotropyDirectionINT fill:#0bb, color:#111
+    IMPL_lama_conductor_normalINT([normal]) ==.axis==> IMPL_lama_conductor_tangent_rotate[rotate3d]
+    style IMPL_lama_conductor_normalINT fill:#0bb, color:#111
+    IMPL_lama_conductor_tangent_rotate_degree[multiply] --".amount"--> IMPL_lama_conductor_tangent_rotate[rotate3d]
+    IMPL_lama_conductor_anisotropyRotationINT([anisotropyRotation]) ==.in1==> IMPL_lama_conductor_tangent_rotate_degree[multiply]
+    style IMPL_lama_conductor_anisotropyRotationINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -723,6 +1972,85 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: Lama dielectric
+* *Nodegraph*: IMPL_lama_dielectric
+
+
+```mermaid
+graph LR; 
+    IMPL_lama_dielectric_dielectric_bsdf[layer] --> IMPL_lama_dielectric_out([out])
+    style IMPL_lama_dielectric_out fill:#1b1, color:#111
+    IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf] --".top"--> IMPL_lama_dielectric_dielectric_bsdf[layer]
+    IMPL_lama_dielectric_reflectionTintINT([reflectionTint]) ==.tint==> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
+    style IMPL_lama_dielectric_reflectionTintINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_normalINT([normal]) ==.normal==> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
+    style IMPL_lama_dielectric_normalINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_relative_ior[divide] --".ior"--> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
+    IMPL_lama_dielectric_exteriorIORINT([exteriorIOR]) ==.in2==> IMPL_lama_dielectric_relative_ior[divide]
+    style IMPL_lama_dielectric_exteriorIORINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_fresnel_mode_switch{switch} --".in1"--> IMPL_lama_dielectric_relative_ior[divide]
+    IMPL_lama_dielectric_IORINT([IOR]) ==.in1==> IMPL_lama_dielectric_fresnel_mode_switch[switch]
+    style IMPL_lama_dielectric_IORINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_fresnelModeINT([fresnelMode]) ==.which==> IMPL_lama_dielectric_fresnel_mode_switch[switch]
+    style IMPL_lama_dielectric_fresnelModeINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_artistic_ior[artistic_ior] --> IMPL_lama_dielectric_IMPL_lama_dielectric_artistic_iorior([ior])
+    style IMPL_lama_dielectric_IMPL_lama_dielectric_artistic_iorior fill:#1b1, color:#111
+    IMPL_lama_dielectric_IMPL_lama_dielectric_artistic_iorior --".r -> .in2"--> IMPL_lama_dielectric_fresnel_mode_switch{switch}
+    IMPL_lama_dielectric_reflectivity_color[convert] --".reflectivity"--> IMPL_lama_dielectric_artistic_ior[artistic_ior]
+    IMPL_lama_dielectric_reflectivityINT([reflectivity]) ==.in==> IMPL_lama_dielectric_reflectivity_color[convert]
+    style IMPL_lama_dielectric_reflectivityINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_roughness_anisotropic_squared_clamped[max] --".roughness"--> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
+    IMPL_lama_dielectric_roughness_anisotropic_squared[power] --".in1"--> IMPL_lama_dielectric_roughness_anisotropic_squared_clamped[max]
+    IMPL_lama_dielectric_roughness_linear[combine2] --".in1"--> IMPL_lama_dielectric_roughness_anisotropic_squared[power]
+    IMPL_lama_dielectric_roughnessINT([roughness]) ==.in1==> IMPL_lama_dielectric_roughness_linear[combine2]
+    style IMPL_lama_dielectric_roughnessINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_roughness_bitangent_clamped[clamp] --".in2"--> IMPL_lama_dielectric_roughness_linear[combine2]
+    IMPL_lama_dielectric_roughness_bitangent[add] --".in"--> IMPL_lama_dielectric_roughness_bitangent_clamped[clamp]
+    IMPL_lama_dielectric_roughnessINT([roughness]) ==.in1==> IMPL_lama_dielectric_roughness_bitangent[add]
+    style IMPL_lama_dielectric_roughnessINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_roughness_additional[multiply] --".in2"--> IMPL_lama_dielectric_roughness_bitangent[add]
+    IMPL_lama_dielectric_anisotropyINT([anisotropy]) ==.in1==> IMPL_lama_dielectric_roughness_additional[multiply]
+    style IMPL_lama_dielectric_anisotropyINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_delta{ifgreatereq} --".in2"--> IMPL_lama_dielectric_roughness_additional[multiply]
+    IMPL_lama_dielectric_roughnessINT([roughness]) ==.in2==> IMPL_lama_dielectric_delta[ifgreatereq]
+    style IMPL_lama_dielectric_roughnessINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_anisotropyINT([anisotropy]) ==.value1==> IMPL_lama_dielectric_delta[ifgreatereq]
+    style IMPL_lama_dielectric_anisotropyINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_roughness_inverse[subtract] --".in1"--> IMPL_lama_dielectric_delta{ifgreatereq}
+    IMPL_lama_dielectric_roughnessINT([roughness]) ==.in2==> IMPL_lama_dielectric_roughness_inverse[subtract]
+    style IMPL_lama_dielectric_roughnessINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_tangent_rotate_normalize[normalize] --".tangent"--> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
+    IMPL_lama_dielectric_tangent_rotate[rotate3d] --".in"--> IMPL_lama_dielectric_tangent_rotate_normalize[normalize]
+    IMPL_lama_dielectric_directionINT([direction]) ==.in==> IMPL_lama_dielectric_tangent_rotate[rotate3d]
+    style IMPL_lama_dielectric_directionINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_normalINT([normal]) ==.axis==> IMPL_lama_dielectric_tangent_rotate[rotate3d]
+    style IMPL_lama_dielectric_normalINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_tangent_rotate_degree_offset[subtract] --".amount"--> IMPL_lama_dielectric_tangent_rotate[rotate3d]
+    IMPL_lama_dielectric_tangent_rotate_degree[multiply] --".in1"--> IMPL_lama_dielectric_tangent_rotate_degree_offset[subtract]
+    IMPL_lama_dielectric_rotationINT([rotation]) ==.in1==> IMPL_lama_dielectric_tangent_rotate_degree[multiply]
+    style IMPL_lama_dielectric_rotationINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_transmission_layer[layer] --".base"--> IMPL_lama_dielectric_dielectric_bsdf[layer]
+    IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf] --".top"--> IMPL_lama_dielectric_transmission_layer[layer]
+    IMPL_lama_dielectric_transmissionTintINT([transmissionTint]) ==.tint==> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
+    style IMPL_lama_dielectric_transmissionTintINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_normalINT([normal]) ==.normal==> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
+    style IMPL_lama_dielectric_normalINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_relative_ior[divide] --".ior"--> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
+    IMPL_lama_dielectric_roughness_anisotropic_squared_clamped[max] --".roughness"--> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
+    IMPL_lama_dielectric_tangent_rotate_normalize[normalize] --".tangent"--> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
+    IMPL_lama_dielectric_interior_vdf[anisotropic_vdf] --".base"--> IMPL_lama_dielectric_transmission_layer[layer]
+    IMPL_lama_dielectric_scatterAnisotropyINT([scatterAnisotropy]) ==.anisotropy==> IMPL_lama_dielectric_interior_vdf[anisotropic_vdf]
+    style IMPL_lama_dielectric_scatterAnisotropyINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_absorption_vector[convert] --".absorption"--> IMPL_lama_dielectric_interior_vdf[anisotropic_vdf]
+    IMPL_lama_dielectric_absorption[divide] --".in"--> IMPL_lama_dielectric_absorption_vector[convert]
+    IMPL_lama_dielectric_absorptionColorINT([absorptionColor]) ==.in1==> IMPL_lama_dielectric_absorption[divide]
+    style IMPL_lama_dielectric_absorptionColorINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_absorptionRadiusINT([absorptionRadius]) ==.in2==> IMPL_lama_dielectric_absorption[divide]
+    style IMPL_lama_dielectric_absorptionRadiusINT fill:#0bb, color:#111
+    IMPL_lama_dielectric_scatter_vector[convert] --".scattering"--> IMPL_lama_dielectric_interior_vdf[anisotropic_vdf]
+    IMPL_lama_dielectric_scatterColorINT([scatterColor]) ==.in==> IMPL_lama_dielectric_scatter_vector[convert]
+    style IMPL_lama_dielectric_scatterColorINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -754,6 +2082,25 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_lama_diffuse
+
+
+```mermaid
+graph LR; 
+    NG_lama_diffuse_oren_nayar[oren_nayar_diffuse_bsdf] --> NG_lama_diffuse_out([out])
+    style NG_lama_diffuse_out fill:#1b1, color:#111
+    NG_lama_diffuse_colorINT([color]) ==.color==> NG_lama_diffuse_oren_nayar[oren_nayar_diffuse_bsdf]
+    style NG_lama_diffuse_colorINT fill:#0bb, color:#111
+    NG_lama_diffuse_normalINT([normal]) ==.normal==> NG_lama_diffuse_oren_nayar[oren_nayar_diffuse_bsdf]
+    style NG_lama_diffuse_normalINT fill:#0bb, color:#111
+    NG_lama_diffuse_half_roughness_squared[multiply] --".roughness"--> NG_lama_diffuse_oren_nayar[oren_nayar_diffuse_bsdf]
+    NG_lama_diffuse_roughness_squared[multiply] --".in1"--> NG_lama_diffuse_half_roughness_squared[multiply]
+    NG_lama_diffuse_roughnessINT([roughness]) ==.in1==> NG_lama_diffuse_roughness_squared[multiply]
+    style NG_lama_diffuse_roughnessINT fill:#0bb, color:#111
+    NG_lama_diffuse_roughnessINT([roughness]) ==.in2==> NG_lama_diffuse_roughness_squared[multiply]
+    style NG_lama_diffuse_roughnessINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -776,6 +2123,17 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: Lama emission
+* *Nodegraph*: IMPL_lama_emission
+
+
+```mermaid
+graph LR; 
+    IMPL_lama_emission_emission[uniform_edf] --> IMPL_lama_emission_out([out])
+    style IMPL_lama_emission_out fill:#1b1, color:#111
+    IMPL_lama_emission_colorINT([color]) ==.color==> IMPL_lama_emission_emission[uniform_edf]
+    style IMPL_lama_emission_colorINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -793,6 +2151,22 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_lama_layer_bsdf
+
+
+```mermaid
+graph LR; 
+    NG_lama_layer_bsdf_layer[layer] --> NG_lama_layer_bsdf_out([out])
+    style NG_lama_layer_bsdf_out fill:#1b1, color:#111
+    NG_lama_layer_bsdf_materialBaseINT([materialBase]) ==.base==> NG_lama_layer_bsdf_layer[layer]
+    style NG_lama_layer_bsdf_materialBaseINT fill:#0bb, color:#111
+    NG_lama_layer_bsdf_mul[multiply] --".top"--> NG_lama_layer_bsdf_layer[layer]
+    NG_lama_layer_bsdf_materialTopINT([materialTop]) ==.in1==> NG_lama_layer_bsdf_mul[multiply]
+    style NG_lama_layer_bsdf_materialTopINT fill:#0bb, color:#111
+    NG_lama_layer_bsdf_topMixINT([topMix]) ==.in2==> NG_lama_layer_bsdf_mul[multiply]
+    style NG_lama_layer_bsdf_topMixINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -813,6 +2187,21 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_lama_mix_bsdf
+
+
+```mermaid
+graph LR; 
+    NG_lama_mix_bsdf_mix[mix] --> NG_lama_mix_bsdf_out([out])
+    style NG_lama_mix_bsdf_out fill:#1b1, color:#111
+    NG_lama_mix_bsdf_material2INT([material2]) ==.fg==> NG_lama_mix_bsdf_mix[mix]
+    style NG_lama_mix_bsdf_material2INT fill:#0bb, color:#111
+    NG_lama_mix_bsdf_material1INT([material1]) ==.bg==> NG_lama_mix_bsdf_mix[mix]
+    style NG_lama_mix_bsdf_material1INT fill:#0bb, color:#111
+    NG_lama_mix_bsdf_mixINT([mix]) ==.mix==> NG_lama_mix_bsdf_mix[mix]
+    style NG_lama_mix_bsdf_mixINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -831,6 +2220,21 @@
 * *Node Group*: none
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_lama_mix_edf
+
+
+```mermaid
+graph LR; 
+    NG_lama_mix_edf_mix[mix] --> NG_lama_mix_edf_out([out])
+    style NG_lama_mix_edf_out fill:#1b1, color:#111
+    NG_lama_mix_edf_material2INT([material2]) ==.fg==> NG_lama_mix_edf_mix[mix]
+    style NG_lama_mix_edf_material2INT fill:#0bb, color:#111
+    NG_lama_mix_edf_material1INT([material1]) ==.bg==> NG_lama_mix_edf_mix[mix]
+    style NG_lama_mix_edf_material1INT fill:#0bb, color:#111
+    NG_lama_mix_edf_mixINT([mix]) ==.mix==> NG_lama_mix_edf_mix[mix]
+    style NG_lama_mix_edf_mixINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -850,6 +2254,24 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: Lama sheen
+* *Nodegraph*: IMPL_lama_sheen
+
+
+```mermaid
+graph LR; 
+    IMPL_lama_sheen_sheen_bsdf[sheen_bsdf] --> IMPL_lama_sheen_out([out])
+    style IMPL_lama_sheen_out fill:#1b1, color:#111
+    IMPL_lama_sheen_colorINT([color]) ==.color==> IMPL_lama_sheen_sheen_bsdf[sheen_bsdf]
+    style IMPL_lama_sheen_colorINT fill:#0bb, color:#111
+    IMPL_lama_sheen_normalINT([normal]) ==.normal==> IMPL_lama_sheen_sheen_bsdf[sheen_bsdf]
+    style IMPL_lama_sheen_normalINT fill:#0bb, color:#111
+    IMPL_lama_sheen_roughness_squared[power] --".roughness"--> IMPL_lama_sheen_sheen_bsdf[sheen_bsdf]
+    IMPL_lama_sheen_roughness_remapped[add] --".in1"--> IMPL_lama_sheen_roughness_squared[power]
+    IMPL_lama_sheen_roughness_compressed[multiply] --".in1"--> IMPL_lama_sheen_roughness_remapped[add]
+    IMPL_lama_sheen_roughnessINT([roughness]) ==.in1==> IMPL_lama_sheen_roughness_compressed[multiply]
+    style IMPL_lama_sheen_roughnessINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -869,6 +2291,30 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: Lama SSS
+* *Nodegraph*: IMPL_lama_sss
+
+
+```mermaid
+graph LR; 
+    IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf] --> IMPL_lama_sss_out([out])
+    style IMPL_lama_sss_out fill:#1b1, color:#111
+    IMPL_lama_sss_colorINT([color]) ==.color==> IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
+    style IMPL_lama_sss_colorINT fill:#0bb, color:#111
+    IMPL_lama_sss_sssAnisotropyINT([sssAnisotropy]) ==.anisotropy==> IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
+    style IMPL_lama_sss_sssAnisotropyINT fill:#0bb, color:#111
+    IMPL_lama_sss_normalINT([normal]) ==.normal==> IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
+    style IMPL_lama_sss_normalINT fill:#0bb, color:#111
+    IMPL_lama_sss_subsurface_multiply_unitlength[multiply] --".radius"--> IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
+    IMPL_lama_sss_sssUnitLengthINT([sssUnitLength]) ==.in2==> IMPL_lama_sss_subsurface_multiply_unitlength[multiply]
+    style IMPL_lama_sss_sssUnitLengthINT fill:#0bb, color:#111
+    IMPL_lama_sss_subsurface_radius_scaled[multiply] --".in1"--> IMPL_lama_sss_subsurface_multiply_unitlength[multiply]
+    IMPL_lama_sss_sssScaleINT([sssScale]) ==.in2==> IMPL_lama_sss_subsurface_radius_scaled[multiply]
+    style IMPL_lama_sss_sssScaleINT fill:#0bb, color:#111
+    IMPL_lama_sss_subsurface_radius_vector[convert] --".in1"--> IMPL_lama_sss_subsurface_radius_scaled[multiply]
+    IMPL_lama_sss_sssRadiusINT([sssRadius]) ==.in==> IMPL_lama_sss_subsurface_radius_vector[convert]
+    style IMPL_lama_sss_sssRadiusINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -904,6 +2350,19 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_lama_translucent
+
+
+```mermaid
+graph LR; 
+    NG_lama_translucent_translucent_bsdf1[translucent_bsdf] --> NG_lama_translucent_out([out])
+    style NG_lama_translucent_out fill:#1b1, color:#111
+    NG_lama_translucent_colorINT([color]) ==.color==> NG_lama_translucent_translucent_bsdf1[translucent_bsdf]
+    style NG_lama_translucent_colorINT fill:#0bb, color:#111
+    NG_lama_translucent_normalINT([normal]) ==.normal==> NG_lama_translucent_translucent_bsdf1[translucent_bsdf]
+    style NG_lama_translucent_normalINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -926,6 +2385,84 @@
 * *Node Group*: none
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_standard_surface_to_gltf_pbr
+
+
+```mermaid
+graph LR; 
+    NG_standard_surface_to_gltf_pbr_base_color{ifequal} --> NG_standard_surface_to_gltf_pbr_base_color_out([base_color_out])
+    style NG_standard_surface_to_gltf_pbr_base_color_out fill:#1b1, color:#111
+    NG_standard_surface_to_gltf_pbr_has_coat_color[dotproduct] --".value1"--> NG_standard_surface_to_gltf_pbr_base_color{ifequal}
+    NG_standard_surface_to_gltf_pbr_coat_colorINT([coat_color]) ==.in1==> NG_standard_surface_to_gltf_pbr_has_coat_color[dotproduct]
+    style NG_standard_surface_to_gltf_pbr_coat_colorINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_scaledBaseColor[multiply] --".in1"--> NG_standard_surface_to_gltf_pbr_base_color{ifequal}
+    NG_standard_surface_to_gltf_pbr_base_colorINT([base_color]) ==.in1==> NG_standard_surface_to_gltf_pbr_scaledBaseColor[multiply]
+    style NG_standard_surface_to_gltf_pbr_base_colorINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_baseINT([base]) ==.in2==> NG_standard_surface_to_gltf_pbr_scaledBaseColor[multiply]
+    style NG_standard_surface_to_gltf_pbr_baseINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_mixedBaseColor[multiply] --".in2"--> NG_standard_surface_to_gltf_pbr_base_color{ifequal}
+    NG_standard_surface_to_gltf_pbr_scaledBaseColor[multiply] --".in1"--> NG_standard_surface_to_gltf_pbr_mixedBaseColor[multiply]
+    NG_standard_surface_to_gltf_pbr_coatAttenuation[mix] --".in2"--> NG_standard_surface_to_gltf_pbr_mixedBaseColor[multiply]
+    NG_standard_surface_to_gltf_pbr_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_to_gltf_pbr_coatAttenuation[mix]
+    style NG_standard_surface_to_gltf_pbr_coat_colorINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_coatINT([coat]) ==.mix==> NG_standard_surface_to_gltf_pbr_coatAttenuation[mix]
+    style NG_standard_surface_to_gltf_pbr_coatINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_metallic[dot] --> NG_standard_surface_to_gltf_pbr_metallic_out([metallic_out])
+    style NG_standard_surface_to_gltf_pbr_metallic_out fill:#1b1, color:#111
+    NG_standard_surface_to_gltf_pbr_metalnessINT([metalness]) ==.in==> NG_standard_surface_to_gltf_pbr_metallic[dot]
+    style NG_standard_surface_to_gltf_pbr_metalnessINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_roughness[dot] --> NG_standard_surface_to_gltf_pbr_roughness_out([roughness_out])
+    style NG_standard_surface_to_gltf_pbr_roughness_out fill:#1b1, color:#111
+    NG_standard_surface_to_gltf_pbr_specular_roughnessINT([specular_roughness]) ==.in==> NG_standard_surface_to_gltf_pbr_roughness[dot]
+    style NG_standard_surface_to_gltf_pbr_specular_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_transmission[dot] --> NG_standard_surface_to_gltf_pbr_transmission_out([transmission_out])
+    style NG_standard_surface_to_gltf_pbr_transmission_out fill:#1b1, color:#111
+    NG_standard_surface_to_gltf_pbr_transmissionINT([transmission]) ==.in==> NG_standard_surface_to_gltf_pbr_transmission[dot]
+    style NG_standard_surface_to_gltf_pbr_transmissionINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_thickness[dot] --> NG_standard_surface_to_gltf_pbr_thickness_out([thickness_out])
+    style NG_standard_surface_to_gltf_pbr_thickness_out fill:#1b1, color:#111
+    NG_standard_surface_to_gltf_pbr_transmission_depthINT([transmission_depth]) ==.in==> NG_standard_surface_to_gltf_pbr_thickness[dot]
+    style NG_standard_surface_to_gltf_pbr_transmission_depthINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_attenuation_color[dot] --> NG_standard_surface_to_gltf_pbr_attenuation_color_out([attenuation_color_out])
+    style NG_standard_surface_to_gltf_pbr_attenuation_color_out fill:#1b1, color:#111
+    NG_standard_surface_to_gltf_pbr_transmission_colorINT([transmission_color]) ==.in==> NG_standard_surface_to_gltf_pbr_attenuation_color[dot]
+    style NG_standard_surface_to_gltf_pbr_transmission_colorINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_sheen_color[multiply] --> NG_standard_surface_to_gltf_pbr_sheen_color_out([sheen_color_out])
+    style NG_standard_surface_to_gltf_pbr_sheen_color_out fill:#1b1, color:#111
+    NG_standard_surface_to_gltf_pbr_sheen_colorINT([sheen_color]) ==.in1==> NG_standard_surface_to_gltf_pbr_sheen_color[multiply]
+    style NG_standard_surface_to_gltf_pbr_sheen_colorINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_sheenINT([sheen]) ==.in2==> NG_standard_surface_to_gltf_pbr_sheen_color[multiply]
+    style NG_standard_surface_to_gltf_pbr_sheenINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_sheen_roughness{ifgreater} --> NG_standard_surface_to_gltf_pbr_sheen_roughness_out([sheen_roughness_out])
+    style NG_standard_surface_to_gltf_pbr_sheen_roughness_out fill:#1b1, color:#111
+    NG_standard_surface_to_gltf_pbr_sheenINT([sheen]) ==.value1==> NG_standard_surface_to_gltf_pbr_sheen_roughness[ifgreater]
+    style NG_standard_surface_to_gltf_pbr_sheenINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_sheen_roughnessINT([sheen_roughness]) ==.in1==> NG_standard_surface_to_gltf_pbr_sheen_roughness[ifgreater]
+    style NG_standard_surface_to_gltf_pbr_sheen_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_clearcoat{ifequal} --> NG_standard_surface_to_gltf_pbr_clearcoat_out([clearcoat_out])
+    style NG_standard_surface_to_gltf_pbr_clearcoat_out fill:#1b1, color:#111
+    NG_standard_surface_to_gltf_pbr_coatINT([coat]) ==.in1==> NG_standard_surface_to_gltf_pbr_clearcoat[ifequal]
+    style NG_standard_surface_to_gltf_pbr_coatINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_has_coat_color[dotproduct] --".value1"--> NG_standard_surface_to_gltf_pbr_clearcoat{ifequal}
+    NG_standard_surface_to_gltf_pbr_weightedCoat[dotproduct] --".in2"--> NG_standard_surface_to_gltf_pbr_clearcoat{ifequal}
+    NG_standard_surface_to_gltf_pbr_coatColor[multiply] --".rgb -> .in1"--> NG_standard_surface_to_gltf_pbr_weightedCoat[dotproduct]
+    NG_standard_surface_to_gltf_pbr_coat_colorINT([coat_color]) ==.in1==> NG_standard_surface_to_gltf_pbr_coatColor[multiply]
+    style NG_standard_surface_to_gltf_pbr_coat_colorINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_coatINT([coat]) ==.in2==> NG_standard_surface_to_gltf_pbr_coatColor[multiply]
+    style NG_standard_surface_to_gltf_pbr_coatINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_constantOneThird[divide] --".xxx -> .in2"--> NG_standard_surface_to_gltf_pbr_weightedCoat[dotproduct]
+    NG_standard_surface_to_gltf_pbr_clearcoat_roughness[dot] --> NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out([clearcoat_roughness_out])
+    style NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out fill:#1b1, color:#111
+    NG_standard_surface_to_gltf_pbr_coat_roughnessINT([coat_roughness]) ==.in==> NG_standard_surface_to_gltf_pbr_clearcoat_roughness[dot]
+    style NG_standard_surface_to_gltf_pbr_coat_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_emissive[multiply] --> NG_standard_surface_to_gltf_pbr_emissive_out([emissive_out])
+    style NG_standard_surface_to_gltf_pbr_emissive_out fill:#1b1, color:#111
+    NG_standard_surface_to_gltf_pbr_emission_colorINT([emission_color]) ==.in1==> NG_standard_surface_to_gltf_pbr_emissive[multiply]
+    style NG_standard_surface_to_gltf_pbr_emission_colorINT fill:#0bb, color:#111
+    NG_standard_surface_to_gltf_pbr_emissionINT([emission]) ==.in2==> NG_standard_surface_to_gltf_pbr_emissive[multiply]
+    style NG_standard_surface_to_gltf_pbr_emissionINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -967,6 +2504,65 @@
 * *Node Group*: none
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_standard_surface_to_UsdPreviewSurface
+
+
+```mermaid
+graph LR; 
+    NG_standard_surface_to_UsdPreviewSurface_diffuseColor[multiply] --> NG_standard_surface_to_UsdPreviewSurface_diffuseColor_out([diffuseColor_out])
+    style NG_standard_surface_to_UsdPreviewSurface_diffuseColor_out fill:#1b1, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor[multiply] --".in1"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor[multiply]
+    NG_standard_surface_to_UsdPreviewSurface_base_colorINT([base_color]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor[multiply]
+    style NG_standard_surface_to_UsdPreviewSurface_base_colorINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_baseINT([base]) ==.in2==> NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor[multiply]
+    style NG_standard_surface_to_UsdPreviewSurface_baseINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_coatAttenuation[mix] --".in2"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor[multiply]
+    NG_standard_surface_to_UsdPreviewSurface_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_to_UsdPreviewSurface_coatAttenuation[mix]
+    style NG_standard_surface_to_UsdPreviewSurface_coat_colorINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_coatINT([coat]) ==.mix==> NG_standard_surface_to_UsdPreviewSurface_coatAttenuation[mix]
+    style NG_standard_surface_to_UsdPreviewSurface_coatINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_emissiveColor[multiply] --> NG_standard_surface_to_UsdPreviewSurface_emissiveColor_out([emissiveColor_out])
+    style NG_standard_surface_to_UsdPreviewSurface_emissiveColor_out fill:#1b1, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_emission_colorINT([emission_color]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_emissiveColor[multiply]
+    style NG_standard_surface_to_UsdPreviewSurface_emission_colorINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_emissionINT([emission]) ==.in2==> NG_standard_surface_to_UsdPreviewSurface_emissiveColor[multiply]
+    style NG_standard_surface_to_UsdPreviewSurface_emissionINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_metallic[dot] --> NG_standard_surface_to_UsdPreviewSurface_metallic_out([metallic_out])
+    style NG_standard_surface_to_UsdPreviewSurface_metallic_out fill:#1b1, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_metalnessINT([metalness]) ==.in==> NG_standard_surface_to_UsdPreviewSurface_metallic[dot]
+    style NG_standard_surface_to_UsdPreviewSurface_metalnessINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_roughness[dot] --> NG_standard_surface_to_UsdPreviewSurface_roughness_out([roughness_out])
+    style NG_standard_surface_to_UsdPreviewSurface_roughness_out fill:#1b1, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_specular_roughnessINT([specular_roughness]) ==.in==> NG_standard_surface_to_UsdPreviewSurface_roughness[dot]
+    style NG_standard_surface_to_UsdPreviewSurface_specular_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_clearcoat[dotproduct] --> NG_standard_surface_to_UsdPreviewSurface_clearcoat_out([clearcoat_out])
+    style NG_standard_surface_to_UsdPreviewSurface_clearcoat_out fill:#1b1, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_coatColor[multiply] --".rgb -> .in1"--> NG_standard_surface_to_UsdPreviewSurface_clearcoat[dotproduct]
+    NG_standard_surface_to_UsdPreviewSurface_coat_colorINT([coat_color]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_coatColor[multiply]
+    style NG_standard_surface_to_UsdPreviewSurface_coat_colorINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_coatINT([coat]) ==.in2==> NG_standard_surface_to_UsdPreviewSurface_coatColor[multiply]
+    style NG_standard_surface_to_UsdPreviewSurface_coatINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_constantOneThird[divide] --".xxx -> .in2"--> NG_standard_surface_to_UsdPreviewSurface_clearcoat[dotproduct]
+    NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness[dot] --> NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out([clearcoatRoughness_out])
+    style NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out fill:#1b1, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_coat_roughnessINT([coat_roughness]) ==.in==> NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness[dot]
+    style NG_standard_surface_to_UsdPreviewSurface_coat_roughnessINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_opacity[dotproduct] --> NG_standard_surface_to_UsdPreviewSurface_opacity_out([opacity_out])
+    style NG_standard_surface_to_UsdPreviewSurface_opacity_out fill:#1b1, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_opacityINT([opacity]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_opacity[dotproduct]
+    style NG_standard_surface_to_UsdPreviewSurface_opacityINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_constantOneThird[divide] --".xxx -> .in2"--> NG_standard_surface_to_UsdPreviewSurface_opacity[dotproduct]
+    NG_standard_surface_to_UsdPreviewSurface_ior[dot] --> NG_standard_surface_to_UsdPreviewSurface_ior_out([ior_out])
+    style NG_standard_surface_to_UsdPreviewSurface_ior_out fill:#1b1, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_specular_IORINT([specular_IOR]) ==.in==> NG_standard_surface_to_UsdPreviewSurface_ior[dot]
+    style NG_standard_surface_to_UsdPreviewSurface_specular_IORINT fill:#0bb, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_normal[multiply] --> NG_standard_surface_to_UsdPreviewSurface_normal_out([normal_out])
+    style NG_standard_surface_to_UsdPreviewSurface_normal_out fill:#1b1, color:#111
+    NG_standard_surface_to_UsdPreviewSurface_biasNormal[subtract] --".in1"--> NG_standard_surface_to_UsdPreviewSurface_normal[multiply]
+    NG_standard_surface_to_UsdPreviewSurface_normalINT([normal]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_biasNormal[subtract]
+    style NG_standard_surface_to_UsdPreviewSurface_normalINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1005,6 +2601,7 @@
 * *Node Group*: light
 * *Version*: 1.0. Is default: False
 * *Doc*: A light shader node of 'point' type.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1025,6 +2622,7 @@
 * *Node Group*: light
 * *Version*: 1.0. Is default: False
 * *Doc*: A light shader node of 'directional' type.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1044,6 +2642,7 @@
 * *Node Group*: light
 * *Version*: 1.0. Is default: False
 * *Doc*: A light shader node of 'spot' type.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1067,6 +2666,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A BSDF node for diffuse reflections.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1087,6 +2687,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A BSDF node for Burley diffuse reflections.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1107,6 +2708,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A BSDF node for pure diffuse transmission.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1126,6 +2728,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A reflection/transmission BSDF node based on a microfacet model and a Fresnel curve for dielectrics.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1150,6 +2753,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A reflection BSDF node based on a microfacet model and a Fresnel curve for conductors/metals.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1173,6 +2777,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A reflection/transmission BSDF node based on a microfacet model and a generalized Schlick Fresnel curve.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1198,6 +2803,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A subsurface scattering BSDF for true subsurface scattering.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1219,6 +2825,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A microfacet BSDF for the back-scattering properties of cloth-like materials.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1239,6 +2846,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Adds an iridescent thin film layer over a microfacet base BSDF.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1257,6 +2865,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: An EDF node for uniform emission.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1274,6 +2883,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Constructs an EDF emitting light inside a cone around the normal direction.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1294,6 +2904,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Constructs an EDF emitting light according to a measured IES light profile.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1313,6 +2924,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Constructs a VDF for pure light absorption.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1330,6 +2942,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Constructs a VDF scattering light for a participating medium, based on the Henyey-Greenstein phase function.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1349,6 +2962,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A constructor node for the surfaceshader type.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1368,6 +2982,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A constructor node for the surfaceshader type for non-closed 'thin' objects.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1389,6 +3004,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A constructor node for the volumeshader type.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1407,6 +3023,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A constructor node for the lightshader type.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1426,6 +3043,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A constructor node for the displacementshader type.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1443,6 +3061,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A constructor node for the displacementshader type.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1461,6 +3080,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Layer two BSDF's with vertical layering.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1478,6 +3098,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Layer a BSDF over a VDF describing the interior media.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1496,6 +3117,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Mix two BSDF's according to an input mix amount.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1514,6 +3136,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Mix two EDF's according to an input mix amount.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1532,6 +3155,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Mix two VDF's according to an input mix amount.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1551,6 +3175,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for additive blending of BSDF's.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1568,6 +3193,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for additive blending of EDF's.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1585,6 +3211,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for additive blending of VDF's.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1603,6 +3230,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for adjusting the contribution of a BSDF with a weight.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1620,6 +3248,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for adjusting the contribution of a BSDF with a weight.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1637,6 +3266,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for adjusting the contribution of an EDF with a weight.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1654,6 +3284,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for adjusting the contribution of an EDF with a weight.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1671,6 +3302,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for adjusting the contribution of an VDF with a weight.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1688,6 +3320,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for adjusting the contribution of an VDF with a weight.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1706,6 +3339,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Calculates anisotropic surface roughness from a scalar roughness/anisotropy parameterization.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1724,6 +3358,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Calculates anisotropic surface roughness from a dual surface roughness parameterization.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1741,6 +3376,20 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Calculates anisotropic surface roughness from a scalar glossiness/anisotropy parameterization.
+* *Nodegraph*: IMP_glossiness_anisotropy
+
+
+```mermaid
+graph LR; 
+    IMP_glossiness_anisotropy_roughness1[roughness_anisotropy] --> IMP_glossiness_anisotropy_out([out])
+    style IMP_glossiness_anisotropy_out fill:#1b1, color:#111
+    IMP_glossiness_anisotropy_anisotropyINT([anisotropy]) ==.anisotropy==> IMP_glossiness_anisotropy_roughness1[roughness_anisotropy]
+    style IMP_glossiness_anisotropy_anisotropyINT fill:#0bb, color:#111
+    IMP_glossiness_anisotropy_invert1[invert] --".roughness"--> IMP_glossiness_anisotropy_roughness1[roughness_anisotropy]
+    IMP_glossiness_anisotropy_glossinessINT([glossiness]) ==.in==> IMP_glossiness_anisotropy_invert1[invert]
+    style IMP_glossiness_anisotropy_glossinessINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1759,6 +3408,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Returns the radiant emittance of a blackbody radiator with the given temperature.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1776,6 +3426,7 @@
 * *Node Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Converts the artistic parameterization reflectivity and edge_color to  complex IOR values.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1795,6 +3446,7 @@
 * *Node Group*: material
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1813,6 +3465,7 @@
 * *Node Group*: material
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1830,6 +3483,7 @@
 * *Node Group*: shader
 * *Version*: 1.0. Is default: False
 * *Doc*: Construct a surface shader from emission and transmission values.
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1851,6 +3505,7 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1876,6 +3531,7 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1901,6 +3557,7 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1926,6 +3583,7 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1951,6 +3609,7 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -1976,6 +3635,7 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2002,6 +3662,41 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_tiledimage_float
+
+
+```mermaid
+graph LR; 
+    NG_tiledimage_float_N_img_float[image] --> NG_tiledimage_float_out([out])
+    style NG_tiledimage_float_out fill:#1b1, color:#111
+    NG_tiledimage_float_fileINT([file]) ==.file==> NG_tiledimage_float_N_img_float[image]
+    style NG_tiledimage_float_fileINT fill:#0bb, color:#111
+    NG_tiledimage_float_dfaultINT([default]) ==.default==> NG_tiledimage_float_N_img_float[image]
+    style NG_tiledimage_float_dfaultINT fill:#0bb, color:#111
+    NG_tiledimage_float_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_float_N_img_float[image]
+    style NG_tiledimage_float_filtertypeINT fill:#0bb, color:#111
+    NG_tiledimage_float_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_float_N_img_float[image]
+    style NG_tiledimage_float_framerangeINT fill:#0bb, color:#111
+    NG_tiledimage_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_float_N_img_float[image]
+    style NG_tiledimage_float_frameoffsetINT fill:#0bb, color:#111
+    NG_tiledimage_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_float_N_img_float[image]
+    style NG_tiledimage_float_frameendactionINT fill:#0bb, color:#111
+    NG_tiledimage_float_N_multtilesize_float[multiply] --".texcoord"--> NG_tiledimage_float_N_img_float[image]
+    NG_tiledimage_float_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_float_N_multtilesize_float[multiply]
+    style NG_tiledimage_float_realworldtilesizeINT fill:#0bb, color:#111
+    NG_tiledimage_float_N_divtilesize_float[divide] --".in1"--> NG_tiledimage_float_N_multtilesize_float[multiply]
+    NG_tiledimage_float_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_float_N_divtilesize_float[divide]
+    style NG_tiledimage_float_realworldimagesizeINT fill:#0bb, color:#111
+    NG_tiledimage_float_N_sub_float[subtract] --".in1"--> NG_tiledimage_float_N_divtilesize_float[divide]
+    NG_tiledimage_float_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_float_N_sub_float[subtract]
+    style NG_tiledimage_float_uvoffsetINT fill:#0bb, color:#111
+    NG_tiledimage_float_N_mult_float[multiply] --".in1"--> NG_tiledimage_float_N_sub_float[subtract]
+    NG_tiledimage_float_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_float_N_mult_float[multiply]
+    style NG_tiledimage_float_texcoordINT fill:#0bb, color:#111
+    NG_tiledimage_float_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_float_N_mult_float[multiply]
+    style NG_tiledimage_float_uvtilingINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2028,6 +3723,41 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_tiledimage_color3
+
+
+```mermaid
+graph LR; 
+    NG_tiledimage_color3_N_img_color3[image] --> NG_tiledimage_color3_out([out])
+    style NG_tiledimage_color3_out fill:#1b1, color:#111
+    NG_tiledimage_color3_fileINT([file]) ==.file==> NG_tiledimage_color3_N_img_color3[image]
+    style NG_tiledimage_color3_fileINT fill:#0bb, color:#111
+    NG_tiledimage_color3_dfaultINT([default]) ==.default==> NG_tiledimage_color3_N_img_color3[image]
+    style NG_tiledimage_color3_dfaultINT fill:#0bb, color:#111
+    NG_tiledimage_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_color3_N_img_color3[image]
+    style NG_tiledimage_color3_filtertypeINT fill:#0bb, color:#111
+    NG_tiledimage_color3_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_color3_N_img_color3[image]
+    style NG_tiledimage_color3_framerangeINT fill:#0bb, color:#111
+    NG_tiledimage_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_color3_N_img_color3[image]
+    style NG_tiledimage_color3_frameoffsetINT fill:#0bb, color:#111
+    NG_tiledimage_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_color3_N_img_color3[image]
+    style NG_tiledimage_color3_frameendactionINT fill:#0bb, color:#111
+    NG_tiledimage_color3_N_multtilesize_color3[multiply] --".texcoord"--> NG_tiledimage_color3_N_img_color3[image]
+    NG_tiledimage_color3_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_color3_N_multtilesize_color3[multiply]
+    style NG_tiledimage_color3_realworldtilesizeINT fill:#0bb, color:#111
+    NG_tiledimage_color3_N_divtilesize_color3[divide] --".in1"--> NG_tiledimage_color3_N_multtilesize_color3[multiply]
+    NG_tiledimage_color3_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_color3_N_divtilesize_color3[divide]
+    style NG_tiledimage_color3_realworldimagesizeINT fill:#0bb, color:#111
+    NG_tiledimage_color3_N_sub_color3[subtract] --".in1"--> NG_tiledimage_color3_N_divtilesize_color3[divide]
+    NG_tiledimage_color3_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_color3_N_sub_color3[subtract]
+    style NG_tiledimage_color3_uvoffsetINT fill:#0bb, color:#111
+    NG_tiledimage_color3_N_mult_color3[multiply] --".in1"--> NG_tiledimage_color3_N_sub_color3[subtract]
+    NG_tiledimage_color3_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_color3_N_mult_color3[multiply]
+    style NG_tiledimage_color3_texcoordINT fill:#0bb, color:#111
+    NG_tiledimage_color3_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_color3_N_mult_color3[multiply]
+    style NG_tiledimage_color3_uvtilingINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2054,6 +3784,41 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_tiledimage_color4
+
+
+```mermaid
+graph LR; 
+    NG_tiledimage_color4_N_img_color4[image] --> NG_tiledimage_color4_out([out])
+    style NG_tiledimage_color4_out fill:#1b1, color:#111
+    NG_tiledimage_color4_fileINT([file]) ==.file==> NG_tiledimage_color4_N_img_color4[image]
+    style NG_tiledimage_color4_fileINT fill:#0bb, color:#111
+    NG_tiledimage_color4_dfaultINT([default]) ==.default==> NG_tiledimage_color4_N_img_color4[image]
+    style NG_tiledimage_color4_dfaultINT fill:#0bb, color:#111
+    NG_tiledimage_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_color4_N_img_color4[image]
+    style NG_tiledimage_color4_filtertypeINT fill:#0bb, color:#111
+    NG_tiledimage_color4_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_color4_N_img_color4[image]
+    style NG_tiledimage_color4_framerangeINT fill:#0bb, color:#111
+    NG_tiledimage_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_color4_N_img_color4[image]
+    style NG_tiledimage_color4_frameoffsetINT fill:#0bb, color:#111
+    NG_tiledimage_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_color4_N_img_color4[image]
+    style NG_tiledimage_color4_frameendactionINT fill:#0bb, color:#111
+    NG_tiledimage_color4_N_multtilesize_color4[multiply] --".texcoord"--> NG_tiledimage_color4_N_img_color4[image]
+    NG_tiledimage_color4_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_color4_N_multtilesize_color4[multiply]
+    style NG_tiledimage_color4_realworldtilesizeINT fill:#0bb, color:#111
+    NG_tiledimage_color4_N_divtilesize_color4[divide] --".in1"--> NG_tiledimage_color4_N_multtilesize_color4[multiply]
+    NG_tiledimage_color4_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_color4_N_divtilesize_color4[divide]
+    style NG_tiledimage_color4_realworldimagesizeINT fill:#0bb, color:#111
+    NG_tiledimage_color4_N_sub_color4[subtract] --".in1"--> NG_tiledimage_color4_N_divtilesize_color4[divide]
+    NG_tiledimage_color4_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_color4_N_sub_color4[subtract]
+    style NG_tiledimage_color4_uvoffsetINT fill:#0bb, color:#111
+    NG_tiledimage_color4_N_mult_color4[multiply] --".in1"--> NG_tiledimage_color4_N_sub_color4[subtract]
+    NG_tiledimage_color4_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_color4_N_mult_color4[multiply]
+    style NG_tiledimage_color4_texcoordINT fill:#0bb, color:#111
+    NG_tiledimage_color4_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_color4_N_mult_color4[multiply]
+    style NG_tiledimage_color4_uvtilingINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2080,6 +3845,41 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_tiledimage_vector2
+
+
+```mermaid
+graph LR; 
+    NG_tiledimage_vector2_N_img_vector2[image] --> NG_tiledimage_vector2_out([out])
+    style NG_tiledimage_vector2_out fill:#1b1, color:#111
+    NG_tiledimage_vector2_fileINT([file]) ==.file==> NG_tiledimage_vector2_N_img_vector2[image]
+    style NG_tiledimage_vector2_fileINT fill:#0bb, color:#111
+    NG_tiledimage_vector2_dfaultINT([default]) ==.default==> NG_tiledimage_vector2_N_img_vector2[image]
+    style NG_tiledimage_vector2_dfaultINT fill:#0bb, color:#111
+    NG_tiledimage_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_vector2_N_img_vector2[image]
+    style NG_tiledimage_vector2_filtertypeINT fill:#0bb, color:#111
+    NG_tiledimage_vector2_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_vector2_N_img_vector2[image]
+    style NG_tiledimage_vector2_framerangeINT fill:#0bb, color:#111
+    NG_tiledimage_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_vector2_N_img_vector2[image]
+    style NG_tiledimage_vector2_frameoffsetINT fill:#0bb, color:#111
+    NG_tiledimage_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_vector2_N_img_vector2[image]
+    style NG_tiledimage_vector2_frameendactionINT fill:#0bb, color:#111
+    NG_tiledimage_vector2_N_multtilesize_vector2[multiply] --".texcoord"--> NG_tiledimage_vector2_N_img_vector2[image]
+    NG_tiledimage_vector2_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_vector2_N_multtilesize_vector2[multiply]
+    style NG_tiledimage_vector2_realworldtilesizeINT fill:#0bb, color:#111
+    NG_tiledimage_vector2_N_divtilesize_vector2[divide] --".in1"--> NG_tiledimage_vector2_N_multtilesize_vector2[multiply]
+    NG_tiledimage_vector2_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_vector2_N_divtilesize_vector2[divide]
+    style NG_tiledimage_vector2_realworldimagesizeINT fill:#0bb, color:#111
+    NG_tiledimage_vector2_N_sub_vector2[subtract] --".in1"--> NG_tiledimage_vector2_N_divtilesize_vector2[divide]
+    NG_tiledimage_vector2_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_vector2_N_sub_vector2[subtract]
+    style NG_tiledimage_vector2_uvoffsetINT fill:#0bb, color:#111
+    NG_tiledimage_vector2_N_mult_vector2[multiply] --".in1"--> NG_tiledimage_vector2_N_sub_vector2[subtract]
+    NG_tiledimage_vector2_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_vector2_N_mult_vector2[multiply]
+    style NG_tiledimage_vector2_texcoordINT fill:#0bb, color:#111
+    NG_tiledimage_vector2_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_vector2_N_mult_vector2[multiply]
+    style NG_tiledimage_vector2_uvtilingINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2106,6 +3906,41 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_tiledimage_vector3
+
+
+```mermaid
+graph LR; 
+    NG_tiledimage_vector3_N_img_vector3[image] --> NG_tiledimage_vector3_out([out])
+    style NG_tiledimage_vector3_out fill:#1b1, color:#111
+    NG_tiledimage_vector3_fileINT([file]) ==.file==> NG_tiledimage_vector3_N_img_vector3[image]
+    style NG_tiledimage_vector3_fileINT fill:#0bb, color:#111
+    NG_tiledimage_vector3_dfaultINT([default]) ==.default==> NG_tiledimage_vector3_N_img_vector3[image]
+    style NG_tiledimage_vector3_dfaultINT fill:#0bb, color:#111
+    NG_tiledimage_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_vector3_N_img_vector3[image]
+    style NG_tiledimage_vector3_filtertypeINT fill:#0bb, color:#111
+    NG_tiledimage_vector3_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_vector3_N_img_vector3[image]
+    style NG_tiledimage_vector3_framerangeINT fill:#0bb, color:#111
+    NG_tiledimage_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_vector3_N_img_vector3[image]
+    style NG_tiledimage_vector3_frameoffsetINT fill:#0bb, color:#111
+    NG_tiledimage_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_vector3_N_img_vector3[image]
+    style NG_tiledimage_vector3_frameendactionINT fill:#0bb, color:#111
+    NG_tiledimage_vector3_N_multtilesize_vector3[multiply] --".texcoord"--> NG_tiledimage_vector3_N_img_vector3[image]
+    NG_tiledimage_vector3_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_vector3_N_multtilesize_vector3[multiply]
+    style NG_tiledimage_vector3_realworldtilesizeINT fill:#0bb, color:#111
+    NG_tiledimage_vector3_N_divtilesize_vector3[divide] --".in1"--> NG_tiledimage_vector3_N_multtilesize_vector3[multiply]
+    NG_tiledimage_vector3_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_vector3_N_divtilesize_vector3[divide]
+    style NG_tiledimage_vector3_realworldimagesizeINT fill:#0bb, color:#111
+    NG_tiledimage_vector3_N_sub_vector3[subtract] --".in1"--> NG_tiledimage_vector3_N_divtilesize_vector3[divide]
+    NG_tiledimage_vector3_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_vector3_N_sub_vector3[subtract]
+    style NG_tiledimage_vector3_uvoffsetINT fill:#0bb, color:#111
+    NG_tiledimage_vector3_N_mult_vector3[multiply] --".in1"--> NG_tiledimage_vector3_N_sub_vector3[subtract]
+    NG_tiledimage_vector3_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_vector3_N_mult_vector3[multiply]
+    style NG_tiledimage_vector3_texcoordINT fill:#0bb, color:#111
+    NG_tiledimage_vector3_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_vector3_N_mult_vector3[multiply]
+    style NG_tiledimage_vector3_uvtilingINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2132,6 +3967,41 @@
 * *Node Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_tiledimage_vector4
+
+
+```mermaid
+graph LR; 
+    NG_tiledimage_vector4_N_img_vector4[image] --> NG_tiledimage_vector4_out([out])
+    style NG_tiledimage_vector4_out fill:#1b1, color:#111
+    NG_tiledimage_vector4_fileINT([file]) ==.file==> NG_tiledimage_vector4_N_img_vector4[image]
+    style NG_tiledimage_vector4_fileINT fill:#0bb, color:#111
+    NG_tiledimage_vector4_dfaultINT([default]) ==.default==> NG_tiledimage_vector4_N_img_vector4[image]
+    style NG_tiledimage_vector4_dfaultINT fill:#0bb, color:#111
+    NG_tiledimage_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_vector4_N_img_vector4[image]
+    style NG_tiledimage_vector4_filtertypeINT fill:#0bb, color:#111
+    NG_tiledimage_vector4_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_vector4_N_img_vector4[image]
+    style NG_tiledimage_vector4_framerangeINT fill:#0bb, color:#111
+    NG_tiledimage_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_vector4_N_img_vector4[image]
+    style NG_tiledimage_vector4_frameoffsetINT fill:#0bb, color:#111
+    NG_tiledimage_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_vector4_N_img_vector4[image]
+    style NG_tiledimage_vector4_frameendactionINT fill:#0bb, color:#111
+    NG_tiledimage_vector4_N_multtilesize_vector4[multiply] --".texcoord"--> NG_tiledimage_vector4_N_img_vector4[image]
+    NG_tiledimage_vector4_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_vector4_N_multtilesize_vector4[multiply]
+    style NG_tiledimage_vector4_realworldtilesizeINT fill:#0bb, color:#111
+    NG_tiledimage_vector4_N_divtilesize_vector4[divide] --".in1"--> NG_tiledimage_vector4_N_multtilesize_vector4[multiply]
+    NG_tiledimage_vector4_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_vector4_N_divtilesize_vector4[divide]
+    style NG_tiledimage_vector4_realworldimagesizeINT fill:#0bb, color:#111
+    NG_tiledimage_vector4_N_sub_vector4[subtract] --".in1"--> NG_tiledimage_vector4_N_divtilesize_vector4[divide]
+    NG_tiledimage_vector4_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_vector4_N_sub_vector4[subtract]
+    style NG_tiledimage_vector4_uvoffsetINT fill:#0bb, color:#111
+    NG_tiledimage_vector4_N_mult_vector4[multiply] --".in1"--> NG_tiledimage_vector4_N_sub_vector4[subtract]
+    NG_tiledimage_vector4_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_vector4_N_mult_vector4[multiply]
+    style NG_tiledimage_vector4_texcoordINT fill:#0bb, color:#111
+    NG_tiledimage_vector4_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_vector4_N_mult_vector4[multiply]
+    style NG_tiledimage_vector4_uvtilingINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2159,6 +4029,90 @@
 * *Node Group*: texture3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_triplanarprojection_float
+
+
+```mermaid
+graph LR; 
+    NG_triplanarprojection_float_N_add2_float[add] --> NG_triplanarprojection_float_out([out])
+    style NG_triplanarprojection_float_out fill:#1b1, color:#111
+    NG_triplanarprojection_float_N_add1_float[add] --".in1"--> NG_triplanarprojection_float_N_add2_float[add]
+    NG_triplanarprojection_float_N_nX_float[multiply] --".in1"--> NG_triplanarprojection_float_N_add1_float[add]
+    NG_triplanarprojection_float_N_imgX_float[image] --".in1"--> NG_triplanarprojection_float_N_nX_float[multiply]
+    NG_triplanarprojection_float_filexINT([filex]) ==.file==> NG_triplanarprojection_float_N_imgX_float[image]
+    style NG_triplanarprojection_float_filexINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_float_N_imgX_float[image]
+    style NG_triplanarprojection_float_layerxINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_dfaultINT([default]) ==.default==> NG_triplanarprojection_float_N_imgX_float[image]
+    style NG_triplanarprojection_float_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_float_N_imgX_float[image]
+    style NG_triplanarprojection_float_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_float_N_imgX_float[image]
+    style NG_triplanarprojection_float_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_float_N_imgX_float[image]
+    style NG_triplanarprojection_float_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_float_N_imgX_float[image]
+    style NG_triplanarprojection_float_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_N_vecYZ_float[combine2] --".texcoord"--> NG_triplanarprojection_float_N_imgX_float[image]
+    NG_triplanarprojection_float_N_extY_float[extract] --".in1"--> NG_triplanarprojection_float_N_vecYZ_float[combine2]
+    NG_triplanarprojection_float_positionINT([position]) ==.in==> NG_triplanarprojection_float_N_extY_float[extract]
+    style NG_triplanarprojection_float_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_N_extZ_float[extract] --".in2"--> NG_triplanarprojection_float_N_vecYZ_float[combine2]
+    NG_triplanarprojection_float_positionINT([position]) ==.in==> NG_triplanarprojection_float_N_extZ_float[extract]
+    style NG_triplanarprojection_float_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_N_blendX_float[absval] --".in2"--> NG_triplanarprojection_float_N_nX_float[multiply]
+    NG_triplanarprojection_float_N_dotX_float[dotproduct] --".in"--> NG_triplanarprojection_float_N_blendX_float[absval]
+    NG_triplanarprojection_float_N_norm_float[normalize] --".in1"--> NG_triplanarprojection_float_N_dotX_float[dotproduct]
+    NG_triplanarprojection_float_normalINT([normal]) ==.in==> NG_triplanarprojection_float_N_norm_float[normalize]
+    style NG_triplanarprojection_float_normalINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_N_nY_float[multiply] --".in2"--> NG_triplanarprojection_float_N_add1_float[add]
+    NG_triplanarprojection_float_N_imgY_float[image] --".in1"--> NG_triplanarprojection_float_N_nY_float[multiply]
+    NG_triplanarprojection_float_fileyINT([filey]) ==.file==> NG_triplanarprojection_float_N_imgY_float[image]
+    style NG_triplanarprojection_float_fileyINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_layeryINT([layery]) ==.layer==> NG_triplanarprojection_float_N_imgY_float[image]
+    style NG_triplanarprojection_float_layeryINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_dfaultINT([default]) ==.default==> NG_triplanarprojection_float_N_imgY_float[image]
+    style NG_triplanarprojection_float_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_float_N_imgY_float[image]
+    style NG_triplanarprojection_float_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_float_N_imgY_float[image]
+    style NG_triplanarprojection_float_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_float_N_imgY_float[image]
+    style NG_triplanarprojection_float_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_float_N_imgY_float[image]
+    style NG_triplanarprojection_float_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_N_vecXZ_float[combine2] --".texcoord"--> NG_triplanarprojection_float_N_imgY_float[image]
+    NG_triplanarprojection_float_N_extX_float[extract] --".in1"--> NG_triplanarprojection_float_N_vecXZ_float[combine2]
+    NG_triplanarprojection_float_positionINT([position]) ==.in==> NG_triplanarprojection_float_N_extX_float[extract]
+    style NG_triplanarprojection_float_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_N_extZ_float[extract] --".in2"--> NG_triplanarprojection_float_N_vecXZ_float[combine2]
+    NG_triplanarprojection_float_N_blendY_float[absval] --".in2"--> NG_triplanarprojection_float_N_nY_float[multiply]
+    NG_triplanarprojection_float_N_dotY_float[dotproduct] --".in"--> NG_triplanarprojection_float_N_blendY_float[absval]
+    NG_triplanarprojection_float_N_norm_float[normalize] --".in1"--> NG_triplanarprojection_float_N_dotY_float[dotproduct]
+    NG_triplanarprojection_float_N_nZ_float[multiply] --".in2"--> NG_triplanarprojection_float_N_add2_float[add]
+    NG_triplanarprojection_float_N_imgZ_float[image] --".in1"--> NG_triplanarprojection_float_N_nZ_float[multiply]
+    NG_triplanarprojection_float_filezINT([filez]) ==.file==> NG_triplanarprojection_float_N_imgZ_float[image]
+    style NG_triplanarprojection_float_filezINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_float_N_imgZ_float[image]
+    style NG_triplanarprojection_float_layerzINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_dfaultINT([default]) ==.default==> NG_triplanarprojection_float_N_imgZ_float[image]
+    style NG_triplanarprojection_float_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_float_N_imgZ_float[image]
+    style NG_triplanarprojection_float_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_float_N_imgZ_float[image]
+    style NG_triplanarprojection_float_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_float_N_imgZ_float[image]
+    style NG_triplanarprojection_float_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_float_N_imgZ_float[image]
+    style NG_triplanarprojection_float_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_N_vecXY_float[combine2] --".texcoord"--> NG_triplanarprojection_float_N_imgZ_float[image]
+    NG_triplanarprojection_float_N_extX_float[extract] --".in1"--> NG_triplanarprojection_float_N_vecXY_float[combine2]
+    NG_triplanarprojection_float_N_extY_float[extract] --".in2"--> NG_triplanarprojection_float_N_vecXY_float[combine2]
+    NG_triplanarprojection_float_N_blendZ_float[absval] --".in2"--> NG_triplanarprojection_float_N_nZ_float[multiply]
+    NG_triplanarprojection_float_N_dotZ_float[dotproduct] --".in"--> NG_triplanarprojection_float_N_blendZ_float[absval]
+    NG_triplanarprojection_float_N_norm_float[normalize] --".in1"--> NG_triplanarprojection_float_N_dotZ_float[dotproduct]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2187,6 +4141,90 @@
 * *Node Group*: texture3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_triplanarprojection_color3
+
+
+```mermaid
+graph LR; 
+    NG_triplanarprojection_color3_N_add2_color3[add] --> NG_triplanarprojection_color3_out([out])
+    style NG_triplanarprojection_color3_out fill:#1b1, color:#111
+    NG_triplanarprojection_color3_N_add1_color3[add] --".in1"--> NG_triplanarprojection_color3_N_add2_color3[add]
+    NG_triplanarprojection_color3_N_nX_color3[multiply] --".in1"--> NG_triplanarprojection_color3_N_add1_color3[add]
+    NG_triplanarprojection_color3_N_imgX_color3[image] --".in1"--> NG_triplanarprojection_color3_N_nX_color3[multiply]
+    NG_triplanarprojection_color3_filexINT([filex]) ==.file==> NG_triplanarprojection_color3_N_imgX_color3[image]
+    style NG_triplanarprojection_color3_filexINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_color3_N_imgX_color3[image]
+    style NG_triplanarprojection_color3_layerxINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_dfaultINT([default]) ==.default==> NG_triplanarprojection_color3_N_imgX_color3[image]
+    style NG_triplanarprojection_color3_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color3_N_imgX_color3[image]
+    style NG_triplanarprojection_color3_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color3_N_imgX_color3[image]
+    style NG_triplanarprojection_color3_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color3_N_imgX_color3[image]
+    style NG_triplanarprojection_color3_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color3_N_imgX_color3[image]
+    style NG_triplanarprojection_color3_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_N_vecYZ_color3[combine2] --".texcoord"--> NG_triplanarprojection_color3_N_imgX_color3[image]
+    NG_triplanarprojection_color3_N_extY_color3[extract] --".in1"--> NG_triplanarprojection_color3_N_vecYZ_color3[combine2]
+    NG_triplanarprojection_color3_positionINT([position]) ==.in==> NG_triplanarprojection_color3_N_extY_color3[extract]
+    style NG_triplanarprojection_color3_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_N_extZ_color3[extract] --".in2"--> NG_triplanarprojection_color3_N_vecYZ_color3[combine2]
+    NG_triplanarprojection_color3_positionINT([position]) ==.in==> NG_triplanarprojection_color3_N_extZ_color3[extract]
+    style NG_triplanarprojection_color3_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_N_blendX_color3[absval] --".in2"--> NG_triplanarprojection_color3_N_nX_color3[multiply]
+    NG_triplanarprojection_color3_N_dotX_color3[dotproduct] --".in"--> NG_triplanarprojection_color3_N_blendX_color3[absval]
+    NG_triplanarprojection_color3_N_norm_color3[normalize] --".in1"--> NG_triplanarprojection_color3_N_dotX_color3[dotproduct]
+    NG_triplanarprojection_color3_normalINT([normal]) ==.in==> NG_triplanarprojection_color3_N_norm_color3[normalize]
+    style NG_triplanarprojection_color3_normalINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_N_nY_color3[multiply] --".in2"--> NG_triplanarprojection_color3_N_add1_color3[add]
+    NG_triplanarprojection_color3_N_imgY_color3[image] --".in1"--> NG_triplanarprojection_color3_N_nY_color3[multiply]
+    NG_triplanarprojection_color3_fileyINT([filey]) ==.file==> NG_triplanarprojection_color3_N_imgY_color3[image]
+    style NG_triplanarprojection_color3_fileyINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_layeryINT([layery]) ==.layer==> NG_triplanarprojection_color3_N_imgY_color3[image]
+    style NG_triplanarprojection_color3_layeryINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_dfaultINT([default]) ==.default==> NG_triplanarprojection_color3_N_imgY_color3[image]
+    style NG_triplanarprojection_color3_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color3_N_imgY_color3[image]
+    style NG_triplanarprojection_color3_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color3_N_imgY_color3[image]
+    style NG_triplanarprojection_color3_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color3_N_imgY_color3[image]
+    style NG_triplanarprojection_color3_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color3_N_imgY_color3[image]
+    style NG_triplanarprojection_color3_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_N_vecXZ_color3[combine2] --".texcoord"--> NG_triplanarprojection_color3_N_imgY_color3[image]
+    NG_triplanarprojection_color3_N_extX_color3[extract] --".in1"--> NG_triplanarprojection_color3_N_vecXZ_color3[combine2]
+    NG_triplanarprojection_color3_positionINT([position]) ==.in==> NG_triplanarprojection_color3_N_extX_color3[extract]
+    style NG_triplanarprojection_color3_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_N_extZ_color3[extract] --".in2"--> NG_triplanarprojection_color3_N_vecXZ_color3[combine2]
+    NG_triplanarprojection_color3_N_blendY_color3[absval] --".in2"--> NG_triplanarprojection_color3_N_nY_color3[multiply]
+    NG_triplanarprojection_color3_N_dotY_color3[dotproduct] --".in"--> NG_triplanarprojection_color3_N_blendY_color3[absval]
+    NG_triplanarprojection_color3_N_norm_color3[normalize] --".in1"--> NG_triplanarprojection_color3_N_dotY_color3[dotproduct]
+    NG_triplanarprojection_color3_N_nZ_color3[multiply] --".in2"--> NG_triplanarprojection_color3_N_add2_color3[add]
+    NG_triplanarprojection_color3_N_imgZ_color3[image] --".in1"--> NG_triplanarprojection_color3_N_nZ_color3[multiply]
+    NG_triplanarprojection_color3_filezINT([filez]) ==.file==> NG_triplanarprojection_color3_N_imgZ_color3[image]
+    style NG_triplanarprojection_color3_filezINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_color3_N_imgZ_color3[image]
+    style NG_triplanarprojection_color3_layerzINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_dfaultINT([default]) ==.default==> NG_triplanarprojection_color3_N_imgZ_color3[image]
+    style NG_triplanarprojection_color3_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color3_N_imgZ_color3[image]
+    style NG_triplanarprojection_color3_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color3_N_imgZ_color3[image]
+    style NG_triplanarprojection_color3_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color3_N_imgZ_color3[image]
+    style NG_triplanarprojection_color3_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color3_N_imgZ_color3[image]
+    style NG_triplanarprojection_color3_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_N_vecXY_color3[combine2] --".texcoord"--> NG_triplanarprojection_color3_N_imgZ_color3[image]
+    NG_triplanarprojection_color3_N_extX_color3[extract] --".in1"--> NG_triplanarprojection_color3_N_vecXY_color3[combine2]
+    NG_triplanarprojection_color3_N_extY_color3[extract] --".in2"--> NG_triplanarprojection_color3_N_vecXY_color3[combine2]
+    NG_triplanarprojection_color3_N_blendZ_color3[absval] --".in2"--> NG_triplanarprojection_color3_N_nZ_color3[multiply]
+    NG_triplanarprojection_color3_N_dotZ_color3[dotproduct] --".in"--> NG_triplanarprojection_color3_N_blendZ_color3[absval]
+    NG_triplanarprojection_color3_N_norm_color3[normalize] --".in1"--> NG_triplanarprojection_color3_N_dotZ_color3[dotproduct]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2215,6 +4253,90 @@
 * *Node Group*: texture3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_triplanarprojection_color4
+
+
+```mermaid
+graph LR; 
+    NG_triplanarprojection_color4_N_add2_color4[add] --> NG_triplanarprojection_color4_out([out])
+    style NG_triplanarprojection_color4_out fill:#1b1, color:#111
+    NG_triplanarprojection_color4_N_add1_color4[add] --".in1"--> NG_triplanarprojection_color4_N_add2_color4[add]
+    NG_triplanarprojection_color4_N_nX_color4[multiply] --".in1"--> NG_triplanarprojection_color4_N_add1_color4[add]
+    NG_triplanarprojection_color4_N_imgX_color4[image] --".in1"--> NG_triplanarprojection_color4_N_nX_color4[multiply]
+    NG_triplanarprojection_color4_filexINT([filex]) ==.file==> NG_triplanarprojection_color4_N_imgX_color4[image]
+    style NG_triplanarprojection_color4_filexINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_color4_N_imgX_color4[image]
+    style NG_triplanarprojection_color4_layerxINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_dfaultINT([default]) ==.default==> NG_triplanarprojection_color4_N_imgX_color4[image]
+    style NG_triplanarprojection_color4_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color4_N_imgX_color4[image]
+    style NG_triplanarprojection_color4_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color4_N_imgX_color4[image]
+    style NG_triplanarprojection_color4_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color4_N_imgX_color4[image]
+    style NG_triplanarprojection_color4_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color4_N_imgX_color4[image]
+    style NG_triplanarprojection_color4_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_N_vecYZ_color4[combine2] --".texcoord"--> NG_triplanarprojection_color4_N_imgX_color4[image]
+    NG_triplanarprojection_color4_N_extY_color4[extract] --".in1"--> NG_triplanarprojection_color4_N_vecYZ_color4[combine2]
+    NG_triplanarprojection_color4_positionINT([position]) ==.in==> NG_triplanarprojection_color4_N_extY_color4[extract]
+    style NG_triplanarprojection_color4_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_N_extZ_color4[extract] --".in2"--> NG_triplanarprojection_color4_N_vecYZ_color4[combine2]
+    NG_triplanarprojection_color4_positionINT([position]) ==.in==> NG_triplanarprojection_color4_N_extZ_color4[extract]
+    style NG_triplanarprojection_color4_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_N_blendX_color4[absval] --".in2"--> NG_triplanarprojection_color4_N_nX_color4[multiply]
+    NG_triplanarprojection_color4_N_dotX_color4[dotproduct] --".in"--> NG_triplanarprojection_color4_N_blendX_color4[absval]
+    NG_triplanarprojection_color4_N_norm_color4[normalize] --".in1"--> NG_triplanarprojection_color4_N_dotX_color4[dotproduct]
+    NG_triplanarprojection_color4_normalINT([normal]) ==.in==> NG_triplanarprojection_color4_N_norm_color4[normalize]
+    style NG_triplanarprojection_color4_normalINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_N_nY_color4[multiply] --".in2"--> NG_triplanarprojection_color4_N_add1_color4[add]
+    NG_triplanarprojection_color4_N_imgY_color4[image] --".in1"--> NG_triplanarprojection_color4_N_nY_color4[multiply]
+    NG_triplanarprojection_color4_fileyINT([filey]) ==.file==> NG_triplanarprojection_color4_N_imgY_color4[image]
+    style NG_triplanarprojection_color4_fileyINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_layeryINT([layery]) ==.layer==> NG_triplanarprojection_color4_N_imgY_color4[image]
+    style NG_triplanarprojection_color4_layeryINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_dfaultINT([default]) ==.default==> NG_triplanarprojection_color4_N_imgY_color4[image]
+    style NG_triplanarprojection_color4_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color4_N_imgY_color4[image]
+    style NG_triplanarprojection_color4_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color4_N_imgY_color4[image]
+    style NG_triplanarprojection_color4_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color4_N_imgY_color4[image]
+    style NG_triplanarprojection_color4_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color4_N_imgY_color4[image]
+    style NG_triplanarprojection_color4_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_N_vecXZ_color4[combine2] --".texcoord"--> NG_triplanarprojection_color4_N_imgY_color4[image]
+    NG_triplanarprojection_color4_N_extX_color4[extract] --".in1"--> NG_triplanarprojection_color4_N_vecXZ_color4[combine2]
+    NG_triplanarprojection_color4_positionINT([position]) ==.in==> NG_triplanarprojection_color4_N_extX_color4[extract]
+    style NG_triplanarprojection_color4_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_N_extZ_color4[extract] --".in2"--> NG_triplanarprojection_color4_N_vecXZ_color4[combine2]
+    NG_triplanarprojection_color4_N_blendY_color4[absval] --".in2"--> NG_triplanarprojection_color4_N_nY_color4[multiply]
+    NG_triplanarprojection_color4_N_dotY_color4[dotproduct] --".in"--> NG_triplanarprojection_color4_N_blendY_color4[absval]
+    NG_triplanarprojection_color4_N_norm_color4[normalize] --".in1"--> NG_triplanarprojection_color4_N_dotY_color4[dotproduct]
+    NG_triplanarprojection_color4_N_nZ_color4[multiply] --".in2"--> NG_triplanarprojection_color4_N_add2_color4[add]
+    NG_triplanarprojection_color4_N_imgZ_color4[image] --".in1"--> NG_triplanarprojection_color4_N_nZ_color4[multiply]
+    NG_triplanarprojection_color4_filezINT([filez]) ==.file==> NG_triplanarprojection_color4_N_imgZ_color4[image]
+    style NG_triplanarprojection_color4_filezINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_color4_N_imgZ_color4[image]
+    style NG_triplanarprojection_color4_layerzINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_dfaultINT([default]) ==.default==> NG_triplanarprojection_color4_N_imgZ_color4[image]
+    style NG_triplanarprojection_color4_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color4_N_imgZ_color4[image]
+    style NG_triplanarprojection_color4_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color4_N_imgZ_color4[image]
+    style NG_triplanarprojection_color4_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color4_N_imgZ_color4[image]
+    style NG_triplanarprojection_color4_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color4_N_imgZ_color4[image]
+    style NG_triplanarprojection_color4_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_N_vecXY_color4[combine2] --".texcoord"--> NG_triplanarprojection_color4_N_imgZ_color4[image]
+    NG_triplanarprojection_color4_N_extX_color4[extract] --".in1"--> NG_triplanarprojection_color4_N_vecXY_color4[combine2]
+    NG_triplanarprojection_color4_N_extY_color4[extract] --".in2"--> NG_triplanarprojection_color4_N_vecXY_color4[combine2]
+    NG_triplanarprojection_color4_N_blendZ_color4[absval] --".in2"--> NG_triplanarprojection_color4_N_nZ_color4[multiply]
+    NG_triplanarprojection_color4_N_dotZ_color4[dotproduct] --".in"--> NG_triplanarprojection_color4_N_blendZ_color4[absval]
+    NG_triplanarprojection_color4_N_norm_color4[normalize] --".in1"--> NG_triplanarprojection_color4_N_dotZ_color4[dotproduct]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2243,6 +4365,90 @@
 * *Node Group*: texture3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_triplanarprojection_vector2
+
+
+```mermaid
+graph LR; 
+    NG_triplanarprojection_vector2_N_add2_vector2[add] --> NG_triplanarprojection_vector2_out([out])
+    style NG_triplanarprojection_vector2_out fill:#1b1, color:#111
+    NG_triplanarprojection_vector2_N_add1_vector2[add] --".in1"--> NG_triplanarprojection_vector2_N_add2_vector2[add]
+    NG_triplanarprojection_vector2_N_nX_vector2[multiply] --".in1"--> NG_triplanarprojection_vector2_N_add1_vector2[add]
+    NG_triplanarprojection_vector2_N_imgX_vector2[image] --".in1"--> NG_triplanarprojection_vector2_N_nX_vector2[multiply]
+    NG_triplanarprojection_vector2_filexINT([filex]) ==.file==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
+    style NG_triplanarprojection_vector2_filexINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
+    style NG_triplanarprojection_vector2_layerxINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
+    style NG_triplanarprojection_vector2_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
+    style NG_triplanarprojection_vector2_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
+    style NG_triplanarprojection_vector2_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
+    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
+    style NG_triplanarprojection_vector2_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_N_vecYZ_vector2[combine2] --".texcoord"--> NG_triplanarprojection_vector2_N_imgX_vector2[image]
+    NG_triplanarprojection_vector2_N_extY_vector2[extract] --".in1"--> NG_triplanarprojection_vector2_N_vecYZ_vector2[combine2]
+    NG_triplanarprojection_vector2_positionINT([position]) ==.in==> NG_triplanarprojection_vector2_N_extY_vector2[extract]
+    style NG_triplanarprojection_vector2_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_N_extZ_vector2[extract] --".in2"--> NG_triplanarprojection_vector2_N_vecYZ_vector2[combine2]
+    NG_triplanarprojection_vector2_positionINT([position]) ==.in==> NG_triplanarprojection_vector2_N_extZ_vector2[extract]
+    style NG_triplanarprojection_vector2_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_N_blendX_vector2[absval] --".in2"--> NG_triplanarprojection_vector2_N_nX_vector2[multiply]
+    NG_triplanarprojection_vector2_N_dotX_vector2[dotproduct] --".in"--> NG_triplanarprojection_vector2_N_blendX_vector2[absval]
+    NG_triplanarprojection_vector2_N_norm_vector2[normalize] --".in1"--> NG_triplanarprojection_vector2_N_dotX_vector2[dotproduct]
+    NG_triplanarprojection_vector2_normalINT([normal]) ==.in==> NG_triplanarprojection_vector2_N_norm_vector2[normalize]
+    style NG_triplanarprojection_vector2_normalINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_N_nY_vector2[multiply] --".in2"--> NG_triplanarprojection_vector2_N_add1_vector2[add]
+    NG_triplanarprojection_vector2_N_imgY_vector2[image] --".in1"--> NG_triplanarprojection_vector2_N_nY_vector2[multiply]
+    NG_triplanarprojection_vector2_fileyINT([filey]) ==.file==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
+    style NG_triplanarprojection_vector2_fileyINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_layeryINT([layery]) ==.layer==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
+    style NG_triplanarprojection_vector2_layeryINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
+    style NG_triplanarprojection_vector2_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
+    style NG_triplanarprojection_vector2_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
+    style NG_triplanarprojection_vector2_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
+    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
+    style NG_triplanarprojection_vector2_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_N_vecXZ_vector2[combine2] --".texcoord"--> NG_triplanarprojection_vector2_N_imgY_vector2[image]
+    NG_triplanarprojection_vector2_N_extX_vector2[extract] --".in1"--> NG_triplanarprojection_vector2_N_vecXZ_vector2[combine2]
+    NG_triplanarprojection_vector2_positionINT([position]) ==.in==> NG_triplanarprojection_vector2_N_extX_vector2[extract]
+    style NG_triplanarprojection_vector2_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_N_extZ_vector2[extract] --".in2"--> NG_triplanarprojection_vector2_N_vecXZ_vector2[combine2]
+    NG_triplanarprojection_vector2_N_blendY_vector2[absval] --".in2"--> NG_triplanarprojection_vector2_N_nY_vector2[multiply]
+    NG_triplanarprojection_vector2_N_dotY_vector2[dotproduct] --".in"--> NG_triplanarprojection_vector2_N_blendY_vector2[absval]
+    NG_triplanarprojection_vector2_N_norm_vector2[normalize] --".in1"--> NG_triplanarprojection_vector2_N_dotY_vector2[dotproduct]
+    NG_triplanarprojection_vector2_N_nZ_vector2[multiply] --".in2"--> NG_triplanarprojection_vector2_N_add2_vector2[add]
+    NG_triplanarprojection_vector2_N_imgZ_vector2[image] --".in1"--> NG_triplanarprojection_vector2_N_nZ_vector2[multiply]
+    NG_triplanarprojection_vector2_filezINT([filez]) ==.file==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
+    style NG_triplanarprojection_vector2_filezINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
+    style NG_triplanarprojection_vector2_layerzINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
+    style NG_triplanarprojection_vector2_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
+    style NG_triplanarprojection_vector2_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
+    style NG_triplanarprojection_vector2_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
+    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
+    style NG_triplanarprojection_vector2_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_N_vecXY_vector2[combine2] --".texcoord"--> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
+    NG_triplanarprojection_vector2_N_extX_vector2[extract] --".in1"--> NG_triplanarprojection_vector2_N_vecXY_vector2[combine2]
+    NG_triplanarprojection_vector2_N_extY_vector2[extract] --".in2"--> NG_triplanarprojection_vector2_N_vecXY_vector2[combine2]
+    NG_triplanarprojection_vector2_N_blendZ_vector2[absval] --".in2"--> NG_triplanarprojection_vector2_N_nZ_vector2[multiply]
+    NG_triplanarprojection_vector2_N_dotZ_vector2[dotproduct] --".in"--> NG_triplanarprojection_vector2_N_blendZ_vector2[absval]
+    NG_triplanarprojection_vector2_N_norm_vector2[normalize] --".in1"--> NG_triplanarprojection_vector2_N_dotZ_vector2[dotproduct]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2271,6 +4477,90 @@
 * *Node Group*: texture3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_triplanarprojection_vector3
+
+
+```mermaid
+graph LR; 
+    NG_triplanarprojection_vector3_N_add2_vector3[add] --> NG_triplanarprojection_vector3_out([out])
+    style NG_triplanarprojection_vector3_out fill:#1b1, color:#111
+    NG_triplanarprojection_vector3_N_add1_vector3[add] --".in1"--> NG_triplanarprojection_vector3_N_add2_vector3[add]
+    NG_triplanarprojection_vector3_N_nX_vector3[multiply] --".in1"--> NG_triplanarprojection_vector3_N_add1_vector3[add]
+    NG_triplanarprojection_vector3_N_imgX_vector3[image] --".in1"--> NG_triplanarprojection_vector3_N_nX_vector3[multiply]
+    NG_triplanarprojection_vector3_filexINT([filex]) ==.file==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
+    style NG_triplanarprojection_vector3_filexINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
+    style NG_triplanarprojection_vector3_layerxINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
+    style NG_triplanarprojection_vector3_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
+    style NG_triplanarprojection_vector3_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
+    style NG_triplanarprojection_vector3_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
+    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
+    style NG_triplanarprojection_vector3_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_N_vecYZ_vector3[combine2] --".texcoord"--> NG_triplanarprojection_vector3_N_imgX_vector3[image]
+    NG_triplanarprojection_vector3_N_extY_vector3[extract] --".in1"--> NG_triplanarprojection_vector3_N_vecYZ_vector3[combine2]
+    NG_triplanarprojection_vector3_positionINT([position]) ==.in==> NG_triplanarprojection_vector3_N_extY_vector3[extract]
+    style NG_triplanarprojection_vector3_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_N_extZ_vector3[extract] --".in2"--> NG_triplanarprojection_vector3_N_vecYZ_vector3[combine2]
+    NG_triplanarprojection_vector3_positionINT([position]) ==.in==> NG_triplanarprojection_vector3_N_extZ_vector3[extract]
+    style NG_triplanarprojection_vector3_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_N_blendX_vector3[absval] --".in2"--> NG_triplanarprojection_vector3_N_nX_vector3[multiply]
+    NG_triplanarprojection_vector3_N_dotX_vector3[dotproduct] --".in"--> NG_triplanarprojection_vector3_N_blendX_vector3[absval]
+    NG_triplanarprojection_vector3_N_norm_vector3[normalize] --".in1"--> NG_triplanarprojection_vector3_N_dotX_vector3[dotproduct]
+    NG_triplanarprojection_vector3_normalINT([normal]) ==.in==> NG_triplanarprojection_vector3_N_norm_vector3[normalize]
+    style NG_triplanarprojection_vector3_normalINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_N_nY_vector3[multiply] --".in2"--> NG_triplanarprojection_vector3_N_add1_vector3[add]
+    NG_triplanarprojection_vector3_N_imgY_vector3[image] --".in1"--> NG_triplanarprojection_vector3_N_nY_vector3[multiply]
+    NG_triplanarprojection_vector3_fileyINT([filey]) ==.file==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
+    style NG_triplanarprojection_vector3_fileyINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_layeryINT([layery]) ==.layer==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
+    style NG_triplanarprojection_vector3_layeryINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
+    style NG_triplanarprojection_vector3_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
+    style NG_triplanarprojection_vector3_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
+    style NG_triplanarprojection_vector3_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
+    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
+    style NG_triplanarprojection_vector3_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_N_vecXZ_vector3[combine2] --".texcoord"--> NG_triplanarprojection_vector3_N_imgY_vector3[image]
+    NG_triplanarprojection_vector3_N_extX_vector3[extract] --".in1"--> NG_triplanarprojection_vector3_N_vecXZ_vector3[combine2]
+    NG_triplanarprojection_vector3_positionINT([position]) ==.in==> NG_triplanarprojection_vector3_N_extX_vector3[extract]
+    style NG_triplanarprojection_vector3_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_N_extZ_vector3[extract] --".in2"--> NG_triplanarprojection_vector3_N_vecXZ_vector3[combine2]
+    NG_triplanarprojection_vector3_N_blendY_vector3[absval] --".in2"--> NG_triplanarprojection_vector3_N_nY_vector3[multiply]
+    NG_triplanarprojection_vector3_N_dotY_vector3[dotproduct] --".in"--> NG_triplanarprojection_vector3_N_blendY_vector3[absval]
+    NG_triplanarprojection_vector3_N_norm_vector3[normalize] --".in1"--> NG_triplanarprojection_vector3_N_dotY_vector3[dotproduct]
+    NG_triplanarprojection_vector3_N_nZ_vector3[multiply] --".in2"--> NG_triplanarprojection_vector3_N_add2_vector3[add]
+    NG_triplanarprojection_vector3_N_imgZ_vector3[image] --".in1"--> NG_triplanarprojection_vector3_N_nZ_vector3[multiply]
+    NG_triplanarprojection_vector3_filezINT([filez]) ==.file==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
+    style NG_triplanarprojection_vector3_filezINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
+    style NG_triplanarprojection_vector3_layerzINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
+    style NG_triplanarprojection_vector3_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
+    style NG_triplanarprojection_vector3_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
+    style NG_triplanarprojection_vector3_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
+    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
+    style NG_triplanarprojection_vector3_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_N_vecXY_vector3[combine2] --".texcoord"--> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
+    NG_triplanarprojection_vector3_N_extX_vector3[extract] --".in1"--> NG_triplanarprojection_vector3_N_vecXY_vector3[combine2]
+    NG_triplanarprojection_vector3_N_extY_vector3[extract] --".in2"--> NG_triplanarprojection_vector3_N_vecXY_vector3[combine2]
+    NG_triplanarprojection_vector3_N_blendZ_vector3[absval] --".in2"--> NG_triplanarprojection_vector3_N_nZ_vector3[multiply]
+    NG_triplanarprojection_vector3_N_dotZ_vector3[dotproduct] --".in"--> NG_triplanarprojection_vector3_N_blendZ_vector3[absval]
+    NG_triplanarprojection_vector3_N_norm_vector3[normalize] --".in1"--> NG_triplanarprojection_vector3_N_dotZ_vector3[dotproduct]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2299,6 +4589,90 @@
 * *Node Group*: texture3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_triplanarprojection_vector4
+
+
+```mermaid
+graph LR; 
+    NG_triplanarprojection_vector4_N_add2_vector4[add] --> NG_triplanarprojection_vector4_out([out])
+    style NG_triplanarprojection_vector4_out fill:#1b1, color:#111
+    NG_triplanarprojection_vector4_N_add1_vector4[add] --".in1"--> NG_triplanarprojection_vector4_N_add2_vector4[add]
+    NG_triplanarprojection_vector4_N_nX_vector4[multiply] --".in1"--> NG_triplanarprojection_vector4_N_add1_vector4[add]
+    NG_triplanarprojection_vector4_N_imgX_vector4[image] --".in1"--> NG_triplanarprojection_vector4_N_nX_vector4[multiply]
+    NG_triplanarprojection_vector4_filexINT([filex]) ==.file==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
+    style NG_triplanarprojection_vector4_filexINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
+    style NG_triplanarprojection_vector4_layerxINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
+    style NG_triplanarprojection_vector4_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
+    style NG_triplanarprojection_vector4_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
+    style NG_triplanarprojection_vector4_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
+    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
+    style NG_triplanarprojection_vector4_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_N_vecYZ_vector4[combine2] --".texcoord"--> NG_triplanarprojection_vector4_N_imgX_vector4[image]
+    NG_triplanarprojection_vector4_N_extY_vector4[extract] --".in1"--> NG_triplanarprojection_vector4_N_vecYZ_vector4[combine2]
+    NG_triplanarprojection_vector4_positionINT([position]) ==.in==> NG_triplanarprojection_vector4_N_extY_vector4[extract]
+    style NG_triplanarprojection_vector4_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_N_extZ_vector4[extract] --".in2"--> NG_triplanarprojection_vector4_N_vecYZ_vector4[combine2]
+    NG_triplanarprojection_vector4_positionINT([position]) ==.in==> NG_triplanarprojection_vector4_N_extZ_vector4[extract]
+    style NG_triplanarprojection_vector4_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_N_blendX_vector4[absval] --".in2"--> NG_triplanarprojection_vector4_N_nX_vector4[multiply]
+    NG_triplanarprojection_vector4_N_dotX_vector4[dotproduct] --".in"--> NG_triplanarprojection_vector4_N_blendX_vector4[absval]
+    NG_triplanarprojection_vector4_N_norm_vector4[normalize] --".in1"--> NG_triplanarprojection_vector4_N_dotX_vector4[dotproduct]
+    NG_triplanarprojection_vector4_normalINT([normal]) ==.in==> NG_triplanarprojection_vector4_N_norm_vector4[normalize]
+    style NG_triplanarprojection_vector4_normalINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_N_nY_vector4[multiply] --".in2"--> NG_triplanarprojection_vector4_N_add1_vector4[add]
+    NG_triplanarprojection_vector4_N_imgY_vector4[image] --".in1"--> NG_triplanarprojection_vector4_N_nY_vector4[multiply]
+    NG_triplanarprojection_vector4_fileyINT([filey]) ==.file==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
+    style NG_triplanarprojection_vector4_fileyINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_layeryINT([layery]) ==.layer==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
+    style NG_triplanarprojection_vector4_layeryINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
+    style NG_triplanarprojection_vector4_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
+    style NG_triplanarprojection_vector4_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
+    style NG_triplanarprojection_vector4_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
+    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
+    style NG_triplanarprojection_vector4_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_N_vecXZ_vector4[combine2] --".texcoord"--> NG_triplanarprojection_vector4_N_imgY_vector4[image]
+    NG_triplanarprojection_vector4_N_extX_vector4[extract] --".in1"--> NG_triplanarprojection_vector4_N_vecXZ_vector4[combine2]
+    NG_triplanarprojection_vector4_positionINT([position]) ==.in==> NG_triplanarprojection_vector4_N_extX_vector4[extract]
+    style NG_triplanarprojection_vector4_positionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_N_extZ_vector4[extract] --".in2"--> NG_triplanarprojection_vector4_N_vecXZ_vector4[combine2]
+    NG_triplanarprojection_vector4_N_blendY_vector4[absval] --".in2"--> NG_triplanarprojection_vector4_N_nY_vector4[multiply]
+    NG_triplanarprojection_vector4_N_dotY_vector4[dotproduct] --".in"--> NG_triplanarprojection_vector4_N_blendY_vector4[absval]
+    NG_triplanarprojection_vector4_N_norm_vector4[normalize] --".in1"--> NG_triplanarprojection_vector4_N_dotY_vector4[dotproduct]
+    NG_triplanarprojection_vector4_N_nZ_vector4[multiply] --".in2"--> NG_triplanarprojection_vector4_N_add2_vector4[add]
+    NG_triplanarprojection_vector4_N_imgZ_vector4[image] --".in1"--> NG_triplanarprojection_vector4_N_nZ_vector4[multiply]
+    NG_triplanarprojection_vector4_filezINT([filez]) ==.file==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
+    style NG_triplanarprojection_vector4_filezINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
+    style NG_triplanarprojection_vector4_layerzINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
+    style NG_triplanarprojection_vector4_dfaultINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
+    style NG_triplanarprojection_vector4_filtertypeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
+    style NG_triplanarprojection_vector4_framerangeINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
+    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
+    style NG_triplanarprojection_vector4_frameendactionINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_N_vecXY_vector4[combine2] --".texcoord"--> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
+    NG_triplanarprojection_vector4_N_extX_vector4[extract] --".in1"--> NG_triplanarprojection_vector4_N_vecXY_vector4[combine2]
+    NG_triplanarprojection_vector4_N_extY_vector4[extract] --".in2"--> NG_triplanarprojection_vector4_N_vecXY_vector4[combine2]
+    NG_triplanarprojection_vector4_N_blendZ_vector4[absval] --".in2"--> NG_triplanarprojection_vector4_N_nZ_vector4[multiply]
+    NG_triplanarprojection_vector4_N_dotZ_vector4[dotproduct] --".in"--> NG_triplanarprojection_vector4_N_blendZ_vector4[absval]
+    NG_triplanarprojection_vector4_N_norm_vector4[normalize] --".in1"--> NG_triplanarprojection_vector4_N_dotZ_vector4[dotproduct]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2328,6 +4702,7 @@
 * *Node Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2344,6 +4719,7 @@
 * *Node Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2360,6 +4736,7 @@
 * *Node Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2376,6 +4753,7 @@
 * *Node Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2392,6 +4770,7 @@
 * *Node Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2408,6 +4787,7 @@
 * *Node Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2424,6 +4804,7 @@
 * *Node Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2440,6 +4821,7 @@
 * *Node Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2456,6 +4838,7 @@
 * *Node Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2472,6 +4855,7 @@
 * *Node Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2488,6 +4872,7 @@
 * *Node Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2504,6 +4889,7 @@
 * *Node Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2521,6 +4907,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2539,6 +4926,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2557,6 +4945,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2575,6 +4964,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2593,6 +4983,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2611,6 +5002,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2630,6 +5022,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2648,6 +5041,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2666,6 +5060,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2684,6 +5079,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2702,6 +5098,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2720,6 +5117,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2739,6 +5137,32 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_ramp4_float
+
+
+```mermaid
+graph LR; 
+    NG_ramp4_float_N_mix_float[mix] --> NG_ramp4_float_out([out])
+    style NG_ramp4_float_out fill:#1b1, color:#111
+    NG_ramp4_float_N_mixtop_float[mix] --".bg"--> NG_ramp4_float_N_mix_float[mix]
+    NG_ramp4_float_valuetlINT([valuetl]) ==.bg==> NG_ramp4_float_N_mixtop_float[mix]
+    style NG_ramp4_float_valuetlINT fill:#0bb, color:#111
+    NG_ramp4_float_valuetrINT([valuetr]) ==.fg==> NG_ramp4_float_N_mixtop_float[mix]
+    style NG_ramp4_float_valuetrINT fill:#0bb, color:#111
+    NG_ramp4_float_N_s_float[extract] --".mix"--> NG_ramp4_float_N_mixtop_float[mix]
+    NG_ramp4_float_N_txclamp_float[clamp] --".in"--> NG_ramp4_float_N_s_float[extract]
+    NG_ramp4_float_texcoordINT([texcoord]) ==.in==> NG_ramp4_float_N_txclamp_float[clamp]
+    style NG_ramp4_float_texcoordINT fill:#0bb, color:#111
+    NG_ramp4_float_N_mixbot_float[mix] --".fg"--> NG_ramp4_float_N_mix_float[mix]
+    NG_ramp4_float_valueblINT([valuebl]) ==.bg==> NG_ramp4_float_N_mixbot_float[mix]
+    style NG_ramp4_float_valueblINT fill:#0bb, color:#111
+    NG_ramp4_float_valuebrINT([valuebr]) ==.fg==> NG_ramp4_float_N_mixbot_float[mix]
+    style NG_ramp4_float_valuebrINT fill:#0bb, color:#111
+    NG_ramp4_float_N_s_float[extract] --".mix"--> NG_ramp4_float_N_mixbot_float[mix]
+    NG_ramp4_float_N_t_float[extract] --".mix"--> NG_ramp4_float_N_mix_float[mix]
+    NG_ramp4_float_N_txclamp_float[clamp] --".in"--> NG_ramp4_float_N_t_float[extract]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2759,6 +5183,32 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_ramp4_color3
+
+
+```mermaid
+graph LR; 
+    NG_ramp4_color3_N_mix_color3[mix] --> NG_ramp4_color3_out([out])
+    style NG_ramp4_color3_out fill:#1b1, color:#111
+    NG_ramp4_color3_N_mixtop_color3[mix] --".bg"--> NG_ramp4_color3_N_mix_color3[mix]
+    NG_ramp4_color3_valuetlINT([valuetl]) ==.bg==> NG_ramp4_color3_N_mixtop_color3[mix]
+    style NG_ramp4_color3_valuetlINT fill:#0bb, color:#111
+    NG_ramp4_color3_valuetrINT([valuetr]) ==.fg==> NG_ramp4_color3_N_mixtop_color3[mix]
+    style NG_ramp4_color3_valuetrINT fill:#0bb, color:#111
+    NG_ramp4_color3_N_s_color3[extract] --".mix"--> NG_ramp4_color3_N_mixtop_color3[mix]
+    NG_ramp4_color3_N_txclamp_color3[clamp] --".in"--> NG_ramp4_color3_N_s_color3[extract]
+    NG_ramp4_color3_texcoordINT([texcoord]) ==.in==> NG_ramp4_color3_N_txclamp_color3[clamp]
+    style NG_ramp4_color3_texcoordINT fill:#0bb, color:#111
+    NG_ramp4_color3_N_mixbot_color3[mix] --".fg"--> NG_ramp4_color3_N_mix_color3[mix]
+    NG_ramp4_color3_valueblINT([valuebl]) ==.bg==> NG_ramp4_color3_N_mixbot_color3[mix]
+    style NG_ramp4_color3_valueblINT fill:#0bb, color:#111
+    NG_ramp4_color3_valuebrINT([valuebr]) ==.fg==> NG_ramp4_color3_N_mixbot_color3[mix]
+    style NG_ramp4_color3_valuebrINT fill:#0bb, color:#111
+    NG_ramp4_color3_N_s_color3[extract] --".mix"--> NG_ramp4_color3_N_mixbot_color3[mix]
+    NG_ramp4_color3_N_t_color3[extract] --".mix"--> NG_ramp4_color3_N_mix_color3[mix]
+    NG_ramp4_color3_N_txclamp_color3[clamp] --".in"--> NG_ramp4_color3_N_t_color3[extract]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2779,6 +5229,32 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_ramp4_color4
+
+
+```mermaid
+graph LR; 
+    NG_ramp4_color4_N_mix_color4[mix] --> NG_ramp4_color4_out([out])
+    style NG_ramp4_color4_out fill:#1b1, color:#111
+    NG_ramp4_color4_N_mixtop_color4[mix] --".bg"--> NG_ramp4_color4_N_mix_color4[mix]
+    NG_ramp4_color4_valuetlINT([valuetl]) ==.bg==> NG_ramp4_color4_N_mixtop_color4[mix]
+    style NG_ramp4_color4_valuetlINT fill:#0bb, color:#111
+    NG_ramp4_color4_valuetrINT([valuetr]) ==.fg==> NG_ramp4_color4_N_mixtop_color4[mix]
+    style NG_ramp4_color4_valuetrINT fill:#0bb, color:#111
+    NG_ramp4_color4_N_s_color4[extract] --".mix"--> NG_ramp4_color4_N_mixtop_color4[mix]
+    NG_ramp4_color4_N_txclamp_color4[clamp] --".in"--> NG_ramp4_color4_N_s_color4[extract]
+    NG_ramp4_color4_texcoordINT([texcoord]) ==.in==> NG_ramp4_color4_N_txclamp_color4[clamp]
+    style NG_ramp4_color4_texcoordINT fill:#0bb, color:#111
+    NG_ramp4_color4_N_mixbot_color4[mix] --".fg"--> NG_ramp4_color4_N_mix_color4[mix]
+    NG_ramp4_color4_valueblINT([valuebl]) ==.bg==> NG_ramp4_color4_N_mixbot_color4[mix]
+    style NG_ramp4_color4_valueblINT fill:#0bb, color:#111
+    NG_ramp4_color4_valuebrINT([valuebr]) ==.fg==> NG_ramp4_color4_N_mixbot_color4[mix]
+    style NG_ramp4_color4_valuebrINT fill:#0bb, color:#111
+    NG_ramp4_color4_N_s_color4[extract] --".mix"--> NG_ramp4_color4_N_mixbot_color4[mix]
+    NG_ramp4_color4_N_t_color4[extract] --".mix"--> NG_ramp4_color4_N_mix_color4[mix]
+    NG_ramp4_color4_N_txclamp_color4[clamp] --".in"--> NG_ramp4_color4_N_t_color4[extract]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2799,6 +5275,32 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_ramp4_vector2
+
+
+```mermaid
+graph LR; 
+    NG_ramp4_vector2_N_mix_vector2[mix] --> NG_ramp4_vector2_out([out])
+    style NG_ramp4_vector2_out fill:#1b1, color:#111
+    NG_ramp4_vector2_N_mixtop_vector2[mix] --".bg"--> NG_ramp4_vector2_N_mix_vector2[mix]
+    NG_ramp4_vector2_valuetlINT([valuetl]) ==.bg==> NG_ramp4_vector2_N_mixtop_vector2[mix]
+    style NG_ramp4_vector2_valuetlINT fill:#0bb, color:#111
+    NG_ramp4_vector2_valuetrINT([valuetr]) ==.fg==> NG_ramp4_vector2_N_mixtop_vector2[mix]
+    style NG_ramp4_vector2_valuetrINT fill:#0bb, color:#111
+    NG_ramp4_vector2_N_s_vector2[extract] --".mix"--> NG_ramp4_vector2_N_mixtop_vector2[mix]
+    NG_ramp4_vector2_N_txclamp_vector2[clamp] --".in"--> NG_ramp4_vector2_N_s_vector2[extract]
+    NG_ramp4_vector2_texcoordINT([texcoord]) ==.in==> NG_ramp4_vector2_N_txclamp_vector2[clamp]
+    style NG_ramp4_vector2_texcoordINT fill:#0bb, color:#111
+    NG_ramp4_vector2_N_mixbot_vector2[mix] --".fg"--> NG_ramp4_vector2_N_mix_vector2[mix]
+    NG_ramp4_vector2_valueblINT([valuebl]) ==.bg==> NG_ramp4_vector2_N_mixbot_vector2[mix]
+    style NG_ramp4_vector2_valueblINT fill:#0bb, color:#111
+    NG_ramp4_vector2_valuebrINT([valuebr]) ==.fg==> NG_ramp4_vector2_N_mixbot_vector2[mix]
+    style NG_ramp4_vector2_valuebrINT fill:#0bb, color:#111
+    NG_ramp4_vector2_N_s_vector2[extract] --".mix"--> NG_ramp4_vector2_N_mixbot_vector2[mix]
+    NG_ramp4_vector2_N_t_vector2[extract] --".mix"--> NG_ramp4_vector2_N_mix_vector2[mix]
+    NG_ramp4_vector2_N_txclamp_vector2[clamp] --".in"--> NG_ramp4_vector2_N_t_vector2[extract]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2819,6 +5321,32 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_ramp4_vector3
+
+
+```mermaid
+graph LR; 
+    NG_ramp4_vector3_N_mix_vector3[mix] --> NG_ramp4_vector3_out([out])
+    style NG_ramp4_vector3_out fill:#1b1, color:#111
+    NG_ramp4_vector3_N_mixtop_vector3[mix] --".bg"--> NG_ramp4_vector3_N_mix_vector3[mix]
+    NG_ramp4_vector3_valuetlINT([valuetl]) ==.bg==> NG_ramp4_vector3_N_mixtop_vector3[mix]
+    style NG_ramp4_vector3_valuetlINT fill:#0bb, color:#111
+    NG_ramp4_vector3_valuetrINT([valuetr]) ==.fg==> NG_ramp4_vector3_N_mixtop_vector3[mix]
+    style NG_ramp4_vector3_valuetrINT fill:#0bb, color:#111
+    NG_ramp4_vector3_N_s_vector3[extract] --".mix"--> NG_ramp4_vector3_N_mixtop_vector3[mix]
+    NG_ramp4_vector3_N_txclamp_vector3[clamp] --".in"--> NG_ramp4_vector3_N_s_vector3[extract]
+    NG_ramp4_vector3_texcoordINT([texcoord]) ==.in==> NG_ramp4_vector3_N_txclamp_vector3[clamp]
+    style NG_ramp4_vector3_texcoordINT fill:#0bb, color:#111
+    NG_ramp4_vector3_N_mixbot_vector3[mix] --".fg"--> NG_ramp4_vector3_N_mix_vector3[mix]
+    NG_ramp4_vector3_valueblINT([valuebl]) ==.bg==> NG_ramp4_vector3_N_mixbot_vector3[mix]
+    style NG_ramp4_vector3_valueblINT fill:#0bb, color:#111
+    NG_ramp4_vector3_valuebrINT([valuebr]) ==.fg==> NG_ramp4_vector3_N_mixbot_vector3[mix]
+    style NG_ramp4_vector3_valuebrINT fill:#0bb, color:#111
+    NG_ramp4_vector3_N_s_vector3[extract] --".mix"--> NG_ramp4_vector3_N_mixbot_vector3[mix]
+    NG_ramp4_vector3_N_t_vector3[extract] --".mix"--> NG_ramp4_vector3_N_mix_vector3[mix]
+    NG_ramp4_vector3_N_txclamp_vector3[clamp] --".in"--> NG_ramp4_vector3_N_t_vector3[extract]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2839,6 +5367,32 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_ramp4_vector4
+
+
+```mermaid
+graph LR; 
+    NG_ramp4_vector4_N_mix_vector4[mix] --> NG_ramp4_vector4_out([out])
+    style NG_ramp4_vector4_out fill:#1b1, color:#111
+    NG_ramp4_vector4_N_mixtop_vector4[mix] --".bg"--> NG_ramp4_vector4_N_mix_vector4[mix]
+    NG_ramp4_vector4_valuetlINT([valuetl]) ==.bg==> NG_ramp4_vector4_N_mixtop_vector4[mix]
+    style NG_ramp4_vector4_valuetlINT fill:#0bb, color:#111
+    NG_ramp4_vector4_valuetrINT([valuetr]) ==.fg==> NG_ramp4_vector4_N_mixtop_vector4[mix]
+    style NG_ramp4_vector4_valuetrINT fill:#0bb, color:#111
+    NG_ramp4_vector4_N_s_vector4[extract] --".mix"--> NG_ramp4_vector4_N_mixtop_vector4[mix]
+    NG_ramp4_vector4_N_txclamp_vector4[clamp] --".in"--> NG_ramp4_vector4_N_s_vector4[extract]
+    NG_ramp4_vector4_texcoordINT([texcoord]) ==.in==> NG_ramp4_vector4_N_txclamp_vector4[clamp]
+    style NG_ramp4_vector4_texcoordINT fill:#0bb, color:#111
+    NG_ramp4_vector4_N_mixbot_vector4[mix] --".fg"--> NG_ramp4_vector4_N_mix_vector4[mix]
+    NG_ramp4_vector4_valueblINT([valuebl]) ==.bg==> NG_ramp4_vector4_N_mixbot_vector4[mix]
+    style NG_ramp4_vector4_valueblINT fill:#0bb, color:#111
+    NG_ramp4_vector4_valuebrINT([valuebr]) ==.fg==> NG_ramp4_vector4_N_mixbot_vector4[mix]
+    style NG_ramp4_vector4_valuebrINT fill:#0bb, color:#111
+    NG_ramp4_vector4_N_s_vector4[extract] --".mix"--> NG_ramp4_vector4_N_mixbot_vector4[mix]
+    NG_ramp4_vector4_N_t_vector4[extract] --".mix"--> NG_ramp4_vector4_N_mix_vector4[mix]
+    NG_ramp4_vector4_N_txclamp_vector4[clamp] --".in"--> NG_ramp4_vector4_N_t_vector4[extract]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2860,6 +5414,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2879,6 +5434,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2898,6 +5454,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2917,6 +5474,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2936,6 +5494,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2955,6 +5514,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2975,6 +5535,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2994,6 +5555,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3013,6 +5575,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3032,6 +5595,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3051,6 +5615,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3070,6 +5635,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3090,6 +5656,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3108,6 +5675,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3126,6 +5694,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3144,6 +5713,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3162,6 +5732,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3180,6 +5751,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3198,6 +5770,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3216,6 +5789,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3234,6 +5808,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3252,6 +5827,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3270,6 +5846,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3289,6 +5866,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3307,6 +5885,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3325,6 +5904,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3343,6 +5923,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3361,6 +5942,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3379,6 +5961,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3397,6 +5980,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3415,6 +5999,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3433,6 +6018,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3451,6 +6037,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3469,6 +6056,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3488,6 +6076,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3508,6 +6097,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3528,6 +6118,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3548,6 +6139,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3568,6 +6160,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3588,6 +6181,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3608,6 +6202,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3628,6 +6223,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3648,6 +6244,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3668,6 +6265,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3688,6 +6286,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3709,6 +6308,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3726,6 +6326,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3743,6 +6344,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3760,6 +6362,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3777,6 +6380,7 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3795,6 +6399,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3812,6 +6417,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3829,6 +6435,7 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3847,6 +6454,60 @@
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_unifiednoise2d_float
+
+
+```mermaid
+graph LR; 
+    NG_unifiednoise2d_float_N_range[range] --> NG_unifiednoise2d_float_out([out])
+    style NG_unifiednoise2d_float_out fill:#1b1, color:#111
+    NG_unifiednoise2d_float_outminINT([outmin]) ==.outlow==> NG_unifiednoise2d_float_N_range[range]
+    style NG_unifiednoise2d_float_outminINT fill:#0bb, color:#111
+    NG_unifiednoise2d_float_outmaxINT([outmax]) ==.outhigh==> NG_unifiednoise2d_float_N_range[range]
+    style NG_unifiednoise2d_float_outmaxINT fill:#0bb, color:#111
+    NG_unifiednoise2d_float_clampoutputINT([clampoutput]) ==.doclamp==> NG_unifiednoise2d_float_N_range[range]
+    style NG_unifiednoise2d_float_clampoutputINT fill:#0bb, color:#111
+    NG_unifiednoise2d_float_N_switch_type{switch} --".in"--> NG_unifiednoise2d_float_N_range[range]
+    NG_unifiednoise2d_float_typeINT([type]) ==.which==> NG_unifiednoise2d_float_N_switch_type[switch]
+    style NG_unifiednoise2d_float_typeINT fill:#0bb, color:#111
+    NG_unifiednoise2d_float_N_perlin_noise2d[noise2d] --".in1"--> NG_unifiednoise2d_float_N_switch_type{switch}
+    NG_unifiednoise2d_float_N_apply_cell_jitter[rotate2d] --".texcoord"--> NG_unifiednoise2d_float_N_perlin_noise2d[noise2d]
+    NG_unifiednoise2d_float_N_apply_offset[add] --".in"--> NG_unifiednoise2d_float_N_apply_cell_jitter[rotate2d]
+    NG_unifiednoise2d_float_offsetINT([offset]) ==.in2==> NG_unifiednoise2d_float_N_apply_offset[add]
+    style NG_unifiednoise2d_float_offsetINT fill:#0bb, color:#111
+    NG_unifiednoise2d_float_N_apply_freq[multiply] --".in1"--> NG_unifiednoise2d_float_N_apply_offset[add]
+    NG_unifiednoise2d_float_texcoordINT([texcoord]) ==.in1==> NG_unifiednoise2d_float_N_apply_freq[multiply]
+    style NG_unifiednoise2d_float_texcoordINT fill:#0bb, color:#111
+    NG_unifiednoise2d_float_freqINT([freq]) ==.in2==> NG_unifiednoise2d_float_N_apply_freq[multiply]
+    style NG_unifiednoise2d_float_freqINT fill:#0bb, color:#111
+    NG_unifiednoise2d_float_N_cell_jitter_mult[multiply] --".amount"--> NG_unifiednoise2d_float_N_apply_cell_jitter[rotate2d]
+    NG_unifiednoise2d_float_N_jitter_minus_1[subtract] --".in1"--> NG_unifiednoise2d_float_N_cell_jitter_mult[multiply]
+    NG_unifiednoise2d_float_jitterINT([jitter]) ==.in1==> NG_unifiednoise2d_float_N_jitter_minus_1[subtract]
+    style NG_unifiednoise2d_float_jitterINT fill:#0bb, color:#111
+    NG_unifiednoise2d_float_N_cellnoise2d[cellnoise2d] --".in2"--> NG_unifiednoise2d_float_N_switch_type{switch}
+    NG_unifiednoise2d_float_N_apply_cell_jitter[rotate2d] --".texcoord"--> NG_unifiednoise2d_float_N_cellnoise2d[cellnoise2d]
+    NG_unifiednoise2d_float_N_worleynoise2d[worleynoise2d] --".in3"--> NG_unifiednoise2d_float_N_switch_type{switch}
+    NG_unifiednoise2d_float_jitterINT([jitter]) ==.jitter==> NG_unifiednoise2d_float_N_worleynoise2d[worleynoise2d]
+    style NG_unifiednoise2d_float_jitterINT fill:#0bb, color:#111
+    NG_unifiednoise2d_float_N_apply_offset[add] --".texcoord"--> NG_unifiednoise2d_float_N_worleynoise2d[worleynoise2d]
+    NG_unifiednoise2d_float_N_fractal3d[fractal3d] --".in4"--> NG_unifiednoise2d_float_N_switch_type{switch}
+    NG_unifiednoise2d_float_octavesINT([octaves]) ==.octaves==> NG_unifiednoise2d_float_N_fractal3d[fractal3d]
+    style NG_unifiednoise2d_float_octavesINT fill:#0bb, color:#111
+    NG_unifiednoise2d_float_lacunarityINT([lacunarity]) ==.lacunarity==> NG_unifiednoise2d_float_N_fractal3d[fractal3d]
+    style NG_unifiednoise2d_float_lacunarityINT fill:#0bb, color:#111
+    NG_unifiednoise2d_float_diminishINT([diminish]) ==.diminish==> NG_unifiednoise2d_float_N_fractal3d[fractal3d]
+    style NG_unifiednoise2d_float_diminishINT fill:#0bb, color:#111
+    NG_unifiednoise2d_float_N_combine_with_jitter[combine3] --".position"--> NG_unifiednoise2d_float_N_fractal3d[fractal3d]
+    NG_unifiednoise2d_float_N_separate[separate2] --> NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateoutx([outx])
+    style NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateoutx fill:#1b1, color:#111
+    NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateoutx --".in1"--> NG_unifiednoise2d_float_N_combine_with_jitter[combine3]
+    NG_unifiednoise2d_float_N_apply_offset[add] --".in"--> NG_unifiednoise2d_float_N_separate[separate2]
+    NG_unifiednoise2d_float_N_separate[separate2] --> NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateouty([outy])
+    style NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateouty fill:#1b1, color:#111
+    NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateouty --".in2"--> NG_unifiednoise2d_float_N_combine_with_jitter[combine3]
+    NG_unifiednoise2d_float_N_cell_jitter_mult[multiply] --".in3"--> NG_unifiednoise2d_float_N_combine_with_jitter[combine3]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3874,6 +6535,52 @@
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_unifiednoise3d_float
+
+
+```mermaid
+graph LR; 
+    NG_unifiednoise3d_float_N_range[range] --> NG_unifiednoise3d_float_out([out])
+    style NG_unifiednoise3d_float_out fill:#1b1, color:#111
+    NG_unifiednoise3d_float_outminINT([outmin]) ==.outlow==> NG_unifiednoise3d_float_N_range[range]
+    style NG_unifiednoise3d_float_outminINT fill:#0bb, color:#111
+    NG_unifiednoise3d_float_outmaxINT([outmax]) ==.outhigh==> NG_unifiednoise3d_float_N_range[range]
+    style NG_unifiednoise3d_float_outmaxINT fill:#0bb, color:#111
+    NG_unifiednoise3d_float_clampoutputINT([clampoutput]) ==.doclamp==> NG_unifiednoise3d_float_N_range[range]
+    style NG_unifiednoise3d_float_clampoutputINT fill:#0bb, color:#111
+    NG_unifiednoise3d_float_N_switch_type{switch} --".in"--> NG_unifiednoise3d_float_N_range[range]
+    NG_unifiednoise3d_float_typeINT([type]) ==.which==> NG_unifiednoise3d_float_N_switch_type[switch]
+    style NG_unifiednoise3d_float_typeINT fill:#0bb, color:#111
+    NG_unifiednoise3d_float_N_perlin_noise3d[noise3d] --".in1"--> NG_unifiednoise3d_float_N_switch_type{switch}
+    NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d] --".position"--> NG_unifiednoise3d_float_N_perlin_noise3d[noise3d]
+    NG_unifiednoise3d_float_N_apply_offset[add] --".in"--> NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d]
+    NG_unifiednoise3d_float_offsetINT([offset]) ==.in2==> NG_unifiednoise3d_float_N_apply_offset[add]
+    style NG_unifiednoise3d_float_offsetINT fill:#0bb, color:#111
+    NG_unifiednoise3d_float_N_apply_freq[multiply] --".in1"--> NG_unifiednoise3d_float_N_apply_offset[add]
+    NG_unifiednoise3d_float_positionINT([position]) ==.in1==> NG_unifiednoise3d_float_N_apply_freq[multiply]
+    style NG_unifiednoise3d_float_positionINT fill:#0bb, color:#111
+    NG_unifiednoise3d_float_freqINT([freq]) ==.in2==> NG_unifiednoise3d_float_N_apply_freq[multiply]
+    style NG_unifiednoise3d_float_freqINT fill:#0bb, color:#111
+    NG_unifiednoise3d_float_N_cell_jitter_mult[multiply] --".amount"--> NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d]
+    NG_unifiednoise3d_float_N_jitter_minus_one[subtract] --".in1"--> NG_unifiednoise3d_float_N_cell_jitter_mult[multiply]
+    NG_unifiednoise3d_float_jitterINT([jitter]) ==.in1==> NG_unifiednoise3d_float_N_jitter_minus_one[subtract]
+    style NG_unifiednoise3d_float_jitterINT fill:#0bb, color:#111
+    NG_unifiednoise3d_float_N_cellnoise3d[cellnoise3d] --".in2"--> NG_unifiednoise3d_float_N_switch_type{switch}
+    NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d] --".position"--> NG_unifiednoise3d_float_N_cellnoise3d[cellnoise3d]
+    NG_unifiednoise3d_float_N_worleynoise3d[worleynoise3d] --".in3"--> NG_unifiednoise3d_float_N_switch_type{switch}
+    NG_unifiednoise3d_float_jitterINT([jitter]) ==.jitter==> NG_unifiednoise3d_float_N_worleynoise3d[worleynoise3d]
+    style NG_unifiednoise3d_float_jitterINT fill:#0bb, color:#111
+    NG_unifiednoise3d_float_N_apply_offset[add] --".position"--> NG_unifiednoise3d_float_N_worleynoise3d[worleynoise3d]
+    NG_unifiednoise3d_float_N_fractal3d[fractal3d] --".in4"--> NG_unifiednoise3d_float_N_switch_type{switch}
+    NG_unifiednoise3d_float_octavesINT([octaves]) ==.octaves==> NG_unifiednoise3d_float_N_fractal3d[fractal3d]
+    style NG_unifiednoise3d_float_octavesINT fill:#0bb, color:#111
+    NG_unifiednoise3d_float_lacunarityINT([lacunarity]) ==.lacunarity==> NG_unifiednoise3d_float_N_fractal3d[fractal3d]
+    style NG_unifiednoise3d_float_lacunarityINT fill:#0bb, color:#111
+    NG_unifiednoise3d_float_diminishINT([diminish]) ==.diminish==> NG_unifiednoise3d_float_N_fractal3d[fractal3d]
+    style NG_unifiednoise3d_float_diminishINT fill:#0bb, color:#111
+    NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d] --".position"--> NG_unifiednoise3d_float_N_fractal3d[fractal3d]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3901,6 +6608,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3918,6 +6626,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3935,6 +6644,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3953,6 +6663,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3971,6 +6682,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3987,6 +6699,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4004,6 +6717,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4020,6 +6734,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4036,6 +6751,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4053,6 +6769,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4070,6 +6787,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4087,6 +6805,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4104,6 +6823,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4121,6 +6841,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4138,6 +6859,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4155,6 +6877,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4172,6 +6895,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4189,6 +6913,7 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4207,6 +6932,24 @@
 * *Node Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_bump_vector3
+
+
+```mermaid
+graph LR; 
+    NG_bump_vector3_N_normalmap[normalmap] --> NG_bump_vector3_out([out])
+    style NG_bump_vector3_out fill:#1b1, color:#111
+    NG_bump_vector3_normalINT([normal]) ==.normal==> NG_bump_vector3_N_normalmap[normalmap]
+    style NG_bump_vector3_normalINT fill:#0bb, color:#111
+    NG_bump_vector3_scaleINT([scale]) ==.scale==> NG_bump_vector3_N_normalmap[normalmap]
+    style NG_bump_vector3_scaleINT fill:#0bb, color:#111
+    NG_bump_vector3_tangentINT([tangent]) ==.tangent==> NG_bump_vector3_N_normalmap[normalmap]
+    style NG_bump_vector3_tangentINT fill:#0bb, color:#111
+    NG_bump_vector3_N_heighttonormal[heighttonormal] --".in"--> NG_bump_vector3_N_normalmap[normalmap]
+    NG_bump_vector3_heightINT([height]) ==.in==> NG_bump_vector3_N_heighttonormal[heighttonormal]
+    style NG_bump_vector3_heightINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4227,6 +6970,7 @@
 * *Node Group*: global
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4245,6 +6989,7 @@
 * *Node Group*: application
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4261,6 +7006,7 @@
 * *Node Group*: application
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4278,6 +7024,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4295,6 +7042,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4312,6 +7060,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4329,6 +7078,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4346,6 +7096,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4363,6 +7114,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4380,6 +7132,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4397,6 +7150,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4414,6 +7168,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4431,6 +7186,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4448,6 +7204,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4465,6 +7222,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4482,6 +7240,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4499,6 +7258,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4516,6 +7276,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4534,6 +7295,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4551,6 +7313,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4568,6 +7331,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4585,6 +7349,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4602,6 +7367,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4619,6 +7385,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4636,6 +7403,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4653,6 +7421,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4670,6 +7439,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4687,6 +7457,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4704,6 +7475,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4721,6 +7493,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4738,6 +7511,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4755,6 +7529,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4772,6 +7547,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4790,6 +7566,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4807,6 +7584,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4824,6 +7602,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4841,6 +7620,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4858,6 +7638,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4875,6 +7656,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4892,6 +7674,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4909,6 +7692,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4926,6 +7710,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4943,6 +7728,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4960,6 +7746,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4977,6 +7764,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -4994,6 +7782,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5012,6 +7801,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5029,6 +7819,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5046,6 +7837,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5063,6 +7855,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5080,6 +7873,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5097,6 +7891,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5114,6 +7909,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5131,6 +7927,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5148,6 +7945,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5165,6 +7963,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5182,6 +7981,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5199,6 +7999,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5216,6 +8017,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5234,6 +8036,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5251,6 +8054,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5268,6 +8072,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5285,6 +8090,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5302,6 +8108,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5319,6 +8126,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5336,6 +8144,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5353,6 +8162,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5370,6 +8180,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5387,6 +8198,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5404,6 +8216,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5422,6 +8235,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5439,6 +8253,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5456,6 +8271,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5473,6 +8289,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5490,6 +8307,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5507,6 +8325,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5524,6 +8343,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5541,6 +8361,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5558,6 +8379,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5575,6 +8397,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5592,6 +8415,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5610,6 +8434,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5626,6 +8451,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5642,6 +8468,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5658,6 +8485,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5674,6 +8502,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5690,6 +8519,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5707,6 +8537,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5723,6 +8554,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5739,6 +8571,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5755,6 +8588,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5771,6 +8605,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5787,6 +8622,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5804,6 +8640,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5820,6 +8657,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5836,6 +8674,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5852,6 +8691,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5868,6 +8708,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5884,6 +8725,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5901,6 +8743,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5918,6 +8761,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5935,6 +8779,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5952,6 +8797,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5969,6 +8815,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -5986,6 +8833,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6003,6 +8851,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6020,6 +8869,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6037,6 +8887,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6054,6 +8905,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6071,6 +8923,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6089,6 +8942,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6106,6 +8960,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6123,6 +8978,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6140,6 +8996,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6157,6 +9014,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6174,6 +9032,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6192,6 +9051,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6209,6 +9069,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6226,6 +9087,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6243,6 +9105,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6260,6 +9123,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6277,6 +9141,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6295,6 +9160,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6312,6 +9178,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6329,6 +9196,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6346,6 +9214,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6363,6 +9232,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6380,6 +9250,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6398,6 +9269,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6415,6 +9287,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6432,6 +9305,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6449,6 +9323,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6466,6 +9341,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6483,6 +9359,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6501,6 +9378,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6518,6 +9396,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6535,6 +9414,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6552,6 +9432,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6569,6 +9450,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6586,6 +9468,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6603,6 +9486,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6620,6 +9504,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6637,6 +9522,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6654,6 +9540,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6671,6 +9558,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6688,6 +9576,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6705,6 +9594,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6721,6 +9611,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6737,6 +9628,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6753,6 +9645,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6769,6 +9662,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6785,6 +9679,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6802,6 +9697,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6820,6 +9716,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6838,6 +9735,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6856,6 +9754,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6874,6 +9773,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6892,6 +9792,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6910,6 +9811,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6928,6 +9830,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6946,6 +9849,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6964,6 +9868,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -6982,6 +9887,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7001,6 +9907,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7018,6 +9925,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7035,6 +9943,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7052,6 +9961,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7069,6 +9979,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7086,6 +9997,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7103,6 +10015,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7120,6 +10033,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7137,6 +10051,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7154,6 +10069,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7171,6 +10087,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7189,6 +10106,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7206,6 +10124,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7223,6 +10142,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7240,6 +10160,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7257,6 +10178,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7274,6 +10196,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7291,6 +10214,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7308,6 +10232,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7325,6 +10250,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7342,6 +10268,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7359,6 +10286,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7377,6 +10305,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7393,6 +10322,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7409,6 +10339,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7426,6 +10357,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7442,6 +10374,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7458,6 +10391,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7475,6 +10409,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7492,6 +10427,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7509,6 +10445,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7527,6 +10464,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7545,6 +10483,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7564,6 +10503,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7583,6 +10523,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7602,6 +10543,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7619,6 +10561,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7636,6 +10579,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7653,6 +10597,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7671,6 +10616,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7692,6 +10638,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7708,6 +10655,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7725,6 +10673,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7741,6 +10690,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7758,6 +10708,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7774,6 +10725,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7791,6 +10743,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7809,6 +10762,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7828,6 +10782,47 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_place2d_vector2
+
+
+```mermaid
+graph LR; 
+    NG_place2d_vector2_N_switch_operationorder{switch} --> NG_place2d_vector2_out([out])
+    style NG_place2d_vector2_out fill:#1b1, color:#111
+    NG_place2d_vector2_operationorderINT([operationorder]) ==.which==> NG_place2d_vector2_N_switch_operationorder[switch]
+    style NG_place2d_vector2_operationorderINT fill:#0bb, color:#111
+    NG_place2d_vector2_N_addpivot[add] --".in1"--> NG_place2d_vector2_N_switch_operationorder{switch}
+    NG_place2d_vector2_pivotINT([pivot]) ==.in2==> NG_place2d_vector2_N_addpivot[add]
+    style NG_place2d_vector2_pivotINT fill:#0bb, color:#111
+    NG_place2d_vector2_N_applyoffset[subtract] --".in1"--> NG_place2d_vector2_N_addpivot[add]
+    NG_place2d_vector2_offsetINT([offset]) ==.in2==> NG_place2d_vector2_N_applyoffset[subtract]
+    style NG_place2d_vector2_offsetINT fill:#0bb, color:#111
+    NG_place2d_vector2_N_applyrot[rotate2d] --".in1"--> NG_place2d_vector2_N_applyoffset[subtract]
+    NG_place2d_vector2_rotateINT([rotate]) ==.amount==> NG_place2d_vector2_N_applyrot[rotate2d]
+    style NG_place2d_vector2_rotateINT fill:#0bb, color:#111
+    NG_place2d_vector2_N_applyscale[divide] --".in"--> NG_place2d_vector2_N_applyrot[rotate2d]
+    NG_place2d_vector2_scaleINT([scale]) ==.in2==> NG_place2d_vector2_N_applyscale[divide]
+    style NG_place2d_vector2_scaleINT fill:#0bb, color:#111
+    NG_place2d_vector2_N_subpivot[subtract] --".in1"--> NG_place2d_vector2_N_applyscale[divide]
+    NG_place2d_vector2_texcoordINT([texcoord]) ==.in1==> NG_place2d_vector2_N_subpivot[subtract]
+    style NG_place2d_vector2_texcoordINT fill:#0bb, color:#111
+    NG_place2d_vector2_pivotINT([pivot]) ==.in2==> NG_place2d_vector2_N_subpivot[subtract]
+    style NG_place2d_vector2_pivotINT fill:#0bb, color:#111
+    NG_place2d_vector2_N_addpivot2[add] --".in2"--> NG_place2d_vector2_N_switch_operationorder{switch}
+    NG_place2d_vector2_pivotINT([pivot]) ==.in2==> NG_place2d_vector2_N_addpivot2[add]
+    style NG_place2d_vector2_pivotINT fill:#0bb, color:#111
+    NG_place2d_vector2_N_applyscale2[divide] --".in1"--> NG_place2d_vector2_N_addpivot2[add]
+    NG_place2d_vector2_scaleINT([scale]) ==.in2==> NG_place2d_vector2_N_applyscale2[divide]
+    style NG_place2d_vector2_scaleINT fill:#0bb, color:#111
+    NG_place2d_vector2_N_applyrot2[rotate2d] --".in1"--> NG_place2d_vector2_N_applyscale2[divide]
+    NG_place2d_vector2_rotateINT([rotate]) ==.amount==> NG_place2d_vector2_N_applyrot2[rotate2d]
+    style NG_place2d_vector2_rotateINT fill:#0bb, color:#111
+    NG_place2d_vector2_N_applyoffset2[subtract] --".in"--> NG_place2d_vector2_N_applyrot2[rotate2d]
+    NG_place2d_vector2_offsetINT([offset]) ==.in2==> NG_place2d_vector2_N_applyoffset2[subtract]
+    style NG_place2d_vector2_offsetINT fill:#0bb, color:#111
+    NG_place2d_vector2_N_subpivot[subtract] --".in1"--> NG_place2d_vector2_N_applyoffset2[subtract]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7850,6 +10845,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7867,6 +10863,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7884,6 +10881,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7901,6 +10899,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7918,6 +10917,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7935,6 +10935,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7952,6 +10953,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7969,6 +10971,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7986,6 +10989,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8003,6 +11007,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8020,6 +11025,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8037,6 +11043,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8054,6 +11061,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8071,6 +11079,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8088,6 +11097,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8105,6 +11115,7 @@
 * *Node Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8123,6 +11134,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8143,6 +11155,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8163,6 +11176,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8183,6 +11197,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8203,6 +11218,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8223,6 +11239,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8243,6 +11260,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8263,6 +11281,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8283,6 +11302,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8303,6 +11323,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8323,6 +11344,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8344,6 +11366,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8362,6 +11385,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8380,6 +11404,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8398,6 +11423,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8416,6 +11442,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8434,6 +11461,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8452,6 +11480,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8470,6 +11499,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8488,6 +11518,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8506,6 +11537,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8524,6 +11556,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8543,6 +11576,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8560,6 +11594,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8577,6 +11612,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8594,6 +11630,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8611,6 +11648,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8628,6 +11666,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8646,6 +11685,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8663,6 +11703,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8681,6 +11722,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8697,6 +11739,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8714,6 +11757,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8730,6 +11774,7 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8747,6 +11792,25 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_contrast_float
+
+
+```mermaid
+graph LR; 
+    NG_contrast_float_N_add_float[add] --> NG_contrast_float_out([out])
+    style NG_contrast_float_out fill:#1b1, color:#111
+    NG_contrast_float_pivotINT([pivot]) ==.in2==> NG_contrast_float_N_add_float[add]
+    style NG_contrast_float_pivotINT fill:#0bb, color:#111
+    NG_contrast_float_N_mul_float[multiply] --".in1"--> NG_contrast_float_N_add_float[add]
+    NG_contrast_float_amountINT([amount]) ==.in2==> NG_contrast_float_N_mul_float[multiply]
+    style NG_contrast_float_amountINT fill:#0bb, color:#111
+    NG_contrast_float_N_sub_float[subtract] --".in1"--> NG_contrast_float_N_mul_float[multiply]
+    NG_contrast_float_inINT([in]) ==.in1==> NG_contrast_float_N_sub_float[subtract]
+    style NG_contrast_float_inINT fill:#0bb, color:#111
+    NG_contrast_float_pivotINT([pivot]) ==.in2==> NG_contrast_float_N_sub_float[subtract]
+    style NG_contrast_float_pivotINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8765,6 +11829,25 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_contrast_color3
+
+
+```mermaid
+graph LR; 
+    NG_contrast_color3_N_add_color3[add] --> NG_contrast_color3_out([out])
+    style NG_contrast_color3_out fill:#1b1, color:#111
+    NG_contrast_color3_pivotINT([pivot]) ==.in2==> NG_contrast_color3_N_add_color3[add]
+    style NG_contrast_color3_pivotINT fill:#0bb, color:#111
+    NG_contrast_color3_N_mul_color3[multiply] --".in1"--> NG_contrast_color3_N_add_color3[add]
+    NG_contrast_color3_amountINT([amount]) ==.in2==> NG_contrast_color3_N_mul_color3[multiply]
+    style NG_contrast_color3_amountINT fill:#0bb, color:#111
+    NG_contrast_color3_N_sub_color3[subtract] --".in1"--> NG_contrast_color3_N_mul_color3[multiply]
+    NG_contrast_color3_inINT([in]) ==.in1==> NG_contrast_color3_N_sub_color3[subtract]
+    style NG_contrast_color3_inINT fill:#0bb, color:#111
+    NG_contrast_color3_pivotINT([pivot]) ==.in2==> NG_contrast_color3_N_sub_color3[subtract]
+    style NG_contrast_color3_pivotINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8783,6 +11866,25 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_contrast_color4
+
+
+```mermaid
+graph LR; 
+    NG_contrast_color4_N_add_color4[add] --> NG_contrast_color4_out([out])
+    style NG_contrast_color4_out fill:#1b1, color:#111
+    NG_contrast_color4_pivotINT([pivot]) ==.in2==> NG_contrast_color4_N_add_color4[add]
+    style NG_contrast_color4_pivotINT fill:#0bb, color:#111
+    NG_contrast_color4_N_mul_color4[multiply] --".in1"--> NG_contrast_color4_N_add_color4[add]
+    NG_contrast_color4_amountINT([amount]) ==.in2==> NG_contrast_color4_N_mul_color4[multiply]
+    style NG_contrast_color4_amountINT fill:#0bb, color:#111
+    NG_contrast_color4_N_sub_color4[subtract] --".in1"--> NG_contrast_color4_N_mul_color4[multiply]
+    NG_contrast_color4_inINT([in]) ==.in1==> NG_contrast_color4_N_sub_color4[subtract]
+    style NG_contrast_color4_inINT fill:#0bb, color:#111
+    NG_contrast_color4_pivotINT([pivot]) ==.in2==> NG_contrast_color4_N_sub_color4[subtract]
+    style NG_contrast_color4_pivotINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8801,6 +11903,25 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_contrast_vector2
+
+
+```mermaid
+graph LR; 
+    NG_contrast_vector2_N_add_vector2[add] --> NG_contrast_vector2_out([out])
+    style NG_contrast_vector2_out fill:#1b1, color:#111
+    NG_contrast_vector2_pivotINT([pivot]) ==.in2==> NG_contrast_vector2_N_add_vector2[add]
+    style NG_contrast_vector2_pivotINT fill:#0bb, color:#111
+    NG_contrast_vector2_N_mul_vector2[multiply] --".in1"--> NG_contrast_vector2_N_add_vector2[add]
+    NG_contrast_vector2_amountINT([amount]) ==.in2==> NG_contrast_vector2_N_mul_vector2[multiply]
+    style NG_contrast_vector2_amountINT fill:#0bb, color:#111
+    NG_contrast_vector2_N_sub_vector2[subtract] --".in1"--> NG_contrast_vector2_N_mul_vector2[multiply]
+    NG_contrast_vector2_inINT([in]) ==.in1==> NG_contrast_vector2_N_sub_vector2[subtract]
+    style NG_contrast_vector2_inINT fill:#0bb, color:#111
+    NG_contrast_vector2_pivotINT([pivot]) ==.in2==> NG_contrast_vector2_N_sub_vector2[subtract]
+    style NG_contrast_vector2_pivotINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8819,6 +11940,25 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_contrast_vector3
+
+
+```mermaid
+graph LR; 
+    NG_contrast_vector3_N_add_vector3[add] --> NG_contrast_vector3_out([out])
+    style NG_contrast_vector3_out fill:#1b1, color:#111
+    NG_contrast_vector3_pivotINT([pivot]) ==.in2==> NG_contrast_vector3_N_add_vector3[add]
+    style NG_contrast_vector3_pivotINT fill:#0bb, color:#111
+    NG_contrast_vector3_N_mul_vector3[multiply] --".in1"--> NG_contrast_vector3_N_add_vector3[add]
+    NG_contrast_vector3_amountINT([amount]) ==.in2==> NG_contrast_vector3_N_mul_vector3[multiply]
+    style NG_contrast_vector3_amountINT fill:#0bb, color:#111
+    NG_contrast_vector3_N_sub_vector3[subtract] --".in1"--> NG_contrast_vector3_N_mul_vector3[multiply]
+    NG_contrast_vector3_inINT([in]) ==.in1==> NG_contrast_vector3_N_sub_vector3[subtract]
+    style NG_contrast_vector3_inINT fill:#0bb, color:#111
+    NG_contrast_vector3_pivotINT([pivot]) ==.in2==> NG_contrast_vector3_N_sub_vector3[subtract]
+    style NG_contrast_vector3_pivotINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8837,6 +11977,25 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_contrast_vector4
+
+
+```mermaid
+graph LR; 
+    NG_contrast_vector4_N_add_vector4[add] --> NG_contrast_vector4_out([out])
+    style NG_contrast_vector4_out fill:#1b1, color:#111
+    NG_contrast_vector4_pivotINT([pivot]) ==.in2==> NG_contrast_vector4_N_add_vector4[add]
+    style NG_contrast_vector4_pivotINT fill:#0bb, color:#111
+    NG_contrast_vector4_N_mul_vector4[multiply] --".in1"--> NG_contrast_vector4_N_add_vector4[add]
+    NG_contrast_vector4_amountINT([amount]) ==.in2==> NG_contrast_vector4_N_mul_vector4[multiply]
+    style NG_contrast_vector4_amountINT fill:#0bb, color:#111
+    NG_contrast_vector4_N_sub_vector4[subtract] --".in1"--> NG_contrast_vector4_N_mul_vector4[multiply]
+    NG_contrast_vector4_inINT([in]) ==.in1==> NG_contrast_vector4_N_sub_vector4[subtract]
+    style NG_contrast_vector4_inINT fill:#0bb, color:#111
+    NG_contrast_vector4_pivotINT([pivot]) ==.in2==> NG_contrast_vector4_N_sub_vector4[subtract]
+    style NG_contrast_vector4_pivotINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8855,6 +12014,25 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_contrast_color3FA
+
+
+```mermaid
+graph LR; 
+    NG_contrast_color3FA_N_add_color3FA[add] --> NG_contrast_color3FA_out([out])
+    style NG_contrast_color3FA_out fill:#1b1, color:#111
+    NG_contrast_color3FA_pivotINT([pivot]) ==.in2==> NG_contrast_color3FA_N_add_color3FA[add]
+    style NG_contrast_color3FA_pivotINT fill:#0bb, color:#111
+    NG_contrast_color3FA_N_mul_color3FA[multiply] --".in1"--> NG_contrast_color3FA_N_add_color3FA[add]
+    NG_contrast_color3FA_amountINT([amount]) ==.in2==> NG_contrast_color3FA_N_mul_color3FA[multiply]
+    style NG_contrast_color3FA_amountINT fill:#0bb, color:#111
+    NG_contrast_color3FA_N_sub_color3FA[subtract] --".in1"--> NG_contrast_color3FA_N_mul_color3FA[multiply]
+    NG_contrast_color3FA_inINT([in]) ==.in1==> NG_contrast_color3FA_N_sub_color3FA[subtract]
+    style NG_contrast_color3FA_inINT fill:#0bb, color:#111
+    NG_contrast_color3FA_pivotINT([pivot]) ==.in2==> NG_contrast_color3FA_N_sub_color3FA[subtract]
+    style NG_contrast_color3FA_pivotINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8873,6 +12051,25 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_contrast_color4FA
+
+
+```mermaid
+graph LR; 
+    NG_contrast_color4FA_N_add_color4FA[add] --> NG_contrast_color4FA_out([out])
+    style NG_contrast_color4FA_out fill:#1b1, color:#111
+    NG_contrast_color4FA_pivotINT([pivot]) ==.in2==> NG_contrast_color4FA_N_add_color4FA[add]
+    style NG_contrast_color4FA_pivotINT fill:#0bb, color:#111
+    NG_contrast_color4FA_N_mul_color4FA[multiply] --".in1"--> NG_contrast_color4FA_N_add_color4FA[add]
+    NG_contrast_color4FA_amountINT([amount]) ==.in2==> NG_contrast_color4FA_N_mul_color4FA[multiply]
+    style NG_contrast_color4FA_amountINT fill:#0bb, color:#111
+    NG_contrast_color4FA_N_sub_color4FA[subtract] --".in1"--> NG_contrast_color4FA_N_mul_color4FA[multiply]
+    NG_contrast_color4FA_inINT([in]) ==.in1==> NG_contrast_color4FA_N_sub_color4FA[subtract]
+    style NG_contrast_color4FA_inINT fill:#0bb, color:#111
+    NG_contrast_color4FA_pivotINT([pivot]) ==.in2==> NG_contrast_color4FA_N_sub_color4FA[subtract]
+    style NG_contrast_color4FA_pivotINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8891,6 +12088,25 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_contrast_vector2FA
+
+
+```mermaid
+graph LR; 
+    NG_contrast_vector2FA_N_add_vector2FA[add] --> NG_contrast_vector2FA_out([out])
+    style NG_contrast_vector2FA_out fill:#1b1, color:#111
+    NG_contrast_vector2FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector2FA_N_add_vector2FA[add]
+    style NG_contrast_vector2FA_pivotINT fill:#0bb, color:#111
+    NG_contrast_vector2FA_N_mul_vector2FA[multiply] --".in1"--> NG_contrast_vector2FA_N_add_vector2FA[add]
+    NG_contrast_vector2FA_amountINT([amount]) ==.in2==> NG_contrast_vector2FA_N_mul_vector2FA[multiply]
+    style NG_contrast_vector2FA_amountINT fill:#0bb, color:#111
+    NG_contrast_vector2FA_N_sub_vector2FA[subtract] --".in1"--> NG_contrast_vector2FA_N_mul_vector2FA[multiply]
+    NG_contrast_vector2FA_inINT([in]) ==.in1==> NG_contrast_vector2FA_N_sub_vector2FA[subtract]
+    style NG_contrast_vector2FA_inINT fill:#0bb, color:#111
+    NG_contrast_vector2FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector2FA_N_sub_vector2FA[subtract]
+    style NG_contrast_vector2FA_pivotINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8909,6 +12125,25 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_contrast_vector3FA
+
+
+```mermaid
+graph LR; 
+    NG_contrast_vector3FA_N_add_vector3FA[add] --> NG_contrast_vector3FA_out([out])
+    style NG_contrast_vector3FA_out fill:#1b1, color:#111
+    NG_contrast_vector3FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector3FA_N_add_vector3FA[add]
+    style NG_contrast_vector3FA_pivotINT fill:#0bb, color:#111
+    NG_contrast_vector3FA_N_mul_vector3FA[multiply] --".in1"--> NG_contrast_vector3FA_N_add_vector3FA[add]
+    NG_contrast_vector3FA_amountINT([amount]) ==.in2==> NG_contrast_vector3FA_N_mul_vector3FA[multiply]
+    style NG_contrast_vector3FA_amountINT fill:#0bb, color:#111
+    NG_contrast_vector3FA_N_sub_vector3FA[subtract] --".in1"--> NG_contrast_vector3FA_N_mul_vector3FA[multiply]
+    NG_contrast_vector3FA_inINT([in]) ==.in1==> NG_contrast_vector3FA_N_sub_vector3FA[subtract]
+    style NG_contrast_vector3FA_inINT fill:#0bb, color:#111
+    NG_contrast_vector3FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector3FA_N_sub_vector3FA[subtract]
+    style NG_contrast_vector3FA_pivotINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8927,6 +12162,25 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_contrast_vector4FA
+
+
+```mermaid
+graph LR; 
+    NG_contrast_vector4FA_N_add_vector4FA[add] --> NG_contrast_vector4FA_out([out])
+    style NG_contrast_vector4FA_out fill:#1b1, color:#111
+    NG_contrast_vector4FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector4FA_N_add_vector4FA[add]
+    style NG_contrast_vector4FA_pivotINT fill:#0bb, color:#111
+    NG_contrast_vector4FA_N_mul_vector4FA[multiply] --".in1"--> NG_contrast_vector4FA_N_add_vector4FA[add]
+    NG_contrast_vector4FA_amountINT([amount]) ==.in2==> NG_contrast_vector4FA_N_mul_vector4FA[multiply]
+    style NG_contrast_vector4FA_amountINT fill:#0bb, color:#111
+    NG_contrast_vector4FA_N_sub_vector4FA[subtract] --".in1"--> NG_contrast_vector4FA_N_mul_vector4FA[multiply]
+    NG_contrast_vector4FA_inINT([in]) ==.in1==> NG_contrast_vector4FA_N_sub_vector4FA[subtract]
+    style NG_contrast_vector4FA_inINT fill:#0bb, color:#111
+    NG_contrast_vector4FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector4FA_N_sub_vector4FA[subtract]
+    style NG_contrast_vector4FA_pivotINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8946,6 +12200,43 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_range_float
+
+
+```mermaid
+graph LR; 
+    NG_range_float_N_switch_float{ifequal} --> NG_range_float_out([out])
+    style NG_range_float_out fill:#1b1, color:#111
+    NG_range_float_doclampINT([doclamp]) ==.value1==> NG_range_float_N_switch_float[ifequal]
+    style NG_range_float_doclampINT fill:#0bb, color:#111
+    NG_range_float_N_clamp_float[clamp] --".in1"--> NG_range_float_N_switch_float{ifequal}
+    NG_range_float_outlowINT([outlow]) ==.low==> NG_range_float_N_clamp_float[clamp]
+    style NG_range_float_outlowINT fill:#0bb, color:#111
+    NG_range_float_outhighINT([outhigh]) ==.high==> NG_range_float_N_clamp_float[clamp]
+    style NG_range_float_outhighINT fill:#0bb, color:#111
+    NG_range_float_N_remap2_float[remap] --".in"--> NG_range_float_N_clamp_float[clamp]
+    NG_range_float_outlowINT([outlow]) ==.outlow==> NG_range_float_N_remap2_float[remap]
+    style NG_range_float_outlowINT fill:#0bb, color:#111
+    NG_range_float_outhighINT([outhigh]) ==.outhigh==> NG_range_float_N_remap2_float[remap]
+    style NG_range_float_outhighINT fill:#0bb, color:#111
+    NG_range_float_N_gamma_float[multiply] --".in"--> NG_range_float_N_remap2_float[remap]
+    NG_range_float_N_pow_float[power] --".in1"--> NG_range_float_N_gamma_float[multiply]
+    NG_range_float_N_abs_float[absval] --".in1"--> NG_range_float_N_pow_float[power]
+    NG_range_float_N_remap1_float[remap] --".in"--> NG_range_float_N_abs_float[absval]
+    NG_range_float_inINT([in]) ==.in==> NG_range_float_N_remap1_float[remap]
+    style NG_range_float_inINT fill:#0bb, color:#111
+    NG_range_float_inlowINT([inlow]) ==.inlow==> NG_range_float_N_remap1_float[remap]
+    style NG_range_float_inlowINT fill:#0bb, color:#111
+    NG_range_float_inhighINT([inhigh]) ==.inhigh==> NG_range_float_N_remap1_float[remap]
+    style NG_range_float_inhighINT fill:#0bb, color:#111
+    NG_range_float_N_recip_float[divide] --".in2"--> NG_range_float_N_pow_float[power]
+    NG_range_float_gammaINT([gamma]) ==.in2==> NG_range_float_N_recip_float[divide]
+    style NG_range_float_gammaINT fill:#0bb, color:#111
+    NG_range_float_N_sign_float[sign] --".in2"--> NG_range_float_N_gamma_float[multiply]
+    NG_range_float_N_remap1_float[remap] --".in"--> NG_range_float_N_sign_float[sign]
+    NG_range_float_N_remap2_float[remap] --".in2"--> NG_range_float_N_switch_float{ifequal}
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8968,6 +12259,43 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_range_color3
+
+
+```mermaid
+graph LR; 
+    NG_range_color3_N_switch_color3{ifequal} --> NG_range_color3_out([out])
+    style NG_range_color3_out fill:#1b1, color:#111
+    NG_range_color3_doclampINT([doclamp]) ==.value1==> NG_range_color3_N_switch_color3[ifequal]
+    style NG_range_color3_doclampINT fill:#0bb, color:#111
+    NG_range_color3_N_clamp_color3[clamp] --".in1"--> NG_range_color3_N_switch_color3{ifequal}
+    NG_range_color3_outlowINT([outlow]) ==.low==> NG_range_color3_N_clamp_color3[clamp]
+    style NG_range_color3_outlowINT fill:#0bb, color:#111
+    NG_range_color3_outhighINT([outhigh]) ==.high==> NG_range_color3_N_clamp_color3[clamp]
+    style NG_range_color3_outhighINT fill:#0bb, color:#111
+    NG_range_color3_N_remap2_color3[remap] --".in"--> NG_range_color3_N_clamp_color3[clamp]
+    NG_range_color3_outlowINT([outlow]) ==.outlow==> NG_range_color3_N_remap2_color3[remap]
+    style NG_range_color3_outlowINT fill:#0bb, color:#111
+    NG_range_color3_outhighINT([outhigh]) ==.outhigh==> NG_range_color3_N_remap2_color3[remap]
+    style NG_range_color3_outhighINT fill:#0bb, color:#111
+    NG_range_color3_N_gamma_color3[multiply] --".in"--> NG_range_color3_N_remap2_color3[remap]
+    NG_range_color3_N_pow_color3[power] --".in1"--> NG_range_color3_N_gamma_color3[multiply]
+    NG_range_color3_N_abs_color3[absval] --".in1"--> NG_range_color3_N_pow_color3[power]
+    NG_range_color3_N_remap1_color3[remap] --".in"--> NG_range_color3_N_abs_color3[absval]
+    NG_range_color3_inINT([in]) ==.in==> NG_range_color3_N_remap1_color3[remap]
+    style NG_range_color3_inINT fill:#0bb, color:#111
+    NG_range_color3_inlowINT([inlow]) ==.inlow==> NG_range_color3_N_remap1_color3[remap]
+    style NG_range_color3_inlowINT fill:#0bb, color:#111
+    NG_range_color3_inhighINT([inhigh]) ==.inhigh==> NG_range_color3_N_remap1_color3[remap]
+    style NG_range_color3_inhighINT fill:#0bb, color:#111
+    NG_range_color3_N_recip_color3[divide] --".in2"--> NG_range_color3_N_pow_color3[power]
+    NG_range_color3_gammaINT([gamma]) ==.in2==> NG_range_color3_N_recip_color3[divide]
+    style NG_range_color3_gammaINT fill:#0bb, color:#111
+    NG_range_color3_N_sign_color3[sign] --".in2"--> NG_range_color3_N_gamma_color3[multiply]
+    NG_range_color3_N_remap1_color3[remap] --".in"--> NG_range_color3_N_sign_color3[sign]
+    NG_range_color3_N_remap2_color3[remap] --".in2"--> NG_range_color3_N_switch_color3{ifequal}
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -8990,6 +12318,43 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_range_color4
+
+
+```mermaid
+graph LR; 
+    NG_range_color4_N_switch_color4{ifequal} --> NG_range_color4_out([out])
+    style NG_range_color4_out fill:#1b1, color:#111
+    NG_range_color4_doclampINT([doclamp]) ==.value1==> NG_range_color4_N_switch_color4[ifequal]
+    style NG_range_color4_doclampINT fill:#0bb, color:#111
+    NG_range_color4_N_clamp_color4[clamp] --".in1"--> NG_range_color4_N_switch_color4{ifequal}
+    NG_range_color4_outlowINT([outlow]) ==.low==> NG_range_color4_N_clamp_color4[clamp]
+    style NG_range_color4_outlowINT fill:#0bb, color:#111
+    NG_range_color4_outhighINT([outhigh]) ==.high==> NG_range_color4_N_clamp_color4[clamp]
+    style NG_range_color4_outhighINT fill:#0bb, color:#111
+    NG_range_color4_N_remap2_color4[remap] --".in"--> NG_range_color4_N_clamp_color4[clamp]
+    NG_range_color4_outlowINT([outlow]) ==.outlow==> NG_range_color4_N_remap2_color4[remap]
+    style NG_range_color4_outlowINT fill:#0bb, color:#111
+    NG_range_color4_outhighINT([outhigh]) ==.outhigh==> NG_range_color4_N_remap2_color4[remap]
+    style NG_range_color4_outhighINT fill:#0bb, color:#111
+    NG_range_color4_N_gamma_color4[multiply] --".in"--> NG_range_color4_N_remap2_color4[remap]
+    NG_range_color4_N_pow_color4[power] --".in1"--> NG_range_color4_N_gamma_color4[multiply]
+    NG_range_color4_N_abs_color4[absval] --".in1"--> NG_range_color4_N_pow_color4[power]
+    NG_range_color4_N_remap1_color4[remap] --".in"--> NG_range_color4_N_abs_color4[absval]
+    NG_range_color4_inINT([in]) ==.in==> NG_range_color4_N_remap1_color4[remap]
+    style NG_range_color4_inINT fill:#0bb, color:#111
+    NG_range_color4_inlowINT([inlow]) ==.inlow==> NG_range_color4_N_remap1_color4[remap]
+    style NG_range_color4_inlowINT fill:#0bb, color:#111
+    NG_range_color4_inhighINT([inhigh]) ==.inhigh==> NG_range_color4_N_remap1_color4[remap]
+    style NG_range_color4_inhighINT fill:#0bb, color:#111
+    NG_range_color4_N_recip_color4[divide] --".in2"--> NG_range_color4_N_pow_color4[power]
+    NG_range_color4_gammaINT([gamma]) ==.in2==> NG_range_color4_N_recip_color4[divide]
+    style NG_range_color4_gammaINT fill:#0bb, color:#111
+    NG_range_color4_N_sign_color4[sign] --".in2"--> NG_range_color4_N_gamma_color4[multiply]
+    NG_range_color4_N_remap1_color4[remap] --".in"--> NG_range_color4_N_sign_color4[sign]
+    NG_range_color4_N_remap2_color4[remap] --".in2"--> NG_range_color4_N_switch_color4{ifequal}
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9012,6 +12377,43 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_range_vector2
+
+
+```mermaid
+graph LR; 
+    NG_range_vector2_N_switch_vector2{ifequal} --> NG_range_vector2_out([out])
+    style NG_range_vector2_out fill:#1b1, color:#111
+    NG_range_vector2_doclampINT([doclamp]) ==.value1==> NG_range_vector2_N_switch_vector2[ifequal]
+    style NG_range_vector2_doclampINT fill:#0bb, color:#111
+    NG_range_vector2_N_clamp_vector2[clamp] --".in1"--> NG_range_vector2_N_switch_vector2{ifequal}
+    NG_range_vector2_outlowINT([outlow]) ==.low==> NG_range_vector2_N_clamp_vector2[clamp]
+    style NG_range_vector2_outlowINT fill:#0bb, color:#111
+    NG_range_vector2_outhighINT([outhigh]) ==.high==> NG_range_vector2_N_clamp_vector2[clamp]
+    style NG_range_vector2_outhighINT fill:#0bb, color:#111
+    NG_range_vector2_N_remap2_vector2[remap] --".in"--> NG_range_vector2_N_clamp_vector2[clamp]
+    NG_range_vector2_outlowINT([outlow]) ==.outlow==> NG_range_vector2_N_remap2_vector2[remap]
+    style NG_range_vector2_outlowINT fill:#0bb, color:#111
+    NG_range_vector2_outhighINT([outhigh]) ==.outhigh==> NG_range_vector2_N_remap2_vector2[remap]
+    style NG_range_vector2_outhighINT fill:#0bb, color:#111
+    NG_range_vector2_N_gamma_vector2[multiply] --".in"--> NG_range_vector2_N_remap2_vector2[remap]
+    NG_range_vector2_N_pow_vector2[power] --".in1"--> NG_range_vector2_N_gamma_vector2[multiply]
+    NG_range_vector2_N_abs_vector2[absval] --".in1"--> NG_range_vector2_N_pow_vector2[power]
+    NG_range_vector2_N_remap1_vector2[remap] --".in"--> NG_range_vector2_N_abs_vector2[absval]
+    NG_range_vector2_inINT([in]) ==.in==> NG_range_vector2_N_remap1_vector2[remap]
+    style NG_range_vector2_inINT fill:#0bb, color:#111
+    NG_range_vector2_inlowINT([inlow]) ==.inlow==> NG_range_vector2_N_remap1_vector2[remap]
+    style NG_range_vector2_inlowINT fill:#0bb, color:#111
+    NG_range_vector2_inhighINT([inhigh]) ==.inhigh==> NG_range_vector2_N_remap1_vector2[remap]
+    style NG_range_vector2_inhighINT fill:#0bb, color:#111
+    NG_range_vector2_N_recip_vector2[divide] --".in2"--> NG_range_vector2_N_pow_vector2[power]
+    NG_range_vector2_gammaINT([gamma]) ==.in2==> NG_range_vector2_N_recip_vector2[divide]
+    style NG_range_vector2_gammaINT fill:#0bb, color:#111
+    NG_range_vector2_N_sign_vector2[sign] --".in2"--> NG_range_vector2_N_gamma_vector2[multiply]
+    NG_range_vector2_N_remap1_vector2[remap] --".in"--> NG_range_vector2_N_sign_vector2[sign]
+    NG_range_vector2_N_remap2_vector2[remap] --".in2"--> NG_range_vector2_N_switch_vector2{ifequal}
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9034,6 +12436,43 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_range_vector3
+
+
+```mermaid
+graph LR; 
+    NG_range_vector3_N_switch_vector3{ifequal} --> NG_range_vector3_out([out])
+    style NG_range_vector3_out fill:#1b1, color:#111
+    NG_range_vector3_doclampINT([doclamp]) ==.value1==> NG_range_vector3_N_switch_vector3[ifequal]
+    style NG_range_vector3_doclampINT fill:#0bb, color:#111
+    NG_range_vector3_N_clamp_vector3[clamp] --".in1"--> NG_range_vector3_N_switch_vector3{ifequal}
+    NG_range_vector3_outlowINT([outlow]) ==.low==> NG_range_vector3_N_clamp_vector3[clamp]
+    style NG_range_vector3_outlowINT fill:#0bb, color:#111
+    NG_range_vector3_outhighINT([outhigh]) ==.high==> NG_range_vector3_N_clamp_vector3[clamp]
+    style NG_range_vector3_outhighINT fill:#0bb, color:#111
+    NG_range_vector3_N_remap2_vector3[remap] --".in"--> NG_range_vector3_N_clamp_vector3[clamp]
+    NG_range_vector3_outlowINT([outlow]) ==.outlow==> NG_range_vector3_N_remap2_vector3[remap]
+    style NG_range_vector3_outlowINT fill:#0bb, color:#111
+    NG_range_vector3_outhighINT([outhigh]) ==.outhigh==> NG_range_vector3_N_remap2_vector3[remap]
+    style NG_range_vector3_outhighINT fill:#0bb, color:#111
+    NG_range_vector3_N_gamma_vector3[multiply] --".in"--> NG_range_vector3_N_remap2_vector3[remap]
+    NG_range_vector3_N_pow_vector3[power] --".in1"--> NG_range_vector3_N_gamma_vector3[multiply]
+    NG_range_vector3_N_abs_vector3[absval] --".in1"--> NG_range_vector3_N_pow_vector3[power]
+    NG_range_vector3_N_remap1_vector3[remap] --".in"--> NG_range_vector3_N_abs_vector3[absval]
+    NG_range_vector3_inINT([in]) ==.in==> NG_range_vector3_N_remap1_vector3[remap]
+    style NG_range_vector3_inINT fill:#0bb, color:#111
+    NG_range_vector3_inlowINT([inlow]) ==.inlow==> NG_range_vector3_N_remap1_vector3[remap]
+    style NG_range_vector3_inlowINT fill:#0bb, color:#111
+    NG_range_vector3_inhighINT([inhigh]) ==.inhigh==> NG_range_vector3_N_remap1_vector3[remap]
+    style NG_range_vector3_inhighINT fill:#0bb, color:#111
+    NG_range_vector3_N_recip_vector3[divide] --".in2"--> NG_range_vector3_N_pow_vector3[power]
+    NG_range_vector3_gammaINT([gamma]) ==.in2==> NG_range_vector3_N_recip_vector3[divide]
+    style NG_range_vector3_gammaINT fill:#0bb, color:#111
+    NG_range_vector3_N_sign_vector3[sign] --".in2"--> NG_range_vector3_N_gamma_vector3[multiply]
+    NG_range_vector3_N_remap1_vector3[remap] --".in"--> NG_range_vector3_N_sign_vector3[sign]
+    NG_range_vector3_N_remap2_vector3[remap] --".in2"--> NG_range_vector3_N_switch_vector3{ifequal}
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9056,6 +12495,43 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_range_vector4
+
+
+```mermaid
+graph LR; 
+    NG_range_vector4_N_switch_vector4{ifequal} --> NG_range_vector4_out([out])
+    style NG_range_vector4_out fill:#1b1, color:#111
+    NG_range_vector4_doclampINT([doclamp]) ==.value1==> NG_range_vector4_N_switch_vector4[ifequal]
+    style NG_range_vector4_doclampINT fill:#0bb, color:#111
+    NG_range_vector4_N_clamp_vector4[clamp] --".in1"--> NG_range_vector4_N_switch_vector4{ifequal}
+    NG_range_vector4_outlowINT([outlow]) ==.low==> NG_range_vector4_N_clamp_vector4[clamp]
+    style NG_range_vector4_outlowINT fill:#0bb, color:#111
+    NG_range_vector4_outhighINT([outhigh]) ==.high==> NG_range_vector4_N_clamp_vector4[clamp]
+    style NG_range_vector4_outhighINT fill:#0bb, color:#111
+    NG_range_vector4_N_remap2_vector4[remap] --".in"--> NG_range_vector4_N_clamp_vector4[clamp]
+    NG_range_vector4_outlowINT([outlow]) ==.outlow==> NG_range_vector4_N_remap2_vector4[remap]
+    style NG_range_vector4_outlowINT fill:#0bb, color:#111
+    NG_range_vector4_outhighINT([outhigh]) ==.outhigh==> NG_range_vector4_N_remap2_vector4[remap]
+    style NG_range_vector4_outhighINT fill:#0bb, color:#111
+    NG_range_vector4_N_gamma_vector4[multiply] --".in"--> NG_range_vector4_N_remap2_vector4[remap]
+    NG_range_vector4_N_pow_vector4[power] --".in1"--> NG_range_vector4_N_gamma_vector4[multiply]
+    NG_range_vector4_N_abs_vector4[absval] --".in1"--> NG_range_vector4_N_pow_vector4[power]
+    NG_range_vector4_N_remap1_vector4[remap] --".in"--> NG_range_vector4_N_abs_vector4[absval]
+    NG_range_vector4_inINT([in]) ==.in==> NG_range_vector4_N_remap1_vector4[remap]
+    style NG_range_vector4_inINT fill:#0bb, color:#111
+    NG_range_vector4_inlowINT([inlow]) ==.inlow==> NG_range_vector4_N_remap1_vector4[remap]
+    style NG_range_vector4_inlowINT fill:#0bb, color:#111
+    NG_range_vector4_inhighINT([inhigh]) ==.inhigh==> NG_range_vector4_N_remap1_vector4[remap]
+    style NG_range_vector4_inhighINT fill:#0bb, color:#111
+    NG_range_vector4_N_recip_vector4[divide] --".in2"--> NG_range_vector4_N_pow_vector4[power]
+    NG_range_vector4_gammaINT([gamma]) ==.in2==> NG_range_vector4_N_recip_vector4[divide]
+    style NG_range_vector4_gammaINT fill:#0bb, color:#111
+    NG_range_vector4_N_sign_vector4[sign] --".in2"--> NG_range_vector4_N_gamma_vector4[multiply]
+    NG_range_vector4_N_remap1_vector4[remap] --".in"--> NG_range_vector4_N_sign_vector4[sign]
+    NG_range_vector4_N_remap2_vector4[remap] --".in2"--> NG_range_vector4_N_switch_vector4{ifequal}
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9078,6 +12554,43 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_range_color3FA
+
+
+```mermaid
+graph LR; 
+    NG_range_color3FA_N_switch_color3FA{ifequal} --> NG_range_color3FA_out([out])
+    style NG_range_color3FA_out fill:#1b1, color:#111
+    NG_range_color3FA_doclampINT([doclamp]) ==.value1==> NG_range_color3FA_N_switch_color3FA[ifequal]
+    style NG_range_color3FA_doclampINT fill:#0bb, color:#111
+    NG_range_color3FA_N_clamp_color3FA[clamp] --".in1"--> NG_range_color3FA_N_switch_color3FA{ifequal}
+    NG_range_color3FA_outlowINT([outlow]) ==.low==> NG_range_color3FA_N_clamp_color3FA[clamp]
+    style NG_range_color3FA_outlowINT fill:#0bb, color:#111
+    NG_range_color3FA_outhighINT([outhigh]) ==.high==> NG_range_color3FA_N_clamp_color3FA[clamp]
+    style NG_range_color3FA_outhighINT fill:#0bb, color:#111
+    NG_range_color3FA_N_remap2_color3FA[remap] --".in"--> NG_range_color3FA_N_clamp_color3FA[clamp]
+    NG_range_color3FA_outlowINT([outlow]) ==.outlow==> NG_range_color3FA_N_remap2_color3FA[remap]
+    style NG_range_color3FA_outlowINT fill:#0bb, color:#111
+    NG_range_color3FA_outhighINT([outhigh]) ==.outhigh==> NG_range_color3FA_N_remap2_color3FA[remap]
+    style NG_range_color3FA_outhighINT fill:#0bb, color:#111
+    NG_range_color3FA_N_gamma_color3FA[multiply] --".in"--> NG_range_color3FA_N_remap2_color3FA[remap]
+    NG_range_color3FA_N_pow_color3FA[power] --".in1"--> NG_range_color3FA_N_gamma_color3FA[multiply]
+    NG_range_color3FA_N_abs_color3FA[absval] --".in1"--> NG_range_color3FA_N_pow_color3FA[power]
+    NG_range_color3FA_N_remap1_color3FA[remap] --".in"--> NG_range_color3FA_N_abs_color3FA[absval]
+    NG_range_color3FA_inINT([in]) ==.in==> NG_range_color3FA_N_remap1_color3FA[remap]
+    style NG_range_color3FA_inINT fill:#0bb, color:#111
+    NG_range_color3FA_inlowINT([inlow]) ==.inlow==> NG_range_color3FA_N_remap1_color3FA[remap]
+    style NG_range_color3FA_inlowINT fill:#0bb, color:#111
+    NG_range_color3FA_inhighINT([inhigh]) ==.inhigh==> NG_range_color3FA_N_remap1_color3FA[remap]
+    style NG_range_color3FA_inhighINT fill:#0bb, color:#111
+    NG_range_color3FA_N_recip_color3FA[divide] --".in2"--> NG_range_color3FA_N_pow_color3FA[power]
+    NG_range_color3FA_gammaINT([gamma]) ==.in2==> NG_range_color3FA_N_recip_color3FA[divide]
+    style NG_range_color3FA_gammaINT fill:#0bb, color:#111
+    NG_range_color3FA_N_sign_color3FA[sign] --".in2"--> NG_range_color3FA_N_gamma_color3FA[multiply]
+    NG_range_color3FA_N_remap1_color3FA[remap] --".in"--> NG_range_color3FA_N_sign_color3FA[sign]
+    NG_range_color3FA_N_remap2_color3FA[remap] --".in2"--> NG_range_color3FA_N_switch_color3FA{ifequal}
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9100,6 +12613,43 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_range_color4FA
+
+
+```mermaid
+graph LR; 
+    NG_range_color4FA_N_switch_color4FA{ifequal} --> NG_range_color4FA_out([out])
+    style NG_range_color4FA_out fill:#1b1, color:#111
+    NG_range_color4FA_doclampINT([doclamp]) ==.value1==> NG_range_color4FA_N_switch_color4FA[ifequal]
+    style NG_range_color4FA_doclampINT fill:#0bb, color:#111
+    NG_range_color4FA_N_clamp_color4FA[clamp] --".in1"--> NG_range_color4FA_N_switch_color4FA{ifequal}
+    NG_range_color4FA_outlowINT([outlow]) ==.low==> NG_range_color4FA_N_clamp_color4FA[clamp]
+    style NG_range_color4FA_outlowINT fill:#0bb, color:#111
+    NG_range_color4FA_outhighINT([outhigh]) ==.high==> NG_range_color4FA_N_clamp_color4FA[clamp]
+    style NG_range_color4FA_outhighINT fill:#0bb, color:#111
+    NG_range_color4FA_N_remap2_color4FA[remap] --".in"--> NG_range_color4FA_N_clamp_color4FA[clamp]
+    NG_range_color4FA_outlowINT([outlow]) ==.outlow==> NG_range_color4FA_N_remap2_color4FA[remap]
+    style NG_range_color4FA_outlowINT fill:#0bb, color:#111
+    NG_range_color4FA_outhighINT([outhigh]) ==.outhigh==> NG_range_color4FA_N_remap2_color4FA[remap]
+    style NG_range_color4FA_outhighINT fill:#0bb, color:#111
+    NG_range_color4FA_N_gamma_color4FA[multiply] --".in"--> NG_range_color4FA_N_remap2_color4FA[remap]
+    NG_range_color4FA_N_pow_color4FA[power] --".in1"--> NG_range_color4FA_N_gamma_color4FA[multiply]
+    NG_range_color4FA_N_abs_color4FA[absval] --".in1"--> NG_range_color4FA_N_pow_color4FA[power]
+    NG_range_color4FA_N_remap1_color4FA[remap] --".in"--> NG_range_color4FA_N_abs_color4FA[absval]
+    NG_range_color4FA_inINT([in]) ==.in==> NG_range_color4FA_N_remap1_color4FA[remap]
+    style NG_range_color4FA_inINT fill:#0bb, color:#111
+    NG_range_color4FA_inlowINT([inlow]) ==.inlow==> NG_range_color4FA_N_remap1_color4FA[remap]
+    style NG_range_color4FA_inlowINT fill:#0bb, color:#111
+    NG_range_color4FA_inhighINT([inhigh]) ==.inhigh==> NG_range_color4FA_N_remap1_color4FA[remap]
+    style NG_range_color4FA_inhighINT fill:#0bb, color:#111
+    NG_range_color4FA_N_recip_color4FA[divide] --".in2"--> NG_range_color4FA_N_pow_color4FA[power]
+    NG_range_color4FA_gammaINT([gamma]) ==.in2==> NG_range_color4FA_N_recip_color4FA[divide]
+    style NG_range_color4FA_gammaINT fill:#0bb, color:#111
+    NG_range_color4FA_N_sign_color4FA[sign] --".in2"--> NG_range_color4FA_N_gamma_color4FA[multiply]
+    NG_range_color4FA_N_remap1_color4FA[remap] --".in"--> NG_range_color4FA_N_sign_color4FA[sign]
+    NG_range_color4FA_N_remap2_color4FA[remap] --".in2"--> NG_range_color4FA_N_switch_color4FA{ifequal}
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9122,6 +12672,43 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_range_vector2FA
+
+
+```mermaid
+graph LR; 
+    NG_range_vector2FA_N_switch_vector2FA{ifequal} --> NG_range_vector2FA_out([out])
+    style NG_range_vector2FA_out fill:#1b1, color:#111
+    NG_range_vector2FA_doclampINT([doclamp]) ==.value1==> NG_range_vector2FA_N_switch_vector2FA[ifequal]
+    style NG_range_vector2FA_doclampINT fill:#0bb, color:#111
+    NG_range_vector2FA_N_clamp_vector2FA[clamp] --".in1"--> NG_range_vector2FA_N_switch_vector2FA{ifequal}
+    NG_range_vector2FA_outlowINT([outlow]) ==.low==> NG_range_vector2FA_N_clamp_vector2FA[clamp]
+    style NG_range_vector2FA_outlowINT fill:#0bb, color:#111
+    NG_range_vector2FA_outhighINT([outhigh]) ==.high==> NG_range_vector2FA_N_clamp_vector2FA[clamp]
+    style NG_range_vector2FA_outhighINT fill:#0bb, color:#111
+    NG_range_vector2FA_N_remap2_vector2FA[remap] --".in"--> NG_range_vector2FA_N_clamp_vector2FA[clamp]
+    NG_range_vector2FA_outlowINT([outlow]) ==.outlow==> NG_range_vector2FA_N_remap2_vector2FA[remap]
+    style NG_range_vector2FA_outlowINT fill:#0bb, color:#111
+    NG_range_vector2FA_outhighINT([outhigh]) ==.outhigh==> NG_range_vector2FA_N_remap2_vector2FA[remap]
+    style NG_range_vector2FA_outhighINT fill:#0bb, color:#111
+    NG_range_vector2FA_N_gamma_vector2FA[multiply] --".in"--> NG_range_vector2FA_N_remap2_vector2FA[remap]
+    NG_range_vector2FA_N_pow_vector2FA[power] --".in1"--> NG_range_vector2FA_N_gamma_vector2FA[multiply]
+    NG_range_vector2FA_N_abs_vector2FA[absval] --".in1"--> NG_range_vector2FA_N_pow_vector2FA[power]
+    NG_range_vector2FA_N_remap1_vector2FA[remap] --".in"--> NG_range_vector2FA_N_abs_vector2FA[absval]
+    NG_range_vector2FA_inINT([in]) ==.in==> NG_range_vector2FA_N_remap1_vector2FA[remap]
+    style NG_range_vector2FA_inINT fill:#0bb, color:#111
+    NG_range_vector2FA_inlowINT([inlow]) ==.inlow==> NG_range_vector2FA_N_remap1_vector2FA[remap]
+    style NG_range_vector2FA_inlowINT fill:#0bb, color:#111
+    NG_range_vector2FA_inhighINT([inhigh]) ==.inhigh==> NG_range_vector2FA_N_remap1_vector2FA[remap]
+    style NG_range_vector2FA_inhighINT fill:#0bb, color:#111
+    NG_range_vector2FA_N_recip_vector2FA[divide] --".in2"--> NG_range_vector2FA_N_pow_vector2FA[power]
+    NG_range_vector2FA_gammaINT([gamma]) ==.in2==> NG_range_vector2FA_N_recip_vector2FA[divide]
+    style NG_range_vector2FA_gammaINT fill:#0bb, color:#111
+    NG_range_vector2FA_N_sign_vector2FA[sign] --".in2"--> NG_range_vector2FA_N_gamma_vector2FA[multiply]
+    NG_range_vector2FA_N_remap1_vector2FA[remap] --".in"--> NG_range_vector2FA_N_sign_vector2FA[sign]
+    NG_range_vector2FA_N_remap2_vector2FA[remap] --".in2"--> NG_range_vector2FA_N_switch_vector2FA{ifequal}
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9144,6 +12731,43 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_range_vector3FA
+
+
+```mermaid
+graph LR; 
+    NG_range_vector3FA_N_switch_vector3FA{ifequal} --> NG_range_vector3FA_out([out])
+    style NG_range_vector3FA_out fill:#1b1, color:#111
+    NG_range_vector3FA_doclampINT([doclamp]) ==.value1==> NG_range_vector3FA_N_switch_vector3FA[ifequal]
+    style NG_range_vector3FA_doclampINT fill:#0bb, color:#111
+    NG_range_vector3FA_N_clamp_vector3FA[clamp] --".in1"--> NG_range_vector3FA_N_switch_vector3FA{ifequal}
+    NG_range_vector3FA_outlowINT([outlow]) ==.low==> NG_range_vector3FA_N_clamp_vector3FA[clamp]
+    style NG_range_vector3FA_outlowINT fill:#0bb, color:#111
+    NG_range_vector3FA_outhighINT([outhigh]) ==.high==> NG_range_vector3FA_N_clamp_vector3FA[clamp]
+    style NG_range_vector3FA_outhighINT fill:#0bb, color:#111
+    NG_range_vector3FA_N_remap2_vector3FA[remap] --".in"--> NG_range_vector3FA_N_clamp_vector3FA[clamp]
+    NG_range_vector3FA_outlowINT([outlow]) ==.outlow==> NG_range_vector3FA_N_remap2_vector3FA[remap]
+    style NG_range_vector3FA_outlowINT fill:#0bb, color:#111
+    NG_range_vector3FA_outhighINT([outhigh]) ==.outhigh==> NG_range_vector3FA_N_remap2_vector3FA[remap]
+    style NG_range_vector3FA_outhighINT fill:#0bb, color:#111
+    NG_range_vector3FA_N_gamma_vector3FA[multiply] --".in"--> NG_range_vector3FA_N_remap2_vector3FA[remap]
+    NG_range_vector3FA_N_pow_vector3FA[power] --".in1"--> NG_range_vector3FA_N_gamma_vector3FA[multiply]
+    NG_range_vector3FA_N_abs_vector3FA[absval] --".in1"--> NG_range_vector3FA_N_pow_vector3FA[power]
+    NG_range_vector3FA_N_remap1_vector3FA[remap] --".in"--> NG_range_vector3FA_N_abs_vector3FA[absval]
+    NG_range_vector3FA_inINT([in]) ==.in==> NG_range_vector3FA_N_remap1_vector3FA[remap]
+    style NG_range_vector3FA_inINT fill:#0bb, color:#111
+    NG_range_vector3FA_inlowINT([inlow]) ==.inlow==> NG_range_vector3FA_N_remap1_vector3FA[remap]
+    style NG_range_vector3FA_inlowINT fill:#0bb, color:#111
+    NG_range_vector3FA_inhighINT([inhigh]) ==.inhigh==> NG_range_vector3FA_N_remap1_vector3FA[remap]
+    style NG_range_vector3FA_inhighINT fill:#0bb, color:#111
+    NG_range_vector3FA_N_recip_vector3FA[divide] --".in2"--> NG_range_vector3FA_N_pow_vector3FA[power]
+    NG_range_vector3FA_gammaINT([gamma]) ==.in2==> NG_range_vector3FA_N_recip_vector3FA[divide]
+    style NG_range_vector3FA_gammaINT fill:#0bb, color:#111
+    NG_range_vector3FA_N_sign_vector3FA[sign] --".in2"--> NG_range_vector3FA_N_gamma_vector3FA[multiply]
+    NG_range_vector3FA_N_remap1_vector3FA[remap] --".in"--> NG_range_vector3FA_N_sign_vector3FA[sign]
+    NG_range_vector3FA_N_remap2_vector3FA[remap] --".in2"--> NG_range_vector3FA_N_switch_vector3FA{ifequal}
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9166,6 +12790,43 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_range_vector4FA
+
+
+```mermaid
+graph LR; 
+    NG_range_vector4FA_N_switch_vector4FA{ifequal} --> NG_range_vector4FA_out([out])
+    style NG_range_vector4FA_out fill:#1b1, color:#111
+    NG_range_vector4FA_doclampINT([doclamp]) ==.value1==> NG_range_vector4FA_N_switch_vector4FA[ifequal]
+    style NG_range_vector4FA_doclampINT fill:#0bb, color:#111
+    NG_range_vector4FA_N_clamp_vector4FA[clamp] --".in1"--> NG_range_vector4FA_N_switch_vector4FA{ifequal}
+    NG_range_vector4FA_outlowINT([outlow]) ==.low==> NG_range_vector4FA_N_clamp_vector4FA[clamp]
+    style NG_range_vector4FA_outlowINT fill:#0bb, color:#111
+    NG_range_vector4FA_outhighINT([outhigh]) ==.high==> NG_range_vector4FA_N_clamp_vector4FA[clamp]
+    style NG_range_vector4FA_outhighINT fill:#0bb, color:#111
+    NG_range_vector4FA_N_remap2_vector4FA[remap] --".in"--> NG_range_vector4FA_N_clamp_vector4FA[clamp]
+    NG_range_vector4FA_outlowINT([outlow]) ==.outlow==> NG_range_vector4FA_N_remap2_vector4FA[remap]
+    style NG_range_vector4FA_outlowINT fill:#0bb, color:#111
+    NG_range_vector4FA_outhighINT([outhigh]) ==.outhigh==> NG_range_vector4FA_N_remap2_vector4FA[remap]
+    style NG_range_vector4FA_outhighINT fill:#0bb, color:#111
+    NG_range_vector4FA_N_gamma_vector4FA[multiply] --".in"--> NG_range_vector4FA_N_remap2_vector4FA[remap]
+    NG_range_vector4FA_N_pow_vector4FA[power] --".in1"--> NG_range_vector4FA_N_gamma_vector4FA[multiply]
+    NG_range_vector4FA_N_abs_vector4FA[absval] --".in1"--> NG_range_vector4FA_N_pow_vector4FA[power]
+    NG_range_vector4FA_N_remap1_vector4FA[remap] --".in"--> NG_range_vector4FA_N_abs_vector4FA[absval]
+    NG_range_vector4FA_inINT([in]) ==.in==> NG_range_vector4FA_N_remap1_vector4FA[remap]
+    style NG_range_vector4FA_inINT fill:#0bb, color:#111
+    NG_range_vector4FA_inlowINT([inlow]) ==.inlow==> NG_range_vector4FA_N_remap1_vector4FA[remap]
+    style NG_range_vector4FA_inlowINT fill:#0bb, color:#111
+    NG_range_vector4FA_inhighINT([inhigh]) ==.inhigh==> NG_range_vector4FA_N_remap1_vector4FA[remap]
+    style NG_range_vector4FA_inhighINT fill:#0bb, color:#111
+    NG_range_vector4FA_N_recip_vector4FA[divide] --".in2"--> NG_range_vector4FA_N_pow_vector4FA[power]
+    NG_range_vector4FA_gammaINT([gamma]) ==.in2==> NG_range_vector4FA_N_recip_vector4FA[divide]
+    style NG_range_vector4FA_gammaINT fill:#0bb, color:#111
+    NG_range_vector4FA_N_sign_vector4FA[sign] --".in2"--> NG_range_vector4FA_N_gamma_vector4FA[multiply]
+    NG_range_vector4FA_N_remap1_vector4FA[remap] --".in"--> NG_range_vector4FA_N_sign_vector4FA[sign]
+    NG_range_vector4FA_N_remap2_vector4FA[remap] --".in2"--> NG_range_vector4FA_N_switch_vector4FA{ifequal}
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9189,6 +12850,27 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_hsvadjust_color3
+
+
+```mermaid
+graph LR; 
+    NG_hsvadjust_color3_N_torgb_color3[hsvtorgb] --> NG_hsvadjust_color3_out([out])
+    style NG_hsvadjust_color3_out fill:#1b1, color:#111
+    NG_hsvadjust_color3_N_tmp3_color3[multiply] --".in"--> NG_hsvadjust_color3_N_torgb_color3[hsvtorgb]
+    NG_hsvadjust_color3_N_tmp2_color3[add] --".in1"--> NG_hsvadjust_color3_N_tmp3_color3[multiply]
+    NG_hsvadjust_color3_N_inhsv_color3[rgbtohsv] --".in1"--> NG_hsvadjust_color3_N_tmp2_color3[add]
+    NG_hsvadjust_color3_inINT([in]) ==.in==> NG_hsvadjust_color3_N_inhsv_color3[rgbtohsv]
+    style NG_hsvadjust_color3_inINT fill:#0bb, color:#111
+    NG_hsvadjust_color3_N_hchans_color3[multiply] --".in2"--> NG_hsvadjust_color3_N_tmp2_color3[add]
+    NG_hsvadjust_color3_N_camount_color3[convert] --".in1"--> NG_hsvadjust_color3_N_hchans_color3[multiply]
+    NG_hsvadjust_color3_amountINT([amount]) ==.in==> NG_hsvadjust_color3_N_camount_color3[convert]
+    style NG_hsvadjust_color3_amountINT fill:#0bb, color:#111
+    NG_hsvadjust_color3_N_svchans_color3[add] --".in2"--> NG_hsvadjust_color3_N_tmp3_color3[multiply]
+    NG_hsvadjust_color3_N_tmp1_color3[multiply] --".in1"--> NG_hsvadjust_color3_N_svchans_color3[add]
+    NG_hsvadjust_color3_N_camount_color3[convert] --".in1"--> NG_hsvadjust_color3_N_tmp1_color3[multiply]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9206,6 +12888,28 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_hsvadjust_color4
+
+
+```mermaid
+graph LR; 
+    NG_hsvadjust_color4_N_torgb_color4[hsvtorgb] --> NG_hsvadjust_color4_out([out])
+    style NG_hsvadjust_color4_out fill:#1b1, color:#111
+    NG_hsvadjust_color4_N_tmp3_color4[multiply] --".in"--> NG_hsvadjust_color4_N_torgb_color4[hsvtorgb]
+    NG_hsvadjust_color4_N_tmp2_color4[add] --".in1"--> NG_hsvadjust_color4_N_tmp3_color4[multiply]
+    NG_hsvadjust_color4_N_inhsv_color4[rgbtohsv] --".in1"--> NG_hsvadjust_color4_N_tmp2_color4[add]
+    NG_hsvadjust_color4_inINT([in]) ==.in==> NG_hsvadjust_color4_N_inhsv_color4[rgbtohsv]
+    style NG_hsvadjust_color4_inINT fill:#0bb, color:#111
+    NG_hsvadjust_color4_N_hchans_color4[multiply] --".in2"--> NG_hsvadjust_color4_N_tmp2_color4[add]
+    NG_hsvadjust_color4_N_camount_color4[convert] --".in1"--> NG_hsvadjust_color4_N_hchans_color4[multiply]
+    NG_hsvadjust_color4_N_camt_color3[convert] --".in"--> NG_hsvadjust_color4_N_camount_color4[convert]
+    NG_hsvadjust_color4_amountINT([amount]) ==.in==> NG_hsvadjust_color4_N_camt_color3[convert]
+    style NG_hsvadjust_color4_amountINT fill:#0bb, color:#111
+    NG_hsvadjust_color4_N_svchans_color4[add] --".in2"--> NG_hsvadjust_color4_N_tmp3_color4[multiply]
+    NG_hsvadjust_color4_N_tmp1_color4[multiply] --".in1"--> NG_hsvadjust_color4_N_svchans_color4[add]
+    NG_hsvadjust_color4_N_camount_color4[convert] --".in1"--> NG_hsvadjust_color4_N_tmp1_color4[multiply]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9224,6 +12928,24 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_saturate_color3
+
+
+```mermaid
+graph LR; 
+    NG_saturate_color3_N_mix_color3[mix] --> NG_saturate_color3_out([out])
+    style NG_saturate_color3_out fill:#1b1, color:#111
+    NG_saturate_color3_inINT([in]) ==.fg==> NG_saturate_color3_N_mix_color3[mix]
+    style NG_saturate_color3_inINT fill:#0bb, color:#111
+    NG_saturate_color3_amountINT([amount]) ==.mix==> NG_saturate_color3_N_mix_color3[mix]
+    style NG_saturate_color3_amountINT fill:#0bb, color:#111
+    NG_saturate_color3_N_gray_color3[luminance] --".bg"--> NG_saturate_color3_N_mix_color3[mix]
+    NG_saturate_color3_inINT([in]) ==.in==> NG_saturate_color3_N_gray_color3[luminance]
+    style NG_saturate_color3_inINT fill:#0bb, color:#111
+    NG_saturate_color3_lumacoeffsINT([lumacoeffs]) ==.lumacoeffs==> NG_saturate_color3_N_gray_color3[luminance]
+    style NG_saturate_color3_lumacoeffsINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9242,6 +12964,24 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_saturate_color4
+
+
+```mermaid
+graph LR; 
+    NG_saturate_color4_N_mix_color4[mix] --> NG_saturate_color4_out([out])
+    style NG_saturate_color4_out fill:#1b1, color:#111
+    NG_saturate_color4_inINT([in]) ==.fg==> NG_saturate_color4_N_mix_color4[mix]
+    style NG_saturate_color4_inINT fill:#0bb, color:#111
+    NG_saturate_color4_amountINT([amount]) ==.mix==> NG_saturate_color4_N_mix_color4[mix]
+    style NG_saturate_color4_amountINT fill:#0bb, color:#111
+    NG_saturate_color4_N_gray_color4[luminance] --".bg"--> NG_saturate_color4_N_mix_color4[mix]
+    NG_saturate_color4_inINT([in]) ==.in==> NG_saturate_color4_N_gray_color4[luminance]
+    style NG_saturate_color4_inINT fill:#0bb, color:#111
+    NG_saturate_color4_lumacoeffsINT([lumacoeffs]) ==.lumacoeffs==> NG_saturate_color4_N_gray_color4[luminance]
+    style NG_saturate_color4_lumacoeffsINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9261,6 +13001,45 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_colorcorrect_color3
+
+
+```mermaid
+graph LR; 
+    NG_colorcorrect_color3_N_exposure[multiply] --> NG_colorcorrect_color3_out([out])
+    style NG_colorcorrect_color3_out fill:#1b1, color:#111
+    NG_colorcorrect_color3_N_contrast[contrast] --".in1"--> NG_colorcorrect_color3_N_exposure[multiply]
+    NG_colorcorrect_color3_contrastINT([contrast]) ==.amount==> NG_colorcorrect_color3_N_contrast[contrast]
+    style NG_colorcorrect_color3_contrastINT fill:#0bb, color:#111
+    NG_colorcorrect_color3_contrastpivotINT([contrastpivot]) ==.pivot==> NG_colorcorrect_color3_N_contrast[contrast]
+    style NG_colorcorrect_color3_contrastpivotINT fill:#0bb, color:#111
+    NG_colorcorrect_color3_N_gain[multiply] --".in"--> NG_colorcorrect_color3_N_contrast[contrast]
+    NG_colorcorrect_color3_gainINT([gain]) ==.in2==> NG_colorcorrect_color3_N_gain[multiply]
+    style NG_colorcorrect_color3_gainINT fill:#0bb, color:#111
+    NG_colorcorrect_color3_N_liftadd[add] --".in1"--> NG_colorcorrect_color3_N_gain[multiply]
+    NG_colorcorrect_color3_liftINT([lift]) ==.in2==> NG_colorcorrect_color3_N_liftadd[add]
+    style NG_colorcorrect_color3_liftINT fill:#0bb, color:#111
+    NG_colorcorrect_color3_N_liftmult[multiply] --".in1"--> NG_colorcorrect_color3_N_liftadd[add]
+    NG_colorcorrect_color3_N_gamma[range] --".in1"--> NG_colorcorrect_color3_N_liftmult[multiply]
+    NG_colorcorrect_color3_gammaINT([gamma]) ==.gamma==> NG_colorcorrect_color3_N_gamma[range]
+    style NG_colorcorrect_color3_gammaINT fill:#0bb, color:#111
+    NG_colorcorrect_color3_N_saturation[saturate] --".in"--> NG_colorcorrect_color3_N_gamma[range]
+    NG_colorcorrect_color3_saturationINT([saturation]) ==.amount==> NG_colorcorrect_color3_N_saturation[saturate]
+    style NG_colorcorrect_color3_saturationINT fill:#0bb, color:#111
+    NG_colorcorrect_color3_N_hsvadjust[hsvadjust] --".in"--> NG_colorcorrect_color3_N_saturation[saturate]
+    NG_colorcorrect_color3_inINT([in]) ==.in==> NG_colorcorrect_color3_N_hsvadjust[hsvadjust]
+    style NG_colorcorrect_color3_inINT fill:#0bb, color:#111
+    NG_colorcorrect_color3_N_parm2hue[combine3] --".amount"--> NG_colorcorrect_color3_N_hsvadjust[hsvadjust]
+    NG_colorcorrect_color3_hueINT([hue]) ==.in1==> NG_colorcorrect_color3_N_parm2hue[combine3]
+    style NG_colorcorrect_color3_hueINT fill:#0bb, color:#111
+    NG_colorcorrect_color3_N_liftsubtract[subtract] --".in2"--> NG_colorcorrect_color3_N_liftmult[multiply]
+    NG_colorcorrect_color3_liftINT([lift]) ==.in2==> NG_colorcorrect_color3_N_liftsubtract[subtract]
+    style NG_colorcorrect_color3_liftINT fill:#0bb, color:#111
+    NG_colorcorrect_color3_N_exposurepwr[power] --".in2"--> NG_colorcorrect_color3_N_exposure[multiply]
+    NG_colorcorrect_color3_exposureINT([exposure]) ==.in2==> NG_colorcorrect_color3_N_exposurepwr[power]
+    style NG_colorcorrect_color3_exposureINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9285,6 +13064,56 @@
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_colorcorrect_color4
+
+
+```mermaid
+graph LR; 
+    NG_colorcorrect_color4_N_combine_with_alpha[combine4] --> NG_colorcorrect_color4_out([out])
+    style NG_colorcorrect_color4_out fill:#1b1, color:#111
+    NG_colorcorrect_color4_N_split_color[separate3] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutr([outr])
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutr fill:#1b1, color:#111
+    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutr --".in1"--> NG_colorcorrect_color4_N_combine_with_alpha[combine4]
+    NG_colorcorrect_color4_N_colorcorrect[colorcorrect] --".in"--> NG_colorcorrect_color4_N_split_color[separate3]
+    NG_colorcorrect_color4_hueINT([hue]) ==.hue==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
+    style NG_colorcorrect_color4_hueINT fill:#0bb, color:#111
+    NG_colorcorrect_color4_saturationINT([saturation]) ==.saturation==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
+    style NG_colorcorrect_color4_saturationINT fill:#0bb, color:#111
+    NG_colorcorrect_color4_gammaINT([gamma]) ==.gamma==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
+    style NG_colorcorrect_color4_gammaINT fill:#0bb, color:#111
+    NG_colorcorrect_color4_liftINT([lift]) ==.lift==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
+    style NG_colorcorrect_color4_liftINT fill:#0bb, color:#111
+    NG_colorcorrect_color4_gainINT([gain]) ==.gain==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
+    style NG_colorcorrect_color4_gainINT fill:#0bb, color:#111
+    NG_colorcorrect_color4_contrastINT([contrast]) ==.contrast==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
+    style NG_colorcorrect_color4_contrastINT fill:#0bb, color:#111
+    NG_colorcorrect_color4_contrastpivotINT([contrastpivot]) ==.contrastpivot==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
+    style NG_colorcorrect_color4_contrastpivotINT fill:#0bb, color:#111
+    NG_colorcorrect_color4_exposureINT([exposure]) ==.exposure==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
+    style NG_colorcorrect_color4_exposureINT fill:#0bb, color:#111
+    NG_colorcorrect_color4_N_combine_color[combine3] --".in"--> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
+    NG_colorcorrect_color4_N_split_color4[separate4] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outr([outr])
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outr fill:#1b1, color:#111
+    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outr --".in1"--> NG_colorcorrect_color4_N_combine_color[combine3]
+    NG_colorcorrect_color4_inINT([in]) ==.in==> NG_colorcorrect_color4_N_split_color4[separate4]
+    style NG_colorcorrect_color4_inINT fill:#0bb, color:#111
+    NG_colorcorrect_color4_N_split_color4[separate4] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outg([outg])
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outg fill:#1b1, color:#111
+    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outg --".in2"--> NG_colorcorrect_color4_N_combine_color[combine3]
+    NG_colorcorrect_color4_N_split_color4[separate4] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outb([outb])
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outb fill:#1b1, color:#111
+    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outb --".in3"--> NG_colorcorrect_color4_N_combine_color[combine3]
+    NG_colorcorrect_color4_N_split_color[separate3] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutg([outg])
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutg fill:#1b1, color:#111
+    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutg --".in2"--> NG_colorcorrect_color4_N_combine_with_alpha[combine4]
+    NG_colorcorrect_color4_N_split_color[separate3] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutb([outb])
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutb fill:#1b1, color:#111
+    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutb --".in3"--> NG_colorcorrect_color4_N_combine_with_alpha[combine4]
+    NG_colorcorrect_color4_N_split_color4[separate4] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outa([outa])
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outa fill:#1b1, color:#111
+    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outa --".in4"--> NG_colorcorrect_color4_N_combine_with_alpha[combine4]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9310,6 +13139,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9327,6 +13157,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9344,6 +13175,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9362,6 +13194,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9380,6 +13213,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9399,6 +13233,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9417,6 +13252,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9435,6 +13271,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9454,6 +13291,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9472,6 +13310,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9490,6 +13329,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9509,6 +13349,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9527,6 +13368,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9545,6 +13387,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9564,6 +13407,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9582,6 +13426,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9600,6 +13445,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9619,6 +13465,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9637,6 +13484,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9655,6 +13503,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9674,6 +13523,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9692,6 +13542,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9710,6 +13561,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9729,6 +13581,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9748,6 +13601,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9767,6 +13621,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9786,6 +13641,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9805,6 +13661,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9824,6 +13681,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9843,6 +13701,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9860,6 +13719,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9877,6 +13737,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9895,6 +13756,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9912,6 +13774,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9929,6 +13792,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9947,6 +13811,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9965,6 +13830,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9983,6 +13849,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10001,6 +13868,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10019,6 +13887,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10037,6 +13906,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10055,6 +13925,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10073,6 +13944,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10091,6 +13963,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10109,6 +13982,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10127,6 +14001,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10145,6 +14020,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10163,6 +14039,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10181,6 +14058,7 @@
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10200,6 +14078,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10219,6 +14098,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10238,6 +14118,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10257,6 +14138,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10276,6 +14158,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10295,6 +14178,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10314,6 +14198,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10333,6 +14218,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10352,6 +14238,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10371,6 +14258,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10390,6 +14278,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10409,6 +14298,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10429,6 +14319,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10448,6 +14339,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10467,6 +14359,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10486,6 +14379,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10505,6 +14399,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10524,6 +14419,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10543,6 +14439,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10562,6 +14459,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10581,6 +14479,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10600,6 +14499,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10619,6 +14519,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10638,6 +14539,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10658,6 +14560,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10677,6 +14580,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10696,6 +14600,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10715,6 +14620,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10734,6 +14640,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10753,6 +14660,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10772,6 +14680,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10791,6 +14700,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10810,6 +14720,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10829,6 +14740,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10848,6 +14760,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10867,6 +14780,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10886,6 +14800,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10905,6 +14820,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10924,6 +14840,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10943,6 +14860,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10962,6 +14880,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10981,6 +14900,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11001,6 +14921,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11022,6 +14943,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11043,6 +14965,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11064,6 +14987,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11085,6 +15009,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11106,6 +15031,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11127,6 +15053,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11148,6 +15075,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11169,6 +15097,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11190,6 +15119,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11211,6 +15141,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11232,6 +15163,7 @@
 * *Node Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11254,6 +15186,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11270,6 +15203,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11286,6 +15220,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11302,6 +15237,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11318,6 +15254,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11334,6 +15271,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11350,6 +15288,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11366,6 +15305,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11382,6 +15322,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11398,6 +15339,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11414,6 +15356,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11430,6 +15373,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11446,6 +15390,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11462,6 +15407,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11478,6 +15424,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11494,6 +15441,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11510,6 +15458,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11527,6 +15476,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11544,6 +15494,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11561,6 +15512,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11578,6 +15530,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11595,6 +15548,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11612,6 +15566,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11629,6 +15584,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11646,6 +15602,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11663,6 +15620,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11680,6 +15638,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11697,6 +15656,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11714,6 +15674,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11731,6 +15692,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11748,6 +15710,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11765,6 +15728,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11782,6 +15746,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11799,6 +15764,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11816,6 +15782,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11833,6 +15800,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11850,6 +15818,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11867,6 +15836,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11884,6 +15854,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11901,6 +15872,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11918,6 +15890,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11935,6 +15908,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11952,6 +15926,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11969,6 +15944,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11986,6 +15962,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12003,6 +15980,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12020,6 +15998,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12037,6 +16016,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12054,6 +16034,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12071,6 +16052,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12088,6 +16070,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12105,6 +16088,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12123,6 +16107,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12140,6 +16125,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12157,6 +16143,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12174,6 +16161,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12192,6 +16180,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12210,6 +16199,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12229,6 +16219,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12248,6 +16239,7 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12268,6 +16260,26 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_extract_color3
+
+
+```mermaid
+graph LR; 
+    NG_extract_color3_N_sw_color3{switch} --> NG_extract_color3_out([out])
+    style NG_extract_color3_out fill:#1b1, color:#111
+    NG_extract_color3_indexINT([index]) ==.which==> NG_extract_color3_N_sw_color3[switch]
+    style NG_extract_color3_indexINT fill:#0bb, color:#111
+    NG_extract_color3_N_r_color3[swizzle] --".in1"--> NG_extract_color3_N_sw_color3{switch}
+    NG_extract_color3_inINT([in]) ==.in==> NG_extract_color3_N_r_color3[swizzle]
+    style NG_extract_color3_inINT fill:#0bb, color:#111
+    NG_extract_color3_N_g_color3[swizzle] --".in2"--> NG_extract_color3_N_sw_color3{switch}
+    NG_extract_color3_inINT([in]) ==.in==> NG_extract_color3_N_g_color3[swizzle]
+    style NG_extract_color3_inINT fill:#0bb, color:#111
+    NG_extract_color3_N_b_color3[swizzle] --".in3"--> NG_extract_color3_N_sw_color3{switch}
+    NG_extract_color3_inINT([in]) ==.in==> NG_extract_color3_N_b_color3[swizzle]
+    style NG_extract_color3_inINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12285,6 +16297,29 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_extract_color4
+
+
+```mermaid
+graph LR; 
+    NG_extract_color4_N_sw_color4{switch} --> NG_extract_color4_out([out])
+    style NG_extract_color4_out fill:#1b1, color:#111
+    NG_extract_color4_indexINT([index]) ==.which==> NG_extract_color4_N_sw_color4[switch]
+    style NG_extract_color4_indexINT fill:#0bb, color:#111
+    NG_extract_color4_N_r_color4[swizzle] --".in1"--> NG_extract_color4_N_sw_color4{switch}
+    NG_extract_color4_inINT([in]) ==.in==> NG_extract_color4_N_r_color4[swizzle]
+    style NG_extract_color4_inINT fill:#0bb, color:#111
+    NG_extract_color4_N_g_color4[swizzle] --".in2"--> NG_extract_color4_N_sw_color4{switch}
+    NG_extract_color4_inINT([in]) ==.in==> NG_extract_color4_N_g_color4[swizzle]
+    style NG_extract_color4_inINT fill:#0bb, color:#111
+    NG_extract_color4_N_b_color4[swizzle] --".in3"--> NG_extract_color4_N_sw_color4{switch}
+    NG_extract_color4_inINT([in]) ==.in==> NG_extract_color4_N_b_color4[swizzle]
+    style NG_extract_color4_inINT fill:#0bb, color:#111
+    NG_extract_color4_N_a_color4[swizzle] --".in4"--> NG_extract_color4_N_sw_color4{switch}
+    NG_extract_color4_inINT([in]) ==.in==> NG_extract_color4_N_a_color4[swizzle]
+    style NG_extract_color4_inINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12302,6 +16337,23 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_extract_vector2
+
+
+```mermaid
+graph LR; 
+    NG_extract_vector2_N_sw_vector2{switch} --> NG_extract_vector2_out([out])
+    style NG_extract_vector2_out fill:#1b1, color:#111
+    NG_extract_vector2_indexINT([index]) ==.which==> NG_extract_vector2_N_sw_vector2[switch]
+    style NG_extract_vector2_indexINT fill:#0bb, color:#111
+    NG_extract_vector2_N_x_vector2[swizzle] --".in1"--> NG_extract_vector2_N_sw_vector2{switch}
+    NG_extract_vector2_inINT([in]) ==.in==> NG_extract_vector2_N_x_vector2[swizzle]
+    style NG_extract_vector2_inINT fill:#0bb, color:#111
+    NG_extract_vector2_N_y_vector2[swizzle] --".in2"--> NG_extract_vector2_N_sw_vector2{switch}
+    NG_extract_vector2_inINT([in]) ==.in==> NG_extract_vector2_N_y_vector2[swizzle]
+    style NG_extract_vector2_inINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12319,6 +16371,26 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_extract_vector3
+
+
+```mermaid
+graph LR; 
+    NG_extract_vector3_N_sw_vector3{switch} --> NG_extract_vector3_out([out])
+    style NG_extract_vector3_out fill:#1b1, color:#111
+    NG_extract_vector3_indexINT([index]) ==.which==> NG_extract_vector3_N_sw_vector3[switch]
+    style NG_extract_vector3_indexINT fill:#0bb, color:#111
+    NG_extract_vector3_N_x_vector3[swizzle] --".in1"--> NG_extract_vector3_N_sw_vector3{switch}
+    NG_extract_vector3_inINT([in]) ==.in==> NG_extract_vector3_N_x_vector3[swizzle]
+    style NG_extract_vector3_inINT fill:#0bb, color:#111
+    NG_extract_vector3_N_y_vector3[swizzle] --".in2"--> NG_extract_vector3_N_sw_vector3{switch}
+    NG_extract_vector3_inINT([in]) ==.in==> NG_extract_vector3_N_y_vector3[swizzle]
+    style NG_extract_vector3_inINT fill:#0bb, color:#111
+    NG_extract_vector3_N_z_vector3[swizzle] --".in3"--> NG_extract_vector3_N_sw_vector3{switch}
+    NG_extract_vector3_inINT([in]) ==.in==> NG_extract_vector3_N_z_vector3[swizzle]
+    style NG_extract_vector3_inINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12336,6 +16408,29 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_extract_vector4
+
+
+```mermaid
+graph LR; 
+    NG_extract_vector4_N_sw_vector4{switch} --> NG_extract_vector4_out([out])
+    style NG_extract_vector4_out fill:#1b1, color:#111
+    NG_extract_vector4_indexINT([index]) ==.which==> NG_extract_vector4_N_sw_vector4[switch]
+    style NG_extract_vector4_indexINT fill:#0bb, color:#111
+    NG_extract_vector4_N_x_vector4[swizzle] --".in1"--> NG_extract_vector4_N_sw_vector4{switch}
+    NG_extract_vector4_inINT([in]) ==.in==> NG_extract_vector4_N_x_vector4[swizzle]
+    style NG_extract_vector4_inINT fill:#0bb, color:#111
+    NG_extract_vector4_N_y_vector4[swizzle] --".in2"--> NG_extract_vector4_N_sw_vector4{switch}
+    NG_extract_vector4_inINT([in]) ==.in==> NG_extract_vector4_N_y_vector4[swizzle]
+    style NG_extract_vector4_inINT fill:#0bb, color:#111
+    NG_extract_vector4_N_z_vector4[swizzle] --".in3"--> NG_extract_vector4_N_sw_vector4{switch}
+    NG_extract_vector4_inINT([in]) ==.in==> NG_extract_vector4_N_z_vector4[swizzle]
+    style NG_extract_vector4_inINT fill:#0bb, color:#111
+    NG_extract_vector4_N_w_vector4[swizzle] --".in4"--> NG_extract_vector4_N_sw_vector4{switch}
+    NG_extract_vector4_inINT([in]) ==.in==> NG_extract_vector4_N_w_vector4[swizzle]
+    style NG_extract_vector4_inINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12354,6 +16449,21 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_separate2_vector2
+
+
+```mermaid
+graph LR; 
+    NG_separate2_vector2_N_x_vector2[swizzle] --> NG_separate2_vector2_outx([outx])
+    style NG_separate2_vector2_outx fill:#1b1, color:#111
+    NG_separate2_vector2_inINT([in]) ==.in==> NG_separate2_vector2_N_x_vector2[swizzle]
+    style NG_separate2_vector2_inINT fill:#0bb, color:#111
+    NG_separate2_vector2_N_y_vector2[swizzle] --> NG_separate2_vector2_outy([outy])
+    style NG_separate2_vector2_outy fill:#1b1, color:#111
+    NG_separate2_vector2_inINT([in]) ==.in==> NG_separate2_vector2_N_y_vector2[swizzle]
+    style NG_separate2_vector2_inINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12372,6 +16482,25 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_separate3_color3
+
+
+```mermaid
+graph LR; 
+    NG_separate3_color3_N_r_color3[swizzle] --> NG_separate3_color3_outr([outr])
+    style NG_separate3_color3_outr fill:#1b1, color:#111
+    NG_separate3_color3_inINT([in]) ==.in==> NG_separate3_color3_N_r_color3[swizzle]
+    style NG_separate3_color3_inINT fill:#0bb, color:#111
+    NG_separate3_color3_N_g_color3[swizzle] --> NG_separate3_color3_outg([outg])
+    style NG_separate3_color3_outg fill:#1b1, color:#111
+    NG_separate3_color3_inINT([in]) ==.in==> NG_separate3_color3_N_g_color3[swizzle]
+    style NG_separate3_color3_inINT fill:#0bb, color:#111
+    NG_separate3_color3_N_b_color3[swizzle] --> NG_separate3_color3_outb([outb])
+    style NG_separate3_color3_outb fill:#1b1, color:#111
+    NG_separate3_color3_inINT([in]) ==.in==> NG_separate3_color3_N_b_color3[swizzle]
+    style NG_separate3_color3_inINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12390,6 +16519,25 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_separate3_vector3
+
+
+```mermaid
+graph LR; 
+    NG_separate3_vector3_N_x_vector3[swizzle] --> NG_separate3_vector3_outx([outx])
+    style NG_separate3_vector3_outx fill:#1b1, color:#111
+    NG_separate3_vector3_inINT([in]) ==.in==> NG_separate3_vector3_N_x_vector3[swizzle]
+    style NG_separate3_vector3_inINT fill:#0bb, color:#111
+    NG_separate3_vector3_N_y_vector3[swizzle] --> NG_separate3_vector3_outy([outy])
+    style NG_separate3_vector3_outy fill:#1b1, color:#111
+    NG_separate3_vector3_inINT([in]) ==.in==> NG_separate3_vector3_N_y_vector3[swizzle]
+    style NG_separate3_vector3_inINT fill:#0bb, color:#111
+    NG_separate3_vector3_N_z_vector3[swizzle] --> NG_separate3_vector3_outz([outz])
+    style NG_separate3_vector3_outz fill:#1b1, color:#111
+    NG_separate3_vector3_inINT([in]) ==.in==> NG_separate3_vector3_N_z_vector3[swizzle]
+    style NG_separate3_vector3_inINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12409,6 +16557,29 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_separate4_color4
+
+
+```mermaid
+graph LR; 
+    NG_separate4_color4_N_r_color4[swizzle] --> NG_separate4_color4_outr([outr])
+    style NG_separate4_color4_outr fill:#1b1, color:#111
+    NG_separate4_color4_inINT([in]) ==.in==> NG_separate4_color4_N_r_color4[swizzle]
+    style NG_separate4_color4_inINT fill:#0bb, color:#111
+    NG_separate4_color4_N_g_color4[swizzle] --> NG_separate4_color4_outg([outg])
+    style NG_separate4_color4_outg fill:#1b1, color:#111
+    NG_separate4_color4_inINT([in]) ==.in==> NG_separate4_color4_N_g_color4[swizzle]
+    style NG_separate4_color4_inINT fill:#0bb, color:#111
+    NG_separate4_color4_N_b_color4[swizzle] --> NG_separate4_color4_outb([outb])
+    style NG_separate4_color4_outb fill:#1b1, color:#111
+    NG_separate4_color4_inINT([in]) ==.in==> NG_separate4_color4_N_b_color4[swizzle]
+    style NG_separate4_color4_inINT fill:#0bb, color:#111
+    NG_separate4_color4_N_a_color4[swizzle] --> NG_separate4_color4_outa([outa])
+    style NG_separate4_color4_outa fill:#1b1, color:#111
+    NG_separate4_color4_inINT([in]) ==.in==> NG_separate4_color4_N_a_color4[swizzle]
+    style NG_separate4_color4_inINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12428,6 +16599,29 @@
 * *Node Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_separate4_vector4
+
+
+```mermaid
+graph LR; 
+    NG_separate4_vector4_N_x_vector4[swizzle] --> NG_separate4_vector4_outx([outx])
+    style NG_separate4_vector4_outx fill:#1b1, color:#111
+    NG_separate4_vector4_inINT([in]) ==.in==> NG_separate4_vector4_N_x_vector4[swizzle]
+    style NG_separate4_vector4_inINT fill:#0bb, color:#111
+    NG_separate4_vector4_N_y_vector4[swizzle] --> NG_separate4_vector4_outy([outy])
+    style NG_separate4_vector4_outy fill:#1b1, color:#111
+    NG_separate4_vector4_inINT([in]) ==.in==> NG_separate4_vector4_N_y_vector4[swizzle]
+    style NG_separate4_vector4_inINT fill:#0bb, color:#111
+    NG_separate4_vector4_N_z_vector4[swizzle] --> NG_separate4_vector4_outz([outz])
+    style NG_separate4_vector4_outz fill:#1b1, color:#111
+    NG_separate4_vector4_inINT([in]) ==.in==> NG_separate4_vector4_N_z_vector4[swizzle]
+    style NG_separate4_vector4_inINT fill:#0bb, color:#111
+    NG_separate4_vector4_N_w_vector4[swizzle] --> NG_separate4_vector4_outw([outw])
+    style NG_separate4_vector4_outw fill:#1b1, color:#111
+    NG_separate4_vector4_inINT([in]) ==.in==> NG_separate4_vector4_N_w_vector4[swizzle]
+    style NG_separate4_vector4_inINT fill:#0bb, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12448,6 +16642,7 @@
 * *Node Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12466,6 +16661,7 @@
 * *Node Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12484,6 +16680,7 @@
 * *Node Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12502,6 +16699,7 @@
 * *Node Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12520,6 +16718,7 @@
 * *Node Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12538,6 +16737,7 @@
 * *Node Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12557,6 +16757,7 @@
 * *Node Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12575,6 +16776,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12592,6 +16794,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12609,6 +16812,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12626,6 +16830,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12643,6 +16848,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12660,6 +16866,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12677,6 +16884,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12694,6 +16902,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12711,6 +16920,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12728,6 +16938,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12745,6 +16956,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12762,6 +16974,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12779,6 +16992,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12796,6 +17010,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12813,6 +17028,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -12830,6 +17046,7 @@
 * *Node Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
