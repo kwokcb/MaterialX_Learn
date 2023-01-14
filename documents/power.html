@@ -21,8 +21,7 @@
 <script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
 
 <script>
-    function filterTOC() 
-    {
+    function filterTOC() {
         var input, filter, ul, li, a, i;
         input = document.getElementById("searchTOC");
         filter = input.value;
@@ -31,8 +30,7 @@
         for (i = 0; i < li.length; i++) {
             a = li[i];
             if (a.innerHTML.match(filter)) {
-                if (filter.length > 0)
-                {
+                if (filter.length > 0) {
                     var parent = a.parentElement
                     while (parent) {
                         if (parent.className && parent.classList.contains("collapse")) {
@@ -43,41 +41,36 @@
                     }
                 }
                 a.style.display = "";
-            } 
-            else 
-            {
-                if (filter.length > 0) 
+            }
+            else {
+                if (filter.length > 0)
                     a.style.display = "none";
                 else
                     a.style.display = "";
             }
-        }       
+        }
     }
 
-    function filterOnEnter(event) 
-    {
-        if (event.code === 'Enter') 
-        {
+    function filterOnEnter(event) {
+        if (event.code === 'Enter') {
             event.preventDefault();
             filterTOC();
         }
-    };    
+    };
 
-    function renderMermaid(event)
-    {
+    function renderMermaid(event) {
         buttonId = event.target.id;
 
-        var mermaidinput = document.getElementById(buttonId + "_mermaid_input"); 
-        var mermaidoutput = document.getElementById(buttonId + "_mermaid_output"); 
-        if (mermaidinput && mermaidoutput)
-        {
+        var mermaidinput = document.getElementById(buttonId + "_mermaid_input");
+        var mermaidoutput = document.getElementById(buttonId + "_mermaid_output");
+        if (mermaidinput && mermaidoutput) {
             const code = mermaidinput.textContent;
             let generateDiagram = function (code) {
                 mermaidoutput.innerHTML = code;
                 mermaidoutput.hidden = false;
             };
             mermaid.render(buttonId + "_mermaid_output_rendered", code, generateDiagram);
-            
+
             var button = document.getElementById(event.target.id);
             button.hidden = true;
             button.remove;
@@ -88,7 +81,8 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-light ">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="#">
-            <h4>MaterialX Plus</h4>
+            <h4><img src="images/MaterialXLogo2KWhite.png" alt="MaterialX Plus" class="d-inline-block align-text-top" width="60" >                
+            MaterialX Plus</h4>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
             aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -111,18 +105,65 @@
                         Node Graphs
                     </a> 
                 </li> -->
-                <li class="nav-item">
-                  <a class="nav-link greyhover" href="mermaidChecker.html">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                          class="bi bi-bezier text-primary" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd"
-                              d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
-                          <path
-                              d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
-                      </svg>
-                      Graph Checker
-                  </a> 
-              </li> 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Node Library
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="index.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                    <path
+                                        d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                                </svg>
+                                Introduction
+                            </a>
+                        </li>
+                        <li><a class="dropdown-item" href="root.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                    <path
+                                        d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                                </svg>
+                                Definitions (By Group)
+                            </a>
+                        </li>
+                        <li><a class="dropdown-item" href="all_definitions.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                    <path
+                                        d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                                </svg>
+                                Definitions (All)
+                            </a>
+                        </li>
+                    </ul>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Utilities
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="mermaidChecker.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                    <path
+                                        d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                                </svg>
+                                Graph Checker
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link greyhover" href="#" data-bs-target="#sidebar" data-bs-toggle="collapse">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -454,11 +495,10 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_undefined" aria-expanded="false" aria-controls="collapse_undefined"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> undefined </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_translation" aria-expanded="false" aria-controls="collapse_translation"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> translation </button>
 </div>
-<div class="collapse ps-5" id="collapse_undefined">
+<div class="collapse ps-5" id="collapse_translation">
 <div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaMix.html">LamaMix</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="standard_surface_to_UsdPreviewSurface.html">standard_surface_to_UsdPreviewSurface</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="standard_surface_to_gltf_pbr.html">standard_surface_to_gltf_pbr</a>
 </div>
@@ -503,7 +543,7 @@ Node: power
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
-<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 128px; max-width: 50;"></p>
+<p class="card-text"><img src="images/nodes/material_power_float_out_osl.png" class="rounded float-left" alt="..." style="width: 512px; max-width: 100;"></p>
 <p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> float</button></p>
 <p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">math</button></p>
 <p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
@@ -533,7 +573,7 @@ Non-graph
   </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+          class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
@@ -551,7 +591,7 @@ Non-graph
   </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+          class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
@@ -567,6 +607,13 @@ Non-graph
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
    </div>
   </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
  </div>
 </div>
 </div>
@@ -580,7 +627,7 @@ Non-graph
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
-<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 128px; max-width: 50;"></p>
+<p class="card-text"><img src="images/nodes/material_power_color3_out_osl.png" class="rounded float-left" alt="..." style="width: 512px; max-width: 100;"></p>
 <p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button></p>
 <p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">math</button></p>
 <p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
@@ -609,7 +656,7 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
@@ -635,7 +682,7 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
@@ -660,6 +707,13 @@ Non-graph
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
    </div>
   </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
  </div>
 </div>
 </div>
@@ -673,7 +727,7 @@ Non-graph
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
-<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 128px; max-width: 50;"></p>
+<p class="card-text"><img src="images/nodes/material_power_color4_out_osl.png" class="rounded float-left" alt="..." style="width: 512px; max-width: 100;"></p>
 <p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button></p>
 <p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">math</button></p>
 <p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
@@ -702,7 +756,7 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
@@ -731,7 +785,7 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
@@ -759,6 +813,13 @@ Non-graph
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
    </div>
   </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
  </div>
 </div>
 </div>
@@ -772,7 +833,7 @@ Non-graph
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
-<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 128px; max-width: 50;"></p>
+<p class="card-text"><img src="images/nodes/material_power_vector2_out_osl.png" class="rounded float-left" alt="..." style="width: 512px; max-width: 100;"></p>
 <p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector2</button></p>
 <p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">math</button></p>
 <p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
@@ -801,7 +862,7 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
@@ -821,7 +882,7 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
@@ -840,6 +901,13 @@ Non-graph
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
    </div>
   </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
  </div>
 </div>
 </div>
@@ -853,7 +921,7 @@ Non-graph
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
-<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 128px; max-width: 50;"></p>
+<p class="card-text"><img src="images/nodes/material_power_vector3_out_osl.png" class="rounded float-left" alt="..." style="width: 512px; max-width: 100;"></p>
 <p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button></p>
 <p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">math</button></p>
 <p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
@@ -882,7 +950,10 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
@@ -902,7 +973,10 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="1" disabled>
+      </div>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
@@ -921,6 +995,13 @@ Non-graph
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
    </div>
   </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
  </div>
 </div>
 </div>
@@ -934,7 +1015,7 @@ Non-graph
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
-<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 128px; max-width: 50;"></p>
+<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 512px; max-width: 100;"></p>
 <p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button></p>
 <p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">math</button></p>
 <p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
@@ -963,7 +1044,7 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
@@ -989,7 +1070,7 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
@@ -1014,6 +1095,13 @@ Non-graph
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
    </div>
   </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
  </div>
 </div>
 </div>
@@ -1027,7 +1115,7 @@ Non-graph
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
-<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 128px; max-width: 50;"></p>
+<p class="card-text"><img src="images/nodes/material_power_color3FA_out_osl.png" class="rounded float-left" alt="..." style="width: 512px; max-width: 100;"></p>
 <p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button></p>
 <p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">math</button></p>
 <p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
@@ -1056,7 +1144,7 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
@@ -1083,7 +1171,7 @@ Non-graph
   </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+          class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
@@ -1099,6 +1187,13 @@ Non-graph
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
    </div>
   </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
  </div>
 </div>
 </div>
@@ -1112,7 +1207,7 @@ Non-graph
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
-<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 128px; max-width: 50;"></p>
+<p class="card-text"><img src="images/nodes/material_power_color4FA_out_osl.png" class="rounded float-left" alt="..." style="width: 512px; max-width: 100;"></p>
 <p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button></p>
 <p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">math</button></p>
 <p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
@@ -1141,7 +1236,7 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
@@ -1171,7 +1266,7 @@ Non-graph
   </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+          class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
@@ -1187,6 +1282,13 @@ Non-graph
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
    </div>
   </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
  </div>
 </div>
 </div>
@@ -1200,7 +1302,7 @@ Non-graph
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
-<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 128px; max-width: 50;"></p>
+<p class="card-text"><img src="images/nodes/material_power_vector2FA_out_osl.png" class="rounded float-left" alt="..." style="width: 512px; max-width: 100;"></p>
 <p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector2</button></p>
 <p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">math</button></p>
 <p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
@@ -1229,7 +1331,7 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
@@ -1250,7 +1352,7 @@ Non-graph
   </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+          class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
@@ -1266,6 +1368,13 @@ Non-graph
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
    </div>
   </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
  </div>
 </div>
 </div>
@@ -1279,7 +1388,7 @@ Non-graph
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
-<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 128px; max-width: 50;"></p>
+<p class="card-text"><img src="images/nodes/material_power_vector3FA_out_osl.png" class="rounded float-left" alt="..." style="width: 512px; max-width: 100;"></p>
 <p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button></p>
 <p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">math</button></p>
 <p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
@@ -1308,7 +1417,10 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
@@ -1329,7 +1441,7 @@ Non-graph
   </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+          class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
@@ -1345,6 +1457,13 @@ Non-graph
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
    </div>
   </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
  </div>
 </div>
 </div>
@@ -1358,7 +1477,7 @@ Non-graph
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
-<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 128px; max-width: 50;"></p>
+<p class="card-text"><img src="images/Default_osl.png" class="rounded float-left" alt="..." style="width: 512px; max-width: 100;"></p>
 <p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button></p>
 <p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">math</button></p>
 <p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
@@ -1387,7 +1506,7 @@ Non-graph
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
@@ -1414,7 +1533,7 @@ Non-graph
   </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+          class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
           <input type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
@@ -1429,6 +1548,13 @@ Non-graph
    <div class="col-sm-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
   </div>
  </div>
 </div>

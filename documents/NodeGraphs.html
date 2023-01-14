@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NodeGraphs.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+
+
+<style>
+  body { font-size: 70%; }
+  .col-form-label-sm { font-size: 90%; }
+  .form-control { font-size: 90%; }
+  .card-body { font-size: 80%; } 
+  .btn { font-size: 90%; }
+  .nav-link { font-size: 100%; }
+  a{ text-decoration: none; } 
+  a:hover { text-decoration: none; cursor: pointer;}
+  .text-left { text-align: left !important; }
+  .greyhover { text-decoration: none; }
+  .greyhover:hover { text-decoration: none; cursor: pointer; background: rgb(239, 239, 239); }
+  </style>
+</head>
+<body class="min-vh-100">
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+
+<nav class="navbar sticky-top navbar-expand-lg bg-light">
+  <div class="container-md container-fluid">
+      <a class="navbar-brand" href="#">
+          <h4>MaterialX Plus</h4>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+          aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenuContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link greyhover active" aria-current="page" href="../index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link greyhover" href="index.html">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                              d="M0 10.5A1.5 1.5 0 0 1 1.5 9h2A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h2a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h2A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                          <path
+                              d="M6 4.5h2.866a1 1 0 1 0 0 1h3.668A6.517 6.517 0 0 0 1.814 9h3.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5h23.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                      </svg>
+                      Library Definitions
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<div class="container-fluid ms-2">
+<h2 id="shader-graphs">Shader Graphs</h2>
+<h3 id="1-introduction">1. Introduction</h3>
+<p>One way of representing some shading computation is via a graph of nodes. We will call such graphs &quot;shader graphs&quot;.</p>
+<p>The basic components for all graphs are:</p>
+<ol>
+<li>nodes</li>
+<li>ports</li>
+<li>connections</li>
+</ol>
+<p>We will use the <em>XML</em> nomenclature to denote
+components where applicable. That is, the component is surrounded by start and end angle braces <code>&lt;</code> and <code>&gt;</code>. For example a node is denoted as <code>&lt;node&gt;</code>.</p>
+<h3 id="2-basic-components">2. Basic Components</h3>
+<h4 id="21-node">2.1 Node</h4>
+<p>A <code>&lt;node&gt;</code> is atomic unit that is not represented by other nodes.</p>
+<p>The API class is called <code>Node</code>.</p>
+<p>There are various types of nodes within MaterialX. For the purposes of shader computation, we will consider nodes which either:</p>
+<ol>
+<li>Perform a computation or route input values to produce output values</li>
+<li>A conditional evaluation (such as a conditional 'if')</li>
+<li>Route input application data such as constants, geometric streams, or input images.</li>
+</ol>
+<p>Each node has a unique string identifier. A valid identifier contains only alphanumeric characters and cannot contain a path separator: <code>/</code>.</p>
+<p>For diagrams, we will used rectangular boxes to denote nodes. As an example, the following diagram shows 3 nodes named &quot;node1&quot;, &quot;node2&quot;, and &quot;node3&quot;</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD
+    node1
+    node2
+    node3
+</div></code></pre>
+<h4 id="22-ports">2.2 Ports</h4>
+<p>Each node can have 0 or more <strong>ports</strong>. Ports can be of
+allow for the flow of data between nodes. The API class for ports is <code>PortElement</code>.</p>
+<p>Ports which can accept data are called <strong>inputs</strong> (<code>&lt;input&gt;</code>) and those that can send data are called <strong>outputs</strong> (<code>&lt;output&gt;</code>).</p>
+<h4 id="23-node-containers">2.3 Node Containers</h4>
+<p>A <strong>graph element</strong> is a container for a set of nodes.
+The API class is called <code>GraphElement</code>.</p>
+<p>Graph elements themselves cannot be created. Instead either of the following can be instantiated:</p>
+<ul>
+<li>Document: A MaterialX document (<code>&lt;document&gt;</code>) is a top level graph element corresponding to the API class: <code>Document</code>.</li>
+<li>Node graph: A graph element which is not at the top level are called <strong>node graphs</strong> <code>&lt;nodegraph&gt;</code>, and correspond to the API class : <code>NodeGraph</code>.</li>
+</ul>
+<p>Graph elements can contain 0 or more nodes or node graphs and 0 or more direct child <code>&lt;input&gt;</code>s or <code>&lt;output&gt;</code>s. These children are considered to be within the <strong>scope</strong> of the graph element.</p>
+<p>The additional rules apply to children within a given scope:</p>
+<ul>
+<li>Every child must have a unique string identifier.</li>
+<li><code>&lt;document&gt;</code>s however have no identifier by default as</li>
+<li><code>&lt;document&gt;</code>s and <code>&lt;nodegraph&gt;</code>s cannot contain a <code>&lt;document&gt;</code>s. There is no concept of a document referencing another document.</li>
+<li><code>&lt;input&gt;</code>s cannot be instantiated as direct children of a <code>&lt;document&gt;</code>.</li>
+</ul>
+<p>In this first example a top level document contains a node called &quot;my_node&quot; and a nodegraph called &quot;my_nodegraph&quot;</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD
+   subgraph document
+      my_node 
+      subgraph my_nodegraph
+      end
+  end
+</div></code></pre>
+<p>The following example shows</p>
+<ul>
+<li>a <code>&lt;nodegraph&gt;</code> called &quot;my_nodegraph&quot;.</li>
+<li>an <code>&lt;input&gt;</code> called &quot;input1&quot;,</li>
+<li>an <code>&lt;output&gt;</code> called &quot;output1&quot;</li>
+<li>a node called &quot;node1&quot;</li>
+<li>a `<nodegraph> called &quot;nodegraph2&quot; which contains a child node called &quot;node2&quot;</li>
+</ul>
+<p>These are direct children and are within the scope of the &quot;my_nodegraph&quot;.</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD
+    subgraph nodegraph2
+      node2
+    end
+   subgraph my_nodegraph
+      input1(input)
+      style input1 fill:#1b1,color:#fff 
+      input2(input1) 
+      style input2 fill:#1b1,color:#fff 
+      output1(output1) 
+      style output1 fill:#0bb,color:#fff
+      node1 
+      nodegraph2
+  end
+</div></code></pre>
+<p>Parent / child relationships can be described using a string <strong>path</strong> using the a &quot;/&quot; delimator notation:</p>
+<pre class="hljs"><code><div>  &lt;parent identifier&gt;/&lt;child identifier&gt;
+</div></code></pre>
+<p>In this example, the path to &quot;node&quot; would be <code>my_nodegraph/nodegraph2/node2</code>.</p>
+<h3 id="connectivity">Connectivity</h3>
+<p>There can be 0 or more inputs and 1 or more outputs on a node or nodegraph.
+Having no outputs is &quot;allowed&quot; but these nodes / node graphs are generally of no use as there is no starting point or <strong>root</strong> for evaluation.</p>
+<p>The following is an example of a node and a node graph. with various typed inputs and outputs (marked with &quot;(out)&quot;):</p>
+<pre><code class="language-mermaid"><div class="mermaid">classDiagram
+class node {
+    +string name
+    +float in1
+    +color3 in2
+    +(out) color3 out1 
+    +(out) int out2
+}
+class nodegraph {
+    +string name
+    +float in1
+    +color3 in2
+    +color3 out1 
+    +(out) int out2
+}
+
+</div></code></pre>
+<p>These <code>&lt;input&gt;</code>s and <code>&lt;output&gt;</code>s on <code>&lt;node&gt;</code>s or <code>&lt;nodegraph&gt;</code>s define what is connectable.</p>
+<p>Key attributes to consider for connectivity to inputs includes:</p>
+<ul>
+<li><code>type</code> Attribute: Every port has a type with the list of valid types defined by
+the standard library definitions. <code>float</code> and <code>integer</code> tuples and arrays
+as well as <code>string</code> types are common types.</li>
+<li><code>uniform</code> attribute: A input can be marked as only accepting uniform values.</li>
+<li><code>channel</code> attribute: An input can mark a given channel of a tuple to be routed as input data. For example the <code>x</code> channel of a vector can be
+routed as a float.</li>
+</ul>
+<p>The rules for connection validity are as follows. Please take special note about scope.</p>
+<ul>
+<li>A <code>&lt;node&gt;</code> or <code>&lt;nodegraph&gt;</code> <code>&lt;output&gt;</code> may be connected one or more <code>&lt;input&gt;</code> on another node or <code>nodegraph</code> <code>&lt;input&gt;</code>
+<strong>within the same scope</strong>.</li>
+<li>Ports cannot connect to themselves or other ports on the same node or node graph. (i.e. self-cycles)</li>
+<li>Any subgraph with a graph cannot form a cycle.</li>
+<li>An <code>&lt;output&gt;</code> can connect to one or more <code>&lt;inputs&gt;</code>. (fan-out allowed)</li>
+<li>An <code>&lt;input&gt;</code> can be connected to at most one <code>&lt;output&gt;</code>. (fan-in disallowed)</li>
+<li>Ports of different <code>type</code>s cannot be connected. This takes in to consideration the type produced after applying any <code>channel</code> extraction.</li>
+<li>Ports with different <code>uniform</code> attributes values cannot be connected.</li>
+</ul>
+<p>For a given connection the source node / port is considered to be <strong>upstream</strong> of the second node / port, which is <strong>downstream</strong>.</p>
+<p>The following is an example diagram showing how inputs, outputs and connections are drawn, such that:</p>
+<ol>
+<li>downstream <code>input</code> and upstream <code>output</code>s are color-coded rounded rectangles.</li>
+<li>connections are denoted with lines arrows to denote direction of data flow (what is downstream)</li>
+</ol>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR;
+    input1(input1)
+    output1(output1)
+    style output1 fill:#1b1,color:#fff 
+    style input1 fill:#0bb,color:#fff
+    output1 --> input1
+</div></code></pre>
+<h4 id="connectivity-diagrams">Connectivity Diagrams</h4>
+<p>To draw these connections in the context of what node / node graphs they are associated with, we use the &quot;.&quot; notation to separate a node or node graph identifier from a port identifier.</p>
+<p>The possible pair-wise configurations are shown below:</p>
+<ol>
+<li>Node-to-node: This example shows <code>node1</code>'s input <code>input1</code> is connected to <code>node2</code>'s output called <code>output1</code>.</li>
+</ol>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR;
+    input1(node1.input1)
+    output1(node2.output1)
+    style output1 fill:#1b1,color:#fff 
+    style input1 fill:#0bb,color:#fff
+    output1 --> input1
+</div></code></pre>
+<ol start="2">
+<li>Node-to-node graph connection:</li>
+</ol>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR;
+    output1(node.output1)
+    subgraph nodegraph
+      input1(.input1)
+    end
+    style output1 fill:#1b1,color:#fff 
+    style input1 fill:#0bb,color:#fff
+    output1 --> input1
+</div></code></pre>
+<ol start="3">
+<li>Node graph-to-node connection:</li>
+</ol>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR;
+    subgraph nodegraph
+      output1(.output1)
+    end
+    input1(node.input1)
+    style output1 fill:#1b1,color:#fff 
+    style input1 fill:#0bb,color:#fff
+    output1 --> input1
+</div></code></pre>
+<ol start="4">
+<li>Node graph-to-node graph connection:</li>
+</ol>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR;
+    subgraph nodegraph3
+      output1(nodegraph3.output1)
+    end
+    subgraph nodegraph
+      input1(nodegraph.input1)
+    end
+    style output1 fill:#1b1,color:#fff 
+    style input1 fill:#0bb,color:#fff
+    output1 --> input1
+</div></code></pre>
+<ol start="5">
+<li>Combining all the variants possible within a document, a shader graph could looks like the following:</li>
+</ol>
+<pre><code class="language-mermaid"><div class="mermaid">graph TB
+    node3(node3.out) --> node2(.in1)
+    node2 --> node0.input1(.input1)
+    node2 --> nodegraph2.input2(.input2)
+    subgraph nodegraph4;
+      nodegraph4.output1(.output1)
+    end
+    nodegraph4.output1 --> node0.input2(.input2)
+    nodegraph4.output1 --> nodegraph2.input1(.input1)
+    subgraph node0;
+      node0.output1(.output1)
+      node0.input2
+      node0.input1
+    end
+    subgraph nodegraph2;
+      nodegraph2.input1(.input1)
+      nodegraph2.input2(.input2)
+      nodegraph2.output1(.output1) 
+    end    
+    subgraph node1
+      node0.output1 --> node1.input1(.input1)
+      nodegraph2.output1 --> node1.input2(.input2)
+    end
+    style node3 fill:#1b1,color:#fff 
+    style node0.output1 fill:#1b1,color:#fff 
+    style nodegraph4.output1 fill:#1b1,color:#fff 
+    style nodegraph2.output1 fill:#1b1,color:#fff 
+    style node0.input1 fill:#0bb,color:#fff
+    style node0.input2 fill:#0bb,color:#fff
+    style nodegraph2.input1 fill:#0bb,color:#fff
+    style nodegraph2.input2 fill:#0bb,color:#fff
+    style node2 fill:#0bb,color:#fff
+    style node1.input1 fill:#0bb,color:#fff
+    style node1.input2 fill:#0bb,color:#fff
+</div></code></pre>
+<h4 id="node-graph-interfaces">Node Graph Interfaces</h4>
+<p>The direct <code>&lt;input&gt;</code> and <code>&lt;output&gt;</code> children of a <code>&lt;nodegraph&gt;</code> are considered to be the public <strong>interface</strong> of the graph.
+It is only through these interfaces that connections can be made to ports which are outside the scope of the nodegraph.</p>
+<p>These interfaces can in turn be connected to node ports within the scope of the node graph such that:</p>
+<ol>
+<li>A <code>&lt;nodegraph&gt;</code> <code>&lt;input&gt;</code> may be connected to one or more node's <code>&lt;input&gt;</code> within the same scope.</li>
+</ol>
+<pre><code class="language-mermaid"><div class="mermaid">graph TB
+    subgraph nodegraph2
+        .input1 --> node1.input1
+        .input1 --> node2.input2
+        .input2 --> node2.input1
+        style .input1 fill:#1b1,color:#fff 
+        style .input2 fill:#1b1,color:#fff 
+    end
+</div></code></pre>
+<ol start="4">
+<li>The <code>&lt;output&gt;</code>s of a node within the scope of the nodegraph may be connected to one or more nodegraph outputs.</li>
+</ol>
+<pre><code class="language-mermaid"><div class="mermaid">graph TB
+    subgraph nodegraph2
+        node1.input1 --> .output1 
+        node1.input1 --> .output2
+        node1.input2 --> .output3
+        style .output1 fill:#0bb,color:#fff
+        style .output2 fill:#0bb,color:#fff
+        style .output3 fill:#0bb,color:#fff
+    end
+</div></code></pre>
+<h4 id="interface-building--publishing-interfaces">Interface Building / Publishing Interfaces</h4>
+<p>The act of adding or removing <code>nodegraph</code> <code>input</code>s and <code>output</code>s can be thought of as <strong>publishing</strong> the public interface for the graph.</p>
+<p>A <code>node</code> should <strong>never</strong> have inputs / outputs added or removed which are not part of their definition -- in fact this will be tagged a node instance which has no matching definition if a validation check is performed.</p>
+<h3 id="compound-and-functional-nodegraphs-and-%22flattening%22-and-%22publishing%22">Compound and Functional Nodegraphs and &quot;Flattening&quot; and &quot;Publishing&quot;</h3>
+<p>If node is implemented by a nodegraph, then the nodegraph is called a <strong>functional nodegraph</strong>. Otherwise it is called a <strong>compound nodegraph</strong>.</p>
+<p>Thus a more complete definition of a shader graph is that:</p>
+<ol>
+<li>It is composed of a series of connected nodes and compound nodegraphs.</li>
+<li>One or more of these nodes may be implemented as  <strong>functional graphs</strong>.</li>
+<li>If the node instance is replaced with the functional graph implementation then the node essentially &quot;becomes&quot; a compound graph. This operation is called <strong>flattening</strong> a node instance.</li>
+<li>If all nodes are taken out of the scope of their parent nodegraphs then all that is left is a series of connected nodes. This operation is is called <strong>flattening</strong> a nodegraph.</li>
+<li>The reverse operation to add nodes to nodegraphs allows users to logically group nodes and/or publisih it's public interface.
+If a new definition <code>&lt;nodedef&gt;</code> is created and the nodegraph becomes a <strong>functional graph</strong> then can be thought of as  <strong>publishing</strong> a new definition.</li>
+</ol>
+<h4 id="flattening-example">Flattening Example</h4>
+<pre><code class="language-mermaid"><div class="mermaid">graph LR
+  subgraph document
+    subgraph nodegraph2
+        nodegraph2.input1 --> nodegraph2/node1.input1
+        nodegraph2.input1 --> nodegraph2/node2.input2
+        nodegraph2.input2 --> nodegraph2/node2.input1
+        subgraph node1;
+            nodegraph2/node1.input1
+            nodegraph2/node1.input2
+        end
+        subgraph node2;
+            nodegraph2/node2.input2
+            nodegraph2/node2.input1
+        end
+        nodegraph2/node1.input1 --> nodegraph2/operator 
+        nodegraph2/node1.input1 --> nodegraph2/operator 
+        nodegraph2/operator --> nodegraph2.output2
+        nodegraph2/node1.input2 --> nodegraph2/operator2
+        nodegraph2/operator2 --> nodegraph2.output3
+        nodegraph2/node2.input2 --> nodegraph2/operator2 
+        nodegraph2/node2.input1 --> nodegraph2/operator2
+        nodegraph2/node2.input1 -.-> nodegraph2/dot((dot)) -.-> nodegraph2.output1
+
+        style nodegraph2.input1 fill:#1b1,color:#fff 
+        style nodegraph2.input2 fill:#1b1,color:#fff 
+        style nodegraph2.output1 fill:#0bb,color:#fff
+        style nodegraph2.output2 fill:#0bb,color:#fff
+        style nodegraph2.output3 fill:#0bb,color:#fff
+    end
+  end
+</div></code></pre>
+<p>if flattened would look something like this if the parent of the nodegraph was a document. The interface <code>&lt;input&gt;</code> and <code>&lt;output&gt;</code> elements are not present as this is disallowed within the document scope.</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph 
+  subgraph document
+    node1.input1 --> operator
+    node1.input1 --> operator 
+    node1.input2 --> operator2
+    node2.input2 --> operator2 
+    node2.input1 --> operator2
+    node2.input1 -.-> dot((dot))
+  end
+</div></code></pre>
+<p>The reverse process could create a nodegraph, with inputs and outputs added to create the public interface for the nodegraph.</p>
+<h3 id="shader-generation-graphs">Shader Generation Graphs</h3>
+<p>When dealing with shader generation shader graphs are simplified to having only nodes with inputs and outputs <strong>&quot;ports&quot;</strong>.</p>
+<p>The key components are:</p>
+<ul>
+<li>Shader Node: Basically corresponds to a node.</li>
+<li>Shader Port: A connectable attribute of a Shader Node. Can either be Input or Output Ports.</li>
+<li>Public Ports: Are bindable as shader code inputs or exposed as the root for evaluation as an output.</li>
+<li>Private Ports: Inputs and Outputs which are not exposed.</li>
+</ul>
+<p>All original nodes are flattened to remove the notion of a graph hierarchy
+and replace any nodes which are represented as functional graphs.</p>
+<h3 id="upstream-traversal">Upstream Traversal</h3>
+<p>Upstream traversal is fairly simple where the root to start from should be an <code>&lt;output&gt;</code> on a node or nodegraph. Traversal will naturally only follow direct connections.</p>
+<p>This is straightforward when:</p>
+<ol>
+<li>There are no nodegraphs within the shader graph.</li>
+<li>Or all of the nodes reside within a single nodegraph.</li>
+</ol>
+<p>In this case only node inputs connect to upstream outputs.</p>
+<h2 id="examples">Examples</h2>
+<p>Interior of nodegraph to upstream nodegraphs and nodes</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD;
+  subgraph Document;
+  subgraph surf_graph_graph; 
+    surf_graph_graph_default_shader[surf_graph_graph/default_shader] --> surf_graph_graph_surf_graph_graph_out[surf_graph_graph/surf_graph_graph_out]
+    style surf_graph_graph_surf_graph_graph_out fill:#1b1,color:#fff
+    surf_graph_graph_input([surf_graph_graph/input]) ==.base_color==> surf_graph_graph_default_shader[surf_graph_graph/default_shader]
+    style surf_graph_graph_input fill:#0bb,color:#fff
+    graph_graph_multiply[graph_graph/multiply] --.base_color--> surf_graph_graph_default_shader[surf_graph_graph/default_shader]
+    graph_graph_input([graph_graph/input]) ==.in1==> graph_graph_multiply[graph_graph/multiply]
+    style graph_graph_input fill:#0bb,color:#fff
+    upstream_graph_image[upstream_graph/image] --.in1--> graph_graph_multiply[graph_graph/multiply]
+    upstream_graph_file([upstream_graph/file]) ==.file==> upstream_graph_image[upstream_graph/image]
+    style upstream_graph_file fill:#0bb,color:#fff
+  subgraph graph_graph;
+    graph_graph_multiply
+    graph_graph_input
+  end
+  subgraph upstream_graph;
+    upstream_graph_image
+    upstream_graph_file
+  end
+  end
+  end
+</div></code></pre>
+<p>Cascading nodegraph to nodegraph</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph TD;
+  subgraph DocumentRoot; 
+    standard_surface[standard_surface] --.surfaceshader--> surfacematerial[surfacematerial]
+    upstream1_make_yellow[upstream1/make_yellow] --.base_color--> standard_surface[standard_surface]
+    upstream1_upstream1_in1([upstream1/upstream1_in1]) ==.in1==> upstream1_make_yellow[upstream1/make_yellow]
+    style upstream1_upstream1_in1 fill:#0bb,color:#111
+    upstream2_multiply_by_image[upstream2/multiply_by_image] --.in1--> upstream1_make_yellow[upstream1/make_yellow]
+    upstream2_upstream2_in1([upstream2/upstream2_in1]) ==.in1==> upstream2_multiply_by_image[upstream2/multiply_by_image]
+    style upstream2_upstream2_in1 fill:#0bb,color:#111
+    upstream3_upstream_image[upstream3/upstream_image] --.in1--> upstream2_multiply_by_image[upstream2/multiply_by_image]
+    upstream3_file([upstream3/file]) ==.file==> upstream3_upstream_image[upstream3/upstream_image]
+    style upstream3_file fill:#0bb,color:#111
+    upstream2_image[upstream2/image] --.in2--> upstream2_multiply_by_image[upstream2/multiply_by_image]
+  end
+</div></code></pre>
+<p>Sample AMD material</p>
+<pre><code class="language-mermaid"><div class="mermaid">graph BT;
+  subgraph DocumentRoot; 
+    SR_MaterialX_Graph[SR_MaterialX_Graph] --.surfaceshader--> MaterialX_Graph[MaterialX_Graph]
+    NG_MaterialX_Graph_node_image_color3_2[NG_MaterialX_Graph/node_image_color3_2] --.base_color--> SR_MaterialX_Graph[SR_MaterialX_Graph]
+    NG_MaterialX_Graph_node_multiply_9[NG_MaterialX_Graph/node_multiply_9] --.texcoord--> NG_MaterialX_Graph_node_image_color3_2[NG_MaterialX_Graph/node_image_color3_2]
+    NG_MaterialX_Graph_node_texcoord_vector2_8[NG_MaterialX_Graph/node_texcoord_vector2_8] --.in1--> NG_MaterialX_Graph_node_multiply_9[NG_MaterialX_Graph/node_multiply_9]
+    NG_MaterialX_Graph_node_float_1[NG_MaterialX_Graph/node_float_1] --.in2--> NG_MaterialX_Graph_node_multiply_9[NG_MaterialX_Graph/node_multiply_9]
+    NG_MaterialX_Graph_node_mix_3[NG_MaterialX_Graph/node_mix_3] --.specular_roughness--> SR_MaterialX_Graph[SR_MaterialX_Graph]
+    NG_MaterialX_Graph_node_float_7[NG_MaterialX_Graph/node_float_7] --.fg--> NG_MaterialX_Graph_node_mix_3[NG_MaterialX_Graph/node_mix_3]
+    NG_MaterialX_Graph_node_float_0[NG_MaterialX_Graph/node_float_0] --.bg--> NG_MaterialX_Graph_node_mix_3[NG_MaterialX_Graph/node_mix_3]
+    NG_MaterialX_Graph_node_extract_11[NG_MaterialX_Graph/node_extract_11] --.mix--> NG_MaterialX_Graph_node_mix_3[NG_MaterialX_Graph/node_mix_3]
+    NG_MaterialX_Graph_node_image_vector3_12[NG_MaterialX_Graph/node_image_vector3_12] --.in--> NG_MaterialX_Graph_node_extract_11[NG_MaterialX_Graph/node_extract_11]
+    NG_MaterialX_Graph_node_multiply_9[NG_MaterialX_Graph/node_multiply_9] --.texcoord--> NG_MaterialX_Graph_node_image_vector3_12[NG_MaterialX_Graph/node_image_vector3_12]
+    NG_MaterialX_Graph_onthefly_4[NG_MaterialX_Graph/onthefly_4] --.coat_normal--> SR_MaterialX_Graph[SR_MaterialX_Graph]
+    NG_MaterialX_Graph_node_normalmap[NG_MaterialX_Graph/node_normalmap] --.normal--> SR_MaterialX_Graph[SR_MaterialX_Graph]
+    NG_MaterialX_Graph_node_image_vector3_10[NG_MaterialX_Graph/node_image_vector3_10] --.in--> NG_MaterialX_Graph_node_normalmap[NG_MaterialX_Graph/node_normalmap]
+    NG_MaterialX_Graph_node_multiply_9[NG_MaterialX_Graph/node_multiply_9] --.texcoord--> NG_MaterialX_Graph_node_image_vector3_10[NG_MaterialX_Graph/node_image_vector3_10]
+    NG_MaterialX_Graph_onthefly_6[NG_MaterialX_Graph/onthefly_6] --.tangent--> SR_MaterialX_Graph[SR_MaterialX_Graph]
+  end
+</div></code></pre>
+<hr>
+<h3 id="workflows">Workflows</h3>
+<ul>
+<li>Logically a both a Document and a NodeGraph are considered to be containers of nodes or a &quot;node graph&quot;.</li>
+<li>However a Node which may have an implementation as a graph is not considered to be a container. This means
+traversal up and downstream from a given node requires special casing.</li>
+<li>Another issue is that in order to keep a minimal size, only those inputs and which are explicit connected to or
+assigned non-default values will exist on the instance of a Node or Nodegraph, even though they are part of the
+interface definition.</li>
+<li>Any connections which within Nodegraphs which connect interior Node inputs to Nodegraph inputs also currently have
+special syntax.</li>
+<li>All connections are specified on a downstream input instead of as a structure which provides both the input and output. This makes downstream traversal much less straightforward to perform than upstream.</li>
+<li>Materials as of 1.38 are nodes and traversal can find upstream shaders to allow a  full material graph to be traversed.</li>
+</ul>
+<h3 id="recommendations">Recommendations</h3>
+<ul>
+<li>In order to create a &quot;complete&quot; graph, when instances are created all inputs and outputs should be instantiated. This can be done via utilities which scan the associated NodeDef (definition) and add inputs and outputs with default values.</li>
+<li>An NodeGraph itself should have all of it's inputs specified even if it's a functional graph for the same reason.</li>
+<li></li>
+</ul>
+
+</body>
+</html>

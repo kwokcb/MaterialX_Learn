@@ -3,7 +3,7 @@
 Print markdown documentation for each nodedef in the given document or documents in a folder
 '''
 
-import sys, os, argparse
+import sys, os, argparse, shutil, io
 import MaterialX as mx
 
 class libraryHtml:
@@ -55,7 +55,24 @@ def getNodeDictionary(doc):
 
 def printNodeDictionary(nodegroupdict, opts, f):
     if opts.documentType == "html":
+
+        # Add in left column
+        if opts.documentType == "html":
+            print('   <div class="col-auto px-0">', file=f)
+            print('     <div class="row vh-100 overflow-auto">', file=f)
+            print('       <div class="col-12 pt-2 pl-2">', file=f)
+            print('         <div class="container-md">', file=f)
+            print('           <div id="sidebar" class="collapse show collapse-horizontal">', file=f)   
+
         printNodeDictionaryHTML(nodegroupdict, opts, f)
+
+        if opts.documentType == "html":
+            print('           </div>', file=f)
+            print('         </div>', file=f)
+            print('       </div>', file=f)
+            print('     </div>', file=f)
+            print('   </div>', file=f)
+
     else:
         printNodeDictionaryMD(nodegroupdict, opts, f)
 
@@ -89,6 +106,22 @@ def printNodeDictionaryHTML(nodegroupdict, opts, f):
     print('    <div class="btn btn-outline-primary" onclick="return filterTOC()">Filter</div>', file=f)
     print('</form>', file=f)
 
+    #print('<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="index.html">'
+    #' <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">'
+    #' <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>'
+    #' </svg>'
+    #' Home</a>', file=f)
+    #print('<br>', file=f)
+
+    #if opts.separateFiles:
+    #    print('<a class="text-left btn btn-outline-primary border-0 py-0" type="button" href="all_definitions.html">'
+    #    ' <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">'
+    #    ' <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>'
+    #    ' <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>'
+    #    ' </svg>'
+    #    ' All Definitions</a>', file=f)
+    #    print('<br>', file=f)
+
     print('    <button class="btn btn-outline-primary border-0" type="button" data-bs-toggle="collapse"'
           ' data-bs-target="#nodeGroupIndex" aria-expanded="false"'
           ' aria-controls="nodeGroupIndex">'
@@ -119,7 +152,10 @@ def printNodeDictionaryHTML(nodegroupdict, opts, f):
         print('<div class="d-grid gap-0 col-6">', file=f)
         nl = nodegroupdict[ng]
         for n in nl:
-            print('<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="#%s">%s</a>' % (n, n), file=f)
+            if opts.separateFiles:
+                print('<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="%s">%s</a>' % (n+".html", n), file=f)
+            else:
+                print('<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="#%s">%s</a>' % (n, n), file=f)
         print('</div>', file=f)
         print('</div>', file=f)
 
@@ -160,8 +196,23 @@ def printNodeDictionaryHTML(nodegroupdict, opts, f):
     #else:
     #    print(' ')
 
+
+def printNodeDefHeader(f):
+    print('   <div class="col ps-md-2 pt-2">', file=f)
+    print('       <div class="row vh-100 overflow-auto">', file=f)
+    print('           <div class="col-12 pt-2 pl-2">', file=f)
+    print('               <div class="container-md">', file=f)
+
+
+def printNodeDefFooter(f):
+    print('               </div>', file=f)
+    print('           </div>', file=f)
+    print('       </div>', file=f)
+    print('   </div>', file=f)
+
+
 # Print the document for node definitions in a file
-def printNodeDefs(doc, opts, f):
+def printNodeDefs(doc, opts, nodedict, f):
 
     currentNodeString = ""
 
@@ -171,17 +222,66 @@ def printNodeDefs(doc, opts, f):
     graphOptions.setOrientation(mx.GraphOrientation.LEFT_RIGHT)
     graphio.setGenOptions(graphOptions)
 
-    for nd in doc.getNodeDefs():
+    outputPath = opts.outputPath
 
-        # HTML output
+    # Output index.html page. 
+    rootfile = f
+    if opts.separateFiles:
         if opts.documentType == 'html':
+            if len(opts.outputFile) > 0:
+                f = open(outputPath + "/" + opts.outputFile + ".html", "w")
+            else:
+                f = open(outputPath + "/index.html", "w")
+            printHeader(opts, f)
+            printNodeDictionary(nodedict, opts, f)
+            printFooter(opts, f)
+            f.close()
+    else:
+        printHeader(opts, f)
+        printNodeDictionary(nodedict, opts, f)
+
+        # Add nodedef container
+        printNodeDefHeader(f)
+
+    # Dictionary of string buffer outputs to use for file output after
+    # being filled in.
+    filedict = {}
+    # HTML output
+    if opts.documentType == 'html':
+
+        for nd in doc.getNodeDefs():
+
             nodeString = nd.getNodeString()
-            if currentNodeString != nodeString:
+
+            if not nodeString in filedict.keys():
+
+                if opts.separateFiles:
+                    filename = "outputPath/" + nodeString + ".html"
+                    f = io.StringIO(filename)
+                    filedict[nodeString] = f
+
+                    # Add header, dictionary
+                    printHeader(opts, f)
+                    printNodeDictionary(nodedict, opts, f)
+
+                    # Add nodedef container
+                    printNodeDefHeader(f)
+                else:
+                    filename = "outputPath/" + nodeString + ".html"
+                    f = io.StringIO(filename)
+                    filedict[nodeString] = f
+
+                #print("**** Output node type: ", nodeString)
+
+                # Add node header
                 print("<br>", file=f)
                 print('<b><a id="%s" class="m-4 mb-0">' % nodeString, file=f)
                 print('Node: %s' % nodeString, file=f)
                 print('</a></b>', file=f)
-                currentNodeString = nodeString  
+
+            else:
+                #if opts.separateFiles:
+                f = filedict[nodeString]        
 
             # Implementation name    
             print('<details>'
@@ -196,10 +296,15 @@ def printNodeDefs(doc, opts, f):
             print('<div class="card-body">', file=f)
 
             # Preview image
+            imageName = 'images/nodes/material_' + nd.getName().removeprefix('ND_') + '_out_osl.png'
+            searchName = '../../documents/' + imageName
+            if not os.path.exists(searchName):
+                imageName = 'images/Default_osl.png'
             print('<p class="card-text">'
-                '<img src="images/Default_osl.png" '
-                'class="rounded float-left" alt="..." '
-                'style="width: 128px; max-width: 50;"></p>', file=f)           
+                '<img src="%s" '
+                # '<img src="images/Default_osl.png" '
+                'class="rounded float-left" alt=%s '
+                'style="width: 256px"></p>' % (imageName, imageName), file=f)           
 
             # Type
             print('<p class="card-text"><b>Type </b>'
@@ -359,8 +464,10 @@ def printNodeDefs(doc, opts, f):
                 # Default Value
                 val = port.getValue()
                 valstr = port.getValueString()
+                portType = port.getType()
+                valueLabel = "Value: "
 
-                # - Special handlig of default value on Output Elements 
+                # - Special handlig of default value on Output Elements
                 if port.isA(mx.Output): 
                     valstr = port.getAttribute('default')
                     if len(valstr) > 0: 
@@ -370,25 +477,32 @@ def printNodeDefs(doc, opts, f):
                         else:
                             valstr = val.getValueString()
                             val = val.getData()
+                            valueLabel = "Disabled Value :"
+                    else:
+                        # This is a connection so make the type a string
+                        if port.hasAttribute('defaultinput'):
+                            valstr = port.getAttribute('defaultinput')
+                            val = valstr
+                            portType = 'string'
+                            valueLabel = "Disabled Value :"
 
                 # - Regular handling of value on Input Elements
-                haveval = len(valstr) > 0
+                haveval = len(valstr) > 0 or portType == 'string' or portType == 'filename'
                 valueSize = 1
                 if haveval:
-                    portType = port.getType()
                     if (portType == 'boolean'):
                         print('  <div class="form-group row g-1">', file=f)
                         print('      <label', file=f)
-                        print('          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>', file=f)
+                        print('          class="col-sm-2 col-form-label col-form-label-sm">%s</label>' % valueLabel, file=f)
                         print('      <div class="col-sm-2">', file=f)
                         print('          <input type="text" class="form-control form-control-sm" value="%s" disabled>' % valstr, file=f)
                         print('      </div>', file=f)
                         print('  </div>', file=f)
 
-                    elif (portType == 'string'):
+                    elif (portType == 'string' or portType == 'filename'):
                         print('  <div class="form-group row g-1">', file=f)
                         print('      <label', file=f)
-                        print('          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>', file=f)
+                        print('          class="col-sm-2 col-form-label col-form-label-sm">%s</label>' % valueLabel, file=f)
                         print('      <div class="col-sm-2">', file=f)
                         print('          <input type="text" class="form-control form-control-sm" value="%s" disabled>' % val, file=f)
                         print('      </div>', file=f)
@@ -397,7 +511,7 @@ def printNodeDefs(doc, opts, f):
                     elif (portType == 'float' or portType == 'integer'):
                         print('  <div class="form-group row g-1">', file=f)
                         print('      <label', file=f)
-                        print('          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>', file=f)
+                        print('          class="col-sm-2 col-form-label col-form-label-sm">%s </label>' % valueLabel, file=f)
                         print('      <div class="col-sm-2">', file=f)
                         print('          <input type="number" class="form-control form-control-sm" value="%g" disabled>' 
                                             % (val if haveval else -1), file=f)
@@ -411,7 +525,7 @@ def printNodeDefs(doc, opts, f):
                         or portType == 'color4'):
 
                         print('  <div class="form-group row g-1">', file=f)
-                        print('      <label class="col-sm-2 col-form-label col-form-label-sm">Value:</label>', file=f)
+                        print('      <label class="col-sm-2 col-form-label col-form-label-sm">%s</label>' % valueLabel, file=f)
                         print('      <div class="col-sm-2">', file=f)
                         print('          <input type="number" class="form-control form-control-sm" value="%g" disabled>' 
                                         % val[0] if haveval else -1, file=f)
@@ -423,7 +537,7 @@ def printNodeDefs(doc, opts, f):
 
                         valueSize = 2
 
-                        if portType == 'vector3 ' or portType == 'color3' or portType == 'vector4' or portType == 'color4':
+                        if portType != 'vector2':
                             print('      <div class="col-sm-2">', file=f)
                             print('          <input type="number" class="form-control form-control-sm" value="%g" disabled>' 
                                             % val[2] if haveval else -1, file=f)
@@ -600,11 +714,33 @@ def printNodeDefs(doc, opts, f):
             print('</div>', file=f)
             print('</details>', file=f)
 
-            # Parameter Information
 
+        # Write buffers to disk
+        if opts.separateFiles:
+            # Write each buffer to a separate file
+            for nodeString in filedict.keys():
+                buf = filedict[nodeString]
+                printNodeDefFooter(buf)
+                printFooter(opts, buf)
+                f = open(outputPath + "/" + nodeString + '.html', 'w')
+                buf.seek(0)
+                shutil.copyfileobj(buf, f)            
+                print('Wrote file: ' + outputPath + "/" + nodeString + '.html')
+                f.close()
+        else:
+            # Write al buffers to root file
+            f = rootfile
+            printNodeDefHeader(f)
+            for nodeString in filedict.keys():
+                buf = filedict[nodeString]
+                print(buf.getvalue(), file=f)
+            printNodeDefFooter(f)
+            printFooter(opts, f)
+            f.close()
 
-        # Markdown output
-        elif opts.documentType == 'md':
+    # Markdown output
+    elif opts.documentType == 'md':
+        for nd in doc.getNodeDefs():
             nodeString = nd.getNodeString()
             if currentNodeString != nodeString:
                 print('### Node: *%s*' % nodeString, file=f)
@@ -778,58 +914,36 @@ def main():
     parser.add_argument('--showInherited', default=False, action='store_true', help='Show inherited inputs. Default is False')
     parser.add_argument('--nodegraph', default=False, action='store_true', help='Show nodegraph implementation if any. Default is False')
     parser.add_argument('--printIndex', default=False, action='store_true', help="Print nodedef index. Default is False")
-    parser.add_argument('--outputFile', default="", help="Output file name")
+    parser.add_argument('--outputPath', default="_doc_dump", help="Output path. Default is the current path")
+    parser.add_argument('--outputFile', default="root", help="Root output file name. Default is 'root.<docType>'")
+    parser.add_argument('--separateFiles', default=False, help="Output separate files. Default is False")
 
     opts = parser.parse_args()
 
+    # Check for output file name. If none then dump everything to std output.
     outputFileName = ""
+    f = sys.stdout
     if len(opts.outputFile) > 0:
         outputFileName = opts.outputFile + "." + opts.documentType
-        f = open(outputFileName, "w")
-        print('Writing output to file: ', outputFileName)
-    else:
-        f = sys.stdout
 
-    printHeader(opts, f)
+    # Create output path if not exist
+    if len(outputFileName) > 0:
+        outputPath = opts.outputPath + "/"
+        if not os.path.exists(outputPath):
+            os.mkdir(outputPath)
+
+    # Check if we are writing to a single file
+    if not opts.separateFiles:
+        f = open(outputPath + outputFileName, "w")
+        print('Writing output to file: ', outputPath + outputFileName)
 
     rootPath = opts.inputFilename;
     doc = mx.createDocument()
     readDocuments(rootPath, doc)    
 
-    # Add in left column
-    if opts.documentType == "html":
-        print('   <div class="col-auto px-0">', file=f)
-        print('     <div class="row vh-100 overflow-auto">', file=f)
-        print('       <div class="col-12 pt-2 pl-2">', file=f)
-        print('         <div class="container-md">', file=f)
-        print('           <div id="sidebar" class="collapse show collapse-horizontal">', file=f)   
-
     nodedict = getNodeDictionary(doc)
-    printNodeDictionary(nodedict, opts, f)
-
-    if opts.documentType == "html":
-        print('           </div>', file=f)
-        print('         </div>', file=f)
-        print('       </div>', file=f)
-        print('     </div>', file=f)
-        print('   </div>', file=f)
-
-    # Add in right colunn
-    if opts.documentType == "html":
-        print('   <div class="col ps-md-2 pt-2">', file=f)
-        print('       <div class="row vh-100 overflow-auto">', file=f)
-        print('           <div class="col-12 pt-2 pl-2">', file=f)
-        print('               <div class="container-md">', file=f)
-
-    printNodeDefs(doc, opts, f) 
-
-    if opts.documentType == "html":
-        print('               </div>', file=f)
-        print('           </div>', file=f)
-        print('       </div>', file=f)
-        print('   </div>', file=f)
-
-    printFooter(opts, f) 
+    #printNodeDictionary(nodedict, opts, f)
+    printNodeDefs(doc, opts, nodedict, f) 
 
 if __name__ == '__main__':
     main()
