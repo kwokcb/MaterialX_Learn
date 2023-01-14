@@ -1,499 +1,1085 @@
 <html>
+
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<style>
- body { font-size: 90%; }
- .col-form-label-sm { font-size: 90%; }
- .form-control { font-size: 90%; }
- .card-body { font-size: 80%; } 
- .btn { font-size: 90%; }
- .nav-link { font-size: 100%; }
- a{ text-decoration: none; } 
- a:hover { text-decoration: none; cursor: pointer;}
- .text-left { text-align: left !important; }
- .greyhover { text-decoration: none; }
- .greyhover:hover { text-decoration: none; cursor: pointer; background: rgb(239, 239, 239); }
-</style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        body {
+            font-size: 90%;
+        }
+
+        .col-form-label-sm {
+            font-size: 90%;
+        }
+
+        .form-control {
+            font-size: 90%;
+        }
+
+        .card-body {
+            font-size: 80%;
+        }
+
+        .btn {
+            font-size: 90%;
+        }
+
+        .nav-link {
+            font-size: 100%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .text-left {
+            text-align: left !important;
+        }
+
+        .greyhover {
+            text-decoration: none;
+        }
+
+        .greyhover:hover {
+            text-decoration: none;
+            cursor: pointer;
+            background: rgb(239, 239, 239);
+        }
+    </style>
 </head>
+
 <body class="min-vh-100">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script> 
-<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest" }); </script>
 
-<script>
-    function filterTOC() 
-    {
-        var input, filter, ul, li, a, i;
-        input = document.getElementById("searchTOC");
-        filter = input.value;
-        console.log("Look for: ", filter)
-        li = document.querySelectorAll('.idx');
-        for (i = 0; i < li.length; i++) {
-            a = li[i];
-            if (a.innerHTML.match(filter)) {
-                if (filter.length > 0)
-                {
-                    var parent = a.parentElement
-                    while (parent) {
-                        if (parent.className && parent.classList.contains("collapse")) {
-                            console.log("Show: ", parent)
-                            parent.classList.add("show");
+    <script>
+        function filterTOC() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("searchTOC");
+            filter = input.value;
+            console.log("Look for: ", filter)
+            li = document.querySelectorAll('.idx');
+            for (i = 0; i < li.length; i++) {
+                a = li[i];
+                if (a.innerHTML.match(filter)) {
+                    if (filter.length > 0) {
+                        var parent = a.parentElement
+                        while (parent) {
+                            if (parent.className && parent.classList.contains("collapse")) {
+                                console.log("Show: ", parent)
+                                parent.classList.add("show");
+                            }
+                            parent = parent.parentElement;
                         }
-                        parent = parent.parentElement;
                     }
-                }
-                a.style.display = "";
-            } 
-            else 
-            {
-                if (filter.length > 0) 
-                    a.style.display = "none";
-                else
                     a.style.display = "";
+                }
+                else {
+                    if (filter.length > 0)
+                        a.style.display = "none";
+                    else
+                        a.style.display = "";
+                }
             }
-        }       
-    }
-
-    function filterOnEnter(event) 
-    {
-        if (event.code === 'Enter') 
-        {
-            event.preventDefault();
-            filterTOC();
         }
-    };    
 
-    function renderMermaid(event)
-    {
-        buttonId = event.target.id;
+        function filterOnEnter(event) {
+            if (event.code === 'Enter') {
+                event.preventDefault();
+                filterTOC();
+            }
+        };
+    </script>
 
-        var mermaidinput = document.getElementById(buttonId + "_mermaid_input"); 
-        var mermaidoutput = document.getElementById(buttonId + "_mermaid_output"); 
-        if (mermaidinput && mermaidoutput)
-        {
-            const code = mermaidinput.textContent;
-            let generateDiagram = function (code) {
-                mermaidoutput.innerHTML = code;
-                mermaidoutput.hidden = false;
-            };
-            mermaid.render(buttonId + "_mermaid_output_rendered", code, generateDiagram);
-            
-            var button = document.getElementById(event.target.id);
-            button.hidden = true;
-            button.remove;
-        }
-    }    
-</script>
-
-<nav class="navbar sticky-top navbar-expand-lg bg-light ">
-    <div class="container-md container-fluid">
-        <a class="navbar-brand" href="#">
-            <h4>MaterialX Plus</h4>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+    <nav class="navbar sticky-top navbar-expand-lg bg-light ">
+        <div class="container-md container-fluid">
+            <a class="navbar-brand" href="#">
+                <h4><img src="images/MaterialXLogo2KWhite.png" alt="MaterialX Plus" class="d-inline-block align-text-top" width="60" >                
+                MaterialX Plus</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
             aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
             <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mainMenuContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link greyhover active" aria-current="page" href="../index.html">Home</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link greyhover" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-bezier text-primary" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
-                            <path
-                                d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
-                        </svg>
-                        Node Graphs
-                    </a> 
-                </li> -->
-                <li class="nav-item">
-                  <a class="nav-link greyhover" href="mermaidChecker.html">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                          class="bi bi-bezier text-primary" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd"
-                              d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
-                          <path
-                              d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
-                      </svg>
-                      Graph Checker
-                  </a> 
-              </li> 
-                <li class="nav-item">
-                    <a class="nav-link greyhover" href="#" data-bs-target="#sidebar" data-bs-toggle="collapse">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-layout-text-sidebar text-primary" viewBox="0 0 16 16">
-                            <path
-                                d="M3.5 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM3 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z" />
-                            <path
-                                d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm12-1v14h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zm-1 0H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h9V1z" />
-                        </svg>
-                        Index
-                    </a>
-                </li>
-            </ul>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenuContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link greyhover active" aria-current="page" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Node Library
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                        <path
+                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                                    </svg>
+                                    Introduction
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item" href="root.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                        <path
+                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                                    </svg>
+                                    Definitions (By Group)
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item" href="all_definitions.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                        <path
+                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                                    </svg>
+                                    Definitions (All)
+                                </a>
+                            </li>
+                        </ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Utilities
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="mermaidChecker.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                        <path
+                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                                    </svg>
+                                    Graph Checker
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid ">
+        <div class="row flex-nowrap">
+            <div class="col-12 pt-2 pl-2">
+                <div class="row vh-100 flex-nowrap overflow-auto">
+                    <div class="flex col-6 md-2 p-2">
+                        <div class="container-md">
+                            <h3>Introduction to Definitions</h3>
+
+                            <details>
+                                <summary class="card-header rounded bg-success bg-opacity-50 text-white pt-2 pb-2 px-1">
+                                    <b>Node Definition Basics</b>
+                                </summary>
+                                <p>
+                                    The attributes of a node definition (&lt;nodedef&gt;) and it's child
+                                    parameters are
+                                    shown in the UI interface. All attributes
+                                    have lowercase string identifiers. This UI interface is the
+                                    <em>template</em> used for
+                                    documentation for each node definition.
+                                </p>
+
+                                <p>Every node definition must have a unique <b>name</b>.
+                                </p>
+                                <p>For the "core"
+                                    libraries shipping with
+                                    MaterialX a "ND_" prefix is used as a prefix with the
+                                    the follow proposed syntax template to provide long term uniqueness:<br><br>
+                                    <code>    ND_&lt;node category&gt;_&lt;type&gt;_&lt;version&gt;</code>
+                                </p>
+                                <p>
+                                    While it is possible to change this name, this can cause issues
+                                    with dependents that reference this name directly. This includes references
+                                    for node instances which are stored in a document.
+                                </p>
+                                </p>
+                                Each node definition must have a <b>node</b> attribute. This is
+                                the unique identifier to indicate the <b>category</b> of a node instance.
+                                One or more node definitions may use the same category, though each must have a
+                                unique "signature" (unique set of input, output, and token parameters).
+                                </p>
+                                <P>
+                                    An output <b>type</b> is also required.
+                                    Different definitions for the same category can have the same or
+                                    differing output types. If there is more than one output parameter on a definition
+                                    then
+                                    the type is <em>multioutput</em>. This this case the individual outputs
+                                    need to be examined to determine their respective types. Two or more definitions
+                                    with the same category may have a "multioutput" type.
+                                </P>
+                                <p>
+                                    It is worthwhile to have a <b>version</b>
+                                    identifier for very definition to avoid
+                                    complications trying to add this in later on.
+                                    A recommended version number is either "1.0" , or a number
+                                    matching the version of
+                                    a given external specification. For example versions for "USD"
+                                    definitions start with "2.x".
+                                </p>
+                                <p>
+                                    The <b>isdefaultversion</b> attribute should
+                                    be provided at the same time as it determines the definition to
+                                    instantiate when creating
+                                    a nodes instance (when on explicit version set indicated).
+                                    Versioning is also importer to allow for "upgrade" logic support.
+                                </p>
+                                <p>
+                                    It is possible to indicate that a definition inherits it's
+                                    interface from another definition by specifying an <b>inherit</b>
+                                    value. This value should be set to a definition "name".
+                                    Inheritance allows for specialization as well as for handling version changes.
+                                    For example the <a href="standard_surface.html">standard surface</a>
+                                    and <a href="UsdUVTexture.html">USD texture</a> definitions use
+                                    inheritance.
+                                <p>
+                                    Though not strictly required it is very useful to have some
+                                    description of the definition.
+                                    This is specified in the <b>doc</b> attribute of the definition wherein all
+                                    text is assumed to be in UTF-8 format.
+                                </p>
+                                <p>
+                                    A node group <b>nodegroup</b> is optional but should be specified if
+                                    it has a semantic which is used for evaluation including shader code
+                                    generation. This includes:
+                                <ul>
+                                    <li><b>"texture"</b> Texture lookups test for this group identifier for example to
+                                        perform convolutions</li>
+                                    <li><b>"adjustment"</b>Used for heuristic to test for transparency </li>
+                                    <li><b>"conditional"</b>Will cause branching in shader and re-generation is required
+                                        for different conditions</li>
+                                    <li><b>"organization"</b>Does not perform any computation</li>
+                                    <li><b>"translation"</b>Is a shading model translator</li>
+                                </ul>
+                                </p>
+                            </details>
+                            <br>
+                            <details>
+                                <summary class="card-header rounded bg-success bg-opacity-50 text-white pt-2 pb-2 px-1">
+                                    <b>Node Definition Implementations</b>
+                                </summary>
+                                <p>
+                                    A definition can be implemented either in code or using a functional
+                                    node graph. This can be dependent on the output shading API "target".
+                                </p>
+                                <p>
+                                    The association between a node definition and
+                                    the graph can either be specified via the <b>nodedef</b>
+                                    attribute on a node graph or via an
+                                    <code>&lt;implementation&gt;</code>
+                                    association as of version 1.38.4.
+                                </p>
+                                <p>
+                                    The recommended functional graph name should start with "NG_" and be of the
+                                    form:<br><br>
+                                    <code>NG_&lt;node category&gt;_&lt;type&gt;_&lt;version&gt;</code>
+                                </p>
+                                <p>
+                                    The following diagram shows the two possible ways implementations can be
+                                    associated with definitions. As of 1.38.4 the &lt;implementation&gt; approach
+                                    is recommended as it the same way that code associations are specified.
+                                <div class="mermaid">
+                                    graph LR;
+                                    NG_definitionname_float_v1 --> ND_definitionname_float_v1
+                                </div>
+                                or
+                                <div class="mermaid">
+                                    classDiagram
+                                    class IMPL_definitionname_float_v1{
+                                    +nodedef ND_definitionname_float_v1.name
+                                    +nodegraph NG_definitionname_float_v1.name
+                                    }
+                                    class ND_definitionname_float_v1{
+                                    +String name
+                                    }
+                                    ND_definitionname_float_v1 --> IMPL_definitionname_float_v1
+                                    class NG_definitionname_float_v1{
+                                    +String name
+                                    }
+                                    NG_definitionname_float_v1 --> IMPL_definitionname_float_v1
+                                </div>
+                                </p>
+                                <p>
+                                    For the node definition documentation, diagrams of node graphs are
+                                    generated using <em>Mermaid</em>. The conventions for different components
+                                    are show in the sample diagram below:
+                                <div class="mermaid">
+                                    graph TB;
+                                    nodeA --> nodeB
+                                    node1 --> node2
+                                    node0 --> interface1 --> node1
+                                    node3 --> out1(out1) --> node4
+                                    node5 --.in1--> node6
+                                    node7a --> ifequal{ifequal} --> node8
+                                    node7b --> ifequal
+                                    subgraph nodegraph:
+                                    node1
+                                    node2
+                                    end
+                                    style out1 fill:#1b1, color:#111
+                                    style interface1 fill:#0bb, color:#111
+                                </div>
+                                such that
+                                <ol>
+                                    <li>Nodes and nodegraphs are rectangular boxes</li>
+                                    <li>Outputs and definition (interface) inputs are rounded and color-coded</li>
+                                    <li>Conditional nodes are diamond shape</li>
+                                </ol>
+
+                                </p>
+                            </details>
+                            <br>
+                            <details>
+                                <summary class="card-header rounded bg-success bg-opacity-50 text-white pt-2 pb-2 px-1">
+                                    <b>Node Definition Parameters</b>
+                                </summary>
+                                <p>The input and output parameters shown in the UI template include all the
+                                    possible properties and value variants whether they are specified or not.
+                                </p>
+                                <p>
+                                    The required attributes are:
+                                <ul>
+                                    <li><b>name</b> The name must be unique between all parameters on
+                                        the definition.</li>
+                                    <li><b>type</b>The parameter type</li>
+                                </ul>
+                                Optional attributes
+                                <ul>
+                                    <li><b>doc</b>: Description of the parameter. It is recommended to
+                                        add this info user understanding</li>
+                                    <li><b>uniform (input)</b>: If specified the input data is uniform (vs varying)
+                                        Only inputs can have this specified.</li>
+                                    <li><b>enumvalues</b> and <b>enum</b>: The set of possible values
+                                        and their corresponding labels respectively.
+                                    </li>
+                                    <li><b>value</b>: The default value for inputs. Depending on the type,
+                                        values may be qualified by additional attributes:
+                                        <ul>
+                                            <li><b>unit</b> and <b>unittype</b>: For floats and vectors. Defines
+                                                the unit and unit type for the input (e.g. "cm" and
+                                                "distance"). Either one or the
+                                                other may be specified</li>
+                                            <li><b>colorspace</b>: For color3 and color4 and filename
+                                                types. Defines the input color space. Note that a value
+                                                of "none" means that this is a non-physical
+                                                color and should not undergo any colorspace transforms
+                                            </li>
+                                            <li><b>defaultgeomprop</b>: String identifier of a default
+                                                geometry stream to route as input</li>
+                                        </ul>
+                                    </li>
+                                    <li><b>default</b>: The default value of an output when a node
+                                        instance is disabled (The <b>disable</b> attribute is set true)</li>
+                                    <li><b>defaultinput</b>: The value on a definition's input to use
+                                        by default value when a node instance is disabled.</li>
+                                </ul>
+                                Optional UI Attributes for Inputs
+                                <ul>
+                                    <li><b>uimin</b>, <b>uisoftmin</b> Hard and soft UI minimum value</li>
+                                    <li><b>uimax</b>, <b>uisoftmax</b> Hard and soft UI maximum value</li>
+                                    <li><b>uistep</b> UI step size value</li>
+                                    <li><b>uifolder</b> Can be used to group parameters in the UI</li>
+                                    <li><b>uiadvanced</b> Considered to be for "advanced" users</li>
+                                    </li>
+                                </ul>
+                                </p>
+                            </details>
+                            <br>
+                            <details>
+                                <summary class="card-header rounded bg-success bg-opacity-50 text-white pt-2 pb-2 px-1">
+                                    <b>API methods</b>
+                                </summary>
+                                <p>
+                                    To retrieve information the API classes are as follows:
+                                <ul>
+                                    <li><em>NodeDef</em>: node definition</li>
+                                    <li><em>Implementation</em>: nodedef definition implementation</li>
+                                    <li><em>NodeGraph</em>: node graph implementation</li>
+                                    <li><em>Input</em>: interface and node inputs for definitions and
+                                        node graph implementation nodes</li>
+                                    <li><em>Output</em>: outputs for definitions, node graphs and nodes</li>
+                                </ul>
+                                </p>
+                                <p>
+                                    For brevity, only essential API calls shown in the UI template. Otherwise
+                                    the attribute names or labels are used to denote where the information resides.
+                                </p>
+                                <p>Input and output ports can be inherited from a parent definition. Only the
+                                    non-inherited ports are shown per node definition. Note that in MaterialX
+                                    terminology,
+                                    getting "active" information means to get inherited information.
+                                    Corresponding APIs having an "Active" string as part of the API name.
+                                </p>
+                                <p>
+                                    To get input and output attribute information the follow method is available:
+                                    <code class="language-cpp">getAttribute(&lt;attribute name&gt;)</code>
+                                </p>
+                                <p>
+                                    The general method to get value information (marked as 'value' in the template) is:
+                                    <code class="language-c++">getValue()</code>
+                                </p>
+                                The API calls have the same name for
+                                all supported APIs (Python, Javascript, C++)
+                                </p>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="flex col-6 pt-2 p-2">
+                        <div class="container-md">
+                            <h4>Definition Template</h4>
+
+                            <b>Category: </b>'node'
+                            <details open>
+                                <summary
+                                    class="card-header rounded bg-primary bg-opacity-50 text-white m-4 px-2 p-3 mb-0">
+                                    Name: 'name'</summary>
+
+                                <div class="m-4 mt-0">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card border-primary border mb-4">
+                                                <div class="card-body">
+                                                    <p class="card-text"><img src="images/Default_osl.png"
+                                                            class="rounded float-left" alt="..."
+                                                            style="width: 128px; max-width: 50%;"></p>
+                                                    <p class="card-text"><b>Type </b>
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-outline-secondary pt-0 pb-0">'type'
+                                                        </button>
+                                                    </p>
+                                                    <p class="card-text"><b>Node Group </b>
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-outline-secondary pt-0 pb-0">'nodegroup'</button>
+                                                    </p>
+                                                    <p class="card-text">
+                                                        <b>Version </b>'version'
+                                                        <b>Inherits From </b><button type="button"
+                                                            class="btn btn-sm btn-outline-secondary pt-0 pb-0">'inherit'</button>
+                                                    </p>
+                                                    <p class="card-text"><b>Description:
+                                                        </b>
+                                                    <div class="col-sm-8">
+                                                        <textarea class="form-control form-control-sm" rows="1"
+                                                            style="resize: none;" disabled>'doc'</textarea>
+                                                    </div>
+                                                    </p>
+
+                                                    <p class="card-text">
+                                                    <details>
+                                                        <summary><b>Node Graph</b>
+                                                            getImplementation()
+                                                        </summary>
+                                                        <div class="mermaid">
+                                                            graph LR;
+                                                            nodeA --> nodeB
+                                                            node1 --> node2
+                                                            node0 --> interface1 --> node1
+                                                            node3 --> out1(out1) --> node4
+                                                            node5 --.in1--> node6
+                                                            node7a --> ifequal{ifequal} --> node8
+                                                            node7b --> ifequal
+                                                            subgraph nodegraph:
+                                                            node1
+                                                            node2
+                                                            end
+                                                            style out1 fill:#1b1, color:#111
+                                                            style interface1 fill:#0bb, color:#111
+                                                        </div>
+                                                    </details>
+                                                    </p>
+                                                    <details>
+                                                        <summary class="card-text"><b>Parameters:
+                                                            </b>getValueElements()</summary>
+                                                        <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+                                                            <li class="nav-item" role="presentation">
+                                                                <button class="nav-link active" id="pills-baseColor-tab"
+                                                                    data-bs-toggle="pill"
+                                                                    data-bs-target="#pills-baseColor" type="button"
+                                                                    role="tab" aria-controls="pills-baseColor"
+                                                                    aria-selected="true">Input 'name'</button>
+                                                            </li>
+                                                            <li class="nav-item" role="presentation">
+                                                                <button class="nav-link link-succes" id="pills-out-tab"
+                                                                    data-bs-toggle="pill" data-bs-target="#pills-out"
+                                                                    type="button" role="tab"
+                                                                    aria-controls="pills-specular"
+                                                                    aria-selected="false"><b>Output 'name'</b></button>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="tab-content" id="pills-tabContent">
+                                                            <div class="tab-pane fade show active" id="pills-baseColor"
+                                                                role="tabpanel" aria-labelledby="pills-baseColor-tab"
+                                                                tabindex="0">
+
+                                                                <div class="form-group row g-2">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
+                                                                    <div class="col-sm-8">
+                                                                        <textarea class="form-control form-control-sm"
+                                                                            id="form_description" rows="3"
+                                                                            style="resize: none;" disabled>'doc'
+                                                                                    </textarea>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-2">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">Type
+                                                                        /
+                                                                        Uniform:</label>
+                                                                    <div class="col-sm-2">
+                                                                        <button type="button"
+                                                                            class="btn btn-sm btn-outline-secondary pt-0 pb-0">'type'</button>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-sm-7">
+                                                                        <input type="checkbox" id="blah" name="Advanced"
+                                                                            class="form-check-input form-check-sm"
+                                                                            checked disabled>
+                                                                        <label>
+                                                                            ('uniform')</label><br>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">Possible
+                                                                        Values: </label>
+                                                                    <div class="col-sm-4">
+                                                                        <select class="form-select form-select-sm"
+                                                                            style="font-size:90%" size="3"
+                                                                            aria-label="size 3 select example .form-select-sm"
+                                                                            disabled>
+                                                                            <option value="1">
+                                                                                'enum'
+                                                                            </option>
+                                                                            <option value="2">
+                                                                                'enum'
+                                                                            </option>
+                                                                            <option value="3">
+                                                                                'enum'
+                                                                            </option>
+                                                                        </select>
+
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <select class="form-select form-select-sm"
+                                                                            style="font-size:90%" size="3"
+                                                                            aria-label="size 3 select example .form-select-sm"
+                                                                            disabled>
+                                                                            <option value="1">
+                                                                                'enumvalues'
+                                                                            </option>
+                                                                            <option value="2">
+                                                                                'enumvalues'
+                                                                            </option>
+                                                                            <option value="3">
+                                                                                'enumvalues'
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Value (color3): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value='value' disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <input type="color" value="#ffff00" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Value (color4): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value='value' disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value='value' disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="color" value="#ff0000" disabled>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">Colorspace
+                                                                        (color3/color4): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <button type="button"
+                                                                            class="btn btn-sm btn-outline-secondary pt-0 pb-0">'colorspace'</button>
+                                                                    </div>
+                                                                </div>
+
+                                                                <hr>
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Value (vector4): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Value (vector3): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Value (vector2): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Value (float): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">Unit
+                                                                        Type / Unit: </label>
+                                                                    <div class="col-sm-2">
+                                                                        <button type="button"
+                                                                            class="btn btn-sm btn-outline-secondary pt-0 pb-0">'unittype'</button>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <button type="button"
+                                                                            class="btn btn-sm btn-outline-secondary pt-0 pb-0">'unit'</button>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">Geometry
+                                                                        Property: </label>
+                                                                    <div class="col-sm-6">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'defaultgeomprop'" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <hr>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">Value
+                                                                        (boolean):
+                                                                    </label>
+                                                                    <div class="col-sm-1">
+                                                                        <input type="checkbox"
+                                                                            class="form-check-input form-check-sm"
+                                                                            checked disabled>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">UI
+                                                                        Min/Max/Step: </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'uimin'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'uimax'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'uistep'" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">UI
+                                                                        Soft Min/Max: </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'uisoftmin'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'uisoftmax'" disabled>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="form-group row g-2">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">UI
+                                                                        Name / Folder: </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'uiname')" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'uifolder'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="checkbox" id="blah" name="Advanced"
+                                                                            class="form-check-input form-check-sm"
+                                                                            checked disabled>
+                                                                        <label for="blah">
+                                                                            ('uiadvanced')</label><br>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <!--------------------------------------------------------------------------------------------------->
+                                                            <div class="tab-pane fade" id="pills-out" role="tabpanel"
+                                                                aria-labelledby="pills-out-tab" tabindex="0">
+
+                                                                <div class="form-group row g-2">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
+                                                                    <div class="col-sm-8">
+                                                                        <textarea class="form-control form-control-sm"
+                                                                            id="form_description" rows="3"
+                                                                            style="resize: none;" disabled>'doc'
+                                                                                    </textarea>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-2">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+                                                                    <div class="col-sm-2">
+                                                                        <button type="button"
+                                                                            class="btn btn-sm btn-outline-secondary pt-0 pb-0">'type'</button>
+                                                                        </p>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">Possible
+                                                                        Values: </label>
+                                                                    <div class="col-sm-4">
+                                                                        <select class="form-select form-select-sm"
+                                                                            style="font-size:90%" size="3"
+                                                                            aria-label="size 3 select example .form-select-sm"
+                                                                            disabled>
+                                                                            <option value="1">
+                                                                                'enum'
+                                                                            </option>
+                                                                            <option value="2">
+                                                                                'enum'
+                                                                            </option>
+                                                                            <option value="3">
+                                                                                'enum'
+                                                                            </option>
+                                                                        </select>
+
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <select class="form-select form-select-sm"
+                                                                            style="font-size:90%" size="3"
+                                                                            aria-label="size 3 select example .form-select-sm"
+                                                                            disabled>
+                                                                            <option value="1">
+                                                                                'enumvalues'
+                                                                            </option>
+                                                                            <option value="2">
+                                                                                'enumvalues'
+                                                                            </option>
+                                                                            <option value="3">
+                                                                                'enumvalues'
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Default (color3): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value='value' disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <input type="color" value="#ffff00" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Default (color4): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value='value' disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value='value' disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="color" value="#ff0000" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Default (vector4): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Default (vector3): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Default (vector2): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Default (float): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">
+                                                                        Default (string): </label>
+                                                                    <div class="col-sm-2">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-sm"
+                                                                            value="'value'" disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row g-1">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-sm">Default
+                                                                        (boolean):
+                                                                    </label>
+                                                                    <div class="col-sm-1">
+                                                                        <input type="checkbox"
+                                                                            class="form-check-input form-check-sm"
+                                                                            checked disabled>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </details>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </details>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</nav><div class="container-fluid ">
- <div class="row flex-nowrap">
-   <div class="col-auto px-0">
-     <div class="row vh-100 overflow-auto">
-       <div class="col-12 pt-2 pl-2">
-         <div class="container-md">
-           <div id="sidebar" class="collapse show collapse-horizontal">
-<form class="d-flex" role="search">
- <input id="searchTOC" class="form-control me-2" type="text" placeholder="Search value" aria-label="Search">
-    <div class="btn btn-outline-primary" onclick="return filterTOC()">Filter</div>
-</form>
-    <button class="btn btn-outline-primary border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nodeGroupIndex" aria-expanded="false" aria-controls="nodeGroupIndex"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> Node Groups </button>
-<div class="collapse show" id="nodeGroupIndex">
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_adjustment" aria-expanded="false" aria-controls="collapse_adjustment"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> adjustment </button>
-</div>
-<div class="collapse ps-5" id="collapse_adjustment">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="colorcorrect.html">colorcorrect</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="contrast.html">contrast</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="curveadjust.html">curveadjust</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="hsvadjust.html">hsvadjust</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="hsvtorgb.html">hsvtorgb</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="luminance.html">luminance</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="range.html">range</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="remap.html">remap</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="rgbtohsv.html">rgbtohsv</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="saturate.html">saturate</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="smoothstep.html">smoothstep</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_application" aria-expanded="false" aria-controls="collapse_application"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> application </button>
-</div>
-<div class="collapse ps-5" id="collapse_application">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="frame.html">frame</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="time.html">time</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_channel" aria-expanded="false" aria-controls="collapse_channel"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> channel </button>
-</div>
-<div class="collapse ps-5" id="collapse_channel">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="combine2.html">combine2</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="combine3.html">combine3</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="combine4.html">combine4</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="convert.html">convert</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="extract.html">extract</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="separate2.html">separate2</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="separate3.html">separate3</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_compositing" aria-expanded="false" aria-controls="collapse_compositing"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> compositing </button>
-</div>
-<div class="collapse ps-5" id="collapse_compositing">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="burn.html">burn</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="difference.html">difference</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="disjointover.html">disjointover</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dodge.html">dodge</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="in.html">in</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="inside.html">inside</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="mask.html">mask</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="matte.html">matte</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="minus.html">minus</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="mix.html">mix</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="out.html">out</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="outside.html">outside</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="over.html">over</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="overlay.html">overlay</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="plus.html">plus</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="premult.html">premult</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="screen.html">screen</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="unpremult.html">unpremult</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_conditional" aria-expanded="false" aria-controls="collapse_conditional"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> conditional </button>
-</div>
-<div class="collapse ps-5" id="collapse_conditional">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ifequal.html">ifequal</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ifgreater.html">ifgreater</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ifgreatereq.html">ifgreatereq</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="switch.html">switch</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_convolution2d" aria-expanded="false" aria-controls="collapse_convolution2d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> convolution2d </button>
-</div>
-<div class="collapse ps-5" id="collapse_convolution2d">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="blur.html">blur</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="heighttonormal.html">heighttonormal</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_geometric" aria-expanded="false" aria-controls="collapse_geometric"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> geometric </button>
-</div>
-<div class="collapse ps-5" id="collapse_geometric">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="UsdPrimvarReader.html">UsdPrimvarReader</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="bitangent.html">bitangent</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="bump.html">bump</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="geomcolor.html">geomcolor</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="geompropvalue.html">geompropvalue</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="normal.html">normal</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="position.html">position</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="tangent.html">tangent</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="texcoord.html">texcoord</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_global" aria-expanded="false" aria-controls="collapse_global"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> global </button>
-</div>
-<div class="collapse ps-5" id="collapse_global">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ambientocclusion.html">ambientocclusion</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_light" aria-expanded="false" aria-controls="collapse_light"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> light </button>
-</div>
-<div class="collapse ps-5" id="collapse_light">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="directional_light.html">directional_light</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="point_light.html">point_light</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="spot_light.html">spot_light</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_material" aria-expanded="false" aria-controls="collapse_material"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> material </button>
-</div>
-<div class="collapse ps-5" id="collapse_material">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surfacematerial.html">surfacematerial</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="volumematerial.html">volumematerial</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_math" aria-expanded="false" aria-controls="collapse_math"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> math </button>
-</div>
-<div class="collapse ps-5" id="collapse_math">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="UsdTransform2d.html">UsdTransform2d</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="absval.html">absval</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="acos.html">acos</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="asin.html">asin</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="atan2.html">atan2</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ceil.html">ceil</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="clamp.html">clamp</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cos.html">cos</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="crossproduct.html">crossproduct</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="determinant.html">determinant</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="divide.html">divide</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dotproduct.html">dotproduct</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="exp.html">exp</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="floor.html">floor</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="invert.html">invert</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="invertmatrix.html">invertmatrix</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ln.html">ln</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="magnitude.html">magnitude</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="max.html">max</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="min.html">min</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="modulo.html">modulo</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="multiply.html">multiply</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="normalize.html">normalize</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="normalmap.html">normalmap</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="place2d.html">place2d</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="power.html">power</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="rotate2d.html">rotate2d</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="rotate3d.html">rotate3d</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="sign.html">sign</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="sin.html">sin</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="sqrt.html">sqrt</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="subtract.html">subtract</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="tan.html">tan</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformmatrix.html">transformmatrix</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformnormal.html">transformnormal</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformpoint.html">transformpoint</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformvector.html">transformvector</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transpose.html">transpose</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_organization" aria-expanded="false" aria-controls="collapse_organization"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> organization </button>
-</div>
-<div class="collapse ps-5" id="collapse_organization">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dot.html">dot</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_pbr" aria-expanded="false" aria-controls="collapse_pbr"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> pbr </button>
-</div>
-<div class="collapse ps-5" id="collapse_pbr">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaAdd.html">LamaAdd</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaConductor.html">LamaConductor</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaDielectric.html">LamaDielectric</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaDiffuse.html">LamaDiffuse</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaEmission.html">LamaEmission</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaLayer.html">LamaLayer</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaMix.html">LamaMix</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaSSS.html">LamaSSS</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaSheen.html">LamaSheen</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaTranslucent.html">LamaTranslucent</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="UsdPreviewSurface.html">UsdPreviewSurface</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="absorption_vdf.html">absorption_vdf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="anisotropic_vdf.html">anisotropic_vdf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="artistic_ior.html">artistic_ior</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="blackbody.html">blackbody</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="burley_diffuse_bsdf.html">burley_diffuse_bsdf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="conductor_bsdf.html">conductor_bsdf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="conical_edf.html">conical_edf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dielectric_bsdf.html">dielectric_bsdf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="disney_brdf_2012.html">disney_brdf_2012</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="disney_bsdf_2015.html">disney_bsdf_2015</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="displacement.html">displacement</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="generalized_schlick_bsdf.html">generalized_schlick_bsdf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="glossiness_anisotropy.html">glossiness_anisotropy</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_pbr.html">gltf_pbr</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="layer.html">layer</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="light.html">light</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="measured_edf.html">measured_edf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="mix.html">mix</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="multiply.html">multiply</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="oren_nayar_diffuse_bsdf.html">oren_nayar_diffuse_bsdf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="roughness_anisotropy.html">roughness_anisotropy</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="roughness_dual.html">roughness_dual</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="sheen_bsdf.html">sheen_bsdf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="standard_surface.html">standard_surface</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="subsurface_bsdf.html">subsurface_bsdf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surface.html">surface</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="thin_film_bsdf.html">thin_film_bsdf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="thin_surface.html">thin_surface</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="translucent_bsdf.html">translucent_bsdf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="uniform_edf.html">uniform_edf</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="volume.html">volume</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural" aria-expanded="false" aria-controls="collapse_procedural"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> procedural </button>
-</div>
-<div class="collapse ps-5" id="collapse_procedural">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="constant.html">constant</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural2d" aria-expanded="false" aria-controls="collapse_procedural2d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> procedural2d </button>
-</div>
-<div class="collapse ps-5" id="collapse_procedural2d">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cellnoise2d.html">cellnoise2d</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="noise2d.html">noise2d</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ramp4.html">ramp4</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ramplr.html">ramplr</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ramptb.html">ramptb</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="splitlr.html">splitlr</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="splittb.html">splittb</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="unifiednoise2d.html">unifiednoise2d</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="worleynoise2d.html">worleynoise2d</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural3d" aria-expanded="false" aria-controls="collapse_procedural3d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> procedural3d </button>
-</div>
-<div class="collapse ps-5" id="collapse_procedural3d">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cellnoise3d.html">cellnoise3d</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="fractal3d.html">fractal3d</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="noise3d.html">noise3d</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="unifiednoise3d.html">unifiednoise3d</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="worleynoise3d.html">worleynoise3d</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_shader" aria-expanded="false" aria-controls="collapse_shader"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> shader </button>
-</div>
-<div class="collapse ps-5" id="collapse_shader">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surface_unlit.html">surface_unlit</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_texture2d" aria-expanded="false" aria-controls="collapse_texture2d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> texture2d </button>
-</div>
-<div class="collapse ps-5" id="collapse_texture2d">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="UsdUVTexture.html">UsdUVTexture</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_colorimage.html">gltf_colorimage</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_image.html">gltf_image</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_iridescence_thickness.html">gltf_iridescence_thickness</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_normalmap.html">gltf_normalmap</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="image.html">image</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="tiledimage.html">tiledimage</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_texture3d" aria-expanded="false" aria-controls="collapse_texture3d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> texture3d </button>
-</div>
-<div class="collapse ps-5" id="collapse_texture3d">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="triplanarprojection.html">triplanarprojection</a>
-</div>
-</div>
-<div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_undefined" aria-expanded="false" aria-controls="collapse_undefined"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> undefined </button>
-</div>
-<div class="collapse ps-5" id="collapse_undefined">
-<div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaMix.html">LamaMix</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="standard_surface_to_UsdPreviewSurface.html">standard_surface_to_UsdPreviewSurface</a>
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="standard_surface_to_gltf_pbr.html">standard_surface_to_gltf_pbr</a>
-</div>
-</div>
-</div>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
-<script>
-  var searchInput = document.getElementById("searchTOC")
-  searchInput.addEventListener("keypress", filterOnEnter);
-  var renderButtons = document.querySelectorAll(".mrender");
-  renderButtons.forEach((renderButton) => { renderButton.addEventListener("click", renderMermaid); });
-</script>
+    <script>
+        var searchInput = document.getElementById("searchTOC")
+        searchInput.addEventListener("keypress", filterOnEnter);
+    </script>
 </body>
+
 </html>

@@ -11,26 +11,62 @@
         crossorigin="anonymous"></script>
 
     <style>
-        body { font-size: 90%; }
-        .col-form-label-sm { font-size: 90%; }
-        .form-control { font-size: 90%; }
-        .card-body { font-size: 80%; } 
-        .btn { font-size: 90%; }
-        .nav-link { font-size: 100%; }
-        a{ text-decoration: none; } 
-        a:hover { text-decoration: none; cursor: pointer;}
-        .text-left { text-align: left !important; }
-        .greyhover { text-decoration: none; }
-        .greyhover:hover { text-decoration: none; cursor: pointer; background: rgb(239, 239, 239); }
-        </style>
-           
+        body {
+            font-size: 90%;
+        }
+
+        .col-form-label-sm {
+            font-size: 90%;
+        }
+
+        .form-control {
+            font-size: 90%;
+        }
+
+        .card-body {
+            font-size: 80%;
+        }
+
+        .btn {
+            font-size: 90%;
+        }
+
+        .nav-link {
+            font-size: 100%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .text-left {
+            text-align: left !important;
+        }
+
+        .greyhover {
+            text-decoration: none;
+        }
+
+        .greyhover:hover {
+            text-decoration: none;
+            cursor: pointer;
+            background: rgb(239, 239, 239);
+        }
+    </style>
+
 </head>
 
 <body class="min-vh-100">
     <nav class="navbar sticky-top navbar-expand-lg bg-light">
         <div class="container-md container-fluid">
             <a class="navbar-brand" href="#">
-                <h4>MaterialX Plus</h4>
+                <h4><img src="images/MaterialXLogo2KWhite.png" alt="MaterialX Plus" class="d-inline-block align-text-top" width="60" >                
+                MaterialX Plus</h4>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
                 aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -41,17 +77,64 @@
                     <li class="nav-item">
                         <a class="nav-link greyhover active" aria-current="page" href="../index.html">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link greyhover" href="index.html">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-bezier text-primary" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
-                                <path
-                                    d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
-                            </svg>
-                            Library Definitions
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Node Library
                         </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                        <path
+                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                                    </svg>
+                                    Introduction
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item" href="root.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                        <path
+                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                                    </svg>
+                                    Definitions (By Group)
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item" href="all_definitions.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                        <path
+                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                                    </svg>
+                                    Definitions (All)
+                                </a>
+                            </li>
+                        </ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Utilities
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="mermaidChecker.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                        <path
+                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
+                                    </svg>
+                                    Graph Checker
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -90,86 +173,87 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <script>
-            function savePNG(elem, name) {
-                // SvG to image
-                svgBlob = createSvgBlob(elem);
-                const img = new Image();
-                var svgUrl = URL.createObjectURL(svgBlob);
-                img.src = svgUrl;
+    <script>
+        function savePNG(elem, name) {
+            // SvG to image
+            svgBlob = createSvgBlob(elem);
+            const img = new Image();
+            var svgUrl = URL.createObjectURL(svgBlob);
+            img.src = svgUrl;
 
-                // Render SVG to canvas
-                var canvas = document.createElement("canvas");
-                var bbox = elem.getBBox();
-                canvas.width = bbox.width;
-                canvas.height = bbox.height;
+            // Render SVG to canvas
+            var canvas = document.createElement("canvas");
+            var bbox = elem.getBBox();
+            canvas.width = bbox.width;
+            canvas.height = bbox.height;
 
-                const context = canvas.getContext('2d');
-                console.log('draw image: ', bbox, img.src);
-                context.drawImage(img, 0, 0, bbox.width, bbox.height);
+            const context = canvas.getContext('2d');
+            console.log('draw image: ', bbox, img.src);
+            context.drawImage(img, 0, 0, bbox.width, bbox.height);
 
-                // Save to disk
-                const url = canvas.toDataURL('image/png');
-                saveURL(url, name);
+            // Save to disk
+            const url = canvas.toDataURL('image/png');
+            saveURL(url, name);
+        }
+
+        function saveURL(url, name) {
+            console.log('Save:', url);
+            var downloadLink = document.createElement("a");
+            downloadLink.href = url;
+            downloadLink.download = name;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+
+        function createSvgBlob(elem) {
+            elem.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+            var svgData = elem.outerHTML;
+            var preface = '<?xml version="1.0" standalone="no"?>\r\n';
+            var svgBlob = new Blob([preface, svgData], { type: "image/svg+xml;charset=utf-8" });
+            return svgBlob;
+        }
+
+        function saveSvg(elem, name) {
+            svgBlob = createSvgBlob(elem);
+
+            // Save to disk
+            var url = URL.createObjectURL(svgBlob);
+            saveURL(url, name);
+        }
+
+        // Simple script to graph the input text and render to output
+        // element
+        document.getElementById("rendergraph").addEventListener("click", (e) => {
+            const output = document.querySelector(".mermaid_output");
+            if (output.firstChild !== null) {
+                output.innerHTML = "";
             }
+            const code = document.querySelector(".mermaid_input").value.trim();
+            let generateDiagram = function (code) {
+                output.innerHTML = code;
+            };
+            mermaid.render("graphout", code, generateDiagram);
+        });
 
-            function saveURL(url, name) {
-                console.log('Save:', url);
-                var downloadLink = document.createElement("a");
-                downloadLink.href = url;
-                downloadLink.download = name;
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-                document.body.removeChild(downloadLink);
+        // Save svg element to file
+        document.getElementById("saveSVG").addEventListener("click", (e) => {
+            const element = document.getElementById("graphout");
+            if (element) {
+                saveSvg(element, "graph.svg");
             }
+        });
 
-            function createSvgBlob(elem) {
-                elem.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-                var svgData = elem.outerHTML;
-                var preface = '<?xml version="1.0" standalone="no"?>\r\n';
-                var svgBlob = new Blob([preface, svgData], { type: "image/svg+xml;charset=utf-8" });
-                return svgBlob;
+        // Save svg element to file as png
+        document.getElementById("savePNG").addEventListener("click", (e) => {
+            const element = document.getElementById("graphout");
+            if (element) {
+                savePNG(element, "graph.png");
             }
-
-            function saveSvg(elem, name) {
-                svgBlob = createSvgBlob(elem);
-
-                // Save to disk
-                var url = URL.createObjectURL(svgBlob);
-                saveURL(url, name);
-            }
-
-            // Simple script to graph the input text and render to output
-            // element
-            document.getElementById("rendergraph").addEventListener("click", (e) => {
-                const output = document.querySelector(".mermaid_output");
-                if (output.firstChild !== null) {
-                    output.innerHTML = "";
-                }
-                const code = document.querySelector(".mermaid_input").value.trim();
-                let generateDiagram = function (code) {
-                    output.innerHTML = code;
-                };
-                mermaid.render("graphout", code, generateDiagram);
-            });
-
-            // Save svg element to file
-            document.getElementById("saveSVG").addEventListener("click", (e) => {
-                const element = document.getElementById("graphout");
-                if (element) {
-                    saveSvg(element, "graph.svg");
-                }
-            });
-
-            // Save svg element to file as png
-            document.getElementById("savePNG").addEventListener("click", (e) => {
-                const element = document.getElementById("graphout");
-                if (element) {
-                    savePNG(element, "graph.png");
-                }
-            });
-        </script>
+        });
+    </script>
 
 </body>
 
