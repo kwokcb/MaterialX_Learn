@@ -59,7 +59,7 @@ def printNodeDictionary(nodegroupdict, opts, f):
         # Add in left column
         if opts.documentType == "html":
             print('   <div class="col-auto px-0">', file=f)
-            print('     <div class="row vh-100 overflow-auto">', file=f)
+            print('     <div class="row vh-100 overflow-auto" id="noddict_row">', file=f)
             print('       <div class="col-12 pt-2 pl-2">', file=f)
             print('         <div class="container-md">', file=f)
             print('           <div id="sidebar" class="collapse show collapse-horizontal">', file=f)   
@@ -199,7 +199,7 @@ def printNodeDictionaryHTML(nodegroupdict, opts, f):
 
 def printNodeDefHeader(f):
     print('   <div class="col ps-md-2 pt-2">', file=f)
-    print('       <div class="row vh-100 overflow-auto">', file=f)
+    print('       <div class="row vh-100 overflow-auto" id="nodedefrow">', file=f)
     print('           <div class="col-12 pt-2 pl-2">', file=f)
     print('               <div class="container-md">', file=f)
 
@@ -295,16 +295,34 @@ def printNodeDefs(doc, opts, nodedict, f):
             print('<div class="card border-primary border mb-4">', file=f)
             print('<div class="card-body">', file=f)
 
-            # Preview image
-            imageName = 'images/nodes/material_' + nd.getName().removeprefix('ND_') + '_out_osl.png'
-            searchName = '../../documents/' + imageName
-            if not os.path.exists(searchName):
-                imageName = 'images/Default_osl.png'
-            print('<p class="card-text">'
-                '<img src="%s" '
-                # '<img src="images/Default_osl.png" '
-                'class="rounded float-left" alt=%s '
-                'style="width: 256px"></p>' % (imageName, imageName), file=f)           
+            # Preview image(s)
+            outputList = nd.getActiveOutputs() #if opts.showInherited  else nd.getOutputs()
+            print('<p class="card-text">', file=f)
+            for out in outputList:
+                outName = out.getName()
+
+                imageName = 'images/nodes/material_' + nd.getName().removeprefix('ND_') + '_' + outName + '_osl.png'
+                searchName = '../../documents/' + imageName
+                if not os.path.exists(searchName):
+                    imageName = 'images/nodes/material_' + nd.getName().removeprefix('ND_') + '_' + outName + '_glsl.png'
+                    searchName = '../../documents/' + imageName
+                if not os.path.exists(searchName):
+                    #print('   ************** CANT find image: ', searchName)
+                    imageName = 'images/nodes/' + nd.getName().removeprefix('ND_') + '_osl.png'
+                    searchName = '../../documents/' + imageName
+                    #print("look for %s" % searchName)
+                if not os.path.exists(searchName):
+                    #print('   ************** CANT find image: ', searchName)
+                    imageName = 'images/nodes/' + nd.getName().removeprefix('ND_') + '_glsl.png'
+                    searchName = '../../documents/' + imageName
+                    #print("look for %s" % searchName)
+                if not os.path.exists(searchName):
+                    #print('      ************** CANT find image: ', searchName)
+                    imageName = 'images/no_image.png'
+
+                print('<img src="%s" class="rounded float-left" alt=%s style="width: 128px">' 
+                    % (imageName, searchName), file=f)           
+            print('</p>', file=f)
 
             # Type
             print('<p class="card-text"><b>Type </b>'
@@ -730,7 +748,6 @@ def printNodeDefs(doc, opts, nodedict, f):
         else:
             # Write al buffers to root file
             f = rootfile
-            printNodeDefHeader(f)
             for nodeString in filedict.keys():
                 buf = filedict[nodeString]
                 print(buf.getvalue(), file=f)
@@ -835,39 +852,13 @@ def readDocuments(rootPath, doc):
 
 def printHeader(opts,f):
     if opts.documentType == "html":
-        print('<html>', file=f)
-        print('<head>', file=f)
 
-        # bootstrap
-        print('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"'
-        ' integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">', file=f)
-            
-        print('<style>', file=f)
-        print(' body { font-size: 90%; }', file=f)
-        print(' .col-form-label-sm { font-size: 90%; }', file=f)
-        print(' .form-control { font-size: 90%; }', file=f)
-        print(' .card-body { font-size: 80%; } ', file=f)
-        print(' .btn { font-size: 90%; }', file=f)
-        print(' .nav-link { font-size: 100%; }', file=f)
-        print(' a{ text-decoration: none; } ', file=f)
-        print(' a:hover { text-decoration: none; cursor: pointer;}', file=f)
-        print(' .text-left { text-align: left !important; }', file=f)
-        print(' .greyhover { text-decoration: none; }', file=f)
-        print(' .greyhover:hover { text-decoration: none; cursor: pointer; background: rgb(239, 239, 239); }', file=f)
-        #print('.form-control { border: 0; }', file=f)
-        print('</style>', file=f)
+        headerfile = open('header.html', 'r')
+        headerines = headerfile.readlines()
+        for line in headerines:
+            print('%s' % line, end = '', file=f)
+        headerfile.close()
 
-        # Add in mermaid support
-        #if opts.nodegraph:
-        #    print('<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>')
-        #    print('<script>')
-        #    print('mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contrast") ? "dark" : "default" });')
-        #    print('</script>')        
-        #print('table, th, td {')
-        #print('   border-bottom: 1px solid; border-collapse: collapse; padding: 10px;')
-        #print('}')
-        #print('</style></head>')
-        print('</head>', file=f)
         print('<body class="min-vh-100">', file=f)
 
         print('<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"'
@@ -890,7 +881,8 @@ def printHeader(opts,f):
         toplines = topfile.readlines()
         for line in toplines:
             print('%s' % line, end = '', file=f)
-
+        topfile.close()
+        
         # Add in container 
         # 
         print('<div class="container-fluid ">', file=f)
