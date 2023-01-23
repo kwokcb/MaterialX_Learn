@@ -71,8 +71,6 @@ body, .form-control, .col-form-label-sm, .card-body, .btn{
     width: 3rem;
     height: 3rem;
   }
-  
-
 
 /*
 <link rel="stylesheet" href="../images/style.css">
@@ -112,5 +110,15 @@ body {
 .nav-link {
     font-size: 100%;
 }
+
+  
+  .sections{
+    height: 800px;
+    width: 800px;
+    border: 1px  solid #eee;
+    padding: 5px;
+    overflow-y: auto; 
+  }
+
 
 */
