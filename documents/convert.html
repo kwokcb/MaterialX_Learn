@@ -107,7 +107,7 @@
                         Node Library
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="index.html">
+                        <li><a class="dropdown-item" href="Node_Definitions.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-bezier text-primary" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -118,7 +118,7 @@
                                 Introduction
                             </a>
                         </li>
-                        <li><a class="dropdown-item" href="root.html">
+                        <li><a class="dropdown-item" href="Definitions_By_Group.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-bezier text-primary" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -129,7 +129,7 @@
                                 Definitions (By Group)
                             </a>
                         </li>
-                        <li><a class="dropdown-item" href="all_definitions.html">
+                        <li><a class="dropdown-item" href="All_Definitions.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-bezier text-primary" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -315,7 +315,6 @@
 </div>
 <div class="collapse ps-5" id="collapse_material">
 <div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="convert.html">convert</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surfacematerial.html">surfacematerial</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="volumematerial.html">volumematerial</a>
 </div>
@@ -466,6 +465,7 @@
 </div>
 <div class="collapse ps-5" id="collapse_shader">
 <div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="convert.html">convert</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surface_unlit.html">surface_unlit</a>
 </div>
 </div>
@@ -534,34 +534,33 @@
 <b><a id="convert" class="m-4 mb-0">
 Node: convert
 </a></b>
-<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_BSDF_material</summary>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_BSDF_shader</summary>
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
 <p class="card-text">
-<img src="images/no_image.png" class="rounded float-left" alt=../../documents/images/nodes/convert_BSDF_material_glsl.png style="width: 128px">
+<img src="images/nodes/material_convert_BSDF_shader_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_convert_BSDF_shader_out_osl.png style="width: 128px">
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> material</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">material</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
 <p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> Convert BSDF to material.</p>
+<p class="card-text"><b>Description:</b> Convert BSDF to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  class="bi bi-diagram-3 text-primary" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/> </svg>
 </summary>
-<button id="ND_convert_BSDF_material_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_BSDF_shader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
 <pre><code class="language-mermaid">
-<div id="ND_convert_BSDF_material_mrender_mermaid_output" class="mermaid" hidden>
+<div id="ND_convert_BSDF_shader_mrender_mermaid_output" class="mermaid" hidden>
 </div>
-<div id="ND_convert_BSDF_material_mrender_mermaid_input" class="mermaid" hidden>
+<div id="ND_convert_BSDF_shader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
-    NG_convert_BSDF_material_surfacematerial[surfacematerial] --> NG_convert_BSDF_material_out([out])
-    style NG_convert_BSDF_material_out fill:#1b1, color:#111
-    NG_convert_BSDF_material_surface[surface] --".surfaceshader"--> NG_convert_BSDF_material_surfacematerial[surfacematerial]
-    NG_convert_BSDF_material_inINT([in]) ==.bsdf==> NG_convert_BSDF_material_surface[surface]
-    style NG_convert_BSDF_material_inINT fill:#0bb, color:#111
+    NG_convert_BSDF_shader_surface[surface] --> NG_convert_BSDF_shader_out([out])
+    style NG_convert_BSDF_shader_out fill:#1b1, color:#111
+    NG_convert_BSDF_shader_inINT([in]) ==.bsdf==> NG_convert_BSDF_shader_surface[surface]
+    style NG_convert_BSDF_shader_inINT fill:#0bb, color:#111
 
 
 
@@ -571,13 +570,13 @@ graph LR;
 </p>
 <p class="card-text"><b>Parameters:</b></p>
 <ul class="nav nav-pills" role="tablist">
-<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_BSDF_material_in" type="button" role="tab" aria-controls="pills-ND_convert_BSDF_material_in" aria-selected="true">in</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_BSDF_material_out" type="button" role="tab" aria-controls="pills-ND_convert_BSDF_material_out" aria-selected="true"><b>out</b></button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_BSDF_shader_in" type="button" role="tab" aria-controls="pills-ND_convert_BSDF_shader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_BSDF_shader_out" type="button" role="tab" aria-controls="pills-ND_convert_BSDF_shader_out" aria-selected="true"><b>out</b></button></li>
 </ul>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_convert_BSDF_material_in"
-  role="tabpanel" aria-labelledby="pills-ND_convert_BSDF_material_in-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_convert_BSDF_shader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_BSDF_shader_in-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
@@ -587,12 +586,12 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_convert_BSDF_material_out"
-  role="tabpanel" aria-labelledby="pills-ND_convert_BSDF_material_out-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_convert_BSDF_shader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_BSDF_shader_out-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="material">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -602,34 +601,33 @@ graph LR;
 </div>
 </div>
 </details>
-<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_EDF_material</summary>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_EDF_shader</summary>
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
 <p class="card-text">
-<img src="images/no_image.png" class="rounded float-left" alt=../../documents/images/nodes/convert_EDF_material_glsl.png style="width: 128px">
+<img src="images/nodes/material_convert_EDF_shader_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_convert_EDF_shader_out_osl.png style="width: 128px">
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> material</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">material</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
 <p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> Convert BSDF to material.</p>
+<p class="card-text"><b>Description:</b> Convert BSDF to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  class="bi bi-diagram-3 text-primary" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/> </svg>
 </summary>
-<button id="ND_convert_EDF_material_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_EDF_shader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
 <pre><code class="language-mermaid">
-<div id="ND_convert_EDF_material_mrender_mermaid_output" class="mermaid" hidden>
+<div id="ND_convert_EDF_shader_mrender_mermaid_output" class="mermaid" hidden>
 </div>
-<div id="ND_convert_EDF_material_mrender_mermaid_input" class="mermaid" hidden>
+<div id="ND_convert_EDF_shader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
-    NG_convert_EDF_material_surfacematerial[surfacematerial] --> NG_convert_EDF_material_out([out])
-    style NG_convert_EDF_material_out fill:#1b1, color:#111
-    NG_convert_EDF_material_surface[surface] --".surfaceshader"--> NG_convert_EDF_material_surfacematerial[surfacematerial]
-    NG_convert_EDF_material_inINT([in]) ==.edf==> NG_convert_EDF_material_surface[surface]
-    style NG_convert_EDF_material_inINT fill:#0bb, color:#111
+    NG_convert_EDF_shader_surface[surface] --> NG_convert_EDF_shader_out([out])
+    style NG_convert_EDF_shader_out fill:#1b1, color:#111
+    NG_convert_EDF_shader_inINT([in]) ==.edf==> NG_convert_EDF_shader_surface[surface]
+    style NG_convert_EDF_shader_inINT fill:#0bb, color:#111
 
 
 
@@ -639,13 +637,13 @@ graph LR;
 </p>
 <p class="card-text"><b>Parameters:</b></p>
 <ul class="nav nav-pills" role="tablist">
-<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_EDF_material_in" type="button" role="tab" aria-controls="pills-ND_convert_EDF_material_in" aria-selected="true">in</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_EDF_material_out" type="button" role="tab" aria-controls="pills-ND_convert_EDF_material_out" aria-selected="true"><b>out</b></button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_EDF_shader_in" type="button" role="tab" aria-controls="pills-ND_convert_EDF_shader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_EDF_shader_out" type="button" role="tab" aria-controls="pills-ND_convert_EDF_shader_out" aria-selected="true"><b>out</b></button></li>
 </ul>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_convert_EDF_material_in"
-  role="tabpanel" aria-labelledby="pills-ND_convert_EDF_material_in-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_convert_EDF_shader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_EDF_shader_in-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
@@ -655,12 +653,12 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_convert_EDF_material_out"
-  role="tabpanel" aria-labelledby="pills-ND_convert_EDF_material_out-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_convert_EDF_shader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_EDF_shader_out-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="material">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -670,34 +668,33 @@ graph LR;
 </div>
 </div>
 </details>
-<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_color3_material</summary>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_color3_shader</summary>
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
 <p class="card-text">
-<img src="images/nodes/convert_color3_material_osl.png" class="rounded float-left" alt=../../documents/images/nodes/convert_color3_material_osl.png style="width: 128px">
+<img src="images/nodes/material_convert_color3_shader_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_convert_color3_shader_out_osl.png style="width: 128px">
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> material</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">material</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
 <p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> Convert color3 to material.</p>
+<p class="card-text"><b>Description:</b> Convert color3 to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  class="bi bi-diagram-3 text-primary" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/> </svg>
 </summary>
-<button id="ND_convert_color3_material_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_color3_shader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
 <pre><code class="language-mermaid">
-<div id="ND_convert_color3_material_mrender_mermaid_output" class="mermaid" hidden>
+<div id="ND_convert_color3_shader_mrender_mermaid_output" class="mermaid" hidden>
 </div>
-<div id="ND_convert_color3_material_mrender_mermaid_input" class="mermaid" hidden>
+<div id="ND_convert_color3_shader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
-    NG_convert_color3_material_surfacematerial[surfacematerial] --> NG_convert_color3_material_out([out])
-    style NG_convert_color3_material_out fill:#1b1, color:#111
-    NG_convert_color3_material_surface_unlit[surface_unlit] --".surfaceshader"--> NG_convert_color3_material_surfacematerial[surfacematerial]
-    NG_convert_color3_material_inINT([in]) ==.emission_color==> NG_convert_color3_material_surface_unlit[surface_unlit]
-    style NG_convert_color3_material_inINT fill:#0bb, color:#111
+    NG_convert_color3_shader_surface[surface_unlit] --> NG_convert_color3_shader_out([out])
+    style NG_convert_color3_shader_out fill:#1b1, color:#111
+    NG_convert_color3_shader_inINT([in]) ==.emission_color==> NG_convert_color3_shader_surface[surface_unlit]
+    style NG_convert_color3_shader_inINT fill:#0bb, color:#111
 
 
 
@@ -707,13 +704,13 @@ graph LR;
 </p>
 <p class="card-text"><b>Parameters:</b></p>
 <ul class="nav nav-pills" role="tablist">
-<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_color3_material_in" type="button" role="tab" aria-controls="pills-ND_convert_color3_material_in" aria-selected="true">in</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_color3_material_out" type="button" role="tab" aria-controls="pills-ND_convert_color3_material_out" aria-selected="true"><b>out</b></button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_color3_shader_in" type="button" role="tab" aria-controls="pills-ND_convert_color3_shader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_color3_shader_out" type="button" role="tab" aria-controls="pills-ND_convert_color3_shader_out" aria-selected="true"><b>out</b></button></li>
 </ul>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_convert_color3_material_in"
-  role="tabpanel" aria-labelledby="pills-ND_convert_color3_material_in-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_convert_color3_shader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_color3_shader_in-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
@@ -738,12 +735,12 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_convert_color3_material_out"
-  role="tabpanel" aria-labelledby="pills-ND_convert_color3_material_out-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_convert_color3_shader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_color3_shader_out-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="material">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -753,38 +750,37 @@ graph LR;
 </div>
 </div>
 </details>
-<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_color4_material</summary>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_color4_shader</summary>
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
 <p class="card-text">
-<img src="images/nodes/convert_color4_material_osl.png" class="rounded float-left" alt=../../documents/images/nodes/convert_color4_material_osl.png style="width: 128px">
+<img src="images/nodes/material_convert_color4_shader_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_convert_color4_shader_out_osl.png style="width: 128px">
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> material</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">material</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
 <p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> Convert color4  to material.</p>
+<p class="card-text"><b>Description:</b> Convert color4  to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  class="bi bi-diagram-3 text-primary" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/> </svg>
 </summary>
-<button id="ND_convert_color4_material_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_color4_shader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
 <pre><code class="language-mermaid">
-<div id="ND_convert_color4_material_mrender_mermaid_output" class="mermaid" hidden>
+<div id="ND_convert_color4_shader_mrender_mermaid_output" class="mermaid" hidden>
 </div>
-<div id="ND_convert_color4_material_mrender_mermaid_input" class="mermaid" hidden>
+<div id="ND_convert_color4_shader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
-    NG_convert_color4_material_surfacematerial[surfacematerial] --> NG_convert_color4_material_out([out])
-    style NG_convert_color4_material_out fill:#1b1, color:#111
-    NG_convert_color4_material_surface_unlit[surface_unlit] --".surfaceshader"--> NG_convert_color4_material_surfacematerial[surfacematerial]
-    NG_convert_color4_material_convert[convert] --".emission_color"--> NG_convert_color4_material_surface_unlit[surface_unlit]
-    NG_convert_color4_material_inINT([in]) ==.in==> NG_convert_color4_material_convert[convert]
-    style NG_convert_color4_material_inINT fill:#0bb, color:#111
-    NG_convert_color4_material_extract[extract] --".opacity"--> NG_convert_color4_material_surface_unlit[surface_unlit]
-    NG_convert_color4_material_inINT([in]) ==.in==> NG_convert_color4_material_extract[extract]
-    style NG_convert_color4_material_inINT fill:#0bb, color:#111
+    NG_convert_color4_shader_surface[surface_unlit] --> NG_convert_color4_shader_out([out])
+    style NG_convert_color4_shader_out fill:#1b1, color:#111
+    NG_convert_color4_shader_convert[convert] --".emission_color"--> NG_convert_color4_shader_surface[surface_unlit]
+    NG_convert_color4_shader_inINT([in]) ==.in==> NG_convert_color4_shader_convert[convert]
+    style NG_convert_color4_shader_inINT fill:#0bb, color:#111
+    NG_convert_color4_shader_extract[extract] --".opacity"--> NG_convert_color4_shader_surface[surface_unlit]
+    NG_convert_color4_shader_inINT([in]) ==.in==> NG_convert_color4_shader_extract[extract]
+    style NG_convert_color4_shader_inINT fill:#0bb, color:#111
 
 
 
@@ -794,13 +790,13 @@ graph LR;
 </p>
 <p class="card-text"><b>Parameters:</b></p>
 <ul class="nav nav-pills" role="tablist">
-<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_color4_material_in" type="button" role="tab" aria-controls="pills-ND_convert_color4_material_in" aria-selected="true">in</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_color4_material_out" type="button" role="tab" aria-controls="pills-ND_convert_color4_material_out" aria-selected="true"><b>out</b></button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_color4_shader_in" type="button" role="tab" aria-controls="pills-ND_convert_color4_shader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_color4_shader_out" type="button" role="tab" aria-controls="pills-ND_convert_color4_shader_out" aria-selected="true"><b>out</b></button></li>
 </ul>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_convert_color4_material_in"
-  role="tabpanel" aria-labelledby="pills-ND_convert_color4_material_in-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_convert_color4_shader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_color4_shader_in-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
@@ -828,12 +824,12 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_convert_color4_material_out"
-  role="tabpanel" aria-labelledby="pills-ND_convert_color4_material_out-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_convert_color4_shader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_color4_shader_out-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="material">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -843,35 +839,34 @@ graph LR;
 </div>
 </div>
 </details>
-<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_float_material</summary>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_float_shader</summary>
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
 <p class="card-text">
-<img src="images/nodes/convert_float_material_osl.png" class="rounded float-left" alt=../../documents/images/nodes/convert_float_material_osl.png style="width: 128px">
+<img src="images/nodes/material_convert_float_shader_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_convert_float_shader_out_osl.png style="width: 128px">
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> material</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">material</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
 <p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> Convert float to material.</p>
+<p class="card-text"><b>Description:</b> Convert float to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  class="bi bi-diagram-3 text-primary" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/> </svg>
 </summary>
-<button id="ND_convert_float_material_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_float_shader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
 <pre><code class="language-mermaid">
-<div id="ND_convert_float_material_mrender_mermaid_output" class="mermaid" hidden>
+<div id="ND_convert_float_shader_mrender_mermaid_output" class="mermaid" hidden>
 </div>
-<div id="ND_convert_float_material_mrender_mermaid_input" class="mermaid" hidden>
+<div id="ND_convert_float_shader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
-    NG_convert_float_material_surfacematerial[surfacematerial] --> NG_convert_float_material_out([out])
-    style NG_convert_float_material_out fill:#1b1, color:#111
-    NG_convert_float_material_surface_unlit[surface_unlit] --".surfaceshader"--> NG_convert_float_material_surfacematerial[surfacematerial]
-    NG_convert_float_material_float_to_color3[convert] --".emission_color"--> NG_convert_float_material_surface_unlit[surface_unlit]
-    NG_convert_float_material_inINT([in]) ==.in==> NG_convert_float_material_float_to_color3[convert]
-    style NG_convert_float_material_inINT fill:#0bb, color:#111
+    NG_convert_float_shader_surface[surface_unlit] --> NG_convert_float_shader_out([out])
+    style NG_convert_float_shader_out fill:#1b1, color:#111
+    NG_convert_float_shader_float_to_color3[convert] --".emission_color"--> NG_convert_float_shader_surface[surface_unlit]
+    NG_convert_float_shader_inINT([in]) ==.in==> NG_convert_float_shader_float_to_color3[convert]
+    style NG_convert_float_shader_inINT fill:#0bb, color:#111
 
 
 
@@ -881,13 +876,13 @@ graph LR;
 </p>
 <p class="card-text"><b>Parameters:</b></p>
 <ul class="nav nav-pills" role="tablist">
-<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_float_material_in" type="button" role="tab" aria-controls="pills-ND_convert_float_material_in" aria-selected="true">in</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_float_material_out" type="button" role="tab" aria-controls="pills-ND_convert_float_material_out" aria-selected="true"><b>out</b></button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_float_shader_in" type="button" role="tab" aria-controls="pills-ND_convert_float_shader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_float_shader_out" type="button" role="tab" aria-controls="pills-ND_convert_float_shader_out" aria-selected="true"><b>out</b></button></li>
 </ul>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_convert_float_material_in"
-  role="tabpanel" aria-labelledby="pills-ND_convert_float_material_in-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_convert_float_shader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_float_shader_in-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
@@ -904,12 +899,12 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_convert_float_material_out"
-  role="tabpanel" aria-labelledby="pills-ND_convert_float_material_out-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_convert_float_shader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_float_shader_out-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="material">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -919,36 +914,35 @@ graph LR;
 </div>
 </div>
 </details>
-<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_vector2_material</summary>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_vector2_shader</summary>
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
 <p class="card-text">
-<img src="images/nodes/convert_vector2_material_osl.png" class="rounded float-left" alt=../../documents/images/nodes/convert_vector2_material_osl.png style="width: 128px">
+<img src="images/nodes/material_convert_vector2_shader_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_convert_vector2_shader_out_osl.png style="width: 128px">
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> material</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">material</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
 <p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> Convert vector2 to material.</p>
+<p class="card-text"><b>Description:</b> Convert vector2 to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  class="bi bi-diagram-3 text-primary" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/> </svg>
 </summary>
-<button id="ND_convert_vector2_material_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_vector2_shader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
 <pre><code class="language-mermaid">
-<div id="ND_convert_vector2_material_mrender_mermaid_output" class="mermaid" hidden>
+<div id="ND_convert_vector2_shader_mrender_mermaid_output" class="mermaid" hidden>
 </div>
-<div id="ND_convert_vector2_material_mrender_mermaid_input" class="mermaid" hidden>
+<div id="ND_convert_vector2_shader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
-    NG_convert_vector2_material_surfacematerial[surfacematerial] --> NG_convert_vector2_material_out([out])
-    style NG_convert_vector2_material_out fill:#1b1, color:#111
-    NG_convert_vector2_material_surface_unlit[surface_unlit] --".surfaceshader"--> NG_convert_vector2_material_surfacematerial[surfacematerial]
-    NG_convert_vector2_material_vec3_to_color3[convert] --".emission_color"--> NG_convert_vector2_material_surface_unlit[surface_unlit]
-    NG_convert_vector2_material_vec2_to_vec3[convert] --".in"--> NG_convert_vector2_material_vec3_to_color3[convert]
-    NG_convert_vector2_material_inINT([in]) ==.in==> NG_convert_vector2_material_vec2_to_vec3[convert]
-    style NG_convert_vector2_material_inINT fill:#0bb, color:#111
+    NG_convert_vector2_shader_surface[surface_unlit] --> NG_convert_vector2_shader_out([out])
+    style NG_convert_vector2_shader_out fill:#1b1, color:#111
+    NG_convert_vector2_shader_vec3_to_color3[convert] --".emission_color"--> NG_convert_vector2_shader_surface[surface_unlit]
+    NG_convert_vector2_shader_vec2_to_vec3[convert] --".in"--> NG_convert_vector2_shader_vec3_to_color3[convert]
+    NG_convert_vector2_shader_inINT([in]) ==.in==> NG_convert_vector2_shader_vec2_to_vec3[convert]
+    style NG_convert_vector2_shader_inINT fill:#0bb, color:#111
 
 
 
@@ -958,13 +952,13 @@ graph LR;
 </p>
 <p class="card-text"><b>Parameters:</b></p>
 <ul class="nav nav-pills" role="tablist">
-<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector2_material_in" type="button" role="tab" aria-controls="pills-ND_convert_vector2_material_in" aria-selected="true">in</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector2_material_out" type="button" role="tab" aria-controls="pills-ND_convert_vector2_material_out" aria-selected="true"><b>out</b></button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector2_shader_in" type="button" role="tab" aria-controls="pills-ND_convert_vector2_shader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector2_shader_out" type="button" role="tab" aria-controls="pills-ND_convert_vector2_shader_out" aria-selected="true"><b>out</b></button></li>
 </ul>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_convert_vector2_material_in"
-  role="tabpanel" aria-labelledby="pills-ND_convert_vector2_material_in-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_convert_vector2_shader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_vector2_shader_in-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
@@ -983,12 +977,12 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_convert_vector2_material_out"
-  role="tabpanel" aria-labelledby="pills-ND_convert_vector2_material_out-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_convert_vector2_shader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_vector2_shader_out-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="material">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -998,35 +992,34 @@ graph LR;
 </div>
 </div>
 </details>
-<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_vector3_material</summary>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_vector3_shader</summary>
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
 <p class="card-text">
-<img src="images/nodes/convert_vector3_material_osl.png" class="rounded float-left" alt=../../documents/images/nodes/convert_vector3_material_osl.png style="width: 128px">
+<img src="images/nodes/material_convert_vector3_shader_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_convert_vector3_shader_out_osl.png style="width: 128px">
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> material</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">material</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
 <p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> Convert vector2 to material.</p>
+<p class="card-text"><b>Description:</b> Convert vector2 to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  class="bi bi-diagram-3 text-primary" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/> </svg>
 </summary>
-<button id="ND_convert_vector3_material_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_vector3_shader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
 <pre><code class="language-mermaid">
-<div id="ND_convert_vector3_material_mrender_mermaid_output" class="mermaid" hidden>
+<div id="ND_convert_vector3_shader_mrender_mermaid_output" class="mermaid" hidden>
 </div>
-<div id="ND_convert_vector3_material_mrender_mermaid_input" class="mermaid" hidden>
+<div id="ND_convert_vector3_shader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
-    NG_convert_vector3_material_surfacematerial[surfacematerial] --> NG_convert_vector3_material_out([out])
-    style NG_convert_vector3_material_out fill:#1b1, color:#111
-    NG_convert_vector3_material_surface_unlit[surface_unlit] --".surfaceshader"--> NG_convert_vector3_material_surfacematerial[surfacematerial]
-    NG_convert_vector3_material_vec3_to_color3[convert] --".emission_color"--> NG_convert_vector3_material_surface_unlit[surface_unlit]
-    NG_convert_vector3_material_inINT([in]) ==.in==> NG_convert_vector3_material_vec3_to_color3[convert]
-    style NG_convert_vector3_material_inINT fill:#0bb, color:#111
+    NG_convert_vector3_shader_surface[surface_unlit] --> NG_convert_vector3_shader_out([out])
+    style NG_convert_vector3_shader_out fill:#1b1, color:#111
+    NG_convert_vector3_shader_vec3_to_color3[convert] --".emission_color"--> NG_convert_vector3_shader_surface[surface_unlit]
+    NG_convert_vector3_shader_inINT([in]) ==.in==> NG_convert_vector3_shader_vec3_to_color3[convert]
+    style NG_convert_vector3_shader_inINT fill:#0bb, color:#111
 
 
 
@@ -1036,13 +1029,13 @@ graph LR;
 </p>
 <p class="card-text"><b>Parameters:</b></p>
 <ul class="nav nav-pills" role="tablist">
-<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector3_material_in" type="button" role="tab" aria-controls="pills-ND_convert_vector3_material_in" aria-selected="true">in</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector3_material_out" type="button" role="tab" aria-controls="pills-ND_convert_vector3_material_out" aria-selected="true"><b>out</b></button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector3_shader_in" type="button" role="tab" aria-controls="pills-ND_convert_vector3_shader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector3_shader_out" type="button" role="tab" aria-controls="pills-ND_convert_vector3_shader_out" aria-selected="true"><b>out</b></button></li>
 </ul>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_convert_vector3_material_in"
-  role="tabpanel" aria-labelledby="pills-ND_convert_vector3_material_in-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_convert_vector3_shader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_vector3_shader_in-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
@@ -1064,12 +1057,12 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_convert_vector3_material_out"
-  role="tabpanel" aria-labelledby="pills-ND_convert_vector3_material_out-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_convert_vector3_shader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_vector3_shader_out-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="material">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -1079,38 +1072,37 @@ graph LR;
 </div>
 </div>
 </details>
-<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_vector4_material</summary>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_vector4_shader</summary>
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
 <p class="card-text">
-<img src="images/nodes/convert_vector4_material_osl.png" class="rounded float-left" alt=../../documents/images/nodes/convert_vector4_material_osl.png style="width: 128px">
+<img src="images/nodes/material_convert_vector4_shader_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_convert_vector4_shader_out_osl.png style="width: 128px">
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> material</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">material</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
 <p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> COnvert vector4 to material.</p>
+<p class="card-text"><b>Description:</b> Convert vector4 to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  class="bi bi-diagram-3 text-primary" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/> </svg>
 </summary>
-<button id="ND_convert_vector4_material_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_vector4_shader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
 <pre><code class="language-mermaid">
-<div id="ND_convert_vector4_material_mrender_mermaid_output" class="mermaid" hidden>
+<div id="ND_convert_vector4_shader_mrender_mermaid_output" class="mermaid" hidden>
 </div>
-<div id="ND_convert_vector4_material_mrender_mermaid_input" class="mermaid" hidden>
+<div id="ND_convert_vector4_shader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
-    NG_convert_vector4_material_surfacematerial[surfacematerial] --> NG_convert_vector4_material_out([out])
-    style NG_convert_vector4_material_out fill:#1b1, color:#111
-    NG_convert_vector4_material_surface_unlit[surface_unlit] --".surfaceshader"--> NG_convert_vector4_material_surfacematerial[surfacematerial]
-    NG_convert_vector4_material_color4_to_color3[convert] --".emission_color"--> NG_convert_vector4_material_surface_unlit[surface_unlit]
-    NG_convert_vector4_material_vec4_to_color4[convert] --".in"--> NG_convert_vector4_material_color4_to_color3[convert]
-    NG_convert_vector4_material_inINT([in]) ==.in==> NG_convert_vector4_material_vec4_to_color4[convert]
-    style NG_convert_vector4_material_inINT fill:#0bb, color:#111
-    NG_convert_vector4_material_color4_to_float[extract] --".opacity"--> NG_convert_vector4_material_surface_unlit[surface_unlit]
-    NG_convert_vector4_material_vec4_to_color4[convert] --".in"--> NG_convert_vector4_material_color4_to_float[extract]
+    NG_convert_vector4_shader_surface[surface_unlit] --> NG_convert_vector4_shader_out([out])
+    style NG_convert_vector4_shader_out fill:#1b1, color:#111
+    NG_convert_vector4_shader_color4_to_color3[convert] --".emission_color"--> NG_convert_vector4_shader_surface[surface_unlit]
+    NG_convert_vector4_shader_vec4_to_color4[convert] --".in"--> NG_convert_vector4_shader_color4_to_color3[convert]
+    NG_convert_vector4_shader_inINT([in]) ==.in==> NG_convert_vector4_shader_vec4_to_color4[convert]
+    style NG_convert_vector4_shader_inINT fill:#0bb, color:#111
+    NG_convert_vector4_shader_color4_to_float[extract] --".opacity"--> NG_convert_vector4_shader_surface[surface_unlit]
+    NG_convert_vector4_shader_vec4_to_color4[convert] --".in"--> NG_convert_vector4_shader_color4_to_float[extract]
 
 
 
@@ -1120,13 +1112,13 @@ graph LR;
 </p>
 <p class="card-text"><b>Parameters:</b></p>
 <ul class="nav nav-pills" role="tablist">
-<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector4_material_in" type="button" role="tab" aria-controls="pills-ND_convert_vector4_material_in" aria-selected="true">in</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector4_material_out" type="button" role="tab" aria-controls="pills-ND_convert_vector4_material_out" aria-selected="true"><b>out</b></button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector4_shader_in" type="button" role="tab" aria-controls="pills-ND_convert_vector4_shader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector4_shader_out" type="button" role="tab" aria-controls="pills-ND_convert_vector4_shader_out" aria-selected="true"><b>out</b></button></li>
 </ul>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_convert_vector4_material_in"
-  role="tabpanel" aria-labelledby="pills-ND_convert_vector4_material_in-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_convert_vector4_shader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_vector4_shader_in-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
@@ -1151,12 +1143,12 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_convert_vector4_material_out"
-  role="tabpanel" aria-labelledby="pills-ND_convert_vector4_material_out-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_convert_vector4_shader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_vector4_shader_out-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="material">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -1166,36 +1158,35 @@ graph LR;
 </div>
 </div>
 </details>
-<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_integer_material</summary>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_integer_shader</summary>
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
 <p class="card-text">
-<img src="images/nodes/convert_integer_material_osl.png" class="rounded float-left" alt=../../documents/images/nodes/convert_integer_material_osl.png style="width: 128px">
+<img src="images/nodes/material_convert_integer_shader_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_convert_integer_shader_out_osl.png style="width: 128px">
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> material</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">material</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
 <p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> Convert integer to material.</p>
+<p class="card-text"><b>Description:</b> Convert integer to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  class="bi bi-diagram-3 text-primary" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/> </svg>
 </summary>
-<button id="ND_convert_integer_material_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_integer_shader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
 <pre><code class="language-mermaid">
-<div id="ND_convert_integer_material_mrender_mermaid_output" class="mermaid" hidden>
+<div id="ND_convert_integer_shader_mrender_mermaid_output" class="mermaid" hidden>
 </div>
-<div id="ND_convert_integer_material_mrender_mermaid_input" class="mermaid" hidden>
+<div id="ND_convert_integer_shader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
-    NG_convert_integer_material_surfacematerial[surfacematerial] --> NG_convert_integer_material_out([out])
-    style NG_convert_integer_material_out fill:#1b1, color:#111
-    NG_convert_integer_material_surface_unlit[surface_unlit] --".surfaceshader"--> NG_convert_integer_material_surfacematerial[surfacematerial]
-    NG_convert_integer_material_float_to_color3[convert] --".emission_color"--> NG_convert_integer_material_surface_unlit[surface_unlit]
-    NG_convert_integer_material_int_to_float[convert] --".in"--> NG_convert_integer_material_float_to_color3[convert]
-    NG_convert_integer_material_inINT([in]) ==.in==> NG_convert_integer_material_int_to_float[convert]
-    style NG_convert_integer_material_inINT fill:#0bb, color:#111
+    NG_convert_integer_shader_surface[surface_unlit] --> NG_convert_integer_shader_out([out])
+    style NG_convert_integer_shader_out fill:#1b1, color:#111
+    NG_convert_integer_shader_float_to_color3[convert] --".emission_color"--> NG_convert_integer_shader_surface[surface_unlit]
+    NG_convert_integer_shader_int_to_float[convert] --".in"--> NG_convert_integer_shader_float_to_color3[convert]
+    NG_convert_integer_shader_inINT([in]) ==.in==> NG_convert_integer_shader_int_to_float[convert]
+    style NG_convert_integer_shader_inINT fill:#0bb, color:#111
 
 
 
@@ -1205,13 +1196,13 @@ graph LR;
 </p>
 <p class="card-text"><b>Parameters:</b></p>
 <ul class="nav nav-pills" role="tablist">
-<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_integer_material_in" type="button" role="tab" aria-controls="pills-ND_convert_integer_material_in" aria-selected="true">in</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_integer_material_out" type="button" role="tab" aria-controls="pills-ND_convert_integer_material_out" aria-selected="true"><b>out</b></button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_integer_shader_in" type="button" role="tab" aria-controls="pills-ND_convert_integer_shader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_integer_shader_out" type="button" role="tab" aria-controls="pills-ND_convert_integer_shader_out" aria-selected="true"><b>out</b></button></li>
 </ul>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_convert_integer_material_in"
-  role="tabpanel" aria-labelledby="pills-ND_convert_integer_material_in-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_convert_integer_shader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_integer_shader_in-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
@@ -1228,12 +1219,12 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_convert_integer_material_out"
-  role="tabpanel" aria-labelledby="pills-ND_convert_integer_material_out-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_convert_integer_shader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_integer_shader_out-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="material">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -1243,36 +1234,35 @@ graph LR;
 </div>
 </div>
 </details>
-<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_boolean_material</summary>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_boolean_shader</summary>
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
 <p class="card-text">
-<img src="images/nodes/convert_boolean_material_osl.png" class="rounded float-left" alt=../../documents/images/nodes/convert_boolean_material_osl.png style="width: 128px">
+<img src="images/nodes/material_convert_boolean_shader_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_convert_boolean_shader_out_osl.png style="width: 128px">
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> material</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">material</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
 <p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> Convert boolean to material.</p>
+<p class="card-text"><b>Description:</b> Convert boolean to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  class="bi bi-diagram-3 text-primary" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/> </svg>
 </summary>
-<button id="ND_convert_boolean_material_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_boolean_shader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
 <pre><code class="language-mermaid">
-<div id="ND_convert_boolean_material_mrender_mermaid_output" class="mermaid" hidden>
+<div id="ND_convert_boolean_shader_mrender_mermaid_output" class="mermaid" hidden>
 </div>
-<div id="ND_convert_boolean_material_mrender_mermaid_input" class="mermaid" hidden>
+<div id="ND_convert_boolean_shader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
-    NG_convert_boolean_material_surfacematerial[surfacematerial] --> NG_convert_boolean_material_out([out])
-    style NG_convert_boolean_material_out fill:#1b1, color:#111
-    NG_convert_boolean_material_surface_unlit[surface_unlit] --".surfaceshader"--> NG_convert_boolean_material_surfacematerial[surfacematerial]
-    NG_convert_boolean_material_float_to_color3[convert] --".emission_color"--> NG_convert_boolean_material_surface_unlit[surface_unlit]
-    NG_convert_boolean_material_bool_to_float[convert] --".in"--> NG_convert_boolean_material_float_to_color3[convert]
-    NG_convert_boolean_material_inINT([in]) ==.in==> NG_convert_boolean_material_bool_to_float[convert]
-    style NG_convert_boolean_material_inINT fill:#0bb, color:#111
+    NG_convert_boolean_shader_surface[surface_unlit] --> NG_convert_boolean_shader_out([out])
+    style NG_convert_boolean_shader_out fill:#1b1, color:#111
+    NG_convert_boolean_shader_float_to_color3[convert] --".emission_color"--> NG_convert_boolean_shader_surface[surface_unlit]
+    NG_convert_boolean_shader_bool_to_float[convert] --".in"--> NG_convert_boolean_shader_float_to_color3[convert]
+    NG_convert_boolean_shader_inINT([in]) ==.in==> NG_convert_boolean_shader_bool_to_float[convert]
+    style NG_convert_boolean_shader_inINT fill:#0bb, color:#111
 
 
 
@@ -1282,13 +1272,13 @@ graph LR;
 </p>
 <p class="card-text"><b>Parameters:</b></p>
 <ul class="nav nav-pills" role="tablist">
-<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_boolean_material_in" type="button" role="tab" aria-controls="pills-ND_convert_boolean_material_in" aria-selected="true">in</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_boolean_material_out" type="button" role="tab" aria-controls="pills-ND_convert_boolean_material_out" aria-selected="true"><b>out</b></button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_boolean_shader_in" type="button" role="tab" aria-controls="pills-ND_convert_boolean_shader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_boolean_shader_out" type="button" role="tab" aria-controls="pills-ND_convert_boolean_shader_out" aria-selected="true"><b>out</b></button></li>
 </ul>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_convert_boolean_material_in"
-  role="tabpanel" aria-labelledby="pills-ND_convert_boolean_material_in-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_convert_boolean_shader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_boolean_shader_in-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
@@ -1305,12 +1295,12 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_convert_boolean_material_out"
-  role="tabpanel" aria-labelledby="pills-ND_convert_boolean_material_out-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_convert_boolean_shader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_boolean_shader_out-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="material">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -1337,7 +1327,46 @@ graph LR;
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1412,7 +1441,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1490,7 +1558,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1559,7 +1666,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1631,7 +1777,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1706,7 +1891,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1780,7 +2004,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1860,7 +2123,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1934,7 +2236,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2014,7 +2355,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2100,7 +2480,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2180,7 +2599,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2260,7 +2718,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2346,7 +2843,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2432,7 +2968,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2518,7 +3093,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2585,7 +3199,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>

@@ -107,7 +107,7 @@
                         Node Library
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="index.html">
+                        <li><a class="dropdown-item" href="Node_Definitions.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-bezier text-primary" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -118,7 +118,7 @@
                                 Introduction
                             </a>
                         </li>
-                        <li><a class="dropdown-item" href="root.html">
+                        <li><a class="dropdown-item" href="Definitions_By_Group.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-bezier text-primary" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -129,7 +129,7 @@
                                 Definitions (By Group)
                             </a>
                         </li>
-                        <li><a class="dropdown-item" href="all_definitions.html">
+                        <li><a class="dropdown-item" href="All_Definitions.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-bezier text-primary" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -315,7 +315,6 @@
 </div>
 <div class="collapse ps-5" id="collapse_material">
 <div class="d-grid gap-0 col-6">
-<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="convert.html">convert</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surfacematerial.html">surfacematerial</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="volumematerial.html">volumematerial</a>
 </div>
@@ -466,6 +465,7 @@
 </div>
 <div class="collapse ps-5" id="collapse_shader">
 <div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="convert.html">convert</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surface_unlit.html">surface_unlit</a>
 </div>
 </div>
@@ -551,7 +551,46 @@ Node: swizzle
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -649,7 +688,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -750,7 +828,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -842,7 +959,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -937,7 +1093,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1035,7 +1230,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1133,7 +1367,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1231,7 +1504,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1340,7 +1652,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1440,7 +1791,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1543,7 +1933,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1649,7 +2078,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1750,7 +2218,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1859,7 +2366,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1960,7 +2506,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2063,7 +2648,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2169,7 +2793,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2278,7 +2941,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2370,7 +3072,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2470,7 +3211,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2573,7 +3353,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2665,7 +3484,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2762,7 +3620,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2862,7 +3759,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2957,7 +3893,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -3060,7 +4035,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -3166,7 +4180,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -3263,7 +4316,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -3358,7 +4450,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -3461,7 +4592,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -3559,7 +4729,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -3665,7 +4874,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -3774,7 +5022,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -3874,7 +5161,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -3977,7 +5303,46 @@ Non-graph
 <details><summary><b>Code Implementation</b>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
 </summary>
-Non-graph
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
