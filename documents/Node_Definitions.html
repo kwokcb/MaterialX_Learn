@@ -20,85 +20,136 @@
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest" }); </script>
 
-    <nav class="navbar sticky-top navbar-expand-lg bg-light ">
-        <div class="container-md container-fluid">
-            <a class="navbar-brand" href="#">
-                <h4><img src="images/MaterialXLogo2KWhite.png" alt="MaterialX Plus"
-                        class="d-inline-block align-text-top" width="60">
-                    MaterialX Plus</h4>
+<!-- Navigation  -->
+<!-- Navigation  -->
+<nav class="navbar sticky-top navbar-expand-lg bg-light">
+    <div class="container-md container-fluid">
+      <a class="navbar-brand" href="#">
+        <h4><img src="images/MaterialXLogo2KWhite.png" alt="MaterialX Learn"
+            class="d-inline-block align-text-top" width="60">
+          MaterialX Learn</h4>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+        aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenuContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="../index.html" role="button">
+                  Home
+                </a>
+              </li>
+                <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Learn
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
-                aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainMenuContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link greyhover active" aria-current="page" href="../index.html">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Node Library
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="Node_Definitions.html">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
-                                        <path
-                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
-                                    </svg>
-                                    Introduction
-                                </a>
-                            </li>
-                            <li><a class="dropdown-item" href="Definitions_By_Group.html">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
-                                        <path
-                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
-                                    </svg>
-                                    Definitions (By Group)
-                                </a>
-                            </li>
-                            <li><a class="dropdown-item" href="All_Definitions.html">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
-                                        <path
-                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
-                                    </svg>
-                                    Definitions (All)
-                                </a>
-                            </li>
-                        </ul>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Utilities
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="mermaidChecker.html">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
-                                        <path
-                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
-                                    </svg>
-                                    Graph Checker
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="nodes_and_nodegraphs.html">
+                  Nodes and Graphs
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="node_definitions.html">
+                  Node Definitions
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="documents.html">
+                  Documents (WIP)
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Reference
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="definitions/definitions_by_group.html">
+                  Library (By Group)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="definitions/all_definitions.html">
+                  Library (All)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
+                  C++ API
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Tools</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="mermaidChecker.html">
+                  Graph Visualizer
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Develop</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="python_MaterialX.html">
+                  MaterialX Python
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../pymaterialx/Basics_Notebook.html">
+                  Tutorials and Examples (preview)
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Workflows</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="https://github.com/kwokcb/glTF_MaterialX" target="_blank">
+                  Khronos glTF Interop
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Design</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="design.html">
+                  UX Design
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="" role="button">
+              About
+            </a>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+      
     <div class="container-fluid ">
         <div class="row flex-nowrap">
             <div class="col-12 p-4 pt-2 pl-2">
@@ -145,7 +196,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link " id="pills-userint-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-userint" type="button" role="tab" aria-controls="pills-userint"
-                            aria-selected="false">User Interface</button>
+                            aria-selected="false">Using the Library</button>
                     </li>
                 </ul>
 
@@ -157,7 +208,8 @@
                             <div class="card-body">
 
                                 <p>MaterialX ships with <a
-                                        href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries" target="_blank">definitions</a>
+                                        href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries"
+                                        target="_blank">definitions</a>
                                     which are partitioned into a few semantic categories:
                                 <ul>
                                     <li>stdlib: A set of core or "standard" definitions. This includes definitions for
@@ -177,10 +229,10 @@
                                 <p>
                                     Shown below are the definition dependencies.
                                     Definitions in higher libraries
-                                    depend on definitions in "lower" libraries. Custom definitions can be built using of
+                                    depend on definitions in "lower" libraries. Custom definitions can be built using 
                                     existing
-                                    standard definitions other other
-                                    custom definitions.
+                                    standard definitions or other
+                                    custom definitions. For example the 'pbr' library definitions use 'stdlib' definitions.
                                     <br><img src="./images/MaterialX_Core_Libraries.svg">
                                 </p>
                                 <!-- </details> -->
@@ -198,7 +250,8 @@
 
                                 <p>
                                     In MaterialX a node definition is called a <a
-                                        href="https://materialx.org/docs/api/class_node_def.html" target="_blank"><b>&lt;nodedef&gt;</b></a>.
+                                        href="https://materialx.org/docs/api/class_node_def.html"
+                                        target="_blank"><b>&lt;nodedef&gt;</b></a>.
                                 </p>
                                 <ul>
                                     <li>A definition should have 1 or more input and output parameters for data flow to
@@ -208,7 +261,7 @@
                                     <li>The identifier for all attributes are lowercase strings.
                                     </li>
                                 </ul>
-                                <div class="btn btn-lg border-primary">Required Attributes</div>
+                                <div class="btn btn-lg border-primary" style="pointer-events: none;">Required Attributes</div>
                                 <p>
                                     <img src="./images/ui_nodedef_attributes.PNG" style="width: 100%">
                                 </p>
@@ -241,12 +294,14 @@
                                         must be examined. Two or more definitions with the same category may have a
                                         "multioutput" type.
                                         <p>
-                                            Shown below are the preview images for an <a href="standard_surface_to_UsdPreviewSurface.html" target="_blank">example definition with multiple outputs</a>:
+                                            Shown below are the preview images for an <a
+                                                href="standard_surface_to_UsdPreviewSurface.html"
+                                                target="_blank">example definition with multiple outputs</a>:
                                             <img src="./images/multioutput_preview_swatches.png" style="width: 80%">
                                         </p>
                                     </li>
                                 </ul>
-                                Additionally it is worthwhile to consider versioning as being "required":
+                                Additionally, it is worthwhile to consider versioning as being "required":
                                 <ul>
                                     <li>
                                         Though not strictly required it is very useful to have some
@@ -272,22 +327,22 @@
                                         </p>
                                     </li>
                                 </ul>
-                                <div class="btn btn-lg btn-outline-primary">Node Groups</div>
+                                <div class="btn btn-lg btn-outline-primary" style="pointer-events: none;">Node Groups</div>
                                 <p>
                                     The node group (<b>nodegroup</b>) attribute is also recommended as being mandatory.
                                     It specifies the semantic used for evaluation including shader code
                                     generation. This includes:
                                 <ul>
-                                    <li><b>"texture"</b> Texture lookups test for this group identifier for example to
+                                    <li><b>"texture": </b> Texture lookups test for this group identifier for example to
                                         perform convolutions</li>
-                                    <li><b>"adjustment"</b>Used for heuristic to test for transparency </li>
-                                    <li><b>"conditional"</b>Will cause branching in shader and re-generation is required
+                                    <li><b>"adjustment": </b>Used for heuristics to test for transparency </li>
+                                    <li><b>"conditional": </b>Will cause branching in shader and re-generation is required
                                         for different conditions</li>
-                                    <li><b>"organization"</b>Does not perform any computation</li>
-                                    <li><b>"translation"</b>Is a shading model translator</li>
+                                    <li><b>"organization": </b>Does not perform any computation</li>
+                                    <li><b>"translation:": </b>Is a shading model translator</li>
                                 </ul>
                                 </p>
-                                <div class="btn btn-lg btn-outline-primary">Inheritance</div>
+                                <div class="btn btn-lg btn-outline-primary" style="pointer-events: none;">Inheritance</div>
                                 <p>
                                     The <b>inherit</b> attribute indicates that a definition inherits it's
                                     interface from another definition. Inheritance allows for reuse and specialization
@@ -299,10 +354,10 @@
                                 <p>
                                     For example the <a href="standard_surface.html" target="_blank">standard surface</a>
                                     and <a href="UsdUVTexture.html" target="_blank">USD texture</a> definitions use
-                                    inheritance. In one case to change the default values for some inputs and in the
+                                    inheritance. In one case to change the default values for  inputs and in the
                                     latter to
                                     remove
-                                    a output from a newer version.
+                                    an output from a newer version.
                                 </p>
                             </div>
                         </div>
@@ -334,14 +389,14 @@
                                 <p>
                                     The required attributes are:
                                 <ul>
-                                    <li><b>name</b> The name must be unique between all parameters on
+                                    <li><b>name: </b> The name must be unique between all parameters on
                                         the definition.</li>
-                                    <li><b>type</b>The parameter type</li>
+                                    <li><b>type: </b>The parameter type</li>
                                 </ul>
                                 Optional attributes include:
                                 <ul>
-                                    <li><b>doc</b>: Description of the parameter. It is recommended to
-                                        add this info user understanding</li>
+                                    <li><b>doc</b>: Description (documentation) of the parameter. It is recommended to
+                                        add a description so users will understand the meaning of the parameter.</li>
                                     <li><b>uniform</b> (input only): If specified the input data is uniform (vs varying)
                                         Only inputs can have this specified.</li>
                                     <li><b>enumvalues</b> and <b>enum</b>: The set of possible values
@@ -390,12 +445,13 @@
                         <div class="card border-primary border mb-4">
                             <div class="card-body">
 
-                                <div class="btn btn-lg btn-outline-primary">Implementations and Functional Graphs</div>
+                                <div class="btn btn-lg btn-outline-primary" style="pointer-events: none;">Implementations and Functional Graphs</div>
                                 <p>
                                     A definition can be implemented either in code or using a functional
                                     node graph. A definition can have a different implementation depending
                                     on shading language <b>target</b> (e.g. OSL). <a
-                                        href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/targets" target="_blank">Targets</a>
+                                        href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/targets"
+                                        target="_blank">Targets</a>
                                     are provided as part
                                     of the standard definition libraries. The syntax is:
                                     <code>gen_&lt;language name&gt;</code>
@@ -422,7 +478,7 @@
                                     <br>or<br>
                                     <img src="./images/impl_diagram2.svg" style="width:40%">
                                 </p>
-                                <div class="btn btn-lg btn-outline-primary">Functional Node Graph Diagrams</div>
+                                <div class="btn btn-lg btn-outline-primary" style="pointer-events: none;">Functional Node Graph Diagrams</div>
                                 <p>
                                     For the node definition documentation, diagrams of node graphs are
                                     generated from MaterialX library documents. The conventions for different components
@@ -457,26 +513,29 @@
                                 <p>
                                     To retrieve information following are important API classes:
                                 <ul>
-                                    <li><a
-                                            href="https://materialx.org/docs/api/class_document.html" target="_blank"><em>Document</em>:</a>
+                                    <li><a href="https://materialx.org/docs/api/class_document.html"
+                                            target="_blank"><em>Document</em>:</a>
                                         document api to get nodedefs va
                                         <code>getNodeDefs()</code>
                                     </li>
-                                    <li><a
-                                            href="https://materialx.org/docs/api/class_node_def.html" target="_blank"><em>NodeDef</em>:</a>
+                                    <li><a href="https://materialx.org/docs/api/class_node_def.html"
+                                            target="_blank"><em>NodeDef</em>:</a>
                                         node
                                         definition</li>
-                                    <li><a
-                                            href="https://materialx.org/docs/api/class_implementation.html" target="_blank"><em>Implementation</em></a>:
+                                    <li><a href="https://materialx.org/docs/api/class_implementation.html"
+                                            target="_blank"><em>Implementation</em></a>:
                                         nodedef definition implementation</li>
-                                    <li><a href="https://materialx.org/docs/api/class_node_graph.html target="_blank"><em>NodeGraph
-                                                </em></a>>:
-                                                node graph implementation</li>
-                                    <li><a href="https://materialx.org/docs/api/class_input.html" target="_blank"><em>Input</em></a>:
+                                    <li><a href="https://materialx.org/docs/api/class_node_graph.html target="
+                                            _blank"><em>NodeGraph
+                                            </em></a>>:
+                                        node graph implementation</li>
+                                    <li><a href="https://materialx.org/docs/api/class_input.html"
+                                            target="_blank"><em>Input</em></a>:
                                         interface
                                         and node inputs for definitions and
                                         node graph implementation nodes</li>
-                                    <li><a href="https://materialx.org/docs/api/class_output.html" target="_blank"><em>Output</em></a>:
+                                    <li><a href="https://materialx.org/docs/api/class_output.html"
+                                            target="_blank"><em>Output</em></a>:
                                         outputs
                                         for definitions, node graphs and nodes</li>
                                 </ul>
@@ -484,7 +543,8 @@
                                 <p>Input and output ports can be inherited from a parent definition. Note that in
                                     MaterialX
                                     terminology, getting <b>active</b> information means to get inherited information.
-                                    <a href="https://materialx.org/docs/api/class_interface_element.html" target="_blank">Corresponding
+                                    <a href="https://materialx.org/docs/api/class_interface_element.html"
+                                        target="_blank">Corresponding
                                         APIs</a>
                                     having
                                     an "Active" API variants (e.g. <code>getActiveValueElements()</code> vs
@@ -516,62 +576,265 @@
                         <div class="card border-primary border mb-4">
                             <div class="card-body">
 
+                                <p>Library information is organized into various node groups with associated node
+                                    definitions.</p>
                                 <p>
-                                    Shown here is a "template" of the UI used to display all node definition
-                                    information.
+                                    Shown here is a "template" of the 'card UI' used to display node definition
+                                    information. Attributes are shown as rows. Various definition information can
+                                    be shown/hidden by clicking the section tabs (
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                          </svg> / 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                          </svg>
+                                          )
+                                    </p>
+                                    <p>
+                                    Within the card template below are explanations for how to read attribute values and what their usage is.
+                                    These can be found within the <a class="custom btn btn-sm border border-primary">colored boxes </a>
                                 </p>
                                 <p>
                                     For brevity, only essential API calls shown in the template. Otherwise
-                                    the <b>attribute</b> names used listed to indicate which attribute is examined.
-                                    Also for brevity, only the non-inherited inputs and outputs are shown per node
+                                    the <b>attribute</b> names used indicate which attribute is examined.
+                                    Also, only the non-inherited inputs and outputs are shown per node
                                     definition.
                                 </p>
                                 <hr>
+
+                                <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                    <div class="card-header border-0">
+                                    <h6>Category Section</h6>
+                                    </div>
+                                    <br>
+                            For each category ('node' attribute) one or more implementations may be shown. In this template only one is
+                                shown.
+                            
+                            </div>
+                            <br>
                                 <b>Category: </b>'node'
                                 <details open>
                                     <summary
                                         class="card-header rounded bg-primary bg-opacity-50 text-white m-4 px-2 p-3 mb-0">
-                                        Name: 'name'</summary>
+                                        Definition Name: 'name'</summary>
 
                                     <div class="m-4 mt-0">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="card border-primary border mb-4">
                                                     <div class="card-body">
+
+                                                        
+                                                        <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                                <div class="card-header border-0">
+                                                                <h6>Definition Section</h6>
+                                                                </div>
+                                                                <br>
+                                                        <p>For each definition one or more reference images may be shown in the order
+                                                            that the outputs are listed. 
+                                                        </p>
+                                                        </div>
+                                                        <br>                                                        
                                                         <p class="card-text"><img src="images/Default_osl.png"
                                                                 class="rounded float-left" alt="..."
                                                                 style="width: 128px; max-width: 50%;"></p>
+
+                                                        
+                                                        <br>
+                                                        <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                            <b>Type</b> The output type. If there is more than one output then 'multioutput'
+                                                                is shown.
+                                                        </div>
+                                                        <br>
+
                                                         <p class="card-text"><b>Type </b>
                                                             <button type="button"
                                                                 class="btn btn-sm btn-outline-secondary pt-0 pb-0">'type'
-                                                            </button> (or 'multioutput')
-                                                        </p>
+                                                            </button> <b>
+                                                        </p></b>
+
+
+                                                        <br>
+                                                        <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                            <b>Node Group</b> What node group is this node a part of.
+                                                        </div>
+                                                        <br>
+
                                                         <p class="card-text"><b>Node Group </b>
                                                             <button type="button"
                                                                 class="btn btn-sm btn-outline-secondary pt-0 pb-0">'nodegroup'</button>
                                                         </p>
+
+                                                        <br>
+                                                        <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                            <b>Versioning / Inheritance</b>The version for this definition, whether
+                                                            it is the default version and whether it inherits from another definition.
+                                                        </div>
+                                                        <br>
+
                                                         <p class="card-text">
                                                             <b>Version </b>'version' ( 'isdefault' )
                                                             <b>Inherits From </b><button type="button"
                                                                 class="btn btn-sm btn-outline-secondary pt-0 pb-0">'inherit'</button>
                                                         </p>
+
+
+                                                        <br>
+                                                        <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                            <b>Description</b>Definition description
+                                                        </div>
+                                                        <br>
+
                                                         <p class="card-text"><b>Description:
                                                             </b>
                                                         <div class="col-sm-8">
                                                             <textarea class="form-control form-control-sm" rows="1"
-                                                                style="resize: none;" disabled>'doc'</textarea>
+                                                                style="resize: none;"
+                                                                disabled>'doc'</textarea>
                                                         </div>
                                                         </p>
+                                                        
+                                                        <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                                <div class="card-header border-0">
+                                                                <h6>Code / Node Graph Implementation Sections</h6>
+                                                                </div>
+                                                                <br>
+                                                        <p>Either code or node graph implementations are 
+                                                                displayed depending on the node definition.</p>
+                                                        <p>'Code implementation' shows which languages are implemented and where the
+                                                                code is stored or generated. 
+                                                                <ul>
+                                                                    <li>If it's inlined source code it is shown directly on this page.</li>
+                                                                    <li>If the code is stored in a file, a link to the file is given</li>
+                                                                    <li>If the code is generated by a code generator for a given 'target'
+                                                                        then 'Via Code Generation' is shown.
+                                                                        (e.g. <a href="definitions/position.html">position</a>)
+                                                                    </li>
+                                                                </ul>
+                                                                'Function' is the name of the function to look for within the source
+                                                                code.</p>
+                                                        <p>Alternatively, the node graph sections shows the graph for the node
+                                                                definition. The "Draw Graph" button can be selected
+                                                                to draw the graph. Additionally, users can copy the Mermaid graph
+                                                                using 'Copy Graph' to the
+                                                                <a href="mermaidChecker.html">Graph Visualizer utility</a> to examine, customize, and
+                                                                save as desired.</p>
+                                                        </div>
+                                                        <br>
+                                                        <details open>
 
-                                                        <p class="card-text">
-                                                        <details>
+                                                            <summary><b>Code Implementation</b>
+                                                                getImplementation()
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="currentColor"
+                                                                    class="bi bi-code-square" viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                                    <path
+                                                                        d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z" />
+                                                                </svg>
+                                                            </summary>
+                                                            <br>
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+                                                                <div class="col-sm-2">
+                                                                    <input type="button"
+                                                                        class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0"
+                                                                        value="'target'">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="button"
+                                                                        class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0"
+                                                                        value="'file'">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+                                                                <div class="col-sm-2">
+                                                                    <input type="button"
+                                                                        class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0"
+                                                                        value="'target'">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+                                                                <div class="col-sm-8">
+                                                                    <textarea class="form-control form-control-sm"
+                                                                        rows="3" style="resize: none;"
+                                                                        disabled>'sourcecode' </textarea>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+
+                                                            <div class="form-group row g-2">
+                                                                <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+                                                                 <div class="col-sm-2">
+                                                                   <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="'target'">
+                                                                 </div>
+                                                                </div>
+                                                                <div class="form-group row g-2">
+                                                                <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+                                                                  <div class="col-sm-4">
+                                                                   <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+                                                                  </div>
+                                                                </div>
+
+                                                            <hr>
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="button"
+                                                                        class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0"
+                                                                        value="function">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                        </details>
+
+                                                        <br>
+
+
+                                                        <details open>
                                                             <summary><b>Node Graph</b>
                                                                 getImplementation()
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="currentColor"
+                                                                    class="bi bi-diagram-3 text-primary"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                                                </svg>
                                                             </summary>
+                                                            <br>
+                                                            <img src="./images/draw_copy_graph_option.png" style="width:20%"><br>
                                                             <img src="./images/sample_graph.svg" style="width:30%">
                                                         </details>
                                                         </p>
                                                         <details open>
+                                                            <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                                <div class="card-header border-0">
+                                                                <h6>Inputs and Outputs Section</h6>
+                                                                </div>                                                                
+                                                                The input and output parameters / ports are listed as a list of
+                                                                    buttons, with outputs labelled with bold text.
+                                                                    A user can select a port to display port details.
+                                                                    A single example of an input and and output
+                                                                    are shown. 
+                                                                <br><br>
+                                                                Select the input or output buttons
+                                                                to see the differences between input and output
+                                                                attributes.
+                                                            </div>
+
                                                             <summary class="card-text"><b>Parameters:
                                                                 </b>getValueElements()</summary>
                                                             <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
@@ -591,6 +854,8 @@
                                                                             'name'</b></button>
                                                                 </li>
                                                             </ul>
+
+    
                                                             <div class="tab-content" id="pills-tabContent">
                                                                 <div class="tab-pane fade show active"
                                                                     id="pills-baseColor" role="tabpanel"
@@ -607,6 +872,13 @@
                                                                             </textarea>
                                                                         </div>
                                                                     </div>
+
+                                                                    <br>
+                                                                    <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                                        <b>Uniform</b>A checkbox is used to indicate if the input
+                                                                        values are expected to be uniform or varying.
+                                                                    </div>
+                                                                    <br>                                                                            
 
                                                                     <div class="form-group row g-2">
                                                                         <label
@@ -628,7 +900,16 @@
                                                                         </div>
 
                                                                     </div>
-
+                                                                    <br>
+                                                                    <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                                        <b>Enumerations</b>
+                                                                        <p>Set of possible named values for an enumeration shown in open
+                                                                            dropdown menus, with string labels on the left and if it exists, any
+                                                                            associated numeric value on the right. 
+                                                                            <a href="./definitions/LamaConductor.html">'Lama Conductor'</a>
+                                                                            'fresnelMode' input is an example. </p>
+                                                                    </div>
+                                                                    <br>                                                                            
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">Possible
@@ -668,11 +949,20 @@
                                                                         </div>
                                                                     </div>
 
+                                                                    <br>
+                                                                    <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                                        <b>Colors</b>
+                                                                        Color values are in have no assumed 
+                                                                        range or representation. The associated color swatch provides a visual 
+                                                                        in RGB space for reference. Input colorspace is shown if specified.                                                                        
+                                                                    </div>
+                                                                    <br>
 
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">
-                                                                            Value (color3): </label>
+                                                                            Value (color3): 
+                                                                        </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
@@ -697,7 +987,8 @@
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">
-                                                                            Value (color4): </label>
+                                                                            Value (color4): 
+                                                                            </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
@@ -736,6 +1027,16 @@
                                                                     </div>
 
                                                                     <hr>
+                                                                    <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                                        <b>Floats and Vectors</b>Vector values are shown in the fields in x, y
+                                                                            z and w order. Float values show a single field.
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                                        <b>Matrices</b>Matrix values are shown in row major order.
+                                                                    </div>
+                                                                    <br>
+
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">
@@ -802,22 +1103,23 @@
 
                                                                     <div class="form-group row g-1">
                                                                         <label
-                                                                            class="col-sm-2 col-form-label col-form-label-sm">Value: (matrix33)
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Value:
+                                                                            (matrix33)
                                                                         </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row g-1">
@@ -825,18 +1127,18 @@
                                                                             class="col-sm-2 col-form-label col-form-label-sm"></label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row g-1">
@@ -844,68 +1146,45 @@
                                                                             class="col-sm-2 col-form-label col-form-label-sm"></label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                     </div>
-        
+
                                                                     <div class="form-group row g-1">
                                                                         <label
-                                                                            class="col-sm-2 col-form-label col-form-label-sm">Value: (matrix44)
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Value:
+                                                                            (matrix44)
                                                                         </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row g-1">
-                                                                        <label
-                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
-                                                                        <div class="col-sm-2">
-                                                                            <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
-                                                                        </div>
-                                                                        <div class="col-sm-2">
-                                                                            <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
-                                                                        </div>
-                                                                        <div class="col-sm-2">
-                                                                            <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
-                                                                        </div>
-                                                                        <div class="col-sm-2">
-                                                                            <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row g-1">
@@ -913,23 +1192,23 @@
                                                                             class="col-sm-2 col-form-label col-form-label-sm"></label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row g-1">
@@ -937,23 +1216,47 @@
                                                                             class="col-sm-2 col-form-label col-form-label-sm"></label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                     </div>
 
@@ -967,6 +1270,15 @@
                                                                                 value="'value'" disabled>
                                                                         </div>
                                                                     </div>
+
+                                                                    <br>
+                                                                    <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                                        <b>Real World Units</b>
+                                                                        <p>Vectors and matrices may have an optional
+                                                                        `unit` and `unit` type specified. For example the rotation amount for 
+                                                                        <a href="definitions/place2d.html">place2d</a> is specified as an angle in degrees.</p>                                                                         
+                                                                    </div>
+                                                                    <br>
 
                                                                     <div class="form-group row g-1">
                                                                         <label
@@ -982,6 +1294,14 @@
                                                                         </div>
                                                                     </div>
 
+                                                                    <br>
+                                                                    <div class="ps-2 custom card border border-primary py-2 pe-2  col-sm-6">
+                                                                        <b>Default geometry</b>Geometry specified to be bound by default 
+                                                                        is optional. The name of a built in semantic name such as 'Nworld'
+                                                                        (normals in world space) is shown.
+                                                                    </div>
+                                                                    <br>
+
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">Geometry
@@ -995,6 +1315,12 @@
 
                                                                     <hr>
 
+                                                                            <div class="custom card border border-primary py-2 pe-2 ps-2 col-sm-6">
+                                                                            A checkbox is shown to represent a boolean type.
+                                                                            A filled in checkbox means true and an
+                                                                            unfilled one means false.
+                                                                            </div>
+                                                                            <br>
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">Value
@@ -1008,10 +1334,19 @@
                                                                     </div>
                                                                     <hr>
 
+                                                                    <div class="custom card border border-primary py-2 pe-2 ps-2 col-sm-6">
+                                                                        <b>UI attributes</b>
+                                                                        UI attribute hint are shown in a row with
+                                                                        each field value corresponds to 1st name /
+                                                                            -> 2nd name / -> 3rd name /.
+                                                                        A checkbox is shown if the input is considered 'advanced'.
+                                                                    </div>
+                                                                    <br> 
                                                                     <div class="form-group row g-1">
+                                                                        
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">UI
-                                                                            Min/Max/Step: </label>
+                                                                            <b>Min/Max/Step:</b> </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
@@ -1032,7 +1367,7 @@
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">UI
-                                                                            Soft Min/Max: </label>
+                                                                            <b> Soft Min/Max:</b> </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
@@ -1049,7 +1384,7 @@
                                                                     <div class="form-group row g-2">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">UI
-                                                                            Name / Folder: </label>
+                                                                            <b>Name / Folder:</b> </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
@@ -1101,6 +1436,7 @@
                                                                     </div>
 
                                                                     <div class="form-group row g-1">
+
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">Possible
                                                                             Values: </label>
@@ -1261,22 +1597,23 @@
 
                                                                     <div class="form-group row g-1">
                                                                         <label
-                                                                            class="col-sm-2 col-form-label col-form-label-sm">Default: (matrix33)
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Default:
+                                                                            (matrix33)
                                                                         </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row g-1">
@@ -1284,18 +1621,18 @@
                                                                             class="col-sm-2 col-form-label col-form-label-sm"></label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row g-1">
@@ -1303,68 +1640,45 @@
                                                                             class="col-sm-2 col-form-label col-form-label-sm"></label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                     </div>
-        
+
                                                                     <div class="form-group row g-1">
                                                                         <label
-                                                                            class="col-sm-2 col-form-label col-form-label-sm">Default: (matrix44)
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Default:
+                                                                            (matrix44)
                                                                         </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row g-1">
-                                                                        <label
-                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
-                                                                        <div class="col-sm-2">
-                                                                            <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
-                                                                        </div>
-                                                                        <div class="col-sm-2">
-                                                                            <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
-                                                                        </div>
-                                                                        <div class="col-sm-2">
-                                                                            <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
-                                                                        </div>
-                                                                        <div class="col-sm-2">
-                                                                            <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row g-1">
@@ -1372,23 +1686,23 @@
                                                                             class="col-sm-2 col-form-label col-form-label-sm"></label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row g-1">
@@ -1396,23 +1710,47 @@
                                                                             class="col-sm-2 col-form-label col-form-label-sm"></label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
-                                                                                class="form-control form-control-sm" value="'value'"
-                                                                                disabled>
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
                                                                         </div>
                                                                     </div>
 

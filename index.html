@@ -2,157 +2,479 @@
 <html>
 
 <head>
-    <title> Mermaid Graph Checker </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <title> Mermaid Graph Visualizer </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="documents/css/style.css">
 
-    <style>
-        body {
-            font-size: 90%;
-        }
 
-        .col-form-label-sm {
-            font-size: 90%;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-        .form-control {
-            font-size: 90%;
-        }
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
 
-        .card-body {
-            font-size: 80%;
-        }
+  <script>
+    new SimpleBar(document.querySelector('div'));
+  </script>
 
-        .btn {
-            font-size: 90%;
-        }
-
-        .nav-link {
-            font-size: 100%;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .text-left {
-            text-align: left !important;
-        }
-
-        .greyhover {
-            text-decoration: none;
-        }
-
-        .greyhover:hover {
-            text-decoration: none;
-            cursor: pointer;
-            background: rgb(239, 239, 239);
-        }
-    </style>
 </head>
 
 <body>
-    <nav class="navbar sticky-top navbar-expand-lg bg-light ">
-        <div class="container-md container-fluid">
-            <a class="navbar-brand" href="#">
-                <h4><img src="documents/images/MaterialXLogo2KWhite.png" alt="MaterialX Plus" class="d-inline-block align-text-top" width="60" >                
-                MaterialX Plus</h4>
+  <!-- Navigation  -->
+  <nav class="navbar sticky-top navbar-expand-lg text-bg-light">
+    <div class="container-md container-fluid">
+      <a class="navbar-brand" href="#">
+        <h4><img src="documents/images/MaterialXLogo2KWhite.png" alt="MaterialX Learn"
+            class="d-inline-block align-text-top" width="60">
+          MaterialX Learn</h4>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+        aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenuContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Learn
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
-                aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
-                <span class="navbar-toggler-icon"></span>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="documents/nodes_and_nodegraphs.html">
+                  Nodes and Graphs
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="documents/node_definitions.html">
+                  Node Definitions
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="documents/documents.html">
+                  Documents (WIP)
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Reference
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="documents/definitions/definitions_by_group.html">
+                  Library (By Group)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="documents/definitions/all_definitions.html">
+                  Library (All)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
+                  C++ API
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Tools</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="documents/mermaidChecker.html">
+                  Graph Visualizer
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Develop</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="documents/python_MaterialX.html">
+                  MaterialX Python
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="pymaterialx/Basics_Notebook.html">
+                  Tutorials and Examples (preview)
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Workflows</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="https://github.com/kwokcb/glTF_MaterialX" target="_blank">
+                  Khronos glTF Interop
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Design</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="documents/design.html">
+                  UX Design
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="" role="button">
+              About
+            </a>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Carousel to add 
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner rounded">
+        <div class="carousel-item active">
+          <img src="documents/images/1.jpg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <rect width="100%" height="100%" fill="#777">
+
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>Headline 1</h1>
+                <p>Some representative placeholder content for the first slide of the carousel.</p>
+                <p><a class="btn btn-lg btn-primary" href="#">Learn More</a></p>
+              </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <img src="documents/images/2.jpg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <rect width="100%" height="100%" fill="#777"></rect>
+          <div class="container">
+            <div class="carousel-caption text-start">
+              <h1>Headline 2</h1>
+              <p>Some representative placeholder content for the second slide of the carousel.</p>
+              <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="documents/images/3.jpg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <rect width="100%" height="100%" fill="#777">
+
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>Headline 3</h1>
+                <p>Some representative placeholder content for the third slide of this carousel.</p>
+                <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+              </div>
+            </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+-->
+    <!--
+      <div id="carouselExampleCaptions" class="carousel slide col-md-8 mx-auto my-2">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="documents/images/1.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="documents/images/2.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="documents/images/3.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      -->
+    <!-- 
+    <div class="p-4 p-md-5 mb-4 rounded text-bg-dark" style="background-image: url('documents/images/hair_material.png');"
+  ../Substance/images/trees-snapshot.png -->
+    <div class="p-4 p-md-5 mb-4 rounded text-bg-dark"
+      style="background-image: url('documents/images/trees-snapshot.png');">
+      <div class="col-md-6 px-0">
+        <h2 class="display-6 fst-italic">MaterialX Learn</h2>
+        <div class="col-md-8">
+        </div>
+        <p class=" fs-6 fst-italic my-3">You have reached the home of "MaterialX Learn". </p>
+        <p>The intent of this site is to provide learning materials as well as complimentary utilities for working with
+          <a href="materialx.org">MaterialX</a>
+        </p>
+        <!-- <p class="lead mb-0"><a href="#" class="text-white fw-bold">About Us...</a></p>-->
+      </div>
+    </div>
+
+    <!-- Featured. To add 
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Tech</strong>
+            <h3 class="mb-0">Featured post</h3>
+            <div class="mb-1 text-muted">Nov 12</div>
+            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to
+              additional content.</p>
+            <a href="#" class="stretched-link">Continue reading</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <img src="documents/images/unsplash-photo-2.jpg" width="250" height="250" xmlns="http://www.w3.org/2000/svg"
+              role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">Design</strong>
+            <h3 class="mb-0">Post title</h3>
+            <div class="mb-1 text-muted">Nov 11</div>
+            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional
+              content.</p>
+            <a href="#" class="stretched-link">Continue reading</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <img src="documents/images/unsplash-photo-1.jpg" width="250" height="250" xmlns="http://www.w3.org/2000/svg"
+              role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">
+          </div>
+        </div>
+      </div>
+    </div>
+  -->
+  </main>
+
+  <div class="container px-4 py-5" id="hanging-icons">
+
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3 bg-light vh-100 d-flex flex-row overflow-auto">
+
+      <div class="col d-flex align-items-start">
+        <div
+          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
+        </div>
+
+        <div>
+          <img src="documents/images/Sample_ShaderBall.png" alt="Introduction"
+            class="rounded-4 border border-white img-fluid w-50 pb-2">
+          <h3 class="fs-3 pb-2">Introduction</h3>
+          <p>A brief introduction to MaterialX and this site</p>
+          <a href="#" class="btn btn-primary">
+            Learn More
+          </a>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div
+          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
+        </div>
+        <div>
+          <img src="documents/images/Sample_ShaderBall_Nickel.png" alt="Learn"
+            class="rounded-4 border border-white img-fluid w-50 pb-2">
+          <h3 class="fs-3 pb-2">Learn</h3>
+          <p>Learn from the basics to advanced topics like color management</p>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Learn More
             </button>
-            <div class="collapse navbar-collapse" id="mainMenuContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Node Library
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="documents/Node_Definitions.html">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
-                                        <path
-                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
-                                    </svg>
-                                    Introduction
-                                </a>
-                            </li>
-                            <li><a class="dropdown-item" href="documents/Definitions_By_Group.html">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
-                                        <path
-                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
-                                    </svg>
-                                    Definitions (By Group)
-                                </a>
-                            </li>
-                            <li><a class="dropdown-item" href="documents/All_Definitions.html">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
-                                        <path
-                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
-                                    </svg>
-                                    Definitions (All)
-                                </a>
-                            </li>
-                        </ul>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Utilities
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="documents/mermaidChecker.html">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-bezier text-primary" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
-                                        <path
-                                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z" />
-                                    </svg>
-                                    Graph Checker
-                                </a>
-                            </li>
-                        </ul>
-                    </li>                </ul>
-            </div>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="./documents/nodes_and_nodegraphs.html">Node and Graphs</a></li>
+              <li><a class="dropdown-item" href="./documents/documents.html">Documents</a></li>
+              <li><a class="dropdown-item" href="./documents/node_definitions.html">Definitions</a></li>
+            </ul>
+          </div>
         </div>
-    </nav>
-
-
-    <div class="container-fluid ms-2">
-        <h2>Introduction</h2>
-
-        <div class="row flex-nowrap">
-
-            <div class="col-sm-12 p-4">
-
-                <p>You have reached the home of "MaterialX Plus"
-                </p>
-                <p>
-                    The intent of this site is to provide learning materials as well
-                    as complimentary utilities for working with MaterialX.
-                </p>
-                This site is currently under initial construction.
-
-            </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div
+          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
         </div>
+        <div>
+          <img src="documents/images/Sample_ShaderBall_Brick.png" alt="Bootstrap"
+            class="rounded-4 border border-white img-fluid w-50 pb-2">
+          <h3 class="fs-3 pb-2">Workflows</h3>
+          <p>Articles and helpers related to various workflows.</p>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Learn More
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="https://github.com/kwokcb/glTF_MaterialX" target="_blank">Khronos PBR / glTF
+                  Interop</a></li>
+              <li><a class="dropdown-item" href="">OCIO Interop (coming)</a></li>
+              <li><a class="dropdown-item" href="">Adobe Interop (coming)</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col d-flex align-items-start">
+        <div
+          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
+        </div>
+        <div>
+          <img src="documents/images/sample_graph.svg" alt="Bootstrap"
+            class="rounded-4 border border-white img-fluid w-50 pb-2">
+          <h3 class="fs-3 pb-2">Tools</h3>
+          <p>Tools to aid with manipulating and enhancing MaterialX.</p>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Learn More
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="./documents/mermaidChecker.html">Graph Visualizer</a></li>
+            </ul>
+          </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col d-flex align-items-start">
+        <div
+          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
+        </div>
+        <div>
+          <img src="documents/images/VSCode_Environment.png" alt=""
+            class="rounded-4 border border-white img-fluid w-50 pb-2">
+          <h3 class="fs-3 pb-2">Develop</h3>
+          <p>Developing using MaterialX via examples and tutorials</p>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Learn More
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="documents/python_MaterialX.html">Python Environment</a></li>
+              <li><a class="dropdown-item" href="./pymaterialx/Basics_Notebook.html">Basics Book (preview) </a></li>
+            </ul>
+          </div>
+          </a>
+        </div>
+      </div>
+
+
+      <div class="col d-flex align-items-start">
+        <div
+          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
+        </div>
+        <div>
+          <img src="documents/images/Design_Icon.png" alt="Bootstrap"
+            class="rounded-4 border border-black img-fluid w-50 pb-2">
+          <h3 class="fs-3 pb-2">Design</h3>
+          <p>User design and architecture, and MaterialX document generation.</p>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Learn More
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="./documents/design.html">UX Design</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!--
+      <div class="col d-flex align-items-start">
+        <div
+          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
+        </div>
+        <div>
+          <img src="documents/images/unsplash-photo-3.jpg" alt="Bootstrap"
+            class="rounded-4 border border-white img-fluid w-50 pb-2">
+          <h3 class="fs-3 pb-2">Placeholder</h3>
+          <p>"Behind the scenes" details about how MaterialX was used to generate this site</p>
+          <a href="#" class="btn btn-primary">
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+-->
+    </div>
+
+    <!--
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <a href="#">
+        <img src="documents/images/MaterialXLogo2KWhite.png" alt="MaterialX Learn" class="d-inline-block align-text-top"
+          width="60">
+      </a>
+      <p class="col-md ps-2 mb-0 text-muted">&copy; Material X Plus, Inc</p>
+
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Node Libary</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Utilities</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Materials</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+      </ul>
+    </footer>
+  </div>
+-->
+</body>
 
 </html>
