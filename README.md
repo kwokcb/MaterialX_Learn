@@ -1,8 +1,9 @@
-# MaterialX_Plus
+# MaterialX Learn
 [![main](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml/badge.svg)](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml)
 
-Complimentary site for learning and integrating MaterialX
+This is a complimentary site for those interested in learning about or are integrating MaterialX.
 
-[See current site](https://kwokcb.github.io/MaterialX_Plus/). 
-Note this is still under construction with some parts available for node / nodegraphs.
+[See site](https://kwokcb.github.io/MaterialX_Learn/). 
+Note this is in early stages and material will be added over time.
+
 
