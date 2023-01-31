@@ -1,0 +1,868 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  
+    <link rel="stylesheet" href="../css/style.css">
+  
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">  
+</head>
+
+<body class="min-vh-100">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script> 
+<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
+
+<script>
+    function filterTOC() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("searchTOC");
+        filter = input.value;
+        console.log("Look for: ", filter)
+        li = document.querySelectorAll('.idx');
+        for (i = 0; i < li.length; i++) {
+            a = li[i];
+            if (a.innerHTML.match(filter)) {
+                if (filter.length > 0) {
+                    var parent = a.parentElement
+                    while (parent) {
+                        if (parent.className && parent.classList.contains("collapse")) {
+                            console.log("Show: ", parent)
+                            parent.classList.add("show");
+                        }
+                        parent = parent.parentElement;
+                    }
+                }
+                a.style.display = "";
+            }
+            else {
+                if (filter.length > 0)
+                    a.style.display = "none";
+                else
+                    a.style.display = "";
+            }
+        }
+    }
+
+    function filterOnEnter(event) {
+        if (event.code === 'Enter') {
+            event.preventDefault();
+            filterTOC();
+        }
+    };
+
+    function renderMermaid(event) {
+        buttonId = event.target.id;
+
+        var mermaidinput = document.getElementById(buttonId + "_mermaid_input");
+        var mermaidoutput = document.getElementById(buttonId + "_mermaid_output");
+        if (mermaidinput && mermaidoutput) {
+            const code = mermaidinput.textContent;
+            let generateDiagram = function (code) {
+                mermaidoutput.innerHTML = code;
+                mermaidoutput.hidden = false;
+            };
+            mermaid.render(buttonId + "_mermaid_output_rendered", code, generateDiagram);
+
+            var button = document.getElementById(event.target.id);
+            button.hidden = true;
+            button.remove;
+        }
+    }
+    
+    function copyMermaid(event)
+    {
+        buttonId = event.target.id;
+        inputId = buttonId.replace('mrcopy', 'mrender')        
+        var mermaidinput = document.getElementById(inputId + "_mermaid_input");
+        var text_to_copy = mermaidinput.innerHTML;
+        text_to_copy = text_to_copy.replace(/&gt;/g, ">")
+        text_to_copy = text_to_copy.replace(/&lt;/g, "<")
+        console.log(text_to_copy)
+        if (navigator.clipboard)
+        {
+            navigator.clipboard.writeText(text_to_copy).then(
+                function()
+                {
+                    console.log(text_to_copy)
+                    document.getElementById(buttonId).textContent = "Copied";
+                    setTimeout(function() { document.getElementById(buttonId).textContent = "Copy Graph"; }, 2500);
+
+                })
+            .catch(
+                function() {
+                    console.log("Failed to copy graph"); 
+            });
+        } 
+    }       
+</script>
+
+ <!-- Navigation  -->
+ <nav class="navbar sticky-top navbar-expand-lg bg-light">
+    <div class="container-md container-fluid">
+      <a class="navbar-brand" href="#">
+        <h4><img src="../images/MaterialXLogo2KWhite.png" alt="MaterialX Learn"
+            class="d-inline-block align-text-top" width="60">
+          MaterialX Learn</h4>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+        aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenuContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="../../index.html" role="button">
+                  Home
+                </a>
+              </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Learn
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../nodes_and_nodegraphs.html">
+                  Nodes and Graphs
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../node_definitions.html">
+                  Node Definitions
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../documents.html">
+                  Documents (WIP)
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Reference
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="definitions_by_group.html">
+                  Library (By Group)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="all_definitions.html">
+                  Library (All)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
+                  C++ API
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Tools</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../mermaidChecker.html">
+                  Graph Visualizer
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Develop</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../python_MaterialX.html">
+                  MaterialX Python
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../../pymaterialx/Basics_Notebook.html">
+                  Tutorials and Examples (preview)
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Workflows</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="https://github.com/kwokcb/glTF_MaterialX" target="_blank">
+                  Khronos glTF Interop
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Design</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../design.html">
+                  UX Design
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link greyhover" href="#" data-bs-target="#sidebar" data-bs-toggle="collapse">
+              <img src="../images/layout-text-sidebar.svg">
+                Index
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link greyhover" href="../node_definitions.html" target="_blank">
+              <img src="../images/info-circle.svg">
+              Info
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav><div class="container-fluid ">
+ <div class="row flex-nowrap">
+   <div class="col-auto px-0">
+     <div class="row vh-100 overflow-auto" id="noddict_row">
+       <div class="col-12 pt-2 pl-2">
+         <div class="container-md">
+           <div id="sidebar" class="collapse show collapse-horizontal">
+<form class="d-flex" role="search">
+ <input id="searchTOC" class="form-control me-2" type="text" placeholder="Search value" aria-label="Search">
+    <div class="btn btn-outline-primary" onclick="return filterTOC()">Filter</div>
+</form>
+    <button class="btn btn-outline-primary border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nodeGroupIndex" aria-expanded="false" aria-controls="nodeGroupIndex"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> Node Groups </button>
+<div class="collapse show" id="nodeGroupIndex">
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_adjustment" aria-expanded="false" aria-controls="collapse_adjustment"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> adjustment </button>
+</div>
+<div class="collapse ps-5" id="collapse_adjustment">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="colorcorrect.html">colorcorrect</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="contrast.html">contrast</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="curveadjust.html">curveadjust</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="hsvadjust.html">hsvadjust</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="hsvtorgb.html">hsvtorgb</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="luminance.html">luminance</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="range.html">range</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="remap.html">remap</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="rgbtohsv.html">rgbtohsv</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="saturate.html">saturate</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="smoothstep.html">smoothstep</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_application" aria-expanded="false" aria-controls="collapse_application"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> application </button>
+</div>
+<div class="collapse ps-5" id="collapse_application">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="frame.html">frame</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="time.html">time</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_channel" aria-expanded="false" aria-controls="collapse_channel"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> channel </button>
+</div>
+<div class="collapse ps-5" id="collapse_channel">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="combine2.html">combine2</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="combine3.html">combine3</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="combine4.html">combine4</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="convert.html">convert</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="extract.html">extract</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="separate2.html">separate2</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="separate3.html">separate3</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="separate4.html">separate4</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_compositing" aria-expanded="false" aria-controls="collapse_compositing"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> compositing </button>
+</div>
+<div class="collapse ps-5" id="collapse_compositing">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="burn.html">burn</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="difference.html">difference</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="disjointover.html">disjointover</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dodge.html">dodge</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="in.html">in</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="inside.html">inside</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="mask.html">mask</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="matte.html">matte</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="minus.html">minus</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="mix.html">mix</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="out.html">out</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="outside.html">outside</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="over.html">over</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="overlay.html">overlay</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="plus.html">plus</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="premult.html">premult</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="screen.html">screen</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="unpremult.html">unpremult</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_conditional" aria-expanded="false" aria-controls="collapse_conditional"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> conditional </button>
+</div>
+<div class="collapse ps-5" id="collapse_conditional">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ifequal.html">ifequal</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ifgreater.html">ifgreater</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ifgreatereq.html">ifgreatereq</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="switch.html">switch</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_convolution2d" aria-expanded="false" aria-controls="collapse_convolution2d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> convolution2d </button>
+</div>
+<div class="collapse ps-5" id="collapse_convolution2d">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="blur.html">blur</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="heighttonormal.html">heighttonormal</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_geometric" aria-expanded="false" aria-controls="collapse_geometric"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> geometric </button>
+</div>
+<div class="collapse ps-5" id="collapse_geometric">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="UsdPrimvarReader.html">UsdPrimvarReader</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="bitangent.html">bitangent</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="bump.html">bump</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="geomcolor.html">geomcolor</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="geompropvalue.html">geompropvalue</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="normal.html">normal</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="position.html">position</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="tangent.html">tangent</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="texcoord.html">texcoord</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_global" aria-expanded="false" aria-controls="collapse_global"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> global </button>
+</div>
+<div class="collapse ps-5" id="collapse_global">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ambientocclusion.html">ambientocclusion</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_light" aria-expanded="false" aria-controls="collapse_light"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> light </button>
+</div>
+<div class="collapse ps-5" id="collapse_light">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="directional_light.html">directional_light</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="point_light.html">point_light</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="spot_light.html">spot_light</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_material" aria-expanded="false" aria-controls="collapse_material"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> material </button>
+</div>
+<div class="collapse ps-5" id="collapse_material">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surfacematerial.html">surfacematerial</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="volumematerial.html">volumematerial</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_math" aria-expanded="false" aria-controls="collapse_math"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> math </button>
+</div>
+<div class="collapse ps-5" id="collapse_math">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="UsdTransform2d.html">UsdTransform2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="absval.html">absval</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="acos.html">acos</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="add.html">add</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="asin.html">asin</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="atan2.html">atan2</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ceil.html">ceil</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="clamp.html">clamp</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cos.html">cos</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="crossproduct.html">crossproduct</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="determinant.html">determinant</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="divide.html">divide</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dotproduct.html">dotproduct</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="exp.html">exp</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="floor.html">floor</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="invert.html">invert</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="invertmatrix.html">invertmatrix</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ln.html">ln</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="magnitude.html">magnitude</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="max.html">max</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="min.html">min</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="modulo.html">modulo</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="multiply.html">multiply</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="normalize.html">normalize</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="normalmap.html">normalmap</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="place2d.html">place2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="power.html">power</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="rotate2d.html">rotate2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="rotate3d.html">rotate3d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="sign.html">sign</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="sin.html">sin</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="sqrt.html">sqrt</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="subtract.html">subtract</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="tan.html">tan</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformmatrix.html">transformmatrix</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformnormal.html">transformnormal</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformpoint.html">transformpoint</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformvector.html">transformvector</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transpose.html">transpose</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_organization" aria-expanded="false" aria-controls="collapse_organization"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> organization </button>
+</div>
+<div class="collapse ps-5" id="collapse_organization">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dot.html">dot</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_pbr" aria-expanded="false" aria-controls="collapse_pbr"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> pbr </button>
+</div>
+<div class="collapse ps-5" id="collapse_pbr">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaAdd.html">LamaAdd</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaConductor.html">LamaConductor</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaDielectric.html">LamaDielectric</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaDiffuse.html">LamaDiffuse</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaEmission.html">LamaEmission</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaLayer.html">LamaLayer</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaMix.html">LamaMix</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaSSS.html">LamaSSS</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaSheen.html">LamaSheen</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaTranslucent.html">LamaTranslucent</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="UsdPreviewSurface.html">UsdPreviewSurface</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="absorption_vdf.html">absorption_vdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="add.html">add</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="anisotropic_vdf.html">anisotropic_vdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="artistic_ior.html">artistic_ior</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="blackbody.html">blackbody</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="burley_diffuse_bsdf.html">burley_diffuse_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="conductor_bsdf.html">conductor_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="conical_edf.html">conical_edf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dielectric_bsdf.html">dielectric_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="disney_brdf_2012.html">disney_brdf_2012</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="disney_bsdf_2015.html">disney_bsdf_2015</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="displacement.html">displacement</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="generalized_schlick_bsdf.html">generalized_schlick_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="glossiness_anisotropy.html">glossiness_anisotropy</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_pbr.html">gltf_pbr</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="layer.html">layer</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="light.html">light</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="measured_edf.html">measured_edf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="mix.html">mix</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="multiply.html">multiply</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="oren_nayar_diffuse_bsdf.html">oren_nayar_diffuse_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="roughness_anisotropy.html">roughness_anisotropy</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="roughness_dual.html">roughness_dual</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="sheen_bsdf.html">sheen_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="standard_surface.html">standard_surface</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="subsurface_bsdf.html">subsurface_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surface.html">surface</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="thin_film_bsdf.html">thin_film_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="thin_surface.html">thin_surface</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="translucent_bsdf.html">translucent_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="uniform_edf.html">uniform_edf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="volume.html">volume</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural" aria-expanded="false" aria-controls="collapse_procedural"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> procedural </button>
+</div>
+<div class="collapse ps-5" id="collapse_procedural">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="constant.html">constant</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural2d" aria-expanded="false" aria-controls="collapse_procedural2d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> procedural2d </button>
+</div>
+<div class="collapse ps-5" id="collapse_procedural2d">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cellnoise2d.html">cellnoise2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="noise2d.html">noise2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ramp4.html">ramp4</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ramplr.html">ramplr</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ramptb.html">ramptb</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="splitlr.html">splitlr</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="splittb.html">splittb</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="unifiednoise2d.html">unifiednoise2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="worleynoise2d.html">worleynoise2d</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural3d" aria-expanded="false" aria-controls="collapse_procedural3d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> procedural3d </button>
+</div>
+<div class="collapse ps-5" id="collapse_procedural3d">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cellnoise3d.html">cellnoise3d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="fractal3d.html">fractal3d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="noise3d.html">noise3d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="unifiednoise3d.html">unifiednoise3d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="worleynoise3d.html">worleynoise3d</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_shader" aria-expanded="false" aria-controls="collapse_shader"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> shader </button>
+</div>
+<div class="collapse ps-5" id="collapse_shader">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surface_unlit.html">surface_unlit</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_texture2d" aria-expanded="false" aria-controls="collapse_texture2d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> texture2d </button>
+</div>
+<div class="collapse ps-5" id="collapse_texture2d">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="UsdUVTexture.html">UsdUVTexture</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_colorimage.html">gltf_colorimage</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_image.html">gltf_image</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_iridescence_thickness.html">gltf_iridescence_thickness</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_normalmap.html">gltf_normalmap</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="image.html">image</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="tiledimage.html">tiledimage</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_texture3d" aria-expanded="false" aria-controls="collapse_texture3d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> texture3d </button>
+</div>
+<div class="collapse ps-5" id="collapse_texture3d">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="triplanarprojection.html">triplanarprojection</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_translation" aria-expanded="false" aria-controls="collapse_translation"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> translation </button>
+</div>
+<div class="collapse ps-5" id="collapse_translation">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="standard_surface_to_UsdPreviewSurface.html">standard_surface_to_UsdPreviewSurface</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="standard_surface_to_gltf_pbr.html">standard_surface_to_gltf_pbr</a>
+</div>
+</div>
+</div>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+   <div class="col ps-md-2 pt-2">
+       <div class="row vh-100 overflow-auto" id="nodedefrow">
+           <div class="col-12 pt-2 pl-2">
+               <div class="container-md">
+<br>
+<b><a id="rgbtohsv" class="m-4 mb-0">
+Category: rgbtohsv
+</a></b>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_rgbtohsv_color3</summary>
+<div class="m-4 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<img src="../images/nodes/material_rgbtohsv_color3_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_rgbtohsv_color3_out_osl.png style="width:10em"><br>
+</p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">adjustment</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Description:</b> .</p>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_rgbtohsv_color3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_rgbtohsv_color3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_rgbtohsv_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx::stdlib::mx_rgbtohsv_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_rgbtohsv_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_rgbtohsv_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_rgbtohsv_color3">
+   </div>
+  </div>
+<hr>
+</details>
+</p>
+<p class="card-text"><b>Parameters:</b></p>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_rgbtohsv_color3_in" type="button" role="tab" aria-controls="pills-ND_rgbtohsv_color3_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_rgbtohsv_color3_out" type="button" role="tab" aria-controls="pills-ND_rgbtohsv_color3_out" aria-selected="true"><b>out</b></button></li>
+</ul>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_rgbtohsv_color3_in"
+  role="tabpanel" aria-labelledby="pills-ND_rgbtohsv_color3_in-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-1">
+          <input type="color" value="#000000" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_rgbtohsv_color3_out"
+  role="tabpanel" aria-labelledby="pills-ND_rgbtohsv_color3_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_rgbtohsv_color4</summary>
+<div class="m-4 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<img src="../images/nodes/material_rgbtohsv_color4_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_rgbtohsv_color4_out_osl.png style="width:10em"><br>
+</p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">adjustment</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Description:</b> .</p>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_rgbtohsv_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_rgbtohsv_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_rgbtohsv_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx::stdlib::mx_rgbtohsv_color4({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_rgbtohsv_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_rgbtohsv_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_rgbtohsv_color4">
+   </div>
+  </div>
+<hr>
+</details>
+</p>
+<p class="card-text"><b>Parameters:</b></p>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_rgbtohsv_color4_in" type="button" role="tab" aria-controls="pills-ND_rgbtohsv_color4_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_rgbtohsv_color4_out" type="button" role="tab" aria-controls="pills-ND_rgbtohsv_color4_out" aria-selected="true"><b>out</b></button></li>
+</ul>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_rgbtohsv_color4_in"
+  role="tabpanel" aria-labelledby="pills-ND_rgbtohsv_color4_in-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-1">
+          <input type="color" value="#000000" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_rgbtohsv_color4_out"
+  role="tabpanel" aria-labelledby="pills-ND_rgbtohsv_color4_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="in" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+               </div>
+           </div>
+       </div>
+   </div>
+<script>
+  var searchInput = document.getElementById("searchTOC")
+  searchInput.addEventListener("keypress", filterOnEnter);
+  var renderButtons = document.querySelectorAll(".mrender");
+  renderButtons.forEach((renderButton) => { renderButton.addEventListener("click", renderMermaid); });
+  var copyButtons = document.querySelectorAll(".mrcopy");
+  copyButtons.forEach((copyButton) => { copyButton.addEventListener("click", copyMermaid); });
+</script>
+</body>
+</html>

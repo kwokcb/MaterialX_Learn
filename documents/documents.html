@@ -1,0 +1,333 @@
+<html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="min-vh-100">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest" }); </script>
+
+  <!-- Navigation  -->
+  <nav class="navbar sticky-top navbar-expand-lg bg-light">
+    <div class="container-md container-fluid">
+      <a class="navbar-brand" href="#">
+        <h4><img src="images/MaterialXLogo2KWhite.png" alt="MaterialX Learn" class="d-inline-block align-text-top"
+            width="60">
+          MaterialX Learn</h4>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+        aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenuContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="../index.html" role="button">
+              Home
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Learn
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="nodes_and_nodegraphs.html">
+                  Nodes and Graphs
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="node_definitions.html">
+                  Node Definitions
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="">
+                  Documents (WIP)
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Reference
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="definitions/definitions_by_group.html">
+                  Library (By Group)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="definitions/all_definitions.html">
+                  Library (All)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
+                  C++ API
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Tools</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="mermaidChecker.html">
+                  Graph Visualizer
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Develop</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="python_MaterialX.html">
+                  MaterialX Python
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../pymaterialx/Basics_Notebook.html">
+                  Tutorials and Examples (preview)
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Workflows</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="https://github.com/kwokcb/glTF_MaterialX" target="_blank">
+                  Khronos glTF Interop
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Design</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="design.html">
+                  UX Design
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="" role="button">
+              About
+            </a>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid ">
+    <div class="row flex-nowrap">
+      <div class="col-12 p-4 pt-2 pl-2">
+
+        <h2>Documents</h2>
+        <img src="images/tools.svg">
+        This area is under construction
+
+        <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-properites-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-properites" type="button" role="tab" aria-controls="pills-properites"
+              aria-selected="true">Properties</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link " id="pills-mgmt-tab" data-bs-toggle="pill" data-bs-target="#pills-mgmt"
+              type="button" role="tab" aria-controls="pills-mgmt" aria-selected="false">File Management</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link " id="pills-interop-tab" data-bs-toggle="pill" data-bs-target="#pills-interop"
+              type="button" role="tab" aria-controls="pills-interop" aria-selected="false">Interop</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link " id="pills-upgrade-tab" data-bs-toggle="pill" data-bs-target="#pills-upgrade"
+              type="button" role="tab" aria-controls="pills-upgrade" aria-selected="false">File Compatibility /
+              Upgrades</button>
+          </li>
+        </ul>
+
+        <!-- Properties -->
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-properites" role="tabpanel"
+            aria-labelledby="pills-properites-tab" tabindex="0">
+
+            <div class="card border-primary border mb-4">
+              <div class="card-body">
+                <div class="btn btn-lg btn-outline-primary">Properties</div>
+                <p>
+                  Documents are top level containers of all 'elements' supported by MaterialX. This
+                  can be roughly split up into two distinct categories:
+                <ul>
+                  <li>Materials and Shader Graphs: This includes all nodes, definitions, implementations and shader
+                    translation</li>
+                  <li>Geometric binding: This includes looks, material assignments, and application bindings</li>
+                </ul>
+                There is no organization or partition of elements though separation of content into the two categories
+                is generally useful,
+                especially as bindings overlap other systems such as USD.
+                </p>
+                <p>
+                  Some important properties that are maintained at the document level include:
+                <ol>
+                  <li><b>Version</b>: This is the MaterialX release version is independent definition versions
+                  </li>
+                  <li><b>Namespace</b> : This can be used to partition content. Namespaces must be handled properly when dealing with 
+                    multiple documents at runtime.
+                  </li>
+                  <li><b>Colorspace</b> : This can be used to define the working color space, but as with namespaces
+                    care must be handled carefully when dealing with multiple document usage at runtime.
+                  </li>
+                  <li><b>Source URI</b> : References to where content originated from can be specified here, and is
+                    useful as a partitioning
+                    mechanism.
+                  </li>
+                </ol>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- File Management -->
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show" id="pills-mgmt" role="tabpanel" aria-labelledby="pills-mgmt-tab" tabindex="0">
+
+            <div class="card border-primary border mb-4">
+              <div class="card-body">
+                <div class="btn btn-lg btn-outline-primary">Document Import</div>
+                <p></p>
+                <b>
+                  Single Document Model
+                </b>
+                <p>
+                  Even though any number of documents may be kept in files for interopability,
+                  a single "working" document is generally required at runtime. All main interfaces work under
+                  the premise that:
+                <ul>
+                  <li>content is cumulative (appended)</li>
+                  <li>some validity checks are performed at read time</li>
+                  <li>duplicate elements are disallowed and thus skipped. Incomplete reading can thus occur.</li>
+                  <li>non-categorized nodes are invalid. i.e. There is now way to preserve nodes which are of "unknown"
+                    category, and again reading can be "lossy". What this practically means is that at a minimum
+                    a node definition is required to read into the document before-hand.
+                  </li>
+                </ul>
+                <b>Interfaces</b>
+                <ul>
+                  <li>Reading interfaces: Though MaterialX has been built to allow any format to perform reading
+                    the core distribution comes with XML format support. Little validity checking is performed
+                    here through duplicate checking is enforced.
+                  </li>
+                  <li>Copy interfaces: These interfaces may be used at the child level for various purposes.
+                    Via the document interface, this performs a replacement.
+                  </li>
+                  <li>
+                    Import interfaces: This is currently specialized for reading in node definition libraries and
+                    include files,
+                    and performs per element copying into the target main document.
+                    <p>For documents which have namespaces, these namespaces are
+                      essentially "flattened" so that individual elements are namespace qualifiers added to their
+                      identifiers.
+                      The semantic API naming to indicate that an API supports namespaces is "qualified". For example,
+                      'getQualifiedName()' vs 'getName()'.'
+                    </p>
+                    
+                  </li>
+                  
+                </ul>
+                <p>Currently the only "inclusion" mechanism is via XML include directives.
+                </p>
+
+                <div class="btn btn-lg btn-outline-primary">File Referencing / File "Collections"</div>
+                <br>
+                <p>
+                  As there is no current concept of one document referencing another document at runtime, it can
+                  be hard to determine where content originates from once "merged" into the main document.
+                  One key way to keep track of where content comes from is the fact at import always "tags" imported
+                  elements with their original URI. (sourceURI). This can be useful for a various workflows including
+                  exclusion of these elements at write time. An example can be to exclude
+                  library definitions from node instances. At runtime, these tags can be used for instance to
+                  enforce additional user rules such as being non-editable, or non-deletable.
+                </p>
+                <p>
+                  For node definitions, there is currently no formal construct for a "collection" (set) of documents
+                  to be used as a "library" / "module" / "package" etc and is thus up to the user
+                  to overlay semantics to partition content.
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interop -->
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show" id="pills-interop" role="tabpanel" aria-labelledby="pills-interop-tab"
+            tabindex="0">
+
+            <div class="card border-primary border mb-4">
+              <div class="card-body">
+                <div class="btn btn-lg btn-outline-primary">Interoperability</div>
+                <p>
+                  <img src="images/tools.svg">
+                  Forth-coming...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compatibility -->
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show" id="pills-upgrade" role="tabpanel" aria-labelledby="pills-upgrade-tab"
+            tabindex="0">
+
+            <div class="card border-primary border mb-4">
+              <div class="card-body">
+                <div class="btn btn-lg btn-outline-primary">Compatibility and Upgrades</div>
+                <p>
+                  <img src="images/tools.svg">
+                  Forth-coming...
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

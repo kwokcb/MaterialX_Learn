@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="css/style.css">
+
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="min-vh-100">
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+	<script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest" }); </script>
+
+<!-- Navigation  -->
+<nav class="navbar sticky-top navbar-expand-lg bg-light">
+    <div class="container-md container-fluid">
+      <a class="navbar-brand" href="#">
+        <h4><img src="images/MaterialXLogo2KWhite.png" alt="MaterialX Learn"
+            class="d-inline-block align-text-top" width="60">
+          MaterialX Learn</h4>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+        aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenuContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+			<li class="nav-item dropdown">
+				<a class="nav-link" href="../index.html" role="button">
+				  Home
+				</a>
+			  </li>	  
+			<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Learn
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="nodes_and_nodegraphs.html">
+                  Nodes and Graphs
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="node_definitions.html">
+                  Node Definitions
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="documents.html">
+                  Documents (WIP)
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Reference
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="definitions/definitions_by_group.html">
+                  Library (By Group)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="definitions/all_definitions.html">
+                  Library (All)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
+                  C++ API
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Tools</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="mermaidChecker.html">
+                  Graph Visualizer
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Develop</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="python_MaterialX.html">
+                  MaterialX Python
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../pymaterialx/Basics_Notebook.html">
+                  Tutorials and Examples (preview)
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Workflows</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="https://github.com/kwokcb/glTF_MaterialX" target="_blank">
+                  Khronos glTF Interop
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Design</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="design.html">
+                  UX Design
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="" role="button">
+              About
+            </a>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+	
+	<div class="container-fluid ">
+		<div class="row flex-nowrap">
+			<div class="col-12 p-4 pt-2 pl-2">
+				<div class="card border-primary border mb-4">
+					<div class="card-body">
+
+
+						<h3 id="python-materialx-in-visual-studio-code">Python MaterialX</h3>
+						<p>The MaterialX distribution comes with a set of Python sub-modules for editing documents, code
+							generation, and rendering. The sub-modules correspond to the C++ libraries which also ship
+							releases.
+						</p>
+						<p>
+							Users can download releases from
+							<a href="https://github.com/AcademySoftwareFoundation/MaterialX/releases/" target="_black">
+								here</a> or use custom builds. At time of writing, <b>1.38.7</b> is the minimum
+							required version.
+						</p>
+						<p> For working locally with MaterialX, we will using Visual Studio Code
+							and assume basic understanding of Python.
+							Within this site, various examples will be used. 
+							<!-- This code can be found within the workspace
+							found here: <a href="../pymaterialx">folder</a> -->
+						</p>
+						<h5 id="virtual-environment-setup">Virtual Environment Setup</h5>
+						<p>The following basic requirements are:
+						<p>
+						<ul>
+							<li>Installation of a version of Python which is compatible with the version used to produce
+								the
+								MaterialX modules.
+							</li>
+							<li>Installation of the VSCode Python extension with the interpreter referencing the
+								installed version.
+							</li>
+							<li>Setup of a virtual environment following the instructions found <a
+									href="https://code.visualstudio.com/docs/python/environments"
+									target="_blank">here</a>. Basically:
+								<ul>
+									<li> <code> ⌘/Ctrl+Shift+P</code> can be used to run the command
+										<code>Python: Create Environment</code>.
+									</li>
+									<li>Choosing to create a virtual environment (vs a <code>Conda</code> environment),
+										(Again choose the appropriate Python interpreter).</p>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						</p>
+						<p>Once setup a <em>.venv</em> folder will be created within the workspace.
+							Under this Python packages can be added or removed as needed.
+							To this the MaterialX modules need to be added.</p>
+						
+
+						<h5 id="adding-materialx-modules">Adding MaterialX Modules</h5>
+						<p>We will use a simple example file called <a href="../pymaterialx/hello_materialx.py" download> 
+								hello_materialx.py</a>.
+							Add this file to your workspace and attempt to run it.</p>
+						<p>Running this file will return an error if the MaterialX modules are not added yet.</p>
+						<pre class="hljs"><code><div>import MaterialX as mx
+ModuleNotFoundError: No module named 'MaterialX'
+</div></code></pre>
+						<p>At the time of righting MaterialX is not available to download and install using
+							<code>pip</code> (PySide),
+							and thus must be installed
+							manually. The easiest way to do this is to go where MaterialX is installed and run the local
+							setup from within the workspace terminal. For example go to:
+						</p>
+						<pre class="hljs"><code><div>&lt;install location&gt;/python
+</div></code></pre>
+						<p>and run the setup script</p>
+						<pre class="hljs"><code><div>python setup.py install
+</div></code></pre>
+						<p>This will add the MaterialX modules to the virtual environment under
+							<em>.venv/Lib/site-packages</em>.
+							The modules installed will depend on the ones found in the installation area.
+						</p>
+						<img src="./images/VSCode_PythonModules.png" style="width: 20%">
+						<p>Other dependent packages can be added using <code>pip</code> or other means as necessary.</p>
+
+						<h5 id="test-example">Test Example</h5>
+						<p>Importing <code>MaterialX</code> will include all sub-modules.
+						<pre class="hljs"><code>import MaterialX as mx</code></pre>
+						</p>
+						<p>At a minimum a document must be created as all operations are based on documents or document
+							contents.</p>
+						<p>Thus to test that the environment works properly the test example creates a document checks
+							the
+							version of
+							MaterialX.</p>
+						<pre class="hljs"><code><div>doc = mx.createDocument()
+print(<span class="hljs-string">'Hello MaterialX (Version %s)'</span> % doc.getVersionString())    
+</div></code></pre>
+
+						<h5 id="minimal-%22useful%22-example">Minimal &quot;Useful&quot; Example</h5>
+						<p>To do any useful operations, at least the standard MaterialX libraries need to be loaded.
+							The <a href="../pymaterialx/load_libraries.py" download>load_libraries.py</a>
+							example shows this minimal setup.</p>
+						Note that the environment variable <b>MATERIALX_SEARCH_PATH</b> can be set to
+						the appropriate search paths to find libraries and include files. Programmatically
+						the <a href="https://materialx.org/docs/api/_file_8h.html"
+							target="_blank">getEnvironmentPath</a> function can be used to retrieve this value.
+						</b>
+						<code><pre>
+import MaterialX as mx
+
+# Load in libraries
+libraryPath = mx.FilePath('libraries')
+stdlib = mx.createDocument()
+searchPath = mx.FileSearchPath()
+libFiles = mx.loadLibraries([ libraryPath ], searchPath, stdlib)
+
+# Create main document and import the library document
+doc = mx.createDocument()
+doc.importLibrary(stdlib)
+
+# Print out the names of the library files loaded
+for libFile in libFiles:
+  print('Loaded library file: %s' % libFile)
+</code></pre>
+						<p>Note that the &quot;standard&quot; libraries are in the <code>libraries</code> folder in
+							the installation location. The key interfaces used are:</p>
+						<ul>
+							<li>the <code>loadLibraries</code> utility to create a library document.</li>
+							<li>the Document <code>importLibrary</code> method to import the libraries into
+								a working / main document.</li>
+						</ul>
+
+						<h5>Learning Notebooks</h5>
+						<img src="./images/VSCode_Environment.png" style="width: 80%"">
+						<p>A series of Jupyter learning notebooks is in progress. Each assumes a Python environment 
+							and the installation of the MaterialX Python libraries. For now this has only been
+							set up for local usage.</p>
+						<p>Here is a sample WIP "basics" <a href="../pymaterialx/Basics_Notebook.ipynb" download>
+						notebook</a>. The preview for this is:
+							<a href="../pymaterialx/Basics_Notebook.html" target="_blank">here</a></p>
+					</div>
+				</div>
+			</div>
+</body>
+
+</html>

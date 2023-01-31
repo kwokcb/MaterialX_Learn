@@ -22,6 +22,9 @@ a:hover {
     background: rgb(239, 239, 239);
 }
 
+.nav-item, .dropdown-item {
+  font-size: 80%;
+}
 
 .col-form-label-sm, .form-control, .card-body, .btn {
     font-size: 80%; 
@@ -30,6 +33,10 @@ a:hover {
 
 body, .form-control, .col-form-label-sm, .card-body, .btn{
     font-family: 'Roboto', sans-serif;
+}
+
+.custom{
+  background-color: rgb(255, 253, 245);
 }
 
 
@@ -72,6 +79,25 @@ body, .form-control, .col-form-label-sm, .card-body, .btn{
     height: 3rem;
   }
 
+
+  /* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+    margin-bottom: 1rem;
+  }
+  /* Since positioning the image, we need to help out the caption */
+  .carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+  }
+  
+  /* Declare heights because of positioning of img element */
+  .carousel-item {
+    height: 20rem;
+  }
+  
 /*
 <link rel="stylesheet" href="../images/style.css">
 
