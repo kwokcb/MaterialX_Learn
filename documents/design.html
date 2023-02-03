@@ -24,7 +24,7 @@
     <nav class="navbar sticky-top navbar-expand-lg bg-light">
         <div class="container-md container-fluid">
             <a class="navbar-brand" href="#">
-                <h4><img src="images/MaterialXLogo2KWhite.png" alt="MaterialX Learn" class="d-inline-block align-text-top"
+                <h4><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="d-inline-block align-text-center"
                         width="60">
                     MaterialX Learn</h4>
             </a>
@@ -110,7 +110,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="../pymaterialx/Basics_Notebook.html">
+                                <a class="dropdown-item" href="jupyter_example.html">
                                     Tutorials and Examples (preview)
                                 </a>
                             </li>
@@ -138,11 +138,16 @@
                                     UX Design
                                 </a>
                             </li>
+                            <li>
+                                <a class="dropdown-item" href="implementation.html">
+                                    Implementation
+                                </a>
+                            </li>
                         </ul>
                     </li>
     
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="" role="button">
+                        <a class="nav-link" href="about.html" role="button">
                             About
                         </a>
                     </li>
@@ -195,11 +200,6 @@
                             data-bs-target="#pills-userint" type="button" role="tab" aria-controls="pills-userint"
                             aria-selected="false">Node Library and Node Cards</button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-implementation-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-implementation" type="button" role="tab" aria-controls="pills-implementation"
-                            aria-selected="false">Implementation</button>
-                    </li>
                 </ul>
 
                 <div class="tab-content" id="pills-tabContent">
@@ -209,24 +209,25 @@
                         <div class="card border-primary border mb-4">
                             <div class="card-body">
                             <div class="btn btn-lg btn-outline-primary">Sidebar Functionality and Organization</div>
-                                <p>The design focus was to present technical information in a consistent and concise format for users.
+                                <p>The design focus was to present technical information in a consistent and concise format.
                                 <ul>
                                     <li>Roboto was chosen as the font as it is easily legible on different screen formats and resolutions</li>
                                     <li>Tabs and buttons are blue and rounded in contrast to the plain background. Tabs are distinct and easily selectable. </li>
                                     <li> Areas are highlighted blue to represent currently selected sections</li>
-                                    <li>Standard navigational options through a fixed navigation bar and a toggleable sidebar to browse node definitions</li>
+                                    <li>Standard navigational options through a fixed navigation bar and a toggleable sidebar</li>
                                     <li>Maintaining WCAG accessiblity guidelines for color contrast between text and background colors</li>
                                 </ul>
                                 </p>
                                 
                                 <p>
-                                    Shown below is the style guide for this website. The guide outlines commonly used color variations, fonts, components and icons used throughout the site.
+                                    Shown below is the style guide and color accessiblity test for this website. The guide outlines commonly used color variations, fonts, components and icons used throughout the site.
                                     <br>
                                     
                                 </p>
                                 
                                 <div>
                                     <img src="./images/Style Guide.png" style="width: 40%;">
+                                    <img src="./images/Color Test.png" class="mx-auto-d-block" style="width: 40%;">
                                 </div>
                             </div>
                         </div>
@@ -243,14 +244,14 @@
                                 <div class="btn btn-lg btn-outline-primary">Homepage Organization and Contents</div>
                                 <p>The design focus for the homepage was to summarize each website section's purpose and to encourage users to navigate different areas of the site.
                                 <ul>
-                                    <li>A large gallery headline draws user's attention to a featured section. The gallery images rotate at set intervals to keep users attention</li>
-                                    <li>Featured articles are situated below the introduction and change frequently </li>
-                                    <li>Website sections are located within a scrollable responsive container to make navigation easier on mobile or smaller screen sizes</li>
+                                    <li>A large gallery headline will draw user attention to featured sections. The gallery images will rotate at set intervals to keep users attention</li>
+                                    <li>Featured articles will be situated below the introduction section and change frequently </li>
+                                    <li>Website sections are located within a responsive container to make navigation easier on mobile or smaller screen sizes</li>
                                 </ul>
                                 </p>
                                 
                                 <p>
-                                    Shown below is the homepage. It is divided into the headline gallery, introduction, features articles and website sections
+                                    Shown below is the current homepage. It is divided into the introduction, and website sections. The gallery and featured articles will be addded at a later date.
                                     <br>
                                     
                                 </p>
@@ -258,9 +259,7 @@
                                 <div>
                                     <img src="./images/home.png" style="width: 40%;">
                                 </div>
-                                <div>
-                                    <img src="./images/home2.png" style="width: 40%;">
-                                </div>
+                                
                             </div>
 
                             
@@ -275,13 +274,13 @@
                         <div class="card border-primary border mb-4">
                             <div class="card-body">
                                 <div class="btn btn-lg btn-outline-primary">Navigation Bar Organization</div>
-                                <p>The navigation bar is fixed to the top of the page to be accessible at any time.</p>
-                                <p> Homepage sections are split into onboarding content, node definitions, utilities and articles. Sections have clickable dropdowns denoted by an downwards arrow to access other sub categories.
+                                <p>The navigation bar is fixed to the top of the page so that is accessible at any time.</p>
+                                <p> Navbar sections are split into areas such as learning content, reference information, tools, and design rationale. Sections have clickable dropdowns denoted by an downwards arrow to access sub categories.
                                 
                                 </p>
-                                <p>The togglable sidebar for node definitions was added to accomdate smaller screen sizes or window sizes. Users can click the sidebar button to minimize or expand this section. A sidebar icon was added for clarity and visual reference</p>
+                                <p>The togglable sidebar  was added to accomdate smaller screen or window sizes when reading about different node definitions. Users can click the sidebar button icon in the navbar to expand/minimize the sidebar.</p>
                                 <div>
-                                    <img src="./images/navbar.png" style="width: 14%;">
+                                    <img src="./images/navbar.png" style="width: 40%;">
                                 </div>
                             </div>
                         </div>
@@ -296,13 +295,13 @@
                             <div class="card-body">
 
                                 <div class="btn btn-lg btn-outline-primary">Sidebar Functionality and Organization</div>
-                                <p>The sidebar was created to make it easier to browse and select the many node groups and definitions on the site.</p>
-                                <p>Various designs were experimented with such as collapsing the sidebar to the top when the screen width decreases. Thie design was scrapped as the fixed elements did not resize responsively.</p>
-                                <p> The current sidebar is fixed to the left side and togglable through a sidebar button in the navbar. Features include:</p>
+                                <p>The sidebar was created to make it easier to browse the many node definitions on the site.</p>
+                                <p>Various layouts were experimented with such as collapsing the sidebar to the top of the page when the screen width decreases. This design was scrapped as the sidebar elements did not resize responsively.</p>
+                                <p> The current sidebar is fixed to the left side and is togglable through a sidebar button in the navbar. </p>Features include:
                                     <ul>
                                         <li>Highlighted menu items are blue</li>
-                                        <li>Two level menus organized by all node groups > node group > individual node definitions </li>
-                                        <li>The search bar at the top of the sidebar allows you to filter through different node groups. Users type into the search field and press enter to filter out results.</li>
+                                        <li>Two level menus organized by node groups -> individual node definitions </li>
+                                        <li>The search bar at the top of the sidebar allows you to filter through different node groups. Users type into the search field and press enter to filter out node groups.</li>
                                     </ul>
                                 </p>
                                     
@@ -1518,65 +1517,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="tab-content" id="pills-tabContent3">
-                    <div class="tab-pane fade show " id="pills-implementation" role="tabpanel"
-                        aria-labelledby="pills-implementation-tab">
-
-                        <div class="card border-primary border mb-4">
-                            <div class="card-body">
-                                <p>Insight into how this site was generated is shown here to demonstrate how
-                                    a user can enhance documentation and learning workflows for MaterialX by adding tools on top of MaterialX itself.
-                                    The following color coding is used in the diagrams provided:
-                                    <ul>
-                                        <li>Red: Items not available in core or not started yet</li>
-                                        <li>Orange: Items in progress</li>
-                                        <li>Blue: Items which are available as part of MaterialX core</li>
-                                        <li>Green: Items available as additional tools</li>
-                                    </ul>
-                                </p>
-                                <div class="btn btn-lg btn-outline-primary">Documentation Generation</div>
-                                <p>
-                                    The following diagram outlines the setup for generating documentation from MaterialX. The main utilities 
-                                    were written using the Python wrappers for MaterialX:
-                                    <ul>
-                                        <li>Diagram generation (mxgraph): This can produce Mermaid or GraphViz dot diagrams based on MaterialX input. The 
-                                            standard library graphs are generated this way, but any MaterialX graph can be used as input.
-                                        </li>
-                                        <li>
-                                            Sampling graphs for rendering. All definitions in the MaterialX library had instance graphs created. These
-                                            were fed into `test-render` from the OSL core distribution, but any renderer can be used.
-                                        </li>
-                                        <li>Documentation and indexing generation (mxdoc). This extracted al data from the MaterialX definition
-                                            libraries to generate all library pages. Both Markdown and HTML output is supported.
-                                            <p>Dependents such as Bootstrap, Mermaid and Google Fonts
-                                            are automatically included. </p>
-                                            <p>Additional Javascript logic is added as part of the generation process.
-                                        Interactive Mermaid graph (svg) generation from text was added as the performance
-                                            cost to generate all hundereds of graphs can slow down page load speed. The same utility is
-                                            available as a standalone tool.</p>                                           
-                                        </li>
-                                    </ul>
-                                    These utilities are acessible from the "Tools" section of this site and added to MaterialX core distribution.
-                                    <img src="./images/generative_docs.svg">                                    
-                                </p>
-                                <div class="btn btn-lg btn-outline-primary">Learning Environment</div>
-                                <p>
-                                    <p>
-                                    For API learning, the proposed setup is shown below. This initiative is still under review
-                                    but the intent will be to host interactive tutorials using the MaterialX Python via
-                                    Jupyter notebooks. A potential hosting target would be Google Colab. The hope is to connect
-                                    with USD or other standards via Python examples.  
-                                    </p>
-                                    <p>
-                                        A parallel track is possible with Javascript, with access to the Javascript API via npm.
-                                    </p>
-                                    <img src="./images/learning_setup.svg">                                                                        
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>                                            
+                                                        
             </div>
         </div>
     </div>

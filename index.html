@@ -17,10 +17,6 @@
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
 
-  <script>
-    new SimpleBar(document.querySelector('div'));
-  </script>
-
 </head>
 
 <body>
@@ -28,9 +24,9 @@
   <nav class="navbar sticky-top navbar-expand-lg text-bg-light">
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="#">
-        <h4><img src="documents/images/MaterialXLogo2KWhite.png" alt="MaterialX Learn"
-            class="d-inline-block align-text-top" width="60">
-          MaterialX Learn</h4>
+        <h5><img src="documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            class="d-inline-block align-text-center" width="60"> MaterialX Learn
+          </h5>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
         aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -106,7 +102,7 @@
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="pymaterialx/Basics_Notebook.html">
+                <a class="dropdown-item" href="documents/jupyter_example.html">
                   Tutorials and Examples (preview)
                 </a>
               </li>
@@ -134,11 +130,16 @@
                   UX Design
                 </a>
               </li>
+              <li>
+                <a class="dropdown-item" href="documents/implementation.html">
+                  Implementation
+                </a>
+              </li>
             </ul>
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link" href="" role="button">
+            <a class="nav-link" href="documents/about.html" role="button">
               About
             </a>
           </li>
@@ -250,15 +251,16 @@
     <!-- 
     <div class="p-4 p-md-5 mb-4 rounded text-bg-dark" style="background-image: url('documents/images/hair_material.png');"
   ../Substance/images/trees-snapshot.png -->
-    <div class="p-4 p-md-5 mb-4 rounded text-bg-dark"
-      style="background-image: url('documents/images/trees-snapshot.png');">
+    <div class="p-2 p-md-4 mb-4 rounded text-bg-dark"
+      style="background-image: url('documents/images/logo3d_dark.png');">
       <div class="col-md-6 px-0">
         <h2 class="display-6 fst-italic">MaterialX Learn</h2>
-        <div class="col-md-8">
+        <div class="col-md-12">
         </div>
         <p class=" fs-6 fst-italic my-3">You have reached the home of "MaterialX Learn". </p>
         <p>The intent of this site is to provide learning materials as well as complimentary utilities for working with
-          <a href="materialx.org">MaterialX</a>
+          <br>
+          <b><a href="https://materialx.org">MaterialX</a></b>
         </p>
         <!-- <p class="lead mb-0"><a href="#" class="text-white fw-bold">About Us...</a></p>-->
       </div>
@@ -305,36 +307,30 @@
   -->
   </main>
 
-  <div class="container px-4 py-5" id="hanging-icons">
+  <div class="container px-4 py-4" id="hanging-icons">
 
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3 bg-light vh-100 d-flex flex-row overflow-auto">
+    <div class="row ps-5 pe-4 row-cols-1 row-cols-sm-3 bg-light d-flex flex-row overflow-auto">
 
-      <div class="col d-flex align-items-start">
-        <div
-          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
-        </div>
-
+      <div class="col pt-3 pb-3">
         <div>
           <img src="documents/images/Sample_ShaderBall.png" alt="Introduction"
-            class="rounded-4 border border-white img-fluid w-50 pb-2">
-          <h3 class="fs-3 pb-2">Introduction</h3>
-          <p>A brief introduction to MaterialX and this site</p>
-          <a href="#" class="btn btn-primary">
+            class="rounded-4 border border-white img-fluid w-50 ">
+            <p><h3 class="fs-5">Introduction</h3>
+          A brief introduction to MaterialX and the features of this website</p>
+          <a href="#" class="btn btn-sm btn-outline-primary">
             Learn More
           </a>
         </div>
       </div>
-      <div class="col d-flex align-items-start">
-        <div
-          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
-        </div>
+      
+      <div class="col pt-3 pb-3">
         <div>
           <img src="documents/images/Sample_ShaderBall_Nickel.png" alt="Learn"
-            class="rounded-4 border border-white img-fluid w-50 pb-2">
-          <h3 class="fs-3 pb-2">Learn</h3>
-          <p>Learn from the basics to advanced topics like color management</p>
+            class="rounded-4 border border-white img-fluid w-50 ">
+          <p><h3 class="fs-5 ">Learn</h3>
+          Learn from the basics to advanced topics like color management</p>
           <div class="dropdown">
-            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+            <button class="btn btn-sm btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
               data-bs-toggle="dropdown" aria-expanded="false">
               Learn More
             </button>
@@ -346,41 +342,33 @@
           </div>
         </div>
       </div>
-      <div class="col d-flex align-items-start">
-        <div
-          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
-        </div>
+      <div class="col pt-3 pb-3">
         <div>
           <img src="documents/images/Sample_ShaderBall_Brick.png" alt="Bootstrap"
-            class="rounded-4 border border-white img-fluid w-50 pb-2">
-          <h3 class="fs-3 pb-2">Workflows</h3>
-          <p>Articles and helpers related to various workflows.</p>
+            class="rounded-4 border border-white img-fluid w-50 ">
+            <p><h3 class="fs-5 ">Workflows</h3>
+          Contains articles and helpers related to various workflows.</p>
           <div class="dropdown">
-            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+            <button class="btn btn-sm btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
               data-bs-toggle="dropdown" aria-expanded="false">
               Learn More
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li><a class="dropdown-item" href="https://github.com/kwokcb/glTF_MaterialX" target="_blank">Khronos PBR / glTF
                   Interop</a></li>
-              <li><a class="dropdown-item" href="">OCIO Interop (coming)</a></li>
-              <li><a class="dropdown-item" href="">Adobe Interop (coming)</a></li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="col d-flex align-items-start">
-        <div
-          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
-        </div>
+      <div class="col pt-3 pb-3">
         <div>
-          <img src="documents/images/sample_graph.svg" alt="Bootstrap"
-            class="rounded-4 border border-white img-fluid w-50 pb-2">
-          <h3 class="fs-3 pb-2">Tools</h3>
-          <p>Tools to aid with manipulating and enhancing MaterialX.</p>
+          <img src="documents/images/graph.png" alt="Bootstrap"
+            class="rounded-4 border border-white img-fluid w-50 ">
+            <p><h3 class="fs-5">Tools</h3>
+          Tools to aid with manipulating and enhancing MaterialX.</p>
           <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
               data-bs-toggle="dropdown" aria-expanded="false">
               Learn More
             </button>
@@ -392,23 +380,20 @@
         </div>
       </div>
 
-      <div class="col d-flex align-items-start">
-        <div
-          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
-        </div>
+      <div class="col pt-3 pb-3">
         <div>
-          <img src="documents/images/VSCode_Environment.png" alt=""
-            class="rounded-4 border border-white img-fluid w-50 pb-2">
-          <h3 class="fs-3 pb-2">Develop</h3>
-          <p>Developing using MaterialX via examples and tutorials</p>
+          <img src="documents/images/VSCode_Environment2.png" alt="Bootstrap"
+            class="rounded-4 border border-white img-fluid w-50 ">
+            <p><h3 class="fs-5 ">Develop</h3>
+          Developing using MaterialX through examples and tutorials</p>
           <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
               data-bs-toggle="dropdown" aria-expanded="false">
               Learn More
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li><a class="dropdown-item" href="documents/python_MaterialX.html">Python Environment</a></li>
-              <li><a class="dropdown-item" href="./pymaterialx/Basics_Notebook.html">Basics Book (preview) </a></li>
+              <li><a class="dropdown-item" href="documents/jupyter_example.html">Basics Book (preview) </a></li>
             </ul>
           </div>
           </a>
@@ -416,36 +401,34 @@
       </div>
 
 
-      <div class="col d-flex align-items-start">
-        <div
-          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
-        </div>
+      <div class="col pt-3 pb-3 ">
         <div>
           <img src="documents/images/Design_Icon.png" alt="Bootstrap"
-            class="rounded-4 border border-black img-fluid w-50 pb-2">
-          <h3 class="fs-3 pb-2">Design</h3>
-          <p>User design and architecture, and MaterialX document generation.</p>
+            class="rounded-4 border border-black img-fluid w-50 ">
+            <p><h3 class="fs-5 ">Design</h3>
+          UX and implementation architecture and design for the website</p>
           <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
               data-bs-toggle="dropdown" aria-expanded="false">
               Learn More
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li><a class="dropdown-item" href="./documents/design.html">UX Design</a></li>
-            </ul>
+              <li><a class="dropdown-item" href="./documents/implementation.html">Implementation</a></li>
+            </ul>            
           </div>
         </div>
       </div>
 
       <!--
-      <div class="col d-flex align-items-start">
+      <div class="col d-flex ">
         <div
-          class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 pt-2 flex-shrink-0 me-3">
+          class="icon-square text-bg-light d-inline-flex  justify-content-center fs-5 pt-2 flex-shrink-0 me-3">
         </div>
         <div>
           <img src="documents/images/unsplash-photo-3.jpg" alt="Bootstrap"
-            class="rounded-4 border border-white img-fluid w-50 pb-2">
-          <h3 class="fs-3 pb-2">Placeholder</h3>
+            class="rounded-4 border border-white img-fluid w-50 ">
+          <h3 class="fs-5 ">Placeholder</h3>
           <p>"Behind the scenes" details about how MaterialX was used to generate this site</p>
           <a href="#" class="btn btn-primary">
             Learn More
@@ -458,9 +441,9 @@
 
     <!--
   <div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <footer class="d-flex flex-wrap justify-content-between  py-3 my-4 border-top">
       <a href="#">
-        <img src="documents/images/MaterialXLogo2KWhite.png" alt="MaterialX Learn" class="d-inline-block align-text-top"
+        <img src="documents/images/logo3d_2_small.png" alt="MaterialX Learn" class="d-inline-block align-text-center"
           width="60">
       </a>
       <p class="col-md ps-2 mb-0 text-muted">&copy; Material X Plus, Inc</p>
