@@ -18,13 +18,12 @@
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
   <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-  <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest" }); </script>
-
+  
   <!-- Navigation  -->
   <nav class="navbar sticky-top navbar-expand-lg bg-light">
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="#">
-        <h4><img src="images/MaterialXLogo2KWhite.png" alt="MaterialX Learn" class="d-inline-block align-text-top"
+        <h4><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="d-inline-block align-text-center"
             width="60">
           MaterialX Learn</h4>
       </a>
@@ -107,7 +106,7 @@
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="../pymaterialx/Basics_Notebook.html">
+                <a class="dropdown-item" href="jupyter_example.html">
                   Tutorials and Examples (preview)
                 </a>
               </li>
@@ -135,11 +134,16 @@
                   UX Design
                 </a>
               </li>
+              <li>
+                <a class="dropdown-item" href="implementation.html">
+                  Implementation
+                </a>
+              </li>
             </ul>
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link" href="" role="button">
+            <a class="nav-link" href="about.html" role="button">
               About
             </a>
           </li>
@@ -159,20 +163,20 @@
 
         <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-properites-tab" data-bs-toggle="pill"
+            <button class="top-toggle nav-link active" id="pills-properites-tab" data-bs-toggle="pill"
               data-bs-target="#pills-properites" type="button" role="tab" aria-controls="pills-properites"
               aria-selected="true">Properties</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link " id="pills-mgmt-tab" data-bs-toggle="pill" data-bs-target="#pills-mgmt"
+            <button class="top-toggle nav-link " id="pills-mgmt-tab" data-bs-toggle="pill" data-bs-target="#pills-mgmt"
               type="button" role="tab" aria-controls="pills-mgmt" aria-selected="false">File Management</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link " id="pills-interop-tab" data-bs-toggle="pill" data-bs-target="#pills-interop"
+            <button class="top-toggle nav-link " id="pills-interop-tab" data-bs-toggle="pill" data-bs-target="#pills-interop"
               type="button" role="tab" aria-controls="pills-interop" aria-selected="false">Interop</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link " id="pills-upgrade-tab" data-bs-toggle="pill" data-bs-target="#pills-upgrade"
+            <button class="top-toggle nav-link " id="pills-upgrade-tab" data-bs-toggle="pill" data-bs-target="#pills-upgrade"
               type="button" role="tab" aria-controls="pills-upgrade" aria-selected="false">File Compatibility /
               Upgrades</button>
           </li>
@@ -328,6 +332,11 @@
       </div>
     </div>
   </div>
+
+  <script src="js/mermaid_setup.js"></script>
+  <script>
+      monitor_mermaid_tabs()
+  </script>
 </body>
 
 </html>

@@ -6,11 +6,9 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
 </head>
 
 <body class="min-vh-100">
@@ -18,15 +16,13 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-    <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest" }); </script>
 
-<!-- Navigation  -->
 <!-- Navigation  -->
 <nav class="navbar sticky-top navbar-expand-lg bg-light">
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="#">
-        <h4><img src="images/MaterialXLogo2KWhite.png" alt="MaterialX Learn"
-            class="d-inline-block align-text-top" width="60">
+        <h4><img src="images/logo3d_2_small.png" alt="MaterialX Learn"
+            class="d-inline-block align-text-center" width="60">
           MaterialX Learn</h4>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
@@ -108,7 +104,7 @@
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="../pymaterialx/Basics_Notebook.html">
+                <a class="dropdown-item" href="jupyter_example.html">
                   Tutorials and Examples (preview)
                 </a>
               </li>
@@ -136,11 +132,16 @@
                   UX Design
                 </a>
               </li>
+              <li>
+                <a class="dropdown-item" href="implementation.html">
+                  Implementation
+                </a>
+              </li>
             </ul>
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link" href="" role="button">
+            <a class="nav-link" href="about.html" role="button">
               About
             </a>
           </li>
@@ -158,43 +159,34 @@
 
                 <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-library-tab" data-bs-toggle="pill"
+                        <button class="top-toggle nav-link active" id="pills-library-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-library" type="button" role="tab" aria-controls="pills-library"
                             aria-selected="true">Libraries</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-nodedef-tab" data-bs-toggle="pill"
+                        <button class="top-toggle nav-link " id="pills-nodedef-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-nodedef" type="button" role="tab" aria-controls="pills-nodedef"
                             aria-selected="false">Definitions</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-nodedefparam-tab" data-bs-toggle="pill"
+                        <button class="top-toggle nav-link " id="pills-nodedefparam-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-nodedefparam" type="button" role="tab"
                             aria-controls="pills-nodedefparam" aria-selected="false">Parameters and Attributes</button>
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Parameters and Attributes</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" data-bs-toggle="pill" data-bs-target="#pills-nodedefparam" >Parameters and Attributes</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Separated link</a></li>
-                            </ul>-->
                     </li>
 
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-impltarget-tab" data-bs-toggle="pill"
+                        <button class="top-toggle nav-link " id="pills-impltarget-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-impltarget" type="button" role="tab" aria-controls="pills-impltarget"
                             aria-selected="false">Implementations</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-apiaccess-tab" data-bs-toggle="pill"
+                        <button class="top-toggle nav-link " id="pills-apiaccess-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-apiaccess" type="button" role="tab" aria-controls="pills-apiaccess"
                             aria-selected="false">API</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-userint-tab" data-bs-toggle="pill"
+                        <button class="top-toggle nav-link " id="pills-userint-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-userint" type="button" role="tab" aria-controls="pills-userint"
                             aria-selected="false">Using the Library</button>
                     </li>
@@ -1805,6 +1797,11 @@
             </div>
         </div>
     </div>
+
+    <script src="js/mermaid_setup.js"></script>
+    <script>
+        monitor_mermaid_tabs()
+    </script>
 </body>
 
 </html>

@@ -15,97 +15,15 @@
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script> 
 <script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
 
-<script>
-    function filterTOC() {
-        var input, filter, ul, li, a, i;
-        input = document.getElementById("searchTOC");
-        filter = input.value;
-        console.log("Look for: ", filter)
-        li = document.querySelectorAll('.idx');
-        for (i = 0; i < li.length; i++) {
-            a = li[i];
-            if (a.innerHTML.match(filter)) {
-                if (filter.length > 0) {
-                    var parent = a.parentElement
-                    while (parent) {
-                        if (parent.className && parent.classList.contains("collapse")) {
-                            console.log("Show: ", parent)
-                            parent.classList.add("show");
-                        }
-                        parent = parent.parentElement;
-                    }
-                }
-                a.style.display = "";
-            }
-            else {
-                if (filter.length > 0)
-                    a.style.display = "none";
-                else
-                    a.style.display = "";
-            }
-        }
-    }
-
-    function filterOnEnter(event) {
-        if (event.code === 'Enter') {
-            event.preventDefault();
-            filterTOC();
-        }
-    };
-
-    function renderMermaid(event) {
-        buttonId = event.target.id;
-
-        var mermaidinput = document.getElementById(buttonId + "_mermaid_input");
-        var mermaidoutput = document.getElementById(buttonId + "_mermaid_output");
-        if (mermaidinput && mermaidoutput) {
-            const code = mermaidinput.textContent;
-            let generateDiagram = function (code) {
-                mermaidoutput.innerHTML = code;
-                mermaidoutput.hidden = false;
-            };
-            mermaid.render(buttonId + "_mermaid_output_rendered", code, generateDiagram);
-
-            var button = document.getElementById(event.target.id);
-            button.hidden = true;
-            button.remove;
-        }
-    }
-    
-    function copyMermaid(event)
-    {
-        buttonId = event.target.id;
-        inputId = buttonId.replace('mrcopy', 'mrender')        
-        var mermaidinput = document.getElementById(inputId + "_mermaid_input");
-        var text_to_copy = mermaidinput.innerHTML;
-        text_to_copy = text_to_copy.replace(/&gt;/g, ">")
-        text_to_copy = text_to_copy.replace(/&lt;/g, "<")
-        console.log(text_to_copy)
-        if (navigator.clipboard)
-        {
-            navigator.clipboard.writeText(text_to_copy).then(
-                function()
-                {
-                    console.log(text_to_copy)
-                    document.getElementById(buttonId).textContent = "Copied";
-                    setTimeout(function() { document.getElementById(buttonId).textContent = "Copy Graph"; }, 2500);
-
-                })
-            .catch(
-                function() {
-                    console.log("Failed to copy graph"); 
-            });
-        } 
-    }       
-</script>
+<script src="../js/definition_card_helpers.js"></script>
 
  <!-- Navigation  -->
  <nav class="navbar sticky-top navbar-expand-lg bg-light">
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="#">
-        <h4><img src="../images/MaterialXLogo2KWhite.png" alt="MaterialX Learn"
-            class="d-inline-block align-text-top" width="60">
-          MaterialX Learn</h4>
+        <h5><img src="../images/logo3d_2_small.png" alt="MaterialX Learn"
+            class="d-inline-block align-text-center" width="60">
+          MaterialX Learn</h5>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
         aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -186,7 +104,7 @@
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="../../pymaterialx/Basics_Notebook.html">
+                <a class="dropdown-item" href="../jupyter_example.html">
                   Tutorials and Examples (preview)
                 </a>
               </li>
@@ -214,6 +132,11 @@
                   UX Design
                 </a>
               </li>
+              <li>
+                <a class="dropdown-item" href="../implementation.html">
+                    Implementation
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -239,13 +162,13 @@
          <div class="container-md">
            <div id="sidebar" class="collapse show collapse-horizontal">
 <form class="d-flex" role="search">
- <input id="searchTOC" class="form-control me-2" type="text" placeholder="Search value" aria-label="Search">
+ <input id="searchTOC" class="form-control me-2" type="text" placeholder="Filter value" aria-label="Search">
     <div class="btn btn-outline-primary" onclick="return filterTOC()">Filter</div>
 </form>
-    <button class="btn btn-outline-primary border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nodeGroupIndex" aria-expanded="false" aria-controls="nodeGroupIndex"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> Node Groups </button>
+    <button class="btn btn-outline-primary border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nodeGroupIndex" aria-expanded="false" aria-controls="nodeGroupIndex"> <img src="../images/caret-right-fill.svg"> Node Groups </button>
 <div class="collapse show" id="nodeGroupIndex">
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_adjustment" aria-expanded="false" aria-controls="collapse_adjustment"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> adjustment </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_adjustment" aria-expanded="false" aria-controls="collapse_adjustment"> <img src="../images/caret-right-fill.svg"> adjustment </button>
 </div>
 <div class="collapse ps-5" id="collapse_adjustment">
 <div class="d-grid gap-0 col-6">
@@ -263,7 +186,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_application" aria-expanded="false" aria-controls="collapse_application"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> application </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_application" aria-expanded="false" aria-controls="collapse_application"> <img src="../images/caret-right-fill.svg"> application </button>
 </div>
 <div class="collapse ps-5" id="collapse_application">
 <div class="d-grid gap-0 col-6">
@@ -272,7 +195,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_channel" aria-expanded="false" aria-controls="collapse_channel"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> channel </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_channel" aria-expanded="false" aria-controls="collapse_channel"> <img src="../images/caret-right-fill.svg"> channel </button>
 </div>
 <div class="collapse ps-5" id="collapse_channel">
 <div class="d-grid gap-0 col-6">
@@ -288,7 +211,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_compositing" aria-expanded="false" aria-controls="collapse_compositing"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> compositing </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_compositing" aria-expanded="false" aria-controls="collapse_compositing"> <img src="../images/caret-right-fill.svg"> compositing </button>
 </div>
 <div class="collapse ps-5" id="collapse_compositing">
 <div class="d-grid gap-0 col-6">
@@ -313,7 +236,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_conditional" aria-expanded="false" aria-controls="collapse_conditional"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> conditional </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_conditional" aria-expanded="false" aria-controls="collapse_conditional"> <img src="../images/caret-right-fill.svg"> conditional </button>
 </div>
 <div class="collapse ps-5" id="collapse_conditional">
 <div class="d-grid gap-0 col-6">
@@ -324,7 +247,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_convolution2d" aria-expanded="false" aria-controls="collapse_convolution2d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> convolution2d </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_convolution2d" aria-expanded="false" aria-controls="collapse_convolution2d"> <img src="../images/caret-right-fill.svg"> convolution2d </button>
 </div>
 <div class="collapse ps-5" id="collapse_convolution2d">
 <div class="d-grid gap-0 col-6">
@@ -333,7 +256,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_geometric" aria-expanded="false" aria-controls="collapse_geometric"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> geometric </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_geometric" aria-expanded="false" aria-controls="collapse_geometric"> <img src="../images/caret-right-fill.svg"> geometric </button>
 </div>
 <div class="collapse ps-5" id="collapse_geometric">
 <div class="d-grid gap-0 col-6">
@@ -349,7 +272,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_global" aria-expanded="false" aria-controls="collapse_global"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> global </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_global" aria-expanded="false" aria-controls="collapse_global"> <img src="../images/caret-right-fill.svg"> global </button>
 </div>
 <div class="collapse ps-5" id="collapse_global">
 <div class="d-grid gap-0 col-6">
@@ -357,7 +280,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_light" aria-expanded="false" aria-controls="collapse_light"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> light </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_light" aria-expanded="false" aria-controls="collapse_light"> <img src="../images/caret-right-fill.svg"> light </button>
 </div>
 <div class="collapse ps-5" id="collapse_light">
 <div class="d-grid gap-0 col-6">
@@ -367,7 +290,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_material" aria-expanded="false" aria-controls="collapse_material"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> material </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_material" aria-expanded="false" aria-controls="collapse_material"> <img src="../images/caret-right-fill.svg"> material </button>
 </div>
 <div class="collapse ps-5" id="collapse_material">
 <div class="d-grid gap-0 col-6">
@@ -376,7 +299,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_math" aria-expanded="false" aria-controls="collapse_math"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> math </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_math" aria-expanded="false" aria-controls="collapse_math"> <img src="../images/caret-right-fill.svg"> math </button>
 </div>
 <div class="collapse ps-5" id="collapse_math">
 <div class="d-grid gap-0 col-6">
@@ -423,7 +346,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_organization" aria-expanded="false" aria-controls="collapse_organization"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> organization </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_organization" aria-expanded="false" aria-controls="collapse_organization"> <img src="../images/caret-right-fill.svg"> organization </button>
 </div>
 <div class="collapse ps-5" id="collapse_organization">
 <div class="d-grid gap-0 col-6">
@@ -431,7 +354,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_pbr" aria-expanded="false" aria-controls="collapse_pbr"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> pbr </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_pbr" aria-expanded="false" aria-controls="collapse_pbr"> <img src="../images/caret-right-fill.svg"> pbr </button>
 </div>
 <div class="collapse ps-5" id="collapse_pbr">
 <div class="d-grid gap-0 col-6">
@@ -481,7 +404,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural" aria-expanded="false" aria-controls="collapse_procedural"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> procedural </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural" aria-expanded="false" aria-controls="collapse_procedural"> <img src="../images/caret-right-fill.svg"> procedural </button>
 </div>
 <div class="collapse ps-5" id="collapse_procedural">
 <div class="d-grid gap-0 col-6">
@@ -489,7 +412,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural2d" aria-expanded="false" aria-controls="collapse_procedural2d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> procedural2d </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural2d" aria-expanded="false" aria-controls="collapse_procedural2d"> <img src="../images/caret-right-fill.svg"> procedural2d </button>
 </div>
 <div class="collapse ps-5" id="collapse_procedural2d">
 <div class="d-grid gap-0 col-6">
@@ -505,7 +428,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural3d" aria-expanded="false" aria-controls="collapse_procedural3d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> procedural3d </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural3d" aria-expanded="false" aria-controls="collapse_procedural3d"> <img src="../images/caret-right-fill.svg"> procedural3d </button>
 </div>
 <div class="collapse ps-5" id="collapse_procedural3d">
 <div class="d-grid gap-0 col-6">
@@ -517,7 +440,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_shader" aria-expanded="false" aria-controls="collapse_shader"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> shader </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_shader" aria-expanded="false" aria-controls="collapse_shader"> <img src="../images/caret-right-fill.svg"> shader </button>
 </div>
 <div class="collapse ps-5" id="collapse_shader">
 <div class="d-grid gap-0 col-6">
@@ -525,7 +448,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_texture2d" aria-expanded="false" aria-controls="collapse_texture2d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> texture2d </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_texture2d" aria-expanded="false" aria-controls="collapse_texture2d"> <img src="../images/caret-right-fill.svg"> texture2d </button>
 </div>
 <div class="collapse ps-5" id="collapse_texture2d">
 <div class="d-grid gap-0 col-6">
@@ -539,7 +462,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_texture3d" aria-expanded="false" aria-controls="collapse_texture3d"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> texture3d </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_texture3d" aria-expanded="false" aria-controls="collapse_texture3d"> <img src="../images/caret-right-fill.svg"> texture3d </button>
 </div>
 <div class="collapse ps-5" id="collapse_texture3d">
 <div class="d-grid gap-0 col-6">
@@ -547,7 +470,7 @@
 </div>
 </div>
 <div class="ps-3">
-<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_translation" aria-expanded="false" aria-controls="collapse_translation"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16"> <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/> </svg> translation </button>
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_translation" aria-expanded="false" aria-controls="collapse_translation"> <img src="../images/caret-right-fill.svg"> translation </button>
 </div>
 <div class="collapse ps-5" id="collapse_translation">
 <div class="d-grid gap-0 col-6">
@@ -595,7 +518,7 @@ Category: in
 <div class="col-12">
 <div class="card border-primary border mb-4">
 <div class="card-body">
-<img src="../images/nodes/material_in_color4_out_osl.png" class="rounded float-left" alt=../../documents/images/nodes/material_in_color4_out_osl.png style="width:10em"><br>
+<img src="../images/nodes/material_in_color4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_in_color4_out_osl.png style="max-width:11em"><br>
 </p>
 <p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button></p>
 <p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></p>
@@ -603,7 +526,7 @@ Category: in
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16"> <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/> <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/> </svg>
+<img src="../images/code-square.svg">
 </summary>
 <br>
   <div class="form-group row g-2">
@@ -770,6 +693,8 @@ Category: in
   renderButtons.forEach((renderButton) => { renderButton.addEventListener("click", renderMermaid); });
   var copyButtons = document.querySelectorAll(".mrcopy");
   copyButtons.forEach((copyButton) => { copyButton.addEventListener("click", copyMermaid); });
+  var collapses = document.querySelectorAll("[data-bs-toggle='collapse']");
+ collapses.forEach((collapseItem) => { collapseItem.addEventListener("click", toggleIndexArea); });
 </script>
 </body>
 </html>

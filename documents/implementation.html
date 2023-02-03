@@ -1,0 +1,296 @@
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="min-vh-100">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest" }); </script>
+    
+    <!-- Navigation  -->
+    <nav class="navbar sticky-top navbar-expand-lg bg-light">
+        <div class="container-md container-fluid">
+            <a class="navbar-brand" href="#">
+                <h4><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="d-inline-block align-text-center"
+                        width="60">
+                    MaterialX Learn</h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+                aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenuContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="../index.html" role="button">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Learn
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="nodes_and_nodegraphs.html">
+                                    Nodes and Graphs
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="node_definitions.html">
+                                    Node Definitions
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="documents.html">
+                                    Documents (WIP)
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Reference
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="definitions/definitions_by_group.html">
+                                    Library (By Group)
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="definitions/all_definitions.html">
+                                    Library (All)
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
+                                    target="_blank">
+                                    C++ API
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Tools</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="mermaidChecker.html">
+                                    Graph Visualizer
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Develop</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="python_MaterialX.html">
+                                    MaterialX Python
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="jupyter_example.html">
+                                    Tutorials and Examples (preview)
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Workflows</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="https://github.com/kwokcb/glTF_MaterialX" target="_blank">
+                                    Khronos glTF Interop
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Design</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="design.html">
+                                    UX Design
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="implementation.html">
+                                    Implementation
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="about.html" role="button">
+                            About
+                        </a>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid ">
+        <div class="row flex-nowrap">
+            <div class="col-12 p-4 pt-2 pl-2">
+
+                <h2>Implementation</h2>
+
+                <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-intro-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-intro" type="button" role="tab" aria-controls="pills-intro"
+                            aria-selected="true">Introduction</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-generation-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-generation" type="button" role="tab" aria-controls="pills-generation"
+                            aria-selected="false">Documentation Generation</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link " id="pills-learning-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-learning" type="button" role="tab" aria-controls="pills-learning"
+                            aria-selected="false">Learning Environment</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="pills-tabContent3">
+                    <div class="tab-pane fade show active" id="pills-intro" role="tabpanel"
+                        aria-labelledby="pills-intro-tab">
+
+                        <div class="card border-primary border mb-4">
+                            <div class="card-body">
+                                <p>Insight into how this site was generated is shown here to demonstrate how
+                                    a user can enhance documentation and learning workflows for MaterialX by adding tools on top of MaterialX itself.
+                                    The following color coding is used in the diagrams provided:
+                                    <ul>
+                                        <li>Red: Items not available in core or not started yet</li>
+                                        <li>Orange: Items in progress</li>
+                                        <li>Blue: Items which are available as part of MaterialX core</li>
+                                        <li>Green: Items available as additional tools</li>
+                                    </ul>
+                                </p>
+                                <p>Note that something like 'Doxygen' was tried but not used as it
+                                    was not flexible enough to generated the customizations required
+                                    of an shader node library. One alternative was to generate 
+                                    actual C++ or Python classes for node definitions and run Doxygen.
+                                    This is a possible project but is not being pursued at the current time.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="pills-tabContent3">
+                    <div class="tab-pane fade" id="pills-generation" role="tabpanel"
+                        aria-labelledby="pills-generation-tab">
+
+                        <div class="card border-primary border mb-4">
+                            <div class="card-body">
+                                <div class="btn btn-lg btn-outline-primary">Overview</div>
+                                <p>
+                                    The following diagram outlines the setup for generating documentation from MaterialX. The main utilities 
+                                    were written using the Python wrappers for MaterialX:
+                                    <ul>
+                                        <li><b>Diagram generation ('mxgraph')</b>: This can produce Mermaid or GraphViz dot diagrams based on MaterialX input. The 
+                                            standard library graphs are generated this way, but any MaterialX graph can be used as input.
+                                        </li>
+                                        <p></p>
+                                        <li>
+                                            <b>Sampling graphs for rendering</b>: All definitions in the MaterialX library had instance 
+                                            graphs created as separate MaterialX files. These 
+                                            were fed into `test-render` from the OSL core distribution and the built in GLSL
+                                            renderer. Note that any renderer can be used.
+                                        </li>
+                                        <p></p>
+                                        <li><b>Documentation and indexing generation ('mxdoclib')</b>: This extracted al data 
+                                            from the MaterialX definition libraries to generate all library pages. 
+                                            Both Markdown and HTML output is supported.
+                                            <p>Dependents such as 'Bootstrap', 'Mermaid' and 'Google Fonts'
+                                            are automatically included.</p>
+                                        </li>
+                                    </ul>
+                                    These utilities are accessible from the "Tools" section of this site and added to MaterialX core distribution.
+                                    <img src="./images/generative_docs.svg">                                    
+                                </p>
+                                <div class="btn btn-lg btn-outline-primary">Web Utilities</div>
+                                <p>
+                                    A number of Javascript utilities were written to handle:
+                                    <ul>
+                                        <li><b>Graph Rendering</b>: 
+                                            Additional Javascript logic is added as part of the generation process.
+                                                Interactive Mermaid graph (svg) generation from text was added as the performance
+                                                    cost to generate all hundreds of graphs can slow down page load speed. 
+                                                It was additionally necessary to workaround a Bootstrap / Mermaid issue where
+                                                graphs under hidden elements don't render properly -- in which case all 
+                                                tab sections on documentation pages require dynamic generation.
+                                                    The same logic is
+                                                    used for the 'Graph Visualizer' utility.</p>                                           
+                                        </li>
+                                        <li><b>Graph Copying / Saving</b>: Graph text copying utilities were added to allow extraction
+                                            of the mermaid text and for conversion from Mermaid text to SVG.                         
+                                        </li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="pills-tabContent3">
+                    <div class="tab-pane fade" id="pills-learning" role="tabpanel"
+                        aria-labelledby="pills-learning-tab">
+
+                        <div class="card border-primary border mb-4">
+                            <div class="card-body">
+
+                                <div class="btn btn-lg btn-outline-primary">Overview</div>
+                                <p>
+                                    <p>
+                                    For API learning, the proposed setup is shown below. This initiative is still under review
+                                    but the intent will be to host interactive tutorials using the MaterialX Python via
+                                    Jupyter notebooks. A potential hosting target would be Google Colab. The hope is to connect
+                                    with USD or other standards via Python examples.  
+                                    </p>
+                                    <p>
+                                        A parallel track is possible with Javascript, with access to the Javascript API via npm.
+                                    </p>
+                                    <img src="./images/learning_setup.svg">                                                                        
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>                                            
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
