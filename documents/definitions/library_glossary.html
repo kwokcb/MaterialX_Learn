@@ -524,10 +524,10 @@
     <a href="https://materialx.org/docs/api/class_unit_type_def.html" target="_blank">UnitTypeDef</a>
 </p>
 <p>Example usage of units for code generation can be found in the 
-  <a href="../../pymaterialx/mtlx_shadergen_notebook.html" target="_blank">
-    <img src="../images/python-logo-only.svg" width="15"> Python Shader Generation Example
-</a></p>
-<p>
+    <a href="../../pymaterialx/mtlx_shadergen_notebook.html" target="_blank">
+      <img src="../images/python-logo-only.svg" width="15"> Python Shader Generation Example
+    </a>
+</p><p>
 <div class="btn btn-lg border-primary" style="pointer-events: none;" id="Unit Type">Unit Type: distance</div>
 <br><br>
 <table class="table-fixed table border-primary table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
@@ -637,16 +637,16 @@
     It is invalid to set this only any other element type.
 </p>
 <p>The <a href="artistic_ior.html" target="_blank">artistic_ior</a> definition shows an example of
-    specifying an 'edge_color' input 'colorspace' as <em>'lin_rec709'</em>. 
-    <hr>
-    <img src="../images/colorspace_input_example.png" width="50%"> <br> 
-    <hr>
+    specifying an 'edge_color' input 'colorspace' as <em>'lin_rec709'</em>.
+    <hr> 
+    <img src="../images/colorspace_input_example.png" width="50%">
+    <hr> 
     In the same example the 'ior' input has a 'colorspace' value of <em>'none'</em>. 'none' has a special
     meaning which indicates that the input should not be interpreted as a color
     which can be transformed (there is no color swatch to indicate this).
-    <hr>
+    <hr> 
     <img src="../images/non_color_example.png" width="40%"> 
-    <hr>
+    <hr> 
 </p>
 <p>For evaluation, the 'colorspace' attribute value can be parsed to determine the input colorspace. 
     For code generation, either the
@@ -656,20 +656,40 @@
 <p>The corresponding API class for a transform is
     <a href="https://materialx.org/docs/api/struct_color_space_transform.html" target="_blank">ColorSpaceTransform</a>
 </p>
-<p>
-  <!-- <img src="../images/tools.svg"> A specific section about color management systems and their usage is forthcoming.-->
-  <br>
-Example usage of color management for code generation can be found in the 
+<p>Example usage of color management for code generation can be found in the 
     <a href="../../pymaterialx/mtlx_shadergen_notebook.html" target="_blank">
-    <img src="../images/python-logo-only.svg" width="15"> Python Shader Generation Example
-  </a>  
-</p><hr>
-<p>
-  Information for available transforms provided below which handle both `color3` and `color4` input types. 
-  Each section can be expanded to examine per-`target` implementation information. All transforms are supported 
-  for each targets listed.
+      <img src="../images/python-logo-only.svg" width="15"> Python Shader Generation Example
+    </a>
 </p>
+<hr>
 <details open><summary class="card-header-sm rounded bg-opacity-50 m-0 py-0 p-1 mb-0 mt-1">Target: genglsl</summary>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_lin_adobergb_to_lin_rec709_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
@@ -694,60 +714,6 @@ Example usage of color management for code generation can be found in the
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
      <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma18_to_linear_color3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma24_to_linear_color3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma24_to_linear_color3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma24_to_linear_color3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_srgb_texture_to_lin_rec709_color4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color4">
    </div>
   </div>
 <hr>
@@ -781,33 +747,6 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma22_to_linear_color4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma22_to_linear_color4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma22_to_linear_color4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
    </div>
    <div class="col-sm-2">
@@ -835,7 +774,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
    </div>
    <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
@@ -847,42 +786,15 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma24_to_linear_color4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma24_to_linear_color4.glsl">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_ap1_to_rec709_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_ap1_to_rec709_color4.glsl">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma24_to_linear_color4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_lin_adobergb_to_lin_rec709_color3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color3">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_ap1_to_rec709_color4">
    </div>
   </div>
 <hr>
@@ -916,7 +828,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_ap1">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_rec709">
    </div>
    <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
@@ -928,15 +840,15 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_g22_ap1_to_lin_rec709_color4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color4.glsl">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma22_to_linear_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma22_to_linear_color4.glsl">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma22_to_linear_color4">
    </div>
   </div>
 <hr>
@@ -997,7 +909,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
    </div>
    <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
@@ -1009,15 +921,15 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_ap1_to_rec709_color4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_ap1_to_rec709_color4.glsl">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma24_to_linear_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma24_to_linear_color4.glsl">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_ap1_to_rec709_color4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma24_to_linear_color4">
    </div>
   </div>
 <hr>
@@ -1051,33 +963,6 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_lin_adobergb_to_lin_rec709_color4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_rec709">
    </div>
    <div class="col-sm-2">
@@ -1102,8 +987,136 @@ Example usage of color management for code generation can be found in the
    </div>
   </div>
 <hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_srgb_texture_to_lin_rec709_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_ap1">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_g22_ap1_to_lin_rec709_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma24_to_linear_color3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma24_to_linear_color3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma24_to_linear_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_lin_adobergb_to_lin_rec709_color3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color3">
+   </div>
+  </div>
+<hr>
 </details>
-<details><summary class="card-header-sm rounded bg-opacity-50 m-0 py-0 p-1 mb-0 mt-1">Target: genmdl</summary>
+<details ><summary class="card-header-sm rounded bg-opacity-50 m-0 py-0 p-1 mb-0 mt-1">Target: genmdl</summary>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_srgb_texture_to_lin_rec709_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
@@ -1121,6 +1134,86 @@ Example usage of color management for code generation can be found in the
     <div class="col-sm-8">
       <textarea class="form-control form-control-sm" rows="2"
         style="resize: none;" disabled>mx::cm::mx_gamma22_to_linear_color4({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_ap1_to_rec709_color4({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_adobergb_to_lin_rec709_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_ap1_to_rec709_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_ap1">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_ap1_to_rec709_color3(mx::cm::mx_gamma22_to_linear_color3({{in}})) </textarea>
     </div>
   </div>
 <hr>
@@ -1147,6 +1240,26 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_gamma18_to_linear_color4({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
    </div>
    <div class="col-sm-2">
@@ -1167,7 +1280,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
    </div>
    <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
@@ -1180,7 +1293,47 @@ Example usage of color management for code generation can be found in the
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-8">
       <textarea class="form-control form-control-sm" rows="2"
-        style="resize: none;" disabled>mx::cm::mx_ap1_to_rec709_color3({{in}}) </textarea>
+        style="resize: none;" disabled>mx::cm::mx_gamma18_to_linear_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_lin_adobergb_to_lin_rec709_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_gamma24_to_linear_color4({{in}}) </textarea>
     </div>
   </div>
 <hr>
@@ -1213,106 +1366,6 @@ Example usage of color management for code generation can be found in the
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
    </div>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="2"
-        style="resize: none;" disabled>mx::cm::mx_adobergb_to_lin_rec709_color3({{in}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="2"
-        style="resize: none;" disabled>mx::cm::mx_gamma18_to_linear_color3({{in}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="2"
-        style="resize: none;" disabled>mx::cm::mx_ap1_to_rec709_color4({{in}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_ap1">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="2"
-        style="resize: none;" disabled>mx::cm::mx_ap1_to_rec709_color3(mx::cm::mx_gamma22_to_linear_color3({{in}})) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="2"
-        style="resize: none;" disabled>mx::cm::mx_gamma24_to_linear_color4({{in}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="adobergb">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
    </div>
   </div>
@@ -1321,86 +1374,6 @@ Example usage of color management for code generation can be found in the
     <div class="col-sm-8">
       <textarea class="form-control form-control-sm" rows="2"
         style="resize: none;" disabled>mx::cm::mx_adobergb_to_lin_rec709_color4({{in}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="2"
-        style="resize: none;" disabled>mx::cm::mx_gamma22_to_linear_color3({{in}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="2"
-        style="resize: none;" disabled>mx::cm::mx_lin_adobergb_to_lin_rec709_color3({{in}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="2"
-        style="resize: none;" disabled>mx::cm::mx_srgb_texture_to_lin_rec709_color3({{in}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="2"
-        style="resize: none;" disabled>mx::cm::mx_gamma18_to_linear_color4({{in}}) </textarea>
     </div>
   </div>
 <hr>
@@ -1424,35 +1397,28 @@ Example usage of color management for code generation can be found in the
     </div>
   </div>
 <hr>
-</details>
-<details><summary class="card-header-sm rounded bg-opacity-50 m-0 py-0 p-1 mb-0 mt-1">Target: genosl</summary>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="adobergb">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_rec709">
    </div>
    <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
    </div>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_adobergb_to_lin_rec709_color4.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color4.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color4">
-   </div>
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_gamma22_to_linear_color3({{in}}) </textarea>
+    </div>
   </div>
 <hr>
+</details>
+<details ><summary class="card-header-sm rounded bg-opacity-50 m-0 py-0 p-1 mb-0 mt-1">Target: genosl</summary>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
@@ -1468,7 +1434,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_lin_adobergb_to_lin_rec709_color4.osl" target="_blank">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_lin_adobergb_to_lin_rec709_color4.osl" target="_blank">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color4.osl">
   </a>
    </div>
@@ -1483,33 +1449,6 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma24_to_linear_color4.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma24_to_linear_color4.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma24_to_linear_color4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
    </div>
    <div class="col-sm-2">
@@ -1522,7 +1461,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_lin_adobergb_to_lin_rec709_color3.osl" target="_blank">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_lin_adobergb_to_lin_rec709_color3.osl" target="_blank">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color3.osl">
   </a>
    </div>
@@ -1537,87 +1476,6 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_ap1_to_rec709_color4.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_ap1_to_rec709_color4.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_ap1_to_rec709_color4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_ap1_to_rec709_color3.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_ap1_to_rec709_color3.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_ap1_to_rec709_color3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma24_to_linear_color3.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma24_to_linear_color3.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma24_to_linear_color3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_rec709">
    </div>
    <div class="col-sm-2">
@@ -1630,7 +1488,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma22_to_linear_color4.osl" target="_blank">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_gamma22_to_linear_color4.osl" target="_blank">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma22_to_linear_color4.osl">
   </a>
    </div>
@@ -1645,27 +1503,54 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
    </div>
    <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
    </div>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_srgb_texture_to_lin_rec709_color3.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color3.osl">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_gamma24_to_linear_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma24_to_linear_color4.osl">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color3">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma24_to_linear_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_ap1_to_rec709_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_ap1_to_rec709_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_ap1_to_rec709_color4">
    </div>
   </div>
 <hr>
@@ -1684,7 +1569,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma22_to_linear_color3.osl" target="_blank">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_gamma22_to_linear_color3.osl" target="_blank">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma22_to_linear_color3.osl">
   </a>
    </div>
@@ -1711,7 +1596,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_g22_ap1_to_lin_rec709_color3.osl" target="_blank">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_g22_ap1_to_lin_rec709_color3.osl" target="_blank">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color3.osl">
   </a>
    </div>
@@ -1726,7 +1611,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
    <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
    </div>
    <div class="col-sm-2">
      <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
@@ -1738,15 +1623,15 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma18_to_linear_color3.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma18_to_linear_color3.osl">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_ap1_to_rec709_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_ap1_to_rec709_color3.osl">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma18_to_linear_color3">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_ap1_to_rec709_color3">
    </div>
   </div>
 <hr>
@@ -1765,7 +1650,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_g22_ap1_to_lin_rec709_color4.osl" target="_blank">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_g22_ap1_to_lin_rec709_color4.osl" target="_blank">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color4.osl">
   </a>
    </div>
@@ -1774,6 +1659,33 @@ Example usage of color management for code generation can be found in the
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
      <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_srgb_texture_to_lin_rec709_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color3">
    </div>
   </div>
 <hr>
@@ -1792,7 +1704,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma18_to_linear_color4.osl" target="_blank">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_gamma18_to_linear_color4.osl" target="_blank">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma18_to_linear_color4.osl">
   </a>
    </div>
@@ -1801,33 +1713,6 @@ Example usage of color management for code generation can be found in the
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
      <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma18_to_linear_color4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
-   </div>
-   <div class="col-sm-2">
-     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_srgb_texture_to_lin_rec709_color4.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color4.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color4">
    </div>
   </div>
 <hr>
@@ -1846,7 +1731,7 @@ Example usage of color management for code generation can be found in the
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-6">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_adobergb_to_lin_rec709_color3.osl" target="_blank">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_adobergb_to_lin_rec709_color3.osl" target="_blank">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color3.osl">
   </a>
    </div>
@@ -1855,6 +1740,114 @@ Example usage of color management for code generation can be found in the
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
      <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_adobergb_to_lin_rec709_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_gamma18_to_linear_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma18_to_linear_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma18_to_linear_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_srgb_texture_to_lin_rec709_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_gamma24_to_linear_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma24_to_linear_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma24_to_linear_color3">
    </div>
   </div>
 <hr>
