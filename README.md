@@ -3,7 +3,7 @@
 
 ## Overview
 
-This is a complimentary site for those interested in learning about or are integrating MaterialX. Current content includes:
+This is a complementary site for those interested in learning about or are integrating MaterialX. Current content includes:
 * Node definition library with image and node graph previews
 * Fundamental concepts
 * Python environment setup for MaterialX
