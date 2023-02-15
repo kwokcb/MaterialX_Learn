@@ -1,7 +1,7 @@
 # %% [markdown]
 # # 1.0 MaterialX Basics
 # 
-# In this first "book", we will cover topics:
+# Topics covered in the first "book":
 # 1. Setting up dependencies and creating a MaterialX document.
 # 2. Read and writing document and validation.
 # 2. Creating, finding, connetion, and deleting nodes.
@@ -10,7 +10,7 @@
 # %% [markdown]
 # ### 1.0.1 Importing MaterialX
 # 
-# Test example to check that MaterialX modules are available and will run.
+# Shown below is a test example to check that MaterialX modules are available and will run.
 
 # %%
 import MaterialX as mx
@@ -74,8 +74,8 @@ print('Test file read properly: ', testfileDoc.validate()[0])
 # %% [markdown]
 # ### 1.1.2 Document Validation 
 # 
-# When deal with document content it is a useful to check the contents are valid using the `validate()` function.
-# A status code is returned along with a string which will contain error information if validation checks failed.
+# When dealing with document content it is a useful to check the contents are valid using the `validate()` function.
+# A status code is returned along with a string which will contain error information if the validation checks failed.
 
 # %%
 result = doc.validate()
@@ -188,7 +188,7 @@ if shaderNode:
 # %% [markdown]
 # #### 1.2.2.1 Explicit catagory and type string 
 # 
-# The most manual way to create a node is to create a node using category string and type string.
+# The manual way to create a node is to create a node using category string and type string.
 # - `addNode()` is the function used.
 # - This method can be error prone if the `type` is not specified. A `string` type is then asssumed.
 # - An empty name argument results in a new unique name generated for the node. 
@@ -209,7 +209,7 @@ if newNode:
 # %% [markdown]
 # #### 1.2.2.2 Explicit category, type and name string
 # 
-# Specifying an explicit type is a bit better if the type to create is known. However it is still possible to set the incorrect type.
+# Specifying an explicit type is better if the type to create is known. However it is still possible to set the incorrect type.
 
 # %%
 
@@ -238,7 +238,7 @@ if newNode:
 # 
 # ### 1.3.1 Individual Nodes
 # 
-# Individual nodes can be found in a variety of different ways:
+# Individual nodes can be found in a variety of ways:
 # * By path (`getDescendant`): This is the best way to find a child is to use a path that explicitly points to where in the document hierarchy the node resides. Element paths are relative.
 # * By child name (`getChild`): Is suitable for finding the direct child of a document or node graph.
 # * By type(`getChildofType`). The singular version can be used but the other methods are prefered.
@@ -291,11 +291,10 @@ if nodes:
 # 
 # ## 2.1 Node Connections
 # Connections are formed from a downstream `input` to an upstream `output`. For this a wrapper function is
-# added to hide some of the syntactic peculiarities. It will be added to as the types of connections
-# being considered is added.
+# added to hide some of the syntactic peculiarities. It will be added to as more types of connections are implemented.
 # 
-# One cumbersome thing is that a node instance when created as no inputs instantiated. So a check
-# must be made to see if it exists and if not added it. Then if input and outputs types match 
+# One cumbersome thing is that a node instance when created has no inputs instantiated. So a check
+# must be made to see if it exists and if its not added. Then if input and outputs types match 
 # then the input can make the connection.
 # 
 # Additionally it is considered "invalid" to have both a `value` and a connection on an input, so

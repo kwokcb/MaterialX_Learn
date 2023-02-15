@@ -15102,7 +15102,7 @@ Use code generator for target: genglsl  for language:  glsl
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Generator-Contexts">Generator Contexts<a class="anchor-link" href="#Generator-Contexts">&#182;</a></h3><p>All generators require a &quot;context&quot;to be provided. This is represented bya 
+<h3 id="Generator-Contexts">Generator Contexts<a class="anchor-link" href="#Generator-Contexts">&#182;</a></h3><p>All generators require a &quot;context&quot;to be provided. This is represented by a 
 <a href="https://materialx.org/docs/api/class_gen_context.html" target="_blank"><code>GenContext</code></a> structure.</p>
 <p>At a minimum a path to where the source code implementations must be provided as part of the context.
 Any number of paths can be added using the <code>registerSourceCodeSearchPath()</code> function. Searching will occur in first to last added order.
@@ -15141,7 +15141,7 @@ Here the path to the <code>libraries</code> folder can be used so that source co
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Color-Management">Color Management<a class="anchor-link" href="#Color-Management">&#182;</a></h3><p>Color management is used to ensure that input colors are interpreted properly.
 When specified additional logic will be emitted into the shader source code via a &quot;color management system&quot;.</p>
-<p>For color management it is necessary t0 indicate for which shading language
+<p>For color management it is necessary to indicate for which shading language
 <code>target</code> the color management system. Naturally specifying a non-matching target will inject incompatible code.</p>
 <p>The basic steps are to:</p>
 <ol>
@@ -15405,6 +15405,8 @@ For this access is needed to the &quot;options&quot; for the context which are s
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Found: 1 renderables
 Found node to render:  Marble_3D
+
+Found node to render:  Marble_3D
 </pre>
 </div>
 </div>
@@ -15425,7 +15427,7 @@ Found node to render:  Marble_3D
 <li>First a valid name is generated using <code>createValidName</code> to ensure that the shader name produced is valid.</li>
 <li>Then the generator's <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">generate()</a> interface is called with this name, the node, and the generation context. Note that derived classes will override this interface to perform custom generation.</li>
 </ol>
-<p>Upon success a new &lt;a href=&quot;<a href="https://materialx.org/docs/api/class_shader.html">https://materialx.org/docs/api/class_shader.html</a>&quot;, target=&quot;_blank&quot;&gt;Shader</a> instance is created. Note that this is a special interface used to keep track of an entire shader. This instance can be inspected to extract information required for rendering.</p>
+<p>Upon success a new <a href="https://materialx.org/docs/api/class_shader.html" target="_blank">Shader</a> instance is created. Note that this is a special interface used to keep track of an entire shader. This instance can be inspected to extract information required for rendering.</p>
 
 </div>
 </div>

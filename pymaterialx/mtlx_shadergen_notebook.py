@@ -8,7 +8,7 @@
 # 
 # Topics covered:
 # 1. Submodules per code generator
-# 2. Context and options for generation
+# 2. Context and options for generation.
 # 3. Real world unit and color management transform. 
 # 4. Finding "renderable" items
 # 5. Per `target` (shading language) generators.
@@ -279,7 +279,7 @@ print('Use code generator for target:', shadergen.getTarget(), ' for language: '
 # %% [markdown]
 # ### Generator Contexts
 # 
-# All generators require a "context"to be provided. This is represented bya 
+# All generators require a "context"to be provided. This is represented by a 
 # <a href="https://materialx.org/docs/api/class_gen_context.html" target="_blank">`GenContext`</a> structure. 
 # 
 # At a minimum a path to where the source code implementations must be provided as part of the context.
@@ -301,7 +301,7 @@ context.registerSourceCodeSearchPath(searchPath)
 # Color management is used to ensure that input colors are interpreted properly.
 # When specified additional logic will be emitted into the shader source code via a "color management system".
 # 
-# For color management it is necessary t0 indicate for which shading language
+# For color management it is necessary to indicate for which shading language
 # `target` the color management system. Naturally specifying a non-matching target will inject incompatible code.
 # 
 # The basic steps are to:
@@ -403,7 +403,7 @@ if nodes:
 # 1. First a valid name is generated using `createValidName` to ensure that the shader name produced is valid. 
 # 2. Then the generator's <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">generate()</a> interface is called with this name, the node, and the generation context. Note that derived classes will override this interface to perform custom generation.
 # 
-# Upon success a new <a href="https://materialx.org/docs/api/class_shader.html", target="_blank">Shader</a> instance is created. Note that this is a special interface used to keep track of an entire shader. This instance can be inspected to extract information required for rendering.
+# Upon success a new <a href="https://materialx.org/docs/api/class_shader.html" target="_blank">Shader</a> instance is created. Note that this is a special interface used to keep track of an entire shader. This instance can be inspected to extract information required for rendering.
 
 # %%
 shader = None
