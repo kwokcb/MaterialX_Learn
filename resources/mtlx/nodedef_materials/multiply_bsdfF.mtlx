@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <multiply name="multiply_bsdfF" type="BSDF">
+    <input name="in1" type="BSDF" value="" nodename="oren_nayar_diffuse_bsdf" />
+    <input name="in2" type="float" value="1.0" />
+  </multiply>
+  <oren_nayar_diffuse_bsdf name="oren_nayar_diffuse_bsdf" type="BSDF" />
+  <surface name="shader_multiply_bsdfF_out" type="surfaceshader">
+    <input name="bsdf" type="BSDF" nodename="multiply_bsdfF" />
+  </surface>
+  <surfacematerial name="material_multiply_bsdfF_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_multiply_bsdfF_out" />
+  </surfacematerial>
+</materialx>

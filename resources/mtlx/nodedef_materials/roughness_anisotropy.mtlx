@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <roughness_anisotropy name="roughness_anisotropy" type="vector2">
+    <input name="roughness" type="float" value="0.0" />
+    <input name="anisotropy" type="float" value="0.0" />
+  </roughness_anisotropy>
+  <convert name="shader_roughness_anisotropy_out" type="surfaceshader">
+    <input name="in" type="vector2" nodename="roughness_anisotropy" />
+  </convert>
+  <surfacematerial name="material_roughness_anisotropy_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_roughness_anisotropy_out" />
+  </surfacematerial>
+</materialx>

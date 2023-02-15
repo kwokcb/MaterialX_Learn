@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <absval name="absval_vector4" type="vector4">
+    <input name="in" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+  </absval>
+  <convert name="shader_absval_vector4_out" type="surfaceshader">
+    <input name="in" type="vector4" nodename="absval_vector4" />
+  </convert>
+  <surfacematerial name="material_absval_vector4_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_absval_vector4_out" />
+  </surfacematerial>
+</materialx>

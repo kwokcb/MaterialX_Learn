@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <ifgreater name="ifgreater_vector4I" type="vector4">
+    <input name="value1" type="integer" value="1" />
+    <input name="value2" type="integer" value="0" />
+    <input name="in1" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in2" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+  </ifgreater>
+  <convert name="shader_ifgreater_vector4I_out" type="surfaceshader">
+    <input name="in" type="vector4" nodename="ifgreater_vector4I" />
+  </convert>
+  <surfacematerial name="material_ifgreater_vector4I_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ifgreater_vector4I_out" />
+  </surfacematerial>
+</materialx>

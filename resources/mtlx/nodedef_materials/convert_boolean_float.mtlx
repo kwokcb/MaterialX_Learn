@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <convert name="convert_boolean_float" type="float">
+    <input name="in" type="boolean" value="false" />
+  </convert>
+  <convert name="shader_convert_boolean_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="convert_boolean_float" />
+  </convert>
+  <surfacematerial name="material_convert_boolean_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_convert_boolean_float_out" />
+  </surfacematerial>
+</materialx>

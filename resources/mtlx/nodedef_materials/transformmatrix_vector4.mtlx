@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <transformmatrix name="transformmatrix_vector4" type="vector4">
+    <input name="in" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="mat" type="matrix44" value="1.0,0.0,0.0,0.0, 0.0,1.0,0.0,0.0, 0.0,0.0,1.0,0.0, 0.0,0.0,0.0,1.0" />
+  </transformmatrix>
+  <convert name="shader_transformmatrix_vector4_out" type="surfaceshader">
+    <input name="in" type="vector4" nodename="transformmatrix_vector4" />
+  </convert>
+  <surfacematerial name="material_transformmatrix_vector4_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_transformmatrix_vector4_out" />
+  </surfacematerial>
+</materialx>

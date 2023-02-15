@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <convert name="convert_float_vector2" type="vector2">
+    <input name="in" type="float" value="0.0" />
+  </convert>
+  <convert name="shader_convert_float_vector2_out" type="surfaceshader">
+    <input name="in" type="vector2" nodename="convert_float_vector2" />
+  </convert>
+  <surfacematerial name="material_convert_float_vector2_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_convert_float_vector2_out" />
+  </surfacematerial>
+</materialx>

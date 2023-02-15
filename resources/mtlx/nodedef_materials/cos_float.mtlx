@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <cos name="cos_float" type="float">
+    <input name="in" type="float" value="0.0" />
+  </cos>
+  <convert name="shader_cos_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="cos_float" />
+  </convert>
+  <surfacematerial name="material_cos_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_cos_float_out" />
+  </surfacematerial>
+</materialx>

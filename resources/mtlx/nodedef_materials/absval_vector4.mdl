@@ -1,0 +1,56 @@
+mdl 1.6;
+
+using mx = materialx;
+import ::df::*;
+import ::base::*;
+import ::math::*;
+import ::state::*;
+import ::anno::*;
+import ::tex::*;
+import ::mx::swizzle::*;
+import ::mx::cm::*;
+using ::mx::core import *;
+using ::mx::stdlib import *;
+using ::mx::pbrlib import *;
+using ::mx::sampling import *;
+
+float NG_extract_color4
+(
+    color4 in1 = mk_color4(0, 0, 0, 0),
+    uniform int index = 0
+)
+{
+    float N_r_color4_out = float3(in1.rgb).x;
+    float N_g_color4_out = float3(in1.rgb).y;
+    float N_b_color4_out = float3(in1.rgb).z;
+    float N_a_color4_out = in1.a;
+    float N_sw_color4_out = mx::stdlib::mx_switch_floatI(N_r_color4_out, N_g_color4_out, N_b_color4_out, N_a_color4_out, 0, index);
+    return N_sw_color4_out;
+}
+
+material NG_convert_vector4_shader
+(
+    float4 in1 = float4(0, 0, 0, 0)
+)
+ = let
+{
+    color4 vec4_to_color4_out = mk_color4(in1.x, in1.y, in1.z, in1.w);
+    color color4_to_color3_out = color(float3(vec4_to_color4_out.rgb).x, float3(vec4_to_color4_out.rgb).y, float3(vec4_to_color4_out.rgb).z);
+    float color4_to_float_out = NG_extract_color4(vec4_to_color4_out, 3);
+    material surface_out = mx::stdlib::mx_surface_unlit(1, color4_to_color3_out, 0, color(1, 1, 1), color4_to_float_out);
+}
+in material(surface_out);
+
+export material material_absval_vector4_out
+(
+    float3 displacementshader = float3(0.0),
+    float4 absval_vector4_in = float4(0, 0, 0, 0)
+)
+= let
+{
+    float4 absval_vector4_out = math::abs(absval_vector4_in);
+    material shader_absval_vector4_out_out = NG_convert_vector4_shader(absval_vector4_out);
+    material material_absval_vector4_out_out = mx::stdlib::mx_surfacematerial(shader_absval_vector4_out_out, displacementshader);
+    material finalOutput__ = material_absval_vector4_out_out;
+}
+in material(finalOutput__);

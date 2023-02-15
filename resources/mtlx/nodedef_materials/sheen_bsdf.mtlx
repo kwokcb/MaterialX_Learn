@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <sheen_bsdf name="sheen_bsdf" type="BSDF">
+    <input name="weight" type="float" value="1.0" />
+    <input name="color" type="color3" value="1.0, 1.0, 1.0" />
+    <input name="roughness" type="float" value="0.3" />
+    <input name="normal" type="vector3" defaultgeomprop="Nworld" />
+  </sheen_bsdf>
+  <surface name="shader_sheen_bsdf_out" type="surfaceshader">
+    <input name="bsdf" type="BSDF" nodename="sheen_bsdf" />
+  </surface>
+  <surfacematerial name="material_sheen_bsdf_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_sheen_bsdf_out" />
+  </surfacematerial>
+</materialx>

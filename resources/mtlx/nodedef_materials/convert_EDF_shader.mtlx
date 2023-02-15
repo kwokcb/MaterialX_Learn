@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <convert name="convert_EDF_shader" type="surfaceshader" version="1.0">
+    <input name="in" type="EDF" value="" nodename="uniform_edf" />
+  </convert>
+  <uniform_edf name="uniform_edf" type="EDF" />
+  <surfacematerial name="material_convert_EDF_shader_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="convert_EDF_shader" />
+  </surfacematerial>
+</materialx>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <dot name="dot_surfaceshader" type="surfaceshader">
+    <input name="in" type="surfaceshader" value="" nodename="standard_surface" />
+    <input name="note" type="string" value="" uniform="true" />
+  </dot>
+  <standard_surface name="standard_surface" type="surfaceshader" />
+  <surfacematerial name="material_dot_surfaceshader_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="dot_surfaceshader" />
+  </surfacematerial>
+</materialx>

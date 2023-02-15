@@ -1,0 +1,12 @@
+```mermaid
+graph LR; 
+    NG_convert_color4_material_surfacematerial[surfacematerial] --> NG_convert_color4_material_out([out])
+    style NG_convert_color4_material_out fill:#1b1, color:#111
+    NG_convert_color4_material_surface_unlit[surface_unlit] --".surfaceshader"--> NG_convert_color4_material_surfacematerial[surfacematerial]
+    NG_convert_color4_material_convert[convert] --".emission_color"--> NG_convert_color4_material_surface_unlit[surface_unlit]
+    NG_convert_color4_material_inINT([in]) ==.in==> NG_convert_color4_material_convert[convert]
+    style NG_convert_color4_material_inINT fill:#0bb, color:#111
+    NG_convert_color4_material_extract[extract] --".opacity"--> NG_convert_color4_material_surface_unlit[surface_unlit]
+    NG_convert_color4_material_inINT([in]) ==.in==> NG_convert_color4_material_extract[extract]
+    style NG_convert_color4_material_inINT fill:#0bb, color:#111
+```

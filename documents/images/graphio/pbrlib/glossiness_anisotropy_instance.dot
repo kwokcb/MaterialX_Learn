@@ -1,0 +1,21 @@
+digraph {
+  rankdir = LR;
+    IMP_glossiness_anisotropy_roughness1 [label= "roughness_anisotropy"];
+    IMP_glossiness_anisotropy_roughness1[shape = box];
+    IMP_glossiness_anisotropy_roughness1 ->     IMP_glossiness_anisotropy_out;
+    IMP_glossiness_anisotropy_out [label= "out"];
+    IMP_glossiness_anisotropy_out[shape = box]; 
+    IMP_glossiness_anisotropy_anisotropyINT [label="anisotropy"];
+    IMP_glossiness_anisotropy_anisotropyINT [shape = ellipse];
+    IMP_glossiness_anisotropy_roughness1 [label="roughness_anisotropy"];
+    IMP_glossiness_anisotropy_anisotropyINT -> IMP_glossiness_anisotropy_roughness1 [label=".anisotropy"];
+    IMP_glossiness_anisotropy_invert1 [label= "invert"];
+    IMP_glossiness_anisotropy_invert1[shape = box];
+    IMP_glossiness_anisotropy_invert1 ->     IMP_glossiness_anisotropy_roughness1 [label= "roughness"];
+    IMP_glossiness_anisotropy_roughness1 [label= "roughness_anisotropy"];
+    IMP_glossiness_anisotropy_roughness1[shape = box]; 
+    IMP_glossiness_anisotropy_glossinessINT [label="glossiness"];
+    IMP_glossiness_anisotropy_glossinessINT [shape = ellipse];
+    IMP_glossiness_anisotropy_invert1 [label="invert"];
+    IMP_glossiness_anisotropy_glossinessINT -> IMP_glossiness_anisotropy_invert1 [label=".in"];
+}

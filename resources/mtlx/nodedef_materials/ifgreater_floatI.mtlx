@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <ifgreater name="ifgreater_floatI" type="float">
+    <input name="value1" type="integer" value="1" />
+    <input name="value2" type="integer" value="0" />
+    <input name="in1" type="float" value="0.0" />
+    <input name="in2" type="float" value="0.0" />
+  </ifgreater>
+  <convert name="shader_ifgreater_floatI_out" type="surfaceshader">
+    <input name="in" type="float" nodename="ifgreater_floatI" />
+  </convert>
+  <surfacematerial name="material_ifgreater_floatI_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ifgreater_floatI_out" />
+  </surfacematerial>
+</materialx>

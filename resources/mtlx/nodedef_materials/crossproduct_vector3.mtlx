@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <crossproduct name="crossproduct_vector3" type="vector3">
+    <input name="in1" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="in2" type="vector3" value="0.0, 0.0, 0.0" />
+  </crossproduct>
+  <convert name="shader_crossproduct_vector3_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="crossproduct_vector3" />
+  </convert>
+  <surfacematerial name="material_crossproduct_vector3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_crossproduct_vector3_out" />
+  </surfacematerial>
+</materialx>

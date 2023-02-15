@@ -1,0 +1,12 @@
+digraph {
+  rankdir = LR;
+    IMPL_lama_emission_emission [label= "uniform_edf"];
+    IMPL_lama_emission_emission[shape = box];
+    IMPL_lama_emission_emission ->     IMPL_lama_emission_out;
+    IMPL_lama_emission_out [label= "out"];
+    IMPL_lama_emission_out[shape = box]; 
+    IMPL_lama_emission_colorINT [label="color"];
+    IMPL_lama_emission_colorINT [shape = ellipse];
+    IMPL_lama_emission_emission [label="uniform_edf"];
+    IMPL_lama_emission_colorINT -> IMPL_lama_emission_emission [label=".color"];
+}

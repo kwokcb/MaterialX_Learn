@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <subtract name="subtract_color3FA" type="color3">
+    <input name="in1" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="in2" type="float" value="0.0" />
+  </subtract>
+  <convert name="shader_subtract_color3FA_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="subtract_color3FA" />
+  </convert>
+  <surfacematerial name="material_subtract_color3FA_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_subtract_color3FA_out" />
+  </surfacematerial>
+</materialx>

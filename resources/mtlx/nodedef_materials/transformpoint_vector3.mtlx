@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <transformpoint name="transformpoint_vector3" type="vector3">
+    <input name="in" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="fromspace" type="string" value="" uniform="true" />
+    <input name="tospace" type="string" value="" uniform="true" />
+  </transformpoint>
+  <convert name="shader_transformpoint_vector3_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="transformpoint_vector3" />
+  </convert>
+  <surfacematerial name="material_transformpoint_vector3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_transformpoint_vector3_out" />
+  </surfacematerial>
+</materialx>

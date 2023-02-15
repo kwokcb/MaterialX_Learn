@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <extract name="extract_vector3" type="float">
+    <input name="in" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="index" type="integer" value="0" uniform="true" />
+  </extract>
+  <convert name="shader_extract_vector3_out" type="surfaceshader">
+    <input name="in" type="float" nodename="extract_vector3" />
+  </convert>
+  <surfacematerial name="material_extract_vector3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_extract_vector3_out" />
+  </surfacematerial>
+</materialx>

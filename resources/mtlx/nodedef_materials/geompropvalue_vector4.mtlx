@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <geompropvalue name="geompropvalue_vector4" type="vector4">
+    <input name="geomprop" type="string" value="geompropvalue_vector4" uniform="true" />
+    <input name="default" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+  </geompropvalue>
+  <convert name="shader_geompropvalue_vector4_out" type="surfaceshader">
+    <input name="in" type="vector4" nodename="geompropvalue_vector4" />
+  </convert>
+  <surfacematerial name="material_geompropvalue_vector4_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_geompropvalue_vector4_out" />
+  </surfacematerial>
+</materialx>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <separate4 name="separate4_vector4" type="multioutput">
+    <input name="in" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+  </separate4>
+  <convert name="shader_separate4_vector4_outx" type="surfaceshader">
+    <input name="in" type="float" nodename="separate4_vector4" output="outx" />
+  </convert>
+  <surfacematerial name="material_separate4_vector4_outx" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_separate4_vector4_outx" />
+  </surfacematerial>
+  <convert name="shader_separate4_vector4_outy" type="surfaceshader">
+    <input name="in" type="float" nodename="separate4_vector4" output="outy" />
+  </convert>
+  <surfacematerial name="material_separate4_vector4_outy" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_separate4_vector4_outy" />
+  </surfacematerial>
+  <convert name="shader_separate4_vector4_outz" type="surfaceshader">
+    <input name="in" type="float" nodename="separate4_vector4" output="outz" />
+  </convert>
+  <surfacematerial name="material_separate4_vector4_outz" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_separate4_vector4_outz" />
+  </surfacematerial>
+  <convert name="shader_separate4_vector4_outw" type="surfaceshader">
+    <input name="in" type="float" nodename="separate4_vector4" output="outw" />
+  </convert>
+  <surfacematerial name="material_separate4_vector4_outw" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_separate4_vector4_outw" />
+  </surfacematerial>
+</materialx>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <LamaSheen name="lama_sheen" type="BSDF" version="1.0">
+    <input name="color" type="color3" value="1, 1, 1" uiname="Color" />
+    <input name="roughness" type="float" value="0.1" uiname="Roughness" />
+    <input name="normal" type="vector3" defaultgeomprop="Nworld" uiname="Normal" />
+  </LamaSheen>
+  <surface name="shader_lama_sheen_out" type="surfaceshader">
+    <input name="bsdf" type="BSDF" nodename="lama_sheen" />
+  </surface>
+  <surfacematerial name="material_lama_sheen_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_lama_sheen_out" />
+  </surfacematerial>
+</materialx>

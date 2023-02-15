@@ -1,0 +1,16 @@
+digraph {
+  rankdir = LR;
+    NG_lama_translucent_translucent_bsdf1 [label= "translucent_bsdf"];
+    NG_lama_translucent_translucent_bsdf1[shape = box];
+    NG_lama_translucent_translucent_bsdf1 ->     NG_lama_translucent_out;
+    NG_lama_translucent_out [label= "out"];
+    NG_lama_translucent_out[shape = box]; 
+    NG_lama_translucent_colorINT [label="color"];
+    NG_lama_translucent_colorINT [shape = ellipse];
+    NG_lama_translucent_translucent_bsdf1 [label="translucent_bsdf"];
+    NG_lama_translucent_colorINT -> NG_lama_translucent_translucent_bsdf1 [label=".color"];
+    NG_lama_translucent_normalINT [label="normal"];
+    NG_lama_translucent_normalINT [shape = ellipse];
+    NG_lama_translucent_translucent_bsdf1 [label="translucent_bsdf"];
+    NG_lama_translucent_normalINT -> NG_lama_translucent_translucent_bsdf1 [label=".normal"];
+}

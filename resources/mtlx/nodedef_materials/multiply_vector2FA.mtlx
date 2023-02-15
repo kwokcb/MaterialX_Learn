@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <multiply name="multiply_vector2FA" type="vector2">
+    <input name="in1" type="vector2" value="0.0, 0.0" />
+    <input name="in2" type="float" value="1.0" />
+  </multiply>
+  <convert name="shader_multiply_vector2FA_out" type="surfaceshader">
+    <input name="in" type="vector2" nodename="multiply_vector2FA" />
+  </convert>
+  <surfacematerial name="material_multiply_vector2FA_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_multiply_vector2FA_out" />
+  </surfacematerial>
+</materialx>

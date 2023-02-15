@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <remap name="remap_color3FA" type="color3">
+    <input name="in" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="inlow" type="float" value="0.0" />
+    <input name="inhigh" type="float" value="1.0" />
+    <input name="outlow" type="float" value="0.0" />
+    <input name="outhigh" type="float" value="1.0" />
+  </remap>
+  <convert name="shader_remap_color3FA_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="remap_color3FA" />
+  </convert>
+  <surfacematerial name="material_remap_color3FA_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_remap_color3FA_out" />
+  </surfacematerial>
+</materialx>

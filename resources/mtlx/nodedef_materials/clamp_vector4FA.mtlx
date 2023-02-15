@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <clamp name="clamp_vector4FA" type="vector4">
+    <input name="in" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="low" type="float" value="0.0" />
+    <input name="high" type="float" value="1.0" />
+  </clamp>
+  <convert name="shader_clamp_vector4FA_out" type="surfaceshader">
+    <input name="in" type="vector4" nodename="clamp_vector4FA" />
+  </convert>
+  <surfacematerial name="material_clamp_vector4FA_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_clamp_vector4FA_out" />
+  </surfacematerial>
+</materialx>

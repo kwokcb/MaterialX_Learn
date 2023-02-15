@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <splitlr name="splitlr_float" type="float">
+    <input name="valuel" type="float" value="0.0" uiname="Left" />
+    <input name="valuer" type="float" value="0.0" uiname="Right" />
+    <input name="center" type="float" value="0.5" uiname="Center" />
+    <input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+  </splitlr>
+  <convert name="shader_splitlr_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="splitlr_float" />
+  </convert>
+  <surfacematerial name="material_splitlr_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_splitlr_float_out" />
+  </surfacematerial>
+</materialx>

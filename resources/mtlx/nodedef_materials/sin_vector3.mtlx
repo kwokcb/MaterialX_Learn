@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <sin name="sin_vector3" type="vector3">
+    <input name="in" type="vector3" value="0.0, 0.0, 0.0" />
+  </sin>
+  <convert name="shader_sin_vector3_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="sin_vector3" />
+  </convert>
+  <surfacematerial name="material_sin_vector3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_sin_vector3_out" />
+  </surfacematerial>
+</materialx>

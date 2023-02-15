@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <remap name="remap_vector2" type="vector2">
+    <input name="in" type="vector2" value="0.0, 0.0" />
+    <input name="inlow" type="vector2" value="0.0, 0.0" />
+    <input name="inhigh" type="vector2" value="1.0, 1.0" />
+    <input name="outlow" type="vector2" value="0.0, 0.0" />
+    <input name="outhigh" type="vector2" value="1.0, 1.0" />
+  </remap>
+  <convert name="shader_remap_vector2_out" type="surfaceshader">
+    <input name="in" type="vector2" nodename="remap_vector2" />
+  </convert>
+  <surfacematerial name="material_remap_vector2_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_remap_vector2_out" />
+  </surfacematerial>
+</materialx>

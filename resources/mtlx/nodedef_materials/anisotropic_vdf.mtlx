@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <anisotropic_vdf name="anisotropic_vdf" type="VDF">
+    <input name="absorption" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="scattering" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="anisotropy" type="float" value="0.0" />
+  </anisotropic_vdf>
+</materialx>

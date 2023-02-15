@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <splittb name="splittb_vector3" type="vector3">
+    <input name="valuet" type="vector3" value="0.0, 0.0, 0.0" uiname="Top" />
+    <input name="valueb" type="vector3" value="0.0, 0.0, 0.0" uiname="Bottom" />
+    <input name="center" type="float" value="0.5" uiname="Center" />
+    <input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+  </splittb>
+  <convert name="shader_splittb_vector3_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="splittb_vector3" />
+  </convert>
+  <surfacematerial name="material_splittb_vector3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_splittb_vector3_out" />
+  </surfacematerial>
+</materialx>

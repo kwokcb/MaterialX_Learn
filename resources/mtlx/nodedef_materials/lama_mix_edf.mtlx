@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <LamaMix name="lama_mix_edf" type="EDF" version="1.0">
+    <input name="material1" uiname="Material 1" type="EDF" nodename="uniform_edf" />
+    <input name="material2" uiname="Material 2" type="EDF" nodename="uniform_edf2" />
+    <input name="mix" type="float" value="0.0" />
+  </LamaMix>
+  <uniform_edf name="uniform_edf" type="EDF" />
+  <uniform_edf name="uniform_edf2" type="EDF" />
+  <surface name="shader_lama_mix_edf_out" type="surfaceshader">
+    <input name="edf" type="EDF" nodename="lama_mix_edf" />
+  </surface>
+  <surfacematerial name="material_lama_mix_edf_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_lama_mix_edf_out" />
+  </surfacematerial>
+</materialx>

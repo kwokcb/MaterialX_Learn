@@ -40,6 +40,20 @@ body, .form-control, .col-form-label-sm, .card-body, .btn{
 }
 
 
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/l/font?kit=KFOmCnqEu92Fr1Me4GZNCzcPbOHTt6tqXl2TMWgtUADtbNE0FwjR60ub0BtuliV9nzY5opeRF6O-FnZsaJLetvV-9mXgaxv7xBV8jmt2chWZ7OuZw6siU4A&skey=a0a0114a1dcab3ac&v=v30') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/l/font?kit=KFOlCnqEu92Fr1MmWUlvBh0_IsHA06hvWViQJH84UwXqadI5GH6rkU6c1RhjmSh-mjE8oYqOCqC7EXNvZZ3Tj85H82LlaBb0yRZ5iW51bwqE7-6exqgvXI1IEVo&skey=c06e7213f788649e&v=v30') format('woff2');
+}
 
 
 .feature-icon {

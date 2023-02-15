@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <surface_unlit name="surface_unlit" type="surfaceshader">
+    <input name="emission" type="float" value="1.0" />
+    <input name="emission_color" type="color3" value="1,1,1" />
+    <input name="transmission" type="float" value="0.0" />
+    <input name="transmission_color" type="color3" value="1,1,1" />
+    <input name="opacity" type="float" value="1.0" />
+  </surface_unlit>
+  <surfacematerial name="material_surface_unlit_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="surface_unlit" />
+  </surfacematerial>
+</materialx>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <ifgreater name="ifgreater_color3" type="color3">
+    <input name="value1" type="float" value="1.0" />
+    <input name="value2" type="float" value="0.0" />
+    <input name="in1" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="in2" type="color3" value="0.0, 0.0, 0.0" />
+  </ifgreater>
+  <convert name="shader_ifgreater_color3_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="ifgreater_color3" />
+  </convert>
+  <surfacematerial name="material_ifgreater_color3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ifgreater_color3_out" />
+  </surfacematerial>
+</materialx>

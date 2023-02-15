@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <dot name="dot_displacementshader" type="displacementshader">
+    <input name="in" type="displacementshader" value="" />
+    <input name="note" type="string" value="" uniform="true" />
+  </dot>
+  <surfacematerial name="material_dot_displacementshader_out" type="material">
+    <input name="displacementshader" type="displacementshader" nodename="dot_displacementshader" />
+  </surfacematerial>
+</materialx>

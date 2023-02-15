@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <constant name="constant_matrix33" type="matrix33">
+    <input name="value" type="matrix33" value="1.0,0.0,0.0, 0.0,1.0,0.0, 0.0,0.0,1.0" />
+  </constant>
+</materialx>

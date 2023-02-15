@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <geompropvalue name="geompropvalue_boolean" type="boolean">
+    <input name="geomprop" type="string" value="geompropvalue_boolean" uniform="true" />
+    <input name="default" type="boolean" value="false" />
+  </geompropvalue>
+  <convert name="shader_geompropvalue_boolean_out" type="surfaceshader">
+    <input name="in" type="boolean" nodename="geompropvalue_boolean" />
+  </convert>
+  <surfacematerial name="material_geompropvalue_boolean_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_geompropvalue_boolean_out" />
+  </surfacematerial>
+</materialx>

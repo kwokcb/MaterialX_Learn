@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <geompropvalue name="geompropvalue_float" type="float">
+    <input name="geomprop" type="string" value="geompropvalue_float" uniform="true" />
+    <input name="default" type="float" value="0.0" />
+  </geompropvalue>
+  <convert name="shader_geompropvalue_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="geompropvalue_float" />
+  </convert>
+  <surfacematerial name="material_geompropvalue_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_geompropvalue_float_out" />
+  </surfacematerial>
+</materialx>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <switch name="switch_float" type="float">
+    <input name="in1" type="float" value="0.0" />
+    <input name="in2" type="float" value="0.0" />
+    <input name="in3" type="float" value="0.0" />
+    <input name="in4" type="float" value="0.0" />
+    <input name="in5" type="float" value="0.0" />
+    <input name="which" type="float" value="0.0" />
+  </switch>
+  <convert name="shader_switch_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="switch_float" />
+  </convert>
+  <surfacematerial name="material_switch_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_switch_float_out" />
+  </surfacematerial>
+</materialx>

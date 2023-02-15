@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <constant name="constant_boolean" type="boolean">
+    <input name="value" type="boolean" value="false" />
+  </constant>
+  <convert name="shader_constant_boolean_out" type="surfaceshader">
+    <input name="in" type="boolean" nodename="constant_boolean" />
+  </convert>
+  <surfacematerial name="material_constant_boolean_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_constant_boolean_out" />
+  </surfacematerial>
+</materialx>

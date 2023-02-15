@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <dot name="dot_matrix44" type="matrix44">
+    <input name="in" type="matrix44" value="1.0,0.0,0.0,0.0, 0.0,1.0,0.0,0.0, 0.0,0.0,1.0,0.0, 0.0,0.0,0.0,1.0" />
+    <input name="note" type="string" value="" uniform="true" />
+  </dot>
+</materialx>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <ramptb name="ramptb_float" type="float">
+    <input name="valuet" type="float" value="0.0" />
+    <input name="valueb" type="float" value="0.0" />
+    <input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+  </ramptb>
+  <convert name="shader_ramptb_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="ramptb_float" />
+  </convert>
+  <surfacematerial name="material_ramptb_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ramptb_float_out" />
+  </surfacematerial>
+</materialx>

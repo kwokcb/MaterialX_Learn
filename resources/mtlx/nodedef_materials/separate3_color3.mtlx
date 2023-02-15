@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <separate3 name="separate3_color3" type="multioutput">
+    <input name="in" type="color3" value="0.0, 0.0, 0.0" />
+  </separate3>
+  <convert name="shader_separate3_color3_outr" type="surfaceshader">
+    <input name="in" type="float" nodename="separate3_color3" output="outr" />
+  </convert>
+  <surfacematerial name="material_separate3_color3_outr" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_separate3_color3_outr" />
+  </surfacematerial>
+  <convert name="shader_separate3_color3_outg" type="surfaceshader">
+    <input name="in" type="float" nodename="separate3_color3" output="outg" />
+  </convert>
+  <surfacematerial name="material_separate3_color3_outg" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_separate3_color3_outg" />
+  </surfacematerial>
+  <convert name="shader_separate3_color3_outb" type="surfaceshader">
+    <input name="in" type="float" nodename="separate3_color3" output="outb" />
+  </convert>
+  <surfacematerial name="material_separate3_color3_outb" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_separate3_color3_outb" />
+  </surfacematerial>
+</materialx>

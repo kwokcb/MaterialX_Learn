@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <rgbtohsv name="rgbtohsv_color4" type="color4">
+    <input name="in" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+  </rgbtohsv>
+  <convert name="shader_rgbtohsv_color4_out" type="surfaceshader">
+    <input name="in" type="color4" nodename="rgbtohsv_color4" />
+  </convert>
+  <surfacematerial name="material_rgbtohsv_color4_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_rgbtohsv_color4_out" />
+  </surfacematerial>
+</materialx>

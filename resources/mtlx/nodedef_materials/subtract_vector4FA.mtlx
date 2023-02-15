@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <subtract name="subtract_vector4FA" type="vector4">
+    <input name="in1" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in2" type="float" value="0.0" />
+  </subtract>
+  <convert name="shader_subtract_vector4FA_out" type="surfaceshader">
+    <input name="in" type="vector4" nodename="subtract_vector4FA" />
+  </convert>
+  <surfacematerial name="material_subtract_vector4FA_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_subtract_vector4FA_out" />
+  </surfacematerial>
+</materialx>

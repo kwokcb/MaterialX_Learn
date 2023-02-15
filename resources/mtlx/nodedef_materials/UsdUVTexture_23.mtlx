@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <UsdUVTexture name="UsdUVTexture_23" type="multioutput" version="2.3">
+    <input name="file" type="filename" value="" uniform="true" />
+    <input name="st" type="vector2" defaultgeomprop="UV0" />
+    <input name="wrapS" type="string" value="periodic" enum="black,clamp,periodic,mirror" uniform="true" />
+    <input name="wrapT" type="string" value="periodic" enum="black,clamp,periodic,mirror" uniform="true" />
+    <input name="fallback" type="color4" value="0, 0, 0, 1" />
+    <input name="scale" type="color4" value="1, 1, 1, 1" uniform="true" />
+    <input name="bias" type="color4" value="0, 0, 0, 0" uniform="true" />
+  </UsdUVTexture>
+  <convert name="shader_UsdUVTexture_23_r" type="surfaceshader">
+    <input name="in" type="float" nodename="UsdUVTexture_23" output="r" />
+  </convert>
+  <surfacematerial name="material_UsdUVTexture_23_r" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_UsdUVTexture_23_r" />
+  </surfacematerial>
+  <convert name="shader_UsdUVTexture_23_g" type="surfaceshader">
+    <input name="in" type="float" nodename="UsdUVTexture_23" output="g" />
+  </convert>
+  <surfacematerial name="material_UsdUVTexture_23_g" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_UsdUVTexture_23_g" />
+  </surfacematerial>
+  <convert name="shader_UsdUVTexture_23_b" type="surfaceshader">
+    <input name="in" type="float" nodename="UsdUVTexture_23" output="b" />
+  </convert>
+  <surfacematerial name="material_UsdUVTexture_23_b" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_UsdUVTexture_23_b" />
+  </surfacematerial>
+  <convert name="shader_UsdUVTexture_23_a" type="surfaceshader">
+    <input name="in" type="float" nodename="UsdUVTexture_23" output="a" />
+  </convert>
+  <surfacematerial name="material_UsdUVTexture_23_a" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_UsdUVTexture_23_a" />
+  </surfacematerial>
+  <convert name="shader_UsdUVTexture_23_rgb" type="surfaceshader">
+    <input name="in" type="color3" nodename="UsdUVTexture_23" output="rgb" />
+  </convert>
+  <surfacematerial name="material_UsdUVTexture_23_rgb" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_UsdUVTexture_23_rgb" />
+  </surfacematerial>
+</materialx>

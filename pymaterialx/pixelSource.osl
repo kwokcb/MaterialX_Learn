@@ -1,0 +1,684 @@
+#include "mx_funcs.h"
+
+#define true 1
+#define false 0
+struct textureresource { string filename; string colorspace; };
+struct BSDF { closure color response; color throughput; float thickness; float ior; };
+#define EDF closure color
+#define VDF closure color
+struct surfaceshader { closure color bsdf; closure color edf; float opacity; };
+#define volumeshader closure color
+#define displacementshader vector
+#define lightshader closure color
+#define MATERIAL closure color
+
+#define M_FLOAT_EPS 1e-8
+
+void mx_fractal3d_float(float amplitude, int octaves, float lacunarity, float diminish, vector position, output float result)
+{
+    float f = mx_fbm(position, octaves, lacunarity, diminish, "snoise");
+    result = f * amplitude;
+}
+
+void mx_roughness_anisotropy(float roughness, float anisotropy, output vector2 result)
+{
+    float roughness_sqr = clamp(roughness*roughness, M_FLOAT_EPS, 1.0);
+    if (anisotropy > 0.0)
+    {
+        float aspect = sqrt(1.0 - clamp(anisotropy, 0.0, 0.98));
+        result.x = min(roughness_sqr / aspect, 1.0);
+        result.y = roughness_sqr * aspect;
+    }
+    else
+    {
+        result.x = roughness_sqr;
+        result.y = roughness_sqr;
+    }
+}
+
+float mx_square(float x)
+{
+    return x*x;
+}
+
+vector2 mx_square(vector2 x)
+{
+    return x*x;
+}
+
+vector mx_square(vector x)
+{
+    return x*x;
+}
+
+vector4 mx_square(vector4 x)
+{
+    return x*x;
+}
+
+float mx_pow5(float x)
+{
+    return mx_square(mx_square(x)) * x;
+}
+
+color mx_fresnel_conductor(float cosTheta, vector n, vector k)
+{
+   float c2 = cosTheta*cosTheta;
+   vector n2_k2 = n*n + k*k;
+   vector nc2 = 2.0 * n * cosTheta;
+
+   vector rs_a = n2_k2 + c2;
+   vector rp_a = n2_k2 * c2 + 1.0;
+   vector rs = (rs_a - nc2) / (rs_a + nc2);
+   vector rp = (rp_a - nc2) / (rp_a + nc2);
+
+   return 0.5 * (rs + rp);
+}
+
+// Standard Schlick Fresnel
+float mx_fresnel_schlick(float cosTheta, float F0)
+{
+    float x = clamp(1.0 - cosTheta, 0.0, 1.0);
+    float x5 = mx_pow5(x);
+    return F0 + (1.0 - F0) * x5;
+}
+color mx_fresnel_schlick(float cosTheta, color F0)
+{
+    float x = clamp(1.0 - cosTheta, 0.0, 1.0);
+    float x5 = mx_pow5(x);
+    return F0 + (1.0 - F0) * x5;
+}
+
+// Generalized Schlick Fresnel
+float mx_fresnel_schlick(float cosTheta, float F0, float F90)
+{
+    float x = clamp(1.0 - cosTheta, 0.0, 1.0);
+    float x5 = mx_pow5(x);
+    return mix(F0, F90, x5);
+}
+color mx_fresnel_schlick(float cosTheta, color F0, color F90)
+{
+    float x = clamp(1.0 - cosTheta, 0.0, 1.0);
+    float x5 = mx_pow5(x);
+    return mix(F0, F90, x5);
+}
+
+// Generalized Schlick Fresnel with a variable exponent
+color mx_fresnel_schlick(float cosTheta, float f0, float f90, float exponent)
+{
+    float x = clamp(1.0 - cosTheta, 0.0, 1.0);
+    return mix(f0, f90, pow(x, exponent));
+}
+color mx_fresnel_schlick(float cosTheta, color f0, color f90, float exponent)
+{
+    float x = clamp(1.0 - cosTheta, 0.0, 1.0);
+    return mix(f0, f90, pow(x, exponent));
+}
+
+// Rational curve fit approximation for the directional albedo of Imageworks sheen.
+float mx_imageworks_sheen_dir_albedo_analytic(float NdotV, float roughness)
+{
+    float a = 5.25248 - 7.66024 * NdotV + 14.26377 * roughness;
+    float b = 1.0 + 30.66449 * NdotV + 32.53420 * roughness;
+    return a / b;
+}
+
+float mx_imageworks_sheen_dir_albedo(float NdotV, float roughness)
+{
+    float dirAlbedo = mx_imageworks_sheen_dir_albedo_analytic(NdotV, roughness);
+    return clamp(dirAlbedo, 0.0, 1.0);
+}
+
+// TODO: Vanilla OSL doesn't have a proper sheen closure,
+// so use 'diffuse' scaled by sheen directional albedo for now.
+void mx_sheen_bsdf(float weight, color Ks, float roughness, vector N, output BSDF bsdf)
+{
+    if (weight < M_FLOAT_EPS)
+    {
+        bsdf.response = 0;
+        bsdf.throughput = color(1.0);
+        return;
+    }
+
+    // TODO: Normalization should not be needed. My suspicion is that
+    // BSDF sampling of new outgoing direction in 'testrender' needs
+    // to be fixed.
+    vector V = normalize(-I);
+
+    float NdotV = fabs(dot(N,V));
+    float alpha = clamp(roughness, M_FLOAT_EPS, 1.0);
+    float albedo = weight * mx_imageworks_sheen_dir_albedo(NdotV, alpha);
+    bsdf.response = albedo * Ks * diffuse(N);
+    bsdf.throughput = 1.0 - albedo;
+}
+
+void mx_luminance_color3(color in, color lumacoeffs, output color result)
+{
+    result = dot(in, lumacoeffs);
+}
+
+matrix rotationMatrix(vector axis, float angle)
+{
+    vector nAxis = normalize(axis);
+    float s = sin(angle);
+    float c = cos(angle);
+    float oc = 1.0 - c;
+
+    return matrix(oc * nAxis[0] * nAxis[0] + c,             oc * nAxis[0] * nAxis[1] - nAxis[2] * s,  oc * nAxis[2] * nAxis[0] + nAxis[1] * s,  0.0,
+                  oc * nAxis[0] * nAxis[1] + nAxis[2] * s,  oc * nAxis[1] * nAxis[1] + c,             oc * nAxis[1] * nAxis[2] - nAxis[0] * s,  0.0,
+                  oc * nAxis[2] * nAxis[0] - nAxis[1] * s,  oc * nAxis[1] * nAxis[2] + nAxis[0] * s,  oc * nAxis[2] * nAxis[2] + c,             0.0,
+                  0.0,                                      0.0,                                      0.0,                                      1.0);
+}
+
+void mx_rotate_vector3(vector _in, float amount, vector axis, output vector result)
+{
+    float rotationRadians = radians(amount);
+    matrix m = rotationMatrix(axis, rotationRadians);
+    vector4 trans = transform(m, vector4(_in[0], _in[1], _in[2], 1.0));
+    result = vector(trans.x, trans.y, trans.z);
+}
+
+void mx_artistic_ior(color reflectivity, color edge_color, output vector ior, output vector extinction)
+{
+    // "Artist Friendly Metallic Fresnel", Ole Gulbrandsen, 2014
+    // http://jcgt.org/published/0003/04/03/paper.pdf
+
+    color r = clamp(reflectivity, 0.0, 0.99);
+    color r_sqrt = sqrt(r);
+    color n_min = (1.0 - r) / (1.0 + r);
+    color n_max = (1.0 + r_sqrt) / (1.0 - r_sqrt);
+    ior = mix(n_max, n_min, edge_color);
+
+    color np1 = ior + 1.0;
+    color nm1 = ior - 1.0;
+    color k2 = (np1*np1 * r - nm1*nm1) / (1.0 - r);
+    k2 = max(k2, 0.0);
+    extinction = sqrt(k2);
+}
+
+
+// Compute the average of an anisotropic alpha pair.
+float mx_average_alpha(vector2 alpha)
+{
+    return sqrt(alpha.x * alpha.y);
+}
+
+// Convert a real-valued index of refraction to normal-incidence reflectivity.
+float mx_ior_to_f0(float ior)
+{
+    return mx_square((ior - 1.0) / (ior + 1.0));
+}
+
+// Convert normal-incidence reflectivity to real-valued index of refraction.
+float mx_f0_to_ior(float F0)
+{
+    float sqrtF0 = sqrt(clamp(F0, 0.01, 0.99));
+    return (1.0 + sqrtF0) / (1.0 - sqrtF0);
+}
+
+// Rational quadratic fit to Monte Carlo data for GGX directional albedo.
+color mx_ggx_dir_albedo(float NdotV, float alpha, color F0, color F90)
+{
+    float x = NdotV;
+    float y = alpha;
+    float x2 = mx_square(x);
+    float y2 = mx_square(y);
+    vector4 r = vector4(0.1003, 0.9345, 1.0, 1.0) +
+                vector4(-0.6303, -2.323, -1.765, 0.2281) * x +
+                vector4(9.748, 2.229, 8.263, 15.94) * y +
+                vector4(-2.038, -3.748, 11.53, -55.83) * x * y +
+                vector4(29.34, 1.424, 28.96, 13.08) * x2 +
+                vector4(-8.245, -0.7684, -7.507, 41.26) * y2 +
+                vector4(-26.44, 1.436, -36.11, 54.9) * x2 * y +
+                vector4(19.99, 0.2913, 15.86, 300.2) * x * y2 +
+                vector4(-5.448, 0.6286, 33.37, -285.1) * x2 * y2;
+    vector2 AB = vector2(r.x, r.y) / vector2(r.z, r.w);
+    AB.x = clamp(AB.x, 0.0, 1.0);
+    AB.y = clamp(AB.y, 0.0, 1.0);
+    return F0 * AB.x + F90 * AB.y;
+}
+
+float mx_ggx_dir_albedo(float NdotV, float alpha, float F0, float F90)
+{
+    color result = mx_ggx_dir_albedo(NdotV, alpha, color(F0), color(F90));
+    return result[0];
+}
+
+float mx_ggx_dir_albedo(float NdotV, float alpha, float ior)
+{
+    color result = mx_ggx_dir_albedo(NdotV, alpha, color(mx_ior_to_f0(ior)), color(1.0));
+    return result[0];
+}
+
+// https://blog.selfshadow.com/publications/turquin/ms_comp_final.pdf
+// Equations 14 and 16
+color mx_ggx_energy_compensation(float NdotV, float alpha, color Fss)
+{
+    float Ess = mx_ggx_dir_albedo(NdotV, alpha, 1.0, 1.0);
+    return 1.0 + Fss * (1.0 - Ess) / Ess;
+}
+
+float mx_ggx_energy_compensation(float NdotV, float alpha, float Fss)
+{
+    color result = mx_ggx_energy_compensation(NdotV, alpha, color(Fss));
+    return result[0];
+}
+
+void mx_dielectric_bsdf(float weight, color tint, float ior, vector2 roughness, normal N, vector U, string distribution, string scatter_mode, output BSDF bsdf)
+{
+    if (scatter_mode == "T")
+    {
+        bsdf.response = tint * weight * microfacet(distribution, N, U, roughness.x, roughness.y, ior, 1);
+        bsdf.throughput = tint * weight;
+        return;
+    }
+
+    float NdotV = clamp(dot(N,-I), M_FLOAT_EPS, 1.0);
+    float F0 = mx_ior_to_f0(ior);
+    float F = mx_fresnel_schlick(NdotV, F0);
+
+    // Calculate compensation for multiple scattering.
+    // This should normally be done inside the closure
+    // but since vanilla OSL doesen't support this we
+    // add it here in shader code instead.
+    vector2 safeAlpha = clamp(roughness, M_FLOAT_EPS, 1.0);
+    float avgAlpha = mx_average_alpha(safeAlpha);
+    float comp = mx_ggx_energy_compensation(NdotV, avgAlpha, F);
+
+    // Calculate throughput from directional albedo.
+    float dirAlbedo = mx_ggx_dir_albedo(NdotV, avgAlpha, ior) * comp;
+    bsdf.throughput = 1.0 - dirAlbedo * weight;
+
+    if (scatter_mode == "R")
+    {
+        bsdf.response = tint * weight * comp * microfacet(distribution, N, U, safeAlpha.x, safeAlpha.y, ior, 0);
+    }
+    else
+    {
+        bsdf.response = tint * weight * comp * microfacet(distribution, N, U, safeAlpha.x, safeAlpha.y, ior, 2);
+    }
+}
+
+
+void mx_conductor_bsdf(float weight, color ior_n, color ior_k, vector2 roughness, normal N, vector U, string distribution, output BSDF bsdf)
+{
+    bsdf.throughput = color(0.0);
+
+    if (weight < M_FLOAT_EPS)
+    {
+        bsdf.response = 0;
+        return;
+    }
+
+    // Calculate conductor fresnel
+    //
+    // Fresnel should be based on microfacet normal
+    // but we have no access to that from here, so just use
+    // view direction and surface normal instead
+    //
+    float NdotV = fabs(dot(N,-I));
+    color F = mx_fresnel_conductor(NdotV, ior_n, ior_k);
+
+    // Calculate compensation for multiple scattering.
+    // This should normally be done inside the closure
+    // but since vanilla OSL doesen't support this we
+    // add it here in shader code instead.
+    vector2 safeAlpha = clamp(roughness, M_FLOAT_EPS, 1.0);
+    float avgAlpha = mx_average_alpha(safeAlpha);
+    color comp = mx_ggx_energy_compensation(NdotV, avgAlpha, F);
+
+    // Set ior to 0.0 to disable the internal dielectric fresnel
+    bsdf.response = F * comp * weight * microfacet(distribution, N, U, safeAlpha.x, safeAlpha.y, 0.0, false);
+}
+
+void mx_translucent_bsdf(float weight, color _color, normal N, output BSDF bsdf)
+{
+    bsdf.response = _color * weight * translucent(N);
+    bsdf.throughput = color(0.0);
+}
+
+void mx_subsurface_bsdf(float weight, color _color, vector radius, float anisotropy, normal N, output BSDF bsdf)
+{
+    // TODO: Subsurface closure is not supported by vanilla OSL.
+    bsdf.response = _color * weight * diffuse(N);
+    bsdf.throughput = color(0.0);
+}
+
+void mx_oren_nayar_diffuse_bsdf(float weight, color _color, float roughness, normal N, output BSDF bsdf)
+{
+    bsdf.response = _color * weight * oren_nayar(N, roughness);
+    bsdf.throughput = color(0.0);
+}
+
+void mx_surface(BSDF bsdf, EDF edf, float opacity, output surfaceshader result)
+{
+    result.bsdf    = bsdf.response;
+    result.edf     = edf;
+    result.opacity = clamp(opacity, 0.0, 1.0);
+}
+
+void NG_standard_surface_surfaceshader_100(float base, color base_color, float diffuse_roughness, float metalness, float specular, color specular_color, float specular_roughness, float specular_IOR, float specular_anisotropy, float specular_rotation, float transmission, color transmission_color, float transmission_depth, color transmission_scatter, float transmission_scatter_anisotropy, float transmission_dispersion, float transmission_extra_roughness, float subsurface1, color subsurface_color, color subsurface_radius, float subsurface_scale, float subsurface_anisotropy, float sheen1, color sheen_color, float sheen_roughness, float coat, color coat_color, float coat_roughness, float coat_anisotropy, float coat_rotation, float coat_IOR, vector coat_normal, float coat_affect_color, float coat_affect_roughness, float thin_film_thickness, float thin_film_IOR, float emission1, color emission_color, color opacity, int thin_walled, vector normal1, vector tangent, output surfaceshader out)
+{
+    closure color null_closure = 0;
+    vector2 coat_roughness_vector_out = vector2(0.0, 0.0);
+    mx_roughness_anisotropy(coat_roughness, coat_anisotropy, coat_roughness_vector_out);
+    float coat_tangent_rotate_degree_in2_tmp = 360;
+    float coat_tangent_rotate_degree_out = coat_rotation * coat_tangent_rotate_degree_in2_tmp;
+    color metal_reflectivity_out = base_color * base;
+    color metal_edgecolor_out = specular_color * specular;
+    float coat_affect_roughness_multiply1_out = coat_affect_roughness * coat;
+    float tangent_rotate_degree_in2_tmp = 360;
+    float tangent_rotate_degree_out = specular_rotation * tangent_rotate_degree_in2_tmp;
+    float transmission_roughness_add_out = specular_roughness + transmission_extra_roughness;
+    float subsurface_color_nonnegative_in2_tmp = 0;
+    color subsurface_color_nonnegative_out = max(subsurface_color, subsurface_color_nonnegative_in2_tmp);
+    float coat_clamped_low_tmp = 0;
+    float coat_clamped_high_tmp = 1;
+    float coat_clamped_out = clamp(coat, coat_clamped_low_tmp, coat_clamped_high_tmp);
+    vector subsurface_radius_vector_out = vector(subsurface_radius[0], subsurface_radius[1], subsurface_radius[2]);
+    float subsurface_selector_out = float(thin_walled);
+    float base_color_nonnegative_in2_tmp = 0;
+    color base_color_nonnegative_out = max(base_color, base_color_nonnegative_in2_tmp);
+    color coat_attenuation_bg_tmp = color(1, 1, 1);
+    color coat_attenuation_out = mix(coat_attenuation_bg_tmp, coat_color, coat);
+    color emission_weight_out = emission_color * emission1;
+    color coat_emission_attenuation_bg_tmp = color(1, 1, 1);
+    color coat_emission_attenuation_out = mix(coat_emission_attenuation_bg_tmp, coat_color, coat);
+    color opacity_luminance_out = color(0.0);
+    mx_luminance_color3(opacity, color(0.272229, 0.674082, 0.0536895), opacity_luminance_out);
+    vector coat_tangent_rotate_out = vector(0.0);
+    mx_rotate_vector3(tangent, coat_tangent_rotate_degree_out, coat_normal, coat_tangent_rotate_out);
+    color artistic_ior_ior = color(0.0);
+    color artistic_ior_extinction = color(0.0);
+    mx_artistic_ior(metal_reflectivity_out, metal_edgecolor_out, artistic_ior_ior, artistic_ior_extinction);
+    float coat_affect_roughness_multiply2_out = coat_affect_roughness_multiply1_out * coat_roughness;
+    vector tangent_rotate_out = vector(0.0);
+    mx_rotate_vector3(tangent, tangent_rotate_degree_out, normal1, tangent_rotate_out);
+    float transmission_roughness_clamped_low_tmp = 0;
+    float transmission_roughness_clamped_high_tmp = 1;
+    float transmission_roughness_clamped_out = clamp(transmission_roughness_add_out, transmission_roughness_clamped_low_tmp, transmission_roughness_clamped_high_tmp);
+    float coat_gamma_multiply_out = coat_clamped_out * coat_affect_color;
+    vector subsurface_radius_scaled_out = subsurface_radius_vector_out * subsurface_scale;
+    color emission_weight_attenuated_out = emission_weight_out * coat_emission_attenuation_out;
+    vector coat_tangent_rotate_normalize_out = normalize(coat_tangent_rotate_out);
+    float coat_affected_roughness_fg_tmp = 1;
+    float coat_affected_roughness_out = mix(specular_roughness, coat_affected_roughness_fg_tmp, coat_affect_roughness_multiply2_out);
+    vector tangent_rotate_normalize_out = normalize(tangent_rotate_out);
+    float coat_affected_transmission_roughness_fg_tmp = 1;
+    float coat_affected_transmission_roughness_out = mix(transmission_roughness_clamped_out, coat_affected_transmission_roughness_fg_tmp, coat_affect_roughness_multiply2_out);
+    float coat_gamma_in2_tmp = 1;
+    float coat_gamma_out = coat_gamma_multiply_out + coat_gamma_in2_tmp;
+    float coat_tangent_value2_tmp = 0;
+    vector coat_tangent_out = mx_ternary(coat_anisotropy > coat_tangent_value2_tmp, coat_tangent_rotate_normalize_out, tangent);
+    vector2 main_roughness_out = vector2(0.0, 0.0);
+    mx_roughness_anisotropy(coat_affected_roughness_out, specular_anisotropy, main_roughness_out);
+    float main_tangent_value2_tmp = 0;
+    vector main_tangent_out = mx_ternary(specular_anisotropy > main_tangent_value2_tmp, tangent_rotate_normalize_out, tangent);
+    vector2 transmission_roughness_out = vector2(0.0, 0.0);
+    mx_roughness_anisotropy(coat_affected_transmission_roughness_out, specular_anisotropy, transmission_roughness_out);
+    color coat_affected_subsurface_color_out = pow(subsurface_color_nonnegative_out, coat_gamma_out);
+    color coat_affected_diffuse_color_out = pow(base_color_nonnegative_out, coat_gamma_out);
+    BSDF coat_bsdf_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    mx_dielectric_bsdf(coat, color(1, 1, 1), coat_IOR, coat_roughness_vector_out, coat_normal, coat_tangent_out, "ggx", "R", coat_bsdf_out);
+    BSDF metal_bsdf_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    metal_bsdf_out.thickness = thin_film_thickness;
+    metal_bsdf_out.ior = thin_film_IOR;
+    mx_conductor_bsdf(1, artistic_ior_ior, artistic_ior_extinction, main_roughness_out, normal1, main_tangent_out, "ggx", metal_bsdf_out);
+    BSDF specular_bsdf_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    specular_bsdf_out.thickness = thin_film_thickness;
+    specular_bsdf_out.ior = thin_film_IOR;
+    mx_dielectric_bsdf(specular, specular_color, specular_IOR, main_roughness_out, normal1, main_tangent_out, "ggx", "R", specular_bsdf_out);
+    BSDF transmission_bsdf_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    mx_dielectric_bsdf(1, transmission_color, specular_IOR, transmission_roughness_out, normal1, main_tangent_out, "ggx", "T", transmission_bsdf_out);
+    BSDF sheen_bsdf_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    mx_sheen_bsdf(sheen1, sheen_color, sheen_roughness, normal1, sheen_bsdf_out);
+    BSDF translucent_bsdf_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    mx_translucent_bsdf(1, coat_affected_subsurface_color_out, normal1, translucent_bsdf_out);
+    BSDF subsurface_bsdf_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    mx_subsurface_bsdf(1, coat_affected_subsurface_color_out, subsurface_radius_scaled_out, subsurface_anisotropy, normal1, subsurface_bsdf_out);
+    BSDF selected_subsurface_bsdf_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    selected_subsurface_bsdf_out.response = mix(subsurface_bsdf_out.response, translucent_bsdf_out.response, subsurface_selector_out);
+    selected_subsurface_bsdf_out.throughput = mix(subsurface_bsdf_out.throughput, translucent_bsdf_out.throughput, subsurface_selector_out);
+    BSDF diffuse_bsdf_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    mx_oren_nayar_diffuse_bsdf(base, coat_affected_diffuse_color_out, diffuse_roughness, normal1, diffuse_bsdf_out);
+    BSDF subsurface_mix_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    subsurface_mix_out.response = mix(diffuse_bsdf_out.response, selected_subsurface_bsdf_out.response, subsurface1);
+    subsurface_mix_out.throughput = mix(diffuse_bsdf_out.throughput, selected_subsurface_bsdf_out.throughput, subsurface1);
+    BSDF sheen_layer_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    sheen_layer_out.response = sheen_bsdf_out.response + subsurface_mix_out.response * sheen_bsdf_out.throughput;
+    sheen_layer_out.throughput = sheen_bsdf_out.throughput * subsurface_mix_out.throughput;
+    BSDF transmission_mix_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    transmission_mix_out.response = mix(sheen_layer_out.response, transmission_bsdf_out.response, transmission);
+    transmission_mix_out.throughput = mix(sheen_layer_out.throughput, transmission_bsdf_out.throughput, transmission);
+    BSDF specular_layer_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    specular_layer_out.response = specular_bsdf_out.response + transmission_mix_out.response * specular_bsdf_out.throughput;
+    specular_layer_out.throughput = specular_bsdf_out.throughput * transmission_mix_out.throughput;
+    BSDF thin_film_layer_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    thin_film_layer_out.response = mix(specular_layer_out.response, metal_bsdf_out.response, metalness);
+    thin_film_layer_out.throughput = mix(specular_layer_out.throughput, metal_bsdf_out.throughput, metalness);
+    color thin_film_layer_attenuated_out_in2_clamped = clamp(coat_attenuation_out, 0.0, 1.0);
+    BSDF thin_film_layer_attenuated_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    thin_film_layer_attenuated_out.response = thin_film_layer_out.response * thin_film_layer_attenuated_out_in2_clamped;
+    thin_film_layer_attenuated_out.throughput = thin_film_layer_out.throughput * thin_film_layer_attenuated_out_in2_clamped;
+    BSDF coat_layer_out = BSDF(null_closure, color(1.0), 0.0, 0.0);
+    coat_layer_out.response = coat_bsdf_out.response + thin_film_layer_attenuated_out.response * coat_bsdf_out.throughput;
+    coat_layer_out.throughput = coat_bsdf_out.throughput * thin_film_layer_attenuated_out.throughput;
+    EDF emission_edf_out = emission_weight_attenuated_out * emission();
+    surfaceshader shader_constructor_out = surfaceshader(null_closure, null_closure, 1.0);
+    mx_surface(coat_layer_out, emission_edf_out, opacity_luminance_out[0], shader_constructor_out);
+    out = shader_constructor_out;
+}
+
+MATERIAL mx_surfacematerial(surfaceshader surface, displacementshader disp)
+{
+    float opacity_weight = clamp(surface.opacity, 0.0, 1.0);
+    return (surface.bsdf + surface.edf) * opacity_weight + transparent() * (1.0 - opacity_weight);
+}
+
+shader Marble_3D
+[[
+    string mtlx_category = "surfacematerial",
+    string mtlx_name = "Marble_3D"
+]]
+(
+    displacementshader displacementshader1 = vector(0.0),
+    string geomprop_Nworld_space = "world",
+    string geomprop_Tworld_space = "world",
+    int geomprop_Tworld_index = 0
+    [[
+        string widget = "number"
+    ]],
+    string obj_pos_space = "object",
+    vector add_xyz_in2 = vector(1, 1, 1),
+    float scale_pos_in2 = 4
+    [[
+        string widget = "number"
+    ]],
+    float scale_xyz_in2 = 6
+    [[
+        string widget = "number"
+    ]],
+    float noise_amplitude = 1
+    [[
+        string widget = "number"
+    ]],
+    int noise_octaves = 3
+    [[
+        string widget = "number"
+    ]],
+    float noise_lacunarity = 2
+    [[
+        string widget = "number"
+    ]],
+    float noise_diminish = 0.5
+    [[
+        string widget = "number"
+    ]],
+    float scale_noise_in2 = 3
+    [[
+        string widget = "number"
+    ]],
+    float scale_in2 = 0.5
+    [[
+        string widget = "number"
+    ]],
+    float bias_in2 = 0.5
+    [[
+        string widget = "number"
+    ]],
+    float power_in2 = 3
+    [[
+        string widget = "number"
+    ]],
+    color color_mix_fg = color(0.1, 0.1, 0.3),
+    color color_mix_bg = color(0.8, 0.8, 0.8),
+    float SR_marble1_base = 1
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_diffuse_roughness = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_metalness = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_specular = 1
+    [[
+        string widget = "number"
+    ]],
+    color SR_marble1_specular_color = color(1, 1, 1),
+    float SR_marble1_specular_roughness = 0.1
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_specular_IOR = 1.5
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_specular_anisotropy = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_specular_rotation = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_transmission = 0
+    [[
+        string widget = "number"
+    ]],
+    color SR_marble1_transmission_color = color(1, 1, 1),
+    float SR_marble1_transmission_depth = 0
+    [[
+        string widget = "number"
+    ]],
+    color SR_marble1_transmission_scatter = color(0, 0, 0),
+    float SR_marble1_transmission_scatter_anisotropy = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_transmission_dispersion = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_transmission_extra_roughness = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_subsurface = 0.4
+    [[
+        string widget = "number"
+    ]],
+    color SR_marble1_subsurface_radius = color(1, 1, 1),
+    float SR_marble1_subsurface_scale = 1
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_subsurface_anisotropy = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_sheen = 0
+    [[
+        string widget = "number"
+    ]],
+    color SR_marble1_sheen_color = color(1, 1, 1),
+    float SR_marble1_sheen_roughness = 0.3
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_coat = 0
+    [[
+        string widget = "number"
+    ]],
+    color SR_marble1_coat_color = color(1, 1, 1),
+    float SR_marble1_coat_roughness = 0.1
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_coat_anisotropy = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_coat_rotation = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_coat_IOR = 1.5
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_coat_affect_color = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_coat_affect_roughness = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_thin_film_thickness = 0
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_thin_film_IOR = 1.5
+    [[
+        string widget = "number"
+    ]],
+    float SR_marble1_emission = 0
+    [[
+        string widget = "number"
+    ]],
+    color SR_marble1_emission_color = color(1, 1, 1),
+    color SR_marble1_opacity = color(1, 1, 1),
+    int SR_marble1_thin_walled = 0
+    [[
+        string widget = "checkBox"
+    ]],
+    output MATERIAL out = 0
+)
+{
+    closure color null_closure = 0;
+    vector geomprop_Nworld_out = transform(geomprop_Nworld_space, N);
+    vector geomprop_Tworld_out = transform(geomprop_Tworld_space, normalize(dPdu));
+    vector obj_pos_out = transform(obj_pos_space, P);
+    float add_xyz_out = dot(obj_pos_out, add_xyz_in2);
+    vector scale_pos_out = obj_pos_out * scale_pos_in2;
+    float scale_xyz_out = add_xyz_out * scale_xyz_in2;
+    float noise_out = 0.0;
+    mx_fractal3d_float(noise_amplitude, noise_octaves, noise_lacunarity, noise_diminish, scale_pos_out, noise_out);
+    float scale_noise_out = noise_out * scale_noise_in2;
+    float sum_out = scale_xyz_out + scale_noise_out;
+    float sin_out = sin(sum_out);
+    float scale_out = sin_out * scale_in2;
+    float bias_out = scale_out + bias_in2;
+    float power_out = pow(bias_out, power_in2);
+    color color_mix_out = mix(color_mix_bg, color_mix_fg, power_out);
+    surfaceshader SR_marble1_out = surfaceshader(null_closure, null_closure, 1.0);
+    NG_standard_surface_surfaceshader_100(SR_marble1_base, color_mix_out, SR_marble1_diffuse_roughness, SR_marble1_metalness, SR_marble1_specular, SR_marble1_specular_color, SR_marble1_specular_roughness, SR_marble1_specular_IOR, SR_marble1_specular_anisotropy, SR_marble1_specular_rotation, SR_marble1_transmission, SR_marble1_transmission_color, SR_marble1_transmission_depth, SR_marble1_transmission_scatter, SR_marble1_transmission_scatter_anisotropy, SR_marble1_transmission_dispersion, SR_marble1_transmission_extra_roughness, SR_marble1_subsurface, color_mix_out, SR_marble1_subsurface_radius, SR_marble1_subsurface_scale, SR_marble1_subsurface_anisotropy, SR_marble1_sheen, SR_marble1_sheen_color, SR_marble1_sheen_roughness, SR_marble1_coat, SR_marble1_coat_color, SR_marble1_coat_roughness, SR_marble1_coat_anisotropy, SR_marble1_coat_rotation, SR_marble1_coat_IOR, geomprop_Nworld_out, SR_marble1_coat_affect_color, SR_marble1_coat_affect_roughness, SR_marble1_thin_film_thickness, SR_marble1_thin_film_IOR, SR_marble1_emission, SR_marble1_emission_color, SR_marble1_opacity, SR_marble1_thin_walled, geomprop_Nworld_out, geomprop_Tworld_out, SR_marble1_out);
+    MATERIAL Marble_3D_out = mx_surfacematerial(SR_marble1_out, displacementshader1);
+    out = Marble_3D_out;
+}
+
+

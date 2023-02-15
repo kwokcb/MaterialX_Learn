@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <mix name="mix_float" type="float">
+    <input name="fg" type="float" value="0.0" />
+    <input name="bg" type="float" value="0.0" />
+    <input name="mix" type="float" value="0.0" />
+  </mix>
+  <convert name="shader_mix_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="mix_float" />
+  </convert>
+  <surfacematerial name="material_mix_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_mix_float_out" />
+  </surfacematerial>
+</materialx>
