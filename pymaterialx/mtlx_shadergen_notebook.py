@@ -8,7 +8,7 @@
 # 
 # Topics covered:
 # 1. Submodules per code generator
-# 2. Context and options for generation.
+# 2. Context and options for generation
 # 3. Real world unit and color management transform. 
 # 4. Finding "renderable" items
 # 5. Per `target` (shading language) generators.
@@ -232,7 +232,7 @@ for target in foundTargets:
 # 
 # For a list of generators and their derivations see documentation for the base class <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">ShaderGenerator<a>
 # 
-# <img src="../documents/images/ShaderGenerator_inheritance.png" style="width:50%"></img>
+# <img src="https://kwokcb.github.io/MaterialX_Learn/documents/images/ShaderGenerator_inheritance.png" style="width:50%"></img>
 
 # %% [markdown]
 # Note that Vulkan has the same target as `genglsl`, but has it's own generator.
