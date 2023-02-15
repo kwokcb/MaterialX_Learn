@@ -15405,8 +15405,6 @@ For this access is needed to the &quot;options&quot; for the context which are s
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Found: 1 renderables
 Found node to render:  Marble_3D
-
-Found node to render:  Marble_3D
 </pre>
 </div>
 </div>
@@ -15505,9 +15503,7 @@ with a argument as to which code to return. This code can be directly compiled a
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span>        
-
-<span class="n">pixelSource</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pixelSource</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="n">vertexSource</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="k">if</span> <span class="n">shader</span><span class="p">:</span>
     <span class="n">errors</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -15524,6 +15520,12 @@ with a argument as to which code to return. This code can be directly compiled a
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;pixelSource.&#39;</span> <span class="o">+</span> <span class="n">target</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>        
     <span class="nb">print</span><span class="p">(</span><span class="n">pixelSource</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;pixelSource.&#39;</span> <span class="o">+</span> <span class="n">target</span> <span class="o">+</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;html&gt;&lt;pre&gt;&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pixelSource</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;/pre&gt;&lt;/html&gt;&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -15539,7 +15541,7 @@ with a argument as to which code to return. This code can be directly compiled a
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><strong>Pixel Source Code</strong></p>
-<iframe src="pixelSource.genglsl" title="ShaderGen Notebook" width="80%" height="800"></iframe>
+<iframe src="pixelSource.genglsl.html" title="ShaderGen Notebook" width="80%" height="800"></iframe>
 
 </div>
 </div>

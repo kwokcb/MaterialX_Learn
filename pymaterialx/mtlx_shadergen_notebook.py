@@ -432,8 +432,6 @@ else:
 # It is at this point in the `generateshader.py` that validation is performed. 
 
 # %%
-        
-
 pixelSource = ''
 vertexSource = ''
 if shader:
@@ -452,10 +450,17 @@ if shader:
     print(pixelSource, file=f)
     f.close()
 
+    f = open('pixelSource.' + target + '.html', 'w')
+    print('<html><pre>', file=f)
+    print(pixelSource, file=f)
+    print('</pre></html>', file=f)
+    f.close()
+
+
 
 # %% [markdown]
 # **Pixel Source Code**
-# <iframe src="pixelSource.genglsl" title="ShaderGen Notebook" width="80%" height="800"></iframe>
+# <iframe src="pixelSource.genglsl.html" title="ShaderGen Notebook" width="80%" height="800"></iframe>
 # 
 
 
