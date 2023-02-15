@@ -14597,9 +14597,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Shader-Generation">Shader Generation<a class="anchor-link" href="#Shader-Generation">&#182;</a></h1><p>This book will examine how to set up MaterialX for code generation. This book covers the 
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/blob/main/python/Scripts/generateshader.py" target="_blank"><code>generateshader.py</code></a> 
-script provided as part of the core distribution.</p>
+<h1 id="Shader-Generation">Shader Generation<a class="anchor-link" href="#Shader-Generation">&#182;</a></h1><p>This book will examine how to set up MaterialX for code generation. This book covers the</p>
+<a href="https://github.com/AcademySoftwareFoundation/MaterialX/blob/main/python/Scripts/generateshader.py" target="_blank">
+generateshader.py</a> 
+script provided as part of the core distribution.
 <p>Topics covered:</p>
 <ol>
 <li>Submodules per code generator</li>
@@ -14674,9 +14675,8 @@ The variants for GLSL include: <code>genglsl</code> and <code>genessl</code>, wi
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Setup">Setup<a class="anchor-link" href="#Setup">&#182;</a></h2><p>The basic setup requires that a document is created, the standard libraries are loaded, and the document containing the elements to generate code for to be present.</p>
 <p>Additional modules can be imported to support such as shader validation.</p>
-<h3 id="Code-Validation">Code Validation<a class="anchor-link" href="#Code-Validation">&#182;</a></h3><p>For <code>GLSL</code>, <code>ESSL</code>, and <code>Vulkan</code> languages 
-  <a href="https://github.com/KhronosGroup/glslang" target="_blank"><code>glslangValidator</code></a> can be used for syntax and
-compilation validation. It is installed using <code>vcpkg</code> and run as part of the CI process. For OSL and MDL: <code>olsc</code> and <code>mdlc</code> are used respectively.</p>
+<h3 id="Code-Validation">Code Validation<a class="anchor-link" href="#Code-Validation">&#182;</a></h3><p>For <code>GLSL</code>, <code>ESSL</code>, and <code>Vulkan</code> languages <a href="https://github.com/KhronosGroup/glslang" target="_blank">glslangValidator</a> 
+can be used for syntax and compilation validation. It is installed using <code>vcpkg</code> and run as part of the CI process. For OSL and MDL: <code>olsc</code> and <code>mdlc</code> are used respectively.</p>
 <p>The <code>generateshader.py</code> script supports passing in a external program argument which can be executed against the produced source code. 
 It runs the program with the source code as input and returns whether the program is 'valid'.</p>
 <p>The utility function from that script has been extracted out and is included below.</p>
@@ -15007,7 +15007,7 @@ go through all generators to find one with the appropriate <code>target</code> t
 <p>Targets themselves can be &quot;inherited&quot; which is reflected in the inheritance hierarcht for generators.
 For example the <code>essl</code> (ESSL) target inherits from the <code>genglsl</code> (GLSL) target as does the corresponding generators. 
 Inheritance is generally used to specialize code generation to handle shading language variations.</p>
-<p>For a list of generators and their derivations see documentation for the base class <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">ShaderGenerator</a></p>
+<p>For a list of generators and their derivations see documentation for the base class <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">ShaderGenerator<a></p>
 <p><img src="../documents/images/ShaderGenerator_inheritance.png" style="width:50%"></img></p>
 
 </div>

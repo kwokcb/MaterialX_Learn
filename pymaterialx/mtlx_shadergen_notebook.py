@@ -1,7 +1,9 @@
 # %% [markdown]
 # # Shader Generation
 # 
-# This book will examine how to set up MaterialX for code generation. This book covers the [`generateshader.py`](https://github.com/AcademySoftwareFoundation/MaterialX/blob/main/python/Scripts/generateshader.py) 
+# This book will examine how to set up MaterialX for code generation. This book covers the 
+# <a href="https://github.com/AcademySoftwareFoundation/MaterialX/blob/main/python/Scripts/generateshader.py" target="_blank">
+# generateshader.py</a> 
 # script provided as part of the core distribution.
 # 
 # Topics covered:
@@ -64,8 +66,8 @@ import MaterialX.PyMaterialXGenMdl as mx_gen_mdl
 # 
 # ### Code Validation
 # 
-# For `GLSL`, `ESSL`, and `Vulkan` languages [`glslangValidator`](https://github.com/KhronosGroup/glslang) can be used for syntax and
-# compilation validation. It is installed using `vcpkg` and run as part of the CI process. For OSL and MDL: `olsc` and `mdlc` are used respectively.
+# For `GLSL`, `ESSL`, and `Vulkan` languages <a href="https://github.com/KhronosGroup/glslang" target="_blank">glslangValidator</a> 
+# can be used for syntax and compilation validation. It is installed using `vcpkg` and run as part of the CI process. For OSL and MDL: `olsc` and `mdlc` are used respectively.
 # 
 # The `generateshader.py` script supports passing in a external program argument which can be executed against the produced source code. 
 # It runs the program with the source code as input and returns whether the program is 'valid'.
@@ -228,7 +230,7 @@ for target in foundTargets:
 # For example the `essl` (ESSL) target inherits from the `genglsl` (GLSL) target as does the corresponding generators. 
 # Inheritance is generally used to specialize code generation to handle shading language variations. 
 # 
-# For a list of generators and their derivations see documentation for the base class [ShaderGenerator](https://materialx.org/docs/api/class_shader_generator.html)
+# For a list of generators and their derivations see documentation for the base class <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">ShaderGenerator<a>
 # 
 # <img src="../documents/images/ShaderGenerator_inheritance.png" style="width:50%"></img>
 
