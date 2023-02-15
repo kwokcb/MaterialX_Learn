@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <combine3 name="combine3_color3" type="color3">
+    <input name="in1" type="float" value="0.0" />
+    <input name="in2" type="float" value="0.0" />
+    <input name="in3" type="float" value="0.0" />
+  </combine3>
+  <convert name="shader_combine3_color3_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="combine3_color3" />
+  </convert>
+  <surfacematerial name="material_combine3_color3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_combine3_color3_out" />
+  </surfacematerial>
+</materialx>

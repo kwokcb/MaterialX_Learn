@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <modulo name="modulo_vector2FA" type="vector2">
+    <input name="in1" type="vector2" value="0.0, 0.0" />
+    <input name="in2" type="float" value="1.0" />
+  </modulo>
+  <convert name="shader_modulo_vector2FA_out" type="surfaceshader">
+    <input name="in" type="vector2" nodename="modulo_vector2FA" />
+  </convert>
+  <surfacematerial name="material_modulo_vector2FA_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_modulo_vector2FA_out" />
+  </surfacematerial>
+</materialx>

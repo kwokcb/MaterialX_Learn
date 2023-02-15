@@ -53,7 +53,7 @@
               </li>
               <li>
                 <a class="dropdown-item" href="../documents.html">
-                  Documents (WIP)
+                  Documents
                 </a>
               </li>
             </ul>
@@ -75,10 +75,15 @@
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
-                  C++ API
+                <a class="dropdown-item" href="library_glossary.html">
+                  Library Glossary
                 </a>
               </li>
+              <li>
+                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
+                  C++ API  <img src="../images/MaterialXLogo_200x155.png" style="width:20px">
+                </a>
+              </li>                            
             </ul>
           </li>
 
@@ -100,12 +105,12 @@
             <ul class="dropdown-menu">
               <li>
                 <a class="dropdown-item" href="../python_MaterialX.html">
-                  MaterialX Python
+                  Tutorials 
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="../jupyter_example.html">
-                  Tutorials and Examples (preview)
+                  Examples
                 </a>
               </li>
             </ul>
@@ -444,6 +449,7 @@
 </div>
 <div class="collapse ps-5" id="collapse_shader">
 <div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="convert.html">convert</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surface_unlit.html">surface_unlit</a>
 </div>
 </div>
@@ -2282,13 +2288,21 @@ Category: clamp
    </div>
 <script>
   var searchInput = document.getElementById("searchTOC")
-  searchInput.addEventListener("keypress", filterOnEnter);
+  if (searchInput) {
+   searchInput.addEventListener("keypress", filterOnEnter);
+  }
   var renderButtons = document.querySelectorAll(".mrender");
-  renderButtons.forEach((renderButton) => { renderButton.addEventListener("click", renderMermaid); });
+  if (renderButtons) {
+     renderButtons.forEach((renderButton) => { renderButton.addEventListener("click", renderMermaid); });
+  }
   var copyButtons = document.querySelectorAll(".mrcopy");
-  copyButtons.forEach((copyButton) => { copyButton.addEventListener("click", copyMermaid); });
+  if (copyButtons) {
+     copyButtons.forEach((copyButton) => { copyButton.addEventListener("click", copyMermaid); });
+  }
   var collapses = document.querySelectorAll("[data-bs-toggle='collapse']");
- collapses.forEach((collapseItem) => { collapseItem.addEventListener("click", toggleIndexArea); });
+  if (collapses) {
+    collapses.forEach((collapseItem) => { collapseItem.addEventListener("click", toggleIndexArea); });
+  }
 </script>
 </body>
 </html>

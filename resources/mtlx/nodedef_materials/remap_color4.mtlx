@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <remap name="remap_color4" type="color4">
+    <input name="in" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="inlow" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="inhigh" type="color4" value="1.0, 1.0, 1.0, 1.0" />
+    <input name="outlow" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="outhigh" type="color4" value="1.0, 1.0, 1.0, 1.0" />
+  </remap>
+  <convert name="shader_remap_color4_out" type="surfaceshader">
+    <input name="in" type="color4" nodename="remap_color4" />
+  </convert>
+  <surfacematerial name="material_remap_color4_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_remap_color4_out" />
+  </surfacematerial>
+</materialx>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <ramp4 name="ramp4_vector3" type="vector3">
+    <input name="valuetl" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="valuetr" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="valuebl" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="valuebr" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+  </ramp4>
+  <convert name="shader_ramp4_vector3_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="ramp4_vector3" />
+  </convert>
+  <surfacematerial name="material_ramp4_vector3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ramp4_vector3_out" />
+  </surfacematerial>
+</materialx>

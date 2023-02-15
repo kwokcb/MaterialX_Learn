@@ -1,0 +1,34 @@
+digraph {
+  rankdir = LR;
+    NG_lama_add_edf_add1 [label= "add"];
+    NG_lama_add_edf_add1[shape = box];
+    NG_lama_add_edf_add1 ->     NG_lama_add_edf_out;
+    NG_lama_add_edf_out [label= "out"];
+    NG_lama_add_edf_out[shape = box]; 
+    NG_lama_add_edf_mul1 [label= "multiply"];
+    NG_lama_add_edf_mul1[shape = box];
+    NG_lama_add_edf_mul1 ->     NG_lama_add_edf_add1 [label= "in1"];
+    NG_lama_add_edf_add1 [label= "add"];
+    NG_lama_add_edf_add1[shape = box]; 
+    NG_lama_add_edf_material1INT [label="material1"];
+    NG_lama_add_edf_material1INT [shape = ellipse];
+    NG_lama_add_edf_mul1 [label="multiply"];
+    NG_lama_add_edf_material1INT -> NG_lama_add_edf_mul1 [label=".in1"];
+    NG_lama_add_edf_weight1INT [label="weight1"];
+    NG_lama_add_edf_weight1INT [shape = ellipse];
+    NG_lama_add_edf_mul1 [label="multiply"];
+    NG_lama_add_edf_weight1INT -> NG_lama_add_edf_mul1 [label=".in2"];
+    NG_lama_add_edf_mul2 [label= "multiply"];
+    NG_lama_add_edf_mul2[shape = box];
+    NG_lama_add_edf_mul2 ->     NG_lama_add_edf_add1 [label= "in2"];
+    NG_lama_add_edf_add1 [label= "add"];
+    NG_lama_add_edf_add1[shape = box]; 
+    NG_lama_add_edf_material2INT [label="material2"];
+    NG_lama_add_edf_material2INT [shape = ellipse];
+    NG_lama_add_edf_mul2 [label="multiply"];
+    NG_lama_add_edf_material2INT -> NG_lama_add_edf_mul2 [label=".in1"];
+    NG_lama_add_edf_weight2INT [label="weight2"];
+    NG_lama_add_edf_weight2INT [shape = ellipse];
+    NG_lama_add_edf_mul2 [label="multiply"];
+    NG_lama_add_edf_weight2INT -> NG_lama_add_edf_mul2 [label=".in2"];
+}

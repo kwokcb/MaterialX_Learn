@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <image name="image_vector2" type="vector2">
+    <input name="file" type="filename" value="" uiname="Filename" uniform="true" />
+    <input name="layer" type="string" value="" uiname="Layer" uniform="true" />
+    <input name="default" type="vector2" value="0.0, 0.0" uiname="Default Color" />
+    <input name="texcoord" type="vector2" defaultgeomprop="UV0" uiname="Texture Coordinates" />
+    <input name="uaddressmode" type="string" value="periodic" enum="constant,clamp,periodic,mirror" uiname="Address Mode U" uniform="true" />
+    <input name="vaddressmode" type="string" value="periodic" enum="constant,clamp,periodic,mirror" uiname="Address Mode V" uniform="true" />
+    <input name="filtertype" type="string" value="linear" enum="closest,linear,cubic" uiname="Filter Type" uniform="true" />
+    <input name="framerange" type="string" value="" uiname="Frame Range" uniform="true" />
+    <input name="frameoffset" type="integer" value="0" uiname="Frame Offset" uniform="true" />
+    <input name="frameendaction" type="string" value="constant" enum="constant,clamp,periodic,mirror" uiname="Frame End Action" uniform="true" />
+  </image>
+  <convert name="shader_image_vector2_out" type="surfaceshader">
+    <input name="in" type="vector2" nodename="image_vector2" />
+  </convert>
+  <surfacematerial name="material_image_vector2_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_image_vector2_out" />
+  </surfacematerial>
+</materialx>

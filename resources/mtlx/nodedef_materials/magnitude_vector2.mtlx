@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <magnitude name="magnitude_vector2" type="float">
+    <input name="in" type="vector2" value="0.0, 0.0" />
+  </magnitude>
+  <convert name="shader_magnitude_vector2_out" type="surfaceshader">
+    <input name="in" type="float" nodename="magnitude_vector2" />
+  </convert>
+  <surfacematerial name="material_magnitude_vector2_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_magnitude_vector2_out" />
+  </surfacematerial>
+</materialx>

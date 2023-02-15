@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <colorcorrect name="colorcorrect_color4" type="color4">
+    <input name="in" type="color4" uiname="Input Color" value="1, 1, 1, 0" />
+    <input name="hue" type="float" uiname="Hue" value="0" />
+    <input name="saturation" type="float" uiname="Saturation" value="1" />
+    <input name="gamma" type="float" uiname="Gamma" value="1" />
+    <input name="lift" type="float" uiname="Lift" value="0" />
+    <input name="gain" type="float" uiname="Gain" value="1" />
+    <input name="contrast" type="float" uiname="Contrast" value="1" />
+    <input name="contrastpivot" type="float" uiname="Contrast Pivot" value="0.5" />
+    <input name="exposure" type="float" uiname="Exposure" value="0" />
+  </colorcorrect>
+  <convert name="shader_colorcorrect_color4_out" type="surfaceshader">
+    <input name="in" type="color4" nodename="colorcorrect_color4" />
+  </convert>
+  <surfacematerial name="material_colorcorrect_color4_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_colorcorrect_color4_out" />
+  </surfacematerial>
+</materialx>

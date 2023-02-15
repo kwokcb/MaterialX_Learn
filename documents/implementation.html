@@ -57,7 +57,7 @@
                             </li>
                             <li>
                                 <a class="dropdown-item" href="documents.html">
-                                    Documents (WIP)
+                                    Documents
                                 </a>
                             </li>
                         </ul>
@@ -79,10 +79,15 @@
                                     Library (All)
                                 </a>
                             </li>
+							<li>
+								<a class="dropdown-item" href="definitions/library_glossary.html">
+								  Library Glossary
+								</a>
+							</li>				
                             <li>
                                 <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
                                     target="_blank">
-                                    C++ API
+                                    C++ API  <img src="images/MaterialXLogo_200x155.png" style="width:20px">
                                 </a>
                             </li>
                         </ul>
@@ -106,12 +111,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="dropdown-item" href="python_MaterialX.html">
-                                    MaterialX Python
+                                    Tutorials 
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="jupyter_example.html">
-                                    Tutorials and Examples (preview)
+                                    Examples
                                 </a>
                             </li>
                         </ul>
@@ -224,7 +229,7 @@
                                         </li>
                                         <p></p>
                                         <li>
-                                            <b>Sampling graphs for rendering</b>: All definitions in the MaterialX library had instance 
+                                            <b>Sampling graphs for rendering ('genMaterialsFromDefs')</b>: All definitions in the MaterialX library had instance 
                                             graphs created as separate MaterialX files. These 
                                             were fed into `test-render` from the OSL core distribution and the built in GLSL
                                             renderer. Note that any renderer can be used.
@@ -238,7 +243,8 @@
                                         </li>
                                     </ul>
                                     These utilities are accessible from the "Tools" section of this site and added to MaterialX core distribution.
-                                    <img src="./images/generative_docs.svg">                                    
+                                    <p><br><img src="./images/generative_docs.svg">
+                                    </p>
                                 </p>
                                 <div class="btn btn-lg btn-outline-primary">Web Utilities</div>
                                 <p>
@@ -275,14 +281,19 @@
                                 <p>
                                     <p>
                                     For API learning, the proposed setup is shown below. This initiative is still under review
-                                    but the intent will be to host interactive tutorials using the MaterialX Python via
-                                    Jupyter notebooks. A potential hosting target would be Google Colab. The hope is to connect
-                                    with USD or other standards via Python examples.  
+                                    but the intent will be to host interactive tutorials using MaterialX via
+                                    Jupyter notebooks. Native notebooks, as well as generated HTML and Python 
+                                    versions are available for download. The latter is for usage as non-interactive references
+                                    which are accessible under the "Examples" menu.
+                                    </p>
+                                    <p>Local interactive sessions can run using these notebooks currently.
+                                    with the aim to host these remotely via something like Google Colab`.</p>
+                                    <p>The hope is to connect with USD or other standards via Python.  
                                     </p>
                                     <p>
                                         A parallel track is possible with Javascript, with access to the Javascript API via npm.
                                     </p>
-                                    <img src="./images/learning_setup.svg">                                                                        
+                                    <p><img src="./images/learning_setup.svg"></p>                                                                                                            
                                 </p>
                             </div>
                         </div>

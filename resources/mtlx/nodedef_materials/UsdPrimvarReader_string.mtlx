@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <UsdPrimvarReader name="UsdPrimvarReader_string" type="string">
+    <input name="varname" type="string" value="geompropvalue_string" uniform="true" />
+    <input name="fallback" type="string" value="" />
+  </UsdPrimvarReader>
+</materialx>

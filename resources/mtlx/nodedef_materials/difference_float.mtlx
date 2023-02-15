@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <difference name="difference_float" type="float">
+    <input name="fg" type="float" value="0.0" />
+    <input name="bg" type="float" value="0.0" />
+    <input name="mix" type="float" value="1.0" />
+  </difference>
+  <convert name="shader_difference_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="difference_float" />
+  </convert>
+  <surfacematerial name="material_difference_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_difference_float_out" />
+  </surfacematerial>
+</materialx>

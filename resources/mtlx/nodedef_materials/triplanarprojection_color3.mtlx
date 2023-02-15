@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <triplanarprojection name="triplanarprojection_color3" type="color3">
+    <input name="filex" type="filename" value="" uniform="true" />
+    <input name="filey" type="filename" value="" uniform="true" />
+    <input name="filez" type="filename" value="" uniform="true" />
+    <input name="layerx" type="string" value="" uniform="true" />
+    <input name="layery" type="string" value="" uniform="true" />
+    <input name="layerz" type="string" value="" uniform="true" />
+    <input name="default" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="position" type="vector3" defaultgeomprop="Pobject" />
+    <input name="normal" type="vector3" defaultgeomprop="Nobject" />
+    <input name="filtertype" type="string" value="linear" enum="closest,linear,cubic" uniform="true" />
+    <input name="framerange" type="string" value="" uniform="true" />
+    <input name="frameoffset" type="integer" value="0" uniform="true" />
+    <input name="frameendaction" type="string" value="constant" enum="constant,clamp,periodic,mirror" uniform="true" />
+  </triplanarprojection>
+  <convert name="shader_triplanarprojection_color3_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="triplanarprojection_color3" />
+  </convert>
+  <surfacematerial name="material_triplanarprojection_color3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_triplanarprojection_color3_out" />
+  </surfacematerial>
+</materialx>

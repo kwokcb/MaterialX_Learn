@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <glossiness_anisotropy name="glossiness_anisotropy" type="vector2">
+    <input name="glossiness" type="float" value="1.0" />
+    <input name="anisotropy" type="float" value="0.0" />
+  </glossiness_anisotropy>
+  <convert name="shader_glossiness_anisotropy_out" type="surfaceshader">
+    <input name="in" type="vector2" nodename="glossiness_anisotropy" />
+  </convert>
+  <surfacematerial name="material_glossiness_anisotropy_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_glossiness_anisotropy_out" />
+  </surfacematerial>
+</materialx>

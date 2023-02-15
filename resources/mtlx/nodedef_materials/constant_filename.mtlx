@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <constant name="constant_filename" type="filename">
+    <input name="value" type="filename" value="" uniform="true" />
+  </constant>
+</materialx>

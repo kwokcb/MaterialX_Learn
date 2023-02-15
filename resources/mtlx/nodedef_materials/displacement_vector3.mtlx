@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <displacement name="displacement_vector3" type="displacementshader">
+    <input name="displacement" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="scale" type="float" value="1.0" />
+  </displacement>
+  <surfacematerial name="material_displacement_vector3_out" type="material">
+    <input name="displacementshader" type="displacementshader" nodename="displacement_vector3" />
+  </surfacematerial>
+</materialx>

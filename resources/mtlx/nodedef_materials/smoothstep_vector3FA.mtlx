@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <smoothstep name="smoothstep_vector3FA" type="vector3">
+    <input name="in" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="low" type="float" value="0.0" />
+    <input name="high" type="float" value="1.0" />
+  </smoothstep>
+  <convert name="shader_smoothstep_vector3FA_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="smoothstep_vector3FA" />
+  </convert>
+  <surfacematerial name="material_smoothstep_vector3FA_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_smoothstep_vector3FA_out" />
+  </surfacematerial>
+</materialx>

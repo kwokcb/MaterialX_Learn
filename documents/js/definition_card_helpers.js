@@ -9,6 +9,8 @@
 function filterTOC() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("searchTOC");
+    if (!input)
+        return
     filter = input.value;
     console.log("Look for: ", filter)
     li = document.querySelectorAll('.idx');

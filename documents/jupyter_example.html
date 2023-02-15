@@ -2,32 +2,32 @@
 <html>
 
 <head>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 </head>
 
 <body class="min-vh-100">
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-		crossorigin="anonymous"></script>
-	<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-	<script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest" }); </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest" }); </script>
 
-<!-- Navigation  -->
-<nav class="navbar sticky-top navbar-expand-lg bg-light">
+  <!-- Navigation  -->
+  <nav class="navbar sticky-top navbar-expand-lg bg-light">
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="#">
-        <h4><img src="images/logo3d_2_small.png" alt="MaterialX Learn"
-            class="d-inline-block align-text-center" width="60">
+        <h4><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="d-inline-block align-text-center"
+            width="60">
           MaterialX Learn</h4>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
@@ -37,12 +37,12 @@
       <div class="collapse navbar-collapse" id="mainMenuContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-			<li class="nav-item dropdown">
-				<a class="nav-link" href="../index.html" role="button">
-				  Home
-				</a>
-			  </li>	  
-			<li class="nav-item dropdown">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="../index.html" role="button">
+              Home
+            </a>
+          </li>
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Learn
             </a>
@@ -59,7 +59,7 @@
               </li>
               <li>
                 <a class="dropdown-item" href="documents.html">
-                  Documents (WIP)
+                  Documents
                 </a>
               </li>
             </ul>
@@ -81,8 +81,13 @@
                 </a>
               </li>
               <li>
+                <a class="dropdown-item" href="definitions/library_glossary.html">
+                  Library Glossary
+                </a>
+              </li>
+              <li>
                 <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
-                  C++ API
+                  C++ API <img src="images/MaterialXLogo_200x155.png" style="width:20px">
                 </a>
               </li>
             </ul>
@@ -106,12 +111,12 @@
             <ul class="dropdown-menu">
               <li>
                 <a class="dropdown-item" href="python_MaterialX.html">
-                  MaterialX Python
+                  Tutorials
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="jupyter_example.html">
-                  Tutorials and Examples (preview)
+                  Examples
                 </a>
               </li>
             </ul>
@@ -156,18 +161,56 @@
       </div>
     </div>
   </nav>
-	
-	<div class="container-fluid ">
-		<div class="row flex-nowrap">
-			<div class="col-12 p-4 pt-2 pl-2">
-				<div class="card border-primary border mb-4">
-					<div class="card-body">
 
-						<h3>Sample Jupyter Notebook</h3>
-						<iframe src="../pymaterialx/mtlx_basics_notebook.html" title="Basics Notebook Example" width="100%" height="800"></iframe>
-					</div>
-				</div>
-			</div>
+  <div class="container-fluid ">
+    <div class="row flex-nowrap">
+      <div class="col-12 p-4 pt-2 pl-2">
+
+        <h3>Notebooks</h3>
+        <p>The results of executing the various available notebooks can be found here. They
+          are provided for convenience as not all users may have an execution environment setup.
+        </p>
+
+        <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-basics-tab" data-bs-toggle="pill" data-bs-target="#pills-basics"
+              type="button" role="tab" aria-controls="pills-basics" aria-selected="true">Basics Notebook</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-shadergen-tab" data-bs-toggle="pill" data-bs-target="#pills-shadergen"
+              type="button" role="tab" aria-controls="pills-shadergen" aria-selected="true">ShaderGen Notebook</button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent3">
+          <div class="tab-pane fade show active" id="pills-basics" role="tabpanel" aria-labelledby="pills-basics-tab">
+
+            <div class="card border-primary border mb-0">
+              <div class="card-body">
+
+                <iframe src="../pymaterialx/mtlx_basics_notebook.html" title="Basics Notebook" width="100%"
+                  height="800"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="pills-tabContent3">
+          <div class="tab-pane fade" id="pills-shadergen" role="tabpanel" aria-labelledby="pills-shadergen-tab">
+
+            <div class="card border-primary border mb-0">
+              <div class="card-body">
+
+                <iframe src="../pymaterialx/mtlx_shadergen_notebook.html" title="ShaderGen Notebook" width="100%"
+                  height="800"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
 </body>
 
 </html>

@@ -53,7 +53,7 @@
               </li>
               <li>
                 <a class="dropdown-item" href="../documents.html">
-                  Documents (WIP)
+                  Documents
                 </a>
               </li>
             </ul>
@@ -75,10 +75,15 @@
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
-                  C++ API
+                <a class="dropdown-item" href="library_glossary.html">
+                  Library Glossary
                 </a>
               </li>
+              <li>
+                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
+                  C++ API  <img src="../images/MaterialXLogo_200x155.png" style="width:20px">
+                </a>
+              </li>                            
             </ul>
           </li>
 
@@ -100,12 +105,12 @@
             <ul class="dropdown-menu">
               <li>
                 <a class="dropdown-item" href="../python_MaterialX.html">
-                  MaterialX Python
+                  Tutorials 
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="../jupyter_example.html">
-                  Tutorials and Examples (preview)
+                  Examples
                 </a>
               </li>
             </ul>
@@ -444,6 +449,7 @@
 </div>
 <div class="collapse ps-5" id="collapse_shader">
 <div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="convert.html">convert</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surface_unlit.html">surface_unlit</a>
 </div>
 </div>
@@ -2473,19 +2479,669 @@ Category: convert
 </div>
 </div>
 </details>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_color3_surfaceshader</summary>
+<div class="m-4 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<img src="../images/nodes/material_convert_color3_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_color3_surfaceshader_out_osl.png style="max-width:11em"><br>
+</p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Description:</b> Convert color3 to shader.</p>
+<p class="card-text"><b></b>
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
+</summary>
+<button id="ND_convert_color3_surfaceshader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_color3_surfaceshader_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_convert_color3_surfaceshader_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_convert_color3_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_convert_color3_surfaceshader_surface[surface_unlit] --> NG_convert_color3_surfaceshader_out([out])
+    style NG_convert_color3_surfaceshader_out fill:#1b1, color:#111
+    NG_convert_color3_surfaceshader_inINT([in]) ==.emission_color==> NG_convert_color3_surfaceshader_surface[surface_unlit]
+    style NG_convert_color3_surfaceshader_inINT fill:#0bb, color:#111
+
+
+
+</div></code></pre>
+
+</details>
+</p>
+<p class="card-text"><b>Parameters:</b></p>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_color3_surfaceshader_in" type="button" role="tab" aria-controls="pills-ND_convert_color3_surfaceshader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_color3_surfaceshader_out" type="button" role="tab" aria-controls="pills-ND_convert_color3_surfaceshader_out" aria-selected="true"><b>out</b></button></li>
+</ul>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_convert_color3_surfaceshader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_color3_surfaceshader_in-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-1">
+          <input type="color" value="#000000" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_convert_color3_surfaceshader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_color3_surfaceshader_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_color4_surfaceshader</summary>
+<div class="m-4 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<img src="../images/nodes/material_convert_color4_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_color4_surfaceshader_out_osl.png style="max-width:11em"><br>
+</p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Description:</b> Convert color4  to shader.</p>
+<p class="card-text"><b></b>
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
+</summary>
+<button id="ND_convert_color4_surfaceshader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_color4_surfaceshader_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_convert_color4_surfaceshader_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_convert_color4_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_convert_color4_surfaceshader_surface[surface_unlit] --> NG_convert_color4_surfaceshader_out([out])
+    style NG_convert_color4_surfaceshader_out fill:#1b1, color:#111
+    NG_convert_color4_surfaceshader_convert[convert] --".emission_color"--> NG_convert_color4_surfaceshader_surface[surface_unlit]
+    NG_convert_color4_surfaceshader_inINT([in]) ==.in==> NG_convert_color4_surfaceshader_convert[convert]
+    style NG_convert_color4_surfaceshader_inINT fill:#0bb, color:#111
+    NG_convert_color4_surfaceshader_extract[extract] --".opacity"--> NG_convert_color4_surfaceshader_surface[surface_unlit]
+    NG_convert_color4_surfaceshader_inINT([in]) ==.in==> NG_convert_color4_surfaceshader_extract[extract]
+    style NG_convert_color4_surfaceshader_inINT fill:#0bb, color:#111
+
+
+
+</div></code></pre>
+
+</details>
+</p>
+<p class="card-text"><b>Parameters:</b></p>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_color4_surfaceshader_in" type="button" role="tab" aria-controls="pills-ND_convert_color4_surfaceshader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_color4_surfaceshader_out" type="button" role="tab" aria-controls="pills-ND_convert_color4_surfaceshader_out" aria-selected="true"><b>out</b></button></li>
+</ul>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_convert_color4_surfaceshader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_color4_surfaceshader_in-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-1">
+          <input type="color" value="#000000" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_convert_color4_surfaceshader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_color4_surfaceshader_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_float_surfaceshader</summary>
+<div class="m-4 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<img src="../images/nodes/material_convert_float_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_float_surfaceshader_out_osl.png style="max-width:11em"><br>
+</p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Description:</b> Convert float to shader.</p>
+<p class="card-text"><b></b>
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
+</summary>
+<button id="ND_convert_float_surfaceshader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_float_surfaceshader_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_convert_float_surfaceshader_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_convert_float_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_convert_float_surfaceshader_surface[surface_unlit] --> NG_convert_float_surfaceshader_out([out])
+    style NG_convert_float_surfaceshader_out fill:#1b1, color:#111
+    NG_convert_float_surfaceshader_float_to_color3[convert] --".emission_color"--> NG_convert_float_surfaceshader_surface[surface_unlit]
+    NG_convert_float_surfaceshader_inINT([in]) ==.in==> NG_convert_float_surfaceshader_float_to_color3[convert]
+    style NG_convert_float_surfaceshader_inINT fill:#0bb, color:#111
+
+
+
+</div></code></pre>
+
+</details>
+</p>
+<p class="card-text"><b>Parameters:</b></p>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_float_surfaceshader_in" type="button" role="tab" aria-controls="pills-ND_convert_float_surfaceshader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_float_surfaceshader_out" type="button" role="tab" aria-controls="pills-ND_convert_float_surfaceshader_out" aria-selected="true"><b>out</b></button></li>
+</ul>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_convert_float_surfaceshader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_float_surfaceshader_in-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_convert_float_surfaceshader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_float_surfaceshader_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_vector2_surfaceshader</summary>
+<div class="m-4 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<img src="../images/nodes/material_convert_vector2_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_vector2_surfaceshader_out_osl.png style="max-width:11em"><br>
+</p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Description:</b> Convert vector2 to shader.</p>
+<p class="card-text"><b></b>
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
+</summary>
+<button id="ND_convert_vector2_surfaceshader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_vector2_surfaceshader_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_convert_vector2_surfaceshader_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_convert_vector2_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_convert_vector2_surfaceshader_surface[surface_unlit] --> NG_convert_vector2_surfaceshader_out([out])
+    style NG_convert_vector2_surfaceshader_out fill:#1b1, color:#111
+    NG_convert_vector2_surfaceshader_vec3_to_color3[convert] --".emission_color"--> NG_convert_vector2_surfaceshader_surface[surface_unlit]
+    NG_convert_vector2_surfaceshader_vec2_to_vec3[convert] --".in"--> NG_convert_vector2_surfaceshader_vec3_to_color3[convert]
+    NG_convert_vector2_surfaceshader_inINT([in]) ==.in==> NG_convert_vector2_surfaceshader_vec2_to_vec3[convert]
+    style NG_convert_vector2_surfaceshader_inINT fill:#0bb, color:#111
+
+
+
+</div></code></pre>
+
+</details>
+</p>
+<p class="card-text"><b>Parameters:</b></p>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector2_surfaceshader_in" type="button" role="tab" aria-controls="pills-ND_convert_vector2_surfaceshader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector2_surfaceshader_out" type="button" role="tab" aria-controls="pills-ND_convert_vector2_surfaceshader_out" aria-selected="true"><b>out</b></button></li>
+</ul>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_convert_vector2_surfaceshader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_vector2_surfaceshader_in-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_convert_vector2_surfaceshader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_vector2_surfaceshader_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_vector3_surfaceshader</summary>
+<div class="m-4 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<img src="../images/nodes/material_convert_vector3_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_vector3_surfaceshader_out_osl.png style="max-width:11em"><br>
+</p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Description:</b> Convert vector2 to shader.</p>
+<p class="card-text"><b></b>
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
+</summary>
+<button id="ND_convert_vector3_surfaceshader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_vector3_surfaceshader_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_convert_vector3_surfaceshader_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_convert_vector3_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_convert_vector3_surfaceshader_surface[surface_unlit] --> NG_convert_vector3_surfaceshader_out([out])
+    style NG_convert_vector3_surfaceshader_out fill:#1b1, color:#111
+    NG_convert_vector3_surfaceshader_vec3_to_color3[convert] --".emission_color"--> NG_convert_vector3_surfaceshader_surface[surface_unlit]
+    NG_convert_vector3_surfaceshader_inINT([in]) ==.in==> NG_convert_vector3_surfaceshader_vec3_to_color3[convert]
+    style NG_convert_vector3_surfaceshader_inINT fill:#0bb, color:#111
+
+
+
+</div></code></pre>
+
+</details>
+</p>
+<p class="card-text"><b>Parameters:</b></p>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector3_surfaceshader_in" type="button" role="tab" aria-controls="pills-ND_convert_vector3_surfaceshader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector3_surfaceshader_out" type="button" role="tab" aria-controls="pills-ND_convert_vector3_surfaceshader_out" aria-selected="true"><b>out</b></button></li>
+</ul>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_convert_vector3_surfaceshader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_vector3_surfaceshader_in-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_convert_vector3_surfaceshader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_vector3_surfaceshader_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_vector4_surfaceshader</summary>
+<div class="m-4 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<img src="../images/nodes/material_convert_vector4_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_vector4_surfaceshader_out_osl.png style="max-width:11em"><br>
+</p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Description:</b> Convert vector4 to shader.</p>
+<p class="card-text"><b></b>
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
+</summary>
+<button id="ND_convert_vector4_surfaceshader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_vector4_surfaceshader_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_convert_vector4_surfaceshader_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_convert_vector4_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_convert_vector4_surfaceshader_surface[surface_unlit] --> NG_convert_vector4_surfaceshader_out([out])
+    style NG_convert_vector4_surfaceshader_out fill:#1b1, color:#111
+    NG_convert_vector4_surfaceshader_color4_to_color3[convert] --".emission_color"--> NG_convert_vector4_surfaceshader_surface[surface_unlit]
+    NG_convert_vector4_surfaceshader_vec4_to_color4[convert] --".in"--> NG_convert_vector4_surfaceshader_color4_to_color3[convert]
+    NG_convert_vector4_surfaceshader_inINT([in]) ==.in==> NG_convert_vector4_surfaceshader_vec4_to_color4[convert]
+    style NG_convert_vector4_surfaceshader_inINT fill:#0bb, color:#111
+    NG_convert_vector4_surfaceshader_color4_to_float[extract] --".opacity"--> NG_convert_vector4_surfaceshader_surface[surface_unlit]
+    NG_convert_vector4_surfaceshader_vec4_to_color4[convert] --".in"--> NG_convert_vector4_surfaceshader_color4_to_float[extract]
+
+
+
+</div></code></pre>
+
+</details>
+</p>
+<p class="card-text"><b>Parameters:</b></p>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector4_surfaceshader_in" type="button" role="tab" aria-controls="pills-ND_convert_vector4_surfaceshader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_vector4_surfaceshader_out" type="button" role="tab" aria-controls="pills-ND_convert_vector4_surfaceshader_out" aria-selected="true"><b>out</b></button></li>
+</ul>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_convert_vector4_surfaceshader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_vector4_surfaceshader_in-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_convert_vector4_surfaceshader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_vector4_surfaceshader_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_integer_surfaceshader</summary>
+<div class="m-4 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<img src="../images/nodes/material_convert_integer_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_integer_surfaceshader_out_osl.png style="max-width:11em"><br>
+</p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Description:</b> Convert integer to shader.</p>
+<p class="card-text"><b></b>
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
+</summary>
+<button id="ND_convert_integer_surfaceshader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_integer_surfaceshader_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_convert_integer_surfaceshader_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_convert_integer_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_convert_integer_surfaceshader_surface[surface_unlit] --> NG_convert_integer_surfaceshader_out([out])
+    style NG_convert_integer_surfaceshader_out fill:#1b1, color:#111
+    NG_convert_integer_surfaceshader_float_to_color3[convert] --".emission_color"--> NG_convert_integer_surfaceshader_surface[surface_unlit]
+    NG_convert_integer_surfaceshader_int_to_float[convert] --".in"--> NG_convert_integer_surfaceshader_float_to_color3[convert]
+    NG_convert_integer_surfaceshader_inINT([in]) ==.in==> NG_convert_integer_surfaceshader_int_to_float[convert]
+    style NG_convert_integer_surfaceshader_inINT fill:#0bb, color:#111
+
+
+
+</div></code></pre>
+
+</details>
+</p>
+<p class="card-text"><b>Parameters:</b></p>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_integer_surfaceshader_in" type="button" role="tab" aria-controls="pills-ND_convert_integer_surfaceshader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_integer_surfaceshader_out" type="button" role="tab" aria-controls="pills-ND_convert_integer_surfaceshader_out" aria-selected="true"><b>out</b></button></li>
+</ul>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_convert_integer_surfaceshader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_integer_surfaceshader_in-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_convert_integer_surfaceshader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_integer_surfaceshader_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_convert_boolean_surfaceshader</summary>
+<div class="m-4 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<img src="../images/nodes/material_convert_boolean_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_boolean_surfaceshader_out_osl.png style="max-width:11em"><br>
+</p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Description:</b> Convert boolean to shader.</p>
+<p class="card-text"><b></b>
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
+</summary>
+<button id="ND_convert_boolean_surfaceshader_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_convert_boolean_surfaceshader_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_convert_boolean_surfaceshader_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_convert_boolean_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_convert_boolean_surfaceshader_surface[surface_unlit] --> NG_convert_boolean_surfaceshader_out([out])
+    style NG_convert_boolean_surfaceshader_out fill:#1b1, color:#111
+    NG_convert_boolean_surfaceshader_float_to_color3[convert] --".emission_color"--> NG_convert_boolean_surfaceshader_surface[surface_unlit]
+    NG_convert_boolean_surfaceshader_bool_to_float[convert] --".in"--> NG_convert_boolean_surfaceshader_float_to_color3[convert]
+    NG_convert_boolean_surfaceshader_inINT([in]) ==.in==> NG_convert_boolean_surfaceshader_bool_to_float[convert]
+    style NG_convert_boolean_surfaceshader_inINT fill:#0bb, color:#111
+
+
+
+</div></code></pre>
+
+</details>
+</p>
+<p class="card-text"><b>Parameters:</b></p>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_boolean_surfaceshader_in" type="button" role="tab" aria-controls="pills-ND_convert_boolean_surfaceshader_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_convert_boolean_surfaceshader_out" type="button" role="tab" aria-controls="pills-ND_convert_boolean_surfaceshader_out" aria-selected="true"><b>out</b></button></li>
+</ul>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_convert_boolean_surfaceshader_in"
+  role="tabpanel" aria-labelledby="pills-ND_convert_boolean_surfaceshader_in-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="false" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_convert_boolean_surfaceshader_out"
+  role="tabpanel" aria-labelledby="pills-ND_convert_boolean_surfaceshader_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
                </div>
            </div>
        </div>
    </div>
 <script>
   var searchInput = document.getElementById("searchTOC")
-  searchInput.addEventListener("keypress", filterOnEnter);
+  if (searchInput) {
+   searchInput.addEventListener("keypress", filterOnEnter);
+  }
   var renderButtons = document.querySelectorAll(".mrender");
-  renderButtons.forEach((renderButton) => { renderButton.addEventListener("click", renderMermaid); });
+  if (renderButtons) {
+     renderButtons.forEach((renderButton) => { renderButton.addEventListener("click", renderMermaid); });
+  }
   var copyButtons = document.querySelectorAll(".mrcopy");
-  copyButtons.forEach((copyButton) => { copyButton.addEventListener("click", copyMermaid); });
+  if (copyButtons) {
+     copyButtons.forEach((copyButton) => { copyButton.addEventListener("click", copyMermaid); });
+  }
   var collapses = document.querySelectorAll("[data-bs-toggle='collapse']");
- collapses.forEach((collapseItem) => { collapseItem.addEventListener("click", toggleIndexArea); });
+  if (collapses) {
+    collapses.forEach((collapseItem) => { collapseItem.addEventListener("click", toggleIndexArea); });
+  }
 </script>
 </body>
 </html>

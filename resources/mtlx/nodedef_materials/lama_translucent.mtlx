@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <LamaTranslucent name="lama_translucent" type="BSDF" version="1.0">
+    <input name="color" uiname="Color" type="color3" value="0.18, 0.18, 0.18" />
+    <input name="roughness" uiname="Roughness" type="float" value="0.0" />
+    <input name="normal" uiname="Normal" type="vector3" defaultgeomprop="Nworld" />
+    <input name="energyCompensation" uiname="Energy Compensation" type="float" uniform="true" value="1.0" />
+    <input name="lobeName" uiname="Lobe Name" type="string" uniform="true" value="diffuse" />
+    <input name="matte" uiname="Matte" type="string" uniform="true" value="" />
+  </LamaTranslucent>
+  <surface name="shader_lama_translucent_out" type="surfaceshader">
+    <input name="bsdf" type="BSDF" nodename="lama_translucent" />
+  </surface>
+  <surfacematerial name="material_lama_translucent_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_lama_translucent_out" />
+  </surfacematerial>
+</materialx>

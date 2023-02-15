@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <rotate3d name="rotate3d_vector3" type="vector3">
+    <input name="in" type="vector3" value="0.0, 0.0, 0.0" />
+    <input name="amount" type="float" value="0.0" unittype="angle" unit="degree" />
+    <input name="axis" type="vector3" value="0.0, 1.0, 0.0" />
+  </rotate3d>
+  <convert name="shader_rotate3d_vector3_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="rotate3d_vector3" />
+  </convert>
+  <surfacematerial name="material_rotate3d_vector3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_rotate3d_vector3_out" />
+  </surfacematerial>
+</materialx>

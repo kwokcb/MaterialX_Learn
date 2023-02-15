@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <LamaMix name="lama_mix_bsdf" type="BSDF" version="1.0">
+    <input name="material1" uiname="Material 1" type="BSDF" nodename="oren_nayar_diffuse_bsdf" />
+    <input name="material2" uiname="Material 2" type="BSDF" nodename="oren_nayar_diffuse_bsdf2" />
+    <input name="mix" type="float" value="0.0" />
+  </LamaMix>
+  <oren_nayar_diffuse_bsdf name="oren_nayar_diffuse_bsdf" type="BSDF" />
+  <oren_nayar_diffuse_bsdf name="oren_nayar_diffuse_bsdf2" type="BSDF" />
+  <surface name="shader_lama_mix_bsdf_out" type="surfaceshader">
+    <input name="bsdf" type="BSDF" nodename="lama_mix_bsdf" />
+  </surface>
+  <surfacematerial name="material_lama_mix_bsdf_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_lama_mix_bsdf_out" />
+  </surfacematerial>
+</materialx>

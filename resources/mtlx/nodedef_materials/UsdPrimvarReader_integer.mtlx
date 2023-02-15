@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <UsdPrimvarReader name="UsdPrimvarReader_integer" type="integer">
+    <input name="varname" type="string" value="geompropvalue_integer" uniform="true" />
+    <input name="fallback" type="integer" value="0" />
+  </UsdPrimvarReader>
+  <convert name="shader_UsdPrimvarReader_integer_out" type="surfaceshader">
+    <input name="in" type="integer" nodename="UsdPrimvarReader_integer" />
+  </convert>
+  <surfacematerial name="material_UsdPrimvarReader_integer_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_UsdPrimvarReader_integer_out" />
+  </surfacematerial>
+</materialx>

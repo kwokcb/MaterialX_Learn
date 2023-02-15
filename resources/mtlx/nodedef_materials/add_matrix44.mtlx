@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <add name="add_matrix44" type="matrix44">
+    <input name="in1" type="matrix44" value="1.0,0.0,0.0,0.0, 0.0,1.0,0.0,0.0, 0.0,0.0,1.0,0.0, 0.0,0.0,0.0,1.0" />
+    <input name="in2" type="matrix44" value="0.0,0.0,0.0,0.0, 0.0,0.0,0.0,0.0, 0.0,0.0,0.0,0.0, 0.0,0.0,0.0,0.0" />
+  </add>
+</materialx>

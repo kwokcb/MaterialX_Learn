@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <outside name="outside_color3" type="color3">
+    <input name="in" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="mask" type="float" value="0.0" />
+  </outside>
+  <convert name="shader_outside_color3_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="outside_color3" />
+  </convert>
+  <surfacematerial name="material_outside_color3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_outside_color3_out" />
+  </surfacematerial>
+</materialx>

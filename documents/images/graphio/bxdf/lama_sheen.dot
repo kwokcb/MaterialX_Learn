@@ -1,0 +1,35 @@
+digraph {
+  rankdir = LR;
+    IMPL_lama_sheen_sheen_bsdf [label= "sheen_bsdf"];
+    IMPL_lama_sheen_sheen_bsdf[shape = box];
+    IMPL_lama_sheen_sheen_bsdf ->     IMPL_lama_sheen_out;
+    IMPL_lama_sheen_out [label= "out"];
+    IMPL_lama_sheen_out[shape = box]; 
+    IMPL_lama_sheen_colorINT [label="color"];
+    IMPL_lama_sheen_colorINT [shape = ellipse];
+    IMPL_lama_sheen_sheen_bsdf [label="sheen_bsdf"];
+    IMPL_lama_sheen_colorINT -> IMPL_lama_sheen_sheen_bsdf [label=".color"];
+    IMPL_lama_sheen_normalINT [label="normal"];
+    IMPL_lama_sheen_normalINT [shape = ellipse];
+    IMPL_lama_sheen_sheen_bsdf [label="sheen_bsdf"];
+    IMPL_lama_sheen_normalINT -> IMPL_lama_sheen_sheen_bsdf [label=".normal"];
+    IMPL_lama_sheen_roughness_squared [label= "power"];
+    IMPL_lama_sheen_roughness_squared[shape = box];
+    IMPL_lama_sheen_roughness_squared ->     IMPL_lama_sheen_sheen_bsdf [label= "roughness"];
+    IMPL_lama_sheen_sheen_bsdf [label= "sheen_bsdf"];
+    IMPL_lama_sheen_sheen_bsdf[shape = box]; 
+    IMPL_lama_sheen_roughness_remapped [label= "add"];
+    IMPL_lama_sheen_roughness_remapped[shape = box];
+    IMPL_lama_sheen_roughness_remapped ->     IMPL_lama_sheen_roughness_squared [label= "in1"];
+    IMPL_lama_sheen_roughness_squared [label= "power"];
+    IMPL_lama_sheen_roughness_squared[shape = box]; 
+    IMPL_lama_sheen_roughness_compressed [label= "multiply"];
+    IMPL_lama_sheen_roughness_compressed[shape = box];
+    IMPL_lama_sheen_roughness_compressed ->     IMPL_lama_sheen_roughness_remapped [label= "in1"];
+    IMPL_lama_sheen_roughness_remapped [label= "add"];
+    IMPL_lama_sheen_roughness_remapped[shape = box]; 
+    IMPL_lama_sheen_roughnessINT [label="roughness"];
+    IMPL_lama_sheen_roughnessINT [shape = ellipse];
+    IMPL_lama_sheen_roughness_compressed [label="multiply"];
+    IMPL_lama_sheen_roughnessINT -> IMPL_lama_sheen_roughness_compressed [label=".in1"];
+}

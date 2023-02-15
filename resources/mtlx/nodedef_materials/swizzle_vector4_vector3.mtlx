@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <swizzle name="swizzle_vector4_vector3" type="vector3">
+    <input name="in" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="channels" type="string" value="xxx" uniform="true" />
+  </swizzle>
+  <convert name="shader_swizzle_vector4_vector3_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="swizzle_vector4_vector3" />
+  </convert>
+  <surfacematerial name="material_swizzle_vector4_vector3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_swizzle_vector4_vector3_out" />
+  </surfacematerial>
+</materialx>

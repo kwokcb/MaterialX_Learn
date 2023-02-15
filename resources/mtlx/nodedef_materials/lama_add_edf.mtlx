@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <LamaAdd name="lama_add_edf" type="EDF" version="1.0">
+    <input name="material1" uiname="Material 1" type="EDF" nodename="uniform_edf" />
+    <input name="material2" uiname="Material 2" type="EDF" nodename="uniform_edf2" />
+    <input name="weight1" uiname="Weight 1" type="float" value="1.0" />
+    <input name="weight2" uiname="Weight 2" type="float" value="0.0" />
+  </LamaAdd>
+  <uniform_edf name="uniform_edf" type="EDF" />
+  <uniform_edf name="uniform_edf2" type="EDF" />
+  <surface name="shader_lama_add_edf_out" type="surfaceshader">
+    <input name="edf" type="EDF" nodename="lama_add_edf" />
+  </surface>
+  <surfacematerial name="material_lama_add_edf_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_lama_add_edf_out" />
+  </surfacematerial>
+</materialx>

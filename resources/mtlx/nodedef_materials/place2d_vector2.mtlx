@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <place2d name="place2d_vector2" type="vector2">
+    <input name="texcoord" type="vector2" value="0.0, 0.0" />
+    <input name="pivot" type="vector2" value="0.0,0.0" />
+    <input name="scale" type="vector2" value="1.0,1.0" />
+    <input name="rotate" type="float" value="0.0" unittype="angle" unit="degree" />
+    <input name="offset" type="vector2" value="0.0,0.0" />
+    <input name="operationorder" type="integer" value="0" enum="SRT, TRS" enumvalues="0, 1" />
+  </place2d>
+  <convert name="shader_place2d_vector2_out" type="surfaceshader">
+    <input name="in" type="vector2" nodename="place2d_vector2" />
+  </convert>
+  <surfacematerial name="material_place2d_vector2_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_place2d_vector2_out" />
+  </surfacematerial>
+</materialx>

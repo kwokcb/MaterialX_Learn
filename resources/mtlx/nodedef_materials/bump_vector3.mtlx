@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <bump name="bump_vector3" type="vector3">
+    <input name="height" type="float" uiname="Height" value="0" />
+    <input name="scale" type="float" uiname="Scale" value="1" />
+    <input name="normal" type="vector3" uiname="Normal" defaultgeomprop="Nworld" />
+    <input name="tangent" type="vector3" uiname="Tangent" defaultgeomprop="Tworld" />
+  </bump>
+  <convert name="shader_bump_vector3_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="bump_vector3" />
+  </convert>
+  <surfacematerial name="material_bump_vector3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_bump_vector3_out" />
+  </surfacematerial>
+</materialx>

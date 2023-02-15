@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <combine2 name="combine2_vector4VV" type="vector4">
+    <input name="in1" type="vector2" value="0.0, 0.0" />
+    <input name="in2" type="vector2" value="0.0, 0.0" />
+  </combine2>
+  <convert name="shader_combine2_vector4VV_out" type="surfaceshader">
+    <input name="in" type="vector4" nodename="combine2_vector4VV" />
+  </convert>
+  <surfacematerial name="material_combine2_vector4VV_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_combine2_vector4VV_out" />
+  </surfacematerial>
+</materialx>

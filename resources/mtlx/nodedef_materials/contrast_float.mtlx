@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <contrast name="contrast_float" type="float">
+    <input name="in" type="float" value="0.0" />
+    <input name="amount" type="float" value="1.0" />
+    <input name="pivot" type="float" value="0.5" />
+  </contrast>
+  <convert name="shader_contrast_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="contrast_float" />
+  </convert>
+  <surfacematerial name="material_contrast_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_contrast_float_out" />
+  </surfacematerial>
+</materialx>

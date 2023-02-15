@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <min name="min_float" type="float">
+    <input name="in1" type="float" value="0.0" />
+    <input name="in2" type="float" value="0.0" />
+  </min>
+  <convert name="shader_min_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="min_float" />
+  </convert>
+  <surfacematerial name="material_min_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_min_float_out" />
+  </surfacematerial>
+</materialx>

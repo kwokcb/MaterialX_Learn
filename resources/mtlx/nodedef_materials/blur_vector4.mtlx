@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <blur name="blur_vector4" type="vector4">
+    <input name="in" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="size" type="float" value="0.0" />
+    <input name="filtertype" type="string" value="box" enum="box,gaussian" uniform="true" />
+  </blur>
+  <convert name="shader_blur_vector4_out" type="surfaceshader">
+    <input name="in" type="vector4" nodename="blur_vector4" />
+  </convert>
+  <surfacematerial name="material_blur_vector4_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_blur_vector4_out" />
+  </surfacematerial>
+</materialx>

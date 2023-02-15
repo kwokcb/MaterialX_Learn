@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <smoothstep name="smoothstep_color4FA" type="color4">
+    <input name="in" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="low" type="float" value="0.0" />
+    <input name="high" type="float" value="1.0" />
+  </smoothstep>
+  <convert name="shader_smoothstep_color4FA_out" type="surfaceshader">
+    <input name="in" type="color4" nodename="smoothstep_color4FA" />
+  </convert>
+  <surfacematerial name="material_smoothstep_color4FA_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_smoothstep_color4FA_out" />
+  </surfacematerial>
+</materialx>

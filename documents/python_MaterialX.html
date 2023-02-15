@@ -19,7 +19,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 		crossorigin="anonymous"></script>
-	<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+	<!-- <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script> -->
 
 	<!-- Navigation  -->
 	<nav class="navbar sticky-top navbar-expand-lg bg-light">
@@ -59,7 +59,7 @@
 							</li>
 							<li>
 								<a class="dropdown-item" href="documents.html">
-									Documents (WIP)
+									Documents
 								</a>
 							</li>
 						</ul>
@@ -82,9 +82,14 @@
 								</a>
 							</li>
 							<li>
+								<a class="dropdown-item" href="definitions/library_glossary.html">
+									Library Glossary
+								</a>
+							</li>
+							<li>
 								<a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
 									target="_blank">
-									C++ API
+									C++ API <img src="images/MaterialXLogo_200x155.png" style="width:20px">
 								</a>
 							</li>
 						</ul>
@@ -108,12 +113,12 @@
 						<ul class="dropdown-menu">
 							<li>
 								<a class="dropdown-item" href="python_MaterialX.html">
-									MaterialX Python
+									Tutorials
 								</a>
 							</li>
 							<li>
 								<a class="dropdown-item" href="jupyter_example.html">
-									Tutorials and Examples (preview)
+									Examples
 								</a>
 							</li>
 						</ul>
@@ -164,164 +169,161 @@
 		<div class="row flex-nowrap">
 			<div class="col-12 p-4 pt-2 pl-2">
 				<div class="mb-4">
-					<div class="card-body">
+
+					<ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="top-toggle nav-link active" id="pills-notebooks-tab" data-bs-toggle="pill"
+								data-bs-target="#pills-notebooks" type="button" role="tab"
+								aria-controls="pills-notebooks" aria-selected="true">Learning Notebooks</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="top-toggle nav-link " id="pills-python-tab" data-bs-toggle="pill"
+								data-bs-target="#pills-python" type="button" role="tab" aria-controls="pills-python"
+								aria-selected="false">Development Setup</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="top-toggle nav-link" id="pills-examples-tab" data-bs-toggle="pill"
+								data-bs-target="#pills-examples" type="button" role="tab" aria-controls="pills-examples"
+								aria-selected="false">Getting Started</button>
+						</li>
+					</ul>
+
+					<div class="tab-content" id="pills-tabContent">
+						<div class="tab-pane fade show " id="pills-python" role="tabpanel"
+							aria-labelledby="pills-python-tab" tabindex="0">
+
+							<div class="card border-primary border mb-4">
+								<div class="card-body">
 
 
-						<ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
-							<li class="nav-item" role="presentation">
-								<button class="top-toggle nav-link active" id="pills-python-tab" data-bs-toggle="pill"
-									data-bs-target="#pills-python" type="button" role="tab" aria-controls="pills-python"
-									aria-selected="true">Python Setup</button>
-							</li>
-							<li class="nav-item" role="presentation">
-								<button class="top-toggle nav-link" id="pills-examples-tab" data-bs-toggle="pill"
-									data-bs-target="#pills-examples" type="button" role="tab"
-									aria-controls="pills-examples" aria-selected="false">Examples</button>
-							</li>
-							<li class="nav-item" role="presentation">
-								<button class="top-toggle nav-link " id="pills-notebooks-tab" data-bs-toggle="pill"
-									data-bs-target="#pills-notebooks" type="button" role="tab"
-									aria-controls="pills-notebooks" aria-selected="false">Learning Notebooks</button>
-							</li>
-						</ul>
-
-						<div class="tab-content" id="pills-tabContent">
-							<div class="tab-pane fade show active" id="pills-python" role="tabpanel"
-								aria-labelledby="pills-python-tab" tabindex="0">
-
-								<div class="card border-primary border mb-4">
-									<div class="card-body">
-
-
-										<h3 id="python-materialx-in-visual-studio-code">Python MaterialX</h3>
-										<p>The MaterialX distribution comes with a set of Python sub-modules for editing
-											documents, code
-											generation, and rendering. The sub-modules correspond to the C++ libraries
-											which also ship
-											releases.
-										</p>
-										<p>
-											Users can download releases from
-											<a href="https://github.com/AcademySoftwareFoundation/MaterialX/releases/"
-												target="_black">
-												here</a> or use custom builds. At this time of writing, <b>1.38.7</b> is
-											the minimum
-											required version.
-										</p>
-										<p> For working locally with MaterialX, Visual Studio Code
-											and a basic understanding of Python is assumed.
-											Within this site, various examples will be used.
-											<!-- This code can be found within the workspace
+									<h4 id="python-materialx-in-visual-studio-code">Python MaterialX</h4>
+									<p>The MaterialX distribution comes with a set of Python sub-modules for editing
+										documents, code
+										generation, and rendering. The sub-modules correspond to the C++ libraries
+										which also ship
+										releases.
+									</p>
+									<p>
+										Users can download releases from
+										<a href="https://github.com/AcademySoftwareFoundation/MaterialX/releases/"
+											target="_black">
+											here</a> or use custom builds. At this time of writing, <b>1.38.7</b> is
+										the minimum
+										required version.
+									</p>
+									<p> For working locally with MaterialX, Visual Studio Code
+										and a basic understanding of Python is assumed.
+										Within this site, various examples will be used.
+										<!-- This code can be found within the workspace
 							found here: <a href="../pymaterialx">folder</a> -->
-										</p>
-										<h5 id="virtual-environment-setup">Virtual Environment Setup</h5>
-										<p>The following basic requirements are:
-										<p>
-										<ul>
-											<li>Installation of a version of Python which is compatible with the version
-												used to produce
-												the
-												MaterialX modules.
-											</li>
-											<li>Installation of the VSCode Python extension with the interpreter
-												referencing the
-												installed version.
-											</li>
-											<li>Setup of a virtual environment following the instructions found <a
-													href="https://code.visualstudio.com/docs/python/environments"
-													target="_blank">here</a>. Basically:
-												<ul>
-													<li> <code> ⌘/Ctrl+Shift+P</code> can be used to run the command
-														<code>Python: Create Environment</code>.
-													</li>
-													<li>Choosing to create a virtual environment (vs a
-														<code>Conda</code> environment),
-														(Again choose the appropriate Python interpreter).</p>
-													</li>
-												</ul>
-											</li>
-										</ul>
-										</p>
-										<p>Once setup a <em>.venv</em> folder will be created within the workspace.
-											Under this Python packages can be added or removed as needed.
-											To this the MaterialX modules need to be added.</p>
+									</p>
+									<h5 id="virtual-environment-setup">Virtual Environment Setup</h5>
+									<p>The following basic requirements are:
+									<p>
+									<ul>
+										<li>Installation of a version of Python which is compatible with the version
+											used to produce
+											the
+											MaterialX modules.
+										</li>
+										<li>Installation of the VSCode Python extension with the interpreter
+											referencing the
+											installed version.
+										</li>
+										<li>Setup of a virtual environment following the instructions found <a
+												href="https://code.visualstudio.com/docs/python/environments"
+												target="_blank">here</a>. Basically:
+											<ul>
+												<li> <code> ⌘/Ctrl+Shift+P</code> can be used to run the command
+													<code>Python: Create Environment</code>.
+												</li>
+												<li>Choosing to create a virtual environment (vs a
+													<code>Conda</code> environment),
+													(Again choose the appropriate Python interpreter).</p>
+												</li>
+											</ul>
+										</li>
+									</ul>
+									</p>
+									<p>Once setup a <em>.venv</em> folder will be created within the workspace.
+										Under this Python packages can be added or removed as needed.
+										To this the MaterialX modules need to be added.</p>
 
 
-										<h5 id="adding-materialx-modules">Adding MaterialX Modules</h5>
-										<p>We will use a simple example file called <a
-												href="../pymaterialx/hello_materialx.py" download>
-												hello_materialx.py</a>.
-											Add this file to your workspace and attempt to run it.</p>
-										<p>Running this file will return an error if the MaterialX modules are not added
-											yet.</p>
-										<pre class="hljs"><code><div>import MaterialX as mx
+									<h5 id="adding-materialx-modules">Adding MaterialX Modules</h5>
+									<p>We will use a simple example file called <a
+											href="../pymaterialx/hello_materialx.py" download>
+											hello_materialx.py</a>.
+										Add this file to your workspace and attempt to run it.</p>
+									<p>Running this file will return an error if the MaterialX modules are not added
+										yet.</p>
+									<pre class="hljs"><code><div>import MaterialX as mx
 ModuleNotFoundError: No module named 'MaterialX'
 </div></code></pre>
-										<p>At the time of righting MaterialX is not available to download and install
-											using
-											<code>pip</code> (PySide),
-											and thus must be installed
-											manually. The easiest way to do this is to go where MaterialX is installed
-											and run the local
-											setup from within the workspace terminal. For example go to:
-										</p>
-										<pre class="hljs"><code><div>&lt;install location&gt;/python
+									<p>At the time of righting MaterialX is not available to download and install
+										using
+										<code>pip</code> (PySide),
+										and thus must be installed
+										manually. The easiest way to do this is to go where MaterialX is installed
+										and run the local
+										setup from within the workspace terminal. For example go to:
+									</p>
+									<pre class="hljs"><code><div>&lt;install location&gt;/python
 </div></code></pre>
-										<p>and run the setup script</p>
-										<pre class="hljs"><code><div>python setup.py install
+									<p>and run the setup script</p>
+									<pre class="hljs"><code><div>python setup.py install
 </div></code></pre>
-										<p>This will add the MaterialX modules to the virtual environment under
-											<em>.venv/Lib/site-packages</em>.
-											The modules installed will depend on the ones found in the installation
-											area.
-										</p>
-										<img src="./images/VSCode_PythonModules.png" style="width: 20%">
-										<p>Other dependent packages can be added using <code>pip</code> or other means
-											as necessary.</p>
+									<p>This will add the MaterialX modules to the virtual environment under
+										<em>.venv/Lib/site-packages</em>.
+										The modules installed will depend on the ones found in the installation
+										area.
+									</p>
+									<img src="./images/VSCode_PythonModules.png" style="width: 20%">
+									<p>Other dependent packages can be added using <code>pip</code> or other means
+										as necessary.</p>
 
-									</div>
 								</div>
 							</div>
 						</div>
+					</div>
 
-						<div class="tab-content" id="pills-tabContent">
-							<div class="tab-pane fade" id="pills-examples" role="tabpanel"
-								aria-labelledby="pills-examples-tab" tabindex="0">
+					<div class="tab-content" id="pills-tabContent">
+						<div class="tab-pane fade" id="pills-examples" role="tabpanel"
+							aria-labelledby="pills-examples-tab" tabindex="0">
 
-								<div class="card border-primary border mb-4">
-									<div class="card-body">
+							<div class="card border-primary border mb-4">
+								<div class="card-body">
 
 
-										<h5 id="test-example">Import Example</h5>
-										<p>Importing <code>MaterialX</code> will include all sub-modules.
-										<pre class="hljs"><code>import MaterialX as mx</code></pre>
-										</p>
-										<p>At a minimum a document must be created as all operations are based on
-											documents or document
-											contents.</p>
-										<p>Thus to test that the environment works properly the test example creates a
-											document checks
-											the
-											version of
-											MaterialX.</p>
-										<pre class="hljs"><code><div>doc = mx.createDocument()
+									<h5 id="test-example">Import Example</h5>
+									<p>Importing <code>MaterialX</code> will include all sub-modules. This differs from
+										C++ where individual sub-modules can be loaded.
+										Shown below is how to import MaterialX with the module name mx.
+									<pre class="hljs"><code>import MaterialX as mx</code></pre>
+									</p>
+									<p>At a minimum a document must be created as all operations are based on
+										documents.</p>
+									<p>To test that the environment works properly the test example creates a
+										document and checks the
+										version of
+										MaterialX.</p>
+									<pre class="hljs"><code><div>doc = mx.createDocument()
 print(<span class="hljs-string">'Hello MaterialX (Version %s)'</span> % doc.getVersionString())    
 </div></code></pre>
 
-										<h5 id="minimal-%22useful%22-example">Minimal &quot;Useful&quot; Example</h5>
-										<p>To do any useful operations, the standard MaterialX libraries need to be
-											loaded.
-											The <a href="../pymaterialx/load_libraries.py"
-												download>load_libraries.py</a>
-											example shows this minimal setup.</p>
-										Note that the environment variable <b>MATERIALX_SEARCH_PATH</b> can be set to
-										the appropriate search paths to find libraries and include files.
-										Programmatically
-										the <a href="https://materialx.org/docs/api/_file_8h.html"
-											target="_blank">getEnvironmentPath</a> function can be used to retrieve this
-										value.
-										</b>
-										<code><pre>
+									<h5 id="minimal-%22useful%22-example">Minimal &quot;Useful&quot; Example</h5>
+									<p>To do any useful operations, the standard MaterialX libraries need to be
+										loaded.
+										The <a href="../pymaterialx/load_libraries.py" download>load_libraries.py</a>
+										example shows this minimal setup.</p>
+									Note that the environment variable <b>MATERIALX_SEARCH_PATH</b> can be set to
+									the appropriate search paths to find libraries and include files.
+									Programmatically
+									the <a href="https://materialx.org/docs/api/_file_8h.html"
+										target="_blank">getEnvironmentPath</a> function can be used to retrieve this
+									value.
+									</p>
+									<code><pre>
 import MaterialX as mx
 
 # Load in libraries
@@ -338,78 +340,143 @@ doc.importLibrary(stdlib)
 for libFile in libFiles:
   print('Loaded library file: %s' % libFile)
 </code></pre>
-										<p>Note that the &quot;standard&quot; libraries are in the
-											<code>libraries</code> folder in
-											the installation location. The key interfaces used are:
-										</p>
-										<ul>
-											<li>the <code>loadLibraries</code> utility to create a library document.
-											</li>
-											<li>the Document <code>importLibrary</code> method to import the libraries
-												into
-												a working / main document.</li>
-										</ul>
+									<p>Note that the &quot;standard&quot; libraries are in the
+										<code>libraries</code> folder in
+										the installation location. The key interfaces used are:
+									</p>
+									<ul>
+										<li>the <code>loadLibraries</code> utility to create a library document.
+										</li>
+										<li>the Document <code>importLibrary</code> method to import the libraries
+											into
+											a working / main document.</li>
+									</ul>
 
-									</div>
 								</div>
 							</div>
 						</div>
+					</div>
 
-						<div class="tab-content" id="pills-tabContent">
-							<div class="tab-pane fade" id="pills-notebooks" role="tabpanel"
-								aria-labelledby="pills-notebooks-tab" tabindex="0">
+					<div class="tab-content" id="pills-tabContent">
+						<div class="tab-pane fade show active" id="pills-notebooks" role="tabpanel"
+							aria-labelledby="pills-notebooks-tab" tabindex="0">
 
-								<div class="card border-primary border mb-4">
-									<div class="card-body">
+							<div class="card border-primary border mb-4">
+								<div class="card-body">
 
-										<h5>Learning Notebooks</h5>
-										<p>A series of Jupyter learning notebooks is in progress.
-											For now only local usage has been validated. Hosting of
-											notebooks is under investigation with a possible target
-											being `Google Colab`.
-										</p>
-										<p>Each assumes a Python
-											environment
-											and the installation of the MaterialX Python libraries. </p>
-										<b>Available Notebooks</b>
-										<table class="table table-primary table-striped table-hover table-borderless table-responsive">
-											<thead class="">
-											  <tr>
-												<th scope="col">Notbook</th>
-												<th scope="col">Download</th>
+									<h4>Learning Notebooks</h4>
+									<p>A series of <a hef="https://jupyter-notebook.readthedocs.io/"
+											target="_blank">Jupyter</a>
+										learning notebooks is in progress.
+										For now only local usage has been validated. Hosting of
+										notebooks is under investigation with a possible target
+										being <a href="https://colab.research.google.com/" target="_blank">Google
+											Colab</a>.
+									</p>
+									<p>Each assumes a Python environment
+										and the installation of the Python libraries for MaterialX. If using
+										the notebooks in VSCode, Jupyter needs to be set up. See
+										<a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks"
+											target="_blank">here</a> for more
+										information.
+									</p>
+									<p>
+										For those which may not have access to the execution environment
+										or if to simply read the noteeook, the results of executing the
+										notebooks are provided in the
+										<a href="jupyter_example.html" target="_blank">Examples</a> page.
+										These are generated directly from the sample notebooks.
+									</p>
+									<b>Available Notebooks</b>
+									<p>
+										A Python file (with markdown), a notebook and a link to remote execution of
+										the notebook are provided.<br>Note that it is possible to start with the Python
+										itself and convert to a notebook in VSCode or export from a notebook to Python.
+									</p>
+									<table
+										class="table-fixed table border-primary table-light table-striped table-hover table-borderless table-responsive"
+										style="font-size: 90%">
+										<thead class="">
+											<tr>
+												<th scope="col">Notebook</th>
+												<th scope="col">Download Python (py)</th>
+												<th scope="col">Download Notebook (ipynb)</th>
 												<th scope="col">View on Colab</th>
-											  </tr>
-											</thead>
-											<tbody>
-											  <tr>
+											</tr>
+										</thead>
+										<tbody>
+
+											<tr>
 												<td>Basics
 													<ul>
 														<li>Import MaterialX</li>
 														<li>Create Document and load definitions</li>
+														<li>Read and Write Documents</li>
 														<li>Create, find and delete nodes</li>
 														<li>Connect nodes</li>
 													</ul>
 												</td>
 												<td>
+													<a href="../pymaterialx/mtlx_basics_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td>
 													<a href="../pymaterialx/mtlx_basics_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:2em">
-													</a>													
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
 												</td>
 												<td>
 													<a href="https://colab.research.google.com/drive/1MHwMJa4CgEQw6PbippKQD7H6zXPyoTl2?usp=sharing"
+														target="_blank">
+														<img src="https://colab.research.google.com/assets/colab-badge.svg"
+															style="height:2em"></a>
+												</td>
+											</tr>
+
+
+											<tr>
+												<td>ShaderGen
+													<ul>
+														<li>Generators</li>
+														<li>Generation Context</li>
+														<li>CMS and Units</li>
+														<li>Source Code</li>
+														<li>Introspection</li>
+													</ul>
+												</td>
+												<td>
+													<a href="../pymaterialx/mtlx_shadergen_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td>
+													<a href="../pymaterialx/mtlx_shadergen_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td>
+													<!--
+													<a href=""
 													target="_blank">
 													<img
-														src="https://colab.research.google.com/assets/colab-badge.svg"></a>
+														src="https://colab.research.google.com/assets/colab-badge.svg" style="height:2em"></a>
+													-->
 												</td>
-											  </tr>
-											</tbody>
-										  </table>										
-										<p>
-											Below is a snapshot of Visual Studio code with the "Basics" notebook loaded.
-										</p>
-										<img src="./images/VSCode_Environment.png" style="width: 70%">
-										<p></p>
-									</div>
+											</tr>
+
+										</tbody>
+									</table>
+									<p>
+										Below is a snapshot of Visual Studio code with the "Basics" notebook loaded.
+									</p>
+									<img src="./images/VSCode_Environment.png" style="width: 70%">
+									<p></p>
+									<p>
+										Below is a snapshot of Visual Studio with Python and Markdown embeeded.
+									</p>
+									<img src="./images/VSCode_Python_Markdown_Example.png" style="width: 70%">
+									<p></p>
 								</div>
 							</div>
 						</div>
@@ -421,7 +488,7 @@ for libFile in libFiles:
 
 	<script src="js/mermaid_setup.js"></script>
 	<script>
-		monitor_mermaid_tabs()
+		//monitor_mermaid_tabs()
 	</script>
 </body>
 

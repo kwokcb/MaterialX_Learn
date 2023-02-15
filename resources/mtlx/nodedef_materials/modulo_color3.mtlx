@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <modulo name="modulo_color3" type="color3">
+    <input name="in1" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="in2" type="color3" value="1.0, 1.0, 1.0" />
+  </modulo>
+  <convert name="shader_modulo_color3_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="modulo_color3" />
+  </convert>
+  <surfacematerial name="material_modulo_color3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_modulo_color3_out" />
+  </surfacematerial>
+</materialx>

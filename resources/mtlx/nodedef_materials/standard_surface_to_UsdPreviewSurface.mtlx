@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <standard_surface_to_UsdPreviewSurface name="standard_surface_to_UsdPreviewSurface" type="multioutput">
+    <input name="metalness" type="float" value="0" />
+    <input name="base" type="float" value="1" />
+    <input name="base_color" type="color3" value="0.8, 0.8, 0.8" />
+    <input name="specular" type="float" value="1" />
+    <input name="specular_color" type="color3" value="1, 1, 1" />
+    <input name="specular_IOR" type="float" value="1.5" />
+    <input name="specular_roughness" type="float" value="0.2" />
+    <input name="coat" type="float" value="0" />
+    <input name="coat_color" type="color3" value="1, 1, 1" />
+    <input name="coat_roughness" type="float" value="0.1" />
+    <input name="emission" type="float" value="0" />
+    <input name="emission_color" type="color3" value="1, 1, 1" />
+    <input name="opacity" type="color3" value="1, 1, 1" />
+    <input name="normal" type="vector3" value="0.5, 0.5, 1.0" />
+  </standard_surface_to_UsdPreviewSurface>
+  <convert name="shader_standard_surface_to_UsdPreviewSurface_diffuseColor_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="standard_surface_to_UsdPreviewSurface" output="diffuseColor_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_UsdPreviewSurface_diffuseColor_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_UsdPreviewSurface_diffuseColor_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_UsdPreviewSurface_emissiveColor_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="standard_surface_to_UsdPreviewSurface" output="emissiveColor_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_UsdPreviewSurface_emissiveColor_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_UsdPreviewSurface_emissiveColor_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_UsdPreviewSurface_metallic_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_UsdPreviewSurface" output="metallic_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_UsdPreviewSurface_metallic_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_UsdPreviewSurface_metallic_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_UsdPreviewSurface_roughness_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_UsdPreviewSurface" output="roughness_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_UsdPreviewSurface_roughness_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_UsdPreviewSurface_roughness_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_UsdPreviewSurface_clearcoat_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_UsdPreviewSurface" output="clearcoat_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_UsdPreviewSurface_clearcoat_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_UsdPreviewSurface_clearcoat_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_UsdPreviewSurface" output="clearcoatRoughness_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_UsdPreviewSurface_opacity_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_UsdPreviewSurface" output="opacity_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_UsdPreviewSurface_opacity_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_UsdPreviewSurface_opacity_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_UsdPreviewSurface_ior_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_UsdPreviewSurface" output="ior_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_UsdPreviewSurface_ior_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_UsdPreviewSurface_ior_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_UsdPreviewSurface_normal_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="standard_surface_to_UsdPreviewSurface" output="normal_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_UsdPreviewSurface_normal_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_UsdPreviewSurface_normal_out" />
+  </surfacematerial>
+</materialx>

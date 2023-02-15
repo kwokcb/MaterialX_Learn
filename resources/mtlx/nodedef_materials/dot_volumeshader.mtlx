@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <dot name="dot_volumeshader" type="volumeshader">
+    <input name="in" type="volumeshader" value="" />
+    <input name="note" type="string" value="" uniform="true" />
+  </dot>
+  <volumematerial name="material_dot_volumeshader_out" type="material">
+    <input name="volumeshader" type="volumeshader" nodename="dot_volumeshader" />
+  </volumematerial>
+</materialx>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <blur name="blur_float" type="float">
+    <input name="in" type="float" value="0.0" />
+    <input name="size" type="float" value="0.0" />
+    <input name="filtertype" type="string" value="box" enum="box,gaussian" uniform="true" />
+  </blur>
+  <convert name="shader_blur_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="blur_float" />
+  </convert>
+  <surfacematerial name="material_blur_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_blur_float_out" />
+  </surfacematerial>
+</materialx>

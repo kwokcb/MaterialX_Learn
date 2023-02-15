@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <bitangent name="bitangent_vector3" type="vector3">
+    <input name="space" type="string" value="object" enum="model,object,world" uniform="true" />
+    <input name="index" type="integer" value="0" uniform="true" />
+  </bitangent>
+  <convert name="shader_bitangent_vector3_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="bitangent_vector3" />
+  </convert>
+  <surfacematerial name="material_bitangent_vector3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_bitangent_vector3_out" />
+  </surfacematerial>
+</materialx>

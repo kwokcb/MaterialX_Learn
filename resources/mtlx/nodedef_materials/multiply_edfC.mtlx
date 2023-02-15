@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <multiply name="multiply_edfC" type="EDF">
+    <input name="in1" type="EDF" value="" nodename="uniform_edf" />
+    <input name="in2" type="color3" value="1.0, 1.0, 1.0" />
+  </multiply>
+  <uniform_edf name="uniform_edf" type="EDF" />
+  <surface name="shader_multiply_edfC_out" type="surfaceshader">
+    <input name="edf" type="EDF" nodename="multiply_edfC" />
+  </surface>
+  <surfacematerial name="material_multiply_edfC_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_multiply_edfC_out" />
+  </surfacematerial>
+</materialx>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <mix name="mix_color3_color3" type="color3">
+    <input name="fg" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="bg" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="mix" type="color3" value="0.0, 0.0, 0.0" />
+  </mix>
+  <convert name="shader_mix_color3_color3_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="mix_color3_color3" />
+  </convert>
+  <surfacematerial name="material_mix_color3_color3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_mix_color3_color3_out" />
+  </surfacematerial>
+</materialx>

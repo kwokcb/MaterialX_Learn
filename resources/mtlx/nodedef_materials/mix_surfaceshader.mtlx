@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <mix name="mix_surfaceshader" type="surfaceshader">
+    <input name="fg" type="surfaceshader" value="" nodename="standard_surface" />
+    <input name="bg" type="surfaceshader" value="" nodename="standard_surface2" />
+    <input name="mix" type="float" value="0.0" />
+  </mix>
+  <standard_surface name="standard_surface" type="surfaceshader" />
+  <standard_surface name="standard_surface2" type="surfaceshader" />
+  <surfacematerial name="material_mix_surfaceshader_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="mix_surfaceshader" />
+  </surfacematerial>
+</materialx>

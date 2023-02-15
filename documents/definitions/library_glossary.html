@@ -1,0 +1,1883 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  
+    <link rel="stylesheet" href="../css/style.css">
+  
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">  
+</head>
+
+<body class="min-vh-100">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script> 
+<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
+
+<script src="../js/definition_card_helpers.js"></script>
+
+ <!-- Navigation  -->
+ <nav class="navbar sticky-top navbar-expand-lg bg-light">
+    <div class="container-md container-fluid">
+      <a class="navbar-brand" href="#">
+        <h5><img src="../images/logo3d_2_small.png" alt="MaterialX Learn"
+            class="d-inline-block align-text-center" width="60">
+          MaterialX Learn</h5>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+        aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenuContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="../../index.html" role="button">
+                  Home
+                </a>
+              </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Learn
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../nodes_and_nodegraphs.html">
+                  Nodes and Graphs
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../node_definitions.html">
+                  Node Definitions
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../documents.html">
+                  Documents
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Reference
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="definitions_by_group.html">
+                  Library (By Group)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="all_definitions.html">
+                  Library (All)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="library_glossary.html">
+                  Library Glossary
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
+                  C++ API  <img src="../images/MaterialXLogo_200x155.png" style="width:20px">
+                </a>
+              </li>                            
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Tools</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../mermaidChecker.html">
+                  Graph Visualizer
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Develop</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../python_MaterialX.html">
+                  Tutorials 
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../jupyter_example.html">
+                  Examples
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Workflows</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="https://github.com/kwokcb/glTF_MaterialX" target="_blank">
+                  Khronos glTF Interop
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Design</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../design.html">
+                  UX Design
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../implementation.html">
+                    Implementation
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav><div class="container-fluid ">
+ <div class="row flex-nowrap">
+<div class="col-12 p-4 pt-2 pl-2">
+<h2>Library Glossary</h3>
+<ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="top-toggle nav-link active" id="pills-types-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-types" type="button" role="tab" aria-controls="pills-types"
+            aria-selected="true">Types</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="top-toggle nav-link " id="pills-units-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-units" type="button" role="tab" aria-controls="pills-units"
+            aria-selected="false">Real World Units</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="top-toggle nav-link " id="pills-cm-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-cm" type="button" role="tab" aria-controls="pills-cm"
+            aria-selected="false">Color Management</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="top-toggle nav-link " id="pills-geometry-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-geometry" type="button" role="tab"
+            aria-controls="pills-geometry" aria-selected="false">Geometry</button>
+    </li>
+</ul><div class="tab-content" id="pills-tabContent">
+<div class="tab-pane fade show active" id="pills-types" role="tabpanel"aria-labelledby="pills-types-tab" tabindex="0">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<!-- Type definitions -->
+<p>
+    The following table lists all core supported types for node inputs, outputs and tokens types.
+</p>
+<p>
+    These are defined as 'typedef' elements in the standard library. The name of the 'typedef' is used
+    to specify the `type' of an input, output or token.
+    Note that except for the 'Description', the column headings for this section are the attribute names 
+    on a 'typedef'.
+    </p>
+<p>
+    Though new types can theoretically be defined this is not recommended as these new types is not
+    automatically recognized. For instance, both file I/O and shader generation will not recognize these types.
+</p>
+<p>
+    The associated API for a 'typedef' is <a href="https://materialx.org/docs/api/class_type_def.html" target="_blank">TypeDef</a>
+    and can be accessed via the <a href="https://materialx.org/docs/api/class_document.html" target="_blank">'getTypeDef()'</a>
+    document API.
+</p>
+<p>
+    Note that the type 'geomname' is not used as a type for inputs, outputs or tokens and 'none'
+    was used for background nodes but has been deprecated as of version 1.38.
+</p><table class="table-fixed table border-primary table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+<thead class="table-primary">
+<tr>
+<th scope="col" style="width:25%">type</th>
+<th scope="col" style="width:20%">semantic</th>
+<th scope="col" style="width:20%">context</th>
+<th scope="col" style="width:35%">Description</th>
+</tr>
+</thead>
+</table>
+<div class="row px-2 pt-0 vh-30 overflow-auto" style="height: 300">
+<table class="table-fixed table border-primary table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+<tbody>
+<tr>
+<td style="width:25%">BSDF</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">BSDF</td>
+</tr>
+<tr>
+<td style="width:25%">EDF</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">EDF</td>
+</tr>
+<tr>
+<td style="width:25%">VDF</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">VDF</td>
+</tr>
+<tr>
+<td style="width:25%">boolean</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">boolean</td>
+</tr>
+<tr>
+<td style="width:25%">color3</td>
+<td style="width:20%">color</td>
+<td style="width:20%"></td>
+<td style="width:35%">3 component color</td>
+</tr>
+<tr>
+<td style="width:25%">color3array</td>
+<td style="width:20%">color</td>
+<td style="width:20%"></td>
+<td style="width:35%">color3 array</td>
+</tr>
+<tr>
+<td style="width:25%">color4</td>
+<td style="width:20%">color</td>
+<td style="width:20%"></td>
+<td style="width:35%">4 component color</td>
+</tr>
+<tr>
+<td style="width:25%">color4array</td>
+<td style="width:20%">color</td>
+<td style="width:20%"></td>
+<td style="width:35%">color4 array</td>
+</tr>
+<tr>
+<td style="width:25%">displacementshader</td>
+<td style="width:20%">shader</td>
+<td style="width:20%">displacement</td>
+<td style="width:35%">displacement shader</td>
+</tr>
+<tr>
+<td style="width:25%">filename</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">URI to a file</td>
+</tr>
+<tr>
+<td style="width:25%">float</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">float</td>
+</tr>
+<tr>
+<td style="width:25%">floatarray</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">float array</td>
+</tr>
+<tr>
+<td style="width:25%">geomname</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">Geometry DAG path. Use in material assignments</td>
+</tr>
+<tr>
+<td style="width:25%">geomnamearray</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">geomname array</td>
+</tr>
+<tr>
+<td style="width:25%">integer</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">integer</td>
+</tr>
+<tr>
+<td style="width:25%">integerarray</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">integer array</td>
+</tr>
+<tr>
+<td style="width:25%">lightshader</td>
+<td style="width:20%">shader</td>
+<td style="width:20%">light</td>
+<td style="width:35%">light shader</td>
+</tr>
+<tr>
+<td style="width:25%">material</td>
+<td style="width:20%">material</td>
+<td style="width:20%"></td>
+<td style="width:35%">material</td>
+</tr>
+<tr>
+<td style="width:25%">matrix33</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">3 by 3 matrix</td>
+</tr>
+<tr>
+<td style="width:25%">matrix44</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">4 by 4 matrix</td>
+</tr>
+<tr>
+<td style="width:25%">none</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%"><b>Deprecated<b></td>
+</tr>
+<tr>
+<td style="width:25%">string</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">string</td>
+</tr>
+<tr>
+<td style="width:25%">stringarray</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">string array</td>
+</tr>
+<tr>
+<td style="width:25%">surfaceshader</td>
+<td style="width:20%">shader</td>
+<td style="width:20%">surface</td>
+<td style="width:35%">surface shader</td>
+</tr>
+<tr>
+<td style="width:25%">vector2</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">vector2</td>
+</tr>
+<tr>
+<td style="width:25%">vector2array</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">vector2 array</td>
+</tr>
+<tr>
+<td style="width:25%">vector3</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">3 component vector</td>
+</tr>
+<tr>
+<td style="width:25%">vector3array</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">vector3 array</td>
+</tr>
+<tr>
+<td style="width:25%">vector4</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">4 component vector</td>
+</tr>
+<tr>
+<td style="width:25%">vector4array</td>
+<td style="width:20%"></td>
+<td style="width:20%"></td>
+<td style="width:35%">vector4 array</td>
+</tr>
+<tr>
+<td style="width:25%">volumeshader</td>
+<td style="width:20%">shader</td>
+<td style="width:20%">volume</td>
+<td style="width:35%">volume shader</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content" id="pills-tabContent">
+<div class="tab-pane fade show" id="pills-geometry" role="tabpanel"aria-labelledby="pills-geometry-tab" tabindex="0">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<!-- Geometry Properties -->
+<p>
+    Built-in geometry identifiers ('geomdefprop') are provided as part of the standard library. Each has a unique name,
+    a type, and the space that the input geometry resides in. For convenience the geometry type and
+    space are reflected in the name. For example: "Pobject" is position in object space. Only node definitions may
+    specify these identifiers in the <em>'defaultgeomprop'</em> attribute for an
+    'input'.
+</p>
+<p>The corresponding API class is
+    <a href="https://materialx.org/docs/api/class_geom_prop_def.html" target="_blank">GeomPropDef</a>
+</p>
+<p>The <a href="bump.html" target="_blank">bump definition</a> contains an example of specifying it's
+    'normal' input as defaulting to routing world space normals as input by default.
+</p>
+<p>Note that except for the 'Description', the column headings for this section are the attribute names 
+    for a 'geomdefprop'.</p>
+<table class="table-fixed table border-primary table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+<thead class="table-primary">
+<tr>
+<th scope="col" style="width:20%">name</th>
+<th scope="col" style="width:20%">type</th>
+<th scope="col" style="width:20%">geomprop</th>
+<th scope="col" style="width:20%">space</th>
+<th scope="col" style="width:20%">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:20%">Pobject</td>
+<td style="width:20%">vector3</td>
+<td style="width:20%">position</td>
+<td style="width:20%">object</td>
+<td style="width:20%">Position in object space</td>
+</tr>
+<tr>
+<td style="width:20%">Nobject</td>
+<td style="width:20%">vector3</td>
+<td style="width:20%">normal</td>
+<td style="width:20%">object</td>
+<td style="width:20%">Normal in object space</td>
+</tr>
+<tr>
+<td style="width:20%">Tobject</td>
+<td style="width:20%">vector3</td>
+<td style="width:20%">tangent</td>
+<td style="width:20%">object</td>
+<td style="width:20%">Tangent in object space</td>
+</tr>
+<tr>
+<td style="width:20%">Bobject</td>
+<td style="width:20%">vector3</td>
+<td style="width:20%">bitangent</td>
+<td style="width:20%">object</td>
+<td style="width:20%">Bitangent in object space</td>
+</tr>
+<tr>
+<td style="width:20%">Pworld</td>
+<td style="width:20%">vector3</td>
+<td style="width:20%">position</td>
+<td style="width:20%">world</td>
+<td style="width:20%">Position in world space</td>
+</tr>
+<tr>
+<td style="width:20%">Nworld</td>
+<td style="width:20%">vector3</td>
+<td style="width:20%">normal</td>
+<td style="width:20%">world</td>
+<td style="width:20%">Normal in world space</td>
+</tr>
+<tr>
+<td style="width:20%">Tworld</td>
+<td style="width:20%">vector3</td>
+<td style="width:20%">tangent</td>
+<td style="width:20%">world</td>
+<td style="width:20%">Tangent in world space</td>
+</tr>
+<tr>
+<td style="width:20%">Bworld</td>
+<td style="width:20%">vector3</td>
+<td style="width:20%">bitangent</td>
+<td style="width:20%">world</td>
+<td style="width:20%">Bitangent in world space</td>
+</tr>
+<tr>
+<td style="width:20%">UV0</td>
+<td style="width:20%">vector2</td>
+<td style="width:20%">texcoord</td>
+<td style="width:20%"></td>
+<td style="width:20%">First texture coordinate set</td>
+</tr>
+</tbody>
+</table>
+</div></div></div></div>
+<div class="tab-content" id="pills-tabContent">
+<div class="tab-pane fade show" id="pills-units" role="tabpanel"aria-labelledby="pills-units-tab" tabindex="0">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<!-- Unit Definitions -->
+<p>A float, vector, and matrix input values can be specified in real world units. There are different
+    types of units which can be used. For now only distance and angle unit types are supported.
+</p>
+<p>For each unit a scaling factor is provided relative to the "base" unit which has a scale value of
+    1. For instance the unit "foot" has a scale of "0.3048" which means that to convert from a foot
+    value to a "meter" the given scaling must be applied.
+</p>
+<p><a href="rotate3d.html" target="_blank">'rotate3d'</a> shows an example of defining units for input angle.
+</p>
+<p>Note that <b>both</b> the unit type ('unitype' attribute) and unit name ('unit' attribute) must be
+    specified together to be valid. Except for the 'Description', the column headings for this 
+    section are the attribute names on the respective elements.
+</p>
+<p>The API class interface for a 'unit' is <a href="https://materialx.org/docs/api/class_unit.html"
+        target="_blank">Unit</a> and for a 'unittype' is
+    <a href="https://materialx.org/docs/api/class_unit_type_def.html" target="_blank">UnitTypeDef</a>
+</p>
+<p>Example usage of units for code generation can be found in the 
+  <a href="../../pymaterialx/mtlx_shadergen_notebook.html" target="_blank">
+    <img src="../images/python-logo-only.svg" width="15"> Python Shader Generation Example
+</a></p>
+<p>
+<div class="btn btn-lg border-primary" style="pointer-events: none;" id="Unit Type">Unit Type: distance</div>
+<br><br>
+<table class="table-fixed table border-primary table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+<thead class="table-primary">
+<tr>
+<th scope="col" style="width:30%">unit</th>
+<th scope="col" style="width:30%">scale</th>
+<th scope="col" style="width:30%">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:30%">nanometer</td>
+<td style="width:30%">0.000000001</td>
+<td style="width:30%">nanometer</td>
+</tr>
+<tr>
+<td style="width:30%">micron</td>
+<td style="width:30%">0.000001</td>
+<td style="width:30%">micron</td>
+</tr>
+<tr>
+<td style="width:30%">millimeter</td>
+<td style="width:30%">0.001</td>
+<td style="width:30%">millimeter</td>
+</tr>
+<tr>
+<td style="width:30%">centimeter</td>
+<td style="width:30%">0.01</td>
+<td style="width:30%">centimeter</td>
+</tr>
+<tr>
+<td style="width:30%">inch</td>
+<td style="width:30%">0.0254</td>
+<td style="width:30%">inch</td>
+</tr>
+<tr>
+<td style="width:30%">foot</td>
+<td style="width:30%">0.3048</td>
+<td style="width:30%">foot</td>
+</tr>
+<tr>
+<td style="width:30%">yard</td>
+<td style="width:30%">0.9144</td>
+<td style="width:30%">yard</td>
+</tr>
+<tr>
+<td style="width:30%">meter</td>
+<td style="width:30%">1.0</td>
+<td style="width:30%">meter</td>
+</tr>
+<tr>
+<td style="width:30%">kilometer</td>
+<td style="width:30%">1000.0</td>
+<td style="width:30%">kilometer</td>
+</tr>
+<tr>
+<td style="width:30%">mile</td>
+<td style="width:30%">1609.344</td>
+<td style="width:30%">mile</td>
+</tr>
+</tbody>
+</table>
+</li>
+<p>
+<div class="btn btn-lg border-primary" style="pointer-events: none;" id="Unit Type">Unit Type: angle</div>
+<br><br>
+<table class="table-fixed table border-primary table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+<thead class="table-primary">
+<tr>
+<th scope="col" style="width:30%">unit</th>
+<th scope="col" style="width:30%">scale</th>
+<th scope="col" style="width:30%">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width:30%">degree</td>
+<td style="width:30%">1.0</td>
+<td style="width:30%">degree</td>
+</tr>
+<tr>
+<td style="width:30%">radian</td>
+<td style="width:30%">57.295779513</td>
+<td style="width:30%">radian</td>
+</tr>
+</tbody>
+</table>
+</li>
+</div></div></div></div>
+<div class="tab-content" id="pills-tabContent">
+<div class="tab-pane fade show" id="pills-cm" role="tabpanel"aria-labelledby="pills-cm-tab" tabindex="0">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<!-- Color management definitions description -->
+<p>At the current time there are no node definitions for a color space transform nodes.
+    Instead a series of implementations are provided, such that the shader functions reflect the
+    possible source and target color space names.
+</p>
+<p>
+    This information has been extracted in this section to provide some basic
+    information. Note that all names conform to the
+    <a href="https://github.com/colour-science/OpenColorIO-Configs/blob/master/aces_1.2/config.ocio"
+        target="_blank">AcesCg 1.2 configuration</a>.
+</p>
+<p>To specify a color space transform, a 'colorspace' attribute may be on 3 and 4 channel color inputs.
+    It is invalid to set this only any other element type.
+</p>
+<p>The <a href="artistic_ior.html" target="_blank">artistic_ior</a> definition shows an example of
+    specifying an 'edge_color' input 'colorspace' as <em>'lin_rec709'</em>. 
+    <hr>
+    <img src="../images/colorspace_input_example.png" width="50%"> <br> 
+    <hr>
+    In the same example the 'ior' input has a 'colorspace' value of <em>'none'</em>. 'none' has a special
+    meaning which indicates that the input should not be interpreted as a color
+    which can be transformed (there is no color swatch to indicate this).
+    <hr>
+    <img src="../images/non_color_example.png" width="40%"> 
+    <hr>
+</p>
+<p>For evaluation, the 'colorspace' attribute value can be parsed to determine the input colorspace. 
+    For code generation, either the
+    colorspace name is passed on to the generated shader code, or it is replaced with color transformation code 
+    which is added into the generated shader code. A code generation option is provided for user control.
+</p>
+<p>The corresponding API class for a transform is
+    <a href="https://materialx.org/docs/api/struct_color_space_transform.html" target="_blank">ColorSpaceTransform</a>
+</p>
+<p>
+  <!-- <img src="../images/tools.svg"> A specific section about color management systems and their usage is forthcoming.-->
+  <br>
+Example usage of color management for code generation can be found in the 
+    <a href="../../pymaterialx/mtlx_shadergen_notebook.html" target="_blank">
+    <img src="../images/python-logo-only.svg" width="15"> Python Shader Generation Example
+  </a>  
+</p><hr>
+<p>
+  Information for available transforms provided below which handle both `color3` and `color4` input types. 
+  Each section can be expanded to examine per-`target` implementation information. All transforms are supported 
+  for each targets listed.
+</p>
+<details open><summary class="card-header-sm rounded bg-opacity-50 m-0 py-0 p-1 mb-0 mt-1">Target: genglsl</summary>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma18_to_linear_color3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma18_to_linear_color3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma18_to_linear_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma24_to_linear_color3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma24_to_linear_color3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma24_to_linear_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_srgb_texture_to_lin_rec709_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_ap1">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_g22_ap1_to_lin_rec709_color3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma22_to_linear_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma22_to_linear_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma22_to_linear_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma18_to_linear_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma18_to_linear_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma18_to_linear_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma24_to_linear_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma24_to_linear_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma24_to_linear_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_lin_adobergb_to_lin_rec709_color3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_adobergb_to_lin_rec709_color3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_ap1">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_g22_ap1_to_lin_rec709_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_srgb_texture_to_lin_rec709_color3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_ap1_to_rec709_color3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_ap1_to_rec709_color3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_ap1_to_rec709_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_ap1_to_rec709_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_ap1_to_rec709_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_ap1_to_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_adobergb_to_lin_rec709_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_lin_adobergb_to_lin_rec709_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma22_to_linear_color3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma22_to_linear_color3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma22_to_linear_color3">
+   </div>
+  </div>
+<hr>
+</details>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-0 py-0 p-1 mb-0 mt-1">Target: genmdl</summary>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_gamma22_to_linear_color4({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_srgb_texture_to_lin_rec709_color4({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_lin_adobergb_to_lin_rec709_color4({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_ap1_to_rec709_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_gamma24_to_linear_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_adobergb_to_lin_rec709_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_gamma18_to_linear_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_ap1_to_rec709_color4({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_ap1">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_ap1_to_rec709_color3(mx::cm::mx_gamma22_to_linear_color3({{in}})) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_gamma24_to_linear_color4({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_adobergb_to_lin_rec709_color4({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_gamma22_to_linear_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_lin_adobergb_to_lin_rec709_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_srgb_texture_to_lin_rec709_color3({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_gamma18_to_linear_color4({{in}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_ap1">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>mx::cm::mx_ap1_to_rec709_color4(mx::cm::mx_gamma22_to_linear_color4({{in}})) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-0 py-0 p-1 mb-0 mt-1">Target: genosl</summary>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_adobergb_to_lin_rec709_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_lin_adobergb_to_lin_rec709_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma24_to_linear_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma24_to_linear_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma24_to_linear_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_lin_adobergb_to_lin_rec709_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_lin_adobergb_to_lin_rec709_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_ap1_to_rec709_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_ap1_to_rec709_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_ap1_to_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="acescg">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_ap1_to_rec709_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_ap1_to_rec709_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_ap1_to_rec709_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="rec709_display">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma24_to_linear_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma24_to_linear_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma24_to_linear_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma22_to_linear_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma22_to_linear_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma22_to_linear_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_srgb_texture_to_lin_rec709_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma22_to_linear_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma22_to_linear_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma22_to_linear_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_ap1">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_g22_ap1_to_lin_rec709_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma18_to_linear_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma18_to_linear_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma18_to_linear_color3">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g22_ap1">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_g22_ap1_to_lin_rec709_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_g22_ap1_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="g18_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_gamma18_to_linear_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_gamma18_to_linear_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_gamma18_to_linear_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="srgb_texture">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_srgb_texture_to_lin_rec709_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_srgb_texture_to_lin_rec709_color4">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Source / Target Colorspace:</label>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="adobergb">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-primary pt-0 pb-0" value="lin_rec709">
+   </div>
+   <div class="col-sm-2">
+     <input type="button" style="pointer-events: none;"  class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-6">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_adobergb_to_lin_rec709_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" style="pointer-events: none;" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_adobergb_to_lin_rec709_color3">
+   </div>
+  </div>
+<hr>
+</details>
+</div>
+</div></div></div></div>
+<script>
+  var searchInput = document.getElementById("searchTOC")
+  if (searchInput) {
+   searchInput.addEventListener("keypress", filterOnEnter);
+  }
+  var renderButtons = document.querySelectorAll(".mrender");
+  if (renderButtons) {
+     renderButtons.forEach((renderButton) => { renderButton.addEventListener("click", renderMermaid); });
+  }
+  var copyButtons = document.querySelectorAll(".mrcopy");
+  if (copyButtons) {
+     copyButtons.forEach((copyButton) => { copyButton.addEventListener("click", copyMermaid); });
+  }
+  var collapses = document.querySelectorAll("[data-bs-toggle='collapse']");
+  if (collapses) {
+    collapses.forEach((collapseItem) => { collapseItem.addEventListener("click", toggleIndexArea); });
+  }
+</script>
+</body>
+</html>

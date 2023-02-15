@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <acos name="acos_float" type="float">
+    <input name="in" type="float" value="0.0" />
+  </acos>
+  <convert name="shader_acos_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="acos_float" />
+  </convert>
+  <surfacematerial name="material_acos_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_acos_float_out" />
+  </surfacematerial>
+</materialx>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <geomcolor name="geomcolor_color3" type="color3">
+    <input name="index" type="integer" value="0" uniform="true" />
+  </geomcolor>
+  <convert name="shader_geomcolor_color3_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="geomcolor_color3" />
+  </convert>
+  <surfacematerial name="material_geomcolor_color3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_geomcolor_color3_out" />
+  </surfacematerial>
+</materialx>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <ramptb name="ramptb_vector2" type="vector2">
+    <input name="valuet" type="vector2" value="0.0, 0.0" />
+    <input name="valueb" type="vector2" value="0.0, 0.0" />
+    <input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+  </ramptb>
+  <convert name="shader_ramptb_vector2_out" type="surfaceshader">
+    <input name="in" type="vector2" nodename="ramptb_vector2" />
+  </convert>
+  <surfacematerial name="material_ramptb_vector2_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ramptb_vector2_out" />
+  </surfacematerial>
+</materialx>

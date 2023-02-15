@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <gltf_colorimage name="gltf_colorimage" type="multioutput" version="1.0">
+    <input name="file" type="filename" uniform="true" value="" />
+    <input name="default" type="color4" value="0, 0, 0, 0" />
+    <input name="uvindex" type="integer" uniform="true" value="0" />
+    <input name="pivot" type="vector2" value="0, 1" />
+    <input name="scale" type="vector2" value="1, 1" />
+    <input name="rotate" type="float" value="0" unit="degree" unittype="angle" />
+    <input name="offset" type="vector2" value="0, 0" />
+    <input name="operationorder" type="integer" value="1" />
+    <input name="uaddressmode" type="string" uniform="true" value="periodic" enum="constant,clamp,periodic,mirror" />
+    <input name="vaddressmode" type="string" uniform="true" value="periodic" enum="constant,clamp,periodic,mirror" />
+    <input name="filtertype" type="string" uniform="true" value="linear" enum="closest,linear,cubic" />
+    <input name="color" type="color4" value="1, 1, 1, 1" />
+    <input name="geomcolor" type="color4" value="1, 1, 1, 1" uiname="Geometry Color" />
+  </gltf_colorimage>
+  <convert name="shader_gltf_colorimage_outcolor" type="surfaceshader">
+    <input name="in" type="color3" nodename="gltf_colorimage" output="outcolor" />
+  </convert>
+  <surfacematerial name="material_gltf_colorimage_outcolor" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_gltf_colorimage_outcolor" />
+  </surfacematerial>
+  <convert name="shader_gltf_colorimage_outa" type="surfaceshader">
+    <input name="in" type="float" nodename="gltf_colorimage" output="outa" />
+  </convert>
+  <surfacematerial name="material_gltf_colorimage_outa" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_gltf_colorimage_outa" />
+  </surfacematerial>
+</materialx>

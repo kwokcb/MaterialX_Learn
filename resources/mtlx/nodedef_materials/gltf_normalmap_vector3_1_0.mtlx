@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <gltf_normalmap name="gltf_normalmap_vector3_1_0" type="vector3" version="1.0">
+    <input name="file" type="filename" uniform="true" value="" />
+    <input name="default" type="vector3" value="0.5, 0.5, 1" />
+    <input name="uvindex" type="integer" uniform="true" value="0" />
+    <input name="pivot" type="vector2" value="0, 1" />
+    <input name="scale" type="vector2" value="1, 1" />
+    <input name="rotate" type="float" value="0" unit="degree" unittype="angle" />
+    <input name="offset" type="vector2" value="0, 0" />
+    <input name="operationorder" type="integer" value="0" />
+    <input name="uaddressmode" type="string" uniform="true" value="periodic" enum="constant,clamp,periodic,mirror" />
+    <input name="vaddressmode" type="string" uniform="true" value="periodic" enum="constant,clamp,periodic,mirror" />
+    <input name="filtertype" type="string" uniform="true" value="linear" enum="closest,linear,cubic" />
+  </gltf_normalmap>
+  <convert name="shader_gltf_normalmap_vector3_1_0_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="gltf_normalmap_vector3_1_0" />
+  </convert>
+  <surfacematerial name="material_gltf_normalmap_vector3_1_0_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_gltf_normalmap_vector3_1_0_out" />
+  </surfacematerial>
+</materialx>

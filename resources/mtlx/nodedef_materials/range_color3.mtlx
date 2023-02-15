@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <range name="range_color3" type="color3">
+    <input name="in" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="inlow" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="inhigh" type="color3" value="1.0, 1.0, 1.0" />
+    <input name="gamma" type="color3" value="1.0, 1.0, 1.0" />
+    <input name="outlow" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="outhigh" type="color3" value="1.0, 1.0, 1.0" />
+    <input name="doclamp" type="boolean" value="false" />
+  </range>
+  <convert name="shader_range_color3_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="range_color3" />
+  </convert>
+  <surfacematerial name="material_range_color3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_range_color3_out" />
+  </surfacematerial>
+</materialx>

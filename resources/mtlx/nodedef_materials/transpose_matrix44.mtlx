@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <transpose name="transpose_matrix44" type="matrix44">
+    <input name="in" type="matrix44" value="1.0,0.0,0.0,0.0, 0.0,1.0,0.0,0.0, 0.0,0.0,1.0,0.0, 0.0,0.0,0.0,1.0" />
+  </transpose>
+</materialx>

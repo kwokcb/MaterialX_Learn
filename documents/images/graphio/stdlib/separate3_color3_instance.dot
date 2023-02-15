@@ -1,0 +1,30 @@
+digraph {
+  rankdir = LR;
+    NG_separate3_color3_N_r_color3 [label= "swizzle"];
+    NG_separate3_color3_N_r_color3[shape = box];
+    NG_separate3_color3_N_r_color3 ->     NG_separate3_color3_outr;
+    NG_separate3_color3_outr [label= "outr"];
+    NG_separate3_color3_outr[shape = box]; 
+    NG_separate3_color3_inINT [label="in"];
+    NG_separate3_color3_inINT [shape = ellipse];
+    NG_separate3_color3_N_r_color3 [label="swizzle"];
+    NG_separate3_color3_inINT -> NG_separate3_color3_N_r_color3 [label=".in"];
+    NG_separate3_color3_N_g_color3 [label= "swizzle"];
+    NG_separate3_color3_N_g_color3[shape = box];
+    NG_separate3_color3_N_g_color3 ->     NG_separate3_color3_outg;
+    NG_separate3_color3_outg [label= "outg"];
+    NG_separate3_color3_outg[shape = box]; 
+    NG_separate3_color3_inINT [label="in"];
+    NG_separate3_color3_inINT [shape = ellipse];
+    NG_separate3_color3_N_g_color3 [label="swizzle"];
+    NG_separate3_color3_inINT -> NG_separate3_color3_N_g_color3 [label=".in"];
+    NG_separate3_color3_N_b_color3 [label= "swizzle"];
+    NG_separate3_color3_N_b_color3[shape = box];
+    NG_separate3_color3_N_b_color3 ->     NG_separate3_color3_outb;
+    NG_separate3_color3_outb [label= "outb"];
+    NG_separate3_color3_outb[shape = box]; 
+    NG_separate3_color3_inINT [label="in"];
+    NG_separate3_color3_inINT [shape = ellipse];
+    NG_separate3_color3_N_b_color3 [label="swizzle"];
+    NG_separate3_color3_inINT -> NG_separate3_color3_N_b_color3 [label=".in"];
+}

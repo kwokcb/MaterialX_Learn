@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <unifiednoise3d name="unifiednoise3d_float" type="float">
+    <input name="position" type="vector3" defaultgeomprop="Pobject" />
+    <input name="freq" type="vector3" uiname="Frequency" value="1, 1, 1" />
+    <input name="offset" type="vector3" uiname="Offset" value="0, 0, 0" />
+    <input name="jitter" type="float" uiname="Jitter" value="1" />
+    <input name="outmin" type="float" uiname="Output Min" value="0" />
+    <input name="outmax" type="float" uiname="Output Max" value="1" />
+    <input name="clampoutput" type="boolean" uiname="Clamp Output" value="true" />
+    <input name="octaves" type="integer" uiname="Octaves" value="3" />
+    <input name="lacunarity" type="float" uiname="Lacunarity" value="2" />
+    <input name="diminish" type="float" uiname="Diminish" value="0.5" />
+    <input name="type" type="integer" uiname="Noise Type" value="0" enum="Perlin,Cell,Worley,Fractal" enumvalues="0,1,2,3" />
+  </unifiednoise3d>
+  <convert name="shader_unifiednoise3d_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="unifiednoise3d_float" />
+  </convert>
+  <surfacematerial name="material_unifiednoise3d_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_unifiednoise3d_float_out" />
+  </surfacematerial>
+</materialx>

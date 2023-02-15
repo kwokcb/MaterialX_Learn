@@ -1,0 +1,34 @@
+digraph {
+  rankdir = LR;
+    NG_contrast_color3FA_N_add_color3FA [label= "add"];
+    NG_contrast_color3FA_N_add_color3FA[shape = box];
+    NG_contrast_color3FA_N_add_color3FA ->     NG_contrast_color3FA_out;
+    NG_contrast_color3FA_out [label= "out"];
+    NG_contrast_color3FA_out[shape = box]; 
+    NG_contrast_color3FA_pivotINT [label="pivot"];
+    NG_contrast_color3FA_pivotINT [shape = ellipse];
+    NG_contrast_color3FA_N_add_color3FA [label="add"];
+    NG_contrast_color3FA_pivotINT -> NG_contrast_color3FA_N_add_color3FA [label=".in2"];
+    NG_contrast_color3FA_N_mul_color3FA [label= "multiply"];
+    NG_contrast_color3FA_N_mul_color3FA[shape = box];
+    NG_contrast_color3FA_N_mul_color3FA ->     NG_contrast_color3FA_N_add_color3FA [label= "in1"];
+    NG_contrast_color3FA_N_add_color3FA [label= "add"];
+    NG_contrast_color3FA_N_add_color3FA[shape = box]; 
+    NG_contrast_color3FA_amountINT [label="amount"];
+    NG_contrast_color3FA_amountINT [shape = ellipse];
+    NG_contrast_color3FA_N_mul_color3FA [label="multiply"];
+    NG_contrast_color3FA_amountINT -> NG_contrast_color3FA_N_mul_color3FA [label=".in2"];
+    NG_contrast_color3FA_N_sub_color3FA [label= "subtract"];
+    NG_contrast_color3FA_N_sub_color3FA[shape = box];
+    NG_contrast_color3FA_N_sub_color3FA ->     NG_contrast_color3FA_N_mul_color3FA [label= "in1"];
+    NG_contrast_color3FA_N_mul_color3FA [label= "multiply"];
+    NG_contrast_color3FA_N_mul_color3FA[shape = box]; 
+    NG_contrast_color3FA_inINT [label="in"];
+    NG_contrast_color3FA_inINT [shape = ellipse];
+    NG_contrast_color3FA_N_sub_color3FA [label="subtract"];
+    NG_contrast_color3FA_inINT -> NG_contrast_color3FA_N_sub_color3FA [label=".in1"];
+    NG_contrast_color3FA_pivotINT [label="pivot"];
+    NG_contrast_color3FA_pivotINT [shape = ellipse];
+    NG_contrast_color3FA_N_sub_color3FA [label="subtract"];
+    NG_contrast_color3FA_pivotINT -> NG_contrast_color3FA_N_sub_color3FA [label=".in2"];
+}
