@@ -1,44 +1,54 @@
-
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none;
-    cursor: pointer;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .text-left {
-    text-align: left !important;
+  text-align: left !important;
 }
 
 .greyhover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .greyhover:hover {
-    text-decoration: none;
-    cursor: pointer;
-    background: rgb(239, 239, 239);
+  text-decoration: none;
+  cursor: pointer;
+  background: rgb(239, 239, 239);
 }
 
-.nav-item, .dropdown-item {
+.nav-item,
+.dropdown-item {
   font-size: 80%;
 }
 
-.col-form-label-sm, .form-control, .card-body, .btn {
-    font-size: 80%; 
+.col-form-label-sm,
+.form-control,
+.card-body {
+  font-size: 90%;
 }
 
-
-body, .form-control, .col-form-label-sm, .card-body, .btn{
-    font-family: 'Roboto', sans-serif;
+.card-text,
+.form-group,
+.btn {
+  font-size: 80%;
 }
 
-.custom{
+body,
+.form-control,
+.col-form-label-sm,
+.card-body,
+.btn {
+  font-family: 'Roboto', sans-serif;
+}
+
+.custom {
   background-color: rgb(255, 253, 245);
 }
-
 
 @font-face {
   font-family: 'Roboto';
@@ -47,6 +57,7 @@ body, .form-control, .col-form-label-sm, .card-body, .btn{
   font-display: swap;
   src: url('https://fonts.gstatic.com/l/font?kit=KFOmCnqEu92Fr1Me4GZNCzcPbOHTt6tqXl2TMWgtUADtbNE0FwjR60ub0BtuliV9nzY5opeRF6O-FnZsaJLetvV-9mXgaxv7xBV8jmt2chWZ7OuZw6siU4A&skey=a0a0114a1dcab3ac&v=v30') format('woff2');
 }
+
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
@@ -57,108 +68,67 @@ body, .form-control, .col-form-label-sm, .card-body, .btn{
 
 
 .feature-icon {
-    width: 4rem;
-    height: 4rem;
-    border-radius: .75rem;
-  }
-  
-  .icon-link > .bi {
-    margin-top: .125rem;
-    margin-left: .125rem;
-    fill: currentcolor;
-    transition: transform .25s ease-in-out;
-  }
-  .icon-link:hover > .bi {
-    transform: translate(.25rem);
-  }
-  
-  .icon-square {
-    width: 3rem;
-    height: 3rem;
-    border-radius: .75rem;
-  }
-  
-  .text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }aa
-  .text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
-  .text-shadow-3 { text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25); }
-  
-  .card-cover {
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-  }
-  
-  .feature-icon-small {
-    width: 3rem;
-    height: 3rem;
-  }
+  width: 4rem;
+  height: 4rem;
+  border-radius: .75rem;
+}
+
+.icon-link>.bi {
+  margin-top: .125rem;
+  margin-left: .125rem;
+  fill: currentcolor;
+  transition: transform .25s ease-in-out;
+}
+
+.icon-link:hover>.bi {
+  transform: translate(.25rem);
+}
+
+.icon-square {
+  width: 3rem;
+  height: 3rem;
+  border-radius: .75rem;
+}
+
+.text-shadow-1 {
+  text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25);
+}
+
+aa .text-shadow-2 {
+  text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25);
+}
+
+.text-shadow-3 {
+  text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25);
+}
+
+.card-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.feature-icon-small {
+  width: 3rem;
+  height: 3rem;
+}
 
 
-  /* CUSTOMIZE THE CAROUSEL
+/* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
 /* Carousel base class */
 .carousel {
-    margin-bottom: 1rem;
-  }
-  /* Since positioning the image, we need to help out the caption */
-  .carousel-caption {
-    bottom: 3rem;
-    z-index: 10;
-  }
-  
-  /* Declare heights because of positioning of img element */
-  .carousel-item {
-    height: 20rem;
-  }
-  
-/*
-<link rel="stylesheet" href="../images/style.css">
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-*/
-
-
-/*    
-    .form-control {
-    border: 0;
+  margin-bottom: 1rem;
 }
 
-body {
-    font-size: 90%;
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
 }
 
-.col-form-label-sm {
-    font-size: 90%;
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 20rem;
 }
-
-.form-control {
-    font-size: 90%;
-}
-
-.card-body {
-    font-size: 80%;
-}
-
-.btn {
-    font-size: 90%;
-}
-
-.nav-link {
-    font-size: 100%;
-}
-
-  
-  .sections{
-    height: 800px;
-    width: 800px;
-    border: 1px  solid #eee;
-    padding: 5px;
-    overflow-y: auto; 
-  }
-
-
-*/
