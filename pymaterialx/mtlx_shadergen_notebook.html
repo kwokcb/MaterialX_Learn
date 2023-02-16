@@ -14597,23 +14597,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Shader-Generation">Shader Generation<a class="anchor-link" href="#Shader-Generation">&#182;</a></h1><p>This book will examine how to set up MaterialX for code generation. This book covers the</p>
-<a href="https://github.com/AcademySoftwareFoundation/MaterialX/blob/main/python/Scripts/generateshader.py" target="_blank">
-generateshader.py</a> 
-script provided as part of the core distribution.
+<h1 id="Shader-Generation">Shader Generation<a class="anchor-link" href="#Shader-Generation">&#182;</a></h1><p>This book will examine how to set up MaterialX for code generation. This book covers the <a href="https://github.com/AcademySoftwareFoundation/MaterialX/blob/main/python/Scripts/generateshader.py" target="_blank">
+generateshader.py</a> script provided as part of the core distribution.</p>
 <p>Topics covered:</p>
 <ol>
-<li>Submodules per code generator</li>
-<li>Context and options for generation</li>
-<li>Real world unit and color management transform.</li>
-<li>Finding &quot;renderable&quot; items</li>
-<li>Per <code>target</code> (shading language) generators.</li>
-<li>Introspection and source code extraction.</li>
+<li>Shading language 'target's</li>
+<li>Module / library organization</li>
+<li>Setting up generators and generation contexts</li>
+<li>Real world units and color management</li>
+<li>Discovering &quot;renderable&quot; items, and generating code</li>
+<li>Extracting source code</li>
 </ol>
-<p>Not covered are the details behind code generation and the pros and cons of different generation options.
-Code Generation is covered 
-<a href="https://github.com/AcademySoftwareFoundation/MaterialX/blob/main/documents/DeveloperGuide/ShaderGeneration.md"
-target ="_blank">here.</a></p>
+<p>Details behind code generation, generation options, introspection / reflection,
+and input binding is covered as part of rendering.</p>
+<p>Background on code generation can be found <a href="https://github.com/AcademySoftwareFoundation/MaterialX/blob/main/documents/DeveloperGuide/ShaderGeneration.md" target ="_blank">here.</a></p>
 
 </div>
 </div>
@@ -14625,22 +14622,21 @@ target ="_blank">here.</a></p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Code-Generation-Submodules">Code Generation Submodules<a class="anchor-link" href="#Code-Generation-Submodules">&#182;</a></h2><p>For the Python distribution, each code generator has created to be a submodule under the MaterialX module.</p>
-<p>The name of each submodule is of the form:</p>
+<h2 id="Code-Generation-Modules-/-Libraries">Code Generation Modules / Libraries<a class="anchor-link" href="#Code-Generation-Modules-/-Libraries">&#182;</a></h2><p>For the Python distribution, each code generator resides in separate module in the MaterialX package.</p>
+<p>The name of each module is of the form:</p>
 <pre><code>   PyMaterialXGen&lt;target&gt;
 </code></pre>
 <p>where target is the code generation target written in camel-case.</p>
 <p>All target names start with <code>gen</code> and then the shading language name:</p>
 <pre><code>   gen&lt;target&gt;
 </code></pre>
-<p>For example the target for the OSL shading language is <code>genosl</code>, with the submodule's target string being <code>GenOsl</code>.
-The variants for GLSL include: <code>genglsl</code> and <code>genessl</code>, with single submodule with target string <code>GenGlsl</code>.</p>
-<p>Each sub-module is roughly equivalent to a library (dynamic or static) for the C++ distribution which has the name:</p>
+<p>For example, the target for the OSL shading language is <code>genosl</code>, with the module's postfix string being <code>GenOsl</code>.
+The variants for GLSL include: <code>genglsl</code> and <code>genessl</code>, which reside in a single module with postfix string <code>GenGlsl</code>.</p>
+<p>The C++ library equivalent to the module is named:</p>
 <pre><code>   MaterialXGen&lt;target&gt;
 </code></pre>
-<p>That is with the <code>Py</code> prefix</p>
-<p>The submodule <code>PyMaterialxShader</code> contains the base support for all code generators.</p>
-<p>In the code below the submodule is imported in addition to  all generators which are part of the core distribution of MaterialX.</p>
+<p>Basically the same as the Python module but without the <code>Py</code> prefix.</p>
+<p>The module <code>PyMaterialxShader</code> contains the base support for all code generators. In the code below this module as well as modules for all targets are imported.</p>
 
 </div>
 </div>
@@ -14673,13 +14669,11 @@ The variants for GLSL include: <code>genglsl</code> and <code>genessl</code>, wi
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Setup">Setup<a class="anchor-link" href="#Setup">&#182;</a></h2><p>The basic setup requires that a document is created, the standard libraries are loaded, and the document containing the elements to generate code for to be present.</p>
-<p>Additional modules can be imported to support such as shader validation.</p>
-<h3 id="Code-Validation">Code Validation<a class="anchor-link" href="#Code-Validation">&#182;</a></h3><p>For <code>GLSL</code>, <code>ESSL</code>, and <code>Vulkan</code> languages <a href="https://github.com/KhronosGroup/glslang" target="_blank">glslangValidator</a> 
-can be used for syntax and compilation validation. It is installed using <code>vcpkg</code> and run as part of the CI process. For OSL and MDL: <code>olsc</code> and <code>mdlc</code> are used respectively.</p>
-<p>The <code>generateshader.py</code> script supports passing in a external program argument which can be executed against the produced source code. 
-It runs the program with the source code as input and returns whether the program is 'valid'.</p>
-<p>The utility function from that script has been extracted out and is included below.</p>
+<h2 id="Document-Setup">Document Setup<a class="anchor-link" href="#Document-Setup">&#182;</a></h2><p>The basic setup requires that a document is created, the standard libraries are loaded, and the document containing the elements to generate code for to be present.</p>
+<p>Additional modules can be imported to support functionality such as code validation.</p>
+<h3 id="Code-Validation">Code Validation<a class="anchor-link" href="#Code-Validation">&#182;</a></h3><p>For <code>GLSL</code>, <code>ESSL</code>, and <code>Vulkan</code> languages <a href="https://github.com/KhronosGroup/glslang" target="_blank">glslangValidator</a>  can be used for syntax and compilation validation. It is installed using <code>vcpkg</code> and is run as part of the CI process. For OSL and MDL: <code>olsc</code> and <code>mdlc</code> compilers are used respectively.</p>
+<p>The <code>generateshader.py</code> script supports passing in a external program as an argument. The source code passed to this program for validation.</p>
+<p>The utility function from that script has been extracted out and is included below as an example.</p>
 
 </div>
 </div>
@@ -14718,15 +14712,13 @@ It runs the program with the source code as input and returns whether the progra
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Exception-Handling">Exception Handling<a class="anchor-link" href="#Exception-Handling">&#182;</a></h3><p>In the following code, a MaterialX file which defines a &quot;marble&quot; material is loaded.
-As mentioned a document is created and the file loaded in.</p>
-<p>MaterialX throws exceptions when encountering errors instead of keeping track of status code.
+<h3 id="Exception-Handling">Exception Handling<a class="anchor-link" href="#Exception-Handling">&#182;</a></h3><p>In the following code, a document is first created and then a sample file which defines a &quot;marble&quot; material is read in.</p>
+<p>Note that MaterialX throws exceptions when encountering errors instead of keeping track of status code.
 There are some specific exceptions which provide additional information beyond the regular exception information.</p>
-<p>This includes custom exceptions for file I/O,  code generation and rendering. 
-It is always prudent to catch exceptions and especially so for these usage areas.
-In this example a &quot;file missing&quot; exception may be returned if the file cannot be read.
-See the possible <code>Exception</code> types as defined <a href="https://materialx.org/docs/api/class_exception.html" target="_blank">in the API
-documentation</a>. In Python, the exception name is the same as the C++ class name.</p>
+<p>It is always prudent to catch exceptions including checking of custom exceptions 
+provided for file I/O, code generation and rendering.</p>
+<p>In this example a &quot;file missing&quot; exception may be returned if the file cannot be read.</p>
+<p>The possible <code>Exception</code> types are defined in the <a href="https://materialx.org/docs/api/class_exception.html" target="_blank">API documentation</a>. In Python, the exception name is the same as the C++ class name.</p>
 
 </div>
 </div>
@@ -14792,8 +14784,9 @@ documentation</a>. In Python, the exception name is the same as the C++ class na
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Implementations">Implementations<a class="anchor-link" href="#Implementations">&#182;</a></h3><p>The standard library includes both definitions as well as implementations for each shading language. 
-The <code>stdlib</code>, <code>stdlib</code>, and 'bxdf' folders contain definitions and any corresponding node graph implementations.
-These are shading language agnostic. The sub-folders starting with <code>gen</code> contain source code implementations.</p>
+The <code>stdlib</code>, <code>stdlib</code>, and <code>bxdf</code> folders contain definitions and any corresponding node graph and
+source code implementations.</p>
+<p>The sub-folders starting with <code>gen</code> contain per-target source code implementations.</p>
 <pre>
 ├───bxdf
 │   ├───lama
@@ -14801,7 +14794,7 @@ These are shading language agnostic. The sub-folders starting with <code>gen</co
 ├───lights
 │   └───genglsl
 ├───pbrlib
-│   ├───genglsl  <-- e.g. target 'genglsl's implementations can be found here
+│   ├───genglsl  <-- e.g. target 'genglsl's implementations reside here
 │   ├───genmdl
 │   └───genosl
 ├───stdlib
@@ -14810,8 +14803,7 @@ These are shading language agnostic. The sub-folders starting with <code>gen</co
 │   └───genosl
 └───targets
 </pre>
-<p>Without these, no code generation can occur, thus the <code>libraries</code> folder found at the root of the
-MaterialX distribution (or within the search path) must always be read in. Additional libraries can be loaded as required.</p>
+<p>As this code is required for code generation to occur,  the standard <code>libraries</code> folder must be read in.</p>
 <p>Implementations are of the type <a href="https://materialx.org/docs/api/class_implementation.html" target="_blank"><code>Implementation</code></a>.</p>
 
 </div>
@@ -14872,8 +14864,8 @@ MaterialX distribution (or within the search path) must always be read in. Addit
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>There are many implementations as code for all supported shading languages implementations is read in.</p>
-<p>The <code>getImplementations()</code> API is used to get a list of <code>Implementation</code> references.</p>
+<p>The <code>getImplementations()</code> API is used to get a list of <code>Implementation</code> references. Even though the total number
+of implementations seem large, only the source code for a specific generator are used at any given time.</p>
 
 </div>
 </div>
@@ -14886,9 +14878,10 @@ MaterialX distribution (or within the search path) must always be read in. Addit
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">implmentations</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getImplementations</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get list of all implementations</span>
+<span class="n">implmentations</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getImplementations</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">implmentations</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Read in </span><span class="si">%d</span><span class="s1"> implementations&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">implmentations</span><span class="p">))</span>    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Read in </span><span class="si">%d</span><span class="s1"> implementations&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">implmentations</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -14924,7 +14917,7 @@ MaterialX distribution (or within the search path) must always be read in. Addit
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Implementation-%22Targets%22">Implementation "Targets"<a class="anchor-link" href="#Implementation-%22Targets%22">&#182;</a></h2><p>Every non-nodegraph implementation must specify a <code>target</code> that it supports.</p>
+<h2 id="Shading-Language-%22Targets%22">Shading Language "Targets"<a class="anchor-link" href="#Shading-Language-%22Targets%22">&#182;</a></h2><p>Every non-nodegraph implementation must specify a <code>target</code> that it supports.</p>
 <p>A <code>target</code> name is used to identify shading languages and their variants. The naming convention is:</p>
 <pre><code>  gen&lt;language name&gt;
 </code></pre>
@@ -14960,7 +14953,15 @@ document using the <code>getTargetDefs()</code> API.</p>
 
 <span class="n">foundTargets</span> <span class="o">=</span> <span class="n">getTargetDefs</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">foundTargets</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Found target identifier:&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+    <span class="n">implcount</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Find out how many implementations we have </span>
+    <span class="k">for</span> <span class="n">impl</span> <span class="ow">in</span> <span class="n">implmentations</span><span class="p">:</span>
+        <span class="n">testtarget</span> <span class="o">=</span> <span class="n">target</span>
+        <span class="k">if</span> <span class="n">target</span> <span class="o">==</span> <span class="s1">&#39;essl&#39;</span><span class="p">:</span>
+            <span class="n">testtarget</span> <span class="o">=</span> <span class="s1">&#39;genglsl&#39;</span>
+        <span class="k">if</span> <span class="n">impl</span><span class="o">.</span><span class="n">getTarget</span><span class="p">()</span> <span class="o">==</span> <span class="n">testtarget</span><span class="p">:</span>
+            <span class="n">implcount</span> <span class="o">=</span> <span class="n">implcount</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Found target identifier:&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="s1">&#39;with&#39;</span><span class="p">,</span> <span class="n">implcount</span><span class="p">,</span> <span class="s1">&#39;source implementations.&#39;</span><span class="p">)</span>      
 </pre></div>
 
      </div>
@@ -14980,10 +14981,10 @@ document using the <code>getTargetDefs()</code> API.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Found target identifier: essl
-Found target identifier: genglsl
-Found target identifier: genmdl
-Found target identifier: genosl
+<pre>Found target identifier: essl with 580 source implementations.
+Found target identifier: genglsl with 580 source implementations.
+Found target identifier: genmdl with 585 source implementations.
+Found target identifier: genosl with 577 source implementations.
 </pre>
 </div>
 </div>
@@ -15001,29 +15002,18 @@ Found target identifier: genosl
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Code-Generators">Code Generators<a class="anchor-link" href="#Code-Generators">&#182;</a></h2><h3 id="Generator-Creation">Generator Creation<a class="anchor-link" href="#Generator-Creation">&#182;</a></h3><p>Every code generator must have a <code>target</code> identifier to indicate which shading langauge / variant it supports.
 A language version can be used to distinguish a variant if appropriate (e.g. ESSL is distinguishable this way)</p>
-<p>It is recommended that any new generators be unique.</p>
+<p>It is recommended that all new generators have a unique target name.</p>
 <p>Currently there is no &quot;registry&quot; for generators by target so the user must know before hand which generators exist and
 go through all generators to find one with the appropriate <code>target</code> to use.</p>
-<p>Targets themselves can be &quot;inherited&quot; which is reflected in the inheritance hierarcht for generators.
+<p>Targets themselves can be &quot;inherited&quot; which is reflected in the inheritance hierarchy for generators.
 For example the <code>essl</code> (ESSL) target inherits from the <code>genglsl</code> (GLSL) target as does the corresponding generators. 
 Inheritance is generally used to specialize code generation to handle shading language variations.</p>
-<p>For a list of generators and their derivations see documentation for the base class <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">ShaderGenerator<a></p>
+<p>For a list of generators and their derivations see documentation for the base class <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">ShaderGenerator</a></p>
 <p><img src="https://kwokcb.github.io/MaterialX_Learn/documents/images/ShaderGenerator_inheritance.png" style="width:50%"></img></p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Note that Vulkan has the same target as <code>genglsl</code>, but has it's own generator.</p>
 <p>Integrations are free to create custom generators. Some notable existing generators include those used to support USD HDStorm, VEX, and Arnold OSL.</p>
 <p>Any such generator can be instantiated and use the same generation process as described here.</p>
-<p>For this example, we will show how all the the generators can be created, but will choose to only produce GLSL code via an <code>GlslShaderGenerator</code> generator. This can be found in the <code>PyMaterialXGenGlsl</code> Python submodule and corresponding <code>MaterialXGenGlsl</code> library in C++.</p>
+<p>For this example, we will show how all the the generators can be created, but will only produce OSL code via an <code>OslShaderGenerator</code> generator. This can be found in the <code>PyMaterialXGenOsl</code> Python submodule and corresponding <code>MaterialXGenOsl</code> library in C++.</p>
 
 </div>
 </div>
@@ -15049,8 +15039,8 @@ Inheritance is generally used to specialize code generation to handle shading la
     <span class="n">generatordict</span><span class="p">[</span><span class="n">gen</span><span class="o">.</span><span class="n">getTarget</span><span class="p">()]</span> <span class="o">=</span> <span class="n">gen</span>
 
 <span class="c1"># Choose generator to use based on target identifier</span>
-<span class="n">language</span> <span class="o">=</span> <span class="s1">&#39;glsl&#39;</span>
-<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;genglsl&#39;</span>
+<span class="n">language</span> <span class="o">=</span> <span class="s1">&#39;mdl&#39;</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;genosl&#39;</span>
 <span class="k">if</span> <span class="n">language</span> <span class="o">==</span> <span class="s1">&#39;osl&#39;</span><span class="p">:</span>
     <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;genosl&#39;</span>
 <span class="k">elif</span> <span class="n">language</span> <span class="o">==</span> <span class="s1">&#39;mdl&#39;</span><span class="p">:</span>
@@ -15062,7 +15052,7 @@ Inheritance is generally used to specialize code generation to handle shading la
 
 <span class="n">test_language</span> <span class="o">=</span> <span class="s1">&#39;essl&#39;</span>
 <span class="n">test_shadergen</span> <span class="o">=</span> <span class="n">generatordict</span><span class="p">[</span><span class="n">test_language</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Find code generator for target:&#39;</span><span class="p">,</span> <span class="n">test_shadergen</span><span class="o">.</span><span class="n">getTarget</span><span class="p">(),</span> <span class="s1">&#39; for language: &#39;</span><span class="p">,</span> <span class="n">test_language</span><span class="p">,</span> <span class="s2">&quot;. Version: &quot;</span><span class="p">,</span> <span class="n">test_shadergen</span><span class="o">.</span><span class="n">getVersion</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Find code generator for target:&#39;</span><span class="p">,</span> <span class="n">test_shadergen</span><span class="o">.</span><span class="n">getTarget</span><span class="p">(),</span> <span class="s1">&#39; for language:&#39;</span><span class="p">,</span> <span class="n">test_language</span><span class="p">,</span> <span class="s2">&quot;. Version:&quot;</span><span class="p">,</span> <span class="n">test_shadergen</span><span class="o">.</span><span class="n">getVersion</span><span class="p">())</span>
 
 <span class="n">shadergen</span> <span class="o">=</span> <span class="n">generatordict</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Use code generator for target:&#39;</span><span class="p">,</span> <span class="n">shadergen</span><span class="o">.</span><span class="n">getTarget</span><span class="p">(),</span> <span class="s1">&#39; for language: &#39;</span><span class="p">,</span> <span class="n">language</span><span class="p">)</span>
@@ -15085,8 +15075,8 @@ Inheritance is generally used to specialize code generation to handle shading la
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Find code generator for target: essl  for language:  essl . Version:  300 es
-Use code generator for target: genglsl  for language:  glsl
+<pre>Find code generator for target: essl  for language: essl . Version: 300 es
+Use code generator for target: genmdl  for language:  mdl
 </pre>
 </div>
 </div>
@@ -15102,11 +15092,11 @@ Use code generator for target: genglsl  for language:  glsl
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Generator-Contexts">Generator Contexts<a class="anchor-link" href="#Generator-Contexts">&#182;</a></h3><p>All generators require a &quot;context&quot;to be provided. This is represented by a 
+<h3 id="Generator-Contexts">Generator Contexts<a class="anchor-link" href="#Generator-Contexts">&#182;</a></h3><p>A &quot;generation context&quot; is required to be created for each generator instance. This is represented by a 
 <a href="https://materialx.org/docs/api/class_gen_context.html" target="_blank"><code>GenContext</code></a> structure.</p>
-<p>At a minimum a path to where the source code implementations must be provided as part of the context.
-Any number of paths can be added using the <code>registerSourceCodeSearchPath()</code> function. Searching will occur in first to last added order.
-Here the path to the <code>libraries</code> folder can be used so that source code for standard libraries can be found.</p>
+<p>This context provides a number of settings and options to be used for code generation.</p>
+<p>For simplicity, we will only point out the minimal requirements. This includes providing a search path to where source code implementations can be found. Any number of paths can be added using the <code>registerSourceCodeSearchPath()</code> function, on the context. The search order is first to last path added.</p>
+<p>Adding the path to the <code>libraries</code> folder is sufficient to find the source code for standard library definitions found in sub-folders. If the user has custom definitions in other locations, the root of those locations should be added.</p>
 
 </div>
 </div>
@@ -15119,8 +15109,7 @@ Here the path to the <code>libraries</code> folder can be used so that source co
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span>        
-<span class="c1"># Create a context for a generator</span>
+<div class=" highlight hl-ipython3"><pre><span></span> <span class="c1"># Create a context for a generator</span>
 <span class="n">context</span> <span class="o">=</span> <span class="n">mx_gen_shader</span><span class="o">.</span><span class="n">GenContext</span><span class="p">(</span><span class="n">shadergen</span><span class="p">)</span>
 
 <span class="c1"># Register a path to where implmentations can be found.</span>
@@ -15139,17 +15128,20 @@ Here the path to the <code>libraries</code> folder can be used so that source co
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Color-Management">Color Management<a class="anchor-link" href="#Color-Management">&#182;</a></h3><p>Color management is used to ensure that input colors are interpreted properly.
-When specified additional logic will be emitted into the shader source code via a &quot;color management system&quot;.</p>
-<p>For color management it is necessary to indicate for which shading language
-<code>target</code> the color management system. Naturally specifying a non-matching target will inject incompatible code.</p>
-<p>The basic steps are to:</p>
+<h3 id="Color-Management">Color Management<a class="anchor-link" href="#Color-Management">&#182;</a></h3><p>Color management is used to ensure that input colors are interpreted properly via shader code.</p>
+<p>A &quot;color management system&quot; cab be created and specified to be used by a shader generator. 
+During code generation, additional logic is emitted into the shader source code via the system.</p>
+<p>Usage of such as system during code generation is optional, as some renderers perform color management on input values
+and images before binding them to shading code.</p>
+<p>Color management systems need to be derived from the base API interface <a href="https://materialx.org/docs/api/class_color_management_system.html" target="_blank"><code>ColorManagementSystem</code></a>). A &quot;default&quot; system is provided
+as part of the MaterialX distribution.</p>
+<p>It is necessary to indicate which <code>target</code> shading language code when instantiating the color management system. Naturally specifying a non-matching target will inject incompatible code.</p>
+<p>The setup steps are:</p>
 <ol>
-<li>Create the system. In this case the &quot;default&quot; system is created with the <code>target</code> being specified at creation time.</li>
+<li>Create the system. In this example the &quot;default&quot; system is created with the <code>target</code> being specified at creation time.</li>
+<li>Setting where the library of definitions exists for the system. In this case the main document which contains the standard library is specified.</li>
+<li>Setting the color management system on the generator. If it is not set or cleared then no color management will occur during code generation.</li>
 </ol>
-<p>A color management system is derived from the base API interface <a href="https://materialx.org/docs/api/class_color_management_system.html" target="_blank"><code>ColorManagementSystem</code></a>). 
-2. Setting where the library of definitions exists for the system. In this case the main document is specified.
-3. Setting the color management system on the generator. If it is not set or cleared then no color management will occur.</p>
 
 </div>
 </div>
@@ -15162,13 +15154,17 @@ When specified additional logic will be emitted into the shader source code via 
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cms</span> <span class="o">=</span> <span class="n">mx_gen_shader</span><span class="o">.</span><span class="n">DefaultColorManagementSystem</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">shadergen</span><span class="o">.</span><span class="n">getTarget</span><span class="p">())</span>  
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create default CMS</span>
+<span class="n">cms</span> <span class="o">=</span> <span class="n">mx_gen_shader</span><span class="o">.</span><span class="n">DefaultColorManagementSystem</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">shadergen</span><span class="o">.</span><span class="n">getTarget</span><span class="p">())</span>  
+<span class="c1"># Indicate to the CMS where definitions can be found</span>
 <span class="n">cms</span><span class="o">.</span><span class="n">loadLibrary</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+<span class="c1"># Indicate to the code generator to use this CMS</span>
 <span class="n">shadergen</span><span class="o">.</span><span class="n">setColorManagementSystem</span><span class="p">(</span><span class="n">cms</span><span class="p">)</span>
 
 <span class="n">cms</span> <span class="o">=</span> <span class="n">shadergen</span><span class="o">.</span><span class="n">getColorManagementSystem</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">cms</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Set up CMS:&#39;</span><span class="p">,</span> <span class="n">cms</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Set up CMS: </span><span class="si">%s</span><span class="s1"> for target: </span><span class="si">%s</span><span class="s1">&#39;</span> 
+          <span class="o">%</span> <span class="p">(</span><span class="n">cms</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">shadergen</span><span class="o">.</span><span class="n">getTarget</span><span class="p">()))</span>
 </pre></div>
 
      </div>
@@ -15188,7 +15184,7 @@ When specified additional logic will be emitted into the shader source code via 
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Set up CMS: default_cms
+<pre>Set up CMS: default_cms for target: genmdl
 </pre>
 </div>
 </div>
@@ -15207,8 +15203,8 @@ When specified additional logic will be emitted into the shader source code via 
 <h3 id="Real-World-Units">Real World Units<a class="anchor-link" href="#Real-World-Units">&#182;</a></h3><p>To handle real-world unit specifiers a &quot;unit system&quot; should be instantiated and associated with the generator.
 The API interface is a <a href="https://materialx.org/docs/api/class_unit_system.html" target="_blank">UnitSystem</a> which definitions.</p>
 <p>By default a unit system does not know how to perform any conversions. This is provided by a 
-<a href="https://materialx.org/docs/api/class_unit_converter_registry.html" target="_blank"><code>UnitConverterRegistry</code></a> which
-contains a list of convertor. Currently MaterialX supports convertors for converting linear units: distance, and angle.
+<a href="https://materialx.org/docs/api/class_unit_converter_registry.html" target="_blank"><code>UnitConverterRegistry</code></a> which contains a list of convertors.</p>
+<p>Currently MaterialX supports convertors for converting linear units: distance, and angle.
 The corresponding API interface is <a href="https://materialx.org/docs/api/class_linear_unit_converter.html" target="_blank"><code>LinearUnitConverter</code></a>.</p>
 
 </div>
@@ -15222,8 +15218,10 @@ The corresponding API interface is <a href="https://materialx.org/docs/api/class
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">registry</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">UnitConverterRegistry</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create unit registry</span>
+<span class="n">registry</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">UnitConverterRegistry</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">registry</span><span class="p">:</span>
+    <span class="c1"># Get distance and angle unit type definitions and create a linear converter for each</span>
     <span class="n">distanceTypeDef</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getUnitTypeDef</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">distanceTypeDef</span><span class="p">:</span>
         <span class="n">registry</span><span class="o">.</span><span class="n">addUnitConverter</span><span class="p">(</span><span class="n">distanceTypeDef</span><span class="p">,</span> <span class="n">mx</span><span class="o">.</span><span class="n">LinearUnitConverter</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">distanceTypeDef</span><span class="p">))</span>
@@ -15266,7 +15264,7 @@ The corresponding API interface is <a href="https://materialx.org/docs/api/class
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>As with a color management system the implementations need to be set in addition to setting the registry. 
+<p>As with a color management system the location of implementations and the registry need to be set on a unit system. 
 The unit system can then be set on the generator.</p>
 
 </div>
@@ -15280,12 +15278,14 @@ The unit system can then be set on the generator.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">unitsystem</span> <span class="o">=</span> <span class="n">mx_gen_shader</span><span class="o">.</span><span class="n">UnitSystem</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">shadergen</span><span class="o">.</span><span class="n">getTarget</span><span class="p">())</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create unit system, set where definitions come from, and</span>
+<span class="c1"># set up what registry to use</span>
+<span class="n">unitsystem</span> <span class="o">=</span> <span class="n">mx_gen_shader</span><span class="o">.</span><span class="n">UnitSystem</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">shadergen</span><span class="o">.</span><span class="n">getTarget</span><span class="p">())</span>
 <span class="n">unitsystem</span><span class="o">.</span><span class="n">loadLibrary</span><span class="p">(</span><span class="n">stdlib</span><span class="p">)</span>
 <span class="n">unitsystem</span><span class="o">.</span><span class="n">setUnitConverterRegistry</span><span class="p">(</span><span class="n">registry</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">unitsystem</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Set unit system on code&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Set unit system on code generator&#39;</span><span class="p">)</span>
     <span class="n">shadergen</span><span class="o">.</span><span class="n">setUnitSystem</span><span class="p">(</span><span class="n">unitsystem</span><span class="p">)</span>
 </pre></div>
 
@@ -15306,7 +15306,7 @@ The unit system can then be set on the generator.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Set unit system on code
+<pre>Set unit system on code generator
 </pre>
 </div>
 </div>
@@ -15322,8 +15322,9 @@ The unit system can then be set on the generator.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>This sets up how to perform unit conversions, but does not specify to which unit the values should convert to.
-For this access is needed to the &quot;options&quot; for the context which are stored in a <a href="https://materialx.org/docs/api/class_gen_options.html"  target="_blank">GenOptions</a> structure on the context.</p>
+<p>This sets up how to perform unit conversions, but does not specify what unis the scene geometry is using.
+This can be specified as in an &quot;options&quot; structure found on the  context.</p>
+<p>The API interface is: <a href="https://materialx.org/docs/api/class_gen_options.html"  target="_blank">GenOptions</a>.</p>
 
 </div>
 </div>
@@ -15336,7 +15337,7 @@ For this access is needed to the &quot;options&quot; for the context which are s
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set the target unit to be meter.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set the target scene unit to be `meter` on the context options</span>
 <span class="n">genoptions</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">getOptions</span><span class="p">()</span>
 <span class="n">genoptions</span><span class="o">.</span><span class="n">targetDistanceUnit</span> <span class="o">=</span> <span class="s1">&#39;meter&#39;</span>
 </pre></div>
@@ -15420,10 +15421,10 @@ Found node to render:  Marble_3D
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Generating-Code">Generating Code<a class="anchor-link" href="#Generating-Code">&#182;</a></h2><p>After all of this setup, code can be generated.</p>
+<h2 id="Generating-Code">Generating Code<a class="anchor-link" href="#Generating-Code">&#182;</a></h2><p>After all of this setup, code can now be generated.</p>
 <ol>
-<li>First a valid name is generated using <code>createValidName</code> to ensure that the shader name produced is valid.</li>
-<li>Then the generator's <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">generate()</a> interface is called with this name, the node, and the generation context. Note that derived classes will override this interface to perform custom generation.</li>
+<li>First a <code>createValidName()</code> utility is called to ensure that the shader name produced is valid.</li>
+<li>Then the generator's <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">generate()</a> interface is called with this name, the &quot;renderable&quot; element, and the generation context. Note that derived classes override <code>generate()</code> to perform custom generation.</li>
 </ol>
 <p>Upon success a new <a href="https://materialx.org/docs/api/class_shader.html" target="_blank">Shader</a> instance is created. Note that this is a special interface used to keep track of an entire shader. This instance can be inspected to extract information required for rendering.</p>
 
@@ -15486,16 +15487,16 @@ Found node to render:  Marble_3D
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Generated-Code">Generated Code<a class="anchor-link" href="#Generated-Code">&#182;</a></h3><p>For hardware languages like GLSL, currently vertex, and pixel shader code is generated.
-To complete this example the pixel shader code generated is examined.</p>
-<p>All code is available via the <a href="https://materialx.org/docs/api/class_shader.html" target="_blank">getSourceCode()</a>
-with a argument as to which code to return. This code can be directly compiled and used for a renderer.</p>
-<p>It is at this point in the <code>generateshader.py</code> that validation is performed.</p>
+<h3 id="Accessing-Source-Code">Accessing Source Code<a class="anchor-link" href="#Accessing-Source-Code">&#182;</a></h3><p>For hardware languages like GLSL, vertex, and pixel shader code is generated. OSL and MDL only produce
+pixel shader code. To complete this example the pixel shader code is queried from the Shader and
+shown below.</p>
+<p>Code can be queried via the <a href="https://materialx.org/docs/api/class_shader.html" target="_blank">getSourceCode()</a> interface with an argument indicating which code to return. The code returned can be directly compiled and used by a renderer.</p>
+<p>It is at this point in the <code>generateshader.py</code> script that validation is performed. (This will not be shown here.)</p>
 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15512,20 +15513,14 @@ with a argument as to which code to return. This code can be directly compiled a
     <span class="c1"># recognized by glslangValidator</span>
     <span class="k">if</span> <span class="n">language</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;glsl&#39;</span><span class="p">,</span> <span class="s1">&#39;essl&#39;</span><span class="p">,</span> <span class="s1">&#39;vulkan&#39;</span><span class="p">]:</span>
         <span class="n">vertexSource</span> <span class="o">=</span> <span class="n">shader</span><span class="o">.</span><span class="n">getSourceCode</span><span class="p">(</span><span class="n">mx_gen_shader</span><span class="o">.</span><span class="n">VERTEX_STAGE</span><span class="p">)</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;vertexSource.&#39;</span> <span class="o">+</span> <span class="n">target</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>        
-        <span class="nb">print</span><span class="p">(</span><span class="n">vertexSource</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">display_markdown</span><span class="p">(</span><span class="s1">&#39;### Vertex Source Code&#39;</span> <span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">display_markdown</span><span class="p">(</span><span class="s1">&#39;------------------&#39;</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">display_markdown</span><span class="p">(</span><span class="s1">&#39;```ccc {&#39;</span> <span class="o">+</span> <span class="n">vertexSource</span> <span class="o">+</span> <span class="s1">&#39;}```&#39;</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">pixelSource</span> <span class="o">=</span> <span class="n">shader</span><span class="o">.</span><span class="n">getSourceCode</span><span class="p">(</span><span class="n">mx_gen_shader</span><span class="o">.</span><span class="n">PIXEL_STAGE</span><span class="p">)</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;pixelSource.&#39;</span> <span class="o">+</span> <span class="n">target</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>        
-    <span class="nb">print</span><span class="p">(</span><span class="n">pixelSource</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;pixelSource.&#39;</span> <span class="o">+</span> <span class="n">target</span> <span class="o">+</span> <span class="s1">&#39;.html&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;html&gt;&lt;pre&gt;&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">pixelSource</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;/pre&gt;&lt;/html&gt;&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">display_markdown</span><span class="p">(</span><span class="s1">&#39;### Pixel Source Code&#39;</span> <span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">display_markdown</span><span class="p">(</span><span class="s1">&#39;------------------&#39;</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">display_markdown</span><span class="p">(</span><span class="s1">&#39;```cpp {&#39;</span> <span class="o">+</span> <span class="n">pixelSource</span> <span class="o">+</span> <span class="s1">&#39; }```&#39;</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15533,19 +15528,250 @@ with a argument as to which code to return. This code can be directly compiled a
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<h3 id="Pixel-Source-Code">Pixel Source Code<a class="anchor-link" href="#Pixel-Source-Code">&#182;</a></h3>
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Pixel Source Code</strong></p>
-<iframe src="pixelSource.genglsl.html" title="ShaderGen Notebook" width="80%" height="800"></iframe>
 
 </div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<hr />
+
 </div>
+
 </div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">mx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">materialx</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">::</span><span class="n">df</span><span class="o">::*</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">::</span><span class="n">base</span><span class="o">::*</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">::</span><span class="n">math</span><span class="o">::*</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">::</span><span class="n">state</span><span class="o">::*</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">::</span><span class="n">anno</span><span class="o">::*</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">::</span><span class="n">tex</span><span class="o">::*</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">::</span><span class="n">mx</span><span class="o">::</span><span class="n">swizzle</span><span class="o">::*</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">::</span><span class="n">mx</span><span class="o">::</span><span class="n">cm</span><span class="o">::*</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="o">::</span><span class="n">mx</span><span class="o">::</span><span class="n">core</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="o">::</span><span class="n">mx</span><span class="o">::</span><span class="n">stdlib</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="o">::</span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="o">::</span><span class="n">mx</span><span class="o">::</span><span class="n">sampling</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="p">;</span>
+
+<span class="n">material</span><span class="w"> </span><span class="nf">NG_standard_surface_surfaceshader_100</span>
+<span class="p">(</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">base_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">diffuse_roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">metalness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">specular</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">specular_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">specular_roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uniform</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">specular_IOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">specular_anisotropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">specular_rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">transmission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">transmission_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">transmission_depth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">transmission_scatter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">transmission_scatter_anisotropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">transmission_dispersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">transmission_extra_roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">subsurface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">subsurface_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">subsurface_radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">subsurface_scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">subsurface_anisotropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">sheen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">sheen_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">sheen_roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">coat_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_anisotropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uniform</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_IOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">coat_normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="o">::</span><span class="n">transform_normal</span><span class="p">(</span><span class="n">state</span><span class="o">::</span><span class="n">coordinate_internal</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="o">::</span><span class="n">coordinate_world</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="o">::</span><span class="n">normal</span><span class="p">()),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_affect_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_affect_roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">thin_film_thickness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">thin_film_IOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">emission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">emission_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">opacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">thin_walled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="o">::</span><span class="n">transform_normal</span><span class="p">(</span><span class="n">state</span><span class="o">::</span><span class="n">coordinate_internal</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="o">::</span><span class="n">coordinate_world</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="o">::</span><span class="n">normal</span><span class="p">()),</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">tangent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="o">::</span><span class="n">transform_vector</span><span class="p">(</span><span class="n">state</span><span class="o">::</span><span class="n">coordinate_internal</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="o">::</span><span class="n">coordinate_world</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="o">::</span><span class="n">texture_tangent_u</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">let</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">float2</span><span class="w"> </span><span class="n">coat_roughness_vector_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_roughness_anisotropy</span><span class="p">(</span><span class="n">mxp_roughness</span><span class="o">:</span><span class="n">coat_roughness</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_anisotropy</span><span class="o">:</span><span class="n">coat_anisotropy</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_tangent_rotate_degree_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coat_rotation</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">360</span><span class="p">;</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">metal_reflectivity_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">base_color</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">base</span><span class="p">;</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">metal_edgecolor_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specular_color</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">specular</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_affect_roughness_multiply1_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coat_affect_roughness</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">coat</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">tangent_rotate_degree_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specular_rotation</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">360</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">transmission_roughness_add_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">specular_roughness</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">transmission_extra_roughness</span><span class="p">;</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">subsurface_color_nonnegative_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">subsurface_color</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_clamped_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="n">coat</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">subsurface_radius_vector_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">float3</span><span class="p">(</span><span class="n">float3</span><span class="p">(</span><span class="n">subsurface_radius</span><span class="p">).</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">float3</span><span class="p">(</span><span class="n">subsurface_radius</span><span class="p">).</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">float3</span><span class="p">(</span><span class="n">subsurface_radius</span><span class="p">).</span><span class="n">z</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">subsurface_selector_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">float</span><span class="p">(</span><span class="n">thin_walled</span><span class="p">);</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">base_color_nonnegative_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">base_color</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">coat_attenuation_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">lerp</span><span class="p">(</span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">coat_color</span><span class="p">,</span><span class="w"> </span><span class="n">coat</span><span class="p">);</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">emission_weight_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">emission_color</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">emission</span><span class="p">;</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">coat_emission_attenuation_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">lerp</span><span class="p">(</span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">coat_color</span><span class="p">,</span><span class="w"> </span><span class="n">coat</span><span class="p">);</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">opacity_luminance_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">stdlib</span><span class="o">::</span><span class="n">mx_luminance_color3</span><span class="p">(</span><span class="n">opacity</span><span class="p">);</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">coat_tangent_rotate_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">stdlib</span><span class="o">::</span><span class="n">mx_rotate3d_vector3</span><span class="p">(</span><span class="n">mxp_in</span><span class="o">:</span><span class="n">tangent</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_amount</span><span class="o">:</span><span class="n">coat_tangent_rotate_degree_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_axis</span><span class="o">:</span><span class="n">coat_normal</span><span class="p">);</span>
+<span class="w">    </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_artistic_ior__result</span><span class="w"> </span><span class="n">artistic_ior_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_artistic_ior</span><span class="p">(</span><span class="n">mxp_reflectivity</span><span class="o">:</span><span class="n">metal_reflectivity_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_edge_color</span><span class="o">:</span><span class="n">metal_edgecolor_out</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_affect_roughness_multiply2_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coat_affect_roughness_multiply1_out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">coat_roughness</span><span class="p">;</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">tangent_rotate_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">stdlib</span><span class="o">::</span><span class="n">mx_rotate3d_vector3</span><span class="p">(</span><span class="n">mxp_in</span><span class="o">:</span><span class="n">tangent</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_amount</span><span class="o">:</span><span class="n">tangent_rotate_degree_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_axis</span><span class="o">:</span><span class="n">normal</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">transmission_roughness_clamped_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="n">transmission_roughness_add_out</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_gamma_multiply_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coat_clamped_out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">coat_affect_color</span><span class="p">;</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">subsurface_radius_scaled_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsurface_radius_vector_out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">subsurface_scale</span><span class="p">;</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">emission_weight_attenuated_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">emission_weight_out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">coat_emission_attenuation_out</span><span class="p">;</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">coat_tangent_rotate_normalize_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">normalize</span><span class="p">(</span><span class="n">coat_tangent_rotate_out</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_affected_roughness_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">lerp</span><span class="p">(</span><span class="n">specular_roughness</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">coat_affect_roughness_multiply2_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">tangent_rotate_normalize_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">normalize</span><span class="p">(</span><span class="n">tangent_rotate_out</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_affected_transmission_roughness_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">lerp</span><span class="p">(</span><span class="n">transmission_roughness_clamped_out</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">coat_affect_roughness_multiply2_out</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">coat_gamma_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coat_gamma_multiply_out</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">coat_tangent_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">stdlib</span><span class="o">::</span><span class="n">mx_ifgreater_vector3</span><span class="p">(</span><span class="n">coat_anisotropy</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">coat_tangent_rotate_normalize_out</span><span class="p">,</span><span class="w"> </span><span class="n">tangent</span><span class="p">);</span>
+<span class="w">    </span><span class="n">float2</span><span class="w"> </span><span class="n">main_roughness_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_roughness_anisotropy</span><span class="p">(</span><span class="n">mxp_roughness</span><span class="o">:</span><span class="n">coat_affected_roughness_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_anisotropy</span><span class="o">:</span><span class="n">specular_anisotropy</span><span class="p">);</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">main_tangent_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">stdlib</span><span class="o">::</span><span class="n">mx_ifgreater_vector3</span><span class="p">(</span><span class="n">specular_anisotropy</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">tangent_rotate_normalize_out</span><span class="p">,</span><span class="w"> </span><span class="n">tangent</span><span class="p">);</span>
+<span class="w">    </span><span class="n">float2</span><span class="w"> </span><span class="n">transmission_roughness_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_roughness_anisotropy</span><span class="p">(</span><span class="n">mxp_roughness</span><span class="o">:</span><span class="n">coat_affected_transmission_roughness_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_anisotropy</span><span class="o">:</span><span class="n">specular_anisotropy</span><span class="p">);</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">coat_affected_subsurface_color_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="n">subsurface_color_nonnegative_out</span><span class="p">,</span><span class="w"> </span><span class="n">coat_gamma_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">coat_affected_diffuse_color_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="n">base_color_nonnegative_out</span><span class="p">,</span><span class="w"> </span><span class="n">coat_gamma_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">metal_bsdf_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_conductor_bsdf</span><span class="p">(</span><span class="n">mxp_weight</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_ior</span><span class="o">:</span><span class="n">artistic_ior_result</span><span class="p">.</span><span class="n">mxp_ior</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_extinction</span><span class="o">:</span><span class="n">artistic_ior_result</span><span class="p">.</span><span class="n">mxp_extinction</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_roughness</span><span class="o">:</span><span class="n">main_roughness_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_normal</span><span class="o">:</span><span class="n">normal</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_tangent</span><span class="o">:</span><span class="n">main_tangent_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">transmission_bsdf_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_dielectric_bsdf</span><span class="p">(</span><span class="n">mxp_weight</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_tint</span><span class="o">:</span><span class="n">transmission_color</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_ior</span><span class="o">:</span><span class="n">specular_IOR</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_roughness</span><span class="o">:</span><span class="n">transmission_roughness_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_normal</span><span class="o">:</span><span class="n">normal</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_tangent</span><span class="o">:</span><span class="n">main_tangent_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_scatter_mode</span><span class="o">:</span><span class="n">mx_scatter_mode_T</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_base</span><span class="o">:</span><span class="n">material</span><span class="p">());</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">translucent_bsdf_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_translucent_bsdf</span><span class="p">(</span><span class="n">mxp_weight</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_color</span><span class="o">:</span><span class="n">coat_affected_subsurface_color_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_normal</span><span class="o">:</span><span class="n">normal</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">subsurface_bsdf_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_subsurface_bsdf</span><span class="p">(</span><span class="n">mxp_weight</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_color</span><span class="o">:</span><span class="n">coat_affected_subsurface_color_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_radius</span><span class="o">:</span><span class="n">subsurface_radius_scaled_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_anisotropy</span><span class="o">:</span><span class="n">subsurface_anisotropy</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_normal</span><span class="o">:</span><span class="n">normal</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">selected_subsurface_bsdf_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_mix_bsdf</span><span class="p">(</span><span class="n">mxp_fg</span><span class="o">:</span><span class="n">translucent_bsdf_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_bg</span><span class="o">:</span><span class="n">subsurface_bsdf_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_mix</span><span class="o">:</span><span class="n">subsurface_selector_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">diffuse_bsdf_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_oren_nayar_diffuse_bsdf</span><span class="p">(</span><span class="n">mxp_weight</span><span class="o">:</span><span class="n">base</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_color</span><span class="o">:</span><span class="n">coat_affected_diffuse_color_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_roughness</span><span class="o">:</span><span class="n">diffuse_roughness</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_normal</span><span class="o">:</span><span class="n">normal</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">subsurface_mix_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_mix_bsdf</span><span class="p">(</span><span class="n">mxp_fg</span><span class="o">:</span><span class="n">selected_subsurface_bsdf_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_bg</span><span class="o">:</span><span class="n">diffuse_bsdf_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_mix</span><span class="o">:</span><span class="n">subsurface</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">sheen_layer_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_sheen_bsdf</span><span class="p">(</span><span class="n">mxp_weight</span><span class="o">:</span><span class="n">sheen</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_color</span><span class="o">:</span><span class="n">sheen_color</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_roughness</span><span class="o">:</span><span class="n">sheen_roughness</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_normal</span><span class="o">:</span><span class="n">normal</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_base</span><span class="o">:</span><span class="n">subsurface_mix_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">transmission_mix_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_mix_bsdf</span><span class="p">(</span><span class="n">mxp_fg</span><span class="o">:</span><span class="n">transmission_bsdf_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_bg</span><span class="o">:</span><span class="n">sheen_layer_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_mix</span><span class="o">:</span><span class="n">transmission</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">specular_layer_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_dielectric_bsdf</span><span class="p">(</span><span class="n">mxp_weight</span><span class="o">:</span><span class="n">specular</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_tint</span><span class="o">:</span><span class="n">specular_color</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_ior</span><span class="o">:</span><span class="n">specular_IOR</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_roughness</span><span class="o">:</span><span class="n">main_roughness_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_normal</span><span class="o">:</span><span class="n">normal</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_tangent</span><span class="o">:</span><span class="n">main_tangent_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_scatter_mode</span><span class="o">:</span><span class="n">mx_scatter_mode_R</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_base</span><span class="o">:</span><span class="n">transmission_mix_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">metalness_mix_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_mix_bsdf</span><span class="p">(</span><span class="n">mxp_fg</span><span class="o">:</span><span class="n">metal_bsdf_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_bg</span><span class="o">:</span><span class="n">specular_layer_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_mix</span><span class="o">:</span><span class="n">metalness</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">thin_film_layer_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_thin_film_bsdf</span><span class="p">(</span><span class="n">mxp_thickness</span><span class="o">:</span><span class="n">thin_film_thickness</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_ior</span><span class="o">:</span><span class="n">thin_film_IOR</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_base</span><span class="o">:</span><span class="n">metalness_mix_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">thin_film_layer_attenuated_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_multiply_bsdf_color3</span><span class="p">(</span><span class="n">mxp_in1</span><span class="o">:</span><span class="n">thin_film_layer_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_in2</span><span class="o">:</span><span class="n">coat_attenuation_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">coat_layer_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_dielectric_bsdf</span><span class="p">(</span><span class="n">mxp_weight</span><span class="o">:</span><span class="n">coat</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_tint</span><span class="o">:</span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">mxp_ior</span><span class="o">:</span><span class="n">coat_IOR</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_roughness</span><span class="o">:</span><span class="n">coat_roughness_vector_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_normal</span><span class="o">:</span><span class="n">coat_normal</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_tangent</span><span class="o">:</span><span class="n">coat_tangent_out</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_scatter_mode</span><span class="o">:</span><span class="n">mx_scatter_mode_R</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_base</span><span class="o">:</span><span class="n">thin_film_layer_attenuated_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">emission_edf_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_uniform_edf</span><span class="p">(</span><span class="n">mxp_color</span><span class="o">:</span><span class="n">emission_weight_attenuated_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">shader_constructor_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">pbrlib</span><span class="o">::</span><span class="n">mx_surface</span><span class="p">(</span><span class="n">coat_layer_out</span><span class="p">,</span><span class="w"> </span><span class="n">emission_edf_out</span><span class="p">,</span><span class="w"> </span><span class="n">float3</span><span class="p">(</span><span class="n">opacity_luminance_out</span><span class="p">).</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">specular_IOR</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">in</span><span class="w"> </span><span class="nf">material</span><span class="p">(</span><span class="n">shader_constructor_out</span><span class="p">);</span>
+
+<span class="k">export</span><span class="w"> </span><span class="n">material</span><span class="w"> </span><span class="nf">Marble_3D</span>
+<span class="p">(</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">displacementshader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">float3</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span>
+<span class="w">    </span><span class="n">uniform</span><span class="w"> </span><span class="n">mx_coordinatespace_type</span><span class="w"> </span><span class="n">geomprop_Nworld_space</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx_coordinatespace_type_world</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uniform</span><span class="w"> </span><span class="n">mx_coordinatespace_type</span><span class="w"> </span><span class="n">geomprop_Tworld_space</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx_coordinatespace_type_world</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uniform</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">geomprop_Tworld_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uniform</span><span class="w"> </span><span class="n">mx_coordinatespace_type</span><span class="w"> </span><span class="n">obj_pos_space</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx_coordinatespace_type_object</span><span class="p">,</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">add_xyz_in2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">float3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">scale_pos_in2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">scale_xyz_in2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">noise_amplitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">noise_octaves</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">noise_lacunarity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">noise_diminish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">scale_noise_in2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">scale_in2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">bias_in2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">power_in2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">color_mix_fg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">),</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">color_mix_bg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_diffuse_roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_metalness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_specular</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">SR_marble1_specular_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_specular_roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uniform</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_specular_IOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_specular_anisotropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_specular_rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_transmission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">SR_marble1_transmission_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_transmission_depth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">SR_marble1_transmission_scatter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_transmission_scatter_anisotropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_transmission_dispersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_transmission_extra_roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_subsurface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">SR_marble1_subsurface_radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_subsurface_scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_subsurface_anisotropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_sheen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">SR_marble1_sheen_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_sheen_roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_coat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">SR_marble1_coat_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_coat_roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_coat_anisotropy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_coat_rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">uniform</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_coat_IOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_coat_affect_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_coat_affect_roughness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_thin_film_thickness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_thin_film_IOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SR_marble1_emission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">SR_marble1_emission_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">SR_marble1_opacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">SR_marble1_thin_walled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="p">)</span>
+<span class="o">=</span><span class="w"> </span><span class="n">let</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">geomprop_Nworld_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">stdlib</span><span class="o">::</span><span class="n">mx_normal_vector3</span><span class="p">(</span><span class="n">mxp_space</span><span class="o">:</span><span class="n">geomprop_Nworld_space</span><span class="p">);</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">geomprop_Tworld_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">stdlib</span><span class="o">::</span><span class="n">mx_tangent_vector3</span><span class="p">(</span><span class="n">mxp_space</span><span class="o">:</span><span class="n">geomprop_Tworld_space</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_index</span><span class="o">:</span><span class="n">geomprop_Tworld_index</span><span class="p">);</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">obj_pos_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">stdlib</span><span class="o">::</span><span class="n">mx_position_vector3</span><span class="p">(</span><span class="n">mxp_space</span><span class="o">:</span><span class="n">obj_pos_space</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">add_xyz_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">dot</span><span class="p">(</span><span class="n">obj_pos_out</span><span class="p">,</span><span class="w"> </span><span class="n">add_xyz_in2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">float3</span><span class="w"> </span><span class="n">scale_pos_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj_pos_out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">scale_pos_in2</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">scale_xyz_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_xyz_out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">scale_xyz_in2</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">noise_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">stdlib</span><span class="o">::</span><span class="n">mx_fractal3d_float</span><span class="p">(</span><span class="n">mxp_amplitude</span><span class="o">:</span><span class="n">noise_amplitude</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_octaves</span><span class="o">:</span><span class="n">noise_octaves</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_lacunarity</span><span class="o">:</span><span class="n">noise_lacunarity</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_diminish</span><span class="o">:</span><span class="n">noise_diminish</span><span class="p">,</span><span class="w"> </span><span class="n">mxp_position</span><span class="o">:</span><span class="n">scale_pos_out</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">scale_noise_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">noise_out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">scale_noise_in2</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">sum_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scale_xyz_out</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scale_noise_out</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">sin_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">sin</span><span class="p">(</span><span class="n">sum_out</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">scale_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sin_out</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">scale_in2</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">bias_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scale_out</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bias_in2</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">power_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">pow</span><span class="p">(</span><span class="n">bias_out</span><span class="p">,</span><span class="w"> </span><span class="n">power_in2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="n">color_mix_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">math</span><span class="o">::</span><span class="n">lerp</span><span class="p">(</span><span class="n">color_mix_bg</span><span class="p">,</span><span class="w"> </span><span class="n">color_mix_fg</span><span class="p">,</span><span class="w"> </span><span class="n">power_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">SR_marble1_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NG_standard_surface_surfaceshader_100</span><span class="p">(</span><span class="n">SR_marble1_base</span><span class="p">,</span><span class="w"> </span><span class="n">color_mix_out</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_diffuse_roughness</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_metalness</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_specular</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_specular_color</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_specular_roughness</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_specular_IOR</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_specular_anisotropy</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_specular_rotation</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_transmission</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_transmission_color</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_transmission_depth</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_transmission_scatter</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_transmission_scatter_anisotropy</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_transmission_dispersion</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_transmission_extra_roughness</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_subsurface</span><span class="p">,</span><span class="w"> </span><span class="n">color_mix_out</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_subsurface_radius</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_subsurface_scale</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_subsurface_anisotropy</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_sheen</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_sheen_color</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_sheen_roughness</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_coat</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_coat_color</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_coat_roughness</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_coat_anisotropy</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_coat_rotation</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_coat_IOR</span><span class="p">,</span><span class="w"> </span><span class="n">geomprop_Nworld_out</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_coat_affect_color</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_coat_affect_roughness</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_thin_film_thickness</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_thin_film_IOR</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_emission</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_emission_color</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_opacity</span><span class="p">,</span><span class="w"> </span><span class="n">SR_marble1_thin_walled</span><span class="p">,</span><span class="w"> </span><span class="n">geomprop_Nworld_out</span><span class="p">,</span><span class="w"> </span><span class="n">geomprop_Tworld_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">Marble_3D_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mx</span><span class="o">::</span><span class="n">stdlib</span><span class="o">::</span><span class="n">mx_surfacematerial</span><span class="p">(</span><span class="n">SR_marble1_out</span><span class="p">,</span><span class="w"> </span><span class="n">displacementshader</span><span class="p">);</span>
+<span class="w">    </span><span class="n">material</span><span class="w"> </span><span class="n">finalOutput__</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Marble_3D_out</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">in</span><span class="w"> </span><span class="nf">material</span><span class="p">(</span><span class="n">finalOutput__</span><span class="p">);</span>
+<span class="w"> </span><span class="p">}</span><span class="err">```</span>
+</pre></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 </body>
 
