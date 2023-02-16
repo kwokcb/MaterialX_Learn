@@ -4,12 +4,13 @@
 ## Overview
 
 This is a complementary site for those interested in learning about or are integrating MaterialX. Current content includes:
-* Node definition library with image and node graph previews
-* Fundamental concepts
+* Node definition library with image and node graph previews. 
+* Glossary of basic types, geometric definitions, color management and real-world unit definitions. 
+* Fundamental concepts (Nodes, Nodegraphs, Documents, Definitions) 
 * Python environment setup for MaterialX
-* Starter Python examples and sample Jupyter Notbook in the workspace [pymaterialx](pymaterialx).
+* Python and Jupyter Tutorials for basics and shader code generation in the workspace [pymaterialx](pymaterialx).
 
-Note this is in early stages and material will be added over time. 
+Material will be constantly added over time. 
 See issues and project area for some of items on queue.
 
 ## Visit the site 
