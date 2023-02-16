@@ -54,7 +54,7 @@ import MaterialX.PyMaterialXGenMdl as mx_gen_mdl
 
 
 # %% [markdown]
-# ## Document Setup
+# ## Setup
 # 
 # The basic setup requires that a document is created, the standard libraries are loaded, and the document containing the elements to generate code for to be present.
 # 
@@ -175,7 +175,7 @@ if implmentations:
     print('Read in %d implementations' % len(implmentations))
 
 # %% [markdown]
-# ## Shading Language "Targets"
+# ## Implementation "Targets"
 # 
 # Every non-nodegraph implementation must specify a `target` that it supports. 
 # 
@@ -440,7 +440,7 @@ else:
     print('Failed to generate code for shader "%s" code from node "%s"' % (shaderName, nodeName)) 
 
 # %% [markdown]
-# ### Accessing Source Code
+# ### Generated Code
 # 
 # For hardware languages like GLSL, vertex, and pixel shader code is generated. OSL and MDL only produce
 # pixel shader code. To complete this example the pixel shader code is queried from the Shader and
@@ -467,7 +467,7 @@ if shader:
     pixelSource = shader.getSourceCode(mx_gen_shader.PIXEL_STAGE)
     display_markdown('### Pixel Source Code' , raw=True)
     display_markdown('------------------', raw=True)
-    display_markdown('```cpp {' + pixelSource + ' }```', raw=True)
+    display_markdown('```\n' + pixelSource + '\n```', raw=True)
 
 
 
