@@ -20,7 +20,7 @@
 # %% [markdown]
 # ## Code Generation Modules / Libraries
 # 
-# For the Python distribution, each code generator resides in separate module in the MaterialX package. 
+# For the Python distribution, each code generator resides in a separate module in the MaterialX package. 
 # 
 # The name of each module is of the form:
 # ```
@@ -40,7 +40,7 @@
 # ```
 #    MaterialXGen<target>
 # ```
-# Basically the same as the Python module but without the `Py` prefix.
+# This is basically the same as the Python module but without the `Py` prefix.
 # 
 # The module `PyMaterialxShader` contains the base support for all code generators. In the code below this module as well as modules for all targets are imported.
 
@@ -57,6 +57,14 @@ import MaterialX.PyMaterialXGenMdl as mx_gen_mdl
 # ## Setup
 # 
 # The basic setup requires that a document is created, the standard libraries are loaded, and the document containing the elements to generate code for to be present.
+# 
+# > For the purposes of showing formatted results we use the `IPython` package to be able to output `Markdown` from Python code.
+
+# %%
+from IPython.display import display_markdown
+
+# %% [markdown]
+# 
 # 
 # Additional modules can be imported to support functionality such as code validation.
 # 
@@ -175,7 +183,7 @@ if implmentations:
     print('Read in %d implementations' % len(implmentations))
 
 # %% [markdown]
-# ## Implementation "Targets"
+# ## Implementation Targets
 # 
 # Every non-nodegraph implementation must specify a `target` that it supports. 
 # 
