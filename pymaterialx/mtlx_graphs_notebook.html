@@ -15513,20 +15513,6 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
   &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
   &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
 
- my_material
-&lt;surfacematerial name=&#34;my_material&#34; type=&#34;material&#34; nodedef=&#34;ND_surfacematerial&#34;&gt;
-  &lt;input name=&#34;surfaceshader&#34; type=&#34;surfaceshader&#34; nodegraph=&#34;test_nodegraph&#34;&gt;
-
-&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
-  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
-    &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
-  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
-  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
-  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
-
 </pre>
 </div>
 </div>
