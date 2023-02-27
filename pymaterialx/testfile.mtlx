@@ -41,10 +41,4 @@
   <xi:include href="libraries/targets/genglsl.mtlx" />
   <xi:include href="libraries/targets/genmdl.mtlx" />
   <xi:include href="libraries/targets/genosl.mtlx" />
-  <image name="image" type="color3" nodedef="ND_image_color3" />
-  <standard_surface name="image2" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader_100">
-    <input name="base_color" type="color3" nodename="image" />
-  </standard_surface>
-  <standard_surface name="node1" type="surfaceshader" />
-  <standard_surface name="standard_surface" type="surfaceshader" />
 </materialx>

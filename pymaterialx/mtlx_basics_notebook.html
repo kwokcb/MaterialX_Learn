@@ -14597,11 +14597,16 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="1.0-MaterialX-Basics">1.0 MaterialX Basics<a class="anchor-link" href="#1.0-MaterialX-Basics">&#182;</a></h1><p>Topics covered in the first &quot;book&quot;:</p>
+<h1 id="MaterialX-Basics">MaterialX Basics<a class="anchor-link" href="#MaterialX-Basics">&#182;</a></h1><h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><p>This notebook covers the following:</p>
 <ol>
-<li>Setting up dependencies and creating a MaterialX document.</li>
-<li>Read and writing document and validation.</li>
-<li>Creating, finding, connetion, and deleting nodes.</li>
+<li>Essential Setup<ul>
+<li>Loading in MaterialX</li>
+<li>Creating documents</li>
+<li>Loading in &quot;standard&quot; library definitions</li>
+</ul>
+</li>
+<li>Creating nodes and editing input values</li>
+<li>Saving out a document and examining it's contents</li>
 </ol>
 
 </div>
@@ -14614,7 +14619,69 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.0.1-Importing-MaterialX">1.0.1 Importing MaterialX<a class="anchor-link" href="#1.0.1-Importing-MaterialX">&#182;</a></h3><p>Shown below is a test example to check that MaterialX modules are available and will run.</p>
+<h2 id="1.-Setting-up-MaterialX">1. Setting up MaterialX<a class="anchor-link" href="#1.-Setting-up-MaterialX">&#182;</a></h2><h3 id="Importing-MaterialX">Importing MaterialX<a class="anchor-link" href="#Importing-MaterialX">&#182;</a></h3><p>When using MaterialX, the very first thing that must be done is to import the package.
+After loading in the package, the API version available can be found in the <code>__version__</code>
+module information. This is equivalent to calling the <code>getVersionString()</code> utility.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">MaterialX</span> <span class="k">as</span> <span class="nn">mx</span>
+    
+<span class="c1"># Print out MaterialX API version</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;MaterialX API version </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mx</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;MaterialX API version </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mx</span><span class="o">.</span><span class="n">getVersionString</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>MaterialX API version 1.38.7
+MaterialX API version 1.38.7
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Creating-a-Document">Creating a Document<a class="anchor-link" href="#Creating-a-Document">&#182;</a></h3><p>In order to perform any action using MaterialX, a <code>Document</code> must be created using the <code>createDocument()</code>
+interface. In this example a new document is created and then the version of the document 
+is checked using <code>getVersionString()</code>.</p>
+<p>This document will be the &quot;working&quot; document used for the rest of this book.</p>
+<blockquote>
+<p>As noted in the <code>Documents</code> learning material this is the version of the document and not the package version.</p>
+</blockquote>
 
 </div>
 </div>
@@ -14667,11 +14734,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.0.2-Loading-In-Standard-Libraries">1.0.2 Loading In Standard Libraries<a class="anchor-link" href="#1.0.2-Loading-In-Standard-Libraries">&#182;</a></h3><p>To do any useful operations, the standard MaterialX libraries need to be loaded.</p>
-<p>The &quot;standard&quot; libraries are in the 'libraries' folder in the installation location. The key interfaces used in the example are:</p>
+<h3 id="Loading-In-Standard-Libraries">Loading In Standard Libraries<a class="anchor-link" href="#Loading-In-Standard-Libraries">&#182;</a></h3><p>To do any useful operations, the standard MaterialX libraries need to be loaded.
+There libraries are found in in the 'libraries' folder in the installation location.</p>
+<p>The key interface to load in library definitions is called: <code>loadLibraries()</code> where:</p>
 <ul>
-<li><code>loadLibraries()</code> to create a library document. File search paths <code>FileSearchPath()</code> can be provided to search for the libraries under these paths. A list of all the files loaded is returned.</li>
-<li><code>importLibrary()</code> to import the libraries into the current document.</li>
+<li>An input <code>FilePath</code> list specifies the library folders to load.</li>
+<li>An input <code>FileSearchPath()</code> specifies where to search for libraries.</li>
+<li>The names of files loaded is returned.</li>
 </ul>
 
 </div>
@@ -14685,22 +14754,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a library document called stdlib and load libraries into that document </span>
-<span class="n">libraryPath</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">FilePath</span><span class="p">(</span><span class="s1">&#39;libraries&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load library files under the `libraries` folder into a new &quot;library&quot; document</span>
+<span class="c1"># called &quot;stdlib&quot;. We assume that no additional search paths are required for this example.</span>
 <span class="n">stdlib</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
+<span class="n">libraryPath</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">FilePath</span><span class="p">(</span><span class="s1">&#39;libraries&#39;</span><span class="p">)</span>
 <span class="n">searchPath</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">FileSearchPath</span><span class="p">()</span>
+
+<span class="c1"># The list of library files loaded which which is returned is checked.</span>
 <span class="n">libFiles</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">loadLibraries</span><span class="p">([</span> <span class="n">libraryPath</span> <span class="p">],</span> <span class="n">searchPath</span><span class="p">,</span> <span class="n">stdlib</span><span class="p">)</span>
-
-<span class="c1"># Create main document and import the library document</span>
-<span class="n">doc</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
-<span class="n">doc</span><span class="o">.</span><span class="n">importLibrary</span><span class="p">(</span><span class="n">stdlib</span><span class="p">)</span>
-
-<span class="c1"># Print out the names of the library files loaded</span>
 <span class="k">if</span> <span class="n">libFiles</span><span class="p">:</span>
-    <span class="c1">#for libFile in libFiles:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loaded </span><span class="si">%d</span><span class="s1"> library files.&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">libFiles</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No libraries loaded.&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No library files loaded.&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14736,14 +14801,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="1.1-Saving-and-Loading-Documents">1.1 Saving and Loading Documents<a class="anchor-link" href="#1.1-Saving-and-Loading-Documents">&#182;</a></h2><p>Documents can be saved either to a string, stream or to a file location. A document can  be loaded from a string, stream or file.
-The native format supported is 'XML'.</p>
-<p>Please refer to the learning material about &quot;Documents&quot; for more details about document management.</p>
-<h3 id="1.1.1-Reading-and-writing-from-file">1.1.1 Reading and writing from file<a class="anchor-link" href="#1.1.1-Reading-and-writing-from-file">&#182;</a></h3><p>For reading and writing:</p>
-<ul>
-<li><code>writeToXmlFile()</code> can be used for writing to file</li>
-<li><code>readFromXmlFile()</code> can be used for reading from file</li>
-</ul>
+<p>A document can use a definition library by &quot;importing&quot; them in using the <code>importLibrary()</code> interface.</p>
+<p>To check for proper loading a query to get the list of node definitions is performed
+using the <code>getNodeDefs()</code> interface.</p>
 
 </div>
 </div>
@@ -14756,13 +14816,16 @@ The native format supported is 'XML'.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Write a a file</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;testfile.mtlx&#39;</span>
-<span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check node definition count before loading</span>
+<span class="n">nodeDefinitionCount</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">getNodeDefs</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Definition count before import: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">nodeDefinitionCount</span><span class="p">)</span> 
 
-<span class="n">testfileDoc</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
-<span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlFile</span><span class="p">(</span><span class="n">testfileDoc</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test file read properly: &#39;</span><span class="p">,</span> <span class="n">testfileDoc</span><span class="o">.</span><span class="n">validate</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># Import the library document into the document</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">importLibrary</span><span class="p">(</span><span class="n">stdlib</span><span class="p">)</span>
+
+<span class="c1"># Check node definition count</span>
+<span class="n">nodeDefinitionCount</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">getNodeDefs</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Definition counst after import : </span><span class="si">%d</span><span class="s1"> &#39;</span> <span class="o">%</span> <span class="n">nodeDefinitionCount</span><span class="p">)</span> 
 </pre></div>
 
      </div>
@@ -14782,7 +14845,8 @@ The native format supported is 'XML'.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Test file read properly:  True
+<pre>Definition count before import: 0
+Definition counst after import : 710 
 </pre>
 </div>
 </div>
@@ -14798,8 +14862,49 @@ The native format supported is 'XML'.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.2-Document-Validation">1.1.2 Document Validation<a class="anchor-link" href="#1.1.2-Document-Validation">&#182;</a></h3><p>When dealing with document content it is a useful to check the contents are valid using the <code>validate()</code> function.
-A status code is returned along with a string which will contain error information if the validation checks failed.</p>
+<h2 id="2.-Reading-and-Writing-Documents">2. Reading and Writing Documents<a class="anchor-link" href="#2.-Reading-and-Writing-Documents">&#182;</a></h2><p>Documents can be saved or loaded to/from a string, stream or to a file location.
+ The native format supported is 'XML'.</p>
+<p>Please refer to the learning material about &quot;Documents&quot; for details about document management.</p>
+<h3 id="Reading-and-writing-from-file">Reading and writing from file<a class="anchor-link" href="#Reading-and-writing-from-file">&#182;</a></h3><p>For reading and writing:</p>
+<ul>
+<li><code>writeToXmlFile()</code> can be used for writing to a file</li>
+<li><code>readFromXmlFile()</code> can be used for reading from a file</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Write out sample file</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;testfile.mtlx&#39;</span>
+<span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+<span class="c1"># Read in a sample file</span>
+<span class="n">testfileDoc</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
+<span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlFile</span><span class="p">(</span><span class="n">testfileDoc</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Document-Validation">Document Validation<a class="anchor-link" href="#Document-Validation">&#182;</a></h3><p>When dealing with document content it is a useful to check if the contents are valid using the <code>validate()</code> function.
+ A status code is returned along with a string containing error information if the validation checks failed.</p>
 
 </div>
 </div>
@@ -14812,9 +14917,9 @@ A status code is returned along with a string which will contain error informati
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Invalid document. Errors: &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">status</span><span class="p">,</span> <span class="n">errors</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">status</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Invalid document. Errors: &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span><span class="k">errors</span>)
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Document has no errors.&#39;</span><span class="p">)</span>
 </pre></div>
@@ -14852,9 +14957,8 @@ A status code is returned along with a string which will contain error informati
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.1.3-Writing-and-reading-from-string">1.1.3 Writing and reading from string<a class="anchor-link" href="#1.1.3-Writing-and-reading-from-string">&#182;</a></h3><p>The functions <code>writeToXmlString()</code> and <code>readFromXmlString()</code> can be used to write and read from string. It can be useful to transfer the contents of a document to string for interop as well as for debugging purposes.</p>
-<p>In this example we write the current document to a file, read it back in and then get the contents as a string, and then
-create another document from that string.</p>
+<h3 id="1.1.3-Writing-and-reading-from-string">1.1.3 Writing and reading from string<a class="anchor-link" href="#1.1.3-Writing-and-reading-from-string">&#182;</a></h3><p>The functions <code>writeToXmlString()</code> and <code>readFromXmlString()</code> can be used to write and read from a string. It can be useful to transfer the contents of a document via a string for interoperability as well as for debugging purposes.</p>
+<p>In this example we write the document (<code>doc</code>) to a string, read it back in to a new document (<code>doc1</code>) and print it's contents as a string.</p>
 <p>Note that documents loaded in from the standard libraries show up as XML <code>include</code> references in the main document.</p>
 
 </div>
@@ -14955,35 +15059,16 @@ create another document from that string.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="1.2-Node-Creation">1.2 Node Creation<a class="anchor-link" href="#1.2-Node-Creation">&#182;</a></h2><p>There are a few options for creating a node:</p>
-<ol>
-<li>By category and type.</li>
-<li>By node definition name.</li>
-</ol>
-<p>Please refer to the node <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/definitions_by_group.html">library documentation</a> for available categories, types and definitions.</p>
-<p>Every node created within the scope of a node graph or document must have a unique name. When no name is specified an 
-arbitrary unique name is assigned. It is often better to explicitly generate a name based on a desired name. This can be done using the <code>createValidChildName()</code> method which guarantees a unique name is generated.</p>
-<p>The the following examples, <code>getName()</code>, <code>getNamePath()</code>, and <code>getType()</code> are used to get the name, the path and the type of the node in order to print output results.</p>
-<p>In this example a <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/standard_surface.html">standard_surface</a> node will be created.</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.2.1-addNodeInstance()-:-Recommended-Approach">1.2.1 addNodeInstance() : Recommended Approach<a class="anchor-link" href="#1.2.1-addNodeInstance()-:-Recommended-Approach">&#182;</a></h3><p>We will first look what is considered to be the most &quot;robust&quot; as it does not require you to know the name of the node definition nor does it not allow creation of invalid nodes.</p>
-<p>Note that this is the basic approach used by the <strong>MaterialX Graph Editor</strong>, except that a dictionary of definitions is created using the category as the main grouping (key) to look up lists of definitions by type. This is done once and then reused to support node creation. The node definitions reference library uses the same approach.</p>
-<ol>
-<li>The first step is to find all the candidate definitions of a given category.</li>
-</ol>
-<p>In the example below we look for <code>image</code> definitions using the function <code>getMatchingNodeDefs()</code>. 
-2. It is possible to have multiple results returned so the next step is to filter based on the desired type. In this case we are looking for <code>image</code> nodes which return <code>color3</code> output.
-3. Finally, after the desired definition is found, an instance of that definition can be created using <code>addNodeInstance()</code>.</p>
+<p>To remove these desired references to the library a &quot;filter&quot; can be specified when writing.</p>
+<p>It is recommended that this <strong>always be performed</strong> to avoid adding explicit dependencies on definitions and/or file locations.</p>
+<p>To add the filter create an options structure called (<code>XmlWriteOptions</code>). 
+To this a &quot;predicate&quot; function can be added. This predicate is called for every element in the document,
+and returns whether to write out a given element.</p>
+<p>A custom predicate is used to skip writing out &quot;library elements&quot;, which can be found by testing the existence of 
+a &quot;source URI&quot; indicating that it was &quot;imported&quot;.</p>
+<blockquote>
+<p>Refer to Documents learning guide for more details.</p>
+</blockquote>
 
 </div>
 </div>
@@ -14996,30 +15081,143 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Search for appropriate nodedefs.</span>
-<span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;image&#39;</span>
-<span class="n">nodedefs</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getMatchingNodeDefs</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
-<span class="n">desiredType</span> <span class="o">=</span> <span class="s1">&#39;color3&#39;</span>
-<span class="n">desiredNodedef</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1. Scan for nodedef with category </span><span class="si">%s</span><span class="s1">, type </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">desiredType</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Declare write predicate for write filter test.</span>
+<span class="c1"># Elements which were imported via importLibrary() will have a &quot;source URI&quot; which is not empty.</span>
+<span class="k">def</span> <span class="nf">skipLibraryElement</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="k">return</span> <span class="ow">not</span> <span class="n">elem</span><span class="o">.</span><span class="n">hasSourceUri</span><span class="p">()</span>
 
-<span class="c1"># 2. Filter by the desired type</span>
-<span class="k">for</span> <span class="n">nodedef</span> <span class="ow">in</span> <span class="n">nodedefs</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span> <span class="o">==</span> <span class="n">desiredType</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2. Found matching definition: </span><span class="si">%s</span><span class="s1">. Version: </span><span class="si">%s</span><span class="s1">, Type: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> 
-            <span class="p">(</span><span class="n">nodedef</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getVersionString</span><span class="p">(),</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getType</span><span class="p">()))</span>
-        <span class="n">desiredNodedef</span> <span class="o">=</span> <span class="n">nodedef</span>
-        <span class="k">break</span>
+<span class="c1"># Declare write options and set the predicate.</span>
+<span class="n">writeOptions</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">XmlWriteOptions</span><span class="p">()</span>
+<span class="n">writeOptions</span><span class="o">.</span><span class="n">writeXIncludeEnable</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">writeOptions</span><span class="o">.</span><span class="n">elementPredicate</span> <span class="o">=</span> <span class="n">skipLibraryElement</span>
 
-<span class="n">imageNodePath</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="c1"># Perform write</span>
+<span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
 
-<span class="c1"># 3. Create a node using the node definition found.</span>
+<span class="c1"># Read back into a new document and write to string again.</span>
+<span class="c1"># Due to the predicate usage the document no longer outputs library definitions.</span>
+<span class="n">doc1</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
+<span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlString</span><span class="p">(</span><span class="n">doc1</span><span class="p">,</span> <span class="n">documentContents</span><span class="p">)</span>
+<span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">documentContents</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;materialx version=&#34;1.38&#34; /&gt;
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="3-Node-Creation">3 Node Creation<a class="anchor-link" href="#3-Node-Creation">&#182;</a></h2><p>A node must always be created under a &quot;parent&quot; graph. This can be at the top level under the document or within a node graph.
+Any node created must have a unique name among all the children of the parent.</p>
+<p>The <code>createValidChildName()</code> can be used to guarantee that a unique &quot;child&quot; name is generated.</p>
+<blockquote>
+<p>In the examples given the utility <code>prettyPrint()</code> will be used to view the contents of</p>
+</blockquote>
+<p>an element (in XML format).</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Creating-Nodes-Using-addNodeInstance()">Creating Nodes Using <code>addNodeInstance()</code><a class="anchor-link" href="#Creating-Nodes-Using-addNodeInstance()">&#182;</a></h3><p>The recommended logic to create a node is to</p>
+<ol>
+<li>Determine the <code>category</code> of node to create.</li>
+<li>Find all possible node definitions for the <code>category</code> using the interface <code>getMatchingNodeDefs()</code>.</li>
+<li>If multiple variants exist, choose one based criteria such as <code>type</code> and/or <code>version</code></li>
+<li>Use the appropriate definition to create the node using the <code>addNodeInstance()</code> interface.</li>
+</ol>
+<p>This approach only requires the user to know the category and type or version. Node definition names do not need to be known, and
+it is not possible to create invalid data.</p>
+<p>Steps 2 and 3, can be done for an entire library to create a dictionary of definitions which can be reused. Both the &quot;Library&quot; reference found here and the MaterialX Node Editor builds such dictionaries. The <code>mxdoc.py</code> sample utility has sample code of building such a dictionary which is grouped by <code>category</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>In this example all the variants of <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/image.html">image</a> are queried with the <code>color3</code> variant being chosen to be created.</p>
+<p>Steps 2 and 3 are encapsulated into a reusable utility called <code>getNodeDefinition()</code></p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getNodeDefinition</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">desiredType</span><span class="p">):</span>
+    
+    <span class="c1"># 1. Search for appropriate &#39;image&#39; catetory node definitions (nodedefs) </span>
+    <span class="n">nodedefs</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getMatchingNodeDefs</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+
+    <span class="c1"># 2. Filter by the desired type</span>
+    <span class="n">foundNodeDef</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">nodedef</span> <span class="ow">in</span> <span class="n">nodedefs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span> <span class="o">==</span> <span class="n">desiredType</span><span class="p">:</span>
+            <span class="n">foundNodeDef</span> <span class="o">=</span> <span class="n">nodedef</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">foundNodeDef</span>
+
+<span class="n">searchCategory</span> <span class="o">=</span> <span class="s1">&#39;image&#39;</span>
+<span class="n">searchType</span> <span class="o">=</span> <span class="s1">&#39;color3&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1. Scan for nodedef with category </span><span class="si">%s</span><span class="s1">, type </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">searchCategory</span><span class="p">,</span> <span class="n">searchType</span><span class="p">))</span>
+<span class="n">desiredNodedef</span> <span class="o">=</span> <span class="n">getNodeDefinition</span><span class="p">(</span><span class="n">searchCategory</span><span class="p">,</span> <span class="n">searchType</span><span class="p">)</span>
+
 <span class="k">if</span> <span class="n">desiredNodedef</span><span class="p">:</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2. Found matching definition:</span><span class="se">\n</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">desiredNodedef</span><span class="p">))</span> 
+
+    <span class="c1"># 3. Create a node using the node definition found. Use `createValidChildName` to</span>
+    <span class="c1"># avoid duplicate name clashes</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">searchCategory</span><span class="p">)</span>
     <span class="n">newNode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNodeInstance</span><span class="p">(</span><span class="n">desiredNodedef</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">newNode</span><span class="p">:</span>
-        <span class="n">imageNodePath</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;3. Created node by scanning nodedefs: name(</span><span class="si">%s</span><span class="s1">), type(</span><span class="si">%s</span><span class="s1">):&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">newNode</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">newNode</span><span class="o">.</span><span class="n">getType</span><span class="p">()))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;3. Created node: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">newNode</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to find desired nodedef.&#39;</span><span class="p">)</span>
 </pre></div>
@@ -15042,8 +15240,22 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>1. Scan for nodedef with category image, type color3
-2. Found matching definition: ND_image_color3. Version: , Type: color3
-3. Created node by scanning nodedefs: name(image), type(color3):
+2. Found matching definition:
+ &lt;nodedef name=&#34;ND_image_color3&#34; node=&#34;image&#34; nodegroup=&#34;texture2d&#34;&gt;
+  &lt;input name=&#34;file&#34; type=&#34;filename&#34; value=&#34;&#34; uiname=&#34;Filename&#34; uniform=&#34;true&#34;&gt;
+  &lt;input name=&#34;layer&#34; type=&#34;string&#34; value=&#34;&#34; uiname=&#34;Layer&#34; uniform=&#34;true&#34;&gt;
+  &lt;input name=&#34;default&#34; type=&#34;color3&#34; value=&#34;0.0, 0.0, 0.0&#34; uiname=&#34;Default Color&#34;&gt;
+  &lt;input name=&#34;texcoord&#34; type=&#34;vector2&#34; defaultgeomprop=&#34;UV0&#34; uiname=&#34;Texture Coordinates&#34;&gt;
+  &lt;input name=&#34;uaddressmode&#34; type=&#34;string&#34; value=&#34;periodic&#34; enum=&#34;constant,clamp,periodic,mirror&#34; uiname=&#34;Address Mode U&#34; uniform=&#34;true&#34;&gt;
+  &lt;input name=&#34;vaddressmode&#34; type=&#34;string&#34; value=&#34;periodic&#34; enum=&#34;constant,clamp,periodic,mirror&#34; uiname=&#34;Address Mode V&#34; uniform=&#34;true&#34;&gt;
+  &lt;input name=&#34;filtertype&#34; type=&#34;string&#34; value=&#34;linear&#34; enum=&#34;closest,linear,cubic&#34; uiname=&#34;Filter Type&#34; uniform=&#34;true&#34;&gt;
+  &lt;input name=&#34;framerange&#34; type=&#34;string&#34; value=&#34;&#34; uiname=&#34;Frame Range&#34; uniform=&#34;true&#34;&gt;
+  &lt;input name=&#34;frameoffset&#34; type=&#34;integer&#34; value=&#34;0&#34; uiname=&#34;Frame Offset&#34; uniform=&#34;true&#34;&gt;
+  &lt;input name=&#34;frameendaction&#34; type=&#34;string&#34; value=&#34;constant&#34; enum=&#34;constant,clamp,periodic,mirror&#34; uiname=&#34;Frame End Action&#34; uniform=&#34;true&#34;&gt;
+  &lt;output name=&#34;out&#34; type=&#34;color3&#34; default=&#34;0.0, 0.0, 0.0&#34;&gt;
+
+3. Created node: &lt;image name=&#34;image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+
 </pre>
 </div>
 </div>
@@ -15059,8 +15271,12 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Explicit node definition name</strong></p>
-<p>A variation on this to find a definition using an explicit node definition name. The exact name of the definition is required to find the node definition using the <code>getNodeDef()</code> function.</p>
+<h3 id="Minimal-Logic">Minimal Logic<a class="anchor-link" href="#Minimal-Logic">&#182;</a></h3><p>When node definition names are known before-hand (as noted for the dictionary workflow), the minimal logic is to find the definition using the <code>getNodeDef()</code> interface, and then calling <code>addNodeInstance()</code>.</p>
+<p>This will be the logic used here and in other tutorials assuming we know ahead of time what the names are.</p>
+<blockquote>
+<p>Please refer to the node <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/definitions_by_group.html">library documentation</a> for available node definition names.</p>
+</blockquote>
+<p>In this example a <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/standard_surface.html">standard_surface</a> node will be created.</p>
 
 </div>
 </div>
@@ -15074,17 +15290,19 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">shaderNode</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">shadername</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+<span class="n">shadername</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="s2">&quot;test_shader&quot;</span><span class="p">)</span>
 
 <span class="c1"># Find the definition with the given name.</span>
-<span class="n">nodedef</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getNodeDef</span><span class="p">(</span><span class="s1">&#39;ND_standard_surface_surfaceshader_100&#39;</span><span class="p">)</span>
+<span class="n">nodedef</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getNodeDef</span><span class="p">(</span><span class="s1">&#39;ND_standard_surface_surfaceshader&#39;</span><span class="p">)</span>
+<span class="c1">#print(mx.prettyPrint(nodedef))</span>
 
 <span class="c1"># Create an instance of the definition found.</span>
 <span class="k">if</span> <span class="n">nodedef</span><span class="p">:</span>
     <span class="n">shaderNode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNodeInstance</span><span class="p">(</span><span class="n">nodedef</span><span class="p">,</span> <span class="n">shadername</span><span class="p">)</span>    
 <span class="k">if</span> <span class="n">shaderNode</span><span class="p">:</span>
     <span class="n">shaderName</span> <span class="o">=</span> <span class="n">shaderNode</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Created node via nodedef name: name(</span><span class="si">%s</span><span class="s1">), path(</span><span class="si">%s</span><span class="s1">):&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">shaderName</span><span class="p">,</span> <span class="n">shaderNode</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Created node via nodedef &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; - </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">shaderNode</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -15104,7 +15322,9 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Created node via nodedef name: name(image2), path(image2):
+<pre>Created node via nodedef &#34;ND_standard_surface_surfaceshader&#34;
+ - &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+
 </pre>
 </div>
 </div>
@@ -15120,7 +15340,9 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.2.2-addNode()-:-Alternative-Approach">1.2.2 addNode() : Alternative Approach<a class="anchor-link" href="#1.2.2-addNode()-:-Alternative-Approach">&#182;</a></h3>
+<p><strong>Performance Tip</strong></p>
+<p>As the instance has the definition directly specified, this can result in faster node creation when a document is being read.</p>
+
 </div>
 </div>
 </div>
@@ -15131,176 +15353,331 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="1.2.2.1-Explicit-catagory-and-type-string">1.2.2.1 Explicit catagory and type string<a class="anchor-link" href="#1.2.2.1-Explicit-catagory-and-type-string">&#182;</a></h4><p>The manual way to create a node is to create a node using category string and type string.</p>
+<h2 id="4-Modifying-Input-Values">4 Modifying Input Values<a class="anchor-link" href="#4-Modifying-Input-Values">&#182;</a></h2><p>This example will show a simple change on one of the input parameters on the shader <code>test_shader</code> just created.</p>
+<p>As mentioned in the specification and the <code>Node and NodeGraphs</code> learning material, a node instance
+will only create and store inputs if they have non-default values. Thus in this example
+there are no inputs to set on <code>test_shader</code>.</p>
+<p>To avoid having to worry whether an input exists or not, the most robust approach is to either pre-create all the inputs on a node instance using <code>addInputsFromNodeDef()</code> or individually using <code>addInputFromNodeDef()</code></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Example 1</strong> : Adding only the input of interest</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Color to set input to</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">Color3</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># Add the input if it does not exist. Then modify it&#39;s value</span>
+<span class="n">baseColorInput</span> <span class="o">=</span> <span class="n">shaderNode</span><span class="o">.</span><span class="n">addInputFromNodeDef</span><span class="p">(</span><span class="s1">&#39;base_color&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">baseColorInput</span><span class="p">:</span>
+    <span class="n">baseColorInput</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1a. Add / modified input on:</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">shaderNode</span><span class="p">))</span>
+
+    <span class="c1"># Note that the input once found can be used for additional modifications</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">Color3</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">baseColorInput</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1b. Modified input on:</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">shaderNode</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>1a. Add / modified input on:
+&lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+  &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; value=&#34;0.4, 0.3, 0.2&#34;&gt;
+
+1b. Modified input on:
+&lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+  &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; value=&#34;0.9, 0.8, 0.7&#34;&gt;
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<blockquote>
+<p>Note: The inputs can be removed from the instance to restore the default value.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Removing the input on the &quot;instance&quot; does not mean it has not value.</span>
+    <span class="c1"># The value is the default value.</span>
+<span class="k">if</span> <span class="n">baseColorInput</span> <span class="ow">and</span> <span class="n">shaderNode</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Before: Shader node instance has: </span><span class="si">%d</span><span class="s1"> explcit inputs&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">shaderNode</span><span class="o">.</span><span class="n">getInputs</span><span class="p">()))</span>    
+    <span class="n">shaderNode</span><span class="o">.</span><span class="n">removeInput</span><span class="p">(</span><span class="n">baseColorInput</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After: Shader node instance has: </span><span class="si">%d</span><span class="s1"> explcit inputs&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">shaderNode</span><span class="o">.</span><span class="n">getInputs</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">shaderNode</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Before: Shader node instance has: 1 explcit inputs
+After: Shader node instance has: 0 explcit inputs
+   &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Example 2</strong> : Adding all inputs based on the definition</p>
+<p>Creating all of the  inputs removes the overhead of worrying if an input exists as well as not &quot;hiding&quot; inputs from users.
+However all inputs will be written to file, even if they have default values so file size can be relatively larger as shown in the sample output.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add all inputs to see all the default values</span>
+<span class="n">shadername2</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="s2">&quot;test_shader&quot;</span><span class="p">)</span>
+<span class="n">shaderNode2</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNodeInstance</span><span class="p">(</span><span class="n">nodedef</span><span class="p">,</span> <span class="n">shadername2</span><span class="p">)</span>   
+<span class="n">shaderNode2</span><span class="o">.</span><span class="n">addInputsFromNodeDef</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2. Add all default input values on:</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">shaderNode2</span><span class="p">))</span>
+
+<span class="c1"># Clean up all inputs</span>
+<span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">shaderNode2</span><span class="o">.</span><span class="n">getInputs</span><span class="p">():</span>
+    <span class="n">shaderNode2</span><span class="o">.</span><span class="n">removeInput</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>2. Add all default input values on:
+&lt;standard_surface name=&#34;test_shader2&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+  &lt;input name=&#34;base&#34; type=&#34;float&#34; value=&#34;1.0&#34;&gt;
+  &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; value=&#34;0.8, 0.8, 0.8&#34;&gt;
+  &lt;input name=&#34;diffuse_roughness&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;metalness&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;specular&#34; type=&#34;float&#34; value=&#34;1&#34;&gt;
+  &lt;input name=&#34;specular_color&#34; type=&#34;color3&#34; value=&#34;1, 1, 1&#34;&gt;
+  &lt;input name=&#34;specular_roughness&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
+  &lt;input name=&#34;specular_IOR&#34; type=&#34;float&#34; value=&#34;1.5&#34;&gt;
+  &lt;input name=&#34;specular_anisotropy&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;specular_rotation&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;transmission&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;transmission_color&#34; type=&#34;color3&#34; value=&#34;1, 1, 1&#34;&gt;
+  &lt;input name=&#34;transmission_depth&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;transmission_scatter&#34; type=&#34;color3&#34; value=&#34;0, 0, 0&#34;&gt;
+  &lt;input name=&#34;transmission_scatter_anisotropy&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;transmission_dispersion&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;transmission_extra_roughness&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;subsurface&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;subsurface_color&#34; type=&#34;color3&#34; value=&#34;1, 1, 1&#34;&gt;
+  &lt;input name=&#34;subsurface_radius&#34; type=&#34;color3&#34; value=&#34;1, 1, 1&#34;&gt;
+  &lt;input name=&#34;subsurface_scale&#34; type=&#34;float&#34; value=&#34;1&#34;&gt;
+  &lt;input name=&#34;subsurface_anisotropy&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;sheen&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;sheen_color&#34; type=&#34;color3&#34; value=&#34;1, 1, 1&#34;&gt;
+  &lt;input name=&#34;sheen_roughness&#34; type=&#34;float&#34; value=&#34;0.3&#34;&gt;
+  &lt;input name=&#34;coat&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;coat_color&#34; type=&#34;color3&#34; value=&#34;1, 1, 1&#34;&gt;
+  &lt;input name=&#34;coat_roughness&#34; type=&#34;float&#34; value=&#34;0.1&#34;&gt;
+  &lt;input name=&#34;coat_anisotropy&#34; type=&#34;float&#34; value=&#34;0.0&#34;&gt;
+  &lt;input name=&#34;coat_rotation&#34; type=&#34;float&#34; value=&#34;0.0&#34;&gt;
+  &lt;input name=&#34;coat_IOR&#34; type=&#34;float&#34; value=&#34;1.5&#34;&gt;
+  &lt;input name=&#34;coat_normal&#34; type=&#34;vector3&#34;&gt;
+  &lt;input name=&#34;coat_affect_color&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;coat_affect_roughness&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;thin_film_thickness&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;thin_film_IOR&#34; type=&#34;float&#34; value=&#34;1.5&#34;&gt;
+  &lt;input name=&#34;emission&#34; type=&#34;float&#34; value=&#34;0&#34;&gt;
+  &lt;input name=&#34;emission_color&#34; type=&#34;color3&#34; value=&#34;1, 1, 1&#34;&gt;
+  &lt;input name=&#34;opacity&#34; type=&#34;color3&#34; value=&#34;1, 1, 1&#34;&gt;
+  &lt;input name=&#34;thin_walled&#34; type=&#34;boolean&#34; value=&#34;false&#34;&gt;
+  &lt;input name=&#34;normal&#34; type=&#34;vector3&#34;&gt;
+  &lt;input name=&#34;tangent&#34; type=&#34;vector3&#34;&gt;
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>It is <strong>not recommended</strong> to simply set the input using the <code>setInputValue()</code> interface as this interface always creates an input even if it does not exist on the definition resulting in an invalid node.</p>
+<p>An additional step of pre-checking to see if the input is on the definition can be done manually, but this
+is automatically done by <code>addInputFromNodeDef()</code> so this is an unnecessary additional manual step.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">color</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">Color3</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># Set an input value. The input does not exist but is still allowed to be set</span>
+<span class="n">shaderNode</span><span class="o">.</span><span class="n">setInputValue</span><span class="p">(</span><span class="s1">&#39;unknown_input&#39;</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+<span class="n">getcolor</span> <span class="o">=</span> <span class="n">shaderNode</span><span class="o">.</span><span class="n">getInputValue</span><span class="p">(</span><span class="s1">&#39;unknown_input&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error: Added an invalid input on:</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">shaderNode</span><span class="p">))</span>
+<span class="n">shaderNode</span><span class="o">.</span><span class="n">removeInput</span><span class="p">(</span><span class="s1">&#39;unknown_input&#39;</span><span class="p">)</span>
+
+<span class="c1"># Check the defintion first before added.</span>
+<span class="n">nodedef</span> <span class="o">=</span> <span class="n">shaderNode</span><span class="o">.</span><span class="n">getNodeDef</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="s1">&#39;base_color&#39;</span><span class="p">):</span>
+    <span class="n">shaderNode</span><span class="o">.</span><span class="n">setInputValue</span><span class="p">(</span><span class="s1">&#39;base_color&#39;</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+    <span class="n">getcolor</span> <span class="o">=</span> <span class="n">shaderNode</span><span class="o">.</span><span class="n">getInputValue</span><span class="p">(</span><span class="s1">&#39;base_color&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Add and modified a valid input on:</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">shaderNode</span><span class="p">))</span>
+    <span class="n">shaderNode</span><span class="o">.</span><span class="n">removeInput</span><span class="p">(</span><span class="s1">&#39;base_color&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Error: Added an invalid input on:
+&lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+  &lt;input name=&#34;unknown_input&#34; type=&#34;color3&#34; value=&#34;0.1, 0.2, 0.3&#34;&gt;
+
+Add and modified a valid input on:
+&lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+  &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; value=&#34;0.1, 0.2, 0.3&#34;&gt;
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="5-Finding-Nodes">5 Finding Nodes<a class="anchor-link" href="#5-Finding-Nodes">&#182;</a></h2><p>To check on the state of a document while editing, it is useful to query information back without writing the entire document out
+to file or string. This section includes some common interfaces for finding nodes in a document.</p>
+<h3 id="Individual-Nodes">Individual Nodes<a class="anchor-link" href="#Individual-Nodes">&#182;</a></h3><p>Individual nodes can be found in a variety of ways:</p>
 <ul>
-<li><code>addNode()</code> is the function used.</li>
-<li>This method can be error prone if the <code>type</code> is not specified. A <code>string</code> type is then asssumed.</li>
-<li>An empty name argument results in a new unique name generated for the node.</li>
-</ul>
-<p>In this case standard_surface type is surfaceshader but instead the type is incorrectly set to color3.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;standard_surface&#39;</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-<span class="n">newNode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNode</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">newNode</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Created node with incorrect type: name(</span><span class="si">%s</span><span class="s1">), path(</span><span class="si">%s</span><span class="s1">), type(</span><span class="si">%s</span><span class="s1">) &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">newNode</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">newNode</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">(),</span> <span class="n">newNode</span><span class="o">.</span><span class="n">getType</span><span class="p">()))</span>
-    <span class="n">doc</span><span class="o">.</span><span class="n">removeNode</span><span class="p">(</span><span class="n">newNode</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Created node with incorrect type: name(node1), path(node1), type(color3) 
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="1.2.2.2-Explicit-category,-type-and-name-string">1.2.2.2 Explicit category, type and name string<a class="anchor-link" href="#1.2.2.2-Explicit-category,-type-and-name-string">&#182;</a></h4><p>Specifying an explicit type is better if the type to create is known. However it is still possible to set the incorrect type.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;surfaceshader&#39;</span>
-<span class="c1"># the type is explicity specified </span>
-<span class="n">newNode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNode</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">newNode</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Created correct node: name(</span><span class="si">%s</span><span class="s1">), path(</span><span class="si">%s</span><span class="s1">), type(</span><span class="si">%s</span><span class="s1">) &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">newNode</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">newNode</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">(),</span> <span class="n">newNode</span><span class="o">.</span><span class="n">getType</span><span class="p">()))</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Created correct node: name(node1), path(node1), type(surfaceshader) 
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="1.2.2.3-Explicit-catagory-and-type-with-generated-name">1.2.2.3 Explicit catagory and type with generated name<a class="anchor-link" href="#1.2.2.3-Explicit-catagory-and-type-with-generated-name">&#182;</a></h4><p>As mentioned it is often better to generate a unique name using <code>createValidChildName()</code>.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
-<span class="n">newNode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNode</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">newNode</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Created node with explicit name: (</span><span class="si">%s</span><span class="s1">), path(</span><span class="si">%s</span><span class="s1">):&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">newNode</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">newNode</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">()))</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Created node with explicit name: (standard_surface), path(standard_surface):
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="1.3-Finding-Nodes">1.3 Finding Nodes<a class="anchor-link" href="#1.3-Finding-Nodes">&#182;</a></h2><h3 id="1.3.1-Individual-Nodes">1.3.1 Individual Nodes<a class="anchor-link" href="#1.3.1-Individual-Nodes">&#182;</a></h3><p>Individual nodes can be found in a variety of ways:</p>
-<ul>
-<li>By path (<code>getDescendant</code>): This is the best way to find a child is to use a path that explicitly points to where in the document hierarchy the node resides. Element paths are relative.</li>
-<li>By child name (<code>getChild</code>): Is suitable for finding the direct child of a document or node graph.</li>
-<li>By type(<code>getChildofType</code>). The singular version can be used but the other methods are prefered.</li>
+<li>By path ( <code>getDescendant</code> ): The most &quot;robust&quot; way to find a node is to use a <code>path</code> that explicitly points to where in the document hierarchy the node resides. All paths are relative to the element where <code>getDescendent</code> is being called from.</li>
+<li>By child name ( <code>getChild</code> ): Is suitable for finding the direct child of a document or node graph but does search through hierarchies.</li>
 </ul>
 <p>Please see documentation about paths found <a href="https://kwokcb.github.io/MaterialX_Learn/documents/nodes_and_nodegraphs.html">here</a></p>
 
@@ -15322,9 +15699,6 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 <span class="n">shadernode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getDescendant</span><span class="p">(</span><span class="n">shadername</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">shadernode</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- Found node by path:&#39;</span><span class="p">,</span> <span class="n">shadername</span><span class="p">)</span>
-<span class="n">shadernode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getChildOfType</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">Node</span><span class="p">,</span> <span class="n">shadername</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">shadernode</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- Found node by type:&#39;</span><span class="p">,</span> <span class="n">shadername</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15344,9 +15718,8 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>- Found node by name: image2
-- Found node by path: image2
-- Found node by type: image2
+<pre>- Found node by name: test_shader
+- Found node by path: test_shader
 </pre>
 </div>
 </div>
@@ -15362,11 +15735,11 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="1.3.2-List-of-Nodes">1.3.2 List of Nodes<a class="anchor-link" href="#1.3.2-List-of-Nodes">&#182;</a></h3><p>To get a list of all children of a document or node graph:</p>
+<h3 id="Finding-List-of-Nodes">Finding List of Nodes<a class="anchor-link" href="#Finding-List-of-Nodes">&#182;</a></h3><p>To get a list of all children of a document or node graph:</p>
 <ul>
-<li><code>getNodes()</code> returns all child nodes. This is the prefered method.</li>
-<li><code>getChildrenofType()</code> returns a list of all children of a given type</li>
-<li><code>getChildren()</code> returns all children of any type</li>
+<li><code>getNodes()</code> returns all child nodes.</li>
+<li><code>getChildrenOfType()</code> returns a list of all children of a given type</li>
+<li><code>getChildren()</code> returns all children of any type.</li>
 </ul>
 
 </div>
@@ -15381,22 +15754,26 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Multiple element query</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Find using getNodes()&#39;</span><span class="p">)</span>
 <span class="n">nodes</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getNodes</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">nodes</span><span class="p">:</span>
     <span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="n">node</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span> <span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Found child nodes by getNodes():&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
 
 <span class="c1"># The type of a node is Node</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Find using getChildrenOfType()&#39;</span><span class="p">)</span>
 <span class="n">nodes</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getChildrenOfType</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">Node</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">nodes</span><span class="p">:</span>
     <span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="n">node</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span> <span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Found child nodes by type:&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
 
-<span class="n">nodes</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getChildren</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">nodes</span><span class="p">:</span>
-    <span class="c1"># Just print out a few nodes as all children including definitions are in this list.</span>
-    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Found child nodes:&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Find using getChildren()&#39;</span><span class="p">)</span>
+<span class="n">elements</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getChildren</span><span class="p">()</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">isA</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">Node</span><span class="p">):</span>
+        <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15416,9 +15793,12 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>- Found child nodes by getNodes(): [&#39;image&#39;, &#39;image2&#39;, &#39;node1&#39;, &#39;standard_surface&#39;]
-- Found child nodes by type: [&#39;image&#39;, &#39;image2&#39;, &#39;node1&#39;, &#39;standard_surface&#39;]
-- Found child nodes: [&#39;ND_disney_brdf_2012_surface&#39;, &#39;IM_disney_brdf_2012_surface_brdf_explorer&#39;, &#39;ND_disney_bsdf_2015_surface&#39;, &#39;IM_disney_bsdf_2015_surface_pbrt&#39;, &#39;ND_gltf_pbr_surfaceshader&#39;, &#39;IMPL_gltf_pbr_surfaceshader&#39;, &#39;ND_gltf_colorimage&#39;, &#39;NG_gltf_colorimage&#39;, &#39;ND_gltf_image_color3_color3_1_0&#39;, &#39;NG_NG_gltf_image_color3_color3_1_0&#39;]
+<pre>Find using getNodes()
+- [&#39;image&#39;, &#39;test_shader&#39;, &#39;test_shader2&#39;]
+Find using getChildrenOfType()
+- [&#39;image&#39;, &#39;test_shader&#39;, &#39;test_shader2&#39;]
+Find using getChildren()
+- [&#39;image&#39;, &#39;test_shader&#39;, &#39;test_shader2&#39;]
 </pre>
 </div>
 </div>
@@ -15434,15 +15814,25 @@ arbitrary unique name is assigned. It is often better to explicitly generate a n
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="2-Making-Connections">2 Making Connections<a class="anchor-link" href="#2-Making-Connections">&#182;</a></h1><h2 id="2.1-Node-Connections">2.1 Node Connections<a class="anchor-link" href="#2.1-Node-Connections">&#182;</a></h2><p>Connections are formed from a downstream <code>input</code> to an upstream <code>output</code>. For this a wrapper function is
-added to hide some of the syntactic peculiarities. It will be added to as more types of connections are implemented.</p>
-<p>One cumbersome thing is that a node instance when created has no inputs instantiated. So a check
-must be made to see if it exists and if its not added. Then if input and outputs types match 
-then the input can make the connection.</p>
-<p>Additionally it is considered &quot;invalid&quot; to have both a <code>value</code> and a connection on an input, so
-if a value has been set it must be removed.</p>
-<p>Something like the <code>connect()</code> method would be a useful utility to have in the core
-API.</p>
+<h3 id="Addendum-:-Node-Creation-Issues">Addendum : Node Creation Issues<a class="anchor-link" href="#Addendum-:-Node-Creation-Issues">&#182;</a></h3><p>This addendum includes an alternative interface which should be avoided for editing workflows as it is possible to create invalid data. 
+Handing of <code>LookupError</code> exceptions, which can be thrown by MaterialX, is used in the examples.</p>
+<blockquote>
+<p>Note however that these interfaces are used for file I/O and &quot;copy&quot; interface where validation is performed document as a separate step.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>addNode() Example</strong></p>
+<p><code>addNode()</code> is a low-level way to create a node using <code>category</code> string and <code>type</code> string.</p>
+<p>This method is error prone as it is possible to use undefined or invalid <code>category</code> and <code>type</code> identifiers.</p>
 
 </div>
 </div>
@@ -15455,65 +15845,13 @@ API.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="n">inputNode</span><span class="p">,</span> <span class="n">inputName</span><span class="p">,</span> <span class="n">outputNode</span><span class="p">,</span> <span class="n">outputName</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">inputNode</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">outputNode</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-    <span class="c1"># Add an input to the downstream node if it does not exist</span>
-    <span class="n">inputPort</span> <span class="o">=</span> <span class="n">inputNode</span><span class="o">.</span><span class="n">addInputFromNodeDef</span><span class="p">(</span><span class="n">inputName</span><span class="p">)</span>
-
-    <span class="c1"># Check for the type.</span>
-    <span class="n">outputType</span> <span class="o">=</span> <span class="n">outputNode</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>  
-    
-    <span class="c1"># If there is more than one output then we need to find the output type </span>
-    <span class="c1"># from the output with the name we are interested in.</span>
-    <span class="n">outputPortFound</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">outputPorts</span> <span class="o">=</span> <span class="n">outputNode</span><span class="o">.</span><span class="n">getOutputs</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">outputPorts</span><span class="p">:</span>
-        <span class="c1"># Look for an output with a given name, or the first if not found                    </span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">outputName</span><span class="p">:</span>
-            <span class="n">outputPortFound</span> <span class="o">=</span> <span class="n">outputPorts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">outputPortFound</span> <span class="o">=</span> <span class="n">outputNode</span><span class="o">.</span><span class="n">getOutput</span><span class="p">(</span><span class="n">outputName</span><span class="p">)</span>
-
-    <span class="c1"># If the output port is not found on the node instance then</span>
-    <span class="c1"># look for it the corresponding definition</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">outputPortFound</span><span class="p">:</span>
-        <span class="n">outputNodedef</span> <span class="o">=</span> <span class="n">outputNode</span><span class="o">.</span><span class="n">getNodeDef</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">outputNodedef</span><span class="p">:</span>
-            <span class="n">outputPorts</span> <span class="o">=</span> <span class="n">outputNodedef</span><span class="o">.</span><span class="n">getOutputs</span><span class="p">()</span>
-            
-            <span class="k">if</span> <span class="n">outputPorts</span><span class="p">:</span>
-                <span class="c1"># Look for an output with a given name, or the first if not found                    </span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">outputName</span><span class="p">:</span>
-                    <span class="n">outputPortFound</span> <span class="o">=</span> <span class="n">outputPorts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">outputPortFound</span> <span class="o">=</span> <span class="n">outputNodedef</span><span class="o">.</span><span class="n">getOutput</span><span class="p">(</span><span class="n">outputName</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">outputPortFound</span><span class="p">:</span>
-        <span class="n">outputType</span> <span class="o">=</span> <span class="n">outputPortFound</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No output port found matching: &#39;</span><span class="p">,</span> <span class="n">outputName</span><span class="p">)</span>        
-
-    <span class="k">if</span> <span class="n">inputPort</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span> <span class="o">!=</span> <span class="n">outputType</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Input type (</span><span class="si">%s</span><span class="s1">) and output type (</span><span class="si">%s</span><span class="s1">) do not match: &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">inputPort</span><span class="o">.</span><span class="n">getType</span><span class="p">(),</span> <span class="n">outputType</span><span class="p">))</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-    <span class="k">if</span> <span class="n">inputPort</span><span class="p">:</span>
-        <span class="c1"># Remove any value, and set a &quot;connection&quot; but setting the node name</span>
-        <span class="n">inputPort</span><span class="o">.</span><span class="n">removeAttribute</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
-        <span class="n">inputPort</span><span class="o">.</span><span class="n">setNodeName</span><span class="p">(</span><span class="n">outputNode</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
-        <span class="k">if</span> <span class="n">outputName</span><span class="p">:</span>
-            <span class="n">inputPort</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="n">outputName</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">inputPort</span>
-
-<span class="c1"># Connect image node to shader node previously created</span>
-<span class="n">imageNode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getDescendant</span><span class="p">(</span><span class="n">imageNodePath</span><span class="p">)</span>
-<span class="n">shaderNode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="n">shadername</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">imageNode</span> <span class="ow">and</span> <span class="n">shaderNode</span><span class="p">:</span>
-    <span class="n">inputConnnected</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span><span class="n">shaderNode</span><span class="p">,</span> <span class="s2">&quot;base_color&quot;</span><span class="p">,</span> <span class="n">imageNode</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">inputConnnected</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">inputConnnected</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;invalid_category&#39;</span>
+<span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;invalid_type&quot;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">newNode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNode</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">newNode</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Created node with invalid category and type: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">newNode</span><span class="p">))</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">removeNode</span><span class="p">(</span><span class="n">newNode</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
 </pre></div>
 
      </div>
@@ -15533,7 +15871,8 @@ API.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>&lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;image&#34;&gt;
+<pre>Created node with invalid category and type: &lt;invalid_category name=&#34;node1&#34; type=&#34;invalid_type&#34;&gt;
+
 </pre>
 </div>
 </div>
@@ -15549,9 +15888,8 @@ API.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="2.2-Node-Deletion">2.2 Node Deletion<a class="anchor-link" href="#2.2-Node-Deletion">&#182;</a></h2><p>There is one option for removing nodes, and that is by name. It is not recommended to use low level
-APIs such as <code>removeChild()</code> as they can remove non-nodes.</p>
-<p>In this example <code>getNodes()</code> is used to get the nodes and delete them one at a time.</p>
+<p>If an empty <code>name</code> is used this results in a new unique name generated for the node. 
+However, if a child name is specified that already exists then creation will fail and throw an error exception.</p>
 
 </div>
 </div>
@@ -15564,20 +15902,21 @@ APIs such as <code>removeChild()</code> as they can remove non-nodes.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Deleting Nodes</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;standard_surface&#39;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;myname&#39;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">newNode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNode</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;surface_shader&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">LookupError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">newNode</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1. Created node with name: &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">newNode</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Current document contents:&#39;</span><span class="p">)</span>
-<span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-<span class="n">contents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
-
-<span class="c1"># There is no way to remove all nodes at the same time, so we remove them</span>
-<span class="c1"># one at a timme</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Clear document contents:&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">getNodes</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- Remove node: </span><span class="si">%s</span><span class="s1">. Type: </span><span class="si">%s</span><span class="s1">. Version: </span><span class="si">%s</span><span class="s1">. Nodedef: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span>
-     <span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">node</span><span class="o">.</span><span class="n">getType</span><span class="p">(),</span> <span class="n">node</span><span class="o">.</span><span class="n">getVersionString</span><span class="p">(),</span> <span class="n">node</span><span class="o">.</span><span class="n">getNodeDefString</span><span class="p">()))</span>
-    <span class="n">doc</span><span class="o">.</span><span class="n">removeNode</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>    
+<span class="c1"># Creation fails as a node with the name already exist </span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">newNode</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">newNode</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNode</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">LookupError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2. Failed trying to creae note with same name: &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">err</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15597,63 +15936,8 @@ APIs such as <code>removeChild()</code> as they can remove non-nodes.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Current document contents:
-&lt;?xml version=&#34;1.0&#34;?&gt;
-&lt;materialx version=&#34;1.38&#34; xmlns:xi=&#34;http://www.w3.org/2001/XInclude&#34;&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/disney_brdf_2012.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/disney_brdf_2015.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/gltf_pbr.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/standard_surface.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/usd_preview_surface.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/lama/lama_add.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/lama/lama_conductor.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/lama/lama_dielectric.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/lama/lama_diffuse.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/lama/lama_emission.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/lama/lama_layer.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/lama/lama_mix.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/lama/lama_sheen.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/lama/lama_sss.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/lama/lama_translucent.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/translation/standard_surface_to_gltf_pbr.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/bxdf/translation/standard_surface_to_usd.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/lights/lights_defs.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/lights/genglsl/lights_genglsl_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/pbrlib/pbrlib_defs.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/pbrlib/pbrlib_ng.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/pbrlib/genglsl/pbrlib_genglsl_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/pbrlib/genmdl/pbrlib_genmdl_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/pbrlib/genosl/pbrlib_genosl_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/convert_materials.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/convert_shaders.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/stdlib_defs.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/stdlib_ng.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/genglsl/stdlib_genglsl_cm_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/genglsl/stdlib_genglsl_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/genglsl/stdlib_genglsl_unit_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/genmdl/stdlib_genmdl_cm_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/genmdl/stdlib_genmdl_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/genmdl/stdlib_genmdl_unit_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/genosl/stdlib_genosl_cm_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/genosl/stdlib_genosl_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/stdlib/genosl/stdlib_genosl_unit_impl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/targets/essl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/targets/genglsl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/targets/genmdl.mtlx&#34; /&gt;
-  &lt;xi:include href=&#34;libraries/targets/genosl.mtlx&#34; /&gt;
-  &lt;image name=&#34;image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34; /&gt;
-  &lt;standard_surface name=&#34;image2&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader_100&#34;&gt;
-    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;image&#34; /&gt;
-  &lt;/standard_surface&gt;
-  &lt;standard_surface name=&#34;node1&#34; type=&#34;surfaceshader&#34; /&gt;
-  &lt;standard_surface name=&#34;standard_surface&#34; type=&#34;surfaceshader&#34; /&gt;
-&lt;/materialx&gt;
-
-Clear document contents:
-- Remove node: image. Type: color3. Version: . Nodedef: ND_image_color3
-- Remove node: image2. Type: surfaceshader. Version: . Nodedef: ND_standard_surface_surfaceshader_100
-- Remove node: node1. Type: surfaceshader. Version: . Nodedef: 
-- Remove node: standard_surface. Type: surfaceshader. Version: . Nodedef: 
+<pre>1. Created node with name: &#34;myname&#34;
+2. Failed trying to creae note with same name: &#34;Child name is not unique: myname&#34;
 </pre>
 </div>
 </div>
