@@ -1,0 +1,101 @@
+#usda 1.0
+(
+    endTimeCode = 1
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "mySphere" (
+    kind = "component"
+)
+{
+    def Sphere "geo"
+    {
+        float3[] extent = [(-1, -1, -1), (1, 1, 1)]
+        double radius = 1
+        matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform"]
+    }
+
+    def Scope "mtl"
+    {
+        def Material "collect1"
+        {
+            color3f inputs:base_color = (1, 0, 0) (
+                displayName = "Base Color for Material Interface"
+            )
+            token outputs:mtlx:displacement.connect = </mySphere/mtl/collect1/my_materialx_subnet.outputs:displacement>
+            token outputs:mtlx:surface.connect = </mySphere/mtl/collect1/my_materialx_subnet.outputs:surface>
+            token outputs:surface.connect = </mySphere/mtl/collect1/usdpreview_subnet.outputs:surface>
+
+            def NodeGraph "my_materialx_subnet"
+            {
+                color3f inputs:base_color.connect = </mySphere/mtl/collect1.inputs:base_color>
+                token outputs:displacement.connect = </mySphere/mtl/collect1/my_materialx_subnet/mtlxdisplacement.outputs:out>
+                token outputs:surface.connect = </mySphere/mtl/collect1/my_materialx_subnet/mtlxstandard_surface1.outputs:out>
+
+                def Shader "mtlxstandard_surface1"
+                {
+                    uniform token info:id = "ND_standard_surface_surfaceshader"
+                    float inputs:base = 1 
+                    color3f inputs:base_color.connect = </mySphere/mtl/collect1/my_materialx_subnet/image_readers.outputs:out>
+                    float inputs:coat = 0 
+                    float inputs:coat_roughness = 0.1 
+                    float inputs:emission  = 0
+                    color3f inputs:emission_color = (1, 1, 1)
+                    float inputs:metalness = 0 
+                    float inputs:specular = 1
+                    color3f inputs:specular_color = (1,1,1)
+                    float inputs:specular_IOR  = 1.5 
+                    float inputs:specular_roughness = 0.2
+                    float inputs:specular_roughness.connect = </mySphere/mtl/collect1/my_materialx_subnet/image_readers.outputs:out_2>
+                    float inputs:transmission = 0.0 
+                    token outputs:out
+                }
+
+                def NodeGraph "image_readers"
+                {
+                    color3f inputs:_base_color.connect = </mySphere/mtl/collect1/my_materialx_subnet.inputs:base_color>
+                    color3f outputs:out.connect = </mySphere/mtl/collect1/my_materialx_subnet/image_readers/mtlximage1.outputs:out>
+                    float outputs:out_2.connect = </mySphere/mtl/collect1/my_materialx_subnet/image_readers/mtlximage2.outputs:out>
+
+                    def Shader "mtlximage1"
+                    {
+                        uniform token info:id = "ND_image_color3"
+                        color3f inputs:default.connect = </mySphere/mtl/collect1/my_materialx_subnet/image_readers.inputs:_base_color>
+                        color3f outputs:out
+                    }
+
+                    def Shader "mtlximage2"
+                    {
+                        uniform token info:id = "ND_image_float"
+                        float outputs:out
+                    }
+                }
+
+                def Shader "mtlxdisplacement"
+                {
+                    uniform token info:id = "ND_displacement_float"
+                    token outputs:out
+                }
+            }
+
+            def NodeGraph "usdpreview_subnet"
+            {
+                color3f inputs:base_color.connect = </mySphere/mtl/collect1.inputs:base_color>
+                token outputs:surface.connect = </mySphere/mtl/collect1/usdpreview_subnet/usdpreviewsurface1.outputs:surface>
+
+                def Shader "usdpreviewsurface1"
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor.connect = </mySphere/mtl/collect1/usdpreview_subnet.inputs:base_color>
+                    token outputs:surface
+                }
+            }
+        }
+    }
+}
+
