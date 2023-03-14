@@ -269,10 +269,11 @@
 									<pre class="hljs"><code><div>import MaterialX as mx
 ModuleNotFoundError: No module named 'MaterialX'
 </div></code></pre>
-									<p>At the time of righting MaterialX is not available to download and install
+									<p>At the time of writing MaterialX is not yet available to download and install
 										using
-										<code>pip</code> (PySide),
-										and thus must be installed
+										<code>pip</code> (PySide). The package will reside <a href="https://pypi.org/project/MaterialX/"
+										target="_blank">here when available</a>
+										Thus for now the MaterialX must be installed
 										manually. The easiest way to do this is to go where MaterialX is installed
 										and run the local
 										setup from within the workspace terminal. For example go to:
@@ -382,6 +383,11 @@ for libFile in libFiles:
 										being <a href="https://colab.research.google.com/" target="_blank">Google
 											Colab</a>.
 									</p>
+									<p>
+										A key <b>missing</b> element which is in progress is the availability of
+										installing MaterialX via <em>PyPi</em>. The package will reside <a href="https://pypi.org/project/MaterialX/"
+										target="_blank">here</a> when available.
+									</p>
 									<p>Each assumes a Python environment
 										and the installation of the Python libraries for MaterialX. If using
 										the notebooks in VSCode, Jupyter needs to be set up. See
@@ -444,7 +450,7 @@ for libFile in libFiles:
 											</tr>
 
 											<tr>
-												<td>NodeGraphs
+												<td>NodeGraph Basics
 													<ul>
 														<li>Creating Graph Containers</li>
 														<li>Adding Nodes to a Graph</li>
@@ -472,6 +478,63 @@ for libFile in libFiles:
 												</td>
 											</tr>
 
+											<tr>
+												<td>NodeGraph Traversal
+													<ul>
+														<li>Upstream Graph Traversal</li>
+														<li>Extracting Connectivity Information</li>
+														<li>Extracting NodeGraph Grouping Information</li>
+														<li>Handling Input and Output Interfaces</li>
+														<li>Mermaid Diagram Generation Example</li>
+													</ul>
+												</td>
+												<td>
+													<a href="../pymaterialx/mtlx_traversal_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td>
+													<a href="../pymaterialx/mtlx_traversal_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td>
+													
+													<a href=""
+													target="_blank">
+													<!-- <img
+														src="https://colab.research.google.com/assets/colab-badge.svg" style="height:2em">
+													</a> -->													
+												</td>
+											</tr>
+
+											<tr>
+												<td>USD and MaterialX Graphs
+													<ul>
+														<li>USD setup</li>
+														<li>Shade tree traversal of Usd Stage </li>
+														<li>Mapping of Usd to MaterialX</li>
+													</ul>
+												</td>
+												<td>
+													<a href="../pymaterialx/mtlx_usd_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td>
+													<a href="../pymaterialx/mtlx_usd_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td>
+													
+													<a href=""
+													target="_blank">
+													<!-- <img
+														src="https://colab.research.google.com/assets/colab-badge.svg" style="height:2em">
+													</a> -->													
+												</td>
+											</tr>											
 
 											<tr>
 												<td>ShaderGen

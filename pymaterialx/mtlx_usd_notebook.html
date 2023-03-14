@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>mtlx_graphs_notebook</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>mtlx_usd_notebook</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14597,15 +14597,17 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Creating-Material-Graphs">Creating Material Graphs<a class="anchor-link" href="#Creating-Material-Graphs">&#182;</a></h1><p>The following topics will be covered in this book:</p>
+<h1 id="USD-and-MaterialX-NodeGraphs">USD and MaterialX NodeGraphs<a class="anchor-link" href="#USD-and-MaterialX-NodeGraphs">&#182;</a></h1><p>This notebook will look at some of the basic interop between MaterialX and USD focusing on nodegraphs and nodes.
+Material assignment will not be examined, nor is the intent to provide a tutorial about Usd, which can be found in other places
+such as from <a href="https://docs.omniverse.nvidia.com/prod_usd/prod_usd/python-snippets.html" target="_blank">NVIDIA</a>, and <a href="https://www.sidefx.com/docs/houdini/solaris/usd.html" target="_blank">Houdini</a></p>
+<p>Topics covered include:</p>
 <ol>
-<li>Creating a node graph containers.</li>
-<li>Creating container input and output interfaces.</li>
-<li>Creating nodes in a graph.</li>
-<li>Connecting nodes in a graph.</li>
-<li>Creating a material and connecting the graph to the material.</li>
+<li>Usd and MaterialX Package Setup</li>
+<li>Reading in a Usd file with MaterialX materials</li>
+<li>Traverse the Usd stage and extract out materials and shader graphs.</li>
 </ol>
-<p>At the end of this book, a simple shader graph will have been created.</p>
+<p>Some basic attributes will be extracted to demonstrate some points and is not meant
+to be a full exporter.</p>
 
 </div>
 </div>
@@ -14617,13 +14619,573 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Setup">Setup<a class="anchor-link" href="#Setup">&#182;</a></h2><p>The following pre-requisite setup steps need to performed first:</p>
+<h2 id="Usd-Setup">Usd Setup<a class="anchor-link" href="#Usd-Setup">&#182;</a></h2><p>In addition to MaterialX Usd modules naturally need to be imported. As a starting point Usd &quot;core&quot; can be installed as follows:</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">usd</span><span class="o">-</span><span class="n">core</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>After installation various packages can be imported.  <code>Usd</code>, <code>UsdShade</code>, <code>Sdf</code> are the main packages required. The MaterialX package is also imported.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
+<span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">UsdShade</span>
+<span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Sdf</span>
+
+<span class="c1"># Not necessary</span>
+<span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">UsdGeom</span>
+
+<span class="kn">import</span> <span class="nn">MaterialX</span> <span class="k">as</span> <span class="nn">mx</span>
+
+<span class="p">[</span> <span class="n">major</span><span class="p">,</span> <span class="n">minor</span><span class="p">,</span> <span class="n">build</span> <span class="p">]</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">GetVersion</span><span class="p">()</span>  
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Using Usd Version:&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">major</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">minor</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">build</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Using MaterialX Version:&#39;</span><span class="p">,</span> <span class="n">mx</span><span class="o">.</span><span class="n">getVersionString</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Using Usd Version: 0.23.2
+Using MaterialX Version: 1.38.7
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>As input, we load in an example Usd file that contains a shading network with nodes which have MaterialX definitions.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load in a sample file</span>
+<span class="n">stage</span> <span class="o">=</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s1">&#39;sphere_with_nodegraphs.usda&#39;</span><span class="p">)</span> 
+
+<span class="c1"># Flatten layers</span>
+<span class="n">stage</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
+
+<span class="c1"># Print as String</span>
+<span class="n">stringResult</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetRootLayer</span><span class="p">()</span><span class="o">.</span><span class="n">ExportToString</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stringResult</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>#usda 1.0
+(
+    endTimeCode = 1
+    framesPerSecond = 24
+    metersPerUnit = 1
+    startTimeCode = 1
+    timeCodesPerSecond = 24
+    upAxis = &#34;Y&#34;
+)
+
+def Xform &#34;mySphere&#34; (
+    kind = &#34;component&#34;
+)
+{
+    def Sphere &#34;geo&#34;
+    {
+        float3[] extent = [(-1, -1, -1), (1, 1, 1)]
+        double radius = 1
+        matrix4d xformOp:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+        uniform token[] xformOpOrder = [&#34;xformOp:transform&#34;]
+    }
+
+    def Scope &#34;mtl&#34;
+    {
+        def Material &#34;collect1&#34;
+        {
+            color3f inputs:base_color = (1, 0, 0) (
+                displayName = &#34;Base Color for Material Interface&#34;
+            )
+            token outputs:mtlx:displacement.connect = &lt;/mySphere/mtl/collect1/my_materialx_subnet.outputs:displacement&gt;
+            token outputs:mtlx:surface.connect = &lt;/mySphere/mtl/collect1/my_materialx_subnet.outputs:surface&gt;
+            token outputs:surface.connect = &lt;/mySphere/mtl/collect1/usdpreview_subnet.outputs:surface&gt;
+
+            def NodeGraph &#34;my_materialx_subnet&#34;
+            {
+                color3f inputs:base_color.connect = &lt;/mySphere/mtl/collect1.inputs:base_color&gt;
+                token outputs:displacement.connect = &lt;/mySphere/mtl/collect1/my_materialx_subnet/mtlxdisplacement.outputs:out&gt;
+                token outputs:surface.connect = &lt;/mySphere/mtl/collect1/my_materialx_subnet/mtlxstandard_surface1.outputs:out&gt;
+
+                def Shader &#34;mtlxstandard_surface1&#34;
+                {
+                    uniform token info:id = &#34;ND_standard_surface_surfaceshader&#34;
+                    float inputs:base = 1
+                    color3f inputs:base_color.connect = &lt;/mySphere/mtl/collect1/my_materialx_subnet/image_readers.outputs:out&gt;
+                    float inputs:coat = 0
+                    float inputs:coat_roughness = 0.1
+                    float inputs:emission = 0
+                    color3f inputs:emission_color = (1, 1, 1)
+                    float inputs:metalness = 0
+                    float inputs:specular = 1
+                    color3f inputs:specular_color = (1, 1, 1)
+                    float inputs:specular_IOR = 1.5
+                    float inputs:specular_roughness = 0.2
+                    float inputs:specular_roughness.connect = &lt;/mySphere/mtl/collect1/my_materialx_subnet/image_readers.outputs:out_2&gt;
+                    float inputs:transmission = 0
+                    token outputs:out
+                }
+
+                def NodeGraph &#34;image_readers&#34;
+                {
+                    color3f inputs:_base_color.connect = &lt;/mySphere/mtl/collect1/my_materialx_subnet.inputs:base_color&gt;
+                    color3f outputs:out.connect = &lt;/mySphere/mtl/collect1/my_materialx_subnet/image_readers/mtlximage1.outputs:out&gt;
+                    float outputs:out_2.connect = &lt;/mySphere/mtl/collect1/my_materialx_subnet/image_readers/mtlximage2.outputs:out&gt;
+
+                    def Shader &#34;mtlximage1&#34;
+                    {
+                        uniform token info:id = &#34;ND_image_color3&#34;
+                        color3f inputs:default.connect = &lt;/mySphere/mtl/collect1/my_materialx_subnet/image_readers.inputs:_base_color&gt;
+                        color3f outputs:out
+                    }
+
+                    def Shader &#34;mtlximage2&#34;
+                    {
+                        uniform token info:id = &#34;ND_image_float&#34;
+                        float outputs:out
+                    }
+                }
+
+                def Shader &#34;mtlxdisplacement&#34;
+                {
+                    uniform token info:id = &#34;ND_displacement_float&#34;
+                    token outputs:out
+                }
+            }
+
+            def NodeGraph &#34;usdpreview_subnet&#34;
+            {
+                color3f inputs:base_color.connect = &lt;/mySphere/mtl/collect1.inputs:base_color&gt;
+                token outputs:surface.connect = &lt;/mySphere/mtl/collect1/usdpreview_subnet/usdpreviewsurface1.outputs:surface&gt;
+
+                def Shader &#34;usdpreviewsurface1&#34;
+                {
+                    uniform token info:id = &#34;UsdPreviewSurface&#34;
+                    color3f inputs:diffuseColor.connect = &lt;/mySphere/mtl/collect1/usdpreview_subnet.inputs:base_color&gt;
+                    token outputs:surface
+                }
+            }
+        }
+    }
+}
+
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Some minor modifications will be made</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/mySphere/mtl/collect1/my_materialx_subnet/mtlxstandard_surface1&#39;</span><span class="p">)</span>
+<span class="n">stdsurf</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+<span class="n">surfInput</span> <span class="o">=</span> <span class="n">stdsurf</span><span class="o">.</span><span class="n">GetInput</span><span class="p">(</span><span class="s1">&#39;coat_roughness&#39;</span><span class="p">)</span>
+<span class="n">surfInput</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">surfInput</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>1.0
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Start-Traversal">Start Traversal<a class="anchor-link" href="#Start-Traversal">&#182;</a></h2><p>As a starting point, a simple tree traversal logic is added. Note that this just traverses the entire stage and prints out the prims and their attributes.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Start from the root</span>
+<span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+
+<span class="c1"># Utility to recursive traverse and print out children, and their attributes</span>
+<span class="k">def</span> <span class="nf">printChildren</span><span class="p">(</span><span class="n">indent</span><span class="p">,</span> <span class="n">prim</span><span class="p">):</span>
+    <span class="n">children</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">child</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> - Name </span><span class="si">%s</span><span class="s1">, Path </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">indent</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">child</span><span class="o">.</span><span class="n">GetPrimPath</span><span class="p">()))</span> 
+            <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">GetAttributes</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">():</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">indent</span><span class="p">,</span> <span class="s1">&#39;  -&#39;</span><span class="p">,</span> <span class="n">attr</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; : &#39;</span><span class="p">,</span> <span class="n">attr</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
+            <span class="n">printChildren</span><span class="p">(</span><span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span>    
+
+<span class="c1"># Print out tree</span>
+<span class="n">printChildren</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">prim</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>  - Name mySphere, Path /mySphere
+    - purpose :  default
+    - visibility :  inherited
+    - Name geo, Path /mySphere/geo
+      - extent :  [(-1, -1, -1), (1, 1, 1)]
+      - orientation :  rightHanded
+      - purpose :  default
+      - radius :  1.0
+      - visibility :  inherited
+      - xformOp:transform :  ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+      - xformOpOrder :  [xformOp:transform]
+    - Name mtl, Path /mySphere/mtl
+      - purpose :  default
+      - visibility :  inherited
+      - Name collect1, Path /mySphere/mtl/collect1
+        - inputs:base_color :  (1, 0, 0)
+        - Name my_materialx_subnet, Path /mySphere/mtl/collect1/my_materialx_subnet
+          - Name mtlxstandard_surface1, Path /mySphere/mtl/collect1/my_materialx_subnet/mtlxstandard_surface1
+            - info:id :  ND_standard_surface_surfaceshader
+            - info:implementationSource :  id
+            - inputs:base :  1.0
+            - inputs:coat_roughness :  1.0
+            - inputs:emission_color :  (1, 1, 1)
+            - inputs:specular :  1.0
+            - inputs:specular_color :  (1, 1, 1)
+            - inputs:specular_IOR :  1.5
+            - inputs:specular_roughness :  0.20000000298023224
+          - Name image_readers, Path /mySphere/mtl/collect1/my_materialx_subnet/image_readers
+            - Name mtlximage1, Path /mySphere/mtl/collect1/my_materialx_subnet/image_readers/mtlximage1
+              - info:id :  ND_image_color3
+              - info:implementationSource :  id
+            - Name mtlximage2, Path /mySphere/mtl/collect1/my_materialx_subnet/image_readers/mtlximage2
+              - info:id :  ND_image_float
+              - info:implementationSource :  id
+          - Name mtlxdisplacement, Path /mySphere/mtl/collect1/my_materialx_subnet/mtlxdisplacement
+            - info:id :  ND_displacement_float
+            - info:implementationSource :  id
+        - Name usdpreview_subnet, Path /mySphere/mtl/collect1/usdpreview_subnet
+          - Name usdpreviewsurface1, Path /mySphere/mtl/collect1/usdpreview_subnet/usdpreviewsurface1
+            - info:id :  UsdPreviewSurface
+            - info:implementationSource :  id
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Examining-Shader-Graphs">Examining Shader Graphs<a class="anchor-link" href="#Examining-Shader-Graphs">&#182;</a></h2><p>This can be refined to only example shader network nodes and ports.</p>
+<p>Two utility functions are be added:</p>
 <ul>
-<li>Load MaterialX</li>
-<li>Creating a working document</li>
-<li>Loading in the standard library definitions</li>
-<li>Setting up a predicate to filter definitions on write.</li>
+<li><p><code>printValueElements</code> selectively examines inputs and outputs using <code>GetInputs()</code> and <code>GetOutputs</code> on a shader. Tokens are not considered in this example.</p>
+</li>
+<li><p><code>printShaders</code> performs the traversal from a root prim visiting prims which would map to MaterialX -- namely &quot;node graphs&quot;, &quot;material&quot; and &quot;shader&quot; nodes. Any geometry and tree nesting is ignored. For shader nodes, an additional check for the a definition is made.</p>
+</li>
 </ul>
+<p>using <code>GetIdAttr()</code>.</p>
+<p>Note that the Python API for Usd requires explicit casting to the desired type before
+methods for that type can be used.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">printValueElements</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="n">indent</span><span class="p">):</span>
+    <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">shader</span><span class="o">.</span><span class="n">GetInputs</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">input</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">indent</span><span class="p">,</span> <span class="s1">&#39;- Input:&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">GetBaseName</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">shader</span><span class="o">.</span><span class="n">GetOutputs</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">output</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">indent</span><span class="p">,</span> <span class="s1">&#39;- Output:&#39;</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">GetBaseName</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">printShaderNodes</span><span class="p">(</span><span class="n">indent</span><span class="p">,</span> <span class="n">prim</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Print out shader nodes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Use RTTI to check for type. Ignore all other types</span>
+    <span class="k">if</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdShade</span><span class="o">.</span><span class="n">NodeGraph</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">indent</span><span class="p">,</span> <span class="s1">&#39;- Nodegraph: </span><span class="si">%s</span><span class="s1">, Path </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimPath</span><span class="p">()))</span>
+        <span class="n">nodegraph</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">NodeGraph</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+        <span class="n">printValueElements</span><span class="p">(</span><span class="n">nodegraph</span><span class="p">,</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;  &#39;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdShade</span><span class="o">.</span><span class="n">Material</span><span class="p">):</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="n">indent</span><span class="p">,</span> <span class="s1">&#39;- Material </span><span class="si">%s</span><span class="s1">, Path </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimPath</span><span class="p">()))</span>
+        <span class="n">material</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Material</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+        <span class="n">printValueElements</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;  &#39;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="p">):</span> 
+        <span class="n">shader</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">indent</span><span class="p">,</span> <span class="s1">&#39;- Shader </span><span class="si">%s</span><span class="s1">, Path </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimPath</span><span class="p">()))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">indent</span><span class="p">,</span> <span class="s1">&#39;  - Nodedef: &#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">shader</span><span class="o">.</span><span class="n">GetIdAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">()))</span>
+        <span class="n">printValueElements</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;  &#39;</span><span class="p">)</span>
+
+    <span class="c1"># Visit children</span>
+    <span class="n">children</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">children</span><span class="p">:</span>
+        <span class="n">childIndent</span> <span class="o">=</span> <span class="n">indent</span><span class="o">+</span><span class="s1">&#39;  &#39;</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
+            <span class="n">printShaderNodes</span><span class="p">(</span><span class="n">childIndent</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span>
+
+<span class="c1"># Traverse and print output &quot;shader&quot; contents</span>
+<span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="n">printShaderNodes</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">prim</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>        - Nodegraph: collect1, Path /mySphere/mtl/collect1
+          - Input: base_color
+          - Output: mtlx:displacement
+          - Output: mtlx:surface
+          - Output: surface
+          - Nodegraph: my_materialx_subnet, Path /mySphere/mtl/collect1/my_materialx_subnet
+            - Input: base_color
+            - Output: displacement
+            - Output: surface
+            - Shader mtlxstandard_surface1, Path /mySphere/mtl/collect1/my_materialx_subnet/mtlxstandard_surface1
+              - Nodedef:  ND_standard_surface_surfaceshader
+              - Input: base
+              - Input: base_color
+              - Input: coat
+              - Input: coat_roughness
+              - Input: emission
+              - Input: emission_color
+              - Input: metalness
+              - Input: specular
+              - Input: specular_color
+              - Input: specular_IOR
+              - Input: specular_roughness
+              - Input: transmission
+              - Output: out
+            - Nodegraph: image_readers, Path /mySphere/mtl/collect1/my_materialx_subnet/image_readers
+              - Input: _base_color
+              - Output: out
+              - Output: out_2
+              - Shader mtlximage1, Path /mySphere/mtl/collect1/my_materialx_subnet/image_readers/mtlximage1
+                - Nodedef:  ND_image_color3
+                - Input: default
+                - Output: out
+              - Shader mtlximage2, Path /mySphere/mtl/collect1/my_materialx_subnet/image_readers/mtlximage2
+                - Nodedef:  ND_image_float
+                - Output: out
+            - Shader mtlxdisplacement, Path /mySphere/mtl/collect1/my_materialx_subnet/mtlxdisplacement
+              - Nodedef:  ND_displacement_float
+              - Output: out
+          - Nodegraph: usdpreview_subnet, Path /mySphere/mtl/collect1/usdpreview_subnet
+            - Input: base_color
+            - Output: surface
+            - Shader usdpreviewsurface1, Path /mySphere/mtl/collect1/usdpreview_subnet/usdpreviewsurface1
+              - Nodedef:  UsdPreviewSurface
+              - Input: diffuseColor
+              - Output: surface
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Usd-to-MaterialX-Example">Usd to MaterialX Example<a class="anchor-link" href="#Usd-to-MaterialX-Example">&#182;</a></h2><p>Finally, to the previous example logic is added to create MaterialX elements which correspond to Usd elements.</p>
+<p>The first step is to add in a basic setup for MaterialX to create a working document and load in standard definitions.</p>
 
 </div>
 </div>
@@ -14636,8 +15198,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">MaterialX</span> <span class="k">as</span> <span class="nn">mx</span>
-
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Perform basic setup</span>
 <span class="n">libraryPath</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">FilePath</span><span class="p">(</span><span class="s1">&#39;libraries&#39;</span><span class="p">)</span>
 <span class="n">stdlib</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
 <span class="n">searchPath</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">FileSearchPath</span><span class="p">()</span>
@@ -14663,15 +15224,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Creating-a-Node-Graph">Creating a Node Graph<a class="anchor-link" href="#Creating-a-Node-Graph">&#182;</a></h1><h2 id="Create-%3Cnodegraph%3E-Container">Create <code>&lt;nodegraph&gt;</code> Container<a class="anchor-link" href="#Create-%3Cnodegraph%3E-Container">&#182;</a></h2><p>The first step to creating a useful node graph is to create the parent container (<code>NodeGraph</code>).
-The interface <a href="https://materialx.org/docs/api/class_document.html" target="_blank"><code>addNodeGraph()</code></a> can be used to do so.</p>
-<p>As with documents, all children must be uniquely named. Name generation of child names uses the
-<code>createValidChildName()</code> interface which can be used for documents, nodes, and node graphs.</p>
+<p>To aid in the translation, a series of utilities is used to perform Usd to MaterialX mappings:</p>
+<ol>
+<li>The utility <code>mapUsdTypeToMtlx()</code> maps native Usd types to MaterialX native type. This is just for example and is not a complete mapping.</li>
+</ol>
 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14679,39 +15240,27 @@ The interface <a href="https://materialx.org/docs/api/class_document.html" targe
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a uniquely named node graph container under the parent document</span>
-<span class="n">nodeGraphName</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="s2">&quot;test_nodegraph&quot;</span><span class="p">)</span>
-
-<span class="c1"># Create the node graph</span>
-<span class="n">nodeGraph</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNodeGraph</span><span class="p">(</span><span class="n">nodeGraphName</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">nodeGraph</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Created nodegraph:&#39;</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">())</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mapUsdTypeToMtlx</span><span class="p">(</span><span class="n">usdType</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Map a Usd type to a MaterialX type. Note this is not a complete mapping&quot;&quot;&quot;</span>
+    <span class="n">usdTypeString</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">usdType</span><span class="p">)</span>
+    <span class="n">mtlxType</span> <span class="o">=</span> <span class="s1">&#39;color3&#39;</span>
+    <span class="k">if</span> <span class="s1">&#39;color3&#39;</span> <span class="ow">in</span> <span class="n">usdTypeString</span><span class="p">:</span>
+        <span class="n">mtlxType</span> <span class="o">=</span><span class="s1">&#39;color3&#39;</span>
+    <span class="k">elif</span> <span class="s1">&#39;vector3&#39;</span> <span class="ow">in</span> <span class="n">usdTypeString</span><span class="p">:</span>
+        <span class="n">mtlxType</span> <span class="o">=</span><span class="s1">&#39;vector3&#39;</span>
+    <span class="k">elif</span> <span class="s1">&#39;float&#39;</span> <span class="o">==</span> <span class="n">usdType</span><span class="p">:</span>
+        <span class="n">mtlxType</span> <span class="o">=</span><span class="s1">&#39;float&#39;</span>
+    <span class="k">elif</span> <span class="s1">&#39;token&#39;</span> <span class="ow">in</span> <span class="n">usdTypeString</span><span class="p">:</span>
+        <span class="n">mtlxType</span> <span class="o">=</span> <span class="s1">&#39;TOKEN&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mtlxType</span> <span class="o">=</span> <span class="s1">&#39;usdType&#39;</span>
+        <span class="c1">#print(&#39;-----&gt; handle type:&#39;, usdType)</span>
+    <span class="k">return</span> <span class="n">mtlxType</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Created nodegraph: test_nodegraph
-</pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -14721,21 +15270,79 @@ The interface <a href="https://materialx.org/docs/api/class_document.html" targe
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Creating-Output-Interfaces">Creating Output Interfaces<a class="anchor-link" href="#Creating-Output-Interfaces">&#182;</a></h2><p>A node graph container without any outputs <a href="https://materialx.org/docs/api/class_output.html" target="_blank">(<code>Output</code>)</a> isn't of much use as no data flow can occur.
-Thus, at a minimum a <code>NodeGraph</code>s should create at least one child output. 
-This can be done using the <a href="https://materialx.org/docs/api/class_interface_element.html" target="_blank"><code>addOutput()</code></a> interface on a <code>NodeGraph</code>.</p>
-<p>The same considerations should be given for creating an output for nodes. Namely:</p>
+<ol start="2">
+<li><code>isMultiOutput</code> is used to determine if the Usd prim (nodegraph, shader or material)</li>
+</ol>
+<p>has multiple outputs. This is required as MaterialX connection has specific syntax to specify the output (port) on an upstream element, but this is only done for upstream elements which have multiple outputs ('multioutput')</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">isMultiOutput</span><span class="p">(</span><span class="n">prim</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Test if the Usd prim has multiple outputs &quot;&quot;&quot;</span>
+    <span class="n">outputCount</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdShade</span><span class="o">.</span><span class="n">NodeGraph</span><span class="p">):</span>
+        <span class="n">usdNodegraph</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">NodeGraph</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+        <span class="n">outputCount</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">usdNodegraph</span><span class="o">.</span><span class="n">GetOutputs</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdShade</span><span class="o">.</span><span class="n">Material</span><span class="p">):</span> 
+        <span class="n">usdMaterial</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Material</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+        <span class="n">outputCount</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">usdMaterial</span><span class="o">.</span><span class="n">GetOutputs</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="p">):</span>     
+        <span class="n">usdShader</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+        <span class="n">outputCount</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">usdShader</span><span class="o">.</span><span class="n">GetOutputs</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">outputCount</span> <span class="o">&gt;</span> <span class="mi">1</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ol start="3">
+<li><code>emitMtlxValueELements</code> handles the mapping of Usd inputs and outputs to MaterialX inputs and outputs. This includes:</li>
+</ol>
 <ul>
-<li>a unique name</li>
-<li>a proper type</li>
+<li>Creating the input / output. Unlike Usd which has explicit outputs, MaterialX never specifies outputs on nodes, only on nodegraphs. This difference is handled when visiting Usd outputs.</li>
+<li>Setting a value <strong>or</strong></li>
+<li>Setting connection attributes. Unlike Usd which has a single <code>connect</code> syntax and corresponding API for connection logic and behaviour, MaterialX is purely string based and can require multiple attributes specified for a connection. This depends on:<ul>
+<li>if the upstream element is a <code>nodegraph</code> or <code>node</code>;</li>
+<li>if the connection is to an upstream <code>interface</code> input or output; and</li>
+<li>if the upstream node has multiple outputs (<code>multioutput</code>)</li>
+<li>if there is a specific channel extracted from the upstream port. This logic is not included as part of this example.</li>
 </ul>
-<p>should be used.</p>
-<p>In this case we want to create a graph which outputs a <code>surfaceshader</code>.</p>
+</li>
+</ul>
+<p>Notes:</p>
+<ol>
+<li><p>Additional scoping in Usd is not preserved in this example. (Something like <code>namepspace</code> could be used for export to MaterialX but this does not translate to nesting in Usd on import).</p>
+</li>
+<li><p>It is assumed that the Usd string representation for a value can be
+mapped to a MaterialX one. For example, the string representation for a vector3 (<code>(v1, v2, v3)</code>) in Usd is valid syntax in MaterialX (<code>v1, v2, v3</code>).</p>
+</p>
+<li>For a port with a  <code>token</code> type the type of the created MaterialX input / output can be set based on the port's name if the Usd Port name is a  'surface' or 'displacement' shader.</li>
+</ol>
+<p>(There appears to be no way by just examining the Usd shader network to determine the type without this assumption at this time)</p>
 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14743,282 +15350,131 @@ This can be done using the <a href="https://materialx.org/docs/api/class_interfa
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create an output with a unique name and proper type</span>
-<span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;surfaceshader&#39;</span>
-<span class="n">name</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="s1">&#39;out&#39;</span><span class="p">)</span>
-<span class="n">graphOutput</span> <span class="o">=</span> <span class="n">nodeGraph</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">emitMtlxValueElements</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">shader</span><span class="p">,</span> <span class="n">indent</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">emitOutputs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Emit MaterialX value elements (currently only Inputs and Outputs)</span>
+<span class="sd">    This is not a complete translation of all value element attributes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">shader</span><span class="o">.</span><span class="n">GetInputs</span><span class="p">():</span>
 
-<span class="c1"># Print the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-</pre></div>
+        <span class="c1"># Only output if there is a value or a connection</span>
+        <span class="k">if</span> <span class="nb">input</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span> <span class="ow">or</span> <span class="nb">input</span><span class="o">.</span><span class="n">HasConnectedSource</span><span class="p">()):</span>
 
-     </div>
-</div>
-</div>
-</div>
+            <span class="c1"># Map Usd type to Mtlx type and create an input</span>
+            <span class="n">usdType</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">GetTypeName</span><span class="p">()</span>
+            <span class="n">mtlxType</span> <span class="o">=</span> <span class="n">mapUsdTypeToMtlx</span><span class="p">(</span><span class="n">usdType</span><span class="p">)</span>
+            <span class="n">usdInputName</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">GetBaseName</span><span class="p">()</span>
+            <span class="n">newInput</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">usdInputName</span><span class="p">,</span> <span class="n">mtlxType</span><span class="p">)</span>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+            <span class="c1"># Add a connection if it exists</span>
+            <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">HasConnectedSource</span><span class="p">():</span>
+                <span class="n">usdSources</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">GetConnectedSources</span><span class="p">()</span> 
+                <span class="k">if</span> <span class="n">usdSources</span> <span class="ow">and</span> <span class="n">usdSources</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="c1"># Check UsdShadeConnectionSourceInfo to extract</span>
+                    <span class="c1"># out the upstream information</span>
+                    <span class="n">usdSource1</span> <span class="o">=</span> <span class="n">usdSources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">sourcePrim</span> <span class="o">=</span> <span class="n">usdSource1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span>
+                    <span class="n">sourcePort</span> <span class="o">=</span> <span class="n">usdSource1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sourceName</span> <span class="c1"># e.g. out</span>
+                    <span class="n">sourceDirection</span> <span class="o">=</span> <span class="n">usdSource1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sourceType</span> <span class="c1"># e.g. Input / Output</span>
+                    <span class="n">sourceType</span> <span class="o">=</span> <span class="n">usdSource1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">typeName</span> <span class="c1"># e.g. color3f</span>
 
+                    <span class="c1"># Handle the complex MaterialX attribute syntax</span>
+                    <span class="c1"># for specifying a connection.</span>
+                    <span class="c1"># ---------------------------------------------</span>
+                    <span class="c1"># Assume a node-&gt;input connection to start</span>
+                    <span class="n">mtlxConnectString</span> <span class="o">=</span> <span class="s1">&#39;nodename&#39;</span>
+                    <span class="n">mtlxConnectItem</span> <span class="o">=</span> <span class="n">sourcePrim</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
 
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+                    <span class="c1"># An input-&gt;input connection is denoted using</span>
+                    <span class="c1"># &quot;interfacename&quot;, but no &quot;node&quot;, or &quot;nodegraph&quot;</span>
+                    <span class="k">if</span> <span class="n">sourceDirection</span> <span class="o">==</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">AttributeType</span><span class="o">.</span><span class="n">Input</span><span class="p">:</span>
+                        <span class="n">mtlxConnectString</span> <span class="o">=</span> <span class="s1">&#39;interfacename&#39;</span>
+                        <span class="n">mtlxConnectItem</span> <span class="o">=</span> <span class="n">sourcePort</span>
 
+                        <span class="c1"># Set the connection</span>
+                        <span class="n">newInput</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">mtlxConnectString</span><span class="p">,</span> <span class="n">mtlxConnectItem</span><span class="p">)</span><span class="c1">#sourcePrim.GetName())</span>
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34;&gt;
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># A nodegraph-&gt;output connect uses &quot;nodegraph&quot; vs &quot;node&quot;                        </span>
+                        <span class="k">if</span> <span class="n">sourcePrim</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdShade</span><span class="o">.</span><span class="n">NodeGraph</span><span class="p">):</span>
+                            <span class="n">mtlxConnectString</span> <span class="o">=</span> <span class="s1">&#39;nodegraph&#39;</span>
 
-</pre>
-</div>
-</div>
+                        <span class="c1"># Set the connection</span>
+                        <span class="n">newInput</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">mtlxConnectString</span><span class="p">,</span> <span class="n">mtlxConnectItem</span><span class="p">)</span><span class="c1">#sourcePrim.GetName())</span>
 
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Note that we are using <a href="https://materialx.org/docs/api/class_element.html" target="_blank"><code>getNamePath()</code></a> to check parent / child relationships.</p>
-<p>The path string (<code>test_nodegraph/out</code>) indicates that the new output has been correctly added as a child under the node graph container <code>test_nodegraph</code>. (where <code>/</code> is the parent/child path separator)</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Examine the path to the output</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Path to output is: &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">graphOutput</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">())</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Path to output is: &#34;test_nodegraph/out&#34;
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Creating-Graph-Nodes">Creating Graph Nodes<a class="anchor-link" href="#Creating-Graph-Nodes">&#182;</a></h2><p>Nodes can now be created to add logic to the graph.</p>
-<p>The basics book demonstrates how to create nodes as direct children of a <code>Document</code>.
-The same interfaces are reused here, with the key difference being that the
-they are created with respect to a <code>NodeGraph</code> instead of the <code>Document</code>.</p>
-<p>That is, we call <code>NodeGraph.addNodeInstance()</code> instead of <code>Document.addNodeInstance()</code> to add
-a node under a graph instead of a document.</p>
-<p>A utility called <code>createNode()</code> is added for reuse.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">createNode</span><span class="p">(</span><span class="n">definitionName</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-    <span class="s2">&quot;Utility to create a node under a given parent using a definition name and desired instance name&quot;</span>
-    <span class="n">nodeName</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">nodedef</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getNodeDef</span><span class="p">(</span><span class="n">definitionName</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">nodedef</span><span class="p">:</span>
-        <span class="n">newNode</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">addNodeInstance</span><span class="p">(</span><span class="n">nodedef</span><span class="p">,</span> <span class="n">nodeName</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">newNode</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">newNode</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cannot find nodedef:&#39;</span><span class="p">,</span>  <span class="n">definitionName</span><span class="p">)</span>
-    <span class="k">return</span> <span class="kc">None</span>
-
-<span class="n">shaderNode</span> <span class="o">=</span> <span class="n">createNode</span><span class="p">(</span><span class="s1">&#39;ND_standard_surface_surfaceshader&#39;</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="p">,</span> <span class="s1">&#39;test_shader&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">shaderNode</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- Create shader node with path:&#39;</span><span class="p">,</span> <span class="n">shaderNode</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">())</span>
-
-<span class="c1"># Print contents of graph</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- Graph contents:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>    
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>- Create shader node with path: test_nodegraph/test_shader
-- Graph contents:
-
-   &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-     &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34;&gt;
-     &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-   
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Connecting-Nodes-To-Output-Interfaces">Connecting Nodes To Output Interfaces<a class="anchor-link" href="#Connecting-Nodes-To-Output-Interfaces">&#182;</a></h2><p>To allow output data from the shader node to be accessible the shader node's <strong>output</strong> is connected to the 
-graph containers <strong>output</strong>.</p>
-<p>A  utility called <code>connectOutput()</code> is used to hide the syntactic differences between connecting to an upstream node graph as
-opposed to a node, and to check for &quot;type compatibility&quot;, where &quot;compatible&quot; means both ports are of the exact same type.</p>
-<blockquote>
-<p>Unfortunately, adding explicit outputs to nodes is not recommended, otherwise these can be pre-populated on a node to avoid the constant search on the definition if it is not found on the node. Basically a <code>addOutputFromNodeDef()</code> utility could be called before</p>
-</blockquote>
-<p>making any connections.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">connectOutputToOutput</span><span class="p">(</span><span class="n">outputPort</span><span class="p">,</span> <span class="n">upstream</span><span class="p">,</span> <span class="n">upstreamOutputName</span><span class="p">):</span>
-    <span class="s2">&quot;Utility to connect a downstream output to an upstream node / node output&quot;</span>
-    <span class="s2">&quot;If the types differ then no connection is made&quot;</span>
-
-    <span class="n">upstreamType</span> <span class="o">=</span> <span class="n">upstream</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>
-
-    <span class="c1"># Check for an explicit upstream output on the upstream node</span>
-    <span class="c1"># or upstream node&#39;s definition</span>
-    <span class="k">if</span> <span class="n">upstreamOutputName</span><span class="p">:</span>
-        <span class="n">upStreamPort</span> <span class="o">=</span> <span class="n">upstream</span><span class="o">.</span><span class="n">getActiveOutput</span><span class="p">(</span><span class="n">upstreamOutputName</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">upStreamPort</span><span class="p">:</span>
-            <span class="n">upstreamNodeDef</span> <span class="o">=</span> <span class="n">upstream</span><span class="o">.</span><span class="n">getNodeDef</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">upstreamNodeDef</span><span class="p">:</span>
-                <span class="n">upStreamPort</span> <span class="o">=</span> <span class="n">upstreamNodeDef</span><span class="o">.</span><span class="n">getActiveOutput</span><span class="p">(</span><span class="n">upstreamOutputName</span><span class="p">)</span>
+                        <span class="c1"># An output-&gt;intput connection is denoted using</span>
+                        <span class="c1"># an additional `output` attribute` if the source is </span>
+                        <span class="c1"># does not have multiple outputs</span>
+                        <span class="k">if</span> <span class="n">sourceDirection</span> <span class="o">==</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">AttributeType</span><span class="o">.</span><span class="n">Output</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">isMultiOutput</span><span class="p">(</span><span class="n">sourcePrim</span><span class="p">):</span>
+                                <span class="n">newInput</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">sourcePort</span><span class="p">)</span>                    
+ 
+            <span class="c1"># Set value if not connected.</span>
+            <span class="c1"># Note that no Usd string -&gt; MaterialX string remapping is</span>
+            <span class="c1"># added here and may be required for more complex types.</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="n">upStreamPort</span><span class="p">:</span>
-            <span class="n">upstreamType</span> <span class="o">=</span> <span class="n">upStreamPort</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>
-        
-    <span class="n">outputPortType</span>  <span class="o">=</span> <span class="n">outputPort</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>    
-    <span class="k">if</span> <span class="n">upstreamType</span> <span class="o">!=</span> <span class="n">outputPortType</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">val</span><span class="p">:</span>
+                    <span class="n">mtlxVal</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+                    <span class="n">mtlxVal</span> <span class="o">=</span> <span class="n">mtlxVal</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span>
+                    <span class="n">mtlxVal</span> <span class="o">=</span> <span class="n">mtlxVal</span><span class="o">.</span><span class="n">removesuffix</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+                    <span class="n">newInput</span><span class="o">.</span><span class="n">setValueString</span><span class="p">(</span><span class="n">mtlxVal</span><span class="p">)</span>
     
-    <span class="n">upstreamName</span> <span class="o">=</span> <span class="n">upstream</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
-    <span class="n">attributeName</span> <span class="o">=</span> <span class="s1">&#39;nodename&#39;</span>
-    <span class="k">if</span> <span class="n">upstream</span><span class="o">.</span><span class="n">isA</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">NodeGraph</span><span class="p">):</span>
-        <span class="n">attributeName</span> <span class="o">=</span> <span class="s1">&#39;nodegraph&#39;</span>
-    <span class="n">outputPort</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">attributeName</span><span class="p">,</span> <span class="n">upstreamName</span><span class="p">)</span>
+    <span class="c1"># Emit outputs if specified. Unlike Usd, outputs are not explicitly defined</span>
+    <span class="c1"># except for nodegraph. This branching toggle allows this behaviour.</span>
+    <span class="k">if</span> <span class="n">emitOutputs</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">shader</span><span class="o">.</span><span class="n">GetOutputs</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">output</span><span class="p">:</span>
+
+                <span class="n">usdType</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">GetTypeName</span><span class="p">()</span>
+
+                <span class="n">mtlxType</span> <span class="o">=</span> <span class="n">mapUsdTypeToMtlx</span><span class="p">(</span><span class="n">usdType</span><span class="p">)</span>
+                <span class="n">usdBaseName</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">GetBaseName</span><span class="p">()</span>
+                <span class="n">usdFullName</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">GetFullName</span><span class="p">()</span>
+
+                <span class="c1">#help(usdBaseName)</span>
+                <span class="n">usdBaseName</span> <span class="o">=</span> <span class="n">usdBaseName</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
     
-    <span class="c1"># If an explicit output is specified on the upstream node/graph then</span>
-    <span class="c1"># set it.</span>
-    <span class="k">if</span> <span class="n">upstreamOutputName</span> <span class="ow">and</span> <span class="n">upstream</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;multioutput&#39;</span><span class="p">:</span>
-        <span class="n">outputPort</span><span class="o">.</span><span class="n">setOutputString</span><span class="p">(</span><span class="n">upstreamOutputName</span><span class="p">)</span>    
-    
-    <span class="k">return</span> <span class="kc">True</span>
+                <span class="c1"># Do a simple remapping without any real remapping table</span>
+                <span class="k">if</span> <span class="s1">&#39;displacement&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">usdFullName</span><span class="p">):</span>
+                    <span class="n">mtlxType</span> <span class="o">=</span> <span class="s1">&#39;displacementshader&#39;</span>
+                <span class="k">elif</span> <span class="s1">&#39;surface&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">usdFullName</span><span class="p">):</span>
+                    <span class="n">mtlxType</span> <span class="o">=</span> <span class="s1">&#39;surfaceshader&#39;</span>
+                <span class="n">newOutput</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="n">usdBaseName</span><span class="p">,</span> <span class="n">mtlxType</span><span class="p">)</span>
 
-<span class="c1"># Make the connection</span>
-<span class="n">shaderNodeOutput</span> <span class="o">=</span> <span class="s2">&quot;out&quot;</span>
-<span class="k">if</span> <span class="n">connectOutputToOutput</span><span class="p">(</span><span class="n">graphOutput</span><span class="p">,</span> <span class="n">shaderNode</span><span class="p">,</span> <span class="n">shaderNodeOutput</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connected output &quot;</span><span class="si">%s</span><span class="s1">&quot; to upstream output: </span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">graphOutput</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">(),</span> <span class="n">shaderNode</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">(),</span> <span class="n">shaderNodeOutput</span><span class="p">))</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to connected output &quot;</span><span class="si">%s</span><span class="s1">&quot; to upstream output: </span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">graphOutput</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">(),</span> <span class="n">shaderNode</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">(),</span> <span class="n">shaderNodeOutput</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">HasConnectedSource</span><span class="p">():</span>
+                    <span class="n">usdSources</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">GetConnectedSources</span><span class="p">()</span> 
+                    <span class="k">if</span> <span class="n">usdSources</span> <span class="ow">and</span> <span class="n">usdSources</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                        <span class="c1"># Check UsdShadeConnectionSourceInfo</span>
+                        <span class="n">usdSource1</span> <span class="o">=</span> <span class="n">usdSources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="n">sourcePrim</span> <span class="o">=</span> <span class="n">usdSource1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">GetPrim</span><span class="p">()</span>
+                        <span class="n">sourcePort</span> <span class="o">=</span> <span class="n">usdSource1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sourceName</span>
+                        <span class="n">sourceDirection</span> <span class="o">=</span> <span class="n">usdSource1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sourceType</span>
+                        <span class="n">sourceType</span> <span class="o">=</span> <span class="n">usdSource1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">typeName</span>
 
+                        <span class="n">mtlxConnectString</span> <span class="o">=</span> <span class="s1">&#39;nodename&#39;</span>
+                        <span class="n">mtlxConnectItem</span> <span class="o">=</span> <span class="n">sourcePrim</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
 
-<span class="c1"># Check the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+                        <span class="c1"># An input-&gt;output connection should never occur</span>
+                        <span class="c1"># and is ignored</span>
+                        <span class="c1">#if sourceDirection == UsdShade.AttributeType.Input:</span>
+
+                        <span class="c1"># Handle adding in node or nodegraph depending on source</span>
+                        <span class="c1"># prim type.                                </span>
+                        <span class="k">if</span> <span class="n">sourcePrim</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdShade</span><span class="o">.</span><span class="n">NodeGraph</span><span class="p">):</span>
+                            <span class="n">mtlxConnectString</span> <span class="o">=</span> <span class="s1">&#39;nodegraph&#39;</span>
+
+                        <span class="n">newOutput</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">mtlxConnectString</span><span class="p">,</span> <span class="n">mtlxConnectItem</span><span class="p">)</span>
+
+                        <span class="c1"># Handle output-&gt;output connection</span>
+                        <span class="k">if</span> <span class="n">sourceDirection</span> <span class="o">==</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">AttributeType</span><span class="o">.</span><span class="n">Output</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">isMultiOutput</span><span class="p">(</span><span class="n">sourcePrim</span><span class="p">):</span>
+                                <span class="n">newOutput</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="n">sourcePort</span><span class="p">)</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Connected output &#34;test_nodegraph/out&#34; to upstream output: test_nodegraph/test_shader.out
-&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
-  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-
-</pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -15028,23 +15484,9 @@ opposed to a node, and to check for &quot;type compatibility&quot;, where &quot;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Making-Connections-Between-Nodes">Making Connections Between Nodes<a class="anchor-link" href="#Making-Connections-Between-Nodes">&#182;</a></h2><p>Connections are formed from a downstream <code>input</code> to an upstream <code>output</code>. For this a wrapper function is
- used to hide some of the syntactic peculiarities.</p>
-<p>Setting a connection can be cumbersome for the same reason that setting a value can be cumbersome
-in that a node instance when created has no inputs instantiated. So a check
-must be made to see if it exists and if its not added. Then if input and outputs types match
-then the input can make the connection.</p>
-<p>Additionally it is considered &quot;amibiguous&quot; to have both a <code>value</code> and a connection on an input, so
-if a value has been set it must be removed. Conversely when a connection is removed a value must be
-reassigned.</p>
-<p>As with value setting, the interface <code>addInputFromNodeDef()</code> is used to add individual inputs
-if they do not exist. A utility called <code>createNode()</code> is added for convenience.</p>
-<p>Having a <code>connectNodeToNode()</code> interface would be a useful to have in the core API to avoid having
-to rewrite this logic.</p>
-<blockquote>
-<p>Note that is currently considered undesirable to have explicit outputs defined on nodes which</p>
-</blockquote>
-<p>also adds undue complexity.</p>
+<p>As in the previous example a tree traversal is performed. The main addition is to create a MaterialX <code>shader</code>, <code>nodegraph</code> or <code>material</code> when encountered and then adding in child inputs and outputs using the MaterialX utilities.</p>
+<p>Note that there is no specific logic to handle different definition versions as this should not be required if a different <code>nodedef</code> identifier is used for different versions.  <em>This should be the case, when MaterialX <code>nodedefs</code> are loaded into Usd.</em></p>
+<p>As MaterialX supports native definitions for Usd shader nodes these can also be handled. For example we assume if the node definition is <code>UsdPreviewSurface</code> that this maps directly to a MaterialX node.</p>
 
 </div>
 </div>
@@ -15057,353 +15499,76 @@ to rewrite this logic.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">connectNodeToNode</span><span class="p">(</span><span class="n">inputNode</span><span class="p">,</span> <span class="n">inputName</span><span class="p">,</span> <span class="n">outputNode</span><span class="p">,</span> <span class="n">outputName</span><span class="p">):</span>
-    <span class="s2">&quot;Connect an input on one node to an output on another node. Existence and type checking are performed.&quot;</span>
-    <span class="s2">&quot;Returns input port with connection set if succesful. Otherwise None is returned.&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">emitMaterialX</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">indent</span><span class="p">,</span> <span class="n">prim</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Emit MaterialX for a given Usd Stage starting at a given root.</span>
+<span class="sd">    Currently only nodegraphs, material and shader nodes are supported.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">prim</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdShade</span><span class="o">.</span><span class="n">NodeGraph</span><span class="p">):</span>
+            <span class="n">doc</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">getDocument</span><span class="p">()</span>
+            <span class="n">usdNodegraph</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">NodeGraph</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+            <span class="n">mtlxName</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>
+            <span class="n">mtlxNodeGraph</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">addChildOfCategory</span><span class="p">(</span><span class="s1">&#39;nodegraph&#39;</span><span class="p">,</span> <span class="n">mtlxName</span><span class="p">)</span>
+            <span class="n">parent</span> <span class="o">=</span> <span class="n">mtlxNodeGraph</span>
+            <span class="n">emitMtlxValueElements</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">usdNodegraph</span><span class="p">,</span> <span class="n">indent</span><span class="p">,</span> <span class="n">mtlxNodeGraph</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">inputNode</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">outputNode</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdShade</span><span class="o">.</span><span class="n">Material</span><span class="p">):</span> 
+            <span class="n">doc</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">getDocument</span><span class="p">()</span>
+            <span class="n">usdMaterial</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Material</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+            <span class="n">mtlxName</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>
+            <span class="n">mtlxMaterial</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">addMaterialNode</span><span class="p">(</span><span class="n">mtlxName</span><span class="p">)</span>
+            <span class="n">emitMtlxValueElements</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">usdMaterial</span><span class="p">,</span> <span class="n">indent</span><span class="p">,</span> <span class="n">mtlxMaterial</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-    <span class="c1"># Add an input to the downstream node if it does not exist</span>
-    <span class="n">inputPort</span> <span class="o">=</span> <span class="n">inputNode</span><span class="o">.</span><span class="n">addInputFromNodeDef</span><span class="p">(</span><span class="n">inputName</span><span class="p">)</span>
-
-    <span class="c1"># Check for the type.</span>
-    <span class="n">outputType</span> <span class="o">=</span> <span class="n">outputNode</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>  
-    
-    <span class="c1"># If there is more than one output then we need to find the output type </span>
-    <span class="c1"># from the output with the name we are interested in.</span>
-    <span class="n">outputPortFound</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">outputPorts</span> <span class="o">=</span> <span class="n">outputNode</span><span class="o">.</span><span class="n">getOutputs</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">outputPorts</span><span class="p">:</span>
-        <span class="c1"># Look for an output with a given name, or the first if not found                    </span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">outputName</span><span class="p">:</span>
-            <span class="n">outputPortFound</span> <span class="o">=</span> <span class="n">outputPorts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">outputPortFound</span> <span class="o">=</span> <span class="n">outputNode</span><span class="o">.</span><span class="n">getOutput</span><span class="p">(</span><span class="n">outputName</span><span class="p">)</span>
-
-    <span class="c1"># If the output port is not found on the node instance then</span>
-    <span class="c1"># look for it the corresponding definition</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">outputPortFound</span><span class="p">:</span>
-        <span class="n">outputNodedef</span> <span class="o">=</span> <span class="n">outputNode</span><span class="o">.</span><span class="n">getNodeDef</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">outputNodedef</span><span class="p">:</span>
-            <span class="n">outputPorts</span> <span class="o">=</span> <span class="n">outputNodedef</span><span class="o">.</span><span class="n">getOutputs</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="p">):</span> 
+            <span class="n">usdShader</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+            <span class="n">mtlxNodeDef</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
             
-            <span class="k">if</span> <span class="n">outputPorts</span><span class="p">:</span>
-                <span class="c1"># Look for an output with a given name, or the first if not found                    </span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">outputName</span><span class="p">:</span>
-                    <span class="n">outputPortFound</span> <span class="o">=</span> <span class="n">outputPorts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">outputPortFound</span> <span class="o">=</span> <span class="n">outputNodedef</span><span class="o">.</span><span class="n">getOutput</span><span class="p">(</span><span class="n">outputName</span><span class="p">)</span>
+            <span class="c1"># Note: Only consider when the definition is specified in the identifier</span>
+            <span class="n">usdImplAttr</span> <span class="o">=</span> <span class="n">usdShader</span><span class="o">.</span><span class="n">GetImplementationSourceAttr</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">usdImplAttr</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span>
+                <span class="n">mtlxNodeDef</span> <span class="o">=</span> <span class="n">usdShader</span><span class="o">.</span><span class="n">GetIdAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="n">outputPortFound</span><span class="p">:</span>
-        <span class="n">outputType</span> <span class="o">=</span> <span class="n">outputPortFound</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No output port found matching: &#39;</span><span class="p">,</span> <span class="n">outputName</span><span class="p">)</span>        
+            <span class="c1"># Do a manual rename for built in UsdPreviewSurface</span>
+            <span class="c1"># Could be done for other built-ins which have MaterialX</span>
+            <span class="c1"># definitions.</span>
+            <span class="k">if</span> <span class="n">mtlxNodeDef</span> <span class="o">==</span> <span class="s1">&#39;UsdPreviewSurface&#39;</span><span class="p">:</span>
+                <span class="n">mtlxNodeDef</span> <span class="o">=</span> <span class="s1">&#39;ND_UsdPreviewSurface_surfaceshader&#39;</span>
 
-    <span class="k">if</span> <span class="n">inputPort</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span> <span class="o">!=</span> <span class="n">outputType</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Input type (</span><span class="si">%s</span><span class="s1">) and output type (</span><span class="si">%s</span><span class="s1">) do not match: &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">inputPort</span><span class="o">.</span><span class="n">getType</span><span class="p">(),</span> <span class="n">outputType</span><span class="p">))</span>
-        <span class="k">return</span> <span class="kc">None</span>
+            <span class="n">doc</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">getDocument</span><span class="p">()</span>
+            <span class="n">mtlxNodeDef</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getNodeDef</span><span class="p">(</span><span class="n">mtlxNodeDef</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">mtlxNodeDef</span><span class="p">:</span>
+                <span class="n">mtlxShadername</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">prim</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>
+                <span class="n">shaderNode</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">addNodeInstance</span><span class="p">(</span><span class="n">mtlxNodeDef</span><span class="p">,</span> <span class="n">mtlxShadername</span><span class="p">)</span>                
+                <span class="n">emitMtlxValueElements</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">usdShader</span><span class="p">,</span> <span class="n">indent</span><span class="p">,</span> <span class="n">shaderNode</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Skipping shader node </span><span class="si">%s</span><span class="s1">: No MaterialX definition found.&#39;</span> <span class="o">%</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>  
 
-    <span class="k">if</span> <span class="n">inputPort</span><span class="p">:</span>
-        <span class="c1"># Remove any value, and set a &quot;connection&quot; but setting the node name</span>
-        <span class="n">inputPort</span><span class="o">.</span><span class="n">removeAttribute</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
-        <span class="n">attributeName</span> <span class="o">=</span> <span class="s1">&#39;nodename&#39;</span> <span class="k">if</span> <span class="n">outputNode</span><span class="o">.</span><span class="n">isA</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">Node</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;nodegraph&#39;</span>
-        <span class="n">inputPort</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">attributeName</span><span class="p">,</span> <span class="n">outputNode</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
-        <span class="k">if</span> <span class="n">outputNode</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;multioutput&#39;</span> <span class="ow">and</span> <span class="n">outputName</span><span class="p">:</span>
-            <span class="n">inputPort</span><span class="o">.</span><span class="n">setOutputString</span><span class="p">(</span><span class="n">outputName</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">inputPort</span>
-    
-<span class="c1"># Create a unique child name under the node graph container</span>
-<span class="n">imageNode</span> <span class="o">=</span> <span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;ND_image_color3&quot;</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;test_image&quot;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">imageNode</span> <span class="ow">and</span> <span class="n">shaderNode</span><span class="p">:</span>
-    <span class="n">inputConnnected</span> <span class="o">=</span> <span class="n">connectNodeToNode</span><span class="p">(</span><span class="n">shaderNode</span><span class="p">,</span> <span class="s2">&quot;base_color&quot;</span><span class="p">,</span> <span class="n">imageNode</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">inputConnnected</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connected &quot;</span><span class="si">%s</span><span class="s1">&quot; to &quot;</span><span class="si">%s</span><span class="s1">&quot; in node graph &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">imageNode</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">(),</span> <span class="n">shaderNode</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">(),</span> 
-                                                          <span class="n">nodeGraph</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">()))</span>
-        
-<span class="c1"># Check the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-</pre></div>
+        <span class="n">children</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
+            <span class="n">emitMaterialX</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">indent</span><span class="o">+</span><span class="n">indent</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
 
-     </div>
-</div>
-</div>
-</div>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">importLibrary</span><span class="p">(</span><span class="n">stdlib</span><span class="p">)</span>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
+<span class="c1"># Start at the root and emit</span>
+<span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="n">children_refs</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children_refs</span><span class="p">:</span>
+    <span class="n">emitMaterialX</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
 
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Connected &#34;test_nodegraph/test_image&#34; to &#34;test_nodegraph/test_shader&#34; in node graph &#34;test_nodegraph&#34;
-
-
-&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
-  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
-  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Adding-Input-Interfaces">Adding Input Interfaces<a class="anchor-link" href="#Adding-Input-Interfaces">&#182;</a></h2><p>Just as child outputs can be added to a <code>NodeGraph</code>, child inputs (<code>Input</code>) can also be added.
-Adding inputs can be thought of as exposing the internal inputs as &quot;public&quot; interfaces.</p>
-<p>The interface <code>addInput()</code> can be used to add one or more inputs. These inputs can then be connected to inputs on node children within the node graph container.</p>
-<blockquote>
-<p>Note that <a href="https://materialx.org/docs/api/class_node_graph.html" target="_blank"><code>NodeGraph.addInterfaceName()</code></a> can <strong>only</strong> be used for a graph which represents an implementation of a definition ('functional nodegraph'). An error condition will always be thrown</p>
-</blockquote>
-<p>otherwise. It would be useful if this interface handled non-functional nodegraphs as well.)</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">addInputInterface</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">typeString</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
-    <span class="s2">&quot;Add a type input interface. Will always create a new interface&quot;</span>
-    <span class="n">validName</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">typedefs</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">getDocument</span><span class="p">()</span><span class="o">.</span><span class="n">getTypeDefs</span><span class="p">()</span>
-    <span class="n">validType</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">typedefs</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">typeString</span> <span class="ow">in</span> <span class="n">t</span><span class="o">.</span><span class="n">getName</span><span class="p">():</span>
-            <span class="n">validType</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">break</span>
-
-    <span class="k">if</span> <span class="n">validType</span><span class="p">:</span>
-        <span class="n">parent</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">validName</span><span class="p">,</span> <span class="n">typeString</span><span class="p">)</span>
-    
-<span class="c1"># Add interfaces</span>
-<span class="n">addInputInterface</span><span class="p">(</span><span class="s1">&#39;input_file&#39;</span><span class="p">,</span> <span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="p">)</span>
-<span class="n">addInputInterface</span><span class="p">(</span><span class="s1">&#39;color_scale&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="p">)</span>
-
-<span class="c1"># Check the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>
-
-&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
-  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
-  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34;&gt;
-  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34;&gt;
-
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The connection for interfaces is slightly different in that instead of an <code>Output</code> an <code>Input</code> is being connected to a downstream <code>Input</code>.</p>
-<p>We will again write a utility to hide some of the syntactic peculiarities.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">publishInterface</span><span class="p">(</span><span class="n">nodegraph</span><span class="p">,</span> <span class="n">interfaceName</span><span class="p">,</span> <span class="n">internalInput</span><span class="p">):</span>
-    <span class="s2">&quot;Add an interface input to a nodegraph if it does not already exist.&quot;</span> 
-    <span class="s2">&quot;Connect the interface to the internal input. Returns interface input&quot;</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">nodegraph</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">interfaceName</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">internalInput</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-    <span class="n">interfaceInput</span> <span class="o">=</span> <span class="n">nodegraph</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="n">interfaceName</span><span class="p">)</span>
-
-    <span class="c1"># Create a new interface with the desired type</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">interfaceInput</span><span class="p">:</span>
-        <span class="n">interfaceName</span> <span class="o">=</span> <span class="n">nodeGraph</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">interfaceName</span><span class="p">)</span>    
-        <span class="n">interfaceInput</span> <span class="o">=</span> <span class="n">nodegraph</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">interfaceName</span><span class="p">,</span> <span class="n">internalInput</span><span class="o">.</span><span class="n">getType</span><span class="p">())</span>
-
-    <span class="c1"># Copy attributes from internal input to interface. </span>
-    <span class="c1"># Remove undesired attributes  as this is not desired to be copied</span>
-    <span class="n">interfaceInput</span><span class="o">.</span><span class="n">copyContentFrom</span><span class="p">(</span><span class="n">internalInput</span><span class="p">)</span>
-    <span class="n">interfaceInput</span><span class="o">.</span><span class="n">removeAttribute</span><span class="p">(</span><span class="s1">&#39;sourceUri&#39;</span><span class="p">)</span>
-    <span class="n">interfaceInput</span><span class="o">.</span><span class="n">removeAttribute</span><span class="p">(</span><span class="s1">&#39;interfacename&#39;</span><span class="p">)</span>
-
-    <span class="c1"># Long logic to get the value from the internal input if it exists.</span>
-    <span class="c1"># If not get the default value</span>
-    <span class="n">internalInputType</span> <span class="o">=</span> <span class="n">internalInput</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">internalInput</span><span class="o">.</span><span class="n">getValue</span><span class="p">():</span>
-        <span class="n">internaInputValue</span> <span class="o">=</span> <span class="n">internalInput</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span> 
-        <span class="k">if</span> <span class="n">internaInputValue</span><span class="p">:</span>
-            <span class="n">interfaceInput</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">internaInputValue</span><span class="p">,</span> <span class="n">internalInputType</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">internalNode</span> <span class="o">=</span> <span class="n">internalInput</span><span class="o">.</span><span class="n">getParent</span><span class="p">()</span> 
-            <span class="n">internalNodeDef</span> <span class="o">=</span> <span class="n">internalNode</span><span class="o">.</span><span class="n">getNodeDef</span><span class="p">()</span> <span class="k">if</span> <span class="n">internalNode</span> <span class="k">else</span> <span class="kc">None</span>
-            <span class="n">internalNodeDefInput</span> <span class="o">=</span> <span class="n">internalNodeDef</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="n">interfaceName</span><span class="p">)</span> <span class="k">if</span> <span class="n">internalNodeDef</span> <span class="k">else</span> <span class="kc">None</span>
-            <span class="n">internaInputValue</span> <span class="o">=</span> <span class="n">internalNodeDefInput</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span> <span class="k">if</span> <span class="n">internalNodeDefInput</span> <span class="k">else</span> <span class="kc">None</span>
-            <span class="k">if</span> <span class="n">internaInputValue</span><span class="p">:</span>
-                <span class="n">interfaceInput</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">internaInputValue</span><span class="p">,</span> <span class="n">internalInputType</span><span class="p">)</span>
-
-    <span class="c1"># Remove &quot;value&quot; from internal input as it&#39;s value is via a connection</span>
-    <span class="n">internalInput</span><span class="o">.</span><span class="n">removeAttribute</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
-
-    <span class="c1"># &quot;Connect&quot; the internal node&#39;s input to the interface. Remove any</span>
-    <span class="c1"># specified value</span>
-    <span class="n">internalInput</span><span class="o">.</span><span class="n">setInterfaceName</span><span class="p">(</span><span class="n">interfaceName</span><span class="p">)</span>
-
-
-    <span class="k">return</span> <span class="n">interfaceInput</span>
-
-<span class="c1"># Add a &#39;file&#39; input to the child node </span>
-<span class="n">imageFileInput</span> <span class="o">=</span> <span class="n">imageNode</span><span class="o">.</span><span class="n">addInputFromNodeDef</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">)</span>
-<span class="n">imageFileInputType</span> <span class="o">=</span> <span class="n">imageFileInput</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>
-<span class="n">imageFileInput</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s2">&quot;checker.png&quot;</span><span class="p">,</span> <span class="n">imageFileInputType</span><span class="p">)</span>
-<span class="c1"># Connect it to interface intput on &quot;input_file&quot;  </span>
-<span class="n">publishInterface</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;input_file&quot;</span><span class="p">,</span> <span class="n">imageNode</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">))</span>
-
-
-<span class="c1"># Second example to publish &#39;base&#39; as an interface. &quot;Transfer&quot;</span>
-<span class="c1"># the default value from &#39;base&#39; on the shader node to the interfce input. </span>
-<span class="n">baseInput</span> <span class="o">=</span> <span class="n">shaderNode</span><span class="o">.</span><span class="n">addInputFromNodeDef</span><span class="p">(</span><span class="s1">&#39;base&#39;</span><span class="p">)</span>
-<span class="n">publishInterface</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;color_scale&quot;</span><span class="p">,</span> <span class="n">baseInput</span><span class="p">)</span>
-
-<span class="c1"># Check the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-
-<span class="c1"># Variation of above, where a non-default value is published</span>
-<span class="n">baseInput</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">baseInput</span><span class="o">.</span><span class="n">getType</span><span class="p">())</span>
-<span class="n">publishInterface</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;color_scale&quot;</span><span class="p">,</span> <span class="n">baseInput</span><span class="p">)</span>
-
-<span class="c1"># Check the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>    
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
-  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
-    &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
-  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
-  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
-  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;1&#34;&gt;
-
-&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
-  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
-    &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
-  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
-  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
-  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
-
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check the entire document</span>
-<span class="n">doc</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+<span class="c1"># Write results to string / file</span>
 <span class="n">writeOptions</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">XmlWriteOptions</span><span class="p">()</span>
 <span class="n">writeOptions</span><span class="o">.</span><span class="n">writeXIncludeEnable</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">writeOptions</span><span class="o">.</span><span class="n">elementPredicate</span> <span class="o">=</span> <span class="n">skipLibraryElement</span>
 <span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">documentContents</span><span class="p">)</span>
 
-<span class="c1"># Save document</span>
-<span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;sample_nodegraph.mtlx&#39;</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
+<span class="n">status</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+
+<span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;test_usd_mtlx.mtlx&#39;</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15425,17 +15590,43 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;materialx version=&#34;1.38&#34;&gt;
-  &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-    &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34; /&gt;
-    &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-      &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34; /&gt;
-      &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34; /&gt;
-    &lt;/standard_surface&gt;
-    &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-      &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34; /&gt;
-    &lt;/image&gt;
-    &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34; /&gt;
-    &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34; /&gt;
+  &lt;nodegraph name=&#34;collect1&#34;&gt;
+    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; value=&#34;1, 0, 0&#34; /&gt;
+    &lt;output name=&#34;mtlx_displacement&#34; type=&#34;displacementshader&#34; nodegraph=&#34;my_materialx_subnet&#34; output=&#34;displacement&#34; /&gt;
+    &lt;output name=&#34;mtlx_surface&#34; type=&#34;surfaceshader&#34; nodegraph=&#34;my_materialx_subnet&#34; output=&#34;surface&#34; /&gt;
+    &lt;output name=&#34;surface&#34; type=&#34;surfaceshader&#34; nodegraph=&#34;usdpreview_subnet&#34; /&gt;
+    &lt;nodegraph name=&#34;my_materialx_subnet&#34;&gt;
+      &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; interfacename=&#34;base_color&#34; /&gt;
+      &lt;output name=&#34;displacement&#34; type=&#34;displacementshader&#34; nodename=&#34;mtlxdisplacement&#34; /&gt;
+      &lt;output name=&#34;surface&#34; type=&#34;surfaceshader&#34; nodename=&#34;mtlxstandard_surface1&#34; /&gt;
+      &lt;standard_surface name=&#34;mtlxstandard_surface1&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+        &lt;input name=&#34;base&#34; type=&#34;float&#34; value=&#34;1.0&#34; /&gt;
+        &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodegraph=&#34;image_readers&#34; output=&#34;out&#34; /&gt;
+        &lt;input name=&#34;coat_roughness&#34; type=&#34;float&#34; value=&#34;1.0&#34; /&gt;
+        &lt;input name=&#34;emission_color&#34; type=&#34;color3&#34; value=&#34;1, 1, 1&#34; /&gt;
+        &lt;input name=&#34;specular&#34; type=&#34;float&#34; value=&#34;1.0&#34; /&gt;
+        &lt;input name=&#34;specular_color&#34; type=&#34;color3&#34; value=&#34;1, 1, 1&#34; /&gt;
+        &lt;input name=&#34;specular_IOR&#34; type=&#34;float&#34; value=&#34;1.5&#34; /&gt;
+        &lt;input name=&#34;specular_roughness&#34; type=&#34;float&#34; nodegraph=&#34;image_readers&#34; output=&#34;out_2&#34; /&gt;
+      &lt;/standard_surface&gt;
+      &lt;nodegraph name=&#34;image_readers&#34;&gt;
+        &lt;input name=&#34;_base_color&#34; type=&#34;color3&#34; interfacename=&#34;base_color&#34; /&gt;
+        &lt;output name=&#34;out&#34; type=&#34;color3&#34; nodename=&#34;mtlximage1&#34; /&gt;
+        &lt;output name=&#34;out_2&#34; type=&#34;float&#34; nodename=&#34;mtlximage2&#34; /&gt;
+        &lt;image name=&#34;mtlximage1&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+          &lt;input name=&#34;default&#34; type=&#34;color3&#34; interfacename=&#34;_base_color&#34; /&gt;
+        &lt;/image&gt;
+        &lt;image name=&#34;mtlximage2&#34; type=&#34;float&#34; nodedef=&#34;ND_image_float&#34; /&gt;
+      &lt;/nodegraph&gt;
+      &lt;displacement name=&#34;mtlxdisplacement&#34; type=&#34;displacementshader&#34; nodedef=&#34;ND_displacement_float&#34; /&gt;
+    &lt;/nodegraph&gt;
+    &lt;nodegraph name=&#34;usdpreview_subnet&#34;&gt;
+      &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; interfacename=&#34;base_color&#34; /&gt;
+      &lt;output name=&#34;surface&#34; type=&#34;surfaceshader&#34; nodename=&#34;usdpreviewsurface1&#34; /&gt;
+      &lt;UsdPreviewSurface name=&#34;usdpreviewsurface1&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_UsdPreviewSurface_surfaceshader&#34;&gt;
+        &lt;input name=&#34;diffuseColor&#34; type=&#34;color3&#34; interfacename=&#34;base_color&#34; /&gt;
+      &lt;/UsdPreviewSurface&gt;
+    &lt;/nodegraph&gt;
   &lt;/nodegraph&gt;
 &lt;/materialx&gt;
 
@@ -15454,7 +15645,18 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Connecting-Node-to-a-NodeGraph">Connecting Node to a NodeGraph<a class="anchor-link" href="#Connecting-Node-to-a-NodeGraph">&#182;</a></h2><p>To complete this book, a material node (<code>Material</code>) will be create and connected to the shader output on the graph.</p>
+<h3 id="Updating-MaterialX-/-Usd-Inputs">Updating MaterialX / Usd Inputs<a class="anchor-link" href="#Updating-MaterialX-/-Usd-Inputs">&#182;</a></h3><p>There are different ways to approach handling a edit in Usd and then updating the corresponding MaterialX.
+This example only handles <strong>value</strong> changes by updating matching inputs via <code>path</code> lookups in Usd and MaterialX.</p>
+<p>That is, the absolute Usd <code>path</code> is used to find the Usd input in the <code>stage</code>, and the corresponding MaterialX input in the working <code>document</code>.</p>
+<ul>
+<li>The interface <code>GetPrimAtPath()</code> is used to lookup the node to edit in Usd, and</li>
+<li>The interface <code>getDescendent()</code> used for MaterialX.</li>
+<li>The input on each node is then found using <code>GetInput()</code> and <code>getInput()</code> for Usd and MaterialX respectively.</li>
+</ul>
+<p>Note that the Usd <code>path</code> differs from the MaterialX <code>path</code> in this example due to additional nesting in Usd.</p>
+<p>Monitoring and updating for graph connections is beyond the scope of this example, but is useful to consider whether the target workflow
+involves just MaterialX data model updates or if code generation is involved as is the case for render delegates using MaterialX
+code generation.</p>
 
 </div>
 </div>
@@ -15467,19 +15669,34 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create  material node </span>
-<span class="n">materialNode</span> <span class="o">=</span> <span class="n">createNode</span><span class="p">(</span><span class="s1">&#39;ND_surfacematerial&#39;</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;my_material&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">materialNode</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Create material node:&#39;</span><span class="p">,</span> <span class="n">materialNode</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mtlxPath</span> <span class="o">=</span> <span class="s1">&#39;/collect1/my_materialx_subnet/mtlxstandard_surface1&#39;</span> 
+<span class="n">usdPath</span> <span class="o">=</span> <span class="s1">&#39;/mySphere/mtl&#39;</span> <span class="o">+</span> <span class="n">mtlxPath</span> 
 
-<span class="c1"># Connect the material node to the output of the graph</span>
-<span class="n">connectNodeToNode</span><span class="p">(</span><span class="n">materialNode</span><span class="p">,</span> <span class="s1">&#39;surfaceshader&#39;</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">)</span>
+<span class="c1"># Input to modify</span>
+<span class="n">inputName</span> <span class="o">=</span> <span class="s1">&#39;coat_roughness&#39;</span>
 
-<span class="c1"># Check results</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">materialNode</span><span class="p">))</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="c1"># Update the input in Usd</span>
+<span class="n">currentValue</span> <span class="o">=</span> <span class="mi">999</span>
+<span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="n">usdPath</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">prim</span><span class="p">:</span>
+    <span class="n">stdsurf</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Shader</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span>
+    <span class="n">surfInput</span> <span class="o">=</span> <span class="n">stdsurf</span><span class="o">.</span><span class="n">GetInput</span><span class="p">(</span><span class="n">inputName</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">surfInput</span><span class="p">:</span>
+        <span class="n">currentValue</span> <span class="o">=</span> <span class="n">surfInput</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
+        <span class="n">surfInput</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Modified Usd from: </span><span class="si">%g</span><span class="s1"> to </span><span class="si">%g</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">currentValue</span><span class="p">,</span> <span class="n">surfInput</span><span class="o">.</span><span class="n">Get</span><span class="p">()))</span>
+
+<span class="c1"># Update the input in MaterialX</span>
+<span class="n">currentValue</span> <span class="o">=</span> <span class="mi">999</span>
+<span class="n">mtxlStdSurf</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getDescendant</span><span class="p">(</span><span class="s1">&#39;collect1/my_materialx_subnet/mtlxstandard_surface1&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">mtxlStdSurf</span><span class="p">:</span>
+    <span class="n">mtlxSurfInput</span> <span class="o">=</span> <span class="n">mtxlStdSurf</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="n">inputName</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mtlxSurfInput</span><span class="p">:</span>
+        <span class="n">currentValue</span> <span class="o">=</span> <span class="n">mtlxSurfInput</span><span class="o">.</span><span class="n">getValueString</span><span class="p">()</span>
+        <span class="n">mtlxSurfInput</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Modified MaterialX from: </span><span class="si">%s</span><span class="s1"> to </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">currentValue</span><span class="p">,</span> <span class="n">mtlxSurfInput</span><span class="o">.</span><span class="n">getValueString</span><span class="p">()))</span>
 </pre></div>
 
      </div>
@@ -15499,34 +15716,8 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Create material node: my_material
-&lt;surfacematerial name=&#34;my_material&#34; type=&#34;material&#34; nodedef=&#34;ND_surfacematerial&#34;&gt;
-  &lt;input name=&#34;surfaceshader&#34; type=&#34;surfaceshader&#34; nodegraph=&#34;test_nodegraph&#34;&gt;
-
-&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
-  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
-    &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
-  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
-  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
-  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
-
- my_material
-&lt;surfacematerial name=&#34;my_material&#34; type=&#34;material&#34; nodedef=&#34;ND_surfacematerial&#34;&gt;
-  &lt;input name=&#34;surfaceshader&#34; type=&#34;surfaceshader&#34; nodegraph=&#34;test_nodegraph&#34;&gt;
-
-&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
-  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
-    &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
-  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
-  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
-  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
-
+<pre>Modified Usd from: 1 to 0.9
+Modified MaterialX from: 1.0 to 0.9
 </pre>
 </div>
 </div>
@@ -15542,9 +15733,7 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Material-Graph-Result">Material Graph Result<a class="anchor-link" href="#Material-Graph-Result">&#182;</a></h2><p>As a last step we write the document out to see the final results in diagram and rendered form. (Render is done using the <code>MaterialXView</code> utility)</p>
-<img src="images/nodegraph_book_sample_graph.svg" width=70%>
-<img src="images/nodegraph_book_sample_graph.png" width=40%>
+<h2 id="Appendix:-Mapping-Usd-Types-To-MaterialX-Types">Appendix: Mapping Usd Types To MaterialX Types<a class="anchor-link" href="#Appendix:-Mapping-Usd-Types-To-MaterialX-Types">&#182;</a></h2><p>For a completeness a full mapping of the following applicable Usd types should be performed. Most are mappable but type mapping can be &quot;lossy&quot; as there is no concept of type precision (half, float, double) for instance.</p>
 
 </div>
 </div>
@@ -15557,16 +15746,10 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check the entire document</span>
-<span class="n">doc</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
-<span class="n">writeOptions</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">XmlWriteOptions</span><span class="p">()</span>
-<span class="n">writeOptions</span><span class="o">.</span><span class="n">writeXIncludeEnable</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">writeOptions</span><span class="o">.</span><span class="n">elementPredicate</span> <span class="o">=</span> <span class="n">skipLibraryElement</span>
-<span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">documentContents</span><span class="p">)</span>
-
-<span class="c1"># Save document</span>
-<span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;sample_nodegraph.mtlx&#39;</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;__&#39;</span><span class="p">):</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- Type:&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15586,119 +15769,115 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
-&lt;materialx version=&#34;1.38&#34;&gt;
-  &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-    &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34; /&gt;
-    &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-      &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34; /&gt;
-      &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34; /&gt;
-    &lt;/standard_surface&gt;
-    &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-      &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34; /&gt;
-    &lt;/image&gt;
-    &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34; /&gt;
-    &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34; /&gt;
-  &lt;/nodegraph&gt;
-  &lt;surfacematerial name=&#34;my_material&#34; type=&#34;material&#34; nodedef=&#34;ND_surfacematerial&#34;&gt;
-    &lt;input name=&#34;surfaceshader&#34; type=&#34;surfaceshader&#34; nodegraph=&#34;test_nodegraph&#34; /&gt;
-  &lt;/surfacematerial&gt;
-&lt;/materialx&gt;
-
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Removing-Input-Interfaces">Removing Input Interfaces<a class="anchor-link" href="#Removing-Input-Interfaces">&#182;</a></h2><p>These interfaces can be &quot;unpublished&quot; by removing them from the graph and breaking any connections to
- downstream nodes or outputs. To attempt to keep the behaviour the same the interface's value is copied to
- the input.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">unpublishInterface</span><span class="p">(</span><span class="n">nodegraph</span><span class="p">,</span> <span class="n">interfaceName</span><span class="p">):</span>
-    
-    <span class="n">interfaceInput</span> <span class="o">=</span> <span class="n">nodegraph</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="n">interfaceName</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">interfaceInput</span><span class="p">:</span>
-        <span class="k">return</span>
-    
-    <span class="c1"># Find all downstream connections for this interface</span>
-    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">nodegraph</span><span class="o">.</span><span class="n">getChildren</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">child</span> <span class="o">==</span> <span class="n">interfaceInput</span><span class="p">:</span>
-            <span class="k">continue</span>
-
-        <span class="c1"># Remove connection on node inputs and copy interface value</span>
-        <span class="c1"># to the input value so behaviour does not change</span>
-        <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">isA</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">Node</span><span class="p">):</span>
-            <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">getInputs</span><span class="p">():</span>
-                <span class="n">childInterfaceName</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;interfacename&#39;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">childInterfaceName</span> <span class="o">==</span> <span class="n">interfaceName</span><span class="p">:</span>
-                    <span class="nb">input</span><span class="o">.</span><span class="n">setValueString</span><span class="p">(</span><span class="n">interfaceInput</span><span class="o">.</span><span class="n">getValueString</span><span class="p">())</span>
-                    <span class="nb">input</span><span class="o">.</span><span class="n">removeAttribute</span><span class="p">(</span><span class="s1">&#39;interfacename&#39;</span><span class="p">)</span>
-
-        <span class="c1"># Remove connection on the output. Value are not copied over.</span>
-        <span class="k">elif</span> <span class="n">child</span><span class="o">.</span><span class="n">isA</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">Output</span><span class="p">):</span>
-            <span class="n">childInterfaceName</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;interfacename&#39;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">childInterfaceName</span> <span class="o">==</span> <span class="n">interfaceName</span><span class="p">:</span>
-                <span class="nb">input</span><span class="o">.</span><span class="n">removeAttribute</span><span class="p">(</span><span class="s1">&#39;interfacename&#39;</span><span class="p">)</span>
-
-    <span class="n">nodegraph</span><span class="o">.</span><span class="n">removeChild</span><span class="p">(</span><span class="n">interfaceName</span><span class="p">)</span>
-
-
-<span class="n">unpublishInterface</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;color_scale&quot;</span><span class="p">)</span>
-
-<span class="c1"># Check the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
-  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
-    &lt;input name=&#34;base&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
-  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
-  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
-
+<pre>- Type: Asset
+- Type: AssetArray
+- Type: Bool
+- Type: BoolArray
+- Type: Color3d
+- Type: Color3dArray
+- Type: Color3f
+- Type: Color3fArray
+- Type: Color3h
+- Type: Color3hArray
+- Type: Color4d
+- Type: Color4dArray
+- Type: Color4f
+- Type: Color4fArray
+- Type: Color4h
+- Type: Color4hArray
+- Type: Double
+- Type: Double2
+- Type: Double2Array
+- Type: Double3
+- Type: Double3Array
+- Type: Double4
+- Type: Double4Array
+- Type: DoubleArray
+- Type: Find
+- Type: Float
+- Type: Float2
+- Type: Float2Array
+- Type: Float3
+- Type: Float3Array
+- Type: Float4
+- Type: Float4Array
+- Type: FloatArray
+- Type: Frame4d
+- Type: Frame4dArray
+- Type: Group
+- Type: Half
+- Type: Half2
+- Type: Half2Array
+- Type: Half3
+- Type: Half3Array
+- Type: Half4
+- Type: Half4Array
+- Type: HalfArray
+- Type: Int
+- Type: Int2
+- Type: Int2Array
+- Type: Int3
+- Type: Int3Array
+- Type: Int4
+- Type: Int4Array
+- Type: Int64
+- Type: Int64Array
+- Type: IntArray
+- Type: Matrix2d
+- Type: Matrix2dArray
+- Type: Matrix3d
+- Type: Matrix3dArray
+- Type: Matrix4d
+- Type: Matrix4dArray
+- Type: Normal3d
+- Type: Normal3dArray
+- Type: Normal3f
+- Type: Normal3fArray
+- Type: Normal3h
+- Type: Normal3hArray
+- Type: Opaque
+- Type: Point3d
+- Type: Point3dArray
+- Type: Point3f
+- Type: Point3fArray
+- Type: Point3h
+- Type: Point3hArray
+- Type: Quatd
+- Type: QuatdArray
+- Type: Quatf
+- Type: QuatfArray
+- Type: Quath
+- Type: QuathArray
+- Type: String
+- Type: StringArray
+- Type: TexCoord2d
+- Type: TexCoord2dArray
+- Type: TexCoord2f
+- Type: TexCoord2fArray
+- Type: TexCoord2h
+- Type: TexCoord2hArray
+- Type: TexCoord3d
+- Type: TexCoord3dArray
+- Type: TexCoord3f
+- Type: TexCoord3fArray
+- Type: TexCoord3h
+- Type: TexCoord3hArray
+- Type: TimeCode
+- Type: TimeCodeArray
+- Type: Token
+- Type: TokenArray
+- Type: UChar
+- Type: UCharArray
+- Type: UInt
+- Type: UInt64
+- Type: UInt64Array
+- Type: UIntArray
+- Type: Vector3d
+- Type: Vector3dArray
+- Type: Vector3f
+- Type: Vector3fArray
+- Type: Vector3h
+- Type: Vector3hArray
 </pre>
 </div>
 </div>
