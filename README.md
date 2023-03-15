@@ -9,6 +9,7 @@ This is a complementary site for those interested in learning about or are integ
 * Fundamental concepts (Nodes, Nodegraphs, Documents, Definitions) 
 * Python environment setup for MaterialX
 * Python and Jupyter Tutorials for basics and shader code generation in the workspace [pymaterialx](pymaterialx).
+* Workflows including USD and glTF interop.
 
 Material will be constantly added over time. 
 See issues and project area for some of items on queue.
