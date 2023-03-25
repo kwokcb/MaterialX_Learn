@@ -1,5 +1,5 @@
 ### Node Group: pbr
-* [absorption_vdf](#node-absorption_vdf) [add](#node-add) [anisotropic_vdf](#node-anisotropic_vdf) [artistic_ior](#node-artistic_ior) [blackbody](#node-blackbody) [burley_diffuse_bsdf](#node-burley_diffuse_bsdf) [conductor_bsdf](#node-conductor_bsdf) [conical_edf](#node-conical_edf) [dielectric_bsdf](#node-dielectric_bsdf) [displacement](#node-displacement) [generalized_schlick_bsdf](#node-generalized_schlick_bsdf) [glossiness_anisotropy](#node-glossiness_anisotropy) [layer](#node-layer) [light](#node-light) [measured_edf](#node-measured_edf) [mix](#node-mix) [multiply](#node-multiply) [oren_nayar_diffuse_bsdf](#node-oren_nayar_diffuse_bsdf) [roughness_anisotropy](#node-roughness_anisotropy) [roughness_dual](#node-roughness_dual) [sheen_bsdf](#node-sheen_bsdf) [subsurface_bsdf](#node-subsurface_bsdf) [surface](#node-surface) [thin_film_bsdf](#node-thin_film_bsdf) [thin_surface](#node-thin_surface) [translucent_bsdf](#node-translucent_bsdf) [uniform_edf](#node-uniform_edf) [volume](#node-volume) 
+* [absorption_vdf](#node-absorption_vdf) [add](#node-add) [anisotropic_vdf](#node-anisotropic_vdf) [artistic_ior](#node-artistic_ior) [blackbody](#node-blackbody) [burley_diffuse_bsdf](#node-burley_diffuse_bsdf) [conductor_bsdf](#node-conductor_bsdf) [conical_edf](#node-conical_edf) [dielectric_bsdf](#node-dielectric_bsdf) [displacement](#node-displacement) [generalized_schlick_bsdf](#node-generalized_schlick_bsdf) [generalized_schlick_edf](#node-generalized_schlick_edf) [glossiness_anisotropy](#node-glossiness_anisotropy) [layer](#node-layer) [light](#node-light) [measured_edf](#node-measured_edf) [mix](#node-mix) [multiply](#node-multiply) [oren_nayar_diffuse_bsdf](#node-oren_nayar_diffuse_bsdf) [roughness_anisotropy](#node-roughness_anisotropy) [roughness_dual](#node-roughness_dual) [sheen_bsdf](#node-sheen_bsdf) [subsurface_bsdf](#node-subsurface_bsdf) [surface](#node-surface) [thin_film_bsdf](#node-thin_film_bsdf) [thin_surface](#node-thin_surface) [translucent_bsdf](#node-translucent_bsdf) [uniform_edf](#node-uniform_edf) [volume](#node-volume) 
 ---------
  
 ### Category: *oren_nayar_diffuse_bsdf*
@@ -257,6 +257,27 @@
 | **color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **file** | filename |  |  |  |  |  |  |  |  |  |  | true |
+| *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+### Category: *generalized_schlick_edf*
+<details><summary>ND_generalized_schlick_edf</summary>
+<p>
+ 
+* *Nodedef*: ND_generalized_schlick_edf
+* *Type*: EDF
+* *Node Group*: pbr
+* *Version*: 1.0. Is default: False
+* *Doc*: Modifies an EDF with a directional factor.
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **color0** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **color90** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **exponent** | float | 5.0 |  |  |  |  |  |  |  |  |  |  |
+| **base** | EDF |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
