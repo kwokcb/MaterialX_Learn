@@ -1,0 +1,941 @@
+#usda 1.0
+
+def "NG_baked"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Bishop_B_standard_surface_base_color.png@
+    }
+
+    def Shader "metalness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Bishop_B_standard_surface_metalness.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Bishop_B_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Bishop_B_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Bishop_B_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Bishop_B_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Bishop_B_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    float inputs:metalness
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface = 0
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.003
+    token outputs:out
+}
+
+def Material "M_Bishop_B_baked"
+{
+    token inputs:surfaceshader.connect = </Bishop_B_baked.outputs:out>
+}
+
+def "NG_baked2"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Bishop_W_standard_surface_base_color.png@
+    }
+
+    def Shader "metalness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Bishop_W_standard_surface_metalness.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Bishop_W_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Bishop_W_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Bishop_W_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Bishop_W_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked2/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Bishop_W_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    float inputs:metalness
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface = 0
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.003
+    token outputs:out
+}
+
+def Material "M_Bishop_W_baked"
+{
+    token inputs:surfaceshader.connect = </Bishop_W_baked.outputs:out>
+}
+
+def "NG_baked3"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Castle_B_standard_surface_base_color.png@
+    }
+
+    def Shader "metalness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Castle_B_standard_surface_metalness.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Castle_B_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Castle_B_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Castle_B_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Castle_B_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked3/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Castle_B_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    float inputs:metalness
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface = 0
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.003
+    token outputs:out
+}
+
+def Material "M_Castle_B_baked"
+{
+    token inputs:surfaceshader.connect = </Castle_B_baked.outputs:out>
+}
+
+def "NG_baked4"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Castle_W_standard_surface_base_color.png@
+    }
+
+    def Shader "metalness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Castle_W_standard_surface_metalness.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Castle_W_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Castle_W_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Castle_W_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Castle_W_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked4/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Castle_W_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    float inputs:metalness
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface = 0
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.003
+    token outputs:out
+}
+
+def Material "M_Castle_W_baked"
+{
+    token inputs:surfaceshader.connect = </Castle_W_baked.outputs:out>
+}
+
+def "NG_baked5"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Chessboard_standard_surface_base_color.png@
+    }
+
+    def Shader "metalness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Chessboard_standard_surface_metalness.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Chessboard_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Chessboard_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Chessboard_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Chessboard_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked5/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Chessboard_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    float inputs:metalness
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface = 0
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.003
+    token outputs:out
+}
+
+def Material "M_Chessboard_baked"
+{
+    token inputs:surfaceshader.connect = </Chessboard_baked.outputs:out>
+}
+
+def "NG_baked6"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_King_B_standard_surface_base_color.png@
+    }
+
+    def Shader "metalness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_King_B_standard_surface_metalness.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_King_B_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_King_B_standard_surface_subsurface.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_King_B_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_King_B_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_King_B_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked6/normal_baked.outputs:out>
+    }
+}
+
+def Shader "King_B_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    float inputs:metalness
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.003
+    token outputs:out
+}
+
+def Material "M_King_B_baked"
+{
+    token inputs:surfaceshader.connect = </King_B_baked.outputs:out>
+}
+
+def "NG_baked7"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_King_W_standard_surface_base_color.png@
+    }
+
+    def Shader "metalness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_King_W_standard_surface_metalness.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_King_W_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_King_W_standard_surface_subsurface.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_King_W_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_King_W_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_King_W_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked7/normal_baked.outputs:out>
+    }
+}
+
+def Shader "King_W_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    float inputs:metalness
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.003
+    token outputs:out
+}
+
+def Material "M_King_W_baked"
+{
+    token inputs:surfaceshader.connect = </King_W_baked.outputs:out>
+}
+
+def "NG_baked8"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Knight_B_standard_surface_base_color.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Knight_B_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Knight_B_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Knight_B_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Knight_B_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked8/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Knight_B_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface = 0
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.003
+    token outputs:out
+}
+
+def Material "M_Knight_B_baked"
+{
+    token inputs:surfaceshader.connect = </Knight_B_baked.outputs:out>
+}
+
+def "NG_baked9"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Knight_W_standard_surface_base_color.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Knight_W_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Knight_W_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Knight_W_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Knight_W_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked9/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Knight_W_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface = 0
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.003
+    token outputs:out
+}
+
+def Material "M_Knight_W_baked"
+{
+    token inputs:surfaceshader.connect = </Knight_W_baked.outputs:out>
+}
+
+def "NG_baked10"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Pawn_Body_B_standard_surface_base_color.png@
+    }
+
+    def Shader "metalness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Pawn_Body_B_standard_surface_metalness.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Pawn_Body_B_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Pawn_Body_B_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Pawn_Body_B_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Pawn_Body_B_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked10/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Pawn_Body_B_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    float inputs:metalness
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface = 0
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.003
+    token outputs:out
+}
+
+def Material "M_Pawn_Body_B_baked"
+{
+    token inputs:surfaceshader.connect = </Pawn_Body_B_baked.outputs:out>
+}
+
+def "NG_baked11"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Pawn_Body_W_standard_surface_base_color.png@
+    }
+
+    def Shader "metalness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Pawn_Body_W_standard_surface_metalness.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Pawn_Body_W_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Pawn_Body_W_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Pawn_Body_W_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Pawn_Body_W_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked11/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Pawn_Body_W_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    float inputs:metalness
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface = 0
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.003
+    token outputs:out
+}
+
+def Material "M_Pawn_Body_W_baked"
+{
+    token inputs:surfaceshader.connect = </Pawn_Body_W_baked.outputs:out>
+}
+
+def "NG_baked12"
+{
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Pawn_Top_B_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Pawn_Top_B_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked12/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Pawn_Top_B_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color = (1, 1, 1)
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface = 0
+    color3f inputs:subsurface_color = (1, 1, 1)
+    color3f inputs:subsurface_radius = (1, 1, 1)
+    float inputs:subsurface_scale = 0.003
+    float inputs:transmission = 1
+    color3f inputs:transmission_color = (0.2995, 0.5, 0.450276)
+    token outputs:out
+}
+
+def Material "M_Pawn_Top_B_baked"
+{
+    token inputs:surfaceshader.connect = </Pawn_Top_B_baked.outputs:out>
+}
+
+def "NG_baked13"
+{
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Pawn_Top_W_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Pawn_Top_W_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked13/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Pawn_Top_W_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color = (1, 1, 1)
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface = 0
+    color3f inputs:subsurface_color = (1, 1, 1)
+    color3f inputs:subsurface_radius = (1, 1, 1)
+    float inputs:subsurface_scale = 0.003
+    float inputs:transmission = 1
+    color3f inputs:transmission_color = (1, 1, 0.828)
+    token outputs:out
+}
+
+def Material "M_Pawn_Top_W_baked"
+{
+    token inputs:surfaceshader.connect = </Pawn_Top_W_baked.outputs:out>
+}
+
+def "NG_baked14"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Queen_B_standard_surface_base_color.png@
+    }
+
+    def Shader "metalness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Queen_B_standard_surface_metalness.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Queen_B_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Queen_B_standard_surface_subsurface.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Queen_B_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Queen_B_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Queen_B_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked14/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Queen_B_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    float inputs:metalness
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.003
+    token outputs:out
+}
+
+def Material "M_Queen_B_baked"
+{
+    token inputs:surfaceshader.connect = </Queen_B_baked.outputs:out>
+}
+
+def "NG_baked15"
+{
+    def Shader "base_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Queen_W_standard_surface_base_color.png@
+    }
+
+    def Shader "metalness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Queen_W_standard_surface_metalness.png@
+    }
+
+    def Shader "specular_roughness_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Queen_W_standard_surface_specular_roughness.png@
+    }
+
+    def Shader "subsurface_baked"
+    {
+        uniform token info:id = "ND_image_float"
+        asset inputs:file = @M_Queen_W_standard_surface_subsurface.png@
+    }
+
+    def Shader "subsurface_color_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Queen_W_standard_surface_base_color.png@
+    }
+
+    def Shader "subsurface_radius_baked"
+    {
+        uniform token info:id = "ND_image_color3"
+        asset inputs:file = @M_Queen_W_standard_surface_base_color.png@
+    }
+
+    def Shader "normal_baked"
+    {
+        uniform token info:id = "ND_image_vector3"
+        asset inputs:file = @M_Queen_W_standard_surface_normal.png@
+        vector3f outputs:out
+    }
+
+    def Shader "normal_baked_map"
+    {
+        uniform token info:id = "ND_normalmap"
+        vector3f inputs:in.connect = </NG_baked15/normal_baked.outputs:out>
+    }
+}
+
+def Shader "Queen_W_baked"
+{
+    uniform token info:id = "ND_standard_surface_surfaceshader"
+    color3f inputs:base_color
+    float inputs:metalness
+    vector3f inputs:normal
+    float inputs:specular_roughness
+    float inputs:subsurface
+    color3f inputs:subsurface_color
+    color3f inputs:subsurface_radius
+    float inputs:subsurface_scale = 0.001
+    token outputs:out
+}
+
+def Material "M_Queen_W_baked"
+{
+    token inputs:surfaceshader.connect = </Queen_W_baked.outputs:out>
+}
+

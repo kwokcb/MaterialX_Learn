@@ -5,9 +5,9 @@
 #  
 # This book will cover the basics of:
 # 1. Traversing upstream from a "root" node.
-# 2. Extracting connectivity information from the `Edge` structure during traversal.
+# 2. Extracting connectivity information from a <a href="https://materialx.org/docs/api/class_edge.html" target="_blank"> Edge </a> structure during traversal.
 # 3. Extracting grouping information (GraphElement membership) during traversal.
-# 3. Traversing into and out of graphs via interfaces.
+# 3. Traversing in to and out of graphs via interfaces.
 # 4. Example logic for viewing nodegraphs using traversal logic.
 # 
 # Note that the key low level interfaces used for traversal are:
@@ -19,7 +19,7 @@
 # %% [markdown]
 # ## Setup
 # 
-# The basic setup as outlined in the "Basics" book imports the MaterialX module, creates a working document, loads in the standard library definitions, and provides a predicate to skip definition writing for document write. 
+# The basic setup as outlined in the "Basics" book imports the MaterialX module, creates a working document, loads in the standard library definitions, and provides a predicate to skip definitions when writing documents. 
 
 # %%
 import MaterialX as mx
@@ -39,10 +39,11 @@ def skipLibraryElement(elem):
 # %% [markdown]
 # ## GraphElement Traversal 
 # 
-# The easiest way to see what how a set of nodes is connected up is by using a <a href="https://materialx.org/docs/api/class_graph_iterator.html" target="_blank">`GraphIterator`</a> which can be accessed via the `traverseGraph()` interface on an element. The iterator will traverse upstream starting from the element. Note that the iterator will only work on certain types of elements. A general rule is whatever is considered "renderable" by the utility <a href="https://materialx.org/docs/api/_material_x_gen_shader_2_util_8h.html" target="_blank">`findRenderableElements()`</a> can be used. Outputs and material nodes are the recommended starting points. 
+# The easiest way to see what how a set of nodes is connected up is by using a <a href="https://materialx.org/docs/api/class_graph_iterator.html" target="_blank">GraphIterator</a> which can be accessed via the 
+# <a href="https://materialx.org/docs/api/class_element.html" target="_blank">traverseGraph()</a> interface on an element. The iterator will traverse upstream starting from the element. Note that the iterator will only work on certain types of elements. A general rule is whatever is considered "renderable" by the utility <a href="https://materialx.org/docs/api/_material_x_gen_shader_2_util_8h.html" target="_blank">findRenderableElements()</a> can be used. Outputs and material nodes are the recommended starting points. 
 # 
 # In this example we load in an example graph, and traverse it this way.
-# The key element that is returned from the iterator is an <a href="https://materialx.org/docs/api/class_edge.html" target="_blank">`Edge`</a>. The edge provides the connection information of what is:
+# The key element that is returned from the iterator is an <a href="https://materialx.org/docs/api/class_edge.html" target="_blank">Edge</a>. The edge provides the connection information of what is:
 # * the upstream node
 # * the downstream node
 # * the downstream `<input>`
@@ -70,7 +71,7 @@ def printEdge(edge):
 # %% [markdown]
 # This utility is used during the traversal of every edge. 
 # 
-# As it is possible to visit the same edge more than once, we keep a set of unique edges `processedEdges` to skip duplicates. To avoid this an additional utility `findEdge()` has been added to perform `Edge` comparisons. This explicit comparator is **only required in Python** as the C++ equality operator for `Edge` is not currently exposed in the API.
+# As it is possible to visit the same edge more than once, we keep a set of unique edges `processedEdges` to skip duplicates. To avoid this an additional utility `findEdge()` has been added to perform `Edge` comparisons. This explicit comparator is **only required in Python** as the C++ equality operator for `Edge` is not currently exposed in the Python API.
 
 # %%
 
@@ -117,7 +118,9 @@ for edge in processedEdges:
 
 # %%
 def updateGraphDictionaryPath(key, value, graphDictionary):
-    "Add a parent / child to the GraphElement dictionary"
+    """
+    Add a parent / child to the GraphElement dictionary
+    """
     if key in graphDictionary:
         graphDictionary[key].add(value)
     else:
@@ -125,8 +128,10 @@ def updateGraphDictionaryPath(key, value, graphDictionary):
 
 
 def updateGraphDictionaryItem(item, graphDictionary):
-    "Add a Element to the GraphElement dictionary, where the keys are the GraphElement's path, and the value"
-    " is a list of child Element paths"
+    """
+    Add a Element to the GraphElement dictionary, where the keys are the GraphElement's path, and the value
+    is a list of child Element paths
+    """
     if not item:
         return
 
@@ -139,13 +144,17 @@ def updateGraphDictionaryItem(item, graphDictionary):
     updateGraphDictionaryPath(key, value, graphDictionary)
 
 def updateGraphDictionary(edge, graphDictionary):
-    "Add nodes from either end of the connection to a GraphElement dictionary"
+    """
+    Add nodes from either end of the connection to a GraphElement dictionary
+    """
     ends = [edge.getUpstreamElement(), edge.getDownstreamElement()]
     for end in ends:
         updateGraphDictionaryItem(end, graphDictionary)
 
 def printGraphDictionary(graphDictionary):
-    "Print out the sub-graph dictionary"
+    """
+    Print out the sub-graph dictionary
+    """
     for graphPath in graphDictionary:
         # Top level document has not path, so just output some identifier string
         if graphPath == '':
@@ -190,7 +199,7 @@ for graphPath in graphDictionary:
 # ## Viewing a Graph
 # 
 # As an example application, traversal information can be used to create diagrams
-# of graphs. In this case we will create **Mermaid** graphs.
+# of graphs. In this case we will create <a href="https://mermaid.js.org/" target="_blank">Mermaid</a> graphs.
 
 # %% [markdown]
 # The generic print function `printEdge()` is replaced by logic to output in Mermaid format. The additional logic added is to handle syntax restrictions for node naming, and to allow for a node name and a "UI" label. The former requires a sanitized string and the latter is the MaterialX path string.
@@ -201,10 +210,12 @@ for graphPath in graphDictionary:
 # ```
 
 # %%
-def printMermaidEdge(indent, edge):
-    "Sample utility to print out edge information in Mermaid format"
-    "Output: string of form: `(upstream node path) --[downstream node input name]--> (downstream node path)`"
-
+def emitMermaidEdge_nointerfaces(indent, edge):
+    """
+    Sample utility to print out edge information in Mermaid format
+    Returns a string of form: `(upstream node path) --[downstream node input name]--> (downstream node path)`
+    which represents a connection from an upstream node to a downstream one via a given input port.
+    """
     outVal = ''
 
     upstreamElem = edge.getUpstreamElement()
@@ -232,52 +243,71 @@ def printMermaidEdge(indent, edge):
 
 
 # %% [markdown]
-# Mermaid supports output of children graphs via the used of the `subgraph` group declaration. The `printMermaidSubgraphs()` variant 
+# Mermaid supports output of children graphs via the use of the `subgraph` group declaration. The `emitMermaidSubgraphs()` variant 
 # queries the node graph dictionary to output each `GraphElement` item as a `subgraph`.
 
 # %%
-def printMermaidSubgraphs(subgraphs):
-    "Print out the GraphElement dictionary in Mermaid format"
+def emitMermaidSubgraphs(subgraphs):
+    """
+    Emit GraphElement dictionary in Mermaid format
+    """
+    subGraphOutput = []
+
     for subgraph in subgraphs:
         if subgraph == '':
             continue
             
         subgraphM = mx.createValidName(subgraph)  
-        print('subgraph ' + subgraphM + ':')
+        subGraphOutput.append('subgraph ' + subgraphM + ':')
         for node in subgraphs[subgraph]:
-            print('   ', mx.createValidName(node))
-        print('end')
+            subGraphOutput.append('   ' + mx.createValidName(node))
+        subGraphOutput.append('end')
+
+    return subGraphOutput
 
 # %% [markdown]
-# These new utilities are used to output the graph diagram
+# These new utilities are used in a wrapper utility `generateMermaidGraph` which takes in the set of roots
+# to output and generates a string list containing the text for the Mermaid graph. 
 
 # %%
-# Output a Mermaid graph diagram
-subgraphs = {}
-processedEdges = set()
+def generateMermaidGraph_nointerfaces(roots, orientation):
+    """
+    Output a Mermaid graph diagram given a set of root nodes
+    """ 
+    subgraphs = {}
+    processedEdges = set()
 
-# Find all edges, and build up the GraphElement dictionary
-for root in roots:
-    for edge in root.traverseGraph():
-        if not findEdge(edge,processedEdges):
-            processedEdges.add(edge)
-            updateGraphDictionary(edge, subgraphs)
+    # Find all edges, and build up the GraphElement dictionary
+    for root in roots:
+        for edge in root.traverseGraph():
+            if not findEdge(edge,processedEdges):
+                processedEdges.add(edge)
+                updateGraphDictionary(edge, subgraphs)
 
-# Get string output for each edge in Mermaid format
-edgeOutput = set()
-for edge in processedEdges:
-    outVal = printMermaidEdge('    ', edge)
-    if outVal not in edgeOutput:
-        edgeOutput.add(outVal)
+    # Get string output for each edge in Mermaid format
+    edgeOutput = set()
+    for edge in processedEdges:
+        outVal = emitMermaidEdge_nointerfaces('    ', edge)
+        if outVal not in edgeOutput:
+            edgeOutput.add(outVal)
 
-# Print graph header, edges, and sub-graphs
-print('  graph TB;')
-for outVal in edgeOutput:
-    print(outVal)
-printMermaidSubgraphs(subgraphs)
+    # Print graph header, edges, and sub-graphs
+    outputGraph = []
+    outputGraph.append('  graph %s;' % orientation)
+    for outVal in edgeOutput:
+        outputGraph.append(outVal)
+    for line in emitMermaidSubgraphs(subgraphs):
+        outputGraph.append(line)
+
+    return outputGraph
+
+graph = generateMermaidGraph_nointerfaces(roots, 'TB')
+for line in graph:
+    if line:
+        print(line)
 
 # %% [markdown]
-# he resulting diagram looks like this:
+# The resulting diagram looks like this:
 # 
 # <img src="images/marble_mermaid_graph_generation_no_interfaces.svg" width="30%">
 
@@ -293,10 +323,10 @@ printMermaidSubgraphs(subgraphs)
 # 
 # To extract out interface information additional logic is required. For this example: 
 # 
-# * For interface inputs: `printInterfaceInputs()` checks the upstream node for any interface connections checking each of it's inputs for an interface input using the `Input` interface <a href="https://materialx.org/docs/api/class_input.html" target="_blank">`getInterfaceInput()`</a>. If the input is found then a call is made to add it to the appropriate graph list. 
+# * For interface inputs: `emitInterfaceInputs()` checks the upstream node for any interface connections checking each of it's inputs for an interface input using the `Input` interface <a href="https://materialx.org/docs/api/class_input.html" target="_blank">`getInterfaceInput()`</a>. If the input is found then a call is made to add it to the appropriate graph list. 
 
 # %%
-def printInterfaceInputs(indent, edge, subgraphs, edgeOutput):
+def emitInterfaceInputs(indent, edge, subgraphs, edgeOutput):
     outVal = ''
 
     # Look for upstream interface inputs
@@ -320,12 +350,12 @@ def printInterfaceInputs(indent, edge, subgraphs, edgeOutput):
     return outVal
 
 # %% [markdown]
-# * For interface outputs: `printMermaidEdge2()` is a variation on `printMermaidEdge()` such that the downstream input is checked for any upstream output connection using the `Input` interface `getConnectedOutput()`. If an output is found then the a connection between this output to the input is emitted.
+# * For interface outputs: `emitMermaidEdge()` is a variation on `emitMermaidEdge_nointerfaces()` such that the downstream input is checked for any upstream output connection using the `Input` interface `getConnectedOutput()`. If an output is found then the a connection between this output to the input is emitted.
 # 
 # Note that during traversal the `Port` interface <a href="https://materialx.org/docs/api/class_port_element.html" target="_blank">`getConnectedOutput()`</a> is used to perform input to output traversal, however only the upstream node is returned as part of an `Edge`. Thus the need for extra logic after the fact to find out if an output interface has been traversed. 
 
 # %%
-def printMermaidEdge2(indent, edge, edgeOutput):
+def emitMermaidEdge(indent, edge, subgraphs, edgeOutput):
     "Sample utility to print out edge information in Mermaid format"
     "The interface getConnectedOuput() is used to determine what output the dowstream input is connected to"
 
@@ -396,26 +426,49 @@ def printMermaidEdge2(indent, edge, edgeOutput):
 # The following code is the same as the previous example, except additional logic to call into the interface utilities.
 
 # %%
-subgraphs = {}
-processedEdges = set()
-for root in roots:
-    for edge in root.traverseGraph():
-        if not findEdge(edge,processedEdges):
-            processedEdges.add(edge)
-            updateGraphDictionary(edge, subgraphs)
+def generateMermaidGraph(roots, orientation):
+    """
+    Output a Mermaid graph diagram given a set of root nodes
+    """ 
+    subgraphs = {}
+    processedEdges = set()
 
-edgeOutput = set()
-for edge in processedEdges:
-    outVal = printMermaidEdge2('    ', edge, edgeOutput)
+    # Find all edges, and build up the GraphElement dictionary
+    for root in roots:
+        for edge in root.traverseGraph():
+            if not findEdge(edge,processedEdges):
+                processedEdges.add(edge)
+                updateGraphDictionary(edge, subgraphs)
 
-# Additional call to include interface inputs
-for edge in processedEdges:
-    printInterfaceInputs('    ', edge, subgraphs, edgeOutput)
+    # Get string output for each edge in Mermaid format
+    edgeOutput = set()
+    for edge in processedEdges:
+        outVal = emitMermaidEdge('    ', edge, subgraphs, edgeOutput)
+        if outVal not in edgeOutput:
+            edgeOutput.add(outVal)
 
-print('  graph TB;')
-for outVal in edgeOutput:
-    print(outVal)
-printMermaidSubgraphs(subgraphs)
+    # Include interface input edges
+    for edge in processedEdges:
+        emitInterfaceInputs('    ', edge, subgraphs, edgeOutput)            
+
+    # Print graph header, edges, and sub-graphs
+    outputGraph = []
+    outputGraph.append('  graph %s;' % orientation)
+    for outVal in edgeOutput:
+        outputGraph.append(outVal)
+    for line in emitMermaidSubgraphs(subgraphs):
+        outputGraph.append(line)
+
+    return outputGraph
+
+from IPython.display import display_markdown
+graph = generateMermaidGraph(roots, 'TB')
+strgraph = '```mermaid\n'
+for line in graph:
+    if line:
+        strgraph = strgraph + line + '\n'
+strgraph = strgraph + '```\n' 
+display_markdown(strgraph, raw=True)
 
 # %% [markdown]
 # The resulting diagram looks like this:

@@ -66,12 +66,14 @@ def Xform "mySphere" (
                     {
                         uniform token info:id = "ND_image_color3"
                         color3f inputs:default.connect = </mySphere/mtl/collect1/my_materialx_subnet/image_readers.inputs:_base_color>
+                        asset inputs:file = @file1.png@
                         color3f outputs:out
                     }
 
                     def Shader "mtlximage2"
                     {
                         uniform token info:id = "ND_image_float"
+                        asset inputs:file = @file2.png@
                         float outputs:out
                     }
                 }

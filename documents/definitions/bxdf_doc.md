@@ -284,7 +284,7 @@ graph LR;
 | **emissive** | color3 | 0, 0, 0 | Emissive | 0, 0, 0 | 1, 1, 1 |  |  |  | Emission |  |  |  |
 | **emissive_strength** | float | 1.0 | Emissive Strength | 0 |  |  |  |  | Emission |  |  | true |
 | **thickness** | float | 0.0 | Thickness | 0 |  |  |  |  | Volume |  |  | false |
-| **attenuation_distance** | float | 9.999999616903162e+35 | Attenuation Distance | 0 |  |  |  |  | Volume |  |  | true |
+| **attenuation_distance** | float | None | Attenuation Distance | 0 |  |  |  |  | Volume |  |  | true |
 | **attenuation_color** | color3 | 1, 1, 1 | Attenuation Color | 0, 0, 0 | 1, 1, 1 |  |  |  | Volume |  |  | true |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
@@ -948,18 +948,29 @@ graph LR;
     style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_coat_attenuation[mix]
     style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
-    NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf] --".edf"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
-    NG_standard_surface_surfaceshader_100_emission_weight_attenuated[multiply] --".color"--> NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf]
-    NG_standard_surface_surfaceshader_100_emission_weight[multiply] --".in1"--> NG_standard_surface_surfaceshader_100_emission_weight_attenuated[multiply]
+    NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix] --".edf"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
+    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf] --".fg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
+    NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply] --".rrr -> .color90"--> NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf]
+    NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide] --".in1"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply]
+    NG_standard_surface_surfaceshader_100_one_minus_coat_ior[subtract] --".in1"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide]
+    NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.in2==> NG_standard_surface_surfaceshader_100_one_minus_coat_ior[subtract]
+    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_one_plus_coat_ior[add] --".in2"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide]
+    NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.in2==> NG_standard_surface_surfaceshader_100_one_plus_coat_ior[add]
+    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide] --".in2"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply]
+    NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[multiply] --".base"--> NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf]
+    NG_standard_surface_surfaceshader_100_coat_colorINT([coat_color]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[multiply]
+    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf] --".in1"--> NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[multiply]
+    NG_standard_surface_surfaceshader_100_emission_weight[multiply] --".color"--> NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf]
     NG_standard_surface_surfaceshader_100_emission_colorINT([emission_color]) ==.in1==> NG_standard_surface_surfaceshader_100_emission_weight[multiply]
     style NG_standard_surface_surfaceshader_100_emission_colorINT fill:#0bb, color:#111
     NG_standard_surface_surfaceshader_100_emissionINT([emission]) ==.in2==> NG_standard_surface_surfaceshader_100_emission_weight[multiply]
     style NG_standard_surface_surfaceshader_100_emissionINT fill:#0bb, color:#111
-    NG_standard_surface_surfaceshader_100_coat_emission_attenuation[mix] --".in2"--> NG_standard_surface_surfaceshader_100_emission_weight_attenuated[multiply]
-    NG_standard_surface_surfaceshader_100_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_surfaceshader_100_coat_emission_attenuation[mix]
-    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
-    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_coat_emission_attenuation[mix]
-    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf] --".bg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
     NG_standard_surface_surfaceshader_100_opacity_luminance[luminance] --".r -> .opacity"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
     NG_standard_surface_surfaceshader_100_opacityINT([opacity]) ==.in==> NG_standard_surface_surfaceshader_100_opacity_luminance[luminance]
     style NG_standard_surface_surfaceshader_100_opacityINT fill:#0bb, color:#111
@@ -1166,18 +1177,29 @@ graph LR;
     style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_coat_attenuation[mix]
     style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
-    NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf] --".edf"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
-    NG_standard_surface_surfaceshader_100_emission_weight_attenuated[multiply] --".color"--> NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf]
-    NG_standard_surface_surfaceshader_100_emission_weight[multiply] --".in1"--> NG_standard_surface_surfaceshader_100_emission_weight_attenuated[multiply]
+    NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix] --".edf"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
+    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf] --".fg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
+    NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply] --".rrr -> .color90"--> NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf]
+    NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide] --".in1"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply]
+    NG_standard_surface_surfaceshader_100_one_minus_coat_ior[subtract] --".in1"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide]
+    NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.in2==> NG_standard_surface_surfaceshader_100_one_minus_coat_ior[subtract]
+    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_one_plus_coat_ior[add] --".in2"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide]
+    NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.in2==> NG_standard_surface_surfaceshader_100_one_plus_coat_ior[add]
+    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide] --".in2"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply]
+    NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[multiply] --".base"--> NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf]
+    NG_standard_surface_surfaceshader_100_coat_colorINT([coat_color]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[multiply]
+    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf] --".in1"--> NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[multiply]
+    NG_standard_surface_surfaceshader_100_emission_weight[multiply] --".color"--> NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf]
     NG_standard_surface_surfaceshader_100_emission_colorINT([emission_color]) ==.in1==> NG_standard_surface_surfaceshader_100_emission_weight[multiply]
     style NG_standard_surface_surfaceshader_100_emission_colorINT fill:#0bb, color:#111
     NG_standard_surface_surfaceshader_100_emissionINT([emission]) ==.in2==> NG_standard_surface_surfaceshader_100_emission_weight[multiply]
     style NG_standard_surface_surfaceshader_100_emissionINT fill:#0bb, color:#111
-    NG_standard_surface_surfaceshader_100_coat_emission_attenuation[mix] --".in2"--> NG_standard_surface_surfaceshader_100_emission_weight_attenuated[multiply]
-    NG_standard_surface_surfaceshader_100_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_surfaceshader_100_coat_emission_attenuation[mix]
-    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
-    NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_coat_emission_attenuation[mix]
-    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf] --".bg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
     NG_standard_surface_surfaceshader_100_opacity_luminance[luminance] --".r -> .opacity"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
     NG_standard_surface_surfaceshader_100_opacityINT([opacity]) ==.in==> NG_standard_surface_surfaceshader_100_opacity_luminance[luminance]
     style NG_standard_surface_surfaceshader_100_opacityINT fill:#0bb, color:#111

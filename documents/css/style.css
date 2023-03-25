@@ -124,11 +124,11 @@ aa .text-shadow-2 {
 
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-  bottom: 3rem;
-  z-index: 10;
+  bottom: 2rem;
+  z-index: 8;
 }
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-  height: 20rem;
+  height: 10rem;
 }

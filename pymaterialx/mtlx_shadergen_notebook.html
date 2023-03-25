@@ -15774,8 +15774,8 @@ export material Marble_3D
 )
 = let
 {
-    float3 geomprop_Nworld_out1 = mx::stdlib::mx_normal_vector3(mxp_space:geomprop_Nworld_space);
-    float3 geomprop_Tworld_out1 = mx::stdlib::mx_tangent_vector3(mxp_space:geomprop_Tworld_space, mxp_index:geomprop_Tworld_index);
+    float3 geomprop_Nworld_out = mx::stdlib::mx_normal_vector3(mxp_space:geomprop_Nworld_space);
+    float3 geomprop_Tworld_out = mx::stdlib::mx_tangent_vector3(mxp_space:geomprop_Tworld_space, mxp_index:geomprop_Tworld_index);
     float3 obj_pos_out = mx::stdlib::mx_position_vector3(mxp_space:obj_pos_space);
     float add_xyz_out = math::dot(obj_pos_out, add_xyz_in2);
     float3 scale_pos_out = obj_pos_out * scale_pos_in2;
@@ -15788,7 +15788,7 @@ export material Marble_3D
     float bias_out = scale_out + bias_in2;
     float power_out = math::pow(bias_out, power_in2);
     color color_mix_out = math::lerp(color_mix_bg, color_mix_fg, power_out);
-    material SR_marble1_out = NG_standard_surface_surfaceshader_100(SR_marble1_base, color_mix_out, SR_marble1_diffuse_roughness, SR_marble1_metalness, SR_marble1_specular, SR_marble1_specular_color, SR_marble1_specular_roughness, SR_marble1_specular_IOR, SR_marble1_specular_anisotropy, SR_marble1_specular_rotation, SR_marble1_transmission, SR_marble1_transmission_color, SR_marble1_transmission_depth, SR_marble1_transmission_scatter, SR_marble1_transmission_scatter_anisotropy, SR_marble1_transmission_dispersion, SR_marble1_transmission_extra_roughness, SR_marble1_subsurface, color_mix_out, SR_marble1_subsurface_radius, SR_marble1_subsurface_scale, SR_marble1_subsurface_anisotropy, SR_marble1_sheen, SR_marble1_sheen_color, SR_marble1_sheen_roughness, SR_marble1_coat, SR_marble1_coat_color, SR_marble1_coat_roughness, SR_marble1_coat_anisotropy, SR_marble1_coat_rotation, SR_marble1_coat_IOR, geomprop_Nworld_out1, SR_marble1_coat_affect_color, SR_marble1_coat_affect_roughness, SR_marble1_thin_film_thickness, SR_marble1_thin_film_IOR, SR_marble1_emission, SR_marble1_emission_color, SR_marble1_opacity, SR_marble1_thin_walled, geomprop_Nworld_out1, geomprop_Tworld_out1);
+    material SR_marble1_out = NG_standard_surface_surfaceshader_100(SR_marble1_base, color_mix_out, SR_marble1_diffuse_roughness, SR_marble1_metalness, SR_marble1_specular, SR_marble1_specular_color, SR_marble1_specular_roughness, SR_marble1_specular_IOR, SR_marble1_specular_anisotropy, SR_marble1_specular_rotation, SR_marble1_transmission, SR_marble1_transmission_color, SR_marble1_transmission_depth, SR_marble1_transmission_scatter, SR_marble1_transmission_scatter_anisotropy, SR_marble1_transmission_dispersion, SR_marble1_transmission_extra_roughness, SR_marble1_subsurface, color_mix_out, SR_marble1_subsurface_radius, SR_marble1_subsurface_scale, SR_marble1_subsurface_anisotropy, SR_marble1_sheen, SR_marble1_sheen_color, SR_marble1_sheen_roughness, SR_marble1_coat, SR_marble1_coat_color, SR_marble1_coat_roughness, SR_marble1_coat_anisotropy, SR_marble1_coat_rotation, SR_marble1_coat_IOR, geomprop_Nworld_out, SR_marble1_coat_affect_color, SR_marble1_coat_affect_roughness, SR_marble1_thin_film_thickness, SR_marble1_thin_film_IOR, SR_marble1_emission, SR_marble1_emission_color, SR_marble1_opacity, SR_marble1_thin_walled, geomprop_Nworld_out, geomprop_Tworld_out);
     material Marble_3D_out = mx::stdlib::mx_surfacematerial(SR_marble1_out, displacementshader);
     material finalOutput__ = Marble_3D_out;
 }
