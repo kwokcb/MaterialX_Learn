@@ -14,7 +14,7 @@
 # <a href="https://github.com/PixarAnimationStudios/USD/tree/release/pxr/usd/usdMtlx" target="_blank">UsdMtlx</a> import is not available as part of the core Usd Python package, and code such as <a href="https://github.com/PixarAnimationStudios/USD/blob/release/pxr/imaging/hdSt/materialXFilter.h" target="_blank">UsdFilter</a> for HDStorm is specifically targeted for a given render delegate and is also not exposed.
 
 # %% [markdown]
-# ## Usd Setup
+# ## 1. Usd Setup
 # 
 # To use Usd the "core" package can be installed as follows: 
 
@@ -56,7 +56,7 @@ display_markdown('### Flattened Usd File', raw=True)
 display_markdown('```usd\n' + stringResult + '\n```\n', raw=True)
 
 # %% [markdown]
-# ## Start Traversal
+# ## 2. Usd Traversal
 # 
 # As a starting point, a simple tree traversal logic is added. Note that this just traverses the entire stage and prints out the prims and their attributes.
 
@@ -79,7 +79,7 @@ def printChildren(indent, prim):
 printChildren(' ', prim)
 
 # %% [markdown]
-# ## Examining Shader Graphs
+# ## 3. Examining Shader Graphs
 # 
 # This can be refined to only examine shading nodes and ports.
 # 
@@ -134,7 +134,7 @@ prim = stage.GetPrimAtPath('/')
 printShaderNodes(' ', prim)
 
 # %% [markdown]
-# ## Usd to MaterialX Translation
+# ## 4. Usd to MaterialX Translation
 # 
 # The previous example is modified to create MaterialX graphs, shaders and materials. 
 # 
@@ -144,7 +144,7 @@ printShaderNodes(' ', prim)
 # 
 # As required a user can perform a "flattening" process by traversing through the node connections to remove nodegraph nesting as is done for `UsdMtlx` for conversion from Usd to MaterialX. This is not included as part of the logic for this example.
 # 
-# ### Setup
+# ### 4.1 Setup
 # The first step is to add in a basic setup for MaterialX to create a working document and load in standard definitions.
 
 # %%
@@ -162,11 +162,11 @@ def skipLibraryElement(elem):
     return not elem.hasSourceUri()
 
 # %% [markdown]
-# ### Translation Logic
+# ### 4.2 Translation Logic
 # 
 # Next, translation logic is broken up into a series of utilities which perform Usd to MaterialX mappings.
 # 
-# #### Type and Value Mapping
+# #### 4.2.1 Type and Value Mapping
 # 
 # The first of these are utilities for value and type mapping:
 # * The utility `mapUsdTypeToMtlx()` maps native Usd type strings to MaterialX native type strings. 
@@ -281,7 +281,7 @@ def mapUsdSdfTypeToMtlx(usdType):
     return 'string'
 
 # %% [markdown]
-# #### Multiple Output Detection
+# #### 4.2.2 Multiple Output Detection
 # 
 # `isMultiOutput` is used to determine if the Usd prim (nodegraph, shader or material)
 # has multiple outputs. 
@@ -305,7 +305,7 @@ def isMultiOutput(prim):
     return outputCount > 1
 
 # %% [markdown]
-# #### Value Element (Input / Output) Mapping
+# #### 4.2.3 Value Element (Input / Output) Mapping
 # 
 # `emitMtlxValueELements` handles the mapping of Usd inputs and outputs to MaterialX inputs and outputs. 
 # 
@@ -468,7 +468,7 @@ def emitMtlxValueElements(shader, parent, emitOutputs):
 
 
 # %% [markdown]
-# #### Top Level Translation Logic
+# #### 4.2.4 Top Level Translation Logic
 # 
 # A final utility interface called `emitMaterialX()` wraps up the top level translation logic.
 # 
@@ -567,7 +567,7 @@ display_markdown('```xml\n' + documentContents + '\n```\n', raw=True)
 mx.writeToXmlFile(doc, 'test_usd_mtlx.mtlx', writeOptions)
 
 # %% [markdown]
-# ## Updating MaterialX / Usd Inputs 
+# ## 5. Updating MaterialX / Usd Inputs 
 # 
 # There are different ways to approach handling an edit in Usd and then updating the corresponding MaterialX.
 # This example only handles **value** changes by updating matching inputs via `path` lookups in Usd and MaterialX.
@@ -619,7 +619,7 @@ if mtxlStdSurf:
 
 
 # %% [markdown]
-# ## MaterialX to Usd Example
+# ## 6. MaterialX to Usd Example
 # 
 # For completeness, we add in sample logic to convert from MaterialX to Usd. This is not meant to be a substitute for the `UsdMtlx` plugin. By default this module is not currently available as part of the core Python package for Usd
 # so is not available unless a custom / local build is used.
@@ -670,7 +670,7 @@ stringResult = marbleStage.GetRootLayer().ExportToString()
 display_markdown('```usd\n' + stringResult + '\n```\n', raw=True)
 
 # %% [markdown]
-# ### MaterialX to Usd Utilities
+# ### 6.1 MaterialX to Usd Utilities
 # 
 # For arbitrary MaterialX graphs, a series of utilities is provided to perform the translation.
 # 
@@ -680,7 +680,7 @@ display_markdown('```usd\n' + stringResult + '\n```\n', raw=True)
 # All logic creates the minimal amount of nesting to reflect how MaterialX does not support nesting via non-nested node graphs.
 
 # %% [markdown]
-# #### MaterialX to Usd : Type and Value Mapping
+# #### 6.1.1 MaterialX to Usd : Type and Value Mapping
 # 
 # The `mapMtxToUsdType()` and `mapMtxToUsdValue()` utilities provide mappings for type and value respectively. 
 # The mapping is from MaterialX type name to an Usd <a href="https://openusd.org/release/api/class_sdf_value_type_name.html" target="_blank">Sdf</a> type, and from a MaterialX `Value` to a Usd `Gf` value. 
@@ -738,7 +738,7 @@ def mapMtxToUsdValue(mtlxType, mtlxValue):
     return usdValue
 
 # %% [markdown]
-# #### MaterialX to Usd Connection Mapping
+# #### 6.1.2 MaterialX to Usd Connection Mapping
 # 
 # The logic to create connections is simpler going from MaterialX to Usd as all that is required is to assemble the appropriate absolute prim path.
 # 
@@ -888,7 +888,7 @@ def emitUsdConnections(node, stage):
 
 
 # %% [markdown]
-# #### MaterialX to Usd Value Element Mapping
+# #### 6.1.3 MaterialX to Usd Value Element Mapping
 # 
 # Similar to how MaterialX <a href="https://materialx.org/docs/api/class_value_element.html" target="_blank">ValueElements</a> are created from Usd, the `emitUsdValueElements()` utility parses `ValueElements` to create Usd inputs and outputs. 
 # 
@@ -964,7 +964,7 @@ def emitUsdValueElements(node, usdNode, emitAllValueElements):
 
 
 # %% [markdown]
-# #### Emitting Usd Shading Graphs
+# #### 6.1.4 Emitting Usd Shading Graphs
 # 
 # To emit the Usd shading network a utility function called `emitUsdShaderGraph()` is added.
 # 
@@ -1029,7 +1029,7 @@ def emitUsdShaderGraph(doc, stage, mxnodes, emitAllValueElements):
 
 
 # %% [markdown]
-# #### Top Level Conversion Logic
+# #### 6.1.5 Top Level Conversion Logic
 # 
 # The sample wrapper for conversion is called `convertMtlxToUsd()` which takes as input a MaterialX filename,
 # creates a stage in memory and then performs the conversion.
@@ -1094,12 +1094,12 @@ def convertMtlxToUsd(mtlxFileName, emitAllValueElements):
     return stage
 
 # %% [markdown]
-# ### Test Files
+# ### 6.2 Test Files
 # 
 # Conversion to a few test files is performed, including performing the reverse translation of the Usd sample file shown previously.
 
 # %% [markdown]
-# #### Sample Marble
+# #### 6.2.1 Sample Marble
 # 
 # For the `marble` example, we turn on the option that will create a Usd node input using all the inputs specified on the definition of each MaterialX shader node instance.
 
@@ -1125,7 +1125,7 @@ display_markdown('#### ... And Converted Back To MaterialX', raw=True)
 display_markdown('```xml\n' + documentContents + '\n```\n', raw=True)
 
 # %% [markdown]
-# #### Sample Nodegraph from NodeGraph Tutorial
+# #### 6.2.2 Sample Nodegraph from NodeGraph Tutorial
 # 
 # Here the example MaterialX file produced from the *Nodegraph* book is converted.
 
@@ -1144,7 +1144,7 @@ display_markdown('#### ... And Converted Back To MaterialX', raw=True)
 display_markdown('```xml\n' + documentContents + '\n```\n', raw=True)
 
 # %% [markdown]
-# #### Re-import Usd Example Converted to MaterialX
+# #### 6.2.3 Re-import Usd Example Converted to MaterialX
 # 
 # Finally, the MaterialX file converted from Usd previously is re-converted back into Usd.
 # 

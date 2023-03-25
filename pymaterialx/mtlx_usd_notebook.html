@@ -14621,7 +14621,7 @@ such as from <a href="https://openusd.org/release/tut_usd_tutorials.html" target
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Usd-Setup">Usd Setup<a class="anchor-link" href="#Usd-Setup">&#182;</a></h2><p>To use Usd the &quot;core&quot; package can be installed as follows:</p>
+<h2 id="1.-Usd-Setup">1. Usd Setup<a class="anchor-link" href="#1.-Usd-Setup">&#182;</a></h2><p>To use Usd the &quot;core&quot; package can be installed as follows:</p>
 
 </div>
 </div>
@@ -14914,7 +14914,7 @@ Using MaterialX Version: 1.38.7
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Start-Traversal">Start Traversal<a class="anchor-link" href="#Start-Traversal">&#182;</a></h2><p>As a starting point, a simple tree traversal logic is added. Note that this just traverses the entire stage and prints out the prims and their attributes.</p>
+<h2 id="2.-Usd-Traversal">2. Usd Traversal<a class="anchor-link" href="#2.-Usd-Traversal">&#182;</a></h2><p>As a starting point, a simple tree traversal logic is added. Note that this just traverses the entire stage and prints out the prims and their attributes.</p>
 
 </div>
 </div>
@@ -15020,7 +15020,7 @@ Using MaterialX Version: 1.38.7
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Examining-Shader-Graphs">Examining Shader Graphs<a class="anchor-link" href="#Examining-Shader-Graphs">&#182;</a></h2><p>This can be refined to only examine shading nodes and ports.</p>
+<h2 id="3.-Examining-Shader-Graphs">3. Examining Shader Graphs<a class="anchor-link" href="#3.-Examining-Shader-Graphs">&#182;</a></h2><p>This can be refined to only examine shading nodes and ports.</p>
 <p>Two utility functions are added:</p>
 <ul>
 <li><p><code>printValueElements()</code> selectively examines inputs and outputs using <code>GetInputs()</code> and <code>GetOutputs</code> on a <a href="https://openusd.org/release/api/class_usd_shade_shader.html" target="_blank">UsdShadeShader</a>, or <a href="https://openusd.org/release/api/class_usd_shade_node_graph.html" target="_blank">UsdShadeNodeGraph</a>.  Tokens are not considered in this example.</p>
@@ -15163,12 +15163,12 @@ Using MaterialX Version: 1.38.7
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Usd-to-MaterialX-Translation">Usd to MaterialX Translation<a class="anchor-link" href="#Usd-to-MaterialX-Translation">&#182;</a></h2><p>The previous example is modified to create MaterialX graphs, shaders and materials.</p>
+<h2 id="4.-Usd-to-MaterialX-Translation">4. Usd to MaterialX Translation<a class="anchor-link" href="#4.-Usd-to-MaterialX-Translation">&#182;</a></h2><p>The previous example is modified to create MaterialX graphs, shaders and materials.</p>
 <p>Note that the shading network contains nested nodegraphs. That is a nodegraph can contain another nodegraph. 
 While this is part of the MaterialX specification, full support for this does not currently exist at time of writing. 
 For the purposes of translation / interop, logic is included which can general enough to support any level of graph nesting.</p>
 <p>As required a user can perform a &quot;flattening&quot; process by traversing through the node connections to remove nodegraph nesting as is done for <code>UsdMtlx</code> for conversion from Usd to MaterialX. This is not included as part of the logic for this example.</p>
-<h3 id="Setup">Setup<a class="anchor-link" href="#Setup">&#182;</a></h3><p>The first step is to add in a basic setup for MaterialX to create a working document and load in standard definitions.</p>
+<h3 id="4.1-Setup">4.1 Setup<a class="anchor-link" href="#4.1-Setup">&#182;</a></h3><p>The first step is to add in a basic setup for MaterialX to create a working document and load in standard definitions.</p>
 
 </div>
 </div>
@@ -15207,8 +15207,8 @@ For the purposes of translation / interop, logic is included which can general e
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Translation-Logic">Translation Logic<a class="anchor-link" href="#Translation-Logic">&#182;</a></h3><p>Next, translation logic is broken up into a series of utilities which perform Usd to MaterialX mappings.</p>
-<h4 id="Type-and-Value-Mapping">Type and Value Mapping<a class="anchor-link" href="#Type-and-Value-Mapping">&#182;</a></h4><p>The first of these are utilities for value and type mapping:</p>
+<h3 id="4.2-Translation-Logic">4.2 Translation Logic<a class="anchor-link" href="#4.2-Translation-Logic">&#182;</a></h3><p>Next, translation logic is broken up into a series of utilities which perform Usd to MaterialX mappings.</p>
+<h4 id="4.2.1-Type-and-Value-Mapping">4.2.1 Type and Value Mapping<a class="anchor-link" href="#4.2.1-Type-and-Value-Mapping">&#182;</a></h4><p>The first of these are utilities for value and type mapping:</p>
 <ul>
 <li>The utility <code>mapUsdTypeToMtlx()</code> maps native Usd type strings to MaterialX native type strings.</li>
 <li>The utility <code>mapUsdValueToMtlx()</code> is used to map a Usd <code>Gf</code> value to a MaterialX string value.</li>
@@ -15346,7 +15346,7 @@ For the purposes of translation / interop, logic is included which can general e
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Multiple-Output-Detection">Multiple Output Detection<a class="anchor-link" href="#Multiple-Output-Detection">&#182;</a></h4><p><code>isMultiOutput</code> is used to determine if the Usd prim (nodegraph, shader or material)
+<h4 id="4.2.2-Multiple-Output-Detection">4.2.2 Multiple Output Detection<a class="anchor-link" href="#4.2.2-Multiple-Output-Detection">&#182;</a></h4><p><code>isMultiOutput</code> is used to determine if the Usd prim (nodegraph, shader or material)
 has multiple outputs.</p>
 <p>This detection is required as MaterialX connections has a specific syntax to specify the output (port) on an upstream element and this syntax is only added for upstream elements which have multiple outputs ('multioutput')</p>
 
@@ -15389,7 +15389,7 @@ has multiple outputs.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Value-Element-(Input-/-Output)-Mapping">Value Element (Input / Output) Mapping<a class="anchor-link" href="#Value-Element-(Input-/-Output)-Mapping">&#182;</a></h4><p><code>emitMtlxValueELements</code> handles the mapping of Usd inputs and outputs to MaterialX inputs and outputs.</p>
+<h4 id="4.2.3-Value-Element-(Input-/-Output)-Mapping">4.2.3 Value Element (Input / Output) Mapping<a class="anchor-link" href="#4.2.3-Value-Element-(Input-/-Output)-Mapping">&#182;</a></h4><p><code>emitMtlxValueELements</code> handles the mapping of Usd inputs and outputs to MaterialX inputs and outputs.</p>
 <p>This includes:</p>
 <ul>
 <li>Creating the input / output.<ul>
@@ -15578,7 +15578,7 @@ has multiple outputs.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Top-Level-Translation-Logic">Top Level Translation Logic<a class="anchor-link" href="#Top-Level-Translation-Logic">&#182;</a></h4><p>A final utility interface called <code>emitMaterialX()</code> wraps up the top level translation logic.</p>
+<h4 id="4.2.4-Top-Level-Translation-Logic">4.2.4 Top Level Translation Logic<a class="anchor-link" href="#4.2.4-Top-Level-Translation-Logic">&#182;</a></h4><p>A final utility interface called <code>emitMaterialX()</code> wraps up the top level translation logic.</p>
 <p>As in the previous example a tree traversal is performed.</p>
 <p>The main addition is to create a MaterialX a <code>shader</code>, <code>nodegraph</code> or <code>material</code> when encountered and then adding in child portsusing the MaterialX utilities described.</p>
 <p>For shader nodes, an additional check for an associated definition is performed. The MaterialX definition identifier is assumed to be available in the default <code>id</code> attribute using the <code>UsdShadeShader</code> interface <a href="https://openusd.org/release/api/class_usd_shade_shader.html" target="_blank">GetIdAttr().</a></p>
@@ -15777,7 +15777,7 @@ has multiple outputs.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Updating-MaterialX-/-Usd-Inputs">Updating MaterialX / Usd Inputs<a class="anchor-link" href="#Updating-MaterialX-/-Usd-Inputs">&#182;</a></h2><p>There are different ways to approach handling an edit in Usd and then updating the corresponding MaterialX.
+<h2 id="5.-Updating-MaterialX-/-Usd-Inputs">5. Updating MaterialX / Usd Inputs<a class="anchor-link" href="#5.-Updating-MaterialX-/-Usd-Inputs">&#182;</a></h2><p>There are different ways to approach handling an edit in Usd and then updating the corresponding MaterialX.
 This example only handles <strong>value</strong> changes by updating matching inputs via <code>path</code> lookups in Usd and MaterialX.</p>
 <p>That is, the absolute Usd <code>path</code> is used to find the Usd input in the <code>stage</code>, and the corresponding MaterialX input in the working <code>document</code>.</p>
 <ul>
@@ -15871,7 +15871,7 @@ Modified MaterialX from: 0.10000000149011612 to 0.9
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="MaterialX-to-Usd-Example">MaterialX to Usd Example<a class="anchor-link" href="#MaterialX-to-Usd-Example">&#182;</a></h2><p>For completeness, we add in sample logic to convert from MaterialX to Usd. This is not meant to be a substitute for the <code>UsdMtlx</code> plugin. By default this module is not currently available as part of the core Python package for Usd
+<h2 id="6.-MaterialX-to-Usd-Example">6. MaterialX to Usd Example<a class="anchor-link" href="#6.-MaterialX-to-Usd-Example">&#182;</a></h2><p>For completeness, we add in sample logic to convert from MaterialX to Usd. This is not meant to be a substitute for the <code>UsdMtlx</code> plugin. By default this module is not currently available as part of the core Python package for Usd
 so is not available unless a custom / local build is used.</p>
 <p>To start, manual creation of Usd nodes based on the <code>marble</code> example demonstrates usage of some basic interfaces of shaders, materials, graphs, and ports.</p>
 <p>Logic to consider includes creating the appropriate UsdShade type, setting a definition (<code>nodedef</code>) association, translating value and type constructs, and forming port connections.</p>
@@ -15986,7 +15986,7 @@ so is not available unless a custom / local build is used.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="MaterialX-to-Usd-Utilities">MaterialX to Usd Utilities<a class="anchor-link" href="#MaterialX-to-Usd-Utilities">&#182;</a></h3><p>For arbitrary MaterialX graphs, a series of utilities is provided to perform the translation.</p>
+<h3 id="6.1-MaterialX-to-Usd-Utilities">6.1 MaterialX to Usd Utilities<a class="anchor-link" href="#6.1-MaterialX-to-Usd-Utilities">&#182;</a></h3><p>For arbitrary MaterialX graphs, a series of utilities is provided to perform the translation.</p>
 <p>This is again to show any notable differences in nomenclature, API, and mappings between Usd and MaterialX
 but in this case for the reverse mapping from MaterialX to Usd.</p>
 <p>All logic creates the minimal amount of nesting to reflect how MaterialX does not support nesting via non-nested node graphs.</p>
@@ -16001,7 +16001,7 @@ but in this case for the reverse mapping from MaterialX to Usd.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="MaterialX-to-Usd-:-Type-and-Value-Mapping">MaterialX to Usd : Type and Value Mapping<a class="anchor-link" href="#MaterialX-to-Usd-:-Type-and-Value-Mapping">&#182;</a></h4><p>The <code>mapMtxToUsdType()</code> and <code>mapMtxToUsdValue()</code> utilities provide mappings for type and value respectively. 
+<h4 id="6.1.1-MaterialX-to-Usd-:-Type-and-Value-Mapping">6.1.1 MaterialX to Usd : Type and Value Mapping<a class="anchor-link" href="#6.1.1-MaterialX-to-Usd-:-Type-and-Value-Mapping">&#182;</a></h4><p>The <code>mapMtxToUsdType()</code> and <code>mapMtxToUsdValue()</code> utilities provide mappings for type and value respectively. 
 The mapping is from MaterialX type name to an Usd <a href="https://openusd.org/release/api/class_sdf_value_type_name.html" target="_blank">Sdf</a> type, and from a MaterialX <code>Value</code> to a Usd <code>Gf</code> value.</p>
 
 </div>
@@ -16079,7 +16079,7 @@ The mapping is from MaterialX type name to an Usd <a href="https://openusd.org/r
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="MaterialX-to-Usd-Connection-Mapping">MaterialX to Usd Connection Mapping<a class="anchor-link" href="#MaterialX-to-Usd-Connection-Mapping">&#182;</a></h4><p>The logic to create connections is simpler going from MaterialX to Usd as all that is required is to assemble the appropriate absolute prim path.</p>
+<h4 id="6.1.2-MaterialX-to-Usd-Connection-Mapping">6.1.2 MaterialX to Usd Connection Mapping<a class="anchor-link" href="#6.1.2-MaterialX-to-Usd-Connection-Mapping">&#182;</a></h4><p>The logic to create connections is simpler going from MaterialX to Usd as all that is required is to assemble the appropriate absolute prim path.</p>
 <p>Similar to the logic shown for the <em>Nodegraph Traversal</em> book, node and interface discovery needs to be performed
 by parsing the <code>node</code>, <code>nodegraph</code>, <code>interface</code> and <code>output</code> attributes.</p>
 <p>Note that when looking for the node to connect to, the document root has an empty path string so logic must be
@@ -16245,7 +16245,7 @@ was supported in MaterialX, and the document path (from <code>getNamePath()</cod
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="MaterialX-to-Usd-Value-Element-Mapping">MaterialX to Usd Value Element Mapping<a class="anchor-link" href="#MaterialX-to-Usd-Value-Element-Mapping">&#182;</a></h4><p>Similar to how MaterialX <a href="https://materialx.org/docs/api/class_value_element.html" target="_blank">ValueElements</a> are created from Usd, the <code>emitUsdValueElements()</code> utility parses <code>ValueElements</code> to create Usd inputs and outputs.</p>
+<h4 id="6.1.3-MaterialX-to-Usd-Value-Element-Mapping">6.1.3 MaterialX to Usd Value Element Mapping<a class="anchor-link" href="#6.1.3-MaterialX-to-Usd-Value-Element-Mapping">&#182;</a></h4><p>Similar to how MaterialX <a href="https://materialx.org/docs/api/class_value_element.html" target="_blank">ValueElements</a> are created from Usd, the <code>emitUsdValueElements()</code> utility parses <code>ValueElements</code> to create Usd inputs and outputs.</p>
 <p>In this example code, it is possible to create all the inputs based on the MaterialX definition if desired to provide a 'complete' interface for the Usd shader instance. For compactness, MaterialX does not create these additional inputs when instantiating a MaterialX node instance by default. It may be useful to do so for Usd instantiation to avoid any later dependency on the original MaterialX definition, especially if they are not registered in the Usd shader registry (<code>Sdr</code>).</p>
 <p>Any inputs created from definitions will have default values which are overwritten by any values explicitly specified on the node instance.</p>
 <p><a href="https://materialx.org/docs/api/class_interface_element.html" target="_blank">getActiveValueElements()</a> instead of <code>getValueElements()</code> is used when examining definitions and instances to ensure that inherited inputs or outputs are included.</p>
@@ -16337,7 +16337,7 @@ was supported in MaterialX, and the document path (from <code>getNamePath()</cod
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Emitting-Usd-Shading-Graphs">Emitting Usd Shading Graphs<a class="anchor-link" href="#Emitting-Usd-Shading-Graphs">&#182;</a></h4><p>To emit the Usd shading network a utility function called <code>emitUsdShaderGraph()</code> is added.</p>
+<h4 id="6.1.4-Emitting-Usd-Shading-Graphs">6.1.4 Emitting Usd Shading Graphs<a class="anchor-link" href="#6.1.4-Emitting-Usd-Shading-Graphs">&#182;</a></h4><p>To emit the Usd shading network a utility function called <code>emitUsdShaderGraph()</code> is added.</p>
 <ul>
 <li>For each node, nodegraph, or material in the MaterialX document a corresponding node is created in Usd using:<ul>
 <li><code>UsdShade.Shader.Define()</code>,</li>
@@ -16426,7 +16426,7 @@ was supported in MaterialX, and the document path (from <code>getNamePath()</cod
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Top-Level-Conversion-Logic">Top Level Conversion Logic<a class="anchor-link" href="#Top-Level-Conversion-Logic">&#182;</a></h4><p>The sample wrapper for conversion is called <code>convertMtlxToUsd()</code> which takes as input a MaterialX filename,
+<h4 id="6.1.5-Top-Level-Conversion-Logic">6.1.5 Top Level Conversion Logic<a class="anchor-link" href="#6.1.5-Top-Level-Conversion-Logic">&#182;</a></h4><p>The sample wrapper for conversion is called <code>convertMtlxToUsd()</code> which takes as input a MaterialX filename,
 creates a stage in memory and then performs the conversion.</p>
 <p>As noted in the <a href="https://kwokcb.github.io/MaterialX_Learn/documents/documents.html">Documents</a> learning material MaterialX has one working document, and the node definitions are required to be part of this document. To avoid accidentally translating those definitions, the scene nodes are first determined using a utility: <code>findMaterialXNodes()</code>.</p>
 
@@ -16531,7 +16531,7 @@ creates a stage in memory and then performs the conversion.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Test-Files">Test Files<a class="anchor-link" href="#Test-Files">&#182;</a></h3><p>Conversion to a few test files is performed, including performing the reverse translation of the Usd sample file shown previously.</p>
+<h3 id="6.2-Test-Files">6.2 Test Files<a class="anchor-link" href="#6.2-Test-Files">&#182;</a></h3><p>Conversion to a few test files is performed, including performing the reverse translation of the Usd sample file shown previously.</p>
 
 </div>
 </div>
@@ -16543,7 +16543,7 @@ creates a stage in memory and then performs the conversion.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Sample-Marble">Sample Marble<a class="anchor-link" href="#Sample-Marble">&#182;</a></h4><p>For the <code>marble</code> example, we turn on the option that will create a Usd node input using all the inputs specified on the definition of each MaterialX shader node instance.</p>
+<h4 id="6.2.1-Sample-Marble">6.2.1 Sample Marble<a class="anchor-link" href="#6.2.1-Sample-Marble">&#182;</a></h4><p>For the <code>marble</code> example, we turn on the option that will create a Usd node input using all the inputs specified on the definition of each MaterialX shader node instance.</p>
 
 </div>
 </div>
@@ -16940,7 +16940,7 @@ creates a stage in memory and then performs the conversion.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Sample-Nodegraph-from-NodeGraph-Tutorial">Sample Nodegraph from NodeGraph Tutorial<a class="anchor-link" href="#Sample-Nodegraph-from-NodeGraph-Tutorial">&#182;</a></h4><p>Here the example MaterialX file produced from the <em>Nodegraph</em> book is converted.</p>
+<h4 id="6.2.2-Sample-Nodegraph-from-NodeGraph-Tutorial">6.2.2 Sample Nodegraph from NodeGraph Tutorial<a class="anchor-link" href="#6.2.2-Sample-Nodegraph-from-NodeGraph-Tutorial">&#182;</a></h4><p>Here the example MaterialX file produced from the <em>Nodegraph</em> book is converted.</p>
 
 </div>
 </div>
@@ -17087,7 +17087,7 @@ creates a stage in memory and then performs the conversion.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Re-import-Usd-Example-Converted-to-MaterialX">Re-import Usd Example Converted to MaterialX<a class="anchor-link" href="#Re-import-Usd-Example-Converted-to-MaterialX">&#182;</a></h4><p>Finally, the MaterialX file converted from Usd previously is re-converted back into Usd.</p>
+<h4 id="6.2.3-Re-import-Usd-Example-Converted-to-MaterialX">6.2.3 Re-import Usd Example Converted to MaterialX<a class="anchor-link" href="#6.2.3-Re-import-Usd-Example-Converted-to-MaterialX">&#182;</a></h4><p>Finally, the MaterialX file converted from Usd previously is re-converted back into Usd.</p>
 <p>For validation purposes bi-directional conversion and compare is useful to ensure there is no loss of data when
 performing data model interop. At time of writing, this round trip logic is not easily accessible.</p>
 
