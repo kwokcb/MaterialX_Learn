@@ -85,16 +85,9 @@ printChildren(' ', prim)
 # 
 # Two utility functions are added:
 #  
-# * `printValueElements` selectively examines inputs and outputs using `GetInputs()` and `GetOutputs` on a 
-# <a href="https://openusd.org/release/api/class_usd_shade_shader.html" target="_blank">UsdShadeShader</a>, or <a href="https://openusd.org/release/api/class_usd_shade_node_graph.html" target="_blank">UsdShadeNodeGraph</a>. 
-# Tokens are not considered in this example. 
+# * `printValueElements()` selectively examines inputs and outputs using `GetInputs()` and `GetOutputs` on a <a href="https://openusd.org/release/api/class_usd_shade_shader.html" target="_blank">UsdShadeShader</a>, or <a href="https://openusd.org/release/api/class_usd_shade_node_graph.html" target="_blank">UsdShadeNodeGraph</a>.  Tokens are not considered in this example. 
 # 
-# * `printShaders` performs the traversal from a root prim visiting prims which would map to MaterialX -- namely "node graphs", "material" and "shader" nodes. Any geometry and tree nesting is ignored. For shader nodes, an additional check for an associated definition is performed. The MaterialX definition identifier is assumed to be available in the default `id` attribute using the `UsdShadeShader` interface <a href="https://openusd.org/release/api/class_usd_shade_shader.html" target="_blank">GetIdAttr().</a> 
-# 
-# Notes:
-# 1. Usd materials are considered to be node graphs, while in MaterialX materials are nodes.
-# 2. Usd separates out the functional API from the primitive and as such an interface needs to be instantiated given a `UsdPrim`. This differs from MaterialX which does not separate out the functional API, with all types deriving from a common `Element` class.
-# 3. Paths in Usd are absoluate while paths in MaterialX are relative to the current parent scope. Usd has a root path specifier '/' while MaterialX does not.
+# * `printShaderNodes()` performs the traversal from a root prim visiting prims which would map to MaterialX -- namely "node graphs", "material" and "shader" nodes. Any geometry and tree nesting is ignored. 
 
 # %%
 def printValueElements(shaderInterface, indent):
@@ -328,17 +321,17 @@ def isMultiOutput(prim):
 #     * if the upstream element is a `nodegraph` or `node`, or `interface input` then 1 of 3 different attributes are set; 
 #     * if the upstream element has multiple outputs (`multioutput` type), an additional `output` attribute is required; and
 #     * if there is a specific channel extracted from the upstream port, an additional `channel` attribute is required. Logic for channels is not included as part of this example.
-#   * **Ideally if MaterialX adopted a similar syntax to Usd then the mapping would be "trivial".**
+#   * **Ideally if MaterialX adopted a similar syntax to Usd then the mapping would be vastly simplified.**
 # 
-# > Notes:
+# __Notes__
 # 
-#   1. Additional layer nesting in Usd not directly related to the shading network is not preserved in this example. This could be handled by additional nodegraph nesting or something like `namepspace` nesting could be used. The former is less lossy, as `namespace`s are flattened on import from MaterialX in `UsdMtlx` at the current time. 
+# 1. Additional layer nesting in Usd not directly related to the shading network is not preserved in this example. This could be handled by additional nodegraph nesting or something like `namepspace` nesting could be used. The former is less lossy, as `namespace`s are flattened on import from MaterialX in `UsdMtlx` at the current time. 
 # 
-#   2. It is assumed that the Usd string representation for a value can be mapped to a MaterialX one. For example, the string representation for a vector3 (`(v1, v2, v3)`) in Usd is valid syntax in MaterialX (`v1, v2, v3`).
+# 2. It is assumed that the Usd string representation for a value can be mapped to a MaterialX one. For example, the string representation for a vector3 (`(v1, v2, v3)`) in Usd is valid syntax in MaterialX (`v1, v2, v3`).
 # 
-#   3. For a Usd port with a  `token` type the type of the created MaterialX input / output is set based on the port's name if the Usd Port name is a  'surface' or 'displacement' shader. This logic is encapsulated in the utility function `mapUsdTokenToStype()` (There  appears to be no way by just examining the Usd shading network to determine the type without this assumption at this time).
+# 3. For a Usd port with a  `token` type the type of the created MaterialX input / output is set based on the port's name if the Usd Port name is a  'surface' or 'displacement' shader. This logic is encapsulated in the utility function `mapUsdTokenToStype()` (There  appears to be no way by just examining the Usd shading network to determine the type without this assumption at this time).
 # 
-# > (*) MaterialX only allows either a connection or value to be specified on a port.
+# (*) MaterialX only allows either a connection or value to be specified on a port.
 
 # %%
 def mapUsdTokenToType(mtlxType, usdBaseName):
@@ -483,7 +476,13 @@ def emitMtlxValueElements(shader, parent, emitOutputs):
 # 
 # The main addition is to create a MaterialX a `shader`, `nodegraph` or `material` when encountered and then adding in child portsusing the MaterialX utilities described.
 # 
-# Note that no specific logic is required to handle different definition versions as if a different `nodedef` identifier is used for different versions. *This should be the case, when MaterialX `nodedefs` are loaded into Usd.* 
+# For shader nodes, an additional check for an associated definition is performed. The MaterialX definition identifier is assumed to be available in the default `id` attribute using the `UsdShadeShader` interface <a href="https://openusd.org/release/api/class_usd_shade_shader.html" target="_blank">GetIdAttr().</a> 
+# 
+# Notes:
+# 1. Usd materials are considered to be *node graphs*, while in MaterialX materials are *nodes* which connect to surface, volume or displacement shaders. During conversion anything else must be located at the same level as the material and not nested within the material graph as in Usd. Previously to version 1.38.6, MaterialX materials were closer in nature to Usd materials as they also embedded shader associations as part of the material and materials were not nodes.
+# 2. Usd separates out the functional API from the primitive and as such an interface needs to be instantiated given a `UsdPrim`. This differs from MaterialX which does not separate out the functional API, with all types deriving from a common `Element` class.
+# 3. Saved paths in Usd are *absolute* while paths in MaterialX are *relative* to the current parent scope. Usd has a root path specifier '/' while MaterialX does not. 
+# 4. No specific logic is required to handle different definition versions as long as a different `nodedef` identifier is used for different versions. This should be the case within MaterialX and when MaterialX `nodedefs` are loaded into the Usd shader registriy (`Sdr`) 
 # 
 # As MaterialX supports native definitions for Usd shader nodes these can also be handled. For example we assume if the node definition is `UsdPreviewSurface` that this maps directly to a MaterialX node. 
 
@@ -574,13 +573,13 @@ mx.writeToXmlFile(doc, 'test_usd_mtlx.mtlx', writeOptions)
 # This example only handles **value** changes by updating matching inputs via `path` lookups in Usd and MaterialX.
 # 
 # That is, the absolute Usd `path` is used to find the Usd input in the `stage`, and the corresponding MaterialX input in the working `document`. 
-# * The interface `GetPrimAtPath()` is used to lookup the node to edit in Usd, and 
-# * The interface `getDescendent()` used for MaterialX.
-# * The input on each node is then found using `GetInput()` and `getInput()` for Usd and MaterialX respectively.
+# * The stage interface <a href="https://openusd.org/release/api/class_usd_stage.html" target="_blank">GetPrimAtPath()</a> is used to lookup the node to edit in Usd, and 
+# * The document interface <a href="https://materialx.org/docs/api/class_element.html" target="_blank">getDescendent()</a> used for MaterialX.
+# * The input on each node is then found using <a href="https://openusd.org/release/api/class_usd_shade_connectable_a_p_i.html" target="_blank">GetInput()</a> and <a href="https://materialx.org/docs/api/class_interface_element.html" target="_blank">getInput()</a> for Usd and MaterialX respectively.
 # 
 # Note that the Usd `path` differs from the MaterialX `path` as MaterialX does not accept a path that starts with
 # '/' in it's path related interfaces. 
-# > *This would be a good discrepancy to be addressed*.
+# > *This would be a good discrepancy to address, which could just be an implementation issue*.
 # 
 # Monitoring and updating for graph connections is beyond the scope of this example, but it is useful to consider whether the target workflow involves just MaterialX data model updates or if code generation is involved as is the case for render delegates using MaterialX code generation.
 
@@ -625,13 +624,13 @@ if mtxlStdSurf:
 # For completeness, we add in sample logic to convert from MaterialX to Usd. This is not meant to be a substitute for the `UsdMtlx` plugin. By default this module is not currently available as part of the core Python package for Usd
 # so is not available unless a custom / local build is used.
 # 
-# As a starting, the first example logic shows manual creation of Usd nodes based on the `marble` example to show that same basic constructs of shaders, materials, graphs, inputs and outputs that need to be considered.
+# To start, manual creation of Usd nodes based on the `marble` example demonstrates usage of some basic interfaces of shaders, materials, graphs, and ports.
 # 
-# This includes creating the appropriate UsdShade type, setting a definition association, translating value and type constructs, and forming connections. 
+# Logic to consider includes creating the appropriate UsdShade type, setting a definition (`nodedef`) association, translating value and type constructs, and forming port connections. 
 # 
 # Of note:
 # 1. Outputs are explicitly created on nodes as well as nodegraphs (unlike MaterialX)
-# 2. The explicit setting of the node definition name as the as the idenfiter to the <a href="https://openusd.org/release/api/class_sdr_registry.html" target="_blank">SdrRegistry</a>
+# 2. The explicit setting of the node definition name as the as the identifier to the <a href="https://openusd.org/release/api/class_sdr_registry.html" target="_blank">SdrRegistry</a>
 
 # %%
 
@@ -673,18 +672,18 @@ display_markdown('```usd\n' + stringResult + '\n```\n', raw=True)
 # %% [markdown]
 # ### MaterialX to Usd Utilities
 # 
-# For arbitrary MaterialX graphs, a series of utilities is shown to perform the translation.
+# For arbitrary MaterialX graphs, a series of utilities is provided to perform the translation.
 # 
 # This is again to show any notable differences in nomenclature, API, and mappings between Usd and MaterialX
 # but in this case for the reverse mapping from MaterialX to Usd. 
 # 
-# All logic creates the minimal amount of nesting to reflect how MaterialX supports no nesting except via nodegraphs.
+# All logic creates the minimal amount of nesting to reflect how MaterialX does not support nesting via non-nested node graphs.
 
 # %% [markdown]
 # #### MaterialX to Usd : Type and Value Mapping
 # 
 # The `mapMtxToUsdType()` and `mapMtxToUsdValue()` utilities provide mappings for type and value respectively. 
-# The mapping is from MaterialX type name to an Usd `Sdf` type, and from a Materialx `Value` to a Usd `Gf` value. 
+# The mapping is from MaterialX type name to an Usd <a href="https://openusd.org/release/api/class_sdf_value_type_name.html" target="_blank">Sdf</a> type, and from a MaterialX `Value` to a Usd `Gf` value. 
 
 # %%
 def mapMtxToUsdType(mtlxType):
@@ -891,13 +890,13 @@ def emitUsdConnections(node, stage):
 # %% [markdown]
 # #### MaterialX to Usd Value Element Mapping
 # 
-# Similar to how MaterialX `ValueElements` are created from Usd, the `emitUsdValueElements()` utility parses `ValueElements` to create Usd inputs and outputs. 
+# Similar to how MaterialX <a href="https://materialx.org/docs/api/class_value_element.html" target="_blank">ValueElements</a> are created from Usd, the `emitUsdValueElements()` utility parses `ValueElements` to create Usd inputs and outputs. 
 # 
 # In this example code, it is possible to create all the inputs based on the MaterialX definition if desired to provide a 'complete' interface for the Usd shader instance. For compactness, MaterialX does not create these additional inputs when instantiating a MaterialX node instance by default. It may be useful to do so for Usd instantiation to avoid any later dependency on the original MaterialX definition, especially if they are not registered in the Usd shader registry (`Sdr`). 
 # 
 # Any inputs created from definitions will have default values which are overwritten by any values explicitly specified on the node instance. 
 # 
-# `getActiveValueElements()` instead of `getValueElements()` is used when examining definitions and instances to ensure that inherited inputs or outputs are included.
+# <a href="https://materialx.org/docs/api/class_interface_element.html" target="_blank">getActiveValueElements()</a> instead of `getValueElements()` is used when examining definitions and instances to ensure that inherited inputs or outputs are included.
 
 # %%
 def emitUsdValueElements(node, usdNode, emitAllValueElements):
@@ -1035,7 +1034,7 @@ def emitUsdShaderGraph(doc, stage, mxnodes, emitAllValueElements):
 # The sample wrapper for conversion is called `convertMtlxToUsd()` which takes as input a MaterialX filename,
 # creates a stage in memory and then performs the conversion.
 # 
-# As noted in the **Documents** learning material MaterialX has one working document, and the node definitions are required to be part of this document. To avoid accidentally translating those definitions, the scene nodes are first determined using a utility: `findMaterialXNodes()`.
+# As noted in the <a href="https://kwokcb.github.io/MaterialX_Learn/documents/documents.html">Documents</a> learning material MaterialX has one working document, and the node definitions are required to be part of this document. To avoid accidentally translating those definitions, the scene nodes are first determined using a utility: `findMaterialXNodes()`.
 
 # %%
 def findMaterialXNodes(doc):
@@ -1097,19 +1096,21 @@ def convertMtlxToUsd(mtlxFileName, emitAllValueElements):
 # %% [markdown]
 # ### Test Files
 # 
-# Conversion to a few test files is performed, including performing the reverse translation of the Usd-to-MaterialX file shown previously.
+# Conversion to a few test files is performed, including performing the reverse translation of the Usd sample file shown previously.
 
 # %% [markdown]
 # #### Sample Marble
 # 
-# For the `marble` example, all MaterialX definition inputs are instantiated as Usd node instance inputs.
+# For the `marble` example, we turn on the option that will create a Usd node input using all the inputs specified on the definition of each MaterialX shader node instance.
 
 # %%
 testFile = 'standard_surface_marble_solid.mtlx'
 
-# Convert to Usd
+# Convert to Usd. Indicate to include all inputs based on a MaterialX node's definition
+# as opposed to just those explicitly specified on the node instance.
 display_markdown('#### Sample Marble Converted from MaterialX', raw=True)
-stage = convertMtlxToUsd(testFile, True)
+includeDefinitionInputs = True
+stage = convertMtlxToUsd(testFile, includeDefinitionInputs)
 
 # Convert back to MaterialX
 doc = convertUsdToMtlx(stage, stdlib)
@@ -1148,7 +1149,7 @@ display_markdown('```xml\n' + documentContents + '\n```\n', raw=True)
 # Finally, the MaterialX file converted from Usd previously is re-converted back into Usd.
 # 
 # For validation purposes bi-directional conversion and compare is useful to ensure there is no loss of data when
-# performing data model interop.
+# performing data model interop. At time of writing, this round trip logic is not easily accessible.
 
 # %%
 testFile = 'test_usd_mtlx.mtlx'
