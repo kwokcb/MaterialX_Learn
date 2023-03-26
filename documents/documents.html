@@ -499,28 +499,31 @@
                   there is no information within a document or set of documents which indicate it
                   is or belongs to a "library".
                 <pre>
-                    libraries
-                    ├── bxdf
-                    │   ├── lama
-                    │   └── translation
-                    ├── lights
-                    │   └── genglsl
-                    ├── pbrlib
-                    │   ├── genglsl
-                    │   │   └── lib
-                    │   ├── genmdl
-                    │   └── genosl
-                    │       ├── legacy
-                    │       └── lib
-                    ├── stdlib
-                    │   ├── genglsl
-                    │   │   └── lib
-                    │   ├── genmdl
-                    │   └── genosl
-                    │       ├── include
-                    │       └── lib
-                    └── targets
-                  </pre>
+                  ├───bxdf
+                  │   ├───lama
+                  │   └───translation
+                  ├───lights
+                  │   ├───genglsl
+                  │   └───genmsl
+                  ├───pbrlib
+                  │   ├───genglsl
+                  │   │   └───lib
+                  │   ├───genmdl
+                  │   ├───genmsl
+                  │   └───genosl
+                  │       ├───legacy
+                  │       └───lib
+                  ├───stdlib
+                  │   ├───genglsl
+                  │   │   └───lib
+                  │   ├───genmdl
+                  │   ├───genmsl
+                  │   │   └───lib
+                  │   └───genosl
+                  │       ├───include
+                  │       └───lib
+                  └───targets
+                </pre>
                 In this case the 'import' API, will return a list of all files read under a given
                 folder. These can be used to keep track of what documents have been read. As
                 all the imported elements are tagged with the 'sourcuri' for the file it
@@ -556,7 +559,7 @@
                       standard library definitions can be supported by all core backend shader implementations thus
                       providing for <b>implementation standardization</b>. Source code implementations for standard
                       library definitions
-                      are written to conform with one another. e.g the GLS, OSL, and MDL implementations are meant to be
+                      are written to conform with one another. e.g the GLS, OSL, MDL and MSL implementations are meant to be
                       logically identical.</p>
                   </li>
                   <li>Dependent resources are not embedded into the file format
