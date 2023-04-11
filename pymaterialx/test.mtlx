@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <UsdPreviewSurface name="BlueMaterial_Shader" type="surfaceshader" nodedef="ND_UsdPreviewSurface_surfaceshader">
+    <input name="diffuseColor" type="color3" value="0.2254,0.2584,1" />
+    <input name="metallic" type="float" value="0.075" />
+    <input name="specularColor" type="color3" value="0.06136,0.06136,0.06136" />
+    <input name="roughness" type="float" value="0.1432" />
+    <input name="clearcoat" type="float" value="0" />
+    <input name="clearcoatRoughness" type="float" value="0.03" />
+    <input name="ior" type="float" value="1.45" />
+    <input name="emissiveColor" type="color3" value="0,0,0" />
+    <input name="opacity" type="float" value="1" />
+    <input name="normal" type="vector3" value="0,0,1" />
+  </UsdPreviewSurface>
+  <surfacematerial name="BlueMaterial" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="BlueMaterial_Shader" />
+  </surfacematerial>
+  <UsdPreviewSurface name="DefaultMaterial_Shader" type="surfaceshader" nodedef="ND_UsdPreviewSurface_surfaceshader">
+    <input name="diffuseColor" type="color3" value="0.6,0.6,0.6" />
+    <input name="metallic" type="float" value="0.1045" />
+    <input name="specularColor" type="color3" value="0.5705,0.5705,0.5705" />
+    <input name="roughness" type="float" value="0.2" />
+    <input name="clearcoat" type="float" value="0" />
+    <input name="clearcoatRoughness" type="float" value="0.03" />
+    <input name="ior" type="float" value="1.5" />
+    <input name="emissiveColor" type="color3" value="0,0,0" />
+    <input name="opacity" type="float" value="1" />
+    <input name="normal" type="vector3" value="0,0,1" />
+  </UsdPreviewSurface>
+  <surfacematerial name="DefaultMaterial" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="DefaultMaterial_Shader" />
+  </surfacematerial>
+  <UsdPreviewSurface name="SliverMaterial_Shader" type="surfaceshader" nodedef="ND_UsdPreviewSurface_surfaceshader">
+    <input name="diffuseColor" type="color3" value="0.8,0.8,0.8" />
+    <input name="metallic" type="float" value="0.775" />
+    <input name="specularColor" type="color3" value="0.5,0.5,0.5" />
+    <input name="roughness" type="float" value="0" />
+    <input name="clearcoat" type="float" value="0" />
+    <input name="clearcoatRoughness" type="float" value="0.03" />
+    <input name="ior" type="float" value="1.45" />
+    <input name="emissiveColor" type="color3" value="0,0,0" />
+    <input name="opacity" type="float" value="1" />
+    <input name="normal" type="vector3" value="0,0,1" />
+  </UsdPreviewSurface>
+  <surfacematerial name="SliverMaterial" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="SliverMaterial_Shader" />
+  </surfacematerial>
+  <UsdPreviewSurface name="TexturedMaterial_Shader" type="surfaceshader" nodedef="ND_UsdPreviewSurface_surfaceshader">
+    <input name="diffuseColor" type="color3" nodename="BaseColorTexture" />
+    <input name="metallic" type="float" nodename="MetallicTexture" />
+    <input name="specularColor" type="color3" nodename="SpecularTexture" />
+    <input name="roughness" type="float" nodename="RoughnessTexture" />
+    <input name="clearcoat" type="float" value="0" />
+    <input name="clearcoatRoughness" type="float" value="0.03" />
+    <input name="ior" type="float" value="1.45" />
+    <input name="emissiveColor" type="color3" value="0,0,0" />
+    <input name="opacity" type="float" value="1" />
+    <input name="normal" type="vector3" nodename="Normal_Map_Image" />
+  </UsdPreviewSurface>
+  <surfacematerial name="TexturedMaterial" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="TexturedMaterial_Shader" />
+  </surfacematerial>
+  <image name="BaseColorTexture" type="color3" nodedef="ND_image_color3">
+    <input name="file" type="filename" value="./data\cloth_fig_Diffuse.png" />
+  </image>
+  <image name="MetallicTexture" type="float" nodedef="ND_image_float">
+    <input name="file" type="filename" value="./data\cloth_fig_Metallic.png" />
+  </image>
+  <image name="SpecularTexture" type="color3" nodedef="ND_image_color3">
+    <input name="file" type="filename" value="./data\cloth_fig_Specular.png" />
+  </image>
+  <image name="RoughnessTexture" type="float" nodedef="ND_image_float">
+    <input name="file" type="filename" value="./data\cloth_fig_Roughness.png" />
+  </image>
+  <normalmap name="Normal_Map" type="vector3" nodedef="ND_normalmap">
+    <input name="normal" type="vector3" nodename="Normal_Map_Image" />
+  </normalmap>
+  <image name="Normal_Map_Image" type="vector3" nodedef="ND_image_vector3">
+    <input name="file" type="filename" value="./data\cloth_fig_Normal.png" />
+  </image>
+</materialx>

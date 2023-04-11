@@ -17,6 +17,8 @@ See issues and project area for some of items on queue.
 ## What's new
 * Usd / MaterialX Graphing Comparison Tutorial
 * MaterialX Mermaid Diagram Generation Tutorial
+* Blender / MaterialX Graphing Example
+* Utilities packaging: `mtlxutils` and usage. 
 * Upgrades for the pending 1.38.7 release in progress.
 
 ## Visit the site 

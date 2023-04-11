@@ -555,12 +555,11 @@ Category: matte
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_matte_color4.inline" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_matte_color4.inline">
-  </a>
-   </div>
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>vec4( {{fg}}.xyz*{{fg}}.w + {{bg}}.xyz*(1.0-{{fg}}.w), {{fg}}.w + ({{bg}}.w*(1.0-{{fg}}.w)) ) * {{mix}} + ({{bg}} * (1.0-{{mix}})); </textarea>
+    </div>
   </div>
 <hr>
   <div class="form-group row g-2">
@@ -584,12 +583,11 @@ Category: matte
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_matte_color4.inline" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="../genglsl/mx_matte_color4.inline">
-  </a>
-   </div>
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>vec4( {{fg}}.xyz*{{fg}}.w + {{bg}}.xyz*(1.0-{{fg}}.w), {{fg}}.w + ({{bg}}.w*(1.0-{{fg}}.w)) ) * {{mix}} + ({{bg}} * (1.0-{{mix}})); </textarea>
+    </div>
   </div>
 <hr>
   <div class="form-group row g-2">
@@ -599,12 +597,11 @@ Category: matte
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_matte_color4.inline" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_matte_color4.inline">
-  </a>
-   </div>
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>color4({{fg}}.rgb*{{fg}}.a + {{bg}}.rgb*(1.0-{{fg}}.a), {{fg}}.a + ({{bg}}.a*(1.0-{{fg}}.a)) ) * {{mix}} + ({{bg}} * (1.0-{{mix}})) </textarea>
+    </div>
   </div>
 <hr>
 </details>
