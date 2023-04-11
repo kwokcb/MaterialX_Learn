@@ -44,7 +44,7 @@ print('Using MaterialX Version:', mx.getVersionString())
 
 # %%
 # Load in a sample file
-stage_unflattend = Usd.Stage.Open('sphere_with_nodegraphs.usda') 
+stage_unflattend = Usd.Stage.Open('data/sphere_with_nodegraphs.usda') 
 
 # Flatten layers
 layer = stage_unflattend.Flatten()
@@ -1029,7 +1029,7 @@ def emitUsdShaderGraph(doc, stage, mxnodes, emitAllValueElements):
 
 
 # %% [markdown]
-# #### 6.1.5 Top Level Conversion Logic
+# #### Top Level Conversion Logic
 # 
 # The sample wrapper for conversion is called `convertMtlxToUsd()` which takes as input a MaterialX filename,
 # creates a stage in memory and then performs the conversion.
@@ -1094,17 +1094,17 @@ def convertMtlxToUsd(mtlxFileName, emitAllValueElements):
     return stage
 
 # %% [markdown]
-# ### 6.2 Test Files
+# ### Test Files
 # 
 # Conversion to a few test files is performed, including performing the reverse translation of the Usd sample file shown previously.
 
 # %% [markdown]
-# #### 6.2.1 Sample Marble
+# #### Sample Marble
 # 
 # For the `marble` example, we turn on the option that will create a Usd node input using all the inputs specified on the definition of each MaterialX shader node instance.
 
 # %%
-testFile = 'standard_surface_marble_solid.mtlx'
+testFile = 'data/standard_surface_marble_solid.mtlx'
 
 # Convert to Usd. Indicate to include all inputs based on a MaterialX node's definition
 # as opposed to just those explicitly specified on the node instance.
@@ -1125,12 +1125,12 @@ display_markdown('#### ... And Converted Back To MaterialX', raw=True)
 display_markdown('```xml\n' + documentContents + '\n```\n', raw=True)
 
 # %% [markdown]
-# #### 6.2.2 Sample Nodegraph from NodeGraph Tutorial
+# #### Sample Nodegraph from NodeGraph Tutorial
 # 
 # Here the example MaterialX file produced from the *Nodegraph* book is converted.
 
 # %%
-testFile = 'sample_nodegraph.mtlx'
+testFile = 'data/sample_nodegraph.mtlx'
 display_markdown('#### Sample Tutorial Nodegraph Converted from MaterialX', raw=True)
 stage = convertMtlxToUsd(testFile, False)
 
@@ -1144,7 +1144,7 @@ display_markdown('#### ... And Converted Back To MaterialX', raw=True)
 display_markdown('```xml\n' + documentContents + '\n```\n', raw=True)
 
 # %% [markdown]
-# #### 6.2.3 Re-import Usd Example Converted to MaterialX
+# #### Re-import Usd Example Converted to MaterialX
 # 
 # Finally, the MaterialX file converted from Usd previously is re-converted back into Usd.
 # 
@@ -1152,7 +1152,7 @@ display_markdown('```xml\n' + documentContents + '\n```\n', raw=True)
 # performing data model interop. At time of writing, this round trip logic is not easily accessible.
 
 # %%
-testFile = 'test_usd_mtlx.mtlx'
+testFile = 'blender_to_mtlx.mtlx'
 display_markdown('#### Nested Nodegraph Converted from MaterialX', raw=True)
 stage = convertMtlxToUsd(testFile, False)
 

@@ -40,8 +40,6 @@ print ('MaterialX API version %s' % mx.getVersionString())
 # > As noted in the `Documents` learning material this is the version of the document and not the package version.
 
 # %%
-import MaterialX as mx
-
 # Print the version of MaterialX
 doc = mx.createDocument()
 print('Hello MaterialX (Version %s)' % doc.getVersionString())   
@@ -89,7 +87,7 @@ doc.importLibrary(stdlib)
 
 # Check node definition count
 nodeDefinitionCount = len(doc.getNodeDefs())
-print('Definition counst after import : %d ' % nodeDefinitionCount) 
+print('Definition counts after import : %d ' % nodeDefinitionCount) 
 
 # %% [markdown]
 #  ## 2. Reading and Writing Documents
@@ -108,7 +106,7 @@ print('Definition counst after import : %d ' % nodeDefinitionCount)
 
 # %%
 # Write out sample file
-filename = 'testfile.mtlx'
+filename = 'data/testfile.mtlx'
 mx.writeToXmlFile(doc, filename)
 
 # Read in a sample file
@@ -170,11 +168,15 @@ def skipLibraryElement(elem):
 
 # Declare write options and set the predicate.
 writeOptions = mx.XmlWriteOptions()
-writeOptions.writeXIncludeEnable = False
-writeOptions.elementPredicate = skipLibraryElement
+
+from mtlxutils.mxbase import *
+if haveVersion(1, 38, 7):
+    writeOptions.writeXIncludeEnable = False
+    writeOptions.elementPredicate = skipLibraryElement
 
 # Perform write
 documentContents = mx.writeToXmlString(doc, writeOptions)
+mx.writeToXmlFile(doc, filename, writeOptions)
 
 # Read back into a new document and write to string again.
 # Due to the predicate usage the document no longer outputs library definitions.
@@ -216,7 +218,7 @@ print(documentContents)
 #   Steps 2 and 3 are encapsulated into a reusable utility called `getNodeDefinition()`  
 
 # %%
-def getNodeDefinition(category, desiredType):
+def getNodeDefinition(doc, category, desiredType):
     
     # 1. Search for appropriate 'image' catetory node definitions (nodedefs) 
     nodedefs = doc.getMatchingNodeDefs(category)
@@ -233,7 +235,7 @@ def getNodeDefinition(category, desiredType):
 searchCategory = 'image'
 searchType = 'color3'
 print('1. Scan for nodedef with category %s, type %s' % (searchCategory, searchType))
-desiredNodedef = getNodeDefinition(searchCategory, searchType)
+desiredNodedef = getNodeDefinition(doc, searchCategory, searchType)
 
 if desiredNodedef:
     print('2. Found matching definition:\n %s' % mx.prettyPrint(desiredNodedef)) 
@@ -260,21 +262,23 @@ else:
 #  In this example a [standard_surface](https://kwokcb.github.io/MaterialX_Learn/documents/definitions/standard_surface.html) node will be created.
 
 # %%
-shaderNode = None
-shadername = doc.createValidChildName("test_shader")
+def addNode(parent, definitionName, name):
+    newNode = None
 
-# Find the definition with the given name.
-nodedef = doc.getNodeDef('ND_standard_surface_surfaceshader')
-#print(mx.prettyPrint(nodedef))
+    doc = parent.getDocument()
+    nodedef = doc.getNodeDef(definitionName)
+    if nodedef:
+        childName = parent.createValidChildName(name)
+        newNode = parent.addNodeInstance(nodedef, childName)
+    return newNode    
 
-# Create an instance of the definition found.
-if nodedef:
-    shaderNode = doc.addNodeInstance(nodedef, shadername)    
+definitionName = 'ND_standard_surface_surfaceshader'
+nodeName = 'test_shader'
+shaderNode = addNode(doc, definitionName, nodeName)
 if shaderNode:
     shaderName = shaderNode.getName()
-    print('Created node via nodedef "%s"' % nodedef.getName())
+    print('Created node via nodedef "%s"' % definitionName)
     print(' - %s' % mx.prettyPrint(shaderNode))
-
 
 # %% [markdown]
 # **Performance Tip**
@@ -332,8 +336,7 @@ if baseColorInput and shaderNode:
 
 # %%
 # Add all inputs to see all the default values
-shadername2 = doc.createValidChildName("test_shader")
-shaderNode2 = doc.addNodeInstance(nodedef, shadername2)   
+shaderNode2 = addNode(doc, definitionName, nodeName)
 shaderNode2.addInputsFromNodeDef()
 print('2. Add all default input values on:\n%s' % mx.prettyPrint(shaderNode2))
 
@@ -383,12 +386,12 @@ if nodedef.getInput('base_color'):
 
 # %%
 # Method 1: Get descendent using name.
-shadernode = doc.getChild(shadername)
+shadernode = doc.getChild(nodeName)
 if shadernode:
-    print('- Found node by name:', shadername)
-shadernode = doc.getDescendant(shadername)
+    print('- Found node by name:', nodeName)
+shadernode = doc.getDescendant(nodeName)
 if shadernode:
-    print('- Found node by path:', shadername)
+    print('- Found node by path:', nodeName)
 
 
 # %% [markdown]

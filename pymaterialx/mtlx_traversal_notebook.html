@@ -14591,7 +14591,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14612,12 +14612,19 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <li><a href="https://materialx.org/docs/api/class_port_element.html" target="_blank">Port getConnectedNode()</a> for finding the node connected to an input. This uses the previous interface.</li>
 <li><a href="https://materialx.org/docs/api/class_input.html" target="_blank">Input getInterfaceInput()()</a>  for finding if an input is connected to an input interface on a node graph.</li>
 </ol>
+<blockquote>
+<p>Note that for diagramming <a href="https://github.com/AcademySoftwareFoundation/MaterialX/pull/1263" target="_blank">there is a PR underway</a> to add in a new <code>GraphIO</code> interface which would encapsulate the supported required for Mermaid and GraphViz Dot support.</p>
+</blockquote>
+<p>For this site all Mermaid diagrams are generated using this interface.</p>
+<blockquote>
+<p>The utilities (including Mermaid generation) in this tutorial are collected in the <code>mtlxutils</code> file: <a href="./mtlxutils/mxtraversal.py" target="_blank">mtlxutils/mxtraversal</a>.</p>
+</blockquote>
 
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14628,7 +14635,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14638,17 +14645,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">MaterialX</span> <span class="k">as</span> <span class="nn">mx</span>
 
-<span class="n">libraryPath</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">FilePath</span><span class="p">(</span><span class="s1">&#39;libraries&#39;</span><span class="p">)</span>
-<span class="n">stdlib</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
-<span class="n">searchPath</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">FileSearchPath</span><span class="p">()</span>
-<span class="n">libFiles</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">loadLibraries</span><span class="p">([</span> <span class="n">libraryPath</span> <span class="p">],</span> <span class="n">searchPath</span><span class="p">,</span> <span class="n">stdlib</span><span class="p">)</span>
+<span class="c1"># Version check</span>
+<span class="kn">from</span> <span class="nn">mtlxutils.mxbase</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">haveVersion1387</span> <span class="o">=</span> <span class="n">haveVersion</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span> 
+<span class="k">if</span> <span class="ow">not</span> <span class="n">haveVersion1387</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** Warning: Recommended version is 1.38.7 for tutorials. Have version: &quot;</span><span class="p">,</span> <span class="n">mx</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 
-<span class="n">doc</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
-<span class="n">doc</span><span class="o">.</span><span class="n">importLibrary</span><span class="p">(</span><span class="n">stdlib</span><span class="p">)</span>
-
-<span class="c1"># Write predicate</span>
-<span class="k">def</span> <span class="nf">skipLibraryElement</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-    <span class="k">return</span> <span class="ow">not</span> <span class="n">elem</span><span class="o">.</span><span class="n">hasSourceUri</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">mtlxutils.mxfile</span> <span class="kn">import</span> <span class="n">MtlxFile</span> <span class="k">as</span> <span class="n">mxf</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">creatwWorkingDocument</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -14657,7 +14661,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14677,7 +14681,7 @@ The key element that is returned from the iterator is an <a href="https://materi
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14709,7 +14713,7 @@ The key element that is returned from the iterator is an <a href="https://materi
 </div>
 
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14721,7 +14725,7 @@ The key element that is returned from the iterator is an <a href="https://materi
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14746,7 +14750,7 @@ The key element that is returned from the iterator is an <a href="https://materi
 </div>
 
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14763,7 +14767,7 @@ The key element that is returned from the iterator is an <a href="https://materi
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14772,7 +14776,7 @@ The key element that is returned from the iterator is an <a href="https://materi
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read in sample graph</span>
-<span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;standard_surface_marble_solid.mtlx&#39;</span><span class="p">)</span>
+<span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;data/standard_surface_marble_solid.mtlx&#39;</span><span class="p">)</span>
 
 <span class="c1"># Find the material nodes and traverse starting from them.</span>
 <span class="n">roots</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getMaterialNodes</span><span class="p">()</span>
@@ -14806,21 +14810,21 @@ The key element that is returned from the iterator is an <a href="https://materi
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Edge: NG_marble1/power --&gt; NG_marble1/color_mix/mix
+<pre>Edge: NG_marble1/add_xyz --&gt; NG_marble1/scale_xyz/in1
+Edge: NG_marble1/obj_pos --&gt; NG_marble1/add_xyz/in1
+Edge: NG_marble1/scale --&gt; NG_marble1/bias/in1
+Edge: NG_marble1/scale_xyz --&gt; NG_marble1/sum/in1
+Edge: NG_marble1/scale_pos --&gt; NG_marble1/noise/position
+Edge: NG_marble1/power --&gt; NG_marble1/color_mix/mix
+Edge: NG_marble1/bias --&gt; NG_marble1/power/in1
+Edge: NG_marble1/obj_pos --&gt; NG_marble1/scale_pos/in1
+Edge: NG_marble1/color_mix --&gt; SR_marble1/base_color
+Edge: NG_marble1/sin --&gt; NG_marble1/scale/in1
 Edge: NG_marble1/scale_noise --&gt; NG_marble1/sum/in2
 Edge: NG_marble1/noise --&gt; NG_marble1/scale_noise/in1
 Edge: NG_marble1/sum --&gt; NG_marble1/sin/in
-Edge: NG_marble1/scale_xyz --&gt; NG_marble1/sum/in1
 Edge: NG_marble1/color_mix --&gt; SR_marble1/subsurface_color
-Edge: NG_marble1/color_mix --&gt; SR_marble1/base_color
-Edge: NG_marble1/obj_pos --&gt; NG_marble1/scale_pos/in1
-Edge: NG_marble1/bias --&gt; NG_marble1/power/in1
-Edge: NG_marble1/add_xyz --&gt; NG_marble1/scale_xyz/in1
-Edge: NG_marble1/scale --&gt; NG_marble1/bias/in1
-Edge: NG_marble1/sin --&gt; NG_marble1/scale/in1
-Edge: NG_marble1/scale_pos --&gt; NG_marble1/noise/position
 Edge: SR_marble1 --&gt; Marble_3D/surfaceshader
-Edge: NG_marble1/obj_pos --&gt; NG_marble1/add_xyz/in1
 </pre>
 </div>
 </div>
@@ -14830,7 +14834,7 @@ Edge: NG_marble1/obj_pos --&gt; NG_marble1/add_xyz/in1
 </div>
 
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14842,7 +14846,7 @@ Edge: NG_marble1/obj_pos --&gt; NG_marble1/add_xyz/in1
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14929,21 +14933,21 @@ Edge: NG_marble1/obj_pos --&gt; NG_marble1/add_xyz/in1
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Root Document:
--  Marble_3D
 -  SR_marble1
+-  Marble_3D
 NG_marble1:
--  NG_marble1/add_xyz
--  NG_marble1/color_mix
--  NG_marble1/scale_xyz
 -  NG_marble1/noise
--  NG_marble1/scale
--  NG_marble1/obj_pos
+-  NG_marble1/bias
+-  NG_marble1/color_mix
 -  NG_marble1/scale_pos
--  NG_marble1/power
+-  NG_marble1/scale_xyz
+-  NG_marble1/scale_noise
 -  NG_marble1/sin
 -  NG_marble1/sum
--  NG_marble1/bias
--  NG_marble1/scale_noise
+-  NG_marble1/add_xyz
+-  NG_marble1/scale
+-  NG_marble1/obj_pos
+-  NG_marble1/power
 </pre>
 </div>
 </div>
@@ -14953,7 +14957,7 @@ NG_marble1:
 </div>
 
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14966,7 +14970,7 @@ A workflow where both are useful is to determine what children in a graph are no
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15029,7 +15033,7 @@ NG_marble1
 </div>
 
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15042,7 +15046,7 @@ of graphs. In this case we will create <a href="https://mermaid.js.org/" target=
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15056,7 +15060,7 @@ of graphs. In this case we will create <a href="https://mermaid.js.org/" target=
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15102,7 +15106,7 @@ of graphs. In this case we will create <a href="https://mermaid.js.org/" target=
 </div>
 
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15114,7 +15118,7 @@ queries the node graph dictionary to output each <code>GraphElement</code> item 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15147,7 +15151,7 @@ queries the node graph dictionary to output each <code>GraphElement</code> item 
 </div>
 
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15159,7 +15163,7 @@ to output and generates a string list containing the text for the Mermaid graph.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15222,34 +15226,34 @@ to output and generates a string list containing the text for the Mermaid graph.
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>  graph TB;
-    NG_marble1_scale[NG_marble1/scale] --&#34;.in1&#34;--&gt; NG_marble1_bias[NG_marble1/bias]
-    SR_marble1[SR_marble1] --&#34;.surfaceshader&#34;--&gt; Marble_3D[Marble_3D]
-    NG_marble1_add_xyz[NG_marble1/add_xyz] --&#34;.in1&#34;--&gt; NG_marble1_scale_xyz[NG_marble1/scale_xyz]
-    NG_marble1_scale_pos[NG_marble1/scale_pos] --&#34;.position&#34;--&gt; NG_marble1_noise[NG_marble1/noise]
-    NG_marble1_bias[NG_marble1/bias] --&#34;.in1&#34;--&gt; NG_marble1_power[NG_marble1/power]
-    NG_marble1_sum[NG_marble1/sum] --&#34;.in&#34;--&gt; NG_marble1_sin[NG_marble1/sin]
-    NG_marble1_scale_xyz[NG_marble1/scale_xyz] --&#34;.in1&#34;--&gt; NG_marble1_sum[NG_marble1/sum]
-    NG_marble1_obj_pos[NG_marble1/obj_pos] --&#34;.in1&#34;--&gt; NG_marble1_scale_pos[NG_marble1/scale_pos]
-    NG_marble1_obj_pos[NG_marble1/obj_pos] --&#34;.in1&#34;--&gt; NG_marble1_add_xyz[NG_marble1/add_xyz]
-    NG_marble1_power[NG_marble1/power] --&#34;.mix&#34;--&gt; NG_marble1_color_mix[NG_marble1/color_mix]
-    NG_marble1_color_mix[NG_marble1/color_mix] --&#34;.subsurface_color&#34;--&gt; SR_marble1[SR_marble1]
-    NG_marble1_color_mix[NG_marble1/color_mix] --&#34;.base_color&#34;--&gt; SR_marble1[SR_marble1]
-    NG_marble1_scale_noise[NG_marble1/scale_noise] --&#34;.in2&#34;--&gt; NG_marble1_sum[NG_marble1/sum]
-    NG_marble1_sin[NG_marble1/sin] --&#34;.in1&#34;--&gt; NG_marble1_scale[NG_marble1/scale]
     NG_marble1_noise[NG_marble1/noise] --&#34;.in1&#34;--&gt; NG_marble1_scale_noise[NG_marble1/scale_noise]
+    NG_marble1_scale_xyz[NG_marble1/scale_xyz] --&#34;.in1&#34;--&gt; NG_marble1_sum[NG_marble1/sum]
+    NG_marble1_color_mix[NG_marble1/color_mix] --&#34;.base_color&#34;--&gt; SR_marble1[SR_marble1]
+    SR_marble1[SR_marble1] --&#34;.surfaceshader&#34;--&gt; Marble_3D[Marble_3D]
+    NG_marble1_sum[NG_marble1/sum] --&#34;.in&#34;--&gt; NG_marble1_sin[NG_marble1/sin]
+    NG_marble1_add_xyz[NG_marble1/add_xyz] --&#34;.in1&#34;--&gt; NG_marble1_scale_xyz[NG_marble1/scale_xyz]
+    NG_marble1_power[NG_marble1/power] --&#34;.mix&#34;--&gt; NG_marble1_color_mix[NG_marble1/color_mix]
+    NG_marble1_scale[NG_marble1/scale] --&#34;.in1&#34;--&gt; NG_marble1_bias[NG_marble1/bias]
+    NG_marble1_bias[NG_marble1/bias] --&#34;.in1&#34;--&gt; NG_marble1_power[NG_marble1/power]
+    NG_marble1_sin[NG_marble1/sin] --&#34;.in1&#34;--&gt; NG_marble1_scale[NG_marble1/scale]
+    NG_marble1_obj_pos[NG_marble1/obj_pos] --&#34;.in1&#34;--&gt; NG_marble1_add_xyz[NG_marble1/add_xyz]
+    NG_marble1_obj_pos[NG_marble1/obj_pos] --&#34;.in1&#34;--&gt; NG_marble1_scale_pos[NG_marble1/scale_pos]
+    NG_marble1_color_mix[NG_marble1/color_mix] --&#34;.subsurface_color&#34;--&gt; SR_marble1[SR_marble1]
+    NG_marble1_scale_pos[NG_marble1/scale_pos] --&#34;.position&#34;--&gt; NG_marble1_noise[NG_marble1/noise]
+    NG_marble1_scale_noise[NG_marble1/scale_noise] --&#34;.in2&#34;--&gt; NG_marble1_sum[NG_marble1/sum]
 subgraph NG_marble1:
-   NG_marble1_add_xyz
-   NG_marble1_color_mix
-   NG_marble1_scale_xyz
    NG_marble1_noise
-   NG_marble1_scale
-   NG_marble1_obj_pos
+   NG_marble1_bias
+   NG_marble1_color_mix
    NG_marble1_scale_pos
-   NG_marble1_power
+   NG_marble1_scale_xyz
+   NG_marble1_scale_noise
    NG_marble1_sin
    NG_marble1_sum
-   NG_marble1_bias
-   NG_marble1_scale_noise
+   NG_marble1_add_xyz
+   NG_marble1_scale
+   NG_marble1_obj_pos
+   NG_marble1_power
 end
 </pre>
 </div>
@@ -15260,7 +15264,7 @@ end
 </div>
 
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15273,7 +15277,7 @@ end
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15292,7 +15296,7 @@ the upstream node has multiple outputs, and would be useful to be addressed in a
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15330,7 +15334,7 @@ the upstream node has multiple outputs, and would be useful to be addressed in a
 </div>
 
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15344,7 +15348,7 @@ the upstream node has multiple outputs, and would be useful to be addressed in a
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15426,7 +15430,7 @@ the upstream node has multiple outputs, and would be useful to be addressed in a
 </div>
 
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15437,7 +15441,7 @@ the upstream node has multiple outputs, and would be useful to be addressed in a
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15511,48 +15515,48 @@ the upstream node has multiple outputs, and would be useful to be addressed in a
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <pre><code>mermaid
   graph TB;
-    NG_marble1_noise_octaves([noise_octaves]) --&quot;.octaves&quot;--&gt; NG_marble1_noise
-    NG_marble1_bias[NG_marble1/bias] --&quot;.in1&quot;--&gt; NG_marble1_power[NG_marble1/power]
-    NG_marble1_scale_xyz[NG_marble1/scale_xyz] --&quot;.in1&quot;--&gt; NG_marble1_sum[NG_marble1/sum]
-    NG_marble1_base_color_1([base_color_1]) --&quot;.bg&quot;--&gt; NG_marble1_color_mix
-    NG_marble1_scale_noise[NG_marble1/scale_noise] --&quot;.in2&quot;--&gt; NG_marble1_sum[NG_marble1/sum]
-    NG_marble1_sin[NG_marble1/sin] --&quot;.in1&quot;--&gt; NG_marble1_scale[NG_marble1/scale]
-    NG_marble1_noise_scale_2([noise_scale_2]) --&quot;.in2&quot;--&gt; NG_marble1_scale_pos
-    NG_marble1_scale_pos[NG_marble1/scale_pos] --&quot;.position&quot;--&gt; NG_marble1_noise[NG_marble1/noise]
-    NG_marble1_noise_power([noise_power]) --&quot;.in2&quot;--&gt; NG_marble1_power
-    NG_marble1_scale[NG_marble1/scale] --&quot;.in1&quot;--&gt; NG_marble1_bias[NG_marble1/bias]
-    NG_marble1_add_xyz[NG_marble1/add_xyz] --&quot;.in1&quot;--&gt; NG_marble1_scale_xyz[NG_marble1/scale_xyz]
     NG_marble1_sum[NG_marble1/sum] --&quot;.in&quot;--&gt; NG_marble1_sin[NG_marble1/sin]
+    NG_marble1_obj_pos[NG_marble1/obj_pos] --&quot;.in1&quot;--&gt; NG_marble1_add_xyz[NG_marble1/add_xyz]
+    NG_marble1_base_color_2([base_color_2]) --&quot;.fg&quot;--&gt; NG_marble1_color_mix
+    NG_marble1_noise_scale_1([noise_scale_1]) --&quot;.in2&quot;--&gt; NG_marble1_scale_xyz
+    NG_marble1_base_color_1([base_color_1]) --&quot;.bg&quot;--&gt; NG_marble1_color_mix
+    NG_marble1_add_xyz[NG_marble1/add_xyz] --&quot;.in1&quot;--&gt; NG_marble1_scale_xyz[NG_marble1/scale_xyz]
+    NG_marble1_bias[NG_marble1/bias] --&quot;.in1&quot;--&gt; NG_marble1_power[NG_marble1/power]
+    NG_marble1_sin[NG_marble1/sin] --&quot;.in1&quot;--&gt; NG_marble1_scale[NG_marble1/scale]
+    NG_marble1_scale_pos[NG_marble1/scale_pos] --&quot;.position&quot;--&gt; NG_marble1_noise[NG_marble1/noise]
+    NG_marble1_color_mix[NG_marble1/color_mix] --&gt; NG_marble1_out[out]
+    NG_marble1_scale_xyz[NG_marble1/scale_xyz] --&quot;.in1&quot;--&gt; NG_marble1_sum[NG_marble1/sum]
+    SR_marble1[SR_marble1] --&quot;.surfaceshader&quot;--&gt; Marble_3D[Marble_3D]
+    NG_marble1_power[NG_marble1/power] --&quot;.mix&quot;--&gt; NG_marble1_color_mix[NG_marble1/color_mix]
+    NG_marble1_obj_pos[NG_marble1/obj_pos] --&quot;.in1&quot;--&gt; NG_marble1_scale_pos[NG_marble1/scale_pos]
+    NG_marble1_noise_scale_2([noise_scale_2]) --&quot;.in2&quot;--&gt; NG_marble1_scale_pos
     NG_marble1_out[NG_marble1/out] --&quot;.subsurface_color&quot;--&gt; SR_marble1[SR_marble1]
     NG_marble1_noise[NG_marble1/noise] --&quot;.in1&quot;--&gt; NG_marble1_scale_noise[NG_marble1/scale_noise]
-    SR_marble1[SR_marble1] --&quot;.surfaceshader&quot;--&gt; Marble_3D[Marble_3D]
-    NG_marble1_obj_pos[NG_marble1/obj_pos] --&quot;.in1&quot;--&gt; NG_marble1_scale_pos[NG_marble1/scale_pos]
-    NG_marble1_obj_pos[NG_marble1/obj_pos] --&quot;.in1&quot;--&gt; NG_marble1_add_xyz[NG_marble1/add_xyz]
-    NG_marble1_power[NG_marble1/power] --&quot;.mix&quot;--&gt; NG_marble1_color_mix[NG_marble1/color_mix]
+    NG_marble1_noise_power([noise_power]) --&quot;.in2&quot;--&gt; NG_marble1_power
+    NG_marble1_scale[NG_marble1/scale] --&quot;.in1&quot;--&gt; NG_marble1_bias[NG_marble1/bias]
     NG_marble1_out[NG_marble1/out] --&quot;.base_color&quot;--&gt; SR_marble1[SR_marble1]
-    NG_marble1_noise_scale_1([noise_scale_1]) --&quot;.in2&quot;--&gt; NG_marble1_scale_xyz
-    NG_marble1_base_color_2([base_color_2]) --&quot;.fg&quot;--&gt; NG_marble1_color_mix
-    NG_marble1_color_mix[NG_marble1/color_mix] --&gt; NG_marble1_out[out]
+    NG_marble1_noise_octaves([noise_octaves]) --&quot;.octaves&quot;--&gt; NG_marble1_noise
+    NG_marble1_scale_noise[NG_marble1/scale_noise] --&quot;.in2&quot;--&gt; NG_marble1_sum[NG_marble1/sum]
 subgraph NG_marble1:
-   NG_marble1_add_xyz
-   NG_marble1_scale
+   NG_marble1_noise
    NG_marble1_scale_pos
-   NG_marble1_power
-   NG_marble1_obj_pos
-   NG_marble1_sum
-   NG_marble1_scale_noise
-   NG_marble1_noise_octaves
+   NG_marble1_base_color_1
    NG_marble1_noise_scale_1
    NG_marble1_sin
-   NG_marble1_base_color_1
-   NG_marble1_noise_power
-   NG_marble1_bias
-   NG_marble1_noise_scale_2
-   NG_marble1_base_color_2
+   NG_marble1_scale
+   NG_marble1_power
    NG_marble1_color_mix
+   NG_marble1_noise_scale_2
+   NG_marble1_scale_noise
    NG_marble1_out
+   NG_marble1_add_xyz
+   NG_marble1_base_color_2
+   NG_marble1_obj_pos
+   NG_marble1_bias
    NG_marble1_scale_xyz
-   NG_marble1_noise
+   NG_marble1_sum
+   NG_marble1_noise_octaves
+   NG_marble1_noise_power
 end
 </code></pre>
 
@@ -15565,7 +15569,7 @@ end
 </div>
 
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

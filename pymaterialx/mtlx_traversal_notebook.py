@@ -15,6 +15,11 @@
 # 2. <a href="https://materialx.org/docs/api/class_port_element.html" target="_blank">Port getConnectedNode()</a> for finding the node connected to an input. This uses the previous interface.
 # 3. <a href="https://materialx.org/docs/api/class_input.html" target="_blank">Input getInterfaceInput()()</a>  for finding if an input is connected to an input interface on a node graph. 
 # 
+# > Note that for diagramming <a href="https://github.com/AcademySoftwareFoundation/MaterialX/pull/1263" target="_blank">there is a PR underway</a> to add in a new `GraphIO` interface which would encapsulate the supported required for Mermaid and GraphViz Dot support.
+# For this site all Mermaid diagrams are generated using this interface.
+# 
+# > The utilities (including Mermaid generation) in this tutorial are collected in the `mtlxutils` file: <a href="./mtlxutils/mxtraversal.py" target="_blank">mtlxutils/mxtraversal</a>.
+# 
 
 # %% [markdown]
 # ## Setup
@@ -24,17 +29,14 @@
 # %%
 import MaterialX as mx
 
-libraryPath = mx.FilePath('libraries')
-stdlib = mx.createDocument()
-searchPath = mx.FileSearchPath()
-libFiles = mx.loadLibraries([ libraryPath ], searchPath, stdlib)
+# Version check
+from mtlxutils.mxbase import *
+haveVersion1387 = haveVersion(1, 38,7) 
+if not haveVersion1387:
+    print("** Warning: Recommended version is 1.38.7 for tutorials. Have version: ", mx.__version__)
 
-doc = mx.createDocument()
-doc.importLibrary(stdlib)
-
-# Write predicate
-def skipLibraryElement(elem):
-    return not elem.hasSourceUri()
+from mtlxutils.mxfile import MtlxFile as mxf
+doc = mxf.creatwWorkingDocument()
 
 # %% [markdown]
 # ## GraphElement Traversal 
@@ -95,7 +97,7 @@ def findEdge(edge, processedEdges):
 
 # %%
 # Read in sample graph
-mx.readFromXmlFile(doc, 'standard_surface_marble_solid.mtlx')
+mx.readFromXmlFile(doc, 'data/standard_surface_marble_solid.mtlx')
 
 # Find the material nodes and traverse starting from them.
 roots = doc.getMaterialNodes()

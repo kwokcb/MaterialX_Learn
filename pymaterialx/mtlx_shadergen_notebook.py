@@ -52,6 +52,12 @@ import MaterialX.PyMaterialXGenGlsl as mx_gen_glsl
 import MaterialX.PyMaterialXGenOsl as mx_gen_osl
 import MaterialX.PyMaterialXGenMdl as mx_gen_mdl
 
+# Version check
+from mtlxutils.mxbase import *
+supportsMSL = haveVersion(1, 38, 7)
+if supportsMSL:
+    import MaterialX.PyMaterialXGenMsl as mx_gen_msl
+    print('Have required version for MSL')
 
 # %% [markdown]
 # ## Setup
@@ -110,7 +116,7 @@ def validateCode(sourceCodeFile, codevalidator, codevalidatorArgs):
 # %%
 # Read in MaterialX file
 #
-inputFilename = 'standard_surface_marble_solid.mtlx'
+inputFilename = 'data/standard_surface_marble_solid.mtlx'
 doc = mx.createDocument()
 try:
     mx.readFromXmlFile(doc, inputFilename)    
@@ -141,15 +147,25 @@ except mx.Exception as err:
 # │   ├───lama
 # │   └───translation
 # ├───lights
-# │   └───genglsl
+# │   ├───genglsl
+# │   └───genmsl
 # ├───pbrlib
-# │   ├───genglsl  <-- e.g. target 'genglsl's implementations reside here
+# │   ├───genglsl <-- e.g. target 'genglsl's implementations reside here
+# │   │   └───lib
 # │   ├───genmdl
+# │   ├───genmsl
 # │   └───genosl
+# │       ├───legacy
+# │       └───lib
 # ├───stdlib
 # │   ├───genglsl
+# │   │   └───lib
 # │   ├───genmdl
+# │   ├───genmsl
+# │   │   └───lib
 # │   └───genosl
+# │       ├───include
+# │       └───lib
 # └───targets
 # </pre>
 # 
@@ -245,7 +261,8 @@ for target in foundTargets:
 # 
 # <img src="https://kwokcb.github.io/MaterialX_Learn/documents/images/ShaderGenerator_inheritance.png" style="width:50%"></img>
 # 
-# Note that Vulkan has the same target as `genglsl`, but has it's own generator.
+# Note that Vulkan has the same target as `genglsl`, but has it's own generator. Also that the Metal generator will only show up
+# in the Mac build of documentation.
 # 
 # Integrations are free to create custom generators. Some notable existing generators include those used to support USD HDStorm, VEX, and Arnold OSL.
 # 
@@ -261,6 +278,8 @@ generators.append(mx_gen_osl.OslShaderGenerator.create())
 generators.append(mx_gen_mdl.MdlShaderGenerator.create())
 generators.append(mx_gen_glsl.EsslShaderGenerator.create())
 generators.append(mx_gen_glsl.VkShaderGenerator.create())
+if supportsMSL:
+    generators.append(mx_gen_msl.MslShaderGenerator.create())
 
 # Create a dictionary based on target identifier
 generatordict = {}
@@ -269,14 +288,16 @@ for gen in generators:
 
 # Choose generator to use based on target identifier
 language = 'mdl'
-target = 'genosl'
+target = 'genmdl'
 if language == 'osl':
     target = 'genosl'
 elif language == 'mdl':
     target = 'genmdl'
 elif language == 'essl':
     target = 'essl'
-elif language in ['essl', 'glsl', 'vulkan']:
+elif language == 'msl':
+    target = 'genmsl'
+elif language in ['glsl', 'vulkan']:
     target = 'genglsl'
 
 test_language = 'essl'

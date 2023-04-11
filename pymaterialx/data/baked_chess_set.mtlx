@@ -1,0 +1,609 @@
+<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+  <nodegraph name="NG_baked" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Bishop_B_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="metalness_baked" type="float">
+      <input name="file" type="filename" value="M_Bishop_B_standard_surface_metalness.png" />
+    </image>
+    <output name="metalness_output" type="float" nodename="metalness_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Bishop_B_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Bishop_B_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_Bishop_B_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Bishop_B_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Bishop_B_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked" />
+    <input name="metalness" type="float" output="metalness_output" nodegraph="NG_baked" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked" />
+  </standard_surface>
+  <surfacematerial name="M_Bishop_B_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Bishop_B_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked2" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Bishop_W_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="metalness_baked" type="float">
+      <input name="file" type="filename" value="M_Bishop_W_standard_surface_metalness.png" />
+    </image>
+    <output name="metalness_output" type="float" nodename="metalness_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Bishop_W_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Bishop_W_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_Bishop_W_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Bishop_W_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Bishop_W_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked2" />
+    <input name="metalness" type="float" output="metalness_output" nodegraph="NG_baked2" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked2" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked2" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked2" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked2" />
+  </standard_surface>
+  <surfacematerial name="M_Bishop_W_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Bishop_W_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked3" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Castle_B_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="metalness_baked" type="float">
+      <input name="file" type="filename" value="M_Castle_B_standard_surface_metalness.png" />
+    </image>
+    <output name="metalness_output" type="float" nodename="metalness_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Castle_B_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Castle_B_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_Castle_B_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Castle_B_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Castle_B_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked3" />
+    <input name="metalness" type="float" output="metalness_output" nodegraph="NG_baked3" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked3" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked3" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked3" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked3" />
+  </standard_surface>
+  <surfacematerial name="M_Castle_B_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Castle_B_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked4" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Castle_W_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="metalness_baked" type="float">
+      <input name="file" type="filename" value="M_Castle_W_standard_surface_metalness.png" />
+    </image>
+    <output name="metalness_output" type="float" nodename="metalness_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Castle_W_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Castle_W_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_Castle_W_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Castle_W_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Castle_W_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked4" />
+    <input name="metalness" type="float" output="metalness_output" nodegraph="NG_baked4" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked4" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked4" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked4" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked4" />
+  </standard_surface>
+  <surfacematerial name="M_Castle_W_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Castle_W_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked5" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Chessboard_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="metalness_baked" type="float">
+      <input name="file" type="filename" value="M_Chessboard_standard_surface_metalness.png" />
+    </image>
+    <output name="metalness_output" type="float" nodename="metalness_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Chessboard_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Chessboard_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_Chessboard_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Chessboard_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Chessboard_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked5" />
+    <input name="metalness" type="float" output="metalness_output" nodegraph="NG_baked5" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked5" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked5" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked5" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked5" />
+  </standard_surface>
+  <surfacematerial name="M_Chessboard_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Chessboard_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked6" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_King_B_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="metalness_baked" type="float">
+      <input name="file" type="filename" value="M_King_B_standard_surface_metalness.png" />
+    </image>
+    <output name="metalness_output" type="float" nodename="metalness_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_King_B_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_baked" type="float">
+      <input name="file" type="filename" value="M_King_B_standard_surface_subsurface.png" />
+    </image>
+    <output name="subsurface_output" type="float" nodename="subsurface_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_King_B_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_King_B_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_King_B_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="King_B_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked6" />
+    <input name="metalness" type="float" output="metalness_output" nodegraph="NG_baked6" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked6" />
+    <input name="subsurface" type="float" output="subsurface_output" nodegraph="NG_baked6" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked6" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked6" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked6" />
+  </standard_surface>
+  <surfacematerial name="M_King_B_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="King_B_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked7" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_King_W_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="metalness_baked" type="float">
+      <input name="file" type="filename" value="M_King_W_standard_surface_metalness.png" />
+    </image>
+    <output name="metalness_output" type="float" nodename="metalness_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_King_W_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_baked" type="float">
+      <input name="file" type="filename" value="M_King_W_standard_surface_subsurface.png" />
+    </image>
+    <output name="subsurface_output" type="float" nodename="subsurface_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_King_W_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_King_W_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_King_W_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="King_W_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked7" />
+    <input name="metalness" type="float" output="metalness_output" nodegraph="NG_baked7" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked7" />
+    <input name="subsurface" type="float" output="subsurface_output" nodegraph="NG_baked7" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked7" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked7" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked7" />
+  </standard_surface>
+  <surfacematerial name="M_King_W_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="King_W_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked8" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Knight_B_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Knight_B_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Knight_B_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_Knight_B_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Knight_B_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Knight_B_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked8" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked8" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked8" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked8" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked8" />
+  </standard_surface>
+  <surfacematerial name="M_Knight_B_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Knight_B_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked9" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Knight_W_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Knight_W_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Knight_W_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_Knight_W_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Knight_W_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Knight_W_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked9" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked9" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked9" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked9" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked9" />
+  </standard_surface>
+  <surfacematerial name="M_Knight_W_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Knight_W_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked10" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Pawn_Body_B_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="metalness_baked" type="float">
+      <input name="file" type="filename" value="M_Pawn_Body_B_standard_surface_metalness.png" />
+    </image>
+    <output name="metalness_output" type="float" nodename="metalness_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Pawn_Body_B_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Pawn_Body_B_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_Pawn_Body_B_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Pawn_Body_B_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Pawn_Body_B_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked10" />
+    <input name="metalness" type="float" output="metalness_output" nodegraph="NG_baked10" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked10" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked10" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked10" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked10" />
+  </standard_surface>
+  <surfacematerial name="M_Pawn_Body_B_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Pawn_Body_B_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked11" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Pawn_Body_W_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="metalness_baked" type="float">
+      <input name="file" type="filename" value="M_Pawn_Body_W_standard_surface_metalness.png" />
+    </image>
+    <output name="metalness_output" type="float" nodename="metalness_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Pawn_Body_W_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Pawn_Body_W_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_Pawn_Body_W_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Pawn_Body_W_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Pawn_Body_W_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked11" />
+    <input name="metalness" type="float" output="metalness_output" nodegraph="NG_baked11" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked11" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked11" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked11" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked11" />
+  </standard_surface>
+  <surfacematerial name="M_Pawn_Body_W_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Pawn_Body_W_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked12" colorspace="srgb_texture">
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Pawn_Top_B_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Pawn_Top_B_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Pawn_Top_B_baked" type="surfaceshader">
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked12" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked12" />
+    <input name="base_color" type="color3" value="1, 1, 1" />
+    <input name="transmission" type="float" value="1" />
+    <input name="transmission_color" type="color3" value="0.2995, 0.5, 0.450276" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" value="1, 1, 1" />
+    <input name="subsurface_radius" type="color3" value="1, 1, 1" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+  </standard_surface>
+  <surfacematerial name="M_Pawn_Top_B_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Pawn_Top_B_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked13" colorspace="srgb_texture">
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Pawn_Top_W_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Pawn_Top_W_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Pawn_Top_W_baked" type="surfaceshader">
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked13" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked13" />
+    <input name="base_color" type="color3" value="1, 1, 1" />
+    <input name="transmission" type="float" value="1" />
+    <input name="transmission_color" type="color3" value="1, 1, 0.828" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" value="1, 1, 1" />
+    <input name="subsurface_radius" type="color3" value="1, 1, 1" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+  </standard_surface>
+  <surfacematerial name="M_Pawn_Top_W_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Pawn_Top_W_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked14" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Queen_B_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="metalness_baked" type="float">
+      <input name="file" type="filename" value="M_Queen_B_standard_surface_metalness.png" />
+    </image>
+    <output name="metalness_output" type="float" nodename="metalness_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Queen_B_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_baked" type="float">
+      <input name="file" type="filename" value="M_Queen_B_standard_surface_subsurface.png" />
+    </image>
+    <output name="subsurface_output" type="float" nodename="subsurface_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Queen_B_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_Queen_B_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Queen_B_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Queen_B_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked14" />
+    <input name="metalness" type="float" output="metalness_output" nodegraph="NG_baked14" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked14" />
+    <input name="subsurface" type="float" output="subsurface_output" nodegraph="NG_baked14" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked14" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked14" />
+    <input name="subsurface_scale" type="float" value="0.003" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked14" />
+  </standard_surface>
+  <surfacematerial name="M_Queen_B_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Queen_B_baked" />
+  </surfacematerial>
+  <nodegraph name="NG_baked15" colorspace="srgb_texture">
+    <image name="base_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Queen_W_standard_surface_base_color.png" />
+    </image>
+    <output name="base_color_output" type="color3" nodename="base_color_baked" />
+    <image name="metalness_baked" type="float">
+      <input name="file" type="filename" value="M_Queen_W_standard_surface_metalness.png" />
+    </image>
+    <output name="metalness_output" type="float" nodename="metalness_baked" />
+    <image name="specular_roughness_baked" type="float">
+      <input name="file" type="filename" value="M_Queen_W_standard_surface_specular_roughness.png" />
+    </image>
+    <output name="specular_roughness_output" type="float" nodename="specular_roughness_baked" />
+    <image name="subsurface_baked" type="float">
+      <input name="file" type="filename" value="M_Queen_W_standard_surface_subsurface.png" />
+    </image>
+    <output name="subsurface_output" type="float" nodename="subsurface_baked" />
+    <image name="subsurface_color_baked" type="color3">
+      <input name="file" type="filename" value="M_Queen_W_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_color_output" type="color3" nodename="subsurface_color_baked" />
+    <image name="subsurface_radius_baked" type="color3">
+      <input name="file" type="filename" value="M_Queen_W_standard_surface_base_color.png" />
+    </image>
+    <output name="subsurface_radius_output" type="color3" nodename="subsurface_radius_baked" />
+    <image name="normal_baked" type="vector3">
+      <input name="file" type="filename" value="M_Queen_W_standard_surface_normal.png" />
+    </image>
+    <normalmap name="normal_baked_map" type="vector3">
+      <input name="in" type="vector3" nodename="normal_baked" />
+    </normalmap>
+    <output name="normal_output" type="vector3" nodename="normal_baked_map" />
+  </nodegraph>
+  <standard_surface name="Queen_W_baked" type="surfaceshader">
+    <input name="base_color" type="color3" output="base_color_output" nodegraph="NG_baked15" />
+    <input name="metalness" type="float" output="metalness_output" nodegraph="NG_baked15" />
+    <input name="specular_roughness" type="float" output="specular_roughness_output" nodegraph="NG_baked15" />
+    <input name="subsurface" type="float" output="subsurface_output" nodegraph="NG_baked15" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_output" nodegraph="NG_baked15" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_output" nodegraph="NG_baked15" />
+    <input name="subsurface_scale" type="float" value="0.001" />
+    <input name="normal" type="vector3" output="normal_output" nodegraph="NG_baked15" />
+  </standard_surface>
+  <surfacematerial name="M_Queen_W_baked" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Queen_W_baked" />
+  </surfacematerial>
+</materialx>

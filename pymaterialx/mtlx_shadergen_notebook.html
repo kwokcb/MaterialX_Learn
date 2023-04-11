@@ -14641,7 +14641,7 @@ The variants for GLSL include: <code>genglsl</code> and <code>genessl</code>, wh
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14655,11 +14655,39 @@ The variants for GLSL include: <code>genglsl</code> and <code>genessl</code>, wh
 <span class="kn">import</span> <span class="nn">MaterialX.PyMaterialXGenGlsl</span> <span class="k">as</span> <span class="nn">mx_gen_glsl</span>
 <span class="kn">import</span> <span class="nn">MaterialX.PyMaterialXGenOsl</span> <span class="k">as</span> <span class="nn">mx_gen_osl</span>
 <span class="kn">import</span> <span class="nn">MaterialX.PyMaterialXGenMdl</span> <span class="k">as</span> <span class="nn">mx_gen_mdl</span>
+
+<span class="c1"># Version check</span>
+<span class="kn">from</span> <span class="nn">mtlxutils.mxbase</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">supportsMSL</span> <span class="o">=</span> <span class="n">haveVersion</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">supportsMSL</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">MaterialX.PyMaterialXGenMsl</span> <span class="k">as</span> <span class="nn">mx_gen_msl</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Have required version for MSL&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Have required version for MSL
+</pre>
+</div>
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -14763,7 +14791,7 @@ provided for file I/O, code generation and rendering.</p>
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read in MaterialX file</span>
 <span class="c1">#</span>
-<span class="n">inputFilename</span> <span class="o">=</span> <span class="s1">&#39;standard_surface_marble_solid.mtlx&#39;</span>
+<span class="n">inputFilename</span> <span class="o">=</span> <span class="s1">&#39;data/standard_surface_marble_solid.mtlx&#39;</span>
 <span class="n">doc</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">inputFilename</span><span class="p">)</span>    
@@ -14797,7 +14825,7 @@ provided for file I/O, code generation and rendering.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Read in valid file &#34;standard_surface_marble_solid.mtlx&#34; for code generation.
+<pre>Read in valid file &#34;data/standard_surface_marble_solid.mtlx&#34; for code generation.
 </pre>
 </div>
 </div>
@@ -14822,15 +14850,25 @@ source code implementations.</p>
 │   ├───lama
 │   └───translation
 ├───lights
-│   └───genglsl
+│   ├───genglsl
+│   └───genmsl
 ├───pbrlib
-│   ├───genglsl  <-- e.g. target 'genglsl's implementations reside here
+│   ├───genglsl <-- e.g. target 'genglsl's implementations reside here
+│   │   └───lib
 │   ├───genmdl
+│   ├───genmsl
 │   └───genosl
+│       ├───legacy
+│       └───lib
 ├───stdlib
 │   ├───genglsl
+│   │   └───lib
 │   ├───genmdl
+│   ├───genmsl
+│   │   └───lib
 │   └───genosl
+│       ├───include
+│       └───lib
 └───targets
 </pre>
 <p>As this code is required for code generation to occur,  the standard <code>libraries</code> folder must be read in.</p>
@@ -15040,7 +15078,8 @@ For example the <code>essl</code> (ESSL) target inherits from the <code>genglsl<
 Inheritance is generally used to specialize code generation to handle shading language variations.</p>
 <p>For a list of generators and their derivations see documentation for the base class <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">ShaderGenerator</a></p>
 <p><img src="https://kwokcb.github.io/MaterialX_Learn/documents/images/ShaderGenerator_inheritance.png" style="width:50%"></img></p>
-<p>Note that Vulkan has the same target as <code>genglsl</code>, but has it's own generator.</p>
+<p>Note that Vulkan has the same target as <code>genglsl</code>, but has it's own generator. Also that the Metal generator will only show up
+in the Mac build of documentation.</p>
 <p>Integrations are free to create custom generators. Some notable existing generators include those used to support USD HDStorm, VEX, and Arnold OSL.</p>
 <p>Any such generator can be instantiated and use the same generation process as described here.</p>
 <p>For this example, we will show how all the the generators can be created, but will only produce OSL code via an <code>OslShaderGenerator</code> generator. This can be found in the <code>PyMaterialXGenOsl</code> Python submodule and corresponding <code>MaterialXGenOsl</code> library in C++.</p>
@@ -15062,6 +15101,8 @@ Inheritance is generally used to specialize code generation to handle shading la
 <span class="n">generators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mx_gen_mdl</span><span class="o">.</span><span class="n">MdlShaderGenerator</span><span class="o">.</span><span class="n">create</span><span class="p">())</span>
 <span class="n">generators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mx_gen_glsl</span><span class="o">.</span><span class="n">EsslShaderGenerator</span><span class="o">.</span><span class="n">create</span><span class="p">())</span>
 <span class="n">generators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mx_gen_glsl</span><span class="o">.</span><span class="n">VkShaderGenerator</span><span class="o">.</span><span class="n">create</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">supportsMSL</span><span class="p">:</span>
+    <span class="n">generators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mx_gen_msl</span><span class="o">.</span><span class="n">MslShaderGenerator</span><span class="o">.</span><span class="n">create</span><span class="p">())</span>
 
 <span class="c1"># Create a dictionary based on target identifier</span>
 <span class="n">generatordict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -15070,14 +15111,16 @@ Inheritance is generally used to specialize code generation to handle shading la
 
 <span class="c1"># Choose generator to use based on target identifier</span>
 <span class="n">language</span> <span class="o">=</span> <span class="s1">&#39;mdl&#39;</span>
-<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;genosl&#39;</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;genmdl&#39;</span>
 <span class="k">if</span> <span class="n">language</span> <span class="o">==</span> <span class="s1">&#39;osl&#39;</span><span class="p">:</span>
     <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;genosl&#39;</span>
 <span class="k">elif</span> <span class="n">language</span> <span class="o">==</span> <span class="s1">&#39;mdl&#39;</span><span class="p">:</span>
     <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;genmdl&#39;</span>
 <span class="k">elif</span> <span class="n">language</span> <span class="o">==</span> <span class="s1">&#39;essl&#39;</span><span class="p">:</span>
     <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;essl&#39;</span>
-<span class="k">elif</span> <span class="n">language</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;essl&#39;</span><span class="p">,</span> <span class="s1">&#39;glsl&#39;</span><span class="p">,</span> <span class="s1">&#39;vulkan&#39;</span><span class="p">]:</span>
+<span class="k">elif</span> <span class="n">language</span> <span class="o">==</span> <span class="s1">&#39;msl&#39;</span><span class="p">:</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;genmsl&#39;</span>
+<span class="k">elif</span> <span class="n">language</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;glsl&#39;</span><span class="p">,</span> <span class="s1">&#39;vulkan&#39;</span><span class="p">]:</span>
     <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;genglsl&#39;</span>
 
 <span class="n">test_language</span> <span class="o">=</span> <span class="s1">&#39;essl&#39;</span>
@@ -15774,8 +15817,8 @@ export material Marble_3D
 )
 = let
 {
-    float3 geomprop_Nworld_out = mx::stdlib::mx_normal_vector3(mxp_space:geomprop_Nworld_space);
-    float3 geomprop_Tworld_out = mx::stdlib::mx_tangent_vector3(mxp_space:geomprop_Tworld_space, mxp_index:geomprop_Tworld_index);
+    float3 geomprop_Nworld_out1 = mx::stdlib::mx_normal_vector3(mxp_space:geomprop_Nworld_space);
+    float3 geomprop_Tworld_out1 = mx::stdlib::mx_tangent_vector3(mxp_space:geomprop_Tworld_space, mxp_index:geomprop_Tworld_index);
     float3 obj_pos_out = mx::stdlib::mx_position_vector3(mxp_space:obj_pos_space);
     float add_xyz_out = math::dot(obj_pos_out, add_xyz_in2);
     float3 scale_pos_out = obj_pos_out * scale_pos_in2;
@@ -15788,7 +15831,7 @@ export material Marble_3D
     float bias_out = scale_out + bias_in2;
     float power_out = math::pow(bias_out, power_in2);
     color color_mix_out = math::lerp(color_mix_bg, color_mix_fg, power_out);
-    material SR_marble1_out = NG_standard_surface_surfaceshader_100(SR_marble1_base, color_mix_out, SR_marble1_diffuse_roughness, SR_marble1_metalness, SR_marble1_specular, SR_marble1_specular_color, SR_marble1_specular_roughness, SR_marble1_specular_IOR, SR_marble1_specular_anisotropy, SR_marble1_specular_rotation, SR_marble1_transmission, SR_marble1_transmission_color, SR_marble1_transmission_depth, SR_marble1_transmission_scatter, SR_marble1_transmission_scatter_anisotropy, SR_marble1_transmission_dispersion, SR_marble1_transmission_extra_roughness, SR_marble1_subsurface, color_mix_out, SR_marble1_subsurface_radius, SR_marble1_subsurface_scale, SR_marble1_subsurface_anisotropy, SR_marble1_sheen, SR_marble1_sheen_color, SR_marble1_sheen_roughness, SR_marble1_coat, SR_marble1_coat_color, SR_marble1_coat_roughness, SR_marble1_coat_anisotropy, SR_marble1_coat_rotation, SR_marble1_coat_IOR, geomprop_Nworld_out, SR_marble1_coat_affect_color, SR_marble1_coat_affect_roughness, SR_marble1_thin_film_thickness, SR_marble1_thin_film_IOR, SR_marble1_emission, SR_marble1_emission_color, SR_marble1_opacity, SR_marble1_thin_walled, geomprop_Nworld_out, geomprop_Tworld_out);
+    material SR_marble1_out = NG_standard_surface_surfaceshader_100(SR_marble1_base, color_mix_out, SR_marble1_diffuse_roughness, SR_marble1_metalness, SR_marble1_specular, SR_marble1_specular_color, SR_marble1_specular_roughness, SR_marble1_specular_IOR, SR_marble1_specular_anisotropy, SR_marble1_specular_rotation, SR_marble1_transmission, SR_marble1_transmission_color, SR_marble1_transmission_depth, SR_marble1_transmission_scatter, SR_marble1_transmission_scatter_anisotropy, SR_marble1_transmission_dispersion, SR_marble1_transmission_extra_roughness, SR_marble1_subsurface, color_mix_out, SR_marble1_subsurface_radius, SR_marble1_subsurface_scale, SR_marble1_subsurface_anisotropy, SR_marble1_sheen, SR_marble1_sheen_color, SR_marble1_sheen_roughness, SR_marble1_coat, SR_marble1_coat_color, SR_marble1_coat_roughness, SR_marble1_coat_anisotropy, SR_marble1_coat_rotation, SR_marble1_coat_IOR, geomprop_Nworld_out1, SR_marble1_coat_affect_color, SR_marble1_coat_affect_roughness, SR_marble1_thin_film_thickness, SR_marble1_thin_film_IOR, SR_marble1_emission, SR_marble1_emission_color, SR_marble1_opacity, SR_marble1_thin_walled, geomprop_Nworld_out1, geomprop_Tworld_out1);
     material Marble_3D_out = mx::stdlib::mx_surfacematerial(SR_marble1_out, displacementshader);
     material finalOutput__ = Marble_3D_out;
 }

@@ -9,6 +9,8 @@
 # 5. Creating a material and connecting the graph to the material.
 # 
 # At the end of this book, a simple shader graph will have been created. 
+# 
+# The utilities used in this tutorial are available in the `mtlxutils` file: <a href="./mtlxutils/mxnodegraph.py" target="_blank">mtlxutls/mxnodegraph.py</a> for reuse.
 
 # %% [markdown]
 # ## Setup
@@ -21,6 +23,12 @@
 
 # %%
 import MaterialX as mx
+
+# Version check
+from mtlxutils.mxbase import *
+haveVersion1387 = haveVersion(1, 38, 7) 
+if not haveVersion1387:
+    print("** Warning: Recommended minimum version is 1.38.7 for tutorials. Have version: ", mx.__version__)
 
 libraryPath = mx.FilePath('libraries')
 stdlib = mx.createDocument()
@@ -46,11 +54,18 @@ def skipLibraryElement(elem):
 # 
 
 # %%
-# Create a uniquely named node graph container under the parent document
-nodeGraphName = doc.createValidChildName("test_nodegraph")
+def addNodeGraph(parent, name):
+    """
+    Add named nodegraph under parent
+    """
+    # Create a uniquely named node graph container under the parent document
+    childName = parent.createValidChildName(name)
+    
+    # Create the node graph
+    nodegraph = parent.addChildOfCategory('nodegraph', childName)
+    return nodegraph
 
-# Create the node graph
-nodeGraph = doc.addNodeGraph(nodeGraphName)
+nodeGraph = addNodeGraph(doc,"test_nodegraph")
 if nodeGraph:
     print('Created nodegraph:', nodeGraph.getNamePath()) 
 
@@ -69,10 +84,20 @@ if nodeGraph:
 # In this case we want to create a graph which outputs a `surfaceshader`.
 
 # %%
-# Create an output with a unique name and proper type
+def addNodeGraphOutput(parent, type, name='out'):
+    """
+    Create an output with a unique name and proper type
+    """
+    if not parent.isA(mx.NodeGraph):
+        return None
+    
+    newOutput = None
+    childName = parent.createValidChildName(name)
+    newOutput = parent.addOutput(childName, type)
+    return newOutput
+
 type = 'surfaceshader'
-name = doc.createValidChildName('out')
-graphOutput = nodeGraph.addOutput(name, type)
+graphOutput = addNodeGraphOutput(nodeGraph, type)
 
 # Print the graph
 text = mx.prettyPrint(nodeGraph).split("\n")
@@ -103,7 +128,7 @@ print('Path to output is: "%s"' % graphOutput.getNamePath())
 # A utility called `createNode()` is added for reuse. 
 
 # %%
-def createNode(definitionName, parent, name):
+def addNode(definitionName, parent, name):
     "Utility to create a node under a given parent using a definition name and desired instance name"
     nodeName = parent.createValidChildName(name)
     nodedef = doc.getNodeDef(definitionName)
@@ -115,7 +140,7 @@ def createNode(definitionName, parent, name):
         print('Cannot find nodedef:',  definitionName)
     return None
 
-shaderNode = createNode('ND_standard_surface_surfaceshader', nodeGraph, 'test_shader')
+shaderNode = addNode('ND_standard_surface_surfaceshader', nodeGraph, 'test_shader')
 if shaderNode:
     print('- Create shader node with path:', shaderNode.getNamePath())
 
@@ -406,7 +431,7 @@ documentContents = mx.writeToXmlString(doc, writeOptions)
 print(documentContents)
 
 # Save document
-mx.writeToXmlFile(doc, 'sample_nodegraph.mtlx', writeOptions)
+mx.writeToXmlFile(doc, 'data/sample_nodegraph.mtlx', writeOptions)
 
 # %% [markdown]
 # ## Connecting Node to a NodeGraph
@@ -415,7 +440,7 @@ mx.writeToXmlFile(doc, 'sample_nodegraph.mtlx', writeOptions)
 
 # %%
 # Create  material node 
-materialNode = createNode('ND_surfacematerial', doc, 'my_material')
+materialNode = addNode('ND_surfacematerial', doc, 'my_material')
 if materialNode:
     print('Create material node:', materialNode.getName())
 
@@ -440,13 +465,14 @@ for t in text:
 # Check the entire document
 doc.validate()
 writeOptions = mx.XmlWriteOptions()
-writeOptions.writeXIncludeEnable = False
-writeOptions.elementPredicate = skipLibraryElement
+if haveVersion1387:
+    writeOptions.writeXIncludeEnable = False
+    writeOptions.elementPredicate = skipLibraryElement
 documentContents = mx.writeToXmlString(doc, writeOptions)
 print(documentContents)
 
 # Save document
-mx.writeToXmlFile(doc, 'sample_nodegraph.mtlx', writeOptions)
+mx.writeToXmlFile(doc, 'data/sample_nodegraph.mtlx', writeOptions)
 
 # %% [markdown]
 #  ## Removing Input Interfaces
