@@ -30,10 +30,14 @@ haveVersion1387 = haveVersion(1, 38, 7)
 if not haveVersion1387:
     print("** Warning: Recommended minimum version is 1.38.7 for tutorials. Have version: ", mx.__version__)
 
-libraryPath = mx.FilePath('libraries')
 stdlib = mx.createDocument()
-searchPath = mx.FileSearchPath()
-libFiles = mx.loadLibraries([ libraryPath ], searchPath, stdlib)
+searchPath = mx.getDefaultDataSearchPath()
+libraryFolders = mx.getDefaultDataLibraryFolders()
+try:
+    libFiles = mx.loadLibraries(libraryFolders, searchPath, stdlib)
+    print('Loaded %s standard library definitions' % len(stdlib.getNodeDefs()))
+except mx.Exception as err:
+    print('Failed to load standard library definitions: "', err, '"')
 
 doc = mx.createDocument()
 doc.importLibrary(stdlib)
@@ -128,7 +132,7 @@ print('Path to output is: "%s"' % graphOutput.getNamePath())
 # A utility called `createNode()` is added for reuse. 
 
 # %%
-def addNode(definitionName, parent, name):
+def createNode(definitionName, parent, name):
     "Utility to create a node under a given parent using a definition name and desired instance name"
     nodeName = parent.createValidChildName(name)
     nodedef = doc.getNodeDef(definitionName)
@@ -140,7 +144,7 @@ def addNode(definitionName, parent, name):
         print('Cannot find nodedef:',  definitionName)
     return None
 
-shaderNode = addNode('ND_standard_surface_surfaceshader', nodeGraph, 'test_shader')
+shaderNode = createNode('ND_standard_surface_surfaceshader', nodeGraph, 'test_shader')
 if shaderNode:
     print('- Create shader node with path:', shaderNode.getNamePath())
 
@@ -166,7 +170,9 @@ for t in text:
 def connectOutputToOutput(outputPort, upstream, upstreamOutputName):
     "Utility to connect a downstream output to an upstream node / node output"
     "If the types differ then no connection is made"
-
+    if not upstream:
+        return
+    
     upstreamType = upstream.getType()
 
     # Check for an explicit upstream output on the upstream node
@@ -349,7 +355,7 @@ for t in text:
 # We will again write a utility to hide some of the syntactic peculiarities.
 
 # %%
-def publishInterface(nodegraph, interfaceName, internalInput):
+def connectInterface(nodegraph, interfaceName, internalInput):
     "Add an interface input to a nodegraph if it does not already exist." 
     "Connect the interface to the internal input. Returns interface input"
 
@@ -399,13 +405,13 @@ imageFileInput = imageNode.addInputFromNodeDef('file')
 imageFileInputType = imageFileInput.getType()
 imageFileInput.setValue("checker.png", imageFileInputType)
 # Connect it to interface intput on "input_file"  
-publishInterface(nodeGraph, "input_file", imageNode.getInput('file'))
+connectInterface(nodeGraph, "input_file", imageNode.getInput('file'))
 
 
 # Second example to publish 'base' as an interface. "Transfer"
 # the default value from 'base' on the shader node to the interfce input. 
 baseInput = shaderNode.addInputFromNodeDef('base')
-publishInterface(nodeGraph, "color_scale", baseInput)
+connectInterface(nodeGraph, "color_scale", baseInput)
 
 # Check the graph
 text = mx.prettyPrint(nodeGraph).split("\n")
@@ -414,7 +420,7 @@ for t in text:
 
 # Variation of above, where a non-default value is published
 baseInput.setValue(0.2, baseInput.getType())
-publishInterface(nodeGraph, "color_scale", baseInput)
+connectInterface(nodeGraph, "color_scale", baseInput)
 
 # Check the graph
 text = mx.prettyPrint(nodeGraph).split("\n")
@@ -440,7 +446,7 @@ mx.writeToXmlFile(doc, 'data/sample_nodegraph.mtlx', writeOptions)
 
 # %%
 # Create  material node 
-materialNode = addNode('ND_surfacematerial', doc, 'my_material')
+materialNode = createNode('ND_surfacematerial', doc, 'my_material')
 if materialNode:
     print('Create material node:', materialNode.getName())
 
@@ -482,7 +488,7 @@ mx.writeToXmlFile(doc, 'data/sample_nodegraph.mtlx', writeOptions)
 #  the input. 
 
 # %%
-def unpublishInterface(nodegraph, interfaceName):
+def unconnectInterface(nodegraph, interfaceName):
     
     interfaceInput = nodegraph.getInput(interfaceName)
     if not interfaceInput:
@@ -511,7 +517,7 @@ def unpublishInterface(nodegraph, interfaceName):
     nodegraph.removeChild(interfaceName)
 
 
-unpublishInterface(nodeGraph, "color_scale")
+unconnectInterface(nodeGraph, "color_scale")
 
 # Check the graph
 text = mx.prettyPrint(nodeGraph).split("\n")

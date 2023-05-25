@@ -26,7 +26,7 @@
 * [surfacematerial](#node-surfacematerial) [volumematerial](#node-volumematerial) 
 ---------
 ### Node Group: math
-* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [arrayappend](#node-arrayappend) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) 
+* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [arrayappend](#node-arrayappend) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) 
 ---------
 ### Node Group: organization
 * [dot](#node-dot) 
@@ -35,7 +35,7 @@
 * [constant](#node-constant) 
 ---------
 ### Node Group: procedural2d
-* [cellnoise2d](#node-cellnoise2d) [noise2d](#node-noise2d) [ramp4](#node-ramp4) [ramplr](#node-ramplr) [ramptb](#node-ramptb) [splitlr](#node-splitlr) [splittb](#node-splittb) [unifiednoise2d](#node-unifiednoise2d) [worleynoise2d](#node-worleynoise2d) 
+* [cellnoise2d](#node-cellnoise2d) [checkerboard](#node-checkerboard) [noise2d](#node-noise2d) [ramp4](#node-ramp4) [ramplr](#node-ramplr) [ramptb](#node-ramptb) [splitlr](#node-splitlr) [splittb](#node-splittb) [unifiednoise2d](#node-unifiednoise2d) [worleynoise2d](#node-worleynoise2d) 
 ---------
 ### Node Group: procedural3d
 * [cellnoise3d](#node-cellnoise3d) [fractal3d](#node-fractal3d) [noise3d](#node-noise3d) [unifiednoise3d](#node-unifiednoise3d) [worleynoise3d](#node-worleynoise3d) 
@@ -3210,6 +3210,60 @@ graph LR;
 | **diminish** | float | 0.5 | Diminish |  |  | 0.0 | 1.0 |  | Fractal |  | The rate at which noise amplitude is diminished for each octave of Fractal noise. Default is 0.5. |  |
 | **type** | integer | 0 | Noise Type |  |  | 0 | 3 |  | Common |  | Menu to select the type of noise: Perlin, Cell, Worley, or Fractal. Default is Perlin. |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+### Category: *checkerboard*
+<details><summary>ND_checkerboard_color3</summary>
+<p>
+ 
+* *Nodedef*: ND_checkerboard_color3
+* *Type*: color3
+* *Node Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_checkerboard_color3
+
+
+```mermaid
+graph LR; 
+    NG_checkerboard_color3_N_mix_color3[mix] --> NG_checkerboard_color3_out([out])
+    style NG_checkerboard_color3_out fill:#1b1, color:#111
+    NG_checkerboard_color3_color2INT([color2]) ==.bg==> NG_checkerboard_color3_N_mix_color3[mix]
+    style NG_checkerboard_color3_color2INT fill:#0bb, color:#111
+    NG_checkerboard_color3_color1INT([color1]) ==.fg==> NG_checkerboard_color3_N_mix_color3[mix]
+    style NG_checkerboard_color3_color1INT fill:#0bb, color:#111
+    NG_checkerboard_color3_N_mtlxifequal2{ifequal} --".mix"--> NG_checkerboard_color3_N_mix_color3[mix]
+    NG_checkerboard_color3_N_mtlxadd2[add] --".value1"--> NG_checkerboard_color3_N_mtlxifequal2{ifequal}
+    NG_checkerboard_color3_N_mtlxfloor2[floor] --".in1"--> NG_checkerboard_color3_N_mtlxadd2[add]
+    NG_checkerboard_color3_N_mtlxmodulo1[modulo] --".in"--> NG_checkerboard_color3_N_mtlxfloor2[floor]
+    NG_checkerboard_color3_N_mtlxseparate2[separate2] --> NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx([outx])
+    style NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx fill:#1b1, color:#111
+    NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx --".in1"--> NG_checkerboard_color3_N_mtlxmodulo1[modulo]
+    NG_checkerboard_color3_N_mtlxplace2d1[place2d] --".in"--> NG_checkerboard_color3_N_mtlxseparate2[separate2]
+    NG_checkerboard_color3_offsetINT([offset]) ==.offset==> NG_checkerboard_color3_N_mtlxplace2d1[place2d]
+    style NG_checkerboard_color3_offsetINT fill:#0bb, color:#111
+    NG_checkerboard_color3_N_mult[multiply] --".texcoord"--> NG_checkerboard_color3_N_mtlxplace2d1[place2d]
+    NG_checkerboard_color3_texcoordINT([texcoord]) ==.in1==> NG_checkerboard_color3_N_mult[multiply]
+    style NG_checkerboard_color3_texcoordINT fill:#0bb, color:#111
+    NG_checkerboard_color3_freqINT([freq]) ==.in2==> NG_checkerboard_color3_N_mult[multiply]
+    style NG_checkerboard_color3_freqINT fill:#0bb, color:#111
+    NG_checkerboard_color3_N_mtlxfloor3[floor] --".in2"--> NG_checkerboard_color3_N_mtlxadd2[add]
+    NG_checkerboard_color3_N_mtlxmodulo2[modulo] --".in"--> NG_checkerboard_color3_N_mtlxfloor3[floor]
+    NG_checkerboard_color3_N_mtlxseparate2[separate2] --> NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy([outy])
+    style NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy fill:#1b1, color:#111
+    NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy --".in1"--> NG_checkerboard_color3_N_mtlxmodulo2[modulo]
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **color1** | color3 | 1, 1, 1 | Color 1 |  |  |  |  |  |  |  | The first color used in the checkerboard pattern. |  |
+| **color2** | color3 | 0, 0, 0 | Color 2 |  |  |  |  |  |  |  | The second color used in the checkerboard pattern. |  |
+| **freq** | vector2 | 8, 8 | Frequency |  |  |  |  |  |  |  | The frequency of checkers, with higher values producing smaller squares. Default is (8, 8). |  |
+| **offset** | vector2 | 0, 0 | Offset |  |  |  |  |  |  |  | Shift the pattern in 2d space. Default is (0, 0). |  |
+| **texcoord** | vector2 | None | Texture Coordinates |  |  |  |  |  |  |  | The input 2d space. Default is the first texture coordinates. |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
 ### Category: *position*
@@ -7010,6 +7064,100 @@ graph LR;
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+### Category: *distance*
+<details><summary>ND_distance_vector2</summary>
+<p>
+ 
+* *Nodedef*: ND_distance_vector2
+* *Type*: float
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_distance_vector2
+
+
+```mermaid
+graph LR; 
+    NG_distance_vector2_N_mtlxmagnitude[magnitude] --> NG_distance_vector2_out([out])
+    style NG_distance_vector2_out fill:#1b1, color:#111
+    NG_distance_vector2_N_mtlxsubtract[subtract] --".in"--> NG_distance_vector2_N_mtlxmagnitude[magnitude]
+    NG_distance_vector2_in1INT([in1]) ==.in1==> NG_distance_vector2_N_mtlxsubtract[subtract]
+    style NG_distance_vector2_in1INT fill:#0bb, color:#111
+    NG_distance_vector2_in2INT([in2]) ==.in2==> NG_distance_vector2_N_mtlxsubtract[subtract]
+    style NG_distance_vector2_in2INT fill:#0bb, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | vector2 | 0, 0 | in1 |  |  |  |  |  |  |  |  |  |
+| **in2** | vector2 | 0, 0 | in2 |  |  |  |  |  |  |  |  |  |
+| *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_distance_vector3</summary>
+<p>
+ 
+* *Nodedef*: ND_distance_vector3
+* *Type*: float
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_distance_vector3
+
+
+```mermaid
+graph LR; 
+    NG_distance_vector3_N_mtlxmagnitude[magnitude] --> NG_distance_vector3_out([out])
+    style NG_distance_vector3_out fill:#1b1, color:#111
+    NG_distance_vector3_N_mtlxsubtract[subtract] --".in"--> NG_distance_vector3_N_mtlxmagnitude[magnitude]
+    NG_distance_vector3_in1INT([in1]) ==.in1==> NG_distance_vector3_N_mtlxsubtract[subtract]
+    style NG_distance_vector3_in1INT fill:#0bb, color:#111
+    NG_distance_vector3_in2INT([in2]) ==.in2==> NG_distance_vector3_N_mtlxsubtract[subtract]
+    style NG_distance_vector3_in2INT fill:#0bb, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | vector3 | 0, 0, 0 | in1 |  |  |  |  |  |  |  |  |  |
+| **in2** | vector3 | 0, 0, 0 | in2 |  |  |  |  |  |  |  |  |  |
+| *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_distance_vector4</summary>
+<p>
+ 
+* *Nodedef*: ND_distance_vector4
+* *Type*: float
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_distance_vector4
+
+
+```mermaid
+graph LR; 
+    NG_distance_vector4_N_mtlxmagnitude[magnitude] --> NG_distance_vector4_out([out])
+    style NG_distance_vector4_out fill:#1b1, color:#111
+    NG_distance_vector4_N_mtlxsubtract[subtract] --".in"--> NG_distance_vector4_N_mtlxmagnitude[magnitude]
+    NG_distance_vector4_in1INT([in1]) ==.in1==> NG_distance_vector4_N_mtlxsubtract[subtract]
+    style NG_distance_vector4_in1INT fill:#0bb, color:#111
+    NG_distance_vector4_in2INT([in2]) ==.in2==> NG_distance_vector4_N_mtlxsubtract[subtract]
+    style NG_distance_vector4_in2INT fill:#0bb, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | vector4 | 0, 0, 0, 0 | in1 |  |  |  |  |  |  |  |  |  |
+| **in2** | vector4 | 0, 0, 0, 0 | in2 |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  

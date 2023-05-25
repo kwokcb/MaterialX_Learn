@@ -16,19 +16,22 @@
 # %% [markdown]
 # ## 1. Usd Setup
 # 
-# To use Usd the "core" package can be installed as follows: 
+# To use Usd the "core" package can be installed as follows. Note that Usd `23.2` and `23.5` have been tested with this notebook along with MaterialX `1.38.7`. 
 
 # %%
-#pip install usd-core
+pip install usd-core
 
 # %% [markdown]
 # After installation various packages can be imported.  `Usd`, `UsdShade`, `Sdf`, and `Gf` are the main packages used. The MaterialX package is also imported. 
+# | Note that the definition registry (`Sdr`) does not contain any MaterialX definitions.
 
 # %%
 from pxr import Usd
 from pxr import UsdShade
 from pxr import Sdf
 from pxr import Gf
+from pxr import UsdGeom
+from pxr import Sdr
 
 # For Markdown output display
 from IPython.display import display_markdown
@@ -37,6 +40,8 @@ import MaterialX as mx
 
 major, minor, build = Usd.GetVersion() 
 print('Using Usd Version:', str(major) + "." + str(minor) + "." + str(build))
+if Sdr.Registry():
+    print('- Sdr nodes {', ', '.join(Sdr.Registry().GetNodeNames()), '}')
 print('Using MaterialX Version:', mx.getVersionString())
 
 # %% [markdown]
@@ -52,8 +57,8 @@ stage = Usd.Stage.Open(layer)
 
 # Print as String
 stringResult = layer.ExportToString()
-display_markdown('### Flattened Usd File', raw=True)
-display_markdown('```usd\n' + stringResult + '\n```\n', raw=True)
+text = '<details><summary>Flattened Usd File</summary>\n\n' + '```usd\n' + stringResult + '```\n' + '</details>\n' 
+display_markdown(text , raw=True)
 
 # %% [markdown]
 # ## 2. Usd Traversal
@@ -69,7 +74,14 @@ def printChildren(indent, prim):
     children = prim.GetChildren()
     for child in children:
         if child:
-            print('%s - Name %s, Path %s' % (indent, child.GetName(), child.GetPrimPath())) 
+            primtype = 'node'
+            if child.IsA(UsdShade.Material):
+                primtype = 'material'
+            elif child.IsA(UsdShade.NodeGraph):
+                primtype = 'graph'
+            elif child.IsA(UsdShade.Shader):
+                primtype = 'shader'
+            print('%s - Name %s, Type %s Path %s' % (indent, child.GetName(), primtype, child.GetPrimPath())) 
             for attr in child.GetAttributes():
                 if attr.Get():
                     print(indent, '  -', attr.GetName() + ' : ', attr.Get())
@@ -77,6 +89,9 @@ def printChildren(indent, prim):
 
 # Print out tree
 printChildren(' ', prim)
+
+# %%
+
 
 # %% [markdown]
 # ## 3. Examining Shader Graphs
@@ -106,15 +121,16 @@ def printShaderNodes(indent, prim):
     Print out shader node information
     """
     # Use RTTI to find the desired types
-    if prim.IsA(UsdShade.NodeGraph):
+    if prim.IsA(UsdShade.Material): 
+        print(indent, '- Material %s, Path %s' % (prim.GetName(), prim.GetPrimPath()))
+        material = UsdShade.Material(prim)
+        printValueElements(material, indent + '  ')
+
+    elif prim.IsA(UsdShade.NodeGraph):
         print(indent, '- Nodegraph: %s, Path %s' % (prim.GetName(), prim.GetPrimPath()))
         nodegraph = UsdShade.NodeGraph(prim)
         printValueElements(nodegraph, indent + '  ')
 
-    elif prim.IsA(UsdShade.Material): 
-        print(indent, '- Material %s, Path %s' % (prim.GetName(), prim.GetPrimPath()))
-        material = UsdShade.Material(prim)
-        printValueElements(material, indent + '  ')
 
     elif prim.IsA(UsdShade.Shader): 
         shader = UsdShade.Shader(prim)
@@ -133,6 +149,9 @@ def printShaderNodes(indent, prim):
 prim = stage.GetPrimAtPath('/')
 printShaderNodes(' ', prim)
 
+materials = [x for x in stage.Traverse() if x.IsA(UsdShade.Material)]
+
+
 # %% [markdown]
 # ## 4. Usd to MaterialX Translation
 # 
@@ -149,13 +168,32 @@ printShaderNodes(' ', prim)
 
 # %%
 # Perform basic setup
-libraryPath = mx.FilePath('libraries')
-stdlib = mx.createDocument()
-searchPath = mx.FileSearchPath()
-libFiles = mx.loadLibraries([ libraryPath ], searchPath, stdlib)
+def haveVersion(major, minor, patch):
+    """
+    Check if the current vesion matches a given version
+    """ 
+    imajor, iminor, ipatch = mx.getVersionIntegers()
+    if imajor < major:
+        return False
+    if iminor < minor:
+        return False
+    if ipatch < patch:
+        return False
+    return True
 
+stdlib = mx.createDocument()
+libFiles = []
+if haveVersion(1, 38, 7):
+    searchPath = mx.getDefaultDataSearchPath()
+    libFiles = mx.loadLibraries(mx.getDefaultDataLibraryFolders(), searchPath, stdlib)
+else:
+    libraryPath = mx.FilePath('libraries')
+    searchPath = mx.FileSearchPath()
+    libFiles = mx.loadLibraries([ libraryPath ], searchPath, stdlib)
+    
 doc = mx.createDocument()
 doc.importLibrary(stdlib)
+print('Created working document. Loaded in %d definitions' % len(doc.getNodeDefs()))
 
 # Write predicate
 def skipLibraryElement(elem):
@@ -184,6 +222,8 @@ def mapUsdTypeToMtlx(usdType):
     mtlxType = 'color3'
     if 'color3' in usdTypeString:
         mtlxType ='color3'
+    elif 'color4' in usdTypeString:
+        mtlxType ='color4'
     elif 'float4' in usdTypeString:
         mtlxType ='vector4'
     elif 'vector3' in usdTypeString:
@@ -292,12 +332,12 @@ def mapUsdSdfTypeToMtlx(usdType):
 def isMultiOutput(prim):
     """ Test if the Usd prim has multiple outputs """
     outputCount = 0
-    if prim.IsA(UsdShade.NodeGraph):
-        usdNodegraph = UsdShade.NodeGraph(prim)
-        outputCount = len(usdNodegraph.GetOutputs())
-    elif prim.IsA(UsdShade.Material): 
+    if prim.IsA(UsdShade.Material): 
         usdMaterial = UsdShade.Material(prim)
         outputCount = len(usdMaterial.GetOutputs())
+    elif prim.IsA(UsdShade.NodeGraph):
+        usdNodegraph = UsdShade.NodeGraph(prim)
+        outputCount = len(usdNodegraph.GetOutputs())
     elif prim.IsA(UsdShade.Shader):     
         usdShader = UsdShade.Shader(prim)
         outputCount = len(usdShader.GetOutputs())
@@ -334,92 +374,96 @@ def isMultiOutput(prim):
 # (*) MaterialX only allows either a connection or value to be specified on a port.
 
 # %%
-def mapUsdTokenToType(mtlxType, usdBaseName):
+def mapUsdTokenToType(mtlxType, usdBaseName, mtlxPrefix=False):
     """
     Utility to test the base name for a semantic match to a surface or displacement shader
     If found return the appropriate MaterialX type. Othewise the type is simply `token`.
+    Note: Only types specified with 'mtlx' are considered to be MaterialX shader, if mtlxPrefix is set to True
     """
     usdBaseNameSplit = mx.splitString(usdBaseName, ':')
     testName = usdBaseNameSplit[len(usdBaseNameSplit)-1]            
-    if 'displacement' == str(testName) or 'displacementshader' == str(testName):
-        mtlxType = 'displacementshader'
-    elif 'surface' == str(testName) or 'surfaceshader' == str(testName):
-        mtlxType = 'surfaceshader'
+    if not mtlxPrefix or (mtlxPrefix and 'mtlx' in usdBaseNameSplit): 
+        if 'displacement' == str(testName) or 'displacementshader' == str(testName):
+            mtlxType = 'displacementshader'
+        elif 'surface' == str(testName) or 'surfaceshader' == str(testName):
+            mtlxType = 'surfaceshader'
+        elif 'volume' == str(testName) or 'volumeshader' == str(testName):
+            mtlxType = 'volumeshader'
     return mtlxType
 
-
-def emitMtlxValueElements(shader, parent, emitOutputs):
+def emitMtlxValueElements(shader, parent, emitInputs, emitOutputs):
     """
     Emit MaterialX value elements (currently only Inputs and Outputs)
     This is not a complete translation of all value element attributes.
     """
-    for input in shader.GetInputs():
+    if emitInputs:
+        for input in shader.GetInputs():
 
-        # Only output if there is a value or a connection
-        if input:
+            # Only output if there is a value or a connection
+            if input:
 
-            # Map Usd type to Mtlx type and create an input
-            usdType = input.GetTypeName()
-            mtlxType = mapUsdTypeToMtlx(usdType)
-            usdBaseName = input.GetBaseName()
-            mtlxType = mapUsdTokenToType(mtlxType, usdBaseName)
-            usdBaseName = usdBaseName.replace(':', '_')    
+                # Map Usd type to Mtlx type and create an input
+                usdType = input.GetTypeName()
+                mtlxType = mapUsdTypeToMtlx(usdType)
+                usdBaseName = input.GetBaseName()
+                mtlxType = mapUsdTokenToType(mtlxType, usdBaseName)
+                usdBaseName = usdBaseName.replace(':', '_')    
 
-            # Add a connection if encountered
-            if input.HasConnectedSource():
-                newInput = parent.addInput(usdBaseName, mtlxType)
-
-                # Only consider "valid" inputs.
-                usdSources, invalidSources = input.GetConnectedSources() 
-                if usdSources and usdSources[0]:
-                    # Check UsdShadeConnectionSourceInfo to extract
-                    # out the upstream information
-                    usdSource1 = usdSources
-                    sourcePrim = usdSource1[0].source.GetPrim()
-                    sourcePort = usdSource1[0].sourceName # e.g. out
-                    sourceDirection = usdSource1[0].sourceType # e.g. Input / Output
-                    sourceType = usdSource1[0].typeName # e.g. color3f
-
-                    # Handle the complex MaterialX attribute syntax
-                    # for specifying a connection.
-                    # ---------------------------------------------
-                    # Assume a node->input connection to start
-                    mtlxConnectString = 'nodename'
-                    mtlxConnectItem = sourcePrim.GetName()
-
-                    # An input->input connection is denoted using
-                    # "interfacename", but no "node", or "nodegraph"
-                    if sourceDirection == UsdShade.AttributeType.Input:
-                        mtlxConnectString = 'interfacename'
-                        mtlxConnectItem = sourcePort
-
-                        # Set the connection
-                        newInput.setAttribute(mtlxConnectString, mtlxConnectItem)
-
-                    else:
-                        # A nodegraph->output connect uses "nodegraph" vs "node"                        
-                        if sourcePrim.IsA(UsdShade.NodeGraph):
-                            mtlxConnectString = 'nodegraph'
-
-                        # Set the connection
-                        newInput.setAttribute(mtlxConnectString, mtlxConnectItem)
-
-                        # An output->intput connection is denoted using
-                        # an additional `output` attribute` if the source is 
-                        # does not have multiple outputs
-                        if sourceDirection == UsdShade.AttributeType.Output:
-                            if isMultiOutput(sourcePrim):
-                                newInput.setAttribute('output', sourcePort)                    
- 
-            # Set value if not connected.
-            else:
-                usdVal = input.Get()
-                if usdVal is not None:
+                # Add a connection if encountered
+                if input.HasConnectedSource():
                     newInput = parent.addInput(usdBaseName, mtlxType)
-                    if newInput:
-                        mtlxVal = mapUsdValueToMtlx(mtlxType, usdVal)
-                        if mtlxVal is not None:
-                            newInput.setValueString(mtlxVal)
+
+                    # Only consider "valid" inputs.
+                    usdSources, invalidSources = input.GetConnectedSources() 
+                    if usdSources and usdSources[0]:
+                        # Check UsdShadeConnectionSourceInfo to extract
+                        # out the upstream information
+                        usdSource1 = usdSources
+                        sourcePrim = usdSource1[0].source.GetPrim()
+                        sourcePort = usdSource1[0].sourceName # e.g. out
+                        sourceDirection = usdSource1[0].sourceType # e.g. Input / Output
+                        sourceType = usdSource1[0].typeName # e.g. color3f
+
+                        # Handle the complex MaterialX attribute syntax
+                        # for specifying a connection.
+                        # ---------------------------------------------
+                        # Assume a node->input connection to start
+                        mtlxConnectString = 'nodename'
+                        mtlxConnectItem = sourcePrim.GetName()
+
+                        # An input->input connection is denoted using
+                        # "interfacename", but no "node", or "nodegraph"
+                        if sourceDirection == UsdShade.AttributeType.Input:
+                            mtlxConnectString = 'interfacename'
+                            mtlxConnectItem = sourcePort
+
+                            # Set the connection
+                            newInput.setAttribute(mtlxConnectString, mtlxConnectItem)
+
+                        else:
+                            # A nodegraph->output connect uses "nodegraph" vs "node"                        
+                            if sourcePrim.IsA(UsdShade.NodeGraph):
+                                mtlxConnectString = 'nodegraph'
+
+                            # Set the connection
+                            newInput.setAttribute(mtlxConnectString, mtlxConnectItem)
+
+                            # An output->intput connection is denoted using
+                            # an additional `output` attribute` if the source is 
+                            # does not have multiple outputs
+                            if sourceDirection == UsdShade.AttributeType.Output:
+                                if isMultiOutput(sourcePrim):
+                                    newInput.setAttribute('output', sourcePort)                    
+    
+                # Set value if not connected.
+                else:
+                    usdVal = input.Get()
+                    if usdVal is not None:
+                        newInput = parent.addInput(usdBaseName, mtlxType)
+                        if newInput:
+                            mtlxVal = mapUsdValueToMtlx(mtlxType, usdVal)
+                            if mtlxVal is not None:
+                                newInput.setValueString(mtlxVal)
     
     # Emit outputs if specified. Unlike Usd, outputs are not explicitly defined
     # except for nodegraph. The branching toggle `emitOuputs` allows for outputs to be selectively emitted.
@@ -433,11 +477,23 @@ def emitMtlxValueElements(shader, parent, emitOutputs):
                 usdBaseName = output.GetBaseName()
                 #usdFullName = output.GetFullName()
                 
-                mtlxType = mapUsdTokenToType(mtlxType, usdBaseName)
-                usdBaseName = usdBaseName.replace(':', '_')    
-                newOutput = parent.addOutput(usdBaseName, mtlxType)
+                newOutput = None
+                # Note that MaterialX materials specify connections as input and NOT as outputs
+                # as with Usd. Additionally only a subset of types. If there is more than one
+                # input with the same type, only the first will be recorded.
+                if parent.getType() == 'material':
+                    mtlxType = mapUsdTokenToType(mtlxType, usdBaseName, True)
+                    if mtlxType in ['surfaceshader', 'volumeshader', 'displacementshader']:
+                        if parent.getInput(mtlxType):
+                            print('Skip connecting > 1 shader of type %s on material %s' % (mtlxType, parent.getNamePath()))
+                        else:
+                            newOutput = parent.addInput(mtlxType, mtlxType)
+                else:
+                    mtlxType = mapUsdTokenToType(mtlxType, usdBaseName)
+                    usdBaseName = usdBaseName.replace(':', '_')    
+                    newOutput = parent.addOutput(usdBaseName, mtlxType)
 
-                if output.HasConnectedSource():
+                if newOutput and output.HasConnectedSource():
                     usdSources, invalidSources = output.GetConnectedSources() 
                     if usdSources and usdSources[0]:
                         # Check UsdShadeConnectionSourceInfo
@@ -495,12 +551,13 @@ def emitMaterialX(stage, indent, prim, parent):
     """
     if prim:
         # Test if it's a material first as a material is a nodegraph
-        if prim.IsA(UsdShade.Material) and not prim.GetChildren(): 
+        # Ignore inputs as they have no meaning on a MaterialX material.
+        if prim.IsA(UsdShade.Material): 
             doc = parent.getDocument()
             usdMaterial = UsdShade.Material(prim)
             mtlxName = parent.createValidChildName(prim.GetName())
             mtlxMaterial = parent.addMaterialNode(mtlxName)
-            emitMtlxValueElements(usdMaterial, mtlxMaterial, False)
+            emitMtlxValueElements(usdMaterial, mtlxMaterial, False, True)
 
         elif prim.IsA(UsdShade.NodeGraph):
             doc = parent.getDocument()
@@ -508,7 +565,7 @@ def emitMaterialX(stage, indent, prim, parent):
             mtlxName = parent.createValidChildName(prim.GetName())
             mtlxNodeGraph = parent.addChildOfCategory('nodegraph', mtlxName)
             parent = mtlxNodeGraph
-            emitMtlxValueElements(usdNodegraph, mtlxNodeGraph, True)
+            emitMtlxValueElements(usdNodegraph, mtlxNodeGraph, True, True)
 
         elif prim.IsA(UsdShade.Shader): 
             usdShader = UsdShade.Shader(prim)
@@ -532,7 +589,7 @@ def emitMaterialX(stage, indent, prim, parent):
             if mtlxNodeDef:
                 mtlxShadername = parent.createValidChildName(prim.GetName())
                 shaderNode = parent.addNodeInstance(mtlxNodeDef, mtlxShadername)                
-                emitMtlxValueElements(usdShader, shaderNode, False)
+                emitMtlxValueElements(usdShader, shaderNode, True, False)
             else:
                 print('Skipping shader node %s: No MaterialX definition found.' % prim.GetName())  
 
@@ -547,9 +604,7 @@ def convertUsdToMtlx(stage, stdlib):
 
     # Start at the root and emit child nodes 
     prim = stage.GetPrimAtPath('/')
-    children_refs = prim.GetChildren()
-    for child in children_refs:
-        emitMaterialX(stage, ' ', child, doc)
+    emitMaterialX(stage, ' ', prim, doc)
 
     return doc
 
@@ -561,10 +616,10 @@ writeOptions.writeXIncludeEnable = False
 writeOptions.elementPredicate = skipLibraryElement
 documentContents = mx.writeToXmlString(doc, writeOptions)
 
-display_markdown('### Resulting Generated MaterialX', raw=True)
-display_markdown('```xml\n' + documentContents + '\n```\n', raw=True)
+text = '<details open><summary>Resulting Generated MaterialX</summary>\n\n' + '```xml\n' + documentContents + '```\n' + '</details>\n' 
+display_markdown(text , raw=True)
 
-mx.writeToXmlFile(doc, 'test_usd_mtlx.mtlx', writeOptions)
+mx.writeToXmlFile(doc, 'data/test_usd_mtlx.mtlx', writeOptions)
 
 # %% [markdown]
 # ## 5. Updating MaterialX / Usd Inputs 
@@ -586,10 +641,11 @@ mx.writeToXmlFile(doc, 'test_usd_mtlx.mtlx', writeOptions)
 # %%
 # Note that the MaterialX path cannot start with '/' otherwise `getDescendent)` will fail to
 # find the element. 
-mtlxPath = 'collect1/my_materialx_subnet/mtlxstandard_surface1' 
+mtlxPath = 'my_materialx_subnet/mtlxstandard_surface1' 
 
-# Add additional path nesting in the Usd stage
-usdPath = '/mySphere/mtl/' + mtlxPath 
+# Add additional path nesting in the Usd stage including parenting of the shader
+# graph under the material `collect1`` which does not exist in a MaterialX graph.
+usdPath = '/mySphere/mtl/collect1/' + mtlxPath 
 
 # Input to modify
 inputName = 'coat_roughness'
@@ -617,7 +673,6 @@ if mtxlStdSurf:
 
         print('Modified MaterialX from: %s to %s' % (currentValue, mtlxSurfInput.getValueString()))
 
-
 # %% [markdown]
 # ## 6. MaterialX to Usd Example
 # 
@@ -630,19 +685,25 @@ if mtxlStdSurf:
 # 
 # Of note:
 # 1. Outputs are explicitly created on nodes as well as nodegraphs (unlike MaterialX)
-# 2. The explicit setting of the node definition name as the as the identifier to the <a href="https://openusd.org/release/api/class_sdr_registry.html" target="_blank">SdrRegistry</a>
+# 2. The explicit setting of the node definition name as the identifier to the <a href="https://openusd.org/release/api/class_sdr_registry.html" target="_blank">SdrRegistry</a>
+# 3. No Usd scopes are created as the MaterialX defines no scope.
 
 # %%
 
-def createSimpleMtlx(stage):
+def createSimpleMtlx(stage, materialScope):
     """
     Hard coded simple MaterialX to Usd example which produces 
     part of the marble example. 
-    """        
-    material = UsdShade.Material.Define(stage, '/Marble_3D')
+    """
+    if materialScope:
+        UsdGeom.Scope.Define(stage, materialScope)
+    
+    materialPath = Sdf.Path(materialScope).AppendPath('Marble_3D')
+    material = UsdShade.Material.Define(stage, materialPath)
 
     # Create a standard surface shader
-    stdSurfShader = UsdShade.Shader.Define(stage, '/SR_marble1')
+    shaderPath = materialPath.AppendPath('SR_marble1')
+    stdSurfShader = UsdShade.Shader.Define(stage, shaderPath)
     stdSurfShader.CreateIdAttr("ND_standard_surface_surfaceshader")
     stdSurfShader.CreateInput("base_color", Sdf.ValueTypeNames.Color3f).Set(Gf.Vec3f(0.8, 0.8, 0.8))
     stdSurfShader.CreateInput("specular_roughness", Sdf.ValueTypeNames.Float).Set(0.1)
@@ -650,12 +711,14 @@ def createSimpleMtlx(stage):
     stdSurfShader.CreateInput("subsurface_color", Sdf.ValueTypeNames.Float).Set(0.0)
 
     # Connect shader to material. Note that an output is explicitly created.
-    nodeOutput = material.CreateSurfaceOutput()
+    nodeOutput = material.CreateOutput('mtlx:surface', Sdf.ValueTypeNames.Token)
     if nodeOutput:
+        #nodeOutput.SetTypeName('mtlx:surface')
         nodeOutput.ConnectToSource(stdSurfShader.ConnectableAPI(), "surface")
 
     # Create upstream pattern graph
-    patternGraph = UsdShade.NodeGraph.Define(stage, '/NG_marble1')
+    patternGraphPath = materialPath.AppendPath('NG_marble1')
+    patternGraph = UsdShade.NodeGraph.Define(stage, patternGraphPath)
     graphOutput = patternGraph.CreateOutput('out', Sdf.ValueTypeNames.Color3f)
 
     # Connect graph to shader input. Note that as with MaterialX, the existing value is not removed,
@@ -665,7 +728,8 @@ def createSimpleMtlx(stage):
         base_color.Set(Gf.Vec3f(1, 1, 1))
 
 marbleStage = Usd.Stage.CreateInMemory()
-createSimpleMtlx(marbleStage)
+mtlxScope = "/mtl"
+createSimpleMtlx(marbleStage, mtlxScope)
 stringResult = marbleStage.GetRootLayer().ExportToString()
 display_markdown('```usd\n' + stringResult + '\n```\n', raw=True)
 
@@ -752,7 +816,20 @@ def mapMtxToUsdValue(mtlxType, mtlxValue):
 # Also note that for this example, geometric bindings including `defaultgeomprop` are not handled to create upstream input streams as they are in `UsdMtlx`.
 
 # %%
-def emitUsdConnections(node, stage):
+def mapMtlxToUsdShaderNotation(name):
+    '''
+    Utility to map from a MaterialX shader notation to Usd.
+    It would be easier if the same notation was used.
+    '''
+    if name == 'surfaceshader': 
+        name = 'surface'
+    elif name == 'displacementshader':
+        name = 'displacement'
+    elif name == 'volumshader':
+        name = 'volume'
+    return name
+
+def emitUsdConnections(node, stage, rootPath):
     """ 
     Emit connections between MaterialX elements as Usd connections for 
     a given MaterialX node.
@@ -765,6 +842,10 @@ def emitUsdConnections(node, stage):
     """
     if not node:
         return
+    
+    materialPath = None
+    if node.getType() == 'material':
+        materialPath = node.getName()
 
     for valueElement in node.getActiveValueElements():
         isInput = valueElement.isA(mx.Input) 
@@ -795,16 +876,16 @@ def emitUsdConnections(node, stage):
                     parent = node.getParent()
                     if parent.getNamePath():
                         if interfacename:
-                            connectionPath = '/' + parent.getNamePath()
+                            connectionPath = rootPath + parent.getNamePath()
                         else:
-                            connectionPath = '/' + parent.getNamePath() + '/' + mtlxConnection
+                            connectionPath = rootPath + parent.getNamePath() + '/' + mtlxConnection
                     else:
                         # The connectio is to a prim at the root level so insert a '/' identifier
                         # as getNamePath() will return an empty string at the root Document level.
                         if interfacename:
-                            connectionPath = '/'
+                            connectionPath = rootPath
                         else:
-                            connectionPath = '/' + mtlxConnection
+                            connectionPath = rootPath + mtlxConnection
 
                 # Handle output connection by looking for sibling elements
                 else:
@@ -812,25 +893,32 @@ def emitUsdConnections(node, stage):
                     
                     # Connection is to sibling under the same nodegraph
                     if node.isA(mx.NodeGraph):
-                        connectionPath = '/' + node.getNamePath() + '/' + mtlxConnection
+                        connectionPath = rootPath + node.getNamePath() + '/' + mtlxConnection
                     else:
                         # Connection is to a nodegraph parent of the current node 
                         if parent.getNamePath():
-                            connectionPath = '/' + parent.getNamePath() + '/' + mtlxConnection
+                            connectionPath = rootPath + parent.getNamePath() + '/' + mtlxConnection
                         # Connection is to the root document.
                         else:
-                            connectionPath = '/' + mtlxConnection
+                            connectionPath = rootPath + mtlxConnection
 
                 # Find the source prim
                 # Assumes that the source is either a nodegraph, a material or a shader
+                connectionPath = connectionPath.removesuffix('/')
                 sourcePrim = None
                 sourcePort = 'out'
                 source = stage.GetPrimAtPath(connectionPath)
+                if not source:
+                    if materialPath:
+                        connectionPath = '/' + materialPath + connectionPath
+                        source = stage.GetPrimAtPath(connectionPath)
+                        if not source:
+                            source = stage.GetPrimAtPath = '/' + materialPath
                 if source:
-                    if source.IsA(UsdShade.NodeGraph):
-                        sourcePrim = UsdShade.NodeGraph(source)
-                    elif source.IsA(UsdShade.Material): 
+                    if source.IsA(UsdShade.Material): 
                         sourcePrim = UsdShade.Material(source)
+                    elif source.IsA(UsdShade.NodeGraph):
+                        sourcePrim = UsdShade.NodeGraph(source)
                     elif source.IsA(UsdShade.Shader): 
                         sourcePrim = UsdShade.Shader(source)
 
@@ -851,17 +939,17 @@ def emitUsdConnections(node, stage):
                 # Assumes that the destination is either a nodegraph, a material or a shader
                 destInput = None
                 if sourcePrim:
-                    dest = stage.GetPrimAtPath('/' + node.getNamePath())
+                    dest = stage.GetPrimAtPath(rootPath + node.getNamePath())
                     if not dest:
-                        print('> Failed to find dest at path:', node.getNamePath())
+                        print('> Failed to find dest at path:', rootPath + node.getNamePath())
                     else:
                         destPort = None
                         portName = valueElement.getName()
                         destNode = None
-                        if dest.IsA(UsdShade.NodeGraph):
-                            destNode = UsdShade.NodeGraph(dest)
-                        elif dest.IsA(UsdShade.Material): 
+                        if dest.IsA(UsdShade.Material): 
                             destNode = UsdShade.Material(dest)
+                        elif dest.IsA(UsdShade.NodeGraph):
+                            destNode = UsdShade.NodeGraph(dest)
                         elif dest.IsA(UsdShade.Shader): 
                             destNode = UsdShade.Shader(dest)
                         else:
@@ -870,7 +958,13 @@ def emitUsdConnections(node, stage):
                         # Find downstream port (input or output)
                         if destNode:
                             if isInput:
-                                destPort = destNode.GetInput(portName)
+                                # Map from MaterialX to Usd connection syntax
+                                if dest.IsA(UsdShade.Material):
+                                    portName = mapMtlxToUsdShaderNotation(portName)
+                                    portName = 'mtlx:' + portName
+                                    destPort = destNode.GetOutput(portName) 
+                                else:
+                                    destPort = destNode.GetInput(portName) 
                             else:
                                 destPort = destNode.GetOutput(portName)                                
 
@@ -885,6 +979,8 @@ def emitUsdConnections(node, stage):
                                 sourcePrimAPI = sourcePrim.ConnectableAPI()
                                 if not destPort.ConnectToSource(sourcePrimAPI, sourcePort):
                                     print('> Failed to connect: ', source.GetPrimPath(), '-->', destPort.GetFullName())
+                        else:
+                            print('> Failed to find destination port:', portName)
 
 
 # %% [markdown]
@@ -914,17 +1010,21 @@ def emitUsdValueElements(node, usdNode, emitAllValueElements):
     """
     if not node:
         return    
+    
+    isMaterial = node.getType() == 'material'
  
     # Instantiate with all the nodedef inputs (if emitAllValueELements is True).
     # Note that outputs are always created.
     nodedef = node.getNodeDef()
-    if nodedef:
+    if nodedef and not isMaterial:
         for valueElement in nodedef.getActiveValueElements():
             if valueElement.isA(mx.Input):
                 if emitAllValueElements:
                     mtlxType = valueElement.getType()
                     usdType = mapMtxToUsdType(mtlxType)
-                    usdInput = usdNode.CreateInput(valueElement.getName(), usdType)
+
+                    portName = valueElement.getName()
+                    usdInput = usdNode.CreateInput(portName, usdType)
 
                     if len(valueElement.getValueString()) > 0:
                         mtlxValue = valueElement.getValue()
@@ -932,11 +1032,11 @@ def emitUsdValueElements(node, usdNode, emitAllValueElements):
                         if usdValue != '__':
                             usdInput.Set(usdValue)
 
-            elif valueElement.isA(mx.Output):
+            elif not isMaterial and valueElement.isA(mx.Output):
                 usdOutput = usdNode.CreateOutput(valueElement.getName(), mapMtxToUsdType(valueElement.getType()))
 
             else:
-                print('- Skip mapping of definition element: ', valueElement.getName(), '. Type: ', valueElement.getCatetory())
+                print('- Skip mapping of definition element: ', valueElement.getName(), '. Type: ', valueElement.getCategory())
 
     # From the given instance add inputs and outputs and set values.
     # This may override the default value specified on the definition.
@@ -944,7 +1044,13 @@ def emitUsdValueElements(node, usdNode, emitAllValueElements):
         if valueElement.isA(mx.Input):
             mtlxType = valueElement.getType()
             usdType = mapMtxToUsdType(mtlxType)
-            usdInput = usdNode.CreateInput(valueElement.getName(), usdType)
+            portName = valueElement.getName()
+            if isMaterial:
+                # Map from Materials to Usd notation
+                portName = mapMtlxToUsdShaderNotation(portName)    
+                usdInput = usdNode.CreateOutput('mtlx:' + portName, usdType)
+            else:            
+                usdInput = usdNode.CreateInput(portName, usdType)
 
             # Set value. Note that we check the length of the value string
             # instead of getValue() as a 0 value will be skipped.
@@ -954,13 +1060,13 @@ def emitUsdValueElements(node, usdNode, emitAllValueElements):
                 if usdValue != '__':
                     usdInput.Set(usdValue)
 
-        elif valueElement.isA(mx.Output):
+        elif not isMaterial and valueElement.isA(mx.Output):
             usdOutput = usdNode.GetInput(valueElement.getName())
             if not usdOutput:
                 usdOutput = usdNode.CreateOutput(valueElement.getName(), mapMtxToUsdType(valueElement.getType()))
 
         else:
-            print('- Skip mapping of element: ', valueElement.getNamePath(), '. Type: ', valueElement.getCatetory())
+            print('- Skip mapping of element: ', valueElement.getNamePath(), '. Type: ', valueElement.getCategory())
 
 
 # %% [markdown]
@@ -977,6 +1083,13 @@ def emitUsdValueElements(node, usdNode, emitAllValueElements):
 # * Connections are then made between Usd nodes based on the connections found on MaterialX nodes.
 
 # %%
+def moveChild(newParent, child):
+    newChild = newParent.addChildOfCategory(child.getCategory(), child.getName())
+    print(newChild.getNamePath())
+    newChild.copyContentFrom(child)
+    oldParent = child.getParent()
+    oldParent.removeChild(child.getName())
+
 def emitUsdShaderGraph(doc, stage, mxnodes, emitAllValueElements):
     """
     Emit Usd shader graph to a given stage from a list of MaterialX nodes.
@@ -992,6 +1105,14 @@ def emitUsdShaderGraph(doc, stage, mxnodes, emitAllValueElements):
     emitAllValueElements: bool
         Emit value elements based on node definition, even if not specified on node instance.      
     """
+    materialPath = None
+
+    for v in mxnodes:
+        elem = doc.getDescendant(v)
+        if elem.getType() == 'material':    
+            materialPath = elem.getName()
+            break
+            
     # Emit Usd nodes
     for v in mxnodes:
         elem = doc.getDescendant(v)
@@ -1006,9 +1127,17 @@ def emitUsdShaderGraph(doc, stage, mxnodes, emitAllValueElements):
             usdNode = UsdShade.Material.Define(stage, usdPath)                
         elif elem.isA(mx.Node):
             nodeDef = elem.getNodeDef()
-            usdNode = UsdShade.Shader.Define(stage, usdPath)
+            if materialPath:
+                elemPath = '/' + materialPath + usdPath
+            else:
+                elemPath = usdPath
+            usdNode = UsdShade.Shader.Define(stage, elemPath)
         elif elem.isA(mx.NodeGraph):
-            usdNode = UsdShade.NodeGraph.Define(stage, usdPath)
+            if materialPath:
+                elemPath = '/' + materialPath + usdPath
+            else:
+                elemPath = usdPath
+            usdNode = UsdShade.NodeGraph.Define(stage, elemPath)
 
         if usdNode:
             if nodeDef:
@@ -1021,11 +1150,11 @@ def emitUsdShaderGraph(doc, stage, mxnodes, emitAllValueElements):
         usdPath = '/' + elem.getNamePath()
 
         if elem.getType() == 'material':
-            emitUsdConnections(elem, stage)                
+            emitUsdConnections(elem, stage, '/')                
         elif elem.isA(mx.Node):
-            emitUsdConnections(elem, stage)                
+            emitUsdConnections(elem, stage, '/' + materialPath + '/')                
         elif elem.isA(mx.NodeGraph):
-            emitUsdConnections(elem, stage)                
+            emitUsdConnections(elem, stage, '/' + materialPath + '/')                
 
 
 # %% [markdown]
@@ -1081,11 +1210,7 @@ def convertMtlxToUsd(mtlxFileName, emitAllValueElements):
     doc.importLibrary(stdlib)
     
     # Translate
-    emitUsdShaderGraph(doc, stage, mxnodes, emitAllValueElements)
-        
-    # Examine the results and save to file
-    stringResult = stage.GetRootLayer().ExportToString()
-    display_markdown('```usd\n' + stringResult + '\n```\n', raw=True)
+    emitUsdShaderGraph(doc, stage, mxnodes, emitAllValueElements)        
 
     usdFile = mtlxFileName.removesuffix('.mtlx')
     usdFile = usdFile + '.usda'
@@ -1111,6 +1236,9 @@ testFile = 'data/standard_surface_marble_solid.mtlx'
 display_markdown('#### Sample Marble Converted from MaterialX', raw=True)
 includeDefinitionInputs = True
 stage = convertMtlxToUsd(testFile, includeDefinitionInputs)
+stringResult = stage.GetRootLayer().ExportToString()
+text = '<details><summary>Usd Results</summary>\n\n' + '```usd\n' + stringResult + '```\n' + '</details>\n' 
+display_markdown(text , raw=True)
 
 # Convert back to MaterialX
 doc = convertUsdToMtlx(stage, stdlib)
@@ -1121,8 +1249,8 @@ writeOptions = mx.XmlWriteOptions()
 writeOptions.writeXIncludeEnable = False
 writeOptions.elementPredicate = skipLibraryElement
 documentContents = mx.writeToXmlString(doc, writeOptions)
-display_markdown('#### ... And Converted Back To MaterialX', raw=True)
-display_markdown('```xml\n' + documentContents + '\n```\n', raw=True)
+text = '<details><summary>Converted Back to MaterialX</summary>\n\n' + '```xml\n' + documentContents + '```\n' + '</details>\n' 
+display_markdown(text , raw=True)
 
 # %% [markdown]
 # #### Sample Nodegraph from NodeGraph Tutorial
@@ -1133,6 +1261,9 @@ display_markdown('```xml\n' + documentContents + '\n```\n', raw=True)
 testFile = 'data/sample_nodegraph.mtlx'
 display_markdown('#### Sample Tutorial Nodegraph Converted from MaterialX', raw=True)
 stage = convertMtlxToUsd(testFile, False)
+stringResult = stage.GetRootLayer().ExportToString()
+text = '<details><summary>Usd Results</summary>\n\n' + '```usd\n' + stringResult + '```\n' + '</details>\n' 
+display_markdown(text , raw=True)
 
 # Convert back to MaterialX
 doc = convertUsdToMtlx(stage, stdlib)
@@ -1140,8 +1271,8 @@ writeOptions = mx.XmlWriteOptions()
 writeOptions.writeXIncludeEnable = False
 writeOptions.elementPredicate = skipLibraryElement
 documentContents = mx.writeToXmlString(doc, writeOptions)
-display_markdown('#### ... And Converted Back To MaterialX', raw=True)
-display_markdown('```xml\n' + documentContents + '\n```\n', raw=True)
+text = '<details><summary>Converted Back to MaterialX</summary>\n\n' + '```xml\n' + documentContents + '```\n' + '</details>\n' 
+display_markdown(text , raw=True)
 
 # %% [markdown]
 # #### Re-import Usd Example Converted to MaterialX
@@ -1152,9 +1283,12 @@ display_markdown('```xml\n' + documentContents + '\n```\n', raw=True)
 # performing data model interop. At time of writing, this round trip logic is not easily accessible.
 
 # %%
-testFile = 'blender_to_mtlx.mtlx'
+testFile = 'data/test_usd_mtlx.mtlx'
 display_markdown('#### Nested Nodegraph Converted from MaterialX', raw=True)
 stage = convertMtlxToUsd(testFile, False)
+stringResult = stage.GetRootLayer().ExportToString()
+text = '<details><summary>Usd Results</summary>\n\n' + '```usd\n' + stringResult + '```\n' + '</details>\n' 
+display_markdown(text , raw=True)
 
 # %% [markdown]
 # ## Appendix: Mapping Usd Types To MaterialX Types
@@ -1167,7 +1301,7 @@ for t in dir(Sdf.ValueTypeNames):
     if t.startswith('__'):
         continue
     typestring = typestring + '- Type : ' + str(t) + '\n'
-display_markdown('### Usd Types', raw=True)
-display_markdown(typestring, raw=True)
+text = '<details><summary>Usd Types</summary>\n\n' + typestring + '</details>\n' 
+display_markdown(text , raw=True)
 
 

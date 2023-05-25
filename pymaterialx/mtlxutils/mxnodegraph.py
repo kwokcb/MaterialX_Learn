@@ -1,15 +1,32 @@
+'''
+    Set of utilities to perform MaterialX graph editing
+
+    - Find definition to create
+    - Add node instance based on category/type, or based on definition name    
+    - Add nodegraph instance
+    - Add nodegraph output
+    - Connect an output to another output. For connections to nodegraph interface outputs
+    - Connect an output to an input. Supports all permutations of connecting a node / nodegraph to another node / nodegraph. 
+    - Add interface input to a nodegraph
+    - Connect an node input to a interface input on a nodegraph ("publish")
+    - Remove connection between a node input to a interface input on a nodegraph ("unpublish")
+
+    Methods grouped under a MtxlNodeGraph class
+
+    Requires: MaterialX package
+'''
 import MaterialX as mx
 
 class MtlxNodeGraph:
-    """
+    '''
     MaterialX <nodegraph> utilities
-    """
+    '''
 
     @staticmethod
     def getNodeDefinition(doc, category, desiredType):
-        """
+        '''
         Find a node definition given a category and a type
-        """
+        '''
         nodedefs = doc.getMatchingNodeDefs(category)
         foundNodeDef = None
         for nodedef in nodedefs:
@@ -21,12 +38,12 @@ class MtlxNodeGraph:
 
     @staticmethod
     def addNode(parent, category, desiredType, name):
-        """
+        '''
         Add a named node under a given parent given a category and a type
-        """
+        '''
         newNode = None
         doc = parent.getDocument() 
-        nodedef = self.getNodeDefinition(doc, category, desiredType)
+        nodedef = MtlxNodeGraph.getNodeDefinition(doc, category, desiredType)
         if nodedef:
             childName = parent.createValidChildName(name)
             newNode = parent.addNodeInstance(nodedef, childName)
@@ -35,9 +52,9 @@ class MtlxNodeGraph:
     
     @staticmethod
     def addNode(parent, definitionName, name):
-        """
+        '''
         Utility to create a node under a given parent using a definition name and desired instance name
-        """
+        '''
         newNode = None
         doc = parent.getDocument()
         nodedef = doc.getNodeDef(definitionName)
@@ -48,18 +65,18 @@ class MtlxNodeGraph:
 
     @staticmethod
     def addNodeGraph(parent, name):
-        """
+        '''
         Add named nodegraph under parent
-        """
+        '''
         childName = parent.createValidChildName(name)
         nodegraph = parent.addChildOfCategory('nodegraph', childName)
         return nodegraph
 
     @staticmethod
     def addNodeGraphOutput(parent, type, name='out'):
-        """
+        '''
         Create an output with a unique name and proper type
-        """
+        '''
         if not parent.isA(mx.NodeGraph):
             return None
         
@@ -70,10 +87,10 @@ class MtlxNodeGraph:
 
     @staticmethod
     def connectOutputToOutput(outputPort, upstream, upstreamOutputName):
-        """
+        '''
         Utility to connect a downstream output to an upstream node / node output
         If the types differ then no connection is made
-        """
+        '''
         upstreamType = upstream.getType()
 
         # Check for an explicit upstream output on the upstream node
@@ -108,10 +125,10 @@ class MtlxNodeGraph:
 
     @staticmethod
     def connectNodeToNode(inputNode, inputName, outputNode, outputName):
-        """
+        '''
         Connect an input on one node to an output on another node. Existence and type checking are performed.
         Returns input port with connection set if succesful. Otherwise None is returned.
-        """
+        '''
         if not inputNode or not outputNode:
             return None
 
@@ -148,7 +165,7 @@ class MtlxNodeGraph:
 
         if outputPortFound:
             outputType = outputPortFound.getType()
-        else:
+        elif len(outputName) > 0:
             print('No output port found matching: ', outputName)        
 
         if inputPort.getType() != outputType:
@@ -166,9 +183,9 @@ class MtlxNodeGraph:
     
     @staticmethod
     def addInputInterface(name, typeString, parent):
-        """
+        '''
         Add a type input interface. Will always create a new interface
-        """
+        '''
         validName = parent.createValidChildName(name)
         typedefs = parent.getDocument().getTypeDefs()
         validType = False
@@ -181,11 +198,11 @@ class MtlxNodeGraph:
             parent.addInput(validName, typeString)
     
     @staticmethod
-    def publishInterface(nodegraph, interfaceName, internalInput):
-        """
+    def connectInterface(nodegraph, interfaceName, internalInput):
+        '''
         Add an interface input to a nodegraph if it does not already exist. 
         Connect the interface to the internal input. Returns interface input
-        """
+        '''
         if not nodegraph or not interfaceName or not internalInput:
             return None
 
@@ -227,10 +244,10 @@ class MtlxNodeGraph:
         return interfaceInput
 
     @staticmethod
-    def unpublishInterface(nodegraph, interfaceName):
-        """
+    def unconnectInterface(nodegraph, interfaceName):
+        '''
         Remove an interface input from a nodegraph
-        """
+        '''
         interfaceInput = nodegraph.getInput(interfaceName)
         if not interfaceInput:
             return

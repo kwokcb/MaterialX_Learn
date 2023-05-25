@@ -1,0 +1,83 @@
+#usda 1.0
+
+def Sphere "Sphere1" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    uniform bool doubleSided = 0
+    rel material:binding = </mtl/MyMaterial>
+}
+
+def Scope "mtl"
+{
+    def Material "MyMaterial" (
+        prepend apiSchemas = ["NodeGraphNodeAPI"]
+    )
+    {
+        token outputs:mtlx:surface.connect = </mtl/MyMaterial/MyShader.outputs:out>
+        uniform float2 ui:nodegraph:node:pos = (-1.7199334, -0.5843111)
+
+        def Shader "MyShader" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            uniform token info:id = "ND_standard_surface_surfaceshader"
+            color3f inputs:base_color.connect = </mtl/MyMaterial/MyGraph.outputs:out>
+            token outputs:out
+            uniform float2 ui:nodegraph:node:pos = (-0.5611111, -0.85555553)
+        }
+
+        def NodeGraph "MyGraph" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            color3f outputs:out.connect = </mtl/MyMaterial/MyGraph/MyImage.outputs:out>
+            uniform float2 ui:nodegraph:node:pos = (-2.211111, -0.23888889)
+
+            def Shader "MyImage" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                uniform token info:id = "ND_image_color3"
+                color3f outputs:out
+                uniform float2 ui:nodegraph:node:pos = (-0.7916667, -0.8055556)
+            }
+        }
+    }
+
+    def Material "MyMayaMaterial" (
+        prepend apiSchemas = ["NodeGraphNodeAPI"]
+    )
+    {
+        token outputs:mtlx:surface.connect = </mtl/MyMayaMaterial/MayaBlinn1.outputs:outColor>
+        uniform float2 ui:nodegraph:node:pos = (-0.36928108, 0.3856211)
+
+        def Shader "MayaBlinn1" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            uniform token info:id = "MayaND_blinn_surfaceshader"
+            color3f inputs:color.connect = </mtl/MyMayaMaterial/MyBlinnGraph.outputs:out>
+            token outputs:outColor
+            uniform float2 ui:nodegraph:node:pos = (-0.5888889, -0.7222222)
+        }
+
+        def NodeGraph "MyBlinnGraph" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            color3f outputs:out.connect = </mtl/MyMayaMaterial/MyBlinnGraph/MyImage2.outputs:out>
+            uniform float2 ui:nodegraph:node:pos = (-2.0555556, 0.17222223)
+
+            def Shader "MyImage2" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                uniform token info:id = "ND_image_color3"
+                color3f outputs:out
+                uniform float2 ui:nodegraph:node:pos = (-0.55833334, -0.6111111)
+            }
+        }
+    }
+}
+

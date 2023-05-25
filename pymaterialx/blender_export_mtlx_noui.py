@@ -1,17 +1,22 @@
 # %% [markdown]
 # ## Blender and MaterialX
 # 
-# In this notebook, we take a look at MaterialX export from Blender
-# using the Python MaterialX module which is available as part of the distribution 
-# as of `Blender 3.5`. This can be found roughly here relative to the install location:
+# In this notebook, we take a look at MaterialX export from an application -- in this case Blender.
+# The key items covered are:
+# * Discovery of MaterialX package and version within an application.
+# * Current bespoke conversion via code in lieu of any data driven option.
+# * Recording the on-going progression of MaterialX integration into Blender as 3.5 is the first default inclusion of MaterialX. That is, this notebook will be updated as new versions of Blender come out with enhanced MaterialX support. This will include how to use  custom MaterialX libraries for Blender nodes when available. *See the Libraries / Definitions notebook on current library integrations*
+# 
+# The Python MaterialX module which is available as part of the distribution  as of `Blender 3.5`. 
+# This can be found roughly here relative to the install location:
 # ```
 #   <install location>/Blender Foundation/Blender 3.5/3.5/python/lib/site-packages/MaterialX
 # ```
 # 
-# The logic presented shows how usage of custom nodes can be converted back to a "standard" shader node representation (in this MaterialX but USD could be another target). Native applications nodes such as found in Blender are not considered "standard". Naturally the long term ideal is that a MaterialX nodes are natively represented in an application like Blender in 
+# The logic presented shows how usage of custom nodes can be converted back to a "standard" shader node representation (in this case MaterialX but USD could be another target). Native applications nodes such as found in Blender are not considered "standard". Naturally the long term ideal is that a MaterialX nodes are natively represented in an application like Blender in 
 # which case something like an export / import process is "trivial".
 # 
-# The notebook thus show the "fragility" of logic built on top of node and value types on one end, but it 
+# The notebook thus shows the "fragility" of logic built on top of node and value types on one end, but it 
 # does reuse of MaterialX node graph utilities in `mxutils/mxnodegraph` (See the 
 # <a href="mtlx_graphs_notebook.html" target="_blank">Nodegraph</a> notebook)
 # 
@@ -54,8 +59,11 @@
 # ### Integration Targets
 # 
 # Code shown here can be executed within Blender itself as shown below.
+# 
 # <img src="images/blender_materialx_python_export_final.png" width=60%>
+# 
 # or within Visual Studio Code.
+# 
 # <img src="images/blender_materialx_python_export_vscode_2.png" width=60%>
 # 
 # With the results available to use for any MaterialX integration such as MaterialXView below.
@@ -77,7 +85,6 @@ import bpy
 # The basic setup imports the MaterialX package and uses additional utilities introduced in other notebooks
 # for node / nodegraph and file handling.
 # 
-# An additional utility is added to write the output to file and Markdown display.
 
 # %%
 # Import MaterialX package
@@ -89,6 +96,57 @@ haveVersion1387 = haveVersion(1,38,7)
 if not haveVersion1387:
     print("** Warning: Recommended version is 1.38.7 for tutorials. Have version: ", mx.__version__)
 
+# %% [markdown]
+# To test for the existence of MaterialX, it is possible to examine the site packages included with Blender.
+# Blender versions 3.5 and above includes MaterialX so that package would be found. Otherwise, MaterialX
+# needs to be installed as an extra step. As of 1.38.7, the data libraries are included as part of the MaterialX package
+# but not be found in Blender 3.5.
+# 
+# > Note that it is possible to simplify coding for the 3.5 and higher release by copying over the 1.38.6 `libraries` folder from a release into the Blender package location. 
+# 
+# > Also note that the code is run outside of Blender so will return the package location relative to this notebook.
+
+# %%
+# This code needs to be run within Blender to return the appropriate result.
+
+# 1. Find the Blender Python site packages folder 
+# When run inside Blender a path like this will be returned by default (on Windows)
+# ['C:\\Program Files\\Blender Foundation\\Blender 3.5\\3.5\\python', 
+#  'C:\\Program Files\\Blender Foundation\\Blender 3.5\\3.5\\python\\lib\\site-packages'] 
+import site, os
+packages = site.getsitepackages()
+
+foundPackage = False
+librariesRoot = ''
+materialXRoot = ''
+for package in packages:
+    pythonRoot = mx.FilePath(package)
+
+    # 2. Find the location of the MaterialX package
+    materialXRoot = pythonRoot / mx.FilePath('MaterialX') 
+
+    if os.path.exists(materialXRoot.asString()):
+        foundPackage = True
+        librariesRoot = materialXRoot / "libraries"
+        if not os.path.exists(librariesRoot.asString()):
+            librariesRoot = ''
+        break
+
+if foundPackage:
+    print('MaterialX package location:', materialXRoot.asString())
+    if librariesRoot:
+        print('Default data libraries found at:', librariesRoot.asString())
+    else:
+        print('Default data libraries are not part of the MaterialX package.')
+else:
+    print('MaterialX package not found')        
+
+# %% [markdown]
+#   
+# 
+# An additional utility is added to write the output to file and Markdown display.
+
+# %%
 # Import graph and file utiities
 from mtlxutils.mxnodegraph import MtlxNodeGraph as mxg
 from mtlxutils.mxfile import MtlxFile as mxf
@@ -362,7 +420,7 @@ def blender_materialx(doc, shaderNodeMappings):
 # %%
 if __name__ == "__main__":
     bpy.ops.wm.open_mainfile(filepath="data/test.blend")
-    doc = mxf.creatwWorkingDocument()
+    doc, libFiles = mxf.createWorkingDocument()
     shaderNodeMap = blender_init_node_dictionary('ND_UsdPreviewSurface_surfaceshader')
     blender_materialx(doc, shaderNodeMap)
     writeMaterialX(doc, 'data/blender_to_mtlx.mtlx', '**Blender To MaterialX Result**')
@@ -376,7 +434,7 @@ from mtlxutils.mxtraversal import *
 from mtlxutils.mxfile import *
 
 # Load in document and create a Mermaid graph
-doc = MtlxFile.creatwWorkingDocument()
+doc, libFiles = MtlxFile.createWorkingDocument()
 mx.readFromXmlFile(doc, 'data/blender_to_mtlx.mtlx')
 roots = doc.getMaterialNodes()
 graph = MtlxMermaid.generateMermaidGraph(roots, 'LR')

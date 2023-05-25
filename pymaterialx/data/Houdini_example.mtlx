@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+  <hcatmullrom name="hcatmullrom_float" type="float" xpos="12.275362" ypos="4.939655">
+    <input name="t" type="float" value="7" />
+    <input name="tension" type="float" value="0" />
+    <input name="key0" type="float" value="0" />
+    <input name="key1" type="float" value="6.1" />
+  </hcatmullrom>
+  <surface_unlit name="surface_unlit" type="surfaceshader" xpos="14.956522" ypos="0.146552">
+    <input name="emission" type="float" value="1" />
+    <input name="emission_color" type="color3" nodename="huniformramp_color3" />
+  </surface_unlit>
+  <surfacematerial name="surfacematerial" type="material" xpos="17.391304" ypos="0.181034">
+    <input name="surfaceshader" type="surfaceshader" nodename="surface_unlit" />
+  </surfacematerial>
+  <hmtlxfacingratio name="hmtlxfacingratio_float" type="float" xpos="14.659420" ypos="6.525862" />
+  <huniformramp name="huniformramp_color3" type="color3" xpos="12.144928" ypos="0.370690">
+    <input name="value0" type="color3" value="0.992665, 0.0121352, 0.0121352" />
+    <input name="value1" type="color3" value="0.0829981, 0.623555, 0.652812" />
+    <input name="num" type="float" value="6.7" />
+    <input name="ramp" type="float" value="0.2" />
+    <input name="value2" type="color3" value="0, 0.139364, 0.0442967" />
+  </huniformramp>
+  <hmtlxgain name="hmtlxgain_float" type="float" xpos="14.695652" ypos="5.008621" />
+  <huniformcubic name="huniformcubic_color3" type="color3" xpos="19.847826" ypos="-0.353448" />
+</materialx>

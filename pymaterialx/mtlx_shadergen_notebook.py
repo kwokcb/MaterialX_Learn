@@ -171,20 +171,49 @@ except mx.Exception as err:
 # 
 # As this code is required for code generation to occur,  the standard `libraries` folder must be read in. 
 # 
+# The `libraries` folder can be examined as part of the Python package as of 1.38.7. Below is a simple utility to traverse and print out the folders found. This starts where the site packages are located (as returned using `site.getsitepackages()`). This works either whether called from a virtual environment or not.
+
+# %%
+import site
+                   
+def printPaths(rootPath):
+    "Print a 'tree' of paths given a root path"
+    outputStrings = []
+    for dirpath, dirs, files in os.walk(rootPath):
+        testpath = dirpath.removeprefix(rootPath)
+        path = testpath.split(os.sep)
+        comment = ''
+        if len(path) > 1:
+            if path[len(path)-1].startswith('gen'):
+                comment = ' ( _Root of target specific implementations_ )' 
+        indent = (len(path)-1)*'  '
+        outputString = indent +  '- ' + os.path.basename(dirpath) + comment + '\n'
+        outputStrings.append(outputString)   
+    display_markdown(outputStrings, raw=True)
+
+packages = site.getsitepackages()
+for package in packages:
+    libraryPath = mx.FilePath(package + '/MaterialX/libraries')
+    if os.path.exists(libraryPath.asString()):
+        printPaths(libraryPath.asString())
+        break
+
+# %% [markdown]
+# 
 # Implementations are of the type <a href="https://materialx.org/docs/api/class_implementation.html" target="_blank">`Implementation`</a>.
 
 # %%
-# Load in standard libraries
+# Load in standard libraries, and include an definitions local to the input file
 stdlib = mx.createDocument()
-searchPath = mx.FileSearchPath(os.path.dirname(inputFilename))
-libraryFolders = []
-libraryFolders.append("libraries")
+searchPath = mx.getDefaultDataSearchPath()
+searchPath.append(os.path.dirname(inputFilename))        
+libraryFolders = mx.getDefaultDataLibraryFolders()
 try:
-    mx.loadLibraries(libraryFolders, searchPath, stdlib)
+    libFiles = mx.loadLibraries(libraryFolders, searchPath, stdlib)
     doc.importLibrary(stdlib)
-    print('Standard library definitions and implementations loaded.')
-except err:
-    print('Standard library definitions and implementation failed to load: "', err, '"')
+    print('Loaded %s standard library definitions' % len(doc.getNodeDefs()))
+except mx.Exception as err:
+    print('Failed to load standard library definitions: "', err, '"')
     sys.exit(-1)
 
 
@@ -287,8 +316,8 @@ for gen in generators:
     generatordict[gen.getTarget()] = gen
 
 # Choose generator to use based on target identifier
-language = 'mdl'
-target = 'genmdl'
+language = 'osl'
+target = 'genosl'
 if language == 'osl':
     target = 'genosl'
 elif language == 'mdl':
@@ -460,7 +489,7 @@ if nodeName:
     shaderName = mx.createValidName(nodeName)
     try:
         shader = shadergen.generate(shaderName, node, context)
-    except err:
+    except mx.Exception as err:
         print('Shader generation errors:', err)
 
 if shader:
@@ -489,14 +518,254 @@ if shader:
     # recognized by glslangValidator
     if language in ['glsl', 'essl', 'vulkan']:
         vertexSource = shader.getSourceCode(mx_gen_shader.VERTEX_STAGE)
-        display_markdown('### Vertex Source Code' , raw=True)
-        display_markdown('------------------', raw=True)
-        display_markdown('```ccc {' + vertexSource + '}```', raw=True)
+        text = '<details><summary>Vertex Shader For: "' + nodeName + '"</summary>\n\n' + '```cpp\n' + vertexSource + '```\n' + '</details>\n' 
+        display_markdown(text , raw=True)
 
     pixelSource = shader.getSourceCode(mx_gen_shader.PIXEL_STAGE)
-    display_markdown('### Pixel Source Code' , raw=True)
-    display_markdown('------------------', raw=True)
-    display_markdown('```\n' + pixelSource + '\n```', raw=True)
+    text = '<details><summary>Pixel Shader For: "' + nodeName + '"</summary>\n\n' + '```cpp\n' + pixelSource + '```\n' + '</details>\n' 
+    display_markdown(text , raw=True)
 
+
+# %% [markdown]
+# # Downstream Renderables
+# 
+# `getDownstreamPorts()` can be used to traverse downstream from a given `Node`. With the current release this does not work with `NodeGraphs` so custom logic is used instead which calls into `getMatchingPorts()` on a document. 
+
+# %%
+def getDownstreamPorts(nodeName):
+    downstreamPorts = []
+    for port in doc.getMatchingPorts(nodeName):
+        #print('- check port:', port)
+        #print('- Compare: ', port.getConnectedNode().getName(), ' vs ', nodeName)
+        #if port.getConnectedNode().getName() == nodeName:
+        downstreamPorts.append(port)
+    return downstreamPorts
+
+# %% [markdown]
+# `getMatchingPorts()` should return all ports in the document which reference a given node. Again there is an issue with the current release that this will not find any matches when a `nodegraph` is referenced by a port.  **For this example a custom build was used which addresses this issue.**
+# 
+# A wrapper utility called `getDownStreamNodes()` is written to perform downstream traversal starting from a node. It returns ports and corresponding nodes as well as what is considered to be "renderable". This is akin logic found in `findRenderableElements()` but instead will only look at nodes connected downstream from a node. 
+# "Renderable" is considered to be 
+# - Unconnected `output` ports
+# - Shaders (`surfaceshader` and `volumeshader` nodes) and 
+# - Materials (`material` node)
+
+# %% [markdown]
+# 
+
+# %%
+from collections import OrderedDict
+
+def getDownstreamNodes(node, foundPorts, foundNodes, renderableElements, 
+                       renderableTypes = ['material', 'surfaceshader', 'volumeshader']):
+    """
+    For a given "node", traverse downstream connections until there are none to be found.
+    Along the way collect a list of ports and corresponding nodes visited (in order), and
+    a list of "renderable" elements. 
+    """
+    testPaths = set()
+    testPaths.add(node.getNamePath())
+
+    while testPaths:
+        nextPaths = set()
+        for path in testPaths:
+            testNode = doc.getDescendant(path)
+            #print('test node:', testNode.getName())
+            ports = []
+            if testNode.isA(mx.Node):
+                ports = testNode.getDownstreamPorts()
+            else:
+                ports = getDownstreamPorts(testNode.getName())
+            for port in ports:
+                downNode = port.getParent()
+                downNodePath = downNode.getNamePath()
+                if downNode and downNodePath not in nextPaths: #and downNode.isA(mx.Node):
+                    foundPorts.append(port.getNamePath())
+                    if port.isA(mx.Output):
+                        renderableElements.append(port.getNamePath())
+                    nodedef = downNode.getNodeDef()
+                    if nodedef:
+                        nodetype = nodedef.getType()
+                        if nodetype in renderableTypes:
+                            renderableElements.append(port.getNamePath())
+                    foundNodes.append(downNode.getNamePath())
+                    nextPaths.add(downNodePath)
+
+        testPaths = nextPaths    
+
+def examineNodes(nodes):
+    """
+    Traverse downstream for a set of nodes to find information
+    Returns the set of common ports, nodes, and renderables found 
+    """
+    commonPorts = []
+    commonNodes = []
+    commonRenderables = []
+    for node in nodes:
+        foundPorts = []
+        foundNodes = []
+        renderableElements = []
+        getDownstreamNodes(node, foundPorts, foundNodes, renderableElements)
+
+        foundPorts = list(OrderedDict.fromkeys(foundPorts))
+        foundNodes = list(OrderedDict.fromkeys(foundNodes))
+        renderableElements = list(OrderedDict.fromkeys(renderableElements))
+        print('Traverse downstream from node: ', node.getNamePath())
+        print('- Downstream ports:', ', '.join(foundPorts))
+        print('- Downstream nodes:', ', '.join(foundNodes))
+        print('- Renderable elements:', ', '.join(renderableElements))
+        commonPorts.extend(foundPorts)
+        commonNodes.extend(foundNodes)
+        commonRenderables.extend(renderableElements)
+
+    commonPorts = list(OrderedDict.fromkeys(commonPorts))
+    commonNodes = list(OrderedDict.fromkeys(commonNodes))
+    commonRenderables = list(OrderedDict.fromkeys(commonRenderables))
+
+    return commonPorts, commonNodes, commonRenderables
+
+
+nodegraph = doc.getChild('NG_marble1')
+nodes = [nodegraph.getChild('obj_pos'), nodegraph.getChild('scale_pos')]
+
+commonPorts, commonNodes, commonRenderables = examineNodes(nodes)
+display_markdown('Common downstream:', raw=True)
+display_markdown('- Common downstream ports: [ ' + ', '.join(commonPorts) + ' ]', raw=True)
+display_markdown('- Common downstream nodes: [ ' + ', '.join(commonNodes) + ' ]', raw=True)
+display_markdown('- Common renderable elements: [ ' + ', '.join(commonRenderables) + ' ]', raw=True)
+
+
+# %% [markdown]
+# *The Marble graph is shown below for reference:*
+# 
+# <image src="images/marble_mermaid_graph_generation.svg" width=50%>
+
+# %% [markdown]
+# ## Sampling Graph Nodes
+# 
+# Given the ability to traverse downstream from a node, it is possible to produce code just a given node or the upstream subgraph rooted at a given node.
+# If a non-surface shader or material node is used to generate from then only that nodes could will be considered.
+# 
+# To generate code for the entire upstream graph the node needs to have a downstream root which is either a shader or a material.
+# As of version 1.38.7, the easiest way to do this is to create a temporary `convert` node to route the output type to a downstream surface shader.
+# For example a `convert` from color to `surfaceshader` can be used 
+
+# %%
+import mtlxutils.mxnodegraph as mxg
+
+for nodePath in commonNodes:
+    node = doc.getDescendant(nodePath)
+    if not node:
+        continue
+
+    if node.isA(mx.NodeGraph):
+        outputs = node.getOutputs()
+        for output in outputs:
+            outputPath = output.getNamePath()
+            if outputPath in commonRenderables:
+                node = output
+                nodePath = outputPath
+    else:
+        convertNode = None
+        #parent = node.getParent()
+        #convertNode = mxg.MtlxNodeGraph.addNode(parent, 'ND_convert_' + node.getType() + '_surfaceshader', 'convert_' + node.getName())
+        #if convertNode:
+        #    mxg.MtlxNodeGraph.connectNodeToNode(convertNode, 'in', node, '')
+
+    shaderName = mx.createValidName(nodePath)
+    try:
+        shader = shadergen.generate(shaderName, node, context)
+    except mx.Exception as err:
+        print('Shader generation errors:', err)
+
+    if shader:
+        pixelSource = shader.getSourceCode(mx_gen_shader.PIXEL_STAGE)
+        text = '<details><summary>Code For: "' + nodePath + '"</summary>\n\n' + '```cpp\n' + pixelSource + '```\n' + '</details>\n' 
+        display_markdown(text , raw=True)
+    else:
+        print('Failed to generate code for shader "%s" code from node "%s"' % (shaderName, nodeName)) 
+
+
+    if convertNode:
+        nodePath = convertNode.getNamePath()
+        shaderName = mx.createValidName(nodePath)
+        try:
+            shader = shadergen.generate(shaderName, convertNode, context)
+        except mx.Exception as err:
+            print('Shader generation errors:', err)
+
+        if shader:
+            pixelSource = shader.getSourceCode(mx_gen_shader.PIXEL_STAGE)
+            text = '<details><summary>Convert Code For: "' + nodePath + '"</summary>\n\n' + '```cpp\n' + pixelSource + '```\n' + '</details>\n' 
+            display_markdown(text , raw=True)
+        else:
+            print('Failed to generate code for shader "%s" code from node "%s"' % (shaderName, nodeName)) 
+    
+
+# %% [markdown]
+# ### Building A Custom Traversal Cache
+# 
+# * Build a cache with node/nodegraph names -> list of ports referencing them
+# * Only interested in port mappings for non-implementations so cache can be much smaller than when considering every
+# port element in the standard data library ! 
+
+# %%
+# getAncestorOfType not in Python API.
+
+def elementInDefinition(elem):
+    parent = elem.getParent()
+    while parent:
+        if parent.isA(mx.NodeGraph):
+            if parent.getNodeDef(): 
+                #print('Skip elem: ', elem.getNamePath())
+                return True
+            return False
+        else:
+            parent = parent.getParent()
+    return False
+
+
+def getParentGraph(elem):
+    parent = elem.getParent()
+    while parent:
+        if parent.isA(mx.NodeGraph):
+            return parent
+        else:
+            parent = parent.getParent()
+    return None
+
+portElementMap = dict()
+
+for elem in doc.traverseTree():
+    if not elem.isA(mx.PortElement):
+        continue
+
+    graph = getParentGraph(elem)
+    graphName = ''
+    if graph:
+        if graph.getNodeDef():
+            continue
+        graphName = graph.getNamePath()
+
+    nd = elem.getAttribute('nodename')
+    if nd:
+        qn = graphName + '/' + elem.getQualifiedName(nd)
+        if qn not in portElementMap:
+            portElementMap[qn] = [ elem ]
+        else:
+            portElementMap[qn].append( elem )
+
+    ng = elem.getAttribute("nodegraph")
+    if ng:
+        qng = graphName + '/' + elem.getQualifiedName(ng)
+        if qng not in portElementMap:
+            portElementMap[qng] = [ elem ]
+        else:
+            portElementMap[qng].append( elem )
+
+for k in portElementMap:
+    print('Node:', k)
+    for p in portElementMap[k]:
+        print(' used by:', p.getNamePath(), 'out:' + p.getAttribute('output') if p.getAttribute('output') else '')
 
 

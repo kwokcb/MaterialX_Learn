@@ -8,29 +8,31 @@ This is a complementary site for those interested in learning about or are integ
 * Glossary of basic types, geometric definitions, color management and real-world unit definitions. 
 * Fundamental concepts (Nodes, Nodegraphs, Documents, Definitions) 
 * Python environment setup for MaterialX
-* Python and Jupyter Tutorials for basics and shader code generation in the workspace [pymaterialx](pymaterialx).
-* Workflows including USD and glTF interop.
+* Python and Jupyter Tutorials from basics to shader code generation, shader graph interop, and definition creation [pymaterialx](pymaterialx).
+* Workflows touching on USD, Maya, Houdini and Blender.
 
 Material will be constantly added over time. 
 See issues and project area for some of items on queue.
 
-## What's new
-* Usd / MaterialX Graphing Comparison Tutorial
-* MaterialX Mermaid Diagram Generation Tutorial
-* Blender / MaterialX Graphing Example
+## Latest Updates
+* Updated to 1.38.7. Updates for 1.38.8 release as it progresses.
+* [Video tutorial](https://kwokcb.github.io/MaterialX_Learn/documents/python_MaterialX.html) for Visual Studio Code / Python / Jupyter setup.
+* Node definition: library usage and creation.
 * Utilities packaging: `mtlxutils` and usage. 
-* Upgrades for the pending 1.38.7 release in progress.
+* Usd / MaterialX Graphing Comparison Tutorial
 
 ## Visit the site 
 <a href="https://kwokcb.github.io/MaterialX_Learn/">
 <img src="https://user-images.githubusercontent.com/49369885/216663255-fd7a8752-3256-4907-a60c-c7fff65f4304.png" width="60%">
 </a>
 
-## Content 
-The content for the site is provided in the sub-folders.
+## Repository Content
+The content for the site is provided in the following sub-folders:
 
 * [Documents](documents) Learning materials, utilities, and definitions.
-* [PyMaterialX](pymaterialx) Python Tutorials and sample Jupyter Notebooks
+* [PyMaterialX](pymaterialx) Python Tutorials and sample Jupyter Notebooks and Python utilities (including [mxltutils](pymaterialx/mtlxutils))
 * [Resources](resources) Additional MaterialX resource files.
+
+Comments and suggestions for improving or providing new content are welcome.
 
 
