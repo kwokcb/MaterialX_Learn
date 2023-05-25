@@ -1,6 +1,5 @@
 '''
-    Test example to load in libraries and print out
-    the library files loaded.
+    Test example to load in libraries and print out the library files loaded.
 '''
 import sys, os, argparse
 import MaterialX as mx
@@ -11,16 +10,8 @@ def main():
 
     opts = parser.parse_args()
 
-    # Assuming we are running from the install localtion for MaterialX
-    # This will loade in all files found under the `libraries` folder
-    # into a document called `stdlib`
-    libraryPath = mx.FilePath('libraries')
-    # Check for library path on input args
-    if opts.libraryPath:
-        libraryPath = opts.libraryPath
     stdlib = mx.createDocument()
-    searchPath = mx.FileSearchPath()
-    libFiles = mx.loadLibraries([ libraryPath ], searchPath, stdlib)
+    libFiles = mx.loadLibraries(mx.getDefaultDataLibraryFolders(), mx.getDefaultDataSearchPath(), stdlib)
 
     # Create main document and import the library document
     doc = mx.createDocument()

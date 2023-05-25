@@ -1,15 +1,13 @@
 #usda 1.0
 
-def NodeGraph "collect1"
+def Material "collect1"
 {
-    color3f inputs:base_color = (1, 0, 0)
-    token outputs:mtlx_displacement.connect = </collect1/my_materialx_subnet.outputs:displacement>
-    token outputs:mtlx_surface.connect = </collect1/my_materialx_subnet.outputs:surface>
-    token outputs:surface.connect = </collect1/usdpreview_subnet.outputs:out>
+    token outputs:mtlx:displacement.connect = </collect1/my_materialx_subnet.outputs:displacement>
+    token outputs:mtlx:surface.connect = </collect1/my_materialx_subnet.outputs:surface>
 
     def NodeGraph "my_materialx_subnet"
     {
-        color3f inputs:base_color.connect = </collect1.inputs:base_color>
+        color3f inputs:base_color
         token outputs:displacement.connect = </collect1/my_materialx_subnet/mtlxdisplacement.outputs:out>
         token outputs:surface.connect = </collect1/my_materialx_subnet/mtlxstandard_surface1.outputs:out>
 
@@ -62,8 +60,7 @@ def NodeGraph "collect1"
 
     def NodeGraph "usdpreview_subnet"
     {
-        color3f inputs:base_color.connect = </collect1.inputs:base_color>
-        token outputs:out
+        color3f inputs:base_color
         token outputs:surface.connect = </collect1/usdpreview_subnet/usdpreviewsurface1.outputs:out>
 
         def Shader "usdpreviewsurface1"

@@ -1,0 +1,713 @@
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-J7404418VP');
+  </script>
+
+  <title>MXLearn thin_surface</title>
+    <link rel="icon" href="../images/logo3d_icon.png" type="image/x-icon"/>    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  
+    <link rel="stylesheet" href="../css/style.css">
+  
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">  
+</head>
+
+<body class="min-vh-100">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script> 
+<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
+
+<script src="../js/definition_card_helpers.js"></script>
+
+ <!-- Navigation  -->
+ <nav class="navbar sticky-top navbar-expand-lg bg-light">
+    <div class="container-md container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+        <h5><img src="../images/logo3d_2_small.png" alt="MaterialX Learn"
+            class="d-inline-block align-text-center" width="60">
+          MaterialX Learn</h5>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+        aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenuContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="../../index.html" role="button">
+                  Home
+                </a>
+              </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Learn
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../nodes_and_nodegraphs.html">
+                  Nodes and Graphs
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../node_definitions.html">
+                  Node Definitions
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../documents.html">
+                  Documents
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Reference
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="definitions_by_group.html">
+                  Library (By Group)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="all_definitions.html">
+                  Library (All)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="library_glossary.html">
+                  Library Glossary
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
+                  <img src="../images/MaterialXLogo_200x155.png" style="width:20px"> C++ API  
+                </a>
+              </li>
+              <div class="dropdown-divider"></div>              
+              <li>
+                <a class="dropdown-item" href="../using_library.html">
+                  <img src="../images/info-circle.svg"> Library User Guide
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Utilities</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../mermaidChecker.html">
+                  Graph Visualizer
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Develop</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../python_MaterialX.html">
+                  Notebooks 
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../jupyter_example.html">
+                  Examples
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Workflows</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="https://github.com/kwokcb/glTF_MaterialX" target="_blank">
+                  Khronos glTF Interop
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Design</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../design.html">
+                  UX Design
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../implementation.html">
+                    Implementation
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link greyhover" href="#" data-bs-target="#sidebar" data-bs-toggle="collapse">
+              <img src="../images/layout-text-sidebar.svg">
+                Index
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav><div class="container-fluid ">
+ <div class="row flex-nowrap">
+   <div class="col-auto px-0">
+     <div class="row vh-100 overflow-auto" id="noddict_row">
+       <div class="col-12 pt-2 pl-2">
+         <div class="container-md">
+           <div id="sidebar" class="collapse show collapse-horizontal">
+<form class="d-flex" role="search">
+ <input id="searchTOC" class="form-control me-2" type="text" placeholder="Filter value" aria-label="Search">
+    <div class="btn btn-outline-primary" onclick="return filterTOC()">Filter</div>
+</form>
+    <button class="btn btn-outline-primary border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nodeGroupIndex" aria-expanded="false" aria-controls="nodeGroupIndex"> <img src="../images/caret-right-fill.svg"> Node Groups </button>
+<div class="collapse show" id="nodeGroupIndex">
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_adjustment" aria-expanded="false" aria-controls="collapse_adjustment"> <img src="../images/caret-right-fill.svg"> adjustment </button>
+</div>
+<div class="collapse ps-5" id="collapse_adjustment">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="colorcorrect.html">colorcorrect</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="contrast.html">contrast</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="curveadjust.html">curveadjust</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="hsvadjust.html">hsvadjust</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="hsvtorgb.html">hsvtorgb</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="luminance.html">luminance</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="range.html">range</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="remap.html">remap</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="rgbtohsv.html">rgbtohsv</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="saturate.html">saturate</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="smoothstep.html">smoothstep</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_application" aria-expanded="false" aria-controls="collapse_application"> <img src="../images/caret-right-fill.svg"> application </button>
+</div>
+<div class="collapse ps-5" id="collapse_application">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="frame.html">frame</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="time.html">time</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_channel" aria-expanded="false" aria-controls="collapse_channel"> <img src="../images/caret-right-fill.svg"> channel </button>
+</div>
+<div class="collapse ps-5" id="collapse_channel">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="combine2.html">combine2</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="combine3.html">combine3</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="combine4.html">combine4</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="convert.html">convert</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="extract.html">extract</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="separate2.html">separate2</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="separate3.html">separate3</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="separate4.html">separate4</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_compositing" aria-expanded="false" aria-controls="collapse_compositing"> <img src="../images/caret-right-fill.svg"> compositing </button>
+</div>
+<div class="collapse ps-5" id="collapse_compositing">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="burn.html">burn</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="difference.html">difference</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="disjointover.html">disjointover</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dodge.html">dodge</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="in.html">in</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="inside.html">inside</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="mask.html">mask</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="matte.html">matte</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="minus.html">minus</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="mix.html">mix</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="out.html">out</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="outside.html">outside</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="over.html">over</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="overlay.html">overlay</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="plus.html">plus</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="premult.html">premult</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="screen.html">screen</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="unpremult.html">unpremult</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_conditional" aria-expanded="false" aria-controls="collapse_conditional"> <img src="../images/caret-right-fill.svg"> conditional </button>
+</div>
+<div class="collapse ps-5" id="collapse_conditional">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ifequal.html">ifequal</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ifgreater.html">ifgreater</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ifgreatereq.html">ifgreatereq</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="switch.html">switch</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_convolution2d" aria-expanded="false" aria-controls="collapse_convolution2d"> <img src="../images/caret-right-fill.svg"> convolution2d </button>
+</div>
+<div class="collapse ps-5" id="collapse_convolution2d">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="blur.html">blur</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="heighttonormal.html">heighttonormal</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_geometric" aria-expanded="false" aria-controls="collapse_geometric"> <img src="../images/caret-right-fill.svg"> geometric </button>
+</div>
+<div class="collapse ps-5" id="collapse_geometric">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="UsdPrimvarReader.html">UsdPrimvarReader</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="bitangent.html">bitangent</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="bump.html">bump</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="geomcolor.html">geomcolor</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="geompropvalue.html">geompropvalue</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="normal.html">normal</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="position.html">position</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="tangent.html">tangent</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="texcoord.html">texcoord</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_global" aria-expanded="false" aria-controls="collapse_global"> <img src="../images/caret-right-fill.svg"> global </button>
+</div>
+<div class="collapse ps-5" id="collapse_global">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ambientocclusion.html">ambientocclusion</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_light" aria-expanded="false" aria-controls="collapse_light"> <img src="../images/caret-right-fill.svg"> light </button>
+</div>
+<div class="collapse ps-5" id="collapse_light">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="directional_light.html">directional_light</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="point_light.html">point_light</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="spot_light.html">spot_light</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_material" aria-expanded="false" aria-controls="collapse_material"> <img src="../images/caret-right-fill.svg"> material </button>
+</div>
+<div class="collapse ps-5" id="collapse_material">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surfacematerial.html">surfacematerial</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="volumematerial.html">volumematerial</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_math" aria-expanded="false" aria-controls="collapse_math"> <img src="../images/caret-right-fill.svg"> math </button>
+</div>
+<div class="collapse ps-5" id="collapse_math">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="UsdTransform2d.html">UsdTransform2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="absval.html">absval</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="acos.html">acos</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="add.html">add</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="asin.html">asin</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="atan2.html">atan2</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ceil.html">ceil</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="clamp.html">clamp</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cos.html">cos</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="crossproduct.html">crossproduct</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="determinant.html">determinant</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="divide.html">divide</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dotproduct.html">dotproduct</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="exp.html">exp</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="floor.html">floor</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="invert.html">invert</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="invertmatrix.html">invertmatrix</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ln.html">ln</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="magnitude.html">magnitude</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="max.html">max</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="min.html">min</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="modulo.html">modulo</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="multiply.html">multiply</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="normalize.html">normalize</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="normalmap.html">normalmap</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="place2d.html">place2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="power.html">power</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="rotate2d.html">rotate2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="rotate3d.html">rotate3d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="sign.html">sign</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="sin.html">sin</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="sqrt.html">sqrt</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="subtract.html">subtract</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="tan.html">tan</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformmatrix.html">transformmatrix</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformnormal.html">transformnormal</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformpoint.html">transformpoint</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformvector.html">transformvector</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transpose.html">transpose</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_organization" aria-expanded="false" aria-controls="collapse_organization"> <img src="../images/caret-right-fill.svg"> organization </button>
+</div>
+<div class="collapse ps-5" id="collapse_organization">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dot.html">dot</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_pbr" aria-expanded="false" aria-controls="collapse_pbr"> <img src="../images/caret-right-fill.svg"> pbr </button>
+</div>
+<div class="collapse ps-5" id="collapse_pbr">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaAdd.html">LamaAdd</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaConductor.html">LamaConductor</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaDielectric.html">LamaDielectric</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaDiffuse.html">LamaDiffuse</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaEmission.html">LamaEmission</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaLayer.html">LamaLayer</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaMix.html">LamaMix</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaSSS.html">LamaSSS</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaSheen.html">LamaSheen</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="LamaTranslucent.html">LamaTranslucent</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="UsdPreviewSurface.html">UsdPreviewSurface</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="absorption_vdf.html">absorption_vdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="add.html">add</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="anisotropic_vdf.html">anisotropic_vdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="artistic_ior.html">artistic_ior</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="blackbody.html">blackbody</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="burley_diffuse_bsdf.html">burley_diffuse_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="conductor_bsdf.html">conductor_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="conical_edf.html">conical_edf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dielectric_bsdf.html">dielectric_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="disney_brdf_2012.html">disney_brdf_2012</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="disney_bsdf_2015.html">disney_bsdf_2015</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="displacement.html">displacement</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="generalized_schlick_bsdf.html">generalized_schlick_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="generalized_schlick_edf.html">generalized_schlick_edf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="glossiness_anisotropy.html">glossiness_anisotropy</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_pbr.html">gltf_pbr</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="layer.html">layer</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="light.html">light</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="measured_edf.html">measured_edf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="mix.html">mix</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="multiply.html">multiply</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="oren_nayar_diffuse_bsdf.html">oren_nayar_diffuse_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="roughness_anisotropy.html">roughness_anisotropy</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="roughness_dual.html">roughness_dual</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="sheen_bsdf.html">sheen_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="standard_surface.html">standard_surface</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="subsurface_bsdf.html">subsurface_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surface.html">surface</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="thin_film_bsdf.html">thin_film_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="thin_surface.html">thin_surface</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="translucent_bsdf.html">translucent_bsdf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="uniform_edf.html">uniform_edf</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="volume.html">volume</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural" aria-expanded="false" aria-controls="collapse_procedural"> <img src="../images/caret-right-fill.svg"> procedural </button>
+</div>
+<div class="collapse ps-5" id="collapse_procedural">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="constant.html">constant</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural2d" aria-expanded="false" aria-controls="collapse_procedural2d"> <img src="../images/caret-right-fill.svg"> procedural2d </button>
+</div>
+<div class="collapse ps-5" id="collapse_procedural2d">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cellnoise2d.html">cellnoise2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="noise2d.html">noise2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ramp4.html">ramp4</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ramplr.html">ramplr</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ramptb.html">ramptb</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="splitlr.html">splitlr</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="splittb.html">splittb</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="unifiednoise2d.html">unifiednoise2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="worleynoise2d.html">worleynoise2d</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_procedural3d" aria-expanded="false" aria-controls="collapse_procedural3d"> <img src="../images/caret-right-fill.svg"> procedural3d </button>
+</div>
+<div class="collapse ps-5" id="collapse_procedural3d">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cellnoise3d.html">cellnoise3d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="fractal3d.html">fractal3d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="noise3d.html">noise3d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="unifiednoise3d.html">unifiednoise3d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="worleynoise3d.html">worleynoise3d</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_shader" aria-expanded="false" aria-controls="collapse_shader"> <img src="../images/caret-right-fill.svg"> shader </button>
+</div>
+<div class="collapse ps-5" id="collapse_shader">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="convert.html">convert</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="surface_unlit.html">surface_unlit</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_texture2d" aria-expanded="false" aria-controls="collapse_texture2d"> <img src="../images/caret-right-fill.svg"> texture2d </button>
+</div>
+<div class="collapse ps-5" id="collapse_texture2d">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="UsdUVTexture.html">UsdUVTexture</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_colorimage.html">gltf_colorimage</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_image.html">gltf_image</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_iridescence_thickness.html">gltf_iridescence_thickness</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gltf_normalmap.html">gltf_normalmap</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="image.html">image</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="tiledimage.html">tiledimage</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_texture3d" aria-expanded="false" aria-controls="collapse_texture3d"> <img src="../images/caret-right-fill.svg"> texture3d </button>
+</div>
+<div class="collapse ps-5" id="collapse_texture3d">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="triplanarprojection.html">triplanarprojection</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_translation" aria-expanded="false" aria-controls="collapse_translation"> <img src="../images/caret-right-fill.svg"> translation </button>
+</div>
+<div class="collapse ps-5" id="collapse_translation">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="standard_surface_to_UsdPreviewSurface.html">standard_surface_to_UsdPreviewSurface</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="standard_surface_to_gltf_pbr.html">standard_surface_to_gltf_pbr</a>
+</div>
+</div>
+</div>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+   <div class="col ps-md-2 pt-2">
+       <div class="row vh-100 overflow-auto" id="nodedefrow">
+           <div class="col-12 pt-2 pl-2">
+               <div class="container-md">
+<br>
+<b><a id="thin_surface" class="m-4 mb-0">
+Category: thin_surface
+</a></b>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_thin_surface</summary>
+<div class="m-4 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card border-primary border mb-4">
+<div class="card-body">
+<img src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/thin_surface_glsl.png style="max-width:11em"><br>
+</p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Description:</b> A constructor node for the surfaceshader type for non-closed 'thin' objects..</p>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx::pbrlib::mx_thin_surface(mxp_front_bsdf:{{front_bsdf}}, mxp_front_edf:{{front_edf}}, mxp_back_bsdf:{{back_bsdf}}, mxp_back_edf:{{back_edf}}, mxp_opacity:{{opacity}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+<p class="card-text"><b>Parameters:</b></p>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_thin_surface_front_bsdf" type="button" role="tab" aria-controls="pills-ND_thin_surface_front_bsdf" aria-selected="true">front_bsdf</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_thin_surface_front_edf" type="button" role="tab" aria-controls="pills-ND_thin_surface_front_edf" aria-selected="true">front_edf</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_thin_surface_back_bsdf" type="button" role="tab" aria-controls="pills-ND_thin_surface_back_bsdf" aria-selected="true">back_bsdf</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_thin_surface_back_edf" type="button" role="tab" aria-controls="pills-ND_thin_surface_back_edf" aria-selected="true">back_edf</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_thin_surface_opacity" type="button" role="tab" aria-controls="pills-ND_thin_surface_opacity" aria-selected="true">opacity</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_thin_surface_out" type="button" role="tab" aria-controls="pills-ND_thin_surface_out" aria-selected="true"><b>out</b></button></li>
+</ul>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_thin_surface_front_bsdf"
+  role="tabpanel" aria-labelledby="pills-ND_thin_surface_front_bsdf-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>Distribution function for front-side surface scattering. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="BSDF">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_thin_surface_front_edf"
+  role="tabpanel" aria-labelledby="pills-ND_thin_surface_front_edf-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>Distribution function for front-side surface emission. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="EDF">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_thin_surface_back_bsdf"
+  role="tabpanel" aria-labelledby="pills-ND_thin_surface_back_bsdf-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>Distribution function for back-side surface scattering. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="BSDF">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_thin_surface_back_edf"
+  role="tabpanel" aria-labelledby="pills-ND_thin_surface_back_edf-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>Distribution function for back-side surface emission. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="EDF">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_thin_surface_opacity"
+  role="tabpanel" aria-labelledby="pills-ND_thin_surface_opacity-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>Surface cutout opacity </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
+      <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" value="1" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_thin_surface_out"
+  role="tabpanel" aria-labelledby="pills-ND_thin_surface_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+               </div>
+           </div>
+       </div>
+   </div>
+<script>
+  var searchInput = document.getElementById("searchTOC")
+  if (searchInput) {
+   searchInput.addEventListener("keypress", filterOnEnter);
+  }
+  var renderButtons = document.querySelectorAll(".mrender");
+  if (renderButtons) {
+     renderButtons.forEach((renderButton) => { renderButton.addEventListener("click", renderMermaid); });
+  }
+  var copyButtons = document.querySelectorAll(".mrcopy");
+  if (copyButtons) {
+     copyButtons.forEach((copyButton) => { copyButton.addEventListener("click", copyMermaid); });
+  }
+  var collapses = document.querySelectorAll("[data-bs-toggle='collapse']");
+  if (collapses) {
+    collapses.forEach((collapseItem) => { collapseItem.addEventListener("click", toggleIndexArea); });
+  }
+</script>
+</body>
+</html>

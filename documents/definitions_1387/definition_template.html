@@ -1,0 +1,760 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title> Vertical Menu </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Boostrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
+
+    <style>
+        body {
+            font-size: 90%;
+        }
+
+        .col-form-label-sm {
+            font-size: 90%;
+        }
+
+        .form-control {
+            font-size: 90%;
+        }
+
+        .card-body {
+            font-size: 80%;
+        }
+
+        .btn {
+            font-size: 90%;
+        }
+
+        .nav-link {
+            font-size: 100%;
+        }
+
+        .a {
+            text-decoration: none;
+            align-items: flex-start;
+        }
+
+        .greyhover {
+            text-decoration: none;
+        }
+
+        .greyhover:hover {
+            text-decoration: none;
+            cursor: pointer;
+            background: rgb(239, 239, 239);
+        }
+
+        .text-left {
+            text-align: left !important;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+</head>
+
+<body class="min-vh-100">
+
+
+    <div class="container-fluid ">
+
+        <!-- <div class="row flex-nowrap">
+
+            <div class="col ps-md-2 pt-2"> -->
+        <div class="row vh-100 overflow-auto">
+            <div class="col-6 md-2 p-2">
+                <div class="container-md">
+                    <h3>Node Definitions</h3>
+
+                    <details>
+                        <summary class="card-header rounded bg-success bg-opacity-50 text-white pt-2 pb-2 px-1">
+                            <b>Node Definition Basics</b>
+                        </summary>
+                        <p>
+                            The attributes of a node definition (&lt;nodedef&gt;) and it's child parameters are
+                            shown in the UI interface. All attributes
+                            have lowercase string identifiers. This UI interface is the <em>template</em> used for
+                            documentation for each node definition.
+                        </p>
+
+                        <p>Every node definition must have a unique <b>name</b>. For the "core" libraries shipping with
+                            MaterialX a "ND_" prefix is used as a prefix with the
+                            the follow proposed syntax template to provide long term uniqueness:
+                        <pre>    ND_&lt;node category&gt;_&lt;type&gt;_&lt;version&gt;</pre>
+                        While it is possible to change this name, this can cause numerous issues with
+                        dependents that reference this name. Even within MaterialX usage a node can be instantiated
+                        using this name as the identifier of what to create. Files / assets
+                        saved using this name could be hard to maintain if the name is changed.
+                        </p>
+                        </p>
+                        Each node definition must have a <b>node</b> category attribute. This is the unique
+                        identifier used to determine the <b>category</b> of
+                        node to created. 1 or more node definitions may use the same category, but each must have a
+                        unique interface defined
+                        by it's input, output, and token ports.
+                        </p>
+                        <P>
+                            A <b>type</b> is also required. This is the output type for the node definition.
+                            Different definitions for the same category can have the same or differing
+                            output types. If there is more than one output in a definition then the type is
+                            <em>multioutput</em>, in which case the individual outputs
+                            need to be examined to determine their respective type.
+                        </P>
+                        <p>
+                            It is worthwhile to give every definition a <b>version</b> identifier to avoid
+                            complications trying to add this in later on.
+                            A recommended version number is either "getValue()" , or a number matching the version of
+                            a given specification. For example versions for "USD"
+                            definitions start with "2.x". The <b>isdefaultversion</b> attribute should
+                            be provided at the same time as it determines the definition to instantiate when creating
+                            a nodes instance without specifying an explicit version.
+                            Versioning is also importer to allow for "upgrade" logic support.
+
+                            It is possible to indicate that a node definition inherits it's properties from another
+                            node definition by specifying an <b>inherit</b>
+                            attribute value.
+                            This can be used for specialization and also for versioning where only some specific
+                            propertie(s) have changed between versions.
+                            For example the "standard_surface" and "USD texture" definitions use inheritance.
+
+                        <p>
+                            Though not strictly required it is very useful to have some description of the definition.
+                            This is accessible in the <b>doc</b> attribute of the definition. It is assumed that
+                            all text is in UTF-8 format.
+                        </p>
+                        <p>
+                            A node group <b>nodegroup</b> is optional and is used when performing code generation to
+                            determine how to handle a node. This is especially
+                            important to tag whether a definition is a texture lookup.
+                        </p>
+                        <p>
+                            The API class for a definition is: <em>NodeDef</em>. Matching API calls to retrieve the
+                            information is written in Python format.
+                            In general the API calls for all supports APIs use the same name (Python, Javascript,
+                            C++)
+                        </p>
+                    </details>
+                    <br>
+                    <details>
+                        <summary class="card-header rounded bg-success bg-opacity-50 text-white pt-2 pb-2 px-1">
+                            <b>Node Definition Implementations</b>
+                        </summary>
+                        <p>
+                            A definition can be implemented either in code or using a functional node graph
+                            depending on the output shading API "target". The association between a node definition and
+                            the graph can either be
+                            specified via the <b>nodedef</b> attribute on a node graph or via an &lt;implementation%gt;
+                            association as of version 1.38.4.
+                            The recommended functional graph name should be of the form:
+                        <pre>    NG_&lt;node category&gt;_&lt;type&gt;_&lt;version&gt;</pre>
+                        </p>
+                        <p>
+                            For the node definition documentation, diagrams of this graphs are generated as <em>Mermaid
+                                graphs</em>
+                        </p>
+                    </details>
+                    <br>
+                    <details>
+                        <summary class="card-header rounded bg-success bg-opacity-50 text-white pt-2 pb-2 px-1">
+                            <b>Node Definition Parameters</b>
+                        </summary>
+                        <p>The input and output parameters show in the UI template show all the possible properties.
+                        </p>
+                        <p>Note that parameters can be inherited from a parent definition. There is a different query to
+                            get all parameters instead of just those defined on the derived definition. This type of
+                            query is termed to be
+                            getting "active" information with the APIs having an "Active" string as part of the API
+                            name.
+                        </p>
+                        <p>
+                            The required attributes are:
+                        <ul>
+                            <li><b>name</b> The name must be unique between all parameters on the definition.</li>
+                            <li><b>type</b></li> 
+                        </ul>
+                            Optional attributes
+                        <ul>
+                            <li><b>doc</b> Description of the parameter. It is recommended to add this info user understanding</li>
+                            <li><b>uniform (input)</b>Only input types can be specified to be a uniform or varying</li>
+                            <li><b>enum</b> and <b>enumvalues</b> The possible set of values enumerated and mapping to a value which matches to the type.</li>
+                            <li><b>value</b>The default value for inputs. Depending on the type
+                                values may be qualified by additional attributes:
+                                <ul>
+                                    <li><b>unit and unittype</b> For floats and vectors. Defines the unit and unit type for the input (e.g. "cm" and "distance"). Either one or the 
+                                        other may be specified</li>
+                                    <li><b>colorspace</b> For color3 and color4 and filename types. Defines the input color space. Note that a value of "none" means that this is a non-physical 
+                                    color and should not undergo and colorspace transforms</li>
+                                    <li><b>defaultgeomprop</b>String identifier of a default geometry stream to route as input</li>
+                                </ul>
+                                <li><b>default</b> To default value of an output when a node instance is disabled ("disable" is set True)</li> 
+                                <li><b>defaultinput</b> The value on a definition input to use as the defautl value when a node instance is disabled</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        Optional UI Attributes for Inputs
+                        <ul>
+                            <li><b>uimin</b>, <b>uisoftmin</b> Hard and soft UI minimum</li>
+                            <li><b>uimax</b>, <b>uisoftmax</b> Hard and soft UI maximum</li>
+                            <li><b>uistep</b>  UI step size</li>
+                            <li><b>uifolder</b>  Can be used to group parameters in the UI</li>
+                            <li><b>uiadvanced</b>  Considered to be for "advanced" users</li>
+                            </li>
+                        </ul>
+                        </p>
+                    </details>
+                </div>
+            </div>
+            <div class="col-6 pt-2 p-2">
+                <div class="container-md">
+                    <h4>Definition Template</h4>
+
+                    <b>Category: </b>NodeDef.getNodeString();
+                    <details open>
+                        <summary class="card-header rounded bg-primary bg-opacity-50 text-white m-4 px-2 p-3 mb-0">
+                            Name: NodeDef.getName()</summary>
+
+                        <div class="m-4 mt-0">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card border-primary border mb-4">
+                                        <div class="card-body">
+                                            <p class="card-text"><img src="images/no_image.png"
+                                                    class="rounded float-left" alt="..."
+                                                    style="width: 128px; max-width: 50%;"></p>
+                                            <p class="card-text"><b>Type </b>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary pt-0 pb-0">NodeDef.getType()
+                                                </button>
+                                            </p>
+                                            <p class="card-text"><b>Node Group </b>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary pt-0 pb-0">NodeDef.getGroup()</button>
+                                            </p>
+                                            <p class="card-text">
+                                                <b>Version </b>getVersion() (getDefaultVersion()).
+                                                <b>Inherits From </b><button type="button"
+                                                    class="btn btn-sm btn-outline-secondary pt-0 pb-0">NodeDef.getInheritString()</button>
+                                            </p>
+                                            <p class="card-text"><b>Description: </b>NodeDef.getAttribute('doc')
+                                            </p>
+                                            <p class="card-text"><b></b>
+
+                                            <details>
+                                                <summary><b>Node Graph</b>( NodeDef.getImplemetation() )
+                                                </summary>
+                                                <button id="sample_mrender" class="mrender btn btn-outline-primary">Draw
+                                                    Graph</button>
+
+                                                <pre><code class="language-mermaid">
+                                                            <div id="sample_mrender_mermaid_output" class="mermaid" hidden>
+                                                            </div>
+                                                            <div id="sample_mrender_mermaid_input" class="mermaid" hidden>
+                                                            graph LR; 
+                                                            node1 --> node2                                                                                    
+                                                            </div></code></pre>
+                                            </details>
+                                            </p>
+                                            <p class="card-text"><b>Parameters: </b>NodeDef.getActiveValueElements()</p>
+                                            <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link active" id="pills-baseColor-tab"
+                                                        data-bs-toggle="pill" data-bs-target="#pills-baseColor"
+                                                        type="button" role="tab" aria-controls="pills-baseColor"
+                                                        aria-selected="true">Input.getName()</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link link-succes" id="pills-out-tab"
+                                                        data-bs-toggle="pill" data-bs-target="#pills-out" type="button"
+                                                        role="tab" aria-controls="pills-specular"
+                                                        aria-selected="false"><b>Output.getName()</b></button>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content" id="pills-tabContent">
+                                                <div class="tab-pane fade show active" id="pills-baseColor"
+                                                    role="tabpanel" aria-labelledby="pills-baseColor-tab" tabindex="0">
+
+                                                    <div class="form-group row g-2">
+                                                        <label
+                                                            class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
+                                                        <div class="col-sm-8">
+                                                            <textarea class="form-control form-control-sm"
+                                                                id="form_description" rows="3" style="resize: none;"
+                                                                disabled>getAttribute('doc')
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-2">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">Type
+                                                            /
+                                                            Uniform:</label>
+                                                        <div class="col-sm-2">
+                                                            <button type="button"
+                                                                class="btn btn-sm btn-outline-secondary pt-0 pb-0">getType()</button>
+                                                            </p>
+                                                            <!-- <input type="text" class="form-control form-control-sm" id="doc"
+                                            value="color3" disabled> -->
+                                                        </div>
+                                                        <div class="col-sm-7">
+                                                            <input type="checkbox" id="blah" name="Advanced"
+                                                                class="form-check-input form-check-sm" checked disabled>
+                                                            <label>Uniform (getIsUniform())</label><br>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label
+                                                            class="col-sm-2 col-form-label col-form-label-sm">Possible Values: </label>
+                                                        <div class="col-sm-4">
+                                                            <select class="form-select form-select-sm"
+                                                                style="font-size:90%" size="3"
+                                                                aria-label="size 3 select example .form-select-sm"
+                                                                disabled>
+                                                                <option value="1">getAttribute('enum')</option>
+                                                                <option value="2">getAttribute('enum')</option>
+                                                                <option value="3">getAttribute('enum')</option>
+                                                            </select>
+
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <select class="form-select form-select-sm"
+                                                                style="font-size:90%" size="3"
+                                                                aria-label="size 3 select example .form-select-sm"
+                                                                disabled>
+                                                                <option value="1">getAttribute('enumvalues')</option>
+                                                                <option value="2">getAttribute('enumvalues')</option>
+                                                                <option value="3">getAttribute('enumvalues')</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Value (color3): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value=getValue() disabled>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="color" value="#ffff00" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Value (color4): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value=getValue() disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value=getValue() disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="color" value="#ff0000" disabled>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">Colorspace (color3/color4): </label>
+                                                            <div class="col-sm-2">
+                                                            <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">'colorspace'</button>
+                                                        </div>
+                                                        </div>                                                        
+
+                                                    <hr>
+                                                        <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Value (vector4): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Value (vector3): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Value (vector2): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Value (float): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
+                                                         <div class="col-sm-2">
+                                                           <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">'unit'</button>
+                                                        </div>
+                                                           <div class="col-sm-2">
+                                                            <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">'unittype'</button>
+                                                         </div>
+                                                        </div>                                                        
+
+                                                    <div class="form-group row g-1">
+                                                        <label
+                                                            class="col-sm-2 col-form-label col-form-label-sm">Geometry
+                                                            Property: </label>
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getAttribute('defaultgeomprop')" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <hr>
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">Value (boolean):
+                                                        </label>
+                                                        <div class="col-sm-1">
+                                                            <input type="checkbox"
+                                                                class="form-check-input form-check-sm" checked disabled>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+    
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">UI
+                                                            Min/Max/Step: </label>
+                                                        <div class="col-sm-3">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getAttribute('uimin')" disabled>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getAttribute('uimax')" disabled>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getAttribute('uistep')" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">UI Soft Min/Max: </label>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getAttribute('uisoftmin')" disabled>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getAttribute('uisoftmax')" disabled>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row g-2">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">UI Name / Folder: </label>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getAttribute('uiname')" disabled>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getAttribute('uifolder')" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="checkbox" id="blah" name="Advanced"
+                                                                class="form-check-input form-check-sm" checked disabled>
+                                                            <label for="blah">Advanced ('uiadvanced')</label><br>
+                                                        </div>
+                                                    </div>
+
+                                                </div>                                                
+                                                
+                                                <!--------------------------------------------------------------------------------------------------->
+                                                <div class="tab-pane fade" id="pills-out" role="tabpanel"
+                                                    aria-labelledby="pills-out-tab" tabindex="0">
+
+                                                    <div class="form-group row g-2">
+                                                        <label
+                                                            class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
+                                                        <div class="col-sm-8">
+                                                            <textarea class="form-control form-control-sm"
+                                                                id="form_description" rows="3" style="resize: none;"
+                                                                disabled>getAttribute('doc')
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-2">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+                                                        <div class="col-sm-2">
+                                                            <button type="button"
+                                                                class="btn btn-sm btn-outline-secondary pt-0 pb-0">getType()</button>
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label
+                                                            class="col-sm-2 col-form-label col-form-label-sm">Possible Values: </label>
+                                                        <div class="col-sm-4">
+                                                            <select class="form-select form-select-sm"
+                                                                style="font-size:90%" size="3"
+                                                                aria-label="size 3 select example .form-select-sm"
+                                                                disabled>
+                                                                <option value="1">getAttribute('enum')</option>
+                                                                <option value="2">getAttribute('enum')</option>
+                                                                <option value="3">getAttribute('enum')</option>
+                                                            </select>
+
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <select class="form-select form-select-sm"
+                                                                style="font-size:90%" size="3"
+                                                                aria-label="size 3 select example .form-select-sm"
+                                                                disabled>
+                                                                <option value="1">getAttribute('enumvalues')</option>
+                                                                <option value="2">getAttribute('enumvalues')</option>
+                                                                <option value="3">getAttribute('enumvalues')</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Default (color3): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value=getValue() disabled>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="color" value="#ffff00" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Default (color4): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value=getValue() disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value=getValue() disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="color" value="#ff0000" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Default (vector4): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Default (vector3): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Default (vector2): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Default (float): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">
+                                                            Default (string): </label>
+                                                        <div class="col-sm-2">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                value="getValue()" disabled>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row g-1">
+                                                        <label class="col-sm-2 col-form-label col-form-label-sm">Default (boolean):
+                                                        </label>
+                                                        <div class="col-sm-1">
+                                                            <input type="checkbox"
+                                                                class="form-check-input form-check-sm" checked disabled>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+        </div>
+        <!-- </div>
+        </div> -->
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: false, theme: 'forest'
+        });
+
+        function renderMermaid(event) {
+            buttonId = event.target.id;
+
+            mermaidinput = document.getElementById(buttonId + "_mermaid_input");
+            mermaidoutput = document.getElementById(buttonId + "_mermaid_output");
+            const code = mermaidinput.textContent;
+            let generateDiagram = function (code) {
+                mermaidoutput.innerHTML = code;
+                mermaidoutput.hidden = false;
+            };
+            mermaid.render(buttonId + "_mermaid_input_rendered", code, generateDiagram);
+
+            var button = document.getElementById(event.target.id);
+            button.hidden = true;
+            button.remove;
+        }
+
+        // Add an event handler to each "render" button
+        var renderButtons = document.querySelectorAll(".mrender");
+        renderButtons.forEach((renderButton) => { renderButton.addEventListener("click", renderMermaid); });
+    </script>
+</body>
+</html>

@@ -49,22 +49,43 @@ print('Hello MaterialX (Version %s)' % doc.getVersionString())
 #  ### Loading In Standard Libraries
 # 
 # To do any useful operations, the standard MaterialX libraries need to be loaded.
-# There libraries are found in in the 'libraries' folder in the installation location.
+# There libraries are found in in the 'libraries' folder in the installation location and as of
+# 1.38.7 is part of the Python package. 
 # 
 # The key interface to load in library definitions is called: `loadLibraries()` where:
 #   * An input `FilePath` list specifies the library folders to load. 
 #   * An input `FileSearchPath()` specifies where to search for libraries. 
 #   * The names of files loaded is returned.
+# 
+# For 1.38.7 and onwards, the recommended methods to set the file path and search path are:
+# `getDefaultDataLibraryFolders()` and `getDefaultDataSearchPath()` respectively. In this workspace,
+# a copy of the `libraries` folder has been added locally to guarantee that it will be found.
 
 # %%
-# Load library files under the `libraries` folder into a new "library" document
-# called "stdlib". We assume that no additional search paths are required for this example.
+def haveVersion(major, minor, patch):
+    """
+    Check if the current vesion matches a given version
+    """ 
+    imajor, iminor, ipatch = mx.getVersionIntegers()
+    if imajor < major:
+        return False
+    if iminor < minor:
+        return False
+    if ipatch < patch:
+        return False
+    return True
+
 stdlib = mx.createDocument()
-libraryPath = mx.FilePath('libraries')
-searchPath = mx.FileSearchPath()
+libFiles = []
+if haveVersion(1, 38, 7):
+    searchPath = mx.getDefaultDataSearchPath()
+    libFiles = mx.loadLibraries(mx.getDefaultDataLibraryFolders(), searchPath, stdlib)
+else:
+    libraryPath = mx.FilePath('libraries')
+    searchPath = mx.FileSearchPath()
+    libFiles = mx.loadLibraries([ libraryPath ], searchPath, stdlib)
 
 # The list of library files loaded which which is returned is checked.
-libFiles = mx.loadLibraries([ libraryPath ], searchPath, stdlib)
 if libFiles:
     print('Loaded %d library files.' % len(libFiles))
 else:
@@ -87,7 +108,7 @@ doc.importLibrary(stdlib)
 
 # Check node definition count
 nodeDefinitionCount = len(doc.getNodeDefs())
-print('Definition counts after import : %d ' % nodeDefinitionCount) 
+print('Definition count after import : %d ' % nodeDefinitionCount) 
 
 # %% [markdown]
 #  ## 2. Reading and Writing Documents
@@ -169,7 +190,6 @@ def skipLibraryElement(elem):
 # Declare write options and set the predicate.
 writeOptions = mx.XmlWriteOptions()
 
-from mtlxutils.mxbase import *
 if haveVersion(1, 38, 7):
     writeOptions.writeXIncludeEnable = False
     writeOptions.elementPredicate = skipLibraryElement
@@ -183,6 +203,24 @@ mx.writeToXmlFile(doc, filename, writeOptions)
 doc1 = mx.createDocument()
 mx.readFromXmlString(doc1, documentContents)
 documentContents = mx.writeToXmlString(doc1)
+print(documentContents)
+
+# %% [markdown]
+# This will only work with version 1.38.7 and later due to a Python limitation. Before this release, the elements can be removed from the document as required. The `removeRefencedElements()` utility does this by traversing through all children and remove the element if it has a source URI. Note that this can be used to remove any elements from documents which are included using xml `Xinclude` declarations.
+
+# %%
+def removeReferencedElements(doc):
+    """
+    Remove any elements which are referenced in. That is has a source URI.
+    """
+    for elem in doc.getChildren():
+        if elem.hasSourceUri():
+            doc.removeChild(elem.getName())
+
+doc2 = mx.createDocument()
+doc2.copyContentFrom(doc)
+removeReferencedElements(doc2)
+documentContents = mx.writeToXmlString(doc2)
 print(documentContents)
 
 # %% [markdown]

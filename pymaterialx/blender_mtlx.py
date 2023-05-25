@@ -14,11 +14,6 @@ import mtlxutils.mxtraversal as mxt
 import io
 from contextlib import redirect_stdout, redirect_stderr
 
-haveVersion1387 = mxb.haveVersion(1,38,7)
-if not haveVersion1387:
-    print("** Warning: Recommended version is 1.38.7 for tutorials. Have version: ", mx.__version__)
-
-
 class BlenderToMtlx:
 
     def __init__(self):
@@ -184,28 +179,39 @@ class BlenderToMtlx:
             return link.from_node
         return None
 
-    def loadLibraries(self): 
-        libraryPath = mx.FilePath('libraries')
+    def loadLibraries(self, librarySearchPath): 
         stdlib = mx.createDocument()
-        searchPath = mx.FileSearchPath()
-        mx.loadLibraries([ libraryPath ], searchPath, stdlib)
+        if mxb.haveVersion(1, 38, 7):
+            searchPath = mx.getDefaultDataSearchPath()
+            libFiles = mx.loadLibraries(mx.getDefaultDataLibraryFolders(), searchPath, stdlib)
+        else:
+            libraryPath = mx.FilePath('libraries')
+            searchPath = mx.FileSearchPath()
+            searchPath.append(librarySearchPath)
+            libFiles = mx.loadLibraries([ libraryPath ], searchPath, stdlib)
+        print('Loaded %d library files' % len(libFiles))
         return stdlib
 
-    def creatwWorkingDocument(self, stdlib):
+    def createWorkingDocument(self, stdlib):
         doc = mx.createDocument()
         doc.importLibrary(stdlib)
         return doc
 
-    def exportMaterials(self, shaderNodeMappings, materialFilter):
+    def exportMaterials(self, shaderNodeMappings, materialFilter, librarySearchPath):
         """
         Simple Export of a few Blender nodes to MaterialX material nodes + shaders
         """
-        stdlib = self.loadLibraries()
-        doc = None
         docs = dict()
+
+        stdlib = self.loadLibraries(librarySearchPath)
+        if len(stdlib.getNodeDefs()) == 0:
+            print('Failed to load MaterialX libraries')
+            return docs            
+
+        doc = None
         if self.writeSingleMaterialFile:
-            doc = self.creatwWorkingDocument(stdlib)
-            docs[self.outputFileName] = doc
+            doc = self.createWorkingDocument(stdlib)
+            docs[self.outputFileName.asString()] = doc
 
         SHADER_NODE_map = shaderNodeMappings[0]
         SHADER_NODE_INPUTS_map = shaderNodeMappings[1]
@@ -225,7 +231,7 @@ class BlenderToMtlx:
             if materialNode: 
                 #print('Compare: ', m.name, 'with',  materialFilter)
                 if materialFilter and m.name not in materialFilter:
-                    print('Skip undesired material: ', m.name)
+                    print('Skip material: ', m.name)
                     continue
 
                 # Creat a corresponding MaterialX material / shader node
@@ -235,7 +241,7 @@ class BlenderToMtlx:
                     continue
 
                 if not self.writeSingleMaterialFile:
-                    doc = self.creatwWorkingDocument(stdlib)
+                    doc = self.createWorkingDocument(stdlib)
 
                 mtlxShaderNode = self.createMtlxShaderNode(doc, m.name, shaderNodeDefinition, shaderType == 'BSDF_PRINCIPLED')
                 if not mtlxShaderNode:
@@ -299,15 +305,21 @@ class BlenderToMtlx:
         Simple utility to write a document to a Markdown section
         and or a to disk.
         """
+        if not filePath:
+            return
+
         writeOptions = mx.XmlWriteOptions()
         major, minor, patch = mx.getVersionIntegers()
         # Write predicate does not work prior to 1.38.7
         if major >= 1 and minor >= 38 and patch >= 7:
             writeOptions.writeXIncludeEnable = False
             writeOptions.elementPredicate = mxf.MtlxFile.skipLibraryElement
+        else:
+            for elem in doc.getChildren():
+                    if elem.hasSourceUri():
+                        doc.removeChild(elem.getName())
 
-        if filePath:
-            mx.writeToXmlFile(doc, filePath, writeOptions)
+        mx.writeToXmlFile(doc, filePath, writeOptions)
 
     def writeMaterialXFiles(self, docs):
         filesWritten = []
@@ -315,13 +327,14 @@ class BlenderToMtlx:
         for filename in docs:
             doc = docs[filename]
             mtlxFilePath = self.outputPath / filename
+            mtlxFilePath.removeExtension()
             mtlxFilePath.addExtension('mtlx')
             self.writeMaterialXFile(doc, mtlxFilePath)
             filesWritten.append(mtlxFilePath.asString())
         
         return filesWritten
 
-    def getMeshesAndMaterials(self, renderableOnly='True'):
+    def getMeshesAndMaterials(self, renderableOnly=True, activeOnly=False):
         meshes = []
         materials = []
         scene = bpy.context.scene
@@ -329,23 +342,32 @@ class BlenderToMtlx:
             if obj.type == 'MESH' and obj.visible_get():
                 if renderableOnly and obj.hide_render == True:
                     continue
+                if activeOnly and not obj.select_get():
+                    continue
                 mat = obj.active_material
+                #print('- Translate mesh: ', obj.name, '. mat: ', mat.name)
                 materials.append(mat.name)
                 meshes.append(obj)    
             obj.select_set(False)
         return meshes, materials    
 
-    def writeGLTFMesh(self, mesh, outputPath, outputFormat='GLB'):
+    def writeGLTFMesh(self, mesh, outputPath, export_settings):
         """
         Write a Blender mesh out to GLTF format
         """
-        exportMaterials = 'PLACEHOLDER'
-        if self.exportMeshMaterials:
-            exportMaterials = 'EXPORT'
+        exportMaterials = export_settings['write_mesh_material']
+        exportNormals = export_settings['export_normals']
+        exportColors = export_settings['export_vertex_color']
+        exportUv = export_settings['export_uv']
+        exportTangent = export_settings['export_tangents']
+        exportAnim = export_settings['export_animation']
+        outputFormat = export_settings['geometry_format']         
 
         # Output selected
         outMeshName = outputPath / mx.createValidName(mesh.name) 
-        outMeshName.addExtension('glb')
+        outMeshName.addExtension('gltf')
+        if outputFormat == 'GLB':
+            outMeshName.addExtension('glb')
         bpy.ops.export_scene.gltf(filepath=outMeshName.asString(),
                                 use_visible=True,
                                 use_selection=True,
@@ -353,43 +375,122 @@ class BlenderToMtlx:
                                 #use_triangles=True,
                                 export_cameras=False, 
                                 export_lights=False,
-                                export_materials=exportMaterials
+                                export_materials=exportMaterials,
+                                export_normals=exportNormals,
+                                export_texcoords=exportUv,
+                                export_colors=exportColors,
+                                export_tangents=exportTangent,
+                                export_animations=exportAnim,
                                 )
 
         return outMeshName.asString()        
 
-    def writeGLTFMeshes(self, meshes, outputPath, outputFormat='GLB'):
-        #bpy.ops.object.select_all(action='DESELECT')
+    def writeGLTFMeshes(self, meshes, outputPath, export_settings):
+        exportMaterials = export_settings['write_mesh_material']
+        exportNormals = export_settings['export_normals']
+        exportColors = export_settings['export_vertex_color']
+        exportUv = export_settings['export_uv']
+        exportTangent = export_settings['export_tangents']
+        exportAnim = export_settings['export_animation']
+        outputFormat = export_settings['geometry_format'] 
 
         filesWritten = []
-
-        exportMaterials = 'PLACEHOLDER'
-        if self.exportMeshMaterials:
-            exportMaterials = 'EXPORT'
 
         if self.writeSingleGeomFile:
             for mesh in meshes:
                 mesh.select_set(True)
 
             outMeshName = outputPath / self.outputFileName
+            outMeshName.removeExtension()
             outMeshName.addExtension('glb')
             filesWritten.append(outMeshName.asString())
             bpy.ops.export_scene.gltf(filepath=outMeshName.asString(),
-                                    use_visible=True,
-                                    use_selection=True,
-                                    export_format=outputFormat,
-                                    #use_triangles=True,
-                                    export_cameras=False, 
-                                    export_lights=False,
-                                    export_materials=exportMaterials
-                                    )
+                                use_visible=True,
+                                use_selection=True,
+                                export_format=outputFormat,
+                                #use_triangles=True,
+                                export_cameras=False, 
+                                export_lights=False,
+                                export_materials=exportMaterials,
+                                export_normals=exportNormals,
+                                export_texcoords=exportUv,
+                                export_colors=exportColors,
+                                export_tangents=exportTangent,
+                                export_animations=exportAnim,
+                                )
         else:
             for mesh in meshes:
                 mesh.select_set(True)
-                filesWritten.append( self.writeGLTFMesh(mesh, outputPath) )
+                filesWritten.append( self.writeGLTFMesh(mesh, outputPath, export_settings))
                 mesh.select_set(False)    
 
         return filesWritten
+
+    def execute(self, export_settings):    
+        """
+        Perform export.
+        """
+        selected_objects = export_settings['selected_objects']
+        separateMtlxFile = export_settings['seperate_materials']
+
+        outputFileName = mx.FilePath(export_settings['file_path'])
+        outputFilePath = outputFileName.getParentPath()
+        outputFileName = mx.FilePath(outputFileName.getBaseName())
+
+        self.setOutputPath(outputFilePath)
+        self.setOutputFileName(outputFileName)
+
+        shaderNodeMap = self.init_node_dictionary('ND_UsdPreviewSurface_surfaceshader')
+        self.setWriteSingleMaterialFile(not separateMtlxFile)
+        major, minor, patch = mx.getVersionIntegers()
+        # Write predicate does not work prior to 1.38.7
+        if major >= 1 and minor >= 38 and patch >= 7:
+            librarySearchPath = mx.FileSearchPath()
+        else:
+            librarySearchPath = export_settings['library_search_path']
+
+        meshes, materials = self.getMeshesAndMaterials(True, selected_objects)
+        if materials:
+            docs  = self.exportMaterials(shaderNodeMap, materials, librarySearchPath)
+            if docs:
+                filesWritten = self.writeMaterialXFiles(docs)
+                for f in filesWritten:
+                    print('Write MaterialX material file:', f)
+            else:
+                print('Failed to export materials')
+
+            writeMtlxGraph =  export_settings['diagram']
+            if writeMtlxGraph:
+                for fileName in docs:
+                    # Load in document and create a Mermaid graph
+                    doc = docs[fileName]
+                    roots = doc.getMaterialNodes()
+                    graph = mxt.MtlxMermaid.generateMermaidGraph(roots, 'LR')
+                    graphFileName = outputFilePath / mx.FilePath(fileName)
+                    graphFileName.addExtension('md')
+                    print('Write Mermaid graph file:', graphFileName.asString())
+                    graphFile = open(graphFileName.asString(), 'w')
+                    if graphFile:                
+                        graphFile.write('```mermaid\n')
+                        for line in graph:
+                            if line:
+                                graphFile.write(line + '\n')
+                        #graphFile.writelines(graph)
+                        graphFile.write('```\n')
+                        graphFile.close() 
+
+        # Export meshes as separate pieces
+        if meshes:
+            separateGeomFile = export_settings['seperate_files']
+            if export_settings['write_geometry']:
+                filesWritten = []
+                output = io.StringIO()
+                with redirect_stdout(output), redirect_stderr(output):        
+                    self.setWriteSingleGeomFile(not separateGeomFile)
+                    filesWritten = self.writeGLTFMeshes(meshes, outputFilePath, export_settings)
+                for fileWritten in filesWritten:
+                    print('Write GLTF to file:', fileWritten)
+
 
 def main():
 
@@ -403,60 +504,47 @@ def main():
     parser.add_argument('--outputPath', dest='outputPath', default="./", help='File path to output shaders to. If not specified, is the location of the input document is used.')
     opts = parser.parse_args()
 
-    inputFileName = opts.inputFileName
+    haveVersion1387 = mxb.haveVersion(1,38,7)
+    if not haveVersion1387:
+        print("** Warning: Recommended version is 1.38.7 for tutorials. Have version: ", mx.__version__)
+
+    inputFileName = opts.inputFileName  
+    if not os.path.exists(inputFileName):
+        print('Input file does not exist. Exiting')
+        exit(-1)
+    bpy.ops.wm.open_mainfile(filepath=inputFileName)
+
     outputFileName = mx.FilePath(inputFileName)
     outputFileName.removeExtension()
+    outputFileName.addExtension('mtlx')
     outputFileName = outputFileName.getBaseName()
     outputFilePath = mx.FilePath(opts.outputPath)
     pathExists = os.path.exists(outputFilePath.asString())
     if not pathExists:
         print('Created folder: ', outputFilePath.asString())
         os.makedirs(outputFilePath.asString())
+    outputFilePath = outputFilePath / outputFileName
 
-    bpy.ops.wm.open_mainfile(filepath=inputFileName)
+    export_settings = dict()
+    export_settings['file_path'] = outputFilePath.asString() 
+    export_settings['selected_objects'] = False
+
+    export_settings['write_geometry'] = opts.writeGeom
+    export_settings['geometry_format'] = 'GLB'
+    export_settings['seperate_files'] = opts.separateGeomFile
+    print('opts.writeGeomMaterials', opts.writeGeomMaterials)
+    export_settings['write_mesh_material'] = 'EXPORT' if opts.writeGeomMaterials else 'NONE' 
+    export_settings['export_vertex_color'] = False
+    export_settings['export_tangents'] = True
+    export_settings['export_normals'] = True
+    export_settings['export_uv'] = True
+    export_settings['export_animation'] = False
+    
+    export_settings['seperate_materials'] = opts.separateMtlxFile
+    export_settings['diagram'] = opts.writeMtlxGraph
 
     converter = BlenderToMtlx()
-    converter.setOutputPath(outputFilePath)
-    converter.setOutputFileName(outputFileName)
-
-    shaderNodeMap = converter.init_node_dictionary('ND_UsdPreviewSurface_surfaceshader')
-    converter.setWriteSingleMaterialFile(opts.separateMtlxFile == False)
-
-    meshes, materials = converter.getMeshesAndMaterials()
-    docs  = converter.exportMaterials(shaderNodeMap, materials)
-    filesWritten = converter.writeMaterialXFiles(docs)
-    for fileWritten in filesWritten:
-        print('Write MaterialX file:', fileWritten)
-
-    if opts.writeMtlxGraph:
-        for fileName in docs:
-            # Load in document and create a Mermaid graph
-            doc = docs[fileName]
-            roots = doc.getMaterialNodes()
-            graph = mxt.MtlxMermaid.generateMermaidGraph(roots, 'LR')
-            graphFileName = outputFilePath / mx.FilePath(fileName)
-            graphFileName.addExtension('md')
-            print('Write Mermaid graph file:', graphFileName.asString())
-            graphFile = open(graphFileName.asString(), 'w')
-            if graphFile:                
-                graphFile.write('```mermaid\n')
-                for line in graph:
-                    if line:
-                        graphFile.write(line + '\n')
-                #graphFile.writelines(graph)
-                graphFile.write('```\n')
-                graphFile.close() 
-
-    # Export meshes as separate pieces
-    if opts.writeGeom:
-        filesWritten = []
-        output = io.StringIO()
-        with redirect_stdout(output), redirect_stderr(output):        
-            converter.setExportMeshMaterials(opts.writeGeomMaterials)
-            converter.setWriteSingleGeomFile(not opts.separateGeomFile)
-            filesWritten = converter.writeGLTFMeshes(meshes, outputFilePath, 'GLB')
-        for fileWritten in filesWritten:
-            print('Write GLTF to file:', fileWritten)
+    return converter.execute(export_settings)
 
 if __name__ == '__main__':
     main()

@@ -107,7 +107,7 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Tools</a>
+              aria-expanded="false">Utilities</a>
             <ul class="dropdown-menu">
               <li>
                 <a class="dropdown-item" href="../mermaidChecker.html">
@@ -123,7 +123,7 @@
             <ul class="dropdown-menu">
               <li>
                 <a class="dropdown-item" href="../python_MaterialX.html">
-                  Tutorials 
+                  Notebooks 
                 </a>
               </li>
               <li>
@@ -225,6 +225,21 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="separate4.html">separate4</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_colortransform" aria-expanded="false" aria-controls="collapse_colortransform"> <img src="../images/caret-right-fill.svg"> colortransform </button>
+</div>
+<div class="collapse ps-5" id="collapse_colortransform">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="acescg_to_lin_rec709.html">acescg_to_lin_rec709</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="adobergb_to_lin_rec709.html">adobergb_to_lin_rec709</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="g18_rec709_to_lin_rec709.html">g18_rec709_to_lin_rec709</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="g22_ap1_to_lin_rec709.html">g22_ap1_to_lin_rec709</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="g22_rec709_to_lin_rec709.html">g22_rec709_to_lin_rec709</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="lin_adobergb_to_lin_rec709.html">lin_adobergb_to_lin_rec709</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="rec709_display_to_lin_rec709.html">rec709_display_to_lin_rec709</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="srgb_texture_to_lin_rec709.html">srgb_texture_to_lin_rec709</a>
 </div>
 </div>
 <div class="ps-3">
@@ -332,6 +347,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cos.html">cos</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="crossproduct.html">crossproduct</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="determinant.html">determinant</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="distance.html">distance</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="divide.html">divide</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="dotproduct.html">dotproduct</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="exp.html">exp</a>
@@ -435,6 +451,7 @@
 <div class="collapse ps-5" id="collapse_procedural2d">
 <div class="d-grid gap-0 col-6">
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cellnoise2d.html">cellnoise2d</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="checkerboard.html">checkerboard</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="noise2d.html">noise2d</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ramp4.html">ramp4</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ramplr.html">ramplr</a>
@@ -611,11 +628,18 @@ Category: conductor_bsdf
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>{{weight}} * conductor_bsdf({{normal}}, {{tangent}}, {{roughness}}.x, {{roughness}}.y, {{ior}}, {{extinction}}, {{distribution}}) </textarea>
-    </div>
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/pbrlib/genosl/legacy/mx_conductor_bsdf.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="legacy/mx_conductor_bsdf.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_conductor_bsdf">
+   </div>
   </div>
 <hr>
 </details>
