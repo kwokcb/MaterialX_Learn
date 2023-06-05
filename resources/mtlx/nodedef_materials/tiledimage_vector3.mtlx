@@ -3,7 +3,7 @@
   <tiledimage name="tiledimage_vector3" type="vector3">
     <input name="file" type="filename" value="" uniform="true" />
     <input name="default" type="vector3" value="0.0, 0.0, 0.0" />
-    <input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+    <input name="texcoord" type="vector2" />
     <input name="uvtiling" type="vector2" value="1.0, 1.0" />
     <input name="uvoffset" type="vector2" value="0.0, 0.0" />
     <input name="realworldimagesize" type="vector2" value="1.0, 1.0" unittype="distance" />

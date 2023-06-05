@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <materialx version="1.38">
   <cellnoise2d name="cellnoise2d_float" type="float">
-    <input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+    <input name="texcoord" type="vector2" />
   </cellnoise2d>
   <convert name="shader_cellnoise2d_float_out" type="surfaceshader">
     <input name="in" type="float" nodename="cellnoise2d_float" />

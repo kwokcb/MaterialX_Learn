@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<materialx version="1.38">
-  <multiply name="multiply_matrix33" type="matrix33">
-    <input name="in1" type="matrix33" value="1.0,0.0,0.0, 0.0,1.0,0.0, 0.0,0.0,1.0" />
-    <input name="in2" type="matrix33" value="1.0,0.0,0.0, 0.0,1.0,0.0, 0.0,0.0,1.0" />
-  </multiply>
-</materialx>

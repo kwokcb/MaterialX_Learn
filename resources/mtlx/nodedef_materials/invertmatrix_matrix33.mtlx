@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<materialx version="1.38">
-  <invertmatrix name="invertmatrix_matrix33" type="matrix33">
-    <input name="in" type="matrix33" value="1.0,0.0,0.0, 0.0,1.0,0.0, 0.0,0.0,1.0" />
-  </invertmatrix>
-</materialx>

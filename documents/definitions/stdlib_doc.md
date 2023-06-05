@@ -5298,6 +5298,23 @@ graph LR;
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
+<details><summary>ND_floor_integer</summary>
+<p>
+ 
+* *Nodedef*: ND_floor_integer
+* *Type*: integer
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | integer | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
 ### Category: *ceil*
 <details><summary>ND_ceil_float</summary>
 <p>
@@ -5399,6 +5416,23 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_ceil_integer</summary>
+<p>
+ 
+* *Nodedef*: ND_ceil_integer
+* *Type*: integer
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | integer | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
 ### Category: *power*

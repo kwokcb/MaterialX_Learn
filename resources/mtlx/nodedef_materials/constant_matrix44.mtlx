@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<materialx version="1.38">
-  <constant name="constant_matrix44" type="matrix44">
-    <input name="value" type="matrix44" value="1.0,0.0,0.0,0.0, 0.0,1.0,0.0,0.0, 0.0,0.0,1.0,0.0, 0.0,0.0,0.0,1.0" />
-  </constant>
-</materialx>

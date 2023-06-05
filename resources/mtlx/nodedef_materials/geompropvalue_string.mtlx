@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<materialx version="1.38">
-  <geompropvalue name="geompropvalue_string" type="string">
-    <input name="geomprop" type="string" value="geompropvalue_string" uniform="true" />
-    <input name="default" type="string" value="" uniform="true" />
-  </geompropvalue>
-</materialx>

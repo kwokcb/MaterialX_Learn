@@ -3,7 +3,7 @@
   <noise2d name="noise2d_vector4FA" type="vector4">
     <input name="amplitude" type="float" value="1.0" />
     <input name="pivot" type="float" value="0.0" />
-    <input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+    <input name="texcoord" type="vector2" />
   </noise2d>
   <convert name="shader_noise2d_vector4FA_out" type="surfaceshader">
     <input name="in" type="vector4" nodename="noise2d_vector4FA" />

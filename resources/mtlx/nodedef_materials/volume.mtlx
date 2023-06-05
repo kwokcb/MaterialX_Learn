@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <volume name="volume" type="volumeshader">
+    <input name="vdf" type="VDF" value="" />
+    <input name="edf" type="EDF" value="" nodename="uniform_edf" />
+  </volume>
+  <uniform_edf name="uniform_edf" type="EDF" />
+  <volumematerial name="material_volume_out" type="material">
+    <input name="volumeshader" type="volumeshader" nodename="volume" />
+  </volumematerial>
+</materialx>

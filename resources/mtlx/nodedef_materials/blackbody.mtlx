@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <blackbody name="blackbody" type="color3">
+    <input name="temperature" type="float" value="5000.0" />
+  </blackbody>
+  <convert name="shader_blackbody_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="blackbody" />
+  </convert>
+  <surfacematerial name="material_blackbody_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_blackbody_out" />
+  </surfacematerial>
+</materialx>

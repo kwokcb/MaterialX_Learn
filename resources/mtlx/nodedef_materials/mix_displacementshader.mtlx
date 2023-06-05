@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <mix name="mix_displacementshader" type="displacementshader">
+    <input name="fg" type="displacementshader" value="" />
+    <input name="bg" type="displacementshader" value="" />
+    <input name="mix" type="float" value="0.0" />
+  </mix>
+  <surfacematerial name="material_mix_displacementshader_out" type="material">
+    <input name="displacementshader" type="displacementshader" nodename="mix_displacementshader" />
+  </surfacematerial>
+</materialx>

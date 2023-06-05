@@ -7,9 +7,9 @@
     <input name="IOR" type="float" value="1.5" uiname="IOR" />
     <input name="reflectivity" type="float" value="0.04" uiname="Reflectivity" />
     <input name="roughness" type="float" value="0.1" uiname="Roughness" />
-    <input name="normal" type="vector3" defaultgeomprop="Nworld" uiname="Normal" />
+    <input name="normal" type="vector3" uiname="Normal" />
     <input name="anisotropy" type="float" value="0.0" uiname="Anisotropy" />
-    <input name="direction" type="vector3" defaultgeomprop="Tworld" uiname="Direction" />
+    <input name="direction" type="vector3" uiname="Direction" />
     <input name="rotation" type="float" value="0.0" uiname="Rotation" />
     <input name="exteriorIOR" type="float" value="1.0" uiname="Exterior IOR" />
     <input name="absorptionColor" type="color3" value="1.0, 1.0, 1.0" uiname="Absorption Color" />

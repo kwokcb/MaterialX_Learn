@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <mix name="mix_volumeshader" type="volumeshader">
+    <input name="fg" type="volumeshader" value="" />
+    <input name="bg" type="volumeshader" value="" />
+    <input name="mix" type="float" value="0.0" />
+  </mix>
+  <volumematerial name="material_mix_volumeshader_out" type="material">
+    <input name="volumeshader" type="volumeshader" nodename="mix_volumeshader" />
+  </volumematerial>
+</materialx>

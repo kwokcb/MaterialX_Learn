@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <materialx version="1.38">
   <unifiednoise3d name="unifiednoise3d_float" type="float">
-    <input name="position" type="vector3" defaultgeomprop="Pobject" />
+    <input name="position" type="vector3" />
     <input name="freq" type="vector3" uiname="Frequency" value="1, 1, 1" />
     <input name="offset" type="vector3" uiname="Offset" value="0, 0, 0" />
     <input name="jitter" type="float" uiname="Jitter" value="1" />

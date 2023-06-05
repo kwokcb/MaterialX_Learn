@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <curveadjust name="curveadjust_float" type="float">
+    <input name="in" type="float" value="0.0" />
+    <input name="knots" type="vector2array" value="" />
+  </curveadjust>
+  <convert name="shader_curveadjust_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="curveadjust_float" />
+  </convert>
+  <surfacematerial name="material_curveadjust_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_curveadjust_float_out" />
+  </surfacematerial>
+</materialx>

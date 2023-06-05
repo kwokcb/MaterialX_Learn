@@ -32,7 +32,7 @@
     <input name="coat_anisotropy" type="float" value="0.0" uiname="Coat Anisotropy" />
     <input name="coat_rotation" type="float" value="0.0" uiname="Coat Rotation" />
     <input name="coat_IOR" type="float" value="1.5" uiname="Coat Index of Refraction" />
-    <input name="coat_normal" type="vector3" defaultgeomprop="Nworld" uiname="Coat normal" />
+    <input name="coat_normal" type="vector3" uiname="Coat normal" />
     <input name="coat_affect_color" type="float" value="0" uiname="Coat Affect Color" />
     <input name="coat_affect_roughness" type="float" value="0" uiname="Coat Affect Roughness" />
     <input name="thin_film_thickness" type="float" value="0" uiname="Thin Film Thickness" />
@@ -41,8 +41,8 @@
     <input name="emission_color" type="color3" value="1, 1, 1" uiname="Emission Color" />
     <input name="opacity" type="color3" value="1, 1, 1" uiname="Opacity" />
     <input name="thin_walled" type="boolean" value="false" uiname="Thin Walled" />
-    <input name="normal" type="vector3" defaultgeomprop="Nworld" uiname="Normal" />
-    <input name="tangent" type="vector3" defaultgeomprop="Tworld" uiname="Tangent Input" />
+    <input name="normal" type="vector3" uiname="Normal" />
+    <input name="tangent" type="vector3" uiname="Tangent Input" />
   </standard_surface>
   <surfacematerial name="material_standard_surface_surfaceshader_out" type="material">
     <input name="surfaceshader" type="surfaceshader" nodename="standard_surface_surfaceshader" />

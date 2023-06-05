@@ -3,7 +3,7 @@
   <ramptb name="ramptb_vector2" type="vector2">
     <input name="valuet" type="vector2" value="0.0, 0.0" />
     <input name="valueb" type="vector2" value="0.0, 0.0" />
-    <input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+    <input name="texcoord" type="vector2" />
   </ramptb>
   <convert name="shader_ramptb_vector2_out" type="surfaceshader">
     <input name="in" type="vector2" nodename="ramptb_vector2" />
