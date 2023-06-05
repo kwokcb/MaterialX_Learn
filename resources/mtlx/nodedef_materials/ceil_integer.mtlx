@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <ceil name="ceil_integer" type="integer">
+    <input name="in" type="float" value="0.0" />
+  </ceil>
+  <convert name="shader_ceil_integer_out" type="surfaceshader">
+    <input name="in" type="integer" nodename="ceil_integer" />
+  </convert>
+  <surfacematerial name="material_ceil_integer_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ceil_integer_out" />
+  </surfacematerial>
+</materialx>

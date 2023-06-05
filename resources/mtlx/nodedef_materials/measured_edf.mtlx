@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <measured_edf name="measured_edf" type="EDF">
+    <input name="color" type="color3" value="1.0, 1.0, 1.0" />
+    <input name="normal" type="vector3" />
+    <input name="file" type="filename" value="" uniform="true" />
+  </measured_edf>
+  <surface name="shader_measured_edf_out" type="surfaceshader">
+    <input name="edf" type="EDF" nodename="measured_edf" />
+  </surface>
+  <surfacematerial name="material_measured_edf_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_measured_edf_out" />
+  </surfacematerial>
+</materialx>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <generalized_schlick_edf name="generalized_schlick_edf" type="EDF">
+    <input name="color0" type="color3" value="1.0, 1.0, 1.0" />
+    <input name="color90" type="color3" value="1.0, 1.0, 1.0" />
+    <input name="exponent" type="float" value="5.0" />
+    <input name="base" type="EDF" value="" nodename="uniform_edf" />
+  </generalized_schlick_edf>
+  <uniform_edf name="uniform_edf" type="EDF" />
+  <surface name="shader_generalized_schlick_edf_out" type="surfaceshader">
+    <input name="edf" type="EDF" nodename="generalized_schlick_edf" />
+  </surface>
+  <surfacematerial name="material_generalized_schlick_edf_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_generalized_schlick_edf_out" />
+  </surfacematerial>
+</materialx>

@@ -8,8 +8,8 @@
     <input name="layery" type="string" value="" uniform="true" />
     <input name="layerz" type="string" value="" uniform="true" />
     <input name="default" type="float" value="0.0" />
-    <input name="position" type="vector3" defaultgeomprop="Pobject" />
-    <input name="normal" type="vector3" defaultgeomprop="Nobject" />
+    <input name="position" type="vector3" />
+    <input name="normal" type="vector3" />
     <input name="filtertype" type="string" value="linear" enum="closest,linear,cubic" uniform="true" />
     <input name="framerange" type="string" value="" uniform="true" />
     <input name="frameoffset" type="integer" value="0" uniform="true" />

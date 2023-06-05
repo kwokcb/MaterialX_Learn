@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <distance name="distance_vector4" type="float">
+    <input name="in1" type="vector4" uiname="in1" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in2" type="vector4" uiname="in2" value="0.0, 0.0, 0.0, 0.0" />
+  </distance>
+  <convert name="shader_distance_vector4_out" type="surfaceshader">
+    <input name="in" type="float" nodename="distance_vector4" />
+  </convert>
+  <surfacematerial name="material_distance_vector4_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_distance_vector4_out" />
+  </surfacematerial>
+</materialx>

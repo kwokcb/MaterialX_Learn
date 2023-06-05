@@ -3,7 +3,7 @@
   <ramplr name="ramplr_vector2" type="vector2">
     <input name="valuel" type="vector2" value="0.0, 0.0" />
     <input name="valuer" type="vector2" value="0.0, 0.0" />
-    <input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+    <input name="texcoord" type="vector2" />
   </ramplr>
   <convert name="shader_ramplr_vector2_out" type="surfaceshader">
     <input name="in" type="vector2" nodename="ramplr_vector2" />

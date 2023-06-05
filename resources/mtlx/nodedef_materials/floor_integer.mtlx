@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <floor name="floor_integer" type="integer">
+    <input name="in" type="float" value="0.0" />
+  </floor>
+  <convert name="shader_floor_integer_out" type="surfaceshader">
+    <input name="in" type="integer" nodename="floor_integer" />
+  </convert>
+  <surfacematerial name="material_floor_integer_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_floor_integer_out" />
+  </surfacematerial>
+</materialx>

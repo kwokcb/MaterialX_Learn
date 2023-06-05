@@ -4,8 +4,8 @@
     <input name="base_color" type="color3" value="1, 1, 1" uiname="Base Color" />
     <input name="metallic" type="float" value="1" uiname="Metallic" />
     <input name="roughness" type="float" value="1" uiname="Roughness" />
-    <input name="normal" type="vector3" defaultgeomprop="Nworld" uiname="Normal" />
-    <input name="tangent" type="vector3" defaultgeomprop="Tworld" uiname="Tangent" />
+    <input name="normal" type="vector3" uiname="Normal" />
+    <input name="tangent" type="vector3" uiname="Tangent" />
     <input name="occlusion" type="float" value="1" uiname="Occlusion" />
     <input name="transmission" type="float" value="0" uiname="Transmission" />
     <input name="specular" type="float" value="1" uiname="Specular" />
@@ -21,11 +21,11 @@
     <input name="sheen_roughness" type="float" value="0" uiname="Sheen Roughness" />
     <input name="clearcoat" type="float" value="0" uiname="Clearcoat" />
     <input name="clearcoat_roughness" type="float" value="0" uiname="Clearcoat Roughness" />
-    <input name="clearcoat_normal" type="vector3" defaultgeomprop="Nworld" uiname="Clearcoat Normal" />
+    <input name="clearcoat_normal" type="vector3" uiname="Clearcoat Normal" />
     <input name="emissive" type="color3" value="0, 0, 0" uiname="Emissive" />
     <input name="emissive_strength" uniform="true" type="float" value="1" uiname="Emissive Strength" />
     <input name="thickness" uniform="false" type="float" value="0" uiname="Thickness" />
-    <input name="attenuation_distance" uniform="true" type="float" value="1e+36" uiname="Attenuation Distance" />
+    <input name="attenuation_distance" uniform="true" type="float" uiname="Attenuation Distance" />
     <input name="attenuation_color" uniform="true" type="color3" value="1, 1, 1" uiname="Attenuation Color" />
   </gltf_pbr>
   <surfacematerial name="material_gltf_pbr_surfaceshader_out" type="material">

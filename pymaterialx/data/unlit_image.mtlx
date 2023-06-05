@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+  <surface_unlit name="surface_unlit" type="surfaceshader" xpos="10.550725" ypos="-3.456897">
+    <input name="emission_color" type="color3" output="output_color3" nodegraph="nodegraph1" />
+  </surface_unlit>
+  <surfacematerial name="unlit_surfacematerial" type="material" xpos="13.797101" ypos="-3.275862">
+    <input name="surfaceshader" type="surfaceshader" nodename="surface_unlit" />
+  </surfacematerial>
+  <nodegraph name="nodegraph1">
+    <input name="color3_port" type="color3" value="0.0225967, 0.33904, 0.440098" colorspace="srgb_texture" xpos="22.971014" ypos="-7.422414" />
+    <output name="output_color3" type="color3" nodename="multiply_color3" xpos="28.217392" ypos="-6.181035" />
+    <multiply name="multiply_color3" type="color3" xpos="25.463768" ypos="-6.448276">
+      <input name="in1" type="color3" interfacename="color3_port" value="0.0225967, 0.33904, 0.440098" />
+      <input name="in2" type="color3" nodename="image_color3" />
+    </multiply>
+    <image name="image_color3" type="color3" xpos="22.927536" ypos="-6.103448">
+      <input name="file" type="filename" interfacename="filename_port" />
+      <input name="texcoord" type="vector2" nodename="texcoord_vector2" />
+      <input name="default" type="color3" value="0.574572, 0.0112386, 0.0112386" />
+    </image>
+    <input name="filename_port" type="filename" value="checker.png" colorspace="srgb_texture" xpos="20.413044" ypos="-7.284483" fileprefix="" />
+    <texcoord name="texcoord_vector2" type="vector2" xpos="19.797102" ypos="-4.793103" />
+  </nodegraph>
+</materialx>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <checkerboard name="checkerboard_color3" type="color3">
+    <input name="color1" type="color3" uiname="Color 1" value="1.0, 1.0, 1.0" />
+    <input name="color2" type="color3" uiname="Color 2" value="0.0, 0.0, 0.0" />
+    <input name="freq" type="vector2" uiname="Frequency" value="8, 8" />
+    <input name="offset" type="vector2" uiname="Offset" value="0, 0" />
+    <input name="texcoord" type="vector2" uiname="Texture Coordinates" />
+  </checkerboard>
+  <convert name="shader_checkerboard_color3_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="checkerboard_color3" />
+  </convert>
+  <surfacematerial name="material_checkerboard_color3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_checkerboard_color3_out" />
+  </surfacematerial>
+</materialx>

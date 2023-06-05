@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<materialx version="1.38">
-  <dot name="dot_string" type="string">
-    <input name="in" type="string" value="" />
-    <input name="note" type="string" value="" uniform="true" />
-  </dot>
-</materialx>

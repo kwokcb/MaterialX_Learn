@@ -5,7 +5,7 @@
     <input name="valuetr" type="vector2" value="0.0, 0.0" />
     <input name="valuebl" type="vector2" value="0.0, 0.0" />
     <input name="valuebr" type="vector2" value="0.0, 0.0" />
-    <input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+    <input name="texcoord" type="vector2" />
   </ramp4>
   <convert name="shader_ramp4_vector2_out" type="surfaceshader">
     <input name="in" type="vector2" nodename="ramp4_vector2" />

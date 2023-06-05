@@ -2,7 +2,7 @@
 <materialx version="1.38">
   <UsdUVTexture name="UsdUVTexture_23" type="multioutput" version="2.3">
     <input name="file" type="filename" value="" uniform="true" />
-    <input name="st" type="vector2" defaultgeomprop="UV0" />
+    <input name="st" type="vector2" />
     <input name="wrapS" type="string" value="periodic" enum="black,clamp,periodic,mirror" uniform="true" />
     <input name="wrapT" type="string" value="periodic" enum="black,clamp,periodic,mirror" uniform="true" />
     <input name="fallback" type="color4" value="0, 0, 0, 1" />

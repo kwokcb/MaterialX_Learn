@@ -3,8 +3,8 @@
   <bump name="bump_vector3" type="vector3">
     <input name="height" type="float" uiname="Height" value="0" />
     <input name="scale" type="float" uiname="Scale" value="1" />
-    <input name="normal" type="vector3" uiname="Normal" defaultgeomprop="Nworld" />
-    <input name="tangent" type="vector3" uiname="Tangent" defaultgeomprop="Tworld" />
+    <input name="normal" type="vector3" uiname="Normal" />
+    <input name="tangent" type="vector3" uiname="Tangent" />
   </bump>
   <convert name="shader_bump_vector3_out" type="surfaceshader">
     <input name="in" type="vector3" nodename="bump_vector3" />

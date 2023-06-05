@@ -8,18 +8,20 @@ This is a complementary site for those interested in learning about or are integ
 * Glossary of basic types, geometric definitions, color management and real-world unit definitions. 
 * Fundamental concepts (Nodes, Nodegraphs, Documents, Definitions) 
 * Python environment setup for MaterialX
-* Python and Jupyter Tutorials from basics to shader code generation, shader graph interop, and definition creation [pymaterialx](pymaterialx).
+* Python and Jupyter Tutorials from basics to shader code generation, shader graph interop, definition creation, and rendering [pymaterialx](pymaterialx).
 * Workflows touching on USD, Maya, Houdini and Blender.
 
 Material will be constantly added over time. 
 See issues and project area for some of items on queue.
 
-## Latest Updates
-* Updated to 1.38.7. Updates for 1.38.8 release as it progresses.
+## Latest Updates (May / June)
+* Minimal version is 1.38.7. Updates for 1.38.8 release as it progresses.
 * [Video tutorial](https://kwokcb.github.io/MaterialX_Learn/documents/python_MaterialX.html) for Visual Studio Code / Python / Jupyter setup.
-* Node definition: library usage and creation.
+* Node definition: library usage and creation from graphs and source code.
 * Utilities packaging: `mtlxutils` and usage. 
 * Usd / MaterialX Graphing Comparison Tutorial
+* Usd / MaterialX / glTF interop Workflows.
+* Rendering Tutorial (WIP)
 
 ## Visit the site 
 <a href="https://kwokcb.github.io/MaterialX_Learn/">

@@ -4,7 +4,7 @@
     <input name="valuet" type="vector4" value="0.0, 0.0, 0.0, 0.0" uiname="Top" />
     <input name="valueb" type="vector4" value="0.0, 0.0, 0.0, 0.0" uiname="Bottom" />
     <input name="center" type="float" value="0.5" uiname="Center" />
-    <input name="texcoord" type="vector2" defaultgeomprop="UV0" />
+    <input name="texcoord" type="vector2" />
   </splittb>
   <convert name="shader_splittb_vector4_out" type="surfaceshader">
     <input name="in" type="vector4" nodename="splittb_vector4" />
