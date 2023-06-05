@@ -1,4 +1,4 @@
-# Document for rRendering
+# Document for Rendering
 
 The files in this folder were generated based on the node definitions available in the core libraries which come with
 MaterialX. The contents are up-to-date as much as possible with the main branch of the ASWF MaterialX repo. 
