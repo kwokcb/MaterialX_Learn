@@ -1,13 +1,13 @@
 # %% [markdown]
 # # Node Libraries
 # 
-# This notebook will examine the usage definitions found in custom libraries.
+# This notebook will examine the usage of node definitions found in custom libraries.
 # 
 # Aspects covered include:
-# 1. Loading in 3rd-party definition libraries.
-# 2. 3rd-party exported content (Mtlx / Usd)
-# 3. Creating / editing graphs using 3rd-party definitions. 
-# 4. 3rd-party definitions implemented with source code
+# 1. Loading in custom definition libraries.
+# 2. Exported content from two sample integrations (Maya, Houdini)
+# 3. Creating and editing graphs using custom definitions. 
+# 4. Custom definitions implemented with source code
 # 
 # ### Node Libraries
 # 
