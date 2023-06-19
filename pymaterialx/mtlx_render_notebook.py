@@ -614,7 +614,6 @@ if geometryHandler:
 inputFilename = './data/standard_surface_marble_solid.mtlx'
 inputFilename = './data/unlit_marble_solid.mtlx'
 inputFilename = './data/unlit_image.mtlx'
-inputFilename = './data/stained_glass_material.mtlx'
 try:
     mx.readFromXmlFile(doc, inputFilename)        
     valid, msg = doc.validate()
