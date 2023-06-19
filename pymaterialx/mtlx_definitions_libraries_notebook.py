@@ -1,7 +1,7 @@
 # %% [markdown]
-# # Node Definitions and Node Libraries
+# # Node Libraries
 # 
-# This notebook will examine the creation usage definitions found in libraries.
+# This notebook will examine the usage definitions found in custom libraries.
 # 
 # Aspects covered include:
 # 1. Loading in 3rd-party definition libraries.
