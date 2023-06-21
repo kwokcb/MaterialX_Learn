@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <!-- Definition of a simple node <myadd>, adding two colors. -->
+  <nodedef name="ND_myadd_1_0_color3" version="1.0" nodegroup="math" node="myadd">
+    <input name="in1" type="color3" value="1, 0, 0" />
+    <input name="in2" type="color3" value="0, 0, 0" />
+    <output name="out" type="color3" defaultinput="in1" />
+  </nodedef>
+  <!-- Implementation of <myadd> for target genglsl and type color3 -->
+  <implementation name="IMPL_myadd_1_0_color3_genglsl" nodedef="ND_myadd_1_0_color3" target="genglsl" sourcecode="{{in1}} + {{in2}}" />
+  <!-- Implementation of <myadd> for target genmdl and type color3 -->
+  <implementation name="IMPL_myadd_1_0_color3_genmdl" nodedef="ND_myadd_1_0_color3" target="genmdl" sourcecode="{{in1}} + {{in2}}" />
+  <!-- Implementation of <myadd> for target genmsl and type color3 -->
+  <implementation name="IMPL_myadd_1_0_color3_genmsl" nodedef="ND_myadd_1_0_color3" target="genmsl" sourcecode="{{in1}} + {{in2}}" />
+  <!-- Implementation of <myadd> for target genosl and type color3 -->
+  <implementation name="IMPL_myadd_1_0_color3_genosl" nodedef="ND_myadd_1_0_color3" target="genosl" sourcecode="{{in1}} + {{in2}}" />
+</materialx>
