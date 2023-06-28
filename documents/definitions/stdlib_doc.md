@@ -32,13 +32,13 @@
 * [dot](#node-dot) 
 ---------
 ### Node Group: procedural
-* [constant](#node-constant) 
+* [constant](#node-constant) [randomfloat](#node-randomfloat) 
 ---------
 ### Node Group: procedural2d
 * [cellnoise2d](#node-cellnoise2d) [checkerboard](#node-checkerboard) [noise2d](#node-noise2d) [ramp4](#node-ramp4) [ramplr](#node-ramplr) [ramptb](#node-ramptb) [splitlr](#node-splitlr) [splittb](#node-splittb) [unifiednoise2d](#node-unifiednoise2d) [worleynoise2d](#node-worleynoise2d) 
 ---------
 ### Node Group: procedural3d
-* [cellnoise3d](#node-cellnoise3d) [fractal3d](#node-fractal3d) [noise3d](#node-noise3d) [unifiednoise3d](#node-unifiednoise3d) [worleynoise3d](#node-worleynoise3d) 
+* [cellnoise3d](#node-cellnoise3d) [fractal3d](#node-fractal3d) [noise3d](#node-noise3d) [randomcolor](#node-randomcolor) [unifiednoise3d](#node-unifiednoise3d) [worleynoise3d](#node-worleynoise3d) 
 ---------
 ### Node Group: shader
 * [convert](#node-convert) [surface_unlit](#node-surface_unlit) 
@@ -673,11 +673,24 @@ graph LR;
     NG_triplanarprojection_float_N_extZ_float[extract] --".in2"--> NG_triplanarprojection_float_N_vecYZ_float[combine2]
     NG_triplanarprojection_float_positionINT([position]) ==.in==> NG_triplanarprojection_float_N_extZ_float[extract]
     style NG_triplanarprojection_float_positionINT fill:#0bb, color:#111
-    NG_triplanarprojection_float_N_blendX_float[absval] --".in2"--> NG_triplanarprojection_float_N_nX_float[multiply]
-    NG_triplanarprojection_float_N_dotX_float[dotproduct] --".in"--> NG_triplanarprojection_float_N_blendX_float[absval]
-    NG_triplanarprojection_float_N_norm_float[normalize] --".in1"--> NG_triplanarprojection_float_N_dotX_float[dotproduct]
-    NG_triplanarprojection_float_normalINT([normal]) ==.in==> NG_triplanarprojection_float_N_norm_float[normalize]
+    NG_triplanarprojection_float_N_separateWeights[separate3] --> NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutx([outx])
+    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutx fill:#1b1, color:#111
+    NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_float_N_nX_float[multiply]
+    NG_triplanarprojection_float_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_float_N_separateWeights[separate3]
+    NG_triplanarprojection_float_N_blendPower[power] --".in1"--> NG_triplanarprojection_float_N_normalizeBlendedWeights[divide]
+    NG_triplanarprojection_float_N_normalizeWeights[divide] --".in1"--> NG_triplanarprojection_float_N_blendPower[power]
+    NG_triplanarprojection_float_N_absN[absval] --".in1"--> NG_triplanarprojection_float_N_normalizeWeights[divide]
+    NG_triplanarprojection_float_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_float_N_absN[absval]
+    NG_triplanarprojection_float_normalINT([normal]) ==.in==> NG_triplanarprojection_float_N_norm_vector3[normalize]
     style NG_triplanarprojection_float_normalINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_float_N_normalizeWeights[divide]
+    NG_triplanarprojection_float_N_absN[absval] --".in1"--> NG_triplanarprojection_float_N_dotN[dotproduct]
+    NG_triplanarprojection_float_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_float_N_blendPower[power]
+    NG_triplanarprojection_float_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_float_N_oneOverBlend[divide]
+    NG_triplanarprojection_float_blendINT([blend]) ==.in==> NG_triplanarprojection_float_N_clampForPrecision[clamp]
+    style NG_triplanarprojection_float_blendINT fill:#0bb, color:#111
+    NG_triplanarprojection_float_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_float_N_normalizeBlendedWeights[divide]
+    NG_triplanarprojection_float_N_blendPower[power] --".in1"--> NG_triplanarprojection_float_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_float_N_nY_float[multiply] --".in2"--> NG_triplanarprojection_float_N_add1_float[add]
     NG_triplanarprojection_float_N_imgY_float[image] --".in1"--> NG_triplanarprojection_float_N_nY_float[multiply]
     NG_triplanarprojection_float_fileyINT([filey]) ==.file==> NG_triplanarprojection_float_N_imgY_float[image]
@@ -699,9 +712,9 @@ graph LR;
     NG_triplanarprojection_float_positionINT([position]) ==.in==> NG_triplanarprojection_float_N_extX_float[extract]
     style NG_triplanarprojection_float_positionINT fill:#0bb, color:#111
     NG_triplanarprojection_float_N_extZ_float[extract] --".in2"--> NG_triplanarprojection_float_N_vecXZ_float[combine2]
-    NG_triplanarprojection_float_N_blendY_float[absval] --".in2"--> NG_triplanarprojection_float_N_nY_float[multiply]
-    NG_triplanarprojection_float_N_dotY_float[dotproduct] --".in"--> NG_triplanarprojection_float_N_blendY_float[absval]
-    NG_triplanarprojection_float_N_norm_float[normalize] --".in1"--> NG_triplanarprojection_float_N_dotY_float[dotproduct]
+    NG_triplanarprojection_float_N_separateWeights[separate3] --> NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsouty([outy])
+    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsouty fill:#1b1, color:#111
+    NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsouty --".in2"--> NG_triplanarprojection_float_N_nY_float[multiply]
     NG_triplanarprojection_float_N_nZ_float[multiply] --".in2"--> NG_triplanarprojection_float_N_add2_float[add]
     NG_triplanarprojection_float_N_imgZ_float[image] --".in1"--> NG_triplanarprojection_float_N_nZ_float[multiply]
     NG_triplanarprojection_float_filezINT([filez]) ==.file==> NG_triplanarprojection_float_N_imgZ_float[image]
@@ -721,9 +734,9 @@ graph LR;
     NG_triplanarprojection_float_N_vecXY_float[combine2] --".texcoord"--> NG_triplanarprojection_float_N_imgZ_float[image]
     NG_triplanarprojection_float_N_extX_float[extract] --".in1"--> NG_triplanarprojection_float_N_vecXY_float[combine2]
     NG_triplanarprojection_float_N_extY_float[extract] --".in2"--> NG_triplanarprojection_float_N_vecXY_float[combine2]
-    NG_triplanarprojection_float_N_blendZ_float[absval] --".in2"--> NG_triplanarprojection_float_N_nZ_float[multiply]
-    NG_triplanarprojection_float_N_dotZ_float[dotproduct] --".in"--> NG_triplanarprojection_float_N_blendZ_float[absval]
-    NG_triplanarprojection_float_N_norm_float[normalize] --".in1"--> NG_triplanarprojection_float_N_dotZ_float[dotproduct]
+    NG_triplanarprojection_float_N_separateWeights[separate3] --> NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutz([outz])
+    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutz fill:#1b1, color:#111
+    NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_float_N_nZ_float[multiply]
 
 ```
  
@@ -739,6 +752,7 @@ graph LR;
 | **default** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **blend** | float | 1.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **filtertype** | string | linear |  |  |  |  |  |  |  |  |  | true |
 | **framerange** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
@@ -785,11 +799,24 @@ graph LR;
     NG_triplanarprojection_color3_N_extZ_color3[extract] --".in2"--> NG_triplanarprojection_color3_N_vecYZ_color3[combine2]
     NG_triplanarprojection_color3_positionINT([position]) ==.in==> NG_triplanarprojection_color3_N_extZ_color3[extract]
     style NG_triplanarprojection_color3_positionINT fill:#0bb, color:#111
-    NG_triplanarprojection_color3_N_blendX_color3[absval] --".in2"--> NG_triplanarprojection_color3_N_nX_color3[multiply]
-    NG_triplanarprojection_color3_N_dotX_color3[dotproduct] --".in"--> NG_triplanarprojection_color3_N_blendX_color3[absval]
-    NG_triplanarprojection_color3_N_norm_color3[normalize] --".in1"--> NG_triplanarprojection_color3_N_dotX_color3[dotproduct]
-    NG_triplanarprojection_color3_normalINT([normal]) ==.in==> NG_triplanarprojection_color3_N_norm_color3[normalize]
+    NG_triplanarprojection_color3_N_separateWeights[separate3] --> NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutx([outx])
+    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutx fill:#1b1, color:#111
+    NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_color3_N_nX_color3[multiply]
+    NG_triplanarprojection_color3_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_color3_N_separateWeights[separate3]
+    NG_triplanarprojection_color3_N_blendPower[power] --".in1"--> NG_triplanarprojection_color3_N_normalizeBlendedWeights[divide]
+    NG_triplanarprojection_color3_N_normalizeWeights[divide] --".in1"--> NG_triplanarprojection_color3_N_blendPower[power]
+    NG_triplanarprojection_color3_N_absN[absval] --".in1"--> NG_triplanarprojection_color3_N_normalizeWeights[divide]
+    NG_triplanarprojection_color3_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_color3_N_absN[absval]
+    NG_triplanarprojection_color3_normalINT([normal]) ==.in==> NG_triplanarprojection_color3_N_norm_vector3[normalize]
     style NG_triplanarprojection_color3_normalINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_color3_N_normalizeWeights[divide]
+    NG_triplanarprojection_color3_N_absN[absval] --".in1"--> NG_triplanarprojection_color3_N_dotN[dotproduct]
+    NG_triplanarprojection_color3_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_color3_N_blendPower[power]
+    NG_triplanarprojection_color3_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_color3_N_oneOverBlend[divide]
+    NG_triplanarprojection_color3_blendINT([blend]) ==.in==> NG_triplanarprojection_color3_N_clampForPrecision[clamp]
+    style NG_triplanarprojection_color3_blendINT fill:#0bb, color:#111
+    NG_triplanarprojection_color3_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_color3_N_normalizeBlendedWeights[divide]
+    NG_triplanarprojection_color3_N_blendPower[power] --".in1"--> NG_triplanarprojection_color3_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_color3_N_nY_color3[multiply] --".in2"--> NG_triplanarprojection_color3_N_add1_color3[add]
     NG_triplanarprojection_color3_N_imgY_color3[image] --".in1"--> NG_triplanarprojection_color3_N_nY_color3[multiply]
     NG_triplanarprojection_color3_fileyINT([filey]) ==.file==> NG_triplanarprojection_color3_N_imgY_color3[image]
@@ -811,9 +838,9 @@ graph LR;
     NG_triplanarprojection_color3_positionINT([position]) ==.in==> NG_triplanarprojection_color3_N_extX_color3[extract]
     style NG_triplanarprojection_color3_positionINT fill:#0bb, color:#111
     NG_triplanarprojection_color3_N_extZ_color3[extract] --".in2"--> NG_triplanarprojection_color3_N_vecXZ_color3[combine2]
-    NG_triplanarprojection_color3_N_blendY_color3[absval] --".in2"--> NG_triplanarprojection_color3_N_nY_color3[multiply]
-    NG_triplanarprojection_color3_N_dotY_color3[dotproduct] --".in"--> NG_triplanarprojection_color3_N_blendY_color3[absval]
-    NG_triplanarprojection_color3_N_norm_color3[normalize] --".in1"--> NG_triplanarprojection_color3_N_dotY_color3[dotproduct]
+    NG_triplanarprojection_color3_N_separateWeights[separate3] --> NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsouty([outy])
+    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsouty fill:#1b1, color:#111
+    NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsouty --".in2"--> NG_triplanarprojection_color3_N_nY_color3[multiply]
     NG_triplanarprojection_color3_N_nZ_color3[multiply] --".in2"--> NG_triplanarprojection_color3_N_add2_color3[add]
     NG_triplanarprojection_color3_N_imgZ_color3[image] --".in1"--> NG_triplanarprojection_color3_N_nZ_color3[multiply]
     NG_triplanarprojection_color3_filezINT([filez]) ==.file==> NG_triplanarprojection_color3_N_imgZ_color3[image]
@@ -833,9 +860,9 @@ graph LR;
     NG_triplanarprojection_color3_N_vecXY_color3[combine2] --".texcoord"--> NG_triplanarprojection_color3_N_imgZ_color3[image]
     NG_triplanarprojection_color3_N_extX_color3[extract] --".in1"--> NG_triplanarprojection_color3_N_vecXY_color3[combine2]
     NG_triplanarprojection_color3_N_extY_color3[extract] --".in2"--> NG_triplanarprojection_color3_N_vecXY_color3[combine2]
-    NG_triplanarprojection_color3_N_blendZ_color3[absval] --".in2"--> NG_triplanarprojection_color3_N_nZ_color3[multiply]
-    NG_triplanarprojection_color3_N_dotZ_color3[dotproduct] --".in"--> NG_triplanarprojection_color3_N_blendZ_color3[absval]
-    NG_triplanarprojection_color3_N_norm_color3[normalize] --".in1"--> NG_triplanarprojection_color3_N_dotZ_color3[dotproduct]
+    NG_triplanarprojection_color3_N_separateWeights[separate3] --> NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutz([outz])
+    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutz fill:#1b1, color:#111
+    NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_color3_N_nZ_color3[multiply]
 
 ```
  
@@ -851,6 +878,7 @@ graph LR;
 | **default** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **blend** | float | 1.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **filtertype** | string | linear |  |  |  |  |  |  |  |  |  | true |
 | **framerange** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
@@ -897,11 +925,24 @@ graph LR;
     NG_triplanarprojection_color4_N_extZ_color4[extract] --".in2"--> NG_triplanarprojection_color4_N_vecYZ_color4[combine2]
     NG_triplanarprojection_color4_positionINT([position]) ==.in==> NG_triplanarprojection_color4_N_extZ_color4[extract]
     style NG_triplanarprojection_color4_positionINT fill:#0bb, color:#111
-    NG_triplanarprojection_color4_N_blendX_color4[absval] --".in2"--> NG_triplanarprojection_color4_N_nX_color4[multiply]
-    NG_triplanarprojection_color4_N_dotX_color4[dotproduct] --".in"--> NG_triplanarprojection_color4_N_blendX_color4[absval]
-    NG_triplanarprojection_color4_N_norm_color4[normalize] --".in1"--> NG_triplanarprojection_color4_N_dotX_color4[dotproduct]
-    NG_triplanarprojection_color4_normalINT([normal]) ==.in==> NG_triplanarprojection_color4_N_norm_color4[normalize]
+    NG_triplanarprojection_color4_N_separateWeights[separate3] --> NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutx([outx])
+    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutx fill:#1b1, color:#111
+    NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_color4_N_nX_color4[multiply]
+    NG_triplanarprojection_color4_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_color4_N_separateWeights[separate3]
+    NG_triplanarprojection_color4_N_blendPower[power] --".in1"--> NG_triplanarprojection_color4_N_normalizeBlendedWeights[divide]
+    NG_triplanarprojection_color4_N_normalizeWeights[divide] --".in1"--> NG_triplanarprojection_color4_N_blendPower[power]
+    NG_triplanarprojection_color4_N_absN[absval] --".in1"--> NG_triplanarprojection_color4_N_normalizeWeights[divide]
+    NG_triplanarprojection_color4_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_color4_N_absN[absval]
+    NG_triplanarprojection_color4_normalINT([normal]) ==.in==> NG_triplanarprojection_color4_N_norm_vector3[normalize]
     style NG_triplanarprojection_color4_normalINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_color4_N_normalizeWeights[divide]
+    NG_triplanarprojection_color4_N_absN[absval] --".in1"--> NG_triplanarprojection_color4_N_dotN[dotproduct]
+    NG_triplanarprojection_color4_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_color4_N_blendPower[power]
+    NG_triplanarprojection_color4_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_color4_N_oneOverBlend[divide]
+    NG_triplanarprojection_color4_blendINT([blend]) ==.in==> NG_triplanarprojection_color4_N_clampForPrecision[clamp]
+    style NG_triplanarprojection_color4_blendINT fill:#0bb, color:#111
+    NG_triplanarprojection_color4_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_color4_N_normalizeBlendedWeights[divide]
+    NG_triplanarprojection_color4_N_blendPower[power] --".in1"--> NG_triplanarprojection_color4_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_color4_N_nY_color4[multiply] --".in2"--> NG_triplanarprojection_color4_N_add1_color4[add]
     NG_triplanarprojection_color4_N_imgY_color4[image] --".in1"--> NG_triplanarprojection_color4_N_nY_color4[multiply]
     NG_triplanarprojection_color4_fileyINT([filey]) ==.file==> NG_triplanarprojection_color4_N_imgY_color4[image]
@@ -923,9 +964,9 @@ graph LR;
     NG_triplanarprojection_color4_positionINT([position]) ==.in==> NG_triplanarprojection_color4_N_extX_color4[extract]
     style NG_triplanarprojection_color4_positionINT fill:#0bb, color:#111
     NG_triplanarprojection_color4_N_extZ_color4[extract] --".in2"--> NG_triplanarprojection_color4_N_vecXZ_color4[combine2]
-    NG_triplanarprojection_color4_N_blendY_color4[absval] --".in2"--> NG_triplanarprojection_color4_N_nY_color4[multiply]
-    NG_triplanarprojection_color4_N_dotY_color4[dotproduct] --".in"--> NG_triplanarprojection_color4_N_blendY_color4[absval]
-    NG_triplanarprojection_color4_N_norm_color4[normalize] --".in1"--> NG_triplanarprojection_color4_N_dotY_color4[dotproduct]
+    NG_triplanarprojection_color4_N_separateWeights[separate3] --> NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsouty([outy])
+    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsouty fill:#1b1, color:#111
+    NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsouty --".in2"--> NG_triplanarprojection_color4_N_nY_color4[multiply]
     NG_triplanarprojection_color4_N_nZ_color4[multiply] --".in2"--> NG_triplanarprojection_color4_N_add2_color4[add]
     NG_triplanarprojection_color4_N_imgZ_color4[image] --".in1"--> NG_triplanarprojection_color4_N_nZ_color4[multiply]
     NG_triplanarprojection_color4_filezINT([filez]) ==.file==> NG_triplanarprojection_color4_N_imgZ_color4[image]
@@ -945,9 +986,9 @@ graph LR;
     NG_triplanarprojection_color4_N_vecXY_color4[combine2] --".texcoord"--> NG_triplanarprojection_color4_N_imgZ_color4[image]
     NG_triplanarprojection_color4_N_extX_color4[extract] --".in1"--> NG_triplanarprojection_color4_N_vecXY_color4[combine2]
     NG_triplanarprojection_color4_N_extY_color4[extract] --".in2"--> NG_triplanarprojection_color4_N_vecXY_color4[combine2]
-    NG_triplanarprojection_color4_N_blendZ_color4[absval] --".in2"--> NG_triplanarprojection_color4_N_nZ_color4[multiply]
-    NG_triplanarprojection_color4_N_dotZ_color4[dotproduct] --".in"--> NG_triplanarprojection_color4_N_blendZ_color4[absval]
-    NG_triplanarprojection_color4_N_norm_color4[normalize] --".in1"--> NG_triplanarprojection_color4_N_dotZ_color4[dotproduct]
+    NG_triplanarprojection_color4_N_separateWeights[separate3] --> NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutz([outz])
+    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutz fill:#1b1, color:#111
+    NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_color4_N_nZ_color4[multiply]
 
 ```
  
@@ -963,6 +1004,7 @@ graph LR;
 | **default** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **blend** | float | 1.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **filtertype** | string | linear |  |  |  |  |  |  |  |  |  | true |
 | **framerange** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
@@ -1009,11 +1051,24 @@ graph LR;
     NG_triplanarprojection_vector2_N_extZ_vector2[extract] --".in2"--> NG_triplanarprojection_vector2_N_vecYZ_vector2[combine2]
     NG_triplanarprojection_vector2_positionINT([position]) ==.in==> NG_triplanarprojection_vector2_N_extZ_vector2[extract]
     style NG_triplanarprojection_vector2_positionINT fill:#0bb, color:#111
-    NG_triplanarprojection_vector2_N_blendX_vector2[absval] --".in2"--> NG_triplanarprojection_vector2_N_nX_vector2[multiply]
-    NG_triplanarprojection_vector2_N_dotX_vector2[dotproduct] --".in"--> NG_triplanarprojection_vector2_N_blendX_vector2[absval]
-    NG_triplanarprojection_vector2_N_norm_vector2[normalize] --".in1"--> NG_triplanarprojection_vector2_N_dotX_vector2[dotproduct]
-    NG_triplanarprojection_vector2_normalINT([normal]) ==.in==> NG_triplanarprojection_vector2_N_norm_vector2[normalize]
+    NG_triplanarprojection_vector2_N_separateWeights[separate3] --> NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutx([outx])
+    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutx fill:#1b1, color:#111
+    NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_vector2_N_nX_vector2[multiply]
+    NG_triplanarprojection_vector2_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_vector2_N_separateWeights[separate3]
+    NG_triplanarprojection_vector2_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector2_N_normalizeBlendedWeights[divide]
+    NG_triplanarprojection_vector2_N_normalizeWeights[divide] --".in1"--> NG_triplanarprojection_vector2_N_blendPower[power]
+    NG_triplanarprojection_vector2_N_absN[absval] --".in1"--> NG_triplanarprojection_vector2_N_normalizeWeights[divide]
+    NG_triplanarprojection_vector2_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_vector2_N_absN[absval]
+    NG_triplanarprojection_vector2_normalINT([normal]) ==.in==> NG_triplanarprojection_vector2_N_norm_vector3[normalize]
     style NG_triplanarprojection_vector2_normalINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_vector2_N_normalizeWeights[divide]
+    NG_triplanarprojection_vector2_N_absN[absval] --".in1"--> NG_triplanarprojection_vector2_N_dotN[dotproduct]
+    NG_triplanarprojection_vector2_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_vector2_N_blendPower[power]
+    NG_triplanarprojection_vector2_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_vector2_N_oneOverBlend[divide]
+    NG_triplanarprojection_vector2_blendINT([blend]) ==.in==> NG_triplanarprojection_vector2_N_clampForPrecision[clamp]
+    style NG_triplanarprojection_vector2_blendINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector2_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_vector2_N_normalizeBlendedWeights[divide]
+    NG_triplanarprojection_vector2_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector2_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_vector2_N_nY_vector2[multiply] --".in2"--> NG_triplanarprojection_vector2_N_add1_vector2[add]
     NG_triplanarprojection_vector2_N_imgY_vector2[image] --".in1"--> NG_triplanarprojection_vector2_N_nY_vector2[multiply]
     NG_triplanarprojection_vector2_fileyINT([filey]) ==.file==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
@@ -1035,9 +1090,9 @@ graph LR;
     NG_triplanarprojection_vector2_positionINT([position]) ==.in==> NG_triplanarprojection_vector2_N_extX_vector2[extract]
     style NG_triplanarprojection_vector2_positionINT fill:#0bb, color:#111
     NG_triplanarprojection_vector2_N_extZ_vector2[extract] --".in2"--> NG_triplanarprojection_vector2_N_vecXZ_vector2[combine2]
-    NG_triplanarprojection_vector2_N_blendY_vector2[absval] --".in2"--> NG_triplanarprojection_vector2_N_nY_vector2[multiply]
-    NG_triplanarprojection_vector2_N_dotY_vector2[dotproduct] --".in"--> NG_triplanarprojection_vector2_N_blendY_vector2[absval]
-    NG_triplanarprojection_vector2_N_norm_vector2[normalize] --".in1"--> NG_triplanarprojection_vector2_N_dotY_vector2[dotproduct]
+    NG_triplanarprojection_vector2_N_separateWeights[separate3] --> NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsouty([outy])
+    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsouty fill:#1b1, color:#111
+    NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsouty --".in2"--> NG_triplanarprojection_vector2_N_nY_vector2[multiply]
     NG_triplanarprojection_vector2_N_nZ_vector2[multiply] --".in2"--> NG_triplanarprojection_vector2_N_add2_vector2[add]
     NG_triplanarprojection_vector2_N_imgZ_vector2[image] --".in1"--> NG_triplanarprojection_vector2_N_nZ_vector2[multiply]
     NG_triplanarprojection_vector2_filezINT([filez]) ==.file==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
@@ -1057,9 +1112,9 @@ graph LR;
     NG_triplanarprojection_vector2_N_vecXY_vector2[combine2] --".texcoord"--> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
     NG_triplanarprojection_vector2_N_extX_vector2[extract] --".in1"--> NG_triplanarprojection_vector2_N_vecXY_vector2[combine2]
     NG_triplanarprojection_vector2_N_extY_vector2[extract] --".in2"--> NG_triplanarprojection_vector2_N_vecXY_vector2[combine2]
-    NG_triplanarprojection_vector2_N_blendZ_vector2[absval] --".in2"--> NG_triplanarprojection_vector2_N_nZ_vector2[multiply]
-    NG_triplanarprojection_vector2_N_dotZ_vector2[dotproduct] --".in"--> NG_triplanarprojection_vector2_N_blendZ_vector2[absval]
-    NG_triplanarprojection_vector2_N_norm_vector2[normalize] --".in1"--> NG_triplanarprojection_vector2_N_dotZ_vector2[dotproduct]
+    NG_triplanarprojection_vector2_N_separateWeights[separate3] --> NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutz([outz])
+    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutz fill:#1b1, color:#111
+    NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_vector2_N_nZ_vector2[multiply]
 
 ```
  
@@ -1075,6 +1130,7 @@ graph LR;
 | **default** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **blend** | float | 1.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **filtertype** | string | linear |  |  |  |  |  |  |  |  |  | true |
 | **framerange** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
@@ -1121,11 +1177,24 @@ graph LR;
     NG_triplanarprojection_vector3_N_extZ_vector3[extract] --".in2"--> NG_triplanarprojection_vector3_N_vecYZ_vector3[combine2]
     NG_triplanarprojection_vector3_positionINT([position]) ==.in==> NG_triplanarprojection_vector3_N_extZ_vector3[extract]
     style NG_triplanarprojection_vector3_positionINT fill:#0bb, color:#111
-    NG_triplanarprojection_vector3_N_blendX_vector3[absval] --".in2"--> NG_triplanarprojection_vector3_N_nX_vector3[multiply]
-    NG_triplanarprojection_vector3_N_dotX_vector3[dotproduct] --".in"--> NG_triplanarprojection_vector3_N_blendX_vector3[absval]
-    NG_triplanarprojection_vector3_N_norm_vector3[normalize] --".in1"--> NG_triplanarprojection_vector3_N_dotX_vector3[dotproduct]
+    NG_triplanarprojection_vector3_N_separateWeights[separate3] --> NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutx([outx])
+    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutx fill:#1b1, color:#111
+    NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_vector3_N_nX_vector3[multiply]
+    NG_triplanarprojection_vector3_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_vector3_N_separateWeights[separate3]
+    NG_triplanarprojection_vector3_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector3_N_normalizeBlendedWeights[divide]
+    NG_triplanarprojection_vector3_N_normalizeWeights[divide] --".in1"--> NG_triplanarprojection_vector3_N_blendPower[power]
+    NG_triplanarprojection_vector3_N_absN[absval] --".in1"--> NG_triplanarprojection_vector3_N_normalizeWeights[divide]
+    NG_triplanarprojection_vector3_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_vector3_N_absN[absval]
     NG_triplanarprojection_vector3_normalINT([normal]) ==.in==> NG_triplanarprojection_vector3_N_norm_vector3[normalize]
     style NG_triplanarprojection_vector3_normalINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_vector3_N_normalizeWeights[divide]
+    NG_triplanarprojection_vector3_N_absN[absval] --".in1"--> NG_triplanarprojection_vector3_N_dotN[dotproduct]
+    NG_triplanarprojection_vector3_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_vector3_N_blendPower[power]
+    NG_triplanarprojection_vector3_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_vector3_N_oneOverBlend[divide]
+    NG_triplanarprojection_vector3_blendINT([blend]) ==.in==> NG_triplanarprojection_vector3_N_clampForPrecision[clamp]
+    style NG_triplanarprojection_vector3_blendINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector3_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_vector3_N_normalizeBlendedWeights[divide]
+    NG_triplanarprojection_vector3_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector3_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_vector3_N_nY_vector3[multiply] --".in2"--> NG_triplanarprojection_vector3_N_add1_vector3[add]
     NG_triplanarprojection_vector3_N_imgY_vector3[image] --".in1"--> NG_triplanarprojection_vector3_N_nY_vector3[multiply]
     NG_triplanarprojection_vector3_fileyINT([filey]) ==.file==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
@@ -1147,9 +1216,9 @@ graph LR;
     NG_triplanarprojection_vector3_positionINT([position]) ==.in==> NG_triplanarprojection_vector3_N_extX_vector3[extract]
     style NG_triplanarprojection_vector3_positionINT fill:#0bb, color:#111
     NG_triplanarprojection_vector3_N_extZ_vector3[extract] --".in2"--> NG_triplanarprojection_vector3_N_vecXZ_vector3[combine2]
-    NG_triplanarprojection_vector3_N_blendY_vector3[absval] --".in2"--> NG_triplanarprojection_vector3_N_nY_vector3[multiply]
-    NG_triplanarprojection_vector3_N_dotY_vector3[dotproduct] --".in"--> NG_triplanarprojection_vector3_N_blendY_vector3[absval]
-    NG_triplanarprojection_vector3_N_norm_vector3[normalize] --".in1"--> NG_triplanarprojection_vector3_N_dotY_vector3[dotproduct]
+    NG_triplanarprojection_vector3_N_separateWeights[separate3] --> NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsouty([outy])
+    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsouty fill:#1b1, color:#111
+    NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsouty --".in2"--> NG_triplanarprojection_vector3_N_nY_vector3[multiply]
     NG_triplanarprojection_vector3_N_nZ_vector3[multiply] --".in2"--> NG_triplanarprojection_vector3_N_add2_vector3[add]
     NG_triplanarprojection_vector3_N_imgZ_vector3[image] --".in1"--> NG_triplanarprojection_vector3_N_nZ_vector3[multiply]
     NG_triplanarprojection_vector3_filezINT([filez]) ==.file==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
@@ -1169,9 +1238,9 @@ graph LR;
     NG_triplanarprojection_vector3_N_vecXY_vector3[combine2] --".texcoord"--> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
     NG_triplanarprojection_vector3_N_extX_vector3[extract] --".in1"--> NG_triplanarprojection_vector3_N_vecXY_vector3[combine2]
     NG_triplanarprojection_vector3_N_extY_vector3[extract] --".in2"--> NG_triplanarprojection_vector3_N_vecXY_vector3[combine2]
-    NG_triplanarprojection_vector3_N_blendZ_vector3[absval] --".in2"--> NG_triplanarprojection_vector3_N_nZ_vector3[multiply]
-    NG_triplanarprojection_vector3_N_dotZ_vector3[dotproduct] --".in"--> NG_triplanarprojection_vector3_N_blendZ_vector3[absval]
-    NG_triplanarprojection_vector3_N_norm_vector3[normalize] --".in1"--> NG_triplanarprojection_vector3_N_dotZ_vector3[dotproduct]
+    NG_triplanarprojection_vector3_N_separateWeights[separate3] --> NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutz([outz])
+    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutz fill:#1b1, color:#111
+    NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_vector3_N_nZ_vector3[multiply]
 
 ```
  
@@ -1187,6 +1256,7 @@ graph LR;
 | **default** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **blend** | float | 1.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **filtertype** | string | linear |  |  |  |  |  |  |  |  |  | true |
 | **framerange** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
@@ -1233,11 +1303,24 @@ graph LR;
     NG_triplanarprojection_vector4_N_extZ_vector4[extract] --".in2"--> NG_triplanarprojection_vector4_N_vecYZ_vector4[combine2]
     NG_triplanarprojection_vector4_positionINT([position]) ==.in==> NG_triplanarprojection_vector4_N_extZ_vector4[extract]
     style NG_triplanarprojection_vector4_positionINT fill:#0bb, color:#111
-    NG_triplanarprojection_vector4_N_blendX_vector4[absval] --".in2"--> NG_triplanarprojection_vector4_N_nX_vector4[multiply]
-    NG_triplanarprojection_vector4_N_dotX_vector4[dotproduct] --".in"--> NG_triplanarprojection_vector4_N_blendX_vector4[absval]
-    NG_triplanarprojection_vector4_N_norm_vector4[normalize] --".in1"--> NG_triplanarprojection_vector4_N_dotX_vector4[dotproduct]
-    NG_triplanarprojection_vector4_normalINT([normal]) ==.in==> NG_triplanarprojection_vector4_N_norm_vector4[normalize]
+    NG_triplanarprojection_vector4_N_separateWeights[separate3] --> NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutx([outx])
+    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutx fill:#1b1, color:#111
+    NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_vector4_N_nX_vector4[multiply]
+    NG_triplanarprojection_vector4_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_vector4_N_separateWeights[separate3]
+    NG_triplanarprojection_vector4_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector4_N_normalizeBlendedWeights[divide]
+    NG_triplanarprojection_vector4_N_normalizeWeights[divide] --".in1"--> NG_triplanarprojection_vector4_N_blendPower[power]
+    NG_triplanarprojection_vector4_N_absN[absval] --".in1"--> NG_triplanarprojection_vector4_N_normalizeWeights[divide]
+    NG_triplanarprojection_vector4_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_vector4_N_absN[absval]
+    NG_triplanarprojection_vector4_normalINT([normal]) ==.in==> NG_triplanarprojection_vector4_N_norm_vector3[normalize]
     style NG_triplanarprojection_vector4_normalINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_vector4_N_normalizeWeights[divide]
+    NG_triplanarprojection_vector4_N_absN[absval] --".in1"--> NG_triplanarprojection_vector4_N_dotN[dotproduct]
+    NG_triplanarprojection_vector4_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_vector4_N_blendPower[power]
+    NG_triplanarprojection_vector4_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_vector4_N_oneOverBlend[divide]
+    NG_triplanarprojection_vector4_blendINT([blend]) ==.in==> NG_triplanarprojection_vector4_N_clampForPrecision[clamp]
+    style NG_triplanarprojection_vector4_blendINT fill:#0bb, color:#111
+    NG_triplanarprojection_vector4_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_vector4_N_normalizeBlendedWeights[divide]
+    NG_triplanarprojection_vector4_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector4_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_vector4_N_nY_vector4[multiply] --".in2"--> NG_triplanarprojection_vector4_N_add1_vector4[add]
     NG_triplanarprojection_vector4_N_imgY_vector4[image] --".in1"--> NG_triplanarprojection_vector4_N_nY_vector4[multiply]
     NG_triplanarprojection_vector4_fileyINT([filey]) ==.file==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
@@ -1259,9 +1342,9 @@ graph LR;
     NG_triplanarprojection_vector4_positionINT([position]) ==.in==> NG_triplanarprojection_vector4_N_extX_vector4[extract]
     style NG_triplanarprojection_vector4_positionINT fill:#0bb, color:#111
     NG_triplanarprojection_vector4_N_extZ_vector4[extract] --".in2"--> NG_triplanarprojection_vector4_N_vecXZ_vector4[combine2]
-    NG_triplanarprojection_vector4_N_blendY_vector4[absval] --".in2"--> NG_triplanarprojection_vector4_N_nY_vector4[multiply]
-    NG_triplanarprojection_vector4_N_dotY_vector4[dotproduct] --".in"--> NG_triplanarprojection_vector4_N_blendY_vector4[absval]
-    NG_triplanarprojection_vector4_N_norm_vector4[normalize] --".in1"--> NG_triplanarprojection_vector4_N_dotY_vector4[dotproduct]
+    NG_triplanarprojection_vector4_N_separateWeights[separate3] --> NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsouty([outy])
+    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsouty fill:#1b1, color:#111
+    NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsouty --".in2"--> NG_triplanarprojection_vector4_N_nY_vector4[multiply]
     NG_triplanarprojection_vector4_N_nZ_vector4[multiply] --".in2"--> NG_triplanarprojection_vector4_N_add2_vector4[add]
     NG_triplanarprojection_vector4_N_imgZ_vector4[image] --".in1"--> NG_triplanarprojection_vector4_N_nZ_vector4[multiply]
     NG_triplanarprojection_vector4_filezINT([filez]) ==.file==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
@@ -1281,9 +1364,9 @@ graph LR;
     NG_triplanarprojection_vector4_N_vecXY_vector4[combine2] --".texcoord"--> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
     NG_triplanarprojection_vector4_N_extX_vector4[extract] --".in1"--> NG_triplanarprojection_vector4_N_vecXY_vector4[combine2]
     NG_triplanarprojection_vector4_N_extY_vector4[extract] --".in2"--> NG_triplanarprojection_vector4_N_vecXY_vector4[combine2]
-    NG_triplanarprojection_vector4_N_blendZ_vector4[absval] --".in2"--> NG_triplanarprojection_vector4_N_nZ_vector4[multiply]
-    NG_triplanarprojection_vector4_N_dotZ_vector4[dotproduct] --".in"--> NG_triplanarprojection_vector4_N_blendZ_vector4[absval]
-    NG_triplanarprojection_vector4_N_norm_vector4[normalize] --".in1"--> NG_triplanarprojection_vector4_N_dotZ_vector4[dotproduct]
+    NG_triplanarprojection_vector4_N_separateWeights[separate3] --> NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutz([outz])
+    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutz fill:#1b1, color:#111
+    NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_vector4_N_nZ_vector4[multiply]
 
 ```
  
@@ -1299,6 +1382,7 @@ graph LR;
 | **default** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **blend** | float | 1.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **filtertype** | string | linear |  |  |  |  |  |  |  |  |  | true |
 | **framerange** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
@@ -3210,6 +3294,206 @@ graph LR;
 | **diminish** | float | 0.5 | Diminish |  |  | 0.0 | 1.0 |  | Fractal |  | The rate at which noise amplitude is diminished for each octave of Fractal noise. Default is 0.5. |  |
 | **type** | integer | 0 | Noise Type |  |  | 0 | 3 |  | Common |  | Menu to select the type of noise: Perlin, Cell, Worley, or Fractal. Default is Perlin. |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+### Category: *randomfloat*
+<details><summary>ND_randomfloat_float</summary>
+<p>
+ 
+* *Nodedef*: ND_randomfloat_float
+* *Type*: float
+* *Node Group*: procedural
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_randomfloat_float
+
+
+```mermaid
+graph LR; 
+    NG_randomfloat_float_N_remapRange[range] --> NG_randomfloat_float_out([out])
+    style NG_randomfloat_float_out fill:#1b1, color:#111
+    NG_randomfloat_float_minINT([min]) ==.outlow==> NG_randomfloat_float_N_remapRange[range]
+    style NG_randomfloat_float_minINT fill:#0bb, color:#111
+    NG_randomfloat_float_maxINT([max]) ==.outhigh==> NG_randomfloat_float_N_remapRange[range]
+    style NG_randomfloat_float_maxINT fill:#0bb, color:#111
+    NG_randomfloat_float_N_cellnoise1[cellnoise2d] --".in"--> NG_randomfloat_float_N_remapRange[range]
+    NG_randomfloat_float_N_combine2[combine2] --".texcoord"--> NG_randomfloat_float_N_cellnoise1[cellnoise2d]
+    NG_randomfloat_float_N_scaleInput[multiply] --".in1"--> NG_randomfloat_float_N_combine2[combine2]
+    NG_randomfloat_float_N_moduloInput[modulo] --".in1"--> NG_randomfloat_float_N_scaleInput[multiply]
+    NG_randomfloat_float_inINT([in]) ==.in1==> NG_randomfloat_float_N_moduloInput[modulo]
+    style NG_randomfloat_float_inINT fill:#0bb, color:#111
+    NG_randomfloat_float_N_convertSeed1[convert] --".in2"--> NG_randomfloat_float_N_combine2[combine2]
+    NG_randomfloat_float_seedINT([seed]) ==.in==> NG_randomfloat_float_N_convertSeed1[convert]
+    style NG_randomfloat_float_seedINT fill:#0bb, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | float | 0.0 | Input |  |  |  |  |  |  |  | Initial randomization seed. |  |
+| **min** | float | 0.0 | Minimum |  |  |  |  |  |  |  | The minimum output value. |  |
+| **max** | float | 1.0 | Maximum |  |  |  |  |  |  |  | The maximum output value. |  |
+| **seed** | integer | 0 | Seed |  |  |  |  |  |  |  | Additional seed. |  |
+| *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_randomfloat_integer</summary>
+<p>
+ 
+* *Nodedef*: ND_randomfloat_integer
+* *Type*: float
+* *Node Group*: procedural
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_randomfloat_integer
+
+
+```mermaid
+graph LR; 
+    NG_randomfloat_integer_N_remapRange[range] --> NG_randomfloat_integer_out([out])
+    style NG_randomfloat_integer_out fill:#1b1, color:#111
+    NG_randomfloat_integer_minINT([min]) ==.outlow==> NG_randomfloat_integer_N_remapRange[range]
+    style NG_randomfloat_integer_minINT fill:#0bb, color:#111
+    NG_randomfloat_integer_maxINT([max]) ==.outhigh==> NG_randomfloat_integer_N_remapRange[range]
+    style NG_randomfloat_integer_maxINT fill:#0bb, color:#111
+    NG_randomfloat_integer_N_cellnoise1[cellnoise2d] --".in"--> NG_randomfloat_integer_N_remapRange[range]
+    NG_randomfloat_integer_N_combine2[combine2] --".texcoord"--> NG_randomfloat_integer_N_cellnoise1[cellnoise2d]
+    NG_randomfloat_integer_N_convertInput1[convert] --".in1"--> NG_randomfloat_integer_N_combine2[combine2]
+    NG_randomfloat_integer_inINT([in]) ==.in==> NG_randomfloat_integer_N_convertInput1[convert]
+    style NG_randomfloat_integer_inINT fill:#0bb, color:#111
+    NG_randomfloat_integer_N_convertSeed1[convert] --".in2"--> NG_randomfloat_integer_N_combine2[combine2]
+    NG_randomfloat_integer_seedINT([seed]) ==.in==> NG_randomfloat_integer_N_convertSeed1[convert]
+    style NG_randomfloat_integer_seedINT fill:#0bb, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | integer | 0 | Input |  |  |  |  |  |  |  |  |  |
+| **min** | float | 0.0 | Minimum |  |  |  |  |  |  |  |  |  |
+| **max** | float | 1.0 | Maximum |  |  |  |  |  |  |  |  |  |
+| **seed** | integer | 0 | Seed |  |  |  |  |  |  |  |  |  |
+| *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+### Category: *randomcolor*
+<details><summary>ND_randomcolor_float</summary>
+<p>
+ 
+* *Nodedef*: ND_randomcolor_float
+* *Type*: color3
+* *Node Group*: procedural3d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_randomcolor_float
+
+
+```mermaid
+graph LR; 
+    NG_randomcolor_float_N_HSV_to_RGB[hsvtorgb] --> NG_randomcolor_float_out([out])
+    style NG_randomcolor_float_out fill:#1b1, color:#111
+    NG_randomcolor_float_N_combine_HSV[combine3] --".in"--> NG_randomcolor_float_N_HSV_to_RGB[hsvtorgb]
+    NG_randomcolor_float_N_range_hue[range] --".in1"--> NG_randomcolor_float_N_combine_HSV[combine3]
+    NG_randomcolor_float_huelowINT([huelow]) ==.outlow==> NG_randomcolor_float_N_range_hue[range]
+    style NG_randomcolor_float_huelowINT fill:#0bb, color:#111
+    NG_randomcolor_float_huehighINT([huehigh]) ==.outhigh==> NG_randomcolor_float_N_range_hue[range]
+    style NG_randomcolor_float_huehighINT fill:#0bb, color:#111
+    NG_randomcolor_float_N_rand_hue[randomfloat] --".in"--> NG_randomcolor_float_N_range_hue[range]
+    NG_randomcolor_float_inINT([in]) ==.in==> NG_randomcolor_float_N_rand_hue[randomfloat]
+    style NG_randomcolor_float_inINT fill:#0bb, color:#111
+    NG_randomcolor_float_N_seed_hue[ceil] --".seed"--> NG_randomcolor_float_N_rand_hue[randomfloat]
+    NG_randomcolor_float_N_offset_hue[add] --".in"--> NG_randomcolor_float_N_seed_hue[ceil]
+    NG_randomcolor_float_N_convertSeed1[convert] --".in1"--> NG_randomcolor_float_N_offset_hue[add]
+    NG_randomcolor_float_seedINT([seed]) ==.in==> NG_randomcolor_float_N_convertSeed1[convert]
+    style NG_randomcolor_float_seedINT fill:#0bb, color:#111
+    NG_randomcolor_float_N_range_saturation[range] --".in2"--> NG_randomcolor_float_N_combine_HSV[combine3]
+    NG_randomcolor_float_saturationlowINT([saturationlow]) ==.outlow==> NG_randomcolor_float_N_range_saturation[range]
+    style NG_randomcolor_float_saturationlowINT fill:#0bb, color:#111
+    NG_randomcolor_float_saturationhighINT([saturationhigh]) ==.outhigh==> NG_randomcolor_float_N_range_saturation[range]
+    style NG_randomcolor_float_saturationhighINT fill:#0bb, color:#111
+    NG_randomcolor_float_N_rand_saturation[randomfloat] --".in"--> NG_randomcolor_float_N_range_saturation[range]
+    NG_randomcolor_float_inINT([in]) ==.in==> NG_randomcolor_float_N_rand_saturation[randomfloat]
+    style NG_randomcolor_float_inINT fill:#0bb, color:#111
+    NG_randomcolor_float_N_seed_saturation[ceil] --".seed"--> NG_randomcolor_float_N_rand_saturation[randomfloat]
+    NG_randomcolor_float_N_offset_saturation[add] --".in"--> NG_randomcolor_float_N_seed_saturation[ceil]
+    NG_randomcolor_float_N_convertSeed1[convert] --".in1"--> NG_randomcolor_float_N_offset_saturation[add]
+    NG_randomcolor_float_N_range_brightness[range] --".in3"--> NG_randomcolor_float_N_combine_HSV[combine3]
+    NG_randomcolor_float_brightnesslowINT([brightnesslow]) ==.outlow==> NG_randomcolor_float_N_range_brightness[range]
+    style NG_randomcolor_float_brightnesslowINT fill:#0bb, color:#111
+    NG_randomcolor_float_brightnesshighINT([brightnesshigh]) ==.outhigh==> NG_randomcolor_float_N_range_brightness[range]
+    style NG_randomcolor_float_brightnesshighINT fill:#0bb, color:#111
+    NG_randomcolor_float_N_rand_brightness[randomfloat] --".in"--> NG_randomcolor_float_N_range_brightness[range]
+    NG_randomcolor_float_inINT([in]) ==.in==> NG_randomcolor_float_N_rand_brightness[randomfloat]
+    style NG_randomcolor_float_inINT fill:#0bb, color:#111
+    NG_randomcolor_float_N_seed_brightness[ceil] --".seed"--> NG_randomcolor_float_N_rand_brightness[randomfloat]
+    NG_randomcolor_float_N_offset_brightness[add] --".in"--> NG_randomcolor_float_N_seed_brightness[ceil]
+    NG_randomcolor_float_N_convertSeed1[convert] --".in1"--> NG_randomcolor_float_N_offset_brightness[add]
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | float | 0.0 | Input |  |  | 0.0 | 10.0 |  |  |  |  |  |
+| **huelow** | float | 0.0 | Hue Low |  |  | 0.0 | 1.0 |  |  |  |  |  |
+| **huehigh** | float | 1.0 | Hue High |  |  | 0.0 | 1.0 |  |  |  |  |  |
+| **saturationlow** | float | 0.825 | Saturation Low |  |  | 0.0 | 1.0 |  |  |  |  |  |
+| **saturationhigh** | float | 1.0 | Saturation High |  |  | 0.0 | 1.0 |  |  |  |  |  |
+| **brightnesslow** | float | 1.0 | Brightness Low |  |  | 0.0 | 1.0 |  |  |  |  |  |
+| **brightnesshigh** | float | 1.0 | Brightness High |  |  | 0.0 | 1.0 |  |  |  |  |  |
+| **seed** | integer | 0 | Seed |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_randomcolor_integer</summary>
+<p>
+ 
+* *Nodedef*: ND_randomcolor_integer
+* *Type*: color3
+* *Node Group*: procedural3d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_randomcolor_integer
+
+
+```mermaid
+graph LR; 
+    NG_randomcolor_integer_N_randomcolor1[randomcolor] --> NG_randomcolor_integer_out([out])
+    style NG_randomcolor_integer_out fill:#1b1, color:#111
+    NG_randomcolor_integer_huelowINT([huelow]) ==.huelow==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
+    style NG_randomcolor_integer_huelowINT fill:#0bb, color:#111
+    NG_randomcolor_integer_huehighINT([huehigh]) ==.huehigh==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
+    style NG_randomcolor_integer_huehighINT fill:#0bb, color:#111
+    NG_randomcolor_integer_saturationlowINT([saturationlow]) ==.saturationlow==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
+    style NG_randomcolor_integer_saturationlowINT fill:#0bb, color:#111
+    NG_randomcolor_integer_saturationhighINT([saturationhigh]) ==.saturationhigh==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
+    style NG_randomcolor_integer_saturationhighINT fill:#0bb, color:#111
+    NG_randomcolor_integer_brightnesslowINT([brightnesslow]) ==.brightnesslow==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
+    style NG_randomcolor_integer_brightnesslowINT fill:#0bb, color:#111
+    NG_randomcolor_integer_brightnesshighINT([brightnesshigh]) ==.brightnesshigh==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
+    style NG_randomcolor_integer_brightnesshighINT fill:#0bb, color:#111
+    NG_randomcolor_integer_seedINT([seed]) ==.seed==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
+    style NG_randomcolor_integer_seedINT fill:#0bb, color:#111
+    NG_randomcolor_integer_N_convert1[convert] --".in"--> NG_randomcolor_integer_N_randomcolor1[randomcolor]
+    NG_randomcolor_integer_inINT([in]) ==.in==> NG_randomcolor_integer_N_convert1[convert]
+    style NG_randomcolor_integer_inINT fill:#0bb, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | integer | 0 | Input |  |  | 0 | 10 |  |  |  |  |  |
+| **huelow** | float | 0.0 | Hue Low |  |  | 0.0 | 1.0 |  |  |  |  |  |
+| **huehigh** | float | 1.0 | Hue High |  |  | 0.0 | 1.0 |  |  |  |  |  |
+| **saturationlow** | float | 0.825 | Saturation Low |  |  | 0.0 | 1.0 |  |  |  |  |  |
+| **saturationhigh** | float | 1.0 | Saturation High |  |  | 0.0 | 1.0 |  |  |  |  |  |
+| **brightnesslow** | float | 1.0 | Brightness Low |  |  | 0.0 | 1.0 |  |  |  |  |  |
+| **brightnesshigh** | float | 1.0 | Brightness High |  |  | 0.0 | 1.0 |  |  |  |  |  |
+| **seed** | integer | 0 | Seed |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
 ### Category: *checkerboard*

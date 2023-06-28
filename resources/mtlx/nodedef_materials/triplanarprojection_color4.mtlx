@@ -10,6 +10,7 @@
     <input name="default" type="color4" value="0.0, 0.0, 0.0, 0.0" />
     <input name="position" type="vector3" />
     <input name="normal" type="vector3" />
+    <input name="blend" type="float" value="1.0" />
     <input name="filtertype" type="string" value="linear" enum="closest,linear,cubic" uniform="true" />
     <input name="framerange" type="string" value="" uniform="true" />
     <input name="frameoffset" type="integer" value="0" uniform="true" />

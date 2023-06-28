@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <lin_displayp3_to_lin_rec709 name="lin_displayp3_to_lin_rec709_color3" type="color3">
+    <input name="in" type="color3" value="0.0, 0.0, 0.0" />
+  </lin_displayp3_to_lin_rec709>
+  <convert name="shader_lin_displayp3_to_lin_rec709_color3_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="lin_displayp3_to_lin_rec709_color3" />
+  </convert>
+  <surfacematerial name="material_lin_displayp3_to_lin_rec709_color3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_lin_displayp3_to_lin_rec709_color3_out" />
+  </surfacematerial>
+</materialx>
