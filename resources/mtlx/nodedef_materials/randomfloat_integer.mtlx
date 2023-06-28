@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <randomfloat name="randomfloat_integer" type="float">
+    <input name="in" type="integer" uiname="Input" value="0" />
+    <input name="min" type="float" uiname="Minimum" value="0.0" />
+    <input name="max" type="float" uiname="Maximum" value="1.0" />
+    <input name="seed" type="integer" uiname="Seed" value="0" />
+  </randomfloat>
+  <convert name="shader_randomfloat_integer_out" type="surfaceshader">
+    <input name="in" type="float" nodename="randomfloat_integer" />
+  </convert>
+  <surfacematerial name="material_randomfloat_integer_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_randomfloat_integer_out" />
+  </surfacematerial>
+</materialx>

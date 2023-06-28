@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <randomcolor name="randomcolor_float" type="color3">
+    <input name="in" type="float" uiname="Input" value="0.0" />
+    <input name="huelow" type="float" uiname="Hue Low" value="0" />
+    <input name="huehigh" type="float" uiname="Hue High" value="1" />
+    <input name="saturationlow" type="float" uiname="Saturation Low" value="0.825" />
+    <input name="saturationhigh" type="float" uiname="Saturation High" value="1" />
+    <input name="brightnesslow" type="float" uiname="Brightness Low" value="1" />
+    <input name="brightnesshigh" type="float" uiname="Brightness High" value="1" />
+    <input name="seed" type="integer" uiname="Seed" value="0" />
+  </randomcolor>
+  <convert name="shader_randomcolor_float_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="randomcolor_float" />
+  </convert>
+  <surfacematerial name="material_randomcolor_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_randomcolor_float_out" />
+  </surfacematerial>
+</materialx>
