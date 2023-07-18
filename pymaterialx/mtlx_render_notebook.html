@@ -14685,7 +14685,7 @@ and loading in standard libraries.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Loaded 721 standard library definitions
+<pre>Loaded 729 standard library definitions
 </pre>
 </div>
 </div>
@@ -14921,8 +14921,10 @@ Supported Source to Target Transforms:
   srgb_texture --&gt; lin_rec709 supported
   lin_adobergb --&gt; lin_rec709 supported
   adobergb --&gt; lin_rec709 supported
+  srgb_displayp3 --&gt; lin_rec709 supported
+  lin_displayp3 --&gt; lin_rec709 supported
 Supported Target From Source Transforms:
-  lin_rec709 &lt;-- g18_rec709, g22_rec709, rec709_display, acescg, g22_ap1, srgb_texture, lin_adobergb, adobergb supported
+  lin_rec709 &lt;-- g18_rec709, g22_rec709, rec709_display, acescg, g22_ap1, srgb_texture, lin_adobergb, adobergb, srgb_displayp3, lin_displayp3 supported
 </pre>
 </div>
 </div>
@@ -15290,7 +15292,7 @@ Supported Target From Source Transforms:
         
         <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">setLightHandler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lightHandler</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">createProgram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">activeShader</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">validateInputs</span><span class="p">()</span>
+        <span class="c1">#self.renderer.validateInputs()</span>
 
         <span class="n">program</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">getProgram</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">program</span><span class="p">:</span>

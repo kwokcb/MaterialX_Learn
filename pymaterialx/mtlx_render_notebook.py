@@ -19,9 +19,16 @@
 # <td><img src="./data/unlit_marble_solid.png" style="border:5px outset silver" >  
 # <td><img src="./data/unlit_image.png" style="border:5px outset silver" > 
 # </tr>
+# <tr>
+# <td><img src="./data/sample_nodegraph.png" style="border:5px outset silver" > 
+# <td><img src="./data/stained_glass_material.png" style="border:5px outset silver" >  
+# <td><img src="./data/blender_to_mtlx.png" style="border:5px outset silver" > 
+# </tr>
 # </table>
-# <sup>The above images are renders from different files. Left shows the sample Marble from the MaterialX distribution,
+# <sup>The top row of images are renders from different files. Left shows the sample Marble from the MaterialX distribution,
 # the middle is a modified version which uses an `unlit surface` shader, and the last is a graph which uses an external image resources modulated by an input color. Both the image and input color have a input color space specified.
+# The bottom row is the sample nodegraph created in a nodegraph book, a stained glass shader, and a shader generated based on the logic in the Blender notebook.
+# </sup>
 # 
 # > Execution Note: The notebook can cause some loss to the current context for the renderer resulting in bad state. If this occurs then the notebook can be restarted, or the Python file can be run from the command line. In general, a renderer would not inject Python queries and Markdown code intermixed with rendering as is the case for this book.
 
@@ -181,7 +188,7 @@ stdict, tsdict = buildColorTransformDict(doc)
 print('Supported Source to Target Transforms:')
 for sourceSpace in stdict:
     print('  %s --> %s supported' % (sourceSpace, ', '.join(stdict[sourceSpace])))
-print('Supported Target From Target Transforms:')
+print('Supported Target From Source Transforms:')
 for targetSpace in tsdict:
     print('  %s <-- %s supported' % (targetSpace, ', '.join(tsdict[targetSpace])))    
 
@@ -539,7 +546,7 @@ class GlslRenderer():
         
         self.renderer.setLightHandler(self.lightHandler)
         self.renderer.createProgram(self.activeShader)
-        self.renderer.validateInputs()
+        #self.renderer.validateInputs()
 
         program = self.renderer.getProgram()
         if program:

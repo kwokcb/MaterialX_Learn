@@ -25,7 +25,7 @@
 <body class="min-vh-100">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
-<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
+<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "default"}); </script>
 
 <script src="../js/definition_card_helpers.js"></script>
 
@@ -165,7 +165,7 @@
         </ul>
       </div>
     </div>
-  </nav><div class="container-fluid ">
+  </nav><div class="container p-4 rounded border border-secondary shadow text-bg-light">
  <div class="row flex-nowrap">
 <div class="col-12 p-4 pt-2 pl-2">
 <h2>Library Glossary</h3>
@@ -192,7 +192,7 @@
     </li>
 </ul><div class="tab-content" id="pills-tabContent">
 <div class="tab-pane fade show active" id="pills-types" role="tabpanel"aria-labelledby="pills-types-tab" tabindex="0">
-<div class="card border-primary border mb-4">
+<div class="card border-secondary shadow border mb-4">
 <div class="card-body">
 <!-- Type definitions -->
 <p>
@@ -216,7 +216,7 @@
 <p>
     Note that the type 'geomname' is not used as a type for inputs, outputs or tokens and 'none'
     was used for background nodes but has been deprecated as of version 1.38.
-</p><table class="table-fixed table border-primary table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+</p><table class="table-fixed table border-secondary shadow table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
 <thead class="table-primary">
 <tr>
 <th scope="col" style="width:25%">type</th>
@@ -227,7 +227,7 @@
 </thead>
 </table>
 <div class="row px-2 pt-0 vh-30 overflow-auto" style="height: 300">
-<table class="table-fixed table border-primary table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+<table class="table-fixed table border-secondary shadow table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
 <tbody>
 <tr>
 <td style="width:25%">BSDF</td>
@@ -424,7 +424,7 @@
 </div>
 <div class="tab-content" id="pills-tabContent">
 <div class="tab-pane fade show" id="pills-geometry" role="tabpanel"aria-labelledby="pills-geometry-tab" tabindex="0">
-<div class="card border-primary border mb-4">
+<div class="card border-secondary shadow border mb-4">
 <div class="card-body">
 <!-- Geometry Properties -->
 <p>
@@ -442,7 +442,7 @@
 </p>
 <p>Note that except for the 'Description', the column headings for this section are the attribute names 
     for a 'geomdefprop'.</p>
-<table class="table-fixed table border-primary table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+<table class="table-fixed table border-secondary shadow table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
 <thead class="table-primary">
 <tr>
 <th scope="col" style="width:20%">name</th>
@@ -521,7 +521,7 @@
 </div></div></div></div>
 <div class="tab-content" id="pills-tabContent">
 <div class="tab-pane fade show" id="pills-units" role="tabpanel"aria-labelledby="pills-units-tab" tabindex="0">
-<div class="card border-primary border mb-4">
+<div class="card border-secondary shadow border mb-4">
 <div class="card-body">
 <!-- Unit Definitions -->
 <p>A float, vector, and matrix input values can be specified in real world units. There are different
@@ -546,9 +546,9 @@
       <img src="../images/python-logo-only.svg" width="15"> Python Shader Generation Example
     </a>
 </p><p>
-<div class="btn btn-lg border-primary" style="pointer-events: none;" id="Unit Type">Unit Type: distance</div>
+<div class="btn btn-lg border-secondary shadow" style="pointer-events: none;" id="Unit Type">Unit Type: distance</div>
 <br><br>
-<table class="table-fixed table border-primary table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+<table class="table-fixed table border-secondary shadow table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
 <thead class="table-primary">
 <tr>
 <th scope="col" style="width:30%">unit</th>
@@ -611,9 +611,9 @@
 </table>
 </li>
 <p>
-<div class="btn btn-lg border-primary" style="pointer-events: none;" id="Unit Type">Unit Type: angle</div>
+<div class="btn btn-lg border-secondary shadow" style="pointer-events: none;" id="Unit Type">Unit Type: angle</div>
 <br><br>
-<table class="table-fixed table border-primary table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+<table class="table-fixed table border-secondary shadow table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
 <thead class="table-primary">
 <tr>
 <th scope="col" style="width:30%">unit</th>
@@ -638,7 +638,7 @@
 </div></div></div></div>
 <div class="tab-content" id="pills-tabContent">
 <div class="tab-pane fade show" id="pills-cm" role="tabpanel"aria-labelledby="pills-cm-tab" tabindex="0">
-<div class="card border-primary border mb-4">
+<div class="card border-secondary shadow border mb-4">
 <div class="card-body">
 <!-- Color management definitions description -->
 <p>At the current time there are no node definitions for a color space transform nodes.

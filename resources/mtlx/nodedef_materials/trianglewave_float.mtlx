@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <trianglewave name="trianglewave_float" type="float">
+    <input name="in" type="float" value="0" />
+  </trianglewave>
+  <convert name="shader_trianglewave_float_out" type="surfaceshader">
+    <input name="in" type="float" nodename="trianglewave_float" />
+  </convert>
+  <surfacematerial name="material_trianglewave_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_trianglewave_float_out" />
+  </surfacematerial>
+</materialx>

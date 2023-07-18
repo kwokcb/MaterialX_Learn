@@ -172,7 +172,7 @@ class MtlxShaderGen:
             shaderName = mx.createValidName(nodeName)
             try:
                 self.shader = self.generator.generate(shaderName, node, self.context)
-            except mx.Exception as err:
+            except LookupError as err:
                 errors = err
         
         return self.shader, errors

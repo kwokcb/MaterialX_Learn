@@ -25,7 +25,7 @@
 <body class="min-vh-100">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
-<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
+<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    lineColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
 
 <script src="../js/definition_card_helpers.js"></script>
 
@@ -34,7 +34,7 @@
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="../../index.html">
         <h5><img src="../images/logo3d_2_small.png" alt="MaterialX Learn"
-            class="d-inline-block align-text-center" width="60">
+            class="rounded d-inline-block align-text-center" width="60">
           MaterialX Learn</h5>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
@@ -171,7 +171,7 @@
         </ul>
       </div>
     </div>
-  </nav><div class="container-fluid ">
+  </nav><div class="container p-2">
  <div class="row flex-nowrap">
    <div class="col-auto px-0">
      <div class="row vh-100 overflow-auto" id="noddict_row">
@@ -378,6 +378,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformpoint.html">transformpoint</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformvector.html">transformvector</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transpose.html">transpose</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="trianglewave.html">trianglewave</a>
 </div>
 </div>
 <div class="ps-3">
@@ -556,13 +557,13 @@ Category: combine4
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_combine4_color4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_combine4_color4_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -572,52 +573,52 @@ Category: combine4
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -638,7 +639,7 @@ Category: combine4
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -656,7 +657,7 @@ Category: combine4
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -674,7 +675,7 @@ Category: combine4
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -692,7 +693,7 @@ Category: combine4
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -710,7 +711,7 @@ Category: combine4
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -742,13 +743,13 @@ Category: combine4
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_combine4_vector4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_combine4_vector4_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -758,52 +759,52 @@ Category: combine4
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -824,7 +825,7 @@ Category: combine4
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -842,7 +843,7 @@ Category: combine4
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -860,7 +861,7 @@ Category: combine4
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -878,7 +879,7 @@ Category: combine4
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -896,7 +897,7 @@ Category: combine4
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector4">
    </div>
   </div>
   <div class="form-group row g-1">

@@ -25,7 +25,7 @@
 <body class="min-vh-100">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
-<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
+<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    lineColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
 
 <script src="../js/definition_card_helpers.js"></script>
 
@@ -34,7 +34,7 @@
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="../../index.html">
         <h5><img src="../images/logo3d_2_small.png" alt="MaterialX Learn"
-            class="d-inline-block align-text-center" width="60">
+            class="rounded d-inline-block align-text-center" width="60">
           MaterialX Learn</h5>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
@@ -171,7 +171,7 @@
         </ul>
       </div>
     </div>
-  </nav><div class="container-fluid ">
+  </nav><div class="container p-2">
  <div class="row flex-nowrap">
    <div class="col-auto px-0">
      <div class="row vh-100 overflow-auto" id="noddict_row">
@@ -378,6 +378,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformpoint.html">transformpoint</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformvector.html">transformvector</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transpose.html">transpose</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="trianglewave.html">trianglewave</a>
 </div>
 </div>
 <div class="ps-3">
@@ -556,13 +557,13 @@ Category: UsdPreviewSurface
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_UsdPreviewSurface_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_UsdPreviewSurface_surfaceshader_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button></p>
-<p class="card-text"> <b>Version</b>2.3 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">pbr</button></p>
+<p class="card-text"> <b>Version</b>2.3 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> USD preview surface shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -576,69 +577,69 @@ Category: UsdPreviewSurface
 <div id="ND_UsdPreviewSurface_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface] --> IMP_UsdPreviewSurface_surfaceshader_out([out])
-    style IMP_UsdPreviewSurface_surfaceshader_out fill:#1b1, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_out fill:#0C0, color:#111
     IMP_UsdPreviewSurface_surfaceshader_coat_bsdf[layer] --".bsdf"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface]
     IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf] --".top"--> IMP_UsdPreviewSurface_surfaceshader_coat_bsdf[layer]
     IMP_UsdPreviewSurface_surfaceshader_clearcoatINT([clearcoat]) ==.weight==> IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf]
-    style IMP_UsdPreviewSurface_surfaceshader_clearcoatINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_clearcoatINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_coat_F0[convert] --".color0"--> IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_R_sq[multiply] --".in"--> IMP_UsdPreviewSurface_surfaceshader_coat_F0[convert]
     IMP_UsdPreviewSurface_surfaceshader_R[divide] --".in1"--> IMP_UsdPreviewSurface_surfaceshader_R_sq[multiply]
     IMP_UsdPreviewSurface_surfaceshader_one_minus_ior[subtract] --".in1"--> IMP_UsdPreviewSurface_surfaceshader_R[divide]
     IMP_UsdPreviewSurface_surfaceshader_iorINT([ior]) ==.in2==> IMP_UsdPreviewSurface_surfaceshader_one_minus_ior[subtract]
-    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_one_plus_ior[add] --".in2"--> IMP_UsdPreviewSurface_surfaceshader_R[divide]
     IMP_UsdPreviewSurface_surfaceshader_iorINT([ior]) ==.in2==> IMP_UsdPreviewSurface_surfaceshader_one_plus_ior[add]
-    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_R[divide] --".in2"--> IMP_UsdPreviewSurface_surfaceshader_R_sq[multiply]
     IMP_UsdPreviewSurface_surfaceshader_coat_roughness[roughness_anisotropy] --".roughness"--> IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_clearcoatRoughnessINT([clearcoatRoughness]) ==.roughness==> IMP_UsdPreviewSurface_surfaceshader_coat_roughness[roughness_anisotropy]
-    style IMP_UsdPreviewSurface_surfaceshader_clearcoatRoughnessINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_clearcoatRoughnessINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_bias_normal[add] --".in"--> IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap]
     IMP_UsdPreviewSurface_surfaceshader_scale_normal[multiply] --".in1"--> IMP_UsdPreviewSurface_surfaceshader_bias_normal[add]
     IMP_UsdPreviewSurface_surfaceshader_normalINT([normal]) ==.in1==> IMP_UsdPreviewSurface_surfaceshader_scale_normal[multiply]
-    style IMP_UsdPreviewSurface_surfaceshader_normalINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_normalINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_workflow_selector_bsdf[mix] --".base"--> IMP_UsdPreviewSurface_surfaceshader_coat_bsdf[layer]
     IMP_UsdPreviewSurface_surfaceshader_specular_workflow_bsdf[layer] --".fg"--> IMP_UsdPreviewSurface_surfaceshader_workflow_selector_bsdf[mix]
     IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[generalized_schlick_bsdf] --".top"--> IMP_UsdPreviewSurface_surfaceshader_specular_workflow_bsdf[layer]
     IMP_UsdPreviewSurface_surfaceshader_specularColorINT([specularColor]) ==.color0==> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[generalized_schlick_bsdf]
-    style IMP_UsdPreviewSurface_surfaceshader_specularColorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_specularColorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_specular_roughness[roughness_anisotropy] --".roughness"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[generalized_schlick_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_roughnessINT([roughness]) ==.roughness==> IMP_UsdPreviewSurface_surfaceshader_specular_roughness[roughness_anisotropy]
-    style IMP_UsdPreviewSurface_surfaceshader_roughnessINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_roughnessINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[generalized_schlick_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix] --".base"--> IMP_UsdPreviewSurface_surfaceshader_specular_workflow_bsdf[layer]
     IMP_UsdPreviewSurface_surfaceshader_opacityINT([opacity]) ==.mix==> IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix]
-    style IMP_UsdPreviewSurface_surfaceshader_opacityINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_opacityINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".fg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix]
     IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT([diffuseColor]) ==.color==> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
-    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[mix] --".weight"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_inverse_metalness[subtract] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[mix]
     IMP_UsdPreviewSurface_surfaceshader_metallicINT([metallic]) ==.in2==> IMP_UsdPreviewSurface_surfaceshader_inverse_metalness[subtract]
-    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float[convert] --".mix"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[mix]
     IMP_UsdPreviewSurface_surfaceshader_useSpecularWorkflowINT([useSpecularWorkflow]) ==.in==> IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float[convert]
-    style IMP_UsdPreviewSurface_surfaceshader_useSpecularWorkflowINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_useSpecularWorkflowINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[dielectric_bsdf] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix]
     IMP_UsdPreviewSurface_surfaceshader_iorINT([ior]) ==.ior==> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[dielectric_bsdf]
-    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[dielectric_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_metalness_workflow_bsdf[mix] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_workflow_selector_bsdf[mix]
     IMP_UsdPreviewSurface_surfaceshader_metallicINT([metallic]) ==.mix==> IMP_UsdPreviewSurface_surfaceshader_metalness_workflow_bsdf[mix]
-    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf] --".fg"--> IMP_UsdPreviewSurface_surfaceshader_metalness_workflow_bsdf[mix]
     IMP_UsdPreviewSurface_surfaceshader_artistic_ior[artistic_ior] --> IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorior([ior])
-    style IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorior fill:#1b1, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorior fill:#0C0, color:#111
     IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorior --".ior"--> IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT([diffuseColor]) ==.reflectivity==> IMP_UsdPreviewSurface_surfaceshader_artistic_ior[artistic_ior]
-    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT([diffuseColor]) ==.edge_color==> IMP_UsdPreviewSurface_surfaceshader_artistic_ior[artistic_ior]
-    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_artistic_ior[artistic_ior] --> IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorextinction([extinction])
-    style IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorextinction fill:#1b1, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorextinction fill:#0C0, color:#111
     IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorextinction --".extinction"--> IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_specular_roughness[roughness_anisotropy] --".roughness"--> IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf]
@@ -646,12 +647,12 @@ graph LR;
     IMP_UsdPreviewSurface_surfaceshader_specular_bsdf2[generalized_schlick_bsdf] --".top"--> IMP_UsdPreviewSurface_surfaceshader_metalness_specular_bsdf[layer]
     IMP_UsdPreviewSurface_surfaceshader_F0[mix] --".color0"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf2[generalized_schlick_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_metallicINT([metallic]) ==.mix==> IMP_UsdPreviewSurface_surfaceshader_F0[mix]
-    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix] --".fg"--> IMP_UsdPreviewSurface_surfaceshader_F0[mix]
     IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT([diffuseColor]) ==.fg==> IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix]
-    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_metallicINT([metallic]) ==.mix==> IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix]
-    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic_R_sq[multiply] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_F0[mix]
     IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix] --".in1"--> IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic_R_sq[multiply]
     IMP_UsdPreviewSurface_surfaceshader_R_sq[multiply] --".in2"--> IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic_R_sq[multiply]
@@ -662,12 +663,12 @@ graph LR;
     IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float[convert] --".mix"--> IMP_UsdPreviewSurface_surfaceshader_workflow_selector_bsdf[mix]
     IMP_UsdPreviewSurface_surfaceshader_emission_edf[uniform_edf] --".edf"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface]
     IMP_UsdPreviewSurface_surfaceshader_emissiveColorINT([emissiveColor]) ==.color==> IMP_UsdPreviewSurface_surfaceshader_emission_edf[uniform_edf]
-    style IMP_UsdPreviewSurface_surfaceshader_emissiveColorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_emissiveColorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_cutout_opacity{ifgreatereq} --".opacity"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface]
     IMP_UsdPreviewSurface_surfaceshader_opacityINT([opacity]) ==.value1==> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity[ifgreatereq]
-    style IMP_UsdPreviewSurface_surfaceshader_opacityINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_opacityINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_opacityThresholdINT([opacityThreshold]) ==.value2==> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity[ifgreatereq]
-    style IMP_UsdPreviewSurface_surfaceshader_opacityThresholdINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_opacityThresholdINT fill:#0CF, color:#111
 
 
 
@@ -700,7 +701,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -738,7 +739,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -776,7 +777,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -794,7 +795,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -832,7 +833,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -862,7 +863,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -892,7 +893,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -922,7 +923,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -952,7 +953,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -982,7 +983,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1012,7 +1013,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1042,7 +1043,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1065,7 +1066,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1083,7 +1084,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1113,7 +1114,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>

@@ -26,7 +26,7 @@
 * [surfacematerial](#node-surfacematerial) [volumematerial](#node-volumematerial) 
 ---------
 ### Node Group: math
-* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [arrayappend](#node-arrayappend) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) 
+* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [arrayappend](#node-arrayappend) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) [trianglewave](#node-trianglewave) 
 ---------
 ### Node Group: organization
 * [dot](#node-dot) 
@@ -281,33 +281,33 @@
 ```mermaid
 graph LR; 
     NG_tiledimage_float_N_img_float[image] --> NG_tiledimage_float_out([out])
-    style NG_tiledimage_float_out fill:#1b1, color:#111
+    style NG_tiledimage_float_out fill:#0C0, color:#111
     NG_tiledimage_float_fileINT([file]) ==.file==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_fileINT fill:#0bb, color:#111
+    style NG_tiledimage_float_fileINT fill:#0CF, color:#111
     NG_tiledimage_float_dfaultINT([default]) ==.default==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_dfaultINT fill:#0bb, color:#111
+    style NG_tiledimage_float_dfaultINT fill:#0CF, color:#111
     NG_tiledimage_float_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_filtertypeINT fill:#0bb, color:#111
+    style NG_tiledimage_float_filtertypeINT fill:#0CF, color:#111
     NG_tiledimage_float_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_framerangeINT fill:#0bb, color:#111
+    style NG_tiledimage_float_framerangeINT fill:#0CF, color:#111
     NG_tiledimage_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_frameoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_float_frameoffsetINT fill:#0CF, color:#111
     NG_tiledimage_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_frameendactionINT fill:#0bb, color:#111
+    style NG_tiledimage_float_frameendactionINT fill:#0CF, color:#111
     NG_tiledimage_float_N_multtilesize_float[multiply] --".texcoord"--> NG_tiledimage_float_N_img_float[image]
     NG_tiledimage_float_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_float_N_multtilesize_float[multiply]
-    style NG_tiledimage_float_realworldtilesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_float_realworldtilesizeINT fill:#0CF, color:#111
     NG_tiledimage_float_N_divtilesize_float[divide] --".in1"--> NG_tiledimage_float_N_multtilesize_float[multiply]
     NG_tiledimage_float_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_float_N_divtilesize_float[divide]
-    style NG_tiledimage_float_realworldimagesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_float_realworldimagesizeINT fill:#0CF, color:#111
     NG_tiledimage_float_N_sub_float[subtract] --".in1"--> NG_tiledimage_float_N_divtilesize_float[divide]
     NG_tiledimage_float_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_float_N_sub_float[subtract]
-    style NG_tiledimage_float_uvoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_float_uvoffsetINT fill:#0CF, color:#111
     NG_tiledimage_float_N_mult_float[multiply] --".in1"--> NG_tiledimage_float_N_sub_float[subtract]
     NG_tiledimage_float_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_float_N_mult_float[multiply]
-    style NG_tiledimage_float_texcoordINT fill:#0bb, color:#111
+    style NG_tiledimage_float_texcoordINT fill:#0CF, color:#111
     NG_tiledimage_float_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_float_N_mult_float[multiply]
-    style NG_tiledimage_float_uvtilingINT fill:#0bb, color:#111
+    style NG_tiledimage_float_uvtilingINT fill:#0CF, color:#111
 
 ```
  
@@ -342,33 +342,33 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_tiledimage_color3_N_img_color3[image] --> NG_tiledimage_color3_out([out])
-    style NG_tiledimage_color3_out fill:#1b1, color:#111
+    style NG_tiledimage_color3_out fill:#0C0, color:#111
     NG_tiledimage_color3_fileINT([file]) ==.file==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_fileINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_fileINT fill:#0CF, color:#111
     NG_tiledimage_color3_dfaultINT([default]) ==.default==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_dfaultINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_dfaultINT fill:#0CF, color:#111
     NG_tiledimage_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_filtertypeINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_filtertypeINT fill:#0CF, color:#111
     NG_tiledimage_color3_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_framerangeINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_framerangeINT fill:#0CF, color:#111
     NG_tiledimage_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_frameoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_frameoffsetINT fill:#0CF, color:#111
     NG_tiledimage_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_frameendactionINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_frameendactionINT fill:#0CF, color:#111
     NG_tiledimage_color3_N_multtilesize_color3[multiply] --".texcoord"--> NG_tiledimage_color3_N_img_color3[image]
     NG_tiledimage_color3_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_color3_N_multtilesize_color3[multiply]
-    style NG_tiledimage_color3_realworldtilesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_realworldtilesizeINT fill:#0CF, color:#111
     NG_tiledimage_color3_N_divtilesize_color3[divide] --".in1"--> NG_tiledimage_color3_N_multtilesize_color3[multiply]
     NG_tiledimage_color3_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_color3_N_divtilesize_color3[divide]
-    style NG_tiledimage_color3_realworldimagesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_realworldimagesizeINT fill:#0CF, color:#111
     NG_tiledimage_color3_N_sub_color3[subtract] --".in1"--> NG_tiledimage_color3_N_divtilesize_color3[divide]
     NG_tiledimage_color3_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_color3_N_sub_color3[subtract]
-    style NG_tiledimage_color3_uvoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_uvoffsetINT fill:#0CF, color:#111
     NG_tiledimage_color3_N_mult_color3[multiply] --".in1"--> NG_tiledimage_color3_N_sub_color3[subtract]
     NG_tiledimage_color3_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_color3_N_mult_color3[multiply]
-    style NG_tiledimage_color3_texcoordINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_texcoordINT fill:#0CF, color:#111
     NG_tiledimage_color3_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_color3_N_mult_color3[multiply]
-    style NG_tiledimage_color3_uvtilingINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_uvtilingINT fill:#0CF, color:#111
 
 ```
  
@@ -403,33 +403,33 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_tiledimage_color4_N_img_color4[image] --> NG_tiledimage_color4_out([out])
-    style NG_tiledimage_color4_out fill:#1b1, color:#111
+    style NG_tiledimage_color4_out fill:#0C0, color:#111
     NG_tiledimage_color4_fileINT([file]) ==.file==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_fileINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_fileINT fill:#0CF, color:#111
     NG_tiledimage_color4_dfaultINT([default]) ==.default==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_dfaultINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_dfaultINT fill:#0CF, color:#111
     NG_tiledimage_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_filtertypeINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_filtertypeINT fill:#0CF, color:#111
     NG_tiledimage_color4_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_framerangeINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_framerangeINT fill:#0CF, color:#111
     NG_tiledimage_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_frameoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_frameoffsetINT fill:#0CF, color:#111
     NG_tiledimage_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_frameendactionINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_frameendactionINT fill:#0CF, color:#111
     NG_tiledimage_color4_N_multtilesize_color4[multiply] --".texcoord"--> NG_tiledimage_color4_N_img_color4[image]
     NG_tiledimage_color4_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_color4_N_multtilesize_color4[multiply]
-    style NG_tiledimage_color4_realworldtilesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_realworldtilesizeINT fill:#0CF, color:#111
     NG_tiledimage_color4_N_divtilesize_color4[divide] --".in1"--> NG_tiledimage_color4_N_multtilesize_color4[multiply]
     NG_tiledimage_color4_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_color4_N_divtilesize_color4[divide]
-    style NG_tiledimage_color4_realworldimagesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_realworldimagesizeINT fill:#0CF, color:#111
     NG_tiledimage_color4_N_sub_color4[subtract] --".in1"--> NG_tiledimage_color4_N_divtilesize_color4[divide]
     NG_tiledimage_color4_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_color4_N_sub_color4[subtract]
-    style NG_tiledimage_color4_uvoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_uvoffsetINT fill:#0CF, color:#111
     NG_tiledimage_color4_N_mult_color4[multiply] --".in1"--> NG_tiledimage_color4_N_sub_color4[subtract]
     NG_tiledimage_color4_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_color4_N_mult_color4[multiply]
-    style NG_tiledimage_color4_texcoordINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_texcoordINT fill:#0CF, color:#111
     NG_tiledimage_color4_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_color4_N_mult_color4[multiply]
-    style NG_tiledimage_color4_uvtilingINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_uvtilingINT fill:#0CF, color:#111
 
 ```
  
@@ -464,33 +464,33 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_tiledimage_vector2_N_img_vector2[image] --> NG_tiledimage_vector2_out([out])
-    style NG_tiledimage_vector2_out fill:#1b1, color:#111
+    style NG_tiledimage_vector2_out fill:#0C0, color:#111
     NG_tiledimage_vector2_fileINT([file]) ==.file==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_fileINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_fileINT fill:#0CF, color:#111
     NG_tiledimage_vector2_dfaultINT([default]) ==.default==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_dfaultINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_dfaultINT fill:#0CF, color:#111
     NG_tiledimage_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_filtertypeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_filtertypeINT fill:#0CF, color:#111
     NG_tiledimage_vector2_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_framerangeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_framerangeINT fill:#0CF, color:#111
     NG_tiledimage_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_frameoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_frameoffsetINT fill:#0CF, color:#111
     NG_tiledimage_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_frameendactionINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_frameendactionINT fill:#0CF, color:#111
     NG_tiledimage_vector2_N_multtilesize_vector2[multiply] --".texcoord"--> NG_tiledimage_vector2_N_img_vector2[image]
     NG_tiledimage_vector2_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_vector2_N_multtilesize_vector2[multiply]
-    style NG_tiledimage_vector2_realworldtilesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_realworldtilesizeINT fill:#0CF, color:#111
     NG_tiledimage_vector2_N_divtilesize_vector2[divide] --".in1"--> NG_tiledimage_vector2_N_multtilesize_vector2[multiply]
     NG_tiledimage_vector2_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_vector2_N_divtilesize_vector2[divide]
-    style NG_tiledimage_vector2_realworldimagesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_realworldimagesizeINT fill:#0CF, color:#111
     NG_tiledimage_vector2_N_sub_vector2[subtract] --".in1"--> NG_tiledimage_vector2_N_divtilesize_vector2[divide]
     NG_tiledimage_vector2_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_vector2_N_sub_vector2[subtract]
-    style NG_tiledimage_vector2_uvoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_uvoffsetINT fill:#0CF, color:#111
     NG_tiledimage_vector2_N_mult_vector2[multiply] --".in1"--> NG_tiledimage_vector2_N_sub_vector2[subtract]
     NG_tiledimage_vector2_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_vector2_N_mult_vector2[multiply]
-    style NG_tiledimage_vector2_texcoordINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_texcoordINT fill:#0CF, color:#111
     NG_tiledimage_vector2_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_vector2_N_mult_vector2[multiply]
-    style NG_tiledimage_vector2_uvtilingINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_uvtilingINT fill:#0CF, color:#111
 
 ```
  
@@ -525,33 +525,33 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_tiledimage_vector3_N_img_vector3[image] --> NG_tiledimage_vector3_out([out])
-    style NG_tiledimage_vector3_out fill:#1b1, color:#111
+    style NG_tiledimage_vector3_out fill:#0C0, color:#111
     NG_tiledimage_vector3_fileINT([file]) ==.file==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_fileINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_fileINT fill:#0CF, color:#111
     NG_tiledimage_vector3_dfaultINT([default]) ==.default==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_dfaultINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_dfaultINT fill:#0CF, color:#111
     NG_tiledimage_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_filtertypeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_filtertypeINT fill:#0CF, color:#111
     NG_tiledimage_vector3_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_framerangeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_framerangeINT fill:#0CF, color:#111
     NG_tiledimage_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_frameoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_frameoffsetINT fill:#0CF, color:#111
     NG_tiledimage_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_frameendactionINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_frameendactionINT fill:#0CF, color:#111
     NG_tiledimage_vector3_N_multtilesize_vector3[multiply] --".texcoord"--> NG_tiledimage_vector3_N_img_vector3[image]
     NG_tiledimage_vector3_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_vector3_N_multtilesize_vector3[multiply]
-    style NG_tiledimage_vector3_realworldtilesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_realworldtilesizeINT fill:#0CF, color:#111
     NG_tiledimage_vector3_N_divtilesize_vector3[divide] --".in1"--> NG_tiledimage_vector3_N_multtilesize_vector3[multiply]
     NG_tiledimage_vector3_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_vector3_N_divtilesize_vector3[divide]
-    style NG_tiledimage_vector3_realworldimagesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_realworldimagesizeINT fill:#0CF, color:#111
     NG_tiledimage_vector3_N_sub_vector3[subtract] --".in1"--> NG_tiledimage_vector3_N_divtilesize_vector3[divide]
     NG_tiledimage_vector3_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_vector3_N_sub_vector3[subtract]
-    style NG_tiledimage_vector3_uvoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_uvoffsetINT fill:#0CF, color:#111
     NG_tiledimage_vector3_N_mult_vector3[multiply] --".in1"--> NG_tiledimage_vector3_N_sub_vector3[subtract]
     NG_tiledimage_vector3_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_vector3_N_mult_vector3[multiply]
-    style NG_tiledimage_vector3_texcoordINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_texcoordINT fill:#0CF, color:#111
     NG_tiledimage_vector3_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_vector3_N_mult_vector3[multiply]
-    style NG_tiledimage_vector3_uvtilingINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_uvtilingINT fill:#0CF, color:#111
 
 ```
  
@@ -586,33 +586,33 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_tiledimage_vector4_N_img_vector4[image] --> NG_tiledimage_vector4_out([out])
-    style NG_tiledimage_vector4_out fill:#1b1, color:#111
+    style NG_tiledimage_vector4_out fill:#0C0, color:#111
     NG_tiledimage_vector4_fileINT([file]) ==.file==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_fileINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_fileINT fill:#0CF, color:#111
     NG_tiledimage_vector4_dfaultINT([default]) ==.default==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_dfaultINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_dfaultINT fill:#0CF, color:#111
     NG_tiledimage_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_filtertypeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_filtertypeINT fill:#0CF, color:#111
     NG_tiledimage_vector4_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_framerangeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_framerangeINT fill:#0CF, color:#111
     NG_tiledimage_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_frameoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_frameoffsetINT fill:#0CF, color:#111
     NG_tiledimage_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_frameendactionINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_frameendactionINT fill:#0CF, color:#111
     NG_tiledimage_vector4_N_multtilesize_vector4[multiply] --".texcoord"--> NG_tiledimage_vector4_N_img_vector4[image]
     NG_tiledimage_vector4_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_vector4_N_multtilesize_vector4[multiply]
-    style NG_tiledimage_vector4_realworldtilesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_realworldtilesizeINT fill:#0CF, color:#111
     NG_tiledimage_vector4_N_divtilesize_vector4[divide] --".in1"--> NG_tiledimage_vector4_N_multtilesize_vector4[multiply]
     NG_tiledimage_vector4_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_vector4_N_divtilesize_vector4[divide]
-    style NG_tiledimage_vector4_realworldimagesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_realworldimagesizeINT fill:#0CF, color:#111
     NG_tiledimage_vector4_N_sub_vector4[subtract] --".in1"--> NG_tiledimage_vector4_N_divtilesize_vector4[divide]
     NG_tiledimage_vector4_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_vector4_N_sub_vector4[subtract]
-    style NG_tiledimage_vector4_uvoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_uvoffsetINT fill:#0CF, color:#111
     NG_tiledimage_vector4_N_mult_vector4[multiply] --".in1"--> NG_tiledimage_vector4_N_sub_vector4[subtract]
     NG_tiledimage_vector4_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_vector4_N_mult_vector4[multiply]
-    style NG_tiledimage_vector4_texcoordINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_texcoordINT fill:#0CF, color:#111
     NG_tiledimage_vector4_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_vector4_N_mult_vector4[multiply]
-    style NG_tiledimage_vector4_uvtilingINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_uvtilingINT fill:#0CF, color:#111
 
 ```
  
@@ -648,33 +648,33 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_triplanarprojection_float_N_add2_float[add] --> NG_triplanarprojection_float_out([out])
-    style NG_triplanarprojection_float_out fill:#1b1, color:#111
+    style NG_triplanarprojection_float_out fill:#0C0, color:#111
     NG_triplanarprojection_float_N_add1_float[add] --".in1"--> NG_triplanarprojection_float_N_add2_float[add]
     NG_triplanarprojection_float_N_nX_float[multiply] --".in1"--> NG_triplanarprojection_float_N_add1_float[add]
     NG_triplanarprojection_float_N_imgX_float[image] --".in1"--> NG_triplanarprojection_float_N_nX_float[multiply]
     NG_triplanarprojection_float_filexINT([filex]) ==.file==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_filexINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_filexINT fill:#0CF, color:#111
     NG_triplanarprojection_float_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_layerxINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_layerxINT fill:#0CF, color:#111
     NG_triplanarprojection_float_dfaultINT([default]) ==.default==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_float_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_float_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_vecYZ_float[combine2] --".texcoord"--> NG_triplanarprojection_float_N_imgX_float[image]
     NG_triplanarprojection_float_N_extY_float[extract] --".in1"--> NG_triplanarprojection_float_N_vecYZ_float[combine2]
     NG_triplanarprojection_float_positionINT([position]) ==.in==> NG_triplanarprojection_float_N_extY_float[extract]
-    style NG_triplanarprojection_float_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_extZ_float[extract] --".in2"--> NG_triplanarprojection_float_N_vecYZ_float[combine2]
     NG_triplanarprojection_float_positionINT([position]) ==.in==> NG_triplanarprojection_float_N_extZ_float[extract]
-    style NG_triplanarprojection_float_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_separateWeights[separate3] --> NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutx([outx])
-    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutx fill:#1b1, color:#111
+    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutx fill:#0C0, color:#111
     NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_float_N_nX_float[multiply]
     NG_triplanarprojection_float_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_float_N_separateWeights[separate3]
     NG_triplanarprojection_float_N_blendPower[power] --".in1"--> NG_triplanarprojection_float_N_normalizeBlendedWeights[divide]
@@ -682,60 +682,60 @@ graph LR;
     NG_triplanarprojection_float_N_absN[absval] --".in1"--> NG_triplanarprojection_float_N_normalizeWeights[divide]
     NG_triplanarprojection_float_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_float_N_absN[absval]
     NG_triplanarprojection_float_normalINT([normal]) ==.in==> NG_triplanarprojection_float_N_norm_vector3[normalize]
-    style NG_triplanarprojection_float_normalINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_normalINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_float_N_normalizeWeights[divide]
     NG_triplanarprojection_float_N_absN[absval] --".in1"--> NG_triplanarprojection_float_N_dotN[dotproduct]
     NG_triplanarprojection_float_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_float_N_blendPower[power]
     NG_triplanarprojection_float_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_float_N_oneOverBlend[divide]
     NG_triplanarprojection_float_blendINT([blend]) ==.in==> NG_triplanarprojection_float_N_clampForPrecision[clamp]
-    style NG_triplanarprojection_float_blendINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_blendINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_float_N_normalizeBlendedWeights[divide]
     NG_triplanarprojection_float_N_blendPower[power] --".in1"--> NG_triplanarprojection_float_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_float_N_nY_float[multiply] --".in2"--> NG_triplanarprojection_float_N_add1_float[add]
     NG_triplanarprojection_float_N_imgY_float[image] --".in1"--> NG_triplanarprojection_float_N_nY_float[multiply]
     NG_triplanarprojection_float_fileyINT([filey]) ==.file==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_fileyINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_fileyINT fill:#0CF, color:#111
     NG_triplanarprojection_float_layeryINT([layery]) ==.layer==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_layeryINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_layeryINT fill:#0CF, color:#111
     NG_triplanarprojection_float_dfaultINT([default]) ==.default==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_float_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_float_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_vecXZ_float[combine2] --".texcoord"--> NG_triplanarprojection_float_N_imgY_float[image]
     NG_triplanarprojection_float_N_extX_float[extract] --".in1"--> NG_triplanarprojection_float_N_vecXZ_float[combine2]
     NG_triplanarprojection_float_positionINT([position]) ==.in==> NG_triplanarprojection_float_N_extX_float[extract]
-    style NG_triplanarprojection_float_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_extZ_float[extract] --".in2"--> NG_triplanarprojection_float_N_vecXZ_float[combine2]
     NG_triplanarprojection_float_N_separateWeights[separate3] --> NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsouty([outy])
-    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsouty fill:#1b1, color:#111
+    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsouty fill:#0C0, color:#111
     NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsouty --".in2"--> NG_triplanarprojection_float_N_nY_float[multiply]
     NG_triplanarprojection_float_N_nZ_float[multiply] --".in2"--> NG_triplanarprojection_float_N_add2_float[add]
     NG_triplanarprojection_float_N_imgZ_float[image] --".in1"--> NG_triplanarprojection_float_N_nZ_float[multiply]
     NG_triplanarprojection_float_filezINT([filez]) ==.file==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_filezINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_filezINT fill:#0CF, color:#111
     NG_triplanarprojection_float_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_layerzINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_layerzINT fill:#0CF, color:#111
     NG_triplanarprojection_float_dfaultINT([default]) ==.default==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_float_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_float_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_vecXY_float[combine2] --".texcoord"--> NG_triplanarprojection_float_N_imgZ_float[image]
     NG_triplanarprojection_float_N_extX_float[extract] --".in1"--> NG_triplanarprojection_float_N_vecXY_float[combine2]
     NG_triplanarprojection_float_N_extY_float[extract] --".in2"--> NG_triplanarprojection_float_N_vecXY_float[combine2]
     NG_triplanarprojection_float_N_separateWeights[separate3] --> NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutz([outz])
-    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutz fill:#1b1, color:#111
+    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutz fill:#0C0, color:#111
     NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_float_N_nZ_float[multiply]
 
 ```
@@ -774,33 +774,33 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_triplanarprojection_color3_N_add2_color3[add] --> NG_triplanarprojection_color3_out([out])
-    style NG_triplanarprojection_color3_out fill:#1b1, color:#111
+    style NG_triplanarprojection_color3_out fill:#0C0, color:#111
     NG_triplanarprojection_color3_N_add1_color3[add] --".in1"--> NG_triplanarprojection_color3_N_add2_color3[add]
     NG_triplanarprojection_color3_N_nX_color3[multiply] --".in1"--> NG_triplanarprojection_color3_N_add1_color3[add]
     NG_triplanarprojection_color3_N_imgX_color3[image] --".in1"--> NG_triplanarprojection_color3_N_nX_color3[multiply]
     NG_triplanarprojection_color3_filexINT([filex]) ==.file==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_filexINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_filexINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_layerxINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_layerxINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_dfaultINT([default]) ==.default==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_vecYZ_color3[combine2] --".texcoord"--> NG_triplanarprojection_color3_N_imgX_color3[image]
     NG_triplanarprojection_color3_N_extY_color3[extract] --".in1"--> NG_triplanarprojection_color3_N_vecYZ_color3[combine2]
     NG_triplanarprojection_color3_positionINT([position]) ==.in==> NG_triplanarprojection_color3_N_extY_color3[extract]
-    style NG_triplanarprojection_color3_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_extZ_color3[extract] --".in2"--> NG_triplanarprojection_color3_N_vecYZ_color3[combine2]
     NG_triplanarprojection_color3_positionINT([position]) ==.in==> NG_triplanarprojection_color3_N_extZ_color3[extract]
-    style NG_triplanarprojection_color3_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_separateWeights[separate3] --> NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutx([outx])
-    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutx fill:#1b1, color:#111
+    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutx fill:#0C0, color:#111
     NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_color3_N_nX_color3[multiply]
     NG_triplanarprojection_color3_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_color3_N_separateWeights[separate3]
     NG_triplanarprojection_color3_N_blendPower[power] --".in1"--> NG_triplanarprojection_color3_N_normalizeBlendedWeights[divide]
@@ -808,60 +808,60 @@ graph LR;
     NG_triplanarprojection_color3_N_absN[absval] --".in1"--> NG_triplanarprojection_color3_N_normalizeWeights[divide]
     NG_triplanarprojection_color3_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_color3_N_absN[absval]
     NG_triplanarprojection_color3_normalINT([normal]) ==.in==> NG_triplanarprojection_color3_N_norm_vector3[normalize]
-    style NG_triplanarprojection_color3_normalINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_normalINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_color3_N_normalizeWeights[divide]
     NG_triplanarprojection_color3_N_absN[absval] --".in1"--> NG_triplanarprojection_color3_N_dotN[dotproduct]
     NG_triplanarprojection_color3_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_color3_N_blendPower[power]
     NG_triplanarprojection_color3_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_color3_N_oneOverBlend[divide]
     NG_triplanarprojection_color3_blendINT([blend]) ==.in==> NG_triplanarprojection_color3_N_clampForPrecision[clamp]
-    style NG_triplanarprojection_color3_blendINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_blendINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_color3_N_normalizeBlendedWeights[divide]
     NG_triplanarprojection_color3_N_blendPower[power] --".in1"--> NG_triplanarprojection_color3_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_color3_N_nY_color3[multiply] --".in2"--> NG_triplanarprojection_color3_N_add1_color3[add]
     NG_triplanarprojection_color3_N_imgY_color3[image] --".in1"--> NG_triplanarprojection_color3_N_nY_color3[multiply]
     NG_triplanarprojection_color3_fileyINT([filey]) ==.file==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_fileyINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_fileyINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_layeryINT([layery]) ==.layer==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_layeryINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_layeryINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_dfaultINT([default]) ==.default==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_vecXZ_color3[combine2] --".texcoord"--> NG_triplanarprojection_color3_N_imgY_color3[image]
     NG_triplanarprojection_color3_N_extX_color3[extract] --".in1"--> NG_triplanarprojection_color3_N_vecXZ_color3[combine2]
     NG_triplanarprojection_color3_positionINT([position]) ==.in==> NG_triplanarprojection_color3_N_extX_color3[extract]
-    style NG_triplanarprojection_color3_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_extZ_color3[extract] --".in2"--> NG_triplanarprojection_color3_N_vecXZ_color3[combine2]
     NG_triplanarprojection_color3_N_separateWeights[separate3] --> NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsouty([outy])
-    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsouty fill:#1b1, color:#111
+    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsouty fill:#0C0, color:#111
     NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsouty --".in2"--> NG_triplanarprojection_color3_N_nY_color3[multiply]
     NG_triplanarprojection_color3_N_nZ_color3[multiply] --".in2"--> NG_triplanarprojection_color3_N_add2_color3[add]
     NG_triplanarprojection_color3_N_imgZ_color3[image] --".in1"--> NG_triplanarprojection_color3_N_nZ_color3[multiply]
     NG_triplanarprojection_color3_filezINT([filez]) ==.file==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_filezINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_filezINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_layerzINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_layerzINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_dfaultINT([default]) ==.default==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_vecXY_color3[combine2] --".texcoord"--> NG_triplanarprojection_color3_N_imgZ_color3[image]
     NG_triplanarprojection_color3_N_extX_color3[extract] --".in1"--> NG_triplanarprojection_color3_N_vecXY_color3[combine2]
     NG_triplanarprojection_color3_N_extY_color3[extract] --".in2"--> NG_triplanarprojection_color3_N_vecXY_color3[combine2]
     NG_triplanarprojection_color3_N_separateWeights[separate3] --> NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutz([outz])
-    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutz fill:#1b1, color:#111
+    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutz fill:#0C0, color:#111
     NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_color3_N_nZ_color3[multiply]
 
 ```
@@ -900,33 +900,33 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_triplanarprojection_color4_N_add2_color4[add] --> NG_triplanarprojection_color4_out([out])
-    style NG_triplanarprojection_color4_out fill:#1b1, color:#111
+    style NG_triplanarprojection_color4_out fill:#0C0, color:#111
     NG_triplanarprojection_color4_N_add1_color4[add] --".in1"--> NG_triplanarprojection_color4_N_add2_color4[add]
     NG_triplanarprojection_color4_N_nX_color4[multiply] --".in1"--> NG_triplanarprojection_color4_N_add1_color4[add]
     NG_triplanarprojection_color4_N_imgX_color4[image] --".in1"--> NG_triplanarprojection_color4_N_nX_color4[multiply]
     NG_triplanarprojection_color4_filexINT([filex]) ==.file==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_filexINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_filexINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_layerxINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_layerxINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_dfaultINT([default]) ==.default==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_vecYZ_color4[combine2] --".texcoord"--> NG_triplanarprojection_color4_N_imgX_color4[image]
     NG_triplanarprojection_color4_N_extY_color4[extract] --".in1"--> NG_triplanarprojection_color4_N_vecYZ_color4[combine2]
     NG_triplanarprojection_color4_positionINT([position]) ==.in==> NG_triplanarprojection_color4_N_extY_color4[extract]
-    style NG_triplanarprojection_color4_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_extZ_color4[extract] --".in2"--> NG_triplanarprojection_color4_N_vecYZ_color4[combine2]
     NG_triplanarprojection_color4_positionINT([position]) ==.in==> NG_triplanarprojection_color4_N_extZ_color4[extract]
-    style NG_triplanarprojection_color4_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_separateWeights[separate3] --> NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutx([outx])
-    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutx fill:#1b1, color:#111
+    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutx fill:#0C0, color:#111
     NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_color4_N_nX_color4[multiply]
     NG_triplanarprojection_color4_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_color4_N_separateWeights[separate3]
     NG_triplanarprojection_color4_N_blendPower[power] --".in1"--> NG_triplanarprojection_color4_N_normalizeBlendedWeights[divide]
@@ -934,60 +934,60 @@ graph LR;
     NG_triplanarprojection_color4_N_absN[absval] --".in1"--> NG_triplanarprojection_color4_N_normalizeWeights[divide]
     NG_triplanarprojection_color4_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_color4_N_absN[absval]
     NG_triplanarprojection_color4_normalINT([normal]) ==.in==> NG_triplanarprojection_color4_N_norm_vector3[normalize]
-    style NG_triplanarprojection_color4_normalINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_normalINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_color4_N_normalizeWeights[divide]
     NG_triplanarprojection_color4_N_absN[absval] --".in1"--> NG_triplanarprojection_color4_N_dotN[dotproduct]
     NG_triplanarprojection_color4_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_color4_N_blendPower[power]
     NG_triplanarprojection_color4_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_color4_N_oneOverBlend[divide]
     NG_triplanarprojection_color4_blendINT([blend]) ==.in==> NG_triplanarprojection_color4_N_clampForPrecision[clamp]
-    style NG_triplanarprojection_color4_blendINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_blendINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_color4_N_normalizeBlendedWeights[divide]
     NG_triplanarprojection_color4_N_blendPower[power] --".in1"--> NG_triplanarprojection_color4_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_color4_N_nY_color4[multiply] --".in2"--> NG_triplanarprojection_color4_N_add1_color4[add]
     NG_triplanarprojection_color4_N_imgY_color4[image] --".in1"--> NG_triplanarprojection_color4_N_nY_color4[multiply]
     NG_triplanarprojection_color4_fileyINT([filey]) ==.file==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_fileyINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_fileyINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_layeryINT([layery]) ==.layer==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_layeryINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_layeryINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_dfaultINT([default]) ==.default==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_vecXZ_color4[combine2] --".texcoord"--> NG_triplanarprojection_color4_N_imgY_color4[image]
     NG_triplanarprojection_color4_N_extX_color4[extract] --".in1"--> NG_triplanarprojection_color4_N_vecXZ_color4[combine2]
     NG_triplanarprojection_color4_positionINT([position]) ==.in==> NG_triplanarprojection_color4_N_extX_color4[extract]
-    style NG_triplanarprojection_color4_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_extZ_color4[extract] --".in2"--> NG_triplanarprojection_color4_N_vecXZ_color4[combine2]
     NG_triplanarprojection_color4_N_separateWeights[separate3] --> NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsouty([outy])
-    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsouty fill:#1b1, color:#111
+    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsouty fill:#0C0, color:#111
     NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsouty --".in2"--> NG_triplanarprojection_color4_N_nY_color4[multiply]
     NG_triplanarprojection_color4_N_nZ_color4[multiply] --".in2"--> NG_triplanarprojection_color4_N_add2_color4[add]
     NG_triplanarprojection_color4_N_imgZ_color4[image] --".in1"--> NG_triplanarprojection_color4_N_nZ_color4[multiply]
     NG_triplanarprojection_color4_filezINT([filez]) ==.file==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_filezINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_filezINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_layerzINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_layerzINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_dfaultINT([default]) ==.default==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_vecXY_color4[combine2] --".texcoord"--> NG_triplanarprojection_color4_N_imgZ_color4[image]
     NG_triplanarprojection_color4_N_extX_color4[extract] --".in1"--> NG_triplanarprojection_color4_N_vecXY_color4[combine2]
     NG_triplanarprojection_color4_N_extY_color4[extract] --".in2"--> NG_triplanarprojection_color4_N_vecXY_color4[combine2]
     NG_triplanarprojection_color4_N_separateWeights[separate3] --> NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutz([outz])
-    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutz fill:#1b1, color:#111
+    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutz fill:#0C0, color:#111
     NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_color4_N_nZ_color4[multiply]
 
 ```
@@ -1026,33 +1026,33 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_triplanarprojection_vector2_N_add2_vector2[add] --> NG_triplanarprojection_vector2_out([out])
-    style NG_triplanarprojection_vector2_out fill:#1b1, color:#111
+    style NG_triplanarprojection_vector2_out fill:#0C0, color:#111
     NG_triplanarprojection_vector2_N_add1_vector2[add] --".in1"--> NG_triplanarprojection_vector2_N_add2_vector2[add]
     NG_triplanarprojection_vector2_N_nX_vector2[multiply] --".in1"--> NG_triplanarprojection_vector2_N_add1_vector2[add]
     NG_triplanarprojection_vector2_N_imgX_vector2[image] --".in1"--> NG_triplanarprojection_vector2_N_nX_vector2[multiply]
     NG_triplanarprojection_vector2_filexINT([filex]) ==.file==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_filexINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_filexINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_layerxINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_layerxINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_vecYZ_vector2[combine2] --".texcoord"--> NG_triplanarprojection_vector2_N_imgX_vector2[image]
     NG_triplanarprojection_vector2_N_extY_vector2[extract] --".in1"--> NG_triplanarprojection_vector2_N_vecYZ_vector2[combine2]
     NG_triplanarprojection_vector2_positionINT([position]) ==.in==> NG_triplanarprojection_vector2_N_extY_vector2[extract]
-    style NG_triplanarprojection_vector2_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_extZ_vector2[extract] --".in2"--> NG_triplanarprojection_vector2_N_vecYZ_vector2[combine2]
     NG_triplanarprojection_vector2_positionINT([position]) ==.in==> NG_triplanarprojection_vector2_N_extZ_vector2[extract]
-    style NG_triplanarprojection_vector2_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_separateWeights[separate3] --> NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutx([outx])
-    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutx fill:#1b1, color:#111
+    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutx fill:#0C0, color:#111
     NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_vector2_N_nX_vector2[multiply]
     NG_triplanarprojection_vector2_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_vector2_N_separateWeights[separate3]
     NG_triplanarprojection_vector2_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector2_N_normalizeBlendedWeights[divide]
@@ -1060,60 +1060,60 @@ graph LR;
     NG_triplanarprojection_vector2_N_absN[absval] --".in1"--> NG_triplanarprojection_vector2_N_normalizeWeights[divide]
     NG_triplanarprojection_vector2_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_vector2_N_absN[absval]
     NG_triplanarprojection_vector2_normalINT([normal]) ==.in==> NG_triplanarprojection_vector2_N_norm_vector3[normalize]
-    style NG_triplanarprojection_vector2_normalINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_normalINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_vector2_N_normalizeWeights[divide]
     NG_triplanarprojection_vector2_N_absN[absval] --".in1"--> NG_triplanarprojection_vector2_N_dotN[dotproduct]
     NG_triplanarprojection_vector2_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_vector2_N_blendPower[power]
     NG_triplanarprojection_vector2_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_vector2_N_oneOverBlend[divide]
     NG_triplanarprojection_vector2_blendINT([blend]) ==.in==> NG_triplanarprojection_vector2_N_clampForPrecision[clamp]
-    style NG_triplanarprojection_vector2_blendINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_blendINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_vector2_N_normalizeBlendedWeights[divide]
     NG_triplanarprojection_vector2_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector2_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_vector2_N_nY_vector2[multiply] --".in2"--> NG_triplanarprojection_vector2_N_add1_vector2[add]
     NG_triplanarprojection_vector2_N_imgY_vector2[image] --".in1"--> NG_triplanarprojection_vector2_N_nY_vector2[multiply]
     NG_triplanarprojection_vector2_fileyINT([filey]) ==.file==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_fileyINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_fileyINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_layeryINT([layery]) ==.layer==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_layeryINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_layeryINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_vecXZ_vector2[combine2] --".texcoord"--> NG_triplanarprojection_vector2_N_imgY_vector2[image]
     NG_triplanarprojection_vector2_N_extX_vector2[extract] --".in1"--> NG_triplanarprojection_vector2_N_vecXZ_vector2[combine2]
     NG_triplanarprojection_vector2_positionINT([position]) ==.in==> NG_triplanarprojection_vector2_N_extX_vector2[extract]
-    style NG_triplanarprojection_vector2_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_extZ_vector2[extract] --".in2"--> NG_triplanarprojection_vector2_N_vecXZ_vector2[combine2]
     NG_triplanarprojection_vector2_N_separateWeights[separate3] --> NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsouty([outy])
-    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsouty fill:#1b1, color:#111
+    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsouty fill:#0C0, color:#111
     NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsouty --".in2"--> NG_triplanarprojection_vector2_N_nY_vector2[multiply]
     NG_triplanarprojection_vector2_N_nZ_vector2[multiply] --".in2"--> NG_triplanarprojection_vector2_N_add2_vector2[add]
     NG_triplanarprojection_vector2_N_imgZ_vector2[image] --".in1"--> NG_triplanarprojection_vector2_N_nZ_vector2[multiply]
     NG_triplanarprojection_vector2_filezINT([filez]) ==.file==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_filezINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_filezINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_layerzINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_layerzINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_vecXY_vector2[combine2] --".texcoord"--> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
     NG_triplanarprojection_vector2_N_extX_vector2[extract] --".in1"--> NG_triplanarprojection_vector2_N_vecXY_vector2[combine2]
     NG_triplanarprojection_vector2_N_extY_vector2[extract] --".in2"--> NG_triplanarprojection_vector2_N_vecXY_vector2[combine2]
     NG_triplanarprojection_vector2_N_separateWeights[separate3] --> NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutz([outz])
-    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutz fill:#1b1, color:#111
+    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutz fill:#0C0, color:#111
     NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_vector2_N_nZ_vector2[multiply]
 
 ```
@@ -1152,33 +1152,33 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_triplanarprojection_vector3_N_add2_vector3[add] --> NG_triplanarprojection_vector3_out([out])
-    style NG_triplanarprojection_vector3_out fill:#1b1, color:#111
+    style NG_triplanarprojection_vector3_out fill:#0C0, color:#111
     NG_triplanarprojection_vector3_N_add1_vector3[add] --".in1"--> NG_triplanarprojection_vector3_N_add2_vector3[add]
     NG_triplanarprojection_vector3_N_nX_vector3[multiply] --".in1"--> NG_triplanarprojection_vector3_N_add1_vector3[add]
     NG_triplanarprojection_vector3_N_imgX_vector3[image] --".in1"--> NG_triplanarprojection_vector3_N_nX_vector3[multiply]
     NG_triplanarprojection_vector3_filexINT([filex]) ==.file==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_filexINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_filexINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_layerxINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_layerxINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_vecYZ_vector3[combine2] --".texcoord"--> NG_triplanarprojection_vector3_N_imgX_vector3[image]
     NG_triplanarprojection_vector3_N_extY_vector3[extract] --".in1"--> NG_triplanarprojection_vector3_N_vecYZ_vector3[combine2]
     NG_triplanarprojection_vector3_positionINT([position]) ==.in==> NG_triplanarprojection_vector3_N_extY_vector3[extract]
-    style NG_triplanarprojection_vector3_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_extZ_vector3[extract] --".in2"--> NG_triplanarprojection_vector3_N_vecYZ_vector3[combine2]
     NG_triplanarprojection_vector3_positionINT([position]) ==.in==> NG_triplanarprojection_vector3_N_extZ_vector3[extract]
-    style NG_triplanarprojection_vector3_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_separateWeights[separate3] --> NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutx([outx])
-    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutx fill:#1b1, color:#111
+    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutx fill:#0C0, color:#111
     NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_vector3_N_nX_vector3[multiply]
     NG_triplanarprojection_vector3_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_vector3_N_separateWeights[separate3]
     NG_triplanarprojection_vector3_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector3_N_normalizeBlendedWeights[divide]
@@ -1186,60 +1186,60 @@ graph LR;
     NG_triplanarprojection_vector3_N_absN[absval] --".in1"--> NG_triplanarprojection_vector3_N_normalizeWeights[divide]
     NG_triplanarprojection_vector3_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_vector3_N_absN[absval]
     NG_triplanarprojection_vector3_normalINT([normal]) ==.in==> NG_triplanarprojection_vector3_N_norm_vector3[normalize]
-    style NG_triplanarprojection_vector3_normalINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_normalINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_vector3_N_normalizeWeights[divide]
     NG_triplanarprojection_vector3_N_absN[absval] --".in1"--> NG_triplanarprojection_vector3_N_dotN[dotproduct]
     NG_triplanarprojection_vector3_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_vector3_N_blendPower[power]
     NG_triplanarprojection_vector3_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_vector3_N_oneOverBlend[divide]
     NG_triplanarprojection_vector3_blendINT([blend]) ==.in==> NG_triplanarprojection_vector3_N_clampForPrecision[clamp]
-    style NG_triplanarprojection_vector3_blendINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_blendINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_vector3_N_normalizeBlendedWeights[divide]
     NG_triplanarprojection_vector3_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector3_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_vector3_N_nY_vector3[multiply] --".in2"--> NG_triplanarprojection_vector3_N_add1_vector3[add]
     NG_triplanarprojection_vector3_N_imgY_vector3[image] --".in1"--> NG_triplanarprojection_vector3_N_nY_vector3[multiply]
     NG_triplanarprojection_vector3_fileyINT([filey]) ==.file==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_fileyINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_fileyINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_layeryINT([layery]) ==.layer==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_layeryINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_layeryINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_vecXZ_vector3[combine2] --".texcoord"--> NG_triplanarprojection_vector3_N_imgY_vector3[image]
     NG_triplanarprojection_vector3_N_extX_vector3[extract] --".in1"--> NG_triplanarprojection_vector3_N_vecXZ_vector3[combine2]
     NG_triplanarprojection_vector3_positionINT([position]) ==.in==> NG_triplanarprojection_vector3_N_extX_vector3[extract]
-    style NG_triplanarprojection_vector3_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_extZ_vector3[extract] --".in2"--> NG_triplanarprojection_vector3_N_vecXZ_vector3[combine2]
     NG_triplanarprojection_vector3_N_separateWeights[separate3] --> NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsouty([outy])
-    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsouty fill:#1b1, color:#111
+    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsouty fill:#0C0, color:#111
     NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsouty --".in2"--> NG_triplanarprojection_vector3_N_nY_vector3[multiply]
     NG_triplanarprojection_vector3_N_nZ_vector3[multiply] --".in2"--> NG_triplanarprojection_vector3_N_add2_vector3[add]
     NG_triplanarprojection_vector3_N_imgZ_vector3[image] --".in1"--> NG_triplanarprojection_vector3_N_nZ_vector3[multiply]
     NG_triplanarprojection_vector3_filezINT([filez]) ==.file==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_filezINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_filezINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_layerzINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_layerzINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_vecXY_vector3[combine2] --".texcoord"--> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
     NG_triplanarprojection_vector3_N_extX_vector3[extract] --".in1"--> NG_triplanarprojection_vector3_N_vecXY_vector3[combine2]
     NG_triplanarprojection_vector3_N_extY_vector3[extract] --".in2"--> NG_triplanarprojection_vector3_N_vecXY_vector3[combine2]
     NG_triplanarprojection_vector3_N_separateWeights[separate3] --> NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutz([outz])
-    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutz fill:#1b1, color:#111
+    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutz fill:#0C0, color:#111
     NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_vector3_N_nZ_vector3[multiply]
 
 ```
@@ -1278,33 +1278,33 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_triplanarprojection_vector4_N_add2_vector4[add] --> NG_triplanarprojection_vector4_out([out])
-    style NG_triplanarprojection_vector4_out fill:#1b1, color:#111
+    style NG_triplanarprojection_vector4_out fill:#0C0, color:#111
     NG_triplanarprojection_vector4_N_add1_vector4[add] --".in1"--> NG_triplanarprojection_vector4_N_add2_vector4[add]
     NG_triplanarprojection_vector4_N_nX_vector4[multiply] --".in1"--> NG_triplanarprojection_vector4_N_add1_vector4[add]
     NG_triplanarprojection_vector4_N_imgX_vector4[image] --".in1"--> NG_triplanarprojection_vector4_N_nX_vector4[multiply]
     NG_triplanarprojection_vector4_filexINT([filex]) ==.file==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_filexINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_filexINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_layerxINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_layerxINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_vecYZ_vector4[combine2] --".texcoord"--> NG_triplanarprojection_vector4_N_imgX_vector4[image]
     NG_triplanarprojection_vector4_N_extY_vector4[extract] --".in1"--> NG_triplanarprojection_vector4_N_vecYZ_vector4[combine2]
     NG_triplanarprojection_vector4_positionINT([position]) ==.in==> NG_triplanarprojection_vector4_N_extY_vector4[extract]
-    style NG_triplanarprojection_vector4_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_extZ_vector4[extract] --".in2"--> NG_triplanarprojection_vector4_N_vecYZ_vector4[combine2]
     NG_triplanarprojection_vector4_positionINT([position]) ==.in==> NG_triplanarprojection_vector4_N_extZ_vector4[extract]
-    style NG_triplanarprojection_vector4_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_separateWeights[separate3] --> NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutx([outx])
-    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutx fill:#1b1, color:#111
+    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutx fill:#0C0, color:#111
     NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_vector4_N_nX_vector4[multiply]
     NG_triplanarprojection_vector4_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_vector4_N_separateWeights[separate3]
     NG_triplanarprojection_vector4_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector4_N_normalizeBlendedWeights[divide]
@@ -1312,60 +1312,60 @@ graph LR;
     NG_triplanarprojection_vector4_N_absN[absval] --".in1"--> NG_triplanarprojection_vector4_N_normalizeWeights[divide]
     NG_triplanarprojection_vector4_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_vector4_N_absN[absval]
     NG_triplanarprojection_vector4_normalINT([normal]) ==.in==> NG_triplanarprojection_vector4_N_norm_vector3[normalize]
-    style NG_triplanarprojection_vector4_normalINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_normalINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_vector4_N_normalizeWeights[divide]
     NG_triplanarprojection_vector4_N_absN[absval] --".in1"--> NG_triplanarprojection_vector4_N_dotN[dotproduct]
     NG_triplanarprojection_vector4_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_vector4_N_blendPower[power]
     NG_triplanarprojection_vector4_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_vector4_N_oneOverBlend[divide]
     NG_triplanarprojection_vector4_blendINT([blend]) ==.in==> NG_triplanarprojection_vector4_N_clampForPrecision[clamp]
-    style NG_triplanarprojection_vector4_blendINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_blendINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_vector4_N_normalizeBlendedWeights[divide]
     NG_triplanarprojection_vector4_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector4_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_vector4_N_nY_vector4[multiply] --".in2"--> NG_triplanarprojection_vector4_N_add1_vector4[add]
     NG_triplanarprojection_vector4_N_imgY_vector4[image] --".in1"--> NG_triplanarprojection_vector4_N_nY_vector4[multiply]
     NG_triplanarprojection_vector4_fileyINT([filey]) ==.file==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_fileyINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_fileyINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_layeryINT([layery]) ==.layer==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_layeryINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_layeryINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_vecXZ_vector4[combine2] --".texcoord"--> NG_triplanarprojection_vector4_N_imgY_vector4[image]
     NG_triplanarprojection_vector4_N_extX_vector4[extract] --".in1"--> NG_triplanarprojection_vector4_N_vecXZ_vector4[combine2]
     NG_triplanarprojection_vector4_positionINT([position]) ==.in==> NG_triplanarprojection_vector4_N_extX_vector4[extract]
-    style NG_triplanarprojection_vector4_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_extZ_vector4[extract] --".in2"--> NG_triplanarprojection_vector4_N_vecXZ_vector4[combine2]
     NG_triplanarprojection_vector4_N_separateWeights[separate3] --> NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsouty([outy])
-    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsouty fill:#1b1, color:#111
+    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsouty fill:#0C0, color:#111
     NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsouty --".in2"--> NG_triplanarprojection_vector4_N_nY_vector4[multiply]
     NG_triplanarprojection_vector4_N_nZ_vector4[multiply] --".in2"--> NG_triplanarprojection_vector4_N_add2_vector4[add]
     NG_triplanarprojection_vector4_N_imgZ_vector4[image] --".in1"--> NG_triplanarprojection_vector4_N_nZ_vector4[multiply]
     NG_triplanarprojection_vector4_filezINT([filez]) ==.file==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_filezINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_filezINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_layerzINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_layerzINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_vecXY_vector4[combine2] --".texcoord"--> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
     NG_triplanarprojection_vector4_N_extX_vector4[extract] --".in1"--> NG_triplanarprojection_vector4_N_vecXY_vector4[combine2]
     NG_triplanarprojection_vector4_N_extY_vector4[extract] --".in2"--> NG_triplanarprojection_vector4_N_vecXY_vector4[combine2]
     NG_triplanarprojection_vector4_N_separateWeights[separate3] --> NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutz([outz])
-    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutz fill:#1b1, color:#111
+    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutz fill:#0C0, color:#111
     NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_vector4_N_nZ_vector4[multiply]
 
 ```
@@ -1840,21 +1840,21 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_ramp4_float_N_mix_float[mix] --> NG_ramp4_float_out([out])
-    style NG_ramp4_float_out fill:#1b1, color:#111
+    style NG_ramp4_float_out fill:#0C0, color:#111
     NG_ramp4_float_N_mixtop_float[mix] --".bg"--> NG_ramp4_float_N_mix_float[mix]
     NG_ramp4_float_valuetlINT([valuetl]) ==.bg==> NG_ramp4_float_N_mixtop_float[mix]
-    style NG_ramp4_float_valuetlINT fill:#0bb, color:#111
+    style NG_ramp4_float_valuetlINT fill:#0CF, color:#111
     NG_ramp4_float_valuetrINT([valuetr]) ==.fg==> NG_ramp4_float_N_mixtop_float[mix]
-    style NG_ramp4_float_valuetrINT fill:#0bb, color:#111
+    style NG_ramp4_float_valuetrINT fill:#0CF, color:#111
     NG_ramp4_float_N_s_float[extract] --".mix"--> NG_ramp4_float_N_mixtop_float[mix]
     NG_ramp4_float_N_txclamp_float[clamp] --".in"--> NG_ramp4_float_N_s_float[extract]
     NG_ramp4_float_texcoordINT([texcoord]) ==.in==> NG_ramp4_float_N_txclamp_float[clamp]
-    style NG_ramp4_float_texcoordINT fill:#0bb, color:#111
+    style NG_ramp4_float_texcoordINT fill:#0CF, color:#111
     NG_ramp4_float_N_mixbot_float[mix] --".fg"--> NG_ramp4_float_N_mix_float[mix]
     NG_ramp4_float_valueblINT([valuebl]) ==.bg==> NG_ramp4_float_N_mixbot_float[mix]
-    style NG_ramp4_float_valueblINT fill:#0bb, color:#111
+    style NG_ramp4_float_valueblINT fill:#0CF, color:#111
     NG_ramp4_float_valuebrINT([valuebr]) ==.fg==> NG_ramp4_float_N_mixbot_float[mix]
-    style NG_ramp4_float_valuebrINT fill:#0bb, color:#111
+    style NG_ramp4_float_valuebrINT fill:#0CF, color:#111
     NG_ramp4_float_N_s_float[extract] --".mix"--> NG_ramp4_float_N_mixbot_float[mix]
     NG_ramp4_float_N_t_float[extract] --".mix"--> NG_ramp4_float_N_mix_float[mix]
     NG_ramp4_float_N_txclamp_float[clamp] --".in"--> NG_ramp4_float_N_t_float[extract]
@@ -1886,21 +1886,21 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_ramp4_color3_N_mix_color3[mix] --> NG_ramp4_color3_out([out])
-    style NG_ramp4_color3_out fill:#1b1, color:#111
+    style NG_ramp4_color3_out fill:#0C0, color:#111
     NG_ramp4_color3_N_mixtop_color3[mix] --".bg"--> NG_ramp4_color3_N_mix_color3[mix]
     NG_ramp4_color3_valuetlINT([valuetl]) ==.bg==> NG_ramp4_color3_N_mixtop_color3[mix]
-    style NG_ramp4_color3_valuetlINT fill:#0bb, color:#111
+    style NG_ramp4_color3_valuetlINT fill:#0CF, color:#111
     NG_ramp4_color3_valuetrINT([valuetr]) ==.fg==> NG_ramp4_color3_N_mixtop_color3[mix]
-    style NG_ramp4_color3_valuetrINT fill:#0bb, color:#111
+    style NG_ramp4_color3_valuetrINT fill:#0CF, color:#111
     NG_ramp4_color3_N_s_color3[extract] --".mix"--> NG_ramp4_color3_N_mixtop_color3[mix]
     NG_ramp4_color3_N_txclamp_color3[clamp] --".in"--> NG_ramp4_color3_N_s_color3[extract]
     NG_ramp4_color3_texcoordINT([texcoord]) ==.in==> NG_ramp4_color3_N_txclamp_color3[clamp]
-    style NG_ramp4_color3_texcoordINT fill:#0bb, color:#111
+    style NG_ramp4_color3_texcoordINT fill:#0CF, color:#111
     NG_ramp4_color3_N_mixbot_color3[mix] --".fg"--> NG_ramp4_color3_N_mix_color3[mix]
     NG_ramp4_color3_valueblINT([valuebl]) ==.bg==> NG_ramp4_color3_N_mixbot_color3[mix]
-    style NG_ramp4_color3_valueblINT fill:#0bb, color:#111
+    style NG_ramp4_color3_valueblINT fill:#0CF, color:#111
     NG_ramp4_color3_valuebrINT([valuebr]) ==.fg==> NG_ramp4_color3_N_mixbot_color3[mix]
-    style NG_ramp4_color3_valuebrINT fill:#0bb, color:#111
+    style NG_ramp4_color3_valuebrINT fill:#0CF, color:#111
     NG_ramp4_color3_N_s_color3[extract] --".mix"--> NG_ramp4_color3_N_mixbot_color3[mix]
     NG_ramp4_color3_N_t_color3[extract] --".mix"--> NG_ramp4_color3_N_mix_color3[mix]
     NG_ramp4_color3_N_txclamp_color3[clamp] --".in"--> NG_ramp4_color3_N_t_color3[extract]
@@ -1932,21 +1932,21 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_ramp4_color4_N_mix_color4[mix] --> NG_ramp4_color4_out([out])
-    style NG_ramp4_color4_out fill:#1b1, color:#111
+    style NG_ramp4_color4_out fill:#0C0, color:#111
     NG_ramp4_color4_N_mixtop_color4[mix] --".bg"--> NG_ramp4_color4_N_mix_color4[mix]
     NG_ramp4_color4_valuetlINT([valuetl]) ==.bg==> NG_ramp4_color4_N_mixtop_color4[mix]
-    style NG_ramp4_color4_valuetlINT fill:#0bb, color:#111
+    style NG_ramp4_color4_valuetlINT fill:#0CF, color:#111
     NG_ramp4_color4_valuetrINT([valuetr]) ==.fg==> NG_ramp4_color4_N_mixtop_color4[mix]
-    style NG_ramp4_color4_valuetrINT fill:#0bb, color:#111
+    style NG_ramp4_color4_valuetrINT fill:#0CF, color:#111
     NG_ramp4_color4_N_s_color4[extract] --".mix"--> NG_ramp4_color4_N_mixtop_color4[mix]
     NG_ramp4_color4_N_txclamp_color4[clamp] --".in"--> NG_ramp4_color4_N_s_color4[extract]
     NG_ramp4_color4_texcoordINT([texcoord]) ==.in==> NG_ramp4_color4_N_txclamp_color4[clamp]
-    style NG_ramp4_color4_texcoordINT fill:#0bb, color:#111
+    style NG_ramp4_color4_texcoordINT fill:#0CF, color:#111
     NG_ramp4_color4_N_mixbot_color4[mix] --".fg"--> NG_ramp4_color4_N_mix_color4[mix]
     NG_ramp4_color4_valueblINT([valuebl]) ==.bg==> NG_ramp4_color4_N_mixbot_color4[mix]
-    style NG_ramp4_color4_valueblINT fill:#0bb, color:#111
+    style NG_ramp4_color4_valueblINT fill:#0CF, color:#111
     NG_ramp4_color4_valuebrINT([valuebr]) ==.fg==> NG_ramp4_color4_N_mixbot_color4[mix]
-    style NG_ramp4_color4_valuebrINT fill:#0bb, color:#111
+    style NG_ramp4_color4_valuebrINT fill:#0CF, color:#111
     NG_ramp4_color4_N_s_color4[extract] --".mix"--> NG_ramp4_color4_N_mixbot_color4[mix]
     NG_ramp4_color4_N_t_color4[extract] --".mix"--> NG_ramp4_color4_N_mix_color4[mix]
     NG_ramp4_color4_N_txclamp_color4[clamp] --".in"--> NG_ramp4_color4_N_t_color4[extract]
@@ -1978,21 +1978,21 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_ramp4_vector2_N_mix_vector2[mix] --> NG_ramp4_vector2_out([out])
-    style NG_ramp4_vector2_out fill:#1b1, color:#111
+    style NG_ramp4_vector2_out fill:#0C0, color:#111
     NG_ramp4_vector2_N_mixtop_vector2[mix] --".bg"--> NG_ramp4_vector2_N_mix_vector2[mix]
     NG_ramp4_vector2_valuetlINT([valuetl]) ==.bg==> NG_ramp4_vector2_N_mixtop_vector2[mix]
-    style NG_ramp4_vector2_valuetlINT fill:#0bb, color:#111
+    style NG_ramp4_vector2_valuetlINT fill:#0CF, color:#111
     NG_ramp4_vector2_valuetrINT([valuetr]) ==.fg==> NG_ramp4_vector2_N_mixtop_vector2[mix]
-    style NG_ramp4_vector2_valuetrINT fill:#0bb, color:#111
+    style NG_ramp4_vector2_valuetrINT fill:#0CF, color:#111
     NG_ramp4_vector2_N_s_vector2[extract] --".mix"--> NG_ramp4_vector2_N_mixtop_vector2[mix]
     NG_ramp4_vector2_N_txclamp_vector2[clamp] --".in"--> NG_ramp4_vector2_N_s_vector2[extract]
     NG_ramp4_vector2_texcoordINT([texcoord]) ==.in==> NG_ramp4_vector2_N_txclamp_vector2[clamp]
-    style NG_ramp4_vector2_texcoordINT fill:#0bb, color:#111
+    style NG_ramp4_vector2_texcoordINT fill:#0CF, color:#111
     NG_ramp4_vector2_N_mixbot_vector2[mix] --".fg"--> NG_ramp4_vector2_N_mix_vector2[mix]
     NG_ramp4_vector2_valueblINT([valuebl]) ==.bg==> NG_ramp4_vector2_N_mixbot_vector2[mix]
-    style NG_ramp4_vector2_valueblINT fill:#0bb, color:#111
+    style NG_ramp4_vector2_valueblINT fill:#0CF, color:#111
     NG_ramp4_vector2_valuebrINT([valuebr]) ==.fg==> NG_ramp4_vector2_N_mixbot_vector2[mix]
-    style NG_ramp4_vector2_valuebrINT fill:#0bb, color:#111
+    style NG_ramp4_vector2_valuebrINT fill:#0CF, color:#111
     NG_ramp4_vector2_N_s_vector2[extract] --".mix"--> NG_ramp4_vector2_N_mixbot_vector2[mix]
     NG_ramp4_vector2_N_t_vector2[extract] --".mix"--> NG_ramp4_vector2_N_mix_vector2[mix]
     NG_ramp4_vector2_N_txclamp_vector2[clamp] --".in"--> NG_ramp4_vector2_N_t_vector2[extract]
@@ -2024,21 +2024,21 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_ramp4_vector3_N_mix_vector3[mix] --> NG_ramp4_vector3_out([out])
-    style NG_ramp4_vector3_out fill:#1b1, color:#111
+    style NG_ramp4_vector3_out fill:#0C0, color:#111
     NG_ramp4_vector3_N_mixtop_vector3[mix] --".bg"--> NG_ramp4_vector3_N_mix_vector3[mix]
     NG_ramp4_vector3_valuetlINT([valuetl]) ==.bg==> NG_ramp4_vector3_N_mixtop_vector3[mix]
-    style NG_ramp4_vector3_valuetlINT fill:#0bb, color:#111
+    style NG_ramp4_vector3_valuetlINT fill:#0CF, color:#111
     NG_ramp4_vector3_valuetrINT([valuetr]) ==.fg==> NG_ramp4_vector3_N_mixtop_vector3[mix]
-    style NG_ramp4_vector3_valuetrINT fill:#0bb, color:#111
+    style NG_ramp4_vector3_valuetrINT fill:#0CF, color:#111
     NG_ramp4_vector3_N_s_vector3[extract] --".mix"--> NG_ramp4_vector3_N_mixtop_vector3[mix]
     NG_ramp4_vector3_N_txclamp_vector3[clamp] --".in"--> NG_ramp4_vector3_N_s_vector3[extract]
     NG_ramp4_vector3_texcoordINT([texcoord]) ==.in==> NG_ramp4_vector3_N_txclamp_vector3[clamp]
-    style NG_ramp4_vector3_texcoordINT fill:#0bb, color:#111
+    style NG_ramp4_vector3_texcoordINT fill:#0CF, color:#111
     NG_ramp4_vector3_N_mixbot_vector3[mix] --".fg"--> NG_ramp4_vector3_N_mix_vector3[mix]
     NG_ramp4_vector3_valueblINT([valuebl]) ==.bg==> NG_ramp4_vector3_N_mixbot_vector3[mix]
-    style NG_ramp4_vector3_valueblINT fill:#0bb, color:#111
+    style NG_ramp4_vector3_valueblINT fill:#0CF, color:#111
     NG_ramp4_vector3_valuebrINT([valuebr]) ==.fg==> NG_ramp4_vector3_N_mixbot_vector3[mix]
-    style NG_ramp4_vector3_valuebrINT fill:#0bb, color:#111
+    style NG_ramp4_vector3_valuebrINT fill:#0CF, color:#111
     NG_ramp4_vector3_N_s_vector3[extract] --".mix"--> NG_ramp4_vector3_N_mixbot_vector3[mix]
     NG_ramp4_vector3_N_t_vector3[extract] --".mix"--> NG_ramp4_vector3_N_mix_vector3[mix]
     NG_ramp4_vector3_N_txclamp_vector3[clamp] --".in"--> NG_ramp4_vector3_N_t_vector3[extract]
@@ -2070,21 +2070,21 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_ramp4_vector4_N_mix_vector4[mix] --> NG_ramp4_vector4_out([out])
-    style NG_ramp4_vector4_out fill:#1b1, color:#111
+    style NG_ramp4_vector4_out fill:#0C0, color:#111
     NG_ramp4_vector4_N_mixtop_vector4[mix] --".bg"--> NG_ramp4_vector4_N_mix_vector4[mix]
     NG_ramp4_vector4_valuetlINT([valuetl]) ==.bg==> NG_ramp4_vector4_N_mixtop_vector4[mix]
-    style NG_ramp4_vector4_valuetlINT fill:#0bb, color:#111
+    style NG_ramp4_vector4_valuetlINT fill:#0CF, color:#111
     NG_ramp4_vector4_valuetrINT([valuetr]) ==.fg==> NG_ramp4_vector4_N_mixtop_vector4[mix]
-    style NG_ramp4_vector4_valuetrINT fill:#0bb, color:#111
+    style NG_ramp4_vector4_valuetrINT fill:#0CF, color:#111
     NG_ramp4_vector4_N_s_vector4[extract] --".mix"--> NG_ramp4_vector4_N_mixtop_vector4[mix]
     NG_ramp4_vector4_N_txclamp_vector4[clamp] --".in"--> NG_ramp4_vector4_N_s_vector4[extract]
     NG_ramp4_vector4_texcoordINT([texcoord]) ==.in==> NG_ramp4_vector4_N_txclamp_vector4[clamp]
-    style NG_ramp4_vector4_texcoordINT fill:#0bb, color:#111
+    style NG_ramp4_vector4_texcoordINT fill:#0CF, color:#111
     NG_ramp4_vector4_N_mixbot_vector4[mix] --".fg"--> NG_ramp4_vector4_N_mix_vector4[mix]
     NG_ramp4_vector4_valueblINT([valuebl]) ==.bg==> NG_ramp4_vector4_N_mixbot_vector4[mix]
-    style NG_ramp4_vector4_valueblINT fill:#0bb, color:#111
+    style NG_ramp4_vector4_valueblINT fill:#0CF, color:#111
     NG_ramp4_vector4_valuebrINT([valuebr]) ==.fg==> NG_ramp4_vector4_N_mixbot_vector4[mix]
-    style NG_ramp4_vector4_valuebrINT fill:#0bb, color:#111
+    style NG_ramp4_vector4_valuebrINT fill:#0CF, color:#111
     NG_ramp4_vector4_N_s_vector4[extract] --".mix"--> NG_ramp4_vector4_N_mixbot_vector4[mix]
     NG_ramp4_vector4_N_t_vector4[extract] --".mix"--> NG_ramp4_vector4_N_mix_vector4[mix]
     NG_ramp4_vector4_N_txclamp_vector4[clamp] --".in"--> NG_ramp4_vector4_N_t_vector4[extract]
@@ -3157,50 +3157,54 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_unifiednoise2d_float_N_range[range] --> NG_unifiednoise2d_float_out([out])
-    style NG_unifiednoise2d_float_out fill:#1b1, color:#111
+    style NG_unifiednoise2d_float_out fill:#0C0, color:#111
     NG_unifiednoise2d_float_outminINT([outmin]) ==.outlow==> NG_unifiednoise2d_float_N_range[range]
-    style NG_unifiednoise2d_float_outminINT fill:#0bb, color:#111
+    style NG_unifiednoise2d_float_outminINT fill:#0CF, color:#111
     NG_unifiednoise2d_float_outmaxINT([outmax]) ==.outhigh==> NG_unifiednoise2d_float_N_range[range]
-    style NG_unifiednoise2d_float_outmaxINT fill:#0bb, color:#111
+    style NG_unifiednoise2d_float_outmaxINT fill:#0CF, color:#111
     NG_unifiednoise2d_float_clampoutputINT([clampoutput]) ==.doclamp==> NG_unifiednoise2d_float_N_range[range]
-    style NG_unifiednoise2d_float_clampoutputINT fill:#0bb, color:#111
+    style NG_unifiednoise2d_float_clampoutputINT fill:#0CF, color:#111
     NG_unifiednoise2d_float_N_switch_type{switch} --".in"--> NG_unifiednoise2d_float_N_range[range]
     NG_unifiednoise2d_float_typeINT([type]) ==.which==> NG_unifiednoise2d_float_N_switch_type[switch]
-    style NG_unifiednoise2d_float_typeINT fill:#0bb, color:#111
+    style NG_unifiednoise2d_float_typeINT fill:#0CF, color:#111
     NG_unifiednoise2d_float_N_perlin_noise2d[noise2d] --".in1"--> NG_unifiednoise2d_float_N_switch_type{switch}
+    style NG_unifiednoise2d_float_N_switch_type fill:#F80, color:#111
     NG_unifiednoise2d_float_N_apply_cell_jitter[rotate2d] --".texcoord"--> NG_unifiednoise2d_float_N_perlin_noise2d[noise2d]
     NG_unifiednoise2d_float_N_apply_offset[add] --".in"--> NG_unifiednoise2d_float_N_apply_cell_jitter[rotate2d]
     NG_unifiednoise2d_float_offsetINT([offset]) ==.in2==> NG_unifiednoise2d_float_N_apply_offset[add]
-    style NG_unifiednoise2d_float_offsetINT fill:#0bb, color:#111
+    style NG_unifiednoise2d_float_offsetINT fill:#0CF, color:#111
     NG_unifiednoise2d_float_N_apply_freq[multiply] --".in1"--> NG_unifiednoise2d_float_N_apply_offset[add]
     NG_unifiednoise2d_float_texcoordINT([texcoord]) ==.in1==> NG_unifiednoise2d_float_N_apply_freq[multiply]
-    style NG_unifiednoise2d_float_texcoordINT fill:#0bb, color:#111
+    style NG_unifiednoise2d_float_texcoordINT fill:#0CF, color:#111
     NG_unifiednoise2d_float_freqINT([freq]) ==.in2==> NG_unifiednoise2d_float_N_apply_freq[multiply]
-    style NG_unifiednoise2d_float_freqINT fill:#0bb, color:#111
+    style NG_unifiednoise2d_float_freqINT fill:#0CF, color:#111
     NG_unifiednoise2d_float_N_cell_jitter_mult[multiply] --".amount"--> NG_unifiednoise2d_float_N_apply_cell_jitter[rotate2d]
     NG_unifiednoise2d_float_N_jitter_minus_1[subtract] --".in1"--> NG_unifiednoise2d_float_N_cell_jitter_mult[multiply]
     NG_unifiednoise2d_float_jitterINT([jitter]) ==.in1==> NG_unifiednoise2d_float_N_jitter_minus_1[subtract]
-    style NG_unifiednoise2d_float_jitterINT fill:#0bb, color:#111
+    style NG_unifiednoise2d_float_jitterINT fill:#0CF, color:#111
     NG_unifiednoise2d_float_N_cellnoise2d[cellnoise2d] --".in2"--> NG_unifiednoise2d_float_N_switch_type{switch}
+    style NG_unifiednoise2d_float_N_switch_type fill:#F80, color:#111
     NG_unifiednoise2d_float_N_apply_cell_jitter[rotate2d] --".texcoord"--> NG_unifiednoise2d_float_N_cellnoise2d[cellnoise2d]
     NG_unifiednoise2d_float_N_worleynoise2d[worleynoise2d] --".in3"--> NG_unifiednoise2d_float_N_switch_type{switch}
+    style NG_unifiednoise2d_float_N_switch_type fill:#F80, color:#111
     NG_unifiednoise2d_float_jitterINT([jitter]) ==.jitter==> NG_unifiednoise2d_float_N_worleynoise2d[worleynoise2d]
-    style NG_unifiednoise2d_float_jitterINT fill:#0bb, color:#111
+    style NG_unifiednoise2d_float_jitterINT fill:#0CF, color:#111
     NG_unifiednoise2d_float_N_apply_offset[add] --".texcoord"--> NG_unifiednoise2d_float_N_worleynoise2d[worleynoise2d]
     NG_unifiednoise2d_float_N_fractal3d[fractal3d] --".in4"--> NG_unifiednoise2d_float_N_switch_type{switch}
+    style NG_unifiednoise2d_float_N_switch_type fill:#F80, color:#111
     NG_unifiednoise2d_float_octavesINT([octaves]) ==.octaves==> NG_unifiednoise2d_float_N_fractal3d[fractal3d]
-    style NG_unifiednoise2d_float_octavesINT fill:#0bb, color:#111
+    style NG_unifiednoise2d_float_octavesINT fill:#0CF, color:#111
     NG_unifiednoise2d_float_lacunarityINT([lacunarity]) ==.lacunarity==> NG_unifiednoise2d_float_N_fractal3d[fractal3d]
-    style NG_unifiednoise2d_float_lacunarityINT fill:#0bb, color:#111
+    style NG_unifiednoise2d_float_lacunarityINT fill:#0CF, color:#111
     NG_unifiednoise2d_float_diminishINT([diminish]) ==.diminish==> NG_unifiednoise2d_float_N_fractal3d[fractal3d]
-    style NG_unifiednoise2d_float_diminishINT fill:#0bb, color:#111
+    style NG_unifiednoise2d_float_diminishINT fill:#0CF, color:#111
     NG_unifiednoise2d_float_N_combine_with_jitter[combine3] --".position"--> NG_unifiednoise2d_float_N_fractal3d[fractal3d]
     NG_unifiednoise2d_float_N_separate[separate2] --> NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateoutx([outx])
-    style NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateoutx fill:#1b1, color:#111
+    style NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateoutx fill:#0C0, color:#111
     NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateoutx --".in1"--> NG_unifiednoise2d_float_N_combine_with_jitter[combine3]
     NG_unifiednoise2d_float_N_apply_offset[add] --".in"--> NG_unifiednoise2d_float_N_separate[separate2]
     NG_unifiednoise2d_float_N_separate[separate2] --> NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateouty([outy])
-    style NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateouty fill:#1b1, color:#111
+    style NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateouty fill:#0C0, color:#111
     NG_unifiednoise2d_float_NG_unifiednoise2d_float_N_separateouty --".in2"--> NG_unifiednoise2d_float_N_combine_with_jitter[combine3]
     NG_unifiednoise2d_float_N_cell_jitter_mult[multiply] --".in3"--> NG_unifiednoise2d_float_N_combine_with_jitter[combine3]
 
@@ -3238,43 +3242,47 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_unifiednoise3d_float_N_range[range] --> NG_unifiednoise3d_float_out([out])
-    style NG_unifiednoise3d_float_out fill:#1b1, color:#111
+    style NG_unifiednoise3d_float_out fill:#0C0, color:#111
     NG_unifiednoise3d_float_outminINT([outmin]) ==.outlow==> NG_unifiednoise3d_float_N_range[range]
-    style NG_unifiednoise3d_float_outminINT fill:#0bb, color:#111
+    style NG_unifiednoise3d_float_outminINT fill:#0CF, color:#111
     NG_unifiednoise3d_float_outmaxINT([outmax]) ==.outhigh==> NG_unifiednoise3d_float_N_range[range]
-    style NG_unifiednoise3d_float_outmaxINT fill:#0bb, color:#111
+    style NG_unifiednoise3d_float_outmaxINT fill:#0CF, color:#111
     NG_unifiednoise3d_float_clampoutputINT([clampoutput]) ==.doclamp==> NG_unifiednoise3d_float_N_range[range]
-    style NG_unifiednoise3d_float_clampoutputINT fill:#0bb, color:#111
+    style NG_unifiednoise3d_float_clampoutputINT fill:#0CF, color:#111
     NG_unifiednoise3d_float_N_switch_type{switch} --".in"--> NG_unifiednoise3d_float_N_range[range]
     NG_unifiednoise3d_float_typeINT([type]) ==.which==> NG_unifiednoise3d_float_N_switch_type[switch]
-    style NG_unifiednoise3d_float_typeINT fill:#0bb, color:#111
+    style NG_unifiednoise3d_float_typeINT fill:#0CF, color:#111
     NG_unifiednoise3d_float_N_perlin_noise3d[noise3d] --".in1"--> NG_unifiednoise3d_float_N_switch_type{switch}
+    style NG_unifiednoise3d_float_N_switch_type fill:#F80, color:#111
     NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d] --".position"--> NG_unifiednoise3d_float_N_perlin_noise3d[noise3d]
     NG_unifiednoise3d_float_N_apply_offset[add] --".in"--> NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d]
     NG_unifiednoise3d_float_offsetINT([offset]) ==.in2==> NG_unifiednoise3d_float_N_apply_offset[add]
-    style NG_unifiednoise3d_float_offsetINT fill:#0bb, color:#111
+    style NG_unifiednoise3d_float_offsetINT fill:#0CF, color:#111
     NG_unifiednoise3d_float_N_apply_freq[multiply] --".in1"--> NG_unifiednoise3d_float_N_apply_offset[add]
     NG_unifiednoise3d_float_positionINT([position]) ==.in1==> NG_unifiednoise3d_float_N_apply_freq[multiply]
-    style NG_unifiednoise3d_float_positionINT fill:#0bb, color:#111
+    style NG_unifiednoise3d_float_positionINT fill:#0CF, color:#111
     NG_unifiednoise3d_float_freqINT([freq]) ==.in2==> NG_unifiednoise3d_float_N_apply_freq[multiply]
-    style NG_unifiednoise3d_float_freqINT fill:#0bb, color:#111
+    style NG_unifiednoise3d_float_freqINT fill:#0CF, color:#111
     NG_unifiednoise3d_float_N_cell_jitter_mult[multiply] --".amount"--> NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d]
     NG_unifiednoise3d_float_N_jitter_minus_one[subtract] --".in1"--> NG_unifiednoise3d_float_N_cell_jitter_mult[multiply]
     NG_unifiednoise3d_float_jitterINT([jitter]) ==.in1==> NG_unifiednoise3d_float_N_jitter_minus_one[subtract]
-    style NG_unifiednoise3d_float_jitterINT fill:#0bb, color:#111
+    style NG_unifiednoise3d_float_jitterINT fill:#0CF, color:#111
     NG_unifiednoise3d_float_N_cellnoise3d[cellnoise3d] --".in2"--> NG_unifiednoise3d_float_N_switch_type{switch}
+    style NG_unifiednoise3d_float_N_switch_type fill:#F80, color:#111
     NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d] --".position"--> NG_unifiednoise3d_float_N_cellnoise3d[cellnoise3d]
     NG_unifiednoise3d_float_N_worleynoise3d[worleynoise3d] --".in3"--> NG_unifiednoise3d_float_N_switch_type{switch}
+    style NG_unifiednoise3d_float_N_switch_type fill:#F80, color:#111
     NG_unifiednoise3d_float_jitterINT([jitter]) ==.jitter==> NG_unifiednoise3d_float_N_worleynoise3d[worleynoise3d]
-    style NG_unifiednoise3d_float_jitterINT fill:#0bb, color:#111
+    style NG_unifiednoise3d_float_jitterINT fill:#0CF, color:#111
     NG_unifiednoise3d_float_N_apply_offset[add] --".position"--> NG_unifiednoise3d_float_N_worleynoise3d[worleynoise3d]
     NG_unifiednoise3d_float_N_fractal3d[fractal3d] --".in4"--> NG_unifiednoise3d_float_N_switch_type{switch}
+    style NG_unifiednoise3d_float_N_switch_type fill:#F80, color:#111
     NG_unifiednoise3d_float_octavesINT([octaves]) ==.octaves==> NG_unifiednoise3d_float_N_fractal3d[fractal3d]
-    style NG_unifiednoise3d_float_octavesINT fill:#0bb, color:#111
+    style NG_unifiednoise3d_float_octavesINT fill:#0CF, color:#111
     NG_unifiednoise3d_float_lacunarityINT([lacunarity]) ==.lacunarity==> NG_unifiednoise3d_float_N_fractal3d[fractal3d]
-    style NG_unifiednoise3d_float_lacunarityINT fill:#0bb, color:#111
+    style NG_unifiednoise3d_float_lacunarityINT fill:#0CF, color:#111
     NG_unifiednoise3d_float_diminishINT([diminish]) ==.diminish==> NG_unifiednoise3d_float_N_fractal3d[fractal3d]
-    style NG_unifiednoise3d_float_diminishINT fill:#0bb, color:#111
+    style NG_unifiednoise3d_float_diminishINT fill:#0CF, color:#111
     NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d] --".position"--> NG_unifiednoise3d_float_N_fractal3d[fractal3d]
 
 ```
@@ -3311,20 +3319,19 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_randomfloat_float_N_remapRange[range] --> NG_randomfloat_float_out([out])
-    style NG_randomfloat_float_out fill:#1b1, color:#111
+    style NG_randomfloat_float_out fill:#0C0, color:#111
     NG_randomfloat_float_minINT([min]) ==.outlow==> NG_randomfloat_float_N_remapRange[range]
-    style NG_randomfloat_float_minINT fill:#0bb, color:#111
+    style NG_randomfloat_float_minINT fill:#0CF, color:#111
     NG_randomfloat_float_maxINT([max]) ==.outhigh==> NG_randomfloat_float_N_remapRange[range]
-    style NG_randomfloat_float_maxINT fill:#0bb, color:#111
+    style NG_randomfloat_float_maxINT fill:#0CF, color:#111
     NG_randomfloat_float_N_cellnoise1[cellnoise2d] --".in"--> NG_randomfloat_float_N_remapRange[range]
     NG_randomfloat_float_N_combine2[combine2] --".texcoord"--> NG_randomfloat_float_N_cellnoise1[cellnoise2d]
     NG_randomfloat_float_N_scaleInput[multiply] --".in1"--> NG_randomfloat_float_N_combine2[combine2]
-    NG_randomfloat_float_N_moduloInput[modulo] --".in1"--> NG_randomfloat_float_N_scaleInput[multiply]
-    NG_randomfloat_float_inINT([in]) ==.in1==> NG_randomfloat_float_N_moduloInput[modulo]
-    style NG_randomfloat_float_inINT fill:#0bb, color:#111
+    NG_randomfloat_float_inINT([in]) ==.in1==> NG_randomfloat_float_N_scaleInput[multiply]
+    style NG_randomfloat_float_inINT fill:#0CF, color:#111
     NG_randomfloat_float_N_convertSeed1[convert] --".in2"--> NG_randomfloat_float_N_combine2[combine2]
     NG_randomfloat_float_seedINT([seed]) ==.in==> NG_randomfloat_float_N_convertSeed1[convert]
-    style NG_randomfloat_float_seedINT fill:#0bb, color:#111
+    style NG_randomfloat_float_seedINT fill:#0CF, color:#111
 
 ```
  
@@ -3352,19 +3359,19 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_randomfloat_integer_N_remapRange[range] --> NG_randomfloat_integer_out([out])
-    style NG_randomfloat_integer_out fill:#1b1, color:#111
+    style NG_randomfloat_integer_out fill:#0C0, color:#111
     NG_randomfloat_integer_minINT([min]) ==.outlow==> NG_randomfloat_integer_N_remapRange[range]
-    style NG_randomfloat_integer_minINT fill:#0bb, color:#111
+    style NG_randomfloat_integer_minINT fill:#0CF, color:#111
     NG_randomfloat_integer_maxINT([max]) ==.outhigh==> NG_randomfloat_integer_N_remapRange[range]
-    style NG_randomfloat_integer_maxINT fill:#0bb, color:#111
+    style NG_randomfloat_integer_maxINT fill:#0CF, color:#111
     NG_randomfloat_integer_N_cellnoise1[cellnoise2d] --".in"--> NG_randomfloat_integer_N_remapRange[range]
     NG_randomfloat_integer_N_combine2[combine2] --".texcoord"--> NG_randomfloat_integer_N_cellnoise1[cellnoise2d]
     NG_randomfloat_integer_N_convertInput1[convert] --".in1"--> NG_randomfloat_integer_N_combine2[combine2]
     NG_randomfloat_integer_inINT([in]) ==.in==> NG_randomfloat_integer_N_convertInput1[convert]
-    style NG_randomfloat_integer_inINT fill:#0bb, color:#111
+    style NG_randomfloat_integer_inINT fill:#0CF, color:#111
     NG_randomfloat_integer_N_convertSeed1[convert] --".in2"--> NG_randomfloat_integer_N_combine2[combine2]
     NG_randomfloat_integer_seedINT([seed]) ==.in==> NG_randomfloat_integer_N_convertSeed1[convert]
-    style NG_randomfloat_integer_seedINT fill:#0bb, color:#111
+    style NG_randomfloat_integer_seedINT fill:#0CF, color:#111
 
 ```
  
@@ -3393,40 +3400,40 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_randomcolor_float_N_HSV_to_RGB[hsvtorgb] --> NG_randomcolor_float_out([out])
-    style NG_randomcolor_float_out fill:#1b1, color:#111
+    style NG_randomcolor_float_out fill:#0C0, color:#111
     NG_randomcolor_float_N_combine_HSV[combine3] --".in"--> NG_randomcolor_float_N_HSV_to_RGB[hsvtorgb]
     NG_randomcolor_float_N_range_hue[range] --".in1"--> NG_randomcolor_float_N_combine_HSV[combine3]
     NG_randomcolor_float_huelowINT([huelow]) ==.outlow==> NG_randomcolor_float_N_range_hue[range]
-    style NG_randomcolor_float_huelowINT fill:#0bb, color:#111
+    style NG_randomcolor_float_huelowINT fill:#0CF, color:#111
     NG_randomcolor_float_huehighINT([huehigh]) ==.outhigh==> NG_randomcolor_float_N_range_hue[range]
-    style NG_randomcolor_float_huehighINT fill:#0bb, color:#111
+    style NG_randomcolor_float_huehighINT fill:#0CF, color:#111
     NG_randomcolor_float_N_rand_hue[randomfloat] --".in"--> NG_randomcolor_float_N_range_hue[range]
     NG_randomcolor_float_inINT([in]) ==.in==> NG_randomcolor_float_N_rand_hue[randomfloat]
-    style NG_randomcolor_float_inINT fill:#0bb, color:#111
+    style NG_randomcolor_float_inINT fill:#0CF, color:#111
     NG_randomcolor_float_N_seed_hue[ceil] --".seed"--> NG_randomcolor_float_N_rand_hue[randomfloat]
     NG_randomcolor_float_N_offset_hue[add] --".in"--> NG_randomcolor_float_N_seed_hue[ceil]
     NG_randomcolor_float_N_convertSeed1[convert] --".in1"--> NG_randomcolor_float_N_offset_hue[add]
     NG_randomcolor_float_seedINT([seed]) ==.in==> NG_randomcolor_float_N_convertSeed1[convert]
-    style NG_randomcolor_float_seedINT fill:#0bb, color:#111
+    style NG_randomcolor_float_seedINT fill:#0CF, color:#111
     NG_randomcolor_float_N_range_saturation[range] --".in2"--> NG_randomcolor_float_N_combine_HSV[combine3]
     NG_randomcolor_float_saturationlowINT([saturationlow]) ==.outlow==> NG_randomcolor_float_N_range_saturation[range]
-    style NG_randomcolor_float_saturationlowINT fill:#0bb, color:#111
+    style NG_randomcolor_float_saturationlowINT fill:#0CF, color:#111
     NG_randomcolor_float_saturationhighINT([saturationhigh]) ==.outhigh==> NG_randomcolor_float_N_range_saturation[range]
-    style NG_randomcolor_float_saturationhighINT fill:#0bb, color:#111
+    style NG_randomcolor_float_saturationhighINT fill:#0CF, color:#111
     NG_randomcolor_float_N_rand_saturation[randomfloat] --".in"--> NG_randomcolor_float_N_range_saturation[range]
     NG_randomcolor_float_inINT([in]) ==.in==> NG_randomcolor_float_N_rand_saturation[randomfloat]
-    style NG_randomcolor_float_inINT fill:#0bb, color:#111
+    style NG_randomcolor_float_inINT fill:#0CF, color:#111
     NG_randomcolor_float_N_seed_saturation[ceil] --".seed"--> NG_randomcolor_float_N_rand_saturation[randomfloat]
     NG_randomcolor_float_N_offset_saturation[add] --".in"--> NG_randomcolor_float_N_seed_saturation[ceil]
     NG_randomcolor_float_N_convertSeed1[convert] --".in1"--> NG_randomcolor_float_N_offset_saturation[add]
     NG_randomcolor_float_N_range_brightness[range] --".in3"--> NG_randomcolor_float_N_combine_HSV[combine3]
     NG_randomcolor_float_brightnesslowINT([brightnesslow]) ==.outlow==> NG_randomcolor_float_N_range_brightness[range]
-    style NG_randomcolor_float_brightnesslowINT fill:#0bb, color:#111
+    style NG_randomcolor_float_brightnesslowINT fill:#0CF, color:#111
     NG_randomcolor_float_brightnesshighINT([brightnesshigh]) ==.outhigh==> NG_randomcolor_float_N_range_brightness[range]
-    style NG_randomcolor_float_brightnesshighINT fill:#0bb, color:#111
+    style NG_randomcolor_float_brightnesshighINT fill:#0CF, color:#111
     NG_randomcolor_float_N_rand_brightness[randomfloat] --".in"--> NG_randomcolor_float_N_range_brightness[range]
     NG_randomcolor_float_inINT([in]) ==.in==> NG_randomcolor_float_N_rand_brightness[randomfloat]
-    style NG_randomcolor_float_inINT fill:#0bb, color:#111
+    style NG_randomcolor_float_inINT fill:#0CF, color:#111
     NG_randomcolor_float_N_seed_brightness[ceil] --".seed"--> NG_randomcolor_float_N_rand_brightness[randomfloat]
     NG_randomcolor_float_N_offset_brightness[add] --".in"--> NG_randomcolor_float_N_seed_brightness[ceil]
     NG_randomcolor_float_N_convertSeed1[convert] --".in1"--> NG_randomcolor_float_N_offset_brightness[add]
@@ -3461,24 +3468,24 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_randomcolor_integer_N_randomcolor1[randomcolor] --> NG_randomcolor_integer_out([out])
-    style NG_randomcolor_integer_out fill:#1b1, color:#111
+    style NG_randomcolor_integer_out fill:#0C0, color:#111
     NG_randomcolor_integer_huelowINT([huelow]) ==.huelow==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_huelowINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_huelowINT fill:#0CF, color:#111
     NG_randomcolor_integer_huehighINT([huehigh]) ==.huehigh==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_huehighINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_huehighINT fill:#0CF, color:#111
     NG_randomcolor_integer_saturationlowINT([saturationlow]) ==.saturationlow==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_saturationlowINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_saturationlowINT fill:#0CF, color:#111
     NG_randomcolor_integer_saturationhighINT([saturationhigh]) ==.saturationhigh==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_saturationhighINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_saturationhighINT fill:#0CF, color:#111
     NG_randomcolor_integer_brightnesslowINT([brightnesslow]) ==.brightnesslow==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_brightnesslowINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_brightnesslowINT fill:#0CF, color:#111
     NG_randomcolor_integer_brightnesshighINT([brightnesshigh]) ==.brightnesshigh==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_brightnesshighINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_brightnesshighINT fill:#0CF, color:#111
     NG_randomcolor_integer_seedINT([seed]) ==.seed==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_seedINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_seedINT fill:#0CF, color:#111
     NG_randomcolor_integer_N_convert1[convert] --".in"--> NG_randomcolor_integer_N_randomcolor1[randomcolor]
     NG_randomcolor_integer_inINT([in]) ==.in==> NG_randomcolor_integer_N_convert1[convert]
-    style NG_randomcolor_integer_inINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_inINT fill:#0CF, color:#111
 
 ```
  
@@ -3511,30 +3518,31 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_checkerboard_color3_N_mix_color3[mix] --> NG_checkerboard_color3_out([out])
-    style NG_checkerboard_color3_out fill:#1b1, color:#111
+    style NG_checkerboard_color3_out fill:#0C0, color:#111
     NG_checkerboard_color3_color2INT([color2]) ==.bg==> NG_checkerboard_color3_N_mix_color3[mix]
-    style NG_checkerboard_color3_color2INT fill:#0bb, color:#111
+    style NG_checkerboard_color3_color2INT fill:#0CF, color:#111
     NG_checkerboard_color3_color1INT([color1]) ==.fg==> NG_checkerboard_color3_N_mix_color3[mix]
-    style NG_checkerboard_color3_color1INT fill:#0bb, color:#111
+    style NG_checkerboard_color3_color1INT fill:#0CF, color:#111
     NG_checkerboard_color3_N_mtlxifequal2{ifequal} --".mix"--> NG_checkerboard_color3_N_mix_color3[mix]
     NG_checkerboard_color3_N_mtlxadd2[add] --".value1"--> NG_checkerboard_color3_N_mtlxifequal2{ifequal}
+    style NG_checkerboard_color3_N_mtlxifequal2 fill:#F80, color:#111
     NG_checkerboard_color3_N_mtlxfloor2[floor] --".in1"--> NG_checkerboard_color3_N_mtlxadd2[add]
     NG_checkerboard_color3_N_mtlxmodulo1[modulo] --".in"--> NG_checkerboard_color3_N_mtlxfloor2[floor]
     NG_checkerboard_color3_N_mtlxseparate2[separate2] --> NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx([outx])
-    style NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx fill:#1b1, color:#111
+    style NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx fill:#0C0, color:#111
     NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx --".in1"--> NG_checkerboard_color3_N_mtlxmodulo1[modulo]
     NG_checkerboard_color3_N_mtlxplace2d1[place2d] --".in"--> NG_checkerboard_color3_N_mtlxseparate2[separate2]
     NG_checkerboard_color3_offsetINT([offset]) ==.offset==> NG_checkerboard_color3_N_mtlxplace2d1[place2d]
-    style NG_checkerboard_color3_offsetINT fill:#0bb, color:#111
+    style NG_checkerboard_color3_offsetINT fill:#0CF, color:#111
     NG_checkerboard_color3_N_mult[multiply] --".texcoord"--> NG_checkerboard_color3_N_mtlxplace2d1[place2d]
     NG_checkerboard_color3_texcoordINT([texcoord]) ==.in1==> NG_checkerboard_color3_N_mult[multiply]
-    style NG_checkerboard_color3_texcoordINT fill:#0bb, color:#111
+    style NG_checkerboard_color3_texcoordINT fill:#0CF, color:#111
     NG_checkerboard_color3_freqINT([freq]) ==.in2==> NG_checkerboard_color3_N_mult[multiply]
-    style NG_checkerboard_color3_freqINT fill:#0bb, color:#111
+    style NG_checkerboard_color3_freqINT fill:#0CF, color:#111
     NG_checkerboard_color3_N_mtlxfloor3[floor] --".in2"--> NG_checkerboard_color3_N_mtlxadd2[add]
     NG_checkerboard_color3_N_mtlxmodulo2[modulo] --".in"--> NG_checkerboard_color3_N_mtlxfloor3[floor]
     NG_checkerboard_color3_N_mtlxseparate2[separate2] --> NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy([outy])
-    style NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy fill:#1b1, color:#111
+    style NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy fill:#0C0, color:#111
     NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy --".in1"--> NG_checkerboard_color3_N_mtlxmodulo2[modulo]
 
 ```
@@ -3889,16 +3897,16 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_bump_vector3_N_normalmap[normalmap] --> NG_bump_vector3_out([out])
-    style NG_bump_vector3_out fill:#1b1, color:#111
+    style NG_bump_vector3_out fill:#0C0, color:#111
     NG_bump_vector3_normalINT([normal]) ==.normal==> NG_bump_vector3_N_normalmap[normalmap]
-    style NG_bump_vector3_normalINT fill:#0bb, color:#111
+    style NG_bump_vector3_normalINT fill:#0CF, color:#111
     NG_bump_vector3_scaleINT([scale]) ==.scale==> NG_bump_vector3_N_normalmap[normalmap]
-    style NG_bump_vector3_scaleINT fill:#0bb, color:#111
+    style NG_bump_vector3_scaleINT fill:#0CF, color:#111
     NG_bump_vector3_tangentINT([tangent]) ==.tangent==> NG_bump_vector3_N_normalmap[normalmap]
-    style NG_bump_vector3_tangentINT fill:#0bb, color:#111
+    style NG_bump_vector3_tangentINT fill:#0CF, color:#111
     NG_bump_vector3_N_heighttonormal[heighttonormal] --".in"--> NG_bump_vector3_N_normalmap[normalmap]
     NG_bump_vector3_heightINT([height]) ==.in==> NG_bump_vector3_N_heighttonormal[heighttonormal]
-    style NG_bump_vector3_heightINT fill:#0bb, color:#111
+    style NG_bump_vector3_heightINT fill:#0CF, color:#111
 
 ```
  
@@ -7400,12 +7408,12 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_distance_vector2_N_mtlxmagnitude[magnitude] --> NG_distance_vector2_out([out])
-    style NG_distance_vector2_out fill:#1b1, color:#111
+    style NG_distance_vector2_out fill:#0C0, color:#111
     NG_distance_vector2_N_mtlxsubtract[subtract] --".in"--> NG_distance_vector2_N_mtlxmagnitude[magnitude]
     NG_distance_vector2_in1INT([in1]) ==.in1==> NG_distance_vector2_N_mtlxsubtract[subtract]
-    style NG_distance_vector2_in1INT fill:#0bb, color:#111
+    style NG_distance_vector2_in1INT fill:#0CF, color:#111
     NG_distance_vector2_in2INT([in2]) ==.in2==> NG_distance_vector2_N_mtlxsubtract[subtract]
-    style NG_distance_vector2_in2INT fill:#0bb, color:#111
+    style NG_distance_vector2_in2INT fill:#0CF, color:#111
 
 ```
  
@@ -7431,12 +7439,12 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_distance_vector3_N_mtlxmagnitude[magnitude] --> NG_distance_vector3_out([out])
-    style NG_distance_vector3_out fill:#1b1, color:#111
+    style NG_distance_vector3_out fill:#0C0, color:#111
     NG_distance_vector3_N_mtlxsubtract[subtract] --".in"--> NG_distance_vector3_N_mtlxmagnitude[magnitude]
     NG_distance_vector3_in1INT([in1]) ==.in1==> NG_distance_vector3_N_mtlxsubtract[subtract]
-    style NG_distance_vector3_in1INT fill:#0bb, color:#111
+    style NG_distance_vector3_in1INT fill:#0CF, color:#111
     NG_distance_vector3_in2INT([in2]) ==.in2==> NG_distance_vector3_N_mtlxsubtract[subtract]
-    style NG_distance_vector3_in2INT fill:#0bb, color:#111
+    style NG_distance_vector3_in2INT fill:#0CF, color:#111
 
 ```
  
@@ -7462,12 +7470,12 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_distance_vector4_N_mtlxmagnitude[magnitude] --> NG_distance_vector4_out([out])
-    style NG_distance_vector4_out fill:#1b1, color:#111
+    style NG_distance_vector4_out fill:#0C0, color:#111
     NG_distance_vector4_N_mtlxsubtract[subtract] --".in"--> NG_distance_vector4_N_mtlxmagnitude[magnitude]
     NG_distance_vector4_in1INT([in1]) ==.in1==> NG_distance_vector4_N_mtlxsubtract[subtract]
-    style NG_distance_vector4_in1INT fill:#0bb, color:#111
+    style NG_distance_vector4_in1INT fill:#0CF, color:#111
     NG_distance_vector4_in2INT([in2]) ==.in2==> NG_distance_vector4_N_mtlxsubtract[subtract]
-    style NG_distance_vector4_in2INT fill:#0bb, color:#111
+    style NG_distance_vector4_in2INT fill:#0CF, color:#111
 
 ```
  
@@ -7867,38 +7875,40 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_place2d_vector2_N_switch_operationorder{switch} --> NG_place2d_vector2_out([out])
-    style NG_place2d_vector2_out fill:#1b1, color:#111
+    style NG_place2d_vector2_out fill:#0C0, color:#111
     NG_place2d_vector2_operationorderINT([operationorder]) ==.which==> NG_place2d_vector2_N_switch_operationorder[switch]
-    style NG_place2d_vector2_operationorderINT fill:#0bb, color:#111
+    style NG_place2d_vector2_operationorderINT fill:#0CF, color:#111
     NG_place2d_vector2_N_addpivot[add] --".in1"--> NG_place2d_vector2_N_switch_operationorder{switch}
+    style NG_place2d_vector2_N_switch_operationorder fill:#F80, color:#111
     NG_place2d_vector2_pivotINT([pivot]) ==.in2==> NG_place2d_vector2_N_addpivot[add]
-    style NG_place2d_vector2_pivotINT fill:#0bb, color:#111
+    style NG_place2d_vector2_pivotINT fill:#0CF, color:#111
     NG_place2d_vector2_N_applyoffset[subtract] --".in1"--> NG_place2d_vector2_N_addpivot[add]
     NG_place2d_vector2_offsetINT([offset]) ==.in2==> NG_place2d_vector2_N_applyoffset[subtract]
-    style NG_place2d_vector2_offsetINT fill:#0bb, color:#111
+    style NG_place2d_vector2_offsetINT fill:#0CF, color:#111
     NG_place2d_vector2_N_applyrot[rotate2d] --".in1"--> NG_place2d_vector2_N_applyoffset[subtract]
     NG_place2d_vector2_rotateINT([rotate]) ==.amount==> NG_place2d_vector2_N_applyrot[rotate2d]
-    style NG_place2d_vector2_rotateINT fill:#0bb, color:#111
+    style NG_place2d_vector2_rotateINT fill:#0CF, color:#111
     NG_place2d_vector2_N_applyscale[divide] --".in"--> NG_place2d_vector2_N_applyrot[rotate2d]
     NG_place2d_vector2_scaleINT([scale]) ==.in2==> NG_place2d_vector2_N_applyscale[divide]
-    style NG_place2d_vector2_scaleINT fill:#0bb, color:#111
+    style NG_place2d_vector2_scaleINT fill:#0CF, color:#111
     NG_place2d_vector2_N_subpivot[subtract] --".in1"--> NG_place2d_vector2_N_applyscale[divide]
     NG_place2d_vector2_texcoordINT([texcoord]) ==.in1==> NG_place2d_vector2_N_subpivot[subtract]
-    style NG_place2d_vector2_texcoordINT fill:#0bb, color:#111
+    style NG_place2d_vector2_texcoordINT fill:#0CF, color:#111
     NG_place2d_vector2_pivotINT([pivot]) ==.in2==> NG_place2d_vector2_N_subpivot[subtract]
-    style NG_place2d_vector2_pivotINT fill:#0bb, color:#111
+    style NG_place2d_vector2_pivotINT fill:#0CF, color:#111
     NG_place2d_vector2_N_addpivot2[add] --".in2"--> NG_place2d_vector2_N_switch_operationorder{switch}
+    style NG_place2d_vector2_N_switch_operationorder fill:#F80, color:#111
     NG_place2d_vector2_pivotINT([pivot]) ==.in2==> NG_place2d_vector2_N_addpivot2[add]
-    style NG_place2d_vector2_pivotINT fill:#0bb, color:#111
+    style NG_place2d_vector2_pivotINT fill:#0CF, color:#111
     NG_place2d_vector2_N_applyscale2[divide] --".in1"--> NG_place2d_vector2_N_addpivot2[add]
     NG_place2d_vector2_scaleINT([scale]) ==.in2==> NG_place2d_vector2_N_applyscale2[divide]
-    style NG_place2d_vector2_scaleINT fill:#0bb, color:#111
+    style NG_place2d_vector2_scaleINT fill:#0CF, color:#111
     NG_place2d_vector2_N_applyrot2[rotate2d] --".in1"--> NG_place2d_vector2_N_applyscale2[divide]
     NG_place2d_vector2_rotateINT([rotate]) ==.amount==> NG_place2d_vector2_N_applyrot2[rotate2d]
-    style NG_place2d_vector2_rotateINT fill:#0bb, color:#111
+    style NG_place2d_vector2_rotateINT fill:#0CF, color:#111
     NG_place2d_vector2_N_applyoffset2[subtract] --".in"--> NG_place2d_vector2_N_applyrot2[rotate2d]
     NG_place2d_vector2_offsetINT([offset]) ==.in2==> NG_place2d_vector2_N_applyoffset2[subtract]
-    style NG_place2d_vector2_offsetINT fill:#0bb, color:#111
+    style NG_place2d_vector2_offsetINT fill:#0CF, color:#111
     NG_place2d_vector2_N_subpivot[subtract] --".in1"--> NG_place2d_vector2_N_applyoffset2[subtract]
 
 ```
@@ -8202,6 +8212,38 @@ graph LR;
 | **in1** | stringarray | [] |  |  |  |  |  |  |  |  |  |  |
 | **in2** | string |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | stringarray | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+### Category: *trianglewave*
+<details><summary>ND_trianglewave_float</summary>
+<p>
+ 
+* *Nodedef*: ND_trianglewave_float
+* *Type*: float
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_trianglewave_float
+
+
+```mermaid
+graph LR; 
+    NG_trianglewave_float_subtract2[subtract] --> NG_trianglewave_float_out([out])
+    style NG_trianglewave_float_out fill:#0C0, color:#111
+    NG_trianglewave_float_absval2[absval] --".in2"--> NG_trianglewave_float_subtract2[subtract]
+    NG_trianglewave_float_subtract1[subtract] --".in"--> NG_trianglewave_float_absval2[absval]
+    NG_trianglewave_float_modulo1[modulo] --".in1"--> NG_trianglewave_float_subtract1[subtract]
+    NG_trianglewave_float_absval1[absval] --".in1"--> NG_trianglewave_float_modulo1[modulo]
+    NG_trianglewave_float_inINT([in]) ==.in==> NG_trianglewave_float_absval1[absval]
+    style NG_trianglewave_float_inINT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
 ### Category: *remap*
@@ -8877,17 +8919,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_contrast_float_N_add_float[add] --> NG_contrast_float_out([out])
-    style NG_contrast_float_out fill:#1b1, color:#111
+    style NG_contrast_float_out fill:#0C0, color:#111
     NG_contrast_float_pivotINT([pivot]) ==.in2==> NG_contrast_float_N_add_float[add]
-    style NG_contrast_float_pivotINT fill:#0bb, color:#111
+    style NG_contrast_float_pivotINT fill:#0CF, color:#111
     NG_contrast_float_N_mul_float[multiply] --".in1"--> NG_contrast_float_N_add_float[add]
     NG_contrast_float_amountINT([amount]) ==.in2==> NG_contrast_float_N_mul_float[multiply]
-    style NG_contrast_float_amountINT fill:#0bb, color:#111
+    style NG_contrast_float_amountINT fill:#0CF, color:#111
     NG_contrast_float_N_sub_float[subtract] --".in1"--> NG_contrast_float_N_mul_float[multiply]
     NG_contrast_float_inINT([in]) ==.in1==> NG_contrast_float_N_sub_float[subtract]
-    style NG_contrast_float_inINT fill:#0bb, color:#111
+    style NG_contrast_float_inINT fill:#0CF, color:#111
     NG_contrast_float_pivotINT([pivot]) ==.in2==> NG_contrast_float_N_sub_float[subtract]
-    style NG_contrast_float_pivotINT fill:#0bb, color:#111
+    style NG_contrast_float_pivotINT fill:#0CF, color:#111
 
 ```
  
@@ -8914,17 +8956,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_contrast_color3_N_add_color3[add] --> NG_contrast_color3_out([out])
-    style NG_contrast_color3_out fill:#1b1, color:#111
+    style NG_contrast_color3_out fill:#0C0, color:#111
     NG_contrast_color3_pivotINT([pivot]) ==.in2==> NG_contrast_color3_N_add_color3[add]
-    style NG_contrast_color3_pivotINT fill:#0bb, color:#111
+    style NG_contrast_color3_pivotINT fill:#0CF, color:#111
     NG_contrast_color3_N_mul_color3[multiply] --".in1"--> NG_contrast_color3_N_add_color3[add]
     NG_contrast_color3_amountINT([amount]) ==.in2==> NG_contrast_color3_N_mul_color3[multiply]
-    style NG_contrast_color3_amountINT fill:#0bb, color:#111
+    style NG_contrast_color3_amountINT fill:#0CF, color:#111
     NG_contrast_color3_N_sub_color3[subtract] --".in1"--> NG_contrast_color3_N_mul_color3[multiply]
     NG_contrast_color3_inINT([in]) ==.in1==> NG_contrast_color3_N_sub_color3[subtract]
-    style NG_contrast_color3_inINT fill:#0bb, color:#111
+    style NG_contrast_color3_inINT fill:#0CF, color:#111
     NG_contrast_color3_pivotINT([pivot]) ==.in2==> NG_contrast_color3_N_sub_color3[subtract]
-    style NG_contrast_color3_pivotINT fill:#0bb, color:#111
+    style NG_contrast_color3_pivotINT fill:#0CF, color:#111
 
 ```
  
@@ -8951,17 +8993,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_contrast_color4_N_add_color4[add] --> NG_contrast_color4_out([out])
-    style NG_contrast_color4_out fill:#1b1, color:#111
+    style NG_contrast_color4_out fill:#0C0, color:#111
     NG_contrast_color4_pivotINT([pivot]) ==.in2==> NG_contrast_color4_N_add_color4[add]
-    style NG_contrast_color4_pivotINT fill:#0bb, color:#111
+    style NG_contrast_color4_pivotINT fill:#0CF, color:#111
     NG_contrast_color4_N_mul_color4[multiply] --".in1"--> NG_contrast_color4_N_add_color4[add]
     NG_contrast_color4_amountINT([amount]) ==.in2==> NG_contrast_color4_N_mul_color4[multiply]
-    style NG_contrast_color4_amountINT fill:#0bb, color:#111
+    style NG_contrast_color4_amountINT fill:#0CF, color:#111
     NG_contrast_color4_N_sub_color4[subtract] --".in1"--> NG_contrast_color4_N_mul_color4[multiply]
     NG_contrast_color4_inINT([in]) ==.in1==> NG_contrast_color4_N_sub_color4[subtract]
-    style NG_contrast_color4_inINT fill:#0bb, color:#111
+    style NG_contrast_color4_inINT fill:#0CF, color:#111
     NG_contrast_color4_pivotINT([pivot]) ==.in2==> NG_contrast_color4_N_sub_color4[subtract]
-    style NG_contrast_color4_pivotINT fill:#0bb, color:#111
+    style NG_contrast_color4_pivotINT fill:#0CF, color:#111
 
 ```
  
@@ -8988,17 +9030,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_contrast_vector2_N_add_vector2[add] --> NG_contrast_vector2_out([out])
-    style NG_contrast_vector2_out fill:#1b1, color:#111
+    style NG_contrast_vector2_out fill:#0C0, color:#111
     NG_contrast_vector2_pivotINT([pivot]) ==.in2==> NG_contrast_vector2_N_add_vector2[add]
-    style NG_contrast_vector2_pivotINT fill:#0bb, color:#111
+    style NG_contrast_vector2_pivotINT fill:#0CF, color:#111
     NG_contrast_vector2_N_mul_vector2[multiply] --".in1"--> NG_contrast_vector2_N_add_vector2[add]
     NG_contrast_vector2_amountINT([amount]) ==.in2==> NG_contrast_vector2_N_mul_vector2[multiply]
-    style NG_contrast_vector2_amountINT fill:#0bb, color:#111
+    style NG_contrast_vector2_amountINT fill:#0CF, color:#111
     NG_contrast_vector2_N_sub_vector2[subtract] --".in1"--> NG_contrast_vector2_N_mul_vector2[multiply]
     NG_contrast_vector2_inINT([in]) ==.in1==> NG_contrast_vector2_N_sub_vector2[subtract]
-    style NG_contrast_vector2_inINT fill:#0bb, color:#111
+    style NG_contrast_vector2_inINT fill:#0CF, color:#111
     NG_contrast_vector2_pivotINT([pivot]) ==.in2==> NG_contrast_vector2_N_sub_vector2[subtract]
-    style NG_contrast_vector2_pivotINT fill:#0bb, color:#111
+    style NG_contrast_vector2_pivotINT fill:#0CF, color:#111
 
 ```
  
@@ -9025,17 +9067,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_contrast_vector3_N_add_vector3[add] --> NG_contrast_vector3_out([out])
-    style NG_contrast_vector3_out fill:#1b1, color:#111
+    style NG_contrast_vector3_out fill:#0C0, color:#111
     NG_contrast_vector3_pivotINT([pivot]) ==.in2==> NG_contrast_vector3_N_add_vector3[add]
-    style NG_contrast_vector3_pivotINT fill:#0bb, color:#111
+    style NG_contrast_vector3_pivotINT fill:#0CF, color:#111
     NG_contrast_vector3_N_mul_vector3[multiply] --".in1"--> NG_contrast_vector3_N_add_vector3[add]
     NG_contrast_vector3_amountINT([amount]) ==.in2==> NG_contrast_vector3_N_mul_vector3[multiply]
-    style NG_contrast_vector3_amountINT fill:#0bb, color:#111
+    style NG_contrast_vector3_amountINT fill:#0CF, color:#111
     NG_contrast_vector3_N_sub_vector3[subtract] --".in1"--> NG_contrast_vector3_N_mul_vector3[multiply]
     NG_contrast_vector3_inINT([in]) ==.in1==> NG_contrast_vector3_N_sub_vector3[subtract]
-    style NG_contrast_vector3_inINT fill:#0bb, color:#111
+    style NG_contrast_vector3_inINT fill:#0CF, color:#111
     NG_contrast_vector3_pivotINT([pivot]) ==.in2==> NG_contrast_vector3_N_sub_vector3[subtract]
-    style NG_contrast_vector3_pivotINT fill:#0bb, color:#111
+    style NG_contrast_vector3_pivotINT fill:#0CF, color:#111
 
 ```
  
@@ -9062,17 +9104,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_contrast_vector4_N_add_vector4[add] --> NG_contrast_vector4_out([out])
-    style NG_contrast_vector4_out fill:#1b1, color:#111
+    style NG_contrast_vector4_out fill:#0C0, color:#111
     NG_contrast_vector4_pivotINT([pivot]) ==.in2==> NG_contrast_vector4_N_add_vector4[add]
-    style NG_contrast_vector4_pivotINT fill:#0bb, color:#111
+    style NG_contrast_vector4_pivotINT fill:#0CF, color:#111
     NG_contrast_vector4_N_mul_vector4[multiply] --".in1"--> NG_contrast_vector4_N_add_vector4[add]
     NG_contrast_vector4_amountINT([amount]) ==.in2==> NG_contrast_vector4_N_mul_vector4[multiply]
-    style NG_contrast_vector4_amountINT fill:#0bb, color:#111
+    style NG_contrast_vector4_amountINT fill:#0CF, color:#111
     NG_contrast_vector4_N_sub_vector4[subtract] --".in1"--> NG_contrast_vector4_N_mul_vector4[multiply]
     NG_contrast_vector4_inINT([in]) ==.in1==> NG_contrast_vector4_N_sub_vector4[subtract]
-    style NG_contrast_vector4_inINT fill:#0bb, color:#111
+    style NG_contrast_vector4_inINT fill:#0CF, color:#111
     NG_contrast_vector4_pivotINT([pivot]) ==.in2==> NG_contrast_vector4_N_sub_vector4[subtract]
-    style NG_contrast_vector4_pivotINT fill:#0bb, color:#111
+    style NG_contrast_vector4_pivotINT fill:#0CF, color:#111
 
 ```
  
@@ -9099,17 +9141,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_contrast_color3FA_N_add_color3FA[add] --> NG_contrast_color3FA_out([out])
-    style NG_contrast_color3FA_out fill:#1b1, color:#111
+    style NG_contrast_color3FA_out fill:#0C0, color:#111
     NG_contrast_color3FA_pivotINT([pivot]) ==.in2==> NG_contrast_color3FA_N_add_color3FA[add]
-    style NG_contrast_color3FA_pivotINT fill:#0bb, color:#111
+    style NG_contrast_color3FA_pivotINT fill:#0CF, color:#111
     NG_contrast_color3FA_N_mul_color3FA[multiply] --".in1"--> NG_contrast_color3FA_N_add_color3FA[add]
     NG_contrast_color3FA_amountINT([amount]) ==.in2==> NG_contrast_color3FA_N_mul_color3FA[multiply]
-    style NG_contrast_color3FA_amountINT fill:#0bb, color:#111
+    style NG_contrast_color3FA_amountINT fill:#0CF, color:#111
     NG_contrast_color3FA_N_sub_color3FA[subtract] --".in1"--> NG_contrast_color3FA_N_mul_color3FA[multiply]
     NG_contrast_color3FA_inINT([in]) ==.in1==> NG_contrast_color3FA_N_sub_color3FA[subtract]
-    style NG_contrast_color3FA_inINT fill:#0bb, color:#111
+    style NG_contrast_color3FA_inINT fill:#0CF, color:#111
     NG_contrast_color3FA_pivotINT([pivot]) ==.in2==> NG_contrast_color3FA_N_sub_color3FA[subtract]
-    style NG_contrast_color3FA_pivotINT fill:#0bb, color:#111
+    style NG_contrast_color3FA_pivotINT fill:#0CF, color:#111
 
 ```
  
@@ -9136,17 +9178,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_contrast_color4FA_N_add_color4FA[add] --> NG_contrast_color4FA_out([out])
-    style NG_contrast_color4FA_out fill:#1b1, color:#111
+    style NG_contrast_color4FA_out fill:#0C0, color:#111
     NG_contrast_color4FA_pivotINT([pivot]) ==.in2==> NG_contrast_color4FA_N_add_color4FA[add]
-    style NG_contrast_color4FA_pivotINT fill:#0bb, color:#111
+    style NG_contrast_color4FA_pivotINT fill:#0CF, color:#111
     NG_contrast_color4FA_N_mul_color4FA[multiply] --".in1"--> NG_contrast_color4FA_N_add_color4FA[add]
     NG_contrast_color4FA_amountINT([amount]) ==.in2==> NG_contrast_color4FA_N_mul_color4FA[multiply]
-    style NG_contrast_color4FA_amountINT fill:#0bb, color:#111
+    style NG_contrast_color4FA_amountINT fill:#0CF, color:#111
     NG_contrast_color4FA_N_sub_color4FA[subtract] --".in1"--> NG_contrast_color4FA_N_mul_color4FA[multiply]
     NG_contrast_color4FA_inINT([in]) ==.in1==> NG_contrast_color4FA_N_sub_color4FA[subtract]
-    style NG_contrast_color4FA_inINT fill:#0bb, color:#111
+    style NG_contrast_color4FA_inINT fill:#0CF, color:#111
     NG_contrast_color4FA_pivotINT([pivot]) ==.in2==> NG_contrast_color4FA_N_sub_color4FA[subtract]
-    style NG_contrast_color4FA_pivotINT fill:#0bb, color:#111
+    style NG_contrast_color4FA_pivotINT fill:#0CF, color:#111
 
 ```
  
@@ -9173,17 +9215,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_contrast_vector2FA_N_add_vector2FA[add] --> NG_contrast_vector2FA_out([out])
-    style NG_contrast_vector2FA_out fill:#1b1, color:#111
+    style NG_contrast_vector2FA_out fill:#0C0, color:#111
     NG_contrast_vector2FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector2FA_N_add_vector2FA[add]
-    style NG_contrast_vector2FA_pivotINT fill:#0bb, color:#111
+    style NG_contrast_vector2FA_pivotINT fill:#0CF, color:#111
     NG_contrast_vector2FA_N_mul_vector2FA[multiply] --".in1"--> NG_contrast_vector2FA_N_add_vector2FA[add]
     NG_contrast_vector2FA_amountINT([amount]) ==.in2==> NG_contrast_vector2FA_N_mul_vector2FA[multiply]
-    style NG_contrast_vector2FA_amountINT fill:#0bb, color:#111
+    style NG_contrast_vector2FA_amountINT fill:#0CF, color:#111
     NG_contrast_vector2FA_N_sub_vector2FA[subtract] --".in1"--> NG_contrast_vector2FA_N_mul_vector2FA[multiply]
     NG_contrast_vector2FA_inINT([in]) ==.in1==> NG_contrast_vector2FA_N_sub_vector2FA[subtract]
-    style NG_contrast_vector2FA_inINT fill:#0bb, color:#111
+    style NG_contrast_vector2FA_inINT fill:#0CF, color:#111
     NG_contrast_vector2FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector2FA_N_sub_vector2FA[subtract]
-    style NG_contrast_vector2FA_pivotINT fill:#0bb, color:#111
+    style NG_contrast_vector2FA_pivotINT fill:#0CF, color:#111
 
 ```
  
@@ -9210,17 +9252,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_contrast_vector3FA_N_add_vector3FA[add] --> NG_contrast_vector3FA_out([out])
-    style NG_contrast_vector3FA_out fill:#1b1, color:#111
+    style NG_contrast_vector3FA_out fill:#0C0, color:#111
     NG_contrast_vector3FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector3FA_N_add_vector3FA[add]
-    style NG_contrast_vector3FA_pivotINT fill:#0bb, color:#111
+    style NG_contrast_vector3FA_pivotINT fill:#0CF, color:#111
     NG_contrast_vector3FA_N_mul_vector3FA[multiply] --".in1"--> NG_contrast_vector3FA_N_add_vector3FA[add]
     NG_contrast_vector3FA_amountINT([amount]) ==.in2==> NG_contrast_vector3FA_N_mul_vector3FA[multiply]
-    style NG_contrast_vector3FA_amountINT fill:#0bb, color:#111
+    style NG_contrast_vector3FA_amountINT fill:#0CF, color:#111
     NG_contrast_vector3FA_N_sub_vector3FA[subtract] --".in1"--> NG_contrast_vector3FA_N_mul_vector3FA[multiply]
     NG_contrast_vector3FA_inINT([in]) ==.in1==> NG_contrast_vector3FA_N_sub_vector3FA[subtract]
-    style NG_contrast_vector3FA_inINT fill:#0bb, color:#111
+    style NG_contrast_vector3FA_inINT fill:#0CF, color:#111
     NG_contrast_vector3FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector3FA_N_sub_vector3FA[subtract]
-    style NG_contrast_vector3FA_pivotINT fill:#0bb, color:#111
+    style NG_contrast_vector3FA_pivotINT fill:#0CF, color:#111
 
 ```
  
@@ -9247,17 +9289,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_contrast_vector4FA_N_add_vector4FA[add] --> NG_contrast_vector4FA_out([out])
-    style NG_contrast_vector4FA_out fill:#1b1, color:#111
+    style NG_contrast_vector4FA_out fill:#0C0, color:#111
     NG_contrast_vector4FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector4FA_N_add_vector4FA[add]
-    style NG_contrast_vector4FA_pivotINT fill:#0bb, color:#111
+    style NG_contrast_vector4FA_pivotINT fill:#0CF, color:#111
     NG_contrast_vector4FA_N_mul_vector4FA[multiply] --".in1"--> NG_contrast_vector4FA_N_add_vector4FA[add]
     NG_contrast_vector4FA_amountINT([amount]) ==.in2==> NG_contrast_vector4FA_N_mul_vector4FA[multiply]
-    style NG_contrast_vector4FA_amountINT fill:#0bb, color:#111
+    style NG_contrast_vector4FA_amountINT fill:#0CF, color:#111
     NG_contrast_vector4FA_N_sub_vector4FA[subtract] --".in1"--> NG_contrast_vector4FA_N_mul_vector4FA[multiply]
     NG_contrast_vector4FA_inINT([in]) ==.in1==> NG_contrast_vector4FA_N_sub_vector4FA[subtract]
-    style NG_contrast_vector4FA_inINT fill:#0bb, color:#111
+    style NG_contrast_vector4FA_inINT fill:#0CF, color:#111
     NG_contrast_vector4FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector4FA_N_sub_vector4FA[subtract]
-    style NG_contrast_vector4FA_pivotINT fill:#0bb, color:#111
+    style NG_contrast_vector4FA_pivotINT fill:#0CF, color:#111
 
 ```
  
@@ -9285,35 +9327,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_range_float_N_switch_float{ifequal} --> NG_range_float_out([out])
-    style NG_range_float_out fill:#1b1, color:#111
+    style NG_range_float_out fill:#0C0, color:#111
     NG_range_float_doclampINT([doclamp]) ==.value1==> NG_range_float_N_switch_float[ifequal]
-    style NG_range_float_doclampINT fill:#0bb, color:#111
+    style NG_range_float_doclampINT fill:#0CF, color:#111
     NG_range_float_N_clamp_float[clamp] --".in1"--> NG_range_float_N_switch_float{ifequal}
+    style NG_range_float_N_switch_float fill:#F80, color:#111
     NG_range_float_outlowINT([outlow]) ==.low==> NG_range_float_N_clamp_float[clamp]
-    style NG_range_float_outlowINT fill:#0bb, color:#111
+    style NG_range_float_outlowINT fill:#0CF, color:#111
     NG_range_float_outhighINT([outhigh]) ==.high==> NG_range_float_N_clamp_float[clamp]
-    style NG_range_float_outhighINT fill:#0bb, color:#111
+    style NG_range_float_outhighINT fill:#0CF, color:#111
     NG_range_float_N_remap2_float[remap] --".in"--> NG_range_float_N_clamp_float[clamp]
     NG_range_float_outlowINT([outlow]) ==.outlow==> NG_range_float_N_remap2_float[remap]
-    style NG_range_float_outlowINT fill:#0bb, color:#111
+    style NG_range_float_outlowINT fill:#0CF, color:#111
     NG_range_float_outhighINT([outhigh]) ==.outhigh==> NG_range_float_N_remap2_float[remap]
-    style NG_range_float_outhighINT fill:#0bb, color:#111
+    style NG_range_float_outhighINT fill:#0CF, color:#111
     NG_range_float_N_gamma_float[multiply] --".in"--> NG_range_float_N_remap2_float[remap]
     NG_range_float_N_pow_float[power] --".in1"--> NG_range_float_N_gamma_float[multiply]
     NG_range_float_N_abs_float[absval] --".in1"--> NG_range_float_N_pow_float[power]
     NG_range_float_N_remap1_float[remap] --".in"--> NG_range_float_N_abs_float[absval]
     NG_range_float_inINT([in]) ==.in==> NG_range_float_N_remap1_float[remap]
-    style NG_range_float_inINT fill:#0bb, color:#111
+    style NG_range_float_inINT fill:#0CF, color:#111
     NG_range_float_inlowINT([inlow]) ==.inlow==> NG_range_float_N_remap1_float[remap]
-    style NG_range_float_inlowINT fill:#0bb, color:#111
+    style NG_range_float_inlowINT fill:#0CF, color:#111
     NG_range_float_inhighINT([inhigh]) ==.inhigh==> NG_range_float_N_remap1_float[remap]
-    style NG_range_float_inhighINT fill:#0bb, color:#111
+    style NG_range_float_inhighINT fill:#0CF, color:#111
     NG_range_float_N_recip_float[divide] --".in2"--> NG_range_float_N_pow_float[power]
     NG_range_float_gammaINT([gamma]) ==.in2==> NG_range_float_N_recip_float[divide]
-    style NG_range_float_gammaINT fill:#0bb, color:#111
+    style NG_range_float_gammaINT fill:#0CF, color:#111
     NG_range_float_N_sign_float[sign] --".in2"--> NG_range_float_N_gamma_float[multiply]
     NG_range_float_N_remap1_float[remap] --".in"--> NG_range_float_N_sign_float[sign]
     NG_range_float_N_remap2_float[remap] --".in2"--> NG_range_float_N_switch_float{ifequal}
+    style NG_range_float_N_switch_float fill:#F80, color:#111
 
 ```
  
@@ -9344,35 +9388,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_range_color3_N_switch_color3{ifequal} --> NG_range_color3_out([out])
-    style NG_range_color3_out fill:#1b1, color:#111
+    style NG_range_color3_out fill:#0C0, color:#111
     NG_range_color3_doclampINT([doclamp]) ==.value1==> NG_range_color3_N_switch_color3[ifequal]
-    style NG_range_color3_doclampINT fill:#0bb, color:#111
+    style NG_range_color3_doclampINT fill:#0CF, color:#111
     NG_range_color3_N_clamp_color3[clamp] --".in1"--> NG_range_color3_N_switch_color3{ifequal}
+    style NG_range_color3_N_switch_color3 fill:#F80, color:#111
     NG_range_color3_outlowINT([outlow]) ==.low==> NG_range_color3_N_clamp_color3[clamp]
-    style NG_range_color3_outlowINT fill:#0bb, color:#111
+    style NG_range_color3_outlowINT fill:#0CF, color:#111
     NG_range_color3_outhighINT([outhigh]) ==.high==> NG_range_color3_N_clamp_color3[clamp]
-    style NG_range_color3_outhighINT fill:#0bb, color:#111
+    style NG_range_color3_outhighINT fill:#0CF, color:#111
     NG_range_color3_N_remap2_color3[remap] --".in"--> NG_range_color3_N_clamp_color3[clamp]
     NG_range_color3_outlowINT([outlow]) ==.outlow==> NG_range_color3_N_remap2_color3[remap]
-    style NG_range_color3_outlowINT fill:#0bb, color:#111
+    style NG_range_color3_outlowINT fill:#0CF, color:#111
     NG_range_color3_outhighINT([outhigh]) ==.outhigh==> NG_range_color3_N_remap2_color3[remap]
-    style NG_range_color3_outhighINT fill:#0bb, color:#111
+    style NG_range_color3_outhighINT fill:#0CF, color:#111
     NG_range_color3_N_gamma_color3[multiply] --".in"--> NG_range_color3_N_remap2_color3[remap]
     NG_range_color3_N_pow_color3[power] --".in1"--> NG_range_color3_N_gamma_color3[multiply]
     NG_range_color3_N_abs_color3[absval] --".in1"--> NG_range_color3_N_pow_color3[power]
     NG_range_color3_N_remap1_color3[remap] --".in"--> NG_range_color3_N_abs_color3[absval]
     NG_range_color3_inINT([in]) ==.in==> NG_range_color3_N_remap1_color3[remap]
-    style NG_range_color3_inINT fill:#0bb, color:#111
+    style NG_range_color3_inINT fill:#0CF, color:#111
     NG_range_color3_inlowINT([inlow]) ==.inlow==> NG_range_color3_N_remap1_color3[remap]
-    style NG_range_color3_inlowINT fill:#0bb, color:#111
+    style NG_range_color3_inlowINT fill:#0CF, color:#111
     NG_range_color3_inhighINT([inhigh]) ==.inhigh==> NG_range_color3_N_remap1_color3[remap]
-    style NG_range_color3_inhighINT fill:#0bb, color:#111
+    style NG_range_color3_inhighINT fill:#0CF, color:#111
     NG_range_color3_N_recip_color3[divide] --".in2"--> NG_range_color3_N_pow_color3[power]
     NG_range_color3_gammaINT([gamma]) ==.in2==> NG_range_color3_N_recip_color3[divide]
-    style NG_range_color3_gammaINT fill:#0bb, color:#111
+    style NG_range_color3_gammaINT fill:#0CF, color:#111
     NG_range_color3_N_sign_color3[sign] --".in2"--> NG_range_color3_N_gamma_color3[multiply]
     NG_range_color3_N_remap1_color3[remap] --".in"--> NG_range_color3_N_sign_color3[sign]
     NG_range_color3_N_remap2_color3[remap] --".in2"--> NG_range_color3_N_switch_color3{ifequal}
+    style NG_range_color3_N_switch_color3 fill:#F80, color:#111
 
 ```
  
@@ -9403,35 +9449,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_range_color4_N_switch_color4{ifequal} --> NG_range_color4_out([out])
-    style NG_range_color4_out fill:#1b1, color:#111
+    style NG_range_color4_out fill:#0C0, color:#111
     NG_range_color4_doclampINT([doclamp]) ==.value1==> NG_range_color4_N_switch_color4[ifequal]
-    style NG_range_color4_doclampINT fill:#0bb, color:#111
+    style NG_range_color4_doclampINT fill:#0CF, color:#111
     NG_range_color4_N_clamp_color4[clamp] --".in1"--> NG_range_color4_N_switch_color4{ifequal}
+    style NG_range_color4_N_switch_color4 fill:#F80, color:#111
     NG_range_color4_outlowINT([outlow]) ==.low==> NG_range_color4_N_clamp_color4[clamp]
-    style NG_range_color4_outlowINT fill:#0bb, color:#111
+    style NG_range_color4_outlowINT fill:#0CF, color:#111
     NG_range_color4_outhighINT([outhigh]) ==.high==> NG_range_color4_N_clamp_color4[clamp]
-    style NG_range_color4_outhighINT fill:#0bb, color:#111
+    style NG_range_color4_outhighINT fill:#0CF, color:#111
     NG_range_color4_N_remap2_color4[remap] --".in"--> NG_range_color4_N_clamp_color4[clamp]
     NG_range_color4_outlowINT([outlow]) ==.outlow==> NG_range_color4_N_remap2_color4[remap]
-    style NG_range_color4_outlowINT fill:#0bb, color:#111
+    style NG_range_color4_outlowINT fill:#0CF, color:#111
     NG_range_color4_outhighINT([outhigh]) ==.outhigh==> NG_range_color4_N_remap2_color4[remap]
-    style NG_range_color4_outhighINT fill:#0bb, color:#111
+    style NG_range_color4_outhighINT fill:#0CF, color:#111
     NG_range_color4_N_gamma_color4[multiply] --".in"--> NG_range_color4_N_remap2_color4[remap]
     NG_range_color4_N_pow_color4[power] --".in1"--> NG_range_color4_N_gamma_color4[multiply]
     NG_range_color4_N_abs_color4[absval] --".in1"--> NG_range_color4_N_pow_color4[power]
     NG_range_color4_N_remap1_color4[remap] --".in"--> NG_range_color4_N_abs_color4[absval]
     NG_range_color4_inINT([in]) ==.in==> NG_range_color4_N_remap1_color4[remap]
-    style NG_range_color4_inINT fill:#0bb, color:#111
+    style NG_range_color4_inINT fill:#0CF, color:#111
     NG_range_color4_inlowINT([inlow]) ==.inlow==> NG_range_color4_N_remap1_color4[remap]
-    style NG_range_color4_inlowINT fill:#0bb, color:#111
+    style NG_range_color4_inlowINT fill:#0CF, color:#111
     NG_range_color4_inhighINT([inhigh]) ==.inhigh==> NG_range_color4_N_remap1_color4[remap]
-    style NG_range_color4_inhighINT fill:#0bb, color:#111
+    style NG_range_color4_inhighINT fill:#0CF, color:#111
     NG_range_color4_N_recip_color4[divide] --".in2"--> NG_range_color4_N_pow_color4[power]
     NG_range_color4_gammaINT([gamma]) ==.in2==> NG_range_color4_N_recip_color4[divide]
-    style NG_range_color4_gammaINT fill:#0bb, color:#111
+    style NG_range_color4_gammaINT fill:#0CF, color:#111
     NG_range_color4_N_sign_color4[sign] --".in2"--> NG_range_color4_N_gamma_color4[multiply]
     NG_range_color4_N_remap1_color4[remap] --".in"--> NG_range_color4_N_sign_color4[sign]
     NG_range_color4_N_remap2_color4[remap] --".in2"--> NG_range_color4_N_switch_color4{ifequal}
+    style NG_range_color4_N_switch_color4 fill:#F80, color:#111
 
 ```
  
@@ -9462,35 +9510,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_range_vector2_N_switch_vector2{ifequal} --> NG_range_vector2_out([out])
-    style NG_range_vector2_out fill:#1b1, color:#111
+    style NG_range_vector2_out fill:#0C0, color:#111
     NG_range_vector2_doclampINT([doclamp]) ==.value1==> NG_range_vector2_N_switch_vector2[ifequal]
-    style NG_range_vector2_doclampINT fill:#0bb, color:#111
+    style NG_range_vector2_doclampINT fill:#0CF, color:#111
     NG_range_vector2_N_clamp_vector2[clamp] --".in1"--> NG_range_vector2_N_switch_vector2{ifequal}
+    style NG_range_vector2_N_switch_vector2 fill:#F80, color:#111
     NG_range_vector2_outlowINT([outlow]) ==.low==> NG_range_vector2_N_clamp_vector2[clamp]
-    style NG_range_vector2_outlowINT fill:#0bb, color:#111
+    style NG_range_vector2_outlowINT fill:#0CF, color:#111
     NG_range_vector2_outhighINT([outhigh]) ==.high==> NG_range_vector2_N_clamp_vector2[clamp]
-    style NG_range_vector2_outhighINT fill:#0bb, color:#111
+    style NG_range_vector2_outhighINT fill:#0CF, color:#111
     NG_range_vector2_N_remap2_vector2[remap] --".in"--> NG_range_vector2_N_clamp_vector2[clamp]
     NG_range_vector2_outlowINT([outlow]) ==.outlow==> NG_range_vector2_N_remap2_vector2[remap]
-    style NG_range_vector2_outlowINT fill:#0bb, color:#111
+    style NG_range_vector2_outlowINT fill:#0CF, color:#111
     NG_range_vector2_outhighINT([outhigh]) ==.outhigh==> NG_range_vector2_N_remap2_vector2[remap]
-    style NG_range_vector2_outhighINT fill:#0bb, color:#111
+    style NG_range_vector2_outhighINT fill:#0CF, color:#111
     NG_range_vector2_N_gamma_vector2[multiply] --".in"--> NG_range_vector2_N_remap2_vector2[remap]
     NG_range_vector2_N_pow_vector2[power] --".in1"--> NG_range_vector2_N_gamma_vector2[multiply]
     NG_range_vector2_N_abs_vector2[absval] --".in1"--> NG_range_vector2_N_pow_vector2[power]
     NG_range_vector2_N_remap1_vector2[remap] --".in"--> NG_range_vector2_N_abs_vector2[absval]
     NG_range_vector2_inINT([in]) ==.in==> NG_range_vector2_N_remap1_vector2[remap]
-    style NG_range_vector2_inINT fill:#0bb, color:#111
+    style NG_range_vector2_inINT fill:#0CF, color:#111
     NG_range_vector2_inlowINT([inlow]) ==.inlow==> NG_range_vector2_N_remap1_vector2[remap]
-    style NG_range_vector2_inlowINT fill:#0bb, color:#111
+    style NG_range_vector2_inlowINT fill:#0CF, color:#111
     NG_range_vector2_inhighINT([inhigh]) ==.inhigh==> NG_range_vector2_N_remap1_vector2[remap]
-    style NG_range_vector2_inhighINT fill:#0bb, color:#111
+    style NG_range_vector2_inhighINT fill:#0CF, color:#111
     NG_range_vector2_N_recip_vector2[divide] --".in2"--> NG_range_vector2_N_pow_vector2[power]
     NG_range_vector2_gammaINT([gamma]) ==.in2==> NG_range_vector2_N_recip_vector2[divide]
-    style NG_range_vector2_gammaINT fill:#0bb, color:#111
+    style NG_range_vector2_gammaINT fill:#0CF, color:#111
     NG_range_vector2_N_sign_vector2[sign] --".in2"--> NG_range_vector2_N_gamma_vector2[multiply]
     NG_range_vector2_N_remap1_vector2[remap] --".in"--> NG_range_vector2_N_sign_vector2[sign]
     NG_range_vector2_N_remap2_vector2[remap] --".in2"--> NG_range_vector2_N_switch_vector2{ifequal}
+    style NG_range_vector2_N_switch_vector2 fill:#F80, color:#111
 
 ```
  
@@ -9521,35 +9571,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_range_vector3_N_switch_vector3{ifequal} --> NG_range_vector3_out([out])
-    style NG_range_vector3_out fill:#1b1, color:#111
+    style NG_range_vector3_out fill:#0C0, color:#111
     NG_range_vector3_doclampINT([doclamp]) ==.value1==> NG_range_vector3_N_switch_vector3[ifequal]
-    style NG_range_vector3_doclampINT fill:#0bb, color:#111
+    style NG_range_vector3_doclampINT fill:#0CF, color:#111
     NG_range_vector3_N_clamp_vector3[clamp] --".in1"--> NG_range_vector3_N_switch_vector3{ifequal}
+    style NG_range_vector3_N_switch_vector3 fill:#F80, color:#111
     NG_range_vector3_outlowINT([outlow]) ==.low==> NG_range_vector3_N_clamp_vector3[clamp]
-    style NG_range_vector3_outlowINT fill:#0bb, color:#111
+    style NG_range_vector3_outlowINT fill:#0CF, color:#111
     NG_range_vector3_outhighINT([outhigh]) ==.high==> NG_range_vector3_N_clamp_vector3[clamp]
-    style NG_range_vector3_outhighINT fill:#0bb, color:#111
+    style NG_range_vector3_outhighINT fill:#0CF, color:#111
     NG_range_vector3_N_remap2_vector3[remap] --".in"--> NG_range_vector3_N_clamp_vector3[clamp]
     NG_range_vector3_outlowINT([outlow]) ==.outlow==> NG_range_vector3_N_remap2_vector3[remap]
-    style NG_range_vector3_outlowINT fill:#0bb, color:#111
+    style NG_range_vector3_outlowINT fill:#0CF, color:#111
     NG_range_vector3_outhighINT([outhigh]) ==.outhigh==> NG_range_vector3_N_remap2_vector3[remap]
-    style NG_range_vector3_outhighINT fill:#0bb, color:#111
+    style NG_range_vector3_outhighINT fill:#0CF, color:#111
     NG_range_vector3_N_gamma_vector3[multiply] --".in"--> NG_range_vector3_N_remap2_vector3[remap]
     NG_range_vector3_N_pow_vector3[power] --".in1"--> NG_range_vector3_N_gamma_vector3[multiply]
     NG_range_vector3_N_abs_vector3[absval] --".in1"--> NG_range_vector3_N_pow_vector3[power]
     NG_range_vector3_N_remap1_vector3[remap] --".in"--> NG_range_vector3_N_abs_vector3[absval]
     NG_range_vector3_inINT([in]) ==.in==> NG_range_vector3_N_remap1_vector3[remap]
-    style NG_range_vector3_inINT fill:#0bb, color:#111
+    style NG_range_vector3_inINT fill:#0CF, color:#111
     NG_range_vector3_inlowINT([inlow]) ==.inlow==> NG_range_vector3_N_remap1_vector3[remap]
-    style NG_range_vector3_inlowINT fill:#0bb, color:#111
+    style NG_range_vector3_inlowINT fill:#0CF, color:#111
     NG_range_vector3_inhighINT([inhigh]) ==.inhigh==> NG_range_vector3_N_remap1_vector3[remap]
-    style NG_range_vector3_inhighINT fill:#0bb, color:#111
+    style NG_range_vector3_inhighINT fill:#0CF, color:#111
     NG_range_vector3_N_recip_vector3[divide] --".in2"--> NG_range_vector3_N_pow_vector3[power]
     NG_range_vector3_gammaINT([gamma]) ==.in2==> NG_range_vector3_N_recip_vector3[divide]
-    style NG_range_vector3_gammaINT fill:#0bb, color:#111
+    style NG_range_vector3_gammaINT fill:#0CF, color:#111
     NG_range_vector3_N_sign_vector3[sign] --".in2"--> NG_range_vector3_N_gamma_vector3[multiply]
     NG_range_vector3_N_remap1_vector3[remap] --".in"--> NG_range_vector3_N_sign_vector3[sign]
     NG_range_vector3_N_remap2_vector3[remap] --".in2"--> NG_range_vector3_N_switch_vector3{ifequal}
+    style NG_range_vector3_N_switch_vector3 fill:#F80, color:#111
 
 ```
  
@@ -9580,35 +9632,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_range_vector4_N_switch_vector4{ifequal} --> NG_range_vector4_out([out])
-    style NG_range_vector4_out fill:#1b1, color:#111
+    style NG_range_vector4_out fill:#0C0, color:#111
     NG_range_vector4_doclampINT([doclamp]) ==.value1==> NG_range_vector4_N_switch_vector4[ifequal]
-    style NG_range_vector4_doclampINT fill:#0bb, color:#111
+    style NG_range_vector4_doclampINT fill:#0CF, color:#111
     NG_range_vector4_N_clamp_vector4[clamp] --".in1"--> NG_range_vector4_N_switch_vector4{ifequal}
+    style NG_range_vector4_N_switch_vector4 fill:#F80, color:#111
     NG_range_vector4_outlowINT([outlow]) ==.low==> NG_range_vector4_N_clamp_vector4[clamp]
-    style NG_range_vector4_outlowINT fill:#0bb, color:#111
+    style NG_range_vector4_outlowINT fill:#0CF, color:#111
     NG_range_vector4_outhighINT([outhigh]) ==.high==> NG_range_vector4_N_clamp_vector4[clamp]
-    style NG_range_vector4_outhighINT fill:#0bb, color:#111
+    style NG_range_vector4_outhighINT fill:#0CF, color:#111
     NG_range_vector4_N_remap2_vector4[remap] --".in"--> NG_range_vector4_N_clamp_vector4[clamp]
     NG_range_vector4_outlowINT([outlow]) ==.outlow==> NG_range_vector4_N_remap2_vector4[remap]
-    style NG_range_vector4_outlowINT fill:#0bb, color:#111
+    style NG_range_vector4_outlowINT fill:#0CF, color:#111
     NG_range_vector4_outhighINT([outhigh]) ==.outhigh==> NG_range_vector4_N_remap2_vector4[remap]
-    style NG_range_vector4_outhighINT fill:#0bb, color:#111
+    style NG_range_vector4_outhighINT fill:#0CF, color:#111
     NG_range_vector4_N_gamma_vector4[multiply] --".in"--> NG_range_vector4_N_remap2_vector4[remap]
     NG_range_vector4_N_pow_vector4[power] --".in1"--> NG_range_vector4_N_gamma_vector4[multiply]
     NG_range_vector4_N_abs_vector4[absval] --".in1"--> NG_range_vector4_N_pow_vector4[power]
     NG_range_vector4_N_remap1_vector4[remap] --".in"--> NG_range_vector4_N_abs_vector4[absval]
     NG_range_vector4_inINT([in]) ==.in==> NG_range_vector4_N_remap1_vector4[remap]
-    style NG_range_vector4_inINT fill:#0bb, color:#111
+    style NG_range_vector4_inINT fill:#0CF, color:#111
     NG_range_vector4_inlowINT([inlow]) ==.inlow==> NG_range_vector4_N_remap1_vector4[remap]
-    style NG_range_vector4_inlowINT fill:#0bb, color:#111
+    style NG_range_vector4_inlowINT fill:#0CF, color:#111
     NG_range_vector4_inhighINT([inhigh]) ==.inhigh==> NG_range_vector4_N_remap1_vector4[remap]
-    style NG_range_vector4_inhighINT fill:#0bb, color:#111
+    style NG_range_vector4_inhighINT fill:#0CF, color:#111
     NG_range_vector4_N_recip_vector4[divide] --".in2"--> NG_range_vector4_N_pow_vector4[power]
     NG_range_vector4_gammaINT([gamma]) ==.in2==> NG_range_vector4_N_recip_vector4[divide]
-    style NG_range_vector4_gammaINT fill:#0bb, color:#111
+    style NG_range_vector4_gammaINT fill:#0CF, color:#111
     NG_range_vector4_N_sign_vector4[sign] --".in2"--> NG_range_vector4_N_gamma_vector4[multiply]
     NG_range_vector4_N_remap1_vector4[remap] --".in"--> NG_range_vector4_N_sign_vector4[sign]
     NG_range_vector4_N_remap2_vector4[remap] --".in2"--> NG_range_vector4_N_switch_vector4{ifequal}
+    style NG_range_vector4_N_switch_vector4 fill:#F80, color:#111
 
 ```
  
@@ -9639,35 +9693,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_range_color3FA_N_switch_color3FA{ifequal} --> NG_range_color3FA_out([out])
-    style NG_range_color3FA_out fill:#1b1, color:#111
+    style NG_range_color3FA_out fill:#0C0, color:#111
     NG_range_color3FA_doclampINT([doclamp]) ==.value1==> NG_range_color3FA_N_switch_color3FA[ifequal]
-    style NG_range_color3FA_doclampINT fill:#0bb, color:#111
+    style NG_range_color3FA_doclampINT fill:#0CF, color:#111
     NG_range_color3FA_N_clamp_color3FA[clamp] --".in1"--> NG_range_color3FA_N_switch_color3FA{ifequal}
+    style NG_range_color3FA_N_switch_color3FA fill:#F80, color:#111
     NG_range_color3FA_outlowINT([outlow]) ==.low==> NG_range_color3FA_N_clamp_color3FA[clamp]
-    style NG_range_color3FA_outlowINT fill:#0bb, color:#111
+    style NG_range_color3FA_outlowINT fill:#0CF, color:#111
     NG_range_color3FA_outhighINT([outhigh]) ==.high==> NG_range_color3FA_N_clamp_color3FA[clamp]
-    style NG_range_color3FA_outhighINT fill:#0bb, color:#111
+    style NG_range_color3FA_outhighINT fill:#0CF, color:#111
     NG_range_color3FA_N_remap2_color3FA[remap] --".in"--> NG_range_color3FA_N_clamp_color3FA[clamp]
     NG_range_color3FA_outlowINT([outlow]) ==.outlow==> NG_range_color3FA_N_remap2_color3FA[remap]
-    style NG_range_color3FA_outlowINT fill:#0bb, color:#111
+    style NG_range_color3FA_outlowINT fill:#0CF, color:#111
     NG_range_color3FA_outhighINT([outhigh]) ==.outhigh==> NG_range_color3FA_N_remap2_color3FA[remap]
-    style NG_range_color3FA_outhighINT fill:#0bb, color:#111
+    style NG_range_color3FA_outhighINT fill:#0CF, color:#111
     NG_range_color3FA_N_gamma_color3FA[multiply] --".in"--> NG_range_color3FA_N_remap2_color3FA[remap]
     NG_range_color3FA_N_pow_color3FA[power] --".in1"--> NG_range_color3FA_N_gamma_color3FA[multiply]
     NG_range_color3FA_N_abs_color3FA[absval] --".in1"--> NG_range_color3FA_N_pow_color3FA[power]
     NG_range_color3FA_N_remap1_color3FA[remap] --".in"--> NG_range_color3FA_N_abs_color3FA[absval]
     NG_range_color3FA_inINT([in]) ==.in==> NG_range_color3FA_N_remap1_color3FA[remap]
-    style NG_range_color3FA_inINT fill:#0bb, color:#111
+    style NG_range_color3FA_inINT fill:#0CF, color:#111
     NG_range_color3FA_inlowINT([inlow]) ==.inlow==> NG_range_color3FA_N_remap1_color3FA[remap]
-    style NG_range_color3FA_inlowINT fill:#0bb, color:#111
+    style NG_range_color3FA_inlowINT fill:#0CF, color:#111
     NG_range_color3FA_inhighINT([inhigh]) ==.inhigh==> NG_range_color3FA_N_remap1_color3FA[remap]
-    style NG_range_color3FA_inhighINT fill:#0bb, color:#111
+    style NG_range_color3FA_inhighINT fill:#0CF, color:#111
     NG_range_color3FA_N_recip_color3FA[divide] --".in2"--> NG_range_color3FA_N_pow_color3FA[power]
     NG_range_color3FA_gammaINT([gamma]) ==.in2==> NG_range_color3FA_N_recip_color3FA[divide]
-    style NG_range_color3FA_gammaINT fill:#0bb, color:#111
+    style NG_range_color3FA_gammaINT fill:#0CF, color:#111
     NG_range_color3FA_N_sign_color3FA[sign] --".in2"--> NG_range_color3FA_N_gamma_color3FA[multiply]
     NG_range_color3FA_N_remap1_color3FA[remap] --".in"--> NG_range_color3FA_N_sign_color3FA[sign]
     NG_range_color3FA_N_remap2_color3FA[remap] --".in2"--> NG_range_color3FA_N_switch_color3FA{ifequal}
+    style NG_range_color3FA_N_switch_color3FA fill:#F80, color:#111
 
 ```
  
@@ -9698,35 +9754,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_range_color4FA_N_switch_color4FA{ifequal} --> NG_range_color4FA_out([out])
-    style NG_range_color4FA_out fill:#1b1, color:#111
+    style NG_range_color4FA_out fill:#0C0, color:#111
     NG_range_color4FA_doclampINT([doclamp]) ==.value1==> NG_range_color4FA_N_switch_color4FA[ifequal]
-    style NG_range_color4FA_doclampINT fill:#0bb, color:#111
+    style NG_range_color4FA_doclampINT fill:#0CF, color:#111
     NG_range_color4FA_N_clamp_color4FA[clamp] --".in1"--> NG_range_color4FA_N_switch_color4FA{ifequal}
+    style NG_range_color4FA_N_switch_color4FA fill:#F80, color:#111
     NG_range_color4FA_outlowINT([outlow]) ==.low==> NG_range_color4FA_N_clamp_color4FA[clamp]
-    style NG_range_color4FA_outlowINT fill:#0bb, color:#111
+    style NG_range_color4FA_outlowINT fill:#0CF, color:#111
     NG_range_color4FA_outhighINT([outhigh]) ==.high==> NG_range_color4FA_N_clamp_color4FA[clamp]
-    style NG_range_color4FA_outhighINT fill:#0bb, color:#111
+    style NG_range_color4FA_outhighINT fill:#0CF, color:#111
     NG_range_color4FA_N_remap2_color4FA[remap] --".in"--> NG_range_color4FA_N_clamp_color4FA[clamp]
     NG_range_color4FA_outlowINT([outlow]) ==.outlow==> NG_range_color4FA_N_remap2_color4FA[remap]
-    style NG_range_color4FA_outlowINT fill:#0bb, color:#111
+    style NG_range_color4FA_outlowINT fill:#0CF, color:#111
     NG_range_color4FA_outhighINT([outhigh]) ==.outhigh==> NG_range_color4FA_N_remap2_color4FA[remap]
-    style NG_range_color4FA_outhighINT fill:#0bb, color:#111
+    style NG_range_color4FA_outhighINT fill:#0CF, color:#111
     NG_range_color4FA_N_gamma_color4FA[multiply] --".in"--> NG_range_color4FA_N_remap2_color4FA[remap]
     NG_range_color4FA_N_pow_color4FA[power] --".in1"--> NG_range_color4FA_N_gamma_color4FA[multiply]
     NG_range_color4FA_N_abs_color4FA[absval] --".in1"--> NG_range_color4FA_N_pow_color4FA[power]
     NG_range_color4FA_N_remap1_color4FA[remap] --".in"--> NG_range_color4FA_N_abs_color4FA[absval]
     NG_range_color4FA_inINT([in]) ==.in==> NG_range_color4FA_N_remap1_color4FA[remap]
-    style NG_range_color4FA_inINT fill:#0bb, color:#111
+    style NG_range_color4FA_inINT fill:#0CF, color:#111
     NG_range_color4FA_inlowINT([inlow]) ==.inlow==> NG_range_color4FA_N_remap1_color4FA[remap]
-    style NG_range_color4FA_inlowINT fill:#0bb, color:#111
+    style NG_range_color4FA_inlowINT fill:#0CF, color:#111
     NG_range_color4FA_inhighINT([inhigh]) ==.inhigh==> NG_range_color4FA_N_remap1_color4FA[remap]
-    style NG_range_color4FA_inhighINT fill:#0bb, color:#111
+    style NG_range_color4FA_inhighINT fill:#0CF, color:#111
     NG_range_color4FA_N_recip_color4FA[divide] --".in2"--> NG_range_color4FA_N_pow_color4FA[power]
     NG_range_color4FA_gammaINT([gamma]) ==.in2==> NG_range_color4FA_N_recip_color4FA[divide]
-    style NG_range_color4FA_gammaINT fill:#0bb, color:#111
+    style NG_range_color4FA_gammaINT fill:#0CF, color:#111
     NG_range_color4FA_N_sign_color4FA[sign] --".in2"--> NG_range_color4FA_N_gamma_color4FA[multiply]
     NG_range_color4FA_N_remap1_color4FA[remap] --".in"--> NG_range_color4FA_N_sign_color4FA[sign]
     NG_range_color4FA_N_remap2_color4FA[remap] --".in2"--> NG_range_color4FA_N_switch_color4FA{ifequal}
+    style NG_range_color4FA_N_switch_color4FA fill:#F80, color:#111
 
 ```
  
@@ -9757,35 +9815,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_range_vector2FA_N_switch_vector2FA{ifequal} --> NG_range_vector2FA_out([out])
-    style NG_range_vector2FA_out fill:#1b1, color:#111
+    style NG_range_vector2FA_out fill:#0C0, color:#111
     NG_range_vector2FA_doclampINT([doclamp]) ==.value1==> NG_range_vector2FA_N_switch_vector2FA[ifequal]
-    style NG_range_vector2FA_doclampINT fill:#0bb, color:#111
+    style NG_range_vector2FA_doclampINT fill:#0CF, color:#111
     NG_range_vector2FA_N_clamp_vector2FA[clamp] --".in1"--> NG_range_vector2FA_N_switch_vector2FA{ifequal}
+    style NG_range_vector2FA_N_switch_vector2FA fill:#F80, color:#111
     NG_range_vector2FA_outlowINT([outlow]) ==.low==> NG_range_vector2FA_N_clamp_vector2FA[clamp]
-    style NG_range_vector2FA_outlowINT fill:#0bb, color:#111
+    style NG_range_vector2FA_outlowINT fill:#0CF, color:#111
     NG_range_vector2FA_outhighINT([outhigh]) ==.high==> NG_range_vector2FA_N_clamp_vector2FA[clamp]
-    style NG_range_vector2FA_outhighINT fill:#0bb, color:#111
+    style NG_range_vector2FA_outhighINT fill:#0CF, color:#111
     NG_range_vector2FA_N_remap2_vector2FA[remap] --".in"--> NG_range_vector2FA_N_clamp_vector2FA[clamp]
     NG_range_vector2FA_outlowINT([outlow]) ==.outlow==> NG_range_vector2FA_N_remap2_vector2FA[remap]
-    style NG_range_vector2FA_outlowINT fill:#0bb, color:#111
+    style NG_range_vector2FA_outlowINT fill:#0CF, color:#111
     NG_range_vector2FA_outhighINT([outhigh]) ==.outhigh==> NG_range_vector2FA_N_remap2_vector2FA[remap]
-    style NG_range_vector2FA_outhighINT fill:#0bb, color:#111
+    style NG_range_vector2FA_outhighINT fill:#0CF, color:#111
     NG_range_vector2FA_N_gamma_vector2FA[multiply] --".in"--> NG_range_vector2FA_N_remap2_vector2FA[remap]
     NG_range_vector2FA_N_pow_vector2FA[power] --".in1"--> NG_range_vector2FA_N_gamma_vector2FA[multiply]
     NG_range_vector2FA_N_abs_vector2FA[absval] --".in1"--> NG_range_vector2FA_N_pow_vector2FA[power]
     NG_range_vector2FA_N_remap1_vector2FA[remap] --".in"--> NG_range_vector2FA_N_abs_vector2FA[absval]
     NG_range_vector2FA_inINT([in]) ==.in==> NG_range_vector2FA_N_remap1_vector2FA[remap]
-    style NG_range_vector2FA_inINT fill:#0bb, color:#111
+    style NG_range_vector2FA_inINT fill:#0CF, color:#111
     NG_range_vector2FA_inlowINT([inlow]) ==.inlow==> NG_range_vector2FA_N_remap1_vector2FA[remap]
-    style NG_range_vector2FA_inlowINT fill:#0bb, color:#111
+    style NG_range_vector2FA_inlowINT fill:#0CF, color:#111
     NG_range_vector2FA_inhighINT([inhigh]) ==.inhigh==> NG_range_vector2FA_N_remap1_vector2FA[remap]
-    style NG_range_vector2FA_inhighINT fill:#0bb, color:#111
+    style NG_range_vector2FA_inhighINT fill:#0CF, color:#111
     NG_range_vector2FA_N_recip_vector2FA[divide] --".in2"--> NG_range_vector2FA_N_pow_vector2FA[power]
     NG_range_vector2FA_gammaINT([gamma]) ==.in2==> NG_range_vector2FA_N_recip_vector2FA[divide]
-    style NG_range_vector2FA_gammaINT fill:#0bb, color:#111
+    style NG_range_vector2FA_gammaINT fill:#0CF, color:#111
     NG_range_vector2FA_N_sign_vector2FA[sign] --".in2"--> NG_range_vector2FA_N_gamma_vector2FA[multiply]
     NG_range_vector2FA_N_remap1_vector2FA[remap] --".in"--> NG_range_vector2FA_N_sign_vector2FA[sign]
     NG_range_vector2FA_N_remap2_vector2FA[remap] --".in2"--> NG_range_vector2FA_N_switch_vector2FA{ifequal}
+    style NG_range_vector2FA_N_switch_vector2FA fill:#F80, color:#111
 
 ```
  
@@ -9816,35 +9876,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_range_vector3FA_N_switch_vector3FA{ifequal} --> NG_range_vector3FA_out([out])
-    style NG_range_vector3FA_out fill:#1b1, color:#111
+    style NG_range_vector3FA_out fill:#0C0, color:#111
     NG_range_vector3FA_doclampINT([doclamp]) ==.value1==> NG_range_vector3FA_N_switch_vector3FA[ifequal]
-    style NG_range_vector3FA_doclampINT fill:#0bb, color:#111
+    style NG_range_vector3FA_doclampINT fill:#0CF, color:#111
     NG_range_vector3FA_N_clamp_vector3FA[clamp] --".in1"--> NG_range_vector3FA_N_switch_vector3FA{ifequal}
+    style NG_range_vector3FA_N_switch_vector3FA fill:#F80, color:#111
     NG_range_vector3FA_outlowINT([outlow]) ==.low==> NG_range_vector3FA_N_clamp_vector3FA[clamp]
-    style NG_range_vector3FA_outlowINT fill:#0bb, color:#111
+    style NG_range_vector3FA_outlowINT fill:#0CF, color:#111
     NG_range_vector3FA_outhighINT([outhigh]) ==.high==> NG_range_vector3FA_N_clamp_vector3FA[clamp]
-    style NG_range_vector3FA_outhighINT fill:#0bb, color:#111
+    style NG_range_vector3FA_outhighINT fill:#0CF, color:#111
     NG_range_vector3FA_N_remap2_vector3FA[remap] --".in"--> NG_range_vector3FA_N_clamp_vector3FA[clamp]
     NG_range_vector3FA_outlowINT([outlow]) ==.outlow==> NG_range_vector3FA_N_remap2_vector3FA[remap]
-    style NG_range_vector3FA_outlowINT fill:#0bb, color:#111
+    style NG_range_vector3FA_outlowINT fill:#0CF, color:#111
     NG_range_vector3FA_outhighINT([outhigh]) ==.outhigh==> NG_range_vector3FA_N_remap2_vector3FA[remap]
-    style NG_range_vector3FA_outhighINT fill:#0bb, color:#111
+    style NG_range_vector3FA_outhighINT fill:#0CF, color:#111
     NG_range_vector3FA_N_gamma_vector3FA[multiply] --".in"--> NG_range_vector3FA_N_remap2_vector3FA[remap]
     NG_range_vector3FA_N_pow_vector3FA[power] --".in1"--> NG_range_vector3FA_N_gamma_vector3FA[multiply]
     NG_range_vector3FA_N_abs_vector3FA[absval] --".in1"--> NG_range_vector3FA_N_pow_vector3FA[power]
     NG_range_vector3FA_N_remap1_vector3FA[remap] --".in"--> NG_range_vector3FA_N_abs_vector3FA[absval]
     NG_range_vector3FA_inINT([in]) ==.in==> NG_range_vector3FA_N_remap1_vector3FA[remap]
-    style NG_range_vector3FA_inINT fill:#0bb, color:#111
+    style NG_range_vector3FA_inINT fill:#0CF, color:#111
     NG_range_vector3FA_inlowINT([inlow]) ==.inlow==> NG_range_vector3FA_N_remap1_vector3FA[remap]
-    style NG_range_vector3FA_inlowINT fill:#0bb, color:#111
+    style NG_range_vector3FA_inlowINT fill:#0CF, color:#111
     NG_range_vector3FA_inhighINT([inhigh]) ==.inhigh==> NG_range_vector3FA_N_remap1_vector3FA[remap]
-    style NG_range_vector3FA_inhighINT fill:#0bb, color:#111
+    style NG_range_vector3FA_inhighINT fill:#0CF, color:#111
     NG_range_vector3FA_N_recip_vector3FA[divide] --".in2"--> NG_range_vector3FA_N_pow_vector3FA[power]
     NG_range_vector3FA_gammaINT([gamma]) ==.in2==> NG_range_vector3FA_N_recip_vector3FA[divide]
-    style NG_range_vector3FA_gammaINT fill:#0bb, color:#111
+    style NG_range_vector3FA_gammaINT fill:#0CF, color:#111
     NG_range_vector3FA_N_sign_vector3FA[sign] --".in2"--> NG_range_vector3FA_N_gamma_vector3FA[multiply]
     NG_range_vector3FA_N_remap1_vector3FA[remap] --".in"--> NG_range_vector3FA_N_sign_vector3FA[sign]
     NG_range_vector3FA_N_remap2_vector3FA[remap] --".in2"--> NG_range_vector3FA_N_switch_vector3FA{ifequal}
+    style NG_range_vector3FA_N_switch_vector3FA fill:#F80, color:#111
 
 ```
  
@@ -9875,35 +9937,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_range_vector4FA_N_switch_vector4FA{ifequal} --> NG_range_vector4FA_out([out])
-    style NG_range_vector4FA_out fill:#1b1, color:#111
+    style NG_range_vector4FA_out fill:#0C0, color:#111
     NG_range_vector4FA_doclampINT([doclamp]) ==.value1==> NG_range_vector4FA_N_switch_vector4FA[ifequal]
-    style NG_range_vector4FA_doclampINT fill:#0bb, color:#111
+    style NG_range_vector4FA_doclampINT fill:#0CF, color:#111
     NG_range_vector4FA_N_clamp_vector4FA[clamp] --".in1"--> NG_range_vector4FA_N_switch_vector4FA{ifequal}
+    style NG_range_vector4FA_N_switch_vector4FA fill:#F80, color:#111
     NG_range_vector4FA_outlowINT([outlow]) ==.low==> NG_range_vector4FA_N_clamp_vector4FA[clamp]
-    style NG_range_vector4FA_outlowINT fill:#0bb, color:#111
+    style NG_range_vector4FA_outlowINT fill:#0CF, color:#111
     NG_range_vector4FA_outhighINT([outhigh]) ==.high==> NG_range_vector4FA_N_clamp_vector4FA[clamp]
-    style NG_range_vector4FA_outhighINT fill:#0bb, color:#111
+    style NG_range_vector4FA_outhighINT fill:#0CF, color:#111
     NG_range_vector4FA_N_remap2_vector4FA[remap] --".in"--> NG_range_vector4FA_N_clamp_vector4FA[clamp]
     NG_range_vector4FA_outlowINT([outlow]) ==.outlow==> NG_range_vector4FA_N_remap2_vector4FA[remap]
-    style NG_range_vector4FA_outlowINT fill:#0bb, color:#111
+    style NG_range_vector4FA_outlowINT fill:#0CF, color:#111
     NG_range_vector4FA_outhighINT([outhigh]) ==.outhigh==> NG_range_vector4FA_N_remap2_vector4FA[remap]
-    style NG_range_vector4FA_outhighINT fill:#0bb, color:#111
+    style NG_range_vector4FA_outhighINT fill:#0CF, color:#111
     NG_range_vector4FA_N_gamma_vector4FA[multiply] --".in"--> NG_range_vector4FA_N_remap2_vector4FA[remap]
     NG_range_vector4FA_N_pow_vector4FA[power] --".in1"--> NG_range_vector4FA_N_gamma_vector4FA[multiply]
     NG_range_vector4FA_N_abs_vector4FA[absval] --".in1"--> NG_range_vector4FA_N_pow_vector4FA[power]
     NG_range_vector4FA_N_remap1_vector4FA[remap] --".in"--> NG_range_vector4FA_N_abs_vector4FA[absval]
     NG_range_vector4FA_inINT([in]) ==.in==> NG_range_vector4FA_N_remap1_vector4FA[remap]
-    style NG_range_vector4FA_inINT fill:#0bb, color:#111
+    style NG_range_vector4FA_inINT fill:#0CF, color:#111
     NG_range_vector4FA_inlowINT([inlow]) ==.inlow==> NG_range_vector4FA_N_remap1_vector4FA[remap]
-    style NG_range_vector4FA_inlowINT fill:#0bb, color:#111
+    style NG_range_vector4FA_inlowINT fill:#0CF, color:#111
     NG_range_vector4FA_inhighINT([inhigh]) ==.inhigh==> NG_range_vector4FA_N_remap1_vector4FA[remap]
-    style NG_range_vector4FA_inhighINT fill:#0bb, color:#111
+    style NG_range_vector4FA_inhighINT fill:#0CF, color:#111
     NG_range_vector4FA_N_recip_vector4FA[divide] --".in2"--> NG_range_vector4FA_N_pow_vector4FA[power]
     NG_range_vector4FA_gammaINT([gamma]) ==.in2==> NG_range_vector4FA_N_recip_vector4FA[divide]
-    style NG_range_vector4FA_gammaINT fill:#0bb, color:#111
+    style NG_range_vector4FA_gammaINT fill:#0CF, color:#111
     NG_range_vector4FA_N_sign_vector4FA[sign] --".in2"--> NG_range_vector4FA_N_gamma_vector4FA[multiply]
     NG_range_vector4FA_N_remap1_vector4FA[remap] --".in"--> NG_range_vector4FA_N_sign_vector4FA[sign]
     NG_range_vector4FA_N_remap2_vector4FA[remap] --".in2"--> NG_range_vector4FA_N_switch_vector4FA{ifequal}
+    style NG_range_vector4FA_N_switch_vector4FA fill:#F80, color:#111
 
 ```
  
@@ -9935,16 +9999,16 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_hsvadjust_color3_N_torgb_color3[hsvtorgb] --> NG_hsvadjust_color3_out([out])
-    style NG_hsvadjust_color3_out fill:#1b1, color:#111
+    style NG_hsvadjust_color3_out fill:#0C0, color:#111
     NG_hsvadjust_color3_N_tmp3_color3[multiply] --".in"--> NG_hsvadjust_color3_N_torgb_color3[hsvtorgb]
     NG_hsvadjust_color3_N_tmp2_color3[add] --".in1"--> NG_hsvadjust_color3_N_tmp3_color3[multiply]
     NG_hsvadjust_color3_N_inhsv_color3[rgbtohsv] --".in1"--> NG_hsvadjust_color3_N_tmp2_color3[add]
     NG_hsvadjust_color3_inINT([in]) ==.in==> NG_hsvadjust_color3_N_inhsv_color3[rgbtohsv]
-    style NG_hsvadjust_color3_inINT fill:#0bb, color:#111
+    style NG_hsvadjust_color3_inINT fill:#0CF, color:#111
     NG_hsvadjust_color3_N_hchans_color3[multiply] --".in2"--> NG_hsvadjust_color3_N_tmp2_color3[add]
     NG_hsvadjust_color3_N_camount_color3[convert] --".in1"--> NG_hsvadjust_color3_N_hchans_color3[multiply]
     NG_hsvadjust_color3_amountINT([amount]) ==.in==> NG_hsvadjust_color3_N_camount_color3[convert]
-    style NG_hsvadjust_color3_amountINT fill:#0bb, color:#111
+    style NG_hsvadjust_color3_amountINT fill:#0CF, color:#111
     NG_hsvadjust_color3_N_svchans_color3[add] --".in2"--> NG_hsvadjust_color3_N_tmp3_color3[multiply]
     NG_hsvadjust_color3_N_tmp1_color3[multiply] --".in1"--> NG_hsvadjust_color3_N_svchans_color3[add]
     NG_hsvadjust_color3_N_camount_color3[convert] --".in1"--> NG_hsvadjust_color3_N_tmp1_color3[multiply]
@@ -9973,17 +10037,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_hsvadjust_color4_N_torgb_color4[hsvtorgb] --> NG_hsvadjust_color4_out([out])
-    style NG_hsvadjust_color4_out fill:#1b1, color:#111
+    style NG_hsvadjust_color4_out fill:#0C0, color:#111
     NG_hsvadjust_color4_N_tmp3_color4[multiply] --".in"--> NG_hsvadjust_color4_N_torgb_color4[hsvtorgb]
     NG_hsvadjust_color4_N_tmp2_color4[add] --".in1"--> NG_hsvadjust_color4_N_tmp3_color4[multiply]
     NG_hsvadjust_color4_N_inhsv_color4[rgbtohsv] --".in1"--> NG_hsvadjust_color4_N_tmp2_color4[add]
     NG_hsvadjust_color4_inINT([in]) ==.in==> NG_hsvadjust_color4_N_inhsv_color4[rgbtohsv]
-    style NG_hsvadjust_color4_inINT fill:#0bb, color:#111
+    style NG_hsvadjust_color4_inINT fill:#0CF, color:#111
     NG_hsvadjust_color4_N_hchans_color4[multiply] --".in2"--> NG_hsvadjust_color4_N_tmp2_color4[add]
     NG_hsvadjust_color4_N_camount_color4[convert] --".in1"--> NG_hsvadjust_color4_N_hchans_color4[multiply]
     NG_hsvadjust_color4_N_camt_color3[convert] --".in"--> NG_hsvadjust_color4_N_camount_color4[convert]
     NG_hsvadjust_color4_amountINT([amount]) ==.in==> NG_hsvadjust_color4_N_camt_color3[convert]
-    style NG_hsvadjust_color4_amountINT fill:#0bb, color:#111
+    style NG_hsvadjust_color4_amountINT fill:#0CF, color:#111
     NG_hsvadjust_color4_N_svchans_color4[add] --".in2"--> NG_hsvadjust_color4_N_tmp3_color4[multiply]
     NG_hsvadjust_color4_N_tmp1_color4[multiply] --".in1"--> NG_hsvadjust_color4_N_svchans_color4[add]
     NG_hsvadjust_color4_N_camount_color4[convert] --".in1"--> NG_hsvadjust_color4_N_tmp1_color4[multiply]
@@ -10013,16 +10077,16 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_saturate_color3_N_mix_color3[mix] --> NG_saturate_color3_out([out])
-    style NG_saturate_color3_out fill:#1b1, color:#111
+    style NG_saturate_color3_out fill:#0C0, color:#111
     NG_saturate_color3_inINT([in]) ==.fg==> NG_saturate_color3_N_mix_color3[mix]
-    style NG_saturate_color3_inINT fill:#0bb, color:#111
+    style NG_saturate_color3_inINT fill:#0CF, color:#111
     NG_saturate_color3_amountINT([amount]) ==.mix==> NG_saturate_color3_N_mix_color3[mix]
-    style NG_saturate_color3_amountINT fill:#0bb, color:#111
+    style NG_saturate_color3_amountINT fill:#0CF, color:#111
     NG_saturate_color3_N_gray_color3[luminance] --".bg"--> NG_saturate_color3_N_mix_color3[mix]
     NG_saturate_color3_inINT([in]) ==.in==> NG_saturate_color3_N_gray_color3[luminance]
-    style NG_saturate_color3_inINT fill:#0bb, color:#111
+    style NG_saturate_color3_inINT fill:#0CF, color:#111
     NG_saturate_color3_lumacoeffsINT([lumacoeffs]) ==.lumacoeffs==> NG_saturate_color3_N_gray_color3[luminance]
-    style NG_saturate_color3_lumacoeffsINT fill:#0bb, color:#111
+    style NG_saturate_color3_lumacoeffsINT fill:#0CF, color:#111
 
 ```
  
@@ -10049,16 +10113,16 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_saturate_color4_N_mix_color4[mix] --> NG_saturate_color4_out([out])
-    style NG_saturate_color4_out fill:#1b1, color:#111
+    style NG_saturate_color4_out fill:#0C0, color:#111
     NG_saturate_color4_inINT([in]) ==.fg==> NG_saturate_color4_N_mix_color4[mix]
-    style NG_saturate_color4_inINT fill:#0bb, color:#111
+    style NG_saturate_color4_inINT fill:#0CF, color:#111
     NG_saturate_color4_amountINT([amount]) ==.mix==> NG_saturate_color4_N_mix_color4[mix]
-    style NG_saturate_color4_amountINT fill:#0bb, color:#111
+    style NG_saturate_color4_amountINT fill:#0CF, color:#111
     NG_saturate_color4_N_gray_color4[luminance] --".bg"--> NG_saturate_color4_N_mix_color4[mix]
     NG_saturate_color4_inINT([in]) ==.in==> NG_saturate_color4_N_gray_color4[luminance]
-    style NG_saturate_color4_inINT fill:#0bb, color:#111
+    style NG_saturate_color4_inINT fill:#0CF, color:#111
     NG_saturate_color4_lumacoeffsINT([lumacoeffs]) ==.lumacoeffs==> NG_saturate_color4_N_gray_color4[luminance]
-    style NG_saturate_color4_lumacoeffsINT fill:#0bb, color:#111
+    style NG_saturate_color4_lumacoeffsINT fill:#0CF, color:#111
 
 ```
  
@@ -10086,37 +10150,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_colorcorrect_color3_N_exposure[multiply] --> NG_colorcorrect_color3_out([out])
-    style NG_colorcorrect_color3_out fill:#1b1, color:#111
+    style NG_colorcorrect_color3_out fill:#0C0, color:#111
     NG_colorcorrect_color3_N_contrast[contrast] --".in1"--> NG_colorcorrect_color3_N_exposure[multiply]
     NG_colorcorrect_color3_contrastINT([contrast]) ==.amount==> NG_colorcorrect_color3_N_contrast[contrast]
-    style NG_colorcorrect_color3_contrastINT fill:#0bb, color:#111
+    style NG_colorcorrect_color3_contrastINT fill:#0CF, color:#111
     NG_colorcorrect_color3_contrastpivotINT([contrastpivot]) ==.pivot==> NG_colorcorrect_color3_N_contrast[contrast]
-    style NG_colorcorrect_color3_contrastpivotINT fill:#0bb, color:#111
+    style NG_colorcorrect_color3_contrastpivotINT fill:#0CF, color:#111
     NG_colorcorrect_color3_N_gain[multiply] --".in"--> NG_colorcorrect_color3_N_contrast[contrast]
     NG_colorcorrect_color3_gainINT([gain]) ==.in2==> NG_colorcorrect_color3_N_gain[multiply]
-    style NG_colorcorrect_color3_gainINT fill:#0bb, color:#111
+    style NG_colorcorrect_color3_gainINT fill:#0CF, color:#111
     NG_colorcorrect_color3_N_liftadd[add] --".in1"--> NG_colorcorrect_color3_N_gain[multiply]
     NG_colorcorrect_color3_liftINT([lift]) ==.in2==> NG_colorcorrect_color3_N_liftadd[add]
-    style NG_colorcorrect_color3_liftINT fill:#0bb, color:#111
+    style NG_colorcorrect_color3_liftINT fill:#0CF, color:#111
     NG_colorcorrect_color3_N_liftmult[multiply] --".in1"--> NG_colorcorrect_color3_N_liftadd[add]
     NG_colorcorrect_color3_N_gamma[range] --".in1"--> NG_colorcorrect_color3_N_liftmult[multiply]
     NG_colorcorrect_color3_gammaINT([gamma]) ==.gamma==> NG_colorcorrect_color3_N_gamma[range]
-    style NG_colorcorrect_color3_gammaINT fill:#0bb, color:#111
+    style NG_colorcorrect_color3_gammaINT fill:#0CF, color:#111
     NG_colorcorrect_color3_N_saturation[saturate] --".in"--> NG_colorcorrect_color3_N_gamma[range]
     NG_colorcorrect_color3_saturationINT([saturation]) ==.amount==> NG_colorcorrect_color3_N_saturation[saturate]
-    style NG_colorcorrect_color3_saturationINT fill:#0bb, color:#111
+    style NG_colorcorrect_color3_saturationINT fill:#0CF, color:#111
     NG_colorcorrect_color3_N_hsvadjust[hsvadjust] --".in"--> NG_colorcorrect_color3_N_saturation[saturate]
     NG_colorcorrect_color3_inINT([in]) ==.in==> NG_colorcorrect_color3_N_hsvadjust[hsvadjust]
-    style NG_colorcorrect_color3_inINT fill:#0bb, color:#111
+    style NG_colorcorrect_color3_inINT fill:#0CF, color:#111
     NG_colorcorrect_color3_N_parm2hue[combine3] --".amount"--> NG_colorcorrect_color3_N_hsvadjust[hsvadjust]
     NG_colorcorrect_color3_hueINT([hue]) ==.in1==> NG_colorcorrect_color3_N_parm2hue[combine3]
-    style NG_colorcorrect_color3_hueINT fill:#0bb, color:#111
+    style NG_colorcorrect_color3_hueINT fill:#0CF, color:#111
     NG_colorcorrect_color3_N_liftsubtract[subtract] --".in2"--> NG_colorcorrect_color3_N_liftmult[multiply]
     NG_colorcorrect_color3_liftINT([lift]) ==.in2==> NG_colorcorrect_color3_N_liftsubtract[subtract]
-    style NG_colorcorrect_color3_liftINT fill:#0bb, color:#111
+    style NG_colorcorrect_color3_liftINT fill:#0CF, color:#111
     NG_colorcorrect_color3_N_exposurepwr[power] --".in2"--> NG_colorcorrect_color3_N_exposure[multiply]
     NG_colorcorrect_color3_exposureINT([exposure]) ==.in2==> NG_colorcorrect_color3_N_exposurepwr[power]
-    style NG_colorcorrect_color3_exposureINT fill:#0bb, color:#111
+    style NG_colorcorrect_color3_exposureINT fill:#0CF, color:#111
 
 ```
  
@@ -10149,47 +10213,47 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_colorcorrect_color4_N_combine_with_alpha[combine4] --> NG_colorcorrect_color4_out([out])
-    style NG_colorcorrect_color4_out fill:#1b1, color:#111
+    style NG_colorcorrect_color4_out fill:#0C0, color:#111
     NG_colorcorrect_color4_N_split_color[separate3] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutr([outr])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutr fill:#1b1, color:#111
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutr fill:#0C0, color:#111
     NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutr --".in1"--> NG_colorcorrect_color4_N_combine_with_alpha[combine4]
     NG_colorcorrect_color4_N_colorcorrect[colorcorrect] --".in"--> NG_colorcorrect_color4_N_split_color[separate3]
     NG_colorcorrect_color4_hueINT([hue]) ==.hue==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_hueINT fill:#0bb, color:#111
+    style NG_colorcorrect_color4_hueINT fill:#0CF, color:#111
     NG_colorcorrect_color4_saturationINT([saturation]) ==.saturation==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_saturationINT fill:#0bb, color:#111
+    style NG_colorcorrect_color4_saturationINT fill:#0CF, color:#111
     NG_colorcorrect_color4_gammaINT([gamma]) ==.gamma==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_gammaINT fill:#0bb, color:#111
+    style NG_colorcorrect_color4_gammaINT fill:#0CF, color:#111
     NG_colorcorrect_color4_liftINT([lift]) ==.lift==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_liftINT fill:#0bb, color:#111
+    style NG_colorcorrect_color4_liftINT fill:#0CF, color:#111
     NG_colorcorrect_color4_gainINT([gain]) ==.gain==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_gainINT fill:#0bb, color:#111
+    style NG_colorcorrect_color4_gainINT fill:#0CF, color:#111
     NG_colorcorrect_color4_contrastINT([contrast]) ==.contrast==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_contrastINT fill:#0bb, color:#111
+    style NG_colorcorrect_color4_contrastINT fill:#0CF, color:#111
     NG_colorcorrect_color4_contrastpivotINT([contrastpivot]) ==.contrastpivot==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_contrastpivotINT fill:#0bb, color:#111
+    style NG_colorcorrect_color4_contrastpivotINT fill:#0CF, color:#111
     NG_colorcorrect_color4_exposureINT([exposure]) ==.exposure==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_exposureINT fill:#0bb, color:#111
+    style NG_colorcorrect_color4_exposureINT fill:#0CF, color:#111
     NG_colorcorrect_color4_N_combine_color[combine3] --".in"--> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
     NG_colorcorrect_color4_N_split_color4[separate4] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outr([outr])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outr fill:#1b1, color:#111
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outr fill:#0C0, color:#111
     NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outr --".in1"--> NG_colorcorrect_color4_N_combine_color[combine3]
     NG_colorcorrect_color4_inINT([in]) ==.in==> NG_colorcorrect_color4_N_split_color4[separate4]
-    style NG_colorcorrect_color4_inINT fill:#0bb, color:#111
+    style NG_colorcorrect_color4_inINT fill:#0CF, color:#111
     NG_colorcorrect_color4_N_split_color4[separate4] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outg([outg])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outg fill:#1b1, color:#111
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outg fill:#0C0, color:#111
     NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outg --".in2"--> NG_colorcorrect_color4_N_combine_color[combine3]
     NG_colorcorrect_color4_N_split_color4[separate4] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outb([outb])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outb fill:#1b1, color:#111
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outb fill:#0C0, color:#111
     NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outb --".in3"--> NG_colorcorrect_color4_N_combine_color[combine3]
     NG_colorcorrect_color4_N_split_color[separate3] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutg([outg])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutg fill:#1b1, color:#111
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutg fill:#0C0, color:#111
     NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutg --".in2"--> NG_colorcorrect_color4_N_combine_with_alpha[combine4]
     NG_colorcorrect_color4_N_split_color[separate3] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutb([outb])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutb fill:#1b1, color:#111
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutb fill:#0C0, color:#111
     NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutb --".in3"--> NG_colorcorrect_color4_N_combine_with_alpha[combine4]
     NG_colorcorrect_color4_N_split_color4[separate4] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outa([outa])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outa fill:#1b1, color:#111
+    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outa fill:#0C0, color:#111
     NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outa --".in4"--> NG_colorcorrect_color4_N_combine_with_alpha[combine4]
 
 ```
@@ -12560,9 +12624,9 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_convert_color3_surfaceshader_surface[surface_unlit] --> NG_convert_color3_surfaceshader_out([out])
-    style NG_convert_color3_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_color3_surfaceshader_out fill:#0C0, color:#111
     NG_convert_color3_surfaceshader_inINT([in]) ==.emission_color==> NG_convert_color3_surfaceshader_surface[surface_unlit]
-    style NG_convert_color3_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_color3_surfaceshader_inINT fill:#0CF, color:#111
 
 ```
  
@@ -12587,13 +12651,13 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_convert_color4_surfaceshader_surface[surface_unlit] --> NG_convert_color4_surfaceshader_out([out])
-    style NG_convert_color4_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_color4_surfaceshader_out fill:#0C0, color:#111
     NG_convert_color4_surfaceshader_convert[convert] --".emission_color"--> NG_convert_color4_surfaceshader_surface[surface_unlit]
     NG_convert_color4_surfaceshader_inINT([in]) ==.in==> NG_convert_color4_surfaceshader_convert[convert]
-    style NG_convert_color4_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_color4_surfaceshader_inINT fill:#0CF, color:#111
     NG_convert_color4_surfaceshader_extract[extract] --".opacity"--> NG_convert_color4_surfaceshader_surface[surface_unlit]
     NG_convert_color4_surfaceshader_inINT([in]) ==.in==> NG_convert_color4_surfaceshader_extract[extract]
-    style NG_convert_color4_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_color4_surfaceshader_inINT fill:#0CF, color:#111
 
 ```
  
@@ -12618,10 +12682,10 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_convert_float_surfaceshader_surface[surface_unlit] --> NG_convert_float_surfaceshader_out([out])
-    style NG_convert_float_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_float_surfaceshader_out fill:#0C0, color:#111
     NG_convert_float_surfaceshader_float_to_color3[convert] --".emission_color"--> NG_convert_float_surfaceshader_surface[surface_unlit]
     NG_convert_float_surfaceshader_inINT([in]) ==.in==> NG_convert_float_surfaceshader_float_to_color3[convert]
-    style NG_convert_float_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_float_surfaceshader_inINT fill:#0CF, color:#111
 
 ```
  
@@ -12646,11 +12710,11 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_convert_vector2_surfaceshader_surface[surface_unlit] --> NG_convert_vector2_surfaceshader_out([out])
-    style NG_convert_vector2_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_vector2_surfaceshader_out fill:#0C0, color:#111
     NG_convert_vector2_surfaceshader_vec3_to_color3[convert] --".emission_color"--> NG_convert_vector2_surfaceshader_surface[surface_unlit]
     NG_convert_vector2_surfaceshader_vec2_to_vec3[convert] --".in"--> NG_convert_vector2_surfaceshader_vec3_to_color3[convert]
     NG_convert_vector2_surfaceshader_inINT([in]) ==.in==> NG_convert_vector2_surfaceshader_vec2_to_vec3[convert]
-    style NG_convert_vector2_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_vector2_surfaceshader_inINT fill:#0CF, color:#111
 
 ```
  
@@ -12675,10 +12739,10 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_convert_vector3_surfaceshader_surface[surface_unlit] --> NG_convert_vector3_surfaceshader_out([out])
-    style NG_convert_vector3_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_vector3_surfaceshader_out fill:#0C0, color:#111
     NG_convert_vector3_surfaceshader_vec3_to_color3[convert] --".emission_color"--> NG_convert_vector3_surfaceshader_surface[surface_unlit]
     NG_convert_vector3_surfaceshader_inINT([in]) ==.in==> NG_convert_vector3_surfaceshader_vec3_to_color3[convert]
-    style NG_convert_vector3_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_vector3_surfaceshader_inINT fill:#0CF, color:#111
 
 ```
  
@@ -12703,11 +12767,11 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_convert_vector4_surfaceshader_surface[surface_unlit] --> NG_convert_vector4_surfaceshader_out([out])
-    style NG_convert_vector4_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_vector4_surfaceshader_out fill:#0C0, color:#111
     NG_convert_vector4_surfaceshader_color4_to_color3[convert] --".emission_color"--> NG_convert_vector4_surfaceshader_surface[surface_unlit]
     NG_convert_vector4_surfaceshader_vec4_to_color4[convert] --".in"--> NG_convert_vector4_surfaceshader_color4_to_color3[convert]
     NG_convert_vector4_surfaceshader_inINT([in]) ==.in==> NG_convert_vector4_surfaceshader_vec4_to_color4[convert]
-    style NG_convert_vector4_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_vector4_surfaceshader_inINT fill:#0CF, color:#111
     NG_convert_vector4_surfaceshader_color4_to_float[extract] --".opacity"--> NG_convert_vector4_surfaceshader_surface[surface_unlit]
     NG_convert_vector4_surfaceshader_vec4_to_color4[convert] --".in"--> NG_convert_vector4_surfaceshader_color4_to_float[extract]
 
@@ -12734,11 +12798,11 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_convert_integer_surfaceshader_surface[surface_unlit] --> NG_convert_integer_surfaceshader_out([out])
-    style NG_convert_integer_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_integer_surfaceshader_out fill:#0C0, color:#111
     NG_convert_integer_surfaceshader_float_to_color3[convert] --".emission_color"--> NG_convert_integer_surfaceshader_surface[surface_unlit]
     NG_convert_integer_surfaceshader_int_to_float[convert] --".in"--> NG_convert_integer_surfaceshader_float_to_color3[convert]
     NG_convert_integer_surfaceshader_inINT([in]) ==.in==> NG_convert_integer_surfaceshader_int_to_float[convert]
-    style NG_convert_integer_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_integer_surfaceshader_inINT fill:#0CF, color:#111
 
 ```
  
@@ -12763,11 +12827,11 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_convert_boolean_surfaceshader_surface[surface_unlit] --> NG_convert_boolean_surfaceshader_out([out])
-    style NG_convert_boolean_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_boolean_surfaceshader_out fill:#0C0, color:#111
     NG_convert_boolean_surfaceshader_float_to_color3[convert] --".emission_color"--> NG_convert_boolean_surfaceshader_surface[surface_unlit]
     NG_convert_boolean_surfaceshader_bool_to_float[convert] --".in"--> NG_convert_boolean_surfaceshader_float_to_color3[convert]
     NG_convert_boolean_surfaceshader_inINT([in]) ==.in==> NG_convert_boolean_surfaceshader_bool_to_float[convert]
-    style NG_convert_boolean_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_boolean_surfaceshader_inINT fill:#0CF, color:#111
 
 ```
  
@@ -13577,18 +13641,21 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_extract_color3_N_sw_color3{switch} --> NG_extract_color3_out([out])
-    style NG_extract_color3_out fill:#1b1, color:#111
+    style NG_extract_color3_out fill:#0C0, color:#111
     NG_extract_color3_indexINT([index]) ==.which==> NG_extract_color3_N_sw_color3[switch]
-    style NG_extract_color3_indexINT fill:#0bb, color:#111
+    style NG_extract_color3_indexINT fill:#0CF, color:#111
     NG_extract_color3_N_r_color3[swizzle] --".in1"--> NG_extract_color3_N_sw_color3{switch}
+    style NG_extract_color3_N_sw_color3 fill:#F80, color:#111
     NG_extract_color3_inINT([in]) ==.in==> NG_extract_color3_N_r_color3[swizzle]
-    style NG_extract_color3_inINT fill:#0bb, color:#111
+    style NG_extract_color3_inINT fill:#0CF, color:#111
     NG_extract_color3_N_g_color3[swizzle] --".in2"--> NG_extract_color3_N_sw_color3{switch}
+    style NG_extract_color3_N_sw_color3 fill:#F80, color:#111
     NG_extract_color3_inINT([in]) ==.in==> NG_extract_color3_N_g_color3[swizzle]
-    style NG_extract_color3_inINT fill:#0bb, color:#111
+    style NG_extract_color3_inINT fill:#0CF, color:#111
     NG_extract_color3_N_b_color3[swizzle] --".in3"--> NG_extract_color3_N_sw_color3{switch}
+    style NG_extract_color3_N_sw_color3 fill:#F80, color:#111
     NG_extract_color3_inINT([in]) ==.in==> NG_extract_color3_N_b_color3[swizzle]
-    style NG_extract_color3_inINT fill:#0bb, color:#111
+    style NG_extract_color3_inINT fill:#0CF, color:#111
 
 ```
  
@@ -13614,21 +13681,25 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_extract_color4_N_sw_color4{switch} --> NG_extract_color4_out([out])
-    style NG_extract_color4_out fill:#1b1, color:#111
+    style NG_extract_color4_out fill:#0C0, color:#111
     NG_extract_color4_indexINT([index]) ==.which==> NG_extract_color4_N_sw_color4[switch]
-    style NG_extract_color4_indexINT fill:#0bb, color:#111
+    style NG_extract_color4_indexINT fill:#0CF, color:#111
     NG_extract_color4_N_r_color4[swizzle] --".in1"--> NG_extract_color4_N_sw_color4{switch}
+    style NG_extract_color4_N_sw_color4 fill:#F80, color:#111
     NG_extract_color4_inINT([in]) ==.in==> NG_extract_color4_N_r_color4[swizzle]
-    style NG_extract_color4_inINT fill:#0bb, color:#111
+    style NG_extract_color4_inINT fill:#0CF, color:#111
     NG_extract_color4_N_g_color4[swizzle] --".in2"--> NG_extract_color4_N_sw_color4{switch}
+    style NG_extract_color4_N_sw_color4 fill:#F80, color:#111
     NG_extract_color4_inINT([in]) ==.in==> NG_extract_color4_N_g_color4[swizzle]
-    style NG_extract_color4_inINT fill:#0bb, color:#111
+    style NG_extract_color4_inINT fill:#0CF, color:#111
     NG_extract_color4_N_b_color4[swizzle] --".in3"--> NG_extract_color4_N_sw_color4{switch}
+    style NG_extract_color4_N_sw_color4 fill:#F80, color:#111
     NG_extract_color4_inINT([in]) ==.in==> NG_extract_color4_N_b_color4[swizzle]
-    style NG_extract_color4_inINT fill:#0bb, color:#111
+    style NG_extract_color4_inINT fill:#0CF, color:#111
     NG_extract_color4_N_a_color4[swizzle] --".in4"--> NG_extract_color4_N_sw_color4{switch}
+    style NG_extract_color4_N_sw_color4 fill:#F80, color:#111
     NG_extract_color4_inINT([in]) ==.in==> NG_extract_color4_N_a_color4[swizzle]
-    style NG_extract_color4_inINT fill:#0bb, color:#111
+    style NG_extract_color4_inINT fill:#0CF, color:#111
 
 ```
  
@@ -13654,15 +13725,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_extract_vector2_N_sw_vector2{switch} --> NG_extract_vector2_out([out])
-    style NG_extract_vector2_out fill:#1b1, color:#111
+    style NG_extract_vector2_out fill:#0C0, color:#111
     NG_extract_vector2_indexINT([index]) ==.which==> NG_extract_vector2_N_sw_vector2[switch]
-    style NG_extract_vector2_indexINT fill:#0bb, color:#111
+    style NG_extract_vector2_indexINT fill:#0CF, color:#111
     NG_extract_vector2_N_x_vector2[swizzle] --".in1"--> NG_extract_vector2_N_sw_vector2{switch}
+    style NG_extract_vector2_N_sw_vector2 fill:#F80, color:#111
     NG_extract_vector2_inINT([in]) ==.in==> NG_extract_vector2_N_x_vector2[swizzle]
-    style NG_extract_vector2_inINT fill:#0bb, color:#111
+    style NG_extract_vector2_inINT fill:#0CF, color:#111
     NG_extract_vector2_N_y_vector2[swizzle] --".in2"--> NG_extract_vector2_N_sw_vector2{switch}
+    style NG_extract_vector2_N_sw_vector2 fill:#F80, color:#111
     NG_extract_vector2_inINT([in]) ==.in==> NG_extract_vector2_N_y_vector2[swizzle]
-    style NG_extract_vector2_inINT fill:#0bb, color:#111
+    style NG_extract_vector2_inINT fill:#0CF, color:#111
 
 ```
  
@@ -13688,18 +13761,21 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_extract_vector3_N_sw_vector3{switch} --> NG_extract_vector3_out([out])
-    style NG_extract_vector3_out fill:#1b1, color:#111
+    style NG_extract_vector3_out fill:#0C0, color:#111
     NG_extract_vector3_indexINT([index]) ==.which==> NG_extract_vector3_N_sw_vector3[switch]
-    style NG_extract_vector3_indexINT fill:#0bb, color:#111
+    style NG_extract_vector3_indexINT fill:#0CF, color:#111
     NG_extract_vector3_N_x_vector3[swizzle] --".in1"--> NG_extract_vector3_N_sw_vector3{switch}
+    style NG_extract_vector3_N_sw_vector3 fill:#F80, color:#111
     NG_extract_vector3_inINT([in]) ==.in==> NG_extract_vector3_N_x_vector3[swizzle]
-    style NG_extract_vector3_inINT fill:#0bb, color:#111
+    style NG_extract_vector3_inINT fill:#0CF, color:#111
     NG_extract_vector3_N_y_vector3[swizzle] --".in2"--> NG_extract_vector3_N_sw_vector3{switch}
+    style NG_extract_vector3_N_sw_vector3 fill:#F80, color:#111
     NG_extract_vector3_inINT([in]) ==.in==> NG_extract_vector3_N_y_vector3[swizzle]
-    style NG_extract_vector3_inINT fill:#0bb, color:#111
+    style NG_extract_vector3_inINT fill:#0CF, color:#111
     NG_extract_vector3_N_z_vector3[swizzle] --".in3"--> NG_extract_vector3_N_sw_vector3{switch}
+    style NG_extract_vector3_N_sw_vector3 fill:#F80, color:#111
     NG_extract_vector3_inINT([in]) ==.in==> NG_extract_vector3_N_z_vector3[swizzle]
-    style NG_extract_vector3_inINT fill:#0bb, color:#111
+    style NG_extract_vector3_inINT fill:#0CF, color:#111
 
 ```
  
@@ -13725,21 +13801,25 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_extract_vector4_N_sw_vector4{switch} --> NG_extract_vector4_out([out])
-    style NG_extract_vector4_out fill:#1b1, color:#111
+    style NG_extract_vector4_out fill:#0C0, color:#111
     NG_extract_vector4_indexINT([index]) ==.which==> NG_extract_vector4_N_sw_vector4[switch]
-    style NG_extract_vector4_indexINT fill:#0bb, color:#111
+    style NG_extract_vector4_indexINT fill:#0CF, color:#111
     NG_extract_vector4_N_x_vector4[swizzle] --".in1"--> NG_extract_vector4_N_sw_vector4{switch}
+    style NG_extract_vector4_N_sw_vector4 fill:#F80, color:#111
     NG_extract_vector4_inINT([in]) ==.in==> NG_extract_vector4_N_x_vector4[swizzle]
-    style NG_extract_vector4_inINT fill:#0bb, color:#111
+    style NG_extract_vector4_inINT fill:#0CF, color:#111
     NG_extract_vector4_N_y_vector4[swizzle] --".in2"--> NG_extract_vector4_N_sw_vector4{switch}
+    style NG_extract_vector4_N_sw_vector4 fill:#F80, color:#111
     NG_extract_vector4_inINT([in]) ==.in==> NG_extract_vector4_N_y_vector4[swizzle]
-    style NG_extract_vector4_inINT fill:#0bb, color:#111
+    style NG_extract_vector4_inINT fill:#0CF, color:#111
     NG_extract_vector4_N_z_vector4[swizzle] --".in3"--> NG_extract_vector4_N_sw_vector4{switch}
+    style NG_extract_vector4_N_sw_vector4 fill:#F80, color:#111
     NG_extract_vector4_inINT([in]) ==.in==> NG_extract_vector4_N_z_vector4[swizzle]
-    style NG_extract_vector4_inINT fill:#0bb, color:#111
+    style NG_extract_vector4_inINT fill:#0CF, color:#111
     NG_extract_vector4_N_w_vector4[swizzle] --".in4"--> NG_extract_vector4_N_sw_vector4{switch}
+    style NG_extract_vector4_N_sw_vector4 fill:#F80, color:#111
     NG_extract_vector4_inINT([in]) ==.in==> NG_extract_vector4_N_w_vector4[swizzle]
-    style NG_extract_vector4_inINT fill:#0bb, color:#111
+    style NG_extract_vector4_inINT fill:#0CF, color:#111
 
 ```
  
@@ -13766,13 +13846,13 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_separate2_vector2_N_x_vector2[swizzle] --> NG_separate2_vector2_outx([outx])
-    style NG_separate2_vector2_outx fill:#1b1, color:#111
+    style NG_separate2_vector2_outx fill:#0C0, color:#111
     NG_separate2_vector2_inINT([in]) ==.in==> NG_separate2_vector2_N_x_vector2[swizzle]
-    style NG_separate2_vector2_inINT fill:#0bb, color:#111
+    style NG_separate2_vector2_inINT fill:#0CF, color:#111
     NG_separate2_vector2_N_y_vector2[swizzle] --> NG_separate2_vector2_outy([outy])
-    style NG_separate2_vector2_outy fill:#1b1, color:#111
+    style NG_separate2_vector2_outy fill:#0C0, color:#111
     NG_separate2_vector2_inINT([in]) ==.in==> NG_separate2_vector2_N_y_vector2[swizzle]
-    style NG_separate2_vector2_inINT fill:#0bb, color:#111
+    style NG_separate2_vector2_inINT fill:#0CF, color:#111
 
 ```
  
@@ -13799,17 +13879,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_separate3_color3_N_r_color3[swizzle] --> NG_separate3_color3_outr([outr])
-    style NG_separate3_color3_outr fill:#1b1, color:#111
+    style NG_separate3_color3_outr fill:#0C0, color:#111
     NG_separate3_color3_inINT([in]) ==.in==> NG_separate3_color3_N_r_color3[swizzle]
-    style NG_separate3_color3_inINT fill:#0bb, color:#111
+    style NG_separate3_color3_inINT fill:#0CF, color:#111
     NG_separate3_color3_N_g_color3[swizzle] --> NG_separate3_color3_outg([outg])
-    style NG_separate3_color3_outg fill:#1b1, color:#111
+    style NG_separate3_color3_outg fill:#0C0, color:#111
     NG_separate3_color3_inINT([in]) ==.in==> NG_separate3_color3_N_g_color3[swizzle]
-    style NG_separate3_color3_inINT fill:#0bb, color:#111
+    style NG_separate3_color3_inINT fill:#0CF, color:#111
     NG_separate3_color3_N_b_color3[swizzle] --> NG_separate3_color3_outb([outb])
-    style NG_separate3_color3_outb fill:#1b1, color:#111
+    style NG_separate3_color3_outb fill:#0C0, color:#111
     NG_separate3_color3_inINT([in]) ==.in==> NG_separate3_color3_N_b_color3[swizzle]
-    style NG_separate3_color3_inINT fill:#0bb, color:#111
+    style NG_separate3_color3_inINT fill:#0CF, color:#111
 
 ```
  
@@ -13836,17 +13916,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_separate3_vector3_N_x_vector3[swizzle] --> NG_separate3_vector3_outx([outx])
-    style NG_separate3_vector3_outx fill:#1b1, color:#111
+    style NG_separate3_vector3_outx fill:#0C0, color:#111
     NG_separate3_vector3_inINT([in]) ==.in==> NG_separate3_vector3_N_x_vector3[swizzle]
-    style NG_separate3_vector3_inINT fill:#0bb, color:#111
+    style NG_separate3_vector3_inINT fill:#0CF, color:#111
     NG_separate3_vector3_N_y_vector3[swizzle] --> NG_separate3_vector3_outy([outy])
-    style NG_separate3_vector3_outy fill:#1b1, color:#111
+    style NG_separate3_vector3_outy fill:#0C0, color:#111
     NG_separate3_vector3_inINT([in]) ==.in==> NG_separate3_vector3_N_y_vector3[swizzle]
-    style NG_separate3_vector3_inINT fill:#0bb, color:#111
+    style NG_separate3_vector3_inINT fill:#0CF, color:#111
     NG_separate3_vector3_N_z_vector3[swizzle] --> NG_separate3_vector3_outz([outz])
-    style NG_separate3_vector3_outz fill:#1b1, color:#111
+    style NG_separate3_vector3_outz fill:#0C0, color:#111
     NG_separate3_vector3_inINT([in]) ==.in==> NG_separate3_vector3_N_z_vector3[swizzle]
-    style NG_separate3_vector3_inINT fill:#0bb, color:#111
+    style NG_separate3_vector3_inINT fill:#0CF, color:#111
 
 ```
  
@@ -13874,21 +13954,21 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_separate4_color4_N_r_color4[swizzle] --> NG_separate4_color4_outr([outr])
-    style NG_separate4_color4_outr fill:#1b1, color:#111
+    style NG_separate4_color4_outr fill:#0C0, color:#111
     NG_separate4_color4_inINT([in]) ==.in==> NG_separate4_color4_N_r_color4[swizzle]
-    style NG_separate4_color4_inINT fill:#0bb, color:#111
+    style NG_separate4_color4_inINT fill:#0CF, color:#111
     NG_separate4_color4_N_g_color4[swizzle] --> NG_separate4_color4_outg([outg])
-    style NG_separate4_color4_outg fill:#1b1, color:#111
+    style NG_separate4_color4_outg fill:#0C0, color:#111
     NG_separate4_color4_inINT([in]) ==.in==> NG_separate4_color4_N_g_color4[swizzle]
-    style NG_separate4_color4_inINT fill:#0bb, color:#111
+    style NG_separate4_color4_inINT fill:#0CF, color:#111
     NG_separate4_color4_N_b_color4[swizzle] --> NG_separate4_color4_outb([outb])
-    style NG_separate4_color4_outb fill:#1b1, color:#111
+    style NG_separate4_color4_outb fill:#0C0, color:#111
     NG_separate4_color4_inINT([in]) ==.in==> NG_separate4_color4_N_b_color4[swizzle]
-    style NG_separate4_color4_inINT fill:#0bb, color:#111
+    style NG_separate4_color4_inINT fill:#0CF, color:#111
     NG_separate4_color4_N_a_color4[swizzle] --> NG_separate4_color4_outa([outa])
-    style NG_separate4_color4_outa fill:#1b1, color:#111
+    style NG_separate4_color4_outa fill:#0C0, color:#111
     NG_separate4_color4_inINT([in]) ==.in==> NG_separate4_color4_N_a_color4[swizzle]
-    style NG_separate4_color4_inINT fill:#0bb, color:#111
+    style NG_separate4_color4_inINT fill:#0CF, color:#111
 
 ```
  
@@ -13916,21 +13996,21 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_separate4_vector4_N_x_vector4[swizzle] --> NG_separate4_vector4_outx([outx])
-    style NG_separate4_vector4_outx fill:#1b1, color:#111
+    style NG_separate4_vector4_outx fill:#0C0, color:#111
     NG_separate4_vector4_inINT([in]) ==.in==> NG_separate4_vector4_N_x_vector4[swizzle]
-    style NG_separate4_vector4_inINT fill:#0bb, color:#111
+    style NG_separate4_vector4_inINT fill:#0CF, color:#111
     NG_separate4_vector4_N_y_vector4[swizzle] --> NG_separate4_vector4_outy([outy])
-    style NG_separate4_vector4_outy fill:#1b1, color:#111
+    style NG_separate4_vector4_outy fill:#0C0, color:#111
     NG_separate4_vector4_inINT([in]) ==.in==> NG_separate4_vector4_N_y_vector4[swizzle]
-    style NG_separate4_vector4_inINT fill:#0bb, color:#111
+    style NG_separate4_vector4_inINT fill:#0CF, color:#111
     NG_separate4_vector4_N_z_vector4[swizzle] --> NG_separate4_vector4_outz([outz])
-    style NG_separate4_vector4_outz fill:#1b1, color:#111
+    style NG_separate4_vector4_outz fill:#0C0, color:#111
     NG_separate4_vector4_inINT([in]) ==.in==> NG_separate4_vector4_N_z_vector4[swizzle]
-    style NG_separate4_vector4_inINT fill:#0bb, color:#111
+    style NG_separate4_vector4_inINT fill:#0CF, color:#111
     NG_separate4_vector4_N_w_vector4[swizzle] --> NG_separate4_vector4_outw([outw])
-    style NG_separate4_vector4_outw fill:#1b1, color:#111
+    style NG_separate4_vector4_outw fill:#0C0, color:#111
     NG_separate4_vector4_inINT([in]) ==.in==> NG_separate4_vector4_N_w_vector4[swizzle]
-    style NG_separate4_vector4_inINT fill:#0bb, color:#111
+    style NG_separate4_vector4_inINT fill:#0CF, color:#111
 
 ```
  

@@ -20,7 +20,6 @@
 
   <link rel="stylesheet" href="documents/css/style.css">
 
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap
@@ -33,12 +32,13 @@
 </head>
 
 <body>
+
   <!-- Navigation  -->
   <nav class="navbar sticky-top navbar-expand-lg text-bg-light">
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="">
         <h5><img src="documents/images/logo3d_2_small.png" alt="MaterialX Learn"
-            class="d-inline-block align-text-center" width="60"> MaterialX Learn
+            class="rounded d-inline-block align-text-center" width="60"> MaterialX Learn
         </h5>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
@@ -172,8 +172,10 @@
     </div>
   </nav>
 
+  <div class="container text-bg-light px-2 py-2">
+  
   <!-- Banner -->
-  <div class="p-2 p-md-4 mb-4 rounded text-bg-dark" style="background-image: url('documents/images/logo3d_dark.png');">
+  <div class="p-4 p-md-4 mb-4 rounded text-bg-dark shadow-sm" style="background-image: url('documents/images/logo3d_dark.png');">
     <div class="col-md-8 px-0">
       <h2 class="display-8 ">MaterialX Learn</h2>
       <div class="col-md-12">
@@ -190,7 +192,7 @@
   <!-- What's New -->
   <div class="row mb-1">
     <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary">Tech</strong>
           <b class="mb-0">Tutorial and Workflows</b>
@@ -211,7 +213,7 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-success">News</strong>
           <b class="mb-0">1.38.8 Sync</b>
@@ -221,19 +223,18 @@
             <a href="https://github.com/AcademySoftwareFoundation/MaterialX/releases/tag/v1.38.7" target="_blank">              
               MaterialX 1.38.7 Release</a></p>
         </div>
+        <!--
         <div class="col-auto d-none d-lg-block">
-          <img src="documents/images/MaterialXLogo2K.png" height="128" role="img" aria-label="Placeholder: Thumbnail"
+          <img src="documents/images/MaterialXLogo2K.png" height="100" role="img" aria-label="Placeholder: Thumbnail"
             preserveAspectRatio="xMidYMid slice" focusable="false">
           <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
 
-  </main>
-
   <!-- Content Cards -->
-  <div class="container px-4 py-4" id="hanging-icons">
+  <div class="container px-2 py-2 shadow" id="hanging-icons">
 
     <div class="row ps-5 pe-4 row-cols-1 row-cols-sm-3 bg-light d-flex flex-row overflow-auto">
 
@@ -364,6 +365,8 @@
       </div>
 
     </div>
+
+  </div>
 
 </body>
 
