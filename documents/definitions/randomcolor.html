@@ -25,7 +25,7 @@
 <body class="min-vh-100">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
-<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
+<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    lineColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
 
 <script src="../js/definition_card_helpers.js"></script>
 
@@ -34,7 +34,7 @@
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="../../index.html">
         <h5><img src="../images/logo3d_2_small.png" alt="MaterialX Learn"
-            class="d-inline-block align-text-center" width="60">
+            class="rounded d-inline-block align-text-center" width="60">
           MaterialX Learn</h5>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
@@ -171,7 +171,7 @@
         </ul>
       </div>
     </div>
-  </nav><div class="container-fluid ">
+  </nav><div class="container p-2">
  <div class="row flex-nowrap">
    <div class="col-auto px-0">
      <div class="row vh-100 overflow-auto" id="noddict_row">
@@ -378,6 +378,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformpoint.html">transformpoint</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformvector.html">transformvector</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transpose.html">transpose</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="trianglewave.html">trianglewave</a>
 </div>
 </div>
 <div class="ps-3">
@@ -556,13 +557,13 @@ Category: randomcolor
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/randomcolor_float_glsl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">procedural3d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural3d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -576,40 +577,40 @@ Category: randomcolor
 <div id="ND_randomcolor_float_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_randomcolor_float_N_HSV_to_RGB[hsvtorgb] --> NG_randomcolor_float_out([out])
-    style NG_randomcolor_float_out fill:#1b1, color:#111
+    style NG_randomcolor_float_out fill:#0C0, color:#111
     NG_randomcolor_float_N_combine_HSV[combine3] --".in"--> NG_randomcolor_float_N_HSV_to_RGB[hsvtorgb]
     NG_randomcolor_float_N_range_hue[range] --".in1"--> NG_randomcolor_float_N_combine_HSV[combine3]
     NG_randomcolor_float_huelowINT([huelow]) ==.outlow==> NG_randomcolor_float_N_range_hue[range]
-    style NG_randomcolor_float_huelowINT fill:#0bb, color:#111
+    style NG_randomcolor_float_huelowINT fill:#0CF, color:#111
     NG_randomcolor_float_huehighINT([huehigh]) ==.outhigh==> NG_randomcolor_float_N_range_hue[range]
-    style NG_randomcolor_float_huehighINT fill:#0bb, color:#111
+    style NG_randomcolor_float_huehighINT fill:#0CF, color:#111
     NG_randomcolor_float_N_rand_hue[randomfloat] --".in"--> NG_randomcolor_float_N_range_hue[range]
     NG_randomcolor_float_inINT([in]) ==.in==> NG_randomcolor_float_N_rand_hue[randomfloat]
-    style NG_randomcolor_float_inINT fill:#0bb, color:#111
+    style NG_randomcolor_float_inINT fill:#0CF, color:#111
     NG_randomcolor_float_N_seed_hue[ceil] --".seed"--> NG_randomcolor_float_N_rand_hue[randomfloat]
     NG_randomcolor_float_N_offset_hue[add] --".in"--> NG_randomcolor_float_N_seed_hue[ceil]
     NG_randomcolor_float_N_convertSeed1[convert] --".in1"--> NG_randomcolor_float_N_offset_hue[add]
     NG_randomcolor_float_seedINT([seed]) ==.in==> NG_randomcolor_float_N_convertSeed1[convert]
-    style NG_randomcolor_float_seedINT fill:#0bb, color:#111
+    style NG_randomcolor_float_seedINT fill:#0CF, color:#111
     NG_randomcolor_float_N_range_saturation[range] --".in2"--> NG_randomcolor_float_N_combine_HSV[combine3]
     NG_randomcolor_float_saturationlowINT([saturationlow]) ==.outlow==> NG_randomcolor_float_N_range_saturation[range]
-    style NG_randomcolor_float_saturationlowINT fill:#0bb, color:#111
+    style NG_randomcolor_float_saturationlowINT fill:#0CF, color:#111
     NG_randomcolor_float_saturationhighINT([saturationhigh]) ==.outhigh==> NG_randomcolor_float_N_range_saturation[range]
-    style NG_randomcolor_float_saturationhighINT fill:#0bb, color:#111
+    style NG_randomcolor_float_saturationhighINT fill:#0CF, color:#111
     NG_randomcolor_float_N_rand_saturation[randomfloat] --".in"--> NG_randomcolor_float_N_range_saturation[range]
     NG_randomcolor_float_inINT([in]) ==.in==> NG_randomcolor_float_N_rand_saturation[randomfloat]
-    style NG_randomcolor_float_inINT fill:#0bb, color:#111
+    style NG_randomcolor_float_inINT fill:#0CF, color:#111
     NG_randomcolor_float_N_seed_saturation[ceil] --".seed"--> NG_randomcolor_float_N_rand_saturation[randomfloat]
     NG_randomcolor_float_N_offset_saturation[add] --".in"--> NG_randomcolor_float_N_seed_saturation[ceil]
     NG_randomcolor_float_N_convertSeed1[convert] --".in1"--> NG_randomcolor_float_N_offset_saturation[add]
     NG_randomcolor_float_N_range_brightness[range] --".in3"--> NG_randomcolor_float_N_combine_HSV[combine3]
     NG_randomcolor_float_brightnesslowINT([brightnesslow]) ==.outlow==> NG_randomcolor_float_N_range_brightness[range]
-    style NG_randomcolor_float_brightnesslowINT fill:#0bb, color:#111
+    style NG_randomcolor_float_brightnesslowINT fill:#0CF, color:#111
     NG_randomcolor_float_brightnesshighINT([brightnesshigh]) ==.outhigh==> NG_randomcolor_float_N_range_brightness[range]
-    style NG_randomcolor_float_brightnesshighINT fill:#0bb, color:#111
+    style NG_randomcolor_float_brightnesshighINT fill:#0CF, color:#111
     NG_randomcolor_float_N_rand_brightness[randomfloat] --".in"--> NG_randomcolor_float_N_range_brightness[range]
     NG_randomcolor_float_inINT([in]) ==.in==> NG_randomcolor_float_N_rand_brightness[randomfloat]
-    style NG_randomcolor_float_inINT fill:#0bb, color:#111
+    style NG_randomcolor_float_inINT fill:#0CF, color:#111
     NG_randomcolor_float_N_seed_brightness[ceil] --".seed"--> NG_randomcolor_float_N_rand_brightness[randomfloat]
     NG_randomcolor_float_N_offset_brightness[add] --".in"--> NG_randomcolor_float_N_seed_brightness[ceil]
     NG_randomcolor_float_N_convertSeed1[convert] --".in1"--> NG_randomcolor_float_N_offset_brightness[add]
@@ -639,7 +640,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -669,7 +670,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -699,7 +700,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -729,7 +730,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -759,7 +760,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -789,7 +790,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -819,7 +820,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -849,7 +850,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -879,7 +880,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
  </div>
@@ -893,13 +894,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/randomcolor_integer_glsl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">procedural3d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural3d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -913,24 +914,24 @@ graph LR;
 <div id="ND_randomcolor_integer_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_randomcolor_integer_N_randomcolor1[randomcolor] --> NG_randomcolor_integer_out([out])
-    style NG_randomcolor_integer_out fill:#1b1, color:#111
+    style NG_randomcolor_integer_out fill:#0C0, color:#111
     NG_randomcolor_integer_huelowINT([huelow]) ==.huelow==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_huelowINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_huelowINT fill:#0CF, color:#111
     NG_randomcolor_integer_huehighINT([huehigh]) ==.huehigh==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_huehighINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_huehighINT fill:#0CF, color:#111
     NG_randomcolor_integer_saturationlowINT([saturationlow]) ==.saturationlow==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_saturationlowINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_saturationlowINT fill:#0CF, color:#111
     NG_randomcolor_integer_saturationhighINT([saturationhigh]) ==.saturationhigh==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_saturationhighINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_saturationhighINT fill:#0CF, color:#111
     NG_randomcolor_integer_brightnesslowINT([brightnesslow]) ==.brightnesslow==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_brightnesslowINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_brightnesslowINT fill:#0CF, color:#111
     NG_randomcolor_integer_brightnesshighINT([brightnesshigh]) ==.brightnesshigh==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_brightnesshighINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_brightnesshighINT fill:#0CF, color:#111
     NG_randomcolor_integer_seedINT([seed]) ==.seed==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_seedINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_seedINT fill:#0CF, color:#111
     NG_randomcolor_integer_N_convert1[convert] --".in"--> NG_randomcolor_integer_N_randomcolor1[randomcolor]
     NG_randomcolor_integer_inINT([in]) ==.in==> NG_randomcolor_integer_N_convert1[convert]
-    style NG_randomcolor_integer_inINT fill:#0bb, color:#111
+    style NG_randomcolor_integer_inINT fill:#0CF, color:#111
 
 
 
@@ -957,7 +958,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -987,7 +988,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1017,7 +1018,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1047,7 +1048,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1077,7 +1078,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1107,7 +1108,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1137,7 +1138,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1167,7 +1168,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1197,7 +1198,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
  </div>

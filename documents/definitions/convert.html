@@ -25,7 +25,7 @@
 <body class="min-vh-100">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
-<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
+<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    lineColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
 
 <script src="../js/definition_card_helpers.js"></script>
 
@@ -34,7 +34,7 @@
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="../../index.html">
         <h5><img src="../images/logo3d_2_small.png" alt="MaterialX Learn"
-            class="d-inline-block align-text-center" width="60">
+            class="rounded d-inline-block align-text-center" width="60">
           MaterialX Learn</h5>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
@@ -171,7 +171,7 @@
         </ul>
       </div>
     </div>
-  </nav><div class="container-fluid ">
+  </nav><div class="container p-2">
  <div class="row flex-nowrap">
    <div class="col-auto px-0">
      <div class="row vh-100 overflow-auto" id="noddict_row">
@@ -378,6 +378,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformpoint.html">transformpoint</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformvector.html">transformvector</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transpose.html">transpose</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="trianglewave.html">trianglewave</a>
 </div>
 </div>
 <div class="ps-3">
@@ -556,13 +557,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_float_color3_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_float_color3_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -572,52 +573,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -635,7 +636,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -653,7 +654,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -682,13 +683,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_float_color4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_float_color4_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -698,52 +699,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -761,7 +762,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -779,7 +780,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -811,13 +812,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_float_vector2_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_float_vector2_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector2</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector2</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -827,52 +828,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -890,7 +891,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -908,7 +909,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -931,13 +932,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_float_vector3_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_float_vector3_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -947,52 +948,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -1010,7 +1011,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1028,7 +1029,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1054,13 +1055,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_float_vector4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_float_vector4_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -1070,52 +1071,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -1133,7 +1134,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1151,7 +1152,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1180,13 +1181,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_vector2_vector3_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_vector2_vector3_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -1196,52 +1197,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -1259,7 +1260,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1279,7 +1280,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1305,13 +1306,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_vector3_color3_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_vector3_color3_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -1321,52 +1322,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -1384,7 +1385,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1407,7 +1408,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1436,13 +1437,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_vector3_vector2_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_vector3_vector2_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector2</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector2</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -1452,52 +1453,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -1515,7 +1516,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1538,7 +1539,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1561,13 +1562,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_vector3_vector4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_vector3_vector4_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -1577,52 +1578,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -1640,7 +1641,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1663,7 +1664,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1692,13 +1693,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_vector4_color4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_vector4_color4_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -1708,52 +1709,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -1771,7 +1772,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1797,7 +1798,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1829,13 +1830,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_vector4_vector3_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_vector4_vector3_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -1845,52 +1846,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -1908,7 +1909,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1934,7 +1935,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1960,13 +1961,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_color3_vector3_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_color3_vector3_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -1976,52 +1977,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -2039,7 +2040,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2065,7 +2066,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2091,13 +2092,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_color4_vector4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_color4_vector4_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -2107,52 +2108,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -2170,7 +2171,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2199,7 +2200,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2228,13 +2229,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_color3_color4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_color3_color4_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -2244,52 +2245,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -2307,7 +2308,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2333,7 +2334,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2365,13 +2366,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_color4_color3_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_color4_color3_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -2381,52 +2382,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -2444,7 +2445,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2473,7 +2474,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2502,13 +2503,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_boolean_float_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_boolean_float_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> float</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> float</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -2518,52 +2519,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -2581,7 +2582,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="boolean">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2599,7 +2600,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2620,13 +2621,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_integer_float_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_integer_float_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> float</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> float</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">channel</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Code Implementation</b>
@@ -2636,52 +2637,52 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
@@ -2699,7 +2700,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2717,7 +2718,7 @@ Category: convert
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2738,13 +2739,13 @@ Category: convert
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_color3_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_color3_surfaceshader_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
-<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> Convert color3 to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -2758,9 +2759,9 @@ Category: convert
 <div id="ND_convert_color3_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_convert_color3_surfaceshader_surface[surface_unlit] --> NG_convert_color3_surfaceshader_out([out])
-    style NG_convert_color3_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_color3_surfaceshader_out fill:#0C0, color:#111
     NG_convert_color3_surfaceshader_inINT([in]) ==.emission_color==> NG_convert_color3_surfaceshader_surface[surface_unlit]
-    style NG_convert_color3_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_color3_surfaceshader_inINT fill:#0CF, color:#111
 
 
 
@@ -2780,7 +2781,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2806,7 +2807,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -2820,13 +2821,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_color4_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_color4_surfaceshader_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
-<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> Convert color4  to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -2840,13 +2841,13 @@ graph LR;
 <div id="ND_convert_color4_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_convert_color4_surfaceshader_surface[surface_unlit] --> NG_convert_color4_surfaceshader_out([out])
-    style NG_convert_color4_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_color4_surfaceshader_out fill:#0C0, color:#111
     NG_convert_color4_surfaceshader_convert[convert] --".emission_color"--> NG_convert_color4_surfaceshader_surface[surface_unlit]
     NG_convert_color4_surfaceshader_inINT([in]) ==.in==> NG_convert_color4_surfaceshader_convert[convert]
-    style NG_convert_color4_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_color4_surfaceshader_inINT fill:#0CF, color:#111
     NG_convert_color4_surfaceshader_extract[extract] --".opacity"--> NG_convert_color4_surfaceshader_surface[surface_unlit]
     NG_convert_color4_surfaceshader_inINT([in]) ==.in==> NG_convert_color4_surfaceshader_extract[extract]
-    style NG_convert_color4_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_color4_surfaceshader_inINT fill:#0CF, color:#111
 
 
 
@@ -2866,7 +2867,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2895,7 +2896,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -2909,13 +2910,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_float_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_float_surfaceshader_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
-<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> Convert float to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -2929,10 +2930,10 @@ graph LR;
 <div id="ND_convert_float_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_convert_float_surfaceshader_surface[surface_unlit] --> NG_convert_float_surfaceshader_out([out])
-    style NG_convert_float_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_float_surfaceshader_out fill:#0C0, color:#111
     NG_convert_float_surfaceshader_float_to_color3[convert] --".emission_color"--> NG_convert_float_surfaceshader_surface[surface_unlit]
     NG_convert_float_surfaceshader_inINT([in]) ==.in==> NG_convert_float_surfaceshader_float_to_color3[convert]
-    style NG_convert_float_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_float_surfaceshader_inINT fill:#0CF, color:#111
 
 
 
@@ -2952,7 +2953,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2970,7 +2971,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -2984,13 +2985,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_vector2_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_vector2_surfaceshader_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
-<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> Convert vector2 to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -3004,11 +3005,11 @@ graph LR;
 <div id="ND_convert_vector2_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_convert_vector2_surfaceshader_surface[surface_unlit] --> NG_convert_vector2_surfaceshader_out([out])
-    style NG_convert_vector2_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_vector2_surfaceshader_out fill:#0C0, color:#111
     NG_convert_vector2_surfaceshader_vec3_to_color3[convert] --".emission_color"--> NG_convert_vector2_surfaceshader_surface[surface_unlit]
     NG_convert_vector2_surfaceshader_vec2_to_vec3[convert] --".in"--> NG_convert_vector2_surfaceshader_vec3_to_color3[convert]
     NG_convert_vector2_surfaceshader_inINT([in]) ==.in==> NG_convert_vector2_surfaceshader_vec2_to_vec3[convert]
-    style NG_convert_vector2_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_vector2_surfaceshader_inINT fill:#0CF, color:#111
 
 
 
@@ -3028,7 +3029,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -3048,7 +3049,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -3062,13 +3063,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_vector3_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_vector3_surfaceshader_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
-<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> Convert vector2 to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -3082,10 +3083,10 @@ graph LR;
 <div id="ND_convert_vector3_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_convert_vector3_surfaceshader_surface[surface_unlit] --> NG_convert_vector3_surfaceshader_out([out])
-    style NG_convert_vector3_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_vector3_surfaceshader_out fill:#0C0, color:#111
     NG_convert_vector3_surfaceshader_vec3_to_color3[convert] --".emission_color"--> NG_convert_vector3_surfaceshader_surface[surface_unlit]
     NG_convert_vector3_surfaceshader_inINT([in]) ==.in==> NG_convert_vector3_surfaceshader_vec3_to_color3[convert]
-    style NG_convert_vector3_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_vector3_surfaceshader_inINT fill:#0CF, color:#111
 
 
 
@@ -3105,7 +3106,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -3128,7 +3129,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -3142,13 +3143,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_vector4_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_vector4_surfaceshader_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
-<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> Convert vector4 to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -3162,11 +3163,11 @@ graph LR;
 <div id="ND_convert_vector4_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_convert_vector4_surfaceshader_surface[surface_unlit] --> NG_convert_vector4_surfaceshader_out([out])
-    style NG_convert_vector4_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_vector4_surfaceshader_out fill:#0C0, color:#111
     NG_convert_vector4_surfaceshader_color4_to_color3[convert] --".emission_color"--> NG_convert_vector4_surfaceshader_surface[surface_unlit]
     NG_convert_vector4_surfaceshader_vec4_to_color4[convert] --".in"--> NG_convert_vector4_surfaceshader_color4_to_color3[convert]
     NG_convert_vector4_surfaceshader_inINT([in]) ==.in==> NG_convert_vector4_surfaceshader_vec4_to_color4[convert]
-    style NG_convert_vector4_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_vector4_surfaceshader_inINT fill:#0CF, color:#111
     NG_convert_vector4_surfaceshader_color4_to_float[extract] --".opacity"--> NG_convert_vector4_surfaceshader_surface[surface_unlit]
     NG_convert_vector4_surfaceshader_vec4_to_color4[convert] --".in"--> NG_convert_vector4_surfaceshader_color4_to_float[extract]
 
@@ -3188,7 +3189,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -3214,7 +3215,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -3228,13 +3229,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_integer_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_integer_surfaceshader_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
-<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> Convert integer to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -3248,11 +3249,11 @@ graph LR;
 <div id="ND_convert_integer_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_convert_integer_surfaceshader_surface[surface_unlit] --> NG_convert_integer_surfaceshader_out([out])
-    style NG_convert_integer_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_integer_surfaceshader_out fill:#0C0, color:#111
     NG_convert_integer_surfaceshader_float_to_color3[convert] --".emission_color"--> NG_convert_integer_surfaceshader_surface[surface_unlit]
     NG_convert_integer_surfaceshader_int_to_float[convert] --".in"--> NG_convert_integer_surfaceshader_float_to_color3[convert]
     NG_convert_integer_surfaceshader_inINT([in]) ==.in==> NG_convert_integer_surfaceshader_int_to_float[convert]
-    style NG_convert_integer_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_integer_surfaceshader_inINT fill:#0CF, color:#111
 
 
 
@@ -3272,7 +3273,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -3290,7 +3291,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>
@@ -3304,13 +3305,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_convert_boolean_surfaceshader_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_convert_boolean_surfaceshader_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">shader</button></p>
-<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> surfaceshader</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">shader</button></p>
+<p class="card-text"> <b>Version</b>1.0 (default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> Convert boolean to shader.</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -3324,11 +3325,11 @@ graph LR;
 <div id="ND_convert_boolean_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_convert_boolean_surfaceshader_surface[surface_unlit] --> NG_convert_boolean_surfaceshader_out([out])
-    style NG_convert_boolean_surfaceshader_out fill:#1b1, color:#111
+    style NG_convert_boolean_surfaceshader_out fill:#0C0, color:#111
     NG_convert_boolean_surfaceshader_float_to_color3[convert] --".emission_color"--> NG_convert_boolean_surfaceshader_surface[surface_unlit]
     NG_convert_boolean_surfaceshader_bool_to_float[convert] --".in"--> NG_convert_boolean_surfaceshader_float_to_color3[convert]
     NG_convert_boolean_surfaceshader_inINT([in]) ==.in==> NG_convert_boolean_surfaceshader_bool_to_float[convert]
-    style NG_convert_boolean_surfaceshader_inINT fill:#0bb, color:#111
+    style NG_convert_boolean_surfaceshader_inINT fill:#0CF, color:#111
 
 
 
@@ -3348,7 +3349,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="boolean">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -3366,7 +3367,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
  </div>

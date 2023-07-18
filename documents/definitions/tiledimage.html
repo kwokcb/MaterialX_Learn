@@ -25,7 +25,7 @@
 <body class="min-vh-100">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
-<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
+<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    lineColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
 
 <script src="../js/definition_card_helpers.js"></script>
 
@@ -34,7 +34,7 @@
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="../../index.html">
         <h5><img src="../images/logo3d_2_small.png" alt="MaterialX Learn"
-            class="d-inline-block align-text-center" width="60">
+            class="rounded d-inline-block align-text-center" width="60">
           MaterialX Learn</h5>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
@@ -171,7 +171,7 @@
         </ul>
       </div>
     </div>
-  </nav><div class="container-fluid ">
+  </nav><div class="container p-2">
  <div class="row flex-nowrap">
    <div class="col-auto px-0">
      <div class="row vh-100 overflow-auto" id="noddict_row">
@@ -378,6 +378,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformpoint.html">transformpoint</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformvector.html">transformvector</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transpose.html">transpose</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="trianglewave.html">trianglewave</a>
 </div>
 </div>
 <div class="ps-3">
@@ -556,13 +557,13 @@ Category: tiledimage
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_tiledimage_float_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_tiledimage_float_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> float</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">texture2d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> float</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">texture2d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -576,33 +577,33 @@ Category: tiledimage
 <div id="ND_tiledimage_float_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_tiledimage_float_N_img_float[image] --> NG_tiledimage_float_out([out])
-    style NG_tiledimage_float_out fill:#1b1, color:#111
+    style NG_tiledimage_float_out fill:#0C0, color:#111
     NG_tiledimage_float_fileINT([file]) ==.file==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_fileINT fill:#0bb, color:#111
+    style NG_tiledimage_float_fileINT fill:#0CF, color:#111
     NG_tiledimage_float_dfaultINT([default]) ==.default==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_dfaultINT fill:#0bb, color:#111
+    style NG_tiledimage_float_dfaultINT fill:#0CF, color:#111
     NG_tiledimage_float_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_filtertypeINT fill:#0bb, color:#111
+    style NG_tiledimage_float_filtertypeINT fill:#0CF, color:#111
     NG_tiledimage_float_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_framerangeINT fill:#0bb, color:#111
+    style NG_tiledimage_float_framerangeINT fill:#0CF, color:#111
     NG_tiledimage_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_frameoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_float_frameoffsetINT fill:#0CF, color:#111
     NG_tiledimage_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_frameendactionINT fill:#0bb, color:#111
+    style NG_tiledimage_float_frameendactionINT fill:#0CF, color:#111
     NG_tiledimage_float_N_multtilesize_float[multiply] --".texcoord"--> NG_tiledimage_float_N_img_float[image]
     NG_tiledimage_float_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_float_N_multtilesize_float[multiply]
-    style NG_tiledimage_float_realworldtilesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_float_realworldtilesizeINT fill:#0CF, color:#111
     NG_tiledimage_float_N_divtilesize_float[divide] --".in1"--> NG_tiledimage_float_N_multtilesize_float[multiply]
     NG_tiledimage_float_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_float_N_divtilesize_float[divide]
-    style NG_tiledimage_float_realworldimagesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_float_realworldimagesizeINT fill:#0CF, color:#111
     NG_tiledimage_float_N_sub_float[subtract] --".in1"--> NG_tiledimage_float_N_divtilesize_float[divide]
     NG_tiledimage_float_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_float_N_sub_float[subtract]
-    style NG_tiledimage_float_uvoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_float_uvoffsetINT fill:#0CF, color:#111
     NG_tiledimage_float_N_mult_float[multiply] --".in1"--> NG_tiledimage_float_N_sub_float[subtract]
     NG_tiledimage_float_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_float_N_mult_float[multiply]
-    style NG_tiledimage_float_texcoordINT fill:#0bb, color:#111
+    style NG_tiledimage_float_texcoordINT fill:#0CF, color:#111
     NG_tiledimage_float_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_float_N_mult_float[multiply]
-    style NG_tiledimage_float_uvtilingINT fill:#0bb, color:#111
+    style NG_tiledimage_float_uvtilingINT fill:#0CF, color:#111
 
 
 
@@ -632,7 +633,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -654,7 +655,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -672,7 +673,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -690,7 +691,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -710,7 +711,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -730,14 +731,14 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
  <div class="col-sm-2">
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
  </div>
 </div>
   <div class="form-group row g-1">
@@ -757,14 +758,14 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
  <div class="col-sm-2">
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
  </div>
 </div>
   <div class="form-group row g-1">
@@ -784,7 +785,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -817,7 +818,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -839,7 +840,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -861,7 +862,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -895,7 +896,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -916,13 +917,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_tiledimage_color3_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_tiledimage_color3_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">texture2d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">texture2d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -936,33 +937,33 @@ graph LR;
 <div id="ND_tiledimage_color3_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_tiledimage_color3_N_img_color3[image] --> NG_tiledimage_color3_out([out])
-    style NG_tiledimage_color3_out fill:#1b1, color:#111
+    style NG_tiledimage_color3_out fill:#0C0, color:#111
     NG_tiledimage_color3_fileINT([file]) ==.file==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_fileINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_fileINT fill:#0CF, color:#111
     NG_tiledimage_color3_dfaultINT([default]) ==.default==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_dfaultINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_dfaultINT fill:#0CF, color:#111
     NG_tiledimage_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_filtertypeINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_filtertypeINT fill:#0CF, color:#111
     NG_tiledimage_color3_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_framerangeINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_framerangeINT fill:#0CF, color:#111
     NG_tiledimage_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_frameoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_frameoffsetINT fill:#0CF, color:#111
     NG_tiledimage_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_frameendactionINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_frameendactionINT fill:#0CF, color:#111
     NG_tiledimage_color3_N_multtilesize_color3[multiply] --".texcoord"--> NG_tiledimage_color3_N_img_color3[image]
     NG_tiledimage_color3_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_color3_N_multtilesize_color3[multiply]
-    style NG_tiledimage_color3_realworldtilesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_realworldtilesizeINT fill:#0CF, color:#111
     NG_tiledimage_color3_N_divtilesize_color3[divide] --".in1"--> NG_tiledimage_color3_N_multtilesize_color3[multiply]
     NG_tiledimage_color3_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_color3_N_divtilesize_color3[divide]
-    style NG_tiledimage_color3_realworldimagesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_realworldimagesizeINT fill:#0CF, color:#111
     NG_tiledimage_color3_N_sub_color3[subtract] --".in1"--> NG_tiledimage_color3_N_divtilesize_color3[divide]
     NG_tiledimage_color3_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_color3_N_sub_color3[subtract]
-    style NG_tiledimage_color3_uvoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_uvoffsetINT fill:#0CF, color:#111
     NG_tiledimage_color3_N_mult_color3[multiply] --".in1"--> NG_tiledimage_color3_N_sub_color3[subtract]
     NG_tiledimage_color3_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_color3_N_mult_color3[multiply]
-    style NG_tiledimage_color3_texcoordINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_texcoordINT fill:#0CF, color:#111
     NG_tiledimage_color3_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_color3_N_mult_color3[multiply]
-    style NG_tiledimage_color3_uvtilingINT fill:#0bb, color:#111
+    style NG_tiledimage_color3_uvtilingINT fill:#0CF, color:#111
 
 
 
@@ -992,7 +993,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1014,7 +1015,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1040,7 +1041,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1058,7 +1059,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1078,7 +1079,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1098,14 +1099,14 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
  <div class="col-sm-2">
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
  </div>
 </div>
   <div class="form-group row g-1">
@@ -1125,14 +1126,14 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
  <div class="col-sm-2">
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
  </div>
 </div>
   <div class="form-group row g-1">
@@ -1152,7 +1153,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1185,7 +1186,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1207,7 +1208,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1229,7 +1230,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1263,7 +1264,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1292,13 +1293,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_tiledimage_color4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_tiledimage_color4_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">texture2d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">texture2d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -1312,33 +1313,33 @@ graph LR;
 <div id="ND_tiledimage_color4_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_tiledimage_color4_N_img_color4[image] --> NG_tiledimage_color4_out([out])
-    style NG_tiledimage_color4_out fill:#1b1, color:#111
+    style NG_tiledimage_color4_out fill:#0C0, color:#111
     NG_tiledimage_color4_fileINT([file]) ==.file==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_fileINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_fileINT fill:#0CF, color:#111
     NG_tiledimage_color4_dfaultINT([default]) ==.default==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_dfaultINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_dfaultINT fill:#0CF, color:#111
     NG_tiledimage_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_filtertypeINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_filtertypeINT fill:#0CF, color:#111
     NG_tiledimage_color4_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_framerangeINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_framerangeINT fill:#0CF, color:#111
     NG_tiledimage_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_frameoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_frameoffsetINT fill:#0CF, color:#111
     NG_tiledimage_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_frameendactionINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_frameendactionINT fill:#0CF, color:#111
     NG_tiledimage_color4_N_multtilesize_color4[multiply] --".texcoord"--> NG_tiledimage_color4_N_img_color4[image]
     NG_tiledimage_color4_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_color4_N_multtilesize_color4[multiply]
-    style NG_tiledimage_color4_realworldtilesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_realworldtilesizeINT fill:#0CF, color:#111
     NG_tiledimage_color4_N_divtilesize_color4[divide] --".in1"--> NG_tiledimage_color4_N_multtilesize_color4[multiply]
     NG_tiledimage_color4_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_color4_N_divtilesize_color4[divide]
-    style NG_tiledimage_color4_realworldimagesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_realworldimagesizeINT fill:#0CF, color:#111
     NG_tiledimage_color4_N_sub_color4[subtract] --".in1"--> NG_tiledimage_color4_N_divtilesize_color4[divide]
     NG_tiledimage_color4_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_color4_N_sub_color4[subtract]
-    style NG_tiledimage_color4_uvoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_uvoffsetINT fill:#0CF, color:#111
     NG_tiledimage_color4_N_mult_color4[multiply] --".in1"--> NG_tiledimage_color4_N_sub_color4[subtract]
     NG_tiledimage_color4_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_color4_N_mult_color4[multiply]
-    style NG_tiledimage_color4_texcoordINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_texcoordINT fill:#0CF, color:#111
     NG_tiledimage_color4_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_color4_N_mult_color4[multiply]
-    style NG_tiledimage_color4_uvtilingINT fill:#0bb, color:#111
+    style NG_tiledimage_color4_uvtilingINT fill:#0CF, color:#111
 
 
 
@@ -1368,7 +1369,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1390,7 +1391,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1419,7 +1420,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1437,7 +1438,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1457,7 +1458,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1477,14 +1478,14 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
  <div class="col-sm-2">
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
  </div>
 </div>
   <div class="form-group row g-1">
@@ -1504,14 +1505,14 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
  <div class="col-sm-2">
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
  </div>
 </div>
   <div class="form-group row g-1">
@@ -1531,7 +1532,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1564,7 +1565,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1586,7 +1587,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1608,7 +1609,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1642,7 +1643,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1674,13 +1675,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_tiledimage_vector2_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_tiledimage_vector2_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector2</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">texture2d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector2</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">texture2d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -1694,33 +1695,33 @@ graph LR;
 <div id="ND_tiledimage_vector2_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_tiledimage_vector2_N_img_vector2[image] --> NG_tiledimage_vector2_out([out])
-    style NG_tiledimage_vector2_out fill:#1b1, color:#111
+    style NG_tiledimage_vector2_out fill:#0C0, color:#111
     NG_tiledimage_vector2_fileINT([file]) ==.file==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_fileINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_fileINT fill:#0CF, color:#111
     NG_tiledimage_vector2_dfaultINT([default]) ==.default==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_dfaultINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_dfaultINT fill:#0CF, color:#111
     NG_tiledimage_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_filtertypeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_filtertypeINT fill:#0CF, color:#111
     NG_tiledimage_vector2_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_framerangeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_framerangeINT fill:#0CF, color:#111
     NG_tiledimage_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_frameoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_frameoffsetINT fill:#0CF, color:#111
     NG_tiledimage_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_frameendactionINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_frameendactionINT fill:#0CF, color:#111
     NG_tiledimage_vector2_N_multtilesize_vector2[multiply] --".texcoord"--> NG_tiledimage_vector2_N_img_vector2[image]
     NG_tiledimage_vector2_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_vector2_N_multtilesize_vector2[multiply]
-    style NG_tiledimage_vector2_realworldtilesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_realworldtilesizeINT fill:#0CF, color:#111
     NG_tiledimage_vector2_N_divtilesize_vector2[divide] --".in1"--> NG_tiledimage_vector2_N_multtilesize_vector2[multiply]
     NG_tiledimage_vector2_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_vector2_N_divtilesize_vector2[divide]
-    style NG_tiledimage_vector2_realworldimagesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_realworldimagesizeINT fill:#0CF, color:#111
     NG_tiledimage_vector2_N_sub_vector2[subtract] --".in1"--> NG_tiledimage_vector2_N_divtilesize_vector2[divide]
     NG_tiledimage_vector2_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_vector2_N_sub_vector2[subtract]
-    style NG_tiledimage_vector2_uvoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_uvoffsetINT fill:#0CF, color:#111
     NG_tiledimage_vector2_N_mult_vector2[multiply] --".in1"--> NG_tiledimage_vector2_N_sub_vector2[subtract]
     NG_tiledimage_vector2_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_vector2_N_mult_vector2[multiply]
-    style NG_tiledimage_vector2_texcoordINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_texcoordINT fill:#0CF, color:#111
     NG_tiledimage_vector2_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_vector2_N_mult_vector2[multiply]
-    style NG_tiledimage_vector2_uvtilingINT fill:#0bb, color:#111
+    style NG_tiledimage_vector2_uvtilingINT fill:#0CF, color:#111
 
 
 
@@ -1750,7 +1751,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1772,7 +1773,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1792,7 +1793,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1810,7 +1811,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1830,7 +1831,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1850,14 +1851,14 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
  <div class="col-sm-2">
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
  </div>
 </div>
   <div class="form-group row g-1">
@@ -1877,14 +1878,14 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
  <div class="col-sm-2">
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
  </div>
 </div>
   <div class="form-group row g-1">
@@ -1904,7 +1905,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1937,7 +1938,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1959,7 +1960,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1981,7 +1982,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2015,7 +2016,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2038,13 +2039,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_tiledimage_vector3_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_tiledimage_vector3_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">texture2d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">texture2d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -2058,33 +2059,33 @@ graph LR;
 <div id="ND_tiledimage_vector3_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_tiledimage_vector3_N_img_vector3[image] --> NG_tiledimage_vector3_out([out])
-    style NG_tiledimage_vector3_out fill:#1b1, color:#111
+    style NG_tiledimage_vector3_out fill:#0C0, color:#111
     NG_tiledimage_vector3_fileINT([file]) ==.file==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_fileINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_fileINT fill:#0CF, color:#111
     NG_tiledimage_vector3_dfaultINT([default]) ==.default==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_dfaultINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_dfaultINT fill:#0CF, color:#111
     NG_tiledimage_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_filtertypeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_filtertypeINT fill:#0CF, color:#111
     NG_tiledimage_vector3_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_framerangeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_framerangeINT fill:#0CF, color:#111
     NG_tiledimage_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_frameoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_frameoffsetINT fill:#0CF, color:#111
     NG_tiledimage_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_frameendactionINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_frameendactionINT fill:#0CF, color:#111
     NG_tiledimage_vector3_N_multtilesize_vector3[multiply] --".texcoord"--> NG_tiledimage_vector3_N_img_vector3[image]
     NG_tiledimage_vector3_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_vector3_N_multtilesize_vector3[multiply]
-    style NG_tiledimage_vector3_realworldtilesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_realworldtilesizeINT fill:#0CF, color:#111
     NG_tiledimage_vector3_N_divtilesize_vector3[divide] --".in1"--> NG_tiledimage_vector3_N_multtilesize_vector3[multiply]
     NG_tiledimage_vector3_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_vector3_N_divtilesize_vector3[divide]
-    style NG_tiledimage_vector3_realworldimagesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_realworldimagesizeINT fill:#0CF, color:#111
     NG_tiledimage_vector3_N_sub_vector3[subtract] --".in1"--> NG_tiledimage_vector3_N_divtilesize_vector3[divide]
     NG_tiledimage_vector3_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_vector3_N_sub_vector3[subtract]
-    style NG_tiledimage_vector3_uvoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_uvoffsetINT fill:#0CF, color:#111
     NG_tiledimage_vector3_N_mult_vector3[multiply] --".in1"--> NG_tiledimage_vector3_N_sub_vector3[subtract]
     NG_tiledimage_vector3_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_vector3_N_mult_vector3[multiply]
-    style NG_tiledimage_vector3_texcoordINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_texcoordINT fill:#0CF, color:#111
     NG_tiledimage_vector3_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_vector3_N_mult_vector3[multiply]
-    style NG_tiledimage_vector3_uvtilingINT fill:#0bb, color:#111
+    style NG_tiledimage_vector3_uvtilingINT fill:#0CF, color:#111
 
 
 
@@ -2114,7 +2115,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2136,7 +2137,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2159,7 +2160,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2177,7 +2178,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2197,7 +2198,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2217,14 +2218,14 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
  <div class="col-sm-2">
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
  </div>
 </div>
   <div class="form-group row g-1">
@@ -2244,14 +2245,14 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
  <div class="col-sm-2">
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
  </div>
 </div>
   <div class="form-group row g-1">
@@ -2271,7 +2272,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2304,7 +2305,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2326,7 +2327,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2348,7 +2349,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2382,7 +2383,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2408,13 +2409,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_tiledimage_vector4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_tiledimage_vector4_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">texture2d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">texture2d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -2428,33 +2429,33 @@ graph LR;
 <div id="ND_tiledimage_vector4_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_tiledimage_vector4_N_img_vector4[image] --> NG_tiledimage_vector4_out([out])
-    style NG_tiledimage_vector4_out fill:#1b1, color:#111
+    style NG_tiledimage_vector4_out fill:#0C0, color:#111
     NG_tiledimage_vector4_fileINT([file]) ==.file==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_fileINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_fileINT fill:#0CF, color:#111
     NG_tiledimage_vector4_dfaultINT([default]) ==.default==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_dfaultINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_dfaultINT fill:#0CF, color:#111
     NG_tiledimage_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_filtertypeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_filtertypeINT fill:#0CF, color:#111
     NG_tiledimage_vector4_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_framerangeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_framerangeINT fill:#0CF, color:#111
     NG_tiledimage_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_frameoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_frameoffsetINT fill:#0CF, color:#111
     NG_tiledimage_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_frameendactionINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_frameendactionINT fill:#0CF, color:#111
     NG_tiledimage_vector4_N_multtilesize_vector4[multiply] --".texcoord"--> NG_tiledimage_vector4_N_img_vector4[image]
     NG_tiledimage_vector4_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_vector4_N_multtilesize_vector4[multiply]
-    style NG_tiledimage_vector4_realworldtilesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_realworldtilesizeINT fill:#0CF, color:#111
     NG_tiledimage_vector4_N_divtilesize_vector4[divide] --".in1"--> NG_tiledimage_vector4_N_multtilesize_vector4[multiply]
     NG_tiledimage_vector4_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_vector4_N_divtilesize_vector4[divide]
-    style NG_tiledimage_vector4_realworldimagesizeINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_realworldimagesizeINT fill:#0CF, color:#111
     NG_tiledimage_vector4_N_sub_vector4[subtract] --".in1"--> NG_tiledimage_vector4_N_divtilesize_vector4[divide]
     NG_tiledimage_vector4_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_vector4_N_sub_vector4[subtract]
-    style NG_tiledimage_vector4_uvoffsetINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_uvoffsetINT fill:#0CF, color:#111
     NG_tiledimage_vector4_N_mult_vector4[multiply] --".in1"--> NG_tiledimage_vector4_N_sub_vector4[subtract]
     NG_tiledimage_vector4_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_vector4_N_mult_vector4[multiply]
-    style NG_tiledimage_vector4_texcoordINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_texcoordINT fill:#0CF, color:#111
     NG_tiledimage_vector4_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_vector4_N_mult_vector4[multiply]
-    style NG_tiledimage_vector4_uvtilingINT fill:#0bb, color:#111
+    style NG_tiledimage_vector4_uvtilingINT fill:#0CF, color:#111
 
 
 
@@ -2484,7 +2485,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2506,7 +2507,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2532,7 +2533,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2550,7 +2551,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2570,7 +2571,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2590,14 +2591,14 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
  <div class="col-sm-2">
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
  </div>
 </div>
   <div class="form-group row g-1">
@@ -2617,14 +2618,14 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
  <div class="col-sm-2">
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
-   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
  </div>
 </div>
   <div class="form-group row g-1">
@@ -2644,7 +2645,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2677,7 +2678,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2699,7 +2700,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2721,7 +2722,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2755,7 +2756,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector4">
    </div>
   </div>
   <div class="form-group row g-1">

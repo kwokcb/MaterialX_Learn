@@ -20,7 +20,7 @@
       <input name="in1" type="vector2" nodename="multiply_vector2" />
       <input name="in2" type="vector2" interfacename="modulo" />
     </modulo>
-    <input name="modulo" type="vector2" value="2.1, 1.1" xpos="-2.884058" ypos="0.724138" />
+    <input name="modulo" type="vector2" value="2.1, 1.1" xpos="-2.659420" ypos="0.853448" />
     <noise2d name="noise2d_color3" type="color3" xpos="7.246377" ypos="2.206897">
       <input name="texcoord" type="vector2" nodename="modulo_vector2" />
       <input name="amplitude" type="vector3" interfacename="noiseAmplitude" />
@@ -33,7 +33,7 @@
     <input name="repeat" type="vector2" value="13.2, 9.9" xpos="-7.963768" ypos="0.534483" />
     <input name="noiseAmplitude" type="vector3" value="1.3, 1.7, 4.8" xpos="4.326087" ypos="3.060345" />
   </nodegraph>
-  <standard_surface name="standard_surface_surfaceshader" type="surfaceshader" xpos="15.369565" ypos="-5.293103">
-    <input name="base_color" type="color3" output="output_color3" nodegraph="nodegraph1" />
+  <standard_surface name="standard_surface_surfaceshader" type="surfaceshader" xpos="16.166666" ypos="-1.500000">
+    <input name="base_color" type="color3" output="output_color3" nodegraph="myProcedural" />
   </standard_surface>
 </materialx>

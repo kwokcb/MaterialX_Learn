@@ -89,171 +89,167 @@
 ```mermaid
 graph LR; 
     IMPL_gltf_pbr_surfaceshader_shader_constructor[surface] --> IMPL_gltf_pbr_surfaceshader_out([out])
-    style IMPL_gltf_pbr_surfaceshader_out fill:#1b1, color:#111
+    style IMPL_gltf_pbr_surfaceshader_out fill:#0C0, color:#111
     IMPL_gltf_pbr_surfaceshader_clearcoat_layer[layer] --".bsdf"--> IMPL_gltf_pbr_surfaceshader_shader_constructor[surface]
     IMPL_gltf_pbr_surfaceshader_clearcoat_bsdf[dielectric_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_clearcoat_layer[layer]
     IMPL_gltf_pbr_surfaceshader_clearcoatINT([clearcoat]) ==.weight==> IMPL_gltf_pbr_surfaceshader_clearcoat_bsdf[dielectric_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_clearcoatINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_clearcoatINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_clearcoat_normalINT([clearcoat_normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_clearcoat_bsdf[dielectric_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_clearcoat_normalINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_clearcoat_normalINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_clearcoat_bsdf[dielectric_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_clearcoat_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_clearcoat_bsdf[dielectric_bsdf]
     IMPL_gltf_pbr_surfaceshader_clearcoat_roughnessINT([clearcoat_roughness]) ==.roughness==> IMPL_gltf_pbr_surfaceshader_clearcoat_roughness_uv[roughness_anisotropy]
-    style IMPL_gltf_pbr_surfaceshader_clearcoat_roughnessINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_clearcoat_roughnessINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_sheen_layer[layer] --".base"--> IMPL_gltf_pbr_surfaceshader_clearcoat_layer[layer]
     IMPL_gltf_pbr_surfaceshader_sheen_bsdf[sheen_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_sheen_layer[layer]
     IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_sheen_bsdf[sheen_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_sheen_intensity[max] --".weight"--> IMPL_gltf_pbr_surfaceshader_sheen_bsdf[sheen_bsdf]
     IMPL_gltf_pbr_surfaceshader_sheen_color_max_rg[max] --".in1"--> IMPL_gltf_pbr_surfaceshader_sheen_intensity[max]
     IMPL_gltf_pbr_surfaceshader_sheen_color_r[extract] --".in1"--> IMPL_gltf_pbr_surfaceshader_sheen_color_max_rg[max]
     IMPL_gltf_pbr_surfaceshader_sheen_colorINT([sheen_color]) ==.in==> IMPL_gltf_pbr_surfaceshader_sheen_color_r[extract]
-    style IMPL_gltf_pbr_surfaceshader_sheen_colorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_sheen_colorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_sheen_color_g[extract] --".in2"--> IMPL_gltf_pbr_surfaceshader_sheen_color_max_rg[max]
     IMPL_gltf_pbr_surfaceshader_sheen_colorINT([sheen_color]) ==.in==> IMPL_gltf_pbr_surfaceshader_sheen_color_g[extract]
-    style IMPL_gltf_pbr_surfaceshader_sheen_colorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_sheen_colorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_sheen_color_b[extract] --".in2"--> IMPL_gltf_pbr_surfaceshader_sheen_intensity[max]
     IMPL_gltf_pbr_surfaceshader_sheen_colorINT([sheen_color]) ==.in==> IMPL_gltf_pbr_surfaceshader_sheen_color_b[extract]
-    style IMPL_gltf_pbr_surfaceshader_sheen_colorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_sheen_colorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_sheen_color_normalized[divide] --".color"--> IMPL_gltf_pbr_surfaceshader_sheen_bsdf[sheen_bsdf]
     IMPL_gltf_pbr_surfaceshader_sheen_colorINT([sheen_color]) ==.in1==> IMPL_gltf_pbr_surfaceshader_sheen_color_normalized[divide]
-    style IMPL_gltf_pbr_surfaceshader_sheen_colorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_sheen_colorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_sheen_intensity[max] --".in2"--> IMPL_gltf_pbr_surfaceshader_sheen_color_normalized[divide]
     IMPL_gltf_pbr_surfaceshader_sheen_roughness_sq[multiply] --".roughness"--> IMPL_gltf_pbr_surfaceshader_sheen_bsdf[sheen_bsdf]
     IMPL_gltf_pbr_surfaceshader_sheen_roughnessINT([sheen_roughness]) ==.in1==> IMPL_gltf_pbr_surfaceshader_sheen_roughness_sq[multiply]
-    style IMPL_gltf_pbr_surfaceshader_sheen_roughnessINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_sheen_roughnessINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_sheen_roughnessINT([sheen_roughness]) ==.in2==> IMPL_gltf_pbr_surfaceshader_sheen_roughness_sq[multiply]
-    style IMPL_gltf_pbr_surfaceshader_sheen_roughnessINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_sheen_roughnessINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_base_mix[mix] --".base"--> IMPL_gltf_pbr_surfaceshader_sheen_layer[layer]
     IMPL_gltf_pbr_surfaceshader_metallicINT([metallic]) ==.mix==> IMPL_gltf_pbr_surfaceshader_base_mix[mix]
-    style IMPL_gltf_pbr_surfaceshader_metallicINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_metallicINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix] --".bg"--> IMPL_gltf_pbr_surfaceshader_base_mix[mix]
     IMPL_gltf_pbr_surfaceshader_iridescenceINT([iridescence]) ==.mix==> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix]
-    style IMPL_gltf_pbr_surfaceshader_iridescenceINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_iridescenceINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_dielectric_bsdf[layer] --".bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix]
     IMPL_gltf_pbr_surfaceshader_reflection_bsdf[generalized_schlick_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_dielectric_bsdf[layer]
     IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_reflection_bsdf[generalized_schlick_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_reflection_bsdf[generalized_schlick_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_dielectric_f0[multiply] --".color0"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf[generalized_schlick_bsdf]
     IMPL_gltf_pbr_surfaceshader_specularINT([specular]) ==.in2==> IMPL_gltf_pbr_surfaceshader_dielectric_f0[multiply]
-    style IMPL_gltf_pbr_surfaceshader_specularINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_specularINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_clamped_dielectric_f0_from_ior_specular_color[min] --".in1"--> IMPL_gltf_pbr_surfaceshader_dielectric_f0[multiply]
     IMPL_gltf_pbr_surfaceshader_dielectric_f0_from_ior_specular_color[multiply] --".in1"--> IMPL_gltf_pbr_surfaceshader_clamped_dielectric_f0_from_ior_specular_color[min]
     IMPL_gltf_pbr_surfaceshader_specular_colorINT([specular_color]) ==.in1==> IMPL_gltf_pbr_surfaceshader_dielectric_f0_from_ior_specular_color[multiply]
-    style IMPL_gltf_pbr_surfaceshader_specular_colorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_specular_colorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_dielectric_f0_from_ior[multiply] --".in2"--> IMPL_gltf_pbr_surfaceshader_dielectric_f0_from_ior_specular_color[multiply]
     IMPL_gltf_pbr_surfaceshader_ior_div[divide] --".in1"--> IMPL_gltf_pbr_surfaceshader_dielectric_f0_from_ior[multiply]
     IMPL_gltf_pbr_surfaceshader_one_minus_ior[subtract] --".in1"--> IMPL_gltf_pbr_surfaceshader_ior_div[divide]
     IMPL_gltf_pbr_surfaceshader_iorINT([ior]) ==.in2==> IMPL_gltf_pbr_surfaceshader_one_minus_ior[subtract]
-    style IMPL_gltf_pbr_surfaceshader_iorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_iorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_one_plus_ior[add] --".in2"--> IMPL_gltf_pbr_surfaceshader_ior_div[divide]
     IMPL_gltf_pbr_surfaceshader_iorINT([ior]) ==.in2==> IMPL_gltf_pbr_surfaceshader_one_plus_ior[add]
-    style IMPL_gltf_pbr_surfaceshader_iorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_iorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_ior_div[divide] --".in2"--> IMPL_gltf_pbr_surfaceshader_dielectric_f0_from_ior[multiply]
     IMPL_gltf_pbr_surfaceshader_dielectric_f90[multiply] --".color90"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf[generalized_schlick_bsdf]
     IMPL_gltf_pbr_surfaceshader_specularINT([specular]) ==.in2==> IMPL_gltf_pbr_surfaceshader_dielectric_f90[multiply]
-    style IMPL_gltf_pbr_surfaceshader_specularINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_specularINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf[generalized_schlick_bsdf]
     IMPL_gltf_pbr_surfaceshader_roughnessINT([roughness]) ==.roughness==> IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy]
-    style IMPL_gltf_pbr_surfaceshader_roughnessINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_roughnessINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_transmission_mix[mix] --".base"--> IMPL_gltf_pbr_surfaceshader_dielectric_bsdf[layer]
     IMPL_gltf_pbr_surfaceshader_transmissionINT([transmission]) ==.mix==> IMPL_gltf_pbr_surfaceshader_transmission_mix[mix]
-    style IMPL_gltf_pbr_surfaceshader_transmissionINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_transmissionINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".bg"--> IMPL_gltf_pbr_surfaceshader_transmission_mix[mix]
     IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.color==> IMPL_gltf_pbr_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf] --".fg"--> IMPL_gltf_pbr_surfaceshader_transmission_mix[mix]
     IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.tint==> IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_iorINT([ior]) ==.ior==> IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_iorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_iorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf]
     IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf[layer] --".fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix]
     IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf[thin_film_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf[layer]
     IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT([iridescence_thickness]) ==.thickness==> IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf[thin_film_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_iridescence_iorINT([iridescence_ior]) ==.ior==> IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf[thin_film_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_iridescence_iorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_iridescence_iorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[layer] --".base"--> IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf[layer]
     IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[layer]
     IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_dielectric_f0[multiply] --".color0"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
     IMPL_gltf_pbr_surfaceshader_dielectric_f90[multiply] --".color90"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
     IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
     IMPL_gltf_pbr_surfaceshader_tf_transmission_mix[mix] --".base"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[layer]
     IMPL_gltf_pbr_surfaceshader_transmissionINT([transmission]) ==.mix==> IMPL_gltf_pbr_surfaceshader_tf_transmission_mix[mix]
-    style IMPL_gltf_pbr_surfaceshader_transmissionINT fill:#0bb, color:#111
-    IMPL_gltf_pbr_surfaceshader_tf_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".bg"--> IMPL_gltf_pbr_surfaceshader_tf_transmission_mix[mix]
-    IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.color==> IMPL_gltf_pbr_surfaceshader_tf_diffuse_bsdf[oren_nayar_diffuse_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0bb, color:#111
-    IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_tf_diffuse_bsdf[oren_nayar_diffuse_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_transmissionINT fill:#0CF, color:#111
+    IMPL_gltf_pbr_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".bg"--> IMPL_gltf_pbr_surfaceshader_tf_transmission_mix[mix]
     IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf] --".fg"--> IMPL_gltf_pbr_surfaceshader_tf_transmission_mix[mix]
     IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.tint==> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_iorINT([ior]) ==.ior==> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_iorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_iorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
     IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix] --".fg"--> IMPL_gltf_pbr_surfaceshader_base_mix[mix]
     IMPL_gltf_pbr_surfaceshader_iridescenceINT([iridescence]) ==.mix==> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix]
-    style IMPL_gltf_pbr_surfaceshader_iridescenceINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_iridescenceINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_metal_bsdf[generalized_schlick_bsdf] --".bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix]
     IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.color0==> IMPL_gltf_pbr_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
     IMPL_gltf_pbr_surfaceshader_iridescent_metal_bsdf[layer] --".fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix]
     IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf[thin_film_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_iridescent_metal_bsdf[layer]
     IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT([iridescence_thickness]) ==.thickness==> IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf[thin_film_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_iridescence_iorINT([iridescence_ior]) ==.ior==> IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf[thin_film_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_iridescence_iorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_iridescence_iorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf] --".base"--> IMPL_gltf_pbr_surfaceshader_iridescent_metal_bsdf[layer]
     IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.color0==> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
     IMPL_gltf_pbr_surfaceshader_emission[uniform_edf] --".edf"--> IMPL_gltf_pbr_surfaceshader_shader_constructor[surface]
     IMPL_gltf_pbr_surfaceshader_emission_color[multiply] --".color"--> IMPL_gltf_pbr_surfaceshader_emission[uniform_edf]
     IMPL_gltf_pbr_surfaceshader_emissiveINT([emissive]) ==.in1==> IMPL_gltf_pbr_surfaceshader_emission_color[multiply]
-    style IMPL_gltf_pbr_surfaceshader_emissiveINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_emissiveINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_emissive_strengthINT([emissive_strength]) ==.in2==> IMPL_gltf_pbr_surfaceshader_emission_color[multiply]
-    style IMPL_gltf_pbr_surfaceshader_emissive_strengthINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_emissive_strengthINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_opacity[ifequal] --".opacity"--> IMPL_gltf_pbr_surfaceshader_shader_constructor[surface]
     IMPL_gltf_pbr_surfaceshader_alpha_modeINT([alpha_mode]) ==.value1==> IMPL_gltf_pbr_surfaceshader_opacity[ifequal]
-    style IMPL_gltf_pbr_surfaceshader_alpha_modeINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_alpha_modeINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_opacity_mask[ifequal] --".in2"--> IMPL_gltf_pbr_surfaceshader_opacity[ifequal]
     IMPL_gltf_pbr_surfaceshader_alpha_modeINT([alpha_mode]) ==.value1==> IMPL_gltf_pbr_surfaceshader_opacity_mask[ifequal]
-    style IMPL_gltf_pbr_surfaceshader_alpha_modeINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_alpha_modeINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_alphaINT([alpha]) ==.in2==> IMPL_gltf_pbr_surfaceshader_opacity_mask[ifequal]
-    style IMPL_gltf_pbr_surfaceshader_alphaINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_alphaINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_opacity_mask_cutoff[ifgreatereq] --".in1"--> IMPL_gltf_pbr_surfaceshader_opacity_mask[ifequal]
     IMPL_gltf_pbr_surfaceshader_alphaINT([alpha]) ==.value1==> IMPL_gltf_pbr_surfaceshader_opacity_mask_cutoff[ifgreatereq]
-    style IMPL_gltf_pbr_surfaceshader_alphaINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_alphaINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_alpha_cutoffINT([alpha_cutoff]) ==.value2==> IMPL_gltf_pbr_surfaceshader_opacity_mask_cutoff[ifgreatereq]
-    style IMPL_gltf_pbr_surfaceshader_alpha_cutoffINT fill:#0bb, color:#111
+    style IMPL_gltf_pbr_surfaceshader_alpha_cutoffINT fill:#0CF, color:#111
 
 ```
  
@@ -304,43 +300,43 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_gltf_colorimage_combine_color[combine3] --> NG_gltf_colorimage_outcolor([outcolor])
-    style NG_gltf_colorimage_outcolor fill:#1b1, color:#111
+    style NG_gltf_colorimage_outcolor fill:#0C0, color:#111
     NG_gltf_colorimage_separate_color[separate4] --> NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutr([outr])
-    style NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutr fill:#1b1, color:#111
+    style NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutr fill:#0C0, color:#111
     NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutr --".in1"--> NG_gltf_colorimage_combine_color[combine3]
     NG_gltf_colorimage_modulate_geomcolor[multiply] --".in"--> NG_gltf_colorimage_separate_color[separate4]
     NG_gltf_colorimage_geomcolorINT([geomcolor]) ==.in2==> NG_gltf_colorimage_modulate_geomcolor[multiply]
-    style NG_gltf_colorimage_geomcolorINT fill:#0bb, color:#111
+    style NG_gltf_colorimage_geomcolorINT fill:#0CF, color:#111
     NG_gltf_colorimage_modulate_color[multiply] --".in1"--> NG_gltf_colorimage_modulate_geomcolor[multiply]
     NG_gltf_colorimage_colorINT([color]) ==.in1==> NG_gltf_colorimage_modulate_color[multiply]
-    style NG_gltf_colorimage_colorINT fill:#0bb, color:#111
+    style NG_gltf_colorimage_colorINT fill:#0CF, color:#111
     NG_gltf_colorimage_image[gltf_image] --".in2"--> NG_gltf_colorimage_modulate_color[multiply]
     NG_gltf_colorimage_fileINT([file]) ==.file==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_fileINT fill:#0bb, color:#111
+    style NG_gltf_colorimage_fileINT fill:#0CF, color:#111
     NG_gltf_colorimage_dfaultINT([default]) ==.default==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_dfaultINT fill:#0bb, color:#111
+    style NG_gltf_colorimage_dfaultINT fill:#0CF, color:#111
     NG_gltf_colorimage_uvindexINT([uvindex]) ==.uvindex==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_uvindexINT fill:#0bb, color:#111
+    style NG_gltf_colorimage_uvindexINT fill:#0CF, color:#111
     NG_gltf_colorimage_pivotINT([pivot]) ==.pivot==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_pivotINT fill:#0bb, color:#111
+    style NG_gltf_colorimage_pivotINT fill:#0CF, color:#111
     NG_gltf_colorimage_scaleINT([scale]) ==.scale==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_scaleINT fill:#0bb, color:#111
+    style NG_gltf_colorimage_scaleINT fill:#0CF, color:#111
     NG_gltf_colorimage_rotateINT([rotate]) ==.rotate==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_rotateINT fill:#0bb, color:#111
+    style NG_gltf_colorimage_rotateINT fill:#0CF, color:#111
     NG_gltf_colorimage_offsetINT([offset]) ==.offset==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_offsetINT fill:#0bb, color:#111
+    style NG_gltf_colorimage_offsetINT fill:#0CF, color:#111
     NG_gltf_colorimage_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_filtertypeINT fill:#0bb, color:#111
+    style NG_gltf_colorimage_filtertypeINT fill:#0CF, color:#111
     NG_gltf_colorimage_separate_color[separate4] --> NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutg([outg])
-    style NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutg fill:#1b1, color:#111
+    style NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutg fill:#0C0, color:#111
     NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutg --".in2"--> NG_gltf_colorimage_combine_color[combine3]
     NG_gltf_colorimage_separate_color[separate4] --> NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutb([outb])
-    style NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutb fill:#1b1, color:#111
+    style NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutb fill:#0C0, color:#111
     NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutb --".in3"--> NG_gltf_colorimage_combine_color[combine3]
     NG_gltf_colorimage_separate_alpha[dot] --> NG_gltf_colorimage_outa([outa])
-    style NG_gltf_colorimage_outa fill:#1b1, color:#111
+    style NG_gltf_colorimage_outa fill:#0C0, color:#111
     NG_gltf_colorimage_separate_color[separate4] --> NG_gltf_colorimage_NG_gltf_colorimage_separate_colorouta([outa])
-    style NG_gltf_colorimage_NG_gltf_colorimage_separate_colorouta fill:#1b1, color:#111
+    style NG_gltf_colorimage_NG_gltf_colorimage_separate_colorouta fill:#0C0, color:#111
     NG_gltf_colorimage_NG_gltf_colorimage_separate_colorouta --".in"--> NG_gltf_colorimage_separate_alpha[dot]
 
 ```
@@ -380,37 +376,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_NG_gltf_image_color3_color3_1_0_scale_image[multiply] --> NG_NG_gltf_image_color3_color3_1_0_out([out])
-    style NG_NG_gltf_image_color3_color3_1_0_out fill:#1b1, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_out fill:#0C0, color:#111
     NG_NG_gltf_image_color3_color3_1_0_factorINT([factor]) ==.in1==> NG_NG_gltf_image_color3_color3_1_0_scale_image[multiply]
-    style NG_NG_gltf_image_color3_color3_1_0_factorINT fill:#0bb, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_factorINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_image[image] --".in2"--> NG_NG_gltf_image_color3_color3_1_0_scale_image[multiply]
     NG_NG_gltf_image_color3_color3_1_0_fileINT([file]) ==.file==> NG_NG_gltf_image_color3_color3_1_0_image[image]
-    style NG_NG_gltf_image_color3_color3_1_0_fileINT fill:#0bb, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_fileINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_dfaultINT([default]) ==.default==> NG_NG_gltf_image_color3_color3_1_0_image[image]
-    style NG_NG_gltf_image_color3_color3_1_0_dfaultINT fill:#0bb, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_dfaultINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_NG_gltf_image_color3_color3_1_0_image[image]
-    style NG_NG_gltf_image_color3_color3_1_0_uaddressmodeINT fill:#0bb, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_uaddressmodeINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_NG_gltf_image_color3_color3_1_0_image[image]
-    style NG_NG_gltf_image_color3_color3_1_0_vaddressmodeINT fill:#0bb, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_vaddressmodeINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_NG_gltf_image_color3_color3_1_0_image[image]
-    style NG_NG_gltf_image_color3_color3_1_0_filtertypeINT fill:#0bb, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_filtertypeINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_place2d[place2d] --".texcoord"--> NG_NG_gltf_image_color3_color3_1_0_image[image]
     NG_NG_gltf_image_color3_color3_1_0_pivotINT([pivot]) ==.pivot==> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
-    style NG_NG_gltf_image_color3_color3_1_0_pivotINT fill:#0bb, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_pivotINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
-    style NG_NG_gltf_image_color3_color3_1_0_operationorderINT fill:#0bb, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_operationorderINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_texcoord1[texcoord] --".texcoord"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
     NG_NG_gltf_image_color3_color3_1_0_uvindexINT([uvindex]) ==.index==> NG_NG_gltf_image_color3_color3_1_0_texcoord1[texcoord]
-    style NG_NG_gltf_image_color3_color3_1_0_uvindexINT fill:#0bb, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_uvindexINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_invert_scale[divide] --".scale"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
     NG_NG_gltf_image_color3_color3_1_0_scaleINT([scale]) ==.in2==> NG_NG_gltf_image_color3_color3_1_0_invert_scale[divide]
-    style NG_NG_gltf_image_color3_color3_1_0_scaleINT fill:#0bb, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_scaleINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_negate_rotate[multiply] --".rotate"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
     NG_NG_gltf_image_color3_color3_1_0_rotateINT([rotate]) ==.in1==> NG_NG_gltf_image_color3_color3_1_0_negate_rotate[multiply]
-    style NG_NG_gltf_image_color3_color3_1_0_rotateINT fill:#0bb, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_rotateINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_negate_offset[multiply] --".offset"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
     NG_NG_gltf_image_color3_color3_1_0_offsetINT([offset]) ==.in1==> NG_NG_gltf_image_color3_color3_1_0_negate_offset[multiply]
-    style NG_NG_gltf_image_color3_color3_1_0_offsetINT fill:#0bb, color:#111
+    style NG_NG_gltf_image_color3_color3_1_0_offsetINT fill:#0CF, color:#111
 
 ```
  
@@ -446,37 +442,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_gltf_image_color4_color4_1_0_scale_image[multiply] --> NG_gltf_image_color4_color4_1_0_out([out])
-    style NG_gltf_image_color4_color4_1_0_out fill:#1b1, color:#111
+    style NG_gltf_image_color4_color4_1_0_out fill:#0C0, color:#111
     NG_gltf_image_color4_color4_1_0_factorINT([factor]) ==.in1==> NG_gltf_image_color4_color4_1_0_scale_image[multiply]
-    style NG_gltf_image_color4_color4_1_0_factorINT fill:#0bb, color:#111
+    style NG_gltf_image_color4_color4_1_0_factorINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_image[image] --".in2"--> NG_gltf_image_color4_color4_1_0_scale_image[multiply]
     NG_gltf_image_color4_color4_1_0_fileINT([file]) ==.file==> NG_gltf_image_color4_color4_1_0_image[image]
-    style NG_gltf_image_color4_color4_1_0_fileINT fill:#0bb, color:#111
+    style NG_gltf_image_color4_color4_1_0_fileINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_dfaultINT([default]) ==.default==> NG_gltf_image_color4_color4_1_0_image[image]
-    style NG_gltf_image_color4_color4_1_0_dfaultINT fill:#0bb, color:#111
+    style NG_gltf_image_color4_color4_1_0_dfaultINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_image_color4_color4_1_0_image[image]
-    style NG_gltf_image_color4_color4_1_0_uaddressmodeINT fill:#0bb, color:#111
+    style NG_gltf_image_color4_color4_1_0_uaddressmodeINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_image_color4_color4_1_0_image[image]
-    style NG_gltf_image_color4_color4_1_0_vaddressmodeINT fill:#0bb, color:#111
+    style NG_gltf_image_color4_color4_1_0_vaddressmodeINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_image_color4_color4_1_0_image[image]
-    style NG_gltf_image_color4_color4_1_0_filtertypeINT fill:#0bb, color:#111
+    style NG_gltf_image_color4_color4_1_0_filtertypeINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_place2d[place2d] --".texcoord"--> NG_gltf_image_color4_color4_1_0_image[image]
     NG_gltf_image_color4_color4_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_image_color4_color4_1_0_place2d[place2d]
-    style NG_gltf_image_color4_color4_1_0_pivotINT fill:#0bb, color:#111
+    style NG_gltf_image_color4_color4_1_0_pivotINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_image_color4_color4_1_0_place2d[place2d]
-    style NG_gltf_image_color4_color4_1_0_operationorderINT fill:#0bb, color:#111
+    style NG_gltf_image_color4_color4_1_0_operationorderINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_texcoord1[texcoord] --".texcoord"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
     NG_gltf_image_color4_color4_1_0_uvindexINT([uvindex]) ==.index==> NG_gltf_image_color4_color4_1_0_texcoord1[texcoord]
-    style NG_gltf_image_color4_color4_1_0_uvindexINT fill:#0bb, color:#111
+    style NG_gltf_image_color4_color4_1_0_uvindexINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_invert_scale[divide] --".scale"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
     NG_gltf_image_color4_color4_1_0_scaleINT([scale]) ==.in2==> NG_gltf_image_color4_color4_1_0_invert_scale[divide]
-    style NG_gltf_image_color4_color4_1_0_scaleINT fill:#0bb, color:#111
+    style NG_gltf_image_color4_color4_1_0_scaleINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_negate_rotate[multiply] --".rotate"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
     NG_gltf_image_color4_color4_1_0_rotateINT([rotate]) ==.in1==> NG_gltf_image_color4_color4_1_0_negate_rotate[multiply]
-    style NG_gltf_image_color4_color4_1_0_rotateINT fill:#0bb, color:#111
+    style NG_gltf_image_color4_color4_1_0_rotateINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_negate_offset[multiply] --".offset"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
     NG_gltf_image_color4_color4_1_0_offsetINT([offset]) ==.in1==> NG_gltf_image_color4_color4_1_0_negate_offset[multiply]
-    style NG_gltf_image_color4_color4_1_0_offsetINT fill:#0bb, color:#111
+    style NG_gltf_image_color4_color4_1_0_offsetINT fill:#0CF, color:#111
 
 ```
  
@@ -512,37 +508,37 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_gltf_image_float_float_1_0_scale_image[multiply] --> NG_gltf_image_float_float_1_0_out([out])
-    style NG_gltf_image_float_float_1_0_out fill:#1b1, color:#111
+    style NG_gltf_image_float_float_1_0_out fill:#0C0, color:#111
     NG_gltf_image_float_float_1_0_factorINT([factor]) ==.in1==> NG_gltf_image_float_float_1_0_scale_image[multiply]
-    style NG_gltf_image_float_float_1_0_factorINT fill:#0bb, color:#111
+    style NG_gltf_image_float_float_1_0_factorINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_image[image] --".in2"--> NG_gltf_image_float_float_1_0_scale_image[multiply]
     NG_gltf_image_float_float_1_0_fileINT([file]) ==.file==> NG_gltf_image_float_float_1_0_image[image]
-    style NG_gltf_image_float_float_1_0_fileINT fill:#0bb, color:#111
+    style NG_gltf_image_float_float_1_0_fileINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_dfaultINT([default]) ==.default==> NG_gltf_image_float_float_1_0_image[image]
-    style NG_gltf_image_float_float_1_0_dfaultINT fill:#0bb, color:#111
+    style NG_gltf_image_float_float_1_0_dfaultINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_image_float_float_1_0_image[image]
-    style NG_gltf_image_float_float_1_0_uaddressmodeINT fill:#0bb, color:#111
+    style NG_gltf_image_float_float_1_0_uaddressmodeINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_image_float_float_1_0_image[image]
-    style NG_gltf_image_float_float_1_0_vaddressmodeINT fill:#0bb, color:#111
+    style NG_gltf_image_float_float_1_0_vaddressmodeINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_image_float_float_1_0_image[image]
-    style NG_gltf_image_float_float_1_0_filtertypeINT fill:#0bb, color:#111
+    style NG_gltf_image_float_float_1_0_filtertypeINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_place2d[place2d] --".texcoord"--> NG_gltf_image_float_float_1_0_image[image]
     NG_gltf_image_float_float_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_image_float_float_1_0_place2d[place2d]
-    style NG_gltf_image_float_float_1_0_pivotINT fill:#0bb, color:#111
+    style NG_gltf_image_float_float_1_0_pivotINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_image_float_float_1_0_place2d[place2d]
-    style NG_gltf_image_float_float_1_0_operationorderINT fill:#0bb, color:#111
+    style NG_gltf_image_float_float_1_0_operationorderINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_texcoord1[texcoord] --".texcoord"--> NG_gltf_image_float_float_1_0_place2d[place2d]
     NG_gltf_image_float_float_1_0_uvindexINT([uvindex]) ==.index==> NG_gltf_image_float_float_1_0_texcoord1[texcoord]
-    style NG_gltf_image_float_float_1_0_uvindexINT fill:#0bb, color:#111
+    style NG_gltf_image_float_float_1_0_uvindexINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_invert_scale[divide] --".scale"--> NG_gltf_image_float_float_1_0_place2d[place2d]
     NG_gltf_image_float_float_1_0_scaleINT([scale]) ==.in2==> NG_gltf_image_float_float_1_0_invert_scale[divide]
-    style NG_gltf_image_float_float_1_0_scaleINT fill:#0bb, color:#111
+    style NG_gltf_image_float_float_1_0_scaleINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_negate_rotate[multiply] --".rotate"--> NG_gltf_image_float_float_1_0_place2d[place2d]
     NG_gltf_image_float_float_1_0_rotateINT([rotate]) ==.in1==> NG_gltf_image_float_float_1_0_negate_rotate[multiply]
-    style NG_gltf_image_float_float_1_0_rotateINT fill:#0bb, color:#111
+    style NG_gltf_image_float_float_1_0_rotateINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_negate_offset[multiply] --".offset"--> NG_gltf_image_float_float_1_0_place2d[place2d]
     NG_gltf_image_float_float_1_0_offsetINT([offset]) ==.in1==> NG_gltf_image_float_float_1_0_negate_offset[multiply]
-    style NG_gltf_image_float_float_1_0_offsetINT fill:#0bb, color:#111
+    style NG_gltf_image_float_float_1_0_offsetINT fill:#0CF, color:#111
 
 ```
  
@@ -578,34 +574,34 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_gltf_image_vector3_vector3_1_0_image[image] --> NG_gltf_image_vector3_vector3_1_0_out([out])
-    style NG_gltf_image_vector3_vector3_1_0_out fill:#1b1, color:#111
+    style NG_gltf_image_vector3_vector3_1_0_out fill:#0C0, color:#111
     NG_gltf_image_vector3_vector3_1_0_fileINT([file]) ==.file==> NG_gltf_image_vector3_vector3_1_0_image[image]
-    style NG_gltf_image_vector3_vector3_1_0_fileINT fill:#0bb, color:#111
+    style NG_gltf_image_vector3_vector3_1_0_fileINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_dfaultINT([default]) ==.default==> NG_gltf_image_vector3_vector3_1_0_image[image]
-    style NG_gltf_image_vector3_vector3_1_0_dfaultINT fill:#0bb, color:#111
+    style NG_gltf_image_vector3_vector3_1_0_dfaultINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_image_vector3_vector3_1_0_image[image]
-    style NG_gltf_image_vector3_vector3_1_0_uaddressmodeINT fill:#0bb, color:#111
+    style NG_gltf_image_vector3_vector3_1_0_uaddressmodeINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_image_vector3_vector3_1_0_image[image]
-    style NG_gltf_image_vector3_vector3_1_0_vaddressmodeINT fill:#0bb, color:#111
+    style NG_gltf_image_vector3_vector3_1_0_vaddressmodeINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_image_vector3_vector3_1_0_image[image]
-    style NG_gltf_image_vector3_vector3_1_0_filtertypeINT fill:#0bb, color:#111
+    style NG_gltf_image_vector3_vector3_1_0_filtertypeINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_place2d[place2d] --".texcoord"--> NG_gltf_image_vector3_vector3_1_0_image[image]
     NG_gltf_image_vector3_vector3_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
-    style NG_gltf_image_vector3_vector3_1_0_pivotINT fill:#0bb, color:#111
+    style NG_gltf_image_vector3_vector3_1_0_pivotINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
-    style NG_gltf_image_vector3_vector3_1_0_operationorderINT fill:#0bb, color:#111
+    style NG_gltf_image_vector3_vector3_1_0_operationorderINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_texcoord1[texcoord] --".texcoord"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
     NG_gltf_image_vector3_vector3_1_0_uvindexINT([uvindex]) ==.index==> NG_gltf_image_vector3_vector3_1_0_texcoord1[texcoord]
-    style NG_gltf_image_vector3_vector3_1_0_uvindexINT fill:#0bb, color:#111
+    style NG_gltf_image_vector3_vector3_1_0_uvindexINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_invert_scale[divide] --".scale"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
     NG_gltf_image_vector3_vector3_1_0_scaleINT([scale]) ==.in2==> NG_gltf_image_vector3_vector3_1_0_invert_scale[divide]
-    style NG_gltf_image_vector3_vector3_1_0_scaleINT fill:#0bb, color:#111
+    style NG_gltf_image_vector3_vector3_1_0_scaleINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_negate_rotate[multiply] --".rotate"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
     NG_gltf_image_vector3_vector3_1_0_rotateINT([rotate]) ==.in1==> NG_gltf_image_vector3_vector3_1_0_negate_rotate[multiply]
-    style NG_gltf_image_vector3_vector3_1_0_rotateINT fill:#0bb, color:#111
+    style NG_gltf_image_vector3_vector3_1_0_rotateINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_negate_offset[multiply] --".offset"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
     NG_gltf_image_vector3_vector3_1_0_offsetINT([offset]) ==.in1==> NG_gltf_image_vector3_vector3_1_0_negate_offset[multiply]
-    style NG_gltf_image_vector3_vector3_1_0_offsetINT fill:#0bb, color:#111
+    style NG_gltf_image_vector3_vector3_1_0_offsetINT fill:#0CF, color:#111
 
 ```
  
@@ -641,35 +637,35 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_gltf_normalmap_vector3_1_0_normalmap[normalmap] --> NG_gltf_normalmap_vector3_1_0_out([out])
-    style NG_gltf_normalmap_vector3_1_0_out fill:#1b1, color:#111
+    style NG_gltf_normalmap_vector3_1_0_out fill:#0C0, color:#111
     NG_gltf_normalmap_vector3_1_0_image[image] --".in"--> NG_gltf_normalmap_vector3_1_0_normalmap[normalmap]
     NG_gltf_normalmap_vector3_1_0_fileINT([file]) ==.file==> NG_gltf_normalmap_vector3_1_0_image[image]
-    style NG_gltf_normalmap_vector3_1_0_fileINT fill:#0bb, color:#111
+    style NG_gltf_normalmap_vector3_1_0_fileINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_dfaultINT([default]) ==.default==> NG_gltf_normalmap_vector3_1_0_image[image]
-    style NG_gltf_normalmap_vector3_1_0_dfaultINT fill:#0bb, color:#111
+    style NG_gltf_normalmap_vector3_1_0_dfaultINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_normalmap_vector3_1_0_image[image]
-    style NG_gltf_normalmap_vector3_1_0_uaddressmodeINT fill:#0bb, color:#111
+    style NG_gltf_normalmap_vector3_1_0_uaddressmodeINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_normalmap_vector3_1_0_image[image]
-    style NG_gltf_normalmap_vector3_1_0_vaddressmodeINT fill:#0bb, color:#111
+    style NG_gltf_normalmap_vector3_1_0_vaddressmodeINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_normalmap_vector3_1_0_image[image]
-    style NG_gltf_normalmap_vector3_1_0_filtertypeINT fill:#0bb, color:#111
+    style NG_gltf_normalmap_vector3_1_0_filtertypeINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_place2d[place2d] --".texcoord"--> NG_gltf_normalmap_vector3_1_0_image[image]
     NG_gltf_normalmap_vector3_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
-    style NG_gltf_normalmap_vector3_1_0_pivotINT fill:#0bb, color:#111
+    style NG_gltf_normalmap_vector3_1_0_pivotINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
-    style NG_gltf_normalmap_vector3_1_0_operationorderINT fill:#0bb, color:#111
+    style NG_gltf_normalmap_vector3_1_0_operationorderINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_texcoord1[texcoord] --".texcoord"--> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
     NG_gltf_normalmap_vector3_1_0_uvindexINT([uvindex]) ==.index==> NG_gltf_normalmap_vector3_1_0_texcoord1[texcoord]
-    style NG_gltf_normalmap_vector3_1_0_uvindexINT fill:#0bb, color:#111
+    style NG_gltf_normalmap_vector3_1_0_uvindexINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_invert_scale[divide] --".scale"--> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
     NG_gltf_normalmap_vector3_1_0_scaleINT([scale]) ==.in2==> NG_gltf_normalmap_vector3_1_0_invert_scale[divide]
-    style NG_gltf_normalmap_vector3_1_0_scaleINT fill:#0bb, color:#111
+    style NG_gltf_normalmap_vector3_1_0_scaleINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_negate_rotate[multiply] --".rotate"--> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
     NG_gltf_normalmap_vector3_1_0_rotateINT([rotate]) ==.in1==> NG_gltf_normalmap_vector3_1_0_negate_rotate[multiply]
-    style NG_gltf_normalmap_vector3_1_0_rotateINT fill:#0bb, color:#111
+    style NG_gltf_normalmap_vector3_1_0_rotateINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_negate_offset[multiply] --".offset"--> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
     NG_gltf_normalmap_vector3_1_0_offsetINT([offset]) ==.in1==> NG_gltf_normalmap_vector3_1_0_negate_offset[multiply]
-    style NG_gltf_normalmap_vector3_1_0_offsetINT fill:#0bb, color:#111
+    style NG_gltf_normalmap_vector3_1_0_offsetINT fill:#0CF, color:#111
 
 ```
  
@@ -705,33 +701,33 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_gltf_iridescence_thickness_float_1_0_mixThickness[mix] --> NG_gltf_iridescence_thickness_float_1_0_out([out])
-    style NG_gltf_iridescence_thickness_float_1_0_out fill:#1b1, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_out fill:#0C0, color:#111
     NG_gltf_iridescence_thickness_float_1_0_thicknessMinINT([thicknessMin]) ==.fg==> NG_gltf_iridescence_thickness_float_1_0_mixThickness[mix]
-    style NG_gltf_iridescence_thickness_float_1_0_thicknessMinINT fill:#0bb, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_thicknessMinINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_thicknessMaxINT([thicknessMax]) ==.bg==> NG_gltf_iridescence_thickness_float_1_0_mixThickness[mix]
-    style NG_gltf_iridescence_thickness_float_1_0_thicknessMaxINT fill:#0bb, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_thicknessMaxINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_extract[extract] --".mix"--> NG_gltf_iridescence_thickness_float_1_0_mixThickness[mix]
     NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image] --".in"--> NG_gltf_iridescence_thickness_float_1_0_extract[extract]
     NG_gltf_iridescence_thickness_float_1_0_fileINT([file]) ==.file==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_fileINT fill:#0bb, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_fileINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_dfaultINT([default]) ==.default==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_dfaultINT fill:#0bb, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_dfaultINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_uvindexINT([uvindex]) ==.uvindex==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_uvindexINT fill:#0bb, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_uvindexINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_pivotINT fill:#0bb, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_pivotINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_scaleINT([scale]) ==.scale==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_scaleINT fill:#0bb, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_scaleINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_rotateINT([rotate]) ==.rotate==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_rotateINT fill:#0bb, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_rotateINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_offsetINT([offset]) ==.offset==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_offsetINT fill:#0bb, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_offsetINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_uaddressmodeINT fill:#0bb, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_uaddressmodeINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_vaddressmodeINT fill:#0bb, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_vaddressmodeINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_filtertypeINT fill:#0bb, color:#111
+    style NG_gltf_iridescence_thickness_float_1_0_filtertypeINT fill:#0CF, color:#111
 
 ```
  
@@ -769,211 +765,211 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_standard_surface_surfaceshader_100_shader_constructor[surface] --> NG_standard_surface_surfaceshader_100_out([out])
-    style NG_standard_surface_surfaceshader_100_out fill:#1b1, color:#111
+    style NG_standard_surface_surfaceshader_100_out fill:#0C0, color:#111
     NG_standard_surface_surfaceshader_100_coat_layer[layer] --".bsdf"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
     NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_coat_layer[layer]
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.weight==> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_normalINT([coat_normal]) ==.normal==> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_coat_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_roughness_vector[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_coat_roughnessINT([coat_roughness]) ==.roughness==> NG_standard_surface_surfaceshader_100_coat_roughness_vector[roughness_anisotropy]
-    style NG_standard_surface_surfaceshader_100_coat_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_anisotropyINT([coat_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_coat_roughness_vector[roughness_anisotropy]
-    style NG_standard_surface_surfaceshader_100_coat_anisotropyINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_anisotropyINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_tangent[ifgreater] --".tangent"--> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_coat_anisotropyINT([coat_anisotropy]) ==.value1==> NG_standard_surface_surfaceshader_100_coat_tangent[ifgreater]
-    style NG_standard_surface_surfaceshader_100_coat_anisotropyINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_anisotropyINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_tangent[ifgreater]
-    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_tangent_rotate_normalize[normalize] --".in1"--> NG_standard_surface_surfaceshader_100_coat_tangent[ifgreater]
     NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d] --".in"--> NG_standard_surface_surfaceshader_100_coat_tangent_rotate_normalize[normalize]
     NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d]
-    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_normalINT([coat_normal]) ==.axis==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d]
-    style NG_standard_surface_surfaceshader_100_coat_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_tangent_rotate_degree[multiply] --".amount"--> NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d]
     NG_standard_surface_surfaceshader_100_coat_rotationINT([coat_rotation]) ==.in1==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate_degree[multiply]
-    style NG_standard_surface_surfaceshader_100_coat_rotationINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_rotationINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply] --".base"--> NG_standard_surface_surfaceshader_100_coat_layer[layer]
     NG_standard_surface_surfaceshader_100_thin_film_layer[layer] --".in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply]
     NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_thin_film_layer[layer]
     NG_standard_surface_surfaceshader_100_thin_film_thicknessINT([thin_film_thickness]) ==.thickness==> NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
-    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_thin_film_IORINT([thin_film_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
-    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_metalness_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_thin_film_layer[layer]
     NG_standard_surface_surfaceshader_100_metalnessINT([metalness]) ==.mix==> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
-    style NG_standard_surface_surfaceshader_100_metalnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_metalnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior] --> NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior([ior])
-    style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior fill:#1b1, color:#111
+    style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior fill:#0C0, color:#111
     NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior --".ior"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
     NG_standard_surface_surfaceshader_100_metal_reflectivity[multiply] --".reflectivity"--> NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior]
     NG_standard_surface_surfaceshader_100_base_colorINT([base_color]) ==.in1==> NG_standard_surface_surfaceshader_100_metal_reflectivity[multiply]
-    style NG_standard_surface_surfaceshader_100_base_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_base_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_baseINT([base]) ==.in2==> NG_standard_surface_surfaceshader_100_metal_reflectivity[multiply]
-    style NG_standard_surface_surfaceshader_100_baseINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_baseINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_metal_edgecolor[multiply] --".edge_color"--> NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior]
     NG_standard_surface_surfaceshader_100_specular_colorINT([specular_color]) ==.in1==> NG_standard_surface_surfaceshader_100_metal_edgecolor[multiply]
-    style NG_standard_surface_surfaceshader_100_specular_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_specularINT([specular]) ==.in2==> NG_standard_surface_surfaceshader_100_metal_edgecolor[multiply]
-    style NG_standard_surface_surfaceshader_100_specularINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specularINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior] --> NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction([extinction])
-    style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction fill:#1b1, color:#111
+    style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction fill:#0C0, color:#111
     NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction --".extinction"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
     NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
     NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy]
-    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affected_roughness[mix] --".roughness"--> NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy]
     NG_standard_surface_surfaceshader_100_specular_roughnessINT([specular_roughness]) ==.bg==> NG_standard_surface_surfaceshader_100_coat_affected_roughness[mix]
-    style NG_standard_surface_surfaceshader_100_specular_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply] --".mix"--> NG_standard_surface_surfaceshader_100_coat_affected_roughness[mix]
     NG_standard_surface_surfaceshader_100_coat_roughnessINT([coat_roughness]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply]
-    style NG_standard_surface_surfaceshader_100_coat_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply1[multiply] --".in1"--> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply]
     NG_standard_surface_surfaceshader_100_coat_affect_roughnessINT([coat_affect_roughness]) ==.in1==> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply1[multiply]
-    style NG_standard_surface_surfaceshader_100_coat_affect_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_affect_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply1[multiply]
-    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_main_tangent[ifgreater] --".tangent"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
     NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.value1==> NG_standard_surface_surfaceshader_100_main_tangent[ifgreater]
-    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in2==> NG_standard_surface_surfaceshader_100_main_tangent[ifgreater]
-    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_tangent_rotate_normalize[normalize] --".in1"--> NG_standard_surface_surfaceshader_100_main_tangent[ifgreater]
     NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d] --".in"--> NG_standard_surface_surfaceshader_100_tangent_rotate_normalize[normalize]
     NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in==> NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d]
-    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.axis==> NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_tangent_rotate_degree[multiply] --".amount"--> NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d]
     NG_standard_surface_surfaceshader_100_specular_rotationINT([specular_rotation]) ==.in1==> NG_standard_surface_surfaceshader_100_tangent_rotate_degree[multiply]
-    style NG_standard_surface_surfaceshader_100_specular_rotationINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_rotationINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_specular_layer[layer] --".bg"--> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
     NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_specular_layer[layer]
     NG_standard_surface_surfaceshader_100_specularINT([specular]) ==.weight==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_specularINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specularINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_specular_colorINT([specular_color]) ==.tint==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_specular_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_specular_IORINT([specular_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_main_tangent[ifgreater] --".tangent"--> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_transmission_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_specular_layer[layer]
     NG_standard_surface_surfaceshader_100_transmissionINT([transmission]) ==.mix==> NG_standard_surface_surfaceshader_100_transmission_mix[mix]
-    style NG_standard_surface_surfaceshader_100_transmissionINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_transmissionINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_transmission_mix[mix]
     NG_standard_surface_surfaceshader_100_transmission_colorINT([transmission_color]) ==.tint==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_transmission_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_transmission_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_specular_IORINT([specular_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy]
-    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affected_transmission_roughness[mix] --".roughness"--> NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy]
     NG_standard_surface_surfaceshader_100_transmission_roughness_clamped[clamp] --".bg"--> NG_standard_surface_surfaceshader_100_coat_affected_transmission_roughness[mix]
     NG_standard_surface_surfaceshader_100_transmission_roughness_add[add] --".in"--> NG_standard_surface_surfaceshader_100_transmission_roughness_clamped[clamp]
     NG_standard_surface_surfaceshader_100_specular_roughnessINT([specular_roughness]) ==.in1==> NG_standard_surface_surfaceshader_100_transmission_roughness_add[add]
-    style NG_standard_surface_surfaceshader_100_specular_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_transmission_extra_roughnessINT([transmission_extra_roughness]) ==.in2==> NG_standard_surface_surfaceshader_100_transmission_roughness_add[add]
-    style NG_standard_surface_surfaceshader_100_transmission_extra_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_transmission_extra_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply] --".mix"--> NG_standard_surface_surfaceshader_100_coat_affected_transmission_roughness[mix]
     NG_standard_surface_surfaceshader_100_main_tangent[ifgreater] --".tangent"--> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_sheen_layer[layer] --".bg"--> NG_standard_surface_surfaceshader_100_transmission_mix[mix]
     NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_sheen_layer[layer]
     NG_standard_surface_surfaceshader_100_sheenINT([sheen]) ==.weight==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
-    style NG_standard_surface_surfaceshader_100_sheenINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_sheenINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_sheen_colorINT([sheen_color]) ==.color==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
-    style NG_standard_surface_surfaceshader_100_sheen_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_sheen_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_sheen_roughnessINT([sheen_roughness]) ==.roughness==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
-    style NG_standard_surface_surfaceshader_100_sheen_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_sheen_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_subsurface_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_sheen_layer[layer]
     NG_standard_surface_surfaceshader_100_subsurfaceINT([subsurface]) ==.mix==> NG_standard_surface_surfaceshader_100_subsurface_mix[mix]
-    style NG_standard_surface_surfaceshader_100_subsurfaceINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_subsurfaceINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix] --".fg"--> NG_standard_surface_surfaceshader_100_subsurface_mix[mix]
     NG_standard_surface_surfaceshader_100_translucent_bsdf[translucent_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix]
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_translucent_bsdf[translucent_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power] --".color"--> NG_standard_surface_surfaceshader_100_translucent_bsdf[translucent_bsdf]
     NG_standard_surface_surfaceshader_100_subsurface_color_nonnegative[max] --".in1"--> NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power]
     NG_standard_surface_surfaceshader_100_subsurface_colorINT([subsurface_color]) ==.in1==> NG_standard_surface_surfaceshader_100_subsurface_color_nonnegative[max]
-    style NG_standard_surface_surfaceshader_100_subsurface_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_subsurface_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_gamma[add] --".in2"--> NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power]
     NG_standard_surface_surfaceshader_100_coat_gamma_multiply[multiply] --".in1"--> NG_standard_surface_surfaceshader_100_coat_gamma[add]
     NG_standard_surface_surfaceshader_100_coat_affect_colorINT([coat_affect_color]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_gamma_multiply[multiply]
-    style NG_standard_surface_surfaceshader_100_coat_affect_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_affect_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_clamped[clamp] --".in1"--> NG_standard_surface_surfaceshader_100_coat_gamma_multiply[multiply]
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.in==> NG_standard_surface_surfaceshader_100_coat_clamped[clamp]
-    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf] --".bg"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix]
     NG_standard_surface_surfaceshader_100_subsurface_anisotropyINT([subsurface_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
-    style NG_standard_surface_surfaceshader_100_subsurface_anisotropyINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_subsurface_anisotropyINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power] --".color"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
     NG_standard_surface_surfaceshader_100_subsurface_radius_scaled[multiply] --".radius"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
     NG_standard_surface_surfaceshader_100_subsurface_scaleINT([subsurface_scale]) ==.in2==> NG_standard_surface_surfaceshader_100_subsurface_radius_scaled[multiply]
-    style NG_standard_surface_surfaceshader_100_subsurface_scaleINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_subsurface_scaleINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_subsurface_radius_vector[convert] --".in1"--> NG_standard_surface_surfaceshader_100_subsurface_radius_scaled[multiply]
     NG_standard_surface_surfaceshader_100_subsurface_radiusINT([subsurface_radius]) ==.in==> NG_standard_surface_surfaceshader_100_subsurface_radius_vector[convert]
-    style NG_standard_surface_surfaceshader_100_subsurface_radiusINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_subsurface_radiusINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_subsurface_selector[convert] --".mix"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix]
     NG_standard_surface_surfaceshader_100_thin_walledINT([thin_walled]) ==.in==> NG_standard_surface_surfaceshader_100_subsurface_selector[convert]
-    style NG_standard_surface_surfaceshader_100_thin_walledINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_thin_walledINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".bg"--> NG_standard_surface_surfaceshader_100_subsurface_mix[mix]
     NG_standard_surface_surfaceshader_100_baseINT([base]) ==.weight==> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
-    style NG_standard_surface_surfaceshader_100_baseINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_baseINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_diffuse_roughnessINT([diffuse_roughness]) ==.roughness==> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
-    style NG_standard_surface_surfaceshader_100_diffuse_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_diffuse_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color[power] --".color"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
     NG_standard_surface_surfaceshader_100_base_color_nonnegative[max] --".in1"--> NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color[power]
     NG_standard_surface_surfaceshader_100_base_colorINT([base_color]) ==.in1==> NG_standard_surface_surfaceshader_100_base_color_nonnegative[max]
-    style NG_standard_surface_surfaceshader_100_base_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_base_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_gamma[add] --".in2"--> NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color[power]
     NG_standard_surface_surfaceshader_100_coat_attenuation[mix] --".in2"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply]
     NG_standard_surface_surfaceshader_100_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_surfaceshader_100_coat_attenuation[mix]
-    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_coat_attenuation[mix]
-    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix] --".edf"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
-    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf] --".fg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
     NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply] --".rrr -> .color90"--> NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf]
     NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide] --".in1"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply]
     NG_standard_surface_surfaceshader_100_one_minus_coat_ior[subtract] --".in1"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide]
     NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.in2==> NG_standard_surface_surfaceshader_100_one_minus_coat_ior[subtract]
-    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_one_plus_coat_ior[add] --".in2"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide]
     NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.in2==> NG_standard_surface_surfaceshader_100_one_plus_coat_ior[add]
-    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide] --".in2"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply]
     NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[multiply] --".base"--> NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf]
     NG_standard_surface_surfaceshader_100_coat_colorINT([coat_color]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[multiply]
-    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf] --".in1"--> NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[multiply]
     NG_standard_surface_surfaceshader_100_emission_weight[multiply] --".color"--> NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf]
     NG_standard_surface_surfaceshader_100_emission_colorINT([emission_color]) ==.in1==> NG_standard_surface_surfaceshader_100_emission_weight[multiply]
-    style NG_standard_surface_surfaceshader_100_emission_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_emission_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_emissionINT([emission]) ==.in2==> NG_standard_surface_surfaceshader_100_emission_weight[multiply]
-    style NG_standard_surface_surfaceshader_100_emissionINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_emissionINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf] --".bg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
     NG_standard_surface_surfaceshader_100_opacity_luminance[luminance] --".r -> .opacity"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
     NG_standard_surface_surfaceshader_100_opacityINT([opacity]) ==.in==> NG_standard_surface_surfaceshader_100_opacity_luminance[luminance]
-    style NG_standard_surface_surfaceshader_100_opacityINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_opacityINT fill:#0CF, color:#111
 
 ```
  
@@ -998,211 +994,211 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_standard_surface_surfaceshader_100_shader_constructor[surface] --> NG_standard_surface_surfaceshader_100_out([out])
-    style NG_standard_surface_surfaceshader_100_out fill:#1b1, color:#111
+    style NG_standard_surface_surfaceshader_100_out fill:#0C0, color:#111
     NG_standard_surface_surfaceshader_100_coat_layer[layer] --".bsdf"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
     NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_coat_layer[layer]
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.weight==> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_normalINT([coat_normal]) ==.normal==> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_coat_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_roughness_vector[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_coat_roughnessINT([coat_roughness]) ==.roughness==> NG_standard_surface_surfaceshader_100_coat_roughness_vector[roughness_anisotropy]
-    style NG_standard_surface_surfaceshader_100_coat_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_anisotropyINT([coat_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_coat_roughness_vector[roughness_anisotropy]
-    style NG_standard_surface_surfaceshader_100_coat_anisotropyINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_anisotropyINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_tangent[ifgreater] --".tangent"--> NG_standard_surface_surfaceshader_100_coat_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_coat_anisotropyINT([coat_anisotropy]) ==.value1==> NG_standard_surface_surfaceshader_100_coat_tangent[ifgreater]
-    style NG_standard_surface_surfaceshader_100_coat_anisotropyINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_anisotropyINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_tangent[ifgreater]
-    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_tangent_rotate_normalize[normalize] --".in1"--> NG_standard_surface_surfaceshader_100_coat_tangent[ifgreater]
     NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d] --".in"--> NG_standard_surface_surfaceshader_100_coat_tangent_rotate_normalize[normalize]
     NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d]
-    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_normalINT([coat_normal]) ==.axis==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d]
-    style NG_standard_surface_surfaceshader_100_coat_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_tangent_rotate_degree[multiply] --".amount"--> NG_standard_surface_surfaceshader_100_coat_tangent_rotate[rotate3d]
     NG_standard_surface_surfaceshader_100_coat_rotationINT([coat_rotation]) ==.in1==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate_degree[multiply]
-    style NG_standard_surface_surfaceshader_100_coat_rotationINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_rotationINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply] --".base"--> NG_standard_surface_surfaceshader_100_coat_layer[layer]
     NG_standard_surface_surfaceshader_100_thin_film_layer[layer] --".in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply]
     NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_thin_film_layer[layer]
     NG_standard_surface_surfaceshader_100_thin_film_thicknessINT([thin_film_thickness]) ==.thickness==> NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
-    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_thin_film_IORINT([thin_film_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
-    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_metalness_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_thin_film_layer[layer]
     NG_standard_surface_surfaceshader_100_metalnessINT([metalness]) ==.mix==> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
-    style NG_standard_surface_surfaceshader_100_metalnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_metalnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior] --> NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior([ior])
-    style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior fill:#1b1, color:#111
+    style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior fill:#0C0, color:#111
     NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior --".ior"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
     NG_standard_surface_surfaceshader_100_metal_reflectivity[multiply] --".reflectivity"--> NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior]
     NG_standard_surface_surfaceshader_100_base_colorINT([base_color]) ==.in1==> NG_standard_surface_surfaceshader_100_metal_reflectivity[multiply]
-    style NG_standard_surface_surfaceshader_100_base_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_base_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_baseINT([base]) ==.in2==> NG_standard_surface_surfaceshader_100_metal_reflectivity[multiply]
-    style NG_standard_surface_surfaceshader_100_baseINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_baseINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_metal_edgecolor[multiply] --".edge_color"--> NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior]
     NG_standard_surface_surfaceshader_100_specular_colorINT([specular_color]) ==.in1==> NG_standard_surface_surfaceshader_100_metal_edgecolor[multiply]
-    style NG_standard_surface_surfaceshader_100_specular_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_specularINT([specular]) ==.in2==> NG_standard_surface_surfaceshader_100_metal_edgecolor[multiply]
-    style NG_standard_surface_surfaceshader_100_specularINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specularINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior] --> NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction([extinction])
-    style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction fill:#1b1, color:#111
+    style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction fill:#0C0, color:#111
     NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorextinction --".extinction"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
     NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
     NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy]
-    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affected_roughness[mix] --".roughness"--> NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy]
     NG_standard_surface_surfaceshader_100_specular_roughnessINT([specular_roughness]) ==.bg==> NG_standard_surface_surfaceshader_100_coat_affected_roughness[mix]
-    style NG_standard_surface_surfaceshader_100_specular_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply] --".mix"--> NG_standard_surface_surfaceshader_100_coat_affected_roughness[mix]
     NG_standard_surface_surfaceshader_100_coat_roughnessINT([coat_roughness]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply]
-    style NG_standard_surface_surfaceshader_100_coat_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply1[multiply] --".in1"--> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply]
     NG_standard_surface_surfaceshader_100_coat_affect_roughnessINT([coat_affect_roughness]) ==.in1==> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply1[multiply]
-    style NG_standard_surface_surfaceshader_100_coat_affect_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_affect_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply1[multiply]
-    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_main_tangent[ifgreater] --".tangent"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
     NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.value1==> NG_standard_surface_surfaceshader_100_main_tangent[ifgreater]
-    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in2==> NG_standard_surface_surfaceshader_100_main_tangent[ifgreater]
-    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_tangent_rotate_normalize[normalize] --".in1"--> NG_standard_surface_surfaceshader_100_main_tangent[ifgreater]
     NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d] --".in"--> NG_standard_surface_surfaceshader_100_tangent_rotate_normalize[normalize]
     NG_standard_surface_surfaceshader_100_tangentINT([tangent]) ==.in==> NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d]
-    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_tangentINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.axis==> NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_tangent_rotate_degree[multiply] --".amount"--> NG_standard_surface_surfaceshader_100_tangent_rotate[rotate3d]
     NG_standard_surface_surfaceshader_100_specular_rotationINT([specular_rotation]) ==.in1==> NG_standard_surface_surfaceshader_100_tangent_rotate_degree[multiply]
-    style NG_standard_surface_surfaceshader_100_specular_rotationINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_rotationINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_specular_layer[layer] --".bg"--> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
     NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_specular_layer[layer]
     NG_standard_surface_surfaceshader_100_specularINT([specular]) ==.weight==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_specularINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specularINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_specular_colorINT([specular_color]) ==.tint==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_specular_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_specular_IORINT([specular_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_main_tangent[ifgreater] --".tangent"--> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_transmission_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_specular_layer[layer]
     NG_standard_surface_surfaceshader_100_transmissionINT([transmission]) ==.mix==> NG_standard_surface_surfaceshader_100_transmission_mix[mix]
-    style NG_standard_surface_surfaceshader_100_transmissionINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_transmissionINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_transmission_mix[mix]
     NG_standard_surface_surfaceshader_100_transmission_colorINT([transmission_color]) ==.tint==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_transmission_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_transmission_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_specular_IORINT([specular_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy]
-    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affected_transmission_roughness[mix] --".roughness"--> NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy]
     NG_standard_surface_surfaceshader_100_transmission_roughness_clamped[clamp] --".bg"--> NG_standard_surface_surfaceshader_100_coat_affected_transmission_roughness[mix]
     NG_standard_surface_surfaceshader_100_transmission_roughness_add[add] --".in"--> NG_standard_surface_surfaceshader_100_transmission_roughness_clamped[clamp]
     NG_standard_surface_surfaceshader_100_specular_roughnessINT([specular_roughness]) ==.in1==> NG_standard_surface_surfaceshader_100_transmission_roughness_add[add]
-    style NG_standard_surface_surfaceshader_100_specular_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_specular_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_transmission_extra_roughnessINT([transmission_extra_roughness]) ==.in2==> NG_standard_surface_surfaceshader_100_transmission_roughness_add[add]
-    style NG_standard_surface_surfaceshader_100_transmission_extra_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_transmission_extra_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affect_roughness_multiply2[multiply] --".mix"--> NG_standard_surface_surfaceshader_100_coat_affected_transmission_roughness[mix]
     NG_standard_surface_surfaceshader_100_main_tangent[ifgreater] --".tangent"--> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_sheen_layer[layer] --".bg"--> NG_standard_surface_surfaceshader_100_transmission_mix[mix]
     NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_sheen_layer[layer]
     NG_standard_surface_surfaceshader_100_sheenINT([sheen]) ==.weight==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
-    style NG_standard_surface_surfaceshader_100_sheenINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_sheenINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_sheen_colorINT([sheen_color]) ==.color==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
-    style NG_standard_surface_surfaceshader_100_sheen_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_sheen_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_sheen_roughnessINT([sheen_roughness]) ==.roughness==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
-    style NG_standard_surface_surfaceshader_100_sheen_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_sheen_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_subsurface_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_sheen_layer[layer]
     NG_standard_surface_surfaceshader_100_subsurfaceINT([subsurface]) ==.mix==> NG_standard_surface_surfaceshader_100_subsurface_mix[mix]
-    style NG_standard_surface_surfaceshader_100_subsurfaceINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_subsurfaceINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix] --".fg"--> NG_standard_surface_surfaceshader_100_subsurface_mix[mix]
     NG_standard_surface_surfaceshader_100_translucent_bsdf[translucent_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix]
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_translucent_bsdf[translucent_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power] --".color"--> NG_standard_surface_surfaceshader_100_translucent_bsdf[translucent_bsdf]
     NG_standard_surface_surfaceshader_100_subsurface_color_nonnegative[max] --".in1"--> NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power]
     NG_standard_surface_surfaceshader_100_subsurface_colorINT([subsurface_color]) ==.in1==> NG_standard_surface_surfaceshader_100_subsurface_color_nonnegative[max]
-    style NG_standard_surface_surfaceshader_100_subsurface_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_subsurface_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_gamma[add] --".in2"--> NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power]
     NG_standard_surface_surfaceshader_100_coat_gamma_multiply[multiply] --".in1"--> NG_standard_surface_surfaceshader_100_coat_gamma[add]
     NG_standard_surface_surfaceshader_100_coat_affect_colorINT([coat_affect_color]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_gamma_multiply[multiply]
-    style NG_standard_surface_surfaceshader_100_coat_affect_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_affect_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_clamped[clamp] --".in1"--> NG_standard_surface_surfaceshader_100_coat_gamma_multiply[multiply]
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.in==> NG_standard_surface_surfaceshader_100_coat_clamped[clamp]
-    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf] --".bg"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix]
     NG_standard_surface_surfaceshader_100_subsurface_anisotropyINT([subsurface_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
-    style NG_standard_surface_surfaceshader_100_subsurface_anisotropyINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_subsurface_anisotropyINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color[power] --".color"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
     NG_standard_surface_surfaceshader_100_subsurface_radius_scaled[multiply] --".radius"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
     NG_standard_surface_surfaceshader_100_subsurface_scaleINT([subsurface_scale]) ==.in2==> NG_standard_surface_surfaceshader_100_subsurface_radius_scaled[multiply]
-    style NG_standard_surface_surfaceshader_100_subsurface_scaleINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_subsurface_scaleINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_subsurface_radius_vector[convert] --".in1"--> NG_standard_surface_surfaceshader_100_subsurface_radius_scaled[multiply]
     NG_standard_surface_surfaceshader_100_subsurface_radiusINT([subsurface_radius]) ==.in==> NG_standard_surface_surfaceshader_100_subsurface_radius_vector[convert]
-    style NG_standard_surface_surfaceshader_100_subsurface_radiusINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_subsurface_radiusINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_subsurface_selector[convert] --".mix"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[mix]
     NG_standard_surface_surfaceshader_100_thin_walledINT([thin_walled]) ==.in==> NG_standard_surface_surfaceshader_100_subsurface_selector[convert]
-    style NG_standard_surface_surfaceshader_100_thin_walledINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_thin_walledINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".bg"--> NG_standard_surface_surfaceshader_100_subsurface_mix[mix]
     NG_standard_surface_surfaceshader_100_baseINT([base]) ==.weight==> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
-    style NG_standard_surface_surfaceshader_100_baseINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_baseINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_diffuse_roughnessINT([diffuse_roughness]) ==.roughness==> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
-    style NG_standard_surface_surfaceshader_100_diffuse_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_diffuse_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
-    style NG_standard_surface_surfaceshader_100_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color[power] --".color"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf[oren_nayar_diffuse_bsdf]
     NG_standard_surface_surfaceshader_100_base_color_nonnegative[max] --".in1"--> NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color[power]
     NG_standard_surface_surfaceshader_100_base_colorINT([base_color]) ==.in1==> NG_standard_surface_surfaceshader_100_base_color_nonnegative[max]
-    style NG_standard_surface_surfaceshader_100_base_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_base_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_gamma[add] --".in2"--> NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color[power]
     NG_standard_surface_surfaceshader_100_coat_attenuation[mix] --".in2"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply]
     NG_standard_surface_surfaceshader_100_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_surfaceshader_100_coat_attenuation[mix]
-    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_coat_attenuation[mix]
-    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix] --".edf"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
-    style NG_standard_surface_surfaceshader_100_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coatINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf] --".fg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
     NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply] --".rrr -> .color90"--> NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf]
     NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide] --".in1"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply]
     NG_standard_surface_surfaceshader_100_one_minus_coat_ior[subtract] --".in1"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide]
     NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.in2==> NG_standard_surface_surfaceshader_100_one_minus_coat_ior[subtract]
-    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_one_plus_coat_ior[add] --".in2"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide]
     NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.in2==> NG_standard_surface_surfaceshader_100_one_plus_coat_ior[add]
-    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide] --".in2"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply]
     NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[multiply] --".base"--> NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf]
     NG_standard_surface_surfaceshader_100_coat_colorINT([coat_color]) ==.in2==> NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[multiply]
-    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_coat_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf] --".in1"--> NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[multiply]
     NG_standard_surface_surfaceshader_100_emission_weight[multiply] --".color"--> NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf]
     NG_standard_surface_surfaceshader_100_emission_colorINT([emission_color]) ==.in1==> NG_standard_surface_surfaceshader_100_emission_weight[multiply]
-    style NG_standard_surface_surfaceshader_100_emission_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_emission_colorINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_emissionINT([emission]) ==.in2==> NG_standard_surface_surfaceshader_100_emission_weight[multiply]
-    style NG_standard_surface_surfaceshader_100_emissionINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_emissionINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_emission_edf[uniform_edf] --".bg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
     NG_standard_surface_surfaceshader_100_opacity_luminance[luminance] --".r -> .opacity"--> NG_standard_surface_surfaceshader_100_shader_constructor[surface]
     NG_standard_surface_surfaceshader_100_opacityINT([opacity]) ==.in==> NG_standard_surface_surfaceshader_100_opacity_luminance[luminance]
-    style NG_standard_surface_surfaceshader_100_opacityINT fill:#0bb, color:#111
+    style NG_standard_surface_surfaceshader_100_opacityINT fill:#0CF, color:#111
 
 ```
  
@@ -1269,69 +1265,69 @@ graph LR;
 ```mermaid
 graph LR; 
     IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface] --> IMP_UsdPreviewSurface_surfaceshader_out([out])
-    style IMP_UsdPreviewSurface_surfaceshader_out fill:#1b1, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_out fill:#0C0, color:#111
     IMP_UsdPreviewSurface_surfaceshader_coat_bsdf[layer] --".bsdf"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface]
     IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf] --".top"--> IMP_UsdPreviewSurface_surfaceshader_coat_bsdf[layer]
     IMP_UsdPreviewSurface_surfaceshader_clearcoatINT([clearcoat]) ==.weight==> IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf]
-    style IMP_UsdPreviewSurface_surfaceshader_clearcoatINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_clearcoatINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_coat_F0[convert] --".color0"--> IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_R_sq[multiply] --".in"--> IMP_UsdPreviewSurface_surfaceshader_coat_F0[convert]
     IMP_UsdPreviewSurface_surfaceshader_R[divide] --".in1"--> IMP_UsdPreviewSurface_surfaceshader_R_sq[multiply]
     IMP_UsdPreviewSurface_surfaceshader_one_minus_ior[subtract] --".in1"--> IMP_UsdPreviewSurface_surfaceshader_R[divide]
     IMP_UsdPreviewSurface_surfaceshader_iorINT([ior]) ==.in2==> IMP_UsdPreviewSurface_surfaceshader_one_minus_ior[subtract]
-    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_one_plus_ior[add] --".in2"--> IMP_UsdPreviewSurface_surfaceshader_R[divide]
     IMP_UsdPreviewSurface_surfaceshader_iorINT([ior]) ==.in2==> IMP_UsdPreviewSurface_surfaceshader_one_plus_ior[add]
-    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_R[divide] --".in2"--> IMP_UsdPreviewSurface_surfaceshader_R_sq[multiply]
     IMP_UsdPreviewSurface_surfaceshader_coat_roughness[roughness_anisotropy] --".roughness"--> IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_clearcoatRoughnessINT([clearcoatRoughness]) ==.roughness==> IMP_UsdPreviewSurface_surfaceshader_coat_roughness[roughness_anisotropy]
-    style IMP_UsdPreviewSurface_surfaceshader_clearcoatRoughnessINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_clearcoatRoughnessINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_coat_dielectric_bsdf[generalized_schlick_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_bias_normal[add] --".in"--> IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap]
     IMP_UsdPreviewSurface_surfaceshader_scale_normal[multiply] --".in1"--> IMP_UsdPreviewSurface_surfaceshader_bias_normal[add]
     IMP_UsdPreviewSurface_surfaceshader_normalINT([normal]) ==.in1==> IMP_UsdPreviewSurface_surfaceshader_scale_normal[multiply]
-    style IMP_UsdPreviewSurface_surfaceshader_normalINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_normalINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_workflow_selector_bsdf[mix] --".base"--> IMP_UsdPreviewSurface_surfaceshader_coat_bsdf[layer]
     IMP_UsdPreviewSurface_surfaceshader_specular_workflow_bsdf[layer] --".fg"--> IMP_UsdPreviewSurface_surfaceshader_workflow_selector_bsdf[mix]
     IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[generalized_schlick_bsdf] --".top"--> IMP_UsdPreviewSurface_surfaceshader_specular_workflow_bsdf[layer]
     IMP_UsdPreviewSurface_surfaceshader_specularColorINT([specularColor]) ==.color0==> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[generalized_schlick_bsdf]
-    style IMP_UsdPreviewSurface_surfaceshader_specularColorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_specularColorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_specular_roughness[roughness_anisotropy] --".roughness"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[generalized_schlick_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_roughnessINT([roughness]) ==.roughness==> IMP_UsdPreviewSurface_surfaceshader_specular_roughness[roughness_anisotropy]
-    style IMP_UsdPreviewSurface_surfaceshader_roughnessINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_roughnessINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[generalized_schlick_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix] --".base"--> IMP_UsdPreviewSurface_surfaceshader_specular_workflow_bsdf[layer]
     IMP_UsdPreviewSurface_surfaceshader_opacityINT([opacity]) ==.mix==> IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix]
-    style IMP_UsdPreviewSurface_surfaceshader_opacityINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_opacityINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".fg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix]
     IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT([diffuseColor]) ==.color==> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
-    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[mix] --".weight"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_inverse_metalness[subtract] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[mix]
     IMP_UsdPreviewSurface_surfaceshader_metallicINT([metallic]) ==.in2==> IMP_UsdPreviewSurface_surfaceshader_inverse_metalness[subtract]
-    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float[convert] --".mix"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[mix]
     IMP_UsdPreviewSurface_surfaceshader_useSpecularWorkflowINT([useSpecularWorkflow]) ==.in==> IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float[convert]
-    style IMP_UsdPreviewSurface_surfaceshader_useSpecularWorkflowINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_useSpecularWorkflowINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[dielectric_bsdf] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix[mix]
     IMP_UsdPreviewSurface_surfaceshader_iorINT([ior]) ==.ior==> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[dielectric_bsdf]
-    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_iorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[dielectric_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_metalness_workflow_bsdf[mix] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_workflow_selector_bsdf[mix]
     IMP_UsdPreviewSurface_surfaceshader_metallicINT([metallic]) ==.mix==> IMP_UsdPreviewSurface_surfaceshader_metalness_workflow_bsdf[mix]
-    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf] --".fg"--> IMP_UsdPreviewSurface_surfaceshader_metalness_workflow_bsdf[mix]
     IMP_UsdPreviewSurface_surfaceshader_artistic_ior[artistic_ior] --> IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorior([ior])
-    style IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorior fill:#1b1, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorior fill:#0C0, color:#111
     IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorior --".ior"--> IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT([diffuseColor]) ==.reflectivity==> IMP_UsdPreviewSurface_surfaceshader_artistic_ior[artistic_ior]
-    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT([diffuseColor]) ==.edge_color==> IMP_UsdPreviewSurface_surfaceshader_artistic_ior[artistic_ior]
-    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_artistic_ior[artistic_ior] --> IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorextinction([extinction])
-    style IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorextinction fill:#1b1, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorextinction fill:#0C0, color:#111
     IMP_UsdPreviewSurface_surfaceshader_IMP_UsdPreviewSurface_surfaceshader_artistic_iorextinction --".extinction"--> IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_specular_roughness[roughness_anisotropy] --".roughness"--> IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_surface_normal[normalmap] --".normal"--> IMP_UsdPreviewSurface_surfaceshader_metalness_metal_bsdf[conductor_bsdf]
@@ -1339,12 +1335,12 @@ graph LR;
     IMP_UsdPreviewSurface_surfaceshader_specular_bsdf2[generalized_schlick_bsdf] --".top"--> IMP_UsdPreviewSurface_surfaceshader_metalness_specular_bsdf[layer]
     IMP_UsdPreviewSurface_surfaceshader_F0[mix] --".color0"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf2[generalized_schlick_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_metallicINT([metallic]) ==.mix==> IMP_UsdPreviewSurface_surfaceshader_F0[mix]
-    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix] --".fg"--> IMP_UsdPreviewSurface_surfaceshader_F0[mix]
     IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT([diffuseColor]) ==.fg==> IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix]
-    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_diffuseColorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_metallicINT([metallic]) ==.mix==> IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix]
-    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_metallicINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic_R_sq[multiply] --".bg"--> IMP_UsdPreviewSurface_surfaceshader_F0[mix]
     IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic[mix] --".in1"--> IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic_R_sq[multiply]
     IMP_UsdPreviewSurface_surfaceshader_R_sq[multiply] --".in2"--> IMP_UsdPreviewSurface_surfaceshader_specular_color_metallic_R_sq[multiply]
@@ -1355,12 +1351,12 @@ graph LR;
     IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float[convert] --".mix"--> IMP_UsdPreviewSurface_surfaceshader_workflow_selector_bsdf[mix]
     IMP_UsdPreviewSurface_surfaceshader_emission_edf[uniform_edf] --".edf"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface]
     IMP_UsdPreviewSurface_surfaceshader_emissiveColorINT([emissiveColor]) ==.color==> IMP_UsdPreviewSurface_surfaceshader_emission_edf[uniform_edf]
-    style IMP_UsdPreviewSurface_surfaceshader_emissiveColorINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_emissiveColorINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_cutout_opacity[ifgreatereq] --".opacity"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface]
     IMP_UsdPreviewSurface_surfaceshader_opacityINT([opacity]) ==.value1==> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity[ifgreatereq]
-    style IMP_UsdPreviewSurface_surfaceshader_opacityINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_opacityINT fill:#0CF, color:#111
     IMP_UsdPreviewSurface_surfaceshader_opacityThresholdINT([opacityThreshold]) ==.value2==> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity[ifgreatereq]
-    style IMP_UsdPreviewSurface_surfaceshader_opacityThresholdINT fill:#0bb, color:#111
+    style IMP_UsdPreviewSurface_surfaceshader_opacityThresholdINT fill:#0CF, color:#111
 
 ```
  
@@ -1400,33 +1396,33 @@ graph LR;
 ```mermaid
 graph LR; 
     IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_r([r])
-    style IMP_UsdUVTexture_22_r fill:#1b1, color:#111
+    style IMP_UsdUVTexture_22_r fill:#0C0, color:#111
     IMP_UsdUVTexture_22_biasINT([bias]) ==.in2==> IMP_UsdUVTexture_22_image_bias[add]
-    style IMP_UsdUVTexture_22_biasINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_22_biasINT fill:#0CF, color:#111
     IMP_UsdUVTexture_22_image_scale[multiply] --".in1"--> IMP_UsdUVTexture_22_image_bias[add]
     IMP_UsdUVTexture_22_scaleINT([scale]) ==.in2==> IMP_UsdUVTexture_22_image_scale[multiply]
-    style IMP_UsdUVTexture_22_scaleINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_22_scaleINT fill:#0CF, color:#111
     IMP_UsdUVTexture_22_image_reader[image] --".in1"--> IMP_UsdUVTexture_22_image_scale[multiply]
     IMP_UsdUVTexture_22_fileINT([file]) ==.file==> IMP_UsdUVTexture_22_image_reader[image]
-    style IMP_UsdUVTexture_22_fileINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_22_fileINT fill:#0CF, color:#111
     IMP_UsdUVTexture_22_fallbackINT([fallback]) ==.default==> IMP_UsdUVTexture_22_image_reader[image]
-    style IMP_UsdUVTexture_22_fallbackINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_22_fallbackINT fill:#0CF, color:#111
     IMP_UsdUVTexture_22_stINT([st]) ==.texcoord==> IMP_UsdUVTexture_22_image_reader[image]
-    style IMP_UsdUVTexture_22_stINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_22_stINT fill:#0CF, color:#111
     IMP_UsdUVTexture_22_wrapSINT([wrapS]) ==.uaddressmode==> IMP_UsdUVTexture_22_image_reader[image]
-    style IMP_UsdUVTexture_22_wrapSINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_22_wrapSINT fill:#0CF, color:#111
     IMP_UsdUVTexture_22_wrapTINT([wrapT]) ==.vaddressmode==> IMP_UsdUVTexture_22_image_reader[image]
-    style IMP_UsdUVTexture_22_wrapTINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_22_wrapTINT fill:#0CF, color:#111
     IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_g([g])
-    style IMP_UsdUVTexture_22_g fill:#1b1, color:#111
+    style IMP_UsdUVTexture_22_g fill:#0C0, color:#111
     IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_b([b])
-    style IMP_UsdUVTexture_22_b fill:#1b1, color:#111
+    style IMP_UsdUVTexture_22_b fill:#0C0, color:#111
     IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_a([a])
-    style IMP_UsdUVTexture_22_a fill:#1b1, color:#111
+    style IMP_UsdUVTexture_22_a fill:#0C0, color:#111
     IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_rgb([rgb])
-    style IMP_UsdUVTexture_22_rgb fill:#1b1, color:#111
+    style IMP_UsdUVTexture_22_rgb fill:#0C0, color:#111
     IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_rgba([rgba])
-    style IMP_UsdUVTexture_22_rgba fill:#1b1, color:#111
+    style IMP_UsdUVTexture_22_rgba fill:#0C0, color:#111
 
 ```
  
@@ -1455,31 +1451,31 @@ graph LR;
 ```mermaid
 graph LR; 
     IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_r([r])
-    style IMP_UsdUVTexture_23_r fill:#1b1, color:#111
+    style IMP_UsdUVTexture_23_r fill:#0C0, color:#111
     IMP_UsdUVTexture_23_biasINT([bias]) ==.in2==> IMP_UsdUVTexture_23_image_bias[add]
-    style IMP_UsdUVTexture_23_biasINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_23_biasINT fill:#0CF, color:#111
     IMP_UsdUVTexture_23_image_scale[multiply] --".in1"--> IMP_UsdUVTexture_23_image_bias[add]
     IMP_UsdUVTexture_23_scaleINT([scale]) ==.in2==> IMP_UsdUVTexture_23_image_scale[multiply]
-    style IMP_UsdUVTexture_23_scaleINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_23_scaleINT fill:#0CF, color:#111
     IMP_UsdUVTexture_23_image_reader[image] --".in1"--> IMP_UsdUVTexture_23_image_scale[multiply]
     IMP_UsdUVTexture_23_fileINT([file]) ==.file==> IMP_UsdUVTexture_23_image_reader[image]
-    style IMP_UsdUVTexture_23_fileINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_23_fileINT fill:#0CF, color:#111
     IMP_UsdUVTexture_23_fallbackINT([fallback]) ==.default==> IMP_UsdUVTexture_23_image_reader[image]
-    style IMP_UsdUVTexture_23_fallbackINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_23_fallbackINT fill:#0CF, color:#111
     IMP_UsdUVTexture_23_stINT([st]) ==.texcoord==> IMP_UsdUVTexture_23_image_reader[image]
-    style IMP_UsdUVTexture_23_stINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_23_stINT fill:#0CF, color:#111
     IMP_UsdUVTexture_23_wrapSINT([wrapS]) ==.uaddressmode==> IMP_UsdUVTexture_23_image_reader[image]
-    style IMP_UsdUVTexture_23_wrapSINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_23_wrapSINT fill:#0CF, color:#111
     IMP_UsdUVTexture_23_wrapTINT([wrapT]) ==.vaddressmode==> IMP_UsdUVTexture_23_image_reader[image]
-    style IMP_UsdUVTexture_23_wrapTINT fill:#0bb, color:#111
+    style IMP_UsdUVTexture_23_wrapTINT fill:#0CF, color:#111
     IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_g([g])
-    style IMP_UsdUVTexture_23_g fill:#1b1, color:#111
+    style IMP_UsdUVTexture_23_g fill:#0C0, color:#111
     IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_b([b])
-    style IMP_UsdUVTexture_23_b fill:#1b1, color:#111
+    style IMP_UsdUVTexture_23_b fill:#0C0, color:#111
     IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_a([a])
-    style IMP_UsdUVTexture_23_a fill:#1b1, color:#111
+    style IMP_UsdUVTexture_23_a fill:#0C0, color:#111
     IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_rgb([rgb])
-    style IMP_UsdUVTexture_23_rgb fill:#1b1, color:#111
+    style IMP_UsdUVTexture_23_rgb fill:#0C0, color:#111
 
 ```
  
@@ -1515,11 +1511,11 @@ graph LR;
 ```mermaid
 graph LR; 
     IMP_UsdPrimvarReader_integer_primvar[geompropvalue] --> IMP_UsdPrimvarReader_integer_out([out])
-    style IMP_UsdPrimvarReader_integer_out fill:#1b1, color:#111
+    style IMP_UsdPrimvarReader_integer_out fill:#0C0, color:#111
     IMP_UsdPrimvarReader_integer_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_integer_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_integer_varnameINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_integer_varnameINT fill:#0CF, color:#111
     IMP_UsdPrimvarReader_integer_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_integer_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_integer_fallbackINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_integer_fallbackINT fill:#0CF, color:#111
 
 ```
  
@@ -1545,11 +1541,11 @@ graph LR;
 ```mermaid
 graph LR; 
     IMP_UsdPrimvarReader_boolean_primvar[geompropvalue] --> IMP_UsdPrimvarReader_boolean_out([out])
-    style IMP_UsdPrimvarReader_boolean_out fill:#1b1, color:#111
+    style IMP_UsdPrimvarReader_boolean_out fill:#0C0, color:#111
     IMP_UsdPrimvarReader_boolean_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_boolean_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_boolean_varnameINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_boolean_varnameINT fill:#0CF, color:#111
     IMP_UsdPrimvarReader_boolean_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_boolean_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_boolean_fallbackINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_boolean_fallbackINT fill:#0CF, color:#111
 
 ```
  
@@ -1575,11 +1571,11 @@ graph LR;
 ```mermaid
 graph LR; 
     IMP_UsdPrimvarReader_string_primvar[geompropvalue] --> IMP_UsdPrimvarReader_string_out([out])
-    style IMP_UsdPrimvarReader_string_out fill:#1b1, color:#111
+    style IMP_UsdPrimvarReader_string_out fill:#0C0, color:#111
     IMP_UsdPrimvarReader_string_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_string_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_string_varnameINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_string_varnameINT fill:#0CF, color:#111
     IMP_UsdPrimvarReader_string_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_string_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_string_fallbackINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_string_fallbackINT fill:#0CF, color:#111
 
 ```
  
@@ -1605,11 +1601,11 @@ graph LR;
 ```mermaid
 graph LR; 
     IMP_UsdPrimvarReader_float_primvar[geompropvalue] --> IMP_UsdPrimvarReader_float_out([out])
-    style IMP_UsdPrimvarReader_float_out fill:#1b1, color:#111
+    style IMP_UsdPrimvarReader_float_out fill:#0C0, color:#111
     IMP_UsdPrimvarReader_float_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_float_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_float_varnameINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_float_varnameINT fill:#0CF, color:#111
     IMP_UsdPrimvarReader_float_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_float_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_float_fallbackINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_float_fallbackINT fill:#0CF, color:#111
 
 ```
  
@@ -1635,11 +1631,11 @@ graph LR;
 ```mermaid
 graph LR; 
     IMP_UsdPrimvarReader_vector2_primvar[geompropvalue] --> IMP_UsdPrimvarReader_vector2_out([out])
-    style IMP_UsdPrimvarReader_vector2_out fill:#1b1, color:#111
+    style IMP_UsdPrimvarReader_vector2_out fill:#0C0, color:#111
     IMP_UsdPrimvarReader_vector2_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_vector2_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_vector2_varnameINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_vector2_varnameINT fill:#0CF, color:#111
     IMP_UsdPrimvarReader_vector2_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_vector2_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_vector2_fallbackINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_vector2_fallbackINT fill:#0CF, color:#111
 
 ```
  
@@ -1665,11 +1661,11 @@ graph LR;
 ```mermaid
 graph LR; 
     IMP_UsdPrimvarReader_vector3_primvar[geompropvalue] --> IMP_UsdPrimvarReader_vector3_out([out])
-    style IMP_UsdPrimvarReader_vector3_out fill:#1b1, color:#111
+    style IMP_UsdPrimvarReader_vector3_out fill:#0C0, color:#111
     IMP_UsdPrimvarReader_vector3_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_vector3_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_vector3_varnameINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_vector3_varnameINT fill:#0CF, color:#111
     IMP_UsdPrimvarReader_vector3_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_vector3_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_vector3_fallbackINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_vector3_fallbackINT fill:#0CF, color:#111
 
 ```
  
@@ -1695,11 +1691,11 @@ graph LR;
 ```mermaid
 graph LR; 
     IMP_UsdPrimvarReader_vector4_primvar[geompropvalue] --> IMP_UsdPrimvarReader_vector4_out([out])
-    style IMP_UsdPrimvarReader_vector4_out fill:#1b1, color:#111
+    style IMP_UsdPrimvarReader_vector4_out fill:#0C0, color:#111
     IMP_UsdPrimvarReader_vector4_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_vector4_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_vector4_varnameINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_vector4_varnameINT fill:#0CF, color:#111
     IMP_UsdPrimvarReader_vector4_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_vector4_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_vector4_fallbackINT fill:#0bb, color:#111
+    style IMP_UsdPrimvarReader_vector4_fallbackINT fill:#0CF, color:#111
 
 ```
  
@@ -1726,15 +1722,15 @@ graph LR;
 ```mermaid
 graph LR; 
     IMP_UsdTransform2d_placement[place2d] --> IMP_UsdTransform2d_out([out])
-    style IMP_UsdTransform2d_out fill:#1b1, color:#111
+    style IMP_UsdTransform2d_out fill:#0C0, color:#111
     IMP_UsdTransform2d_inINT([in]) ==.texcoord==> IMP_UsdTransform2d_placement[place2d]
-    style IMP_UsdTransform2d_inINT fill:#0bb, color:#111
+    style IMP_UsdTransform2d_inINT fill:#0CF, color:#111
     IMP_UsdTransform2d_scaleINT([scale]) ==.scale==> IMP_UsdTransform2d_placement[place2d]
-    style IMP_UsdTransform2d_scaleINT fill:#0bb, color:#111
+    style IMP_UsdTransform2d_scaleINT fill:#0CF, color:#111
     IMP_UsdTransform2d_rotationINT([rotation]) ==.rotate==> IMP_UsdTransform2d_placement[place2d]
-    style IMP_UsdTransform2d_rotationINT fill:#0bb, color:#111
+    style IMP_UsdTransform2d_rotationINT fill:#0CF, color:#111
     IMP_UsdTransform2d_translationINT([translation]) ==.offset==> IMP_UsdTransform2d_placement[place2d]
-    style IMP_UsdTransform2d_translationINT fill:#0bb, color:#111
+    style IMP_UsdTransform2d_translationINT fill:#0CF, color:#111
 
 ```
  
@@ -1763,17 +1759,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_lama_add_bsdf_add1[add] --> NG_lama_add_bsdf_out([out])
-    style NG_lama_add_bsdf_out fill:#1b1, color:#111
+    style NG_lama_add_bsdf_out fill:#0C0, color:#111
     NG_lama_add_bsdf_mul1[multiply] --".in1"--> NG_lama_add_bsdf_add1[add]
     NG_lama_add_bsdf_material1INT([material1]) ==.in1==> NG_lama_add_bsdf_mul1[multiply]
-    style NG_lama_add_bsdf_material1INT fill:#0bb, color:#111
+    style NG_lama_add_bsdf_material1INT fill:#0CF, color:#111
     NG_lama_add_bsdf_weight1INT([weight1]) ==.in2==> NG_lama_add_bsdf_mul1[multiply]
-    style NG_lama_add_bsdf_weight1INT fill:#0bb, color:#111
+    style NG_lama_add_bsdf_weight1INT fill:#0CF, color:#111
     NG_lama_add_bsdf_mul2[multiply] --".in2"--> NG_lama_add_bsdf_add1[add]
     NG_lama_add_bsdf_material2INT([material2]) ==.in1==> NG_lama_add_bsdf_mul2[multiply]
-    style NG_lama_add_bsdf_material2INT fill:#0bb, color:#111
+    style NG_lama_add_bsdf_material2INT fill:#0CF, color:#111
     NG_lama_add_bsdf_weight2INT([weight2]) ==.in2==> NG_lama_add_bsdf_mul2[multiply]
-    style NG_lama_add_bsdf_weight2INT fill:#0bb, color:#111
+    style NG_lama_add_bsdf_weight2INT fill:#0CF, color:#111
 
 ```
  
@@ -1801,17 +1797,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_lama_add_edf_add1[add] --> NG_lama_add_edf_out([out])
-    style NG_lama_add_edf_out fill:#1b1, color:#111
+    style NG_lama_add_edf_out fill:#0C0, color:#111
     NG_lama_add_edf_mul1[multiply] --".in1"--> NG_lama_add_edf_add1[add]
     NG_lama_add_edf_material1INT([material1]) ==.in1==> NG_lama_add_edf_mul1[multiply]
-    style NG_lama_add_edf_material1INT fill:#0bb, color:#111
+    style NG_lama_add_edf_material1INT fill:#0CF, color:#111
     NG_lama_add_edf_weight1INT([weight1]) ==.in2==> NG_lama_add_edf_mul1[multiply]
-    style NG_lama_add_edf_weight1INT fill:#0bb, color:#111
+    style NG_lama_add_edf_weight1INT fill:#0CF, color:#111
     NG_lama_add_edf_mul2[multiply] --".in2"--> NG_lama_add_edf_add1[add]
     NG_lama_add_edf_material2INT([material2]) ==.in1==> NG_lama_add_edf_mul2[multiply]
-    style NG_lama_add_edf_material2INT fill:#0bb, color:#111
+    style NG_lama_add_edf_material2INT fill:#0CF, color:#111
     NG_lama_add_edf_weight2INT([weight2]) ==.in2==> NG_lama_add_edf_mul2[multiply]
-    style NG_lama_add_edf_weight2INT fill:#0bb, color:#111
+    style NG_lama_add_edf_weight2INT fill:#0CF, color:#111
 
 ```
  
@@ -1840,82 +1836,82 @@ graph LR;
 ```mermaid
 graph LR; 
     IMPL_lama_conductor_tinted_bsdf[multiply] --> IMPL_lama_conductor_out([out])
-    style IMPL_lama_conductor_out fill:#1b1, color:#111
+    style IMPL_lama_conductor_out fill:#0C0, color:#111
     IMPL_lama_conductor_tintINT([tint]) ==.in2==> IMPL_lama_conductor_tinted_bsdf[multiply]
-    style IMPL_lama_conductor_tintINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_tintINT fill:#0CF, color:#111
     IMPL_lama_conductor_thin_film_conductor_bsdf[layer] --".in1"--> IMPL_lama_conductor_tinted_bsdf[multiply]
     IMPL_lama_conductor_thin_film_bsdf[thin_film_bsdf] --".top"--> IMPL_lama_conductor_thin_film_conductor_bsdf[layer]
     IMPL_lama_conductor_iridescenceThicknessINT([iridescenceThickness]) ==.thickness==> IMPL_lama_conductor_thin_film_bsdf[thin_film_bsdf]
-    style IMPL_lama_conductor_iridescenceThicknessINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_iridescenceThicknessINT fill:#0CF, color:#111
     IMPL_lama_conductor_iridescence_relative_ior[divide] --".ior"--> IMPL_lama_conductor_thin_film_bsdf[thin_film_bsdf]
     IMPL_lama_conductor_iridescenceIORINT([iridescenceIOR]) ==.in1==> IMPL_lama_conductor_iridescence_relative_ior[divide]
-    style IMPL_lama_conductor_iridescenceIORINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_iridescenceIORINT fill:#0CF, color:#111
     IMPL_lama_conductor_exteriorIORINT([exteriorIOR]) ==.in2==> IMPL_lama_conductor_iridescence_relative_ior[divide]
-    style IMPL_lama_conductor_exteriorIORINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_exteriorIORINT fill:#0CF, color:#111
     IMPL_lama_conductor_conductor_bsdf[conductor_bsdf] --".base"--> IMPL_lama_conductor_thin_film_conductor_bsdf[layer]
     IMPL_lama_conductor_normalINT([normal]) ==.normal==> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
-    style IMPL_lama_conductor_normalINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_normalINT fill:#0CF, color:#111
     IMPL_lama_conductor_relative_eta[divide] --".ior"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
     IMPL_lama_conductor_eta_switch[switch] --".in1"--> IMPL_lama_conductor_relative_eta[divide]
     IMPL_lama_conductor_fresnelModeINT([fresnelMode]) ==.which==> IMPL_lama_conductor_eta_switch[switch]
-    style IMPL_lama_conductor_fresnelModeINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_fresnelModeINT fill:#0CF, color:#111
     IMPL_lama_conductor_convert_ior[convert] --".in1"--> IMPL_lama_conductor_eta_switch[switch]
     IMPL_lama_conductor_IORINT([IOR]) ==.in==> IMPL_lama_conductor_convert_ior[convert]
-    style IMPL_lama_conductor_IORINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_IORINT fill:#0CF, color:#111
     IMPL_lama_conductor_artistic_ior[artistic_ior] --> IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorior([ior])
-    style IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorior fill:#1b1, color:#111
+    style IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorior fill:#0C0, color:#111
     IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorior --".in2"--> IMPL_lama_conductor_eta_switch[switch]
     IMPL_lama_conductor_reflectivityINT([reflectivity]) ==.reflectivity==> IMPL_lama_conductor_artistic_ior[artistic_ior]
-    style IMPL_lama_conductor_reflectivityINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_reflectivityINT fill:#0CF, color:#111
     IMPL_lama_conductor_edgeColorINT([edgeColor]) ==.edge_color==> IMPL_lama_conductor_artistic_ior[artistic_ior]
-    style IMPL_lama_conductor_edgeColorINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_edgeColorINT fill:#0CF, color:#111
     IMPL_lama_conductor_exterior_ior_switch[ifgreater] --".in2"--> IMPL_lama_conductor_relative_eta[divide]
     IMPL_lama_conductor_iridescenceIORINT([iridescenceIOR]) ==.in1==> IMPL_lama_conductor_exterior_ior_switch[ifgreater]
-    style IMPL_lama_conductor_iridescenceIORINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_iridescenceIORINT fill:#0CF, color:#111
     IMPL_lama_conductor_exteriorIORINT([exteriorIOR]) ==.in2==> IMPL_lama_conductor_exterior_ior_switch[ifgreater]
-    style IMPL_lama_conductor_exteriorIORINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_exteriorIORINT fill:#0CF, color:#111
     IMPL_lama_conductor_iridescenceThicknessINT([iridescenceThickness]) ==.value1==> IMPL_lama_conductor_exterior_ior_switch[ifgreater]
-    style IMPL_lama_conductor_iridescenceThicknessINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_iridescenceThicknessINT fill:#0CF, color:#111
     IMPL_lama_conductor_relative_kappa[divide] --".extinction"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
     IMPL_lama_conductor_kappa_switch[switch] --".in1"--> IMPL_lama_conductor_relative_kappa[divide]
     IMPL_lama_conductor_fresnelModeINT([fresnelMode]) ==.which==> IMPL_lama_conductor_kappa_switch[switch]
-    style IMPL_lama_conductor_fresnelModeINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_fresnelModeINT fill:#0CF, color:#111
     IMPL_lama_conductor_convert_extinction[convert] --".in1"--> IMPL_lama_conductor_kappa_switch[switch]
     IMPL_lama_conductor_extinctionINT([extinction]) ==.in==> IMPL_lama_conductor_convert_extinction[convert]
-    style IMPL_lama_conductor_extinctionINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_extinctionINT fill:#0CF, color:#111
     IMPL_lama_conductor_artistic_ior[artistic_ior] --> IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorextinction([extinction])
-    style IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorextinction fill:#1b1, color:#111
+    style IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorextinction fill:#0C0, color:#111
     IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorextinction --".in2"--> IMPL_lama_conductor_kappa_switch[switch]
     IMPL_lama_conductor_exterior_ior_switch[ifgreater] --".in2"--> IMPL_lama_conductor_relative_kappa[divide]
     IMPL_lama_conductor_roughness_anisotropic_squared_clamped[max] --".roughness"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
     IMPL_lama_conductor_roughness_anisotropic_squared[power] --".in1"--> IMPL_lama_conductor_roughness_anisotropic_squared_clamped[max]
     IMPL_lama_conductor_roughness_linear[combine2] --".in1"--> IMPL_lama_conductor_roughness_anisotropic_squared[power]
     IMPL_lama_conductor_roughnessINT([roughness]) ==.in1==> IMPL_lama_conductor_roughness_linear[combine2]
-    style IMPL_lama_conductor_roughnessINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_roughnessINT fill:#0CF, color:#111
     IMPL_lama_conductor_roughness_bitangent_clamped[clamp] --".in2"--> IMPL_lama_conductor_roughness_linear[combine2]
     IMPL_lama_conductor_roughness_bitangent[add] --".in"--> IMPL_lama_conductor_roughness_bitangent_clamped[clamp]
     IMPL_lama_conductor_roughnessINT([roughness]) ==.in1==> IMPL_lama_conductor_roughness_bitangent[add]
-    style IMPL_lama_conductor_roughnessINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_roughnessINT fill:#0CF, color:#111
     IMPL_lama_conductor_roughness_additional[multiply] --".in2"--> IMPL_lama_conductor_roughness_bitangent[add]
     IMPL_lama_conductor_anisotropyINT([anisotropy]) ==.in1==> IMPL_lama_conductor_roughness_additional[multiply]
-    style IMPL_lama_conductor_anisotropyINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_anisotropyINT fill:#0CF, color:#111
     IMPL_lama_conductor_delta[ifgreatereq] --".in2"--> IMPL_lama_conductor_roughness_additional[multiply]
     IMPL_lama_conductor_roughnessINT([roughness]) ==.in2==> IMPL_lama_conductor_delta[ifgreatereq]
-    style IMPL_lama_conductor_roughnessINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_roughnessINT fill:#0CF, color:#111
     IMPL_lama_conductor_anisotropyINT([anisotropy]) ==.value1==> IMPL_lama_conductor_delta[ifgreatereq]
-    style IMPL_lama_conductor_anisotropyINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_anisotropyINT fill:#0CF, color:#111
     IMPL_lama_conductor_roughness_inverse[subtract] --".in1"--> IMPL_lama_conductor_delta[ifgreatereq]
     IMPL_lama_conductor_roughnessINT([roughness]) ==.in2==> IMPL_lama_conductor_roughness_inverse[subtract]
-    style IMPL_lama_conductor_roughnessINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_roughnessINT fill:#0CF, color:#111
     IMPL_lama_conductor_tangent_rotate_normalize[normalize] --".tangent"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
     IMPL_lama_conductor_tangent_rotate[rotate3d] --".in"--> IMPL_lama_conductor_tangent_rotate_normalize[normalize]
     IMPL_lama_conductor_anisotropyDirectionINT([anisotropyDirection]) ==.in==> IMPL_lama_conductor_tangent_rotate[rotate3d]
-    style IMPL_lama_conductor_anisotropyDirectionINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_anisotropyDirectionINT fill:#0CF, color:#111
     IMPL_lama_conductor_normalINT([normal]) ==.axis==> IMPL_lama_conductor_tangent_rotate[rotate3d]
-    style IMPL_lama_conductor_normalINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_normalINT fill:#0CF, color:#111
     IMPL_lama_conductor_tangent_rotate_degree[multiply] --".amount"--> IMPL_lama_conductor_tangent_rotate[rotate3d]
     IMPL_lama_conductor_anisotropyRotationINT([anisotropyRotation]) ==.in1==> IMPL_lama_conductor_tangent_rotate_degree[multiply]
-    style IMPL_lama_conductor_anisotropyRotationINT fill:#0bb, color:#111
+    style IMPL_lama_conductor_anisotropyRotationINT fill:#0CF, color:#111
 
 ```
  
@@ -1954,77 +1950,77 @@ graph LR;
 ```mermaid
 graph LR; 
     IMPL_lama_dielectric_dielectric_bsdf[layer] --> IMPL_lama_dielectric_out([out])
-    style IMPL_lama_dielectric_out fill:#1b1, color:#111
+    style IMPL_lama_dielectric_out fill:#0C0, color:#111
     IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf] --".top"--> IMPL_lama_dielectric_dielectric_bsdf[layer]
     IMPL_lama_dielectric_reflectionTintINT([reflectionTint]) ==.tint==> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
-    style IMPL_lama_dielectric_reflectionTintINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_reflectionTintINT fill:#0CF, color:#111
     IMPL_lama_dielectric_normalINT([normal]) ==.normal==> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
-    style IMPL_lama_dielectric_normalINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_normalINT fill:#0CF, color:#111
     IMPL_lama_dielectric_relative_ior[divide] --".ior"--> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
     IMPL_lama_dielectric_exteriorIORINT([exteriorIOR]) ==.in2==> IMPL_lama_dielectric_relative_ior[divide]
-    style IMPL_lama_dielectric_exteriorIORINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_exteriorIORINT fill:#0CF, color:#111
     IMPL_lama_dielectric_fresnel_mode_switch[switch] --".in1"--> IMPL_lama_dielectric_relative_ior[divide]
     IMPL_lama_dielectric_IORINT([IOR]) ==.in1==> IMPL_lama_dielectric_fresnel_mode_switch[switch]
-    style IMPL_lama_dielectric_IORINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_IORINT fill:#0CF, color:#111
     IMPL_lama_dielectric_fresnelModeINT([fresnelMode]) ==.which==> IMPL_lama_dielectric_fresnel_mode_switch[switch]
-    style IMPL_lama_dielectric_fresnelModeINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_fresnelModeINT fill:#0CF, color:#111
     IMPL_lama_dielectric_artistic_ior[artistic_ior] --> IMPL_lama_dielectric_IMPL_lama_dielectric_artistic_iorior([ior])
-    style IMPL_lama_dielectric_IMPL_lama_dielectric_artistic_iorior fill:#1b1, color:#111
+    style IMPL_lama_dielectric_IMPL_lama_dielectric_artistic_iorior fill:#0C0, color:#111
     IMPL_lama_dielectric_IMPL_lama_dielectric_artistic_iorior --".r -> .in2"--> IMPL_lama_dielectric_fresnel_mode_switch[switch]
     IMPL_lama_dielectric_reflectivity_color[convert] --".reflectivity"--> IMPL_lama_dielectric_artistic_ior[artistic_ior]
     IMPL_lama_dielectric_reflectivityINT([reflectivity]) ==.in==> IMPL_lama_dielectric_reflectivity_color[convert]
-    style IMPL_lama_dielectric_reflectivityINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_reflectivityINT fill:#0CF, color:#111
     IMPL_lama_dielectric_roughness_anisotropic_squared_clamped[max] --".roughness"--> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
     IMPL_lama_dielectric_roughness_anisotropic_squared[power] --".in1"--> IMPL_lama_dielectric_roughness_anisotropic_squared_clamped[max]
     IMPL_lama_dielectric_roughness_linear[combine2] --".in1"--> IMPL_lama_dielectric_roughness_anisotropic_squared[power]
     IMPL_lama_dielectric_roughnessINT([roughness]) ==.in1==> IMPL_lama_dielectric_roughness_linear[combine2]
-    style IMPL_lama_dielectric_roughnessINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_roughnessINT fill:#0CF, color:#111
     IMPL_lama_dielectric_roughness_bitangent_clamped[clamp] --".in2"--> IMPL_lama_dielectric_roughness_linear[combine2]
     IMPL_lama_dielectric_roughness_bitangent[add] --".in"--> IMPL_lama_dielectric_roughness_bitangent_clamped[clamp]
     IMPL_lama_dielectric_roughnessINT([roughness]) ==.in1==> IMPL_lama_dielectric_roughness_bitangent[add]
-    style IMPL_lama_dielectric_roughnessINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_roughnessINT fill:#0CF, color:#111
     IMPL_lama_dielectric_roughness_additional[multiply] --".in2"--> IMPL_lama_dielectric_roughness_bitangent[add]
     IMPL_lama_dielectric_anisotropyINT([anisotropy]) ==.in1==> IMPL_lama_dielectric_roughness_additional[multiply]
-    style IMPL_lama_dielectric_anisotropyINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_anisotropyINT fill:#0CF, color:#111
     IMPL_lama_dielectric_delta[ifgreatereq] --".in2"--> IMPL_lama_dielectric_roughness_additional[multiply]
     IMPL_lama_dielectric_roughnessINT([roughness]) ==.in2==> IMPL_lama_dielectric_delta[ifgreatereq]
-    style IMPL_lama_dielectric_roughnessINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_roughnessINT fill:#0CF, color:#111
     IMPL_lama_dielectric_anisotropyINT([anisotropy]) ==.value1==> IMPL_lama_dielectric_delta[ifgreatereq]
-    style IMPL_lama_dielectric_anisotropyINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_anisotropyINT fill:#0CF, color:#111
     IMPL_lama_dielectric_roughness_inverse[subtract] --".in1"--> IMPL_lama_dielectric_delta[ifgreatereq]
     IMPL_lama_dielectric_roughnessINT([roughness]) ==.in2==> IMPL_lama_dielectric_roughness_inverse[subtract]
-    style IMPL_lama_dielectric_roughnessINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_roughnessINT fill:#0CF, color:#111
     IMPL_lama_dielectric_tangent_rotate_normalize[normalize] --".tangent"--> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
     IMPL_lama_dielectric_tangent_rotate[rotate3d] --".in"--> IMPL_lama_dielectric_tangent_rotate_normalize[normalize]
     IMPL_lama_dielectric_directionINT([direction]) ==.in==> IMPL_lama_dielectric_tangent_rotate[rotate3d]
-    style IMPL_lama_dielectric_directionINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_directionINT fill:#0CF, color:#111
     IMPL_lama_dielectric_normalINT([normal]) ==.axis==> IMPL_lama_dielectric_tangent_rotate[rotate3d]
-    style IMPL_lama_dielectric_normalINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_normalINT fill:#0CF, color:#111
     IMPL_lama_dielectric_tangent_rotate_degree_offset[subtract] --".amount"--> IMPL_lama_dielectric_tangent_rotate[rotate3d]
     IMPL_lama_dielectric_tangent_rotate_degree[multiply] --".in1"--> IMPL_lama_dielectric_tangent_rotate_degree_offset[subtract]
     IMPL_lama_dielectric_rotationINT([rotation]) ==.in1==> IMPL_lama_dielectric_tangent_rotate_degree[multiply]
-    style IMPL_lama_dielectric_rotationINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_rotationINT fill:#0CF, color:#111
     IMPL_lama_dielectric_transmission_layer[layer] --".base"--> IMPL_lama_dielectric_dielectric_bsdf[layer]
     IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf] --".top"--> IMPL_lama_dielectric_transmission_layer[layer]
     IMPL_lama_dielectric_transmissionTintINT([transmissionTint]) ==.tint==> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
-    style IMPL_lama_dielectric_transmissionTintINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_transmissionTintINT fill:#0CF, color:#111
     IMPL_lama_dielectric_normalINT([normal]) ==.normal==> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
-    style IMPL_lama_dielectric_normalINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_normalINT fill:#0CF, color:#111
     IMPL_lama_dielectric_relative_ior[divide] --".ior"--> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
     IMPL_lama_dielectric_roughness_anisotropic_squared_clamped[max] --".roughness"--> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
     IMPL_lama_dielectric_tangent_rotate_normalize[normalize] --".tangent"--> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
     IMPL_lama_dielectric_interior_vdf[anisotropic_vdf] --".base"--> IMPL_lama_dielectric_transmission_layer[layer]
     IMPL_lama_dielectric_scatterAnisotropyINT([scatterAnisotropy]) ==.anisotropy==> IMPL_lama_dielectric_interior_vdf[anisotropic_vdf]
-    style IMPL_lama_dielectric_scatterAnisotropyINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_scatterAnisotropyINT fill:#0CF, color:#111
     IMPL_lama_dielectric_absorption_vector[convert] --".absorption"--> IMPL_lama_dielectric_interior_vdf[anisotropic_vdf]
     IMPL_lama_dielectric_absorption[divide] --".in"--> IMPL_lama_dielectric_absorption_vector[convert]
     IMPL_lama_dielectric_absorptionColorINT([absorptionColor]) ==.in1==> IMPL_lama_dielectric_absorption[divide]
-    style IMPL_lama_dielectric_absorptionColorINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_absorptionColorINT fill:#0CF, color:#111
     IMPL_lama_dielectric_absorptionRadiusINT([absorptionRadius]) ==.in2==> IMPL_lama_dielectric_absorption[divide]
-    style IMPL_lama_dielectric_absorptionRadiusINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_absorptionRadiusINT fill:#0CF, color:#111
     IMPL_lama_dielectric_scatter_vector[convert] --".scattering"--> IMPL_lama_dielectric_interior_vdf[anisotropic_vdf]
     IMPL_lama_dielectric_scatterColorINT([scatterColor]) ==.in==> IMPL_lama_dielectric_scatter_vector[convert]
-    style IMPL_lama_dielectric_scatterColorINT fill:#0bb, color:#111
+    style IMPL_lama_dielectric_scatterColorINT fill:#0CF, color:#111
 
 ```
  
@@ -2064,17 +2060,17 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_lama_diffuse_oren_nayar[oren_nayar_diffuse_bsdf] --> NG_lama_diffuse_out([out])
-    style NG_lama_diffuse_out fill:#1b1, color:#111
+    style NG_lama_diffuse_out fill:#0C0, color:#111
     NG_lama_diffuse_colorINT([color]) ==.color==> NG_lama_diffuse_oren_nayar[oren_nayar_diffuse_bsdf]
-    style NG_lama_diffuse_colorINT fill:#0bb, color:#111
+    style NG_lama_diffuse_colorINT fill:#0CF, color:#111
     NG_lama_diffuse_normalINT([normal]) ==.normal==> NG_lama_diffuse_oren_nayar[oren_nayar_diffuse_bsdf]
-    style NG_lama_diffuse_normalINT fill:#0bb, color:#111
+    style NG_lama_diffuse_normalINT fill:#0CF, color:#111
     NG_lama_diffuse_half_roughness_squared[multiply] --".roughness"--> NG_lama_diffuse_oren_nayar[oren_nayar_diffuse_bsdf]
     NG_lama_diffuse_roughness_squared[multiply] --".in1"--> NG_lama_diffuse_half_roughness_squared[multiply]
     NG_lama_diffuse_roughnessINT([roughness]) ==.in1==> NG_lama_diffuse_roughness_squared[multiply]
-    style NG_lama_diffuse_roughnessINT fill:#0bb, color:#111
+    style NG_lama_diffuse_roughnessINT fill:#0CF, color:#111
     NG_lama_diffuse_roughnessINT([roughness]) ==.in2==> NG_lama_diffuse_roughness_squared[multiply]
-    style NG_lama_diffuse_roughnessINT fill:#0bb, color:#111
+    style NG_lama_diffuse_roughnessINT fill:#0CF, color:#111
 
 ```
  
@@ -2105,9 +2101,9 @@ graph LR;
 ```mermaid
 graph LR; 
     IMPL_lama_emission_emission[uniform_edf] --> IMPL_lama_emission_out([out])
-    style IMPL_lama_emission_out fill:#1b1, color:#111
+    style IMPL_lama_emission_out fill:#0C0, color:#111
     IMPL_lama_emission_colorINT([color]) ==.color==> IMPL_lama_emission_emission[uniform_edf]
-    style IMPL_lama_emission_colorINT fill:#0bb, color:#111
+    style IMPL_lama_emission_colorINT fill:#0CF, color:#111
 
 ```
  
@@ -2133,14 +2129,14 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_lama_layer_bsdf_layer[layer] --> NG_lama_layer_bsdf_out([out])
-    style NG_lama_layer_bsdf_out fill:#1b1, color:#111
+    style NG_lama_layer_bsdf_out fill:#0C0, color:#111
     NG_lama_layer_bsdf_materialBaseINT([materialBase]) ==.base==> NG_lama_layer_bsdf_layer[layer]
-    style NG_lama_layer_bsdf_materialBaseINT fill:#0bb, color:#111
+    style NG_lama_layer_bsdf_materialBaseINT fill:#0CF, color:#111
     NG_lama_layer_bsdf_mul[multiply] --".top"--> NG_lama_layer_bsdf_layer[layer]
     NG_lama_layer_bsdf_materialTopINT([materialTop]) ==.in1==> NG_lama_layer_bsdf_mul[multiply]
-    style NG_lama_layer_bsdf_materialTopINT fill:#0bb, color:#111
+    style NG_lama_layer_bsdf_materialTopINT fill:#0CF, color:#111
     NG_lama_layer_bsdf_topMixINT([topMix]) ==.in2==> NG_lama_layer_bsdf_mul[multiply]
-    style NG_lama_layer_bsdf_topMixINT fill:#0bb, color:#111
+    style NG_lama_layer_bsdf_topMixINT fill:#0CF, color:#111
 
 ```
  
@@ -2169,13 +2165,13 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_lama_mix_bsdf_mix[mix] --> NG_lama_mix_bsdf_out([out])
-    style NG_lama_mix_bsdf_out fill:#1b1, color:#111
+    style NG_lama_mix_bsdf_out fill:#0C0, color:#111
     NG_lama_mix_bsdf_material2INT([material2]) ==.fg==> NG_lama_mix_bsdf_mix[mix]
-    style NG_lama_mix_bsdf_material2INT fill:#0bb, color:#111
+    style NG_lama_mix_bsdf_material2INT fill:#0CF, color:#111
     NG_lama_mix_bsdf_material1INT([material1]) ==.bg==> NG_lama_mix_bsdf_mix[mix]
-    style NG_lama_mix_bsdf_material1INT fill:#0bb, color:#111
+    style NG_lama_mix_bsdf_material1INT fill:#0CF, color:#111
     NG_lama_mix_bsdf_mixINT([mix]) ==.mix==> NG_lama_mix_bsdf_mix[mix]
-    style NG_lama_mix_bsdf_mixINT fill:#0bb, color:#111
+    style NG_lama_mix_bsdf_mixINT fill:#0CF, color:#111
 
 ```
  
@@ -2202,13 +2198,13 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_lama_mix_edf_mix[mix] --> NG_lama_mix_edf_out([out])
-    style NG_lama_mix_edf_out fill:#1b1, color:#111
+    style NG_lama_mix_edf_out fill:#0C0, color:#111
     NG_lama_mix_edf_material2INT([material2]) ==.fg==> NG_lama_mix_edf_mix[mix]
-    style NG_lama_mix_edf_material2INT fill:#0bb, color:#111
+    style NG_lama_mix_edf_material2INT fill:#0CF, color:#111
     NG_lama_mix_edf_material1INT([material1]) ==.bg==> NG_lama_mix_edf_mix[mix]
-    style NG_lama_mix_edf_material1INT fill:#0bb, color:#111
+    style NG_lama_mix_edf_material1INT fill:#0CF, color:#111
     NG_lama_mix_edf_mixINT([mix]) ==.mix==> NG_lama_mix_edf_mix[mix]
-    style NG_lama_mix_edf_mixINT fill:#0bb, color:#111
+    style NG_lama_mix_edf_mixINT fill:#0CF, color:#111
 
 ```
  
@@ -2236,16 +2232,16 @@ graph LR;
 ```mermaid
 graph LR; 
     IMPL_lama_sheen_sheen_bsdf[sheen_bsdf] --> IMPL_lama_sheen_out([out])
-    style IMPL_lama_sheen_out fill:#1b1, color:#111
+    style IMPL_lama_sheen_out fill:#0C0, color:#111
     IMPL_lama_sheen_colorINT([color]) ==.color==> IMPL_lama_sheen_sheen_bsdf[sheen_bsdf]
-    style IMPL_lama_sheen_colorINT fill:#0bb, color:#111
+    style IMPL_lama_sheen_colorINT fill:#0CF, color:#111
     IMPL_lama_sheen_normalINT([normal]) ==.normal==> IMPL_lama_sheen_sheen_bsdf[sheen_bsdf]
-    style IMPL_lama_sheen_normalINT fill:#0bb, color:#111
+    style IMPL_lama_sheen_normalINT fill:#0CF, color:#111
     IMPL_lama_sheen_roughness_squared[power] --".roughness"--> IMPL_lama_sheen_sheen_bsdf[sheen_bsdf]
     IMPL_lama_sheen_roughness_remapped[add] --".in1"--> IMPL_lama_sheen_roughness_squared[power]
     IMPL_lama_sheen_roughness_compressed[multiply] --".in1"--> IMPL_lama_sheen_roughness_remapped[add]
     IMPL_lama_sheen_roughnessINT([roughness]) ==.in1==> IMPL_lama_sheen_roughness_compressed[multiply]
-    style IMPL_lama_sheen_roughnessINT fill:#0bb, color:#111
+    style IMPL_lama_sheen_roughnessINT fill:#0CF, color:#111
 
 ```
  
@@ -2273,22 +2269,22 @@ graph LR;
 ```mermaid
 graph LR; 
     IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf] --> IMPL_lama_sss_out([out])
-    style IMPL_lama_sss_out fill:#1b1, color:#111
+    style IMPL_lama_sss_out fill:#0C0, color:#111
     IMPL_lama_sss_colorINT([color]) ==.color==> IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
-    style IMPL_lama_sss_colorINT fill:#0bb, color:#111
+    style IMPL_lama_sss_colorINT fill:#0CF, color:#111
     IMPL_lama_sss_sssAnisotropyINT([sssAnisotropy]) ==.anisotropy==> IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
-    style IMPL_lama_sss_sssAnisotropyINT fill:#0bb, color:#111
+    style IMPL_lama_sss_sssAnisotropyINT fill:#0CF, color:#111
     IMPL_lama_sss_normalINT([normal]) ==.normal==> IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
-    style IMPL_lama_sss_normalINT fill:#0bb, color:#111
+    style IMPL_lama_sss_normalINT fill:#0CF, color:#111
     IMPL_lama_sss_subsurface_multiply_unitlength[multiply] --".radius"--> IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
     IMPL_lama_sss_sssUnitLengthINT([sssUnitLength]) ==.in2==> IMPL_lama_sss_subsurface_multiply_unitlength[multiply]
-    style IMPL_lama_sss_sssUnitLengthINT fill:#0bb, color:#111
+    style IMPL_lama_sss_sssUnitLengthINT fill:#0CF, color:#111
     IMPL_lama_sss_subsurface_radius_scaled[multiply] --".in1"--> IMPL_lama_sss_subsurface_multiply_unitlength[multiply]
     IMPL_lama_sss_sssScaleINT([sssScale]) ==.in2==> IMPL_lama_sss_subsurface_radius_scaled[multiply]
-    style IMPL_lama_sss_sssScaleINT fill:#0bb, color:#111
+    style IMPL_lama_sss_sssScaleINT fill:#0CF, color:#111
     IMPL_lama_sss_subsurface_radius_vector[convert] --".in1"--> IMPL_lama_sss_subsurface_radius_scaled[multiply]
     IMPL_lama_sss_sssRadiusINT([sssRadius]) ==.in==> IMPL_lama_sss_subsurface_radius_vector[convert]
-    style IMPL_lama_sss_sssRadiusINT fill:#0bb, color:#111
+    style IMPL_lama_sss_sssRadiusINT fill:#0CF, color:#111
 
 ```
  
@@ -2332,11 +2328,11 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_lama_translucent_translucent_bsdf1[translucent_bsdf] --> NG_lama_translucent_out([out])
-    style NG_lama_translucent_out fill:#1b1, color:#111
+    style NG_lama_translucent_out fill:#0C0, color:#111
     NG_lama_translucent_colorINT([color]) ==.color==> NG_lama_translucent_translucent_bsdf1[translucent_bsdf]
-    style NG_lama_translucent_colorINT fill:#0bb, color:#111
+    style NG_lama_translucent_colorINT fill:#0CF, color:#111
     NG_lama_translucent_normalINT([normal]) ==.normal==> NG_lama_translucent_translucent_bsdf1[translucent_bsdf]
-    style NG_lama_translucent_normalINT fill:#0bb, color:#111
+    style NG_lama_translucent_normalINT fill:#0CF, color:#111
 
 ```
  
@@ -2367,76 +2363,76 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_standard_surface_to_gltf_pbr_base_color[ifequal] --> NG_standard_surface_to_gltf_pbr_base_color_out([base_color_out])
-    style NG_standard_surface_to_gltf_pbr_base_color_out fill:#1b1, color:#111
+    style NG_standard_surface_to_gltf_pbr_base_color_out fill:#0C0, color:#111
     NG_standard_surface_to_gltf_pbr_has_coat_color[dotproduct] --".value1"--> NG_standard_surface_to_gltf_pbr_base_color[ifequal]
     NG_standard_surface_to_gltf_pbr_coat_colorINT([coat_color]) ==.in1==> NG_standard_surface_to_gltf_pbr_has_coat_color[dotproduct]
-    style NG_standard_surface_to_gltf_pbr_coat_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_coat_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_scaledBaseColor[multiply] --".in1"--> NG_standard_surface_to_gltf_pbr_base_color[ifequal]
     NG_standard_surface_to_gltf_pbr_base_colorINT([base_color]) ==.in1==> NG_standard_surface_to_gltf_pbr_scaledBaseColor[multiply]
-    style NG_standard_surface_to_gltf_pbr_base_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_base_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_baseINT([base]) ==.in2==> NG_standard_surface_to_gltf_pbr_scaledBaseColor[multiply]
-    style NG_standard_surface_to_gltf_pbr_baseINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_baseINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_mixedBaseColor[multiply] --".in2"--> NG_standard_surface_to_gltf_pbr_base_color[ifequal]
     NG_standard_surface_to_gltf_pbr_scaledBaseColor[multiply] --".in1"--> NG_standard_surface_to_gltf_pbr_mixedBaseColor[multiply]
     NG_standard_surface_to_gltf_pbr_coatAttenuation[mix] --".in2"--> NG_standard_surface_to_gltf_pbr_mixedBaseColor[multiply]
     NG_standard_surface_to_gltf_pbr_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_to_gltf_pbr_coatAttenuation[mix]
-    style NG_standard_surface_to_gltf_pbr_coat_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_coat_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_coatINT([coat]) ==.mix==> NG_standard_surface_to_gltf_pbr_coatAttenuation[mix]
-    style NG_standard_surface_to_gltf_pbr_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_coatINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_metallic[dot] --> NG_standard_surface_to_gltf_pbr_metallic_out([metallic_out])
-    style NG_standard_surface_to_gltf_pbr_metallic_out fill:#1b1, color:#111
+    style NG_standard_surface_to_gltf_pbr_metallic_out fill:#0C0, color:#111
     NG_standard_surface_to_gltf_pbr_metalnessINT([metalness]) ==.in==> NG_standard_surface_to_gltf_pbr_metallic[dot]
-    style NG_standard_surface_to_gltf_pbr_metalnessINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_metalnessINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_roughness[dot] --> NG_standard_surface_to_gltf_pbr_roughness_out([roughness_out])
-    style NG_standard_surface_to_gltf_pbr_roughness_out fill:#1b1, color:#111
+    style NG_standard_surface_to_gltf_pbr_roughness_out fill:#0C0, color:#111
     NG_standard_surface_to_gltf_pbr_specular_roughnessINT([specular_roughness]) ==.in==> NG_standard_surface_to_gltf_pbr_roughness[dot]
-    style NG_standard_surface_to_gltf_pbr_specular_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_specular_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_transmission[dot] --> NG_standard_surface_to_gltf_pbr_transmission_out([transmission_out])
-    style NG_standard_surface_to_gltf_pbr_transmission_out fill:#1b1, color:#111
+    style NG_standard_surface_to_gltf_pbr_transmission_out fill:#0C0, color:#111
     NG_standard_surface_to_gltf_pbr_transmissionINT([transmission]) ==.in==> NG_standard_surface_to_gltf_pbr_transmission[dot]
-    style NG_standard_surface_to_gltf_pbr_transmissionINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_transmissionINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_thickness[dot] --> NG_standard_surface_to_gltf_pbr_thickness_out([thickness_out])
-    style NG_standard_surface_to_gltf_pbr_thickness_out fill:#1b1, color:#111
+    style NG_standard_surface_to_gltf_pbr_thickness_out fill:#0C0, color:#111
     NG_standard_surface_to_gltf_pbr_transmission_depthINT([transmission_depth]) ==.in==> NG_standard_surface_to_gltf_pbr_thickness[dot]
-    style NG_standard_surface_to_gltf_pbr_transmission_depthINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_transmission_depthINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_attenuation_color[dot] --> NG_standard_surface_to_gltf_pbr_attenuation_color_out([attenuation_color_out])
-    style NG_standard_surface_to_gltf_pbr_attenuation_color_out fill:#1b1, color:#111
+    style NG_standard_surface_to_gltf_pbr_attenuation_color_out fill:#0C0, color:#111
     NG_standard_surface_to_gltf_pbr_transmission_colorINT([transmission_color]) ==.in==> NG_standard_surface_to_gltf_pbr_attenuation_color[dot]
-    style NG_standard_surface_to_gltf_pbr_transmission_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_transmission_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_sheen_color[multiply] --> NG_standard_surface_to_gltf_pbr_sheen_color_out([sheen_color_out])
-    style NG_standard_surface_to_gltf_pbr_sheen_color_out fill:#1b1, color:#111
+    style NG_standard_surface_to_gltf_pbr_sheen_color_out fill:#0C0, color:#111
     NG_standard_surface_to_gltf_pbr_sheen_colorINT([sheen_color]) ==.in1==> NG_standard_surface_to_gltf_pbr_sheen_color[multiply]
-    style NG_standard_surface_to_gltf_pbr_sheen_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_sheen_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_sheenINT([sheen]) ==.in2==> NG_standard_surface_to_gltf_pbr_sheen_color[multiply]
-    style NG_standard_surface_to_gltf_pbr_sheenINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_sheenINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_sheen_roughness[ifgreater] --> NG_standard_surface_to_gltf_pbr_sheen_roughness_out([sheen_roughness_out])
-    style NG_standard_surface_to_gltf_pbr_sheen_roughness_out fill:#1b1, color:#111
+    style NG_standard_surface_to_gltf_pbr_sheen_roughness_out fill:#0C0, color:#111
     NG_standard_surface_to_gltf_pbr_sheenINT([sheen]) ==.value1==> NG_standard_surface_to_gltf_pbr_sheen_roughness[ifgreater]
-    style NG_standard_surface_to_gltf_pbr_sheenINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_sheenINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_sheen_roughnessINT([sheen_roughness]) ==.in1==> NG_standard_surface_to_gltf_pbr_sheen_roughness[ifgreater]
-    style NG_standard_surface_to_gltf_pbr_sheen_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_sheen_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_clearcoat[ifequal] --> NG_standard_surface_to_gltf_pbr_clearcoat_out([clearcoat_out])
-    style NG_standard_surface_to_gltf_pbr_clearcoat_out fill:#1b1, color:#111
+    style NG_standard_surface_to_gltf_pbr_clearcoat_out fill:#0C0, color:#111
     NG_standard_surface_to_gltf_pbr_coatINT([coat]) ==.in1==> NG_standard_surface_to_gltf_pbr_clearcoat[ifequal]
-    style NG_standard_surface_to_gltf_pbr_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_coatINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_has_coat_color[dotproduct] --".value1"--> NG_standard_surface_to_gltf_pbr_clearcoat[ifequal]
     NG_standard_surface_to_gltf_pbr_weightedCoat[dotproduct] --".in2"--> NG_standard_surface_to_gltf_pbr_clearcoat[ifequal]
     NG_standard_surface_to_gltf_pbr_coatColor[multiply] --".rgb -> .in1"--> NG_standard_surface_to_gltf_pbr_weightedCoat[dotproduct]
     NG_standard_surface_to_gltf_pbr_coat_colorINT([coat_color]) ==.in1==> NG_standard_surface_to_gltf_pbr_coatColor[multiply]
-    style NG_standard_surface_to_gltf_pbr_coat_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_coat_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_coatINT([coat]) ==.in2==> NG_standard_surface_to_gltf_pbr_coatColor[multiply]
-    style NG_standard_surface_to_gltf_pbr_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_coatINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_constantOneThird[divide] --".xxx -> .in2"--> NG_standard_surface_to_gltf_pbr_weightedCoat[dotproduct]
     NG_standard_surface_to_gltf_pbr_clearcoat_roughness[dot] --> NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out([clearcoat_roughness_out])
-    style NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out fill:#1b1, color:#111
+    style NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out fill:#0C0, color:#111
     NG_standard_surface_to_gltf_pbr_coat_roughnessINT([coat_roughness]) ==.in==> NG_standard_surface_to_gltf_pbr_clearcoat_roughness[dot]
-    style NG_standard_surface_to_gltf_pbr_coat_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_coat_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_emissive[multiply] --> NG_standard_surface_to_gltf_pbr_emissive_out([emissive_out])
-    style NG_standard_surface_to_gltf_pbr_emissive_out fill:#1b1, color:#111
+    style NG_standard_surface_to_gltf_pbr_emissive_out fill:#0C0, color:#111
     NG_standard_surface_to_gltf_pbr_emission_colorINT([emission_color]) ==.in1==> NG_standard_surface_to_gltf_pbr_emissive[multiply]
-    style NG_standard_surface_to_gltf_pbr_emission_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_emission_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_emissionINT([emission]) ==.in2==> NG_standard_surface_to_gltf_pbr_emissive[multiply]
-    style NG_standard_surface_to_gltf_pbr_emissionINT fill:#0bb, color:#111
+    style NG_standard_surface_to_gltf_pbr_emissionINT fill:#0CF, color:#111
 
 ```
  
@@ -2486,57 +2482,57 @@ graph LR;
 ```mermaid
 graph LR; 
     NG_standard_surface_to_UsdPreviewSurface_diffuseColor[multiply] --> NG_standard_surface_to_UsdPreviewSurface_diffuseColor_out([diffuseColor_out])
-    style NG_standard_surface_to_UsdPreviewSurface_diffuseColor_out fill:#1b1, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_diffuseColor_out fill:#0C0, color:#111
     NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor[multiply] --".in1"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor[multiply]
     NG_standard_surface_to_UsdPreviewSurface_base_colorINT([base_color]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor[multiply]
-    style NG_standard_surface_to_UsdPreviewSurface_base_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_base_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_baseINT([base]) ==.in2==> NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor[multiply]
-    style NG_standard_surface_to_UsdPreviewSurface_baseINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_baseINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_coatAttenuation[mix] --".in2"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor[multiply]
     NG_standard_surface_to_UsdPreviewSurface_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_to_UsdPreviewSurface_coatAttenuation[mix]
-    style NG_standard_surface_to_UsdPreviewSurface_coat_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_coat_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_coatINT([coat]) ==.mix==> NG_standard_surface_to_UsdPreviewSurface_coatAttenuation[mix]
-    style NG_standard_surface_to_UsdPreviewSurface_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_coatINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_emissiveColor[multiply] --> NG_standard_surface_to_UsdPreviewSurface_emissiveColor_out([emissiveColor_out])
-    style NG_standard_surface_to_UsdPreviewSurface_emissiveColor_out fill:#1b1, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_emissiveColor_out fill:#0C0, color:#111
     NG_standard_surface_to_UsdPreviewSurface_emission_colorINT([emission_color]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_emissiveColor[multiply]
-    style NG_standard_surface_to_UsdPreviewSurface_emission_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_emission_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_emissionINT([emission]) ==.in2==> NG_standard_surface_to_UsdPreviewSurface_emissiveColor[multiply]
-    style NG_standard_surface_to_UsdPreviewSurface_emissionINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_emissionINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_metallic[dot] --> NG_standard_surface_to_UsdPreviewSurface_metallic_out([metallic_out])
-    style NG_standard_surface_to_UsdPreviewSurface_metallic_out fill:#1b1, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_metallic_out fill:#0C0, color:#111
     NG_standard_surface_to_UsdPreviewSurface_metalnessINT([metalness]) ==.in==> NG_standard_surface_to_UsdPreviewSurface_metallic[dot]
-    style NG_standard_surface_to_UsdPreviewSurface_metalnessINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_metalnessINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_roughness[dot] --> NG_standard_surface_to_UsdPreviewSurface_roughness_out([roughness_out])
-    style NG_standard_surface_to_UsdPreviewSurface_roughness_out fill:#1b1, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_roughness_out fill:#0C0, color:#111
     NG_standard_surface_to_UsdPreviewSurface_specular_roughnessINT([specular_roughness]) ==.in==> NG_standard_surface_to_UsdPreviewSurface_roughness[dot]
-    style NG_standard_surface_to_UsdPreviewSurface_specular_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_specular_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_clearcoat[dotproduct] --> NG_standard_surface_to_UsdPreviewSurface_clearcoat_out([clearcoat_out])
-    style NG_standard_surface_to_UsdPreviewSurface_clearcoat_out fill:#1b1, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_clearcoat_out fill:#0C0, color:#111
     NG_standard_surface_to_UsdPreviewSurface_coatColor[multiply] --".rgb -> .in1"--> NG_standard_surface_to_UsdPreviewSurface_clearcoat[dotproduct]
     NG_standard_surface_to_UsdPreviewSurface_coat_colorINT([coat_color]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_coatColor[multiply]
-    style NG_standard_surface_to_UsdPreviewSurface_coat_colorINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_coat_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_coatINT([coat]) ==.in2==> NG_standard_surface_to_UsdPreviewSurface_coatColor[multiply]
-    style NG_standard_surface_to_UsdPreviewSurface_coatINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_coatINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_constantOneThird[divide] --".xxx -> .in2"--> NG_standard_surface_to_UsdPreviewSurface_clearcoat[dotproduct]
     NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness[dot] --> NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out([clearcoatRoughness_out])
-    style NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out fill:#1b1, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out fill:#0C0, color:#111
     NG_standard_surface_to_UsdPreviewSurface_coat_roughnessINT([coat_roughness]) ==.in==> NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness[dot]
-    style NG_standard_surface_to_UsdPreviewSurface_coat_roughnessINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_coat_roughnessINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_opacity[dotproduct] --> NG_standard_surface_to_UsdPreviewSurface_opacity_out([opacity_out])
-    style NG_standard_surface_to_UsdPreviewSurface_opacity_out fill:#1b1, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_opacity_out fill:#0C0, color:#111
     NG_standard_surface_to_UsdPreviewSurface_opacityINT([opacity]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_opacity[dotproduct]
-    style NG_standard_surface_to_UsdPreviewSurface_opacityINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_opacityINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_constantOneThird[divide] --".xxx -> .in2"--> NG_standard_surface_to_UsdPreviewSurface_opacity[dotproduct]
     NG_standard_surface_to_UsdPreviewSurface_ior[dot] --> NG_standard_surface_to_UsdPreviewSurface_ior_out([ior_out])
-    style NG_standard_surface_to_UsdPreviewSurface_ior_out fill:#1b1, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_ior_out fill:#0C0, color:#111
     NG_standard_surface_to_UsdPreviewSurface_specular_IORINT([specular_IOR]) ==.in==> NG_standard_surface_to_UsdPreviewSurface_ior[dot]
-    style NG_standard_surface_to_UsdPreviewSurface_specular_IORINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_specular_IORINT fill:#0CF, color:#111
     NG_standard_surface_to_UsdPreviewSurface_normal[multiply] --> NG_standard_surface_to_UsdPreviewSurface_normal_out([normal_out])
-    style NG_standard_surface_to_UsdPreviewSurface_normal_out fill:#1b1, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_normal_out fill:#0C0, color:#111
     NG_standard_surface_to_UsdPreviewSurface_biasNormal[subtract] --".in1"--> NG_standard_surface_to_UsdPreviewSurface_normal[multiply]
     NG_standard_surface_to_UsdPreviewSurface_normalINT([normal]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_biasNormal[subtract]
-    style NG_standard_surface_to_UsdPreviewSurface_normalINT fill:#0bb, color:#111
+    style NG_standard_surface_to_UsdPreviewSurface_normalINT fill:#0CF, color:#111
 
 ```
  

@@ -31,15 +31,16 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
-    <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest" }); </script>
+    <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "default" }); </script>
     
+
     <!-- Navigation  -->
     <nav class="navbar sticky-top navbar-expand-lg bg-light">
         <div class="container-md container-fluid">
             <a class="navbar-brand" href="../index.html">
-                <h4><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="d-inline-block align-text-center"
+                <h5><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="rounded d-inline-block align-text-center"
                         width="60">
-                    MaterialX Learn</h4>
+                    MaterialX Learn</h5>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
                 aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -181,9 +182,9 @@
         </div>
     </nav>
 
-    <div class="container-fluid ">
+    <div class="container p-4">
         <div class="row flex-nowrap">
-            <div class="col-12 p-4 pt-2 pl-2">
+            <div class="col-12 p-0 pt-2 pl-2">
 
                 <h2>Implementation</h2>
 
@@ -209,7 +210,7 @@
                     <div class="tab-pane fade show active" id="pills-intro" role="tabpanel"
                         aria-labelledby="pills-intro-tab">
 
-                        <div class="card border-primary border mb-4">
+                        <div class="card border-secondary shadow border mb-4">
                             <div class="card-body">
                                 <p>Insight into how this site was generated is shown here to demonstrate how
                                     a user can enhance documentation and learning workflows for MaterialX by adding tools on top of MaterialX itself.
@@ -236,9 +237,9 @@
                     <div class="tab-pane fade" id="pills-generation" role="tabpanel"
                         aria-labelledby="pills-generation-tab">
 
-                        <div class="card border-primary border mb-4">
+                        <div class="card border-secondary shadow border mb-4">
                             <div class="card-body">
-                                <div class="btn btn-lg btn-outline-primary">Overview</div>
+                                <div class="btn btn-lg border-secondary shadow-sm w-100"" style="pointer-events: none;">Overview</div>
                                 <p>
                                     The following diagram outlines the setup for generating documentation from MaterialX. The main utilities 
                                     were written using the Python wrappers for MaterialX:
@@ -265,7 +266,7 @@
                                     <p><br><img src="./images/generative_docs.svg">
                                     </p>
                                 </p>
-                                <div class="btn btn-lg btn-outline-primary">Web Utilities</div>
+                                <div class="btn btn-lg border-secondary shadow-sm w-100"" style="pointer-events: none;">Web Utilities</div>
                                 <p>
                                     A number of Javascript utilities were written to handle:
                                     <ul>
@@ -293,10 +294,10 @@
                     <div class="tab-pane fade" id="pills-learning" role="tabpanel"
                         aria-labelledby="pills-learning-tab">
 
-                        <div class="card border-primary border mb-4">
+                        <div class="card border-secondary shadow border mb-4">
                             <div class="card-body">
 
-                                <div class="btn btn-lg btn-outline-primary">Overview</div>
+                                <div class="btn btn-lg border-secondary shadow-sm w-100"" style="pointer-events: none;">Overview</div>
                                 <p>
                                     <p>
                                     For API learning, the proposed setup is shown below. This initiative is still under review

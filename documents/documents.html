@@ -36,9 +36,9 @@
   <nav class="navbar sticky-top navbar-expand-lg bg-light">
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="../index.html">
-        <h4><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="d-inline-block align-text-center"
+        <h5><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="rounded d-inline-block align-text-center"
             width="60">
-          MaterialX Learn</h4>
+          MaterialX Learn</h5>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
         aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -177,9 +177,9 @@
     </div>
   </nav>
 
-  <div class="container-fluid ">
+  <div class="container p-4">
     <div class="row flex-nowrap">
-      <div class="col-12 p-4 pt-2 pl-2">
+      <div class="col-12 p-0 pt-2 pl-2">
 
         <h2>Documents</h2>
 
@@ -211,9 +211,9 @@
           <div class="tab-pane fade show active" id="pills-properties" role="tabpanel"
             aria-labelledby="pills-properties-tab" tabindex="0">
 
-            <div class="card border-primary border mb-4">
+            <div class="card border-secondary shadow border mb-4">
               <div class="card-body">
-                <div class="btn btn-lg btn-outline-primary">Properties</div>
+                <div class="btn btn-lg border-secondary shadow-sm w-100"">Properties</div>
                 <p></p>
                 <p>
                   Documents are top level containers of all 'elements' supported by MaterialX.
@@ -302,7 +302,7 @@
                 </ol>
                 </p>
 
-                <div class="btn btn-lg btn-outline-primary">Actions</div>
+                <div class="btn btn-lg border-secondary shadow-sm w-100"">Actions</div>
                 <p></p>
                 <ul>
                   <li>The term <b>"resolve"</b>  means to take
@@ -326,9 +326,9 @@
         <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade show" id="pills-mgmt" role="tabpanel" aria-labelledby="pills-mgmt-tab" tabindex="0">
 
-            <div class="card border-primary border mb-4">
+            <div class="card border-secondary shadow border mb-4">
               <div class="card-body">
-                <div class="btn btn-lg btn-outline-primary">Single Document Model</div>
+                <div class="btn btn-lg border-secondary shadow-sm w-100"">Single Document Model</div>
                 <p></p>
                 <p>
                   Even though any number of documents may be kept in files for interoperability,
@@ -347,7 +347,7 @@
                   </li>
                 </ul>
 
-                <div class="btn btn-lg btn-outline-primary">Interfaces</div>
+                <div class="btn btn-lg border-secondary shadow-sm w-100"">Interfaces</div>
                 <p></p>
                 <p>
                   The following are the main interfaces for dealing with documents.
@@ -412,13 +412,13 @@
                       <img src="./images/import_document_sourceURI.svg" />
                     </p>
 
-                    <button class="btn btn-warning" type="button" data-bs-toggle="collapse"
+                    <button class="btn btn-warning border-dark shadow-lg" type="button" data-bs-toggle="collapse"
                       data-bs-target="#namespace_fileprefix" aria-expanded="false" aria-controls="collapseExample">
-                      Namespace and Fileprefix Handling
+                      Namespace and Fileprefix Handling <img src="images/caret-down-fill.svg" style="color:black">
                       <!-- <img src="images/caret-right-fill.svg" style="color:black"> -->
                     </button>
                     <div class="collapse" id="namespace_fileprefix">
-                      <div class="card border-primary border p-2">
+                      <div class="card border-secondary shadow border p-2">
                         <p>If the source document has a `namespace` qualifier, this namespace is
                           "flattened" so that the copied elements have namespace qualifiers prepended to their
                           identifiers.
@@ -467,7 +467,7 @@
                   </li>
                 </ul>
 
-                <div class="btn btn-lg btn-outline-primary">File "References"</div>
+                <div class="btn btn-lg border-secondary shadow-sm w-100"">File "References"</div>
                 <p>
                   As there is no current concept of one document referencing another document at runtime, it can
                   be hard to determine where content originates from once "merged" into the main document.
@@ -485,7 +485,7 @@
 
                 </p>
 
-                <div class="btn btn-lg btn-outline-primary">File "Collections"</div>
+                <div class="btn btn-lg border-secondary shadow-sm w-100"">File "Collections"</div>
                 <br>
                 <p>
                   For node definitions, there is currently no formal construct for a "collection" (set) of documents
@@ -540,9 +540,9 @@
           <div class="tab-pane fade show" id="pills-interop" role="tabpanel" aria-labelledby="pills-interop-tab"
             tabindex="0">
 
-            <div class="card border-primary border mb-4">
+            <div class="card border-secondary shadow border mb-4">
               <div class="card-body">
-                <div class="btn btn-lg btn-outline-primary">Interoperability</div>
+                <div class="btn btn-lg border-secondary shadow-sm w-100"">Interoperability</div>
                 <p></p>
                 <p>
                   By intent, the MaterialX format is designed for interoperability using a standard set (library) of
@@ -639,9 +639,9 @@
           <div class="tab-pane fade show" id="pills-upgrade" role="tabpanel" aria-labelledby="pills-upgrade-tab"
             tabindex="0">
 
-            <div class="card border-primary border mb-4">
+            <div class="card border-secondary shadow border mb-4">
               <div class="card-body">
-                <div class="btn btn-lg btn-outline-primary">Compatibility and Upgrade</div>
+                <div class="btn btn-lg border-secondary shadow-sm w-100"">Compatibility and Upgrade</div>
                 <p></p>
                 <p>
                   MaterialX has been designed to be file format backwards compatible. Thus

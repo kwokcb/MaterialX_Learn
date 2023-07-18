@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<materialx version="1.38" colorspace="lin_rec709">
-  <nodegraph name="myadd">
-    <input name="in1" type="color3" value="1, 0, 0" xpos="11.021739" ypos="-3.568965" />
-    <input name="in2" type="color3" value="0, 0, 0" xpos="11.115942" ypos="-2.051724" />
-    <output name="out" type="color3" xpos="13.456522" ypos="-3.284483" />
-  </nodegraph>
-</materialx>

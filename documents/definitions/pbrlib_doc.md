@@ -104,8 +104,8 @@
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **weight** | float | 1.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
-| **ior** | color3 | 0.271, 0.677, 1.316 |  |  |  |  |  |  |  |  |  |  |
-| **extinction** | color3 | 3.609, 2.625, 2.292 |  |  |  |  |  |  |  |  |  |  |
+| **ior** | color3 | 0.183, 0.421, 1.373 |  |  |  |  |  |  |  |  |  |  |
+| **extinction** | color3 | 3.424, 2.346, 1.77 |  |  |  |  |  |  |  |  |  |  |
 | **roughness** | vector2 | 0.05, 0.05 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
@@ -748,12 +748,12 @@
 ```mermaid
 graph LR; 
     IMP_glossiness_anisotropy_roughness1[roughness_anisotropy] --> IMP_glossiness_anisotropy_out([out])
-    style IMP_glossiness_anisotropy_out fill:#1b1, color:#111
+    style IMP_glossiness_anisotropy_out fill:#0C0, color:#111
     IMP_glossiness_anisotropy_anisotropyINT([anisotropy]) ==.anisotropy==> IMP_glossiness_anisotropy_roughness1[roughness_anisotropy]
-    style IMP_glossiness_anisotropy_anisotropyINT fill:#0bb, color:#111
+    style IMP_glossiness_anisotropy_anisotropyINT fill:#0CF, color:#111
     IMP_glossiness_anisotropy_invert1[invert] --".roughness"--> IMP_glossiness_anisotropy_roughness1[roughness_anisotropy]
     IMP_glossiness_anisotropy_glossinessINT([glossiness]) ==.in==> IMP_glossiness_anisotropy_invert1[invert]
-    style IMP_glossiness_anisotropy_glossinessINT fill:#0bb, color:#111
+    style IMP_glossiness_anisotropy_glossinessINT fill:#0CF, color:#111
 
 ```
  

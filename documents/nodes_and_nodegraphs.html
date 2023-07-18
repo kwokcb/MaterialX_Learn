@@ -31,14 +31,14 @@
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
-  <!-- Navigation  -->
+  
   <!-- Navigation  -->
   <nav class="navbar sticky-top navbar-expand-lg bg-light">
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="../index.html">
-        <h4><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="d-inline-block align-text-center"
+        <h5><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="rounded d-inline-block align-text-center"
             width="60">
-          MaterialX Learn</h4>
+          MaterialX Learn</h5>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
         aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -178,9 +178,9 @@
   </nav>
 
 
-  <div class="container-fluid ">
+  <div class="container p-4">
     <div class="row flex-nowrap">
-      <div class="col-sm-12 p-4 pt-2 pl-2">
+      <div class="col-sm-12 p-0 pt-2 pl-2">
 
         <h2 id="nodes-and-node-graphs">Nodes and Node Graphs</h2>
 
@@ -201,9 +201,9 @@
           <div class="tab-pane fade show active" id="pills-library" role="tabpanel" aria-labelledby="pills-library-tab"
             tabindex="0">
 
-            <div class="card border-primary border mb-4">
+            <div class="card border-secondary shadow border mb-4">
               <div class="card-body">
-                <div class="btn btn-lg border-primary" style="pointer-events: none;" id="1-introduction">
+                <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="1-introduction">
                   Introduction</div>
 
                 <p>In MaterialX, shading computations are represented via a graph of nodes.</p>
@@ -219,7 +219,7 @@
                   and
                   <code>&gt;</code>. For example a node is denoted as <code>&lt;node&gt;</code>.
                 </p>
-                <div class="btn btn-lg border-primary" style="pointer-events: none;" id="nodes">Nodes</div>
+                <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="nodes">Nodes</div>
                 <p>A <code>&lt;node&gt;</code> can be thought of as representing an atomic unit of computation. They
                   are
                   instances of <a href="https://materialx.org/docs/api/class_node_def.html">node definitions
@@ -258,7 +258,7 @@
               node2
               node3
           </div></code></pre>
-                <div class="btn btn-lg border-primary" style="pointer-events: none;" id="interfaces-and-ports">
+                <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="interfaces-and-ports">
                   Interfaces
                   and Ports</div>
                 <p>Each node's definition is specified by an interface which contains 0 or more
@@ -296,8 +296,9 @@
                   would be <em>&quot;Node.Input1&quot;</em>.</p>
                 <img src="./images/InputsOutputs.svg">
                 <p>
-                <div class="btn btn-lg border-primary" style="pointer-events: none;" id="containers">Containers
+                <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="containers">Containers
                 </div>
+                <p></p>
                 <p>A <strong>graph element</strong> is a container for a set of nodes.</p>
                 <p>The API class is called <a
                     href="https://materialx.org/docs/api/class_graph_element.html"><code>GraphElement</code></a>.
@@ -325,9 +326,8 @@
                   <li>0 or more nodes or node graphs and</li>
                   <li>0 or more direct child <code>&lt;input&gt;</code>s or <code>&lt;output&gt;</code>s.</li>
                 </ul>
-                <div class="btn btn-lg border-primary" style="pointer-events: none;" id="scope-and-path-notation">
-                  Scope and
-                  Path Notation</div>
+                <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="scope-and-path-notation">
+                  Scope and Path Notation</div>
                 <p>Direct children of a graph element are considered to be in <strong>scope</strong>.</p>
                 <p>The follow scoping rules apply:</p>
                 <ul>
@@ -344,8 +344,7 @@
                     (1) Note that <code>&lt;document&gt;</code>s have no identifier by default.
                   </sup>
                 </p>
-                <div class="btn btn-lg border-primary" style="pointer-events: none;" id="document-scope">Document
-                  Scope
+                <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="document-scope">Document Scope
                 </div>
                 <p>The diagram below shows a <code>&lt;document&gt;</code> with valid children. &quot;my_node&quot;
                   is a
@@ -358,8 +357,7 @@
                 end
             end</div></code></pre>
 
-                <div class="btn btn-lg border-primary" style="pointer-events: none;" id="node-graph-scope">Node
-                  Graph Scope
+                <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="node-graph-scope">Node Graph Scope
                 </div>
                 <p>This example shows valid children for a node graph called "my_nodegraph"</p>
                 <ul>
@@ -382,7 +380,7 @@
                 nodegraph2
             end
           </div></code></pre>
-                <div class="btn btn-lg border-primary" style="pointer-events: none;" id="paths">Paths</div>
+                <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="paths">Paths</div>
                 <p>Parent / child relationships can be described using a string <strong>path</strong> with
                   forward-slashes
                   (&quot;/&quot;) being used as path separators:</p>
@@ -404,10 +402,10 @@
         <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade" id="pills-nodedef" role="tabpanel" aria-labelledby="pills-nodedef-tab">
 
-            <div class="card border-primary border mb-4">
+            <div class="card border-secondary shadow border mb-4">
               <div class="card-body">
 
-                <div class="btn btn-lg border-primary" style="pointer-events: none;" id="connections">Connections
+                <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="connections">Connections
                 </div>
                 <p>Connections can be formed between node instance or nodegraph ports
                   to create graphs. While node graphs can have no outputs,
@@ -493,7 +491,7 @@
         style output1 fill:#1b1,color:#fff 
         style input1 fill:#0bb,color:#fff
         output1 --> input1</div></code></pre>
-                <div class="btn btn-lg border-primary" style="pointer-events: none;" id="inter-node--graph-connections">
+                <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="inter-node--graph-connections">
                   Inter Node / Graph Connections</div>
                 <p>The possible pair-wise configurations are shown below:</p>
                 <ol>
@@ -581,7 +579,7 @@
     style node1.input2 fill:#0bb,color:#fff</div></code></pre>
                 </ol>
 
-                <div class="btn btn-lg border-primary" style="pointer-events: none;"
+                <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;"
                   id="intra-graph--interface-connections">Intra Graph / Interface Connections</div>
                 <p>The direct <code>&lt;input&gt;</code> and <code>&lt;output&gt;</code> children of a
                   <code>&lt;nodegraph&gt;</code> are considered to be the exposed <strong>interface</strong> of the

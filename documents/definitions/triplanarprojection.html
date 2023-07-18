@@ -25,7 +25,7 @@
 <body class="min-vh-100">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
-<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "forest"}); </script>
+<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    lineColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
 
 <script src="../js/definition_card_helpers.js"></script>
 
@@ -34,7 +34,7 @@
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="../../index.html">
         <h5><img src="../images/logo3d_2_small.png" alt="MaterialX Learn"
-            class="d-inline-block align-text-center" width="60">
+            class="rounded d-inline-block align-text-center" width="60">
           MaterialX Learn</h5>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
@@ -171,7 +171,7 @@
         </ul>
       </div>
     </div>
-  </nav><div class="container-fluid ">
+  </nav><div class="container p-2">
  <div class="row flex-nowrap">
    <div class="col-auto px-0">
      <div class="row vh-100 overflow-auto" id="noddict_row">
@@ -378,6 +378,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformpoint.html">transformpoint</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformvector.html">transformvector</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transpose.html">transpose</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="trianglewave.html">trianglewave</a>
 </div>
 </div>
 <div class="ps-3">
@@ -556,13 +557,13 @@ Category: triplanarprojection
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_triplanarprojection_float_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_triplanarprojection_float_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> float</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">texture3d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> float</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">texture3d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -576,33 +577,33 @@ Category: triplanarprojection
 <div id="ND_triplanarprojection_float_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_triplanarprojection_float_N_add2_float[add] --> NG_triplanarprojection_float_out([out])
-    style NG_triplanarprojection_float_out fill:#1b1, color:#111
+    style NG_triplanarprojection_float_out fill:#0C0, color:#111
     NG_triplanarprojection_float_N_add1_float[add] --".in1"--> NG_triplanarprojection_float_N_add2_float[add]
     NG_triplanarprojection_float_N_nX_float[multiply] --".in1"--> NG_triplanarprojection_float_N_add1_float[add]
     NG_triplanarprojection_float_N_imgX_float[image] --".in1"--> NG_triplanarprojection_float_N_nX_float[multiply]
     NG_triplanarprojection_float_filexINT([filex]) ==.file==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_filexINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_filexINT fill:#0CF, color:#111
     NG_triplanarprojection_float_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_layerxINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_layerxINT fill:#0CF, color:#111
     NG_triplanarprojection_float_dfaultINT([default]) ==.default==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_float_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_float_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_float_N_imgX_float[image]
-    style NG_triplanarprojection_float_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_vecYZ_float[combine2] --".texcoord"--> NG_triplanarprojection_float_N_imgX_float[image]
     NG_triplanarprojection_float_N_extY_float[extract] --".in1"--> NG_triplanarprojection_float_N_vecYZ_float[combine2]
     NG_triplanarprojection_float_positionINT([position]) ==.in==> NG_triplanarprojection_float_N_extY_float[extract]
-    style NG_triplanarprojection_float_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_extZ_float[extract] --".in2"--> NG_triplanarprojection_float_N_vecYZ_float[combine2]
     NG_triplanarprojection_float_positionINT([position]) ==.in==> NG_triplanarprojection_float_N_extZ_float[extract]
-    style NG_triplanarprojection_float_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_separateWeights[separate3] --> NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutx([outx])
-    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutx fill:#1b1, color:#111
+    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutx fill:#0C0, color:#111
     NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_float_N_nX_float[multiply]
     NG_triplanarprojection_float_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_float_N_separateWeights[separate3]
     NG_triplanarprojection_float_N_blendPower[power] --".in1"--> NG_triplanarprojection_float_N_normalizeBlendedWeights[divide]
@@ -610,60 +611,60 @@ graph LR;
     NG_triplanarprojection_float_N_absN[absval] --".in1"--> NG_triplanarprojection_float_N_normalizeWeights[divide]
     NG_triplanarprojection_float_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_float_N_absN[absval]
     NG_triplanarprojection_float_normalINT([normal]) ==.in==> NG_triplanarprojection_float_N_norm_vector3[normalize]
-    style NG_triplanarprojection_float_normalINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_normalINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_float_N_normalizeWeights[divide]
     NG_triplanarprojection_float_N_absN[absval] --".in1"--> NG_triplanarprojection_float_N_dotN[dotproduct]
     NG_triplanarprojection_float_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_float_N_blendPower[power]
     NG_triplanarprojection_float_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_float_N_oneOverBlend[divide]
     NG_triplanarprojection_float_blendINT([blend]) ==.in==> NG_triplanarprojection_float_N_clampForPrecision[clamp]
-    style NG_triplanarprojection_float_blendINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_blendINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_float_N_normalizeBlendedWeights[divide]
     NG_triplanarprojection_float_N_blendPower[power] --".in1"--> NG_triplanarprojection_float_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_float_N_nY_float[multiply] --".in2"--> NG_triplanarprojection_float_N_add1_float[add]
     NG_triplanarprojection_float_N_imgY_float[image] --".in1"--> NG_triplanarprojection_float_N_nY_float[multiply]
     NG_triplanarprojection_float_fileyINT([filey]) ==.file==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_fileyINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_fileyINT fill:#0CF, color:#111
     NG_triplanarprojection_float_layeryINT([layery]) ==.layer==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_layeryINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_layeryINT fill:#0CF, color:#111
     NG_triplanarprojection_float_dfaultINT([default]) ==.default==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_float_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_float_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_float_N_imgY_float[image]
-    style NG_triplanarprojection_float_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_vecXZ_float[combine2] --".texcoord"--> NG_triplanarprojection_float_N_imgY_float[image]
     NG_triplanarprojection_float_N_extX_float[extract] --".in1"--> NG_triplanarprojection_float_N_vecXZ_float[combine2]
     NG_triplanarprojection_float_positionINT([position]) ==.in==> NG_triplanarprojection_float_N_extX_float[extract]
-    style NG_triplanarprojection_float_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_extZ_float[extract] --".in2"--> NG_triplanarprojection_float_N_vecXZ_float[combine2]
     NG_triplanarprojection_float_N_separateWeights[separate3] --> NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsouty([outy])
-    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsouty fill:#1b1, color:#111
+    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsouty fill:#0C0, color:#111
     NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsouty --".in2"--> NG_triplanarprojection_float_N_nY_float[multiply]
     NG_triplanarprojection_float_N_nZ_float[multiply] --".in2"--> NG_triplanarprojection_float_N_add2_float[add]
     NG_triplanarprojection_float_N_imgZ_float[image] --".in1"--> NG_triplanarprojection_float_N_nZ_float[multiply]
     NG_triplanarprojection_float_filezINT([filez]) ==.file==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_filezINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_filezINT fill:#0CF, color:#111
     NG_triplanarprojection_float_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_layerzINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_layerzINT fill:#0CF, color:#111
     NG_triplanarprojection_float_dfaultINT([default]) ==.default==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_float_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_float_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_float_N_imgZ_float[image]
-    style NG_triplanarprojection_float_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_float_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_float_N_vecXY_float[combine2] --".texcoord"--> NG_triplanarprojection_float_N_imgZ_float[image]
     NG_triplanarprojection_float_N_extX_float[extract] --".in1"--> NG_triplanarprojection_float_N_vecXY_float[combine2]
     NG_triplanarprojection_float_N_extY_float[extract] --".in2"--> NG_triplanarprojection_float_N_vecXY_float[combine2]
     NG_triplanarprojection_float_N_separateWeights[separate3] --> NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutz([outz])
-    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutz fill:#1b1, color:#111
+    style NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutz fill:#0C0, color:#111
     NG_triplanarprojection_float_NG_triplanarprojection_float_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_float_N_nZ_float[multiply]
 
 
@@ -697,7 +698,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -719,7 +720,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -741,7 +742,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -763,7 +764,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -785,7 +786,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -807,7 +808,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -829,7 +830,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -847,7 +848,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -865,7 +866,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -883,7 +884,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -913,7 +914,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -946,7 +947,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -968,7 +969,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -990,7 +991,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1024,7 +1025,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1045,13 +1046,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_triplanarprojection_color3_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_triplanarprojection_color3_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">texture3d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">texture3d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -1065,33 +1066,33 @@ graph LR;
 <div id="ND_triplanarprojection_color3_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_triplanarprojection_color3_N_add2_color3[add] --> NG_triplanarprojection_color3_out([out])
-    style NG_triplanarprojection_color3_out fill:#1b1, color:#111
+    style NG_triplanarprojection_color3_out fill:#0C0, color:#111
     NG_triplanarprojection_color3_N_add1_color3[add] --".in1"--> NG_triplanarprojection_color3_N_add2_color3[add]
     NG_triplanarprojection_color3_N_nX_color3[multiply] --".in1"--> NG_triplanarprojection_color3_N_add1_color3[add]
     NG_triplanarprojection_color3_N_imgX_color3[image] --".in1"--> NG_triplanarprojection_color3_N_nX_color3[multiply]
     NG_triplanarprojection_color3_filexINT([filex]) ==.file==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_filexINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_filexINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_layerxINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_layerxINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_dfaultINT([default]) ==.default==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color3_N_imgX_color3[image]
-    style NG_triplanarprojection_color3_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_vecYZ_color3[combine2] --".texcoord"--> NG_triplanarprojection_color3_N_imgX_color3[image]
     NG_triplanarprojection_color3_N_extY_color3[extract] --".in1"--> NG_triplanarprojection_color3_N_vecYZ_color3[combine2]
     NG_triplanarprojection_color3_positionINT([position]) ==.in==> NG_triplanarprojection_color3_N_extY_color3[extract]
-    style NG_triplanarprojection_color3_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_extZ_color3[extract] --".in2"--> NG_triplanarprojection_color3_N_vecYZ_color3[combine2]
     NG_triplanarprojection_color3_positionINT([position]) ==.in==> NG_triplanarprojection_color3_N_extZ_color3[extract]
-    style NG_triplanarprojection_color3_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_separateWeights[separate3] --> NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutx([outx])
-    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutx fill:#1b1, color:#111
+    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutx fill:#0C0, color:#111
     NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_color3_N_nX_color3[multiply]
     NG_triplanarprojection_color3_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_color3_N_separateWeights[separate3]
     NG_triplanarprojection_color3_N_blendPower[power] --".in1"--> NG_triplanarprojection_color3_N_normalizeBlendedWeights[divide]
@@ -1099,60 +1100,60 @@ graph LR;
     NG_triplanarprojection_color3_N_absN[absval] --".in1"--> NG_triplanarprojection_color3_N_normalizeWeights[divide]
     NG_triplanarprojection_color3_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_color3_N_absN[absval]
     NG_triplanarprojection_color3_normalINT([normal]) ==.in==> NG_triplanarprojection_color3_N_norm_vector3[normalize]
-    style NG_triplanarprojection_color3_normalINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_normalINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_color3_N_normalizeWeights[divide]
     NG_triplanarprojection_color3_N_absN[absval] --".in1"--> NG_triplanarprojection_color3_N_dotN[dotproduct]
     NG_triplanarprojection_color3_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_color3_N_blendPower[power]
     NG_triplanarprojection_color3_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_color3_N_oneOverBlend[divide]
     NG_triplanarprojection_color3_blendINT([blend]) ==.in==> NG_triplanarprojection_color3_N_clampForPrecision[clamp]
-    style NG_triplanarprojection_color3_blendINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_blendINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_color3_N_normalizeBlendedWeights[divide]
     NG_triplanarprojection_color3_N_blendPower[power] --".in1"--> NG_triplanarprojection_color3_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_color3_N_nY_color3[multiply] --".in2"--> NG_triplanarprojection_color3_N_add1_color3[add]
     NG_triplanarprojection_color3_N_imgY_color3[image] --".in1"--> NG_triplanarprojection_color3_N_nY_color3[multiply]
     NG_triplanarprojection_color3_fileyINT([filey]) ==.file==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_fileyINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_fileyINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_layeryINT([layery]) ==.layer==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_layeryINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_layeryINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_dfaultINT([default]) ==.default==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color3_N_imgY_color3[image]
-    style NG_triplanarprojection_color3_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_vecXZ_color3[combine2] --".texcoord"--> NG_triplanarprojection_color3_N_imgY_color3[image]
     NG_triplanarprojection_color3_N_extX_color3[extract] --".in1"--> NG_triplanarprojection_color3_N_vecXZ_color3[combine2]
     NG_triplanarprojection_color3_positionINT([position]) ==.in==> NG_triplanarprojection_color3_N_extX_color3[extract]
-    style NG_triplanarprojection_color3_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_extZ_color3[extract] --".in2"--> NG_triplanarprojection_color3_N_vecXZ_color3[combine2]
     NG_triplanarprojection_color3_N_separateWeights[separate3] --> NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsouty([outy])
-    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsouty fill:#1b1, color:#111
+    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsouty fill:#0C0, color:#111
     NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsouty --".in2"--> NG_triplanarprojection_color3_N_nY_color3[multiply]
     NG_triplanarprojection_color3_N_nZ_color3[multiply] --".in2"--> NG_triplanarprojection_color3_N_add2_color3[add]
     NG_triplanarprojection_color3_N_imgZ_color3[image] --".in1"--> NG_triplanarprojection_color3_N_nZ_color3[multiply]
     NG_triplanarprojection_color3_filezINT([filez]) ==.file==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_filezINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_filezINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_layerzINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_layerzINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_dfaultINT([default]) ==.default==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color3_N_imgZ_color3[image]
-    style NG_triplanarprojection_color3_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color3_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_color3_N_vecXY_color3[combine2] --".texcoord"--> NG_triplanarprojection_color3_N_imgZ_color3[image]
     NG_triplanarprojection_color3_N_extX_color3[extract] --".in1"--> NG_triplanarprojection_color3_N_vecXY_color3[combine2]
     NG_triplanarprojection_color3_N_extY_color3[extract] --".in2"--> NG_triplanarprojection_color3_N_vecXY_color3[combine2]
     NG_triplanarprojection_color3_N_separateWeights[separate3] --> NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutz([outz])
-    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutz fill:#1b1, color:#111
+    style NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutz fill:#0C0, color:#111
     NG_triplanarprojection_color3_NG_triplanarprojection_color3_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_color3_N_nZ_color3[multiply]
 
 
@@ -1186,7 +1187,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1208,7 +1209,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1230,7 +1231,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1252,7 +1253,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1274,7 +1275,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1296,7 +1297,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1318,7 +1319,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1344,7 +1345,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1362,7 +1363,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1380,7 +1381,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1410,7 +1411,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1443,7 +1444,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1465,7 +1466,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1487,7 +1488,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1521,7 +1522,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1550,13 +1551,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_triplanarprojection_color4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_triplanarprojection_color4_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">texture3d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">texture3d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -1570,33 +1571,33 @@ graph LR;
 <div id="ND_triplanarprojection_color4_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_triplanarprojection_color4_N_add2_color4[add] --> NG_triplanarprojection_color4_out([out])
-    style NG_triplanarprojection_color4_out fill:#1b1, color:#111
+    style NG_triplanarprojection_color4_out fill:#0C0, color:#111
     NG_triplanarprojection_color4_N_add1_color4[add] --".in1"--> NG_triplanarprojection_color4_N_add2_color4[add]
     NG_triplanarprojection_color4_N_nX_color4[multiply] --".in1"--> NG_triplanarprojection_color4_N_add1_color4[add]
     NG_triplanarprojection_color4_N_imgX_color4[image] --".in1"--> NG_triplanarprojection_color4_N_nX_color4[multiply]
     NG_triplanarprojection_color4_filexINT([filex]) ==.file==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_filexINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_filexINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_layerxINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_layerxINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_dfaultINT([default]) ==.default==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color4_N_imgX_color4[image]
-    style NG_triplanarprojection_color4_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_vecYZ_color4[combine2] --".texcoord"--> NG_triplanarprojection_color4_N_imgX_color4[image]
     NG_triplanarprojection_color4_N_extY_color4[extract] --".in1"--> NG_triplanarprojection_color4_N_vecYZ_color4[combine2]
     NG_triplanarprojection_color4_positionINT([position]) ==.in==> NG_triplanarprojection_color4_N_extY_color4[extract]
-    style NG_triplanarprojection_color4_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_extZ_color4[extract] --".in2"--> NG_triplanarprojection_color4_N_vecYZ_color4[combine2]
     NG_triplanarprojection_color4_positionINT([position]) ==.in==> NG_triplanarprojection_color4_N_extZ_color4[extract]
-    style NG_triplanarprojection_color4_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_separateWeights[separate3] --> NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutx([outx])
-    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutx fill:#1b1, color:#111
+    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutx fill:#0C0, color:#111
     NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_color4_N_nX_color4[multiply]
     NG_triplanarprojection_color4_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_color4_N_separateWeights[separate3]
     NG_triplanarprojection_color4_N_blendPower[power] --".in1"--> NG_triplanarprojection_color4_N_normalizeBlendedWeights[divide]
@@ -1604,60 +1605,60 @@ graph LR;
     NG_triplanarprojection_color4_N_absN[absval] --".in1"--> NG_triplanarprojection_color4_N_normalizeWeights[divide]
     NG_triplanarprojection_color4_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_color4_N_absN[absval]
     NG_triplanarprojection_color4_normalINT([normal]) ==.in==> NG_triplanarprojection_color4_N_norm_vector3[normalize]
-    style NG_triplanarprojection_color4_normalINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_normalINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_color4_N_normalizeWeights[divide]
     NG_triplanarprojection_color4_N_absN[absval] --".in1"--> NG_triplanarprojection_color4_N_dotN[dotproduct]
     NG_triplanarprojection_color4_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_color4_N_blendPower[power]
     NG_triplanarprojection_color4_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_color4_N_oneOverBlend[divide]
     NG_triplanarprojection_color4_blendINT([blend]) ==.in==> NG_triplanarprojection_color4_N_clampForPrecision[clamp]
-    style NG_triplanarprojection_color4_blendINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_blendINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_color4_N_normalizeBlendedWeights[divide]
     NG_triplanarprojection_color4_N_blendPower[power] --".in1"--> NG_triplanarprojection_color4_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_color4_N_nY_color4[multiply] --".in2"--> NG_triplanarprojection_color4_N_add1_color4[add]
     NG_triplanarprojection_color4_N_imgY_color4[image] --".in1"--> NG_triplanarprojection_color4_N_nY_color4[multiply]
     NG_triplanarprojection_color4_fileyINT([filey]) ==.file==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_fileyINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_fileyINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_layeryINT([layery]) ==.layer==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_layeryINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_layeryINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_dfaultINT([default]) ==.default==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color4_N_imgY_color4[image]
-    style NG_triplanarprojection_color4_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_vecXZ_color4[combine2] --".texcoord"--> NG_triplanarprojection_color4_N_imgY_color4[image]
     NG_triplanarprojection_color4_N_extX_color4[extract] --".in1"--> NG_triplanarprojection_color4_N_vecXZ_color4[combine2]
     NG_triplanarprojection_color4_positionINT([position]) ==.in==> NG_triplanarprojection_color4_N_extX_color4[extract]
-    style NG_triplanarprojection_color4_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_extZ_color4[extract] --".in2"--> NG_triplanarprojection_color4_N_vecXZ_color4[combine2]
     NG_triplanarprojection_color4_N_separateWeights[separate3] --> NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsouty([outy])
-    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsouty fill:#1b1, color:#111
+    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsouty fill:#0C0, color:#111
     NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsouty --".in2"--> NG_triplanarprojection_color4_N_nY_color4[multiply]
     NG_triplanarprojection_color4_N_nZ_color4[multiply] --".in2"--> NG_triplanarprojection_color4_N_add2_color4[add]
     NG_triplanarprojection_color4_N_imgZ_color4[image] --".in1"--> NG_triplanarprojection_color4_N_nZ_color4[multiply]
     NG_triplanarprojection_color4_filezINT([filez]) ==.file==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_filezINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_filezINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_layerzINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_layerzINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_dfaultINT([default]) ==.default==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_color4_N_imgZ_color4[image]
-    style NG_triplanarprojection_color4_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_color4_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_color4_N_vecXY_color4[combine2] --".texcoord"--> NG_triplanarprojection_color4_N_imgZ_color4[image]
     NG_triplanarprojection_color4_N_extX_color4[extract] --".in1"--> NG_triplanarprojection_color4_N_vecXY_color4[combine2]
     NG_triplanarprojection_color4_N_extY_color4[extract] --".in2"--> NG_triplanarprojection_color4_N_vecXY_color4[combine2]
     NG_triplanarprojection_color4_N_separateWeights[separate3] --> NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutz([outz])
-    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutz fill:#1b1, color:#111
+    style NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutz fill:#0C0, color:#111
     NG_triplanarprojection_color4_NG_triplanarprojection_color4_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_color4_N_nZ_color4[multiply]
 
 
@@ -1691,7 +1692,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1713,7 +1714,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1735,7 +1736,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1757,7 +1758,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1779,7 +1780,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1801,7 +1802,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1823,7 +1824,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1852,7 +1853,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1870,7 +1871,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1888,7 +1889,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -1918,7 +1919,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1951,7 +1952,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1973,7 +1974,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -1995,7 +1996,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2029,7 +2030,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2061,13 +2062,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_triplanarprojection_vector2_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_triplanarprojection_vector2_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector2</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">texture3d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector2</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">texture3d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -2081,33 +2082,33 @@ graph LR;
 <div id="ND_triplanarprojection_vector2_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_triplanarprojection_vector2_N_add2_vector2[add] --> NG_triplanarprojection_vector2_out([out])
-    style NG_triplanarprojection_vector2_out fill:#1b1, color:#111
+    style NG_triplanarprojection_vector2_out fill:#0C0, color:#111
     NG_triplanarprojection_vector2_N_add1_vector2[add] --".in1"--> NG_triplanarprojection_vector2_N_add2_vector2[add]
     NG_triplanarprojection_vector2_N_nX_vector2[multiply] --".in1"--> NG_triplanarprojection_vector2_N_add1_vector2[add]
     NG_triplanarprojection_vector2_N_imgX_vector2[image] --".in1"--> NG_triplanarprojection_vector2_N_nX_vector2[multiply]
     NG_triplanarprojection_vector2_filexINT([filex]) ==.file==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_filexINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_filexINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_layerxINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_layerxINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector2_N_imgX_vector2[image]
-    style NG_triplanarprojection_vector2_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_vecYZ_vector2[combine2] --".texcoord"--> NG_triplanarprojection_vector2_N_imgX_vector2[image]
     NG_triplanarprojection_vector2_N_extY_vector2[extract] --".in1"--> NG_triplanarprojection_vector2_N_vecYZ_vector2[combine2]
     NG_triplanarprojection_vector2_positionINT([position]) ==.in==> NG_triplanarprojection_vector2_N_extY_vector2[extract]
-    style NG_triplanarprojection_vector2_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_extZ_vector2[extract] --".in2"--> NG_triplanarprojection_vector2_N_vecYZ_vector2[combine2]
     NG_triplanarprojection_vector2_positionINT([position]) ==.in==> NG_triplanarprojection_vector2_N_extZ_vector2[extract]
-    style NG_triplanarprojection_vector2_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_separateWeights[separate3] --> NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutx([outx])
-    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutx fill:#1b1, color:#111
+    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutx fill:#0C0, color:#111
     NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_vector2_N_nX_vector2[multiply]
     NG_triplanarprojection_vector2_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_vector2_N_separateWeights[separate3]
     NG_triplanarprojection_vector2_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector2_N_normalizeBlendedWeights[divide]
@@ -2115,60 +2116,60 @@ graph LR;
     NG_triplanarprojection_vector2_N_absN[absval] --".in1"--> NG_triplanarprojection_vector2_N_normalizeWeights[divide]
     NG_triplanarprojection_vector2_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_vector2_N_absN[absval]
     NG_triplanarprojection_vector2_normalINT([normal]) ==.in==> NG_triplanarprojection_vector2_N_norm_vector3[normalize]
-    style NG_triplanarprojection_vector2_normalINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_normalINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_vector2_N_normalizeWeights[divide]
     NG_triplanarprojection_vector2_N_absN[absval] --".in1"--> NG_triplanarprojection_vector2_N_dotN[dotproduct]
     NG_triplanarprojection_vector2_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_vector2_N_blendPower[power]
     NG_triplanarprojection_vector2_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_vector2_N_oneOverBlend[divide]
     NG_triplanarprojection_vector2_blendINT([blend]) ==.in==> NG_triplanarprojection_vector2_N_clampForPrecision[clamp]
-    style NG_triplanarprojection_vector2_blendINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_blendINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_vector2_N_normalizeBlendedWeights[divide]
     NG_triplanarprojection_vector2_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector2_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_vector2_N_nY_vector2[multiply] --".in2"--> NG_triplanarprojection_vector2_N_add1_vector2[add]
     NG_triplanarprojection_vector2_N_imgY_vector2[image] --".in1"--> NG_triplanarprojection_vector2_N_nY_vector2[multiply]
     NG_triplanarprojection_vector2_fileyINT([filey]) ==.file==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_fileyINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_fileyINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_layeryINT([layery]) ==.layer==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_layeryINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_layeryINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector2_N_imgY_vector2[image]
-    style NG_triplanarprojection_vector2_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_vecXZ_vector2[combine2] --".texcoord"--> NG_triplanarprojection_vector2_N_imgY_vector2[image]
     NG_triplanarprojection_vector2_N_extX_vector2[extract] --".in1"--> NG_triplanarprojection_vector2_N_vecXZ_vector2[combine2]
     NG_triplanarprojection_vector2_positionINT([position]) ==.in==> NG_triplanarprojection_vector2_N_extX_vector2[extract]
-    style NG_triplanarprojection_vector2_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_extZ_vector2[extract] --".in2"--> NG_triplanarprojection_vector2_N_vecXZ_vector2[combine2]
     NG_triplanarprojection_vector2_N_separateWeights[separate3] --> NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsouty([outy])
-    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsouty fill:#1b1, color:#111
+    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsouty fill:#0C0, color:#111
     NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsouty --".in2"--> NG_triplanarprojection_vector2_N_nY_vector2[multiply]
     NG_triplanarprojection_vector2_N_nZ_vector2[multiply] --".in2"--> NG_triplanarprojection_vector2_N_add2_vector2[add]
     NG_triplanarprojection_vector2_N_imgZ_vector2[image] --".in1"--> NG_triplanarprojection_vector2_N_nZ_vector2[multiply]
     NG_triplanarprojection_vector2_filezINT([filez]) ==.file==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_filezINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_filezINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_layerzINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_layerzINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
-    style NG_triplanarprojection_vector2_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector2_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector2_N_vecXY_vector2[combine2] --".texcoord"--> NG_triplanarprojection_vector2_N_imgZ_vector2[image]
     NG_triplanarprojection_vector2_N_extX_vector2[extract] --".in1"--> NG_triplanarprojection_vector2_N_vecXY_vector2[combine2]
     NG_triplanarprojection_vector2_N_extY_vector2[extract] --".in2"--> NG_triplanarprojection_vector2_N_vecXY_vector2[combine2]
     NG_triplanarprojection_vector2_N_separateWeights[separate3] --> NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutz([outz])
-    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutz fill:#1b1, color:#111
+    style NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutz fill:#0C0, color:#111
     NG_triplanarprojection_vector2_NG_triplanarprojection_vector2_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_vector2_N_nZ_vector2[multiply]
 
 
@@ -2202,7 +2203,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2224,7 +2225,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2246,7 +2247,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2268,7 +2269,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2290,7 +2291,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2312,7 +2313,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2334,7 +2335,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2354,7 +2355,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2372,7 +2373,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2390,7 +2391,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2420,7 +2421,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2453,7 +2454,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2475,7 +2476,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2497,7 +2498,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2531,7 +2532,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2554,13 +2555,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_triplanarprojection_vector3_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_triplanarprojection_vector3_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">texture3d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector3</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">texture3d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -2574,33 +2575,33 @@ graph LR;
 <div id="ND_triplanarprojection_vector3_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_triplanarprojection_vector3_N_add2_vector3[add] --> NG_triplanarprojection_vector3_out([out])
-    style NG_triplanarprojection_vector3_out fill:#1b1, color:#111
+    style NG_triplanarprojection_vector3_out fill:#0C0, color:#111
     NG_triplanarprojection_vector3_N_add1_vector3[add] --".in1"--> NG_triplanarprojection_vector3_N_add2_vector3[add]
     NG_triplanarprojection_vector3_N_nX_vector3[multiply] --".in1"--> NG_triplanarprojection_vector3_N_add1_vector3[add]
     NG_triplanarprojection_vector3_N_imgX_vector3[image] --".in1"--> NG_triplanarprojection_vector3_N_nX_vector3[multiply]
     NG_triplanarprojection_vector3_filexINT([filex]) ==.file==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_filexINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_filexINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_layerxINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_layerxINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector3_N_imgX_vector3[image]
-    style NG_triplanarprojection_vector3_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_vecYZ_vector3[combine2] --".texcoord"--> NG_triplanarprojection_vector3_N_imgX_vector3[image]
     NG_triplanarprojection_vector3_N_extY_vector3[extract] --".in1"--> NG_triplanarprojection_vector3_N_vecYZ_vector3[combine2]
     NG_triplanarprojection_vector3_positionINT([position]) ==.in==> NG_triplanarprojection_vector3_N_extY_vector3[extract]
-    style NG_triplanarprojection_vector3_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_extZ_vector3[extract] --".in2"--> NG_triplanarprojection_vector3_N_vecYZ_vector3[combine2]
     NG_triplanarprojection_vector3_positionINT([position]) ==.in==> NG_triplanarprojection_vector3_N_extZ_vector3[extract]
-    style NG_triplanarprojection_vector3_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_separateWeights[separate3] --> NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutx([outx])
-    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutx fill:#1b1, color:#111
+    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutx fill:#0C0, color:#111
     NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_vector3_N_nX_vector3[multiply]
     NG_triplanarprojection_vector3_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_vector3_N_separateWeights[separate3]
     NG_triplanarprojection_vector3_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector3_N_normalizeBlendedWeights[divide]
@@ -2608,60 +2609,60 @@ graph LR;
     NG_triplanarprojection_vector3_N_absN[absval] --".in1"--> NG_triplanarprojection_vector3_N_normalizeWeights[divide]
     NG_triplanarprojection_vector3_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_vector3_N_absN[absval]
     NG_triplanarprojection_vector3_normalINT([normal]) ==.in==> NG_triplanarprojection_vector3_N_norm_vector3[normalize]
-    style NG_triplanarprojection_vector3_normalINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_normalINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_vector3_N_normalizeWeights[divide]
     NG_triplanarprojection_vector3_N_absN[absval] --".in1"--> NG_triplanarprojection_vector3_N_dotN[dotproduct]
     NG_triplanarprojection_vector3_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_vector3_N_blendPower[power]
     NG_triplanarprojection_vector3_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_vector3_N_oneOverBlend[divide]
     NG_triplanarprojection_vector3_blendINT([blend]) ==.in==> NG_triplanarprojection_vector3_N_clampForPrecision[clamp]
-    style NG_triplanarprojection_vector3_blendINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_blendINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_vector3_N_normalizeBlendedWeights[divide]
     NG_triplanarprojection_vector3_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector3_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_vector3_N_nY_vector3[multiply] --".in2"--> NG_triplanarprojection_vector3_N_add1_vector3[add]
     NG_triplanarprojection_vector3_N_imgY_vector3[image] --".in1"--> NG_triplanarprojection_vector3_N_nY_vector3[multiply]
     NG_triplanarprojection_vector3_fileyINT([filey]) ==.file==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_fileyINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_fileyINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_layeryINT([layery]) ==.layer==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_layeryINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_layeryINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector3_N_imgY_vector3[image]
-    style NG_triplanarprojection_vector3_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_vecXZ_vector3[combine2] --".texcoord"--> NG_triplanarprojection_vector3_N_imgY_vector3[image]
     NG_triplanarprojection_vector3_N_extX_vector3[extract] --".in1"--> NG_triplanarprojection_vector3_N_vecXZ_vector3[combine2]
     NG_triplanarprojection_vector3_positionINT([position]) ==.in==> NG_triplanarprojection_vector3_N_extX_vector3[extract]
-    style NG_triplanarprojection_vector3_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_extZ_vector3[extract] --".in2"--> NG_triplanarprojection_vector3_N_vecXZ_vector3[combine2]
     NG_triplanarprojection_vector3_N_separateWeights[separate3] --> NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsouty([outy])
-    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsouty fill:#1b1, color:#111
+    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsouty fill:#0C0, color:#111
     NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsouty --".in2"--> NG_triplanarprojection_vector3_N_nY_vector3[multiply]
     NG_triplanarprojection_vector3_N_nZ_vector3[multiply] --".in2"--> NG_triplanarprojection_vector3_N_add2_vector3[add]
     NG_triplanarprojection_vector3_N_imgZ_vector3[image] --".in1"--> NG_triplanarprojection_vector3_N_nZ_vector3[multiply]
     NG_triplanarprojection_vector3_filezINT([filez]) ==.file==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_filezINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_filezINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_layerzINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_layerzINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
-    style NG_triplanarprojection_vector3_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector3_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector3_N_vecXY_vector3[combine2] --".texcoord"--> NG_triplanarprojection_vector3_N_imgZ_vector3[image]
     NG_triplanarprojection_vector3_N_extX_vector3[extract] --".in1"--> NG_triplanarprojection_vector3_N_vecXY_vector3[combine2]
     NG_triplanarprojection_vector3_N_extY_vector3[extract] --".in2"--> NG_triplanarprojection_vector3_N_vecXY_vector3[combine2]
     NG_triplanarprojection_vector3_N_separateWeights[separate3] --> NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutz([outz])
-    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutz fill:#1b1, color:#111
+    style NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutz fill:#0C0, color:#111
     NG_triplanarprojection_vector3_NG_triplanarprojection_vector3_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_vector3_N_nZ_vector3[multiply]
 
 
@@ -2695,7 +2696,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2717,7 +2718,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2739,7 +2740,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2761,7 +2762,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2783,7 +2784,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2805,7 +2806,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2827,7 +2828,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2850,7 +2851,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2868,7 +2869,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2886,7 +2887,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -2916,7 +2917,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2949,7 +2950,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2971,7 +2972,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -2993,7 +2994,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -3027,7 +3028,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -3053,13 +3054,13 @@ graph LR;
 <div class="m-4 mt-0">
 <div class="row">
 <div class="col-12">
-<div class="card border-primary border mb-4">
+<div class="card shadow border mb-4">
 <div class="card-body">
 <img src="../images/nodes/material_triplanarprojection_vector4_out_osl.png" class="img-thumbnail rounded float-left" alt=../../documents/images/nodes/material_triplanarprojection_vector4_out_osl.png style="max-width:11em"><br>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">texture3d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">none</button></p>
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector4</button></p>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">texture3d</button></p>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
 <p class="card-text"><b>Description:</b> .</p>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
@@ -3073,33 +3074,33 @@ graph LR;
 <div id="ND_triplanarprojection_vector4_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
     NG_triplanarprojection_vector4_N_add2_vector4[add] --> NG_triplanarprojection_vector4_out([out])
-    style NG_triplanarprojection_vector4_out fill:#1b1, color:#111
+    style NG_triplanarprojection_vector4_out fill:#0C0, color:#111
     NG_triplanarprojection_vector4_N_add1_vector4[add] --".in1"--> NG_triplanarprojection_vector4_N_add2_vector4[add]
     NG_triplanarprojection_vector4_N_nX_vector4[multiply] --".in1"--> NG_triplanarprojection_vector4_N_add1_vector4[add]
     NG_triplanarprojection_vector4_N_imgX_vector4[image] --".in1"--> NG_triplanarprojection_vector4_N_nX_vector4[multiply]
     NG_triplanarprojection_vector4_filexINT([filex]) ==.file==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_filexINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_filexINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_layerxINT([layerx]) ==.layer==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_layerxINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_layerxINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector4_N_imgX_vector4[image]
-    style NG_triplanarprojection_vector4_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_vecYZ_vector4[combine2] --".texcoord"--> NG_triplanarprojection_vector4_N_imgX_vector4[image]
     NG_triplanarprojection_vector4_N_extY_vector4[extract] --".in1"--> NG_triplanarprojection_vector4_N_vecYZ_vector4[combine2]
     NG_triplanarprojection_vector4_positionINT([position]) ==.in==> NG_triplanarprojection_vector4_N_extY_vector4[extract]
-    style NG_triplanarprojection_vector4_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_extZ_vector4[extract] --".in2"--> NG_triplanarprojection_vector4_N_vecYZ_vector4[combine2]
     NG_triplanarprojection_vector4_positionINT([position]) ==.in==> NG_triplanarprojection_vector4_N_extZ_vector4[extract]
-    style NG_triplanarprojection_vector4_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_separateWeights[separate3] --> NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutx([outx])
-    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutx fill:#1b1, color:#111
+    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutx fill:#0C0, color:#111
     NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutx --".in2"--> NG_triplanarprojection_vector4_N_nX_vector4[multiply]
     NG_triplanarprojection_vector4_N_normalizeBlendedWeights[divide] --".in"--> NG_triplanarprojection_vector4_N_separateWeights[separate3]
     NG_triplanarprojection_vector4_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector4_N_normalizeBlendedWeights[divide]
@@ -3107,60 +3108,60 @@ graph LR;
     NG_triplanarprojection_vector4_N_absN[absval] --".in1"--> NG_triplanarprojection_vector4_N_normalizeWeights[divide]
     NG_triplanarprojection_vector4_N_norm_vector3[normalize] --".in"--> NG_triplanarprojection_vector4_N_absN[absval]
     NG_triplanarprojection_vector4_normalINT([normal]) ==.in==> NG_triplanarprojection_vector4_N_norm_vector3[normalize]
-    style NG_triplanarprojection_vector4_normalINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_normalINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_dotN[dotproduct] --".in2"--> NG_triplanarprojection_vector4_N_normalizeWeights[divide]
     NG_triplanarprojection_vector4_N_absN[absval] --".in1"--> NG_triplanarprojection_vector4_N_dotN[dotproduct]
     NG_triplanarprojection_vector4_N_oneOverBlend[divide] --".in2"--> NG_triplanarprojection_vector4_N_blendPower[power]
     NG_triplanarprojection_vector4_N_clampForPrecision[clamp] --".in2"--> NG_triplanarprojection_vector4_N_oneOverBlend[divide]
     NG_triplanarprojection_vector4_blendINT([blend]) ==.in==> NG_triplanarprojection_vector4_N_clampForPrecision[clamp]
-    style NG_triplanarprojection_vector4_blendINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_blendINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_dotBlendedN[dotproduct] --".in2"--> NG_triplanarprojection_vector4_N_normalizeBlendedWeights[divide]
     NG_triplanarprojection_vector4_N_blendPower[power] --".in1"--> NG_triplanarprojection_vector4_N_dotBlendedN[dotproduct]
     NG_triplanarprojection_vector4_N_nY_vector4[multiply] --".in2"--> NG_triplanarprojection_vector4_N_add1_vector4[add]
     NG_triplanarprojection_vector4_N_imgY_vector4[image] --".in1"--> NG_triplanarprojection_vector4_N_nY_vector4[multiply]
     NG_triplanarprojection_vector4_fileyINT([filey]) ==.file==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_fileyINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_fileyINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_layeryINT([layery]) ==.layer==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_layeryINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_layeryINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector4_N_imgY_vector4[image]
-    style NG_triplanarprojection_vector4_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_vecXZ_vector4[combine2] --".texcoord"--> NG_triplanarprojection_vector4_N_imgY_vector4[image]
     NG_triplanarprojection_vector4_N_extX_vector4[extract] --".in1"--> NG_triplanarprojection_vector4_N_vecXZ_vector4[combine2]
     NG_triplanarprojection_vector4_positionINT([position]) ==.in==> NG_triplanarprojection_vector4_N_extX_vector4[extract]
-    style NG_triplanarprojection_vector4_positionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_positionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_extZ_vector4[extract] --".in2"--> NG_triplanarprojection_vector4_N_vecXZ_vector4[combine2]
     NG_triplanarprojection_vector4_N_separateWeights[separate3] --> NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsouty([outy])
-    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsouty fill:#1b1, color:#111
+    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsouty fill:#0C0, color:#111
     NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsouty --".in2"--> NG_triplanarprojection_vector4_N_nY_vector4[multiply]
     NG_triplanarprojection_vector4_N_nZ_vector4[multiply] --".in2"--> NG_triplanarprojection_vector4_N_add2_vector4[add]
     NG_triplanarprojection_vector4_N_imgZ_vector4[image] --".in1"--> NG_triplanarprojection_vector4_N_nZ_vector4[multiply]
     NG_triplanarprojection_vector4_filezINT([filez]) ==.file==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_filezINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_filezINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_layerzINT([layerz]) ==.layer==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_layerzINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_layerzINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_dfaultINT([default]) ==.default==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_dfaultINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_dfaultINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_filtertypeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_filtertypeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_framerangeINT([framerange]) ==.framerange==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_framerangeINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_framerangeINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_frameoffsetINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
-    style NG_triplanarprojection_vector4_frameendactionINT fill:#0bb, color:#111
+    style NG_triplanarprojection_vector4_frameendactionINT fill:#0CF, color:#111
     NG_triplanarprojection_vector4_N_vecXY_vector4[combine2] --".texcoord"--> NG_triplanarprojection_vector4_N_imgZ_vector4[image]
     NG_triplanarprojection_vector4_N_extX_vector4[extract] --".in1"--> NG_triplanarprojection_vector4_N_vecXY_vector4[combine2]
     NG_triplanarprojection_vector4_N_extY_vector4[extract] --".in2"--> NG_triplanarprojection_vector4_N_vecXY_vector4[combine2]
     NG_triplanarprojection_vector4_N_separateWeights[separate3] --> NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutz([outz])
-    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutz fill:#1b1, color:#111
+    style NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutz fill:#0C0, color:#111
     NG_triplanarprojection_vector4_NG_triplanarprojection_vector4_N_separateWeightsoutz --".in2"--> NG_triplanarprojection_vector4_N_nZ_vector4[multiply]
 
 
@@ -3194,7 +3195,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -3216,7 +3217,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -3238,7 +3239,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="filename">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="filename">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -3260,7 +3261,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -3282,7 +3283,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -3304,7 +3305,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -3326,7 +3327,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector4">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -3352,7 +3353,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -3370,7 +3371,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -3388,7 +3389,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="float">
    </div>
   </div>
   <div class="form-group row g-1">
@@ -3418,7 +3419,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -3451,7 +3452,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -3473,7 +3474,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -3495,7 +3496,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="string">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
    </div>
    <div class="col-sm-2">
      <label>Uniform</label>
@@ -3529,7 +3530,7 @@ graph LR;
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector4">
    </div>
   </div>
   <div class="form-group row g-1">
