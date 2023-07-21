@@ -23,19 +23,19 @@ a:hover {
 
 .nav-item,
 .dropdown-item {
-  font-size: 80%;
+  font-size: 100%;
 }
 
 .col-form-label-sm,
 .form-control,
 .card-body {
-  font-size: 90%;
+  font-size: 100%;
 }
 
 .card-text,
 .form-group,
 .btn {
-  font-size: 80%;
+  font-size: 100%;
 }
 
 body,
