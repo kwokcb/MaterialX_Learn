@@ -4,7 +4,6 @@
     <input name="valuel" type="color3" value="0.0, 0.0, 0.0" uiname="Left" />
     <input name="valuer" type="color3" value="0.0, 0.0, 0.0" uiname="Right" />
     <input name="center" type="float" value="0.5" uiname="Center" />
-    <input name="texcoord" type="vector2" />
   </splitlr>
   <convert name="shader_splitlr_color3_out" type="surfaceshader">
     <input name="in" type="color3" nodename="splitlr_color3" />

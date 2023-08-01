@@ -14806,7 +14806,7 @@ The results are printed out.</p>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load in sample MaterialX file</span>
-<span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
+<span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
 <span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;./data/standard_surface_brick_procedural.mtlx&#39;</span><span class="p">)</span>
 
 <span class="c1"># Create destination document and copy nodegraph interfaces over</span>

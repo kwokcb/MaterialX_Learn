@@ -3,7 +3,6 @@
   <ramplr name="ramplr_float" type="float">
     <input name="valuel" type="float" value="0.0" />
     <input name="valuer" type="float" value="0.0" />
-    <input name="texcoord" type="vector2" />
   </ramplr>
   <convert name="shader_ramplr_float_out" type="surfaceshader">
     <input name="in" type="float" nodename="ramplr_float" />

@@ -121,6 +121,11 @@
                                     Graph Visualizer
                                 </a>
                             </li>
+                            <li>
+                                <a class="dropdown-item" href="mtlx_utilities.html">
+                                    Python Utilities
+                                  </a>                  
+                            </li>
                         </ul>
                     </li>
     
@@ -223,6 +228,11 @@
                         <button class="nav-link " id="pills-userint-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-userint" type="button" role="tab" aria-controls="pills-userint"
                             aria-selected="false">Node Library and Node Cards</button>
+                    </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link " id="pills-nodegraph-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-nodegraph" type="button" role="tab" aria-controls="pills-nodegraph"
+                            aria-selected="false">Node Graph Presentation</button>
                     </li>
                 </ul>
 
@@ -1541,7 +1551,41 @@
                         </div>
                     </div>
                 </div>
-                                                        
+                
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show" id="pills-nodegraph" role="tabpanel"
+                        aria-labelledby="pills-nodegraph-tab" tabindex="0">
+
+                        <div class="card border-secondary shadow border mb-4">
+                            <div class="card-body">
+                            <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;">Node Graph Presentation</div>
+                                <p>The design focus with node graphs is to present information clearly and to make relationships between nodes easy to understand.</p>
+                                
+                                <p>
+                                   Node graphs are diagrams broken down into nodes, links, and properties. Nodes perform a computation, links represent how data output of one node goes to the data input of a different node. Data inputs and outputs are also commonly called data “ports” or “pins”. Properties are the additional attributes of a node or link. For example, one property of a node can be its port data type such as color or boolean.
+                                    <br>
+                                </p>
+                                <p>When designing node graphs, different colors are applied based on the property and symbol type for the node. Color usage is limited to reduce visual noise, making it easier for users to process the information. </p>
+                                <p>Links (directional arrows) connecting the nodes can be color coded to be the same as the associated data port. For Mermaid diagrams, input port names are labels on links. In the checkerboard graph example below "in1" is a input data port for the "multiply" node. </p>
+                                
+                                <div>
+                                    <img src="./images/checkerboard_mermaid_graph.svg" class="img-fluid mx-auto-d-block">
+                                </div>
+                                <br>
+                                
+                                <p>The flow of information is all presented from left to right so that the information is easy to understand and view in a standard orientation.</p>
+                                <p>Symbol usage was kept consistent throughout with blue ovals representing input nodes and green ovals output nodes. Rectangles represent a node, and orange diamonds a decision in the node graph. </p>
+                                
+                                 <div>
+                                    <img src="./images/checkerboard_graph_nodeeditor.png" class=" img-fluid mx-auto-d-block">
+                                </div>
+                                <p>This example shows all ports as well as color coded links. The aim is to make the graphs similar to the above image.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>

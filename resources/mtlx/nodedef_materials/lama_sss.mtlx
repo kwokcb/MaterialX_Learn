@@ -2,7 +2,6 @@
 <materialx version="1.38">
   <LamaSSS name="lama_sss" type="BSDF" version="1.0">
     <input name="color" type="color3" value="0.18, 0.18, 0.18" uiname="Color" />
-    <input name="normal" type="vector3" uiname="Normal" />
     <input name="sssRadius" type="color3" value="0.0, 0.0, 0.0" uiname="Radius" />
     <input name="sssScale" type="float" value="1.0" uiname="Scale" />
     <input name="sssMode" type="integer" uniform="true" enum="Path-traced Davis,Path-traced exponential,Diffusion Burley,Diffusion Burley (mean free path)" enumvalues="0,1,2,3" value="0" uiname="Mode" />

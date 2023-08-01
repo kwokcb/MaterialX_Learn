@@ -3,14 +3,14 @@
 
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-J7404418VP');
-</script>
+    gtag('config', 'G-J7404418VP');
+  </script>
 
   <title>MaterialX Learn - Graph Visualizer </title>
   <link rel="icon" href="./images/logo3d_icon.png" type="image/x-icon" />
@@ -122,6 +122,11 @@
                   Graph Visualizer
                 </a>
               </li>
+              <li>
+                <a class="dropdown-item" href="mtlx_utilities.html">
+                  Python Utilities
+                </a>
+              </li>
             </ul>
           </li>
 
@@ -203,7 +208,7 @@
                 The graph can be saved to SVG format using the 'Save SVG' button.
               </li>
             </ul>
-            <sup>(*) Note: The graphs for standard library definitions can be found 
+            <sup>(*) Note: The graphs for standard library definitions can be found
               <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/documents/images/graphio">here.</a>
             </sup>
 
@@ -219,21 +224,22 @@
                       ? 'dark'
                       : 'base',
                     themeVariables: {
-                        'primaryColor': '#F1F1F1',
-                        'primaryBorderColor': '#000000',
-                        'lineColor': '#000000',
-                        'secondaryColor': '#EEEEFF',
-                        'tertiaryColor': '#EEEEEE'
-                    }           
+                      'primaryColor': '#F1F1F1',
+                      'primaryBorderColor': '#000000',
+                      'lineColor': '#000000',
+                      'secondaryColor': '#EEEEFF',
+                      'tertiaryColor': '#EEEEEE'
+                    }
                   });
                 </script>
                 <textarea class="mermaid_input form-control form-control-sm"
                   style="width:95%; height:200px; font-size: 14px;" placeholder="Enter mermaid text here..."></textarea>
-                  <p>                    
-                    <label class="col-form-label">
-                      <input id="loadgraph" type="file" accept=".md" style="display:none" />
-                       <button id="" class="btn btn-outline-primary shadow-sm" style="pointer-events: none;">Load Graph</button> 
-                    </label>
+                <p>
+                  <label class="col-form-label">
+                    <input id="loadgraph" type="file" accept=".md" style="display:none" />
+                    <button id="" class="btn btn-outline-primary shadow-sm" style="pointer-events: none;">Load
+                      Graph</button>
+                  </label>
                 </p>
                 <br>
 
@@ -243,6 +249,7 @@
                 <p></p>
                 <div class="col-sm2 flex">
                   <button id="saveSVG" class="btn btn-outline-primary shadow-sm">Save SVG</button>
+                  <button id="resetSVGView" class="btn btn-outline-primary shadow-sm">Reset View</button>
                   <!-- <button id="savePNG" class="btn btn-outline-secondary shadow">Save PNG</button> -->
                 </div>
               </div>
@@ -255,7 +262,7 @@
 
   <script>
     let prevSVG = ''
-    
+    let originalViewBox = ''
 
     function loadGraph() {
       let input = document.getElementById('loadgraph');
@@ -269,8 +276,7 @@
       fr.readAsText(file);
     }
 
-    function setGraph(e) 
-    {
+    function setGraph(e) {
       console.log('read lines')
       let lines = e.target.result;
       lines = lines.replace('```mermaid', '')
@@ -282,10 +288,8 @@
     }
 
     let loadButton = document.getElementById('loadgraph');
-    if (loadButton)
-    {
-      console.log('asdasd');
-      loadButton.addEventListener('change', loadGraph, false);    
+    if (loadButton) {
+      loadButton.addEventListener('change', loadGraph, false);
     }
 
     function savePNG(elem, name) {
@@ -302,7 +306,6 @@
       canvas.height = bbox.height;
 
       const context = canvas.getContext('2d');
-      console.log('draw image: ', bbox, img.src);
       context.drawImage(img, 0, 0, bbox.width, bbox.height);
 
       // Save to disk
@@ -311,7 +314,6 @@
     }
 
     function saveURL(url, name) {
-      console.log('Save:', url);
       var downloadLink = document.createElement("a");
       downloadLink.href = url;
       downloadLink.download = name;
@@ -328,12 +330,31 @@
       return svgBlob;
     }
 
+    function resetSvgView(elem)
+    {
+      if (elem && originalViewBox)
+      {
+        currentViewBox = elem.getAttribute('viewBox');
+        elem.setAttribute('viewBox', originalViewBox);
+      } 
+      return currentViewBox;
+    }
+
     function saveSvg(elem, name) {
+      // Restore original viewBox before saving
+      currentViewBox = resetSvgView(elem);
+
       svgBlob = createSvgBlob(elem);
 
       // Save to disk
       var url = URL.createObjectURL(svgBlob);
       saveURL(url, name);
+
+      // Restore current viewBox
+      if (originalViewBox)
+      {
+        elem.setAttribute('viewBox', currentViewBox);
+      }
     }
 
     function renderMermaid() {
@@ -342,34 +363,35 @@
 
       let newSVG = ''
       let generateDiagram = function (code) {
-         newSVG = code;
+        newSVG = code;
       };
 
-      if (code.length == 0)
-      {
+      if (code.length == 0) {
         prevSVG = ''
         output.innerHTML = ''
       }
       if (code) {
         let generated = true;
-        prevSVG = output.innerHTML;        
-        try {          
-          mermaid.render("graphout", code, generateDiagram)           
+        prevSVG = output.innerHTML;
+        try {
+          mermaid.render("graphout", code, generateDiagram)
         } catch (error) {
           generated = false
-		    }
+        }
 
-        if (generated)
-        {
+        if (generated) {
           output.innerHTML = newSVG;
           prevSVG = newSVG;
+
+          var svgContainer = document.querySelector(".mermaid_output");
+          var svgContent = document.getElementById('graphout');
+          originalViewBox = svgContent.getAttribute('viewBox');
+          setUpInteraction(svgContainer, svgContent)
         }
-        else
-        {
+        else {
           // Clear this out so that we don't get the default Mermaid error SVG
           graphout = document.getElementById('graphout');
-          if (graphout)
-          {
+          if (graphout) {
             graphout.innerHTML = '';
           }
           output.innerHTML = 'Invalid Mermaid text entered. Failed to generate graph.';
@@ -378,26 +400,32 @@
     }
 
     renderButton = document.getElementById("rendergraph")
-    if (renderButton)
-    {
+    if (renderButton) {
       renderButton.addEventListener("click", (e) => {
         renderMermaid()
       });
     }
 
     inputArea = document.querySelector(".mermaid_input");
-    if (inputArea)
-    {
+    if (inputArea) {
       inputArea.addEventListener('keyup', (event) => {
         renderMermaid();
       })
     }
 
+    // Review view of svg element
+    document.getElementById("resetSVGView").addEventListener("click", (e) => {
+      var svgContent = document.getElementById('graphout');
+      if (svgContent) {
+        resetSvgView(svgContent);        
+      }
+    });
+
     // Save svg element to file
     document.getElementById("saveSVG").addEventListener("click", (e) => {
-      const element = document.getElementById("graphout");
-      if (element) {
-        saveSvg(element, "graph.svg");
+      var svgContent = document.getElementById('graphout');
+      if (svgContent) {
+        saveSvg(svgContent, "graph.svg");
       }
     });
 
@@ -411,6 +439,103 @@
         }
       });
     }
+
+    // Interaction for SVG display area
+    function setUpInteraction(svgContainer, svgContent) {
+
+      var state = {
+        isPanning: false,
+        startCoords: { x: 0, y: 0 },
+        startViewBox: null
+      };
+
+      // Clear or set the style here. Clear max width so that the SVG can be scaled 
+      // to fit the container.
+      style = svgContent.getAttribute('style')
+      //svgContent.setAttribute('style', 'max-width:2048px;')
+      svgContent.setAttribute('style', '')
+
+      // Handle start of panning
+      function handleMouseDown(event) {
+        if (event.button !== 0) 
+          return;
+
+        event.preventDefault();
+        state.isPanning = true;
+        state.startCoords.x = event.clientX;
+        state.startCoords.y = event.clientY;
+        state.startViewBox = svgContent.getAttribute('viewBox');
+      }
+
+      // Handle panning
+      function handleMouseMove(event) {
+        if (!state.isPanning) 
+          return;
+
+        event.preventDefault();
+        var dx = event.clientX - state.startCoords.x;
+        var dy = event.clientY - state.startCoords.y;
+        var viewBox = state.startViewBox.split(' ');
+
+        viewBox[0] -= dx;
+        viewBox[1] -= dy;
+
+        svgContent.setAttribute('viewBox', viewBox.join(' '));
+      }
+
+      // Handle stop of panning
+      function handleMouseUp(event) {
+        if (event.button !== 0) 
+          return;
+
+        event.preventDefault();
+        state.isPanning = false;
+      }
+
+      // Handle zooming
+      function handleWheel(event) 
+      {
+        event.preventDefault();
+      
+        var delta = Math.max(-1, Math.min(1, (event.deltaY || -event.detail)));
+        var viewBox = svgContent.getAttribute('viewBox').split(' ');
+
+        var scaleFactor = delta > 0 ? 1.1 : 0.9;
+
+        var containerWidth = svgContainer.offsetWidth;
+        var containerHeight = svgContainer.offsetHeight;
+
+        var center = {
+          x: containerWidth / 2,
+          y: containerHeight / 2
+        };
+
+        var oldWidth = parseFloat(viewBox[2]);
+        var oldHeight = parseFloat(viewBox[3]);
+        var newWidth = oldWidth / scaleFactor;
+        var newHeight = oldHeight / scaleFactor;
+
+        var deltaX = (oldWidth - newWidth) * (center.x / containerWidth);
+        var deltaY = (oldHeight - newHeight) * (center.y / containerHeight);
+
+        var newX = parseFloat(viewBox[0]) + deltaX;
+        var newY = parseFloat(viewBox[1]) + deltaY;
+
+        viewBox[0] = newX;
+        viewBox[1] = newY;
+        viewBox[2] = newWidth;
+        viewBox[3] = newHeight;
+
+        svgContent.setAttribute('viewBox', viewBox.join(' '));
+      }
+
+      // Set up event handling
+      svgContainer.addEventListener('mousedown', handleMouseDown);
+      svgContainer.addEventListener('mousemove', handleMouseMove);
+      svgContainer.addEventListener('mouseup', handleMouseUp);
+      svgContainer.addEventListener('mouseleave', handleMouseUp);
+      svgContainer.addEventListener('wheel', handleWheel);
+    };
   </script>
 
 </body>

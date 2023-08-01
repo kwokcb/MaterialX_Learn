@@ -3,7 +3,6 @@
   <noise3d name="noise3d_color3FA" type="color3">
     <input name="amplitude" type="float" value="1.0" />
     <input name="pivot" type="float" value="0.0" />
-    <input name="position" type="vector3" />
   </noise3d>
   <convert name="shader_noise3d_color3FA_out" type="surfaceshader">
     <input name="in" type="color3" nodename="noise3d_color3FA" />

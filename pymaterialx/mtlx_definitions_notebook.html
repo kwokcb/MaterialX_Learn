@@ -14667,7 +14667,7 @@ of a working document.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Loaded 721 standard library definitions
+<pre>Loaded 730 standard library definitions
 </pre>
 </div>
 </div>
@@ -15234,7 +15234,7 @@ separate separate document(s).</p>
     <span class="k">return</span> <span class="n">nodegraphName</span>
 
 <span class="c1"># Read in an example with a compound graph</span>
-<span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
+<span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
 <span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">mx</span><span class="o">.</span><span class="n">FilePath</span><span class="p">(</span><span class="s1">&#39;./data/test_procedural.mtlx&#39;</span><span class="p">))</span>
 
 <span class="c1"># Determine the node group and version</span>
@@ -15437,7 +15437,7 @@ separate separate document(s).</p>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Run definition creation again with patching logic</span>
-<span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
+<span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
 <span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">mx</span><span class="o">.</span><span class="n">FilePath</span><span class="p">(</span><span class="s1">&#39;./data/test_procedural.mtlx&#39;</span><span class="p">))</span>
 
 <span class="n">compoundGraphs</span> <span class="o">=</span> <span class="n">findCompoundGraphs</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span><span class="p">)</span>
@@ -15614,7 +15614,7 @@ output type is <code>color3</code> which is incorporated into the identifier as 
     <span class="k">return</span> <span class="n">newDef</span>
 
 <span class="c1"># Create a working document and add a nodedef</span>
-<span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
+<span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
 
 <span class="n">cparam</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">category</span> <span class="o">=</span> <span class="n">nodeGraph</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -15764,10 +15764,10 @@ output type is <code>color3</code> which is incorporated into the identifier as 
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create new workgin document</span>
-<span class="n">sourceCodeDoc</span><span class="p">,</span> <span class="n">libFiles</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
+<span class="n">sourceCodeDoc</span><span class="p">,</span> <span class="n">libFiles</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
 
 <span class="c1"># Read in reference nodegraph</span>
-<span class="n">refdoc</span><span class="p">,</span> <span class="n">reflibFiles</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
+<span class="n">refdoc</span><span class="p">,</span> <span class="n">reflibFiles</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
 <span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlFile</span><span class="p">(</span><span class="n">refdoc</span><span class="p">,</span> <span class="n">mx</span><span class="o">.</span><span class="n">FilePath</span><span class="p">(</span><span class="s1">&#39;./data/myadd_compound_graph.mtlx&#39;</span><span class="p">))</span>
 
 <span class="c1"># Create a new empty definition</span>
@@ -16236,7 +16236,7 @@ newlines properly on XML load and save.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">createWorkingDocument</span><span class="p">()</span>
 <span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;data/standard_surface_marble_solid.mtlx&#39;</span><span class="p">)</span>
 
 <span class="n">nodeGraph</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getNodeGraph</span><span class="p">(</span><span class="s1">&#39;NG_marble1&#39;</span><span class="p">)</span>

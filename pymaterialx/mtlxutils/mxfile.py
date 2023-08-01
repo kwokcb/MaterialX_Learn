@@ -20,7 +20,8 @@ class MtlxFile:
         Create library document containing standard libraries as well as
         any libraries specified as input arguments.
         '''
-        stdlib = mx.createDocument()
+        lib = mx.createDocument()
+        status = ''
 
         searchPath = mx.getDefaultDataSearchPath()
         searchPath.append(librarySearchPath)
@@ -28,24 +29,25 @@ class MtlxFile:
         libraryFolders = mx.getDefaultDataLibraryFolders()
         libraryFolders.extend(libFolders)
         try:
-            libFiles = mx.loadLibraries(libraryFolders, searchPath, stdlib)
+            libFiles = mx.loadLibraries(libraryFolders, searchPath, lib)
+            status = '- Loaded %d library definitions from %d files' % (len(lib.getNodeDefs()), len(libFiles))
         except mx.ExceptionFileMissing as err:
-            print('Library load failed: "', err, '"')
+            status = '- Failed to load library definitions: "%s"' % err
         
-        return stdlib, libFiles
-
+        return lib, libFiles, status
+    
     @staticmethod
     def createWorkingDocument(librarySearchPath = mx.FileSearchPath(), libFolders = []):
         '''
         Create working document with libraries.
         Returns new document and list of default data library files loaded.
         '''
-        stdlib, libFiles = MtlxFile.createLibraryDocument(librarySearchPath, libFolders)
+        stdlib, libFiles, status = MtlxFile.createLibraryDocument(librarySearchPath, libFolders)
 
         doc = mx.createDocument()
         if stdlib:
             doc.importLibrary(stdlib)
-        return doc, libFiles
+        return doc, libFiles, status
 
     @staticmethod
     def skipLibraryElement(elem):

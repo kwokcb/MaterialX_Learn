@@ -15,7 +15,7 @@ from collections import OrderedDict
 
 class MtlxShaderGen:
 
-    def __init__(self, doc, stdlib):
+    def __init__(self, stdlib):
         self.implementations = None
         self.targets = None
         self.implcount = None
@@ -29,18 +29,17 @@ class MtlxShaderGen:
         self.shader = None
         self.source = []
 
-        self.doc = doc
         self.stdlib = stdlib
 
     def setup(self):
-        self.implmentations = self.doc.getImplementations()
-        self.targets = self.getTargetDefs(self.doc)
+        self.implmentations = self.stdlib.getImplementations()
+        self.targets = self.getTargetDefs(self.stdlib)
 
         # Set up generators
         self.initializeGenerators()
 
         # Setup units
-        self.setupUnits(self.doc)
+        self.setupUnits(self.stdlib)
 
     def getTargetDefs(self, doc):
         targets = []
@@ -101,7 +100,7 @@ class MtlxShaderGen:
                 self.context = mx_gen_shader.GenContext(self.generator)
                 # Set up CM and Units per generator
                 if wantCM:
-                    self.setupColorManagement(self.generator, self.doc)
+                    self.setupColorManagement(self.generator, self.stdlib)
                 self.setUnitSystem(self.generator, self.stdlib)
         
         return self.context
@@ -154,13 +153,21 @@ class MtlxShaderGen:
         genoptions = self.context.getOptions()
         genoptions.targetDistanceUnit = unit
 
+    def getShaderNodes(self, doc):
+        # Look for shader nodes in a document
+        shaderNodes = []
+        for node in doc.getNodes():
+            if node.getType() == mx.SURFACE_SHADER_TYPE_STRING:
+                shaderNodes.append(node)
+        return shaderNodes
+
     def findRenderableElements(self, doc):
         # Look for renderable nodes
         self.nodes = mx_gen_shader.findRenderableElements(doc, False)
         if not self.nodes:
             self.nodes = doc.getMaterialNodes()
             if not self.nodes:
-                self.nodes = doc.getNodesOfType(mx.SURFACE_SHADER_TYPE_STRING)
+                self.nodes = self.getShaderNodes(doc)
 
         return self.nodes
 

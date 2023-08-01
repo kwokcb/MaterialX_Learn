@@ -118,7 +118,7 @@ def copyGraphInterfaces(dest, ng):
 
 # %%
 # Load in sample MaterialX file
-doc, libFiles = mxf.MtlxFile.createWorkingDocument()
+doc, libFiles, status = mxf.MtlxFile.createWorkingDocument()
 mx.readFromXmlFile(doc, './data/standard_surface_brick_procedural.mtlx')
 
 # Create destination document and copy nodegraph interfaces over

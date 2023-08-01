@@ -3,7 +3,6 @@
   <ramplr name="ramplr_color4" type="color4">
     <input name="valuel" type="color4" value="0.0, 0.0, 0.0, 0.0" />
     <input name="valuer" type="color4" value="0.0, 0.0, 0.0, 0.0" />
-    <input name="texcoord" type="vector2" />
   </ramplr>
   <convert name="shader_ramplr_color4_out" type="surfaceshader">
     <input name="in" type="color4" nodename="ramplr_color4" />

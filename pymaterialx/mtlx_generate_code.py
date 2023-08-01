@@ -206,9 +206,9 @@
 # Next we will derive the OSL, MDL, MSL versions from this.
 
 # %% [markdown]
-# ## 2. Github Co-Pilot
+# ## 2. Github Copilot 
 # 
-# Co-Pilot supports both <a href="https://code.visualstudio.com/docs/editor/artificial-intelligence#_chat-view" target="_blank">prompt</a> and in-code for Visual Studio code. Both have been installed here.
+# Copilot  supports both <a href="https://code.visualstudio.com/docs/editor/artificial-intelligence#_chat-view" target="_blank">prompt</a> and in-code for Visual Studio code. Both have been installed here.
 # * For in-code generation, a comment can be added as "commands" for generating code. 
 # * It is not very "smart" for using local libraries. TBD if there is a way to scan in local code to aid in code
 # generation.
@@ -242,6 +242,6 @@ nodeDef = nodeGraph.addNodeDef("myNodeDef", "myNodeType")
 
 
 # %% [markdown]
-# ## Co-Pilot Chat
+# ## Copilot  Chat
 
 

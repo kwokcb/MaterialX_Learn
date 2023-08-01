@@ -5,7 +5,6 @@
     <input name="octaves" type="integer" value="3" />
     <input name="lacunarity" type="float" value="2.0" />
     <input name="diminish" type="float" value="0.5" />
-    <input name="position" type="vector3" />
   </fractal3d>
   <convert name="shader_fractal3d_vector3FA_out" type="surfaceshader">
     <input name="in" type="vector3" nodename="fractal3d_vector3FA" />
