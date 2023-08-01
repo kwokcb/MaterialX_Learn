@@ -6,8 +6,6 @@
     <input name="color90" type="color3" value="1.0, 1.0, 1.0" />
     <input name="exponent" type="float" value="5.0" />
     <input name="roughness" type="vector2" value="0.05, 0.05" />
-    <input name="normal" type="vector3" />
-    <input name="tangent" type="vector3" />
     <input name="distribution" type="string" value="ggx" enum="ggx" uniform="true" />
     <input name="scatter_mode" type="string" value="R" enum="R,T,RT" uniform="true" />
   </generalized_schlick_bsdf>

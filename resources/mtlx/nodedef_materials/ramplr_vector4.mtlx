@@ -3,7 +3,6 @@
   <ramplr name="ramplr_vector4" type="vector4">
     <input name="valuel" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
     <input name="valuer" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
-    <input name="texcoord" type="vector2" />
   </ramplr>
   <convert name="shader_ramplr_vector4_out" type="surfaceshader">
     <input name="in" type="vector4" nodename="ramplr_vector4" />

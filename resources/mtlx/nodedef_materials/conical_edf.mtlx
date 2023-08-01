@@ -2,7 +2,6 @@
 <materialx version="1.38">
   <conical_edf name="conical_edf" type="EDF">
     <input name="color" type="color3" value="1.0, 1.0, 1.0" />
-    <input name="normal" type="vector3" />
     <input name="inner_angle" type="float" value="60.0" />
     <input name="outer_angle" type="float" value="0.0" />
   </conical_edf>

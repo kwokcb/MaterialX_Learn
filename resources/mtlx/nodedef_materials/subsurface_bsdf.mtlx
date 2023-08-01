@@ -5,7 +5,6 @@
     <input name="color" type="color3" value="0.18, 0.18, 0.18" />
     <input name="radius" type="vector3" value="1.0, 1.0, 1.0" />
     <input name="anisotropy" type="float" value="0.0" />
-    <input name="normal" type="vector3" />
   </subsurface_bsdf>
   <surface name="shader_subsurface_bsdf_out" type="surfaceshader">
     <input name="bsdf" type="BSDF" nodename="subsurface_bsdf" />

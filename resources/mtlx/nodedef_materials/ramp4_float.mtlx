@@ -5,7 +5,6 @@
     <input name="valuetr" type="float" value="0.0" />
     <input name="valuebl" type="float" value="0.0" />
     <input name="valuebr" type="float" value="0.0" />
-    <input name="texcoord" type="vector2" />
   </ramp4>
   <convert name="shader_ramp4_float_out" type="surfaceshader">
     <input name="in" type="float" nodename="ramp4_float" />

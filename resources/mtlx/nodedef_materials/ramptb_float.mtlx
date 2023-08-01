@@ -3,7 +3,6 @@
   <ramptb name="ramptb_float" type="float">
     <input name="valuet" type="float" value="0.0" />
     <input name="valueb" type="float" value="0.0" />
-    <input name="texcoord" type="vector2" />
   </ramptb>
   <convert name="shader_ramptb_float_out" type="surfaceshader">
     <input name="in" type="float" nodename="ramptb_float" />

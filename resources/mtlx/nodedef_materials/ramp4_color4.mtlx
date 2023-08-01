@@ -5,7 +5,6 @@
     <input name="valuetr" type="color4" value="0.0, 0.0, 0.0, 0.0" />
     <input name="valuebl" type="color4" value="0.0, 0.0, 0.0, 0.0" />
     <input name="valuebr" type="color4" value="0.0, 0.0, 0.0, 0.0" />
-    <input name="texcoord" type="vector2" />
   </ramp4>
   <convert name="shader_ramp4_color4_out" type="surfaceshader">
     <input name="in" type="color4" nodename="ramp4_color4" />

@@ -36,7 +36,7 @@ if not haveVersion1387:
     print("** Warning: Recommended version is 1.38.7 for tutorials. Have version: ", mx.__version__)
 
 from mtlxutils.mxfile import MtlxFile as mxf
-doc, libFiles = mxf.createWorkingDocument()
+doc, libFiles, status = mxf.createWorkingDocument()
 
 # %% [markdown]
 # ## GraphElement Traversal 

@@ -4,7 +4,6 @@
     <input name="weight" type="float" value="1.0" />
     <input name="color" type="color3" value="1.0, 1.0, 1.0" />
     <input name="roughness" type="float" value="0.3" />
-    <input name="normal" type="vector3" />
   </sheen_bsdf>
   <surface name="shader_sheen_bsdf_out" type="surfaceshader">
     <input name="bsdf" type="BSDF" nodename="sheen_bsdf" />

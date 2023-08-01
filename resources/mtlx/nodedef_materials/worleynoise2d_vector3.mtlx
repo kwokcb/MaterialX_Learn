@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <materialx version="1.38">
   <worleynoise2d name="worleynoise2d_vector3" type="vector3">
-    <input name="texcoord" type="vector2" />
     <input name="jitter" type="float" value="1.0" />
   </worleynoise2d>
   <convert name="shader_worleynoise2d_vector3_out" type="surfaceshader">

@@ -420,7 +420,7 @@ def blender_materialx(doc, shaderNodeMappings):
 # %%
 if __name__ == "__main__":
     bpy.ops.wm.open_mainfile(filepath="data/test.blend")
-    doc, libFiles = mxf.createWorkingDocument()
+    doc, libFiles, status = mxf.createWorkingDocument()
     shaderNodeMap = blender_init_node_dictionary('ND_UsdPreviewSurface_surfaceshader')
     blender_materialx(doc, shaderNodeMap)
     writeMaterialX(doc, 'data/blender_to_mtlx.mtlx', '**Blender To MaterialX Result**')
@@ -434,7 +434,7 @@ from mtlxutils.mxtraversal import *
 from mtlxutils.mxfile import *
 
 # Load in document and create a Mermaid graph
-doc, libFiles = MtlxFile.createWorkingDocument()
+doc, libFiles, status = MtlxFile.createWorkingDocument()
 mx.readFromXmlFile(doc, 'data/blender_to_mtlx.mtlx')
 roots = doc.getMaterialNodes()
 graph = MtlxMermaid.generateMermaidGraph(roots, 'LR')

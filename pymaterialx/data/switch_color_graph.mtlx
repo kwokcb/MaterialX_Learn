@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+  <standard_surface name="standard_surface_surfaceshader" type="surfaceshader" xpos="4.789855" ypos="-1.818966">
+    <input name="base_color" type="color3" output="output_color3" nodegraph="conditional_graph" />
+  </standard_surface>
+  <surfacematerial name="surfacematerial" type="material" xpos="9.782609" ypos="-1.112069">
+    <input name="surfaceshader" type="surfaceshader" nodename="standard_surface_surfaceshader" />
+  </surfacematerial>
+  <nodegraph name="conditional_graph">
+    <switch name="switch_color3" type="color3" xpos="12.318841" ypos="-0.818965">
+      <input name="in1" type="color3" interfacename="input_color3" />
+      <input name="in2" type="color3" interfacename="input_color4" />
+      <input name="in3" type="color3" interfacename="input_color5" />
+      <input name="in4" type="color3" interfacename="input_color6" />
+      <input name="in5" type="color3" interfacename="input_color7" />
+      <input name="which" type="float" interfacename="input_float" />
+    </switch>
+    <output name="output_color3" type="color3" nodename="switch_color3" xpos="17.391304" ypos="0.000000" />
+    <input name="input_color3" type="color3" value="0.882641, 0.0604252, 0.0604252" xpos="7.246377" ypos="-3.086207" />
+    <input name="input_color4" type="color3" value="0.138486, 0.858191, 0.156082" xpos="7.246377" ypos="-1.741379" />
+    <input name="input_color5" type="color3" value="0.674283, 0.792176, 0.0503584" xpos="7.246377" ypos="-0.396552" />
+    <input name="input_color6" type="color3" value="0.0883316, 0.0666782, 0.699266" xpos="7.246377" ypos="0.939655" />
+    <input name="input_color7" type="color3" value="0, 0.190147, 0.547677" xpos="7.246377" ypos="2.275862" />
+    <input name="input_float" type="float" value="0" xpos="7.246377" ypos="3.612069" />
+  </nodegraph>
+</materialx>

@@ -32,7 +32,6 @@
     <input name="coat_anisotropy" type="float" value="0.0" />
     <input name="coat_rotation" type="float" value="0.0" />
     <input name="coat_IOR" type="float" value="1.5" />
-    <input name="coat_normal" type="vector3" />
     <input name="coat_affect_color" type="float" value="0" />
     <input name="coat_affect_roughness" type="float" value="0" />
     <input name="thin_film_thickness" type="float" value="0" />
@@ -42,7 +41,6 @@
     <input name="opacity" type="color3" value="1, 1, 1" nodename="opacity_image" />
     <input name="thin_walled" type="boolean" value="false" />
     <input name="normal" type="vector3" nodename="normal_normalmap" />
-    <input name="tangent" type="vector3" />
   </standard_surface>
   <tiledimage name="base_color_image" type="color3">
     <input name="uvtiling" type="vector2" value="1.0, 1.0" />

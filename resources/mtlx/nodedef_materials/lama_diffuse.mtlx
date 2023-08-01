@@ -3,7 +3,6 @@
   <LamaDiffuse name="lama_diffuse" type="BSDF" version="1.0">
     <input name="color" uiname="Color" type="color3" value="0.18, 0.18, 0.18" />
     <input name="roughness" uiname="Roughness" type="float" value="0.0" />
-    <input name="normal" uiname="Normal" type="vector3" />
     <input name="energyCompensation" uiname="Energy Compensation" type="float" uniform="true" value="1.0" />
     <input name="lobeName" uiname="Lobe Name" type="string" uniform="true" value="diffuse" />
     <input name="matte" uiname="Matte" type="string" uniform="true" value="" />

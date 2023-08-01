@@ -112,7 +112,12 @@
                   Graph Visualizer
                 </a>
               </li>
-            </ul>
+              <li>
+                <a class="dropdown-item" href="documents/mtlx_utilities.html">
+                  Python Utilities
+                </a>
+              </li>
+          </ul>
           </li>
 
           <li class="nav-item dropdown">
@@ -193,21 +198,28 @@
   <div class="row mb-1">
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
+        <div class="col p-2 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary">Tech</strong>
-          <b class="mb-0">Tutorial and Workflows</b>
-            <div class="mb-1 text-muted">May-June, 2023</div>
+          <b class="mb-0">Tutorials and Workflows</b>
+            <div class="mb-1 text-muted">July, 2023</div>
             <p class="card-text mb-auto">
-                <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/mtlxutils" target="_blank">
-                mtlxutils</a> Python module collects
-            code used for notebooks. New books:<a href="documents/jupyter_example.html" target="_blank">
-              Usd / Definition Creation & Library Usage (Maya/Houdini) / Rendering</a>, and new
-              <a href="documents/workflows.html">Workflow documents</a>
-            </p>
-          </div>
-        <div class="col-auto d-none d-lg-block">
-          <img src="documents/images/june_1388_update1.png" height="256em" role="img" aria-label="Placeholder: Thumbnail"
-            preserveAspectRatio="xMidYMid slice" focusable="false">
+              <a href="documents/mtlx_utilities.html" target="_blank">
+                Learning Pipeline</a> Expose utilities for rendering, definition generation,
+                graph generation etc. Improved <a href="file:///D:/Work/materialx/MaterialX_Plus/documents/mermaidChecker.html"
+                target="_blank">graph visualization</a>. 
+            </p><br>
+            <p class="card-text mb-auto">
+              <a href="documents/design.html" target="_blank">
+                UX / UI: </a> Design refresh and standardized display and improved graph interaction utilities.
+            </p><br>
+            <p>
+              <a href="documents/jupyter_example.html" target="_blank">New Tutorials</a>: 
+                    Rendering, JSON interop, Document Comparison, Code Generation Targets, Github Copilot
+            </p>        
+        </div>
+        <div class="col-auto d-flex d-lg-block">
+          <img src="documents/images/july_2023_update.png" height="256em" role="img" aria-label="Placeholder: Thumbnail"
+            class="img-fluid" preserveAspectRatio="xMidYMid slice" focusable="false">
           <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
         </div>
       </div>
@@ -216,13 +228,21 @@
       <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-success">News</strong>
-          <b class="mb-0">1.38.8 Sync</b>
-          <div class="mb-1 text-muted">June, 2023</div>
-          <p class="card-text mb-auto">All content is now syncing to 1.38.8 which includes new colorspace and procedural definitions. 
-            The minimum version for all learning materials is 
+
+          <b class="mb-0">1.38.8 Updates</b>
+          <div class="mb-1 text-muted">June-August, 2023</div>
+          <p class="card-text mb-auto">Continual syncing to the latest 1.38.8 which includes new colorspace and procedural definitions. 
+            The minimum version for all learning materials is
             <a href="https://github.com/AcademySoftwareFoundation/MaterialX/releases/tag/v1.38.7" target="_blank">              
-              MaterialX 1.38.7 Release</a></p>
-        </div>
+              MaterialX 1.38.7 Release</a>
+          </p>
+          <p></p>
+          <b class="mb-0">Development Updates</b>
+          <div class="mb-1 text-muted">August, 2023</div>
+          <p class="card-text mb-auto">Use of AI to assist learning is coming. The first
+            tutorials include initial Copilot impressions + creating a JSON schema from MaterialX node graphs. Docs for
+            code generation, pipeline building, and web site generation to come.
+          </div>
         <!--
         <div class="col-auto d-none d-lg-block">
           <img src="documents/images/MaterialXLogo2K.png" height="100" role="img" aria-label="Placeholder: Thumbnail"
@@ -241,7 +261,7 @@
       <div class="col pt-3 pb-3">
         <div>
           <img src="documents/images/FireplaceMaterial.png" alt="Learn"
-            class="rounded-4 border border-white img-fluid w-50 ">
+            class="rounded-4 shadow border border-grey img-fluid w-50 ">
           <p>
           <h3 class="fs-5 ">Learn</h3>
           MaterialX concepts and interfaces and usage</p>
@@ -262,7 +282,7 @@
       <div class="col pt-3 pb-3">
         <div>
           <img src="documents/images/DirtyWoodMaterial.png" alt="Reference"
-            class="rounded-4 border border-white img-fluid w-50 ">
+            class="rounded-4 shadow border border-grey img-fluid w-50 ">
           <p>
           <h3 class="fs-5">Reference</h3>
           Reference for types, color management and node library</p>
@@ -287,7 +307,7 @@
 
       <div class="col pt-3 pb-3">
         <div>
-          <img src="documents/images/graph.png" alt="Bootstrap" class="rounded-4 border border-white img-fluid w-50 ">
+          <img src="documents/images/graph.png" alt="Bootstrap" class="rounded-4 border shadow border-grey img-fluid w-50 ">
           <p>
           <h3 class="fs-5">Tools</h3>
           Tools to aid with manipulating and enhancing MaterialX</p>
@@ -298,6 +318,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li><a class="dropdown-item" href="./documents/mermaidChecker.html">Graph Visualizer</a></li>
+              <li><a class="dropdown-item" href="./documents/mtlx_utilities.html">Python Utilities</a></li>
             </ul>
           </div>
           </a>
@@ -307,7 +328,7 @@
       <div class="col pt-3 pb-3">
         <div>
           <img src="documents/images/VSCode_Environment2.png" alt="Bootstrap"
-            class="rounded-4 border border-white img-fluid w-50 ">
+            class="rounded-4 shadow border border-grey img-fluid w-50 ">
           <p>
           <h3 class="fs-5 ">Develop</h3>
           Developing using MaterialX through examples and tutorials</p>
@@ -328,7 +349,7 @@
       <div class="col pt-3 pb-3">
         <div>
           <img src="documents/images/Sample_ShaderBall_Brick.png" alt="Bootstrap"
-            class="rounded-4 border border-white img-fluid w-50 ">
+            class="rounded-4 border shadow border-grey img-fluid w-50 ">
           <p>
           <h3 class="fs-5 ">Workflows</h3>
           Articles and helpers related to various workflows</p>
@@ -347,7 +368,7 @@
       <div class="col pt-3 pb-3 ">
         <div>
           <img src="documents/images/Design_Icon.png" alt="Bootstrap"
-            class="rounded-4 border border-black img-fluid w-50 ">
+            class="rounded-4 border shadow border-black img-fluid w-50 ">
           <p>
           <h3 class="fs-5 ">Design</h3>
           UX design and implementation architecture for the site</p>
