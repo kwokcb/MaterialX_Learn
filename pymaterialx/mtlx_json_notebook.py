@@ -9,6 +9,13 @@
 # * [Determining a JSON schema.](#obtaining-a-json-schema-for-materialx)
 # * [Validating JSON data against such as schema](#validating-materialx-json-with-schema)
 # 
+# <table>
+# <tr>
+# <td><img src="./images/jsoncrack_snap.png">
+# <td><img src="./images/jsoncrack_snap2.png">
+# </tr>
+# </table>
+# 
 # ## Setup for JSON support
 # 
 # We will use the `xmltodict` Python package to convert from MaterialX represented in XML to JSON.
@@ -150,13 +157,21 @@ json_string_fmt = json.dumps(python_dict, indent=2)
 text = '<details open><summary>MaterialX in JSON</summary>\n\n' + '```json\n' + json_string_fmt + '\n```\n' + '</details>\n' 
 display_markdown(text, raw=True)
 
+with open('mtlx_brick.json', 'w') as jsonfile:
+    jsonfile.write(json_string_fmt)
+
 # %% [markdown]
 # ## Obtaining a JSON Schema for MaterialX 
 # 
 # The schema is created using the [OpenAI](https://platform.openai.com/docs/api-reference) Python package. Various MaterialX documents (saved out in JSON) were used as input data.
+# ( A partial graph snapshot is show below 
+# <img src="./images/jsoncrack_schema_defs.png">
+# with the full schema following.)
 # 
 # The standard library as well as examples and test suite documents are suitable to obtain most of the schema. Small
 # edits we're made for anything amiss such setting "required" attributes. 
+# 
+# 
 
 # %%
 # Define the JSON schema.  
@@ -273,7 +288,7 @@ with open(jsonSchemaFilePath, 'r') as schema_file:
     loaded_schema = json.loads(schema_file.read())
 
 text = '<details open><summary>MaterialX JSON Schema</summary>\n\n' + '```json\n' + json.dumps(schema, indent=2) + '\n```\n' + '</details>\n' 
-display_markdown(text, raw=True)    
+display_markdown(text, raw=True)
 
 # %% [markdown]
 # ## Validating MaterialX JSON with Schema 
