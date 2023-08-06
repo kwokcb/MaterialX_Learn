@@ -126,7 +126,6 @@ def main():
         print('Error initializing renderer')
         exit(-1)
 
-    print('Render documents: ', fileList)
     for fileName in fileList:
         fullSearchPath = searchPath
 
@@ -137,11 +136,10 @@ def main():
             continue
 
         try:
-            print('Try read: ' + fileName)
             mx.readFromXmlFile(doc, fileName)        
-            #valid, msg = doc.validate()
-            #if not valid:
-            #    raise mx.Exception(msg)
+            valid, msg = doc.validate()
+            if not valid:
+                raise mx.Exception(msg)
 
             fullSearchPath.append(os.path.dirname(fileName))   
 
