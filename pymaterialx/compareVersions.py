@@ -464,7 +464,7 @@ def printImplementationComparision(currLibrary, otherLibrary):
                 nd = impl2.getNodeDef()
                 if nd:
                     ns = nd.getNodeString()                
-            changedText = changedText + '| <a href="../documents/definitions/%s.html">%s</a> | ' % (ns, item)
+            changedText = changedText + '| <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/%s.html">%s</a> | ' % (ns, item)
             # Perform detailed comparison
             log = []
             difference = MaterialXCompare.compareElements(impl, impl2, '', log) 
