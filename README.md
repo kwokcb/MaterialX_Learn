@@ -16,7 +16,7 @@ See issues and project area for some of items on queue.
 
 ## Visit the site 
 <a href="https://kwokcb.github.io/MaterialX_Learn/">
-<img src="https://github.com/kwokcb/MaterialX_Learn/assets/49369885/b54c037e-2967-4f4c-ba32-33e4efc2e5a6" width="60%">
+<img src="https://github.com/kwokcb/MaterialX_Learn/blob/main/documents/images/auguest_update.png" width="60%">
 </a>
 
 ## Latest Updates (August 2023)
