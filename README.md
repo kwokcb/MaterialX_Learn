@@ -14,19 +14,17 @@ This is a complementary site for those interested in learning about or are integ
 Material will be constantly added over time. 
 See issues and project area for some of items on queue.
 
-## Latest Updates (May / June)
-* Minimal version is 1.38.7. Updates for 1.38.8 release as it progresses.
-* [Video tutorial](https://kwokcb.github.io/MaterialX_Learn/documents/python_MaterialX.html) for Visual Studio Code / Python / Jupyter setup.
-* Node definition: library usage and creation from graphs and source code.
-* Utilities packaging: `mtlxutils` and usage. 
-* Usd / MaterialX Graphing Comparison Tutorial
-* Usd / MaterialX / glTF interop Workflows.
-* Rendering Tutorial (WIP)
-
 ## Visit the site 
 <a href="https://kwokcb.github.io/MaterialX_Learn/">
-<img src="https://user-images.githubusercontent.com/49369885/216663255-fd7a8752-3256-4907-a60c-c7fff65f4304.png" width="60%">
+<img src="https://github.com/kwokcb/MaterialX_Learn/assets/49369885/b54c037e-2967-4f4c-ba32-33e4efc2e5a6" width="60%">
 </a>
+
+## Latest Updates (August 2023)
+* Continual sync to 1.38.8 release as it progresses.
+* Learning Pipeline Expose utilities for rendering, definition generation, graph generation etc. Improved graph visualization.
+* UX / UI: Design refresh and standardized display and improved graph interaction utilities.
+* New Tutorials: OCIO, Rendering, JSON Graphs, Document Comparison, Code Generation Targets, Github Copilot
+* Upcoming Khronos glTF <-> MaterialX interp updates.
 
 ## Repository Content
 The content for the site is provided in the following sub-folders:
@@ -35,6 +33,7 @@ The content for the site is provided in the following sub-folders:
 * [PyMaterialX](pymaterialx) Python Tutorials and sample Jupyter Notebooks and Python utilities (including [mxltutils](pymaterialx/mtlxutils))
 * [Resources](resources) Additional MaterialX resource files.
 
-Comments and suggestions for improving or providing new content are welcome.
+### How You Can Help
 
+Comments and ideas for improving or providing new content and contributions are always welcome.
 
