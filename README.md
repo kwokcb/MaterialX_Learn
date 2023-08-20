@@ -37,3 +37,5 @@ The content for the site is provided in the following sub-folders:
 
 Comments and ideas for improving or providing new content and contributions are always welcome.
 
+If you find value in here and want support its progress, I kindly invite you to consider sponsoring the project. 
+It will help to keep it going and evolve.
