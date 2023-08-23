@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <tiledhexagons name="tiledhexagons_color3" type="color3">
+    <input name="uvtiling" type="vector2" value="1.0, 1.0" />
+    <input name="uvoffset" type="vector2" value="0.0, 0.0" />
+    <input name="size" type="float" value="0.5" />
+    <input name="staggered" type="boolean" value="false" />
+  </tiledhexagons>
+  <convert name="shader_tiledhexagons_color3_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="tiledhexagons_color3" />
+  </convert>
+  <surfacematerial name="material_tiledhexagons_color3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_tiledhexagons_color3_out" />
+  </surfacematerial>
+</materialx>
