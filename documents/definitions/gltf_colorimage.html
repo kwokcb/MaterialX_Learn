@@ -618,8 +618,8 @@ graph LR;
     style NG_gltf_colorimage_fileINT fill:#0CF, color:#111
     NG_gltf_colorimage_dfaultINT([default]) ==.default==> NG_gltf_colorimage_image[gltf_image]
     style NG_gltf_colorimage_dfaultINT fill:#0CF, color:#111
-    NG_gltf_colorimage_uvindexINT([uvindex]) ==.uvindex==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_uvindexINT fill:#0CF, color:#111
+    NG_gltf_colorimage_texcoordINT([texcoord]) ==.texcoord==> NG_gltf_colorimage_image[gltf_image]
+    style NG_gltf_colorimage_texcoordINT fill:#0CF, color:#111
     NG_gltf_colorimage_pivotINT([pivot]) ==.pivot==> NG_gltf_colorimage_image[gltf_image]
     style NG_gltf_colorimage_pivotINT fill:#0CF, color:#111
     NG_gltf_colorimage_scaleINT([scale]) ==.scale==> NG_gltf_colorimage_image[gltf_image]
@@ -652,7 +652,7 @@ graph LR;
 <ul class="nav nav-pills" role="tablist">
 <li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_colorimage_file" type="button" role="tab" aria-controls="pills-ND_gltf_colorimage_file" aria-selected="true">file</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_colorimage_default" type="button" role="tab" aria-controls="pills-ND_gltf_colorimage_default" aria-selected="true">default</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_colorimage_uvindex" type="button" role="tab" aria-controls="pills-ND_gltf_colorimage_uvindex" aria-selected="true">uvindex</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_colorimage_texcoord" type="button" role="tab" aria-controls="pills-ND_gltf_colorimage_texcoord" aria-selected="true">texcoord</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_colorimage_pivot" type="button" role="tab" aria-controls="pills-ND_gltf_colorimage_pivot" aria-selected="true">pivot</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_colorimage_scale" type="button" role="tab" aria-controls="pills-ND_gltf_colorimage_scale" aria-selected="true">scale</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_colorimage_rotate" type="button" role="tab" aria-controls="pills-ND_gltf_colorimage_rotate" aria-selected="true">rotate</button></li>
@@ -743,23 +743,19 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_gltf_colorimage_uvindex"
-  role="tabpanel" aria-labelledby="pills-ND_gltf_colorimage_uvindex-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_gltf_colorimage_texcoord"
+  role="tabpanel" aria-labelledby="pills-ND_gltf_colorimage_texcoord-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="integer">
-   </div>
-   <div class="col-sm-2">
-     <label>Uniform</label>
-     <input type="checkbox" class="form-check-input form-check-sm" disabled checked>
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
    </div>
   </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
+          class="col-sm-2 col-form-label col-form-label-sm">Geometry Input: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input type="text" class="form-control form-control-sm" value="UV0" disabled>
       </div>
   </div>
 <div class="form-group row g-1">

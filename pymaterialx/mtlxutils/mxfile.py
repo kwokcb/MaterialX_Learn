@@ -87,3 +87,14 @@ class MtlxFile:
         writeOptions.elementPredicate = predicate
         documentContents = mx.writeToXmlString(doc, writeOptions)
         return documentContents
+    
+    @staticmethod
+    def removeLayout(element):
+        '''
+        Remove any layout attributes from all elements in a document
+        '''
+        layoutAttributes = ['xpos', 'ypos']
+
+        for elem in element.traverseTree():
+            for attr in layoutAttributes:
+                elem.removeAttribute(attr)

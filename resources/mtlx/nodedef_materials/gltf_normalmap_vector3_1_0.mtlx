@@ -3,7 +3,6 @@
   <gltf_normalmap name="gltf_normalmap_vector3_1_0" type="vector3" version="1.0">
     <input name="file" type="filename" uniform="true" value="" />
     <input name="default" type="vector3" value="0.5, 0.5, 1" />
-    <input name="uvindex" type="integer" uniform="true" value="0" />
     <input name="pivot" type="vector2" value="0, 1" />
     <input name="scale" type="vector2" value="1, 1" />
     <input name="rotate" type="float" value="0" unit="degree" unittype="angle" />
