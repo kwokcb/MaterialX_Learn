@@ -1,0 +1,93 @@
+{
+  "materialx": {
+    "colorspace": "lin_rec709",
+    "nodegraph:NG_marble1": {
+      "input:base_color_1": {
+        "type": "color3",
+        "uifolder": "Marble Color",
+        "uiname": "Color 1",
+        "value": "0.8, 0.8, 0.8"
+      },
+      "input:base_color_2": {
+        "type": "color3",
+        "uifolder": "Marble Color",
+        "uiname": "Color 2",
+        "value": "0.1, 0.1, 0.3"
+      },
+      "input:noise_octaves": {
+        "type": "integer",
+        "uifolder": "Marble Noise",
+        "uiname": "Octaves",
+        "uisoftmax": "8",
+        "uisoftmin": "1",
+        "value": "3"
+      },
+      "input:noise_power": {
+        "type": "float",
+        "uifolder": "Marble Noise",
+        "uiname": "Power",
+        "uisoftmax": "10.0",
+        "uisoftmin": "1.0",
+        "value": "3.0"
+      },
+      "input:noise_scale_1": {
+        "type": "float",
+        "uifolder": "Marble Noise",
+        "uiname": "Scale 1",
+        "uisoftmax": "10.0",
+        "uisoftmin": "1.0",
+        "value": "6.0"
+      },
+      "input:noise_scale_2": {
+        "type": "float",
+        "uifolder": "Marble Noise",
+        "uiname": "Scale 2",
+        "uisoftmax": "10.0",
+        "uisoftmin": "1.0",
+        "value": "4.0"
+      },
+      "output:out": {
+        "nodename": "color_mix",
+        "type": "color3"
+      }
+    },
+    "standard_surface:SR_marble1": {
+      "input:base": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:base_color": {
+        "nodegraph": "NG_marble1",
+        "output": "out",
+        "type": "color3"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "value": "0.1"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0.4"
+      },
+      "input:subsurface_color": {
+        "nodegraph": "NG_marble1",
+        "output": "out",
+        "type": "color3"
+      },
+      "type": "surfaceshader",
+      "xpos": "13.768116",
+      "ypos": "-0.672414"
+    },
+    "surfacematerial:Marble_3D": {
+      "input:surfaceshader": {
+        "nodename": "SR_marble1",
+        "type": "surfaceshader"
+      },
+      "type": "material",
+      "xpos": "17.391304",
+      "ypos": "0.000000"
+    },
+    "version": "1.38"
+  },
+  "mimetype": "application/mtlx+json"
+}

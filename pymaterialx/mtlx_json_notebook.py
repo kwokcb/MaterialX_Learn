@@ -137,7 +137,7 @@ for ng in graphs:
 # Get interfaces as an XML string
 xml_string = mxf.MtlxFile.writeDocumentToString(xmldoc)
 
-text = '<details open><summary>Extracted MaterialX Nodegraphs in XML</summary>\n\n' + '```xml\n' + xml_string + '\n```\n' + '</details>\n' 
+text = '<details><summary>Extracted MaterialX Nodegraphs in XML</summary>\n\n' + '```xml\n' + xml_string + '\n```\n' + '</details>\n' 
 display_markdown(text, raw=True)
 
 # %% [markdown]
@@ -150,15 +150,135 @@ display_markdown(text, raw=True)
 
 # %%
 # Build JSON from XML
-python_dict = xmltodict.parse(xml_string)
+options = {
+    'attr_prefix': '',          # Set prefix for attributes
+}
+python_dict = xmltodict.parse(xml_string, **options)
 json_string = json.dumps(python_dict)
 json_string_fmt = json.dumps(python_dict, indent=2)
 
-text = '<details open><summary>MaterialX in JSON</summary>\n\n' + '```json\n' + json_string_fmt + '\n```\n' + '</details>\n' 
+text = '<details><summary>MaterialX in JSON</summary>\n\n' + '```json\n' + json_string_fmt + '\n```\n' + '</details>\n' 
 display_markdown(text, raw=True)
 
 with open('mtlx_brick.json', 'w') as jsonfile:
     jsonfile.write(json_string_fmt)
+
+# %% [markdown]
+# ## Explicit Conversion
+# 
+# The desire is to introduce a standardized JSON representation for MaterialX. For this a match for what is supported for XML is required.
+# 
+# XML is supported via the `MaterialXFormat` library. This this JSON can be added.
+# 
+# For this book, we will create a bidirectional conversion between XML and JSON. Thus instead of 
+# a non-standard conversion using a generic converter like `xmltodict` we will the logic in these scripts (and eventually 
+# the `MaterialXFormat` library) for JSON conversion.
+# 
+# Some key factors to consider include:
+# 1. The JSON representation should be a direct match to the XML representation.
+# 2. The JSON representation should match the XML size as closely as possible.
+# 3. Export and import options for XML should be supported for JSON.
+# 4. There is no concept of "includes" in JSON. This is a concept specific to XML.
+
+# %% [markdown]
+# #### Conversion of XML to JSON
+# 
+# In this example two functions are defined:
+# 
+# 1. documentToJSON : Converts a MaterialX document to a JSON string.
+# 2. elementToJSON : Converts a MaterialX element to a JSON string, and traverses the element tree.
+
+# %%
+JSON_CATEGORY_NAME_SEPARATOR = ':'
+MATERIALX_DOCUMENT_ROOT = 'materialx'
+
+def elementToJSON(elem, jsonParent):
+    '''
+    Convert an MaterialX XML element to JSON.
+    Will recursively traverse the parent/child Element hierarchy.
+    '''
+    if (elem.getSourceUri() != ""):
+        return
+    jsonElem = {}
+
+    # Add attributes
+    for attrName in elem.getAttributeNames():
+        jsonElem[attrName] = elem.getAttribute(attrName)
+
+    # Add children
+    for child in elem.getChildren():
+        jsonElem = elementToJSON(child, jsonElem)
+    
+    # Set parent element connection
+    jsonParent[elem.getCategory() + JSON_CATEGORY_NAME_SEPARATOR + elem.getName()] = jsonElem
+    return jsonParent
+
+def documentToJSON(doc):
+    '''Convert an MaterialX XML document to JSON'''
+    root = {}
+    root["materialx"] = {}
+
+    for attrName in doc.getAttributeNames():
+        root[attrName] =  doc.getAttribute(attrName)
+
+    for elem in doc.getChildren():
+        elementToJSON(elem, root[MATERIALX_DOCUMENT_ROOT])
+
+    result = json.dumps(root, indent=2)
+    return result
+
+result = documentToJSON(doc)
+text = '<details><summary>Explicit Conversion to JSON</summary>\n\n' + '```json\n' + result  + '\n```\n' + '</details>\n' 
+display_markdown(text, raw=True)
+
+# %% [markdown]
+# #### Conversion of JSON to MaterialX
+# 
+
+# %%
+JSON_CATEGORY_NAME_SEPARATOR = ":"
+
+def elementFromJSON(node, elem):
+    '''
+    Convert an JSON element to MaterialX
+    '''
+    for key in node:
+        value = node[key]
+
+        # Set attributes            
+        if isinstance(value, str):
+            elem.setAttribute(key, str(value))
+
+        # Traverse chilren
+        else:
+            # Traverse down from root
+            if key == MATERIALX_DOCUMENT_ROOT:
+                elementFromJSON(value, elem)
+                continue
+
+            # Split key name by ":" to get category and name
+            category, name = key.split(JSON_CATEGORY_NAME_SEPARATOR, 1)
+            if category and not elem.getChild(name):
+                child = elem.addChildOfCategory(category, name)
+                elementFromJSON(value, child)
+
+def documentFromJSON(jsonDoc, doc):
+    '''
+    Convert a JSON document to MaterialX
+    '''
+    elementFromJSON(jsonDoc, doc)
+
+# Create new document from JSON
+newDoc = mx.createDocument() 
+jsonObject = json.loads(result)
+documentFromJSON(jsonObject, newDoc)
+# Upgrade element version
+valid, errors = newDoc.validate()
+newDoc.upgradeVersion()
+
+newDocString = mx.writeToXmlString(newDoc)    
+text = '<details><summary>Explicit Conversion from JSON</summary>\n\n' + '```xml\n' + newDocString  + '\n```\n' + '</details>\n' 
+display_markdown(text, raw=True)
 
 # %% [markdown]
 # ## Obtaining a JSON Schema for MaterialX 
@@ -181,18 +301,18 @@ schema = {
     "port": {
       "type": "object",
       "properties": {
-        "@name": {
+        "name": {
           "type": "string"
         },
-        "@type": {
+        "type": {
           "type": "string",
           "enum": ["float", "vector2", "vector3", "vector4", "color3", "color4", "bool", "integer", "filename"]
         },
-        "@nodename": {
+        "nodename": {
           "type": "string"
         }
       },
-      "required": ["@name", "@type"]
+      "required": ["name", "type"]
     },
     "inputPort": {
       "allOf": [
@@ -201,29 +321,29 @@ schema = {
         },
         {
           "properties": {
-            "@value": {
+            "value": {
                "type" : "string"
             },
-            "@uiname": {
+            "uiname": {
               "type": "string"
             },
-            "@uifolder": {
+            "uifolder": {
               "type": "string"
             },
-            "@uimin": {
+            "uimin": {
               "type": "string"
             },
-            "@uimax": {
+            "uimax": {
               "type": "string"
             },
-            "@uisoftmin": {
+            "uisoftmin": {
               "type": "string"
             },
-            "@uisoftmax": {
+            "uisoftmax": {
               "type": "string"
             }
           },
-          "required": ["@value"]
+          "required": ["value"]
         }
       ]
     },
@@ -237,7 +357,7 @@ schema = {
     "nodegraph": {
       "type": "object",
       "properties": {
-        "@name": {
+        "name": {
           "type": "string"
         },
         "input": {
@@ -253,7 +373,7 @@ schema = {
           }
         }
       },
-      "required": ["@name", "input", "output"]
+      "required": ["name", "input", "output"]
     },
     "materialx": {
       "type": "object",
@@ -265,7 +385,7 @@ schema = {
           "$ref": "#/definitions/nodegraph"
         }
       },
-      "required": ["@version", "nodegraph"]
+      "required": ["version", "nodegraph"]
     }
   },
   "type": "object",
@@ -287,7 +407,7 @@ loaded_schema = {}
 with open(jsonSchemaFilePath, 'r') as schema_file:
     loaded_schema = json.loads(schema_file.read())
 
-text = '<details open><summary>MaterialX JSON Schema</summary>\n\n' + '```json\n' + json.dumps(schema, indent=2) + '\n```\n' + '</details>\n' 
+text = '<details><summary>MaterialX JSON Schema</summary>\n\n' + '```json\n' + json.dumps(schema, indent=2) + '\n```\n' + '</details>\n' 
 display_markdown(text, raw=True)
 
 # %% [markdown]
