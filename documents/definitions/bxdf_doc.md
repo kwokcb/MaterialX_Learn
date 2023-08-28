@@ -315,8 +315,8 @@ graph LR;
     style NG_gltf_colorimage_fileINT fill:#0CF, color:#111
     NG_gltf_colorimage_dfaultINT([default]) ==.default==> NG_gltf_colorimage_image[gltf_image]
     style NG_gltf_colorimage_dfaultINT fill:#0CF, color:#111
-    NG_gltf_colorimage_uvindexINT([uvindex]) ==.uvindex==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_uvindexINT fill:#0CF, color:#111
+    NG_gltf_colorimage_texcoordINT([texcoord]) ==.texcoord==> NG_gltf_colorimage_image[gltf_image]
+    style NG_gltf_colorimage_texcoordINT fill:#0CF, color:#111
     NG_gltf_colorimage_pivotINT([pivot]) ==.pivot==> NG_gltf_colorimage_image[gltf_image]
     style NG_gltf_colorimage_pivotINT fill:#0CF, color:#111
     NG_gltf_colorimage_scaleINT([scale]) ==.scale==> NG_gltf_colorimage_image[gltf_image]
@@ -346,7 +346,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **file** | filename |  |  |  |  |  |  |  | Image |  |  | true |
 | **default** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  | Image |  |  |  |
-| **uvindex** | integer | 0 |  |  |  |  |  |  | Image |  |  | true |
+| **texcoord** | vector2 | None |  |  |  |  |  |  | Image |  |  |  |
 | **pivot** | vector2 | 0, 1 |  |  |  |  |  |  | Image |  |  |  |
 | **scale** | vector2 | 1, 1 |  |  |  |  |  |  | Image |  |  |  |
 | **rotate** | float | 0.0 |  | 0 | 360 |  |  |  | Image |  |  |  |
@@ -391,13 +391,12 @@ graph LR;
     NG_NG_gltf_image_color3_color3_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_NG_gltf_image_color3_color3_1_0_image[image]
     style NG_NG_gltf_image_color3_color3_1_0_filtertypeINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_place2d[place2d] --".texcoord"--> NG_NG_gltf_image_color3_color3_1_0_image[image]
+    NG_NG_gltf_image_color3_color3_1_0_texcoordINT([texcoord]) ==.texcoord==> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
+    style NG_NG_gltf_image_color3_color3_1_0_texcoordINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_pivotINT([pivot]) ==.pivot==> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
     style NG_NG_gltf_image_color3_color3_1_0_pivotINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
     style NG_NG_gltf_image_color3_color3_1_0_operationorderINT fill:#0CF, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_texcoord1[texcoord] --".texcoord"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
-    NG_NG_gltf_image_color3_color3_1_0_uvindexINT([uvindex]) ==.index==> NG_NG_gltf_image_color3_color3_1_0_texcoord1[texcoord]
-    style NG_NG_gltf_image_color3_color3_1_0_uvindexINT fill:#0CF, color:#111
     NG_NG_gltf_image_color3_color3_1_0_invert_scale[divide] --".scale"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
     NG_NG_gltf_image_color3_color3_1_0_scaleINT([scale]) ==.in2==> NG_NG_gltf_image_color3_color3_1_0_invert_scale[divide]
     style NG_NG_gltf_image_color3_color3_1_0_scaleINT fill:#0CF, color:#111
@@ -416,7 +415,7 @@ graph LR;
 | **file** | filename |  |  |  |  |  |  |  |  |  |  | true |
 | **factor** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **default** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| **uvindex** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | vector2 | 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **scale** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **rotate** | float | 0.0 |  | 0 | 360 |  |  |  |  |  |  |  |
@@ -457,13 +456,12 @@ graph LR;
     NG_gltf_image_color4_color4_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_image_color4_color4_1_0_image[image]
     style NG_gltf_image_color4_color4_1_0_filtertypeINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_place2d[place2d] --".texcoord"--> NG_gltf_image_color4_color4_1_0_image[image]
+    NG_gltf_image_color4_color4_1_0_texcoordINT([texcoord]) ==.texcoord==> NG_gltf_image_color4_color4_1_0_place2d[place2d]
+    style NG_gltf_image_color4_color4_1_0_texcoordINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_image_color4_color4_1_0_place2d[place2d]
     style NG_gltf_image_color4_color4_1_0_pivotINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_image_color4_color4_1_0_place2d[place2d]
     style NG_gltf_image_color4_color4_1_0_operationorderINT fill:#0CF, color:#111
-    NG_gltf_image_color4_color4_1_0_texcoord1[texcoord] --".texcoord"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
-    NG_gltf_image_color4_color4_1_0_uvindexINT([uvindex]) ==.index==> NG_gltf_image_color4_color4_1_0_texcoord1[texcoord]
-    style NG_gltf_image_color4_color4_1_0_uvindexINT fill:#0CF, color:#111
     NG_gltf_image_color4_color4_1_0_invert_scale[divide] --".scale"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
     NG_gltf_image_color4_color4_1_0_scaleINT([scale]) ==.in2==> NG_gltf_image_color4_color4_1_0_invert_scale[divide]
     style NG_gltf_image_color4_color4_1_0_scaleINT fill:#0CF, color:#111
@@ -482,7 +480,7 @@ graph LR;
 | **file** | filename |  |  |  |  |  |  |  |  |  |  | true |
 | **factor** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **default** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| **uvindex** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | vector2 | 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **scale** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **rotate** | float | 0.0 |  | 0 | 360 |  |  |  |  |  |  |  |
@@ -523,13 +521,12 @@ graph LR;
     NG_gltf_image_float_float_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_image_float_float_1_0_image[image]
     style NG_gltf_image_float_float_1_0_filtertypeINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_place2d[place2d] --".texcoord"--> NG_gltf_image_float_float_1_0_image[image]
+    NG_gltf_image_float_float_1_0_texcoordINT([texcoord]) ==.texcoord==> NG_gltf_image_float_float_1_0_place2d[place2d]
+    style NG_gltf_image_float_float_1_0_texcoordINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_image_float_float_1_0_place2d[place2d]
     style NG_gltf_image_float_float_1_0_pivotINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_image_float_float_1_0_place2d[place2d]
     style NG_gltf_image_float_float_1_0_operationorderINT fill:#0CF, color:#111
-    NG_gltf_image_float_float_1_0_texcoord1[texcoord] --".texcoord"--> NG_gltf_image_float_float_1_0_place2d[place2d]
-    NG_gltf_image_float_float_1_0_uvindexINT([uvindex]) ==.index==> NG_gltf_image_float_float_1_0_texcoord1[texcoord]
-    style NG_gltf_image_float_float_1_0_uvindexINT fill:#0CF, color:#111
     NG_gltf_image_float_float_1_0_invert_scale[divide] --".scale"--> NG_gltf_image_float_float_1_0_place2d[place2d]
     NG_gltf_image_float_float_1_0_scaleINT([scale]) ==.in2==> NG_gltf_image_float_float_1_0_invert_scale[divide]
     style NG_gltf_image_float_float_1_0_scaleINT fill:#0CF, color:#111
@@ -548,7 +545,7 @@ graph LR;
 | **file** | filename |  |  |  |  |  |  |  |  |  |  | true |
 | **factor** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **default** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **uvindex** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | vector2 | 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **scale** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **rotate** | float | 0.0 |  | 0 | 360 |  |  |  |  |  |  |  |
@@ -586,13 +583,12 @@ graph LR;
     NG_gltf_image_vector3_vector3_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_image_vector3_vector3_1_0_image[image]
     style NG_gltf_image_vector3_vector3_1_0_filtertypeINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_place2d[place2d] --".texcoord"--> NG_gltf_image_vector3_vector3_1_0_image[image]
+    NG_gltf_image_vector3_vector3_1_0_texcoordINT([texcoord]) ==.texcoord==> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
+    style NG_gltf_image_vector3_vector3_1_0_texcoordINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
     style NG_gltf_image_vector3_vector3_1_0_pivotINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
     style NG_gltf_image_vector3_vector3_1_0_operationorderINT fill:#0CF, color:#111
-    NG_gltf_image_vector3_vector3_1_0_texcoord1[texcoord] --".texcoord"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
-    NG_gltf_image_vector3_vector3_1_0_uvindexINT([uvindex]) ==.index==> NG_gltf_image_vector3_vector3_1_0_texcoord1[texcoord]
-    style NG_gltf_image_vector3_vector3_1_0_uvindexINT fill:#0CF, color:#111
     NG_gltf_image_vector3_vector3_1_0_invert_scale[divide] --".scale"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
     NG_gltf_image_vector3_vector3_1_0_scaleINT([scale]) ==.in2==> NG_gltf_image_vector3_vector3_1_0_invert_scale[divide]
     style NG_gltf_image_vector3_vector3_1_0_scaleINT fill:#0CF, color:#111
@@ -610,7 +606,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **file** | filename |  |  |  |  |  |  |  |  |  |  | true |
 | **default** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| **uvindex** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | vector2 | 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **scale** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **rotate** | float | 0.0 |  | 0 | 360 |  |  |  |  |  |  |  |
@@ -650,13 +646,12 @@ graph LR;
     NG_gltf_normalmap_vector3_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_normalmap_vector3_1_0_image[image]
     style NG_gltf_normalmap_vector3_1_0_filtertypeINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_place2d[place2d] --".texcoord"--> NG_gltf_normalmap_vector3_1_0_image[image]
+    NG_gltf_normalmap_vector3_1_0_texcoordINT([texcoord]) ==.texcoord==> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
+    style NG_gltf_normalmap_vector3_1_0_texcoordINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
     style NG_gltf_normalmap_vector3_1_0_pivotINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
     style NG_gltf_normalmap_vector3_1_0_operationorderINT fill:#0CF, color:#111
-    NG_gltf_normalmap_vector3_1_0_texcoord1[texcoord] --".texcoord"--> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
-    NG_gltf_normalmap_vector3_1_0_uvindexINT([uvindex]) ==.index==> NG_gltf_normalmap_vector3_1_0_texcoord1[texcoord]
-    style NG_gltf_normalmap_vector3_1_0_uvindexINT fill:#0CF, color:#111
     NG_gltf_normalmap_vector3_1_0_invert_scale[divide] --".scale"--> NG_gltf_normalmap_vector3_1_0_place2d[place2d]
     NG_gltf_normalmap_vector3_1_0_scaleINT([scale]) ==.in2==> NG_gltf_normalmap_vector3_1_0_invert_scale[divide]
     style NG_gltf_normalmap_vector3_1_0_scaleINT fill:#0CF, color:#111
@@ -674,7 +669,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **file** | filename |  |  |  |  |  |  |  |  |  |  | true |
 | **default** | vector3 | 0.5, 0.5, 1 |  |  |  |  |  |  |  |  |  |  |
-| **uvindex** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | vector2 | 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **scale** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **rotate** | float | 0.0 |  | 0 | 360 |  |  |  |  |  |  |  |
@@ -712,8 +707,8 @@ graph LR;
     style NG_gltf_iridescence_thickness_float_1_0_fileINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_dfaultINT([default]) ==.default==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
     style NG_gltf_iridescence_thickness_float_1_0_dfaultINT fill:#0CF, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_uvindexINT([uvindex]) ==.uvindex==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_uvindexINT fill:#0CF, color:#111
+    NG_gltf_iridescence_thickness_float_1_0_texcoordINT([texcoord]) ==.texcoord==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
+    style NG_gltf_iridescence_thickness_float_1_0_texcoordINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
     style NG_gltf_iridescence_thickness_float_1_0_pivotINT fill:#0CF, color:#111
     NG_gltf_iridescence_thickness_float_1_0_scaleINT([scale]) ==.scale==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
@@ -736,7 +731,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **file** | filename |  |  |  |  |  |  |  | Image |  |  | true |
 | **default** | vector3 | 0, 0, 0 |  |  |  |  |  |  | Image |  |  |  |
-| **uvindex** | integer | 0 |  |  |  |  |  |  | Image |  |  | true |
+| **texcoord** | vector2 | None |  |  |  |  |  |  | Image |  |  |  |
 | **pivot** | vector2 | 0, 0 |  |  |  |  |  |  | Image |  |  |  |
 | **scale** | vector2 | 1, 1 |  |  |  |  |  |  | Image |  |  |  |
 | **rotate** | float | 0.0 |  |  |  |  |  |  | Image |  |  |  |

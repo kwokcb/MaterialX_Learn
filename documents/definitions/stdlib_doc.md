@@ -3517,33 +3517,23 @@ graph LR;
 
 ```mermaid
 graph LR; 
-    NG_checkerboard_color3_N_mix_color3[mix] --> NG_checkerboard_color3_out([out])
+    NG_checkerboard_color3_N_mtlxmix[mix] --> NG_checkerboard_color3_out([out])
     style NG_checkerboard_color3_out fill:#0C0, color:#111
-    NG_checkerboard_color3_color2INT([color2]) ==.bg==> NG_checkerboard_color3_N_mix_color3[mix]
+    NG_checkerboard_color3_color2INT([color2]) ==.bg==> NG_checkerboard_color3_N_mtlxmix[mix]
     style NG_checkerboard_color3_color2INT fill:#0CF, color:#111
-    NG_checkerboard_color3_color1INT([color1]) ==.fg==> NG_checkerboard_color3_N_mix_color3[mix]
+    NG_checkerboard_color3_color1INT([color1]) ==.fg==> NG_checkerboard_color3_N_mtlxmix[mix]
     style NG_checkerboard_color3_color1INT fill:#0CF, color:#111
-    NG_checkerboard_color3_N_mtlxifequal2{ifequal} --".mix"--> NG_checkerboard_color3_N_mix_color3[mix]
-    NG_checkerboard_color3_N_mtlxadd2[add] --".value1"--> NG_checkerboard_color3_N_mtlxifequal2{ifequal}
-    style NG_checkerboard_color3_N_mtlxifequal2 fill:#F80, color:#111
-    NG_checkerboard_color3_N_mtlxfloor2[floor] --".in1"--> NG_checkerboard_color3_N_mtlxadd2[add]
-    NG_checkerboard_color3_N_mtlxmodulo1[modulo] --".in"--> NG_checkerboard_color3_N_mtlxfloor2[floor]
-    NG_checkerboard_color3_N_mtlxseparate2[separate2] --> NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx([outx])
-    style NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx fill:#0C0, color:#111
-    NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx --".in1"--> NG_checkerboard_color3_N_mtlxmodulo1[modulo]
-    NG_checkerboard_color3_N_mtlxplace2d1[place2d] --".in"--> NG_checkerboard_color3_N_mtlxseparate2[separate2]
-    NG_checkerboard_color3_offsetINT([offset]) ==.offset==> NG_checkerboard_color3_N_mtlxplace2d1[place2d]
-    style NG_checkerboard_color3_offsetINT fill:#0CF, color:#111
-    NG_checkerboard_color3_N_mult[multiply] --".texcoord"--> NG_checkerboard_color3_N_mtlxplace2d1[place2d]
-    NG_checkerboard_color3_texcoordINT([texcoord]) ==.in1==> NG_checkerboard_color3_N_mult[multiply]
+    NG_checkerboard_color3_N_modulo[modulo] --".mix"--> NG_checkerboard_color3_N_mtlxmix[mix]
+    NG_checkerboard_color3_N_mtlxdotproduct[dotproduct] --".in1"--> NG_checkerboard_color3_N_modulo[modulo]
+    NG_checkerboard_color3_N_mtlxfloor[floor] --".in1"--> NG_checkerboard_color3_N_mtlxdotproduct[dotproduct]
+    NG_checkerboard_color3_N_mtlxsubtract[subtract] --".in"--> NG_checkerboard_color3_N_mtlxfloor[floor]
+    NG_checkerboard_color3_uvoffsetINT([uvoffset]) ==.in2==> NG_checkerboard_color3_N_mtlxsubtract[subtract]
+    style NG_checkerboard_color3_uvoffsetINT fill:#0CF, color:#111
+    NG_checkerboard_color3_N_mtlxmult[multiply] --".in1"--> NG_checkerboard_color3_N_mtlxsubtract[subtract]
+    NG_checkerboard_color3_texcoordINT([texcoord]) ==.in1==> NG_checkerboard_color3_N_mtlxmult[multiply]
     style NG_checkerboard_color3_texcoordINT fill:#0CF, color:#111
-    NG_checkerboard_color3_freqINT([freq]) ==.in2==> NG_checkerboard_color3_N_mult[multiply]
-    style NG_checkerboard_color3_freqINT fill:#0CF, color:#111
-    NG_checkerboard_color3_N_mtlxfloor3[floor] --".in2"--> NG_checkerboard_color3_N_mtlxadd2[add]
-    NG_checkerboard_color3_N_mtlxmodulo2[modulo] --".in"--> NG_checkerboard_color3_N_mtlxfloor3[floor]
-    NG_checkerboard_color3_N_mtlxseparate2[separate2] --> NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy([outy])
-    style NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy fill:#0C0, color:#111
-    NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy --".in1"--> NG_checkerboard_color3_N_mtlxmodulo2[modulo]
+    NG_checkerboard_color3_uvtilingINT([uvtiling]) ==.in2==> NG_checkerboard_color3_N_mtlxmult[multiply]
+    style NG_checkerboard_color3_uvtilingINT fill:#0CF, color:#111
 
 ```
  
@@ -3552,8 +3542,8 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **color1** | color3 | 1, 1, 1 | Color 1 |  |  |  |  |  |  |  | The first color used in the checkerboard pattern. |  |
 | **color2** | color3 | 0, 0, 0 | Color 2 |  |  |  |  |  |  |  | The second color used in the checkerboard pattern. |  |
-| **freq** | vector2 | 8, 8 | Frequency |  |  |  |  |  |  |  | The frequency of checkers, with higher values producing smaller squares. Default is (8, 8). |  |
-| **offset** | vector2 | 0, 0 | Offset |  |  |  |  |  |  |  | Shift the pattern in 2d space. Default is (0, 0). |  |
+| **uvtiling** | vector2 | 8, 8 | UV Tiling |  |  |  |  |  |  |  | The tiling of the checkerboard pattern along each axis, with higher values producing smaller squares. Default is (8, 8). |  |
+| **uvoffset** | vector2 | 0, 0 | UV Offset |  |  |  |  |  |  |  | The offset of the checkerboard pattern along each axis. Default is (0, 0). |  |
 | **texcoord** | vector2 | None | Texture Coordinates |  |  |  |  |  |  |  | The input 2d space. Default is the first texture coordinates. |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>

@@ -4,7 +4,6 @@
     <input name="file" type="filename" uniform="true" value="" />
     <input name="factor" type="color3" value="1,1,1" />
     <input name="default" type="color3" value="0, 0, 0" />
-    <input name="uvindex" type="integer" uniform="true" value="0" />
     <input name="pivot" type="vector2" value="0, 1" />
     <input name="scale" type="vector2" value="1, 1" />
     <input name="rotate" type="float" value="0" unit="degree" unittype="angle" />

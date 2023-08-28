@@ -590,33 +590,23 @@ Category: checkerboard
 </div>
 <div id="ND_checkerboard_color3_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 
-    NG_checkerboard_color3_N_mix_color3[mix] --> NG_checkerboard_color3_out([out])
+    NG_checkerboard_color3_N_mtlxmix[mix] --> NG_checkerboard_color3_out([out])
     style NG_checkerboard_color3_out fill:#0C0, color:#111
-    NG_checkerboard_color3_color2INT([color2]) ==.bg==> NG_checkerboard_color3_N_mix_color3[mix]
+    NG_checkerboard_color3_color2INT([color2]) ==.bg==> NG_checkerboard_color3_N_mtlxmix[mix]
     style NG_checkerboard_color3_color2INT fill:#0CF, color:#111
-    NG_checkerboard_color3_color1INT([color1]) ==.fg==> NG_checkerboard_color3_N_mix_color3[mix]
+    NG_checkerboard_color3_color1INT([color1]) ==.fg==> NG_checkerboard_color3_N_mtlxmix[mix]
     style NG_checkerboard_color3_color1INT fill:#0CF, color:#111
-    NG_checkerboard_color3_N_mtlxifequal2{ifequal} --".mix"--> NG_checkerboard_color3_N_mix_color3[mix]
-    NG_checkerboard_color3_N_mtlxadd2[add] --".value1"--> NG_checkerboard_color3_N_mtlxifequal2{ifequal}
-    style NG_checkerboard_color3_N_mtlxifequal2 fill:#F80, color:#111
-    NG_checkerboard_color3_N_mtlxfloor2[floor] --".in1"--> NG_checkerboard_color3_N_mtlxadd2[add]
-    NG_checkerboard_color3_N_mtlxmodulo1[modulo] --".in"--> NG_checkerboard_color3_N_mtlxfloor2[floor]
-    NG_checkerboard_color3_N_mtlxseparate2[separate2] --> NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx([outx])
-    style NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx fill:#0C0, color:#111
-    NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outx --".in1"--> NG_checkerboard_color3_N_mtlxmodulo1[modulo]
-    NG_checkerboard_color3_N_mtlxplace2d1[place2d] --".in"--> NG_checkerboard_color3_N_mtlxseparate2[separate2]
-    NG_checkerboard_color3_offsetINT([offset]) ==.offset==> NG_checkerboard_color3_N_mtlxplace2d1[place2d]
-    style NG_checkerboard_color3_offsetINT fill:#0CF, color:#111
-    NG_checkerboard_color3_N_mult[multiply] --".texcoord"--> NG_checkerboard_color3_N_mtlxplace2d1[place2d]
-    NG_checkerboard_color3_texcoordINT([texcoord]) ==.in1==> NG_checkerboard_color3_N_mult[multiply]
+    NG_checkerboard_color3_N_modulo[modulo] --".mix"--> NG_checkerboard_color3_N_mtlxmix[mix]
+    NG_checkerboard_color3_N_mtlxdotproduct[dotproduct] --".in1"--> NG_checkerboard_color3_N_modulo[modulo]
+    NG_checkerboard_color3_N_mtlxfloor[floor] --".in1"--> NG_checkerboard_color3_N_mtlxdotproduct[dotproduct]
+    NG_checkerboard_color3_N_mtlxsubtract[subtract] --".in"--> NG_checkerboard_color3_N_mtlxfloor[floor]
+    NG_checkerboard_color3_uvoffsetINT([uvoffset]) ==.in2==> NG_checkerboard_color3_N_mtlxsubtract[subtract]
+    style NG_checkerboard_color3_uvoffsetINT fill:#0CF, color:#111
+    NG_checkerboard_color3_N_mtlxmult[multiply] --".in1"--> NG_checkerboard_color3_N_mtlxsubtract[subtract]
+    NG_checkerboard_color3_texcoordINT([texcoord]) ==.in1==> NG_checkerboard_color3_N_mtlxmult[multiply]
     style NG_checkerboard_color3_texcoordINT fill:#0CF, color:#111
-    NG_checkerboard_color3_freqINT([freq]) ==.in2==> NG_checkerboard_color3_N_mult[multiply]
-    style NG_checkerboard_color3_freqINT fill:#0CF, color:#111
-    NG_checkerboard_color3_N_mtlxfloor3[floor] --".in2"--> NG_checkerboard_color3_N_mtlxadd2[add]
-    NG_checkerboard_color3_N_mtlxmodulo2[modulo] --".in"--> NG_checkerboard_color3_N_mtlxfloor3[floor]
-    NG_checkerboard_color3_N_mtlxseparate2[separate2] --> NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy([outy])
-    style NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy fill:#0C0, color:#111
-    NG_checkerboard_color3_NG_checkerboard_color3_N_mtlxseparate2outy --".in1"--> NG_checkerboard_color3_N_mtlxmodulo2[modulo]
+    NG_checkerboard_color3_uvtilingINT([uvtiling]) ==.in2==> NG_checkerboard_color3_N_mtlxmult[multiply]
+    style NG_checkerboard_color3_uvtilingINT fill:#0CF, color:#111
 
 
 
@@ -628,8 +618,8 @@ graph LR;
 <ul class="nav nav-pills" role="tablist">
 <li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_checkerboard_color3_color1" type="button" role="tab" aria-controls="pills-ND_checkerboard_color3_color1" aria-selected="true">color1</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_checkerboard_color3_color2" type="button" role="tab" aria-controls="pills-ND_checkerboard_color3_color2" aria-selected="true">color2</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_checkerboard_color3_freq" type="button" role="tab" aria-controls="pills-ND_checkerboard_color3_freq" aria-selected="true">freq</button></li>
-<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_checkerboard_color3_offset" type="button" role="tab" aria-controls="pills-ND_checkerboard_color3_offset" aria-selected="true">offset</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_checkerboard_color3_uvtiling" type="button" role="tab" aria-controls="pills-ND_checkerboard_color3_uvtiling" aria-selected="true">uvtiling</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_checkerboard_color3_uvoffset" type="button" role="tab" aria-controls="pills-ND_checkerboard_color3_uvoffset" aria-selected="true">uvoffset</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_checkerboard_color3_texcoord" type="button" role="tab" aria-controls="pills-ND_checkerboard_color3_texcoord" aria-selected="true">texcoord</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_checkerboard_color3_out" type="button" role="tab" aria-controls="pills-ND_checkerboard_color3_out" aria-selected="true"><b>out</b></button></li>
 </ul>
@@ -725,13 +715,13 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_checkerboard_color3_freq"
-  role="tabpanel" aria-labelledby="pills-ND_checkerboard_color3_freq-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_checkerboard_color3_uvtiling"
+  role="tabpanel" aria-labelledby="pills-ND_checkerboard_color3_uvtiling-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
     <div class="col-sm-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>The frequency of checkers, with higher values producing smaller squares. Default is (8, 8). </textarea>
+        style="resize: none;" disabled>The tiling of the checkerboard pattern along each axis, with higher values producing smaller squares. Default is (8, 8). </textarea>
     </div>
   </div>
   <div class="form-group row g-2">
@@ -752,7 +742,7 @@ graph LR;
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">UI Name / Folder / Advanced:</label>
  <div class="col-sm-2">
-  <input type="text" class="form-control form-control-sm" value="Frequency" disabled>
+  <input type="text" class="form-control form-control-sm" value="UV Tiling" disabled>
  </div>
  <div class="col-sm-2">
   <input type="text" class="form-control form-control-sm" value="none" disabled>
@@ -764,13 +754,13 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_checkerboard_color3_offset"
-  role="tabpanel" aria-labelledby="pills-ND_checkerboard_color3_offset-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_checkerboard_color3_uvoffset"
+  role="tabpanel" aria-labelledby="pills-ND_checkerboard_color3_uvoffset-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
     <div class="col-sm-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>Shift the pattern in 2d space. Default is (0, 0). </textarea>
+        style="resize: none;" disabled>The offset of the checkerboard pattern along each axis. Default is (0, 0). </textarea>
     </div>
   </div>
   <div class="form-group row g-2">
@@ -791,7 +781,7 @@ graph LR;
 <div class="form-group row g-1">
 <label class="col-sm-2 col-form-label col-form-label-sm">UI Name / Folder / Advanced:</label>
  <div class="col-sm-2">
-  <input type="text" class="form-control form-control-sm" value="Offset" disabled>
+  <input type="text" class="form-control form-control-sm" value="UV Offset" disabled>
  </div>
  <div class="col-sm-2">
   <input type="text" class="form-control form-control-sm" value="none" disabled>
