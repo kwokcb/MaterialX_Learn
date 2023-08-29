@@ -23,7 +23,7 @@ See issues and project area for some of items on queue.
 * Continual sync to 1.38.8 release as it progresses.
 * Learning Pipeline Expose utilities for rendering, definition generation, graph generation etc. Improved graph visualization.
 * UX / UI: Design refresh and standardized display and improved graph interaction utilities.
-* New Tutorials: OCIO, Rendering, JSON Graphs, Document Comparison, Code Generation Targets, Github Copilot
+* New Tutorials: OCIO code generation, Rendering, JSON Serialization, Document Comparison, Code Generation Targets, Github Copilot + Google Bard Tests
 * Upcoming Khronos glTF <-> MaterialX interp updates.
 
 ## Repository Content
