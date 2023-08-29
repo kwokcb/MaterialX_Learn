@@ -11,10 +11,11 @@
 # 
 # <table>
 # <tr>
-# <td><img src="./images/jsoncrack_snap.png">
-# <td><img src="./images/jsoncrack_snap2.png">
+# <td style="background:#000000"><img src="./images/jsoncrack_snap.png">
+# <td style="background:#000000"><img src="./images/jsoncrack_snap2.png">
 # </tr>
 # </table>
+# <sub>Snaphots of graphs generated using the JSONCrack add-on.</sub>
 # 
 # ## Setup for JSON support
 # 
@@ -141,9 +142,11 @@ text = '<details><summary>Extracted MaterialX Nodegraphs in XML</summary>\n\n' +
 display_markdown(text, raw=True)
 
 # %% [markdown]
-# ## Conversion of Graphs to JSON
+# ## Test : XML text to JSON
 # 
-# After this extraction process we parse the `XML` string to produce the equivalent data as a `Python` dictionary using the `xmltodict.parse()` interfaces
+# As a first test we will first just convert the XML string to JSON.
+# 
+# After this extraction process we parse the `XML` string to produce the equivalent data as a `Python` dictionary using the `xmltodict.parse()` interfaces.
 # 
 # This is then converted into a string to get the required `JSON` data using e `json.dumps`. 
 # ( For the sake of display formatting some additional indentation is specified when dumping out a string. )
@@ -181,17 +184,24 @@ with open('mtlx_brick.json', 'w') as jsonfile:
 # 4. There is no concept of "includes" in JSON. This is a concept specific to XML.
 
 # %% [markdown]
-# #### Conversion of XML to JSON
+# ### JSON Serialization
 # 
-# In this example two functions are defined:
+# To perform a proper serialization, the MaterialX document itself should be examined with direct conversion to JSON.   
 # 
-# 1. documentToJSON : Converts a MaterialX document to a JSON string.
-# 2. elementToJSON : Converts a MaterialX element to a JSON string, and traverses the element tree.
+# #### Serialization to JSON
+# 
+# For conversion to JSON we introduce two functions:
+# 
+# 1. `documentToJSON()` : Converts a MaterialX document to a JSON string.
+# 2. `elementToJSON()` : Converts a MaterialX element to a JSON string, and continues to recursively convert any children.
 
 # %%
+# We use a colon to separate the category and name of an element in the JSON hierarchy
 JSON_CATEGORY_NAME_SEPARATOR = ':'
+# The root of the JSON hierarchy
 MATERIALX_DOCUMENT_ROOT = 'materialx'
 
+# Convert MaterialX element to JSON
 def elementToJSON(elem, jsonParent):
     '''
     Convert an MaterialX XML element to JSON.
@@ -199,6 +209,8 @@ def elementToJSON(elem, jsonParent):
     '''
     if (elem.getSourceUri() != ""):
         return
+    
+    # Create a new JSON element for the MaterialX element
     jsonElem = {}
 
     # Add attributes
@@ -209,10 +221,11 @@ def elementToJSON(elem, jsonParent):
     for child in elem.getChildren():
         jsonElem = elementToJSON(child, jsonElem)
     
-    # Set parent element connection
+    # Add element to parent
     jsonParent[elem.getCategory() + JSON_CATEGORY_NAME_SEPARATOR + elem.getName()] = jsonElem
     return jsonParent
 
+# Convert MaterialX document to JSON
 def documentToJSON(doc):
     '''Convert an MaterialX XML document to JSON'''
     root = {}
@@ -227,17 +240,56 @@ def documentToJSON(doc):
     result = json.dumps(root, indent=2)
     return result
 
-result = documentToJSON(doc)
-text = '<details><summary>Explicit Conversion to JSON</summary>\n\n' + '```json\n' + result  + '\n```\n' + '</details>\n' 
+# %% [markdown]
+# We call `documentToJSON()` to convert both the entire document as well as just the NodeGraph interface document below:
+
+# %%
+# Convert entire document
+doc_result = documentToJSON(doc)
+
+text = '<details><summary>Entire document to JSON</summary>\n\n' + '```json\n' + doc_result  + '\n```\n' + '</details>\n' 
+display_markdown(text, raw=True)
+
+# Convert just the graph
+graph_result = documentToJSON(xmldoc)
+
+text = '<details><summary>Node Graph Interface to JSON</summary>\n\n' + '```json\n' + graph_result  + '\n```\n' + '</details>\n' 
 display_markdown(text, raw=True)
 
 # %% [markdown]
-# #### Conversion of JSON to MaterialX
+# The JSON is visualized as a graph for the entire document below, as well as another sample conversion of the glTF "Boombox" and "Olvies" examples from the <a href="https://github.com/KhronosGroup/glTF-Sample-Models" target="_blank">sample models library</a>
 # 
 
+# %% [markdown]
+# <details><summary>Graph of Marble Material</summary>
+# <img src="./images/sample_marble_json.svg">
+# </details>
+
+# %% [markdown]
+# <details><summary>Graph of "Boombox" Example</summary>
+# <img src="./images/gltf_pbr_boombox.svg">
+# </details>
+
+# %% [markdown]
+# <details><summary>Graph of "Olives" Example</summary>
+# <img src="./images/sample_olives.svg">
+# </details>
+
+# %% [markdown]
+# #### Deserialization from JSON
+# 
+# For conversion from JSON we introduce two functions:
+# 
+# 1. `documentFromJSON()` : Converts a JSON string to a MaterialX document.
+# 2. `elementFromJSON()` : Converts a JSON string to a MaterialX element, and continues to recursively convert any children.
+# 
+# Note that to perform deserialization we need to split the `category` and `name` out for non-attribute elements.
+
 # %%
+# Separator between category and name in JSON element
 JSON_CATEGORY_NAME_SEPARATOR = ":"
 
+# Convert JSON element to MaterialX
 def elementFromJSON(node, elem):
     '''
     Convert an JSON element to MaterialX
@@ -262,36 +314,68 @@ def elementFromJSON(node, elem):
                 child = elem.addChildOfCategory(category, name)
                 elementFromJSON(value, child)
 
+# Convert JSON to MaterialX document
 def documentFromJSON(jsonDoc, doc):
     '''
     Convert a JSON document to MaterialX
     '''
     elementFromJSON(jsonDoc, doc)
 
-# Create new document from JSON
+
+# %% [markdown]
+# Using these functions we can convert the JSON document and NodeGraph results back to a MaterialX documents.
+# 
+# We also add in validation and an <a href="https://materialx.org/docs/api/class_xml_read_options.html" target="_blank">"upgrade" call</a> to roughly match what is performed for XML serialization.
+
+# %%
+# Convert entire document back from JSON
 newDoc = mx.createDocument() 
-jsonObject = json.loads(result)
+jsonObject = json.loads(doc_result)
 documentFromJSON(jsonObject, newDoc)
-# Upgrade element version
+
+# Validate and upgrade element version
 valid, errors = newDoc.validate()
+if not valid:
+    print('Validation errors:')
+    for err in errors:
+        print('  {}'.format(err))
 newDoc.upgradeVersion()
 
 newDocString = mx.writeToXmlString(newDoc)    
-text = '<details><summary>Explicit Conversion from JSON</summary>\n\n' + '```xml\n' + newDocString  + '\n```\n' + '</details>\n' 
+text = '<details><summary>JSON Deserialization of Document</summary>\n\n' + '```xml\n' + newDocString  + '\n```\n' + '</details>\n' 
+display_markdown(text, raw=True)
+
+# %%
+# Convert nodegraph interface back from JSON
+newDoc = mx.createDocument() 
+jsonObject = json.loads(graph_result)
+documentFromJSON(jsonObject, newDoc)
+
+# Validate and upgrade element version
+valid, errors = newDoc.validate()
+if not valid:
+    print('Validation errors:')
+    for err in errors:
+        print('  {}'.format(err))
+newDoc.upgradeVersion()
+
+newDocString = mx.writeToXmlString(newDoc)    
+text = '<details><summary>JSON Deserialization of NodeGraph</summary>\n\n' + '```xml\n' + newDocString  + '\n```\n' + '</details>\n' 
 display_markdown(text, raw=True)
 
 # %% [markdown]
 # ## Obtaining a JSON Schema for MaterialX 
 # 
+# For this example we will use the first test results just the `NodeGraph`` for simplicity. It is possible to create a schema for all elements of MaterialX which would include all the definitions which are part of the standard library.
+# 
 # The schema is created using the [OpenAI](https://platform.openai.com/docs/api-reference) Python package. Various MaterialX documents (saved out in JSON) were used as input data.
-# ( A partial graph snapshot is show below 
-# <img src="./images/jsoncrack_schema_defs.png">
-# with the full schema following.)
 # 
-# The standard library as well as examples and test suite documents are suitable to obtain most of the schema. Small
-# edits we're made for anything amiss such setting "required" attributes. 
+# A graph of the schema is shown below, with the textual description below:
+# <img src="./images/materialx_json_schema.svg">
 # 
+# Some examples and test suite documents are suitable to obtain most of the schema. Small edits we're made for anything amiss such setting "required" attributes.
 # 
+# Note that this is just a sample schema. It is not complete. It is also not the only possible schema.
 
 # %%
 # Define the JSON schema.  
