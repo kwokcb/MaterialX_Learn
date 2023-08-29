@@ -1,0 +1,266 @@
+{
+  "asset": {
+    "copyright": "Copyright 2022-2023: Bernard Kwok",
+    "generator": "MaterialX 1.38.8 to glTF 2.0 generator. https://github.com/kwokcb/glTF_MaterialX",
+    "version": "2.0"
+  },
+  "images": [
+    {
+      "name": "image_basecolor2",
+      "uri": "goldleaf_col.png"
+    },
+    {
+      "name": "image_orm3",
+      "uri": "goldleaf_orm.png"
+    },
+    {
+      "name": "image_normal3",
+      "uri": "goldleaf_nrm.png"
+    },
+    {
+      "name": "image_basecolor",
+      "uri": "olives_col.png"
+    },
+    {
+      "name": "image_orm",
+      "uri": "olives_orm.png"
+    },
+    {
+      "name": "image_normal",
+      "uri": "olives_nrm.png"
+    },
+    {
+      "name": "image_occlusion",
+      "uri": "goldleaf_orm.png"
+    },
+    {
+      "name": "image_iridescence",
+      "uri": "glassdish_irid.png"
+    },
+    {
+      "name": "image_iridescence_thickness",
+      "uri": "glassdish_irid.png"
+    },
+    {
+      "name": "image_orm2",
+      "uri": "glasscover_orm.png"
+    },
+    {
+      "name": "image_normal2",
+      "uri": "glasscover_nrm.png"
+    },
+    {
+      "name": "image_iridescence2",
+      "uri": "glasscover_irid.png"
+    },
+    {
+      "name": "image_iridescence_thickness2",
+      "uri": "glasscover_irid.png"
+    }
+  ],
+  "materials": [
+    {
+      "name": "SHD_goldLeaf",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      },
+      "extensions": {
+        "KHR_materials_clearcoat": {
+        },
+        "KHR_materials_ior": {
+        },
+        "KHR_materials_specular": {
+        },
+        "KHR_materials_transmission": {
+        },
+        "KHR_materials_sheen": {
+        },
+        "KHR_materials_emissive_strength": {
+        },
+        "KHR_materials_iridescence": {
+        }
+      },
+      "occlusionTexture": {
+        "index": 1,
+        "scale": 0
+      },
+      "alphaMode": "MASK"
+    },
+    {
+      "name": "SHD_olives",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicRoughnessTexture": {
+          "index": 4
+        }
+      },
+      "extensions": {
+        "KHR_materials_clearcoat": {
+        },
+        "KHR_materials_ior": {
+        },
+        "KHR_materials_specular": {
+        },
+        "KHR_materials_transmission": {
+        },
+        "KHR_materials_sheen": {
+        },
+        "KHR_materials_emissive_strength": {
+        },
+        "KHR_materials_iridescence": {
+        }
+      },
+      "occlusionTexture": {
+        "index": 4,
+        "scale": 0
+      }
+    },
+    {
+      "name": "SHD_glassDish",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "roughnessFactor": 0.0700000003
+      },
+      "extensions": {
+        "KHR_materials_clearcoat": {
+        },
+        "KHR_materials_ior": {
+        },
+        "KHR_materials_specular": {
+        },
+        "KHR_materials_transmission": {
+          "transmissionFactor": 1
+        },
+        "KHR_materials_sheen": {
+        },
+        "KHR_materials_emissive_strength": {
+        },
+        "KHR_materials_iridescence": {
+          "iridescenceFactor": 1,
+          "iridescenceTexture": {
+            "index": 7,
+            "scale": 0
+          },
+          "iridescenceThicknessMinimum": 500,
+          "iridescenceThicknessMaximum": 550,
+          "iridescenceThicknessTexture": {
+            "index": 8
+          }
+        }
+      },
+      "occlusionTexture": {
+        "index": 6,
+        "scale": 0
+      }
+    },
+    {
+      "name": "SHD_glassCover",
+      "pbrMetallicRoughness": {
+        "metallicRoughnessTexture": {
+          "index": 9
+        }
+      },
+      "extensions": {
+        "KHR_materials_clearcoat": {
+        },
+        "KHR_materials_ior": {
+        },
+        "KHR_materials_specular": {
+        },
+        "KHR_materials_transmission": {
+          "transmissionFactor": 1
+        },
+        "KHR_materials_sheen": {
+        },
+        "KHR_materials_emissive_strength": {
+        },
+        "KHR_materials_iridescence": {
+          "iridescenceFactor": 1,
+          "iridescenceTexture": {
+            "index": 11,
+            "scale": 0
+          },
+          "iridescenceThicknessMinimum": 500,
+          "iridescenceThicknessMaximum": 550,
+          "iridescenceThicknessTexture": {
+            "index": 12
+          }
+        }
+      },
+      "occlusionTexture": {
+        "index": 9,
+        "scale": 0
+      }
+    }
+  ],
+  "textures": [
+    {
+      "name": "image_basecolor2",
+      "source": 0
+    },
+    {
+      "name": "image_orm3",
+      "source": 1
+    },
+    {
+      "name": "image_normal3",
+      "source": 2
+    },
+    {
+      "name": "image_basecolor",
+      "source": 3
+    },
+    {
+      "name": "image_orm",
+      "source": 4
+    },
+    {
+      "name": "image_normal",
+      "source": 5
+    },
+    {
+      "name": "image_occlusion",
+      "source": 6
+    },
+    {
+      "name": "image_iridescence",
+      "source": 7
+    },
+    {
+      "name": "image_iridescence_thickness",
+      "source": 8
+    },
+    {
+      "name": "image_orm2",
+      "source": 9
+    },
+    {
+      "name": "image_normal2",
+      "source": 10
+    },
+    {
+      "name": "image_iridescence2",
+      "source": 11
+    },
+    {
+      "name": "image_iridescence_thickness2",
+      "source": 12
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_materials_clearcoat",
+    "KHR_materials_ior",
+    "KHR_materials_specular",
+    "KHR_materials_transmission",
+    "KHR_materials_sheen",
+    "KHR_materials_emissive_strength",
+    "KHR_materials_iridescence"
+  ]
+}

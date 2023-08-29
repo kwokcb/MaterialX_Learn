@@ -8,6 +8,7 @@
     <input name="layery" type="string" value="" uniform="true" />
     <input name="layerz" type="string" value="" uniform="true" />
     <input name="default" type="color3" value="0.0, 0.0, 0.0" />
+    <input name="upaxis" type="integer" value="2" enum="X,Y,Z" enumvalues="0,1,2" uniform="true" />
     <input name="blend" type="float" value="1.0" />
     <input name="filtertype" type="string" value="linear" enum="closest,linear,cubic" uniform="true" />
     <input name="framerange" type="string" value="" uniform="true" />

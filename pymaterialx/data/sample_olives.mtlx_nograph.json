@@ -1,0 +1,388 @@
+{
+  "materialx": {
+    "gltf_image:image_basecolor": {
+      "input:file": {
+        "colorspace": "srgb_texture",
+        "type": "filename",
+        "value": "olives_col.png"
+      },
+      "type": "color3",
+      "xpos": "10.144928",
+      "ypos": "-1.137931"
+    },
+    "gltf_image:image_basecolor2": {
+      "input:file": {
+        "colorspace": "srgb_texture",
+        "type": "filename",
+        "value": "goldleaf_col.png"
+      },
+      "type": "color3",
+      "xpos": "10.144928",
+      "ypos": "10.137931"
+    },
+    "gltf_image:image_iridescence": {
+      "input:file": {
+        "type": "filename",
+        "value": "glassdish_irid.png"
+      },
+      "type": "float",
+      "xpos": "10.144928",
+      "ypos": "-4.396552"
+    },
+    "gltf_image:image_iridescence2": {
+      "input:file": {
+        "type": "filename",
+        "value": "glasscover_irid.png"
+      },
+      "type": "float",
+      "xpos": "10.144928",
+      "ypos": "5.543103"
+    },
+    "gltf_image:image_occlusion": {
+      "input:file": {
+        "type": "filename",
+        "value": "goldleaf_orm.png"
+      },
+      "type": "float",
+      "xpos": "10.144928",
+      "ypos": "-5.732759"
+    },
+    "gltf_image:image_orm": {
+      "input:file": {
+        "type": "filename",
+        "value": "olives_orm.png"
+      },
+      "type": "vector3",
+      "xpos": "10.144928",
+      "ypos": "0.198276"
+    },
+    "gltf_image:image_orm2": {
+      "input:file": {
+        "type": "filename",
+        "value": "glasscover_orm.png"
+      },
+      "type": "vector3",
+      "xpos": "10.144928",
+      "ypos": "2.870690"
+    },
+    "gltf_image:image_orm3": {
+      "input:file": {
+        "type": "filename",
+        "value": "goldleaf_orm.png"
+      },
+      "type": "vector3",
+      "xpos": "10.144928",
+      "ypos": "11.474138"
+    },
+    "gltf_image:thickness": {
+      "input:file": {
+        "type": "filename",
+        "value": "glasscover_thick.png"
+      },
+      "type": "float",
+      "xpos": "10.144928",
+      "ypos": "8.801724"
+    },
+    "gltf_iridescence_thickness:image_iridescence_thickness": {
+      "input:file": {
+        "type": "filename",
+        "value": "glassdish_irid.png"
+      },
+      "input:thicknessMax": {
+        "type": "float",
+        "value": "550"
+      },
+      "input:thicknessMin": {
+        "type": "float",
+        "value": "500"
+      },
+      "type": "float",
+      "xpos": "10.144928",
+      "ypos": "-3.060345"
+    },
+    "gltf_iridescence_thickness:image_iridescence_thickness2": {
+      "input:file": {
+        "type": "filename",
+        "value": "glasscover_irid.png"
+      },
+      "input:thicknessMax": {
+        "type": "float",
+        "value": "550"
+      },
+      "input:thicknessMin": {
+        "type": "float",
+        "value": "500"
+      },
+      "type": "float",
+      "xpos": "10.144928",
+      "ypos": "6.879310"
+    },
+    "gltf_normalmap:image_normal": {
+      "input:file": {
+        "type": "filename",
+        "value": "olives_nrm.png"
+      },
+      "type": "vector3",
+      "xpos": "10.144928",
+      "ypos": "1.534483"
+    },
+    "gltf_normalmap:image_normal2": {
+      "input:file": {
+        "type": "filename",
+        "value": "glasscover_nrm.png"
+      },
+      "type": "vector3",
+      "xpos": "10.144928",
+      "ypos": "4.206897"
+    },
+    "gltf_normalmap:image_normal3": {
+      "input:file": {
+        "type": "filename",
+        "value": "goldleaf_nrm.png"
+      },
+      "type": "vector3",
+      "xpos": "10.144928",
+      "ypos": "12.810345"
+    },
+    "gltf_pbr:SHD_glassCover": {
+      "input:alpha": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:attenuation_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:attenuation_distance": {
+        "type": "float",
+        "value": "3.40282e+38"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:emissive": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:ior": {
+        "type": "float",
+        "value": "1.5"
+      },
+      "input:iridescence": {
+        "nodename": "image_iridescence2",
+        "type": "float"
+      },
+      "input:iridescence_ior": {
+        "type": "float",
+        "value": "1.3"
+      },
+      "input:iridescence_thickness": {
+        "nodename": "image_iridescence_thickness2",
+        "type": "float"
+      },
+      "input:metallic": {
+        "channels": "z",
+        "nodename": "image_orm2",
+        "type": "float",
+        "value": "1"
+      },
+      "input:normal": {
+        "nodename": "image_normal2",
+        "type": "vector3"
+      },
+      "input:occlusion": {
+        "channels": "x",
+        "nodename": "image_orm2",
+        "type": "float",
+        "value": "1"
+      },
+      "input:roughness": {
+        "channels": "y",
+        "nodename": "image_orm2",
+        "type": "float",
+        "value": "1"
+      },
+      "input:thickness": {
+        "nodename": "thickness",
+        "type": "float"
+      },
+      "input:transmission": {
+        "type": "float",
+        "value": "1"
+      },
+      "type": "surfaceshader",
+      "xpos": "13.768116",
+      "ypos": "2.396552"
+    },
+    "gltf_pbr:SHD_glassDish": {
+      "input:alpha": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:attenuation_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:attenuation_distance": {
+        "type": "float",
+        "value": "3.40282e+38"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:emissive": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:iridescence": {
+        "nodename": "image_iridescence",
+        "type": "float"
+      },
+      "input:iridescence_ior": {
+        "type": "float",
+        "value": "1.3"
+      },
+      "input:iridescence_thickness": {
+        "nodename": "image_iridescence_thickness",
+        "type": "float"
+      },
+      "input:metallic": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:occlusion": {
+        "nodename": "image_occlusion",
+        "type": "float"
+      },
+      "input:roughness": {
+        "type": "float",
+        "value": "0.07"
+      },
+      "input:thickness": {
+        "type": "float",
+        "value": "0.01"
+      },
+      "input:transmission": {
+        "type": "float",
+        "value": "1"
+      },
+      "type": "surfaceshader",
+      "xpos": "13.768116",
+      "ypos": "-5.250000"
+    },
+    "gltf_pbr:SHD_goldLeaf": {
+      "input:alpha_mode": {
+        "type": "integer",
+        "value": "1"
+      },
+      "input:base_color": {
+        "nodename": "image_basecolor2",
+        "type": "color3"
+      },
+      "input:emissive": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:metallic": {
+        "channels": "z",
+        "nodename": "image_orm3",
+        "type": "float",
+        "value": "1"
+      },
+      "input:normal": {
+        "nodename": "image_normal3",
+        "type": "vector3"
+      },
+      "input:occlusion": {
+        "channels": "x",
+        "nodename": "image_orm3",
+        "type": "float",
+        "value": "1"
+      },
+      "input:roughness": {
+        "channels": "y",
+        "nodename": "image_orm3",
+        "type": "float",
+        "value": "1"
+      },
+      "type": "surfaceshader",
+      "xpos": "13.768116",
+      "ypos": "7.836207"
+    },
+    "gltf_pbr:SHD_olives": {
+      "input:base_color": {
+        "nodename": "image_basecolor",
+        "type": "color3"
+      },
+      "input:emissive": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:metallic": {
+        "channels": "z",
+        "nodename": "image_orm",
+        "type": "float",
+        "value": "1"
+      },
+      "input:normal": {
+        "nodename": "image_normal",
+        "type": "vector3"
+      },
+      "input:occlusion": {
+        "channels": "x",
+        "nodename": "image_orm",
+        "type": "float",
+        "value": "1"
+      },
+      "input:roughness": {
+        "channels": "y",
+        "nodename": "image_orm",
+        "type": "float",
+        "value": "1"
+      },
+      "type": "surfaceshader",
+      "xpos": "13.768116",
+      "ypos": "-0.379310"
+    },
+    "surfacematerial:MAT_glassCover": {
+      "input:surfaceshader": {
+        "nodename": "SHD_glassCover",
+        "type": "surfaceshader"
+      },
+      "type": "material",
+      "xpos": "17.391304",
+      "ypos": "2.672414"
+    },
+    "surfacematerial:MAT_glassDish": {
+      "input:surfaceshader": {
+        "nodename": "SHD_glassDish",
+        "type": "surfaceshader"
+      },
+      "type": "material",
+      "xpos": "17.391304",
+      "ypos": "0.000000"
+    },
+    "surfacematerial:MAT_goldLeaf": {
+      "input:surfaceshader": {
+        "nodename": "SHD_goldLeaf",
+        "type": "surfaceshader"
+      },
+      "type": "material",
+      "xpos": "17.391304",
+      "ypos": "4.008621"
+    },
+    "surfacematerial:MAT_olives": {
+      "input:surfaceshader": {
+        "nodename": "SHD_olives",
+        "type": "surfaceshader"
+      },
+      "type": "material",
+      "xpos": "17.391304",
+      "ypos": "1.336207"
+    },
+    "version": "1.38"
+  },
+  "mimetype": "application/mtlx+json"
+}
