@@ -14597,7 +14597,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="MaterialX-XML-/-JSON-Notebook">MaterialX XML / JSON Notebook<a class="anchor-link" href="#MaterialX-XML-/-JSON-Notebook">&#182;</a></h1><p>In this notebook we will look how JSON can be used in the context of MaterialX interop.
+<h2 id="JSON-Serialization">JSON Serialization<a class="anchor-link" href="#JSON-Serialization">&#182;</a></h2><p>In this notebook we will look how JSON can be used in the context of MaterialX interop.
 Items to examine include:</p>
 <ul>
 <li><a href="#nodegraph-interface-extraction">Extracting out &quot;interfaces&quot; for <code>nodegraph</code>s</a></li>
@@ -14612,7 +14612,7 @@ Items to examine include:</p>
 </tr>
 </table>
 <sub>Snaphots of graphs generated using the JSONCrack add-on.</sub>
-<h2 id="Setup-for-JSON-support">Setup for JSON support<a class="anchor-link" href="#Setup-for-JSON-support">&#182;</a></h2><p>We will use the <code>xmltodict</code> Python package to convert from MaterialX represented in XML to JSON.
+<h3 id="Setup-for-JSON-support">Setup for JSON support<a class="anchor-link" href="#Setup-for-JSON-support">&#182;</a></h3><p>We will use the <code>xmltodict</code> Python package to convert from MaterialX represented in XML to JSON.
 The JSON package <code>json</code> will then be used to manipulate data.</p>
 
 </div>
@@ -14675,7 +14675,7 @@ materialx version:  1.38.8
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Nodegraph-Interface-Extraction">Nodegraph Interface Extraction<a class="anchor-link" href="#Nodegraph-Interface-Extraction">&#182;</a></h2><p>We are interested in just the &quot;pattern graphs&quot; which are connected to any surface shader connected to a material.
+<h3 id="Nodegraph-Interface-Extraction">Nodegraph Interface Extraction<a class="anchor-link" href="#Nodegraph-Interface-Extraction">&#182;</a></h3><p>We are interested in just the &quot;pattern graphs&quot; which are connected to any surface shader connected to a material.
 We define two utility functions:</p>
 <ul>
 <li><code>getShaderNodes()</code> : To get all the surface shader nodes either connected to a material or not.</li>
@@ -14882,7 +14882,7 @@ The results are printed out.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Test-:-XML-text-to-JSON">Test : XML text to JSON<a class="anchor-link" href="#Test-:-XML-text-to-JSON">&#182;</a></h2><p>As a first test we will first just convert the XML string to JSON.</p>
+<h3 id="Test-:-XML-text-to-JSON">Test : XML text to JSON<a class="anchor-link" href="#Test-:-XML-text-to-JSON">&#182;</a></h3><p>As a first test we will first just convert the XML string to JSON.</p>
 <p>After this extraction process we parse the <code>XML</code> string to produce the equivalent data as a <code>Python</code> dictionary using the <code>xmltodict.parse()</code> interfaces.</p>
 <p>This is then converted into a string to get the required <code>JSON</code> data using e <code>json.dumps</code>. 
 ( For the sake of display formatting some additional indentation is specified when dumping out a string. )</p>
@@ -15034,7 +15034,7 @@ The results are printed out.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Explicit-Conversion">Explicit Conversion<a class="anchor-link" href="#Explicit-Conversion">&#182;</a></h2><p>The desire is to introduce a standardized JSON representation for MaterialX. For this a match for what is supported for XML is required.</p>
+<h3 id="Explicit-Conversion">Explicit Conversion<a class="anchor-link" href="#Explicit-Conversion">&#182;</a></h3><p>The desire is to introduce a standardized JSON representation for MaterialX. For this a match for what is supported for XML is required.</p>
 <p>XML is supported via the <code>MaterialXFormat</code> library. This this JSON can be added.</p>
 <p>For this book, we will create a bidirectional conversion between XML and JSON. Thus instead of 
 a non-standard conversion using a generic converter like <code>xmltodict</code> we will the logic in these scripts (and eventually 
@@ -15057,8 +15057,8 @@ the <code>MaterialXFormat</code> library) for JSON conversion.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="JSON-Serialization">JSON Serialization<a class="anchor-link" href="#JSON-Serialization">&#182;</a></h3><p>To perform a proper serialization, the MaterialX document itself should be examined with direct conversion to JSON.</p>
-<h4 id="Serialization-to-JSON">Serialization to JSON<a class="anchor-link" href="#Serialization-to-JSON">&#182;</a></h4><p>For conversion to JSON we introduce two functions:</p>
+<h4 id="JSON-Serialization">JSON Serialization<a class="anchor-link" href="#JSON-Serialization">&#182;</a></h4><p>To perform a proper serialization, the MaterialX document itself should be examined with direct conversion to JSON.</p>
+<h5 id="Serialization-to-JSON">Serialization to JSON<a class="anchor-link" href="#Serialization-to-JSON">&#182;</a></h5><p>For conversion to JSON we introduce two functions:</p>
 <ol>
 <li><code>documentToJSON()</code> : Converts a MaterialX document to a JSON string.</li>
 <li><code>elementToJSON()</code> : Converts a MaterialX element to a JSON string, and continues to recursively convert any children.</li>
@@ -15727,7 +15727,7 @@ the <code>MaterialXFormat</code> library) for JSON conversion.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Deserialization-from-JSON">Deserialization from JSON<a class="anchor-link" href="#Deserialization-from-JSON">&#182;</a></h4><p>For conversion from JSON we introduce two functions:</p>
+<h5 id="Deserialization-from-JSON">Deserialization from JSON<a class="anchor-link" href="#Deserialization-from-JSON">&#182;</a></h5><p>For conversion from JSON we introduce two functions:</p>
 <ol>
 <li><code>documentFromJSON()</code> : Converts a JSON string to a MaterialX document.</li>
 <li><code>elementFromJSON()</code> : Converts a JSON string to a MaterialX element, and continues to recursively convert any children.</li>
@@ -16067,7 +16067,7 @@ the <code>MaterialXFormat</code> library) for JSON conversion.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Obtaining-a-JSON-Schema-for-MaterialX">Obtaining a JSON Schema for MaterialX<a class="anchor-link" href="#Obtaining-a-JSON-Schema-for-MaterialX">&#182;</a></h2><p>For this example we will use the first test results just the `NodeGraph`` for simplicity. It is possible to create a schema for all elements of MaterialX which would include all the definitions which are part of the standard library.</p>
+<h3 id="Obtaining-a-JSON-Schema-for-MaterialX">Obtaining a JSON Schema for MaterialX<a class="anchor-link" href="#Obtaining-a-JSON-Schema-for-MaterialX">&#182;</a></h3><p>For this example we will use the first test results just the `NodeGraph`` for simplicity. It is possible to create a schema for all elements of MaterialX which would include all the definitions which are part of the standard library.</p>
 <p>The schema is created using the <a href="https://platform.openai.com/docs/api-reference">OpenAI</a> Python package. Various MaterialX documents (saved out in JSON) were used as input data.</p>
 <p>A graph of the schema is shown below, with the textual description below:</p>
 <img src="./images/materialx_json_schema.svg">
@@ -16365,7 +16365,7 @@ the <code>MaterialXFormat</code> library) for JSON conversion.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Validating-MaterialX-JSON-with-Schema">Validating MaterialX JSON with Schema<a class="anchor-link" href="#Validating-MaterialX-JSON-with-Schema">&#182;</a></h2><p>To perform validation we will use the <code>validate</code> interface from the <a href="https://pypi.org/project/jsonschema/"><code>jsconschema</code></a> package.</p>
+<h3 id="Validating-MaterialX-JSON-with-Schema">Validating MaterialX JSON with Schema<a class="anchor-link" href="#Validating-MaterialX-JSON-with-Schema">&#182;</a></h3><p>To perform validation we will use the <code>validate</code> interface from the <a href="https://pypi.org/project/jsonschema/"><code>jsconschema</code></a> package.</p>
 
 </div>
 </div>
