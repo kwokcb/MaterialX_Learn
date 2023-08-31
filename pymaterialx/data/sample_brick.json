@@ -1,0 +1,399 @@
+{
+  "materialx": {
+    "colorspace": "lin_rec709",
+    "fileprefix": "../../../Images/",
+    "nodegraph:NG_BrickPattern": {
+      "add:node_add_16": {
+        "input:in1": {
+          "nodename": "node_combine3_color3_13",
+          "type": "color3"
+        },
+        "input:in2": {
+          "nodename": "node_rgbtohsv_12",
+          "type": "color3"
+        },
+        "type": "color3"
+      },
+      "add:node_add_19": {
+        "input:in1": {
+          "nodename": "node_multiply_25",
+          "type": "float"
+        },
+        "input:in2": {
+          "nodename": "node_tiledimage_float_7",
+          "type": "float"
+        },
+        "type": "float"
+      },
+      "clamp:node_clamp_0": {
+        "input:in": {
+          "nodename": "node_mix_8",
+          "type": "color3"
+        },
+        "type": "color3"
+      },
+      "combine3:node_combine3_color3_13": {
+        "input:in1": {
+          "nodename": "node_multiply_14",
+          "type": "float"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0"
+        },
+        "input:in3": {
+          "nodename": "node_multiply_15",
+          "type": "float"
+        },
+        "type": "color3"
+      },
+      "constant:node_color_11": {
+        "input:value": {
+          "type": "color3",
+          "value": "0.263273, 0.263273, 0.263273"
+        },
+        "type": "color3"
+      },
+      "convert:node_convert_1": {
+        "input:in": {
+          "interfacename": "uvtiling",
+          "type": "float"
+        },
+        "type": "vector2"
+      },
+      "divide:node_divide_21": {
+        "input:in1": {
+          "interfacename": "roughness_amount",
+          "type": "float"
+        },
+        "input:in2": {
+          "nodename": "node_max_1",
+          "type": "float"
+        },
+        "type": "float"
+      },
+      "hsvtorgb:node_hsvtorgb_17": {
+        "input:in": {
+          "nodename": "node_add_16",
+          "type": "color3"
+        },
+        "type": "color3"
+      },
+      "input:brick_color": {
+        "type": "color3",
+        "uifolder": "Color",
+        "uiname": "Brick Color",
+        "value": "0.661876, 0.19088, 0"
+      },
+      "input:dirt_amount": {
+        "type": "float",
+        "uifolder": "Dirt",
+        "uimax": "1",
+        "uimin": "0",
+        "uiname": "Dirt Amount",
+        "value": "0.248"
+      },
+      "input:dirt_color": {
+        "type": "color3",
+        "uifolder": "Dirt",
+        "uiname": "Dirt Color",
+        "value": "0.56372, 0.56372, 0.56372"
+      },
+      "input:hue_variation": {
+        "type": "float",
+        "uifolder": "Color",
+        "uimax": "1",
+        "uimin": "0",
+        "uiname": "Hue Variation",
+        "value": "0.083"
+      },
+      "input:roughness_amount": {
+        "type": "float",
+        "uifolder": "Roughness",
+        "uimax": "1",
+        "uimin": "0",
+        "uiname": "Roughness Amount",
+        "value": "0.853"
+      },
+      "input:uvtiling": {
+        "type": "float",
+        "uifolder": "Texturing",
+        "uiname": "UV Tiling",
+        "uisoftmax": "16",
+        "uisoftmin": "1",
+        "value": "3"
+      },
+      "input:value_variation": {
+        "type": "float",
+        "uifolder": "Color",
+        "uimax": "1",
+        "uimin": "0",
+        "uiname": "Value Variation",
+        "value": "0.787"
+      },
+      "max:node_max_1": {
+        "input:in1": {
+          "nodename": "node_tiledimage_float_10",
+          "type": "float"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.00001"
+        },
+        "type": "float"
+      },
+      "mix:node_mix_6": {
+        "input:bg": {
+          "nodename": "node_hsvtorgb_17",
+          "type": "color3"
+        },
+        "input:fg": {
+          "interfacename": "dirt_color",
+          "type": "color3"
+        },
+        "input:mix": {
+          "nodename": "node_multiply_23",
+          "type": "float"
+        },
+        "type": "color3"
+      },
+      "mix:node_mix_8": {
+        "input:bg": {
+          "nodename": "node_multiply_9",
+          "type": "color3"
+        },
+        "input:fg": {
+          "nodename": "node_multiply_5",
+          "type": "color3"
+        },
+        "input:mix": {
+          "nodename": "node_tiledimage_float_10",
+          "type": "float"
+        },
+        "type": "color3"
+      },
+      "multiply:node_multiply_1": {
+        "input:in1": {
+          "nodename": "node_divide_21",
+          "type": "float"
+        },
+        "input:in2": {
+          "nodename": "node_tiledimage_float_22",
+          "type": "float"
+        },
+        "type": "float"
+      },
+      "multiply:node_multiply_14": {
+        "input:in1": {
+          "nodename": "node_subtract_18",
+          "type": "float"
+        },
+        "input:in2": {
+          "interfacename": "hue_variation",
+          "type": "float"
+        },
+        "type": "float"
+      },
+      "multiply:node_multiply_15": {
+        "input:in1": {
+          "nodename": "node_add_19",
+          "type": "float"
+        },
+        "input:in2": {
+          "nodename": "node_multiply_20",
+          "type": "float"
+        },
+        "type": "float"
+      },
+      "multiply:node_multiply_20": {
+        "input:in1": {
+          "interfacename": "value_variation",
+          "type": "float"
+        },
+        "input:in2": {
+          "nodename": "node_tiledimage_float_26",
+          "type": "float"
+        },
+        "type": "float"
+      },
+      "multiply:node_multiply_23": {
+        "input:in1": {
+          "interfacename": "dirt_amount",
+          "type": "float"
+        },
+        "input:in2": {
+          "nodename": "node_tiledimage_float_24",
+          "type": "float"
+        },
+        "type": "float"
+      },
+      "multiply:node_multiply_25": {
+        "input:in1": {
+          "interfacename": "hue_variation",
+          "type": "float"
+        },
+        "input:in2": {
+          "nodename": "node_tiledimage_float_26",
+          "type": "float"
+        },
+        "type": "float"
+      },
+      "multiply:node_multiply_5": {
+        "input:in1": {
+          "nodename": "node_mix_6",
+          "type": "color3"
+        },
+        "input:in2": {
+          "nodename": "node_tiledimage_float_7",
+          "type": "float"
+        },
+        "type": "color3"
+      },
+      "multiply:node_multiply_9": {
+        "input:in1": {
+          "nodename": "node_color_11",
+          "type": "color3"
+        },
+        "input:in2": {
+          "nodename": "node_tiledimage_float_7",
+          "type": "float"
+        },
+        "type": "color3"
+      },
+      "normalmap:node_normalmap_3": {
+        "input:in": {
+          "nodename": "node_tiledimage_vector3_27",
+          "type": "vector3"
+        },
+        "type": "vector3"
+      },
+      "output:base_color_output": {
+        "nodename": "node_clamp_0",
+        "type": "color3"
+      },
+      "output:normal_output": {
+        "nodename": "node_normalmap_3",
+        "type": "vector3"
+      },
+      "output:specular_roughness_output": {
+        "nodename": "node_multiply_1",
+        "type": "float"
+      },
+      "rgbtohsv:node_rgbtohsv_12": {
+        "input:in": {
+          "interfacename": "brick_color",
+          "type": "color3"
+        },
+        "type": "color3"
+      },
+      "subtract:node_subtract_18": {
+        "input:in1": {
+          "nodename": "node_add_19",
+          "type": "float"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.35"
+        },
+        "type": "float"
+      },
+      "tiledimage:node_tiledimage_float_10": {
+        "input:file": {
+          "type": "filename",
+          "value": "brick_mask.jpg"
+        },
+        "input:uvtiling": {
+          "nodename": "node_convert_1",
+          "type": "vector2"
+        },
+        "type": "float"
+      },
+      "tiledimage:node_tiledimage_float_22": {
+        "input:file": {
+          "type": "filename",
+          "value": "brick_roughness.jpg"
+        },
+        "input:uvtiling": {
+          "nodename": "node_convert_1",
+          "type": "vector2"
+        },
+        "type": "float"
+      },
+      "tiledimage:node_tiledimage_float_24": {
+        "input:file": {
+          "type": "filename",
+          "value": "brick_dirt_mask.jpg"
+        },
+        "input:uvtiling": {
+          "nodename": "node_convert_1",
+          "type": "vector2"
+        },
+        "type": "float"
+      },
+      "tiledimage:node_tiledimage_float_26": {
+        "input:file": {
+          "type": "filename",
+          "value": "brick_variation_mask.jpg"
+        },
+        "input:uvtiling": {
+          "nodename": "node_convert_1",
+          "type": "vector2"
+        },
+        "type": "float"
+      },
+      "tiledimage:node_tiledimage_float_7": {
+        "input:file": {
+          "type": "filename",
+          "value": "brick_base_gray.jpg"
+        },
+        "input:uvtiling": {
+          "nodename": "node_convert_1",
+          "type": "vector2"
+        },
+        "type": "float"
+      },
+      "tiledimage:node_tiledimage_vector3_27": {
+        "input:file": {
+          "type": "filename",
+          "value": "brick_normal.jpg"
+        },
+        "input:uvtiling": {
+          "nodename": "node_convert_1",
+          "type": "vector2"
+        },
+        "type": "vector3"
+      }
+    },
+    "standard_surface:N_StandardSurface": {
+      "input:base_color": {
+        "nodegraph": "NG_BrickPattern",
+        "output": "base_color_output",
+        "type": "color3"
+      },
+      "input:normal": {
+        "nodegraph": "NG_BrickPattern",
+        "output": "normal_output",
+        "type": "vector3"
+      },
+      "input:specular_roughness": {
+        "nodegraph": "NG_BrickPattern",
+        "output": "specular_roughness_output",
+        "type": "float"
+      },
+      "type": "surfaceshader",
+      "xpos": "13.768116",
+      "ypos": "-0.379310"
+    },
+    "surfacematerial:M_BrickPattern": {
+      "input:surfaceshader": {
+        "nodename": "N_StandardSurface",
+        "type": "surfaceshader"
+      },
+      "type": "material",
+      "xpos": "17.391304",
+      "ypos": "0.000000"
+    },
+    "version": "1.38"
+  },
+  "mimetype": "application/mtlx+json"
+}

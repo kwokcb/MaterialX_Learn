@@ -142,9 +142,9 @@
               aria-expanded="false">Workflows</a>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="documents/workflows.html">
-                  Interop Workflows
-                </a>
+                <li><a class="dropdown-item" href="documents/workflow_usd.html">USD and MaterialX</a></li>
+                <li><a class="dropdown-item" href="documents/workflow_gltf.html">glTF and MaterialX</a></li>
+                <li><a class="dropdown-item" href="documents/workflow_ocio.html">OCIO and MaterialX</a></li>
               </li>
             </ul>
           </li>
@@ -201,20 +201,22 @@
         <div class="col p-2 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary">Tech</strong>
           <b class="mb-0">Tutorials and Workflows</b>
-            <div class="mb-1 text-muted">July, 2023</div>
+            <div class="mb-1 text-muted">July - August, 2023</div>
             <p class="card-text mb-auto">
               <a href="documents/mtlx_utilities.html" target="_blank">
                 Learning Pipeline</a> Expose utilities for rendering, definition generation,
-                graph generation etc. Improved <a href="documents/mermaidChecker.html"
+                OCIO codegen etc. Improved <a href="documents/mermaidChecker.html"
                 target="_blank">graph visualization</a>. 
             </p><br>
-            <p class="card-text mb-auto">
-              <a href="documents/design.html" target="_blank">
-                UX / UI: </a> Design refresh and standardized display and improved graph interaction utilities.
-            </p><br>
             <p>
-              <a href="documents/jupyter_example.html" target="_blank">New Tutorials</a>: 
-                    OCIO, Rendering, JSON Graphs, Document Comparison, Code Generation Targets, Github Copilot
+              Workflow Updates:
+              <a href="documents/workflow_gltf.html" target="_blank">glTF</a>,
+              <a href="documents/workflow_usd.html" target="_blank">USD</a>,
+              <a href="documents/workflow_ocio.html" target="_blank">OCIO</a>
+            </p>        
+            <p>
+              <a href="documents/jupyter_example.html" target="_blank">Tutorial Updates</a>: 
+                    OCIO, Rendering, JSON Serialization
             </p>        
         </div>
         <div class="col-auto d-flex d-lg-block">
@@ -229,19 +231,17 @@
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-success">News</strong>
 
-          <b class="mb-0">1.38.8 Updates</b>
+          <b class="mb-0">MaterialX 1.38.8</b>
           <div class="mb-1 text-muted">June-August, 2023</div>
-          <p class="card-text mb-auto">Continual syncing to the latest 1.38.8 which includes new colorspace and procedural definitions. 
-            The minimum version for all learning materials is
+          <p class="card-text mb-auto">Preparing release synced to 1.38.8. 
+            The current minimum version for all learning materials is
             <a href="https://github.com/AcademySoftwareFoundation/MaterialX/releases/tag/v1.38.7" target="_blank">              
               MaterialX 1.38.7 Release</a>
           </p>
           <p></p>
           <b class="mb-0">Development Updates</b>
           <div class="mb-1 text-muted">August, 2023</div>
-          <p class="card-text mb-auto">Use of AI to assist learning is coming. The first
-            tutorials include initial Copilot impressions + creating a JSON schema from MaterialX node graphs. Docs for
-            code generation, pipeline building, and web site generation to come.
+          <p class="card-text mb-auto">Use of AI to assist learning is coming.
           </div>
         <!--
         <div class="col-auto d-none d-lg-block">
@@ -359,8 +359,10 @@
               Learn More
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="documents/workflows.html">Interop Workflows</a></li>
-            </ul>
+              <li><a class="dropdown-item" href="documents/workflow_usd.html">USD and MaterialX</a></li>
+              <li><a class="dropdown-item" href="documents/workflow_gltf.html">glTF and MaterialX</a></li>
+              <li><a class="dropdown-item" href="documents/workflow_ocio.html">OCIO and MaterialX</a></li>
+          </ul>
           </div>
         </div>
       </div>

@@ -1,0 +1,163 @@
+OCIO version: 2.2.1
+MaterialX version: 1.38.8
+Built-in config: cg-config-v1.0.0_aces-v1.3_ocio-v2.1
+- Number of color spaces: 14
+Write out OCIO configurations to: .\OCIO_output\OCIO_configurations.md
+--- Generate transform for source color space: lin_ap0
+Write MaterialX definition file: .\OCIO_output\ND_lin_ap0_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_lin_ap0_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_lin_ap0_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: acescc_ap1
+- Skip generation for transform: "acescc_ap1" to "lin_rec709" which requires 1 texture resources
+--- Generate transform for source color space: acescct_ap1
+Write MaterialX definition file: .\OCIO_output\ND_acescct_ap1_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_acescct_ap1_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_acescct_ap1_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: lin_ap1
+Write MaterialX definition file: .\OCIO_output\ND_lin_ap1_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_lin_ap1_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_lin_ap1_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: lin_p3d65
+Write MaterialX definition file: .\OCIO_output\ND_lin_p3d65_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_lin_p3d65_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_lin_p3d65_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: lin_rec2020
+Write MaterialX definition file: .\OCIO_output\ND_lin_rec2020_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_lin_rec2020_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_lin_rec2020_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: lin_srgb
+Write MaterialX definition file: .\OCIO_output\ND_lin_srgb_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_lin_srgb_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_lin_srgb_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: g18_rec709
+Write MaterialX definition file: .\OCIO_output\ND_g18_rec709_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_g18_rec709_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_g18_rec709_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: g22_ap1
+Write MaterialX definition file: .\OCIO_output\ND_g22_ap1_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_g22_ap1_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_g22_ap1_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: g22_rec709
+Write MaterialX definition file: .\OCIO_output\ND_g22_rec709_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_g22_rec709_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_g22_rec709_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: rec709_display
+Write MaterialX definition file: .\OCIO_output\ND_rec709_display_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_rec709_display_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_rec709_display_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: srgb_ap1
+Write MaterialX definition file: .\OCIO_output\ND_srgb_ap1_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_srgb_ap1_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_srgb_ap1_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: srgb_texture
+Write MaterialX definition file: .\OCIO_output\ND_srgb_texture_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_srgb_texture_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_srgb_texture_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: Raw
+Write MaterialX definition file: .\OCIO_output\ND_Raw_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_Raw_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_Raw_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: lin_ap0
+Write MaterialX definition file: .\OCIO_output\ND_lin_ap0_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_lin_ap0_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_lin_ap0_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: acescc_ap1
+- Skip generation for transform: "acescc_ap1" to "lin_rec709" which requires 1 texture resources
+--- Generate transform for source color space: acescct_ap1
+Write MaterialX definition file: .\OCIO_output\ND_acescct_ap1_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_acescct_ap1_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_acescct_ap1_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: lin_ap1
+Write MaterialX definition file: .\OCIO_output\ND_lin_ap1_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_lin_ap1_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_lin_ap1_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: ADX10
+Failed to generated code for transform: ADX10 -> lin_rec709
+--- Generate transform for source color space: ADX16
+Failed to generated code for transform: ADX16 -> lin_rec709
+--- Generate transform for source color space: lin_alexawide
+Failed to generated code for transform: lin_alexawide -> lin_rec709
+--- Generate transform for source color space: logc3ei800_alexawide
+Failed to generated code for transform: logc3ei800_alexawide -> lin_rec709
+--- Generate transform for source color space: lin_awg4
+Failed to generated code for transform: lin_awg4 -> lin_rec709
+--- Generate transform for source color space: arri_logc4
+Failed to generated code for transform: arri_logc4 -> lin_rec709
+--- Generate transform for source color space: bmdfilm_widegamut_gen5
+Failed to generated code for transform: bmdfilm_widegamut_gen5 -> lin_rec709
+--- Generate transform for source color space: davinci_intermediate_widegamut
+Failed to generated code for transform: davinci_intermediate_widegamut -> lin_rec709
+--- Generate transform for source color space: lin_bmd_widegamut_gen5
+Failed to generated code for transform: lin_bmd_widegamut_gen5 -> lin_rec709
+--- Generate transform for source color space: lin_davinci_widegamut
+Failed to generated code for transform: lin_davinci_widegamut -> lin_rec709
+--- Generate transform for source color space: canonlog3_cgamutday
+Failed to generated code for transform: canonlog3_cgamutday -> lin_rec709
+--- Generate transform for source color space: lin_canoncgamutday
+Failed to generated code for transform: lin_canoncgamutday -> lin_rec709
+--- Generate transform for source color space: lin_vgamut
+Failed to generated code for transform: lin_vgamut -> lin_rec709
+--- Generate transform for source color space: vlog_vgamut
+Failed to generated code for transform: vlog_vgamut -> lin_rec709
+--- Generate transform for source color space: lin_rwg
+Failed to generated code for transform: lin_rwg -> lin_rec709
+--- Generate transform for source color space: rl3g10_rwg
+Failed to generated code for transform: rl3g10_rwg -> lin_rec709
+--- Generate transform for source color space: lin_sgamut3
+Failed to generated code for transform: lin_sgamut3 -> lin_rec709
+--- Generate transform for source color space: lin_sgamut3cine
+Failed to generated code for transform: lin_sgamut3cine -> lin_rec709
+--- Generate transform for source color space: lin_venice_sgamut3
+Failed to generated code for transform: lin_venice_sgamut3 -> lin_rec709
+--- Generate transform for source color space: lin_venice_sgamut3cine
+Failed to generated code for transform: lin_venice_sgamut3cine -> lin_rec709
+--- Generate transform for source color space: slog3_sgamut3
+Failed to generated code for transform: slog3_sgamut3 -> lin_rec709
+--- Generate transform for source color space: slog3_sgamutcine
+Failed to generated code for transform: slog3_sgamutcine -> lin_rec709
+--- Generate transform for source color space: slog3_venice_sgamut3
+Failed to generated code for transform: slog3_venice_sgamut3 -> lin_rec709
+--- Generate transform for source color space: slog3_venice_sgamutcine
+Failed to generated code for transform: slog3_venice_sgamutcine -> lin_rec709
+--- Generate transform for source color space: rec709_camera
+Failed to generated code for transform: rec709_camera -> lin_rec709
+--- Generate transform for source color space: lin_p3d65
+Write MaterialX definition file: .\OCIO_output\ND_lin_p3d65_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_lin_p3d65_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_lin_p3d65_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: lin_rec2020
+Write MaterialX definition file: .\OCIO_output\ND_lin_rec2020_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_lin_rec2020_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_lin_rec2020_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: lin_srgb
+Write MaterialX definition file: .\OCIO_output\ND_lin_srgb_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_lin_srgb_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_lin_srgb_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: g18_rec709
+Write MaterialX definition file: .\OCIO_output\ND_g18_rec709_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_g18_rec709_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_g18_rec709_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: g22_ap1
+Write MaterialX definition file: .\OCIO_output\ND_g22_ap1_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_g22_ap1_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_g22_ap1_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: g22_rec709
+Write MaterialX definition file: .\OCIO_output\ND_g22_rec709_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_g22_rec709_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_g22_rec709_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: rec709_display
+Write MaterialX definition file: .\OCIO_output\ND_rec709_display_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_rec709_display_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_rec709_display_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: srgb_ap1
+Write MaterialX definition file: .\OCIO_output\ND_srgb_ap1_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_srgb_ap1_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_srgb_ap1_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: srgb_texture
+Write MaterialX definition file: .\OCIO_output\ND_srgb_texture_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_srgb_texture_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_srgb_texture_to_lin_rec709_color4.glsl
+--- Generate transform for source color space: Raw
+Write MaterialX definition file: .\OCIO_output\ND_Raw_to_lin_rec709_color4.mtlx
+Write MaterialX implementation file: .\OCIO_output\IM_mx_Raw_to_lin_rec709_color4.mtlx
+Write target[genglsl] source file .\OCIO_output\mx_Raw_to_lin_rec709_color4.glsl

@@ -1,5 +1,5 @@
 # %% [markdown]
-# # MaterialX XML / JSON Notebook
+# ## JSON Serialization
 # 
 # In this notebook we will look how JSON can be used in the context of MaterialX interop.
 # Items to examine include:
@@ -17,7 +17,7 @@
 # </table>
 # <sub>Snaphots of graphs generated using the JSONCrack add-on.</sub>
 # 
-# ## Setup for JSON support
+# ### Setup for JSON support
 # 
 # We will use the `xmltodict` Python package to convert from MaterialX represented in XML to JSON.
 # The JSON package `json` will then be used to manipulate data.
@@ -37,7 +37,7 @@ print('json version: ', json.__version__)
 print('materialx version: ', mx.__version__)
 
 # %% [markdown]
-# ## Nodegraph Interface Extraction 
+# ### Nodegraph Interface Extraction 
 # 
 # We are interested in just the "pattern graphs" which are connected to any surface shader connected to a material.
 # We define two utility functions:
@@ -142,7 +142,7 @@ text = '<details><summary>Extracted MaterialX Nodegraphs in XML</summary>\n\n' +
 display_markdown(text, raw=True)
 
 # %% [markdown]
-# ## Test : XML text to JSON
+# ### Test : XML text to JSON
 # 
 # As a first test we will first just convert the XML string to JSON.
 # 
@@ -167,7 +167,7 @@ with open('mtlx_brick.json', 'w') as jsonfile:
     jsonfile.write(json_string_fmt)
 
 # %% [markdown]
-# ## Explicit Conversion
+# ### Explicit Conversion
 # 
 # The desire is to introduce a standardized JSON representation for MaterialX. For this a match for what is supported for XML is required.
 # 
@@ -184,11 +184,11 @@ with open('mtlx_brick.json', 'w') as jsonfile:
 # 4. There is no concept of "includes" in JSON. This is a concept specific to XML.
 
 # %% [markdown]
-# ### JSON Serialization
+# #### JSON Serialization
 # 
 # To perform a proper serialization, the MaterialX document itself should be examined with direct conversion to JSON.   
 # 
-# #### Serialization to JSON
+# ##### Serialization to JSON
 # 
 # For conversion to JSON we introduce two functions:
 # 
@@ -276,7 +276,7 @@ display_markdown(text, raw=True)
 # </details>
 
 # %% [markdown]
-# #### Deserialization from JSON
+# ##### Deserialization from JSON
 # 
 # For conversion from JSON we introduce two functions:
 # 
@@ -364,7 +364,7 @@ text = '<details><summary>JSON Deserialization of NodeGraph</summary>\n\n' + '``
 display_markdown(text, raw=True)
 
 # %% [markdown]
-# ## Obtaining a JSON Schema for MaterialX 
+# ### Obtaining a JSON Schema for MaterialX 
 # 
 # For this example we will use the first test results just the `NodeGraph`` for simplicity. It is possible to create a schema for all elements of MaterialX which would include all the definitions which are part of the standard library.
 # 
@@ -495,7 +495,7 @@ text = '<details><summary>MaterialX JSON Schema</summary>\n\n' + '```json\n' + j
 display_markdown(text, raw=True)
 
 # %% [markdown]
-# ## Validating MaterialX JSON with Schema 
+# ### Validating MaterialX JSON with Schema 
 # 
 # To perform validation we will use the `validate` interface from the [`jsconschema`](https://pypi.org/project/jsonschema/) package.
 

@@ -1,0 +1,278 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-J7404418VP');
+  </script>
+
+  <title>MaterialX Learn - Workflows </title>
+  <link rel="icon" href="./images/logo3d_icon.png" type="image/x-icon" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="min-vh-100">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+  <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "default" }); </script>
+
+  <!-- Navigation  -->
+  <nav class="navbar sticky-top navbar-expand-lg bg-light">
+    <div class="container-md container-fluid">
+      <a class="navbar-brand" href="../index.html">
+        <h5><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="rounded d-inline-block align-text-center"
+            width="60">
+          MaterialX Learn</h5>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+        aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenuContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="../index.html" role="button">
+              Home
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Learn
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="nodes_and_nodegraphs.html">
+                  Nodes and Graphs
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="node_definitions.html">
+                  Node Definitions
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="documents.html">
+                  Documents
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Reference
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="definitions/definitions_by_group.html">
+                  Library (By Group)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="definitions/all_definitions.html">
+                  Library (All)
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="definitions/library_glossary.html">
+                  Library Glossary
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
+                  <img src="images/MaterialXLogo_200x155.png" style="width:20px"> C++ API
+                </a>
+              </li>
+              <div class="dropdown-divider"></div>
+              <li>
+                <a class="dropdown-item" href="using_library.html">
+                  <img src="images/info-circle.svg"> Library User Guide
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Utilities</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="mermaidChecker.html">
+                  Graph Visualizer
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="mtlx_utilities.html">
+                  Python Utilities
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Develop</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="python_MaterialX.html">
+                  Tutorials
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="jupyter_example.html">
+                  Examples
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Workflows</a>
+            <ul class="dropdown-menu">
+              <li>
+              <li><a class="dropdown-item" href="workflow_usd.html">USD and MaterialX</a></li>
+              <li><a class="dropdown-item" href="workflow_gltf.html">glTF and MaterialX</a></li>
+              <li><a class="dropdown-item" href="workflow_ocio.html">OCIO and MaterialX</a></li>
+          </li>
+        </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Design</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="design.html">
+                UX Design
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="implementation.html">
+                Implementation
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="about.html" role="button">
+            About
+          </a>
+        </li>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid p-4">
+    <div class="row flex-nowrap">
+      <div class="col-12 p-0 pt-2 pl-2">
+        <div class="card border-secondary shadow border mb-4">
+          <div class="card-body">
+
+            <h2 id="materialx-and-opencolorio">MaterialX and OpenColorIO</h2>
+            <h3 id="introduction">Introduction</h3>
+            <p>MaterialX code generation currently supports a &quot;default&quot; set of color space transforms via it's
+              &quot;default color management&quot; mechanism.</p>
+            <p>This includes a subset of those specified by the <code>AcesCg</code> (Academy Color Encoding System Color
+              Grading) configuration which is included by default with <a
+                href="https://opencolorio.readthedocs.io/en/latest/configurations/aces_cg.html"
+                target="_blank">OpenColorIO</a> (OCIO) (as of version 2.2).</p>
+            <p>The current <code>colorspace</code> attribute which can be used on color3 and color4 inputs as well as
+              file name inputs matches either a color space name or one of it's aliases as defined in the AcesCg
+              configuration.</p>
+            <p>Additionally, there are node definitions which can be used to specify the color space transform to be
+              used for a given input. They are named as follows:</p>
+            <pre class="hljs"><code><div>&lt;source_colorspace&gt;_to_&lt;target_colorspace&gt;
+</div></code></pre>
+            <p>where <code>source_colorspace</code> is the source and <code>target_colorspace</code> is the target color
+              space.</p>
+            <p>These are hard-coded and are do not actually reference any config file for correctness.</p>
+            <h3 id="code-generation-support">Code Generation Support</h3>
+            <p>Support entails providing implementation of color space transforms either as shader source code or as
+              functional node graphs. ( The latter available as of MaterialX 1.38.6 ).</p>
+            <p>MaterialX code generation allows for the insertion of color space transform code during generation when
+              it encounters <code>colorspace</code> attributes.</p>
+            <h3 id="integrations">Integrations</h3>
+            <p>Insertion is more suitable for hardware renderers that for software renderers, as they will tend to
+              perform the color space transform itself such as pre-transforming input images using the <a
+                href="https://sites.google.com/site/openimageio/home" target="_blank">OpenImageIO</a> library (which can
+              include OpenColorIO support).</p>
+            <p>An example are renderers which consume the <code>OSL</code> shading language. In this case code
+              generation simply passes the <code>colorspace</code> information onwards as meta-data within the shader
+              code.</p>
+            <p>As noted not all color space transforms are specified within MaterialX, so<br>
+              if a <code>colorspace</code> attribute is specified which is not supported then the<br>
+              integration needs to handle such cases appropriately. For instance a <code>USD HDStorm</code> render
+              delegate could use `OpenImageIO`` to perform these transforms, while using code generation for those that
+              are supported.</p>
+            <h3 id="opencolorio-for-materialx-transform-creation">OpenColorIO for MaterialX Transform Creation</h3>
+            <p>Below is a diagram of a possible workflow to generate MaterialX color space transforms using the
+              OpenColorIO API.</p>
+            <img src="../pymaterialx/images/OCIO_MaterialX_Workflow.png " alt="MaterialX and OCIO" width="100%" />
+            <p>The top portion (green boxes) shows the path for source code implementations while the middle left boxes
+              represent the path for functional graph implementations.</p>
+            <p>Common to both is that the definition interfaces (<code>nodedef</code>s) are the same.</p>
+            <h3 id="source-code-generation">Source Code Generation</h3>
+            <p>Source code can be generated by OCIO, which can then be used to create appropriate MaterialX nodes
+              definitions. This is demonstrated in the<br>
+              <a href="../pymaterialx/mtlx_ocio.html" target="_blank">OCIO notebook</a>.
+            </p>
+            <p>A standalone Python utility is also provided in the <a href="../pymaterialx/genOCIODefinitions.py"
+                target="_blank">here</a>. The results of running this utility are provided <a
+                href="../pymaterialx/OCIO_output/" target="_blank">here</a>.</p>
+            <p>
+              Below is a screenshot of definitions being available in <code>MaterialX Graph Editor</code>,
+              though the definitions could be used for any integration.
+              <img src="images/ocio_transforms_in_grapheditor.png" width="80%">
+            </p>
+            <p>Some generation issues of note include:</p>
+            <ol>
+              <li>Reliance on texture lookups for color space transforms. Though it's possible to support the current
+                color management system in MaterialX would need to have custom logic added. Additionally reliance on
+                these lookups reduces portability to mobile and web platforms.</li>
+              <li>The export of a single block of source code. If this is a single function then reuse is not an issue,
+                but secondary functions may be added which could be duplications.</li>
+              <li>Lack of support for code generation backends supported by MaterialX such as NVIDIA <code>MDL</code>
+                and current versions of <code>OSL</code>.</li>
+            </ol>
+            <h3 id="functional-graph-generation">Functional Graph Generation</h3>
+            <p>From a MaterialX perspective implementing color space transforms as a set of node graphs is the most
+              portable and maintainable approach.</p>
+            <p>As graphs, there is no need to write implementations for new code generation backends, and integrations
+              which do not use code generation (such as <code>VEX</code> or <code>Unreal</code>) can just map their
+              existing implementations of the nodes used to compose the graph.</p>
+            <p>This is still an area of discussion and investigation.</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
