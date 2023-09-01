@@ -1,0 +1,184 @@
+{
+  "materialx": {
+    "nodegraph:dot_float": {
+      "dot:dot1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "constant1"
+        },
+        "input:note": {
+          "type": "string",
+          "value": ""
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "dot1"
+      },
+      "constant:constant1": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      }
+    },
+    "nodegraph:dot_color3": {
+      "dot:dot1": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "nodename": "constant1"
+        },
+        "input:note": {
+          "type": "string",
+          "value": ""
+        }
+      },
+      "constant:constant1": {
+        "type": "color3",
+        "input:value": {
+          "type": "color3",
+          "value": "0.0000, 0.5000, 1.0000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "dot1"
+      }
+    },
+    "nodegraph:dot_color4": {
+      "dot:dot1": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "nodename": "constant1"
+        },
+        "input:note": {
+          "type": "string",
+          "value": ""
+        }
+      },
+      "constant:constant1": {
+        "type": "color4",
+        "input:value": {
+          "type": "color4",
+          "value": "0.0, 0.2500, 0.5000, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "dot1"
+      }
+    },
+    "nodegraph:dot_vector2": {
+      "dot:dot1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector2",
+          "nodename": "constant1"
+        },
+        "input:note": {
+          "type": "string",
+          "value": ""
+        }
+      },
+      "constant:constant1": {
+        "type": "vector2",
+        "input:value": {
+          "type": "vector2",
+          "value": "0.5000, 1.0000"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "dot1"
+      }
+    },
+    "nodegraph:dot_vector3": {
+      "dot:dot1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "constant1"
+        },
+        "input:note": {
+          "type": "string",
+          "value": ""
+        }
+      },
+      "constant:constant1": {
+        "type": "vector3",
+        "input:value": {
+          "type": "vector3",
+          "value": "0.0, 0.5000, 1.0000"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "dot1"
+      }
+    },
+    "nodegraph:dot_vector4": {
+      "dot:dot1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "constant1"
+        },
+        "input:note": {
+          "type": "string",
+          "value": ""
+        }
+      },
+      "constant:constant1": {
+        "type": "vector4",
+        "input:value": {
+          "type": "vector4",
+          "value": "0.0, 0.2500, 0.5000, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "dot1"
+      }
+    },
+    "nodegraph:dot_matrix44": {
+      "dot:dot1": {
+        "type": "matrix44",
+        "input:in": {
+          "type": "matrix44",
+          "nodename": "constant1"
+        },
+        "input:note": {
+          "type": "string",
+          "value": ""
+        }
+      },
+      "constant:constant1": {
+        "type": "matrix44",
+        "input:value": {
+          "type": "matrix44",
+          "value": "1.0, 0.0, 0.0, 0.0,  0.0, 1.0, 0.0, 0.0,  0.0, 0.0, 1.0, 0.0,  0.0, 0.0, 0.0, 1.0"
+        }
+      },
+      "transformmatrix:transformvector1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "value": "0.5, 0.5, 0.5, 1.0"
+        },
+        "input:mat": {
+          "type": "matrix44",
+          "nodename": "dot1"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "transformvector1"
+      }
+    }
+  },
+  "version": "1.38"
+}

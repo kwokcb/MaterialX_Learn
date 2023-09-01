@@ -1,0 +1,69 @@
+{
+  "materialx": {
+    "nodegraph:multiply_bsdf_test": {
+      "oren_nayar_diffuse_bsdf:diffuse_brdf1": {
+        "type": "BSDF",
+        "input:color": {
+          "type": "color3",
+          "value": "0.96, 0.1, 0.1"
+        }
+      },
+      "multiply:multiply_bsdf1": {
+        "type": "BSDF",
+        "input:in1": {
+          "type": "BSDF",
+          "nodename": "diffuse_brdf1"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.5"
+        }
+      },
+      "translucent_bsdf:diffuse_btdf1": {
+        "type": "BSDF",
+        "input:color": {
+          "type": "color3",
+          "value": "0.0, 0.0, 0.8"
+        }
+      },
+      "multiply:multiply_bsdf2": {
+        "type": "BSDF",
+        "input:in1": {
+          "type": "BSDF",
+          "nodename": "diffuse_btdf1"
+        },
+        "input:in2": {
+          "type": "color3",
+          "value": "0.5, 0.5, 0.5"
+        }
+      },
+      "mix:mix_bsdf1": {
+        "type": "BSDF",
+        "input:fg": {
+          "type": "BSDF",
+          "nodename": "multiply_bsdf1"
+        },
+        "input:bg": {
+          "type": "BSDF",
+          "nodename": "multiply_bsdf2"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "mix_bsdf1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    }
+  },
+  "version": "1.38"
+}

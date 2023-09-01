@@ -1,0 +1,54 @@
+{
+  "materialx": {
+    "nodedef:ND_lightcompoundtest": {
+      "node": "lightcompoundtest",
+      "nodegroup": "test",
+      "doc": "A light shader node of 'lightcompoundtest' type.",
+      "input:position": {
+        "type": "vector3",
+        "doc": "Light source position."
+      },
+      "input:direction": {
+        "type": "vector3",
+        "doc": "Light source direction."
+      },
+      "input:color": {
+        "type": "color3",
+        "doc": "Light color."
+      },
+      "input:intensity": {
+        "type": "float",
+        "doc": "Light intensity."
+      },
+      "output:out": {
+        "type": "lightshader"
+      }
+    },
+    "nodegraph:NG_lightcompoundtest": {
+      "nodedef": "ND_lightcompoundtest",
+      "uniform_edf:edf1": {
+        "type": "EDF",
+        "input:color": {
+          "type": "color3",
+          "interfacename": "color"
+        }
+      },
+      "light:light1": {
+        "type": "lightshader",
+        "input:edf": {
+          "type": "EDF",
+          "nodename": "edf1"
+        },
+        "input:intensity": {
+          "type": "float",
+          "interfacename": "intensity"
+        }
+      },
+      "output:out": {
+        "type": "lightshader",
+        "nodename": "light1"
+      }
+    }
+  },
+  "version": "1.38"
+}

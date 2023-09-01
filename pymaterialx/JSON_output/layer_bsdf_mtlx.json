@@ -1,0 +1,149 @@
+{
+  "materialx": {
+    "nodegraph:layer_bsdf_test1": {
+      "oren_nayar_diffuse_bsdf:diffuse_brdf_1": {
+        "type": "BSDF"
+      },
+      "sheen_bsdf:sheen_brdf_1": {
+        "type": "BSDF"
+      },
+      "dielectric_bsdf:dielectric_brdf_1": {
+        "type": "BSDF",
+        "input:ior": {
+          "type": "float",
+          "value": "2.5"
+        }
+      },
+      "dielectric_bsdf:dielectric_brdf_2": {
+        "type": "BSDF",
+        "input:ior": {
+          "type": "float",
+          "value": "1.2"
+        },
+        "input:tint": {
+          "type": "color3",
+          "value": "1,0,0"
+        }
+      },
+      "layer:layer_bsdf_1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "sheen_brdf_1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "diffuse_brdf_1"
+        }
+      },
+      "layer:layer_bsdf_2": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf_1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_1"
+        }
+      },
+      "layer:layer_bsdf_3": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf_2"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_2"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_3"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:layer_bsdf_test2": {
+      "dielectric_bsdf:dielectric_R": {
+        "type": "BSDF",
+        "input:ior": {
+          "type": "float",
+          "value": "1.8"
+        },
+        "input:scatter_mode": {
+          "type": "string",
+          "value": "R",
+          "uniform": "true"
+        }
+      },
+      "dielectric_bsdf:dielectric_T": {
+        "type": "BSDF",
+        "input:ior": {
+          "type": "float",
+          "value": "1.5"
+        },
+        "input:scatter_mode": {
+          "type": "string",
+          "value": "T",
+          "uniform": "true"
+        }
+      },
+      "anisotropic_vdf:dielectric_interior": {
+        "type": "VDF",
+        "input:absorption": {
+          "type": "vector3",
+          "value": "0.8, 0.8, 0.1"
+        },
+        "input:scattering": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        },
+        "input:anisotropy": {
+          "type": "float",
+          "value": "0.0"
+        }
+      },
+      "layer:dielectric_T_with_interior": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_T"
+        },
+        "input:base": {
+          "type": "VDF",
+          "nodename": "dielectric_interior"
+        }
+      },
+      "layer:dielectric": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_R"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "dielectric_T_with_interior"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "dielectric"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    }
+  },
+  "version": "1.38"
+}

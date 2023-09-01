@@ -1,0 +1,257 @@
+{
+  "materialx": {
+    "nodegraph:smoothstep_float_range_min": {
+      "smoothstep:smoothstep1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "value": "0.2000"
+        },
+        "input:low": {
+          "type": "float",
+          "value": "0.2000"
+        },
+        "input:high": {
+          "type": "float",
+          "value": "0.8000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "smoothstep1"
+      }
+    },
+    "nodegraph:smoothstep_float_range_max": {
+      "smoothstep:smoothstep1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:low": {
+          "type": "float",
+          "value": "0.2000"
+        },
+        "input:high": {
+          "type": "float",
+          "value": "0.8000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "smoothstep1"
+      }
+    },
+    "nodegraph:smoothstep_color3": {
+      "smoothstep:smoothstep1": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "value": "0.6000, 0.5000, 0.2000"
+        },
+        "input:low": {
+          "type": "color3",
+          "value": "0.2000, 0.2000, 0.0"
+        },
+        "input:high": {
+          "type": "color3",
+          "value": "0.8000, 0.8000, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "smoothstep1"
+      }
+    },
+    "nodegraph:smoothstep_color3FA": {
+      "smoothstep:smoothstep1": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "value": "0.6000, 0.5000, 0.0000"
+        },
+        "input:low": {
+          "type": "float",
+          "value": "0.2000"
+        },
+        "input:high": {
+          "type": "float",
+          "value": "0.8000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "smoothstep1"
+      }
+    },
+    "nodegraph:smoothstep_color4": {
+      "smoothstep:smoothstep1": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "value": "0.6000, 0.5000, 0.2000, 1.0"
+        },
+        "input:low": {
+          "type": "color4",
+          "value": "0.2000, 0.2000, 0.0, 0.0"
+        },
+        "input:high": {
+          "type": "color4",
+          "value": "0.8000, 0.8000, 1.0, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "smoothstep1"
+      }
+    },
+    "nodegraph:smoothstep_color4FA": {
+      "smoothstep:smoothstep1": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "value": "0.6000, 0.5000, 0.0000, 1.0"
+        },
+        "input:low": {
+          "type": "float",
+          "value": "0.2000"
+        },
+        "input:high": {
+          "type": "float",
+          "value": "0.8000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "smoothstep1"
+      }
+    },
+    "nodegraph:smoothstep_vector2": {
+      "smoothstep:smoothstep1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector2",
+          "value": "0.6000, 0.5000"
+        },
+        "input:low": {
+          "type": "vector2",
+          "value": "0.2000, 0.2000"
+        },
+        "input:high": {
+          "type": "vector2",
+          "value": "0.8000, 0.8000"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "smoothstep1"
+      }
+    },
+    "nodegraph:smoothstep_vector2FA": {
+      "smoothstep:smoothstep1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector2",
+          "value": "0.6000, 0.5000"
+        },
+        "input:low": {
+          "type": "float",
+          "value": "0.2000"
+        },
+        "input:high": {
+          "type": "float",
+          "value": "0.8000"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "smoothstep1"
+      }
+    },
+    "nodegraph:smoothstep_vector3": {
+      "smoothstep:smoothstep1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "value": "0.6000, 0.5000, 0.2000"
+        },
+        "input:low": {
+          "type": "vector3",
+          "value": "0.2000, 0.2000, 0.0"
+        },
+        "input:high": {
+          "type": "vector3",
+          "value": "0.8000, 0.8000, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "smoothstep1"
+      }
+    },
+    "nodegraph:smoothstep_vector3FA": {
+      "smoothstep:smoothstep1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "value": "0.6000, 0.5000, 0.0"
+        },
+        "input:low": {
+          "type": "float",
+          "value": "0.2000"
+        },
+        "input:high": {
+          "type": "float",
+          "value": "0.8000"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "smoothstep1"
+      }
+    },
+    "nodegraph:smoothstep_vector4": {
+      "smoothstep:smoothstep1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "value": "0.6000, 0.5000, 0.2000, 1.0"
+        },
+        "input:low": {
+          "type": "vector4",
+          "value": "0.2000, 0.2000, 0.0, 0.0"
+        },
+        "input:high": {
+          "type": "vector4",
+          "value": "0.8000, 0.8000, 1.0, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "smoothstep1"
+      }
+    },
+    "nodegraph:smoothstep_vector4FA": {
+      "smoothstep:smoothstep1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "value": "0.6000, 0.5000, 0.0, 1.0"
+        },
+        "input:low": {
+          "type": "float",
+          "value": "0.2000"
+        },
+        "input:high": {
+          "type": "float",
+          "value": "0.8000"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "smoothstep1"
+      }
+    }
+  },
+  "version": "1.38"
+}

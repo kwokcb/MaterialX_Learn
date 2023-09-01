@@ -1,0 +1,215 @@
+{
+  "materialx": {
+    "nodegraph:blur_color3": {
+      "image:image1": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Images/grid.png"
+        }
+      },
+      "blur:blur_color3": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "nodename": "image1"
+        },
+        "input:size": {
+          "type": "float",
+          "value": "0.5"
+        },
+        "input:filtertype": {
+          "type": "string",
+          "value": "gaussian"
+        }
+      },
+      "output:blur_color3_out": {
+        "type": "color3",
+        "nodename": "blur_color3"
+      }
+    },
+    "nodegraph:blur_color4": {
+      "tiledimage:tiledimage1": {
+        "type": "color4",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Images/grid.png"
+        }
+      },
+      "blur:blur_color4": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "nodename": "tiledimage1"
+        },
+        "input:size": {
+          "type": "float",
+          "value": "0.5"
+        },
+        "input:filtertype": {
+          "type": "string",
+          "value": "gaussian"
+        }
+      },
+      "output:blur_color4_out": {
+        "type": "color4",
+        "nodename": "blur_color4"
+      }
+    },
+    "nodegraph:blur_float": {
+      "image:image1": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Images/grid.png"
+        }
+      },
+      "blur:blur_float": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "image1"
+        },
+        "input:size": {
+          "type": "float",
+          "value": "0.5"
+        },
+        "input:filtertype": {
+          "type": "string",
+          "value": "box"
+        }
+      },
+      "output:blur_float_out": {
+        "type": "float",
+        "nodename": "blur_float"
+      }
+    },
+    "nodegraph:blur_vector2": {
+      "tiledimage:tiledimage1": {
+        "type": "vector2",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Images/grid.png"
+        }
+      },
+      "blur:blur_vector2": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector2",
+          "nodename": "tiledimage1"
+        },
+        "input:size": {
+          "type": "float",
+          "value": "0.5"
+        },
+        "input:filtertype": {
+          "type": "string",
+          "value": "box"
+        }
+      },
+      "output:blur_vector2_out": {
+        "type": "vector2",
+        "nodename": "blur_vector2"
+      }
+    },
+    "nodegraph:blur_vector3": {
+      "tiledimage:tiledimage1": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Images/grid.png"
+        }
+      },
+      "blur:blur_vector3": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "tiledimage1"
+        },
+        "input:size": {
+          "type": "float",
+          "value": "0.5"
+        },
+        "input:filtertype": {
+          "type": "string",
+          "value": "box"
+        }
+      },
+      "output:blur_vector3_out": {
+        "type": "vector3",
+        "nodename": "blur_vector3"
+      }
+    },
+    "nodegraph:blur_vector4": {
+      "tiledimage:tiledimage1": {
+        "type": "vector4",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Images/grid.png"
+        }
+      },
+      "blur:blur_vector4": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "tiledimage1"
+        },
+        "input:size": {
+          "type": "float",
+          "value": "0.5"
+        },
+        "input:filtertype": {
+          "type": "string",
+          "value": "box"
+        }
+      },
+      "output:blur_vector4_out": {
+        "type": "vector4",
+        "nodename": "blur_vector4"
+      }
+    },
+    "nodegraph:blur_cellnoise": {
+      "texcoord:texcoord1": {
+        "type": "vector2"
+      },
+      "multiply:multiply1": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "100"
+        }
+      },
+      "cellnoise2d:cellnoise2d1": {
+        "type": "float",
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "multiply1"
+        }
+      },
+      "blur:blur_cellnoise": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "cellnoise2d1"
+        },
+        "input:size": {
+          "type": "float",
+          "value": "0.5"
+        },
+        "input:filtertype": {
+          "type": "string",
+          "value": "gaussian"
+        }
+      },
+      "output:blur_cellnoise_out": {
+        "type": "float",
+        "nodename": "blur_cellnoise"
+      }
+    }
+  },
+  "version": "1.38"
+}

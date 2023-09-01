@@ -1,0 +1,487 @@
+{
+  "materialx": {
+    "nodegraph:sin_nodegraph": {
+      "sin:sin1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "1.0000"
+        }
+      },
+      "output:sin_out": {
+        "type": "float",
+        "nodename": "sin1"
+      }
+    },
+    "nodegraph:sin_vector2_nodegraph": {
+      "sin:sin1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector2",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector2",
+        "input:value": {
+          "type": "vector2",
+          "value": "1.0000, 1.0"
+        }
+      },
+      "output:sin_out": {
+        "type": "vector2",
+        "nodename": "sin1"
+      }
+    },
+    "nodegraph:sin_vector3_nodegraph": {
+      "sin:sin1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector3",
+        "input:value": {
+          "type": "vector3",
+          "value": "1.0, 1.0, 1.0"
+        }
+      },
+      "output:sin_out": {
+        "type": "vector3",
+        "nodename": "sin1"
+      }
+    },
+    "nodegraph:sin_vector4_nodegraph": {
+      "sin:sin1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector4",
+        "input:value": {
+          "type": "vector4",
+          "value": "1.0, 1.0, 1.0, 1.0"
+        }
+      },
+      "output:sin_out": {
+        "type": "vector4",
+        "nodename": "sin1"
+      }
+    },
+    "nodegraph:cos_nodegraph": {
+      "cos:cos1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "1.0000"
+        }
+      },
+      "output:cos_out": {
+        "type": "float",
+        "nodename": "cos1"
+      }
+    },
+    "nodegraph:cos_vector2_nodegraph": {
+      "cos:cos1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector2",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector2",
+        "input:value": {
+          "type": "vector2",
+          "value": "1.0000, 1.0"
+        }
+      },
+      "output:cos_out": {
+        "type": "vector2",
+        "nodename": "cos1"
+      }
+    },
+    "nodegraph:cos_vector3_nodegraph": {
+      "cos:cos1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector3",
+        "input:value": {
+          "type": "vector3",
+          "value": "1.0, 1.0, 1.0"
+        }
+      },
+      "output:cos_out": {
+        "type": "vector3",
+        "nodename": "cos1"
+      }
+    },
+    "nodegraph:cos_vector4_nodegraph": {
+      "cos:cos1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector4",
+        "input:value": {
+          "type": "vector4",
+          "value": "1.0, 1.0, 1.0, 1.0"
+        }
+      },
+      "output:cos_out": {
+        "type": "vector4",
+        "nodename": "cos1"
+      }
+    },
+    "nodegraph:tan_nodegraph": {
+      "constant:constant1": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "tan:tan1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "constant1"
+        }
+      },
+      "output:tan_out": {
+        "type": "float",
+        "nodename": "tan1"
+      }
+    },
+    "nodegraph:tan_vector2_nodegraph": {
+      "tan:tan1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector2",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector2",
+        "input:value": {
+          "type": "vector2",
+          "value": "1.0000, 1.0"
+        }
+      },
+      "output:tan_out": {
+        "type": "vector2",
+        "nodename": "tan1"
+      }
+    },
+    "nodegraph:tan_vector3_nodegraph": {
+      "tan:tan1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector3",
+        "input:value": {
+          "type": "vector3",
+          "value": "1.0, 1.0, 1.0"
+        }
+      },
+      "output:tan_out": {
+        "type": "vector3",
+        "nodename": "tan1"
+      }
+    },
+    "nodegraph:tan_vector4_nodegraph": {
+      "tan:tan1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector4",
+        "input:value": {
+          "type": "vector4",
+          "value": "1.0, 1.0, 1.0, 1.0"
+        }
+      },
+      "output:tan_out": {
+        "type": "vector4",
+        "nodename": "tan1"
+      }
+    },
+    "nodegraph:asin_nodegraph": {
+      "asin:asin1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:asin_out": {
+        "type": "float",
+        "nodename": "asin1"
+      }
+    },
+    "nodegraph:asin_vector2_nodegraph": {
+      "asin:asin1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector2",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector2",
+        "input:value": {
+          "type": "vector2",
+          "value": "1.0000, 1.0"
+        }
+      },
+      "output:asin_out": {
+        "type": "vector2",
+        "nodename": "asin1"
+      }
+    },
+    "nodegraph:asin_vector3_nodegraph": {
+      "asin:asin1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector3",
+        "input:value": {
+          "type": "vector3",
+          "value": "1.0, 1.0, 1.0"
+        }
+      },
+      "output:asin_out": {
+        "type": "vector3",
+        "nodename": "asin1"
+      }
+    },
+    "nodegraph:asin_vector4_nodegraph": {
+      "asin:asin1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector4",
+        "input:value": {
+          "type": "vector4",
+          "value": "1.0, 1.0, 1.0, 1.0"
+        }
+      },
+      "output:asin_out": {
+        "type": "vector4",
+        "nodename": "asin1"
+      }
+    },
+    "nodegraph:acos_nodegraph": {
+      "acos:acos1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "0.8000"
+        }
+      },
+      "output:acos_out": {
+        "type": "float",
+        "nodename": "acos1"
+      }
+    },
+    "nodegraph:acos_vector2_nodegraph": {
+      "acos:acos1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector2",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector2",
+        "input:value": {
+          "type": "vector2",
+          "value": "1.0000, 1.0"
+        }
+      },
+      "output:acos_out": {
+        "type": "vector2",
+        "nodename": "acos1"
+      }
+    },
+    "nodegraph:acos_vector3_nodegraph": {
+      "acos:acos1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector3",
+        "input:value": {
+          "type": "vector3",
+          "value": "1.0, 1.0, 1.0"
+        }
+      },
+      "output:acos_out": {
+        "type": "vector3",
+        "nodename": "acos1"
+      }
+    },
+    "nodegraph:acos_vector4_nodegraph": {
+      "acos:acos1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "constant1"
+        }
+      },
+      "constant:constant1": {
+        "type": "vector4",
+        "input:value": {
+          "type": "vector4",
+          "value": "1.0, 1.0, 1.0, 1.0"
+        }
+      },
+      "output:acos_out": {
+        "type": "vector4",
+        "nodename": "acos1"
+      }
+    },
+    "nodegraph:atan_nodegraph": {
+      "constant:constant1": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "constant:constant2": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "1.0000"
+        }
+      },
+      "atan2:atan21": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "constant1"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "constant2"
+        }
+      },
+      "output:atan2_out": {
+        "type": "float",
+        "nodename": "atan21"
+      }
+    },
+    "nodegraph:atan_vector2_nodegraph": {
+      "atan2:atan21": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "value": "0.5, 0.5"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "value": "1.0, 1.0"
+        }
+      },
+      "output:atan_out": {
+        "type": "vector2",
+        "nodename": "atan21"
+      }
+    },
+    "nodegraph:atan_vector3_nodegraph": {
+      "atan2:atan21": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "value": "0.5, 0.5, 0.5"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "1.0, 1.0, 1.0"
+        }
+      },
+      "output:atan_out": {
+        "type": "vector3",
+        "nodename": "atan21"
+      }
+    },
+    "nodegraph:atan_vector4_nodegraph": {
+      "atan2:atan21": {
+        "type": "vector4",
+        "input:in1": {
+          "type": "vector4",
+          "value": "0.5, 0.5, 0.5, 0.5"
+        },
+        "input:in2": {
+          "type": "vector4",
+          "value": "1.0, 1.0, 1.0, 1.0"
+        }
+      },
+      "output:atan_out": {
+        "type": "vector4",
+        "nodename": "atan21"
+      }
+    }
+  },
+  "version": "1.38"
+}

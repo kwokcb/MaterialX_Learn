@@ -1,0 +1,73 @@
+{
+  "materialx": {
+    "nodegraph:timeGraph": {
+      "time:time1": {
+        "type": "float",
+        "input:fps": {
+          "type": "float",
+          "value": "36.0000"
+        }
+      },
+      "remap:remap1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "time1"
+        },
+        "input:inlow": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:inhigh": {
+          "type": "float",
+          "value": "100.0000"
+        },
+        "input:outlow": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:outhigh": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "remap1"
+      }
+    },
+    "nodegraph:frameGraph": {
+      "frame:frame1": {
+        "type": "float"
+      },
+      "remap:remap1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "frame1"
+        },
+        "input:inlow": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:inhigh": {
+          "type": "float",
+          "value": "100.0000"
+        },
+        "input:outlow": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:outhigh": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "remap1"
+      }
+    }
+  },
+  "version": "1.38"
+}

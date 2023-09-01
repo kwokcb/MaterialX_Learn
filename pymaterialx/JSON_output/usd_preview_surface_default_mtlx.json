@@ -1,0 +1,72 @@
+{
+  "materialx": {
+    "UsdPreviewSurface:SR_default": {
+      "type": "surfaceshader",
+      "input:diffuseColor": {
+        "type": "color3",
+        "value": "0.18, 0.18, 0.18"
+      },
+      "input:emissiveColor": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:useSpecularWorkflow": {
+        "type": "integer",
+        "value": "0"
+      },
+      "input:specularColor": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:metallic": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:roughness": {
+        "type": "float",
+        "value": "0.5"
+      },
+      "input:clearcoat": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:clearcoatRoughness": {
+        "type": "float",
+        "value": "0.01"
+      },
+      "input:opacity": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:opacityThreshold": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:ior": {
+        "type": "float",
+        "value": "1.5"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "value": "0, 0, 1"
+      },
+      "input:displacement": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:occlusion": {
+        "type": "float",
+        "value": "1"
+      }
+    },
+    "surfacematerial:USD_Default": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_default"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

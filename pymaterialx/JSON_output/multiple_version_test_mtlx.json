@@ -1,0 +1,87 @@
+{
+  "materialx": {
+    "nodedef:ND_myimage_color3_v1": {
+      "node": "myimage",
+      "version": "1.0",
+      "nodegroup": "texture2d",
+      "input:file": {
+        "type": "filename",
+        "uniform": "true",
+        "value": "resources/Images/grid.png"
+      },
+      "output:out": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      }
+    },
+    "nodegraph:NG_myimage_color3_v1": {
+      "nodedef": "ND_myimage_color3_v1",
+      "image:image": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "uniform": "true",
+          "interfacename": "file"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "image"
+      }
+    },
+    "nodedef:ND_myimage_color3_v2": {
+      "node": "myimage",
+      "version": "2.0",
+      "isdefaultversion": "true",
+      "nodegroup": "texture2d",
+      "input:file": {
+        "type": "filename",
+        "uniform": "true",
+        "value": "resources/Images/cloth.png"
+      },
+      "output:out": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      }
+    },
+    "nodegraph:NG_myimage_color3_v2": {
+      "nodedef": "ND_myimage_color3_v2",
+      "image:image": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "uniform": "true",
+          "interfacename": "file"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "image"
+      }
+    },
+    "myimage:image_version1_instance": {
+      "type": "color3",
+      "version": "1.0"
+    },
+    "output:v1_out": {
+      "type": "color3",
+      "nodename": "image_version1_instance"
+    },
+    "myimage:image_version2_instance": {
+      "type": "color3",
+      "version": "2.0"
+    },
+    "output:v2_out": {
+      "type": "color3",
+      "nodename": "image_version2_instance"
+    },
+    "myimage:image_version2_implicit_instance": {
+      "type": "color3"
+    },
+    "output:v2_implicit_out": {
+      "type": "color3",
+      "nodename": "image_version2_implicit_instance"
+    }
+  },
+  "version": "1.38"
+}

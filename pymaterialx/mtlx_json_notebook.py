@@ -15,7 +15,13 @@
 # <td style="background:#000000"><img src="./images/jsoncrack_snap2.png">
 # </tr>
 # </table>
-# <sub>Snaphots of graphs generated using the JSONCrack add-on.</sub>
+# <sub>Snapshots of graphs generated using the JSONCrack add-on.</sub>
+# 
+# The serialization logic has been added to utility Python command called `jsonIO.py`. The
+# results of converting all of the files under the <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/resources/Materials" target="_blank">resources/Materials</a> folder included with the MaterialX
+# distribution can be found in the <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/JSON_outputs" target="_blank">`JSON_outputs`</a> folder.
+
+# %% [markdown]
 # 
 # ### Setup for JSON support
 # 

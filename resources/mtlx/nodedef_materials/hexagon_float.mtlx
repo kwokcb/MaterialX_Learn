@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <materialx version="1.38">
   <hexagon name="hexagon_float" type="float">
-    <input name="sample" type="vector2" value="0, 0" />
     <input name="center" type="vector2" value="0, 0" />
     <input name="radius" type="float" value="0.5" />
   </hexagon>

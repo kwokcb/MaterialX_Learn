@@ -1,0 +1,806 @@
+{
+  "materialx": {
+    "nodegraph:vertical_layering_ex1": {
+      "dielectric_bsdf:dielectric_bsdf": {
+        "type": "BSDF",
+        "nodedef": "ND_dielectric_bsdf",
+        "input:ior": {
+          "type": "float",
+          "value": "2.0"
+        }
+      },
+      "oren_nayar_diffuse_bsdf:oren_nayar_diffuse_bsdf": {
+        "type": "BSDF",
+        "nodedef": "ND_oren_nayar_diffuse_bsdf"
+      },
+      "layer:layer1": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_bsdf"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "oren_nayar_diffuse_bsdf"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "nodedef": "ND_surface",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:vertical_layering_ex2": {
+      "thin_film_bsdf:thin_film_bsdf": {
+        "type": "BSDF",
+        "nodedef": "ND_thin_film_bsdf",
+        "input:thickness": {
+          "type": "float",
+          "value": "300"
+        }
+      },
+      "dielectric_bsdf:dielectric_bsdf": {
+        "type": "BSDF",
+        "nodedef": "ND_dielectric_bsdf",
+        "input:ior": {
+          "type": "float",
+          "value": "3"
+        }
+      },
+      "layer:layer1": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "thin_film_bsdf"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "dielectric_bsdf"
+        }
+      },
+      "oren_nayar_diffuse_bsdf:oren_nayar_diffuse_bsdf": {
+        "type": "BSDF",
+        "nodedef": "ND_oren_nayar_diffuse_bsdf"
+      },
+      "layer:layer2": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "layer1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "oren_nayar_diffuse_bsdf"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "nodedef": "ND_surface",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer2"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:vertical_layering_ex3": {
+      "thin_film_bsdf:thin_film_bsdf1": {
+        "type": "BSDF",
+        "nodedef": "ND_thin_film_bsdf",
+        "input:thickness": {
+          "type": "float",
+          "value": "300"
+        }
+      },
+      "dielectric_bsdf:dielectric_bsdf1": {
+        "type": "BSDF",
+        "nodedef": "ND_dielectric_bsdf",
+        "input:ior": {
+          "type": "float",
+          "value": "3"
+        }
+      },
+      "layer:layer1": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "thin_film_bsdf1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "dielectric_bsdf1"
+        }
+      },
+      "dielectric_bsdf:dielectric_bsdf2": {
+        "type": "BSDF",
+        "nodedef": "ND_dielectric_bsdf",
+        "input:ior": {
+          "type": "float",
+          "value": "2"
+        }
+      },
+      "layer:layer2": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_bsdf2"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "layer1"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "nodedef": "ND_surface",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer2"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:vertical_layering_ex4": {
+      "thin_film_bsdf:thin_film_bsdf1": {
+        "type": "BSDF",
+        "nodedef": "ND_thin_film_bsdf",
+        "input:thickness": {
+          "type": "float",
+          "value": "300"
+        }
+      },
+      "dielectric_bsdf:dielectric_bsdf1": {
+        "type": "BSDF",
+        "nodedef": "ND_dielectric_bsdf",
+        "input:ior": {
+          "type": "float",
+          "value": "3"
+        }
+      },
+      "layer:layer1": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "thin_film_bsdf1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "dielectric_bsdf1"
+        }
+      },
+      "dielectric_bsdf:dielectric_bsdf2": {
+        "type": "BSDF",
+        "nodedef": "ND_dielectric_bsdf",
+        "input:ior": {
+          "type": "float",
+          "value": "2.0"
+        }
+      },
+      "oren_nayar_diffuse_bsdf:oren_nayar_diffuse_bsdf": {
+        "type": "BSDF",
+        "nodedef": "ND_oren_nayar_diffuse_bsdf"
+      },
+      "layer:layer2": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_bsdf2"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "oren_nayar_diffuse_bsdf"
+        }
+      },
+      "layer:layer3": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "layer1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "layer2"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "nodedef": "ND_surface",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer3"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:vertical_layering_ex5": {
+      "thin_film_bsdf:thin_film_bsdf": {
+        "type": "BSDF",
+        "nodedef": "ND_thin_film_bsdf",
+        "input:thickness": {
+          "type": "float",
+          "value": "300",
+          "uivisible": "true"
+        }
+      },
+      "dielectric_bsdf:dielectric_bsdf": {
+        "type": "BSDF",
+        "nodedef": "ND_dielectric_bsdf",
+        "input:ior": {
+          "type": "float",
+          "value": "3",
+          "uivisible": "true"
+        }
+      },
+      "surface:surface": {
+        "type": "surfaceshader",
+        "nodedef": "ND_surface",
+        "input:bsdf": {
+          "type": "BSDF",
+          "value": "",
+          "uivisible": "true"
+        },
+        "input:edf": {
+          "type": "EDF",
+          "value": "",
+          "uivisible": "true"
+        }
+      },
+      "layer:layer1": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "value": "",
+          "uivisible": "true"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "value": "",
+          "uivisible": "true"
+        }
+      },
+      "oren_nayar_diffuse_bsdf:oren_nayar_diffuse_bsdf1": {
+        "type": "BSDF",
+        "nodedef": "ND_oren_nayar_diffuse_bsdf",
+        "input:color": {
+          "type": "color3",
+          "value": "1, 0, 0",
+          "uivisible": "true"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "nodedef": "ND_surface",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer2",
+          "uivisible": "true"
+        }
+      },
+      "dielectric_bsdf:dielectric_bsdf1": {
+        "type": "BSDF",
+        "nodedef": "ND_dielectric_bsdf",
+        "input:ior": {
+          "type": "float",
+          "value": "3",
+          "uivisible": "true"
+        }
+      },
+      "layer:layer2": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "layer3",
+          "uivisible": "true"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "mix",
+          "uivisible": "true"
+        }
+      },
+      "layer:layer3": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "thin_film_bsdf1",
+          "uivisible": "true"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "dielectric_bsdf1",
+          "uivisible": "true"
+        }
+      },
+      "thin_film_bsdf:thin_film_bsdf1": {
+        "type": "BSDF",
+        "nodedef": "ND_thin_film_bsdf",
+        "input:thickness": {
+          "type": "float",
+          "value": "300",
+          "uivisible": "true"
+        }
+      },
+      "mix:mix": {
+        "type": "BSDF",
+        "nodedef": "ND_mix_bsdf",
+        "input:fg": {
+          "type": "BSDF",
+          "nodename": "layer",
+          "uivisible": "true"
+        },
+        "input:bg": {
+          "type": "BSDF",
+          "nodename": "dielectric_bsdf",
+          "uivisible": "true"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5",
+          "uivisible": "true"
+        }
+      },
+      "layer:layer": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_bsdf2",
+          "uivisible": "true"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "oren_nayar_diffuse_bsdf1",
+          "uivisible": "true"
+        }
+      },
+      "dielectric_bsdf:dielectric_bsdf2": {
+        "type": "BSDF",
+        "nodedef": "ND_dielectric_bsdf"
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:vertical_layering_ex6": {
+      "dielectric_bsdf:dielectric_bsdf2": {
+        "type": "BSDF",
+        "nodedef": "ND_dielectric_bsdf"
+      },
+      "oren_nayar_diffuse_bsdf:oren_nayar_diffuse_bsdf1": {
+        "type": "BSDF",
+        "nodedef": "ND_oren_nayar_diffuse_bsdf",
+        "input:color": {
+          "type": "color3",
+          "value": "1, 0, 0",
+          "uivisible": "true"
+        }
+      },
+      "layer:layer": {
+        "type": "BSDF",
+        "nodedef": "ND_layer_bsdf",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_bsdf2",
+          "uivisible": "true"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "oren_nayar_diffuse_bsdf1",
+          "uivisible": "true"
+        }
+      },
+      "mix:mix": {
+        "type": "BSDF",
+        "nodedef": "ND_mix_bsdf",
+        "input:fg": {
+          "type": "BSDF",
+          "nodename": "dielectric_bsdf2",
+          "uivisible": "true"
+        },
+        "input:bg": {
+          "type": "BSDF",
+          "nodename": "layer",
+          "uivisible": "true"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5",
+          "uivisible": "true"
+        }
+      },
+      "surface:surface": {
+        "type": "surfaceshader",
+        "nodedef": "ND_surface",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "mix",
+          "uivisible": "true"
+        },
+        "input:edf": {
+          "type": "EDF",
+          "value": "",
+          "uivisible": "true"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface"
+      }
+    },
+    "nodedef:ND_mybsdf": {
+      "node": "mybsdf",
+      "input:diffuse": {
+        "type": "float",
+        "value": "0.8"
+      },
+      "input:diffuseColor": {
+        "type": "color3",
+        "value": "0.0, 1.0, 0.0"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:specularColor": {
+        "type": "color3",
+        "value": "1.0, 1.0, 1.0"
+      },
+      "output:out": {
+        "type": "BSDF"
+      }
+    },
+    "nodegraph:IMP_mybsdf": {
+      "nodedef": "ND_mybsdf",
+      "oren_nayar_diffuse_bsdf:diffuse_brdf1": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "interfacename": "diffuse"
+        },
+        "input:color": {
+          "type": "color3",
+          "interfacename": "diffuseColor"
+        }
+      },
+      "dielectric_bsdf:dielectric_brdf1": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "interfacename": "specular"
+        },
+        "input:tint": {
+          "type": "color3",
+          "interfacename": "specularColor"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.52"
+        }
+      },
+      "layer:layer1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "diffuse_brdf1"
+        }
+      },
+      "output:out": {
+        "type": "BSDF",
+        "nodename": "layer1"
+      }
+    },
+    "nodegraph:vertical_layering_ex7": {
+      "type": "surfaceshader",
+      "mybsdf:mybsdf1": {
+        "type": "BSDF",
+        "input:diffuse": {
+          "type": "float",
+          "value": "0.4"
+        },
+        "input:diffuseColor": {
+          "type": "color3",
+          "value": "1.0, 0.1, 0.1"
+        },
+        "input:specular": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:specularColor": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        }
+      },
+      "dielectric_bsdf:dielectric_brdf1": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:tint": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.9"
+        }
+      },
+      "layer:layer1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "mybsdf1"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:vertical_layering_ex8": {
+      "type": "surfaceshader",
+      "dielectric_bsdf:dielectric": {
+        "type": "BSDF"
+      },
+      "conductor_bsdf:conductor": {
+        "type": "BSDF"
+      },
+      "multiply:multiply": {
+        "type": "BSDF",
+        "input:in1": {
+          "type": "BSDF",
+          "nodename": "dielectric"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.5"
+        }
+      },
+      "layer:layer": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "multiply"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "conductor"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodedef:ND_custom_layer": {
+      "node": "custom_layer",
+      "input:top": {
+        "type": "BSDF"
+      },
+      "input:base": {
+        "type": "BSDF"
+      },
+      "output:out": {
+        "type": "BSDF"
+      }
+    },
+    "nodegraph:NG_custom_layer": {
+      "nodedef": "ND_custom_layer",
+      "layer:layer": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "interfacename": "top"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "interfacename": "base"
+        }
+      },
+      "output:out": {
+        "type": "BSDF",
+        "nodename": "layer"
+      }
+    },
+    "nodegraph:vertical_layering_ex9": {
+      "type": "surfaceshader",
+      "dielectric_bsdf:dielectric": {
+        "type": "BSDF"
+      },
+      "conductor_bsdf:conductor": {
+        "type": "BSDF"
+      },
+      "custom_layer:custom_layer": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "conductor"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "custom_layer"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodedef:ND_scaled_layer": {
+      "node": "scaled_layer",
+      "input:top": {
+        "type": "BSDF"
+      },
+      "input:base": {
+        "type": "BSDF"
+      },
+      "input:scale_top": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:scale_base": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:scale_layer": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "output:out": {
+        "type": "BSDF"
+      }
+    },
+    "nodegraph:NG_scaled_layer": {
+      "nodedef": "ND_scaled_layer",
+      "multiply:top_scaled": {
+        "type": "BSDF",
+        "input:in1": {
+          "type": "BSDF",
+          "interfacename": "top"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "scale_top"
+        }
+      },
+      "multiply:base_scaled": {
+        "type": "BSDF",
+        "input:in1": {
+          "type": "BSDF",
+          "interfacename": "base"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "scale_base"
+        }
+      },
+      "layer:layer": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "top_scaled"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "base_scaled"
+        }
+      },
+      "multiply:layer_scaled": {
+        "type": "BSDF",
+        "input:in1": {
+          "type": "BSDF",
+          "nodename": "layer"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "scale_layer"
+        }
+      },
+      "output:out": {
+        "type": "BSDF",
+        "nodename": "layer_scaled"
+      }
+    },
+    "nodegraph:vertical_layering_ex10": {
+      "type": "surfaceshader",
+      "dielectric_bsdf:dielectric": {
+        "type": "BSDF"
+      },
+      "conductor_bsdf:conductor": {
+        "type": "BSDF"
+      },
+      "scaled_layer:custom_layer": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "conductor"
+        },
+        "input:scale_top": {
+          "type": "float",
+          "value": "0.8"
+        },
+        "input:scale_base": {
+          "type": "float",
+          "value": "0.3"
+        },
+        "input:scale_layer": {
+          "type": "float",
+          "value": "0.9"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "custom_layer"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    }
+  },
+  "version": "1.38"
+}

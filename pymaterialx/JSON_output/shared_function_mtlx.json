@@ -1,0 +1,77 @@
+{
+  "materialx": {
+    "nodegraph:shared_function_test": {
+      "texcoord:texcoord1": {
+        "type": "vector2",
+        "input:index": {
+          "type": "integer",
+          "value": "0"
+        }
+      },
+      "multiply:texcoord2": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "value": "16.0000, 16.0000"
+        }
+      },
+      "noise2d:noise2d_1": {
+        "type": "color3",
+        "input:amplitude": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:pivot": {
+          "type": "float",
+          "value": "0.4000"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "texcoord2"
+        }
+      },
+      "noise2d:noise2d_2": {
+        "type": "vector3",
+        "input:amplitude": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:pivot": {
+          "type": "float",
+          "value": "0.4000"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "texcoord2"
+        }
+      },
+      "convert:convert1": {
+        "type": "color3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "noise2d_2"
+        }
+      },
+      "multiply:multiply2": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "noise2d_1"
+        },
+        "input:in2": {
+          "type": "color3",
+          "nodename": "convert1"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "multiply2"
+      }
+    }
+  },
+  "version": "1.38"
+}

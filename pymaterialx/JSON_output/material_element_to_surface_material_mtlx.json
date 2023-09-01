@@ -1,0 +1,55 @@
+{
+  "materialx": {
+    "nodegraph:NG_aiMixColor31": {
+      "mix:aiMixColor31": {
+        "type": "color3",
+        "input:fg": {
+          "type": "color3",
+          "nodename": "aiAbsvalColor31"
+        },
+        "input:bg": {
+          "type": "color3",
+          "nodename": "aiAbsvalColor32"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5"
+        }
+      },
+      "absval:aiAbsvalColor31": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "value": "1, 0, 0"
+        }
+      },
+      "absval:aiAbsvalColor32": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "value": "0.671, 0.671, 0.671"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "aiMixColor31"
+      }
+    },
+    "standard_surface:my_surface2": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_aiMixColor31",
+        "output": "out"
+      }
+    },
+    "surfacematerial:my_surface": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "my_surface2"
+      }
+    }
+  },
+  "version": "1.38"
+}

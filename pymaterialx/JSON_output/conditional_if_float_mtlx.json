@@ -1,0 +1,455 @@
+{
+  "materialx": {
+    "nodegraph:ifgreater_float": {
+      "ifgreater:ifgreater1": {
+        "type": "float",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.6000"
+        },
+        "input:in1": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.0"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "ifgreater1"
+      }
+    },
+    "nodegraph:ifgreater_color3": {
+      "ifgreater:ifgreater1": {
+        "type": "color3",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.6000"
+        },
+        "input:in1": {
+          "type": "color3",
+          "value": "1.0000, 1.0000, 1.0000"
+        },
+        "input:in2": {
+          "type": "color3",
+          "value": "0.0, 0.0, 0.0"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "ifgreater1"
+      }
+    },
+    "nodegraph:ifgreater_color4": {
+      "ifgreater:ifgreater1": {
+        "type": "color4",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.6000"
+        },
+        "input:in1": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 1.0000, 1.0"
+        },
+        "input:in2": {
+          "type": "color4",
+          "value": "0.0, 0.0, 0.0, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "ifgreater1"
+      }
+    },
+    "nodegraph:ifgreater_vector2": {
+      "ifgreater:ifgreater1": {
+        "type": "vector2",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.6000"
+        },
+        "input:in1": {
+          "type": "vector2",
+          "value": "1.0000, 1.0000"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "ifgreater1"
+      }
+    },
+    "nodegraph:ifgreater_vector3": {
+      "ifgreater:ifgreater1": {
+        "type": "vector3",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.6000"
+        },
+        "input:in1": {
+          "type": "vector3",
+          "value": "1.0000, 1.0000, 1.0000"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "ifgreater1"
+      }
+    },
+    "nodegraph:ifgreater_vector4": {
+      "ifgreater:ifgreater1": {
+        "type": "vector4",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.6000"
+        },
+        "input:in1": {
+          "type": "vector4",
+          "value": "1.0000, 1.0000, 1.0000, 1.0"
+        },
+        "input:in2": {
+          "type": "vector4",
+          "value": "0.0, 0.0, 0.0, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "ifgreater1"
+      }
+    },
+    "nodegraph:ifequal_float": {
+      "ifequal:ifequal1": {
+        "type": "float",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:in1": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.0"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "ifequal1"
+      }
+    },
+    "nodegraph:ifequal_color3": {
+      "ifequal:ifequal1": {
+        "type": "color3",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:in1": {
+          "type": "color3",
+          "value": "1.0000, 1.0000, 1.0000"
+        },
+        "input:in2": {
+          "type": "color3",
+          "value": "0.0, 0.0, 0.0"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "ifequal1"
+      }
+    },
+    "nodegraph:ifequal_color4": {
+      "ifequal:ifequal1": {
+        "type": "color4",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:in1": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 1.0000, 1.0"
+        },
+        "input:in2": {
+          "type": "color4",
+          "value": "0.0, 0.0, 0.0, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "ifequal1"
+      }
+    },
+    "nodegraph:ifequal_vector2": {
+      "ifequal:ifequal1": {
+        "type": "vector2",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:in1": {
+          "type": "vector2",
+          "value": "1.0000, 1.0000"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "ifequal1"
+      }
+    },
+    "nodegraph:ifequal_vector3": {
+      "ifequal:ifequal1": {
+        "type": "vector3",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:in1": {
+          "type": "vector3",
+          "value": "1.0000, 1.0000, 1.0000"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "ifequal1"
+      }
+    },
+    "nodegraph:ifequal_vector4": {
+      "ifequal:ifequal1": {
+        "type": "vector4",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:in1": {
+          "type": "vector4",
+          "value": "1.0000, 1.0000, 1.0000, 1.0"
+        },
+        "input:in2": {
+          "type": "vector4",
+          "value": "0.0, 0.0, 0.0, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "ifequal1"
+      }
+    },
+    "nodegraph:ifgreatereq_float": {
+      "ifgreatereq:ifgreatereq1": {
+        "type": "float",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.6000"
+        },
+        "input:in1": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.0"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "ifgreatereq1"
+      }
+    },
+    "nodegraph:ifgreatereq_color3": {
+      "ifgreatereq:ifgreatereq1": {
+        "type": "color3",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.6000"
+        },
+        "input:in1": {
+          "type": "color3",
+          "value": "1.0000, 1.0000, 1.0000"
+        },
+        "input:in2": {
+          "type": "color3",
+          "value": "0.0, 0.0, 0.0"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "ifgreatereq1"
+      }
+    },
+    "nodegraph:ifgreatereq_color4": {
+      "ifgreatereq:ifgreatereq1": {
+        "type": "color4",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.6000"
+        },
+        "input:in1": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 1.0000, 1.0"
+        },
+        "input:in2": {
+          "type": "color4",
+          "value": "0.0, 0.0, 0.0, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "ifgreatereq1"
+      }
+    },
+    "nodegraph:ifgreatereq_vector2": {
+      "ifgreatereq:ifgreatereq1": {
+        "type": "vector2",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.6000"
+        },
+        "input:in1": {
+          "type": "vector2",
+          "value": "1.0000, 1.0000"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "ifgreatereq1"
+      }
+    },
+    "nodegraph:ifgreatereq_vector3": {
+      "ifgreatereq:ifgreatereq1": {
+        "type": "vector3",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.6000"
+        },
+        "input:in1": {
+          "type": "vector3",
+          "value": "1.0000, 1.0000, 1.0000"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "ifgreatereq1"
+      }
+    },
+    "nodegraph:ifgreatereq_vector4": {
+      "ifgreatereq:ifgreatereq1": {
+        "type": "vector4",
+        "input:value1": {
+          "type": "float",
+          "value": "0.8000"
+        },
+        "input:value2": {
+          "type": "float",
+          "value": "0.6000"
+        },
+        "input:in1": {
+          "type": "vector4",
+          "value": "1.0000, 1.0000, 1.0000, 1.0"
+        },
+        "input:in2": {
+          "type": "vector4",
+          "value": "0.0, 0.0, 0.0, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "ifgreatereq1"
+      }
+    }
+  },
+  "version": "1.38"
+}

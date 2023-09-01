@@ -1,0 +1,65 @@
+{
+  "materialx": {
+    "standard_surface:SR_subsurface": {
+      "type": "surfaceshader",
+      "input:specular": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:thin_walled": {
+        "type": "boolean",
+        "value": "true"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "value": "0.816, 0.140, 0.124"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "1.0"
+      }
+    },
+    "surfacematerial:M_subsurface_thin": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_subsurface"
+      }
+    },
+    "standard_surface:SR_subsurface2": {
+      "type": "surfaceshader",
+      "input:specular": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:thin_walled": {
+        "type": "boolean",
+        "value": "false"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "value": "0.816, 0.140, 0.124"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "1.0"
+      }
+    },
+    "surfacematerial:M_subsurface_thick": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_subsurface2"
+      }
+    }
+  },
+  "version": "1.38"
+}

@@ -1,0 +1,197 @@
+{
+  "materialx": {
+    "nodedef:ND_checker_float": {
+      "node": "checker",
+      "input:scale": {
+        "type": "vector2",
+        "value": "8.0, 8.0"
+      },
+      "output:out": {
+        "type": "float"
+      }
+    },
+    "nodegraph:NG_checker_float": {
+      "nodedef": "ND_checker_float",
+      "texcoord:texcoord1": {
+        "type": "vector2",
+        "input:index": {
+          "type": "integer",
+          "value": "0"
+        }
+      },
+      "multiply:mult1": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "interfacename": "scale"
+        }
+      },
+      "swizzle:swizz_x": {
+        "type": "float",
+        "input:in": {
+          "type": "vector2",
+          "nodename": "mult1"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "x"
+        }
+      },
+      "swizzle:swizz_y": {
+        "type": "float",
+        "input:in": {
+          "type": "vector2",
+          "nodename": "mult1"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "y"
+        }
+      },
+      "floor:floor1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "swizz_x"
+        }
+      },
+      "floor:floor2": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "swizz_y"
+        }
+      },
+      "add:add1": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "floor1"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "floor2"
+        }
+      },
+      "modulo:mod1": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "add1"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "2.0"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "mod1"
+      }
+    },
+    "checker:checker1": {
+      "type": "float",
+      "input:scale": {
+        "type": "vector2",
+        "value": "32.0, 32.0"
+      }
+    },
+    "checker:checker2": {
+      "type": "float",
+      "input:scale": {
+        "type": "vector2",
+        "value": "2.0, 2.0"
+      }
+    },
+    "subtract:checker3": {
+      "type": "float",
+      "input:in1": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:in2": {
+        "type": "float",
+        "nodename": "checker2"
+      }
+    },
+    "multiply:checker4": {
+      "type": "float",
+      "input:in1": {
+        "type": "float",
+        "nodename": "checker2"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.7"
+      }
+    },
+    "surface_unlit:unlit_surface1": {
+      "type": "surfaceshader",
+      "input:emission": {
+        "type": "float",
+        "nodename": "checker1"
+      },
+      "input:opacity": {
+        "type": "float",
+        "value": "1.0"
+      }
+    },
+    "surfacematerial:unlit_mtrl1": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "unlit_surface1"
+      }
+    },
+    "surface_unlit:unlit_surface2": {
+      "type": "surfaceshader",
+      "input:emission": {
+        "type": "float",
+        "nodename": "checker1"
+      },
+      "input:opacity": {
+        "type": "float",
+        "nodename": "checker3"
+      }
+    },
+    "surfacematerial:unlit_mtrl2": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "unlit_surface2"
+      }
+    },
+    "surface_unlit:unlit_surface3": {
+      "type": "surfaceshader",
+      "input:emission": {
+        "type": "float",
+        "nodename": "checker1"
+      },
+      "input:transmission": {
+        "type": "float",
+        "nodename": "checker4"
+      },
+      "input:transmission_color": {
+        "type": "color3",
+        "value": "0.0, 0.0, 1.0"
+      },
+      "input:opacity": {
+        "type": "float",
+        "value": "1.0"
+      }
+    },
+    "surfacematerial:unlit_mtrl3": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "unlit_surface3"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

@@ -1,0 +1,295 @@
+{
+  "materialx": {
+    "nodegraph:nodegraph1": {
+      "cellnoise3d:cellnoise3d1": {
+        "type": "float",
+        "input:position": {
+          "type": "vector3",
+          "nodename": "multiply1"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "ifgreater1"
+      },
+      "position:position1": {
+        "type": "vector3",
+        "input:space": {
+          "type": "string",
+          "value": "object"
+        }
+      },
+      "multiply:multiply1": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "nodename": "position1"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "1.0000, 1.0000, 1.0000"
+        }
+      },
+      "ifgreater:ifgreater2": {
+        "type": "color3",
+        "input:value1": {
+          "type": "float",
+          "value": "0.4400"
+        },
+        "input:value2": {
+          "type": "float",
+          "nodename": "cellnoise3d1"
+        },
+        "input:in1": {
+          "type": "color3",
+          "nodename": "noise3d1"
+        },
+        "input:in2": {
+          "type": "color3",
+          "nodename": "ifgreater3"
+        }
+      },
+      "ifgreater:ifgreater1": {
+        "type": "color3",
+        "input:value1": {
+          "type": "float",
+          "value": "0.3700"
+        },
+        "input:value2": {
+          "type": "float",
+          "nodename": "cellnoise3d1"
+        },
+        "input:in1": {
+          "type": "color3",
+          "nodename": "mix1"
+        },
+        "input:in2": {
+          "type": "color3",
+          "nodename": "ifgreater2"
+        }
+      },
+      "ifgreater:ifgreater3": {
+        "type": "color3",
+        "input:value1": {
+          "type": "float",
+          "value": "0.6800"
+        },
+        "input:value2": {
+          "type": "float",
+          "nodename": "cellnoise3d1"
+        },
+        "input:in1": {
+          "type": "color3",
+          "nodename": "convert1"
+        },
+        "input:in2": {
+          "type": "color3",
+          "nodename": "fractal3d1"
+        }
+      },
+      "fractal3d:fractal3d1": {
+        "type": "color3",
+        "input:amplitude": {
+          "type": "vector3",
+          "value": "2.0000, 2.0000, 1.0000"
+        },
+        "input:octaves": {
+          "type": "integer",
+          "value": "3"
+        },
+        "input:lacunarity": {
+          "type": "float",
+          "value": "2.0"
+        },
+        "input:diminish": {
+          "type": "float",
+          "value": "0.5"
+        },
+        "input:position": {
+          "type": "vector3",
+          "nodename": "multiply2"
+        }
+      },
+      "position:position2": {
+        "type": "vector3",
+        "input:space": {
+          "type": "string",
+          "value": "object"
+        }
+      },
+      "multiply:multiply2": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "nodename": "position2"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "3.0000, 0.0000, 0.0000"
+        }
+      },
+      "noise3d:noise3d1": {
+        "type": "color3",
+        "input:amplitude": {
+          "type": "vector3",
+          "value": "1.0, 1.0, 1.0"
+        },
+        "input:pivot": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:position": {
+          "type": "vector3",
+          "nodename": "multiply3"
+        }
+      },
+      "position:position3": {
+        "type": "vector3",
+        "input:space": {
+          "type": "string",
+          "value": "object"
+        }
+      },
+      "multiply:multiply3": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "nodename": "position3"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "2.0000, 2.0000, 2.0000"
+        }
+      },
+      "ramptb:ramptb1": {
+        "type": "color3",
+        "input:valuet": {
+          "type": "color3",
+          "value": "1.0000, 0.0, 0.0"
+        },
+        "input:valueb": {
+          "type": "color3",
+          "value": "1.0000, 1.0000, 0.0"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "multiply4"
+        }
+      },
+      "texcoord:texcoord1": {
+        "type": "vector2",
+        "input:index": {
+          "type": "integer",
+          "value": "0"
+        }
+      },
+      "multiply:multiply4": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "value": "1.0000, 1.0000"
+        }
+      },
+      "ramptb:ramptb2": {
+        "type": "color3",
+        "input:valuet": {
+          "type": "color3",
+          "value": "1.0000, 0.2000, 0.2000"
+        },
+        "input:valueb": {
+          "type": "color3",
+          "value": "1.0000, 1.0000, 0.2000"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "invert1"
+        }
+      },
+      "invert:invert1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector2",
+          "nodename": "multiply4"
+        },
+        "input:amount": {
+          "type": "vector2",
+          "value": "1.0, 1.0"
+        }
+      },
+      "mix:mix1": {
+        "type": "color3",
+        "input:fg": {
+          "type": "color3",
+          "nodename": "ramptb1"
+        },
+        "input:bg": {
+          "type": "color3",
+          "nodename": "ramptb2"
+        },
+        "input:mix": {
+          "type": "float",
+          "nodename": "sin1"
+        }
+      },
+      "swizzle:swizzle1": {
+        "type": "float",
+        "input:in": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "y"
+        }
+      },
+      "sin:sin1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "multiply5"
+        }
+      },
+      "multiply:multiply5": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "swizzle1"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "30.0000"
+        }
+      },
+      "cellnoise2d:cellnoise2d1": {
+        "type": "float",
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "multiply6"
+        }
+      },
+      "convert:convert1": {
+        "type": "color3",
+        "input:in": {
+          "type": "float",
+          "nodename": "cellnoise2d1"
+        }
+      },
+      "multiply:multiply6": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "value": "50.0000, 50.0000"
+        }
+      }
+    }
+  },
+  "version": "1.38"
+}

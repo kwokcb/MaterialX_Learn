@@ -596,22 +596,22 @@ graph LR;
     style NG_cloverleaf_float_centerINT fill:#0CF, color:#111
     NG_cloverleaf_float_radiusINT([radius]) ==.radius==> NG_cloverleaf_float_circle1[circle]
     style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_coord1[combine2] --".sample"--> NG_cloverleaf_float_circle1[circle]
+    NG_cloverleaf_float_coord1[combine2] --".texcoord"--> NG_cloverleaf_float_circle1[circle]
     NG_cloverleaf_float_sample_add[add] --".x -> .in1"--> NG_cloverleaf_float_coord1[combine2]
     NG_cloverleaf_float_radiusINT([radius]) ==.in2==> NG_cloverleaf_float_sample_add[add]
     style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
     NG_cloverleaf_float_sample_double[add] --".in1"--> NG_cloverleaf_float_sample_add[add]
-    NG_cloverleaf_float_sampleINT([sample]) ==.in1==> NG_cloverleaf_float_sample_double[add]
-    style NG_cloverleaf_float_sampleINT fill:#0CF, color:#111
-    NG_cloverleaf_float_sampleINT([sample]) ==.in2==> NG_cloverleaf_float_sample_double[add]
-    style NG_cloverleaf_float_sampleINT fill:#0CF, color:#111
+    NG_cloverleaf_float_texcoordINT([texcoord]) ==.in1==> NG_cloverleaf_float_sample_double[add]
+    style NG_cloverleaf_float_texcoordINT fill:#0CF, color:#111
+    NG_cloverleaf_float_texcoordINT([texcoord]) ==.in2==> NG_cloverleaf_float_sample_double[add]
+    style NG_cloverleaf_float_texcoordINT fill:#0CF, color:#111
     NG_cloverleaf_float_sample_double[add] --".y -> .in2"--> NG_cloverleaf_float_coord1[combine2]
     NG_cloverleaf_float_circle2[circle] --".in2"--> NG_cloverleaf_float_max1[max]
     NG_cloverleaf_float_centerINT([center]) ==.center==> NG_cloverleaf_float_circle2[circle]
     style NG_cloverleaf_float_centerINT fill:#0CF, color:#111
     NG_cloverleaf_float_radiusINT([radius]) ==.radius==> NG_cloverleaf_float_circle2[circle]
     style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_coord2[combine2] --".sample"--> NG_cloverleaf_float_circle2[circle]
+    NG_cloverleaf_float_coord2[combine2] --".texcoord"--> NG_cloverleaf_float_circle2[circle]
     NG_cloverleaf_float_sample_subtract[subtract] --".x -> .in1"--> NG_cloverleaf_float_coord2[combine2]
     NG_cloverleaf_float_radiusINT([radius]) ==.in2==> NG_cloverleaf_float_sample_subtract[subtract]
     style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
@@ -623,7 +623,7 @@ graph LR;
     style NG_cloverleaf_float_centerINT fill:#0CF, color:#111
     NG_cloverleaf_float_radiusINT([radius]) ==.radius==> NG_cloverleaf_float_circle3[circle]
     style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_coord3[combine2] --".sample"--> NG_cloverleaf_float_circle3[circle]
+    NG_cloverleaf_float_coord3[combine2] --".texcoord"--> NG_cloverleaf_float_circle3[circle]
     NG_cloverleaf_float_sample_double[add] --".x -> .in1"--> NG_cloverleaf_float_coord3[combine2]
     NG_cloverleaf_float_sample_subtract[subtract] --".y -> .in2"--> NG_cloverleaf_float_coord3[combine2]
     NG_cloverleaf_float_circle4[circle] --".in2"--> NG_cloverleaf_float_max2[max]
@@ -631,7 +631,7 @@ graph LR;
     style NG_cloverleaf_float_centerINT fill:#0CF, color:#111
     NG_cloverleaf_float_radiusINT([radius]) ==.radius==> NG_cloverleaf_float_circle4[circle]
     style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_coord4[combine2] --".sample"--> NG_cloverleaf_float_circle4[circle]
+    NG_cloverleaf_float_coord4[combine2] --".texcoord"--> NG_cloverleaf_float_circle4[circle]
     NG_cloverleaf_float_sample_double[add] --".x -> .in1"--> NG_cloverleaf_float_coord4[combine2]
     NG_cloverleaf_float_sample_add[add] --".y -> .in2"--> NG_cloverleaf_float_coord4[combine2]
 
@@ -643,15 +643,15 @@ graph LR;
 </p>
 <p class="card-text"><b>Parameters:</b></p>
 <ul class="nav nav-pills" role="tablist">
-<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_cloverleaf_float_sample" type="button" role="tab" aria-controls="pills-ND_cloverleaf_float_sample" aria-selected="true">sample</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_cloverleaf_float_texcoord" type="button" role="tab" aria-controls="pills-ND_cloverleaf_float_texcoord" aria-selected="true">texcoord</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_cloverleaf_float_center" type="button" role="tab" aria-controls="pills-ND_cloverleaf_float_center" aria-selected="true">center</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_cloverleaf_float_radius" type="button" role="tab" aria-controls="pills-ND_cloverleaf_float_radius" aria-selected="true">radius</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_cloverleaf_float_out" type="button" role="tab" aria-controls="pills-ND_cloverleaf_float_out" aria-selected="true"><b>out</b></button></li>
 </ul>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_cloverleaf_float_sample"
-  role="tabpanel" aria-labelledby="pills-ND_cloverleaf_float_sample-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_cloverleaf_float_texcoord"
+  role="tabpanel" aria-labelledby="pills-ND_cloverleaf_float_texcoord-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
@@ -659,12 +659,10 @@ graph LR;
    </div>
   </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Geometry Input: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
-      </div>
-      <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input type="text" class="form-control form-control-sm" value="UV0" disabled>
       </div>
   </div>
  </div>

@@ -1,0 +1,319 @@
+{
+  "materialx": {
+    "nodegraph:RedRamp": {
+      "ramp4:ramp4": {
+        "type": "color3",
+        "input:valuetl": {
+          "type": "color3",
+          "value": "1, 0, 0"
+        },
+        "input:valuetr": {
+          "type": "color3",
+          "value": "0.1, 0, 0"
+        },
+        "input:valuebl": {
+          "type": "color3",
+          "value": "1, 0, 0"
+        },
+        "input:valuebr": {
+          "type": "color3",
+          "value": "0.1, 0, 0"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "ramp4"
+      }
+    },
+    "nodegraph:GreenRamp": {
+      "ramp4:ramp4": {
+        "type": "color3",
+        "input:valuetl": {
+          "type": "color3",
+          "value": "0, 1, 0"
+        },
+        "input:valuetr": {
+          "type": "color3",
+          "value": "0, 0.1, 0"
+        },
+        "input:valuebl": {
+          "type": "color3",
+          "value": "0, 1, 0"
+        },
+        "input:valuebr": {
+          "type": "color3",
+          "value": "0, 0.1, 0"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "ramp4"
+      }
+    },
+    "standard_surface:MappedShader": {
+      "type": "surfaceshader",
+      "version": "1.0.1",
+      "input:base": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "RedRamp"
+      },
+      "input:metalness": {
+        "type": "float",
+        "value": "0.333"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:specular_color": {
+        "type": "color3",
+        "nodegraph": "GreenRamp"
+      },
+      "input:coat": {
+        "type": "float",
+        "value": "1"
+      }
+    },
+    "surfacematerial:MappedShaderMaterial": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "MappedShader"
+      },
+      "input:displacementshader": {
+        "type": "displacementshader",
+        "value": ""
+      }
+    },
+    "nodegraph:UnitGraph": {
+      "tiledimage:tiledimage": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Images/grid.png"
+        },
+        "input:realworldimagesize": {
+          "type": "vector2",
+          "value": "1, 1"
+        },
+        "input:realworldtilesize": {
+          "type": "vector2",
+          "value": "100, 50",
+          "unit": "centimeter",
+          "unittype": "distance"
+        },
+        "input:uvtiling": {
+          "type": "vector2",
+          "value": "2, 3"
+        },
+        "input:uvoffset": {
+          "type": "vector2",
+          "value": "0.2, 0.2"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "tiledimage"
+      }
+    },
+    "nodegraph:BlueRamp": {
+      "ramp4:ramp4": {
+        "type": "color3",
+        "input:valuetl": {
+          "type": "color3",
+          "value": "0, 0, 1"
+        },
+        "input:valuetr": {
+          "type": "color3",
+          "value": "0, 0, 0.1"
+        },
+        "input:valuebl": {
+          "type": "color3",
+          "value": "0, 0, 1"
+        },
+        "input:valuebr": {
+          "type": "color3",
+          "value": "0, 0, 0.1"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "ramp4"
+      }
+    },
+    "nodegraph:YellowRamp": {
+      "ramp4:ramp4": {
+        "type": "color3",
+        "input:valuetl": {
+          "type": "color3",
+          "value": "1, 1, 0"
+        },
+        "input:valuetr": {
+          "type": "color3",
+          "value": "0, 0, 0"
+        },
+        "input:valuebl": {
+          "type": "color3",
+          "value": "1, 1, 0"
+        },
+        "input:valuebr": {
+          "type": "color3",
+          "value": "1, 1, 1"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "ramp4"
+      }
+    },
+    "standard_surface:UnitMappedShader": {
+      "type": "surfaceshader",
+      "version": "1.0.1",
+      "input:base": {
+        "type": "float",
+        "nodegraph": "UnitGraph"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "YellowRamp"
+      },
+      "input:metalness": {
+        "type": "float",
+        "value": "0.1"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:specular_color": {
+        "type": "color3",
+        "nodegraph": "BlueRamp"
+      }
+    },
+    "surfacematerial:UnitMappedShaderMaterial": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "UnitMappedShader"
+      },
+      "input:displacementshader": {
+        "type": "displacementshader",
+        "value": ""
+      }
+    },
+    "nodegraph:ColorSpaceGraph": {
+      "constant:color_gamma22": {
+        "type": "color3",
+        "input:value": {
+          "type": "color3",
+          "value": "0.5, 0, 0",
+          "colorspace": "gamma22"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "color_gamma22"
+      }
+    },
+    "standard_surface:ColorSpaceShader": {
+      "type": "surfaceshader",
+      "version": "1.0.1",
+      "input:base": {
+        "type": "float",
+        "value": "0.5"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "ColorSpaceGraph"
+      },
+      "input:metalness": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:specular_color": {
+        "type": "color3",
+        "value": "0.2, 0.6, 0.8",
+        "colorspace": "g22_ap1"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "value": "0.2"
+      },
+      "input:coat": {
+        "type": "float",
+        "value": "0"
+      }
+    },
+    "surfacematerial:ColorSpaceShaderMaterial": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "ColorSpaceShader"
+      },
+      "input:displacementshader": {
+        "type": "displacementshader",
+        "value": ""
+      }
+    },
+    "standard_surface:NormalMapShader": {
+      "type": "surfaceshader",
+      "version": "1.0.1",
+      "input:base_color": {
+        "type": "color3",
+        "value": "0.2, 0.5, 0.9"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "Compound"
+      }
+    },
+    "surfacematerial:NormalMapMaterial": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "NormalMapShader"
+      },
+      "input:displacementshader": {
+        "type": "displacementshader",
+        "value": ""
+      }
+    },
+    "nodegraph:Compound": {
+      "input:file": {
+        "type": "filename",
+        "value": ""
+      },
+      "normalmap:normalmap": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "tiledimage"
+        }
+      },
+      "tiledimage:tiledimage": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Images/mesh_wire_norm.png"
+        },
+        "input:uvtiling": {
+          "type": "vector2",
+          "value": "10, 10"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "normalmap"
+      }
+    }
+  },
+  "version": "1.38"
+}

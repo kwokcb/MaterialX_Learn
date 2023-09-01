@@ -1,0 +1,212 @@
+{
+  "materialx": {
+    "nodegraph:NG_marble1": {
+      "input:base_color_1": {
+        "type": "color3",
+        "value": "0.8, 0.8, 0.8",
+        "uiname": "Color 1",
+        "uifolder": "Marble Color"
+      },
+      "input:base_color_2": {
+        "type": "color3",
+        "value": "0.1, 0.1, 0.3",
+        "uiname": "Color 2",
+        "uifolder": "Marble Color"
+      },
+      "input:noise_scale_1": {
+        "type": "float",
+        "value": "6.0",
+        "uisoftmin": "1.0",
+        "uisoftmax": "10.0",
+        "uiname": "Scale 1",
+        "uifolder": "Marble Noise"
+      },
+      "input:noise_scale_2": {
+        "type": "float",
+        "value": "4.0",
+        "uisoftmin": "1.0",
+        "uisoftmax": "10.0",
+        "uiname": "Scale 2",
+        "uifolder": "Marble Noise"
+      },
+      "input:noise_power": {
+        "type": "float",
+        "value": "3.0",
+        "uisoftmin": "1.0",
+        "uisoftmax": "10.0",
+        "uiname": "Power",
+        "uifolder": "Marble Noise"
+      },
+      "input:noise_octaves": {
+        "type": "integer",
+        "value": "3",
+        "uisoftmin": "1",
+        "uisoftmax": "8",
+        "uiname": "Octaves",
+        "uifolder": "Marble Noise"
+      },
+      "position:obj_pos": {
+        "type": "vector3"
+      },
+      "dotproduct:add_xyz": {
+        "type": "float",
+        "input:in1": {
+          "type": "vector3",
+          "nodename": "obj_pos"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "1, 1, 1"
+        }
+      },
+      "multiply:scale_xyz": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "add_xyz"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "noise_scale_1"
+        }
+      },
+      "multiply:scale_pos": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "nodename": "obj_pos"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "noise_scale_2"
+        }
+      },
+      "fractal3d:noise": {
+        "type": "float",
+        "input:octaves": {
+          "type": "integer",
+          "interfacename": "noise_octaves"
+        },
+        "input:position": {
+          "type": "vector3",
+          "nodename": "scale_pos"
+        }
+      },
+      "multiply:scale_noise": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "noise"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "3.0"
+        }
+      },
+      "add:sum": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "scale_xyz"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "scale_noise"
+        }
+      },
+      "sin:sin": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "sum"
+        }
+      },
+      "multiply:scale": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "sin"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.5"
+        }
+      },
+      "add:bias": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "scale"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.5"
+        }
+      },
+      "power:power": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "bias"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "noise_power"
+        }
+      },
+      "mix:color_mix": {
+        "type": "color3",
+        "input:bg": {
+          "type": "color3",
+          "interfacename": "base_color_1"
+        },
+        "input:fg": {
+          "type": "color3",
+          "interfacename": "base_color_2"
+        },
+        "input:mix": {
+          "type": "float",
+          "nodename": "power"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "color_mix"
+      }
+    },
+    "standard_surface:SR_marble1": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_marble1",
+        "output": "out"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "value": "0.1"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0.4"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_marble1",
+        "output": "out"
+      }
+    },
+    "surfacematerial:Marble_3D": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_marble1"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

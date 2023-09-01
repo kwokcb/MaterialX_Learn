@@ -1,0 +1,57 @@
+{
+  "materialx": {
+    "output:image1_output": {
+      "type": "float",
+      "nodename": "image1"
+    },
+    "image:image1": {
+      "type": "float",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/grid.png",
+        "unit": "foot",
+        "unittype": "distance"
+      }
+    },
+    "output:image2_output": {
+      "type": "vector2",
+      "nodename": "image2"
+    },
+    "image:image2": {
+      "type": "vector2",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/grid.png",
+        "unit": "foot",
+        "unittype": "distance"
+      }
+    },
+    "output:image3_output": {
+      "type": "vector3",
+      "nodename": "image3"
+    },
+    "image:image3": {
+      "type": "vector3",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/grid.png",
+        "unit": "foot",
+        "unittype": "distance"
+      }
+    },
+    "output:image4_output": {
+      "type": "vector4",
+      "nodename": "image4"
+    },
+    "image:image4": {
+      "type": "vector4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/grid.png",
+        "unit": "foot",
+        "unittype": "distance"
+      }
+    }
+  },
+  "version": "1.38"
+}

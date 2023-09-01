@@ -1,0 +1,255 @@
+{
+  "materialx": {
+    "nodegraph:image4_to_color3_bgr_out": {
+      "image:image4": {
+        "type": "color4",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Lights/san_giuseppe_bridge.hdr"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "image4",
+        "channels": "bbb"
+      }
+    },
+    "nodegraph:image4_to_float_g_out": {
+      "image:image4": {
+        "type": "color4",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Lights/san_giuseppe_bridge.hdr"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "image4",
+        "channels": "g"
+      }
+    },
+    "nodegraph:float_to_color4_rrrr_out": {
+      "constant:constant1": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "constant1",
+        "channels": "rrrr"
+      }
+    },
+    "nodegraph:color3_to_color4_bgr1_out": {
+      "constant:constant1": {
+        "type": "color3",
+        "input:value": {
+          "type": "color3",
+          "value": "0.5, 0.7, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "constant1",
+        "channels": "bgr1"
+      }
+    },
+    "nodegraph:color4_to_color3_bgr_out": {
+      "constant:constant1": {
+        "type": "color4",
+        "input:value": {
+          "type": "color4",
+          "value": "0.5, 0.7, 0.9, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "constant1",
+        "channels": "bgr"
+      }
+    },
+    "nodegraph:color4_to_float_g_out": {
+      "constant:constant1": {
+        "type": "color4",
+        "input:value": {
+          "type": "color4",
+          "value": "0.0, 0.5, 0.75, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "constant1",
+        "channels": "g"
+      }
+    },
+    "nodegraph:image4_to_color3_bga_in": {
+      "image:image4": {
+        "type": "color4",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Lights/san_giuseppe_bridge.hdr"
+        },
+        "input:uaddressmode": {
+          "type": "string",
+          "value": "constant"
+        },
+        "input:vaddressmode": {
+          "type": "string",
+          "value": "clamp"
+        }
+      },
+      "add:add1": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "image4",
+          "channels": "bgr"
+        },
+        "input:in2": {
+          "type": "color3",
+          "value": "0.5, 0.5, 0.5"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "add1"
+      }
+    },
+    "nodegraph:image4_to_float_g_in": {
+      "image:image4": {
+        "type": "color4",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Lights/san_giuseppe_bridge.hdr"
+        },
+        "input:uaddressmode": {
+          "type": "string",
+          "value": "constant"
+        },
+        "input:vaddressmode": {
+          "type": "string",
+          "value": "clamp"
+        }
+      },
+      "add:add1": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "image4",
+          "channels": "g"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.5"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "add1"
+      }
+    },
+    "nodegraph:float_to_color4_rrrr_in": {
+      "constant:constant1": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "add:add1": {
+        "type": "color4",
+        "input:in1": {
+          "type": "color4",
+          "nodename": "constant1",
+          "channels": "rrrr"
+        },
+        "input:in2": {
+          "type": "color4",
+          "value": "0.0, 0.0, 0.0, 0.0"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "add1"
+      }
+    },
+    "nodegraph:color3_to_color4_bgr1_in": {
+      "constant:constant1": {
+        "type": "color3",
+        "input:value": {
+          "type": "color3",
+          "value": "0.5, 0.7, 1.0"
+        }
+      },
+      "add:add1": {
+        "type": "color4",
+        "input:in1": {
+          "type": "color4",
+          "nodename": "constant1",
+          "channels": "bgr1"
+        },
+        "input:in2": {
+          "type": "color4",
+          "value": "0.1, 0.1, 0.1, 0.0"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "add1"
+      }
+    },
+    "nodegraph:color4_to_color3_rga_in": {
+      "constant:constant1": {
+        "type": "color4",
+        "input:value": {
+          "type": "color4",
+          "value": "0.0, 0.5, 0.75, 1.0"
+        }
+      },
+      "add:add1": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "constant1",
+          "channels": "rga"
+        },
+        "input:in2": {
+          "type": "color3",
+          "value": "0.5, 0.5, 0.5"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "add1"
+      }
+    },
+    "nodegraph:color4_to_float_g_in": {
+      "constant:constant1": {
+        "type": "color4",
+        "input:value": {
+          "type": "color4",
+          "value": "0.0, 0.5, 0.75, 1.0"
+        }
+      },
+      "add:add1": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "constant1",
+          "channels": "g"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.0"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "add1"
+      }
+    }
+  },
+  "version": "1.38"
+}

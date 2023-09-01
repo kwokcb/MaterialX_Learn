@@ -1,0 +1,51 @@
+{
+  "materialx": {
+    "standard_surface:Red_Shader": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "value": "1, 0, 0"
+      }
+    },
+    "surfacematerial:Red_Material": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Red_Shader"
+      }
+    },
+    "standard_surface:Blue_Shader": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "value": "0, 0, 1"
+      }
+    },
+    "surfacematerial:Blue_Material": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Blue_Shader"
+      }
+    },
+    "look:Look": {
+      "materialassign:Red_Preview": {
+        "geom": "/Preview_Mesh",
+        "material": "Red_Material"
+      },
+      "materialassign:Blue_Preview": {
+        "geom": "/Preview_Mesh",
+        "material": "Blue_Material"
+      },
+      "materialassign:Blue_Calibration": {
+        "geom": "/Calibration_Mesh",
+        "material": "Blue_Material"
+      },
+      "materialassign:Red_Calibration": {
+        "geom": "/Calibration_Mesh",
+        "material": "Red_Material"
+      }
+    }
+  },
+  "version": "1.38"
+}

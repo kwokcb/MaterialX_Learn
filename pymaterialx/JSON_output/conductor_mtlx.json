@@ -1,0 +1,67 @@
+{
+  "materialx": {
+    "nodegraph:test_conductor": {
+      "roughness_anisotropy:roughness1": {
+        "type": "vector2",
+        "input:roughness": {
+          "type": "float",
+          "value": "0.2"
+        },
+        "input:anisotropy": {
+          "type": "float",
+          "value": "0.0"
+        }
+      },
+      "conductor_bsdf:conductor_brdf1": {
+        "type": "BSDF",
+        "input:roughness": {
+          "type": "vector2",
+          "nodename": "roughness1"
+        },
+        "input:ior": {
+          "type": "color3",
+          "nodename": "conductor_brdf1__artistic_ior",
+          "output": "ior"
+        },
+        "input:extinction": {
+          "type": "color3",
+          "nodename": "conductor_brdf1__artistic_ior",
+          "output": "extinction"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "conductor_brdf1"
+        },
+        "input:opacity": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      },
+      "artistic_ior:conductor_brdf1__artistic_ior": {
+        "type": "multioutput",
+        "output:ior": {
+          "type": "color3"
+        },
+        "output:extinction": {
+          "type": "color3"
+        },
+        "input:reflectivity": {
+          "type": "color3",
+          "value": "1, 1, 1"
+        },
+        "input:edge_color": {
+          "type": "color3",
+          "value": "1, 1, 1"
+        }
+      }
+    }
+  },
+  "version": "1.38"
+}

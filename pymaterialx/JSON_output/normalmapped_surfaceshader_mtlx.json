@@ -1,0 +1,83 @@
+{
+  "materialx": {
+    "standard_surface:NormalMappedShader": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "value": "0.6"
+      },
+      "input:metalness": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "0.7"
+      },
+      "input:coat": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NormalMapGraph"
+      }
+    },
+    "surfacematerial:NormalMappedShaderMaterial": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "NormalMappedShader"
+      },
+      "input:displacementshader": {
+        "type": "displacementshader",
+        "value": ""
+      }
+    },
+    "nodegraph:NormalMapGraph": {
+      "normalmap:normalmap": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "tiledimage"
+        },
+        "input:scale": {
+          "type": "float",
+          "value": "1.1"
+        },
+        "input:space": {
+          "type": "string",
+          "value": "tangent"
+        }
+      },
+      "tiledimage:tiledimage": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/images/mesh_wire_norm.png"
+        },
+        "input:realworldimagesize": {
+          "type": "vector2",
+          "value": "1.0, 2.0",
+          "unit": "centimeter",
+          "unittype": "distance"
+        },
+        "input:realworldtilesize": {
+          "type": "vector2",
+          "value": "3.0, 2.0",
+          "unit": "centimeter",
+          "unittype": "distance"
+        },
+        "input:uvtiling": {
+          "type": "vector2",
+          "value": "12, 10"
+        }
+      },
+      "output:normal": {
+        "type": "vector3",
+        "nodename": "normalmap"
+      }
+    }
+  },
+  "version": "1.38"
+}

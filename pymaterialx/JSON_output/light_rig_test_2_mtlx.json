@@ -1,0 +1,85 @@
+{
+  "materialx": {
+    "point_light:viewer_pointLight": {
+      "type": "lightshader",
+      "input:position": {
+        "type": "vector3",
+        "value": "-3, -3, 3"
+      },
+      "input:color": {
+        "type": "color3",
+        "value": "1.0, 1.0, 1.0"
+      },
+      "input:intensity": {
+        "type": "float",
+        "value": "10.0"
+      },
+      "input:decay_rate": {
+        "type": "float",
+        "value": "2.0"
+      }
+    },
+    "spot_light:viewer_spotLight1": {
+      "type": "lightshader",
+      "input:position": {
+        "type": "vector3",
+        "value": "3, 3, 3"
+      },
+      "input:direction": {
+        "type": "vector3",
+        "value": "-0.57735026919, -0.57735026919, -0.57735026919"
+      },
+      "input:color": {
+        "type": "color3",
+        "value": "1.0, 1.0, 1.0"
+      },
+      "input:intensity": {
+        "type": "float",
+        "value": "10.0"
+      },
+      "input:decay_rate": {
+        "type": "float",
+        "value": "2.0"
+      },
+      "input:inner_angle": {
+        "type": "float",
+        "value": "0.39619469809"
+      },
+      "input:outer_angle": {
+        "type": "float",
+        "value": "0.98480775301"
+      }
+    },
+    "directional_light:viewer_backlight": {
+      "type": "lightshader",
+      "input:direction": {
+        "type": "vector3",
+        "value": "0.0, 0.0, 1.0"
+      },
+      "input:color": {
+        "type": "color3",
+        "value": "1.0, 1.0, 1.0"
+      },
+      "input:intensity": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "directional_light:viewer_bottomlight": {
+      "type": "lightshader",
+      "input:direction": {
+        "type": "vector3",
+        "value": "0.0, 1.0, 0.0"
+      },
+      "input:color": {
+        "type": "color3",
+        "value": "1.0, 1.0, 1.0"
+      },
+      "input:intensity": {
+        "type": "float",
+        "value": "0.5"
+      }
+    }
+  },
+  "version": "1.38"
+}

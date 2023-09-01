@@ -1,0 +1,92 @@
+{
+  "materialx": {
+    "nodedef:ND_blah2_float_float": {
+      "node": "blah2",
+      "version": "1.0",
+      "isdefaultversion": "true",
+      "input:out1": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:out3": {
+        "type": "vector2",
+        "value": "0, 0"
+      },
+      "output:out": {
+        "type": "float",
+        "value": "0"
+      },
+      "output:out2": {
+        "type": "float",
+        "value": "0"
+      }
+    },
+    "nodegraph:NG_blah2_float_float": {
+      "nodedef": "ND_blah2_float_float",
+      "constant:constant": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "10",
+          "uniform": "true",
+          "uivisible": "true"
+        }
+      },
+      "multiply:multiply": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "constant",
+          "uivisible": "true"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "swizzle",
+          "uivisible": "true"
+        }
+      },
+      "multiply:multiply1": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "constant",
+          "uivisible": "true"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "out1",
+          "uivisible": "true"
+        }
+      },
+      "swizzle:swizzle": {
+        "type": "float",
+        "input:in": {
+          "type": "vector2",
+          "interfacename": "out3",
+          "uivisible": "true"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "multiply"
+      },
+      "output:out2": {
+        "type": "float",
+        "nodename": "multiply1"
+      }
+    },
+    "blah2:blah2": {
+      "type": "multioutput",
+      "output:out": {
+        "type": "float",
+        "value": "0"
+      }
+    },
+    "output:blah2_output": {
+      "type": "float",
+      "nodename": "blah2",
+      "output": "out"
+    }
+  },
+  "version": "1.38"
+}

@@ -1,0 +1,35 @@
+{
+  "materialx": {
+    "standard_surface:SR_numberformats": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "value": "0.18,0.18, 0.18"
+      },
+      "input:specular_color": {
+        "type": "color3",
+        "value": "0.05, 0.05,0.05"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "value": "1,0.5,1"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "value": "0.25"
+      },
+      "input:coat": {
+        "type": "float",
+        "value": "1"
+      }
+    },
+    "surfacematerial:Number_formats": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_numberformats"
+      }
+    }
+  },
+  "version": "1.38"
+}

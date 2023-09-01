@@ -1,0 +1,272 @@
+{
+  "materialx": {
+    "normal:normal_object": {
+      "type": "vector3",
+      "input:space": {
+        "type": "string",
+        "value": "object"
+      }
+    },
+    "multiply:normal_object_scale": {
+      "type": "vector3",
+      "input:in1": {
+        "type": "vector3",
+        "nodename": "normal_object"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "add:normal_object_bias": {
+      "type": "vector3",
+      "input:in1": {
+        "type": "vector3",
+        "nodename": "normal_object_scale"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "output:normal_object_output": {
+      "type": "vector3",
+      "nodename": "normal_object_bias"
+    },
+    "normal:normal_world": {
+      "type": "vector3",
+      "input:space": {
+        "type": "string",
+        "value": "world"
+      }
+    },
+    "multiply:normal_world_scale": {
+      "type": "vector3",
+      "input:in1": {
+        "type": "vector3",
+        "nodename": "normal_world"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "add:normal_world_bias": {
+      "type": "vector3",
+      "input:in1": {
+        "type": "vector3",
+        "nodename": "normal_world_scale"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "output:normal_world_output": {
+      "type": "vector3",
+      "nodename": "normal_world_bias"
+    },
+    "tangent:tangent": {
+      "type": "vector3",
+      "input:index": {
+        "type": "integer",
+        "value": "0"
+      }
+    },
+    "multiply:tangent_scale": {
+      "type": "vector3",
+      "input:in1": {
+        "type": "vector3",
+        "nodename": "tangent"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "add:tangent_bias": {
+      "type": "vector3",
+      "input:in1": {
+        "type": "vector3",
+        "nodename": "tangent_scale"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "output:tangent_output": {
+      "type": "vector3",
+      "nodename": "tangent_bias"
+    },
+    "bitangent:bitangent": {
+      "type": "vector3",
+      "input:index": {
+        "type": "integer",
+        "value": "0"
+      }
+    },
+    "multiply:bitangent_scale": {
+      "type": "vector3",
+      "input:in1": {
+        "type": "vector3",
+        "nodename": "bitangent"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "add:bitangent_bias": {
+      "type": "vector3",
+      "input:in1": {
+        "type": "vector3",
+        "nodename": "bitangent_scale"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "output:bitangent_output": {
+      "type": "vector3",
+      "nodename": "bitangent_bias"
+    },
+    "position:position_object": {
+      "type": "vector3",
+      "input:space": {
+        "type": "string",
+        "value": "object"
+      }
+    },
+    "multiply:position_object_scale": {
+      "type": "vector3",
+      "input:in1": {
+        "type": "vector3",
+        "nodename": "position_object"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "add:position_object_bias": {
+      "type": "vector3",
+      "input:in1": {
+        "type": "vector3",
+        "nodename": "position_object_scale"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "output:position_object_output": {
+      "type": "vector3",
+      "nodename": "position_object_bias"
+    },
+    "position:position_world": {
+      "type": "vector3",
+      "input:space": {
+        "type": "string",
+        "value": "world"
+      }
+    },
+    "multiply:position_world_scale": {
+      "type": "vector3",
+      "input:in1": {
+        "type": "vector3",
+        "nodename": "position_world"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "add:position_world_bias": {
+      "type": "vector3",
+      "input:in1": {
+        "type": "vector3",
+        "nodename": "position_world_scale"
+      },
+      "input:in2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "output:position_world_output": {
+      "type": "vector3",
+      "nodename": "position_world_bias"
+    },
+    "texcoord:texcoord0": {
+      "type": "vector2",
+      "input:index": {
+        "type": "integer",
+        "value": "0"
+      }
+    },
+    "output:texcoord0_output": {
+      "type": "vector3",
+      "nodename": "texcoord0",
+      "channels": "xy0"
+    },
+    "texcoord:texcoord0_vec3": {
+      "type": "vector3",
+      "input:index": {
+        "type": "integer",
+        "value": "0"
+      }
+    },
+    "output:texcoord0_vec3_output": {
+      "type": "vector3",
+      "nodename": "texcoord0_vec3"
+    },
+    "texcoord:texcoord1": {
+      "type": "vector2",
+      "input:index": {
+        "type": "integer",
+        "value": "1"
+      }
+    },
+    "output:texcoord1_output": {
+      "type": "vector3",
+      "nodename": "texcoord1",
+      "channels": "xy0"
+    },
+    "geomcolor:color_float": {
+      "type": "float",
+      "input:index": {
+        "type": "integer",
+        "value": "0"
+      }
+    },
+    "output:color_float_output": {
+      "type": "vector3",
+      "nodename": "color_float",
+      "channels": "x00"
+    },
+    "geomcolor:color_vec3": {
+      "type": "color3",
+      "input:index": {
+        "type": "integer",
+        "value": "0"
+      }
+    },
+    "output:color_vec3_output": {
+      "type": "color3",
+      "nodename": "color_vec3"
+    },
+    "geomcolor:color_vec4": {
+      "type": "color4",
+      "input:index": {
+        "type": "integer",
+        "value": "0"
+      }
+    },
+    "output:color_vec4_output": {
+      "type": "color4",
+      "nodename": "color_vec4"
+    }
+  },
+  "version": "1.38"
+}

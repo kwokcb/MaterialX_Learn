@@ -1,0 +1,52 @@
+{
+  "materialx": {
+    "standard_surface:SR_velvet": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "value": "0.8"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "value": "0.029, 0, 0.047"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:specular_color": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "value": "0.693"
+      },
+      "input:specular_IOR": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:sheen": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:sheen_color": {
+        "type": "color3",
+        "value": "0.404, 0.058, 1"
+      },
+      "input:sheen_roughness": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "surfacematerial:Velvet": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_velvet"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

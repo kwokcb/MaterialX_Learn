@@ -595,7 +595,7 @@ graph LR;
     NG_crosshatch_color3_line_diag1[line] --".in1"--> NG_crosshatch_color3_composite_diags[max]
     NG_crosshatch_color3_thicknessINT([thickness]) ==.radius==> NG_crosshatch_color3_line_diag1[line]
     style NG_crosshatch_color3_thicknessINT fill:#0CF, color:#111
-    NG_crosshatch_color3_sample_vec[combine2] --".sample"--> NG_crosshatch_color3_line_diag1[line]
+    NG_crosshatch_color3_sample_vec[combine2] --".texcoord"--> NG_crosshatch_color3_line_diag1[line]
     NG_crosshatch_color3_subX_1[subtract] --".in1"--> NG_crosshatch_color3_sample_vec[combine2]
     NG_crosshatch_color3_modx_2[multiply] --".in1"--> NG_crosshatch_color3_subX_1[subtract]
     NG_crosshatch_color3_mod_X[modulo] --".in1"--> NG_crosshatch_color3_modx_2[multiply]
@@ -625,7 +625,7 @@ graph LR;
     NG_crosshatch_color3_line_diag2[line] --".in2"--> NG_crosshatch_color3_composite_diags[max]
     NG_crosshatch_color3_thicknessINT([thickness]) ==.radius==> NG_crosshatch_color3_line_diag2[line]
     style NG_crosshatch_color3_thicknessINT fill:#0CF, color:#111
-    NG_crosshatch_color3_sample_vec[combine2] --".sample"--> NG_crosshatch_color3_line_diag2[line]
+    NG_crosshatch_color3_sample_vec[combine2] --".texcoord"--> NG_crosshatch_color3_line_diag2[line]
     NG_crosshatch_color3_composite_diags[max] --".in2"--> NG_crosshatch_color3_max[max]
 
 

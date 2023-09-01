@@ -1,0 +1,69 @@
+{
+  "materialx": {
+    "standard_surface:standard_surface": {
+      "type": "surfaceshader",
+      "version": "1.0.1",
+      "input:base_color": {
+        "type": "color3",
+        "value": "0.3,0.8,0.1"
+      }
+    },
+    "nodegraph:green_material_graph": {
+      "input:input_shader": {
+        "type": "surfaceshader",
+        "nodename": "standard_surface"
+      },
+      "surfacematerial:green_surfacematerial": {
+        "type": "material",
+        "input:surfaceshader": {
+          "type": "surfaceshader",
+          "interfacename": "input_shader"
+        },
+        "input:displacementshader": {
+          "type": "displacementshader",
+          "value": ""
+        }
+      },
+      "output:green_material": {
+        "nodename": "green_surfacematerial",
+        "type": "material"
+      }
+    },
+    "nodegraph:surfaceshader_graph": {
+      "standard_surface:standard_surface": {
+        "type": "surfaceshader",
+        "version": "1.0.1",
+        "input:base_color": {
+          "type": "color3",
+          "value": "0.8,0.1,0.1"
+        }
+      },
+      "output:red_shader": {
+        "nodename": "standard_surface",
+        "type": "surfaceshader"
+      }
+    },
+    "nodegraph:red_material_graph2": {
+      "input:input_shader": {
+        "type": "surfaceshader",
+        "nodegraph": "surfaceshader_graph"
+      },
+      "surfacematerial:red_surfacematerial": {
+        "type": "material",
+        "input:surfaceshader": {
+          "type": "surfaceshader",
+          "interfacename": "input_shader"
+        },
+        "input:displacementshader": {
+          "type": "displacementshader",
+          "value": ""
+        }
+      },
+      "output:red_material": {
+        "nodename": "red_surfacematerial",
+        "type": "material"
+      }
+    }
+  },
+  "version": "1.38"
+}

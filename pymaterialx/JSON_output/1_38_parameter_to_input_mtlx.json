@@ -1,0 +1,198 @@
+{
+  "materialx": {
+    "nodegraph:parameter_as_input": {
+      "fileprefix": "resources/Images/",
+      "constant:constant": {
+        "type": "color3",
+        "input:value": {
+          "type": "color3",
+          "value": "1, 0, 0"
+        }
+      },
+      "constant:constant1": {
+        "type": "color3",
+        "input:value": {
+          "type": "color3",
+          "value": "0, 1, 0"
+        }
+      },
+      "ramp4:ramp4": {
+        "type": "color3",
+        "input:valuetl": {
+          "type": "color3",
+          "nodename": "ramp5"
+        },
+        "input:valuetr": {
+          "type": "color3",
+          "nodename": "image"
+        },
+        "input:valuebl": {
+          "type": "color3",
+          "nodename": "image"
+        },
+        "input:valuebr": {
+          "type": "color3",
+          "nodename": "constant1"
+        }
+      },
+      "ramp4:ramp5": {
+        "type": "color3",
+        "input:valuetl": {
+          "type": "color3",
+          "nodename": "image"
+        },
+        "input:valuetr": {
+          "type": "color3",
+          "value": "0, 1, 1"
+        },
+        "input:valuebl": {
+          "type": "color3",
+          "value": "0, 0, 0"
+        },
+        "input:valuebr": {
+          "type": "color3",
+          "nodename": "image"
+        }
+      },
+      "image:image": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "nodename": "constant3"
+        }
+      },
+      "splitlr:splitlr": {
+        "type": "color3",
+        "input:valuel": {
+          "type": "color3",
+          "nodename": "image"
+        },
+        "input:valuer": {
+          "type": "color3",
+          "nodename": "constant"
+        },
+        "input:center": {
+          "type": "float",
+          "value": "0.4"
+        }
+      },
+      "splittb:splittb": {
+        "type": "color3",
+        "input:valuet": {
+          "type": "color3",
+          "nodename": "splitlr"
+        },
+        "input:valueb": {
+          "type": "color3",
+          "nodename": "noise2d"
+        },
+        "input:center": {
+          "type": "float",
+          "value": "0.4"
+        }
+      },
+      "noise2d:noise2d": {
+        "type": "color3",
+        "input:pivot": {
+          "type": "float",
+          "nodename": "noise2d1"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "multiply"
+        },
+        "input:amplitude": {
+          "type": "vector3",
+          "value": "1.0, 1.0, 1.0",
+          "uniform": "true"
+        }
+      },
+      "noise2d:noise2d1": {
+        "type": "float",
+        "input:amplitude": {
+          "type": "float",
+          "value": "2"
+        },
+        "input:pivot": {
+          "type": "float",
+          "value": "0.1"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "multiply"
+        }
+      },
+      "texcoord:texcoord": {
+        "type": "vector2"
+      },
+      "multiply:multiply": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "nodename": "texcoord"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "value": "10, 10"
+        }
+      },
+      "tangent:tangent": {
+        "type": "vector3",
+        "input:index": {
+          "type": "integer",
+          "nodename": "geompropvalue"
+        }
+      },
+      "geompropvalue:geompropvalue": {
+        "type": "integer",
+        "input:geomprop": {
+          "type": "string",
+          "value": "myvalue"
+        },
+        "input:default": {
+          "type": "integer",
+          "value": "0",
+          "uniform": "true"
+        }
+      },
+      "constant:constant2": {
+        "type": "string",
+        "input:value": {
+          "type": "string",
+          "value": "mytangents"
+        }
+      },
+      "invert:invert": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "nodename": "splittb"
+        },
+        "input:amount": {
+          "type": "color3",
+          "nodename": "noise2d"
+        }
+      },
+      "constant:constant3": {
+        "type": "filename",
+        "input:value": {
+          "type": "filename",
+          "value": "grid.png"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "ramp4"
+      },
+      "output:out1": {
+        "type": "color3",
+        "nodename": "splittb"
+      },
+      "output:out2": {
+        "type": "vector3",
+        "nodename": "tangent"
+      }
+    }
+  },
+  "version": "1.38"
+}

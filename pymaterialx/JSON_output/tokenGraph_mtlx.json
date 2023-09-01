@@ -1,0 +1,85 @@
+{
+  "materialx": {
+    "nodegraph:Tokenized_Image_2k_png": {
+      "token:Image_Resolution": {
+        "type": "string",
+        "value": "2k",
+        "uiname": "Image Resolution"
+      },
+      "token:Image_Extension": {
+        "type": "string",
+        "value": "png",
+        "uiname": "Image Extension"
+      },
+      "input:Image_Filename": {
+        "type": "filename",
+        "uniform": "true",
+        "value": "resources/Images/cloth.[Image_Extension]"
+      },
+      "tiledimage:tiledimage": {
+        "type": "color3",
+        "nodedef": "ND_tiledimage_color3",
+        "input:file": {
+          "type": "filename",
+          "uniform": "true",
+          "interfacename": "Image_Filename"
+        }
+      },
+      "output:out_png": {
+        "type": "color3",
+        "nodename": "tiledimage"
+      }
+    },
+    "nodegraph:Tokenized_Image_4k_jpg": {
+      "tiledimage:tiledimage": {
+        "type": "color3",
+        "nodedef": "ND_tiledimage_color3",
+        "token:Image_Resolution": {
+          "type": "string",
+          "value": "4k",
+          "uiname": "Image Resolution"
+        },
+        "token:Image_Extension": {
+          "type": "string",
+          "value": "jpg",
+          "uiname": "Image Extension"
+        },
+        "input:file": {
+          "type": "filename",
+          "uniform": "true",
+          "value": "resources/images/cloth.[Image_Extension]"
+        }
+      },
+      "output:out_4k_jpg": {
+        "type": "color3",
+        "nodename": "tiledimage"
+      }
+    },
+    "token:Image_Extension": {
+      "type": "string",
+      "value": "png",
+      "uiname": "Image Extension"
+    },
+    "nodegraph:Tokenized_Image_top_level": {
+      "tiledimage:tiledimage": {
+        "type": "color3",
+        "nodedef": "ND_tiledimage_color3",
+        "token:Image_Extension": {
+          "type": "string",
+          "value": "bmp",
+          "uiname": "Image Extension"
+        },
+        "input:file": {
+          "type": "filename",
+          "uniform": "true",
+          "value": "resources/Images/cloth.[Image_Extension]"
+        }
+      },
+      "output:out_bmp": {
+        "type": "color3",
+        "nodename": "tiledimage"
+      }
+    }
+  },
+  "version": "1.38"
+}

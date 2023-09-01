@@ -1,0 +1,196 @@
+{
+  "materialx": {
+    "nodegraph:test_colorcorrect": {
+      "range:AlphaClampAndGamma": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "AlphaOffset"
+        },
+        "input:gamma": {
+          "type": "float",
+          "value": "3"
+        },
+        "input:doclamp": {
+          "type": "boolean",
+          "value": "true"
+        }
+      },
+      "multiply:AlphaGain": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "extractAlphaForGain"
+        }
+      },
+      "add:AlphaOffset": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "AlphaGain"
+        }
+      },
+      "range:ColorClampAndGamma": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "nodename": "ColorOffset"
+        },
+        "input:gamma": {
+          "type": "color3",
+          "value": "2, 1, 1"
+        }
+      },
+      "multiply:ColorGain": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "HSV_adjust"
+        }
+      },
+      "add:ColorOffset": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "ColorGain"
+        }
+      },
+      "combine2:CombineColorAlpha": {
+        "type": "color4",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "ColorClampAndGamma"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "AlphaClampAndGamma"
+        }
+      },
+      "hsvadjust:HSV_adjust": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "nodename": "extractColorForHsv"
+        }
+      },
+      "premult:premultiplyColor": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "nodename": "CombineColorAlpha"
+        }
+      },
+      "ifequal:if_premultiply_condition": {
+        "type": "color4",
+        "input:value2": {
+          "type": "boolean",
+          "value": "true"
+        },
+        "input:in1": {
+          "type": "color4",
+          "nodename": "premultiplyColor"
+        },
+        "input:in2": {
+          "type": "color4",
+          "nodename": "CombineColorAlpha"
+        }
+      },
+      "unpremult:unpremultiply": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "nodename": "combineInput"
+        }
+      },
+      "ifequal:if_unpremultiply_condition": {
+        "type": "color4",
+        "input:value2": {
+          "type": "boolean",
+          "value": "true"
+        },
+        "input:in1": {
+          "type": "color4",
+          "nodename": "unpremultiply"
+        },
+        "input:in2": {
+          "type": "color4",
+          "nodename": "combineInput"
+        }
+      },
+      "swizzle:outputColor": {
+        "type": "color3",
+        "input:in": {
+          "type": "color4",
+          "nodename": "if_premultiply_condition"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "rgb"
+        }
+      },
+      "swizzle:outputAlpha": {
+        "type": "float",
+        "input:in": {
+          "type": "color4",
+          "nodename": "if_premultiply_condition"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "a"
+        }
+      },
+      "swizzle:extractColorForHsv": {
+        "type": "color3",
+        "input:in": {
+          "type": "color4",
+          "nodename": "if_unpremultiply_condition"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "rgb"
+        }
+      },
+      "swizzle:extractAlphaForGain": {
+        "type": "float",
+        "input:in": {
+          "type": "color4",
+          "nodename": "if_unpremultiply_condition"
+        }
+      },
+      "constant:inputColor": {
+        "type": "color3",
+        "input:value": {
+          "type": "color3",
+          "value": "0.5, 0.5, 0.5"
+        }
+      },
+      "constant:inputAlpha": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "1"
+        }
+      },
+      "combine2:combineInput": {
+        "type": "color4",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "inputColor"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "inputAlpha"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "outputColor"
+      },
+      "output:out1": {
+        "type": "float",
+        "nodename": "outputAlpha"
+      }
+    }
+  },
+  "version": "1.38"
+}

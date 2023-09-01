@@ -1,0 +1,109 @@
+{
+  "materialx": {
+    "nodedef:ND_foo_surface": {
+      "node": "foo_surface",
+      "input:ior": {
+        "type": "float",
+        "value": "1.33"
+      },
+      "input:roughness": {
+        "type": "vector2",
+        "value": "0.1, 0.1"
+      },
+      "output:out": {
+        "type": "surfaceshader"
+      }
+    },
+    "nodegraph:IMP_foo_surface": {
+      "nodedef": "ND_foo_surface",
+      "dielectric_bsdf:dielectric_btdf_1": {
+        "type": "BSDF",
+        "input:ior": {
+          "type": "float",
+          "interfacename": "ior"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "interfacename": "roughness"
+        },
+        "input:scatter_mode": {
+          "type": "string",
+          "value": "T"
+        }
+      },
+      "dielectric_bsdf:dielectric_brdf_1__layer_top": {
+        "type": "BSDF",
+        "input:ior": {
+          "type": "float",
+          "interfacename": "ior"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "interfacename": "roughness"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf_1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      },
+      "layer:dielectric_brdf_1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf_1__layer_top"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "dielectric_btdf_1"
+        }
+      }
+    },
+    "texcoord:texcoord1": {
+      "type": "vector2"
+    },
+    "foo_surface:varying_ior_test1": {
+      "type": "surfaceshader",
+      "input:ior": {
+        "type": "float",
+        "nodename": "texcoord1",
+        "channels": "x"
+      }
+    },
+    "surfacematerial:varying_ior_test1_mtrl": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "varying_ior_test1"
+      }
+    },
+    "constant:constant1": {
+      "type": "float",
+      "input:value": {
+        "type": "float",
+        "value": "1.7"
+      }
+    },
+    "foo_surface:varying_ior_test2": {
+      "type": "surfaceshader",
+      "input:ior": {
+        "type": "float",
+        "value": "2.3"
+      }
+    },
+    "surfacematerial:varying_ior_test2_mtrl": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "varying_ior_test2"
+      }
+    }
+  },
+  "version": "1.38"
+}

@@ -1,0 +1,74 @@
+{
+  "materialx": {
+    "nodegraph:Unit_test_inputGraph": {
+      "fileprefix": "resources/Images/",
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "base_color_image"
+      },
+      "multiply:total_scale": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "value": "1.0, 1.0"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "10.0",
+          "unit": "centimeter",
+          "unittype": "distance"
+        }
+      },
+      "texcoord:texcoord1": {
+        "type": "vector2"
+      },
+      "place2d:a_place2d": {
+        "type": "vector2",
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:offset": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        },
+        "input:scale": {
+          "type": "vector2",
+          "nodename": "total_scale"
+        },
+        "input:pivot": {
+          "type": "vector2",
+          "value": "0.5, 0.5"
+        }
+      },
+      "image:base_color_image": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "grid.png",
+          "colorspace": "srgb_texture"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "a_place2d"
+        }
+      }
+    },
+    "standard_surface:ut_shader": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "output": "base_color_output",
+        "nodegraph": "Unit_test_inputGraph"
+      }
+    },
+    "surfacematerial:Unit_test": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "ut_shader"
+      }
+    }
+  },
+  "version": "1.38"
+}

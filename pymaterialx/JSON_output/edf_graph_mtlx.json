@@ -1,0 +1,139 @@
+{
+  "materialx": {
+    "nodedef:ND_myedf": {
+      "node": "myedf",
+      "input:intensity1": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:color1": {
+        "type": "color3",
+        "value": "1.0, 0.0, 0.0"
+      },
+      "input:intensity2": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:color2": {
+        "type": "color3",
+        "value": "0.0, 1.0, 0.0"
+      },
+      "output:out": {
+        "type": "EDF"
+      }
+    },
+    "nodegraph:IMP_myedf": {
+      "nodedef": "ND_myedf",
+      "multiply:col1": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "interfacename": "color1"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "intensity1"
+        }
+      },
+      "uniform_edf:edf1": {
+        "type": "EDF",
+        "input:color": {
+          "type": "color3",
+          "nodename": "col1"
+        }
+      },
+      "multiply:col2": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "interfacename": "color2"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "intensity2"
+        }
+      },
+      "uniform_edf:edf2": {
+        "type": "EDF",
+        "input:color": {
+          "type": "color3",
+          "nodename": "col2"
+        }
+      },
+      "texcoord:t1": {
+        "type": "vector2"
+      },
+      "multiply:m1": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "nodename": "t1"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "16"
+        }
+      },
+      "noise2d:noise1": {
+        "type": "float",
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "m1"
+        }
+      },
+      "mix:mixer": {
+        "type": "EDF",
+        "input:fg": {
+          "type": "EDF",
+          "nodename": "edf1"
+        },
+        "input:bg": {
+          "type": "EDF",
+          "nodename": "edf2"
+        },
+        "input:mix": {
+          "type": "float",
+          "nodename": "noise1"
+        }
+      },
+      "output:out": {
+        "type": "EDF",
+        "nodename": "mixer"
+      }
+    },
+    "nodegraph:test_mybsdf": {
+      "type": "surfaceshader",
+      "myedf:myedf1": {
+        "type": "EDF",
+        "input:intensity1": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:color1": {
+          "type": "color3",
+          "value": "1.0, 0.0, 0.0"
+        },
+        "input:intensity2": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:color2": {
+          "type": "color3",
+          "value": "0.0, 1.0, 0.0"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:edf": {
+          "type": "EDF",
+          "nodename": "myedf1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    }
+  },
+  "version": "1.38"
+}

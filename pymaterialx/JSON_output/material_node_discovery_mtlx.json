@@ -1,0 +1,114 @@
+{
+  "materialx": {
+    "nodedef:ND_material_def_material_1_0": {
+      "node": "material_def",
+      "version": "1.0",
+      "isdefaultversion": "true",
+      "output:out": {
+        "type": "material"
+      }
+    },
+    "standard_surface:top_level_shader": {
+      "type": "surfaceshader",
+      "version": "1.0.1"
+    },
+    "surfacematerial:top_level_material_no_asssign": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "top_level_shader"
+      }
+    },
+    "nodegraph:top_level_material_in_graph_no_assign": {
+      "standard_surface:standard_surface2": {
+        "type": "surfaceshader",
+        "version": "1.0.1"
+      },
+      "surfacematerial:surfacematerial1": {
+        "type": "material",
+        "input:surfaceshader": {
+          "type": "surfaceshader",
+          "nodename": "standard_surface2"
+        }
+      },
+      "output:out": {
+        "type": "material",
+        "nodename": "surfacematerial1"
+      }
+    },
+    "standard_surface:top_level_shader1": {
+      "type": "surfaceshader",
+      "version": "1.0.1"
+    },
+    "surfacematerial:top_level_material_assigned": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "top_level_shader1"
+      }
+    },
+    "nodegraph:NG_material_def_material_1_0": {
+      "nodedef": "ND_material_def_material_1_0",
+      "standard_surface:standard_surface2": {
+        "type": "surfaceshader",
+        "version": "1.0.1"
+      },
+      "surfacematerial:surfacematerial1": {
+        "type": "material",
+        "input:surfaceshader": {
+          "type": "surfaceshader",
+          "nodename": "standard_surface2"
+        }
+      },
+      "output:out": {
+        "type": "material",
+        "nodename": "surfacematerial1"
+      }
+    },
+    "material_def:top_level_material_def": {
+      "type": "material"
+    },
+    "nodegraph:top_level_material_in_graph_assigned": {
+      "standard_surface:standard_surface2": {
+        "type": "surfaceshader",
+        "version": "1.0.1"
+      },
+      "surfacematerial:surfacematerial1": {
+        "type": "material",
+        "input:surfaceshader": {
+          "type": "surfaceshader",
+          "nodename": "standard_surface2"
+        }
+      },
+      "output:out": {
+        "type": "material",
+        "nodename": "surfacematerial1"
+      }
+    },
+    "material_def:top_level_material_def_assigned": {
+      "type": "material"
+    },
+    "collection:collection1": {},
+    "collection:collection2": {},
+    "collection:collection3": {},
+    "look:look1": {
+      "materialassign:materialnode_to_materialassign": {
+        "collection": "collection1",
+        "material": "top_level_material_assigned"
+      }
+    },
+    "look:look2": {
+      "materialassign:materialgraph_to_materialassign": {
+        "collection": "collection2",
+        "material": "top_level_material_in_graph_assigned"
+      }
+    },
+    "look:look3": {
+      "materialassign:materialdef_to_materialassign": {
+        "collection": "collection3",
+        "material": "top_level_material_def_assigned"
+      }
+    }
+  },
+  "version": "1.38"
+}

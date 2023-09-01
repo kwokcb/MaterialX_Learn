@@ -1,0 +1,194 @@
+{
+  "materialx": {
+    "output:triplanarprojection_4_output": {
+      "type": "color4",
+      "nodename": "triplanarprojection_4"
+    },
+    "triplanarprojection:triplanarprojection_4": {
+      "type": "color4",
+      "input:filex": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filey": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filez": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "cubic"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "clamp"
+      }
+    },
+    "output:triplanarprojection_3_output": {
+      "type": "color3",
+      "nodename": "triplanarprojection_3"
+    },
+    "triplanarprojection:triplanarprojection_3": {
+      "type": "color3",
+      "input:filex": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filey": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filez": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "cubic"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "clamp"
+      }
+    },
+    "output:triplanarprojection_2_output": {
+      "type": "vector2",
+      "nodename": "triplanarprojection_2"
+    },
+    "triplanarprojection:triplanarprojection_2": {
+      "type": "vector2",
+      "input:filex": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filey": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filez": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "cubic"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "clamp"
+      }
+    },
+    "output:triplanarprojection_1_output": {
+      "type": "float",
+      "nodename": "triplanarprojection_1"
+    },
+    "triplanarprojection:triplanarprojection_1": {
+      "type": "float",
+      "input:filex": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filey": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filez": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "cubic"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "clamp"
+      }
+    },
+    "output:triplanarprojection_4v_output": {
+      "type": "vector4",
+      "nodename": "triplanarprojection_4v"
+    },
+    "triplanarprojection:triplanarprojection_4v": {
+      "type": "vector4",
+      "input:filex": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filey": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filez": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "cubic"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "clamp"
+      }
+    },
+    "output:triplanarprojection_3v_output": {
+      "type": "vector3",
+      "nodename": "triplanarprojection_3v"
+    },
+    "triplanarprojection:triplanarprojection_3v": {
+      "type": "vector3",
+      "input:filex": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filey": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filez": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "cubic"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "clamp"
+      }
+    },
+    "output:triplanarprojection_2v_output": {
+      "type": "vector2",
+      "nodename": "triplanarprojection_2v"
+    },
+    "triplanarprojection:triplanarprojection_2v": {
+      "type": "vector2",
+      "input:filex": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filey": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filez": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "cubic"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "clamp"
+      }
+    }
+  },
+  "version": "1.38"
+}

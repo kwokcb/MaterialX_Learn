@@ -1,0 +1,451 @@
+{
+  "materialx": {
+    "LamaConductor:LamaConductor": {
+      "type": "BSDF",
+      "input:tint": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:fresnelMode": {
+        "type": "integer",
+        "value": "0"
+      },
+      "input:IOR": {
+        "type": "vector3",
+        "value": "0.180000007153,0.419999986887,1.37000000477"
+      },
+      "input:extinction": {
+        "type": "vector3",
+        "value": "3.42000007629,2.34999990463,1.76999998093"
+      },
+      "input:reflectivity": {
+        "type": "color3",
+        "value": "0.9450, 0.7772, 0.3737"
+      },
+      "input:edgeColor": {
+        "type": "color3",
+        "value": "0.9979, 0.9813, 0.7523"
+      },
+      "input:roughness": {
+        "type": "float",
+        "value": "0.1"
+      },
+      "input:anisotropy": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:anisotropyRotation": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:iridescenceThickness": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:iridescenceIOR": {
+        "type": "float",
+        "value": "1.5"
+      },
+      "input:exteriorIOR": {
+        "type": "float",
+        "value": "1.0"
+      }
+    },
+    "surface:LamaConductorSurface": {
+      "type": "surfaceshader",
+      "input:bsdf": {
+        "type": "BSDF",
+        "nodename": "LamaConductor"
+      }
+    },
+    "surfacematerial:LamaConductorTest": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "LamaConductorSurface"
+      }
+    },
+    "LamaDielectric:LamaDielectric": {
+      "type": "BSDF",
+      "input:reflectionTint": {
+        "type": "color3",
+        "value": "1.0, 1.0, 1.0"
+      },
+      "input:transmissionTint": {
+        "type": "color3",
+        "value": "1.0, 1.0, 1.0"
+      },
+      "input:fresnelMode": {
+        "type": "integer",
+        "value": "0"
+      },
+      "input:IOR": {
+        "type": "float",
+        "value": "1.5"
+      },
+      "input:reflectivity": {
+        "type": "float",
+        "value": "0.04"
+      },
+      "input:roughness": {
+        "type": "float",
+        "value": "0.1"
+      },
+      "input:anisotropy": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:rotation": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:exteriorIOR": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:absorptionColor": {
+        "type": "color3",
+        "value": "1.0, 1.0, 1.0"
+      },
+      "input:absorptionRadius": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:scatterColor": {
+        "type": "color3",
+        "value": "0.0, 0.0, 0.0"
+      },
+      "input:scatterAnisotropy": {
+        "type": "float",
+        "value": "0.0"
+      }
+    },
+    "surface:LamaDielectricSurface": {
+      "type": "surfaceshader",
+      "input:bsdf": {
+        "type": "BSDF",
+        "nodename": "LamaDielectric"
+      }
+    },
+    "surfacematerial:LamaDielectricTest": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "LamaDielectricSurface"
+      }
+    },
+    "LamaDiffuse:LamaDiffuse": {
+      "type": "BSDF",
+      "input:color": {
+        "type": "color3",
+        "value": "0.1, 0.2, 0.3"
+      },
+      "input:roughness": {
+        "type": "float",
+        "value": "0.5"
+      },
+      "input:energyCompensation": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:lobeName": {
+        "type": "string",
+        "value": "diffuse"
+      },
+      "input:matte": {
+        "type": "string",
+        "value": ""
+      }
+    },
+    "surface:LamaDiffuseSurface": {
+      "type": "surfaceshader",
+      "input:bsdf": {
+        "type": "BSDF",
+        "nodename": "LamaDiffuse"
+      }
+    },
+    "surfacematerial:LamaDiffuseTest": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "LamaDiffuseSurface"
+      }
+    },
+    "LamaEmission:LamaEmission": {
+      "type": "EDF",
+      "input:color": {
+        "type": "color3",
+        "value": "0.0, 1.0, 0.0"
+      }
+    },
+    "surface:LamaEmissionSurface": {
+      "type": "surfaceshader",
+      "input:edf": {
+        "type": "EDF",
+        "nodename": "LamaEmission"
+      }
+    },
+    "surfacematerial:LamaEmissionTest": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "LamaEmissionSurface"
+      }
+    },
+    "LamaSheen:LamaSheen": {
+      "type": "BSDF",
+      "input:color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:roughness": {
+        "type": "float",
+        "value": "0.1"
+      }
+    },
+    "surface:LamaSheenSurface": {
+      "type": "surfaceshader",
+      "input:bsdf": {
+        "type": "BSDF",
+        "nodename": "LamaSheen"
+      }
+    },
+    "surfacematerial:LamaSheenTest": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "LamaSheenSurface"
+      }
+    },
+    "LamaSSS:LamaSSS": {
+      "type": "BSDF",
+      "input:color": {
+        "type": "color3",
+        "value": "0.43, 0.21, 0.17"
+      },
+      "input:sssRadius": {
+        "type": "color3",
+        "value": "11.61, 3.88, 1.75"
+      },
+      "input:sssScale": {
+        "type": "float",
+        "value": "0.01"
+      },
+      "input:sssMode": {
+        "type": "integer",
+        "value": "1"
+      },
+      "input:sssIOR": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:sssContinuationRays": {
+        "type": "integer",
+        "value": "1"
+      },
+      "input:sssUnitLength": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:mode": {
+        "type": "integer",
+        "value": "2"
+      },
+      "input:albedoInversionMethod": {
+        "type": "integer",
+        "value": "1"
+      }
+    },
+    "surface:LamaSSSSurface": {
+      "type": "surfaceshader",
+      "input:bsdf": {
+        "type": "BSDF",
+        "nodename": "LamaSSS"
+      }
+    },
+    "surfacematerial:LamaSSSTest": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "LamaSSSSurface"
+      }
+    },
+    "LamaTranslucent:LamaTranslucent": {
+      "type": "BSDF",
+      "input:color": {
+        "type": "color3",
+        "value": "0.9, 0.0, 0.6"
+      },
+      "input:roughness": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:energyCompensation": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:lobeName": {
+        "type": "string",
+        "value": "diffuse"
+      },
+      "input:matte": {
+        "type": "string",
+        "value": ""
+      }
+    },
+    "surface:LamaTranslucentSurface": {
+      "type": "surfaceshader",
+      "input:bsdf": {
+        "type": "BSDF",
+        "nodename": "LamaTranslucent"
+      }
+    },
+    "surfacematerial:LamaTranslucentTest": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "LamaTranslucentSurface"
+      }
+    },
+    "LamaAdd:LamaAddBSDF": {
+      "type": "BSDF",
+      "input:material1": {
+        "type": "BSDF",
+        "nodename": "LamaConductor"
+      },
+      "input:material2": {
+        "type": "BSDF",
+        "nodename": "LamaDielectric"
+      },
+      "input:weight1": {
+        "type": "float",
+        "value": "0.5"
+      },
+      "input:weight2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "surface:LamaAddBSDFSurface": {
+      "type": "surfaceshader",
+      "input:bsdf": {
+        "type": "BSDF",
+        "nodename": "LamaAddBSDF"
+      }
+    },
+    "surfacematerial:LamaAddBSDFTest": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "LamaAddBSDFSurface"
+      }
+    },
+    "LamaEmission:LamaEmission1": {
+      "type": "EDF",
+      "input:color": {
+        "type": "color3",
+        "value": "1.0, 1.0, 0.0"
+      }
+    },
+    "LamaEmission:LamaEmission2": {
+      "type": "EDF",
+      "input:color": {
+        "type": "color3",
+        "value": "1.0, 0.0, 1.0"
+      }
+    },
+    "LamaAdd:LamaAddEDF": {
+      "type": "EDF",
+      "input:material1": {
+        "type": "EDF",
+        "nodename": "LamaEmission1"
+      },
+      "input:material2": {
+        "type": "EDF",
+        "nodename": "LamaEmission2"
+      },
+      "input:weight1": {
+        "type": "float",
+        "value": "0.5"
+      },
+      "input:weight2": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "surface:LamaAddEDFSurface": {
+      "type": "surfaceshader",
+      "input:edf": {
+        "type": "EDF",
+        "nodename": "LamaAddEDF"
+      }
+    },
+    "surfacematerial:LamaAddEDFTest": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "LamaAddEDFSurface"
+      }
+    },
+    "LamaMix:LamaMixBSDF": {
+      "type": "BSDF",
+      "input:material1": {
+        "type": "BSDF",
+        "nodename": "LamaConductor"
+      },
+      "input:material2": {
+        "type": "BSDF",
+        "nodename": "LamaDielectric"
+      },
+      "input:mix": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "surface:LamaMixBSDFSurface": {
+      "type": "surfaceshader",
+      "input:bsdf": {
+        "type": "BSDF",
+        "nodename": "LamaMixBSDF"
+      }
+    },
+    "surfacematerial:LamaMixBSDFTest": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "LamaMixBSDFSurface"
+      }
+    },
+    "LamaMix:LamaMixEDF": {
+      "type": "EDF",
+      "input:material1": {
+        "type": "EDF",
+        "nodename": "LamaEmission1"
+      },
+      "input:material2": {
+        "type": "EDF",
+        "nodename": "LamaEmission2"
+      },
+      "input:mix": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "surface:LamaMixEDFSurface": {
+      "type": "surfaceshader",
+      "input:edf": {
+        "type": "EDF",
+        "nodename": "LamaMixEDF"
+      }
+    },
+    "surfacematerial:LamaMixEDFTest": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "LamaMixEDFSurface"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "acescg"
+}

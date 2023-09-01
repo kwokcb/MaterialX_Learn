@@ -1,0 +1,40 @@
+{
+  "materialx": {
+    "standard_surface:SR_gold": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "value": "0.944, 0.776, 0.373"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:specular_color": {
+        "type": "color3",
+        "value": "0.998, 0.981, 0.751"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "value": "0.02"
+      },
+      "input:metalness": {
+        "type": "float",
+        "value": "1"
+      }
+    },
+    "surfacematerial:Gold": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_gold"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}
