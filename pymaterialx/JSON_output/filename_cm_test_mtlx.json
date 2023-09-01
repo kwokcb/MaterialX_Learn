@@ -1,0 +1,117 @@
+{
+  "materialx": {
+    "nodedef:ND_tm_retest": {
+      "node": "tm_retest",
+      "input:texture_file": {
+        "type": "filename",
+        "uniform": "true"
+      },
+      "output:out": {
+        "type": "color3"
+      }
+    },
+    "nodegraph:NG_tm_retest": {
+      "nodedef": "ND_tm_retest",
+      "image:b_image": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "interfacename": "texture_file"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "b_image"
+      }
+    },
+    "nodedef:ND_tm_test": {
+      "node": "tm_test",
+      "input:texture_file": {
+        "type": "filename",
+        "uniform": "true"
+      },
+      "output:out": {
+        "type": "color3"
+      }
+    },
+    "nodegraph:NG_tm_test": {
+      "nodedef": "ND_tm_test",
+      "image:b_image": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "interfacename": "texture_file"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "b_image"
+      }
+    },
+    "nodegraph:nodegraph1": {
+      "tm_test:bl": {
+        "type": "color3",
+        "input:texture_file": {
+          "type": "filename",
+          "value": "resources/Images/grid.png",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "output:tmtestout": {
+        "type": "color3",
+        "nodename": "bl"
+      },
+      "tm_retest:bl1": {
+        "type": "color3",
+        "input:texture_file": {
+          "type": "filename",
+          "value": "resources/Images/grid.png",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "output:tmtestout2": {
+        "type": "color3",
+        "nodename": "bl1"
+      },
+      "image:tr1": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Images/grid.png",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "output:troutput": {
+        "type": "color3",
+        "nodename": "tr1"
+      }
+    },
+    "standard_surface:shaderref1": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "output": "tmtestout",
+        "nodegraph": "nodegraph1"
+      },
+      "input:specular_color": {
+        "type": "color3",
+        "output": "tmtestout2",
+        "nodegraph": "nodegraph1"
+      },
+      "input:transmission_color": {
+        "type": "color3",
+        "output": "troutput",
+        "nodegraph": "nodegraph1"
+      }
+    },
+    "surfacematerial:Filename_CM_Test": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "shaderref1"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

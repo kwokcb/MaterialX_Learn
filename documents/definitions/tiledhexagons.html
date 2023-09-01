@@ -597,7 +597,7 @@ graph LR;
     style NG_tiledhexagons_color3_pattern_selection fill:#F80, color:#111
     NG_tiledhexagons_color3_max1[max] --".in1"--> NG_tiledhexagons_color3_max[max]
     NG_tiledhexagons_color3_hexagon_stagg1[hexagon] --".in1"--> NG_tiledhexagons_color3_max1[max]
-    NG_tiledhexagons_color3_coord_circ1[combine2] --".sample"--> NG_tiledhexagons_color3_hexagon_stagg1[hexagon]
+    NG_tiledhexagons_color3_coord_circ1[combine2] --".texcoord"--> NG_tiledhexagons_color3_hexagon_stagg1[hexagon]
     NG_tiledhexagons_color3_mod_X_1[modulo] --".in1"--> NG_tiledhexagons_color3_coord_circ1[combine2]
     NG_tiledhexagons_color3_shift_X[add] --".in1"--> NG_tiledhexagons_color3_mod_X_1[modulo]
     NG_tiledhexagons_color3_texcoord_bias[subtract] --".x -> .in1"--> NG_tiledhexagons_color3_shift_X[add]
@@ -618,13 +618,13 @@ graph LR;
     NG_tiledhexagons_color3_sizeINT([size]) ==.in1==> NG_tiledhexagons_color3_scale_half[divide]
     style NG_tiledhexagons_color3_sizeINT fill:#0CF, color:#111
     NG_tiledhexagons_color3_hexagon_stagg2[hexagon] --".in2"--> NG_tiledhexagons_color3_max1[max]
-    NG_tiledhexagons_color3_coord_circ2[combine2] --".sample"--> NG_tiledhexagons_color3_hexagon_stagg2[hexagon]
+    NG_tiledhexagons_color3_coord_circ2[combine2] --".texcoord"--> NG_tiledhexagons_color3_hexagon_stagg2[hexagon]
     NG_tiledhexagons_color3_coord_adj_1[subtract] --".in1"--> NG_tiledhexagons_color3_coord_circ2[combine2]
     NG_tiledhexagons_color3_mod_X_1[modulo] --".in2"--> NG_tiledhexagons_color3_coord_adj_1[subtract]
     NG_tiledhexagons_color3_mod_Y_1[modulo] --".in2"--> NG_tiledhexagons_color3_coord_circ2[combine2]
     NG_tiledhexagons_color3_scale_half[divide] --".radius"--> NG_tiledhexagons_color3_hexagon_stagg2[hexagon]
     NG_tiledhexagons_color3_hexagon_stagg3[hexagon] --".in2"--> NG_tiledhexagons_color3_max[max]
-    NG_tiledhexagons_color3_coord_circ3[combine2] --".sample"--> NG_tiledhexagons_color3_hexagon_stagg3[hexagon]
+    NG_tiledhexagons_color3_coord_circ3[combine2] --".texcoord"--> NG_tiledhexagons_color3_hexagon_stagg3[hexagon]
     NG_tiledhexagons_color3_coord_adj_2[subtract] --".in1"--> NG_tiledhexagons_color3_coord_circ3[combine2]
     NG_tiledhexagons_color3_mod_X_1[modulo] --".in1"--> NG_tiledhexagons_color3_coord_adj_2[subtract]
     NG_tiledhexagons_color3_coord_adj_3[subtract] --".in2"--> NG_tiledhexagons_color3_coord_circ3[combine2]
@@ -634,7 +634,7 @@ graph LR;
     style NG_tiledhexagons_color3_pattern_selection fill:#F80, color:#111
     NG_tiledhexagons_color3_sizeINT([size]) ==.radius==> NG_tiledhexagons_color3_hexagon_regular[hexagon]
     style NG_tiledhexagons_color3_sizeINT fill:#0CF, color:#111
-    NG_tiledhexagons_color3_recenter[subtract] --".sample"--> NG_tiledhexagons_color3_hexagon_regular[hexagon]
+    NG_tiledhexagons_color3_recenter[subtract] --".texcoord"--> NG_tiledhexagons_color3_hexagon_regular[hexagon]
     NG_tiledhexagons_color3_mod_texcoord_2[multiply] --".in1"--> NG_tiledhexagons_color3_recenter[subtract]
     NG_tiledhexagons_color3_mod_texcoord[modulo] --".in1"--> NG_tiledhexagons_color3_mod_texcoord_2[multiply]
     NG_tiledhexagons_color3_texcoord_bias[subtract] --".in1"--> NG_tiledhexagons_color3_mod_texcoord[modulo]

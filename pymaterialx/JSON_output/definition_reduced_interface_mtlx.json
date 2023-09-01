@@ -1,0 +1,107 @@
+{
+  "materialx": {
+    "nodedef:ND_pattern_shader": {
+      "nodename": "pattern_shader",
+      "output:out": {
+        "type": "surfaceshader",
+        "value": ""
+      }
+    },
+    "nodegraph:NG_pattern_shader": {
+      "nodedef": "ND_pattern_shader",
+      "standard_surface:SHD_pattern_shader1": {
+        "type": "surfaceshader",
+        "input:base_color": {
+          "type": "color3",
+          "nodename": "modulo"
+        },
+        "input:specular_roughness": {
+          "type": "float",
+          "value": "0.7"
+        },
+        "input:normal": {
+          "type": "vector3",
+          "nodename": "pattern_normalmap"
+        }
+      },
+      "modulo:modulo": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "noise2d"
+        },
+        "input:in2": {
+          "type": "color3",
+          "value": "2, 1.5, 4.2"
+        }
+      },
+      "noise2d:noise2d": {
+        "type": "color3",
+        "input:amplitude": {
+          "type": "vector3",
+          "value": "0.3, 3.6, 0.3"
+        },
+        "input:pivot": {
+          "type": "float",
+          "value": "0.365385"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "place2d"
+        }
+      },
+      "place2d:place2d": {
+        "type": "vector2",
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "texcoord"
+        },
+        "input:scale": {
+          "type": "vector2",
+          "value": "0.5, 0.5"
+        }
+      },
+      "normalmap:pattern_normalmap": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "pattern_tiledimage"
+        },
+        "input:scale": {
+          "type": "float",
+          "value": "3"
+        }
+      },
+      "tiledimage:pattern_tiledimage": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "uniform": "true",
+          "value": "mesh_wire_norm.png"
+        },
+        "input:default": {
+          "type": "vector3",
+          "value": "0.5, 0.5, 1"
+        },
+        "input:uvtiling": {
+          "type": "vector2",
+          "value": "10, 10"
+        }
+      },
+      "texcoord:texcoord": {
+        "type": "vector2",
+        "nodedef": "ND_texcoord_vector2"
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "SHD_pattern_shader1"
+      }
+    },
+    "pattern_shader:SHD_pattern_shader": {
+      "type": "surfaceshader"
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709",
+  "fileprefix": "../../../Images/"
+}

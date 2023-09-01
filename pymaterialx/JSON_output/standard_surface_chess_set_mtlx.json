@@ -1,0 +1,1568 @@
+{
+  "materialx": {
+    "nodegraph:NG_BishopBlack": {
+      "image:diffuse2": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/bishop_black_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:metallic2": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/bishop_shared_metallic.jpg"
+        }
+      },
+      "image:roughness2": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/bishop_black_roughness.jpg"
+        }
+      },
+      "image:normal2": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/bishop_black_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap4": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal2"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "diffuse2"
+      },
+      "output:metalness_output": {
+        "type": "float",
+        "nodename": "metallic2"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "roughness2"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap4"
+      }
+    },
+    "standard_surface:Bishop_B": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_BishopBlack",
+        "output": "base_color_output"
+      },
+      "input:metalness": {
+        "type": "float",
+        "nodegraph": "NG_BishopBlack",
+        "output": "metalness_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_BishopBlack",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_BishopBlack",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_BishopBlack",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_BishopBlack",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_Bishop_B": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Bishop_B"
+      }
+    },
+    "nodegraph:NG_BishopWhite": {
+      "image:diffuse3": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/bishop_white_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:metallic3": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/bishop_shared_metallic.jpg"
+        }
+      },
+      "image:roughness3": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/bishop_white_roughness.jpg"
+        }
+      },
+      "image:normal3": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/bishop_white_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap5": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal3"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "diffuse3"
+      },
+      "output:metalness_output": {
+        "type": "float",
+        "nodename": "metallic3"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "roughness3"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap5"
+      }
+    },
+    "standard_surface:Bishop_W": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_BishopWhite",
+        "output": "base_color_output"
+      },
+      "input:metalness": {
+        "type": "float",
+        "nodegraph": "NG_BishopWhite",
+        "output": "metalness_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_BishopWhite",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_BishopWhite",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_BishopWhite",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_BishopWhite",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_Bishop_W": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Bishop_W"
+      }
+    },
+    "nodegraph:NG_CastleBlack": {
+      "image:diffuse6": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/castle_black_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:metallic6": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/castle_shared_metallic.jpg"
+        }
+      },
+      "image:roughness6": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/castle_shared_roughness.jpg"
+        }
+      },
+      "image:normal6": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/castle_shared_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap8": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal6"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "diffuse6"
+      },
+      "output:metalness_output": {
+        "type": "float",
+        "nodename": "metallic6"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "roughness6"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap8"
+      }
+    },
+    "standard_surface:Castle_B": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_CastleBlack",
+        "output": "base_color_output"
+      },
+      "input:metalness": {
+        "type": "float",
+        "nodegraph": "NG_CastleBlack",
+        "output": "metalness_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_CastleBlack",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_CastleBlack",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_CastleBlack",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_CastleBlack",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_Castle_B": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Castle_B"
+      }
+    },
+    "nodegraph:NG_CastleWhite": {
+      "image:diffuse7": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/castle_white_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:metallic7": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/castle_shared_metallic.jpg"
+        }
+      },
+      "image:roughness7": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/castle_shared_roughness.jpg"
+        }
+      },
+      "image:normal7": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/castle_shared_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap9": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal7"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "diffuse7"
+      },
+      "output:metalness_output": {
+        "type": "float",
+        "nodename": "metallic7"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "roughness7"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap9"
+      }
+    },
+    "standard_surface:Castle_W": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_CastleWhite",
+        "output": "base_color_output"
+      },
+      "input:metalness": {
+        "type": "float",
+        "nodegraph": "NG_CastleWhite",
+        "output": "metalness_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_CastleWhite",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_CastleWhite",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_CastleWhite",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_CastleWhite",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_Castle_W": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Castle_W"
+      }
+    },
+    "nodegraph:NG_ChessBoard": {
+      "image:mtlximage13": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/chessboard_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:mtlximage16": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/chessboard_metallic.jpg"
+        }
+      },
+      "image:mtlximage17": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/chessboard_roughness.jpg"
+        }
+      },
+      "image:mtlximage15": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/chessboard_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap12": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "mtlximage15"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "mtlximage13"
+      },
+      "output:metalness_output": {
+        "type": "float",
+        "nodename": "mtlximage16"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "mtlximage17"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap12"
+      }
+    },
+    "standard_surface:Chessboard": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_ChessBoard",
+        "output": "base_color_output"
+      },
+      "input:metalness": {
+        "type": "float",
+        "nodegraph": "NG_ChessBoard",
+        "output": "metalness_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_ChessBoard",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_ChessBoard",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_ChessBoard",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_ChessBoard",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_Chessboard": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Chessboard"
+      }
+    },
+    "nodegraph:NG_KingBlack": {
+      "image:mtlximage1": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/king_black_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:mtlximage2": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/king_shared_metallic.jpg"
+        }
+      },
+      "image:mtlximage4": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/king_black_roughness.jpg"
+        }
+      },
+      "image:mtlximage3": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/king_shared_scattering.jpg"
+        }
+      },
+      "image:mtlximage6": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/king_black_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "mtlximage6"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "mtlximage1"
+      },
+      "output:metalness_output": {
+        "type": "float",
+        "nodename": "mtlximage2"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "mtlximage4"
+      },
+      "output:subsurface_output": {
+        "type": "float",
+        "nodename": "mtlximage3"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap1"
+      }
+    },
+    "standard_surface:King_B": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_KingBlack",
+        "output": "base_color_output"
+      },
+      "input:metalness": {
+        "type": "float",
+        "nodegraph": "NG_KingBlack",
+        "output": "metalness_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_KingBlack",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "nodegraph": "NG_KingBlack",
+        "output": "subsurface_output"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_KingBlack",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_KingBlack",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_KingBlack",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_King_B": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "King_B"
+      }
+    },
+    "nodegraph:NG_KingWhite": {
+      "image:mtlximage7": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/king_white_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:mtlximage10": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/king_shared_metallic.jpg"
+        }
+      },
+      "image:mtlximage11": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/king_white_roughness.jpg"
+        }
+      },
+      "image:mtlximage8": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/king_shared_scattering.jpg"
+        }
+      },
+      "image:mtlximage9": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/king_white_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap11": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "mtlximage9"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "mtlximage7"
+      },
+      "output:metalness_output": {
+        "type": "float",
+        "nodename": "mtlximage10"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "mtlximage11"
+      },
+      "output:subsurface_output": {
+        "type": "float",
+        "nodename": "mtlximage8"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap11"
+      }
+    },
+    "standard_surface:King_W": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_KingWhite",
+        "output": "base_color_output"
+      },
+      "input:metalness": {
+        "type": "float",
+        "nodegraph": "NG_KingWhite",
+        "output": "metalness_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_KingWhite",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "nodegraph": "NG_KingWhite",
+        "output": "subsurface_output"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_KingWhite",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_KingWhite",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_KingWhite",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_King_W": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "King_W"
+      }
+    },
+    "nodegraph:NG_KnightBlack": {
+      "image:diffuse4": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/knight_black_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:roughness4": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/knight_black_roughness.jpg"
+        }
+      },
+      "image:normal4": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/knight_black_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap6": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal4"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "diffuse4"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "roughness4"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap6"
+      }
+    },
+    "standard_surface:Knight_B": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_KnightBlack",
+        "output": "base_color_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_KnightBlack",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_KnightBlack",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_KnightBlack",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_KnightBlack",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_Knight_B": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Knight_B"
+      }
+    },
+    "nodegraph:NG_KnightWhite": {
+      "image:diffuse5": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/knight_white_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:roughness5": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/knight_white_roughness.jpg"
+        }
+      },
+      "image:normal5": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/knight_white_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap7": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal5"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "diffuse5"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "roughness5"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap7"
+      }
+    },
+    "standard_surface:Knight_W": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_KnightWhite",
+        "output": "base_color_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_KnightWhite",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_KnightWhite",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_KnightWhite",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_KnightWhite",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_Knight_W": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Knight_W"
+      }
+    },
+    "nodegraph:NG_PawnBodyBlack": {
+      "image:diffuse9": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/pawn_black_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:metallic9": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/pawn_shared_metallic.jpg"
+        }
+      },
+      "image:roughness9": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/pawn_shared_roughness.jpg"
+        }
+      },
+      "image:normal9": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/pawn_shared_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap13": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal9"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "diffuse9"
+      },
+      "output:metalness_output": {
+        "type": "float",
+        "nodename": "metallic9"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "roughness9"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap13"
+      }
+    },
+    "standard_surface:Pawn_Body_B": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_PawnBodyBlack",
+        "output": "base_color_output"
+      },
+      "input:metalness": {
+        "type": "float",
+        "nodegraph": "NG_PawnBodyBlack",
+        "output": "metalness_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_PawnBodyBlack",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_PawnBodyBlack",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_PawnBodyBlack",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_PawnBodyBlack",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_Pawn_Body_B": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Pawn_Body_B"
+      }
+    },
+    "nodegraph:NG_PawnBodyWhite": {
+      "image:diffuse8": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/pawn_white_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:metallic8": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/pawn_shared_metallic.jpg"
+        }
+      },
+      "image:roughness8": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/pawn_shared_roughness.jpg"
+        }
+      },
+      "image:normal8": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/pawn_shared_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap10": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal8"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "diffuse8"
+      },
+      "output:metalness_output": {
+        "type": "float",
+        "nodename": "metallic8"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "roughness8"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap10"
+      }
+    },
+    "standard_surface:Pawn_Body_W": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_PawnBodyWhite",
+        "output": "base_color_output"
+      },
+      "input:metalness": {
+        "type": "float",
+        "nodegraph": "NG_PawnBodyWhite",
+        "output": "metalness_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_PawnBodyWhite",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_PawnBodyWhite",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_PawnBodyWhite",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_PawnBodyWhite",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_Pawn_Body_W": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Pawn_Body_W"
+      }
+    },
+    "nodegraph:NG_PawnTopBlack": {
+      "image:mtlximage19": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/pawn_shared_roughness.jpg"
+        }
+      },
+      "image:mtlximage18": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/pawn_shared_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap14": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "mtlximage18"
+        }
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "mtlximage19"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap14"
+      }
+    },
+    "standard_surface:Pawn_Top_B": {
+      "type": "surfaceshader",
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_PawnTopBlack",
+        "output": "roughness_output"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_PawnTopBlack",
+        "output": "normal_output"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:transmission": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:transmission_color": {
+        "type": "color3",
+        "value": "0.2995, 0.5, 0.450276"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      }
+    },
+    "surfacematerial:M_Pawn_Top_B": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Pawn_Top_B"
+      }
+    },
+    "nodegraph:NG_PawnTopWhite": {
+      "image:mtlximage21": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/pawn_shared_roughness.jpg"
+        }
+      },
+      "image:mtlximage20": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/pawn_shared_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap15": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "mtlximage20"
+        }
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "mtlximage21"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap15"
+      }
+    },
+    "standard_surface:Pawn_Top_W": {
+      "type": "surfaceshader",
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_PawnTopWhite",
+        "output": "roughness_output"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_PawnTopWhite",
+        "output": "normal_output"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:transmission": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:transmission_color": {
+        "type": "color3",
+        "value": "1, 1, 0.828"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      }
+    },
+    "surfacematerial:M_Pawn_Top_W": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Pawn_Top_W"
+      }
+    },
+    "nodegraph:NG_QueenBlack": {
+      "image:diffuse": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/queen_black_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:metallic": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/queen_shared_metallic.jpg"
+        }
+      },
+      "image:roughness": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/queen_black_roughness.jpg"
+        }
+      },
+      "image:sss": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/queen_shared_scattering.jpg"
+        }
+      },
+      "image:normal": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/queen_black_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap2": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "diffuse"
+      },
+      "output:metalness_output": {
+        "type": "float",
+        "nodename": "metallic"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "roughness"
+      },
+      "output:subsurface_output": {
+        "type": "float",
+        "nodename": "sss"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap2"
+      }
+    },
+    "standard_surface:Queen_B": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_QueenBlack",
+        "output": "base_color_output"
+      },
+      "input:metalness": {
+        "type": "float",
+        "nodegraph": "NG_QueenBlack",
+        "output": "metalness_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_QueenBlack",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "nodegraph": "NG_QueenBlack",
+        "output": "subsurface_output"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_QueenBlack",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_QueenBlack",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.003"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_QueenBlack",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_Queen_B": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Queen_B"
+      }
+    },
+    "nodegraph:NG_QueenWhite": {
+      "image:diffuse1": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/queen_white_base_color.jpg",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "image:metallic1": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/queen_shared_metallic.jpg"
+        }
+      },
+      "image:roughness1": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/queen_white_roughness.jpg"
+        }
+      },
+      "image:sss1": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/queen_shared_scattering.jpg"
+        }
+      },
+      "image:normal1": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "chess_set/queen_white_normal.jpg"
+        }
+      },
+      "normalmap:mtlxnormalmap3": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal1"
+        }
+      },
+      "output:base_color_output": {
+        "type": "color3",
+        "nodename": "diffuse1"
+      },
+      "output:metalness_output": {
+        "type": "float",
+        "nodename": "metallic1"
+      },
+      "output:roughness_output": {
+        "type": "float",
+        "nodename": "roughness1"
+      },
+      "output:subsurface_output": {
+        "type": "float",
+        "nodename": "sss1"
+      },
+      "output:normal_output": {
+        "type": "vector3",
+        "nodename": "mtlxnormalmap3"
+      }
+    },
+    "standard_surface:Queen_W": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_QueenWhite",
+        "output": "base_color_output"
+      },
+      "input:metalness": {
+        "type": "float",
+        "nodegraph": "NG_QueenWhite",
+        "output": "metalness_output"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_QueenWhite",
+        "output": "roughness_output"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "nodegraph": "NG_QueenWhite",
+        "output": "subsurface_output"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "nodegraph": "NG_QueenWhite",
+        "output": "base_color_output"
+      },
+      "input:subsurface_radius": {
+        "type": "color3",
+        "nodegraph": "NG_QueenWhite",
+        "output": "base_color_output"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.001"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodegraph": "NG_QueenWhite",
+        "output": "normal_output"
+      }
+    },
+    "surfacematerial:M_Queen_W": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Queen_W"
+      }
+    },
+    "look:L_ChessSet": {
+      "materialassign:Chessboard": {
+        "geom": "Chessboard",
+        "material": "M_Chessboard"
+      },
+      "materialassign:Bishop_B": {
+        "geom": "Bishop_B",
+        "material": "M_Bishop_B"
+      },
+      "materialassign:Bishop_W": {
+        "geom": "Bishop_W",
+        "material": "M_Bishop_W"
+      },
+      "materialassign:Castle_B": {
+        "geom": "Castle_B",
+        "material": "M_Castle_B"
+      },
+      "materialassign:Castle_W": {
+        "geom": "Castle_W",
+        "material": "M_Castle_W"
+      },
+      "materialassign:Knight_B": {
+        "geom": "Knight_B",
+        "material": "M_Knight_B"
+      },
+      "materialassign:Knight_W": {
+        "geom": "Knight_W",
+        "material": "M_Knight_W"
+      },
+      "materialassign:King_B": {
+        "geom": "King_B",
+        "material": "M_King_B"
+      },
+      "materialassign:King_W": {
+        "geom": "King_W",
+        "material": "M_King_W"
+      },
+      "materialassign:Pawn_Body_B": {
+        "geom": "Pawn_Body_B",
+        "material": "M_Pawn_Body_B"
+      },
+      "materialassign:Pawn_Top_B": {
+        "geom": "Pawn_Top_B",
+        "material": "M_Pawn_Top_B"
+      },
+      "materialassign:Pawn_Body_W": {
+        "geom": "Pawn_Body_W",
+        "material": "M_Pawn_Body_W"
+      },
+      "materialassign:Pawn_Top_W": {
+        "geom": "Pawn_Top_W",
+        "material": "M_Pawn_Top_W"
+      },
+      "materialassign:Queen_B": {
+        "geom": "Queen_B",
+        "material": "M_Queen_B"
+      },
+      "materialassign:Queen_W": {
+        "geom": "Queen_W",
+        "material": "M_Queen_W"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

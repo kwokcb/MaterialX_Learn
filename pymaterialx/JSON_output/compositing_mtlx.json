@@ -1,0 +1,973 @@
+{
+  "materialx": {
+    "nodegraph:plus_float": {
+      "plus:plus1": {
+        "type": "float",
+        "input:fg": {
+          "type": "float",
+          "value": "0.4000"
+        },
+        "input:bg": {
+          "type": "float",
+          "value": "0.3000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "plus1"
+      }
+    },
+    "nodegraph:plus_color3": {
+      "plus:plus1": {
+        "type": "color3",
+        "input:fg": {
+          "type": "color3",
+          "value": "0.2000, 0.4000, 0.0"
+        },
+        "input:bg": {
+          "type": "color3",
+          "value": "0.3000, 0.3000, 1.0000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "plus1"
+      }
+    },
+    "nodegraph:plus_color4": {
+      "plus:plus1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "0.2000, 0.4000, 0.0000, 0.0000"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "0.3000, 0.3000, 1.0000, 1.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "plus1"
+      }
+    },
+    "nodegraph:minus_float": {
+      "minus:minus1": {
+        "type": "float",
+        "input:fg": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:bg": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "minus1"
+      }
+    },
+    "nodegraph:minus_color3": {
+      "minus:minus1": {
+        "type": "color3",
+        "input:fg": {
+          "type": "color3",
+          "value": "1.0000, 0.0, 0.0"
+        },
+        "input:bg": {
+          "type": "color3",
+          "value": "1.0000, 1.0000, 0.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "minus1"
+      }
+    },
+    "nodegraph:minus_color4": {
+      "minus:minus1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "1.0000, 0.0, 0.0, 0.000"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 0.0, 1.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "minus1"
+      }
+    },
+    "nodegraph:difference_float": {
+      "difference:difference1": {
+        "type": "float",
+        "input:fg": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:bg": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "difference1"
+      }
+    },
+    "nodegraph:difference_color3": {
+      "difference:difference1": {
+        "type": "color3",
+        "input:fg": {
+          "type": "color3",
+          "value": "1.0000, 1.0000, 0.0"
+        },
+        "input:bg": {
+          "type": "color3",
+          "value": "0.5000, 0.0000, 0.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "difference1"
+      }
+    },
+    "nodegraph:difference_color4": {
+      "difference:difference1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 0.0, 0.0000"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "0.5000, 0.0, 0.0, 1.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "difference1"
+      }
+    },
+    "nodegraph:burn_float": {
+      "burn:burn1": {
+        "type": "float",
+        "input:fg": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:bg": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "burn1"
+      }
+    },
+    "nodegraph:burn_float_divzero": {
+      "burn:burn1": {
+        "type": "float",
+        "input:fg": {
+          "type": "float",
+          "value": "0.0000"
+        },
+        "input:bg": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "burn1"
+      }
+    },
+    "nodegraph:burn_color3": {
+      "burn:burn1": {
+        "type": "color3",
+        "input:fg": {
+          "type": "color3",
+          "value": "0.5000, 0.7500, 1.0000"
+        },
+        "input:bg": {
+          "type": "color3",
+          "value": "0.5000, 0.7500, 0.0000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "burn1"
+      }
+    },
+    "nodegraph:burn_color4": {
+      "burn:burn1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "0.5000, 0.7500, 1.0000, 1.0000"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "0.5000, 0.7500, 0.0, 1.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "burn1"
+      }
+    },
+    "nodegraph:dodge_float": {
+      "dodge:dodge1": {
+        "type": "float",
+        "input:fg": {
+          "type": "float",
+          "value": "0.0000"
+        },
+        "input:bg": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "dodge1"
+      }
+    },
+    "nodegraph:dodge_float_divzero": {
+      "dodge:dodge1": {
+        "type": "float",
+        "input:fg": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:bg": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "dodge1"
+      }
+    },
+    "nodegraph:dodge_color3": {
+      "dodge:dodge1": {
+        "type": "color3",
+        "input:fg": {
+          "type": "color3",
+          "value": "0.0, 0.2000, 0.0"
+        },
+        "input:bg": {
+          "type": "color3",
+          "value": "0.5000, 0.8000, 0.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "dodge1"
+      }
+    },
+    "nodegraph:dodge_color4": {
+      "dodge:dodge1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "0.0, 0.2000, 0.0, 0.0"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "0.5000, 0.8000, 0.0, 1.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "dodge1"
+      }
+    },
+    "nodegraph:screen_float": {
+      "screen:screen1": {
+        "type": "float",
+        "input:fg": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:bg": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "screen1"
+      }
+    },
+    "nodegraph:screen_color3": {
+      "screen:screen1": {
+        "type": "color3",
+        "input:fg": {
+          "type": "color3",
+          "value": "0.5000, 0.0, 0.0000"
+        },
+        "input:bg": {
+          "type": "color3",
+          "value": "0.5000, 1.0000, 0.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "screen1"
+      }
+    },
+    "nodegraph:screen_color4": {
+      "screen:screen1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "0.5000, 0.0, 0.0, 1.0"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "0.5000, 1.0000, 0.0, 1.0000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "screen1"
+      }
+    },
+    "nodegraph:overlay_float": {
+      "overlay:overlay1": {
+        "type": "float",
+        "input:fg": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:bg": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "overlay1"
+      }
+    },
+    "nodegraph:overlay_color3": {
+      "overlay:overlay1": {
+        "type": "color3",
+        "input:fg": {
+          "type": "color3",
+          "value": "0.5000, 0.0, 0.0"
+        },
+        "input:bg": {
+          "type": "color3",
+          "value": "0.5000, 1.0000, 0.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "overlay1"
+      }
+    },
+    "nodegraph:overlay_color4": {
+      "overlay:overlay1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "0.5000, 0.0, 0.0, 1.0"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "0.5000, 1.0000, 0.0, 1.0000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "overlay1"
+      }
+    },
+    "nodegraph:disjointover_color4": {
+      "disjointover:disjointover1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "0.5000, 1.0000, 0.0, 1.0"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "0.5000, 1.0000, 1.0000, 1.0000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "disjointover1"
+      }
+    },
+    "nodegraph:disjointover_color4_divzero": {
+      "disjointover:disjointover1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "0.5000, 1.0000, 0.0, 2.0"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "0.5000, 1.0000, 1.0000, 0.0000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "disjointover1"
+      }
+    },
+    "nodegraph:mask_color4": {
+      "mask:mask1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 1.0000, 1.000"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "0.5000, 0.7500, 0.0, 1.000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "mask1"
+      }
+    },
+    "nodegraph:out_color4": {
+      "out:out1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 1.0000, 1.0000"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 0.0, 1.0000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "out1"
+      }
+    },
+    "nodegraph:over_color4": {
+      "over:over1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 1.0000, 0.5000"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 0.0, 0.5000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "over1"
+      }
+    },
+    "nodegraph:inside_float": {
+      "inside:inside1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:mask": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "inside1"
+      }
+    },
+    "nodegraph:mix_float": {
+      "mix:mix1": {
+        "type": "float",
+        "input:fg": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:bg": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "mix1"
+      }
+    },
+    "nodegraph:inside_color3": {
+      "inside:inside1": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "value": "0.5000, 0.8000, 0.0000"
+        },
+        "input:mask": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "inside1"
+      }
+    },
+    "nodegraph:inside_color4": {
+      "inside:inside1": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "value": "0.5000, 0.8000, 0.0, 2.0"
+        },
+        "input:mask": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "inside1"
+      }
+    },
+    "nodegraph:mix_color3": {
+      "mix:mix1": {
+        "type": "color3",
+        "input:fg": {
+          "type": "color3",
+          "value": "1.0000, 0.0, 0.0"
+        },
+        "input:bg": {
+          "type": "color3",
+          "value": "0.0, 1.0000, 0.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "mix1"
+      }
+    },
+    "nodegraph:mix_color3_color3": {
+      "mix:mix1": {
+        "type": "color3",
+        "input:fg": {
+          "type": "color3",
+          "value": "1.0000, 0.0, 0.0"
+        },
+        "input:bg": {
+          "type": "color3",
+          "value": "0.0, 1.0000, 0.0"
+        },
+        "input:mix": {
+          "type": "color3",
+          "value": "0.5000, 0.5000, 0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "mix1"
+      }
+    },
+    "nodegraph:mix_color4_color4": {
+      "mix:mix1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "1.0000, 0.0, 0.0, 1.0"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "0.0000, 1.0000, 0.0, 1.0"
+        },
+        "input:mix": {
+          "type": "color4",
+          "value": "0.5000, 0.5000, 0.5000, 0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "mix1"
+      }
+    },
+    "nodegraph:mix_vector2": {
+      "mix:mix1": {
+        "type": "vector2",
+        "input:fg": {
+          "type": "vector2",
+          "value": "1.0000, 0.0"
+        },
+        "input:bg": {
+          "type": "vector2",
+          "value": "0.0, 1.0000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "mix1"
+      }
+    },
+    "nodegraph:mix_vector2_vector2": {
+      "mix:mix1": {
+        "type": "vector2",
+        "input:fg": {
+          "type": "vector2",
+          "value": "1.0000, 0.0"
+        },
+        "input:bg": {
+          "type": "vector2",
+          "value": "0.0, 1.0000"
+        },
+        "input:mix": {
+          "type": "vector2",
+          "value": "0.5000, 0.5000"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "mix1"
+      }
+    },
+    "nodegraph:mix_vector3": {
+      "mix:mix1": {
+        "type": "vector3",
+        "input:fg": {
+          "type": "vector3",
+          "value": "1.0000, 0.0, 0.0"
+        },
+        "input:bg": {
+          "type": "vector3",
+          "value": "0.0, 1.0000, 0.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "mix1"
+      }
+    },
+    "nodegraph:mix_vector3_vector3": {
+      "mix:mix1": {
+        "type": "vector3",
+        "input:fg": {
+          "type": "vector3",
+          "value": "1.0000, 0.0, 0.0"
+        },
+        "input:bg": {
+          "type": "vector3",
+          "value": "0.0, 1.0000, 0.0"
+        },
+        "input:mix": {
+          "type": "vector3",
+          "value": "0.5000, 0.5000, 0.5000"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "mix1"
+      }
+    },
+    "nodegraph:mix_vector4": {
+      "mix:mix1": {
+        "type": "vector4",
+        "input:fg": {
+          "type": "vector4",
+          "value": "1.0000, 0.0, 0.0, 1.0"
+        },
+        "input:bg": {
+          "type": "vector4",
+          "value": "0.0, 1.0000, 0.0, 1.0"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "mix1"
+      }
+    },
+    "nodegraph:mix_vector4_vector4": {
+      "mix:mix1": {
+        "type": "vector4",
+        "input:fg": {
+          "type": "vector4",
+          "value": "1.0000, 0.0, 0.0, 1.0"
+        },
+        "input:bg": {
+          "type": "vector4",
+          "value": "0.0, 1.0000, 0.0, 1.0"
+        },
+        "input:mix": {
+          "type": "vector4",
+          "value": "0.5000, 0.5000, 0.5000, 0.5000"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "mix1"
+      }
+    },
+    "nodegraph:premult_color4": {
+      "premult:premult1": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "value": "1.0000, 0.0, 0.5000, 0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "premult1"
+      }
+    },
+    "nodegraph:unpremult_color4": {
+      "unpremult:unpremult1": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "value": "1.0000, 0.0, 0.5000, 0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "unpremult1"
+      }
+    },
+    "nodegraph:in_color4": {
+      "in:in1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 1.0000, 1.000"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 0.0, 1.000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "in1"
+      }
+    },
+    "nodegraph:outside_float": {
+      "outside:outside1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:mask": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "outside1"
+      }
+    },
+    "nodegraph:outside_color3": {
+      "outside:outside1": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "value": "0.5000, 0.8000, 0.0"
+        },
+        "input:mask": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "outside1"
+      }
+    },
+    "nodegraph:outside_color4": {
+      "outside:outside1": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "value": "0.5000, 0.8000, 0.0, 2.0"
+        },
+        "input:mask": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "outside1"
+      }
+    },
+    "nodegraph:matte_color4": {
+      "matte:matte1": {
+        "type": "color4",
+        "input:fg": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 1.0000, 1.0000"
+        },
+        "input:bg": {
+          "type": "color4",
+          "value": "0.5000, 0.7500, 0.0, 1.0000"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "matte1"
+      }
+    }
+  },
+  "version": "1.38"
+}

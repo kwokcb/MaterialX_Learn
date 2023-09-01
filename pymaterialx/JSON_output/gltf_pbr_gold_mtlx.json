@@ -1,0 +1,24 @@
+{
+  "materialx": {
+    "gltf_pbr:SR_gold": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "value": "0.944, 0.776, 0.373"
+      },
+      "input:roughness": {
+        "type": "float",
+        "value": "0.02"
+      }
+    },
+    "surfacematerial:PBR_Gold": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_gold"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

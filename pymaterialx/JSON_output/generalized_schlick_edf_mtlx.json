@@ -1,0 +1,44 @@
+{
+  "materialx": {
+    "nodegraph:generalized_schlick_edf_test": {
+      "uniform_edf:uniform_edf_1": {
+        "type": "EDF",
+        "input:color": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        }
+      },
+      "generalized_schlick_edf:generalized_schlick_edf_1": {
+        "type": "EDF",
+        "input:color0": {
+          "type": "color3",
+          "value": "0.1, 1.0, 0.1"
+        },
+        "input:color90": {
+          "type": "color3",
+          "value": "1.0, 0.1, 0.2"
+        },
+        "input:exponent": {
+          "type": "float",
+          "value": "3.0"
+        },
+        "input:base": {
+          "type": "EDF",
+          "nodename": "uniform_edf_1"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:edf": {
+          "type": "EDF",
+          "nodename": "generalized_schlick_edf_1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    }
+  },
+  "version": "1.38"
+}

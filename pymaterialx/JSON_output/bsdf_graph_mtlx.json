@@ -1,0 +1,112 @@
+{
+  "materialx": {
+    "nodedef:ND_mybsdf": {
+      "node": "mybsdf",
+      "input:diffuse": {
+        "type": "float",
+        "value": "0.8"
+      },
+      "input:diffuseColor": {
+        "type": "color3",
+        "value": "0.0, 1.0, 0.0"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:specularColor": {
+        "type": "color3",
+        "value": "1.0, 1.0, 1.0"
+      },
+      "output:out": {
+        "type": "BSDF"
+      }
+    },
+    "nodegraph:IMP_mybsdf": {
+      "nodedef": "ND_mybsdf",
+      "oren_nayar_diffuse_bsdf:diffuse_brdf1": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "interfacename": "diffuse"
+        },
+        "input:color": {
+          "type": "color3",
+          "interfacename": "diffuseColor"
+        }
+      },
+      "dielectric_bsdf:dielectric_brdf1": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "interfacename": "specular"
+        },
+        "input:tint": {
+          "type": "color3",
+          "interfacename": "specularColor"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.52"
+        }
+      },
+      "layer:layer1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "diffuse_brdf1"
+        }
+      },
+      "output:out": {
+        "type": "BSDF",
+        "nodename": "layer1"
+      }
+    },
+    "nodegraph:test_mybsdf": {
+      "type": "surfaceshader",
+      "mybsdf:mybsdf1": {
+        "type": "BSDF",
+        "input:diffuse": {
+          "type": "float",
+          "value": "0.4"
+        },
+        "input:diffuseColor": {
+          "type": "color3",
+          "value": "1.0, 0.1, 0.1"
+        },
+        "input:specular": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:specularColor": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "mybsdf1"
+        },
+        "input:edf": {
+          "type": "EDF",
+          "value": ""
+        },
+        "input:opacity": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    }
+  },
+  "version": "1.38"
+}

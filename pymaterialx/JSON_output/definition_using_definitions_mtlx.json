@@ -1,0 +1,1173 @@
+{
+  "materialx": {
+    "nodedef:ND_layered": {
+      "node": "mylayered",
+      "version": "1.0.1",
+      "isdefaultversion": "true",
+      "input:surface_normal": {
+        "type": "vector3",
+        "value": "1, 1, 1",
+        "defaultgeomprop": "Nworld"
+      },
+      "input:surface_cutout": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:surface_albedo": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:surface_roughness": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:surface_anisotropy": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:surface_rotation": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:layered_normal": {
+        "type": "vector3",
+        "value": "1, 1, 1",
+        "defaultgeomprop": "Nworld"
+      },
+      "input:layered_f0": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:layered_roughness": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:layered_anisotropy": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:layered_rotation": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:layered_fraction": {
+        "type": "float",
+        "value": "0.5"
+      },
+      "input:layered_fraction_invert": {
+        "type": "boolean",
+        "value": "false"
+      },
+      "input:layered_diffuse": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:layered_bottom_f0": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "output:out": {
+        "type": "surfaceshader"
+      }
+    },
+    "nodegraph:NG_layered": {
+      "nodedef": "ND_layered",
+      "luminance:coat_value_color3": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "interfacename": "surface_albedo"
+        }
+      },
+      "extract:coat_value": {
+        "type": "float",
+        "input:in": {
+          "type": "color3",
+          "nodename": "coat_value_color3"
+        },
+        "input:index": {
+          "type": "integer",
+          "value": "0"
+        }
+      },
+      "subtract:oneminus_surfaniso0": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "surface_anisotropy"
+        }
+      },
+      "sqrt:sqrt1minus_surfaniso0": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "oneminus_surfaniso0"
+        }
+      },
+      "multiply:coat_roughness_value": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "sqrt1minus_surfaniso0"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "surface_roughness"
+        }
+      },
+      "multiply:twotimes_surfaniso0": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "value": "2.0"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "surface_anisotropy"
+        }
+      },
+      "multiply:pow2_surfaniso0": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "interfacename": "surface_anisotropy"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "surface_anisotropy"
+        }
+      },
+      "subtract:coat_anisotropy_value": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "twotimes_surfaniso0"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "pow2_surfaniso0"
+        }
+      },
+      "constant:surface_rotation_param": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "interfacename": "surface_rotation"
+        }
+      },
+      "divide:div_rotation0": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "surface_rotation_param"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "360.0"
+        }
+      },
+      "modulo:coat_rotation_value": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "div_rotation0"
+        }
+      },
+      "constant:layered_f0_param": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "interfacename": "layered_f0"
+        }
+      },
+      "sqrt:sqrt_layeredf0": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "layered_f0_param"
+        }
+      },
+      "add:oneplus_sqrtlayeredf0": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "sqrt_layeredf0"
+        }
+      },
+      "subtract:oneminus_sqrtlayeredf0": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "sqrt_layeredf0"
+        }
+      },
+      "divide:coat_IOR_value": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "oneplus_sqrtlayeredf0"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "oneminus_sqrtlayeredf0"
+        }
+      },
+      "constant:layered_roughness_param": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "interfacename": "layered_roughness"
+        }
+      },
+      "constant:layered_anisotropy_param": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "interfacename": "layered_anisotropy"
+        }
+      },
+      "subtract:oneminus_layeraniso0": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "layered_anisotropy_param"
+        }
+      },
+      "sqrt:sqrt1minus_layeraniso0": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "oneminus_layeraniso0"
+        }
+      },
+      "multiply:specular_roughness_value": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "sqrt1minus_layeraniso0"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "layered_roughness_param"
+        }
+      },
+      "multiply:twotimes_layeraniso0": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "value": "2.0"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "layered_anisotropy_param"
+        }
+      },
+      "multiply:pow2_layeraniso0": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "layered_anisotropy_param"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "layered_anisotropy_param"
+        }
+      },
+      "subtract:specular_anisotropy_value": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "twotimes_layeraniso0"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "pow2_layeraniso0"
+        }
+      },
+      "constant:layered_rotation_param": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "interfacename": "layered_rotation"
+        }
+      },
+      "divide:div_rotation1": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "layered_rotation_param"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "360.0"
+        }
+      },
+      "modulo:specular_rotation_value": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "div_rotation1"
+        }
+      },
+      "constant:layered_fraction_param": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "interfacename": "layered_fraction"
+        }
+      },
+      "constant:layered_diffuse_param": {
+        "type": "color3",
+        "input:value": {
+          "type": "color3",
+          "interfacename": "layered_diffuse"
+        }
+      },
+      "constant:layered_bottom_f0_param": {
+        "type": "color3",
+        "input:value": {
+          "type": "color3",
+          "interfacename": "layered_bottom_f0"
+        }
+      },
+      "subtract:oneminus_layerfraction": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "layered_fraction_param"
+        }
+      },
+      "multiply:oneminuslf_x_layerdiffuse": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "layered_diffuse_param"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "oneminus_layerfraction"
+        }
+      },
+      "multiply:lfract_x_lbottomf0": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "layered_bottom_f0_param"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "layered_fraction_param"
+        }
+      },
+      "add:base_color_value": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "lfract_x_lbottomf0"
+        },
+        "input:in2": {
+          "type": "color3",
+          "nodename": "oneminuslf_x_layerdiffuse"
+        }
+      },
+      "ifequal:layered_fraction_value": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "oneminus_layerfraction"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "layered_fraction_param"
+        },
+        "input:value1": {
+          "type": "boolean",
+          "interfacename": "layered_fraction_invert"
+        },
+        "input:value2": {
+          "type": "boolean",
+          "value": "true"
+        }
+      },
+      "standard_surface:standard_surface0": {
+        "type": "surfaceshader",
+        "version": "1.0.1",
+        "input:normal": {
+          "type": "vector3",
+          "interfacename": "layered_normal"
+        },
+        "input:coat_normal": {
+          "type": "vector3",
+          "interfacename": "surface_normal"
+        },
+        "input:opacity": {
+          "type": "color3",
+          "interfacename": "surface_cutout"
+        },
+        "input:coat": {
+          "type": "float",
+          "nodename": "coat_value"
+        },
+        "input:metalness": {
+          "type": "float",
+          "nodename": "layered_fraction_value"
+        },
+        "input:specular": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:base": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:coat_color": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        },
+        "input:coat_roughness": {
+          "type": "float",
+          "nodename": "coat_roughness_value"
+        },
+        "input:coat_anisotropy": {
+          "type": "float",
+          "nodename": "coat_anisotropy_value"
+        },
+        "input:coat_rotation": {
+          "type": "float",
+          "nodename": "coat_rotation_value"
+        },
+        "input:coat_IOR": {
+          "type": "float",
+          "nodename": "coat_IOR_value"
+        },
+        "input:specular_roughness": {
+          "type": "float",
+          "nodename": "specular_roughness_value"
+        },
+        "input:specular_anisotropy": {
+          "type": "float",
+          "nodename": "specular_anisotropy_value"
+        },
+        "input:specular_rotation": {
+          "type": "float",
+          "nodename": "specular_rotation_value"
+        },
+        "input:base_color": {
+          "type": "color3",
+          "nodename": "base_color_value"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "standard_surface0"
+      }
+    },
+    "nodedef:ND_bitmap_color3": {
+      "node": "mybitmap",
+      "nodegroup": "texture2d",
+      "version": "1.0.1",
+      "isdefaultversion": "true",
+      "input:file": {
+        "type": "filename"
+      },
+      "input:realworld_offset": {
+        "type": "vector2",
+        "unittype": "distance"
+      },
+      "input:realworld_scale": {
+        "type": "vector2",
+        "unittype": "distance"
+      },
+      "input:uv_offset": {
+        "type": "vector2",
+        "value": "0.0, 0.0"
+      },
+      "input:uv_scale": {
+        "type": "vector2",
+        "value": "1.0, 1.0"
+      },
+      "input:rotation_angle": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:rgbamount": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:invert": {
+        "type": "boolean",
+        "value": "false"
+      },
+      "input:uaddressmode": {
+        "type": "string",
+        "value": "periodic",
+        "enum": "constant,clamp,periodic,mirror",
+        "uniform": "true"
+      },
+      "input:vaddressmode": {
+        "type": "string",
+        "value": "periodic",
+        "enum": "constant,clamp,periodic,mirror",
+        "uniform": "true"
+      },
+      "output:out": {
+        "type": "color3"
+      }
+    },
+    "nodegraph:NG_bitmap_color3": {
+      "nodedef": "ND_bitmap_color3",
+      "divide:total_scale": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "interfacename": "uv_scale"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "interfacename": "realworld_scale"
+        }
+      },
+      "add:total_offset": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "interfacename": "realworld_offset"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "interfacename": "uv_offset"
+        }
+      },
+      "multiply:rotation_angle_param": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "interfacename": "rotation_angle"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "-1.0"
+        }
+      },
+      "texcoord:texcoord1": {
+        "type": "vector2"
+      },
+      "place2d:a_place2d": {
+        "type": "vector2",
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:offset": {
+          "type": "vector2",
+          "nodename": "total_offset"
+        },
+        "input:scale": {
+          "type": "vector2",
+          "nodename": "total_scale"
+        },
+        "input:pivot": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        },
+        "input:rotate": {
+          "type": "float",
+          "nodename": "rotation_angle_param"
+        }
+      },
+      "image:b_image": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "interfacename": "file"
+        },
+        "input:uaddressmode": {
+          "type": "string",
+          "interfacename": "uaddressmode"
+        },
+        "input:vaddressmode": {
+          "type": "string",
+          "interfacename": "vaddressmode"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "a_place2d"
+        }
+      },
+      "multiply:image_brightness": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "b_image"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "rgbamount"
+        }
+      },
+      "invert:image_invert": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "nodename": "image_brightness"
+        }
+      },
+      "ifequal:image_convert": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "image_invert"
+        },
+        "input:in2": {
+          "type": "color3",
+          "nodename": "image_brightness"
+        },
+        "input:value1": {
+          "type": "boolean",
+          "interfacename": "invert"
+        },
+        "input:value2": {
+          "type": "boolean",
+          "value": "true"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "image_convert"
+      }
+    },
+    "nodedef:ND_normal_map": {
+      "node": "mynormal_map",
+      "nodegroup": "texture2d",
+      "version": "1.0.1",
+      "isdefaultversion": "true",
+      "input:file": {
+        "type": "filename"
+      },
+      "input:realworld_offset": {
+        "type": "vector2",
+        "unittype": "distance"
+      },
+      "input:realworld_scale": {
+        "type": "vector2",
+        "unittype": "distance"
+      },
+      "input:uv_offset": {
+        "type": "vector2",
+        "value": "0.0, 0.0"
+      },
+      "input:uv_scale": {
+        "type": "vector2",
+        "value": "1.0, 1.0"
+      },
+      "input:rotation_angle": {
+        "type": "float",
+        "value": "0",
+        "unittype": "angle"
+      },
+      "input:normal_scale": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:uaddressmode": {
+        "type": "string",
+        "value": "periodic",
+        "enum": "constant,clamp,periodic,mirror",
+        "uniform": "true"
+      },
+      "input:vaddressmode": {
+        "type": "string",
+        "value": "periodic",
+        "enum": "constant,clamp,periodic,mirror",
+        "uniform": "true"
+      },
+      "output:out": {
+        "type": "vector3"
+      }
+    },
+    "nodegraph:NG_normal_map": {
+      "nodedef": "ND_normal_map",
+      "divide:total_scale": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "interfacename": "uv_scale"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "interfacename": "realworld_scale"
+        }
+      },
+      "add:total_offset": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "interfacename": "realworld_offset"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "interfacename": "uv_offset"
+        }
+      },
+      "multiply:rotation_angle_param": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "interfacename": "rotation_angle"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "-1.0"
+        }
+      },
+      "texcoord:texcoord1": {
+        "type": "vector2"
+      },
+      "place2d:a_place2d": {
+        "type": "vector2",
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:offset": {
+          "type": "vector2",
+          "nodename": "total_offset"
+        },
+        "input:scale": {
+          "type": "vector2",
+          "nodename": "total_scale"
+        },
+        "input:pivot": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        },
+        "input:rotate": {
+          "type": "float",
+          "nodename": "rotation_angle_param"
+        }
+      },
+      "image:b_image": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "interfacename": "file"
+        },
+        "input:uaddressmode": {
+          "type": "string",
+          "interfacename": "uaddressmode"
+        },
+        "input:vaddressmode": {
+          "type": "string",
+          "interfacename": "vaddressmode"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "a_place2d"
+        }
+      },
+      "multiply:b_image_negate_y": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "nodename": "b_image"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "1.0, -1.0, 1.0"
+        }
+      },
+      "add:b_image_invert_y": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "value": "0.0, 1.0, 0.0"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "nodename": "b_image_negate_y"
+        }
+      },
+      "normalmap:impl_normalmap": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "b_image_invert_y"
+        },
+        "input:scale": {
+          "type": "float",
+          "interfacename": "normal_scale"
+        },
+        "input:space": {
+          "type": "string",
+          "value": "tangent"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "impl_normalmap"
+      }
+    },
+    "nodedef:ND_bitmap_remap_float": {
+      "node": "mybitmap_remap",
+      "nodegroup": "texture2d",
+      "version": "1.0.1",
+      "isdefaultversion": "true",
+      "input:file": {
+        "type": "filename"
+      },
+      "input:realworld_offset": {
+        "type": "vector2",
+        "unittype": "distance"
+      },
+      "input:realworld_scale": {
+        "type": "vector2",
+        "unittype": "distance"
+      },
+      "input:uv_offset": {
+        "type": "vector2",
+        "value": "0.0, 0.0"
+      },
+      "input:uv_scale": {
+        "type": "vector2",
+        "value": "1.0, 1.0"
+      },
+      "input:rotation_angle": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:rgbamount": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:invert": {
+        "type": "boolean",
+        "value": "false"
+      },
+      "input:outlow": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:outhigh": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:uaddressmode": {
+        "type": "string",
+        "value": "periodic",
+        "enum": "constant,clamp,periodic,mirror",
+        "uniform": "true"
+      },
+      "input:vaddressmode": {
+        "type": "string",
+        "value": "periodic",
+        "enum": "constant,clamp,periodic,mirror",
+        "uniform": "true"
+      },
+      "output:out": {
+        "type": "float"
+      }
+    },
+    "nodegraph:NG_bitmap_remap_float": {
+      "nodedef": "ND_bitmap_remap_float",
+      "divide:total_scale": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "interfacename": "uv_scale"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "interfacename": "realworld_scale"
+        }
+      },
+      "add:total_offset": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "interfacename": "realworld_offset"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "interfacename": "uv_offset"
+        }
+      },
+      "multiply:rotation_angle_param": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "interfacename": "rotation_angle"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "-1.0"
+        }
+      },
+      "texcoord:texcoord1": {
+        "type": "vector2"
+      },
+      "place2d:a_place2d": {
+        "type": "vector2",
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:offset": {
+          "type": "vector2",
+          "nodename": "total_offset"
+        },
+        "input:scale": {
+          "type": "vector2",
+          "nodename": "total_scale"
+        },
+        "input:pivot": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        },
+        "input:rotate": {
+          "type": "float",
+          "nodename": "rotation_angle_param"
+        }
+      },
+      "image:b_image": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "interfacename": "file"
+        },
+        "input:uaddressmode": {
+          "type": "string",
+          "interfacename": "uaddressmode"
+        },
+        "input:vaddressmode": {
+          "type": "string",
+          "interfacename": "vaddressmode"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "a_place2d"
+        }
+      },
+      "multiply:image_brightness": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "b_image"
+        },
+        "input:in2": {
+          "type": "float",
+          "interfacename": "rgbamount"
+        }
+      },
+      "invert:image_invert": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "nodename": "image_brightness"
+        }
+      },
+      "ifequal:image_convert": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "nodename": "image_invert"
+        },
+        "input:in2": {
+          "type": "color3",
+          "nodename": "image_brightness"
+        },
+        "input:value1": {
+          "type": "boolean",
+          "interfacename": "invert"
+        },
+        "input:value2": {
+          "type": "boolean",
+          "value": "true"
+        }
+      },
+      "extract:extract1f": {
+        "type": "float",
+        "input:in": {
+          "type": "color3",
+          "nodename": "image_convert"
+        },
+        "input:index": {
+          "type": "integer",
+          "value": "0"
+        }
+      },
+      "remap:value_remapped": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "extract1f"
+        },
+        "input:outlow": {
+          "type": "float",
+          "interfacename": "outlow"
+        },
+        "input:outhigh": {
+          "type": "float",
+          "interfacename": "outhigh"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "value_remapped"
+      }
+    },
+    "surfacematerial:material_layered": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "shader_layered"
+      }
+    },
+    "mylayered:shader_layered": {
+      "type": "surfaceshader",
+      "input:surface_albedo": {
+        "type": "color3",
+        "colorspace": "gamma24",
+        "value": "1, 1, 1"
+      },
+      "input:surface_roughness": {
+        "type": "float",
+        "value": "0.0774597"
+      },
+      "input:surface_anisotropy": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:surface_rotation": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:layered_f0": {
+        "type": "float",
+        "value": "0.0602702"
+      },
+      "input:layered_fraction": {
+        "type": "float",
+        "value": "0.15"
+      },
+      "input:layered_fraction_invert": {
+        "type": "boolean",
+        "value": "true"
+      },
+      "input:layered_bottom_f0": {
+        "type": "color3",
+        "output": "layered_bottom_f0_map_output",
+        "nodegraph": "layered_inputGraph"
+      },
+      "input:layered_diffuse": {
+        "type": "color3",
+        "colorspace": "gamma24",
+        "value": "0.0998528, 0.0998528, 0.0998528"
+      },
+      "input:layered_normal": {
+        "type": "vector3",
+        "output": "layered_normal_map_output",
+        "nodegraph": "layered_inputGraph"
+      },
+      "input:layered_roughness": {
+        "type": "float",
+        "value": "0.447214"
+      },
+      "input:layered_anisotropy": {
+        "type": "float",
+        "value": "0.95"
+      },
+      "input:layered_rotation": {
+        "type": "float",
+        "output": "layered_rotation_map_output",
+        "nodegraph": "layered_inputGraph"
+      }
+    },
+    "nodegraph:layered_inputGraph": {
+      "mybitmap:layered_bottom_f0_texture": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "",
+          "colorspace": "srgb_texture"
+        },
+        "input:realworld_scale": {
+          "type": "vector2",
+          "value": "0.33, 0.33",
+          "unit": "inch",
+          "unittype": "distance"
+        }
+      },
+      "output:layered_bottom_f0_map_output": {
+        "type": "color3",
+        "nodename": "layered_bottom_f0_texture"
+      },
+      "mynormal_map:layered_normal_texture": {
+        "type": "vector3",
+        "input:file": {
+          "type": "filename",
+          "value": "",
+          "colorspace": "lin_rec709"
+        },
+        "input:realworld_scale": {
+          "type": "vector2",
+          "value": "0.33, 0.33",
+          "unit": "inch",
+          "unittype": "distance"
+        }
+      },
+      "output:layered_normal_map_output": {
+        "type": "vector3",
+        "nodename": "layered_normal_texture"
+      },
+      "mybitmap_remap:layered_rotation_texture": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "",
+          "colorspace": "lin_rec709"
+        },
+        "input:realworld_scale": {
+          "type": "vector2",
+          "value": "0.33, 0.33",
+          "unit": "inch",
+          "unittype": "distance"
+        },
+        "input:outlow": {
+          "type": "float",
+          "value": "0"
+        },
+        "input:outhigh": {
+          "type": "float",
+          "value": "180"
+        }
+      },
+      "output:layered_rotation_map_output": {
+        "type": "float",
+        "nodename": "layered_rotation_texture"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709",
+  "xmlns:xi": "http://www.w3.org/2001/XInclude"
+}

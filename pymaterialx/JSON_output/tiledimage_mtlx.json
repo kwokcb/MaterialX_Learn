@@ -1,0 +1,194 @@
+{
+  "materialx": {
+    "output:tiled_image4_output": {
+      "type": "color4",
+      "nodename": "tiled_image4"
+    },
+    "tiledimage:tiled_image4": {
+      "type": "color4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:uvtiling": {
+        "type": "vector2",
+        "value": "2.0, 2.0"
+      },
+      "input:uvoffset": {
+        "type": "vector2",
+        "value": "0.5, 0.5"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "cubic"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "constant"
+      }
+    },
+    "output:tiled_image3_output": {
+      "type": "color3",
+      "nodename": "tiled_image3"
+    },
+    "tiledimage:tiled_image3": {
+      "type": "color3",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:uvtiling": {
+        "type": "vector2",
+        "value": "2.0, 2.0"
+      },
+      "input:uvoffset": {
+        "type": "vector2",
+        "value": "0.5, 0.5"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "closest"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "clamp"
+      }
+    },
+    "output:tiled_image2_output": {
+      "type": "vector2",
+      "nodename": "tiled_image2"
+    },
+    "tiledimage:tiled_image2": {
+      "type": "vector2",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:uvtiling": {
+        "type": "vector2",
+        "value": "2.0, 2.0"
+      },
+      "input:uvoffset": {
+        "type": "vector2",
+        "value": "0.5, 0.5"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "linear"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "periodic"
+      }
+    },
+    "output:tiled_image1_output": {
+      "type": "float",
+      "nodename": "tiled_image1"
+    },
+    "tiledimage:tiled_image1": {
+      "type": "float",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:uvtiling": {
+        "type": "vector2",
+        "value": "2.0, 2.0"
+      },
+      "input:uvoffset": {
+        "type": "vector2",
+        "value": "0.5, 0.5"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "cubic"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "constant"
+      }
+    },
+    "output:tiled_image4v_output": {
+      "type": "vector4",
+      "nodename": "tiled_image4v"
+    },
+    "tiledimage:tiled_image4v": {
+      "type": "vector4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:uvtiling": {
+        "type": "vector2",
+        "value": "2.0, 2.0"
+      },
+      "input:uvoffset": {
+        "type": "vector2",
+        "value": "0.5, 0.5"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "closest"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "clamp"
+      }
+    },
+    "output:tiled_image3v_output": {
+      "type": "vector3",
+      "nodename": "tiled_image3v"
+    },
+    "tiledimage:tiled_image3v": {
+      "type": "vector3",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:uvtiling": {
+        "type": "vector2",
+        "value": "2.0, 2.0"
+      },
+      "input:uvoffset": {
+        "type": "vector2",
+        "value": "0.5, 0.5"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "linear"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "periodic"
+      }
+    },
+    "output:tiled_image2v_output": {
+      "type": "vector2",
+      "nodename": "tiled_image2v"
+    },
+    "tiledimage:tiled_image2v": {
+      "type": "vector2",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/grid.png"
+      },
+      "input:uvtiling": {
+        "type": "vector2",
+        "value": "2.0, 2.0"
+      },
+      "input:uvoffset": {
+        "type": "vector2",
+        "value": "0.5, 0.5"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "closest"
+      },
+      "input:frameendaction": {
+        "type": "string",
+        "value": "periodic"
+      }
+    }
+  },
+  "version": "1.38"
+}

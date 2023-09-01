@@ -1,0 +1,230 @@
+{
+  "materialx": {
+    "nodegraph:convert_float_color4": {
+      "constant:constant1": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "convert:convert1": {
+        "type": "color4",
+        "input:in": {
+          "type": "float",
+          "nodename": "constant1"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "convert1"
+      }
+    },
+    "nodegraph:convert_float_vector4": {
+      "constant:constant1": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "convert:convert1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "float",
+          "nodename": "constant1"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "convert1"
+      }
+    },
+    "nodegraph:convert_color4_vector4": {
+      "constant:constant1": {
+        "type": "color4",
+        "input:value": {
+          "type": "color4",
+          "value": "0.2000, 0.8000, 0.5000, 1.0"
+        }
+      },
+      "convert:convert1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "color4",
+          "nodename": "constant1"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "convert1"
+      }
+    },
+    "convert:convert_boolean_surfaceshader": {
+      "type": "surfaceshader",
+      "version": "1.0",
+      "input:in": {
+        "type": "boolean",
+        "value": "true"
+      }
+    },
+    "surfacematerial:material_convert_boolean_surfaceshader_out": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "convert_boolean_surfaceshader"
+      }
+    },
+    "convert:convert_color3_surfaceshader": {
+      "type": "surfaceshader",
+      "version": "1.0",
+      "input:in": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      }
+    },
+    "surfacematerial:material_convert_color3_surfaceshader_out": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "convert_color3_surfaceshader"
+      }
+    },
+    "convert:convert_color4_surfaceshader": {
+      "type": "surfaceshader",
+      "version": "1.0",
+      "input:in": {
+        "type": "color4",
+        "value": "1, 1, 1, 1"
+      }
+    },
+    "surfacematerial:material_convert_color4_surfaceshader_out": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "convert_color4_surfaceshader"
+      }
+    },
+    "convert:convert_float_surfaceshader": {
+      "type": "surfaceshader",
+      "version": "1.0",
+      "input:in": {
+        "type": "float",
+        "value": "1"
+      }
+    },
+    "surfacematerial:material_convert_float_surfaceshader_out": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "convert_float_surfaceshader"
+      }
+    },
+    "convert:convert_integer_surfaceshader": {
+      "type": "surfaceshader",
+      "version": "1.0",
+      "input:in": {
+        "type": "integer",
+        "value": "1"
+      }
+    },
+    "surfacematerial:material_convert_integer_surfaceshader_out": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "convert_integer_surfaceshader"
+      }
+    },
+    "convert:convert_vector2_surfaceshader": {
+      "type": "surfaceshader",
+      "version": "1.0",
+      "input:in": {
+        "type": "vector2",
+        "value": "1, 1"
+      }
+    },
+    "surfacematerial:material_convert_vector2_surfaceshader_out": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "convert_vector2_surfaceshader"
+      }
+    },
+    "convert:convert_vector3_surfaceshader": {
+      "type": "surfaceshader",
+      "version": "1.0",
+      "input:in": {
+        "type": "vector3",
+        "value": "1, 1, 1"
+      }
+    },
+    "surfacematerial:material_convert_vector3_surfaceshader_out": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "convert_vector3_surfaceshader"
+      }
+    },
+    "convert:convert_vector4_surfaceshader": {
+      "type": "surfaceshader",
+      "version": "1.0",
+      "input:in": {
+        "type": "vector4",
+        "value": "1, 1, 1, 1"
+      }
+    },
+    "surfacematerial:material_convert_vector4_surfaceshader_out": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "convert_vector4_surfaceshader"
+      }
+    },
+    "convert:convert_vector4_surfaceshader2": {
+      "type": "surfaceshader",
+      "version": "1.0",
+      "input:in": {
+        "type": "vector4",
+        "nodegraph": "convert_float_vector4"
+      }
+    },
+    "surfacematerial:material_convert_vector4_surfaceshader_out2": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "convert_vector4_surfaceshader2"
+      }
+    },
+    "convert:convert_vector4_surfaceshader3": {
+      "type": "surfaceshader",
+      "version": "1.0",
+      "input:in": {
+        "type": "vector4",
+        "nodegraph": "convert_color4_vector4"
+      }
+    },
+    "surfacematerial:material_convert_vector4_surfaceshader_out3": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "convert_vector4_surfaceshader3"
+      }
+    },
+    "convert:convert_color4_surfaceshader2": {
+      "type": "surfaceshader",
+      "version": "1.0",
+      "input:in": {
+        "type": "color4",
+        "nodegraph": "convert_float_color4"
+      }
+    },
+    "surfacematerial:material_convert_color4_surfaceshader_out2": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "convert_color4_surfaceshader2"
+      }
+    }
+  },
+  "version": "1.38"
+}

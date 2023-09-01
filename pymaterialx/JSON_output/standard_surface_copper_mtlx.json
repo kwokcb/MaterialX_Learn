@@ -1,0 +1,48 @@
+{
+  "materialx": {
+    "standard_surface:SR_copper": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "value": "0.25"
+      },
+      "input:metalness": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:coat": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:coat_color": {
+        "type": "color3",
+        "value": "0.96467984, 0.37626296, 0.25818297"
+      },
+      "input:coat_roughness": {
+        "type": "float",
+        "value": "0.20000000298023224"
+      }
+    },
+    "surfacematerial:Copper": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_copper"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

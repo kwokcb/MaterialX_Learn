@@ -1,0 +1,415 @@
+{
+  "materialx": {
+    "nodegraph:combine_vector2": {
+      "combine2:combine1": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "1.0000"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "combine1"
+      }
+    },
+    "nodegraph:combine_color3": {
+      "combine3:combine1": {
+        "type": "color3",
+        "input:in1": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:in3": {
+          "type": "float",
+          "value": "0.2500"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "combine1"
+      }
+    },
+    "nodegraph:combine_vector3": {
+      "combine3:combine1": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:in3": {
+          "type": "float",
+          "value": "0.2500"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "combine1"
+      }
+    },
+    "nodegraph:combine_color4": {
+      "combine4:combine1": {
+        "type": "color4",
+        "input:in1": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:in3": {
+          "type": "float",
+          "value": "0.2500"
+        },
+        "input:in4": {
+          "type": "float",
+          "value": "0.7500"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "combine1"
+      }
+    },
+    "nodegraph:combine_vector4": {
+      "combine4:combine1": {
+        "type": "vector4",
+        "input:in1": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:in3": {
+          "type": "float",
+          "value": "0.2500"
+        },
+        "input:in4": {
+          "type": "float",
+          "value": "0.7500"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "combine1"
+      }
+    },
+    "nodegraph:combine_color4CF": {
+      "combine2:combine1": {
+        "type": "color4",
+        "input:in1": {
+          "type": "color3",
+          "value": "0.5000, 1.0000, 0.2500"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.7500"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "combine1"
+      }
+    },
+    "nodegraph:combine_vector4VF": {
+      "combine2:combine1": {
+        "type": "vector4",
+        "input:in1": {
+          "type": "vector3",
+          "value": "0.5000, 1.0000, 0.2500"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.7500"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "combine1"
+      }
+    },
+    "nodegraph:combine_vector4VV": {
+      "combine2:combine1": {
+        "type": "vector4",
+        "input:in1": {
+          "type": "vector2",
+          "value": "0.5000, 1.0000"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "value": "0.2500, 1.0000"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "combine1"
+      }
+    },
+    "nodegraph:extract_color3": {
+      "extract:extract1": {
+        "type": "float",
+        "input:in": {
+          "type": "color3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:index": {
+          "type": "integer",
+          "value": "1"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "extract1"
+      }
+    },
+    "nodegraph:extract_color4": {
+      "extract:extract1": {
+        "type": "float",
+        "input:in": {
+          "type": "color4",
+          "value": "0.0000, 0.2500, 0.7500, 1.0"
+        },
+        "input:index": {
+          "type": "integer",
+          "value": "1"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "extract1"
+      }
+    },
+    "nodegraph:extract_vector2": {
+      "extract:extract1": {
+        "type": "float",
+        "input:in": {
+          "type": "vector2",
+          "value": "0.5000, 1.0000"
+        },
+        "input:index": {
+          "type": "integer",
+          "value": "1"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "extract1"
+      }
+    },
+    "nodegraph:extract_vector3": {
+      "extract:extract1": {
+        "type": "float",
+        "input:in": {
+          "type": "vector3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:index": {
+          "type": "integer",
+          "value": "1"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "extract1"
+      }
+    },
+    "nodegraph:extract_vector4": {
+      "extract:extract1": {
+        "type": "float",
+        "input:in": {
+          "type": "vector4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:index": {
+          "type": "integer",
+          "value": "1"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "extract1"
+      }
+    },
+    "nodegraph:separate_color3": {
+      "type": "color3",
+      "separate3:separate1": {
+        "type": "multioutput",
+        "input:in": {
+          "type": "color3",
+          "value": "0.42, 0.77, 0.93"
+        }
+      },
+      "combine3:combine1": {
+        "type": "color3",
+        "input:in1": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outb"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outg"
+        },
+        "input:in3": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outr"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "combine1"
+      }
+    },
+    "nodegraph:separate_color4": {
+      "type": "color4",
+      "separate4:separate1": {
+        "type": "multioutput",
+        "input:in": {
+          "type": "color4",
+          "value": "0.42, 0.77, 0.93, 1.0"
+        }
+      },
+      "combine4:combine1": {
+        "type": "color4",
+        "input:in1": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outa"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outb"
+        },
+        "input:in3": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outg"
+        },
+        "input:in4": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outr"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "combine1"
+      }
+    },
+    "nodegraph:separate_vector2": {
+      "type": "vector2",
+      "separate2:separate1": {
+        "type": "multioutput",
+        "input:in": {
+          "type": "vector2",
+          "value": "0.42, 0.77"
+        }
+      },
+      "combine2:combine1": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outy"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outx"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "combine1"
+      }
+    },
+    "nodegraph:separate_vector3": {
+      "type": "vector3",
+      "separate3:separate1": {
+        "type": "multioutput",
+        "input:in": {
+          "type": "vector3",
+          "value": "0.42, 0.77, 0.93"
+        }
+      },
+      "combine3:combine1": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outz"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outy"
+        },
+        "input:in3": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outx"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "combine1"
+      }
+    },
+    "nodegraph:separate_vector4": {
+      "type": "vector4",
+      "separate4:separate1": {
+        "type": "multioutput",
+        "input:in": {
+          "type": "vector4",
+          "value": "0.42, 0.77, 0.93, 1.0"
+        }
+      },
+      "combine4:combine1": {
+        "type": "vector4",
+        "input:in1": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outw"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outz"
+        },
+        "input:in3": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outy"
+        },
+        "input:in4": {
+          "type": "float",
+          "nodename": "separate1",
+          "output": "outx"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "combine1"
+      }
+    }
+  },
+  "version": "1.38"
+}

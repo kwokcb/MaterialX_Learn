@@ -1,0 +1,45 @@
+{
+  "materialx": {
+    "nodegraph:rgb_to_hsv_to_rgb_color3": {
+      "rgbtohsv:rgbtohsv1": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "value": "0.2, 0.2, 0.8"
+        }
+      },
+      "hsvtorgb:hsvtorgb1": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "nodename": "rgbtohsv1"
+        }
+      },
+      "output:rgb_to_hsv_to_rgb_color3_out": {
+        "type": "color3",
+        "nodename": "hsvtorgb1"
+      }
+    },
+    "nodegraph:rgb_to_hsv_to_rgb_color4": {
+      "rgbtohsv:rgbtohsv1": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "value": "0.2, 0.2, 0.8, 1.0"
+        }
+      },
+      "hsvtorgb:hsvtorgb1": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "nodename": "rgbtohsv1"
+        }
+      },
+      "output:rgb_to_hsv_to_rgb_color4_out": {
+        "type": "color4",
+        "nodename": "hsvtorgb1"
+      }
+    }
+  },
+  "version": "1.38"
+}

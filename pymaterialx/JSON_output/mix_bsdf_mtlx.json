@@ -1,0 +1,234 @@
+{
+  "materialx": {
+    "nodegraph:mix_bsdf_test1": {
+      "oren_nayar_diffuse_bsdf:diffuse_brdf1": {
+        "type": "BSDF",
+        "input:color": {
+          "type": "color3",
+          "value": "0.96, 0.1, 0.1"
+        }
+      },
+      "oren_nayar_diffuse_bsdf:diffuse_brdf2": {
+        "type": "BSDF",
+        "input:color": {
+          "type": "color3",
+          "value": "0.0, 0.73, 0.1"
+        }
+      },
+      "mix:mix_bsdf1": {
+        "type": "BSDF",
+        "input:fg": {
+          "type": "BSDF",
+          "nodename": "diffuse_brdf1"
+        },
+        "input:bg": {
+          "type": "BSDF",
+          "nodename": "diffuse_brdf2"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "mix_bsdf1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:mix_bsdf_test2": {
+      "oren_nayar_diffuse_bsdf:diffuse_brdf1": {
+        "type": "BSDF",
+        "input:color": {
+          "type": "color3",
+          "value": "0.96, 0.1, 0.1"
+        },
+        "input:roughness": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:normal": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        }
+      },
+      "dielectric_bsdf:dielectric_brdf1": {
+        "type": "BSDF",
+        "input:tint": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.52"
+        }
+      },
+      "mix:mix_bsdf1": {
+        "type": "BSDF",
+        "input:fg": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf1"
+        },
+        "input:bg": {
+          "type": "BSDF",
+          "nodename": "diffuse_brdf1"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "mix_bsdf1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodedef:ND_substratebsdf": {
+      "node": "substratebsdf",
+      "input:albedo": {
+        "type": "color3",
+        "value": "0.8, 0.2, 0.1"
+      },
+      "input:subsurface": {
+        "type": "color3",
+        "value": "0.1, 0.1, 0.8"
+      },
+      "input:subsurface_weight": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "output:out": {
+        "type": "BSDF"
+      }
+    },
+    "nodegraph:IMP_substratebsdf": {
+      "nodedef": "ND_substratebsdf",
+      "oren_nayar_diffuse_bsdf:diffuse": {
+        "type": "BSDF",
+        "input:color": {
+          "type": "color3",
+          "interfacename": "albedo"
+        }
+      },
+      "translucent_bsdf:subsurface2": {
+        "type": "BSDF",
+        "input:color": {
+          "type": "color3",
+          "interfacename": "subsurface"
+        }
+      },
+      "mix:mix1": {
+        "type": "BSDF",
+        "input:fg": {
+          "type": "BSDF",
+          "nodename": "diffuse"
+        },
+        "input:bg": {
+          "type": "BSDF",
+          "nodename": "subsurface2"
+        },
+        "input:mix": {
+          "type": "float",
+          "interfacename": "subsurface_weight"
+        }
+      },
+      "output:out": {
+        "type": "BSDF",
+        "nodename": "mix1"
+      }
+    },
+    "nodedef:ND_substrateshader": {
+      "node": "substrateshader",
+      "input:albedo": {
+        "type": "color3",
+        "value": "0.8, 0.2, 0.1"
+      },
+      "input:subsurface": {
+        "type": "color3",
+        "value": "0.1, 0.1, 0.8"
+      },
+      "input:subsurface_weight": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:emission": {
+        "type": "color3",
+        "value": "0.0, 0.0, 0.0"
+      },
+      "input:opacity": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "output:out": {
+        "type": "surfaceshader"
+      }
+    },
+    "nodegraph:IMP_substrateshader": {
+      "nodedef": "ND_substrateshader",
+      "substratebsdf:substrate1": {
+        "type": "BSDF",
+        "input:albedo": {
+          "type": "color3",
+          "interfacename": "albedo"
+        },
+        "input:subsurface": {
+          "type": "color3",
+          "interfacename": "subsurface"
+        },
+        "input:subsurface_weight": {
+          "type": "float",
+          "interfacename": "subsurface_weight"
+        }
+      },
+      "uniform_edf:edf1": {
+        "type": "EDF",
+        "input:color": {
+          "type": "color3",
+          "interfacename": "emission"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "substrate1"
+        },
+        "input:edf": {
+          "type": "EDF",
+          "nodename": "edf1"
+        },
+        "input:opacity": {
+          "type": "float",
+          "interfacename": "opacity"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:mix_bsdf_test3": {
+      "substrateshader:shader1": {
+        "type": "surfaceshader"
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "shader1"
+      }
+    }
+  },
+  "version": "1.38"
+}

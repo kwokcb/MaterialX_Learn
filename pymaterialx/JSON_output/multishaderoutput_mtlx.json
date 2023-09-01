@@ -1,0 +1,85 @@
+{
+  "materialx": {
+    "nodegraph:NG_multi_shader_output": {
+      "nodedef": "ND_multi_shader_output",
+      "burley_diffuse_bsdf:burley_bsdf": {
+        "type": "BSDF",
+        "input:color": {
+          "type": "color3",
+          "interfacename": "diffuse_color"
+        }
+      },
+      "dielectric_bsdf:dielectric_bsdf": {
+        "type": "BSDF",
+        "input:tint": {
+          "type": "color3",
+          "interfacename": "diffuse_color"
+        }
+      },
+      "surface:burley_surface": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "burley_bsdf"
+        }
+      },
+      "surface:dielectric_surface": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "dielectric_bsdf"
+        }
+      },
+      "output:burley_out": {
+        "type": "surfaceshader",
+        "nodename": "burley_surface"
+      },
+      "output:dielectric_out": {
+        "type": "surfaceshader",
+        "nodename": "dielectric_surface"
+      }
+    },
+    "nodedef:ND_multi_shader_output": {
+      "node": "customtype",
+      "version": "1.0",
+      "isdefaultversion": "true",
+      "input:diffuse_color": {
+        "type": "color3",
+        "value": "0.25, 0.50, 0.75"
+      },
+      "output:burley_out": {
+        "type": "surfaceshader"
+      },
+      "output:dielectric_out": {
+        "type": "surfaceshader"
+      }
+    },
+    "customtype:customtype_1": {
+      "type": "multioutput",
+      "input:diffuse_color": {
+        "type": "color3",
+        "value": "0.25, 0.50, 0.75"
+      },
+      "output:burley_out": {
+        "type": "surfaceshader",
+        "value": ""
+      },
+      "output:dielectric_out": {
+        "type": "surfaceshader",
+        "value": ""
+      }
+    },
+    "output:burley_out2": {
+      "nodename": "customtype_1",
+      "output": "burley_out",
+      "type": "surfaceshader"
+    },
+    "output:dielectric_out2": {
+      "nodename": "customtype_1",
+      "output": "dielectric_out",
+      "type": "surfaceshader"
+    }
+  },
+  "version": "1.38",
+  "xmlns:xi": "http://www.w3.org/2001/XInclude"
+}

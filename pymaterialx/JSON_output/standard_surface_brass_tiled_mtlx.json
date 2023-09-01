@@ -1,0 +1,85 @@
+{
+  "materialx": {
+    "nodegraph:NG_brass1": {
+      "tiledimage:image_color": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "brass_color.jpg",
+          "colorspace": "srgb_texture"
+        },
+        "input:uvtiling": {
+          "type": "vector2",
+          "value": "1.0, 1.0"
+        }
+      },
+      "tiledimage:image_roughness": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "brass_roughness.jpg"
+        },
+        "input:uvtiling": {
+          "type": "vector2",
+          "value": "1.0, 1.0"
+        }
+      },
+      "output:out_color": {
+        "type": "color3",
+        "nodename": "image_color"
+      },
+      "output:out_roughness": {
+        "type": "float",
+        "nodename": "image_roughness"
+      }
+    },
+    "standard_surface:SR_brass1": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_brass1",
+        "output": "out_roughness"
+      },
+      "input:metalness": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:coat": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:coat_color": {
+        "type": "color3",
+        "nodegraph": "NG_brass1",
+        "output": "out_color"
+      },
+      "input:coat_roughness": {
+        "type": "float",
+        "nodegraph": "NG_brass1",
+        "output": "out_roughness"
+      }
+    },
+    "surfacematerial:Tiled_Brass": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_brass1"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709",
+  "fileprefix": "../../../Images/"
+}

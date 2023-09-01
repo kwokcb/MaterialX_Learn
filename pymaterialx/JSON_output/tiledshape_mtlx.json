@@ -1,0 +1,93 @@
+{
+  "materialx": {
+    "tiledcircles:tiledcircles_color3": {
+      "type": "color3",
+      "input:uvtiling": {
+        "type": "vector2",
+        "value": "29, 29"
+      },
+      "input:size": {
+        "type": "float",
+        "value": "0.8"
+      }
+    },
+    "standard_surface:SR_test_tiledcircles": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "nodename": "tiledcircles_color3"
+      }
+    },
+    "surfacematerial:test_tiledcircles": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_test_tiledcircles"
+      }
+    },
+    "tiledcloverleafs:tiledcloverleafs_color3": {
+      "type": "color3",
+      "input:uvtiling": {
+        "type": "vector2",
+        "value": "29, 29"
+      },
+      "input:size": {
+        "type": "float",
+        "value": "0.8"
+      }
+    },
+    "standard_surface:SR_test_tiledcloverleafs": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "nodename": "tiledcloverleafs_color3"
+      }
+    },
+    "surfacematerial:test_tiledcloverleafs": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_test_tiledcloverleafs"
+      }
+    },
+    "tiledhexagons:tiledhexagons_color3": {
+      "type": "color3",
+      "input:uvtiling": {
+        "type": "vector2",
+        "value": "29, 29"
+      },
+      "input:size": {
+        "type": "float",
+        "value": "0.7"
+      }
+    },
+    "standard_surface:SR_test_tiledhexagons": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "nodename": "tiledhexagons_color3"
+      }
+    },
+    "surfacematerial:test_tiledhexagons": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_test_tiledhexagons"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

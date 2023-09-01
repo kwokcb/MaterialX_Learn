@@ -1,0 +1,47 @@
+{
+  "materialx": {
+    "nodegraph:mix_edf_test": {
+      "uniform_edf:edf1": {
+        "type": "EDF",
+        "input:color": {
+          "type": "color3",
+          "value": "1.0, 0.0, 0.0"
+        }
+      },
+      "uniform_edf:edf2": {
+        "type": "EDF",
+        "input:color": {
+          "type": "color3",
+          "value": "0.0, 1.0, 0.0"
+        }
+      },
+      "mix:mix_edf1": {
+        "type": "EDF",
+        "input:fg": {
+          "type": "EDF",
+          "nodename": "edf1"
+        },
+        "input:bg": {
+          "type": "EDF",
+          "nodename": "edf2"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:edf": {
+          "type": "EDF",
+          "nodename": "mix_edf1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    }
+  },
+  "version": "1.38"
+}

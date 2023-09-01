@@ -1,0 +1,78 @@
+{
+  "materialx": {
+    "nodegraph:height_to_normal_cm": {
+      "image:b_image": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Images/grid.png",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "extract:extract1": {
+        "type": "float",
+        "input:in": {
+          "type": "color3",
+          "nodename": "b_image"
+        },
+        "input:index": {
+          "type": "integer",
+          "value": "1"
+        }
+      },
+      "heighttonormal:impl_heighttonormalmap": {
+        "type": "vector3",
+        "input:in": {
+          "type": "float",
+          "nodename": "extract1"
+        },
+        "input:scale": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "output:height_normal_map_output": {
+        "type": "vector3",
+        "nodename": "impl_heighttonormalmap"
+      }
+    },
+    "nodegraph:normalmap_cm": {
+      "image:b_image": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "resources/Images/grid.png",
+          "colorspace": "srgb_texture"
+        }
+      },
+      "convert:c3tov3": {
+        "type": "vector3",
+        "input:in": {
+          "type": "color3",
+          "nodename": "b_image"
+        }
+      },
+      "normalmap:impl_normalmap": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "c3tov3"
+        },
+        "input:scale": {
+          "type": "float",
+          "value": "1.5"
+        },
+        "input:space": {
+          "type": "string",
+          "value": "tangent"
+        }
+      },
+      "output:normal_map_output": {
+        "type": "vector3",
+        "nodename": "impl_normalmap"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

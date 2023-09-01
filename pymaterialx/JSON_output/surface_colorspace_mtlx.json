@@ -1,0 +1,75 @@
+{
+  "materialx": {
+    "nodedef:ND_NodeA": {
+      "node": "NodeA",
+      "input:diffColor": {
+        "type": "color3"
+      },
+      "output:out": {
+        "type": "surfaceshader"
+      }
+    },
+    "nodedef:ND_NodeB": {
+      "node": "NodeB",
+      "inherit": "ND_NodeA",
+      "output:out": {
+        "type": "surfaceshader"
+      }
+    },
+    "nodegraph:NG_NodeA": {
+      "nodedef": "ND_NodeA",
+      "oren_nayar_diffuse_bsdf:diffuseBsdf": {
+        "type": "BSDF",
+        "input:color": {
+          "type": "color3",
+          "interfacename": "diffColor"
+        }
+      },
+      "surface:surfaceConstructor": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "diffuseBsdf"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surfaceConstructor"
+      }
+    },
+    "nodegraph:NG_NodeB": {
+      "nodedef": "ND_NodeB",
+      "fileprefix": "resources/Images/",
+      "tiledimage:TI_diffColorEffect": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "wood_color.jpg"
+        }
+      },
+      "NodeA:NodeA_instanceForNodeB": {
+        "type": "surfaceshader",
+        "input:diffColor": {
+          "type": "color3",
+          "nodename": "TI_diffColorEffect"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "NodeA_instanceForNodeB"
+      }
+    },
+    "NodeB:SR_test": {
+      "type": "surfaceshader"
+    },
+    "surfacematerial:M_test": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_test"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "srgb_texture"
+}

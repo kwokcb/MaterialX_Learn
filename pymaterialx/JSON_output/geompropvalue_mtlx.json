@@ -1,0 +1,161 @@
+{
+  "materialx": {
+    "output:geompropvalue_integer_out": {
+      "type": "vector4",
+      "nodename": "switch1"
+    },
+    "switch:switch1": {
+      "type": "vector4",
+      "input:in1": {
+        "type": "vector4",
+        "value": "0.0, 0.0, 0.0, 1.0"
+      },
+      "input:in2": {
+        "type": "vector4",
+        "value": "0.0, 1.0, 1.0, 1.0"
+      },
+      "input:in3": {
+        "type": "vector4",
+        "value": "1.0, 0.0, 1.0, 1.0"
+      },
+      "input:in4": {
+        "type": "vector4",
+        "value": "1.0, 0.0, 0.0, 1.0"
+      },
+      "input:in5": {
+        "type": "vector4",
+        "value": "0.0, 1.0, 0.0, 1.0"
+      },
+      "input:which": {
+        "type": "integer",
+        "nodename": "geompropvalue_integer"
+      }
+    },
+    "geompropvalue:geompropvalue_integer": {
+      "type": "integer",
+      "input:geomprop": {
+        "type": "string",
+        "value": "geompropvalue_integer"
+      }
+    },
+    "output:geompropvalue_boolean_out": {
+      "type": "color3",
+      "nodename": "switch2"
+    },
+    "ifequal:switch2": {
+      "type": "color3",
+      "input:in1": {
+        "type": "color3",
+        "value": "1.0000, 1.0000, 1.0000"
+      },
+      "input:in2": {
+        "type": "color3",
+        "value": "0.0, 0.0, 0.0"
+      },
+      "input:value1": {
+        "type": "boolean",
+        "nodename": "geompropvalue_boolean"
+      },
+      "input:value2": {
+        "type": "boolean",
+        "value": "true"
+      }
+    },
+    "geompropvalue:geompropvalue_boolean": {
+      "type": "boolean",
+      "input:geomprop": {
+        "type": "string",
+        "value": "geompropvalue_bool"
+      }
+    },
+    "output:geompropvalue_string_out": {
+      "type": "color3",
+      "nodename": "swizzle1"
+    },
+    "swizzle:swizzle1": {
+      "type": "color3",
+      "input:in": {
+        "type": "color3",
+        "value": "0.5, 0.5, 0.5"
+      },
+      "input:channels": {
+        "type": "string",
+        "nodename": "geompropvalue_string"
+      }
+    },
+    "geompropvalue:geompropvalue_string": {
+      "type": "string",
+      "input:geomprop": {
+        "type": "string",
+        "value": "geompropvalue_string"
+      }
+    },
+    "output:geompropvalue_float_out": {
+      "type": "float",
+      "nodename": "geompropvalue_float"
+    },
+    "geompropvalue:geompropvalue_float": {
+      "type": "float",
+      "input:geomprop": {
+        "type": "string",
+        "value": "geompropvalue_float"
+      }
+    },
+    "output:geompropvalue_color3_out": {
+      "type": "color3",
+      "nodename": "geompropvalue_color3"
+    },
+    "geompropvalue:geompropvalue_color3": {
+      "type": "color3",
+      "input:geomprop": {
+        "type": "string",
+        "value": "geompropvalue_color3"
+      }
+    },
+    "output:geompropvalue_color4_out": {
+      "type": "color4",
+      "nodename": "geompropvalue_color4"
+    },
+    "geompropvalue:geompropvalue_color4": {
+      "type": "color4",
+      "input:geomprop": {
+        "type": "string",
+        "value": "geompropvalue_color4"
+      }
+    },
+    "output:geompropvalue_vector2_out": {
+      "type": "vector2",
+      "nodename": "geompropvalue_vector2"
+    },
+    "geompropvalue:geompropvalue_vector2": {
+      "type": "vector2",
+      "input:geomprop": {
+        "type": "string",
+        "value": "geompropvalue_vector2"
+      }
+    },
+    "output:geompropvalue_vector3_out": {
+      "type": "vector3",
+      "nodename": "geompropvalue_vector3"
+    },
+    "geompropvalue:geompropvalue_vector3": {
+      "type": "vector3",
+      "input:geomprop": {
+        "type": "string",
+        "value": "geompropvalue_vector3"
+      }
+    },
+    "output:geompropvalue_vector4_out": {
+      "type": "vector4",
+      "nodename": "geompropvalue_vector4"
+    },
+    "geompropvalue:geompropvalue_vector4": {
+      "type": "vector4",
+      "input:geomprop": {
+        "type": "string",
+        "value": "geompropvalue_vector4"
+      }
+    }
+  },
+  "version": "1.38"
+}

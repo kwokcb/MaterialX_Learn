@@ -1,0 +1,93 @@
+{
+  "materialx": {
+    "image:image4_bmp": {
+      "type": "color4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/cloth.bmp"
+      }
+    },
+    "output:image4_output_bmp": {
+      "type": "color4",
+      "nodename": "image4_bmp"
+    },
+    "image:image4_gif": {
+      "type": "color4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/cloth.gif"
+      }
+    },
+    "output:image4_output_gif": {
+      "type": "color4",
+      "nodename": "image4_gif"
+    },
+    "image:image4_jpg": {
+      "type": "color4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/cloth.jpg"
+      }
+    },
+    "output:image4_output_jpg": {
+      "type": "color4",
+      "nodename": "image4_jpg"
+    },
+    "image:image4_png": {
+      "type": "color4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/cloth.png"
+      }
+    },
+    "output:image4_output_png": {
+      "type": "color4",
+      "nodename": "image4_png"
+    },
+    "image:image4_tga": {
+      "type": "color4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/cloth.tga"
+      }
+    },
+    "output:image4_output_tga": {
+      "type": "color4",
+      "nodename": "image4_tga"
+    },
+    "image:image4_wood1": {
+      "type": "color4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/wood_color.jpg"
+      }
+    },
+    "output:image4_output_wood_png": {
+      "type": "color4",
+      "nodename": "image4_wood1"
+    },
+    "image:image4_bridge3": {
+      "type": "color4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Lights/irradiance/san_giuseppe_bridge.hdr"
+      }
+    },
+    "output:image4_output_bridge3_hdr": {
+      "type": "color4",
+      "nodename": "image4_bridge3"
+    },
+    "image:image4_bridge4": {
+      "type": "color4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Lights/san_giuseppe_bridge.hdr"
+      }
+    },
+    "output:image4_output_bridge4_hdr": {
+      "type": "color4",
+      "nodename": "image4_bridge4"
+    }
+  },
+  "version": "1.38"
+}

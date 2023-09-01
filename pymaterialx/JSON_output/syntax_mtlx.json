@@ -1,0 +1,79 @@
+{
+  "materialx": {
+    "nodegraph:syntaxGraph": {
+      "constant:gl_consttant": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "0.0"
+        }
+      },
+      "convert:gl_consttant1": {
+        "type": "color3",
+        "input:in": {
+          "type": "float",
+          "nodename": "gl_consttant"
+        }
+      },
+      "output:out_gl_constant": {
+        "type": "color3",
+        "nodename": "gl_consttant1"
+      },
+      "constant:webgl_constant": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "0.0"
+        }
+      },
+      "convert:webgl_constant1": {
+        "type": "color3",
+        "input:in": {
+          "type": "float",
+          "nodename": "webgl_constant"
+        }
+      },
+      "output:out_webgl_constant": {
+        "type": "color3",
+        "nodename": "webgl_constant1"
+      },
+      "constant:_webgl_constant": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "0.0"
+        }
+      },
+      "convert:_webgl_constant1": {
+        "type": "color3",
+        "input:in": {
+          "type": "float",
+          "nodename": "_webgl_constant"
+        }
+      },
+      "output:out__webgl_constant": {
+        "type": "color3",
+        "nodename": "_webgl_constant1"
+      },
+      "constant:__doubleUnderScore": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "0.0"
+        }
+      },
+      "convert:__doubleUnderScore1": {
+        "type": "color3",
+        "input:in": {
+          "type": "float",
+          "nodename": "__doubleUnderScore"
+        }
+      },
+      "output:out__doubleUnderScore": {
+        "type": "color3",
+        "nodename": "__doubleUnderScore1"
+      }
+    }
+  },
+  "version": "1.38"
+}

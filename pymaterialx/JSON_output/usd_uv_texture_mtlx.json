@@ -1,0 +1,111 @@
+{
+  "materialx": {
+    "UsdUVTexture:UsdUVTexture22": {
+      "type": "multioutput",
+      "version": "2.2",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/brass_color.jpg",
+        "colorspace": "srgb_texture"
+      }
+    },
+    "swizzle:extractColor": {
+      "type": "color3",
+      "input:in": {
+        "type": "color4",
+        "nodename": "UsdUVTexture22",
+        "output": "rgba"
+      },
+      "input:channels": {
+        "type": "string",
+        "value": "rgb"
+      }
+    },
+    "UsdUVTexture:UsdUVTexture22_rough": {
+      "type": "multioutput",
+      "version": "2.2",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/brass_roughness.jpg"
+      }
+    },
+    "swizzle:extractRoughness": {
+      "type": "float",
+      "input:in": {
+        "type": "color4",
+        "nodename": "UsdUVTexture22_rough",
+        "output": "rgba"
+      },
+      "input:channels": {
+        "type": "string",
+        "value": "r"
+      }
+    },
+    "UsdPreviewSurface:UsdPreviewSurface22": {
+      "type": "surfaceshader",
+      "nodedef": "ND_UsdPreviewSurface_surfaceshader",
+      "version": "2.3",
+      "input:diffuseColor": {
+        "type": "color3",
+        "nodename": "extractColor"
+      },
+      "input:roughness": {
+        "type": "float",
+        "nodename": "extractRoughness"
+      },
+      "input:metallic": {
+        "type": "float",
+        "value": "1"
+      }
+    },
+    "surfacematerial:USDTexture_Tiled_Brass22": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "UsdPreviewSurface22"
+      }
+    },
+    "UsdUVTexture:UsdUVTexture23_rough": {
+      "type": "multioutput",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/brass_roughness.jpg"
+      }
+    },
+    "UsdUVTexture:UsdUVTexture23": {
+      "type": "multioutput",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/brass_color.jpg",
+        "colorspace": "srgb_texture"
+      }
+    },
+    "UsdPreviewSurface:UsdPreviewSurface23": {
+      "type": "surfaceshader",
+      "nodedef": "ND_UsdPreviewSurface_surfaceshader",
+      "version": "2.3",
+      "input:diffuseColor": {
+        "type": "color3",
+        "nodename": "UsdUVTexture23",
+        "output": "rgb"
+      },
+      "input:roughness": {
+        "type": "float",
+        "nodename": "UsdUVTexture23_rough",
+        "output": "r"
+      },
+      "input:metallic": {
+        "type": "float",
+        "value": "1"
+      }
+    },
+    "surfacematerial:USDTexture_Tiled_Brass23": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "UsdPreviewSurface23"
+      }
+    }
+  },
+  "version": "1.38"
+}

@@ -597,7 +597,7 @@ graph LR;
     style NG_tiledcircles_color3_pattern_selection fill:#F80, color:#111
     NG_tiledcircles_color3_max1[max] --".in1"--> NG_tiledcircles_color3_max[max]
     NG_tiledcircles_color3_circle_stagg1[circle] --".in1"--> NG_tiledcircles_color3_max1[max]
-    NG_tiledcircles_color3_coord_circ1[combine2] --".sample"--> NG_tiledcircles_color3_circle_stagg1[circle]
+    NG_tiledcircles_color3_coord_circ1[combine2] --".texcoord"--> NG_tiledcircles_color3_circle_stagg1[circle]
     NG_tiledcircles_color3_mod_X_1[modulo] --".in1"--> NG_tiledcircles_color3_coord_circ1[combine2]
     NG_tiledcircles_color3_shift_X[add] --".in1"--> NG_tiledcircles_color3_mod_X_1[modulo]
     NG_tiledcircles_color3_texcoord_bias[subtract] --".x -> .in1"--> NG_tiledcircles_color3_shift_X[add]
@@ -618,13 +618,13 @@ graph LR;
     NG_tiledcircles_color3_sizeINT([size]) ==.in1==> NG_tiledcircles_color3_scale_half[divide]
     style NG_tiledcircles_color3_sizeINT fill:#0CF, color:#111
     NG_tiledcircles_color3_circle_stagg2[circle] --".in2"--> NG_tiledcircles_color3_max1[max]
-    NG_tiledcircles_color3_coord_circ2[combine2] --".sample"--> NG_tiledcircles_color3_circle_stagg2[circle]
+    NG_tiledcircles_color3_coord_circ2[combine2] --".texcoord"--> NG_tiledcircles_color3_circle_stagg2[circle]
     NG_tiledcircles_color3_coord_adj_1[subtract] --".in1"--> NG_tiledcircles_color3_coord_circ2[combine2]
     NG_tiledcircles_color3_mod_X_1[modulo] --".in2"--> NG_tiledcircles_color3_coord_adj_1[subtract]
     NG_tiledcircles_color3_mod_Y_1[modulo] --".in2"--> NG_tiledcircles_color3_coord_circ2[combine2]
     NG_tiledcircles_color3_scale_half[divide] --".radius"--> NG_tiledcircles_color3_circle_stagg2[circle]
     NG_tiledcircles_color3_circle_stagg3[circle] --".in2"--> NG_tiledcircles_color3_max[max]
-    NG_tiledcircles_color3_coord_circ3[combine2] --".sample"--> NG_tiledcircles_color3_circle_stagg3[circle]
+    NG_tiledcircles_color3_coord_circ3[combine2] --".texcoord"--> NG_tiledcircles_color3_circle_stagg3[circle]
     NG_tiledcircles_color3_coord_adj_2[subtract] --".in1"--> NG_tiledcircles_color3_coord_circ3[combine2]
     NG_tiledcircles_color3_mod_X_1[modulo] --".in1"--> NG_tiledcircles_color3_coord_adj_2[subtract]
     NG_tiledcircles_color3_coord_adj_3[subtract] --".in2"--> NG_tiledcircles_color3_coord_circ3[combine2]
@@ -634,7 +634,7 @@ graph LR;
     style NG_tiledcircles_color3_pattern_selection fill:#F80, color:#111
     NG_tiledcircles_color3_sizeINT([size]) ==.radius==> NG_tiledcircles_color3_circle_regular[circle]
     style NG_tiledcircles_color3_sizeINT fill:#0CF, color:#111
-    NG_tiledcircles_color3_recenter[subtract] --".sample"--> NG_tiledcircles_color3_circle_regular[circle]
+    NG_tiledcircles_color3_recenter[subtract] --".texcoord"--> NG_tiledcircles_color3_circle_regular[circle]
     NG_tiledcircles_color3_mod_texcoord_2[multiply] --".in1"--> NG_tiledcircles_color3_recenter[subtract]
     NG_tiledcircles_color3_mod_texcoord[modulo] --".in1"--> NG_tiledcircles_color3_mod_texcoord_2[multiply]
     NG_tiledcircles_color3_texcoord_bias[subtract] --".in1"--> NG_tiledcircles_color3_mod_texcoord[modulo]

@@ -1,0 +1,69 @@
+{
+  "materialx": {
+    "standard_surface:SR_glass": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:specular_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "value": "0.01"
+      },
+      "input:specular_IOR": {
+        "type": "float",
+        "value": "1.52"
+      },
+      "input:transmission": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:transmission_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:transmission_depth": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:transmission_scatter": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:transmission_scatter_anisotropy": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:transmission_dispersion": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:transmission_extra_roughness": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:opacity": {
+        "type": "color3",
+        "value": "1, 1, 1",
+        "colorspace": "lin_rec709"
+      }
+    },
+    "surfacematerial:Glass": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_glass"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

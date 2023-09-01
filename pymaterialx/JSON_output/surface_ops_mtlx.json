@@ -1,0 +1,238 @@
+{
+  "materialx": {
+    "nodegraph:nodegraph1": {
+      "roughness_dual:roughness_dual1": {
+        "type": "vector2",
+        "input:roughness": {
+          "type": "vector2",
+          "value": "0.2000, 0.4000"
+        }
+      },
+      "subsurface_bsdf:subsurface_brdf1": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:color": {
+          "type": "color3",
+          "value": "0.18, 0.18, 0.18"
+        },
+        "input:radius": {
+          "type": "vector3",
+          "value": "1.0, 1.0, 1.0"
+        },
+        "input:anisotropy": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:normal": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        }
+      },
+      "sheen_bsdf:sheen_brdf1": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:color": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        },
+        "input:roughness": {
+          "type": "float",
+          "value": "0.3"
+        },
+        "input:normal": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        }
+      },
+      "mix:mix_edf1": {
+        "type": "EDF",
+        "input:fg": {
+          "type": "EDF",
+          "nodename": "Emission_EDF"
+        },
+        "input:bg": {
+          "type": "EDF",
+          "value": ""
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "mix:mix_surface1": {
+        "type": "surfaceshader",
+        "input:fg": {
+          "type": "surfaceshader",
+          "nodename": "surface1"
+        },
+        "input:bg": {
+          "type": "surfaceshader",
+          "nodename": "surface2"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "mix:mix_bsdf1": {
+        "type": "BSDF",
+        "input:fg": {
+          "type": "BSDF",
+          "nodename": "sheen_brdf1"
+        },
+        "input:bg": {
+          "type": "BSDF",
+          "nodename": "subsurface_brdf1"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5000"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "conductor_brdf1"
+        },
+        "input:edf": {
+          "type": "EDF",
+          "nodename": "mix_edf1"
+        },
+        "input:opacity": {
+          "type": "float",
+          "value": "1.0000"
+        }
+      },
+      "surface:surface2": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "SchlickBRDF"
+        },
+        "input:edf": {
+          "type": "EDF",
+          "nodename": "Emission_EDF"
+        },
+        "input:opacity": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "uniform_edf:Emission_EDF": {
+        "type": "EDF",
+        "input:color": {
+          "type": "color3",
+          "value": "0.2000, 1.0, 0.2000"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "mix_surface1"
+      },
+      "conductor_bsdf:conductor_brdf1": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        },
+        "input:normal": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        },
+        "input:tangent": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        },
+        "input:distribution": {
+          "type": "string",
+          "value": "ggx"
+        },
+        "input:ior": {
+          "type": "color3",
+          "nodename": "conductor_brdf1__artistic_ior",
+          "output": "ior"
+        },
+        "input:extinction": {
+          "type": "color3",
+          "nodename": "conductor_brdf1__artistic_ior",
+          "output": "extinction"
+        }
+      },
+      "generalized_schlick_bsdf:SchlickBRDF__layer_top": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:color0": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        },
+        "input:color90": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        },
+        "input:exponent": {
+          "type": "float",
+          "value": "5.0"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "nodename": "roughness_dual1"
+        },
+        "input:normal": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        },
+        "input:tangent": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        },
+        "input:distribution": {
+          "type": "string",
+          "value": "ggx"
+        }
+      },
+      "artistic_ior:conductor_brdf1__artistic_ior": {
+        "type": "multioutput",
+        "output:ior": {
+          "type": "color3"
+        },
+        "output:extinction": {
+          "type": "color3"
+        },
+        "input:reflectivity": {
+          "type": "color3",
+          "value": "0.944 0.776 0.373"
+        },
+        "input:edge_color": {
+          "type": "color3",
+          "value": "0.998 0.981 0.751"
+        }
+      },
+      "layer:SchlickBRDF": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "SchlickBRDF__layer_top"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "mix_bsdf1"
+        }
+      }
+    }
+  },
+  "version": "1.38"
+}

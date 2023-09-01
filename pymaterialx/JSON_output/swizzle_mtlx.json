@@ -1,0 +1,600 @@
+{
+  "materialx": {
+    "nodegraph:swizzle_float_color3": {
+      "swizzle:swizzle1": {
+        "type": "color3",
+        "input:in": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "rrr"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_float_color4": {
+      "swizzle:swizzle1": {
+        "type": "color4",
+        "input:in": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "rrrr"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_float_vector2": {
+      "swizzle:swizzle1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "rr"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_float_vector3": {
+      "swizzle:swizzle1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "rrr"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_float_vector4": {
+      "swizzle:swizzle1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "rrrr"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_color3_float": {
+      "swizzle:swizzle1": {
+        "type": "float",
+        "input:in": {
+          "type": "color3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "g"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_color3_color3": {
+      "swizzle:swizzle1": {
+        "type": "color3",
+        "input:in": {
+          "type": "color3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "bgr"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_color3_color4": {
+      "swizzle:swizzle1": {
+        "type": "color4",
+        "input:in": {
+          "type": "color3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "bgrg"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_color3_vector2": {
+      "swizzle:swizzle1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "color3",
+          "value": "0.0000, 0.5000, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "br"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_color3_vector3": {
+      "swizzle:swizzle1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "color3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "bgr"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_color3_vector4": {
+      "swizzle:swizzle1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "color3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "bgrg"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_color4_float": {
+      "swizzle:swizzle1": {
+        "type": "float",
+        "input:in": {
+          "type": "color4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "a"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_color4_color3": {
+      "swizzle:swizzle1": {
+        "type": "color3",
+        "input:in": {
+          "type": "color4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "abg"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_color4_color4": {
+      "swizzle:swizzle1": {
+        "type": "color4",
+        "input:in": {
+          "type": "color4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "agrb"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_color4_vector2": {
+      "swizzle:swizzle1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "color4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "ab"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_color4_vector3": {
+      "swizzle:swizzle1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "color4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "abg"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_color4_vector4": {
+      "swizzle:swizzle1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "color4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "agrb"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector2_float": {
+      "swizzle:swizzle1": {
+        "type": "float",
+        "input:in": {
+          "type": "vector2",
+          "value": "0.0, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "y"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector2_color3": {
+      "swizzle:swizzle1": {
+        "type": "color3",
+        "input:in": {
+          "type": "vector2",
+          "value": "0.0, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "yxy"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector2_color4": {
+      "swizzle:swizzle1": {
+        "type": "color4",
+        "input:in": {
+          "type": "vector2",
+          "value": "0.0, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "xyxy"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector2_vector2": {
+      "swizzle:swizzle1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector2",
+          "value": "0.0, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "yx"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector2_vector3": {
+      "swizzle:swizzle1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector2",
+          "value": "0.0, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "yxy"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector2_vector4": {
+      "swizzle:swizzle1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector2",
+          "value": "0.0, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "xyxy"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector3_float": {
+      "swizzle:swizzle1": {
+        "type": "float",
+        "input:in": {
+          "type": "vector3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "y"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector3_color3": {
+      "swizzle:swizzle1": {
+        "type": "color3",
+        "input:in": {
+          "type": "vector3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "zyx"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector3_color4": {
+      "swizzle:swizzle1": {
+        "type": "color4",
+        "input:in": {
+          "type": "vector3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "zyxy"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector3_vector2": {
+      "swizzle:swizzle1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "zx"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector3_vector3": {
+      "swizzle:swizzle1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "zyx"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector3_vector4": {
+      "swizzle:swizzle1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector3",
+          "value": "0.0, 0.5000, 1.0000"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "zyxy"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector4_float": {
+      "swizzle:swizzle1": {
+        "type": "float",
+        "input:in": {
+          "type": "vector4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "w"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector4_color3": {
+      "swizzle:swizzle1": {
+        "type": "color3",
+        "input:in": {
+          "type": "vector4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "wzy"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector4_color4": {
+      "swizzle:swizzle1": {
+        "type": "color4",
+        "input:in": {
+          "type": "vector4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "wyxz"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector4_vector2": {
+      "swizzle:swizzle1": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "wz"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector4_vector3": {
+      "swizzle:swizzle1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "wzy"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "swizzle1"
+      }
+    },
+    "nodegraph:swizzle_vector4_vector4": {
+      "swizzle:swizzle1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "value": "0.0, 0.2500, 0.7500, 1.0"
+        },
+        "input:channels": {
+          "type": "string",
+          "value": "wyxz"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "swizzle1"
+      }
+    }
+  },
+  "version": "1.38"
+}

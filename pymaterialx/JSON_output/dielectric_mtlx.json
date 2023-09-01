@@ -1,0 +1,107 @@
+{
+  "materialx": {
+    "nodegraph:dielectric_bsdf": {
+      "dielectric_bsdf:dielectric_R": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:tint": {
+          "type": "color3",
+          "value": "0.7, 0.7, 0.7"
+        },
+        "input:scatter_mode": {
+          "type": "string",
+          "value": "R"
+        }
+      },
+      "surface:surface_R": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "dielectric_R"
+        }
+      },
+      "output:R_out": {
+        "type": "surfaceshader",
+        "nodename": "surface_R"
+      },
+      "dielectric_bsdf:dielectric_T": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:tint": {
+          "type": "color3",
+          "value": "0.7, 0.7, 0.7"
+        },
+        "input:scatter_mode": {
+          "type": "string",
+          "value": "T"
+        }
+      },
+      "surface:surface_T": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "dielectric_T"
+        }
+      },
+      "output:T_out": {
+        "type": "surfaceshader",
+        "nodename": "surface_T"
+      },
+      "dielectric_bsdf:dielectric_RT": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:tint": {
+          "type": "color3",
+          "value": "0.7, 0.7, 0.7"
+        },
+        "input:scatter_mode": {
+          "type": "string",
+          "value": "RT"
+        }
+      },
+      "surface:surface_RT": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "dielectric_RT"
+        }
+      },
+      "output:RT_out": {
+        "type": "surfaceshader",
+        "nodename": "surface_RT"
+      },
+      "layer:layer_RT": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_R"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "dielectric_T"
+        }
+      },
+      "surface:surface_layer_RT": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer_RT"
+        }
+      },
+      "output:layer_RT_out": {
+        "type": "surfaceshader",
+        "nodename": "surface_layer_RT"
+      }
+    }
+  },
+  "version": "1.38"
+}

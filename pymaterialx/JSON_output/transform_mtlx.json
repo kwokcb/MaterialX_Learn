@@ -1,0 +1,397 @@
+{
+  "materialx": {
+    "nodegraph:tf_point_vector3": {
+      "transformpoint:transformpoint1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "position1"
+        },
+        "input:fromspace": {
+          "type": "string",
+          "value": "object"
+        },
+        "input:tospace": {
+          "type": "string",
+          "value": "world"
+        }
+      },
+      "position:position1": {
+        "type": "vector3",
+        "input:space": {
+          "type": "string",
+          "value": "object"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "transformpoint1"
+      }
+    },
+    "nodegraph:tf_vector_vector3": {
+      "transformvector:transformvector1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal1"
+        },
+        "input:fromspace": {
+          "type": "string",
+          "value": "object"
+        },
+        "input:tospace": {
+          "type": "string",
+          "value": "world"
+        }
+      },
+      "normal:normal1": {
+        "type": "vector3",
+        "input:space": {
+          "type": "string",
+          "value": "object"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "transformvector1"
+      }
+    },
+    "nodegraph:tf_normal_vector3": {
+      "transformnormal:transformnormal1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal1"
+        },
+        "input:fromspace": {
+          "type": "string",
+          "value": "object"
+        },
+        "input:tospace": {
+          "type": "string",
+          "value": "world"
+        }
+      },
+      "normal:normal1": {
+        "type": "vector3",
+        "input:space": {
+          "type": "string",
+          "value": "object"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "transformnormal1"
+      }
+    },
+    "nodegraph:tf_matrix3_vector2": {
+      "transformmatrix:transformpoint2M3": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:mat": {
+          "type": "matrix33",
+          "value": "0.5, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "transformpoint2M3"
+      },
+      "texcoord:texcoord1": {
+        "type": "vector2",
+        "input:index": {
+          "type": "integer",
+          "value": "0"
+        }
+      }
+    },
+    "nodegraph:tf_matrix3_vector3": {
+      "transformmatrix:transformpoint1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "position1"
+        },
+        "input:mat": {
+          "type": "matrix33",
+          "value": "0.5, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0"
+        }
+      },
+      "position:position1": {
+        "type": "vector3",
+        "input:space": {
+          "type": "string",
+          "value": "object"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "transformpoint1"
+      }
+    },
+    "nodegraph:tf_matrix4_vector3": {
+      "output:out": {
+        "type": "vector3",
+        "nodename": "transformpoint3M4"
+      },
+      "transformmatrix:transformpoint3M4": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "position1"
+        },
+        "input:mat": {
+          "type": "matrix44",
+          "value": "0.5, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 1.0"
+        }
+      },
+      "position:position1": {
+        "type": "vector3",
+        "input:space": {
+          "type": "string",
+          "value": "object"
+        }
+      }
+    },
+    "nodegraph:tf_matrix4_vector4": {
+      "transformmatrix:transformvector1": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "normal1",
+          "channels": "xyz0"
+        },
+        "input:mat": {
+          "type": "matrix44",
+          "value": "0.5, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "transformvector1",
+        "channels": "xyz1"
+      },
+      "normal:normal1": {
+        "type": "vector3",
+        "input:space": {
+          "type": "string",
+          "value": "object"
+        }
+      }
+    },
+    "nodegraph:NG_transformpoint_vector2M3": {
+      "convert:N_convtov3": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector2",
+          "value": "0.5, 0.5"
+        }
+      },
+      "transformmatrix:N_transformpt": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "N_convtov3"
+        },
+        "input:mat": {
+          "type": "matrix33",
+          "value": "31.4961, 0.0, 0.0, 0.0, 31.4961, 0.0, 0.0, 0.0, 1.0"
+        }
+      },
+      "convert:N_convtov2": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "N_transformpt"
+        }
+      },
+      "output:N_out_vec2": {
+        "type": "vector2",
+        "nodename": "N_convtov2"
+      }
+    },
+    "nodegraph:NG_transformpoint_vector3M4": {
+      "convert:N_convtov4": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector3",
+          "value": "1.0, 0.0, 0.0"
+        }
+      },
+      "transformmatrix:N_transformpt": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "N_convtov4"
+        },
+        "input:mat": {
+          "type": "matrix44",
+          "value": "1.0,0.0,0.0,0.0, 0.0,1.0,0.0,0.0, 0.0,0.0,1.0,0.0, 0.0,0.0,0.0,1.0"
+        }
+      },
+      "divide:N_convtov3": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "nodename": "N_transformpt",
+          "channels": "xyz"
+        },
+        "input:in2": {
+          "type": "float",
+          "nodename": "N_transformpt",
+          "channels": "w"
+        }
+      },
+      "output:N_out_vec3": {
+        "type": "vector3",
+        "nodename": "N_convtov3"
+      }
+    },
+    "nodegraph:NG_transformvector_vector2M3": {
+      "convert:N_convtov3": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector2",
+          "value": "0.5, 0.5"
+        }
+      },
+      "transformmatrix:N_transformvec": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "N_convtov3"
+        },
+        "input:mat": {
+          "type": "matrix33",
+          "value": "31.4961, 0.0, 0.0, 0.0, 31.4961, 0.0, 0.0, 0.0,1.0"
+        }
+      },
+      "convert:N_convtov2": {
+        "type": "vector2",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "N_transformvec"
+        }
+      },
+      "output:N_out_vec2": {
+        "type": "vector2",
+        "nodename": "N_convtov2"
+      }
+    },
+    "nodegraph:NG_transformvector_vector3M4": {
+      "convert:N_convtov4": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector3",
+          "value": "1.0, 0.0, 0.0"
+        }
+      },
+      "transformmatrix:N_transformvec": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "N_convtov4"
+        },
+        "input:mat": {
+          "type": "matrix44",
+          "value": "1.0,0.0,0.0,0.0, 0.0,1.0,0.0,0.0, 0.0,0.0,1.0,0.0, 0.0,0.0,0.0,1.0"
+        }
+      },
+      "convert:N_convtov3": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "N_transformvec"
+        }
+      },
+      "output:N_out_vec3": {
+        "type": "vector3",
+        "nodename": "N_convtov3"
+      }
+    },
+    "nodegraph:NG_transformnormal_vector3M4": {
+      "convert:N_convtov4": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector3",
+          "value": "1.0, 0.0, 0.0"
+        }
+      },
+      "multiply:N_zerow": {
+        "type": "vector4",
+        "input:in1": {
+          "type": "vector4",
+          "nodename": "N_convtov4"
+        },
+        "input:in2": {
+          "type": "vector4",
+          "value": "1.0, 1.0, 1.0, 0.0"
+        }
+      },
+      "transformmatrix:N_transformnorm": {
+        "type": "vector4",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "N_zerow"
+        },
+        "input:mat": {
+          "type": "matrix44",
+          "value": "1.0,0.0,0.0,0.0, 0.0,1.0,0.0,0.0, 0.0,0.0,1.0,0.0, 0.0,0.0,0.0,1.0"
+        }
+      },
+      "convert:N_convtov3": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector4",
+          "nodename": "N_transformnorm"
+        }
+      },
+      "output:N_out_vec3": {
+        "type": "vector3",
+        "nodename": "N_convtov3"
+      }
+    },
+    "nodegraph:place2d_vector2": {
+      "texcoord:texcoord1": {
+        "type": "vector2",
+        "input:index": {
+          "type": "integer",
+          "value": "0"
+        }
+      },
+      "place2d:place2d1_1": {
+        "type": "vector2",
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:pivot": {
+          "type": "vector2",
+          "value": "0.5,0.5"
+        },
+        "input:scale": {
+          "type": "vector2",
+          "value": "2.0,2.0"
+        },
+        "input:rotate": {
+          "type": "float",
+          "value": "1.0",
+          "unittype": "angle",
+          "unit": "radian"
+        },
+        "input:offset": {
+          "type": "vector2",
+          "value": "0.2,0.2"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "place2d1_1"
+      }
+    }
+  },
+  "version": "1.38"
+}

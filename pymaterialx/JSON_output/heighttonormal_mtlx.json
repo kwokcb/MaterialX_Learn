@@ -1,0 +1,90 @@
+{
+  "materialx": {
+    "nodegraph:height_to_normal": {
+      "input:file": {
+        "type": "filename",
+        "uniform": "true",
+        "value": "resources/Images/plain_heightmap.png"
+      },
+      "tiledimage:tiledimage": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "uniform": "true",
+          "interfacename": "file"
+        },
+        "input:uvtiling": {
+          "type": "vector2",
+          "value": "10, 10"
+        }
+      },
+      "heighttonormal:heighttonormal": {
+        "type": "vector3",
+        "input:in": {
+          "type": "float",
+          "nodename": "tiledimage"
+        },
+        "input:scale": {
+          "type": "float",
+          "value": "0.2"
+        }
+      },
+      "normalmap:normalmap": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "heighttonormal"
+        }
+      },
+      "standard_surface:standard_surface": {
+        "type": "surfaceshader",
+        "input:normal": {
+          "type": "vector3",
+          "nodename": "normalmap"
+        }
+      },
+      "multiply:scale": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "nodename": "heighttonormal"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "2"
+        }
+      },
+      "add:bias": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "nodename": "scale"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "-1, -1, -1"
+        }
+      },
+      "UsdPreviewSurface:UsdPreviewSurface": {
+        "type": "surfaceshader",
+        "input:normal": {
+          "type": "vector3",
+          "nodename": "bias"
+        }
+      },
+      "output:height_to_normal_out": {
+        "type": "vector3",
+        "nodename": "heighttonormal"
+      },
+      "output:standard_surface_out": {
+        "type": "surfaceshader",
+        "nodename": "standard_surface"
+      },
+      "output:usd_preview_surface_out": {
+        "type": "surfaceshader",
+        "nodename": "UsdPreviewSurface"
+      }
+    }
+  },
+  "version": "1.38"
+}

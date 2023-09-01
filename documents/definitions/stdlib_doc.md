@@ -3764,8 +3764,8 @@ graph LR;
     NG_line_float_point1INT([point1]) ==.in2==> NG_line_float_p_a[subtract]
     style NG_line_float_point1INT fill:#0CF, color:#111
     NG_line_float_delta[subtract] --".in1"--> NG_line_float_p_a[subtract]
-    NG_line_float_sampleINT([sample]) ==.in1==> NG_line_float_delta[subtract]
-    style NG_line_float_sampleINT fill:#0CF, color:#111
+    NG_line_float_texcoordINT([texcoord]) ==.in1==> NG_line_float_delta[subtract]
+    style NG_line_float_texcoordINT fill:#0CF, color:#111
     NG_line_float_centerINT([center]) ==.in2==> NG_line_float_delta[subtract]
     style NG_line_float_centerINT fill:#0CF, color:#111
     NG_line_float_multiply_clamp_ba[multiply] --".in2"--> NG_line_float_distance[distance]
@@ -3788,7 +3788,7 @@ graph LR;
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **sample** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **center** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **radius** | float | 0.1 |  |  |  |  |  |  |  |  |  |  |
 | **point1** | vector2 | 0.25, 0.25 |  |  |  |  |  |  |  |  |  |  |
@@ -3815,8 +3815,8 @@ graph LR;
     NG_circle_float_dist_square[dotproduct] --".value1"--> NG_circle_float_dist_comp{ifgreater}
     style NG_circle_float_dist_comp fill:#F80, color:#111
     NG_circle_float_delta[subtract] --".in1"--> NG_circle_float_dist_square[dotproduct]
-    NG_circle_float_sampleINT([sample]) ==.in1==> NG_circle_float_delta[subtract]
-    style NG_circle_float_sampleINT fill:#0CF, color:#111
+    NG_circle_float_texcoordINT([texcoord]) ==.in1==> NG_circle_float_delta[subtract]
+    style NG_circle_float_texcoordINT fill:#0CF, color:#111
     NG_circle_float_centerINT([center]) ==.in2==> NG_circle_float_delta[subtract]
     style NG_circle_float_centerINT fill:#0CF, color:#111
     NG_circle_float_delta[subtract] --".in2"--> NG_circle_float_dist_square[dotproduct]
@@ -3832,7 +3832,7 @@ graph LR;
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **sample** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **center** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **radius** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
@@ -3860,22 +3860,22 @@ graph LR;
     style NG_cloverleaf_float_centerINT fill:#0CF, color:#111
     NG_cloverleaf_float_radiusINT([radius]) ==.radius==> NG_cloverleaf_float_circle1[circle]
     style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_coord1[combine2] --".sample"--> NG_cloverleaf_float_circle1[circle]
+    NG_cloverleaf_float_coord1[combine2] --".texcoord"--> NG_cloverleaf_float_circle1[circle]
     NG_cloverleaf_float_sample_add[add] --".x -> .in1"--> NG_cloverleaf_float_coord1[combine2]
     NG_cloverleaf_float_radiusINT([radius]) ==.in2==> NG_cloverleaf_float_sample_add[add]
     style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
     NG_cloverleaf_float_sample_double[add] --".in1"--> NG_cloverleaf_float_sample_add[add]
-    NG_cloverleaf_float_sampleINT([sample]) ==.in1==> NG_cloverleaf_float_sample_double[add]
-    style NG_cloverleaf_float_sampleINT fill:#0CF, color:#111
-    NG_cloverleaf_float_sampleINT([sample]) ==.in2==> NG_cloverleaf_float_sample_double[add]
-    style NG_cloverleaf_float_sampleINT fill:#0CF, color:#111
+    NG_cloverleaf_float_texcoordINT([texcoord]) ==.in1==> NG_cloverleaf_float_sample_double[add]
+    style NG_cloverleaf_float_texcoordINT fill:#0CF, color:#111
+    NG_cloverleaf_float_texcoordINT([texcoord]) ==.in2==> NG_cloverleaf_float_sample_double[add]
+    style NG_cloverleaf_float_texcoordINT fill:#0CF, color:#111
     NG_cloverleaf_float_sample_double[add] --".y -> .in2"--> NG_cloverleaf_float_coord1[combine2]
     NG_cloverleaf_float_circle2[circle] --".in2"--> NG_cloverleaf_float_max1[max]
     NG_cloverleaf_float_centerINT([center]) ==.center==> NG_cloverleaf_float_circle2[circle]
     style NG_cloverleaf_float_centerINT fill:#0CF, color:#111
     NG_cloverleaf_float_radiusINT([radius]) ==.radius==> NG_cloverleaf_float_circle2[circle]
     style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_coord2[combine2] --".sample"--> NG_cloverleaf_float_circle2[circle]
+    NG_cloverleaf_float_coord2[combine2] --".texcoord"--> NG_cloverleaf_float_circle2[circle]
     NG_cloverleaf_float_sample_subtract[subtract] --".x -> .in1"--> NG_cloverleaf_float_coord2[combine2]
     NG_cloverleaf_float_radiusINT([radius]) ==.in2==> NG_cloverleaf_float_sample_subtract[subtract]
     style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
@@ -3887,7 +3887,7 @@ graph LR;
     style NG_cloverleaf_float_centerINT fill:#0CF, color:#111
     NG_cloverleaf_float_radiusINT([radius]) ==.radius==> NG_cloverleaf_float_circle3[circle]
     style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_coord3[combine2] --".sample"--> NG_cloverleaf_float_circle3[circle]
+    NG_cloverleaf_float_coord3[combine2] --".texcoord"--> NG_cloverleaf_float_circle3[circle]
     NG_cloverleaf_float_sample_double[add] --".x -> .in1"--> NG_cloverleaf_float_coord3[combine2]
     NG_cloverleaf_float_sample_subtract[subtract] --".y -> .in2"--> NG_cloverleaf_float_coord3[combine2]
     NG_cloverleaf_float_circle4[circle] --".in2"--> NG_cloverleaf_float_max2[max]
@@ -3895,7 +3895,7 @@ graph LR;
     style NG_cloverleaf_float_centerINT fill:#0CF, color:#111
     NG_cloverleaf_float_radiusINT([radius]) ==.radius==> NG_cloverleaf_float_circle4[circle]
     style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_coord4[combine2] --".sample"--> NG_cloverleaf_float_circle4[circle]
+    NG_cloverleaf_float_coord4[combine2] --".texcoord"--> NG_cloverleaf_float_circle4[circle]
     NG_cloverleaf_float_sample_double[add] --".x -> .in1"--> NG_cloverleaf_float_coord4[combine2]
     NG_cloverleaf_float_sample_add[add] --".y -> .in2"--> NG_cloverleaf_float_coord4[combine2]
 
@@ -3904,7 +3904,7 @@ graph LR;
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **sample** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **center** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **radius** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
@@ -3935,8 +3935,8 @@ graph LR;
     NG_hexagon_float_p[combine2] --".in1"--> NG_hexagon_float_new_p1[subtract]
     NG_hexagon_float_delta_abs[absval] --".y -> .in1"--> NG_hexagon_float_p[combine2]
     NG_hexagon_float_delta[subtract] --".in"--> NG_hexagon_float_delta_abs[absval]
-    NG_hexagon_float_sampleINT([sample]) ==.in1==> NG_hexagon_float_delta[subtract]
-    style NG_hexagon_float_sampleINT fill:#0CF, color:#111
+    NG_hexagon_float_texcoordINT([texcoord]) ==.in1==> NG_hexagon_float_delta[subtract]
+    style NG_hexagon_float_texcoordINT fill:#0CF, color:#111
     NG_hexagon_float_centerINT([center]) ==.in2==> NG_hexagon_float_delta[subtract]
     style NG_hexagon_float_centerINT fill:#0CF, color:#111
     NG_hexagon_float_delta_abs[absval] --".x -> .in2"--> NG_hexagon_float_p[combine2]
@@ -3978,7 +3978,7 @@ graph LR;
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **sample** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **center** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **radius** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
@@ -4075,7 +4075,7 @@ graph LR;
     NG_crosshatch_color3_line_diag1[line] --".in1"--> NG_crosshatch_color3_composite_diags[max]
     NG_crosshatch_color3_thicknessINT([thickness]) ==.radius==> NG_crosshatch_color3_line_diag1[line]
     style NG_crosshatch_color3_thicknessINT fill:#0CF, color:#111
-    NG_crosshatch_color3_sample_vec[combine2] --".sample"--> NG_crosshatch_color3_line_diag1[line]
+    NG_crosshatch_color3_sample_vec[combine2] --".texcoord"--> NG_crosshatch_color3_line_diag1[line]
     NG_crosshatch_color3_subX_1[subtract] --".in1"--> NG_crosshatch_color3_sample_vec[combine2]
     NG_crosshatch_color3_modx_2[multiply] --".in1"--> NG_crosshatch_color3_subX_1[subtract]
     NG_crosshatch_color3_mod_X[modulo] --".in1"--> NG_crosshatch_color3_modx_2[multiply]
@@ -4105,7 +4105,7 @@ graph LR;
     NG_crosshatch_color3_line_diag2[line] --".in2"--> NG_crosshatch_color3_composite_diags[max]
     NG_crosshatch_color3_thicknessINT([thickness]) ==.radius==> NG_crosshatch_color3_line_diag2[line]
     style NG_crosshatch_color3_thicknessINT fill:#0CF, color:#111
-    NG_crosshatch_color3_sample_vec[combine2] --".sample"--> NG_crosshatch_color3_line_diag2[line]
+    NG_crosshatch_color3_sample_vec[combine2] --".texcoord"--> NG_crosshatch_color3_line_diag2[line]
     NG_crosshatch_color3_composite_diags[max] --".in2"--> NG_crosshatch_color3_max[max]
 
 ```
@@ -4144,7 +4144,7 @@ graph LR;
     style NG_tiledcircles_color3_pattern_selection fill:#F80, color:#111
     NG_tiledcircles_color3_max1[max] --".in1"--> NG_tiledcircles_color3_max[max]
     NG_tiledcircles_color3_circle_stagg1[circle] --".in1"--> NG_tiledcircles_color3_max1[max]
-    NG_tiledcircles_color3_coord_circ1[combine2] --".sample"--> NG_tiledcircles_color3_circle_stagg1[circle]
+    NG_tiledcircles_color3_coord_circ1[combine2] --".texcoord"--> NG_tiledcircles_color3_circle_stagg1[circle]
     NG_tiledcircles_color3_mod_X_1[modulo] --".in1"--> NG_tiledcircles_color3_coord_circ1[combine2]
     NG_tiledcircles_color3_shift_X[add] --".in1"--> NG_tiledcircles_color3_mod_X_1[modulo]
     NG_tiledcircles_color3_texcoord_bias[subtract] --".x -> .in1"--> NG_tiledcircles_color3_shift_X[add]
@@ -4165,13 +4165,13 @@ graph LR;
     NG_tiledcircles_color3_sizeINT([size]) ==.in1==> NG_tiledcircles_color3_scale_half[divide]
     style NG_tiledcircles_color3_sizeINT fill:#0CF, color:#111
     NG_tiledcircles_color3_circle_stagg2[circle] --".in2"--> NG_tiledcircles_color3_max1[max]
-    NG_tiledcircles_color3_coord_circ2[combine2] --".sample"--> NG_tiledcircles_color3_circle_stagg2[circle]
+    NG_tiledcircles_color3_coord_circ2[combine2] --".texcoord"--> NG_tiledcircles_color3_circle_stagg2[circle]
     NG_tiledcircles_color3_coord_adj_1[subtract] --".in1"--> NG_tiledcircles_color3_coord_circ2[combine2]
     NG_tiledcircles_color3_mod_X_1[modulo] --".in2"--> NG_tiledcircles_color3_coord_adj_1[subtract]
     NG_tiledcircles_color3_mod_Y_1[modulo] --".in2"--> NG_tiledcircles_color3_coord_circ2[combine2]
     NG_tiledcircles_color3_scale_half[divide] --".radius"--> NG_tiledcircles_color3_circle_stagg2[circle]
     NG_tiledcircles_color3_circle_stagg3[circle] --".in2"--> NG_tiledcircles_color3_max[max]
-    NG_tiledcircles_color3_coord_circ3[combine2] --".sample"--> NG_tiledcircles_color3_circle_stagg3[circle]
+    NG_tiledcircles_color3_coord_circ3[combine2] --".texcoord"--> NG_tiledcircles_color3_circle_stagg3[circle]
     NG_tiledcircles_color3_coord_adj_2[subtract] --".in1"--> NG_tiledcircles_color3_coord_circ3[combine2]
     NG_tiledcircles_color3_mod_X_1[modulo] --".in1"--> NG_tiledcircles_color3_coord_adj_2[subtract]
     NG_tiledcircles_color3_coord_adj_3[subtract] --".in2"--> NG_tiledcircles_color3_coord_circ3[combine2]
@@ -4181,7 +4181,7 @@ graph LR;
     style NG_tiledcircles_color3_pattern_selection fill:#F80, color:#111
     NG_tiledcircles_color3_sizeINT([size]) ==.radius==> NG_tiledcircles_color3_circle_regular[circle]
     style NG_tiledcircles_color3_sizeINT fill:#0CF, color:#111
-    NG_tiledcircles_color3_recenter[subtract] --".sample"--> NG_tiledcircles_color3_circle_regular[circle]
+    NG_tiledcircles_color3_recenter[subtract] --".texcoord"--> NG_tiledcircles_color3_circle_regular[circle]
     NG_tiledcircles_color3_mod_texcoord_2[multiply] --".in1"--> NG_tiledcircles_color3_recenter[subtract]
     NG_tiledcircles_color3_mod_texcoord[modulo] --".in1"--> NG_tiledcircles_color3_mod_texcoord_2[multiply]
     NG_tiledcircles_color3_texcoord_bias[subtract] --".in1"--> NG_tiledcircles_color3_mod_texcoord[modulo]
@@ -4222,7 +4222,7 @@ graph LR;
     style NG_tiledcloverleafs_color3_pattern_selection fill:#F80, color:#111
     NG_tiledcloverleafs_color3_max1[max] --".in1"--> NG_tiledcloverleafs_color3_max[max]
     NG_tiledcloverleafs_color3_cloverleaf_stagg1[cloverleaf] --".in1"--> NG_tiledcloverleafs_color3_max1[max]
-    NG_tiledcloverleafs_color3_coord_circ1[combine2] --".sample"--> NG_tiledcloverleafs_color3_cloverleaf_stagg1[cloverleaf]
+    NG_tiledcloverleafs_color3_coord_circ1[combine2] --".texcoord"--> NG_tiledcloverleafs_color3_cloverleaf_stagg1[cloverleaf]
     NG_tiledcloverleafs_color3_mod_X_1[modulo] --".in1"--> NG_tiledcloverleafs_color3_coord_circ1[combine2]
     NG_tiledcloverleafs_color3_shift_X[add] --".in1"--> NG_tiledcloverleafs_color3_mod_X_1[modulo]
     NG_tiledcloverleafs_color3_texcoord_bias[subtract] --".x -> .in1"--> NG_tiledcloverleafs_color3_shift_X[add]
@@ -4243,13 +4243,13 @@ graph LR;
     NG_tiledcloverleafs_color3_sizeINT([size]) ==.in1==> NG_tiledcloverleafs_color3_scale_half[divide]
     style NG_tiledcloverleafs_color3_sizeINT fill:#0CF, color:#111
     NG_tiledcloverleafs_color3_cloverleaf_stagg2[cloverleaf] --".in2"--> NG_tiledcloverleafs_color3_max1[max]
-    NG_tiledcloverleafs_color3_coord_circ2[combine2] --".sample"--> NG_tiledcloverleafs_color3_cloverleaf_stagg2[cloverleaf]
+    NG_tiledcloverleafs_color3_coord_circ2[combine2] --".texcoord"--> NG_tiledcloverleafs_color3_cloverleaf_stagg2[cloverleaf]
     NG_tiledcloverleafs_color3_coord_adj_1[subtract] --".in1"--> NG_tiledcloverleafs_color3_coord_circ2[combine2]
     NG_tiledcloverleafs_color3_mod_X_1[modulo] --".in2"--> NG_tiledcloverleafs_color3_coord_adj_1[subtract]
     NG_tiledcloverleafs_color3_mod_Y_1[modulo] --".in2"--> NG_tiledcloverleafs_color3_coord_circ2[combine2]
     NG_tiledcloverleafs_color3_scale_half[divide] --".radius"--> NG_tiledcloverleafs_color3_cloverleaf_stagg2[cloverleaf]
     NG_tiledcloverleafs_color3_cloverleaf_stagg3[cloverleaf] --".in2"--> NG_tiledcloverleafs_color3_max[max]
-    NG_tiledcloverleafs_color3_coord_circ3[combine2] --".sample"--> NG_tiledcloverleafs_color3_cloverleaf_stagg3[cloverleaf]
+    NG_tiledcloverleafs_color3_coord_circ3[combine2] --".texcoord"--> NG_tiledcloverleafs_color3_cloverleaf_stagg3[cloverleaf]
     NG_tiledcloverleafs_color3_coord_adj_2[subtract] --".in1"--> NG_tiledcloverleafs_color3_coord_circ3[combine2]
     NG_tiledcloverleafs_color3_mod_X_1[modulo] --".in1"--> NG_tiledcloverleafs_color3_coord_adj_2[subtract]
     NG_tiledcloverleafs_color3_coord_adj_3[subtract] --".in2"--> NG_tiledcloverleafs_color3_coord_circ3[combine2]
@@ -4259,7 +4259,7 @@ graph LR;
     style NG_tiledcloverleafs_color3_pattern_selection fill:#F80, color:#111
     NG_tiledcloverleafs_color3_sizeINT([size]) ==.radius==> NG_tiledcloverleafs_color3_cloverleaf_regular[cloverleaf]
     style NG_tiledcloverleafs_color3_sizeINT fill:#0CF, color:#111
-    NG_tiledcloverleafs_color3_recenter[subtract] --".sample"--> NG_tiledcloverleafs_color3_cloverleaf_regular[cloverleaf]
+    NG_tiledcloverleafs_color3_recenter[subtract] --".texcoord"--> NG_tiledcloverleafs_color3_cloverleaf_regular[cloverleaf]
     NG_tiledcloverleafs_color3_mod_texcoord_2[multiply] --".in1"--> NG_tiledcloverleafs_color3_recenter[subtract]
     NG_tiledcloverleafs_color3_mod_texcoord[modulo] --".in1"--> NG_tiledcloverleafs_color3_mod_texcoord_2[multiply]
     NG_tiledcloverleafs_color3_texcoord_bias[subtract] --".in1"--> NG_tiledcloverleafs_color3_mod_texcoord[modulo]
@@ -4300,7 +4300,7 @@ graph LR;
     style NG_tiledhexagons_color3_pattern_selection fill:#F80, color:#111
     NG_tiledhexagons_color3_max1[max] --".in1"--> NG_tiledhexagons_color3_max[max]
     NG_tiledhexagons_color3_hexagon_stagg1[hexagon] --".in1"--> NG_tiledhexagons_color3_max1[max]
-    NG_tiledhexagons_color3_coord_circ1[combine2] --".sample"--> NG_tiledhexagons_color3_hexagon_stagg1[hexagon]
+    NG_tiledhexagons_color3_coord_circ1[combine2] --".texcoord"--> NG_tiledhexagons_color3_hexagon_stagg1[hexagon]
     NG_tiledhexagons_color3_mod_X_1[modulo] --".in1"--> NG_tiledhexagons_color3_coord_circ1[combine2]
     NG_tiledhexagons_color3_shift_X[add] --".in1"--> NG_tiledhexagons_color3_mod_X_1[modulo]
     NG_tiledhexagons_color3_texcoord_bias[subtract] --".x -> .in1"--> NG_tiledhexagons_color3_shift_X[add]
@@ -4321,13 +4321,13 @@ graph LR;
     NG_tiledhexagons_color3_sizeINT([size]) ==.in1==> NG_tiledhexagons_color3_scale_half[divide]
     style NG_tiledhexagons_color3_sizeINT fill:#0CF, color:#111
     NG_tiledhexagons_color3_hexagon_stagg2[hexagon] --".in2"--> NG_tiledhexagons_color3_max1[max]
-    NG_tiledhexagons_color3_coord_circ2[combine2] --".sample"--> NG_tiledhexagons_color3_hexagon_stagg2[hexagon]
+    NG_tiledhexagons_color3_coord_circ2[combine2] --".texcoord"--> NG_tiledhexagons_color3_hexagon_stagg2[hexagon]
     NG_tiledhexagons_color3_coord_adj_1[subtract] --".in1"--> NG_tiledhexagons_color3_coord_circ2[combine2]
     NG_tiledhexagons_color3_mod_X_1[modulo] --".in2"--> NG_tiledhexagons_color3_coord_adj_1[subtract]
     NG_tiledhexagons_color3_mod_Y_1[modulo] --".in2"--> NG_tiledhexagons_color3_coord_circ2[combine2]
     NG_tiledhexagons_color3_scale_half[divide] --".radius"--> NG_tiledhexagons_color3_hexagon_stagg2[hexagon]
     NG_tiledhexagons_color3_hexagon_stagg3[hexagon] --".in2"--> NG_tiledhexagons_color3_max[max]
-    NG_tiledhexagons_color3_coord_circ3[combine2] --".sample"--> NG_tiledhexagons_color3_hexagon_stagg3[hexagon]
+    NG_tiledhexagons_color3_coord_circ3[combine2] --".texcoord"--> NG_tiledhexagons_color3_hexagon_stagg3[hexagon]
     NG_tiledhexagons_color3_coord_adj_2[subtract] --".in1"--> NG_tiledhexagons_color3_coord_circ3[combine2]
     NG_tiledhexagons_color3_mod_X_1[modulo] --".in1"--> NG_tiledhexagons_color3_coord_adj_2[subtract]
     NG_tiledhexagons_color3_coord_adj_3[subtract] --".in2"--> NG_tiledhexagons_color3_coord_circ3[combine2]
@@ -4337,7 +4337,7 @@ graph LR;
     style NG_tiledhexagons_color3_pattern_selection fill:#F80, color:#111
     NG_tiledhexagons_color3_sizeINT([size]) ==.radius==> NG_tiledhexagons_color3_hexagon_regular[hexagon]
     style NG_tiledhexagons_color3_sizeINT fill:#0CF, color:#111
-    NG_tiledhexagons_color3_recenter[subtract] --".sample"--> NG_tiledhexagons_color3_hexagon_regular[hexagon]
+    NG_tiledhexagons_color3_recenter[subtract] --".texcoord"--> NG_tiledhexagons_color3_hexagon_regular[hexagon]
     NG_tiledhexagons_color3_mod_texcoord_2[multiply] --".in1"--> NG_tiledhexagons_color3_recenter[subtract]
     NG_tiledhexagons_color3_mod_texcoord[modulo] --".in1"--> NG_tiledhexagons_color3_mod_texcoord_2[multiply]
     NG_tiledhexagons_color3_texcoord_bias[subtract] --".in1"--> NG_tiledhexagons_color3_mod_texcoord[modulo]

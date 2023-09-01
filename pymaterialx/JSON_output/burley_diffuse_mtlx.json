@@ -1,0 +1,33 @@
+{
+  "materialx": {
+    "nodegraph:test_burley_diffuse": {
+      "burley_diffuse_bsdf:burley_brdf1": {
+        "type": "BSDF",
+        "input:color": {
+          "type": "color3",
+          "value": "0.6, 0.6, 0.6"
+        },
+        "input:roughness": {
+          "type": "float",
+          "value": "0.2"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "burley_brdf1"
+        },
+        "input:opacity": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    }
+  },
+  "version": "1.38"
+}

@@ -1,0 +1,450 @@
+{
+  "materialx": {
+    "nodegraph:switch_float": {
+      "switch:switch1": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "value": "0.0000"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.3000"
+        },
+        "input:in3": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:in4": {
+          "type": "float",
+          "value": "0.7000"
+        },
+        "input:in5": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:which": {
+          "type": "float",
+          "value": "0.0000"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "switch1"
+      }
+    },
+    "nodegraph:switch_color3": {
+      "switch:switch1": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "value": "0.0, 0.0, 0.0"
+        },
+        "input:in2": {
+          "type": "color3",
+          "value": "0.3000, 0.3000, 0.3000"
+        },
+        "input:in3": {
+          "type": "color3",
+          "value": "0.5000, 0.5000, 0.5000"
+        },
+        "input:in4": {
+          "type": "color3",
+          "value": "0.7000, 0.7000, 0.7000"
+        },
+        "input:in5": {
+          "type": "color3",
+          "value": "1.0000, 1.0000, 1.0000"
+        },
+        "input:which": {
+          "type": "float",
+          "value": "2.0000"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "switch1"
+      }
+    },
+    "nodegraph:switch_color4": {
+      "switch:switch1": {
+        "type": "color4",
+        "input:in1": {
+          "type": "color4",
+          "value": "0.0, 0.0, 0.0, 0.0000"
+        },
+        "input:in2": {
+          "type": "color4",
+          "value": "0.3000, 0.3000, 0.3000, 0.5000"
+        },
+        "input:in3": {
+          "type": "color4",
+          "value": "0.5000, 0.5000, 0.5000, 0.5000"
+        },
+        "input:in4": {
+          "type": "color4",
+          "value": "0.7000, 0.7000, 0.7000, 0.7000"
+        },
+        "input:in5": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 1.0000, 1.0000"
+        },
+        "input:which": {
+          "type": "float",
+          "value": "3.0000"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "switch1"
+      }
+    },
+    "nodegraph:switch_vector2": {
+      "switch:switch1": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "value": "0.3000, 0.3000"
+        },
+        "input:in3": {
+          "type": "vector2",
+          "value": "0.5000, 0.5000"
+        },
+        "input:in4": {
+          "type": "vector2",
+          "value": "0.7000, 0.7000"
+        },
+        "input:in5": {
+          "type": "vector2",
+          "value": "1.0000, 1.0000"
+        },
+        "input:which": {
+          "type": "float",
+          "value": "1.0000"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "switch1"
+      }
+    },
+    "nodegraph:switch_vector3": {
+      "switch:switch1": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "0.3000, 0.3000, 0.3000"
+        },
+        "input:in3": {
+          "type": "vector3",
+          "value": "0.5000, 0.5000, 0.5000"
+        },
+        "input:in4": {
+          "type": "vector3",
+          "value": "0.7000, 0.7000, 0.7000"
+        },
+        "input:in5": {
+          "type": "vector3",
+          "value": "1.0000, 1.0000, 1.0000"
+        },
+        "input:which": {
+          "type": "float",
+          "value": "2.0000"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "switch1"
+      }
+    },
+    "nodegraph:switch_vector4": {
+      "switch:switch1": {
+        "type": "vector4",
+        "input:in1": {
+          "type": "vector4",
+          "value": "0.0, 0.0, 0.0, 0.0"
+        },
+        "input:in2": {
+          "type": "vector4",
+          "value": "0.3000, 0.3000, 0.3000, 0.3000"
+        },
+        "input:in3": {
+          "type": "vector4",
+          "value": "0.5000, 0.5000, 0.5000, 0.5000"
+        },
+        "input:in4": {
+          "type": "vector4",
+          "value": "0.7000, 0.7000, 0.7000, 0.7000"
+        },
+        "input:in5": {
+          "type": "vector4",
+          "value": "1.0000, 1.0000, 1.0000, 1.0000"
+        },
+        "input:which": {
+          "type": "float",
+          "value": "3.0000"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "switch1"
+      }
+    },
+    "nodegraph:switch_floatI": {
+      "switch:switch1": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.3000"
+        },
+        "input:in3": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:in4": {
+          "type": "float",
+          "value": "0.7000"
+        },
+        "input:in5": {
+          "type": "float",
+          "value": "1.0000"
+        },
+        "input:which": {
+          "type": "integer",
+          "value": "0"
+        }
+      },
+      "output:out": {
+        "type": "float",
+        "nodename": "switch1"
+      }
+    },
+    "nodegraph:switch_color3I": {
+      "switch:switch1": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "value": "0.0, 0.0, 0.0"
+        },
+        "input:in2": {
+          "type": "color3",
+          "value": "0.3000, 0.3000, 0.3000"
+        },
+        "input:in3": {
+          "type": "color3",
+          "value": "0.5000, 0.5000, 0.5000"
+        },
+        "input:in4": {
+          "type": "color3",
+          "value": "0.7000, 0.7000, 0.7000"
+        },
+        "input:in5": {
+          "type": "color3",
+          "value": "1.0000, 1.0000, 1.0000"
+        },
+        "input:which": {
+          "type": "integer",
+          "value": "2"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "switch1"
+      }
+    },
+    "nodegraph:swicth_color4I": {
+      "switch:switch1": {
+        "type": "color4",
+        "input:in1": {
+          "type": "color4",
+          "value": "0.0, 0.0, 0.0, 0.0"
+        },
+        "input:in2": {
+          "type": "color4",
+          "value": "0.3000, 0.3000, 0.3000, 0.3000"
+        },
+        "input:in3": {
+          "type": "color4",
+          "value": "0.5000, 0.5000, 0.5000, 0.5000"
+        },
+        "input:in4": {
+          "type": "color4",
+          "value": "0.7000, 0.7000, 0.7000, 0.7000"
+        },
+        "input:in5": {
+          "type": "color4",
+          "value": "1.0000, 1.0000, 1.0000, 1.0000"
+        },
+        "input:which": {
+          "type": "integer",
+          "value": "3"
+        }
+      },
+      "output:out": {
+        "type": "color4",
+        "nodename": "switch1"
+      }
+    },
+    "nodegraph:switch_vector2I": {
+      "switch:switch1": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "value": "0.3000, 0.3000"
+        },
+        "input:in3": {
+          "type": "vector2",
+          "value": "0.5000, 0.5000"
+        },
+        "input:in4": {
+          "type": "vector2",
+          "value": "0.7000, 0.7000"
+        },
+        "input:in5": {
+          "type": "vector2",
+          "value": "1.0000, 1.0000"
+        },
+        "input:which": {
+          "type": "integer",
+          "value": "1"
+        }
+      },
+      "output:out": {
+        "type": "vector2",
+        "nodename": "switch1"
+      }
+    },
+    "nodegraph:switch_vector3I": {
+      "switch:switch1": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "0.3000, 0.3000, 0.3000"
+        },
+        "input:in3": {
+          "type": "vector3",
+          "value": "0.5000, 0.5000, 0.5000"
+        },
+        "input:in4": {
+          "type": "vector3",
+          "value": "0.7000, 0.7000, 0.7000"
+        },
+        "input:in5": {
+          "type": "vector3",
+          "value": "1.0000, 1.0000, 1.0000"
+        },
+        "input:which": {
+          "type": "integer",
+          "value": "2"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "switch1"
+      }
+    },
+    "nodegraph:switch_vector4I": {
+      "switch:switch1": {
+        "type": "vector4",
+        "input:in1": {
+          "type": "vector4",
+          "value": "0.0, 0.0, 0.0, 0.0"
+        },
+        "input:in2": {
+          "type": "vector4",
+          "value": "0.3000, 0.3000, 0.3000, 0.3000"
+        },
+        "input:in3": {
+          "type": "vector4",
+          "value": "0.5000, 0.5000, 0.5000, 0.5000"
+        },
+        "input:in4": {
+          "type": "vector4",
+          "value": "0.7000, 0.7000, 0.7000, 0.7000"
+        },
+        "input:in5": {
+          "type": "vector4",
+          "value": "1.0000, 1.0000, 1.0000, 1.0000"
+        },
+        "input:which": {
+          "type": "integer",
+          "value": "3"
+        }
+      },
+      "output:out": {
+        "type": "vector4",
+        "nodename": "switch1"
+      }
+    },
+    "nodegraph:switch_vector3_geometric": {
+      "tangent:tangent1": {
+        "type": "vector3"
+      },
+      "bitangent:bitangent1": {
+        "type": "vector3"
+      },
+      "texcoord:texcoord1": {
+        "type": "vector2"
+      },
+      "splitlr:splitlr1": {
+        "type": "float",
+        "input:valuel": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:valuer": {
+          "type": "float",
+          "value": "1.0"
+        },
+        "input:center": {
+          "type": "float",
+          "value": "0.5"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        }
+      },
+      "ifgreater:ifgreater1": {
+        "type": "vector3",
+        "input:value1": {
+          "type": "float",
+          "nodename": "splitlr1"
+        },
+        "input:in1": {
+          "type": "vector3",
+          "nodename": "tangent1"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "nodename": "bitangent1"
+        }
+      },
+      "output:out": {
+        "type": "vector3",
+        "nodename": "ifgreater1"
+      }
+    }
+  },
+  "version": "1.38"
+}

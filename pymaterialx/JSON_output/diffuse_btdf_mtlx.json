@@ -1,0 +1,33 @@
+{
+  "materialx": {
+    "nodegraph:test_diffuse_btdf": {
+      "translucent_bsdf:diffuse_btdf1": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "value": "0.6"
+        },
+        "input:color": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "diffuse_btdf1"
+        },
+        "input:opacity": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    }
+  },
+  "version": "1.38"
+}

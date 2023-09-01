@@ -1,0 +1,183 @@
+{
+  "materialx": {
+    "nodegraph:upstream3": {
+      "input:file": {
+        "type": "filename",
+        "uniform": "true",
+        "value": "resources/Images/cloth.png"
+      },
+      "input:file1": {
+        "type": "filename",
+        "uniform": "true",
+        "value": "resources/Images/grid.png"
+      },
+      "image:upstream_image": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "uniform": "true",
+          "interfacename": "file"
+        }
+      },
+      "image:upstream_image1": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "uniform": "true",
+          "interfacename": "file1"
+        }
+      },
+      "output:out": {
+        "type": "color3",
+        "nodename": "upstream_image"
+      },
+      "output:out1": {
+        "type": "color3",
+        "nodename": "upstream_image1"
+      }
+    },
+    "nodegraph:upstream2": {
+      "input:upstream2_in1": {
+        "type": "color3",
+        "nodegraph": "upstream3",
+        "output": "out"
+      },
+      "input:upstream2_in2": {
+        "type": "color3",
+        "nodegraph": "upstream3",
+        "output": "out1"
+      },
+      "multiply:multiply_by_image": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "interfacename": "upstream2_in1"
+        },
+        "input:in2": {
+          "type": "color3",
+          "nodename": "image"
+        }
+      },
+      "multiply:make_red": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "interfacename": "upstream2_in2"
+        },
+        "input:in2": {
+          "type": "color3",
+          "value": "1, 0.1, 0.1"
+        }
+      },
+      "image:image": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "uniform": "true",
+          "value": "resources/Images/grid.png"
+        }
+      },
+      "output:upstream2_out1": {
+        "type": "color3",
+        "nodename": "multiply_by_image"
+      },
+      "output:upstream2_out2": {
+        "type": "color3",
+        "nodename": "make_red"
+      }
+    },
+    "nodegraph:upstream1": {
+      "input:upstream1_in1": {
+        "type": "color3",
+        "nodegraph": "upstream2",
+        "output": "upstream2_out1"
+      },
+      "input:upstream1_in2": {
+        "type": "color3",
+        "nodegraph": "upstream2",
+        "output": "upstream2_out2"
+      },
+      "multiply:make_yellow": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "interfacename": "upstream1_in1"
+        },
+        "input:in2": {
+          "type": "color3",
+          "value": "1, 1, 0"
+        }
+      },
+      "multiply:remove_red": {
+        "type": "color3",
+        "input:in1": {
+          "type": "color3",
+          "interfacename": "upstream1_in2"
+        },
+        "input:in2": {
+          "type": "color3",
+          "value": "0, 1, 1"
+        }
+      },
+      "output:upstream1_out1": {
+        "type": "color3",
+        "nodename": "make_yellow"
+      },
+      "output:upstream1_out2": {
+        "type": "color3",
+        "nodename": "remove_red"
+      }
+    },
+    "output:top_upstream1_out1": {
+      "type": "color3",
+      "nodename": "upstream1",
+      "output": "upstream1_out1"
+    },
+    "output:top_upstream1_out2": {
+      "type": "color3",
+      "nodename": "upstream1",
+      "output": "upstream1_out2"
+    },
+    "standard_surface:standard_surface": {
+      "type": "surfaceshader",
+      "version": "1.0.1",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "upstream1",
+        "output": "upstream1_out1"
+      }
+    },
+    "standard_surface:standard_surface1": {
+      "type": "surfaceshader",
+      "version": "1.0.1",
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "upstream1",
+        "output": "upstream1_out2"
+      }
+    },
+    "surfacematerial:surfacematerial": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "standard_surface"
+      },
+      "input:displacementshader": {
+        "type": "displacementshader",
+        "value": ""
+      }
+    },
+    "surfacematerial:surfacematerial1": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "standard_surface1"
+      },
+      "input:displacementshader": {
+        "type": "displacementshader",
+        "value": ""
+      }
+    }
+  },
+  "version": "1.38"
+}

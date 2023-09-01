@@ -1,0 +1,99 @@
+{
+  "materialx": {
+    "constant:worldscale": {
+      "type": "vector2",
+      "input:value": {
+        "type": "vector2",
+        "value": "5.0, 5.0",
+        "unit": "meter",
+        "unittype": "distance"
+      }
+    },
+    "divide:recip_worldscale": {
+      "type": "vector2",
+      "input:in1": {
+        "type": "vector2",
+        "value": "1.0, 1.0"
+      },
+      "input:in2": {
+        "type": "vector2",
+        "nodename": "worldscale"
+      }
+    },
+    "texcoord:albedo_texcoord": {
+      "type": "vector2"
+    },
+    "place2d:albedo_placement_transform": {
+      "type": "vector2",
+      "input:texcoord": {
+        "type": "vector2",
+        "nodename": "albedo_texcoord"
+      },
+      "input:scale": {
+        "type": "vector2",
+        "nodename": "recip_worldscale"
+      }
+    },
+    "image:albedo_color": {
+      "type": "color3",
+      "colorspace": "raw",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/grid.png",
+        "colorspace": "srgb_texture"
+      },
+      "input:texcoord": {
+        "type": "vector2",
+        "nodename": "albedo_placement_transform"
+      }
+    },
+    "output:albedo_output": {
+      "type": "color3",
+      "nodename": "albedo_color"
+    },
+    "image:displacement_vector": {
+      "type": "vector3",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/cloth.png",
+        "unittype": "distance",
+        "unit": "millimeter"
+      },
+      "input:texcoord": {
+        "type": "vector2",
+        "nodename": "albedo_placement_transform"
+      }
+    },
+    "output:displacement_output": {
+      "type": "vector3",
+      "nodename": "displacement_vector"
+    },
+    "constant:constant_v3": {
+      "type": "vector3",
+      "input:value": {
+        "type": "vector3",
+        "value": "0.25, 0.25, 0.25",
+        "unittype": "distance",
+        "unit": "inch"
+      }
+    },
+    "output:unit_vector3": {
+      "type": "vector3",
+      "nodename": "constant_v3"
+    },
+    "constant:constant_v4": {
+      "type": "vector4",
+      "input:value": {
+        "type": "vector4",
+        "value": "0.25, 0.25, 0.25, 1.0",
+        "unittype": "distance",
+        "unit": "inch"
+      }
+    },
+    "output:unit_vector4": {
+      "type": "vector4",
+      "nodename": "constant_v4"
+    }
+  },
+  "version": "1.38"
+}

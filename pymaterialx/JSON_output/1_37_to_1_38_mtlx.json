@@ -1,0 +1,97 @@
+{
+  "materialx": {
+    "nodegraph:atan2_graph": {
+      "atan2:atan2_float": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "value": "0.5"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "atan2:atan2_vector2": {
+        "type": "vector2",
+        "input:in1": {
+          "type": "vector2",
+          "value": "0.5, 0.5"
+        },
+        "input:in2": {
+          "type": "vector2",
+          "value": "1.0, 1.0"
+        }
+      },
+      "atan2:atan2_vector3": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "value": "0.5, 0.5, 0.5"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "1.0, 1.0, 1.0"
+        }
+      },
+      "atan2:atan2_vector4": {
+        "type": "vector4",
+        "input:in1": {
+          "type": "vector4",
+          "value": "0.5, 0.5, 0.5, 0.5"
+        },
+        "input:in2": {
+          "type": "vector4",
+          "value": "1.0, 1.0, 1.0, 1.0"
+        }
+      },
+      "rotate3d:rot1": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "value": "1.0, 0.0, 0.0"
+        },
+        "input:amount": {
+          "type": "float",
+          "value": "10.0"
+        },
+        "input:axis": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 1.0"
+        }
+      }
+    },
+    "nodedef:ND_Test": {
+      "node": "test",
+      "input:add": {
+        "type": "float"
+      }
+    },
+    "nodegraph:NG_Test": {
+      "nodedef": "ND_Test",
+      "add:add2": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "interfacename": "add"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "add:add1": {
+        "type": "float",
+        "input:in1": {
+          "type": "float",
+          "nodename": "add2"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "1.0"
+        }
+      }
+    }
+  },
+  "version": "1.38"
+}

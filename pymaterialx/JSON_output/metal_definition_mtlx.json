@@ -1,0 +1,155 @@
+{
+  "materialx": {
+    "nodedef:ND_TestMetal": {
+      "node": "testmetal",
+      "input:MetalF0": {
+        "type": "color3",
+        "value": "1, 1, 1",
+        "uiname": "Color",
+        "uifolder": "Basic Parameters"
+      },
+      "input:SurfaceRoughness": {
+        "type": "float",
+        "value": "0.1",
+        "uiname": "Roughness",
+        "uifolder": "Basic Parameters"
+      },
+      "input:SurfaceAlbedo": {
+        "type": "color3",
+        "value": "1, 1, 1",
+        "uiname": "Color",
+        "uifolder": "Hilight Parameters"
+      },
+      "input:SurfaceAnisotropy": {
+        "type": "float",
+        "value": "0.0",
+        "uiname": "Anisotropy",
+        "uifolder": "Hilight Parameters"
+      },
+      "input:SurfaceNormal": {
+        "type": "vector3",
+        "value": "1, 1, 1",
+        "uiname": "Relief Pattern (Bump)",
+        "uifolder": "Hilight Parameters"
+      },
+      "input:SurfaceRotation": {
+        "type": "float",
+        "value": "0",
+        "uiname": "Orientation",
+        "uifolder": "Hilight Parameters"
+      },
+      "input:SurfaceCutout": {
+        "type": "color3",
+        "value": "1, 1, 1",
+        "uiname": "Image",
+        "uifolder": "Cutout"
+      },
+      "output:out": {
+        "type": "surfaceshader"
+      }
+    },
+    "nodegraph:NG_TestMetal": {
+      "nodedef": "ND_TestMetal",
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "standard_surface_metal"
+      },
+      "standard_surface:standard_surface_metal": {
+        "type": "surfaceshader",
+        "input:base": {
+          "type": "float",
+          "value": "0.8"
+        },
+        "input:base_color": {
+          "type": "color3",
+          "interfacename": "MetalF0"
+        },
+        "input:diffuse_roughness": {
+          "type": "float",
+          "value": "0"
+        },
+        "input:specular": {
+          "type": "float",
+          "value": "1"
+        },
+        "input:specular_color": {
+          "type": "color3",
+          "interfacename": "SurfaceAlbedo"
+        },
+        "input:specular_roughness": {
+          "type": "float",
+          "interfacename": "SurfaceRoughness"
+        },
+        "input:specular_IOR": {
+          "type": "float",
+          "value": "1.52"
+        },
+        "input:specular_anisotropy": {
+          "type": "float",
+          "interfacename": "SurfaceAnisotropy"
+        },
+        "input:specular_rotation": {
+          "type": "float",
+          "interfacename": "SurfaceRotation"
+        },
+        "input:metalness": {
+          "type": "float",
+          "value": "1"
+        },
+        "input:normal": {
+          "type": "vector3",
+          "interfacename": "SurfaceNormal"
+        },
+        "input:tangent": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        },
+        "input:opacity": {
+          "type": "color3",
+          "interfacename": "SurfaceCutout"
+        },
+        "input:coat": {
+          "type": "float",
+          "value": "0"
+        },
+        "input:coat_color": {
+          "type": "color3",
+          "value": "1, 1, 1"
+        },
+        "input:coat_roughness": {
+          "type": "float",
+          "value": "0.1"
+        },
+        "input:coat_IOR": {
+          "type": "float",
+          "value": "1.5"
+        },
+        "input:coat_normal": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        },
+        "input:thin_walled": {
+          "type": "boolean",
+          "value": "false"
+        },
+        "input:thin_film_thickness": {
+          "type": "float",
+          "value": "0"
+        },
+        "input:thin_film_IOR": {
+          "type": "float",
+          "value": "1.5"
+        },
+        "input:emission": {
+          "type": "float",
+          "value": "0"
+        },
+        "input:emission_color": {
+          "type": "color3",
+          "value": "1, 1, 1"
+        }
+      }
+    }
+  },
+  "version": "1.38"
+}

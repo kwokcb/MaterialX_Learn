@@ -1,0 +1,65 @@
+{
+  "materialx": {
+    "nodegraph:NG_base": {
+      "constant:realscale": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "1.25",
+          "unit": "meter",
+          "unittype": "distance"
+        }
+      },
+      "output:NG_base_output": {
+        "type": "float",
+        "nodename": "realscale"
+      }
+    },
+    "standard_surface:SR_jade": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "nodegraph": "NG_base",
+        "output": "NG_base_output"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "value": "0.0603, 0.43979999, 0.19159999"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "unit": "millimeter",
+        "unittype": "distance",
+        "value": "0.25"
+      },
+      "input:specular_IOR": {
+        "type": "float",
+        "value": "2.4179999828338623",
+        "unit": "centimeter",
+        "unittype": "distance"
+      },
+      "input:subsurface": {
+        "type": "float",
+        "value": "0.4",
+        "unit": "millimeter",
+        "unittype": "distance"
+      },
+      "input:subsurface_color": {
+        "type": "color3",
+        "value": "0.0603, 0.43979999, 0.19159999"
+      },
+      "input:subsurface_scale": {
+        "type": "float",
+        "value": "0.10000000149011612"
+      }
+    },
+    "surfacematerial:Jade": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_jade"
+      }
+    }
+  },
+  "version": "1.38"
+}

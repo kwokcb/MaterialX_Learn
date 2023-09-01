@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <materialx version="1.38">
   <line name="line_float" type="float">
-    <input name="sample" type="vector2" value="0, 0" />
     <input name="center" type="vector2" value="0, 0" />
     <input name="radius" type="float" value="0.1" />
     <input name="point1" type="vector2" value="0.25, 0.25" />

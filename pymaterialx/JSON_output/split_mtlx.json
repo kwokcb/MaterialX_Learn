@@ -1,0 +1,271 @@
+{
+  "materialx": {
+    "output:lr_split4_output": {
+      "type": "color4",
+      "nodename": "lr_split4"
+    },
+    "splitlr:lr_split4": {
+      "type": "color4",
+      "input:valuel": {
+        "type": "color4",
+        "value": "1.0, 0.0, 0.0, 0.5"
+      },
+      "input:valuer": {
+        "type": "color4",
+        "value": "0.0, 0.0, 1.0, 0.5"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:lr_split3_output": {
+      "type": "color3",
+      "nodename": "lr_split3"
+    },
+    "splitlr:lr_split3": {
+      "type": "color3",
+      "input:valuel": {
+        "type": "color3",
+        "value": "1.0, 0.0, 0.0"
+      },
+      "input:valuer": {
+        "type": "color3",
+        "value": "0.0, 0.0, 1.0"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:lr_split2_output": {
+      "type": "vector2",
+      "nodename": "lr_split2"
+    },
+    "splitlr:lr_split2": {
+      "type": "vector2",
+      "input:valuel": {
+        "type": "vector2",
+        "value": "1.0, 0.0"
+      },
+      "input:valuer": {
+        "type": "vector2",
+        "value": "0.0, 1.0"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:lr_split1_output": {
+      "type": "float",
+      "nodename": "lr_split1"
+    },
+    "splitlr:lr_split1": {
+      "type": "float",
+      "input:valuel": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:valuer": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:lr_split4v_output": {
+      "type": "vector4",
+      "nodename": "lr_split4v"
+    },
+    "splitlr:lr_split4v": {
+      "type": "vector4",
+      "input:valuel": {
+        "type": "vector4",
+        "value": "1.0, 0.0, 0.0, 0.5"
+      },
+      "input:valuer": {
+        "type": "vector4",
+        "value": "0.0, 0.0, 1.0, 0.5"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:lr_split3v_output": {
+      "type": "vector3",
+      "nodename": "lr_split3v"
+    },
+    "splitlr:lr_split3v": {
+      "type": "vector3",
+      "input:valuel": {
+        "type": "vector3",
+        "value": "1.0, 0.0, 0.0"
+      },
+      "input:valuer": {
+        "type": "vector3",
+        "value": "0.0, 0.0, 1.0"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:lr_split2v_output": {
+      "type": "vector2",
+      "nodename": "lr_split2v"
+    },
+    "splitlr:lr_split2v": {
+      "type": "vector2",
+      "input:valuel": {
+        "type": "vector2",
+        "value": "1.0, 0.0"
+      },
+      "input:valuer": {
+        "type": "vector2",
+        "value": "0.0, 1.0"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:tb_split4_output": {
+      "type": "color4",
+      "nodename": "tb_split4"
+    },
+    "splittb:tb_split4": {
+      "type": "color4",
+      "input:valuet": {
+        "type": "color4",
+        "value": "1.0, 0.0, 0.0, 0.5"
+      },
+      "input:valueb": {
+        "type": "color4",
+        "value": "0.0, 0.0, 1.0, 0.5"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:tb_split3_output": {
+      "type": "color3",
+      "nodename": "tb_split3"
+    },
+    "splittb:tb_split3": {
+      "type": "color3",
+      "input:valuet": {
+        "type": "color3",
+        "value": "1.0, 0.0, 0.0"
+      },
+      "input:valueb": {
+        "type": "color3",
+        "value": "0.0, 0.0, 1.0"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:tb_split2_output": {
+      "type": "vector2",
+      "nodename": "tb_split2"
+    },
+    "splittb:tb_split2": {
+      "type": "vector2",
+      "input:valuet": {
+        "type": "vector2",
+        "value": "1.0, 0.0"
+      },
+      "input:valueb": {
+        "type": "vector2",
+        "value": "0.0, 1.0"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:tb_split1_output": {
+      "type": "float",
+      "nodename": "tb_split1"
+    },
+    "splittb:tb_split1": {
+      "type": "float",
+      "input:valuet": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:valueb": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:tb_split4v_output": {
+      "type": "vector4",
+      "nodename": "tb_split4v"
+    },
+    "splittb:tb_split4v": {
+      "type": "vector4",
+      "input:valuet": {
+        "type": "vector4",
+        "value": "1.0, 0.0, 0.0, 0.5"
+      },
+      "input:valueb": {
+        "type": "vector4",
+        "value": "0.0, 0.0, 1.0, 0.5"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:tb_split3v_output": {
+      "type": "vector3",
+      "nodename": "tb_split3v"
+    },
+    "splittb:tb_split3v": {
+      "type": "vector3",
+      "input:valuet": {
+        "type": "vector3",
+        "value": "1.0, 0.0, 0.0"
+      },
+      "input:valueb": {
+        "type": "vector3",
+        "value": "0.0, 0.0, 1.0"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "output:tb_split2v_output": {
+      "type": "vector2",
+      "nodename": "tb_split2v"
+    },
+    "splittb:tb_split2v": {
+      "type": "vector2",
+      "input:valuet": {
+        "type": "vector2",
+        "value": "1.0, 0.0"
+      },
+      "input:valueb": {
+        "type": "vector2",
+        "value": "0.0, 1.0"
+      },
+      "input:center": {
+        "type": "float",
+        "value": "0.3"
+      }
+    }
+  },
+  "version": "1.38"
+}

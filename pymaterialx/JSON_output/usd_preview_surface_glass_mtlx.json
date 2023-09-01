@@ -1,0 +1,44 @@
+{
+  "materialx": {
+    "UsdPreviewSurface:SR_glass": {
+      "type": "surfaceshader",
+      "input:diffuseColor": {
+        "type": "color3",
+        "value": "0.0, 0.0, 0.0"
+      },
+      "input:useSpecularWorkflow": {
+        "type": "integer",
+        "value": "0"
+      },
+      "input:metallic": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:roughness": {
+        "type": "float",
+        "value": "0.01"
+      },
+      "input:opacity": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:opacityThreshold": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:ior": {
+        "type": "float",
+        "value": "1.52"
+      }
+    },
+    "surfacematerial:USD_Glass": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_glass"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

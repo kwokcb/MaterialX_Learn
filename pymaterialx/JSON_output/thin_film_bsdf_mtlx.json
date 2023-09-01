@@ -1,0 +1,504 @@
+{
+  "materialx": {
+    "nodegraph:thin_film_test1": {
+      "dielectric_bsdf:dielectric_brdf_1": {
+        "type": "BSDF",
+        "input:ior": {
+          "type": "float",
+          "value": "2.5"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "value": "0, 0"
+        }
+      },
+      "thin_film_bsdf:thin_film_brdf_1": {
+        "type": "BSDF",
+        "input:thickness": {
+          "type": "float",
+          "value": "550"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.5"
+        }
+      },
+      "layer:layer_bsdf_1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "thin_film_brdf_1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf_1"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:thin_film_test2": {
+      "oren_nayar_diffuse_bsdf:diffuse_bsdf": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "value": "0.5"
+        },
+        "input:color": {
+          "type": "color3",
+          "value": "1,1,1"
+        }
+      },
+      "dielectric_bsdf:dielectric_brdf_1": {
+        "type": "BSDF",
+        "input:ior": {
+          "type": "float",
+          "value": "2.5"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "value": "0, 0"
+        }
+      },
+      "layer:layer_bsdf_1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf_1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "diffuse_bsdf"
+        }
+      },
+      "thin_film_bsdf:thin_film_brdf_1": {
+        "type": "BSDF",
+        "input:thickness": {
+          "type": "float",
+          "value": "550"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.5"
+        }
+      },
+      "layer:layer_bsdf_2": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "thin_film_brdf_1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_1"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_2"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:thin_film_test3": {
+      "dielectric_bsdf:dielectric_brdf_1": {
+        "type": "BSDF",
+        "input:ior": {
+          "type": "float",
+          "value": "2.5"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "value": "0, 0"
+        }
+      },
+      "thin_film_bsdf:thin_film_brdf_1": {
+        "type": "BSDF",
+        "input:thickness": {
+          "type": "float",
+          "value": "550"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.5"
+        }
+      },
+      "layer:layer_bsdf_1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "thin_film_brdf_1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf_1"
+        }
+      },
+      "oren_nayar_diffuse_bsdf:diffuse_bsdf": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "value": "0.5"
+        },
+        "input:color": {
+          "type": "color3",
+          "value": "1,1,1"
+        }
+      },
+      "layer:layer_bsdf_2": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "diffuse_bsdf"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_2"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:thin_film_test4": {
+      "dielectric_bsdf:dielectric_brdf_1": {
+        "type": "BSDF",
+        "input:tint": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.5"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "value": "0.3, 0.3"
+        }
+      },
+      "dielectric_bsdf:dielectric_brdf_2": {
+        "type": "BSDF",
+        "input:tint": {
+          "type": "color3",
+          "value": "0.1, 1.0, 0.1"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "2.5"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        }
+      },
+      "layer:layer_bsdf_1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf_2"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf_1"
+        }
+      },
+      "thin_film_bsdf:thin_film_brdf_1": {
+        "type": "BSDF",
+        "input:thickness": {
+          "type": "float",
+          "value": "550"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.5"
+        }
+      },
+      "layer:layer_bsdf_2": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "thin_film_brdf_1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_1"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_2"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:thin_film_test5": {
+      "dielectric_bsdf:dielectric_brdf_1": {
+        "type": "BSDF",
+        "input:tint": {
+          "type": "color3",
+          "value": "1.0, 0.0, 0.0"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.5"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "value": "0.3, 0.3"
+        }
+      },
+      "dielectric_bsdf:dielectric_brdf_2": {
+        "type": "BSDF",
+        "input:tint": {
+          "type": "color3",
+          "value": "0.0, 1.0, 0.0"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "2.5"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "value": "0.3, 0.3"
+        }
+      },
+      "mix:mix_bsdf_1": {
+        "type": "BSDF",
+        "input:fg": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf_2"
+        },
+        "input:bg": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf_1"
+        },
+        "input:mix": {
+          "type": "float",
+          "value": "0.5"
+        }
+      },
+      "thin_film_bsdf:thin_film_brdf_1": {
+        "type": "BSDF",
+        "input:thickness": {
+          "type": "float",
+          "value": "550"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.5"
+        }
+      },
+      "layer:layer_bsdf_1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "thin_film_brdf_1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "mix_bsdf_1"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:thin_film_test6": {
+      "dielectric_bsdf:dielectric_brdf_1": {
+        "type": "BSDF",
+        "input:tint": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "2.5"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        }
+      },
+      "multiply:multiply_bsdf_1": {
+        "type": "BSDF",
+        "input:in1": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf_1"
+        },
+        "input:in2": {
+          "type": "float",
+          "value": "0.8"
+        }
+      },
+      "thin_film_bsdf:thin_film_brdf_1": {
+        "type": "BSDF",
+        "input:thickness": {
+          "type": "float",
+          "value": "550"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.5"
+        }
+      },
+      "layer:layer_bsdf_1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "thin_film_brdf_1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "multiply_bsdf_1"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:thin_film_test7": {
+      "conductor_bsdf:conductor_brdf_1": {
+        "type": "BSDF",
+        "input:ior": {
+          "type": "color3",
+          "value": "0.18, 0.42, 1.37"
+        },
+        "input:extinction": {
+          "type": "color3",
+          "value": "3.42, 2.35, 1.77"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "value": "0.0, 0.0"
+        }
+      },
+      "thin_film_bsdf:thin_film_brdf_1": {
+        "type": "BSDF",
+        "input:thickness": {
+          "type": "float",
+          "value": "550"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.5"
+        }
+      },
+      "layer:layer_bsdf_1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "thin_film_brdf_1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "conductor_brdf_1"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    },
+    "nodegraph:thin_film_test8": {
+      "generalized_schlick_bsdf:generalized_schlick_brdf_1": {
+        "type": "BSDF",
+        "input:color0": {
+          "type": "color3",
+          "value": "0.04, 0.04, 0.04"
+        },
+        "input:color90": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        },
+        "input:roughness": {
+          "type": "vector2",
+          "value": "0, 0"
+        }
+      },
+      "thin_film_bsdf:thin_film_brdf_1": {
+        "type": "BSDF",
+        "input:thickness": {
+          "type": "float",
+          "value": "550"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.5"
+        }
+      },
+      "layer:layer_bsdf_1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "thin_film_brdf_1"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "generalized_schlick_brdf_1"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "layer_bsdf_1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    }
+  },
+  "version": "1.38"
+}

@@ -1,0 +1,116 @@
+{
+  "materialx": {
+    "gltf_pbr:SR_default": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "value": "1.0, 1.0, 1.0"
+      },
+      "input:metallic": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:roughness": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "value": "0, 0, 1"
+      },
+      "input:occlusion": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:transmission": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:specular_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:ior": {
+        "type": "float",
+        "value": "1.5"
+      },
+      "input:alpha": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:alpha_mode": {
+        "type": "integer",
+        "value": "0"
+      },
+      "input:alpha_cutoff": {
+        "type": "float",
+        "value": "0.5"
+      },
+      "input:iridescence": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:iridescence_ior": {
+        "type": "float",
+        "value": "1.3"
+      },
+      "input:iridescence_thickness": {
+        "type": "float",
+        "value": "300"
+      },
+      "input:sheen_color": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:sheen_roughness": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:clearcoat": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:clearcoat_roughness": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:clearcoat_normal": {
+        "type": "vector3",
+        "value": "0, 0, 1"
+      },
+      "input:emissive": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:emissive_strength": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:thickness": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:attenuation_distance": {
+        "type": "float",
+        "value": "100000"
+      },
+      "input:attenuation_color": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      }
+    },
+    "surfacematerial:Default": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_default"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

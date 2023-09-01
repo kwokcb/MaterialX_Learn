@@ -1,0 +1,208 @@
+{
+  "materialx": {
+    "nodedef:ND_BakingSettings": {
+      "node": "baker",
+      "input:file": {
+        "type": "filename"
+      },
+      "input:uvmin": {
+        "type": "vector2"
+      },
+      "input:uvmax": {
+        "type": "vector2"
+      },
+      "input:hdr": {
+        "type": "boolean",
+        "value": "false"
+      },
+      "input:resolution": {
+        "type": "integer",
+        "value": "1024"
+      }
+    },
+    "nodedef:ND_WedgeRenderSettings": {
+      "node": "wedgerender",
+      "input:file": {
+        "type": "filename"
+      },
+      "input:parameter": {
+        "type": "string"
+      },
+      "input:range": {
+        "type": "vector2",
+        "value": "0.0, 1.0"
+      },
+      "input:steps": {
+        "type": "integer",
+        "value": "1.0"
+      }
+    },
+    "nodedef:TestSuiteOptions": {
+      "input:overrideFiles": {
+        "type": "string",
+        "value": ""
+      },
+      "input:lightFiles": {
+        "type": "string",
+        "value": "light_rig_test_2.mtlx"
+      },
+      "input:targets": {
+        "type": "string",
+        "value": "genglsl,genosl,genmdl,genmsl"
+      },
+      "input:checkImplCount": {
+        "type": "boolean",
+        "value": "true"
+      },
+      "input:shaderInterfaces": {
+        "type": "integer",
+        "value": "2"
+      },
+      "input:validateElementToRender": {
+        "type": "boolean",
+        "value": "false"
+      },
+      "input:compileCode": {
+        "type": "boolean",
+        "value": "true"
+      },
+      "input:renderImages": {
+        "type": "boolean",
+        "value": "true"
+      },
+      "input:renderSize": {
+        "type": "vector2",
+        "value": "512, 512"
+      },
+      "input:saveImages": {
+        "type": "boolean",
+        "value": "true"
+      },
+      "input:dumpUniformsAndAttributes": {
+        "type": "boolean",
+        "value": "true"
+      },
+      "input:dumpGeneratedCode": {
+        "type": "boolean",
+        "value": "true"
+      },
+      "input:renderGeometry": {
+        "type": "string",
+        "value": "sphere.obj"
+      },
+      "input:enableDirectLighting": {
+        "type": "boolean",
+        "value": "false"
+      },
+      "input:enableIndirectLighting": {
+        "type": "boolean",
+        "value": "true"
+      },
+      "input:radianceIBLPath": {
+        "type": "string",
+        "value": "resources/Lights/san_giuseppe_bridge.hdr"
+      },
+      "input:irradianceIBLPath": {
+        "type": "string",
+        "value": "resources/Lights/irradiance/san_giuseppe_bridge.hdr"
+      },
+      "input:transformUVs": {
+        "type": "matrix44",
+        "value": "1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, -0.235f, 1.0f, 0.0f, 1.0f"
+      },
+      "input:extraLibraryPaths": {
+        "type": "string",
+        "value": ""
+      },
+      "input:renderTestPaths": {
+        "type": "string",
+        "value": "resources/Materials/TestSuite/defs"
+      },
+      "input:enableReferenceQuality": {
+        "type": "boolean",
+        "value": "false"
+      },
+      "wedgerender:wedge_conductor": {
+        "input:file": {
+          "type": "filename",
+          "value": "wedge_conductor.mtlx"
+        },
+        "input:parameter": {
+          "type": "string",
+          "value": "test_conductor/roughness1/roughness"
+        },
+        "input:range": {
+          "type": "vector2",
+          "value": "0.0, 1.0"
+        },
+        "input:steps": {
+          "type": "integer",
+          "value": "4"
+        }
+      },
+      "wedgerender:wedge_conductor_2": {
+        "input:file": {
+          "type": "filename",
+          "value": "wedge_conductor.mtlx"
+        },
+        "input:parameter": {
+          "type": "string",
+          "value": "test_conductor/roughness1/anisotropy"
+        },
+        "input:range": {
+          "type": "vector2",
+          "value": "0.3, 0.9"
+        },
+        "input:steps": {
+          "type": "integer",
+          "value": "3"
+        }
+      },
+      "baker:mapped_surfaceshader": {
+        "input:file": {
+          "type": "filename",
+          "value": "mapped_surfaceshader.mtlx"
+        },
+        "input:uvmin": {
+          "type": "vector2",
+          "value": "0,0"
+        },
+        "input:uvmax": {
+          "type": "vector2",
+          "value": "1,1"
+        },
+        "input:hdr": {
+          "type": "boolean",
+          "value": "false"
+        },
+        "input:resolution": {
+          "type": "integer",
+          "value": "1024"
+        }
+      },
+      "baker:normalmapped_surfaceshader": {
+        "input:file": {
+          "type": "filename",
+          "value": "normalmapped_surfaceshader.mtlx"
+        },
+        "input:uvmin": {
+          "type": "vector2",
+          "value": "0,0"
+        },
+        "input:uvmax": {
+          "type": "vector2",
+          "value": "1,1"
+        },
+        "input:hdr": {
+          "type": "boolean",
+          "value": "false"
+        },
+        "input:resolution": {
+          "type": "integer",
+          "value": "1024"
+        }
+      }
+    }
+  },
+  "version": "1.38"
+}

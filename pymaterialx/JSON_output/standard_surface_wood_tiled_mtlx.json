@@ -1,0 +1,84 @@
+{
+  "materialx": {
+    "nodegraph:NG_wood1": {
+      "fileprefix": "../../../Images/",
+      "tiledimage:image_color": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "wood_color.jpg",
+          "colorspace": "srgb_texture"
+        },
+        "input:uvtiling": {
+          "type": "vector2",
+          "value": "4.0, 4.0"
+        }
+      },
+      "tiledimage:image_roughness": {
+        "type": "float",
+        "input:file": {
+          "type": "filename",
+          "value": "wood_roughness.jpg"
+        },
+        "input:uvtiling": {
+          "type": "vector2",
+          "value": "4.0, 4.0"
+        }
+      },
+      "output:out_color": {
+        "type": "color3",
+        "nodename": "image_color"
+      },
+      "output:out_roughness": {
+        "type": "float",
+        "nodename": "image_roughness"
+      }
+    },
+    "standard_surface:SR_wood1": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_wood1",
+        "output": "out_color"
+      },
+      "input:specular": {
+        "type": "float",
+        "value": "0.4"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "nodegraph": "NG_wood1",
+        "output": "out_roughness"
+      },
+      "input:specular_anisotropy": {
+        "type": "float",
+        "value": "0.5"
+      },
+      "input:coat": {
+        "type": "float",
+        "value": "0.1"
+      },
+      "input:coat_roughness": {
+        "type": "float",
+        "value": "0.2"
+      },
+      "input:coat_anisotropy": {
+        "type": "float",
+        "value": "0.5"
+      }
+    },
+    "surfacematerial:Tiled_Wood": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_wood1"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

@@ -1,0 +1,124 @@
+{
+  "materialx": {
+    "nodedef:ND_sheen_surface": {
+      "node": "sheen_surface",
+      "input:diffuse": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:diffuse_color": {
+        "type": "color3",
+        "value": "1.0, 1.0, 1.0"
+      },
+      "input:sheen": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:sheen_color": {
+        "type": "color3",
+        "value": "1.0, 1.0, 1.0"
+      },
+      "input:sheen_roughness": {
+        "type": "float",
+        "value": "0.3"
+      },
+      "output:out": {
+        "type": "surfaceshader"
+      }
+    },
+    "nodegraph:IMP_sheen_surface": {
+      "nodedef": "ND_sheen_surface",
+      "oren_nayar_diffuse_bsdf:diffuse1": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "interfacename": "diffuse"
+        },
+        "input:color": {
+          "type": "color3",
+          "interfacename": "diffuse_color"
+        },
+        "input:roughness": {
+          "type": "float",
+          "value": "0"
+        }
+      },
+      "sheen_bsdf:sheen1__layer_top": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "interfacename": "sheen"
+        },
+        "input:color": {
+          "type": "color3",
+          "interfacename": "sheen_color"
+        },
+        "input:roughness": {
+          "type": "float",
+          "interfacename": "sheen_roughness"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "sheen1"
+        },
+        "input:edf": {
+          "type": "EDF",
+          "value": ""
+        },
+        "input:opacity": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      },
+      "layer:sheen1": {
+        "type": "BSDF",
+        "input:top": {
+          "type": "BSDF",
+          "nodename": "sheen1__layer_top"
+        },
+        "input:base": {
+          "type": "BSDF",
+          "nodename": "diffuse1"
+        }
+      }
+    },
+    "sheen_surface:SR_sheen": {
+      "type": "surfaceshader",
+      "input:diffuse": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:diffuse_color": {
+        "type": "color3",
+        "value": "0.0, 0.0, 0.95"
+      },
+      "input:sheen": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:sheen_color": {
+        "type": "color3",
+        "value": "0.516, 0.524, 0.778"
+      },
+      "input:sheen_roughness": {
+        "type": "float",
+        "value": "0.3"
+      }
+    },
+    "surfacematerial:M_sheen": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_sheen"
+      }
+    }
+  },
+  "version": "1.38"
+}

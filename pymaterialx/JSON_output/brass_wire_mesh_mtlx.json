@@ -1,0 +1,133 @@
+{
+  "materialx": {
+    "nodegraph:Brass_Wire_Mesh_Input_Graph": {
+      "image:SurfaceAlbedo_color": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "textures/mesh_wire_spec.png",
+          "colorspace": "lin_rec709"
+        }
+      },
+      "output:SurfaceAlbedo_output": {
+        "type": "color3",
+        "nodename": "SurfaceAlbedo_color"
+      },
+      "texcoord:normal_texcoord": {
+        "type": "vector2"
+      },
+      "transformmatrix:normal_transform": {
+        "type": "vector2",
+        "input:mat": {
+          "type": "matrix33",
+          "value": "31.4961, 0.0, 0.0, 0.0, 31.4961, 0.0, 0.0, 0.0,1.0"
+        },
+        "input:in": {
+          "type": "vector2",
+          "nodename": "normal_texcoord"
+        }
+      },
+      "image:normal_image": {
+        "type": "vector3",
+        "colorspace": "Raw",
+        "input:file": {
+          "type": "filename",
+          "value": "textures/mesh_wire_norm.png"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "normal_transform"
+        }
+      },
+      "normalmap:SurfaceNormal_normal": {
+        "type": "vector3",
+        "input:in": {
+          "type": "vector3",
+          "nodename": "normal_image"
+        },
+        "input:scale": {
+          "type": "float",
+          "value": "1.5"
+        }
+      },
+      "output:SurfaceNormal_output": {
+        "type": "vector3",
+        "nodename": "SurfaceNormal_normal"
+      },
+      "image:SurfaceCutout_mask": {
+        "type": "color3",
+        "input:file": {
+          "type": "filename",
+          "value": "textures/mesh_wire_cutout.png",
+          "colorspace": "lin_rec709"
+        },
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "cutout_transform"
+        }
+      },
+      "texcoord:cutout_texcoord": {
+        "type": "vector2"
+      },
+      "transformmatrix:cutout_transform": {
+        "type": "vector2",
+        "input:mat": {
+          "type": "matrix33",
+          "value": "31.4961, 0.0, 0.0, 0.0, 31.4961, 0.0, 0.0, 0.0,1.0"
+        },
+        "input:in": {
+          "type": "vector2",
+          "nodename": "cutout_texcoord"
+        }
+      },
+      "output:SurfaceCutout_output": {
+        "type": "color3",
+        "nodename": "SurfaceCutout_mask"
+      }
+    },
+    "testmetal:shaderref0": {
+      "type": "surfaceshader",
+      "input:MetalF0": {
+        "type": "color3",
+        "value": "0.9, 0.6, 0.2"
+      },
+      "input:SurfaceAlbedo": {
+        "type": "color3",
+        "output": "SurfaceAlbedo_output",
+        "nodegraph": "Brass_Wire_Mesh_Input_Graph"
+      },
+      "input:SurfaceAnisotropy": {
+        "type": "float",
+        "value": "0.95"
+      },
+      "input:SurfaceNormal": {
+        "type": "vector3",
+        "output": "SurfaceNormal_output",
+        "nodegraph": "Brass_Wire_Mesh_Input_Graph"
+      },
+      "input:SurfaceRotation": {
+        "type": "float",
+        "value": "0.0"
+      },
+      "input:SurfaceRoughness": {
+        "type": "float",
+        "value": "0.122474"
+      },
+      "input:SurfaceCutout": {
+        "type": "color3",
+        "output": "SurfaceCutout_output",
+        "nodegraph": "Brass_Wire_Mesh_Input_Graph"
+      }
+    },
+    "surfacematerial:Brass_Wire_Mesh": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "shaderref0"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709",
+  "xmlns:xi": "http://www.w3.org/2001/XInclude"
+}

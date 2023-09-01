@@ -1,0 +1,86 @@
+{
+  "materialx": {
+    "nodegraph:NG_Greysphere_Calibration": {
+      "texcoord:texcoord1": {
+        "type": "vector2"
+      },
+      "place2d:place2d": {
+        "type": "vector2",
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "texcoord1"
+        },
+        "input:offset": {
+          "type": "vector2",
+          "value": "-1.66, -0.49"
+        },
+        "input:scale": {
+          "type": "vector2",
+          "value": "0.21, 0.21"
+        },
+        "input:pivot": {
+          "type": "vector2",
+          "value": "0.5, 0.5"
+        }
+      },
+      "image:image1": {
+        "type": "color3",
+        "input:texcoord": {
+          "type": "vector2",
+          "nodename": "place2d"
+        },
+        "input:file": {
+          "type": "filename",
+          "value": "greysphere_calibration.png",
+          "colorspace": "srgb_texture"
+        },
+        "input:uaddressmode": {
+          "type": "string",
+          "value": "clamp"
+        },
+        "input:vaddressmode": {
+          "type": "string",
+          "value": "clamp"
+        }
+      },
+      "output:out1": {
+        "type": "color3",
+        "nodename": "image1"
+      }
+    },
+    "standard_surface:SR_Greysphere_Calibration": {
+      "type": "surfaceshader",
+      "input:base": {
+        "type": "float",
+        "value": "1.0"
+      },
+      "input:base_color": {
+        "type": "color3",
+        "nodegraph": "NG_Greysphere_Calibration",
+        "output": "out1"
+      },
+      "input:diffuse_roughness": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:specular_roughness": {
+        "type": "float",
+        "value": "0.7"
+      },
+      "input:specular_IOR": {
+        "type": "float",
+        "value": "1.5"
+      }
+    },
+    "surfacematerial:Greysphere_Calibration": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_Greysphere_Calibration"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709",
+  "fileprefix": "../../../Images/"
+}

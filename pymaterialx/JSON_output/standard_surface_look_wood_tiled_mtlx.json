@@ -1,0 +1,16 @@
+{
+  "materialx": {
+    "look:Wood_Look": {
+      "materialassign:preview": {
+        "geom": "Preview_Mesh",
+        "material": "Tiled_Wood"
+      },
+      "materialassign:calibration": {
+        "geom": "Calibration_Mesh",
+        "material": "Greysphere_Calibration"
+      }
+    }
+  },
+  "version": "1.38",
+  "xmlns:xi": "http://www.w3.org/2001/XInclude"
+}

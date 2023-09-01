@@ -1,0 +1,137 @@
+{
+  "materialx": {
+    "surfacematerial:SurfaceMaterial_All_Mapped_NodeGraph_Mapped": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodegraph": "Surf_Displace_NodeGraph",
+        "output": "out"
+      },
+      "input:displacementshader": {
+        "type": "displacementshader",
+        "nodegraph": "Surf_Displace_NodeGraph",
+        "output": "displacementshader"
+      }
+    },
+    "nodegraph:Surf_Displace_NodeGraph": {
+      "standard_surface:standard_surface": {
+        "type": "surfaceshader",
+        "input:base_color": {
+          "type": "color3",
+          "value": "0.3, 0.3, 1"
+        }
+      },
+      "displacement:displacement": {
+        "type": "displacementshader"
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "standard_surface"
+      },
+      "output:displacementshader": {
+        "type": "displacementshader",
+        "nodename": "displacement"
+      }
+    },
+    "surfacematerial:SurfaceMaterial_PinkNodeGraph": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodegraph": "Pink_surface_shader_in_graph"
+      },
+      "input:displacementshader": {
+        "type": "displacementshader",
+        "value": ""
+      }
+    },
+    "nodegraph:Pink_surface_shader_in_graph": {
+      "standard_surface:standard_surface1": {
+        "type": "surfaceshader",
+        "input:base_color": {
+          "type": "color3",
+          "value": "1, 0, 1"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "standard_surface1"
+      }
+    },
+    "nodegraph:White_SurfaceMaterial_In_NodeGraph": {
+      "surfacematerial:White_SurfaceMaterial": {
+        "type": "material",
+        "input:surfaceshader": {
+          "type": "surfaceshader",
+          "nodename": "White_Shader"
+        },
+        "input:displacementshader": {
+          "type": "displacementshader",
+          "value": ""
+        }
+      },
+      "standard_surface:White_Shader": {
+        "type": "surfaceshader"
+      },
+      "ramp4:ramp4": {
+        "type": "color3",
+        "input:valuetl": {
+          "type": "color3",
+          "value": "0, 0, 1"
+        },
+        "input:valuetr": {
+          "type": "color3",
+          "value": "1, 0, 0"
+        },
+        "input:valuebl": {
+          "type": "color3",
+          "value": "0, 1, 0"
+        },
+        "input:valuebr": {
+          "type": "color3",
+          "value": "0, 1, 1"
+        }
+      },
+      "output:out": {
+        "type": "material",
+        "nodename": "White_SurfaceMaterial"
+      }
+    },
+    "surfacematerial:Orange_Top_Level_SurfaceMaterial": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "Orange_Top_level_surface_shader"
+      },
+      "input:displacementshader": {
+        "type": "displacementshader",
+        "value": ""
+      }
+    },
+    "standard_surface:Orange_Top_level_surface_shader": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "value": "1, 0.3, 0"
+      }
+    },
+    "surfacematerial:Fail_surfacematerial_No_Shader": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "value": ""
+      },
+      "input:displacementshader": {
+        "type": "displacementshader",
+        "value": ""
+      }
+    },
+    "volumematerial:Fail_volumematerial_unsupported": {
+      "type": "material",
+      "input:volumeshader": {
+        "type": "volumeshader",
+        "value": ""
+      }
+    }
+  },
+  "version": "1.38"
+}

@@ -1,0 +1,96 @@
+{
+  "materialx": {
+    "image:image_color4": {
+      "type": "color4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/invalid.png"
+      },
+      "input:default": {
+        "type": "color4",
+        "value": "0.8, 0.2, 0.2, 1.0"
+      }
+    },
+    "output:image_color4_output": {
+      "type": "color4",
+      "nodename": "image_color4"
+    },
+    "image:image_color3": {
+      "type": "color3",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/invalid.png"
+      },
+      "input:default": {
+        "type": "color3",
+        "value": "0.8, 0.2, 0.2"
+      }
+    },
+    "output:image_color3_output": {
+      "type": "color3",
+      "nodename": "image_color3"
+    },
+    "image:image_vector4": {
+      "type": "vector4",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/invalid.png"
+      },
+      "input:default": {
+        "type": "vector4",
+        "value": "0.8, 0.2, 0.2, 1.0"
+      }
+    },
+    "output:image_vector4_output": {
+      "type": "vector4",
+      "nodename": "image_vector4"
+    },
+    "image:image_vector3": {
+      "type": "vector3",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/invalid.png"
+      },
+      "input:default": {
+        "type": "vector3",
+        "value": "0.8, 0.2, 0.2"
+      }
+    },
+    "output:image_vector3_output": {
+      "type": "vector3",
+      "nodename": "image_vector3"
+    },
+    "image:image_vector2": {
+      "type": "vector2",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/invalid.png"
+      },
+      "input:default": {
+        "type": "vector2",
+        "value": "0.8, 0.2"
+      }
+    },
+    "output:image_vector2_output": {
+      "type": "vector2",
+      "nodename": "image_vector2"
+    },
+    "image:image_float": {
+      "type": "float",
+      "input:file": {
+        "type": "filename",
+        "value": "resources/Images/invalid.png"
+      },
+      "input:default": {
+        "type": "float",
+        "value": "0.8"
+      }
+    },
+    "output:image_float_output": {
+      "type": "float",
+      "nodename": "image_float"
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709"
+}

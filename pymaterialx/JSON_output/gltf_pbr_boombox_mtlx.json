@@ -1,0 +1,80 @@
+{
+  "materialx": {
+    "gltf_colorimage:image_basecolor": {
+      "type": "multioutput",
+      "input:file": {
+        "type": "filename",
+        "value": "BoomBox_baseColor.png",
+        "colorspace": "srgb_texture"
+      }
+    },
+    "gltf_image:image_orm": {
+      "type": "vector3",
+      "input:file": {
+        "type": "filename",
+        "value": "BoomBox_occlusionRoughnessMetallic.png"
+      }
+    },
+    "gltf_normalmap:image_normal": {
+      "type": "vector3",
+      "input:file": {
+        "type": "filename",
+        "value": "BoomBox_normal.png"
+      }
+    },
+    "gltf_image:image_emission": {
+      "type": "color3",
+      "input:file": {
+        "type": "filename",
+        "value": "BoomBox_emissive.png",
+        "colorspace": "srgb_texture"
+      }
+    },
+    "gltf_pbr:SR_boombox": {
+      "type": "surfaceshader",
+      "input:base_color": {
+        "type": "color3",
+        "nodename": "image_basecolor",
+        "output": "outcolor"
+      },
+      "input:alpha": {
+        "type": "float",
+        "nodename": "image_basecolor",
+        "output": "outa"
+      },
+      "input:metallic": {
+        "type": "float",
+        "nodename": "image_orm",
+        "channels": "z"
+      },
+      "input:roughness": {
+        "type": "float",
+        "nodename": "image_orm",
+        "channels": "y"
+      },
+      "input:occlusion": {
+        "type": "float",
+        "nodename": "image_orm",
+        "channels": "x"
+      },
+      "input:normal": {
+        "type": "vector3",
+        "nodename": "image_normal"
+      },
+      "input:emissive": {
+        "type": "color3",
+        "nodename": "image_emission"
+      }
+    },
+    "surfacematerial:Material_boombox": {
+      "type": "material",
+      "input:surfaceshader": {
+        "type": "surfaceshader",
+        "nodename": "SR_boombox"
+      }
+    }
+  },
+  "version": "1.38",
+  "colorspace": "lin_rec709",
+  "fileprefix": "boombox/"
+}

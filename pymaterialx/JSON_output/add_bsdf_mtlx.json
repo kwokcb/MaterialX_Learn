@@ -1,0 +1,104 @@
+{
+  "materialx": {
+    "nodegraph:add_bsdf_test": {
+      "constant:constant1": {
+        "type": "float",
+        "input:value": {
+          "type": "float",
+          "value": "0.5"
+        }
+      },
+      "clamp:clamp1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "constant1"
+        },
+        "input:low": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:high": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "invert:invert1": {
+        "type": "float",
+        "input:in": {
+          "type": "float",
+          "nodename": "clamp1"
+        },
+        "input:amount": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "oren_nayar_diffuse_bsdf:diffuse_brdf1": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "nodename": "invert1"
+        },
+        "input:color": {
+          "type": "color3",
+          "value": "0.9600, 0.1, 0.1"
+        },
+        "input:roughness": {
+          "type": "float",
+          "value": "0.0"
+        },
+        "input:normal": {
+          "type": "vector3",
+          "value": "0.0, 0.0, 0.0"
+        }
+      },
+      "dielectric_bsdf:dielectric_brdf1": {
+        "type": "BSDF",
+        "input:weight": {
+          "type": "float",
+          "nodename": "clamp1"
+        },
+        "input:tint": {
+          "type": "color3",
+          "value": "1.0, 1.0, 1.0"
+        },
+        "input:ior": {
+          "type": "float",
+          "value": "1.52"
+        }
+      },
+      "add:add_bsdf1": {
+        "type": "BSDF",
+        "input:in1": {
+          "type": "BSDF",
+          "nodename": "dielectric_brdf1"
+        },
+        "input:in2": {
+          "type": "BSDF",
+          "nodename": "diffuse_brdf1"
+        }
+      },
+      "surface:surface1": {
+        "type": "surfaceshader",
+        "input:bsdf": {
+          "type": "BSDF",
+          "nodename": "add_bsdf1"
+        },
+        "input:edf": {
+          "type": "EDF",
+          "value": ""
+        },
+        "input:opacity": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "output:out": {
+        "type": "surfaceshader",
+        "nodename": "surface1"
+      }
+    }
+  },
+  "version": "1.38"
+}

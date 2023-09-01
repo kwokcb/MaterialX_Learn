@@ -1,0 +1,123 @@
+{
+  "materialx": {
+    "nodegraph:displacement_fractal3d_float": {
+      "type": "displacementshader",
+      "position:position1": {
+        "type": "vector3",
+        "input:space": {
+          "type": "string",
+          "value": "object"
+        }
+      },
+      "multiply:multiply1": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "nodename": "position1"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "20.0000, 20.0000, 20.0000"
+        }
+      },
+      "fractal3d:fractal3d1": {
+        "type": "float",
+        "input:amplitude": {
+          "type": "float",
+          "value": "10.0000"
+        },
+        "input:octaves": {
+          "type": "integer",
+          "value": "2"
+        },
+        "input:lacunarity": {
+          "type": "float",
+          "value": "2.0000"
+        },
+        "input:diminish": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:position": {
+          "type": "vector3",
+          "nodename": "multiply1"
+        }
+      },
+      "displacement:disp1": {
+        "type": "displacementshader",
+        "input:displacement": {
+          "type": "float",
+          "nodename": "fractal3d1"
+        },
+        "input:scale": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "output:out": {
+        "type": "displacementshader",
+        "nodename": "disp1"
+      }
+    },
+    "nodegraph:displacement_fractal3d_vector3": {
+      "type": "displacementshader",
+      "position:position1": {
+        "type": "vector3",
+        "input:space": {
+          "type": "string",
+          "value": "object"
+        }
+      },
+      "multiply:multiply1": {
+        "type": "vector3",
+        "input:in1": {
+          "type": "vector3",
+          "nodename": "position1"
+        },
+        "input:in2": {
+          "type": "vector3",
+          "value": "20.0000, 20.0000, 20.0000"
+        }
+      },
+      "fractal3d:fractal3d1": {
+        "type": "vector3",
+        "input:amplitude": {
+          "type": "vector3",
+          "value": "10.0, 10.0, 10.0"
+        },
+        "input:octaves": {
+          "type": "integer",
+          "value": "2"
+        },
+        "input:lacunarity": {
+          "type": "float",
+          "value": "2.0000"
+        },
+        "input:diminish": {
+          "type": "float",
+          "value": "0.5000"
+        },
+        "input:position": {
+          "type": "vector3",
+          "nodename": "multiply1"
+        }
+      },
+      "displacement:disp1": {
+        "type": "displacementshader",
+        "input:displacement": {
+          "type": "vector3",
+          "nodename": "fractal3d1"
+        },
+        "input:scale": {
+          "type": "float",
+          "value": "1.0"
+        }
+      },
+      "output:out": {
+        "type": "displacementshader",
+        "nodename": "disp1"
+      }
+    }
+  },
+  "version": "1.38"
+}
