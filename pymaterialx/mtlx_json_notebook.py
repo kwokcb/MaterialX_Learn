@@ -19,7 +19,7 @@
 # 
 # The serialization logic has been added to utility Python command called `jsonIO.py`. The
 # results of converting all of the files under the <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/resources/Materials" target="_blank">resources/Materials</a> folder included with the MaterialX
-# distribution can be found in the <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/JSON_outputs" target="_blank">`JSON_outputs`</a> folder.
+# distribution can be found in the <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/JSON_output" target="_blank">`<b>JSON_outputs</b></a> folder.
 
 # %% [markdown]
 # 
