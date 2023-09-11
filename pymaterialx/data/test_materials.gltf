@@ -1,0 +1,124 @@
+{
+  "asset": {
+    "copyright": "Copyright 2022-2023: Bernard Kwok",
+    "generator": "MaterialX 1.38.8 to glTF 2.0 generator. https://github.com/kwokcb/glTF_MaterialX",
+    "version": "2.0"
+  },
+  "images": [
+    {
+      "name": "image_basecolor2",
+      "uri": "BoomBoxWithAxes_baseColor1.png"
+    },
+    {
+      "name": "image_basecolor",
+      "uri": "BoomBoxWithAxes_baseColor.png"
+    },
+    {
+      "name": "image_orm",
+      "uri": "BoomBoxWithAxes_roughnessMetallic.png"
+    },
+    {
+      "name": "image_normal",
+      "uri": "BoomBoxWithAxes_normal.png"
+    },
+    {
+      "name": "image_emission",
+      "uri": "BoomBoxWithAxes_emissive.png"
+    }
+  ],
+  "materials": [
+    {
+      "name": "SHD_M_Coordinates",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.735000014
+      },
+      "extensions": {
+        "KHR_materials_clearcoat": {
+        },
+        "KHR_materials_ior": {
+        },
+        "KHR_materials_specular": {
+        },
+        "KHR_materials_transmission": {
+        },
+        "KHR_materials_sheen": {
+        },
+        "KHR_materials_emissive_strength": {
+        },
+        "KHR_materials_iridescence": {
+        }
+      }
+    },
+    {
+      "name": "SHD_M_BoomBox",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "extensions": {
+        "KHR_materials_clearcoat": {
+        },
+        "KHR_materials_ior": {
+        },
+        "KHR_materials_specular": {
+        },
+        "KHR_materials_transmission": {
+        },
+        "KHR_materials_sheen": {
+        },
+        "KHR_materials_emissive_strength": {
+        },
+        "KHR_materials_iridescence": {
+        }
+      },
+      "occlusionTexture": {
+        "index": 2,
+        "scale": 0
+      },
+      "emissiveTexture": {
+        "index": 4,
+        "scale": 0
+      },
+      "emissiveFactor": [1, 1, 1]
+    }
+  ],
+  "textures": [
+    {
+      "name": "image_basecolor2",
+      "source": 0
+    },
+    {
+      "name": "image_basecolor",
+      "source": 1
+    },
+    {
+      "name": "image_orm",
+      "source": 2
+    },
+    {
+      "name": "image_normal",
+      "source": 3
+    },
+    {
+      "name": "image_emission",
+      "source": 4
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_materials_clearcoat",
+    "KHR_materials_ior",
+    "KHR_materials_specular",
+    "KHR_materials_transmission",
+    "KHR_materials_sheen",
+    "KHR_materials_emissive_strength",
+    "KHR_materials_iridescence"
+  ]
+}

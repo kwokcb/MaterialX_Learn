@@ -216,45 +216,61 @@
 							<div class="card border-secondary shadow border mb-4">
 								<div class="card-body">
 
-
-									<h4 id="python-materialx-in-visual-studio-code">Python MaterialX</h4>
+									<h2 id="python-materialx-in-visual-studio-code">Python MaterialX</h2>
 									
-									<p> A Visual Studio Code environment has been chosen to provide tutorials and 
-										utilities written in Python. Published content can be directly
-										accessed in  <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx"
-										target ="_blank">Github</a>.
-									</p>
-									<p>The following video and corresponding text instructions can be followed
-										to set up an appropriate environment.
-										<video width="90%" controls>
-											<source src="../pymaterialx/videos/MaterialX_Learn_Python_Setup.mp4" type="video/mp4">									
-										</video>
-									</p>
-
 									<p>MaterialX release distributions include Python sub-modules for editing
 										documents, code generation, and rendering. The sub-modules are wrappers
 										for C++ libraries also shipped with releases.
 									</p>
-									<p>As of version 1.38.7, MaterialX is not yet available to download and install
-										using <code>pip</code> (PySide). The package will reside <a
-											href="https://pypi.org/project/MaterialX/" target="_blank">here when
-											available</a> 
-									</p>									
 									<p>
-										Users can either 
-										<ul>
-											<li>Download releases from<a href="https://github.com/AcademySoftwareFoundation/MaterialX/releases/"
-											target="_black"> Github</a></li>
-											<li>Use packages included with application 
-											integrations or other distributions such as Usd, or</li>
-											<li>Use custom builds.</li>  
-										</ul>
 										For content on this site the minimum requirement is MaterialX version <b>1.38.7</b> is
-										and Python 3.9.
+										and Python <b>3.9</b>.
 									</p>
 
-									<h5 id="environment-setup">Prerequisite Setup</h5>
-									<p>The following basic requirements are:
+									<p> A Visual Studio Code environment has been chosen to provide tutorials and 
+										utilities written in Python. Published content can be directly
+										accessed in  <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx"
+										target ="_blank"><img src="images/GitHub_Logo.png" style="width:4em"></a>.
+									</p>
+									<p>The following videos and corresponding text instructions can be followed
+										to set up an appropriate environment.
+										<table class="table border-secondary shadow table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+											<tr>
+											<td><h4>Using MaterialX version 1.38.8 or later</h4><br>
+												<video width="100%" controls>
+													<source src="../pymaterialx/videos/MaterialX_Learn_Python_Setup_PyPi.mp4" type="video/mp4">									
+												</video>
+												<p>As of version 1.38.8, MaterialX Python package can be downloaded and install
+													from <a href="https://pypi.org/project/MaterialX/" target="_blank">PyPi</a>.
+													<ul>
+														<li>The easiest way to do this is to use call <code>pip install MaterialX</code>.
+														</li>
+														<li>If a a particular distribution is not pre-built, an attempt will be made to build the package locally
+															as a convenience.
+														</li>
+													</ul>													
+												</p>
+											</td>
+											<td><h4>Using MaterialX versions prior to 1.38.8</h4><br>
+												<video width="100%" controls>
+													<source src="../pymaterialx/videos/MaterialX_Learn_Python_Setup.mp4" type="video/mp4">									
+												</video>
+												<p>For users who wish to use earlier versions they can:
+													<ul>
+														<li>Download releases from the MaterialX <a href="https://github.com/AcademySoftwareFoundation/MaterialX/releases/"
+														target="_black">Github</a></li>
+														<li>Use packages included with application 
+														integrations or other distributions such as Usd, or</li>
+														<li>Use custom builds.</li>  
+													</ul>
+												</p>			
+											</td>
+											</tr>
+										</table>										
+									</p>
+																																	
+									<h5 id="environment-setup">Prerequisites</h5>
+									<p>The basic requirements are:
 									<p>
 									<ul>
 										<li>Installation of a version of 
@@ -274,7 +290,7 @@
 												<li> <code> ⌘/Ctrl+Shift+P</code> can be used to run the command
 													<code>Python: Create Environment</code>.
 												</li>
-												<li>Choose to create a <codevirtual environment></code> (versus a
+												<li>Choose to create a <code>virtual environment></code> (versus a
 													<code>Conda</code> environment).
 												</li>
 												<li>Choose the Python interpreter that matching the MaterialX Python version.
@@ -303,18 +319,25 @@ ModuleNotFoundError: No module named 'MaterialX'
 									<p>	
 										To install the MaterialX package into the virtual environment a 
 										VSCode workspace terminal <sup>(1)</sup> can be opened and
-										<code>pip</code> used to install from the MaterialX package location:
+										<code>pip</code> used to install from
+										<ul>
+											<li>The MaterialX package location using:
+												<code>python -m pip install .</code>
+											</li>
+											<li>
+												the PyPi distribution using: <code>pip install MaterialX</code>
+											</li>
+										</ul>
 									</p>
-									<pre class="hljs"><code><div>python -m pip install .
-</div></code></pre>
 									<p>This will add the MaterialX modules to the virtual environment under
 										<em>.venv/Lib/site-packages</em>.
 										The modules installed will depend on the ones found in the package location.
-										<br><img src="./images/VSCode_PythonModules.png" style="width: 20%">
+										<br><img src="./images/VSCode_PythonModules.png" style="width: 40%">
 									</p>
 									<p>Other dependent packages can be added using <code>pip</code> or other means
 										as necessary.</p>
 									<sup>
+									<p>&nbsp;</p>
 									<p>(1) A security alert may show up when running from the terminal. If so, follow the
 										the 
 										<a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3"
@@ -335,7 +358,7 @@ ModuleNotFoundError: No module named 'MaterialX'
 								<div class="card-body">
 
 
-									<h5 id="test-example">Import Example</h5>
+									<h2 id="test-example">Import Example</h2>
 									<p>Importing <code>MaterialX</code> will include all sub-modules. This differs from
 										C++ where individual sub-modules can be loaded.
 										Shown below is how to import MaterialX with the module name mx.
@@ -396,7 +419,7 @@ print('Loaded library file: %d' % len(libFiles))
 							<div class="card border-secondary shadow border mb-4">
 								<div class="card-body">
 
-									<h4>Learning Notebooks</h4>
+									<h2>Learning Notebooks</h2>
 									<p>A series of <a hef="https://jupyter-notebook.readthedocs.io/"
 											target="_blank">Jupyter</a>
 										learning notebooks are regularly being added and updated.
@@ -406,10 +429,14 @@ print('Loaded library file: %d' % len(libFiles))
 											Colab</a>.
 									</p>
 									<p>
-										A key <b>missing</b> element which is in progress is the availability of
-										installing MaterialX via <em>PyPi</em>. The package will reside <a
-											href="https://pypi.org/project/MaterialX/" target="_blank">here</a> when
-										available.
+									Any contribution requests or comments can be posted as pull requests on
+									<a href="https://github.com/kwokcb/MaterialX_Learn"><img src="images/GitHub_Logo.png" style="width:4em"></a>.
+									</p>											
+									<p>
+										<em>It is recommended to use the MaterialX packages which are
+										available via <a
+											href="https://pypi.org/project/MaterialX/" target="_blank">PyPi</a> 
+											which are available starting with version 1.38.8.</em>
 									</p>
 									<p>
 										For those which may not have access to the execution environment
@@ -656,7 +683,7 @@ print('Loaded library file: %d' % len(libFiles))
 													<ul>
 														<li></li>
 														<li>Defining Targets and Inheritance</li>
-														<li>Setting Targets on Implementions and Definitions</li>
+														<li>Setting Targets on Implementations and Definitions</li>
 														<li>Definitions w/o Targets</li>
 														<li>Inheritance issues</li>
 													</ul>
@@ -802,8 +829,6 @@ print('Loaded library file: %d' % len(libFiles))
 									</div>
 									<p>
 										The notebook files can be read in to Visual Studio Code to run or modify as desired.
-										Any contributions can be posted as pull requests to the 
-										<a href="https://github.com/kwokcb/MaterialX_Learn">Github repo</a>.
 									</p>
 									<p>
 										Below is an example of the "Basics" notebook after execution inside of VSCode.

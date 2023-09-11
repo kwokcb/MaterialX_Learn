@@ -14699,8 +14699,8 @@ such as from <a href="https://openusd.org/release/tut_usd_tutorials.html" target
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Using Usd Version: 0.23.5
-- Sdr nodes { CylinderLight, DomeLight, DiskLight, SphereLight, RectLight, DistantLight, PortalLight, GeometryLight, MeshLight, VolumeLight }
+<pre>Using Usd Version: 0.23.8
+- Sdr nodes { DomeLight, DiskLight, GeometryLight, CylinderLight, PortalLight, DistantLight, RectLight, SphereLight, MeshLight, VolumeLight }
 Using MaterialX Version: 1.38.8
 </pre>
 </div>
@@ -15228,7 +15228,7 @@ For the purposes of translation / interop, logic is included which can general e
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Created working document. Loaded in 699 definitions
+<pre>Created working document. Loaded in 739 definitions
 </pre>
 </div>
 </div>
@@ -16250,7 +16250,7 @@ was supported in MaterialX, and the document path (from <code>getNamePath()</cod
                         <span class="n">connectionPath</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">materialPath</span> <span class="o">+</span> <span class="n">connectionPath</span>
                         <span class="n">source</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="n">connectionPath</span><span class="p">)</span>
                         <span class="k">if</span> <span class="ow">not</span> <span class="n">source</span><span class="p">:</span>
-                            <span class="n">source</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">materialPath</span>
+                            <span class="n">source</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">materialPath</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">source</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">IsA</span><span class="p">(</span><span class="n">UsdShade</span><span class="o">.</span><span class="n">Material</span><span class="p">):</span> 
                         <span class="n">sourcePrim</span> <span class="o">=</span> <span class="n">UsdShade</span><span class="o">.</span><span class="n">Material</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
@@ -16630,6 +16630,7 @@ creates a stage in memory and then performs the conversion.</p>
 
     <span class="n">usdFile</span> <span class="o">=</span> <span class="n">mtlxFileName</span><span class="o">.</span><span class="n">removesuffix</span><span class="p">(</span><span class="s1">&#39;.mtlx&#39;</span><span class="p">)</span>
     <span class="n">usdFile</span> <span class="o">=</span> <span class="n">usdFile</span> <span class="o">+</span> <span class="s1">&#39;.usda&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Export USD file: &#39;</span><span class="p">,</span> <span class="n">usdFile</span><span class="p">)</span>
     <span class="n">stage</span><span class="o">.</span><span class="n">Export</span><span class="p">(</span><span class="n">usdFile</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">stage</span>
@@ -16672,7 +16673,7 @@ creates a stage in memory and then performs the conversion.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">testFile</span> <span class="o">=</span> <span class="s1">&#39;data/standard_surface_marble_solid.mtlx&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">testFile</span> <span class="o">=</span> <span class="s1">&#39;data/sample_marble.mtlx&#39;</span>
 
 <span class="c1"># Convert to Usd. Indicate to include all inputs based on a MaterialX node&#39;s definition</span>
 <span class="c1"># as opposed to just those explicitly specified on the node instance.</span>
@@ -16718,6 +16719,16 @@ creates a stage in memory and then performs the conversion.</p>
 <h4 id="Sample-Marble-Converted-from-MaterialX">Sample Marble Converted from MaterialX<a class="anchor-link" href="#Sample-Marble-Converted-from-MaterialX">&#182;</a></h4>
 </div>
 
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Export USD file:  data/sample_marble.usda
+</pre>
+</div>
 </div>
 <div class="jp-OutputArea-child">
     
@@ -17107,6 +17118,16 @@ creates a stage in memory and then performs the conversion.</p>
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Export USD file:  data/sample_nodegraph.usda
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
@@ -17235,6 +17256,16 @@ performing data model interop. At time of writing, this round trip logic is not 
 <h4 id="Nested-Nodegraph-Converted-from-MaterialX">Nested Nodegraph Converted from MaterialX<a class="anchor-link" href="#Nested-Nodegraph-Converted-from-MaterialX">&#182;</a></h4>
 </div>
 
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Export USD file:  data/test_usd_mtlx.usda
+</pre>
+</div>
 </div>
 <div class="jp-OutputArea-child">
     

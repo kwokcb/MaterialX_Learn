@@ -1,0 +1,173 @@
+{
+  "materialx": {
+    "bitangent:bitangent_vector3": {
+      "input:index": {
+        "type": "integer",
+        "value": "1"
+      },
+      "type": "vector3"
+    },
+    "geompropvalue:geomprop_textcoord": {
+      "input:geomprop": {
+        "type": "string",
+        "value": "st1"
+      },
+      "type": "vector2"
+    },
+    "gltf_image:image_basecolor": {
+      "input:file": {
+        "colorspace": "srgb_texture",
+        "type": "filename",
+        "value": "BoomBoxWithAxes_baseColor.png"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "cubic"
+      },
+      "input:texcoord": {
+        "nodename": "texcoord_vector2",
+        "type": "vector2"
+      },
+      "input:uaddressmode": {
+        "type": "string",
+        "value": "clamp"
+      },
+      "input:vaddressmode": {
+        "type": "string",
+        "value": "clamp"
+      },
+      "type": "color3"
+    },
+    "gltf_image:image_basecolor2": {
+      "input:file": {
+        "colorspace": "srgb_texture",
+        "type": "filename",
+        "value": "BoomBoxWithAxes_baseColor1.png"
+      },
+      "type": "color3"
+    },
+    "gltf_image:image_emission": {
+      "input:file": {
+        "colorspace": "srgb_texture",
+        "type": "filename",
+        "value": "BoomBoxWithAxes_emissive.png"
+      },
+      "type": "color3"
+    },
+    "gltf_image:image_orm": {
+      "input:file": {
+        "type": "filename",
+        "value": "BoomBoxWithAxes_roughnessMetallic.png"
+      },
+      "type": "vector3"
+    },
+    "gltf_normalmap:image_normal": {
+      "input:file": {
+        "type": "filename",
+        "value": "BoomBoxWithAxes_normal.png"
+      },
+      "input:filtertype": {
+        "type": "string",
+        "value": "cubic"
+      },
+      "input:uaddressmode": {
+        "type": "string",
+        "value": "clamp"
+      },
+      "input:vaddressmode": {
+        "type": "string",
+        "value": "clamp"
+      },
+      "type": "vector3"
+    },
+    "gltf_pbr:SHD_M_BoomBox": {
+      "input:base_color": {
+        "nodename": "image_basecolor",
+        "type": "color3"
+      },
+      "input:emissive": {
+        "nodename": "image_emission",
+        "type": "color3"
+      },
+      "input:metallic": {
+        "channels": "z",
+        "nodename": "image_orm",
+        "type": "float",
+        "value": "1"
+      },
+      "input:normal": {
+        "nodename": "image_normal",
+        "type": "vector3"
+      },
+      "input:occlusion": {
+        "channels": "x",
+        "nodename": "image_orm",
+        "type": "float",
+        "value": "1"
+      },
+      "input:roughness": {
+        "channels": "y",
+        "nodename": "image_orm",
+        "type": "float",
+        "value": "1"
+      },
+      "type": "surfaceshader"
+    },
+    "gltf_pbr:SHD_M_Coordinates": {
+      "input:base_color": {
+        "nodename": "image_basecolor2",
+        "type": "color3"
+      },
+      "input:emissive": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:metallic": {
+        "type": "float",
+        "value": "0"
+      },
+      "input:occlusion": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:roughness": {
+        "type": "float",
+        "value": "0.735"
+      },
+      "type": "surfaceshader"
+    },
+    "position:position_vector3": {
+      "type": "vector3"
+    },
+    "surfacematerial:MAT_M_BoomBox": {
+      "input:surfaceshader": {
+        "nodename": "SHD_M_BoomBox",
+        "type": "surfaceshader"
+      },
+      "type": "material"
+    },
+    "surfacematerial:MAT_M_Coordinates": {
+      "input:surfaceshader": {
+        "nodename": "SHD_M_Coordinates",
+        "type": "surfaceshader"
+      },
+      "type": "material"
+    },
+    "tangent:tangent_vector3": {
+      "input:index": {
+        "type": "integer",
+        "value": "1"
+      },
+      "type": "vector3"
+    },
+    "texcoord:texcoord_vector2": {
+      "input:index": {
+        "type": "integer",
+        "value": "0"
+      },
+      "type": "vector2"
+    },
+    "version": "1.38"
+  },
+  "mimetype": "application/mtlx+json"
+}
