@@ -29,8 +29,7 @@ Insertion is more suitable for hardware renderers that for software renderers, a
 An example are renderers which consume the `OSL` shading language. In this case code generation simply passes the `colorspace` information onwards as meta-data within the shader code.
 
 As noted not all color space transforms are specified within MaterialX, so
-if a `colorspace` attribute is specified which is not supported then the 
-integration needs to handle such cases appropriately. For instance a `USD HDStorm` render delegate could use `OpenImageIO`` to perform these transforms, while using code generation for those that are supported.
+if a `colorspace` attribute is specified which is not supported then the integration needs to handle such cases appropriately. For instance a `USD HDStorm` render delegate could use `OpenImageIO`` to perform these transforms, while using code generation for those that are supported.
 
 ### OpenColorIO for MaterialX Transform Creation
 

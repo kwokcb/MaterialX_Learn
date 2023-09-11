@@ -19,7 +19,7 @@
 # To use Usd the "core" package can be installed as follows. Note that Usd `23.2` and `23.5` have been tested with this notebook along with MaterialX `1.38.7`. 
 
 # %%
-pip install usd-core
+#Pip install usd-core
 
 # %% [markdown]
 # After installation various packages can be imported.  `Usd`, `UsdShade`, `Sdf`, and `Gf` are the main packages used. The MaterialX package is also imported. 
@@ -913,7 +913,7 @@ def emitUsdConnections(node, stage, rootPath):
                         connectionPath = '/' + materialPath + connectionPath
                         source = stage.GetPrimAtPath(connectionPath)
                         if not source:
-                            source = stage.GetPrimAtPath = '/' + materialPath
+                            source = stage.GetPrimAtPath('/' + materialPath)
                 if source:
                     if source.IsA(UsdShade.Material): 
                         sourcePrim = UsdShade.Material(source)
@@ -1214,6 +1214,7 @@ def convertMtlxToUsd(mtlxFileName, emitAllValueElements):
 
     usdFile = mtlxFileName.removesuffix('.mtlx')
     usdFile = usdFile + '.usda'
+    print('Export USD file: ', usdFile)
     stage.Export(usdFile, False)
 
     return stage
@@ -1229,7 +1230,7 @@ def convertMtlxToUsd(mtlxFileName, emitAllValueElements):
 # For the `marble` example, we turn on the option that will create a Usd node input using all the inputs specified on the definition of each MaterialX shader node instance.
 
 # %%
-testFile = 'data/standard_surface_marble_solid.mtlx'
+testFile = 'data/sample_marble.mtlx'
 
 # Convert to Usd. Indicate to include all inputs based on a MaterialX node's definition
 # as opposed to just those explicitly specified on the node instance.

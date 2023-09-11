@@ -324,7 +324,7 @@ if code:
 # 
 # 1. The only way to handle these is to have additional logic added for code insertion of color transforms, such that the shader function declarations and resources can be inserted into the code independently. The current MaterialX code generation logic does not otherwise support this using the "default color system".
 # 
-#     > Note : An experiment was attempted previously but does not align with the current proposal to have stand-alone node definitions. It was thus abandoned. ( For those interested the full code with code changes can be found <a href="https://github.com/autodesk-forks/MaterialX/pull/1379/files#diff-a181860f6edce31fab2f260d982a9363ef80062b7eea99f63a19cf0ea60ee44f">here</a>)
+#     > Note : An experiment was attempted previously but does not align with the current proposal to have stand-alone node definitions. It was thus abandoned. ( For those interested the full code with code changes can be found <a href="https://github.com/autodesk-forks/MaterialX/pull/1379/files#diff-a181860f6edce31fab2f260d982a9363ef80062b7eea99f63a19cf0ea60ee44f">here</a>). Here 1D lookups (LUTS) were specified as input arrays and code generation created 1D textures dynamically based on the array inputs. 3D lookups were not handled.
 # 
 # 2. **From the point of view of creating node graphs, any implementation resource dependencies means it cannot be cleanly wrapped up into a self-contained node definition and implementation.**
 # 
@@ -375,12 +375,11 @@ if code:
     display_markdown(md, raw=True)
 
 # %% [markdown]
-# Though `OSL` is listed in the C++ API, the option seems to be missing from the Python API.
-# This seems to be an oversight as it is listed as available with [OCIO version 2.1](https://opencolorio.readthedocs.io/en/latest/releases/ocio_2_1.html#support-for-emitting-open-shading-language-osl)
-# 
-# With a local build with this option exposed there appears to be additional issues with the code
+# Using version 2.3 to access `OSL` there appears to be additional issues with the code
 # generated as additional utility functions may be inserted which are not renamed to avoid collisions.
-# For example functions called `max()`, `pow()` etc are added which are outside the scope of the main shader declaration as well as include **additional include files**.
+# 
+# For example functions called `max()`, `pow()` etc are added which are outside the scope of the main shader declaration for which do not seem to be included in the logic for unique function name. As well as include additional include files which should be part of the OSL distribution. These need to be stripped out to embed this code as part of a larger OSL shader which already includes these functions to avoid name clashes.
+# An <a href="https://github.com/AcademySoftwareFoundation/OpenColorIO/issues/1851" target="_blank">issue</a> has been logged for this.
 # 
 # As `OSL` integrations will generally perform color management outside of the shader, it is to be seen if this is important enough to address.
 
@@ -505,8 +504,7 @@ def writeDocument(doc, filename):
 # %% [markdown]
 # Using these utilities we: 
 # - Create separate definition and implementation Documents. 
-# - Generate shader code for `GLSL` and `MSL` for the same color transform. `OSL` is also generated using
-# as a local OCIO build is used.
+# - Generate shader code for `GLSL`, `MSL`, and `OSL`` for the same color transform. (`OSL` is available in version 2.3).
 # - Create a new definition for that transform
 # - Create a new implementation for each shader code result
 
