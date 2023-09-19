@@ -27,6 +27,7 @@ If you find value in here and want support its progress, Please consider sponsor
 * Learning Pipeline: Various new utilities for rendering, definition, code and graph generation, interop tooling etc.
 * Workflow Articles: Khronos glTF, OpenUSD, OpenColorIO.
 * Tutorial Updates: OpenColorIO, Rendering, JSON Serialization. Github Copilot + Google Bard Tests
+* Remote Hosting of Jupyter notebooks to Colab / Codespaces documentation.
 
 ## Visit the Repository Content
 The content for the site is provided in the following sub-folders:
