@@ -15,7 +15,7 @@
 # %% [markdown]
 # ## 1. Setting up MaterialX
 # 
-# ### Importing MaterialX
+# ### 1.1 Importing MaterialX
 # 
 # When using MaterialX, the very first thing that must be done is to import the package.
 # After loading in the package, the API version available can be found in the `__version__`
@@ -29,7 +29,7 @@ print ('MaterialX API version %s' % mx.__version__)
 print ('MaterialX API version %s' % mx.getVersionString())
 
 # %% [markdown]
-# ### Creating a Document
+# ### 1.2 Creating a Document
 # 
 # In order to perform any action using MaterialX, a `Document` must be created using the `createDocument()`
 # interface. In this example a new document is created and then the version of the document 
@@ -46,7 +46,7 @@ print('Hello MaterialX (Version %s)' % doc.getVersionString())
 
 
 # %% [markdown]
-#  ### Loading In Standard Libraries
+# ### 1.3 Loading In Standard Libraries
 # 
 # To do any useful operations, the standard MaterialX libraries need to be loaded.
 # There libraries are found in in the 'libraries' folder in the installation location and as of
@@ -118,7 +118,7 @@ print('Definition count after import : %d ' % nodeDefinitionCount)
 # 
 #  Please refer to the learning material about "Documents" for details about document management.
 # 
-#  ### Reading and writing from file
+#  ### 2.1 Writing and Reading From File
 #  For reading and writing:
 #  * `writeToXmlFile()` can be used for writing to a file
 #  * `readFromXmlFile()` can be used for reading from a file
@@ -135,7 +135,7 @@ testfileDoc = mx.createDocument()
 mx.readFromXmlFile(testfileDoc, filename)
 
 # %% [markdown]
-#  ### Document Validation
+#  ### 2.2 Document Validation
 # 
 #  When dealing with document content it is a useful to check if the contents are valid using the `validate()` function.
 #  A status code is returned along with a string containing error information if the validation checks failed.
@@ -149,9 +149,48 @@ else:
 
 
 # %% [markdown]
-#  ### 1.1.3 Writing and reading from string
+#  ### 2.3 Writing and Reading From String
 # 
 #  The functions `writeToXmlString()` and `readFromXmlString()` can be used to write and read from a string. It can be useful to transfer the contents of a document via a string for interoperability as well as for debugging purposes.
+# 
+
+# %% [markdown]
+#  ### 2.4. Writing and Reading From URI
+# 
+# XML read and write does not currently work directly with URI', as shown below. We handle the error by catching the `mx.ExceptionFileMissing` exception.
+
+# %%
+# Try reading from sample content on the Learning Github repo
+testUriDoc = mx.createDocument()
+uri = 'https://raw.githubusercontent.com/kwokcb/MaterialX_Learn/main/pymaterialx/data/sample_nodegraph.mtlx'
+
+try:
+    mx.readFromXmlFile(testUriDoc, uri)
+except mx.ExceptionFileMissing as e:
+    print(e)
+except mx.ExceptionParseError as e:
+    print(e)
+
+# %% [markdown]
+# Instead the contents of the file must be read in and then passed to the `readFromXmlString()` interface for reading, or
+# the contents need to be written out to a string using `writeToXmlString()` and then written to a file. Below is an example of using the `urllib` module to read.
+
+# %%
+import urllib
+
+testUriDoc = mx.createDocument()
+try:
+    uriFile = urllib.request.urlopen(uri)
+    uriContents = uriFile.read().decode('utf-8')
+    mx.readFromXmlString(testUriDoc, uriContents)
+    print('Read URI:\n', mx.prettyPrint(testUriDoc))
+except urllib.error.URLError as e:
+    print('Failed to read URI:', e)
+
+# %% [markdown]
+# ### 1.1.4 Filtering Document Content
+
+# %% [markdown]
 # 
 #  In this example we write the document (`doc`) to a string, read it back in to a new document (`doc1`) and print it's contents as a string.
 #  
@@ -235,7 +274,7 @@ print(documentContents)
 # an element (in XML format).
 
 # %% [markdown]
-#  ### Creating Nodes Using `addNodeInstance()`
+#  ### 3.1 Creating Nodes Using `addNodeInstance()`
 # 
 #  The recommended logic to create a node is to 
 # 
@@ -289,7 +328,7 @@ else:
 
 
 # %% [markdown]
-#  ### Minimal Logic
+# ### 3.2 Minimal Creation Logic
 # 
 #  When node definition names are known before-hand (as noted for the dictionary workflow), the minimal logic is to find the definition using the `getNodeDef()` interface, and then calling `addNodeInstance()`. 
 # 
@@ -413,7 +452,7 @@ if nodedef.getInput('base_color'):
 # To check on the state of a document while editing, it is useful to query information back without writing the entire document out
 # to file or string. This section includes some common interfaces for finding nodes in a document.
 # 
-#  ### Individual Nodes
+#  ### 5.1 Individual Nodes
 # 
 #  Individual nodes can be found in a variety of ways:
 #  * By path ( `getDescendant` ): The most "robust" way to find a node is to use a `path` that explicitly points to where in the document hierarchy the node resides. All paths are relative to the element where `getDescendent` is being called from.
@@ -433,7 +472,7 @@ if shadernode:
 
 
 # %% [markdown]
-#  ### Finding List of Nodes
+#  ### 5.2 Finding List of Nodes
 # 
 #  To get a list of all children of a document or node graph:
 #  * `getNodes()` returns all child nodes. 
