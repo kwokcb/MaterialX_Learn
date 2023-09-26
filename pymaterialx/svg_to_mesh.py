@@ -156,12 +156,12 @@ class svgBuilder():
         new_obj.matrix_world = curve.matrix_world
         
         # Center the object
-        new_obj.select_set(True)
-        context.view_layer.objects.active = new_obj
-        bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_MASS')
-        new_obj.location[0] = 0.0
-        new_obj.location[1] = 0.0
-        new_obj.location[2] = 0.0
+        #new_obj.select_set(True)
+        #context.view_layer.objects.active = new_obj
+        #bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_MASS')
+        #new_obj.location[0] = 0.0
+        #new_obj.location[1] = 0.0
+        #new_obj.location[2] = 0.0
         return new_obj, mesh
 
     def convertToMesh(self, doc):
@@ -244,7 +244,7 @@ def main():
     else:
         print('-- Set extrude:', opts.extrude, ", bevel: ", opts.bevel)
 
-    doc, libFiles = mxf.MtlxFile.createWorkingDocument()
+    doc, libFiles, status = mxf.MtlxFile.createWorkingDocument()
 
     newobjs = builder.convertToMesh(doc)
     if len(newobjs) == 0:
@@ -293,8 +293,11 @@ def main():
     blenderFilePath = mx.FilePath(blenderFilePath.asString() + "_to_mesh") 
     blenderFilePath.addExtension('blend')
     print('Output new blender file: ', blenderFilePath.asString())
+    blenderAbsPath = blenderFilePath.asString()
+    # Blender requires absolute paths
+    blenderAbsPath = os.path.abspath(blenderAbsPath)
     with redirect_stdout(output), redirect_stderr(output):        
-        bpy.ops.wm.save_mainfile(filepath=blenderFilePath.asString(), check_existing=True)
+        bpy.ops.wm.save_mainfile(filepath=blenderAbsPath, check_existing=True)
 
 if __name__ == "__main__":
     main()
