@@ -1,4 +1,6 @@
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
   <script>
@@ -8,6 +10,14 @@
 
     gtag('config', 'G-J7404418VP');
   </script>
+
+  <style>
+    model-viewer {
+        width: 256px;
+        height: 256px;
+        background-color: #7d7d7d;
+    }
+  </style>
 
   <title>MaterialX Learn - Glossary</title>
     <link rel="icon" href="../images/logo3d_icon.png" type="image/x-icon"/>    
@@ -833,5 +843,6 @@ such that source and destination color space names conform those found in the
     collapses.forEach((collapseItem) => { collapseItem.addEventListener("click", toggleIndexArea); });
   }
 </script>
+<script src="../js/gltf_pbr_helpers.js"></script>
 </body>
 </html>

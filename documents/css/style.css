@@ -132,3 +132,10 @@ aa .text-shadow-2 {
 .carousel-item {
   height: 10rem;
 }
+
+/* Model viewer */
+model-viewer {
+    width: 256px;
+    height: 256px;
+    background-color: #7d7d7d;
+}

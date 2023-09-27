@@ -1,4 +1,6 @@
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
   <script>
@@ -8,6 +10,14 @@
 
     gtag('config', 'G-J7404418VP');
   </script>
+
+  <style>
+    model-viewer {
+        width: 256px;
+        height: 256px;
+        background-color: #7d7d7d;
+    }
+  </style>
 
   <title>MXLearn ramp4</title>
     <link rel="icon" href="../images/logo3d_icon.png" type="image/x-icon"/>    
@@ -26,6 +36,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
 <script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    lineColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+</script>
 
 <script src="../js/definition_card_helpers.js"></script>
 
@@ -576,12 +589,16 @@ Category: ramp4
 <div class="col-12">
 <div class="card shadow border mb-4">
 <div class="card-body">
-<img src="../../resources/mtlx/nodedef_materials/material_ramp4_float_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ramp4_float_out_genglsl.png style="max-width:11em"><br>
+<div class="row">
+<div class="col-md-6 border-right" >
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> float</button>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural2d</button>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> float</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural2d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> .</p>
+</div>
+<div class="col-md-6">
+<img src="../../resources/mtlx/nodedef_materials/material_ramp4_float_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ramp4_float_out_genglsl.png style="max-width:11em">
+</div></div>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <img src="../images/diagram-3.svg">
@@ -642,7 +659,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_float_valuetl" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -660,7 +677,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_float_valuetr" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -678,7 +695,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_float_valuebl" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -696,7 +713,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_float_valuebr" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -732,7 +749,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Disabled Value : </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_float_out" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -748,12 +765,16 @@ graph LR;
 <div class="col-12">
 <div class="card shadow border mb-4">
 <div class="card-body">
-<img src="../../resources/mtlx/nodedef_materials/material_ramp4_color3_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ramp4_color3_out_genglsl.png style="max-width:11em"><br>
+<div class="row">
+<div class="col-md-6 border-right" >
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color3</button>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural2d</button>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural2d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> .</p>
+</div>
+<div class="col-md-6">
+<img src="../../resources/mtlx/nodedef_materials/material_ramp4_color3_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ramp4_color3_out_genglsl.png style="max-width:11em">
+</div></div>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <img src="../images/diagram-3.svg">
@@ -813,16 +834,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_valuetl_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_valuetl_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_valuetl_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_ramp4_color3_valuetl" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -839,16 +860,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_valuetr_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_valuetr_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_valuetr_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_ramp4_color3_valuetr" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -865,16 +886,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_valuebl_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_valuebl_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_valuebl_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_ramp4_color3_valuebl" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -891,16 +912,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_valuebr_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_valuebr_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_valuebr_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_ramp4_color3_valuebr" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -935,16 +956,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_out_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_out_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color3_out_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_ramp4_color3_out" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -960,12 +981,16 @@ graph LR;
 <div class="col-12">
 <div class="card shadow border mb-4">
 <div class="card-body">
-<img src="../../resources/mtlx/nodedef_materials/material_ramp4_color4_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ramp4_color4_out_genglsl.png style="max-width:11em"><br>
+<div class="row">
+<div class="col-md-6 border-right" >
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color4</button>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural2d</button>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> color4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural2d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> .</p>
+</div>
+<div class="col-md-6">
+<img src="../../resources/mtlx/nodedef_materials/material_ramp4_color4_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ramp4_color4_out_genglsl.png style="max-width:11em">
+</div></div>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <img src="../images/diagram-3.svg">
@@ -1025,19 +1050,19 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuetl_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuetl_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuetl_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuetl_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_ramp4_color4_valuetl" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -1054,19 +1079,19 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuetr_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuetr_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuetr_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuetr_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_ramp4_color4_valuetr" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -1083,19 +1108,19 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuebl_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuebl_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuebl_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuebl_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_ramp4_color4_valuebl" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -1112,19 +1137,19 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuebr_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuebr_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuebr_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_valuebr_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_ramp4_color4_valuebr" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -1159,19 +1184,19 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_out_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_out_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_out_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_color4_out_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_ramp4_color4_out" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -1187,12 +1212,16 @@ graph LR;
 <div class="col-12">
 <div class="card shadow border mb-4">
 <div class="card-body">
-<img src="../../resources/mtlx/nodedef_materials/material_ramp4_vector2_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ramp4_vector2_out_genglsl.png style="max-width:11em"><br>
+<div class="row">
+<div class="col-md-6 border-right" >
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector2</button>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural2d</button>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector2</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural2d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> .</p>
+</div>
+<div class="col-md-6">
+<img src="../../resources/mtlx/nodedef_materials/material_ramp4_vector2_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ramp4_vector2_out_genglsl.png style="max-width:11em">
+</div></div>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <img src="../images/diagram-3.svg">
@@ -1252,10 +1281,10 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector2_valuetl_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector2_valuetl_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1272,10 +1301,10 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector2_valuetr_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector2_valuetr_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1292,10 +1321,10 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector2_valuebl_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector2_valuebl_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1312,10 +1341,10 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector2_valuebr_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector2_valuebr_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1350,10 +1379,10 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector2_out_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector2_out_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1369,12 +1398,16 @@ graph LR;
 <div class="col-12">
 <div class="card shadow border mb-4">
 <div class="card-body">
-<img src="../../resources/mtlx/nodedef_materials/material_ramp4_vector3_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ramp4_vector3_out_genglsl.png style="max-width:11em"><br>
+<div class="row">
+<div class="col-md-6 border-right" >
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector3</button>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural2d</button>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector3</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural2d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> .</p>
+</div>
+<div class="col-md-6">
+<img src="../../resources/mtlx/nodedef_materials/material_ramp4_vector3_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ramp4_vector3_out_genglsl.png style="max-width:11em">
+</div></div>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <img src="../images/diagram-3.svg">
@@ -1434,13 +1467,13 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_valuetl_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_valuetl_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_valuetl_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1457,13 +1490,13 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_valuetr_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_valuetr_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_valuetr_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1480,13 +1513,13 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_valuebl_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_valuebl_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_valuebl_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1503,13 +1536,13 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_valuebr_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_valuebr_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_valuebr_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1544,13 +1577,13 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_out_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_out_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector3_out_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1566,12 +1599,16 @@ graph LR;
 <div class="col-12">
 <div class="card shadow border mb-4">
 <div class="card-body">
-<img src="../../resources/mtlx/nodedef_materials/material_ramp4_vector4_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ramp4_vector4_out_genglsl.png style="max-width:11em"><br>
+<div class="row">
+<div class="col-md-6 border-right" >
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector4</button>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural2d</button>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
 </p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector4</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">procedural2d</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> .</p>
+</div>
+<div class="col-md-6">
+<img src="../../resources/mtlx/nodedef_materials/material_ramp4_vector4_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ramp4_vector4_out_genglsl.png style="max-width:11em">
+</div></div>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <img src="../images/diagram-3.svg">
@@ -1631,16 +1668,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuetl_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuetl_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuetl_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuetl_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1657,16 +1694,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuetr_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuetr_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuetr_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuetr_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1683,16 +1720,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuebl_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuebl_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuebl_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuebl_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1709,16 +1746,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuebr_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuebr_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuebr_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_valuebr_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1753,16 +1790,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_out_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_out_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_out_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_ramp4_vector4_out_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1794,5 +1831,6 @@ graph LR;
     collapses.forEach((collapseItem) => { collapseItem.addEventListener("click", toggleIndexArea); });
   }
 </script>
+<script src="../js/gltf_pbr_helpers.js"></script>
 </body>
 </html>

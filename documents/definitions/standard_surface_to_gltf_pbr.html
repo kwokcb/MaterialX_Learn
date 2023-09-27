@@ -1,4 +1,6 @@
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
   <script>
@@ -8,6 +10,14 @@
 
     gtag('config', 'G-J7404418VP');
   </script>
+
+  <style>
+    model-viewer {
+        width: 256px;
+        height: 256px;
+        background-color: #7d7d7d;
+    }
+  </style>
 
   <title>MXLearn standard_surface_to_gltf_pbr</title>
     <link rel="icon" href="../images/logo3d_icon.png" type="image/x-icon"/>    
@@ -26,6 +36,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
 <script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    lineColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+</script>
 
 <script src="../js/definition_card_helpers.js"></script>
 
@@ -576,60 +589,64 @@ Category: standard_surface_to_gltf_pbr
 <div class="col-12">
 <div class="card shadow border mb-4">
 <div class="card-body">
+<div class="row">
+<div class="col-md-6 border-right" >
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> multioutput</button>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">translation</button>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
+</p>
+</div>
+<div class="col-md-6">
 <p class="card-text">
-<div col-6>
-<div class="row row-cols-sm-6 g-0 d-flex justify-content-start">
+<div col>
+<div class="row row-cols-sm-3 g-0 d-flex justify-content-start">
 <div class="col col-sm ps-0 pe-0 ms-0 me-0">
-<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_base_color_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_base_color_out_genglsl.png><br>
+<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_base_color_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_base_color_out_genglsl.png>
 <div style="font-size: 70%">base_color_out</div>
 </div>
 <div class="col col-sm ps-0 pe-0 ms-0 me-0">
-<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_metallic_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_metallic_out_genglsl.png><br>
+<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_metallic_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_metallic_out_genglsl.png>
 <div style="font-size: 70%">metallic_out</div>
 </div>
 <div class="col col-sm ps-0 pe-0 ms-0 me-0">
-<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_roughness_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_roughness_out_genglsl.png><br>
+<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_roughness_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_roughness_out_genglsl.png>
 <div style="font-size: 70%">roughness_out</div>
 </div>
 <div class="col col-sm ps-0 pe-0 ms-0 me-0">
-<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_transmission_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_transmission_out_genglsl.png><br>
+<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_transmission_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_transmission_out_genglsl.png>
 <div style="font-size: 70%">transmission_out</div>
 </div>
 <div class="col col-sm ps-0 pe-0 ms-0 me-0">
-<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_thickness_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_thickness_out_genglsl.png><br>
+<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_thickness_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_thickness_out_genglsl.png>
 <div style="font-size: 70%">thickness_out</div>
 </div>
 <div class="col col-sm ps-0 pe-0 ms-0 me-0">
-<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_attenuation_color_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_attenuation_color_out_genglsl.png><br>
+<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_attenuation_color_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_attenuation_color_out_genglsl.png>
 <div style="font-size: 70%">attenuation_color_out</div>
 </div>
 <div class="col col-sm ps-0 pe-0 ms-0 me-0">
-<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_sheen_color_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_sheen_color_out_genglsl.png><br>
+<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_sheen_color_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_sheen_color_out_genglsl.png>
 <div style="font-size: 70%">sheen_color_out</div>
 </div>
 <div class="col col-sm ps-0 pe-0 ms-0 me-0">
-<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_sheen_roughness_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_sheen_roughness_out_genglsl.png><br>
+<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_sheen_roughness_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_sheen_roughness_out_genglsl.png>
 <div style="font-size: 70%">sheen_roughness_out</div>
 </div>
 <div class="col col-sm ps-0 pe-0 ms-0 me-0">
-<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_clearcoat_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_clearcoat_out_genglsl.png><br>
+<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_clearcoat_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_clearcoat_out_genglsl.png>
 <div style="font-size: 70%">clearcoat_out</div>
 </div>
 <div class="col col-sm ps-0 pe-0 ms-0 me-0">
-<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_clearcoat_roughness_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_clearcoat_roughness_out_genglsl.png><br>
+<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_clearcoat_roughness_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_clearcoat_roughness_out_genglsl.png>
 <div style="font-size: 70%">clearcoat_roughness_out</div>
 </div>
 <div class="col col-sm ps-0 pe-0 ms-0 me-0">
-<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_emissive_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_emissive_out_genglsl.png><br>
+<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_emissive_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_emissive_out_genglsl.png>
 <div style="font-size: 70%">emissive_out</div>
 </div>
 </div>
 </div>
-</p>
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> multioutput</button></p>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">translation</button></p>
-<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button></p>
-<p class="card-text"><b>Description:</b> .</p>
+</div></div>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
  <img src="../images/diagram-3.svg">
@@ -767,7 +784,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_base" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -784,16 +801,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0.8" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_base_color_0" type="number" class="form-control form-control-sm" value="0.8" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0.8" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_base_color_1" type="number" class="form-control form-control-sm" value="0.8" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0.8" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_base_color_2" type="number" class="form-control form-control-sm" value="0.8" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#cccccc" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_base_color" type="color" value="#cccccc" disabled>
       </div>
   </div>
  </div>
@@ -811,7 +828,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_metalness" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -829,7 +846,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0.2" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_specular_roughness" type="number" class="form-control form-control-sm" step="0.01" value="0.2" disabled>
       </div>
   </div>
  </div>
@@ -847,7 +864,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_transmission" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -864,16 +881,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_transmission_color_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_transmission_color_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_transmission_color_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#ffffff" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_transmission_color" type="color" value="#ffffff" disabled>
       </div>
   </div>
  </div>
@@ -891,7 +908,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_transmission_depth" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -909,7 +926,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_sheen" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -926,16 +943,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_sheen_color_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_sheen_color_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_sheen_color_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#ffffff" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_sheen_color" type="color" value="#ffffff" disabled>
       </div>
   </div>
  </div>
@@ -953,7 +970,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0.3" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_sheen_roughness" type="number" class="form-control form-control-sm" step="0.01" value="0.3" disabled>
       </div>
   </div>
  </div>
@@ -971,7 +988,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_coat" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -988,16 +1005,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_coat_color_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_coat_color_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_coat_color_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_coat_color" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -1015,7 +1032,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0.1" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_coat_roughness" type="number" class="form-control form-control-sm" step="0.01" value="0.1" disabled>
       </div>
   </div>
  </div>
@@ -1033,7 +1050,7 @@ graph LR;
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_emission" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1050,16 +1067,16 @@ graph LR;
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_emission_color_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_emission_color_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_emission_color_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#ffffff" disabled>
+          <input id="ND_standard_surface_to_gltf_pbr_emission_color" type="color" value="#ffffff" disabled>
       </div>
   </div>
  </div>
@@ -1212,5 +1229,6 @@ graph LR;
     collapses.forEach((collapseItem) => { collapseItem.addEventListener("click", toggleIndexArea); });
   }
 </script>
+<script src="../js/gltf_pbr_helpers.js"></script>
 </body>
 </html>
