@@ -1,4 +1,6 @@
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
   <script>
@@ -8,6 +10,14 @@
 
     gtag('config', 'G-J7404418VP');
   </script>
+
+  <style>
+    model-viewer {
+        width: 256px;
+        height: 256px;
+        background-color: #7d7d7d;
+    }
+  </style>
 
   <title>MXLearn disney_brdf_2012</title>
     <link rel="icon" href="../images/logo3d_icon.png" type="image/x-icon"/>    
@@ -26,6 +36,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
 <script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    lineColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+</script>
 
 <script src="../js/definition_card_helpers.js"></script>
 
@@ -632,16 +645,16 @@ Category: disney_brdf_2012
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0.16" disabled>
+          <input id="ND_disney_brdf_2012_surface_baseColor_0" type="number" class="form-control form-control-sm" value="0.16" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0.16" disabled>
+          <input id="ND_disney_brdf_2012_surface_baseColor_1" type="number" class="form-control form-control-sm" value="0.16" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0.16" disabled>
+          <input id="ND_disney_brdf_2012_surface_baseColor_2" type="number" class="form-control form-control-sm" value="0.16" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#282828" disabled>
+          <input id="ND_disney_brdf_2012_surface_baseColor" type="color" value="#282828" disabled>
       </div>
   </div>
  </div>
@@ -659,7 +672,7 @@ Category: disney_brdf_2012
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_disney_brdf_2012_surface_metallic" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -677,7 +690,7 @@ Category: disney_brdf_2012
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_disney_brdf_2012_surface_subsurface" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -695,7 +708,7 @@ Category: disney_brdf_2012
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0.5" disabled>
+          <input id="ND_disney_brdf_2012_surface_specular" type="number" class="form-control form-control-sm" step="0.01" value="0.5" disabled>
       </div>
   </div>
  </div>
@@ -713,7 +726,7 @@ Category: disney_brdf_2012
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0.5" disabled>
+          <input id="ND_disney_brdf_2012_surface_roughness" type="number" class="form-control form-control-sm" step="0.01" value="0.5" disabled>
       </div>
   </div>
  </div>
@@ -731,7 +744,7 @@ Category: disney_brdf_2012
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_disney_brdf_2012_surface_specularTint" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -749,7 +762,7 @@ Category: disney_brdf_2012
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_disney_brdf_2012_surface_anisotropic" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -767,7 +780,7 @@ Category: disney_brdf_2012
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_disney_brdf_2012_surface_sheen" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -785,7 +798,7 @@ Category: disney_brdf_2012
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0.5" disabled>
+          <input id="ND_disney_brdf_2012_surface_sheenTint" type="number" class="form-control form-control-sm" step="0.01" value="0.5" disabled>
       </div>
   </div>
  </div>
@@ -803,7 +816,7 @@ Category: disney_brdf_2012
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_disney_brdf_2012_surface_clearcoat" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -821,7 +834,7 @@ Category: disney_brdf_2012
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_disney_brdf_2012_surface_clearcoatGloss" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -864,5 +877,6 @@ Category: disney_brdf_2012
     collapses.forEach((collapseItem) => { collapseItem.addEventListener("click", toggleIndexArea); });
   }
 </script>
+<script src="../js/gltf_pbr_helpers.js"></script>
 </body>
 </html>

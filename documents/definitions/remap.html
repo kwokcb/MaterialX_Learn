@@ -1,4 +1,6 @@
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
   <script>
@@ -8,6 +10,14 @@
 
     gtag('config', 'G-J7404418VP');
   </script>
+
+  <style>
+    model-viewer {
+        width: 256px;
+        height: 256px;
+        background-color: #7d7d7d;
+    }
+  </style>
 
   <title>MXLearn remap</title>
     <link rel="icon" href="../images/logo3d_icon.png" type="image/x-icon"/>    
@@ -26,6 +36,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
 <script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    lineColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+</script>
 
 <script src="../js/definition_card_helpers.js"></script>
 
@@ -668,7 +681,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_float_in" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -686,7 +699,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_float_inlow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -704,7 +717,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_float_inhigh" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -722,7 +735,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_float_outlow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -740,7 +753,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_float_outhigh" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -865,16 +878,16 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3_in_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3_in_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3_in_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_remap_color3_in" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -891,16 +904,16 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3_inlow_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3_inlow_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3_inlow_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_remap_color3_inlow" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -917,16 +930,16 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color3_inhigh_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color3_inhigh_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color3_inhigh_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#ffffff" disabled>
+          <input id="ND_remap_color3_inhigh" type="color" value="#ffffff" disabled>
       </div>
   </div>
  </div>
@@ -943,16 +956,16 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3_outlow_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3_outlow_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3_outlow_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_remap_color3_outlow" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -969,16 +982,16 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color3_outhigh_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color3_outhigh_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color3_outhigh_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#ffffff" disabled>
+          <input id="ND_remap_color3_outhigh" type="color" value="#ffffff" disabled>
       </div>
   </div>
  </div>
@@ -1103,19 +1116,19 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4_in_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4_in_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4_in_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4_in_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_remap_color4_in" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -1132,19 +1145,19 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4_inlow_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4_inlow_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4_inlow_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4_inlow_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_remap_color4_inlow" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -1161,19 +1174,19 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color4_inhigh_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color4_inhigh_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color4_inhigh_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color4_inhigh_3" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#ffffff" disabled>
+          <input id="ND_remap_color4_inhigh" type="color" value="#ffffff" disabled>
       </div>
   </div>
  </div>
@@ -1190,19 +1203,19 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4_outlow_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4_outlow_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4_outlow_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4_outlow_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_remap_color4_outlow" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -1219,19 +1232,19 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color4_outhigh_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color4_outhigh_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color4_outhigh_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color4_outhigh_3" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#ffffff" disabled>
+          <input id="ND_remap_color4_outhigh" type="color" value="#ffffff" disabled>
       </div>
   </div>
  </div>
@@ -1356,10 +1369,10 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector2_in_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector2_in_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1376,10 +1389,10 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector2_inlow_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector2_inlow_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1396,10 +1409,10 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector2_inhigh_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector2_inhigh_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
   </div>
  </div>
@@ -1416,10 +1429,10 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector2_outlow_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector2_outlow_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1436,10 +1449,10 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector2_outhigh_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector2_outhigh_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
   </div>
  </div>
@@ -1564,13 +1577,13 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3_in_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3_in_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3_in_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1587,13 +1600,13 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3_inlow_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3_inlow_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3_inlow_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1610,13 +1623,13 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector3_inhigh_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector3_inhigh_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector3_inhigh_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
   </div>
  </div>
@@ -1633,13 +1646,13 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3_outlow_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3_outlow_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3_outlow_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1656,13 +1669,13 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector3_outhigh_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector3_outhigh_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector3_outhigh_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
   </div>
  </div>
@@ -1787,16 +1800,16 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4_in_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4_in_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4_in_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4_in_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1813,16 +1826,16 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4_inlow_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4_inlow_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4_inlow_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4_inlow_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1839,16 +1852,16 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector4_inhigh_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector4_inhigh_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector4_inhigh_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector4_inhigh_3" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
   </div>
  </div>
@@ -1865,16 +1878,16 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4_outlow_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4_outlow_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4_outlow_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4_outlow_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -1891,16 +1904,16 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector4_outhigh_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector4_outhigh_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector4_outhigh_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector4_outhigh_3" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
   </div>
  </div>
@@ -2025,16 +2038,16 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3FA_in_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3FA_in_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3FA_in_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_remap_color3FA_in" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -2052,7 +2065,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3FA_inlow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2070,7 +2083,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color3FA_inhigh" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -2088,7 +2101,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color3FA_outlow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2106,7 +2119,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color3FA_outhigh" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -2231,19 +2244,19 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4FA_in_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4FA_in_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4FA_in_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4FA_in_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-1">
-          <input type="color" value="#000000" disabled>
+          <input id="ND_remap_color4FA_in" type="color" value="#000000" disabled>
       </div>
   </div>
  </div>
@@ -2261,7 +2274,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4FA_inlow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2279,7 +2292,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color4FA_inhigh" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -2297,7 +2310,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_color4FA_outlow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2315,7 +2328,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_color4FA_outhigh" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -2440,10 +2453,10 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector2FA_in_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector2FA_in_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2461,7 +2474,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector2FA_inlow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2479,7 +2492,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector2FA_inhigh" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -2497,7 +2510,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector2FA_outlow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2515,7 +2528,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector2FA_outhigh" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -2640,13 +2653,13 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3FA_in_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3FA_in_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3FA_in_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2664,7 +2677,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3FA_inlow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2682,7 +2695,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector3FA_inhigh" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -2700,7 +2713,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector3FA_outlow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2718,7 +2731,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector3FA_outhigh" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -2843,16 +2856,16 @@ Category: remap
   <div class="form-group row g-1">
       <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4FA_in_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4FA_in_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4FA_in_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4FA_in_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2870,7 +2883,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4FA_inlow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2888,7 +2901,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector4FA_inhigh" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -2906,7 +2919,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_remap_vector4FA_outlow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
  </div>
@@ -2924,7 +2937,7 @@ Category: remap
       <label
           class="col-sm-2 col-form-label col-form-label-sm">Value:  </label>
       <div class="col-sm-2">
-          <input type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_remap_vector4FA_outhigh" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
  </div>
@@ -2974,5 +2987,6 @@ Category: remap
     collapses.forEach((collapseItem) => { collapseItem.addEventListener("click", toggleIndexArea); });
   }
 </script>
+<script src="../js/gltf_pbr_helpers.js"></script>
 </body>
 </html>

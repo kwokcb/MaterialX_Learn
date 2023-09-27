@@ -108,5 +108,5 @@ function toggleIndexArea(event) {
     } else {
         event.target.innerHTML = imgsrc.replace('down', 'right');
     }
-    console.log(event.target.innerHTML)
+    //console.log(event.target.innerHTML)
 }
