@@ -1,0 +1,434 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "MaterialX 1.38 to glTF 2.0 generator. https://github.com/kwokcb/glTF_MaterialX",
+    "copyright": "Copyright 2022-2023: Bernard Kwok"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36228,
+      "type": "VEC3",
+      "max": [
+        1.0168780088424683,
+        2.091491937637329,
+        0.9763060212135315
+      ],
+      "min": [
+        -1.1265790462493896,
+        0.07684300094842911,
+        -1.1052850484848022
+      ]
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36228,
+      "type": "VEC3",
+      "max": [
+        0.9999819993972778,
+        0.9999993443489075,
+        0.9999726414680481
+      ],
+      "min": [
+        -0.9999819993972778,
+        -0.9999997615814209,
+        -0.9999726414680481
+      ]
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36228,
+      "type": "VEC2",
+      "max": [
+        0.9962999820709229,
+        0.9973000288009644
+      ],
+      "min": [
+        0.002199999988079071,
+        0.004199981689453125
+      ]
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5125,
+      "count": 212424,
+      "type": "SCALAR",
+      "max": [
+        36227
+      ],
+      "min": [
+        0
+      ]
+    },
+    {
+      "bufferView": 4,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 9140,
+      "type": "VEC3",
+      "max": [
+        0.6733869910240173,
+        1.8961529731750488,
+        0.7821810245513916
+      ],
+      "min": [
+        -0.7826089859008789,
+        0.004230000078678131,
+        -0.763903021812439
+      ]
+    },
+    {
+      "bufferView": 5,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 9140,
+      "type": "VEC3",
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ]
+    },
+    {
+      "bufferView": 6,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 9140,
+      "type": "VEC2",
+      "max": [
+        0.9962000250816345,
+        0.7520999908447266
+      ],
+      "min": [
+        0.0027000000700354576,
+        0.0037999749183654785
+      ]
+    },
+    {
+      "bufferView": 7,
+      "byteOffset": 0,
+      "componentType": 5125,
+      "count": 52368,
+      "type": "SCALAR",
+      "max": [
+        9139
+      ],
+      "min": [
+        0
+      ]
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "shaderball_data.bin",
+      "byteLength": 2510944
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 434736,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 434736,
+      "byteLength": 434736,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 869472,
+      "byteLength": 289824,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1159296,
+      "byteLength": 849696,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2008992,
+      "byteLength": 109680,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2118672,
+      "byteLength": 109680,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2228352,
+      "byteLength": 73120,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2301472,
+      "byteLength": 209472,
+      "target": 34963
+    }
+  ],
+  "materials": [
+    {
+      "extensions": {
+        "KHR_procedural": {
+          "baseColorTexture": 6
+        },
+        "KHR_materials_transmission": {
+          "transmissionFactor": 0.0
+        },
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "specularFactor": 1.0
+        },
+        "KHR_materials_emissive_strength": {
+          "emissiveStrength": 1.0
+        },
+        "KHR_materials_ior": {
+          "ior": 1.5
+        },
+        "KHR_materials_sheen": {
+          "sheenColorFactor": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sheenRoughnessFactor": 0.0
+        },
+        "KHR_materials_iridescence": {
+          "iridescenceIor": 1.3,
+          "iridescenceFactor": 0.0,
+          "iridescenceThicknessMinimum": 100,
+          "iridescenceThicknessMaximum": 400
+        }
+      },
+      "name": "gltf_pbr_surfaceshader",
+      "pbrMetallicRoughness": {},
+      "emissiveFactor": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Preview_Mesh",
+      "primitives": [
+        {
+          "mode": 4,
+          "material": 0,
+          "indices": 3,
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          }
+        }
+      ]
+    },
+    {
+      "name": "Calibration_Mesh",
+      "primitives": [
+        {
+          "mode": 4,
+          "material": 0,
+          "indices": 7,
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5,
+            "TEXCOORD_0": 6
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Preview_Mesh",
+      "mesh": 0
+    },
+    {
+      "name": "Calibration_Mesh",
+      "mesh": 1
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1
+      ]
+    }
+  ],
+  "scene": 0,
+  "textures": [],
+  "images": [],
+  "extensionsUsed": [
+    "KHR_procedural",
+    "KHR_materials_transmission",
+    "KHR_materials_specular",
+    "KHR_materials_emissive_strength",
+    "KHR_materials_ior",
+    "KHR_materials_sheen",
+    "KHR_materials_iridescence"
+  ],
+  "procedurals": [
+    {
+      "name": "NG_marble1/base_color_1",
+      "nodetype": "input",
+      "value": "0.8, 0.8, 0.8"
+    },
+    {
+      "name": "NG_marble1/base_color_2",
+      "nodetype": "input",
+      "value": "0.1, 0.1, 0.3"
+    },
+    {
+      "name": "NG_marble1/noise_scale_1",
+      "nodetype": "input",
+      "value": "6.0"
+    },
+    {
+      "name": "NG_marble1/noise_scale_2",
+      "nodetype": "input",
+      "value": "4.0"
+    },
+    {
+      "name": "NG_marble1/noise_power",
+      "nodetype": "input",
+      "value": "3.0"
+    },
+    {
+      "name": "NG_marble1/noise_octaves",
+      "nodetype": "input",
+      "value": "3"
+    },
+    {
+      "name": "NG_marble1/out",
+      "nodetype": "output"
+    },
+    {
+      "name": "NG_marble1/obj_pos",
+      "nodetype": "position",
+      "type": "vector3"
+    },
+    {
+      "name": "NG_marble1/add_xyz",
+      "nodetype": "dotproduct",
+      "type": "float",
+      "inputs": {
+        "in2": "1, 1, 1"
+      }
+    },
+    {
+      "name": "NG_marble1/scale_xyz",
+      "nodetype": "multiply",
+      "type": "float",
+      "inputs": {
+        "in2": {
+          "connection": 2
+        }
+      }
+    },
+    {
+      "name": "NG_marble1/scale_pos",
+      "nodetype": "multiply",
+      "type": "vector3",
+      "inputs": {
+        "in2": {
+          "connection": 3
+        }
+      }
+    },
+    {
+      "name": "NG_marble1/noise",
+      "nodetype": "fractal3d",
+      "type": "float",
+      "inputs": {
+        "octaves": {
+          "connection": 5
+        }
+      }
+    },
+    {
+      "name": "NG_marble1/scale_noise",
+      "nodetype": "multiply",
+      "type": "float",
+      "inputs": {
+        "in2": "3.0"
+      }
+    },
+    {
+      "name": "NG_marble1/sum",
+      "nodetype": "add",
+      "type": "float"
+    },
+    {
+      "name": "NG_marble1/sin",
+      "nodetype": "sin",
+      "type": "float"
+    },
+    {
+      "name": "NG_marble1/scale",
+      "nodetype": "multiply",
+      "type": "float",
+      "inputs": {
+        "in2": "0.5"
+      }
+    },
+    {
+      "name": "NG_marble1/bias",
+      "nodetype": "add",
+      "type": "float",
+      "inputs": {
+        "in2": "0.5"
+      }
+    },
+    {
+      "name": "NG_marble1/power",
+      "nodetype": "power",
+      "type": "float",
+      "inputs": {
+        "in2": {
+          "connection": 4
+        }
+      }
+    },
+    {
+      "name": "NG_marble1/color_mix",
+      "nodetype": "mix",
+      "type": "color3",
+      "inputs": {
+        "bg": {
+          "connection": 0
+        },
+        "fg": {
+          "connection": 1
+        }
+      }
+    }
+  ]
+}

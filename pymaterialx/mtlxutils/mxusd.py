@@ -37,7 +37,7 @@ class UsdToMtlx():
     insertComments = False    
 
     def initializeMaterialXDoc(self):
-        self.doc, self.libFiles = mxf.MtlxFile.createWorkingDocument(
+        self.doc, self.libFiles, status = mxf.MtlxFile.createWorkingDocument(
             self.userPaths, self.userLibraries)
 
     def getMaterials(self, stage):

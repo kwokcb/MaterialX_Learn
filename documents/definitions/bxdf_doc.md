@@ -943,7 +943,8 @@ graph LR;
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
     style NG_standard_surface_surfaceshader_100_coatINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf] --".fg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
-    NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply] --".rrr -> .color90"--> NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf]
+    NG_standard_surface_surfaceshader_100_one_minus_coat_ior_to_F0[subtract] --".rrr -> .color0"--> NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf]
+    NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply] --".in2"--> NG_standard_surface_surfaceshader_100_one_minus_coat_ior_to_F0[subtract]
     NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide] --".in1"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply]
     NG_standard_surface_surfaceshader_100_one_minus_coat_ior[subtract] --".in1"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide]
     NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.in2==> NG_standard_surface_surfaceshader_100_one_minus_coat_ior[subtract]
@@ -1172,7 +1173,8 @@ graph LR;
     NG_standard_surface_surfaceshader_100_coatINT([coat]) ==.mix==> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
     style NG_standard_surface_surfaceshader_100_coatINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf] --".fg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[mix]
-    NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply] --".rrr -> .color90"--> NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf]
+    NG_standard_surface_surfaceshader_100_one_minus_coat_ior_to_F0[subtract] --".rrr -> .color0"--> NG_standard_surface_surfaceshader_100_coat_emission_edf[generalized_schlick_edf]
+    NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply] --".in2"--> NG_standard_surface_surfaceshader_100_one_minus_coat_ior_to_F0[subtract]
     NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide] --".in1"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0[multiply]
     NG_standard_surface_surfaceshader_100_one_minus_coat_ior[subtract] --".in1"--> NG_standard_surface_surfaceshader_100_coat_ior_to_F0_sqrt[divide]
     NG_standard_surface_surfaceshader_100_coat_IORINT([coat_IOR]) ==.in2==> NG_standard_surface_surfaceshader_100_one_minus_coat_ior[subtract]

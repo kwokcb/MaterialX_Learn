@@ -1,0 +1,253 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "Open Asset Import Library (assimp v5.0.cd42b995)"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36228,
+      "type": "VEC3",
+      "max": [
+        1.0168780088424683,
+        2.091491937637329,
+        0.9763060212135315
+      ],
+      "min": [
+        -1.1265790462493896,
+        0.07684300094842911,
+        -1.1052850484848022
+      ]
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36228,
+      "type": "VEC3",
+      "max": [
+        0.9999819993972778,
+        0.9999993443489075,
+        0.9999726414680481
+      ],
+      "min": [
+        -0.9999819993972778,
+        -0.9999997615814209,
+        -0.9999726414680481
+      ]
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 36228,
+      "type": "VEC2",
+      "max": [
+        0.9962999820709229,
+        0.9973000288009644
+      ],
+      "min": [
+        0.002199999988079071,
+        0.004199981689453125
+      ]
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5125,
+      "count": 212424,
+      "type": "SCALAR",
+      "max": [
+        36227
+      ],
+      "min": [
+        0
+      ]
+    },
+    {
+      "bufferView": 4,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 9140,
+      "type": "VEC3",
+      "max": [
+        0.6733869910240173,
+        1.8961529731750488,
+        0.7821810245513916
+      ],
+      "min": [
+        -0.7826089859008789,
+        0.004230000078678131,
+        -0.763903021812439
+      ]
+    },
+    {
+      "bufferView": 5,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 9140,
+      "type": "VEC3",
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ]
+    },
+    {
+      "bufferView": 6,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 9140,
+      "type": "VEC2",
+      "max": [
+        0.9962000250816345,
+        0.7520999908447266
+      ],
+      "min": [
+        0.0027000000700354576,
+        0.0037999749183654785
+      ]
+    },
+    {
+      "bufferView": 7,
+      "byteOffset": 0,
+      "componentType": 5125,
+      "count": 52368,
+      "type": "SCALAR",
+      "max": [
+        9139
+      ],
+      "min": [
+        0
+      ]
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "shaderball_data.bin",
+      "byteLength": 2510944
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 434736,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 434736,
+      "byteLength": 434736,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 869472,
+      "byteLength": 289824,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1159296,
+      "byteLength": 849696,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2008992,
+      "byteLength": 109680,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2118672,
+      "byteLength": 109680,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2228352,
+      "byteLength": 73120,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2301472,
+      "byteLength": 209472,
+      "target": 34963
+    }
+  ],
+  "materials": [
+    {
+      "name": "DefaultMaterial",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.6000000238418579,
+          0.6000000238418579,
+          0.6000000238418579,
+          1
+        ],
+        "metallicFactor": 0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Preview_Mesh",
+      "primitives": [
+        {
+          "mode": 4,
+          "material": 0,
+          "indices": 3,
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          }
+        }
+      ]
+    },
+    {
+      "name": "Calibration_Mesh",
+      "primitives": [
+        {
+          "mode": 4,
+          "material": 0,
+          "indices": 7,
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5,
+            "TEXCOORD_0": 6
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Preview_Mesh",
+      "mesh": 0
+    },
+    {
+      "name": "Calibration_Mesh",
+      "mesh": 1
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1
+      ]
+    }
+  ],
+  "scene": 0
+}
