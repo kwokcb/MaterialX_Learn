@@ -11463,7 +11463,39 @@ graph LR;
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_overlay_float
+
+
+```mermaid
+graph LR; 
+    NG_overlay_float_N_mix[mix] --> NG_overlay_float_out([out])
+    style NG_overlay_float_out fill:#0C0, color:#111
+    NG_overlay_float_bgINT([bg]) ==.bg==> NG_overlay_float_N_mix[mix]
+    style NG_overlay_float_bgINT fill:#0CF, color:#111
+    NG_overlay_float_mixINT([mix]) ==.mix==> NG_overlay_float_N_mix[mix]
+    style NG_overlay_float_mixINT fill:#0CF, color:#111
+    NG_overlay_float_N_ifgreatereq0_overlay_r{ifgreatereq} --".fg"--> NG_overlay_float_N_mix[mix]
+    NG_overlay_float_bgINT([bg]) ==.value1==> NG_overlay_float_N_ifgreatereq0_overlay_r[ifgreatereq]
+    style NG_overlay_float_bgINT fill:#0CF, color:#111
+    NG_overlay_float_N_subtract_lower_one[subtract] --".in1"--> NG_overlay_float_N_ifgreatereq0_overlay_r{ifgreatereq}
+    style NG_overlay_float_N_ifgreatereq0_overlay_r fill:#F80, color:#111
+    NG_overlay_float_N_multiply_lower_two[multiply] --".in2"--> NG_overlay_float_N_subtract_lower_one[subtract]
+    NG_overlay_float_N_multiply_lower_fg_bg[multiply] --".in1"--> NG_overlay_float_N_multiply_lower_two[multiply]
+    NG_overlay_float_N_subtract_lower_one_bg[subtract] --".in1"--> NG_overlay_float_N_multiply_lower_fg_bg[multiply]
+    NG_overlay_float_bgINT([bg]) ==.in2==> NG_overlay_float_N_subtract_lower_one_bg[subtract]
+    style NG_overlay_float_bgINT fill:#0CF, color:#111
+    NG_overlay_float_N_subtract_lower_one_fg[subtract] --".in2"--> NG_overlay_float_N_multiply_lower_fg_bg[multiply]
+    NG_overlay_float_fgINT([fg]) ==.in2==> NG_overlay_float_N_subtract_lower_one_fg[subtract]
+    style NG_overlay_float_fgINT fill:#0CF, color:#111
+    NG_overlay_float_N_multiply_upper_two[multiply] --".in2"--> NG_overlay_float_N_ifgreatereq0_overlay_r{ifgreatereq}
+    style NG_overlay_float_N_ifgreatereq0_overlay_r fill:#F80, color:#111
+    NG_overlay_float_N_multiply_upper_fg_bg[multiply] --".in1"--> NG_overlay_float_N_multiply_upper_two[multiply]
+    NG_overlay_float_fgINT([fg]) ==.in1==> NG_overlay_float_N_multiply_upper_fg_bg[multiply]
+    style NG_overlay_float_fgINT fill:#0CF, color:#111
+    NG_overlay_float_bgINT([bg]) ==.in2==> NG_overlay_float_N_multiply_upper_fg_bg[multiply]
+    style NG_overlay_float_bgINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11482,7 +11514,46 @@ graph LR;
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_overlay_color3
+
+
+```mermaid
+graph LR; 
+    NG_overlay_color3_N_combine[combine3] --> NG_overlay_color3_out([out])
+    style NG_overlay_color3_out fill:#0C0, color:#111
+    NG_overlay_color3_N_overlay_r[overlay] --".in1"--> NG_overlay_color3_N_combine[combine3]
+    NG_overlay_color3_mixINT([mix]) ==.mix==> NG_overlay_color3_N_overlay_r[overlay]
+    style NG_overlay_color3_mixINT fill:#0CF, color:#111
+    NG_overlay_color3_N_split_color3_fg[separate3] --> NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutr([outr])
+    style NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutr fill:#0C0, color:#111
+    NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutr --".fg"--> NG_overlay_color3_N_overlay_r[overlay]
+    NG_overlay_color3_fgINT([fg]) ==.in==> NG_overlay_color3_N_split_color3_fg[separate3]
+    style NG_overlay_color3_fgINT fill:#0CF, color:#111
+    NG_overlay_color3_N_split_color3_bg[separate3] --> NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutr([outr])
+    style NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutr fill:#0C0, color:#111
+    NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutr --".bg"--> NG_overlay_color3_N_overlay_r[overlay]
+    NG_overlay_color3_bgINT([bg]) ==.in==> NG_overlay_color3_N_split_color3_bg[separate3]
+    style NG_overlay_color3_bgINT fill:#0CF, color:#111
+    NG_overlay_color3_N_overlay_g[overlay] --".in2"--> NG_overlay_color3_N_combine[combine3]
+    NG_overlay_color3_mixINT([mix]) ==.mix==> NG_overlay_color3_N_overlay_g[overlay]
+    style NG_overlay_color3_mixINT fill:#0CF, color:#111
+    NG_overlay_color3_N_split_color3_fg[separate3] --> NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutg([outg])
+    style NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutg fill:#0C0, color:#111
+    NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutg --".fg"--> NG_overlay_color3_N_overlay_g[overlay]
+    NG_overlay_color3_N_split_color3_bg[separate3] --> NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutg([outg])
+    style NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutg fill:#0C0, color:#111
+    NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutg --".bg"--> NG_overlay_color3_N_overlay_g[overlay]
+    NG_overlay_color3_N_overlay_b[overlay] --".in3"--> NG_overlay_color3_N_combine[combine3]
+    NG_overlay_color3_mixINT([mix]) ==.mix==> NG_overlay_color3_N_overlay_b[overlay]
+    style NG_overlay_color3_mixINT fill:#0CF, color:#111
+    NG_overlay_color3_N_split_color3_fg[separate3] --> NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutb([outb])
+    style NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutb fill:#0C0, color:#111
+    NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutb --".fg"--> NG_overlay_color3_N_overlay_b[overlay]
+    NG_overlay_color3_N_split_color3_bg[separate3] --> NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutb([outb])
+    style NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutb fill:#0C0, color:#111
+    NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutb --".bg"--> NG_overlay_color3_N_overlay_b[overlay]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -11501,7 +11572,55 @@ graph LR;
 * *Node Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_overlay_color4
+
+
+```mermaid
+graph LR; 
+    NG_overlay_color4_N_combine[combine4] --> NG_overlay_color4_out([out])
+    style NG_overlay_color4_out fill:#0C0, color:#111
+    NG_overlay_color4_N_overlay_r[overlay] --".in1"--> NG_overlay_color4_N_combine[combine4]
+    NG_overlay_color4_mixINT([mix]) ==.mix==> NG_overlay_color4_N_overlay_r[overlay]
+    style NG_overlay_color4_mixINT fill:#0CF, color:#111
+    NG_overlay_color4_N_split_fg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_fgoutr([outr])
+    style NG_overlay_color4_NG_overlay_color4_N_split_fgoutr fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_fgoutr --".fg"--> NG_overlay_color4_N_overlay_r[overlay]
+    NG_overlay_color4_fgINT([fg]) ==.in==> NG_overlay_color4_N_split_fg[separate4]
+    style NG_overlay_color4_fgINT fill:#0CF, color:#111
+    NG_overlay_color4_N_split_bg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_bgoutr([outr])
+    style NG_overlay_color4_NG_overlay_color4_N_split_bgoutr fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_bgoutr --".bg"--> NG_overlay_color4_N_overlay_r[overlay]
+    NG_overlay_color4_bgINT([bg]) ==.in==> NG_overlay_color4_N_split_bg[separate4]
+    style NG_overlay_color4_bgINT fill:#0CF, color:#111
+    NG_overlay_color4_N_overlay_g[overlay] --".in2"--> NG_overlay_color4_N_combine[combine4]
+    NG_overlay_color4_mixINT([mix]) ==.mix==> NG_overlay_color4_N_overlay_g[overlay]
+    style NG_overlay_color4_mixINT fill:#0CF, color:#111
+    NG_overlay_color4_N_split_fg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_fgoutg([outg])
+    style NG_overlay_color4_NG_overlay_color4_N_split_fgoutg fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_fgoutg --".fg"--> NG_overlay_color4_N_overlay_g[overlay]
+    NG_overlay_color4_N_split_bg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_bgoutg([outg])
+    style NG_overlay_color4_NG_overlay_color4_N_split_bgoutg fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_bgoutg --".bg"--> NG_overlay_color4_N_overlay_g[overlay]
+    NG_overlay_color4_N_overlay_b[overlay] --".in3"--> NG_overlay_color4_N_combine[combine4]
+    NG_overlay_color4_mixINT([mix]) ==.mix==> NG_overlay_color4_N_overlay_b[overlay]
+    style NG_overlay_color4_mixINT fill:#0CF, color:#111
+    NG_overlay_color4_N_split_fg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_fgoutb([outb])
+    style NG_overlay_color4_NG_overlay_color4_N_split_fgoutb fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_fgoutb --".fg"--> NG_overlay_color4_N_overlay_b[overlay]
+    NG_overlay_color4_N_split_bg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_bgoutb([outb])
+    style NG_overlay_color4_NG_overlay_color4_N_split_bgoutb fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_bgoutb --".bg"--> NG_overlay_color4_N_overlay_b[overlay]
+    NG_overlay_color4_N_overlay_a[overlay] --".in4"--> NG_overlay_color4_N_combine[combine4]
+    NG_overlay_color4_mixINT([mix]) ==.mix==> NG_overlay_color4_N_overlay_a[overlay]
+    style NG_overlay_color4_mixINT fill:#0CF, color:#111
+    NG_overlay_color4_N_split_fg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_fgouta([outa])
+    style NG_overlay_color4_NG_overlay_color4_N_split_fgouta fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_fgouta --".fg"--> NG_overlay_color4_N_overlay_a[overlay]
+    NG_overlay_color4_N_split_bg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_bgouta([outa])
+    style NG_overlay_color4_NG_overlay_color4_N_split_bgouta fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_bgouta --".bg"--> NG_overlay_color4_N_overlay_a[overlay]
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |

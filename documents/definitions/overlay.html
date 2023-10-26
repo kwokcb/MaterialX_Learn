@@ -123,6 +123,11 @@
               aria-expanded="false">Utilities</a>
             <ul class="dropdown-menu">
               <li>
+                <a class="dropdown-item" href="../gltfViewer.html">
+                  glTF Model Viewer
+                </a>
+              </li>
+              <li>
                 <a class="dropdown-item" href="../mermaidChecker.html">
                   Graph Visualizer
                 </a>
@@ -600,66 +605,47 @@ Category: overlay
 <img src="../../resources/mtlx/nodedef_materials/material_overlay_float_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_overlay_float_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>({{fg}} < 0.5) ? ({{mix}}*2.0*{{fg}}*{{bg}}) + ((1.0-{{mix}})*{{bg}}) : ({{mix}}*(1.0-(1.0-{{fg}})*(1.0-{{bg}}))) + ((1.0-{{mix}})*{{bg}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_overlay_float({{fg}}, {{bg}}, {{mix}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>({{fg}} < 0.5) ? ({{mix}}*2.0*{{fg}}*{{bg}}) + ((1.0-{{mix}})*{{bg}}) : ({{mix}}*(1.0-(1.0-{{fg}})*(1.0-{{bg}}))) + ((1.0-{{mix}})*{{bg}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>({{fg}} < 0.5) ? ({{mix}}*2.0*{{fg}}*{{bg}}) + ((1.0-{{mix}})*{{bg}}) : ({{mix}}*(1.0-(1.0-{{fg}})*(1.0-{{bg}}))) + ((1.0-{{mix}})*{{bg}}) </textarea>
-    </div>
-  </div>
-<hr>
+<button id="ND_overlay_float_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_overlay_float_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_overlay_float_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_overlay_float_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_overlay_float_N_mix[mix] --> NG_overlay_float_out([out])
+    style NG_overlay_float_out fill:#0C0, color:#111
+    NG_overlay_float_bgINT([bg]) ==.bg==> NG_overlay_float_N_mix[mix]
+    style NG_overlay_float_bgINT fill:#0CF, color:#111
+    NG_overlay_float_mixINT([mix]) ==.mix==> NG_overlay_float_N_mix[mix]
+    style NG_overlay_float_mixINT fill:#0CF, color:#111
+    NG_overlay_float_N_ifgreatereq0_overlay_r{ifgreatereq} --".fg"--> NG_overlay_float_N_mix[mix]
+    NG_overlay_float_bgINT([bg]) ==.value1==> NG_overlay_float_N_ifgreatereq0_overlay_r[ifgreatereq]
+    style NG_overlay_float_bgINT fill:#0CF, color:#111
+    NG_overlay_float_N_subtract_lower_one[subtract] --".in1"--> NG_overlay_float_N_ifgreatereq0_overlay_r{ifgreatereq}
+    style NG_overlay_float_N_ifgreatereq0_overlay_r fill:#F80, color:#111
+    NG_overlay_float_N_multiply_lower_two[multiply] --".in2"--> NG_overlay_float_N_subtract_lower_one[subtract]
+    NG_overlay_float_N_multiply_lower_fg_bg[multiply] --".in1"--> NG_overlay_float_N_multiply_lower_two[multiply]
+    NG_overlay_float_N_subtract_lower_one_bg[subtract] --".in1"--> NG_overlay_float_N_multiply_lower_fg_bg[multiply]
+    NG_overlay_float_bgINT([bg]) ==.in2==> NG_overlay_float_N_subtract_lower_one_bg[subtract]
+    style NG_overlay_float_bgINT fill:#0CF, color:#111
+    NG_overlay_float_N_subtract_lower_one_fg[subtract] --".in2"--> NG_overlay_float_N_multiply_lower_fg_bg[multiply]
+    NG_overlay_float_fgINT([fg]) ==.in2==> NG_overlay_float_N_subtract_lower_one_fg[subtract]
+    style NG_overlay_float_fgINT fill:#0CF, color:#111
+    NG_overlay_float_N_multiply_upper_two[multiply] --".in2"--> NG_overlay_float_N_ifgreatereq0_overlay_r{ifgreatereq}
+    style NG_overlay_float_N_ifgreatereq0_overlay_r fill:#F80, color:#111
+    NG_overlay_float_N_multiply_upper_fg_bg[multiply] --".in1"--> NG_overlay_float_N_multiply_upper_two[multiply]
+    NG_overlay_float_fgINT([fg]) ==.in1==> NG_overlay_float_N_multiply_upper_fg_bg[multiply]
+    style NG_overlay_float_fgINT fill:#0CF, color:#111
+    NG_overlay_float_bgINT([bg]) ==.in2==> NG_overlay_float_N_multiply_upper_fg_bg[multiply]
+    style NG_overlay_float_bgINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -764,87 +750,54 @@ Category: overlay
 <img src="../../resources/mtlx/nodedef_materials/material_overlay_color3_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_overlay_color3_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_overlay_color3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_overlay_color3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_overlay_color3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_overlay_color3({{fg}}, {{bg}}, {{mix}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_overlay_color3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_overlay_color3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_overlay_color3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_overlay_color3.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_overlay_color3.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_overlay_color3">
-   </div>
-  </div>
-<hr>
+<button id="ND_overlay_color3_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_overlay_color3_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_overlay_color3_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_overlay_color3_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_overlay_color3_N_combine[combine3] --> NG_overlay_color3_out([out])
+    style NG_overlay_color3_out fill:#0C0, color:#111
+    NG_overlay_color3_N_overlay_r[overlay] --".in1"--> NG_overlay_color3_N_combine[combine3]
+    NG_overlay_color3_mixINT([mix]) ==.mix==> NG_overlay_color3_N_overlay_r[overlay]
+    style NG_overlay_color3_mixINT fill:#0CF, color:#111
+    NG_overlay_color3_N_split_color3_fg[separate3] --> NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutr([outr])
+    style NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutr fill:#0C0, color:#111
+    NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutr --".fg"--> NG_overlay_color3_N_overlay_r[overlay]
+    NG_overlay_color3_fgINT([fg]) ==.in==> NG_overlay_color3_N_split_color3_fg[separate3]
+    style NG_overlay_color3_fgINT fill:#0CF, color:#111
+    NG_overlay_color3_N_split_color3_bg[separate3] --> NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutr([outr])
+    style NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutr fill:#0C0, color:#111
+    NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutr --".bg"--> NG_overlay_color3_N_overlay_r[overlay]
+    NG_overlay_color3_bgINT([bg]) ==.in==> NG_overlay_color3_N_split_color3_bg[separate3]
+    style NG_overlay_color3_bgINT fill:#0CF, color:#111
+    NG_overlay_color3_N_overlay_g[overlay] --".in2"--> NG_overlay_color3_N_combine[combine3]
+    NG_overlay_color3_mixINT([mix]) ==.mix==> NG_overlay_color3_N_overlay_g[overlay]
+    style NG_overlay_color3_mixINT fill:#0CF, color:#111
+    NG_overlay_color3_N_split_color3_fg[separate3] --> NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutg([outg])
+    style NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutg fill:#0C0, color:#111
+    NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutg --".fg"--> NG_overlay_color3_N_overlay_g[overlay]
+    NG_overlay_color3_N_split_color3_bg[separate3] --> NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutg([outg])
+    style NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutg fill:#0C0, color:#111
+    NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutg --".bg"--> NG_overlay_color3_N_overlay_g[overlay]
+    NG_overlay_color3_N_overlay_b[overlay] --".in3"--> NG_overlay_color3_N_combine[combine3]
+    NG_overlay_color3_mixINT([mix]) ==.mix==> NG_overlay_color3_N_overlay_b[overlay]
+    style NG_overlay_color3_mixINT fill:#0CF, color:#111
+    NG_overlay_color3_N_split_color3_fg[separate3] --> NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutb([outb])
+    style NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutb fill:#0C0, color:#111
+    NG_overlay_color3_NG_overlay_color3_N_split_color3_fgoutb --".fg"--> NG_overlay_color3_N_overlay_b[overlay]
+    NG_overlay_color3_N_split_color3_bg[separate3] --> NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutb([outb])
+    style NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutb fill:#0C0, color:#111
+    NG_overlay_color3_NG_overlay_color3_N_split_color3_bgoutb --".bg"--> NG_overlay_color3_N_overlay_b[overlay]
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -965,87 +918,63 @@ Category: overlay
 <img src="../../resources/mtlx/nodedef_materials/material_overlay_color4_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_overlay_color4_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_overlay_color4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_overlay_color4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_overlay_color4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_overlay_color4({{fg}}, {{bg}}, {{mix}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_overlay_color4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_overlay_color4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_overlay_color4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_overlay_color4.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_overlay_color4.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_overlay_color4">
-   </div>
-  </div>
-<hr>
+<button id="ND_overlay_color4_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_overlay_color4_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_overlay_color4_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_overlay_color4_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_overlay_color4_N_combine[combine4] --> NG_overlay_color4_out([out])
+    style NG_overlay_color4_out fill:#0C0, color:#111
+    NG_overlay_color4_N_overlay_r[overlay] --".in1"--> NG_overlay_color4_N_combine[combine4]
+    NG_overlay_color4_mixINT([mix]) ==.mix==> NG_overlay_color4_N_overlay_r[overlay]
+    style NG_overlay_color4_mixINT fill:#0CF, color:#111
+    NG_overlay_color4_N_split_fg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_fgoutr([outr])
+    style NG_overlay_color4_NG_overlay_color4_N_split_fgoutr fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_fgoutr --".fg"--> NG_overlay_color4_N_overlay_r[overlay]
+    NG_overlay_color4_fgINT([fg]) ==.in==> NG_overlay_color4_N_split_fg[separate4]
+    style NG_overlay_color4_fgINT fill:#0CF, color:#111
+    NG_overlay_color4_N_split_bg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_bgoutr([outr])
+    style NG_overlay_color4_NG_overlay_color4_N_split_bgoutr fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_bgoutr --".bg"--> NG_overlay_color4_N_overlay_r[overlay]
+    NG_overlay_color4_bgINT([bg]) ==.in==> NG_overlay_color4_N_split_bg[separate4]
+    style NG_overlay_color4_bgINT fill:#0CF, color:#111
+    NG_overlay_color4_N_overlay_g[overlay] --".in2"--> NG_overlay_color4_N_combine[combine4]
+    NG_overlay_color4_mixINT([mix]) ==.mix==> NG_overlay_color4_N_overlay_g[overlay]
+    style NG_overlay_color4_mixINT fill:#0CF, color:#111
+    NG_overlay_color4_N_split_fg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_fgoutg([outg])
+    style NG_overlay_color4_NG_overlay_color4_N_split_fgoutg fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_fgoutg --".fg"--> NG_overlay_color4_N_overlay_g[overlay]
+    NG_overlay_color4_N_split_bg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_bgoutg([outg])
+    style NG_overlay_color4_NG_overlay_color4_N_split_bgoutg fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_bgoutg --".bg"--> NG_overlay_color4_N_overlay_g[overlay]
+    NG_overlay_color4_N_overlay_b[overlay] --".in3"--> NG_overlay_color4_N_combine[combine4]
+    NG_overlay_color4_mixINT([mix]) ==.mix==> NG_overlay_color4_N_overlay_b[overlay]
+    style NG_overlay_color4_mixINT fill:#0CF, color:#111
+    NG_overlay_color4_N_split_fg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_fgoutb([outb])
+    style NG_overlay_color4_NG_overlay_color4_N_split_fgoutb fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_fgoutb --".fg"--> NG_overlay_color4_N_overlay_b[overlay]
+    NG_overlay_color4_N_split_bg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_bgoutb([outb])
+    style NG_overlay_color4_NG_overlay_color4_N_split_bgoutb fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_bgoutb --".bg"--> NG_overlay_color4_N_overlay_b[overlay]
+    NG_overlay_color4_N_overlay_a[overlay] --".in4"--> NG_overlay_color4_N_combine[combine4]
+    NG_overlay_color4_mixINT([mix]) ==.mix==> NG_overlay_color4_N_overlay_a[overlay]
+    style NG_overlay_color4_mixINT fill:#0CF, color:#111
+    NG_overlay_color4_N_split_fg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_fgouta([outa])
+    style NG_overlay_color4_NG_overlay_color4_N_split_fgouta fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_fgouta --".fg"--> NG_overlay_color4_N_overlay_a[overlay]
+    NG_overlay_color4_N_split_bg[separate4] --> NG_overlay_color4_NG_overlay_color4_N_split_bgouta([outa])
+    style NG_overlay_color4_NG_overlay_color4_N_split_bgouta fill:#0C0, color:#111
+    NG_overlay_color4_NG_overlay_color4_N_split_bgouta --".bg"--> NG_overlay_color4_N_overlay_a[overlay]
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
