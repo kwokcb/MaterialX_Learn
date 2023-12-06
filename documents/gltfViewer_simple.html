@@ -47,24 +47,24 @@
   <div class="container-fluid bg-dark min-vh-100">
     <div class="row flex">
       <div class="col-sm-12 p-0">
-        <model-viewer disable-tap style="background-color: rgb(120, 120, 120); width: 100%; height: 32em" id="viewer1"
+        <model-viewer class="min-vh-100" disable-tap style="background-color: rgb(120, 120, 120); width: 100%; height: 100%" id="viewer1"
           interaction-prompt="none" camera-controls touch-action="pan-y" src="" shadow-intensity="1"
-          shadow-softness="0.5" alt="model_viewer" poster=""
-          skybox-image="images/san_giuseppe_bridge.hdr"
+          shadow-softness="0.5" alt="model_viewer" poster="" skybox-image="images/san_giuseppe_bridge.hdr"
           environment-image="images/san_giuseppe_bridge.hdr">
+          <div class="row flex">
+            <div class="col-sm-12 p-2">
+              <div class="col-sm2 flex">
+                <button id="loadgltf" class="btn btn-light">Load glTF</button>
+                <input id="fileInput" type="file" style="display: none;">
+                <!-- <button id="saveimage" class=" btn btn-light">Snapshot</button> 
+                <a id="fileOutput" href="" downloads="" style="display: none;">-->
+              </div>
+            </div>
+          </div>
         </model-viewer>
+
       </div>
     </div>
-    <div class="row flex">
-      <div class="col-sm-12 p-2">
-        <div class="col-sm2 flex">
-          <button id="loadgltf" class="btn btn-outline-light">Load glTF</button>
-          <button id="saveimage" class=" btn btn-outline-light">Save Image</button>
-          <input id="fileInput" type="file" style="display: none;">
-        </div>
-      </div>
-    </div>
-  </div>
   </div>
 
   <script>
@@ -75,14 +75,12 @@
         const modelViewer = document.getElementById("viewer1");
         if (modelViewer) {
           const fileURL = URL.createObjectURL(selectedFile);
-          console.log(`Load file: ${fileURL}`);
           modelViewer.setAttribute("src", fileURL)
         }
       }
     });
 
     function loadgltf(e) {
-      console.log('load gltf')
       const fileInput = document.getElementById('fileInput');
       fileInput.click();
     }
@@ -93,19 +91,17 @@
     }
 
     function saveURL(url, name) {
-      var downloadLink = document.createElement("a");
+      var downloadLink = document.getElementById("fileOutput");
       downloadLink.href = url;
       downloadLink.download = name;
-      document.body.appendChild(downloadLink);
       downloadLink.click();
-      document.body.removeChild(downloadLink);
     }
 
     // Save image to file
     saveElem = document.getElementById("saveimage");
     if (saveElem) {
       saveElem.addEventListener("click", (e) => {
-        const modelViewer = document.querySelector("model-viewer#viewer1");
+        const modelViewer = document.getElementById("viewer1");
         if (modelViewer) {
           url = modelViewer.toDataURL('image/png')
           if (url) {
