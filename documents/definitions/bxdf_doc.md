@@ -5,7 +5,7 @@
 * [UsdTransform2d](#node-UsdTransform2d) 
 ---------
 ### Node Group: pbr
-* [LamaAdd](#node-LamaAdd) [LamaConductor](#node-LamaConductor) [LamaDielectric](#node-LamaDielectric) [LamaDiffuse](#node-LamaDiffuse) [LamaEmission](#node-LamaEmission) [LamaLayer](#node-LamaLayer) [LamaMix](#node-LamaMix) [LamaSSS](#node-LamaSSS) [LamaSheen](#node-LamaSheen) [LamaTranslucent](#node-LamaTranslucent) [UsdPreviewSurface](#node-UsdPreviewSurface) [disney_brdf_2012](#node-disney_brdf_2012) [disney_bsdf_2015](#node-disney_bsdf_2015) [gltf_pbr](#node-gltf_pbr) [standard_surface](#node-standard_surface) 
+* [LamaAdd](#node-LamaAdd) [LamaConductor](#node-LamaConductor) [LamaDielectric](#node-LamaDielectric) [LamaDiffuse](#node-LamaDiffuse) [LamaEmission](#node-LamaEmission) [LamaLayer](#node-LamaLayer) [LamaMix](#node-LamaMix) [LamaSSS](#node-LamaSSS) [LamaSheen](#node-LamaSheen) [LamaTranslucent](#node-LamaTranslucent) [UsdPreviewSurface](#node-UsdPreviewSurface) [disney_brdf_2012](#node-disney_brdf_2012) [disney_bsdf_2015](#node-disney_bsdf_2015) [gltf_pbr](#node-gltf_pbr) [open_pbr_surface](#node-open_pbr_surface) [standard_surface](#node-standard_surface) 
 ---------
 ### Node Group: texture2d
 * [UsdUVTexture](#node-UsdUVTexture) [gltf_colorimage](#node-gltf_colorimage) [gltf_image](#node-gltf_image) [gltf_iridescence_thickness](#node-gltf_iridescence_thickness) [gltf_normalmap](#node-gltf_normalmap) 
@@ -744,6 +744,323 @@ graph LR;
 | *out* | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
+### Category: *open_pbr_surface*
+<details><summary>ND_open_pbr_surface_surfaceshader</summary>
+<p>
+ 
+* *Nodedef*: ND_open_pbr_surface_surfaceshader
+* *Type*: surfaceshader
+* *Node Group*: pbr
+* *Version*: 0.2. Is default: True
+* *Doc*: OpenPBR Surface Shading Model
+* *Nodegraph*: NG_open_pbr_surface_surfaceshader
+
+
+```mermaid
+graph LR; 
+    NG_open_pbr_surface_surfaceshader_shader_constructor[surface] --> NG_open_pbr_surface_surfaceshader_out([out])
+    style NG_open_pbr_surface_surfaceshader_out fill:#0C0, color:#111
+    NG_open_pbr_surface_surfaceshader_fuzz_layer[layer] --".bsdf"--> NG_open_pbr_surface_surfaceshader_shader_constructor[surface]
+    NG_open_pbr_surface_surfaceshader_fuzz_bsdf[sheen_bsdf] --".top"--> NG_open_pbr_surface_surfaceshader_fuzz_layer[layer]
+    NG_open_pbr_surface_surfaceshader_fuzz_weightINT([fuzz_weight]) ==.weight==> NG_open_pbr_surface_surfaceshader_fuzz_bsdf[sheen_bsdf]
+    style NG_open_pbr_surface_surfaceshader_fuzz_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_fuzz_colorINT([fuzz_color]) ==.color==> NG_open_pbr_surface_surfaceshader_fuzz_bsdf[sheen_bsdf]
+    style NG_open_pbr_surface_surfaceshader_fuzz_colorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_fuzz_roughnessINT([fuzz_roughness]) ==.roughness==> NG_open_pbr_surface_surfaceshader_fuzz_bsdf[sheen_bsdf]
+    style NG_open_pbr_surface_surfaceshader_fuzz_roughnessINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_geometry_normalINT([geometry_normal]) ==.normal==> NG_open_pbr_surface_surfaceshader_fuzz_bsdf[sheen_bsdf]
+    style NG_open_pbr_surface_surfaceshader_geometry_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_layer[layer] --".base"--> NG_open_pbr_surface_surfaceshader_fuzz_layer[layer]
+    NG_open_pbr_surface_surfaceshader_coat_bsdf[dielectric_bsdf] --".top"--> NG_open_pbr_surface_surfaceshader_coat_layer[layer]
+    NG_open_pbr_surface_surfaceshader_coat_weightINT([coat_weight]) ==.weight==> NG_open_pbr_surface_surfaceshader_coat_bsdf[dielectric_bsdf]
+    style NG_open_pbr_surface_surfaceshader_coat_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_geometry_coat_normalINT([geometry_coat_normal]) ==.normal==> NG_open_pbr_surface_surfaceshader_coat_bsdf[dielectric_bsdf]
+    style NG_open_pbr_surface_surfaceshader_geometry_coat_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_modulated_coat_ior[mix] --".ior"--> NG_open_pbr_surface_surfaceshader_coat_bsdf[dielectric_bsdf]
+    NG_open_pbr_surface_surfaceshader_coat_weightINT([coat_weight]) ==.mix==> NG_open_pbr_surface_surfaceshader_modulated_coat_ior[mix]
+    style NG_open_pbr_surface_surfaceshader_coat_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_modulated_coat_ior_ratio[divide] --".fg"--> NG_open_pbr_surface_surfaceshader_modulated_coat_ior[mix]
+    NG_open_pbr_surface_surfaceshader_one_plus_sqrt_modulated_coat_reflectivity[add] --".in1"--> NG_open_pbr_surface_surfaceshader_modulated_coat_ior_ratio[divide]
+    NG_open_pbr_surface_surfaceshader_sqrt_modulated_coat_reflectivity[sqrt] --".in2"--> NG_open_pbr_surface_surfaceshader_one_plus_sqrt_modulated_coat_reflectivity[add]
+    NG_open_pbr_surface_surfaceshader_modulated_coat_reflectivity2[multiply] --".in"--> NG_open_pbr_surface_surfaceshader_sqrt_modulated_coat_reflectivity[sqrt]
+    NG_open_pbr_surface_surfaceshader_modulated_coat_reflectivity1[multiply] --".in2"--> NG_open_pbr_surface_surfaceshader_modulated_coat_reflectivity2[multiply]
+    NG_open_pbr_surface_surfaceshader_coat_ior_level_clamped[clamp] --".in1"--> NG_open_pbr_surface_surfaceshader_modulated_coat_reflectivity1[multiply]
+    NG_open_pbr_surface_surfaceshader_coat_ior_levelINT([coat_ior_level]) ==.in==> NG_open_pbr_surface_surfaceshader_coat_ior_level_clamped[clamp]
+    style NG_open_pbr_surface_surfaceshader_coat_ior_levelINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_ior_level_upper_bound[min] --".high"--> NG_open_pbr_surface_surfaceshader_coat_ior_level_clamped[clamp]
+    NG_open_pbr_surface_surfaceshader_half_over_coat_F0[divide] --".in2"--> NG_open_pbr_surface_surfaceshader_coat_ior_level_upper_bound[min]
+    NG_open_pbr_surface_surfaceshader_coat_ior_to_F0[multiply] --".in2"--> NG_open_pbr_surface_surfaceshader_half_over_coat_F0[divide]
+    NG_open_pbr_surface_surfaceshader_coat_ior_to_F0_sqrt[divide] --".in1"--> NG_open_pbr_surface_surfaceshader_coat_ior_to_F0[multiply]
+    NG_open_pbr_surface_surfaceshader_coat_ior_minus_one[subtract] --".in1"--> NG_open_pbr_surface_surfaceshader_coat_ior_to_F0_sqrt[divide]
+    NG_open_pbr_surface_surfaceshader_coat_iorINT([coat_ior]) ==.in1==> NG_open_pbr_surface_surfaceshader_coat_ior_minus_one[subtract]
+    style NG_open_pbr_surface_surfaceshader_coat_iorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_ior_plus_one[add] --".in2"--> NG_open_pbr_surface_surfaceshader_coat_ior_to_F0_sqrt[divide]
+    NG_open_pbr_surface_surfaceshader_coat_iorINT([coat_ior]) ==.in2==> NG_open_pbr_surface_surfaceshader_coat_ior_plus_one[add]
+    style NG_open_pbr_surface_surfaceshader_coat_iorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_ior_to_F0_sqrt[divide] --".in2"--> NG_open_pbr_surface_surfaceshader_coat_ior_to_F0[multiply]
+    NG_open_pbr_surface_surfaceshader_coat_ior_to_F0[multiply] --".in2"--> NG_open_pbr_surface_surfaceshader_modulated_coat_reflectivity1[multiply]
+    NG_open_pbr_surface_surfaceshader_one_minus_sqrt_modulated_coat_reflectivity[subtract] --".in2"--> NG_open_pbr_surface_surfaceshader_modulated_coat_ior_ratio[divide]
+    NG_open_pbr_surface_surfaceshader_sqrt_modulated_coat_reflectivity[sqrt] --".in2"--> NG_open_pbr_surface_surfaceshader_one_minus_sqrt_modulated_coat_reflectivity[subtract]
+    NG_open_pbr_surface_surfaceshader_coat_roughness_vector[roughness_anisotropy] --".roughness"--> NG_open_pbr_surface_surfaceshader_coat_bsdf[dielectric_bsdf]
+    NG_open_pbr_surface_surfaceshader_coat_roughnessINT([coat_roughness]) ==.roughness==> NG_open_pbr_surface_surfaceshader_coat_roughness_vector[roughness_anisotropy]
+    style NG_open_pbr_surface_surfaceshader_coat_roughnessINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_anisotropyINT([coat_anisotropy]) ==.anisotropy==> NG_open_pbr_surface_surfaceshader_coat_roughness_vector[roughness_anisotropy]
+    style NG_open_pbr_surface_surfaceshader_coat_anisotropyINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_tangent[ifgreater] --".tangent"--> NG_open_pbr_surface_surfaceshader_coat_bsdf[dielectric_bsdf]
+    NG_open_pbr_surface_surfaceshader_coat_anisotropyINT([coat_anisotropy]) ==.value1==> NG_open_pbr_surface_surfaceshader_coat_tangent[ifgreater]
+    style NG_open_pbr_surface_surfaceshader_coat_anisotropyINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_geometry_tangentINT([geometry_tangent]) ==.in2==> NG_open_pbr_surface_surfaceshader_coat_tangent[ifgreater]
+    style NG_open_pbr_surface_surfaceshader_geometry_tangentINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_tangent_rotate_normalize[normalize] --".in1"--> NG_open_pbr_surface_surfaceshader_coat_tangent[ifgreater]
+    NG_open_pbr_surface_surfaceshader_coat_tangent_rotate[rotate3d] --".in"--> NG_open_pbr_surface_surfaceshader_coat_tangent_rotate_normalize[normalize]
+    NG_open_pbr_surface_surfaceshader_geometry_tangentINT([geometry_tangent]) ==.in==> NG_open_pbr_surface_surfaceshader_coat_tangent_rotate[rotate3d]
+    style NG_open_pbr_surface_surfaceshader_geometry_tangentINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_geometry_coat_normalINT([geometry_coat_normal]) ==.axis==> NG_open_pbr_surface_surfaceshader_coat_tangent_rotate[rotate3d]
+    style NG_open_pbr_surface_surfaceshader_geometry_coat_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_tangent_rotate_degree[multiply] --".amount"--> NG_open_pbr_surface_surfaceshader_coat_tangent_rotate[rotate3d]
+    NG_open_pbr_surface_surfaceshader_coat_rotationINT([coat_rotation]) ==.in1==> NG_open_pbr_surface_surfaceshader_coat_tangent_rotate_degree[multiply]
+    style NG_open_pbr_surface_surfaceshader_coat_rotationINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_substrate_attenuated[multiply] --".base"--> NG_open_pbr_surface_surfaceshader_coat_layer[layer]
+    NG_open_pbr_surface_surfaceshader_thin_film_layer[layer] --".in1"--> NG_open_pbr_surface_surfaceshader_coat_substrate_attenuated[multiply]
+    NG_open_pbr_surface_surfaceshader_thin_film_bsdf[thin_film_bsdf] --".top"--> NG_open_pbr_surface_surfaceshader_thin_film_layer[layer]
+    NG_open_pbr_surface_surfaceshader_thin_film_thicknessINT([thin_film_thickness]) ==.thickness==> NG_open_pbr_surface_surfaceshader_thin_film_bsdf[thin_film_bsdf]
+    style NG_open_pbr_surface_surfaceshader_thin_film_thicknessINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_thin_film_iorINT([thin_film_ior]) ==.ior==> NG_open_pbr_surface_surfaceshader_thin_film_bsdf[thin_film_bsdf]
+    style NG_open_pbr_surface_surfaceshader_thin_film_iorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_base_substrate[mix] --".base"--> NG_open_pbr_surface_surfaceshader_thin_film_layer[layer]
+    NG_open_pbr_surface_surfaceshader_base_metalnessINT([base_metalness]) ==.mix==> NG_open_pbr_surface_surfaceshader_base_substrate[mix]
+    style NG_open_pbr_surface_surfaceshader_base_metalnessINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_metal_bsdf[generalized_schlick_bsdf] --".fg"--> NG_open_pbr_surface_surfaceshader_base_substrate[mix]
+    NG_open_pbr_surface_surfaceshader_geometry_normalINT([geometry_normal]) ==.normal==> NG_open_pbr_surface_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
+    style NG_open_pbr_surface_surfaceshader_geometry_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_metal_reflectivity[multiply] --".color0"--> NG_open_pbr_surface_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
+    NG_open_pbr_surface_surfaceshader_base_colorINT([base_color]) ==.in1==> NG_open_pbr_surface_surfaceshader_metal_reflectivity[multiply]
+    style NG_open_pbr_surface_surfaceshader_base_colorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_base_weightINT([base_weight]) ==.in2==> NG_open_pbr_surface_surfaceshader_metal_reflectivity[multiply]
+    style NG_open_pbr_surface_surfaceshader_base_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_metal_edgecolor[multiply] --".color90"--> NG_open_pbr_surface_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
+    NG_open_pbr_surface_surfaceshader_specular_colorINT([specular_color]) ==.in1==> NG_open_pbr_surface_surfaceshader_metal_edgecolor[multiply]
+    style NG_open_pbr_surface_surfaceshader_specular_colorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_specular_weightINT([specular_weight]) ==.in2==> NG_open_pbr_surface_surfaceshader_metal_edgecolor[multiply]
+    style NG_open_pbr_surface_surfaceshader_specular_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_main_roughness[roughness_anisotropy] --".roughness"--> NG_open_pbr_surface_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
+    NG_open_pbr_surface_surfaceshader_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_open_pbr_surface_surfaceshader_main_roughness[roughness_anisotropy]
+    style NG_open_pbr_surface_surfaceshader_specular_anisotropyINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_affected_roughness[mix] --".roughness"--> NG_open_pbr_surface_surfaceshader_main_roughness[roughness_anisotropy]
+    NG_open_pbr_surface_surfaceshader_specular_roughnessINT([specular_roughness]) ==.bg==> NG_open_pbr_surface_surfaceshader_coat_affected_roughness[mix]
+    style NG_open_pbr_surface_surfaceshader_specular_roughnessINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_affect_roughness_multiply2[multiply] --".mix"--> NG_open_pbr_surface_surfaceshader_coat_affected_roughness[mix]
+    NG_open_pbr_surface_surfaceshader_coat_roughnessINT([coat_roughness]) ==.in2==> NG_open_pbr_surface_surfaceshader_coat_affect_roughness_multiply2[multiply]
+    style NG_open_pbr_surface_surfaceshader_coat_roughnessINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_affect_roughness_multiply1[multiply] --".in1"--> NG_open_pbr_surface_surfaceshader_coat_affect_roughness_multiply2[multiply]
+    NG_open_pbr_surface_surfaceshader_coat_weightINT([coat_weight]) ==.in2==> NG_open_pbr_surface_surfaceshader_coat_affect_roughness_multiply1[multiply]
+    style NG_open_pbr_surface_surfaceshader_coat_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_main_tangent[ifgreater] --".tangent"--> NG_open_pbr_surface_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
+    NG_open_pbr_surface_surfaceshader_specular_anisotropyINT([specular_anisotropy]) ==.value1==> NG_open_pbr_surface_surfaceshader_main_tangent[ifgreater]
+    style NG_open_pbr_surface_surfaceshader_specular_anisotropyINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_geometry_tangentINT([geometry_tangent]) ==.in2==> NG_open_pbr_surface_surfaceshader_main_tangent[ifgreater]
+    style NG_open_pbr_surface_surfaceshader_geometry_tangentINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_tangent_rotate_normalize[normalize] --".in1"--> NG_open_pbr_surface_surfaceshader_main_tangent[ifgreater]
+    NG_open_pbr_surface_surfaceshader_tangent_rotate[rotate3d] --".in"--> NG_open_pbr_surface_surfaceshader_tangent_rotate_normalize[normalize]
+    NG_open_pbr_surface_surfaceshader_geometry_tangentINT([geometry_tangent]) ==.in==> NG_open_pbr_surface_surfaceshader_tangent_rotate[rotate3d]
+    style NG_open_pbr_surface_surfaceshader_geometry_tangentINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_geometry_normalINT([geometry_normal]) ==.axis==> NG_open_pbr_surface_surfaceshader_tangent_rotate[rotate3d]
+    style NG_open_pbr_surface_surfaceshader_geometry_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_tangent_rotate_degree[multiply] --".amount"--> NG_open_pbr_surface_surfaceshader_tangent_rotate[rotate3d]
+    NG_open_pbr_surface_surfaceshader_specular_rotationINT([specular_rotation]) ==.in1==> NG_open_pbr_surface_surfaceshader_tangent_rotate_degree[multiply]
+    style NG_open_pbr_surface_surfaceshader_specular_rotationINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_dielectric_base[layer] --".bg"--> NG_open_pbr_surface_surfaceshader_base_substrate[mix]
+    NG_open_pbr_surface_surfaceshader_dielectric_reflection[dielectric_bsdf] --".top"--> NG_open_pbr_surface_surfaceshader_dielectric_base[layer]
+    NG_open_pbr_surface_surfaceshader_specular_weightINT([specular_weight]) ==.weight==> NG_open_pbr_surface_surfaceshader_dielectric_reflection[dielectric_bsdf]
+    style NG_open_pbr_surface_surfaceshader_specular_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_specular_colorINT([specular_color]) ==.tint==> NG_open_pbr_surface_surfaceshader_dielectric_reflection[dielectric_bsdf]
+    style NG_open_pbr_surface_surfaceshader_specular_colorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_geometry_normalINT([geometry_normal]) ==.normal==> NG_open_pbr_surface_surfaceshader_dielectric_reflection[dielectric_bsdf]
+    style NG_open_pbr_surface_surfaceshader_geometry_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_modulated_specular_ior_ratio[divide] --".ior"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection[dielectric_bsdf]
+    NG_open_pbr_surface_surfaceshader_one_plus_modulated_specular_reflectivity3[add] --".in1"--> NG_open_pbr_surface_surfaceshader_modulated_specular_ior_ratio[divide]
+    NG_open_pbr_surface_surfaceshader_modulated_specular_reflectivity3[multiply] --".in2"--> NG_open_pbr_surface_surfaceshader_one_plus_modulated_specular_reflectivity3[add]
+    NG_open_pbr_surface_surfaceshader_sign_specular_ior_minus_one[sign] --".in1"--> NG_open_pbr_surface_surfaceshader_modulated_specular_reflectivity3[multiply]
+    NG_open_pbr_surface_surfaceshader_specular_ior_minus_one[subtract] --".in"--> NG_open_pbr_surface_surfaceshader_sign_specular_ior_minus_one[sign]
+    NG_open_pbr_surface_surfaceshader_specular_to_coat_ior_ratio[divide] --".in1"--> NG_open_pbr_surface_surfaceshader_specular_ior_minus_one[subtract]
+    NG_open_pbr_surface_surfaceshader_specular_iorINT([specular_ior]) ==.in1==> NG_open_pbr_surface_surfaceshader_specular_to_coat_ior_ratio[divide]
+    style NG_open_pbr_surface_surfaceshader_specular_iorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_modulated_coat_ior[mix] --".in2"--> NG_open_pbr_surface_surfaceshader_specular_to_coat_ior_ratio[divide]
+    NG_open_pbr_surface_surfaceshader_sqrt_modulated_specular_reflectivity[sqrt] --".in2"--> NG_open_pbr_surface_surfaceshader_modulated_specular_reflectivity3[multiply]
+    NG_open_pbr_surface_surfaceshader_modulated_specular_reflectivity2[multiply] --".in"--> NG_open_pbr_surface_surfaceshader_sqrt_modulated_specular_reflectivity[sqrt]
+    NG_open_pbr_surface_surfaceshader_modulated_specular_reflectivity1[multiply] --".in2"--> NG_open_pbr_surface_surfaceshader_modulated_specular_reflectivity2[multiply]
+    NG_open_pbr_surface_surfaceshader_specular_ior_level_clamped[clamp] --".in1"--> NG_open_pbr_surface_surfaceshader_modulated_specular_reflectivity1[multiply]
+    NG_open_pbr_surface_surfaceshader_specular_ior_levelINT([specular_ior_level]) ==.in==> NG_open_pbr_surface_surfaceshader_specular_ior_level_clamped[clamp]
+    style NG_open_pbr_surface_surfaceshader_specular_ior_levelINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_specular_ior_level_upper_bound[min] --".high"--> NG_open_pbr_surface_surfaceshader_specular_ior_level_clamped[clamp]
+    NG_open_pbr_surface_surfaceshader_half_over_specular_F0[divide] --".in2"--> NG_open_pbr_surface_surfaceshader_specular_ior_level_upper_bound[min]
+    NG_open_pbr_surface_surfaceshader_specular_ior_to_F0[multiply] --".in2"--> NG_open_pbr_surface_surfaceshader_half_over_specular_F0[divide]
+    NG_open_pbr_surface_surfaceshader_specular_ior_to_F0_sqrt[divide] --".in1"--> NG_open_pbr_surface_surfaceshader_specular_ior_to_F0[multiply]
+    NG_open_pbr_surface_surfaceshader_specular_ior_minus_one[subtract] --".in1"--> NG_open_pbr_surface_surfaceshader_specular_ior_to_F0_sqrt[divide]
+    NG_open_pbr_surface_surfaceshader_specular_ior_plus_one[add] --".in2"--> NG_open_pbr_surface_surfaceshader_specular_ior_to_F0_sqrt[divide]
+    NG_open_pbr_surface_surfaceshader_specular_to_coat_ior_ratio[divide] --".in2"--> NG_open_pbr_surface_surfaceshader_specular_ior_plus_one[add]
+    NG_open_pbr_surface_surfaceshader_specular_ior_to_F0_sqrt[divide] --".in2"--> NG_open_pbr_surface_surfaceshader_specular_ior_to_F0[multiply]
+    NG_open_pbr_surface_surfaceshader_specular_ior_to_F0[multiply] --".in2"--> NG_open_pbr_surface_surfaceshader_modulated_specular_reflectivity1[multiply]
+    NG_open_pbr_surface_surfaceshader_one_minus_modulated_specular_reflectivity3[subtract] --".in2"--> NG_open_pbr_surface_surfaceshader_modulated_specular_ior_ratio[divide]
+    NG_open_pbr_surface_surfaceshader_modulated_specular_reflectivity3[multiply] --".in2"--> NG_open_pbr_surface_surfaceshader_one_minus_modulated_specular_reflectivity3[subtract]
+    NG_open_pbr_surface_surfaceshader_main_roughness[roughness_anisotropy] --".roughness"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection[dielectric_bsdf]
+    NG_open_pbr_surface_surfaceshader_main_tangent[ifgreater] --".tangent"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection[dielectric_bsdf]
+    NG_open_pbr_surface_surfaceshader_dielectric_substrate[mix] --".base"--> NG_open_pbr_surface_surfaceshader_dielectric_base[layer]
+    NG_open_pbr_surface_surfaceshader_transmission_weightINT([transmission_weight]) ==.mix==> NG_open_pbr_surface_surfaceshader_dielectric_substrate[mix]
+    style NG_open_pbr_surface_surfaceshader_transmission_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_dielectric_transmission[dielectric_bsdf] --".fg"--> NG_open_pbr_surface_surfaceshader_dielectric_substrate[mix]
+    NG_open_pbr_surface_surfaceshader_transmission_colorINT([transmission_color]) ==.tint==> NG_open_pbr_surface_surfaceshader_dielectric_transmission[dielectric_bsdf]
+    style NG_open_pbr_surface_surfaceshader_transmission_colorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_geometry_normalINT([geometry_normal]) ==.normal==> NG_open_pbr_surface_surfaceshader_dielectric_transmission[dielectric_bsdf]
+    style NG_open_pbr_surface_surfaceshader_geometry_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_modulated_specular_ior_ratio[divide] --".ior"--> NG_open_pbr_surface_surfaceshader_dielectric_transmission[dielectric_bsdf]
+    NG_open_pbr_surface_surfaceshader_transmission_roughness[roughness_anisotropy] --".roughness"--> NG_open_pbr_surface_surfaceshader_dielectric_transmission[dielectric_bsdf]
+    NG_open_pbr_surface_surfaceshader_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_open_pbr_surface_surfaceshader_transmission_roughness[roughness_anisotropy]
+    style NG_open_pbr_surface_surfaceshader_specular_anisotropyINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_affected_transmission_roughness[mix] --".roughness"--> NG_open_pbr_surface_surfaceshader_transmission_roughness[roughness_anisotropy]
+    NG_open_pbr_surface_surfaceshader_transmission_roughness_clamped[clamp] --".bg"--> NG_open_pbr_surface_surfaceshader_coat_affected_transmission_roughness[mix]
+    NG_open_pbr_surface_surfaceshader_specular_roughnessINT([specular_roughness]) ==.in==> NG_open_pbr_surface_surfaceshader_transmission_roughness_clamped[clamp]
+    style NG_open_pbr_surface_surfaceshader_specular_roughnessINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_affect_roughness_multiply2[multiply] --".mix"--> NG_open_pbr_surface_surfaceshader_coat_affected_transmission_roughness[mix]
+    NG_open_pbr_surface_surfaceshader_main_tangent[ifgreater] --".tangent"--> NG_open_pbr_surface_surfaceshader_dielectric_transmission[dielectric_bsdf]
+    NG_open_pbr_surface_surfaceshader_opaque_base[mix] --".bg"--> NG_open_pbr_surface_surfaceshader_dielectric_substrate[mix]
+    NG_open_pbr_surface_surfaceshader_subsurface_weightINT([subsurface_weight]) ==.mix==> NG_open_pbr_surface_surfaceshader_opaque_base[mix]
+    style NG_open_pbr_surface_surfaceshader_subsurface_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_selected_subsurface[mix] --".fg"--> NG_open_pbr_surface_surfaceshader_opaque_base[mix]
+    NG_open_pbr_surface_surfaceshader_subsurface_thin_walled[mix] --".fg"--> NG_open_pbr_surface_surfaceshader_selected_subsurface[mix]
+    NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_reflection[multiply] --".fg"--> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled[mix]
+    NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_reflection_bsdf[oren_nayar_diffuse_bsdf] --".in1"--> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_reflection[multiply]
+    NG_open_pbr_surface_surfaceshader_base_roughnessINT([base_roughness]) ==.roughness==> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_reflection_bsdf[oren_nayar_diffuse_bsdf]
+    style NG_open_pbr_surface_surfaceshader_base_roughnessINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_geometry_normalINT([geometry_normal]) ==.normal==> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_reflection_bsdf[oren_nayar_diffuse_bsdf]
+    style NG_open_pbr_surface_surfaceshader_geometry_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_affected_subsurface_color[power] --".color"--> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_reflection_bsdf[oren_nayar_diffuse_bsdf]
+    NG_open_pbr_surface_surfaceshader_subsurface_color_nonnegative[max] --".in1"--> NG_open_pbr_surface_surfaceshader_coat_affected_subsurface_color[power]
+    NG_open_pbr_surface_surfaceshader_subsurface_colorINT([subsurface_color]) ==.in1==> NG_open_pbr_surface_surfaceshader_subsurface_color_nonnegative[max]
+    style NG_open_pbr_surface_surfaceshader_subsurface_colorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_gamma[add] --".in2"--> NG_open_pbr_surface_surfaceshader_coat_affected_subsurface_color[power]
+    NG_open_pbr_surface_surfaceshader_coat_gamma_multiply[multiply] --".in1"--> NG_open_pbr_surface_surfaceshader_coat_gamma[add]
+    NG_open_pbr_surface_surfaceshader_coat_clamped[clamp] --".in1"--> NG_open_pbr_surface_surfaceshader_coat_gamma_multiply[multiply]
+    NG_open_pbr_surface_surfaceshader_coat_weightINT([coat_weight]) ==.in==> NG_open_pbr_surface_surfaceshader_coat_clamped[clamp]
+    style NG_open_pbr_surface_surfaceshader_coat_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_brdf_factor[multiply] --".in2"--> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_reflection[multiply]
+    NG_open_pbr_surface_surfaceshader_subsurface_colorINT([subsurface_color]) ==.in1==> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_brdf_factor[multiply]
+    style NG_open_pbr_surface_surfaceshader_subsurface_colorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_one_minus_subsurface_anisotropy[subtract] --".in2"--> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_brdf_factor[multiply]
+    NG_open_pbr_surface_surfaceshader_subsurface_anisotropyINT([subsurface_anisotropy]) ==.in2==> NG_open_pbr_surface_surfaceshader_one_minus_subsurface_anisotropy[subtract]
+    style NG_open_pbr_surface_surfaceshader_subsurface_anisotropyINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_transmission[multiply] --".bg"--> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled[mix]
+    NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_transmission_bsdf[translucent_bsdf] --".in1"--> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_transmission[multiply]
+    NG_open_pbr_surface_surfaceshader_geometry_normalINT([geometry_normal]) ==.normal==> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_transmission_bsdf[translucent_bsdf]
+    style NG_open_pbr_surface_surfaceshader_geometry_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_affected_subsurface_color[power] --".color"--> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_transmission_bsdf[translucent_bsdf]
+    NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_btdf_factor[multiply] --".in2"--> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_transmission[multiply]
+    NG_open_pbr_surface_surfaceshader_subsurface_colorINT([subsurface_color]) ==.in1==> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_btdf_factor[multiply]
+    style NG_open_pbr_surface_surfaceshader_subsurface_colorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_one_plus_subsurface_anisotropy[add] --".in2"--> NG_open_pbr_surface_surfaceshader_subsurface_thin_walled_btdf_factor[multiply]
+    NG_open_pbr_surface_surfaceshader_subsurface_anisotropyINT([subsurface_anisotropy]) ==.in2==> NG_open_pbr_surface_surfaceshader_one_plus_subsurface_anisotropy[add]
+    style NG_open_pbr_surface_surfaceshader_subsurface_anisotropyINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_subsurface_bsdf[subsurface_bsdf] --".bg"--> NG_open_pbr_surface_surfaceshader_selected_subsurface[mix]
+    NG_open_pbr_surface_surfaceshader_subsurface_anisotropyINT([subsurface_anisotropy]) ==.anisotropy==> NG_open_pbr_surface_surfaceshader_subsurface_bsdf[subsurface_bsdf]
+    style NG_open_pbr_surface_surfaceshader_subsurface_anisotropyINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_geometry_normalINT([geometry_normal]) ==.normal==> NG_open_pbr_surface_surfaceshader_subsurface_bsdf[subsurface_bsdf]
+    style NG_open_pbr_surface_surfaceshader_geometry_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_affected_subsurface_color[power] --".color"--> NG_open_pbr_surface_surfaceshader_subsurface_bsdf[subsurface_bsdf]
+    NG_open_pbr_surface_surfaceshader_subsurface_radius_scaled[multiply] --".radius"--> NG_open_pbr_surface_surfaceshader_subsurface_bsdf[subsurface_bsdf]
+    NG_open_pbr_surface_surfaceshader_subsurface_radiusINT([subsurface_radius]) ==.in2==> NG_open_pbr_surface_surfaceshader_subsurface_radius_scaled[multiply]
+    style NG_open_pbr_surface_surfaceshader_subsurface_radiusINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_subsurface_radius_vector[convert] --".in1"--> NG_open_pbr_surface_surfaceshader_subsurface_radius_scaled[multiply]
+    NG_open_pbr_surface_surfaceshader_subsurface_radius_scaleINT([subsurface_radius_scale]) ==.in==> NG_open_pbr_surface_surfaceshader_subsurface_radius_vector[convert]
+    style NG_open_pbr_surface_surfaceshader_subsurface_radius_scaleINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_subsurface_selector[convert] --".mix"--> NG_open_pbr_surface_surfaceshader_selected_subsurface[mix]
+    NG_open_pbr_surface_surfaceshader_geometry_thin_walledINT([geometry_thin_walled]) ==.in==> NG_open_pbr_surface_surfaceshader_subsurface_selector[convert]
+    style NG_open_pbr_surface_surfaceshader_geometry_thin_walledINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf] --".bg"--> NG_open_pbr_surface_surfaceshader_opaque_base[mix]
+    NG_open_pbr_surface_surfaceshader_base_weightINT([base_weight]) ==.weight==> NG_open_pbr_surface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style NG_open_pbr_surface_surfaceshader_base_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_base_roughnessINT([base_roughness]) ==.roughness==> NG_open_pbr_surface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style NG_open_pbr_surface_surfaceshader_base_roughnessINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_geometry_normalINT([geometry_normal]) ==.normal==> NG_open_pbr_surface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    style NG_open_pbr_surface_surfaceshader_geometry_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_affected_diffuse_color[power] --".color"--> NG_open_pbr_surface_surfaceshader_diffuse_bsdf[oren_nayar_diffuse_bsdf]
+    NG_open_pbr_surface_surfaceshader_base_color_nonnegative[max] --".in1"--> NG_open_pbr_surface_surfaceshader_coat_affected_diffuse_color[power]
+    NG_open_pbr_surface_surfaceshader_base_colorINT([base_color]) ==.in1==> NG_open_pbr_surface_surfaceshader_base_color_nonnegative[max]
+    style NG_open_pbr_surface_surfaceshader_base_colorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_gamma[add] --".in2"--> NG_open_pbr_surface_surfaceshader_coat_affected_diffuse_color[power]
+    NG_open_pbr_surface_surfaceshader_coat_attenuation[mix] --".in2"--> NG_open_pbr_surface_surfaceshader_coat_substrate_attenuated[multiply]
+    NG_open_pbr_surface_surfaceshader_coat_colorINT([coat_color]) ==.fg==> NG_open_pbr_surface_surfaceshader_coat_attenuation[mix]
+    style NG_open_pbr_surface_surfaceshader_coat_colorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coat_weightINT([coat_weight]) ==.mix==> NG_open_pbr_surface_surfaceshader_coat_attenuation[mix]
+    style NG_open_pbr_surface_surfaceshader_coat_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_emission_edf[mix] --".edf"--> NG_open_pbr_surface_surfaceshader_shader_constructor[surface]
+    NG_open_pbr_surface_surfaceshader_coat_weightINT([coat_weight]) ==.mix==> NG_open_pbr_surface_surfaceshader_emission_edf[mix]
+    style NG_open_pbr_surface_surfaceshader_coat_weightINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_coated_emission_edf[generalized_schlick_edf] --".fg"--> NG_open_pbr_surface_surfaceshader_emission_edf[mix]
+    NG_open_pbr_surface_surfaceshader_one_minus_coat_F0[subtract] --".rrr -> .color0"--> NG_open_pbr_surface_surfaceshader_coated_emission_edf[generalized_schlick_edf]
+    NG_open_pbr_surface_surfaceshader_coat_ior_to_F0[multiply] --".in2"--> NG_open_pbr_surface_surfaceshader_one_minus_coat_F0[subtract]
+    NG_open_pbr_surface_surfaceshader_coat_tinted_emission_edf[multiply] --".base"--> NG_open_pbr_surface_surfaceshader_coated_emission_edf[generalized_schlick_edf]
+    NG_open_pbr_surface_surfaceshader_coat_colorINT([coat_color]) ==.in2==> NG_open_pbr_surface_surfaceshader_coat_tinted_emission_edf[multiply]
+    style NG_open_pbr_surface_surfaceshader_coat_colorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_uncoated_emission_edf[uniform_edf] --".in1"--> NG_open_pbr_surface_surfaceshader_coat_tinted_emission_edf[multiply]
+    NG_open_pbr_surface_surfaceshader_emission_weight[multiply] --".color"--> NG_open_pbr_surface_surfaceshader_uncoated_emission_edf[uniform_edf]
+    NG_open_pbr_surface_surfaceshader_emission_colorINT([emission_color]) ==.in1==> NG_open_pbr_surface_surfaceshader_emission_weight[multiply]
+    style NG_open_pbr_surface_surfaceshader_emission_colorINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_emission_luminanceINT([emission_luminance]) ==.in2==> NG_open_pbr_surface_surfaceshader_emission_weight[multiply]
+    style NG_open_pbr_surface_surfaceshader_emission_luminanceINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_uncoated_emission_edf[uniform_edf] --".bg"--> NG_open_pbr_surface_surfaceshader_emission_edf[mix]
+    NG_open_pbr_surface_surfaceshader_opacity_luminance[luminance] --".r -> .opacity"--> NG_open_pbr_surface_surfaceshader_shader_constructor[surface]
+    NG_open_pbr_surface_surfaceshader_geometry_opacityINT([geometry_opacity]) ==.in==> NG_open_pbr_surface_surfaceshader_opacity_luminance[luminance]
+    style NG_open_pbr_surface_surfaceshader_geometry_opacityINT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **base_weight** | float | 1.0 | Base Weight | 0.0 | 1.0 |  |  |  | Base |  | Multiplier on the intensity of the reflection from the diffuse and metallic base. |  |
+| **base_color** | color3 | 0.8, 0.8, 0.8 | Base Color | 0,0,0 | 1,1,1 |  |  |  | Base |  | Color of the reflection from the diffuse and metallic base. |  |
+| **base_roughness** | float | 0.0 | Base Roughness | 0.0 | 1.0 |  |  |  | Base | true | Roughness of the diffuse reflection. Higher values cause the surface to appear flatter. |  |
+| **base_metalness** | float | 0.0 | Base Metalness | 0.0 | 1.0 |  |  |  | Base |  | Specifies how metallic the base material appears (dials the base from pure dielectric to pure metal). |  |
+| **specular_weight** | float | 1.0 | Specular Weight | 0.0 | 1.0 |  |  |  | Specular |  | Multiplier on the intensity of the specular reflection. |  |
+| **specular_color** | color3 | 1, 1, 1 | Specular Color | 0,0,0 | 1,1,1 |  |  |  | Specular |  | Color of the specular reflection (controls the physical edge-tint for metals, and a non-physical overall tint for dielectrics). |  |
+| **specular_roughness** | float | 0.3 | Specular Roughness | 0.0 | 1.0 |  |  |  | Specular |  | The roughness of the specular reflection. Lower numbers produce sharper reflections, higher numbers produce blurrier reflections. |  |
+| **specular_ior** | float | 1.5 | Specular Index of Refraction | 0.0 |  | 1.0 | 3.0 |  | Specular |  | Index of refraction of the dielectric base. |  |
+| **specular_ior_level** | float | 0.5 | Specular IOR Level | 0.0 | 1.0 |  |  |  | Specular |  | Modulates the dielectric reflectivity at normal incidence between zero and double the original. |  |
+| **specular_anisotropy** | float | 0.0 | Specular Anisotropy | 0.0 | 1.0 |  |  |  | Specular | true | The directional bias of the roughness of the metal/dielectric base, resulting in increasingly stretched highlights along the tangent direction. |  |
+| **specular_rotation** | float | 0.0 | Specular Rotation | 0.0 | 1.0 |  |  |  | Specular | true | Rotation of the axis of specular roughness anisotropy around the surface normal. |  |
+| **transmission_weight** | float | 0.0 | Transmission Weight | 0.0 | 1.0 |  |  |  | Transmission | true | Mixture weight between the transparent and opaque dielectric base. The greater the value the more transparent the material. |  |
+| **transmission_color** | color3 | 1, 1, 1 | Transmission Color | 0,0,0 | 1,1,1 |  |  |  | Transmission | true | Controls color of the transparent base due to Beer's law volumetric absorption under the surface (reverts to a non-physical tint when transmission_depth is zero). |  |
+| **transmission_depth** | float | 0.0 | Transmission Depth | 0.0 |  |  | 1.0 |  | Transmission | true | Specifies the distance light travels inside the transparent base before it becomes exactly the transmission_color according to Beer's law. |  |
+| **transmission_scatter** | color3 | 0, 0, 0 | Transmission Scatter | 0,0,0 | 1,1,1 |  |  |  | Transmission | true | Controls the color of light volumetrically scattered inside the transparent base. Suitable for materials with visually significant scattering such as honey, fruit juice, murky water, opalescent glass, or milky glass. |  |
+| **transmission_scatter_anisotropy** | float | 0.0 | Transmission Anisotropy | 0.0 | 1.0 |  |  |  | Transmission | true | The amount of directional bias, or anisotropy, of the volumetric scattering in the transparent base. |  |
+| **transmission_dispersion** | float | 0.0 | Transmission Dispersion | 0.0 |  |  | 100.0 |  | Transmission | true | Dispersion amount, describing how much the dielectric index of refraction varies across wavelengths. |  |
+| **subsurface_weight** | float | 0.0 | Subsurface | 0.0 | 1.0 |  |  |  | Subsurface Weight | true | Mixture weight which dials the opaque dielectric base between diffuse reflection and subsurface scattering. A value of 1.0 indicates full subsurface scattering and a value 0 for diffuse reflection only. |  |
+| **subsurface_color** | color3 | 0.8, 0.8, 0.8 | Subsurface Color | 0,0,0 | 1,1,1 |  |  |  | Subsurface | true | The overall reflected color of the subsurface scattering effect. |  |
+| **subsurface_radius** | float | 1.0 | Subsurface Radius | 0.0 |  |  | 1.0 |  | Subsurface | true | Length scale of the subsurface diffusion blur profile on the surface. |  |
+| **subsurface_radius_scale** | color3 | 1, 0.5, 0.25 | Subsurface Radius Scale | 0,0,0 | 1,1,1 |  |  |  | Subsurface | true | RGB multiplier to subsurface_radius, giving the per-channel diffusion blur profile size. |  |
+| **subsurface_anisotropy** | float | 0.0 | Subsurface Anisotropy | -1.0 | 1.0 |  |  |  | Subsurface | true | Controls the phase-function of subsurface scattering, where zero scatters light evenly, positive values scatter forward, and negative values scatter backward. |  |
+| **fuzz_weight** | float | 0.0 | Fuzz Weight | 0.0 | 1.0 |  |  |  | Fuzz | true | The weight of a fuzz layer that can be used to approximate microfibers, for fabrics such as velvet and satin as well as dust grains. |  |
+| **fuzz_color** | color3 | 1, 1, 1 | Fuzz Color | 0,0,0 | 1,1,1 |  |  |  | Fuzz | true | The color of the fuzz layer. |  |
+| **fuzz_roughness** | float | 0.5 | Fuzz Roughness | 0.0 | 1.0 |  |  |  | Fuzz | true | The roughness of the fuzz layer. |  |
+| **coat_weight** | float | 0.0 | Coat Weight | 0.0 | 1.0 |  |  |  | Coat |  | The weight of a reflective clear-coat layer on top of the material. Use for materials such as car paint or an oily layer. |  |
+| **coat_color** | color3 | 1, 1, 1 | Coat Color | 0,0,0 | 1,1,1 |  |  |  | Coat |  | The color of the clear-coat layer's transparency, due to absorption in the coat. |  |
+| **coat_roughness** | float | 0.0 | Coat Roughness | 0.0 | 1.0 |  |  |  | Coat |  | The roughness of the clear-coat reflections. The lower the value, the sharper the reflection. |  |
+| **coat_anisotropy** | float | 0.0 | Coat Anisotropy | 0.0 | 1.0 |  |  |  | Coat | true | The directional bias of the roughness of the clear-coat layer, resulting in increasingly stretched highlights along the coat tangent direction. |  |
+| **coat_rotation** | float | 0.0 | Coat Rotation | 0.0 | 1.0 |  |  |  | Coat | true | Rotation of the axis of clear-coat roughness anisotropy around the coat normal. |  |
+| **coat_ior** | float | 1.6 | Coat Index of Refraction | 0.0 |  | 1.0 | 3.0 |  | Coat |  | The index of refraction of the clear-coat layer. |  |
+| **coat_ior_level** | float | 0.5 | Coat IOR Level | 0.0 | 1.0 |  |  |  | Specular |  | Modulates the clear-coat reflectivity at normal incidence between zero and double the original. |  |
+| **thin_film_thickness** | float | 0.0 | Thin Film Thickness | 0.0 |  |  | 2000.0 |  | Thin Film | true | The thickness of the thin film layer on the base (in nanometers). Use for materials such as multi-tone car paint or soap bubbles. |  |
+| **thin_film_ior** | float | 1.5 | Thin Film Index of Refraction | 0.0 |  | 1.0 | 3.0 |  | Thin Film | true | The index of refraction of the thin-film. |  |
+| **emission_luminance** | float | 0.0 | Emission Luminance | 0.0 |  |  | 1000.0 |  | Emission |  | The amount of emitted light, as a luminance in nits. |  |
+| **emission_color** | color3 | 1, 1, 1 | Emission Color | 0,0,0 | 1,1,1 |  |  |  | Emission |  | The color of the emitted light. |  |
+| **geometry_opacity** | color3 | 1, 1, 1 | Opacity | 0,0,0 | 1,1,1 |  |  |  | Geometry |  | The opacity of the entire material. |  |
+| **geometry_thin_walled** | boolean | False | Thin Walled |  |  |  |  |  | Geometry | true | If true the surface is double-sided and represents an infinitesimally thin shell. Suitable for extremely geometrically thin objects such as leaves or paper. |  |
+| **geometry_normal** | vector3 | None | Normal |  |  |  |  |  | Geometry |  | Input geometric normal |  |
+| **geometry_coat_normal** | vector3 | None | Coat Normal |  |  |  |  |  | Geometry |  | Input normal for clear-coat layer |  |
+| **geometry_tangent** | vector3 | None | Tangent Input |  |  |  |  |  | Geometry |  | Input geometric tangent |  |
+| *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
 ### Category: *standard_surface*
 <details><summary>ND_standard_surface_surfaceshader</summary>
 <p>
@@ -1362,7 +1679,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **diffuseColor** | color3 | 0.18, 0.18, 0.18 |  | 0,0,0 | 1,1,1 |  |  |  |  |  |  |  |
 | **emissiveColor** | color3 | 0, 0, 0 |  | 0,0,0 |  |  | 1,1,1 |  |  |  |  |  |
-| **useSpecularWorkflow** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
+| **useSpecularWorkflow** | integer | 0 |  | 0 | 1 |  |  | 1 |  |  |  |  |
 | **specularColor** | color3 | 0, 0, 0 |  | 0,0,0 | 1,1,1 |  |  |  |  |  |  |  |
 | **metallic** | float | 0.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **roughness** | float | 0.5 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
@@ -1371,7 +1688,7 @@ graph LR;
 | **opacity** | float | 1.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **opacityThreshold** | float | 0.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **ior** | float | 1.5 |  | 0.0 |  | 1.0 | 3.0 |  |  |  |  |  |
-| **normal** | vector3 | 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
+| **normal** | vector3 | 0, 0, 1 |  | -1.0,-1.0,-1.0 | 1.0,1.0,1.0 |  |  | 0.01 |  |  |  |  |
 | **displacement** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **occlusion** | float | 1.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
@@ -2430,6 +2747,10 @@ graph LR;
     style NG_standard_surface_to_gltf_pbr_emission_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_emissionINT([emission]) ==.in2==> NG_standard_surface_to_gltf_pbr_emissive[multiply]
     style NG_standard_surface_to_gltf_pbr_emissionINT fill:#0CF, color:#111
+    NG_standard_surface_to_gltf_pbr_normal[dot] --> NG_standard_surface_to_gltf_pbr_normal_out([normal_out])
+    style NG_standard_surface_to_gltf_pbr_normal_out fill:#0C0, color:#111
+    NG_standard_surface_to_gltf_pbr_normalINT([normal]) ==.in==> NG_standard_surface_to_gltf_pbr_normal[dot]
+    style NG_standard_surface_to_gltf_pbr_normalINT fill:#0CF, color:#111
 
 ```
  
@@ -2451,6 +2772,7 @@ graph LR;
 | **coat_roughness** | float | 0.1 |  |  |  |  |  |  |  |  |  |  |
 | **emission** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **emission_color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **normal** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *base_color_out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 | *metallic_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *roughness_out* | float | None |  |  |  |  |  |  |  |  |  |  |
@@ -2462,6 +2784,7 @@ graph LR;
 | *clearcoat_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *clearcoat_roughness_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *emissive_out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+| *normal_out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
 ### Category: *standard_surface_to_UsdPreviewSurface*

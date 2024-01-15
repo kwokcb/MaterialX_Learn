@@ -211,27 +211,34 @@
         <div class="col p-2 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary">Tech</strong>
           <b class="mb-0">Tutorials and Workflows</b>
-            <div class="mb-1 text-muted">September, 2023</div>
-            <p class="card-text mb-auto">
-              <a href="documents/mtlx_utilities.html" target="_blank">
-                Learning Pipeline</a> Various utilities for rendering, definition generation,
-                OpenColorIO code generation etc. Improved <a href="documents/mermaidChecker.html"
-                target="_blank">graph visualization</a>. 
-            </p><br>
+            <div class="mb-1 text-muted">November 2023 - January, 2024</div>
+            <p>New additions have mostly been centered pipeline / Web development
+              including glTF/JSON interop and glTF  
+              incorporation into the <a href="https://github.com/PrismPipeline/QuiltiX" target="_blank">QuiltiX editor</a>
+              as well as additional OpenUSD support utilities.
+
+              <img src="https://github.com/kwokcb/QuiltiX/blob/gltf_plugin/plugins/QuiltiX_GLTF_JSON_USD.png?raw=true" height="256em" role="img" aria-label="Placeholder: Thumbnail"
+              class="img-fluid" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <p>
+                Start of interactive previews for references starting with 
+                <a href="documents/definitions/gltf_pbr.html">glTF pbr</a>. 
+                <img style="border: 1px solid rgb(76, 76, 76);"src="./documents/images/gltf_pbr_interactive_preview_reference.png" width="100%">
+                Improvements to <a href="documents/gltfViewer.html">glTF 
+                utility viewer</a> support also added including drag and drop of glTF and environment files.
+              </p>
+              <p>
+              Working group information for a new procedural texture <a href="https://www.khronos.org/gltf/">
+                glTF</a> (JSON) specification can be found for members of the Khronos glTF PBR working group.
+            </p>
             <p>
-              New and Updated Workflow Articles For:
-              <a href="documents/workflow_gltf.html" target="_blank">Khronos glTF</a>,
-              <a href="documents/workflow_usd.html" target="_blank">OpenUSD</a>,
-              <a href="documents/workflow_ocio.html" target="_blank">OpenColorIO</a>
-            </p>        
-            <p>
-              <a href="documents/jupyter_example.html" target="_blank">Tutorial Updates</a>: 
-                    OpenColorIO, Rendering, JSON Serialization
-            </p>        
+              Additional work to improve supported graphs, usability and performance of the ASWF MaterialX web viewer
+              can be found <a href="https://academysoftwarefoundation.github.io/MaterialX" target="_blank">here</a>. (OpenPBR graph shown in viewer below)
+              <img src="./documents/images/openpbr_graph_jan_2024.png" width="100%">
+              (Note: <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/resources/mtlx/nodedef_materials"
+              target="_blank">Graphs</a> used to create reference images are now previewable in the web viewer)
+            </p>
         </div>
         <div class="col-auto d-flex d-lg-block">
-          <img src="documents/images/Sept_2023_v1.38.8_Release.png" height="256em" role="img" aria-label="Placeholder: Thumbnail"
-            class="img-fluid" preserveAspectRatio="xMidYMid slice" focusable="false">
           <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
         </div>
       </div>
@@ -241,25 +248,32 @@
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-success">News</strong>
 
-          <b class="mb-0">MaterialX 1.38.8 Release</b>
-          <div class="mb-1 text-muted">September, 2023</div>
-          <p class="card-text mb-auto">A tagged release of the Learning Site 
-             which is synced with the <a href="https://github.com/AcademySoftwareFoundation/MaterialX/releases/tag/v1.38.8" target="_blank">              
-              MaterialX 1.38.8 Release.</a> is available on <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank">                
-                GitHub.</a>
+          <b class="mb-0">MaterialX 1.38.9 In Progress</b>
+          <div class="mb-1 text-muted">January, 2024</div>
+          <p class="card-text mb-auto">Sync with January development release of MaterialX 1.38.9
+            which includes:
           </p>
-          <p></p>
+          <ul>
+              <li>
+                Standard library updates and the recent start of an <b>NPR</b> library.
+              </li>
+              <li>
+                Inclusion of
+                <a href="https://github.com/AcademySoftwareFoundation/OpenPBR/blob/main/reference/open_pbr_surface.mtlx">              
+                  OpenPBR</a> MaterialX reference implementation (See <a href="documents/definitions/open_pbr_surface.html">reference section</a>).
+                  <img class="p-3" style="border: 1px solid rgb(76, 76, 76);" src="./documents/images/openpbr_graph_jan_2024.svg" width="100%">
+                </li>
+            </ul>
           <b class="mb-0">Development Updates</b>
-          <div class="mb-1 text-muted">September, 2023</div>
+          <div class="mb-1 text-muted">November 2023 - January, 2024</div>
           <p class="card-text mb-auto">
-            PyPi Python package <a href="documents/python_MaterialX.html">usage information including a new setup video 
-              is available.</a>. This allows <a href="documents/hosting.html">remote hosting</a> to be set up for <em>Github Codespaces</em> and 
-              <em>Google Colab</em>. Example repo posted 
-              <a href="https://github.com/kwokcb/MaterialX_Learn_Sample_Codespace" target="_blank">here</a>.
-            <br><br>
-              Cross references with glTF / MaterialX interop and Khronos integration added as part
-              of new glTF workflow article.
-            </p>
+            Extraction and creation of PyPi Python packages with corresponding documentation with
+            Jupyter notebook examples available for general use:
+            <ul>
+              <li><a href="https://kwokcb.github.io/materialxgltf/" target="_blank">MaterialX / glTF</a> bi-directional translation package
+              <img src="https://kwokcb.github.io/materialxgltf/docs/images/ThreeJS_editor_chessset.png" width="50%"></li>
+              <li><a href="https://kwokcb.github.io/materialxjson/" target="_blank">MaterialX XML / JSON</a> bi-directional converter package</li>
+            </ul>
           </div>
         <!--
         <div class="col-auto d-none d-lg-block">

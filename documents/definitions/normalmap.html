@@ -373,6 +373,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ceil.html">ceil</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="clamp.html">clamp</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cos.html">cos</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="creatematrix.html">creatematrix</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="crossproduct.html">crossproduct</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="determinant.html">determinant</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="distance.html">distance</a>
@@ -405,6 +406,14 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformvector.html">transformvector</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transpose.html">transpose</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="trianglewave.html">trianglewave</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_npr" aria-expanded="false" aria-controls="collapse_npr"> <img src="../images/caret-right-fill.svg"> npr </button>
+</div>
+<div class="collapse ps-5" id="collapse_npr">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="viewdirection.html">viewdirection</a>
 </div>
 </div>
 <div class="ps-3">
@@ -452,6 +461,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="measured_edf.html">measured_edf</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="mix.html">mix</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="multiply.html">multiply</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="open_pbr_surface.html">open_pbr_surface</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="oren_nayar_diffuse_bsdf.html">oren_nayar_diffuse_bsdf</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="roughness_anisotropy.html">roughness_anisotropy</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="roughness_dual.html">roughness_dual</a>
@@ -626,7 +636,7 @@ Category: normalmap
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_normalmap">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_normalmap_float">
    </div>
   </div>
 <hr>
@@ -640,7 +650,7 @@ Category: normalmap
   <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-sm-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_normalmap(mxp_in:{{in}}, mxp_space:{{space}}, mxp_scale:{{scale}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}) </textarea>
+        style="resize: none;" disabled>mx::stdlib::mx_normalmap_float(mxp_in:{{in}}, mxp_space:{{space}}, mxp_scale:{{scale}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}) </textarea>
     </div>
   </div>
 <hr>
@@ -661,7 +671,7 @@ Category: normalmap
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_normalmap">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_normalmap_float">
    </div>
   </div>
 <hr>
@@ -682,7 +692,7 @@ Category: normalmap
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_normalmap">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_normalmap_float">
    </div>
   </div>
 <hr>
@@ -810,6 +820,250 @@ Category: normalmap
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_normalmap_out"
   role="tabpanel" aria-labelledby="pills-ND_normalmap_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="normal" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details><summary class="card-header-sm rounded bg-opacity-50 m-4 py-0 p-3 mb-0 mt-1">ND_normalmap_vector2 <button type="button" class="btn bit-sm disabled btn-outline-primary pt-0 pb-0">1.38.9</button></summary>
+<div class="m-4 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-md-6 border-right" >
+<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0"> vector3</button>
+<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">math</button>
+<p class="card-text"> <b>Version</b> (non-default). <b>Inherits From </b><button type="button" class="btn btn-sm btn-outline-primary pt-0 pb-0">none</button>
+</p>
+</div>
+<div class="col-md-6">
+<img src="../../resources/mtlx/nodedef_materials/material_normalmap_vector2_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_normalmap_vector2_out_genglsl.png style="max-width:11em">
+</div></div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_normalmap.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_normalmap.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_normalmap_vector2">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-sm-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx::stdlib::mx_normalmap_vector2(mxp_in:{{in}}, mxp_space:{{space}}, mxp_scale:{{scale}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_normalmap.metal" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_normalmap.metal">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_normalmap_vector2">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-sm-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_normalmap.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_normalmap.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-sm-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_normalmap_vector2">
+   </div>
+  </div>
+<hr>
+</details>
+</p>
+<p class="card-text"><b>Parameters:</b></p>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_normalmap_vector2_in" type="button" role="tab" aria-controls="pills-ND_normalmap_vector2_in" aria-selected="true">in</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_normalmap_vector2_space" type="button" role="tab" aria-controls="pills-ND_normalmap_vector2_space" aria-selected="true">space</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_normalmap_vector2_scale" type="button" role="tab" aria-controls="pills-ND_normalmap_vector2_scale" aria-selected="true">scale</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_normalmap_vector2_normal" type="button" role="tab" aria-controls="pills-ND_normalmap_vector2_normal" aria-selected="true">normal</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_normalmap_vector2_tangent" type="button" role="tab" aria-controls="pills-ND_normalmap_vector2_tangent" aria-selected="true">tangent</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_normalmap_vector2_out" type="button" role="tab" aria-controls="pills-ND_normalmap_vector2_out" aria-selected="true"><b>out</b></button></li>
+</ul>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_normalmap_vector2_in"
+  role="tabpanel" aria-labelledby="pills-ND_normalmap_vector2_in-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input id="ND_normalmap_vector2_in_0" type="number" class="form-control form-control-sm" value="0.5" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input id="ND_normalmap_vector2_in_1" type="number" class="form-control form-control-sm" value="0.5" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input id="ND_normalmap_vector2_in_2" type="number" class="form-control form-control-sm" value="1" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_normalmap_vector2_space"
+  role="tabpanel" aria-labelledby="pills-ND_normalmap_vector2_space-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="string">
+   </div>
+   <div class="col-sm-2">
+     <label>Uniform</label>
+     <input type="checkbox" class="form-check-input form-check-sm" disabled checked>
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="tangent" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Possible Values: </label>
+      <div class="col-sm-2">
+        <select class="form-select form-select-sm" style="font-size:90%" size="2" disabled>
+          <option>tangent</option>
+          <option> object</option>
+       </select>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_normalmap_vector2_scale"
+  role="tabpanel" aria-labelledby="pills-ND_normalmap_vector2_scale-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector2">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input id="ND_normalmap_vector2_scale_0" type="number" class="form-control form-control-sm" value="1" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input id="ND_normalmap_vector2_scale_1" type="number" class="form-control form-control-sm" value="1" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_normalmap_vector2_normal"
+  role="tabpanel" aria-labelledby="pills-ND_normalmap_vector2_normal-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Geometry Input: </label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="Nworld" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_normalmap_vector2_tangent"
+  role="tabpanel" aria-labelledby="pills-ND_normalmap_vector2_tangent-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Geometry Input: </label>
+      <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" value="Tworld" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_normalmap_vector2_out"
+  role="tabpanel" aria-labelledby="pills-ND_normalmap_vector2_out-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">

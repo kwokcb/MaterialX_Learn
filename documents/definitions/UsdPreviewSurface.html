@@ -373,6 +373,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ceil.html">ceil</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="clamp.html">clamp</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cos.html">cos</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="creatematrix.html">creatematrix</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="crossproduct.html">crossproduct</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="determinant.html">determinant</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="distance.html">distance</a>
@@ -405,6 +406,14 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformvector.html">transformvector</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transpose.html">transpose</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="trianglewave.html">trianglewave</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_npr" aria-expanded="false" aria-controls="collapse_npr"> <img src="../images/caret-right-fill.svg"> npr </button>
+</div>
+<div class="collapse ps-5" id="collapse_npr">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="viewdirection.html">viewdirection</a>
 </div>
 </div>
 <div class="ps-3">
@@ -452,6 +461,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="measured_edf.html">measured_edf</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="mix.html">mix</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="multiply.html">multiply</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="open_pbr_surface.html">open_pbr_surface</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="oren_nayar_diffuse_bsdf.html">oren_nayar_diffuse_bsdf</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="roughness_anisotropy.html">roughness_anisotropy</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="roughness_dual.html">roughness_dual</a>
@@ -827,6 +837,18 @@ graph LR;
           <input id="ND_UsdPreviewSurface_surfaceshader_useSpecularWorkflow" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
+<div class="form-group row g-1">
+<label class="col-sm-2 col-form-label col-form-label-sm">UI Min / Max / Step: </label>
+ <div class="col-sm-2">
+  <input type="text" class="form-control form-control-sm" value="0" disabled>
+ </div>
+ <div class="col-sm-2">
+  <input type="text" class="form-control form-control-sm" value="1" disabled>
+ </div>
+ <div class="col-sm-2">
+  <input type="text" class="form-control form-control-sm" value="1" disabled>
+ </div>
+</div>
  </div>
 </div>
 <div class="tab-content">
@@ -1098,6 +1120,18 @@ graph LR;
           <input id="ND_UsdPreviewSurface_surfaceshader_normal_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
   </div>
+<div class="form-group row g-1">
+<label class="col-sm-2 col-form-label col-form-label-sm">UI Min / Max / Step: </label>
+ <div class="col-sm-2">
+  <input type="text" class="form-control form-control-sm" value="-1.0,-1.0,-1.0" disabled>
+ </div>
+ <div class="col-sm-2">
+  <input type="text" class="form-control form-control-sm" value="1.0,1.0,1.0" disabled>
+ </div>
+ <div class="col-sm-2">
+  <input type="text" class="form-control form-control-sm" value="0.01" disabled>
+ </div>
+</div>
  </div>
 </div>
 <div class="tab-content">

@@ -152,7 +152,10 @@ def main():
 
         print('Render file:' + fileName)
         renderer.addToRenderLog('Render file:' + fileName + '. SearchPath: ' + fullSearchPath.asString())
-        mxrenderer.performRender(renderer, doc, fileName, outputPath, fullSearchPath)
+        rendered, errors = mxrenderer.performRender(renderer, doc, fileName, outputPath, fullSearchPath)
+        if not rendered:
+            print('Error rendering file: "%s"' % fileName)
+            print('Errors: "%s"' % errors)
         renderer.addToRenderLog('--- Finished rendering file "%s"\n' % fileName)
 
     # Open text file
