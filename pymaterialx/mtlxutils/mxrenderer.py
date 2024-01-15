@@ -438,8 +438,8 @@ class GlslRenderer():
         # Render
         try:
             self.renderer.render()
-        except mx.ExceptionRenderError as err:
-            print('Render error:', err)
+        except mx.Exception as err:
+            print('- Render error:', err)
             return False, err
         except LookupError as err:
             return False, err
@@ -568,7 +568,10 @@ def initializeRenderer(stdlib, searchPath,
 
     return glslRenderer        
 
-def performRender(glslRenderer, doc, inputFilename, outputPath, searchPath):
+def performRender(glslRenderer, doc, inputFilename, outputPath, searchPath) -> ( bool, str ):
+
+    rendered = False
+    renderErrors = ''
 
     generator = glslRenderer.getCodeGenerator()
     context = generator.getContext()
@@ -663,18 +666,21 @@ def performRender(glslRenderer, doc, inputFilename, outputPath, searchPath):
             #else:
             #    glslRenderer.addToRenderLog('- Successfully rendered frame.')
 
-        glslRenderer.captureImage()
-        capturedImage = glslRenderer.getCapturedImage()
-        if capturedImage:
-            flipImage = True        
-            outputString = mx.FilePath(mx.createValidName(renderNode.getNamePath()) + '_' + target)
-            outputString.addExtension('png')
-            if outputPath.size() > 0 and os.path.isdir(outputPath.asString()):
-                fileName = outputPath / outputString
-            else:
-                fileName = mx.FilePath(inputFilename).getParentPath() / outputString
-            glslRenderer.addToRenderLog('- Saved rendered image to: %s' % fileName.asString())                             
-            glslRenderer.saveCapture(fileName, flipImage)
+        if rendered:
+            glslRenderer.captureImage()
+            capturedImage = glslRenderer.getCapturedImage()
+            if capturedImage:
+                flipImage = True        
+                outputString = mx.FilePath(mx.createValidName(renderNode.getNamePath()) + '_' + target)
+                outputString.addExtension('png')
+                if outputPath.size() > 0 and os.path.isdir(outputPath.asString()):
+                    fileName = outputPath / outputString
+                else:
+                    fileName = mx.FilePath(inputFilename).getParentPath() / outputString
+                glslRenderer.addToRenderLog('- Saved rendered image to: %s' % fileName.asString())                             
+                glslRenderer.saveCapture(fileName, flipImage)
     
     # Restore image search path
     imageHandler.setSearchPath(imageSearchPathPrev)
+
+    return rendered, renderErrors

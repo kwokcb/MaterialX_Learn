@@ -26,7 +26,7 @@
 * [surfacematerial](#node-surfacematerial) [volumematerial](#node-volumematerial) 
 ---------
 ### Node Group: math
-* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [arrayappend](#node-arrayappend) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) [trianglewave](#node-trianglewave) 
+* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [arrayappend](#node-arrayappend) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [creatematrix](#node-creatematrix) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) [trianglewave](#node-trianglewave) 
 ---------
 ### Node Group: organization
 * [dot](#node-dot) 
@@ -8513,6 +8513,27 @@ graph LR;
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
+<details><summary>ND_normalmap_vector2</summary>
+<p>
+ 
+* *Nodedef*: ND_normalmap_vector2
+* *Type*: vector3
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | vector3 | 0.5, 0.5, 1 |  |  |  |  |  |  |  |  |  |  |
+| **space** | string | tangent |  |  |  |  |  |  |  |  |  | true |
+| **scale** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
 ### Category: *transpose*
 <details><summary>ND_transpose_matrix33</summary>
 <p>
@@ -14540,6 +14561,66 @@ graph LR;
 | **in3** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in4** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+### Category: *creatematrix*
+<details><summary>ND_creatematrix_vector3_matrix33</summary>
+<p>
+ 
+* *Nodedef*: ND_creatematrix_vector3_matrix33
+* *Type*: matrix33
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | vector3 | 1, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | vector3 | 0, 1, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in3** | vector3 | 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
+| *out* | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_creatematrix_vector3_matrix44</summary>
+<p>
+ 
+* *Nodedef*: ND_creatematrix_vector3_matrix44
+* *Type*: matrix44
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | vector3 | 1, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | vector3 | 0, 1, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in3** | vector3 | 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
+| **in4** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_creatematrix_vector4_matrix44</summary>
+<p>
+ 
+* *Nodedef*: ND_creatematrix_vector4_matrix44
+* *Type*: matrix44
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | vector4 | 1, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | vector4 | 0, 1, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in3** | vector4 | 0, 0, 1, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in4** | vector4 | 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
+| *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
 ### Category: *extract*

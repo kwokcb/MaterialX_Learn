@@ -218,16 +218,19 @@
 
             <b>Usage</b>
             <p>
-              <ul>
-                <li>Use "Load glTF" to load in a glTF file.</li>
-                <li>Use "Save Image" to save a snapshot of the rendered file to disk.</li>
-              </ul>
+            <ul>
+              <li>Use "Load glTF" to load in a glTF file, or
+              Drag and drop glTF files (GLB) or environment files (HDR) into the viewer</li>
+              <li>Use "Save Image" to save a snapshot of the rendered file to disk.</li>
+            </ul>
             </p>
             <div class="row flex-nowrap width=100% height=100%">
               <div class="col-sm-12 p-2">
-                <!-- camera-orbit="0deg 0deg 10m" -->
-                <model-viewer style="width: 48em; height: 48em" id="viewer1" ar interaction-prompt="none" camera-controls touch-action="pan-y"
-                   src="" shadow-intensity="0.4" alt="glTF model viewer" poster="">
+                <model-viewer style="background-color: rgb(59, 59, 59); width: 100%; height: 32em" id="viewer1" ar
+                  interaction-prompt="none" camera-controls touch-action="pan-y" src="" shadow-intensity="0.5"
+                  environment-image="./images/dreifaltigkeitsberg_1k.hdr" alt="glTF model viewer" 
+                  poster="./images/gltf_viewer_poster.png"
+                  skybox-image="./images/dreifaltigkeitsberg_1k.hdr">
                 </model-viewer>
               </div>
             </div>
@@ -271,7 +274,7 @@
     if (loadButton) {
       loadButton.addEventListener('click', loadgltf, false);
     }
-  
+
     function saveURL(url, name) {
       var downloadLink = document.createElement("a");
       downloadLink.href = url;
@@ -294,6 +297,88 @@
         }
       });
     }
+
+    /////////////////////////////////////////////////////////////////////////////
+    // Drag and Drop:
+    // - Handles dropping of glb model files and hdr environment files into model-viewer
+    //
+    const modelViewer = document.querySelector("model-viewer#viewer1");
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      modelViewer.addEventListener(eventName, preventDefaults, false)
+      document.body.addEventListener(eventName, preventDefaults, false)
+    })
+
+      // Highlight drop area when item is dragged over it
+      ;['dragenter', 'dragover'].forEach(eventName => {
+        modelViewer.addEventListener(eventName, highlight, false)
+      })
+
+      ;['dragleave', 'drop'].forEach(eventName => {
+        modelViewer.addEventListener(eventName, unhighlight, false)
+      })
+
+    // Handle dropped files
+    modelViewer.addEventListener('drop', handleDrop, false)
+
+    function preventDefaults(e) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+
+    function highlight(e) {
+      modelViewer.classList.add('highlight')
+    }
+
+    function unhighlight(e) {
+      modelViewer.classList.remove('highlight')
+    }
+
+    function handleDrop(e) {
+      var dt = e.dataTransfer
+      var files = dt.files
+
+      handleFiles(files)
+    }
+
+    function handleFiles(files) {
+      ([...files]).forEach(uploadFile)
+    }
+
+    function uploadFile(file) 
+    {
+      const modelViewer = document.querySelector("model-viewer#viewer1");
+      if (modelViewer) {
+        console.log('Dropped file:', file);
+
+        const fileURL = URL.createObjectURL(file);
+
+        // If file ends in glb then set src
+        if (file.name.endsWith('.glb')) {
+          console.log("Change model to: ", file.name)
+          modelViewer.setAttribute("src", fileURL);
+        }
+        // If file ends in hdr or exr then set environment-image
+        else if (file.name.endsWith('.hdr')) {
+          currentEnvironmentURL = fileURL;
+          currentEnvironment = currentEnvironmentURL;
+          currentEnvironment += '#.hdr';
+          console.log("Change environment to: ", file.name, currentEnvironment)
+          modelViewer.setAttribute("environment-image", currentEnvironment);
+          currentSkyBox = modelViewer.getAttribute("skybox-image");
+          if (currentSkyBox != "") {
+            modelViewer.setAttribute("skybox-image", currentEnvironment);
+          }
+        }
+        else {
+          console.log("Unsupported file type for drag+drop: ", file.name)
+        }
+
+      }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////    
 
   </script>
 

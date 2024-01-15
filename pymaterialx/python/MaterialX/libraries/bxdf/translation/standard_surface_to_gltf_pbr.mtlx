@@ -17,6 +17,7 @@
     <input name="coat_roughness" type="float" value="0.1" />
     <input name="emission" type="float" value="0" />
     <input name="emission_color" type="color3" value="1, 1, 1" />
+    <input name="normal" type="vector3" value="1, 1, 1" />
 
     <output name="base_color_out" type="color3" />
     <output name="metallic_out" type="float" />
@@ -29,6 +30,7 @@
     <output name="clearcoat_out" type="float" />
     <output name="clearcoat_roughness_out" type="float" />
     <output name="emissive_out" type="color3" />
+    <output name="normal_out" type="vector3"/>
   </nodedef>
 
   <nodegraph name="NG_standard_surface_to_gltf_pbr" nodedef="ND_standard_surface_to_gltf_pbr">
@@ -76,6 +78,10 @@
     </dot>
     <dot name="roughness" type="float">
       <input name="in" type="float" interfacename="specular_roughness" />
+    </dot>
+
+    <dot name="normal" type="vector3">
+      <input name="in" type="vector3" interfacename="normal" />
     </dot>
 
     <!-- Transmission -->
@@ -129,6 +135,7 @@
     <output name="clearcoat_out" type="float" nodename="clearcoat" />
     <output name="clearcoat_roughness_out" type="float" nodename="clearcoat_roughness" />
     <output name="emissive_out" type="color3" nodename="emissive" />
+    <output name="normal_out" type="vector3" nodename="normal" />
 
   </nodegraph>
 </materialx>

@@ -1,0 +1,87 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sample Viewer</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    .fx {
+      font-size: small;
+    }
+  </style>
+</head>
+
+<body class="min-vh-100">
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+
+
+  <div class="container-fluid bg-dark min-vh-100">
+    <div class="row flex">
+      <div class="col-sm-12 p-0">
+        <model-viewer class="min-vh-100" disable-tap style="background-color: rgb(80, 80, 80); width: 100%; height: 100%" id="viewer1"
+          interaction-prompt="none" camera-controls touch-action="pan-y" src="building.glb" shadow-intensity="1"
+          shadow-softness="0.5" alt="model_viewer" poster="" skybox-image="images/rural_crossroads_1k.hdr"
+          environment-image="images/rural_crossroads_1k.hdr">
+          <div class="row flex">
+            <div class="col-sm-12 p-2">
+              <div class="col-sm2 flex">
+                <button id="loadgltf" class="btn btn-light">Load File</button>
+                <input id="fileInput" type="file" style="display: none;">
+              </div>
+            </div>
+          </div>
+        </model-viewer>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    fileInput.addEventListener('change', (event) => {
+      const selectedFile = event.target.files[0]; 
+      if (selectedFile) {
+        const modelViewer = document.getElementById("viewer1");
+        if (modelViewer) {
+          const fileURL = URL.createObjectURL(selectedFile);
+          modelViewer.setAttribute("src", fileURL)
+        }
+      }
+    });
+
+    function loadgltf(e) {
+      const fileInput = document.getElementById('fileInput');
+      fileInput.click();
+    }
+
+    let loadButton = document.getElementById('loadgltf');
+    if (loadButton) {
+      loadButton.addEventListener('click', loadgltf, false);
+    }
+
+    function saveURL(url, name) {
+      var downloadLink = document.getElementById("fileOutput");
+      downloadLink.href = url;
+      downloadLink.download = name;
+      downloadLink.click();
+    }
+
+  </script>
+
+</body>
+
+</html>

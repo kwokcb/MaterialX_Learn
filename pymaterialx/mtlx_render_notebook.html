@@ -14685,7 +14685,7 @@ and loading in standard libraries.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Loaded 729 standard library definitions
+<pre>Loaded 740 standard library definitions
 </pre>
 </div>
 </div>
@@ -15153,7 +15153,7 @@ Supported Target From Source Transforms:
 <span class="sd">        Note: It is important to set up the source code path so that</span>
 <span class="sd">        file implementations can be found.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mxgen</span> <span class="o">=</span> <span class="n">mxshadergen</span><span class="o">.</span><span class="n">MtlxShaderGen</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">stdlib</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mxgen</span> <span class="o">=</span> <span class="n">mxshadergen</span><span class="o">.</span><span class="n">MtlxShaderGen</span><span class="p">(</span><span class="n">stdlib</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mxgen</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
 
         <span class="c1"># Check generator and generator options</span>
@@ -15870,8 +15870,9 @@ Stage name: &#34;pixel&#34;
 ------------------------------
 - Block:  PublicUniforms
   - Variable: displacementshader1. Value: (&lt;NONE&gt;). Type: displacementshader, Path: &#34;&lt;NONE&gt;&#34;
-  - Variable: image_color3_file. Value: (checker.png). Type: filename, Path: &#34;nodegraph1/image_color3/file --&gt; nodegraph1/filename_port&#34;
-   - Unit:, ColorSpace:srgb_texture
+  - Variable: texcoord_vector2_index. Value: (0). Type: integer, Path: &#34;nodegraph1/texcoord_vector2/index&#34;
+  - Variable: image_color3_file. Value: (checker.png). Type: filename, Path: &#34;nodegraph1/filename_port&#34;
+   - Unit:, ColorSpace:lin_rec709
   - Variable: image_color3_layer. Value: (&lt;NONE&gt;). Type: string, Path: &#34;nodegraph1/image_color3/layer&#34;
   - Variable: image_color3_default. Value: (0.574572, 0.0112386, 0.0112386). Type: color3, Path: &#34;nodegraph1/image_color3/default&#34;
   - Variable: image_color3_uaddressmode. Value: (2). Type: integer, Path: &#34;nodegraph1/image_color3/uaddressmode&#34;
@@ -15882,8 +15883,7 @@ Stage name: &#34;pixel&#34;
   - Variable: image_color3_frameendaction. Value: (0). Type: integer, Path: &#34;nodegraph1/image_color3/frameendaction&#34;
   - Variable: image_color3_uv_scale. Value: (1, 1). Type: vector2, Path: &#34;&lt;NONE&gt;&#34;
   - Variable: image_color3_uv_offset. Value: (0, 0). Type: vector2, Path: &#34;&lt;NONE&gt;&#34;
-  - Variable: multiply_color3_in1. Value: (0.0225967, 0.33904, 0.440098). Type: color3, Path: &#34;nodegraph1/multiply_color3/in1 --&gt; nodegraph1/color3_port&#34;
-   - Unit:, ColorSpace:srgb_texture
+  - Variable: multiply_color3_in1. Value: (0.0225967, 0.33904, 0.440098). Type: color3, Path: &#34;nodegraph1/color3_port&#34;
   - Variable: surface_unlit_emission. Value: (1). Type: float, Path: &#34;surface_unlit/emission&#34;
   - Variable: surface_unlit_transmission. Value: (0). Type: float, Path: &#34;surface_unlit/transmission&#34;
   - Variable: surface_unlit_transmission_color. Value: (1, 1, 1). Type: color3, Path: &#34;surface_unlit/transmission_color&#34;
@@ -16003,6 +16003,7 @@ In the sample code below we scan the source for &quot;uniforms&quot; and prints 
    uniform sampler2D u_envIrradiance;
    uniform bool u_refractionTwoSided = false;
    uniform displacementshader displacementshader1;
+   uniform int texcoord_vector2_index = 0;
    uniform sampler2D image_color3_file;
    uniform int image_color3_layer = 0;
    uniform vec3 image_color3_default = vec3(0.574572, 0.011239, 0.011239);
@@ -16265,7 +16266,7 @@ and then find the target shader variable to update.</p>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>- Loaded image: &#34;checker.png&#34;. Size: 1920 x 1920. Channel count: 3
  - Base Type: BaseType.UINT8 . Base Stride: 1
- - Source color space: srgb_texture
+ - Source color space: lin_rec709
 - Bind to program / shader port: image_color3_file
 </pre>
 </div>

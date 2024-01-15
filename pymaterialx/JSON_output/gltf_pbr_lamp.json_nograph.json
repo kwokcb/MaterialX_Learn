@@ -1,0 +1,257 @@
+{
+  "materialx": {
+    "gltf_image:image_basecolor": {
+      "input:file": {
+        "colorspace": "srgb_texture",
+        "type": "filename",
+        "value": "IridescenceLamp_BaseColor.png"
+      },
+      "type": "color3",
+      "xpos": "10.144928",
+      "ypos": "-3.620690"
+    },
+    "gltf_image:image_basecolor2": {
+      "input:file": {
+        "colorspace": "srgb_texture",
+        "type": "filename",
+        "value": "IridescenceLamp_BaseColor.png"
+      },
+      "type": "color3",
+      "xpos": "10.144928",
+      "ypos": "-0.939655"
+    },
+    "gltf_image:image_basecolor3": {
+      "input:file": {
+        "colorspace": "srgb_texture",
+        "type": "filename",
+        "value": "IridescenceLamp_BaseColor.png"
+      },
+      "type": "color3",
+      "xpos": "10.144928",
+      "ypos": "3.655172"
+    },
+    "gltf_image:image_orm": {
+      "input:file": {
+        "type": "filename",
+        "value": "IridescenceLamp_OcclusionRoughnessMetalness.png"
+      },
+      "type": "vector3",
+      "xpos": "10.144928",
+      "ypos": "-2.275862"
+    },
+    "gltf_image:image_orm2": {
+      "input:file": {
+        "type": "filename",
+        "value": "IridescenceLamp_OcclusionRoughnessMetalness.png"
+      },
+      "type": "vector3",
+      "xpos": "10.144928",
+      "ypos": "0.396552"
+    },
+    "gltf_image:image_orm3": {
+      "input:file": {
+        "type": "filename",
+        "value": "IridescenceLamp_OcclusionRoughnessMetalness.png"
+      },
+      "type": "vector3",
+      "xpos": "10.144928",
+      "ypos": "4.991379"
+    },
+    "gltf_iridescence_thickness:image_iridescence_thickness": {
+      "input:file": {
+        "type": "filename",
+        "value": "IridescenceLamp_Iridescence.png"
+      },
+      "input:thicknessMax": {
+        "type": "float",
+        "value": "405"
+      },
+      "input:thicknessMin": {
+        "type": "float",
+        "value": "395"
+      },
+      "type": "float",
+      "xpos": "10.144928",
+      "ypos": "1.732759"
+    },
+    "gltf_iridescence_thickness:image_iridescence_thickness2": {
+      "input:file": {
+        "type": "filename",
+        "value": "IridescenceLamp_Iridescence.png"
+      },
+      "input:thicknessMax": {
+        "type": "float",
+        "value": "515"
+      },
+      "input:thicknessMin": {
+        "type": "float",
+        "value": "485"
+      },
+      "type": "float",
+      "xpos": "10.144928",
+      "ypos": "6.327586"
+    },
+    "gltf_pbr:SHD_IridescenceLamp": {
+      "input:base_color": {
+        "nodename": "image_basecolor",
+        "type": "color3"
+      },
+      "input:emissive": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:metallic": {
+        "channels": "z",
+        "nodename": "image_orm",
+        "type": "float",
+        "value": "1"
+      },
+      "input:occlusion": {
+        "channels": "x",
+        "nodename": "image_orm",
+        "type": "float",
+        "value": "1"
+      },
+      "input:roughness": {
+        "channels": "y",
+        "nodename": "image_orm",
+        "type": "float",
+        "value": "1"
+      },
+      "type": "surfaceshader",
+      "xpos": "13.768116",
+      "ypos": "-3.137931"
+    },
+    "gltf_pbr:SHD_IridescenceLampIridescence": {
+      "input:base_color": {
+        "nodename": "image_basecolor3",
+        "type": "color3"
+      },
+      "input:emissive": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:iridescence": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:iridescence_ior": {
+        "type": "float",
+        "value": "1.8"
+      },
+      "input:iridescence_thickness": {
+        "nodename": "image_iridescence_thickness2",
+        "type": "float"
+      },
+      "input:metallic": {
+        "channels": "z",
+        "nodename": "image_orm3",
+        "type": "float",
+        "value": "1"
+      },
+      "input:occlusion": {
+        "channels": "x",
+        "nodename": "image_orm3",
+        "type": "float",
+        "value": "1"
+      },
+      "input:roughness": {
+        "channels": "y",
+        "nodename": "image_orm3",
+        "type": "float",
+        "value": "1"
+      },
+      "type": "surfaceshader",
+      "xpos": "13.768116",
+      "ypos": "3.922414"
+    },
+    "gltf_pbr:SHD_IridescenceLampTransmissionIridescence": {
+      "input:attenuation_color": {
+        "type": "color3",
+        "value": "1, 1, 1"
+      },
+      "input:attenuation_distance": {
+        "type": "float",
+        "value": "3.40282e+38"
+      },
+      "input:base_color": {
+        "nodename": "image_basecolor2",
+        "type": "color3"
+      },
+      "input:emissive": {
+        "type": "color3",
+        "value": "0, 0, 0"
+      },
+      "input:iridescence": {
+        "type": "float",
+        "value": "1"
+      },
+      "input:iridescence_ior": {
+        "type": "float",
+        "value": "1.67"
+      },
+      "input:iridescence_thickness": {
+        "nodename": "image_iridescence_thickness",
+        "type": "float"
+      },
+      "input:metallic": {
+        "channels": "z",
+        "nodename": "image_orm2",
+        "type": "float",
+        "value": "1"
+      },
+      "input:occlusion": {
+        "channels": "x",
+        "nodename": "image_orm2",
+        "type": "float",
+        "value": "1"
+      },
+      "input:roughness": {
+        "channels": "y",
+        "nodename": "image_orm2",
+        "type": "float",
+        "value": "1"
+      },
+      "input:thickness": {
+        "type": "float",
+        "value": "0.005"
+      },
+      "input:transmission": {
+        "type": "float",
+        "value": "1"
+      },
+      "type": "surfaceshader",
+      "xpos": "13.768116",
+      "ypos": "-0.620690"
+    },
+    "surfacematerial:MAT_IridescenceLamp": {
+      "input:surfaceshader": {
+        "nodename": "SHD_IridescenceLamp",
+        "type": "surfaceshader"
+      },
+      "type": "material",
+      "xpos": "19.797102",
+      "ypos": "-0.517241"
+    },
+    "surfacematerial:MAT_IridescenceLampIridescence": {
+      "input:surfaceshader": {
+        "nodename": "SHD_IridescenceLampIridescence",
+        "type": "surfaceshader"
+      },
+      "type": "material",
+      "xpos": "19.528986",
+      "ypos": "2.922414"
+    },
+    "surfacematerial:MAT_IridescenceLampTransmissionIridescence": {
+      "input:surfaceshader": {
+        "nodename": "SHD_IridescenceLampTransmissionIridescence",
+        "type": "surfaceshader"
+      },
+      "type": "material",
+      "xpos": "19.681160",
+      "ypos": "1.284483"
+    },
+    "version": "1.38"
+  },
+  "mimetype": "application/mtlx+json"
+}

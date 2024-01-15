@@ -373,6 +373,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="ceil.html">ceil</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="clamp.html">clamp</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="cos.html">cos</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="creatematrix.html">creatematrix</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="crossproduct.html">crossproduct</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="determinant.html">determinant</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="distance.html">distance</a>
@@ -405,6 +406,14 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transformvector.html">transformvector</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="transpose.html">transpose</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="trianglewave.html">trianglewave</a>
+</div>
+</div>
+<div class="ps-3">
+<button class="btn btn-outline-primary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_npr" aria-expanded="false" aria-controls="collapse_npr"> <img src="../images/caret-right-fill.svg"> npr </button>
+</div>
+<div class="collapse ps-5" id="collapse_npr">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="viewdirection.html">viewdirection</a>
 </div>
 </div>
 <div class="ps-3">
@@ -452,6 +461,7 @@
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="measured_edf.html">measured_edf</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="mix.html">mix</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="multiply.html">multiply</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="open_pbr_surface.html">open_pbr_surface</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="oren_nayar_diffuse_bsdf.html">oren_nayar_diffuse_bsdf</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="roughness_anisotropy.html">roughness_anisotropy</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="roughness_dual.html">roughness_dual</a>
@@ -649,6 +659,10 @@ Category: standard_surface_to_gltf_pbr
 <img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_emissive_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_emissive_out_genglsl.png>
 <div style="font-size: 70%">emissive_out</div>
 </div>
+<div class="col col-sm ps-0 pe-0 ms-0 me-0">
+<img src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_normal_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_normal_out_genglsl.png>
+<div style="font-size: 70%">normal_out</div>
+</div>
 </div>
 </div>
 </div></div>
@@ -739,6 +753,10 @@ graph LR;
     style NG_standard_surface_to_gltf_pbr_emission_colorINT fill:#0CF, color:#111
     NG_standard_surface_to_gltf_pbr_emissionINT([emission]) ==.in2==> NG_standard_surface_to_gltf_pbr_emissive[multiply]
     style NG_standard_surface_to_gltf_pbr_emissionINT fill:#0CF, color:#111
+    NG_standard_surface_to_gltf_pbr_normal[dot] --> NG_standard_surface_to_gltf_pbr_normal_out([normal_out])
+    style NG_standard_surface_to_gltf_pbr_normal_out fill:#0C0, color:#111
+    NG_standard_surface_to_gltf_pbr_normalINT([normal]) ==.in==> NG_standard_surface_to_gltf_pbr_normal[dot]
+    style NG_standard_surface_to_gltf_pbr_normalINT fill:#0CF, color:#111
 
 
 
@@ -763,6 +781,7 @@ graph LR;
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_coat_roughness" type="button" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_coat_roughness" aria-selected="true">coat_roughness</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_emission" type="button" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_emission" aria-selected="true">emission</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_emission_color" type="button" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_emission_color" aria-selected="true">emission_color</button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_normal" type="button" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_normal" aria-selected="true">normal</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_base_color_out" type="button" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_base_color_out" aria-selected="true"><b>base_color_out</b></button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_metallic_out" type="button" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_metallic_out" aria-selected="true"><b>metallic_out</b></button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_roughness_out" type="button" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_roughness_out" aria-selected="true"><b>roughness_out</b></button></li>
@@ -774,6 +793,7 @@ graph LR;
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_clearcoat_out" type="button" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_clearcoat_out" aria-selected="true"><b>clearcoat_out</b></button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_clearcoat_roughness_out" type="button" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_clearcoat_roughness_out" aria-selected="true"><b>clearcoat_roughness_out</b></button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_emissive_out" type="button" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_emissive_out" aria-selected="true"><b>emissive_out</b></button></li>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_normal_out" type="button" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_normal_out" aria-selected="true"><b>normal_out</b></button></li>
 </ul>
 <br>
 <div class="tab-content">
@@ -1087,6 +1107,29 @@ graph LR;
  </div>
 </div>
 <div class="tab-content">
+ <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_normal"
+  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_normal-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input id="ND_standard_surface_to_gltf_pbr_normal_0" type="number" class="form-control form-control-sm" value="1" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input id="ND_standard_surface_to_gltf_pbr_normal_1" type="number" class="form-control form-control-sm" value="1" disabled>
+      </div>
+      <div class="col-sm-2">
+          <input id="ND_standard_surface_to_gltf_pbr_normal_2" type="number" class="form-control form-control-sm" value="1" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
  <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_base_color_out"
   role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_base_color_out-tab" tabindex="0">
   <div class="form-group row g-2">
@@ -1203,6 +1246,17 @@ graph LR;
   <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
    <div class="col-sm-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_normal_out"
+  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_normal_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+   <div class="col-sm-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="vector3">
    </div>
   </div>
  </div>
