@@ -413,6 +413,7 @@
 </div>
 <div class="collapse ps-5" id="collapse_npr">
 <div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="facingratio.html">facingratio</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="viewdirection.html">viewdirection</a>
 </div>
 </div>
@@ -800,87 +801,29 @@ Category: noise2d
 <img src="../../resources/mtlx/nodedef_materials/material_noise2d_color3_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_noise2d_color3_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_noise2d_vector3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_vector3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_vector3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_noise2d_color3(mxp_amplitude:{{amplitude}}, mxp_pivot:{{pivot}}, mxp_texcoord:{{texcoord}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_noise2d_vector3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_noise2d_vector3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_vector3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_noise2d_color3.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_color3.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_color3">
-   </div>
-  </div>
-<hr>
+<button id="ND_noise2d_color3_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_noise2d_color3_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_noise2d_color3_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_noise2d_color3_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_noise2d_color3_N_noise2d[noise2d] --> NG_noise2d_color3_out([out])
+    style NG_noise2d_color3_out fill:#0C0, color:#111
+    NG_noise2d_color3_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_color3_N_noise2d[noise2d]
+    style NG_noise2d_color3_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_color3_pivotINT([pivot]) ==.pivot==> NG_noise2d_color3_N_noise2d[noise2d]
+    style NG_noise2d_color3_pivotINT fill:#0CF, color:#111
+    NG_noise2d_color3_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_color3_N_noise2d[noise2d]
+    style NG_noise2d_color3_texcoordINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -998,87 +941,29 @@ Category: noise2d
 <img src="../../resources/mtlx/nodedef_materials/material_noise2d_color4_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_noise2d_color4_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_noise2d_vector4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_vector4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_vector4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_noise2d_color4(mxp_amplitude:{{amplitude}}, mxp_pivot:{{pivot}}, mxp_texcoord:{{texcoord}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_noise2d_vector4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_noise2d_vector4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_vector4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_noise2d_color4.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_color4.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_color4">
-   </div>
-  </div>
-<hr>
+<button id="ND_noise2d_color4_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_noise2d_color4_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_noise2d_color4_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_noise2d_color4_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_noise2d_color4_N_noise2d[noise2d] --> NG_noise2d_color4_out([out])
+    style NG_noise2d_color4_out fill:#0C0, color:#111
+    NG_noise2d_color4_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_color4_N_noise2d[noise2d]
+    style NG_noise2d_color4_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_color4_pivotINT([pivot]) ==.pivot==> NG_noise2d_color4_N_noise2d[noise2d]
+    style NG_noise2d_color4_pivotINT fill:#0CF, color:#111
+    NG_noise2d_color4_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_color4_N_noise2d[noise2d]
+    style NG_noise2d_color4_texcoordINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1787,87 +1672,29 @@ Category: noise2d
 <img src="../../resources/mtlx/nodedef_materials/material_noise2d_color3FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_noise2d_color3FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_noise2d_fa_vector3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_noise2d_color3FA(mxp_amplitude:{{amplitude}}, mxp_pivot:{{pivot}}, mxp_texcoord:{{texcoord}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_noise2d_fa_vector3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_noise2d_fa_vector3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_noise2d_fa_color3.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_color3.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_color3">
-   </div>
-  </div>
-<hr>
+<button id="ND_noise2d_color3FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_noise2d_color3FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_noise2d_color3FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_noise2d_color3FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_noise2d_color3FA_N_noise2d[noise2d] --> NG_noise2d_color3FA_out([out])
+    style NG_noise2d_color3FA_out fill:#0C0, color:#111
+    NG_noise2d_color3FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_color3FA_N_noise2d[noise2d]
+    style NG_noise2d_color3FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_color3FA_pivotINT([pivot]) ==.pivot==> NG_noise2d_color3FA_N_noise2d[noise2d]
+    style NG_noise2d_color3FA_pivotINT fill:#0CF, color:#111
+    NG_noise2d_color3FA_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_color3FA_N_noise2d[noise2d]
+    style NG_noise2d_color3FA_texcoordINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1980,87 +1807,29 @@ Category: noise2d
 <img src="../../resources/mtlx/nodedef_materials/material_noise2d_color4FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_noise2d_color4FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_noise2d_fa_vector4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_noise2d_color4FA(mxp_amplitude:{{amplitude}}, mxp_pivot:{{pivot}}, mxp_texcoord:{{texcoord}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_noise2d_fa_vector4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_noise2d_fa_vector4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_noise2d_fa_color4.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_color4.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_color4">
-   </div>
-  </div>
-<hr>
+<button id="ND_noise2d_color4FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_noise2d_color4FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_noise2d_color4FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_noise2d_color4FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_noise2d_color4FA_N_noise2d[noise2d] --> NG_noise2d_color4FA_out([out])
+    style NG_noise2d_color4FA_out fill:#0C0, color:#111
+    NG_noise2d_color4FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_color4FA_N_noise2d[noise2d]
+    style NG_noise2d_color4FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_color4FA_pivotINT([pivot]) ==.pivot==> NG_noise2d_color4FA_N_noise2d[noise2d]
+    style NG_noise2d_color4FA_pivotINT fill:#0CF, color:#111
+    NG_noise2d_color4FA_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_color4FA_N_noise2d[noise2d]
+    style NG_noise2d_color4FA_texcoordINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2176,87 +1945,29 @@ Category: noise2d
 <img src="../../resources/mtlx/nodedef_materials/material_noise2d_vector2FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_noise2d_vector2FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_noise2d_fa_vector2.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector2.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector2">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_noise2d_float2FA(mxp_amplitude:{{amplitude}}, mxp_pivot:{{pivot}}, mxp_texcoord:{{texcoord}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_noise2d_fa_vector2.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_noise2d_fa_vector2.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector2">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_noise2d_fa_vector2.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector2.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector2">
-   </div>
-  </div>
-<hr>
+<button id="ND_noise2d_vector2FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_noise2d_vector2FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_noise2d_vector2FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_noise2d_vector2FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_noise2d_vector2FA_N_noise2d[noise2d] --> NG_noise2d_vector2FA_out([out])
+    style NG_noise2d_vector2FA_out fill:#0C0, color:#111
+    NG_noise2d_vector2FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_vector2FA_N_noise2d[noise2d]
+    style NG_noise2d_vector2FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_vector2FA_pivotINT([pivot]) ==.pivot==> NG_noise2d_vector2FA_N_noise2d[noise2d]
+    style NG_noise2d_vector2FA_pivotINT fill:#0CF, color:#111
+    NG_noise2d_vector2FA_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_vector2FA_N_noise2d[noise2d]
+    style NG_noise2d_vector2FA_texcoordINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2363,87 +2074,29 @@ Category: noise2d
 <img src="../../resources/mtlx/nodedef_materials/material_noise2d_vector3FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_noise2d_vector3FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_noise2d_fa_vector3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_noise2d_float3FA(mxp_amplitude:{{amplitude}}, mxp_pivot:{{pivot}}, mxp_texcoord:{{texcoord}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_noise2d_fa_vector3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_noise2d_fa_vector3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_noise2d_fa_vector3.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector3.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector3">
-   </div>
-  </div>
-<hr>
+<button id="ND_noise2d_vector3FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_noise2d_vector3FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_noise2d_vector3FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_noise2d_vector3FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_noise2d_vector3FA_N_noise2d[noise2d] --> NG_noise2d_vector3FA_out([out])
+    style NG_noise2d_vector3FA_out fill:#0C0, color:#111
+    NG_noise2d_vector3FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_vector3FA_N_noise2d[noise2d]
+    style NG_noise2d_vector3FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_vector3FA_pivotINT([pivot]) ==.pivot==> NG_noise2d_vector3FA_N_noise2d[noise2d]
+    style NG_noise2d_vector3FA_pivotINT fill:#0CF, color:#111
+    NG_noise2d_vector3FA_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_vector3FA_N_noise2d[noise2d]
+    style NG_noise2d_vector3FA_texcoordINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2553,87 +2206,29 @@ Category: noise2d
 <img src="../../resources/mtlx/nodedef_materials/material_noise2d_vector4FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_noise2d_vector4FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_noise2d_fa_vector4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_noise2d_float4FA(mxp_amplitude:{{amplitude}}, mxp_pivot:{{pivot}}, mxp_texcoord:{{texcoord}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_noise2d_fa_vector4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_noise2d_fa_vector4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_noise2d_fa_vector4.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector4.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_noise2d_fa_vector4">
-   </div>
-  </div>
-<hr>
+<button id="ND_noise2d_vector4FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_noise2d_vector4FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_noise2d_vector4FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_noise2d_vector4FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_noise2d_vector4FA_N_noise2d[noise2d] --> NG_noise2d_vector4FA_out([out])
+    style NG_noise2d_vector4FA_out fill:#0C0, color:#111
+    NG_noise2d_vector4FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_vector4FA_N_noise2d[noise2d]
+    style NG_noise2d_vector4FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_vector4FA_pivotINT([pivot]) ==.pivot==> NG_noise2d_vector4FA_N_noise2d[noise2d]
+    style NG_noise2d_vector4FA_pivotINT fill:#0CF, color:#111
+    NG_noise2d_vector4FA_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_vector4FA_N_noise2d[noise2d]
+    style NG_noise2d_vector4FA_texcoordINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>

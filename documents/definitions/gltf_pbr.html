@@ -413,6 +413,7 @@
 </div>
 <div class="collapse ps-5" id="collapse_npr">
 <div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="facingratio.html">facingratio</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="viewdirection.html">viewdirection</a>
 </div>
 </div>
@@ -798,17 +799,13 @@ graph LR;
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
-
-<model-viewer id="materialviewer" style="background-color: rgb(59, 59, 59);" 
-interaction-prompt="none" camera-controls touch-action="pan-y" src="../images/shaderball2.glb" shadow-intensity="0.5"
-environment-image="../images/dreifaltigkeitsberg_1k.hdr" alt="glTF model viewer" 
-poster="" skybox-image="../images/dreifaltigkeitsberg_1k.hdr"> </model-viewer>
-<!--
-<model-viewer id="materialviewer" ar interaction-prompt="none" camera-controls touch-action="pan-y"
+<!-- <model-viewer id="materialviewer" ar interaction-prompt="none" camera-controls touch-action="pan-y"
     camera-orbit="0deg 90deg 10m" src="../images/shaderball2.glb" shadow-intensity="1"
-    alt="Material Preview"></model-viewer>
-    -->
-<p></p>
+    alt="Material Preview"></model-viewer> -->
+<model-viewer id="materialviewer" style="background-color: rgb(59, 59, 59);" 
+    interaction-prompt="none" camera-controls touch-action="pan-y" src="../images/shaderball2.glb" shadow-intensity="0.5"
+    environment-image="../images/dreifaltigkeitsberg_1k.hdr" alt="glTF model viewer" 
+    poster="" skybox-image="../images/dreifaltigkeitsberg_1k.hdr"> </model-viewer>  <p></p>
 <ul class="nav nav-pills" role="tablist">
 <li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_base_color" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_base_color" aria-selected="true">base_color</button></li>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_metallic" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_metallic" aria-selected="true">metallic</button></li>

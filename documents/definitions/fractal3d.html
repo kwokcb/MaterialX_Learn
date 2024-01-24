@@ -413,6 +413,7 @@
 </div>
 <div class="collapse ps-5" id="collapse_npr">
 <div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="facingratio.html">facingratio</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="viewdirection.html">viewdirection</a>
 </div>
 </div>
@@ -838,87 +839,33 @@ Category: fractal3d
 <img src="../../resources/mtlx/nodedef_materials/material_fractal3d_color3_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_fractal3d_color3_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_fractal3d_vector3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_vector3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_vector3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_fractal3d_color3(mxp_amplitude:{{amplitude}}, mxp_octaves:{{octaves}}, mxp_lacunarity:{{lacunarity}}, mxp_diminish:{{diminish}}, mxp_position:{{position}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_fractal3d_vector3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_fractal3d_vector3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_vector3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_fractal3d_color3.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_color3.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_color3">
-   </div>
-  </div>
-<hr>
+<button id="ND_fractal3d_color3_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_fractal3d_color3_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_fractal3d_color3_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_fractal3d_color3_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_fractal3d_color3_N_fractal3d[fractal3d] --> NG_fractal3d_color3_out([out])
+    style NG_fractal3d_color3_out fill:#0C0, color:#111
+    NG_fractal3d_color3_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_color3_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_color3_octavesINT([octaves]) ==.octaves==> NG_fractal3d_color3_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_color3_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_color3_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_color3_diminishINT([diminish]) ==.diminish==> NG_fractal3d_color3_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_color3_positionINT([position]) ==.position==> NG_fractal3d_color3_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3_positionINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1074,87 +1021,33 @@ Category: fractal3d
 <img src="../../resources/mtlx/nodedef_materials/material_fractal3d_color4_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_fractal3d_color4_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_fractal3d_vector4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_vector4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_vector4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_fractal3d_color4(mxp_amplitude:{{amplitude}}, mxp_octaves:{{octaves}}, mxp_lacunarity:{{lacunarity}}, mxp_diminish:{{diminish}}, mxp_position:{{position}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_fractal3d_vector4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_fractal3d_vector4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_vector4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_fractal3d_color4.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_color4.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_color4">
-   </div>
-  </div>
-<hr>
+<button id="ND_fractal3d_color4_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_fractal3d_color4_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_fractal3d_color4_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_fractal3d_color4_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_fractal3d_color4_N_fractal3d[fractal3d] --> NG_fractal3d_color4_out([out])
+    style NG_fractal3d_color4_out fill:#0C0, color:#111
+    NG_fractal3d_color4_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_color4_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_color4_octavesINT([octaves]) ==.octaves==> NG_fractal3d_color4_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_color4_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_color4_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_color4_diminishINT([diminish]) ==.diminish==> NG_fractal3d_color4_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_color4_positionINT([position]) ==.position==> NG_fractal3d_color4_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4_positionINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2015,87 +1908,33 @@ Category: fractal3d
 <img src="../../resources/mtlx/nodedef_materials/material_fractal3d_color3FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_fractal3d_color3FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_fractal3d_fa_vector3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_fractal3d_color3FA(mxp_amplitude:{{amplitude}}, mxp_octaves:{{octaves}}, mxp_lacunarity:{{lacunarity}}, mxp_diminish:{{diminish}}, mxp_position:{{position}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_fractal3d_fa_vector3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_fractal3d_fa_vector3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_fractal3d_fa_color3.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_color3.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_color3">
-   </div>
-  </div>
-<hr>
+<button id="ND_fractal3d_color3FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_fractal3d_color3FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_fractal3d_color3FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_fractal3d_color3FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_fractal3d_color3FA_N_fractal3d[fractal3d] --> NG_fractal3d_color3FA_out([out])
+    style NG_fractal3d_color3FA_out fill:#0C0, color:#111
+    NG_fractal3d_color3FA_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_color3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3FA_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_color3FA_octavesINT([octaves]) ==.octaves==> NG_fractal3d_color3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3FA_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_color3FA_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_color3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3FA_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_color3FA_diminishINT([diminish]) ==.diminish==> NG_fractal3d_color3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3FA_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_color3FA_positionINT([position]) ==.position==> NG_fractal3d_color3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3FA_positionINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2246,87 +2085,33 @@ Category: fractal3d
 <img src="../../resources/mtlx/nodedef_materials/material_fractal3d_color4FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_fractal3d_color4FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_fractal3d_fa_vector4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_fractal3d_color4FA(mxp_amplitude:{{amplitude}}, mxp_octaves:{{octaves}}, mxp_lacunarity:{{lacunarity}}, mxp_diminish:{{diminish}}, mxp_position:{{position}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_fractal3d_fa_vector4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_fractal3d_fa_vector4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_fractal3d_fa_color4.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_color4.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_color4">
-   </div>
-  </div>
-<hr>
+<button id="ND_fractal3d_color4FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_fractal3d_color4FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_fractal3d_color4FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_fractal3d_color4FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_fractal3d_color4FA_N_fractal3d[fractal3d] --> NG_fractal3d_color4FA_out([out])
+    style NG_fractal3d_color4FA_out fill:#0C0, color:#111
+    NG_fractal3d_color4FA_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_color4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4FA_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_color4FA_octavesINT([octaves]) ==.octaves==> NG_fractal3d_color4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4FA_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_color4FA_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_color4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4FA_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_color4FA_diminishINT([diminish]) ==.diminish==> NG_fractal3d_color4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4FA_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_color4FA_positionINT([position]) ==.position==> NG_fractal3d_color4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4FA_positionINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2480,87 +2265,33 @@ Category: fractal3d
 <img src="../../resources/mtlx/nodedef_materials/material_fractal3d_vector2FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_fractal3d_vector2FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_fractal3d_fa_vector2.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector2.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector2">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_fractal3d_float2FA(mxp_amplitude:{{amplitude}}, mxp_octaves:{{octaves}}, mxp_lacunarity:{{lacunarity}}, mxp_diminish:{{diminish}}, mxp_position:{{position}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_fractal3d_fa_vector2.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_fractal3d_fa_vector2.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector2">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_fractal3d_fa_vector2.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector2.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector2">
-   </div>
-  </div>
-<hr>
+<button id="ND_fractal3d_vector2FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_fractal3d_vector2FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_fractal3d_vector2FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_fractal3d_vector2FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_fractal3d_vector2FA_N_fractal3d[fractal3d] --> NG_fractal3d_vector2FA_out([out])
+    style NG_fractal3d_vector2FA_out fill:#0C0, color:#111
+    NG_fractal3d_vector2FA_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_vector2FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector2FA_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_vector2FA_octavesINT([octaves]) ==.octaves==> NG_fractal3d_vector2FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector2FA_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_vector2FA_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_vector2FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector2FA_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_vector2FA_diminishINT([diminish]) ==.diminish==> NG_fractal3d_vector2FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector2FA_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_vector2FA_positionINT([position]) ==.position==> NG_fractal3d_vector2FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector2FA_positionINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2705,87 +2436,33 @@ Category: fractal3d
 <img src="../../resources/mtlx/nodedef_materials/material_fractal3d_vector3FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_fractal3d_vector3FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_fractal3d_fa_vector3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_fractal3d_float3FA(mxp_amplitude:{{amplitude}}, mxp_octaves:{{octaves}}, mxp_lacunarity:{{lacunarity}}, mxp_diminish:{{diminish}}, mxp_position:{{position}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_fractal3d_fa_vector3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_fractal3d_fa_vector3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_fractal3d_fa_vector3.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector3.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector3">
-   </div>
-  </div>
-<hr>
+<button id="ND_fractal3d_vector3FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_fractal3d_vector3FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_fractal3d_vector3FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_fractal3d_vector3FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_fractal3d_vector3FA_N_fractal3d[fractal3d] --> NG_fractal3d_vector3FA_out([out])
+    style NG_fractal3d_vector3FA_out fill:#0C0, color:#111
+    NG_fractal3d_vector3FA_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_vector3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector3FA_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_vector3FA_octavesINT([octaves]) ==.octaves==> NG_fractal3d_vector3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector3FA_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_vector3FA_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_vector3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector3FA_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_vector3FA_diminishINT([diminish]) ==.diminish==> NG_fractal3d_vector3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector3FA_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_vector3FA_positionINT([position]) ==.position==> NG_fractal3d_vector3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector3FA_positionINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2933,87 +2610,33 @@ Category: fractal3d
 <img src="../../resources/mtlx/nodedef_materials/material_fractal3d_vector4FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_fractal3d_vector4FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_fractal3d_fa_vector4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_fractal3d_float4FA(mxp_amplitude:{{amplitude}}, mxp_octaves:{{octaves}}, mxp_lacunarity:{{lacunarity}}, mxp_diminish:{{diminish}}, mxp_position:{{position}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_fractal3d_fa_vector4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="../genglsl/mx_fractal3d_fa_vector4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_fractal3d_fa_vector4.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector4.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_fractal3d_fa_vector4">
-   </div>
-  </div>
-<hr>
+<button id="ND_fractal3d_vector4FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_fractal3d_vector4FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_fractal3d_vector4FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_fractal3d_vector4FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_fractal3d_vector4FA_N_fractal3d[fractal3d] --> NG_fractal3d_vector4FA_out([out])
+    style NG_fractal3d_vector4FA_out fill:#0C0, color:#111
+    NG_fractal3d_vector4FA_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_vector4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector4FA_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_vector4FA_octavesINT([octaves]) ==.octaves==> NG_fractal3d_vector4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector4FA_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_vector4FA_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_vector4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector4FA_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_vector4FA_diminishINT([diminish]) ==.diminish==> NG_fractal3d_vector4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector4FA_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_vector4FA_positionINT([position]) ==.position==> NG_fractal3d_vector4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector4FA_positionINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
