@@ -413,6 +413,7 @@
 </div>
 <div class="collapse ps-5" id="collapse_npr">
 <div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="facingratio.html">facingratio</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="viewdirection.html">viewdirection</a>
 </div>
 </div>
@@ -793,80 +794,29 @@ Category: smoothstep
 <img src="../../resources/mtlx/nodedef_materials/material_smoothstep_color3_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_smoothstep_color3_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vec3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_smoothstep_color3({{in}}, {{low}}, {{high}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vec3.metal" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3.metal">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>smoothstep({{low}}, {{high}}, {{in}}) </textarea>
-    </div>
-  </div>
-<hr>
+<button id="ND_smoothstep_color3_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_smoothstep_color3_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_smoothstep_color3_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_smoothstep_color3_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_smoothstep_color3_N_smoothstep[smoothstep] --> NG_smoothstep_color3_out([out])
+    style NG_smoothstep_color3_out fill:#0C0, color:#111
+    NG_smoothstep_color3_inINT([in]) ==.in==> NG_smoothstep_color3_N_smoothstep[smoothstep]
+    style NG_smoothstep_color3_inINT fill:#0CF, color:#111
+    NG_smoothstep_color3_lowINT([low]) ==.low==> NG_smoothstep_color3_N_smoothstep[smoothstep]
+    style NG_smoothstep_color3_lowINT fill:#0CF, color:#111
+    NG_smoothstep_color3_highINT([high]) ==.high==> NG_smoothstep_color3_N_smoothstep[smoothstep]
+    style NG_smoothstep_color3_highINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -995,80 +945,29 @@ Category: smoothstep
 <img src="../../resources/mtlx/nodedef_materials/material_smoothstep_color4_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_smoothstep_color4_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vec4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_smoothstep_color4({{in}}, {{low}}, {{high}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vec4.metal" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4.metal">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>smoothstep({{low}}, {{high}}, {{in}}) </textarea>
-    </div>
-  </div>
-<hr>
+<button id="ND_smoothstep_color4_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_smoothstep_color4_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_smoothstep_color4_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_smoothstep_color4_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_smoothstep_color4_N_smoothstep[smoothstep] --> NG_smoothstep_color4_out([out])
+    style NG_smoothstep_color4_out fill:#0C0, color:#111
+    NG_smoothstep_color4_inINT([in]) ==.in==> NG_smoothstep_color4_N_smoothstep[smoothstep]
+    style NG_smoothstep_color4_inINT fill:#0CF, color:#111
+    NG_smoothstep_color4_lowINT([low]) ==.low==> NG_smoothstep_color4_N_smoothstep[smoothstep]
+    style NG_smoothstep_color4_lowINT fill:#0CF, color:#111
+    NG_smoothstep_color4_highINT([high]) ==.high==> NG_smoothstep_color4_N_smoothstep[smoothstep]
+    style NG_smoothstep_color4_highINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1219,15 +1118,15 @@ Category: smoothstep
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vec2.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec2.glsl">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vector2.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vector2.glsl">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vector2">
    </div>
   </div>
 <hr>
@@ -1254,15 +1153,15 @@ Category: smoothstep
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vec2.metal" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec2.metal">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vector2.metal" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vector2.metal">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vector2">
    </div>
   </div>
 <hr>
@@ -1403,15 +1302,15 @@ Category: smoothstep
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vec3.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3.glsl">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vector3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vector3.glsl">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vector3">
    </div>
   </div>
 <hr>
@@ -1438,15 +1337,15 @@ Category: smoothstep
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vec3.metal" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3.metal">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vector3.metal" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vector3.metal">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vector3">
    </div>
   </div>
 <hr>
@@ -1596,15 +1495,15 @@ Category: smoothstep
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vec4.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4.glsl">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vector4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vector4.glsl">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vector4">
    </div>
   </div>
 <hr>
@@ -1631,15 +1530,15 @@ Category: smoothstep
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
    <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vec4.metal" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4.metal">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vector4.metal" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vector4.metal">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
   <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
    <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vector4">
    </div>
   </div>
 <hr>
@@ -1785,80 +1684,29 @@ Category: smoothstep
 <img src="../../resources/mtlx/nodedef_materials/material_smoothstep_color3FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_smoothstep_color3FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vec3FA.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3FA.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3FA">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_smoothstep_color3FA({{in}}, {{low}}, {{high}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vec3FA.metal" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3FA.metal">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3FA">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>smoothstep({{low}}, {{high}}, {{in}}) </textarea>
-    </div>
-  </div>
-<hr>
+<button id="ND_smoothstep_color3FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_smoothstep_color3FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_smoothstep_color3FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_smoothstep_color3FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_smoothstep_color3FA_N_smoothstep[smoothstep] --> NG_smoothstep_color3FA_out([out])
+    style NG_smoothstep_color3FA_out fill:#0C0, color:#111
+    NG_smoothstep_color3FA_inINT([in]) ==.in==> NG_smoothstep_color3FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_color3FA_inINT fill:#0CF, color:#111
+    NG_smoothstep_color3FA_lowINT([low]) ==.low==> NG_smoothstep_color3FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_color3FA_lowINT fill:#0CF, color:#111
+    NG_smoothstep_color3FA_highINT([high]) ==.high==> NG_smoothstep_color3FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_color3FA_highINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -1971,80 +1819,29 @@ Category: smoothstep
 <img src="../../resources/mtlx/nodedef_materials/material_smoothstep_color4FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_smoothstep_color4FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vec4FA.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4FA.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4FA">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_smoothstep_color4FA({{in}}, {{low}}, {{high}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vec4FA.metal" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4FA.metal">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4FA">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>smoothstep({{low}}, {{high}}, {{in}}) </textarea>
-    </div>
-  </div>
-<hr>
+<button id="ND_smoothstep_color4FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_smoothstep_color4FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_smoothstep_color4FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_smoothstep_color4FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_smoothstep_color4FA_N_smoothstep[smoothstep] --> NG_smoothstep_color4FA_out([out])
+    style NG_smoothstep_color4FA_out fill:#0C0, color:#111
+    NG_smoothstep_color4FA_inINT([in]) ==.in==> NG_smoothstep_color4FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_color4FA_inINT fill:#0CF, color:#111
+    NG_smoothstep_color4FA_lowINT([low]) ==.low==> NG_smoothstep_color4FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_color4FA_lowINT fill:#0CF, color:#111
+    NG_smoothstep_color4FA_highINT([high]) ==.high==> NG_smoothstep_color4FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_color4FA_highINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2160,80 +1957,29 @@ Category: smoothstep
 <img src="../../resources/mtlx/nodedef_materials/material_smoothstep_vector2FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_smoothstep_vector2FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vec2FA.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec2FA.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec2FA">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_smoothstep_vector2FA({{in}}, {{low}}, {{high}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vec2FA.metal" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec2FA.metal">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec2FA">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>smoothstep({{low}}, {{high}}, {{in}}) </textarea>
-    </div>
-  </div>
-<hr>
+<button id="ND_smoothstep_vector2FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_smoothstep_vector2FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_smoothstep_vector2FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_smoothstep_vector2FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_smoothstep_vector2FA_N_smoothstep[smoothstep] --> NG_smoothstep_vector2FA_out([out])
+    style NG_smoothstep_vector2FA_out fill:#0C0, color:#111
+    NG_smoothstep_vector2FA_inINT([in]) ==.in==> NG_smoothstep_vector2FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector2FA_inINT fill:#0CF, color:#111
+    NG_smoothstep_vector2FA_lowINT([low]) ==.low==> NG_smoothstep_vector2FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector2FA_lowINT fill:#0CF, color:#111
+    NG_smoothstep_vector2FA_highINT([high]) ==.high==> NG_smoothstep_vector2FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector2FA_highINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2340,80 +2086,29 @@ Category: smoothstep
 <img src="../../resources/mtlx/nodedef_materials/material_smoothstep_vector3FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_smoothstep_vector3FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vec3FA.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3FA.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3FA">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_smoothstep_vector3FA({{in}}, {{low}}, {{high}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vec3FA.metal" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3FA.metal">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec3FA">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>smoothstep({{low}}, {{high}}, {{in}}) </textarea>
-    </div>
-  </div>
-<hr>
+<button id="ND_smoothstep_vector3FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_smoothstep_vector3FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_smoothstep_vector3FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_smoothstep_vector3FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_smoothstep_vector3FA_N_smoothstep[smoothstep] --> NG_smoothstep_vector3FA_out([out])
+    style NG_smoothstep_vector3FA_out fill:#0C0, color:#111
+    NG_smoothstep_vector3FA_inINT([in]) ==.in==> NG_smoothstep_vector3FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector3FA_inINT fill:#0CF, color:#111
+    NG_smoothstep_vector3FA_lowINT([low]) ==.low==> NG_smoothstep_vector3FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector3FA_lowINT fill:#0CF, color:#111
+    NG_smoothstep_vector3FA_highINT([high]) ==.high==> NG_smoothstep_vector3FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector3FA_highINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>
@@ -2523,80 +2218,29 @@ Category: smoothstep
 <img src="../../resources/mtlx/nodedef_materials/material_smoothstep_vector4FA_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_smoothstep_vector4FA_out_genglsl.png style="max-width:11em">
 </div></div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+ <img src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_smoothstep_vec4FA.glsl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4FA.glsl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4FA">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx::stdlib::mx_smoothstep_vector4FA({{in}}, {{low}}, {{high}}) </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/mx_smoothstep_vec4FA.metal" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4FA.metal">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="mx_smoothstep_vec4FA">
-   </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>smoothstep({{low}}, {{high}}, {{in}}) </textarea>
-    </div>
-  </div>
-<hr>
+<button id="ND_smoothstep_vector4FA_mrender" class="mrender btn btn-outline-primary">Draw Graph</button>
+<button id="ND_smoothstep_vector4FA_mrcopy" class="mrcopy btn btn-outline-primary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_smoothstep_vector4FA_mrender_mermaid_output" class="mermaid" hidden>
+</div>
+<div id="ND_smoothstep_vector4FA_mrender_mermaid_input" class="mermaid" hidden>
+graph LR; 
+    NG_smoothstep_vector4FA_N_smoothstep[smoothstep] --> NG_smoothstep_vector4FA_out([out])
+    style NG_smoothstep_vector4FA_out fill:#0C0, color:#111
+    NG_smoothstep_vector4FA_inINT([in]) ==.in==> NG_smoothstep_vector4FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector4FA_inINT fill:#0CF, color:#111
+    NG_smoothstep_vector4FA_lowINT([low]) ==.low==> NG_smoothstep_vector4FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector4FA_lowINT fill:#0CF, color:#111
+    NG_smoothstep_vector4FA_highINT([high]) ==.high==> NG_smoothstep_vector4FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector4FA_highINT fill:#0CF, color:#111
+
+
+
+</div></code></pre>
+
 </details>
 </p>
 <p class="card-text"><b>Parameters:</b></p>

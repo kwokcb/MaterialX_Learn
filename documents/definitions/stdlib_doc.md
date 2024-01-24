@@ -2564,7 +2564,21 @@ graph LR;
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise2d_color3
+
+
+```mermaid
+graph LR; 
+    NG_noise2d_color3_N_noise2d[noise2d] --> NG_noise2d_color3_out([out])
+    style NG_noise2d_color3_out fill:#0C0, color:#111
+    NG_noise2d_color3_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_color3_N_noise2d[noise2d]
+    style NG_noise2d_color3_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_color3_pivotINT([pivot]) ==.pivot==> NG_noise2d_color3_N_noise2d[noise2d]
+    style NG_noise2d_color3_pivotINT fill:#0CF, color:#111
+    NG_noise2d_color3_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_color3_N_noise2d[noise2d]
+    style NG_noise2d_color3_texcoordINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2583,7 +2597,21 @@ graph LR;
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise2d_color4
+
+
+```mermaid
+graph LR; 
+    NG_noise2d_color4_N_noise2d[noise2d] --> NG_noise2d_color4_out([out])
+    style NG_noise2d_color4_out fill:#0C0, color:#111
+    NG_noise2d_color4_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_color4_N_noise2d[noise2d]
+    style NG_noise2d_color4_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_color4_pivotINT([pivot]) ==.pivot==> NG_noise2d_color4_N_noise2d[noise2d]
+    style NG_noise2d_color4_pivotINT fill:#0CF, color:#111
+    NG_noise2d_color4_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_color4_N_noise2d[noise2d]
+    style NG_noise2d_color4_texcoordINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2659,7 +2687,21 @@ graph LR;
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise2d_color3FA
+
+
+```mermaid
+graph LR; 
+    NG_noise2d_color3FA_N_noise2d[noise2d] --> NG_noise2d_color3FA_out([out])
+    style NG_noise2d_color3FA_out fill:#0C0, color:#111
+    NG_noise2d_color3FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_color3FA_N_noise2d[noise2d]
+    style NG_noise2d_color3FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_color3FA_pivotINT([pivot]) ==.pivot==> NG_noise2d_color3FA_N_noise2d[noise2d]
+    style NG_noise2d_color3FA_pivotINT fill:#0CF, color:#111
+    NG_noise2d_color3FA_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_color3FA_N_noise2d[noise2d]
+    style NG_noise2d_color3FA_texcoordINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2678,7 +2720,21 @@ graph LR;
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise2d_color4FA
+
+
+```mermaid
+graph LR; 
+    NG_noise2d_color4FA_N_noise2d[noise2d] --> NG_noise2d_color4FA_out([out])
+    style NG_noise2d_color4FA_out fill:#0C0, color:#111
+    NG_noise2d_color4FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_color4FA_N_noise2d[noise2d]
+    style NG_noise2d_color4FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_color4FA_pivotINT([pivot]) ==.pivot==> NG_noise2d_color4FA_N_noise2d[noise2d]
+    style NG_noise2d_color4FA_pivotINT fill:#0CF, color:#111
+    NG_noise2d_color4FA_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_color4FA_N_noise2d[noise2d]
+    style NG_noise2d_color4FA_texcoordINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2697,7 +2753,21 @@ graph LR;
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise2d_vector2FA
+
+
+```mermaid
+graph LR; 
+    NG_noise2d_vector2FA_N_noise2d[noise2d] --> NG_noise2d_vector2FA_out([out])
+    style NG_noise2d_vector2FA_out fill:#0C0, color:#111
+    NG_noise2d_vector2FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_vector2FA_N_noise2d[noise2d]
+    style NG_noise2d_vector2FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_vector2FA_pivotINT([pivot]) ==.pivot==> NG_noise2d_vector2FA_N_noise2d[noise2d]
+    style NG_noise2d_vector2FA_pivotINT fill:#0CF, color:#111
+    NG_noise2d_vector2FA_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_vector2FA_N_noise2d[noise2d]
+    style NG_noise2d_vector2FA_texcoordINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2716,7 +2786,21 @@ graph LR;
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise2d_vector3FA
+
+
+```mermaid
+graph LR; 
+    NG_noise2d_vector3FA_N_noise2d[noise2d] --> NG_noise2d_vector3FA_out([out])
+    style NG_noise2d_vector3FA_out fill:#0C0, color:#111
+    NG_noise2d_vector3FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_vector3FA_N_noise2d[noise2d]
+    style NG_noise2d_vector3FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_vector3FA_pivotINT([pivot]) ==.pivot==> NG_noise2d_vector3FA_N_noise2d[noise2d]
+    style NG_noise2d_vector3FA_pivotINT fill:#0CF, color:#111
+    NG_noise2d_vector3FA_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_vector3FA_N_noise2d[noise2d]
+    style NG_noise2d_vector3FA_texcoordINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2735,7 +2819,21 @@ graph LR;
 * *Node Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise2d_vector4FA
+
+
+```mermaid
+graph LR; 
+    NG_noise2d_vector4FA_N_noise2d[noise2d] --> NG_noise2d_vector4FA_out([out])
+    style NG_noise2d_vector4FA_out fill:#0C0, color:#111
+    NG_noise2d_vector4FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise2d_vector4FA_N_noise2d[noise2d]
+    style NG_noise2d_vector4FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise2d_vector4FA_pivotINT([pivot]) ==.pivot==> NG_noise2d_vector4FA_N_noise2d[noise2d]
+    style NG_noise2d_vector4FA_pivotINT fill:#0CF, color:#111
+    NG_noise2d_vector4FA_texcoordINT([texcoord]) ==.texcoord==> NG_noise2d_vector4FA_N_noise2d[noise2d]
+    style NG_noise2d_vector4FA_texcoordINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2774,7 +2872,21 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise3d_color3
+
+
+```mermaid
+graph LR; 
+    NG_noise3d_color3_N_noise3d[noise3d] --> NG_noise3d_color3_out([out])
+    style NG_noise3d_color3_out fill:#0C0, color:#111
+    NG_noise3d_color3_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_color3_N_noise3d[noise3d]
+    style NG_noise3d_color3_amplitudeINT fill:#0CF, color:#111
+    NG_noise3d_color3_pivotINT([pivot]) ==.pivot==> NG_noise3d_color3_N_noise3d[noise3d]
+    style NG_noise3d_color3_pivotINT fill:#0CF, color:#111
+    NG_noise3d_color3_positionINT([position]) ==.position==> NG_noise3d_color3_N_noise3d[noise3d]
+    style NG_noise3d_color3_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2793,7 +2905,21 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise3d_color4
+
+
+```mermaid
+graph LR; 
+    NG_noise3d_color4_N_noise3d[noise3d] --> NG_noise3d_color4_out([out])
+    style NG_noise3d_color4_out fill:#0C0, color:#111
+    NG_noise3d_color4_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_color4_N_noise3d[noise3d]
+    style NG_noise3d_color4_amplitudeINT fill:#0CF, color:#111
+    NG_noise3d_color4_pivotINT([pivot]) ==.pivot==> NG_noise3d_color4_N_noise3d[noise3d]
+    style NG_noise3d_color4_pivotINT fill:#0CF, color:#111
+    NG_noise3d_color4_positionINT([position]) ==.position==> NG_noise3d_color4_N_noise3d[noise3d]
+    style NG_noise3d_color4_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2869,7 +2995,21 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise3d_color3FA
+
+
+```mermaid
+graph LR; 
+    NG_noise3d_color3FA_N_noise3d[noise3d] --> NG_noise3d_color3FA_out([out])
+    style NG_noise3d_color3FA_out fill:#0C0, color:#111
+    NG_noise3d_color3FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_color3FA_N_noise3d[noise3d]
+    style NG_noise3d_color3FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise3d_color3FA_pivotINT([pivot]) ==.pivot==> NG_noise3d_color3FA_N_noise3d[noise3d]
+    style NG_noise3d_color3FA_pivotINT fill:#0CF, color:#111
+    NG_noise3d_color3FA_positionINT([position]) ==.position==> NG_noise3d_color3FA_N_noise3d[noise3d]
+    style NG_noise3d_color3FA_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2888,7 +3028,21 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise3d_color4FA
+
+
+```mermaid
+graph LR; 
+    NG_noise3d_color4FA_N_noise3d[noise3d] --> NG_noise3d_color4FA_out([out])
+    style NG_noise3d_color4FA_out fill:#0C0, color:#111
+    NG_noise3d_color4FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_color4FA_N_noise3d[noise3d]
+    style NG_noise3d_color4FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise3d_color4FA_pivotINT([pivot]) ==.pivot==> NG_noise3d_color4FA_N_noise3d[noise3d]
+    style NG_noise3d_color4FA_pivotINT fill:#0CF, color:#111
+    NG_noise3d_color4FA_positionINT([position]) ==.position==> NG_noise3d_color4FA_N_noise3d[noise3d]
+    style NG_noise3d_color4FA_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2907,7 +3061,21 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise3d_vector2FA
+
+
+```mermaid
+graph LR; 
+    NG_noise3d_vector2FA_N_noise3d[noise3d] --> NG_noise3d_vector2FA_out([out])
+    style NG_noise3d_vector2FA_out fill:#0C0, color:#111
+    NG_noise3d_vector2FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_vector2FA_N_noise3d[noise3d]
+    style NG_noise3d_vector2FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise3d_vector2FA_pivotINT([pivot]) ==.pivot==> NG_noise3d_vector2FA_N_noise3d[noise3d]
+    style NG_noise3d_vector2FA_pivotINT fill:#0CF, color:#111
+    NG_noise3d_vector2FA_positionINT([position]) ==.position==> NG_noise3d_vector2FA_N_noise3d[noise3d]
+    style NG_noise3d_vector2FA_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2926,7 +3094,21 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise3d_vector3FA
+
+
+```mermaid
+graph LR; 
+    NG_noise3d_vector3FA_N_noise3d[noise3d] --> NG_noise3d_vector3FA_out([out])
+    style NG_noise3d_vector3FA_out fill:#0C0, color:#111
+    NG_noise3d_vector3FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_vector3FA_N_noise3d[noise3d]
+    style NG_noise3d_vector3FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise3d_vector3FA_pivotINT([pivot]) ==.pivot==> NG_noise3d_vector3FA_N_noise3d[noise3d]
+    style NG_noise3d_vector3FA_pivotINT fill:#0CF, color:#111
+    NG_noise3d_vector3FA_positionINT([position]) ==.position==> NG_noise3d_vector3FA_N_noise3d[noise3d]
+    style NG_noise3d_vector3FA_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2945,7 +3127,21 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_noise3d_vector4FA
+
+
+```mermaid
+graph LR; 
+    NG_noise3d_vector4FA_N_noise3d[noise3d] --> NG_noise3d_vector4FA_out([out])
+    style NG_noise3d_vector4FA_out fill:#0C0, color:#111
+    NG_noise3d_vector4FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_vector4FA_N_noise3d[noise3d]
+    style NG_noise3d_vector4FA_amplitudeINT fill:#0CF, color:#111
+    NG_noise3d_vector4FA_pivotINT([pivot]) ==.pivot==> NG_noise3d_vector4FA_N_noise3d[noise3d]
+    style NG_noise3d_vector4FA_pivotINT fill:#0CF, color:#111
+    NG_noise3d_vector4FA_positionINT([position]) ==.position==> NG_noise3d_vector4FA_N_noise3d[noise3d]
+    style NG_noise3d_vector4FA_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -2986,7 +3182,25 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_fractal3d_color3
+
+
+```mermaid
+graph LR; 
+    NG_fractal3d_color3_N_fractal3d[fractal3d] --> NG_fractal3d_color3_out([out])
+    style NG_fractal3d_color3_out fill:#0C0, color:#111
+    NG_fractal3d_color3_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_color3_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_color3_octavesINT([octaves]) ==.octaves==> NG_fractal3d_color3_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_color3_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_color3_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_color3_diminishINT([diminish]) ==.diminish==> NG_fractal3d_color3_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_color3_positionINT([position]) ==.position==> NG_fractal3d_color3_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3007,7 +3221,25 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_fractal3d_color4
+
+
+```mermaid
+graph LR; 
+    NG_fractal3d_color4_N_fractal3d[fractal3d] --> NG_fractal3d_color4_out([out])
+    style NG_fractal3d_color4_out fill:#0C0, color:#111
+    NG_fractal3d_color4_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_color4_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_color4_octavesINT([octaves]) ==.octaves==> NG_fractal3d_color4_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_color4_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_color4_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_color4_diminishINT([diminish]) ==.diminish==> NG_fractal3d_color4_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_color4_positionINT([position]) ==.position==> NG_fractal3d_color4_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3091,7 +3323,25 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_fractal3d_color3FA
+
+
+```mermaid
+graph LR; 
+    NG_fractal3d_color3FA_N_fractal3d[fractal3d] --> NG_fractal3d_color3FA_out([out])
+    style NG_fractal3d_color3FA_out fill:#0C0, color:#111
+    NG_fractal3d_color3FA_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_color3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3FA_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_color3FA_octavesINT([octaves]) ==.octaves==> NG_fractal3d_color3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3FA_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_color3FA_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_color3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3FA_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_color3FA_diminishINT([diminish]) ==.diminish==> NG_fractal3d_color3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3FA_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_color3FA_positionINT([position]) ==.position==> NG_fractal3d_color3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color3FA_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3112,7 +3362,25 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_fractal3d_color4FA
+
+
+```mermaid
+graph LR; 
+    NG_fractal3d_color4FA_N_fractal3d[fractal3d] --> NG_fractal3d_color4FA_out([out])
+    style NG_fractal3d_color4FA_out fill:#0C0, color:#111
+    NG_fractal3d_color4FA_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_color4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4FA_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_color4FA_octavesINT([octaves]) ==.octaves==> NG_fractal3d_color4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4FA_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_color4FA_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_color4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4FA_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_color4FA_diminishINT([diminish]) ==.diminish==> NG_fractal3d_color4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4FA_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_color4FA_positionINT([position]) ==.position==> NG_fractal3d_color4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_color4FA_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3133,7 +3401,25 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_fractal3d_vector2FA
+
+
+```mermaid
+graph LR; 
+    NG_fractal3d_vector2FA_N_fractal3d[fractal3d] --> NG_fractal3d_vector2FA_out([out])
+    style NG_fractal3d_vector2FA_out fill:#0C0, color:#111
+    NG_fractal3d_vector2FA_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_vector2FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector2FA_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_vector2FA_octavesINT([octaves]) ==.octaves==> NG_fractal3d_vector2FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector2FA_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_vector2FA_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_vector2FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector2FA_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_vector2FA_diminishINT([diminish]) ==.diminish==> NG_fractal3d_vector2FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector2FA_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_vector2FA_positionINT([position]) ==.position==> NG_fractal3d_vector2FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector2FA_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3154,7 +3440,25 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_fractal3d_vector3FA
+
+
+```mermaid
+graph LR; 
+    NG_fractal3d_vector3FA_N_fractal3d[fractal3d] --> NG_fractal3d_vector3FA_out([out])
+    style NG_fractal3d_vector3FA_out fill:#0C0, color:#111
+    NG_fractal3d_vector3FA_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_vector3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector3FA_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_vector3FA_octavesINT([octaves]) ==.octaves==> NG_fractal3d_vector3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector3FA_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_vector3FA_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_vector3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector3FA_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_vector3FA_diminishINT([diminish]) ==.diminish==> NG_fractal3d_vector3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector3FA_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_vector3FA_positionINT([position]) ==.position==> NG_fractal3d_vector3FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector3FA_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -3175,7 +3479,25 @@ graph LR;
 * *Node Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_fractal3d_vector4FA
+
+
+```mermaid
+graph LR; 
+    NG_fractal3d_vector4FA_N_fractal3d[fractal3d] --> NG_fractal3d_vector4FA_out([out])
+    style NG_fractal3d_vector4FA_out fill:#0C0, color:#111
+    NG_fractal3d_vector4FA_amplitudeINT([amplitude]) ==.amplitude==> NG_fractal3d_vector4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector4FA_amplitudeINT fill:#0CF, color:#111
+    NG_fractal3d_vector4FA_octavesINT([octaves]) ==.octaves==> NG_fractal3d_vector4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector4FA_octavesINT fill:#0CF, color:#111
+    NG_fractal3d_vector4FA_lacunarityINT([lacunarity]) ==.lacunarity==> NG_fractal3d_vector4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector4FA_lacunarityINT fill:#0CF, color:#111
+    NG_fractal3d_vector4FA_diminishINT([diminish]) ==.diminish==> NG_fractal3d_vector4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector4FA_diminishINT fill:#0CF, color:#111
+    NG_fractal3d_vector4FA_positionINT([position]) ==.position==> NG_fractal3d_vector4FA_N_fractal3d[fractal3d]
+    style NG_fractal3d_vector4FA_positionINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9324,7 +9646,21 @@ graph LR;
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_smoothstep_color3
+
+
+```mermaid
+graph LR; 
+    NG_smoothstep_color3_N_smoothstep[smoothstep] --> NG_smoothstep_color3_out([out])
+    style NG_smoothstep_color3_out fill:#0C0, color:#111
+    NG_smoothstep_color3_inINT([in]) ==.in==> NG_smoothstep_color3_N_smoothstep[smoothstep]
+    style NG_smoothstep_color3_inINT fill:#0CF, color:#111
+    NG_smoothstep_color3_lowINT([low]) ==.low==> NG_smoothstep_color3_N_smoothstep[smoothstep]
+    style NG_smoothstep_color3_lowINT fill:#0CF, color:#111
+    NG_smoothstep_color3_highINT([high]) ==.high==> NG_smoothstep_color3_N_smoothstep[smoothstep]
+    style NG_smoothstep_color3_highINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9343,7 +9679,21 @@ graph LR;
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_smoothstep_color4
+
+
+```mermaid
+graph LR; 
+    NG_smoothstep_color4_N_smoothstep[smoothstep] --> NG_smoothstep_color4_out([out])
+    style NG_smoothstep_color4_out fill:#0C0, color:#111
+    NG_smoothstep_color4_inINT([in]) ==.in==> NG_smoothstep_color4_N_smoothstep[smoothstep]
+    style NG_smoothstep_color4_inINT fill:#0CF, color:#111
+    NG_smoothstep_color4_lowINT([low]) ==.low==> NG_smoothstep_color4_N_smoothstep[smoothstep]
+    style NG_smoothstep_color4_lowINT fill:#0CF, color:#111
+    NG_smoothstep_color4_highINT([high]) ==.high==> NG_smoothstep_color4_N_smoothstep[smoothstep]
+    style NG_smoothstep_color4_highINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9419,7 +9769,21 @@ graph LR;
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_smoothstep_color3FA
+
+
+```mermaid
+graph LR; 
+    NG_smoothstep_color3FA_N_smoothstep[smoothstep] --> NG_smoothstep_color3FA_out([out])
+    style NG_smoothstep_color3FA_out fill:#0C0, color:#111
+    NG_smoothstep_color3FA_inINT([in]) ==.in==> NG_smoothstep_color3FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_color3FA_inINT fill:#0CF, color:#111
+    NG_smoothstep_color3FA_lowINT([low]) ==.low==> NG_smoothstep_color3FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_color3FA_lowINT fill:#0CF, color:#111
+    NG_smoothstep_color3FA_highINT([high]) ==.high==> NG_smoothstep_color3FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_color3FA_highINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9438,7 +9802,21 @@ graph LR;
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_smoothstep_color4FA
+
+
+```mermaid
+graph LR; 
+    NG_smoothstep_color4FA_N_smoothstep[smoothstep] --> NG_smoothstep_color4FA_out([out])
+    style NG_smoothstep_color4FA_out fill:#0C0, color:#111
+    NG_smoothstep_color4FA_inINT([in]) ==.in==> NG_smoothstep_color4FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_color4FA_inINT fill:#0CF, color:#111
+    NG_smoothstep_color4FA_lowINT([low]) ==.low==> NG_smoothstep_color4FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_color4FA_lowINT fill:#0CF, color:#111
+    NG_smoothstep_color4FA_highINT([high]) ==.high==> NG_smoothstep_color4FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_color4FA_highINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9457,7 +9835,21 @@ graph LR;
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_smoothstep_vector2FA
+
+
+```mermaid
+graph LR; 
+    NG_smoothstep_vector2FA_N_smoothstep[smoothstep] --> NG_smoothstep_vector2FA_out([out])
+    style NG_smoothstep_vector2FA_out fill:#0C0, color:#111
+    NG_smoothstep_vector2FA_inINT([in]) ==.in==> NG_smoothstep_vector2FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector2FA_inINT fill:#0CF, color:#111
+    NG_smoothstep_vector2FA_lowINT([low]) ==.low==> NG_smoothstep_vector2FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector2FA_lowINT fill:#0CF, color:#111
+    NG_smoothstep_vector2FA_highINT([high]) ==.high==> NG_smoothstep_vector2FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector2FA_highINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9476,7 +9868,21 @@ graph LR;
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_smoothstep_vector3FA
+
+
+```mermaid
+graph LR; 
+    NG_smoothstep_vector3FA_N_smoothstep[smoothstep] --> NG_smoothstep_vector3FA_out([out])
+    style NG_smoothstep_vector3FA_out fill:#0C0, color:#111
+    NG_smoothstep_vector3FA_inINT([in]) ==.in==> NG_smoothstep_vector3FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector3FA_inINT fill:#0CF, color:#111
+    NG_smoothstep_vector3FA_lowINT([low]) ==.low==> NG_smoothstep_vector3FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector3FA_lowINT fill:#0CF, color:#111
+    NG_smoothstep_vector3FA_highINT([high]) ==.high==> NG_smoothstep_vector3FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector3FA_highINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -9495,7 +9901,21 @@ graph LR;
 * *Node Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_smoothstep_vector4FA
+
+
+```mermaid
+graph LR; 
+    NG_smoothstep_vector4FA_N_smoothstep[smoothstep] --> NG_smoothstep_vector4FA_out([out])
+    style NG_smoothstep_vector4FA_out fill:#0C0, color:#111
+    NG_smoothstep_vector4FA_inINT([in]) ==.in==> NG_smoothstep_vector4FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector4FA_inINT fill:#0CF, color:#111
+    NG_smoothstep_vector4FA_lowINT([low]) ==.low==> NG_smoothstep_vector4FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector4FA_lowINT fill:#0CF, color:#111
+    NG_smoothstep_vector4FA_highINT([high]) ==.high==> NG_smoothstep_vector4FA_N_smoothstep[smoothstep]
+    style NG_smoothstep_vector4FA_highINT fill:#0CF, color:#111
+
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
