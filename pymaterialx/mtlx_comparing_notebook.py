@@ -1,13 +1,13 @@
 # %% [markdown]
-# ## Document Comparison
+# ## Library Comparison
 # 
 # In this notebook we will look at how MaterialX Elements can be compared with one another.
 # 
-# The example case chosen is to determine what has changed between 2 versions of the standard
+# The example case chosen is to determine what has changed between two versions of the standard
 # libraries. In this case version 1.38 versus the current version used to test with.
 # 
-# The <a href="./compareVersions.py">compareVersions.py</a> script is an sample utility which uses
-# the logic in this notebook. The results of a comparison can be seen <a href="../resources/mtlx_138_vs_1388.html">here</a>
+# The <a href="./compareVersions.py" target="_blank">compareVersions.py</a> script is an sample utility which uses
+# the logic in this notebook. The results of a comparison can be seen <a href="../resources/mtlx_138_vs_1389.html" target="_blank">here</a>
 # 
 # The following aspects will be covered:
 # 1. Loading in different versions into separate Documents.
