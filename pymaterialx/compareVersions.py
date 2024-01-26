@@ -2,27 +2,54 @@
 import sys, os, argparse
 import MaterialX as mx
 
+def loadLibrary(libraryFolders, searchPath, readOptions, newLibrary):
+    loadedFiles = set()
+    readOptions = mx.XmlReadOptions()
+    readOptions.upgradeVersion = False
+    for libraryName in libraryFolders:
+        libraryPath = searchPath.find(libraryName)
+        for path in libraryPath.getSubDirectories():
+            for filename in path.getFilesInDirectory('mtlx'):
+                    file = path / filename;
+                    if file.asString() not in loadedFiles:
+                        mx.loadLibrary(file, newLibrary, searchPath, readOptions)                    
+                        loadedFiles.add(file.asString())
+    return loadedFiles
+
 def loadLibraries(sourceLibraryPath, otherLibraryPath):
+    # Attempt to preserve the original version of the library
+    options = mx.XmlReadOptions()
+    options.upgradeVersion = False
+
     # Load the Source standard libraries
+    currlibFiles = []
     currLibrary = mx.createDocument()
-    currlibFiles = mx.loadLibraries(mx.getDefaultDataLibraryFolders(), mx.getDefaultDataSearchPath(), currLibrary)
+    sourceLibraryFolders = []
+    sourceSearchPath = mx.FileSearchPath()
+    if sourceLibraryPath:
+        sourceLibraryFolders.append(sourceLibraryPath)
+    else:
+        sourceLibraryFolders = mx.getDefaultDataLibraryFolders()
+        sourceSearchPath = mx.getDefaultDataSearchPath()
+    currlibFiles = mx.loadLibraries(sourceLibraryFolders, sourceSearchPath, currLibrary)
 
     # Load in the old standard libraries
     otherVersion = ''
     libraryFolders = [ otherLibraryPath ]
     otherLibrary = mx.createDocument()
     searchPath = mx.FileSearchPath()
-    # Attempt to preserve the original version of the library
-    options = mx.XmlReadOptions()
-    options.upgradeVersion = False
-
     libFiles = mx.loadLibraries(libraryFolders, searchPath, otherLibrary)
 
     print('## Libraries Loaded')
-    print('- Loaded %d source library definitions from %d files. Version %s' %
+    print('- Loaded %d 1st library definitions from %d files. Version %s' %
            (len(currLibrary.getNodeDefs()), len(currlibFiles), mx.getVersionString()))
-    print('- Loaded %d other library definitions from %d files. Version %s' % 
+    print('  - 1st library location: %s. Search path: "%s"' % (sourceLibraryFolders,
+                sourceSearchPath.asString()))
+    
+    print('- Loaded %d 2nd library definitions from %d files. Version %s' % 
           (len(otherLibrary.getNodeDefs()), len(libFiles), otherLibrary.getVersionString()))
+    print('  - Second library location: %s. Search path: "%s"' % (libraryFolders,
+                searchPath.asString()))
 
     return currLibrary, otherLibrary
 
@@ -31,10 +58,10 @@ def printDefinitions(currLibrary, otherLibrary):
     currNodeDefs = currLibrary.getNodeDefs()
     currNodeDefsCount = len(currNodeDefs)
     otherNodeDefs = otherLibrary.getNodeDefs()
-    otherNodeDefsCount = len(otherNodeDefs) # There seems to be no way to get the previous version?
+    otherNodeDefsCount = len(otherNodeDefs) # There seems to be no way to get the previous version?    
 
-    print('- Source library has %d nodedefs' % currNodeDefsCount)
-    print('- Other library has %d nodedefs' % otherNodeDefsCount)
+    print('1st library has %d nodedefs.<br>' % currNodeDefsCount)
+    print('2nd library has %d nodedefs' % otherNodeDefsCount)
 
     currNodeDefSet = {}
     for nodeDef in currNodeDefs:
@@ -266,7 +293,7 @@ class MaterialXCompare:
         return differs
 
 
-def printDefinitionComparision(currLibrary, otherLibrary, compareDetails):
+def printDefinitionComparison(currLibrary, otherLibrary, compareDetails):
 
     text = '| Name | Change  |\n'
     text = text + '| --- | --- |\n'
@@ -292,7 +319,7 @@ def printDefinitionComparision(currLibrary, otherLibrary, compareDetails):
     text = '<details><summary>' + delta + '</summary>\n\n' + text + '\n' + '</details>\n' 
     print(text)
 
-def printTargetComparision(currLibrary, otherLibrary):
+def printTargetComparison(currLibrary, otherLibrary):
     ## Get old targets
     oldTargets = []
     for target in otherLibrary.getTargetDefs():
@@ -303,8 +330,8 @@ def printTargetComparision(currLibrary, otherLibrary):
     for target in currLibrary.getTargetDefs():
         currTargets.append(target.getName())
 
-    print('* Source library shader targets:', currTargets)
-    print('* Other library shader targets:', oldTargets)
+    print('1st library shader targets: *%s*<br>' % currTargets)
+    print('2nd library shader targets: *%s*' % oldTargets)
 
     newTargets = list(set(currTargets) - set(oldTargets))
     if newTargets:
@@ -358,7 +385,7 @@ def print_implementations(nodedefs, targets, allimpls, title):
 def printImplementations(currLibrary, otherLibrary, currTargets, oldTargets):
 
     # Scan for all the Source targets
-    title = '#### Source Library Definitions / Implementations\n'
+    title = '#### 1st Library Definitions / Implementations\n'
     alltargets = currTargets
     alltargets.append('')
     allimpls = set()
@@ -366,14 +393,14 @@ def printImplementations(currLibrary, otherLibrary, currTargets, oldTargets):
     print_implementations(currNodeDefs, alltargets, allimpls, title)
 
     # Scan for all the previous targets
-    title = '#### Other Library Definitions / Implementations\n'
+    title = '#### 2nd Library Definitions / Implementations\n'
     alltargets = oldTargets
     alltargets.append('')
     allimpls = set()
     otherNodeDefs = otherLibrary.getNodeDefs()
     print_implementations(otherNodeDefs, alltargets, allimpls, title)
 
-def printImplementationComparision(currLibrary, otherLibrary):
+def printImplementationComparison(currLibrary, otherLibrary):
 
 
     # Collect all Implementation and NodeGraph elements from two libraries
@@ -402,8 +429,8 @@ def printImplementationComparision(currLibrary, otherLibrary):
             allImpls2.add(i.getName())
             allImpls.add(i.getName())
 
-    print('- Source library implementation count:', len(allImpls))
-    print('- Other library implementation count:', len(allImpls2))
+    print('1st library implementation count: %d<br>' % len(allImpls))
+    print('2nd library implementation count: %d' % len(allImpls2))
 
     title = '| Name | Node Category | Node Type |\n'
     title = title + '| --- | --- | --- |\n'
@@ -450,8 +477,8 @@ def printImplementationComparision(currLibrary, otherLibrary):
                 if nd:
                     ns = nd.getNodeString()
                     nt = nd.getType()        
-            removedText = removedText + '| %s | %s | %s | \n' % (item, ns, nt)
-            removed = removed + 1
+                    removedText = removedText + '| %s | %s | %s | \n' % (item, ns, nt)
+                    removed = removed + 1
             continue
         
         # Check for implementations which have been modified.
@@ -489,26 +516,26 @@ def printImplementationComparision(currLibrary, otherLibrary):
 
 def main():
     parser = argparse.ArgumentParser(description='Compare definitions between two MaterialX libraries.')
-    parser.add_argument(dest='otherLibrary', help='Path to root of other library to compare against')
+    parser.add_argument(dest='otherLibrary', help='Path to root of the 2nd library to compare against')
     parser.add_argument('--sourceLibrary', dest='sourceLibrary', default='', 
-                        help='Path to root of source library to compare against. Default is the Python package library')
+                        help='Path to root of 1st library to compare against. Default is the Python package library')
 
     opts = parser.parse_args()
 
-    print("# MaterialX Library Compare")
+    print("# MaterialX Library Comparitor")
     currLibrary, otherLibrary = loadLibraries(opts.sourceLibrary, opts.otherLibrary)
     
-    print('## Node Definition Comparision')
+    print('## Node Definition Comparison')
     compareDetails = printDefinitions(currLibrary, otherLibrary)
     if compareDetails:
-        printDefinitionComparision(currLibrary, otherLibrary, compareDetails)
+        printDefinitionComparison(currLibrary, otherLibrary, compareDetails)
 
     print("## Implementations")
-    otherTargets, currTargets = printTargetComparision(currLibrary, otherLibrary)
+    otherTargets, currTargets = printTargetComparison(currLibrary, otherLibrary)
     printImplementations(currLibrary, otherLibrary, otherTargets, currTargets)
 
     print("## Implementation Comparison")
-    printImplementationComparision(currLibrary, otherLibrary)
+    printImplementationComparison(currLibrary, otherLibrary)
 
 
 if __name__ == '__main__':
