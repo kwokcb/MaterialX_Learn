@@ -14,8 +14,8 @@
     <title>MaterialX Learn - Using Library</title>
     <link rel="icon" href="./images/logo3d_icon.png" type="image/x-icon"/>  
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -25,13 +25,12 @@
 </head>
 
 <body class="min-vh-100">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
+    <script src="js/ui_helpers.js"></script>
+    <script src="js/definition_card_helpers.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
 
 <!-- Navigation  -->
-<nav class="navbar sticky-top navbar-expand-lg bg-light">
+<nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="../index.html">
         <h5><img src="images/logo3d_2_small.png" alt="MaterialX Learn"
@@ -202,7 +201,7 @@
                     </li>
                 </ul>
 
-                <div class="tab-content" id="pills-tabContent2">
+                <div class="tab-content"id="pills-tabContent2">
                     <div class="tab-pane fade show active" id="pills-userint" role="tabpanel"
                         aria-labelledby="pills-userint-tab">
 
@@ -235,7 +234,7 @@
                                 </p>
                                 <hr>
 
-                                <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                <div data-bs-theme="light" class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
                                     <div class="card-header border-0">
                                     <h6>Category Section</h6>
                                     </div>
@@ -245,6 +244,7 @@
                             
                             </div>
                             <br>
+                            <container data-bs-theme="light">
                                 <b>Category: </b>'node'
                                 <details open>
                                     <summary
@@ -437,7 +437,8 @@
 
 
                                                         <details open>
-                                                            <summary><b>Node Graph</b>
+                                                            <summary>
+                                                                <b>Node Graph</b>
                                                                 getImplementation()
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                                     height="16" fill="currentColor"
@@ -446,6 +447,7 @@
                                                                     <path fill-rule="evenodd"
                                                                         d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
                                                                 </svg>
+                                                            </p>
                                                             </summary>
                                                             <br>
                                                             <img src="./images/draw_copy_graph_option.png" style="width:20%"><br>

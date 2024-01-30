@@ -14,8 +14,8 @@
   <title>MaterialX Learn - Documents</title>
   <link rel="icon" href="./images/logo3d_icon.png" type="image/x-icon" />
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -27,13 +27,11 @@
 </head>
 
 <body class="min-vh-100">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
+  <script src="../js/definition_card_helpers.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
 
   <!-- Navigation  -->
-  <nav class="navbar sticky-top navbar-expand-lg bg-light">
+  <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
       <a class="navbar-brand" href="../index.html">
         <h5><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="rounded d-inline-block align-text-center"
@@ -75,7 +73,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
               Reference
             </a>
             <ul class="dropdown-menu">
@@ -99,7 +97,17 @@
                   <img src="images/MaterialXLogo_200x155.png" style="width:20px"> C++ API
                 </a>
               </li>
-              <div class="dropdown-divider"></div>
+
+              <li class="dropend">
+                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library Revisions</a>
+                <ul class="dropdown-menu shadow">
+                  <li><a class="dropdown-item" href="mtlx_1388_vs_1389.html" target="_blank"> 1.38.8 vs 1.38.9 (current)</a></li>
+                  <li><a class="dropdown-item" href="mtlx_1387_vs_1388.html" target="_blank"> 1.38.7 vs 1.38.8 </a></li>
+                  <li><a class="dropdown-item" href="mtlx_138_vs_1389.html" target="_blank"> 1.38.0 vs 1.38.9 (current)</a></li>
+                </ul>
+              </li> 
+
+              <div class="dropdown-divider"></div>              
               <li>
                 <a class="dropdown-item" href="using_library.html">
                   <img src="images/info-circle.svg"> Library User Guide
@@ -395,7 +403,7 @@
                     <p>
                       The diagram below shows a document which is read and appended.
                       <br>
-                      <img src="./images/read_documents.svg" />
+                      <img class="p-2 bg-light" src="./images/read_documents.svg" />
                     </p>
                     <p>
                       Since read only performs duplicate element checking,
@@ -411,7 +419,7 @@
                     <p>
                       Below is shown an example document which copies the content of another document.
                       <br>
-                      <img src="./images/copycontents_document.svg" />
+                      <img class="p-2 bg-light" src="./images/copycontents_document.svg" />
                     </p>
                   </li>
                   <li>
@@ -422,7 +430,7 @@
                     definition libraries and include files, making use of `copyContentsFrom()` to
                     copy elements into the destination document. <em>An important item to point out is
                       that the URI for the source document is set on every copied element.</em><br>
-                      <img src="./images/import_document_sourceURI.svg" />
+                      <img class="p-2 bg-light" src="./images/import_document_sourceURI.svg" />
                     </p>
 
                     <button class="btn btn-warning border-dark shadow-lg" type="button" data-bs-toggle="collapse"
@@ -455,7 +463,7 @@
                           basically means that every imported element's name has the 'namespace' prepended, and
                           each filename string attribute has the 'fileprefix' file path prepended.
                           <br>
-                          <img src="./images/import_document.svg" />
+                          <img class="p-2 bg-light" src="./images/import_document.svg" />
                         </p>
                       </div>
                     </div>
@@ -490,7 +498,7 @@
                   a various workflows including
                   exclusion of these elements at write time. An example can be to exclude
                   library definitions from node instances as shown below:<br>
-                  <img src="images/export_document.svg">
+                  <img class="p-2 bg-light" src="images/export_document.svg">
                   </p>
                   <p>
                   At runtime, these tags can be used for instance to
@@ -512,30 +520,30 @@
                   there is no information within a document or set of documents which indicate it
                   is or belongs to a "library".
                 <pre>
-                  ├───bxdf
-                  │   ├───lama
-                  │   └───translation
-                  ├───lights
-                  │   ├───genglsl
-                  │   └───genmsl
-                  ├───pbrlib
-                  │   ├───genglsl
-                  │   │   └───lib
-                  │   ├───genmdl
-                  │   ├───genmsl
-                  │   └───genosl
-                  │       ├───legacy
-                  │       └───lib
-                  ├───stdlib
-                  │   ├───genglsl
-                  │   │   └───lib
-                  │   ├───genmdl
-                  │   ├───genmsl
-                  │   │   └───lib
-                  │   └───genosl
-                  │       ├───include
-                  │       └───lib
-                  └───targets
+                  |--bxdf
+                  |   |--lama
+                  |   +---translation
+                  +---lights
+                  |   |---genglsl
+                  |   +---genmsl
+                  +---pbrlib
+                  |   +---genglsl
+                  |   |   +---lib
+                  |   +---genmdl
+                  |   +---genmsl
+                  |   +---genosl
+                  |       +---legacy
+                  |       +---lib
+                  +---stdlib
+                  |   +---genglsl
+                  |   |   +---lib
+                  |   +---genmdl
+                  |   +---genmsl
+                  |   |   +---lib
+                  |   +---genosl
+                  |       +---include
+                  |       +---lib
+                  +---targets
                 </pre>
                 In this case the 'import' API, will return a list of all files read under a given
                 folder. These can be used to keep track of what documents have been read. As
@@ -667,7 +675,7 @@
                   Note that issues can ensue by running different run-times with different versions as
                   you may end up with incompatible documents. A "single version" model is recommended.
                   <br><br>
-                  <img src="./images/upgrade_document.svg" />
+                  <img class="p-2 bg-light" src="./images/upgrade_document.svg" />
                 </p>
                 <p>
                   An upgrade will automatically be performed as part of document reading.
@@ -678,7 +686,7 @@
                   For example, a patch release of "1.38.6" will not perform any upgrade for a document
                   of version "1.38" as only the major (1) and minor (38) versions are compared.
                   <br><br>
-                  <img src="./images/upgrade_patch_releases.svg" />
+                  <img class="p-2 bg-light" src="./images/upgrade_patch_releases.svg" />
                 </p>
                 <p>
                   Automatic upgrading can be overridden
@@ -698,7 +706,7 @@
                   and addition of new definitions. It is recommended to <b>not</b>
                   replace older versions with a newer version if not required.
                   <br><br>
-                  <img src="./images/downgrade_document.svg" />
+                  <img class="p-2 bg-light" src="./images/downgrade_document.svg" />
                 </p>
                 <p>Note that if there are resource or geometric binding dependencies
                   it may be required to version them as well. An example of this is "standard_surface"
@@ -709,7 +717,7 @@
                   account
                   that the current `base_color` is now 0.8.
                   <br><br>
-                  <img src="./images/upgrade_resources.svg" />
+                  <img class="p-2 bg-light" src="./images/upgrade_resources.svg" />
                 </p>
 
                 </p>
@@ -739,6 +747,8 @@
   <script>
     monitor_mermaid_tabs()
   </script>
+  <script src="js/ui_helpers.js"></script>
+
 </body>
 
 </html>
