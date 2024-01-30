@@ -26,12 +26,16 @@ def loadLibraries(sourceLibraryPath, otherLibraryPath):
     currLibrary = mx.createDocument()
     sourceLibraryFolders = []
     sourceSearchPath = mx.FileSearchPath()
+    currentVersion = mx.getVersionString()
     if sourceLibraryPath:
         sourceLibraryFolders.append(sourceLibraryPath)
     else:
         sourceLibraryFolders = mx.getDefaultDataLibraryFolders()
         sourceSearchPath = mx.getDefaultDataSearchPath()
     currlibFiles = mx.loadLibraries(sourceLibraryFolders, sourceSearchPath, currLibrary)
+    # There isn't any way to get a libraries verion string since it's not stored anywhere
+    #if sourceLibraryPath:
+    #    currentVersion = currLibrary.getVersionString()
 
     # Load in the old standard libraries
     otherVersion = ''
@@ -42,7 +46,7 @@ def loadLibraries(sourceLibraryPath, otherLibraryPath):
 
     print('## Libraries Loaded')
     print('- Loaded %d 1st library definitions from %d files. Version %s' %
-           (len(currLibrary.getNodeDefs()), len(currlibFiles), mx.getVersionString()))
+           (len(currLibrary.getNodeDefs()), len(currlibFiles), currentVersion))
     print('  - 1st library location: %s. Search path: "%s"' % (sourceLibraryFolders,
                 sourceSearchPath.asString()))
     
@@ -144,7 +148,7 @@ def printDefinitions(currLibrary, otherLibrary):
 
 class MaterialXCompare:
     '''
-    MaterialX Element Comparitor
+    MaterialX Element Comparator
     '''
 
     @staticmethod
@@ -302,7 +306,7 @@ def printDefinitionComparison(currLibrary, otherLibrary, compareDetails):
     for item in compareDetails:
         nd1 = item[0]
         nd2 = item[1]
-        # Use the built in comparitor first
+        # Use the built in Comparator first
         difference = (nd1 != nd2)
         if difference:
             # Perform details comparison
@@ -482,7 +486,7 @@ def printImplementationComparison(currLibrary, otherLibrary):
             continue
         
         # Check for implementations which have been modified.
-        # Use the built in comparitor first before performing a detailed comparison.
+        # Use the built in Comparator first before performing a detailed comparison.
         difference = (impl != impl2)
         if difference:
             ns = 'None'
@@ -522,7 +526,15 @@ def main():
 
     opts = parser.parse_args()
 
-    print("# MaterialX Library Comparitor")
+    if not os.path.isdir(opts.otherLibrary):
+        print('Error: Target library path not found or not a directory: ', opts.otherLibrary)
+        sys.exit(1)
+    if (opts.sourceLibrary):
+        if not os.path.isdir(opts.sourceLibrary):
+            print('Error: Source library path not found or not a directory: ', opts.sourceLibrary)
+            sys.exit(1)
+
+    print("# MaterialX Library Comparator")
     currLibrary, otherLibrary = loadLibraries(opts.sourceLibrary, opts.otherLibrary)
     
     print('## Node Definition Comparison')
