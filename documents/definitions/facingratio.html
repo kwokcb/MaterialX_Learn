@@ -405,6 +405,7 @@
 <div class="collapse ps-5" id="collapse_npr">
 <div class="d-grid gap-0 col-6">
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="facingratio.html">facingratio</a>
+<a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="gooch_shade.html">gooch_shade</a>
 <a class="idx text-left btn btn-outline-primary border-0 py-0" type="button" href="viewdirection.html">viewdirection</a>
 </div>
 </div>
@@ -621,9 +622,9 @@ graph LR;
     style NG_facingratio_float_out fill:#0C0, color:#111
     NG_facingratio_float_invertINT([invert]) ==.value1==> NG_facingratio_float_N_result[ifequal]
     style NG_facingratio_float_invertINT fill:#0CF, color:#111
-    NG_facingratio_float_N_invert[subtract] --".in1"--> NG_facingratio_float_N_result{ifequal}
+    NG_facingratio_float_N_invert[invert] --".in1"--> NG_facingratio_float_N_result{ifequal}
     style NG_facingratio_float_N_result fill:#F80, color:#111
-    NG_facingratio_float_N_facing{ifequal} --".in2"--> NG_facingratio_float_N_invert[subtract]
+    NG_facingratio_float_N_facing{ifequal} --".in"--> NG_facingratio_float_N_invert[invert]
     NG_facingratio_float_faceforwardINT([faceforward]) ==.value1==> NG_facingratio_float_N_facing[ifequal]
     style NG_facingratio_float_faceforwardINT fill:#0CF, color:#111
     NG_facingratio_float_N_absval[absval] --".in1"--> NG_facingratio_float_N_facing{ifequal}
@@ -699,6 +700,13 @@ graph LR;
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="boolean">
    </div>
   </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input id="ND_facingratio_float_faceforward" type="text" class="form-control form-control-sm" value="true" disabled>
+      </div>
+  </div>
  </div>
 </div>
 <div class="tab-content">
@@ -709,6 +717,13 @@ graph LR;
    <div class="col-sm-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-primary pt-0 pb-0" value="boolean">
    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-sm-2 col-form-label col-form-label-sm">Value: </label>
+      <div class="col-sm-2">
+          <input id="ND_facingratio_float_invert" type="text" class="form-control form-control-sm" value="false" disabled>
+      </div>
   </div>
  </div>
 </div>
