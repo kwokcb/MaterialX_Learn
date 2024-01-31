@@ -1,210 +1,372 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mtlx_1388_vs_1389.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
 
-    gtag('config', 'G-J7404418VP');
-  </script>
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
 
-  <style>
-    model-viewer {
-      width: 256px;
-      height: 256px;
-      background-color: #7d7d7d;
-    }
-  </style>
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
 
-  <title></title>
-  <link rel="icon" href="./images/logo3d_icon.png" type="image/x-icon" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
 
-  <link rel="stylesheet" href="./css/style.css">
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
 
+body.showEditorSelection .code-line {
+	position: relative;
+}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
 
-  
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
 
-  <title>MaterialX Learn</title>
-  <link rel="icon" type="images" href="../images/favicon.png" class="img-fluid">
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
 
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 </head>
-
 <body>
   <script>
     mermaid.initialize({
       startOnLoad: true,
       theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-        ? 'dark'
-        : 'default'
+          ? 'dark'
+          : 'default'
     });
   </script>
-
-  <!-- Top Area -->
-  <!-- Navigation  -->
-  <nav class="navbar navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
-    <div class="container-md container-fluid">
-      <a class="navbar-brand" href="../index.html">
-        <h5><img src="./images/logo3d_2_small.png" alt="MaterialX Learn"
-            class="rounded d-inline-block align-text-center" width="60">
-          MaterialX Learn</h5>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
-        aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainMenuContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="../index.html" role="button">
-              Home
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Learn
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="./nodes_and_nodegraphs.html">
-                  Nodes and Graphs
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="./node_definitions.html">
-                  Node Definitions
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="./documents.html">
-                  Documents
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-              data-bs-auto-close="outside">Reference</a>
-            <ul class="dropdown-menu shadow">
-              <li><a class="dropdown-item" href="definitions/definitions_by_group.html">Library (By Group)</a></li>
-              <li><a class="dropdown-item" href="definitions/all_definitions.html">Library (All)</a></li>
-              <li><a class="dropdown-item" href="definitions/library_glossary.html">Library Glossary</a></li>
-              <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank"><img
-                    src="./images/MaterialXLogo_200x155.png" style="width:20px"> C++ API</a></li>
-
-              <li class="dropend">
-                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library Revisions</a>
-                <ul class="dropdown-menu shadow">
-                  <li><a class="dropdown-item" href="./mtlx_1388_vs_1389.html"> 1.38.8 vs 1.38.9
-                      (current)</a></li>
-                  <li><a class="dropdown-item" href="./mtlx_1387_vs_1388.html"> 1.38.7 vs 1.38.8 </a>
-                  </li>
-                  <li><a class="dropdown-item" href="./mtlx_138_vs_1389.html"> 1.38.0 vs 1.38.9
-                      (current)</a></li>
-                </ul>
-              </li>
-
-              <div class="dropdown-divider"></div>
-              <li>
-                <a class="dropdown-item" href="./using_library.html">
-                  <img src="./images/info-circle.svg"> Library User Guide
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Utilities</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="./gltfViewer.html">
-                  glTF Model Viewer
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="./mermaidChecker.html">
-                  Graph Visualizer
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="./mtlx_utilities.html">
-                  Python Utilities
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Develop</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="./python_MaterialX.html">
-                  Notebooks
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="./jupyter_example.html">
-                  Examples
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="./hosting.html">
-                  Hosting
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Workflows</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="./workflow_usd.html">USD and MaterialX</a></li>
-              <li><a class="dropdown-item" href="./workflow_gltf.html">glTF and MaterialX</a></li>
-              <li><a class="dropdown-item" href="./workflow_ocio.html">OCIO and MaterialX</a></li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Design</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="./design.html">
-                  UX Design
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="./implementation.html">
-                  Implementation
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Section Information -->
-  <section class="py-0 px-0 g-0">
-    <div class="container-fluid p-4">
-      <h1 id="materialx-library-comparator">MaterialX Library Comparator</h1>
+<!--Start-->
+<h1 id="materialx-library-comparator">MaterialX Library Comparator</h1>
 <h2 id="libraries-loaded">Libraries Loaded</h2>
 <ul>
 <li>Loaded 747 1st library definitions from 46 files. Version 1.38.9
@@ -327,7 +489,7 @@
 </tr>
 <tr>
 <td><a href="../documents/definitions/standard_surface_to_gltf_pbr.html">ND_standard_surface_to_gltf_pbr</a></td>
-<td>- Number of children on: <code>ND_standard_surface_to_gltf_pbr</code> changed from ( 26 ) to ( 28 )<br>- input <code>/normal</code> added to <code>ND_standard_surface_to_gltf_pbr</code>. Value=( 1, 1, 1 )<br>- output <code>/normal_out</code> added to <code>ND_standard_surface_to_gltf_pbr</code>. Value=( )<br></td>
+<td>- Number of children on: <code>ND_standard_surface_to_gltf_pbr</code> changed from ( 26 ) to ( 28 )<br>- input <code>/normal</code> added to <code>ND_standard_surface_to_gltf_pbr</code>. Value=( 1, 1, 1 )<br>- output <code>/normal_out</code> added to <code>ND_standard_surface_to_gltf_pbr</code>. Value=(  )<br></td>
 </tr>
 </tbody>
 </table>
@@ -29906,27 +30068,27 @@
 </tr>
 <tr>
 <td><a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/smoothstep.html">IM_smoothstep_vector2_genglsl</a></td>
-<td>- attribute: <code>file</code> changed on <code>IM_smoothstep_vector2_genglsl</code> from <code>( mx_smoothstep_vec2.glsl )</code> to <code>( mx_smoothstep_vector2.glsl )</code><br> - attribute: <code>function</code> changed on <code>IM_smoothstep_vector2_genglsl</code> from <code>( mx_smoothstep_vec2 )</code> to <code>( mx_smoothstep_vector2 )</code><br></td>
+<td>- attribute: <code>file</code> changed on <code>IM_smoothstep_vector2_genglsl</code> from <code>( mx_smoothstep_vec2.glsl )</code> to <code>( mx_smoothstep_vector2.glsl )</code><br>  - attribute: <code>function</code> changed on <code>IM_smoothstep_vector2_genglsl</code> from <code>( mx_smoothstep_vec2 )</code> to <code>( mx_smoothstep_vector2 )</code><br></td>
 </tr>
 <tr>
 <td><a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/smoothstep.html">IM_smoothstep_vector2_genmsl</a></td>
-<td>- attribute: <code>file</code> changed on <code>IM_smoothstep_vector2_genmsl</code> from <code>( mx_smoothstep_vec2.metal )</code> to <code>( mx_smoothstep_vector2.metal )</code><br> - attribute: <code>function</code> changed on <code>IM_smoothstep_vector2_genmsl</code> from <code>( mx_smoothstep_vec2 )</code> to <code>( mx_smoothstep_vector2 )</code><br></td>
+<td>- attribute: <code>file</code> changed on <code>IM_smoothstep_vector2_genmsl</code> from <code>( mx_smoothstep_vec2.metal )</code> to <code>( mx_smoothstep_vector2.metal )</code><br>  - attribute: <code>function</code> changed on <code>IM_smoothstep_vector2_genmsl</code> from <code>( mx_smoothstep_vec2 )</code> to <code>( mx_smoothstep_vector2 )</code><br></td>
 </tr>
 <tr>
 <td><a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/smoothstep.html">IM_smoothstep_vector3_genglsl</a></td>
-<td>- attribute: <code>file</code> changed on <code>IM_smoothstep_vector3_genglsl</code> from <code>( mx_smoothstep_vec3.glsl )</code> to <code>( mx_smoothstep_vector3.glsl )</code><br> - attribute: <code>function</code> changed on <code>IM_smoothstep_vector3_genglsl</code> from <code>( mx_smoothstep_vec3 )</code> to <code>( mx_smoothstep_vector3 )</code><br></td>
+<td>- attribute: <code>file</code> changed on <code>IM_smoothstep_vector3_genglsl</code> from <code>( mx_smoothstep_vec3.glsl )</code> to <code>( mx_smoothstep_vector3.glsl )</code><br>  - attribute: <code>function</code> changed on <code>IM_smoothstep_vector3_genglsl</code> from <code>( mx_smoothstep_vec3 )</code> to <code>( mx_smoothstep_vector3 )</code><br></td>
 </tr>
 <tr>
 <td><a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/smoothstep.html">IM_smoothstep_vector3_genmsl</a></td>
-<td>- attribute: <code>file</code> changed on <code>IM_smoothstep_vector3_genmsl</code> from <code>( mx_smoothstep_vec3.metal )</code> to <code>( mx_smoothstep_vector3.metal )</code><br> - attribute: <code>function</code> changed on <code>IM_smoothstep_vector3_genmsl</code> from <code>( mx_smoothstep_vec3 )</code> to <code>( mx_smoothstep_vector3 )</code><br></td>
+<td>- attribute: <code>file</code> changed on <code>IM_smoothstep_vector3_genmsl</code> from <code>( mx_smoothstep_vec3.metal )</code> to <code>( mx_smoothstep_vector3.metal )</code><br>  - attribute: <code>function</code> changed on <code>IM_smoothstep_vector3_genmsl</code> from <code>( mx_smoothstep_vec3 )</code> to <code>( mx_smoothstep_vector3 )</code><br></td>
 </tr>
 <tr>
 <td><a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/smoothstep.html">IM_smoothstep_vector4_genglsl</a></td>
-<td>- attribute: <code>file</code> changed on <code>IM_smoothstep_vector4_genglsl</code> from <code>( mx_smoothstep_vec4.glsl )</code> to <code>( mx_smoothstep_vector4.glsl )</code><br> - attribute: <code>function</code> changed on <code>IM_smoothstep_vector4_genglsl</code> from <code>( mx_smoothstep_vec4 )</code> to <code>( mx_smoothstep_vector4 )</code><br></td>
+<td>- attribute: <code>file</code> changed on <code>IM_smoothstep_vector4_genglsl</code> from <code>( mx_smoothstep_vec4.glsl )</code> to <code>( mx_smoothstep_vector4.glsl )</code><br>  - attribute: <code>function</code> changed on <code>IM_smoothstep_vector4_genglsl</code> from <code>( mx_smoothstep_vec4 )</code> to <code>( mx_smoothstep_vector4 )</code><br></td>
 </tr>
 <tr>
 <td><a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/smoothstep.html">IM_smoothstep_vector4_genmsl</a></td>
-<td>- attribute: <code>file</code> changed on <code>IM_smoothstep_vector4_genmsl</code> from <code>( mx_smoothstep_vec4.metal )</code> to <code>( mx_smoothstep_vector4.metal )</code><br> - attribute: <code>function</code> changed on <code>IM_smoothstep_vector4_genmsl</code> from <code>( mx_smoothstep_vec4 )</code> to <code>( mx_smoothstep_vector4 )</code><br></td>
+<td>- attribute: <code>file</code> changed on <code>IM_smoothstep_vector4_genmsl</code> from <code>( mx_smoothstep_vec4.metal )</code> to <code>( mx_smoothstep_vector4.metal )</code><br>  - attribute: <code>function</code> changed on <code>IM_smoothstep_vector4_genmsl</code> from <code>( mx_smoothstep_vec4 )</code> to <code>( mx_smoothstep_vector4 )</code><br></td>
 </tr>
 <tr>
 <td><a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/subsurface_bsdf.html">IM_subsurface_bsdf_genosl</a></td>
@@ -29950,28 +30112,12 @@
 </tr>
 <tr>
 <td><a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/standard_surface_to_gltf_pbr.html">NG_standard_surface_to_gltf_pbr</a></td>
-<td>- Number of children on: <code>NG_standard_surface_to_gltf_pbr</code> changed from ( 29 ) to ( 31 )<br>- dot <code>/normal</code> add to <code>NG_standard_surface_to_gltf_pbr</code><br>- output <code>/normal_out</code> added to <code>NG_standard_surface_to_gltf_pbr</code>. Value=( )<br></td>
+<td>- Number of children on: <code>NG_standard_surface_to_gltf_pbr</code> changed from ( 29 ) to ( 31 )<br>- dot <code>/normal</code> add to <code>NG_standard_surface_to_gltf_pbr</code><br>- output <code>/normal_out</code> added to <code>NG_standard_surface_to_gltf_pbr</code>. Value=(  )<br></td>
 </tr>
 </tbody>
 </table>
 </details>
-
-    </div>
-  </section>
-
-  <script>
-    const body = document.body;
-    // Check if the user has a preferred color scheme
-    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    // Set the initial theme based on user preferences
-    if (prefersDarkMode) {
-      body.setAttribute('data-bs-theme', 'dark');
-    } else {
-      body.setAttribute('data-bs-theme', 'light');
-    }    
-  </script>
+<!--End-->
 
 </body>
-
 </html>
