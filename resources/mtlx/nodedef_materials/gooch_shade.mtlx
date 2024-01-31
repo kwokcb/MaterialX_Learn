@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <gooch_shade name="gooch_shade" type="color3">
+    <input name="warm_color" type="color3" value="0.8, 0.8, 0.7" uiname="Warm Color" />
+    <input name="cool_color" type="color3" value="0.3, 0.3, 0.8" uiname="Cool Color" />
+    <input name="specular_intensity" type="float" value="1" uiname="Specular Intensity" />
+    <input name="shininess" type="float" value="64" uiname="Shininess" />
+    <input name="light_direction" type="vector3" value="1, -0.5, -0.5" uiname="Light Direction" />
+  </gooch_shade>
+  <convert name="shader_gooch_shade_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="gooch_shade" />
+  </convert>
+  <surfacematerial name="material_gooch_shade_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_gooch_shade_out" />
+  </surfacematerial>
+</materialx>
