@@ -6,9 +6,7 @@ const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-s
 
 // Set the initial theme based on user preferences
 if (prefersDarkMode) {
-    console.log('------------- dark mode !')
     body.setAttribute('data-bs-theme', 'dark');
 } else {
-    console.log('------------- light mode !')
     body.setAttribute('data-bs-theme', 'light');
 }

@@ -44,13 +44,13 @@ def loadLibraries(sourceLibraryPath, otherLibraryPath):
     searchPath = mx.FileSearchPath()
     libFiles = mx.loadLibraries(libraryFolders, searchPath, otherLibrary)
 
-    print('## Libraries Loaded')
-    print('- Loaded %d 1st library definitions from %d files. Version %s' %
+    print('### Libraries Loaded')
+    print('- Loaded %d first library definitions from %d files. Version %s' %
            (len(currLibrary.getNodeDefs()), len(currlibFiles), currentVersion))
-    print('  - 1st library location: %s. Search path: "%s"' % (sourceLibraryFolders,
+    print('  - First library location: %s. Search path: "%s"' % (sourceLibraryFolders,
                 sourceSearchPath.asString()))
     
-    print('- Loaded %d 2nd library definitions from %d files. Version %s' % 
+    print('- Loaded %d second library definitions from %d files. Version %s' % 
           (len(otherLibrary.getNodeDefs()), len(libFiles), otherLibrary.getVersionString()))
     print('  - Second library location: %s. Search path: "%s"' % (libraryFolders,
                 searchPath.asString()))
@@ -64,8 +64,8 @@ def printDefinitions(currLibrary, otherLibrary):
     otherNodeDefs = otherLibrary.getNodeDefs()
     otherNodeDefsCount = len(otherNodeDefs) # There seems to be no way to get the previous version?    
 
-    print('1st library has %d nodedefs.<br>' % currNodeDefsCount)
-    print('2nd library has %d nodedefs' % otherNodeDefsCount)
+    print('* First library has %d nodedefs.' % currNodeDefsCount)
+    print('* Second library has %d nodedefs' % otherNodeDefsCount)
 
     currNodeDefSet = {}
     for nodeDef in currNodeDefs:
@@ -85,17 +85,19 @@ def printDefinitions(currLibrary, otherLibrary):
     text = ''  
     if removedNodeDefs:
         removedNodeDefs = sorted(removedNodeDefs, key=lambda x: x.getName())
-        text = text + '| Name | Category |\n'
-        text = text + '| :--- | :--- |\n'
+
+        text = text + '<table class="table-fixed table shadow table-striped table-hover table-responsive">\n'
+        text = text + '<tr><th> Name <th> Category </tr>\n'
         for nd in removedNodeDefs:
-            text = text + '| %s | %s |\n' % (nd.getName(), nd.getNodeString())
+            text = text + '<tr><td> %s <td> %s </tr>\n' % (nd.getName(), nd.getNodeString())
+        text = text + '</table>\n'
 
         delta = '%d node definitions removed' % len(removedNodeDefs)
         text = '<details><summary>' + delta + '</summary>\n\n' + text + '\n' + '</details>\n' 
         print(text)
 
     # Find out what new definitions have been added.
-    # Cache common definitions in `compareDetails` for further comparison.
+    # Cache common definitions in <code>compareDetails<code> for further comparison.
     compareDetails = []
     newNodeDefs = []
     for nodeDef in currNodeDefs:
@@ -109,10 +111,11 @@ def printDefinitions(currLibrary, otherLibrary):
     text = ''
     if newNodeDefs:
         newNodeDefs = sorted(newNodeDefs, key=lambda x: x.getNodeString())
-        text = text + '| Name | Category | NodeGroup |\n'
-        text = text + '| :--- | :--- | :---| \n'
+        text = text + '<table class="table-fixed table shadow table-striped table-hover table-responsive">\n'
+        text = text + '<tr><th> Name <th> Category <th> NodeGroup </tr>\n'
         for nd in newNodeDefs:
-            text = text + '| <a href="../documents/definitions/%s.html">%s</a> | %s | %s |\n' % (nd.getNodeString(), nd.getName(), nd.getNodeString(), nd.getNodeGroup())
+            text = text + '<tr><td> <a href="../documents/definitions/%s.html">%s</a> <td> %s <td> %s </tr>\n' % (nd.getNodeString(), nd.getName(), nd.getNodeString(), nd.getNodeGroup())
+        text = text + '</table>\n'
 
         delta = '%d node definitions added. (Sorted by category)' % len(newNodeDefs)
         text = '<details><summary>' + delta + '</summary>\n\n' + text + '\n' + '</details>\n' 
@@ -131,14 +134,17 @@ def printDefinitions(currLibrary, otherLibrary):
             newCategories[newCategory] = [ nodeDef.getNodeGroup(), nodeDef.getType() ]        
 
     if newCategories:
-        text = '| Node category | Node group | Type |\n'
-        text = text + '| --- | --- | --- |\n' 
+        text = '<table class="table-fixed table shadow table-striped table-hover table-responsive">\n'
+
+        text = text + '<tr><th> Node category <th> Node group <th> Type </tr>\n'
         sorted_keys = sorted(newCategories.keys())
         sortedNewCategories = {}
         for key in sorted_keys:
             sortedNewCategories[key] = newCategories[key]                                 
         for category in sortedNewCategories:
-            text = text + '| [%s](../documents/definitions/%s.html) | %s | %s |\n' % (category, category, newCategories[category][0], newCategories[category][1])
+            text = text + '<tr><td> <a href="../documents/definitions/%s.html">%s</a> <td> %s <td> %s </tr>\n' % (category, category, newCategories[category][0], newCategories[category][1])
+
+        text = text + '</table>\n'
 
         delta = '%d new node categories were added' % len(newCategories)
         text = '<details><summary>' + delta + '</summary>\n\n' + text + '\n' + '</details>\n' 
@@ -234,7 +240,7 @@ class MaterialXCompare:
         differs = False
 
         if nd1.getCategory() != nd2.getCategory():
-            log.append(indent + '- Category changed on: `%s` from `%s` to `%s`' % (nd1.getName(), nd2.getCategory(), nd1.getCategory()))
+            log.append(indent + '- Category changed on: <code>%s</code> from <code>%s</code> to <code>%s</code>' % (nd1.getName(), nd2.getCategory(), nd1.getCategory()))
             differs = True
 
         # Compare attributes.
@@ -242,16 +248,16 @@ class MaterialXCompare:
         onlynd1, onlynd2, common = MaterialXCompare.diffLists(MaterialXCompare.getActiveAttributes(nd1), MaterialXCompare.getActiveAttributes(nd2))
         if len(onlynd1) > 0 or len(onlynd2) > 0:
             for item in onlynd1:
-                log.append(indent + '- attribute: `%s`=( `%s` ) removed from: `%s`' % 
+                log.append(indent + '- attribute: <code>%s</code>=( <code>%s</code> ) removed from: <code>%s</code>' % 
                         ( item, MaterialXCompare.getActiveAttribute(nd1, item), nd1.getName()))
             for item in onlynd2:
-                log.append(indent + '- attribute: `%s`=( `%s` ) added to: `%s`' % 
+                log.append(indent + '- attribute: <code>%s</code>=( <code>%s</code> ) added to: <code>%s</code>' % 
                         ( item, MaterialXCompare.getActiveAttribute(nd2, item), nd2.getName()))
             differs = True
 
         for attr in common:
             if nd2.getAttribute(attr) != nd1.getAttribute(attr):
-                log.append(indent + '  - attribute: `%s` changed on `%s` from `( %s )` to `( %s )`' % 
+                log.append(indent + '  - attribute: <code>%s</code> changed on <code>%s</code> from <code>( %s )</code> to <code>( %s )</code>' % 
                         (attr, nd1.getName(), nd1.getAttribute(attr), nd2.getAttribute(attr)))
                 differs = True
 
@@ -259,7 +265,7 @@ class MaterialXCompare:
         c1 = [c.getName() for c in MaterialXCompare.getActiveChildren(nd1)] 
         c2 = [c.getName() for c in MaterialXCompare.getActiveChildren(nd2)]
         if len(c1) != len(c2):
-            log.append(indent + '- Number of children on: `%s` changed from ( %s ) to ( %s )' % (nd1.getName(), len(c1), len(c2)))
+            log.append(indent + '- Number of children on: <code>%s</code> changed from ( %s ) to ( %s )' % (nd1.getName(), len(c1), len(c2)))
             differs = True
 
         # Get list of added, removed, and common children.
@@ -271,9 +277,9 @@ class MaterialXCompare:
             childName = child.getNamePath().removeprefix(child.getParent().getNamePath())
             childType = child.getCategory()
             if child.isA(mx.ValueElement):
-                log.append(indent + '- %s `%s` removed from `%s`. Value=( %s )' % (childType, childName, nd1.getNamePath(), child.getValueString()))
+                log.append(indent + '- %s <code>%s</code> removed from <code>%s</code>. Value=( %s )' % (childType, childName, nd1.getNamePath(), child.getValueString()))
             else:
-                log.append(indent + '- %s `%s` removed from `%s`' % (childType, childName, nd1.getNamePath()))
+                log.append(indent + '- %s <code>%s</code> removed from <code>%s</code>' % (childType, childName, nd1.getNamePath()))
             differs = True
 
         # Log child that are added. Emit value if is a value element.
@@ -282,9 +288,9 @@ class MaterialXCompare:
             childName = child.getNamePath().removeprefix(child.getParent().getNamePath())
             childType = child.getCategory()
             if child.isA(mx.ValueElement):
-                log.append(indent + '- %s `%s` added to `%s`. Value=( %s )' % (childType, childName, nd2.getNamePath(), child.getValueString()))
+                log.append(indent + '- %s <code>%s</code> added to <code>%s</code>. Value=( %s )' % (childType, childName, nd2.getNamePath(), child.getValueString()))
             else:
-                log.append(indent + '- %s `%s` add to `%s`' % (childType, childName, nd2.getNamePath()))
+                log.append(indent + '- %s <code>%s</code> add to <code>%s</code>' % (childType, childName, nd2.getNamePath()))
             differs = True
 
         # Recurse on common children.
@@ -296,11 +302,12 @@ class MaterialXCompare:
 
         return differs
 
-
+ 
 def printDefinitionComparison(currLibrary, otherLibrary, compareDetails):
 
-    text = '| Name | Change  |\n'
-    text = text + '| --- | --- |\n'
+    text = '<table class="table-fixed table shadow table-striped table-hover table-responsive">\n'
+    text = text + '<tr><th> Name <th> Change <tr>\n'
+    #text = text + '| --- | --- |\n'
 
     changed = 0
     for item in compareDetails:
@@ -310,14 +317,15 @@ def printDefinitionComparison(currLibrary, otherLibrary, compareDetails):
         difference = (nd1 != nd2)
         if difference:
             # Perform details comparison
-            text = text + '| <a href="../documents/definitions/%s.html">%s</a> | ' % (nd1.getNodeString(), nd1.getName())
+            text = text + '<tr><td> <a href="../documents/definitions/%s.html">%s</a> <td>\n\n ' % (nd1.getNodeString(), nd1.getName())
             log = []
             difference = MaterialXCompare.compareElements(nd1, nd2, '', log) 
             if difference:
                 for line in log:
                     text = text + line + '<br>'
-                text = text + '|\n'
+                text = text + '</tr>\n'
                 changed = changed + 1
+    text = text + '</table>\n'
 
     delta = '%d definitions modified' % changed
     text = '<details><summary>' + delta + '</summary>\n\n' + text + '\n' + '</details>\n' 
@@ -334,8 +342,8 @@ def printTargetComparison(currLibrary, otherLibrary):
     for target in currLibrary.getTargetDefs():
         currTargets.append(target.getName())
 
-    print('1st library shader targets: *%s*<br>' % currTargets)
-    print('2nd library shader targets: *%s*' % oldTargets)
+    print('* First library shader targets: *%s*' % currTargets)
+    print('* Second library shader targets: *%s*' % oldTargets)
 
     newTargets = list(set(currTargets) - set(oldTargets))
     if newTargets:
@@ -376,20 +384,27 @@ def print_implementations(nodedefs, targets, allimpls, title):
     for target in targets:
         impls = get_implementations(nodedefs, target, allimpls)
 
+        result = '<table class="table-fixed table shadow table-striped table-hover table-responsive">'
+
         if len(target) == 0:
-            result = '| Definition | NodeGraph | File |\n'
+            result = result + '<tr><th>Definition</th><th>NodeGraph</th><th>File</th></tr>'
         else:
-            result = '| Definition | Implementation | File |\n'
-        result = result + '| --- | --- | --- |\n'
+            result = result + '<tr><th>Definition</th><th>Implementation</th><th>File</th></tr>'
         for impl in impls:
-            result = result + '|' + impl + '|' + impls[impl][0].getName() + '|' + impls[impl][1] + '\n'
+            result = result + '<tr>'
+            result = result + '<td>' + impl + '<td>' + impls[impl][0].getName() + '<td>' + impls[impl][1] + '\n'
+            result = result + '</tr>'
+
+        result = result  +  '</table>'
+
         text = '<details><summary>' + str(len(impls)) + (' shaders: ' + target if target else ' node graphs') + '</summary>\n\n' + result+ '\n</details>\n' 
         print(text)
+        print('\n')
 
 def printImplementations(currLibrary, otherLibrary, currTargets, oldTargets):
 
     # Scan for all the Source targets
-    title = '#### 1st Library Definitions / Implementations\n'
+    title = '##### First Library Definitions / Implementations\n'
     alltargets = currTargets
     alltargets.append('')
     allimpls = set()
@@ -397,7 +412,8 @@ def printImplementations(currLibrary, otherLibrary, currTargets, oldTargets):
     print_implementations(currNodeDefs, alltargets, allimpls, title)
 
     # Scan for all the previous targets
-    title = '#### 2nd Library Definitions / Implementations\n'
+    print('<p></p>\n')
+    title = '##### Second Library Definitions / Implementations\n'
     alltargets = oldTargets
     alltargets.append('')
     allimpls = set()
@@ -433,11 +449,12 @@ def printImplementationComparison(currLibrary, otherLibrary):
             allImpls2.add(i.getName())
             allImpls.add(i.getName())
 
-    print('1st library implementation count: %d<br>' % len(allImpls))
-    print('2nd library implementation count: %d' % len(allImpls2))
+    print('First library implementation count: %d' % len(allImpls))
+    print('Second library implementation count: %d\n' % len(allImpls2))
 
-    title = '| Name | Node Category | Node Type |\n'
-    title = title + '| --- | --- | --- |\n'
+    title = '<table class="table-fixed table shadow table-striped table-hover table-responsive">\n'
+    title = title + '<tr><th> Name <th> Node Category <th> Node Type <th></tr>\n'
+    #title = title + '| --- | --- | --- |\n'
 
     allImpls = sorted(allImpls)
     added = 0
@@ -445,7 +462,8 @@ def printImplementationComparison(currLibrary, otherLibrary):
     removed = 0
     removedText = title
 
-    title = '| Name | Change |\n| --- | --- |\n'
+    title = '<table class="table-fixed table shadow table-striped table-hover table-responsive">\n'
+    title = title + '<tr><th> Name <th> Change </tr>\n'
     changed = 0
     changedText = title
 
@@ -465,7 +483,7 @@ def printImplementationComparison(currLibrary, otherLibrary):
                 if nd:
                     ns = nd.getNodeString()
                     nt = nd.getType()
-            addedText = addedText + '| %s | <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/%s.html">%s</a> | %s | \n' % (item, ns, ns, nt) 
+            addedText = addedText + '<tr><td> %s <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/%s.html">%s</a> <td> %s </tr>\n' % (item, ns, ns, nt) 
             added = added + 1
             continue
         
@@ -481,7 +499,7 @@ def printImplementationComparison(currLibrary, otherLibrary):
                 if nd:
                     ns = nd.getNodeString()
                     nt = nd.getType()        
-                    removedText = removedText + '| %s | %s | %s | \n' % (item, ns, nt)
+                    removedText = removedText + '<tr><td> %s <td> %s <td> %s </tr> \n' % (item, ns, nt)
                     removed = removed + 1
             continue
         
@@ -495,34 +513,40 @@ def printImplementationComparison(currLibrary, otherLibrary):
                 nd = impl2.getNodeDef()
                 if nd:
                     ns = nd.getNodeString()                
-            changedText = changedText + '| <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/%s.html">%s</a> | ' % (ns, item)
+            changedText = changedText + '<tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/%s.html">%s</a> <td> ' % (ns, item)
             # Perform detailed comparison
             log = []
             difference = MaterialXCompare.compareElements(impl, impl2, '', log) 
             if difference:
                 for line in log:
                     changedText = changedText + line + '<br>'
-                changedText = changedText + '|\n'
+                changedText = changedText + '</tr>\n'
                 changed = changed + 1
 
 
     delta = '%d implementations added' % added
-    text = '<details><summary>' + delta + '</summary>\n\n' + addedText + '\n' + '</details>\n' 
-    print(text)
+    if added > 0:
+        addedText = addedText + '</table>\n'
+        text = '<details><summary>' + delta + '</summary>\n\n' + addedText + '\n' + '</details>\n' 
+        print(text)
 
     delta = '%d implementations removed' % removed
-    text = '<details><summary>' + delta + '</summary>\n\n' +  removedText + '\n' + '</details>\n' 
-    print(text)
+    if removed > 0:
+        removedText = removedText + '</table>\n'
+        text = '<details><summary>' + delta + '</summary>\n\n' + removedText + '\n' + '</details>\n' 
+        print(text)
 
     delta = '%d implementations modified' % changed
-    text = '<details><summary>' + delta + '</summary>\n\n' + changedText + '\n' + '</details>\n' 
-    print(text)
+    if changed > 0:
+        changedText = changedText + '</table>\n'
+        text = '<details><summary>' + delta + '</summary>\n\n' + changedText + '\n' + '</details>\n' 
+        print(text)
 
 def main():
     parser = argparse.ArgumentParser(description='Compare definitions between two MaterialX libraries.')
-    parser.add_argument(dest='otherLibrary', help='Path to root of the 2nd library to compare against')
+    parser.add_argument(dest='otherLibrary', help='Path to root of the second library to compare against')
     parser.add_argument('--sourceLibrary', dest='sourceLibrary', default='', 
-                        help='Path to root of 1st library to compare against. Default is the Python package library')
+                        help='Path to root of first library to compare against. Default is the Python package library')
 
     opts = parser.parse_args()
 
@@ -534,20 +558,32 @@ def main():
             print('Error: Source library path not found or not a directory: ', opts.sourceLibrary)
             sys.exit(1)
 
-    print("# MaterialX Library Comparator")
+    print('<!--Start-->')
+    print('\n')
+    print("## MaterialX Library Comparison\n")
     currLibrary, otherLibrary = loadLibraries(opts.sourceLibrary, opts.otherLibrary)
+    print('\n')
     
-    print('## Node Definition Comparison')
+    print("<hr>\n")
+    print('### Node Definition Comparison\n')
     compareDetails = printDefinitions(currLibrary, otherLibrary)
     if compareDetails:
+        print('\n')
         printDefinitionComparison(currLibrary, otherLibrary, compareDetails)
+    print('\n')
 
-    print("## Implementations")
+    print("<hr>\n")
+    print("### Implementations\n")
     otherTargets, currTargets = printTargetComparison(currLibrary, otherLibrary)
     printImplementations(currLibrary, otherLibrary, otherTargets, currTargets)
+    print('\n')
 
-    print("## Implementation Comparison")
+    print("<hr>\n")
+    print("### Implementation Comparison\n")
     printImplementationComparison(currLibrary, otherLibrary)
+    print('\n')
+
+    print('<!--End-->')
 
 
 if __name__ == '__main__':
