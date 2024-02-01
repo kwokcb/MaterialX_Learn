@@ -5,7 +5,7 @@ MaterialX. The contents are up-to-date as much as possible with the main branch 
 
 This can include definitions which are ot part of an official release yet.
 
-The current development release being tracked is: 1.38.8
+The current development release being tracked is: 1.38.9
 
 ## Per Document Information
 
