@@ -1,247 +1,325 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  gtag('config', 'G-J7404418VP');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-    <title>MaterialX Learn - Using Library</title>
-    <link rel="icon" href="./images/logo3d_icon.png" type="image/x-icon"/>  
+    gtag('config', 'G-J7404418VP');
+  </script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    model-viewer {
+      width: 256px;
+      height: 256px;
+      background-color: #7d7d7d;
+    }
+  </style>
 
-    <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="../documents/images/logo3d_icon.png" type="image/x-icon" />
+  <!--
+  <link rel="icon" href="../documents/images/logo3d_2_small.png" type="image/x-icon" />
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../documents/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  
+
+  <title>MaterialX Learn</title>
+  <link rel="icon" type="images" href="../documents/images/favicon.png" class="img-fluid">
+
 </head>
 
-<body class="min-vh-100">
-    <script src="js/ui_helpers.js"></script>
-    <script src="js/definition_card_helpers.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+<body>
+      <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base", themeVariables: { primaryColor: "#F1F1F1", primaryBorderColor: "#000000", lineColor: "#000000", secondaryColor: "#EFEFFF", tertiaryColor: "#EEEEEE" } }); </script>
 
-<!-- Navigation  -->
-<nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
-    <div class="container-md container-fluid">
-      <a class="navbar-brand" href="../index.html">
-        <h5><img src="images/logo3d_2_small.png" alt="MaterialX Learn"
-            class="rounded d-inline-block align-text-center" width="60">
-          MaterialX Learn</h5>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
-        aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainMenuContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-                <a class="nav-link" href="../index.html" role="button">
-                  Home
-                </a>
-              </li>
-                <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Learn
+    <script src="../documents/js/ui_helpers.js"> </script>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+                ? 'dark'
+                : 'default'
+        });
+    </script>
+
+    <!-- Navigation  -->
+    <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
+        <div class="container-md container-fluid">
+            <a class="navbar-brand" href="../index.html">
+                <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+                        class="rounded d-inline-block align-text-center" width="50px">
+                    MaterialX Learn</h5>
             </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="nodes_and_nodegraphs.html">
-                  Nodes and Graphs
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="node_definitions.html">
-                  Node Definitions
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="documents.html">
-                  Documents
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Reference
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="definitions/definitions_by_group.html">
-                  Library (By Group)
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="definitions/all_definitions.html">
-                  Library (All)
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="definitions/library_glossary.html">
-                  Library Glossary
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
-                  <img src="images/MaterialXLogo_200x155.png" style="width:20px"> C++ API  
-                </a>
-              </li>
-              <div class="dropdown-divider"></div>              
-              <li>
-                <a class="dropdown-item" href="using_library.html">
-                    <img src="images/info-circle.svg"> Library User Guide
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Utilities</a>
-            <ul class="dropdown-menu">
-                <li>
-                    <a class="dropdown-item" href="gltfViewer.html">
-                      glTF ModelViewer
-                    </a>
-                  </li>    
-              <li>
-                <a class="dropdown-item" href="mermaidChecker.html">
-                  Graph Visualizer
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="mtlx_utilities.html">
-                  Python Utilities
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Develop</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="python_MaterialX.html">
-                    Notebooks 
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="jupyter_example.html">
-                  Examples
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="hosting.html">
-                    Hosting
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Workflows</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="workflow_usd.html">USD and MaterialX</a></li>
-                <li><a class="dropdown-item" href="workflow_gltf.html">glTF and MaterialX</a></li>
-                <li><a class="dropdown-item" href="workflow_ocio.html">OCIO and MaterialX</a></li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Design</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="design.html">
-                  UX Design
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="implementation.html">
-                  Implementation
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="about.html" role="button">
-              About
-            </a>
-          </li>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-      
-    <div class="container-fluid p-4">
-        <div class="row flex-nowrap">
-            <div class="col-12 p-0 pt-2 pl-2">
-
-                <h2>Node Library User Guide</h2>
-
-                <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">                   
-                    <li class="nav-item" role="presentation">
-                        <button class="top-toggle nav-link active" id="pills-userint-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-userint" type="button" role="tab" aria-controls="pills-userint"
-                            aria-selected="true">Using the Library</button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+                aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenuContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="../index.html" role="button">
+                            Home
+                        </a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Learn
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/nodes_and_nodegraphs.html">
+                                    Nodes and Graphs
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/node_definitions.html">
+                                    Node Definitions
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/documents.html">
+                                    Documents
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            data-bs-auto-close="outside">Reference</a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/definitions_by_group.html">Library
+                                    (By Group)</a></li>
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/all_definitions.html">Library
+                                    (All)</a></li>
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/library_glossary.html">Library
+                                    Glossary</a></li>
+                            <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
+                                    target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
+                                        style="width:20px"> C++ API</a></li>
+
+                            <li class="dropend">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
+                                    Revisions</a>
+                                <ul class="dropdown-menu shadow">
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1388_vs_1389.html">
+                                            1.38.8 vs 1.38.9
+                                            (current)</a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1387_vs_1388.html">
+                                            1.38.7 vs 1.38.8
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1386_vs_1387.html">
+                                            1.38.6 vs 1.38.7
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1385_vs_1386.html">
+                                            1.38.5 vs 1.38.6
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1384_vs_1385.html">
+                                            1.38.4 vs 1.38.5
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1383_vs_1384.html">
+                                            1.38.3 vs 1.38.4
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1382_vs_1383.html">
+                                            1.38.2 vs 1.38.3
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1381_vs_1382.html">
+                                            1.38.1 vs 1.38.2
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1380_vs_1381.html">
+                                            1.38.0 vs 1.38.1
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_138_vs_1389.html"> 1.38.0
+                                            vs 1.38.9
+                                            (current)</a></li>
+                                </ul>
+                            </li>
+
+                            <div class="dropdown-divider"></div>
+                            <li>
+                                <a class="dropdown-item" href="../documents/using_library.html">
+                                    <img src="../documents/images/info-circle.svg"> Library User Guide
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Utilities</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/gltfViewer.html">
+                                    glTF Model Viewer
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/mermaidChecker.html">
+                                    Graph Visualizer
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/mtlx_utilities.html">
+                                    Python Utilities
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../javascript/mtlx_js_utilities.html">
+                                    Javascript Utilities
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Develop</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/python_MaterialX.html">
+                                    Notebooks
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/jupyter_example.html">
+                                    Examples
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/hosting.html">
+                                    Hosting
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Workflows</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../documents/workflow_usd.html">USD and
+                                    MaterialX</a></li>
+                            <li><a class="dropdown-item" href="../documents/workflow_gltf.html">glTF and
+                                    MaterialX</a></li>
+                            <li><a class="dropdown-item" href="../documents/workflow_ocio.html">OCIO and
+                                    MaterialX</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Design</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/design.html">
+                                    UX Design
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/implementation.html">
+                                    Implementation
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../documents/about.html" role="button">
+                            About
+                        </a>
+                    </li>
+                    <!--INDEX_ITEM-->
                 </ul>
+            </div>
+        </div>
+    </nav>
 
-                <div class="tab-content"id="pills-tabContent2">
-                    <div class="tab-pane fade show active" id="pills-userint" role="tabpanel"
-                        aria-labelledby="pills-userint-tab">
+  <!-- Section Information -->
+  <section class="py-0 px-0 g-0">
+    <div class="container-fluid p-4">
+      
+<div class="container-fluid p-0">
+    <div class="row flex-nowrap">
+        <div class="col-12 p-0 pt-2 pl-2">
 
-                        <div class="card border-secondary shadow border mb-4">
-                            <div class="card-body">
+            <h2>Node Library User Guide</h2>
 
-                                <p>Library information is organized into various node groups with associated node
-                                    definitions.</p>
-                                <p>
-                                    Shown here is an <em>interactive</em> "template" of the 'card UI' used to display node definition
-                                    information. Attributes are shown as rows. Various definition information can
-                                    be shown/hidden by clicking the section tabs (
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
-                                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-                                          </svg> / 
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-                                          </svg>
-                                          )
-                                    </p>
-                                    <p>
-                                    Within the card template below are explanations for how to read attribute values and what their usage is.
-                                    These can be found within the <a class="custom btn btn-sm border border-secondary shadow">colored boxes </a>
-                                </p>
-                                <p>
-                                    For brevity, only essential API calls shown in the template. Otherwise
-                                    the <b>attribute</b> names used indicate which attribute is examined.
-                                    Also, only the non-inherited inputs and outputs are shown per node
-                                    definition.
-                                </p>
-                                <hr>
+            <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="top-toggle nav-link active" id="pills-userint-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-userint" type="button" role="tab" aria-controls="pills-userint"
+                        aria-selected="true">Using the Library</button>
+                </li>
+            </ul>
 
-                                <div data-bs-theme="light" class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
-                                    <div class="card-header border-0">
+            <div class="tab-content" id="pills-tabContent2">
+                <div class="tab-pane fade show active" id="pills-userint" role="tabpanel"
+                    aria-labelledby="pills-userint-tab">
+
+                    <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
+
+                            <p>Library information is organized into various node groups with associated node
+                                definitions.</p>
+                            <p>
+                                Shown here is an <em>interactive</em> "template" of the 'card UI' used to display node
+                                definition
+                                information. Attributes are shown as rows. Various definition information can
+                                be shown/hidden by clicking the section tabs (
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                </svg> /
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                                )
+                            </p>
+                            <p>
+                                Within the card template below are explanations for how to read attribute values and
+                                what their usage is.
+                                These can be found within the <a
+                                    class="custom btn btn-sm border border-secondary shadow">colored boxes </a>
+                            </p>
+                            <p>
+                                For brevity, only essential API calls shown in the template. Otherwise
+                                the <b>attribute</b> names used indicate which attribute is examined.
+                                Also, only the non-inherited inputs and outputs are shown per node
+                                definition.
+                            </p>
+                            <hr>
+
+                            <div data-bs-theme="light"
+                                class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
+                                <div class="card-header border-0">
                                     <h6>Category Section</h6>
-                                    </div>
-                                    <br>
-                            For each category ('node' attribute) one or more implementations may be shown. In this template only one is
+                                </div>
+                                <br>
+                                For each category ('node' attribute) one or more implementations may be shown. In this
+                                template only one is
                                 shown.
-                            
+
                             </div>
                             <br>
                             <container data-bs-theme="light">
@@ -257,26 +335,30 @@
                                                 <div class="card border-secondary shadow border mb-4">
                                                     <div class="card-body">
 
-                                                        
-                                                        <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
-                                                                <div class="card-header border-0">
+
+                                                        <div
+                                                            class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
+                                                            <div class="card-header border-0">
                                                                 <h6>Definition Section</h6>
-                                                                </div>
-                                                                <br>
-                                                        <p>For each definition one or more reference images may be shown in the order
-                                                            that the outputs are listed. 
-                                                        </p>
+                                                            </div>
+                                                            <br>
+                                                            <p>For each definition one or more reference images may be
+                                                                shown in the order
+                                                                that the outputs are listed.
+                                                            </p>
                                                         </div>
-                                                        <br>                                                        
+                                                        <br>
                                                         <p class="card-text"><img src="images/Default_osl.png"
                                                                 class="rounded float-left" alt="..."
                                                                 style="width: 128px; max-width: 50%;"></p>
 
-                                                        
+
                                                         <br>
-                                                        <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
-                                                            <b>Type</b> The output type. If there is more than one output then 'multioutput'
-                                                                is shown.
+                                                        <div
+                                                            class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
+                                                            <b>Type</b> The output type. If there is more than one
+                                                            output then 'multioutput'
+                                                            is shown.
                                                         </div>
                                                         <br>
 
@@ -288,7 +370,8 @@
 
 
                                                         <br>
-                                                        <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                        <div
+                                                            class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
                                                             <b>Node Group</b> What node group is this node a part of.
                                                         </div>
                                                         <br>
@@ -299,9 +382,12 @@
                                                         </p>
 
                                                         <br>
-                                                        <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
-                                                            <b>Versioning / Inheritance</b>The version for this definition, whether
-                                                            it is the default version and whether it inherits from another definition.
+                                                        <div
+                                                            class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
+                                                            <b>Versioning / Inheritance</b>The version for this
+                                                            definition, whether
+                                                            it is the default version and whether it inherits from
+                                                            another definition.
                                                         </div>
                                                         <br>
 
@@ -313,7 +399,8 @@
 
 
                                                         <br>
-                                                        <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                        <div
+                                                            class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
                                                             <b>Description</b>Definition description
                                                         </div>
                                                         <br>
@@ -322,36 +409,46 @@
                                                             </b>
                                                         <div class="col-sm-8">
                                                             <textarea class="form-control form-control-sm" rows="1"
-                                                                style="resize: none;"
-                                                                disabled>'doc'</textarea>
+                                                                style="resize: none;" disabled>'doc'</textarea>
                                                         </div>
                                                         </p>
-                                                        
-                                                        <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
-                                                                <div class="card-header border-0">
+
+                                                        <div
+                                                            class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
+                                                            <div class="card-header border-0">
                                                                 <h6>Code / Node Graph Implementation Sections</h6>
-                                                                </div>
-                                                                <br>
-                                                        <p>Either code or node graph implementations are 
+                                                            </div>
+                                                            <br>
+                                                            <p>Either code or node graph implementations are
                                                                 displayed depending on the node definition.</p>
-                                                        <p>'Code implementation' shows which languages are implemented and where the
-                                                                code is stored or generated. 
-                                                                <ul>
-                                                                    <li>If it's inlined source code it is shown directly on this page.</li>
-                                                                    <li>If the code is stored in a file, a link to the file is given</li>
-                                                                    <li>If the code is generated by a code generator for a given 'target'
-                                                                        then 'Via Code Generation' is shown.
-                                                                        (e.g. <a href="definitions/position.html">position</a>)
-                                                                    </li>
-                                                                </ul>
-                                                                'Function' is the name of the function to look for within the source
-                                                                code.</p>
-                                                        <p>Alternatively, the node graph sections shows the graph for the node
+                                                            <p>'Code implementation' shows which languages are
+                                                                implemented and where the
+                                                                code is stored or generated.
+                                                            <ul>
+                                                                <li>If it's inlined source code it is shown directly on
+                                                                    this page.</li>
+                                                                <li>If the code is stored in a file, a link to the file
+                                                                    is given</li>
+                                                                <li>If the code is generated by a code generator for a
+                                                                    given 'target'
+                                                                    then 'Via Code Generation' is shown.
+                                                                    (e.g. <a
+                                                                        href="definitions/position.html">position</a>)
+                                                                </li>
+                                                            </ul>
+                                                            'Function' is the name of the function to look for within
+                                                            the source
+                                                            code.</p>
+                                                            <p>Alternatively, the node graph sections shows the graph
+                                                                for the node
                                                                 definition. The "Draw Graph" button can be selected
-                                                                to draw the graph. Additionally, users can copy the Mermaid graph
+                                                                to draw the graph. Additionally, users can copy the
+                                                                Mermaid graph
                                                                 using 'Copy Graph' to the
-                                                                <a href="mermaidChecker.html">Graph Visualizer utility</a> to examine, customize, and
-                                                                save as desired.</p>
+                                                                <a href="mermaidChecker.html">Graph Visualizer
+                                                                    utility</a> to examine, customize, and
+                                                                save as desired.
+                                                            </p>
                                                         </div>
                                                         <br>
                                                         <details open>
@@ -408,17 +505,23 @@
                                                             <hr>
 
                                                             <div class="form-group row g-2">
-                                                                <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-                                                                 <div class="col-sm-2">
-                                                                   <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="'target'">
-                                                                 </div>
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+                                                                <div class="col-sm-2">
+                                                                    <input type="button"
+                                                                        class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0"
+                                                                        value="'target'">
                                                                 </div>
-                                                                <div class="form-group row g-2">
-                                                                <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-                                                                  <div class="col-sm-4">
-                                                                   <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-                                                                  </div>
+                                                            </div>
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="button"
+                                                                        class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0"
+                                                                        value="Via Code Generation">
                                                                 </div>
+                                                            </div>
 
                                                             <hr>
                                                             <div class="form-group row g-2">
@@ -447,23 +550,26 @@
                                                                     <path fill-rule="evenodd"
                                                                         d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
                                                                 </svg>
-                                                            </p>
+                                                                </p>
                                                             </summary>
                                                             <br>
-                                                            <img src="./images/draw_copy_graph_option.png" style="width:20%"><br>
+                                                            <img src="./images/draw_copy_graph_option.png"
+                                                                style="width:20%"><br>
                                                             <img src="./images/sample_graph.svg" style="width:30%">
                                                         </details>
                                                         </p>
                                                         <details open>
-                                                            <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                            <div
+                                                                class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
                                                                 <div class="card-header border-0">
-                                                                <h6>Inputs and Outputs Section</h6>
-                                                                </div>                                                                
-                                                                The input and output parameters / ports are listed as a list of
-                                                                    buttons, with outputs labelled with bold text.
-                                                                    A user can select a port to display port details.
-                                                                    A single example of an input and and output
-                                                                    are shown. 
+                                                                    <h6>Inputs and Outputs Section</h6>
+                                                                </div>
+                                                                The input and output parameters / ports are listed as a
+                                                                list of
+                                                                buttons, with outputs labelled with bold text.
+                                                                A user can select a port to display port details.
+                                                                A single example of an input and and output
+                                                                are shown.
                                                                 <br><br>
                                                                 Select the input or output buttons
                                                                 to see the differences between input and output
@@ -490,7 +596,7 @@
                                                                 </li>
                                                             </ul>
 
-    
+
                                                             <div class="tab-content" id="pills-tabContent">
                                                                 <div class="tab-pane fade show active"
                                                                     id="pills-baseColor" role="tabpanel"
@@ -509,11 +615,13 @@
                                                                     </div>
 
                                                                     <br>
-                                                                    <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
-                                                                        <b>Uniform</b>A checkbox is used to indicate if the input
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
+                                                                        <b>Uniform</b>A checkbox is used to indicate if
+                                                                        the input
                                                                         values are expected to be uniform or varying.
                                                                     </div>
-                                                                    <br>                                                                            
+                                                                    <br>
 
                                                                     <div class="form-group row g-2">
                                                                         <label
@@ -536,15 +644,20 @@
 
                                                                     </div>
                                                                     <br>
-                                                                    <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
                                                                         <b>Enumerations</b>
-                                                                        <p>Set of possible named values for an enumeration shown in open
-                                                                            dropdown menus, with string labels on the left and if it exists, any
-                                                                            associated numeric value on the right. 
-                                                                            <a href="./definitions/LamaConductor.html">'Lama Conductor'</a>
-                                                                            'fresnelMode' input is an example. </p>
+                                                                        <p>Set of possible named values for an
+                                                                            enumeration shown in open
+                                                                            dropdown menus, with string labels on the
+                                                                            left and if it exists, any
+                                                                            associated numeric value on the right.
+                                                                            <a href="./definitions/LamaConductor.html">'Lama
+                                                                                Conductor'</a>
+                                                                            'fresnelMode' input is an example.
+                                                                        </p>
                                                                     </div>
-                                                                    <br>                                                                            
+                                                                    <br>
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">Possible
@@ -585,18 +698,21 @@
                                                                     </div>
 
                                                                     <br>
-                                                                    <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
                                                                         <b>Colors</b>
-                                                                        Color values are in have no assumed 
-                                                                        range or representation. The associated color swatch provides a visual 
-                                                                        in RGB space for reference. Input colorspace is shown if specified.                                                                        
+                                                                        Color values are in have no assumed
+                                                                        range or representation. The associated color
+                                                                        swatch provides a visual
+                                                                        in RGB space for reference. Input colorspace is
+                                                                        shown if specified.
                                                                     </div>
                                                                     <br>
 
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">
-                                                                            Value (color3): 
+                                                                            Value (color3):
                                                                         </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
@@ -622,8 +738,8 @@
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">
-                                                                            Value (color4): 
-                                                                            </label>
+                                                                            Value (color4):
+                                                                        </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
@@ -662,13 +778,17 @@
                                                                     </div>
 
                                                                     <hr>
-                                                                    <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
-                                                                        <b>Floats and Vectors</b>Vector values are shown in the fields in x, y
-                                                                            z and w order. Float values show a single field.
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
+                                                                        <b>Floats and Vectors</b>Vector values are shown
+                                                                        in the fields in x, y
+                                                                        z and w order. Float values show a single field.
                                                                     </div>
                                                                     <br>
-                                                                    <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
-                                                                        <b>Matrices</b>Matrix values are shown in row major order.
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
+                                                                        <b>Matrices</b>Matrix values are shown in row
+                                                                        major order.
                                                                     </div>
                                                                     <br>
 
@@ -907,11 +1027,16 @@
                                                                     </div>
 
                                                                     <br>
-                                                                    <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
                                                                         <b>Real World Units</b>
                                                                         <p>Vectors and matrices may have an optional
-                                                                        `unit` and `unit` type specified. For example the rotation amount for 
-                                                                        <a href="definitions/place2d.html">place2d</a> is specified as an angle in degrees.</p>                                                                         
+                                                                            `unit` and `unit` type specified. For
+                                                                            example the rotation amount for
+                                                                            <a
+                                                                                href="definitions/place2d.html">place2d</a>
+                                                                            is specified as an angle in degrees.
+                                                                        </p>
                                                                     </div>
                                                                     <br>
 
@@ -930,9 +1055,12 @@
                                                                     </div>
 
                                                                     <br>
-                                                                    <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
-                                                                        <b>Default geometry</b>Geometry specified to be bound by default 
-                                                                        is optional. The name of a built in semantic name such as 'Nworld'
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
+                                                                        <b>Default geometry</b>Geometry specified to be
+                                                                        bound by default
+                                                                        is optional. The name of a built in semantic
+                                                                        name such as 'Nworld'
                                                                         (normals in world space) is shown.
                                                                     </div>
                                                                     <br>
@@ -950,12 +1078,13 @@
 
                                                                     <hr>
 
-                                                                            <div class="custom card border border-secondary shadow py-2 pe-2 ps-2 col-sm-6">
-                                                                            A checkbox is shown to represent a boolean type.
-                                                                            A filled in checkbox means true and an
-                                                                            unfilled one means false.
-                                                                            </div>
-                                                                            <br>
+                                                                    <div
+                                                                        class="custom card border border-secondary shadow py-2 pe-2 ps-2 col-sm-6">
+                                                                        A checkbox is shown to represent a boolean type.
+                                                                        A filled in checkbox means true and an
+                                                                        unfilled one means false.
+                                                                    </div>
+                                                                    <br>
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">Value
@@ -969,16 +1098,18 @@
                                                                     </div>
                                                                     <hr>
 
-                                                                    <div class="custom card border border-secondary shadow py-2 pe-2 ps-2 col-sm-6">
+                                                                    <div
+                                                                        class="custom card border border-secondary shadow py-2 pe-2 ps-2 col-sm-6">
                                                                         <b>UI attributes</b>
                                                                         UI attribute hint are shown in a row with
                                                                         each field value corresponds to 1st name /
-                                                                            -> 2nd name / -> 3rd name /.
-                                                                        A checkbox is shown if the input is considered 'advanced'.
+                                                                        -> 2nd name / -> 3rd name /.
+                                                                        A checkbox is shown if the input is considered
+                                                                        'advanced'.
                                                                     </div>
-                                                                    <br> 
+                                                                    <br>
                                                                     <div class="form-group row g-1">
-                                                                        
+
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">UI
                                                                             <b>Min/Max/Step:</b> </label>
@@ -1433,18 +1564,38 @@
                                     </div>
                                 </details>
 
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="js/mermaid_setup.js"></script>
-    <script>
-        monitor_mermaid_tabs()
-    </script>
+<script src="js/mermaid_setup.js"></script>
+<script>
+    monitor_mermaid_tabs()
+</script>
+
+    </div>
+  </section>
+
+    <footer class="bg-dark-subtle footer text-white py-2 pt-2" data-bs-theme="dark">
+    <div class="container">
+      <ul class="social-icons">
+        <button class="btn btn-outline" type="button">
+          <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><i class="fab fa-github fa-2x"
+              style="color: #ffffff;"></i></a>
+        </button>
+        <button class="btn btn-outline " type="button">
+          <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><i class="fab fa-linkedin-in fa-2x"
+              style="color: #0082ca;"></i></a>
+        </button>
+      </ul>
+      <p>&copy; 2022-2024 NanMu Consulting.</p>
+    </div>
+  </footer>
+
 </body>
 
 </html>

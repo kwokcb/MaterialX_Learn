@@ -1,44 +1,69 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  gtag('config', 'G-J7404418VP');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-    <title>MaterialX Learn - Implementation</title>
-    <link rel="icon" href="./images/logo3d_icon.png" type="image/x-icon"/>  
+    gtag('config', 'G-J7404418VP');
+  </script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    model-viewer {
+      width: 256px;
+      height: 256px;
+      background-color: #7d7d7d;
+    }
+  </style>
 
-    <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="../documents/images/logo3d_icon.png" type="image/x-icon" />
+  <!--
+  <link rel="icon" href="../documents/images/logo3d_2_small.png" type="image/x-icon" />
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../documents/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  
+
+  <title>MaterialX Learn</title>
+  <link rel="icon" type="images" href="../documents/images/favicon.png" class="img-fluid">
 
 </head>
 
-<body class="min-vh-100">
-    <script src="js/definition_card_helpers.js"></script>
-    <script src="js/ui_helpers.js"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
-    <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "default" }); </script>
-    
+<body>
+      <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base", themeVariables: { primaryColor: "#F1F1F1", primaryBorderColor: "#000000", lineColor: "#000000", secondaryColor: "#EFEFFF", tertiaryColor: "#EEEEEE" } }); </script>
+
+    <script src="../documents/js/ui_helpers.js"> </script>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+                ? 'dark'
+                : 'default'
+        });
+    </script>
 
     <!-- Navigation  -->
     <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
         <div class="container-md container-fluid">
             <a class="navbar-brand" href="../index.html">
-                <h5><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="rounded d-inline-block align-text-center"
-                        width="60">
+                <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+                        class="rounded d-inline-block align-text-center" width="50px">
                     MaterialX Learn</h5>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
@@ -53,304 +78,353 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Learn
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="nodes_and_nodegraphs.html">
+                                <a class="dropdown-item" href="../documents/nodes_and_nodegraphs.html">
                                     Nodes and Graphs
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="node_definitions.html">
+                                <a class="dropdown-item" href="../documents/node_definitions.html">
                                     Node Definitions
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="documents.html">
+                                <a class="dropdown-item" href="../documents/documents.html">
                                     Documents
                                 </a>
                             </li>
                         </ul>
                     </li>
-    
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                          Reference
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li>
-                            <a class="dropdown-item" href="definitions/definitions_by_group.html">
-                              Library (By Group)
-                            </a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="definitions/all_definitions.html">
-                              Library (All)
-                            </a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="definitions/library_glossary.html">
-                              Library Glossary
-                            </a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
-                              <img src="images/MaterialXLogo_200x155.png" style="width:20px"> C++ API
-                            </a>
-                          </li>
-            
-                          <li class="dropend">
-                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library Revisions</a>
-                            <ul class="dropdown-menu shadow">
-                                <li><a class="dropdown-item" href="./mtlx_1388_vs_1389.html"> 1.38.8 vs 1.38.9  (current)</a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1387_vs_1388.html"> 1.38.7 vs 1.38.8 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1386_vs_1387.html"> 1.38.6 vs 1.38.7 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1385_vs_1386.html"> 1.38.5 vs 1.38.6 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1384_vs_1385.html"> 1.38.4 vs 1.38.5 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1383_vs_1384.html"> 1.38.3 vs 1.38.4 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1382_vs_1383.html"> 1.38.2 vs 1.38.3 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1381_vs_1382.html"> 1.38.1 vs 1.38.2 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1380_vs_1381.html"> 1.38.0 vs 1.38.1 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_138_vs_1389.html"> 1.38.0 vs 1.38.9   (current)</a></li>              
-                            </ul>
-                          </li> 
-            
-                          <div class="dropdown-divider"></div>              
-                          <li>
-                            <a class="dropdown-item" href="using_library.html">
-                              <img src="images/info-circle.svg"> Library User Guide
-                            </a>
-                          </li>
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            data-bs-auto-close="outside">Reference</a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/definitions_by_group.html">Library
+                                    (By Group)</a></li>
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/all_definitions.html">Library
+                                    (All)</a></li>
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/library_glossary.html">Library
+                                    Glossary</a></li>
+                            <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
+                                    target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
+                                        style="width:20px"> C++ API</a></li>
+
+                            <li class="dropend">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
+                                    Revisions</a>
+                                <ul class="dropdown-menu shadow">
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1388_vs_1389.html">
+                                            1.38.8 vs 1.38.9
+                                            (current)</a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1387_vs_1388.html">
+                                            1.38.7 vs 1.38.8
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1386_vs_1387.html">
+                                            1.38.6 vs 1.38.7
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1385_vs_1386.html">
+                                            1.38.5 vs 1.38.6
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1384_vs_1385.html">
+                                            1.38.4 vs 1.38.5
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1383_vs_1384.html">
+                                            1.38.3 vs 1.38.4
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1382_vs_1383.html">
+                                            1.38.2 vs 1.38.3
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1381_vs_1382.html">
+                                            1.38.1 vs 1.38.2
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1380_vs_1381.html">
+                                            1.38.0 vs 1.38.1
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_138_vs_1389.html"> 1.38.0
+                                            vs 1.38.9
+                                            (current)</a></li>
+                                </ul>
+                            </li>
+
+                            <div class="dropdown-divider"></div>
+                            <li>
+                                <a class="dropdown-item" href="../documents/using_library.html">
+                                    <img src="../documents/images/info-circle.svg"> Library User Guide
+                                </a>
+                            </li>
                         </ul>
-                      </li>
-    
+                    </li>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">Utilities</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="gltfViewer.html">
-                                  glTF ModelViewer
+                                <a class="dropdown-item" href="../documents/gltfViewer.html">
+                                    glTF Model Viewer
                                 </a>
-                              </li>                
+                            </li>
                             <li>
-                                <a class="dropdown-item" href="mermaidChecker.html">
+                                <a class="dropdown-item" href="../documents/mermaidChecker.html">
                                     Graph Visualizer
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="mtlx_utilities.html">
-                                  Python Utilities
-                                </a>
-                            </li>                
-                        </ul>
-                    </li>
-    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Develop</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="python_MaterialX.html">
-                                    Notebooks 
+                                <a class="dropdown-item" href="../documents/mtlx_utilities.html">
+                                    Python Utilities
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="jupyter_example.html">
+                                <a class="dropdown-item" href="../javascript/mtlx_js_utilities.html">
+                                    Javascript Utilities
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Develop</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/python_MaterialX.html">
+                                    Notebooks
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/jupyter_example.html">
                                     Examples
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="hosting.html">
+                                <a class="dropdown-item" href="../documents/hosting.html">
                                     Hosting
                                 </a>
-                            </li>                
-                        </ul>
-                    </li>
-    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Workflows</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <li><a class="dropdown-item" href="workflow_usd.html">USD and MaterialX</a></li>
-                                <li><a class="dropdown-item" href="workflow_gltf.html">glTF and MaterialX</a></li>
-                                <li><a class="dropdown-item" href="workflow_ocio.html">OCIO and MaterialX</a></li>
                             </li>
                         </ul>
                     </li>
-    
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Workflows</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../documents/workflow_usd.html">USD and
+                                    MaterialX</a></li>
+                            <li><a class="dropdown-item" href="../documents/workflow_gltf.html">glTF and
+                                    MaterialX</a></li>
+                            <li><a class="dropdown-item" href="../documents/workflow_ocio.html">OCIO and
+                                    MaterialX</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">Design</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="design.html">
+                                <a class="dropdown-item" href="../documents/design.html">
                                     UX Design
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="implementation.html">
+                                <a class="dropdown-item" href="../documents/implementation.html">
                                     Implementation
                                 </a>
                             </li>
                         </ul>
                     </li>
-    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="about.html" role="button">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../documents/about.html" role="button">
                             About
                         </a>
                     </li>
-                    </li>
+                    <!--INDEX_ITEM-->
                 </ul>
             </div>
         </div>
     </nav>
 
+  <!-- Section Information -->
+  <section class="py-0 px-0 g-0">
     <div class="container-fluid p-4">
-        <div class="row flex-nowrap">
-            <div class="col-12 p-0 pt-2 pl-2">
+      <div class="container-fluid p-0">
+    <div class="row flex-nowrap">
+        <div class="col-12 p-0 pt-2 pl-2">
 
-                <h2>Implementation</h2>
+            <h2>Implementation</h2>
 
-                <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-intro-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-intro" type="button" role="tab" aria-controls="pills-intro"
-                            aria-selected="true">Introduction</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-generation-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-generation" type="button" role="tab" aria-controls="pills-generation"
-                            aria-selected="false">Documentation Generation</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-learning-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-learning" type="button" role="tab" aria-controls="pills-learning"
-                            aria-selected="false">Learning Environment</button>
-                    </li>
-                </ul>
+            <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-intro-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-intro" type="button" role="tab" aria-controls="pills-intro"
+                        aria-selected="true">Introduction</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-generation-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-generation" type="button" role="tab" aria-controls="pills-generation"
+                        aria-selected="false">Documentation Generation</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="pills-learning-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-learning" type="button" role="tab" aria-controls="pills-learning"
+                        aria-selected="false">Learning Environment</button>
+                </li>
+            </ul>
 
-                <div class="tab-content" id="pills-tabContent3">
-                    <div class="tab-pane fade show active" id="pills-intro" role="tabpanel"
-                        aria-labelledby="pills-intro-tab">
+            <div class="tab-content" id="pills-tabContent3">
+                <div class="tab-pane fade show active" id="pills-intro" role="tabpanel"
+                    aria-labelledby="pills-intro-tab">
 
-                        <div class="card border-secondary shadow border mb-4">
-                            <div class="card-body">
-                                <p>Insight into how this site was generated is shown here to demonstrate how
-                                    a user can enhance documentation and learning workflows for MaterialX by adding tools on top of MaterialX itself.
-                                    The following color coding is used in the diagrams provided:
-                                    <ul>
-                                        <li>Red: Items not available in core or not started yet</li>
-                                        <li>Orange: Items in progress</li>
-                                        <li>Blue: Items which are available as part of MaterialX core</li>
-                                        <li>Green: Items available as additional tools</li>
-                                    </ul>
-                                </p>
-                                <p>Note that something like 'Doxygen' was tried but not used as it
-                                    was not flexible enough to generated the customizations required
-                                    of an shader node library. One alternative was to generate 
-                                    actual C++ or Python classes for node definitions and run Doxygen.
-                                    This is a possible project but is not being pursued at the current time.
-                                </p>
-                            </div>
+                    <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
+                            <p>Insight into how this site was generated is shown here to demonstrate how
+                                a user can enhance documentation and learning workflows for MaterialX by adding tools on
+                                top of MaterialX itself.
+                                The following color coding is used in the diagrams provided:
+                            <ul>
+                                <li>Red: Items not available in core or not started yet</li>
+                                <li>Orange: Items in progress</li>
+                                <li>Blue: Items which are available as part of MaterialX core</li>
+                                <li>Green: Items available as additional tools</li>
+                            </ul>
+                            </p>
+                            <p>Note that something like 'Doxygen' was tried but not used as it
+                                was not flexible enough to generated the customizations required
+                                of an shader node library. One alternative was to generate
+                                actual C++ or Python classes for node definitions and run Doxygen.
+                                This is a possible project but is not being pursued at the current time.
+                            </p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="tab-content" id="pills-tabContent3">
-                    <div class="tab-pane fade" id="pills-generation" role="tabpanel"
-                        aria-labelledby="pills-generation-tab">
+            <div class="tab-content" id="pills-tabContent3">
+                <div class="tab-pane fade" id="pills-generation" role="tabpanel" aria-labelledby="pills-generation-tab">
 
-                        <div class="card border-secondary shadow border mb-4">
-                            <div class="card-body">
-                                <div class="btn btn-lg border-secondary shadow-sm w-100"" style="pointer-events: none;">Overview</div>
-                                <p>
-                                    The following diagram outlines the setup for generating documentation from MaterialX. The main utilities 
-                                    were written using the Python wrappers for MaterialX:
-                                    <ul>
-                                        <li><b>Diagram generation ('mxgraph')</b>: This can produce Mermaid or GraphViz dot diagrams based on MaterialX input. The 
-                                            standard library graphs are generated this way, but any MaterialX graph can be used as input.
-                                        </li>
-                                        <p></p>
-                                        <li>
-                                            <b>Sampling graphs for rendering ('genMaterialsFromDefs')</b>: All definitions in the MaterialX library had instance 
-                                            graphs created as separate MaterialX files. These 
-                                            were fed into `test-render` from the OSL core distribution and the built in GLSL
-                                            renderer. Note that any renderer can be used.
-                                        </li>
-                                        <p></p>
-                                        <li><b>Documentation and indexing generation ('mxdoclib')</b>: This extracted al data 
-                                            from the MaterialX definition libraries to generate all library pages. 
-                                            Both Markdown and HTML output is supported.
-                                            <p>Dependents such as 'Bootstrap', 'Mermaid' and 'Google Fonts'
-                                            are automatically included.</p>
-                                        </li>
-                                    </ul>
-                                    These utilities are accessible from the "Tools" section of this site and added to MaterialX core distribution.
-                                    <p><br><img class="bg-light rounded p-4" src="./images/generative_docs.svg">
-                                    </p>
-                                </p>
-                                <div class="btn btn-lg border-secondary shadow-sm w-100"" style="pointer-events: none;">Web Utilities</div>
-                                <p>
-                                    A number of Javascript utilities were written to handle:
-                                    <ul>
-                                        <li><b>Graph Rendering</b>: 
-                                            Additional Javascript logic is added as part of the generation process.
-                                                Interactive Mermaid graph (svg) generation from text was added as the performance
-                                                    cost to generate all hundreds of graphs can slow down page load speed. 
-                                                It was additionally necessary to workaround a Bootstrap / Mermaid issue where
-                                                graphs under hidden elements don't render properly -- in which case all 
-                                                tab sections on documentation pages require dynamic generation.
-                                                    The same logic is
-                                                    used for the 'Graph Visualizer' utility.</p>                                           
-                                        </li>
-                                        <li><b>Graph Copying / Saving</b>: Graph text copying utilities were added to allow extraction
-                                            of the mermaid text and for conversion from Mermaid text to SVG.                         
-                                        </li>
-                                    </ul>
-                                </p>
-                            </div>
+                    <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
+                            <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">
+                                Overview</div>
+                            <p>
+                                The following diagram outlines the setup for generating documentation from MaterialX.
+                                The main utilities
+                                were written using the Python wrappers for MaterialX:
+                            <ul>
+                                <li><b>Diagram generation ('mxgraph')</b>: This can produce Mermaid or GraphViz dot
+                                    diagrams based on MaterialX input. The
+                                    standard library graphs are generated this way, but any MaterialX graph can be used
+                                    as input.
+                                </li>
+                                <p></p>
+                                <li>
+                                    <b>Sampling graphs for rendering ('genMaterialsFromDefs')</b>: All definitions in
+                                    the MaterialX library had instance
+                                    graphs created as separate MaterialX files. These
+                                    were fed into `test-render` from the OSL core distribution and the built in GLSL
+                                    renderer. Note that any renderer can be used.
+                                </li>
+                                <p></p>
+                                <li><b>Documentation and indexing generation ('mxdoclib')</b>: This extracted al data
+                                    from the MaterialX definition libraries to generate all library pages.
+                                    Both Markdown and HTML output is supported.
+                                    <p>Dependents such as 'Bootstrap', 'Mermaid' and 'Google Fonts'
+                                        are automatically included.</p>
+                                </li>
+                            </ul>
+                            These utilities are accessible from the "Tools" section of this site and added to MaterialX
+                            core distribution.
+                            <p><br><img class="bg-light rounded p-4" src="./images/generative_docs.svg">
+                            </p>
+                            </p>
+                            <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">Web
+                                Utilities</div>
+                            <p>
+                                A number of Javascript utilities were written to handle:
+                            <ul>
+                                <li><b>Graph Rendering</b>:
+                                    Additional Javascript logic is added as part of the generation process.
+                                    Interactive Mermaid graph (svg) generation from text was added as the performance
+                                    cost to generate all hundreds of graphs can slow down page load speed.
+                                    It was additionally necessary to workaround a Bootstrap / Mermaid issue where
+                                    graphs under hidden elements don't render properly -- in which case all
+                                    tab sections on documentation pages require dynamic generation.
+                                    The same logic is
+                                    used for the 'Graph Visualizer' utility.</p>
+                                </li>
+                                <li><b>Graph Copying / Saving</b>: Graph text copying utilities were added to allow
+                                    extraction
+                                    of the mermaid text and for conversion from Mermaid text to SVG.
+                                </li>
+                            </ul>
+                            </p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="tab-content" id="pills-tabContent3">
-                    <div class="tab-pane fade" id="pills-learning" role="tabpanel"
-                        aria-labelledby="pills-learning-tab">
+            <div class="tab-content" id="pills-tabContent3">
+                <div class="tab-pane fade" id="pills-learning" role="tabpanel" aria-labelledby="pills-learning-tab">
 
-                        <div class="card border-secondary shadow border mb-4">
-                            <div class="card-body">
+                    <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
 
-                                <div class="btn btn-lg border-secondary shadow-sm w-100"" style="pointer-events: none;">Overview</div>
-                                <p>
-                                    <p>
-                                    For API learning, the proposed setup is shown below. This initiative is still under review
-                                    but the intent will be to host interactive tutorials using MaterialX via
-                                    Jupyter notebooks. Native notebooks, as well as generated HTML and Python 
-                                    versions are available for download. The latter is for usage as non-interactive references
-                                    which are accessible under the "Examples" menu.
-                                    </p>
-                                    <p>Local interactive sessions can run using these notebooks currently.
-                                    with the aim to host these remotely via something like Google Colab`.</p>
-                                    <p>The hope is to connect with USD or other standards via Python.  
-                                    </p>
-                                    <p>
-                                        A parallel track is possible with Javascript, with access to the Javascript API via npm.
-                                    </p>
-                                    <p><img class="bg-light rounded p-4" src="./images/learning_setup.png" width="100%"></p>                                                                                                            
-                                </p>
-                            </div>
+                            <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">
+                                Overview</div>
+                            <p>
+                            <p>
+                                For API learning, the proposed setup is shown below. This initiative is still under
+                                review
+                                but the intent will be to host interactive tutorials using MaterialX via
+                                Jupyter notebooks. Native notebooks, as well as generated HTML and Python
+                                versions are available for download. The latter is for usage as non-interactive
+                                references
+                                which are accessible under the "Examples" menu.
+                            </p>
+                            <p>Local interactive sessions can run using these notebooks currently.
+                                with the aim to host these remotely via something like Google Colab`.</p>
+                            <p>The hope is to connect with USD or other standards via Python.
+                            </p>
+                            <p>
+                                A parallel track is possible with Javascript, with access to the Javascript API via npm.
+                            </p>
+                            <p><img class="bg-light rounded p-4" src="./images/learning_setup.png" width="100%"></p>
+                            </p>
                         </div>
                     </div>
-                </div>                                            
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+    </div>
+  </section>
+
+    <footer class="bg-dark-subtle footer text-white py-2 pt-2" data-bs-theme="dark">
+    <div class="container">
+      <ul class="social-icons">
+        <button class="btn btn-outline" type="button">
+          <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><i class="fab fa-github fa-2x"
+              style="color: #ffffff;"></i></a>
+        </button>
+        <button class="btn btn-outline " type="button">
+          <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><i class="fab fa-linkedin-in fa-2x"
+              style="color: #0082ca;"></i></a>
+        </button>
+      </ul>
+      <p>&copy; 2022-2024 NanMu Consulting.</p>
+    </div>
+  </footer>
+
 </body>
 
 </html>

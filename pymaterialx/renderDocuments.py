@@ -112,12 +112,22 @@ def main():
 
     renderer = None
     if fileList:
-        w = h = opts.size        
+        w = h = opts.size
+        # TODO: The files should be packaged and the resources added as part of the package. 
+        # Load in lighting. 
         radianceFilePath = './data/lights/san_giuseppe_bridge.hdr'
         irradianceFilePath = './data/lights/irradiance/san_giuseppe_bridge.hdr'
+        if not os.path.exists(radianceFilePath) or not os.path.exists(irradianceFilePath):
+            print('-- Radiance or Irradiance file does not exist. Exiting')
+            exit(-1)
+
+        # Load in geometry.
         geometryShape = './data/sphere.obj'
         if len(opts.geometryPath) > 0:
             geometryShape = opts.geometryPath
+        if not os.path.exists(geometryShape):
+            print('-- Geometry shape "%s" does not exist. Exiting' % geometryShape)
+            exit(-1)
         renderer = mxrenderer.initializeRenderer(stdlib, searchPath, radianceFilePath, irradianceFilePath, w, h, 
                                                  geometryShape)
         renderer.addToRenderLog('--------------------------')
@@ -141,7 +151,10 @@ def main():
             if not valid:
                 raise mx.Exception(msg)
 
-            fullSearchPath.append(os.path.dirname(fileName))   
+            # Add the absolute path directory of the file to the search path
+            dirname = os.path.dirname(fileName)
+            abspath = os.path.abspath(dirname)
+            fullSearchPath.append(abspath)   
 
         except mx.ExceptionFileMissing as err:
             print('File %s could not be loaded: "' % fileName, err, '"')

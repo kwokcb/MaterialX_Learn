@@ -1,215 +1,261 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		gtag('config', 'G-J7404418VP');
-	</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-	<title>MaterialX Learn - Python Tutorials</title>
-	<link rel="icon" href="./images/logo3d_icon.png" type="image/x-icon" />
+    gtag('config', 'G-J7404418VP');
+  </script>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    model-viewer {
+      width: 256px;
+      height: 256px;
+      background-color: #7d7d7d;
+    }
+  </style>
+
+  <link rel="icon" href="../documents/images/logo3d_icon.png" type="image/x-icon" />
+  <!--
+  <link rel="icon" href="../documents/images/logo3d_2_small.png" type="image/x-icon" />
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
+
+  <link rel="stylesheet" href="../documents/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
   
-	<link rel="stylesheet" href="css/style.css">
 
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <title>MaterialX Learn</title>
+  <link rel="icon" type="images" href="../documents/images/favicon.png" class="img-fluid">
 
 </head>
 
-<body class="min-vh-100">
-	<script src="js/ui_helpers.js"></script>
-	<script src="js/definition_card_helpers.js"></script>
-	<!-- <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> -->
+<body>
+      <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base", themeVariables: { primaryColor: "#F1F1F1", primaryBorderColor: "#000000", lineColor: "#000000", secondaryColor: "#EFEFFF", tertiaryColor: "#EEEEEE" } }); </script>
 
-	<!-- Navigation  -->
-	<nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
-		<div class="container-md container-fluid">
-			<a class="navbar-brand" href="../index.html">
-				<h5><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="rounded d-inline-block align-text-center"
-						width="60">
-					MaterialX Learn</h5>
-			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
-				aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="mainMenuContent">
-				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    <script src="../documents/js/ui_helpers.js"> </script>
 
-					<li class="nav-item dropdown">
-						<a class="nav-link" href="../index.html" role="button">
-							Home
-						</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-							aria-expanded="false">
-							Learn
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a class="dropdown-item" href="nodes_and_nodegraphs.html">
-									Nodes and Graphs
-								</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="node_definitions.html">
-									Node Definitions
-								</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="documents.html">
-									Documents
-								</a>
-							</li>
-						</ul>
-					</li>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+                ? 'dark'
+                : 'default'
+        });
+    </script>
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-						  Reference
-						</a>
-						<ul class="dropdown-menu">
-						  <li>
-							<a class="dropdown-item" href="definitions/definitions_by_group.html">
-							  Library (By Group)
-							</a>
-						  </li>
-						  <li>
-							<a class="dropdown-item" href="definitions/all_definitions.html">
-							  Library (All)
-							</a>
-						  </li>
-						  <li>
-							<a class="dropdown-item" href="definitions/library_glossary.html">
-							  Library Glossary
-							</a>
-						  </li>
-						  <li>
-							<a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
-							  <img src="images/MaterialXLogo_200x155.png" style="width:20px"> C++ API
-							</a>
-						  </li>
-			
-						  <li class="dropend">
-							<a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library Revisions</a>
-							<ul class="dropdown-menu shadow">
-								<li><a class="dropdown-item" href="./mtlx_1388_vs_1389.html"> 1.38.8 vs 1.38.9  (current)</a></li>
-								<li><a class="dropdown-item" href="./mtlx_1387_vs_1388.html"> 1.38.7 vs 1.38.8 </a></li>
-								<li><a class="dropdown-item" href="./mtlx_1386_vs_1387.html"> 1.38.6 vs 1.38.7 </a></li>
-								<li><a class="dropdown-item" href="./mtlx_1385_vs_1386.html"> 1.38.5 vs 1.38.6 </a></li>
-								<li><a class="dropdown-item" href="./mtlx_1384_vs_1385.html"> 1.38.4 vs 1.38.5 </a></li>
-								<li><a class="dropdown-item" href="./mtlx_1383_vs_1384.html"> 1.38.3 vs 1.38.4 </a></li>
-								<li><a class="dropdown-item" href="./mtlx_1382_vs_1383.html"> 1.38.2 vs 1.38.3 </a></li>
-								<li><a class="dropdown-item" href="./mtlx_1381_vs_1382.html"> 1.38.1 vs 1.38.2 </a></li>
-								<li><a class="dropdown-item" href="./mtlx_1380_vs_1381.html"> 1.38.0 vs 1.38.1 </a></li>
-								<li><a class="dropdown-item" href="./mtlx_138_vs_1389.html"> 1.38.0 vs 1.38.9   (current)</a></li>
-							</ul>
-						  </li> 
-			
-						  <div class="dropdown-divider"></div>              
-						  <li>
-							<a class="dropdown-item" href="using_library.html">
-							  <img src="images/info-circle.svg"> Library User Guide
-							</a>
-						  </li>
-						</ul>
-					  </li>
+    <!-- Navigation  -->
+    <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
+        <div class="container-md container-fluid">
+            <a class="navbar-brand" href="../index.html">
+                <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+                        class="rounded d-inline-block align-text-center" width="50px">
+                    MaterialX Learn</h5>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+                aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenuContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="../index.html" role="button">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Learn
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/nodes_and_nodegraphs.html">
+                                    Nodes and Graphs
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/node_definitions.html">
+                                    Node Definitions
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/documents.html">
+                                    Documents
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-							aria-expanded="false">Utilities</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a class="dropdown-item" href="gltfViewer.html">
-								  glTF ModelViewer
-								</a>
-							  </li>				
-							<li>
-								<a class="dropdown-item" href="mermaidChecker.html">
-									Graph Visualizer
-								</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="mtlx_utilities.html">
-								  Python Utilities
-								</a>
-							</li>				
-						</ul>
-					</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            data-bs-auto-close="outside">Reference</a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/definitions_by_group.html">Library
+                                    (By Group)</a></li>
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/all_definitions.html">Library
+                                    (All)</a></li>
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/library_glossary.html">Library
+                                    Glossary</a></li>
+                            <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
+                                    target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
+                                        style="width:20px"> C++ API</a></li>
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-							aria-expanded="false">Develop</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a class="dropdown-item" href="python_MaterialX.html">
-									Notebooks
-								</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="jupyter_example.html">
-									Examples
-								</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="hosting.html">
-									Hosting
-								</a>
-							</li>				
-						</ul>
-					</li>
+                            <li class="dropend">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
+                                    Revisions</a>
+                                <ul class="dropdown-menu shadow">
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1388_vs_1389.html">
+                                            1.38.8 vs 1.38.9
+                                            (current)</a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1387_vs_1388.html">
+                                            1.38.7 vs 1.38.8
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1386_vs_1387.html">
+                                            1.38.6 vs 1.38.7
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1385_vs_1386.html">
+                                            1.38.5 vs 1.38.6
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1384_vs_1385.html">
+                                            1.38.4 vs 1.38.5
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1383_vs_1384.html">
+                                            1.38.3 vs 1.38.4
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1382_vs_1383.html">
+                                            1.38.2 vs 1.38.3
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1381_vs_1382.html">
+                                            1.38.1 vs 1.38.2
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1380_vs_1381.html">
+                                            1.38.0 vs 1.38.1
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_138_vs_1389.html"> 1.38.0
+                                            vs 1.38.9
+                                            (current)</a></li>
+                                </ul>
+                            </li>
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-							aria-expanded="false">Workflows</a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="workflow_usd.html">USD and MaterialX</a></li>
-							<li><a class="dropdown-item" href="workflow_gltf.html">glTF and MaterialX</a></li>
-							<li><a class="dropdown-item" href="workflow_ocio.html">OCIO and MaterialX</a></li>
-						</ul>
-					</li>
+                            <div class="dropdown-divider"></div>
+                            <li>
+                                <a class="dropdown-item" href="../documents/using_library.html">
+                                    <img src="../documents/images/info-circle.svg"> Library User Guide
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-							aria-expanded="false">Design</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a class="dropdown-item" href="design.html">
-									UX Design
-								</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="implementation.html">
-									Implementation
-								</a>
-							</li>
-						</ul>
-					</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Utilities</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/gltfViewer.html">
+                                    glTF Model Viewer
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/mermaidChecker.html">
+                                    Graph Visualizer
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/mtlx_utilities.html">
+                                    Python Utilities
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../javascript/mtlx_js_utilities.html">
+                                    Javascript Utilities
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-					<li class="nav-item dropdown">
-						<a class="nav-link" href="about.html" role="button">
-							About
-						</a>
-					</li>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Develop</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/python_MaterialX.html">
+                                    Notebooks
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/jupyter_example.html">
+                                    Examples
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/hosting.html">
+                                    Hosting
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-	<div class="container-fluid p-4">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Workflows</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../documents/workflow_usd.html">USD and
+                                    MaterialX</a></li>
+                            <li><a class="dropdown-item" href="../documents/workflow_gltf.html">glTF and
+                                    MaterialX</a></li>
+                            <li><a class="dropdown-item" href="../documents/workflow_ocio.html">OCIO and
+                                    MaterialX</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Design</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/design.html">
+                                    UX Design
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/implementation.html">
+                                    Implementation
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../documents/about.html" role="button">
+                            About
+                        </a>
+                    </li>
+                    <!--INDEX_ITEM-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+  <!-- Section Information -->
+  <section class="py-0 px-0 g-0">
+    <div class="container-fluid p-4">
+      	<div class="container-fluid p-0">
 		<div class="row flex-nowrap">
 			<div class="col-12 p-0 pt-2 pl-2">
 				<div class="mb-4">
@@ -250,9 +296,9 @@
 										and Python <b>3.9</b>.
 									</p>
 
-									<p> A Visual Studio Code environment has been chosen to provide tutorials and 
+									<p> A Visual Studio Code environment has been chosen to provide tutorials and
 										utilities written in Python. Published content can be directly
-										accessed in  <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx"
+										accessed in <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx"
 										target ="_blank"><img src="images/GitHub_Logo.png" style="width:4em"></a>.
 									</p>
 									<p>The following videos and corresponding text instructions can be followed
@@ -261,7 +307,7 @@
 											<tr>
 											<td><h4>Using MaterialX version 1.38.8 or later</h4><br>
 												<video width="100%" controls>
-													<source src="../pymaterialx/videos/MaterialX_Learn_Python_Setup_PyPi.mp4" type="video/mp4">									
+													<source src="../pymaterialx/videos/MaterialX_Learn_Python_Setup_PyPi.mp4" type="video/mp4">
 												</video>
 												<p>As of version 1.38.8, MaterialX Python package can be downloaded and install
 													from <a href="https://pypi.org/project/MaterialX/" target="_blank">PyPi</a>.
@@ -271,34 +317,34 @@
 														<li>If a a particular distribution is not pre-built, an attempt will be made to build the package locally
 															as a convenience.
 														</li>
-													</ul>													
+													</ul>
 												</p>
 											</td>
 											<td><h4>Using MaterialX versions prior to 1.38.8</h4><br>
 												<video width="100%" controls>
-													<source src="../pymaterialx/videos/MaterialX_Learn_Python_Setup.mp4" type="video/mp4">									
+													<source src="../pymaterialx/videos/MaterialX_Learn_Python_Setup.mp4" type="video/mp4">
 												</video>
 												<p>For users who wish to use earlier versions they can:
 													<ul>
 														<li>Download releases from the MaterialX <a href="https://github.com/AcademySoftwareFoundation/MaterialX/releases/"
 														target="_black">Github</a></li>
-														<li>Use packages included with application 
+														<li>Use packages included with application
 														integrations or other distributions such as Usd, or</li>
-														<li>Use custom builds.</li>  
+														<li>Use custom builds.</li>
 													</ul>
-												</p>			
+												</p>
 											</td>
 											</tr>
-										</table>										
+										</table>
 									</p>
 																																	
 									<h5 id="environment-setup">Prerequisites</h5>
 									<p>The basic requirements are:
 									<p>
 									<ul>
-										<li>Installation of a version of 
-											<a href=" https://www.python.org/downloads/" target="_blank">Python</a>					   
-											that matches the Python version of the MaterialX package. 										
+										<li>Installation of a version of
+											<a href=" https://www.python.org/downloads/" target="_blank">Python</a>
+											that matches the Python version of the MaterialX package.
 										</li>
 										<li>Installation of <a href="https://pip.pypa.io/en/stable/installation/" target="_blank">pip</a>
 										</li>
@@ -310,7 +356,7 @@
 												href="https://code.visualstudio.com/docs/python/environments"
 												target="_blank">here</a>. Basically:
 											<ul>
-												<li> <code> ⌘/Ctrl+Shift+P</code> can be used to run the command
+												<li> <code> &#8984;/Ctrl+Shift+P</code> can be used to run the command
 													<code>Python: Create Environment</code>.
 												</li>
 												<li>Choose to create a <code>virtual environment></code> (versus a
@@ -321,9 +367,9 @@
 											</ul>
 											Once setup a <em>.venv</em> folder will be created within the workspace.
 										</li>
-										<li>Installation of the  
+										<li>Installation of the
 											<a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks"
-												target="_blank">Jupyter extension</a> 
+												target="_blank">Jupyter extension</a>
 												for VScode if using the Notebook tutorials.
 										</li>
 									</ul>
@@ -339,8 +385,8 @@
 									<pre class="hljs"><code><div>import MaterialX as mx
 ModuleNotFoundError: No module named 'MaterialX'
 </div></code></pre>
-									<p>	
-										To install the MaterialX package into the virtual environment a 
+									<p>
+										To install the MaterialX package into the virtual environment a
 										VSCode workspace terminal <sup>(1)</sup> can be opened and
 										<code>pip</code> used to install from
 										<ul>
@@ -362,12 +408,12 @@ ModuleNotFoundError: No module named 'MaterialX'
 									<sup>
 									<p>&nbsp;</p>
 									<p>(1) A security alert may show up when running from the terminal. If so, follow the
-										the 
+										the
 										<a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3"
 										>instructions provided</a>
 										to to set up appropriate permissions
 									</p>
-									</sup>	
+									</sup>
 								</div>
 							</div>
 						</div>
@@ -394,7 +440,7 @@ ModuleNotFoundError: No module named 'MaterialX'
 										version of
 										MaterialX.</p>
 									<pre class="hljs"><code><div>doc = mx.createDocument()
-print(<span class="hljs-string">'Hello MaterialX (Version %s)'</span> % doc.getVersionString())    
+print(<span class="hljs-string">'Hello MaterialX (Version %s)'</span> % doc.getVersionString())
 </div></code></pre>
 
 									<h5 id="minimal-%22useful%22-example">Minimal "Useful" Example</h5>
@@ -427,7 +473,7 @@ print('Loaded library file: %d' % len(libFiles))
 											into a working / main document.</li>
 									</ul>
 									<p>
-										From here, the learning notebooks can be used to discover how to 
+										From here, the learning notebooks can be used to discover how to
 										do something useful with MaterialX.
 									</p>
 								</div>
@@ -447,7 +493,7 @@ print('Loaded library file: %d' % len(libFiles))
 											target="_blank">Jupyter</a>
 										learning notebooks are regularly being added and updated.
 										User can clone or copy the repo to run locally, or as of MaterialX 1.38.8, remotely using
-										`Github Codespaces` or `Google Colab`. 
+										`Github Codespaces` or `Google Colab`.
 									</p>
 									<p>
 										See the <b><a href="hosting.html">Hosting</a> page</b>
@@ -456,11 +502,11 @@ print('Loaded library file: %d' % len(libFiles))
 									<p>
 									Any contribution requests or comments can be posted as pull requests on
 									<a href="https://github.com/kwokcb/MaterialX_Learn"><img src="images/GitHub_Logo.png" style="width:4em"></a>.
-									</p>											
+									</p>
 									<p>
 										<em>It is recommended to use the MaterialX packages which are
 										available via <a
-											href="https://pypi.org/project/MaterialX/" target="_blank">PyPi</a> 
+											href="https://pypi.org/project/MaterialX/" target="_blank">PyPi</a>
 											which are available starting with version 1.38.8.</em>
 									</p>
 									<p>
@@ -475,12 +521,12 @@ print('Loaded library file: %d' % len(libFiles))
 										A Python file (with markdown), a notebook and a link to content on Github
 										is given below.
 										<br>Note that it is possible to start with the Python
-										itself and convert to a notebook in VSCode or export from a notebook 
+										itself and convert to a notebook in VSCode or export from a notebook
 										to Python.
 									</p>
 									</p>
 									<table class="table-fixed table border-secondary shadow table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
-										<thead class="table-primary">																		
+										<thead class="table-primary">
 											<tr>
 											<th scope="col" style="width:25%">Notebook</th>
 											<th scope="col" style="width:25%">Raw Python (py)</th>
@@ -543,7 +589,7 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_graphs_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -570,7 +616,7 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_traversal_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -595,7 +641,7 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_comparing_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -616,12 +662,12 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="../pymaterialx/mtlx_definitions_libraries_notebook.ipynb">
 														<img src="images/Jupyter_logo.svg" style="width:4em">
 													</a>
-												</td>	
+												</td>
 												<td style="width:25%">
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_definitions_libraries_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -641,12 +687,12 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="..//pymaterialx/mtlx_definitions_notebook.ipynb">
 														<img src="images/Jupyter_logo.svg" style="width:4em">
 													</a>
-												</td>	
+												</td>
 												<td style="width:25%">
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_definitions_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -673,7 +719,7 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_shadergen_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -700,7 +746,7 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_render_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -722,12 +768,12 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="..//pymaterialx/mtlx_targets_notebook.ipynb">
 														<img src="images/Jupyter_logo.svg" style="width:4em">
 													</a>
-												</td>	
+												</td>
 												<td style="width:25%">
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_targets_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -752,7 +798,7 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_json_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -777,11 +823,11 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_copilot.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
-												<td style="width:25%">Google Bard 
+												<td style="width:25%">Google Bard
 													Basic knowledge and source testing.
 												</td>
 												<td style="width:25%">
@@ -798,8 +844,8 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_bard.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
-											</tr>											
+												</td>
+											</tr>
 
 											<tr>
 												<td style="width:25%">USD and MaterialX Graphs
@@ -823,7 +869,7 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_usd_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -846,8 +892,8 @@ print('Loaded library file: %d' % len(libFiles))
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/blender_export_mtlx_noui.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
-											</tr>												
+												</td>
+											</tr>
 
 											</tbody>
 										</table>
@@ -861,7 +907,7 @@ print('Loaded library file: %d' % len(libFiles))
 									<img src="./images/VSCode_Environment.png" style="width: 70%">
 									<p></p>
 									<p>
-										Below is a snapshot of Python and Markdown with meta data tags 
+										Below is a snapshot of Python and Markdown with meta data tags
 										within a Python generated from a notebook.
 									</p>
 									<img src="./images/VSCode_Python_Markdown_Example.png" style="width: 70%">
@@ -879,6 +925,26 @@ print('Loaded library file: %d' % len(libFiles))
 	<script>
 		//monitor_mermaid_tabs()
 	</script>
+
+    </div>
+  </section>
+
+    <footer class="bg-dark-subtle footer text-white py-2 pt-2" data-bs-theme="dark">
+    <div class="container">
+      <ul class="social-icons">
+        <button class="btn btn-outline" type="button">
+          <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><i class="fab fa-github fa-2x"
+              style="color: #ffffff;"></i></a>
+        </button>
+        <button class="btn btn-outline " type="button">
+          <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><i class="fab fa-linkedin-in fa-2x"
+              style="color: #0082ca;"></i></a>
+        </button>
+      </ul>
+      <p>&copy; 2022-2024 NanMu Consulting.</p>
+    </div>
+  </footer>
+
 </body>
 
 </html>

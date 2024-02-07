@@ -1,7 +1,9 @@
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
   <script>
@@ -12,319 +14,460 @@
     gtag('config', 'G-J7404418VP');
   </script>
 
-  <title>MaterialX Learn - Workflows </title>
-  <link rel="icon" href="./images/logo3d_icon.png" type="image/x-icon" />
+  <style>
+    model-viewer {
+      width: 256px;
+      height: 256px;
+      background-color: #7d7d7d;
+    }
+  </style>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="icon" href="../documents/images/logo3d_icon.png" type="image/x-icon" />
+  <!--
+  <link rel="icon" href="../documents/images/logo3d_2_small.png" type="image/x-icon" />
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
 
-  <link rel="stylesheet" href="css/style.css">
-
+  <link rel="stylesheet" href="../documents/css/style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
+  
+
+  <title>MaterialX Learn</title>
+  <link rel="icon" type="images" href="../documents/images/favicon.png" class="img-fluid">
+
 </head>
 
-<body class="min-vh-100">
-  <script src="js/ui_helpers.js"></script>
-  <script src="js/definition_card_helpers.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
-  <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "default" }); </script>
+<body>
+      <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base", themeVariables: { primaryColor: "#F1F1F1", primaryBorderColor: "#000000", lineColor: "#000000", secondaryColor: "#EFEFFF", tertiaryColor: "#EEEEEE" } }); </script>
 
-  <!-- Navigation  -->
-  <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
-    <div class="container-md container-fluid">
-      <a class="navbar-brand" href="../index.html">
-        <h5><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="rounded d-inline-block align-text-center"
-            width="60">
-          MaterialX Learn</h5>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
-        aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainMenuContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    <script src="../documents/js/ui_helpers.js"> </script>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="../index.html" role="button">
-              Home
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+                ? 'dark'
+                : 'default'
+        });
+    </script>
+
+    <!-- Navigation  -->
+    <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
+        <div class="container-md container-fluid">
+            <a class="navbar-brand" href="../index.html">
+                <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+                        class="rounded d-inline-block align-text-center" width="50px">
+                    MaterialX Learn</h5>
             </a>
-          </li>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+                aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenuContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="../index.html" role="button">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Learn
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/nodes_and_nodegraphs.html">
+                                    Nodes and Graphs
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/node_definitions.html">
+                                    Node Definitions
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/documents.html">
+                                    Documents
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Learn
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="nodes_and_nodegraphs.html">
-                  Nodes and Graphs
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="node_definitions.html">
-                  Node Definitions
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="documents.html">
-                  Documents
-                </a>
-              </li>
-            </ul>
-          </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            data-bs-auto-close="outside">Reference</a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/definitions_by_group.html">Library
+                                    (By Group)</a></li>
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/all_definitions.html">Library
+                                    (All)</a></li>
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/library_glossary.html">Library
+                                    Glossary</a></li>
+                            <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
+                                    target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
+                                        style="width:20px"> C++ API</a></li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-              Reference
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="definitions/definitions_by_group.html">
-                  Library (By Group)
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="definitions/all_definitions.html">
-                  Library (All)
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="definitions/library_glossary.html">
-                  Library Glossary
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
-                  <img src="images/MaterialXLogo_200x155.png" style="width:20px"> C++ API
-                </a>
-              </li>
+                            <li class="dropend">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
+                                    Revisions</a>
+                                <ul class="dropdown-menu shadow">
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1388_vs_1389.html">
+                                            1.38.8 vs 1.38.9
+                                            (current)</a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1387_vs_1388.html">
+                                            1.38.7 vs 1.38.8
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1386_vs_1387.html">
+                                            1.38.6 vs 1.38.7
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1385_vs_1386.html">
+                                            1.38.5 vs 1.38.6
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1384_vs_1385.html">
+                                            1.38.4 vs 1.38.5
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1383_vs_1384.html">
+                                            1.38.3 vs 1.38.4
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1382_vs_1383.html">
+                                            1.38.2 vs 1.38.3
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1381_vs_1382.html">
+                                            1.38.1 vs 1.38.2
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1380_vs_1381.html">
+                                            1.38.0 vs 1.38.1
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_138_vs_1389.html"> 1.38.0
+                                            vs 1.38.9
+                                            (current)</a></li>
+                                </ul>
+                            </li>
 
-              <li class="dropend">
-                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library Revisions</a>
-                <ul class="dropdown-menu shadow">
-                  <li><a class="dropdown-item" href="./mtlx_1388_vs_1389.html"> 1.38.8 vs 1.38.9  (current)</a></li>
-                  <li><a class="dropdown-item" href="./mtlx_1387_vs_1388.html"> 1.38.7 vs 1.38.8 </a></li>
-                  <li><a class="dropdown-item" href="./mtlx_1386_vs_1387.html"> 1.38.6 vs 1.38.7 </a></li>
-                  <li><a class="dropdown-item" href="./mtlx_1385_vs_1386.html"> 1.38.5 vs 1.38.6 </a></li>
-                  <li><a class="dropdown-item" href="./mtlx_1384_vs_1385.html"> 1.38.4 vs 1.38.5 </a></li>
-                  <li><a class="dropdown-item" href="./mtlx_1383_vs_1384.html"> 1.38.3 vs 1.38.4 </a></li>
-                  <li><a class="dropdown-item" href="./mtlx_1382_vs_1383.html"> 1.38.2 vs 1.38.3 </a></li>
-                  <li><a class="dropdown-item" href="./mtlx_1381_vs_1382.html"> 1.38.1 vs 1.38.2 </a></li>
-                  <li><a class="dropdown-item" href="./mtlx_1380_vs_1381.html"> 1.38.0 vs 1.38.1 </a></li>
-                  <li><a class="dropdown-item" href="./mtlx_138_vs_1389.html"> 1.38.0 vs 1.38.9   (current)</a></li>
+                            <div class="dropdown-divider"></div>
+                            <li>
+                                <a class="dropdown-item" href="../documents/using_library.html">
+                                    <img src="../documents/images/info-circle.svg"> Library User Guide
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Utilities</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/gltfViewer.html">
+                                    glTF Model Viewer
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/mermaidChecker.html">
+                                    Graph Visualizer
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/mtlx_utilities.html">
+                                    Python Utilities
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../javascript/mtlx_js_utilities.html">
+                                    Javascript Utilities
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Develop</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/python_MaterialX.html">
+                                    Notebooks
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/jupyter_example.html">
+                                    Examples
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/hosting.html">
+                                    Hosting
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Workflows</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../documents/workflow_usd.html">USD and
+                                    MaterialX</a></li>
+                            <li><a class="dropdown-item" href="../documents/workflow_gltf.html">glTF and
+                                    MaterialX</a></li>
+                            <li><a class="dropdown-item" href="../documents/workflow_ocio.html">OCIO and
+                                    MaterialX</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Design</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/design.html">
+                                    UX Design
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/implementation.html">
+                                    Implementation
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../documents/about.html" role="button">
+                            About
+                        </a>
+                    </li>
+                    <!--INDEX_ITEM-->
                 </ul>
-              </li> 
+            </div>
+        </div>
+    </nav>
 
-              <div class="dropdown-divider"></div>              
-              <li>
-                <a class="dropdown-item" href="using_library.html">
-                  <img src="images/info-circle.svg"> Library User Guide
-                </a>
+  <!-- Section Information -->
+  <section class="py-0 px-0 g-0">
+    <div class="container-fluid p-4">
+      <div class="container-fluid p-0">
+  <div class="row flex-nowrap">
+    <div class="col-12 p-0 pt-2 pl-2">
+      <div class="card border-secondary shadow border mb-4">
+        <div class="card-body">
+
+
+          <h2 class="shadow border" id="materialx-and-gltf">MaterialX and glTF</h2>
+          <p>A presentation glTF bidirectional MaterialX data model conversion workflows can be found in the <a
+              href="https://materialx.org/assets/ASWF_OSD2022_MaterialX_OSL_Final.pdf">ASWF 2022 Open Source days
+              presentation</a>.</p>
+          <p>The diagram below is taken from that presentation to show the workflow. glTF content can be split up and
+            the material descriptions converted to MaterialX. Conversely MaterialX can be converted to glTF materials
+            which can then be bound to geometry.</p>
+          <img src="https://raw.githubusercontent.com/kwokcb/glTF_MaterialX/main/docs/bidirectional_workflow.png"
+            width="100%">
+          <p>The resulting library and utilities to support this has been added in <a
+              href="https://github.com/kwokcb/glTF_MaterialX">this repo.</a></p>
+          <p>A <a href="https://github.com/KhronosGroup/MaterialX/tree/gltf_mtlx_interop">Khronos branch</a> using this
+            library is available. This currently includes integration in the MaterialXViewer and MaterialX GraphEditor.
+          </p>
+          <p><img src="images/gltf_import-graphEditor2.png" width=100%></img><br>
+            <br><br>
+            <sub>Figure: Snapshot of some sample assets imported into the MaterialX GraphEditor</sub>
+          </p>
+          <h3 id="future-materialx-shader-graphs-in-gltf">Future: MaterialX Shader Graphs in glTF</h3>
+          <p>The current workflow is a one-way conversion from glTF to MaterialX but is highly restrictive in that it
+            only supports a subset of MaterialX nodes.</p>
+          <p>There is currently an initiative to define a MaterialX extension for glTF which would allow for a more
+            general conversion by supporting embedding MaterialX pattern graphs inside of glTF.</p>
+          <p>This includes a proposal to support serialization of MaterialX to <code>JSON</code> format.</p>
+          <p>The <a href="../pymaterialx/mtlx_json_notebook.html" target="_blank">JSON notebook</a> presents one way to
+            extract out MaterialX pattern graphs and serialize to <code>JSON</code>. This ties in with the general <a
+              href="https://https://github.com/AcademySoftwareFoundation/MaterialX/issues/1500">MaterialX JSON
+              Serialization Proposal</a> which is currently under discussion.</p>
+          <p>Some original notes can be found <a href="https://wiki.aswf.io/display/WGUSD/glTF+MaterialX+USD+Interop"
+              target="_blank">here</a> with the initiative being presented during the<br>
+            <a href="https://www.khronos.org/developers/linkto/gltf-transforming-3d-asset-delivery-for-real-time-graphics>"
+              target="_blank">gltF: Transforming 3D Asset Deleivery for Real-Time Graphics</a> presentation by the
+            Khronos Group at Siggraph 2023.
+          </p>
+          <h3 id="%22target%22-materialx-representation">&quot;Target&quot; MaterialX Representation</h3>
+          <p>There are two main targets for interop:</p>
+          <ol>
+            <li>
+              <p>Shading Models:</p>
+              <p>MaterialX supports the glTF PBR surface shading model directly as of version 1.38.6, allowing for
+                mostly a 1:1 mapping between glTF and MaterialX.</p>
+            </li>
+            <li>
+              <p>Pattern Graphs:</p>
+              <p>Supplementary nodes which match the glTF image<br>
+                mapping logic are provided as part of the MaterialX standard library.</p>
+            </li>
+          </ol>
+          <p>As MaterialX can represent an arbitrary shader graph it is not possible to map this completely to glTF
+            which supports a fixed set of shaders and upstream pattern nodes (texture lookups)</p>
+          <p>Thus there is a specific MaterialX node graph configuration which is the recommended &quot;target&quot; for
+            distillation / export as well as remixing / import. These node graphs can be created in various editors
+            including <code>Maya</code>, <code>Houdini</code>, etc and <code>USD HDStorm</code> integrations in general
+            as long as the appropriate MaterialX library version is used.</p>
+          <p><img src="images/gltf_target_graph.png" width=80%></img><br>
+            <br><sub>Figure: Layout of &quot;target&quot; node graphs. Note that 0 or more upstream pattern graphs are
+              supported for inputs to the root PBR shader</sub>
+          </p>
+          <p>The definitions for these nodes can be found as part of the <a
+              href="https://github.com/kwokcb/MaterialX/blob/main/libraries/bxdf/gltf_pbr.mtlx">core MaterialX library
+              definitions</a></p>
+          <h3 id="colorspaces-and-real-world-units">Colorspaces and Real World Units</h3>
+          <p>For a primer on glTF, USD and MaterialX differences Eric Haines presentation <a
+              href="https://www.realtimerendering.com/erich/gltf_usd/glTF_and_USD.pdf">here</a> is a useful reference.
+          </p>
+          <p>Extrapolating from this, as part of distillation / export it is possible to to a certain extent to
+            pre-convert units and colorspaces to match the glTF fixed colorspace and unit conventions.</p>
+          <p>If in the future real world units are supported in glTF then the appropriate semantic unit tagging can be
+            added to<br>
+            the existing inputs are additional attributes. Input values are not considered to be mappable and hence if a
+            unit semantic is provided import / export can handle this via either a 3rd-party or built in scale unit
+            conversion utility.</p>
+          <p>Colorspace conversion is currently handled via the texture &quot;baking&quot; utilities available in
+            MaterialX. Other 3rd-party utilities could be used as well.</p>
+          <h3 id="remixing--import-gltf-to-materialx">Remixing / Import: glTF to MaterialX</h3>
+          <p>For conversion from glTF to MaterialX, the following nodes can be used to provide a 1:1 mapping:</p>
+          <h4 id="gltfimage"><code>&lt;gltf_image&gt;</code></h4>
+          <p>This node provides an interface which matches how image lookup are performed within glTF 2.0 based on this
+            <a
+              href="https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_texture_transform/README.md">spec</a>
+          </p>
+          <details>
+            <summary>Details</summary>
+            <p>
+            <p>The following differences need to be accounted for:</p>
+            <ul>
+              <li>The transform pivot is 0,0 for MaterialX but 0,1 for glTF.
+                <ul>
+                  <li>Offset is thus negated in V</li>
+                </ul>
               </li>
+              <li>Rotation is specified as radians versus angles and is reverse direction. (negation required)</li>
+              <li>Scale is inverted between MaterialX and glTF</li>
+              <li>The default transformation order is TRS for glTF and not SRT. This option is set correctly on this
+                node.</li>
             </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Utilities</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="gltfViewer.html">
-                  glTF ModelViewer
-                </a>
+            <p>This is supported for all variants of this node: vector3, float, color3, and color4. No vector2 variant
+              is required at this time.</p>
+            <ul>
+              <li>One texture coordinate set referenced by set name, with the default set being &quot;UV0&quot; which is
+                equal to set 0.
+                <ul>
+                  <li>Names are used to support <strong>OpenUSD</strong> workflows where al sets are named.</li>
+                  <li>A <code>&lt;texcoord&gt;</code> node which a different index can be connected to provide index
+                    based workflows as found for glTF.</li>
+                </ul>
               </li>
-              <li>
-                <a class="dropdown-item" href="mermaidChecker.html">
-                  Graph Visualizer
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="mtlx_utilities.html">
-                  Python Utilities
-                </a>
-              </li>
+              <li>U and V address modes and filter type are accessible with the defaults for glTF and MaterialX
+                matching.</li>
             </ul>
-          </li>
+            <p>The color4 output is split into color3 and alpha outputs which can be directly mapped to a
+              <code>gltf_pbr</code> node.</p>
+          </details>
+          <h4 id="gltfcolorimage"><code>&lt;gltf_colorimage&gt;</code></h4>
+          <p>Node for handling input of color images. Inherits properties from <code>&lt;gltf_image&gt;</code></p>
+          <details>
+            <summary>Details</summary>
+            <p>
+            <p>This encapsulates color/alpha management where an color4 image lookup can be modulated by a color4 factor
+              as well as geometric color4. That is final color is (base on this <a
+                href="https://github.com/KhronosGroup/glTF/issues/1638">post</a>):</p>
+            <pre class="hljs"><code><div> color4_image * color4_factor * geometry_color4
+</div></code></pre>
+            <p>The input image can have a &quot;colorspace&quot; semantic specified. By default for import/export this
+              should be <code>srgb_texture</code> but is not hard-coded as part of the definition. Color factor is set
+              to be uniform and both it and geometry color are assumed to be specified in the rendering / target
+              colorspace.</p>
+            <p>As not all geometry have geometric colors , the default &quot;geometry color&quot; input is a uniform
+              value = { 1,1,1,1 }<br>
+              which can be mapped to a <code>&lt;geomcolor&gt;</code> node as required. That node allows for color set
+              index to be set with the<br>
+              default being set 0.Compliant texture transform support is provided by using a <code>gltf_image</code>
+              node as part of it's definition.</p>
+          </details>
+          <h4 id="gtlfnormalmap"><code>&lt;gtlf_normalmap&gt;</code></h4>
+          <p>Node for handling input of tangent space normal map images. Inherits properties from
+            <code>&lt;gltf_image&gt;</code></p>
+          <details>
+            <summary>Details</summary>
+            <p>
+            <p>This node encapsulates a file texture which is a normal map. It uses <code>&lt;gltf_vector3&gt;</code>
+              and <code>&lt;normalmap&gt;</code> as it's main components to provide base level glTF support which always
+              outputs a normal map. normalmap space is not an exposed interface and is always set to tangent space, with
+              a default / fallback value of { 0.5, 0.5, 1.0 } if no input image is specified.</p>
+            <p>Compliant texture transform support is provided by using a &lt;gltf_image&gt; node as part of it's
+              definition.</p>
+          </details>
+          <h4 id="gltfiridescencethickness"><code>&lt;gltf_iridescence_thickness&gt;</code></h4>
+          <p>Node for handling &quot;thickness&quot; images. Inherits properties from <code>&lt;gltf_image&gt;</code>
+          </p>
+          <details>
+            <summary>Details</summary>
+            <p>
+            <p>This node handles user input for a &quot;thickness&quot; image which is mapped to a thickness
+              &quot;min&quot; and &quot;max&quot; to scale the images output (g channel) as defined <a
+                href="https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_materials_iridescence/README.md">here</a>.
+              This produces a float thickness output which can be connected to gttf_pbr &quot;iridescence ior&quot;.</p>
+            <p>Compliant glTF texture transform support is provided by using a &lt;gltf_image&gt; in it's
+              implementation.</p>
+          </details>
+          <h3 id="distillation--export--materialx-to-gltf">Distillation / Export : MaterialX to glTF</h3>
+          <p>The reverse process which is the more natural one requires<br>
+            <code>distilling</code> a MaterialX shading graph down to a glTF one.
+          </p>
+          <p>Below is a diagram of the distillation process taken from the <a
+              href="https://materialx.org/assets/ASWF_OSD2022_MaterialX_OSL_Final.pdf">ASWF 2022 Open Source days
+              presentation</a>.<br>
+            <img src="images/osd2022_gltf_distill.png" width="100%">
+          </p>
+          <p>If users use only the MaterialX nodes supported which correspond to glTF then this mapping is more
+            straight-forward. If not then a <code>baking</code> step is required to convert all upstream connected
+            graphs into a single<br>
+            image, and if a non-glTF shading model is used then <code>shader translation</code> is required.</p>
+          <p>Below is an example of the <code>Brick</code> example shader which uses the
+            <code>Autodesk standard surface</code> which is mapped to a glTF PBR surface material and the result of
+            baking a <code>ORM</code> map (along with other maps).<br>
+            <img src="images/Brick_ORM_baking.png" width="100%">
+          </p>
+          <p>Fortunately, translation and baking are provided as part of the code API. What is not currently handled
+            however is merging of multiple images into single images such as for <code>ORM</code> images used by glTF
+            shaders. This would be a useful utility, and could be done as a MaterialX shader graph.</p>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Develop</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="python_MaterialX.html">
-                  Tutorials
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="jupyter_example.html">
-                  Examples
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Workflows</a>
-            <ul class="dropdown-menu">
-              <li>
-                <li><a class="dropdown-item" href="workflow_usd.html">USD and MaterialX</a></li>
-                <li><a class="dropdown-item" href="workflow_gltf.html">glTF and MaterialX</a></li>
-                <li><a class="dropdown-item" href="workflow_ocio.html">OCIO and MaterialX</a></li>
-                </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Design</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="design.html">
-                  UX Design
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="implementation.html">
-                  Implementation
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="about.html" role="button">
-              About
-            </a>
-          </li>
-          </li>
-        </ul>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</div>
 
-  <div class="container-fluid p-4">
-    <div class="row flex-nowrap">
-      <div class="col-12 p-0 pt-2 pl-2">
-        <div class="card border-secondary shadow border mb-4">
-          <div class="card-body">
+    </div>
+  </section>
 
-
-<h2 class="shadow border" id="materialx-and-gltf">MaterialX and glTF</h2>
-<p>A presentation glTF bidirectional MaterialX data model conversion workflows can be found in the <a href="https://materialx.org/assets/ASWF_OSD2022_MaterialX_OSL_Final.pdf">ASWF 2022 Open Source days presentation</a>.</p>
-<p>The diagram below is taken from that presentation to show the workflow. glTF content can be split up and the material descriptions converted to MaterialX. Conversely MaterialX can be converted to glTF materials which can then be bound to geometry.</p>
-<img src="https://raw.githubusercontent.com/kwokcb/glTF_MaterialX/main/docs/bidirectional_workflow.png" width="100%">
-<p>The resulting library and utilities to support this has been added in <a href="https://github.com/kwokcb/glTF_MaterialX">this repo.</a></p>
-<p>A <a href="https://github.com/KhronosGroup/MaterialX/tree/gltf_mtlx_interop">Khronos branch</a> using this library is available. This currently includes integration in the MaterialXViewer and MaterialX GraphEditor.</p>
-<p><img src="images/gltf_import-graphEditor2.png" width=100%></img><br>
-<br><br>
-<sub>Figure: Snapshot of some sample assets imported into the MaterialX GraphEditor</sub></p>
-<h3 id="future-materialx-shader-graphs-in-gltf">Future: MaterialX Shader Graphs in glTF</h3>
-<p>The current workflow is a one-way conversion from glTF to MaterialX but is highly restrictive in that it only supports a subset of MaterialX nodes.</p>
-<p>There is currently an initiative to define a MaterialX extension for glTF which would allow for a more general conversion by supporting embedding MaterialX pattern graphs inside of glTF.</p>
-<p>This includes a proposal to support serialization of MaterialX to <code>JSON</code> format.</p>
-<p>The <a href="../pymaterialx/mtlx_json_notebook.html" target="_blank">JSON notebook</a> presents one way to extract out MaterialX pattern graphs and serialize to <code>JSON</code>. This ties in with the general <a href="https://https://github.com/AcademySoftwareFoundation/MaterialX/issues/1500">MaterialX JSON Serialization Proposal</a> which is currently under discussion.</p>
-<p>Some original notes can be found <a href="https://wiki.aswf.io/display/WGUSD/glTF+MaterialX+USD+Interop" target="_blank">here</a> with the initiative being presented during the<br>
-<a href="https://www.khronos.org/developers/linkto/gltf-transforming-3d-asset-delivery-for-real-time-graphics>" target="_blank">gltF: Transforming 3D Asset Deleivery for Real-Time Graphics</a> presentation by the Khronos Group at Siggraph 2023.</p>
-<h3 id="%22target%22-materialx-representation">&quot;Target&quot; MaterialX Representation</h3>
-<p>There are two main targets for interop:</p>
-<ol>
-<li>
-<p>Shading Models:</p>
-<p>MaterialX supports the glTF PBR surface shading model directly as of version 1.38.6, allowing for mostly a 1:1 mapping between glTF and MaterialX.</p>
-</li>
-<li>
-<p>Pattern Graphs:</p>
-<p>Supplementary nodes which match the glTF image<br>
-mapping logic are provided as part of the MaterialX standard library.</p>
-</li>
-</ol>
-<p>As MaterialX can represent an arbitrary shader graph it is not possible to map this completely to glTF which supports a fixed set of shaders and upstream pattern nodes (texture lookups)</p>
-<p>Thus there is a specific MaterialX node graph configuration which is the recommended &quot;target&quot; for distillation / export as well as remixing / import. These node graphs can be created in various editors including <code>Maya</code>, <code>Houdini</code>, etc and <code>USD HDStorm</code> integrations in general as long as the appropriate MaterialX library version is used.</p>
-<p><img src="images/gltf_target_graph.png" width=80%></img><br>
-<br><sub>Figure: Layout of &quot;target&quot; node graphs. Note that 0 or more upstream pattern graphs are supported for inputs to the root PBR shader</sub></p>
-<p>The definitions for these nodes can be found as part of the <a href="https://github.com/kwokcb/MaterialX/blob/main/libraries/bxdf/gltf_pbr.mtlx">core MaterialX  library definitions</a></p>
-<h3 id="colorspaces-and-real-world-units">Colorspaces and Real World Units</h3>
-<p>For a primer on glTF, USD and MaterialX differences Eric Haines presentation <a href="https://www.realtimerendering.com/erich/gltf_usd/glTF_and_USD.pdf">here</a> is a useful reference.</p>
-<p>Extrapolating from this, as part of distillation / export it is possible to to a certain extent to pre-convert units and colorspaces to match the glTF fixed colorspace and unit conventions.</p>
-<p>If in the future real world units are supported in glTF then the appropriate semantic unit tagging can be added to<br>
-the existing inputs are additional attributes. Input values are not considered to be mappable and hence if a unit semantic is provided import / export can handle this via either a 3rd-party or built in scale unit conversion utility.</p>
-<p>Colorspace conversion is currently handled via the texture &quot;baking&quot; utilities available in MaterialX. Other 3rd-party utilities could be used as well.</p>
-<h3 id="remixing--import-gltf-to-materialx">Remixing / Import: glTF to MaterialX</h3>
-<p>For conversion from glTF to MaterialX, the following nodes can be used to provide a 1:1 mapping:</p>
-<h4 id="gltfimage"><code>&lt;gltf_image&gt;</code></h4>
-<p>This node provides an interface which matches how image lookup are performed within glTF 2.0 based on this <a href="https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_texture_transform/README.md">spec</a></p>
-<details><summary>Details</summary>
-<p>
-<p>The following differences need to be accounted for:</p>
-<ul>
-<li>The transform pivot is 0,0 for MaterialX but 0,1 for glTF.
-<ul>
-<li>Offset is thus negated in V</li>
-</ul>
-</li>
-<li>Rotation is specified as radians versus angles and is reverse direction. (negation required)</li>
-<li>Scale is inverted between MaterialX and glTF</li>
-<li>The default transformation order is TRS for glTF and not SRT. This option is set correctly on this node.</li>
-</ul>
-<p>This is supported for all variants of this node: vector3, float, color3, and color4. No vector2 variant is required at this time.</p>
-<ul>
-<li>One texture coordinate set referenced by set name, with the default set being &quot;UV0&quot; which is equal to set 0.
-<ul>
-<li>Names are used to support <strong>OpenUSD</strong> workflows where al sets are named.</li>
-<li>A <code>&lt;texcoord&gt;</code> node which a different index can be connected to provide index based workflows as found for glTF.</li>
-</ul>
-</li>
-<li>U and V address modes and filter type are accessible with the defaults for glTF and MaterialX matching.</li>
-</ul>
-<p>The color4 output is split into color3 and alpha outputs which can be directly mapped to a <code>gltf_pbr</code> node.</p>
-</details>
-<h4 id="gltfcolorimage"><code>&lt;gltf_colorimage&gt;</code></h4>
-<p>Node for handling input of color images. Inherits properties from <code>&lt;gltf_image&gt;</code></p>
-<details><summary>Details</summary>
-<p>
-<p>This encapsulates color/alpha management where an color4 image lookup can be modulated by a color4 factor as well as geometric color4. That is final color is (base on this <a href="https://github.com/KhronosGroup/glTF/issues/1638">post</a>):</p>
-<pre class="hljs"><code><div>  color4_image * color4_factor * geometry_color4
-</div></code></pre>
-<p>The input image can have a &quot;colorspace&quot; semantic specified. By default for import/export this should be <code>srgb_texture</code> but is not hard-coded as part of the definition. Color factor is set to be uniform and both it and geometry color are assumed to be specified in the rendering / target colorspace.</p>
-<p>As not all geometry have geometric colors , the default &quot;geometry color&quot; input is a uniform value = { 1,1,1,1 }<br>
-which can be mapped to a <code>&lt;geomcolor&gt;</code> node as required. That node allows for color set index to be set with the<br>
-default being set 0.Compliant texture transform support is provided by using a <code>gltf_image</code> node as part of it's definition.</p>
-</details>
-<h4 id="gtlfnormalmap"><code>&lt;gtlf_normalmap&gt;</code></h4>
-<p>Node for handling input of tangent space normal map images. Inherits properties from <code>&lt;gltf_image&gt;</code></p>
-<details><summary>Details</summary>
-<p>
-<p>This node encapsulates a file texture which is a normal map. It uses <code>&lt;gltf_vector3&gt;</code> and <code>&lt;normalmap&gt;</code> as it's main components to provide base level glTF support which always outputs a normal map.  normalmap space is not an exposed interface and is always set to tangent space, with a default / fallback value of { 0.5, 0.5, 1.0 } if no input image is specified.</p>
-<p>Compliant texture transform support is provided by using a &lt;gltf_image&gt; node as part of it's definition.</p>
-</details>
-<h4 id="gltfiridescencethickness"><code>&lt;gltf_iridescence_thickness&gt;</code></h4>
-<p>Node for handling &quot;thickness&quot; images. Inherits properties from <code>&lt;gltf_image&gt;</code></p>
-<details><summary>Details</summary>
-<p>
-<p>This node handles user input for a &quot;thickness&quot; image which is mapped to a thickness &quot;min&quot; and &quot;max&quot; to scale the images output (g channel) as defined <a href="https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_materials_iridescence/README.md">here</a>. This produces a float thickness output which can be connected to gttf_pbr &quot;iridescence ior&quot;.</p>
-<p>Compliant glTF texture transform support is provided by using a &lt;gltf_image&gt; in it's implementation.</p>
-</details>
-<h3 id="distillation--export--materialx-to-gltf">Distillation / Export : MaterialX to glTF</h3>
-<p>The reverse process which is the more natural one requires<br>
-<code>distilling</code> a MaterialX shading graph down to a glTF one.</p>
-<p>Below is a diagram of the distillation process taken from the <a href="https://materialx.org/assets/ASWF_OSD2022_MaterialX_OSL_Final.pdf">ASWF 2022 Open Source days presentation</a>.<br>
-<img src="images/osd2022_gltf_distill.png" width="100%"></p>
-<p>If users use only the MaterialX nodes supported which correspond to glTF then this mapping is more straight-forward. If not then a <code>baking</code> step is required to convert all upstream connected graphs into a single<br>
-image, and if a non-glTF shading model is used then <code>shader translation</code> is required.</p>
-<p>Below is an example of the <code>Brick</code> example shader which uses the <code>Autodesk standard surface</code> which is mapped to a glTF PBR surface material and the result of baking a <code>ORM</code> map (along with other maps).<br>
-<img src="images/Brick_ORM_baking.png" width="100%"></p>
-<p>Fortunately, translation and baking are provided as part of the code API. What is not currently handled however is merging of multiple images into single images such as for <code>ORM</code> images used by glTF shaders. This would be a useful utility, and could be done as a MaterialX shader graph.</p>
-
-</div>
-</div>
-</div>
-</div>
-</div>
+    <footer class="bg-dark-subtle footer text-white py-2 pt-2" data-bs-theme="dark">
+    <div class="container">
+      <ul class="social-icons">
+        <button class="btn btn-outline" type="button">
+          <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><i class="fab fa-github fa-2x"
+              style="color: #ffffff;"></i></a>
+        </button>
+        <button class="btn btn-outline " type="button">
+          <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><i class="fab fa-linkedin-in fa-2x"
+              style="color: #0082ca;"></i></a>
+        </button>
+      </ul>
+      <p>&copy; 2022-2024 NanMu Consulting.</p>
+    </div>
+  </footer>
 
 </body>
 
