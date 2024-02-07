@@ -1,43 +1,69 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  gtag('config', 'G-J7404418VP');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-    <title>MaterialX Learn - Design</title>
-    <link rel="icon" href="./images/logo3d_icon.png" type="image/x-icon"/>  
+    gtag('config', 'G-J7404418VP');
+  </script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-      
-    <link rel="stylesheet" href="css/style.css">
+  <style>
+    model-viewer {
+      width: 256px;
+      height: 256px;
+      background-color: #7d7d7d;
+    }
+  </style>
 
+  <link rel="icon" href="../documents/images/logo3d_icon.png" type="image/x-icon" />
+  <!--
+  <link rel="icon" href="../documents/images/logo3d_2_small.png" type="image/x-icon" />
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../documents/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  
+
+  <title>MaterialX Learn</title>
+  <link rel="icon" type="images" href="../documents/images/favicon.png" class="img-fluid">
 
 </head>
 
-<body class="min-vh-100">
-    <script src="js/ui_helpers.js"></script>
-    <script src="js/definition_card_helpers.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
-    <script> mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "default" }); </script>
-      
+<body>
+      <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base", themeVariables: { primaryColor: "#F1F1F1", primaryBorderColor: "#000000", lineColor: "#000000", secondaryColor: "#EFEFFF", tertiaryColor: "#EEEEEE" } }); </script>
+
+    <script src="../documents/js/ui_helpers.js"> </script>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+                ? 'dark'
+                : 'default'
+        });
+    </script>
+
     <!-- Navigation  -->
     <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
         <div class="container-md container-fluid">
             <a class="navbar-brand" href="../index.html">
-                <h5><img src="images/logo3d_2_small.png" alt="MaterialX Learn" class="rounded d-inline-block align-text-center"
-                        width="60">
+                <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+                        class="rounded d-inline-block align-text-center" width="50px">
                     MaterialX Learn</h5>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
@@ -52,186 +78,206 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Learn
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="nodes_and_nodegraphs.html">
+                                <a class="dropdown-item" href="../documents/nodes_and_nodegraphs.html">
                                     Nodes and Graphs
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="node_definitions.html">
+                                <a class="dropdown-item" href="../documents/node_definitions.html">
                                     Node Definitions
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="documents.html">
+                                <a class="dropdown-item" href="../documents/documents.html">
                                     Documents
                                 </a>
                             </li>
                         </ul>
                     </li>
-    
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                          Reference
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li>
-                            <a class="dropdown-item" href="definitions/definitions_by_group.html">
-                              Library (By Group)
-                            </a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="definitions/all_definitions.html">
-                              Library (All)
-                            </a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="definitions/library_glossary.html">
-                              Library Glossary
-                            </a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
-                              <img src="images/MaterialXLogo_200x155.png" style="width:20px"> C++ API
-                            </a>
-                          </li>
-            
-                          <li class="dropend">
-                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library Revisions</a>
-                            <ul class="dropdown-menu shadow">
-                                <li><a class="dropdown-item" href="./mtlx_1388_vs_1389.html"> 1.38.8 vs 1.38.9  (current)</a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1387_vs_1388.html"> 1.38.7 vs 1.38.8 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1386_vs_1387.html"> 1.38.6 vs 1.38.7 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1385_vs_1386.html"> 1.38.5 vs 1.38.6 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1384_vs_1385.html"> 1.38.4 vs 1.38.5 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1383_vs_1384.html"> 1.38.3 vs 1.38.4 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1382_vs_1383.html"> 1.38.2 vs 1.38.3 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1381_vs_1382.html"> 1.38.1 vs 1.38.2 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_1380_vs_1381.html"> 1.38.0 vs 1.38.1 </a></li>
-                                <li><a class="dropdown-item" href="./mtlx_138_vs_1389.html"> 1.38.0 vs 1.38.9   (current)</a></li>
-                            </ul>
-                          </li> 
-            
-                          <div class="dropdown-divider"></div>              
-                          <li>
-                            <a class="dropdown-item" href="using_library.html">
-                              <img src="images/info-circle.svg"> Library User Guide
-                            </a>
-                          </li>
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            data-bs-auto-close="outside">Reference</a>
+                        <ul class="dropdown-menu shadow">
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/definitions_by_group.html">Library
+                                    (By Group)</a></li>
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/all_definitions.html">Library
+                                    (All)</a></li>
+                            <li><a class="dropdown-item"
+                                    href="../documents/definitions/library_glossary.html">Library
+                                    Glossary</a></li>
+                            <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
+                                    target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
+                                        style="width:20px"> C++ API</a></li>
+
+                            <li class="dropend">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
+                                    Revisions</a>
+                                <ul class="dropdown-menu shadow">
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1388_vs_1389.html">
+                                            1.38.8 vs 1.38.9
+                                            (current)</a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1387_vs_1388.html">
+                                            1.38.7 vs 1.38.8
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1386_vs_1387.html">
+                                            1.38.6 vs 1.38.7
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1385_vs_1386.html">
+                                            1.38.5 vs 1.38.6
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1384_vs_1385.html">
+                                            1.38.4 vs 1.38.5
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1383_vs_1384.html">
+                                            1.38.3 vs 1.38.4
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1382_vs_1383.html">
+                                            1.38.2 vs 1.38.3
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1381_vs_1382.html">
+                                            1.38.1 vs 1.38.2
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_1380_vs_1381.html">
+                                            1.38.0 vs 1.38.1
+                                        </a></li>
+                                    <li><a class="dropdown-item" href="../documents/mtlx_138_vs_1389.html"> 1.38.0
+                                            vs 1.38.9
+                                            (current)</a></li>
+                                </ul>
+                            </li>
+
+                            <div class="dropdown-divider"></div>
+                            <li>
+                                <a class="dropdown-item" href="../documents/using_library.html">
+                                    <img src="../documents/images/info-circle.svg"> Library User Guide
+                                </a>
+                            </li>
                         </ul>
-                      </li>
-    
+                    </li>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">Utilities</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="gltfViewer.html">
-                                  glTF ModelViewer
+                                <a class="dropdown-item" href="../documents/gltfViewer.html">
+                                    glTF Model Viewer
                                 </a>
-                              </li>                
+                            </li>
                             <li>
-                                <a class="dropdown-item" href="mermaidChecker.html">
+                                <a class="dropdown-item" href="../documents/mermaidChecker.html">
                                     Graph Visualizer
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="mtlx_utilities.html">
+                                <a class="dropdown-item" href="../documents/mtlx_utilities.html">
                                     Python Utilities
-                                  </a>                  
-                            </li>
-                        </ul>
-                    </li>
-    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Develop</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="python_MaterialX.html">
-                                    Notebooks 
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="jupyter_example.html">
+                                <a class="dropdown-item" href="../javascript/mtlx_js_utilities.html">
+                                    Javascript Utilities
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Develop</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../documents/python_MaterialX.html">
+                                    Notebooks
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../documents/jupyter_example.html">
                                     Examples
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="hosting.html">
+                                <a class="dropdown-item" href="../documents/hosting.html">
                                     Hosting
                                 </a>
-                            </li>                
-                        </ul>
-                    </li>
-    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Workflows</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <li><a class="dropdown-item" href="workflow_usd.html">USD and MaterialX</a></li>
-                                <li><a class="dropdown-item" href="workflow_gltf.html">glTF and MaterialX</a></li>
-                                <li><a class="dropdown-item" href="workflow_ocio.html">OCIO and MaterialX</a></li>
                             </li>
                         </ul>
                     </li>
-    
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Workflows</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../documents/workflow_usd.html">USD and
+                                    MaterialX</a></li>
+                            <li><a class="dropdown-item" href="../documents/workflow_gltf.html">glTF and
+                                    MaterialX</a></li>
+                            <li><a class="dropdown-item" href="../documents/workflow_ocio.html">OCIO and
+                                    MaterialX</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">Design</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="design.html">
+                                <a class="dropdown-item" href="../documents/design.html">
                                     UX Design
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="implementation.html">
+                                <a class="dropdown-item" href="../documents/implementation.html">
                                     Implementation
                                 </a>
                             </li>
                         </ul>
                     </li>
-    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="about.html" role="button">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../documents/about.html" role="button">
                             About
                         </a>
                     </li>
-                    </li>
+                    <!--INDEX_ITEM-->
                 </ul>
             </div>
         </div>
     </nav>
 
+  <!-- Section Information -->
+  <section class="py-0 px-0 g-0">
     <div class="container-fluid p-4">
-        <div class="row flex-nowrap">
-            <div class="col-12 p-0 pt-2 pl-2">
+      
+<div class="container-fluid p-0">
+    <div class="row flex-nowrap">
+        <div class="col-12 p-0 pt-2 pl-2">
 
-                <h2>Website Design</h2>
+            <h2>Website Design</h2>
 
-                <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-library-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-library" type="button" role="tab" aria-controls="pills-library"
-                            aria-selected="true">Style Guide</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-nodedef-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-nodedef" type="button" role="tab" aria-controls="pills-nodedef"
-                            aria-selected="false">Home Page</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-nodedefparam-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-nodedefparam" type="button" role="tab"
-                            aria-controls="pills-nodedefparam" aria-selected="false">Navigation Bar</button>
-                        <!-- <li class="nav-item dropdown">
+            <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-library-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-library" type="button" role="tab" aria-controls="pills-library"
+                        aria-selected="true">Style Guide</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="pills-nodedef-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-nodedef" type="button" role="tab" aria-controls="pills-nodedef"
+                        aria-selected="false">Home Page</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="pills-nodedefparam-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-nodedefparam" type="button" role="tab" aria-controls="pills-nodedefparam"
+                        aria-selected="false">Navigation Bar</button>
+                    <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Parameters and Attributes</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" data-bs-toggle="pill" data-bs-target="#pills-nodedefparam" >Parameters and Attributes</a></li>
@@ -240,250 +286,284 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Separated link</a></li>
                             </ul>-->
-                    </li>
+                </li>
 
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-impltarget-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-impltarget" type="button" role="tab" aria-controls="pills-impltarget"
-                            aria-selected="false">Sidebar</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-userint-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-userint" type="button" role="tab" aria-controls="pills-userint"
-                            aria-selected="false">Node Library and Node Cards</button>
-                    </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="pills-nodegraph-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-nodegraph" type="button" role="tab" aria-controls="pills-nodegraph"
-                            aria-selected="false">Node Graph Presentation</button>
-                    </li>
-                </ul>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="pills-impltarget-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-impltarget" type="button" role="tab" aria-controls="pills-impltarget"
+                        aria-selected="false">Sidebar</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="pills-userint-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-userint" type="button" role="tab" aria-controls="pills-userint"
+                        aria-selected="false">Node Library and Node Cards</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="pills-nodegraph-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-nodegraph" type="button" role="tab" aria-controls="pills-nodegraph"
+                        aria-selected="false">Node Graph Presentation</button>
+                </li>
+            </ul>
 
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-library" role="tabpanel"
-                        aria-labelledby="pills-library-tab" tabindex="0">
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-library" role="tabpanel"
+                    aria-labelledby="pills-library-tab" tabindex="0">
 
-                        <div class="card border-secondary shadow border mb-4">
-                            <div class="card-body">
-                            <div class="btn btn-lg border-secondary shadow-sm w-100"" style="pointer-events: none;">Sidebar Functionality and Organization</div>
-                                <p>The design focus was to present technical information in a consistent and concise format.
-                                <ul>
-                                    <li>Roboto was chosen as the font as it is easily legible on different screen formats and resolutions</li>
-                                    <li>Tabs and buttons are blue and rounded in contrast to the plain background. Tabs are distinct and easily selectable. </li>
-                                    <li> Areas are highlighted blue to represent currently selected sections</li>
-                                    <li>Standard navigational options through a fixed navigation bar and a toggleable sidebar</li>
-                                    <li>Maintaining WCAG accessiblity guidelines for color contrast between text and background colors</li>
-                                </ul>
-                                </p>
-                                
-                                <p>
-                                    Shown below is the style guide and color accessiblity test for this website. The guide outlines commonly used color variations, fonts, components and icons used throughout the site.
-                                    <br>
-                                    
-                                </p>
-                                
-                                <div>
-                                    <img src="./images/Style Guide.png" style="width: 40%;">
-                                    <img src="./images/Color Test.png" class="mx-auto-d-block" style="width: 40%;">
-                                </div>
+                    <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
+                            <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">
+                                Sidebar Functionality and Organization</div>
+                            <p>The design focus was to present technical information in a consistent and concise format.
+                            <ul>
+                                <li>Roboto was chosen as the font as it is easily legible on different screen formats
+                                    and resolutions</li>
+                                <li>Tabs and buttons are blue and rounded in contrast to the plain background. Tabs are
+                                    distinct and easily selectable. </li>
+                                <li> Areas are highlighted blue to represent currently selected sections</li>
+                                <li>Standard navigational options through a fixed navigation bar and a toggleable
+                                    sidebar</li>
+                                <li>Maintaining WCAG accessiblity guidelines for color contrast between text and
+                                    background colors</li>
+                            </ul>
+                            </p>
+
+                            <p>
+                                Shown below is the style guide and color accessiblity test for this website. The guide
+                                outlines commonly used color variations, fonts, components and icons used throughout the
+                                site.
+                                <br>
+
+                            </p>
+
+                            <div>
+                                <img src="./images/Style Guide.png" style="width: 40%;">
+                                <img src="./images/Color Test.png" class="mx-auto-d-block" style="width: 40%;">
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show" id="pills-nodedef" role="tabpanel"
-                        aria-labelledby="pills-nodedef-tab">
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show" id="pills-nodedef" role="tabpanel" aria-labelledby="pills-nodedef-tab">
 
-                        <div class="card border-secondary shadow border mb-4">
-                            <div class="card-body">
+                    <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
 
-                                <div class="btn btn-lg border-secondary shadow-sm w-100"" style="pointer-events: none;">Homepage Organization and Contents</div>
-                                <p>The design focus for the homepage was to summarize each website section's purpose and to encourage users to navigate different areas of the site.
-                                <ul>
-                                    <li>A large gallery headline will draw user attention to featured sections. The gallery images will rotate at set intervals to keep users attention</li>
-                                    <li>Featured articles will be situated below the introduction section and change frequently </li>
-                                    <li>Website sections are located within a responsive container to make navigation easier on mobile or smaller screen sizes</li>
-                                </ul>
-                                </p>
-                                
-                                <p>
-                                    Shown below is the current homepage. It is divided into the introduction, and website sections. The gallery and featured articles will be addded at a later date.
-                                    <br>
-                                    
-                                </p>
-                                
-                                <div>
-                                    <img src="./images/home.png" style="width: 40%;">
-                                </div>
-                                
+                            <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">
+                                Homepage Organization and Contents</div>
+                            <p>The design focus for the homepage was to summarize each website section's purpose and to
+                                encourage users to navigate different areas of the site.
+                            <ul>
+                                <li>A large gallery headline will draw user attention to featured sections. The gallery
+                                    images will rotate at set intervals to keep users attention</li>
+                                <li>Featured articles will be situated below the introduction section and change
+                                    frequently </li>
+                                <li>Website sections are located within a responsive container to make navigation easier
+                                    on mobile or smaller screen sizes</li>
+                            </ul>
+                            </p>
+
+                            <p>
+                                Shown below is the current homepage. It is divided into the introduction, and website
+                                sections. The gallery and featured articles will be addded at a later date.
+                                <br>
+
+                            </p>
+
+                            <div>
+                                <img src="./images/home.png" style="width: 40%;">
                             </div>
 
-                            
                         </div>
+
+
                     </div>
                 </div>
+            </div>
 
-                <div class="tab-content" data-bs-theme="light" id="pills-tabContent">
-                    <div class="tab-pane fade show " id="pills-nodedefparam" role="tabpanel"
-                        aria-labelledby="pills-nodedefparam-tab">
+            <div class="tab-content" data-bs-theme="light" id="pills-tabContent">
+                <div class="tab-pane fade show " id="pills-nodedefparam" role="tabpanel"
+                    aria-labelledby="pills-nodedefparam-tab">
 
-                        <div class="card border-secondary shadow border mb-4">
-                            <div class="card-body">
-                                <div class="btn btn-lg border-secondary shadow-sm w-100"" style="pointer-events: none;">Navigation Bar Organization</div>
-                                <p>The navigation bar is fixed to the top of the page so that is accessible at any time.</p>
-                                <p> Navbar sections are split into areas such as learning content, reference information, tools, and design rationale. Sections have clickable dropdowns denoted by an downwards arrow to access sub categories.
-                                
-                                </p>
-                                <p>The togglable sidebar  was added to accomdate smaller screen or window sizes when reading about different node definitions. Users can click the sidebar button icon in the navbar to expand/minimize the sidebar.</p>
-                                <div>
-                                    <img src="./images/navbar.png" style="width: 40%;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
+                            <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">
+                                Navigation Bar Organization</div>
+                            <p>The navigation bar is fixed to the top of the page so that is accessible at any time.</p>
+                            <p> Navbar sections are split into areas such as learning content, reference information,
+                                tools, and design rationale. Sections have clickable dropdowns denoted by an downwards
+                                arrow to access sub categories.
 
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show " id="pills-impltarget" role="tabpanel"
-                        aria-labelledby="pills-impltarget-tab">
-
-                        <div class="card border-secondary shadow border mb-4">
-                            <div class="card-body">
-
-                                <div class="btn btn-lg border-secondary shadow-sm w-100"" style="pointer-events: none;">Sidebar Functionality and Organization</div>
-                                <p>The sidebar was created to make it easier to browse the many node definitions on the site.</p>
-                                <p>Various layouts were experimented with such as collapsing the sidebar to the top of the page when the screen width decreases. This design was scrapped as the sidebar elements did not resize responsively.</p>
-                                <p> The current sidebar is fixed to the left side and is togglable through a sidebar button in the navbar. </p>Features include:
-                                    <ul>
-                                        <li>Highlighted menu items are blue</li>
-                                        <li>Two level menus organized by node groups -> individual node definitions </li>
-                                        <li>The search bar at the top of the sidebar allows you to filter through different node groups. Users type into the search field and press enter to filter out node groups.</li>
-                                    </ul>
-                                </p>
-                                    
-                                    <p>
-                                        Shown below is the sidebar with the "adjustment" section open to browse its node definitions.
-                                        <br>
-                                        
-                                    </p>
-                                    <div>
-                                        <img src="./images/sidebar.png" style="width: 20%;">
-                                    </div>
+                            </p>
+                            <p>The togglable sidebar was added to accomdate smaller screen or window sizes when reading
+                                about different node definitions. Users can click the sidebar button icon in the navbar
+                                to expand/minimize the sidebar.</p>
+                            <div>
+                                <img src="./images/navbar.png" style="width: 40%;">
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show " id="pills-apiaccess" role="tabpanel"
-                        aria-labelledby="pills-apiaccess-tab">
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show " id="pills-impltarget" role="tabpanel"
+                    aria-labelledby="pills-impltarget-tab">
 
-                        <div class="card border-secondary shadow border mb-4">
-                            <div class="card-body">
+                    <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
 
-                                <p>
-                                    To retrieve information following are important API classes:
-                                <ul>
-                                    <li><a href="https://materialx.org/docs/api/class_document.html"
-                                            target="_blank"><em>Document</em>:</a>
-                                        document api to get nodedefs va
-                                        <code>getNodeDefs()</code>
-                                    </li>
-                                    <li><a href="https://materialx.org/docs/api/class_node_def.html"
-                                            target="_blank"><em>NodeDef</em>:</a>
-                                        node
-                                        definition</li>
-                                    <li><a href="https://materialx.org/docs/api/class_implementation.html"
-                                            target="_blank"><em>Implementation</em></a>:
-                                        nodedef definition implementation</li>
-                                    <li><a href="https://materialx.org/docs/api/class_node_graph.html" target="
+                            <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">
+                                Sidebar Functionality and Organization</div>
+                            <p>The sidebar was created to make it easier to browse the many node definitions on the
+                                site.</p>
+                            <p>Various layouts were experimented with such as collapsing the sidebar to the top of the
+                                page when the screen width decreases. This design was scrapped as the sidebar elements
+                                did not resize responsively.</p>
+                            <p> The current sidebar is fixed to the left side and is togglable through a sidebar button
+                                in the navbar. </p>Features include:
+                            <ul>
+                                <li>Highlighted menu items are blue</li>
+                                <li>Two level menus organized by node groups -> individual node definitions </li>
+                                <li>The search bar at the top of the sidebar allows you to filter through different node
+                                    groups. Users type into the search field and press enter to filter out node groups.
+                                </li>
+                            </ul>
+                            </p>
+
+                            <p>
+                                Shown below is the sidebar with the "adjustment" section open to browse its node
+                                definitions.
+                                <br>
+
+                            </p>
+                            <div>
+                                <img src="./images/sidebar.png" style="width: 20%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show " id="pills-apiaccess" role="tabpanel"
+                    aria-labelledby="pills-apiaccess-tab">
+
+                    <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
+
+                            <p>
+                                To retrieve information following are important API classes:
+                            <ul>
+                                <li><a href="https://materialx.org/docs/api/class_document.html"
+                                        target="_blank"><em>Document</em>:</a>
+                                    document api to get nodedefs va
+                                    <code>getNodeDefs()</code>
+                                </li>
+                                <li><a href="https://materialx.org/docs/api/class_node_def.html"
+                                        target="_blank"><em>NodeDef</em>:</a>
+                                    node
+                                    definition</li>
+                                <li><a href="https://materialx.org/docs/api/class_implementation.html"
+                                        target="_blank"><em>Implementation</em></a>:
+                                    nodedef definition implementation</li>
+                                <li><a href="https://materialx.org/docs/api/class_node_graph.html" target="
                                             _blank"><em>NodeGraph
-                                            </em></a>>:
-                                        node graph implementation</li>
-                                    <li><a href="https://materialx.org/docs/api/class_input.html"
-                                            target="_blank"><em>Input</em></a>:
-                                        interface
-                                        and node inputs for definitions and
-                                        node graph implementation nodes</li>
-                                    <li><a href="https://materialx.org/docs/api/class_output.html"
-                                            target="_blank"><em>Output</em></a>:
-                                        outputs
-                                        for definitions, node graphs and nodes</li>
-                                </ul>
-                                </p>
-                                <p>Input and output ports can be inherited from a parent definition. Note that in
-                                    MaterialX
-                                    terminology, getting <b>active</b> information means to get inherited information.
-                                    <a href="https://materialx.org/docs/api/class_interface_element.html"
-                                        target="_blank">Corresponding
-                                        APIs</a>
-                                    having
-                                    an "Active" API variants (e.g. <code>getActiveValueElements()</code> vs
-                                    <code>getValueElements()</code>).
-                                </p>
-                                <p>
-                                    To get input and output attribute information the follow method is available:
-                                    <a href="https://materialx.org/docs/api/class_element.html" target="_blank">
-                                        <code
-                                            class="language-cpp">Element::getAttribute(&lt;attribute name&gt;)</code></a>
-                                </p>
-                                <p>
-                                    The general method to get value information (marked as 'value' in the template) is:
-                                    <a href="https://materialx.org/docs/api/class_value_element.html" target="_blank">
-                                        <code class="language-c++">ValueElement::getValue()</code></a>
-                                </p>
-                                The API calls have the same name for all supported APIs (Python, Javascript, C++)
-                                </p>
-                            </div>
+                                        </em></a>>:
+                                    node graph implementation</li>
+                                <li><a href="https://materialx.org/docs/api/class_input.html"
+                                        target="_blank"><em>Input</em></a>:
+                                    interface
+                                    and node inputs for definitions and
+                                    node graph implementation nodes</li>
+                                <li><a href="https://materialx.org/docs/api/class_output.html"
+                                        target="_blank"><em>Output</em></a>:
+                                    outputs
+                                    for definitions, node graphs and nodes</li>
+                            </ul>
+                            </p>
+                            <p>Input and output ports can be inherited from a parent definition. Note that in
+                                MaterialX
+                                terminology, getting <b>active</b> information means to get inherited information.
+                                <a href="https://materialx.org/docs/api/class_interface_element.html"
+                                    target="_blank">Corresponding
+                                    APIs</a>
+                                having
+                                an "Active" API variants (e.g. <code>getActiveValueElements()</code> vs
+                                <code>getValueElements()</code>).
+                            </p>
+                            <p>
+                                To get input and output attribute information the follow method is available:
+                                <a href="https://materialx.org/docs/api/class_element.html" target="_blank">
+                                    <code class="language-cpp">Element::getAttribute(&lt;attribute name&gt;)</code></a>
+                            </p>
+                            <p>
+                                The general method to get value information (marked as 'value' in the template) is:
+                                <a href="https://materialx.org/docs/api/class_value_element.html" target="_blank">
+                                    <code class="language-c++">ValueElement::getValue()</code></a>
+                            </p>
+                            The API calls have the same name for all supported APIs (Python, Javascript, C++)
+                            </p>
                         </div>
-
                     </div>
+
                 </div>
+            </div>
 
-                <div class="tab-content" id="pills-tabContent2">
-                    <div class="tab-pane fade show " id="pills-userint" role="tabpanel"
-                        aria-labelledby="pills-userint-tab">
+            <div class="tab-content" id="pills-tabContent2">
+                <div class="tab-pane fade show " id="pills-userint" role="tabpanel" aria-labelledby="pills-userint-tab">
 
-                        <div class="card border-secondary shadow border mb-4">
-                            <div class="card-body">
+                    <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
 
-                                <div class="btn btn-lg border-secondary shadow-sm w-100"" style="pointer-events: none;">Node Libary</div>
-                                <p>Originally all the node groups and their definitions was displayed at once. This made the website too slow to load as all of the content and images had to be loaded at the same time</p>
-                                <p>The definitions were split by node group and put into seperate pages to make loading content faster on startup</p>
-                                <p> The current node library groups are filterable in the search bar on the left sidebar</p>
-                                
-                                    
-                                    <p>
-                                        Shown below is an example of how the node library is organized by node groups and associated node definitions.
-                                        <br>
-                                        
-                                    </p>
-                                    <div>
-                                        <img src="./images/library.png" style="width: 30%;">
-                                    </div>
-                                <hr>
-                                <div class="btn btn-lg border-secondary shadow-sm w-100"" style="pointer-events: none;">Material Card Templates</div>
-                                <p>Each node group contains node definitions as collapsible tabs denotated by a downwards arrow</p>
-                                <p>Each node definitions is within a "card container</p>
-                                <p> This card container template is used throughout containing:</p>
-                                    <ul>
-                                        <li>Image preview of material</li>
-                                        <li>Node graph and ability to copy the node graph to export as an image using the node graph utility </li>
-                                        <li>Shows attribute values as a series of horizontal fields showing their value or output.</li>
-                                        <li>Minimal spacing between tabs to improve the viewing experience on smaller screen sizes</li>
-                                    </ul>
-                                </p>
-                                    
-                                    <p>
-                                        Shown below is an example template card of a node definition and what the attributes mean.
-                                        <br>
-                                        
-                                    </p>
-                                    
-                                <hr>
-                                <container data-bs-theme="light">
+                            <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">
+                                Node Libary</div>
+                            <p>Originally all the node groups and their definitions was displayed at once. This made the
+                                website too slow to load as all of the content and images had to be loaded at the same
+                                time</p>
+                            <p>The definitions were split by node group and put into seperate pages to make loading
+                                content faster on startup</p>
+                            <p> The current node library groups are filterable in the search bar on the left sidebar</p>
+
+
+                            <p>
+                                Shown below is an example of how the node library is organized by node groups and
+                                associated node definitions.
+                                <br>
+
+                            </p>
+                            <div>
+                                <img src="./images/library.png" style="width: 30%;">
+                            </div>
+                            <hr>
+                            <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">
+                                Material Card Templates</div>
+                            <p>Each node group contains node definitions as collapsible tabs denotated by a downwards
+                                arrow</p>
+                            <p>Each node definitions is within a "card container</p>
+                            <p> This card container template is used throughout containing:</p>
+                            <ul>
+                                <li>Image preview of material</li>
+                                <li>Node graph and ability to copy the node graph to export as an image using the node
+                                    graph utility </li>
+                                <li>Shows attribute values as a series of horizontal fields showing their value or
+                                    output.</li>
+                                <li>Minimal spacing between tabs to improve the viewing experience on smaller screen
+                                    sizes</li>
+                            </ul>
+                            </p>
+
+                            <p>
+                                Shown below is an example template card of a node definition and what the attributes
+                                mean.
+                                <br>
+
+                            </p>
+
+                            <hr>
+                            <container data-bs-theme="light">
                                 <b>Category: </b>'node'
                                 <details open>
                                     <summary
@@ -524,24 +604,31 @@
                                                         </div>
                                                         </p>
 
-                                                        
-                                                        <div class="custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+
+                                                        <div
+                                                            class="custom card border border-secondary shadow py-2 pe-2 col-sm-6">
                                                             <ul>
                                                                 <div class="card-header border-0">
-                                                                <h6>Code Implementation/Node Graph Sections</h6>
+                                                                    <h6>Code Implementation/Node Graph Sections</h6>
                                                                 </div>
                                                                 <br>
-                                                        <p>Code implementation or node graph is displayed depending
-                                                                on the node definition.</p>
-                                                        <p>Code implementation shows the language used and where the
-                                                                code is stored. The code can be found directly on this
-                                                                page or through a link to the referenced file. Function
-                                                                is the name of the function to look for within the
-                                                                code.</p>
-                                                        <p>The node graph sections shows the graph for the node
-                                                                definition. Users can copy the code used to generate the
-                                                                graph and use the graph checker utility to generate and
-                                                                save their own node graph.</p>
+                                                                <p>Code implementation or node graph is displayed
+                                                                    depending
+                                                                    on the node definition.</p>
+                                                                <p>Code implementation shows the language used and where
+                                                                    the
+                                                                    code is stored. The code can be found directly on
+                                                                    this
+                                                                    page or through a link to the referenced file.
+                                                                    Function
+                                                                    is the name of the function to look for within the
+                                                                    code.</p>
+                                                                <p>The node graph sections shows the graph for the node
+                                                                    definition. Users can copy the code used to generate
+                                                                    the
+                                                                    graph and use the graph checker utility to generate
+                                                                    and
+                                                                    save their own node graph.</p>
                                                             </ul>
                                                         </div>
                                                         <br>
@@ -701,16 +788,19 @@
                                                                         </div>
 
                                                                     </div>
-                                                                    <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
                                                                         Set of possible named values shown in open
-                                                                            dropdown menus
+                                                                        dropdown menus
                                                                     </div>
                                                                     <br>
-                                                                    <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
-                                                                        Color values are in RGB format. The associated color swatch provides a visual reference.    
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
+                                                                        Color values are in RGB format. The associated
+                                                                        color swatch provides a visual reference.
                                                                     </div>
                                                                     <br>
-                                                                            
+
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">Possible
@@ -754,7 +844,7 @@
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">
-                                                                            Value (color3): 
+                                                                            Value (color3):
                                                                         </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
@@ -780,8 +870,8 @@
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">
-                                                                            Value (color4): 
-                                                                            </label>
+                                                                            Value (color4):
+                                                                        </label>
                                                                         <div class="col-sm-2">
                                                                             <input type="text"
                                                                                 class="form-control form-control-sm"
@@ -820,12 +910,14 @@
                                                                     </div>
 
                                                                     <hr>
-                                                                    <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
                                                                         Vector values are shown in the fields as x, y
-                                                                            z and w inputs. 
+                                                                        z and w inputs.
                                                                     </div>
                                                                     <br>
-                                                                    <div class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2 col-sm-6">
                                                                         Matrix values are shown in row major order.
                                                                     </div>
                                                                     <br>
@@ -1091,12 +1183,13 @@
 
                                                                     <hr>
 
-                                                                            <div class="custom card border border-secondary shadow py-2 pe-2 ps-2 col-sm-6">
-                                                                                A checkbox is shown to represent the boolean.
-                                                                            A filled in checkbox means true and an
-                                                                            unfilled one means false.
-                                                                            </div>
-                                                                            <br>
+                                                                    <div
+                                                                        class="custom card border border-secondary shadow py-2 pe-2 ps-2 col-sm-6">
+                                                                        A checkbox is shown to represent the boolean.
+                                                                        A filled in checkbox means true and an
+                                                                        unfilled one means false.
+                                                                    </div>
+                                                                    <br>
                                                                     <div class="form-group row g-1">
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">Value
@@ -1110,13 +1203,14 @@
                                                                     </div>
                                                                     <hr>
 
-                                                                    <div class="custom card border border-secondary shadow py-2 pe-2 ps-2 col-sm-6">
+                                                                    <div
+                                                                        class="custom card border border-secondary shadow py-2 pe-2 ps-2 col-sm-6">
                                                                         Each field value corresponds to 1st name /
-                                                                            -> 2nd name / -> 3rd name /
+                                                                        -> 2nd name / -> 3rd name /
                                                                     </div>
-                                                                    <br> 
+                                                                    <br>
                                                                     <div class="form-group row g-1">
-                                                                        
+
                                                                         <label
                                                                             class="col-sm-2 col-form-label col-form-label-sm">UI
                                                                             <b>Min/Max/Step:</b> </label>
@@ -1572,48 +1666,85 @@
                                     </div>
                                 </details>
 
-                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show" id="pills-nodegraph" role="tabpanel"
-                        aria-labelledby="pills-nodegraph-tab" tabindex="0">
+            </div>
 
-                        <div class="card border-secondary shadow border mb-4">
-                            <div class="card-body">
-                            <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;">Node Graph Presentation</div>
-                                <p>The design focus with node graphs is to present information clearly and to make relationships between nodes easy to understand.</p>
-                                
-                                <p>
-                                   Node graphs are diagrams broken down into nodes, links, and properties. Nodes perform a computation, links represent how data output of one node goes to the data input of a different node. Data inputs and outputs are also commonly called data “ports” or “pins”. Properties are the additional attributes of a node or link. For example, one property of a node can be its port data type such as color or boolean.
-                                    <br>
-                                </p>
-                                <p>When designing node graphs, different colors are applied based on the property and symbol type for the node. Color usage is limited to reduce visual noise, making it easier for users to process the information. </p>
-                                <p>Links (directional arrows) connecting the nodes can be color coded to be the same as the associated data port. For Mermaid diagrams, input port names are labels on links. In the checkerboard graph example below "in1" is a input data port for the "multiply" node. </p>
-                                
-                                <div>
-                                    <img class="rounded bg-light p-4" src="./images/checkerboard_mermaid_graph.svg" class="img-fluid mx-auto-d-block">
-                                </div>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show" id="pills-nodegraph" role="tabpanel"
+                    aria-labelledby="pills-nodegraph-tab" tabindex="0">
+
+                    <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
+                            <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;">Node
+                                Graph Presentation</div>
+                            <p>The design focus with node graphs is to present information clearly and to make
+                                relationships between nodes easy to understand.</p>
+
+                            <p>
+                                Node graphs are diagrams broken down into nodes, links, and properties. Nodes perform a
+                                computation, links represent how data output of one node goes to the data input of a
+                                different node. Data inputs and outputs are also commonly called data ''ports" or ''pins".
+                                Properties are the additional attributes of a node or link. For example, one property of
+                                a node can be its port data type such as color or boolean.
                                 <br>
-                                
-                                <p>The flow of information is all presented from left to right so that the information is easy to understand and view in a standard orientation.</p>
-                                <p>Symbol usage was kept consistent throughout with blue ovals representing input nodes and green ovals output nodes. Rectangles represent a node, and orange diamonds a decision in the node graph. </p>
-                                
-                                 <div>
-                                    <img src="./images/checkerboard_graph_nodeeditor.png" class=" img-fluid mx-auto-d-block">
-                                </div>
-                                <p>This example shows all ports as well as color coded links. The aim is to make the graphs similar to the above image.</p>
+                            </p>
+                            <p>When designing node graphs, different colors are applied based on the property and symbol
+                                type for the node. Color usage is limited to reduce visual noise, making it easier for
+                                users to process the information. </p>
+                            <p>Links (directional arrows) connecting the nodes can be color coded to be the same as the
+                                associated data port. For Mermaid diagrams, input port names are labels on links. In the
+                                checkerboard graph example below "in1" is a input data port for the "multiply" node.
+                            </p>
+
+                            <div>
+                                <img class="rounded bg-light p-4" src="./images/checkerboard_mermaid_graph.svg"
+                                    class="img-fluid mx-auto-d-block">
                             </div>
+                            <br>
+
+                            <p>The flow of information is all presented from left to right so that the information is
+                                easy to understand and view in a standard orientation.</p>
+                            <p>Symbol usage was kept consistent throughout with blue ovals representing input nodes and
+                                green ovals output nodes. Rectangles represent a node, and orange diamonds a decision in
+                                the node graph. </p>
+
+                            <div>
+                                <img src="./images/checkerboard_graph_nodeeditor.png"
+                                    class=" img-fluid mx-auto-d-block">
+                            </div>
+                            <p>This example shows all ports as well as color coded links. The aim is to make the graphs
+                                similar to the above image.</p>
                         </div>
                     </div>
                 </div>
+            </div>
             </container>
 
-            </div>
         </div>
     </div>
+</div>
+
+    </div>
+  </section>
+
+    <footer class="bg-dark-subtle footer text-white py-2 pt-2" data-bs-theme="dark">
+    <div class="container">
+      <ul class="social-icons">
+        <button class="btn btn-outline" type="button">
+          <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><i class="fab fa-github fa-2x"
+              style="color: #ffffff;"></i></a>
+        </button>
+        <button class="btn btn-outline " type="button">
+          <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><i class="fab fa-linkedin-in fa-2x"
+              style="color: #0082ca;"></i></a>
+        </button>
+      </ul>
+      <p>&copy; 2022-2024 NanMu Consulting.</p>
+    </div>
+  </footer>
+
 </body>
 
 </html>

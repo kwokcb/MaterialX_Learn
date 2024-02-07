@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <safepower name="safepower_color4" type="color4">
+    <input name="in1" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in2" type="color4" value="1.0, 1.0, 1.0, 1.0" />
+  </safepower>
+  <convert name="shader_safepower_color4_out" type="surfaceshader">
+    <input name="in" type="color4" nodename="safepower_color4" />
+  </convert>
+  <surfacematerial name="material_safepower_color4_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_safepower_color4_out" />
+  </surfacematerial>
+</materialx>

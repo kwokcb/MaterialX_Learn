@@ -26,7 +26,7 @@
 * [surfacematerial](#node-surfacematerial) [volumematerial](#node-volumematerial) 
 ---------
 ### Node Group: math
-* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [arrayappend](#node-arrayappend) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [creatematrix](#node-creatematrix) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) [trianglewave](#node-trianglewave) 
+* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [arrayappend](#node-arrayappend) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [creatematrix](#node-creatematrix) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [reflect](#node-reflect) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [safepower](#node-safepower) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) [trianglewave](#node-trianglewave) 
 ---------
 ### Node Group: organization
 * [dot](#node-dot) 
@@ -7045,6 +7045,392 @@ graph LR;
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
+### Category: *safepower*
+<details><summary>ND_safepower_float</summary>
+<p>
+ 
+* *Nodedef*: ND_safepower_float
+* *Type*: float
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_safepower_float
+
+
+```mermaid
+graph LR; 
+    NG_safepower_float_safepower[multiply] --> NG_safepower_float_out([out])
+    style NG_safepower_float_out fill:#0C0, color:#111
+    NG_safepower_float_sign_in1[sign] --".in1"--> NG_safepower_float_safepower[multiply]
+    NG_safepower_float_in1INT([in1]) ==.in==> NG_safepower_float_sign_in1[sign]
+    style NG_safepower_float_in1INT fill:#0CF, color:#111
+    NG_safepower_float_power[power] --".in2"--> NG_safepower_float_safepower[multiply]
+    NG_safepower_float_in2INT([in2]) ==.in2==> NG_safepower_float_power[power]
+    style NG_safepower_float_in2INT fill:#0CF, color:#111
+    NG_safepower_float_abs_in1[absval] --".in1"--> NG_safepower_float_power[power]
+    NG_safepower_float_in1INT([in1]) ==.in==> NG_safepower_float_abs_in1[absval]
+    style NG_safepower_float_in1INT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_safepower_color3</summary>
+<p>
+ 
+* *Nodedef*: ND_safepower_color3
+* *Type*: color3
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_safepower_color3
+
+
+```mermaid
+graph LR; 
+    NG_safepower_color3_safepower[multiply] --> NG_safepower_color3_out([out])
+    style NG_safepower_color3_out fill:#0C0, color:#111
+    NG_safepower_color3_sign_in1[sign] --".in1"--> NG_safepower_color3_safepower[multiply]
+    NG_safepower_color3_in1INT([in1]) ==.in==> NG_safepower_color3_sign_in1[sign]
+    style NG_safepower_color3_in1INT fill:#0CF, color:#111
+    NG_safepower_color3_power[power] --".in2"--> NG_safepower_color3_safepower[multiply]
+    NG_safepower_color3_in2INT([in2]) ==.in2==> NG_safepower_color3_power[power]
+    style NG_safepower_color3_in2INT fill:#0CF, color:#111
+    NG_safepower_color3_abs_in1[absval] --".in1"--> NG_safepower_color3_power[power]
+    NG_safepower_color3_in1INT([in1]) ==.in==> NG_safepower_color3_abs_in1[absval]
+    style NG_safepower_color3_in1INT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_safepower_color4</summary>
+<p>
+ 
+* *Nodedef*: ND_safepower_color4
+* *Type*: color4
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_safepower_color4
+
+
+```mermaid
+graph LR; 
+    NG_safepower_color4_safepower[multiply] --> NG_safepower_color4_out([out])
+    style NG_safepower_color4_out fill:#0C0, color:#111
+    NG_safepower_color4_sign_in1[sign] --".in1"--> NG_safepower_color4_safepower[multiply]
+    NG_safepower_color4_in1INT([in1]) ==.in==> NG_safepower_color4_sign_in1[sign]
+    style NG_safepower_color4_in1INT fill:#0CF, color:#111
+    NG_safepower_color4_power[power] --".in2"--> NG_safepower_color4_safepower[multiply]
+    NG_safepower_color4_in2INT([in2]) ==.in2==> NG_safepower_color4_power[power]
+    style NG_safepower_color4_in2INT fill:#0CF, color:#111
+    NG_safepower_color4_abs_in1[absval] --".in1"--> NG_safepower_color4_power[power]
+    NG_safepower_color4_in1INT([in1]) ==.in==> NG_safepower_color4_abs_in1[absval]
+    style NG_safepower_color4_in1INT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_safepower_vector2</summary>
+<p>
+ 
+* *Nodedef*: ND_safepower_vector2
+* *Type*: vector2
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_safepower_vector2
+
+
+```mermaid
+graph LR; 
+    NG_safepower_vector2_safepower[multiply] --> NG_safepower_vector2_out([out])
+    style NG_safepower_vector2_out fill:#0C0, color:#111
+    NG_safepower_vector2_sign_in1[sign] --".in1"--> NG_safepower_vector2_safepower[multiply]
+    NG_safepower_vector2_in1INT([in1]) ==.in==> NG_safepower_vector2_sign_in1[sign]
+    style NG_safepower_vector2_in1INT fill:#0CF, color:#111
+    NG_safepower_vector2_power[power] --".in2"--> NG_safepower_vector2_safepower[multiply]
+    NG_safepower_vector2_in2INT([in2]) ==.in2==> NG_safepower_vector2_power[power]
+    style NG_safepower_vector2_in2INT fill:#0CF, color:#111
+    NG_safepower_vector2_abs_in1[absval] --".in1"--> NG_safepower_vector2_power[power]
+    NG_safepower_vector2_in1INT([in1]) ==.in==> NG_safepower_vector2_abs_in1[absval]
+    style NG_safepower_vector2_in1INT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_safepower_vector3</summary>
+<p>
+ 
+* *Nodedef*: ND_safepower_vector3
+* *Type*: vector3
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_safepower_vector3
+
+
+```mermaid
+graph LR; 
+    NG_safepower_vector3_safepower[multiply] --> NG_safepower_vector3_out([out])
+    style NG_safepower_vector3_out fill:#0C0, color:#111
+    NG_safepower_vector3_sign_in1[sign] --".in1"--> NG_safepower_vector3_safepower[multiply]
+    NG_safepower_vector3_in1INT([in1]) ==.in==> NG_safepower_vector3_sign_in1[sign]
+    style NG_safepower_vector3_in1INT fill:#0CF, color:#111
+    NG_safepower_vector3_power[power] --".in2"--> NG_safepower_vector3_safepower[multiply]
+    NG_safepower_vector3_in2INT([in2]) ==.in2==> NG_safepower_vector3_power[power]
+    style NG_safepower_vector3_in2INT fill:#0CF, color:#111
+    NG_safepower_vector3_abs_in1[absval] --".in1"--> NG_safepower_vector3_power[power]
+    NG_safepower_vector3_in1INT([in1]) ==.in==> NG_safepower_vector3_abs_in1[absval]
+    style NG_safepower_vector3_in1INT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_safepower_vector4</summary>
+<p>
+ 
+* *Nodedef*: ND_safepower_vector4
+* *Type*: vector4
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_safepower_vector4
+
+
+```mermaid
+graph LR; 
+    NG_safepower_vector4_safepower[multiply] --> NG_safepower_vector4_out([out])
+    style NG_safepower_vector4_out fill:#0C0, color:#111
+    NG_safepower_vector4_sign_in1[sign] --".in1"--> NG_safepower_vector4_safepower[multiply]
+    NG_safepower_vector4_in1INT([in1]) ==.in==> NG_safepower_vector4_sign_in1[sign]
+    style NG_safepower_vector4_in1INT fill:#0CF, color:#111
+    NG_safepower_vector4_power[power] --".in2"--> NG_safepower_vector4_safepower[multiply]
+    NG_safepower_vector4_in2INT([in2]) ==.in2==> NG_safepower_vector4_power[power]
+    style NG_safepower_vector4_in2INT fill:#0CF, color:#111
+    NG_safepower_vector4_abs_in1[absval] --".in1"--> NG_safepower_vector4_power[power]
+    NG_safepower_vector4_in1INT([in1]) ==.in==> NG_safepower_vector4_abs_in1[absval]
+    style NG_safepower_vector4_in1INT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_safepower_color3FA</summary>
+<p>
+ 
+* *Nodedef*: ND_safepower_color3FA
+* *Type*: color3
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_safepower_color3FA
+
+
+```mermaid
+graph LR; 
+    NG_safepower_color3FA_safepower[multiply] --> NG_safepower_color3FA_out([out])
+    style NG_safepower_color3FA_out fill:#0C0, color:#111
+    NG_safepower_color3FA_sign_in1[sign] --".in1"--> NG_safepower_color3FA_safepower[multiply]
+    NG_safepower_color3FA_in1INT([in1]) ==.in==> NG_safepower_color3FA_sign_in1[sign]
+    style NG_safepower_color3FA_in1INT fill:#0CF, color:#111
+    NG_safepower_color3FA_power[power] --".in2"--> NG_safepower_color3FA_safepower[multiply]
+    NG_safepower_color3FA_in2INT([in2]) ==.in2==> NG_safepower_color3FA_power[power]
+    style NG_safepower_color3FA_in2INT fill:#0CF, color:#111
+    NG_safepower_color3FA_abs_in1[absval] --".in1"--> NG_safepower_color3FA_power[power]
+    NG_safepower_color3FA_in1INT([in1]) ==.in==> NG_safepower_color3FA_abs_in1[absval]
+    style NG_safepower_color3FA_in1INT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_safepower_color4FA</summary>
+<p>
+ 
+* *Nodedef*: ND_safepower_color4FA
+* *Type*: color4
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_safepower_color4FA
+
+
+```mermaid
+graph LR; 
+    NG_safepower_color4FA_safepower[multiply] --> NG_safepower_color4FA_out([out])
+    style NG_safepower_color4FA_out fill:#0C0, color:#111
+    NG_safepower_color4FA_sign_in1[sign] --".in1"--> NG_safepower_color4FA_safepower[multiply]
+    NG_safepower_color4FA_in1INT([in1]) ==.in==> NG_safepower_color4FA_sign_in1[sign]
+    style NG_safepower_color4FA_in1INT fill:#0CF, color:#111
+    NG_safepower_color4FA_power[power] --".in2"--> NG_safepower_color4FA_safepower[multiply]
+    NG_safepower_color4FA_in2INT([in2]) ==.in2==> NG_safepower_color4FA_power[power]
+    style NG_safepower_color4FA_in2INT fill:#0CF, color:#111
+    NG_safepower_color4FA_abs_in1[absval] --".in1"--> NG_safepower_color4FA_power[power]
+    NG_safepower_color4FA_in1INT([in1]) ==.in==> NG_safepower_color4FA_abs_in1[absval]
+    style NG_safepower_color4FA_in1INT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_safepower_vector2FA</summary>
+<p>
+ 
+* *Nodedef*: ND_safepower_vector2FA
+* *Type*: vector2
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_safepower_vector2FA
+
+
+```mermaid
+graph LR; 
+    NG_safepower_vector2FA_safepower[multiply] --> NG_safepower_vector2FA_out([out])
+    style NG_safepower_vector2FA_out fill:#0C0, color:#111
+    NG_safepower_vector2FA_sign_in1[sign] --".in1"--> NG_safepower_vector2FA_safepower[multiply]
+    NG_safepower_vector2FA_in1INT([in1]) ==.in==> NG_safepower_vector2FA_sign_in1[sign]
+    style NG_safepower_vector2FA_in1INT fill:#0CF, color:#111
+    NG_safepower_vector2FA_power[power] --".in2"--> NG_safepower_vector2FA_safepower[multiply]
+    NG_safepower_vector2FA_in2INT([in2]) ==.in2==> NG_safepower_vector2FA_power[power]
+    style NG_safepower_vector2FA_in2INT fill:#0CF, color:#111
+    NG_safepower_vector2FA_abs_in1[absval] --".in1"--> NG_safepower_vector2FA_power[power]
+    NG_safepower_vector2FA_in1INT([in1]) ==.in==> NG_safepower_vector2FA_abs_in1[absval]
+    style NG_safepower_vector2FA_in1INT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_safepower_vector3FA</summary>
+<p>
+ 
+* *Nodedef*: ND_safepower_vector3FA
+* *Type*: vector3
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_safepower_vector3FA
+
+
+```mermaid
+graph LR; 
+    NG_safepower_vector3FA_safepower[multiply] --> NG_safepower_vector3FA_out([out])
+    style NG_safepower_vector3FA_out fill:#0C0, color:#111
+    NG_safepower_vector3FA_sign_in1[sign] --".in1"--> NG_safepower_vector3FA_safepower[multiply]
+    NG_safepower_vector3FA_in1INT([in1]) ==.in==> NG_safepower_vector3FA_sign_in1[sign]
+    style NG_safepower_vector3FA_in1INT fill:#0CF, color:#111
+    NG_safepower_vector3FA_power[power] --".in2"--> NG_safepower_vector3FA_safepower[multiply]
+    NG_safepower_vector3FA_in2INT([in2]) ==.in2==> NG_safepower_vector3FA_power[power]
+    style NG_safepower_vector3FA_in2INT fill:#0CF, color:#111
+    NG_safepower_vector3FA_abs_in1[absval] --".in1"--> NG_safepower_vector3FA_power[power]
+    NG_safepower_vector3FA_in1INT([in1]) ==.in==> NG_safepower_vector3FA_abs_in1[absval]
+    style NG_safepower_vector3FA_in1INT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+<details><summary>ND_safepower_vector4FA</summary>
+<p>
+ 
+* *Nodedef*: ND_safepower_vector4FA
+* *Type*: vector4
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_safepower_vector4FA
+
+
+```mermaid
+graph LR; 
+    NG_safepower_vector4FA_safepower[multiply] --> NG_safepower_vector4FA_out([out])
+    style NG_safepower_vector4FA_out fill:#0C0, color:#111
+    NG_safepower_vector4FA_sign_in1[sign] --".in1"--> NG_safepower_vector4FA_safepower[multiply]
+    NG_safepower_vector4FA_in1INT([in1]) ==.in==> NG_safepower_vector4FA_sign_in1[sign]
+    style NG_safepower_vector4FA_in1INT fill:#0CF, color:#111
+    NG_safepower_vector4FA_power[power] --".in2"--> NG_safepower_vector4FA_safepower[multiply]
+    NG_safepower_vector4FA_in2INT([in2]) ==.in2==> NG_safepower_vector4FA_power[power]
+    style NG_safepower_vector4FA_in2INT fill:#0CF, color:#111
+    NG_safepower_vector4FA_abs_in1[absval] --".in1"--> NG_safepower_vector4FA_power[power]
+    NG_safepower_vector4FA_in1INT([in1]) ==.in==> NG_safepower_vector4FA_abs_in1[absval]
+    style NG_safepower_vector4FA_in1INT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
 ### Category: *sin*
 <details><summary>ND_sin_float</summary>
 <p>
@@ -9384,6 +9770,44 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+### Category: *reflect*
+<details><summary>ND_reflect_vector3</summary>
+<p>
+ 
+* *Nodedef*: ND_reflect_vector3
+* *Type*: vector3
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: Compute the reflection of an incident vector against a surface normal.
+* *Nodegraph*: NG_reflect_vector3
+
+
+```mermaid
+graph LR; 
+    NG_reflect_vector3_reflection_vector[subtract] --> NG_reflect_vector3_out([out])
+    style NG_reflect_vector3_out fill:#0C0, color:#111
+    NG_reflect_vector3_inINT([in]) ==.in1==> NG_reflect_vector3_reflection_vector[subtract]
+    style NG_reflect_vector3_inINT fill:#0CF, color:#111
+    NG_reflect_vector3_NdotI_N_2[multiply] --".in2"--> NG_reflect_vector3_reflection_vector[subtract]
+    NG_reflect_vector3_normalINT([normal]) ==.in1==> NG_reflect_vector3_NdotI_N_2[multiply]
+    style NG_reflect_vector3_normalINT fill:#0CF, color:#111
+    NG_reflect_vector3_NdotI_2[multiply] --".in2"--> NG_reflect_vector3_NdotI_N_2[multiply]
+    NG_reflect_vector3_NdotI[dotproduct] --".in1"--> NG_reflect_vector3_NdotI_2[multiply]
+    NG_reflect_vector3_normalINT([normal]) ==.in1==> NG_reflect_vector3_NdotI[dotproduct]
+    style NG_reflect_vector3_normalINT fill:#0CF, color:#111
+    NG_reflect_vector3_inINT([in]) ==.in2==> NG_reflect_vector3_NdotI[dotproduct]
+    style NG_reflect_vector3_inINT fill:#0CF, color:#111
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | vector3 | 1, 0, 0 |  |  |  |  |  |  |  |  | Incident vector |  |
+| **normal** | vector3 | None |  |  |  |  |  |  |  |  | Surface normal |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
 ### Category: *remap*

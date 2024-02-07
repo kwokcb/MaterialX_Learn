@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <safepower name="safepower_vector4FA" type="vector4">
+    <input name="in1" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in2" type="float" value="1.0" />
+  </safepower>
+  <convert name="shader_safepower_vector4FA_out" type="surfaceshader">
+    <input name="in" type="vector4" nodename="safepower_vector4FA" />
+  </convert>
+  <surfacematerial name="material_safepower_vector4FA_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_safepower_vector4FA_out" />
+  </surfacematerial>
+</materialx>

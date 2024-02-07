@@ -189,7 +189,7 @@ class GlslRenderer():
         # Compute bounding box geometry
         geometryHandler = self.renderer.getGeometryHandler()
         if geometryHandler:
-            # TODO: This interface is mising from the Python API
+            # TODO: This interface is missing from the Python API
             #geometryHandler.computeBounds()
             boxMax = geometryHandler.getMaximumBounds() 
             boxMin = geometryHandler.getMinimumBounds()
@@ -202,6 +202,8 @@ class GlslRenderer():
                 maxVal = boxMax[1] - boxMin[1]
             if boxMax[2] - boxMin[2] > maxVal:
                 maxVal = boxMax[2] - boxMin[2]
+            if maxVal < 0.0001:
+                maxVal = 1.0
             meshScaleVal[0] = 2.0 / maxVal
             meshScaleVal[1] = 2.0 / maxVal
             meshScaleVal[2] = 2.0 / maxVal
@@ -249,6 +251,7 @@ class GlslRenderer():
             imageSearchPath = mx.FileSearchPath()
             imageSearchPath.append(searchPath)            
             imageHandler.setSearchPath(imageSearchPath)
+            #self.addToRenderLog('- Create image loader with path: %s' % imageHandler.getSearchPath().asString())
             self.renderer.setImageHandler(imageHandler)
 
     def initializeGeometryHandler(self):        
@@ -521,7 +524,7 @@ def initializeRenderer(stdlib, searchPath,
 
     geometryHandler = glslRenderer.getGeometyHandler()
     if geometryHandler:
-        glslRenderer.addToRenderLog('- Initialized geometry loader:')
+        glslRenderer.addToRenderLog('- Initialized geometry loader: ' + desiredGeometry)
         glslRenderer.loadGeometry(desiredGeometry)
         for mesh in geometryHandler.getMeshes():
             glslRenderer.addToRenderLog(' - Loaded Mesh: "%s"' % mesh.getName())
@@ -582,8 +585,10 @@ def performRender(glslRenderer, doc, inputFilename, outputPath, searchPath) -> (
     imageHandler = glslRenderer.getImageHandler()
     imageSearchPathPrev = imageHandler.getSearchPath()
     imageSearchPath = imageSearchPathPrev
-    imageSearchPath.append(searchPath)
-    imageHandler.setSearchPath(imageSearchPath)
+    #imageSearchPath.append(searchPath)
+    #imageHandler.setSearchPath(imageSearchPath)
+    imageHandler.setSearchPath(searchPath)
+    glslRenderer.addToRenderLog(' - Using image search path: %s' % imageHandler.getSearchPath().asString())
 
     # Append to source code search path
     # TODO: There is no way to get and search the path in the API (C++ or Python)
