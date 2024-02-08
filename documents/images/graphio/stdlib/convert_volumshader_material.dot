@@ -1,0 +1,12 @@
+digraph {
+  rankdir = LR;
+    NG_convert_volumshader_material_volumematerial [label= "volumematerial"];
+    NG_convert_volumshader_material_volumematerial[shape = box];
+    NG_convert_volumshader_material_volumematerial ->     NG_convert_volumshader_material_out;
+    NG_convert_volumshader_material_out [label= "out"];
+    NG_convert_volumshader_material_out[shape = box]; 
+    NG_convert_volumshader_material_inINT [label="in"];
+    NG_convert_volumshader_material_inINT [shape = ellipse];
+    NG_convert_volumshader_material_volumematerial [label="volumematerial"];
+    NG_convert_volumshader_material_inINT -> NG_convert_volumshader_material_volumematerial [label=".volumeshader"];
+}

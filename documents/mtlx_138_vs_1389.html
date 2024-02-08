@@ -260,7 +260,7 @@
 <h2 id="materialx-library-comparison">MaterialX Library Comparison</h2>
 <h3 id="libraries-loaded">Libraries Loaded</h3>
 <ul>
-<li>Loaded 759 first library definitions from 46 files. Version 1.38.9<ul>
+<li>Loaded 760 first library definitions from 46 files. Version 1.38.9<ul>
 <li>First library location: ['../../pymaterialx/python/MaterialX/libraries']. Search path: ""</li>
 </ul>
 </li>
@@ -273,7 +273,7 @@
 
 <h3 id="node-definition-comparison">Node Definition Comparison</h3>
 <ul>
-<li>First library has 759 nodedefs.</li>
+<li>First library has 760 nodedefs.</li>
 <li>Second library has 663 nodedefs</li>
 </ul>
 <details><summary>9 node definitions removed</summary>
@@ -293,7 +293,7 @@
 
 </details>
 
-<details><summary>105 node definitions added. (Sorted by category)</summary>
+<details><summary>106 node definitions added. (Sorted by category)</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Name <th> Category <th> NodeGroup </tr>
@@ -376,6 +376,7 @@
 <tr><td> <a href="../documents/definitions/rec709_display_to_lin_rec709.html">ND_rec709_display_to_lin_rec709_color3</a> <td> rec709_display_to_lin_rec709 <td> colortransform </tr>
 <tr><td> <a href="../documents/definitions/rec709_display_to_lin_rec709.html">ND_rec709_display_to_lin_rec709_color4</a> <td> rec709_display_to_lin_rec709 <td> colortransform </tr>
 <tr><td> <a href="../documents/definitions/reflect.html">ND_reflect_vector3</a> <td> reflect <td> math </tr>
+<tr><td> <a href="../documents/definitions/refract.html">ND_refract_vector3</a> <td> refract <td> math </tr>
 <tr><td> <a href="../documents/definitions/safepower.html">ND_safepower_float</a> <td> safepower <td> math </tr>
 <tr><td> <a href="../documents/definitions/safepower.html">ND_safepower_color3</a> <td> safepower <td> math </tr>
 <tr><td> <a href="../documents/definitions/safepower.html">ND_safepower_color4</a> <td> safepower <td> math </tr>
@@ -406,7 +407,7 @@
 
 </details>
 
-<details><summary>54 new node categories were added</summary>
+<details><summary>55 new node categories were added</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Node category <th> Node group <th> Type </tr>
@@ -451,6 +452,7 @@
 <tr><td> <a href="../documents/definitions/randomfloat.html">randomfloat</a> <td> procedural <td> float </tr>
 <tr><td> <a href="../documents/definitions/rec709_display_to_lin_rec709.html">rec709_display_to_lin_rec709</a> <td> colortransform <td> color4 </tr>
 <tr><td> <a href="../documents/definitions/reflect.html">reflect</a> <td> math <td> vector3 </tr>
+<tr><td> <a href="../documents/definitions/refract.html">refract</a> <td> math <td> vector3 </tr>
 <tr><td> <a href="../documents/definitions/safepower.html">safepower</a> <td> math <td> vector4 </tr>
 <tr><td> <a href="../documents/definitions/srgb_displayp3_to_lin_rec709.html">srgb_displayp3_to_lin_rec709</a> <td> colortransform <td> color4 </tr>
 <tr><td> <a href="../documents/definitions/srgb_texture_to_lin_rec709.html">srgb_texture_to_lin_rec709</a> <td> colortransform <td> color4 </tr>
@@ -590,7 +592,7 @@
 <ul>
 <li>First library shader targets: <em>['essl', 'genglsl', 'genmdl', 'genmsl', 'genosl']</em></li>
 <li>Second library shader targets: <em>['genglsl', 'genmdl', 'genosl']</em></li>
-<li>Shader targets added: ['essl', 'genmsl']</li>
+<li>Shader targets added: ['genmsl', 'essl']</li>
 </ul>
 <h5 id="first-library-definitions-implementations">First Library Definitions / Implementations</h5>
 <details><summary>534 shaders: genglsl</summary>
@@ -2216,7 +2218,7 @@
 </tr></table>
 </details>
 
-<details><summary>189 node graphs</summary>
+<details><summary>190 node graphs</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>NodeGraph</th><th>File</th></tr><tr><td>ND_disney_brdf_2012_surface<td>IM_disney_brdf_2012_surface_brdf_explorer<td>disney_brdf_2012.mtlx
 </tr><tr><td>ND_disney_bsdf_2015_surface<td>IM_disney_bsdf_2015_surface_pbrt<td>disney_brdf_2015.mtlx
@@ -2351,6 +2353,7 @@
 </tr><tr><td>ND_place2d_vector2<td>NG_place2d_vector2<td>stdlib_ng.mtlx
 </tr><tr><td>ND_trianglewave_float<td>NG_trianglewave_float<td>stdlib_ng.mtlx
 </tr><tr><td>ND_reflect_vector3<td>NG_reflect_vector3<td>stdlib_ng.mtlx
+</tr><tr><td>ND_refract_vector3<td>NG_refract_vector3<td>stdlib_ng.mtlx
 </tr><tr><td>ND_smoothstep_color3<td>NG_smoothstep_color3<td>stdlib_ng.mtlx
 </tr><tr><td>ND_smoothstep_color4<td>NG_smoothstep_color4<td>stdlib_ng.mtlx
 </tr><tr><td>ND_smoothstep_color3FA<td>NG_smoothstep_color3FA<td>stdlib_ng.mtlx
@@ -4174,9 +4177,9 @@
 <hr>
 
 <h3 id="implementation-comparison">Implementation Comparison</h3>
-<p>First library implementation count: 2909
+<p>First library implementation count: 2910
 Second library implementation count: 2172</p>
-<details><summary>737 implementations added</summary>
+<details><summary>738 implementations added</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Name <th> Node Category <th> Node Type <th></tr>
@@ -4886,6 +4889,7 @@ Second library implementation count: 2172</p>
 <tr><td> NG_rec709_display_to_lin_rec709_color3 <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/rec709_display_to_lin_rec709.html">rec709_display_to_lin_rec709</a> <td> color3 </tr>
 <tr><td> NG_rec709_display_to_lin_rec709_color4 <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/rec709_display_to_lin_rec709.html">rec709_display_to_lin_rec709</a> <td> color4 </tr>
 <tr><td> NG_reflect_vector3 <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/reflect.html">reflect</a> <td> vector3 </tr>
+<tr><td> NG_refract_vector3 <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/refract.html">refract</a> <td> vector3 </tr>
 <tr><td> NG_safepower_color3 <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/safepower.html">safepower</a> <td> color3 </tr>
 <tr><td> NG_safepower_color3FA <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/safepower.html">safepower</a> <td> color3 </tr>
 <tr><td> NG_safepower_color4 <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/safepower.html">safepower</a> <td> color4 </tr>

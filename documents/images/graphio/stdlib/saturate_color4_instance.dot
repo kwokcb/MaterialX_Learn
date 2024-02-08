@@ -1,0 +1,29 @@
+digraph {
+  rankdir = LR;
+    NG_saturate_color4_N_mix_color4 [label= "mix"];
+    NG_saturate_color4_N_mix_color4[shape = box];
+    NG_saturate_color4_N_mix_color4 ->     NG_saturate_color4_out;
+    NG_saturate_color4_out [label= "out"];
+    NG_saturate_color4_out[shape = box]; 
+    NG_saturate_color4_inINT [label="in"];
+    NG_saturate_color4_inINT [shape = ellipse];
+    NG_saturate_color4_N_mix_color4 [label="mix"];
+    NG_saturate_color4_inINT -> NG_saturate_color4_N_mix_color4 [label=".fg"];
+    NG_saturate_color4_amountINT [label="amount"];
+    NG_saturate_color4_amountINT [shape = ellipse];
+    NG_saturate_color4_N_mix_color4 [label="mix"];
+    NG_saturate_color4_amountINT -> NG_saturate_color4_N_mix_color4 [label=".mix"];
+    NG_saturate_color4_N_gray_color4 [label= "luminance"];
+    NG_saturate_color4_N_gray_color4[shape = box];
+    NG_saturate_color4_N_gray_color4 ->     NG_saturate_color4_N_mix_color4 [label= "bg"];
+    NG_saturate_color4_N_mix_color4 [label= "mix"];
+    NG_saturate_color4_N_mix_color4[shape = box]; 
+    NG_saturate_color4_inINT [label="in"];
+    NG_saturate_color4_inINT [shape = ellipse];
+    NG_saturate_color4_N_gray_color4 [label="luminance"];
+    NG_saturate_color4_inINT -> NG_saturate_color4_N_gray_color4 [label=".in"];
+    NG_saturate_color4_lumacoeffsINT [label="lumacoeffs"];
+    NG_saturate_color4_lumacoeffsINT [shape = ellipse];
+    NG_saturate_color4_N_gray_color4 [label="luminance"];
+    NG_saturate_color4_lumacoeffsINT -> NG_saturate_color4_N_gray_color4 [label=".lumacoeffs"];
+}

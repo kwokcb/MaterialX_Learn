@@ -1,0 +1,16 @@
+digraph {
+  rankdir = LR;
+    IMP_UsdPrimvarReader_vector4_primvar [label= "geompropvalue"];
+    IMP_UsdPrimvarReader_vector4_primvar[shape = box];
+    IMP_UsdPrimvarReader_vector4_primvar ->     IMP_UsdPrimvarReader_vector4_out;
+    IMP_UsdPrimvarReader_vector4_out [label= "out"];
+    IMP_UsdPrimvarReader_vector4_out[shape = box]; 
+    IMP_UsdPrimvarReader_vector4_varnameINT [label="varname"];
+    IMP_UsdPrimvarReader_vector4_varnameINT [shape = ellipse];
+    IMP_UsdPrimvarReader_vector4_primvar [label="geompropvalue"];
+    IMP_UsdPrimvarReader_vector4_varnameINT -> IMP_UsdPrimvarReader_vector4_primvar [label=".geomprop"];
+    IMP_UsdPrimvarReader_vector4_fallbackINT [label="fallback"];
+    IMP_UsdPrimvarReader_vector4_fallbackINT [shape = ellipse];
+    IMP_UsdPrimvarReader_vector4_primvar [label="geompropvalue"];
+    IMP_UsdPrimvarReader_vector4_fallbackINT -> IMP_UsdPrimvarReader_vector4_primvar [label=".default"];
+}

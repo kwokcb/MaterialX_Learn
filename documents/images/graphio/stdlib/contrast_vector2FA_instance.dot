@@ -1,0 +1,34 @@
+digraph {
+  rankdir = LR;
+    NG_contrast_vector2FA_N_add_vector2FA [label= "add"];
+    NG_contrast_vector2FA_N_add_vector2FA[shape = box];
+    NG_contrast_vector2FA_N_add_vector2FA ->     NG_contrast_vector2FA_out;
+    NG_contrast_vector2FA_out [label= "out"];
+    NG_contrast_vector2FA_out[shape = box]; 
+    NG_contrast_vector2FA_pivotINT [label="pivot"];
+    NG_contrast_vector2FA_pivotINT [shape = ellipse];
+    NG_contrast_vector2FA_N_add_vector2FA [label="add"];
+    NG_contrast_vector2FA_pivotINT -> NG_contrast_vector2FA_N_add_vector2FA [label=".in2"];
+    NG_contrast_vector2FA_N_mul_vector2FA [label= "multiply"];
+    NG_contrast_vector2FA_N_mul_vector2FA[shape = box];
+    NG_contrast_vector2FA_N_mul_vector2FA ->     NG_contrast_vector2FA_N_add_vector2FA [label= "in1"];
+    NG_contrast_vector2FA_N_add_vector2FA [label= "add"];
+    NG_contrast_vector2FA_N_add_vector2FA[shape = box]; 
+    NG_contrast_vector2FA_amountINT [label="amount"];
+    NG_contrast_vector2FA_amountINT [shape = ellipse];
+    NG_contrast_vector2FA_N_mul_vector2FA [label="multiply"];
+    NG_contrast_vector2FA_amountINT -> NG_contrast_vector2FA_N_mul_vector2FA [label=".in2"];
+    NG_contrast_vector2FA_N_sub_vector2FA [label= "subtract"];
+    NG_contrast_vector2FA_N_sub_vector2FA[shape = box];
+    NG_contrast_vector2FA_N_sub_vector2FA ->     NG_contrast_vector2FA_N_mul_vector2FA [label= "in1"];
+    NG_contrast_vector2FA_N_mul_vector2FA [label= "multiply"];
+    NG_contrast_vector2FA_N_mul_vector2FA[shape = box]; 
+    NG_contrast_vector2FA_inINT [label="in"];
+    NG_contrast_vector2FA_inINT [shape = ellipse];
+    NG_contrast_vector2FA_N_sub_vector2FA [label="subtract"];
+    NG_contrast_vector2FA_inINT -> NG_contrast_vector2FA_N_sub_vector2FA [label=".in1"];
+    NG_contrast_vector2FA_pivotINT [label="pivot"];
+    NG_contrast_vector2FA_pivotINT [shape = ellipse];
+    NG_contrast_vector2FA_N_sub_vector2FA [label="subtract"];
+    NG_contrast_vector2FA_pivotINT -> NG_contrast_vector2FA_N_sub_vector2FA [label=".in2"];
+}

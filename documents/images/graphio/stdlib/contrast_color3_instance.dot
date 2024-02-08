@@ -1,0 +1,34 @@
+digraph {
+  rankdir = LR;
+    NG_contrast_color3_N_add_color3 [label= "add"];
+    NG_contrast_color3_N_add_color3[shape = box];
+    NG_contrast_color3_N_add_color3 ->     NG_contrast_color3_out;
+    NG_contrast_color3_out [label= "out"];
+    NG_contrast_color3_out[shape = box]; 
+    NG_contrast_color3_pivotINT [label="pivot"];
+    NG_contrast_color3_pivotINT [shape = ellipse];
+    NG_contrast_color3_N_add_color3 [label="add"];
+    NG_contrast_color3_pivotINT -> NG_contrast_color3_N_add_color3 [label=".in2"];
+    NG_contrast_color3_N_mul_color3 [label= "multiply"];
+    NG_contrast_color3_N_mul_color3[shape = box];
+    NG_contrast_color3_N_mul_color3 ->     NG_contrast_color3_N_add_color3 [label= "in1"];
+    NG_contrast_color3_N_add_color3 [label= "add"];
+    NG_contrast_color3_N_add_color3[shape = box]; 
+    NG_contrast_color3_amountINT [label="amount"];
+    NG_contrast_color3_amountINT [shape = ellipse];
+    NG_contrast_color3_N_mul_color3 [label="multiply"];
+    NG_contrast_color3_amountINT -> NG_contrast_color3_N_mul_color3 [label=".in2"];
+    NG_contrast_color3_N_sub_color3 [label= "subtract"];
+    NG_contrast_color3_N_sub_color3[shape = box];
+    NG_contrast_color3_N_sub_color3 ->     NG_contrast_color3_N_mul_color3 [label= "in1"];
+    NG_contrast_color3_N_mul_color3 [label= "multiply"];
+    NG_contrast_color3_N_mul_color3[shape = box]; 
+    NG_contrast_color3_inINT [label="in"];
+    NG_contrast_color3_inINT [shape = ellipse];
+    NG_contrast_color3_N_sub_color3 [label="subtract"];
+    NG_contrast_color3_inINT -> NG_contrast_color3_N_sub_color3 [label=".in1"];
+    NG_contrast_color3_pivotINT [label="pivot"];
+    NG_contrast_color3_pivotINT [shape = ellipse];
+    NG_contrast_color3_N_sub_color3 [label="subtract"];
+    NG_contrast_color3_pivotINT -> NG_contrast_color3_N_sub_color3 [label=".in2"];
+}

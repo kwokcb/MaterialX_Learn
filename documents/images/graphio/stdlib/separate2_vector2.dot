@@ -1,0 +1,21 @@
+digraph {
+  rankdir = LR;
+    NG_separate2_vector2_N_x_vector2 [label= "swizzle"];
+    NG_separate2_vector2_N_x_vector2[shape = box];
+    NG_separate2_vector2_N_x_vector2 ->     NG_separate2_vector2_outx;
+    NG_separate2_vector2_outx [label= "outx"];
+    NG_separate2_vector2_outx[shape = box]; 
+    NG_separate2_vector2_inINT [label="in"];
+    NG_separate2_vector2_inINT [shape = ellipse];
+    NG_separate2_vector2_N_x_vector2 [label="swizzle"];
+    NG_separate2_vector2_inINT -> NG_separate2_vector2_N_x_vector2 [label=".in"];
+    NG_separate2_vector2_N_y_vector2 [label= "swizzle"];
+    NG_separate2_vector2_N_y_vector2[shape = box];
+    NG_separate2_vector2_N_y_vector2 ->     NG_separate2_vector2_outy;
+    NG_separate2_vector2_outy [label= "outy"];
+    NG_separate2_vector2_outy[shape = box]; 
+    NG_separate2_vector2_inINT [label="in"];
+    NG_separate2_vector2_inINT [shape = ellipse];
+    NG_separate2_vector2_N_y_vector2 [label="swizzle"];
+    NG_separate2_vector2_inINT -> NG_separate2_vector2_N_y_vector2 [label=".in"];
+}
