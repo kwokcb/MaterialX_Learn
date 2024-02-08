@@ -1,0 +1,17 @@
+digraph {
+  rankdir = LR;
+    NG_convert_BSDF_material_surfacematerial [label= "surfacematerial"];
+    NG_convert_BSDF_material_surfacematerial[shape = box];
+    NG_convert_BSDF_material_surfacematerial ->     NG_convert_BSDF_material_out;
+    NG_convert_BSDF_material_out [label= "out"];
+    NG_convert_BSDF_material_out[shape = box]; 
+    NG_convert_BSDF_material_surface [label= "surface"];
+    NG_convert_BSDF_material_surface[shape = box];
+    NG_convert_BSDF_material_surface ->     NG_convert_BSDF_material_surfacematerial [label= "surfaceshader"];
+    NG_convert_BSDF_material_surfacematerial [label= "surfacematerial"];
+    NG_convert_BSDF_material_surfacematerial[shape = box]; 
+    NG_convert_BSDF_material_inINT [label="in"];
+    NG_convert_BSDF_material_inINT [shape = ellipse];
+    NG_convert_BSDF_material_surface [label="surface"];
+    NG_convert_BSDF_material_inINT -> NG_convert_BSDF_material_surface [label=".bsdf"];
+}

@@ -1,0 +1,22 @@
+digraph {
+  rankdir = LR;
+    NG_convert_float_material_surfacematerial [label= "surfacematerial"];
+    NG_convert_float_material_surfacematerial[shape = box];
+    NG_convert_float_material_surfacematerial ->     NG_convert_float_material_out;
+    NG_convert_float_material_out [label= "out"];
+    NG_convert_float_material_out[shape = box]; 
+    NG_convert_float_material_surface_unlit [label= "surface_unlit"];
+    NG_convert_float_material_surface_unlit[shape = box];
+    NG_convert_float_material_surface_unlit ->     NG_convert_float_material_surfacematerial [label= "surfaceshader"];
+    NG_convert_float_material_surfacematerial [label= "surfacematerial"];
+    NG_convert_float_material_surfacematerial[shape = box]; 
+    NG_convert_float_material_float_to_color3 [label= "convert"];
+    NG_convert_float_material_float_to_color3[shape = box];
+    NG_convert_float_material_float_to_color3 ->     NG_convert_float_material_surface_unlit [label= "emission_color"];
+    NG_convert_float_material_surface_unlit [label= "surface_unlit"];
+    NG_convert_float_material_surface_unlit[shape = box]; 
+    NG_convert_float_material_inINT [label="in"];
+    NG_convert_float_material_inINT [shape = ellipse];
+    NG_convert_float_material_float_to_color3 [label="convert"];
+    NG_convert_float_material_inINT -> NG_convert_float_material_float_to_color3 [label=".in"];
+}

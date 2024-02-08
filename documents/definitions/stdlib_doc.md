@@ -26,7 +26,7 @@
 * [surfacematerial](#node-surfacematerial) [volumematerial](#node-volumematerial) 
 ---------
 ### Node Group: math
-* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [arrayappend](#node-arrayappend) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [creatematrix](#node-creatematrix) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [reflect](#node-reflect) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [safepower](#node-safepower) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) [trianglewave](#node-trianglewave) 
+* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [arrayappend](#node-arrayappend) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [creatematrix](#node-creatematrix) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [reflect](#node-reflect) [refract](#node-refract) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [safepower](#node-safepower) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) [trianglewave](#node-trianglewave) 
 ---------
 ### Node Group: organization
 * [dot](#node-dot) 
@@ -9807,6 +9807,67 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 1, 0, 0 |  |  |  |  |  |  |  |  | Incident vector |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  | Surface normal |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+</p></details>
+ 
+### Category: *refract*
+<details><summary>ND_refract_vector3</summary>
+<p>
+ 
+* *Nodedef*: ND_refract_vector3
+* *Type*: vector3
+* *Node Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: Compute the refraction vector
+* *Nodegraph*: NG_refract_vector3
+
+
+```mermaid
+graph LR; 
+    NG_refract_vector3_result{ifgreater} --> NG_refract_vector3_out([out])
+    style NG_refract_vector3_out fill:#0C0, color:#111
+    NG_refract_vector3_k[subtract] --".value2"--> NG_refract_vector3_result{ifgreater}
+    style NG_refract_vector3_result fill:#F80, color:#111
+    NG_refract_vector3_iorsq_one_IdotNsq[multiply] --".in2"--> NG_refract_vector3_k[subtract]
+    NG_refract_vector3_iorsq[multiply] --".in1"--> NG_refract_vector3_iorsq_one_IdotNsq[multiply]
+    NG_refract_vector3_iorINT([ior]) ==.in1==> NG_refract_vector3_iorsq[multiply]
+    style NG_refract_vector3_iorINT fill:#0CF, color:#111
+    NG_refract_vector3_iorINT([ior]) ==.in2==> NG_refract_vector3_iorsq[multiply]
+    style NG_refract_vector3_iorINT fill:#0CF, color:#111
+    NG_refract_vector3_one_IdotNsq[subtract] --".in2"--> NG_refract_vector3_iorsq_one_IdotNsq[multiply]
+    NG_refract_vector3_IdotNsq[multiply] --".in2"--> NG_refract_vector3_one_IdotNsq[subtract]
+    NG_refract_vector3_IdotN[dotproduct] --".in1"--> NG_refract_vector3_IdotNsq[multiply]
+    NG_refract_vector3_inINT([in]) ==.in1==> NG_refract_vector3_IdotN[dotproduct]
+    style NG_refract_vector3_inINT fill:#0CF, color:#111
+    NG_refract_vector3_normalINT([normal]) ==.in2==> NG_refract_vector3_IdotN[dotproduct]
+    style NG_refract_vector3_normalINT fill:#0CF, color:#111
+    NG_refract_vector3_IdotN[dotproduct] --".in2"--> NG_refract_vector3_IdotNsq[multiply]
+    NG_refract_vector3_refract_dir[subtract] --".in2"--> NG_refract_vector3_result{ifgreater}
+    style NG_refract_vector3_result fill:#F80, color:#111
+    NG_refract_vector3_I_scaled[multiply] --".in1"--> NG_refract_vector3_refract_dir[subtract]
+    NG_refract_vector3_inINT([in]) ==.in1==> NG_refract_vector3_I_scaled[multiply]
+    style NG_refract_vector3_inINT fill:#0CF, color:#111
+    NG_refract_vector3_iorINT([ior]) ==.in2==> NG_refract_vector3_I_scaled[multiply]
+    style NG_refract_vector3_iorINT fill:#0CF, color:#111
+    NG_refract_vector3_N_scaled[multiply] --".in2"--> NG_refract_vector3_refract_dir[subtract]
+    NG_refract_vector3_normalINT([normal]) ==.in1==> NG_refract_vector3_N_scaled[multiply]
+    style NG_refract_vector3_normalINT fill:#0CF, color:#111
+    NG_refract_vector3_ior_NdotI_sqrt_k[add] --".in2"--> NG_refract_vector3_N_scaled[multiply]
+    NG_refract_vector3_ior_NdotI[multiply] --".in1"--> NG_refract_vector3_ior_NdotI_sqrt_k[add]
+    NG_refract_vector3_iorINT([ior]) ==.in1==> NG_refract_vector3_ior_NdotI[multiply]
+    style NG_refract_vector3_iorINT fill:#0CF, color:#111
+    NG_refract_vector3_IdotN[dotproduct] --".in2"--> NG_refract_vector3_ior_NdotI[multiply]
+    NG_refract_vector3_sqrt_k[sqrt] --".in2"--> NG_refract_vector3_ior_NdotI_sqrt_k[add]
+    NG_refract_vector3_k[subtract] --".in"--> NG_refract_vector3_sqrt_k[sqrt]
+
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | vector3 | 1, 0, 0 |  |  |  |  |  |  |  |  | Incident vector |  |
+| **normal** | vector3 | None |  |  |  |  |  |  |  |  | Surface normal |  |
+| **ior** | float | 1.0 |  |  |  |  |  |  |  |  | Index of refraction |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
