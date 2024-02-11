@@ -260,7 +260,7 @@
 <h2 id="materialx-library-comparison">MaterialX Library Comparison</h2>
 <h3 id="libraries-loaded">Libraries Loaded</h3>
 <ul>
-<li>Loaded 760 first library definitions from 46 files. Version 1.38.9<ul>
+<li>Loaded 767 first library definitions from 46 files. Version 1.38.9<ul>
 <li>First library location: ['../../pymaterialx/python/MaterialX/libraries']. Search path: ""</li>
 </ul>
 </li>
@@ -273,10 +273,10 @@
 
 <h3 id="node-definition-comparison">Node Definition Comparison</h3>
 <ul>
-<li>First library has 760 nodedefs.</li>
+<li>First library has 767 nodedefs.</li>
 <li>Second library has 739 nodedefs</li>
 </ul>
-<details><summary>21 node definitions added. (Sorted by category)</summary>
+<details><summary>28 node definitions added. (Sorted by category)</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Name <th> Category <th> NodeGroup </tr>
@@ -289,6 +289,13 @@
 <tr><td> <a href="../documents/definitions/open_pbr_surface.html">ND_open_pbr_surface_surfaceshader</a> <td> open_pbr_surface <td> pbr </tr>
 <tr><td> <a href="../documents/definitions/reflect.html">ND_reflect_vector3</a> <td> reflect <td> math </tr>
 <tr><td> <a href="../documents/definitions/refract.html">ND_refract_vector3</a> <td> refract <td> math </tr>
+<tr><td> <a href="../documents/definitions/round.html">ND_round_float</a> <td> round <td> math </tr>
+<tr><td> <a href="../documents/definitions/round.html">ND_round_color3</a> <td> round <td> math </tr>
+<tr><td> <a href="../documents/definitions/round.html">ND_round_color4</a> <td> round <td> math </tr>
+<tr><td> <a href="../documents/definitions/round.html">ND_round_vector2</a> <td> round <td> math </tr>
+<tr><td> <a href="../documents/definitions/round.html">ND_round_vector3</a> <td> round <td> math </tr>
+<tr><td> <a href="../documents/definitions/round.html">ND_round_vector4</a> <td> round <td> math </tr>
+<tr><td> <a href="../documents/definitions/round.html">ND_round_integer</a> <td> round <td> math </tr>
 <tr><td> <a href="../documents/definitions/safepower.html">ND_safepower_float</a> <td> safepower <td> math </tr>
 <tr><td> <a href="../documents/definitions/safepower.html">ND_safepower_color3</a> <td> safepower <td> math </tr>
 <tr><td> <a href="../documents/definitions/safepower.html">ND_safepower_color4</a> <td> safepower <td> math </tr>
@@ -305,7 +312,7 @@
 
 </details>
 
-<details><summary>8 new node categories were added</summary>
+<details><summary>9 new node categories were added</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Node category <th> Node group <th> Type </tr>
@@ -315,6 +322,7 @@
 <tr><td> <a href="../documents/definitions/open_pbr_surface.html">open_pbr_surface</a> <td> pbr <td> surfaceshader </tr>
 <tr><td> <a href="../documents/definitions/reflect.html">reflect</a> <td> math <td> vector3 </tr>
 <tr><td> <a href="../documents/definitions/refract.html">refract</a> <td> math <td> vector3 </tr>
+<tr><td> <a href="../documents/definitions/round.html">round</a> <td> math <td> integer </tr>
 <tr><td> <a href="../documents/definitions/safepower.html">safepower</a> <td> math <td> vector4 </tr>
 <tr><td> <a href="../documents/definitions/viewdirection.html">viewdirection</a> <td> npr <td> vector3 </tr>
 </table>
@@ -343,7 +351,7 @@
 <li>Second library shader targets: <em>['essl', 'genglsl', 'genmdl', 'genmsl', 'genosl']</em></li>
 </ul>
 <h5 id="first-library-definitions-implementations">First Library Definitions / Implementations</h5>
-<details><summary>534 shaders: essl</summary>
+<details><summary>541 shaders: essl</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>Implementation</th><th>File</th></tr><tr><td>ND_point_light<td>IM_point_light_genglsl<td>lights_genglsl_impl.mtlx
 </tr><tr><td>ND_directional_light<td>IM_directional_light_genglsl<td>lights_genglsl_impl.mtlx
@@ -561,6 +569,13 @@
 </tr><tr><td>ND_ceil_vector3<td>IM_ceil_vector3_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_ceil_vector4<td>IM_ceil_vector4_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_ceil_integer<td>IM_ceil_integer_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_float<td>IM_round_float_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_color3<td>IM_round_color3_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_color4<td>IM_round_color4_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_vector2<td>IM_round_vector2_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_vector3<td>IM_round_vector3_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_vector4<td>IM_round_vector4_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_integer<td>IM_round_integer_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_power_float<td>IM_power_float_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_power_color3<td>IM_power_color3_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_power_color4<td>IM_power_color4_genglsl<td>stdlib_genglsl_impl.mtlx
@@ -882,7 +897,7 @@
 </tr></table>
 </details>
 
-<details><summary>534 shaders: genglsl</summary>
+<details><summary>541 shaders: genglsl</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>Implementation</th><th>File</th></tr><tr><td>ND_point_light<td>IM_point_light_genglsl<td>lights_genglsl_impl.mtlx
 </tr><tr><td>ND_directional_light<td>IM_directional_light_genglsl<td>lights_genglsl_impl.mtlx
@@ -1100,6 +1115,13 @@
 </tr><tr><td>ND_ceil_vector3<td>IM_ceil_vector3_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_ceil_vector4<td>IM_ceil_vector4_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_ceil_integer<td>IM_ceil_integer_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_float<td>IM_round_float_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_color3<td>IM_round_color3_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_color4<td>IM_round_color4_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_vector2<td>IM_round_vector2_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_vector3<td>IM_round_vector3_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_vector4<td>IM_round_vector4_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_round_integer<td>IM_round_integer_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_power_float<td>IM_power_float_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_power_color3<td>IM_power_color3_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_power_color4<td>IM_power_color4_genglsl<td>stdlib_genglsl_impl.mtlx
@@ -1421,7 +1443,7 @@
 </tr></table>
 </details>
 
-<details><summary>543 shaders: genmdl</summary>
+<details><summary>550 shaders: genmdl</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>Implementation</th><th>File</th></tr><tr><td>ND_viewdirection_vector3<td>IM_viewdirection_vector3_genmdl<td>nprlib_genmdl_impl.mtlx
 </tr><tr><td>ND_oren_nayar_diffuse_bsdf<td>IM_oren_nayar_diffuse_bsdf_genmdl<td>pbrlib_genmdl_impl.mtlx
@@ -1646,6 +1668,13 @@
 </tr><tr><td>ND_ceil_vector3<td>IM_ceil_vector3_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_ceil_vector4<td>IM_ceil_vector4_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_ceil_integer<td>IM_ceil_integer_genmdl<td>stdlib_genmdl_impl.mtlx
+</tr><tr><td>ND_round_float<td>IM_round_float_genmdl<td>stdlib_genmdl_impl.mtlx
+</tr><tr><td>ND_round_color3<td>IM_round_color3_genmdl<td>stdlib_genmdl_impl.mtlx
+</tr><tr><td>ND_round_color4<td>IM_round_color4_genmdl<td>stdlib_genmdl_impl.mtlx
+</tr><tr><td>ND_round_vector2<td>IM_round_vector2_genmdl<td>stdlib_genmdl_impl.mtlx
+</tr><tr><td>ND_round_vector3<td>IM_round_vector3_genmdl<td>stdlib_genmdl_impl.mtlx
+</tr><tr><td>ND_round_vector4<td>IM_round_vector4_genmdl<td>stdlib_genmdl_impl.mtlx
+</tr><tr><td>ND_round_integer<td>IM_round_integer_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_power_float<td>IM_power_float_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_power_color3<td>IM_power_color3_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_power_color4<td>IM_power_color4_genmdl<td>stdlib_genmdl_impl.mtlx
@@ -1969,7 +1998,7 @@
 </tr></table>
 </details>
 
-<details><summary>533 shaders: genmsl</summary>
+<details><summary>540 shaders: genmsl</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>Implementation</th><th>File</th></tr><tr><td>ND_point_light<td>IM_point_light_genmsl<td>lights_genmsl_impl.mtlx
 </tr><tr><td>ND_directional_light<td>IM_directional_light_genmsl<td>lights_genmsl_impl.mtlx
@@ -2186,6 +2215,13 @@
 </tr><tr><td>ND_ceil_vector3<td>IM_ceil_vector3_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_ceil_vector4<td>IM_ceil_vector4_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_ceil_integer<td>IM_ceil_integer_genmsl<td>stdlib_genmsl_impl.mtlx
+</tr><tr><td>ND_round_float<td>IM_round_float_genmsl<td>stdlib_genmsl_impl.mtlx
+</tr><tr><td>ND_round_color3<td>IM_round_color3_genmsl<td>stdlib_genmsl_impl.mtlx
+</tr><tr><td>ND_round_color4<td>IM_round_color4_genmsl<td>stdlib_genmsl_impl.mtlx
+</tr><tr><td>ND_round_vector2<td>IM_round_vector2_genmsl<td>stdlib_genmsl_impl.mtlx
+</tr><tr><td>ND_round_vector3<td>IM_round_vector3_genmsl<td>stdlib_genmsl_impl.mtlx
+</tr><tr><td>ND_round_vector4<td>IM_round_vector4_genmsl<td>stdlib_genmsl_impl.mtlx
+</tr><tr><td>ND_round_integer<td>IM_round_integer_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_power_float<td>IM_power_float_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_power_color3<td>IM_power_color3_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_power_color4<td>IM_power_color4_genmsl<td>stdlib_genmsl_impl.mtlx
@@ -2507,7 +2543,7 @@
 </tr></table>
 </details>
 
-<details><summary>531 shaders: genosl</summary>
+<details><summary>538 shaders: genosl</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>Implementation</th><th>File</th></tr><tr><td>ND_viewdirection_vector3<td>IM_viewdirection_vector3_genosl<td>nprlib_genosl_impl.mtlx
 </tr><tr><td>ND_oren_nayar_diffuse_bsdf<td>IM_oren_nayar_diffuse_bsdf_genosl<td>pbrlib_genosl_impl.mtlx
@@ -2722,6 +2758,13 @@
 </tr><tr><td>ND_ceil_vector3<td>IM_ceil_vector3_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_ceil_vector4<td>IM_ceil_vector4_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_ceil_integer<td>IM_ceil_integer_genosl<td>stdlib_genosl_impl.mtlx
+</tr><tr><td>ND_round_float<td>IM_round_float_genosl<td>stdlib_genosl_impl.mtlx
+</tr><tr><td>ND_round_color3<td>IM_round_color3_genosl<td>stdlib_genosl_impl.mtlx
+</tr><tr><td>ND_round_color4<td>IM_round_color4_genosl<td>stdlib_genosl_impl.mtlx
+</tr><tr><td>ND_round_vector2<td>IM_round_vector2_genosl<td>stdlib_genosl_impl.mtlx
+</tr><tr><td>ND_round_vector3<td>IM_round_vector3_genosl<td>stdlib_genosl_impl.mtlx
+</tr><tr><td>ND_round_vector4<td>IM_round_vector4_genosl<td>stdlib_genosl_impl.mtlx
+</tr><tr><td>ND_round_integer<td>IM_round_integer_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_power_float<td>IM_power_float_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_power_color3<td>IM_power_color3_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_power_color4<td>IM_power_color4_genosl<td>stdlib_genosl_impl.mtlx
@@ -6222,9 +6265,9 @@
 <hr>
 
 <h3 id="implementation-comparison">Implementation Comparison</h3>
-<p>First library implementation count: 2461
+<p>First library implementation count: 2489
 Second library implementation count: 2390</p>
-<details><summary>71 implementations added</summary>
+<details><summary>99 implementations added</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Name <th> Node Category <th> Node Type <th></tr>
@@ -6248,6 +6291,34 @@ Second library implementation count: 2390</p>
 <tr><td> IM_normalmap_vector2_genmdl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/normalmap.html">normalmap</a> <td> vector3 </tr>
 <tr><td> IM_normalmap_vector2_genmsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/normalmap.html">normalmap</a> <td> vector3 </tr>
 <tr><td> IM_normalmap_vector2_genosl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/normalmap.html">normalmap</a> <td> vector3 </tr>
+<tr><td> IM_round_color3_genglsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> color3 </tr>
+<tr><td> IM_round_color3_genmdl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> color3 </tr>
+<tr><td> IM_round_color3_genmsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> color3 </tr>
+<tr><td> IM_round_color3_genosl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> color3 </tr>
+<tr><td> IM_round_color4_genglsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> color4 </tr>
+<tr><td> IM_round_color4_genmdl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> color4 </tr>
+<tr><td> IM_round_color4_genmsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> color4 </tr>
+<tr><td> IM_round_color4_genosl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> color4 </tr>
+<tr><td> IM_round_float_genglsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> float </tr>
+<tr><td> IM_round_float_genmdl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> float </tr>
+<tr><td> IM_round_float_genmsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> float </tr>
+<tr><td> IM_round_float_genosl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> float </tr>
+<tr><td> IM_round_integer_genglsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> integer </tr>
+<tr><td> IM_round_integer_genmdl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> integer </tr>
+<tr><td> IM_round_integer_genmsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> integer </tr>
+<tr><td> IM_round_integer_genosl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> integer </tr>
+<tr><td> IM_round_vector2_genglsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> vector2 </tr>
+<tr><td> IM_round_vector2_genmdl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> vector2 </tr>
+<tr><td> IM_round_vector2_genmsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> vector2 </tr>
+<tr><td> IM_round_vector2_genosl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> vector2 </tr>
+<tr><td> IM_round_vector3_genglsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> vector3 </tr>
+<tr><td> IM_round_vector3_genmdl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> vector3 </tr>
+<tr><td> IM_round_vector3_genmsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> vector3 </tr>
+<tr><td> IM_round_vector3_genosl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> vector3 </tr>
+<tr><td> IM_round_vector4_genglsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> vector4 </tr>
+<tr><td> IM_round_vector4_genmdl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> vector4 </tr>
+<tr><td> IM_round_vector4_genmsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> vector4 </tr>
+<tr><td> IM_round_vector4_genosl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/round.html">round</a> <td> vector4 </tr>
 <tr><td> IM_viewdirection_vector3_genglsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/viewdirection.html">viewdirection</a> <td> vector3 </tr>
 <tr><td> IM_viewdirection_vector3_genmdl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/viewdirection.html">viewdirection</a> <td> vector3 </tr>
 <tr><td> IM_viewdirection_vector3_genmsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/viewdirection.html">viewdirection</a> <td> vector3 </tr>

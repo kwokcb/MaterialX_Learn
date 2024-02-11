@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"> -->
+  <title>MaterialX Javascript Utilities</title>
+  <!-- <link rel="icon" type="image/x-icon" href="public/favicon.ico" /> -->
+  <style>
+    body {
+      font-family: Arial
+    }
+
+    /* Property editor item color */
+    .peditoritem {
+      background-color: #334444;
+    }
+
+    /* Property editor folder color */
+    .peditorfolder {
+      background-color: #333333;
+    }
+
+    .peditor_material_assigned {
+      background-color: #006cb8;
+    }
+
+    .peditor_material_assigned:hover {
+      background-color: #32adff;
+    }
+  </style>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!--
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/theme/monokai.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/theme/material.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/xml/xml.min.js"></script>
+    -->
+<script defer src="main.js"></script></head>
+
+<body>
+  <!--Start-->
+
+  <script type="text/javascript" src="JsMaterialXGenShader.js"></script>
+
+  <div class="container p-2">
+
+    <h2>MaterialX Javascript Utilities</h2>
+    The following is a set of utilities to work with MaterialX using it's Javascript
+    packages.
+
+    <h3>Document Visualization</h3>
+    <p>A MaterialX document can be loaded in and previewed as text.
+      <ul>
+        <li>A selected material from the document can be rendered in 3D using MaterialX shader generation</li>
+        <li>A selected material from the document can have it's shader code shown as text</li>
+        <li>The document can be translated into a node graph in `Mermaid` form. The
+          <a href="_TOP_FOLDER_/documents/mermaidChecker.html">Mermaid Visualizer</a> or any
+          consumer of Mermaid graphs (such as Markdown) can be used to visualize the graph.</li>
+        </li>
+      </ul>
+    </p>
+    <button class="btn btn-outline-primary shadow-sm" id="loadMaterialXButton">Load MaterialX Document</button>
+    <div class="row flex">
+      <div class="col-sm-12 p-2">
+        <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXTextArea" rows="22"
+          style="width: 100%;" placeholder="Loaded MaterialX document will be displayed here"></textarea><br>
+      </div>
+      <div class="container p-2 shadow-sm">
+        <h3>Rendering Options</h3>
+        <div class="row flex">
+          <div class="col-sm-12 p-2">
+            <label for="renderableItem">Renderable Item:</label>
+            <select id="renderableItem">
+              <!-- <option value="0"></option>
+              <option value="1"></option> -->
+            </select>
+            <br>
+            <label for="shaderInterface">Shader Interface:</label>
+            <select id="shaderInterface">
+              <option value="0">Reduced</option>
+              <option value="1">Complete</option>
+            </select>
+          </div>
+        <div>
+      </div>
+    </div>
+
+    <p></p>
+    <button class="btn btn-outline-primary shadow-sm" id="renderButton">Render</button>
+    <div id="canvasContainer" class="container p-0" style="height: 512px">
+      <canvas id="webglcanvas" tabindex=1 style="outline: none;"></canvas>
+    </div>
+
+    <p></p>
+
+    <!-- Button to generate shader -->
+    <button class="btn btn-outline-primary shadow-sm" id="generateShaderButton">Generate Shader</button>
+    <div class="row flex-nowrap">
+      <div class="col-sm-12 p-2">
+        <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXShaderVS" rows="5"
+          style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
+        <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXShader" rows="15"
+          style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Button to generate graph -->
+    <button class="btn btn-outline-primary shadow-sm" id="generateGraphButton">Generate Graph</button>
+    <br>
+    <label for="graphOrientation">Graph Orientation:</label>
+    <select id="graphOrientation">
+      <option value="0">Left to Right</option>
+      <option value="1">Top to Bottom</option>
+    </select>
+    <br>
+    <div class="row flex-nowrap">
+      <div class="col-sm-12 p-2">
+        <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXGraph" rows="10"
+          style="width: 100%;" placeholder="Generated Mermaid Graph will be displayed here"></textarea><br>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script type="text/javascript">
+    console.log("Load MaterialX");
+
+    let mx = null;
+    let doc = null;
+    let renderableItems = [];
+
+    function doStuff(mx) {
+      doc = mx.createDocument();
+      console.log(mx.prettyPrint(doc));
+    }
+
+    function loadMaterialX() {
+      return new Promise((resolve, reject) => {
+        MaterialX().then((mtlx) => {
+          // Save the MaterialX instance to the global variable
+          mx = mtlx;
+
+          console.log("MaterialX loaded");
+
+          // Resolve the promise
+          resolve();
+        }).catch((error) => {
+          // Reject the promise if there's an error
+          reject(error);
+        });
+      });
+    }
+
+    // Call the asynchronous function and then perform additional logic
+    loadMaterialX().then(() => {
+      // Additional logic after MaterialX is loaded
+      console.log("MaterialX is loaded");
+      //doStuff(mx);
+    }).catch((error) => {
+      console.error("Error loading MaterialX:", error);
+    });
+
+    // Attach event listener to the button
+    document.getElementById('loadMaterialXButton').addEventListener('click', () => {
+      // Open file dialog
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = '.mtlx';
+      input.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          loadMaterialXDocument(file, file.name);
+        }
+      });
+
+      // Trigger the file dialog
+      input.click();
+    });
+
+    const ALL_GEOMETRY_SPECIFIER = "*";
+    const NO_GEOMETRY_SPECIFIER = "";
+
+    function findRenderableElements(doc) {
+      const materialNodes = doc.getMaterialNodes();
+      let shaderList = [];
+      let foundRenderable = false;
+      let renderableItems = [];
+
+      for (let i = 0; i < materialNodes.length; ++i) {
+        let materialNode = materialNodes[i];
+        if (materialNode) {
+          console.log('Scan material: ', materialNode.getNamePath());
+          let shaderNodes = mx.getShaderNodes(materialNode)
+          if (shaderNodes.length > 0) {
+            let shaderNodePath = shaderNodes[0].getNamePath()
+            if (!shaderList.includes(shaderNodePath)) {
+              let assignment = NO_GEOMETRY_SPECIFIER;
+              if (foundRenderable == false) {
+                assignment = ALL_GEOMETRY_SPECIFIER;
+                foundRenderable = true;
+              }
+              //console.log('-- add shader: ', shaderNodePath);
+              shaderList.push(shaderNodePath);
+              renderableItems.push(shaderNodePath);
+            }
+          }
+        }
+      }
+      const nodeGraphs = doc.getNodeGraphs();
+      for (let i = 0; i < nodeGraphs.length; ++i) {
+        let nodeGraph = nodeGraphs[i];
+        if (nodeGraph) {
+          if (nodeGraph.hasAttribute('nodedef') || nodeGraph.hasSourceUri()) {
+            continue;
+          }
+          // Skip any nodegraph that is connected to something downstream
+          if (nodeGraph.getDownstreamPorts().length > 0) {
+            continue
+          }
+          let outputs = nodeGraph.getOutputs();
+          for (let j = 0; j < outputs.length; ++j) {
+            let output = outputs[j];
+            {
+              let assignment = NO_GEOMETRY_SPECIFIER;
+              if (foundRenderable == false) {
+                assignment = ALL_GEOMETRY_SPECIFIER;
+                foundRenderable = true;
+              }
+              //let newMat = new MaterialAssign(output, assignment, null);
+              renderableItems.push(output.getNamePath());
+            }
+          }
+        }
+      }
+      const outputs = doc.getOutputs();
+      for (let i = 0; i < outputs.length; ++i) {
+        let output = outputs[i];
+        if (output) {
+          let assignment = NO_GEOMETRY_SPECIFIER;
+          if (foundRenderable == false) {
+            assignment = ALL_GEOMETRY_SPECIFIER;
+            foundRenderable = true;
+          }
+          renderableItems.push(output.getNamePath());
+        }
+      }
+
+      const shaderNodes = [];
+      for (let i = 0; i < shaderNodes.length; ++i) {
+        let shaderNode = shaderNodes[i];
+        let shaderNodePath = shaderNode.getNamePath()
+        if (!shaderList.includes(shaderNodePath)) {
+          let assignment = NO_GEOMETRY_SPECIFIER;
+          if (foundRenderable == false) {
+            assignment = ALL_GEOMETRY_SPECIFIER;
+            foundRenderable = true;
+          }
+          shaderList.push(shaderNodePath);
+          renderableItems.push(shaderNodePath);
+        }
+      }
+
+      return renderableItems;
+    }
+
+    function loadMaterialXDocument(file, fileName) {
+      if (mx) {
+        // Load the content from the specified file (replace this with actual loading logic)
+        console.log("Loading content from file:", file.name);
+
+        const reader = new FileReader();
+        reader.readAsText(file, 'UTF-8');
+
+        reader.onload = function (e) {
+          // Display the contents of the file in the output div
+          let fileContents = e.target.result;
+          //console.log(e.target);
+
+          (async () => {
+            try {
+              doc = mx.createDocument();
+              const readOptions = new mx.XmlReadOptions();
+              readOptions.readXIncludes = false;
+              await mx.readFromXmlString(doc, fileContents, '', readOptions);
+              //console.log('Read document:', mx.prettyPrint(doc));
+
+              // Update the text area with the file contents
+              let textArea = document.getElementById('materialXTextArea');
+              //console.log('update text area:', textArea);
+              textArea.value = fileContents;
+
+              let msg = ''
+              let valid = doc.validate(msg);
+              //valid = true;
+              if (valid) {
+                console.log('Document is valid');
+                console.log('Dispatch event:', event);
+                var event = new InputEvent('blah', { bubbles: true });
+                textArea.dispatchEvent(event);
+              } else {
+                console.error('Document is not valid', msg);
+              }
+
+              console.log('----------- Renderable Items:', renderableItems);
+              renderableItems = findRenderableElements(doc); //doc.getMaterialNodes();
+              console.log('----------- Renderable Items:', renderableItems);
+              // Update selection for renderables
+              let renderableItemSelect = document.getElementById('renderableItem');
+              // Remove any previous children
+              while (renderableItemSelect.firstChild) {
+                renderableItemSelect.removeChild(renderableItemSelect.firstChild);
+              }
+              for (let i = 0; i < renderableItems.length; i++) {
+                let item = renderableItems[i];
+                let option = document.createElement('option');
+                option.value = i;
+                option.text = item; // item.getNamePath();
+                renderableItemSelect.appendChild(option);
+              }
+
+            } catch (error) {
+              console.error(error);
+            }
+          })();
+
+        };
+
+      } else {
+        console.error("MaterialX is not initialized");
+      }
+    }
+
+    /*
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize CodeMirror for XML syntax highlighting
+        const xmlTextarea = document.getElementById('materialXTextArea');
+        const editor = CodeMirror.fromTextArea(xmlTextarea, {
+            mode: 'application/xml',
+            lineNumbers: true,
+            theme: 'monokai' // You can choose a different theme
+        });
+        
+        // Update CodeMirror whenever the textarea content changes
+        editor.on('change', () => {
+            // Copy the content from CodeMirror back to the textarea
+            console.log('Content changed');
+            xmlTextarea.value = editor.getValue();
+        });
+        editor.on('input', () => {
+            // Copy the content from CodeMirror back to the textarea
+            console.log('Content changed');
+            xmlTextarea.value = editor.getValue();
+        });
+    }); */
+
+    // Add event handler for generate graph
+    document.getElementById('generateGraphButton').addEventListener('click', () => {
+      console.log('Generate Graph');
+      // Generate the graph
+      let graphio = new mx.MermaidGraphIo.create();
+
+      // TODO: Add UI options for these.
+      let graphOptions = new mx.GraphIoGenOptions()
+      graphOptions.setWriteGraphHeader(true)
+      graphOptions.setWriteCategories(false)
+      graphOptions.setWriteSubgraphs(true)
+
+      // Set the orientation from UI
+      let orientation = document.getElementById('graphOrientation').value;
+      if (orientation == 0) {
+        graphOptions.setOrientation(mx.GraphOrientation.LEFT_RIGHT)
+      } else {
+        graphOptions.setOrientation(mx.GraphOrientation.TOP_DOWN)
+      }
+      graphio.setGenOptions(graphOptions)
+
+      let outputList = new mx.StringVec();
+      let graphOutput = graphio.write(doc, outputList);
+      //console.log('GraphOutput:', graphOutput);
+      let graphTextArea = document.getElementById('materialXGraph');
+      graphTextArea.value = graphOutput;
+    });
+
+    function getUniformValues(shaderStage) {
+      console.log('Get Uniforms for stage:', shaderStage);
+      let foundUniforms = {};
+      const uniformBlocks = Object.values(shaderStage.getUniformBlocks());
+      uniformBlocks.forEach(uniforms => {
+        if (!uniforms.empty()) {
+          for (let i = 0; i < uniforms.size(); ++i) {
+            const var1 = uniforms.get(i);
+            const value = var1.getValue()?.getValueString();
+            const name = var1.getVariable();
+            console.log(' Uniform name: ', name, ' type: ', var1.getType().getName(), ' value: ', value)
+            //foundUniforms[name] = { var1.getType().getName(), value, name, uniforms };
+          }
+        }
+      });
+      return foundUniforms;
+    }
+
+    // Add event handler for generate shader
+    document.getElementById('generateShaderButton').addEventListener('click', () => {
+      if (renderableItems.length == 0) {
+        console.error('No renderable items found');
+        return;
+      }
+      let renderableItemSelect = document.getElementById('renderableItem');
+      // Get selected items content
+      let selectedIndex = renderableItemSelect.value;
+      let elemPath = renderableItems[selectedIndex]
+      let elem = doc.getDescendant(elemPath);
+      if (!elem) {
+        console.error('Renderable item not found');
+        return;
+      }
+
+      let pixelSource = 'None'
+      let vertexSource = 'None'
+      let generator = new mx.EsslShaderGenerator();
+      let genContext = new mx.GenContext(generator);
+      let stdlib = mx.loadStandardLibraries(genContext);
+      doc.importLibrary(stdlib);
+
+      const isTransparent = mx.isTransparentSurface(elem, generator.getTarget());
+      genContext.getOptions().hwTransparency = isTransparent;
+      // Always set to complete. 
+      // Can consider option to set to reduced as the parsing of large numbers of uniforms (e.g. on shading models)
+      // can be quite expensive.
+      let interface = document.getElementById('shaderInterface').value;
+      let interfaceString = 'Reduced';
+      if (interface == 0) {
+        genContext.getOptions().shaderInterfaceType = mx.ShaderInterfaceType.SHADER_INTERFACE_REDUCED;
+      } else {
+        interfaceString = 'Complete';
+        genContext.getOptions().shaderInterfaceType = mx.ShaderInterfaceType.SHADER_INTERFACE_COMPLETE;
+      }
+
+      console.log('Generate Shader: ', elemPath, elem, genContext);
+      let shader = null;
+      try {
+        shader = generator.generate(mx.createValidName(elemPath), elem, genContext);
+      } catch (error) {
+        pixelSource = 'Error generating shader:' + error;
+      }
+      if (shader) {
+        vertexSource = shader.getSourceCode("vertex");
+        pixelSource = shader.getSourceCode("pixel");
+      }
+      let graphTextArea = document.getElementById('materialXShader');
+      pixelSource = '//\n// Pixel shader for:' + elemPath + ' \n' +
+        '// Shader interface: ' + interfaceString + '\n//\n' + pixelSource;
+      graphTextArea.value = pixelSource;
+
+      let vsArea = document.getElementById('materialXShaderVS');
+      vertexSource = '//\n// Vertex shader for:' + elemPath + ' \n' +
+        '// Shader interface: ' + interfaceString + '\n//\n' + vertexSource;
+      vsArea.value = vertexSource;
+
+      let uniforms = getUniformValues(shader.getStage('vertex'));
+      //console.log('Vertex Uniforms:', uniforms);
+      let puniforms = getUniformValues(shader.getStage('pixel'));
+      //console.log('Pixel Uniforms:', puniforms);
+    }
+    );
+
+  </script>
+
+</body>
+
+</html>
