@@ -178,14 +178,19 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="../documents/mtlx_utilities.html">
-                                    Python Utilities
+                                <a class="dropdown-item" href="../javascript/mtlx_js_utilities.html">
+                                  Graph Generator
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="../javascript/mtlx_js_utilities.html">
-                                    Javascript Utilities
-                                </a>
+                            <a class="dropdown-item" href="../javascript/viewer/dist/index_out.html">
+                                Shader Preview
+                            </a>
+                            </li>                            
+                            <li>
+                            <a class="dropdown-item" href="../documents/mtlx_utilities.html">
+                                Python Utilities
+                            </a>
                             </li>
                         </ul>
                     </li>
@@ -293,36 +298,9 @@
             </div>
         </div>
 
-        <!-- Button to generate shader -->
-        <!-- hidden button-->
-        <button style="display: none;" class="btn btn-outline-primary shadow-sm " id="generateShaderButton">Generate Shader</button>
-        <br>
-        <label style="display: none;" for="renderableItem">Renderable Item:</label>
-        <select style="display: none;" id="renderableItem">
-            <!-- <option value="0"></option>
-                <option value="1"></option> -->
-        </select>
-        <br>
-        <label style="display: none;" for="shaderInterface">Shader Interface:</label>
-        <select style="display: none;" id="shaderInterface">
-            <option value="0">Reduced</option>
-            <option value="1">Complete</option>
-        </select>
-        <br>
-        <div style="display: none;" class="row flex-nowrap">
-            <div class="col-sm-12 p-2">
-                <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXShaderVS" rows="5"
-                    style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
-                <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXShader" rows="15"
-                    style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
-            </div>
-        </div>
-
     </div>
 
-    <!-- <script src="https://academysoftwarefoundation.github.io/MaterialX/JsMaterialXGenShader.js" type="text/javascript"></script> -->
     <script src="JsMaterialXCore.js" type="text/javascript"></script>
-    <!-- <script src="https://materialx.nanmucreative.com/javascript/JsMaterialXGenShader.js" type="text/javascript"></script> -->
     <script type="text/javascript">
         console.log("Load MaterialX");
 
@@ -482,89 +460,6 @@
             let graphTextArea = document.getElementById('materialXGraph');
             graphTextArea.value = graphOutput;
         });
-
-        function getUniformValues(shaderStage) {
-            console.log('Get Uniforms for stage:', shaderStage);
-            let foundUniforms = {};
-            const uniformBlocks = Object.values(shaderStage.getUniformBlocks());
-            uniformBlocks.forEach(uniforms => {
-                if (!uniforms.empty()) {
-                    for (let i = 0; i < uniforms.size(); ++i) {
-                        const var1 = uniforms.get(i);
-                        const value = var1.getValue()?.getValueString();
-                        const name = var1.getVariable();
-                        console.log(' Uniform name: ', name, ' type: ', var1.getType().getName(), ' value: ', value)
-                        //foundUniforms[name] = { var1.getType().getName(), value, name, uniforms };
-                    }
-                }
-            });
-            return foundUniforms;
-        }
-
-        // Add event handler for generate shader
-        document.getElementById('generateShaderButton').addEventListener('click', () => {
-            if (renderableItems.length == 0) {
-                console.error('No renderable items found');
-                return;
-            }
-            let renderableItemSelect = document.getElementById('renderableItem');
-            // Get selected items content
-            let selectedIndex = renderableItemSelect.value;
-            let elemPath = renderableItems[selectedIndex].getNamePath();
-            let elem = doc.getDescendant(elemPath);
-            if (!elem) {
-                console.error('Renderable item not found');
-                return;
-            }
-
-            let pixelSource = 'None'
-            let vertexSource = 'None'
-            let generator = new mx.EsslShaderGenerator();
-            let genContext = new mx.GenContext(generator);
-            let stdlib = mx.loadStandardLibraries(genContext);
-            doc.importLibrary(stdlib);
-
-            const isTransparent = mx.isTransparentSurface(elem, generator.getTarget());
-            genContext.getOptions().hwTransparency = isTransparent;
-            // Always set to complete.
-            // Can consider option to set to reduced as the parsing of large numbers of uniforms (e.g. on shading models)
-            // can be quite expensive.
-            let interface = document.getElementById('shaderInterface').value;
-            let interfaceString = 'Reduced';
-            if (interface == 0) {
-                genContext.getOptions().shaderInterfaceType = mx.ShaderInterfaceType.SHADER_INTERFACE_REDUCED;
-            } else {
-                interfaceString = 'Complete';
-                genContext.getOptions().shaderInterfaceType = mx.ShaderInterfaceType.SHADER_INTERFACE_COMPLETE;
-            }
-
-            console.log('Generate Shader: ', elemPath, elem, genContext);
-            let shader = null;
-            try {
-                shader = generator.generate(elemPath, elem, genContext);
-            } catch (error) {
-                pixelSource = 'Error generating shader:' + error;
-            }
-            if (shader) {
-                vertexSource = shader.getSourceCode("vertex");
-                pixelSource = shader.getSourceCode("pixel");
-            }
-            let graphTextArea = document.getElementById('materialXShader');
-            pixelSource = '//\n// Pixel shader for:' + elemPath + ' \n' +
-                '// Shader interface: ' + interfaceString + '\n//\n' + pixelSource;
-            graphTextArea.value = pixelSource;
-
-            let vsArea = document.getElementById('materialXShaderVS');
-            vertexSource = '//\n// Vertex shader for:' + elemPath + ' \n' +
-                '// Shader interface: ' + interfaceString + '\n//\n' + vertexSource;
-            vsArea.value = vertexSource;
-
-            let uniforms = getUniformValues(shader.getStage('vertex'));
-            //console.log('Vertex Uniforms:', uniforms);
-            let puniforms = getUniformValues(shader.getStage('pixel'));
-            //console.log('Pixel Uniforms:', puniforms);
-        }
-    );
 
     </script>
 
