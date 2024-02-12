@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"> -->
-  <title>MaterialX Javascript Utilities</title>
+  <title>MaterialX Rendering Utilities</title>
   <!-- <link rel="icon" type="image/x-icon" href="public/favicon.ico" /> -->
   <style>
     body {
@@ -51,22 +51,25 @@
 
   <div class="container p-2">
 
-    <h2>MaterialX Javascript Utilities</h2>
-    The following is a set of utilities to work with MaterialX using it's Javascript
-    packages.
+    <h2>MaterialX Shader Utilities</h2>
+    The following is a set of utilities to work with MaterialX shaders using it's Javascript
+    packages. 
 
     <h3>Document Visualization</h3>
     <p>A MaterialX document can be loaded in and previewed as text.
       <ul>
         <li>A selected material from the document can be rendered in 3D using MaterialX shader generation</li>
         <li>A selected material from the document can have it's shader code shown as text</li>
-        <li>The document can be translated into a node graph in `Mermaid` form. The
-          <a href="_TOP_FOLDER_/documents/mermaidChecker.html">Mermaid Visualizer</a> or any
-          consumer of Mermaid graphs (such as Markdown) can be used to visualize the graph.</li>
-        </li>
       </ul>
     </p>
-    <button class="btn btn-outline-primary shadow-sm" id="loadMaterialXButton">Load MaterialX Document</button>
+    <p>
+    <b>Caveats</b>: The Javascript libraries for MaterialX can be quite slow to load. Please wait until
+      the page is fully loaded before using the utilities. The page will be ready when a default
+      material is rendered in the 3D view. The shader setup is known to be quite slow using ThreeJS
+      raw shaders due to the number of uniforms that are generated via MaterialX code generation.
+    </p>
+    <!-- Ad a disabled button-->
+    <button class="btn btn-outline-primary shadow-sm" id="loadMaterialXButton" disabled>Load MaterialX Document</button>
     <div class="row flex">
       <div class="col-sm-12 p-2">
         <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXTextArea" rows="22"
@@ -93,7 +96,7 @@
     </div>
 
     <p></p>
-    <button class="btn btn-outline-primary shadow-sm" id="renderButton">Render</button>
+    <button class="btn btn-outline-primary shadow-sm" disabled id="renderButton">Render</button>
     <div id="canvasContainer" class="container p-0" style="height: 512px">
       <canvas id="webglcanvas" tabindex=1 style="outline: none;"></canvas>
     </div>
@@ -101,31 +104,13 @@
     <p></p>
 
     <!-- Button to generate shader -->
-    <button class="btn btn-outline-primary shadow-sm" id="generateShaderButton">Generate Shader</button>
+    <button class="btn btn-outline-primary shadow-sm" disabled id="generateShaderButton">Generate Shader</button>
     <div class="row flex-nowrap">
       <div class="col-sm-12 p-2">
         <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXShaderVS" rows="5"
           style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
         <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXShader" rows="15"
           style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
-      </div>
-    </div>
-
-    <hr>
-
-    <!-- Button to generate graph -->
-    <button class="btn btn-outline-primary shadow-sm" id="generateGraphButton">Generate Graph</button>
-    <br>
-    <label for="graphOrientation">Graph Orientation:</label>
-    <select id="graphOrientation">
-      <option value="0">Left to Right</option>
-      <option value="1">Top to Bottom</option>
-    </select>
-    <br>
-    <div class="row flex-nowrap">
-      <div class="col-sm-12 p-2">
-        <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXGraph" rows="10"
-          style="width: 100%;" placeholder="Generated Mermaid Graph will be displayed here"></textarea><br>
       </div>
     </div>
 
@@ -151,6 +136,11 @@
           mx = mtlx;
 
           console.log("MaterialX loaded");
+
+          // Enable the buttons to load MaterialX documents, generate shaders, and render
+          document.getElementById('loadMaterialXButton').disabled = false;
+          document.getElementById('generateShaderButton').disabled = false;          
+          document.getElementById('renderButton').disabled = false;
 
           // Resolve the promise
           resolve();
@@ -362,34 +352,6 @@
             xmlTextarea.value = editor.getValue();
         });
     }); */
-
-    // Add event handler for generate graph
-    document.getElementById('generateGraphButton').addEventListener('click', () => {
-      console.log('Generate Graph');
-      // Generate the graph
-      let graphio = new mx.MermaidGraphIo.create();
-
-      // TODO: Add UI options for these.
-      let graphOptions = new mx.GraphIoGenOptions()
-      graphOptions.setWriteGraphHeader(true)
-      graphOptions.setWriteCategories(false)
-      graphOptions.setWriteSubgraphs(true)
-
-      // Set the orientation from UI
-      let orientation = document.getElementById('graphOrientation').value;
-      if (orientation == 0) {
-        graphOptions.setOrientation(mx.GraphOrientation.LEFT_RIGHT)
-      } else {
-        graphOptions.setOrientation(mx.GraphOrientation.TOP_DOWN)
-      }
-      graphio.setGenOptions(graphOptions)
-
-      let outputList = new mx.StringVec();
-      let graphOutput = graphio.write(doc, outputList);
-      //console.log('GraphOutput:', graphOutput);
-      let graphTextArea = document.getElementById('materialXGraph');
-      graphTextArea.value = graphOutput;
-    });
 
     function getUniformValues(shaderStage) {
       console.log('Get Uniforms for stage:', shaderStage);
