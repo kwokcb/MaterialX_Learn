@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resizable Canvas</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            /* cursor: nwse-resize; */ /* Set cursor style for the handle */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let isResizing = false;
+        let initialWidth, initialHeight;
+
+        function startResize(e) {
+                // Only resize if the mouse is on the edge of the canvas
+            //    if (e.clientX < canvas.getBoundingClientRect().left + canvas.width - 10 ||
+            //    e.clientY < canvas.getBoundingClientRect().top + canvas.height - 10) {
+            //    return;
+            //}
+            isResizing = true;
+            canvas.style.cursor = 'nwse-resize';
+            initialWidth = canvas.width;
+            initialHeight = canvas.height;
+        }
+
+        function resizeCanvas(e) {
+            if (!isResizing) return;
+            console.log(e.clientX, canvas.getBoundingClientRect().left, canvas.width, e.clientY, canvas.getBoundingClientRect().top, canvas.height)
+            // Make new canvas size be where the cursor is
+            const newWidth = initialWidth + e.clientX - canvas.getBoundingClientRect().left;
+            const newHeight = initialHeight + e.clientY - canvas.getBoundingClientRect().top;
+            canvas.width = newWidth;
+            canvas.height = newHeight;
+            //initialWidth = canvas.width;
+            //initialHeight = canvas.height;
+            // Redraw your canvas content as needed
+        }
+
+        function stopResize() {
+            isResizing = false;
+            canvas.style.cursor = 'auto';
+        }
+
+        canvas.addEventListener('mousedown', startResize);
+        canvas.addEventListener('mousemove', resizeCanvas);
+        canvas.addEventListener('mouseup', stopResize);
+    </script>
+</body>
+</html>
