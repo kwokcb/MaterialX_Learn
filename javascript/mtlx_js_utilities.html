@@ -294,21 +294,22 @@
         </div>
 
         <!-- Button to generate shader -->
-        <button class="btn btn-outline-primary shadow-sm" id="generateShaderButton">Generate Shader</button>
+        <!-- hidden button-->
+        <button style="display: none;" class="btn btn-outline-primary shadow-sm " id="generateShaderButton">Generate Shader</button>
         <br>
-        <label for="renderableItem">Renderable Item:</label>
-        <select id="renderableItem">
+        <label style="display: none;" for="renderableItem">Renderable Item:</label>
+        <select style="display: none;" id="renderableItem">
             <!-- <option value="0"></option>
                 <option value="1"></option> -->
         </select>
         <br>
-        <label for="shaderInterface">Shader Interface:</label>
-        <select id="shaderInterface">
+        <label style="display: none;" for="shaderInterface">Shader Interface:</label>
+        <select style="display: none;" id="shaderInterface">
             <option value="0">Reduced</option>
             <option value="1">Complete</option>
         </select>
         <br>
-        <div class="row flex-nowrap">
+        <div style="display: none;" class="row flex-nowrap">
             <div class="col-sm-12 p-2">
                 <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXShaderVS" rows="5"
                     style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
@@ -320,7 +321,7 @@
     </div>
 
     <!-- <script src="https://academysoftwarefoundation.github.io/MaterialX/JsMaterialXGenShader.js" type="text/javascript"></script> -->
-    <script src="JsMaterialXGenShader.js" type="text/javascript"></script>
+    <script src="JsMaterialXCore.js" type="text/javascript"></script>
     <!-- <script src="https://materialx.nanmucreative.com/javascript/JsMaterialXGenShader.js" type="text/javascript"></script> -->
     <script type="text/javascript">
         console.log("Load MaterialX");
