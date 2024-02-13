@@ -36,7 +36,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-  
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/monokai.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material-darker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/abbott.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/json/json.min.js"></script>
+
 
   <title>MaterialX Learn</title>
   <link rel="icon" type="images" href="../documents/images/favicon.png" class="img-fluid">
@@ -275,7 +285,9 @@
         <div class="row flex-nowrap ">
             <div class="col-sm-12 p-2">
                 <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXTextArea" rows="15"
-                    style="width: 100%;" placeholder="Loaded MaterialX document will be displayed here"></textarea><br>
+                    style="width: 100%;" placeholder="Loaded MaterialX document will be displayed here"
+                    value='<?xml version="1.0" encoding="utf-8"?>\r\n<materialx version="1.38" colorspace="lin_rec709">\r\n</materialx>'></textarea>
+                </textarea><br>
             </div>
         </div>
 
@@ -302,29 +314,28 @@
 
     <script src="JsMaterialXCore.js" type="text/javascript"></script>
     <script type="text/javascript">
-        console.log("Load MaterialX");
+        console.log("Load MaterialX...");
 
         let mx = null;
         let doc = null;
-        let renderableItems = [];
-
-        function doStuff(mx) {
-            doc = mx.createDocument();
-            console.log(mx.prettyPrint(doc));
-        }
+        let editor = null;
 
         function loadMaterialX() {
             return new Promise((resolve, reject) => {
                 MaterialX().then((mtlx) => {
                     // Save the MaterialX instance to the global variable
                     mx = mtlx;
-
-                    console.log("MaterialX loaded");
-
-                    // Resolve the promise
+                    /*
+                    console.log("MaterialX loaded", mx);
+                    for (var key in mtlx) {
+                        if (Object.hasOwnProperty.call(mtlx, key)) {
+                            var func = mtlx[key];
+                            console.log(key, func);
+                            }
+                        }
+                    } */
                     resolve();
                 }).catch((error) => {
-                    // Reject the promise if there's an error
                     reject(error);
                 });
             });
@@ -333,8 +344,8 @@
         // Call the asynchronous function and then perform additional logic
         loadMaterialX().then(() => {
             // Additional logic after MaterialX is loaded
+            doc = mx.createDocument();
             console.log("MaterialX is loaded");
-            //doStuff(mx);
         }).catch((error) => {
             console.error("Error loading MaterialX:", error);
         });
@@ -371,35 +382,21 @@
 
                     (async () => {
                         try {
-                            doc = mx.createDocument();
                             const readOptions = new mx.XmlReadOptions();
                             readOptions.readXIncludes = false;
                             await mx.readFromXmlString(doc, fileContents, '', readOptions);
-                            //console.log('Read document:', mx.prettyPrint(doc));
 
                             // Update the text area with the file contents
-                            let textArea = document.getElementById('materialXTextArea');
-                            //console.log('update text area:', textArea);
-                            textArea.value = fileContents;
-
-                            renderableItems = doc.getMaterialNodes();
-                            console.log('Renderable Items:', renderableItems);
-                            // Update selection for renderables
-                            let renderableItemSelect = document.getElementById('renderableItem');
-                            // Remove any previous children
-                            while (renderableItemSelect.firstChild) {
-                                renderableItemSelect.removeChild(renderableItemSelect.firstChild);
+                            if (editor) {
+                                editor.setValue(fileContents);
                             }
-                            for (let i = 0; i < renderableItems.length; i++) {
-                                let item = renderableItems[i];
-                                let option = document.createElement('option');
-                                option.value = i;
-                                option.text = item.getNamePath();
-                                renderableItemSelect.appendChild(option);
+                            else {
+                                let textArea = document.getElementById('materialXTextArea');
+                                textArea.value = fileContents;
                             }
 
                         } catch (error) {
-                            console.error(error);
+                            console.error('Error:', error);
                         }
                     })();
 
@@ -410,55 +407,113 @@
             }
         }
 
-        /*
-        document.addEventListener('DOMContentLoaded', () => {
+        function setupXML() {
             // Initialize CodeMirror for XML syntax highlighting
-            const xmlTextarea = document.getElementById('materialXTextArea');
-            const editor = CodeMirror.fromTextArea(xmlTextarea, {
+            const materialXTextArea = document.getElementById('materialXTextArea');
+            editor = CodeMirror.fromTextArea(materialXTextArea, {
                 mode: 'application/xml',
                 lineNumbers: true,
-                theme: 'monokai' // You can choose a different theme
+                dragDrop: true,
+                theme: 'dracula'
+                //theme: 'material-darker' // See https://codemirror.net/5/demo/theme.html
             });
-            
+
+            // Optional: Set an initial value for the textarea
+            const initialXML = ''; //'<?xml version="1.0" encoding="utf-8"?>\r\n<materialx version="1.38" colorspace="lin_rec709">\r\n</materialx>';
+            materialXTextArea.value = initialXML;
+            editor.setValue(initialXML);
+
             // Update CodeMirror whenever the textarea content changes
             editor.on('change', () => {
+                console.log('Editor Content changed');
                 // Copy the content from CodeMirror back to the textarea
-                console.log('Content changed');
-                xmlTextarea.value = editor.getValue();
+                materialXTextArea.value = editor.getValue();
             });
-            editor.on('input', () => {
-                // Copy the content from CodeMirror back to the textarea
-                console.log('Content changed');
-                xmlTextarea.value = editor.getValue();
-            });
-        }); */
+        }
+
+        const useExternalHighlighting = true;
+        document.addEventListener('DOMContentLoaded', () => {
+            if (useExternalHighlighting) {
+                setupXML();
+            }
+        });
 
         // Add event handler for generate graph
         document.getElementById('generateGraphButton').addEventListener('click', () => {
-            console.log('Generate Graph');
-            // Generate the graph
-            let graphio = new mx.MermaidGraphIo.create();
 
-            // TODO: Add UI options for these.
-            let graphOptions = new mx.GraphIoGenOptions()
-            graphOptions.setWriteGraphHeader(true)
-            graphOptions.setWriteCategories(false)
-            graphOptions.setWriteSubgraphs(true)
-
-            // Set the orientation from UI
-            let orientation = document.getElementById('graphOrientation').value;
-            if (orientation == 0) {
-                graphOptions.setOrientation(mx.GraphOrientation.LEFT_RIGHT)
-            } else {
-                graphOptions.setOrientation(mx.GraphOrientation.TOP_DOWN)
-            }
-            graphio.setGenOptions(graphOptions)
-
-            let outputList = new mx.StringVec();
-            let graphOutput = graphio.write(doc, outputList);
-            //console.log('GraphOutput:', graphOutput);
             let graphTextArea = document.getElementById('materialXGraph');
-            graphTextArea.value = graphOutput;
+            let materialXTextArea = document.getElementById('materialXTextArea');
+
+            if (materialXTextArea.value.length == 0) {
+                graphTextArea.value = 'No MaterialX document to graph.';
+                return;
+            }
+
+            console.log('Generating Graph...');
+            const readOptions = new mx.XmlReadOptions();
+            readOptions.readXIncludes = false;
+
+            (async () => {
+                try {
+                    const readOptions = new mx.XmlReadOptions();
+                    readOptions.readXIncludes = false;
+                    doc.clearContent();
+                    await mx.readFromXmlString(doc, materialXTextArea.value);
+
+                    if (!doc) {
+                        graphTextArea.value = 'No MaterialX document to graph.';
+                        return;
+                    }
+
+                    if (!doc.getChildren() || doc.getChildren().length == 0) {
+                        graphTextArea.value = 'No MaterialX document elements found';
+                        return;
+                    }
+
+                    try {
+                        if (!doc.validate()) {
+                            graphTextArea.value = 'MaterialX document is invalid';
+                            return;
+                        }
+                    } catch (error) {
+                        // Reject the promise if there's an error
+                        graphTextArea.value = 'MaterialX document is invalid: ' + error;
+                        return;
+                    }
+
+                    // Generate the graph
+                    let graphio = new mx.MermaidGraphIo.create();
+
+                    // TODO: Add UI options for these.
+                    let graphOptions = new mx.GraphIoGenOptions()
+                    graphOptions.setWriteGraphHeader(true)
+                    graphOptions.setWriteCategories(false)
+                    graphOptions.setWriteSubgraphs(true)
+
+                    // Set the orientation from UI
+                    let orientation = document.getElementById('graphOrientation').value;
+                    if (orientation == 0) {
+                        graphOptions.setOrientation(mx.GraphOrientation.LEFT_RIGHT)
+                    } else {
+                        graphOptions.setOrientation(mx.GraphOrientation.TOP_DOWN)
+                    }
+                    graphio.setGenOptions(graphOptions)
+
+                    let outputList = new mx.StringVec();
+                    try {
+                        //console.log('>>>>>>>>> Writing graph...\n', mx.prettyPrint(doc));
+                        let graphOutput = graphio.write(doc, outputList);
+                        graphTextArea.value = graphOutput;
+                    } catch (error) {
+                        // Reject the promise if there's an error
+                        graphTextArea.value = 'Error generating graph: ' + error;
+                    };
+
+                } catch (error) {
+                    graphTextArea.value = 'Invalid XML found: ' + error;
+                    return;
+                }
+            })();
         });
 
     </script>
