@@ -49,7 +49,9 @@
       <input name="in" type="float" nodename="NdotL" />
       <input name="high" type="float" value="0.001" />
     </smoothstep>
-    <viewdirection name="viewdirection_vector3" type="vector3" />
+    <viewdirection name="viewdirection_vector3" type="vector3" >
+      <input name="space" type="string" value="world" />
+    </viewdirection>
     <normalize name="unit_viewdirection" type="vector3">
       <input name="in" type="vector3" nodename="viewdirection_vector3" />
     </normalize>

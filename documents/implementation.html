@@ -39,7 +39,7 @@
   
 
   <title>MaterialX Learn</title>
-  <link rel="icon" type="images" href="../documents/images/favicon.png" class="img-fluid">
+  <link rel="icon" type="images" href="../documents/images/logo3d_icon.png" class="img-fluid">
 
 </head>
 
@@ -321,8 +321,7 @@
                                 Overview</div>
                             <p>
                                 The following diagram outlines the setup for generating documentation from MaterialX.
-                                The main utilities
-                                were written using the Python wrappers for MaterialX:
+                                The main utilities were written using the Python wrappers for MaterialX:
                             <ul>
                                 <li><b>Diagram generation ('mxgraph')</b>: This can produce Mermaid or GraphViz dot
                                     diagrams based on MaterialX input. The
@@ -334,20 +333,38 @@
                                     <b>Sampling graphs for rendering ('genMaterialsFromDefs')</b>: All definitions in
                                     the MaterialX library had instance
                                     graphs created as separate MaterialX files. These
-                                    were fed into `test-render` from the OSL core distribution and the built in GLSL
-                                    renderer. Note that any renderer can be used.
+                                    can be fed into `test-render` from the OSL core distribution or
+                                    the sample GLSL Python renderer (`mxrenderer`) using the
+                                    `renderDocuments` Python utility.
+                                    <br>
+                                    Note that any renderer that can consume MaterialX can be used.
                                 </li>
                                 <p></p>
                                 <li><b>Documentation and indexing generation ('mxdoclib')</b>: This extracted al data
                                     from the MaterialX definition libraries to generate all library pages.
                                     Both Markdown and HTML output is supported.
-                                    <p>Dependents such as 'Bootstrap', 'Mermaid' and 'Google Fonts'
+                                    <br>
+                                    <p>Dependents such as 'Bootstrap', 'Mermaid' 'model-viewer', and 'Google Fonts'
                                         are automatically included.</p>
                                 </li>
+                                <li>
+                                    <b>Document comparison</b>: This utility ('compareVersions') analyzes the differences between two MaterialX
+                                    set of definition libraries and generates Markdown or HTML output. The HTML
+                                    output is available under the <em>Reference->Library Revisions</em> menu.
+                                </li>
+                                <p></p>
+                                <li>
+                                    <b>Interactive Viewing</b>: Currently both direct MaterialX as well as
+                                    glTF versions of MaterialX shaders is under investigation. As the goal is to
+                                    have an interactive viewer the native viewing will be the target. Currently
+                                    only glTF PBR is available for viewing with a few input parameters available
+                                    for editing.
+                                </li>
+                                <p></p>
                             </ul>
-                            These utilities are accessible from the "Tools" section of this site and added to MaterialX
+                            These utilities are accessible from the "Utilities" section of this site and added to MaterialX
                             core distribution.
-                            <p><br><img class="bg-light rounded p-4" src="./images/generative_docs.svg">
+                            <p><br><img class="bg-light rounded p-4" width=100% src="./images/generative_docs2.svg">
                             </p>
                             </p>
                             <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">Web
@@ -386,22 +403,26 @@
                                 Overview</div>
                             <p>
                             <p>
-                                For API learning, the proposed setup is shown below. This initiative is still under
-                                review
-                                but the intent will be to host interactive tutorials using MaterialX via
-                                Jupyter notebooks. Native notebooks, as well as generated HTML and Python
-                                versions are available for download. The latter is for usage as non-interactive
-                                references
-                                which are accessible under the "Examples" menu.
+                                For API learning, the setup is shown below,
+                                with the ability to host interactive tutorials and utilities using MaterialX either: via
+                                Jupyter notebooks and directly on via Web pages.
+                            </p>
+                            <p>Executable notebooks have been
+                                exported to both HTML and Python for availability for off-line usage.
+                                HTML references are accessible under the "Examples" menu, and Python examples via
+                                the site's Github repository.
                             </p>
                             <p>Local interactive sessions can run using these notebooks currently.
-                                with the aim to host these remotely via something like Google Colab`.</p>
-                            <p>The hope is to connect with USD or other standards via Python.
+                                ability to host remotely via Google Colab, VSCode / Github code spaces.</p>
+                            <p>
+                                Interactive utilities are use the Javascript MaterialX "core" and "shader generation"
+                                modules. The former smaller module is available online starting with version 1.38.9.
                             </p>
                             <p>
-                                A parallel track is possible with Javascript, with access to the Javascript API via npm.
+                                Possible future tracks that folks could explore include: interactive Python on Web pages, and
+                                Jupyter notebooks using Javascript (using Node.js).
                             </p>
-                            <p><img class="bg-light rounded p-4" src="./images/learning_setup.png" width="100%"></p>
+                            <p><img class="bg-light rounded p-4" src="./images/learning_setup3.svg" width="100%"></p>
                             </p>
                         </div>
                     </div>
