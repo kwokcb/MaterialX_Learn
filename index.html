@@ -39,7 +39,7 @@
   
 
   <title>MaterialX Learn</title>
-  <link rel="icon" type="images" href="./documents/images/favicon.png" class="img-fluid">
+  <link rel="icon" type="images" href="./documents/images/logo3d_icon.png" class="img-fluid">
 
 </head>
 
@@ -260,10 +260,10 @@
   <!-- Section Information -->
   <section class="py-0 px-0 g-0">
     <div class="container-fluid p-4">
-      <div class="container-fluid bg-body-tertiary px-2 py-2">
+      <div class="container-fluid bg-body-tertiary px-1 py-1">
 
   <!-- Banner -->
-  <div class="p-4 p-md-4 mb-4 rounded text-bg-dark shadow-sm"
+  <div class="p-2 p-md-4 mb-2 rounded text-bg-dark shadow-sm"
     style="background-image: url('documents/images/logo3d_dark.png');">
     <div class="col-md-8 px-0">
       <h2 class="display-8 ">MaterialX Learn</h2>
@@ -279,11 +279,33 @@
   </div>
 
   <!-- What's New -->
-  <div class="row mb-1">
+  <div class="row mb-0">
     <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <h3 class="d-inline-block mb-2 text-primary">Updates</h3>
+      <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+        style="max-height: 20em">
         <div class="col p-2 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">Tech</strong>
+          <b class="mb-0">Utilities</b>
+          <div class="mb-1 text-muted">February, 2024</div>
+          <div class="row">
+            <div class="col-6">
+              <img src="documents/images/js_doc_hilight_graph.png" width="100%">
+            </div>
+            <div class="col-6">
+              <img src="documents/images/js_codegen_render.png" width="100%">
+            </div>
+          </div>
+          <p>
+            Start of new modular utilities using MaterialX Javascript modules: Core and ShaderGen. Latter is now exposed as a public module. Utilities including <a href="javascript/mtlx_js_utilities.html">syntax hilighting, graph generation</a> and <a href="javascript/viewer/dist/index_out.html">code generation, and 3D viewer</a>.
+          Viewer requirements have been a driver for core updates.
+          </p>
+          <p>
+            Definition library comparisons are now available under the "Reference->Library Revisions" menu. This includes comparisons of the standard library from <a href="mtlx_1388_vs_1389.html">1.38.0 to
+              1.38.9</a>. The latest version denotes the start of a NPR library and the inclusion of the OpenPBR reference implementation.
+          </p>
+          <!---------------------------------------------------------------------------------------------------->
+          <hr>
+
           <b class="mb-0">Tutorials and Workflows</b>
           <div class="mb-1 text-muted">November 2023 - January, 2024</div>
           <p>New additions have mostly been centered pipeline / Web development
@@ -321,12 +343,13 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <h3 class="d-inline-block mb-2 text-success">News</h3>
+      <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+        style="max-height: 20em">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">News</strong>
 
           <b class="mb-0">MaterialX 1.38.9 In Progress</b>
-          <div class="mb-1 text-muted">Feb, 2024</div>
+          <div class="mb-1 text-muted">February, 2024</div>
           <p class="card-text mb-auto">Sync with February development release of MaterialX 1.38.9
             which includes:
           </p>
@@ -342,10 +365,8 @@
               <img class="p-3 bg-light" style="border: 1px solid rgb(76, 76, 76);"
                 src="./documents/images/openpbr_graph_jan_2024.svg" width="100%">
             </li>
-            <li>Library version comparisons every development version from 1.38.0 to 1.38.9. e.g.
-              <a href="documents/mtlx_1388_vs_1389.html">1.38.8 to 1.38.9</a>. See <em>Reference->Library Versions</em>
-            </li>
           </ul>
+          <hr>
           <b class="mb-0">Development Updates</b>
           <div class="mb-1 text-muted">November 2023 - January, 2024</div>
           <p class="card-text mb-auto">
@@ -371,9 +392,11 @@
   </div>
 
   <!-- Content Cards -->
-  <div class="container-fluid px-2 py-2 shadow" id="hanging-icons">
+  <h3 class="d-inline-block mb-2 text-info">Learn</h3>
+  <div class="container-fluid px-2 py-2 border shadow" id="hanging-icons">
 
-    <div class="row ps-5 pe-4 row-cols-1 row-cols-sm-3 bg-body-tertiary d-flex flex-row overflow-auto">
+    <div class="row ps-2 pe-0 row-cols-1 row-cols-sm-3 bg-body-tertiary d-flex flex-row overflow-auto"
+      style="max-height: 20em">
 
       <div class="col pt-3 pb-3">
         <div>
