@@ -41,7 +41,7 @@
 </head>
 <body class="min-vh-100">
 <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
-<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    lineColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
+<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
 
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
 </script>
@@ -614,7 +614,7 @@
 <b><a id="line" class="ms-2 mb-0">
 Category: line
 </a></b>
-<details class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_line_float <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.38.8</button></summary>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_line_float <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.38.8</button></summary>
 <div class="m-0 mt-0">
 <div class="row">
 <div class="col-12">
@@ -759,12 +759,12 @@ Category: line
 </div>
 <p class="card-text"><b></b>
 <details><summary><b>Node Graph</b>
- <img src="../images/diagram-3.svg">
+<img class="bg-light" src="../images/diagram-3.svg">
 </summary>
 <button id="ND_line_float_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
 <button id="ND_line_float_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
 <pre><code class="language-mermaid">
-<div id="ND_line_float_mrender_mermaid_output" class="rounded p-2 bg-light mermaid" hidden>
+<div id="ND_line_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_line_float_mrender_mermaid_input" class="mermaid" hidden>
 graph LR; 

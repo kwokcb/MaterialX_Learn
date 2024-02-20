@@ -3,7 +3,7 @@
 ---------
  
 ### Category: *oren_nayar_diffuse_bsdf*
-<details><summary>ND_oren_nayar_diffuse_bsdf</summary>
+<details open><summary>ND_oren_nayar_diffuse_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_oren_nayar_diffuse_bsdf
@@ -22,7 +22,7 @@
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *burley_diffuse_bsdf*
-<details><summary>ND_burley_diffuse_bsdf</summary>
+<details open><summary>ND_burley_diffuse_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_burley_diffuse_bsdf
@@ -41,7 +41,7 @@
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *translucent_bsdf*
-<details><summary>ND_translucent_bsdf</summary>
+<details open><summary>ND_translucent_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_translucent_bsdf
@@ -59,7 +59,7 @@
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *dielectric_bsdf*
-<details><summary>ND_dielectric_bsdf</summary>
+<details open><summary>ND_dielectric_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_dielectric_bsdf
@@ -82,7 +82,7 @@
 | **scatter_mode** | string | R |  |  |  |  |  |  |  |  |  | true |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *conductor_bsdf*
-<details><summary>ND_conductor_bsdf</summary>
+<details open><summary>ND_conductor_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_conductor_bsdf
@@ -104,7 +104,7 @@
 | **distribution** | string | ggx |  |  |  |  |  |  |  |  |  | true |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *generalized_schlick_bsdf*
-<details><summary>ND_generalized_schlick_bsdf</summary>
+<details open><summary>ND_generalized_schlick_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_generalized_schlick_bsdf
@@ -128,7 +128,7 @@
 | **scatter_mode** | string | R |  |  |  |  |  |  |  |  |  | true |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *subsurface_bsdf*
-<details><summary>ND_subsurface_bsdf</summary>
+<details open><summary>ND_subsurface_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_subsurface_bsdf
@@ -148,7 +148,7 @@
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sheen_bsdf*
-<details><summary>ND_sheen_bsdf</summary>
+<details open><summary>ND_sheen_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_sheen_bsdf
@@ -167,7 +167,7 @@
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *thin_film_bsdf*
-<details><summary>ND_thin_film_bsdf</summary>
+<details open><summary>ND_thin_film_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_thin_film_bsdf
@@ -184,7 +184,7 @@
 | **ior** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *uniform_edf*
-<details><summary>ND_uniform_edf</summary>
+<details open><summary>ND_uniform_edf</summary>
 <p>
  
 * *Nodedef*: ND_uniform_edf
@@ -200,7 +200,7 @@
 | **color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *conical_edf*
-<details><summary>ND_conical_edf</summary>
+<details open><summary>ND_conical_edf</summary>
 <p>
  
 * *Nodedef*: ND_conical_edf
@@ -219,7 +219,7 @@
 | **outer_angle** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *measured_edf*
-<details><summary>ND_measured_edf</summary>
+<details open><summary>ND_measured_edf</summary>
 <p>
  
 * *Nodedef*: ND_measured_edf
@@ -237,7 +237,7 @@
 | **file** | filename |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *generalized_schlick_edf*
-<details><summary>ND_generalized_schlick_edf</summary>
+<details open><summary>ND_generalized_schlick_edf</summary>
 <p>
  
 * *Nodedef*: ND_generalized_schlick_edf
@@ -256,7 +256,7 @@
 | **base** | EDF |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *absorption_vdf*
-<details><summary>ND_absorption_vdf</summary>
+<details open><summary>ND_absorption_vdf</summary>
 <p>
  
 * *Nodedef*: ND_absorption_vdf
@@ -272,7 +272,7 @@
 | **absorption** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | VDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *anisotropic_vdf*
-<details><summary>ND_anisotropic_vdf</summary>
+<details open><summary>ND_anisotropic_vdf</summary>
 <p>
  
 * *Nodedef*: ND_anisotropic_vdf
@@ -290,7 +290,7 @@
 | **anisotropy** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | VDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *surface*
-<details><summary>ND_surface</summary>
+<details open><summary>ND_surface</summary>
 <p>
  
 * *Nodedef*: ND_surface
@@ -308,7 +308,7 @@
 | **opacity** | float | 1.0 |  |  |  |  |  |  |  |  | Surface cutout opacity |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *thin_surface*
-<details><summary>ND_thin_surface</summary>
+<details open><summary>ND_thin_surface</summary>
 <p>
  
 * *Nodedef*: ND_thin_surface
@@ -328,7 +328,7 @@
 | **opacity** | float | 1.0 |  |  |  |  |  |  |  |  | Surface cutout opacity |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *volume*
-<details><summary>ND_volume</summary>
+<details open><summary>ND_volume</summary>
 <p>
  
 * *Nodedef*: ND_volume
@@ -345,7 +345,7 @@
 | **edf** | EDF |  |  |  |  |  |  |  |  |  | Emission distribution function for the medium. |  |
 | *out* | volumeshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *light*
-<details><summary>ND_light</summary>
+<details open><summary>ND_light</summary>
 <p>
  
 * *Nodedef*: ND_light
@@ -363,7 +363,7 @@
 | **exposure** | float | 0.0 |  |  |  |  |  |  |  |  | Exposure control for the light intensity |  |
 | *out* | lightshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *displacement*
-<details><summary>ND_displacement_float</summary>
+<details open><summary>ND_displacement_float</summary>
 <p>
  
 * *Nodedef*: ND_displacement_float
@@ -379,7 +379,7 @@
 | **displacement** | float | 0.0 |  |  |  |  |  |  |  |  | Scalar displacement amount along the surface normal direction. |  |
 | **scale** | float | 1.0 |  |  |  |  |  |  |  |  | Scale factor for the displacement vector |  |
 | *out* | displacementshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_displacement_vector3</summary>
+<details open><summary>ND_displacement_vector3</summary>
 <p>
  
 * *Nodedef*: ND_displacement_vector3
@@ -396,7 +396,7 @@
 | **scale** | float | 1.0 |  |  |  |  |  |  |  |  | Scale factor for the displacement vector |  |
 | *out* | displacementshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *layer*
-<details><summary>ND_layer_bsdf</summary>
+<details open><summary>ND_layer_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_layer_bsdf
@@ -412,7 +412,7 @@
 | **top** | BSDF |  |  |  |  |  |  |  |  |  |  |  |
 | **base** | BSDF |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_layer_vdf</summary>
+<details open><summary>ND_layer_vdf</summary>
 <p>
  
 * *Nodedef*: ND_layer_vdf
@@ -429,7 +429,7 @@
 | **base** | VDF |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *mix*
-<details><summary>ND_mix_bsdf</summary>
+<details open><summary>ND_mix_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_mix_bsdf
@@ -446,7 +446,7 @@
 | **bg** | BSDF |  |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 0.0 |  | 0.0 | 1.0 |  |  |  |  |  | Mixing weight, range [0, 1]. |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_edf</summary>
+<details open><summary>ND_mix_edf</summary>
 <p>
  
 * *Nodedef*: ND_mix_edf
@@ -463,7 +463,7 @@
 | **bg** | EDF |  |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 0.0 |  | 0.0 | 1.0 |  |  |  |  |  | Mixing weight, range [0, 1]. |  |
 | *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_vdf</summary>
+<details open><summary>ND_mix_vdf</summary>
 <p>
  
 * *Nodedef*: ND_mix_vdf
@@ -481,7 +481,7 @@
 | **mix** | float | 0.0 |  | 0.0 | 1.0 |  |  |  |  |  | Mixing weight, range [0, 1]. |  |
 | *out* | VDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *add*
-<details><summary>ND_add_bsdf</summary>
+<details open><summary>ND_add_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_add_bsdf
@@ -497,7 +497,7 @@
 | **in1** | BSDF |  |  |  |  |  |  |  |  |  | First BSDF. |  |
 | **in2** | BSDF |  |  |  |  |  |  |  |  |  | Second BSDF. |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_edf</summary>
+<details open><summary>ND_add_edf</summary>
 <p>
  
 * *Nodedef*: ND_add_edf
@@ -513,7 +513,7 @@
 | **in1** | EDF |  |  |  |  |  |  |  |  |  | First EDF. |  |
 | **in2** | EDF |  |  |  |  |  |  |  |  |  | Second EDF. |  |
 | *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_vdf</summary>
+<details open><summary>ND_add_vdf</summary>
 <p>
  
 * *Nodedef*: ND_add_vdf
@@ -530,7 +530,7 @@
 | **in2** | VDF |  |  |  |  |  |  |  |  |  | Second VDF. |  |
 | *out* | VDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *multiply*
-<details><summary>ND_multiply_bsdfC</summary>
+<details open><summary>ND_multiply_bsdfC</summary>
 <p>
  
 * *Nodedef*: ND_multiply_bsdfC
@@ -546,7 +546,7 @@
 | **in1** | BSDF |  |  |  |  |  |  |  |  |  | The BSDF to scale. |  |
 | **in2** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  | Scaling weight. |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_bsdfF</summary>
+<details open><summary>ND_multiply_bsdfF</summary>
 <p>
  
 * *Nodedef*: ND_multiply_bsdfF
@@ -562,7 +562,7 @@
 | **in1** | BSDF |  |  |  |  |  |  |  |  |  | The BSDF to scale. |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  | Scaling weight. |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_edfC</summary>
+<details open><summary>ND_multiply_edfC</summary>
 <p>
  
 * *Nodedef*: ND_multiply_edfC
@@ -578,7 +578,7 @@
 | **in1** | EDF |  |  |  |  |  |  |  |  |  | The EDF to scale. |  |
 | **in2** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  | Scaling weight. |  |
 | *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_edfF</summary>
+<details open><summary>ND_multiply_edfF</summary>
 <p>
  
 * *Nodedef*: ND_multiply_edfF
@@ -594,7 +594,7 @@
 | **in1** | EDF |  |  |  |  |  |  |  |  |  | The EDF to scale. |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  | Scaling weight. |  |
 | *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_vdfC</summary>
+<details open><summary>ND_multiply_vdfC</summary>
 <p>
  
 * *Nodedef*: ND_multiply_vdfC
@@ -610,7 +610,7 @@
 | **in1** | VDF |  |  |  |  |  |  |  |  |  | The VDF to scale. |  |
 | **in2** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  | Scaling weight. |  |
 | *out* | VDF | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_vdfF</summary>
+<details open><summary>ND_multiply_vdfF</summary>
 <p>
  
 * *Nodedef*: ND_multiply_vdfF
@@ -627,7 +627,7 @@
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  | Scaling weight. |  |
 | *out* | VDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *roughness_anisotropy*
-<details><summary>ND_roughness_anisotropy</summary>
+<details open><summary>ND_roughness_anisotropy</summary>
 <p>
  
 * *Nodedef*: ND_roughness_anisotropy
@@ -644,7 +644,7 @@
 | **anisotropy** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *roughness_dual*
-<details><summary>ND_roughness_dual</summary>
+<details open><summary>ND_roughness_dual</summary>
 <p>
  
 * *Nodedef*: ND_roughness_dual
@@ -660,7 +660,7 @@
 | **roughness** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *glossiness_anisotropy*
-<details><summary>ND_glossiness_anisotropy</summary>
+<details open><summary>ND_glossiness_anisotropy</summary>
 <p>
  
 * *Nodedef*: ND_glossiness_anisotropy
@@ -690,7 +690,7 @@ graph LR;
 | **anisotropy** | float | 0.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *blackbody*
-<details><summary>ND_blackbody</summary>
+<details open><summary>ND_blackbody</summary>
 <p>
  
 * *Nodedef*: ND_blackbody
@@ -706,7 +706,7 @@ graph LR;
 | **temperature** | float | 5000.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *artistic_ior*
-<details><summary>ND_artistic_ior</summary>
+<details open><summary>ND_artistic_ior</summary>
 <p>
  
 * *Nodedef*: ND_artistic_ior

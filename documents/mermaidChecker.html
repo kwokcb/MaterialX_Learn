@@ -44,20 +44,12 @@
 </head>
 
 <body>
-      <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
-    <script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base", themeVariables: { primaryColor: "#F1F1F1", primaryBorderColor: "#000000", lineColor: "#000000", secondaryColor: "#EFEFFF", tertiaryColor: "#EEEEEE" } }); </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+  <script src="../documents/js/ui_helpers.js"></script>
 
-    <script src="../documents/js/ui_helpers.js"> </script>
-
-    <script>
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-                ? 'dark'
-                : 'default'
-        });
-    </script>
-
+  </script>  
+   
+  
     <!-- Navigation  -->
     <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
         <div class="container-md container-fluid">
@@ -288,24 +280,8 @@
           <div class="row flex-nowrap">
 
             <div class="col-sm-12 p-2">
-
-              <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
-              <script>
-                mermaid.initialize({
-                  startOnLoad: false,
-                  theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-                    ? 'dark'
-                    : 'base',
-                  themeVariables: {
-                    'primaryColor': '#F1F1F1',
-                    'primaryBorderColor': '#000000',
-                    'lineColor': '#000000',
-                    'secondaryColor': '#EEEEFF',
-                    'tertiaryColor': '#EEEEEE'
-                  }
-                });
-              </script>
-              <textarea class="mermaid_input form-control form-control-sm"
+             
+              <textarea id="mermaid_input" class="mermaid_input form-control form-control-sm"
                 style="width:95%; height:200px; font-size: 14px;" placeholder="Enter mermaid text here..."></textarea>
               <p>
                 <label class="col-form-label">
@@ -316,8 +292,8 @@
               </p>
               <br>
 
-              <div class="mermaid_output rounded bg-light" style="width:95%; border:solid thin lightskyblue">
-                <!-- An svg element called "graphout" will be inserted on render -->
+              <div id="mermaid_output" class="mermaid_output rounded" style="width:95%; border:solid thin lightskyblue">
+                <!-- An svg element called "mermaid_output_rendered" will be inserted on render -->
               </div>
               <p></p>
               <div class="col-sm2 flex">
@@ -354,7 +330,7 @@
     let lines = e.target.result;
     lines = lines.replace('```mermaid', '')
     lines = lines.replace('```', '')
-    var inputArea = document.querySelector(".mermaid_input");
+    var inputArea = document.getElementById("mermaid_input");
     inputArea.value = lines;
     prevSVG = ''
     renderMermaid();
@@ -406,6 +382,7 @@
   function resetSvgView(elem) {
     if (elem && originalViewBox) {
       currentViewBox = elem.getAttribute('viewBox');
+      console.log('Resetting viewbox to: ' + originalViewBox)
       elem.setAttribute('viewBox', originalViewBox);
     }
     return currentViewBox;
@@ -428,8 +405,8 @@
   }
 
   function renderMermaid() {
-    const output = document.querySelector(".mermaid_output");
-    const code = document.querySelector(".mermaid_input").value.trim();
+    const output = document.getElementById("mermaid_output");
+    const code = document.getElementById("mermaid_input").value.trim();
 
     let newSVG = ''
     let generateDiagram = function (code) {
@@ -444,7 +421,7 @@
       let generated = true;
       prevSVG = output.innerHTML;
       try {
-        mermaid.render("graphout", code, generateDiagram)
+        mermaid.render("mermaid_output_rendered", code, generateDiagram)
       } catch (error) {
         generated = false
       }
@@ -452,17 +429,15 @@
       if (generated) {
         output.innerHTML = newSVG;
         prevSVG = newSVG;
-
-        var svgContainer = document.querySelector(".mermaid_output");
-        var svgContent = document.getElementById('graphout');
+        var svgContent = document.getElementById('mermaid_output_rendered');
         originalViewBox = svgContent.getAttribute('viewBox');
-        setUpInteraction(svgContainer, svgContent)
+        setUpSVGInteraction('mermaid_output', 'mermaid_output_rendered')
       }
       else {
         // Clear this out so that we don't get the default Mermaid error SVG
-        graphout = document.getElementById('graphout');
-        if (graphout) {
-          graphout.innerHTML = '';
+        mermaid_output_rendered = document.getElementById('mermaid_output_rendered');
+        if (mermaid_output_rendered) {
+          mermaid_output_rendered.innerHTML = '';
         }
         output.innerHTML = 'Invalid Mermaid text entered. Failed to generate graph.';
       }
@@ -476,7 +451,7 @@
     });
   }
 
-  inputArea = document.querySelector(".mermaid_input");
+  inputArea = document.getElementById("mermaid_input");
   if (inputArea) {
     inputArea.addEventListener('keyup', (event) => {
       renderMermaid();
@@ -485,7 +460,7 @@
 
   // Review view of svg element
   document.getElementById("resetSVGView").addEventListener("click", (e) => {
-    var svgContent = document.getElementById('graphout');
+    var svgContent = document.getElementById('mermaid_output_rendered');
     if (svgContent) {
       resetSvgView(svgContent);
     }
@@ -493,7 +468,7 @@
 
   // Save svg element to file
   document.getElementById("saveSVG").addEventListener("click", (e) => {
-    var svgContent = document.getElementById('graphout');
+    var svgContent = document.getElementById('mermaid_output_rendered');
     if (svgContent) {
       saveSvg(svgContent, "graph.svg");
     }
@@ -503,108 +478,13 @@
   saveElem = document.getElementById("savePNG");
   if (saveElem) {
     saveElem.addEventListener("click", (e) => {
-      const element = document.getElementById("graphout");
+      const element = document.getElementById("mermaid_output_rendered");
       if (element) {
         savePNG(element, "graph.png");
       }
     });
   }
 
-  // Interaction for SVG display area
-  function setUpInteraction(svgContainer, svgContent) {
-
-    var state = {
-      isPanning: false,
-      startCoords: { x: 0, y: 0 },
-      startViewBox: null
-    };
-
-    // Clear or set the style here. Clear max width so that the SVG can be scaled
-    // to fit the container.
-    style = svgContent.getAttribute('style')
-    //svgContent.setAttribute('style', 'max-width:2048px;')
-    svgContent.setAttribute('style', '')
-
-    // Handle start of panning
-    function handleMouseDown(event) {
-      if (event.button !== 0)
-        return;
-
-      event.preventDefault();
-      state.isPanning = true;
-      state.startCoords.x = event.clientX;
-      state.startCoords.y = event.clientY;
-      state.startViewBox = svgContent.getAttribute('viewBox');
-    }
-
-    // Handle panning
-    function handleMouseMove(event) {
-      if (!state.isPanning)
-        return;
-
-      event.preventDefault();
-      var dx = event.clientX - state.startCoords.x;
-      var dy = event.clientY - state.startCoords.y;
-      var viewBox = state.startViewBox.split(' ');
-
-      viewBox[0] -= dx;
-      viewBox[1] -= dy;
-
-      svgContent.setAttribute('viewBox', viewBox.join(' '));
-    }
-
-    // Handle stop of panning
-    function handleMouseUp(event) {
-      if (event.button !== 0)
-        return;
-
-      event.preventDefault();
-      state.isPanning = false;
-    }
-
-    // Handle zooming
-    function handleWheel(event) {
-      event.preventDefault();
-
-      var delta = Math.max(-1, Math.min(1, (event.deltaY || -event.detail)));
-      var viewBox = svgContent.getAttribute('viewBox').split(' ');
-
-      var scaleFactor = delta > 0 ? 1.1 : 0.9;
-
-      var containerWidth = svgContainer.offsetWidth;
-      var containerHeight = svgContainer.offsetHeight;
-
-      var center = {
-        x: containerWidth / 2,
-        y: containerHeight / 2
-      };
-
-      var oldWidth = parseFloat(viewBox[2]);
-      var oldHeight = parseFloat(viewBox[3]);
-      var newWidth = oldWidth / scaleFactor;
-      var newHeight = oldHeight / scaleFactor;
-
-      var deltaX = (oldWidth - newWidth) * (center.x / containerWidth);
-      var deltaY = (oldHeight - newHeight) * (center.y / containerHeight);
-
-      var newX = parseFloat(viewBox[0]) + deltaX;
-      var newY = parseFloat(viewBox[1]) + deltaY;
-
-      viewBox[0] = newX;
-      viewBox[1] = newY;
-      viewBox[2] = newWidth;
-      viewBox[3] = newHeight;
-
-      svgContent.setAttribute('viewBox', viewBox.join(' '));
-    }
-
-    // Set up event handling
-    svgContainer.addEventListener('mousedown', handleMouseDown);
-    svgContainer.addEventListener('mousemove', handleMouseMove);
-    svgContainer.addEventListener('mouseup', handleMouseUp);
-    svgContainer.addEventListener('mouseleave', handleMouseUp);
-    svgContainer.addEventListener('wheel', handleWheel);
-  };
 </script>
 
     </div>
