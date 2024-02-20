@@ -15,7 +15,7 @@
 //
 
 // Initialize mermaid but don't render immediately. Use logic below to dynamically render
-mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "default" });
+//mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "default" });
 
 // Render all mermaid graph children defined by an aria control (callback)
 function renderAriaMermaidEvent(event) {

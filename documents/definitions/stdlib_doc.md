@@ -51,7 +51,7 @@
 ---------
  
 ### Category: *surfacematerial*
-<details><summary>ND_surfacematerial</summary>
+<details open><summary>ND_surfacematerial</summary>
 <p>
  
 * *Nodedef*: ND_surfacematerial
@@ -68,7 +68,7 @@
 | **displacementshader** | displacementshader |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | material | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *volumematerial*
-<details><summary>ND_volumematerial</summary>
+<details open><summary>ND_volumematerial</summary>
 <p>
  
 * *Nodedef*: ND_volumematerial
@@ -84,7 +84,7 @@
 | **volumeshader** | volumeshader |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | material | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *surface_unlit*
-<details><summary>ND_surface_unlit</summary>
+<details open><summary>ND_surface_unlit</summary>
 <p>
  
 * *Nodedef*: ND_surface_unlit
@@ -104,7 +104,7 @@
 | **opacity** | float | 1.0 |  |  |  |  |  |  |  |  | Surface cutout opacity. |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *image*
-<details><summary>ND_image_float</summary>
+<details open><summary>ND_image_float</summary>
 <p>
  
 * *Nodedef*: ND_image_float
@@ -128,7 +128,7 @@
 | **frameoffset** | integer | 0 | Frame Offset |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant | Frame End Action |  |  |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_image_color3</summary>
+<details open><summary>ND_image_color3</summary>
 <p>
  
 * *Nodedef*: ND_image_color3
@@ -152,7 +152,7 @@
 | **frameoffset** | integer | 0 | Frame Offset |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant | Frame End Action |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_image_color4</summary>
+<details open><summary>ND_image_color4</summary>
 <p>
  
 * *Nodedef*: ND_image_color4
@@ -176,7 +176,7 @@
 | **frameoffset** | integer | 0 | Frame Offset |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant | Frame End Action |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_image_vector2</summary>
+<details open><summary>ND_image_vector2</summary>
 <p>
  
 * *Nodedef*: ND_image_vector2
@@ -200,7 +200,7 @@
 | **frameoffset** | integer | 0 | Frame Offset |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant | Frame End Action |  |  |  |  |  |  |  |  | true |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_image_vector3</summary>
+<details open><summary>ND_image_vector3</summary>
 <p>
  
 * *Nodedef*: ND_image_vector3
@@ -224,7 +224,7 @@
 | **frameoffset** | integer | 0 | Frame Offset |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant | Frame End Action |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_image_vector4</summary>
+<details open><summary>ND_image_vector4</summary>
 <p>
  
 * *Nodedef*: ND_image_vector4
@@ -249,7 +249,7 @@
 | **frameendaction** | string | constant | Frame End Action |  |  |  |  |  |  |  |  | true |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *tiledimage*
-<details><summary>ND_tiledimage_float</summary>
+<details open><summary>ND_tiledimage_float</summary>
 <p>
  
 * *Nodedef*: ND_tiledimage_float
@@ -308,7 +308,7 @@ graph LR;
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_tiledimage_color3</summary>
+<details open><summary>ND_tiledimage_color3</summary>
 <p>
  
 * *Nodedef*: ND_tiledimage_color3
@@ -367,7 +367,7 @@ graph LR;
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_tiledimage_color4</summary>
+<details open><summary>ND_tiledimage_color4</summary>
 <p>
  
 * *Nodedef*: ND_tiledimage_color4
@@ -426,7 +426,7 @@ graph LR;
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_tiledimage_vector2</summary>
+<details open><summary>ND_tiledimage_vector2</summary>
 <p>
  
 * *Nodedef*: ND_tiledimage_vector2
@@ -485,7 +485,7 @@ graph LR;
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_tiledimage_vector3</summary>
+<details open><summary>ND_tiledimage_vector3</summary>
 <p>
  
 * *Nodedef*: ND_tiledimage_vector3
@@ -544,7 +544,7 @@ graph LR;
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_tiledimage_vector4</summary>
+<details open><summary>ND_tiledimage_vector4</summary>
 <p>
  
 * *Nodedef*: ND_tiledimage_vector4
@@ -604,7 +604,7 @@ graph LR;
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *triplanarprojection*
-<details><summary>ND_triplanarprojection_float</summary>
+<details open><summary>ND_triplanarprojection_float</summary>
 <p>
  
 * *Nodedef*: ND_triplanarprojection_float
@@ -760,7 +760,7 @@ graph LR;
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_triplanarprojection_color3</summary>
+<details open><summary>ND_triplanarprojection_color3</summary>
 <p>
  
 * *Nodedef*: ND_triplanarprojection_color3
@@ -916,7 +916,7 @@ graph LR;
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_triplanarprojection_color4</summary>
+<details open><summary>ND_triplanarprojection_color4</summary>
 <p>
  
 * *Nodedef*: ND_triplanarprojection_color4
@@ -1072,7 +1072,7 @@ graph LR;
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_triplanarprojection_vector2</summary>
+<details open><summary>ND_triplanarprojection_vector2</summary>
 <p>
  
 * *Nodedef*: ND_triplanarprojection_vector2
@@ -1228,7 +1228,7 @@ graph LR;
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_triplanarprojection_vector3</summary>
+<details open><summary>ND_triplanarprojection_vector3</summary>
 <p>
  
 * *Nodedef*: ND_triplanarprojection_vector3
@@ -1384,7 +1384,7 @@ graph LR;
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_triplanarprojection_vector4</summary>
+<details open><summary>ND_triplanarprojection_vector4</summary>
 <p>
  
 * *Nodedef*: ND_triplanarprojection_vector4
@@ -1541,7 +1541,7 @@ graph LR;
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *constant*
-<details><summary>ND_constant_float</summary>
+<details open><summary>ND_constant_float</summary>
 <p>
  
 * *Nodedef*: ND_constant_float
@@ -1556,7 +1556,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **value** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_constant_color3</summary>
+<details open><summary>ND_constant_color3</summary>
 <p>
  
 * *Nodedef*: ND_constant_color3
@@ -1571,7 +1571,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **value** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_constant_color4</summary>
+<details open><summary>ND_constant_color4</summary>
 <p>
  
 * *Nodedef*: ND_constant_color4
@@ -1586,7 +1586,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **value** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_constant_vector2</summary>
+<details open><summary>ND_constant_vector2</summary>
 <p>
  
 * *Nodedef*: ND_constant_vector2
@@ -1601,7 +1601,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **value** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_constant_vector3</summary>
+<details open><summary>ND_constant_vector3</summary>
 <p>
  
 * *Nodedef*: ND_constant_vector3
@@ -1616,7 +1616,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **value** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_constant_vector4</summary>
+<details open><summary>ND_constant_vector4</summary>
 <p>
  
 * *Nodedef*: ND_constant_vector4
@@ -1631,7 +1631,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **value** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_constant_boolean</summary>
+<details open><summary>ND_constant_boolean</summary>
 <p>
  
 * *Nodedef*: ND_constant_boolean
@@ -1646,7 +1646,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **value** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_constant_integer</summary>
+<details open><summary>ND_constant_integer</summary>
 <p>
  
 * *Nodedef*: ND_constant_integer
@@ -1661,7 +1661,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **value** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | integer | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_constant_matrix33</summary>
+<details open><summary>ND_constant_matrix33</summary>
 <p>
  
 * *Nodedef*: ND_constant_matrix33
@@ -1676,7 +1676,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **value** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_constant_matrix44</summary>
+<details open><summary>ND_constant_matrix44</summary>
 <p>
  
 * *Nodedef*: ND_constant_matrix44
@@ -1691,7 +1691,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **value** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_constant_string</summary>
+<details open><summary>ND_constant_string</summary>
 <p>
  
 * *Nodedef*: ND_constant_string
@@ -1706,7 +1706,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **value** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | string | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_constant_filename</summary>
+<details open><summary>ND_constant_filename</summary>
 <p>
  
 * *Nodedef*: ND_constant_filename
@@ -1722,7 +1722,7 @@ graph LR;
 | **value** | filename |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | filename | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ramplr*
-<details><summary>ND_ramplr_float</summary>
+<details open><summary>ND_ramplr_float</summary>
 <p>
  
 * *Nodedef*: ND_ramplr_float
@@ -1739,7 +1739,7 @@ graph LR;
 | **valuer** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramplr_color3</summary>
+<details open><summary>ND_ramplr_color3</summary>
 <p>
  
 * *Nodedef*: ND_ramplr_color3
@@ -1756,7 +1756,7 @@ graph LR;
 | **valuer** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramplr_color4</summary>
+<details open><summary>ND_ramplr_color4</summary>
 <p>
  
 * *Nodedef*: ND_ramplr_color4
@@ -1773,7 +1773,7 @@ graph LR;
 | **valuer** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramplr_vector2</summary>
+<details open><summary>ND_ramplr_vector2</summary>
 <p>
  
 * *Nodedef*: ND_ramplr_vector2
@@ -1790,7 +1790,7 @@ graph LR;
 | **valuer** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramplr_vector3</summary>
+<details open><summary>ND_ramplr_vector3</summary>
 <p>
  
 * *Nodedef*: ND_ramplr_vector3
@@ -1807,7 +1807,7 @@ graph LR;
 | **valuer** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramplr_vector4</summary>
+<details open><summary>ND_ramplr_vector4</summary>
 <p>
  
 * *Nodedef*: ND_ramplr_vector4
@@ -1825,7 +1825,7 @@ graph LR;
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ramptb*
-<details><summary>ND_ramptb_float</summary>
+<details open><summary>ND_ramptb_float</summary>
 <p>
  
 * *Nodedef*: ND_ramptb_float
@@ -1842,7 +1842,7 @@ graph LR;
 | **valueb** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramptb_color3</summary>
+<details open><summary>ND_ramptb_color3</summary>
 <p>
  
 * *Nodedef*: ND_ramptb_color3
@@ -1859,7 +1859,7 @@ graph LR;
 | **valueb** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramptb_color4</summary>
+<details open><summary>ND_ramptb_color4</summary>
 <p>
  
 * *Nodedef*: ND_ramptb_color4
@@ -1876,7 +1876,7 @@ graph LR;
 | **valueb** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramptb_vector2</summary>
+<details open><summary>ND_ramptb_vector2</summary>
 <p>
  
 * *Nodedef*: ND_ramptb_vector2
@@ -1893,7 +1893,7 @@ graph LR;
 | **valueb** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramptb_vector3</summary>
+<details open><summary>ND_ramptb_vector3</summary>
 <p>
  
 * *Nodedef*: ND_ramptb_vector3
@@ -1910,7 +1910,7 @@ graph LR;
 | **valueb** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramptb_vector4</summary>
+<details open><summary>ND_ramptb_vector4</summary>
 <p>
  
 * *Nodedef*: ND_ramptb_vector4
@@ -1928,7 +1928,7 @@ graph LR;
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ramp4*
-<details><summary>ND_ramp4_float</summary>
+<details open><summary>ND_ramp4_float</summary>
 <p>
  
 * *Nodedef*: ND_ramp4_float
@@ -1972,7 +1972,7 @@ graph LR;
 | **valuebr** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramp4_color3</summary>
+<details open><summary>ND_ramp4_color3</summary>
 <p>
  
 * *Nodedef*: ND_ramp4_color3
@@ -2016,7 +2016,7 @@ graph LR;
 | **valuebr** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramp4_color4</summary>
+<details open><summary>ND_ramp4_color4</summary>
 <p>
  
 * *Nodedef*: ND_ramp4_color4
@@ -2060,7 +2060,7 @@ graph LR;
 | **valuebr** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramp4_vector2</summary>
+<details open><summary>ND_ramp4_vector2</summary>
 <p>
  
 * *Nodedef*: ND_ramp4_vector2
@@ -2104,7 +2104,7 @@ graph LR;
 | **valuebr** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramp4_vector3</summary>
+<details open><summary>ND_ramp4_vector3</summary>
 <p>
  
 * *Nodedef*: ND_ramp4_vector3
@@ -2148,7 +2148,7 @@ graph LR;
 | **valuebr** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ramp4_vector4</summary>
+<details open><summary>ND_ramp4_vector4</summary>
 <p>
  
 * *Nodedef*: ND_ramp4_vector4
@@ -2193,7 +2193,7 @@ graph LR;
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *splitlr*
-<details><summary>ND_splitlr_float</summary>
+<details open><summary>ND_splitlr_float</summary>
 <p>
  
 * *Nodedef*: ND_splitlr_float
@@ -2211,7 +2211,7 @@ graph LR;
 | **center** | float | 0.5 | Center | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_splitlr_color3</summary>
+<details open><summary>ND_splitlr_color3</summary>
 <p>
  
 * *Nodedef*: ND_splitlr_color3
@@ -2229,7 +2229,7 @@ graph LR;
 | **center** | float | 0.5 | Center | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_splitlr_color4</summary>
+<details open><summary>ND_splitlr_color4</summary>
 <p>
  
 * *Nodedef*: ND_splitlr_color4
@@ -2247,7 +2247,7 @@ graph LR;
 | **center** | float | 0.5 | Center | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_splitlr_vector2</summary>
+<details open><summary>ND_splitlr_vector2</summary>
 <p>
  
 * *Nodedef*: ND_splitlr_vector2
@@ -2265,7 +2265,7 @@ graph LR;
 | **center** | float | 0.5 | Center | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_splitlr_vector3</summary>
+<details open><summary>ND_splitlr_vector3</summary>
 <p>
  
 * *Nodedef*: ND_splitlr_vector3
@@ -2283,7 +2283,7 @@ graph LR;
 | **center** | float | 0.5 | Center | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_splitlr_vector4</summary>
+<details open><summary>ND_splitlr_vector4</summary>
 <p>
  
 * *Nodedef*: ND_splitlr_vector4
@@ -2302,7 +2302,7 @@ graph LR;
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *splittb*
-<details><summary>ND_splittb_float</summary>
+<details open><summary>ND_splittb_float</summary>
 <p>
  
 * *Nodedef*: ND_splittb_float
@@ -2320,7 +2320,7 @@ graph LR;
 | **center** | float | 0.5 | Center | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_splittb_color3</summary>
+<details open><summary>ND_splittb_color3</summary>
 <p>
  
 * *Nodedef*: ND_splittb_color3
@@ -2338,7 +2338,7 @@ graph LR;
 | **center** | float | 0.5 | Center | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_splittb_color4</summary>
+<details open><summary>ND_splittb_color4</summary>
 <p>
  
 * *Nodedef*: ND_splittb_color4
@@ -2356,7 +2356,7 @@ graph LR;
 | **center** | float | 0.5 | Center | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_splittb_vector2</summary>
+<details open><summary>ND_splittb_vector2</summary>
 <p>
  
 * *Nodedef*: ND_splittb_vector2
@@ -2374,7 +2374,7 @@ graph LR;
 | **center** | float | 0.5 | Center | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_splittb_vector3</summary>
+<details open><summary>ND_splittb_vector3</summary>
 <p>
  
 * *Nodedef*: ND_splittb_vector3
@@ -2392,7 +2392,7 @@ graph LR;
 | **center** | float | 0.5 | Center | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_splittb_vector4</summary>
+<details open><summary>ND_splittb_vector4</summary>
 <p>
  
 * *Nodedef*: ND_splittb_vector4
@@ -2411,7 +2411,7 @@ graph LR;
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *noise2d*
-<details><summary>ND_noise2d_float</summary>
+<details open><summary>ND_noise2d_float</summary>
 <p>
  
 * *Nodedef*: ND_noise2d_float
@@ -2428,7 +2428,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise2d_color3</summary>
+<details open><summary>ND_noise2d_color3</summary>
 <p>
  
 * *Nodedef*: ND_noise2d_color3
@@ -2459,7 +2459,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise2d_color4</summary>
+<details open><summary>ND_noise2d_color4</summary>
 <p>
  
 * *Nodedef*: ND_noise2d_color4
@@ -2490,7 +2490,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise2d_vector2</summary>
+<details open><summary>ND_noise2d_vector2</summary>
 <p>
  
 * *Nodedef*: ND_noise2d_vector2
@@ -2507,7 +2507,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise2d_vector3</summary>
+<details open><summary>ND_noise2d_vector3</summary>
 <p>
  
 * *Nodedef*: ND_noise2d_vector3
@@ -2524,7 +2524,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise2d_vector4</summary>
+<details open><summary>ND_noise2d_vector4</summary>
 <p>
  
 * *Nodedef*: ND_noise2d_vector4
@@ -2541,7 +2541,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise2d_color3FA</summary>
+<details open><summary>ND_noise2d_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_noise2d_color3FA
@@ -2572,7 +2572,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise2d_color4FA</summary>
+<details open><summary>ND_noise2d_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_noise2d_color4FA
@@ -2603,7 +2603,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise2d_vector2FA</summary>
+<details open><summary>ND_noise2d_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_noise2d_vector2FA
@@ -2634,7 +2634,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise2d_vector3FA</summary>
+<details open><summary>ND_noise2d_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_noise2d_vector3FA
@@ -2665,7 +2665,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise2d_vector4FA</summary>
+<details open><summary>ND_noise2d_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_noise2d_vector4FA
@@ -2697,7 +2697,7 @@ graph LR;
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *noise3d*
-<details><summary>ND_noise3d_float</summary>
+<details open><summary>ND_noise3d_float</summary>
 <p>
  
 * *Nodedef*: ND_noise3d_float
@@ -2714,7 +2714,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise3d_color3</summary>
+<details open><summary>ND_noise3d_color3</summary>
 <p>
  
 * *Nodedef*: ND_noise3d_color3
@@ -2745,7 +2745,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise3d_color4</summary>
+<details open><summary>ND_noise3d_color4</summary>
 <p>
  
 * *Nodedef*: ND_noise3d_color4
@@ -2776,7 +2776,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise3d_vector2</summary>
+<details open><summary>ND_noise3d_vector2</summary>
 <p>
  
 * *Nodedef*: ND_noise3d_vector2
@@ -2793,7 +2793,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise3d_vector3</summary>
+<details open><summary>ND_noise3d_vector3</summary>
 <p>
  
 * *Nodedef*: ND_noise3d_vector3
@@ -2810,7 +2810,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise3d_vector4</summary>
+<details open><summary>ND_noise3d_vector4</summary>
 <p>
  
 * *Nodedef*: ND_noise3d_vector4
@@ -2827,7 +2827,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise3d_color3FA</summary>
+<details open><summary>ND_noise3d_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_noise3d_color3FA
@@ -2858,7 +2858,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise3d_color4FA</summary>
+<details open><summary>ND_noise3d_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_noise3d_color4FA
@@ -2889,7 +2889,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise3d_vector2FA</summary>
+<details open><summary>ND_noise3d_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_noise3d_vector2FA
@@ -2920,7 +2920,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise3d_vector3FA</summary>
+<details open><summary>ND_noise3d_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_noise3d_vector3FA
@@ -2951,7 +2951,7 @@ graph LR;
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_noise3d_vector4FA</summary>
+<details open><summary>ND_noise3d_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_noise3d_vector4FA
@@ -2983,7 +2983,7 @@ graph LR;
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *fractal3d*
-<details><summary>ND_fractal3d_float</summary>
+<details open><summary>ND_fractal3d_float</summary>
 <p>
  
 * *Nodedef*: ND_fractal3d_float
@@ -3002,7 +3002,7 @@ graph LR;
 | **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_fractal3d_color3</summary>
+<details open><summary>ND_fractal3d_color3</summary>
 <p>
  
 * *Nodedef*: ND_fractal3d_color3
@@ -3039,7 +3039,7 @@ graph LR;
 | **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_fractal3d_color4</summary>
+<details open><summary>ND_fractal3d_color4</summary>
 <p>
  
 * *Nodedef*: ND_fractal3d_color4
@@ -3076,7 +3076,7 @@ graph LR;
 | **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_fractal3d_vector2</summary>
+<details open><summary>ND_fractal3d_vector2</summary>
 <p>
  
 * *Nodedef*: ND_fractal3d_vector2
@@ -3095,7 +3095,7 @@ graph LR;
 | **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_fractal3d_vector3</summary>
+<details open><summary>ND_fractal3d_vector3</summary>
 <p>
  
 * *Nodedef*: ND_fractal3d_vector3
@@ -3114,7 +3114,7 @@ graph LR;
 | **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_fractal3d_vector4</summary>
+<details open><summary>ND_fractal3d_vector4</summary>
 <p>
  
 * *Nodedef*: ND_fractal3d_vector4
@@ -3133,7 +3133,7 @@ graph LR;
 | **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_fractal3d_color3FA</summary>
+<details open><summary>ND_fractal3d_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_fractal3d_color3FA
@@ -3170,7 +3170,7 @@ graph LR;
 | **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_fractal3d_color4FA</summary>
+<details open><summary>ND_fractal3d_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_fractal3d_color4FA
@@ -3207,7 +3207,7 @@ graph LR;
 | **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_fractal3d_vector2FA</summary>
+<details open><summary>ND_fractal3d_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_fractal3d_vector2FA
@@ -3244,7 +3244,7 @@ graph LR;
 | **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_fractal3d_vector3FA</summary>
+<details open><summary>ND_fractal3d_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_fractal3d_vector3FA
@@ -3281,7 +3281,7 @@ graph LR;
 | **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_fractal3d_vector4FA</summary>
+<details open><summary>ND_fractal3d_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_fractal3d_vector4FA
@@ -3319,7 +3319,7 @@ graph LR;
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *cellnoise2d*
-<details><summary>ND_cellnoise2d_float</summary>
+<details open><summary>ND_cellnoise2d_float</summary>
 <p>
  
 * *Nodedef*: ND_cellnoise2d_float
@@ -3335,7 +3335,7 @@ graph LR;
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *cellnoise3d*
-<details><summary>ND_cellnoise3d_float</summary>
+<details open><summary>ND_cellnoise3d_float</summary>
 <p>
  
 * *Nodedef*: ND_cellnoise3d_float
@@ -3351,7 +3351,7 @@ graph LR;
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *worleynoise2d*
-<details><summary>ND_worleynoise2d_float</summary>
+<details open><summary>ND_worleynoise2d_float</summary>
 <p>
  
 * *Nodedef*: ND_worleynoise2d_float
@@ -3367,7 +3367,7 @@ graph LR;
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **jitter** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_worleynoise2d_vector2</summary>
+<details open><summary>ND_worleynoise2d_vector2</summary>
 <p>
  
 * *Nodedef*: ND_worleynoise2d_vector2
@@ -3383,7 +3383,7 @@ graph LR;
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **jitter** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_worleynoise2d_vector3</summary>
+<details open><summary>ND_worleynoise2d_vector3</summary>
 <p>
  
 * *Nodedef*: ND_worleynoise2d_vector3
@@ -3400,7 +3400,7 @@ graph LR;
 | **jitter** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *worleynoise3d*
-<details><summary>ND_worleynoise3d_float</summary>
+<details open><summary>ND_worleynoise3d_float</summary>
 <p>
  
 * *Nodedef*: ND_worleynoise3d_float
@@ -3416,7 +3416,7 @@ graph LR;
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **jitter** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_worleynoise3d_vector2</summary>
+<details open><summary>ND_worleynoise3d_vector2</summary>
 <p>
  
 * *Nodedef*: ND_worleynoise3d_vector2
@@ -3432,7 +3432,7 @@ graph LR;
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **jitter** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_worleynoise3d_vector3</summary>
+<details open><summary>ND_worleynoise3d_vector3</summary>
 <p>
  
 * *Nodedef*: ND_worleynoise3d_vector3
@@ -3449,7 +3449,7 @@ graph LR;
 | **jitter** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *unifiednoise2d*
-<details><summary>ND_unifiednoise2d_float</summary>
+<details open><summary>ND_unifiednoise2d_float</summary>
 <p>
  
 * *Nodedef*: ND_unifiednoise2d_float
@@ -3532,7 +3532,7 @@ graph LR;
 | **type** | integer | 0 | Noise Type |  |  | 0 | 3 |  | Common |  | Menu to select the type of noise: Perlin, Cell, Worley, or Fractal. Default is Perlin. |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *unifiednoise3d*
-<details><summary>ND_unifiednoise3d_float</summary>
+<details open><summary>ND_unifiednoise3d_float</summary>
 <p>
  
 * *Nodedef*: ND_unifiednoise3d_float
@@ -3607,7 +3607,7 @@ graph LR;
 | **type** | integer | 0 | Noise Type |  |  | 0 | 3 |  | Common |  | Menu to select the type of noise: Perlin, Cell, Worley, or Fractal. Default is Perlin. |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *randomfloat*
-<details><summary>ND_randomfloat_float</summary>
+<details open><summary>ND_randomfloat_float</summary>
 <p>
  
 * *Nodedef*: ND_randomfloat_float
@@ -3645,7 +3645,7 @@ graph LR;
 | **max** | float | 1.0 | Maximum |  |  |  |  |  |  |  | The maximum output value. |  |
 | **seed** | integer | 0 | Seed |  |  |  |  |  |  |  | Additional seed. |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_randomfloat_integer</summary>
+<details open><summary>ND_randomfloat_integer</summary>
 <p>
  
 * *Nodedef*: ND_randomfloat_integer
@@ -3684,7 +3684,7 @@ graph LR;
 | **seed** | integer | 0 | Seed |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *randomcolor*
-<details><summary>ND_randomcolor_float</summary>
+<details open><summary>ND_randomcolor_float</summary>
 <p>
  
 * *Nodedef*: ND_randomcolor_float
@@ -3750,7 +3750,7 @@ graph LR;
 | **brightnesshigh** | float | 1.0 | Brightness High |  |  | 0.0 | 1.0 |  |  |  |  |  |
 | **seed** | integer | 0 | Seed |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_randomcolor_integer</summary>
+<details open><summary>ND_randomcolor_integer</summary>
 <p>
  
 * *Nodedef*: ND_randomcolor_integer
@@ -3798,7 +3798,7 @@ graph LR;
 | **seed** | integer | 0 | Seed |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *checkerboard*
-<details><summary>ND_checkerboard_color3</summary>
+<details open><summary>ND_checkerboard_color3</summary>
 <p>
  
 * *Nodedef*: ND_checkerboard_color3
@@ -3841,7 +3841,7 @@ graph LR;
 | **texcoord** | vector2 | None | Texture Coordinates |  |  |  |  |  |  |  | The input 2d space. Default is the first texture coordinates. |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *line*
-<details><summary>ND_line_float</summary>
+<details open><summary>ND_line_float</summary>
 <p>
  
 * *Nodedef*: ND_line_float
@@ -3895,7 +3895,7 @@ graph LR;
 | **point2** | vector2 | 0.75, 0.75 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *circle*
-<details><summary>ND_circle_float</summary>
+<details open><summary>ND_circle_float</summary>
 <p>
  
 * *Nodedef*: ND_circle_float
@@ -3935,7 +3935,7 @@ graph LR;
 | **radius** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *cloverleaf*
-<details><summary>ND_cloverleaf_float</summary>
+<details open><summary>ND_cloverleaf_float</summary>
 <p>
  
 * *Nodedef*: ND_cloverleaf_float
@@ -4005,7 +4005,7 @@ graph LR;
 | **radius** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *hexagon*
-<details><summary>ND_hexagon_float</summary>
+<details open><summary>ND_hexagon_float</summary>
 <p>
  
 * *Nodedef*: ND_hexagon_float
@@ -4077,7 +4077,7 @@ graph LR;
 | **radius** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *grid*
-<details><summary>ND_grid_color3</summary>
+<details open><summary>ND_grid_color3</summary>
 <p>
  
 * *Nodedef*: ND_grid_color3
@@ -4145,7 +4145,7 @@ graph LR;
 | **staggered** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *crosshatch*
-<details><summary>ND_crosshatch_color3</summary>
+<details open><summary>ND_crosshatch_color3</summary>
 <p>
  
 * *Nodedef*: ND_crosshatch_color3
@@ -4210,7 +4210,7 @@ graph LR;
 | **staggered** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *tiledcircles*
-<details><summary>ND_tiledcircles_color3</summary>
+<details open><summary>ND_tiledcircles_color3</summary>
 <p>
  
 * *Nodedef*: ND_tiledcircles_color3
@@ -4286,7 +4286,7 @@ graph LR;
 | **staggered** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *tiledcloverleafs*
-<details><summary>ND_tiledcloverleafs_color3</summary>
+<details open><summary>ND_tiledcloverleafs_color3</summary>
 <p>
  
 * *Nodedef*: ND_tiledcloverleafs_color3
@@ -4362,7 +4362,7 @@ graph LR;
 | **staggered** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *tiledhexagons*
-<details><summary>ND_tiledhexagons_color3</summary>
+<details open><summary>ND_tiledhexagons_color3</summary>
 <p>
  
 * *Nodedef*: ND_tiledhexagons_color3
@@ -4438,7 +4438,7 @@ graph LR;
 | **staggered** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *position*
-<details><summary>ND_position_vector3</summary>
+<details open><summary>ND_position_vector3</summary>
 <p>
  
 * *Nodedef*: ND_position_vector3
@@ -4454,7 +4454,7 @@ graph LR;
 | **space** | string | object |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *normal*
-<details><summary>ND_normal_vector3</summary>
+<details open><summary>ND_normal_vector3</summary>
 <p>
  
 * *Nodedef*: ND_normal_vector3
@@ -4470,7 +4470,7 @@ graph LR;
 | **space** | string | object |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *tangent*
-<details><summary>ND_tangent_vector3</summary>
+<details open><summary>ND_tangent_vector3</summary>
 <p>
  
 * *Nodedef*: ND_tangent_vector3
@@ -4487,7 +4487,7 @@ graph LR;
 | **index** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *bitangent*
-<details><summary>ND_bitangent_vector3</summary>
+<details open><summary>ND_bitangent_vector3</summary>
 <p>
  
 * *Nodedef*: ND_bitangent_vector3
@@ -4504,7 +4504,7 @@ graph LR;
 | **index** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *texcoord*
-<details><summary>ND_texcoord_vector2</summary>
+<details open><summary>ND_texcoord_vector2</summary>
 <p>
  
 * *Nodedef*: ND_texcoord_vector2
@@ -4519,7 +4519,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **index** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_texcoord_vector3</summary>
+<details open><summary>ND_texcoord_vector3</summary>
 <p>
  
 * *Nodedef*: ND_texcoord_vector3
@@ -4535,7 +4535,7 @@ graph LR;
 | **index** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *geomcolor*
-<details><summary>ND_geomcolor_float</summary>
+<details open><summary>ND_geomcolor_float</summary>
 <p>
  
 * *Nodedef*: ND_geomcolor_float
@@ -4550,7 +4550,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **index** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_geomcolor_color3</summary>
+<details open><summary>ND_geomcolor_color3</summary>
 <p>
  
 * *Nodedef*: ND_geomcolor_color3
@@ -4565,7 +4565,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **index** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_geomcolor_color4</summary>
+<details open><summary>ND_geomcolor_color4</summary>
 <p>
  
 * *Nodedef*: ND_geomcolor_color4
@@ -4581,7 +4581,7 @@ graph LR;
 | **index** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *geompropvalue*
-<details><summary>ND_geompropvalue_integer</summary>
+<details open><summary>ND_geompropvalue_integer</summary>
 <p>
  
 * *Nodedef*: ND_geompropvalue_integer
@@ -4597,7 +4597,7 @@ graph LR;
 | **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **default** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | integer | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_geompropvalue_boolean</summary>
+<details open><summary>ND_geompropvalue_boolean</summary>
 <p>
  
 * *Nodedef*: ND_geompropvalue_boolean
@@ -4613,7 +4613,7 @@ graph LR;
 | **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **default** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_geompropvalue_string</summary>
+<details open><summary>ND_geompropvalue_string</summary>
 <p>
  
 * *Nodedef*: ND_geompropvalue_string
@@ -4629,7 +4629,7 @@ graph LR;
 | **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **default** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | string | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_geompropvalue_float</summary>
+<details open><summary>ND_geompropvalue_float</summary>
 <p>
  
 * *Nodedef*: ND_geompropvalue_float
@@ -4645,7 +4645,7 @@ graph LR;
 | **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **default** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_geompropvalue_color3</summary>
+<details open><summary>ND_geompropvalue_color3</summary>
 <p>
  
 * *Nodedef*: ND_geompropvalue_color3
@@ -4661,7 +4661,7 @@ graph LR;
 | **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **default** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_geompropvalue_color4</summary>
+<details open><summary>ND_geompropvalue_color4</summary>
 <p>
  
 * *Nodedef*: ND_geompropvalue_color4
@@ -4677,7 +4677,7 @@ graph LR;
 | **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **default** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_geompropvalue_vector2</summary>
+<details open><summary>ND_geompropvalue_vector2</summary>
 <p>
  
 * *Nodedef*: ND_geompropvalue_vector2
@@ -4693,7 +4693,7 @@ graph LR;
 | **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **default** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_geompropvalue_vector3</summary>
+<details open><summary>ND_geompropvalue_vector3</summary>
 <p>
  
 * *Nodedef*: ND_geompropvalue_vector3
@@ -4709,7 +4709,7 @@ graph LR;
 | **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **default** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_geompropvalue_vector4</summary>
+<details open><summary>ND_geompropvalue_vector4</summary>
 <p>
  
 * *Nodedef*: ND_geompropvalue_vector4
@@ -4726,7 +4726,7 @@ graph LR;
 | **default** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *bump*
-<details><summary>ND_bump_vector3</summary>
+<details open><summary>ND_bump_vector3</summary>
 <p>
  
 * *Nodedef*: ND_bump_vector3
@@ -4762,7 +4762,7 @@ graph LR;
 | **tangent** | vector3 | None | Tangent |  |  |  |  |  |  |  | Surface tangent vector, defaults to the current world-space tangent vector. |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  | Offset surface normal; connect this to a shader's 'normal' input. |  |
 ### Category: *ambientocclusion*
-<details><summary>ND_ambientocclusion_float</summary>
+<details open><summary>ND_ambientocclusion_float</summary>
 <p>
  
 * *Nodedef*: ND_ambientocclusion_float
@@ -4779,7 +4779,7 @@ graph LR;
 | **maxdistance** | float | 9.999999680285692e+37 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *frame*
-<details><summary>ND_frame_float</summary>
+<details open><summary>ND_frame_float</summary>
 <p>
  
 * *Nodedef*: ND_frame_float
@@ -4794,7 +4794,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *time*
-<details><summary>ND_time_float</summary>
+<details open><summary>ND_time_float</summary>
 <p>
  
 * *Nodedef*: ND_time_float
@@ -4810,7 +4810,7 @@ graph LR;
 | **fps** | float | 24.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *add*
-<details><summary>ND_add_float</summary>
+<details open><summary>ND_add_float</summary>
 <p>
  
 * *Nodedef*: ND_add_float
@@ -4826,7 +4826,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_color3</summary>
+<details open><summary>ND_add_color3</summary>
 <p>
  
 * *Nodedef*: ND_add_color3
@@ -4842,7 +4842,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_color4</summary>
+<details open><summary>ND_add_color4</summary>
 <p>
  
 * *Nodedef*: ND_add_color4
@@ -4858,7 +4858,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_vector2</summary>
+<details open><summary>ND_add_vector2</summary>
 <p>
  
 * *Nodedef*: ND_add_vector2
@@ -4874,7 +4874,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_vector3</summary>
+<details open><summary>ND_add_vector3</summary>
 <p>
  
 * *Nodedef*: ND_add_vector3
@@ -4890,7 +4890,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_vector4</summary>
+<details open><summary>ND_add_vector4</summary>
 <p>
  
 * *Nodedef*: ND_add_vector4
@@ -4906,7 +4906,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_matrix33</summary>
+<details open><summary>ND_add_matrix33</summary>
 <p>
  
 * *Nodedef*: ND_add_matrix33
@@ -4922,7 +4922,7 @@ graph LR;
 | **in1** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix33 | 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_matrix44</summary>
+<details open><summary>ND_add_matrix44</summary>
 <p>
  
 * *Nodedef*: ND_add_matrix44
@@ -4938,7 +4938,7 @@ graph LR;
 | **in1** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_color3FA</summary>
+<details open><summary>ND_add_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_add_color3FA
@@ -4954,7 +4954,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_color4FA</summary>
+<details open><summary>ND_add_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_add_color4FA
@@ -4970,7 +4970,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_vector2FA</summary>
+<details open><summary>ND_add_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_add_vector2FA
@@ -4986,7 +4986,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_vector3FA</summary>
+<details open><summary>ND_add_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_add_vector3FA
@@ -5002,7 +5002,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_vector4FA</summary>
+<details open><summary>ND_add_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_add_vector4FA
@@ -5018,7 +5018,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_matrix33FA</summary>
+<details open><summary>ND_add_matrix33FA</summary>
 <p>
  
 * *Nodedef*: ND_add_matrix33FA
@@ -5034,7 +5034,7 @@ graph LR;
 | **in1** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_add_matrix44FA</summary>
+<details open><summary>ND_add_matrix44FA</summary>
 <p>
  
 * *Nodedef*: ND_add_matrix44FA
@@ -5051,7 +5051,7 @@ graph LR;
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *subtract*
-<details><summary>ND_subtract_float</summary>
+<details open><summary>ND_subtract_float</summary>
 <p>
  
 * *Nodedef*: ND_subtract_float
@@ -5067,7 +5067,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_color3</summary>
+<details open><summary>ND_subtract_color3</summary>
 <p>
  
 * *Nodedef*: ND_subtract_color3
@@ -5083,7 +5083,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_color4</summary>
+<details open><summary>ND_subtract_color4</summary>
 <p>
  
 * *Nodedef*: ND_subtract_color4
@@ -5099,7 +5099,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_vector2</summary>
+<details open><summary>ND_subtract_vector2</summary>
 <p>
  
 * *Nodedef*: ND_subtract_vector2
@@ -5115,7 +5115,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_vector3</summary>
+<details open><summary>ND_subtract_vector3</summary>
 <p>
  
 * *Nodedef*: ND_subtract_vector3
@@ -5131,7 +5131,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_vector4</summary>
+<details open><summary>ND_subtract_vector4</summary>
 <p>
  
 * *Nodedef*: ND_subtract_vector4
@@ -5147,7 +5147,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_matrix33</summary>
+<details open><summary>ND_subtract_matrix33</summary>
 <p>
  
 * *Nodedef*: ND_subtract_matrix33
@@ -5163,7 +5163,7 @@ graph LR;
 | **in1** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix33 | 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_matrix44</summary>
+<details open><summary>ND_subtract_matrix44</summary>
 <p>
  
 * *Nodedef*: ND_subtract_matrix44
@@ -5179,7 +5179,7 @@ graph LR;
 | **in1** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_color3FA</summary>
+<details open><summary>ND_subtract_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_subtract_color3FA
@@ -5195,7 +5195,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_color4FA</summary>
+<details open><summary>ND_subtract_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_subtract_color4FA
@@ -5211,7 +5211,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_vector2FA</summary>
+<details open><summary>ND_subtract_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_subtract_vector2FA
@@ -5227,7 +5227,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_vector3FA</summary>
+<details open><summary>ND_subtract_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_subtract_vector3FA
@@ -5243,7 +5243,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_vector4FA</summary>
+<details open><summary>ND_subtract_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_subtract_vector4FA
@@ -5259,7 +5259,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_matrix33FA</summary>
+<details open><summary>ND_subtract_matrix33FA</summary>
 <p>
  
 * *Nodedef*: ND_subtract_matrix33FA
@@ -5275,7 +5275,7 @@ graph LR;
 | **in1** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_subtract_matrix44FA</summary>
+<details open><summary>ND_subtract_matrix44FA</summary>
 <p>
  
 * *Nodedef*: ND_subtract_matrix44FA
@@ -5292,7 +5292,7 @@ graph LR;
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *multiply*
-<details><summary>ND_multiply_float</summary>
+<details open><summary>ND_multiply_float</summary>
 <p>
  
 * *Nodedef*: ND_multiply_float
@@ -5308,7 +5308,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_color3</summary>
+<details open><summary>ND_multiply_color3</summary>
 <p>
  
 * *Nodedef*: ND_multiply_color3
@@ -5324,7 +5324,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_color4</summary>
+<details open><summary>ND_multiply_color4</summary>
 <p>
  
 * *Nodedef*: ND_multiply_color4
@@ -5340,7 +5340,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_vector2</summary>
+<details open><summary>ND_multiply_vector2</summary>
 <p>
  
 * *Nodedef*: ND_multiply_vector2
@@ -5356,7 +5356,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_vector3</summary>
+<details open><summary>ND_multiply_vector3</summary>
 <p>
  
 * *Nodedef*: ND_multiply_vector3
@@ -5372,7 +5372,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_vector4</summary>
+<details open><summary>ND_multiply_vector4</summary>
 <p>
  
 * *Nodedef*: ND_multiply_vector4
@@ -5388,7 +5388,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_matrix33</summary>
+<details open><summary>ND_multiply_matrix33</summary>
 <p>
  
 * *Nodedef*: ND_multiply_matrix33
@@ -5404,7 +5404,7 @@ graph LR;
 | **in1** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_matrix44</summary>
+<details open><summary>ND_multiply_matrix44</summary>
 <p>
  
 * *Nodedef*: ND_multiply_matrix44
@@ -5420,7 +5420,7 @@ graph LR;
 | **in1** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_color3FA</summary>
+<details open><summary>ND_multiply_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_multiply_color3FA
@@ -5436,7 +5436,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_color4FA</summary>
+<details open><summary>ND_multiply_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_multiply_color4FA
@@ -5452,7 +5452,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_vector2FA</summary>
+<details open><summary>ND_multiply_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_multiply_vector2FA
@@ -5468,7 +5468,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_vector3FA</summary>
+<details open><summary>ND_multiply_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_multiply_vector3FA
@@ -5484,7 +5484,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_multiply_vector4FA</summary>
+<details open><summary>ND_multiply_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_multiply_vector4FA
@@ -5501,7 +5501,7 @@ graph LR;
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *divide*
-<details><summary>ND_divide_float</summary>
+<details open><summary>ND_divide_float</summary>
 <p>
  
 * *Nodedef*: ND_divide_float
@@ -5517,7 +5517,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_divide_color3</summary>
+<details open><summary>ND_divide_color3</summary>
 <p>
  
 * *Nodedef*: ND_divide_color3
@@ -5533,7 +5533,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_divide_color4</summary>
+<details open><summary>ND_divide_color4</summary>
 <p>
  
 * *Nodedef*: ND_divide_color4
@@ -5549,7 +5549,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_divide_vector2</summary>
+<details open><summary>ND_divide_vector2</summary>
 <p>
  
 * *Nodedef*: ND_divide_vector2
@@ -5565,7 +5565,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_divide_vector3</summary>
+<details open><summary>ND_divide_vector3</summary>
 <p>
  
 * *Nodedef*: ND_divide_vector3
@@ -5581,7 +5581,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_divide_vector4</summary>
+<details open><summary>ND_divide_vector4</summary>
 <p>
  
 * *Nodedef*: ND_divide_vector4
@@ -5597,7 +5597,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_divide_matrix33</summary>
+<details open><summary>ND_divide_matrix33</summary>
 <p>
  
 * *Nodedef*: ND_divide_matrix33
@@ -5613,7 +5613,7 @@ graph LR;
 | **in1** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_divide_matrix44</summary>
+<details open><summary>ND_divide_matrix44</summary>
 <p>
  
 * *Nodedef*: ND_divide_matrix44
@@ -5629,7 +5629,7 @@ graph LR;
 | **in1** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_divide_color3FA</summary>
+<details open><summary>ND_divide_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_divide_color3FA
@@ -5645,7 +5645,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_divide_color4FA</summary>
+<details open><summary>ND_divide_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_divide_color4FA
@@ -5661,7 +5661,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_divide_vector2FA</summary>
+<details open><summary>ND_divide_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_divide_vector2FA
@@ -5677,7 +5677,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_divide_vector3FA</summary>
+<details open><summary>ND_divide_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_divide_vector3FA
@@ -5693,7 +5693,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_divide_vector4FA</summary>
+<details open><summary>ND_divide_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_divide_vector4FA
@@ -5710,7 +5710,7 @@ graph LR;
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *modulo*
-<details><summary>ND_modulo_float</summary>
+<details open><summary>ND_modulo_float</summary>
 <p>
  
 * *Nodedef*: ND_modulo_float
@@ -5726,7 +5726,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_modulo_color3</summary>
+<details open><summary>ND_modulo_color3</summary>
 <p>
  
 * *Nodedef*: ND_modulo_color3
@@ -5742,7 +5742,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_modulo_color4</summary>
+<details open><summary>ND_modulo_color4</summary>
 <p>
  
 * *Nodedef*: ND_modulo_color4
@@ -5758,7 +5758,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_modulo_vector2</summary>
+<details open><summary>ND_modulo_vector2</summary>
 <p>
  
 * *Nodedef*: ND_modulo_vector2
@@ -5774,7 +5774,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_modulo_vector3</summary>
+<details open><summary>ND_modulo_vector3</summary>
 <p>
  
 * *Nodedef*: ND_modulo_vector3
@@ -5790,7 +5790,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_modulo_vector4</summary>
+<details open><summary>ND_modulo_vector4</summary>
 <p>
  
 * *Nodedef*: ND_modulo_vector4
@@ -5806,7 +5806,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_modulo_color3FA</summary>
+<details open><summary>ND_modulo_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_modulo_color3FA
@@ -5822,7 +5822,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_modulo_color4FA</summary>
+<details open><summary>ND_modulo_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_modulo_color4FA
@@ -5838,7 +5838,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_modulo_vector2FA</summary>
+<details open><summary>ND_modulo_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_modulo_vector2FA
@@ -5854,7 +5854,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_modulo_vector3FA</summary>
+<details open><summary>ND_modulo_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_modulo_vector3FA
@@ -5870,7 +5870,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_modulo_vector4FA</summary>
+<details open><summary>ND_modulo_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_modulo_vector4FA
@@ -5887,7 +5887,7 @@ graph LR;
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *invert*
-<details><summary>ND_invert_float</summary>
+<details open><summary>ND_invert_float</summary>
 <p>
  
 * *Nodedef*: ND_invert_float
@@ -5903,7 +5903,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **amount** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_invert_color3</summary>
+<details open><summary>ND_invert_color3</summary>
 <p>
  
 * *Nodedef*: ND_invert_color3
@@ -5919,7 +5919,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **amount** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_invert_color4</summary>
+<details open><summary>ND_invert_color4</summary>
 <p>
  
 * *Nodedef*: ND_invert_color4
@@ -5935,7 +5935,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **amount** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_invert_vector2</summary>
+<details open><summary>ND_invert_vector2</summary>
 <p>
  
 * *Nodedef*: ND_invert_vector2
@@ -5951,7 +5951,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **amount** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_invert_vector3</summary>
+<details open><summary>ND_invert_vector3</summary>
 <p>
  
 * *Nodedef*: ND_invert_vector3
@@ -5967,7 +5967,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **amount** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_invert_vector4</summary>
+<details open><summary>ND_invert_vector4</summary>
 <p>
  
 * *Nodedef*: ND_invert_vector4
@@ -5983,7 +5983,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **amount** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_invert_color3FA</summary>
+<details open><summary>ND_invert_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_invert_color3FA
@@ -5999,7 +5999,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **amount** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_invert_color4FA</summary>
+<details open><summary>ND_invert_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_invert_color4FA
@@ -6015,7 +6015,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **amount** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_invert_vector2FA</summary>
+<details open><summary>ND_invert_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_invert_vector2FA
@@ -6031,7 +6031,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **amount** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_invert_vector3FA</summary>
+<details open><summary>ND_invert_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_invert_vector3FA
@@ -6047,7 +6047,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **amount** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_invert_vector4FA</summary>
+<details open><summary>ND_invert_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_invert_vector4FA
@@ -6064,7 +6064,7 @@ graph LR;
 | **amount** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *absval*
-<details><summary>ND_absval_float</summary>
+<details open><summary>ND_absval_float</summary>
 <p>
  
 * *Nodedef*: ND_absval_float
@@ -6079,7 +6079,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_absval_color3</summary>
+<details open><summary>ND_absval_color3</summary>
 <p>
  
 * *Nodedef*: ND_absval_color3
@@ -6094,7 +6094,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_absval_color4</summary>
+<details open><summary>ND_absval_color4</summary>
 <p>
  
 * *Nodedef*: ND_absval_color4
@@ -6109,7 +6109,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_absval_vector2</summary>
+<details open><summary>ND_absval_vector2</summary>
 <p>
  
 * *Nodedef*: ND_absval_vector2
@@ -6124,7 +6124,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_absval_vector3</summary>
+<details open><summary>ND_absval_vector3</summary>
 <p>
  
 * *Nodedef*: ND_absval_vector3
@@ -6139,7 +6139,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_absval_vector4</summary>
+<details open><summary>ND_absval_vector4</summary>
 <p>
  
 * *Nodedef*: ND_absval_vector4
@@ -6155,7 +6155,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *floor*
-<details><summary>ND_floor_float</summary>
+<details open><summary>ND_floor_float</summary>
 <p>
  
 * *Nodedef*: ND_floor_float
@@ -6170,7 +6170,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_floor_color3</summary>
+<details open><summary>ND_floor_color3</summary>
 <p>
  
 * *Nodedef*: ND_floor_color3
@@ -6185,7 +6185,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_floor_color4</summary>
+<details open><summary>ND_floor_color4</summary>
 <p>
  
 * *Nodedef*: ND_floor_color4
@@ -6200,7 +6200,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_floor_vector2</summary>
+<details open><summary>ND_floor_vector2</summary>
 <p>
  
 * *Nodedef*: ND_floor_vector2
@@ -6215,7 +6215,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_floor_vector3</summary>
+<details open><summary>ND_floor_vector3</summary>
 <p>
  
 * *Nodedef*: ND_floor_vector3
@@ -6230,7 +6230,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_floor_vector4</summary>
+<details open><summary>ND_floor_vector4</summary>
 <p>
  
 * *Nodedef*: ND_floor_vector4
@@ -6245,7 +6245,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_floor_integer</summary>
+<details open><summary>ND_floor_integer</summary>
 <p>
  
 * *Nodedef*: ND_floor_integer
@@ -6261,7 +6261,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | integer | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ceil*
-<details><summary>ND_ceil_float</summary>
+<details open><summary>ND_ceil_float</summary>
 <p>
  
 * *Nodedef*: ND_ceil_float
@@ -6276,7 +6276,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ceil_color3</summary>
+<details open><summary>ND_ceil_color3</summary>
 <p>
  
 * *Nodedef*: ND_ceil_color3
@@ -6291,7 +6291,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ceil_color4</summary>
+<details open><summary>ND_ceil_color4</summary>
 <p>
  
 * *Nodedef*: ND_ceil_color4
@@ -6306,7 +6306,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ceil_vector2</summary>
+<details open><summary>ND_ceil_vector2</summary>
 <p>
  
 * *Nodedef*: ND_ceil_vector2
@@ -6321,7 +6321,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ceil_vector3</summary>
+<details open><summary>ND_ceil_vector3</summary>
 <p>
  
 * *Nodedef*: ND_ceil_vector3
@@ -6336,7 +6336,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ceil_vector4</summary>
+<details open><summary>ND_ceil_vector4</summary>
 <p>
  
 * *Nodedef*: ND_ceil_vector4
@@ -6351,7 +6351,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ceil_integer</summary>
+<details open><summary>ND_ceil_integer</summary>
 <p>
  
 * *Nodedef*: ND_ceil_integer
@@ -6367,7 +6367,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | integer | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *round*
-<details><summary>ND_round_float</summary>
+<details open><summary>ND_round_float</summary>
 <p>
  
 * *Nodedef*: ND_round_float
@@ -6382,7 +6382,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_round_color3</summary>
+<details open><summary>ND_round_color3</summary>
 <p>
  
 * *Nodedef*: ND_round_color3
@@ -6397,7 +6397,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_round_color4</summary>
+<details open><summary>ND_round_color4</summary>
 <p>
  
 * *Nodedef*: ND_round_color4
@@ -6412,7 +6412,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_round_vector2</summary>
+<details open><summary>ND_round_vector2</summary>
 <p>
  
 * *Nodedef*: ND_round_vector2
@@ -6427,7 +6427,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_round_vector3</summary>
+<details open><summary>ND_round_vector3</summary>
 <p>
  
 * *Nodedef*: ND_round_vector3
@@ -6442,7 +6442,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_round_vector4</summary>
+<details open><summary>ND_round_vector4</summary>
 <p>
  
 * *Nodedef*: ND_round_vector4
@@ -6457,7 +6457,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_round_integer</summary>
+<details open><summary>ND_round_integer</summary>
 <p>
  
 * *Nodedef*: ND_round_integer
@@ -6473,7 +6473,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | integer | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *power*
-<details><summary>ND_power_float</summary>
+<details open><summary>ND_power_float</summary>
 <p>
  
 * *Nodedef*: ND_power_float
@@ -6489,7 +6489,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_power_color3</summary>
+<details open><summary>ND_power_color3</summary>
 <p>
  
 * *Nodedef*: ND_power_color3
@@ -6505,7 +6505,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_power_color4</summary>
+<details open><summary>ND_power_color4</summary>
 <p>
  
 * *Nodedef*: ND_power_color4
@@ -6521,7 +6521,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_power_vector2</summary>
+<details open><summary>ND_power_vector2</summary>
 <p>
  
 * *Nodedef*: ND_power_vector2
@@ -6537,7 +6537,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_power_vector3</summary>
+<details open><summary>ND_power_vector3</summary>
 <p>
  
 * *Nodedef*: ND_power_vector3
@@ -6553,7 +6553,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_power_vector4</summary>
+<details open><summary>ND_power_vector4</summary>
 <p>
  
 * *Nodedef*: ND_power_vector4
@@ -6569,7 +6569,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_power_color3FA</summary>
+<details open><summary>ND_power_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_power_color3FA
@@ -6585,7 +6585,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_power_color4FA</summary>
+<details open><summary>ND_power_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_power_color4FA
@@ -6601,7 +6601,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_power_vector2FA</summary>
+<details open><summary>ND_power_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_power_vector2FA
@@ -6617,7 +6617,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_power_vector3FA</summary>
+<details open><summary>ND_power_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_power_vector3FA
@@ -6633,7 +6633,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_power_vector4FA</summary>
+<details open><summary>ND_power_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_power_vector4FA
@@ -6650,7 +6650,7 @@ graph LR;
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *safepower*
-<details><summary>ND_safepower_float</summary>
+<details open><summary>ND_safepower_float</summary>
 <p>
  
 * *Nodedef*: ND_safepower_float
@@ -6683,7 +6683,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_safepower_color3</summary>
+<details open><summary>ND_safepower_color3</summary>
 <p>
  
 * *Nodedef*: ND_safepower_color3
@@ -6716,7 +6716,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_safepower_color4</summary>
+<details open><summary>ND_safepower_color4</summary>
 <p>
  
 * *Nodedef*: ND_safepower_color4
@@ -6749,7 +6749,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_safepower_vector2</summary>
+<details open><summary>ND_safepower_vector2</summary>
 <p>
  
 * *Nodedef*: ND_safepower_vector2
@@ -6782,7 +6782,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_safepower_vector3</summary>
+<details open><summary>ND_safepower_vector3</summary>
 <p>
  
 * *Nodedef*: ND_safepower_vector3
@@ -6815,7 +6815,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_safepower_vector4</summary>
+<details open><summary>ND_safepower_vector4</summary>
 <p>
  
 * *Nodedef*: ND_safepower_vector4
@@ -6848,7 +6848,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_safepower_color3FA</summary>
+<details open><summary>ND_safepower_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_safepower_color3FA
@@ -6881,7 +6881,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_safepower_color4FA</summary>
+<details open><summary>ND_safepower_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_safepower_color4FA
@@ -6914,7 +6914,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_safepower_vector2FA</summary>
+<details open><summary>ND_safepower_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_safepower_vector2FA
@@ -6947,7 +6947,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_safepower_vector3FA</summary>
+<details open><summary>ND_safepower_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_safepower_vector3FA
@@ -6980,7 +6980,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_safepower_vector4FA</summary>
+<details open><summary>ND_safepower_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_safepower_vector4FA
@@ -7014,7 +7014,7 @@ graph LR;
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sin*
-<details><summary>ND_sin_float</summary>
+<details open><summary>ND_sin_float</summary>
 <p>
  
 * *Nodedef*: ND_sin_float
@@ -7030,7 +7030,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *cos*
-<details><summary>ND_cos_float</summary>
+<details open><summary>ND_cos_float</summary>
 <p>
  
 * *Nodedef*: ND_cos_float
@@ -7046,7 +7046,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *tan*
-<details><summary>ND_tan_float</summary>
+<details open><summary>ND_tan_float</summary>
 <p>
  
 * *Nodedef*: ND_tan_float
@@ -7062,7 +7062,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *asin*
-<details><summary>ND_asin_float</summary>
+<details open><summary>ND_asin_float</summary>
 <p>
  
 * *Nodedef*: ND_asin_float
@@ -7078,7 +7078,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *acos*
-<details><summary>ND_acos_float</summary>
+<details open><summary>ND_acos_float</summary>
 <p>
  
 * *Nodedef*: ND_acos_float
@@ -7094,7 +7094,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *atan2*
-<details><summary>ND_atan2_float</summary>
+<details open><summary>ND_atan2_float</summary>
 <p>
  
 * *Nodedef*: ND_atan2_float
@@ -7111,7 +7111,7 @@ graph LR;
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sin*
-<details><summary>ND_sin_vector2</summary>
+<details open><summary>ND_sin_vector2</summary>
 <p>
  
 * *Nodedef*: ND_sin_vector2
@@ -7127,7 +7127,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *cos*
-<details><summary>ND_cos_vector2</summary>
+<details open><summary>ND_cos_vector2</summary>
 <p>
  
 * *Nodedef*: ND_cos_vector2
@@ -7143,7 +7143,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *tan*
-<details><summary>ND_tan_vector2</summary>
+<details open><summary>ND_tan_vector2</summary>
 <p>
  
 * *Nodedef*: ND_tan_vector2
@@ -7159,7 +7159,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *asin*
-<details><summary>ND_asin_vector2</summary>
+<details open><summary>ND_asin_vector2</summary>
 <p>
  
 * *Nodedef*: ND_asin_vector2
@@ -7175,7 +7175,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *acos*
-<details><summary>ND_acos_vector2</summary>
+<details open><summary>ND_acos_vector2</summary>
 <p>
  
 * *Nodedef*: ND_acos_vector2
@@ -7191,7 +7191,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *atan2*
-<details><summary>ND_atan2_vector2</summary>
+<details open><summary>ND_atan2_vector2</summary>
 <p>
  
 * *Nodedef*: ND_atan2_vector2
@@ -7208,7 +7208,7 @@ graph LR;
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sin*
-<details><summary>ND_sin_vector3</summary>
+<details open><summary>ND_sin_vector3</summary>
 <p>
  
 * *Nodedef*: ND_sin_vector3
@@ -7224,7 +7224,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *cos*
-<details><summary>ND_cos_vector3</summary>
+<details open><summary>ND_cos_vector3</summary>
 <p>
  
 * *Nodedef*: ND_cos_vector3
@@ -7240,7 +7240,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *tan*
-<details><summary>ND_tan_vector3</summary>
+<details open><summary>ND_tan_vector3</summary>
 <p>
  
 * *Nodedef*: ND_tan_vector3
@@ -7256,7 +7256,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *asin*
-<details><summary>ND_asin_vector3</summary>
+<details open><summary>ND_asin_vector3</summary>
 <p>
  
 * *Nodedef*: ND_asin_vector3
@@ -7272,7 +7272,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *acos*
-<details><summary>ND_acos_vector3</summary>
+<details open><summary>ND_acos_vector3</summary>
 <p>
  
 * *Nodedef*: ND_acos_vector3
@@ -7288,7 +7288,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *atan2*
-<details><summary>ND_atan2_vector3</summary>
+<details open><summary>ND_atan2_vector3</summary>
 <p>
  
 * *Nodedef*: ND_atan2_vector3
@@ -7305,7 +7305,7 @@ graph LR;
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sin*
-<details><summary>ND_sin_vector4</summary>
+<details open><summary>ND_sin_vector4</summary>
 <p>
  
 * *Nodedef*: ND_sin_vector4
@@ -7321,7 +7321,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *cos*
-<details><summary>ND_cos_vector4</summary>
+<details open><summary>ND_cos_vector4</summary>
 <p>
  
 * *Nodedef*: ND_cos_vector4
@@ -7337,7 +7337,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *tan*
-<details><summary>ND_tan_vector4</summary>
+<details open><summary>ND_tan_vector4</summary>
 <p>
  
 * *Nodedef*: ND_tan_vector4
@@ -7353,7 +7353,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *asin*
-<details><summary>ND_asin_vector4</summary>
+<details open><summary>ND_asin_vector4</summary>
 <p>
  
 * *Nodedef*: ND_asin_vector4
@@ -7369,7 +7369,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *acos*
-<details><summary>ND_acos_vector4</summary>
+<details open><summary>ND_acos_vector4</summary>
 <p>
  
 * *Nodedef*: ND_acos_vector4
@@ -7385,7 +7385,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *atan2*
-<details><summary>ND_atan2_vector4</summary>
+<details open><summary>ND_atan2_vector4</summary>
 <p>
  
 * *Nodedef*: ND_atan2_vector4
@@ -7402,7 +7402,7 @@ graph LR;
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sqrt*
-<details><summary>ND_sqrt_float</summary>
+<details open><summary>ND_sqrt_float</summary>
 <p>
  
 * *Nodedef*: ND_sqrt_float
@@ -7418,7 +7418,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ln*
-<details><summary>ND_ln_float</summary>
+<details open><summary>ND_ln_float</summary>
 <p>
  
 * *Nodedef*: ND_ln_float
@@ -7434,7 +7434,7 @@ graph LR;
 | **in** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *exp*
-<details><summary>ND_exp_float</summary>
+<details open><summary>ND_exp_float</summary>
 <p>
  
 * *Nodedef*: ND_exp_float
@@ -7450,7 +7450,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sqrt*
-<details><summary>ND_sqrt_vector2</summary>
+<details open><summary>ND_sqrt_vector2</summary>
 <p>
  
 * *Nodedef*: ND_sqrt_vector2
@@ -7466,7 +7466,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ln*
-<details><summary>ND_ln_vector2</summary>
+<details open><summary>ND_ln_vector2</summary>
 <p>
  
 * *Nodedef*: ND_ln_vector2
@@ -7482,7 +7482,7 @@ graph LR;
 | **in** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *exp*
-<details><summary>ND_exp_vector2</summary>
+<details open><summary>ND_exp_vector2</summary>
 <p>
  
 * *Nodedef*: ND_exp_vector2
@@ -7498,7 +7498,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sqrt*
-<details><summary>ND_sqrt_vector3</summary>
+<details open><summary>ND_sqrt_vector3</summary>
 <p>
  
 * *Nodedef*: ND_sqrt_vector3
@@ -7514,7 +7514,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ln*
-<details><summary>ND_ln_vector3</summary>
+<details open><summary>ND_ln_vector3</summary>
 <p>
  
 * *Nodedef*: ND_ln_vector3
@@ -7530,7 +7530,7 @@ graph LR;
 | **in** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *exp*
-<details><summary>ND_exp_vector3</summary>
+<details open><summary>ND_exp_vector3</summary>
 <p>
  
 * *Nodedef*: ND_exp_vector3
@@ -7546,7 +7546,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sqrt*
-<details><summary>ND_sqrt_vector4</summary>
+<details open><summary>ND_sqrt_vector4</summary>
 <p>
  
 * *Nodedef*: ND_sqrt_vector4
@@ -7562,7 +7562,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ln*
-<details><summary>ND_ln_vector4</summary>
+<details open><summary>ND_ln_vector4</summary>
 <p>
  
 * *Nodedef*: ND_ln_vector4
@@ -7578,7 +7578,7 @@ graph LR;
 | **in** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *exp*
-<details><summary>ND_exp_vector4</summary>
+<details open><summary>ND_exp_vector4</summary>
 <p>
  
 * *Nodedef*: ND_exp_vector4
@@ -7594,7 +7594,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sign*
-<details><summary>ND_sign_float</summary>
+<details open><summary>ND_sign_float</summary>
 <p>
  
 * *Nodedef*: ND_sign_float
@@ -7609,7 +7609,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_sign_color3</summary>
+<details open><summary>ND_sign_color3</summary>
 <p>
  
 * *Nodedef*: ND_sign_color3
@@ -7624,7 +7624,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_sign_color4</summary>
+<details open><summary>ND_sign_color4</summary>
 <p>
  
 * *Nodedef*: ND_sign_color4
@@ -7639,7 +7639,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_sign_vector2</summary>
+<details open><summary>ND_sign_vector2</summary>
 <p>
  
 * *Nodedef*: ND_sign_vector2
@@ -7654,7 +7654,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_sign_vector3</summary>
+<details open><summary>ND_sign_vector3</summary>
 <p>
  
 * *Nodedef*: ND_sign_vector3
@@ -7669,7 +7669,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_sign_vector4</summary>
+<details open><summary>ND_sign_vector4</summary>
 <p>
  
 * *Nodedef*: ND_sign_vector4
@@ -7685,7 +7685,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *clamp*
-<details><summary>ND_clamp_float</summary>
+<details open><summary>ND_clamp_float</summary>
 <p>
  
 * *Nodedef*: ND_clamp_float
@@ -7702,7 +7702,7 @@ graph LR;
 | **low** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_clamp_color3</summary>
+<details open><summary>ND_clamp_color3</summary>
 <p>
  
 * *Nodedef*: ND_clamp_color3
@@ -7719,7 +7719,7 @@ graph LR;
 | **low** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_clamp_color4</summary>
+<details open><summary>ND_clamp_color4</summary>
 <p>
  
 * *Nodedef*: ND_clamp_color4
@@ -7736,7 +7736,7 @@ graph LR;
 | **low** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_clamp_vector2</summary>
+<details open><summary>ND_clamp_vector2</summary>
 <p>
  
 * *Nodedef*: ND_clamp_vector2
@@ -7753,7 +7753,7 @@ graph LR;
 | **low** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_clamp_vector3</summary>
+<details open><summary>ND_clamp_vector3</summary>
 <p>
  
 * *Nodedef*: ND_clamp_vector3
@@ -7770,7 +7770,7 @@ graph LR;
 | **low** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_clamp_vector4</summary>
+<details open><summary>ND_clamp_vector4</summary>
 <p>
  
 * *Nodedef*: ND_clamp_vector4
@@ -7787,7 +7787,7 @@ graph LR;
 | **low** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_clamp_color3FA</summary>
+<details open><summary>ND_clamp_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_clamp_color3FA
@@ -7804,7 +7804,7 @@ graph LR;
 | **low** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_clamp_color4FA</summary>
+<details open><summary>ND_clamp_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_clamp_color4FA
@@ -7821,7 +7821,7 @@ graph LR;
 | **low** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_clamp_vector2FA</summary>
+<details open><summary>ND_clamp_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_clamp_vector2FA
@@ -7838,7 +7838,7 @@ graph LR;
 | **low** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_clamp_vector3FA</summary>
+<details open><summary>ND_clamp_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_clamp_vector3FA
@@ -7855,7 +7855,7 @@ graph LR;
 | **low** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_clamp_vector4FA</summary>
+<details open><summary>ND_clamp_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_clamp_vector4FA
@@ -7873,7 +7873,7 @@ graph LR;
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *min*
-<details><summary>ND_min_float</summary>
+<details open><summary>ND_min_float</summary>
 <p>
  
 * *Nodedef*: ND_min_float
@@ -7889,7 +7889,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_min_color3</summary>
+<details open><summary>ND_min_color3</summary>
 <p>
  
 * *Nodedef*: ND_min_color3
@@ -7905,7 +7905,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_min_color4</summary>
+<details open><summary>ND_min_color4</summary>
 <p>
  
 * *Nodedef*: ND_min_color4
@@ -7921,7 +7921,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_min_vector2</summary>
+<details open><summary>ND_min_vector2</summary>
 <p>
  
 * *Nodedef*: ND_min_vector2
@@ -7937,7 +7937,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_min_vector3</summary>
+<details open><summary>ND_min_vector3</summary>
 <p>
  
 * *Nodedef*: ND_min_vector3
@@ -7953,7 +7953,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_min_vector4</summary>
+<details open><summary>ND_min_vector4</summary>
 <p>
  
 * *Nodedef*: ND_min_vector4
@@ -7969,7 +7969,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_min_color3FA</summary>
+<details open><summary>ND_min_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_min_color3FA
@@ -7985,7 +7985,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_min_color4FA</summary>
+<details open><summary>ND_min_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_min_color4FA
@@ -8001,7 +8001,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_min_vector2FA</summary>
+<details open><summary>ND_min_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_min_vector2FA
@@ -8017,7 +8017,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_min_vector3FA</summary>
+<details open><summary>ND_min_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_min_vector3FA
@@ -8033,7 +8033,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_min_vector4FA</summary>
+<details open><summary>ND_min_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_min_vector4FA
@@ -8050,7 +8050,7 @@ graph LR;
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *max*
-<details><summary>ND_max_float</summary>
+<details open><summary>ND_max_float</summary>
 <p>
  
 * *Nodedef*: ND_max_float
@@ -8066,7 +8066,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_max_color3</summary>
+<details open><summary>ND_max_color3</summary>
 <p>
  
 * *Nodedef*: ND_max_color3
@@ -8082,7 +8082,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_max_color4</summary>
+<details open><summary>ND_max_color4</summary>
 <p>
  
 * *Nodedef*: ND_max_color4
@@ -8098,7 +8098,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_max_vector2</summary>
+<details open><summary>ND_max_vector2</summary>
 <p>
  
 * *Nodedef*: ND_max_vector2
@@ -8114,7 +8114,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_max_vector3</summary>
+<details open><summary>ND_max_vector3</summary>
 <p>
  
 * *Nodedef*: ND_max_vector3
@@ -8130,7 +8130,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_max_vector4</summary>
+<details open><summary>ND_max_vector4</summary>
 <p>
  
 * *Nodedef*: ND_max_vector4
@@ -8146,7 +8146,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_max_color3FA</summary>
+<details open><summary>ND_max_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_max_color3FA
@@ -8162,7 +8162,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_max_color4FA</summary>
+<details open><summary>ND_max_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_max_color4FA
@@ -8178,7 +8178,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_max_vector2FA</summary>
+<details open><summary>ND_max_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_max_vector2FA
@@ -8194,7 +8194,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_max_vector3FA</summary>
+<details open><summary>ND_max_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_max_vector3FA
@@ -8210,7 +8210,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_max_vector4FA</summary>
+<details open><summary>ND_max_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_max_vector4FA
@@ -8227,7 +8227,7 @@ graph LR;
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *normalize*
-<details><summary>ND_normalize_vector2</summary>
+<details open><summary>ND_normalize_vector2</summary>
 <p>
  
 * *Nodedef*: ND_normalize_vector2
@@ -8242,7 +8242,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_normalize_vector3</summary>
+<details open><summary>ND_normalize_vector3</summary>
 <p>
  
 * *Nodedef*: ND_normalize_vector3
@@ -8257,7 +8257,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_normalize_vector4</summary>
+<details open><summary>ND_normalize_vector4</summary>
 <p>
  
 * *Nodedef*: ND_normalize_vector4
@@ -8273,7 +8273,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *magnitude*
-<details><summary>ND_magnitude_vector2</summary>
+<details open><summary>ND_magnitude_vector2</summary>
 <p>
  
 * *Nodedef*: ND_magnitude_vector2
@@ -8288,7 +8288,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_magnitude_vector3</summary>
+<details open><summary>ND_magnitude_vector3</summary>
 <p>
  
 * *Nodedef*: ND_magnitude_vector3
@@ -8303,7 +8303,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_magnitude_vector4</summary>
+<details open><summary>ND_magnitude_vector4</summary>
 <p>
  
 * *Nodedef*: ND_magnitude_vector4
@@ -8319,7 +8319,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *distance*
-<details><summary>ND_distance_vector2</summary>
+<details open><summary>ND_distance_vector2</summary>
 <p>
  
 * *Nodedef*: ND_distance_vector2
@@ -8348,7 +8348,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 | in1 |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 | in2 |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_distance_vector3</summary>
+<details open><summary>ND_distance_vector3</summary>
 <p>
  
 * *Nodedef*: ND_distance_vector3
@@ -8377,7 +8377,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 | in1 |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 | in2 |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_distance_vector4</summary>
+<details open><summary>ND_distance_vector4</summary>
 <p>
  
 * *Nodedef*: ND_distance_vector4
@@ -8407,7 +8407,7 @@ graph LR;
 | **in2** | vector4 | 0, 0, 0, 0 | in2 |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *dotproduct*
-<details><summary>ND_dotproduct_vector2</summary>
+<details open><summary>ND_dotproduct_vector2</summary>
 <p>
  
 * *Nodedef*: ND_dotproduct_vector2
@@ -8423,7 +8423,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dotproduct_vector3</summary>
+<details open><summary>ND_dotproduct_vector3</summary>
 <p>
  
 * *Nodedef*: ND_dotproduct_vector3
@@ -8439,7 +8439,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dotproduct_vector4</summary>
+<details open><summary>ND_dotproduct_vector4</summary>
 <p>
  
 * *Nodedef*: ND_dotproduct_vector4
@@ -8456,7 +8456,7 @@ graph LR;
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *crossproduct*
-<details><summary>ND_crossproduct_vector3</summary>
+<details open><summary>ND_crossproduct_vector3</summary>
 <p>
  
 * *Nodedef*: ND_crossproduct_vector3
@@ -8473,7 +8473,7 @@ graph LR;
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *transformpoint*
-<details><summary>ND_transformpoint_vector3</summary>
+<details open><summary>ND_transformpoint_vector3</summary>
 <p>
  
 * *Nodedef*: ND_transformpoint_vector3
@@ -8491,7 +8491,7 @@ graph LR;
 | **tospace** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *transformvector*
-<details><summary>ND_transformvector_vector3</summary>
+<details open><summary>ND_transformvector_vector3</summary>
 <p>
  
 * *Nodedef*: ND_transformvector_vector3
@@ -8509,7 +8509,7 @@ graph LR;
 | **tospace** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *transformnormal*
-<details><summary>ND_transformnormal_vector3</summary>
+<details open><summary>ND_transformnormal_vector3</summary>
 <p>
  
 * *Nodedef*: ND_transformnormal_vector3
@@ -8527,7 +8527,7 @@ graph LR;
 | **tospace** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *transformmatrix*
-<details><summary>ND_transformmatrix_vector2M3</summary>
+<details open><summary>ND_transformmatrix_vector2M3</summary>
 <p>
  
 * *Nodedef*: ND_transformmatrix_vector2M3
@@ -8543,7 +8543,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mat** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_transformmatrix_vector3</summary>
+<details open><summary>ND_transformmatrix_vector3</summary>
 <p>
  
 * *Nodedef*: ND_transformmatrix_vector3
@@ -8559,7 +8559,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mat** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_transformmatrix_vector3M4</summary>
+<details open><summary>ND_transformmatrix_vector3M4</summary>
 <p>
  
 * *Nodedef*: ND_transformmatrix_vector3M4
@@ -8575,7 +8575,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mat** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_transformmatrix_vector4</summary>
+<details open><summary>ND_transformmatrix_vector4</summary>
 <p>
  
 * *Nodedef*: ND_transformmatrix_vector4
@@ -8592,7 +8592,7 @@ graph LR;
 | **mat** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *normalmap*
-<details><summary>ND_normalmap</summary>
+<details open><summary>ND_normalmap</summary>
 <p>
  
 * *Nodedef*: ND_normalmap
@@ -8611,7 +8611,7 @@ graph LR;
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_normalmap_vector2</summary>
+<details open><summary>ND_normalmap_vector2</summary>
 <p>
  
 * *Nodedef*: ND_normalmap_vector2
@@ -8631,7 +8631,7 @@ graph LR;
 | **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *transpose*
-<details><summary>ND_transpose_matrix33</summary>
+<details open><summary>ND_transpose_matrix33</summary>
 <p>
  
 * *Nodedef*: ND_transpose_matrix33
@@ -8646,7 +8646,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_transpose_matrix44</summary>
+<details open><summary>ND_transpose_matrix44</summary>
 <p>
  
 * *Nodedef*: ND_transpose_matrix44
@@ -8662,7 +8662,7 @@ graph LR;
 | **in** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *determinant*
-<details><summary>ND_determinant_matrix33</summary>
+<details open><summary>ND_determinant_matrix33</summary>
 <p>
  
 * *Nodedef*: ND_determinant_matrix33
@@ -8677,7 +8677,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_determinant_matrix44</summary>
+<details open><summary>ND_determinant_matrix44</summary>
 <p>
  
 * *Nodedef*: ND_determinant_matrix44
@@ -8693,7 +8693,7 @@ graph LR;
 | **in** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *invertmatrix*
-<details><summary>ND_invertmatrix_matrix33</summary>
+<details open><summary>ND_invertmatrix_matrix33</summary>
 <p>
  
 * *Nodedef*: ND_invertmatrix_matrix33
@@ -8708,7 +8708,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_invertmatrix_matrix44</summary>
+<details open><summary>ND_invertmatrix_matrix44</summary>
 <p>
  
 * *Nodedef*: ND_invertmatrix_matrix44
@@ -8724,7 +8724,7 @@ graph LR;
 | **in** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *rotate2d*
-<details><summary>ND_rotate2d_vector2</summary>
+<details open><summary>ND_rotate2d_vector2</summary>
 <p>
  
 * *Nodedef*: ND_rotate2d_vector2
@@ -8741,7 +8741,7 @@ graph LR;
 | **amount** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *rotate3d*
-<details><summary>ND_rotate3d_vector3</summary>
+<details open><summary>ND_rotate3d_vector3</summary>
 <p>
  
 * *Nodedef*: ND_rotate3d_vector3
@@ -8759,7 +8759,7 @@ graph LR;
 | **axis** | vector3 | 0, 1, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *place2d*
-<details><summary>ND_place2d_vector2</summary>
+<details open><summary>ND_place2d_vector2</summary>
 <p>
  
 * *Nodedef*: ND_place2d_vector2
@@ -8822,7 +8822,7 @@ graph LR;
 | **operationorder** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *arrayappend*
-<details><summary>ND_arrayappend_integer_integerarray</summary>
+<details open><summary>ND_arrayappend_integer_integerarray</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_integer_integerarray
@@ -8838,7 +8838,7 @@ graph LR;
 | **in1** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | integerarray | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_integerarray_integerarray</summary>
+<details open><summary>ND_arrayappend_integerarray_integerarray</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_integerarray_integerarray
@@ -8854,7 +8854,7 @@ graph LR;
 | **in1** | integerarray | [] |  |  |  |  |  |  |  |  |  |  |
 | **in2** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | integerarray | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_float_floatarray</summary>
+<details open><summary>ND_arrayappend_float_floatarray</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_float_floatarray
@@ -8870,7 +8870,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | floatarray | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_floatarray_floatarray</summary>
+<details open><summary>ND_arrayappend_floatarray_floatarray</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_floatarray_floatarray
@@ -8886,7 +8886,7 @@ graph LR;
 | **in1** | floatarray | [] |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | floatarray | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_color3_color3array</summary>
+<details open><summary>ND_arrayappend_color3_color3array</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_color3_color3array
@@ -8902,7 +8902,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3array | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_color3array_color3array</summary>
+<details open><summary>ND_arrayappend_color3array_color3array</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_color3array_color3array
@@ -8918,7 +8918,7 @@ graph LR;
 | **in1** | color3array |  |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3array | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_color4_color4array</summary>
+<details open><summary>ND_arrayappend_color4_color4array</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_color4_color4array
@@ -8934,7 +8934,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4array | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_color4array_color4array</summary>
+<details open><summary>ND_arrayappend_color4array_color4array</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_color4array_color4array
@@ -8950,7 +8950,7 @@ graph LR;
 | **in1** | color4array |  |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4array | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_vector2_vector2array</summary>
+<details open><summary>ND_arrayappend_vector2_vector2array</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_vector2_vector2array
@@ -8966,7 +8966,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2array | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_vector2array_vector2array</summary>
+<details open><summary>ND_arrayappend_vector2array_vector2array</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_vector2array_vector2array
@@ -8982,7 +8982,7 @@ graph LR;
 | **in1** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2array | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_vector3_vector3array</summary>
+<details open><summary>ND_arrayappend_vector3_vector3array</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_vector3_vector3array
@@ -8998,7 +8998,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3array | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_vector3array_vector3array</summary>
+<details open><summary>ND_arrayappend_vector3array_vector3array</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_vector3array_vector3array
@@ -9014,7 +9014,7 @@ graph LR;
 | **in1** | vector3array |  |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3array | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_vector4_vector4array</summary>
+<details open><summary>ND_arrayappend_vector4_vector4array</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_vector4_vector4array
@@ -9030,7 +9030,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4array | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_vector4array_vector4array</summary>
+<details open><summary>ND_arrayappend_vector4array_vector4array</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_vector4array_vector4array
@@ -9046,7 +9046,7 @@ graph LR;
 | **in1** | vector4array |  |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4array | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_string_stringarray</summary>
+<details open><summary>ND_arrayappend_string_stringarray</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_string_stringarray
@@ -9062,7 +9062,7 @@ graph LR;
 | **in1** | string |  |  |  |  |  |  |  |  |  |  |  |
 | **in2** | string |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | stringarray | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_arrayappend_stringarray_stringarray</summary>
+<details open><summary>ND_arrayappend_stringarray_stringarray</summary>
 <p>
  
 * *Nodedef*: ND_arrayappend_stringarray_stringarray
@@ -9079,7 +9079,7 @@ graph LR;
 | **in2** | string |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | stringarray | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *trianglewave*
-<details><summary>ND_trianglewave_float</summary>
+<details open><summary>ND_trianglewave_float</summary>
 <p>
  
 * *Nodedef*: ND_trianglewave_float
@@ -9109,7 +9109,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *reflect*
-<details><summary>ND_reflect_vector3</summary>
+<details open><summary>ND_reflect_vector3</summary>
 <p>
  
 * *Nodedef*: ND_reflect_vector3
@@ -9145,7 +9145,7 @@ graph LR;
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  | Surface normal |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *refract*
-<details><summary>ND_refract_vector3</summary>
+<details open><summary>ND_refract_vector3</summary>
 <p>
  
 * *Nodedef*: ND_refract_vector3
@@ -9204,7 +9204,7 @@ graph LR;
 | **ior** | float | 1.0 |  |  |  |  |  |  |  |  | Index of refraction |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *remap*
-<details><summary>ND_remap_float</summary>
+<details open><summary>ND_remap_float</summary>
 <p>
  
 * *Nodedef*: ND_remap_float
@@ -9223,7 +9223,7 @@ graph LR;
 | **outlow** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **outhigh** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_remap_color3</summary>
+<details open><summary>ND_remap_color3</summary>
 <p>
  
 * *Nodedef*: ND_remap_color3
@@ -9242,7 +9242,7 @@ graph LR;
 | **outlow** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **outhigh** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_remap_color4</summary>
+<details open><summary>ND_remap_color4</summary>
 <p>
  
 * *Nodedef*: ND_remap_color4
@@ -9261,7 +9261,7 @@ graph LR;
 | **outlow** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **outhigh** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_remap_vector2</summary>
+<details open><summary>ND_remap_vector2</summary>
 <p>
  
 * *Nodedef*: ND_remap_vector2
@@ -9280,7 +9280,7 @@ graph LR;
 | **outlow** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **outhigh** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_remap_vector3</summary>
+<details open><summary>ND_remap_vector3</summary>
 <p>
  
 * *Nodedef*: ND_remap_vector3
@@ -9299,7 +9299,7 @@ graph LR;
 | **outlow** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **outhigh** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_remap_vector4</summary>
+<details open><summary>ND_remap_vector4</summary>
 <p>
  
 * *Nodedef*: ND_remap_vector4
@@ -9318,7 +9318,7 @@ graph LR;
 | **outlow** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **outhigh** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_remap_color3FA</summary>
+<details open><summary>ND_remap_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_remap_color3FA
@@ -9337,7 +9337,7 @@ graph LR;
 | **outlow** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **outhigh** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_remap_color4FA</summary>
+<details open><summary>ND_remap_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_remap_color4FA
@@ -9356,7 +9356,7 @@ graph LR;
 | **outlow** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **outhigh** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_remap_vector2FA</summary>
+<details open><summary>ND_remap_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_remap_vector2FA
@@ -9375,7 +9375,7 @@ graph LR;
 | **outlow** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **outhigh** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_remap_vector3FA</summary>
+<details open><summary>ND_remap_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_remap_vector3FA
@@ -9394,7 +9394,7 @@ graph LR;
 | **outlow** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **outhigh** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_remap_vector4FA</summary>
+<details open><summary>ND_remap_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_remap_vector4FA
@@ -9414,7 +9414,7 @@ graph LR;
 | **outhigh** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *smoothstep*
-<details><summary>ND_smoothstep_float</summary>
+<details open><summary>ND_smoothstep_float</summary>
 <p>
  
 * *Nodedef*: ND_smoothstep_float
@@ -9431,7 +9431,7 @@ graph LR;
 | **low** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_smoothstep_color3</summary>
+<details open><summary>ND_smoothstep_color3</summary>
 <p>
  
 * *Nodedef*: ND_smoothstep_color3
@@ -9462,7 +9462,7 @@ graph LR;
 | **low** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_smoothstep_color4</summary>
+<details open><summary>ND_smoothstep_color4</summary>
 <p>
  
 * *Nodedef*: ND_smoothstep_color4
@@ -9493,7 +9493,7 @@ graph LR;
 | **low** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_smoothstep_vector2</summary>
+<details open><summary>ND_smoothstep_vector2</summary>
 <p>
  
 * *Nodedef*: ND_smoothstep_vector2
@@ -9510,7 +9510,7 @@ graph LR;
 | **low** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_smoothstep_vector3</summary>
+<details open><summary>ND_smoothstep_vector3</summary>
 <p>
  
 * *Nodedef*: ND_smoothstep_vector3
@@ -9527,7 +9527,7 @@ graph LR;
 | **low** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_smoothstep_vector4</summary>
+<details open><summary>ND_smoothstep_vector4</summary>
 <p>
  
 * *Nodedef*: ND_smoothstep_vector4
@@ -9544,7 +9544,7 @@ graph LR;
 | **low** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_smoothstep_color3FA</summary>
+<details open><summary>ND_smoothstep_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_smoothstep_color3FA
@@ -9575,7 +9575,7 @@ graph LR;
 | **low** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_smoothstep_color4FA</summary>
+<details open><summary>ND_smoothstep_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_smoothstep_color4FA
@@ -9606,7 +9606,7 @@ graph LR;
 | **low** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_smoothstep_vector2FA</summary>
+<details open><summary>ND_smoothstep_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_smoothstep_vector2FA
@@ -9637,7 +9637,7 @@ graph LR;
 | **low** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_smoothstep_vector3FA</summary>
+<details open><summary>ND_smoothstep_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_smoothstep_vector3FA
@@ -9668,7 +9668,7 @@ graph LR;
 | **low** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_smoothstep_vector4FA</summary>
+<details open><summary>ND_smoothstep_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_smoothstep_vector4FA
@@ -9700,7 +9700,7 @@ graph LR;
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *curveadjust*
-<details><summary>ND_curveadjust_float</summary>
+<details open><summary>ND_curveadjust_float</summary>
 <p>
  
 * *Nodedef*: ND_curveadjust_float
@@ -9716,7 +9716,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **knots** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_curveadjust_color3</summary>
+<details open><summary>ND_curveadjust_color3</summary>
 <p>
  
 * *Nodedef*: ND_curveadjust_color3
@@ -9732,7 +9732,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **knots** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_curveadjust_color4</summary>
+<details open><summary>ND_curveadjust_color4</summary>
 <p>
  
 * *Nodedef*: ND_curveadjust_color4
@@ -9748,7 +9748,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **knots** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_curveadjust_vector2</summary>
+<details open><summary>ND_curveadjust_vector2</summary>
 <p>
  
 * *Nodedef*: ND_curveadjust_vector2
@@ -9764,7 +9764,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **knots** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_curveadjust_vector3</summary>
+<details open><summary>ND_curveadjust_vector3</summary>
 <p>
  
 * *Nodedef*: ND_curveadjust_vector3
@@ -9780,7 +9780,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **knots** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_curveadjust_vector4</summary>
+<details open><summary>ND_curveadjust_vector4</summary>
 <p>
  
 * *Nodedef*: ND_curveadjust_vector4
@@ -9797,7 +9797,7 @@ graph LR;
 | **knots** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *luminance*
-<details><summary>ND_luminance_color3</summary>
+<details open><summary>ND_luminance_color3</summary>
 <p>
  
 * *Nodedef*: ND_luminance_color3
@@ -9813,7 +9813,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **lumacoeffs** | color3 | 0.272229, 0.674082, 0.0536895 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_luminance_color4</summary>
+<details open><summary>ND_luminance_color4</summary>
 <p>
  
 * *Nodedef*: ND_luminance_color4
@@ -9830,7 +9830,7 @@ graph LR;
 | **lumacoeffs** | color3 | 0.272229, 0.674082, 0.0536895 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *rgbtohsv*
-<details><summary>ND_rgbtohsv_color3</summary>
+<details open><summary>ND_rgbtohsv_color3</summary>
 <p>
  
 * *Nodedef*: ND_rgbtohsv_color3
@@ -9845,7 +9845,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_rgbtohsv_color4</summary>
+<details open><summary>ND_rgbtohsv_color4</summary>
 <p>
  
 * *Nodedef*: ND_rgbtohsv_color4
@@ -9861,7 +9861,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *hsvtorgb*
-<details><summary>ND_hsvtorgb_color3</summary>
+<details open><summary>ND_hsvtorgb_color3</summary>
 <p>
  
 * *Nodedef*: ND_hsvtorgb_color3
@@ -9876,7 +9876,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_hsvtorgb_color4</summary>
+<details open><summary>ND_hsvtorgb_color4</summary>
 <p>
  
 * *Nodedef*: ND_hsvtorgb_color4
@@ -9892,7 +9892,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *contrast*
-<details><summary>ND_contrast_float</summary>
+<details open><summary>ND_contrast_float</summary>
 <p>
  
 * *Nodedef*: ND_contrast_float
@@ -9927,7 +9927,7 @@ graph LR;
 | **amount** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_contrast_color3</summary>
+<details open><summary>ND_contrast_color3</summary>
 <p>
  
 * *Nodedef*: ND_contrast_color3
@@ -9962,7 +9962,7 @@ graph LR;
 | **amount** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | color3 | 0.5, 0.5, 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_contrast_color4</summary>
+<details open><summary>ND_contrast_color4</summary>
 <p>
  
 * *Nodedef*: ND_contrast_color4
@@ -9997,7 +9997,7 @@ graph LR;
 | **amount** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | color4 | 0.5, 0.5, 0.5, 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_contrast_vector2</summary>
+<details open><summary>ND_contrast_vector2</summary>
 <p>
  
 * *Nodedef*: ND_contrast_vector2
@@ -10032,7 +10032,7 @@ graph LR;
 | **amount** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | vector2 | 0.5, 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_contrast_vector3</summary>
+<details open><summary>ND_contrast_vector3</summary>
 <p>
  
 * *Nodedef*: ND_contrast_vector3
@@ -10067,7 +10067,7 @@ graph LR;
 | **amount** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | vector3 | 0.5, 0.5, 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_contrast_vector4</summary>
+<details open><summary>ND_contrast_vector4</summary>
 <p>
  
 * *Nodedef*: ND_contrast_vector4
@@ -10102,7 +10102,7 @@ graph LR;
 | **amount** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | vector4 | 0.5, 0.5, 0.5, 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_contrast_color3FA</summary>
+<details open><summary>ND_contrast_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_contrast_color3FA
@@ -10137,7 +10137,7 @@ graph LR;
 | **amount** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_contrast_color4FA</summary>
+<details open><summary>ND_contrast_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_contrast_color4FA
@@ -10172,7 +10172,7 @@ graph LR;
 | **amount** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_contrast_vector2FA</summary>
+<details open><summary>ND_contrast_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_contrast_vector2FA
@@ -10207,7 +10207,7 @@ graph LR;
 | **amount** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_contrast_vector3FA</summary>
+<details open><summary>ND_contrast_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_contrast_vector3FA
@@ -10242,7 +10242,7 @@ graph LR;
 | **amount** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **pivot** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_contrast_vector4FA</summary>
+<details open><summary>ND_contrast_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_contrast_vector4FA
@@ -10278,7 +10278,7 @@ graph LR;
 | **pivot** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *range*
-<details><summary>ND_range_float</summary>
+<details open><summary>ND_range_float</summary>
 <p>
  
 * *Nodedef*: ND_range_float
@@ -10337,7 +10337,7 @@ graph LR;
 | **outhigh** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **doclamp** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_range_color3</summary>
+<details open><summary>ND_range_color3</summary>
 <p>
  
 * *Nodedef*: ND_range_color3
@@ -10396,7 +10396,7 @@ graph LR;
 | **outhigh** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **doclamp** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_range_color4</summary>
+<details open><summary>ND_range_color4</summary>
 <p>
  
 * *Nodedef*: ND_range_color4
@@ -10455,7 +10455,7 @@ graph LR;
 | **outhigh** | color4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **doclamp** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_range_vector2</summary>
+<details open><summary>ND_range_vector2</summary>
 <p>
  
 * *Nodedef*: ND_range_vector2
@@ -10514,7 +10514,7 @@ graph LR;
 | **outhigh** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **doclamp** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_range_vector3</summary>
+<details open><summary>ND_range_vector3</summary>
 <p>
  
 * *Nodedef*: ND_range_vector3
@@ -10573,7 +10573,7 @@ graph LR;
 | **outhigh** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **doclamp** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_range_vector4</summary>
+<details open><summary>ND_range_vector4</summary>
 <p>
  
 * *Nodedef*: ND_range_vector4
@@ -10632,7 +10632,7 @@ graph LR;
 | **outhigh** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **doclamp** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_range_color3FA</summary>
+<details open><summary>ND_range_color3FA</summary>
 <p>
  
 * *Nodedef*: ND_range_color3FA
@@ -10691,7 +10691,7 @@ graph LR;
 | **outhigh** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **doclamp** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_range_color4FA</summary>
+<details open><summary>ND_range_color4FA</summary>
 <p>
  
 * *Nodedef*: ND_range_color4FA
@@ -10750,7 +10750,7 @@ graph LR;
 | **outhigh** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **doclamp** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_range_vector2FA</summary>
+<details open><summary>ND_range_vector2FA</summary>
 <p>
  
 * *Nodedef*: ND_range_vector2FA
@@ -10809,7 +10809,7 @@ graph LR;
 | **outhigh** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **doclamp** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_range_vector3FA</summary>
+<details open><summary>ND_range_vector3FA</summary>
 <p>
  
 * *Nodedef*: ND_range_vector3FA
@@ -10868,7 +10868,7 @@ graph LR;
 | **outhigh** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **doclamp** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_range_vector4FA</summary>
+<details open><summary>ND_range_vector4FA</summary>
 <p>
  
 * *Nodedef*: ND_range_vector4FA
@@ -10928,7 +10928,7 @@ graph LR;
 | **doclamp** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *hsvadjust*
-<details><summary>ND_hsvadjust_color3</summary>
+<details open><summary>ND_hsvadjust_color3</summary>
 <p>
  
 * *Nodedef*: ND_hsvadjust_color3
@@ -10964,7 +10964,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **amount** | vector3 | 0, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_hsvadjust_color4</summary>
+<details open><summary>ND_hsvadjust_color4</summary>
 <p>
  
 * *Nodedef*: ND_hsvadjust_color4
@@ -11002,7 +11002,7 @@ graph LR;
 | **amount** | vector3 | 0, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *saturate*
-<details><summary>ND_saturate_color3</summary>
+<details open><summary>ND_saturate_color3</summary>
 <p>
  
 * *Nodedef*: ND_saturate_color3
@@ -11036,7 +11036,7 @@ graph LR;
 | **amount** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **lumacoeffs** | color3 | 0.272229, 0.674082, 0.0536895 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_saturate_color4</summary>
+<details open><summary>ND_saturate_color4</summary>
 <p>
  
 * *Nodedef*: ND_saturate_color4
@@ -11071,7 +11071,7 @@ graph LR;
 | **lumacoeffs** | color3 | 0.272229, 0.674082, 0.0536895 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *colorcorrect*
-<details><summary>ND_colorcorrect_color3</summary>
+<details open><summary>ND_colorcorrect_color3</summary>
 <p>
  
 * *Nodedef*: ND_colorcorrect_color3
@@ -11132,7 +11132,7 @@ graph LR;
 | **contrastpivot** | float | 0.5 | Contrast Pivot |  |  | 0.0 | 1.0 |  |  |  | Pivot value around which contrast applies. This value will not change as contrast is adjusted. |  |
 | **exposure** | float | 0.0 | Exposure |  |  | -1.0 | 1.0 |  |  |  | Multplier which increases or decreases color brightness by 2^value. |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_colorcorrect_color4</summary>
+<details open><summary>ND_colorcorrect_color4</summary>
 <p>
  
 * *Nodedef*: ND_colorcorrect_color4
@@ -11205,7 +11205,7 @@ graph LR;
 | **exposure** | float | 0.0 | Exposure |  |  | -1.0 | 1.0 |  |  |  | Multplier which increases or decreases color brightness by 2^value. |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *premult*
-<details><summary>ND_premult_color4</summary>
+<details open><summary>ND_premult_color4</summary>
 <p>
  
 * *Nodedef*: ND_premult_color4
@@ -11221,7 +11221,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *unpremult*
-<details><summary>ND_unpremult_color4</summary>
+<details open><summary>ND_unpremult_color4</summary>
 <p>
  
 * *Nodedef*: ND_unpremult_color4
@@ -11237,7 +11237,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *plus*
-<details><summary>ND_plus_float</summary>
+<details open><summary>ND_plus_float</summary>
 <p>
  
 * *Nodedef*: ND_plus_float
@@ -11254,7 +11254,7 @@ graph LR;
 | **bg** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_plus_color3</summary>
+<details open><summary>ND_plus_color3</summary>
 <p>
  
 * *Nodedef*: ND_plus_color3
@@ -11271,7 +11271,7 @@ graph LR;
 | **bg** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_plus_color4</summary>
+<details open><summary>ND_plus_color4</summary>
 <p>
  
 * *Nodedef*: ND_plus_color4
@@ -11289,7 +11289,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *minus*
-<details><summary>ND_minus_float</summary>
+<details open><summary>ND_minus_float</summary>
 <p>
  
 * *Nodedef*: ND_minus_float
@@ -11306,7 +11306,7 @@ graph LR;
 | **bg** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_minus_color3</summary>
+<details open><summary>ND_minus_color3</summary>
 <p>
  
 * *Nodedef*: ND_minus_color3
@@ -11323,7 +11323,7 @@ graph LR;
 | **bg** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_minus_color4</summary>
+<details open><summary>ND_minus_color4</summary>
 <p>
  
 * *Nodedef*: ND_minus_color4
@@ -11341,7 +11341,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *difference*
-<details><summary>ND_difference_float</summary>
+<details open><summary>ND_difference_float</summary>
 <p>
  
 * *Nodedef*: ND_difference_float
@@ -11358,7 +11358,7 @@ graph LR;
 | **bg** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_difference_color3</summary>
+<details open><summary>ND_difference_color3</summary>
 <p>
  
 * *Nodedef*: ND_difference_color3
@@ -11375,7 +11375,7 @@ graph LR;
 | **bg** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_difference_color4</summary>
+<details open><summary>ND_difference_color4</summary>
 <p>
  
 * *Nodedef*: ND_difference_color4
@@ -11393,7 +11393,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *burn*
-<details><summary>ND_burn_float</summary>
+<details open><summary>ND_burn_float</summary>
 <p>
  
 * *Nodedef*: ND_burn_float
@@ -11410,7 +11410,7 @@ graph LR;
 | **bg** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_burn_color3</summary>
+<details open><summary>ND_burn_color3</summary>
 <p>
  
 * *Nodedef*: ND_burn_color3
@@ -11427,7 +11427,7 @@ graph LR;
 | **bg** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_burn_color4</summary>
+<details open><summary>ND_burn_color4</summary>
 <p>
  
 * *Nodedef*: ND_burn_color4
@@ -11445,7 +11445,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *dodge*
-<details><summary>ND_dodge_float</summary>
+<details open><summary>ND_dodge_float</summary>
 <p>
  
 * *Nodedef*: ND_dodge_float
@@ -11462,7 +11462,7 @@ graph LR;
 | **bg** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dodge_color3</summary>
+<details open><summary>ND_dodge_color3</summary>
 <p>
  
 * *Nodedef*: ND_dodge_color3
@@ -11479,7 +11479,7 @@ graph LR;
 | **bg** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dodge_color4</summary>
+<details open><summary>ND_dodge_color4</summary>
 <p>
  
 * *Nodedef*: ND_dodge_color4
@@ -11497,7 +11497,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *screen*
-<details><summary>ND_screen_float</summary>
+<details open><summary>ND_screen_float</summary>
 <p>
  
 * *Nodedef*: ND_screen_float
@@ -11514,7 +11514,7 @@ graph LR;
 | **bg** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_screen_color3</summary>
+<details open><summary>ND_screen_color3</summary>
 <p>
  
 * *Nodedef*: ND_screen_color3
@@ -11531,7 +11531,7 @@ graph LR;
 | **bg** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_screen_color4</summary>
+<details open><summary>ND_screen_color4</summary>
 <p>
  
 * *Nodedef*: ND_screen_color4
@@ -11549,7 +11549,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *overlay*
-<details><summary>ND_overlay_float</summary>
+<details open><summary>ND_overlay_float</summary>
 <p>
  
 * *Nodedef*: ND_overlay_float
@@ -11598,7 +11598,7 @@ graph LR;
 | **bg** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_overlay_color3</summary>
+<details open><summary>ND_overlay_color3</summary>
 <p>
  
 * *Nodedef*: ND_overlay_color3
@@ -11654,7 +11654,7 @@ graph LR;
 | **bg** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_overlay_color4</summary>
+<details open><summary>ND_overlay_color4</summary>
 <p>
  
 * *Nodedef*: ND_overlay_color4
@@ -11720,7 +11720,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *disjointover*
-<details><summary>ND_disjointover_color4</summary>
+<details open><summary>ND_disjointover_color4</summary>
 <p>
  
 * *Nodedef*: ND_disjointover_color4
@@ -11738,7 +11738,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *in*
-<details><summary>ND_in_color4</summary>
+<details open><summary>ND_in_color4</summary>
 <p>
  
 * *Nodedef*: ND_in_color4
@@ -11756,7 +11756,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *mask*
-<details><summary>ND_mask_color4</summary>
+<details open><summary>ND_mask_color4</summary>
 <p>
  
 * *Nodedef*: ND_mask_color4
@@ -11774,7 +11774,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *matte*
-<details><summary>ND_matte_color4</summary>
+<details open><summary>ND_matte_color4</summary>
 <p>
  
 * *Nodedef*: ND_matte_color4
@@ -11792,7 +11792,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *out*
-<details><summary>ND_out_color4</summary>
+<details open><summary>ND_out_color4</summary>
 <p>
  
 * *Nodedef*: ND_out_color4
@@ -11810,7 +11810,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *over*
-<details><summary>ND_over_color4</summary>
+<details open><summary>ND_over_color4</summary>
 <p>
  
 * *Nodedef*: ND_over_color4
@@ -11828,7 +11828,7 @@ graph LR;
 | **mix** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *inside*
-<details><summary>ND_inside_float</summary>
+<details open><summary>ND_inside_float</summary>
 <p>
  
 * *Nodedef*: ND_inside_float
@@ -11844,7 +11844,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **mask** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_inside_color3</summary>
+<details open><summary>ND_inside_color3</summary>
 <p>
  
 * *Nodedef*: ND_inside_color3
@@ -11860,7 +11860,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mask** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_inside_color4</summary>
+<details open><summary>ND_inside_color4</summary>
 <p>
  
 * *Nodedef*: ND_inside_color4
@@ -11877,7 +11877,7 @@ graph LR;
 | **mask** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *outside*
-<details><summary>ND_outside_float</summary>
+<details open><summary>ND_outside_float</summary>
 <p>
  
 * *Nodedef*: ND_outside_float
@@ -11893,7 +11893,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **mask** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_outside_color3</summary>
+<details open><summary>ND_outside_color3</summary>
 <p>
  
 * *Nodedef*: ND_outside_color3
@@ -11909,7 +11909,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mask** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_outside_color4</summary>
+<details open><summary>ND_outside_color4</summary>
 <p>
  
 * *Nodedef*: ND_outside_color4
@@ -11926,7 +11926,7 @@ graph LR;
 | **mask** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *mix*
-<details><summary>ND_mix_float</summary>
+<details open><summary>ND_mix_float</summary>
 <p>
  
 * *Nodedef*: ND_mix_float
@@ -11943,7 +11943,7 @@ graph LR;
 | **bg** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 0.0 |  |  |  | 0.0 | 1.0 |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_color3</summary>
+<details open><summary>ND_mix_color3</summary>
 <p>
  
 * *Nodedef*: ND_mix_color3
@@ -11960,7 +11960,7 @@ graph LR;
 | **bg** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 0.0 |  |  |  | 0.0 | 1.0 |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_color3_color3</summary>
+<details open><summary>ND_mix_color3_color3</summary>
 <p>
  
 * *Nodedef*: ND_mix_color3_color3
@@ -11977,7 +11977,7 @@ graph LR;
 | **bg** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | color3 | 0, 0, 0 |  |  |  | 0,0,0 | 1,1,1 |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_color4</summary>
+<details open><summary>ND_mix_color4</summary>
 <p>
  
 * *Nodedef*: ND_mix_color4
@@ -11994,7 +11994,7 @@ graph LR;
 | **bg** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 0.0 |  |  |  | 0.0 | 1.0 |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_color4_color4</summary>
+<details open><summary>ND_mix_color4_color4</summary>
 <p>
  
 * *Nodedef*: ND_mix_color4_color4
@@ -12011,7 +12011,7 @@ graph LR;
 | **bg** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | color4 | 0, 0, 0, 0 |  |  |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_vector2</summary>
+<details open><summary>ND_mix_vector2</summary>
 <p>
  
 * *Nodedef*: ND_mix_vector2
@@ -12028,7 +12028,7 @@ graph LR;
 | **bg** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 0.0 |  |  |  | 0.0 | 1.0 |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_vector2_vector2</summary>
+<details open><summary>ND_mix_vector2_vector2</summary>
 <p>
  
 * *Nodedef*: ND_mix_vector2_vector2
@@ -12045,7 +12045,7 @@ graph LR;
 | **bg** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | vector2 | 0, 0 |  |  |  | 0,0 | 1,1 |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_vector3</summary>
+<details open><summary>ND_mix_vector3</summary>
 <p>
  
 * *Nodedef*: ND_mix_vector3
@@ -12062,7 +12062,7 @@ graph LR;
 | **bg** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 0.0 |  |  |  | 0.0 | 1.0 |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_vector3_vector3</summary>
+<details open><summary>ND_mix_vector3_vector3</summary>
 <p>
  
 * *Nodedef*: ND_mix_vector3_vector3
@@ -12079,7 +12079,7 @@ graph LR;
 | **bg** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | vector3 | 0, 0, 0 |  |  |  | 0,0,0 | 1,1,1 |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_vector4</summary>
+<details open><summary>ND_mix_vector4</summary>
 <p>
  
 * *Nodedef*: ND_mix_vector4
@@ -12096,7 +12096,7 @@ graph LR;
 | **bg** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 0.0 |  |  |  | 0.0 | 1.0 |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_vector4_vector4</summary>
+<details open><summary>ND_mix_vector4_vector4</summary>
 <p>
  
 * *Nodedef*: ND_mix_vector4_vector4
@@ -12113,7 +12113,7 @@ graph LR;
 | **bg** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **mix** | vector4 | 0, 0, 0, 0 |  |  |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_surfaceshader</summary>
+<details open><summary>ND_mix_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_mix_surfaceshader
@@ -12130,7 +12130,7 @@ graph LR;
 | **bg** | surfaceshader |  |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 0.0 |  |  |  | 0.0 | 1.0 |  |  |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_displacementshader</summary>
+<details open><summary>ND_mix_displacementshader</summary>
 <p>
  
 * *Nodedef*: ND_mix_displacementshader
@@ -12147,7 +12147,7 @@ graph LR;
 | **bg** | displacementshader |  |  |  |  |  |  |  |  |  |  |  |
 | **mix** | float | 0.0 |  |  |  | 0.0 | 1.0 |  |  |  |  |  |
 | *out* | displacementshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_mix_volumeshader</summary>
+<details open><summary>ND_mix_volumeshader</summary>
 <p>
  
 * *Nodedef*: ND_mix_volumeshader
@@ -12165,7 +12165,7 @@ graph LR;
 | **mix** | float | 0.0 |  |  |  | 0.0 | 1.0 |  |  |  |  |  |
 | *out* | volumeshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ifgreater*
-<details><summary>ND_ifgreater_float</summary>
+<details open><summary>ND_ifgreater_float</summary>
 <p>
  
 * *Nodedef*: ND_ifgreater_float
@@ -12183,7 +12183,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreater_color3</summary>
+<details open><summary>ND_ifgreater_color3</summary>
 <p>
  
 * *Nodedef*: ND_ifgreater_color3
@@ -12201,7 +12201,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreater_color4</summary>
+<details open><summary>ND_ifgreater_color4</summary>
 <p>
  
 * *Nodedef*: ND_ifgreater_color4
@@ -12219,7 +12219,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreater_vector2</summary>
+<details open><summary>ND_ifgreater_vector2</summary>
 <p>
  
 * *Nodedef*: ND_ifgreater_vector2
@@ -12237,7 +12237,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreater_vector3</summary>
+<details open><summary>ND_ifgreater_vector3</summary>
 <p>
  
 * *Nodedef*: ND_ifgreater_vector3
@@ -12255,7 +12255,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreater_vector4</summary>
+<details open><summary>ND_ifgreater_vector4</summary>
 <p>
  
 * *Nodedef*: ND_ifgreater_vector4
@@ -12273,7 +12273,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreater_floatI</summary>
+<details open><summary>ND_ifgreater_floatI</summary>
 <p>
  
 * *Nodedef*: ND_ifgreater_floatI
@@ -12291,7 +12291,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreater_color3I</summary>
+<details open><summary>ND_ifgreater_color3I</summary>
 <p>
  
 * *Nodedef*: ND_ifgreater_color3I
@@ -12309,7 +12309,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreater_color4I</summary>
+<details open><summary>ND_ifgreater_color4I</summary>
 <p>
  
 * *Nodedef*: ND_ifgreater_color4I
@@ -12327,7 +12327,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreater_vector2I</summary>
+<details open><summary>ND_ifgreater_vector2I</summary>
 <p>
  
 * *Nodedef*: ND_ifgreater_vector2I
@@ -12345,7 +12345,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreater_vector3I</summary>
+<details open><summary>ND_ifgreater_vector3I</summary>
 <p>
  
 * *Nodedef*: ND_ifgreater_vector3I
@@ -12363,7 +12363,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreater_vector4I</summary>
+<details open><summary>ND_ifgreater_vector4I</summary>
 <p>
  
 * *Nodedef*: ND_ifgreater_vector4I
@@ -12382,7 +12382,7 @@ graph LR;
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ifgreatereq*
-<details><summary>ND_ifgreatereq_float</summary>
+<details open><summary>ND_ifgreatereq_float</summary>
 <p>
  
 * *Nodedef*: ND_ifgreatereq_float
@@ -12400,7 +12400,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreatereq_color3</summary>
+<details open><summary>ND_ifgreatereq_color3</summary>
 <p>
  
 * *Nodedef*: ND_ifgreatereq_color3
@@ -12418,7 +12418,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreatereq_color4</summary>
+<details open><summary>ND_ifgreatereq_color4</summary>
 <p>
  
 * *Nodedef*: ND_ifgreatereq_color4
@@ -12436,7 +12436,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreatereq_vector2</summary>
+<details open><summary>ND_ifgreatereq_vector2</summary>
 <p>
  
 * *Nodedef*: ND_ifgreatereq_vector2
@@ -12454,7 +12454,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreatereq_vector3</summary>
+<details open><summary>ND_ifgreatereq_vector3</summary>
 <p>
  
 * *Nodedef*: ND_ifgreatereq_vector3
@@ -12472,7 +12472,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreatereq_vector4</summary>
+<details open><summary>ND_ifgreatereq_vector4</summary>
 <p>
  
 * *Nodedef*: ND_ifgreatereq_vector4
@@ -12490,7 +12490,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreatereq_floatI</summary>
+<details open><summary>ND_ifgreatereq_floatI</summary>
 <p>
  
 * *Nodedef*: ND_ifgreatereq_floatI
@@ -12508,7 +12508,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreatereq_color3I</summary>
+<details open><summary>ND_ifgreatereq_color3I</summary>
 <p>
  
 * *Nodedef*: ND_ifgreatereq_color3I
@@ -12526,7 +12526,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreatereq_color4I</summary>
+<details open><summary>ND_ifgreatereq_color4I</summary>
 <p>
  
 * *Nodedef*: ND_ifgreatereq_color4I
@@ -12544,7 +12544,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreatereq_vector2I</summary>
+<details open><summary>ND_ifgreatereq_vector2I</summary>
 <p>
  
 * *Nodedef*: ND_ifgreatereq_vector2I
@@ -12562,7 +12562,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreatereq_vector3I</summary>
+<details open><summary>ND_ifgreatereq_vector3I</summary>
 <p>
  
 * *Nodedef*: ND_ifgreatereq_vector3I
@@ -12580,7 +12580,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifgreatereq_vector4I</summary>
+<details open><summary>ND_ifgreatereq_vector4I</summary>
 <p>
  
 * *Nodedef*: ND_ifgreatereq_vector4I
@@ -12599,7 +12599,7 @@ graph LR;
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ifequal*
-<details><summary>ND_ifequal_float</summary>
+<details open><summary>ND_ifequal_float</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_float
@@ -12617,7 +12617,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_color3</summary>
+<details open><summary>ND_ifequal_color3</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_color3
@@ -12635,7 +12635,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_color4</summary>
+<details open><summary>ND_ifequal_color4</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_color4
@@ -12653,7 +12653,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_vector2</summary>
+<details open><summary>ND_ifequal_vector2</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_vector2
@@ -12671,7 +12671,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_vector3</summary>
+<details open><summary>ND_ifequal_vector3</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_vector3
@@ -12689,7 +12689,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_vector4</summary>
+<details open><summary>ND_ifequal_vector4</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_vector4
@@ -12707,7 +12707,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_floatI</summary>
+<details open><summary>ND_ifequal_floatI</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_floatI
@@ -12725,7 +12725,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_color3I</summary>
+<details open><summary>ND_ifequal_color3I</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_color3I
@@ -12743,7 +12743,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_color4I</summary>
+<details open><summary>ND_ifequal_color4I</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_color4I
@@ -12761,7 +12761,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_vector2I</summary>
+<details open><summary>ND_ifequal_vector2I</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_vector2I
@@ -12779,7 +12779,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_vector3I</summary>
+<details open><summary>ND_ifequal_vector3I</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_vector3I
@@ -12797,7 +12797,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_vector4I</summary>
+<details open><summary>ND_ifequal_vector4I</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_vector4I
@@ -12815,7 +12815,7 @@ graph LR;
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_floatB</summary>
+<details open><summary>ND_ifequal_floatB</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_floatB
@@ -12833,7 +12833,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_color3B</summary>
+<details open><summary>ND_ifequal_color3B</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_color3B
@@ -12851,7 +12851,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_color4B</summary>
+<details open><summary>ND_ifequal_color4B</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_color4B
@@ -12869,7 +12869,7 @@ graph LR;
 | **in1** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_vector2B</summary>
+<details open><summary>ND_ifequal_vector2B</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_vector2B
@@ -12887,7 +12887,7 @@ graph LR;
 | **in1** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_vector3B</summary>
+<details open><summary>ND_ifequal_vector3B</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_vector3B
@@ -12905,7 +12905,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_ifequal_vector4B</summary>
+<details open><summary>ND_ifequal_vector4B</summary>
 <p>
  
 * *Nodedef*: ND_ifequal_vector4B
@@ -12924,7 +12924,7 @@ graph LR;
 | **in2** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *switch*
-<details><summary>ND_switch_float</summary>
+<details open><summary>ND_switch_float</summary>
 <p>
  
 * *Nodedef*: ND_switch_float
@@ -12944,7 +12944,7 @@ graph LR;
 | **in5** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **which** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_switch_color3</summary>
+<details open><summary>ND_switch_color3</summary>
 <p>
  
 * *Nodedef*: ND_switch_color3
@@ -12964,7 +12964,7 @@ graph LR;
 | **in5** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **which** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_switch_color4</summary>
+<details open><summary>ND_switch_color4</summary>
 <p>
  
 * *Nodedef*: ND_switch_color4
@@ -12984,7 +12984,7 @@ graph LR;
 | **in5** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **which** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_switch_vector2</summary>
+<details open><summary>ND_switch_vector2</summary>
 <p>
  
 * *Nodedef*: ND_switch_vector2
@@ -13004,7 +13004,7 @@ graph LR;
 | **in5** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **which** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_switch_vector3</summary>
+<details open><summary>ND_switch_vector3</summary>
 <p>
  
 * *Nodedef*: ND_switch_vector3
@@ -13024,7 +13024,7 @@ graph LR;
 | **in5** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **which** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_switch_vector4</summary>
+<details open><summary>ND_switch_vector4</summary>
 <p>
  
 * *Nodedef*: ND_switch_vector4
@@ -13044,7 +13044,7 @@ graph LR;
 | **in5** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **which** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_switch_floatI</summary>
+<details open><summary>ND_switch_floatI</summary>
 <p>
  
 * *Nodedef*: ND_switch_floatI
@@ -13064,7 +13064,7 @@ graph LR;
 | **in5** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **which** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_switch_color3I</summary>
+<details open><summary>ND_switch_color3I</summary>
 <p>
  
 * *Nodedef*: ND_switch_color3I
@@ -13084,7 +13084,7 @@ graph LR;
 | **in5** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **which** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_switch_color4I</summary>
+<details open><summary>ND_switch_color4I</summary>
 <p>
  
 * *Nodedef*: ND_switch_color4I
@@ -13104,7 +13104,7 @@ graph LR;
 | **in5** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **which** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_switch_vector2I</summary>
+<details open><summary>ND_switch_vector2I</summary>
 <p>
  
 * *Nodedef*: ND_switch_vector2I
@@ -13124,7 +13124,7 @@ graph LR;
 | **in5** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **which** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_switch_vector3I</summary>
+<details open><summary>ND_switch_vector3I</summary>
 <p>
  
 * *Nodedef*: ND_switch_vector3I
@@ -13144,7 +13144,7 @@ graph LR;
 | **in5** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **which** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_switch_vector4I</summary>
+<details open><summary>ND_switch_vector4I</summary>
 <p>
  
 * *Nodedef*: ND_switch_vector4I
@@ -13165,7 +13165,7 @@ graph LR;
 | **which** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *convert*
-<details><summary>ND_convert_float_color3</summary>
+<details open><summary>ND_convert_float_color3</summary>
 <p>
  
 * *Nodedef*: ND_convert_float_color3
@@ -13180,7 +13180,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_float_color4</summary>
+<details open><summary>ND_convert_float_color4</summary>
 <p>
  
 * *Nodedef*: ND_convert_float_color4
@@ -13195,7 +13195,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_float_vector2</summary>
+<details open><summary>ND_convert_float_vector2</summary>
 <p>
  
 * *Nodedef*: ND_convert_float_vector2
@@ -13210,7 +13210,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_float_vector3</summary>
+<details open><summary>ND_convert_float_vector3</summary>
 <p>
  
 * *Nodedef*: ND_convert_float_vector3
@@ -13225,7 +13225,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_float_vector4</summary>
+<details open><summary>ND_convert_float_vector4</summary>
 <p>
  
 * *Nodedef*: ND_convert_float_vector4
@@ -13240,7 +13240,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_vector2_vector3</summary>
+<details open><summary>ND_convert_vector2_vector3</summary>
 <p>
  
 * *Nodedef*: ND_convert_vector2_vector3
@@ -13255,7 +13255,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_vector3_color3</summary>
+<details open><summary>ND_convert_vector3_color3</summary>
 <p>
  
 * *Nodedef*: ND_convert_vector3_color3
@@ -13270,7 +13270,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_vector3_vector2</summary>
+<details open><summary>ND_convert_vector3_vector2</summary>
 <p>
  
 * *Nodedef*: ND_convert_vector3_vector2
@@ -13285,7 +13285,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_vector3_vector4</summary>
+<details open><summary>ND_convert_vector3_vector4</summary>
 <p>
  
 * *Nodedef*: ND_convert_vector3_vector4
@@ -13300,7 +13300,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_vector4_color4</summary>
+<details open><summary>ND_convert_vector4_color4</summary>
 <p>
  
 * *Nodedef*: ND_convert_vector4_color4
@@ -13315,7 +13315,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_vector4_vector3</summary>
+<details open><summary>ND_convert_vector4_vector3</summary>
 <p>
  
 * *Nodedef*: ND_convert_vector4_vector3
@@ -13330,7 +13330,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_color3_vector3</summary>
+<details open><summary>ND_convert_color3_vector3</summary>
 <p>
  
 * *Nodedef*: ND_convert_color3_vector3
@@ -13345,7 +13345,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_color4_vector4</summary>
+<details open><summary>ND_convert_color4_vector4</summary>
 <p>
  
 * *Nodedef*: ND_convert_color4_vector4
@@ -13360,7 +13360,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_color3_color4</summary>
+<details open><summary>ND_convert_color3_color4</summary>
 <p>
  
 * *Nodedef*: ND_convert_color3_color4
@@ -13375,7 +13375,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_color4_color3</summary>
+<details open><summary>ND_convert_color4_color3</summary>
 <p>
  
 * *Nodedef*: ND_convert_color4_color3
@@ -13390,7 +13390,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_boolean_float</summary>
+<details open><summary>ND_convert_boolean_float</summary>
 <p>
  
 * *Nodedef*: ND_convert_boolean_float
@@ -13405,7 +13405,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_integer_float</summary>
+<details open><summary>ND_convert_integer_float</summary>
 <p>
  
 * *Nodedef*: ND_convert_integer_float
@@ -13420,7 +13420,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_color3_surfaceshader</summary>
+<details open><summary>ND_convert_color3_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_convert_color3_surfaceshader
@@ -13445,7 +13445,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_color4_surfaceshader</summary>
+<details open><summary>ND_convert_color4_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_convert_color4_surfaceshader
@@ -13474,7 +13474,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_float_surfaceshader</summary>
+<details open><summary>ND_convert_float_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_convert_float_surfaceshader
@@ -13500,7 +13500,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_vector2_surfaceshader</summary>
+<details open><summary>ND_convert_vector2_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_convert_vector2_surfaceshader
@@ -13527,7 +13527,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_vector3_surfaceshader</summary>
+<details open><summary>ND_convert_vector3_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_convert_vector3_surfaceshader
@@ -13553,7 +13553,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_vector4_surfaceshader</summary>
+<details open><summary>ND_convert_vector4_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_convert_vector4_surfaceshader
@@ -13582,7 +13582,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_integer_surfaceshader</summary>
+<details open><summary>ND_convert_integer_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_convert_integer_surfaceshader
@@ -13609,7 +13609,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_convert_boolean_surfaceshader</summary>
+<details open><summary>ND_convert_boolean_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_convert_boolean_surfaceshader
@@ -13637,7 +13637,7 @@ graph LR;
 | **in** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *swizzle*
-<details><summary>ND_swizzle_float_color3</summary>
+<details open><summary>ND_swizzle_float_color3</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_float_color3
@@ -13653,7 +13653,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | rrr |  |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_float_color4</summary>
+<details open><summary>ND_swizzle_float_color4</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_float_color4
@@ -13669,7 +13669,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | rrrr |  |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_float_vector2</summary>
+<details open><summary>ND_swizzle_float_vector2</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_float_vector2
@@ -13685,7 +13685,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xx |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_float_vector3</summary>
+<details open><summary>ND_swizzle_float_vector3</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_float_vector3
@@ -13701,7 +13701,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_float_vector4</summary>
+<details open><summary>ND_swizzle_float_vector4</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_float_vector4
@@ -13717,7 +13717,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_color3_float</summary>
+<details open><summary>ND_swizzle_color3_float</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_color3_float
@@ -13733,7 +13733,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | r |  |  |  |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_color3_color3</summary>
+<details open><summary>ND_swizzle_color3_color3</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_color3_color3
@@ -13749,7 +13749,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | rrr |  |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_color3_color4</summary>
+<details open><summary>ND_swizzle_color3_color4</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_color3_color4
@@ -13765,7 +13765,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | rrrr |  |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_color3_vector2</summary>
+<details open><summary>ND_swizzle_color3_vector2</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_color3_vector2
@@ -13781,7 +13781,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | rr |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_color3_vector3</summary>
+<details open><summary>ND_swizzle_color3_vector3</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_color3_vector3
@@ -13797,7 +13797,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | rrr |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_color3_vector4</summary>
+<details open><summary>ND_swizzle_color3_vector4</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_color3_vector4
@@ -13813,7 +13813,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | rrrr |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_color4_float</summary>
+<details open><summary>ND_swizzle_color4_float</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_color4_float
@@ -13829,7 +13829,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | r |  |  |  |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_color4_color3</summary>
+<details open><summary>ND_swizzle_color4_color3</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_color4_color3
@@ -13845,7 +13845,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | rrr |  |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_color4_color4</summary>
+<details open><summary>ND_swizzle_color4_color4</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_color4_color4
@@ -13861,7 +13861,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | rrrr |  |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_color4_vector2</summary>
+<details open><summary>ND_swizzle_color4_vector2</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_color4_vector2
@@ -13877,7 +13877,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | rr |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_color4_vector3</summary>
+<details open><summary>ND_swizzle_color4_vector3</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_color4_vector3
@@ -13893,7 +13893,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | rrr |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_color4_vector4</summary>
+<details open><summary>ND_swizzle_color4_vector4</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_color4_vector4
@@ -13909,7 +13909,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | rrrr |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector2_float</summary>
+<details open><summary>ND_swizzle_vector2_float</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector2_float
@@ -13925,7 +13925,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | x |  |  |  |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector2_color3</summary>
+<details open><summary>ND_swizzle_vector2_color3</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector2_color3
@@ -13941,7 +13941,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector2_color4</summary>
+<details open><summary>ND_swizzle_vector2_color4</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector2_color4
@@ -13957,7 +13957,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector2_vector2</summary>
+<details open><summary>ND_swizzle_vector2_vector2</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector2_vector2
@@ -13973,7 +13973,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xx |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector2_vector3</summary>
+<details open><summary>ND_swizzle_vector2_vector3</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector2_vector3
@@ -13989,7 +13989,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector2_vector4</summary>
+<details open><summary>ND_swizzle_vector2_vector4</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector2_vector4
@@ -14005,7 +14005,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector3_float</summary>
+<details open><summary>ND_swizzle_vector3_float</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector3_float
@@ -14021,7 +14021,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | x |  |  |  |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector3_color3</summary>
+<details open><summary>ND_swizzle_vector3_color3</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector3_color3
@@ -14037,7 +14037,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector3_color4</summary>
+<details open><summary>ND_swizzle_vector3_color4</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector3_color4
@@ -14053,7 +14053,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector3_vector2</summary>
+<details open><summary>ND_swizzle_vector3_vector2</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector3_vector2
@@ -14069,7 +14069,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xx |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector3_vector3</summary>
+<details open><summary>ND_swizzle_vector3_vector3</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector3_vector3
@@ -14085,7 +14085,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector3_vector4</summary>
+<details open><summary>ND_swizzle_vector3_vector4</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector3_vector4
@@ -14101,7 +14101,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector4_float</summary>
+<details open><summary>ND_swizzle_vector4_float</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector4_float
@@ -14117,7 +14117,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | x |  |  |  |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector4_color3</summary>
+<details open><summary>ND_swizzle_vector4_color3</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector4_color3
@@ -14133,7 +14133,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector4_color4</summary>
+<details open><summary>ND_swizzle_vector4_color4</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector4_color4
@@ -14149,7 +14149,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector4_vector2</summary>
+<details open><summary>ND_swizzle_vector4_vector2</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector4_vector2
@@ -14165,7 +14165,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xx |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector4_vector3</summary>
+<details open><summary>ND_swizzle_vector4_vector3</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector4_vector3
@@ -14181,7 +14181,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **channels** | string | xxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_swizzle_vector4_vector4</summary>
+<details open><summary>ND_swizzle_vector4_vector4</summary>
 <p>
  
 * *Nodedef*: ND_swizzle_vector4_vector4
@@ -14198,7 +14198,7 @@ graph LR;
 | **channels** | string | xxxx |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *combine2*
-<details><summary>ND_combine2_vector2</summary>
+<details open><summary>ND_combine2_vector2</summary>
 <p>
  
 * *Nodedef*: ND_combine2_vector2
@@ -14214,7 +14214,7 @@ graph LR;
 | **in1** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_combine2_color4CF</summary>
+<details open><summary>ND_combine2_color4CF</summary>
 <p>
  
 * *Nodedef*: ND_combine2_color4CF
@@ -14230,7 +14230,7 @@ graph LR;
 | **in1** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_combine2_vector4VF</summary>
+<details open><summary>ND_combine2_vector4VF</summary>
 <p>
  
 * *Nodedef*: ND_combine2_vector4VF
@@ -14246,7 +14246,7 @@ graph LR;
 | **in1** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_combine2_vector4VV</summary>
+<details open><summary>ND_combine2_vector4VV</summary>
 <p>
  
 * *Nodedef*: ND_combine2_vector4VV
@@ -14263,7 +14263,7 @@ graph LR;
 | **in2** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *combine3*
-<details><summary>ND_combine3_color3</summary>
+<details open><summary>ND_combine3_color3</summary>
 <p>
  
 * *Nodedef*: ND_combine3_color3
@@ -14280,7 +14280,7 @@ graph LR;
 | **in2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in3** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_combine3_vector3</summary>
+<details open><summary>ND_combine3_vector3</summary>
 <p>
  
 * *Nodedef*: ND_combine3_vector3
@@ -14298,7 +14298,7 @@ graph LR;
 | **in3** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *combine4*
-<details><summary>ND_combine4_color4</summary>
+<details open><summary>ND_combine4_color4</summary>
 <p>
  
 * *Nodedef*: ND_combine4_color4
@@ -14316,7 +14316,7 @@ graph LR;
 | **in3** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **in4** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_combine4_vector4</summary>
+<details open><summary>ND_combine4_vector4</summary>
 <p>
  
 * *Nodedef*: ND_combine4_vector4
@@ -14335,7 +14335,7 @@ graph LR;
 | **in4** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *creatematrix*
-<details><summary>ND_creatematrix_vector3_matrix33</summary>
+<details open><summary>ND_creatematrix_vector3_matrix33</summary>
 <p>
  
 * *Nodedef*: ND_creatematrix_vector3_matrix33
@@ -14352,7 +14352,7 @@ graph LR;
 | **in2** | vector3 | 0, 1, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in3** | vector3 | 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_creatematrix_vector3_matrix44</summary>
+<details open><summary>ND_creatematrix_vector3_matrix44</summary>
 <p>
  
 * *Nodedef*: ND_creatematrix_vector3_matrix44
@@ -14370,7 +14370,7 @@ graph LR;
 | **in3** | vector3 | 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **in4** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_creatematrix_vector4_matrix44</summary>
+<details open><summary>ND_creatematrix_vector4_matrix44</summary>
 <p>
  
 * *Nodedef*: ND_creatematrix_vector4_matrix44
@@ -14389,7 +14389,7 @@ graph LR;
 | **in4** | vector4 | 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *extract*
-<details><summary>ND_extract_color3</summary>
+<details open><summary>ND_extract_color3</summary>
 <p>
  
 * *Nodedef*: ND_extract_color3
@@ -14427,7 +14427,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **index** | integer | 0 |  | 0 | 2 |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_extract_color4</summary>
+<details open><summary>ND_extract_color4</summary>
 <p>
  
 * *Nodedef*: ND_extract_color4
@@ -14469,7 +14469,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **index** | integer | 0 |  | 0 | 3 |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_extract_vector2</summary>
+<details open><summary>ND_extract_vector2</summary>
 <p>
  
 * *Nodedef*: ND_extract_vector2
@@ -14503,7 +14503,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **index** | integer | 0 |  | 0 | 1 |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_extract_vector3</summary>
+<details open><summary>ND_extract_vector3</summary>
 <p>
  
 * *Nodedef*: ND_extract_vector3
@@ -14541,7 +14541,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **index** | integer | 0 |  | 0 | 2 |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_extract_vector4</summary>
+<details open><summary>ND_extract_vector4</summary>
 <p>
  
 * *Nodedef*: ND_extract_vector4
@@ -14584,7 +14584,7 @@ graph LR;
 | **index** | integer | 0 |  | 0 | 3 |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *separate2*
-<details><summary>ND_separate2_vector2</summary>
+<details open><summary>ND_separate2_vector2</summary>
 <p>
  
 * *Nodedef*: ND_separate2_vector2
@@ -14615,7 +14615,7 @@ graph LR;
 | *outx* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *outy* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *separate3*
-<details><summary>ND_separate3_color3</summary>
+<details open><summary>ND_separate3_color3</summary>
 <p>
  
 * *Nodedef*: ND_separate3_color3
@@ -14650,7 +14650,7 @@ graph LR;
 | *outr* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *outg* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *outb* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_separate3_vector3</summary>
+<details open><summary>ND_separate3_vector3</summary>
 <p>
  
 * *Nodedef*: ND_separate3_vector3
@@ -14686,7 +14686,7 @@ graph LR;
 | *outy* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *outz* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *separate4*
-<details><summary>ND_separate4_color4</summary>
+<details open><summary>ND_separate4_color4</summary>
 <p>
  
 * *Nodedef*: ND_separate4_color4
@@ -14726,7 +14726,7 @@ graph LR;
 | *outg* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *outb* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *outa* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_separate4_vector4</summary>
+<details open><summary>ND_separate4_vector4</summary>
 <p>
  
 * *Nodedef*: ND_separate4_vector4
@@ -14767,7 +14767,7 @@ graph LR;
 | *outz* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *outw* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *blur*
-<details><summary>ND_blur_float</summary>
+<details open><summary>ND_blur_float</summary>
 <p>
  
 * *Nodedef*: ND_blur_float
@@ -14784,7 +14784,7 @@ graph LR;
 | **size** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **filtertype** | string | box |  |  |  |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_blur_color3</summary>
+<details open><summary>ND_blur_color3</summary>
 <p>
  
 * *Nodedef*: ND_blur_color3
@@ -14801,7 +14801,7 @@ graph LR;
 | **size** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **filtertype** | string | box |  |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_blur_color4</summary>
+<details open><summary>ND_blur_color4</summary>
 <p>
  
 * *Nodedef*: ND_blur_color4
@@ -14818,7 +14818,7 @@ graph LR;
 | **size** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **filtertype** | string | box |  |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_blur_vector2</summary>
+<details open><summary>ND_blur_vector2</summary>
 <p>
  
 * *Nodedef*: ND_blur_vector2
@@ -14835,7 +14835,7 @@ graph LR;
 | **size** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **filtertype** | string | box |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_blur_vector3</summary>
+<details open><summary>ND_blur_vector3</summary>
 <p>
  
 * *Nodedef*: ND_blur_vector3
@@ -14852,7 +14852,7 @@ graph LR;
 | **size** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **filtertype** | string | box |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_blur_vector4</summary>
+<details open><summary>ND_blur_vector4</summary>
 <p>
  
 * *Nodedef*: ND_blur_vector4
@@ -14870,7 +14870,7 @@ graph LR;
 | **filtertype** | string | box |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *heighttonormal*
-<details><summary>ND_heighttonormal_vector3</summary>
+<details open><summary>ND_heighttonormal_vector3</summary>
 <p>
  
 * *Nodedef*: ND_heighttonormal_vector3
@@ -14887,7 +14887,7 @@ graph LR;
 | **scale** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *dot*
-<details><summary>ND_dot_float</summary>
+<details open><summary>ND_dot_float</summary>
 <p>
  
 * *Nodedef*: ND_dot_float
@@ -14903,7 +14903,7 @@ graph LR;
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_color3</summary>
+<details open><summary>ND_dot_color3</summary>
 <p>
  
 * *Nodedef*: ND_dot_color3
@@ -14919,7 +14919,7 @@ graph LR;
 | **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_color4</summary>
+<details open><summary>ND_dot_color4</summary>
 <p>
  
 * *Nodedef*: ND_dot_color4
@@ -14935,7 +14935,7 @@ graph LR;
 | **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_vector2</summary>
+<details open><summary>ND_dot_vector2</summary>
 <p>
  
 * *Nodedef*: ND_dot_vector2
@@ -14951,7 +14951,7 @@ graph LR;
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_vector3</summary>
+<details open><summary>ND_dot_vector3</summary>
 <p>
  
 * *Nodedef*: ND_dot_vector3
@@ -14967,7 +14967,7 @@ graph LR;
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_vector4</summary>
+<details open><summary>ND_dot_vector4</summary>
 <p>
  
 * *Nodedef*: ND_dot_vector4
@@ -14983,7 +14983,7 @@ graph LR;
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_boolean</summary>
+<details open><summary>ND_dot_boolean</summary>
 <p>
  
 * *Nodedef*: ND_dot_boolean
@@ -14999,7 +14999,7 @@ graph LR;
 | **in** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_integer</summary>
+<details open><summary>ND_dot_integer</summary>
 <p>
  
 * *Nodedef*: ND_dot_integer
@@ -15015,7 +15015,7 @@ graph LR;
 | **in** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | integer | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_matrix33</summary>
+<details open><summary>ND_dot_matrix33</summary>
 <p>
  
 * *Nodedef*: ND_dot_matrix33
@@ -15031,7 +15031,7 @@ graph LR;
 | **in** | matrix33 | 1, 0, 0, 0, 1, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_matrix44</summary>
+<details open><summary>ND_dot_matrix44</summary>
 <p>
  
 * *Nodedef*: ND_dot_matrix44
@@ -15047,7 +15047,7 @@ graph LR;
 | **in** | matrix44 | 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_string</summary>
+<details open><summary>ND_dot_string</summary>
 <p>
  
 * *Nodedef*: ND_dot_string
@@ -15063,7 +15063,7 @@ graph LR;
 | **in** | string |  |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | string | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_filename</summary>
+<details open><summary>ND_dot_filename</summary>
 <p>
  
 * *Nodedef*: ND_dot_filename
@@ -15079,7 +15079,7 @@ graph LR;
 | **in** | filename |  |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | filename | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_surfaceshader</summary>
+<details open><summary>ND_dot_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_dot_surfaceshader
@@ -15095,7 +15095,7 @@ graph LR;
 | **in** | surfaceshader |  |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_displacementshader</summary>
+<details open><summary>ND_dot_displacementshader</summary>
 <p>
  
 * *Nodedef*: ND_dot_displacementshader
@@ -15111,7 +15111,7 @@ graph LR;
 | **in** | displacementshader |  |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | displacementshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_volumeshader</summary>
+<details open><summary>ND_dot_volumeshader</summary>
 <p>
  
 * *Nodedef*: ND_dot_volumeshader
@@ -15127,7 +15127,7 @@ graph LR;
 | **in** | volumeshader |  |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | volumeshader | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_dot_lightshader</summary>
+<details open><summary>ND_dot_lightshader</summary>
 <p>
  
 * *Nodedef*: ND_dot_lightshader

@@ -51,9 +51,12 @@ function filterOnEnter(event) {
 
 //
 // Utility to render a Mermaid element
+// and setup some basic SVG interaction
 //
 function renderMermaid(event) {
     buttonId = event.target.id;
+
+    //console.log('------------------------------- render', buttonId)
 
     var mermaidinput = document.getElementById(buttonId + "_mermaid_input");
     var mermaidoutput = document.getElementById(buttonId + "_mermaid_output");
@@ -68,6 +71,8 @@ function renderMermaid(event) {
         var button = document.getElementById(event.target.id);
         button.hidden = true;
         button.remove;
+
+        setUpSVGInteraction(buttonId + "_mermaid_output", buttonId + "_mermaid_output_rendered");
     }
 }
 

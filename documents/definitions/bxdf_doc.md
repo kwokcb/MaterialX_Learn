@@ -15,7 +15,7 @@
 ---------
  
 ### Category: *disney_brdf_2012*
-<details><summary>ND_disney_brdf_2012_surface</summary>
+<details open><summary>ND_disney_brdf_2012_surface</summary>
 <p>
  
 * *Nodedef*: ND_disney_brdf_2012_surface
@@ -41,7 +41,7 @@
 | **clearcoatGloss** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *disney_bsdf_2015*
-<details><summary>ND_disney_bsdf_2015_surface</summary>
+<details open><summary>ND_disney_bsdf_2015_surface</summary>
 <p>
  
 * *Nodedef*: ND_disney_bsdf_2015_surface
@@ -71,7 +71,7 @@
 | **thin** | boolean | False |  |  |  |  |  |  |  |  |  | true |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *gltf_pbr*
-<details><summary>ND_gltf_pbr_surfaceshader</summary>
+<details open><summary>ND_gltf_pbr_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_gltf_pbr_surfaceshader
@@ -280,7 +280,7 @@ graph LR;
 | **attenuation_color** | color3 | 1, 1, 1 | Attenuation Color | 0, 0, 0 | 1, 1, 1 |  |  |  | Volume |  |  | true |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *gltf_colorimage*
-<details><summary>ND_gltf_colorimage</summary>
+<details open><summary>ND_gltf_colorimage</summary>
 <p>
  
 * *Nodedef*: ND_gltf_colorimage
@@ -354,7 +354,7 @@ graph LR;
 | *outcolor* | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *outa* | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 ### Category: *gltf_image*
-<details><summary>ND_gltf_image_color3_color3_1_0</summary>
+<details open><summary>ND_gltf_image_color3_color3_1_0</summary>
 <p>
  
 * *Nodedef*: ND_gltf_image_color3_color3_1_0
@@ -417,7 +417,7 @@ graph LR;
 | **vaddressmode** | string | periodic |  |  |  |  |  |  |  |  |  | true |
 | **filtertype** | string | linear |  |  |  |  |  |  |  |  |  | true |
 | *out* | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_gltf_image_color4_color4_1_0</summary>
+<details open><summary>ND_gltf_image_color4_color4_1_0</summary>
 <p>
  
 * *Nodedef*: ND_gltf_image_color4_color4_1_0
@@ -480,7 +480,7 @@ graph LR;
 | **vaddressmode** | string | periodic |  |  |  |  |  |  |  |  |  | true |
 | **filtertype** | string | linear |  |  |  |  |  |  |  |  |  | true |
 | *out* | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_gltf_image_float_float_1_0</summary>
+<details open><summary>ND_gltf_image_float_float_1_0</summary>
 <p>
  
 * *Nodedef*: ND_gltf_image_float_float_1_0
@@ -543,7 +543,7 @@ graph LR;
 | **vaddressmode** | string | periodic |  |  |  |  |  |  |  |  |  | true |
 | **filtertype** | string | linear |  |  |  |  |  |  |  |  |  | true |
 | *out* | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_gltf_image_vector3_vector3_1_0</summary>
+<details open><summary>ND_gltf_image_vector3_vector3_1_0</summary>
 <p>
  
 * *Nodedef*: ND_gltf_image_vector3_vector3_1_0
@@ -603,7 +603,7 @@ graph LR;
 | **filtertype** | string | linear |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 ### Category: *gltf_normalmap*
-<details><summary>ND_gltf_normalmap_vector3_1_0</summary>
+<details open><summary>ND_gltf_normalmap_vector3_1_0</summary>
 <p>
  
 * *Nodedef*: ND_gltf_normalmap_vector3_1_0
@@ -664,7 +664,7 @@ graph LR;
 | **filtertype** | string | linear |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 ### Category: *gltf_iridescence_thickness*
-<details><summary>ND_gltf_iridescence_thickness_float_1_0</summary>
+<details open><summary>ND_gltf_iridescence_thickness_float_1_0</summary>
 <p>
  
 * *Nodedef*: ND_gltf_iridescence_thickness_float_1_0
@@ -725,7 +725,7 @@ graph LR;
 | **thicknessMax** | float | 400.0 |  |  |  |  |  |  | Thickness |  |  |  |
 | *out* | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 ### Category: *open_pbr_surface*
-<details><summary>ND_open_pbr_surface_surfaceshader</summary>
+<details open><summary>ND_open_pbr_surface_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_open_pbr_surface_surfaceshader
@@ -1040,7 +1040,7 @@ graph LR;
 | **geometry_tangent** | vector3 | None | Tangent Input |  |  |  |  |  | Geometry |  | Input geometric tangent |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *standard_surface*
-<details><summary>ND_standard_surface_surfaceshader</summary>
+<details open><summary>ND_standard_surface_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_standard_surface_surfaceshader
@@ -1269,7 +1269,7 @@ graph LR;
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **base** | float | 1.0 | Base | 0.0 | 1.0 |  |  |  | Base |  | Multiplier on the intensity of the diffuse reflection. |  |
 | **base_color** | color3 | 0.8, 0.8, 0.8 | Base Color | 0,0,0 | 1,1,1 |  |  |  | Base |  | Color of the diffuse reflection. |  |
-<details><summary>ND_standard_surface_surfaceshader_100</summary>
+<details open><summary>ND_standard_surface_surfaceshader_100</summary>
 <p>
  
 * *Nodedef*: ND_standard_surface_surfaceshader_100
@@ -1539,7 +1539,7 @@ graph LR;
 | **tangent** | vector3 | None | Tangent Input |  |  |  |  |  | Geometry |  | Input geometric tangent |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *UsdPreviewSurface*
-<details><summary>ND_UsdPreviewSurface_surfaceshader</summary>
+<details open><summary>ND_UsdPreviewSurface_surfaceshader</summary>
 <p>
  
 * *Nodedef*: ND_UsdPreviewSurface_surfaceshader
@@ -1667,7 +1667,7 @@ graph LR;
 | **occlusion** | float | 1.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *UsdUVTexture*
-<details><summary>ND_UsdUVTexture</summary>
+<details open><summary>ND_UsdUVTexture</summary>
 <p>
  
 * *Nodedef*: ND_UsdUVTexture
@@ -1721,7 +1721,7 @@ graph LR;
 | *a* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *rgb* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 | *rgba* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_UsdUVTexture_23</summary>
+<details open><summary>ND_UsdUVTexture_23</summary>
 <p>
  
 * *Nodedef*: ND_UsdUVTexture_23
@@ -1779,7 +1779,7 @@ graph LR;
 | *a* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *rgb* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *UsdPrimvarReader*
-<details><summary>ND_UsdPrimvarReader_integer</summary>
+<details open><summary>ND_UsdPrimvarReader_integer</summary>
 <p>
  
 * *Nodedef*: ND_UsdPrimvarReader_integer
@@ -1807,7 +1807,7 @@ graph LR;
 | **varname** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **fallback** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | integer | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_UsdPrimvarReader_boolean</summary>
+<details open><summary>ND_UsdPrimvarReader_boolean</summary>
 <p>
  
 * *Nodedef*: ND_UsdPrimvarReader_boolean
@@ -1835,7 +1835,7 @@ graph LR;
 | **varname** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **fallback** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_UsdPrimvarReader_string</summary>
+<details open><summary>ND_UsdPrimvarReader_string</summary>
 <p>
  
 * *Nodedef*: ND_UsdPrimvarReader_string
@@ -1863,7 +1863,7 @@ graph LR;
 | **varname** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **fallback** | string |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | string | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_UsdPrimvarReader_float</summary>
+<details open><summary>ND_UsdPrimvarReader_float</summary>
 <p>
  
 * *Nodedef*: ND_UsdPrimvarReader_float
@@ -1891,7 +1891,7 @@ graph LR;
 | **varname** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **fallback** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_UsdPrimvarReader_vector2</summary>
+<details open><summary>ND_UsdPrimvarReader_vector2</summary>
 <p>
  
 * *Nodedef*: ND_UsdPrimvarReader_vector2
@@ -1919,7 +1919,7 @@ graph LR;
 | **varname** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **fallback** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_UsdPrimvarReader_vector3</summary>
+<details open><summary>ND_UsdPrimvarReader_vector3</summary>
 <p>
  
 * *Nodedef*: ND_UsdPrimvarReader_vector3
@@ -1947,7 +1947,7 @@ graph LR;
 | **varname** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **fallback** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_UsdPrimvarReader_vector4</summary>
+<details open><summary>ND_UsdPrimvarReader_vector4</summary>
 <p>
  
 * *Nodedef*: ND_UsdPrimvarReader_vector4
@@ -1976,7 +1976,7 @@ graph LR;
 | **fallback** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *UsdTransform2d*
-<details><summary>ND_UsdTransform2d</summary>
+<details open><summary>ND_UsdTransform2d</summary>
 <p>
  
 * *Nodedef*: ND_UsdTransform2d
@@ -2011,7 +2011,7 @@ graph LR;
 | **translation** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *LamaAdd*
-<details><summary>ND_lama_add_bsdf</summary>
+<details open><summary>ND_lama_add_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_lama_add_bsdf
@@ -2047,7 +2047,7 @@ graph LR;
 | **weight1** | float | 1.0 | Weight 1 | 0.0 | 1.0 |  |  |  |  |  | Weight of the first material. |  |
 | **weight2** | float | 0.0 | Weight 2 | 0.0 | 1.0 |  |  |  |  |  | Weight of the second material. |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_lama_add_edf</summary>
+<details open><summary>ND_lama_add_edf</summary>
 <p>
  
 * *Nodedef*: ND_lama_add_edf
@@ -2084,7 +2084,7 @@ graph LR;
 | **weight2** | float | 0.0 | Weight 2 | 0.0 | 1.0 |  |  |  |  |  | Weight of the second material. |  |
 | *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *LamaConductor*
-<details><summary>ND_lama_conductor</summary>
+<details open><summary>ND_lama_conductor</summary>
 <p>
  
 * *Nodedef*: ND_lama_conductor
@@ -2196,7 +2196,7 @@ graph LR;
 | **exteriorIOR** | float | 1.0 | Exterior IOR | 1.0 | 3.0 |  |  |  | Advanced |  | Defines what the IOR of the exterior medium is (can be either the outside medium, eg. air or water, or in case of a layered material, the top layer medium, like plexiglass or varnish). |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *LamaDielectric*
-<details><summary>ND_lama_dielectric</summary>
+<details open><summary>ND_lama_dielectric</summary>
 <p>
  
 * *Nodedef*: ND_lama_dielectric
@@ -2304,7 +2304,7 @@ graph LR;
 | **scatterAnisotropy** | float | 0.0 | Scatter Anisotropy | -1.0 | 1.0 |  |  |  | Interior |  | Scatter anisotropy |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *LamaDiffuse*
-<details><summary>ND_lama_diffuse</summary>
+<details open><summary>ND_lama_diffuse</summary>
 <p>
  
 * *Nodedef*: ND_lama_diffuse
@@ -2343,7 +2343,7 @@ graph LR;
 | **matte** | string |  | Matte |  |  |  |  |  | Advanced |  | Defines the name that can be used by the matte system, to output the weight of this lobe in the final material as an AOV. | true |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *LamaEmission*
-<details><summary>ND_lama_emission</summary>
+<details open><summary>ND_lama_emission</summary>
 <p>
  
 * *Nodedef*: ND_lama_emission
@@ -2369,7 +2369,7 @@ graph LR;
 | **color** | color3 | 1, 1, 1 | Color |  |  |  |  |  | Main |  | Color being uniformly emitted in all directions above the surface. |  |
 | *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *LamaLayer*
-<details><summary>ND_lama_layer_bsdf</summary>
+<details open><summary>ND_lama_layer_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_lama_layer_bsdf
@@ -2403,7 +2403,7 @@ graph LR;
 | **topThickness** | float | 0.0 | Top Thickness | 0.0 |  |  |  |  |  |  | Thickness of the top slab. It is only relevant for interior effects associated with the top material, such as absorption. If the top material is itself a layer node, this value is passed on to its base component. And if the top material is a mix or add, this value is passed on to both child materials. |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *LamaMix*
-<details><summary>ND_lama_mix_bsdf</summary>
+<details open><summary>ND_lama_mix_bsdf</summary>
 <p>
  
 * *Nodedef*: ND_lama_mix_bsdf
@@ -2434,7 +2434,7 @@ graph LR;
 | **material2** | BSDF | None | Material 2 |  |  |  |  |  |  |  | Second material to mix. |  |
 | **mix** | float | 0.0 |  | 0.0 | 1.0 |  |  |  |  |  | Defines the balance between the two materials, ranging from 0 (Material 1 only) to 1 (Material 2 only). Can also be seen as a Material 2 over Material 1 mask. |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
-<details><summary>ND_lama_mix_edf</summary>
+<details open><summary>ND_lama_mix_edf</summary>
 <p>
  
 * *Nodedef*: ND_lama_mix_edf
@@ -2466,7 +2466,7 @@ graph LR;
 | **mix** | float | 0.0 |  | 0.0 | 1.0 |  |  |  |  |  | Defines the balance between the two materials, ranging from 0 (Material 1 only) to 1 (Material 2 only). Can also be seen as a Material 2 over Material 1 mask. |  |
 | *out* | EDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *LamaSheen*
-<details><summary>ND_lama_sheen</summary>
+<details open><summary>ND_lama_sheen</summary>
 <p>
  
 * *Nodedef*: ND_lama_sheen
@@ -2501,7 +2501,7 @@ graph LR;
 | **normal** | vector3 | None | Normal |  |  |  |  |  | Main |  | Shading normal, typically defined by bump or normal mapping. Defaults to the smooth surface normal if not set. |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *LamaSSS*
-<details><summary>ND_lama_sss</summary>
+<details open><summary>ND_lama_sss</summary>
 <p>
  
 * *Nodedef*: ND_lama_sss
@@ -2558,7 +2558,7 @@ graph LR;
 | **matte** | string |  | Matte |  |  |  |  |  | Advanced |  | Defines the name that can be used by the matte system, to output the weight of this lobe in the final material as an AOV. | true |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *LamaTranslucent*
-<details><summary>ND_lama_translucent</summary>
+<details open><summary>ND_lama_translucent</summary>
 <p>
  
 * *Nodedef*: ND_lama_translucent
@@ -2591,7 +2591,7 @@ graph LR;
 | **matte** | string |  | Matte |  |  |  |  |  | Advanced |  | Defines the name that can be used by the matte system, to output the weight of this lobe in the final material as an AOV. | true |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *standard_surface_to_gltf_pbr*
-<details><summary>ND_standard_surface_to_gltf_pbr</summary>
+<details open><summary>ND_standard_surface_to_gltf_pbr</summary>
 <p>
  
 * *Nodedef*: ND_standard_surface_to_gltf_pbr
@@ -2714,7 +2714,7 @@ graph LR;
 | *emissive_out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 | *normal_out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *standard_surface_to_UsdPreviewSurface*
-<details><summary>ND_standard_surface_to_UsdPreviewSurface</summary>
+<details open><summary>ND_standard_surface_to_UsdPreviewSurface</summary>
 <p>
  
 * *Nodedef*: ND_standard_surface_to_UsdPreviewSurface
