@@ -367,7 +367,7 @@
             const var1 = uniforms.get(i);
             const value = var1.getValue()?.getValueString();
             const name = var1.getVariable();
-            console.log(' Uniform name: ', name, ' type: ', var1.getType().getName(), ' value: ', value)
+            console.log(' Uniform name: ', name, ' type: ', var1.getType().getName(), ' value: ', value, ' path: ', var1.getPath())
             //foundUniforms[name] = { var1.getType().getName(), value, name, uniforms };
           }
         }
