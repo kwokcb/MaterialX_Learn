@@ -32,8 +32,10 @@
   <div class="container-fluid bg-dark min-vh-100">
     <div class="row flex">
       <div class="col-sm-12 p-0">
-        <model-viewer class="min-vh-100" disable-tap style="background-color: rgb(80, 80, 80); width: 100%; height: 100%" id="viewer1"
-          interaction-prompt="none" camera-controls touch-action="pan-y" src="building.glb" shadow-intensity="1"
+        <model-viewer class="min-vh-100" disable-tap
+          style="background-color: rgb(80, 80, 80); width: 100%; height: 100%" id="viewer1" interaction-prompt="none"
+          camera-controls touch-action="pan-y"
+          src="https://kwokcb.github.io/materialxgltf/docs/data/RTS/gltf_pbr_default.mtlx.glb" shadow-intensity="1"
           shadow-softness="0.5" alt="model_viewer" poster="" skybox-image="images/rural_crossroads_1k.hdr"
           environment-image="images/rural_crossroads_1k.hdr">
           <div class="row flex">
@@ -52,8 +54,87 @@
 
   <script>
 
+    /////////////////////////////////////////////////////////////////////////////
+    // Drag and Drop:
+    // - Handles dropping of glb model files and hdr environment files into model-viewer
+    //
+    const modelViewer = document.getElementById("viewer1");
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      modelViewer.addEventListener(eventName, preventDefaults, false)
+      document.body.addEventListener(eventName, preventDefaults, false)
+    })
+
+      // Highlight drop area when item is dragged over it
+      ;['dragenter', 'dragover'].forEach(eventName => {
+        modelViewer.addEventListener(eventName, highlight, false)
+      })
+
+      ;['dragleave', 'drop'].forEach(eventName => {
+        modelViewer.addEventListener(eventName, unhighlight, false)
+      })
+
+    // Handle dropped files
+    modelViewer.addEventListener('drop', handleDrop, false)
+
+    function preventDefaults(e) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+
+    function highlight(e) {
+      modelViewer.classList.add('highlight')
+    }
+
+    function unhighlight(e) {
+      modelViewer.classList.remove('highlight')
+    }
+
+    function handleDrop(e) {
+      var dt = e.dataTransfer
+      var files = dt.files
+
+      handleFiles(files)
+    }
+
+    function handleFiles(files) {
+      ([...files]).forEach(uploadFile)
+    }
+
+    function uploadFile(file) {
+      const modelViewer = document.getElementById("viewer1");
+      if (modelViewer) {
+        console.log('Dropped file:', file);
+
+        const fileURL = URL.createObjectURL(file);
+
+        // If file ends in glb then set src
+        if (file.name.endsWith('.glb')) {
+          modelViewer.setAttribute("src", fileURL);
+        }
+        // If file ends in hdr or exr then set environment-image
+        else if (file.name.endsWith('.hdr')) {
+          currentEnvironmentURL = fileURL;
+          currentEnvironment = currentEnvironmentURL;
+          currentEnvironment += '#.hdr';
+          modelViewer.setAttribute("environment-image", currentEnvironment);
+          currentSkyBox = modelViewer.getAttribute("skybox-image");
+          if (currentSkyBox != "") {
+            modelViewer.setAttribute("skybox-image", currentEnvironment);
+          }
+        }
+        else {
+          console.log("Unsupported file type for drag+drop: ", file.name)
+        }
+
+      }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////
+
     fileInput.addEventListener('change', (event) => {
-      const selectedFile = event.target.files[0]; 
+      const selectedFile = event.target.files[0];
       if (selectedFile) {
         const modelViewer = document.getElementById("viewer1");
         if (modelViewer) {
