@@ -40,192 +40,180 @@
 
 </head>
 <body class="min-vh-100">
-<script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
-<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
 
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
 </script>
 
 <script src="../../documents/js/definition_card_helpers.js"></script>
 
-<!-- Navigation  -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({
+             startOnLoad: false,
+             theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras")
+             ? "dark"
+             : "base",
+            themeVariables: {
+                primaryColor: "#F1F1F1",
+                primaryBorderColor: "#000000",
+                secondaryColor: "#EFEFFF",
+                tertiaryColor: "#EEEEEE"
+            }});
+</script>
+<!-- Navigation_Area-->
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
-  <div class="container-md container-fluid">
-    <a class="navbar-brand" href="../../index.html">
-      <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
-          class="rounded d-inline-block align-text-center" width="50px">
-        MaterialX Learn</h5>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
-      aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mainMenuContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="../../index.html" role="button">
-            Home
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Learn
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="../../documents/nodes_and_nodegraphs.html">
-                Nodes and Graphs
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../documents/node_definitions.html">
-                Node Definitions
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../documents/documents.html">
-                Documents
-              </a>
-            </li>
-          </ul>
-        </li>
+    <div class="container-md container-fluid">
+        <a class="navbar-brand" href="../../index.html">
+            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+                    class="rounded d-inline-block align-text-center" width="50px">
+                MaterialX Learn</h5>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+            aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenuContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="../../index.html" role="button">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Learn
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="../../documents/nodes_and_nodegraphs.html">
+                                Nodes and Graphs
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../../documents/node_definitions.html">
+                                Node Definitions
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../../documents/documents.html">
+                                Documents
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="../../documents/presentations.html">
+                                Presentations
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-            data-bs-auto-close="outside">Reference</a>
-          <ul class="dropdown-menu shadow">
-              <li><a class="dropdown-item" href="../../documents/definitions/definitions_by_group.html">Library
-                  (By Group)</a></li>
-            <li><a class="dropdown-item" href="../../documents/definitions/all_definitions.html">Library
-                (All)</a></li>
-            <li><a class="dropdown-item" href="../../documents/definitions/library_glossary.html">Library
-                Glossary</a></li>
-            <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank"><img
-                  src="../../documents/images/MaterialXLogo_200x155.png" style="width:20px"> C++ API</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                        data-bs-auto-close="outside">Reference</a>
+                    <ul class="dropdown-menu shadow">
+                        <li><a class="dropdown-item"
+                                href="../../documents/definitions/definitions_by_group.html">Library
+                                (By Group)</a></li>
+                        <li><a class="dropdown-item"
+                                href="../../documents/definitions/all_definitions.html">Library
+                                (All)</a></li>
+                        <li><a class="dropdown-item"
+                                href="../../documents/definitions/library_glossary.html">Library
+                                Glossary</a></li>
+                        <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
+                                target="_blank"><img src="../../documents/images/MaterialXLogo_200x155.png"
+                                    style="width:20px"> C++ API</a></li>
 
-            <li class="dropend">
-              <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library Revisions</a>
-              <ul class="dropdown-menu shadow">
-                <li><a class="dropdown-item" href="../../documents/mtlx_1388_vs_1389.html"> 1.38.8 vs 1.38.9
-                    (current)</a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1387_vs_1388.html"> 1.38.7 vs 1.38.8
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1386_vs_1387.html"> 1.38.6 vs 1.38.7
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1385_vs_1386.html"> 1.38.5 vs 1.38.6
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1384_vs_1385.html"> 1.38.4 vs 1.38.5
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1383_vs_1384.html"> 1.38.3 vs 1.38.4
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1382_vs_1383.html"> 1.38.2 vs 1.38.3
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1381_vs_1382.html"> 1.38.1 vs 1.38.2
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1380_vs_1381.html"> 1.38.0 vs 1.38.1
-                    </a></li>
-                <li><a class="dropdown-item" href="../../documents/mtlx_138_vs_1389.html"> 1.38.0 vs 1.38.9
-                    (current)</a></li>
-              </ul>
-            </li>
+                        <li class="dropend">
+                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
+                                Revisions</a>
+                            <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1389_vs_1390.html">
+                                        1.38.9 vs 1.39.0</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1388_vs_1389.html">
+                                        1.38.8 vs 1.38.9</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1387_vs_1388.html">
+                                        1.38.7 vs 1.38.8</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1386_vs_1387.html">
+                                        1.38.6 vs 1.38.7</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1385_vs_1386.html">
+                                        1.38.5 vs 1.38.6</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1384_vs_1385.html">
+                                        1.38.4 vs 1.38.5</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1383_vs_1384.html">
+                                        1.38.3 vs 1.38.4</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1382_vs_1383.html">
+                                        1.38.2 vs 1.38.3</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1381_vs_1382.html">
+                                        1.38.1 vs 1.38.2</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1380_vs_1381.html">
+                                        1.38.0 vs 1.38.1</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1380_vs_1390.html">
+                                        1.38.0 vs 1.39.0</a></li>
+                            </ul>
+                        </li>
 
-            <div class="dropdown-divider"></div>
-            <li>
-              <a class="dropdown-item" href="../../documents/using_library.html">
-                <img src="../../documents/images/info-circle.svg"> Library User Guide
-              </a>
-            </li>
-          </ul>
-        </li>
+                        <div class="dropdown-divider"></div>
+                        <li>
+                            <a class="dropdown-item" href="../../documents/using_library.html">
+                                <img src="../../documents/images/info-circle.svg"> Library User Guide
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">Utilities</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="../../documents/gltfViewer.html">
-                glTF Model Viewer
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../documents/mermaidChecker.html">
-                Graph Visualizer
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">
-                Graph Generator
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">
-                Shader Preview
-              </a>
-            </li>                            
-            <li>
-              <a class="dropdown-item" href="../../documents/mtlx_utilities.html">
-                Python Utilities
-              </a>
-            </li>
-          </ul>
-        </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Utilities</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
+                        <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
+                        <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
+                    </ul>
+                </li>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">Develop</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="../../documents/python_MaterialX.html">
-                Notebooks
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../documents/jupyter_example.html">
-                Examples
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../documents/hosting.html">
-                Hosting
-              </a>
-            </li>
-          </ul>
-        </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Develop</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../../documents/python_MaterialX.html">Notebooks</a></li>
+                        <li><a class="dropdown-item" href="../../documents/jupyter_example.html">Examples</a></li>
+                        <li><a class="dropdown-item" href="../../documents/hosting.html">Hosting</a>
+                        </li>
+                    </ul>
+                </li>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">Workflows</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../../documents/workflow_usd.html">USD and MaterialX</a></li>
-            <li><a class="dropdown-item" href="../../documents/workflow_gltf.html">glTF and MaterialX</a></li>
-            <li><a class="dropdown-item" href="../../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
-          </ul>
-        </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Workflows</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../../documents/workflow_usd.html">USD and MaterialX</a></li>
+                        <li><a class="dropdown-item" href="../../documents/workflow_gltf.html">glTF and MaterialX</a></li>
+                        <li><a class="dropdown-item" href="../../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
+                    </ul>
+                </li>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Design</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="../../documents/design.html">
-                UX Design
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../documents/implementation.html">
-                Implementation
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../documents/about.html" role="button">
-            About
-          </a>
-        </li>
-        <li class="nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../../documents/images/layout-text-sidebar.svg">Index</a></li>
-      </ul>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Design</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../../documents/design.html">UX Design</a></li>
+                        <li><a class="dropdown-item" href="../../documents/property_editor_ui.html">Property Editor UX</a></li>
+                        <li><a class="dropdown-item" href="../../documents/implementation.html">Implementation</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../documents/about.html" role="button">
+                        About
+                    </a>
+                </li>
+                <li class="nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../../documents/images/layout-text-sidebar.svg">Index</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav><div class="container-fluid px-0">
  <div class="row ">
    <div class="col-auto p-0">
@@ -504,7 +492,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="standard_surface.html">standard_surface</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="subsurface_bsdf.html">subsurface_bsdf</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="surface.html">surface</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="thin_film_bsdf.html">thin_film_bsdf</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="thin_surface.html">thin_surface</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="translucent_bsdf.html">translucent_bsdf</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="uniform_edf.html">uniform_edf</a>
@@ -621,16 +608,17 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> BSDF</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+<div class="card-text"><b>Description:</b> Mix two BSDF's according to an input mix amount..</div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_bsdf_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_bsdf_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> BSDF</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button>
-<p class="card-text"> <b>Version: </b>1.0  
-<p class="card-text"><b>Description:</b> Mix two BSDF's according to an input mix amount..
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_bsdf_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_bsdf_menu">
@@ -644,13 +632,14 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_bsdf_out" role="tab" aria-controls="pills-ND_mix_bsdf_out" aria-selected="true"  onclick="document.getElementById('ND_mix_bsdf_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_bsdf_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_bsdf_fg-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="BSDF">
    </div>
   </div>
@@ -660,8 +649,8 @@ Category: mix
  <div class="tab-pane " id="pills-ND_mix_bsdf_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_bsdf_bg-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="BSDF">
    </div>
   </div>
@@ -671,34 +660,34 @@ Category: mix
  <div class="tab-pane " id="pills-ND_mix_bsdf_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_bsdf_mix-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Description</label>
-    <div class="col-sm-10">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
       <textarea class="form-control form-control-sm" rows="2"
         style="resize: none;" disabled>Mixing weight, range [0, 1]. </textarea>
     </div>
   </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_bsdf_mix" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
 <div class="form-group row g-1">
-<label class="col-sm-2 col-form-label col-form-label-sm">UI Min | Max | Step: </label>
- <div class="col-sm-3">
+<label class="col-2 col-form-label col-form-label-sm">UI Min | Max | Step: </label>
+ <div class="col-4">
   <input type="text" class="form-control form-control-sm" value="0.0" disabled>
  </div>
- <div class="col-sm-3">
+ <div class="col-3">
   <input type="text" class="form-control form-control-sm" value="1.0" disabled>
  </div>
- <div class="col-sm-3">
+ <div class="col-3">
   <input type="text" class="form-control form-control-sm" value="" disabled>
  </div>
 </div>
@@ -708,8 +697,8 @@ Category: mix
  <div class="tab-pane " id="pills-ND_mix_bsdf_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_bsdf_out-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="BSDF">
    </div>
   </div>
@@ -723,54 +712,54 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-4">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-4">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_mix_bsdf(mxp_fg:{{fg}}, mxp_bg:{{bg}}, mxp_mix:{{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-4">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-4">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-4">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-4">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
@@ -789,16 +778,17 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> EDF</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+<div class="card-text"><b>Description:</b> Mix two EDF's according to an input mix amount..</div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_edf_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_edf_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> EDF</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button>
-<p class="card-text"> <b>Version: </b>1.0  
-<p class="card-text"><b>Description:</b> Mix two EDF's according to an input mix amount..
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_edf_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_edf_menu">
@@ -812,13 +802,14 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_edf_out" role="tab" aria-controls="pills-ND_mix_edf_out" aria-selected="true"  onclick="document.getElementById('ND_mix_edf_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_edf_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_edf_fg-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="EDF">
    </div>
   </div>
@@ -828,8 +819,8 @@ Category: mix
  <div class="tab-pane " id="pills-ND_mix_edf_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_edf_bg-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="EDF">
    </div>
   </div>
@@ -839,34 +830,34 @@ Category: mix
  <div class="tab-pane " id="pills-ND_mix_edf_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_edf_mix-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Description</label>
-    <div class="col-sm-10">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
       <textarea class="form-control form-control-sm" rows="2"
         style="resize: none;" disabled>Mixing weight, range [0, 1]. </textarea>
     </div>
   </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_edf_mix" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
 <div class="form-group row g-1">
-<label class="col-sm-2 col-form-label col-form-label-sm">UI Min | Max | Step: </label>
- <div class="col-sm-3">
+<label class="col-2 col-form-label col-form-label-sm">UI Min | Max | Step: </label>
+ <div class="col-4">
   <input type="text" class="form-control form-control-sm" value="0.0" disabled>
  </div>
- <div class="col-sm-3">
+ <div class="col-3">
   <input type="text" class="form-control form-control-sm" value="1.0" disabled>
  </div>
- <div class="col-sm-3">
+ <div class="col-3">
   <input type="text" class="form-control form-control-sm" value="" disabled>
  </div>
 </div>
@@ -876,8 +867,8 @@ Category: mix
  <div class="tab-pane " id="pills-ND_mix_edf_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_edf_out-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="EDF">
    </div>
   </div>
@@ -891,54 +882,54 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-4">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-4">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_mix_edf(mxp_fg:{{fg}}, mxp_bg:{{bg}}, mxp_mix:{{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-4">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-4">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-4">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-4">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
@@ -957,16 +948,17 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> VDF</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+<div class="card-text"><b>Description:</b> Mix two VDF's according to an input mix amount..</div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> VDF</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button>
-<p class="card-text"> <b>Version: </b>1.0  
-<p class="card-text"><b>Description:</b> Mix two VDF's according to an input mix amount..
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_vdf_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_vdf_menu">
@@ -980,13 +972,14 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_vdf_out" role="tab" aria-controls="pills-ND_mix_vdf_out" aria-selected="true"  onclick="document.getElementById('ND_mix_vdf_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_vdf_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vdf_fg-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="VDF">
    </div>
   </div>
@@ -996,8 +989,8 @@ Category: mix
  <div class="tab-pane " id="pills-ND_mix_vdf_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vdf_bg-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="VDF">
    </div>
   </div>
@@ -1007,34 +1000,34 @@ Category: mix
  <div class="tab-pane " id="pills-ND_mix_vdf_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_vdf_mix-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Description</label>
-    <div class="col-sm-10">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
       <textarea class="form-control form-control-sm" rows="2"
         style="resize: none;" disabled>Mixing weight, range [0, 1]. </textarea>
     </div>
   </div>
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_vdf_mix" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
 <div class="form-group row g-1">
-<label class="col-sm-2 col-form-label col-form-label-sm">UI Min | Max | Step: </label>
- <div class="col-sm-3">
+<label class="col-2 col-form-label col-form-label-sm">UI Min | Max | Step: </label>
+ <div class="col-4">
   <input type="text" class="form-control form-control-sm" value="0.0" disabled>
  </div>
- <div class="col-sm-3">
+ <div class="col-3">
   <input type="text" class="form-control form-control-sm" value="1.0" disabled>
  </div>
- <div class="col-sm-3">
+ <div class="col-3">
   <input type="text" class="form-control form-control-sm" value="" disabled>
  </div>
 </div>
@@ -1044,8 +1037,8 @@ Category: mix
  <div class="tab-pane " id="pills-ND_mix_vdf_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_vdf_out-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="VDF">
    </div>
   </div>
@@ -1059,14 +1052,14 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_mix_vdf(mxp_fg:{{fg}}, mxp_bg:{{bg}}, mxp_mix:{{mix}}) </textarea>
     </div>
@@ -1086,15 +1079,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> float</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_float_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_float_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> float</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_float_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_float_menu">
@@ -1108,76 +1102,77 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_float_out" role="tab" aria-controls="pills-ND_mix_float_out" aria-selected="true"  onclick="document.getElementById('ND_mix_float_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_float_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_float_fg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_float_fg" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_float_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_float_bg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_float_bg" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_float_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_float_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_float_mix" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_float_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_float_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
@@ -1189,56 +1184,56 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>math::lerp({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
@@ -1258,15 +1253,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_color3_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_color3_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_color3_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_color3_menu">
@@ -1280,92 +1276,93 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_color3_out" role="tab" aria-controls="pills-ND_mix_color3_out" aria-selected="true"  onclick="document.getElementById('ND_mix_color3_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_color3_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_color3_fg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input class="custom_colorbox2" id="ND_mix_color3_fg" type="color" value="#000000" disabled>
+      </div>
+      <div class="col-2">
           <input id="ND_mix_color3_fg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_color3_fg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_color3_fg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-1">
-          <input id="ND_mix_color3_fg" type="color" value="#000000" disabled>
-      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_color3_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_color3_bg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input class="custom_colorbox2" id="ND_mix_color3_bg" type="color" value="#000000" disabled>
+      </div>
+      <div class="col-2">
           <input id="ND_mix_color3_bg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_color3_bg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_color3_bg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-1">
-          <input id="ND_mix_color3_bg" type="color" value="#000000" disabled>
-      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_color3_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_color3_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_color3_mix" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_color3_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_color3_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
   </div>
  </div>
 </div>
@@ -1377,56 +1374,56 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>math::lerp({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
@@ -1446,15 +1443,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_color3_color3_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_color3_color3_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color3</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_color3_color3_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_color3_color3_menu">
@@ -1468,100 +1466,101 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_color3_color3_out" role="tab" aria-controls="pills-ND_mix_color3_color3_out" aria-selected="true"  onclick="document.getElementById('ND_mix_color3_color3_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_color3_color3_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_color3_color3_fg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input class="custom_colorbox2" id="ND_mix_color3_color3_fg" type="color" value="#000000" disabled>
+      </div>
+      <div class="col-2">
           <input id="ND_mix_color3_color3_fg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_color3_color3_fg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_color3_color3_fg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-1">
-          <input id="ND_mix_color3_color3_fg" type="color" value="#000000" disabled>
-      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_color3_color3_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_color3_color3_bg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input class="custom_colorbox2" id="ND_mix_color3_color3_bg" type="color" value="#000000" disabled>
+      </div>
+      <div class="col-2">
           <input id="ND_mix_color3_color3_bg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_color3_color3_bg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_color3_color3_bg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-1">
-          <input id="ND_mix_color3_color3_bg" type="color" value="#000000" disabled>
-      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_color3_color3_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_color3_color3_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input class="custom_colorbox2" id="ND_mix_color3_color3_mix" type="color" value="#000000" disabled>
+      </div>
+      <div class="col-2">
           <input id="ND_mix_color3_color3_mix_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_color3_color3_mix_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_color3_color3_mix_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-1">
-          <input id="ND_mix_color3_color3_mix" type="color" value="#000000" disabled>
-      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_color3_color3_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_color3_color3_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
   </div>
  </div>
 </div>
@@ -1573,56 +1572,56 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>math::lerp({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
@@ -1642,15 +1641,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_color4_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_color4_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_color4_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_color4_menu">
@@ -1664,98 +1664,99 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_color4_out" role="tab" aria-controls="pills-ND_mix_color4_out" aria-selected="true"  onclick="document.getElementById('ND_mix_color4_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_color4_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_color4_fg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input id="ND_mix_color4_fg" class="custom_colorbox2" type="color" value="#000000" disabled>
+      </div>
+      <div class="col-2">
           <input id="ND_mix_color4_fg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_fg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_fg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_fg_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-1">
-          <input id="ND_mix_color4_fg" type="color" value="#000000" disabled>
-      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_color4_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_color4_bg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input id="ND_mix_color4_bg" class="custom_colorbox2" type="color" value="#000000" disabled>
+      </div>
+      <div class="col-2">
           <input id="ND_mix_color4_bg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_bg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_bg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_bg_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-1">
-          <input id="ND_mix_color4_bg" type="color" value="#000000" disabled>
-      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_color4_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_color4_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_color4_mix" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_color4_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_color4_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
   </div>
  </div>
 </div>
@@ -1767,56 +1768,56 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_mix_color4({{fg}}, {{bg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
@@ -1836,15 +1837,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_color4_color4_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_color4_color4_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> color4</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_color4_color4_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_color4_color4_menu">
@@ -1858,109 +1860,110 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_color4_color4_out" role="tab" aria-controls="pills-ND_mix_color4_color4_out" aria-selected="true"  onclick="document.getElementById('ND_mix_color4_color4_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_color4_color4_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_color4_color4_fg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input id="ND_mix_color4_color4_fg" class="custom_colorbox2" type="color" value="#000000" disabled>
+      </div>
+      <div class="col-2">
           <input id="ND_mix_color4_color4_fg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_color4_fg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_color4_fg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_color4_fg_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-1">
-          <input id="ND_mix_color4_color4_fg" type="color" value="#000000" disabled>
-      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_color4_color4_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_color4_color4_bg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input id="ND_mix_color4_color4_bg" class="custom_colorbox2" type="color" value="#000000" disabled>
+      </div>
+      <div class="col-2">
           <input id="ND_mix_color4_color4_bg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_color4_bg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_color4_bg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_color4_bg_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-1">
-          <input id="ND_mix_color4_color4_bg" type="color" value="#000000" disabled>
-      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_color4_color4_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_color4_color4_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input id="ND_mix_color4_color4_mix" class="custom_colorbox2" type="color" value="#000000" disabled>
+      </div>
+      <div class="col-2">
           <input id="ND_mix_color4_color4_mix_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_color4_mix_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_color4_mix_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_color4_color4_mix_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-1">
-          <input id="ND_mix_color4_color4_mix" type="color" value="#000000" disabled>
-      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_color4_color4_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_color4_color4_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
   </div>
  </div>
 </div>
@@ -1972,56 +1975,56 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_mix_color4_color4({{fg}}, {{bg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
@@ -2041,15 +2044,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector2</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_vector2_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_vector2_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector2</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_vector2_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_vector2_menu">
@@ -2063,80 +2067,81 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_vector2_out" role="tab" aria-controls="pills-ND_mix_vector2_out" aria-selected="true"  onclick="document.getElementById('ND_mix_vector2_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_vector2_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector2_fg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-5">
           <input id="ND_mix_vector2_fg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-5">
           <input id="ND_mix_vector2_fg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector2_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector2_bg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-5">
           <input id="ND_mix_vector2_bg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-5">
           <input id="ND_mix_vector2_bg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector2_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector2_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_vector2_mix" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector2_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector2_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
   </div>
  </div>
 </div>
@@ -2148,56 +2153,56 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>math::lerp({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
@@ -2217,15 +2222,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector2</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_vector2_vector2_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_vector2_vector2_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector2</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_vector2_vector2_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_vector2_vector2_menu">
@@ -2239,82 +2245,83 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_vector2_vector2_out" role="tab" aria-controls="pills-ND_mix_vector2_vector2_out" aria-selected="true"  onclick="document.getElementById('ND_mix_vector2_vector2_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_vector2_vector2_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector2_vector2_fg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-5">
           <input id="ND_mix_vector2_vector2_fg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-5">
           <input id="ND_mix_vector2_vector2_fg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector2_vector2_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector2_vector2_bg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-5">
           <input id="ND_mix_vector2_vector2_bg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-5">
           <input id="ND_mix_vector2_vector2_bg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector2_vector2_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector2_vector2_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-5">
           <input id="ND_mix_vector2_vector2_mix_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-5">
           <input id="ND_mix_vector2_vector2_mix_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector2_vector2_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector2_vector2_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
   </div>
  </div>
 </div>
@@ -2326,56 +2333,56 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>math::lerp({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
@@ -2395,15 +2402,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_vector3_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_vector3_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_vector3_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_vector3_menu">
@@ -2417,86 +2425,87 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_vector3_out" role="tab" aria-controls="pills-ND_mix_vector3_out" aria-selected="true"  onclick="document.getElementById('ND_mix_vector3_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_vector3_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector3_fg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
           <input id="ND_mix_vector3_fg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_vector3_fg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_vector3_fg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector3_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector3_bg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
           <input id="ND_mix_vector3_bg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_vector3_bg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_vector3_bg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector3_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector3_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_vector3_mix" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector3_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector3_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
   </div>
  </div>
 </div>
@@ -2508,56 +2517,56 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>math::lerp({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
@@ -2577,15 +2586,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_vector3_vector3_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_vector3_vector3_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_vector3_vector3_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_vector3_vector3_menu">
@@ -2599,91 +2609,92 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_vector3_vector3_out" role="tab" aria-controls="pills-ND_mix_vector3_vector3_out" aria-selected="true"  onclick="document.getElementById('ND_mix_vector3_vector3_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_vector3_vector3_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector3_vector3_fg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
           <input id="ND_mix_vector3_vector3_fg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_vector3_vector3_fg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_vector3_vector3_fg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector3_vector3_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector3_vector3_bg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
           <input id="ND_mix_vector3_vector3_bg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_vector3_vector3_bg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_vector3_vector3_bg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector3_vector3_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector3_vector3_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
           <input id="ND_mix_vector3_vector3_mix_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_vector3_vector3_mix_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-3">
           <input id="ND_mix_vector3_vector3_mix_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector3_vector3_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector3_vector3_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
   </div>
  </div>
 </div>
@@ -2695,56 +2706,56 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>math::lerp({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
@@ -2764,15 +2775,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_vector4_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_vector4_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_vector4_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_vector4_menu">
@@ -2786,92 +2798,93 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_vector4_out" role="tab" aria-controls="pills-ND_mix_vector4_out" aria-selected="true"  onclick="document.getElementById('ND_mix_vector4_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_vector4_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector4_fg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
           <input id="ND_mix_vector4_fg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_fg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_fg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_fg_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector4_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector4_bg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
           <input id="ND_mix_vector4_bg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_bg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_bg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_bg_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector4_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector4_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_vector4_mix" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector4_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector4_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+   </div>
   </div>
  </div>
 </div>
@@ -2883,56 +2896,56 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>math::lerp({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
@@ -2952,15 +2965,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_vector4_vector4_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_vector4_vector4_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_vector4_vector4_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_vector4_vector4_menu">
@@ -2974,100 +2988,101 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_vector4_vector4_out" role="tab" aria-controls="pills-ND_mix_vector4_vector4_out" aria-selected="true"  onclick="document.getElementById('ND_mix_vector4_vector4_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_vector4_vector4_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector4_vector4_fg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
           <input id="ND_mix_vector4_vector4_fg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_vector4_fg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_vector4_fg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_vector4_fg_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector4_vector4_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector4_vector4_bg-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
           <input id="ND_mix_vector4_vector4_bg_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_vector4_bg_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_vector4_bg_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_vector4_bg_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector4_vector4_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector4_vector4_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
-   </div>
-  </div>
   <div class="form-group row g-1">
-      <label class="col-sm-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-sm-2">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
           <input id="ND_mix_vector4_vector4_mix_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_vector4_mix_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_vector4_mix_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
-      <div class="col-sm-2">
+      <div class="col-2">
           <input id="ND_mix_vector4_vector4_mix_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_vector4_vector4_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_vector4_vector4_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+   </div>
   </div>
  </div>
 </div>
@@ -3079,56 +3094,56 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>math::lerp({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>mix({{bg}}, {{fg}}, {{mix}}) </textarea>
     </div>
@@ -3148,15 +3163,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../../resources/mtlx/nodedef_materials/material_mix_surfaceshader_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_mix_surfaceshader_out_genglsl.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_surfaceshader_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_surfaceshader_menu">
@@ -3170,13 +3186,14 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_surfaceshader_out" role="tab" aria-controls="pills-ND_mix_surfaceshader_out" aria-selected="true"  onclick="document.getElementById('ND_mix_surfaceshader_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_surfaceshader_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_surfaceshader_fg-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
@@ -3186,8 +3203,8 @@ Category: mix
  <div class="tab-pane " id="pills-ND_mix_surfaceshader_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_surfaceshader_bg-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
    </div>
   </div>
@@ -3196,36 +3213,36 @@ Category: mix
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_surfaceshader_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_surfaceshader_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_surfaceshader_mix" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_surfaceshader_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_surfaceshader_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+   </div>
   </div>
  </div>
 </div>
@@ -3237,78 +3254,78 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
   <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_mix_surfaceshader.glsl" target="_blank">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_mix_surfaceshader.glsl">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_mix_surfaceshader">
    </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_mix_surfaceshader({{fg}}, {{bg}}, {{mix}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
   <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genmsl/../genglsl/mx_mix_surfaceshader.glsl" target="_blank">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="../genglsl/mx_mix_surfaceshader.glsl">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_mix_surfaceshader">
    </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
   <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_mix_surfaceshader.osl" target="_blank">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_mix_surfaceshader.osl">
   </a>
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-sm-4">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_mix_surfaceshader">
    </div>
   </div>
@@ -3327,15 +3344,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> displacementshader</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> displacementshader</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_displacementshader_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_displacementshader_menu">
@@ -3349,13 +3367,14 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_displacementshader_out" role="tab" aria-controls="pills-ND_mix_displacementshader_out" aria-selected="true"  onclick="document.getElementById('ND_mix_displacementshader_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_displacementshader_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_displacementshader_fg-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="displacementshader">
    </div>
   </div>
@@ -3365,8 +3384,8 @@ Category: mix
  <div class="tab-pane " id="pills-ND_mix_displacementshader_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_displacementshader_bg-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="displacementshader">
    </div>
   </div>
@@ -3375,36 +3394,36 @@ Category: mix
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_displacementshader_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_displacementshader_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_displacementshader_mix" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_displacementshader_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_displacementshader_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="displacementshader">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="displacementshader">
+   </div>
   </div>
  </div>
 </div>
@@ -3416,14 +3435,14 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_mix_displacementshader({{fg}}, {{bg}}, {{mix}}) </textarea>
     </div>
@@ -3443,15 +3462,16 @@ Category: mix
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> volumeshader</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> volumeshader</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">compositing</button>
-<p class="card-text"> <b>Version: </b>1.0  
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_mix_volumeshader_menu"data-bs-toggle="dropdown" aria-expanded="false">fg</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_mix_volumeshader_menu">
@@ -3465,13 +3485,14 @@ Category: mix
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_mix_volumeshader_out" role="tab" aria-controls="pills-ND_mix_volumeshader_out" aria-selected="true"  onclick="document.getElementById('ND_mix_volumeshader_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_mix_volumeshader_fg"
   role="tabpanel" aria-labelledby="pills-ND_mix_volumeshader_fg-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="volumeshader">
    </div>
   </div>
@@ -3481,8 +3502,8 @@ Category: mix
  <div class="tab-pane " id="pills-ND_mix_volumeshader_bg"
   role="tabpanel" aria-labelledby="pills-ND_mix_volumeshader_bg-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="volumeshader">
    </div>
   </div>
@@ -3491,36 +3512,36 @@ Category: mix
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_volumeshader_mix"
   role="tabpanel" aria-labelledby="pills-ND_mix_volumeshader_mix-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_mix_volumeshader_mix" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_mix_volumeshader_out"
   role="tabpanel" aria-labelledby="pills-ND_mix_volumeshader_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="volumeshader">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Disabled Value :</label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
           <input type="text" class="form-control form-control-sm" value="bg" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="volumeshader">
+   </div>
   </div>
  </div>
 </div>
@@ -3532,14 +3553,14 @@ Category: mix
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_mix_volumeshader({{fg}}, {{bg}}, {{mix}}) </textarea>
     </div>
@@ -3556,7 +3577,22 @@ Category: mix
            </div>
        </div>
    </div>
-<script>
+
+  <footer class="bg-dark-subtle footer text-white py-2 pt-2" data-bs-theme="dark">
+    <div class="container">
+      <ul class="social-icons">
+        <button class="btn btn-outline" type="button">
+          <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><i class="fab fa-github fa-2x"
+              style="color: #ffffff;"></i></a>
+        </button>
+        <button class="btn btn-outline " type="button">
+          <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><i class="fab fa-linkedin-in fa-2x"
+              style="color: #0082ca;"></i></a>
+        </button>
+      </ul>
+      <p>&copy; 2022-2024 NanMu Consulting.</p>
+    </div>
+  </footer><script>
   var searchInput = document.getElementById("searchTOC")
   if (searchInput) {
    searchInput.addEventListener("keypress", filterOnEnter);

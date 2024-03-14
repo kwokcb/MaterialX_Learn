@@ -25,67 +25,86 @@ function sRGBToLinearRGB(rgbArray) {
     return linearRGB;
 }
 
-function updateMaterial(id, value, type)
-{
-  const modelViewerParameters = document.querySelector("model-viewer#materialviewer");
-  if (modelViewerParameters.model && modelViewerParameters.model.materials) 
-  {
-    let material = modelViewerParameters.model.materials[0];
+function updateMaterial(id, value, type) {
+    const modelViewerParameters = document.querySelector("model-viewer#materialviewer");
+    if (modelViewerParameters.model && modelViewerParameters.model.materials) {
+        let material = modelViewerParameters.model.materials[0];
 
-    //console.log('update material', id, value, type);
+        //console.log('update material', id, value, type);
 
-    orgvalue = value;
-    if (type == 'color3')
-    {
-      //value = sRGBToLinearRGB(hexToRgbArray(value));
-      value = hexToRgbArray(value);
+        orgvalue = value;
+        if (type == 'color3') {
+            //value = sRGBToLinearRGB(hexToRgbArray(value));
+            value = hexToRgbArray(value);
+        }
+        if (id == 'ND_gltf_pbr_surfaceshader_base_color') {
+            material.pbrMetallicRoughness.setBaseColorFactor(value);
+            rgba = hexToRgbArray(orgvalue);
+            r = document.getElementById('ND_gltf_pbr_surfaceshader_base_color_0')
+            r.value = rgba[0];
+            g = document.getElementById('ND_gltf_pbr_surfaceshader_base_color_1')
+            g.value = rgba[1];
+            b = document.getElementById('ND_gltf_pbr_surfaceshader_base_color_2')
+            b.value = rgba[2];
+        }
+        else if (id == 'ND_gltf_pbr_surfaceshader_metallic') {
+            material.pbrMetallicRoughness.setMetallicFactor(value);
+        }
+        else if (id == 'ND_gltf_pbr_surfaceshader_roughness') {
+            material.pbrMetallicRoughness.setRoughnessFactor(value);
+        }
+        else if (id == 'ND_gltf_pbr_surfaceshader_transmission') {
+            material.setTransmissionFactor(value);
+        }
+        else if (id == 'ND_gltf_pbr_surfaceshader_specular') {
+            material.setSpecularFactor(value);
+        }
+        else if (id == 'ND_gltf_pbr_surfaceshader_specular_color') {
+            material.setSpecularColorFactor(value);
+            rgba = hexToRgbArray(orgvalue);
+            r = document.getElementById('ND_gltf_pbr_surfaceshader_specular_color_0')
+            r.value = rgba[0];
+            g = document.getElementById('ND_gltf_pbr_surfaceshader_specular_color_1')
+            g.value = rgba[1];
+            b = document.getElementById('ND_gltf_pbr_surfaceshader_specular_color_2')
+            b.value = rgba[2];
+
+        }
+        else if (id == 'ND_gltf_pbr_surfaceshader_iridescence') {
+            //console.log('setIridescenceFactor', value)
+            material.setIridescenceFactor(value);
+        }
+
+        /*slider = document.getElementById(id + '_slider')
+        if (slider)
+        {
+            slider.textContent = value
+        }*/
     }
-    if (id == 'ND_gltf_pbr_surfaceshader_base_color')
-    {
-      material.pbrMetallicRoughness.setBaseColorFactor(value);
-      rgba = hexToRgbArray(orgvalue);
-      r = document.getElementById('ND_gltf_pbr_surfaceshader_base_color_0')
-      r.value = rgba[0];        
-      g = document.getElementById('ND_gltf_pbr_surfaceshader_base_color_1')
-      g.value = rgba[1];        
-      b = document.getElementById('ND_gltf_pbr_surfaceshader_base_color_2')
-      b.value = rgba[2];        
-    }
-    else if (id == 'ND_gltf_pbr_surfaceshader_metallic')
-    {
-        material.pbrMetallicRoughness.setMetallicFactor(value);
-    }
-    else if (id == 'ND_gltf_pbr_surfaceshader_roughness')
-    {
-        material.pbrMetallicRoughness.setRoughnessFactor(value);
-    }
-    else if (id == 'ND_gltf_pbr_surfaceshader_transmission')
-    {
-      material.setTransmissionFactor(value);
-    }
-    else if (id == 'ND_gltf_pbr_surfaceshader_specular')
-    {
-        material.setSpecularFactor(value);
-    }
-    else if (id == 'ND_gltf_pbr_surfaceshader_specular_color')
-    {
-        material.setSpecularColorFactor(value);
-        rgba = hexToRgbArray(orgvalue);
-        r = document.getElementById('ND_gltf_pbr_surfaceshader_specular_color_0')
-        r.value = rgba[0];        
-        g = document.getElementById('ND_gltf_pbr_surfaceshader_specular_color_1')
-        g.value = rgba[1];        
-        b = document.getElementById('ND_gltf_pbr_surfaceshader_specular_color_2')
-        b.value = rgba[2];        
-  
-    }
-  }
 }
 
-function addMaterialEventListeners()
-{
+
+/*
+dd watcher for:  ND_gltf_pbr_surfaceshader_metallic
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_roughness
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_occlusion
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_transmission
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_specular
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_ior
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_alpha
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_alpha_cutoff
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_iridescence
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_iridescence_ior
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_iridescence_thickness
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_sheen_roughness
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_clearcoat
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_clearcoat_roughness
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_emissive_strength
+gltf_pbr_helpers.js:110 Add watcher for:  ND_gltf_pbr_surfaceshader_thickness
+*/
+function addMaterialEventListeners() {
     nd = 'ND_gltf_pbr_surfaceshader'
-    inputs = ['_base_color', '_roughness', '_metallic', '_transmission', '_specular', '_specular_color'];
+    inputs = ['_base_color', '_roughness', '_metallic', '_transmission', '_specular', '_specular_color', '_iridescence'];
     for (input in inputs) {
         widget = document.getElementById(nd + inputs[input])
         if (widget) {
@@ -106,14 +125,51 @@ function addMaterialEventListeners()
         }
     }
 
+    // Find all elements of type range
+    sliders = document.getElementsByClassName('form-range')
+    for (let slider of sliders) {
+        id = slider.id
+        slider = document.getElementById(id)
+        //console.log('Add watcher for: ', slider.id)
+        slider.addEventListener('input',
+            function (event) {
+                slider_text_id = event.target.id + "_slider"
+                slider_text = document.getElementById(slider_text_id)
+                //console.log('update: ', slider_text, ' value: ', event.target.value)
+                if (slider_text) {
+                    slider_text.value = event.target.value;
+                }
+            }, false);
+        slider.addEventListener('change',
+            function (event) {
+                slider_text_id = event.target.id + "_slider"
+                slider_text = document.getElementById(slider_text_id)
+                //console.log('update: ', slider_text, ' value: ', event.target.value)
+                if (slider_text) {
+                    slider_text.value = event.target.value;
+                }
+            }, false);
+
+        slider_text_id = document.getElementById(id + "_slider")
+        slider_text_id.addEventListener('change',
+            function (event) {
+                // Remove '_slider from event.target.id
+                slider = document.getElementById(event.target.id.replace('_slider', ''))
+                console.log('update: ', slider.id, ' value: ', event.target.value)
+                if (slider) {
+                    slider.value = event.target.value;
+                }
+                updateMaterial(slider.id, event.target.value, slider.type)
+            }, false);
+            
+    }
+
     const modelViewerParameters = document.querySelector("model-viewer#materialviewer");
-    if (modelViewerParameters)
-    {
+    if (modelViewerParameters) {
         modelViewerParameters.addEventListener("load", (ev) => {
             for (input in inputs) {
                 widget = document.getElementById(nd + inputs[input])
-                if (widget)
-                {
+                if (widget) {
                     updateMaterial(nd + inputs[input], widget.value, widget.type);
                 }
             }

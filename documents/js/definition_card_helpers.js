@@ -12,18 +12,25 @@ function filterTOC() {
     if (!input)
         return
     filter = input.value;
-    console.log("Look for: ", filter)
+    console.log("Filter for: ", filter)
     li = document.querySelectorAll('.idx');
     for (i = 0; i < li.length; i++) {
         a = li[i];
-        if (a.innerHTML.match(filter)) {
+
+        // Match by name only for now
+        lower1 = a.innerHTML.toLowerCase();
+        lower2 = filter.toLowerCase();
+        let matches = lower1.match(lower2); 
+
+        if (matches)
+        {
             if (filter.length > 0) {
 
                 // Recursively expand parents
                 var parent = a.parentElement
                 while (parent) {
                     if (parent.className && parent.classList.contains("collapse")) {
-                        //console.log("Show: ", parent)
+                        console.log("Show: ", parent, 'for: ', a)
                         parent.classList.add("show");
                     }
                     parent = parent.parentElement;

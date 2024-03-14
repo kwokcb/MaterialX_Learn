@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-J7404418VP');
+  </script>
+
+  <style>
+    model-viewer {
+      width: 256px;
+      height: 256px;
+      background-color: #7d7d7d;
+    }
+  </style>
+
+  <link rel="icon" href="../documents/images/logo3d_icon.png" type="image/x-icon" />
+  <!--
+  <link rel="icon" href="../documents/images/logo3d_2_small.png" type="image/x-icon" />
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
+
+  <link rel="stylesheet" href="../documents/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  
+
+  <title>MaterialX Learn</title>
+  <link rel="icon" type="images" href="../documents/images/logo3d_icon.png" class="img-fluid">
+
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+  <script src="../documents/js/ui_helpers.js"></script>
+
+  </script>  
+   
+  <!-- Navigation_Area-->
+<nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
+    <div class="container-md container-fluid">
+        <a class="navbar-brand" href="../index.html">
+            <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+                    class="rounded d-inline-block align-text-center" width="50px">
+                MaterialX Learn</h5>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+            aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenuContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="../index.html" role="button">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Learn
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="../documents/nodes_and_nodegraphs.html">
+                                Nodes and Graphs
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../documents/node_definitions.html">
+                                Node Definitions
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../documents/documents.html">
+                                Documents
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="../documents/presentations.html">
+                                Presentations
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                        data-bs-auto-close="outside">Reference</a>
+                    <ul class="dropdown-menu shadow">
+                        <li><a class="dropdown-item"
+                                href="../documents/definitions/definitions_by_group.html">Library
+                                (By Group)</a></li>
+                        <li><a class="dropdown-item"
+                                href="../documents/definitions/all_definitions.html">Library
+                                (All)</a></li>
+                        <li><a class="dropdown-item"
+                                href="../documents/definitions/library_glossary.html">Library
+                                Glossary</a></li>
+                        <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
+                                target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
+                                    style="width:20px"> C++ API</a></li>
+
+                        <li class="dropend">
+                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
+                                Revisions</a>
+                            <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../documents/mtlx_1389_vs_1390.html">
+                                        1.38.9 vs 1.39.0</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1388_vs_1389.html">
+                                        1.38.8 vs 1.38.9</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1387_vs_1388.html">
+                                        1.38.7 vs 1.38.8</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1386_vs_1387.html">
+                                        1.38.6 vs 1.38.7</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1385_vs_1386.html">
+                                        1.38.5 vs 1.38.6</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1384_vs_1385.html">
+                                        1.38.4 vs 1.38.5</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1383_vs_1384.html">
+                                        1.38.3 vs 1.38.4</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1382_vs_1383.html">
+                                        1.38.2 vs 1.38.3</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1381_vs_1382.html">
+                                        1.38.1 vs 1.38.2</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1380_vs_1381.html">
+                                        1.38.0 vs 1.38.1</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1380_vs_1390.html">
+                                        1.38.0 vs 1.39.0</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+                        <li>
+                            <a class="dropdown-item" href="../documents/using_library.html">
+                                <img src="../documents/images/info-circle.svg"> Library User Guide
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Utilities</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../documents/gltfViewer.html">glTF Model Viewer</a></li>
+                        <li><a class="dropdown-item" href="../documents/mermaidChecker.html">Graph Visualizer</a></li>
+                        <li><a class="dropdown-item" href="../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
+                        <li><a class="dropdown-item" href="../documents/mtlx_utilities.html">Python Utilities</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Develop</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../documents/python_MaterialX.html">Notebooks</a></li>
+                        <li><a class="dropdown-item" href="../documents/jupyter_example.html">Examples</a></li>
+                        <li><a class="dropdown-item" href="../documents/hosting.html">Hosting</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Workflows</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../documents/workflow_usd.html">USD and MaterialX</a></li>
+                        <li><a class="dropdown-item" href="../documents/workflow_gltf.html">glTF and MaterialX</a></li>
+                        <li><a class="dropdown-item" href="../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Design</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../documents/design.html">UX Design</a></li>
+                        <li><a class="dropdown-item" href="../documents/property_editor_ui.html">Property Editor UX</a></li>
+                        <li><a class="dropdown-item" href="../documents/implementation.html">Implementation</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../documents/about.html" role="button">
+                        About
+                    </a>
+                </li>
+                <!--INDEX_ITEM-->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+  <!-- Section Information -->
+  <section class="py-0 px-0 g-0">
+    <div class="container-fluid p-4">
+      <!--Start-->
+<h1 id="property-editor-ux">Property Editor UX</h1>
+<p><img width="100%" src="../documents/images/property_editor_original_version.png"></p>
+<p>The original version of the layout for a given material is shown above. Parameters are displayed as a series of tabs. Various issues arose from using tabs such as taking up to much screen space which makes it hard to find the editable field information. </p>
+<h2 id="issues-with-the-existing-property-editor">Issues With the Existing Property Editor</h2>
+<p>The original property editor had various readability and usability issues on both desktop and mobile. For desktop there were too many parameters being shown at once and sections were too spread out. This made it hard to discern how and where to edit values to change a model's appearance.</p>
+<p>On mobile there were similar issues. The section for editing parameter values was not visible on the same screen as the model editor. In addition parameters were displayed as a series of tabs which took up additional horizontal space on a mobile screen. This made it cumbersome to find the editable parameter fields, with users needing to scroll downward through many parameter tabs to get to the parameter values.</p>
+<h2 id="redesign-goal">Redesign Goal</h2>
+<p>The main goal with the redesign of the property editor UI was to compact the model viewer and property editor controls to be viewable and editable within the same area on dekstop and mobile. Other tasks were to shift the location of content sections such as the description to place more focus on the viewer and its property controls.</p>
+<h2 id="user-interface-options-considered">User Interface Options Considered</h2>
+<p>Alternative user interfaces for the property editor were explored when looking for methods to minimize the user interface size. These included radial menus for selection, tabbed menus, overlaying UI and having the UI as part of the model viewer.</p>
+<p>Radial UI was used previously in projects for AR/VR to edit attributes of a virtual avatar. There needed to be a efficient visual way to select from a limited set of modifiable parts with minimal text instruction. Radial UI was not chosen for the redesign of the property editor due to the need to present a series of modifable form fields and text which are hard to layout in a radial menu without too much visual clutter.</p>
+<p>Tabbed menus were another option considered to simplify property display. This method would help seperate properties by category and save screen space by sectioning off related material property information. This option was not chosen as it is 
+simpler to compact the screen space taken up by the current user interface.</p>
+<p>Overlay UI was considered, with the property editor controls directly overlaid on top of the model. This method was not chosen as it would be cumbersome to use the viewer while trying to
+not edit property values at the same time. Additionally the text overlaid produces makes it difficult to see adjustments to the model.</p>
+<p>The final option considered was having the user interface embedded as a part of the model viewer. This was used in projects such as digital cards were various parts could be interacted with such as the name of the card, and card "moves" to show additional content. This option was not chosen as you would need a larger minimum interactable space to have context specific interactable areas/menus on both desktop and mobile. </p>
+<h2 id="drafting-the-redesign">Drafting the Redesign</h2>
+<h3 id="desktop-mockup">Desktop Mockup</h3>
+<p><img width="100%" src="../documents/images/property_edtor_figma_desktop_v1.png"></p>
+<h4 id="current-problems">Current Problems:</h4>
+<p>Too much screen space is being taken up by the parameter tabs making it hard to find the form fields. Content not related to the parameter values needs to be relocated so the viewer, parameter, and parameter fields are visible within the same screen. </p>
+<h4 id="solution">Solution:</h4>
+<p>The proposed desktop mockup makes improvements to the way parameters and titles for form fields are displayed. </p>
+<p>Parameters are moved into a scrollable dropdown menu. This resolves the screen clutter issues with too many parameters being displayed that information could be displayed off the viewable screen area. </p>
+<p>Additionally, the parameter dropdown menu is displayed as a single row to improve readability on smaller screens.The titles for form fields are moved to the top of the form field to save screen space.</p>
+<h3 id="mobile-mockup">Mobile Mockup</h3>
+<p><img width="30%" src="../documents/images/property_editor_figma_mobile_v1.png"></p>
+<h4 id="current-problems_1">Current Problems:</h4>
+<p>Parameter tabs take up too much vertical screen space and editable fields take up too much vertical screen space. Information such as the description can be shifted to a different location to better display the model viewer and its editable properties. </p>
+<h4 id="solution_1">Solution:</h4>
+<p>The mobile mockup makes similar improvements to parameter and form field title display. The parameters are grouped into a dropdown menu row. The form fields are shown as a series of columns per area to reduce the size of the user interface. This gives users ample viewing and interaction area for browsing parameters or to change the values in the form fields. </p>
+<h2 id="using-a-parameter-menu">Using a Parameter Menu</h2>
+<p>Following the mockup design the main changes made were to move material parameters into a scrollable dropdown menu. The other change made was to compact the grid layout to have the model preview to the left, with description and parameter information located beside it. This helps to convey the same information while increasing the viewing area for the viewer and parameter controls</p>
+<p><img width="100%" src="../documents/images/property_editor_impl_desktop_v1.png">
+Parameters are shifted to a dropdown menu. The desciption info is located beside the viewer to save screen space. </p>
+<table>
+<tr>
+<td>
+<img width="90%" src="../documents/images/property_editor_impl_mobile_v1_1.jpg">
+</td>
+<td>
+<img width="90%" src="../documents/images/property_editor_impl_mobile_v1_3.jpg">
+</td>
+</tr>
+</table>
+
+<p>The first mobile iteration moves parameters to a scrollable dropdown menu which saves screen space. The titles for fields are shifted to be above the form fields to be more readable and to save screen space. </p>
+<h3 id="adjusting-property-control-ui-on-mobile">Adjusting Property Control UI on Mobile</h3>
+<table>
+<tr>
+<td>
+<img width="100%" src="../documents/images/mobile_no_wrap_color_three_columns.png">
+</td>
+<td>
+<img width="100%" src="../documents/images/mobile_no_wrap_three_columns.png">
+</td>
+
+</tr>
+</table>
+
+<p>The next version of the property editor takes further steps to reduce the screen space taken up by the form controls. Now when browsing on a mobile device the property fields are displayed as a series of columns of equal width, similar to the interface of the desktop version. The same information is presented and the fields are wide enough to be selectable.  </p>
+<h3 id="adding-a-slider-for-parameter-controls">Adding a Slider for Parameter Controls</h3>
+<table>
+<tr>
+<td>
+<img width="100%" src="../documents/images/pbr_metallic_no_slider.png">
+</td>
+<td>
+<img width="100%" src="../documents/images/pbr_metallic_slider.png">
+</td>
+<td>
+<img width="100%" src="../documents/images/pbr_metallic_slider_2.png">
+</td>
+
+</tr>
+</table>
+
+<p>The next version makes editing properties such as "metallness" clearer by using a slider instead of an editable fields. The slider is easier to manipulate on both desktop and mobile and the changes to the model by adjusting this value are easier to discern. </p>
+<h3 id="adding-editable-form-fields-to-the-slider-area">Adding Editable Form Fields to the Slider Area</h3>
+<p>Snapshots from Samsung Galaxy S8 Phone</p>
+<table>
+<tr>
+<td>
+<img width="100%" src="../documents/images/pbr_final_metallic_slider_field_edit.png">
+</td>
+
+</tr>
+</table>
+
+<p>This version adds the ability to edit form values of a property manually or by using the form field arrows. This option is provided for users for more precise data entry allowing for exact values to be entered for model parameters such as "metalness". </p>
+<!--End-->
+    </div>
+  </section>
+
+    <footer class="bg-dark-subtle footer text-white py-2 pt-2" data-bs-theme="dark">
+    <div class="container">
+      <ul class="social-icons">
+        <button class="btn btn-outline" type="button">
+          <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><i class="fab fa-github fa-2x"
+              style="color: #ffffff;"></i></a>
+        </button>
+        <button class="btn btn-outline " type="button">
+          <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><i class="fab fa-linkedin-in fa-2x"
+              style="color: #0082ca;"></i></a>
+        </button>
+      </ul>
+      <p>&copy; 2022-2024 NanMu Consulting.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
