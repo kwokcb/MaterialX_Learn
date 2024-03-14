@@ -106,26 +106,17 @@
             <li class="dropend">
               <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library Revisions</a>
               <ul class="dropdown-menu shadow">
-                <li><a class="dropdown-item" href="../../documents/mtlx_1388_vs_1389.html"> 1.38.8 vs 1.38.9
-                    (current)</a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1387_vs_1388.html"> 1.38.7 vs 1.38.8
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1386_vs_1387.html"> 1.38.6 vs 1.38.7
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1385_vs_1386.html"> 1.38.5 vs 1.38.6
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1384_vs_1385.html"> 1.38.4 vs 1.38.5
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1383_vs_1384.html"> 1.38.3 vs 1.38.4
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1382_vs_1383.html"> 1.38.2 vs 1.38.3
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1381_vs_1382.html"> 1.38.1 vs 1.38.2
-                    </a></li>
-                  <li><a class="dropdown-item" href="../../documents/mtlx_1380_vs_1381.html"> 1.38.0 vs 1.38.1
-                    </a></li>
-                <li><a class="dropdown-item" href="../../documents/mtlx_138_vs_1389.html"> 1.38.0 vs 1.38.9
-                    (current)</a></li>
+                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1389_vs_1390.html"> 1.38.9 vs 1.39.0</a></li>
+                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1388_vs_1389.html"> 1.38.8 vs 1.38.9</a></li>
+                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1387_vs_1388.html"> 1.38.7 vs 1.38.8</a></li>
+                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1386_vs_1387.html"> 1.38.6 vs 1.38.7</a></li>
+                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1385_vs_1386.html"> 1.38.5 vs 1.38.6</a></li>
+                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1384_vs_1385.html"> 1.38.4 vs 1.38.5</a></li>
+                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1383_vs_1384.html"> 1.38.3 vs 1.38.4</a></li>
+                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1382_vs_1383.html"> 1.38.2 vs 1.38.3</a></li>
+                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1381_vs_1382.html"> 1.38.1 vs 1.38.2</a></li>
+                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1380_vs_1381.html"> 1.38.0 vs 1.38.1</a></li>
+                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1380_vs_1390.html"> 1.38.0 vs 1.39.0</a></li>
               </ul>
             </li>
 
@@ -621,16 +612,17 @@ Category: thin_film_bsdf
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="col-md-5 p-0">
+<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> BSDF</button></div>
+<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button></div>
+<div class="card-text"> <b>Version: </b>1.0  </div>
+<div class="card-text"><b>Description:</b> Adds an iridescent thin film layer over a microfacet base BSDF..</div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
 <img src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
 </div>
-<div style="font-size:small;" class="col-md-7 border-left" >
-<p class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> BSDF</button>
-<p class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button>
-<p class="card-text"> <b>Version: </b>1.0  
-<p class="card-text"><b>Description:</b> Adds an iridescent thin film layer over a microfacet base BSDF..
-</p>
-<p class="card-text"><b>Parameters:</b></p>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
 <div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_thin_film_bsdf_menu"data-bs-toggle="dropdown" aria-expanded="false">thickness</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_thin_film_bsdf_menu">
@@ -642,47 +634,48 @@ Category: thin_film_bsdf
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_thin_film_bsdf_out" role="tab" aria-controls="pills-ND_thin_film_bsdf_out" aria-selected="true"  onclick="document.getElementById('ND_thin_film_bsdf_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
+</div>
 <br>
 <div class="tab-content">
  <div class="tab-pane show active" id="pills-ND_thin_film_bsdf_thickness"
   role="tabpanel" aria-labelledby="pills-ND_thin_film_bsdf_thickness-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_thin_film_bsdf_thickness" type="number" class="form-control form-control-sm" step="0.01" value="550" disabled>
+      </div>
+  </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
    </div>
   </div>
 <div class="form-group row g-1">
-<label class="col-sm-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
- <div class="col-sm-2">
+<label class="col-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
+ <div class="col-2">
    <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
    <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">nanometer</button>
  </div>
 </div>
-  <div class="form-group row g-1">
-      <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
-          <input id="ND_thin_film_bsdf_thickness" type="number" class="form-control form-control-sm" step="0.01" value="550" disabled>
-      </div>
-  </div>
  </div>
 </div>
 <div class="tab-content">
  <div class="tab-pane " id="pills-ND_thin_film_bsdf_ior"
   role="tabpanel" aria-labelledby="pills-ND_thin_film_bsdf_ior-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
-   </div>
-  </div>
   <div class="form-group row g-1">
       <label
-          class="col-sm-2 col-form-label col-form-label-sm">Value  </label>
-      <div class="col-sm-2">
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
           <input id="ND_thin_film_bsdf_ior" type="number" class="form-control form-control-sm" step="0.01" value="1.5" disabled>
       </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
   </div>
  </div>
 </div>
@@ -690,8 +683,8 @@ Category: thin_film_bsdf
  <div class="tab-pane " id="pills-ND_thin_film_bsdf_out"
   role="tabpanel" aria-labelledby="pills-ND_thin_film_bsdf_out-tab" tabindex="0">
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-sm-3">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="BSDF">
    </div>
   </div>
@@ -705,54 +698,54 @@ Category: thin_film_bsdf
 </summary>
 <br>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-4">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-4">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-8">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_thin_film_bsdf(mxp_thickness:{{thickness}}, mxp_ior:{{ior}}, mxp_base:{{base}}) </textarea>
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-4">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-4">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>
 <hr>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-sm-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-sm-4">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-4">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
     </div>
   </div>

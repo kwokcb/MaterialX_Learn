@@ -173,18 +173,16 @@ graph LR;
     IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf]
     style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf[dielectric_bsdf]
-    IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf[layer] --".fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix]
-    IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf[thin_film_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf[layer]
-    IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT([iridescence_thickness]) ==.thickness==> IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf[thin_film_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT fill:#0CF, color:#111
-    IMPL_gltf_pbr_surfaceshader_iridescence_iorINT([iridescence_ior]) ==.ior==> IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf[thin_film_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_iridescence_iorINT fill:#0CF, color:#111
-    IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[layer] --".base"--> IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf[layer]
+    IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[layer] --".fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix]
     IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[layer]
     IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
     style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
     style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0CF, color:#111
+    IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT([iridescence_thickness]) ==.thinfilm_thickness==> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT fill:#0CF, color:#111
+    IMPL_gltf_pbr_surfaceshader_iridescence_iorINT([iridescence_ior]) ==.thinfilm_ior==> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_iridescence_iorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_dielectric_f0[multiply] --".color0"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
     IMPL_gltf_pbr_surfaceshader_dielectric_f90[multiply] --".color90"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
     IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[generalized_schlick_bsdf]
@@ -201,6 +199,10 @@ graph LR;
     style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
     style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0CF, color:#111
+    IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT([iridescence_thickness]) ==.thinfilm_thickness==> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT fill:#0CF, color:#111
+    IMPL_gltf_pbr_surfaceshader_iridescence_iorINT([iridescence_ior]) ==.thinfilm_ior==> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_iridescence_iorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_tf_transmission_bsdf[dielectric_bsdf]
     IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix] --".fg"--> IMPL_gltf_pbr_surfaceshader_base_mix[mix]
     IMPL_gltf_pbr_surfaceshader_iridescenceINT([iridescence]) ==.mix==> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix]
@@ -213,19 +215,17 @@ graph LR;
     IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
     style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
-    IMPL_gltf_pbr_surfaceshader_iridescent_metal_bsdf[layer] --".fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix]
-    IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf[thin_film_bsdf] --".top"--> IMPL_gltf_pbr_surfaceshader_iridescent_metal_bsdf[layer]
-    IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT([iridescence_thickness]) ==.thickness==> IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf[thin_film_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT fill:#0CF, color:#111
-    IMPL_gltf_pbr_surfaceshader_iridescence_iorINT([iridescence_ior]) ==.ior==> IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf[thin_film_bsdf]
-    style IMPL_gltf_pbr_surfaceshader_iridescence_iorINT fill:#0CF, color:#111
-    IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf] --".base"--> IMPL_gltf_pbr_surfaceshader_iridescent_metal_bsdf[layer]
+    IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf] --".fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix]
     IMPL_gltf_pbr_surfaceshader_base_colorINT([base_color]) ==.color0==> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
     style IMPL_gltf_pbr_surfaceshader_base_colorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_normalINT([normal]) ==.normal==> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
     style IMPL_gltf_pbr_surfaceshader_normalINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_tangentINT([tangent]) ==.tangent==> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
     style IMPL_gltf_pbr_surfaceshader_tangentINT fill:#0CF, color:#111
+    IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT([iridescence_thickness]) ==.thinfilm_thickness==> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_iridescence_thicknessINT fill:#0CF, color:#111
+    IMPL_gltf_pbr_surfaceshader_iridescence_iorINT([iridescence_ior]) ==.thinfilm_ior==> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
+    style IMPL_gltf_pbr_surfaceshader_iridescence_iorINT fill:#0CF, color:#111
     IMPL_gltf_pbr_surfaceshader_roughness_uv[roughness_anisotropy] --".roughness"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[generalized_schlick_bsdf]
     IMPL_gltf_pbr_surfaceshader_emission[uniform_edf] --".edf"--> IMPL_gltf_pbr_surfaceshader_shader_constructor[surface]
     IMPL_gltf_pbr_surfaceshader_emission_color[multiply] --".color"--> IMPL_gltf_pbr_surfaceshader_emission[uniform_edf]
@@ -801,18 +801,16 @@ graph LR;
     NG_open_pbr_surface_surfaceshader_coat_rotationINT([coat_rotation]) ==.in1==> NG_open_pbr_surface_surfaceshader_coat_tangent_rotate_degree[multiply]
     style NG_open_pbr_surface_surfaceshader_coat_rotationINT fill:#0CF, color:#111
     NG_open_pbr_surface_surfaceshader_coat_substrate_attenuated[multiply] --".base"--> NG_open_pbr_surface_surfaceshader_coat_layer[layer]
-    NG_open_pbr_surface_surfaceshader_thin_film_layer[layer] --".in1"--> NG_open_pbr_surface_surfaceshader_coat_substrate_attenuated[multiply]
-    NG_open_pbr_surface_surfaceshader_thin_film_bsdf[thin_film_bsdf] --".top"--> NG_open_pbr_surface_surfaceshader_thin_film_layer[layer]
-    NG_open_pbr_surface_surfaceshader_thin_film_thicknessINT([thin_film_thickness]) ==.thickness==> NG_open_pbr_surface_surfaceshader_thin_film_bsdf[thin_film_bsdf]
-    style NG_open_pbr_surface_surfaceshader_thin_film_thicknessINT fill:#0CF, color:#111
-    NG_open_pbr_surface_surfaceshader_thin_film_iorINT([thin_film_ior]) ==.ior==> NG_open_pbr_surface_surfaceshader_thin_film_bsdf[thin_film_bsdf]
-    style NG_open_pbr_surface_surfaceshader_thin_film_iorINT fill:#0CF, color:#111
-    NG_open_pbr_surface_surfaceshader_base_substrate[mix] --".base"--> NG_open_pbr_surface_surfaceshader_thin_film_layer[layer]
+    NG_open_pbr_surface_surfaceshader_base_substrate[mix] --".in1"--> NG_open_pbr_surface_surfaceshader_coat_substrate_attenuated[multiply]
     NG_open_pbr_surface_surfaceshader_base_metalnessINT([base_metalness]) ==.mix==> NG_open_pbr_surface_surfaceshader_base_substrate[mix]
     style NG_open_pbr_surface_surfaceshader_base_metalnessINT fill:#0CF, color:#111
     NG_open_pbr_surface_surfaceshader_metal_bsdf[generalized_schlick_bsdf] --".fg"--> NG_open_pbr_surface_surfaceshader_base_substrate[mix]
     NG_open_pbr_surface_surfaceshader_geometry_normalINT([geometry_normal]) ==.normal==> NG_open_pbr_surface_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
     style NG_open_pbr_surface_surfaceshader_geometry_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_thin_film_thicknessINT([thin_film_thickness]) ==.thinfilm_thickness==> NG_open_pbr_surface_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
+    style NG_open_pbr_surface_surfaceshader_thin_film_thicknessINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_thin_film_iorINT([thin_film_ior]) ==.thinfilm_ior==> NG_open_pbr_surface_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
+    style NG_open_pbr_surface_surfaceshader_thin_film_iorINT fill:#0CF, color:#111
     NG_open_pbr_surface_surfaceshader_metal_reflectivity[multiply] --".color0"--> NG_open_pbr_surface_surfaceshader_metal_bsdf[generalized_schlick_bsdf]
     NG_open_pbr_surface_surfaceshader_base_colorINT([base_color]) ==.in1==> NG_open_pbr_surface_surfaceshader_metal_reflectivity[multiply]
     style NG_open_pbr_surface_surfaceshader_base_colorINT fill:#0CF, color:#111
@@ -857,6 +855,10 @@ graph LR;
     style NG_open_pbr_surface_surfaceshader_specular_colorINT fill:#0CF, color:#111
     NG_open_pbr_surface_surfaceshader_geometry_normalINT([geometry_normal]) ==.normal==> NG_open_pbr_surface_surfaceshader_dielectric_reflection[dielectric_bsdf]
     style NG_open_pbr_surface_surfaceshader_geometry_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_thin_film_thicknessINT([thin_film_thickness]) ==.thinfilm_thickness==> NG_open_pbr_surface_surfaceshader_dielectric_reflection[dielectric_bsdf]
+    style NG_open_pbr_surface_surfaceshader_thin_film_thicknessINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_thin_film_iorINT([thin_film_ior]) ==.thinfilm_ior==> NG_open_pbr_surface_surfaceshader_dielectric_reflection[dielectric_bsdf]
+    style NG_open_pbr_surface_surfaceshader_thin_film_iorINT fill:#0CF, color:#111
     NG_open_pbr_surface_surfaceshader_modulated_specular_ior_ratio[divide] --".ior"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection[dielectric_bsdf]
     NG_open_pbr_surface_surfaceshader_one_plus_modulated_specular_reflectivity3[add] --".in1"--> NG_open_pbr_surface_surfaceshader_modulated_specular_ior_ratio[divide]
     NG_open_pbr_surface_surfaceshader_modulated_specular_reflectivity3[multiply] --".in2"--> NG_open_pbr_surface_surfaceshader_one_plus_modulated_specular_reflectivity3[add]
@@ -893,6 +895,10 @@ graph LR;
     style NG_open_pbr_surface_surfaceshader_transmission_colorINT fill:#0CF, color:#111
     NG_open_pbr_surface_surfaceshader_geometry_normalINT([geometry_normal]) ==.normal==> NG_open_pbr_surface_surfaceshader_dielectric_transmission[dielectric_bsdf]
     style NG_open_pbr_surface_surfaceshader_geometry_normalINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_thin_film_thicknessINT([thin_film_thickness]) ==.thinfilm_thickness==> NG_open_pbr_surface_surfaceshader_dielectric_transmission[dielectric_bsdf]
+    style NG_open_pbr_surface_surfaceshader_thin_film_thicknessINT fill:#0CF, color:#111
+    NG_open_pbr_surface_surfaceshader_thin_film_iorINT([thin_film_ior]) ==.thinfilm_ior==> NG_open_pbr_surface_surfaceshader_dielectric_transmission[dielectric_bsdf]
+    style NG_open_pbr_surface_surfaceshader_thin_film_iorINT fill:#0CF, color:#111
     NG_open_pbr_surface_surfaceshader_modulated_specular_ior_ratio[divide] --".ior"--> NG_open_pbr_surface_surfaceshader_dielectric_transmission[dielectric_bsdf]
     NG_open_pbr_surface_surfaceshader_transmission_roughness[roughness_anisotropy] --".roughness"--> NG_open_pbr_surface_surfaceshader_dielectric_transmission[dielectric_bsdf]
     NG_open_pbr_surface_surfaceshader_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_open_pbr_surface_surfaceshader_transmission_roughness[roughness_anisotropy]
@@ -1084,18 +1090,16 @@ graph LR;
     NG_standard_surface_surfaceshader_100_coat_rotationINT([coat_rotation]) ==.in1==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate_degree[multiply]
     style NG_standard_surface_surfaceshader_100_coat_rotationINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply] --".base"--> NG_standard_surface_surfaceshader_100_coat_layer[layer]
-    NG_standard_surface_surfaceshader_100_thin_film_layer[layer] --".in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply]
-    NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_thin_film_layer[layer]
-    NG_standard_surface_surfaceshader_100_thin_film_thicknessINT([thin_film_thickness]) ==.thickness==> NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
-    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0CF, color:#111
-    NG_standard_surface_surfaceshader_100_thin_film_IORINT([thin_film_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
-    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0CF, color:#111
-    NG_standard_surface_surfaceshader_100_metalness_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_thin_film_layer[layer]
+    NG_standard_surface_surfaceshader_100_metalness_mix[mix] --".in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply]
     NG_standard_surface_surfaceshader_100_metalnessINT([metalness]) ==.mix==> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
     style NG_standard_surface_surfaceshader_100_metalnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
     style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_thicknessINT([thin_film_thickness]) ==.thinfilm_thickness==> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0CF, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_IORINT([thin_film_IOR]) ==.thinfilm_ior==> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior] --> NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior([ior])
     style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior fill:#0C0, color:#111
     NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior --".ior"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
@@ -1150,6 +1154,10 @@ graph LR;
     style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
     style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_thicknessINT([thin_film_thickness]) ==.thinfilm_thickness==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0CF, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_IORINT([thin_film_IOR]) ==.thinfilm_ior==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_main_tangent[ifgreater] --".tangent"--> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_transmission_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_specular_layer[layer]
@@ -1162,6 +1170,10 @@ graph LR;
     style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
     style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_thicknessINT([thin_film_thickness]) ==.thinfilm_thickness==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0CF, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_IORINT([thin_film_IOR]) ==.thinfilm_ior==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy]
     style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0CF, color:#111
@@ -1312,18 +1324,16 @@ graph LR;
     NG_standard_surface_surfaceshader_100_coat_rotationINT([coat_rotation]) ==.in1==> NG_standard_surface_surfaceshader_100_coat_tangent_rotate_degree[multiply]
     style NG_standard_surface_surfaceshader_100_coat_rotationINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply] --".base"--> NG_standard_surface_surfaceshader_100_coat_layer[layer]
-    NG_standard_surface_surfaceshader_100_thin_film_layer[layer] --".in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply]
-    NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf] --".top"--> NG_standard_surface_surfaceshader_100_thin_film_layer[layer]
-    NG_standard_surface_surfaceshader_100_thin_film_thicknessINT([thin_film_thickness]) ==.thickness==> NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
-    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0CF, color:#111
-    NG_standard_surface_surfaceshader_100_thin_film_IORINT([thin_film_IOR]) ==.ior==> NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
-    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0CF, color:#111
-    NG_standard_surface_surfaceshader_100_metalness_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_thin_film_layer[layer]
+    NG_standard_surface_surfaceshader_100_metalness_mix[mix] --".in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[multiply]
     NG_standard_surface_surfaceshader_100_metalnessINT([metalness]) ==.mix==> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
     style NG_standard_surface_surfaceshader_100_metalnessINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf] --".fg"--> NG_standard_surface_surfaceshader_100_metalness_mix[mix]
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
     style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_thicknessINT([thin_film_thickness]) ==.thinfilm_thickness==> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0CF, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_IORINT([thin_film_IOR]) ==.thinfilm_ior==> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior] --> NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior([ior])
     style NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior fill:#0C0, color:#111
     NG_standard_surface_surfaceshader_100_NG_standard_surface_surfaceshader_100_artistic_iorior --".ior"--> NG_standard_surface_surfaceshader_100_metal_bsdf[conductor_bsdf]
@@ -1378,6 +1388,10 @@ graph LR;
     style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
     style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_thicknessINT([thin_film_thickness]) ==.thinfilm_thickness==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0CF, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_IORINT([thin_film_IOR]) ==.thinfilm_ior==> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_main_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_main_tangent[ifgreater] --".tangent"--> NG_standard_surface_surfaceshader_100_specular_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_transmission_mix[mix] --".base"--> NG_standard_surface_surfaceshader_100_specular_layer[layer]
@@ -1390,6 +1404,10 @@ graph LR;
     style NG_standard_surface_surfaceshader_100_specular_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_normalINT([normal]) ==.normal==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
     style NG_standard_surface_surfaceshader_100_normalINT fill:#0CF, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_thicknessINT([thin_film_thickness]) ==.thinfilm_thickness==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_thicknessINT fill:#0CF, color:#111
+    NG_standard_surface_surfaceshader_100_thin_film_IORINT([thin_film_IOR]) ==.thinfilm_ior==> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
+    style NG_standard_surface_surfaceshader_100_thin_film_IORINT fill:#0CF, color:#111
     NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy] --".roughness"--> NG_standard_surface_surfaceshader_100_transmission_bsdf[dielectric_bsdf]
     NG_standard_surface_surfaceshader_100_specular_anisotropyINT([specular_anisotropy]) ==.anisotropy==> NG_standard_surface_surfaceshader_100_transmission_roughness[roughness_anisotropy]
     style NG_standard_surface_surfaceshader_100_specular_anisotropyINT fill:#0CF, color:#111
@@ -2101,18 +2119,11 @@ graph LR;
     style IMPL_lama_conductor_out fill:#0C0, color:#111
     IMPL_lama_conductor_tintINT([tint]) ==.in2==> IMPL_lama_conductor_tinted_bsdf[multiply]
     style IMPL_lama_conductor_tintINT fill:#0CF, color:#111
-    IMPL_lama_conductor_thin_film_conductor_bsdf[layer] --".in1"--> IMPL_lama_conductor_tinted_bsdf[multiply]
-    IMPL_lama_conductor_thin_film_bsdf[thin_film_bsdf] --".top"--> IMPL_lama_conductor_thin_film_conductor_bsdf[layer]
-    IMPL_lama_conductor_iridescenceThicknessINT([iridescenceThickness]) ==.thickness==> IMPL_lama_conductor_thin_film_bsdf[thin_film_bsdf]
-    style IMPL_lama_conductor_iridescenceThicknessINT fill:#0CF, color:#111
-    IMPL_lama_conductor_iridescence_relative_ior[divide] --".ior"--> IMPL_lama_conductor_thin_film_bsdf[thin_film_bsdf]
-    IMPL_lama_conductor_iridescenceIORINT([iridescenceIOR]) ==.in1==> IMPL_lama_conductor_iridescence_relative_ior[divide]
-    style IMPL_lama_conductor_iridescenceIORINT fill:#0CF, color:#111
-    IMPL_lama_conductor_exteriorIORINT([exteriorIOR]) ==.in2==> IMPL_lama_conductor_iridescence_relative_ior[divide]
-    style IMPL_lama_conductor_exteriorIORINT fill:#0CF, color:#111
-    IMPL_lama_conductor_conductor_bsdf[conductor_bsdf] --".base"--> IMPL_lama_conductor_thin_film_conductor_bsdf[layer]
+    IMPL_lama_conductor_conductor_bsdf[conductor_bsdf] --".in1"--> IMPL_lama_conductor_tinted_bsdf[multiply]
     IMPL_lama_conductor_normalINT([normal]) ==.normal==> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
     style IMPL_lama_conductor_normalINT fill:#0CF, color:#111
+    IMPL_lama_conductor_iridescenceThicknessINT([iridescenceThickness]) ==.thinfilm_thickness==> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
+    style IMPL_lama_conductor_iridescenceThicknessINT fill:#0CF, color:#111
     IMPL_lama_conductor_relative_eta[divide] --".ior"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
     IMPL_lama_conductor_eta_switch[switch] --".in1"--> IMPL_lama_conductor_relative_eta[divide]
     IMPL_lama_conductor_fresnelModeINT([fresnelMode]) ==.which==> IMPL_lama_conductor_eta_switch[switch]
@@ -2174,6 +2185,11 @@ graph LR;
     IMPL_lama_conductor_tangent_rotate_degree[multiply] --".amount"--> IMPL_lama_conductor_tangent_rotate[rotate3d]
     IMPL_lama_conductor_anisotropyRotationINT([anisotropyRotation]) ==.in1==> IMPL_lama_conductor_tangent_rotate_degree[multiply]
     style IMPL_lama_conductor_anisotropyRotationINT fill:#0CF, color:#111
+    IMPL_lama_conductor_iridescence_relative_ior[divide] --".thinfilm_ior"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
+    IMPL_lama_conductor_iridescenceIORINT([iridescenceIOR]) ==.in1==> IMPL_lama_conductor_iridescence_relative_ior[divide]
+    style IMPL_lama_conductor_iridescenceIORINT fill:#0CF, color:#111
+    IMPL_lama_conductor_exteriorIORINT([exteriorIOR]) ==.in2==> IMPL_lama_conductor_iridescence_relative_ior[divide]
+    style IMPL_lama_conductor_exteriorIORINT fill:#0CF, color:#111
 
 ```
  

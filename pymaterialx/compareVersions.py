@@ -341,12 +341,18 @@ def printTargetComparison(currLibrary, otherLibrary):
     currTargets = []
     for target in currLibrary.getTargetDefs():
         currTargets.append(target.getName())
+    
+    # Sort targets alphabetically
+    currTargets = sorted(currTargets)
+    oldTargets = sorted(oldTargets)
 
     print('* First library shader targets: *%s*' % currTargets)
     print('* Second library shader targets: *%s*' % oldTargets)
 
     newTargets = list(set(currTargets) - set(oldTargets))
     if newTargets:
+        # Sort newTargets alphabetically
+        newTargets = sorted(newTargets)
         print('* Shader targets added:', newTargets)
 
     return oldTargets, currTargets
