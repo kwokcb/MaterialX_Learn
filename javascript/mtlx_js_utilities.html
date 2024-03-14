@@ -38,11 +38,11 @@
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/monokai.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/monokai.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material-darker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material-darker.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/abbott.min.css">
+    -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/json/json.min.js"></script>
@@ -59,205 +59,161 @@
 
   </script>  
    
-  
-    <!-- Navigation  -->
-    <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
-        <div class="container-md container-fluid">
-            <a class="navbar-brand" href="../index.html">
-                <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
-                        class="rounded d-inline-block align-text-center" width="50px">
-                    MaterialX Learn</h5>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
-                aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainMenuContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="../index.html" role="button">
-                            Home
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Learn
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="../documents/nodes_and_nodegraphs.html">
-                                    Nodes and Graphs
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../documents/node_definitions.html">
-                                    Node Definitions
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../documents/documents.html">
-                                    Documents
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                            data-bs-auto-close="outside">Reference</a>
-                        <ul class="dropdown-menu shadow">
-                            <li><a class="dropdown-item"
-                                    href="../documents/definitions/definitions_by_group.html">Library
-                                    (By Group)</a></li>
-                            <li><a class="dropdown-item"
-                                    href="../documents/definitions/all_definitions.html">Library
-                                    (All)</a></li>
-                            <li><a class="dropdown-item"
-                                    href="../documents/definitions/library_glossary.html">Library
-                                    Glossary</a></li>
-                            <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
-                                    target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
-                                        style="width:20px"> C++ API</a></li>
-
-                            <li class="dropend">
-                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
-                                    Revisions</a>
-                                <ul class="dropdown-menu shadow">
-                                    <li><a class="dropdown-item" href="../documents/mtlx_1388_vs_1389.html">
-                                            1.38.8 vs 1.38.9
-                                            (current)</a></li>
-                                    <li><a class="dropdown-item" href="../documents/mtlx_1387_vs_1388.html">
-                                            1.38.7 vs 1.38.8
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="../documents/mtlx_1386_vs_1387.html">
-                                            1.38.6 vs 1.38.7
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="../documents/mtlx_1385_vs_1386.html">
-                                            1.38.5 vs 1.38.6
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="../documents/mtlx_1384_vs_1385.html">
-                                            1.38.4 vs 1.38.5
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="../documents/mtlx_1383_vs_1384.html">
-                                            1.38.3 vs 1.38.4
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="../documents/mtlx_1382_vs_1383.html">
-                                            1.38.2 vs 1.38.3
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="../documents/mtlx_1381_vs_1382.html">
-                                            1.38.1 vs 1.38.2
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="../documents/mtlx_1380_vs_1381.html">
-                                            1.38.0 vs 1.38.1
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="../documents/mtlx_138_vs_1389.html"> 1.38.0
-                                            vs 1.38.9
-                                            (current)</a></li>
-                                </ul>
-                            </li>
-
-                            <div class="dropdown-divider"></div>
-                            <li>
-                                <a class="dropdown-item" href="../documents/using_library.html">
-                                    <img src="../documents/images/info-circle.svg"> Library User Guide
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Utilities</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="../documents/gltfViewer.html">
-                                    glTF Model Viewer
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../documents/mermaidChecker.html">
-                                    Graph Visualizer
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../javascript/mtlx_js_utilities.html">
-                                  Graph Generator
-                                </a>
-                            </li>
-                            <li>
-                            <a class="dropdown-item" href="../javascript/viewer/dist/index_out.html">
-                                Shader Preview
+  <!-- Navigation_Area-->
+<nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
+    <div class="container-md container-fluid">
+        <a class="navbar-brand" href="../index.html">
+            <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+                    class="rounded d-inline-block align-text-center" width="50px">
+                MaterialX Learn</h5>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+            aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenuContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="../index.html" role="button">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Learn
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="../documents/nodes_and_nodegraphs.html">
+                                Nodes and Graphs
                             </a>
-                            </li>                            
-                            <li>
-                            <a class="dropdown-item" href="../documents/mtlx_utilities.html">
-                                Python Utilities
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../documents/node_definitions.html">
+                                Node Definitions
                             </a>
-                            </li>
-                        </ul>
-                    </li>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../documents/documents.html">
+                                Documents
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="../documents/presentations.html">
+                                Presentations
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Develop</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="../documents/python_MaterialX.html">
-                                    Notebooks
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../documents/jupyter_example.html">
-                                    Examples
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../documents/hosting.html">
-                                    Hosting
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                        data-bs-auto-close="outside">Reference</a>
+                    <ul class="dropdown-menu shadow">
+                        <li><a class="dropdown-item"
+                                href="../documents/definitions/definitions_by_group.html">Library
+                                (By Group)</a></li>
+                        <li><a class="dropdown-item"
+                                href="../documents/definitions/all_definitions.html">Library
+                                (All)</a></li>
+                        <li><a class="dropdown-item"
+                                href="../documents/definitions/library_glossary.html">Library
+                                Glossary</a></li>
+                        <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
+                                target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
+                                    style="width:20px"> C++ API</a></li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Workflows</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../documents/workflow_usd.html">USD and
-                                    MaterialX</a></li>
-                            <li><a class="dropdown-item" href="../documents/workflow_gltf.html">glTF and
-                                    MaterialX</a></li>
-                            <li><a class="dropdown-item" href="../documents/workflow_ocio.html">OCIO and
-                                    MaterialX</a></li>
-                        </ul>
-                    </li>
+                        <li class="dropend">
+                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
+                                Revisions</a>
+                            <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../documents/mtlx_1389_vs_1390.html">
+                                        1.38.9 vs 1.39.0</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1388_vs_1389.html">
+                                        1.38.8 vs 1.38.9</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1387_vs_1388.html">
+                                        1.38.7 vs 1.38.8</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1386_vs_1387.html">
+                                        1.38.6 vs 1.38.7</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1385_vs_1386.html">
+                                        1.38.5 vs 1.38.6</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1384_vs_1385.html">
+                                        1.38.4 vs 1.38.5</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1383_vs_1384.html">
+                                        1.38.3 vs 1.38.4</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1382_vs_1383.html">
+                                        1.38.2 vs 1.38.3</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1381_vs_1382.html">
+                                        1.38.1 vs 1.38.2</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1380_vs_1381.html">
+                                        1.38.0 vs 1.38.1</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1380_vs_1390.html">
+                                        1.38.0 vs 1.39.0</a></li>
+                            </ul>
+                        </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Design</a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="../documents/design.html">
-                                    UX Design
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../documents/implementation.html">
-                                    Implementation
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../documents/about.html" role="button">
-                            About
-                        </a>
-                    </li>
-                    <!--INDEX_ITEM-->
-                </ul>
-            </div>
+                        <div class="dropdown-divider"></div>
+                        <li>
+                            <a class="dropdown-item" href="../documents/using_library.html">
+                                <img src="../documents/images/info-circle.svg"> Library User Guide
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Utilities</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../documents/gltfViewer.html">glTF Model Viewer</a></li>
+                        <li><a class="dropdown-item" href="../documents/mermaidChecker.html">Graph Visualizer</a></li>
+                        <li><a class="dropdown-item" href="../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
+                        <li><a class="dropdown-item" href="../documents/mtlx_utilities.html">Python Utilities</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Develop</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../documents/python_MaterialX.html">Notebooks</a></li>
+                        <li><a class="dropdown-item" href="../documents/jupyter_example.html">Examples</a></li>
+                        <li><a class="dropdown-item" href="../documents/hosting.html">Hosting</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Workflows</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../documents/workflow_usd.html">USD and MaterialX</a></li>
+                        <li><a class="dropdown-item" href="../documents/workflow_gltf.html">glTF and MaterialX</a></li>
+                        <li><a class="dropdown-item" href="../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Design</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../documents/design.html">UX Design</a></li>
+                        <li><a class="dropdown-item" href="../documents/property_editor_ui.html">Property Editor UX</a></li>
+                        <li><a class="dropdown-item" href="../documents/implementation.html">Implementation</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../documents/about.html" role="button">
+                        About
+                    </a>
+                </li>
+                <!--INDEX_ITEM-->
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
   <!-- Section Information -->
   <section class="py-0 px-0 g-0">
@@ -271,7 +227,8 @@
         <h3>Document Graphing</h3>
         <p>A MaterialX file can be loaded in and previewed as text. This text can be converted to a `Mermaid` graph
             which can then be used to visualize using the
-            <a href="../documents/mermaidChecker.html">Mermaid Visualizer</a>
+            <a href="../documents/mermaidChecker.html">Mermaid Visualizer</a>. A simple MaterialX graph is
+            provided on load.
         </p>
         <button class="btn btn-outline-primary shadow-sm" id="loadMaterialXButton">Load MaterialX Document</button>
         <div class="row flex-nowrap ">
@@ -337,6 +294,7 @@
         loadMaterialX().then(() => {
             // Additional logic after MaterialX is loaded
             doc = mx.createDocument();
+            loadDefaultMaterialxDocument();
             console.log("MaterialX is loaded");
         }).catch((error) => {
             console.error("Error loading MaterialX:", error);
@@ -358,6 +316,45 @@
             // Trigger the file dialog
             input.click();
         });
+
+        function loadDefaultMaterialxDocument()
+        {
+            if (!doc)
+            {
+                console.error("MaterialX document is not initialized");
+                return;
+            }
+            let xmlString = `<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+  <surfacematerial name="surfacematerial" type="material" xpos="17.246376" ypos="-15.689655">
+    <input name="surfaceshader" type="surfaceshader" nodename="surface_unlit" />
+  </surfacematerial>
+  <input name="input_color3" type="color3" value="0, 0, 1" xpos="10.905797" ypos="-15.982759" />
+  <surface_unlit name="surface_unlit" type="surfaceshader" xpos="14.231884" ypos="-16.241379">
+    <input name="emission_color" type="color3" interfacename="input_color3" />
+  </surface_unlit>
+</materialx>`;
+
+                (async () => {
+                        try {
+                            const readOptions = new mx.XmlReadOptions();
+                            readOptions.readXIncludes = false;
+                            await mx.readFromXmlString(doc, xmlString, '', readOptions);
+
+                            // Update the text area with the file contents
+                            if (editor) {
+                                editor.setValue(xmlString);
+                            }
+                            else {
+                                let textArea = document.getElementById('materialXTextArea');
+                                textArea.value = xmlString;
+                            }
+
+                        } catch (error) {
+                            console.error('Error:', error);
+                        }
+                    })();
+        }
 
         function loadMaterialXDocument(file, fileName) {
             if (mx) {

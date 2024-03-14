@@ -11,11 +11,11 @@
 <!--StyleStart-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/monokai.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/monokai.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material-darker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material-darker.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/abbott.min.css">
+    -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/json/json.min.js"></script>
@@ -33,7 +33,8 @@
         <h3>Document Graphing</h3>
         <p>A MaterialX file can be loaded in and previewed as text. This text can be converted to a `Mermaid` graph
             which can then be used to visualize using the
-            <a href="_TOP_FOLDER_/documents/mermaidChecker.html">Mermaid Visualizer</a>
+            <a href="_TOP_FOLDER_/documents/mermaidChecker.html">Mermaid Visualizer</a>. A simple MaterialX graph is
+            provided on load.
         </p>
         <button class="btn btn-outline-primary shadow-sm" id="loadMaterialXButton">Load MaterialX Document</button>
         <div class="row flex-nowrap ">
@@ -99,6 +100,7 @@
         loadMaterialX().then(() => {
             // Additional logic after MaterialX is loaded
             doc = mx.createDocument();
+            loadDefaultMaterialxDocument();
             console.log("MaterialX is loaded");
         }).catch((error) => {
             console.error("Error loading MaterialX:", error);
@@ -120,6 +122,45 @@
             // Trigger the file dialog
             input.click();
         });
+
+        function loadDefaultMaterialxDocument()
+        {
+            if (!doc)
+            {
+                console.error("MaterialX document is not initialized");
+                return;
+            }
+            let xmlString = `<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+  <surfacematerial name="surfacematerial" type="material" xpos="17.246376" ypos="-15.689655">
+    <input name="surfaceshader" type="surfaceshader" nodename="surface_unlit" />
+  </surfacematerial>
+  <input name="input_color3" type="color3" value="0, 0, 1" xpos="10.905797" ypos="-15.982759" />
+  <surface_unlit name="surface_unlit" type="surfaceshader" xpos="14.231884" ypos="-16.241379">
+    <input name="emission_color" type="color3" interfacename="input_color3" />
+  </surface_unlit>
+</materialx>`;
+
+                (async () => {
+                        try {
+                            const readOptions = new mx.XmlReadOptions();
+                            readOptions.readXIncludes = false;
+                            await mx.readFromXmlString(doc, xmlString, '', readOptions);
+
+                            // Update the text area with the file contents
+                            if (editor) {
+                                editor.setValue(xmlString);
+                            }
+                            else {
+                                let textArea = document.getElementById('materialXTextArea');
+                                textArea.value = xmlString;
+                            }
+
+                        } catch (error) {
+                            console.error('Error:', error);
+                        }
+                    })();           
+        }
 
         function loadMaterialXDocument(file, fileName) {
             if (mx) {
