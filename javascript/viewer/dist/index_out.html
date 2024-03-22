@@ -89,7 +89,7 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="../../../index.html">
-            <h5><img src="../../../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img loading="lazy" src="../../../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
                     class="rounded d-inline-block align-text-center" width="50px">
                 MaterialX Learn</h5>
         </a>
@@ -147,7 +147,7 @@
                                 href="../../../documents/definitions/library_glossary.html">Library
                                 Glossary</a></li>
                         <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
-                                target="_blank"><img src="../../../documents/images/MaterialXLogo_200x155.png"
+                                target="_blank"><img loading="lazy" src="../../../documents/images/MaterialXLogo_200x155.png"
                                     style="width:20px"> C++ API</a></li>
 
                         <li class="dropend">
@@ -182,7 +182,7 @@
                         <div class="dropdown-divider"></div>
                         <li>
                             <a class="dropdown-item" href="../../../documents/using_library.html">
-                                <img src="../../../documents/images/info-circle.svg"> Library User Guide
+                                <img loading="lazy" src="../../../documents/images/info-circle.svg"> Library User Guide
                             </a>
                         </li>
                     </ul>
@@ -280,7 +280,7 @@
             <button class="btn btn-outline-primary shadow-sm" disabled id="renderButton">Validate and Render</button>
           </div>
           <div class="col-sm-9 p-2">
-            <textarea id="statusLine" class="form-control form-control-sm overflow-auto" rows="1"></textarea>
+            <textarea id="statusLine" class="form-control form-control-sm overflow-auto" disabled rows="1"></textarea>
           </div>
         </div>
         <div class="row flex">
@@ -594,6 +594,7 @@
           try {
             st = document.getElementById('statusLine');
             st.innerHTML = '';
+            st.disabled = true;
 
             mdoc = mmx.createDocument();
 
@@ -827,7 +828,7 @@
       </ul>
       <p>
         <a class="bg-dark p-2 right" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-            <img alt="Creative Commons License" style="border-width:0"
+            <img loading="lazy" alt="Creative Commons License" style="border-width:0"
                 src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
         &copy; 2022-2024 NanMu Consulting.</a>
       </p>      

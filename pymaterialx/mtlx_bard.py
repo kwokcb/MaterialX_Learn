@@ -3,7 +3,7 @@
 # 
 # Unlike ChatGPT (using `davinci-002`), Bard actually appears to scan for recent information about MaterialX and returns a reasonable answer for the simple query of what's the latest version.
 # 
-# <img src="./images/google_bard_version_prompt.png">
+# <img loading="lazy" src="./images/google_bard_version_prompt.png">
 # 
 # It does however provide links to the the source material if available which is useful to jump to the original content. For example the reply here was linked to the MaterialX (`materialx.org`) site.
 
@@ -14,11 +14,11 @@
 # 
 # As neither had any source material attribution it is unclear where the information came from.
 # 
-# <img src="./images/google_bard_nodegraph_prompt.png">
+# <img loading="lazy" src="./images/google_bard_nodegraph_prompt.png">
 # 
 # Note that while the it nice that the online Bard interface provides multiple "drafts", none were remotely close to the correct answer.
 # 
-# <img src="./images/google_bard_nodegraph_prompt.png">
+# <img loading="lazy" src="./images/google_bard_nodegraph_prompt.png">
 
 # %% [markdown]
 # ### Source Code Assistance

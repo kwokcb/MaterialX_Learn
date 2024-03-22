@@ -60,14 +60,14 @@
 # 
 # Code shown here can be executed within Blender itself as shown below.
 # 
-# <img src="images/blender_materialx_python_export_final.png" width=60%>
+# <img loading="lazy" src="images/blender_materialx_python_export_final.png" width=60%>
 # 
 # or within Visual Studio Code.
 # 
-# <img src="images/blender_materialx_python_export_vscode_2.png" width=60%>
+# <img loading="lazy" src="images/blender_materialx_python_export_vscode_2.png" width=60%>
 # 
 # With the results available to use for any MaterialX integration such as MaterialXView below.
-# <img src="images/blender_materialXView_final.png" width=60%>
+# <img loading="lazy" src="images/blender_materialXView_final.png" width=60%>
 # 
 
 # %% [markdown]
@@ -448,6 +448,6 @@ strgraph = strgraph + '```\n'
 display_markdown(strgraph, raw=True)
 
 # %% [markdown]
-# <img src="images/mermaid_blender_graph.svg" width=80%>
+# <img loading="lazy" src="images/mermaid_blender_graph.svg" width=80%>
 
 

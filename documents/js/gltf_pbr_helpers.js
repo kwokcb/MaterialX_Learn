@@ -178,3 +178,33 @@ function addMaterialEventListeners() {
 }
 
 addMaterialEventListeners();
+
+// Toggle background
+toggleBackground = document.getElementById("togglebackground");
+if (toggleBackground) {
+  toggleBackground.addEventListener("click", (e) => {
+    console.log("Toggle background")
+    const modelViewer = document.querySelector("model-viewer#materialviewer");
+    if (modelViewer) {
+      currentEnvironment = modelViewer.getAttribute("environment-image");
+      currentSkyBox = modelViewer.getAttribute("skybox-image");
+      if (currentSkyBox == "") {
+        modelViewer.setAttribute("skybox-image", currentEnvironment);
+      }
+      else {
+        modelViewer.setAttribute("skybox-image", "");
+      }
+    }
+  });
+}
+
+// Reset camera
+resetCamera = document.getElementById("resetcamera");
+if (resetCamera) {
+    resetCamera.addEventListener("click", (e) => {
+    const modelViewer = document.querySelector("model-viewer#materialviewer");
+    if (modelViewer) {
+        modelViewer.cameraOrbit = "";
+    }
+    });
+}

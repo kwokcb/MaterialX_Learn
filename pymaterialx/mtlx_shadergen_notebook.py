@@ -288,7 +288,7 @@ for target in foundTargets:
 # 
 # For a list of generators and their derivations see documentation for the base class <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">ShaderGenerator</a>
 # 
-# <img src="https://kwokcb.github.io/MaterialX_Learn/documents/images/ShaderGenerator_inheritance.png" style="width:50%"></img>
+# <img loading="lazy" src="https://kwokcb.github.io/MaterialX_Learn/documents/images/ShaderGenerator_inheritance.png" style="width:50%"></img>
 # 
 # Note that Vulkan has the same target as `genglsl`, but has it's own generator. Also that the Metal generator will only show up
 # in the Mac build of documentation.
