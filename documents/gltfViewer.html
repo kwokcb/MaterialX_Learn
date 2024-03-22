@@ -53,7 +53,7 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="../index.html">
-            <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img loading="lazy" src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
                     class="rounded d-inline-block align-text-center" width="50px">
                 MaterialX Learn</h5>
         </a>
@@ -111,7 +111,7 @@
                                 href="../documents/definitions/library_glossary.html">Library
                                 Glossary</a></li>
                         <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
-                                target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
+                                target="_blank"><img loading="lazy" src="../documents/images/MaterialXLogo_200x155.png"
                                     style="width:20px"> C++ API</a></li>
 
                         <li class="dropend">
@@ -146,7 +146,7 @@
                         <div class="dropdown-divider"></div>
                         <li>
                             <a class="dropdown-item" href="../documents/using_library.html">
-                                <img src="../documents/images/info-circle.svg"> Library User Guide
+                                <img loading="lazy" src="../documents/images/info-circle.svg"> Library User Guide
                             </a>
                         </li>
                     </ul>
@@ -218,33 +218,44 @@
 
             <h3>glTF Viewer</h3>
 
-            <b>Usage</b>
-            <p>
-            <ul>
-              <li>Use "Load glTF" to load in a glTF file, or
-              Drag and drop glTF files (GLB) or environment files (HDR) into the viewer</li>
-              <li>Use "Save Image" to save a snapshot of the rendered file to disk.</li>
-            </ul>
-            </p>
-            <div class="row flex-nowrap width=100% height=100%">
+            <div class="row flex width=100% height=100%">
               <div class="col-sm-12 p-2">
-                <model-viewer style="background-color: rgb(59, 59, 59); width: 100%; height: 32em" id="viewer1" ar
-                  interaction-prompt="none" camera-controls touch-action="pan-y" src="https://kwokcb.github.io/materialxgltf/docs/data/RTS/gltf_pbr_default.mtlx.glb" shadow-intensity="0.5"
-                  environment-image="./images/dreifaltigkeitsberg_1k.hdr" alt="glTF model viewer"
-                  poster="./images/gltf_viewer_poster.png"
-                  skybox-image="./images/dreifaltigkeitsberg_1k.hdr">
+                <model-viewer
+                  class="rounded-2"
+                  style="background-color: rgba(59, 59, 59, 0); width: 100%; height: 32em" id="viewer1" ar
+                  interaction-prompt="none"
+                  disable-pan disable-tap camera-controls touch-action="pan-y"
+                  src="https://kwokcb.github.io/materialxgltf/docs/data/RTS/gltf_pbr_default.mtlx.glb" shadow-intensity="0.5"
+                  environment-image="./images/rural_crossroads_1k.hdr" alt="glTF model viewer"
+                  poster=""
+                  skybox-image="">
                 </model-viewer>
               </div>
             </div>
 
-            <div class="row flex-nowrap">
-              <div class="col-sm-12 p-2">
-                <div class="col-sm2 flex">
-                  <button id="loadgltf" class="btn btn-outline-primary shadow-sm">Load glTF</button>
-                  <button id="saveimage" class="btn btn-outline-primary shadow-sm">Save Image</button>
+            <div class="row flex">
+              <div class="col-12 p-2 flex">
+                  <button id="loadgltf" class="btn btn-outline-secondary shadow-sm">Load</button>
+                  <button id="saveimage" class="btn btn-outline-secondary shadow-sm">Snapshot</button>
+                  <button id="togglebackground" class="btn btn-outline-secondary shadow-sm">Background</button>
+                  <button id="resetcamera" class="btn btn-outline-secondary shadow-sm">Reset Camera</button>
                   <input id="fileInput" type="file" style="display: none;">
-                </div>
               </div>
+            </div>
+
+            <div class="row">
+              <details>
+              <summary>Usage</summary>
+              <p>
+              <ul>
+                <li>Use "Load" to load in a glTF file, or
+                Drag and drop glTF files (GLB) or environment files (HDR) into the viewer</li>
+                <li>Use "Snapshot" to save a snapshot of the rendered file to disk.</li>
+                <li>Use "Background" to toggle on and off the background.</li>
+                <li>Use "Reset Camera" to reset the camera to it's default parameters.</li>
+              </ul>
+              </p>
+            </details>
             </div>
             
           </div>
@@ -299,6 +310,35 @@
           if (url) {
             saveURL(url, "model.png");
           }
+        }
+      });
+    }
+
+    // Toggle background
+    toggleBackground = document.getElementById("togglebackground");
+    if (toggleBackground) {
+      toggleBackground.addEventListener("click", (e) => {
+        const modelViewer = document.querySelector("model-viewer#viewer1");
+        if (modelViewer) {
+          currentEnvironment = modelViewer.getAttribute("environment-image");
+          currentSkyBox = modelViewer.getAttribute("skybox-image");
+          if (currentSkyBox == "") {
+            modelViewer.setAttribute("skybox-image", currentEnvironment);
+          }
+          else {
+            modelViewer.setAttribute("skybox-image", "");
+          }
+        }
+      });
+    }
+
+    // Reset camera
+    resetCamera = document.getElementById("resetcamera");
+    if (resetCamera) {
+      resetCamera.addEventListener("click", (e) => {
+        const modelViewer = document.querySelector("model-viewer#viewer1");
+        if (modelViewer) {
+          modelViewer.cameraOrbit = "";
         }
       });
     }
@@ -404,7 +444,7 @@
       </ul>
       <p>
         <a class="bg-dark p-2 right" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-            <img alt="Creative Commons License" style="border-width:0"
+            <img loading="lazy" alt="Creative Commons License" style="border-width:0"
                 src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
         &copy; 2022-2024 NanMu Consulting.</a>
       </p>      

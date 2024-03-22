@@ -53,7 +53,7 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="../index.html">
-            <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img loading="lazy" src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
                     class="rounded d-inline-block align-text-center" width="50px">
                 MaterialX Learn</h5>
         </a>
@@ -111,7 +111,7 @@
                                 href="../documents/definitions/library_glossary.html">Library
                                 Glossary</a></li>
                         <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
-                                target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
+                                target="_blank"><img loading="lazy" src="../documents/images/MaterialXLogo_200x155.png"
                                     style="width:20px"> C++ API</a></li>
 
                         <li class="dropend">
@@ -146,7 +146,7 @@
                         <div class="dropdown-divider"></div>
                         <li>
                             <a class="dropdown-item" href="../documents/using_library.html">
-                                <img src="../documents/images/info-circle.svg"> Library User Guide
+                                <img loading="lazy" src="../documents/images/info-circle.svg"> Library User Guide
                             </a>
                         </li>
                     </ul>
@@ -211,7 +211,7 @@
     <div class="container-fluid p-4">
       <!--Start-->
 <h1 id="property-editor-ux">Property Editor UX</h1>
-<p><img width="100%" src="../documents/images/property_editor_original_version.png"></p>
+<p><img loading="lazy" width="100%" src="../documents/images/property_editor_original_version.png"></p>
 <p>The original version of the layout for a given material is shown above. Parameters are displayed as a series of tabs. Various issues arose from using tabs such as taking up to much screen space which makes it hard to find the editable field information. </p>
 <h2 id="issues-with-the-existing-property-editor">Issues With the Existing Property Editor</h2>
 <p>The original property editor had various readability and usability issues on both desktop and mobile. For desktop there were too many parameters being shown at once and sections were too spread out. This made it hard to discern how and where to edit values to change a model's appearance.</p>
@@ -228,7 +228,7 @@ not edit property values at the same time. Additionally the text overlaid produc
 <p>The final option considered was having the user interface embedded as a part of the model viewer. This was used in projects such as digital cards were various parts could be interacted with such as the name of the card, and card "moves" to show additional content. This option was not chosen as you would need a larger minimum interactable space to have context specific interactable areas/menus on both desktop and mobile. </p>
 <h2 id="drafting-the-redesign">Drafting the Redesign</h2>
 <h3 id="desktop-mockup">Desktop Mockup</h3>
-<p><img width="100%" src="../documents/images/property_edtor_figma_desktop_v1.png"></p>
+<p><img loading="lazy" width="100%" src="../documents/images/property_edtor_figma_desktop_v1.png"></p>
 <h4 id="current-problems">Current Problems:</h4>
 <p>Too much screen space is being taken up by the parameter tabs making it hard to find the form fields. Content not related to the parameter values needs to be relocated so the viewer, parameter, and parameter fields are visible within the same screen. </p>
 <h4 id="solution">Solution:</h4>
@@ -236,22 +236,22 @@ not edit property values at the same time. Additionally the text overlaid produc
 <p>Parameters are moved into a scrollable dropdown menu. This resolves the screen clutter issues with too many parameters being displayed that information could be displayed off the viewable screen area. </p>
 <p>Additionally, the parameter dropdown menu is displayed as a single row to improve readability on smaller screens.The titles for form fields are moved to the top of the form field to save screen space.</p>
 <h3 id="mobile-mockup">Mobile Mockup</h3>
-<p><img width="30%" src="../documents/images/property_editor_figma_mobile_v1.png"></p>
+<p><img loading="lazy" width="30%" src="../documents/images/property_editor_figma_mobile_v1.png"></p>
 <h4 id="current-problems_1">Current Problems:</h4>
 <p>Parameter tabs take up too much vertical screen space and editable fields take up too much vertical screen space. Information such as the description can be shifted to a different location to better display the model viewer and its editable properties. </p>
 <h4 id="solution_1">Solution:</h4>
 <p>The mobile mockup makes similar improvements to parameter and form field title display. The parameters are grouped into a dropdown menu row. The form fields are shown as a series of columns per area to reduce the size of the user interface. This gives users ample viewing and interaction area for browsing parameters or to change the values in the form fields. </p>
 <h2 id="using-a-parameter-menu">Using a Parameter Menu</h2>
 <p>Following the mockup design the main changes made were to move material parameters into a scrollable dropdown menu. The other change made was to compact the grid layout to have the model preview to the left, with description and parameter information located beside it. This helps to convey the same information while increasing the viewing area for the viewer and parameter controls</p>
-<p><img width="100%" src="../documents/images/property_editor_impl_desktop_v1.png">
+<p><img loading="lazy" width="100%" src="../documents/images/property_editor_impl_desktop_v1.png">
 Parameters are shifted to a dropdown menu. The desciption info is located beside the viewer to save screen space. </p>
 <table>
 <tr>
 <td>
-<img width="90%" src="../documents/images/property_editor_impl_mobile_v1_1.jpg">
+<img loading="lazy" width="90%" src="../documents/images/property_editor_impl_mobile_v1_1.jpg">
 </td>
 <td>
-<img width="90%" src="../documents/images/property_editor_impl_mobile_v1_3.jpg">
+<img loading="lazy" width="90%" src="../documents/images/property_editor_impl_mobile_v1_3.jpg">
 </td>
 </tr>
 </table>
@@ -261,10 +261,10 @@ Parameters are shifted to a dropdown menu. The desciption info is located beside
 <table>
 <tr>
 <td>
-<img width="100%" src="../documents/images/mobile_no_wrap_color_three_columns.png">
+<img loading="lazy" width="100%" src="../documents/images/mobile_no_wrap_color_three_columns.png">
 </td>
 <td>
-<img width="100%" src="../documents/images/mobile_no_wrap_three_columns.png">
+<img loading="lazy" width="100%" src="../documents/images/mobile_no_wrap_three_columns.png">
 </td>
 
 </tr>
@@ -275,13 +275,13 @@ Parameters are shifted to a dropdown menu. The desciption info is located beside
 <table>
 <tr>
 <td>
-<img width="100%" src="../documents/images/pbr_metallic_no_slider.png">
+<img loading="lazy" width="100%" src="../documents/images/pbr_metallic_no_slider.png">
 </td>
 <td>
-<img width="100%" src="../documents/images/pbr_metallic_slider.png">
+<img loading="lazy" width="100%" src="../documents/images/pbr_metallic_slider.png">
 </td>
 <td>
-<img width="100%" src="../documents/images/pbr_metallic_slider_2.png">
+<img loading="lazy" width="100%" src="../documents/images/pbr_metallic_slider_2.png">
 </td>
 
 </tr>
@@ -293,13 +293,47 @@ Parameters are shifted to a dropdown menu. The desciption info is located beside
 <table>
 <tr>
 <td>
-<img width="100%" src="../documents/images/pbr_final_metallic_slider_field_edit.png">
+<img loading="lazy" width="100%" src="../documents/images/pbr_final_metallic_slider_field_edit.png">
 </td>
 
 </tr>
 </table>
 
 <p>This version adds the ability to edit form values of a property manually or by using the form field arrows. This option is provided for users for more precise data entry allowing for exact values to be entered for model parameters such as "metalness". </p>
+<h3 id="adding-viewer-options">Adding Viewer Options</h3>
+<p>The viewer's background was changed to be a transparent background. This allows users to focus on the model and its shading without any distractions.</p>
+<p>To allow for the ability to still view the background, a toggle was added to the viewer options. This allows users to switch between a transparent background and a background image.</p>
+<p>Additionally a reset camera button was added to the viewer options. This allows users to reset the camera to its default position.</p>
+<p>Both buttons are overlayed on the viewer This allows users to easily select  options without having to navigate to a different part of the user interface.</p>
+<table>
+<tr>
+<td>
+Initial display without background showing.
+</td>
+<td>
+    <img loading="lazy" width="100%" src="../documents/images/background_camera_options_reference_pages1.png">
+<td>   
+</tr>
+<tr>
+<td>
+<img loading="lazy" src="../documents/images/background_switch.svg" width=32px><br>
+Toggling of background display 
+</td>
+<td>
+    <img loading="lazy" width="100%" src="../documents/images/background_camera_options_reference_pages2.png">
+<td>   
+</tr>
+<tr>
+<td>
+<img loading="lazy" src="../documents/images/camera_reset.svg" width=28px><br>
+Reset camera parameters 
+</td>
+<td>
+    <img loading="lazy" width="100%" src="../documents/images/background_camera_options_reference_pages3.png">
+<td>   
+</tr>
+</table>
+
 <!--End-->
     </div>
   </section>
@@ -318,7 +352,7 @@ Parameters are shifted to a dropdown menu. The desciption info is located beside
       </ul>
       <p>
         <a class="bg-dark p-2 right" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-            <img alt="Creative Commons License" style="border-width:0"
+            <img loading="lazy" alt="Creative Commons License" style="border-width:0"
                 src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
         &copy; 2022-2024 NanMu Consulting.</a>
       </p>      

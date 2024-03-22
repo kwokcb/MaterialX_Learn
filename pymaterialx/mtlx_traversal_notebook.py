@@ -311,7 +311,7 @@ for line in graph:
 # %% [markdown]
 # The resulting diagram looks like this:
 # 
-# <img src="images/marble_mermaid_graph_generation_no_interfaces.svg" width="30%">
+# <img loading="lazy" src="images/marble_mermaid_graph_generation_no_interfaces.svg" width="30%">
 
 # %% [markdown]
 # ## Handling Graph Interfaces
@@ -475,11 +475,11 @@ display_markdown(strgraph, raw=True)
 # %% [markdown]
 # The resulting diagram looks like this:
 # 
-# <img src="images/marble_mermaid_graph_generation.svg" width="50%">
+# <img loading="lazy" src="images/marble_mermaid_graph_generation.svg" width="50%">
 # 
 # with the same graph as seen in the graph editor:
 # 
-# <img src="images/marble_editor_preview.png" width="50%">
+# <img loading="lazy" src="images/marble_editor_preview.png" width="50%">
 # 
 
 

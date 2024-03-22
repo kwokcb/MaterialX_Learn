@@ -74,7 +74,7 @@ def_ = doc.addDefinition("my_def")
 # libraries are not documented. After using Co-Pilot for a while it was able to suggest API calls and
 # argument completions. An example is shown below of additional suggestions added for `Document` calls.`
 # 
-# <img src="../documents/images/copilot_function_complete.png" width="60%">
+# <img loading="lazy" src="../documents/images/copilot_function_complete.png" width="60%">
 # 
 # For the example below, it was able to suggest the correct call node graph creation, but the complete
 # code including the import and doc creation must be visible on screen and within the same
@@ -97,7 +97,7 @@ print(graph.getName())
 # 
 # For example querying to "explain" the document `doc.` returns generic information about the need to call a member function, and the "fix" action actually fairs no better, reusing the same non-existent API calls.
 # 
-# <img src="../documents/images/copilot_fixthis.png" width="80%">
+# <img loading="lazy" src="../documents/images/copilot_fixthis.png" width="80%">
 
 # %% [markdown]
 # Using Chat is mostly not recommended. It is unknown how the response is generated but it is pretty well always unusable. As an example the prompt was on how to create a node definition. The example XML returned was:
@@ -140,7 +140,7 @@ print(graph.getName())
 # (Strangely, for this example it could not parse the function signature correctly and suggested acting on
 # non-existent arguments.)
 # 
-# <img src="../documents/images/copilot_perffix.png" width="100%">
+# <img loading="lazy" src="../documents/images/copilot_perffix.png" width="100%">
 # 
 # ### Relevance
 # 
@@ -162,8 +162,8 @@ print(graph.getName())
 # <table class="p-2 table table-borderless">
 # <tbody>
 # <tr>
-# <td><img src="../documents/images/copilot_plugin.png"  class="img-fluid" width="80%">
-# <td><img src="../documents/images/copilot_chat_plugin.png"  class="img-fluid" width="80%">
+# <td><img loading="lazy" src="../documents/images/copilot_plugin.png"  class="img-fluid" width="80%">
+# <td><img loading="lazy" src="../documents/images/copilot_chat_plugin.png"  class="img-fluid" width="80%">
 # <tr>
 # </tbody>
 # </table>
@@ -172,13 +172,13 @@ print(graph.getName())
 # but not considered here)  
 # 
 # The following is a snapshot with  and chat add-ons installed:
-# <img src="../documents/images/copilot_chat_darkmode_example.png"  class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal4" width="80%">
+# <img loading="lazy" src="../documents/images/copilot_chat_darkmode_example.png"  class="img-fluid" data-bs-toggle="modal" data-bs-target="#imageModal4" width="80%">
 # 
 # <div class="modal fade" id="imageModal4" tabindex="-1" aria-labelledby="imageModal1Label" aria-hidden="true">
 #   <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
 #     <div class="modal-content">
 #       <div class="modal-body">
-#         <img src="../documents/images/copilot_chat_darkmode_example.png" alt="Image 1" width="100%">
+#         <img loading="lazy" src="../documents/images/copilot_chat_darkmode_example.png" alt="Image 1" width="100%">
 #       </div>
 #     </div>
 #   </div>
@@ -194,6 +194,6 @@ print(graph.getName())
 # 
 # The last option (Running from terminal) only makes sense for code which can run as a command. At the current time the response is not checked to see if it's runnable.
 # 
-# Copilot can be turned on or off via the <img src="../documents/images/copillot.svg"  class="img-fluid" width=16> icon highlighted on the bottom right.
+# Copilot can be turned on or off via the <img loading="lazy" src="../documents/images/copillot.svg"  class="img-fluid" width=16> icon highlighted on the bottom right.
 
 

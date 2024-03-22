@@ -464,8 +464,8 @@ for t in text:
 # 
 # As a last step we write the document out to see the final results in diagram and rendered form. (Render is done using the `MaterialXView` utility)
 # 
-# <img src="images/nodegraph_book_sample_graph.svg" width=70%>
-# <img src="images/nodegraph_book_sample_graph.png" width=40%>
+# <img loading="lazy" src="images/nodegraph_book_sample_graph.svg" width=70%>
+# <img loading="lazy" src="images/nodegraph_book_sample_graph.png" width=40%>
 
 # %%
 # Check the entire document

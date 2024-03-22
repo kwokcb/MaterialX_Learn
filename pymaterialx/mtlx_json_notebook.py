@@ -11,8 +11,8 @@
 # 
 # <table>
 # <tr>
-# <td style="background:#000000"><img src="./images/jsoncrack_snap.png">
-# <td style="background:#000000"><img src="./images/jsoncrack_snap2.png">
+# <td style="background:#000000"><img loading="lazy" src="./images/jsoncrack_snap.png">
+# <td style="background:#000000"><img loading="lazy" src="./images/jsoncrack_snap2.png">
 # </tr>
 # </table>
 # <sub>Snapshots of graphs generated using the JSONCrack add-on.</sub>
@@ -268,17 +268,17 @@ display_markdown(text, raw=True)
 
 # %% [markdown]
 # <details><summary>Graph of Marble Material</summary>
-# <img src="./images/sample_marble_json.svg">
+# <img loading="lazy" src="./images/sample_marble_json.svg">
 # </details>
 
 # %% [markdown]
 # <details><summary>Graph of "Boombox" Example</summary>
-# <img src="./images/gltf_pbr_boombox.svg">
+# <img loading="lazy" src="./images/gltf_pbr_boombox.svg">
 # </details>
 
 # %% [markdown]
 # <details><summary>Graph of "Olives" Example</summary>
-# <img src="./images/sample_olives.svg">
+# <img loading="lazy" src="./images/sample_olives.svg">
 # </details>
 
 # %% [markdown]
@@ -377,7 +377,7 @@ display_markdown(text, raw=True)
 # The schema is created using the [OpenAI](https://platform.openai.com/docs/api-reference) Python package. Various MaterialX documents (saved out in JSON) were used as input data.
 # 
 # A graph of the schema is shown below, with the textual description below:
-# <img src="./images/materialx_json_schema.svg">
+# <img loading="lazy" src="./images/materialx_json_schema.svg">
 # 
 # Some examples and test suite documents are suitable to obtain most of the schema. Small edits we're made for anything amiss such setting "required" attributes.
 # 
