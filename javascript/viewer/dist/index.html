@@ -87,7 +87,7 @@
             <button class="btn btn-outline-primary shadow-sm" disabled id="renderButton">Validate and Render</button>
           </div>  
           <div class="col-sm-9 p-2">
-            <textarea id="statusLine" class="form-control form-control-sm overflow-auto" rows="1"></textarea>
+            <textarea id="statusLine" class="form-control form-control-sm overflow-auto" disabled rows="1"></textarea>
           </div>  
         </div>
         <div class="row flex">
@@ -401,6 +401,7 @@
           try {
             st = document.getElementById('statusLine');
             st.innerHTML = '';
+            st.disabled = true;
 
             mdoc = mmx.createDocument();
 

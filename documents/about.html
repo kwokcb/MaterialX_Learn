@@ -91,7 +91,7 @@
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <a class="dropdown-item" href="../documents/presentations.html">
-                                Presentations
+                                Presentations and Media
                             </a>
                         </li>
                     </ul>
@@ -191,6 +191,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../documents/design.html">UX Design</a></li>
                         <li><a class="dropdown-item" href="../documents/property_editor_ui.html">Property Editor UX</a></li>
+                        <li><a class="dropdown-item" href="https://guannan-kwok.github.io/assetLibrary/materialx/" target="_blank">Graphic Design</a></li>
                         <li><a class="dropdown-item" href="../documents/implementation.html">Implementation</a></li>
                     </ul>
                 </li>
@@ -208,7 +209,9 @@
   <!-- Section Information -->
   <section class="py-0 px-0 g-0">
     <div class="container-fluid p-4">
-      
+      <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+</script>
+
 <div class="container-fluid p-0">
   <div class="row flex-nowrap">
     <div class="col-12 p-0 pt-2 pl-4">
@@ -231,11 +234,20 @@
           <div class="container">
             <div class="row p-1 rounded-4 border btn-outline-secondary shadow justify-content-evenly">
               <!--md-center-->
-              <div class="col-3">
+              <div class="col-4">
                 <img src="./images/MX Learn.svg" class="img-fluid" style="height:100%">
               </div>
-              <div class="col-2">
+              <div class="col-4">
                 <img src="./images/logo3d_2.png" class="rounded-4 img-fluid" style="width:75%">
+              </div>
+              <div class="col-4">
+                <model-viewer class="rounded-4 p-2" style="background-color: rgba(59, 59, 59, 0.0); width: 100%; height:100%" id="blah"
+                    camera-controls touch-action="pan-y" src="../resources/logo3d.glb"
+                    disable-zoom disable-pan disable-tap camera-orbit="160deg 66deg 20m"
+                    environment-image="./images/narrow_moonlit_road_1k.hdr" alt="logo viewer"
+                    poster="" exposure="1.0" shadow-softness="0.5" shadow-intensity="0.7"
+                    skybox-image="">
+                </model-viewer>
               </div>
             </div>
           </div>
@@ -244,13 +256,15 @@
           <p>If you find value in here and want support its progress,
             we kindly invite you to consider sponsoring the project. It will help to keep it going and evolve.
           </p>
+          <p>
           <iframe src="https://github.com/sponsors/kwokcb/card" title="Sponsor kwokcb" height="225" width="600"
             style="border: 0;"></iframe>
+        </p>
           <h4>Development</h4>
           <p>
             <button class="btn bg-light btn-outline-primary">
               <a class="button " href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><img
-                  src="images/GitHub_Logo.png" width="50"></a>
+                  src="images/GitHub_Logo.png" width="40"></a>
             </button>
             The hope is that this site will grow organically over time based on user feedback.
             Naturally any contributions are greatly appreciated, especially in terms of "learning" tutorials,
@@ -267,24 +281,24 @@
           <h4>Authors</h4>
           <div class="container">
             <div class="row p-2 rounded-4 border btn-outline-secondary shadow justify-content-md-center">
-              <div class="col-6">
+              <div class="col-6 " >
                 <p>
-                  <img src="images/bernard_filtered.png" class="m-2 rounded-4 float-end" height="128">
-                  <a href="https://www.linkedin.com/in/bernard-cb-kwok/" target="_blank">Bernard Kwok</a>:
-                  Bernard has been working in the graphics industry for 30+ years in the areas
+                  <a href="https://www.linkedin.com/in/bernard-cb-kwok/" target="_blank">
+                    <img src="images/bernard_filtered.png" class="m-2 rounded-4 float-end" height="128">
+                    Bernard Kwok</a>: Bernard has been working in the graphics industry for 30+ years in the areas
                   of rendering, games and interactive workflows. His current passion is open standards
                   and is an active contributor for
                   <a href="https://github.com/AcademySoftwareFoundation/MaterialX" target="_blank">
                     MaterialX
                   </a>
                   at the <a href="https://materialx.org/Contributing.html#Contributors" target="_blank">
-                    Academy Software Foundation</a>.
+                    Academy Software Foundation</a> and the <a href="https://www.khronos.org/gltf/" target="_blank">Khronos glTF PBR</a> working group.
                 </p>
               </div>
               <div class="col-6">
-                <img src="images/matthew_filtered.png" class="m-2 rounded-4 float-end" height="128">
-                <a href="https://www.linkedin.com/in/mgkwok/" target="_blank">Matthew Kwok</a>:
-                Matthew is a UX designer with experience in graphic design and content creation.
+                
+                <a href="https://www.linkedin.com/in/mgkwok/" target="_blank"><img src="images/matthew_filtered.png" class="m-2 rounded-4 float-end" height="128">
+                  Matthew Kwok</a>: Matthew is a <a href="https://guannankwok.wixstudio.io/uxportfolio" target="_blank">UX designer</a> with experience in product design for content creation.
                 His current interests lie in the area of learning and visualization for web and AR,
                 which includes workflows using realistic materials.
               </div>
@@ -313,7 +327,12 @@
               style="color: #0082ca;"></i></a>
         </button>
       </ul>
-      <p>&copy; 2022-2024 NanMu Consulting.</p>
+      <p>
+        <a class="bg-dark p-2 right" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0"
+                src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+        &copy; 2022-2024 NanMu Consulting.</a>
+      </p>      
     </div>
   </footer>
 
