@@ -142,33 +142,56 @@ except mx.Exception as err:
 # 
 # The sub-folders starting with `gen` contain per-target source code implementations.
 # 
-# <pre>
-# ├───bxdf
-# │   ├───lama
-# │   └───translation
-# ├───lights
-# │   ├───genglsl
-# │   └───genmsl
-# ├───pbrlib
-# │   ├───genglsl <-- e.g. target 'genglsl's implementations reside here
-# │   │   └───lib
-# │   ├───genmdl
-# │   ├───genmsl
-# │   └───genosl
-# │       ├───legacy
-# │       └───lib
-# ├───stdlib
-# │   ├───genglsl
-# │   │   └───lib
-# │   ├───genmdl
-# │   ├───genmsl
-# │   │   └───lib
-# │   └───genosl
-# │       ├───include
-# │       └───lib
-# └───targets
-# </pre>
-# 
+
+# %%
+import pkg_resources
+
+def getLibraryFoldersString(root='libraries', showMTLXFiles=True, showSourceFiles=False):
+    '''
+    Scan the MaterialX library folder and print out the folder structure
+    '''
+    folderString = ''
+    files = pkg_resources.resource_listdir('MaterialX', root)
+    for f in files:
+        if not mx.FilePath(f).getExtension():
+            folderString += '+--%s\n' % f
+        fpath = root+'/'+f
+        if pkg_resources.resource_isdir('MaterialX', fpath):
+            subfiles = pkg_resources.resource_listdir('MaterialX', fpath)
+            for sf in subfiles:
+                sfPath = mx.FilePath(fpath+'/'+sf)
+                extension = sfPath.getExtension()
+                if extension and showMTLXFiles:
+                    folderString += '|\t|--%s\n' % sf
+                elif not extension:
+                    if sf == 'genglsl':
+                        folderString += '|\t+--%s <-- e.g. target genglsl implementations reside here\n' % sf
+                    else:
+                        folderString += '|\t+--%s\n' % sf
+
+                sfpath = fpath+'/'+sf
+                if pkg_resources.resource_isdir('MaterialX', sfpath):
+                    subsubfiles = pkg_resources.resource_listdir('MaterialX', sfpath)
+                    for ssf in subsubfiles:
+                        extension = mx.FilePath(ssf).getExtension()
+                        if extension and showSourceFiles:
+                            print('show source : ssf')
+                            folderString += '|\t \t+--%s\n' % ssf
+                        elif not extension:
+                            folderString += '|\t \t+--%s\n' % ssf
+
+            # If not last file, add a line break
+            #if f != files[-1]:
+            #    folderString += '|\n'
+        #folderString += '|\n'
+
+    return folderString
+
+folderString = getLibraryFoldersString('libraries', False, False)
+folderString = '<p>Library Folders:</p><pre>\n' + folderString + "\n</pre>"
+display_markdown(folderString, raw=True)
+
+# %% [markdown]
 # As this code is required for code generation to occur,  the standard `libraries` folder must be read in. 
 # 
 # The `libraries` folder can be examined as part of the Python package as of 1.38.7. Below is a simple utility to traverse and print out the folders found. This starts where the site packages are located (as returned using `site.getsitepackages()`). This works either whether called from a virtual environment or not.
@@ -211,10 +234,9 @@ libraryFolders = mx.getDefaultDataLibraryFolders()
 try:
     libFiles = mx.loadLibraries(libraryFolders, searchPath, stdlib)
     doc.importLibrary(stdlib)
-    print('Loaded %s standard library definitions' % len(doc.getNodeDefs()))
+    print('Version: %s. Loaded %s standard library definitions' % (mx.getVersionString(), len(doc.getNodeDefs())))
 except mx.Exception as err:
     print('Failed to load standard library definitions: "', err, '"')
-    sys.exit(-1)
 
 
 # %% [markdown]
@@ -288,7 +310,7 @@ for target in foundTargets:
 # 
 # For a list of generators and their derivations see documentation for the base class <a href="https://materialx.org/docs/api/class_shader_generator.html" target="_blank">ShaderGenerator</a>
 # 
-# <img loading="lazy" src="https://kwokcb.github.io/MaterialX_Learn/documents/images/ShaderGenerator_inheritance.png" style="width:50%"></img>
+# <img src="https://kwokcb.github.io/MaterialX_Learn/documents/images/ShaderGenerator_inheritance.png" style="width:50%"></img>
 # 
 # Note that Vulkan has the same target as `genglsl`, but has it's own generator. Also that the Metal generator will only show up
 # in the Mac build of documentation.
@@ -316,8 +338,8 @@ for gen in generators:
     generatordict[gen.getTarget()] = gen
 
 # Choose generator to use based on target identifier
-language = 'osl'
-target = 'genosl'
+language = 'glsl'
+target = 'genglsl'
 if language == 'osl':
     target = 'genosl'
 elif language == 'mdl':
@@ -488,6 +510,8 @@ nodeName = node.getName() if node else ''
 if nodeName:
     shaderName = mx.createValidName(nodeName)
     try:
+        genoptions = context.getOptions()
+        genoptions.shaderInterfaceType = mx_gen_shader.ShaderInterfaceType.SHADER_INTERFACE_COMPLETE
         shader = shadergen.generate(shaderName, node, context)
     except mx.Exception as err:
         print('Shader generation errors:', err)
@@ -525,6 +549,113 @@ if shader:
     text = '<details><summary>Pixel Shader For: "' + nodeName + '"</summary>\n\n' + '```cpp\n' + pixelSource + '```\n' + '</details>\n' 
     display_markdown(text , raw=True)
 
+
+# %% [markdown]
+# ## Shader Refection
+# 
+# It is often required to be able to get information about the shader uniforms / arguments. These uniforms are organized into "blocks" such that each block's uniforms has a corresponding `ShaderPort` which can be inspected. The general term for provide additional information is **shader refection**. 
+# 
+# The following utility function is used to extract information about the shader uniforms. Integrations can customize to create their own reflection structures.
+
+# %%
+def getPortPath(inputPath, doc):
+    '''
+    Find any upstream interface input which maps to a given path.
+    Note: This is only required pre version 1.38.9 where interface inputs traversed when
+    reflecting the MaterialX path on the shader port.
+    '''
+    if not inputPath:
+        return inputPath, None
+    
+    input = doc.getDescendant(inputPath)
+    if input:
+        # Redirect to interface input if it exists.
+        interfaceInput = input.getInterfaceInput()
+        if interfaceInput:
+            input = interfaceInput
+            return input.getNamePath(), interfaceInput
+
+    return inputPath, None
+
+def reflectStage(shader, doc, filterStage='pixel', filterBlock='Public'):
+    '''
+    Scan through each stage of a shader and get the uniform blocks for each stage.
+    For each block, extract out some desired information
+    '''
+    reflectionStages = []
+
+    if not shader:
+        return
+
+    for i in range(0, shader.numStages()):
+        stage = shader.getStage(i)
+        if stage:
+            if filterStage and filterStage not in stage.getName():
+                continue
+
+            stageName = stage.getName() 
+            if len(stageName) == 0:
+                continue
+
+            reflectionStage = dict()
+
+            for blockName in stage.getUniformBlocks():
+                block = stage.getUniformBlock(blockName)
+                if filterBlock and filterBlock not in block.getName():
+                    #print('--------- skip block: ', block.getName())
+                    continue 
+
+                if not block.getName() in reflectionStage:
+                    reflectionStage[block.getName()] = [] 
+                reflectionBlock = reflectionStage[block.getName()]
+
+                for shaderPort in block:
+                    variable = shaderPort.getVariable()
+                    value = shaderPort.getValue().getValueString() if shaderPort.getValue() else '<NONE>'
+                    origPath = shaderPort.getPath()
+                    path, interfaceInput = getPortPath(shaderPort.getPath(), doc)                                                
+                    if not path:
+                        path = '<NONE>'
+                    else:
+                        if path != origPath:
+                            path = origPath + ' --> ' + path
+                    type = shaderPort.getType().getName()
+
+                    unit = shaderPort.getUnit()
+                    colorspace = ''
+                    if interfaceInput:
+                        colorspace = interfaceInput.getColorSpace()
+                    else:
+                        colorspace = shaderPort.getColorSpace() 
+
+                    #print('add uniform: ', variable, value, type, path, unit, colorspace)
+                    portEntry = [ variable, value, type, path, unit, colorspace ]
+
+                    #print('add port to block: ', portEntry)
+                    reflectionBlock.append(portEntry)
+
+                if len(reflectionBlock) > 0:
+                    reflectionStage[block.getName()] = reflectionBlock          
+        
+        if len(reflectionStage) > 0:
+            reflectionStages.append((stageName, reflectionStage))          
+
+    return reflectionStages
+
+if shader:
+    # Examine public uniforms first
+    stages = reflectStage(shader, doc, 'pixel', 'Public')
+    if stages:
+        for stage in stages:
+            for block in stage[1]:
+                log = '<h4>Stage "%s". Block: "%s"</h4>\n\n' % (stage[0], block)
+                log += '| Variable | Value | Type | Path | Unit | Colorspace |\n'
+                log += '| --- | --- | --- | --- | --- | --- |\n'
+                for entry in stage[1][block]:
+                    log += '| %s | %s | %s | %s | %s | %s |\n' % (entry[0], entry[1], entry[2], entry[3], entry[4], entry[5])
+            log += '\n'
+
+        display_markdown(log, raw=True)
 
 # %% [markdown]
 # # Downstream Renderables
@@ -610,10 +741,10 @@ def examineNodes(nodes):
         foundPorts = list(OrderedDict.fromkeys(foundPorts))
         foundNodes = list(OrderedDict.fromkeys(foundNodes))
         renderableElements = list(OrderedDict.fromkeys(renderableElements))
-        print('Traverse downstream from node: ', node.getNamePath())
-        print('- Downstream ports:', ', '.join(foundPorts))
-        print('- Downstream nodes:', ', '.join(foundNodes))
-        print('- Renderable elements:', ', '.join(renderableElements))
+        #print('Traverse downstream from node: ', node.getNamePath())
+        #print('- Downstream ports:', ', '.join(foundPorts))
+        #print('- Downstream nodes:', ', '.join(foundNodes))
+        #print('- Renderable elements:', ', '.join(renderableElements))
         commonPorts.extend(foundPorts)
         commonNodes.extend(foundNodes)
         commonRenderables.extend(renderableElements)
@@ -630,9 +761,9 @@ nodes = [nodegraph.getChild('obj_pos'), nodegraph.getChild('scale_pos')]
 
 commonPorts, commonNodes, commonRenderables = examineNodes(nodes)
 display_markdown('Common downstream:', raw=True)
-display_markdown('- Common downstream ports: [ ' + ', '.join(commonPorts) + ' ]', raw=True)
-display_markdown('- Common downstream nodes: [ ' + ', '.join(commonNodes) + ' ]', raw=True)
-display_markdown('- Common renderable elements: [ ' + ', '.join(commonRenderables) + ' ]', raw=True)
+display_markdown('  - Common downstream ports: [ ' + ', '.join(commonPorts) + ' ]', raw=True)
+display_markdown('  - Common downstream nodes: [ ' + ', '.join(commonNodes) + ' ]', raw=True)
+display_markdown('  - Common renderable elements: [ ' + ', '.join(commonRenderables) + ' ]', raw=True)
 
 
 # %% [markdown]

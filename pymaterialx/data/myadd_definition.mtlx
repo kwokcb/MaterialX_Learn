@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <!-- Definition of a simple node <myadd>, adding two colors. -->
   <nodedef name="ND_myadd_1_0_color3" version="1.0" nodegroup="math" node="myadd">
     <input name="in1" type="color3" value="1, 0, 0" />

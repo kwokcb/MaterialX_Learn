@@ -8,7 +8,7 @@
  
 * *Nodedef*: ND_oren_nayar_diffuse_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A BSDF node for diffuse reflections.
 * *Implementation*: Non-graph
@@ -27,7 +27,7 @@
  
 * *Nodedef*: ND_burley_diffuse_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A BSDF node for Burley diffuse reflections.
 * *Implementation*: Non-graph
@@ -46,7 +46,7 @@
  
 * *Nodedef*: ND_translucent_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A BSDF node for pure diffuse transmission.
 * *Implementation*: Non-graph
@@ -64,7 +64,7 @@
  
 * *Nodedef*: ND_dielectric_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A reflection/transmission BSDF node based on a microfacet model and a Fresnel curve for dielectrics.
 * *Implementation*: Non-graph
@@ -87,7 +87,7 @@
  
 * *Nodedef*: ND_conductor_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A reflection BSDF node based on a microfacet model and a Fresnel curve for conductors/metals.
 * *Implementation*: Non-graph
@@ -109,7 +109,7 @@
  
 * *Nodedef*: ND_generalized_schlick_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A reflection/transmission BSDF node based on a microfacet model and a generalized Schlick Fresnel curve.
 * *Implementation*: Non-graph
@@ -133,7 +133,7 @@
  
 * *Nodedef*: ND_subsurface_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A subsurface scattering BSDF for true subsurface scattering.
 * *Implementation*: Non-graph
@@ -153,7 +153,7 @@
  
 * *Nodedef*: ND_sheen_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A microfacet BSDF for the back-scattering properties of cloth-like materials.
 * *Implementation*: Non-graph
@@ -172,7 +172,7 @@
  
 * *Nodedef*: ND_uniform_edf
 * *Type*: EDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: An EDF node for uniform emission.
 * *Implementation*: Non-graph
@@ -188,7 +188,7 @@
  
 * *Nodedef*: ND_conical_edf
 * *Type*: EDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Constructs an EDF emitting light inside a cone around the normal direction.
 * *Implementation*: Non-graph
@@ -207,7 +207,7 @@
  
 * *Nodedef*: ND_measured_edf
 * *Type*: EDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Constructs an EDF emitting light according to a measured IES light profile.
 * *Implementation*: Non-graph
@@ -225,7 +225,7 @@
  
 * *Nodedef*: ND_generalized_schlick_edf
 * *Type*: EDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Modifies an EDF with a directional factor.
 * *Implementation*: Non-graph
@@ -244,7 +244,7 @@
  
 * *Nodedef*: ND_absorption_vdf
 * *Type*: VDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Constructs a VDF for pure light absorption.
 * *Implementation*: Non-graph
@@ -260,7 +260,7 @@
  
 * *Nodedef*: ND_anisotropic_vdf
 * *Type*: VDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Constructs a VDF scattering light for a participating medium, based on the Henyey-Greenstein phase function.
 * *Implementation*: Non-graph
@@ -278,7 +278,7 @@
  
 * *Nodedef*: ND_surface
 * *Type*: surfaceshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A constructor node for the surfaceshader type.
 * *Implementation*: Non-graph
@@ -296,7 +296,7 @@
  
 * *Nodedef*: ND_thin_surface
 * *Type*: surfaceshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A constructor node for the surfaceshader type for non-closed 'thin' objects.
 * *Implementation*: Non-graph
@@ -316,7 +316,7 @@
  
 * *Nodedef*: ND_volume
 * *Type*: volumeshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A constructor node for the volumeshader type.
 * *Implementation*: Non-graph
@@ -333,7 +333,7 @@
  
 * *Nodedef*: ND_light
 * *Type*: lightshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A constructor node for the lightshader type.
 * *Implementation*: Non-graph
@@ -351,7 +351,7 @@
  
 * *Nodedef*: ND_displacement_float
 * *Type*: displacementshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A constructor node for the displacementshader type.
 * *Implementation*: Non-graph
@@ -367,7 +367,7 @@
  
 * *Nodedef*: ND_displacement_vector3
 * *Type*: displacementshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A constructor node for the displacementshader type.
 * *Implementation*: Non-graph
@@ -384,7 +384,7 @@
  
 * *Nodedef*: ND_layer_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Layer two BSDF's with vertical layering.
 * *Implementation*: Non-graph
@@ -400,7 +400,7 @@
  
 * *Nodedef*: ND_layer_vdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Layer a BSDF over a VDF describing the interior media.
 * *Implementation*: Non-graph
@@ -417,7 +417,7 @@
  
 * *Nodedef*: ND_mix_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Mix two BSDF's according to an input mix amount.
 * *Implementation*: Non-graph
@@ -434,7 +434,7 @@
  
 * *Nodedef*: ND_mix_edf
 * *Type*: EDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Mix two EDF's according to an input mix amount.
 * *Implementation*: Non-graph
@@ -451,7 +451,7 @@
  
 * *Nodedef*: ND_mix_vdf
 * *Type*: VDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Mix two VDF's according to an input mix amount.
 * *Implementation*: Non-graph
@@ -469,7 +469,7 @@
  
 * *Nodedef*: ND_add_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for additive blending of BSDF's.
 * *Implementation*: Non-graph
@@ -485,7 +485,7 @@
  
 * *Nodedef*: ND_add_edf
 * *Type*: EDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for additive blending of EDF's.
 * *Implementation*: Non-graph
@@ -501,7 +501,7 @@
  
 * *Nodedef*: ND_add_vdf
 * *Type*: VDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for additive blending of VDF's.
 * *Implementation*: Non-graph
@@ -518,7 +518,7 @@
  
 * *Nodedef*: ND_multiply_bsdfC
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for adjusting the contribution of a BSDF with a weight.
 * *Implementation*: Non-graph
@@ -534,7 +534,7 @@
  
 * *Nodedef*: ND_multiply_bsdfF
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for adjusting the contribution of a BSDF with a weight.
 * *Implementation*: Non-graph
@@ -550,7 +550,7 @@
  
 * *Nodedef*: ND_multiply_edfC
 * *Type*: EDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for adjusting the contribution of an EDF with a weight.
 * *Implementation*: Non-graph
@@ -566,7 +566,7 @@
  
 * *Nodedef*: ND_multiply_edfF
 * *Type*: EDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for adjusting the contribution of an EDF with a weight.
 * *Implementation*: Non-graph
@@ -582,7 +582,7 @@
  
 * *Nodedef*: ND_multiply_vdfC
 * *Type*: VDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for adjusting the contribution of an VDF with a weight.
 * *Implementation*: Non-graph
@@ -598,7 +598,7 @@
  
 * *Nodedef*: ND_multiply_vdfF
 * *Type*: VDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: A node for adjusting the contribution of an VDF with a weight.
 * *Implementation*: Non-graph
@@ -615,7 +615,7 @@
  
 * *Nodedef*: ND_roughness_anisotropy
 * *Type*: vector2
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Calculates anisotropic surface roughness from a scalar roughness/anisotropy parameterization.
 * *Implementation*: Non-graph
@@ -632,7 +632,7 @@
  
 * *Nodedef*: ND_roughness_dual
 * *Type*: vector2
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Calculates anisotropic surface roughness from a dual surface roughness parameterization.
 * *Implementation*: Non-graph
@@ -648,7 +648,7 @@
  
 * *Nodedef*: ND_glossiness_anisotropy
 * *Type*: vector2
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Calculates anisotropic surface roughness from a scalar glossiness/anisotropy parameterization.
 * *Nodegraph*: IMP_glossiness_anisotropy
@@ -678,7 +678,7 @@ graph LR;
  
 * *Nodedef*: ND_blackbody
 * *Type*: color3
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Returns the radiant emittance of a blackbody radiator with the given temperature.
 * *Implementation*: Non-graph
@@ -694,7 +694,7 @@ graph LR;
  
 * *Nodedef*: ND_artistic_ior
 * *Type*: multioutput
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: Converts the artistic parameterization reflectivity and edge_color to  complex IOR values.
 * *Implementation*: Non-graph

@@ -465,8 +465,8 @@ if shader:
     debugStages(shader, doc, 'Public')
 
 # %% [markdown]
-# <img loading="lazy" src='./data/unlit_image_graph.png' width='80%'>
-# <img loading="lazy" src='./data/unlit_image_top_level.png' width='80%'>
+# <img src='./data/unlit_image_graph.png' width='80%'>
+# <img src='./data/unlit_image_top_level.png' width='80%'>
 # 
 
 # %% [markdown]
@@ -575,7 +575,7 @@ if capturedImage:
     fileName.addExtension('.png')                             
     glslRenderer.saveCapture(fileName, flipImage) 
 
-    imageMD = '### %s\n<img loading="lazy" src="%s" style="border:5px outset silver">' % (fileName.asString(), fileName.asString())
+    imageMD = '### %s\n<img src="%s" style="border:5px outset silver">' % (fileName.asString(), fileName.asString())
     display_markdown(imageMD, raw=True)
 
 

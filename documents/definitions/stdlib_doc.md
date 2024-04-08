@@ -56,7 +56,7 @@
  
 * *Nodedef*: ND_surfacematerial
 * *Type*: material
-* *Node Group*: material
+* *Group*: material
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -73,7 +73,7 @@
  
 * *Nodedef*: ND_volumematerial
 * *Type*: material
-* *Node Group*: material
+* *Group*: material
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -89,7 +89,7 @@
  
 * *Nodedef*: ND_surface_unlit
 * *Type*: surfaceshader
-* *Node Group*: shader
+* *Group*: shader
 * *Version*: 1.0. Is default: False
 * *Doc*: Construct a surface shader from emission and transmission values.
 * *Implementation*: Non-graph
@@ -109,7 +109,7 @@
  
 * *Nodedef*: ND_image_float
 * *Type*: float
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -133,7 +133,7 @@
  
 * *Nodedef*: ND_image_color3
 * *Type*: color3
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -157,7 +157,7 @@
  
 * *Nodedef*: ND_image_color4
 * *Type*: color4
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -181,7 +181,7 @@
  
 * *Nodedef*: ND_image_vector2
 * *Type*: vector2
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -205,7 +205,7 @@
  
 * *Nodedef*: ND_image_vector3
 * *Type*: vector3
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -229,7 +229,7 @@
  
 * *Nodedef*: ND_image_vector4
 * *Type*: vector4
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -254,7 +254,7 @@
  
 * *Nodedef*: ND_tiledimage_float
 * *Type*: float
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_tiledimage_float
@@ -313,7 +313,7 @@ graph LR;
  
 * *Nodedef*: ND_tiledimage_color3
 * *Type*: color3
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_tiledimage_color3
@@ -372,7 +372,7 @@ graph LR;
  
 * *Nodedef*: ND_tiledimage_color4
 * *Type*: color4
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_tiledimage_color4
@@ -431,7 +431,7 @@ graph LR;
  
 * *Nodedef*: ND_tiledimage_vector2
 * *Type*: vector2
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_tiledimage_vector2
@@ -490,7 +490,7 @@ graph LR;
  
 * *Nodedef*: ND_tiledimage_vector3
 * *Type*: vector3
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_tiledimage_vector3
@@ -549,7 +549,7 @@ graph LR;
  
 * *Nodedef*: ND_tiledimage_vector4
 * *Type*: vector4
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_tiledimage_vector4
@@ -609,7 +609,7 @@ graph LR;
  
 * *Nodedef*: ND_triplanarprojection_float
 * *Type*: float
-* *Node Group*: texture3d
+* *Group*: texture3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_triplanarprojection_float
@@ -765,7 +765,7 @@ graph LR;
  
 * *Nodedef*: ND_triplanarprojection_color3
 * *Type*: color3
-* *Node Group*: texture3d
+* *Group*: texture3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_triplanarprojection_color3
@@ -921,7 +921,7 @@ graph LR;
  
 * *Nodedef*: ND_triplanarprojection_color4
 * *Type*: color4
-* *Node Group*: texture3d
+* *Group*: texture3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_triplanarprojection_color4
@@ -1077,7 +1077,7 @@ graph LR;
  
 * *Nodedef*: ND_triplanarprojection_vector2
 * *Type*: vector2
-* *Node Group*: texture3d
+* *Group*: texture3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_triplanarprojection_vector2
@@ -1233,7 +1233,7 @@ graph LR;
  
 * *Nodedef*: ND_triplanarprojection_vector3
 * *Type*: vector3
-* *Node Group*: texture3d
+* *Group*: texture3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_triplanarprojection_vector3
@@ -1389,7 +1389,7 @@ graph LR;
  
 * *Nodedef*: ND_triplanarprojection_vector4
 * *Type*: vector4
-* *Node Group*: texture3d
+* *Group*: texture3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_triplanarprojection_vector4
@@ -1546,7 +1546,7 @@ graph LR;
  
 * *Nodedef*: ND_constant_float
 * *Type*: float
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1561,7 +1561,7 @@ graph LR;
  
 * *Nodedef*: ND_constant_color3
 * *Type*: color3
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1576,7 +1576,7 @@ graph LR;
  
 * *Nodedef*: ND_constant_color4
 * *Type*: color4
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1591,7 +1591,7 @@ graph LR;
  
 * *Nodedef*: ND_constant_vector2
 * *Type*: vector2
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1606,7 +1606,7 @@ graph LR;
  
 * *Nodedef*: ND_constant_vector3
 * *Type*: vector3
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1621,7 +1621,7 @@ graph LR;
  
 * *Nodedef*: ND_constant_vector4
 * *Type*: vector4
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1636,7 +1636,7 @@ graph LR;
  
 * *Nodedef*: ND_constant_boolean
 * *Type*: boolean
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1651,7 +1651,7 @@ graph LR;
  
 * *Nodedef*: ND_constant_integer
 * *Type*: integer
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1666,7 +1666,7 @@ graph LR;
  
 * *Nodedef*: ND_constant_matrix33
 * *Type*: matrix33
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1681,7 +1681,7 @@ graph LR;
  
 * *Nodedef*: ND_constant_matrix44
 * *Type*: matrix44
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1696,7 +1696,7 @@ graph LR;
  
 * *Nodedef*: ND_constant_string
 * *Type*: string
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1711,7 +1711,7 @@ graph LR;
  
 * *Nodedef*: ND_constant_filename
 * *Type*: filename
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1727,7 +1727,7 @@ graph LR;
  
 * *Nodedef*: ND_ramplr_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1744,7 +1744,7 @@ graph LR;
  
 * *Nodedef*: ND_ramplr_color3
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1761,7 +1761,7 @@ graph LR;
  
 * *Nodedef*: ND_ramplr_color4
 * *Type*: color4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1778,7 +1778,7 @@ graph LR;
  
 * *Nodedef*: ND_ramplr_vector2
 * *Type*: vector2
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1795,7 +1795,7 @@ graph LR;
  
 * *Nodedef*: ND_ramplr_vector3
 * *Type*: vector3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1812,7 +1812,7 @@ graph LR;
  
 * *Nodedef*: ND_ramplr_vector4
 * *Type*: vector4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1830,7 +1830,7 @@ graph LR;
  
 * *Nodedef*: ND_ramptb_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1847,7 +1847,7 @@ graph LR;
  
 * *Nodedef*: ND_ramptb_color3
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1864,7 +1864,7 @@ graph LR;
  
 * *Nodedef*: ND_ramptb_color4
 * *Type*: color4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1881,7 +1881,7 @@ graph LR;
  
 * *Nodedef*: ND_ramptb_vector2
 * *Type*: vector2
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1898,7 +1898,7 @@ graph LR;
  
 * *Nodedef*: ND_ramptb_vector3
 * *Type*: vector3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1915,7 +1915,7 @@ graph LR;
  
 * *Nodedef*: ND_ramptb_vector4
 * *Type*: vector4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -1933,7 +1933,7 @@ graph LR;
  
 * *Nodedef*: ND_ramp4_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_ramp4_float
@@ -1977,7 +1977,7 @@ graph LR;
  
 * *Nodedef*: ND_ramp4_color3
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_ramp4_color3
@@ -2021,7 +2021,7 @@ graph LR;
  
 * *Nodedef*: ND_ramp4_color4
 * *Type*: color4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_ramp4_color4
@@ -2065,7 +2065,7 @@ graph LR;
  
 * *Nodedef*: ND_ramp4_vector2
 * *Type*: vector2
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_ramp4_vector2
@@ -2109,7 +2109,7 @@ graph LR;
  
 * *Nodedef*: ND_ramp4_vector3
 * *Type*: vector3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_ramp4_vector3
@@ -2153,7 +2153,7 @@ graph LR;
  
 * *Nodedef*: ND_ramp4_vector4
 * *Type*: vector4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_ramp4_vector4
@@ -2198,7 +2198,7 @@ graph LR;
  
 * *Nodedef*: ND_splitlr_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2216,7 +2216,7 @@ graph LR;
  
 * *Nodedef*: ND_splitlr_color3
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2234,7 +2234,7 @@ graph LR;
  
 * *Nodedef*: ND_splitlr_color4
 * *Type*: color4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2252,7 +2252,7 @@ graph LR;
  
 * *Nodedef*: ND_splitlr_vector2
 * *Type*: vector2
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2270,7 +2270,7 @@ graph LR;
  
 * *Nodedef*: ND_splitlr_vector3
 * *Type*: vector3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2288,7 +2288,7 @@ graph LR;
  
 * *Nodedef*: ND_splitlr_vector4
 * *Type*: vector4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2307,7 +2307,7 @@ graph LR;
  
 * *Nodedef*: ND_splittb_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2325,7 +2325,7 @@ graph LR;
  
 * *Nodedef*: ND_splittb_color3
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2343,7 +2343,7 @@ graph LR;
  
 * *Nodedef*: ND_splittb_color4
 * *Type*: color4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2361,7 +2361,7 @@ graph LR;
  
 * *Nodedef*: ND_splittb_vector2
 * *Type*: vector2
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2379,7 +2379,7 @@ graph LR;
  
 * *Nodedef*: ND_splittb_vector3
 * *Type*: vector3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2397,7 +2397,7 @@ graph LR;
  
 * *Nodedef*: ND_splittb_vector4
 * *Type*: vector4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2416,7 +2416,7 @@ graph LR;
  
 * *Nodedef*: ND_noise2d_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2433,7 +2433,7 @@ graph LR;
  
 * *Nodedef*: ND_noise2d_color3
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise2d_color3
@@ -2464,7 +2464,7 @@ graph LR;
  
 * *Nodedef*: ND_noise2d_color4
 * *Type*: color4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise2d_color4
@@ -2495,7 +2495,7 @@ graph LR;
  
 * *Nodedef*: ND_noise2d_vector2
 * *Type*: vector2
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2512,7 +2512,7 @@ graph LR;
  
 * *Nodedef*: ND_noise2d_vector3
 * *Type*: vector3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2529,7 +2529,7 @@ graph LR;
  
 * *Nodedef*: ND_noise2d_vector4
 * *Type*: vector4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2546,7 +2546,7 @@ graph LR;
  
 * *Nodedef*: ND_noise2d_color3FA
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise2d_color3FA
@@ -2577,7 +2577,7 @@ graph LR;
  
 * *Nodedef*: ND_noise2d_color4FA
 * *Type*: color4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise2d_color4FA
@@ -2608,7 +2608,7 @@ graph LR;
  
 * *Nodedef*: ND_noise2d_vector2FA
 * *Type*: vector2
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise2d_vector2FA
@@ -2639,7 +2639,7 @@ graph LR;
  
 * *Nodedef*: ND_noise2d_vector3FA
 * *Type*: vector3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise2d_vector3FA
@@ -2670,7 +2670,7 @@ graph LR;
  
 * *Nodedef*: ND_noise2d_vector4FA
 * *Type*: vector4
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise2d_vector4FA
@@ -2702,7 +2702,7 @@ graph LR;
  
 * *Nodedef*: ND_noise3d_float
 * *Type*: float
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2719,7 +2719,7 @@ graph LR;
  
 * *Nodedef*: ND_noise3d_color3
 * *Type*: color3
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise3d_color3
@@ -2750,7 +2750,7 @@ graph LR;
  
 * *Nodedef*: ND_noise3d_color4
 * *Type*: color4
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise3d_color4
@@ -2781,7 +2781,7 @@ graph LR;
  
 * *Nodedef*: ND_noise3d_vector2
 * *Type*: vector2
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2798,7 +2798,7 @@ graph LR;
  
 * *Nodedef*: ND_noise3d_vector3
 * *Type*: vector3
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2815,7 +2815,7 @@ graph LR;
  
 * *Nodedef*: ND_noise3d_vector4
 * *Type*: vector4
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -2832,7 +2832,7 @@ graph LR;
  
 * *Nodedef*: ND_noise3d_color3FA
 * *Type*: color3
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise3d_color3FA
@@ -2863,7 +2863,7 @@ graph LR;
  
 * *Nodedef*: ND_noise3d_color4FA
 * *Type*: color4
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise3d_color4FA
@@ -2894,7 +2894,7 @@ graph LR;
  
 * *Nodedef*: ND_noise3d_vector2FA
 * *Type*: vector2
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise3d_vector2FA
@@ -2925,7 +2925,7 @@ graph LR;
  
 * *Nodedef*: ND_noise3d_vector3FA
 * *Type*: vector3
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise3d_vector3FA
@@ -2956,7 +2956,7 @@ graph LR;
  
 * *Nodedef*: ND_noise3d_vector4FA
 * *Type*: vector4
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_noise3d_vector4FA
@@ -2988,7 +2988,7 @@ graph LR;
  
 * *Nodedef*: ND_fractal3d_float
 * *Type*: float
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -3007,7 +3007,7 @@ graph LR;
  
 * *Nodedef*: ND_fractal3d_color3
 * *Type*: color3
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_fractal3d_color3
@@ -3044,7 +3044,7 @@ graph LR;
  
 * *Nodedef*: ND_fractal3d_color4
 * *Type*: color4
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_fractal3d_color4
@@ -3081,7 +3081,7 @@ graph LR;
  
 * *Nodedef*: ND_fractal3d_vector2
 * *Type*: vector2
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -3100,7 +3100,7 @@ graph LR;
  
 * *Nodedef*: ND_fractal3d_vector3
 * *Type*: vector3
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -3119,7 +3119,7 @@ graph LR;
  
 * *Nodedef*: ND_fractal3d_vector4
 * *Type*: vector4
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -3138,7 +3138,7 @@ graph LR;
  
 * *Nodedef*: ND_fractal3d_color3FA
 * *Type*: color3
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_fractal3d_color3FA
@@ -3175,7 +3175,7 @@ graph LR;
  
 * *Nodedef*: ND_fractal3d_color4FA
 * *Type*: color4
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_fractal3d_color4FA
@@ -3212,7 +3212,7 @@ graph LR;
  
 * *Nodedef*: ND_fractal3d_vector2FA
 * *Type*: vector2
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_fractal3d_vector2FA
@@ -3249,7 +3249,7 @@ graph LR;
  
 * *Nodedef*: ND_fractal3d_vector3FA
 * *Type*: vector3
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_fractal3d_vector3FA
@@ -3286,7 +3286,7 @@ graph LR;
  
 * *Nodedef*: ND_fractal3d_vector4FA
 * *Type*: vector4
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_fractal3d_vector4FA
@@ -3324,7 +3324,7 @@ graph LR;
  
 * *Nodedef*: ND_cellnoise2d_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -3340,7 +3340,7 @@ graph LR;
  
 * *Nodedef*: ND_cellnoise3d_float
 * *Type*: float
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -3356,7 +3356,7 @@ graph LR;
  
 * *Nodedef*: ND_worleynoise2d_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -3372,7 +3372,7 @@ graph LR;
  
 * *Nodedef*: ND_worleynoise2d_vector2
 * *Type*: vector2
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -3388,7 +3388,7 @@ graph LR;
  
 * *Nodedef*: ND_worleynoise2d_vector3
 * *Type*: vector3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -3405,7 +3405,7 @@ graph LR;
  
 * *Nodedef*: ND_worleynoise3d_float
 * *Type*: float
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -3421,7 +3421,7 @@ graph LR;
  
 * *Nodedef*: ND_worleynoise3d_vector2
 * *Type*: vector2
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -3437,7 +3437,7 @@ graph LR;
  
 * *Nodedef*: ND_worleynoise3d_vector3
 * *Type*: vector3
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -3454,7 +3454,7 @@ graph LR;
  
 * *Nodedef*: ND_unifiednoise2d_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_unifiednoise2d_float
@@ -3537,7 +3537,7 @@ graph LR;
  
 * *Nodedef*: ND_unifiednoise3d_float
 * *Type*: float
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_unifiednoise3d_float
@@ -3612,7 +3612,7 @@ graph LR;
  
 * *Nodedef*: ND_randomfloat_float
 * *Type*: float
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_randomfloat_float
@@ -3650,7 +3650,7 @@ graph LR;
  
 * *Nodedef*: ND_randomfloat_integer
 * *Type*: float
-* *Node Group*: procedural
+* *Group*: procedural
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_randomfloat_integer
@@ -3689,7 +3689,7 @@ graph LR;
  
 * *Nodedef*: ND_randomcolor_float
 * *Type*: color3
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_randomcolor_float
@@ -3755,7 +3755,7 @@ graph LR;
  
 * *Nodedef*: ND_randomcolor_integer
 * *Type*: color3
-* *Node Group*: procedural3d
+* *Group*: procedural3d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_randomcolor_integer
@@ -3803,7 +3803,7 @@ graph LR;
  
 * *Nodedef*: ND_checkerboard_color3
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_checkerboard_color3
@@ -3846,7 +3846,7 @@ graph LR;
  
 * *Nodedef*: ND_line_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_line_float
@@ -3900,7 +3900,7 @@ graph LR;
  
 * *Nodedef*: ND_circle_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_circle_float
@@ -3940,7 +3940,7 @@ graph LR;
  
 * *Nodedef*: ND_cloverleaf_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_cloverleaf_float
@@ -4010,7 +4010,7 @@ graph LR;
  
 * *Nodedef*: ND_hexagon_float
 * *Type*: float
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_hexagon_float
@@ -4082,7 +4082,7 @@ graph LR;
  
 * *Nodedef*: ND_grid_color3
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_grid_color3
@@ -4150,7 +4150,7 @@ graph LR;
  
 * *Nodedef*: ND_crosshatch_color3
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_crosshatch_color3
@@ -4215,7 +4215,7 @@ graph LR;
  
 * *Nodedef*: ND_tiledcircles_color3
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_tiledcircles_color3
@@ -4291,7 +4291,7 @@ graph LR;
  
 * *Nodedef*: ND_tiledcloverleafs_color3
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_tiledcloverleafs_color3
@@ -4367,7 +4367,7 @@ graph LR;
  
 * *Nodedef*: ND_tiledhexagons_color3
 * *Type*: color3
-* *Node Group*: procedural2d
+* *Group*: procedural2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_tiledhexagons_color3
@@ -4443,7 +4443,7 @@ graph LR;
  
 * *Nodedef*: ND_position_vector3
 * *Type*: vector3
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4459,7 +4459,7 @@ graph LR;
  
 * *Nodedef*: ND_normal_vector3
 * *Type*: vector3
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4475,7 +4475,7 @@ graph LR;
  
 * *Nodedef*: ND_tangent_vector3
 * *Type*: vector3
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4492,7 +4492,7 @@ graph LR;
  
 * *Nodedef*: ND_bitangent_vector3
 * *Type*: vector3
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4509,7 +4509,7 @@ graph LR;
  
 * *Nodedef*: ND_texcoord_vector2
 * *Type*: vector2
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4524,7 +4524,7 @@ graph LR;
  
 * *Nodedef*: ND_texcoord_vector3
 * *Type*: vector3
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4540,7 +4540,7 @@ graph LR;
  
 * *Nodedef*: ND_geomcolor_float
 * *Type*: float
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4555,7 +4555,7 @@ graph LR;
  
 * *Nodedef*: ND_geomcolor_color3
 * *Type*: color3
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4570,7 +4570,7 @@ graph LR;
  
 * *Nodedef*: ND_geomcolor_color4
 * *Type*: color4
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4586,7 +4586,7 @@ graph LR;
  
 * *Nodedef*: ND_geompropvalue_integer
 * *Type*: integer
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4602,7 +4602,7 @@ graph LR;
  
 * *Nodedef*: ND_geompropvalue_boolean
 * *Type*: boolean
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4618,7 +4618,7 @@ graph LR;
  
 * *Nodedef*: ND_geompropvalue_string
 * *Type*: string
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4634,7 +4634,7 @@ graph LR;
  
 * *Nodedef*: ND_geompropvalue_float
 * *Type*: float
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4650,7 +4650,7 @@ graph LR;
  
 * *Nodedef*: ND_geompropvalue_color3
 * *Type*: color3
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4666,7 +4666,7 @@ graph LR;
  
 * *Nodedef*: ND_geompropvalue_color4
 * *Type*: color4
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4682,7 +4682,7 @@ graph LR;
  
 * *Nodedef*: ND_geompropvalue_vector2
 * *Type*: vector2
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4698,7 +4698,7 @@ graph LR;
  
 * *Nodedef*: ND_geompropvalue_vector3
 * *Type*: vector3
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4714,7 +4714,7 @@ graph LR;
  
 * *Nodedef*: ND_geompropvalue_vector4
 * *Type*: vector4
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4731,7 +4731,7 @@ graph LR;
  
 * *Nodedef*: ND_bump_vector3
 * *Type*: vector3
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_bump_vector3
@@ -4767,7 +4767,7 @@ graph LR;
  
 * *Nodedef*: ND_ambientocclusion_float
 * *Type*: float
-* *Node Group*: global
+* *Group*: global
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4784,7 +4784,7 @@ graph LR;
  
 * *Nodedef*: ND_frame_float
 * *Type*: float
-* *Node Group*: application
+* *Group*: application
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4799,7 +4799,7 @@ graph LR;
  
 * *Nodedef*: ND_time_float
 * *Type*: float
-* *Node Group*: application
+* *Group*: application
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4815,7 +4815,7 @@ graph LR;
  
 * *Nodedef*: ND_add_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4831,7 +4831,7 @@ graph LR;
  
 * *Nodedef*: ND_add_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4847,7 +4847,7 @@ graph LR;
  
 * *Nodedef*: ND_add_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4863,7 +4863,7 @@ graph LR;
  
 * *Nodedef*: ND_add_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4879,7 +4879,7 @@ graph LR;
  
 * *Nodedef*: ND_add_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4895,7 +4895,7 @@ graph LR;
  
 * *Nodedef*: ND_add_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4911,7 +4911,7 @@ graph LR;
  
 * *Nodedef*: ND_add_matrix33
 * *Type*: matrix33
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4927,7 +4927,7 @@ graph LR;
  
 * *Nodedef*: ND_add_matrix44
 * *Type*: matrix44
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4943,7 +4943,7 @@ graph LR;
  
 * *Nodedef*: ND_add_color3FA
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4959,7 +4959,7 @@ graph LR;
  
 * *Nodedef*: ND_add_color4FA
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4975,7 +4975,7 @@ graph LR;
  
 * *Nodedef*: ND_add_vector2FA
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -4991,7 +4991,7 @@ graph LR;
  
 * *Nodedef*: ND_add_vector3FA
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5007,7 +5007,7 @@ graph LR;
  
 * *Nodedef*: ND_add_vector4FA
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5023,7 +5023,7 @@ graph LR;
  
 * *Nodedef*: ND_add_matrix33FA
 * *Type*: matrix33
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5039,7 +5039,7 @@ graph LR;
  
 * *Nodedef*: ND_add_matrix44FA
 * *Type*: matrix44
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5056,7 +5056,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5072,7 +5072,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5088,7 +5088,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5104,7 +5104,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5120,7 +5120,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5136,7 +5136,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5152,7 +5152,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_matrix33
 * *Type*: matrix33
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5168,7 +5168,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_matrix44
 * *Type*: matrix44
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5184,7 +5184,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_color3FA
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5200,7 +5200,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_color4FA
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5216,7 +5216,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_vector2FA
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5232,7 +5232,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_vector3FA
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5248,7 +5248,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_vector4FA
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5264,7 +5264,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_matrix33FA
 * *Type*: matrix33
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5280,7 +5280,7 @@ graph LR;
  
 * *Nodedef*: ND_subtract_matrix44FA
 * *Type*: matrix44
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5297,7 +5297,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5313,7 +5313,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5329,7 +5329,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5345,7 +5345,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5361,7 +5361,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5377,7 +5377,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5393,7 +5393,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_matrix33
 * *Type*: matrix33
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5409,7 +5409,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_matrix44
 * *Type*: matrix44
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5425,7 +5425,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_color3FA
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5441,7 +5441,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_color4FA
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5457,7 +5457,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_vector2FA
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5473,7 +5473,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_vector3FA
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5489,7 +5489,7 @@ graph LR;
  
 * *Nodedef*: ND_multiply_vector4FA
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5506,7 +5506,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5522,7 +5522,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5538,7 +5538,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5554,7 +5554,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5570,7 +5570,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5586,7 +5586,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5602,7 +5602,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_matrix33
 * *Type*: matrix33
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5618,7 +5618,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_matrix44
 * *Type*: matrix44
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5634,7 +5634,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_color3FA
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5650,7 +5650,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_color4FA
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5666,7 +5666,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_vector2FA
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5682,7 +5682,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_vector3FA
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5698,7 +5698,7 @@ graph LR;
  
 * *Nodedef*: ND_divide_vector4FA
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5715,7 +5715,7 @@ graph LR;
  
 * *Nodedef*: ND_modulo_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5731,7 +5731,7 @@ graph LR;
  
 * *Nodedef*: ND_modulo_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5747,7 +5747,7 @@ graph LR;
  
 * *Nodedef*: ND_modulo_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5763,7 +5763,7 @@ graph LR;
  
 * *Nodedef*: ND_modulo_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5779,7 +5779,7 @@ graph LR;
  
 * *Nodedef*: ND_modulo_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5795,7 +5795,7 @@ graph LR;
  
 * *Nodedef*: ND_modulo_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5811,7 +5811,7 @@ graph LR;
  
 * *Nodedef*: ND_modulo_color3FA
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5827,7 +5827,7 @@ graph LR;
  
 * *Nodedef*: ND_modulo_color4FA
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5843,7 +5843,7 @@ graph LR;
  
 * *Nodedef*: ND_modulo_vector2FA
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5859,7 +5859,7 @@ graph LR;
  
 * *Nodedef*: ND_modulo_vector3FA
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5875,7 +5875,7 @@ graph LR;
  
 * *Nodedef*: ND_modulo_vector4FA
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5892,7 +5892,7 @@ graph LR;
  
 * *Nodedef*: ND_invert_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5908,7 +5908,7 @@ graph LR;
  
 * *Nodedef*: ND_invert_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5924,7 +5924,7 @@ graph LR;
  
 * *Nodedef*: ND_invert_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5940,7 +5940,7 @@ graph LR;
  
 * *Nodedef*: ND_invert_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5956,7 +5956,7 @@ graph LR;
  
 * *Nodedef*: ND_invert_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5972,7 +5972,7 @@ graph LR;
  
 * *Nodedef*: ND_invert_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -5988,7 +5988,7 @@ graph LR;
  
 * *Nodedef*: ND_invert_color3FA
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6004,7 +6004,7 @@ graph LR;
  
 * *Nodedef*: ND_invert_color4FA
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6020,7 +6020,7 @@ graph LR;
  
 * *Nodedef*: ND_invert_vector2FA
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6036,7 +6036,7 @@ graph LR;
  
 * *Nodedef*: ND_invert_vector3FA
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6052,7 +6052,7 @@ graph LR;
  
 * *Nodedef*: ND_invert_vector4FA
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6069,7 +6069,7 @@ graph LR;
  
 * *Nodedef*: ND_absval_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6084,7 +6084,7 @@ graph LR;
  
 * *Nodedef*: ND_absval_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6099,7 +6099,7 @@ graph LR;
  
 * *Nodedef*: ND_absval_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6114,7 +6114,7 @@ graph LR;
  
 * *Nodedef*: ND_absval_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6129,7 +6129,7 @@ graph LR;
  
 * *Nodedef*: ND_absval_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6144,7 +6144,7 @@ graph LR;
  
 * *Nodedef*: ND_absval_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6160,7 +6160,7 @@ graph LR;
  
 * *Nodedef*: ND_floor_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6175,7 +6175,7 @@ graph LR;
  
 * *Nodedef*: ND_floor_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6190,7 +6190,7 @@ graph LR;
  
 * *Nodedef*: ND_floor_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6205,7 +6205,7 @@ graph LR;
  
 * *Nodedef*: ND_floor_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6220,7 +6220,7 @@ graph LR;
  
 * *Nodedef*: ND_floor_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6235,7 +6235,7 @@ graph LR;
  
 * *Nodedef*: ND_floor_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6250,7 +6250,7 @@ graph LR;
  
 * *Nodedef*: ND_floor_integer
 * *Type*: integer
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6266,7 +6266,7 @@ graph LR;
  
 * *Nodedef*: ND_ceil_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6281,7 +6281,7 @@ graph LR;
  
 * *Nodedef*: ND_ceil_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6296,7 +6296,7 @@ graph LR;
  
 * *Nodedef*: ND_ceil_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6311,7 +6311,7 @@ graph LR;
  
 * *Nodedef*: ND_ceil_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6326,7 +6326,7 @@ graph LR;
  
 * *Nodedef*: ND_ceil_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6341,7 +6341,7 @@ graph LR;
  
 * *Nodedef*: ND_ceil_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6356,7 +6356,7 @@ graph LR;
  
 * *Nodedef*: ND_ceil_integer
 * *Type*: integer
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6372,7 +6372,7 @@ graph LR;
  
 * *Nodedef*: ND_round_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6387,7 +6387,7 @@ graph LR;
  
 * *Nodedef*: ND_round_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6402,7 +6402,7 @@ graph LR;
  
 * *Nodedef*: ND_round_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6417,7 +6417,7 @@ graph LR;
  
 * *Nodedef*: ND_round_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6432,7 +6432,7 @@ graph LR;
  
 * *Nodedef*: ND_round_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6447,7 +6447,7 @@ graph LR;
  
 * *Nodedef*: ND_round_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6462,7 +6462,7 @@ graph LR;
  
 * *Nodedef*: ND_round_integer
 * *Type*: integer
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6478,7 +6478,7 @@ graph LR;
  
 * *Nodedef*: ND_power_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6494,7 +6494,7 @@ graph LR;
  
 * *Nodedef*: ND_power_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6510,7 +6510,7 @@ graph LR;
  
 * *Nodedef*: ND_power_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6526,7 +6526,7 @@ graph LR;
  
 * *Nodedef*: ND_power_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6542,7 +6542,7 @@ graph LR;
  
 * *Nodedef*: ND_power_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6558,7 +6558,7 @@ graph LR;
  
 * *Nodedef*: ND_power_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6574,7 +6574,7 @@ graph LR;
  
 * *Nodedef*: ND_power_color3FA
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6590,7 +6590,7 @@ graph LR;
  
 * *Nodedef*: ND_power_color4FA
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6606,7 +6606,7 @@ graph LR;
  
 * *Nodedef*: ND_power_vector2FA
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6622,7 +6622,7 @@ graph LR;
  
 * *Nodedef*: ND_power_vector3FA
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6638,7 +6638,7 @@ graph LR;
  
 * *Nodedef*: ND_power_vector4FA
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -6655,7 +6655,7 @@ graph LR;
  
 * *Nodedef*: ND_safepower_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_safepower_float
@@ -6688,7 +6688,7 @@ graph LR;
  
 * *Nodedef*: ND_safepower_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_safepower_color3
@@ -6721,7 +6721,7 @@ graph LR;
  
 * *Nodedef*: ND_safepower_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_safepower_color4
@@ -6754,7 +6754,7 @@ graph LR;
  
 * *Nodedef*: ND_safepower_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_safepower_vector2
@@ -6787,7 +6787,7 @@ graph LR;
  
 * *Nodedef*: ND_safepower_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_safepower_vector3
@@ -6820,7 +6820,7 @@ graph LR;
  
 * *Nodedef*: ND_safepower_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_safepower_vector4
@@ -6853,7 +6853,7 @@ graph LR;
  
 * *Nodedef*: ND_safepower_color3FA
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_safepower_color3FA
@@ -6886,7 +6886,7 @@ graph LR;
  
 * *Nodedef*: ND_safepower_color4FA
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_safepower_color4FA
@@ -6919,7 +6919,7 @@ graph LR;
  
 * *Nodedef*: ND_safepower_vector2FA
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_safepower_vector2FA
@@ -6952,7 +6952,7 @@ graph LR;
  
 * *Nodedef*: ND_safepower_vector3FA
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_safepower_vector3FA
@@ -6985,7 +6985,7 @@ graph LR;
  
 * *Nodedef*: ND_safepower_vector4FA
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_safepower_vector4FA
@@ -7019,7 +7019,7 @@ graph LR;
  
 * *Nodedef*: ND_sin_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7035,7 +7035,7 @@ graph LR;
  
 * *Nodedef*: ND_cos_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7051,7 +7051,7 @@ graph LR;
  
 * *Nodedef*: ND_tan_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7067,7 +7067,7 @@ graph LR;
  
 * *Nodedef*: ND_asin_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7083,7 +7083,7 @@ graph LR;
  
 * *Nodedef*: ND_acos_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7099,7 +7099,7 @@ graph LR;
  
 * *Nodedef*: ND_atan2_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7116,7 +7116,7 @@ graph LR;
  
 * *Nodedef*: ND_sin_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7132,7 +7132,7 @@ graph LR;
  
 * *Nodedef*: ND_cos_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7148,7 +7148,7 @@ graph LR;
  
 * *Nodedef*: ND_tan_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7164,7 +7164,7 @@ graph LR;
  
 * *Nodedef*: ND_asin_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7180,7 +7180,7 @@ graph LR;
  
 * *Nodedef*: ND_acos_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7196,7 +7196,7 @@ graph LR;
  
 * *Nodedef*: ND_atan2_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7213,7 +7213,7 @@ graph LR;
  
 * *Nodedef*: ND_sin_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7229,7 +7229,7 @@ graph LR;
  
 * *Nodedef*: ND_cos_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7245,7 +7245,7 @@ graph LR;
  
 * *Nodedef*: ND_tan_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7261,7 +7261,7 @@ graph LR;
  
 * *Nodedef*: ND_asin_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7277,7 +7277,7 @@ graph LR;
  
 * *Nodedef*: ND_acos_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7293,7 +7293,7 @@ graph LR;
  
 * *Nodedef*: ND_atan2_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7310,7 +7310,7 @@ graph LR;
  
 * *Nodedef*: ND_sin_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7326,7 +7326,7 @@ graph LR;
  
 * *Nodedef*: ND_cos_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7342,7 +7342,7 @@ graph LR;
  
 * *Nodedef*: ND_tan_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7358,7 +7358,7 @@ graph LR;
  
 * *Nodedef*: ND_asin_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7374,7 +7374,7 @@ graph LR;
  
 * *Nodedef*: ND_acos_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7390,7 +7390,7 @@ graph LR;
  
 * *Nodedef*: ND_atan2_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7407,7 +7407,7 @@ graph LR;
  
 * *Nodedef*: ND_sqrt_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7423,7 +7423,7 @@ graph LR;
  
 * *Nodedef*: ND_ln_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7439,7 +7439,7 @@ graph LR;
  
 * *Nodedef*: ND_exp_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7455,7 +7455,7 @@ graph LR;
  
 * *Nodedef*: ND_sqrt_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7471,7 +7471,7 @@ graph LR;
  
 * *Nodedef*: ND_ln_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7487,7 +7487,7 @@ graph LR;
  
 * *Nodedef*: ND_exp_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7503,7 +7503,7 @@ graph LR;
  
 * *Nodedef*: ND_sqrt_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7519,7 +7519,7 @@ graph LR;
  
 * *Nodedef*: ND_ln_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7535,7 +7535,7 @@ graph LR;
  
 * *Nodedef*: ND_exp_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7551,7 +7551,7 @@ graph LR;
  
 * *Nodedef*: ND_sqrt_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7567,7 +7567,7 @@ graph LR;
  
 * *Nodedef*: ND_ln_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7583,7 +7583,7 @@ graph LR;
  
 * *Nodedef*: ND_exp_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7599,7 +7599,7 @@ graph LR;
  
 * *Nodedef*: ND_sign_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7614,7 +7614,7 @@ graph LR;
  
 * *Nodedef*: ND_sign_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7629,7 +7629,7 @@ graph LR;
  
 * *Nodedef*: ND_sign_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7644,7 +7644,7 @@ graph LR;
  
 * *Nodedef*: ND_sign_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7659,7 +7659,7 @@ graph LR;
  
 * *Nodedef*: ND_sign_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7674,7 +7674,7 @@ graph LR;
  
 * *Nodedef*: ND_sign_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7690,7 +7690,7 @@ graph LR;
  
 * *Nodedef*: ND_clamp_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7707,7 +7707,7 @@ graph LR;
  
 * *Nodedef*: ND_clamp_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7724,7 +7724,7 @@ graph LR;
  
 * *Nodedef*: ND_clamp_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7741,7 +7741,7 @@ graph LR;
  
 * *Nodedef*: ND_clamp_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7758,7 +7758,7 @@ graph LR;
  
 * *Nodedef*: ND_clamp_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7775,7 +7775,7 @@ graph LR;
  
 * *Nodedef*: ND_clamp_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7792,7 +7792,7 @@ graph LR;
  
 * *Nodedef*: ND_clamp_color3FA
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7809,7 +7809,7 @@ graph LR;
  
 * *Nodedef*: ND_clamp_color4FA
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7826,7 +7826,7 @@ graph LR;
  
 * *Nodedef*: ND_clamp_vector2FA
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7843,7 +7843,7 @@ graph LR;
  
 * *Nodedef*: ND_clamp_vector3FA
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7860,7 +7860,7 @@ graph LR;
  
 * *Nodedef*: ND_clamp_vector4FA
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7878,7 +7878,7 @@ graph LR;
  
 * *Nodedef*: ND_min_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7894,7 +7894,7 @@ graph LR;
  
 * *Nodedef*: ND_min_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7910,7 +7910,7 @@ graph LR;
  
 * *Nodedef*: ND_min_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7926,7 +7926,7 @@ graph LR;
  
 * *Nodedef*: ND_min_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7942,7 +7942,7 @@ graph LR;
  
 * *Nodedef*: ND_min_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7958,7 +7958,7 @@ graph LR;
  
 * *Nodedef*: ND_min_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7974,7 +7974,7 @@ graph LR;
  
 * *Nodedef*: ND_min_color3FA
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -7990,7 +7990,7 @@ graph LR;
  
 * *Nodedef*: ND_min_color4FA
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8006,7 +8006,7 @@ graph LR;
  
 * *Nodedef*: ND_min_vector2FA
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8022,7 +8022,7 @@ graph LR;
  
 * *Nodedef*: ND_min_vector3FA
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8038,7 +8038,7 @@ graph LR;
  
 * *Nodedef*: ND_min_vector4FA
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8055,7 +8055,7 @@ graph LR;
  
 * *Nodedef*: ND_max_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8071,7 +8071,7 @@ graph LR;
  
 * *Nodedef*: ND_max_color3
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8087,7 +8087,7 @@ graph LR;
  
 * *Nodedef*: ND_max_color4
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8103,7 +8103,7 @@ graph LR;
  
 * *Nodedef*: ND_max_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8119,7 +8119,7 @@ graph LR;
  
 * *Nodedef*: ND_max_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8135,7 +8135,7 @@ graph LR;
  
 * *Nodedef*: ND_max_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8151,7 +8151,7 @@ graph LR;
  
 * *Nodedef*: ND_max_color3FA
 * *Type*: color3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8167,7 +8167,7 @@ graph LR;
  
 * *Nodedef*: ND_max_color4FA
 * *Type*: color4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8183,7 +8183,7 @@ graph LR;
  
 * *Nodedef*: ND_max_vector2FA
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8199,7 +8199,7 @@ graph LR;
  
 * *Nodedef*: ND_max_vector3FA
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8215,7 +8215,7 @@ graph LR;
  
 * *Nodedef*: ND_max_vector4FA
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8232,7 +8232,7 @@ graph LR;
  
 * *Nodedef*: ND_normalize_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8247,7 +8247,7 @@ graph LR;
  
 * *Nodedef*: ND_normalize_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8262,7 +8262,7 @@ graph LR;
  
 * *Nodedef*: ND_normalize_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8278,7 +8278,7 @@ graph LR;
  
 * *Nodedef*: ND_magnitude_vector2
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8293,7 +8293,7 @@ graph LR;
  
 * *Nodedef*: ND_magnitude_vector3
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8308,7 +8308,7 @@ graph LR;
  
 * *Nodedef*: ND_magnitude_vector4
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8324,7 +8324,7 @@ graph LR;
  
 * *Nodedef*: ND_distance_vector2
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_distance_vector2
@@ -8353,7 +8353,7 @@ graph LR;
  
 * *Nodedef*: ND_distance_vector3
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_distance_vector3
@@ -8382,7 +8382,7 @@ graph LR;
  
 * *Nodedef*: ND_distance_vector4
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_distance_vector4
@@ -8412,7 +8412,7 @@ graph LR;
  
 * *Nodedef*: ND_dotproduct_vector2
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8428,7 +8428,7 @@ graph LR;
  
 * *Nodedef*: ND_dotproduct_vector3
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8444,7 +8444,7 @@ graph LR;
  
 * *Nodedef*: ND_dotproduct_vector4
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8461,7 +8461,7 @@ graph LR;
  
 * *Nodedef*: ND_crossproduct_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8478,7 +8478,7 @@ graph LR;
  
 * *Nodedef*: ND_transformpoint_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8496,7 +8496,7 @@ graph LR;
  
 * *Nodedef*: ND_transformvector_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8514,7 +8514,7 @@ graph LR;
  
 * *Nodedef*: ND_transformnormal_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8532,7 +8532,7 @@ graph LR;
  
 * *Nodedef*: ND_transformmatrix_vector2M3
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8548,7 +8548,7 @@ graph LR;
  
 * *Nodedef*: ND_transformmatrix_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8564,7 +8564,7 @@ graph LR;
  
 * *Nodedef*: ND_transformmatrix_vector3M4
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8580,7 +8580,7 @@ graph LR;
  
 * *Nodedef*: ND_transformmatrix_vector4
 * *Type*: vector4
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8597,7 +8597,7 @@ graph LR;
  
 * *Nodedef*: ND_normalmap
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8616,7 +8616,7 @@ graph LR;
  
 * *Nodedef*: ND_normalmap_vector2
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8636,7 +8636,7 @@ graph LR;
  
 * *Nodedef*: ND_transpose_matrix33
 * *Type*: matrix33
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8651,7 +8651,7 @@ graph LR;
  
 * *Nodedef*: ND_transpose_matrix44
 * *Type*: matrix44
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8667,7 +8667,7 @@ graph LR;
  
 * *Nodedef*: ND_determinant_matrix33
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8682,7 +8682,7 @@ graph LR;
  
 * *Nodedef*: ND_determinant_matrix44
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8698,7 +8698,7 @@ graph LR;
  
 * *Nodedef*: ND_invertmatrix_matrix33
 * *Type*: matrix33
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8713,7 +8713,7 @@ graph LR;
  
 * *Nodedef*: ND_invertmatrix_matrix44
 * *Type*: matrix44
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8729,7 +8729,7 @@ graph LR;
  
 * *Nodedef*: ND_rotate2d_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8746,7 +8746,7 @@ graph LR;
  
 * *Nodedef*: ND_rotate3d_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8764,7 +8764,7 @@ graph LR;
  
 * *Nodedef*: ND_place2d_vector2
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_place2d_vector2
@@ -8827,7 +8827,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_integer_integerarray
 * *Type*: integerarray
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8843,7 +8843,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_integerarray_integerarray
 * *Type*: integerarray
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8859,7 +8859,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_float_floatarray
 * *Type*: floatarray
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8875,7 +8875,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_floatarray_floatarray
 * *Type*: floatarray
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8891,7 +8891,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_color3_color3array
 * *Type*: color3array
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8907,7 +8907,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_color3array_color3array
 * *Type*: color3array
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8923,7 +8923,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_color4_color4array
 * *Type*: color4array
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8939,7 +8939,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_color4array_color4array
 * *Type*: color4array
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8955,7 +8955,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_vector2_vector2array
 * *Type*: vector2array
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8971,7 +8971,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_vector2array_vector2array
 * *Type*: vector2array
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -8987,7 +8987,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_vector3_vector3array
 * *Type*: vector3array
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9003,7 +9003,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_vector3array_vector3array
 * *Type*: vector3array
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9019,7 +9019,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_vector4_vector4array
 * *Type*: vector4array
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9035,7 +9035,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_vector4array_vector4array
 * *Type*: vector4array
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9051,7 +9051,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_string_stringarray
 * *Type*: stringarray
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9067,7 +9067,7 @@ graph LR;
  
 * *Nodedef*: ND_arrayappend_stringarray_stringarray
 * *Type*: stringarray
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9084,7 +9084,7 @@ graph LR;
  
 * *Nodedef*: ND_trianglewave_float
 * *Type*: float
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_trianglewave_float
@@ -9114,7 +9114,7 @@ graph LR;
  
 * *Nodedef*: ND_reflect_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: Compute the reflection vector
 * *Nodegraph*: NG_reflect_vector3
@@ -9150,7 +9150,7 @@ graph LR;
  
 * *Nodedef*: ND_refract_vector3
 * *Type*: vector3
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: Compute the refraction vector
 * *Nodegraph*: NG_refract_vector3
@@ -9209,7 +9209,7 @@ graph LR;
  
 * *Nodedef*: ND_remap_float
 * *Type*: float
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9228,7 +9228,7 @@ graph LR;
  
 * *Nodedef*: ND_remap_color3
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9247,7 +9247,7 @@ graph LR;
  
 * *Nodedef*: ND_remap_color4
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9266,7 +9266,7 @@ graph LR;
  
 * *Nodedef*: ND_remap_vector2
 * *Type*: vector2
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9285,7 +9285,7 @@ graph LR;
  
 * *Nodedef*: ND_remap_vector3
 * *Type*: vector3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9304,7 +9304,7 @@ graph LR;
  
 * *Nodedef*: ND_remap_vector4
 * *Type*: vector4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9323,7 +9323,7 @@ graph LR;
  
 * *Nodedef*: ND_remap_color3FA
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9342,7 +9342,7 @@ graph LR;
  
 * *Nodedef*: ND_remap_color4FA
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9361,7 +9361,7 @@ graph LR;
  
 * *Nodedef*: ND_remap_vector2FA
 * *Type*: vector2
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9380,7 +9380,7 @@ graph LR;
  
 * *Nodedef*: ND_remap_vector3FA
 * *Type*: vector3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9399,7 +9399,7 @@ graph LR;
  
 * *Nodedef*: ND_remap_vector4FA
 * *Type*: vector4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9419,7 +9419,7 @@ graph LR;
  
 * *Nodedef*: ND_smoothstep_float
 * *Type*: float
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9436,7 +9436,7 @@ graph LR;
  
 * *Nodedef*: ND_smoothstep_color3
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_smoothstep_color3
@@ -9467,7 +9467,7 @@ graph LR;
  
 * *Nodedef*: ND_smoothstep_color4
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_smoothstep_color4
@@ -9498,7 +9498,7 @@ graph LR;
  
 * *Nodedef*: ND_smoothstep_vector2
 * *Type*: vector2
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9515,7 +9515,7 @@ graph LR;
  
 * *Nodedef*: ND_smoothstep_vector3
 * *Type*: vector3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9532,7 +9532,7 @@ graph LR;
  
 * *Nodedef*: ND_smoothstep_vector4
 * *Type*: vector4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9549,7 +9549,7 @@ graph LR;
  
 * *Nodedef*: ND_smoothstep_color3FA
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_smoothstep_color3FA
@@ -9580,7 +9580,7 @@ graph LR;
  
 * *Nodedef*: ND_smoothstep_color4FA
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_smoothstep_color4FA
@@ -9611,7 +9611,7 @@ graph LR;
  
 * *Nodedef*: ND_smoothstep_vector2FA
 * *Type*: vector2
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_smoothstep_vector2FA
@@ -9642,7 +9642,7 @@ graph LR;
  
 * *Nodedef*: ND_smoothstep_vector3FA
 * *Type*: vector3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_smoothstep_vector3FA
@@ -9673,7 +9673,7 @@ graph LR;
  
 * *Nodedef*: ND_smoothstep_vector4FA
 * *Type*: vector4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_smoothstep_vector4FA
@@ -9705,7 +9705,7 @@ graph LR;
  
 * *Nodedef*: ND_curveadjust_float
 * *Type*: float
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9721,7 +9721,7 @@ graph LR;
  
 * *Nodedef*: ND_curveadjust_color3
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9737,7 +9737,7 @@ graph LR;
  
 * *Nodedef*: ND_curveadjust_color4
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9753,7 +9753,7 @@ graph LR;
  
 * *Nodedef*: ND_curveadjust_vector2
 * *Type*: vector2
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9769,7 +9769,7 @@ graph LR;
  
 * *Nodedef*: ND_curveadjust_vector3
 * *Type*: vector3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9785,7 +9785,7 @@ graph LR;
  
 * *Nodedef*: ND_curveadjust_vector4
 * *Type*: vector4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9802,7 +9802,7 @@ graph LR;
  
 * *Nodedef*: ND_luminance_color3
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9818,7 +9818,7 @@ graph LR;
  
 * *Nodedef*: ND_luminance_color4
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9835,7 +9835,7 @@ graph LR;
  
 * *Nodedef*: ND_rgbtohsv_color3
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9850,7 +9850,7 @@ graph LR;
  
 * *Nodedef*: ND_rgbtohsv_color4
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9866,7 +9866,7 @@ graph LR;
  
 * *Nodedef*: ND_hsvtorgb_color3
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9881,7 +9881,7 @@ graph LR;
  
 * *Nodedef*: ND_hsvtorgb_color4
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -9897,7 +9897,7 @@ graph LR;
  
 * *Nodedef*: ND_contrast_float
 * *Type*: float
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_contrast_float
@@ -9932,7 +9932,7 @@ graph LR;
  
 * *Nodedef*: ND_contrast_color3
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_contrast_color3
@@ -9967,7 +9967,7 @@ graph LR;
  
 * *Nodedef*: ND_contrast_color4
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_contrast_color4
@@ -10002,7 +10002,7 @@ graph LR;
  
 * *Nodedef*: ND_contrast_vector2
 * *Type*: vector2
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_contrast_vector2
@@ -10037,7 +10037,7 @@ graph LR;
  
 * *Nodedef*: ND_contrast_vector3
 * *Type*: vector3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_contrast_vector3
@@ -10072,7 +10072,7 @@ graph LR;
  
 * *Nodedef*: ND_contrast_vector4
 * *Type*: vector4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_contrast_vector4
@@ -10107,7 +10107,7 @@ graph LR;
  
 * *Nodedef*: ND_contrast_color3FA
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_contrast_color3FA
@@ -10142,7 +10142,7 @@ graph LR;
  
 * *Nodedef*: ND_contrast_color4FA
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_contrast_color4FA
@@ -10177,7 +10177,7 @@ graph LR;
  
 * *Nodedef*: ND_contrast_vector2FA
 * *Type*: vector2
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_contrast_vector2FA
@@ -10212,7 +10212,7 @@ graph LR;
  
 * *Nodedef*: ND_contrast_vector3FA
 * *Type*: vector3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_contrast_vector3FA
@@ -10247,7 +10247,7 @@ graph LR;
  
 * *Nodedef*: ND_contrast_vector4FA
 * *Type*: vector4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_contrast_vector4FA
@@ -10283,7 +10283,7 @@ graph LR;
  
 * *Nodedef*: ND_range_float
 * *Type*: float
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_range_float
@@ -10342,7 +10342,7 @@ graph LR;
  
 * *Nodedef*: ND_range_color3
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_range_color3
@@ -10401,7 +10401,7 @@ graph LR;
  
 * *Nodedef*: ND_range_color4
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_range_color4
@@ -10460,7 +10460,7 @@ graph LR;
  
 * *Nodedef*: ND_range_vector2
 * *Type*: vector2
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_range_vector2
@@ -10519,7 +10519,7 @@ graph LR;
  
 * *Nodedef*: ND_range_vector3
 * *Type*: vector3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_range_vector3
@@ -10578,7 +10578,7 @@ graph LR;
  
 * *Nodedef*: ND_range_vector4
 * *Type*: vector4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_range_vector4
@@ -10637,7 +10637,7 @@ graph LR;
  
 * *Nodedef*: ND_range_color3FA
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_range_color3FA
@@ -10696,7 +10696,7 @@ graph LR;
  
 * *Nodedef*: ND_range_color4FA
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_range_color4FA
@@ -10755,7 +10755,7 @@ graph LR;
  
 * *Nodedef*: ND_range_vector2FA
 * *Type*: vector2
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_range_vector2FA
@@ -10814,7 +10814,7 @@ graph LR;
  
 * *Nodedef*: ND_range_vector3FA
 * *Type*: vector3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_range_vector3FA
@@ -10873,7 +10873,7 @@ graph LR;
  
 * *Nodedef*: ND_range_vector4FA
 * *Type*: vector4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_range_vector4FA
@@ -10933,7 +10933,7 @@ graph LR;
  
 * *Nodedef*: ND_hsvadjust_color3
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_hsvadjust_color3
@@ -10969,7 +10969,7 @@ graph LR;
  
 * *Nodedef*: ND_hsvadjust_color4
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_hsvadjust_color4
@@ -11007,7 +11007,7 @@ graph LR;
  
 * *Nodedef*: ND_saturate_color3
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_saturate_color3
@@ -11041,7 +11041,7 @@ graph LR;
  
 * *Nodedef*: ND_saturate_color4
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_saturate_color4
@@ -11076,7 +11076,7 @@ graph LR;
  
 * *Nodedef*: ND_colorcorrect_color3
 * *Type*: color3
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_colorcorrect_color3
@@ -11137,7 +11137,7 @@ graph LR;
  
 * *Nodedef*: ND_colorcorrect_color4
 * *Type*: color4
-* *Node Group*: adjustment
+* *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_colorcorrect_color4
@@ -11210,7 +11210,7 @@ graph LR;
  
 * *Nodedef*: ND_premult_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11226,7 +11226,7 @@ graph LR;
  
 * *Nodedef*: ND_unpremult_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11242,7 +11242,7 @@ graph LR;
  
 * *Nodedef*: ND_plus_float
 * *Type*: float
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11259,7 +11259,7 @@ graph LR;
  
 * *Nodedef*: ND_plus_color3
 * *Type*: color3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11276,7 +11276,7 @@ graph LR;
  
 * *Nodedef*: ND_plus_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11294,7 +11294,7 @@ graph LR;
  
 * *Nodedef*: ND_minus_float
 * *Type*: float
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11311,7 +11311,7 @@ graph LR;
  
 * *Nodedef*: ND_minus_color3
 * *Type*: color3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11328,7 +11328,7 @@ graph LR;
  
 * *Nodedef*: ND_minus_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11346,7 +11346,7 @@ graph LR;
  
 * *Nodedef*: ND_difference_float
 * *Type*: float
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11363,7 +11363,7 @@ graph LR;
  
 * *Nodedef*: ND_difference_color3
 * *Type*: color3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11380,7 +11380,7 @@ graph LR;
  
 * *Nodedef*: ND_difference_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11398,7 +11398,7 @@ graph LR;
  
 * *Nodedef*: ND_burn_float
 * *Type*: float
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11415,7 +11415,7 @@ graph LR;
  
 * *Nodedef*: ND_burn_color3
 * *Type*: color3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11432,7 +11432,7 @@ graph LR;
  
 * *Nodedef*: ND_burn_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11450,7 +11450,7 @@ graph LR;
  
 * *Nodedef*: ND_dodge_float
 * *Type*: float
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11467,7 +11467,7 @@ graph LR;
  
 * *Nodedef*: ND_dodge_color3
 * *Type*: color3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11484,7 +11484,7 @@ graph LR;
  
 * *Nodedef*: ND_dodge_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11502,7 +11502,7 @@ graph LR;
  
 * *Nodedef*: ND_screen_float
 * *Type*: float
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11519,7 +11519,7 @@ graph LR;
  
 * *Nodedef*: ND_screen_color3
 * *Type*: color3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11536,7 +11536,7 @@ graph LR;
  
 * *Nodedef*: ND_screen_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11554,7 +11554,7 @@ graph LR;
  
 * *Nodedef*: ND_overlay_float
 * *Type*: float
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_overlay_float
@@ -11603,7 +11603,7 @@ graph LR;
  
 * *Nodedef*: ND_overlay_color3
 * *Type*: color3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_overlay_color3
@@ -11659,7 +11659,7 @@ graph LR;
  
 * *Nodedef*: ND_overlay_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_overlay_color4
@@ -11725,7 +11725,7 @@ graph LR;
  
 * *Nodedef*: ND_disjointover_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11743,7 +11743,7 @@ graph LR;
  
 * *Nodedef*: ND_in_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11761,7 +11761,7 @@ graph LR;
  
 * *Nodedef*: ND_mask_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11779,7 +11779,7 @@ graph LR;
  
 * *Nodedef*: ND_matte_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11797,7 +11797,7 @@ graph LR;
  
 * *Nodedef*: ND_out_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11815,7 +11815,7 @@ graph LR;
  
 * *Nodedef*: ND_over_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11833,7 +11833,7 @@ graph LR;
  
 * *Nodedef*: ND_inside_float
 * *Type*: float
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11849,7 +11849,7 @@ graph LR;
  
 * *Nodedef*: ND_inside_color3
 * *Type*: color3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11865,7 +11865,7 @@ graph LR;
  
 * *Nodedef*: ND_inside_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11882,7 +11882,7 @@ graph LR;
  
 * *Nodedef*: ND_outside_float
 * *Type*: float
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11898,7 +11898,7 @@ graph LR;
  
 * *Nodedef*: ND_outside_color3
 * *Type*: color3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11914,7 +11914,7 @@ graph LR;
  
 * *Nodedef*: ND_outside_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11931,7 +11931,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_float
 * *Type*: float
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11948,7 +11948,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_color3
 * *Type*: color3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11965,7 +11965,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_color3_color3
 * *Type*: color3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11982,7 +11982,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -11999,7 +11999,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_color4_color4
 * *Type*: color4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12016,7 +12016,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_vector2
 * *Type*: vector2
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12033,7 +12033,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_vector2_vector2
 * *Type*: vector2
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12050,7 +12050,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_vector3
 * *Type*: vector3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12067,7 +12067,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_vector3_vector3
 * *Type*: vector3
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12084,7 +12084,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_vector4
 * *Type*: vector4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12101,7 +12101,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_vector4_vector4
 * *Type*: vector4
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12118,7 +12118,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12135,7 +12135,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_displacementshader
 * *Type*: displacementshader
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12152,7 +12152,7 @@ graph LR;
  
 * *Nodedef*: ND_mix_volumeshader
 * *Type*: volumeshader
-* *Node Group*: compositing
+* *Group*: compositing
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12170,7 +12170,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreater_float
 * *Type*: float
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12188,7 +12188,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreater_color3
 * *Type*: color3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12206,7 +12206,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreater_color4
 * *Type*: color4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12224,7 +12224,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreater_vector2
 * *Type*: vector2
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12242,7 +12242,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreater_vector3
 * *Type*: vector3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12260,7 +12260,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreater_vector4
 * *Type*: vector4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12278,7 +12278,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreater_floatI
 * *Type*: float
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12296,7 +12296,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreater_color3I
 * *Type*: color3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12314,7 +12314,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreater_color4I
 * *Type*: color4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12332,7 +12332,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreater_vector2I
 * *Type*: vector2
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12350,7 +12350,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreater_vector3I
 * *Type*: vector3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12368,7 +12368,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreater_vector4I
 * *Type*: vector4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12387,7 +12387,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreatereq_float
 * *Type*: float
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12405,7 +12405,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreatereq_color3
 * *Type*: color3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12423,7 +12423,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreatereq_color4
 * *Type*: color4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12441,7 +12441,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreatereq_vector2
 * *Type*: vector2
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12459,7 +12459,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreatereq_vector3
 * *Type*: vector3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12477,7 +12477,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreatereq_vector4
 * *Type*: vector4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12495,7 +12495,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreatereq_floatI
 * *Type*: float
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12513,7 +12513,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreatereq_color3I
 * *Type*: color3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12531,7 +12531,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreatereq_color4I
 * *Type*: color4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12549,7 +12549,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreatereq_vector2I
 * *Type*: vector2
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12567,7 +12567,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreatereq_vector3I
 * *Type*: vector3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12585,7 +12585,7 @@ graph LR;
  
 * *Nodedef*: ND_ifgreatereq_vector4I
 * *Type*: vector4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12604,7 +12604,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_float
 * *Type*: float
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12622,7 +12622,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_color3
 * *Type*: color3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12640,7 +12640,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_color4
 * *Type*: color4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12658,7 +12658,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_vector2
 * *Type*: vector2
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12676,7 +12676,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_vector3
 * *Type*: vector3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12694,7 +12694,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_vector4
 * *Type*: vector4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12712,7 +12712,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_floatI
 * *Type*: float
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12730,7 +12730,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_color3I
 * *Type*: color3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12748,7 +12748,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_color4I
 * *Type*: color4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12766,7 +12766,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_vector2I
 * *Type*: vector2
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12784,7 +12784,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_vector3I
 * *Type*: vector3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12802,7 +12802,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_vector4I
 * *Type*: vector4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12820,7 +12820,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_floatB
 * *Type*: float
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12838,7 +12838,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_color3B
 * *Type*: color3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12856,7 +12856,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_color4B
 * *Type*: color4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12874,7 +12874,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_vector2B
 * *Type*: vector2
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12892,7 +12892,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_vector3B
 * *Type*: vector3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12910,7 +12910,7 @@ graph LR;
  
 * *Nodedef*: ND_ifequal_vector4B
 * *Type*: vector4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12929,7 +12929,7 @@ graph LR;
  
 * *Nodedef*: ND_switch_float
 * *Type*: float
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12949,7 +12949,7 @@ graph LR;
  
 * *Nodedef*: ND_switch_color3
 * *Type*: color3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12969,7 +12969,7 @@ graph LR;
  
 * *Nodedef*: ND_switch_color4
 * *Type*: color4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -12989,7 +12989,7 @@ graph LR;
  
 * *Nodedef*: ND_switch_vector2
 * *Type*: vector2
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13009,7 +13009,7 @@ graph LR;
  
 * *Nodedef*: ND_switch_vector3
 * *Type*: vector3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13029,7 +13029,7 @@ graph LR;
  
 * *Nodedef*: ND_switch_vector4
 * *Type*: vector4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13049,7 +13049,7 @@ graph LR;
  
 * *Nodedef*: ND_switch_floatI
 * *Type*: float
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13069,7 +13069,7 @@ graph LR;
  
 * *Nodedef*: ND_switch_color3I
 * *Type*: color3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13089,7 +13089,7 @@ graph LR;
  
 * *Nodedef*: ND_switch_color4I
 * *Type*: color4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13109,7 +13109,7 @@ graph LR;
  
 * *Nodedef*: ND_switch_vector2I
 * *Type*: vector2
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13129,7 +13129,7 @@ graph LR;
  
 * *Nodedef*: ND_switch_vector3I
 * *Type*: vector3
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13149,7 +13149,7 @@ graph LR;
  
 * *Nodedef*: ND_switch_vector4I
 * *Type*: vector4
-* *Node Group*: conditional
+* *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13170,7 +13170,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_float_color3
 * *Type*: color3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13185,7 +13185,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_float_color4
 * *Type*: color4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13200,7 +13200,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_float_vector2
 * *Type*: vector2
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13215,7 +13215,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_float_vector3
 * *Type*: vector3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13230,7 +13230,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_float_vector4
 * *Type*: vector4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13245,7 +13245,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_vector2_vector3
 * *Type*: vector3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13260,7 +13260,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_vector3_color3
 * *Type*: color3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13275,7 +13275,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_vector3_vector2
 * *Type*: vector2
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13290,7 +13290,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_vector3_vector4
 * *Type*: vector4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13305,7 +13305,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_vector4_color4
 * *Type*: color4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13320,7 +13320,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_vector4_vector3
 * *Type*: vector3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13335,7 +13335,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_color3_vector3
 * *Type*: vector3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13350,7 +13350,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_color4_vector4
 * *Type*: vector4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13365,7 +13365,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_color3_color4
 * *Type*: color4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13380,7 +13380,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_color4_color3
 * *Type*: color3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13395,7 +13395,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_boolean_float
 * *Type*: float
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13410,7 +13410,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_integer_float
 * *Type*: float
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13425,7 +13425,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_color3_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: shader
+* *Group*: shader
 * *Version*: 1.0. Is default: True
 * *Doc*: Convert color3 to shader
 * *Nodegraph*: NG_convert_color3_surfaceshader
@@ -13450,7 +13450,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_color4_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: shader
+* *Group*: shader
 * *Version*: 1.0. Is default: True
 * *Doc*: Convert color4  to shader
 * *Nodegraph*: NG_convert_color4_surfaceshader
@@ -13479,7 +13479,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_float_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: shader
+* *Group*: shader
 * *Version*: 1.0. Is default: True
 * *Doc*: Convert float to shader
 * *Nodegraph*: NG_convert_float_surfaceshader
@@ -13505,7 +13505,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_vector2_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: shader
+* *Group*: shader
 * *Version*: 1.0. Is default: True
 * *Doc*: Convert vector2 to shader
 * *Nodegraph*: NG_convert_vector2_surfaceshader
@@ -13532,7 +13532,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_vector3_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: shader
+* *Group*: shader
 * *Version*: 1.0. Is default: True
 * *Doc*: Convert vector2 to shader
 * *Nodegraph*: NG_convert_vector3_surfaceshader
@@ -13558,7 +13558,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_vector4_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: shader
+* *Group*: shader
 * *Version*: 1.0. Is default: True
 * *Doc*: Convert vector4 to shader
 * *Nodegraph*: NG_convert_vector4_surfaceshader
@@ -13587,7 +13587,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_integer_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: shader
+* *Group*: shader
 * *Version*: 1.0. Is default: True
 * *Doc*: Convert integer to shader
 * *Nodegraph*: NG_convert_integer_surfaceshader
@@ -13614,7 +13614,7 @@ graph LR;
  
 * *Nodedef*: ND_convert_boolean_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: shader
+* *Group*: shader
 * *Version*: 1.0. Is default: True
 * *Doc*: Convert boolean to shader
 * *Nodegraph*: NG_convert_boolean_surfaceshader
@@ -13642,7 +13642,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_float_color3
 * *Type*: color3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13658,7 +13658,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_float_color4
 * *Type*: color4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13674,7 +13674,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_float_vector2
 * *Type*: vector2
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13690,7 +13690,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_float_vector3
 * *Type*: vector3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13706,7 +13706,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_float_vector4
 * *Type*: vector4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13722,7 +13722,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_color3_float
 * *Type*: float
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13738,7 +13738,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_color3_color3
 * *Type*: color3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13754,7 +13754,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_color3_color4
 * *Type*: color4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13770,7 +13770,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_color3_vector2
 * *Type*: vector2
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13786,7 +13786,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_color3_vector3
 * *Type*: vector3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13802,7 +13802,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_color3_vector4
 * *Type*: vector4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13818,7 +13818,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_color4_float
 * *Type*: float
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13834,7 +13834,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_color4_color3
 * *Type*: color3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13850,7 +13850,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_color4_color4
 * *Type*: color4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13866,7 +13866,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_color4_vector2
 * *Type*: vector2
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13882,7 +13882,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_color4_vector3
 * *Type*: vector3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13898,7 +13898,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_color4_vector4
 * *Type*: vector4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13914,7 +13914,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector2_float
 * *Type*: float
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13930,7 +13930,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector2_color3
 * *Type*: color3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13946,7 +13946,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector2_color4
 * *Type*: color4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13962,7 +13962,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector2_vector2
 * *Type*: vector2
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13978,7 +13978,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector2_vector3
 * *Type*: vector3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -13994,7 +13994,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector2_vector4
 * *Type*: vector4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14010,7 +14010,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector3_float
 * *Type*: float
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14026,7 +14026,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector3_color3
 * *Type*: color3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14042,7 +14042,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector3_color4
 * *Type*: color4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14058,7 +14058,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector3_vector2
 * *Type*: vector2
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14074,7 +14074,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector3_vector3
 * *Type*: vector3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14090,7 +14090,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector3_vector4
 * *Type*: vector4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14106,7 +14106,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector4_float
 * *Type*: float
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14122,7 +14122,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector4_color3
 * *Type*: color3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14138,7 +14138,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector4_color4
 * *Type*: color4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14154,7 +14154,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector4_vector2
 * *Type*: vector2
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14170,7 +14170,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector4_vector3
 * *Type*: vector3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14186,7 +14186,7 @@ graph LR;
  
 * *Nodedef*: ND_swizzle_vector4_vector4
 * *Type*: vector4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14203,7 +14203,7 @@ graph LR;
  
 * *Nodedef*: ND_combine2_vector2
 * *Type*: vector2
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14219,7 +14219,7 @@ graph LR;
  
 * *Nodedef*: ND_combine2_color4CF
 * *Type*: color4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14235,7 +14235,7 @@ graph LR;
  
 * *Nodedef*: ND_combine2_vector4VF
 * *Type*: vector4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14251,7 +14251,7 @@ graph LR;
  
 * *Nodedef*: ND_combine2_vector4VV
 * *Type*: vector4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14268,7 +14268,7 @@ graph LR;
  
 * *Nodedef*: ND_combine3_color3
 * *Type*: color3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14285,7 +14285,7 @@ graph LR;
  
 * *Nodedef*: ND_combine3_vector3
 * *Type*: vector3
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14303,7 +14303,7 @@ graph LR;
  
 * *Nodedef*: ND_combine4_color4
 * *Type*: color4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14321,7 +14321,7 @@ graph LR;
  
 * *Nodedef*: ND_combine4_vector4
 * *Type*: vector4
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14340,7 +14340,7 @@ graph LR;
  
 * *Nodedef*: ND_creatematrix_vector3_matrix33
 * *Type*: matrix33
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14357,7 +14357,7 @@ graph LR;
  
 * *Nodedef*: ND_creatematrix_vector3_matrix44
 * *Type*: matrix44
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14375,7 +14375,7 @@ graph LR;
  
 * *Nodedef*: ND_creatematrix_vector4_matrix44
 * *Type*: matrix44
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14394,7 +14394,7 @@ graph LR;
  
 * *Nodedef*: ND_extract_color3
 * *Type*: float
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_extract_color3
@@ -14432,7 +14432,7 @@ graph LR;
  
 * *Nodedef*: ND_extract_color4
 * *Type*: float
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_extract_color4
@@ -14474,7 +14474,7 @@ graph LR;
  
 * *Nodedef*: ND_extract_vector2
 * *Type*: float
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_extract_vector2
@@ -14508,7 +14508,7 @@ graph LR;
  
 * *Nodedef*: ND_extract_vector3
 * *Type*: float
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_extract_vector3
@@ -14546,7 +14546,7 @@ graph LR;
  
 * *Nodedef*: ND_extract_vector4
 * *Type*: float
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_extract_vector4
@@ -14589,7 +14589,7 @@ graph LR;
  
 * *Nodedef*: ND_separate2_vector2
 * *Type*: multioutput
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_separate2_vector2
@@ -14620,7 +14620,7 @@ graph LR;
  
 * *Nodedef*: ND_separate3_color3
 * *Type*: multioutput
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_separate3_color3
@@ -14655,7 +14655,7 @@ graph LR;
  
 * *Nodedef*: ND_separate3_vector3
 * *Type*: multioutput
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_separate3_vector3
@@ -14691,7 +14691,7 @@ graph LR;
  
 * *Nodedef*: ND_separate4_color4
 * *Type*: multioutput
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_separate4_color4
@@ -14731,7 +14731,7 @@ graph LR;
  
 * *Nodedef*: ND_separate4_vector4
 * *Type*: multioutput
-* *Node Group*: channel
+* *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_separate4_vector4
@@ -14772,7 +14772,7 @@ graph LR;
  
 * *Nodedef*: ND_blur_float
 * *Type*: float
-* *Node Group*: convolution2d
+* *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14789,7 +14789,7 @@ graph LR;
  
 * *Nodedef*: ND_blur_color3
 * *Type*: color3
-* *Node Group*: convolution2d
+* *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14806,7 +14806,7 @@ graph LR;
  
 * *Nodedef*: ND_blur_color4
 * *Type*: color4
-* *Node Group*: convolution2d
+* *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14823,7 +14823,7 @@ graph LR;
  
 * *Nodedef*: ND_blur_vector2
 * *Type*: vector2
-* *Node Group*: convolution2d
+* *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14840,7 +14840,7 @@ graph LR;
  
 * *Nodedef*: ND_blur_vector3
 * *Type*: vector3
-* *Node Group*: convolution2d
+* *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14857,7 +14857,7 @@ graph LR;
  
 * *Nodedef*: ND_blur_vector4
 * *Type*: vector4
-* *Node Group*: convolution2d
+* *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14875,7 +14875,7 @@ graph LR;
  
 * *Nodedef*: ND_heighttonormal_vector3
 * *Type*: vector3
-* *Node Group*: convolution2d
+* *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14892,7 +14892,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_float
 * *Type*: float
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14908,7 +14908,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_color3
 * *Type*: color3
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14924,7 +14924,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_color4
 * *Type*: color4
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14940,7 +14940,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_vector2
 * *Type*: vector2
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14956,7 +14956,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_vector3
 * *Type*: vector3
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14972,7 +14972,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_vector4
 * *Type*: vector4
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -14988,7 +14988,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_boolean
 * *Type*: boolean
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -15004,7 +15004,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_integer
 * *Type*: integer
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -15020,7 +15020,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_matrix33
 * *Type*: matrix33
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -15036,7 +15036,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_matrix44
 * *Type*: matrix44
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -15052,7 +15052,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_string
 * *Type*: string
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -15068,7 +15068,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_filename
 * *Type*: filename
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -15084,7 +15084,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -15100,7 +15100,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_displacementshader
 * *Type*: displacementshader
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -15116,7 +15116,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_volumeshader
 * *Type*: volumeshader
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -15132,7 +15132,7 @@ graph LR;
  
 * *Nodedef*: ND_dot_lightshader
 * *Type*: lightshader
-* *Node Group*: organization
+* *Group*: organization
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph

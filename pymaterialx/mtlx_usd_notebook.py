@@ -90,9 +90,6 @@ def printChildren(indent, prim):
 # Print out tree
 printChildren(' ', prim)
 
-# %%
-
-
 # %% [markdown]
 # ## 3. Examining Shader Graphs
 # 
@@ -168,28 +165,10 @@ materials = [x for x in stage.Traverse() if x.IsA(UsdShade.Material)]
 
 # %%
 # Perform basic setup
-def haveVersion(major, minor, patch):
-    """
-    Check if the current vesion matches a given version
-    """ 
-    imajor, iminor, ipatch = mx.getVersionIntegers()
-    if imajor < major:
-        return False
-    if iminor < minor:
-        return False
-    if ipatch < patch:
-        return False
-    return True
-
 stdlib = mx.createDocument()
 libFiles = []
-if haveVersion(1, 38, 7):
-    searchPath = mx.getDefaultDataSearchPath()
-    libFiles = mx.loadLibraries(mx.getDefaultDataLibraryFolders(), searchPath, stdlib)
-else:
-    libraryPath = mx.FilePath('libraries')
-    searchPath = mx.FileSearchPath()
-    libFiles = mx.loadLibraries([ libraryPath ], searchPath, stdlib)
+searchPath = mx.getDefaultDataSearchPath()
+libFiles = mx.loadLibraries(mx.getDefaultDataLibraryFolders(), searchPath, stdlib)
     
 doc = mx.createDocument()
 doc.importLibrary(stdlib)
@@ -585,7 +564,9 @@ def emitMaterialX(stage, indent, prim, parent):
             # Look for an existing definition. If found add an instance and populate
             # it's inputs and outputs.
             doc = parent.getDocument()
-            mtlxNodeDef = doc.getNodeDef(mtlxNodeDefId)
+            mtlxNodeDef = None
+            if mtlxNodeDefId:
+                mtlxNodeDef = doc.getNodeDef(mtlxNodeDefId)
             if mtlxNodeDef:
                 mtlxShadername = parent.createValidChildName(prim.GetName())
                 shaderNode = parent.addNodeInstance(mtlxNodeDef, mtlxShadername)                
@@ -608,6 +589,11 @@ def convertUsdToMtlx(stage, stdlib):
 
     return doc
 
+stdlib = mx.createDocument()
+libFiles = []
+searchPath = mx.getDefaultDataSearchPath()
+libFiles = mx.loadLibraries(mx.getDefaultDataLibraryFolders(), searchPath, stdlib)
+print('Loaded in %d definitions' % len(stdlib.getNodeDefs()))
 doc = convertUsdToMtlx(stage, stdlib)
 
 # Write results to Markdown / file
@@ -1207,6 +1193,10 @@ def convertMtlxToUsd(mtlxFileName, emitAllValueElements):
     # Find nodes to transform before importing the definition library
     mx.readFromXmlFile(doc, mtlxFileName)
     mxnodes = findMaterialXNodes(doc)
+    stdlib = mx.createDocument()
+    libFiles = []
+    searchPath = mx.getDefaultDataSearchPath()
+    libFiles = mx.loadLibraries(mx.getDefaultDataLibraryFolders(), searchPath, stdlib)
     doc.importLibrary(stdlib)
     
     # Translate

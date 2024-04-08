@@ -14611,7 +14611,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 | When available the Blender libraries may also be examined.</li>
 </ul>
 <p>The basic data flow examined is shown below:</p>
-<img loading="lazy" src="images/houdini_maya_blender_library_usage.png" width="80%">
+<img src="images/houdini_maya_blender_library_usage.png" width="80%">
 <p>Note that regardless of all libraries are in MaterialX form so can be accessed outside of the application integraion.</p>
 <h2 id="Core-Library-Setup">Core Library Setup<a class="anchor-link" href="#Core-Library-Setup">&#182;</a></h2>
 </div>
@@ -15130,7 +15130,7 @@ Document is valid after patch.
 <h3 id="Integration-with-Node-Graph-Editors">Integration with Node Graph Editors<a class="anchor-link" href="#Integration-with-Node-Graph-Editors">&#182;</a></h3><p>By including the search path and library names to the MaterialX node editor which comes with the core distribution, graphs can be
 created and edited with this tool.</p>
 <p>The following is a similar nodegraph example but created in the editor.</p>
-<img loading="lazy" src="images/MayaBlinn_NodeEditor.png" width="80%">
+<img src="images/MayaBlinn_NodeEditor.png" width="80%">
 <div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;materialx</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.38&quot;</span><span class="w"> </span><span class="na">colorspace=</span><span class="s">&quot;lin_rec709&quot;</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;surfacematerial</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;MayaBliinChecker&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;material&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;14.442029&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;-2.456897&quot;</span><span class="nt">&gt;</span>
@@ -15498,7 +15498,7 @@ There is no &quot;downgrade&quot; process so reading into a version older than 1
 <li><code>nodegroup</code> is set to be <code>houdini</code> which makes it harder to classify for code generation, but Houdini does</li>
 </ul>
 <p>not directly use a MaterialX code generator to produce VEX.</p>
-<img loading="lazy" src="images/Houdini_Node_Editor.png" width=80%>
+<img src="images/Houdini_Node_Editor.png" width=80%>
 
 </div>
 </div>
@@ -15518,7 +15518,7 @@ though it is premature to comment on mapping to MaterialX as this export workflo
 a Usd Material (node graph). <strong>For now both do no handle these MaterialX nodes.</strong></p>
 <ul>
 <li><p>Export to a MaterialX document is directly exposed (unlike in Maya currently). For this, the <code>vop2mtlx</code> Python script can be used directly or via the Houdini user interface.</p>
-<img loading="lazy" src="images/Houdini_Subnet_Mtlx_Save.png" width="30%">
+<img src="images/Houdini_Subnet_Mtlx_Save.png" width="30%">
 </li>
 </ul>
 <p>In either case, an asset (<code>hda</code>) must be created from the subnet before export. The additional <code>houdini</code> library definitions are recogized by the converter.</p>
@@ -15552,11 +15552,11 @@ within the MaterialX document.</p>
 <ul>
 <li>Top level nodegraph</li>
 </ul>
-<img loading="lazy" src="images/MTLXEditor_Houdini_Top_Level.png" width="50%">
+<img src="images/MTLXEditor_Houdini_Top_Level.png" width="50%">
 <ul>
 <li>Expanded nodegraph contents</li>
 </ul>
-<img loading="lazy" src="images/MTLXEditor_Houdini_Graph_Expanded.png" width="100%">
+<img src="images/MTLXEditor_Houdini_Graph_Expanded.png" width="100%">
 
 </div>
 </div>

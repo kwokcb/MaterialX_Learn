@@ -15124,14 +15124,14 @@ which is part of the 1.38.9 release.</p>
 <p>Some example results are shown below to show: lit vs unlit, texture resource usage. (more to come)</p>
 <table border="0">
 <tr>
-<td><img loading="lazy" src="./data/standard_surface_marble_solid.png" style="border:5px outset silver" > 
-<td><img loading="lazy" src="./data/unlit_marble_solid.png" style="border:5px outset silver" >  
-<td><img loading="lazy" src="./data/unlit_image.png" style="border:5px outset silver" > 
+<td><img src="./data/standard_surface_marble_solid.png" style="border:5px outset silver" > 
+<td><img src="./data/unlit_marble_solid.png" style="border:5px outset silver" >  
+<td><img src="./data/unlit_image.png" style="border:5px outset silver" > 
 </tr>
 <tr>
-<td><img loading="lazy" src="./data/sample_nodegraph.png" style="border:5px outset silver" > 
-<td><img loading="lazy" src="./data/stained_glass_material.png" style="border:5px outset silver" >  
-<td><img loading="lazy" src="./data/blender_to_mtlx.png" style="border:5px outset silver" > 
+<td><img src="./data/sample_nodegraph.png" style="border:5px outset silver" > 
+<td><img src="./data/stained_glass_material.png" style="border:5px outset silver" >  
+<td><img src="./data/blender_to_mtlx.png" style="border:5px outset silver" > 
 </tr>
 </table>
 <sup>The top row of images are renders from different files. Left shows the sample Marble from the MaterialX distribution,
@@ -15200,7 +15200,7 @@ and loading in standard libraries.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Loaded 746 standard library definitions
+<pre>Loaded 750 standard library definitions
 </pre>
 </div>
 </div>
@@ -16087,8 +16087,8 @@ Here only indirect lighting is setup.</p>
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Setup lighting:
-- Loaded radiance map: 1 x 1
-- Loaded irradiance map: 1 x 1
+- Loaded radiance map: 2048 x 1024
+- Loaded irradiance map: 256 x 128
 </pre>
 </div>
 </div>
@@ -16387,7 +16387,6 @@ Stage name: &#34;pixel&#34;
   - Variable: displacementshader1. Value: (&lt;NONE&gt;). Type: displacementshader, Path: &#34;&lt;NONE&gt;&#34;
   - Variable: texcoord_vector2_index. Value: (0). Type: integer, Path: &#34;nodegraph1/texcoord_vector2/index&#34;
   - Variable: image_color3_file. Value: (checker.png). Type: filename, Path: &#34;nodegraph1/filename_port&#34;
-   - Unit:, ColorSpace:lin_rec709
   - Variable: image_color3_layer. Value: (&lt;NONE&gt;). Type: string, Path: &#34;nodegraph1/image_color3/layer&#34;
   - Variable: image_color3_default. Value: (0.574572, 0.0112386, 0.0112386). Type: color3, Path: &#34;nodegraph1/image_color3/default&#34;
   - Variable: image_color3_uaddressmode. Value: (2). Type: integer, Path: &#34;nodegraph1/image_color3/uaddressmode&#34;
@@ -16418,8 +16417,8 @@ Stage name: &#34;pixel&#34;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<img loading="lazy" src='./data/unlit_image_graph.png' width='80%'>
-<img loading="lazy" src='./data/unlit_image_top_level.png' width='80%'>
+<img src='./data/unlit_image_graph.png' width='80%'>
+<img src='./data/unlit_image_top_level.png' width='80%'>
 
 </div>
 </div>
@@ -16673,7 +16672,7 @@ Create renderer program from shader
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<h3 id=".%5Cdata%5Cunlit_image.png">.\data\unlit_image.png<a class="anchor-link" href="#.%5Cdata%5Cunlit_image.png">&#182;</a></h3><img loading="lazy" src=".\data\unlit_image.png" style="border:5px outset silver">
+<h3 id=".%5Cdata%5Cunlit_image.png">.\data\unlit_image.png<a class="anchor-link" href="#.%5Cdata%5Cunlit_image.png">&#182;</a></h3><img src=".\data\unlit_image.png" style="border:5px outset silver">
 
 </div>
 
@@ -16781,7 +16780,6 @@ and then find the target shader variable to update.</p>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>- Loaded image: &#34;checker.png&#34;. Size: 1920 x 1920. Channel count: 3
  - Base Type: BaseType.UINT8 . Base Stride: 1
- - Source color space: lin_rec709
 - Bind to program / shader port: image_color3_file
 </pre>
 </div>
