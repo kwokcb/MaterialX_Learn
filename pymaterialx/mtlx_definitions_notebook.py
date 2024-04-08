@@ -849,7 +849,7 @@ mxf.MtlxFile.writeDocumentToFile(filesource_doc, './data/myadd_definition_file.m
 # 
 # Below shows a layout for how the standard libraries are organized on the left.
 # 
-# <img loading="lazy" src="../documents/images/definition_library_org.jpg" width="80%">
+# <img src="../documents/images/definition_library_org.jpg" width="80%">
 # 
 # For example if we consider the grouping on the left to be `stdlib`, then it is composed of:
 # * A separate file `stdlib_defs.mtlx` containing all definitions (`_defs`)

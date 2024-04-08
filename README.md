@@ -20,7 +20,7 @@ If you find value in here and want support its progress, Please consider sponsor
 
 ## Visit the site 
 <a href="https://kwokcb.github.io/MaterialX_Learn/">
-<img loading="lazy" src="./documents/images/march_2024_1.38.9_final.png" width="60%">
+<img src="./documents/images/march_2024_1.38.9_final.png" width="60%">
 </a>
 
 ## March, 2024 Update

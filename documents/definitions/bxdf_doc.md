@@ -20,7 +20,7 @@
  
 * *Nodedef*: ND_disney_brdf_2012_surface
 * *Type*: surfaceshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -46,7 +46,7 @@
  
 * *Nodedef*: ND_disney_bsdf_2015_surface
 * *Type*: surfaceshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Implementation*: Non-graph
@@ -76,7 +76,7 @@
  
 * *Nodedef*: ND_gltf_pbr_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 2.0.1. Is default: True
 * *Doc*: glTF PBR
 * *Nodegraph*: IMPL_gltf_pbr_surfaceshader
@@ -285,7 +285,7 @@ graph LR;
  
 * *Nodedef*: ND_gltf_colorimage
 * *Type*: multioutput
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_gltf_colorimage
@@ -359,7 +359,7 @@ graph LR;
  
 * *Nodedef*: ND_gltf_image_color3_color3_1_0
 * *Type*: color3
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_NG_gltf_image_color3_color3_1_0
@@ -422,7 +422,7 @@ graph LR;
  
 * *Nodedef*: ND_gltf_image_color4_color4_1_0
 * *Type*: color4
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_gltf_image_color4_color4_1_0
@@ -485,7 +485,7 @@ graph LR;
  
 * *Nodedef*: ND_gltf_image_float_float_1_0
 * *Type*: float
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_gltf_image_float_float_1_0
@@ -548,7 +548,7 @@ graph LR;
  
 * *Nodedef*: ND_gltf_image_vector3_vector3_1_0
 * *Type*: vector3
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_gltf_image_vector3_vector3_1_0
@@ -608,7 +608,7 @@ graph LR;
  
 * *Nodedef*: ND_gltf_normalmap_vector3_1_0
 * *Type*: vector3
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_gltf_normalmap_vector3_1_0
@@ -669,7 +669,7 @@ graph LR;
  
 * *Nodedef*: ND_gltf_iridescence_thickness_float_1_0
 * *Type*: float
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_gltf_iridescence_thickness_float_1_0
@@ -730,7 +730,7 @@ graph LR;
  
 * *Nodedef*: ND_open_pbr_surface_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 0.2. Is default: True
 * *Doc*: OpenPBR Surface Shading Model
 * *Nodegraph*: NG_open_pbr_surface_surfaceshader
@@ -1051,7 +1051,7 @@ graph LR;
  
 * *Nodedef*: ND_standard_surface_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0.1. Is default: True
 - *Inherits From*: ND_standard_surface_surfaceshader_100
 * *Doc*: Autodesk standard surface shader
@@ -1286,7 +1286,7 @@ graph LR;
  
 * *Nodedef*: ND_standard_surface_surfaceshader_100
 * *Type*: surfaceshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0.0. Is default: False
 * *Doc*: Autodesk standard surface shader
 * *Nodegraph*: NG_standard_surface_surfaceshader_100
@@ -1562,7 +1562,7 @@ graph LR;
  
 * *Nodedef*: ND_UsdPreviewSurface_surfaceshader
 * *Type*: surfaceshader
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 2.3. Is default: True
 * *Doc*: USD preview surface shader
 * *Nodegraph*: IMP_UsdPreviewSurface_surfaceshader
@@ -1690,7 +1690,7 @@ graph LR;
  
 * *Nodedef*: ND_UsdUVTexture
 * *Type*: multioutput
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 2.2. Is default: False
 - *Inherits From*: ND_UsdUVTexture_23
 * *Doc*: UNDOCUMENTED
@@ -1744,7 +1744,7 @@ graph LR;
  
 * *Nodedef*: ND_UsdUVTexture_23
 * *Type*: multioutput
-* *Node Group*: texture2d
+* *Group*: texture2d
 * *Version*: 2.3. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: IMP_UsdUVTexture_23
@@ -1802,7 +1802,7 @@ graph LR;
  
 * *Nodedef*: ND_UsdPrimvarReader_integer
 * *Type*: integer
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: IMP_UsdPrimvarReader_integer
@@ -1830,7 +1830,7 @@ graph LR;
  
 * *Nodedef*: ND_UsdPrimvarReader_boolean
 * *Type*: boolean
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: IMP_UsdPrimvarReader_boolean
@@ -1858,7 +1858,7 @@ graph LR;
  
 * *Nodedef*: ND_UsdPrimvarReader_string
 * *Type*: string
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: IMP_UsdPrimvarReader_string
@@ -1886,7 +1886,7 @@ graph LR;
  
 * *Nodedef*: ND_UsdPrimvarReader_float
 * *Type*: float
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: IMP_UsdPrimvarReader_float
@@ -1914,7 +1914,7 @@ graph LR;
  
 * *Nodedef*: ND_UsdPrimvarReader_vector2
 * *Type*: vector2
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: IMP_UsdPrimvarReader_vector2
@@ -1942,7 +1942,7 @@ graph LR;
  
 * *Nodedef*: ND_UsdPrimvarReader_vector3
 * *Type*: vector3
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: IMP_UsdPrimvarReader_vector3
@@ -1970,7 +1970,7 @@ graph LR;
  
 * *Nodedef*: ND_UsdPrimvarReader_vector4
 * *Type*: vector4
-* *Node Group*: geometric
+* *Group*: geometric
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: IMP_UsdPrimvarReader_vector4
@@ -1999,7 +1999,7 @@ graph LR;
  
 * *Nodedef*: ND_UsdTransform2d
 * *Type*: vector2
-* *Node Group*: math
+* *Group*: math
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: IMP_UsdTransform2d
@@ -2034,7 +2034,7 @@ graph LR;
  
 * *Nodedef*: ND_lama_add_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_lama_add_bsdf
@@ -2070,7 +2070,7 @@ graph LR;
  
 * *Nodedef*: ND_lama_add_edf
 * *Type*: EDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_lama_add_edf
@@ -2107,7 +2107,7 @@ graph LR;
  
 * *Nodedef*: ND_lama_conductor
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: Lama conductor
 * *Nodegraph*: IMPL_lama_conductor
@@ -2217,7 +2217,7 @@ graph LR;
  
 * *Nodedef*: ND_lama_dielectric
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: Lama dielectric
 * *Nodegraph*: IMPL_lama_dielectric
@@ -2325,7 +2325,7 @@ graph LR;
  
 * *Nodedef*: ND_lama_diffuse
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_lama_diffuse
@@ -2364,7 +2364,7 @@ graph LR;
  
 * *Nodedef*: ND_lama_emission
 * *Type*: EDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: Lama emission
 * *Nodegraph*: IMPL_lama_emission
@@ -2390,7 +2390,7 @@ graph LR;
  
 * *Nodedef*: ND_lama_layer_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_lama_layer_bsdf
@@ -2424,7 +2424,7 @@ graph LR;
  
 * *Nodedef*: ND_lama_mix_bsdf
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_lama_mix_bsdf
@@ -2455,7 +2455,7 @@ graph LR;
  
 * *Nodedef*: ND_lama_mix_edf
 * *Type*: EDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_lama_mix_edf
@@ -2487,7 +2487,7 @@ graph LR;
  
 * *Nodedef*: ND_lama_sheen
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: Lama sheen
 * *Nodegraph*: IMPL_lama_sheen
@@ -2522,7 +2522,7 @@ graph LR;
  
 * *Nodedef*: ND_lama_sss
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: Lama SSS
 * *Nodegraph*: IMPL_lama_sss
@@ -2579,7 +2579,7 @@ graph LR;
  
 * *Nodedef*: ND_lama_translucent
 * *Type*: BSDF
-* *Node Group*: pbr
+* *Group*: pbr
 * *Version*: 1.0. Is default: True
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_lama_translucent
@@ -2612,7 +2612,7 @@ graph LR;
  
 * *Nodedef*: ND_standard_surface_to_gltf_pbr
 * *Type*: multioutput
-* *Node Group*: translation
+* *Group*: translation
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_standard_surface_to_gltf_pbr
@@ -2735,7 +2735,7 @@ graph LR;
  
 * *Nodedef*: ND_standard_surface_to_UsdPreviewSurface
 * *Type*: multioutput
-* *Node Group*: translation
+* *Group*: translation
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_standard_surface_to_UsdPreviewSurface

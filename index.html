@@ -3,6 +3,9 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Authors: Bernard Kwok and Matthew Kwok. Resource site for the
+  Academy Software Foundation MaterialX -- an open source industry standard for 3D / Cg materials.
+  Resources include interaction with related standards: OpenUSD, Khronos glTF, OpenImageIO.">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
@@ -22,29 +25,31 @@
     }
   </style>
 
-  <link rel="icon" href="./documents/images/logo3d_icon.png" type="image/x-icon" />
+  <!-- <link rel="icon" href="./documents/images/logo3d_icon.png" type="image/x-icon" /> -->
   <!--
   <link rel="icon" href="./documents/images/logo3d_2_small.png" type="image/x-icon" />
   -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css"> -->
 
   <link rel="stylesheet" href="./documents/css/style.css">
 
+  <!-- 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  -->
 
   
 
   <title>MaterialX Learn</title>
-  <link rel="icon" type="images" href="./documents/images/logo3d_icon.png" class="img-fluid">
+  <link rel="icon" type="images" href="./documents/images/logo3d_icon.png" type="image/x-icon" class="img-fluid">
 
 </head>
 
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+  
   <script src="./documents/js/ui_helpers.js"></script>
 
   </script>  
@@ -53,7 +58,7 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="./index.html">
-            <h5><img loading="lazy" src="./documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img src="./documents/images/logo3d_2_small.png" alt="MaterialX Learn"
                     class="rounded d-inline-block align-text-center" width="50px">
                 MaterialX Learn</h5>
         </a>
@@ -111,7 +116,7 @@
                                 href="./documents/definitions/library_glossary.html">Library
                                 Glossary</a></li>
                         <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
-                                target="_blank"><img loading="lazy" src="./documents/images/MaterialXLogo_200x155.png"
+                                target="_blank"><img src="./documents/images/MaterialXLogo_200x155.png"
                                     style="width:20px"> C++ API</a></li>
 
                         <li class="dropend">
@@ -146,7 +151,7 @@
                         <div class="dropdown-divider"></div>
                         <li>
                             <a class="dropdown-item" href="./documents/using_library.html">
-                                <img loading="lazy" src="./documents/images/info-circle.svg"> Library User Guide
+                                <img src="./documents/images/info-circle.svg"> Library User Guide
                             </a>
                         </li>
                     </ul>
@@ -209,46 +214,75 @@
   <!-- Section Information -->
   <section class="py-0 px-0 g-0">
     <div class="container-fluid p-4">
-      <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
-</script>
+      <style>
+  #button-load {
+    cursor: pointer;
+    z-index: 100;
+  }
+</style>
+
+<!-- <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+</script> -->
+
 
 <div class="container-fluid bg-body-tertiary px-1 py-1">
 
   <!-- Banner -->
   <div class="row p-2 p-md-4 mb-2 rounded text-bg-dark shadow-sm"
-    style="background-image: url('documents/images/logo3d_dark.png');">
+    style="background-image: url('documents/images/logo3d_dark.webp'); background-size: cover; background-position: center;">
     <div class="col-6">
       <h2 class="display-8 ">MaterialX Learn</h2>
       <p class=" fs-8 my-3">You have reached the home of "MaterialX Learn". </p>
       <p>The intent of this site is to provide learning materials as well as complementary utilities for working
         with
-        <b><a href="https://materialx.org" target="_blank"><img loading="lazy" src="documents/images/MaterialXLogo2K.png" width="30">
+        <b><a href="https://materialx.org" target="_blank"><img alt="MaterialX Logo icon" load="lazy" alt="MaterialX Logo" src="documents/images/MaterialXLogo_icon.gif" width="30">
             MaterialX</a></b>
       </p>
 
     </div>
-    <div class="col-6 p-0">
-      <model-viewer class="rounded-4 p-0" interaction-prompt="none"
+    <div class="col-6 d-flex p-0 justify-content-center align-items-center">
+      <img load="lazy" id="load_viewer" src="./documents/images/web_logo_poster.webp" height="150">
+      <!-- <model-viewer id="viewer" class="rounded-4 p-0 " interaction-prompt="none"
         style="background-color: rgba(59, 59, 59, 0.0); width: 100%; height: 100%;" id="blah" camera-controls
         touch-action="pan-y" src="./resources/logo3d.glb" disable-zoom disable-pan disable-tap
         camera-orbit="160deg 66deg 20m" environment-image="./documents/images/narrow_moonlit_road_1k.hdr"
-        alt="logo viewer" poster="" exposure="1.0" shadow-softness="0.5" shadow-intensity="0.7" skybox-image="">
-      </model-viewer>
+        alt="logo viewer" poster="" exposure="1.0" shadow-softness="0.5" shadow-intensity="0.7" skybox-image=""
+        hidden >
+      </model-viewer> -->
     </div>
   </div>
 
   <!-- What's New -->
   <div class="row mb-0">
     <div class="col-md-6">
-      <h3 class="d-inline-block mb-2 text-primary">Updates</h3>
+      <h3 class="d-inline-block mb-2">Updates</h3>
       <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative"
         style="max-height: 20em">
         <div class="col p-2 d-flex flex-column position-static">
+          <div class="mb-1 text-muted">April, 2024</div>
+          <b class="mb-0">Shader Generation</b>
+          <div class="row">
+            <div class="col-5">
+              <img alt="Shader reflection example" load="lazy" src="./documents/images/shader_reflection_example.webp" width="100%">              
+            </div>
+            <div class="col-7">
+              <li>
+                The <a href="./javascript/viewer/dist/index_out.html">shader preview utility</a> workflow has
+                been improved including adding support for generation of various shader
+                targets including: OSL, GLSL, MetalSL, and Vulkan. Shader "reflection" information has been added
+                to reflect how path mapping and show how the "complete" vs "reduced" interface affects reflection. 
+              </li>
+              <li>
+                Python notebooks: The definition creation and other notebooks have be updated to 1.39. 
+                A <b>shader reflection</b> utility been added to the shader generation notebook.
+              </li>
+            </div>
+        </div>
           <div class="mb-1 text-muted">March, 2024</div>
           <b class="mb-0">Utilities, Definitions</b>
           <div class="row">
             <div class="col-4">
-              <img loading="lazy" src="./documents/images/mobile_color_no_wrap_three_columns.jpg" width="100%">
+              <img alt="Mobile 3d column layout" load="lazy" src="./documents/images/mobile_color_no_wrap_three_columns.webp" width="100%">
             </div>
             <div class="col-8">
               <ul>
@@ -258,22 +292,15 @@
                 </li>
                 <li>
                   <a href="https://guannan-kwok.github.io/assetLibrary/materialx/" target="_blank">
-                    <img loading="lazy" src="./documents/images/web_logo_poster.png" width="48px">Graphic Design
-                  </a>
-                  asset documentation is now available for the site.
+                    <img load="lazy" src="./documents/images/web_logo_poster.webp" width="24px">Graphic Design
+                  </a> asset documentation is now available for the site.
                 </li>
-                </li>
-                <li>
-                  The <a href="./javascript/viewer/dist/index_out.html">shader preview utility</a> workflow has
-                  been improved including adding support for generation of various shader
-                  targets including: OSL, GLSL, MetalSL, and Vulkan.
                 </li>
                 <li>
                   The definitions reference is now in sync with 1.39 and includes a <a
                     href="./documents/jupyter_example.html">
                     "Node Usage" notebook</a> with code to determine the node usage in nodegraph implementations and
-                  which
-                  implementations use a given node.
+                  which implementations use a given node. 
                 </li>
               </ul>
             </div>
@@ -285,10 +312,10 @@
             <b class="mb-0">Utilities</b>
             <div class="row">
               <div class="col-6">
-                <img loading="lazy" src="documents/images/js_doc_hilight_graph.png" width="100%">
+                <img alt="Javascript Graphing" load="lazy" src="documents/images/js_doc_hilight_graph.png" width="100%">
               </div>
               <div class="col-6">
-                <img loading="lazy" src="documents/images/js_codegen_render.png" width="100%">
+                <img alt="Javascript Rendering" load="lazy" src="documents/images/js_codegen_render.png" width="100%">
               </div>
             </div>
             <p>
@@ -315,13 +342,13 @@
               incorporation into the <a href="https://github.com/PrismPipeline/QuiltiX" target="_blank">QuiltiX
                 editor</a>as well as additional OpenUSD support utilities.
 
-              <img loading="lazy" src="https://github.com/kwokcb/QuiltiX/blob/gltf_plugin/plugins/QuiltiX_GLTF_JSON_USD.png?raw=true"
+              <img alt="QuiltiX GLTF JSON USD" load="lazy" src="documents/images/QuiltiX_GLTF_JSON_USD.webp"
                 height="256em" role="img" aria-label="Placeholder: Thumbnail" class="img-fluid"
                 preserveAspectRatio="xMidYMid slice" focusable="false">
             <p>
               Start of interactive previews for references starting with
               <a href="documents/definitions/gltf_pbr.html">glTF pbr</a>.
-              <img loading="lazy" style="border: 1px solid rgb(76, 76, 76);"
+              <img alt="Reference Preview Rendering" load="lazy" style="border: 1px solid rgb(76, 76, 76);"
                 src="./documents/images/gltf_pbr_interactive_preview_reference.png" width="100%">
               Improvements to <a href="documents/gltfViewer.html">glTF
                 utility viewer</a> support also added including drag and drop of glTF and environment files.
@@ -334,7 +361,7 @@
               Additional work to improve supported graphs, usability and performance of the ASWF MaterialX web viewer
               can be found <a href="https://academysoftwarefoundation.github.io/MaterialX" target="_blank">here</a>.
               (OpenPBR graph shown in viewer below)
-              <img loading="lazy" src="./documents/images/openpbr_graph_jan_2024.png" width="100%">
+              <img alt="OpenPBR node graph" load="lazy" src="./documents/images/openpbr_graph_jan_2024.webp" width="100%">
               (Note: <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/resources/mtlx/nodedef_materials"
                 target="_blank">Graphs</a> used to create reference images are now previewable in the web viewer)
             </p>
@@ -348,14 +375,14 @@
       </div>
     </div>
     <div class="col-md-6">
-      <h3 class="d-inline-block mb-2 text-success">News</h3>
+      <h3 class="d-inline-block mb-2">News</h3>
       <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative"
         style="max-height: 20em">
         <div class="col p-4 d-flex flex-column position-static">
           <div class="mb-1 text-muted">April, 2024</div>
           <p>
             Read about the latest updates for <a href="./documents/presentations.html">Khronos glTF shading
-              networks</a> on the presentation page. The update on this extension was presented at <a href=" 
+              networks</a> on the presentation page. The update on this extension was presented at <a href="
               https://www.khronos.org/events/webgl-webgpu-meetup-GDC-2024" target="_blank">GDC 2024</a>, with the
               WIP draft specification available <a href="https://github.com/KhronosGroup/glTF/tree/KHR_texture_procedurals/extensions/2.0/Khronos/KHR_texture_procedurals"
               target="_blank">on the Khronos github</a>.
@@ -381,7 +408,7 @@
                   href="https://github.com/AcademySoftwareFoundation/OpenPBR/blob/main/reference/open_pbr_surface.mtlx">
                   OpenPBR</a> MaterialX reference implementation (See <a
                   href="documents/definitions/open_pbr_surface.html">reference section</a>).
-                <img loading="lazy" class="p-3 bg-light" style="border: 1px solid rgb(76, 76, 76);"
+                <img alt="OpenBLR Graph" load="lazy" class="p-3 bg-light" style="border: 1px solid rgb(76, 76, 76);"
                   src="./documents/images/openpbr_graph_jan_2024.svg" width="100%">
               </li>
             </ul>
@@ -394,7 +421,7 @@
             <ul>
               <li><a href="https://kwokcb.github.io/materialxgltf/" target="_blank">MaterialX / glTF</a> bi-directional
                 translation package
-                <img loading="lazy" src="https://kwokcb.github.io/materialxgltf/docs/images/ThreeJS_editor_chessset.png" width="50%">
+                <img alt="Web chess set" load="lazy" src="documents/images/ThreeJS_editor_chessset.webp" width="50%">
               </li>
               <li><a href="https://kwokcb.github.io/materialxjson/" target="_blank">MaterialX XML / JSON</a>
                 bi-directional converter package</li>
@@ -403,7 +430,7 @@
         </div>
         <!--
         <div class="col-auto d-none d-lg-block">
-          <img loading="lazy" src="documents/images/MaterialXLogo2K.png" height="100" role="img" aria-label="Placeholder: Thumbnail"
+          <img src="documents/images/MaterialXLogo2K.png" height="100" role="img" aria-label="Placeholder: Thumbnail"
             preserveAspectRatio="xMidYMid slice" focusable="false">
           <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">
         </div>-->
@@ -412,15 +439,15 @@
   </div>
 
   <!-- Content Cards -->
-  <h3 class="d-inline-block mb-2 text-info">Learn</h3>
+  <h3 class="d-inline-block mb-2">Learn</h3>
   <div class="container-fluid px-2 py-2 border shadow" id="hanging-icons">
 
-    <div class="row ps-2 pe-0 row-cols-1 row-cols-sm-3 bg-body-tertiary d-flex flex-row overflow-auto"
-      style="max-height: 20em">
+    <div class="row ps-2 pe-0 row-cols-1 row-cols-sm-3 bg-body-tertiary d-flex flex-row overflow-y-auto"
+      style="max-height: 80em">
 
       <div class="col pt-3 pb-3">
         <div>
-          <img loading="lazy" src="documents/images/FireplaceMaterial.png" alt="Learn"
+          <img load="lazy" src="documents/images/FireplaceMaterial.webp" alt="Learn"
             class="rounded-4 shadow border border-grey img-fluid w-50 ">
           <p>
           <h3 class="fs-5 ">Learn</h3>
@@ -445,7 +472,7 @@
 
       <div class="col pt-3 pb-3">
         <div>
-          <img loading="lazy" src="documents/images/DirtyWoodMaterial.png" alt="Reference"
+          <img load="lazy" src="documents/images/DirtyWoodMaterial.webp" alt="Reference"
             class="rounded-4 shadow border border-grey img-fluid w-50 ">
           <p>
           <h3 class="fs-5">Reference</h3>
@@ -459,11 +486,11 @@
             <li><a class="dropdown-item" href="./documents/definitions/library_glossary.html">Glossary</a></li>
             <li><a class="dropdown-item" href="./documents/definitions/definitions_by_group.html">Node Library</a></li>
             <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
-                <img loading="lazy" src="documents/images/MaterialXLogo_200x155.png" style="width:20"> C++ API
+                <img load="lazy" src="documents/images/MaterialXLogo_200x155.png" style="width:20"> C++ API
               </a></li>
             <li>
               <a class="dropdown-item" href="documents/using_library.html">
-                <img loading="lazy" src="documents/images/info-circle.svg"> Library User Guide
+                <img load="lazy" src="documents/images/info-circle.svg"> Library User Guide
               </a>
             </li>
             <li class="dropend" data-bs-auto-close="outside">
@@ -489,7 +516,7 @@
 
       <div class="col pt-3 pb-3">
         <div>
-          <img loading="lazy" src="documents/images/graph.png" alt="Bootstrap"
+          <img load="lazy" src="documents/images/graph.png" alt="Bootstrap"
             class="rounded-4 border shadow border-grey img-fluid w-50 ">
           <p>
           <h3 class="fs-5">Utilities</h3>
@@ -515,7 +542,7 @@
 
       <div class="col pt-3 pb-3">
         <div>
-          <img loading="lazy" src="documents/images/VSCode_Environment2.png" alt="Bootstrap"
+          <img load="lazy" src="documents/images/VSCode_Environment2.webp" alt="Bootstrap"
             class="rounded-4 shadow border border-grey img-fluid w-50 ">
           <p>
           <h3 class="fs-5 ">Develop</h3>
@@ -537,7 +564,7 @@
 
       <div class="col pt-3 pb-3">
         <div>
-          <img loading="lazy" src="documents/images/Sample_ShaderBall_Brick.png" alt="Bootstrap"
+          <img load="lazy" src="documents/images/Sample_ShaderBall_Brick.webp" alt="Bootstrap"
             class="rounded-4 border shadow border-grey img-fluid w-50 ">
           <p>
           <h3 class="fs-5 ">Workflows</h3>
@@ -558,7 +585,7 @@
 
       <div class="col pt-3 pb-3 ">
         <div>
-          <img loading="lazy" src="documents/images/Design_Icon.png" alt="Bootstrap"
+          <img load="lazy" src="documents/images/Design_Icon.png" alt="Bootstrap"
             class="rounded-4 border shadow border-black img-fluid w-50 ">
           <p>
           <h3 class="fs-5 ">Design</h3>
@@ -585,6 +612,19 @@
   </div>
 </div>
 
+<!--
+<script>
+  function loadViewer(event) {
+    console.log('clicked');
+    viewer = document.getElementById('viewer');
+    viewer.hidden = false
+    event.target.hidden = true
+  }
+
+  document.getElementById('load_viewer').addEventListener('click', loadViewer);
+</script>
+-->
+
     </div>
   </section>
 
@@ -602,7 +642,7 @@
       </ul>
       <p>
         <a class="bg-dark p-2 right" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-            <img loading="lazy" alt="Creative Commons License" style="border-width:0"
+            <img alt="Creative Commons License" style="border-width:0"
                 src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
         &copy; 2022-2024 NanMu Consulting.</a>
       </p>      

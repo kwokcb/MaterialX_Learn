@@ -3,6 +3,9 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Authors: Bernard Kwok and Matthew Kwok. Resource site for the
+  Academy Software Foundation MaterialX -- an open source industry standard for 3D / Cg materials.
+  Resources include interaction with related standards: OpenUSD, Khronos glTF, OpenImageIO.">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
@@ -22,24 +25,26 @@
     }
   </style>
 
-  <link rel="icon" href="../documents/images/logo3d_icon.png" type="image/x-icon" />
+  <!-- <link rel="icon" href="../documents/images/logo3d_icon.png" type="image/x-icon" /> -->
   <!--
   <link rel="icon" href="../documents/images/logo3d_2_small.png" type="image/x-icon" />
   -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css"> -->
 
   <link rel="stylesheet" href="../documents/css/style.css">
 
+  <!-- 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  -->
 
   
 
   <title>MaterialX Learn</title>
-  <link rel="icon" type="images" href="../documents/images/logo3d_icon.png" class="img-fluid">
+  <link rel="icon" type="images" href="../documents/images/logo3d_icon.png" type="image/x-icon" class="img-fluid">
 
 </head>
 
@@ -53,7 +58,7 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="../index.html">
-            <h5><img loading="lazy" src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
                     class="rounded d-inline-block align-text-center" width="50px">
                 MaterialX Learn</h5>
         </a>
@@ -111,7 +116,7 @@
                                 href="../documents/definitions/library_glossary.html">Library
                                 Glossary</a></li>
                         <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
-                                target="_blank"><img loading="lazy" src="../documents/images/MaterialXLogo_200x155.png"
+                                target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
                                     style="width:20px"> C++ API</a></li>
 
                         <li class="dropend">
@@ -146,7 +151,7 @@
                         <div class="dropdown-divider"></div>
                         <li>
                             <a class="dropdown-item" href="../documents/using_library.html">
-                                <img loading="lazy" src="../documents/images/info-circle.svg"> Library User Guide
+                                <img src="../documents/images/info-circle.svg"> Library User Guide
                             </a>
                         </li>
                     </ul>
@@ -284,17 +289,17 @@
                         button and select <code>New Codespace</code> from the dropdown menu.</p>
                     <p>Below is an example of a codespace creation for the sample repository
                         using <code>main</code> branch.</p>
-                    <p><img loading="lazy" width="30%" src="images/create_codespace_github.png"></p>
+                    <p><img width="30%" src="images/create_codespace_github.png"></p>
                     <p>By default a ''randomly" named new codespace is created with default
                         options. It is possible to also create with custom options by using the
-                        ''ï¿½" button. The codespace can be renamed after creation.</p>
+                        ''…" button. The codespace can be renamed after creation.</p>
                     <p>Also by default a <code>Visual Studio Code for Web</code> is used as
                         the editor. This can be modified from your Github Settings for
                         <code>CodeSpaces</code>
                     </p>
-                    <p><img loading="lazy" width="60%" src="images/create_codespace_github_editor_prefs.png"></p>
+                    <p><img width="60%" src="images/create_codespace_github_editor_prefs.png"></p>
                     <h4 id="using-a-codespace">1.3 Using a Codespace</h4>
-                    <p><img loading="lazy" width="100%" src="images/create_codespace_github_2.png"></p>
+                    <p><img width="100%" src="images/create_codespace_github_2.png"></p>
                     <p>If using the Visual Studio Code for Web editor, the editor is pretty
                         well the same as the desktop version.</p>
                     <p>From here it is possible to modify, add / remove content as desired,
@@ -303,19 +308,19 @@
                         desired. Additional extensions can be installed as desired. For example
                         for the JSON notebook the <code>JSONcrack</code> extension was
                         installed.</p>
-                    <p><img loading="lazy" width="100%" src="images/codespace_extension.png"></p>
+                    <p><img width="100%" src="images/codespace_extension.png"></p>
                     <h4 id="python-packages">1.4 Python Packages</h4>
                     <p>Some Python packages are pre-installed in the codespace. To check
                         what is already available the terminal window can be opened and the
                         <code>pip list</code> command can be used.
                     </p>
-                    <p><img loading="lazy" width="100%" src="images/codespace_packages.png"></p>
+                    <p><img width="100%" src="images/codespace_packages.png"></p>
                     <p>If additional Python packages are required they can be installed
                         inside a notebook, or in a terminal window. For example the
                         <code>OpenUsd</code> package can be installed using:
                         <code>pip install usd-core</code>.
                     </p>
-                    <p><img loading="lazy" width="100%" src="images/codespace_usd_install.png"></p>
+                    <p><img width="100%" src="images/codespace_usd_install.png"></p>
                     <p>If the package is general to many notebooks the `requirements.txt``
                         file can be modified and the codespace restarted.</p>
                     <p>As the MaterialX Package is loaded on startup, notebooks using this
@@ -344,7 +349,7 @@
                         <a href="https://colab.research.google.com/github/" target="_blank">this
                             browser link</a>.
                     </p>
-                    <p><img loading="lazy" src="./images/colab_github_notebook_access.png" width="60%"></p>
+                    <p><img src="./images/colab_github_notebook_access.png" width="60%"></p>
                     <p>To use the repo with extra steps for authentication the repo
                         containing the notebooks can be <code>clone</code>d into the Colab
                         environment. This is done by running the following Colab cell:</p>
@@ -372,7 +377,7 @@
                         path folder containing the notebook.</p>
                     <p>Below is a snapshot of the loaded notebook after the clone and folder
                         change is executed.
-                        <img loading="lazy" src="images/colable_github_setup.png" width="100%">
+                        <img src="images/colable_github_setup.png" width="100%">
                     </p>
                     <p>Note that notebooks in the learning site may require: 1. Python
                         utilities found in the <code>mtlxutils</code> sub-folder 2. Resource
@@ -394,7 +399,7 @@
                         there.</p>
                     <p>Below is an example of same repository copied to Google Drive and
                         opened from there.</p>
-                    <p><img loading="lazy" src="./images/google_drive_colab.png" width="60%"></p>
+                    <p><img src="./images/google_drive_colab.png" width="60%"></p>
                     <p>To use the notebook Google Drive must be explicitly mounted using the
                         following cell:</p>
                     <div class="sourceCode" id="cb3">
@@ -444,7 +449,7 @@
       </ul>
       <p>
         <a class="bg-dark p-2 right" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-            <img loading="lazy" alt="Creative Commons License" style="border-width:0"
+            <img alt="Creative Commons License" style="border-width:0"
                 src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
         &copy; 2022-2024 NanMu Consulting.</a>
       </p>      

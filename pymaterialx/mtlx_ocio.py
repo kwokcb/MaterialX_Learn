@@ -8,7 +8,7 @@
 # The longer term MaterialX aim is to generate functional node graphs. This book will cover the setup required for generation, but can only show how source code implementation generation can be performed at the curren time.
 # 
 # The workflow covered is the "green" parts in this overall workflow diagram:
-# <img loading="lazy" src="./images/OCIO_MaterialX_Workflow.png">
+# <img src="./images/OCIO_MaterialX_Workflow.png">
 # 
 # If / when graph generation is possible source code implementations can be swapped out for graph implementations.
 # 

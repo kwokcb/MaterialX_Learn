@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <surfacematerial name="collect1" type="material">
     <input name="displacementshader" type="displacementshader" nodegraph="my_materialx_subnet" output="displacement" />
     <input name="surfaceshader" type="surfaceshader" nodegraph="my_materialx_subnet" output="surface" />

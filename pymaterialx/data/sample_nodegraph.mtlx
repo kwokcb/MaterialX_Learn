@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <nodegraph name="test_nodegraph">
     <output name="out" type="surfaceshader" nodename="test_shader" />
     <standard_surface name="test_shader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">

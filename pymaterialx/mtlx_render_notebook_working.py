@@ -444,8 +444,8 @@ if shader:
     debugStages(shader, doc, 'Public')
 
 # %% [markdown]
-# <img loading="lazy" src='./data/unlit_image_graph.png' width='80%'>
-# <img loading="lazy" src='./data/unlit_image_top_level.png' width='80%'>
+# <img src='./data/unlit_image_graph.png' width='80%'>
+# <img src='./data/unlit_image_top_level.png' width='80%'>
 # 
 
 # %% [markdown]
@@ -557,6 +557,6 @@ if capturedImage:
 # %% [markdown]
 # Rendering Images
 # 
-# <img loading="lazy" src="data/render_notebook_capture.png" style="border:5px outset silver"> 
+# <img src="data/render_notebook_capture.png" style="border:5px outset silver"> 
 
 

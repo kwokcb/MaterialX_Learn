@@ -3,6 +3,9 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Authors: Bernard Kwok and Matthew Kwok. Resource site for the
+  Academy Software Foundation MaterialX -- an open source industry standard for 3D / Cg materials.
+  Resources include interaction with related standards: OpenUSD, Khronos glTF, OpenImageIO.">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
@@ -22,24 +25,26 @@
     }
   </style>
 
-  <link rel="icon" href="../documents/images/logo3d_icon.png" type="image/x-icon" />
+  <!-- <link rel="icon" href="../documents/images/logo3d_icon.png" type="image/x-icon" /> -->
   <!--
   <link rel="icon" href="../documents/images/logo3d_2_small.png" type="image/x-icon" />
   -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css"> -->
 
   <link rel="stylesheet" href="../documents/css/style.css">
 
+  <!-- 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  -->
 
   
 
   <title>MaterialX Learn</title>
-  <link rel="icon" type="images" href="../documents/images/logo3d_icon.png" class="img-fluid">
+  <link rel="icon" type="images" href="../documents/images/logo3d_icon.png" type="image/x-icon" class="img-fluid">
 
 </head>
 
@@ -53,7 +58,7 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="../index.html">
-            <h5><img loading="lazy" src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
                     class="rounded d-inline-block align-text-center" width="50px">
                 MaterialX Learn</h5>
         </a>
@@ -111,7 +116,7 @@
                                 href="../documents/definitions/library_glossary.html">Library
                                 Glossary</a></li>
                         <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
-                                target="_blank"><img loading="lazy" src="../documents/images/MaterialXLogo_200x155.png"
+                                target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
                                     style="width:20px"> C++ API</a></li>
 
                         <li class="dropend">
@@ -146,7 +151,7 @@
                         <div class="dropdown-divider"></div>
                         <li>
                             <a class="dropdown-item" href="../documents/using_library.html">
-                                <img loading="lazy" src="../documents/images/info-circle.svg"> Library User Guide
+                                <img src="../documents/images/info-circle.svg"> Library User Guide
                             </a>
                         </li>
                     </ul>
@@ -217,7 +222,7 @@
 
           <h2 class="shadow border">MaterialX and Usd</h2>
 
-          <img loading="lazy" src="images/usd_materialx_interop.png" width="40%">
+          <img src="images/usd_materialx_interop.png" width="40%">
           <p>The <a href="../pymaterialx/mtlx_definitions_libraries_notebook.html">Usd / MaterialX notebook</a>
             examines the
             interoperability of material / shader graphs between <code>Usd</code> and <code>MaterialX</code>.</p>
@@ -230,7 +235,7 @@
             functionally does not seem to be exposed via a public API.</p>
           <p>For example the following graphs nodegraph "childNG" has to be placed under the nodegraph "parentNG"
             to be supported in MaterialX.
-            <img loading="lazy" src="images/nested_nodegraphs.png" width="70%">
+            <img src="images/nested_nodegraphs.png" width="70%">
           </p>
           <p>It is possible to "flatten" graphs within MaterialX, but no such
             utility / API is provided by default.</p>
@@ -298,7 +303,7 @@
           <p>
             The following diagram shows the class hierarchy for Usd and MaterialX. It is mostly the discrepancy between
             have one as a graph and one as a pair of atomic nodes which allows for different approaches to mapping.
-            <img loading="lazy" src="images/usd_material_vs_mtlx_material.png" width="80%">
+            <img src="images/usd_material_vs_mtlx_material.png" width="80%">
           </p>
           <p>Applications like Maya and Houdini have "graph containers"
             which more closely match a nodegraph.
@@ -365,7 +370,7 @@
             context of integration with Usd.</p>
           <p>Of note is that for Maya graphs MaterialX material nodes are currently disallowed but sub-graphs are
             allowed, while Houdini material nodes are allowed but sub-graphs are both not exportable.<br>
-            <img loading="lazy" src="images/houdini_disallowed_nodes.png" width="60%">
+            <img src="images/houdini_disallowed_nodes.png" width="60%">
           </p>
           <p>This could be cause some confusion as to how these map to MaterialX. (At time of
             writing Maya does not support MaterialX export so to be determined how each integration progresses).
@@ -374,7 +379,7 @@
             (material graph). That said if MaterialX import is supported it is possible some
             graph configurations are not supported or required some type of
             transformation such as "flattening" or remapping.</p>
-          <img loading="lazy" src="images/graph_editor_supported.png" width="60%">
+          <img src="images/graph_editor_supported.png" width="60%">
           <p>These are still "early days" and will be interesting to see how
             this all works out.</p>
 
@@ -401,7 +406,7 @@
       </ul>
       <p>
         <a class="bg-dark p-2 right" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-            <img loading="lazy" alt="Creative Commons License" style="border-width:0"
+            <img alt="Creative Commons License" style="border-width:0"
                 src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
         &copy; 2022-2024 NanMu Consulting.</a>
       </p>      

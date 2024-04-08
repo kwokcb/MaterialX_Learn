@@ -134,10 +134,20 @@
         <label for="materialXShader">Pixel Shader</label>
         <textarea class="overflow-auto form-control form-control-sm" data-bs-theme="dark" id="materialXShader" rows="12"
           style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
-        <label for="materialXShaderVS">Vertex Shader:</label>
+        <label for="materialXShaderVS">Vertex Shader</label>
         <textarea class="overflow-auto form-control form-control-sm" data-bs-theme="dark" id="materialXShaderVS" rows="3"
           style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
-      </div>
+        <label for="materialXShaderVS">Pixel Shader Uniforms</label>
+        <p></p>
+        <div class="container p-0" style="max-height: 300px; overflow-y: auto;">
+          <table id="materialXShaderReflect" data-bs-theme="dark" class="table table-bordered" >
+          </table>
+        </div>
+        <p></p>
+        <hr>
+        <button class="btn btn-outline-primary shadow-sm" id="saveReflection">Save Reflection Information</button>
+        <a id="reflectionLink" style="display: none;"></a>
+      </div> 
     </div>
 
   </div>
@@ -494,22 +504,50 @@
     }); */
 
     function getUniformValues(shaderStage) {
-      console.log('Get Uniforms for stage:', shaderStage);
+      //console.log('Get Uniforms for stage:', shaderStage);
       let foundUniforms = {};
       const uniformBlocks = Object.values(shaderStage.getUniformBlocks());
+
+      let uniformsResult = []
       uniformBlocks.forEach(uniforms => {
         if (!uniforms.empty()) {
           for (let i = 0; i < uniforms.size(); ++i) {
             const var1 = uniforms.get(i);
             const value = var1.getValue()?.getValueString();
             const name = var1.getVariable();
-            console.log(' Uniform name: ', name, ' type: ', var1.getType().getName(), ' value: ', value, ' path: ', var1.getPath())
+
+            //console.log('Uniform:', name, var1.getType().getName(), value, var1.getPath())
+            uniformEntry = [ name, var1.getType().getName(), value, var1.getPath() ];
+            uniformsResult.push(uniformEntry);
             //foundUniforms[name] = { var1.getType().getName(), value, name, uniforms };
           }
         }
       });
-      return foundUniforms;
+      return uniformsResult;
     }
+
+    let cachedReflectionData = ''
+
+    function saveReflection() 
+    {
+      if (cachedReflectionData)
+      {
+        console.log('Save Reflection...');
+        let outputJSON = {}
+        let jsonString = JSON.stringify(cachedReflectionData, null, 2);
+        var blob = new Blob([jsonString], { type: 'application/json' });
+
+        // Create a link element
+        var a = document.getElementById('reflectionLink');
+        a.href = URL.createObjectURL(blob);
+        a.download = cachedReflectionData.element + '_' + 
+          cachedReflectionData.generate + '_' +
+          cachedReflectionData.interface +
+          '_reflection.json'; 
+        a.click();
+      }
+    }
+    document.getElementById('saveReflection').addEventListener('click', saveReflection);
 
     // Add event handler for generate shader
     document.getElementById('generateShaderButton').addEventListener('click', () => {
@@ -527,8 +565,8 @@
         return;
       }
 
-      let pixelSource = 'None'
-      let vertexSource = 'None'
+      let pixelSource = ''
+      let vertexSource = ''
       
       setupGenerators(mdoc)
 
@@ -536,30 +574,22 @@
       let genContext = esslgenContext;
       let shaderLanguage = document.getElementById('shaderLanguage').value;
       if (shaderLanguage == 1) {
-        console.log('-------------- USE OSL ---------------')
-        generator = oslgenerator;
-        genContext = oslgenContext;
-      }
-      else if (shaderLanguage == 1) {
-        console.log('-------------- USE OSL ---------------')
         generator = oslgenerator;
         genContext = oslgenContext;
       }
       else if (shaderLanguage == 2) {
-        console.log('-------------- USE GLSL ---------------')
         generator = glslgenerator;
         genContext = glslgenContext;
       }
       else if (shaderLanguage == 3) {
-        console.log('-------------- USE MSL ---------------')
         generator = mslgenerator;
         genContext = mslgenContext;
       }
       else if (shaderLanguage == 4) {
-        console.log('-------------- USE VK ---------------')
         generator = vkgenerator;
         genContext = vkgenContext;
       }
+      console.log('-------------- Use Generator for: %s ---------------', generator.getTarget())
 
       const isTransparent = mmx.isTransparentSurface(elem, generator.getTarget());
       genContext.getOptions().hwTransparency = isTransparent;
@@ -601,8 +631,52 @@
 
       //let uniforms = getUniformValues(shader.getStage('vertex'));
       //console.log('Vertex Uniforms:', uniforms);
-      //let puniforms = getUniformValues(shader.getStage('pixel'));
-      //console.log('Pixel Uniforms:', puniforms);
+      let pixelUniforms = getUniformValues(shader.getStage('pixel'));
+      cachedReflectionData = 
+      { 
+        "element": elemPath, 
+        "generate": generator.getTarget(),
+        "interface": interfaceString.toLowerCase(),  
+        "uniforms": pixelUniforms 
+      };
+      if (vertexSource == '')
+        cachedReflectionData.vertex = 'None';
+      else
+        cachedReflectionData.vertex = vertexSource; 
+      if (pixelSource == '')
+        cachedReflectionData.pixel = 'None';
+      else
+        cachedReflectionData.pixel = pixelSource; 
+
+      let reflectionArea = document.getElementById('materialXShaderReflect');
+      // remove any previous children
+      while (reflectionArea.firstChild) {
+        reflectionArea.removeChild(reflectionArea.firstChild);
+      }
+      
+      // Add header:
+      let headers = ['Uniform', 'Type', 'Value', 'Path'];
+      let headerRow = document.createElement('tr');
+      headers.forEach(function(title) {
+        var headerCell = document.createElement("th");
+        headerCell.textContent = title;
+        headerRow.appendChild(headerCell);
+      });
+      reflectionArea.appendChild(headerRow);
+
+      // Add content
+      for (let i = 0; i < pixelUniforms.length; i++) {
+        let uniform = pixelUniforms[i];
+        let row = document.createElement('tr');
+        for (let j = 0; j < uniform.length; j++) {
+          let cell = document.createElement('td');
+          cell.textContent = uniform[j];
+          row.appendChild(cell);
+        }
+        reflectionArea.appendChild(row);
+      }
+      //let jsonResult = JSON.stringify(cachedReflectionData, null, 2);
+      //console.log('Reflection Data:', jsonResult);
     }
     );
 

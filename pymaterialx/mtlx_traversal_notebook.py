@@ -15,10 +15,7 @@
 # 2. <a href="https://materialx.org/docs/api/class_port_element.html" target="_blank">Port getConnectedNode()</a> for finding the node connected to an input. This uses the previous interface.
 # 3. <a href="https://materialx.org/docs/api/class_input.html" target="_blank">Input getInterfaceInput()()</a>  for finding if an input is connected to an input interface on a node graph. 
 # 
-# > Note that for diagramming <a href="https://github.com/AcademySoftwareFoundation/MaterialX/pull/1263" target="_blank">there is a PR underway</a> to add in a new `GraphIO` interface which would encapsulate the supported required for Mermaid and GraphViz Dot support.
-# For this site all Mermaid diagrams are generated using this interface.
-# 
-# > The utilities (including Mermaid generation) in this tutorial are collected in the `mtlxutils` file: <a href="./mtlxutils/mxtraversal.py" target="_blank">mtlxutils/mxtraversal</a>.
+# > For this site all Mermaid diagrams are generated using a custom utility. The Javascript version of this utility is used for the interactive graph generation page: <a href="../javascript/mtlx_js_utilities.html">Graph Generator</a>. The utilities (including Mermaid generation) in this tutorial are collected in the `mtlxutils` file: <a href="./mtlxutils/mxtraversal.py" target="_blank">mtlxutils/mxtraversal</a>.
 # 
 
 # %% [markdown]
@@ -311,7 +308,7 @@ for line in graph:
 # %% [markdown]
 # The resulting diagram looks like this:
 # 
-# <img loading="lazy" src="images/marble_mermaid_graph_generation_no_interfaces.svg" width="30%">
+# <img src="images/marble_mermaid_graph_generation_no_interfaces.svg" width="30%">
 
 # %% [markdown]
 # ## Handling Graph Interfaces
@@ -475,11 +472,11 @@ display_markdown(strgraph, raw=True)
 # %% [markdown]
 # The resulting diagram looks like this:
 # 
-# <img loading="lazy" src="images/marble_mermaid_graph_generation.svg" width="50%">
+# <img src="images/marble_mermaid_graph_generation.svg" width="50%">
 # 
 # with the same graph as seen in the graph editor:
 # 
-# <img loading="lazy" src="images/marble_editor_preview.png" width="50%">
+# <img src="images/marble_editor_preview.png" width="50%">
 # 
 
 
