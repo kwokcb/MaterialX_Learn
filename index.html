@@ -31,7 +31,7 @@
   -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/brands.min.css"> 
 
   <link rel="stylesheet" href="./documents/css/style.css">
 
@@ -235,7 +235,8 @@
       <p class=" fs-8 my-3">You have reached the home of "MaterialX Learn". </p>
       <p>The intent of this site is to provide learning materials as well as complementary utilities for working
         with
-        <b><a href="https://materialx.org" target="_blank"><img alt="MaterialX Logo icon" load="lazy" alt="MaterialX Logo" src="documents/images/MaterialXLogo_icon.gif" width="30">
+        <b><a href="https://materialx.org" target="_blank"><img alt="MaterialX Logo icon" load="lazy"
+              alt="MaterialX Logo" src="documents/images/MaterialXLogo_icon.gif" width="30">
             MaterialX</a></b>
       </p>
 
@@ -263,26 +264,29 @@
           <b class="mb-0">Shader Generation</b>
           <div class="row">
             <div class="col-5">
-              <img alt="Shader reflection example" load="lazy" src="./documents/images/shader_reflection_example.webp" width="100%">              
+              <img alt="Shader reflection example" load="lazy" src="./documents/images/shader_reflection_example.webp"
+                width="100%">
             </div>
             <div class="col-7">
               <li>
                 The <a href="./javascript/viewer/dist/index_out.html">shader preview utility</a> workflow has
                 been improved including adding support for generation of various shader
                 targets including: OSL, GLSL, MetalSL, and Vulkan. Shader "reflection" information has been added
-                to reflect how path mapping and show how the "complete" vs "reduced" interface affects reflection. 
+                to reflect how path mapping and show how the "complete" vs "reduced" interface affects reflection.
               </li>
               <li>
-                Python notebooks: The definition creation and other notebooks have be updated to 1.39. 
+                Python notebooks: The definition creation and other notebooks have be updated to 1.39.
                 A <b>shader reflection</b> utility been added to the shader generation notebook.
               </li>
             </div>
-        </div>
+          </div>
+
           <div class="mb-1 text-muted">March, 2024</div>
           <b class="mb-0">Utilities, Definitions</b>
           <div class="row">
             <div class="col-4">
-              <img alt="Mobile 3d column layout" load="lazy" src="./documents/images/mobile_color_no_wrap_three_columns.webp" width="100%">
+              <img alt="Mobile 3d column layout" load="lazy"
+                src="./documents/images/mobile_color_no_wrap_three_columns.webp" width="100%">
             </div>
             <div class="col-8">
               <ul>
@@ -300,7 +304,7 @@
                   The definitions reference is now in sync with 1.39 and includes a <a
                     href="./documents/jupyter_example.html">
                     "Node Usage" notebook</a> with code to determine the node usage in nodegraph implementations and
-                  which implementations use a given node. 
+                  which implementations use a given node.
                 </li>
               </ul>
             </div>
@@ -361,7 +365,8 @@
               Additional work to improve supported graphs, usability and performance of the ASWF MaterialX web viewer
               can be found <a href="https://academysoftwarefoundation.github.io/MaterialX" target="_blank">here</a>.
               (OpenPBR graph shown in viewer below)
-              <img alt="OpenPBR node graph" load="lazy" src="./documents/images/openpbr_graph_jan_2024.webp" width="100%">
+              <img alt="OpenPBR node graph" load="lazy" src="./documents/images/openpbr_graph_jan_2024.webp"
+                width="100%">
               (Note: <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/resources/mtlx/nodedef_materials"
                 target="_blank">Graphs</a> used to create reference images are now previewable in the web viewer)
             </p>
@@ -384,7 +389,8 @@
             Read about the latest updates for <a href="./documents/presentations.html">Khronos glTF shading
               networks</a> on the presentation page. The update on this extension was presented at <a href="
               https://www.khronos.org/events/webgl-webgpu-meetup-GDC-2024" target="_blank">GDC 2024</a>, with the
-              WIP draft specification available <a href="https://github.com/KhronosGroup/glTF/tree/KHR_texture_procedurals/extensions/2.0/Khronos/KHR_texture_procedurals"
+            WIP draft specification available <a
+              href="https://github.com/KhronosGroup/glTF/tree/KHR_texture_procedurals/extensions/2.0/Khronos/KHR_texture_procedurals"
               target="_blank">on the Khronos github</a>.
           </p>
           <div class="mb-1 text-muted">March, 2024</div>
@@ -442,8 +448,8 @@
   <h3 class="d-inline-block mb-2">Learn</h3>
   <div class="container-fluid px-2 py-2 border shadow" id="hanging-icons">
 
-    <div class="row ps-2 pe-0 row-cols-1 row-cols-sm-3 bg-body-tertiary d-flex flex-row overflow-y-auto"
-      style="max-height: 80em">
+    <div class="row ps-2 pe-0 row-cols-1 row-cols-sm-3 bg-body-tertiary d-flex flex-row overflow-auto"
+      style="max-height: 20em">
 
       <div class="col pt-3 pb-3">
         <div>
@@ -632,12 +638,12 @@
     <div class="container">
       <ul class="social-icons">
         <button class="btn btn-outline" type="button">
-          <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><i class="fab fa-github fa-2x"
-              style="color: #ffffff;"></i></a>
+          <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><b class="fa-brands fa-github fa-2x"
+              style="color: #ffffff;"></b></a>
         </button>
         <button class="btn btn-outline " type="button">
-          <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><i class="fab fa-linkedin-in fa-2x"
-              style="color: #0082ca;"></i></a>
+          <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><b class="fa-brands fa-linkedin-in fa-2x"
+              style="color: #0082ca;"></b></a>
         </button>
       </ul>
       <p>
