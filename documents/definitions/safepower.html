@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="safepower" class="ms-2 mb-0">
 Category: safepower
@@ -700,19 +700,26 @@ Category: safepower
 <div id="ND_safepower_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_safepower_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_safepower_float_safepower[multiply] --> NG_safepower_float_out([out])
-    style NG_safepower_float_out fill:#0C0, color:#111
-    NG_safepower_float_sign_in1[sign] --".in1"--> NG_safepower_float_safepower[multiply]
-    NG_safepower_float_in1INT([in1]) ==.in==> NG_safepower_float_sign_in1[sign]
-    style NG_safepower_float_in1INT fill:#0CF, color:#111
-    NG_safepower_float_power[power] --".in2"--> NG_safepower_float_safepower[multiply]
-    NG_safepower_float_in2INT([in2]) ==.in2==> NG_safepower_float_power[power]
-    style NG_safepower_float_in2INT fill:#0CF, color:#111
-    NG_safepower_float_abs_in1[absval] --".in1"--> NG_safepower_float_power[power]
-    NG_safepower_float_in1INT([in1]) ==.in==> NG_safepower_float_abs_in1[absval]
-    style NG_safepower_float_in1INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_safepower_float
+    NG_safepower_float_sign_in1[sign_in1]
+    NG_safepower_float_abs_in1[abs_in1]
+    NG_safepower_float_power[power]
+    NG_safepower_float_safepower[safepower]
+    style NG_safepower_float_out  fill:#0C0, color:#FFF
+    NG_safepower_float_out([out])
+    style NG_safepower_float_in1  fill:#09D, color:#FFF
+    NG_safepower_float_in1([in1])
+    style NG_safepower_float_in2  fill:#09D, color:#FFF
+    NG_safepower_float_in2([in2])
+    end
+    NG_safepower_float_in1 --"in"--> NG_safepower_float_sign_in1
+    NG_safepower_float_in1 --"in"--> NG_safepower_float_abs_in1
+    NG_safepower_float_abs_in1 --"in1"--> NG_safepower_float_power
+    NG_safepower_float_in2 --"in2"--> NG_safepower_float_power
+    NG_safepower_float_sign_in1 --"in1"--> NG_safepower_float_safepower
+    NG_safepower_float_power --"in2"--> NG_safepower_float_safepower
+    NG_safepower_float_safepower --> NG_safepower_float_out
 
 
 </div></code></pre>
@@ -837,19 +844,26 @@ graph LR;
 <div id="ND_safepower_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_safepower_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_safepower_color3_safepower[multiply] --> NG_safepower_color3_out([out])
-    style NG_safepower_color3_out fill:#0C0, color:#111
-    NG_safepower_color3_sign_in1[sign] --".in1"--> NG_safepower_color3_safepower[multiply]
-    NG_safepower_color3_in1INT([in1]) ==.in==> NG_safepower_color3_sign_in1[sign]
-    style NG_safepower_color3_in1INT fill:#0CF, color:#111
-    NG_safepower_color3_power[power] --".in2"--> NG_safepower_color3_safepower[multiply]
-    NG_safepower_color3_in2INT([in2]) ==.in2==> NG_safepower_color3_power[power]
-    style NG_safepower_color3_in2INT fill:#0CF, color:#111
-    NG_safepower_color3_abs_in1[absval] --".in1"--> NG_safepower_color3_power[power]
-    NG_safepower_color3_in1INT([in1]) ==.in==> NG_safepower_color3_abs_in1[absval]
-    style NG_safepower_color3_in1INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_safepower_color3
+    NG_safepower_color3_sign_in1[sign_in1]
+    NG_safepower_color3_abs_in1[abs_in1]
+    NG_safepower_color3_power[power]
+    NG_safepower_color3_safepower[safepower]
+    style NG_safepower_color3_out  fill:#0C0, color:#FFF
+    NG_safepower_color3_out([out])
+    style NG_safepower_color3_in1  fill:#09D, color:#FFF
+    NG_safepower_color3_in1([in1])
+    style NG_safepower_color3_in2  fill:#09D, color:#FFF
+    NG_safepower_color3_in2([in2])
+    end
+    NG_safepower_color3_in1 --"in"--> NG_safepower_color3_sign_in1
+    NG_safepower_color3_in1 --"in"--> NG_safepower_color3_abs_in1
+    NG_safepower_color3_abs_in1 --"in1"--> NG_safepower_color3_power
+    NG_safepower_color3_in2 --"in2"--> NG_safepower_color3_power
+    NG_safepower_color3_sign_in1 --"in1"--> NG_safepower_color3_safepower
+    NG_safepower_color3_power --"in2"--> NG_safepower_color3_safepower
+    NG_safepower_color3_safepower --> NG_safepower_color3_out
 
 
 </div></code></pre>
@@ -980,19 +994,26 @@ graph LR;
 <div id="ND_safepower_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_safepower_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_safepower_color4_safepower[multiply] --> NG_safepower_color4_out([out])
-    style NG_safepower_color4_out fill:#0C0, color:#111
-    NG_safepower_color4_sign_in1[sign] --".in1"--> NG_safepower_color4_safepower[multiply]
-    NG_safepower_color4_in1INT([in1]) ==.in==> NG_safepower_color4_sign_in1[sign]
-    style NG_safepower_color4_in1INT fill:#0CF, color:#111
-    NG_safepower_color4_power[power] --".in2"--> NG_safepower_color4_safepower[multiply]
-    NG_safepower_color4_in2INT([in2]) ==.in2==> NG_safepower_color4_power[power]
-    style NG_safepower_color4_in2INT fill:#0CF, color:#111
-    NG_safepower_color4_abs_in1[absval] --".in1"--> NG_safepower_color4_power[power]
-    NG_safepower_color4_in1INT([in1]) ==.in==> NG_safepower_color4_abs_in1[absval]
-    style NG_safepower_color4_in1INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_safepower_color4
+    NG_safepower_color4_sign_in1[sign_in1]
+    NG_safepower_color4_abs_in1[abs_in1]
+    NG_safepower_color4_power[power]
+    NG_safepower_color4_safepower[safepower]
+    style NG_safepower_color4_out  fill:#0C0, color:#FFF
+    NG_safepower_color4_out([out])
+    style NG_safepower_color4_in1  fill:#09D, color:#FFF
+    NG_safepower_color4_in1([in1])
+    style NG_safepower_color4_in2  fill:#09D, color:#FFF
+    NG_safepower_color4_in2([in2])
+    end
+    NG_safepower_color4_in1 --"in"--> NG_safepower_color4_sign_in1
+    NG_safepower_color4_in1 --"in"--> NG_safepower_color4_abs_in1
+    NG_safepower_color4_abs_in1 --"in1"--> NG_safepower_color4_power
+    NG_safepower_color4_in2 --"in2"--> NG_safepower_color4_power
+    NG_safepower_color4_sign_in1 --"in1"--> NG_safepower_color4_safepower
+    NG_safepower_color4_power --"in2"--> NG_safepower_color4_safepower
+    NG_safepower_color4_safepower --> NG_safepower_color4_out
 
 
 </div></code></pre>
@@ -1105,19 +1126,26 @@ graph LR;
 <div id="ND_safepower_vector2_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_safepower_vector2_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_safepower_vector2_safepower[multiply] --> NG_safepower_vector2_out([out])
-    style NG_safepower_vector2_out fill:#0C0, color:#111
-    NG_safepower_vector2_sign_in1[sign] --".in1"--> NG_safepower_vector2_safepower[multiply]
-    NG_safepower_vector2_in1INT([in1]) ==.in==> NG_safepower_vector2_sign_in1[sign]
-    style NG_safepower_vector2_in1INT fill:#0CF, color:#111
-    NG_safepower_vector2_power[power] --".in2"--> NG_safepower_vector2_safepower[multiply]
-    NG_safepower_vector2_in2INT([in2]) ==.in2==> NG_safepower_vector2_power[power]
-    style NG_safepower_vector2_in2INT fill:#0CF, color:#111
-    NG_safepower_vector2_abs_in1[absval] --".in1"--> NG_safepower_vector2_power[power]
-    NG_safepower_vector2_in1INT([in1]) ==.in==> NG_safepower_vector2_abs_in1[absval]
-    style NG_safepower_vector2_in1INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_safepower_vector2
+    NG_safepower_vector2_sign_in1[sign_in1]
+    NG_safepower_vector2_abs_in1[abs_in1]
+    NG_safepower_vector2_power[power]
+    NG_safepower_vector2_safepower[safepower]
+    style NG_safepower_vector2_out  fill:#0C0, color:#FFF
+    NG_safepower_vector2_out([out])
+    style NG_safepower_vector2_in1  fill:#09D, color:#FFF
+    NG_safepower_vector2_in1([in1])
+    style NG_safepower_vector2_in2  fill:#09D, color:#FFF
+    NG_safepower_vector2_in2([in2])
+    end
+    NG_safepower_vector2_in1 --"in"--> NG_safepower_vector2_sign_in1
+    NG_safepower_vector2_in1 --"in"--> NG_safepower_vector2_abs_in1
+    NG_safepower_vector2_abs_in1 --"in1"--> NG_safepower_vector2_power
+    NG_safepower_vector2_in2 --"in2"--> NG_safepower_vector2_power
+    NG_safepower_vector2_sign_in1 --"in1"--> NG_safepower_vector2_safepower
+    NG_safepower_vector2_power --"in2"--> NG_safepower_vector2_safepower
+    NG_safepower_vector2_safepower --> NG_safepower_vector2_out
 
 
 </div></code></pre>
@@ -1236,19 +1264,26 @@ graph LR;
 <div id="ND_safepower_vector3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_safepower_vector3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_safepower_vector3_safepower[multiply] --> NG_safepower_vector3_out([out])
-    style NG_safepower_vector3_out fill:#0C0, color:#111
-    NG_safepower_vector3_sign_in1[sign] --".in1"--> NG_safepower_vector3_safepower[multiply]
-    NG_safepower_vector3_in1INT([in1]) ==.in==> NG_safepower_vector3_sign_in1[sign]
-    style NG_safepower_vector3_in1INT fill:#0CF, color:#111
-    NG_safepower_vector3_power[power] --".in2"--> NG_safepower_vector3_safepower[multiply]
-    NG_safepower_vector3_in2INT([in2]) ==.in2==> NG_safepower_vector3_power[power]
-    style NG_safepower_vector3_in2INT fill:#0CF, color:#111
-    NG_safepower_vector3_abs_in1[absval] --".in1"--> NG_safepower_vector3_power[power]
-    NG_safepower_vector3_in1INT([in1]) ==.in==> NG_safepower_vector3_abs_in1[absval]
-    style NG_safepower_vector3_in1INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_safepower_vector3
+    NG_safepower_vector3_sign_in1[sign_in1]
+    NG_safepower_vector3_abs_in1[abs_in1]
+    NG_safepower_vector3_power[power]
+    NG_safepower_vector3_safepower[safepower]
+    style NG_safepower_vector3_out  fill:#0C0, color:#FFF
+    NG_safepower_vector3_out([out])
+    style NG_safepower_vector3_in1  fill:#09D, color:#FFF
+    NG_safepower_vector3_in1([in1])
+    style NG_safepower_vector3_in2  fill:#09D, color:#FFF
+    NG_safepower_vector3_in2([in2])
+    end
+    NG_safepower_vector3_in1 --"in"--> NG_safepower_vector3_sign_in1
+    NG_safepower_vector3_in1 --"in"--> NG_safepower_vector3_abs_in1
+    NG_safepower_vector3_abs_in1 --"in1"--> NG_safepower_vector3_power
+    NG_safepower_vector3_in2 --"in2"--> NG_safepower_vector3_power
+    NG_safepower_vector3_sign_in1 --"in1"--> NG_safepower_vector3_safepower
+    NG_safepower_vector3_power --"in2"--> NG_safepower_vector3_safepower
+    NG_safepower_vector3_safepower --> NG_safepower_vector3_out
 
 
 </div></code></pre>
@@ -1373,19 +1408,26 @@ graph LR;
 <div id="ND_safepower_vector4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_safepower_vector4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_safepower_vector4_safepower[multiply] --> NG_safepower_vector4_out([out])
-    style NG_safepower_vector4_out fill:#0C0, color:#111
-    NG_safepower_vector4_sign_in1[sign] --".in1"--> NG_safepower_vector4_safepower[multiply]
-    NG_safepower_vector4_in1INT([in1]) ==.in==> NG_safepower_vector4_sign_in1[sign]
-    style NG_safepower_vector4_in1INT fill:#0CF, color:#111
-    NG_safepower_vector4_power[power] --".in2"--> NG_safepower_vector4_safepower[multiply]
-    NG_safepower_vector4_in2INT([in2]) ==.in2==> NG_safepower_vector4_power[power]
-    style NG_safepower_vector4_in2INT fill:#0CF, color:#111
-    NG_safepower_vector4_abs_in1[absval] --".in1"--> NG_safepower_vector4_power[power]
-    NG_safepower_vector4_in1INT([in1]) ==.in==> NG_safepower_vector4_abs_in1[absval]
-    style NG_safepower_vector4_in1INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_safepower_vector4
+    NG_safepower_vector4_sign_in1[sign_in1]
+    NG_safepower_vector4_abs_in1[abs_in1]
+    NG_safepower_vector4_power[power]
+    NG_safepower_vector4_safepower[safepower]
+    style NG_safepower_vector4_out  fill:#0C0, color:#FFF
+    NG_safepower_vector4_out([out])
+    style NG_safepower_vector4_in1  fill:#09D, color:#FFF
+    NG_safepower_vector4_in1([in1])
+    style NG_safepower_vector4_in2  fill:#09D, color:#FFF
+    NG_safepower_vector4_in2([in2])
+    end
+    NG_safepower_vector4_in1 --"in"--> NG_safepower_vector4_sign_in1
+    NG_safepower_vector4_in1 --"in"--> NG_safepower_vector4_abs_in1
+    NG_safepower_vector4_abs_in1 --"in1"--> NG_safepower_vector4_power
+    NG_safepower_vector4_in2 --"in2"--> NG_safepower_vector4_power
+    NG_safepower_vector4_sign_in1 --"in1"--> NG_safepower_vector4_safepower
+    NG_safepower_vector4_power --"in2"--> NG_safepower_vector4_safepower
+    NG_safepower_vector4_safepower --> NG_safepower_vector4_out
 
 
 </div></code></pre>
@@ -1502,19 +1544,26 @@ graph LR;
 <div id="ND_safepower_color3FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_safepower_color3FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_safepower_color3FA_safepower[multiply] --> NG_safepower_color3FA_out([out])
-    style NG_safepower_color3FA_out fill:#0C0, color:#111
-    NG_safepower_color3FA_sign_in1[sign] --".in1"--> NG_safepower_color3FA_safepower[multiply]
-    NG_safepower_color3FA_in1INT([in1]) ==.in==> NG_safepower_color3FA_sign_in1[sign]
-    style NG_safepower_color3FA_in1INT fill:#0CF, color:#111
-    NG_safepower_color3FA_power[power] --".in2"--> NG_safepower_color3FA_safepower[multiply]
-    NG_safepower_color3FA_in2INT([in2]) ==.in2==> NG_safepower_color3FA_power[power]
-    style NG_safepower_color3FA_in2INT fill:#0CF, color:#111
-    NG_safepower_color3FA_abs_in1[absval] --".in1"--> NG_safepower_color3FA_power[power]
-    NG_safepower_color3FA_in1INT([in1]) ==.in==> NG_safepower_color3FA_abs_in1[absval]
-    style NG_safepower_color3FA_in1INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_safepower_color3FA
+    NG_safepower_color3FA_sign_in1[sign_in1]
+    NG_safepower_color3FA_abs_in1[abs_in1]
+    NG_safepower_color3FA_power[power]
+    NG_safepower_color3FA_safepower[safepower]
+    style NG_safepower_color3FA_out  fill:#0C0, color:#FFF
+    NG_safepower_color3FA_out([out])
+    style NG_safepower_color3FA_in1  fill:#09D, color:#FFF
+    NG_safepower_color3FA_in1([in1])
+    style NG_safepower_color3FA_in2  fill:#09D, color:#FFF
+    NG_safepower_color3FA_in2([in2])
+    end
+    NG_safepower_color3FA_in1 --"in"--> NG_safepower_color3FA_sign_in1
+    NG_safepower_color3FA_in1 --"in"--> NG_safepower_color3FA_abs_in1
+    NG_safepower_color3FA_abs_in1 --"in1"--> NG_safepower_color3FA_power
+    NG_safepower_color3FA_in2 --"in2"--> NG_safepower_color3FA_power
+    NG_safepower_color3FA_sign_in1 --"in1"--> NG_safepower_color3FA_safepower
+    NG_safepower_color3FA_power --"in2"--> NG_safepower_color3FA_safepower
+    NG_safepower_color3FA_safepower --> NG_safepower_color3FA_out
 
 
 </div></code></pre>
@@ -1634,19 +1683,26 @@ graph LR;
 <div id="ND_safepower_color4FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_safepower_color4FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_safepower_color4FA_safepower[multiply] --> NG_safepower_color4FA_out([out])
-    style NG_safepower_color4FA_out fill:#0C0, color:#111
-    NG_safepower_color4FA_sign_in1[sign] --".in1"--> NG_safepower_color4FA_safepower[multiply]
-    NG_safepower_color4FA_in1INT([in1]) ==.in==> NG_safepower_color4FA_sign_in1[sign]
-    style NG_safepower_color4FA_in1INT fill:#0CF, color:#111
-    NG_safepower_color4FA_power[power] --".in2"--> NG_safepower_color4FA_safepower[multiply]
-    NG_safepower_color4FA_in2INT([in2]) ==.in2==> NG_safepower_color4FA_power[power]
-    style NG_safepower_color4FA_in2INT fill:#0CF, color:#111
-    NG_safepower_color4FA_abs_in1[absval] --".in1"--> NG_safepower_color4FA_power[power]
-    NG_safepower_color4FA_in1INT([in1]) ==.in==> NG_safepower_color4FA_abs_in1[absval]
-    style NG_safepower_color4FA_in1INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_safepower_color4FA
+    NG_safepower_color4FA_sign_in1[sign_in1]
+    NG_safepower_color4FA_abs_in1[abs_in1]
+    NG_safepower_color4FA_power[power]
+    NG_safepower_color4FA_safepower[safepower]
+    style NG_safepower_color4FA_out  fill:#0C0, color:#FFF
+    NG_safepower_color4FA_out([out])
+    style NG_safepower_color4FA_in1  fill:#09D, color:#FFF
+    NG_safepower_color4FA_in1([in1])
+    style NG_safepower_color4FA_in2  fill:#09D, color:#FFF
+    NG_safepower_color4FA_in2([in2])
+    end
+    NG_safepower_color4FA_in1 --"in"--> NG_safepower_color4FA_sign_in1
+    NG_safepower_color4FA_in1 --"in"--> NG_safepower_color4FA_abs_in1
+    NG_safepower_color4FA_abs_in1 --"in1"--> NG_safepower_color4FA_power
+    NG_safepower_color4FA_in2 --"in2"--> NG_safepower_color4FA_power
+    NG_safepower_color4FA_sign_in1 --"in1"--> NG_safepower_color4FA_safepower
+    NG_safepower_color4FA_power --"in2"--> NG_safepower_color4FA_safepower
+    NG_safepower_color4FA_safepower --> NG_safepower_color4FA_out
 
 
 </div></code></pre>
@@ -1757,19 +1813,26 @@ graph LR;
 <div id="ND_safepower_vector2FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_safepower_vector2FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_safepower_vector2FA_safepower[multiply] --> NG_safepower_vector2FA_out([out])
-    style NG_safepower_vector2FA_out fill:#0C0, color:#111
-    NG_safepower_vector2FA_sign_in1[sign] --".in1"--> NG_safepower_vector2FA_safepower[multiply]
-    NG_safepower_vector2FA_in1INT([in1]) ==.in==> NG_safepower_vector2FA_sign_in1[sign]
-    style NG_safepower_vector2FA_in1INT fill:#0CF, color:#111
-    NG_safepower_vector2FA_power[power] --".in2"--> NG_safepower_vector2FA_safepower[multiply]
-    NG_safepower_vector2FA_in2INT([in2]) ==.in2==> NG_safepower_vector2FA_power[power]
-    style NG_safepower_vector2FA_in2INT fill:#0CF, color:#111
-    NG_safepower_vector2FA_abs_in1[absval] --".in1"--> NG_safepower_vector2FA_power[power]
-    NG_safepower_vector2FA_in1INT([in1]) ==.in==> NG_safepower_vector2FA_abs_in1[absval]
-    style NG_safepower_vector2FA_in1INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_safepower_vector2FA
+    NG_safepower_vector2FA_sign_in1[sign_in1]
+    NG_safepower_vector2FA_abs_in1[abs_in1]
+    NG_safepower_vector2FA_power[power]
+    NG_safepower_vector2FA_safepower[safepower]
+    style NG_safepower_vector2FA_out  fill:#0C0, color:#FFF
+    NG_safepower_vector2FA_out([out])
+    style NG_safepower_vector2FA_in1  fill:#09D, color:#FFF
+    NG_safepower_vector2FA_in1([in1])
+    style NG_safepower_vector2FA_in2  fill:#09D, color:#FFF
+    NG_safepower_vector2FA_in2([in2])
+    end
+    NG_safepower_vector2FA_in1 --"in"--> NG_safepower_vector2FA_sign_in1
+    NG_safepower_vector2FA_in1 --"in"--> NG_safepower_vector2FA_abs_in1
+    NG_safepower_vector2FA_abs_in1 --"in1"--> NG_safepower_vector2FA_power
+    NG_safepower_vector2FA_in2 --"in2"--> NG_safepower_vector2FA_power
+    NG_safepower_vector2FA_sign_in1 --"in1"--> NG_safepower_vector2FA_safepower
+    NG_safepower_vector2FA_power --"in2"--> NG_safepower_vector2FA_safepower
+    NG_safepower_vector2FA_safepower --> NG_safepower_vector2FA_out
 
 
 </div></code></pre>
@@ -1883,19 +1946,26 @@ graph LR;
 <div id="ND_safepower_vector3FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_safepower_vector3FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_safepower_vector3FA_safepower[multiply] --> NG_safepower_vector3FA_out([out])
-    style NG_safepower_vector3FA_out fill:#0C0, color:#111
-    NG_safepower_vector3FA_sign_in1[sign] --".in1"--> NG_safepower_vector3FA_safepower[multiply]
-    NG_safepower_vector3FA_in1INT([in1]) ==.in==> NG_safepower_vector3FA_sign_in1[sign]
-    style NG_safepower_vector3FA_in1INT fill:#0CF, color:#111
-    NG_safepower_vector3FA_power[power] --".in2"--> NG_safepower_vector3FA_safepower[multiply]
-    NG_safepower_vector3FA_in2INT([in2]) ==.in2==> NG_safepower_vector3FA_power[power]
-    style NG_safepower_vector3FA_in2INT fill:#0CF, color:#111
-    NG_safepower_vector3FA_abs_in1[absval] --".in1"--> NG_safepower_vector3FA_power[power]
-    NG_safepower_vector3FA_in1INT([in1]) ==.in==> NG_safepower_vector3FA_abs_in1[absval]
-    style NG_safepower_vector3FA_in1INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_safepower_vector3FA
+    NG_safepower_vector3FA_sign_in1[sign_in1]
+    NG_safepower_vector3FA_abs_in1[abs_in1]
+    NG_safepower_vector3FA_power[power]
+    NG_safepower_vector3FA_safepower[safepower]
+    style NG_safepower_vector3FA_out  fill:#0C0, color:#FFF
+    NG_safepower_vector3FA_out([out])
+    style NG_safepower_vector3FA_in1  fill:#09D, color:#FFF
+    NG_safepower_vector3FA_in1([in1])
+    style NG_safepower_vector3FA_in2  fill:#09D, color:#FFF
+    NG_safepower_vector3FA_in2([in2])
+    end
+    NG_safepower_vector3FA_in1 --"in"--> NG_safepower_vector3FA_sign_in1
+    NG_safepower_vector3FA_in1 --"in"--> NG_safepower_vector3FA_abs_in1
+    NG_safepower_vector3FA_abs_in1 --"in1"--> NG_safepower_vector3FA_power
+    NG_safepower_vector3FA_in2 --"in2"--> NG_safepower_vector3FA_power
+    NG_safepower_vector3FA_sign_in1 --"in1"--> NG_safepower_vector3FA_safepower
+    NG_safepower_vector3FA_power --"in2"--> NG_safepower_vector3FA_safepower
+    NG_safepower_vector3FA_safepower --> NG_safepower_vector3FA_out
 
 
 </div></code></pre>
@@ -2012,19 +2082,26 @@ graph LR;
 <div id="ND_safepower_vector4FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_safepower_vector4FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_safepower_vector4FA_safepower[multiply] --> NG_safepower_vector4FA_out([out])
-    style NG_safepower_vector4FA_out fill:#0C0, color:#111
-    NG_safepower_vector4FA_sign_in1[sign] --".in1"--> NG_safepower_vector4FA_safepower[multiply]
-    NG_safepower_vector4FA_in1INT([in1]) ==.in==> NG_safepower_vector4FA_sign_in1[sign]
-    style NG_safepower_vector4FA_in1INT fill:#0CF, color:#111
-    NG_safepower_vector4FA_power[power] --".in2"--> NG_safepower_vector4FA_safepower[multiply]
-    NG_safepower_vector4FA_in2INT([in2]) ==.in2==> NG_safepower_vector4FA_power[power]
-    style NG_safepower_vector4FA_in2INT fill:#0CF, color:#111
-    NG_safepower_vector4FA_abs_in1[absval] --".in1"--> NG_safepower_vector4FA_power[power]
-    NG_safepower_vector4FA_in1INT([in1]) ==.in==> NG_safepower_vector4FA_abs_in1[absval]
-    style NG_safepower_vector4FA_in1INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_safepower_vector4FA
+    NG_safepower_vector4FA_sign_in1[sign_in1]
+    NG_safepower_vector4FA_abs_in1[abs_in1]
+    NG_safepower_vector4FA_power[power]
+    NG_safepower_vector4FA_safepower[safepower]
+    style NG_safepower_vector4FA_out  fill:#0C0, color:#FFF
+    NG_safepower_vector4FA_out([out])
+    style NG_safepower_vector4FA_in1  fill:#09D, color:#FFF
+    NG_safepower_vector4FA_in1([in1])
+    style NG_safepower_vector4FA_in2  fill:#09D, color:#FFF
+    NG_safepower_vector4FA_in2([in2])
+    end
+    NG_safepower_vector4FA_in1 --"in"--> NG_safepower_vector4FA_sign_in1
+    NG_safepower_vector4FA_in1 --"in"--> NG_safepower_vector4FA_abs_in1
+    NG_safepower_vector4FA_abs_in1 --"in1"--> NG_safepower_vector4FA_power
+    NG_safepower_vector4FA_in2 --"in2"--> NG_safepower_vector4FA_power
+    NG_safepower_vector4FA_sign_in1 --"in1"--> NG_safepower_vector4FA_safepower
+    NG_safepower_vector4FA_power --"in2"--> NG_safepower_vector4FA_safepower
+    NG_safepower_vector4FA_safepower --> NG_safepower_vector4FA_out
 
 
 </div></code></pre>

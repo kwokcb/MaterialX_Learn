@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="grid" class="ms-2 mb-0">
 Category: grid
@@ -757,50 +757,71 @@ Category: grid
 <div id="ND_grid_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_grid_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_grid_color3_to_rgb[convert] --> NG_grid_color3_out([out])
-    style NG_grid_color3_out fill:#0C0, color:#111
-    NG_grid_color3_inv_result[subtract] --".in"--> NG_grid_color3_to_rgb[convert]
-    NG_grid_color3_min[min] --".in2"--> NG_grid_color3_inv_result[subtract]
-    NG_grid_color3_X_detect{ifgreater} --".in1"--> NG_grid_color3_min[min]
-    NG_grid_color3_abs_X[absval] --".value1"--> NG_grid_color3_X_detect{ifgreater}
-    style NG_grid_color3_X_detect fill:#F80, color:#111
-    NG_grid_color3_subX_1[subtract] --".in"--> NG_grid_color3_abs_X[absval]
-    NG_grid_color3_modx_2[multiply] --".in1"--> NG_grid_color3_subX_1[subtract]
-    NG_grid_color3_mod_X[modulo] --".in1"--> NG_grid_color3_modx_2[multiply]
-    NG_grid_color3_stagger_selection{ifequal} --".in1"--> NG_grid_color3_mod_X[modulo]
-    NG_grid_color3_staggeredINT([staggered]) ==.value1==> NG_grid_color3_stagger_selection[ifequal]
-    style NG_grid_color3_staggeredINT fill:#0CF, color:#111
-    NG_grid_color3_shift_X[add] --".in1"--> NG_grid_color3_stagger_selection{ifequal}
-    style NG_grid_color3_stagger_selection fill:#F80, color:#111
-    NG_grid_color3_texcoord_bias[subtract] --".x -> .in1"--> NG_grid_color3_shift_X[add]
-    NG_grid_color3_uvoffsetINT([uvoffset]) ==.in2==> NG_grid_color3_texcoord_bias[subtract]
-    style NG_grid_color3_uvoffsetINT fill:#0CF, color:#111
-    NG_grid_color3_texcoord_scale[multiply] --".in1"--> NG_grid_color3_texcoord_bias[subtract]
-    NG_grid_color3_texcoordINT([texcoord]) ==.in1==> NG_grid_color3_texcoord_scale[multiply]
-    style NG_grid_color3_texcoordINT fill:#0CF, color:#111
-    NG_grid_color3_uvtilingINT([uvtiling]) ==.in2==> NG_grid_color3_texcoord_scale[multiply]
-    style NG_grid_color3_uvtilingINT fill:#0CF, color:#111
-    NG_grid_color3_alt_rows_shift{ifgreater} --".in2"--> NG_grid_color3_shift_X[add]
-    NG_grid_color3_mod_Y_row[modulo] --".value1"--> NG_grid_color3_alt_rows_shift{ifgreater}
-    style NG_grid_color3_alt_rows_shift fill:#F80, color:#111
-    NG_grid_color3_texcoord_bias[subtract] --".y -> .in1"--> NG_grid_color3_mod_Y_row[modulo]
-    NG_grid_color3_texcoord_bias[subtract] --".x -> .in2"--> NG_grid_color3_stagger_selection{ifequal}
-    style NG_grid_color3_stagger_selection fill:#F80, color:#111
-    NG_grid_color3_thick_to_size[subtract] --".value2"--> NG_grid_color3_X_detect{ifgreater}
-    style NG_grid_color3_X_detect fill:#F80, color:#111
-    NG_grid_color3_thicknessINT([thickness]) ==.in2==> NG_grid_color3_thick_to_size[subtract]
-    style NG_grid_color3_thicknessINT fill:#0CF, color:#111
-    NG_grid_color3_Y_detect{ifgreater} --".in2"--> NG_grid_color3_min[min]
-    NG_grid_color3_abs_Y[absval] --".value1"--> NG_grid_color3_Y_detect{ifgreater}
-    style NG_grid_color3_Y_detect fill:#F80, color:#111
-    NG_grid_color3_subY_1[subtract] --".in"--> NG_grid_color3_abs_Y[absval]
-    NG_grid_color3_mody_2[multiply] --".in1"--> NG_grid_color3_subY_1[subtract]
-    NG_grid_color3_mod_Y[modulo] --".in1"--> NG_grid_color3_mody_2[multiply]
-    NG_grid_color3_texcoord_bias[subtract] --".y -> .in1"--> NG_grid_color3_mod_Y[modulo]
-    NG_grid_color3_thick_to_size[subtract] --".value2"--> NG_grid_color3_Y_detect{ifgreater}
-    style NG_grid_color3_Y_detect fill:#F80, color:#111
-
+graph TB
+    subgraph NG_grid_color3
+    NG_grid_color3_texcoord_scale[texcoord_scale]
+    NG_grid_color3_texcoord_bias[texcoord_bias]
+    NG_grid_color3_thick_to_size[thick_to_size]
+    NG_grid_color3_mod_Y[mod_Y]
+    NG_grid_color3_mod_Y_row[mod_Y_row]
+    NG_grid_color3_mody_2[mody_2]
+    NG_grid_color3_alt_rows_shift[alt_rows_shift]
+    NG_grid_color3_shift_X[shift_X]
+    style NG_grid_color3_stagger_selection  fill:#C72, color:#FFF
+    NG_grid_color3_stagger_selection{stagger_selection}
+    NG_grid_color3_mod_X[mod_X]
+    NG_grid_color3_modx_2[modx_2]
+    NG_grid_color3_subX_1[subX_1]
+    NG_grid_color3_subY_1[subY_1]
+    NG_grid_color3_abs_X[abs_X]
+    NG_grid_color3_abs_Y[abs_Y]
+    NG_grid_color3_X_detect[X_detect]
+    NG_grid_color3_Y_detect[Y_detect]
+    NG_grid_color3_min[min]
+    NG_grid_color3_inv_result[inv_result]
+    NG_grid_color3_to_rgb[to_rgb]
+    style NG_grid_color3_out  fill:#0C0, color:#FFF
+    NG_grid_color3_out([out])
+    style NG_grid_color3_texcoord  fill:#09D, color:#FFF
+    NG_grid_color3_texcoord([texcoord])
+    style NG_grid_color3_uvtiling  fill:#09D, color:#FFF
+    NG_grid_color3_uvtiling([uvtiling])
+    style NG_grid_color3_uvoffset  fill:#09D, color:#FFF
+    NG_grid_color3_uvoffset([uvoffset])
+    style NG_grid_color3_thickness  fill:#09D, color:#FFF
+    NG_grid_color3_thickness([thickness])
+    style NG_grid_color3_staggered  fill:#09D, color:#FFF
+    NG_grid_color3_staggered([staggered])
+    end
+    NG_grid_color3_texcoord --"in1"--> NG_grid_color3_texcoord_scale
+    NG_grid_color3_uvtiling --"in2"--> NG_grid_color3_texcoord_scale
+    NG_grid_color3_texcoord_scale --"in1"--> NG_grid_color3_texcoord_bias
+    NG_grid_color3_uvoffset --"in2"--> NG_grid_color3_texcoord_bias
+    NG_grid_color3_thickness --"in2"--> NG_grid_color3_thick_to_size
+    NG_grid_color3_texcoord_bias --"in1"--> NG_grid_color3_mod_Y
+    NG_grid_color3_texcoord_bias --"in1"--> NG_grid_color3_mod_Y_row
+    NG_grid_color3_mod_Y --"in1"--> NG_grid_color3_mody_2
+    NG_grid_color3_mod_Y_row --"value1"--> NG_grid_color3_alt_rows_shift
+    NG_grid_color3_texcoord_bias --"in1"--> NG_grid_color3_shift_X
+    NG_grid_color3_alt_rows_shift --"in2"--> NG_grid_color3_shift_X
+    NG_grid_color3_staggered --"value1"--> NG_grid_color3_stagger_selection
+    NG_grid_color3_shift_X --"in1"--> NG_grid_color3_stagger_selection
+    NG_grid_color3_texcoord_bias --"in2"--> NG_grid_color3_stagger_selection
+    NG_grid_color3_stagger_selection --"in1"--> NG_grid_color3_mod_X
+    NG_grid_color3_mod_X --"in1"--> NG_grid_color3_modx_2
+    NG_grid_color3_modx_2 --"in1"--> NG_grid_color3_subX_1
+    NG_grid_color3_mody_2 --"in1"--> NG_grid_color3_subY_1
+    NG_grid_color3_subX_1 --"in"--> NG_grid_color3_abs_X
+    NG_grid_color3_subY_1 --"in"--> NG_grid_color3_abs_Y
+    NG_grid_color3_abs_X --"value1"--> NG_grid_color3_X_detect
+    NG_grid_color3_thick_to_size --"value2"--> NG_grid_color3_X_detect
+    NG_grid_color3_abs_Y --"value1"--> NG_grid_color3_Y_detect
+    NG_grid_color3_thick_to_size --"value2"--> NG_grid_color3_Y_detect
+    NG_grid_color3_X_detect --"in1"--> NG_grid_color3_min
+    NG_grid_color3_Y_detect --"in2"--> NG_grid_color3_min
+    NG_grid_color3_min --"in2"--> NG_grid_color3_inv_result
+    NG_grid_color3_inv_result --"in"--> NG_grid_color3_to_rgb
+    NG_grid_color3_to_rgb --> NG_grid_color3_out
 
 
 </div></code></pre>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <gltf_image name="gltf_image_float_float_1_0" type="float" version="1.0">
     <input name="file" type="filename" uniform="true" value="" />
     <input name="factor" type="float" value="1" />

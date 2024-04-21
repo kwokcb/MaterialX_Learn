@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <extract name="extract_vector3" type="float">
     <input name="in" type="vector3" value="0.0, 0.0, 0.0" />
     <input name="index" type="integer" value="0" uniform="true" />

@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="tiledhexagons" class="ms-2 mb-0">
 Category: tiledhexagons
@@ -757,58 +757,87 @@ Category: tiledhexagons
 <div id="ND_tiledhexagons_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_tiledhexagons_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_tiledhexagons_color3_to_rgb[convert] --> NG_tiledhexagons_color3_out([out])
-    style NG_tiledhexagons_color3_out fill:#0C0, color:#111
-    NG_tiledhexagons_color3_pattern_selection{ifequal} --".in"--> NG_tiledhexagons_color3_to_rgb[convert]
-    NG_tiledhexagons_color3_staggeredINT([staggered]) ==.value1==> NG_tiledhexagons_color3_pattern_selection[ifequal]
-    style NG_tiledhexagons_color3_staggeredINT fill:#0CF, color:#111
-    NG_tiledhexagons_color3_max[max] --".in1"--> NG_tiledhexagons_color3_pattern_selection{ifequal}
-    style NG_tiledhexagons_color3_pattern_selection fill:#F80, color:#111
-    NG_tiledhexagons_color3_max1[max] --".in1"--> NG_tiledhexagons_color3_max[max]
-    NG_tiledhexagons_color3_hexagon_stagg1[hexagon] --".in1"--> NG_tiledhexagons_color3_max1[max]
-    NG_tiledhexagons_color3_coord_circ1[combine2] --".texcoord"--> NG_tiledhexagons_color3_hexagon_stagg1[hexagon]
-    NG_tiledhexagons_color3_mod_X_1[modulo] --".in1"--> NG_tiledhexagons_color3_coord_circ1[combine2]
-    NG_tiledhexagons_color3_shift_X[add] --".in1"--> NG_tiledhexagons_color3_mod_X_1[modulo]
-    NG_tiledhexagons_color3_texcoord_bias[subtract] --".x -> .in1"--> NG_tiledhexagons_color3_shift_X[add]
-    NG_tiledhexagons_color3_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledhexagons_color3_texcoord_bias[subtract]
-    style NG_tiledhexagons_color3_uvoffsetINT fill:#0CF, color:#111
-    NG_tiledhexagons_color3_texcoord_scale[multiply] --".in1"--> NG_tiledhexagons_color3_texcoord_bias[subtract]
-    NG_tiledhexagons_color3_texcoordINT([texcoord]) ==.in1==> NG_tiledhexagons_color3_texcoord_scale[multiply]
-    style NG_tiledhexagons_color3_texcoordINT fill:#0CF, color:#111
-    NG_tiledhexagons_color3_uvtilingINT([uvtiling]) ==.in2==> NG_tiledhexagons_color3_texcoord_scale[multiply]
-    style NG_tiledhexagons_color3_uvtilingINT fill:#0CF, color:#111
-    NG_tiledhexagons_color3_delta_X{ifgreater} --".in2"--> NG_tiledhexagons_color3_shift_X[add]
-    NG_tiledhexagons_color3_stagg_Y[modulo] --".value1"--> NG_tiledhexagons_color3_delta_X{ifgreater}
-    style NG_tiledhexagons_color3_delta_X fill:#F80, color:#111
-    NG_tiledhexagons_color3_texcoord_bias[subtract] --".y -> .in1"--> NG_tiledhexagons_color3_stagg_Y[modulo]
-    NG_tiledhexagons_color3_mod_Y_1[modulo] --".in2"--> NG_tiledhexagons_color3_coord_circ1[combine2]
-    NG_tiledhexagons_color3_texcoord_bias[subtract] --".y -> .in1"--> NG_tiledhexagons_color3_mod_Y_1[modulo]
-    NG_tiledhexagons_color3_scale_half[divide] --".radius"--> NG_tiledhexagons_color3_hexagon_stagg1[hexagon]
-    NG_tiledhexagons_color3_sizeINT([size]) ==.in1==> NG_tiledhexagons_color3_scale_half[divide]
-    style NG_tiledhexagons_color3_sizeINT fill:#0CF, color:#111
-    NG_tiledhexagons_color3_hexagon_stagg2[hexagon] --".in2"--> NG_tiledhexagons_color3_max1[max]
-    NG_tiledhexagons_color3_coord_circ2[combine2] --".texcoord"--> NG_tiledhexagons_color3_hexagon_stagg2[hexagon]
-    NG_tiledhexagons_color3_coord_adj_1[subtract] --".in1"--> NG_tiledhexagons_color3_coord_circ2[combine2]
-    NG_tiledhexagons_color3_mod_X_1[modulo] --".in2"--> NG_tiledhexagons_color3_coord_adj_1[subtract]
-    NG_tiledhexagons_color3_mod_Y_1[modulo] --".in2"--> NG_tiledhexagons_color3_coord_circ2[combine2]
-    NG_tiledhexagons_color3_scale_half[divide] --".radius"--> NG_tiledhexagons_color3_hexagon_stagg2[hexagon]
-    NG_tiledhexagons_color3_hexagon_stagg3[hexagon] --".in2"--> NG_tiledhexagons_color3_max[max]
-    NG_tiledhexagons_color3_coord_circ3[combine2] --".texcoord"--> NG_tiledhexagons_color3_hexagon_stagg3[hexagon]
-    NG_tiledhexagons_color3_coord_adj_2[subtract] --".in1"--> NG_tiledhexagons_color3_coord_circ3[combine2]
-    NG_tiledhexagons_color3_mod_X_1[modulo] --".in1"--> NG_tiledhexagons_color3_coord_adj_2[subtract]
-    NG_tiledhexagons_color3_coord_adj_3[subtract] --".in2"--> NG_tiledhexagons_color3_coord_circ3[combine2]
-    NG_tiledhexagons_color3_mod_Y_1[modulo] --".in2"--> NG_tiledhexagons_color3_coord_adj_3[subtract]
-    NG_tiledhexagons_color3_scale_half[divide] --".radius"--> NG_tiledhexagons_color3_hexagon_stagg3[hexagon]
-    NG_tiledhexagons_color3_hexagon_regular[hexagon] --".in2"--> NG_tiledhexagons_color3_pattern_selection{ifequal}
-    style NG_tiledhexagons_color3_pattern_selection fill:#F80, color:#111
-    NG_tiledhexagons_color3_sizeINT([size]) ==.radius==> NG_tiledhexagons_color3_hexagon_regular[hexagon]
-    style NG_tiledhexagons_color3_sizeINT fill:#0CF, color:#111
-    NG_tiledhexagons_color3_recenter[subtract] --".texcoord"--> NG_tiledhexagons_color3_hexagon_regular[hexagon]
-    NG_tiledhexagons_color3_mod_texcoord_2[multiply] --".in1"--> NG_tiledhexagons_color3_recenter[subtract]
-    NG_tiledhexagons_color3_mod_texcoord[modulo] --".in1"--> NG_tiledhexagons_color3_mod_texcoord_2[multiply]
-    NG_tiledhexagons_color3_texcoord_bias[subtract] --".in1"--> NG_tiledhexagons_color3_mod_texcoord[modulo]
-
+graph TB
+    subgraph NG_tiledhexagons_color3
+    NG_tiledhexagons_color3_texcoord_scale[texcoord_scale]
+    NG_tiledhexagons_color3_texcoord_bias[texcoord_bias]
+    NG_tiledhexagons_color3_mod_texcoord[mod_texcoord]
+    NG_tiledhexagons_color3_mod_texcoord_2[mod_texcoord_2]
+    NG_tiledhexagons_color3_recenter[recenter]
+    NG_tiledhexagons_color3_stagg_Y[stagg_Y]
+    NG_tiledhexagons_color3_delta_X[delta_X]
+    NG_tiledhexagons_color3_shift_X[shift_X]
+    NG_tiledhexagons_color3_mod_X_1[mod_X_1]
+    NG_tiledhexagons_color3_mod_Y_1[mod_Y_1]
+    NG_tiledhexagons_color3_coord_adj_1[coord_adj_1]
+    NG_tiledhexagons_color3_coord_adj_2[coord_adj_2]
+    NG_tiledhexagons_color3_coord_adj_3[coord_adj_3]
+    NG_tiledhexagons_color3_coord_circ1[coord_circ1]
+    NG_tiledhexagons_color3_coord_circ2[coord_circ2]
+    NG_tiledhexagons_color3_coord_circ3[coord_circ3]
+    NG_tiledhexagons_color3_scale_half[scale_half]
+    NG_tiledhexagons_color3_hexagon_stagg1[hexagon_stagg1]
+    NG_tiledhexagons_color3_hexagon_stagg2[hexagon_stagg2]
+    NG_tiledhexagons_color3_hexagon_stagg3[hexagon_stagg3]
+    NG_tiledhexagons_color3_max1[max1]
+    NG_tiledhexagons_color3_max[max]
+    NG_tiledhexagons_color3_hexagon_regular[hexagon_regular]
+    style NG_tiledhexagons_color3_pattern_selection  fill:#C72, color:#FFF
+    NG_tiledhexagons_color3_pattern_selection{pattern_selection}
+    NG_tiledhexagons_color3_to_rgb[to_rgb]
+    style NG_tiledhexagons_color3_out  fill:#0C0, color:#FFF
+    NG_tiledhexagons_color3_out([out])
+    style NG_tiledhexagons_color3_texcoord  fill:#09D, color:#FFF
+    NG_tiledhexagons_color3_texcoord([texcoord])
+    style NG_tiledhexagons_color3_uvtiling  fill:#09D, color:#FFF
+    NG_tiledhexagons_color3_uvtiling([uvtiling])
+    style NG_tiledhexagons_color3_uvoffset  fill:#09D, color:#FFF
+    NG_tiledhexagons_color3_uvoffset([uvoffset])
+    style NG_tiledhexagons_color3_size  fill:#09D, color:#FFF
+    NG_tiledhexagons_color3_size([size])
+    style NG_tiledhexagons_color3_staggered  fill:#09D, color:#FFF
+    NG_tiledhexagons_color3_staggered([staggered])
+    end
+    NG_tiledhexagons_color3_texcoord --"in1"--> NG_tiledhexagons_color3_texcoord_scale
+    NG_tiledhexagons_color3_uvtiling --"in2"--> NG_tiledhexagons_color3_texcoord_scale
+    NG_tiledhexagons_color3_texcoord_scale --"in1"--> NG_tiledhexagons_color3_texcoord_bias
+    NG_tiledhexagons_color3_uvoffset --"in2"--> NG_tiledhexagons_color3_texcoord_bias
+    NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_mod_texcoord
+    NG_tiledhexagons_color3_mod_texcoord --"in1"--> NG_tiledhexagons_color3_mod_texcoord_2
+    NG_tiledhexagons_color3_mod_texcoord_2 --"in1"--> NG_tiledhexagons_color3_recenter
+    NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_stagg_Y
+    NG_tiledhexagons_color3_stagg_Y --"value1"--> NG_tiledhexagons_color3_delta_X
+    NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_shift_X
+    NG_tiledhexagons_color3_delta_X --"in2"--> NG_tiledhexagons_color3_shift_X
+    NG_tiledhexagons_color3_shift_X --"in1"--> NG_tiledhexagons_color3_mod_X_1
+    NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_mod_Y_1
+    NG_tiledhexagons_color3_mod_X_1 --"in2"--> NG_tiledhexagons_color3_coord_adj_1
+    NG_tiledhexagons_color3_mod_X_1 --"in1"--> NG_tiledhexagons_color3_coord_adj_2
+    NG_tiledhexagons_color3_mod_Y_1 --"in2"--> NG_tiledhexagons_color3_coord_adj_3
+    NG_tiledhexagons_color3_mod_X_1 --"in1"--> NG_tiledhexagons_color3_coord_circ1
+    NG_tiledhexagons_color3_mod_Y_1 --"in2"--> NG_tiledhexagons_color3_coord_circ1
+    NG_tiledhexagons_color3_coord_adj_1 --"in1"--> NG_tiledhexagons_color3_coord_circ2
+    NG_tiledhexagons_color3_mod_Y_1 --"in2"--> NG_tiledhexagons_color3_coord_circ2
+    NG_tiledhexagons_color3_coord_adj_2 --"in1"--> NG_tiledhexagons_color3_coord_circ3
+    NG_tiledhexagons_color3_coord_adj_3 --"in2"--> NG_tiledhexagons_color3_coord_circ3
+    NG_tiledhexagons_color3_size --"in1"--> NG_tiledhexagons_color3_scale_half
+    NG_tiledhexagons_color3_coord_circ1 --"texcoord"--> NG_tiledhexagons_color3_hexagon_stagg1
+    NG_tiledhexagons_color3_scale_half --"radius"--> NG_tiledhexagons_color3_hexagon_stagg1
+    NG_tiledhexagons_color3_coord_circ2 --"texcoord"--> NG_tiledhexagons_color3_hexagon_stagg2
+    NG_tiledhexagons_color3_scale_half --"radius"--> NG_tiledhexagons_color3_hexagon_stagg2
+    NG_tiledhexagons_color3_coord_circ3 --"texcoord"--> NG_tiledhexagons_color3_hexagon_stagg3
+    NG_tiledhexagons_color3_scale_half --"radius"--> NG_tiledhexagons_color3_hexagon_stagg3
+    NG_tiledhexagons_color3_hexagon_stagg1 --"in1"--> NG_tiledhexagons_color3_max1
+    NG_tiledhexagons_color3_hexagon_stagg2 --"in2"--> NG_tiledhexagons_color3_max1
+    NG_tiledhexagons_color3_max1 --"in1"--> NG_tiledhexagons_color3_max
+    NG_tiledhexagons_color3_hexagon_stagg3 --"in2"--> NG_tiledhexagons_color3_max
+    NG_tiledhexagons_color3_recenter --"texcoord"--> NG_tiledhexagons_color3_hexagon_regular
+    NG_tiledhexagons_color3_size --"radius"--> NG_tiledhexagons_color3_hexagon_regular
+    NG_tiledhexagons_color3_staggered --"value1"--> NG_tiledhexagons_color3_pattern_selection
+    NG_tiledhexagons_color3_max --"in1"--> NG_tiledhexagons_color3_pattern_selection
+    NG_tiledhexagons_color3_hexagon_regular --"in2"--> NG_tiledhexagons_color3_pattern_selection
+    NG_tiledhexagons_color3_pattern_selection --"in"--> NG_tiledhexagons_color3_to_rgb
+    NG_tiledhexagons_color3_to_rgb --> NG_tiledhexagons_color3_out
 
 
 </div></code></pre>

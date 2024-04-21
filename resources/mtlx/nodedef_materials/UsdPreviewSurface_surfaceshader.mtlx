@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <UsdPreviewSurface name="UsdPreviewSurface_surfaceshader" type="surfaceshader" version="2.3">
     <input name="diffuseColor" type="color3" value="0.18, 0.18, 0.18" />
     <input name="emissiveColor" type="color3" value="0, 0, 0" />

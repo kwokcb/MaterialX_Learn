@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="LamaSSS" class="ms-2 mb-0">
 Category: LamaSSS
@@ -1561,25 +1561,37 @@ Category: LamaSSS
 <div id="ND_lama_sss_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_lama_sss_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf] --> IMPL_lama_sss_out([out])
-    style IMPL_lama_sss_out fill:#0C0, color:#111
-    IMPL_lama_sss_colorINT([color]) ==.color==> IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
-    style IMPL_lama_sss_colorINT fill:#0CF, color:#111
-    IMPL_lama_sss_sssAnisotropyINT([sssAnisotropy]) ==.anisotropy==> IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
-    style IMPL_lama_sss_sssAnisotropyINT fill:#0CF, color:#111
-    IMPL_lama_sss_normalINT([normal]) ==.normal==> IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
-    style IMPL_lama_sss_normalINT fill:#0CF, color:#111
-    IMPL_lama_sss_subsurface_multiply_unitlength[multiply] --".radius"--> IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
-    IMPL_lama_sss_sssUnitLengthINT([sssUnitLength]) ==.in2==> IMPL_lama_sss_subsurface_multiply_unitlength[multiply]
-    style IMPL_lama_sss_sssUnitLengthINT fill:#0CF, color:#111
-    IMPL_lama_sss_subsurface_radius_scaled[multiply] --".in1"--> IMPL_lama_sss_subsurface_multiply_unitlength[multiply]
-    IMPL_lama_sss_sssScaleINT([sssScale]) ==.in2==> IMPL_lama_sss_subsurface_radius_scaled[multiply]
-    style IMPL_lama_sss_sssScaleINT fill:#0CF, color:#111
-    IMPL_lama_sss_subsurface_radius_vector[convert] --".in1"--> IMPL_lama_sss_subsurface_radius_scaled[multiply]
-    IMPL_lama_sss_sssRadiusINT([sssRadius]) ==.in==> IMPL_lama_sss_subsurface_radius_vector[convert]
-    style IMPL_lama_sss_sssRadiusINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMPL_lama_sss
+    IMPL_lama_sss_subsurface_radius_vector[subsurface_radius_vector]
+    IMPL_lama_sss_subsurface_radius_scaled[subsurface_radius_scaled]
+    IMPL_lama_sss_subsurface_multiply_unitlength[subsurface_multiply_unitlength]
+    IMPL_lama_sss_subsurface_bsdf[subsurface_bsdf]
+    style IMPL_lama_sss_out  fill:#0C0, color:#FFF
+    IMPL_lama_sss_out([out])
+    style IMPL_lama_sss_sssRadius  fill:#09D, color:#FFF
+    IMPL_lama_sss_sssRadius([sssRadius])
+    style IMPL_lama_sss_sssScale  fill:#09D, color:#FFF
+    IMPL_lama_sss_sssScale([sssScale])
+    style IMPL_lama_sss_sssUnitLength  fill:#09D, color:#FFF
+    IMPL_lama_sss_sssUnitLength([sssUnitLength])
+    style IMPL_lama_sss_color  fill:#09D, color:#FFF
+    IMPL_lama_sss_color([color])
+    style IMPL_lama_sss_sssAnisotropy  fill:#09D, color:#FFF
+    IMPL_lama_sss_sssAnisotropy([sssAnisotropy])
+    style IMPL_lama_sss_normal  fill:#09D, color:#FFF
+    IMPL_lama_sss_normal([normal])
+    end
+    IMPL_lama_sss_sssRadius --"in"--> IMPL_lama_sss_subsurface_radius_vector
+    IMPL_lama_sss_subsurface_radius_vector --"in1"--> IMPL_lama_sss_subsurface_radius_scaled
+    IMPL_lama_sss_sssScale --"in2"--> IMPL_lama_sss_subsurface_radius_scaled
+    IMPL_lama_sss_subsurface_radius_scaled --"in1"--> IMPL_lama_sss_subsurface_multiply_unitlength
+    IMPL_lama_sss_sssUnitLength --"in2"--> IMPL_lama_sss_subsurface_multiply_unitlength
+    IMPL_lama_sss_color --"color"--> IMPL_lama_sss_subsurface_bsdf
+    IMPL_lama_sss_subsurface_multiply_unitlength --"radius"--> IMPL_lama_sss_subsurface_bsdf
+    IMPL_lama_sss_sssAnisotropy --"anisotropy"--> IMPL_lama_sss_subsurface_bsdf
+    IMPL_lama_sss_normal --"normal"--> IMPL_lama_sss_subsurface_bsdf
+    IMPL_lama_sss_subsurface_bsdf --> IMPL_lama_sss_out
 
 
 </div></code></pre>

@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="noise3d" class="ms-2 mb-0">
 Category: noise3d
@@ -929,16 +929,22 @@ Category: noise3d
 <div id="ND_noise3d_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_noise3d_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_noise3d_color3_N_noise3d[noise3d] --> NG_noise3d_color3_out([out])
-    style NG_noise3d_color3_out fill:#0C0, color:#111
-    NG_noise3d_color3_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_color3_N_noise3d[noise3d]
-    style NG_noise3d_color3_amplitudeINT fill:#0CF, color:#111
-    NG_noise3d_color3_pivotINT([pivot]) ==.pivot==> NG_noise3d_color3_N_noise3d[noise3d]
-    style NG_noise3d_color3_pivotINT fill:#0CF, color:#111
-    NG_noise3d_color3_positionINT([position]) ==.position==> NG_noise3d_color3_N_noise3d[noise3d]
-    style NG_noise3d_color3_positionINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_noise3d_color3
+    NG_noise3d_color3_N_noise3d[N_noise3d]
+    style NG_noise3d_color3_out  fill:#0C0, color:#FFF
+    NG_noise3d_color3_out([out])
+    style NG_noise3d_color3_amplitude  fill:#09D, color:#FFF
+    NG_noise3d_color3_amplitude([amplitude])
+    style NG_noise3d_color3_pivot  fill:#09D, color:#FFF
+    NG_noise3d_color3_pivot([pivot])
+    style NG_noise3d_color3_position  fill:#09D, color:#FFF
+    NG_noise3d_color3_position([position])
+    end
+    NG_noise3d_color3_amplitude --"amplitude"--> NG_noise3d_color3_N_noise3d
+    NG_noise3d_color3_pivot --"pivot"--> NG_noise3d_color3_N_noise3d
+    NG_noise3d_color3_position --"position"--> NG_noise3d_color3_N_noise3d
+    NG_noise3d_color3_N_noise3d --> NG_noise3d_color3_out
 
 
 </div></code></pre>
@@ -1086,16 +1092,22 @@ graph LR;
 <div id="ND_noise3d_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_noise3d_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_noise3d_color4_N_noise3d[noise3d] --> NG_noise3d_color4_out([out])
-    style NG_noise3d_color4_out fill:#0C0, color:#111
-    NG_noise3d_color4_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_color4_N_noise3d[noise3d]
-    style NG_noise3d_color4_amplitudeINT fill:#0CF, color:#111
-    NG_noise3d_color4_pivotINT([pivot]) ==.pivot==> NG_noise3d_color4_N_noise3d[noise3d]
-    style NG_noise3d_color4_pivotINT fill:#0CF, color:#111
-    NG_noise3d_color4_positionINT([position]) ==.position==> NG_noise3d_color4_N_noise3d[noise3d]
-    style NG_noise3d_color4_positionINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_noise3d_color4
+    NG_noise3d_color4_N_noise3d[N_noise3d]
+    style NG_noise3d_color4_out  fill:#0C0, color:#FFF
+    NG_noise3d_color4_out([out])
+    style NG_noise3d_color4_amplitude  fill:#09D, color:#FFF
+    NG_noise3d_color4_amplitude([amplitude])
+    style NG_noise3d_color4_pivot  fill:#09D, color:#FFF
+    NG_noise3d_color4_pivot([pivot])
+    style NG_noise3d_color4_position  fill:#09D, color:#FFF
+    NG_noise3d_color4_position([position])
+    end
+    NG_noise3d_color4_amplitude --"amplitude"--> NG_noise3d_color4_N_noise3d
+    NG_noise3d_color4_pivot --"pivot"--> NG_noise3d_color4_N_noise3d
+    NG_noise3d_color4_position --"position"--> NG_noise3d_color4_N_noise3d
+    NG_noise3d_color4_N_noise3d --> NG_noise3d_color4_out
 
 
 </div></code></pre>
@@ -1850,16 +1862,22 @@ graph LR;
 <div id="ND_noise3d_color3FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_noise3d_color3FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_noise3d_color3FA_N_noise3d[noise3d] --> NG_noise3d_color3FA_out([out])
-    style NG_noise3d_color3FA_out fill:#0C0, color:#111
-    NG_noise3d_color3FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_color3FA_N_noise3d[noise3d]
-    style NG_noise3d_color3FA_amplitudeINT fill:#0CF, color:#111
-    NG_noise3d_color3FA_pivotINT([pivot]) ==.pivot==> NG_noise3d_color3FA_N_noise3d[noise3d]
-    style NG_noise3d_color3FA_pivotINT fill:#0CF, color:#111
-    NG_noise3d_color3FA_positionINT([position]) ==.position==> NG_noise3d_color3FA_N_noise3d[noise3d]
-    style NG_noise3d_color3FA_positionINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_noise3d_color3FA
+    NG_noise3d_color3FA_N_noise3d[N_noise3d]
+    style NG_noise3d_color3FA_out  fill:#0C0, color:#FFF
+    NG_noise3d_color3FA_out([out])
+    style NG_noise3d_color3FA_amplitude  fill:#09D, color:#FFF
+    NG_noise3d_color3FA_amplitude([amplitude])
+    style NG_noise3d_color3FA_pivot  fill:#09D, color:#FFF
+    NG_noise3d_color3FA_pivot([pivot])
+    style NG_noise3d_color3FA_position  fill:#09D, color:#FFF
+    NG_noise3d_color3FA_position([position])
+    end
+    NG_noise3d_color3FA_amplitude --"amplitude"--> NG_noise3d_color3FA_N_noise3d
+    NG_noise3d_color3FA_pivot --"pivot"--> NG_noise3d_color3FA_N_noise3d
+    NG_noise3d_color3FA_position --"position"--> NG_noise3d_color3FA_N_noise3d
+    NG_noise3d_color3FA_N_noise3d --> NG_noise3d_color3FA_out
 
 
 </div></code></pre>
@@ -1999,16 +2017,22 @@ graph LR;
 <div id="ND_noise3d_color4FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_noise3d_color4FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_noise3d_color4FA_N_noise3d[noise3d] --> NG_noise3d_color4FA_out([out])
-    style NG_noise3d_color4FA_out fill:#0C0, color:#111
-    NG_noise3d_color4FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_color4FA_N_noise3d[noise3d]
-    style NG_noise3d_color4FA_amplitudeINT fill:#0CF, color:#111
-    NG_noise3d_color4FA_pivotINT([pivot]) ==.pivot==> NG_noise3d_color4FA_N_noise3d[noise3d]
-    style NG_noise3d_color4FA_pivotINT fill:#0CF, color:#111
-    NG_noise3d_color4FA_positionINT([position]) ==.position==> NG_noise3d_color4FA_N_noise3d[noise3d]
-    style NG_noise3d_color4FA_positionINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_noise3d_color4FA
+    NG_noise3d_color4FA_N_noise3d[N_noise3d]
+    style NG_noise3d_color4FA_out  fill:#0C0, color:#FFF
+    NG_noise3d_color4FA_out([out])
+    style NG_noise3d_color4FA_amplitude  fill:#09D, color:#FFF
+    NG_noise3d_color4FA_amplitude([amplitude])
+    style NG_noise3d_color4FA_pivot  fill:#09D, color:#FFF
+    NG_noise3d_color4FA_pivot([pivot])
+    style NG_noise3d_color4FA_position  fill:#09D, color:#FFF
+    NG_noise3d_color4FA_position([position])
+    end
+    NG_noise3d_color4FA_amplitude --"amplitude"--> NG_noise3d_color4FA_N_noise3d
+    NG_noise3d_color4FA_pivot --"pivot"--> NG_noise3d_color4FA_N_noise3d
+    NG_noise3d_color4FA_position --"position"--> NG_noise3d_color4FA_N_noise3d
+    NG_noise3d_color4FA_N_noise3d --> NG_noise3d_color4FA_out
 
 
 </div></code></pre>
@@ -2139,16 +2163,22 @@ graph LR;
 <div id="ND_noise3d_vector2FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_noise3d_vector2FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_noise3d_vector2FA_N_noise3d[noise3d] --> NG_noise3d_vector2FA_out([out])
-    style NG_noise3d_vector2FA_out fill:#0C0, color:#111
-    NG_noise3d_vector2FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_vector2FA_N_noise3d[noise3d]
-    style NG_noise3d_vector2FA_amplitudeINT fill:#0CF, color:#111
-    NG_noise3d_vector2FA_pivotINT([pivot]) ==.pivot==> NG_noise3d_vector2FA_N_noise3d[noise3d]
-    style NG_noise3d_vector2FA_pivotINT fill:#0CF, color:#111
-    NG_noise3d_vector2FA_positionINT([position]) ==.position==> NG_noise3d_vector2FA_N_noise3d[noise3d]
-    style NG_noise3d_vector2FA_positionINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_noise3d_vector2FA
+    NG_noise3d_vector2FA_N_noise3d[N_noise3d]
+    style NG_noise3d_vector2FA_out  fill:#0C0, color:#FFF
+    NG_noise3d_vector2FA_out([out])
+    style NG_noise3d_vector2FA_amplitude  fill:#09D, color:#FFF
+    NG_noise3d_vector2FA_amplitude([amplitude])
+    style NG_noise3d_vector2FA_pivot  fill:#09D, color:#FFF
+    NG_noise3d_vector2FA_pivot([pivot])
+    style NG_noise3d_vector2FA_position  fill:#09D, color:#FFF
+    NG_noise3d_vector2FA_position([position])
+    end
+    NG_noise3d_vector2FA_amplitude --"amplitude"--> NG_noise3d_vector2FA_N_noise3d
+    NG_noise3d_vector2FA_pivot --"pivot"--> NG_noise3d_vector2FA_N_noise3d
+    NG_noise3d_vector2FA_position --"position"--> NG_noise3d_vector2FA_N_noise3d
+    NG_noise3d_vector2FA_N_noise3d --> NG_noise3d_vector2FA_out
 
 
 </div></code></pre>
@@ -2282,16 +2312,22 @@ graph LR;
 <div id="ND_noise3d_vector3FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_noise3d_vector3FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_noise3d_vector3FA_N_noise3d[noise3d] --> NG_noise3d_vector3FA_out([out])
-    style NG_noise3d_vector3FA_out fill:#0C0, color:#111
-    NG_noise3d_vector3FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_vector3FA_N_noise3d[noise3d]
-    style NG_noise3d_vector3FA_amplitudeINT fill:#0CF, color:#111
-    NG_noise3d_vector3FA_pivotINT([pivot]) ==.pivot==> NG_noise3d_vector3FA_N_noise3d[noise3d]
-    style NG_noise3d_vector3FA_pivotINT fill:#0CF, color:#111
-    NG_noise3d_vector3FA_positionINT([position]) ==.position==> NG_noise3d_vector3FA_N_noise3d[noise3d]
-    style NG_noise3d_vector3FA_positionINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_noise3d_vector3FA
+    NG_noise3d_vector3FA_N_noise3d[N_noise3d]
+    style NG_noise3d_vector3FA_out  fill:#0C0, color:#FFF
+    NG_noise3d_vector3FA_out([out])
+    style NG_noise3d_vector3FA_amplitude  fill:#09D, color:#FFF
+    NG_noise3d_vector3FA_amplitude([amplitude])
+    style NG_noise3d_vector3FA_pivot  fill:#09D, color:#FFF
+    NG_noise3d_vector3FA_pivot([pivot])
+    style NG_noise3d_vector3FA_position  fill:#09D, color:#FFF
+    NG_noise3d_vector3FA_position([position])
+    end
+    NG_noise3d_vector3FA_amplitude --"amplitude"--> NG_noise3d_vector3FA_N_noise3d
+    NG_noise3d_vector3FA_pivot --"pivot"--> NG_noise3d_vector3FA_N_noise3d
+    NG_noise3d_vector3FA_position --"position"--> NG_noise3d_vector3FA_N_noise3d
+    NG_noise3d_vector3FA_N_noise3d --> NG_noise3d_vector3FA_out
 
 
 </div></code></pre>
@@ -2428,16 +2464,22 @@ graph LR;
 <div id="ND_noise3d_vector4FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_noise3d_vector4FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_noise3d_vector4FA_N_noise3d[noise3d] --> NG_noise3d_vector4FA_out([out])
-    style NG_noise3d_vector4FA_out fill:#0C0, color:#111
-    NG_noise3d_vector4FA_amplitudeINT([amplitude]) ==.amplitude==> NG_noise3d_vector4FA_N_noise3d[noise3d]
-    style NG_noise3d_vector4FA_amplitudeINT fill:#0CF, color:#111
-    NG_noise3d_vector4FA_pivotINT([pivot]) ==.pivot==> NG_noise3d_vector4FA_N_noise3d[noise3d]
-    style NG_noise3d_vector4FA_pivotINT fill:#0CF, color:#111
-    NG_noise3d_vector4FA_positionINT([position]) ==.position==> NG_noise3d_vector4FA_N_noise3d[noise3d]
-    style NG_noise3d_vector4FA_positionINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_noise3d_vector4FA
+    NG_noise3d_vector4FA_N_noise3d[N_noise3d]
+    style NG_noise3d_vector4FA_out  fill:#0C0, color:#FFF
+    NG_noise3d_vector4FA_out([out])
+    style NG_noise3d_vector4FA_amplitude  fill:#09D, color:#FFF
+    NG_noise3d_vector4FA_amplitude([amplitude])
+    style NG_noise3d_vector4FA_pivot  fill:#09D, color:#FFF
+    NG_noise3d_vector4FA_pivot([pivot])
+    style NG_noise3d_vector4FA_position  fill:#09D, color:#FFF
+    NG_noise3d_vector4FA_position([position])
+    end
+    NG_noise3d_vector4FA_amplitude --"amplitude"--> NG_noise3d_vector4FA_N_noise3d
+    NG_noise3d_vector4FA_pivot --"pivot"--> NG_noise3d_vector4FA_N_noise3d
+    NG_noise3d_vector4FA_position --"position"--> NG_noise3d_vector4FA_N_noise3d
+    NG_noise3d_vector4FA_N_noise3d --> NG_noise3d_vector4FA_out
 
 
 </div></code></pre>

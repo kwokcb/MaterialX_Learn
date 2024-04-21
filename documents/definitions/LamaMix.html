@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="LamaMix" class="ms-2 mb-0">
 Category: LamaMix
@@ -756,16 +756,22 @@ Category: LamaMix
 <div id="ND_lama_mix_bsdf_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_lama_mix_bsdf_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_lama_mix_bsdf_mix[mix] --> NG_lama_mix_bsdf_out([out])
-    style NG_lama_mix_bsdf_out fill:#0C0, color:#111
-    NG_lama_mix_bsdf_material2INT([material2]) ==.fg==> NG_lama_mix_bsdf_mix[mix]
-    style NG_lama_mix_bsdf_material2INT fill:#0CF, color:#111
-    NG_lama_mix_bsdf_material1INT([material1]) ==.bg==> NG_lama_mix_bsdf_mix[mix]
-    style NG_lama_mix_bsdf_material1INT fill:#0CF, color:#111
-    NG_lama_mix_bsdf_mixINT([mix]) ==.mix==> NG_lama_mix_bsdf_mix[mix]
-    style NG_lama_mix_bsdf_mixINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_lama_mix_bsdf
+    NG_lama_mix_bsdf_mix[mix]
+    style NG_lama_mix_bsdf_out  fill:#0C0, color:#FFF
+    NG_lama_mix_bsdf_out([out])
+    style NG_lama_mix_bsdf_material2  fill:#09D, color:#FFF
+    NG_lama_mix_bsdf_material2([material2])
+    style NG_lama_mix_bsdf_material1  fill:#09D, color:#FFF
+    NG_lama_mix_bsdf_material1([material1])
+    style NG_lama_mix_bsdf_mix:in  fill:#09D, color:#FFF
+    NG_lama_mix_bsdf_mix:in([mix:in])
+    end
+    NG_lama_mix_bsdf_material2 --"fg"--> NG_lama_mix_bsdf_mix
+    NG_lama_mix_bsdf_material1 --"bg"--> NG_lama_mix_bsdf_mix
+    NG_lama_mix_bsdf_mix:in --"mix"--> NG_lama_mix_bsdf_mix
+    NG_lama_mix_bsdf_mix --> NG_lama_mix_bsdf_out
 
 
 </div></code></pre>
@@ -930,16 +936,22 @@ graph LR;
 <div id="ND_lama_mix_edf_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_lama_mix_edf_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_lama_mix_edf_mix[mix] --> NG_lama_mix_edf_out([out])
-    style NG_lama_mix_edf_out fill:#0C0, color:#111
-    NG_lama_mix_edf_material2INT([material2]) ==.fg==> NG_lama_mix_edf_mix[mix]
-    style NG_lama_mix_edf_material2INT fill:#0CF, color:#111
-    NG_lama_mix_edf_material1INT([material1]) ==.bg==> NG_lama_mix_edf_mix[mix]
-    style NG_lama_mix_edf_material1INT fill:#0CF, color:#111
-    NG_lama_mix_edf_mixINT([mix]) ==.mix==> NG_lama_mix_edf_mix[mix]
-    style NG_lama_mix_edf_mixINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_lama_mix_edf
+    NG_lama_mix_edf_mix[mix]
+    style NG_lama_mix_edf_out  fill:#0C0, color:#FFF
+    NG_lama_mix_edf_out([out])
+    style NG_lama_mix_edf_material2  fill:#09D, color:#FFF
+    NG_lama_mix_edf_material2([material2])
+    style NG_lama_mix_edf_material1  fill:#09D, color:#FFF
+    NG_lama_mix_edf_material1([material1])
+    style NG_lama_mix_edf_mix:in  fill:#09D, color:#FFF
+    NG_lama_mix_edf_mix:in([mix:in])
+    end
+    NG_lama_mix_edf_material2 --"fg"--> NG_lama_mix_edf_mix
+    NG_lama_mix_edf_material1 --"bg"--> NG_lama_mix_edf_mix
+    NG_lama_mix_edf_mix:in --"mix"--> NG_lama_mix_edf_mix
+    NG_lama_mix_edf_mix --> NG_lama_mix_edf_out
 
 
 </div></code></pre>

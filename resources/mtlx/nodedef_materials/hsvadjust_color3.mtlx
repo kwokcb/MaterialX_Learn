@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <hsvadjust name="hsvadjust_color3" type="color3">
     <input name="in" type="color3" value="0.0, 0.0, 0.0" />
     <input name="amount" type="vector3" value="0.0, 1.0, 1.0" />

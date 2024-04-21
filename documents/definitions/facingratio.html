@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="facingratio" class="ms-2 mb-0">
 Category: facingratio
@@ -740,29 +740,39 @@ Category: facingratio
 <div id="ND_facingratio_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_facingratio_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_facingratio_float_N_result{ifequal} --> NG_facingratio_float_out([out])
-    style NG_facingratio_float_out fill:#0C0, color:#111
-    NG_facingratio_float_invertINT([invert]) ==.value1==> NG_facingratio_float_N_result[ifequal]
-    style NG_facingratio_float_invertINT fill:#0CF, color:#111
-    NG_facingratio_float_N_invert[invert] --".in1"--> NG_facingratio_float_N_result{ifequal}
-    style NG_facingratio_float_N_result fill:#F80, color:#111
-    NG_facingratio_float_N_facing{ifequal} --".in"--> NG_facingratio_float_N_invert[invert]
-    NG_facingratio_float_faceforwardINT([faceforward]) ==.value1==> NG_facingratio_float_N_facing[ifequal]
-    style NG_facingratio_float_faceforwardINT fill:#0CF, color:#111
-    NG_facingratio_float_N_absval[absval] --".in1"--> NG_facingratio_float_N_facing{ifequal}
-    style NG_facingratio_float_N_facing fill:#F80, color:#111
-    NG_facingratio_float_N_dotproduct[dotproduct] --".in"--> NG_facingratio_float_N_absval[absval]
-    NG_facingratio_float_viewdirectionINT([viewdirection]) ==.in1==> NG_facingratio_float_N_dotproduct[dotproduct]
-    style NG_facingratio_float_viewdirectionINT fill:#0CF, color:#111
-    NG_facingratio_float_normalINT([normal]) ==.in2==> NG_facingratio_float_N_dotproduct[dotproduct]
-    style NG_facingratio_float_normalINT fill:#0CF, color:#111
-    NG_facingratio_float_N_scale[multiply] --".in2"--> NG_facingratio_float_N_facing{ifequal}
-    style NG_facingratio_float_N_facing fill:#F80, color:#111
-    NG_facingratio_float_N_dotproduct[dotproduct] --".in1"--> NG_facingratio_float_N_scale[multiply]
-    NG_facingratio_float_N_facing{ifequal} --".in2"--> NG_facingratio_float_N_result{ifequal}
-    style NG_facingratio_float_N_result fill:#F80, color:#111
-
+graph TB
+    subgraph NG_facingratio_float
+    NG_facingratio_float_N_dotproduct[N_dotproduct]
+    NG_facingratio_float_N_scale[N_scale]
+    NG_facingratio_float_N_absval[N_absval]
+    style NG_facingratio_float_N_facing  fill:#C72, color:#FFF
+    NG_facingratio_float_N_facing{N_facing}
+    NG_facingratio_float_N_invert[N_invert]
+    style NG_facingratio_float_N_result  fill:#C72, color:#FFF
+    NG_facingratio_float_N_result{N_result}
+    style NG_facingratio_float_out  fill:#0C0, color:#FFF
+    NG_facingratio_float_out([out])
+    style NG_facingratio_float_viewdirection  fill:#09D, color:#FFF
+    NG_facingratio_float_viewdirection([viewdirection])
+    style NG_facingratio_float_normal  fill:#09D, color:#FFF
+    NG_facingratio_float_normal([normal])
+    style NG_facingratio_float_faceforward  fill:#09D, color:#FFF
+    NG_facingratio_float_faceforward([faceforward])
+    style NG_facingratio_float_invert  fill:#09D, color:#FFF
+    NG_facingratio_float_invert([invert])
+    end
+    NG_facingratio_float_viewdirection --"in1"--> NG_facingratio_float_N_dotproduct
+    NG_facingratio_float_normal --"in2"--> NG_facingratio_float_N_dotproduct
+    NG_facingratio_float_N_dotproduct --"in1"--> NG_facingratio_float_N_scale
+    NG_facingratio_float_N_dotproduct --"in"--> NG_facingratio_float_N_absval
+    NG_facingratio_float_faceforward --"value1"--> NG_facingratio_float_N_facing
+    NG_facingratio_float_N_absval --"in1"--> NG_facingratio_float_N_facing
+    NG_facingratio_float_N_scale --"in2"--> NG_facingratio_float_N_facing
+    NG_facingratio_float_N_facing --"in"--> NG_facingratio_float_N_invert
+    NG_facingratio_float_invert --"value1"--> NG_facingratio_float_N_result
+    NG_facingratio_float_N_invert --"in1"--> NG_facingratio_float_N_result
+    NG_facingratio_float_N_facing --"in2"--> NG_facingratio_float_N_result
+    NG_facingratio_float_N_result --> NG_facingratio_float_out
 
 
 </div></code></pre>

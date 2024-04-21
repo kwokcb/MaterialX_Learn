@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="separate3" class="ms-2 mb-0">
 Category: separate3
@@ -744,20 +744,26 @@ Category: separate3
 <div id="ND_separate3_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_separate3_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_separate3_color3_N_r_color3[swizzle] --> NG_separate3_color3_outr([outr])
-    style NG_separate3_color3_outr fill:#0C0, color:#111
-    NG_separate3_color3_inINT([in]) ==.in==> NG_separate3_color3_N_r_color3[swizzle]
-    style NG_separate3_color3_inINT fill:#0CF, color:#111
-    NG_separate3_color3_N_g_color3[swizzle] --> NG_separate3_color3_outg([outg])
-    style NG_separate3_color3_outg fill:#0C0, color:#111
-    NG_separate3_color3_inINT([in]) ==.in==> NG_separate3_color3_N_g_color3[swizzle]
-    style NG_separate3_color3_inINT fill:#0CF, color:#111
-    NG_separate3_color3_N_b_color3[swizzle] --> NG_separate3_color3_outb([outb])
-    style NG_separate3_color3_outb fill:#0C0, color:#111
-    NG_separate3_color3_inINT([in]) ==.in==> NG_separate3_color3_N_b_color3[swizzle]
-    style NG_separate3_color3_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_separate3_color3
+    NG_separate3_color3_N_r_color3[N_r_color3]
+    NG_separate3_color3_N_g_color3[N_g_color3]
+    NG_separate3_color3_N_b_color3[N_b_color3]
+    style NG_separate3_color3_outr  fill:#0C0, color:#FFF
+    NG_separate3_color3_outr([outr])
+    style NG_separate3_color3_outg  fill:#0C0, color:#FFF
+    NG_separate3_color3_outg([outg])
+    style NG_separate3_color3_outb  fill:#0C0, color:#FFF
+    NG_separate3_color3_outb([outb])
+    style NG_separate3_color3_in  fill:#09D, color:#FFF
+    NG_separate3_color3_in([in])
+    end
+    NG_separate3_color3_in --"in"--> NG_separate3_color3_N_r_color3
+    NG_separate3_color3_in --"in"--> NG_separate3_color3_N_g_color3
+    NG_separate3_color3_in --"in"--> NG_separate3_color3_N_b_color3
+    NG_separate3_color3_N_r_color3 --> NG_separate3_color3_outr
+    NG_separate3_color3_N_g_color3 --> NG_separate3_color3_outg
+    NG_separate3_color3_N_b_color3 --> NG_separate3_color3_outb
 
 
 </div></code></pre>
@@ -907,20 +913,26 @@ graph LR;
 <div id="ND_separate3_vector3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_separate3_vector3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_separate3_vector3_N_x_vector3[swizzle] --> NG_separate3_vector3_outx([outx])
-    style NG_separate3_vector3_outx fill:#0C0, color:#111
-    NG_separate3_vector3_inINT([in]) ==.in==> NG_separate3_vector3_N_x_vector3[swizzle]
-    style NG_separate3_vector3_inINT fill:#0CF, color:#111
-    NG_separate3_vector3_N_y_vector3[swizzle] --> NG_separate3_vector3_outy([outy])
-    style NG_separate3_vector3_outy fill:#0C0, color:#111
-    NG_separate3_vector3_inINT([in]) ==.in==> NG_separate3_vector3_N_y_vector3[swizzle]
-    style NG_separate3_vector3_inINT fill:#0CF, color:#111
-    NG_separate3_vector3_N_z_vector3[swizzle] --> NG_separate3_vector3_outz([outz])
-    style NG_separate3_vector3_outz fill:#0C0, color:#111
-    NG_separate3_vector3_inINT([in]) ==.in==> NG_separate3_vector3_N_z_vector3[swizzle]
-    style NG_separate3_vector3_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_separate3_vector3
+    NG_separate3_vector3_N_x_vector3[N_x_vector3]
+    NG_separate3_vector3_N_y_vector3[N_y_vector3]
+    NG_separate3_vector3_N_z_vector3[N_z_vector3]
+    style NG_separate3_vector3_outx  fill:#0C0, color:#FFF
+    NG_separate3_vector3_outx([outx])
+    style NG_separate3_vector3_outy  fill:#0C0, color:#FFF
+    NG_separate3_vector3_outy([outy])
+    style NG_separate3_vector3_outz  fill:#0C0, color:#FFF
+    NG_separate3_vector3_outz([outz])
+    style NG_separate3_vector3_in  fill:#09D, color:#FFF
+    NG_separate3_vector3_in([in])
+    end
+    NG_separate3_vector3_in --"in"--> NG_separate3_vector3_N_x_vector3
+    NG_separate3_vector3_in --"in"--> NG_separate3_vector3_N_y_vector3
+    NG_separate3_vector3_in --"in"--> NG_separate3_vector3_N_z_vector3
+    NG_separate3_vector3_N_x_vector3 --> NG_separate3_vector3_outx
+    NG_separate3_vector3_N_y_vector3 --> NG_separate3_vector3_outy
+    NG_separate3_vector3_N_z_vector3 --> NG_separate3_vector3_outz
 
 
 </div></code></pre>

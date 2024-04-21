@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <LamaAdd name="lama_add_bsdf" type="BSDF" version="1.0">
     <input name="material1" uiname="Material 1" type="BSDF" nodename="oren_nayar_diffuse_bsdf" />
     <input name="material2" uiname="Material 2" type="BSDF" nodename="oren_nayar_diffuse_bsdf2" />

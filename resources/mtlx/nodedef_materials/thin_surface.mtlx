@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <thin_surface name="thin_surface" type="surfaceshader">
     <input name="front_bsdf" type="BSDF" value="" nodename="oren_nayar_diffuse_bsdf" />
     <input name="front_edf" type="EDF" value="" nodename="uniform_edf" />

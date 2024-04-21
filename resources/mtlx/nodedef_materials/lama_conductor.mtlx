@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <LamaConductor name="lama_conductor" type="BSDF" version="1.0">
     <input name="tint" type="color3" value="1, 1, 1" uiname="Tint" />
     <input name="fresnelMode" type="integer" uniform="true" enum="Scientific,Artistic" enumvalues="0,1" value="0" uiname="Fresnel Mode" />

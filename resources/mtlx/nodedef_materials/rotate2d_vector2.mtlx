@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <rotate2d name="rotate2d_vector2" type="vector2">
     <input name="in" type="vector2" value="0.0, 0.0" />
     <input name="amount" type="float" value="0.0" unittype="angle" unit="degree" />

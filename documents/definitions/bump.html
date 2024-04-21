@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="bump" class="ms-2 mb-0">
 Category: bump
@@ -816,19 +816,27 @@ Category: bump
 <div id="ND_bump_vector3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_bump_vector3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_bump_vector3_N_normalmap[normalmap] --> NG_bump_vector3_out([out])
-    style NG_bump_vector3_out fill:#0C0, color:#111
-    NG_bump_vector3_normalINT([normal]) ==.normal==> NG_bump_vector3_N_normalmap[normalmap]
-    style NG_bump_vector3_normalINT fill:#0CF, color:#111
-    NG_bump_vector3_scaleINT([scale]) ==.scale==> NG_bump_vector3_N_normalmap[normalmap]
-    style NG_bump_vector3_scaleINT fill:#0CF, color:#111
-    NG_bump_vector3_tangentINT([tangent]) ==.tangent==> NG_bump_vector3_N_normalmap[normalmap]
-    style NG_bump_vector3_tangentINT fill:#0CF, color:#111
-    NG_bump_vector3_N_heighttonormal[heighttonormal] --".in"--> NG_bump_vector3_N_normalmap[normalmap]
-    NG_bump_vector3_heightINT([height]) ==.in==> NG_bump_vector3_N_heighttonormal[heighttonormal]
-    style NG_bump_vector3_heightINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_bump_vector3
+    NG_bump_vector3_N_heighttonormal[N_heighttonormal]
+    NG_bump_vector3_N_normalmap[N_normalmap]
+    style NG_bump_vector3_out  fill:#0C0, color:#FFF
+    NG_bump_vector3_out([out])
+    style NG_bump_vector3_height  fill:#09D, color:#FFF
+    NG_bump_vector3_height([height])
+    style NG_bump_vector3_normal  fill:#09D, color:#FFF
+    NG_bump_vector3_normal([normal])
+    style NG_bump_vector3_scale  fill:#09D, color:#FFF
+    NG_bump_vector3_scale([scale])
+    style NG_bump_vector3_tangent  fill:#09D, color:#FFF
+    NG_bump_vector3_tangent([tangent])
+    end
+    NG_bump_vector3_height --"in"--> NG_bump_vector3_N_heighttonormal
+    NG_bump_vector3_N_heighttonormal --"in"--> NG_bump_vector3_N_normalmap
+    NG_bump_vector3_normal --"normal"--> NG_bump_vector3_N_normalmap
+    NG_bump_vector3_scale --"scale"--> NG_bump_vector3_N_normalmap
+    NG_bump_vector3_tangent --"tangent"--> NG_bump_vector3_N_normalmap
+    NG_bump_vector3_N_normalmap --> NG_bump_vector3_out
 
 
 </div></code></pre>

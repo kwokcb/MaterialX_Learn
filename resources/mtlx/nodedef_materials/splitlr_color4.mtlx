@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <splitlr name="splitlr_color4" type="color4">
     <input name="valuel" type="color4" value="0.0, 0.0, 0.0, 0.0" uiname="Left" />
     <input name="valuer" type="color4" value="0.0, 0.0, 0.0, 0.0" uiname="Right" />

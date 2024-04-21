@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="ramp4" class="ms-2 mb-0">
 Category: ramp4
@@ -760,27 +760,40 @@ Category: ramp4
 <div id="ND_ramp4_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_ramp4_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_ramp4_float_N_mix_float[mix] --> NG_ramp4_float_out([out])
-    style NG_ramp4_float_out fill:#0C0, color:#111
-    NG_ramp4_float_N_mixtop_float[mix] --".bg"--> NG_ramp4_float_N_mix_float[mix]
-    NG_ramp4_float_valuetlINT([valuetl]) ==.bg==> NG_ramp4_float_N_mixtop_float[mix]
-    style NG_ramp4_float_valuetlINT fill:#0CF, color:#111
-    NG_ramp4_float_valuetrINT([valuetr]) ==.fg==> NG_ramp4_float_N_mixtop_float[mix]
-    style NG_ramp4_float_valuetrINT fill:#0CF, color:#111
-    NG_ramp4_float_N_s_float[extract] --".mix"--> NG_ramp4_float_N_mixtop_float[mix]
-    NG_ramp4_float_N_txclamp_float[clamp] --".in"--> NG_ramp4_float_N_s_float[extract]
-    NG_ramp4_float_texcoordINT([texcoord]) ==.in==> NG_ramp4_float_N_txclamp_float[clamp]
-    style NG_ramp4_float_texcoordINT fill:#0CF, color:#111
-    NG_ramp4_float_N_mixbot_float[mix] --".fg"--> NG_ramp4_float_N_mix_float[mix]
-    NG_ramp4_float_valueblINT([valuebl]) ==.bg==> NG_ramp4_float_N_mixbot_float[mix]
-    style NG_ramp4_float_valueblINT fill:#0CF, color:#111
-    NG_ramp4_float_valuebrINT([valuebr]) ==.fg==> NG_ramp4_float_N_mixbot_float[mix]
-    style NG_ramp4_float_valuebrINT fill:#0CF, color:#111
-    NG_ramp4_float_N_s_float[extract] --".mix"--> NG_ramp4_float_N_mixbot_float[mix]
-    NG_ramp4_float_N_t_float[extract] --".mix"--> NG_ramp4_float_N_mix_float[mix]
-    NG_ramp4_float_N_txclamp_float[clamp] --".in"--> NG_ramp4_float_N_t_float[extract]
-
+graph TB
+    subgraph NG_ramp4_float
+    NG_ramp4_float_N_txclamp_float[N_txclamp_float]
+    NG_ramp4_float_N_s_float[N_s_float]
+    NG_ramp4_float_N_t_float[N_t_float]
+    NG_ramp4_float_N_mixtop_float[N_mixtop_float]
+    NG_ramp4_float_N_mixbot_float[N_mixbot_float]
+    NG_ramp4_float_N_mix_float[N_mix_float]
+    style NG_ramp4_float_out  fill:#0C0, color:#FFF
+    NG_ramp4_float_out([out])
+    style NG_ramp4_float_texcoord  fill:#09D, color:#FFF
+    NG_ramp4_float_texcoord([texcoord])
+    style NG_ramp4_float_valuetl  fill:#09D, color:#FFF
+    NG_ramp4_float_valuetl([valuetl])
+    style NG_ramp4_float_valuetr  fill:#09D, color:#FFF
+    NG_ramp4_float_valuetr([valuetr])
+    style NG_ramp4_float_valuebl  fill:#09D, color:#FFF
+    NG_ramp4_float_valuebl([valuebl])
+    style NG_ramp4_float_valuebr  fill:#09D, color:#FFF
+    NG_ramp4_float_valuebr([valuebr])
+    end
+    NG_ramp4_float_texcoord --"in"--> NG_ramp4_float_N_txclamp_float
+    NG_ramp4_float_N_txclamp_float --"in"--> NG_ramp4_float_N_s_float
+    NG_ramp4_float_N_txclamp_float --"in"--> NG_ramp4_float_N_t_float
+    NG_ramp4_float_valuetl --"bg"--> NG_ramp4_float_N_mixtop_float
+    NG_ramp4_float_valuetr --"fg"--> NG_ramp4_float_N_mixtop_float
+    NG_ramp4_float_N_s_float --"mix"--> NG_ramp4_float_N_mixtop_float
+    NG_ramp4_float_valuebl --"bg"--> NG_ramp4_float_N_mixbot_float
+    NG_ramp4_float_valuebr --"fg"--> NG_ramp4_float_N_mixbot_float
+    NG_ramp4_float_N_s_float --"mix"--> NG_ramp4_float_N_mixbot_float
+    NG_ramp4_float_N_mixtop_float --"bg"--> NG_ramp4_float_N_mix_float
+    NG_ramp4_float_N_mixbot_float --"fg"--> NG_ramp4_float_N_mix_float
+    NG_ramp4_float_N_t_float --"mix"--> NG_ramp4_float_N_mix_float
+    NG_ramp4_float_N_mix_float --> NG_ramp4_float_out
 
 
 </div></code></pre>
@@ -989,27 +1002,40 @@ graph LR;
 <div id="ND_ramp4_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_ramp4_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_ramp4_color3_N_mix_color3[mix] --> NG_ramp4_color3_out([out])
-    style NG_ramp4_color3_out fill:#0C0, color:#111
-    NG_ramp4_color3_N_mixtop_color3[mix] --".bg"--> NG_ramp4_color3_N_mix_color3[mix]
-    NG_ramp4_color3_valuetlINT([valuetl]) ==.bg==> NG_ramp4_color3_N_mixtop_color3[mix]
-    style NG_ramp4_color3_valuetlINT fill:#0CF, color:#111
-    NG_ramp4_color3_valuetrINT([valuetr]) ==.fg==> NG_ramp4_color3_N_mixtop_color3[mix]
-    style NG_ramp4_color3_valuetrINT fill:#0CF, color:#111
-    NG_ramp4_color3_N_s_color3[extract] --".mix"--> NG_ramp4_color3_N_mixtop_color3[mix]
-    NG_ramp4_color3_N_txclamp_color3[clamp] --".in"--> NG_ramp4_color3_N_s_color3[extract]
-    NG_ramp4_color3_texcoordINT([texcoord]) ==.in==> NG_ramp4_color3_N_txclamp_color3[clamp]
-    style NG_ramp4_color3_texcoordINT fill:#0CF, color:#111
-    NG_ramp4_color3_N_mixbot_color3[mix] --".fg"--> NG_ramp4_color3_N_mix_color3[mix]
-    NG_ramp4_color3_valueblINT([valuebl]) ==.bg==> NG_ramp4_color3_N_mixbot_color3[mix]
-    style NG_ramp4_color3_valueblINT fill:#0CF, color:#111
-    NG_ramp4_color3_valuebrINT([valuebr]) ==.fg==> NG_ramp4_color3_N_mixbot_color3[mix]
-    style NG_ramp4_color3_valuebrINT fill:#0CF, color:#111
-    NG_ramp4_color3_N_s_color3[extract] --".mix"--> NG_ramp4_color3_N_mixbot_color3[mix]
-    NG_ramp4_color3_N_t_color3[extract] --".mix"--> NG_ramp4_color3_N_mix_color3[mix]
-    NG_ramp4_color3_N_txclamp_color3[clamp] --".in"--> NG_ramp4_color3_N_t_color3[extract]
-
+graph TB
+    subgraph NG_ramp4_color3
+    NG_ramp4_color3_N_txclamp_color3[N_txclamp_color3]
+    NG_ramp4_color3_N_s_color3[N_s_color3]
+    NG_ramp4_color3_N_t_color3[N_t_color3]
+    NG_ramp4_color3_N_mixtop_color3[N_mixtop_color3]
+    NG_ramp4_color3_N_mixbot_color3[N_mixbot_color3]
+    NG_ramp4_color3_N_mix_color3[N_mix_color3]
+    style NG_ramp4_color3_out  fill:#0C0, color:#FFF
+    NG_ramp4_color3_out([out])
+    style NG_ramp4_color3_texcoord  fill:#09D, color:#FFF
+    NG_ramp4_color3_texcoord([texcoord])
+    style NG_ramp4_color3_valuetl  fill:#09D, color:#FFF
+    NG_ramp4_color3_valuetl([valuetl])
+    style NG_ramp4_color3_valuetr  fill:#09D, color:#FFF
+    NG_ramp4_color3_valuetr([valuetr])
+    style NG_ramp4_color3_valuebl  fill:#09D, color:#FFF
+    NG_ramp4_color3_valuebl([valuebl])
+    style NG_ramp4_color3_valuebr  fill:#09D, color:#FFF
+    NG_ramp4_color3_valuebr([valuebr])
+    end
+    NG_ramp4_color3_texcoord --"in"--> NG_ramp4_color3_N_txclamp_color3
+    NG_ramp4_color3_N_txclamp_color3 --"in"--> NG_ramp4_color3_N_s_color3
+    NG_ramp4_color3_N_txclamp_color3 --"in"--> NG_ramp4_color3_N_t_color3
+    NG_ramp4_color3_valuetl --"bg"--> NG_ramp4_color3_N_mixtop_color3
+    NG_ramp4_color3_valuetr --"fg"--> NG_ramp4_color3_N_mixtop_color3
+    NG_ramp4_color3_N_s_color3 --"mix"--> NG_ramp4_color3_N_mixtop_color3
+    NG_ramp4_color3_valuebl --"bg"--> NG_ramp4_color3_N_mixbot_color3
+    NG_ramp4_color3_valuebr --"fg"--> NG_ramp4_color3_N_mixbot_color3
+    NG_ramp4_color3_N_s_color3 --"mix"--> NG_ramp4_color3_N_mixbot_color3
+    NG_ramp4_color3_N_mixtop_color3 --"bg"--> NG_ramp4_color3_N_mix_color3
+    NG_ramp4_color3_N_mixbot_color3 --"fg"--> NG_ramp4_color3_N_mix_color3
+    NG_ramp4_color3_N_t_color3 --"mix"--> NG_ramp4_color3_N_mix_color3
+    NG_ramp4_color3_N_mix_color3 --> NG_ramp4_color3_out
 
 
 </div></code></pre>
@@ -1233,27 +1259,40 @@ graph LR;
 <div id="ND_ramp4_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_ramp4_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_ramp4_color4_N_mix_color4[mix] --> NG_ramp4_color4_out([out])
-    style NG_ramp4_color4_out fill:#0C0, color:#111
-    NG_ramp4_color4_N_mixtop_color4[mix] --".bg"--> NG_ramp4_color4_N_mix_color4[mix]
-    NG_ramp4_color4_valuetlINT([valuetl]) ==.bg==> NG_ramp4_color4_N_mixtop_color4[mix]
-    style NG_ramp4_color4_valuetlINT fill:#0CF, color:#111
-    NG_ramp4_color4_valuetrINT([valuetr]) ==.fg==> NG_ramp4_color4_N_mixtop_color4[mix]
-    style NG_ramp4_color4_valuetrINT fill:#0CF, color:#111
-    NG_ramp4_color4_N_s_color4[extract] --".mix"--> NG_ramp4_color4_N_mixtop_color4[mix]
-    NG_ramp4_color4_N_txclamp_color4[clamp] --".in"--> NG_ramp4_color4_N_s_color4[extract]
-    NG_ramp4_color4_texcoordINT([texcoord]) ==.in==> NG_ramp4_color4_N_txclamp_color4[clamp]
-    style NG_ramp4_color4_texcoordINT fill:#0CF, color:#111
-    NG_ramp4_color4_N_mixbot_color4[mix] --".fg"--> NG_ramp4_color4_N_mix_color4[mix]
-    NG_ramp4_color4_valueblINT([valuebl]) ==.bg==> NG_ramp4_color4_N_mixbot_color4[mix]
-    style NG_ramp4_color4_valueblINT fill:#0CF, color:#111
-    NG_ramp4_color4_valuebrINT([valuebr]) ==.fg==> NG_ramp4_color4_N_mixbot_color4[mix]
-    style NG_ramp4_color4_valuebrINT fill:#0CF, color:#111
-    NG_ramp4_color4_N_s_color4[extract] --".mix"--> NG_ramp4_color4_N_mixbot_color4[mix]
-    NG_ramp4_color4_N_t_color4[extract] --".mix"--> NG_ramp4_color4_N_mix_color4[mix]
-    NG_ramp4_color4_N_txclamp_color4[clamp] --".in"--> NG_ramp4_color4_N_t_color4[extract]
-
+graph TB
+    subgraph NG_ramp4_color4
+    NG_ramp4_color4_N_txclamp_color4[N_txclamp_color4]
+    NG_ramp4_color4_N_s_color4[N_s_color4]
+    NG_ramp4_color4_N_t_color4[N_t_color4]
+    NG_ramp4_color4_N_mixtop_color4[N_mixtop_color4]
+    NG_ramp4_color4_N_mixbot_color4[N_mixbot_color4]
+    NG_ramp4_color4_N_mix_color4[N_mix_color4]
+    style NG_ramp4_color4_out  fill:#0C0, color:#FFF
+    NG_ramp4_color4_out([out])
+    style NG_ramp4_color4_texcoord  fill:#09D, color:#FFF
+    NG_ramp4_color4_texcoord([texcoord])
+    style NG_ramp4_color4_valuetl  fill:#09D, color:#FFF
+    NG_ramp4_color4_valuetl([valuetl])
+    style NG_ramp4_color4_valuetr  fill:#09D, color:#FFF
+    NG_ramp4_color4_valuetr([valuetr])
+    style NG_ramp4_color4_valuebl  fill:#09D, color:#FFF
+    NG_ramp4_color4_valuebl([valuebl])
+    style NG_ramp4_color4_valuebr  fill:#09D, color:#FFF
+    NG_ramp4_color4_valuebr([valuebr])
+    end
+    NG_ramp4_color4_texcoord --"in"--> NG_ramp4_color4_N_txclamp_color4
+    NG_ramp4_color4_N_txclamp_color4 --"in"--> NG_ramp4_color4_N_s_color4
+    NG_ramp4_color4_N_txclamp_color4 --"in"--> NG_ramp4_color4_N_t_color4
+    NG_ramp4_color4_valuetl --"bg"--> NG_ramp4_color4_N_mixtop_color4
+    NG_ramp4_color4_valuetr --"fg"--> NG_ramp4_color4_N_mixtop_color4
+    NG_ramp4_color4_N_s_color4 --"mix"--> NG_ramp4_color4_N_mixtop_color4
+    NG_ramp4_color4_valuebl --"bg"--> NG_ramp4_color4_N_mixbot_color4
+    NG_ramp4_color4_valuebr --"fg"--> NG_ramp4_color4_N_mixbot_color4
+    NG_ramp4_color4_N_s_color4 --"mix"--> NG_ramp4_color4_N_mixbot_color4
+    NG_ramp4_color4_N_mixtop_color4 --"bg"--> NG_ramp4_color4_N_mix_color4
+    NG_ramp4_color4_N_mixbot_color4 --"fg"--> NG_ramp4_color4_N_mix_color4
+    NG_ramp4_color4_N_t_color4 --"mix"--> NG_ramp4_color4_N_mix_color4
+    NG_ramp4_color4_N_mix_color4 --> NG_ramp4_color4_out
 
 
 </div></code></pre>
@@ -1432,27 +1471,40 @@ graph LR;
 <div id="ND_ramp4_vector2_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_ramp4_vector2_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_ramp4_vector2_N_mix_vector2[mix] --> NG_ramp4_vector2_out([out])
-    style NG_ramp4_vector2_out fill:#0C0, color:#111
-    NG_ramp4_vector2_N_mixtop_vector2[mix] --".bg"--> NG_ramp4_vector2_N_mix_vector2[mix]
-    NG_ramp4_vector2_valuetlINT([valuetl]) ==.bg==> NG_ramp4_vector2_N_mixtop_vector2[mix]
-    style NG_ramp4_vector2_valuetlINT fill:#0CF, color:#111
-    NG_ramp4_vector2_valuetrINT([valuetr]) ==.fg==> NG_ramp4_vector2_N_mixtop_vector2[mix]
-    style NG_ramp4_vector2_valuetrINT fill:#0CF, color:#111
-    NG_ramp4_vector2_N_s_vector2[extract] --".mix"--> NG_ramp4_vector2_N_mixtop_vector2[mix]
-    NG_ramp4_vector2_N_txclamp_vector2[clamp] --".in"--> NG_ramp4_vector2_N_s_vector2[extract]
-    NG_ramp4_vector2_texcoordINT([texcoord]) ==.in==> NG_ramp4_vector2_N_txclamp_vector2[clamp]
-    style NG_ramp4_vector2_texcoordINT fill:#0CF, color:#111
-    NG_ramp4_vector2_N_mixbot_vector2[mix] --".fg"--> NG_ramp4_vector2_N_mix_vector2[mix]
-    NG_ramp4_vector2_valueblINT([valuebl]) ==.bg==> NG_ramp4_vector2_N_mixbot_vector2[mix]
-    style NG_ramp4_vector2_valueblINT fill:#0CF, color:#111
-    NG_ramp4_vector2_valuebrINT([valuebr]) ==.fg==> NG_ramp4_vector2_N_mixbot_vector2[mix]
-    style NG_ramp4_vector2_valuebrINT fill:#0CF, color:#111
-    NG_ramp4_vector2_N_s_vector2[extract] --".mix"--> NG_ramp4_vector2_N_mixbot_vector2[mix]
-    NG_ramp4_vector2_N_t_vector2[extract] --".mix"--> NG_ramp4_vector2_N_mix_vector2[mix]
-    NG_ramp4_vector2_N_txclamp_vector2[clamp] --".in"--> NG_ramp4_vector2_N_t_vector2[extract]
-
+graph TB
+    subgraph NG_ramp4_vector2
+    NG_ramp4_vector2_N_txclamp_vector2[N_txclamp_vector2]
+    NG_ramp4_vector2_N_s_vector2[N_s_vector2]
+    NG_ramp4_vector2_N_t_vector2[N_t_vector2]
+    NG_ramp4_vector2_N_mixtop_vector2[N_mixtop_vector2]
+    NG_ramp4_vector2_N_mixbot_vector2[N_mixbot_vector2]
+    NG_ramp4_vector2_N_mix_vector2[N_mix_vector2]
+    style NG_ramp4_vector2_out  fill:#0C0, color:#FFF
+    NG_ramp4_vector2_out([out])
+    style NG_ramp4_vector2_texcoord  fill:#09D, color:#FFF
+    NG_ramp4_vector2_texcoord([texcoord])
+    style NG_ramp4_vector2_valuetl  fill:#09D, color:#FFF
+    NG_ramp4_vector2_valuetl([valuetl])
+    style NG_ramp4_vector2_valuetr  fill:#09D, color:#FFF
+    NG_ramp4_vector2_valuetr([valuetr])
+    style NG_ramp4_vector2_valuebl  fill:#09D, color:#FFF
+    NG_ramp4_vector2_valuebl([valuebl])
+    style NG_ramp4_vector2_valuebr  fill:#09D, color:#FFF
+    NG_ramp4_vector2_valuebr([valuebr])
+    end
+    NG_ramp4_vector2_texcoord --"in"--> NG_ramp4_vector2_N_txclamp_vector2
+    NG_ramp4_vector2_N_txclamp_vector2 --"in"--> NG_ramp4_vector2_N_s_vector2
+    NG_ramp4_vector2_N_txclamp_vector2 --"in"--> NG_ramp4_vector2_N_t_vector2
+    NG_ramp4_vector2_valuetl --"bg"--> NG_ramp4_vector2_N_mixtop_vector2
+    NG_ramp4_vector2_valuetr --"fg"--> NG_ramp4_vector2_N_mixtop_vector2
+    NG_ramp4_vector2_N_s_vector2 --"mix"--> NG_ramp4_vector2_N_mixtop_vector2
+    NG_ramp4_vector2_valuebl --"bg"--> NG_ramp4_vector2_N_mixbot_vector2
+    NG_ramp4_vector2_valuebr --"fg"--> NG_ramp4_vector2_N_mixbot_vector2
+    NG_ramp4_vector2_N_s_vector2 --"mix"--> NG_ramp4_vector2_N_mixbot_vector2
+    NG_ramp4_vector2_N_mixtop_vector2 --"bg"--> NG_ramp4_vector2_N_mix_vector2
+    NG_ramp4_vector2_N_mixbot_vector2 --"fg"--> NG_ramp4_vector2_N_mix_vector2
+    NG_ramp4_vector2_N_t_vector2 --"mix"--> NG_ramp4_vector2_N_mix_vector2
+    NG_ramp4_vector2_N_mix_vector2 --> NG_ramp4_vector2_out
 
 
 </div></code></pre>
@@ -1646,27 +1698,40 @@ graph LR;
 <div id="ND_ramp4_vector3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_ramp4_vector3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_ramp4_vector3_N_mix_vector3[mix] --> NG_ramp4_vector3_out([out])
-    style NG_ramp4_vector3_out fill:#0C0, color:#111
-    NG_ramp4_vector3_N_mixtop_vector3[mix] --".bg"--> NG_ramp4_vector3_N_mix_vector3[mix]
-    NG_ramp4_vector3_valuetlINT([valuetl]) ==.bg==> NG_ramp4_vector3_N_mixtop_vector3[mix]
-    style NG_ramp4_vector3_valuetlINT fill:#0CF, color:#111
-    NG_ramp4_vector3_valuetrINT([valuetr]) ==.fg==> NG_ramp4_vector3_N_mixtop_vector3[mix]
-    style NG_ramp4_vector3_valuetrINT fill:#0CF, color:#111
-    NG_ramp4_vector3_N_s_vector3[extract] --".mix"--> NG_ramp4_vector3_N_mixtop_vector3[mix]
-    NG_ramp4_vector3_N_txclamp_vector3[clamp] --".in"--> NG_ramp4_vector3_N_s_vector3[extract]
-    NG_ramp4_vector3_texcoordINT([texcoord]) ==.in==> NG_ramp4_vector3_N_txclamp_vector3[clamp]
-    style NG_ramp4_vector3_texcoordINT fill:#0CF, color:#111
-    NG_ramp4_vector3_N_mixbot_vector3[mix] --".fg"--> NG_ramp4_vector3_N_mix_vector3[mix]
-    NG_ramp4_vector3_valueblINT([valuebl]) ==.bg==> NG_ramp4_vector3_N_mixbot_vector3[mix]
-    style NG_ramp4_vector3_valueblINT fill:#0CF, color:#111
-    NG_ramp4_vector3_valuebrINT([valuebr]) ==.fg==> NG_ramp4_vector3_N_mixbot_vector3[mix]
-    style NG_ramp4_vector3_valuebrINT fill:#0CF, color:#111
-    NG_ramp4_vector3_N_s_vector3[extract] --".mix"--> NG_ramp4_vector3_N_mixbot_vector3[mix]
-    NG_ramp4_vector3_N_t_vector3[extract] --".mix"--> NG_ramp4_vector3_N_mix_vector3[mix]
-    NG_ramp4_vector3_N_txclamp_vector3[clamp] --".in"--> NG_ramp4_vector3_N_t_vector3[extract]
-
+graph TB
+    subgraph NG_ramp4_vector3
+    NG_ramp4_vector3_N_txclamp_vector3[N_txclamp_vector3]
+    NG_ramp4_vector3_N_s_vector3[N_s_vector3]
+    NG_ramp4_vector3_N_t_vector3[N_t_vector3]
+    NG_ramp4_vector3_N_mixtop_vector3[N_mixtop_vector3]
+    NG_ramp4_vector3_N_mixbot_vector3[N_mixbot_vector3]
+    NG_ramp4_vector3_N_mix_vector3[N_mix_vector3]
+    style NG_ramp4_vector3_out  fill:#0C0, color:#FFF
+    NG_ramp4_vector3_out([out])
+    style NG_ramp4_vector3_texcoord  fill:#09D, color:#FFF
+    NG_ramp4_vector3_texcoord([texcoord])
+    style NG_ramp4_vector3_valuetl  fill:#09D, color:#FFF
+    NG_ramp4_vector3_valuetl([valuetl])
+    style NG_ramp4_vector3_valuetr  fill:#09D, color:#FFF
+    NG_ramp4_vector3_valuetr([valuetr])
+    style NG_ramp4_vector3_valuebl  fill:#09D, color:#FFF
+    NG_ramp4_vector3_valuebl([valuebl])
+    style NG_ramp4_vector3_valuebr  fill:#09D, color:#FFF
+    NG_ramp4_vector3_valuebr([valuebr])
+    end
+    NG_ramp4_vector3_texcoord --"in"--> NG_ramp4_vector3_N_txclamp_vector3
+    NG_ramp4_vector3_N_txclamp_vector3 --"in"--> NG_ramp4_vector3_N_s_vector3
+    NG_ramp4_vector3_N_txclamp_vector3 --"in"--> NG_ramp4_vector3_N_t_vector3
+    NG_ramp4_vector3_valuetl --"bg"--> NG_ramp4_vector3_N_mixtop_vector3
+    NG_ramp4_vector3_valuetr --"fg"--> NG_ramp4_vector3_N_mixtop_vector3
+    NG_ramp4_vector3_N_s_vector3 --"mix"--> NG_ramp4_vector3_N_mixtop_vector3
+    NG_ramp4_vector3_valuebl --"bg"--> NG_ramp4_vector3_N_mixbot_vector3
+    NG_ramp4_vector3_valuebr --"fg"--> NG_ramp4_vector3_N_mixbot_vector3
+    NG_ramp4_vector3_N_s_vector3 --"mix"--> NG_ramp4_vector3_N_mixbot_vector3
+    NG_ramp4_vector3_N_mixtop_vector3 --"bg"--> NG_ramp4_vector3_N_mix_vector3
+    NG_ramp4_vector3_N_mixbot_vector3 --"fg"--> NG_ramp4_vector3_N_mix_vector3
+    NG_ramp4_vector3_N_t_vector3 --"mix"--> NG_ramp4_vector3_N_mix_vector3
+    NG_ramp4_vector3_N_mix_vector3 --> NG_ramp4_vector3_out
 
 
 </div></code></pre>
@@ -1875,27 +1940,40 @@ graph LR;
 <div id="ND_ramp4_vector4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_ramp4_vector4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_ramp4_vector4_N_mix_vector4[mix] --> NG_ramp4_vector4_out([out])
-    style NG_ramp4_vector4_out fill:#0C0, color:#111
-    NG_ramp4_vector4_N_mixtop_vector4[mix] --".bg"--> NG_ramp4_vector4_N_mix_vector4[mix]
-    NG_ramp4_vector4_valuetlINT([valuetl]) ==.bg==> NG_ramp4_vector4_N_mixtop_vector4[mix]
-    style NG_ramp4_vector4_valuetlINT fill:#0CF, color:#111
-    NG_ramp4_vector4_valuetrINT([valuetr]) ==.fg==> NG_ramp4_vector4_N_mixtop_vector4[mix]
-    style NG_ramp4_vector4_valuetrINT fill:#0CF, color:#111
-    NG_ramp4_vector4_N_s_vector4[extract] --".mix"--> NG_ramp4_vector4_N_mixtop_vector4[mix]
-    NG_ramp4_vector4_N_txclamp_vector4[clamp] --".in"--> NG_ramp4_vector4_N_s_vector4[extract]
-    NG_ramp4_vector4_texcoordINT([texcoord]) ==.in==> NG_ramp4_vector4_N_txclamp_vector4[clamp]
-    style NG_ramp4_vector4_texcoordINT fill:#0CF, color:#111
-    NG_ramp4_vector4_N_mixbot_vector4[mix] --".fg"--> NG_ramp4_vector4_N_mix_vector4[mix]
-    NG_ramp4_vector4_valueblINT([valuebl]) ==.bg==> NG_ramp4_vector4_N_mixbot_vector4[mix]
-    style NG_ramp4_vector4_valueblINT fill:#0CF, color:#111
-    NG_ramp4_vector4_valuebrINT([valuebr]) ==.fg==> NG_ramp4_vector4_N_mixbot_vector4[mix]
-    style NG_ramp4_vector4_valuebrINT fill:#0CF, color:#111
-    NG_ramp4_vector4_N_s_vector4[extract] --".mix"--> NG_ramp4_vector4_N_mixbot_vector4[mix]
-    NG_ramp4_vector4_N_t_vector4[extract] --".mix"--> NG_ramp4_vector4_N_mix_vector4[mix]
-    NG_ramp4_vector4_N_txclamp_vector4[clamp] --".in"--> NG_ramp4_vector4_N_t_vector4[extract]
-
+graph TB
+    subgraph NG_ramp4_vector4
+    NG_ramp4_vector4_N_txclamp_vector4[N_txclamp_vector4]
+    NG_ramp4_vector4_N_s_vector4[N_s_vector4]
+    NG_ramp4_vector4_N_t_vector4[N_t_vector4]
+    NG_ramp4_vector4_N_mixtop_vector4[N_mixtop_vector4]
+    NG_ramp4_vector4_N_mixbot_vector4[N_mixbot_vector4]
+    NG_ramp4_vector4_N_mix_vector4[N_mix_vector4]
+    style NG_ramp4_vector4_out  fill:#0C0, color:#FFF
+    NG_ramp4_vector4_out([out])
+    style NG_ramp4_vector4_texcoord  fill:#09D, color:#FFF
+    NG_ramp4_vector4_texcoord([texcoord])
+    style NG_ramp4_vector4_valuetl  fill:#09D, color:#FFF
+    NG_ramp4_vector4_valuetl([valuetl])
+    style NG_ramp4_vector4_valuetr  fill:#09D, color:#FFF
+    NG_ramp4_vector4_valuetr([valuetr])
+    style NG_ramp4_vector4_valuebl  fill:#09D, color:#FFF
+    NG_ramp4_vector4_valuebl([valuebl])
+    style NG_ramp4_vector4_valuebr  fill:#09D, color:#FFF
+    NG_ramp4_vector4_valuebr([valuebr])
+    end
+    NG_ramp4_vector4_texcoord --"in"--> NG_ramp4_vector4_N_txclamp_vector4
+    NG_ramp4_vector4_N_txclamp_vector4 --"in"--> NG_ramp4_vector4_N_s_vector4
+    NG_ramp4_vector4_N_txclamp_vector4 --"in"--> NG_ramp4_vector4_N_t_vector4
+    NG_ramp4_vector4_valuetl --"bg"--> NG_ramp4_vector4_N_mixtop_vector4
+    NG_ramp4_vector4_valuetr --"fg"--> NG_ramp4_vector4_N_mixtop_vector4
+    NG_ramp4_vector4_N_s_vector4 --"mix"--> NG_ramp4_vector4_N_mixtop_vector4
+    NG_ramp4_vector4_valuebl --"bg"--> NG_ramp4_vector4_N_mixbot_vector4
+    NG_ramp4_vector4_valuebr --"fg"--> NG_ramp4_vector4_N_mixbot_vector4
+    NG_ramp4_vector4_N_s_vector4 --"mix"--> NG_ramp4_vector4_N_mixbot_vector4
+    NG_ramp4_vector4_N_mixtop_vector4 --"bg"--> NG_ramp4_vector4_N_mix_vector4
+    NG_ramp4_vector4_N_mixbot_vector4 --"fg"--> NG_ramp4_vector4_N_mix_vector4
+    NG_ramp4_vector4_N_t_vector4 --"mix"--> NG_ramp4_vector4_N_mix_vector4
+    NG_ramp4_vector4_N_mix_vector4 --> NG_ramp4_vector4_out
 
 
 </div></code></pre>

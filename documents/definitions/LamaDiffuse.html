@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="LamaDiffuse" class="ms-2 mb-0">
 Category: LamaDiffuse
@@ -931,20 +931,27 @@ Category: LamaDiffuse
 <div id="ND_lama_diffuse_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_lama_diffuse_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_lama_diffuse_oren_nayar[oren_nayar_diffuse_bsdf] --> NG_lama_diffuse_out([out])
-    style NG_lama_diffuse_out fill:#0C0, color:#111
-    NG_lama_diffuse_colorINT([color]) ==.color==> NG_lama_diffuse_oren_nayar[oren_nayar_diffuse_bsdf]
-    style NG_lama_diffuse_colorINT fill:#0CF, color:#111
-    NG_lama_diffuse_normalINT([normal]) ==.normal==> NG_lama_diffuse_oren_nayar[oren_nayar_diffuse_bsdf]
-    style NG_lama_diffuse_normalINT fill:#0CF, color:#111
-    NG_lama_diffuse_half_roughness_squared[multiply] --".roughness"--> NG_lama_diffuse_oren_nayar[oren_nayar_diffuse_bsdf]
-    NG_lama_diffuse_roughness_squared[multiply] --".in1"--> NG_lama_diffuse_half_roughness_squared[multiply]
-    NG_lama_diffuse_roughnessINT([roughness]) ==.in1==> NG_lama_diffuse_roughness_squared[multiply]
-    style NG_lama_diffuse_roughnessINT fill:#0CF, color:#111
-    NG_lama_diffuse_roughnessINT([roughness]) ==.in2==> NG_lama_diffuse_roughness_squared[multiply]
-    style NG_lama_diffuse_roughnessINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_lama_diffuse
+    NG_lama_diffuse_roughness_squared[roughness_squared]
+    NG_lama_diffuse_half_roughness_squared[half_roughness_squared]
+    NG_lama_diffuse_oren_nayar[oren_nayar]
+    style NG_lama_diffuse_out  fill:#0C0, color:#FFF
+    NG_lama_diffuse_out([out])
+    style NG_lama_diffuse_roughness  fill:#09D, color:#FFF
+    NG_lama_diffuse_roughness([roughness])
+    style NG_lama_diffuse_color  fill:#09D, color:#FFF
+    NG_lama_diffuse_color([color])
+    style NG_lama_diffuse_normal  fill:#09D, color:#FFF
+    NG_lama_diffuse_normal([normal])
+    end
+    NG_lama_diffuse_roughness --"in1"--> NG_lama_diffuse_roughness_squared
+    NG_lama_diffuse_roughness --"in2"--> NG_lama_diffuse_roughness_squared
+    NG_lama_diffuse_roughness_squared --"in1"--> NG_lama_diffuse_half_roughness_squared
+    NG_lama_diffuse_color --"color"--> NG_lama_diffuse_oren_nayar
+    NG_lama_diffuse_half_roughness_squared --"roughness"--> NG_lama_diffuse_oren_nayar
+    NG_lama_diffuse_normal --"normal"--> NG_lama_diffuse_oren_nayar
+    NG_lama_diffuse_oren_nayar --> NG_lama_diffuse_out
 
 
 </div></code></pre>

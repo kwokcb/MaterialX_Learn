@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="circle" class="ms-2 mb-0">
 Category: circle
@@ -715,24 +715,30 @@ Category: circle
 <div id="ND_circle_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_circle_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_circle_float_dist_comp{ifgreater} --> NG_circle_float_out([out])
-    style NG_circle_float_out fill:#0C0, color:#111
-    NG_circle_float_dist_square[dotproduct] --".value1"--> NG_circle_float_dist_comp{ifgreater}
-    style NG_circle_float_dist_comp fill:#F80, color:#111
-    NG_circle_float_delta[subtract] --".in1"--> NG_circle_float_dist_square[dotproduct]
-    NG_circle_float_texcoordINT([texcoord]) ==.in1==> NG_circle_float_delta[subtract]
-    style NG_circle_float_texcoordINT fill:#0CF, color:#111
-    NG_circle_float_centerINT([center]) ==.in2==> NG_circle_float_delta[subtract]
-    style NG_circle_float_centerINT fill:#0CF, color:#111
-    NG_circle_float_delta[subtract] --".in2"--> NG_circle_float_dist_square[dotproduct]
-    NG_circle_float_rad_square[multiply] --".value2"--> NG_circle_float_dist_comp{ifgreater}
-    style NG_circle_float_dist_comp fill:#F80, color:#111
-    NG_circle_float_radiusINT([radius]) ==.in1==> NG_circle_float_rad_square[multiply]
-    style NG_circle_float_radiusINT fill:#0CF, color:#111
-    NG_circle_float_radiusINT([radius]) ==.in2==> NG_circle_float_rad_square[multiply]
-    style NG_circle_float_radiusINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_circle_float
+    NG_circle_float_delta[delta]
+    NG_circle_float_dist_square[dist_square]
+    NG_circle_float_rad_square[rad_square]
+    NG_circle_float_dist_comp[dist_comp]
+    style NG_circle_float_out  fill:#0C0, color:#FFF
+    NG_circle_float_out([out])
+    style NG_circle_float_texcoord  fill:#09D, color:#FFF
+    NG_circle_float_texcoord([texcoord])
+    style NG_circle_float_center  fill:#09D, color:#FFF
+    NG_circle_float_center([center])
+    style NG_circle_float_radius  fill:#09D, color:#FFF
+    NG_circle_float_radius([radius])
+    end
+    NG_circle_float_texcoord --"in1"--> NG_circle_float_delta
+    NG_circle_float_center --"in2"--> NG_circle_float_delta
+    NG_circle_float_delta --"in1"--> NG_circle_float_dist_square
+    NG_circle_float_delta --"in2"--> NG_circle_float_dist_square
+    NG_circle_float_radius --"in1"--> NG_circle_float_rad_square
+    NG_circle_float_radius --"in2"--> NG_circle_float_rad_square
+    NG_circle_float_dist_square --"value1"--> NG_circle_float_dist_comp
+    NG_circle_float_rad_square --"value2"--> NG_circle_float_dist_comp
+    NG_circle_float_dist_comp --> NG_circle_float_out
 
 
 </div></code></pre>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <facingratio name="facingratio_float" type="float">
     <input name="faceforward" type="boolean" value="true" />
     <input name="invert" type="boolean" value="false" />

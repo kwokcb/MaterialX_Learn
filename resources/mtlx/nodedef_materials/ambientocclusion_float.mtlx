@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <ambientocclusion name="ambientocclusion_float" type="float">
     <input name="coneangle" type="float" value="90.0" unittype="angle" unit="degree" />
     <input name="maxdistance" type="float" value="1e38" />

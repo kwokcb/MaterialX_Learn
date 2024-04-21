@@ -1,0 +1,15 @@
+{
+  "name": "materialxgraph",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Set of utilities for MaterialX graphs",
+  "main": "index.js",
+  "keywords": [
+    "materialx",
+    "mermaid",
+    "shader",
+    "nodegraph"
+  ],
+  "author": "Bernard Kwok. kwokcb@gmail.com",
+  "license": "CC BY-NC 4.0"
+}

@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="randomcolor" class="ms-2 mb-0">
 Category: randomcolor
@@ -909,46 +909,69 @@ Category: randomcolor
 <div id="ND_randomcolor_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_randomcolor_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_randomcolor_float_N_HSV_to_RGB[hsvtorgb] --> NG_randomcolor_float_out([out])
-    style NG_randomcolor_float_out fill:#0C0, color:#111
-    NG_randomcolor_float_N_combine_HSV[combine3] --".in"--> NG_randomcolor_float_N_HSV_to_RGB[hsvtorgb]
-    NG_randomcolor_float_N_range_hue[range] --".in1"--> NG_randomcolor_float_N_combine_HSV[combine3]
-    NG_randomcolor_float_huelowINT([huelow]) ==.outlow==> NG_randomcolor_float_N_range_hue[range]
-    style NG_randomcolor_float_huelowINT fill:#0CF, color:#111
-    NG_randomcolor_float_huehighINT([huehigh]) ==.outhigh==> NG_randomcolor_float_N_range_hue[range]
-    style NG_randomcolor_float_huehighINT fill:#0CF, color:#111
-    NG_randomcolor_float_N_rand_hue[randomfloat] --".in"--> NG_randomcolor_float_N_range_hue[range]
-    NG_randomcolor_float_inINT([in]) ==.in==> NG_randomcolor_float_N_rand_hue[randomfloat]
-    style NG_randomcolor_float_inINT fill:#0CF, color:#111
-    NG_randomcolor_float_N_seed_hue[ceil] --".seed"--> NG_randomcolor_float_N_rand_hue[randomfloat]
-    NG_randomcolor_float_N_offset_hue[add] --".in"--> NG_randomcolor_float_N_seed_hue[ceil]
-    NG_randomcolor_float_N_convertSeed1[convert] --".in1"--> NG_randomcolor_float_N_offset_hue[add]
-    NG_randomcolor_float_seedINT([seed]) ==.in==> NG_randomcolor_float_N_convertSeed1[convert]
-    style NG_randomcolor_float_seedINT fill:#0CF, color:#111
-    NG_randomcolor_float_N_range_saturation[range] --".in2"--> NG_randomcolor_float_N_combine_HSV[combine3]
-    NG_randomcolor_float_saturationlowINT([saturationlow]) ==.outlow==> NG_randomcolor_float_N_range_saturation[range]
-    style NG_randomcolor_float_saturationlowINT fill:#0CF, color:#111
-    NG_randomcolor_float_saturationhighINT([saturationhigh]) ==.outhigh==> NG_randomcolor_float_N_range_saturation[range]
-    style NG_randomcolor_float_saturationhighINT fill:#0CF, color:#111
-    NG_randomcolor_float_N_rand_saturation[randomfloat] --".in"--> NG_randomcolor_float_N_range_saturation[range]
-    NG_randomcolor_float_inINT([in]) ==.in==> NG_randomcolor_float_N_rand_saturation[randomfloat]
-    style NG_randomcolor_float_inINT fill:#0CF, color:#111
-    NG_randomcolor_float_N_seed_saturation[ceil] --".seed"--> NG_randomcolor_float_N_rand_saturation[randomfloat]
-    NG_randomcolor_float_N_offset_saturation[add] --".in"--> NG_randomcolor_float_N_seed_saturation[ceil]
-    NG_randomcolor_float_N_convertSeed1[convert] --".in1"--> NG_randomcolor_float_N_offset_saturation[add]
-    NG_randomcolor_float_N_range_brightness[range] --".in3"--> NG_randomcolor_float_N_combine_HSV[combine3]
-    NG_randomcolor_float_brightnesslowINT([brightnesslow]) ==.outlow==> NG_randomcolor_float_N_range_brightness[range]
-    style NG_randomcolor_float_brightnesslowINT fill:#0CF, color:#111
-    NG_randomcolor_float_brightnesshighINT([brightnesshigh]) ==.outhigh==> NG_randomcolor_float_N_range_brightness[range]
-    style NG_randomcolor_float_brightnesshighINT fill:#0CF, color:#111
-    NG_randomcolor_float_N_rand_brightness[randomfloat] --".in"--> NG_randomcolor_float_N_range_brightness[range]
-    NG_randomcolor_float_inINT([in]) ==.in==> NG_randomcolor_float_N_rand_brightness[randomfloat]
-    style NG_randomcolor_float_inINT fill:#0CF, color:#111
-    NG_randomcolor_float_N_seed_brightness[ceil] --".seed"--> NG_randomcolor_float_N_rand_brightness[randomfloat]
-    NG_randomcolor_float_N_offset_brightness[add] --".in"--> NG_randomcolor_float_N_seed_brightness[ceil]
-    NG_randomcolor_float_N_convertSeed1[convert] --".in1"--> NG_randomcolor_float_N_offset_brightness[add]
-
+graph TB
+    subgraph NG_randomcolor_float
+    NG_randomcolor_float_N_convertSeed1[N_convertSeed1]
+    NG_randomcolor_float_N_offset_hue[N_offset_hue]
+    NG_randomcolor_float_N_offset_saturation[N_offset_saturation]
+    NG_randomcolor_float_N_offset_brightness[N_offset_brightness]
+    NG_randomcolor_float_N_seed_hue[N_seed_hue]
+    NG_randomcolor_float_N_seed_saturation[N_seed_saturation]
+    NG_randomcolor_float_N_seed_brightness[N_seed_brightness]
+    NG_randomcolor_float_N_rand_hue[N_rand_hue]
+    NG_randomcolor_float_N_rand_saturation[N_rand_saturation]
+    NG_randomcolor_float_N_rand_brightness[N_rand_brightness]
+    NG_randomcolor_float_N_range_hue[N_range_hue]
+    NG_randomcolor_float_N_range_saturation[N_range_saturation]
+    NG_randomcolor_float_N_range_brightness[N_range_brightness]
+    NG_randomcolor_float_N_combine_HSV[N_combine_HSV]
+    NG_randomcolor_float_N_HSV_to_RGB[N_HSV_to_RGB]
+    style NG_randomcolor_float_out  fill:#0C0, color:#FFF
+    NG_randomcolor_float_out([out])
+    style NG_randomcolor_float_seed  fill:#09D, color:#FFF
+    NG_randomcolor_float_seed([seed])
+    style NG_randomcolor_float_in  fill:#09D, color:#FFF
+    NG_randomcolor_float_in([in])
+    style NG_randomcolor_float_huelow  fill:#09D, color:#FFF
+    NG_randomcolor_float_huelow([huelow])
+    style NG_randomcolor_float_huehigh  fill:#09D, color:#FFF
+    NG_randomcolor_float_huehigh([huehigh])
+    style NG_randomcolor_float_saturationlow  fill:#09D, color:#FFF
+    NG_randomcolor_float_saturationlow([saturationlow])
+    style NG_randomcolor_float_saturationhigh  fill:#09D, color:#FFF
+    NG_randomcolor_float_saturationhigh([saturationhigh])
+    style NG_randomcolor_float_brightnesslow  fill:#09D, color:#FFF
+    NG_randomcolor_float_brightnesslow([brightnesslow])
+    style NG_randomcolor_float_brightnesshigh  fill:#09D, color:#FFF
+    NG_randomcolor_float_brightnesshigh([brightnesshigh])
+    end
+    NG_randomcolor_float_seed --"in"--> NG_randomcolor_float_N_convertSeed1
+    NG_randomcolor_float_N_convertSeed1 --"in1"--> NG_randomcolor_float_N_offset_hue
+    NG_randomcolor_float_N_convertSeed1 --"in1"--> NG_randomcolor_float_N_offset_saturation
+    NG_randomcolor_float_N_convertSeed1 --"in1"--> NG_randomcolor_float_N_offset_brightness
+    NG_randomcolor_float_N_offset_hue --"in"--> NG_randomcolor_float_N_seed_hue
+    NG_randomcolor_float_N_offset_saturation --"in"--> NG_randomcolor_float_N_seed_saturation
+    NG_randomcolor_float_N_offset_brightness --"in"--> NG_randomcolor_float_N_seed_brightness
+    NG_randomcolor_float_in --"in"--> NG_randomcolor_float_N_rand_hue
+    NG_randomcolor_float_N_seed_hue --"seed"--> NG_randomcolor_float_N_rand_hue
+    NG_randomcolor_float_in --"in"--> NG_randomcolor_float_N_rand_saturation
+    NG_randomcolor_float_N_seed_saturation --"seed"--> NG_randomcolor_float_N_rand_saturation
+    NG_randomcolor_float_in --"in"--> NG_randomcolor_float_N_rand_brightness
+    NG_randomcolor_float_N_seed_brightness --"seed"--> NG_randomcolor_float_N_rand_brightness
+    NG_randomcolor_float_N_rand_hue --"in"--> NG_randomcolor_float_N_range_hue
+    NG_randomcolor_float_huelow --"outlow"--> NG_randomcolor_float_N_range_hue
+    NG_randomcolor_float_huehigh --"outhigh"--> NG_randomcolor_float_N_range_hue
+    NG_randomcolor_float_N_rand_saturation --"in"--> NG_randomcolor_float_N_range_saturation
+    NG_randomcolor_float_saturationlow --"outlow"--> NG_randomcolor_float_N_range_saturation
+    NG_randomcolor_float_saturationhigh --"outhigh"--> NG_randomcolor_float_N_range_saturation
+    NG_randomcolor_float_N_rand_brightness --"in"--> NG_randomcolor_float_N_range_brightness
+    NG_randomcolor_float_brightnesslow --"outlow"--> NG_randomcolor_float_N_range_brightness
+    NG_randomcolor_float_brightnesshigh --"outhigh"--> NG_randomcolor_float_N_range_brightness
+    NG_randomcolor_float_N_range_hue --"in1"--> NG_randomcolor_float_N_combine_HSV
+    NG_randomcolor_float_N_range_saturation --"in2"--> NG_randomcolor_float_N_combine_HSV
+    NG_randomcolor_float_N_range_brightness --"in3"--> NG_randomcolor_float_N_combine_HSV
+    NG_randomcolor_float_N_combine_HSV --"in"--> NG_randomcolor_float_N_HSV_to_RGB
+    NG_randomcolor_float_N_HSV_to_RGB --> NG_randomcolor_float_out
 
 
 </div></code></pre>
@@ -1266,27 +1289,39 @@ graph LR;
 <div id="ND_randomcolor_integer_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_randomcolor_integer_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_randomcolor_integer_N_randomcolor1[randomcolor] --> NG_randomcolor_integer_out([out])
-    style NG_randomcolor_integer_out fill:#0C0, color:#111
-    NG_randomcolor_integer_huelowINT([huelow]) ==.huelow==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_huelowINT fill:#0CF, color:#111
-    NG_randomcolor_integer_huehighINT([huehigh]) ==.huehigh==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_huehighINT fill:#0CF, color:#111
-    NG_randomcolor_integer_saturationlowINT([saturationlow]) ==.saturationlow==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_saturationlowINT fill:#0CF, color:#111
-    NG_randomcolor_integer_saturationhighINT([saturationhigh]) ==.saturationhigh==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_saturationhighINT fill:#0CF, color:#111
-    NG_randomcolor_integer_brightnesslowINT([brightnesslow]) ==.brightnesslow==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_brightnesslowINT fill:#0CF, color:#111
-    NG_randomcolor_integer_brightnesshighINT([brightnesshigh]) ==.brightnesshigh==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_brightnesshighINT fill:#0CF, color:#111
-    NG_randomcolor_integer_seedINT([seed]) ==.seed==> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    style NG_randomcolor_integer_seedINT fill:#0CF, color:#111
-    NG_randomcolor_integer_N_convert1[convert] --".in"--> NG_randomcolor_integer_N_randomcolor1[randomcolor]
-    NG_randomcolor_integer_inINT([in]) ==.in==> NG_randomcolor_integer_N_convert1[convert]
-    style NG_randomcolor_integer_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_randomcolor_integer
+    NG_randomcolor_integer_N_convert1[N_convert1]
+    NG_randomcolor_integer_N_randomcolor1[N_randomcolor1]
+    style NG_randomcolor_integer_out  fill:#0C0, color:#FFF
+    NG_randomcolor_integer_out([out])
+    style NG_randomcolor_integer_in  fill:#09D, color:#FFF
+    NG_randomcolor_integer_in([in])
+    style NG_randomcolor_integer_huelow  fill:#09D, color:#FFF
+    NG_randomcolor_integer_huelow([huelow])
+    style NG_randomcolor_integer_huehigh  fill:#09D, color:#FFF
+    NG_randomcolor_integer_huehigh([huehigh])
+    style NG_randomcolor_integer_saturationlow  fill:#09D, color:#FFF
+    NG_randomcolor_integer_saturationlow([saturationlow])
+    style NG_randomcolor_integer_saturationhigh  fill:#09D, color:#FFF
+    NG_randomcolor_integer_saturationhigh([saturationhigh])
+    style NG_randomcolor_integer_brightnesslow  fill:#09D, color:#FFF
+    NG_randomcolor_integer_brightnesslow([brightnesslow])
+    style NG_randomcolor_integer_brightnesshigh  fill:#09D, color:#FFF
+    NG_randomcolor_integer_brightnesshigh([brightnesshigh])
+    style NG_randomcolor_integer_seed  fill:#09D, color:#FFF
+    NG_randomcolor_integer_seed([seed])
+    end
+    NG_randomcolor_integer_in --"in"--> NG_randomcolor_integer_N_convert1
+    NG_randomcolor_integer_N_convert1 --"in"--> NG_randomcolor_integer_N_randomcolor1
+    NG_randomcolor_integer_huelow --"huelow"--> NG_randomcolor_integer_N_randomcolor1
+    NG_randomcolor_integer_huehigh --"huehigh"--> NG_randomcolor_integer_N_randomcolor1
+    NG_randomcolor_integer_saturationlow --"saturationlow"--> NG_randomcolor_integer_N_randomcolor1
+    NG_randomcolor_integer_saturationhigh --"saturationhigh"--> NG_randomcolor_integer_N_randomcolor1
+    NG_randomcolor_integer_brightnesslow --"brightnesslow"--> NG_randomcolor_integer_N_randomcolor1
+    NG_randomcolor_integer_brightnesshigh --"brightnesshigh"--> NG_randomcolor_integer_N_randomcolor1
+    NG_randomcolor_integer_seed --"seed"--> NG_randomcolor_integer_N_randomcolor1
+    NG_randomcolor_integer_N_randomcolor1 --> NG_randomcolor_integer_out
 
 
 </div></code></pre>

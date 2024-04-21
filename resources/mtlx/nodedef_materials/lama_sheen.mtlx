@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <LamaSheen name="lama_sheen" type="BSDF" version="1.0">
     <input name="color" type="color3" value="1, 1, 1" uiname="Color" />
     <input name="roughness" type="float" value="0.1" uiname="Roughness" />

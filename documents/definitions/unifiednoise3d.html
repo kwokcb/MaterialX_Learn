@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="unifiednoise3d" class="ms-2 mb-0">
 Category: unifiednoise3d
@@ -1112,51 +1112,71 @@ Category: unifiednoise3d
 <div id="ND_unifiednoise3d_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_unifiednoise3d_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_unifiednoise3d_float_N_range[range] --> NG_unifiednoise3d_float_out([out])
-    style NG_unifiednoise3d_float_out fill:#0C0, color:#111
-    NG_unifiednoise3d_float_outminINT([outmin]) ==.outlow==> NG_unifiednoise3d_float_N_range[range]
-    style NG_unifiednoise3d_float_outminINT fill:#0CF, color:#111
-    NG_unifiednoise3d_float_outmaxINT([outmax]) ==.outhigh==> NG_unifiednoise3d_float_N_range[range]
-    style NG_unifiednoise3d_float_outmaxINT fill:#0CF, color:#111
-    NG_unifiednoise3d_float_clampoutputINT([clampoutput]) ==.doclamp==> NG_unifiednoise3d_float_N_range[range]
-    style NG_unifiednoise3d_float_clampoutputINT fill:#0CF, color:#111
-    NG_unifiednoise3d_float_N_switch_type{switch} --".in"--> NG_unifiednoise3d_float_N_range[range]
-    NG_unifiednoise3d_float_typeINT([type]) ==.which==> NG_unifiednoise3d_float_N_switch_type[switch]
-    style NG_unifiednoise3d_float_typeINT fill:#0CF, color:#111
-    NG_unifiednoise3d_float_N_perlin_noise3d[noise3d] --".in1"--> NG_unifiednoise3d_float_N_switch_type{switch}
-    style NG_unifiednoise3d_float_N_switch_type fill:#F80, color:#111
-    NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d] --".position"--> NG_unifiednoise3d_float_N_perlin_noise3d[noise3d]
-    NG_unifiednoise3d_float_N_apply_offset[add] --".in"--> NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d]
-    NG_unifiednoise3d_float_offsetINT([offset]) ==.in2==> NG_unifiednoise3d_float_N_apply_offset[add]
-    style NG_unifiednoise3d_float_offsetINT fill:#0CF, color:#111
-    NG_unifiednoise3d_float_N_apply_freq[multiply] --".in1"--> NG_unifiednoise3d_float_N_apply_offset[add]
-    NG_unifiednoise3d_float_positionINT([position]) ==.in1==> NG_unifiednoise3d_float_N_apply_freq[multiply]
-    style NG_unifiednoise3d_float_positionINT fill:#0CF, color:#111
-    NG_unifiednoise3d_float_freqINT([freq]) ==.in2==> NG_unifiednoise3d_float_N_apply_freq[multiply]
-    style NG_unifiednoise3d_float_freqINT fill:#0CF, color:#111
-    NG_unifiednoise3d_float_N_cell_jitter_mult[multiply] --".amount"--> NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d]
-    NG_unifiednoise3d_float_N_jitter_minus_one[subtract] --".in1"--> NG_unifiednoise3d_float_N_cell_jitter_mult[multiply]
-    NG_unifiednoise3d_float_jitterINT([jitter]) ==.in1==> NG_unifiednoise3d_float_N_jitter_minus_one[subtract]
-    style NG_unifiednoise3d_float_jitterINT fill:#0CF, color:#111
-    NG_unifiednoise3d_float_N_cellnoise3d[cellnoise3d] --".in2"--> NG_unifiednoise3d_float_N_switch_type{switch}
-    style NG_unifiednoise3d_float_N_switch_type fill:#F80, color:#111
-    NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d] --".position"--> NG_unifiednoise3d_float_N_cellnoise3d[cellnoise3d]
-    NG_unifiednoise3d_float_N_worleynoise3d[worleynoise3d] --".in3"--> NG_unifiednoise3d_float_N_switch_type{switch}
-    style NG_unifiednoise3d_float_N_switch_type fill:#F80, color:#111
-    NG_unifiednoise3d_float_jitterINT([jitter]) ==.jitter==> NG_unifiednoise3d_float_N_worleynoise3d[worleynoise3d]
-    style NG_unifiednoise3d_float_jitterINT fill:#0CF, color:#111
-    NG_unifiednoise3d_float_N_apply_offset[add] --".position"--> NG_unifiednoise3d_float_N_worleynoise3d[worleynoise3d]
-    NG_unifiednoise3d_float_N_fractal3d[fractal3d] --".in4"--> NG_unifiednoise3d_float_N_switch_type{switch}
-    style NG_unifiednoise3d_float_N_switch_type fill:#F80, color:#111
-    NG_unifiednoise3d_float_octavesINT([octaves]) ==.octaves==> NG_unifiednoise3d_float_N_fractal3d[fractal3d]
-    style NG_unifiednoise3d_float_octavesINT fill:#0CF, color:#111
-    NG_unifiednoise3d_float_lacunarityINT([lacunarity]) ==.lacunarity==> NG_unifiednoise3d_float_N_fractal3d[fractal3d]
-    style NG_unifiednoise3d_float_lacunarityINT fill:#0CF, color:#111
-    NG_unifiednoise3d_float_diminishINT([diminish]) ==.diminish==> NG_unifiednoise3d_float_N_fractal3d[fractal3d]
-    style NG_unifiednoise3d_float_diminishINT fill:#0CF, color:#111
-    NG_unifiednoise3d_float_N_apply_cell_jitter[rotate3d] --".position"--> NG_unifiednoise3d_float_N_fractal3d[fractal3d]
-
+graph TB
+    subgraph NG_unifiednoise3d_float
+    NG_unifiednoise3d_float_N_range[N_range]
+    style NG_unifiednoise3d_float_N_switch_type  fill:#C72, color:#FFF
+    NG_unifiednoise3d_float_N_switch_type{N_switch_type}
+    NG_unifiednoise3d_float_N_perlin_noise3d[N_perlin_noise3d]
+    NG_unifiednoise3d_float_N_cellnoise3d[N_cellnoise3d]
+    NG_unifiednoise3d_float_N_worleynoise3d[N_worleynoise3d]
+    NG_unifiednoise3d_float_N_fractal3d[N_fractal3d]
+    NG_unifiednoise3d_float_N_apply_cell_jitter[N_apply_cell_jitter]
+    NG_unifiednoise3d_float_N_apply_offset[N_apply_offset]
+    NG_unifiednoise3d_float_N_cell_jitter_mult[N_cell_jitter_mult]
+    NG_unifiednoise3d_float_N_apply_freq[N_apply_freq]
+    NG_unifiednoise3d_float_N_jitter_minus_one[N_jitter_minus_one]
+    style NG_unifiednoise3d_float_out  fill:#0C0, color:#FFF
+    NG_unifiednoise3d_float_out([out])
+    style NG_unifiednoise3d_float_outmin  fill:#09D, color:#FFF
+    NG_unifiednoise3d_float_outmin([outmin])
+    style NG_unifiednoise3d_float_outmax  fill:#09D, color:#FFF
+    NG_unifiednoise3d_float_outmax([outmax])
+    style NG_unifiednoise3d_float_clampoutput  fill:#09D, color:#FFF
+    NG_unifiednoise3d_float_clampoutput([clampoutput])
+    style NG_unifiednoise3d_float_type  fill:#09D, color:#FFF
+    NG_unifiednoise3d_float_type([type])
+    style NG_unifiednoise3d_float_jitter  fill:#09D, color:#FFF
+    NG_unifiednoise3d_float_jitter([jitter])
+    style NG_unifiednoise3d_float_octaves  fill:#09D, color:#FFF
+    NG_unifiednoise3d_float_octaves([octaves])
+    style NG_unifiednoise3d_float_lacunarity  fill:#09D, color:#FFF
+    NG_unifiednoise3d_float_lacunarity([lacunarity])
+    style NG_unifiednoise3d_float_diminish  fill:#09D, color:#FFF
+    NG_unifiednoise3d_float_diminish([diminish])
+    style NG_unifiednoise3d_float_offset  fill:#09D, color:#FFF
+    NG_unifiednoise3d_float_offset([offset])
+    style NG_unifiednoise3d_float_position  fill:#09D, color:#FFF
+    NG_unifiednoise3d_float_position([position])
+    style NG_unifiednoise3d_float_freq  fill:#09D, color:#FFF
+    NG_unifiednoise3d_float_freq([freq])
+    end
+    NG_unifiednoise3d_float_N_switch_type --"in"--> NG_unifiednoise3d_float_N_range
+    NG_unifiednoise3d_float_outmin --"outlow"--> NG_unifiednoise3d_float_N_range
+    NG_unifiednoise3d_float_outmax --"outhigh"--> NG_unifiednoise3d_float_N_range
+    NG_unifiednoise3d_float_clampoutput --"doclamp"--> NG_unifiednoise3d_float_N_range
+    NG_unifiednoise3d_float_N_perlin_noise3d --"in1"--> NG_unifiednoise3d_float_N_switch_type
+    NG_unifiednoise3d_float_N_cellnoise3d --"in2"--> NG_unifiednoise3d_float_N_switch_type
+    NG_unifiednoise3d_float_N_worleynoise3d --"in3"--> NG_unifiednoise3d_float_N_switch_type
+    NG_unifiednoise3d_float_N_fractal3d --"in4"--> NG_unifiednoise3d_float_N_switch_type
+    NG_unifiednoise3d_float_type --"which"--> NG_unifiednoise3d_float_N_switch_type
+    NG_unifiednoise3d_float_N_apply_cell_jitter --"position"--> NG_unifiednoise3d_float_N_perlin_noise3d
+    NG_unifiednoise3d_float_N_apply_cell_jitter --"position"--> NG_unifiednoise3d_float_N_cellnoise3d
+    NG_unifiednoise3d_float_N_apply_offset --"position"--> NG_unifiednoise3d_float_N_worleynoise3d
+    NG_unifiednoise3d_float_jitter --"jitter"--> NG_unifiednoise3d_float_N_worleynoise3d
+    NG_unifiednoise3d_float_octaves --"octaves"--> NG_unifiednoise3d_float_N_fractal3d
+    NG_unifiednoise3d_float_lacunarity --"lacunarity"--> NG_unifiednoise3d_float_N_fractal3d
+    NG_unifiednoise3d_float_diminish --"diminish"--> NG_unifiednoise3d_float_N_fractal3d
+    NG_unifiednoise3d_float_N_apply_cell_jitter --"position"--> NG_unifiednoise3d_float_N_fractal3d
+    NG_unifiednoise3d_float_N_apply_offset --"in"--> NG_unifiednoise3d_float_N_apply_cell_jitter
+    NG_unifiednoise3d_float_N_cell_jitter_mult --"amount"--> NG_unifiednoise3d_float_N_apply_cell_jitter
+    NG_unifiednoise3d_float_N_apply_freq --"in1"--> NG_unifiednoise3d_float_N_apply_offset
+    NG_unifiednoise3d_float_offset --"in2"--> NG_unifiednoise3d_float_N_apply_offset
+    NG_unifiednoise3d_float_N_jitter_minus_one --"in1"--> NG_unifiednoise3d_float_N_cell_jitter_mult
+    NG_unifiednoise3d_float_position --"in1"--> NG_unifiednoise3d_float_N_apply_freq
+    NG_unifiednoise3d_float_freq --"in2"--> NG_unifiednoise3d_float_N_apply_freq
+    NG_unifiednoise3d_float_jitter --"in1"--> NG_unifiednoise3d_float_N_jitter_minus_one
+    NG_unifiednoise3d_float_N_range --> NG_unifiednoise3d_float_out
 
 
 </div></code></pre>

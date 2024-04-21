@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="checkerboard" class="ms-2 mb-0">
 Category: checkerboard
@@ -868,25 +868,38 @@ Category: checkerboard
 <div id="ND_checkerboard_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_checkerboard_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_checkerboard_color3_N_mtlxmix[mix] --> NG_checkerboard_color3_out([out])
-    style NG_checkerboard_color3_out fill:#0C0, color:#111
-    NG_checkerboard_color3_color2INT([color2]) ==.bg==> NG_checkerboard_color3_N_mtlxmix[mix]
-    style NG_checkerboard_color3_color2INT fill:#0CF, color:#111
-    NG_checkerboard_color3_color1INT([color1]) ==.fg==> NG_checkerboard_color3_N_mtlxmix[mix]
-    style NG_checkerboard_color3_color1INT fill:#0CF, color:#111
-    NG_checkerboard_color3_N_modulo[modulo] --".mix"--> NG_checkerboard_color3_N_mtlxmix[mix]
-    NG_checkerboard_color3_N_mtlxdotproduct[dotproduct] --".in1"--> NG_checkerboard_color3_N_modulo[modulo]
-    NG_checkerboard_color3_N_mtlxfloor[floor] --".in1"--> NG_checkerboard_color3_N_mtlxdotproduct[dotproduct]
-    NG_checkerboard_color3_N_mtlxsubtract[subtract] --".in"--> NG_checkerboard_color3_N_mtlxfloor[floor]
-    NG_checkerboard_color3_uvoffsetINT([uvoffset]) ==.in2==> NG_checkerboard_color3_N_mtlxsubtract[subtract]
-    style NG_checkerboard_color3_uvoffsetINT fill:#0CF, color:#111
-    NG_checkerboard_color3_N_mtlxmult[multiply] --".in1"--> NG_checkerboard_color3_N_mtlxsubtract[subtract]
-    NG_checkerboard_color3_texcoordINT([texcoord]) ==.in1==> NG_checkerboard_color3_N_mtlxmult[multiply]
-    style NG_checkerboard_color3_texcoordINT fill:#0CF, color:#111
-    NG_checkerboard_color3_uvtilingINT([uvtiling]) ==.in2==> NG_checkerboard_color3_N_mtlxmult[multiply]
-    style NG_checkerboard_color3_uvtilingINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_checkerboard_color3
+    NG_checkerboard_color3_N_mtlxmult[N_mtlxmult]
+    NG_checkerboard_color3_N_mtlxsubtract[N_mtlxsubtract]
+    NG_checkerboard_color3_N_mtlxfloor[N_mtlxfloor]
+    NG_checkerboard_color3_N_mtlxdotproduct[N_mtlxdotproduct]
+    NG_checkerboard_color3_N_modulo[N_modulo]
+    NG_checkerboard_color3_N_mtlxmix[N_mtlxmix]
+    style NG_checkerboard_color3_out  fill:#0C0, color:#FFF
+    NG_checkerboard_color3_out([out])
+    style NG_checkerboard_color3_texcoord  fill:#09D, color:#FFF
+    NG_checkerboard_color3_texcoord([texcoord])
+    style NG_checkerboard_color3_uvtiling  fill:#09D, color:#FFF
+    NG_checkerboard_color3_uvtiling([uvtiling])
+    style NG_checkerboard_color3_uvoffset  fill:#09D, color:#FFF
+    NG_checkerboard_color3_uvoffset([uvoffset])
+    style NG_checkerboard_color3_color2  fill:#09D, color:#FFF
+    NG_checkerboard_color3_color2([color2])
+    style NG_checkerboard_color3_color1  fill:#09D, color:#FFF
+    NG_checkerboard_color3_color1([color1])
+    end
+    NG_checkerboard_color3_texcoord --"in1"--> NG_checkerboard_color3_N_mtlxmult
+    NG_checkerboard_color3_uvtiling --"in2"--> NG_checkerboard_color3_N_mtlxmult
+    NG_checkerboard_color3_N_mtlxmult --"in1"--> NG_checkerboard_color3_N_mtlxsubtract
+    NG_checkerboard_color3_uvoffset --"in2"--> NG_checkerboard_color3_N_mtlxsubtract
+    NG_checkerboard_color3_N_mtlxsubtract --"in"--> NG_checkerboard_color3_N_mtlxfloor
+    NG_checkerboard_color3_N_mtlxfloor --"in1"--> NG_checkerboard_color3_N_mtlxdotproduct
+    NG_checkerboard_color3_N_mtlxdotproduct --"in1"--> NG_checkerboard_color3_N_modulo
+    NG_checkerboard_color3_color2 --"bg"--> NG_checkerboard_color3_N_mtlxmix
+    NG_checkerboard_color3_color1 --"fg"--> NG_checkerboard_color3_N_mtlxmix
+    NG_checkerboard_color3_N_modulo --"mix"--> NG_checkerboard_color3_N_mtlxmix
+    NG_checkerboard_color3_N_mtlxmix --> NG_checkerboard_color3_out
 
 
 </div></code></pre>

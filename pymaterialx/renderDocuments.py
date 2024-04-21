@@ -4,6 +4,7 @@ By default the output image(s) is written to the current working directory.
 '''
 import MaterialX as mx
 from mtlxutils import mxrenderer
+from mtlxutils import mxbase
 import os, argparse
 
 def loadLibraries(searchPath, libraryFolders):
@@ -29,14 +30,7 @@ def haveVersion(major, minor, patch):
     """
     Check if the current vesion matches a given version
     """ 
-    imajor, iminor, ipatch = mx.getVersionIntegers()
-    if imajor < major:
-        return False
-    if iminor < minor:
-        return False
-    if ipatch < patch:
-        return False
-    return True
+    return mxbase.haveVersion(major, minor, patch)
 
 def getFiles(rootPath):
     filelist = []

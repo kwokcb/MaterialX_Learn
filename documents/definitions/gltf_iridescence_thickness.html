@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="gltf_iridescence_thickness" class="ms-2 mb-0">
 Category: gltf_iridescence_thickness
@@ -1099,36 +1099,53 @@ Category: gltf_iridescence_thickness
 <div id="ND_gltf_iridescence_thickness_float_1_0_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_gltf_iridescence_thickness_float_1_0_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_gltf_iridescence_thickness_float_1_0_mixThickness[mix] --> NG_gltf_iridescence_thickness_float_1_0_out([out])
-    style NG_gltf_iridescence_thickness_float_1_0_out fill:#0C0, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_thicknessMinINT([thicknessMin]) ==.fg==> NG_gltf_iridescence_thickness_float_1_0_mixThickness[mix]
-    style NG_gltf_iridescence_thickness_float_1_0_thicknessMinINT fill:#0CF, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_thicknessMaxINT([thicknessMax]) ==.bg==> NG_gltf_iridescence_thickness_float_1_0_mixThickness[mix]
-    style NG_gltf_iridescence_thickness_float_1_0_thicknessMaxINT fill:#0CF, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_extract[extract] --".mix"--> NG_gltf_iridescence_thickness_float_1_0_mixThickness[mix]
-    NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image] --".in"--> NG_gltf_iridescence_thickness_float_1_0_extract[extract]
-    NG_gltf_iridescence_thickness_float_1_0_fileINT([file]) ==.file==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_fileINT fill:#0CF, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_dfaultINT([default]) ==.default==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_dfaultINT fill:#0CF, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_texcoordINT([texcoord]) ==.texcoord==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_texcoordINT fill:#0CF, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_pivotINT fill:#0CF, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_scaleINT([scale]) ==.scale==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_scaleINT fill:#0CF, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_rotateINT([rotate]) ==.rotate==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_rotateINT fill:#0CF, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_offsetINT([offset]) ==.offset==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_offsetINT fill:#0CF, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_uaddressmodeINT fill:#0CF, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_vaddressmodeINT fill:#0CF, color:#111
-    NG_gltf_iridescence_thickness_float_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_iridescence_thickness_float_1_0_thickness_image[gltf_image]
-    style NG_gltf_iridescence_thickness_float_1_0_filtertypeINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_gltf_iridescence_thickness_float_1_0
+    NG_gltf_iridescence_thickness_float_1_0_mixThickness[mixThickness]
+    NG_gltf_iridescence_thickness_float_1_0_thickness_image[thickness_image]
+    NG_gltf_iridescence_thickness_float_1_0_extract[extract]
+    style NG_gltf_iridescence_thickness_float_1_0_out  fill:#0C0, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_out([out])
+    style NG_gltf_iridescence_thickness_float_1_0_thicknessMin  fill:#09D, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_thicknessMin([thicknessMin])
+    style NG_gltf_iridescence_thickness_float_1_0_thicknessMax  fill:#09D, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_thicknessMax([thicknessMax])
+    style NG_gltf_iridescence_thickness_float_1_0_file  fill:#09D, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_file([file])
+    style NG_gltf_iridescence_thickness_float_1_0_default1  fill:#09D, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_default1([default])
+    style NG_gltf_iridescence_thickness_float_1_0_texcoord  fill:#09D, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_texcoord([texcoord])
+    style NG_gltf_iridescence_thickness_float_1_0_pivot  fill:#09D, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_pivot([pivot])
+    style NG_gltf_iridescence_thickness_float_1_0_scale  fill:#09D, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_scale([scale])
+    style NG_gltf_iridescence_thickness_float_1_0_rotate  fill:#09D, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_rotate([rotate])
+    style NG_gltf_iridescence_thickness_float_1_0_offset  fill:#09D, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_offset([offset])
+    style NG_gltf_iridescence_thickness_float_1_0_uaddressmode  fill:#09D, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_uaddressmode([uaddressmode])
+    style NG_gltf_iridescence_thickness_float_1_0_vaddressmode  fill:#09D, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_vaddressmode([vaddressmode])
+    style NG_gltf_iridescence_thickness_float_1_0_filtertype  fill:#09D, color:#FFF
+    NG_gltf_iridescence_thickness_float_1_0_filtertype([filtertype])
+    end
+    NG_gltf_iridescence_thickness_float_1_0_thicknessMin --"fg"--> NG_gltf_iridescence_thickness_float_1_0_mixThickness
+    NG_gltf_iridescence_thickness_float_1_0_thicknessMax --"bg"--> NG_gltf_iridescence_thickness_float_1_0_mixThickness
+    NG_gltf_iridescence_thickness_float_1_0_extract --"mix"--> NG_gltf_iridescence_thickness_float_1_0_mixThickness
+    NG_gltf_iridescence_thickness_float_1_0_file --"file"--> NG_gltf_iridescence_thickness_float_1_0_thickness_image
+    NG_gltf_iridescence_thickness_float_1_0_default1 --"default"--> NG_gltf_iridescence_thickness_float_1_0_thickness_image
+    NG_gltf_iridescence_thickness_float_1_0_texcoord --"texcoord"--> NG_gltf_iridescence_thickness_float_1_0_thickness_image
+    NG_gltf_iridescence_thickness_float_1_0_pivot --"pivot"--> NG_gltf_iridescence_thickness_float_1_0_thickness_image
+    NG_gltf_iridescence_thickness_float_1_0_scale --"scale"--> NG_gltf_iridescence_thickness_float_1_0_thickness_image
+    NG_gltf_iridescence_thickness_float_1_0_rotate --"rotate"--> NG_gltf_iridescence_thickness_float_1_0_thickness_image
+    NG_gltf_iridescence_thickness_float_1_0_offset --"offset"--> NG_gltf_iridescence_thickness_float_1_0_thickness_image
+    NG_gltf_iridescence_thickness_float_1_0_uaddressmode --"uaddressmode"--> NG_gltf_iridescence_thickness_float_1_0_thickness_image
+    NG_gltf_iridescence_thickness_float_1_0_vaddressmode --"vaddressmode"--> NG_gltf_iridescence_thickness_float_1_0_thickness_image
+    NG_gltf_iridescence_thickness_float_1_0_filtertype --"filtertype"--> NG_gltf_iridescence_thickness_float_1_0_thickness_image
+    NG_gltf_iridescence_thickness_float_1_0_thickness_image --"in"--> NG_gltf_iridescence_thickness_float_1_0_extract
+    NG_gltf_iridescence_thickness_float_1_0_mixThickness --> NG_gltf_iridescence_thickness_float_1_0_out
 
 
 </div></code></pre>

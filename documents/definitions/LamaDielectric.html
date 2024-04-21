@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="LamaDielectric" class="ms-2 mb-0">
 Category: LamaDielectric
@@ -1351,82 +1351,115 @@ Category: LamaDielectric
 <div id="ND_lama_dielectric_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_lama_dielectric_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMPL_lama_dielectric_dielectric_bsdf[layer] --> IMPL_lama_dielectric_out([out])
-    style IMPL_lama_dielectric_out fill:#0C0, color:#111
-    IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf] --".top"--> IMPL_lama_dielectric_dielectric_bsdf[layer]
-    IMPL_lama_dielectric_reflectionTintINT([reflectionTint]) ==.tint==> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
-    style IMPL_lama_dielectric_reflectionTintINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_normalINT([normal]) ==.normal==> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
-    style IMPL_lama_dielectric_normalINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_relative_ior[divide] --".ior"--> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
-    IMPL_lama_dielectric_exteriorIORINT([exteriorIOR]) ==.in2==> IMPL_lama_dielectric_relative_ior[divide]
-    style IMPL_lama_dielectric_exteriorIORINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_fresnel_mode_switch{switch} --".in1"--> IMPL_lama_dielectric_relative_ior[divide]
-    IMPL_lama_dielectric_IORINT([IOR]) ==.in1==> IMPL_lama_dielectric_fresnel_mode_switch[switch]
-    style IMPL_lama_dielectric_IORINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_fresnelModeINT([fresnelMode]) ==.which==> IMPL_lama_dielectric_fresnel_mode_switch[switch]
-    style IMPL_lama_dielectric_fresnelModeINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_artistic_ior[artistic_ior] --> IMPL_lama_dielectric_IMPL_lama_dielectric_artistic_iorior([ior])
-    style IMPL_lama_dielectric_IMPL_lama_dielectric_artistic_iorior fill:#0C0, color:#111
-    IMPL_lama_dielectric_IMPL_lama_dielectric_artistic_iorior --".r -> .in2"--> IMPL_lama_dielectric_fresnel_mode_switch{switch}
-    style IMPL_lama_dielectric_fresnel_mode_switch fill:#F80, color:#111
-    IMPL_lama_dielectric_reflectivity_color[convert] --".reflectivity"--> IMPL_lama_dielectric_artistic_ior[artistic_ior]
-    IMPL_lama_dielectric_reflectivityINT([reflectivity]) ==.in==> IMPL_lama_dielectric_reflectivity_color[convert]
-    style IMPL_lama_dielectric_reflectivityINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_roughness_anisotropic_squared_clamped[max] --".roughness"--> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
-    IMPL_lama_dielectric_roughness_anisotropic_squared[power] --".in1"--> IMPL_lama_dielectric_roughness_anisotropic_squared_clamped[max]
-    IMPL_lama_dielectric_roughness_linear[combine2] --".in1"--> IMPL_lama_dielectric_roughness_anisotropic_squared[power]
-    IMPL_lama_dielectric_roughnessINT([roughness]) ==.in1==> IMPL_lama_dielectric_roughness_linear[combine2]
-    style IMPL_lama_dielectric_roughnessINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_roughness_bitangent_clamped[clamp] --".in2"--> IMPL_lama_dielectric_roughness_linear[combine2]
-    IMPL_lama_dielectric_roughness_bitangent[add] --".in"--> IMPL_lama_dielectric_roughness_bitangent_clamped[clamp]
-    IMPL_lama_dielectric_roughnessINT([roughness]) ==.in1==> IMPL_lama_dielectric_roughness_bitangent[add]
-    style IMPL_lama_dielectric_roughnessINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_roughness_additional[multiply] --".in2"--> IMPL_lama_dielectric_roughness_bitangent[add]
-    IMPL_lama_dielectric_anisotropyINT([anisotropy]) ==.in1==> IMPL_lama_dielectric_roughness_additional[multiply]
-    style IMPL_lama_dielectric_anisotropyINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_delta{ifgreatereq} --".in2"--> IMPL_lama_dielectric_roughness_additional[multiply]
-    IMPL_lama_dielectric_roughnessINT([roughness]) ==.in2==> IMPL_lama_dielectric_delta[ifgreatereq]
-    style IMPL_lama_dielectric_roughnessINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_anisotropyINT([anisotropy]) ==.value1==> IMPL_lama_dielectric_delta[ifgreatereq]
-    style IMPL_lama_dielectric_anisotropyINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_roughness_inverse[subtract] --".in1"--> IMPL_lama_dielectric_delta{ifgreatereq}
-    style IMPL_lama_dielectric_delta fill:#F80, color:#111
-    IMPL_lama_dielectric_roughnessINT([roughness]) ==.in2==> IMPL_lama_dielectric_roughness_inverse[subtract]
-    style IMPL_lama_dielectric_roughnessINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_tangent_rotate_normalize[normalize] --".tangent"--> IMPL_lama_dielectric_reflection_bsdf[dielectric_bsdf]
-    IMPL_lama_dielectric_tangent_rotate[rotate3d] --".in"--> IMPL_lama_dielectric_tangent_rotate_normalize[normalize]
-    IMPL_lama_dielectric_directionINT([direction]) ==.in==> IMPL_lama_dielectric_tangent_rotate[rotate3d]
-    style IMPL_lama_dielectric_directionINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_normalINT([normal]) ==.axis==> IMPL_lama_dielectric_tangent_rotate[rotate3d]
-    style IMPL_lama_dielectric_normalINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_tangent_rotate_degree_offset[subtract] --".amount"--> IMPL_lama_dielectric_tangent_rotate[rotate3d]
-    IMPL_lama_dielectric_tangent_rotate_degree[multiply] --".in1"--> IMPL_lama_dielectric_tangent_rotate_degree_offset[subtract]
-    IMPL_lama_dielectric_rotationINT([rotation]) ==.in1==> IMPL_lama_dielectric_tangent_rotate_degree[multiply]
-    style IMPL_lama_dielectric_rotationINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_transmission_layer[layer] --".base"--> IMPL_lama_dielectric_dielectric_bsdf[layer]
-    IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf] --".top"--> IMPL_lama_dielectric_transmission_layer[layer]
-    IMPL_lama_dielectric_transmissionTintINT([transmissionTint]) ==.tint==> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
-    style IMPL_lama_dielectric_transmissionTintINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_normalINT([normal]) ==.normal==> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
-    style IMPL_lama_dielectric_normalINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_relative_ior[divide] --".ior"--> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
-    IMPL_lama_dielectric_roughness_anisotropic_squared_clamped[max] --".roughness"--> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
-    IMPL_lama_dielectric_tangent_rotate_normalize[normalize] --".tangent"--> IMPL_lama_dielectric_transmission_bsdf[dielectric_bsdf]
-    IMPL_lama_dielectric_interior_vdf[anisotropic_vdf] --".base"--> IMPL_lama_dielectric_transmission_layer[layer]
-    IMPL_lama_dielectric_scatterAnisotropyINT([scatterAnisotropy]) ==.anisotropy==> IMPL_lama_dielectric_interior_vdf[anisotropic_vdf]
-    style IMPL_lama_dielectric_scatterAnisotropyINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_absorption_vector[convert] --".absorption"--> IMPL_lama_dielectric_interior_vdf[anisotropic_vdf]
-    IMPL_lama_dielectric_absorption[divide] --".in"--> IMPL_lama_dielectric_absorption_vector[convert]
-    IMPL_lama_dielectric_absorptionColorINT([absorptionColor]) ==.in1==> IMPL_lama_dielectric_absorption[divide]
-    style IMPL_lama_dielectric_absorptionColorINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_absorptionRadiusINT([absorptionRadius]) ==.in2==> IMPL_lama_dielectric_absorption[divide]
-    style IMPL_lama_dielectric_absorptionRadiusINT fill:#0CF, color:#111
-    IMPL_lama_dielectric_scatter_vector[convert] --".scattering"--> IMPL_lama_dielectric_interior_vdf[anisotropic_vdf]
-    IMPL_lama_dielectric_scatterColorINT([scatterColor]) ==.in==> IMPL_lama_dielectric_scatter_vector[convert]
-    style IMPL_lama_dielectric_scatterColorINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMPL_lama_dielectric
+    IMPL_lama_dielectric_reflectivity_color[reflectivity_color]
+    IMPL_lama_dielectric_artistic_ior[artistic_ior]
+    style IMPL_lama_dielectric_fresnel_mode_switch  fill:#C72, color:#FFF
+    IMPL_lama_dielectric_fresnel_mode_switch{fresnel_mode_switch}
+    IMPL_lama_dielectric_relative_ior[relative_ior]
+    IMPL_lama_dielectric_roughness_inverse[roughness_inverse]
+    style IMPL_lama_dielectric_delta  fill:#C72, color:#FFF
+    IMPL_lama_dielectric_delta{delta}
+    IMPL_lama_dielectric_roughness_additional[roughness_additional]
+    IMPL_lama_dielectric_roughness_bitangent[roughness_bitangent]
+    IMPL_lama_dielectric_roughness_bitangent_clamped[roughness_bitangent_clamped]
+    IMPL_lama_dielectric_roughness_linear[roughness_linear]
+    IMPL_lama_dielectric_roughness_anisotropic_squared[roughness_anisotropic_squared]
+    IMPL_lama_dielectric_roughness_anisotropic_squared_clamped[roughness_anisotropic_squared_clamped]
+    IMPL_lama_dielectric_tangent_rotate_degree[tangent_rotate_degree]
+    IMPL_lama_dielectric_tangent_rotate_degree_offset[tangent_rotate_degree_offset]
+    IMPL_lama_dielectric_tangent_rotate[tangent_rotate]
+    IMPL_lama_dielectric_tangent_rotate_normalize[tangent_rotate_normalize]
+    IMPL_lama_dielectric_absorption[absorption]
+    IMPL_lama_dielectric_absorption_vector[absorption_vector]
+    IMPL_lama_dielectric_scatter_vector[scatter_vector]
+    IMPL_lama_dielectric_interior_vdf[interior_vdf]
+    IMPL_lama_dielectric_transmission_bsdf[transmission_bsdf]
+    IMPL_lama_dielectric_transmission_layer[transmission_layer]
+    IMPL_lama_dielectric_reflection_bsdf[reflection_bsdf]
+    IMPL_lama_dielectric_dielectric_bsdf[dielectric_bsdf]
+    style IMPL_lama_dielectric_out  fill:#0C0, color:#FFF
+    IMPL_lama_dielectric_out([out])
+    style IMPL_lama_dielectric_reflectivity  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_reflectivity([reflectivity])
+    style IMPL_lama_dielectric_IOR  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_IOR([IOR])
+    style IMPL_lama_dielectric_fresnelMode  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_fresnelMode([fresnelMode])
+    style IMPL_lama_dielectric_exteriorIOR  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_exteriorIOR([exteriorIOR])
+    style IMPL_lama_dielectric_roughness  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_roughness([roughness])
+    style IMPL_lama_dielectric_anisotropy  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_anisotropy([anisotropy])
+    style IMPL_lama_dielectric_rotation  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_rotation([rotation])
+    style IMPL_lama_dielectric_direction  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_direction([direction])
+    style IMPL_lama_dielectric_normal  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_normal([normal])
+    style IMPL_lama_dielectric_absorptionColor  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_absorptionColor([absorptionColor])
+    style IMPL_lama_dielectric_absorptionRadius  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_absorptionRadius([absorptionRadius])
+    style IMPL_lama_dielectric_scatterColor  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_scatterColor([scatterColor])
+    style IMPL_lama_dielectric_scatterAnisotropy  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_scatterAnisotropy([scatterAnisotropy])
+    style IMPL_lama_dielectric_transmissionTint  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_transmissionTint([transmissionTint])
+    style IMPL_lama_dielectric_reflectionTint  fill:#09D, color:#FFF
+    IMPL_lama_dielectric_reflectionTint([reflectionTint])
+    end
+    IMPL_lama_dielectric_reflectivity --"in"--> IMPL_lama_dielectric_reflectivity_color
+    IMPL_lama_dielectric_reflectivity_color --"reflectivity"--> IMPL_lama_dielectric_artistic_ior
+    IMPL_lama_dielectric_IOR --"in1"--> IMPL_lama_dielectric_fresnel_mode_switch
+    IMPL_lama_dielectric_artistic_ior --"ior-->in2"--> IMPL_lama_dielectric_fresnel_mode_switch
+    IMPL_lama_dielectric_fresnelMode --"which"--> IMPL_lama_dielectric_fresnel_mode_switch
+    IMPL_lama_dielectric_fresnel_mode_switch --"in1"--> IMPL_lama_dielectric_relative_ior
+    IMPL_lama_dielectric_exteriorIOR --"in2"--> IMPL_lama_dielectric_relative_ior
+    IMPL_lama_dielectric_roughness --"in2"--> IMPL_lama_dielectric_roughness_inverse
+    IMPL_lama_dielectric_roughness_inverse --"in1"--> IMPL_lama_dielectric_delta
+    IMPL_lama_dielectric_roughness --"in2"--> IMPL_lama_dielectric_delta
+    IMPL_lama_dielectric_anisotropy --"value1"--> IMPL_lama_dielectric_delta
+    IMPL_lama_dielectric_anisotropy --"in1"--> IMPL_lama_dielectric_roughness_additional
+    IMPL_lama_dielectric_delta --"in2"--> IMPL_lama_dielectric_roughness_additional
+    IMPL_lama_dielectric_roughness --"in1"--> IMPL_lama_dielectric_roughness_bitangent
+    IMPL_lama_dielectric_roughness_additional --"in2"--> IMPL_lama_dielectric_roughness_bitangent
+    IMPL_lama_dielectric_roughness_bitangent --"in"--> IMPL_lama_dielectric_roughness_bitangent_clamped
+    IMPL_lama_dielectric_roughness --"in1"--> IMPL_lama_dielectric_roughness_linear
+    IMPL_lama_dielectric_roughness_bitangent_clamped --"in2"--> IMPL_lama_dielectric_roughness_linear
+    IMPL_lama_dielectric_roughness_linear --"in1"--> IMPL_lama_dielectric_roughness_anisotropic_squared
+    IMPL_lama_dielectric_roughness_anisotropic_squared --"in1"--> IMPL_lama_dielectric_roughness_anisotropic_squared_clamped
+    IMPL_lama_dielectric_rotation --"in1"--> IMPL_lama_dielectric_tangent_rotate_degree
+    IMPL_lama_dielectric_tangent_rotate_degree --"in1"--> IMPL_lama_dielectric_tangent_rotate_degree_offset
+    IMPL_lama_dielectric_direction --"in"--> IMPL_lama_dielectric_tangent_rotate
+    IMPL_lama_dielectric_tangent_rotate_degree_offset --"amount"--> IMPL_lama_dielectric_tangent_rotate
+    IMPL_lama_dielectric_normal --"axis"--> IMPL_lama_dielectric_tangent_rotate
+    IMPL_lama_dielectric_tangent_rotate --"in"--> IMPL_lama_dielectric_tangent_rotate_normalize
+    IMPL_lama_dielectric_absorptionColor --"in1"--> IMPL_lama_dielectric_absorption
+    IMPL_lama_dielectric_absorptionRadius --"in2"--> IMPL_lama_dielectric_absorption
+    IMPL_lama_dielectric_absorption --"in"--> IMPL_lama_dielectric_absorption_vector
+    IMPL_lama_dielectric_scatterColor --"in"--> IMPL_lama_dielectric_scatter_vector
+    IMPL_lama_dielectric_absorption_vector --"absorption"--> IMPL_lama_dielectric_interior_vdf
+    IMPL_lama_dielectric_scatter_vector --"scattering"--> IMPL_lama_dielectric_interior_vdf
+    IMPL_lama_dielectric_scatterAnisotropy --"anisotropy"--> IMPL_lama_dielectric_interior_vdf
+    IMPL_lama_dielectric_transmissionTint --"tint"--> IMPL_lama_dielectric_transmission_bsdf
+    IMPL_lama_dielectric_relative_ior --"ior"--> IMPL_lama_dielectric_transmission_bsdf
+    IMPL_lama_dielectric_roughness_anisotropic_squared_clamped --"roughness"--> IMPL_lama_dielectric_transmission_bsdf
+    IMPL_lama_dielectric_normal --"normal"--> IMPL_lama_dielectric_transmission_bsdf
+    IMPL_lama_dielectric_tangent_rotate_normalize --"tangent"--> IMPL_lama_dielectric_transmission_bsdf
+    IMPL_lama_dielectric_transmission_bsdf --"top"--> IMPL_lama_dielectric_transmission_layer
+    IMPL_lama_dielectric_interior_vdf --"base"--> IMPL_lama_dielectric_transmission_layer
+    IMPL_lama_dielectric_reflectionTint --"tint"--> IMPL_lama_dielectric_reflection_bsdf
+    IMPL_lama_dielectric_relative_ior --"ior"--> IMPL_lama_dielectric_reflection_bsdf
+    IMPL_lama_dielectric_roughness_anisotropic_squared_clamped --"roughness"--> IMPL_lama_dielectric_reflection_bsdf
+    IMPL_lama_dielectric_normal --"normal"--> IMPL_lama_dielectric_reflection_bsdf
+    IMPL_lama_dielectric_tangent_rotate_normalize --"tangent"--> IMPL_lama_dielectric_reflection_bsdf
+    IMPL_lama_dielectric_reflection_bsdf --"top"--> IMPL_lama_dielectric_dielectric_bsdf
+    IMPL_lama_dielectric_transmission_layer --"base"--> IMPL_lama_dielectric_dielectric_bsdf
+    IMPL_lama_dielectric_dielectric_bsdf --> IMPL_lama_dielectric_out
 
 
 </div></code></pre>

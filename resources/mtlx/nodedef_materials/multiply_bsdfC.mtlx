@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <multiply name="multiply_bsdfC" type="BSDF">
     <input name="in1" type="BSDF" value="" nodename="oren_nayar_diffuse_bsdf" />
     <input name="in2" type="color3" value="1.0, 1.0, 1.0" />

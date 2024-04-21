@@ -15112,7 +15112,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Creating-Material-Graphs">Creating Material Graphs<a class="anchor-link" href="#Creating-Material-Graphs">&#182;</a></h1><p>The following topics will be covered in this book:</p>
 <ol>
-<li>Creating a node graph containers.</li>
+<li>Creating a node graph container.</li>
 <li>Creating container input and output interfaces.</li>
 <li>Creating nodes in a graph.</li>
 <li>Connecting nodes in a graph.</li>
@@ -15156,14 +15156,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="kn">from</span> <span class="nn">mtlxutils.mxbase</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">haveVersion1387</span> <span class="o">=</span> <span class="n">haveVersion</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">haveVersion1387</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** Warning: Recommended minimum version is 1.38.7 for tutorials. Have version: &quot;</span><span class="p">,</span> <span class="n">mx</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;** Warning: Minimum version is 1.38.7 for tutorials. Have version: &quot;</span><span class="p">,</span> <span class="n">mx</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 
 <span class="n">stdlib</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
 <span class="n">searchPath</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">getDefaultDataSearchPath</span><span class="p">()</span>
 <span class="n">libraryFolders</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">getDefaultDataLibraryFolders</span><span class="p">()</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">libFiles</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">loadLibraries</span><span class="p">(</span><span class="n">libraryFolders</span><span class="p">,</span> <span class="n">searchPath</span><span class="p">,</span> <span class="n">stdlib</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loaded </span><span class="si">%s</span><span class="s1"> standard library definitions&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">stdlib</span><span class="o">.</span><span class="n">getNodeDefs</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;MaterialX version </span><span class="si">%s</span><span class="s1">. Loaded </span><span class="si">%d</span><span class="s1"> standard library definitions&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">stdlib</span><span class="o">.</span><span class="n">getNodeDefs</span><span class="p">())))</span>
 <span class="k">except</span> <span class="n">mx</span><span class="o">.</span><span class="n">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to load standard library definitions: &quot;&#39;</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
 
@@ -15192,7 +15192,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Loaded 750 standard library definitions
+<pre>MaterialX version 1.39.0. Loaded 750 standard library definitions
 </pre>
 </div>
 </div>
@@ -15237,7 +15237,7 @@ The interface <a href="https://materialx.org/docs/api/class_document.html" targe
 
 <span class="n">nodeGraph</span> <span class="o">=</span> <span class="n">addNodeGraph</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span><span class="s2">&quot;test_nodegraph&quot;</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">nodeGraph</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Created nodegraph:&#39;</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">())</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Created nodegraph:&#39;</span><span class="p">,</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">))</span> 
 </pre></div>
 
      </div>
@@ -15257,7 +15257,8 @@ The interface <a href="https://materialx.org/docs/api/class_document.html" targe
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Created nodegraph: test_nodegraph
+<pre>Created nodegraph: &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
+
 </pre>
 </div>
 </div>
@@ -15311,9 +15312,8 @@ This can be done using the <a href="https://materialx.org/docs/api/class_interfa
 <span class="n">graphOutput</span> <span class="o">=</span> <span class="n">addNodeGraphOutput</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
 
 <span class="c1"># Print the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15335,7 +15335,7 @@ This can be done using the <a href="https://materialx.org/docs/api/class_interfa
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
   &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34;&gt;
-
+&lt;/nodegraph&gt;
 </pre>
 </div>
 </div>
@@ -15430,7 +15430,7 @@ a node under a graph instead of a document.</p>
         <span class="k">if</span> <span class="n">newNode</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">newNode</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cannot find nodedef:&#39;</span><span class="p">,</span>  <span class="n">definitionName</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cannot find definition:&#39;</span><span class="p">,</span>  <span class="n">definitionName</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">None</span>
 
 <span class="n">shaderNode</span> <span class="o">=</span> <span class="n">createNode</span><span class="p">(</span><span class="s1">&#39;ND_standard_surface_surfaceshader&#39;</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="p">,</span> <span class="s1">&#39;test_shader&#39;</span><span class="p">)</span>
@@ -15439,9 +15439,8 @@ a node under a graph instead of a document.</p>
 
 <span class="c1"># Print contents of graph</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- Graph contents:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>    
+<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15464,10 +15463,10 @@ a node under a graph instead of a document.</p>
 <pre>- Create shader node with path: test_nodegraph/test_shader
 - Graph contents:
 
-   &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-     &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34;&gt;
-     &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-   
+&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
+  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34;&gt;
+  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+&lt;/nodegraph&gt;
 </pre>
 </div>
 </div>
@@ -15485,8 +15484,10 @@ a node under a graph instead of a document.</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Connecting-Nodes-To-Output-Interfaces">Connecting Nodes To Output Interfaces<a class="anchor-link" href="#Connecting-Nodes-To-Output-Interfaces">&#182;</a></h2><p>To allow output data from the shader node to be accessible the shader node's <strong>output</strong> is connected to the 
 graph containers <strong>output</strong>.</p>
-<p>A  utility called <code>connectOutput()</code> is used to hide the syntactic differences between connecting to an upstream node graph as
+<p>A  utility called <code>connectOutputToOutput()</code> is used to hide the syntactic differences between connecting to an upstream node graph as
 opposed to a node, and to check for &quot;type compatibility&quot;, where &quot;compatible&quot; means both ports are of the exact same type.</p>
+<p>Note that only upstream nodes, and graphs can to a downstream output. Inputs cannot be directly connected to an output. A <code>dot</code> node
+should be used as a pass-through in this case.</p>
 <blockquote>
 <p>Unfortunately, adding explicit outputs to nodes is not recommended, otherwise these can be pre-populated on a node to avoid the constant search on the definition if it is not found on the node. Basically a <code>addOutputFromNodeDef()</code> utility could be called before</p>
 </blockquote>
@@ -15507,8 +15508,12 @@ opposed to a node, and to check for &quot;type compatibility&quot;, where &quot;
     <span class="s2">&quot;Utility to connect a downstream output to an upstream node / node output&quot;</span>
     <span class="s2">&quot;If the types differ then no connection is made&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">upstream</span><span class="p">:</span>
-        <span class="k">return</span>
+        <span class="k">return</span> <span class="kc">False</span>
     
+    <span class="c1"># Cannot directly connect an input to an output</span>
+    <span class="k">if</span> <span class="n">upstream</span><span class="o">.</span><span class="n">isA</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">Input</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
     <span class="n">upstreamType</span> <span class="o">=</span> <span class="n">upstream</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>
 
     <span class="c1"># Check for an explicit upstream output on the upstream node</span>
@@ -15550,9 +15555,9 @@ opposed to a node, and to check for &quot;type compatibility&quot;, where &quot;
 
 
 <span class="c1"># Check the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15573,10 +15578,11 @@ opposed to a node, and to check for &quot;type compatibility&quot;, where &quot;
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Connected output &#34;test_nodegraph/out&#34; to upstream output: test_nodegraph/test_shader.out
+
 &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
   &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
   &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-
+&lt;/nodegraph&gt;
 </pre>
 </div>
 </div>
@@ -15598,9 +15604,9 @@ opposed to a node, and to check for &quot;type compatibility&quot;, where &quot;
 in that a node instance when created has no inputs instantiated. So a check
 must be made to see if it exists and if its not added. Then if input and outputs types match
 then the input can make the connection.</p>
-<p>Additionally it is considered &quot;amibiguous&quot; to have both a <code>value</code> and a connection on an input, so
+<p>Additionally it is considered &quot;invalid&quot; to have both a <code>value</code> and a connection on an input, so
 if a value has been set it must be removed. Conversely when a connection is removed a value must be
-reassigned.</p>
+re-assigned.</p>
 <p>As with value setting, the interface <code>addInputFromNodeDef()</code> is used to add individual inputs
 if they do not exist. A utility called <code>createNode()</code> is added for convenience.</p>
 <p>Having a <code>connectNodeToNode()</code> interface would be a useful to have in the core API to avoid having
@@ -15628,8 +15634,6 @@ to rewrite this logic.</p>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">inputNode</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">outputNode</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
 
-    <span class="c1"># Add an input to the downstream node if it does not exist</span>
-    <span class="n">inputPort</span> <span class="o">=</span> <span class="n">inputNode</span><span class="o">.</span><span class="n">addInputFromNodeDef</span><span class="p">(</span><span class="n">inputName</span><span class="p">)</span>
 
     <span class="c1"># Check for the type.</span>
     <span class="n">outputType</span> <span class="o">=</span> <span class="n">outputNode</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>  
@@ -15664,6 +15668,9 @@ to rewrite this logic.</p>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No output port found matching: &#39;</span><span class="p">,</span> <span class="n">outputName</span><span class="p">)</span>        
 
+    <span class="c1"># Add an input to the downstream node if it does not exist</span>
+    <span class="n">inputPort</span> <span class="o">=</span> <span class="n">inputNode</span><span class="o">.</span><span class="n">addInputFromNodeDef</span><span class="p">(</span><span class="n">inputName</span><span class="p">)</span>
+    
     <span class="k">if</span> <span class="n">inputPort</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span> <span class="o">!=</span> <span class="n">outputType</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Input type (</span><span class="si">%s</span><span class="s1">) and output type (</span><span class="si">%s</span><span class="s1">) do not match: &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">inputPort</span><span class="o">.</span><span class="n">getType</span><span class="p">(),</span> <span class="n">outputType</span><span class="p">))</span>
         <span class="k">return</span> <span class="kc">None</span>
@@ -15686,10 +15693,9 @@ to rewrite this logic.</p>
                                                           <span class="n">nodeGraph</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">()))</span>
         
 <span class="c1"># Check the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15717,7 +15723,7 @@ to rewrite this logic.</p>
   &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
     &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
   &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-
+&lt;/nodegraph&gt;
 </pre>
 </div>
 </div>
@@ -15735,7 +15741,7 @@ to rewrite this logic.</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Adding-Input-Interfaces">Adding Input Interfaces<a class="anchor-link" href="#Adding-Input-Interfaces">&#182;</a></h2><p>Just as child outputs can be added to a <code>NodeGraph</code>, child inputs (<code>Input</code>) can also be added.
 Adding inputs can be thought of as exposing the internal inputs as &quot;public&quot; interfaces.</p>
-<p>The interface <code>addInput()</code> can be used to add one or more inputs. These inputs can then be connected to inputs on node children within the node graph container.</p>
+<p>The interface <code>addInputInterface()</code> can be used to add one or more inputs. These inputs can then be connected to inputs on node children within the node graph container.</p>
 <blockquote>
 <p>Note that <a href="https://materialx.org/docs/api/class_node_graph.html" target="_blank"><code>NodeGraph.addInterfaceName()</code></a> can <strong>only</strong> be used for a graph which represents an implementation of a definition ('functional nodegraph'). An error condition will always be thrown</p>
 </blockquote>
@@ -15754,15 +15760,16 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">addInputInterface</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">typeString</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
     <span class="s2">&quot;Add a type input interface. Will always create a new interface&quot;</span>
-    <span class="n">validName</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">typedefs</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">getDocument</span><span class="p">()</span><span class="o">.</span><span class="n">getTypeDefs</span><span class="p">()</span>
+
     <span class="n">validType</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">typedefs</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">getDocument</span><span class="p">()</span><span class="o">.</span><span class="n">getTypeDefs</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">typedefs</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">typeString</span> <span class="ow">in</span> <span class="n">t</span><span class="o">.</span><span class="n">getName</span><span class="p">():</span>
             <span class="n">validType</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="k">break</span>
 
     <span class="k">if</span> <span class="n">validType</span><span class="p">:</span>
+        <span class="n">validName</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="n">parent</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">validName</span><span class="p">,</span> <span class="n">typeString</span><span class="p">)</span>
     
 <span class="c1"># Add interfaces</span>
@@ -15770,10 +15777,9 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 <span class="n">addInputInterface</span><span class="p">(</span><span class="s1">&#39;color_scale&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="p">)</span>
 
 <span class="c1"># Check the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Added input interfaces: &quot;input_file&quot; and &quot;color_scale&quot;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15793,7 +15799,7 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>
+<pre>Added input interfaces: &#34;input_file&#34; and &#34;color_scale&#34;
 
 &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
   &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
@@ -15802,7 +15808,7 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
   &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
   &lt;input name=&#34;input_file&#34; type=&#34;filename&#34;&gt;
   &lt;input name=&#34;color_scale&#34; type=&#34;float&#34;&gt;
-
+&lt;/nodegraph&gt;
 </pre>
 </div>
 </div>
@@ -15824,7 +15830,7 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 </div>
 </div>
 </div>
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15847,13 +15853,13 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
         <span class="n">interfaceInput</span> <span class="o">=</span> <span class="n">nodegraph</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">interfaceName</span><span class="p">,</span> <span class="n">internalInput</span><span class="o">.</span><span class="n">getType</span><span class="p">())</span>
 
     <span class="c1"># Copy attributes from internal input to interface. </span>
-    <span class="c1"># Remove undesired attributes  as this is not desired to be copied</span>
+    <span class="c1"># Remove undesired attributes.</span>
     <span class="n">interfaceInput</span><span class="o">.</span><span class="n">copyContentFrom</span><span class="p">(</span><span class="n">internalInput</span><span class="p">)</span>
     <span class="n">interfaceInput</span><span class="o">.</span><span class="n">removeAttribute</span><span class="p">(</span><span class="s1">&#39;sourceUri&#39;</span><span class="p">)</span>
     <span class="n">interfaceInput</span><span class="o">.</span><span class="n">removeAttribute</span><span class="p">(</span><span class="s1">&#39;interfacename&#39;</span><span class="p">)</span>
 
-    <span class="c1"># Long logic to get the value from the internal input if it exists.</span>
-    <span class="c1"># If not get the default value</span>
+    <span class="c1"># Logic transfer any value from the internal input to the interface.</span>
+    <span class="c1"># If none is found then use the the default value as defined by the definition.</span>
     <span class="n">internalInputType</span> <span class="o">=</span> <span class="n">internalInput</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">internalInput</span><span class="o">.</span><span class="n">getValue</span><span class="p">():</span>
         <span class="n">internaInputValue</span> <span class="o">=</span> <span class="n">internalInput</span><span class="o">.</span><span class="n">getValue</span><span class="p">()</span> 
@@ -15874,35 +15880,104 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
     <span class="c1"># specified value</span>
     <span class="n">internalInput</span><span class="o">.</span><span class="n">setInterfaceName</span><span class="p">(</span><span class="n">interfaceName</span><span class="p">)</span>
 
-
     <span class="k">return</span> <span class="n">interfaceInput</span>
+</pre></div>
 
-<span class="c1"># Add a &#39;file&#39; input to the child node </span>
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>First example exposes the 'file' input as an 'input_file' interface to the graph.</p>
+
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add a &#39;file&#39; input to the child node </span>
 <span class="n">imageFileInput</span> <span class="o">=</span> <span class="n">imageNode</span><span class="o">.</span><span class="n">addInputFromNodeDef</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">)</span>
 <span class="n">imageFileInputType</span> <span class="o">=</span> <span class="n">imageFileInput</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span>
 <span class="n">imageFileInput</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s2">&quot;checker.png&quot;</span><span class="p">,</span> <span class="n">imageFileInputType</span><span class="p">)</span>
 <span class="c1"># Connect it to interface intput on &quot;input_file&quot;  </span>
 <span class="n">connectInterface</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;input_file&quot;</span><span class="p">,</span> <span class="n">imageNode</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">))</span>
 
+<span class="nb">print</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>
+</pre></div>
 
-<span class="c1"># Second example to publish &#39;base&#39; as an interface. &quot;Transfer&quot;</span>
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
+  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
+  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
+  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
+  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
+  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34;&gt;
+&lt;/nodegraph&gt;
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Second example to expose &quot;base&quot; as a &quot;color_scale&quot; input on the graph.</p>
+
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Second example: Publish &#39;base&#39; as an interface. &quot;Transfer&quot;</span>
 <span class="c1"># the default value from &#39;base&#39; on the shader node to the interfce input. </span>
 <span class="n">baseInput</span> <span class="o">=</span> <span class="n">shaderNode</span><span class="o">.</span><span class="n">addInputFromNodeDef</span><span class="p">(</span><span class="s1">&#39;base&#39;</span><span class="p">)</span>
 <span class="n">connectInterface</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;color_scale&quot;</span><span class="p">,</span> <span class="n">baseInput</span><span class="p">)</span>
 
-<span class="c1"># Check the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-
-<span class="c1"># Variation of above, where a non-default value is published</span>
-<span class="n">baseInput</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">baseInput</span><span class="o">.</span><span class="n">getType</span><span class="p">())</span>
-<span class="n">connectInterface</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;color_scale&quot;</span><span class="p">,</span> <span class="n">baseInput</span><span class="p">)</span>
-
-<span class="c1"># Check the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>    
+<span class="nb">print</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15931,17 +16006,7 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
     &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
   &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
   &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;1&#34;&gt;
-
-&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
-  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
-    &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
-  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
-  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
-  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
-
+&lt;/nodegraph&gt;
 </pre>
 </div>
 </div>
@@ -15950,6 +16015,18 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 
 </div>
 
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Third example to add the 'color_scale' input with the non-default value from 'base_color'</p>
+
+</div>
+</div>
+</div>
 </div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15958,16 +16035,11 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check the entire document</span>
-<span class="n">doc</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
-<span class="n">writeOptions</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">XmlWriteOptions</span><span class="p">()</span>
-<span class="n">writeOptions</span><span class="o">.</span><span class="n">writeXIncludeEnable</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">writeOptions</span><span class="o">.</span><span class="n">elementPredicate</span> <span class="o">=</span> <span class="n">skipLibraryElement</span>
-<span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">documentContents</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set a non-default value to be added to the published interface</span>
+<span class="n">baseInput</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">baseInput</span><span class="o">.</span><span class="n">getType</span><span class="p">())</span>
+<span class="n">connectInterface</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;color_scale&quot;</span><span class="p">,</span> <span class="n">baseInput</span><span class="p">)</span>
 
-<span class="c1"># Save document</span>
-<span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;data/sample_nodegraph.mtlx&#39;</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15987,7 +16059,98 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+<pre>&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
+  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
+  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
+    &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
+  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
+  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
+  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
+&lt;/nodegraph&gt;
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>As a final step, we check that the document is valid and then write out the entire document to a file.</p>
+
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check the entire document</span>
+<span class="n">isValid</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">isValid</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Document is not valid&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">writeOptions</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">XmlWriteOptions</span><span class="p">()</span>
+    <span class="n">writeOptions</span><span class="o">.</span><span class="n">writeXIncludeEnable</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">writeOptions</span><span class="o">.</span><span class="n">elementPredicate</span> <span class="o">=</span> <span class="n">skipLibraryElement</span>
+
+    <span class="c1"># Save document</span>
+    <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;data/sample_nodegraph.mtlx&#39;</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Wrote document to file: data/sample_nodegraph.mtlx</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">documentContents</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Wrote document to file: data/sample_nodegraph.mtlx
+
+&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;materialx version=&#34;1.39&#34;&gt;
+  &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
+    &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34; /&gt;
+    &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+      &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34; /&gt;
+      &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34; /&gt;
+    &lt;/standard_surface&gt;
+    &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+      &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34; /&gt;
+    &lt;/image&gt;
+    &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34; /&gt;
+    &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34; /&gt;
+  &lt;/nodegraph&gt;
+&lt;/materialx&gt;
+
+
+&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;materialx version=&#34;1.39&#34;&gt;
   &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
     &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34; /&gt;
@@ -16018,7 +16181,7 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Connecting-Node-to-a-NodeGraph">Connecting Node to a NodeGraph<a class="anchor-link" href="#Connecting-Node-to-a-NodeGraph">&#182;</a></h2><p>To complete this book, a material node (<code>Material</code>) will be create and connected to the shader output on the graph.</p>
+<h2 id="Connecting-Node-to-a-NodeGraph">Connecting Node to a NodeGraph<a class="anchor-link" href="#Connecting-Node-to-a-NodeGraph">&#182;</a></h2><p>Now that we have a graph with appropriate interfaces we can create a &quot;material&quot; by connecting it to a downstream material node (<code>material</code>).</p>
 
 </div>
 </div>
@@ -16034,16 +16197,14 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create  material node </span>
 <span class="n">materialNode</span> <span class="o">=</span> <span class="n">createNode</span><span class="p">(</span><span class="s1">&#39;ND_surfacematerial&#39;</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;my_material&#39;</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">materialNode</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Create material node:&#39;</span><span class="p">,</span> <span class="n">materialNode</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Create material node: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">materialNode</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
 
 <span class="c1"># Connect the material node to the output of the graph</span>
 <span class="n">connectNodeToNode</span><span class="p">(</span><span class="n">materialNode</span><span class="p">,</span> <span class="s1">&#39;surfaceshader&#39;</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">)</span>
 
 <span class="c1"># Check results</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">materialNode</span><span class="p">))</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">materialNode</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/material&gt;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -16064,9 +16225,10 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Create material node: my_material
+
 &lt;surfacematerial name=&#34;my_material&#34; type=&#34;material&#34; nodedef=&#34;ND_surfacematerial&#34;&gt;
   &lt;input name=&#34;surfaceshader&#34; type=&#34;surfaceshader&#34; nodegraph=&#34;test_nodegraph&#34;&gt;
-
+&lt;/material&gt;
 &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
   &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
   &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
@@ -16076,7 +16238,7 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
     &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
   &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
   &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
-
+&lt;/nodegraph&gt;
 </pre>
 </div>
 </div>
@@ -16092,7 +16254,7 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Material-Graph-Result">Material Graph Result<a class="anchor-link" href="#Material-Graph-Result">&#182;</a></h2><p>As a last step we write the document out to see the final results in diagram and rendered form. (Render is done using the <code>MaterialXView</code> utility)</p>
+<h2 id="Material-Graph-Result">Material Graph Result<a class="anchor-link" href="#Material-Graph-Result">&#182;</a></h2><p>The resulting document is shown in XML, diagram and rendered form. (The render is performed using the <code>MaterialXView</code> utility)</p>
 <img src="images/nodegraph_book_sample_graph.svg" width=70%>
 <img src="images/nodegraph_book_sample_graph.png" width=40%>
 
@@ -16110,14 +16272,15 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check the entire document</span>
 <span class="n">doc</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
 <span class="n">writeOptions</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">XmlWriteOptions</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">haveVersion1387</span><span class="p">:</span>
-    <span class="n">writeOptions</span><span class="o">.</span><span class="n">writeXIncludeEnable</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">writeOptions</span><span class="o">.</span><span class="n">elementPredicate</span> <span class="o">=</span> <span class="n">skipLibraryElement</span>
-<span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">documentContents</span><span class="p">)</span>
+<span class="n">writeOptions</span><span class="o">.</span><span class="n">writeXIncludeEnable</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">writeOptions</span><span class="o">.</span><span class="n">elementPredicate</span> <span class="o">=</span> <span class="n">skipLibraryElement</span>
 
 <span class="c1"># Save document</span>
 <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlFile</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;data/sample_nodegraph.mtlx&#39;</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Wrote document to file: data/sample_nodegraph.mtlx</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">documentContents</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -16137,7 +16300,9 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+<pre>Wrote document to file: data/sample_nodegraph.mtlx
+
+&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;materialx version=&#34;1.39&#34;&gt;
   &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
     &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34; /&gt;
@@ -16215,13 +16380,10 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
     <span class="n">nodegraph</span><span class="o">.</span><span class="n">removeChild</span><span class="p">(</span><span class="n">interfaceName</span><span class="p">)</span>
 
 
-<span class="n">unconnectInterface</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;color_scale&quot;</span><span class="p">)</span>
+<span class="n">unconnectInterface</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;input_file&quot;</span><span class="p">)</span>
 
 <span class="c1"># Check the graph</span>
-<span class="n">text</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    
+<span class="nb">print</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>    
 </pre></div>
 
      </div>
@@ -16245,10 +16407,203 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
   &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
   &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
     &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
-    &lt;input name=&#34;base&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
+    &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
   &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
-    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
-  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
+    &lt;input name=&#34;file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
+  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
+&lt;/nodegraph&gt;
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Connecting-an-upstream-node-to-a-graph">Connecting an upstream node to a graph<a class="anchor-link" href="#Connecting-an-upstream-node-to-a-graph">&#182;</a></h2><p>As a final connection example we look at connecting an upstream node to a graph. This is done by connecting the node's output to the graph's input.</p>
+<ol>
+<li>As noted previsouly, an <code>input</code> cannot have both a connection and a value. Thus if the graph input has a value it will be removed before the connection is made.</li>
+<li>The utility function has some additional logic to transfer the value to an input on the upstream node if desired.</li>
+<li>If the upstream node has multiple outputs, the correct output be specified by setting the <code>output</code> attribute on the graph's input.</li>
+</ol>
+<blockquote>
+<p>This would be a good general practice to always specify the output but the validation logic currently considers this to be an error.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">connectToGraphINput</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">outputName</span><span class="p">,</span> <span class="n">nodegraph</span><span class="p">,</span> <span class="n">inputName</span><span class="p">,</span> <span class="n">transferNodeInput</span><span class="p">):</span>
+    <span class="s2">&quot;Connect an output on a node to an input on a nodegraph&quot;</span>
+    <span class="s2">&quot;Returns the input port on the nodegraph if successful, otherwise None&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">nodegraph</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No node or nodegraph specified&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">nodedef</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">getNodeDef</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">nodedef</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cannot find node definition for node:&#39;</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">outputPort</span> <span class="o">=</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getOutput</span><span class="p">(</span><span class="n">outputName</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">outputPort</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cannot find output port:&#39;</span><span class="p">,</span> <span class="n">outputName</span><span class="p">,</span> <span class="s1">&#39;for the node:&#39;</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">inputPort</span> <span class="o">=</span> <span class="n">nodegraph</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="n">inputName</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">inputPort</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cannot find input port:&#39;</span><span class="p">,</span> <span class="n">inputName</span><span class="p">,</span> <span class="s1">&#39;for the nodegraph:&#39;</span><span class="p">,</span> <span class="n">nodegraph</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">outputPort</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span> <span class="o">!=</span> <span class="n">inputPort</span><span class="o">.</span><span class="n">getType</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Output type:&#39;</span><span class="p">,</span> <span class="n">outputPort</span><span class="o">.</span><span class="n">getType</span><span class="p">(),</span> <span class="s1">&#39;does not match input type:&#39;</span><span class="p">,</span> <span class="n">inputPort</span><span class="o">.</span><span class="n">getType</span><span class="p">())</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="c1"># Transfer the value from the graph input to a specified upstream input</span>
+    <span class="k">if</span> <span class="n">transferNodeInput</span><span class="p">:</span> 
+        <span class="k">if</span> <span class="n">inputPort</span><span class="o">.</span><span class="n">getValue</span><span class="p">():</span>
+            <span class="n">newInput</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">addInputFromNodeDef</span><span class="p">(</span><span class="n">transferNodeInput</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">newInput</span> <span class="ow">and</span> <span class="p">(</span><span class="n">newInput</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span> <span class="o">==</span> <span class="n">inputPort</span><span class="o">.</span><span class="n">getType</span><span class="p">()):</span>
+                <span class="n">newInput</span><span class="o">.</span><span class="n">setValueString</span><span class="p">(</span><span class="n">inputPort</span><span class="o">.</span><span class="n">getValueString</span><span class="p">())</span>
+
+    <span class="c1"># Remove any value, and set a &quot;connection&quot; but setting the node name        </span>
+    <span class="n">inputPort</span><span class="o">.</span><span class="n">removeAttribute</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+    <span class="n">inputPort</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s1">&#39;nodename&#39;</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;multioutput&#39;</span><span class="p">:</span>
+        <span class="n">inputPort</span><span class="o">.</span><span class="n">setOutputString</span><span class="p">(</span><span class="n">outputName</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">inputPort</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create an upstream constant float node</span>
+<span class="n">colorNode</span> <span class="o">=</span> <span class="n">createNode</span><span class="p">(</span><span class="s1">&#39;ND_constant_float&#39;</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="s1">&#39;constant_float&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">colorNode</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Create color node: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">colorNode</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+    <span class="c1"># Connect the color node to the graph input</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">connectToGraphINput</span><span class="p">(</span><span class="n">colorNode</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="p">,</span> <span class="s1">&#39;color_scale&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to connect color node to graph input</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Create color node: constant_float
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The resulting document looks like this:</p>
+<img src="./images/node_to_graph_connection.svg">
+
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check the graph</span>
+<span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">documentContents</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;materialx version=&#34;1.39&#34;&gt;
+  &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
+    &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34; /&gt;
+    &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+      &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34; /&gt;
+      &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34; /&gt;
+    &lt;/standard_surface&gt;
+    &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+      &lt;input name=&#34;file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34; /&gt;
+    &lt;/image&gt;
+    &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; nodename=&#34;constant_float&#34; /&gt;
+  &lt;/nodegraph&gt;
+  &lt;surfacematerial name=&#34;my_material&#34; type=&#34;material&#34; nodedef=&#34;ND_surfacematerial&#34;&gt;
+    &lt;input name=&#34;surfaceshader&#34; type=&#34;surfaceshader&#34; nodegraph=&#34;test_nodegraph&#34; /&gt;
+  &lt;/surfacematerial&gt;
+  &lt;constant name=&#34;constant_float&#34; type=&#34;float&#34; nodedef=&#34;ND_constant_float&#34;&gt;
+    &lt;input name=&#34;value&#34; type=&#34;float&#34; value=&#34;0.2&#34; /&gt;
+  &lt;/constant&gt;
+&lt;/materialx&gt;
 
 </pre>
 </div>

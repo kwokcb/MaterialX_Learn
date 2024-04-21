@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="standard_surface_to_UsdPreviewSurface" class="ms-2 mb-0">
 Category: standard_surface_to_UsdPreviewSurface
@@ -1122,60 +1122,92 @@ Category: standard_surface_to_UsdPreviewSurface
 <div id="ND_standard_surface_to_UsdPreviewSurface_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_standard_surface_to_UsdPreviewSurface_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_standard_surface_to_UsdPreviewSurface_diffuseColor[multiply] --> NG_standard_surface_to_UsdPreviewSurface_diffuseColor_out([diffuseColor_out])
-    style NG_standard_surface_to_UsdPreviewSurface_diffuseColor_out fill:#0C0, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor[multiply] --".in1"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor[multiply]
-    NG_standard_surface_to_UsdPreviewSurface_base_colorINT([base_color]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor[multiply]
-    style NG_standard_surface_to_UsdPreviewSurface_base_colorINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_baseINT([base]) ==.in2==> NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor[multiply]
-    style NG_standard_surface_to_UsdPreviewSurface_baseINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_coatAttenuation[mix] --".in2"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor[multiply]
-    NG_standard_surface_to_UsdPreviewSurface_coat_colorINT([coat_color]) ==.fg==> NG_standard_surface_to_UsdPreviewSurface_coatAttenuation[mix]
-    style NG_standard_surface_to_UsdPreviewSurface_coat_colorINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_coatINT([coat]) ==.mix==> NG_standard_surface_to_UsdPreviewSurface_coatAttenuation[mix]
-    style NG_standard_surface_to_UsdPreviewSurface_coatINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_emissiveColor[multiply] --> NG_standard_surface_to_UsdPreviewSurface_emissiveColor_out([emissiveColor_out])
-    style NG_standard_surface_to_UsdPreviewSurface_emissiveColor_out fill:#0C0, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_emission_colorINT([emission_color]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_emissiveColor[multiply]
-    style NG_standard_surface_to_UsdPreviewSurface_emission_colorINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_emissionINT([emission]) ==.in2==> NG_standard_surface_to_UsdPreviewSurface_emissiveColor[multiply]
-    style NG_standard_surface_to_UsdPreviewSurface_emissionINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_metallic[dot] --> NG_standard_surface_to_UsdPreviewSurface_metallic_out([metallic_out])
-    style NG_standard_surface_to_UsdPreviewSurface_metallic_out fill:#0C0, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_metalnessINT([metalness]) ==.in==> NG_standard_surface_to_UsdPreviewSurface_metallic[dot]
-    style NG_standard_surface_to_UsdPreviewSurface_metalnessINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_roughness[dot] --> NG_standard_surface_to_UsdPreviewSurface_roughness_out([roughness_out])
-    style NG_standard_surface_to_UsdPreviewSurface_roughness_out fill:#0C0, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_specular_roughnessINT([specular_roughness]) ==.in==> NG_standard_surface_to_UsdPreviewSurface_roughness[dot]
-    style NG_standard_surface_to_UsdPreviewSurface_specular_roughnessINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_clearcoat[dotproduct] --> NG_standard_surface_to_UsdPreviewSurface_clearcoat_out([clearcoat_out])
-    style NG_standard_surface_to_UsdPreviewSurface_clearcoat_out fill:#0C0, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_coatColor[multiply] --".rgb -> .in1"--> NG_standard_surface_to_UsdPreviewSurface_clearcoat[dotproduct]
-    NG_standard_surface_to_UsdPreviewSurface_coat_colorINT([coat_color]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_coatColor[multiply]
-    style NG_standard_surface_to_UsdPreviewSurface_coat_colorINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_coatINT([coat]) ==.in2==> NG_standard_surface_to_UsdPreviewSurface_coatColor[multiply]
-    style NG_standard_surface_to_UsdPreviewSurface_coatINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_constantOneThird[divide] --".xxx -> .in2"--> NG_standard_surface_to_UsdPreviewSurface_clearcoat[dotproduct]
-    NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness[dot] --> NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out([clearcoatRoughness_out])
-    style NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out fill:#0C0, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_coat_roughnessINT([coat_roughness]) ==.in==> NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness[dot]
-    style NG_standard_surface_to_UsdPreviewSurface_coat_roughnessINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_opacity[dotproduct] --> NG_standard_surface_to_UsdPreviewSurface_opacity_out([opacity_out])
-    style NG_standard_surface_to_UsdPreviewSurface_opacity_out fill:#0C0, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_opacityINT([opacity]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_opacity[dotproduct]
-    style NG_standard_surface_to_UsdPreviewSurface_opacityINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_constantOneThird[divide] --".xxx -> .in2"--> NG_standard_surface_to_UsdPreviewSurface_opacity[dotproduct]
-    NG_standard_surface_to_UsdPreviewSurface_ior[dot] --> NG_standard_surface_to_UsdPreviewSurface_ior_out([ior_out])
-    style NG_standard_surface_to_UsdPreviewSurface_ior_out fill:#0C0, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_specular_IORINT([specular_IOR]) ==.in==> NG_standard_surface_to_UsdPreviewSurface_ior[dot]
-    style NG_standard_surface_to_UsdPreviewSurface_specular_IORINT fill:#0CF, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_normal[multiply] --> NG_standard_surface_to_UsdPreviewSurface_normal_out([normal_out])
-    style NG_standard_surface_to_UsdPreviewSurface_normal_out fill:#0C0, color:#111
-    NG_standard_surface_to_UsdPreviewSurface_biasNormal[subtract] --".in1"--> NG_standard_surface_to_UsdPreviewSurface_normal[multiply]
-    NG_standard_surface_to_UsdPreviewSurface_normalINT([normal]) ==.in1==> NG_standard_surface_to_UsdPreviewSurface_biasNormal[subtract]
-    style NG_standard_surface_to_UsdPreviewSurface_normalINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_standard_surface_to_UsdPreviewSurface
+    NG_standard_surface_to_UsdPreviewSurface_constantOneThird[constantOneThird]
+    NG_standard_surface_to_UsdPreviewSurface_metallic[metallic]
+    NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor[scaledBaseColor]
+    NG_standard_surface_to_UsdPreviewSurface_coatAttenuation[coatAttenuation]
+    NG_standard_surface_to_UsdPreviewSurface_diffuseColor[diffuseColor]
+    NG_standard_surface_to_UsdPreviewSurface_roughness[roughness]
+    NG_standard_surface_to_UsdPreviewSurface_ior[ior]
+    NG_standard_surface_to_UsdPreviewSurface_coatColor[coatColor]
+    NG_standard_surface_to_UsdPreviewSurface_clearcoat[clearcoat]
+    NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness[clearcoatRoughness]
+    NG_standard_surface_to_UsdPreviewSurface_emissiveColor[emissiveColor]
+    NG_standard_surface_to_UsdPreviewSurface_opacity[opacity]
+    NG_standard_surface_to_UsdPreviewSurface_biasNormal[biasNormal]
+    NG_standard_surface_to_UsdPreviewSurface_normal[normal]
+    style NG_standard_surface_to_UsdPreviewSurface_diffuseColor_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_diffuseColor_out([diffuseColor_out])
+    style NG_standard_surface_to_UsdPreviewSurface_emissiveColor_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_emissiveColor_out([emissiveColor_out])
+    style NG_standard_surface_to_UsdPreviewSurface_metallic_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_metallic_out([metallic_out])
+    style NG_standard_surface_to_UsdPreviewSurface_roughness_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_roughness_out([roughness_out])
+    style NG_standard_surface_to_UsdPreviewSurface_clearcoat_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_clearcoat_out([clearcoat_out])
+    style NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out([clearcoatRoughness_out])
+    style NG_standard_surface_to_UsdPreviewSurface_opacity_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_opacity_out([opacity_out])
+    style NG_standard_surface_to_UsdPreviewSurface_ior_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_ior_out([ior_out])
+    style NG_standard_surface_to_UsdPreviewSurface_normal_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_normal_out([normal_out])
+    style NG_standard_surface_to_UsdPreviewSurface_metalness  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_metalness([metalness])
+    style NG_standard_surface_to_UsdPreviewSurface_base_color  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_base_color([base_color])
+    style NG_standard_surface_to_UsdPreviewSurface_base  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_base([base])
+    style NG_standard_surface_to_UsdPreviewSurface_coat_color  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_coat_color([coat_color])
+    style NG_standard_surface_to_UsdPreviewSurface_coat  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_coat([coat])
+    style NG_standard_surface_to_UsdPreviewSurface_specular_roughness  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_specular_roughness([specular_roughness])
+    style NG_standard_surface_to_UsdPreviewSurface_specular_IOR  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_specular_IOR([specular_IOR])
+    style NG_standard_surface_to_UsdPreviewSurface_coat_roughness  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_coat_roughness([coat_roughness])
+    style NG_standard_surface_to_UsdPreviewSurface_emission_color  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_emission_color([emission_color])
+    style NG_standard_surface_to_UsdPreviewSurface_emission  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_emission([emission])
+    style NG_standard_surface_to_UsdPreviewSurface_opacity:in  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_opacity:in([opacity:in])
+    end
+    NG_standard_surface_to_UsdPreviewSurface_metalness --"in"--> NG_standard_surface_to_UsdPreviewSurface_metallic
+    NG_standard_surface_to_UsdPreviewSurface_base_color --"in1"--> NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor
+    NG_standard_surface_to_UsdPreviewSurface_base --"in2"--> NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor
+    NG_standard_surface_to_UsdPreviewSurface_coat_color --"fg"--> NG_standard_surface_to_UsdPreviewSurface_coatAttenuation
+    NG_standard_surface_to_UsdPreviewSurface_coat --"mix"--> NG_standard_surface_to_UsdPreviewSurface_coatAttenuation
+    NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor --"in1"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor
+    NG_standard_surface_to_UsdPreviewSurface_coatAttenuation --"in2"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor
+    NG_standard_surface_to_UsdPreviewSurface_specular_roughness --"in"--> NG_standard_surface_to_UsdPreviewSurface_roughness
+    NG_standard_surface_to_UsdPreviewSurface_specular_IOR --"in"--> NG_standard_surface_to_UsdPreviewSurface_ior
+    NG_standard_surface_to_UsdPreviewSurface_coat_color --"in1"--> NG_standard_surface_to_UsdPreviewSurface_coatColor
+    NG_standard_surface_to_UsdPreviewSurface_coat --"in2"--> NG_standard_surface_to_UsdPreviewSurface_coatColor
+    NG_standard_surface_to_UsdPreviewSurface_coatColor --"in1"--> NG_standard_surface_to_UsdPreviewSurface_clearcoat
+    NG_standard_surface_to_UsdPreviewSurface_constantOneThird --"in2"--> NG_standard_surface_to_UsdPreviewSurface_clearcoat
+    NG_standard_surface_to_UsdPreviewSurface_coat_roughness --"in"--> NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness
+    NG_standard_surface_to_UsdPreviewSurface_emission_color --"in1"--> NG_standard_surface_to_UsdPreviewSurface_emissiveColor
+    NG_standard_surface_to_UsdPreviewSurface_emission --"in2"--> NG_standard_surface_to_UsdPreviewSurface_emissiveColor
+    NG_standard_surface_to_UsdPreviewSurface_opacity:in --"in1"--> NG_standard_surface_to_UsdPreviewSurface_opacity
+    NG_standard_surface_to_UsdPreviewSurface_constantOneThird --"in2"--> NG_standard_surface_to_UsdPreviewSurface_opacity
+    NG_standard_surface_to_UsdPreviewSurface_normal --"in1"--> NG_standard_surface_to_UsdPreviewSurface_biasNormal
+    NG_standard_surface_to_UsdPreviewSurface_biasNormal --"in1"--> NG_standard_surface_to_UsdPreviewSurface_normal
+    NG_standard_surface_to_UsdPreviewSurface_diffuseColor --> NG_standard_surface_to_UsdPreviewSurface_diffuseColor_out
+    NG_standard_surface_to_UsdPreviewSurface_emissiveColor --> NG_standard_surface_to_UsdPreviewSurface_emissiveColor_out
+    NG_standard_surface_to_UsdPreviewSurface_metallic --> NG_standard_surface_to_UsdPreviewSurface_metallic_out
+    NG_standard_surface_to_UsdPreviewSurface_roughness --> NG_standard_surface_to_UsdPreviewSurface_roughness_out
+    NG_standard_surface_to_UsdPreviewSurface_clearcoat --> NG_standard_surface_to_UsdPreviewSurface_clearcoat_out
+    NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness --> NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness_out
+    NG_standard_surface_to_UsdPreviewSurface_opacity --> NG_standard_surface_to_UsdPreviewSurface_opacity_out
+    NG_standard_surface_to_UsdPreviewSurface_ior --> NG_standard_surface_to_UsdPreviewSurface_ior_out
+    NG_standard_surface_to_UsdPreviewSurface_normal --> NG_standard_surface_to_UsdPreviewSurface_normal_out
 
 
 </div></code></pre>

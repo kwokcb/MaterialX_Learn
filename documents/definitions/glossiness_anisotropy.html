@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="glossiness_anisotropy" class="ms-2 mb-0">
 Category: glossiness_anisotropy
@@ -718,15 +718,21 @@ Category: glossiness_anisotropy
 <div id="ND_glossiness_anisotropy_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_glossiness_anisotropy_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMP_glossiness_anisotropy_roughness1[roughness_anisotropy] --> IMP_glossiness_anisotropy_out([out])
-    style IMP_glossiness_anisotropy_out fill:#0C0, color:#111
-    IMP_glossiness_anisotropy_anisotropyINT([anisotropy]) ==.anisotropy==> IMP_glossiness_anisotropy_roughness1[roughness_anisotropy]
-    style IMP_glossiness_anisotropy_anisotropyINT fill:#0CF, color:#111
-    IMP_glossiness_anisotropy_invert1[invert] --".roughness"--> IMP_glossiness_anisotropy_roughness1[roughness_anisotropy]
-    IMP_glossiness_anisotropy_glossinessINT([glossiness]) ==.in==> IMP_glossiness_anisotropy_invert1[invert]
-    style IMP_glossiness_anisotropy_glossinessINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMP_glossiness_anisotropy
+    IMP_glossiness_anisotropy_invert1[invert1]
+    IMP_glossiness_anisotropy_roughness1[roughness1]
+    style IMP_glossiness_anisotropy_out  fill:#0C0, color:#FFF
+    IMP_glossiness_anisotropy_out([out])
+    style IMP_glossiness_anisotropy_glossiness  fill:#09D, color:#FFF
+    IMP_glossiness_anisotropy_glossiness([glossiness])
+    style IMP_glossiness_anisotropy_anisotropy  fill:#09D, color:#FFF
+    IMP_glossiness_anisotropy_anisotropy([anisotropy])
+    end
+    IMP_glossiness_anisotropy_glossiness --"in"--> IMP_glossiness_anisotropy_invert1
+    IMP_glossiness_anisotropy_invert1 --"roughness"--> IMP_glossiness_anisotropy_roughness1
+    IMP_glossiness_anisotropy_anisotropy --"anisotropy"--> IMP_glossiness_anisotropy_roughness1
+    IMP_glossiness_anisotropy_roughness1 --> IMP_glossiness_anisotropy_out
 
 
 </div></code></pre>

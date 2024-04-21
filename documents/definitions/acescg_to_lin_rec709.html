@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="acescg_to_lin_rec709" class="ms-2 mb-0">
 Category: acescg_to_lin_rec709
@@ -681,15 +681,23 @@ Category: acescg_to_lin_rec709
 <div id="ND_acescg_to_lin_rec709_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_acescg_to_lin_rec709_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_acescg_to_lin_rec709_color3_asColor[convert] --> NG_acescg_to_lin_rec709_color3_out([out])
-    style NG_acescg_to_lin_rec709_color3_out fill:#0C0, color:#111
-    NG_acescg_to_lin_rec709_color3_transform[transformmatrix] --".in"--> NG_acescg_to_lin_rec709_color3_asColor[convert]
-    NG_acescg_to_lin_rec709_color3_asVec[convert] --".in"--> NG_acescg_to_lin_rec709_color3_transform[transformmatrix]
-    NG_acescg_to_lin_rec709_color3_inINT([in]) ==.in==> NG_acescg_to_lin_rec709_color3_asVec[convert]
-    style NG_acescg_to_lin_rec709_color3_inINT fill:#0CF, color:#111
-    NG_acescg_to_lin_rec709_color3_mat[constant] --".mat"--> NG_acescg_to_lin_rec709_color3_transform[transformmatrix]
-
+graph TB
+    subgraph NG_acescg_to_lin_rec709_color3
+    style NG_acescg_to_lin_rec709_color3_mat  fill:#500, color:#FFF
+    NG_acescg_to_lin_rec709_color3_mat([mat:1.705050992658, -0.130256417507, -0.024003356805, -0.621792120657,  1.140804736575, -0.128968976065, -0.083258872001, -0.010548319068, 1.15297233287])
+    NG_acescg_to_lin_rec709_color3_asVec[asVec]
+    NG_acescg_to_lin_rec709_color3_transform[transform]
+    NG_acescg_to_lin_rec709_color3_asColor[asColor]
+    style NG_acescg_to_lin_rec709_color3_out  fill:#0C0, color:#FFF
+    NG_acescg_to_lin_rec709_color3_out([out])
+    style NG_acescg_to_lin_rec709_color3_in  fill:#09D, color:#FFF
+    NG_acescg_to_lin_rec709_color3_in([in])
+    end
+    NG_acescg_to_lin_rec709_color3_in --"in"--> NG_acescg_to_lin_rec709_color3_asVec
+    NG_acescg_to_lin_rec709_color3_asVec --"in"--> NG_acescg_to_lin_rec709_color3_transform
+    NG_acescg_to_lin_rec709_color3_mat --"mat"--> NG_acescg_to_lin_rec709_color3_transform
+    NG_acescg_to_lin_rec709_color3_transform --"in"--> NG_acescg_to_lin_rec709_color3_asColor
+    NG_acescg_to_lin_rec709_color3_asColor --> NG_acescg_to_lin_rec709_color3_out
 
 
 </div></code></pre>
@@ -782,18 +790,23 @@ graph LR;
 <div id="ND_acescg_to_lin_rec709_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_acescg_to_lin_rec709_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_acescg_to_lin_rec709_color4_asColor4[combine4] --> NG_acescg_to_lin_rec709_color4_out([out])
-    style NG_acescg_to_lin_rec709_color4_out fill:#0C0, color:#111
-    NG_acescg_to_lin_rec709_color4_inINT([in]) ==.in4==> NG_acescg_to_lin_rec709_color4_asColor4[combine4]
-    style NG_acescg_to_lin_rec709_color4_inINT fill:#0CF, color:#111
-    NG_acescg_to_lin_rec709_color4_transform[acescg_to_lin_rec709] --".r -> .in1"--> NG_acescg_to_lin_rec709_color4_asColor4[combine4]
-    NG_acescg_to_lin_rec709_color4_asColor3[convert] --".in"--> NG_acescg_to_lin_rec709_color4_transform[acescg_to_lin_rec709]
-    NG_acescg_to_lin_rec709_color4_inINT([in]) ==.in==> NG_acescg_to_lin_rec709_color4_asColor3[convert]
-    style NG_acescg_to_lin_rec709_color4_inINT fill:#0CF, color:#111
-    NG_acescg_to_lin_rec709_color4_transform[acescg_to_lin_rec709] --".g -> .in2"--> NG_acescg_to_lin_rec709_color4_asColor4[combine4]
-    NG_acescg_to_lin_rec709_color4_transform[acescg_to_lin_rec709] --".b -> .in3"--> NG_acescg_to_lin_rec709_color4_asColor4[combine4]
-
+graph TB
+    subgraph NG_acescg_to_lin_rec709_color4
+    NG_acescg_to_lin_rec709_color4_asColor3[asColor3]
+    NG_acescg_to_lin_rec709_color4_transform[transform]
+    NG_acescg_to_lin_rec709_color4_asColor4[asColor4]
+    style NG_acescg_to_lin_rec709_color4_out  fill:#0C0, color:#FFF
+    NG_acescg_to_lin_rec709_color4_out([out])
+    style NG_acescg_to_lin_rec709_color4_in  fill:#09D, color:#FFF
+    NG_acescg_to_lin_rec709_color4_in([in])
+    end
+    NG_acescg_to_lin_rec709_color4_in --"in"--> NG_acescg_to_lin_rec709_color4_asColor3
+    NG_acescg_to_lin_rec709_color4_asColor3 --"in"--> NG_acescg_to_lin_rec709_color4_transform
+    NG_acescg_to_lin_rec709_color4_transform --"in1"--> NG_acescg_to_lin_rec709_color4_asColor4
+    NG_acescg_to_lin_rec709_color4_transform --"in2"--> NG_acescg_to_lin_rec709_color4_asColor4
+    NG_acescg_to_lin_rec709_color4_transform --"in3"--> NG_acescg_to_lin_rec709_color4_asColor4
+    NG_acescg_to_lin_rec709_color4_in --"in4"--> NG_acescg_to_lin_rec709_color4_asColor4
+    NG_acescg_to_lin_rec709_color4_asColor4 --> NG_acescg_to_lin_rec709_color4_out
 
 
 </div></code></pre>

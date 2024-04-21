@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <worleynoise3d name="worleynoise3d_vector3" type="vector3">
     <input name="jitter" type="float" value="1.0" />
   </worleynoise3d>

@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="randomfloat" class="ms-2 mb-0">
 Category: randomfloat
@@ -809,22 +809,33 @@ Category: randomfloat
 <div id="ND_randomfloat_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_randomfloat_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_randomfloat_float_N_remapRange[range] --> NG_randomfloat_float_out([out])
-    style NG_randomfloat_float_out fill:#0C0, color:#111
-    NG_randomfloat_float_minINT([min]) ==.outlow==> NG_randomfloat_float_N_remapRange[range]
-    style NG_randomfloat_float_minINT fill:#0CF, color:#111
-    NG_randomfloat_float_maxINT([max]) ==.outhigh==> NG_randomfloat_float_N_remapRange[range]
-    style NG_randomfloat_float_maxINT fill:#0CF, color:#111
-    NG_randomfloat_float_N_cellnoise1[cellnoise2d] --".in"--> NG_randomfloat_float_N_remapRange[range]
-    NG_randomfloat_float_N_combine2[combine2] --".texcoord"--> NG_randomfloat_float_N_cellnoise1[cellnoise2d]
-    NG_randomfloat_float_N_scaleInput[multiply] --".in1"--> NG_randomfloat_float_N_combine2[combine2]
-    NG_randomfloat_float_inINT([in]) ==.in1==> NG_randomfloat_float_N_scaleInput[multiply]
-    style NG_randomfloat_float_inINT fill:#0CF, color:#111
-    NG_randomfloat_float_N_convertSeed1[convert] --".in2"--> NG_randomfloat_float_N_combine2[combine2]
-    NG_randomfloat_float_seedINT([seed]) ==.in==> NG_randomfloat_float_N_convertSeed1[convert]
-    style NG_randomfloat_float_seedINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_randomfloat_float
+    NG_randomfloat_float_N_convertSeed1[N_convertSeed1]
+    NG_randomfloat_float_N_scaleInput[N_scaleInput]
+    NG_randomfloat_float_N_combine2[N_combine2]
+    NG_randomfloat_float_N_cellnoise1[N_cellnoise1]
+    NG_randomfloat_float_N_remapRange[N_remapRange]
+    style NG_randomfloat_float_out  fill:#0C0, color:#FFF
+    NG_randomfloat_float_out([out])
+    style NG_randomfloat_float_seed  fill:#09D, color:#FFF
+    NG_randomfloat_float_seed([seed])
+    style NG_randomfloat_float_in  fill:#09D, color:#FFF
+    NG_randomfloat_float_in([in])
+    style NG_randomfloat_float_min  fill:#09D, color:#FFF
+    NG_randomfloat_float_min([min])
+    style NG_randomfloat_float_max  fill:#09D, color:#FFF
+    NG_randomfloat_float_max([max])
+    end
+    NG_randomfloat_float_seed --"in"--> NG_randomfloat_float_N_convertSeed1
+    NG_randomfloat_float_in --"in1"--> NG_randomfloat_float_N_scaleInput
+    NG_randomfloat_float_N_scaleInput --"in1"--> NG_randomfloat_float_N_combine2
+    NG_randomfloat_float_N_convertSeed1 --"in2"--> NG_randomfloat_float_N_combine2
+    NG_randomfloat_float_N_combine2 --"texcoord"--> NG_randomfloat_float_N_cellnoise1
+    NG_randomfloat_float_N_cellnoise1 --"in"--> NG_randomfloat_float_N_remapRange
+    NG_randomfloat_float_min --"outlow"--> NG_randomfloat_float_N_remapRange
+    NG_randomfloat_float_max --"outhigh"--> NG_randomfloat_float_N_remapRange
+    NG_randomfloat_float_N_remapRange --> NG_randomfloat_float_out
 
 
 </div></code></pre>
@@ -1014,22 +1025,33 @@ graph LR;
 <div id="ND_randomfloat_integer_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_randomfloat_integer_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_randomfloat_integer_N_remapRange[range] --> NG_randomfloat_integer_out([out])
-    style NG_randomfloat_integer_out fill:#0C0, color:#111
-    NG_randomfloat_integer_minINT([min]) ==.outlow==> NG_randomfloat_integer_N_remapRange[range]
-    style NG_randomfloat_integer_minINT fill:#0CF, color:#111
-    NG_randomfloat_integer_maxINT([max]) ==.outhigh==> NG_randomfloat_integer_N_remapRange[range]
-    style NG_randomfloat_integer_maxINT fill:#0CF, color:#111
-    NG_randomfloat_integer_N_cellnoise1[cellnoise2d] --".in"--> NG_randomfloat_integer_N_remapRange[range]
-    NG_randomfloat_integer_N_combine2[combine2] --".texcoord"--> NG_randomfloat_integer_N_cellnoise1[cellnoise2d]
-    NG_randomfloat_integer_N_convertInput1[convert] --".in1"--> NG_randomfloat_integer_N_combine2[combine2]
-    NG_randomfloat_integer_inINT([in]) ==.in==> NG_randomfloat_integer_N_convertInput1[convert]
-    style NG_randomfloat_integer_inINT fill:#0CF, color:#111
-    NG_randomfloat_integer_N_convertSeed1[convert] --".in2"--> NG_randomfloat_integer_N_combine2[combine2]
-    NG_randomfloat_integer_seedINT([seed]) ==.in==> NG_randomfloat_integer_N_convertSeed1[convert]
-    style NG_randomfloat_integer_seedINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_randomfloat_integer
+    NG_randomfloat_integer_N_convertInput1[N_convertInput1]
+    NG_randomfloat_integer_N_convertSeed1[N_convertSeed1]
+    NG_randomfloat_integer_N_combine2[N_combine2]
+    NG_randomfloat_integer_N_cellnoise1[N_cellnoise1]
+    NG_randomfloat_integer_N_remapRange[N_remapRange]
+    style NG_randomfloat_integer_out  fill:#0C0, color:#FFF
+    NG_randomfloat_integer_out([out])
+    style NG_randomfloat_integer_in  fill:#09D, color:#FFF
+    NG_randomfloat_integer_in([in])
+    style NG_randomfloat_integer_seed  fill:#09D, color:#FFF
+    NG_randomfloat_integer_seed([seed])
+    style NG_randomfloat_integer_min  fill:#09D, color:#FFF
+    NG_randomfloat_integer_min([min])
+    style NG_randomfloat_integer_max  fill:#09D, color:#FFF
+    NG_randomfloat_integer_max([max])
+    end
+    NG_randomfloat_integer_in --"in"--> NG_randomfloat_integer_N_convertInput1
+    NG_randomfloat_integer_seed --"in"--> NG_randomfloat_integer_N_convertSeed1
+    NG_randomfloat_integer_N_convertInput1 --"in1"--> NG_randomfloat_integer_N_combine2
+    NG_randomfloat_integer_N_convertSeed1 --"in2"--> NG_randomfloat_integer_N_combine2
+    NG_randomfloat_integer_N_combine2 --"texcoord"--> NG_randomfloat_integer_N_cellnoise1
+    NG_randomfloat_integer_N_cellnoise1 --"in"--> NG_randomfloat_integer_N_remapRange
+    NG_randomfloat_integer_min --"outlow"--> NG_randomfloat_integer_N_remapRange
+    NG_randomfloat_integer_max --"outhigh"--> NG_randomfloat_integer_N_remapRange
+    NG_randomfloat_integer_N_remapRange --> NG_randomfloat_integer_out
 
 
 </div></code></pre>

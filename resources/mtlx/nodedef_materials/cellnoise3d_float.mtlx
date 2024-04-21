@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <cellnoise3d name="cellnoise3d_float" type="float" />
   <convert name="shader_cellnoise3d_float_out" type="surfaceshader">
     <input name="in" type="float" nodename="cellnoise3d_float" />

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <bump name="bump_vector3" type="vector3">
     <input name="height" type="float" uiname="Height" value="0" />
     <input name="scale" type="float" uiname="Scale" value="1" />

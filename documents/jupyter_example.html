@@ -163,7 +163,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -234,7 +234,11 @@
         </li>
         <li class="nav-item shadow-sm" role="presentation">
           <button class="nav-link" id="pills-travgraphs-tab" data-bs-toggle="pill" data-bs-target="#pills-travgraphs"
-            type="button" role="tab" aria-controls="pills-travgraphs" aria-selected="true">Nodegraph Traversal</button>
+            type="button" role="tab" aria-controls="pills-travgraphs" aria-selected="true">Graph Traversal</button>
+        </li>
+        <li class="nav-item shadow-sm" role="presentation">
+          <button class="nav-link" id="pills-connectivity-tab" data-bs-toggle="pill" data-bs-target="#pills-connectivity"
+            type="button" role="tab" aria-controls="pills-connectivity" aria-selected="true">Graph Connectivity</button>
         </li>
         <li class="nav-item shadow-sm" role="presentation">
           <button class="nav-link" id="pills-compareelem-tab" data-bs-toggle="pill" data-bs-target="#pills-compareelem"
@@ -329,10 +333,21 @@
 
           <div class="card border-secondary shadow border mb-0">
             <iframe class="rounded" src="../pymaterialx/mtlx_traversal_notebook.html"
-              title="NodeGraph Traversal / Mermaid" width="100%" height="800"></iframe>
+              title="NodeGraph Traversal" width="100%" height="800"></iframe>
           </div>
         </div>
       </div>
+
+      <div class="tab-content" id="pills-tabContent3">
+        <div class="tab-pane fade" id="pills-connectivity" role="tabpanel" aria-labelledby="pills-graphs-tab">
+
+          <div class="card border-secondary shadow border mb-0">
+            <iframe class="rounded" src="../pymaterialx/mtlx_connectivity_notebook.html"
+              title="NodeGraph Connectivity / Mermaid" width="100%" height="800"></iframe>
+          </div>
+        </div>
+      </div>
+
 
       <div class="tab-content" id="pills-tabContent3">
         <div class="tab-pane fade" id="pills-compareelem" role="tabpanel" aria-labelledby="pills-compareelem-tab">

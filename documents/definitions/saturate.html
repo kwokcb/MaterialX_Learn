@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="saturate" class="ms-2 mb-0">
 Category: saturate
@@ -756,19 +756,25 @@ Category: saturate
 <div id="ND_saturate_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_saturate_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_saturate_color3_N_mix_color3[mix] --> NG_saturate_color3_out([out])
-    style NG_saturate_color3_out fill:#0C0, color:#111
-    NG_saturate_color3_inINT([in]) ==.fg==> NG_saturate_color3_N_mix_color3[mix]
-    style NG_saturate_color3_inINT fill:#0CF, color:#111
-    NG_saturate_color3_amountINT([amount]) ==.mix==> NG_saturate_color3_N_mix_color3[mix]
-    style NG_saturate_color3_amountINT fill:#0CF, color:#111
-    NG_saturate_color3_N_gray_color3[luminance] --".bg"--> NG_saturate_color3_N_mix_color3[mix]
-    NG_saturate_color3_inINT([in]) ==.in==> NG_saturate_color3_N_gray_color3[luminance]
-    style NG_saturate_color3_inINT fill:#0CF, color:#111
-    NG_saturate_color3_lumacoeffsINT([lumacoeffs]) ==.lumacoeffs==> NG_saturate_color3_N_gray_color3[luminance]
-    style NG_saturate_color3_lumacoeffsINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_saturate_color3
+    NG_saturate_color3_N_gray_color3[N_gray_color3]
+    NG_saturate_color3_N_mix_color3[N_mix_color3]
+    style NG_saturate_color3_out  fill:#0C0, color:#FFF
+    NG_saturate_color3_out([out])
+    style NG_saturate_color3_in  fill:#09D, color:#FFF
+    NG_saturate_color3_in([in])
+    style NG_saturate_color3_lumacoeffs  fill:#09D, color:#FFF
+    NG_saturate_color3_lumacoeffs([lumacoeffs])
+    style NG_saturate_color3_amount  fill:#09D, color:#FFF
+    NG_saturate_color3_amount([amount])
+    end
+    NG_saturate_color3_in --"in"--> NG_saturate_color3_N_gray_color3
+    NG_saturate_color3_lumacoeffs --"lumacoeffs"--> NG_saturate_color3_N_gray_color3
+    NG_saturate_color3_N_gray_color3 --"bg"--> NG_saturate_color3_N_mix_color3
+    NG_saturate_color3_in --"fg"--> NG_saturate_color3_N_mix_color3
+    NG_saturate_color3_amount --"mix"--> NG_saturate_color3_N_mix_color3
+    NG_saturate_color3_N_mix_color3 --> NG_saturate_color3_out
 
 
 </div></code></pre>
@@ -936,19 +942,25 @@ graph LR;
 <div id="ND_saturate_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_saturate_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_saturate_color4_N_mix_color4[mix] --> NG_saturate_color4_out([out])
-    style NG_saturate_color4_out fill:#0C0, color:#111
-    NG_saturate_color4_inINT([in]) ==.fg==> NG_saturate_color4_N_mix_color4[mix]
-    style NG_saturate_color4_inINT fill:#0CF, color:#111
-    NG_saturate_color4_amountINT([amount]) ==.mix==> NG_saturate_color4_N_mix_color4[mix]
-    style NG_saturate_color4_amountINT fill:#0CF, color:#111
-    NG_saturate_color4_N_gray_color4[luminance] --".bg"--> NG_saturate_color4_N_mix_color4[mix]
-    NG_saturate_color4_inINT([in]) ==.in==> NG_saturate_color4_N_gray_color4[luminance]
-    style NG_saturate_color4_inINT fill:#0CF, color:#111
-    NG_saturate_color4_lumacoeffsINT([lumacoeffs]) ==.lumacoeffs==> NG_saturate_color4_N_gray_color4[luminance]
-    style NG_saturate_color4_lumacoeffsINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_saturate_color4
+    NG_saturate_color4_N_gray_color4[N_gray_color4]
+    NG_saturate_color4_N_mix_color4[N_mix_color4]
+    style NG_saturate_color4_out  fill:#0C0, color:#FFF
+    NG_saturate_color4_out([out])
+    style NG_saturate_color4_in  fill:#09D, color:#FFF
+    NG_saturate_color4_in([in])
+    style NG_saturate_color4_lumacoeffs  fill:#09D, color:#FFF
+    NG_saturate_color4_lumacoeffs([lumacoeffs])
+    style NG_saturate_color4_amount  fill:#09D, color:#FFF
+    NG_saturate_color4_amount([amount])
+    end
+    NG_saturate_color4_in --"in"--> NG_saturate_color4_N_gray_color4
+    NG_saturate_color4_lumacoeffs --"lumacoeffs"--> NG_saturate_color4_N_gray_color4
+    NG_saturate_color4_N_gray_color4 --"bg"--> NG_saturate_color4_N_mix_color4
+    NG_saturate_color4_in --"fg"--> NG_saturate_color4_N_mix_color4
+    NG_saturate_color4_amount --"mix"--> NG_saturate_color4_N_mix_color4
+    NG_saturate_color4_N_mix_color4 --> NG_saturate_color4_out
 
 
 </div></code></pre>

@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="LamaAdd" class="ms-2 mb-0">
 Category: LamaAdd
@@ -819,20 +819,29 @@ Category: LamaAdd
 <div id="ND_lama_add_bsdf_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_lama_add_bsdf_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_lama_add_bsdf_add1[add] --> NG_lama_add_bsdf_out([out])
-    style NG_lama_add_bsdf_out fill:#0C0, color:#111
-    NG_lama_add_bsdf_mul1[multiply] --".in1"--> NG_lama_add_bsdf_add1[add]
-    NG_lama_add_bsdf_material1INT([material1]) ==.in1==> NG_lama_add_bsdf_mul1[multiply]
-    style NG_lama_add_bsdf_material1INT fill:#0CF, color:#111
-    NG_lama_add_bsdf_weight1INT([weight1]) ==.in2==> NG_lama_add_bsdf_mul1[multiply]
-    style NG_lama_add_bsdf_weight1INT fill:#0CF, color:#111
-    NG_lama_add_bsdf_mul2[multiply] --".in2"--> NG_lama_add_bsdf_add1[add]
-    NG_lama_add_bsdf_material2INT([material2]) ==.in1==> NG_lama_add_bsdf_mul2[multiply]
-    style NG_lama_add_bsdf_material2INT fill:#0CF, color:#111
-    NG_lama_add_bsdf_weight2INT([weight2]) ==.in2==> NG_lama_add_bsdf_mul2[multiply]
-    style NG_lama_add_bsdf_weight2INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_lama_add_bsdf
+    NG_lama_add_bsdf_mul1[mul1]
+    NG_lama_add_bsdf_mul2[mul2]
+    NG_lama_add_bsdf_add1[add1]
+    style NG_lama_add_bsdf_out  fill:#0C0, color:#FFF
+    NG_lama_add_bsdf_out([out])
+    style NG_lama_add_bsdf_material1  fill:#09D, color:#FFF
+    NG_lama_add_bsdf_material1([material1])
+    style NG_lama_add_bsdf_weight1  fill:#09D, color:#FFF
+    NG_lama_add_bsdf_weight1([weight1])
+    style NG_lama_add_bsdf_material2  fill:#09D, color:#FFF
+    NG_lama_add_bsdf_material2([material2])
+    style NG_lama_add_bsdf_weight2  fill:#09D, color:#FFF
+    NG_lama_add_bsdf_weight2([weight2])
+    end
+    NG_lama_add_bsdf_material1 --"in1"--> NG_lama_add_bsdf_mul1
+    NG_lama_add_bsdf_weight1 --"in2"--> NG_lama_add_bsdf_mul1
+    NG_lama_add_bsdf_material2 --"in1"--> NG_lama_add_bsdf_mul2
+    NG_lama_add_bsdf_weight2 --"in2"--> NG_lama_add_bsdf_mul2
+    NG_lama_add_bsdf_mul1 --"in1"--> NG_lama_add_bsdf_add1
+    NG_lama_add_bsdf_mul2 --"in2"--> NG_lama_add_bsdf_add1
+    NG_lama_add_bsdf_add1 --> NG_lama_add_bsdf_out
 
 
 </div></code></pre>
@@ -1060,20 +1069,29 @@ graph LR;
 <div id="ND_lama_add_edf_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_lama_add_edf_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_lama_add_edf_add1[add] --> NG_lama_add_edf_out([out])
-    style NG_lama_add_edf_out fill:#0C0, color:#111
-    NG_lama_add_edf_mul1[multiply] --".in1"--> NG_lama_add_edf_add1[add]
-    NG_lama_add_edf_material1INT([material1]) ==.in1==> NG_lama_add_edf_mul1[multiply]
-    style NG_lama_add_edf_material1INT fill:#0CF, color:#111
-    NG_lama_add_edf_weight1INT([weight1]) ==.in2==> NG_lama_add_edf_mul1[multiply]
-    style NG_lama_add_edf_weight1INT fill:#0CF, color:#111
-    NG_lama_add_edf_mul2[multiply] --".in2"--> NG_lama_add_edf_add1[add]
-    NG_lama_add_edf_material2INT([material2]) ==.in1==> NG_lama_add_edf_mul2[multiply]
-    style NG_lama_add_edf_material2INT fill:#0CF, color:#111
-    NG_lama_add_edf_weight2INT([weight2]) ==.in2==> NG_lama_add_edf_mul2[multiply]
-    style NG_lama_add_edf_weight2INT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_lama_add_edf
+    NG_lama_add_edf_mul1[mul1]
+    NG_lama_add_edf_mul2[mul2]
+    NG_lama_add_edf_add1[add1]
+    style NG_lama_add_edf_out  fill:#0C0, color:#FFF
+    NG_lama_add_edf_out([out])
+    style NG_lama_add_edf_material1  fill:#09D, color:#FFF
+    NG_lama_add_edf_material1([material1])
+    style NG_lama_add_edf_weight1  fill:#09D, color:#FFF
+    NG_lama_add_edf_weight1([weight1])
+    style NG_lama_add_edf_material2  fill:#09D, color:#FFF
+    NG_lama_add_edf_material2([material2])
+    style NG_lama_add_edf_weight2  fill:#09D, color:#FFF
+    NG_lama_add_edf_weight2([weight2])
+    end
+    NG_lama_add_edf_material1 --"in1"--> NG_lama_add_edf_mul1
+    NG_lama_add_edf_weight1 --"in2"--> NG_lama_add_edf_mul1
+    NG_lama_add_edf_material2 --"in1"--> NG_lama_add_edf_mul2
+    NG_lama_add_edf_weight2 --"in2"--> NG_lama_add_edf_mul2
+    NG_lama_add_edf_mul1 --"in1"--> NG_lama_add_edf_add1
+    NG_lama_add_edf_mul2 --"in2"--> NG_lama_add_edf_add1
+    NG_lama_add_edf_add1 --> NG_lama_add_edf_out
 
 
 </div></code></pre>

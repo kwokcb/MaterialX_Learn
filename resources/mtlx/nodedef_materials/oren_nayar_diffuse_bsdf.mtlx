@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <oren_nayar_diffuse_bsdf name="oren_nayar_diffuse_bsdf" type="BSDF">
     <input name="weight" type="float" value="1.0" />
     <input name="color" type="color3" value="0.18, 0.18, 0.18" />

@@ -15,7 +15,7 @@
 # 2. <a href="https://materialx.org/docs/api/class_port_element.html" target="_blank">Port getConnectedNode()</a> for finding the node connected to an input. This uses the previous interface.
 # 3. <a href="https://materialx.org/docs/api/class_input.html" target="_blank">Input getInterfaceInput()()</a>  for finding if an input is connected to an input interface on a node graph. 
 # 
-# > For this site all Mermaid diagrams are generated using a custom utility. The Javascript version of this utility is used for the interactive graph generation page: <a href="../javascript/mtlx_js_utilities.html">Graph Generator</a>. The utilities (including Mermaid generation) in this tutorial are collected in the `mtlxutils` file: <a href="./mtlxutils/mxtraversal.py" target="_blank">mtlxutils/mxtraversal</a>.
+# > For this site all Mermaid diagrams are generated using a custom utility. The Javascript version of this utility is used for the interactive graph generation page: <a href="../javascript/mtlx_js_utilities.html">Graph Editing</a>. The utilities (including Mermaid generation) in this tutorial are collected in the `mtlxutils` file: <a href="./mtlxutils/mxtraversal.py" target="_blank">mtlxutils/mxtraversal</a>.
 # 
 
 # %% [markdown]

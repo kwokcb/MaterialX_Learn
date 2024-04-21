@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <unifiednoise2d name="unifiednoise2d_float" type="float">
     <input name="freq" type="vector2" uiname="Frequency" value="1, 1" />
     <input name="offset" type="vector2" uiname="Offset" value="0, 0" />

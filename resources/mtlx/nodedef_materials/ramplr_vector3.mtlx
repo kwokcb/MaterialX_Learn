@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <ramplr name="ramplr_vector3" type="vector3">
     <input name="valuel" type="vector3" value="0.0, 0.0, 0.0" />
     <input name="valuer" type="vector3" value="0.0, 0.0, 0.0" />

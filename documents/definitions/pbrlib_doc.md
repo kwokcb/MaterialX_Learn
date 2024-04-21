@@ -655,15 +655,21 @@
 
 
 ```mermaid
-graph LR; 
-    IMP_glossiness_anisotropy_roughness1[roughness_anisotropy] --> IMP_glossiness_anisotropy_out([out])
-    style IMP_glossiness_anisotropy_out fill:#0C0, color:#111
-    IMP_glossiness_anisotropy_anisotropyINT([anisotropy]) ==.anisotropy==> IMP_glossiness_anisotropy_roughness1[roughness_anisotropy]
-    style IMP_glossiness_anisotropy_anisotropyINT fill:#0CF, color:#111
-    IMP_glossiness_anisotropy_invert1[invert] --".roughness"--> IMP_glossiness_anisotropy_roughness1[roughness_anisotropy]
-    IMP_glossiness_anisotropy_glossinessINT([glossiness]) ==.in==> IMP_glossiness_anisotropy_invert1[invert]
-    style IMP_glossiness_anisotropy_glossinessINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMP_glossiness_anisotropy
+    IMP_glossiness_anisotropy_invert1[invert1]
+    IMP_glossiness_anisotropy_roughness1[roughness1]
+    style IMP_glossiness_anisotropy_out  fill:#0C0, color:#FFF
+    IMP_glossiness_anisotropy_out([out])
+    style IMP_glossiness_anisotropy_glossiness  fill:#09D, color:#FFF
+    IMP_glossiness_anisotropy_glossiness([glossiness])
+    style IMP_glossiness_anisotropy_anisotropy  fill:#09D, color:#FFF
+    IMP_glossiness_anisotropy_anisotropy([anisotropy])
+    end
+    IMP_glossiness_anisotropy_glossiness --"in"--> IMP_glossiness_anisotropy_invert1
+    IMP_glossiness_anisotropy_invert1 --"roughness"--> IMP_glossiness_anisotropy_roughness1
+    IMP_glossiness_anisotropy_anisotropy --"anisotropy"--> IMP_glossiness_anisotropy_roughness1
+    IMP_glossiness_anisotropy_roughness1 --> IMP_glossiness_anisotropy_out
 ```
  
 

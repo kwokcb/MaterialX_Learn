@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="UsdTransform2d" class="ms-2 mb-0">
 Category: UsdTransform2d
@@ -739,18 +739,25 @@ Category: UsdTransform2d
 <div id="ND_UsdTransform2d_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_UsdTransform2d_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMP_UsdTransform2d_placement[place2d] --> IMP_UsdTransform2d_out([out])
-    style IMP_UsdTransform2d_out fill:#0C0, color:#111
-    IMP_UsdTransform2d_inINT([in]) ==.texcoord==> IMP_UsdTransform2d_placement[place2d]
-    style IMP_UsdTransform2d_inINT fill:#0CF, color:#111
-    IMP_UsdTransform2d_scaleINT([scale]) ==.scale==> IMP_UsdTransform2d_placement[place2d]
-    style IMP_UsdTransform2d_scaleINT fill:#0CF, color:#111
-    IMP_UsdTransform2d_rotationINT([rotation]) ==.rotate==> IMP_UsdTransform2d_placement[place2d]
-    style IMP_UsdTransform2d_rotationINT fill:#0CF, color:#111
-    IMP_UsdTransform2d_translationINT([translation]) ==.offset==> IMP_UsdTransform2d_placement[place2d]
-    style IMP_UsdTransform2d_translationINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMP_UsdTransform2d
+    IMP_UsdTransform2d_placement[placement]
+    style IMP_UsdTransform2d_out  fill:#0C0, color:#FFF
+    IMP_UsdTransform2d_out([out])
+    style IMP_UsdTransform2d_in  fill:#09D, color:#FFF
+    IMP_UsdTransform2d_in([in])
+    style IMP_UsdTransform2d_scale  fill:#09D, color:#FFF
+    IMP_UsdTransform2d_scale([scale])
+    style IMP_UsdTransform2d_rotation  fill:#09D, color:#FFF
+    IMP_UsdTransform2d_rotation([rotation])
+    style IMP_UsdTransform2d_translation  fill:#09D, color:#FFF
+    IMP_UsdTransform2d_translation([translation])
+    end
+    IMP_UsdTransform2d_in --"texcoord"--> IMP_UsdTransform2d_placement
+    IMP_UsdTransform2d_scale --"scale"--> IMP_UsdTransform2d_placement
+    IMP_UsdTransform2d_rotation --"rotate"--> IMP_UsdTransform2d_placement
+    IMP_UsdTransform2d_translation --"offset"--> IMP_UsdTransform2d_placement
+    IMP_UsdTransform2d_placement --> IMP_UsdTransform2d_out
 
 
 </div></code></pre>

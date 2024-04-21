@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="place2d" class="ms-2 mb-0">
 Category: place2d
@@ -811,44 +811,56 @@ Category: place2d
 <div id="ND_place2d_vector2_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_place2d_vector2_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_place2d_vector2_N_switch_operationorder{switch} --> NG_place2d_vector2_out([out])
-    style NG_place2d_vector2_out fill:#0C0, color:#111
-    NG_place2d_vector2_operationorderINT([operationorder]) ==.which==> NG_place2d_vector2_N_switch_operationorder[switch]
-    style NG_place2d_vector2_operationorderINT fill:#0CF, color:#111
-    NG_place2d_vector2_N_addpivot[add] --".in1"--> NG_place2d_vector2_N_switch_operationorder{switch}
-    style NG_place2d_vector2_N_switch_operationorder fill:#F80, color:#111
-    NG_place2d_vector2_pivotINT([pivot]) ==.in2==> NG_place2d_vector2_N_addpivot[add]
-    style NG_place2d_vector2_pivotINT fill:#0CF, color:#111
-    NG_place2d_vector2_N_applyoffset[subtract] --".in1"--> NG_place2d_vector2_N_addpivot[add]
-    NG_place2d_vector2_offsetINT([offset]) ==.in2==> NG_place2d_vector2_N_applyoffset[subtract]
-    style NG_place2d_vector2_offsetINT fill:#0CF, color:#111
-    NG_place2d_vector2_N_applyrot[rotate2d] --".in1"--> NG_place2d_vector2_N_applyoffset[subtract]
-    NG_place2d_vector2_rotateINT([rotate]) ==.amount==> NG_place2d_vector2_N_applyrot[rotate2d]
-    style NG_place2d_vector2_rotateINT fill:#0CF, color:#111
-    NG_place2d_vector2_N_applyscale[divide] --".in"--> NG_place2d_vector2_N_applyrot[rotate2d]
-    NG_place2d_vector2_scaleINT([scale]) ==.in2==> NG_place2d_vector2_N_applyscale[divide]
-    style NG_place2d_vector2_scaleINT fill:#0CF, color:#111
-    NG_place2d_vector2_N_subpivot[subtract] --".in1"--> NG_place2d_vector2_N_applyscale[divide]
-    NG_place2d_vector2_texcoordINT([texcoord]) ==.in1==> NG_place2d_vector2_N_subpivot[subtract]
-    style NG_place2d_vector2_texcoordINT fill:#0CF, color:#111
-    NG_place2d_vector2_pivotINT([pivot]) ==.in2==> NG_place2d_vector2_N_subpivot[subtract]
-    style NG_place2d_vector2_pivotINT fill:#0CF, color:#111
-    NG_place2d_vector2_N_addpivot2[add] --".in2"--> NG_place2d_vector2_N_switch_operationorder{switch}
-    style NG_place2d_vector2_N_switch_operationorder fill:#F80, color:#111
-    NG_place2d_vector2_pivotINT([pivot]) ==.in2==> NG_place2d_vector2_N_addpivot2[add]
-    style NG_place2d_vector2_pivotINT fill:#0CF, color:#111
-    NG_place2d_vector2_N_applyscale2[divide] --".in1"--> NG_place2d_vector2_N_addpivot2[add]
-    NG_place2d_vector2_scaleINT([scale]) ==.in2==> NG_place2d_vector2_N_applyscale2[divide]
-    style NG_place2d_vector2_scaleINT fill:#0CF, color:#111
-    NG_place2d_vector2_N_applyrot2[rotate2d] --".in1"--> NG_place2d_vector2_N_applyscale2[divide]
-    NG_place2d_vector2_rotateINT([rotate]) ==.amount==> NG_place2d_vector2_N_applyrot2[rotate2d]
-    style NG_place2d_vector2_rotateINT fill:#0CF, color:#111
-    NG_place2d_vector2_N_applyoffset2[subtract] --".in"--> NG_place2d_vector2_N_applyrot2[rotate2d]
-    NG_place2d_vector2_offsetINT([offset]) ==.in2==> NG_place2d_vector2_N_applyoffset2[subtract]
-    style NG_place2d_vector2_offsetINT fill:#0CF, color:#111
-    NG_place2d_vector2_N_subpivot[subtract] --".in1"--> NG_place2d_vector2_N_applyoffset2[subtract]
-
+graph TB
+    subgraph NG_place2d_vector2
+    NG_place2d_vector2_N_subpivot[N_subpivot]
+    NG_place2d_vector2_N_applyscale[N_applyscale]
+    NG_place2d_vector2_N_applyrot[N_applyrot]
+    NG_place2d_vector2_N_applyoffset[N_applyoffset]
+    NG_place2d_vector2_N_addpivot[N_addpivot]
+    NG_place2d_vector2_N_applyoffset2[N_applyoffset2]
+    NG_place2d_vector2_N_applyrot2[N_applyrot2]
+    NG_place2d_vector2_N_applyscale2[N_applyscale2]
+    NG_place2d_vector2_N_addpivot2[N_addpivot2]
+    style NG_place2d_vector2_N_switch_operationorder  fill:#C72, color:#FFF
+    NG_place2d_vector2_N_switch_operationorder{N_switch_operationorder}
+    style NG_place2d_vector2_out  fill:#0C0, color:#FFF
+    NG_place2d_vector2_out([out])
+    style NG_place2d_vector2_texcoord  fill:#09D, color:#FFF
+    NG_place2d_vector2_texcoord([texcoord])
+    style NG_place2d_vector2_pivot  fill:#09D, color:#FFF
+    NG_place2d_vector2_pivot([pivot])
+    style NG_place2d_vector2_scale  fill:#09D, color:#FFF
+    NG_place2d_vector2_scale([scale])
+    style NG_place2d_vector2_rotate  fill:#09D, color:#FFF
+    NG_place2d_vector2_rotate([rotate])
+    style NG_place2d_vector2_offset  fill:#09D, color:#FFF
+    NG_place2d_vector2_offset([offset])
+    style NG_place2d_vector2_operationorder  fill:#09D, color:#FFF
+    NG_place2d_vector2_operationorder([operationorder])
+    end
+    NG_place2d_vector2_texcoord --"in1"--> NG_place2d_vector2_N_subpivot
+    NG_place2d_vector2_pivot --"in2"--> NG_place2d_vector2_N_subpivot
+    NG_place2d_vector2_N_subpivot --"in1"--> NG_place2d_vector2_N_applyscale
+    NG_place2d_vector2_scale --"in2"--> NG_place2d_vector2_N_applyscale
+    NG_place2d_vector2_N_applyscale --"in"--> NG_place2d_vector2_N_applyrot
+    NG_place2d_vector2_rotate --"amount"--> NG_place2d_vector2_N_applyrot
+    NG_place2d_vector2_N_applyrot --"in1"--> NG_place2d_vector2_N_applyoffset
+    NG_place2d_vector2_offset --"in2"--> NG_place2d_vector2_N_applyoffset
+    NG_place2d_vector2_N_applyoffset --"in1"--> NG_place2d_vector2_N_addpivot
+    NG_place2d_vector2_pivot --"in2"--> NG_place2d_vector2_N_addpivot
+    NG_place2d_vector2_N_subpivot --"in1"--> NG_place2d_vector2_N_applyoffset2
+    NG_place2d_vector2_offset --"in2"--> NG_place2d_vector2_N_applyoffset2
+    NG_place2d_vector2_N_applyoffset2 --"in"--> NG_place2d_vector2_N_applyrot2
+    NG_place2d_vector2_rotate --"amount"--> NG_place2d_vector2_N_applyrot2
+    NG_place2d_vector2_N_applyrot2 --"in1"--> NG_place2d_vector2_N_applyscale2
+    NG_place2d_vector2_scale --"in2"--> NG_place2d_vector2_N_applyscale2
+    NG_place2d_vector2_N_applyscale2 --"in1"--> NG_place2d_vector2_N_addpivot2
+    NG_place2d_vector2_pivot --"in2"--> NG_place2d_vector2_N_addpivot2
+    NG_place2d_vector2_N_addpivot --"in1"--> NG_place2d_vector2_N_switch_operationorder
+    NG_place2d_vector2_N_addpivot2 --"in2"--> NG_place2d_vector2_N_switch_operationorder
+    NG_place2d_vector2_operationorder --"which"--> NG_place2d_vector2_N_switch_operationorder
+    NG_place2d_vector2_N_switch_operationorder --> NG_place2d_vector2_out
 
 
 </div></code></pre>

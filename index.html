@@ -163,7 +163,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="./documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="./documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="./javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="./javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="./javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="./documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -261,22 +261,31 @@
         style="max-height: 20em">
         <div class="col p-2 d-flex flex-column position-static">
           <div class="mb-1 text-muted">April, 2024</div>
-          <b class="mb-0">Shader Generation</b>
+          <b class="mb-0">Shaders and Graph</b>
           <div class="row">
             <div class="col-5">
               <img alt="Shader reflection example" load="lazy" src="./documents/images/shader_reflection_example.webp"
                 width="100%">
+              <img alt="Graph editing example" load="lazy" src="./documents/images/graph_editing_util_april_2024.webp"
+                width="100%">
             </div>
             <div class="col-7">
               <li>
-                The <a href="./javascript/viewer/dist/index_out.html">shader preview utility</a> workflow has
-                been improved including adding support for generation of various shader
-                targets including: OSL, GLSL, MetalSL, and Vulkan. Shader "reflection" information has been added
-                to reflect how path mapping and show how the "complete" vs "reduced" interface affects reflection.
+                <a href="./javascript/viewer/dist/index_out.html">Shader Preview</a> utility has full reflection
+                information available including generation for: OSL, GLSL, MetalSL, Vulkan and MDL language
+                targets, and uniform/path reflection as controlled by "complete" vs "reduced" generation.
               </li>
               <li>
-                Python notebooks: The definition creation and other notebooks have be updated to 1.39.
+                <a href="./javascript/mtlx_js_utilities.html">Graph Editing </a>
+                utility uses a new connectivity and graph builder JS module and has support for
+                generation of definitions from node graphs.
+              </li>
+              <li>
+                Python notebooks: A new <b>connectivity</b> book has been with accompanying support classes in
+                <a href="pymaterialx/mtlxutils/mxtraversal.py">mxtraversal.py</a>
+                for connectivity extractiom and Mermaid graph building logic now fully exposed and reusable.
                 A <b>shader reflection</b> utility been added to the shader generation notebook.
+                Definition creation and other notebooks have be updated to 1.39.
               </li>
             </div>
           </div>
@@ -535,7 +544,7 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li><a class="dropdown-item" href="./documents/gltfViewer.html">glTF Model Viewer</a></li>
               <li><a class="dropdown-item" href="./documents/mermaidChecker.html">Graph Visualizer</a></li>
-              <li><a class="dropdown-item" href="./javascript/mtlx_js_utilities.html">Graph Generator</a>
+              <li><a class="dropdown-item" href="./javascript/mtlx_js_utilities.html">Graph Editing</a>
               </li>
               <li><a class="dropdown-item" href="./javascript/viewer/dist/index_out.html">Shader Preview</a>
               </li>

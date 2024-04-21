@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="gltf_colorimage" class="ms-2 mb-0">
 Category: gltf_colorimage
@@ -1203,47 +1203,58 @@ Category: gltf_colorimage
 <div id="ND_gltf_colorimage_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_gltf_colorimage_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_gltf_colorimage_combine_color[combine3] --> NG_gltf_colorimage_outcolor([outcolor])
-    style NG_gltf_colorimage_outcolor fill:#0C0, color:#111
-    NG_gltf_colorimage_separate_color[separate4] --> NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutr([outr])
-    style NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutr fill:#0C0, color:#111
-    NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutr --".in1"--> NG_gltf_colorimage_combine_color[combine3]
-    NG_gltf_colorimage_modulate_geomcolor[multiply] --".in"--> NG_gltf_colorimage_separate_color[separate4]
-    NG_gltf_colorimage_geomcolorINT([geomcolor]) ==.in2==> NG_gltf_colorimage_modulate_geomcolor[multiply]
-    style NG_gltf_colorimage_geomcolorINT fill:#0CF, color:#111
-    NG_gltf_colorimage_modulate_color[multiply] --".in1"--> NG_gltf_colorimage_modulate_geomcolor[multiply]
-    NG_gltf_colorimage_colorINT([color]) ==.in1==> NG_gltf_colorimage_modulate_color[multiply]
-    style NG_gltf_colorimage_colorINT fill:#0CF, color:#111
-    NG_gltf_colorimage_image[gltf_image] --".in2"--> NG_gltf_colorimage_modulate_color[multiply]
-    NG_gltf_colorimage_fileINT([file]) ==.file==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_fileINT fill:#0CF, color:#111
-    NG_gltf_colorimage_dfaultINT([default]) ==.default==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_dfaultINT fill:#0CF, color:#111
-    NG_gltf_colorimage_texcoordINT([texcoord]) ==.texcoord==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_texcoordINT fill:#0CF, color:#111
-    NG_gltf_colorimage_pivotINT([pivot]) ==.pivot==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_pivotINT fill:#0CF, color:#111
-    NG_gltf_colorimage_scaleINT([scale]) ==.scale==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_scaleINT fill:#0CF, color:#111
-    NG_gltf_colorimage_rotateINT([rotate]) ==.rotate==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_rotateINT fill:#0CF, color:#111
-    NG_gltf_colorimage_offsetINT([offset]) ==.offset==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_offsetINT fill:#0CF, color:#111
-    NG_gltf_colorimage_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_colorimage_image[gltf_image]
-    style NG_gltf_colorimage_filtertypeINT fill:#0CF, color:#111
-    NG_gltf_colorimage_separate_color[separate4] --> NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutg([outg])
-    style NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutg fill:#0C0, color:#111
-    NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutg --".in2"--> NG_gltf_colorimage_combine_color[combine3]
-    NG_gltf_colorimage_separate_color[separate4] --> NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutb([outb])
-    style NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutb fill:#0C0, color:#111
-    NG_gltf_colorimage_NG_gltf_colorimage_separate_coloroutb --".in3"--> NG_gltf_colorimage_combine_color[combine3]
-    NG_gltf_colorimage_separate_alpha[dot] --> NG_gltf_colorimage_outa([outa])
-    style NG_gltf_colorimage_outa fill:#0C0, color:#111
-    NG_gltf_colorimage_separate_color[separate4] --> NG_gltf_colorimage_NG_gltf_colorimage_separate_colorouta([outa])
-    style NG_gltf_colorimage_NG_gltf_colorimage_separate_colorouta fill:#0C0, color:#111
-    NG_gltf_colorimage_NG_gltf_colorimage_separate_colorouta --".in"--> NG_gltf_colorimage_separate_alpha[dot]
-
+graph TB
+    subgraph NG_gltf_colorimage
+    NG_gltf_colorimage_image[image]
+    NG_gltf_colorimage_modulate_color[modulate_color]
+    NG_gltf_colorimage_modulate_geomcolor[modulate_geomcolor]
+    NG_gltf_colorimage_separate_color[separate_color]
+    NG_gltf_colorimage_combine_color[combine_color]
+    NG_gltf_colorimage_separate_alpha[separate_alpha]
+    style NG_gltf_colorimage_outcolor  fill:#0C0, color:#FFF
+    NG_gltf_colorimage_outcolor([outcolor])
+    style NG_gltf_colorimage_outa  fill:#0C0, color:#FFF
+    NG_gltf_colorimage_outa([outa])
+    style NG_gltf_colorimage_file  fill:#09D, color:#FFF
+    NG_gltf_colorimage_file([file])
+    style NG_gltf_colorimage_default1  fill:#09D, color:#FFF
+    NG_gltf_colorimage_default1([default])
+    style NG_gltf_colorimage_texcoord  fill:#09D, color:#FFF
+    NG_gltf_colorimage_texcoord([texcoord])
+    style NG_gltf_colorimage_pivot  fill:#09D, color:#FFF
+    NG_gltf_colorimage_pivot([pivot])
+    style NG_gltf_colorimage_scale  fill:#09D, color:#FFF
+    NG_gltf_colorimage_scale([scale])
+    style NG_gltf_colorimage_rotate  fill:#09D, color:#FFF
+    NG_gltf_colorimage_rotate([rotate])
+    style NG_gltf_colorimage_offset  fill:#09D, color:#FFF
+    NG_gltf_colorimage_offset([offset])
+    style NG_gltf_colorimage_filtertype  fill:#09D, color:#FFF
+    NG_gltf_colorimage_filtertype([filtertype])
+    style NG_gltf_colorimage_color  fill:#09D, color:#FFF
+    NG_gltf_colorimage_color([color])
+    style NG_gltf_colorimage_geomcolor  fill:#09D, color:#FFF
+    NG_gltf_colorimage_geomcolor([geomcolor])
+    end
+    NG_gltf_colorimage_file --"file"--> NG_gltf_colorimage_image
+    NG_gltf_colorimage_default1 --"default"--> NG_gltf_colorimage_image
+    NG_gltf_colorimage_texcoord --"texcoord"--> NG_gltf_colorimage_image
+    NG_gltf_colorimage_pivot --"pivot"--> NG_gltf_colorimage_image
+    NG_gltf_colorimage_scale --"scale"--> NG_gltf_colorimage_image
+    NG_gltf_colorimage_rotate --"rotate"--> NG_gltf_colorimage_image
+    NG_gltf_colorimage_offset --"offset"--> NG_gltf_colorimage_image
+    NG_gltf_colorimage_filtertype --"filtertype"--> NG_gltf_colorimage_image
+    NG_gltf_colorimage_color --"in1"--> NG_gltf_colorimage_modulate_color
+    NG_gltf_colorimage_image --"in2"--> NG_gltf_colorimage_modulate_color
+    NG_gltf_colorimage_modulate_color --"in1"--> NG_gltf_colorimage_modulate_geomcolor
+    NG_gltf_colorimage_geomcolor --"in2"--> NG_gltf_colorimage_modulate_geomcolor
+    NG_gltf_colorimage_modulate_geomcolor --"in"--> NG_gltf_colorimage_separate_color
+    NG_gltf_colorimage_separate_color --"outr-->in1"--> NG_gltf_colorimage_combine_color
+    NG_gltf_colorimage_separate_color --"outg-->in2"--> NG_gltf_colorimage_combine_color
+    NG_gltf_colorimage_separate_color --"outb-->in3"--> NG_gltf_colorimage_combine_color
+    NG_gltf_colorimage_separate_color --"outa-->in"--> NG_gltf_colorimage_separate_alpha
+    NG_gltf_colorimage_combine_color --> NG_gltf_colorimage_outcolor
+    NG_gltf_colorimage_separate_alpha --> NG_gltf_colorimage_outa
 
 
 </div></code></pre>

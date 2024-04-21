@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="UsdUVTexture" class="ms-2 mb-0">
 Category: UsdUVTexture
@@ -746,36 +746,53 @@ Category: UsdUVTexture
 <div id="ND_UsdUVTexture_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_UsdUVTexture_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_r([r])
-    style IMP_UsdUVTexture_22_r fill:#0C0, color:#111
-    IMP_UsdUVTexture_22_biasINT([bias]) ==.in2==> IMP_UsdUVTexture_22_image_bias[add]
-    style IMP_UsdUVTexture_22_biasINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_22_image_scale[multiply] --".in1"--> IMP_UsdUVTexture_22_image_bias[add]
-    IMP_UsdUVTexture_22_scaleINT([scale]) ==.in2==> IMP_UsdUVTexture_22_image_scale[multiply]
-    style IMP_UsdUVTexture_22_scaleINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_22_image_reader[image] --".in1"--> IMP_UsdUVTexture_22_image_scale[multiply]
-    IMP_UsdUVTexture_22_fileINT([file]) ==.file==> IMP_UsdUVTexture_22_image_reader[image]
-    style IMP_UsdUVTexture_22_fileINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_22_fallbackINT([fallback]) ==.default==> IMP_UsdUVTexture_22_image_reader[image]
-    style IMP_UsdUVTexture_22_fallbackINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_22_stINT([st]) ==.texcoord==> IMP_UsdUVTexture_22_image_reader[image]
-    style IMP_UsdUVTexture_22_stINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_22_wrapSINT([wrapS]) ==.uaddressmode==> IMP_UsdUVTexture_22_image_reader[image]
-    style IMP_UsdUVTexture_22_wrapSINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_22_wrapTINT([wrapT]) ==.vaddressmode==> IMP_UsdUVTexture_22_image_reader[image]
-    style IMP_UsdUVTexture_22_wrapTINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_g([g])
-    style IMP_UsdUVTexture_22_g fill:#0C0, color:#111
-    IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_b([b])
-    style IMP_UsdUVTexture_22_b fill:#0C0, color:#111
-    IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_a([a])
-    style IMP_UsdUVTexture_22_a fill:#0C0, color:#111
-    IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_rgb([rgb])
-    style IMP_UsdUVTexture_22_rgb fill:#0C0, color:#111
-    IMP_UsdUVTexture_22_image_bias[add] --> IMP_UsdUVTexture_22_rgba([rgba])
-    style IMP_UsdUVTexture_22_rgba fill:#0C0, color:#111
-
+graph TB
+    subgraph IMP_UsdUVTexture_22
+    IMP_UsdUVTexture_22_image_reader[image_reader]
+    IMP_UsdUVTexture_22_image_scale[image_scale]
+    IMP_UsdUVTexture_22_image_bias[image_bias]
+    style IMP_UsdUVTexture_22_r  fill:#0C0, color:#FFF
+    IMP_UsdUVTexture_22_r([r])
+    style IMP_UsdUVTexture_22_g  fill:#0C0, color:#FFF
+    IMP_UsdUVTexture_22_g([g])
+    style IMP_UsdUVTexture_22_b  fill:#0C0, color:#FFF
+    IMP_UsdUVTexture_22_b([b])
+    style IMP_UsdUVTexture_22_a  fill:#0C0, color:#FFF
+    IMP_UsdUVTexture_22_a([a])
+    style IMP_UsdUVTexture_22_rgb  fill:#0C0, color:#FFF
+    IMP_UsdUVTexture_22_rgb([rgb])
+    style IMP_UsdUVTexture_22_rgba  fill:#0C0, color:#FFF
+    IMP_UsdUVTexture_22_rgba([rgba])
+    style IMP_UsdUVTexture_22_file  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_22_file([file])
+    style IMP_UsdUVTexture_22_fallback  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_22_fallback([fallback])
+    style IMP_UsdUVTexture_22_st  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_22_st([st])
+    style IMP_UsdUVTexture_22_wrapS  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_22_wrapS([wrapS])
+    style IMP_UsdUVTexture_22_wrapT  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_22_wrapT([wrapT])
+    style IMP_UsdUVTexture_22_scale  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_22_scale([scale])
+    style IMP_UsdUVTexture_22_bias  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_22_bias([bias])
+    end
+    IMP_UsdUVTexture_22_file --"file"--> IMP_UsdUVTexture_22_image_reader
+    IMP_UsdUVTexture_22_fallback --"default"--> IMP_UsdUVTexture_22_image_reader
+    IMP_UsdUVTexture_22_st --"texcoord"--> IMP_UsdUVTexture_22_image_reader
+    IMP_UsdUVTexture_22_wrapS --"uaddressmode"--> IMP_UsdUVTexture_22_image_reader
+    IMP_UsdUVTexture_22_wrapT --"vaddressmode"--> IMP_UsdUVTexture_22_image_reader
+    IMP_UsdUVTexture_22_image_reader --"in1"--> IMP_UsdUVTexture_22_image_scale
+    IMP_UsdUVTexture_22_scale --"in2"--> IMP_UsdUVTexture_22_image_scale
+    IMP_UsdUVTexture_22_image_scale --"in1"--> IMP_UsdUVTexture_22_image_bias
+    IMP_UsdUVTexture_22_bias --"in2"--> IMP_UsdUVTexture_22_image_bias
+    IMP_UsdUVTexture_22_image_bias --> IMP_UsdUVTexture_22_r
+    IMP_UsdUVTexture_22_image_bias --> IMP_UsdUVTexture_22_g
+    IMP_UsdUVTexture_22_image_bias --> IMP_UsdUVTexture_22_b
+    IMP_UsdUVTexture_22_image_bias --> IMP_UsdUVTexture_22_a
+    IMP_UsdUVTexture_22_image_bias --> IMP_UsdUVTexture_22_rgb
+    IMP_UsdUVTexture_22_image_bias --> IMP_UsdUVTexture_22_rgba
 
 
 </div></code></pre>
@@ -1130,34 +1147,50 @@ graph LR;
 <div id="ND_UsdUVTexture_23_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_UsdUVTexture_23_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_r([r])
-    style IMP_UsdUVTexture_23_r fill:#0C0, color:#111
-    IMP_UsdUVTexture_23_biasINT([bias]) ==.in2==> IMP_UsdUVTexture_23_image_bias[add]
-    style IMP_UsdUVTexture_23_biasINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_23_image_scale[multiply] --".in1"--> IMP_UsdUVTexture_23_image_bias[add]
-    IMP_UsdUVTexture_23_scaleINT([scale]) ==.in2==> IMP_UsdUVTexture_23_image_scale[multiply]
-    style IMP_UsdUVTexture_23_scaleINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_23_image_reader[image] --".in1"--> IMP_UsdUVTexture_23_image_scale[multiply]
-    IMP_UsdUVTexture_23_fileINT([file]) ==.file==> IMP_UsdUVTexture_23_image_reader[image]
-    style IMP_UsdUVTexture_23_fileINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_23_fallbackINT([fallback]) ==.default==> IMP_UsdUVTexture_23_image_reader[image]
-    style IMP_UsdUVTexture_23_fallbackINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_23_stINT([st]) ==.texcoord==> IMP_UsdUVTexture_23_image_reader[image]
-    style IMP_UsdUVTexture_23_stINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_23_wrapSINT([wrapS]) ==.uaddressmode==> IMP_UsdUVTexture_23_image_reader[image]
-    style IMP_UsdUVTexture_23_wrapSINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_23_wrapTINT([wrapT]) ==.vaddressmode==> IMP_UsdUVTexture_23_image_reader[image]
-    style IMP_UsdUVTexture_23_wrapTINT fill:#0CF, color:#111
-    IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_g([g])
-    style IMP_UsdUVTexture_23_g fill:#0C0, color:#111
-    IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_b([b])
-    style IMP_UsdUVTexture_23_b fill:#0C0, color:#111
-    IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_a([a])
-    style IMP_UsdUVTexture_23_a fill:#0C0, color:#111
-    IMP_UsdUVTexture_23_image_bias[add] --> IMP_UsdUVTexture_23_rgb([rgb])
-    style IMP_UsdUVTexture_23_rgb fill:#0C0, color:#111
-
+graph TB
+    subgraph IMP_UsdUVTexture_23
+    IMP_UsdUVTexture_23_image_reader[image_reader]
+    IMP_UsdUVTexture_23_image_scale[image_scale]
+    IMP_UsdUVTexture_23_image_bias[image_bias]
+    style IMP_UsdUVTexture_23_r  fill:#0C0, color:#FFF
+    IMP_UsdUVTexture_23_r([r])
+    style IMP_UsdUVTexture_23_g  fill:#0C0, color:#FFF
+    IMP_UsdUVTexture_23_g([g])
+    style IMP_UsdUVTexture_23_b  fill:#0C0, color:#FFF
+    IMP_UsdUVTexture_23_b([b])
+    style IMP_UsdUVTexture_23_a  fill:#0C0, color:#FFF
+    IMP_UsdUVTexture_23_a([a])
+    style IMP_UsdUVTexture_23_rgb  fill:#0C0, color:#FFF
+    IMP_UsdUVTexture_23_rgb([rgb])
+    style IMP_UsdUVTexture_23_file  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_23_file([file])
+    style IMP_UsdUVTexture_23_fallback  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_23_fallback([fallback])
+    style IMP_UsdUVTexture_23_st  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_23_st([st])
+    style IMP_UsdUVTexture_23_wrapS  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_23_wrapS([wrapS])
+    style IMP_UsdUVTexture_23_wrapT  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_23_wrapT([wrapT])
+    style IMP_UsdUVTexture_23_scale  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_23_scale([scale])
+    style IMP_UsdUVTexture_23_bias  fill:#09D, color:#FFF
+    IMP_UsdUVTexture_23_bias([bias])
+    end
+    IMP_UsdUVTexture_23_file --"file"--> IMP_UsdUVTexture_23_image_reader
+    IMP_UsdUVTexture_23_fallback --"default"--> IMP_UsdUVTexture_23_image_reader
+    IMP_UsdUVTexture_23_st --"texcoord"--> IMP_UsdUVTexture_23_image_reader
+    IMP_UsdUVTexture_23_wrapS --"uaddressmode"--> IMP_UsdUVTexture_23_image_reader
+    IMP_UsdUVTexture_23_wrapT --"vaddressmode"--> IMP_UsdUVTexture_23_image_reader
+    IMP_UsdUVTexture_23_image_reader --"in1"--> IMP_UsdUVTexture_23_image_scale
+    IMP_UsdUVTexture_23_scale --"in2"--> IMP_UsdUVTexture_23_image_scale
+    IMP_UsdUVTexture_23_image_scale --"in1"--> IMP_UsdUVTexture_23_image_bias
+    IMP_UsdUVTexture_23_bias --"in2"--> IMP_UsdUVTexture_23_image_bias
+    IMP_UsdUVTexture_23_image_bias --> IMP_UsdUVTexture_23_r
+    IMP_UsdUVTexture_23_image_bias --> IMP_UsdUVTexture_23_g
+    IMP_UsdUVTexture_23_image_bias --> IMP_UsdUVTexture_23_b
+    IMP_UsdUVTexture_23_image_bias --> IMP_UsdUVTexture_23_a
+    IMP_UsdUVTexture_23_image_bias --> IMP_UsdUVTexture_23_rgb
 
 
 </div></code></pre>
