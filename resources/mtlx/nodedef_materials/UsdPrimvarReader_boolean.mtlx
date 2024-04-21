@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <UsdPrimvarReader name="UsdPrimvarReader_boolean" type="boolean">
     <input name="varname" type="string" value="geompropvalue_boolean" uniform="true" />
     <input name="fallback" type="boolean" value="false" />

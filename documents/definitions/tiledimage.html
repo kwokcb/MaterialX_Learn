@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="tiledimage" class="ms-2 mb-0">
 Category: tiledimage
@@ -945,36 +945,54 @@ Category: tiledimage
 <div id="ND_tiledimage_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_tiledimage_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_tiledimage_float_N_img_float[image] --> NG_tiledimage_float_out([out])
-    style NG_tiledimage_float_out fill:#0C0, color:#111
-    NG_tiledimage_float_fileINT([file]) ==.file==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_fileINT fill:#0CF, color:#111
-    NG_tiledimage_float_dfaultINT([default]) ==.default==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_dfaultINT fill:#0CF, color:#111
-    NG_tiledimage_float_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_filtertypeINT fill:#0CF, color:#111
-    NG_tiledimage_float_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_framerangeINT fill:#0CF, color:#111
-    NG_tiledimage_float_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_frameoffsetINT fill:#0CF, color:#111
-    NG_tiledimage_float_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_float_N_img_float[image]
-    style NG_tiledimage_float_frameendactionINT fill:#0CF, color:#111
-    NG_tiledimage_float_N_multtilesize_float[multiply] --".texcoord"--> NG_tiledimage_float_N_img_float[image]
-    NG_tiledimage_float_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_float_N_multtilesize_float[multiply]
-    style NG_tiledimage_float_realworldtilesizeINT fill:#0CF, color:#111
-    NG_tiledimage_float_N_divtilesize_float[divide] --".in1"--> NG_tiledimage_float_N_multtilesize_float[multiply]
-    NG_tiledimage_float_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_float_N_divtilesize_float[divide]
-    style NG_tiledimage_float_realworldimagesizeINT fill:#0CF, color:#111
-    NG_tiledimage_float_N_sub_float[subtract] --".in1"--> NG_tiledimage_float_N_divtilesize_float[divide]
-    NG_tiledimage_float_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_float_N_sub_float[subtract]
-    style NG_tiledimage_float_uvoffsetINT fill:#0CF, color:#111
-    NG_tiledimage_float_N_mult_float[multiply] --".in1"--> NG_tiledimage_float_N_sub_float[subtract]
-    NG_tiledimage_float_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_float_N_mult_float[multiply]
-    style NG_tiledimage_float_texcoordINT fill:#0CF, color:#111
-    NG_tiledimage_float_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_float_N_mult_float[multiply]
-    style NG_tiledimage_float_uvtilingINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_tiledimage_float
+    NG_tiledimage_float_N_mult_float[N_mult_float]
+    NG_tiledimage_float_N_sub_float[N_sub_float]
+    NG_tiledimage_float_N_divtilesize_float[N_divtilesize_float]
+    NG_tiledimage_float_N_multtilesize_float[N_multtilesize_float]
+    NG_tiledimage_float_N_img_float[N_img_float]
+    style NG_tiledimage_float_out  fill:#0C0, color:#FFF
+    NG_tiledimage_float_out([out])
+    style NG_tiledimage_float_texcoord  fill:#09D, color:#FFF
+    NG_tiledimage_float_texcoord([texcoord])
+    style NG_tiledimage_float_uvtiling  fill:#09D, color:#FFF
+    NG_tiledimage_float_uvtiling([uvtiling])
+    style NG_tiledimage_float_uvoffset  fill:#09D, color:#FFF
+    NG_tiledimage_float_uvoffset([uvoffset])
+    style NG_tiledimage_float_realworldimagesize  fill:#09D, color:#FFF
+    NG_tiledimage_float_realworldimagesize([realworldimagesize])
+    style NG_tiledimage_float_realworldtilesize  fill:#09D, color:#FFF
+    NG_tiledimage_float_realworldtilesize([realworldtilesize])
+    style NG_tiledimage_float_file  fill:#09D, color:#FFF
+    NG_tiledimage_float_file([file])
+    style NG_tiledimage_float_default1  fill:#09D, color:#FFF
+    NG_tiledimage_float_default1([default])
+    style NG_tiledimage_float_filtertype  fill:#09D, color:#FFF
+    NG_tiledimage_float_filtertype([filtertype])
+    style NG_tiledimage_float_framerange  fill:#09D, color:#FFF
+    NG_tiledimage_float_framerange([framerange])
+    style NG_tiledimage_float_frameoffset  fill:#09D, color:#FFF
+    NG_tiledimage_float_frameoffset([frameoffset])
+    style NG_tiledimage_float_frameendaction  fill:#09D, color:#FFF
+    NG_tiledimage_float_frameendaction([frameendaction])
+    end
+    NG_tiledimage_float_texcoord --"in1"--> NG_tiledimage_float_N_mult_float
+    NG_tiledimage_float_uvtiling --"in2"--> NG_tiledimage_float_N_mult_float
+    NG_tiledimage_float_N_mult_float --"in1"--> NG_tiledimage_float_N_sub_float
+    NG_tiledimage_float_uvoffset --"in2"--> NG_tiledimage_float_N_sub_float
+    NG_tiledimage_float_N_sub_float --"in1"--> NG_tiledimage_float_N_divtilesize_float
+    NG_tiledimage_float_realworldimagesize --"in2"--> NG_tiledimage_float_N_divtilesize_float
+    NG_tiledimage_float_N_divtilesize_float --"in1"--> NG_tiledimage_float_N_multtilesize_float
+    NG_tiledimage_float_realworldtilesize --"in2"--> NG_tiledimage_float_N_multtilesize_float
+    NG_tiledimage_float_file --"file"--> NG_tiledimage_float_N_img_float
+    NG_tiledimage_float_default1 --"default"--> NG_tiledimage_float_N_img_float
+    NG_tiledimage_float_N_multtilesize_float --"texcoord"--> NG_tiledimage_float_N_img_float
+    NG_tiledimage_float_filtertype --"filtertype"--> NG_tiledimage_float_N_img_float
+    NG_tiledimage_float_framerange --"framerange"--> NG_tiledimage_float_N_img_float
+    NG_tiledimage_float_frameoffset --"frameoffset"--> NG_tiledimage_float_N_img_float
+    NG_tiledimage_float_frameendaction --"frameendaction"--> NG_tiledimage_float_N_img_float
+    NG_tiledimage_float_N_img_float --> NG_tiledimage_float_out
 
 
 </div></code></pre>
@@ -1344,36 +1362,54 @@ graph LR;
 <div id="ND_tiledimage_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_tiledimage_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_tiledimage_color3_N_img_color3[image] --> NG_tiledimage_color3_out([out])
-    style NG_tiledimage_color3_out fill:#0C0, color:#111
-    NG_tiledimage_color3_fileINT([file]) ==.file==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_fileINT fill:#0CF, color:#111
-    NG_tiledimage_color3_dfaultINT([default]) ==.default==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_dfaultINT fill:#0CF, color:#111
-    NG_tiledimage_color3_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_filtertypeINT fill:#0CF, color:#111
-    NG_tiledimage_color3_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_framerangeINT fill:#0CF, color:#111
-    NG_tiledimage_color3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_frameoffsetINT fill:#0CF, color:#111
-    NG_tiledimage_color3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_color3_N_img_color3[image]
-    style NG_tiledimage_color3_frameendactionINT fill:#0CF, color:#111
-    NG_tiledimage_color3_N_multtilesize_color3[multiply] --".texcoord"--> NG_tiledimage_color3_N_img_color3[image]
-    NG_tiledimage_color3_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_color3_N_multtilesize_color3[multiply]
-    style NG_tiledimage_color3_realworldtilesizeINT fill:#0CF, color:#111
-    NG_tiledimage_color3_N_divtilesize_color3[divide] --".in1"--> NG_tiledimage_color3_N_multtilesize_color3[multiply]
-    NG_tiledimage_color3_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_color3_N_divtilesize_color3[divide]
-    style NG_tiledimage_color3_realworldimagesizeINT fill:#0CF, color:#111
-    NG_tiledimage_color3_N_sub_color3[subtract] --".in1"--> NG_tiledimage_color3_N_divtilesize_color3[divide]
-    NG_tiledimage_color3_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_color3_N_sub_color3[subtract]
-    style NG_tiledimage_color3_uvoffsetINT fill:#0CF, color:#111
-    NG_tiledimage_color3_N_mult_color3[multiply] --".in1"--> NG_tiledimage_color3_N_sub_color3[subtract]
-    NG_tiledimage_color3_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_color3_N_mult_color3[multiply]
-    style NG_tiledimage_color3_texcoordINT fill:#0CF, color:#111
-    NG_tiledimage_color3_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_color3_N_mult_color3[multiply]
-    style NG_tiledimage_color3_uvtilingINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_tiledimage_color3
+    NG_tiledimage_color3_N_mult_color3[N_mult_color3]
+    NG_tiledimage_color3_N_sub_color3[N_sub_color3]
+    NG_tiledimage_color3_N_divtilesize_color3[N_divtilesize_color3]
+    NG_tiledimage_color3_N_multtilesize_color3[N_multtilesize_color3]
+    NG_tiledimage_color3_N_img_color3[N_img_color3]
+    style NG_tiledimage_color3_out  fill:#0C0, color:#FFF
+    NG_tiledimage_color3_out([out])
+    style NG_tiledimage_color3_texcoord  fill:#09D, color:#FFF
+    NG_tiledimage_color3_texcoord([texcoord])
+    style NG_tiledimage_color3_uvtiling  fill:#09D, color:#FFF
+    NG_tiledimage_color3_uvtiling([uvtiling])
+    style NG_tiledimage_color3_uvoffset  fill:#09D, color:#FFF
+    NG_tiledimage_color3_uvoffset([uvoffset])
+    style NG_tiledimage_color3_realworldimagesize  fill:#09D, color:#FFF
+    NG_tiledimage_color3_realworldimagesize([realworldimagesize])
+    style NG_tiledimage_color3_realworldtilesize  fill:#09D, color:#FFF
+    NG_tiledimage_color3_realworldtilesize([realworldtilesize])
+    style NG_tiledimage_color3_file  fill:#09D, color:#FFF
+    NG_tiledimage_color3_file([file])
+    style NG_tiledimage_color3_default1  fill:#09D, color:#FFF
+    NG_tiledimage_color3_default1([default])
+    style NG_tiledimage_color3_filtertype  fill:#09D, color:#FFF
+    NG_tiledimage_color3_filtertype([filtertype])
+    style NG_tiledimage_color3_framerange  fill:#09D, color:#FFF
+    NG_tiledimage_color3_framerange([framerange])
+    style NG_tiledimage_color3_frameoffset  fill:#09D, color:#FFF
+    NG_tiledimage_color3_frameoffset([frameoffset])
+    style NG_tiledimage_color3_frameendaction  fill:#09D, color:#FFF
+    NG_tiledimage_color3_frameendaction([frameendaction])
+    end
+    NG_tiledimage_color3_texcoord --"in1"--> NG_tiledimage_color3_N_mult_color3
+    NG_tiledimage_color3_uvtiling --"in2"--> NG_tiledimage_color3_N_mult_color3
+    NG_tiledimage_color3_N_mult_color3 --"in1"--> NG_tiledimage_color3_N_sub_color3
+    NG_tiledimage_color3_uvoffset --"in2"--> NG_tiledimage_color3_N_sub_color3
+    NG_tiledimage_color3_N_sub_color3 --"in1"--> NG_tiledimage_color3_N_divtilesize_color3
+    NG_tiledimage_color3_realworldimagesize --"in2"--> NG_tiledimage_color3_N_divtilesize_color3
+    NG_tiledimage_color3_N_divtilesize_color3 --"in1"--> NG_tiledimage_color3_N_multtilesize_color3
+    NG_tiledimage_color3_realworldtilesize --"in2"--> NG_tiledimage_color3_N_multtilesize_color3
+    NG_tiledimage_color3_file --"file"--> NG_tiledimage_color3_N_img_color3
+    NG_tiledimage_color3_default1 --"default"--> NG_tiledimage_color3_N_img_color3
+    NG_tiledimage_color3_N_multtilesize_color3 --"texcoord"--> NG_tiledimage_color3_N_img_color3
+    NG_tiledimage_color3_filtertype --"filtertype"--> NG_tiledimage_color3_N_img_color3
+    NG_tiledimage_color3_framerange --"framerange"--> NG_tiledimage_color3_N_img_color3
+    NG_tiledimage_color3_frameoffset --"frameoffset"--> NG_tiledimage_color3_N_img_color3
+    NG_tiledimage_color3_frameendaction --"frameendaction"--> NG_tiledimage_color3_N_img_color3
+    NG_tiledimage_color3_N_img_color3 --> NG_tiledimage_color3_out
 
 
 </div></code></pre>
@@ -1749,36 +1785,54 @@ graph LR;
 <div id="ND_tiledimage_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_tiledimage_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_tiledimage_color4_N_img_color4[image] --> NG_tiledimage_color4_out([out])
-    style NG_tiledimage_color4_out fill:#0C0, color:#111
-    NG_tiledimage_color4_fileINT([file]) ==.file==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_fileINT fill:#0CF, color:#111
-    NG_tiledimage_color4_dfaultINT([default]) ==.default==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_dfaultINT fill:#0CF, color:#111
-    NG_tiledimage_color4_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_filtertypeINT fill:#0CF, color:#111
-    NG_tiledimage_color4_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_framerangeINT fill:#0CF, color:#111
-    NG_tiledimage_color4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_frameoffsetINT fill:#0CF, color:#111
-    NG_tiledimage_color4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_color4_N_img_color4[image]
-    style NG_tiledimage_color4_frameendactionINT fill:#0CF, color:#111
-    NG_tiledimage_color4_N_multtilesize_color4[multiply] --".texcoord"--> NG_tiledimage_color4_N_img_color4[image]
-    NG_tiledimage_color4_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_color4_N_multtilesize_color4[multiply]
-    style NG_tiledimage_color4_realworldtilesizeINT fill:#0CF, color:#111
-    NG_tiledimage_color4_N_divtilesize_color4[divide] --".in1"--> NG_tiledimage_color4_N_multtilesize_color4[multiply]
-    NG_tiledimage_color4_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_color4_N_divtilesize_color4[divide]
-    style NG_tiledimage_color4_realworldimagesizeINT fill:#0CF, color:#111
-    NG_tiledimage_color4_N_sub_color4[subtract] --".in1"--> NG_tiledimage_color4_N_divtilesize_color4[divide]
-    NG_tiledimage_color4_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_color4_N_sub_color4[subtract]
-    style NG_tiledimage_color4_uvoffsetINT fill:#0CF, color:#111
-    NG_tiledimage_color4_N_mult_color4[multiply] --".in1"--> NG_tiledimage_color4_N_sub_color4[subtract]
-    NG_tiledimage_color4_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_color4_N_mult_color4[multiply]
-    style NG_tiledimage_color4_texcoordINT fill:#0CF, color:#111
-    NG_tiledimage_color4_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_color4_N_mult_color4[multiply]
-    style NG_tiledimage_color4_uvtilingINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_tiledimage_color4
+    NG_tiledimage_color4_N_mult_color4[N_mult_color4]
+    NG_tiledimage_color4_N_sub_color4[N_sub_color4]
+    NG_tiledimage_color4_N_divtilesize_color4[N_divtilesize_color4]
+    NG_tiledimage_color4_N_multtilesize_color4[N_multtilesize_color4]
+    NG_tiledimage_color4_N_img_color4[N_img_color4]
+    style NG_tiledimage_color4_out  fill:#0C0, color:#FFF
+    NG_tiledimage_color4_out([out])
+    style NG_tiledimage_color4_texcoord  fill:#09D, color:#FFF
+    NG_tiledimage_color4_texcoord([texcoord])
+    style NG_tiledimage_color4_uvtiling  fill:#09D, color:#FFF
+    NG_tiledimage_color4_uvtiling([uvtiling])
+    style NG_tiledimage_color4_uvoffset  fill:#09D, color:#FFF
+    NG_tiledimage_color4_uvoffset([uvoffset])
+    style NG_tiledimage_color4_realworldimagesize  fill:#09D, color:#FFF
+    NG_tiledimage_color4_realworldimagesize([realworldimagesize])
+    style NG_tiledimage_color4_realworldtilesize  fill:#09D, color:#FFF
+    NG_tiledimage_color4_realworldtilesize([realworldtilesize])
+    style NG_tiledimage_color4_file  fill:#09D, color:#FFF
+    NG_tiledimage_color4_file([file])
+    style NG_tiledimage_color4_default1  fill:#09D, color:#FFF
+    NG_tiledimage_color4_default1([default])
+    style NG_tiledimage_color4_filtertype  fill:#09D, color:#FFF
+    NG_tiledimage_color4_filtertype([filtertype])
+    style NG_tiledimage_color4_framerange  fill:#09D, color:#FFF
+    NG_tiledimage_color4_framerange([framerange])
+    style NG_tiledimage_color4_frameoffset  fill:#09D, color:#FFF
+    NG_tiledimage_color4_frameoffset([frameoffset])
+    style NG_tiledimage_color4_frameendaction  fill:#09D, color:#FFF
+    NG_tiledimage_color4_frameendaction([frameendaction])
+    end
+    NG_tiledimage_color4_texcoord --"in1"--> NG_tiledimage_color4_N_mult_color4
+    NG_tiledimage_color4_uvtiling --"in2"--> NG_tiledimage_color4_N_mult_color4
+    NG_tiledimage_color4_N_mult_color4 --"in1"--> NG_tiledimage_color4_N_sub_color4
+    NG_tiledimage_color4_uvoffset --"in2"--> NG_tiledimage_color4_N_sub_color4
+    NG_tiledimage_color4_N_sub_color4 --"in1"--> NG_tiledimage_color4_N_divtilesize_color4
+    NG_tiledimage_color4_realworldimagesize --"in2"--> NG_tiledimage_color4_N_divtilesize_color4
+    NG_tiledimage_color4_N_divtilesize_color4 --"in1"--> NG_tiledimage_color4_N_multtilesize_color4
+    NG_tiledimage_color4_realworldtilesize --"in2"--> NG_tiledimage_color4_N_multtilesize_color4
+    NG_tiledimage_color4_file --"file"--> NG_tiledimage_color4_N_img_color4
+    NG_tiledimage_color4_default1 --"default"--> NG_tiledimage_color4_N_img_color4
+    NG_tiledimage_color4_N_multtilesize_color4 --"texcoord"--> NG_tiledimage_color4_N_img_color4
+    NG_tiledimage_color4_filtertype --"filtertype"--> NG_tiledimage_color4_N_img_color4
+    NG_tiledimage_color4_framerange --"framerange"--> NG_tiledimage_color4_N_img_color4
+    NG_tiledimage_color4_frameoffset --"frameoffset"--> NG_tiledimage_color4_N_img_color4
+    NG_tiledimage_color4_frameendaction --"frameendaction"--> NG_tiledimage_color4_N_img_color4
+    NG_tiledimage_color4_N_img_color4 --> NG_tiledimage_color4_out
 
 
 </div></code></pre>
@@ -2136,36 +2190,54 @@ graph LR;
 <div id="ND_tiledimage_vector2_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_tiledimage_vector2_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_tiledimage_vector2_N_img_vector2[image] --> NG_tiledimage_vector2_out([out])
-    style NG_tiledimage_vector2_out fill:#0C0, color:#111
-    NG_tiledimage_vector2_fileINT([file]) ==.file==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_fileINT fill:#0CF, color:#111
-    NG_tiledimage_vector2_dfaultINT([default]) ==.default==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_dfaultINT fill:#0CF, color:#111
-    NG_tiledimage_vector2_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_filtertypeINT fill:#0CF, color:#111
-    NG_tiledimage_vector2_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_framerangeINT fill:#0CF, color:#111
-    NG_tiledimage_vector2_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_frameoffsetINT fill:#0CF, color:#111
-    NG_tiledimage_vector2_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_vector2_N_img_vector2[image]
-    style NG_tiledimage_vector2_frameendactionINT fill:#0CF, color:#111
-    NG_tiledimage_vector2_N_multtilesize_vector2[multiply] --".texcoord"--> NG_tiledimage_vector2_N_img_vector2[image]
-    NG_tiledimage_vector2_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_vector2_N_multtilesize_vector2[multiply]
-    style NG_tiledimage_vector2_realworldtilesizeINT fill:#0CF, color:#111
-    NG_tiledimage_vector2_N_divtilesize_vector2[divide] --".in1"--> NG_tiledimage_vector2_N_multtilesize_vector2[multiply]
-    NG_tiledimage_vector2_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_vector2_N_divtilesize_vector2[divide]
-    style NG_tiledimage_vector2_realworldimagesizeINT fill:#0CF, color:#111
-    NG_tiledimage_vector2_N_sub_vector2[subtract] --".in1"--> NG_tiledimage_vector2_N_divtilesize_vector2[divide]
-    NG_tiledimage_vector2_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_vector2_N_sub_vector2[subtract]
-    style NG_tiledimage_vector2_uvoffsetINT fill:#0CF, color:#111
-    NG_tiledimage_vector2_N_mult_vector2[multiply] --".in1"--> NG_tiledimage_vector2_N_sub_vector2[subtract]
-    NG_tiledimage_vector2_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_vector2_N_mult_vector2[multiply]
-    style NG_tiledimage_vector2_texcoordINT fill:#0CF, color:#111
-    NG_tiledimage_vector2_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_vector2_N_mult_vector2[multiply]
-    style NG_tiledimage_vector2_uvtilingINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_tiledimage_vector2
+    NG_tiledimage_vector2_N_mult_vector2[N_mult_vector2]
+    NG_tiledimage_vector2_N_sub_vector2[N_sub_vector2]
+    NG_tiledimage_vector2_N_divtilesize_vector2[N_divtilesize_vector2]
+    NG_tiledimage_vector2_N_multtilesize_vector2[N_multtilesize_vector2]
+    NG_tiledimage_vector2_N_img_vector2[N_img_vector2]
+    style NG_tiledimage_vector2_out  fill:#0C0, color:#FFF
+    NG_tiledimage_vector2_out([out])
+    style NG_tiledimage_vector2_texcoord  fill:#09D, color:#FFF
+    NG_tiledimage_vector2_texcoord([texcoord])
+    style NG_tiledimage_vector2_uvtiling  fill:#09D, color:#FFF
+    NG_tiledimage_vector2_uvtiling([uvtiling])
+    style NG_tiledimage_vector2_uvoffset  fill:#09D, color:#FFF
+    NG_tiledimage_vector2_uvoffset([uvoffset])
+    style NG_tiledimage_vector2_realworldimagesize  fill:#09D, color:#FFF
+    NG_tiledimage_vector2_realworldimagesize([realworldimagesize])
+    style NG_tiledimage_vector2_realworldtilesize  fill:#09D, color:#FFF
+    NG_tiledimage_vector2_realworldtilesize([realworldtilesize])
+    style NG_tiledimage_vector2_file  fill:#09D, color:#FFF
+    NG_tiledimage_vector2_file([file])
+    style NG_tiledimage_vector2_default1  fill:#09D, color:#FFF
+    NG_tiledimage_vector2_default1([default])
+    style NG_tiledimage_vector2_filtertype  fill:#09D, color:#FFF
+    NG_tiledimage_vector2_filtertype([filtertype])
+    style NG_tiledimage_vector2_framerange  fill:#09D, color:#FFF
+    NG_tiledimage_vector2_framerange([framerange])
+    style NG_tiledimage_vector2_frameoffset  fill:#09D, color:#FFF
+    NG_tiledimage_vector2_frameoffset([frameoffset])
+    style NG_tiledimage_vector2_frameendaction  fill:#09D, color:#FFF
+    NG_tiledimage_vector2_frameendaction([frameendaction])
+    end
+    NG_tiledimage_vector2_texcoord --"in1"--> NG_tiledimage_vector2_N_mult_vector2
+    NG_tiledimage_vector2_uvtiling --"in2"--> NG_tiledimage_vector2_N_mult_vector2
+    NG_tiledimage_vector2_N_mult_vector2 --"in1"--> NG_tiledimage_vector2_N_sub_vector2
+    NG_tiledimage_vector2_uvoffset --"in2"--> NG_tiledimage_vector2_N_sub_vector2
+    NG_tiledimage_vector2_N_sub_vector2 --"in1"--> NG_tiledimage_vector2_N_divtilesize_vector2
+    NG_tiledimage_vector2_realworldimagesize --"in2"--> NG_tiledimage_vector2_N_divtilesize_vector2
+    NG_tiledimage_vector2_N_divtilesize_vector2 --"in1"--> NG_tiledimage_vector2_N_multtilesize_vector2
+    NG_tiledimage_vector2_realworldtilesize --"in2"--> NG_tiledimage_vector2_N_multtilesize_vector2
+    NG_tiledimage_vector2_file --"file"--> NG_tiledimage_vector2_N_img_vector2
+    NG_tiledimage_vector2_default1 --"default"--> NG_tiledimage_vector2_N_img_vector2
+    NG_tiledimage_vector2_N_multtilesize_vector2 --"texcoord"--> NG_tiledimage_vector2_N_img_vector2
+    NG_tiledimage_vector2_filtertype --"filtertype"--> NG_tiledimage_vector2_N_img_vector2
+    NG_tiledimage_vector2_framerange --"framerange"--> NG_tiledimage_vector2_N_img_vector2
+    NG_tiledimage_vector2_frameoffset --"frameoffset"--> NG_tiledimage_vector2_N_img_vector2
+    NG_tiledimage_vector2_frameendaction --"frameendaction"--> NG_tiledimage_vector2_N_img_vector2
+    NG_tiledimage_vector2_N_img_vector2 --> NG_tiledimage_vector2_out
 
 
 </div></code></pre>
@@ -2529,36 +2601,54 @@ graph LR;
 <div id="ND_tiledimage_vector3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_tiledimage_vector3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_tiledimage_vector3_N_img_vector3[image] --> NG_tiledimage_vector3_out([out])
-    style NG_tiledimage_vector3_out fill:#0C0, color:#111
-    NG_tiledimage_vector3_fileINT([file]) ==.file==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_fileINT fill:#0CF, color:#111
-    NG_tiledimage_vector3_dfaultINT([default]) ==.default==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_dfaultINT fill:#0CF, color:#111
-    NG_tiledimage_vector3_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_filtertypeINT fill:#0CF, color:#111
-    NG_tiledimage_vector3_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_framerangeINT fill:#0CF, color:#111
-    NG_tiledimage_vector3_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_frameoffsetINT fill:#0CF, color:#111
-    NG_tiledimage_vector3_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_vector3_N_img_vector3[image]
-    style NG_tiledimage_vector3_frameendactionINT fill:#0CF, color:#111
-    NG_tiledimage_vector3_N_multtilesize_vector3[multiply] --".texcoord"--> NG_tiledimage_vector3_N_img_vector3[image]
-    NG_tiledimage_vector3_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_vector3_N_multtilesize_vector3[multiply]
-    style NG_tiledimage_vector3_realworldtilesizeINT fill:#0CF, color:#111
-    NG_tiledimage_vector3_N_divtilesize_vector3[divide] --".in1"--> NG_tiledimage_vector3_N_multtilesize_vector3[multiply]
-    NG_tiledimage_vector3_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_vector3_N_divtilesize_vector3[divide]
-    style NG_tiledimage_vector3_realworldimagesizeINT fill:#0CF, color:#111
-    NG_tiledimage_vector3_N_sub_vector3[subtract] --".in1"--> NG_tiledimage_vector3_N_divtilesize_vector3[divide]
-    NG_tiledimage_vector3_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_vector3_N_sub_vector3[subtract]
-    style NG_tiledimage_vector3_uvoffsetINT fill:#0CF, color:#111
-    NG_tiledimage_vector3_N_mult_vector3[multiply] --".in1"--> NG_tiledimage_vector3_N_sub_vector3[subtract]
-    NG_tiledimage_vector3_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_vector3_N_mult_vector3[multiply]
-    style NG_tiledimage_vector3_texcoordINT fill:#0CF, color:#111
-    NG_tiledimage_vector3_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_vector3_N_mult_vector3[multiply]
-    style NG_tiledimage_vector3_uvtilingINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_tiledimage_vector3
+    NG_tiledimage_vector3_N_mult_vector3[N_mult_vector3]
+    NG_tiledimage_vector3_N_sub_vector3[N_sub_vector3]
+    NG_tiledimage_vector3_N_divtilesize_vector3[N_divtilesize_vector3]
+    NG_tiledimage_vector3_N_multtilesize_vector3[N_multtilesize_vector3]
+    NG_tiledimage_vector3_N_img_vector3[N_img_vector3]
+    style NG_tiledimage_vector3_out  fill:#0C0, color:#FFF
+    NG_tiledimage_vector3_out([out])
+    style NG_tiledimage_vector3_texcoord  fill:#09D, color:#FFF
+    NG_tiledimage_vector3_texcoord([texcoord])
+    style NG_tiledimage_vector3_uvtiling  fill:#09D, color:#FFF
+    NG_tiledimage_vector3_uvtiling([uvtiling])
+    style NG_tiledimage_vector3_uvoffset  fill:#09D, color:#FFF
+    NG_tiledimage_vector3_uvoffset([uvoffset])
+    style NG_tiledimage_vector3_realworldimagesize  fill:#09D, color:#FFF
+    NG_tiledimage_vector3_realworldimagesize([realworldimagesize])
+    style NG_tiledimage_vector3_realworldtilesize  fill:#09D, color:#FFF
+    NG_tiledimage_vector3_realworldtilesize([realworldtilesize])
+    style NG_tiledimage_vector3_file  fill:#09D, color:#FFF
+    NG_tiledimage_vector3_file([file])
+    style NG_tiledimage_vector3_default1  fill:#09D, color:#FFF
+    NG_tiledimage_vector3_default1([default])
+    style NG_tiledimage_vector3_filtertype  fill:#09D, color:#FFF
+    NG_tiledimage_vector3_filtertype([filtertype])
+    style NG_tiledimage_vector3_framerange  fill:#09D, color:#FFF
+    NG_tiledimage_vector3_framerange([framerange])
+    style NG_tiledimage_vector3_frameoffset  fill:#09D, color:#FFF
+    NG_tiledimage_vector3_frameoffset([frameoffset])
+    style NG_tiledimage_vector3_frameendaction  fill:#09D, color:#FFF
+    NG_tiledimage_vector3_frameendaction([frameendaction])
+    end
+    NG_tiledimage_vector3_texcoord --"in1"--> NG_tiledimage_vector3_N_mult_vector3
+    NG_tiledimage_vector3_uvtiling --"in2"--> NG_tiledimage_vector3_N_mult_vector3
+    NG_tiledimage_vector3_N_mult_vector3 --"in1"--> NG_tiledimage_vector3_N_sub_vector3
+    NG_tiledimage_vector3_uvoffset --"in2"--> NG_tiledimage_vector3_N_sub_vector3
+    NG_tiledimage_vector3_N_sub_vector3 --"in1"--> NG_tiledimage_vector3_N_divtilesize_vector3
+    NG_tiledimage_vector3_realworldimagesize --"in2"--> NG_tiledimage_vector3_N_divtilesize_vector3
+    NG_tiledimage_vector3_N_divtilesize_vector3 --"in1"--> NG_tiledimage_vector3_N_multtilesize_vector3
+    NG_tiledimage_vector3_realworldtilesize --"in2"--> NG_tiledimage_vector3_N_multtilesize_vector3
+    NG_tiledimage_vector3_file --"file"--> NG_tiledimage_vector3_N_img_vector3
+    NG_tiledimage_vector3_default1 --"default"--> NG_tiledimage_vector3_N_img_vector3
+    NG_tiledimage_vector3_N_multtilesize_vector3 --"texcoord"--> NG_tiledimage_vector3_N_img_vector3
+    NG_tiledimage_vector3_filtertype --"filtertype"--> NG_tiledimage_vector3_N_img_vector3
+    NG_tiledimage_vector3_framerange --"framerange"--> NG_tiledimage_vector3_N_img_vector3
+    NG_tiledimage_vector3_frameoffset --"frameoffset"--> NG_tiledimage_vector3_N_img_vector3
+    NG_tiledimage_vector3_frameendaction --"frameendaction"--> NG_tiledimage_vector3_N_img_vector3
+    NG_tiledimage_vector3_N_img_vector3 --> NG_tiledimage_vector3_out
 
 
 </div></code></pre>
@@ -2928,36 +3018,54 @@ graph LR;
 <div id="ND_tiledimage_vector4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_tiledimage_vector4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_tiledimage_vector4_N_img_vector4[image] --> NG_tiledimage_vector4_out([out])
-    style NG_tiledimage_vector4_out fill:#0C0, color:#111
-    NG_tiledimage_vector4_fileINT([file]) ==.file==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_fileINT fill:#0CF, color:#111
-    NG_tiledimage_vector4_dfaultINT([default]) ==.default==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_dfaultINT fill:#0CF, color:#111
-    NG_tiledimage_vector4_filtertypeINT([filtertype]) ==.filtertype==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_filtertypeINT fill:#0CF, color:#111
-    NG_tiledimage_vector4_framerangeINT([framerange]) ==.framerange==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_framerangeINT fill:#0CF, color:#111
-    NG_tiledimage_vector4_frameoffsetINT([frameoffset]) ==.frameoffset==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_frameoffsetINT fill:#0CF, color:#111
-    NG_tiledimage_vector4_frameendactionINT([frameendaction]) ==.frameendaction==> NG_tiledimage_vector4_N_img_vector4[image]
-    style NG_tiledimage_vector4_frameendactionINT fill:#0CF, color:#111
-    NG_tiledimage_vector4_N_multtilesize_vector4[multiply] --".texcoord"--> NG_tiledimage_vector4_N_img_vector4[image]
-    NG_tiledimage_vector4_realworldtilesizeINT([realworldtilesize]) ==.in2==> NG_tiledimage_vector4_N_multtilesize_vector4[multiply]
-    style NG_tiledimage_vector4_realworldtilesizeINT fill:#0CF, color:#111
-    NG_tiledimage_vector4_N_divtilesize_vector4[divide] --".in1"--> NG_tiledimage_vector4_N_multtilesize_vector4[multiply]
-    NG_tiledimage_vector4_realworldimagesizeINT([realworldimagesize]) ==.in2==> NG_tiledimage_vector4_N_divtilesize_vector4[divide]
-    style NG_tiledimage_vector4_realworldimagesizeINT fill:#0CF, color:#111
-    NG_tiledimage_vector4_N_sub_vector4[subtract] --".in1"--> NG_tiledimage_vector4_N_divtilesize_vector4[divide]
-    NG_tiledimage_vector4_uvoffsetINT([uvoffset]) ==.in2==> NG_tiledimage_vector4_N_sub_vector4[subtract]
-    style NG_tiledimage_vector4_uvoffsetINT fill:#0CF, color:#111
-    NG_tiledimage_vector4_N_mult_vector4[multiply] --".in1"--> NG_tiledimage_vector4_N_sub_vector4[subtract]
-    NG_tiledimage_vector4_texcoordINT([texcoord]) ==.in1==> NG_tiledimage_vector4_N_mult_vector4[multiply]
-    style NG_tiledimage_vector4_texcoordINT fill:#0CF, color:#111
-    NG_tiledimage_vector4_uvtilingINT([uvtiling]) ==.in2==> NG_tiledimage_vector4_N_mult_vector4[multiply]
-    style NG_tiledimage_vector4_uvtilingINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_tiledimage_vector4
+    NG_tiledimage_vector4_N_mult_vector4[N_mult_vector4]
+    NG_tiledimage_vector4_N_sub_vector4[N_sub_vector4]
+    NG_tiledimage_vector4_N_divtilesize_vector4[N_divtilesize_vector4]
+    NG_tiledimage_vector4_N_multtilesize_vector4[N_multtilesize_vector4]
+    NG_tiledimage_vector4_N_img_vector4[N_img_vector4]
+    style NG_tiledimage_vector4_out  fill:#0C0, color:#FFF
+    NG_tiledimage_vector4_out([out])
+    style NG_tiledimage_vector4_texcoord  fill:#09D, color:#FFF
+    NG_tiledimage_vector4_texcoord([texcoord])
+    style NG_tiledimage_vector4_uvtiling  fill:#09D, color:#FFF
+    NG_tiledimage_vector4_uvtiling([uvtiling])
+    style NG_tiledimage_vector4_uvoffset  fill:#09D, color:#FFF
+    NG_tiledimage_vector4_uvoffset([uvoffset])
+    style NG_tiledimage_vector4_realworldimagesize  fill:#09D, color:#FFF
+    NG_tiledimage_vector4_realworldimagesize([realworldimagesize])
+    style NG_tiledimage_vector4_realworldtilesize  fill:#09D, color:#FFF
+    NG_tiledimage_vector4_realworldtilesize([realworldtilesize])
+    style NG_tiledimage_vector4_file  fill:#09D, color:#FFF
+    NG_tiledimage_vector4_file([file])
+    style NG_tiledimage_vector4_default1  fill:#09D, color:#FFF
+    NG_tiledimage_vector4_default1([default])
+    style NG_tiledimage_vector4_filtertype  fill:#09D, color:#FFF
+    NG_tiledimage_vector4_filtertype([filtertype])
+    style NG_tiledimage_vector4_framerange  fill:#09D, color:#FFF
+    NG_tiledimage_vector4_framerange([framerange])
+    style NG_tiledimage_vector4_frameoffset  fill:#09D, color:#FFF
+    NG_tiledimage_vector4_frameoffset([frameoffset])
+    style NG_tiledimage_vector4_frameendaction  fill:#09D, color:#FFF
+    NG_tiledimage_vector4_frameendaction([frameendaction])
+    end
+    NG_tiledimage_vector4_texcoord --"in1"--> NG_tiledimage_vector4_N_mult_vector4
+    NG_tiledimage_vector4_uvtiling --"in2"--> NG_tiledimage_vector4_N_mult_vector4
+    NG_tiledimage_vector4_N_mult_vector4 --"in1"--> NG_tiledimage_vector4_N_sub_vector4
+    NG_tiledimage_vector4_uvoffset --"in2"--> NG_tiledimage_vector4_N_sub_vector4
+    NG_tiledimage_vector4_N_sub_vector4 --"in1"--> NG_tiledimage_vector4_N_divtilesize_vector4
+    NG_tiledimage_vector4_realworldimagesize --"in2"--> NG_tiledimage_vector4_N_divtilesize_vector4
+    NG_tiledimage_vector4_N_divtilesize_vector4 --"in1"--> NG_tiledimage_vector4_N_multtilesize_vector4
+    NG_tiledimage_vector4_realworldtilesize --"in2"--> NG_tiledimage_vector4_N_multtilesize_vector4
+    NG_tiledimage_vector4_file --"file"--> NG_tiledimage_vector4_N_img_vector4
+    NG_tiledimage_vector4_default1 --"default"--> NG_tiledimage_vector4_N_img_vector4
+    NG_tiledimage_vector4_N_multtilesize_vector4 --"texcoord"--> NG_tiledimage_vector4_N_img_vector4
+    NG_tiledimage_vector4_filtertype --"filtertype"--> NG_tiledimage_vector4_N_img_vector4
+    NG_tiledimage_vector4_framerange --"framerange"--> NG_tiledimage_vector4_N_img_vector4
+    NG_tiledimage_vector4_frameoffset --"frameoffset"--> NG_tiledimage_vector4_N_img_vector4
+    NG_tiledimage_vector4_frameendaction --"frameendaction"--> NG_tiledimage_vector4_N_img_vector4
+    NG_tiledimage_vector4_N_img_vector4 --> NG_tiledimage_vector4_out
 
 
 </div></code></pre>

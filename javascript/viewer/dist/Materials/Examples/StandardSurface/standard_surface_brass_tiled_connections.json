@@ -1,0 +1,90 @@
+{
+  "doc": "Graph connections for: ..\\resources\\Materials\\Examples\\StandardSurface\\standard_surface_brass_tiled.mtlx",
+  "copyright": "Copyright 2024, NanMu Consulting. kwokcb@gmail.com",
+  "graph": {
+    "NG_brass1": [
+      [
+        "NG_brass1/out_color",
+        "output",
+        "color3",
+        ""
+      ],
+      [
+        "NG_brass1/out_roughness",
+        "output",
+        "float",
+        ""
+      ],
+      [
+        "NG_brass1/image_color",
+        "tiledimage",
+        "color3",
+        ""
+      ],
+      [
+        "NG_brass1/image_roughness",
+        "tiledimage",
+        "float",
+        ""
+      ]
+    ],
+    "": [
+      [
+        "SR_brass1",
+        "standard_surface",
+        "surfaceshader",
+        ""
+      ],
+      [
+        "Tiled_Brass",
+        "surfacematerial",
+        "material",
+        ""
+      ]
+    ]
+  },
+  "connections": [
+    [
+      "NG_brass1/image_color",
+      "",
+      "NG_brass1/out_color",
+      "",
+      "nodename"
+    ],
+    [
+      "NG_brass1/image_roughness",
+      "",
+      "NG_brass1/out_roughness",
+      "",
+      "nodename"
+    ],
+    [
+      "NG_brass1/out_roughness",
+      "",
+      "SR_brass1",
+      "specular_roughness",
+      "nodename"
+    ],
+    [
+      "NG_brass1/out_color",
+      "",
+      "SR_brass1",
+      "coat_color",
+      "nodename"
+    ],
+    [
+      "NG_brass1/out_roughness",
+      "",
+      "SR_brass1",
+      "coat_roughness",
+      "nodename"
+    ],
+    [
+      "SR_brass1",
+      "",
+      "Tiled_Brass",
+      "surfaceshader",
+      "nodename"
+    ]
+  ]
+}

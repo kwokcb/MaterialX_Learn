@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="LamaConductor" class="ms-2 mb-0">
 Category: LamaConductor
@@ -1314,88 +1314,117 @@ Category: LamaConductor
 <div id="ND_lama_conductor_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_lama_conductor_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMPL_lama_conductor_tinted_bsdf[multiply] --> IMPL_lama_conductor_out([out])
-    style IMPL_lama_conductor_out fill:#0C0, color:#111
-    IMPL_lama_conductor_tintINT([tint]) ==.in2==> IMPL_lama_conductor_tinted_bsdf[multiply]
-    style IMPL_lama_conductor_tintINT fill:#0CF, color:#111
-    IMPL_lama_conductor_conductor_bsdf[conductor_bsdf] --".in1"--> IMPL_lama_conductor_tinted_bsdf[multiply]
-    IMPL_lama_conductor_normalINT([normal]) ==.normal==> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
-    style IMPL_lama_conductor_normalINT fill:#0CF, color:#111
-    IMPL_lama_conductor_iridescenceThicknessINT([iridescenceThickness]) ==.thinfilm_thickness==> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
-    style IMPL_lama_conductor_iridescenceThicknessINT fill:#0CF, color:#111
-    IMPL_lama_conductor_relative_eta[divide] --".ior"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
-    IMPL_lama_conductor_eta_switch{switch} --".in1"--> IMPL_lama_conductor_relative_eta[divide]
-    IMPL_lama_conductor_fresnelModeINT([fresnelMode]) ==.which==> IMPL_lama_conductor_eta_switch[switch]
-    style IMPL_lama_conductor_fresnelModeINT fill:#0CF, color:#111
-    IMPL_lama_conductor_convert_ior[convert] --".in1"--> IMPL_lama_conductor_eta_switch{switch}
-    style IMPL_lama_conductor_eta_switch fill:#F80, color:#111
-    IMPL_lama_conductor_IORINT([IOR]) ==.in==> IMPL_lama_conductor_convert_ior[convert]
-    style IMPL_lama_conductor_IORINT fill:#0CF, color:#111
-    IMPL_lama_conductor_artistic_ior[artistic_ior] --> IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorior([ior])
-    style IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorior fill:#0C0, color:#111
-    IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorior --".in2"--> IMPL_lama_conductor_eta_switch{switch}
-    style IMPL_lama_conductor_eta_switch fill:#F80, color:#111
-    IMPL_lama_conductor_reflectivityINT([reflectivity]) ==.reflectivity==> IMPL_lama_conductor_artistic_ior[artistic_ior]
-    style IMPL_lama_conductor_reflectivityINT fill:#0CF, color:#111
-    IMPL_lama_conductor_edgeColorINT([edgeColor]) ==.edge_color==> IMPL_lama_conductor_artistic_ior[artistic_ior]
-    style IMPL_lama_conductor_edgeColorINT fill:#0CF, color:#111
-    IMPL_lama_conductor_exterior_ior_switch{ifgreater} --".in2"--> IMPL_lama_conductor_relative_eta[divide]
-    IMPL_lama_conductor_iridescenceIORINT([iridescenceIOR]) ==.in1==> IMPL_lama_conductor_exterior_ior_switch[ifgreater]
-    style IMPL_lama_conductor_iridescenceIORINT fill:#0CF, color:#111
-    IMPL_lama_conductor_exteriorIORINT([exteriorIOR]) ==.in2==> IMPL_lama_conductor_exterior_ior_switch[ifgreater]
-    style IMPL_lama_conductor_exteriorIORINT fill:#0CF, color:#111
-    IMPL_lama_conductor_iridescenceThicknessINT([iridescenceThickness]) ==.value1==> IMPL_lama_conductor_exterior_ior_switch[ifgreater]
-    style IMPL_lama_conductor_iridescenceThicknessINT fill:#0CF, color:#111
-    IMPL_lama_conductor_relative_kappa[divide] --".extinction"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
-    IMPL_lama_conductor_kappa_switch{switch} --".in1"--> IMPL_lama_conductor_relative_kappa[divide]
-    IMPL_lama_conductor_fresnelModeINT([fresnelMode]) ==.which==> IMPL_lama_conductor_kappa_switch[switch]
-    style IMPL_lama_conductor_fresnelModeINT fill:#0CF, color:#111
-    IMPL_lama_conductor_convert_extinction[convert] --".in1"--> IMPL_lama_conductor_kappa_switch{switch}
-    style IMPL_lama_conductor_kappa_switch fill:#F80, color:#111
-    IMPL_lama_conductor_extinctionINT([extinction]) ==.in==> IMPL_lama_conductor_convert_extinction[convert]
-    style IMPL_lama_conductor_extinctionINT fill:#0CF, color:#111
-    IMPL_lama_conductor_artistic_ior[artistic_ior] --> IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorextinction([extinction])
-    style IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorextinction fill:#0C0, color:#111
-    IMPL_lama_conductor_IMPL_lama_conductor_artistic_iorextinction --".in2"--> IMPL_lama_conductor_kappa_switch{switch}
-    style IMPL_lama_conductor_kappa_switch fill:#F80, color:#111
-    IMPL_lama_conductor_exterior_ior_switch{ifgreater} --".in2"--> IMPL_lama_conductor_relative_kappa[divide]
-    IMPL_lama_conductor_roughness_anisotropic_squared_clamped[max] --".roughness"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
-    IMPL_lama_conductor_roughness_anisotropic_squared[power] --".in1"--> IMPL_lama_conductor_roughness_anisotropic_squared_clamped[max]
-    IMPL_lama_conductor_roughness_linear[combine2] --".in1"--> IMPL_lama_conductor_roughness_anisotropic_squared[power]
-    IMPL_lama_conductor_roughnessINT([roughness]) ==.in1==> IMPL_lama_conductor_roughness_linear[combine2]
-    style IMPL_lama_conductor_roughnessINT fill:#0CF, color:#111
-    IMPL_lama_conductor_roughness_bitangent_clamped[clamp] --".in2"--> IMPL_lama_conductor_roughness_linear[combine2]
-    IMPL_lama_conductor_roughness_bitangent[add] --".in"--> IMPL_lama_conductor_roughness_bitangent_clamped[clamp]
-    IMPL_lama_conductor_roughnessINT([roughness]) ==.in1==> IMPL_lama_conductor_roughness_bitangent[add]
-    style IMPL_lama_conductor_roughnessINT fill:#0CF, color:#111
-    IMPL_lama_conductor_roughness_additional[multiply] --".in2"--> IMPL_lama_conductor_roughness_bitangent[add]
-    IMPL_lama_conductor_anisotropyINT([anisotropy]) ==.in1==> IMPL_lama_conductor_roughness_additional[multiply]
-    style IMPL_lama_conductor_anisotropyINT fill:#0CF, color:#111
-    IMPL_lama_conductor_delta{ifgreatereq} --".in2"--> IMPL_lama_conductor_roughness_additional[multiply]
-    IMPL_lama_conductor_roughnessINT([roughness]) ==.in2==> IMPL_lama_conductor_delta[ifgreatereq]
-    style IMPL_lama_conductor_roughnessINT fill:#0CF, color:#111
-    IMPL_lama_conductor_anisotropyINT([anisotropy]) ==.value1==> IMPL_lama_conductor_delta[ifgreatereq]
-    style IMPL_lama_conductor_anisotropyINT fill:#0CF, color:#111
-    IMPL_lama_conductor_roughness_inverse[subtract] --".in1"--> IMPL_lama_conductor_delta{ifgreatereq}
-    style IMPL_lama_conductor_delta fill:#F80, color:#111
-    IMPL_lama_conductor_roughnessINT([roughness]) ==.in2==> IMPL_lama_conductor_roughness_inverse[subtract]
-    style IMPL_lama_conductor_roughnessINT fill:#0CF, color:#111
-    IMPL_lama_conductor_tangent_rotate_normalize[normalize] --".tangent"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
-    IMPL_lama_conductor_tangent_rotate[rotate3d] --".in"--> IMPL_lama_conductor_tangent_rotate_normalize[normalize]
-    IMPL_lama_conductor_anisotropyDirectionINT([anisotropyDirection]) ==.in==> IMPL_lama_conductor_tangent_rotate[rotate3d]
-    style IMPL_lama_conductor_anisotropyDirectionINT fill:#0CF, color:#111
-    IMPL_lama_conductor_normalINT([normal]) ==.axis==> IMPL_lama_conductor_tangent_rotate[rotate3d]
-    style IMPL_lama_conductor_normalINT fill:#0CF, color:#111
-    IMPL_lama_conductor_tangent_rotate_degree[multiply] --".amount"--> IMPL_lama_conductor_tangent_rotate[rotate3d]
-    IMPL_lama_conductor_anisotropyRotationINT([anisotropyRotation]) ==.in1==> IMPL_lama_conductor_tangent_rotate_degree[multiply]
-    style IMPL_lama_conductor_anisotropyRotationINT fill:#0CF, color:#111
-    IMPL_lama_conductor_iridescence_relative_ior[divide] --".thinfilm_ior"--> IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
-    IMPL_lama_conductor_iridescenceIORINT([iridescenceIOR]) ==.in1==> IMPL_lama_conductor_iridescence_relative_ior[divide]
-    style IMPL_lama_conductor_iridescenceIORINT fill:#0CF, color:#111
-    IMPL_lama_conductor_exteriorIORINT([exteriorIOR]) ==.in2==> IMPL_lama_conductor_iridescence_relative_ior[divide]
-    style IMPL_lama_conductor_exteriorIORINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMPL_lama_conductor
+    IMPL_lama_conductor_exterior_ior_switch[exterior_ior_switch]
+    IMPL_lama_conductor_artistic_ior[artistic_ior]
+    IMPL_lama_conductor_convert_ior[convert_ior]
+    IMPL_lama_conductor_convert_extinction[convert_extinction]
+    style IMPL_lama_conductor_eta_switch  fill:#C72, color:#FFF
+    IMPL_lama_conductor_eta_switch{eta_switch}
+    style IMPL_lama_conductor_kappa_switch  fill:#C72, color:#FFF
+    IMPL_lama_conductor_kappa_switch{kappa_switch}
+    IMPL_lama_conductor_relative_eta[relative_eta]
+    IMPL_lama_conductor_relative_kappa[relative_kappa]
+    IMPL_lama_conductor_roughness_inverse[roughness_inverse]
+    style IMPL_lama_conductor_delta  fill:#C72, color:#FFF
+    IMPL_lama_conductor_delta{delta}
+    IMPL_lama_conductor_roughness_additional[roughness_additional]
+    IMPL_lama_conductor_roughness_bitangent[roughness_bitangent]
+    IMPL_lama_conductor_roughness_bitangent_clamped[roughness_bitangent_clamped]
+    IMPL_lama_conductor_roughness_linear[roughness_linear]
+    IMPL_lama_conductor_roughness_anisotropic_squared[roughness_anisotropic_squared]
+    IMPL_lama_conductor_roughness_anisotropic_squared_clamped[roughness_anisotropic_squared_clamped]
+    IMPL_lama_conductor_tangent_rotate_degree[tangent_rotate_degree]
+    IMPL_lama_conductor_tangent_rotate[tangent_rotate]
+    IMPL_lama_conductor_tangent_rotate_normalize[tangent_rotate_normalize]
+    IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
+    IMPL_lama_conductor_iridescence_relative_ior[iridescence_relative_ior]
+    IMPL_lama_conductor_thin_film_bsdf[thin_film_bsdf]
+    IMPL_lama_conductor_thin_film_conductor_bsdf[thin_film_conductor_bsdf]
+    IMPL_lama_conductor_tinted_bsdf[tinted_bsdf]
+    style IMPL_lama_conductor_out  fill:#0C0, color:#FFF
+    IMPL_lama_conductor_out([out])
+    style IMPL_lama_conductor_iridescenceIOR  fill:#09D, color:#FFF
+    IMPL_lama_conductor_iridescenceIOR([iridescenceIOR])
+    style IMPL_lama_conductor_exteriorIOR  fill:#09D, color:#FFF
+    IMPL_lama_conductor_exteriorIOR([exteriorIOR])
+    style IMPL_lama_conductor_iridescenceThickness  fill:#09D, color:#FFF
+    IMPL_lama_conductor_iridescenceThickness([iridescenceThickness])
+    style IMPL_lama_conductor_reflectivity  fill:#09D, color:#FFF
+    IMPL_lama_conductor_reflectivity([reflectivity])
+    style IMPL_lama_conductor_edgeColor  fill:#09D, color:#FFF
+    IMPL_lama_conductor_edgeColor([edgeColor])
+    style IMPL_lama_conductor_IOR  fill:#09D, color:#FFF
+    IMPL_lama_conductor_IOR([IOR])
+    style IMPL_lama_conductor_extinction  fill:#09D, color:#FFF
+    IMPL_lama_conductor_extinction([extinction])
+    style IMPL_lama_conductor_fresnelMode  fill:#09D, color:#FFF
+    IMPL_lama_conductor_fresnelMode([fresnelMode])
+    style IMPL_lama_conductor_roughness  fill:#09D, color:#FFF
+    IMPL_lama_conductor_roughness([roughness])
+    style IMPL_lama_conductor_anisotropy  fill:#09D, color:#FFF
+    IMPL_lama_conductor_anisotropy([anisotropy])
+    style IMPL_lama_conductor_anisotropyRotation  fill:#09D, color:#FFF
+    IMPL_lama_conductor_anisotropyRotation([anisotropyRotation])
+    style IMPL_lama_conductor_anisotropyDirection  fill:#09D, color:#FFF
+    IMPL_lama_conductor_anisotropyDirection([anisotropyDirection])
+    style IMPL_lama_conductor_normal  fill:#09D, color:#FFF
+    IMPL_lama_conductor_normal([normal])
+    style IMPL_lama_conductor_tint  fill:#09D, color:#FFF
+    IMPL_lama_conductor_tint([tint])
+    end
+    IMPL_lama_conductor_iridescenceIOR --"in1"--> IMPL_lama_conductor_exterior_ior_switch
+    IMPL_lama_conductor_exteriorIOR --"in2"--> IMPL_lama_conductor_exterior_ior_switch
+    IMPL_lama_conductor_iridescenceThickness --"value1"--> IMPL_lama_conductor_exterior_ior_switch
+    IMPL_lama_conductor_reflectivity --"reflectivity"--> IMPL_lama_conductor_artistic_ior
+    IMPL_lama_conductor_edgeColor --"edge_color"--> IMPL_lama_conductor_artistic_ior
+    IMPL_lama_conductor_IOR --"in"--> IMPL_lama_conductor_convert_ior
+    IMPL_lama_conductor_extinction --"in"--> IMPL_lama_conductor_convert_extinction
+    IMPL_lama_conductor_convert_ior --"in1"--> IMPL_lama_conductor_eta_switch
+    IMPL_lama_conductor_artistic_ior --"ior-->in2"--> IMPL_lama_conductor_eta_switch
+    IMPL_lama_conductor_fresnelMode --"which"--> IMPL_lama_conductor_eta_switch
+    IMPL_lama_conductor_convert_extinction --"in1"--> IMPL_lama_conductor_kappa_switch
+    IMPL_lama_conductor_artistic_ior --"extinction-->in2"--> IMPL_lama_conductor_kappa_switch
+    IMPL_lama_conductor_fresnelMode --"which"--> IMPL_lama_conductor_kappa_switch
+    IMPL_lama_conductor_eta_switch --"in1"--> IMPL_lama_conductor_relative_eta
+    IMPL_lama_conductor_exterior_ior_switch --"in2"--> IMPL_lama_conductor_relative_eta
+    IMPL_lama_conductor_kappa_switch --"in1"--> IMPL_lama_conductor_relative_kappa
+    IMPL_lama_conductor_exterior_ior_switch --"in2"--> IMPL_lama_conductor_relative_kappa
+    IMPL_lama_conductor_roughness --"in2"--> IMPL_lama_conductor_roughness_inverse
+    IMPL_lama_conductor_roughness_inverse --"in1"--> IMPL_lama_conductor_delta
+    IMPL_lama_conductor_roughness --"in2"--> IMPL_lama_conductor_delta
+    IMPL_lama_conductor_anisotropy --"value1"--> IMPL_lama_conductor_delta
+    IMPL_lama_conductor_anisotropy --"in1"--> IMPL_lama_conductor_roughness_additional
+    IMPL_lama_conductor_delta --"in2"--> IMPL_lama_conductor_roughness_additional
+    IMPL_lama_conductor_roughness --"in1"--> IMPL_lama_conductor_roughness_bitangent
+    IMPL_lama_conductor_roughness_additional --"in2"--> IMPL_lama_conductor_roughness_bitangent
+    IMPL_lama_conductor_roughness_bitangent --"in"--> IMPL_lama_conductor_roughness_bitangent_clamped
+    IMPL_lama_conductor_roughness --"in1"--> IMPL_lama_conductor_roughness_linear
+    IMPL_lama_conductor_roughness_bitangent_clamped --"in2"--> IMPL_lama_conductor_roughness_linear
+    IMPL_lama_conductor_roughness_linear --"in1"--> IMPL_lama_conductor_roughness_anisotropic_squared
+    IMPL_lama_conductor_roughness_anisotropic_squared --"in1"--> IMPL_lama_conductor_roughness_anisotropic_squared_clamped
+    IMPL_lama_conductor_anisotropyRotation --"in1"--> IMPL_lama_conductor_tangent_rotate_degree
+    IMPL_lama_conductor_anisotropyDirection --"in"--> IMPL_lama_conductor_tangent_rotate
+    IMPL_lama_conductor_tangent_rotate_degree --"amount"--> IMPL_lama_conductor_tangent_rotate
+    IMPL_lama_conductor_normal --"axis"--> IMPL_lama_conductor_tangent_rotate
+    IMPL_lama_conductor_tangent_rotate --"in"--> IMPL_lama_conductor_tangent_rotate_normalize
+    IMPL_lama_conductor_relative_eta --"ior"--> IMPL_lama_conductor_conductor_bsdf
+    IMPL_lama_conductor_relative_kappa --"extinction"--> IMPL_lama_conductor_conductor_bsdf
+    IMPL_lama_conductor_roughness_anisotropic_squared_clamped --"roughness"--> IMPL_lama_conductor_conductor_bsdf
+    IMPL_lama_conductor_normal --"normal"--> IMPL_lama_conductor_conductor_bsdf
+    IMPL_lama_conductor_tangent_rotate_normalize --"tangent"--> IMPL_lama_conductor_conductor_bsdf
+    IMPL_lama_conductor_iridescenceThickness --"thinfilm_thickness"--> IMPL_lama_conductor_conductor_bsdf
+    IMPL_lama_conductor_iridescence_relative_ior --"thinfilm_ior"--> IMPL_lama_conductor_conductor_bsdf
+    IMPL_lama_conductor_iridescenceIOR --"in1"--> IMPL_lama_conductor_iridescence_relative_ior
+    IMPL_lama_conductor_exteriorIOR --"in2"--> IMPL_lama_conductor_iridescence_relative_ior
+    IMPL_lama_conductor_iridescenceThickness --"thickness"--> IMPL_lama_conductor_thin_film_bsdf
+    IMPL_lama_conductor_iridescence_relative_ior --"ior"--> IMPL_lama_conductor_thin_film_bsdf
+    IMPL_lama_conductor_thin_film_bsdf --"top"--> IMPL_lama_conductor_thin_film_conductor_bsdf
+    IMPL_lama_conductor_conductor_bsdf --"base"--> IMPL_lama_conductor_thin_film_conductor_bsdf
+    IMPL_lama_conductor_conductor_bsdf --"in1"--> IMPL_lama_conductor_tinted_bsdf
+    IMPL_lama_conductor_tint --"in2"--> IMPL_lama_conductor_tinted_bsdf
+    IMPL_lama_conductor_tinted_bsdf --> IMPL_lama_conductor_out
 
 
 </div></code></pre>

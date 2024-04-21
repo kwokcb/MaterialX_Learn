@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="gltf_image" class="ms-2 mb-0">
 Category: gltf_image
@@ -985,39 +985,59 @@ Category: gltf_image
 <div id="ND_gltf_image_color3_color3_1_0_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_gltf_image_color3_color3_1_0_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_NG_gltf_image_color3_color3_1_0_scale_image[multiply] --> NG_NG_gltf_image_color3_color3_1_0_out([out])
-    style NG_NG_gltf_image_color3_color3_1_0_out fill:#0C0, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_factorINT([factor]) ==.in1==> NG_NG_gltf_image_color3_color3_1_0_scale_image[multiply]
-    style NG_NG_gltf_image_color3_color3_1_0_factorINT fill:#0CF, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_image[image] --".in2"--> NG_NG_gltf_image_color3_color3_1_0_scale_image[multiply]
-    NG_NG_gltf_image_color3_color3_1_0_fileINT([file]) ==.file==> NG_NG_gltf_image_color3_color3_1_0_image[image]
-    style NG_NG_gltf_image_color3_color3_1_0_fileINT fill:#0CF, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_dfaultINT([default]) ==.default==> NG_NG_gltf_image_color3_color3_1_0_image[image]
-    style NG_NG_gltf_image_color3_color3_1_0_dfaultINT fill:#0CF, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_NG_gltf_image_color3_color3_1_0_image[image]
-    style NG_NG_gltf_image_color3_color3_1_0_uaddressmodeINT fill:#0CF, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_NG_gltf_image_color3_color3_1_0_image[image]
-    style NG_NG_gltf_image_color3_color3_1_0_vaddressmodeINT fill:#0CF, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_NG_gltf_image_color3_color3_1_0_image[image]
-    style NG_NG_gltf_image_color3_color3_1_0_filtertypeINT fill:#0CF, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_place2d[place2d] --".texcoord"--> NG_NG_gltf_image_color3_color3_1_0_image[image]
-    NG_NG_gltf_image_color3_color3_1_0_texcoordINT([texcoord]) ==.texcoord==> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
-    style NG_NG_gltf_image_color3_color3_1_0_texcoordINT fill:#0CF, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_pivotINT([pivot]) ==.pivot==> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
-    style NG_NG_gltf_image_color3_color3_1_0_pivotINT fill:#0CF, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
-    style NG_NG_gltf_image_color3_color3_1_0_operationorderINT fill:#0CF, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_invert_scale[divide] --".scale"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
-    NG_NG_gltf_image_color3_color3_1_0_scaleINT([scale]) ==.in2==> NG_NG_gltf_image_color3_color3_1_0_invert_scale[divide]
-    style NG_NG_gltf_image_color3_color3_1_0_scaleINT fill:#0CF, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_negate_rotate[multiply] --".rotate"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
-    NG_NG_gltf_image_color3_color3_1_0_rotateINT([rotate]) ==.in1==> NG_NG_gltf_image_color3_color3_1_0_negate_rotate[multiply]
-    style NG_NG_gltf_image_color3_color3_1_0_rotateINT fill:#0CF, color:#111
-    NG_NG_gltf_image_color3_color3_1_0_negate_offset[multiply] --".offset"--> NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
-    NG_NG_gltf_image_color3_color3_1_0_offsetINT([offset]) ==.in1==> NG_NG_gltf_image_color3_color3_1_0_negate_offset[multiply]
-    style NG_NG_gltf_image_color3_color3_1_0_offsetINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_NG_gltf_image_color3_color3_1_0
+    NG_NG_gltf_image_color3_color3_1_0_image[image]
+    NG_NG_gltf_image_color3_color3_1_0_invert_scale[invert_scale]
+    NG_NG_gltf_image_color3_color3_1_0_negate_rotate[negate_rotate]
+    NG_NG_gltf_image_color3_color3_1_0_negate_offset[negate_offset]
+    NG_NG_gltf_image_color3_color3_1_0_place2d[place2d]
+    NG_NG_gltf_image_color3_color3_1_0_scale_image[scale_image]
+    style NG_NG_gltf_image_color3_color3_1_0_out  fill:#0C0, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_out([out])
+    style NG_NG_gltf_image_color3_color3_1_0_file  fill:#09D, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_file([file])
+    style NG_NG_gltf_image_color3_color3_1_0_default1  fill:#09D, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_default1([default])
+    style NG_NG_gltf_image_color3_color3_1_0_uaddressmode  fill:#09D, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_uaddressmode([uaddressmode])
+    style NG_NG_gltf_image_color3_color3_1_0_vaddressmode  fill:#09D, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_vaddressmode([vaddressmode])
+    style NG_NG_gltf_image_color3_color3_1_0_filtertype  fill:#09D, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_filtertype([filtertype])
+    style NG_NG_gltf_image_color3_color3_1_0_scale  fill:#09D, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_scale([scale])
+    style NG_NG_gltf_image_color3_color3_1_0_rotate  fill:#09D, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_rotate([rotate])
+    style NG_NG_gltf_image_color3_color3_1_0_offset  fill:#09D, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_offset([offset])
+    style NG_NG_gltf_image_color3_color3_1_0_texcoord  fill:#09D, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_texcoord([texcoord])
+    style NG_NG_gltf_image_color3_color3_1_0_pivot  fill:#09D, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_pivot([pivot])
+    style NG_NG_gltf_image_color3_color3_1_0_operationorder  fill:#09D, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_operationorder([operationorder])
+    style NG_NG_gltf_image_color3_color3_1_0_factor  fill:#09D, color:#FFF
+    NG_NG_gltf_image_color3_color3_1_0_factor([factor])
+    end
+    NG_NG_gltf_image_color3_color3_1_0_file --"file"--> NG_NG_gltf_image_color3_color3_1_0_image
+    NG_NG_gltf_image_color3_color3_1_0_default1 --"default"--> NG_NG_gltf_image_color3_color3_1_0_image
+    NG_NG_gltf_image_color3_color3_1_0_place2d --"texcoord"--> NG_NG_gltf_image_color3_color3_1_0_image
+    NG_NG_gltf_image_color3_color3_1_0_uaddressmode --"uaddressmode"--> NG_NG_gltf_image_color3_color3_1_0_image
+    NG_NG_gltf_image_color3_color3_1_0_vaddressmode --"vaddressmode"--> NG_NG_gltf_image_color3_color3_1_0_image
+    NG_NG_gltf_image_color3_color3_1_0_filtertype --"filtertype"--> NG_NG_gltf_image_color3_color3_1_0_image
+    NG_NG_gltf_image_color3_color3_1_0_scale --"in2"--> NG_NG_gltf_image_color3_color3_1_0_invert_scale
+    NG_NG_gltf_image_color3_color3_1_0_rotate --"in1"--> NG_NG_gltf_image_color3_color3_1_0_negate_rotate
+    NG_NG_gltf_image_color3_color3_1_0_offset --"in1"--> NG_NG_gltf_image_color3_color3_1_0_negate_offset
+    NG_NG_gltf_image_color3_color3_1_0_texcoord --"texcoord"--> NG_NG_gltf_image_color3_color3_1_0_place2d
+    NG_NG_gltf_image_color3_color3_1_0_pivot --"pivot"--> NG_NG_gltf_image_color3_color3_1_0_place2d
+    NG_NG_gltf_image_color3_color3_1_0_invert_scale --"scale"--> NG_NG_gltf_image_color3_color3_1_0_place2d
+    NG_NG_gltf_image_color3_color3_1_0_negate_rotate --"rotate"--> NG_NG_gltf_image_color3_color3_1_0_place2d
+    NG_NG_gltf_image_color3_color3_1_0_negate_offset --"offset"--> NG_NG_gltf_image_color3_color3_1_0_place2d
+    NG_NG_gltf_image_color3_color3_1_0_operationorder --"operationorder"--> NG_NG_gltf_image_color3_color3_1_0_place2d
+    NG_NG_gltf_image_color3_color3_1_0_factor --"in1"--> NG_NG_gltf_image_color3_color3_1_0_scale_image
+    NG_NG_gltf_image_color3_color3_1_0_image --"in2"--> NG_NG_gltf_image_color3_color3_1_0_scale_image
+    NG_NG_gltf_image_color3_color3_1_0_scale_image --> NG_NG_gltf_image_color3_color3_1_0_out
 
 
 </div></code></pre>
@@ -1417,39 +1437,59 @@ graph LR;
 <div id="ND_gltf_image_color4_color4_1_0_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_gltf_image_color4_color4_1_0_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_gltf_image_color4_color4_1_0_scale_image[multiply] --> NG_gltf_image_color4_color4_1_0_out([out])
-    style NG_gltf_image_color4_color4_1_0_out fill:#0C0, color:#111
-    NG_gltf_image_color4_color4_1_0_factorINT([factor]) ==.in1==> NG_gltf_image_color4_color4_1_0_scale_image[multiply]
-    style NG_gltf_image_color4_color4_1_0_factorINT fill:#0CF, color:#111
-    NG_gltf_image_color4_color4_1_0_image[image] --".in2"--> NG_gltf_image_color4_color4_1_0_scale_image[multiply]
-    NG_gltf_image_color4_color4_1_0_fileINT([file]) ==.file==> NG_gltf_image_color4_color4_1_0_image[image]
-    style NG_gltf_image_color4_color4_1_0_fileINT fill:#0CF, color:#111
-    NG_gltf_image_color4_color4_1_0_dfaultINT([default]) ==.default==> NG_gltf_image_color4_color4_1_0_image[image]
-    style NG_gltf_image_color4_color4_1_0_dfaultINT fill:#0CF, color:#111
-    NG_gltf_image_color4_color4_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_image_color4_color4_1_0_image[image]
-    style NG_gltf_image_color4_color4_1_0_uaddressmodeINT fill:#0CF, color:#111
-    NG_gltf_image_color4_color4_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_image_color4_color4_1_0_image[image]
-    style NG_gltf_image_color4_color4_1_0_vaddressmodeINT fill:#0CF, color:#111
-    NG_gltf_image_color4_color4_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_image_color4_color4_1_0_image[image]
-    style NG_gltf_image_color4_color4_1_0_filtertypeINT fill:#0CF, color:#111
-    NG_gltf_image_color4_color4_1_0_place2d[place2d] --".texcoord"--> NG_gltf_image_color4_color4_1_0_image[image]
-    NG_gltf_image_color4_color4_1_0_texcoordINT([texcoord]) ==.texcoord==> NG_gltf_image_color4_color4_1_0_place2d[place2d]
-    style NG_gltf_image_color4_color4_1_0_texcoordINT fill:#0CF, color:#111
-    NG_gltf_image_color4_color4_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_image_color4_color4_1_0_place2d[place2d]
-    style NG_gltf_image_color4_color4_1_0_pivotINT fill:#0CF, color:#111
-    NG_gltf_image_color4_color4_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_image_color4_color4_1_0_place2d[place2d]
-    style NG_gltf_image_color4_color4_1_0_operationorderINT fill:#0CF, color:#111
-    NG_gltf_image_color4_color4_1_0_invert_scale[divide] --".scale"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
-    NG_gltf_image_color4_color4_1_0_scaleINT([scale]) ==.in2==> NG_gltf_image_color4_color4_1_0_invert_scale[divide]
-    style NG_gltf_image_color4_color4_1_0_scaleINT fill:#0CF, color:#111
-    NG_gltf_image_color4_color4_1_0_negate_rotate[multiply] --".rotate"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
-    NG_gltf_image_color4_color4_1_0_rotateINT([rotate]) ==.in1==> NG_gltf_image_color4_color4_1_0_negate_rotate[multiply]
-    style NG_gltf_image_color4_color4_1_0_rotateINT fill:#0CF, color:#111
-    NG_gltf_image_color4_color4_1_0_negate_offset[multiply] --".offset"--> NG_gltf_image_color4_color4_1_0_place2d[place2d]
-    NG_gltf_image_color4_color4_1_0_offsetINT([offset]) ==.in1==> NG_gltf_image_color4_color4_1_0_negate_offset[multiply]
-    style NG_gltf_image_color4_color4_1_0_offsetINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_gltf_image_color4_color4_1_0
+    NG_gltf_image_color4_color4_1_0_image[image]
+    NG_gltf_image_color4_color4_1_0_invert_scale[invert_scale]
+    NG_gltf_image_color4_color4_1_0_negate_rotate[negate_rotate]
+    NG_gltf_image_color4_color4_1_0_negate_offset[negate_offset]
+    NG_gltf_image_color4_color4_1_0_place2d[place2d]
+    NG_gltf_image_color4_color4_1_0_scale_image[scale_image]
+    style NG_gltf_image_color4_color4_1_0_out  fill:#0C0, color:#FFF
+    NG_gltf_image_color4_color4_1_0_out([out])
+    style NG_gltf_image_color4_color4_1_0_file  fill:#09D, color:#FFF
+    NG_gltf_image_color4_color4_1_0_file([file])
+    style NG_gltf_image_color4_color4_1_0_default1  fill:#09D, color:#FFF
+    NG_gltf_image_color4_color4_1_0_default1([default])
+    style NG_gltf_image_color4_color4_1_0_uaddressmode  fill:#09D, color:#FFF
+    NG_gltf_image_color4_color4_1_0_uaddressmode([uaddressmode])
+    style NG_gltf_image_color4_color4_1_0_vaddressmode  fill:#09D, color:#FFF
+    NG_gltf_image_color4_color4_1_0_vaddressmode([vaddressmode])
+    style NG_gltf_image_color4_color4_1_0_filtertype  fill:#09D, color:#FFF
+    NG_gltf_image_color4_color4_1_0_filtertype([filtertype])
+    style NG_gltf_image_color4_color4_1_0_scale  fill:#09D, color:#FFF
+    NG_gltf_image_color4_color4_1_0_scale([scale])
+    style NG_gltf_image_color4_color4_1_0_rotate  fill:#09D, color:#FFF
+    NG_gltf_image_color4_color4_1_0_rotate([rotate])
+    style NG_gltf_image_color4_color4_1_0_offset  fill:#09D, color:#FFF
+    NG_gltf_image_color4_color4_1_0_offset([offset])
+    style NG_gltf_image_color4_color4_1_0_texcoord  fill:#09D, color:#FFF
+    NG_gltf_image_color4_color4_1_0_texcoord([texcoord])
+    style NG_gltf_image_color4_color4_1_0_pivot  fill:#09D, color:#FFF
+    NG_gltf_image_color4_color4_1_0_pivot([pivot])
+    style NG_gltf_image_color4_color4_1_0_operationorder  fill:#09D, color:#FFF
+    NG_gltf_image_color4_color4_1_0_operationorder([operationorder])
+    style NG_gltf_image_color4_color4_1_0_factor  fill:#09D, color:#FFF
+    NG_gltf_image_color4_color4_1_0_factor([factor])
+    end
+    NG_gltf_image_color4_color4_1_0_file --"file"--> NG_gltf_image_color4_color4_1_0_image
+    NG_gltf_image_color4_color4_1_0_default1 --"default"--> NG_gltf_image_color4_color4_1_0_image
+    NG_gltf_image_color4_color4_1_0_place2d --"texcoord"--> NG_gltf_image_color4_color4_1_0_image
+    NG_gltf_image_color4_color4_1_0_uaddressmode --"uaddressmode"--> NG_gltf_image_color4_color4_1_0_image
+    NG_gltf_image_color4_color4_1_0_vaddressmode --"vaddressmode"--> NG_gltf_image_color4_color4_1_0_image
+    NG_gltf_image_color4_color4_1_0_filtertype --"filtertype"--> NG_gltf_image_color4_color4_1_0_image
+    NG_gltf_image_color4_color4_1_0_scale --"in2"--> NG_gltf_image_color4_color4_1_0_invert_scale
+    NG_gltf_image_color4_color4_1_0_rotate --"in1"--> NG_gltf_image_color4_color4_1_0_negate_rotate
+    NG_gltf_image_color4_color4_1_0_offset --"in1"--> NG_gltf_image_color4_color4_1_0_negate_offset
+    NG_gltf_image_color4_color4_1_0_texcoord --"texcoord"--> NG_gltf_image_color4_color4_1_0_place2d
+    NG_gltf_image_color4_color4_1_0_pivot --"pivot"--> NG_gltf_image_color4_color4_1_0_place2d
+    NG_gltf_image_color4_color4_1_0_invert_scale --"scale"--> NG_gltf_image_color4_color4_1_0_place2d
+    NG_gltf_image_color4_color4_1_0_negate_rotate --"rotate"--> NG_gltf_image_color4_color4_1_0_place2d
+    NG_gltf_image_color4_color4_1_0_negate_offset --"offset"--> NG_gltf_image_color4_color4_1_0_place2d
+    NG_gltf_image_color4_color4_1_0_operationorder --"operationorder"--> NG_gltf_image_color4_color4_1_0_place2d
+    NG_gltf_image_color4_color4_1_0_factor --"in1"--> NG_gltf_image_color4_color4_1_0_scale_image
+    NG_gltf_image_color4_color4_1_0_image --"in2"--> NG_gltf_image_color4_color4_1_0_scale_image
+    NG_gltf_image_color4_color4_1_0_scale_image --> NG_gltf_image_color4_color4_1_0_out
 
 
 </div></code></pre>
@@ -1827,39 +1867,59 @@ graph LR;
 <div id="ND_gltf_image_float_float_1_0_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_gltf_image_float_float_1_0_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_gltf_image_float_float_1_0_scale_image[multiply] --> NG_gltf_image_float_float_1_0_out([out])
-    style NG_gltf_image_float_float_1_0_out fill:#0C0, color:#111
-    NG_gltf_image_float_float_1_0_factorINT([factor]) ==.in1==> NG_gltf_image_float_float_1_0_scale_image[multiply]
-    style NG_gltf_image_float_float_1_0_factorINT fill:#0CF, color:#111
-    NG_gltf_image_float_float_1_0_image[image] --".in2"--> NG_gltf_image_float_float_1_0_scale_image[multiply]
-    NG_gltf_image_float_float_1_0_fileINT([file]) ==.file==> NG_gltf_image_float_float_1_0_image[image]
-    style NG_gltf_image_float_float_1_0_fileINT fill:#0CF, color:#111
-    NG_gltf_image_float_float_1_0_dfaultINT([default]) ==.default==> NG_gltf_image_float_float_1_0_image[image]
-    style NG_gltf_image_float_float_1_0_dfaultINT fill:#0CF, color:#111
-    NG_gltf_image_float_float_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_image_float_float_1_0_image[image]
-    style NG_gltf_image_float_float_1_0_uaddressmodeINT fill:#0CF, color:#111
-    NG_gltf_image_float_float_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_image_float_float_1_0_image[image]
-    style NG_gltf_image_float_float_1_0_vaddressmodeINT fill:#0CF, color:#111
-    NG_gltf_image_float_float_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_image_float_float_1_0_image[image]
-    style NG_gltf_image_float_float_1_0_filtertypeINT fill:#0CF, color:#111
-    NG_gltf_image_float_float_1_0_place2d[place2d] --".texcoord"--> NG_gltf_image_float_float_1_0_image[image]
-    NG_gltf_image_float_float_1_0_texcoordINT([texcoord]) ==.texcoord==> NG_gltf_image_float_float_1_0_place2d[place2d]
-    style NG_gltf_image_float_float_1_0_texcoordINT fill:#0CF, color:#111
-    NG_gltf_image_float_float_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_image_float_float_1_0_place2d[place2d]
-    style NG_gltf_image_float_float_1_0_pivotINT fill:#0CF, color:#111
-    NG_gltf_image_float_float_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_image_float_float_1_0_place2d[place2d]
-    style NG_gltf_image_float_float_1_0_operationorderINT fill:#0CF, color:#111
-    NG_gltf_image_float_float_1_0_invert_scale[divide] --".scale"--> NG_gltf_image_float_float_1_0_place2d[place2d]
-    NG_gltf_image_float_float_1_0_scaleINT([scale]) ==.in2==> NG_gltf_image_float_float_1_0_invert_scale[divide]
-    style NG_gltf_image_float_float_1_0_scaleINT fill:#0CF, color:#111
-    NG_gltf_image_float_float_1_0_negate_rotate[multiply] --".rotate"--> NG_gltf_image_float_float_1_0_place2d[place2d]
-    NG_gltf_image_float_float_1_0_rotateINT([rotate]) ==.in1==> NG_gltf_image_float_float_1_0_negate_rotate[multiply]
-    style NG_gltf_image_float_float_1_0_rotateINT fill:#0CF, color:#111
-    NG_gltf_image_float_float_1_0_negate_offset[multiply] --".offset"--> NG_gltf_image_float_float_1_0_place2d[place2d]
-    NG_gltf_image_float_float_1_0_offsetINT([offset]) ==.in1==> NG_gltf_image_float_float_1_0_negate_offset[multiply]
-    style NG_gltf_image_float_float_1_0_offsetINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_gltf_image_float_float_1_0
+    NG_gltf_image_float_float_1_0_image[image]
+    NG_gltf_image_float_float_1_0_invert_scale[invert_scale]
+    NG_gltf_image_float_float_1_0_negate_rotate[negate_rotate]
+    NG_gltf_image_float_float_1_0_negate_offset[negate_offset]
+    NG_gltf_image_float_float_1_0_place2d[place2d]
+    NG_gltf_image_float_float_1_0_scale_image[scale_image]
+    style NG_gltf_image_float_float_1_0_out  fill:#0C0, color:#FFF
+    NG_gltf_image_float_float_1_0_out([out])
+    style NG_gltf_image_float_float_1_0_file  fill:#09D, color:#FFF
+    NG_gltf_image_float_float_1_0_file([file])
+    style NG_gltf_image_float_float_1_0_default1  fill:#09D, color:#FFF
+    NG_gltf_image_float_float_1_0_default1([default])
+    style NG_gltf_image_float_float_1_0_uaddressmode  fill:#09D, color:#FFF
+    NG_gltf_image_float_float_1_0_uaddressmode([uaddressmode])
+    style NG_gltf_image_float_float_1_0_vaddressmode  fill:#09D, color:#FFF
+    NG_gltf_image_float_float_1_0_vaddressmode([vaddressmode])
+    style NG_gltf_image_float_float_1_0_filtertype  fill:#09D, color:#FFF
+    NG_gltf_image_float_float_1_0_filtertype([filtertype])
+    style NG_gltf_image_float_float_1_0_scale  fill:#09D, color:#FFF
+    NG_gltf_image_float_float_1_0_scale([scale])
+    style NG_gltf_image_float_float_1_0_rotate  fill:#09D, color:#FFF
+    NG_gltf_image_float_float_1_0_rotate([rotate])
+    style NG_gltf_image_float_float_1_0_offset  fill:#09D, color:#FFF
+    NG_gltf_image_float_float_1_0_offset([offset])
+    style NG_gltf_image_float_float_1_0_texcoord  fill:#09D, color:#FFF
+    NG_gltf_image_float_float_1_0_texcoord([texcoord])
+    style NG_gltf_image_float_float_1_0_pivot  fill:#09D, color:#FFF
+    NG_gltf_image_float_float_1_0_pivot([pivot])
+    style NG_gltf_image_float_float_1_0_operationorder  fill:#09D, color:#FFF
+    NG_gltf_image_float_float_1_0_operationorder([operationorder])
+    style NG_gltf_image_float_float_1_0_factor  fill:#09D, color:#FFF
+    NG_gltf_image_float_float_1_0_factor([factor])
+    end
+    NG_gltf_image_float_float_1_0_file --"file"--> NG_gltf_image_float_float_1_0_image
+    NG_gltf_image_float_float_1_0_default1 --"default"--> NG_gltf_image_float_float_1_0_image
+    NG_gltf_image_float_float_1_0_place2d --"texcoord"--> NG_gltf_image_float_float_1_0_image
+    NG_gltf_image_float_float_1_0_uaddressmode --"uaddressmode"--> NG_gltf_image_float_float_1_0_image
+    NG_gltf_image_float_float_1_0_vaddressmode --"vaddressmode"--> NG_gltf_image_float_float_1_0_image
+    NG_gltf_image_float_float_1_0_filtertype --"filtertype"--> NG_gltf_image_float_float_1_0_image
+    NG_gltf_image_float_float_1_0_scale --"in2"--> NG_gltf_image_float_float_1_0_invert_scale
+    NG_gltf_image_float_float_1_0_rotate --"in1"--> NG_gltf_image_float_float_1_0_negate_rotate
+    NG_gltf_image_float_float_1_0_offset --"in1"--> NG_gltf_image_float_float_1_0_negate_offset
+    NG_gltf_image_float_float_1_0_texcoord --"texcoord"--> NG_gltf_image_float_float_1_0_place2d
+    NG_gltf_image_float_float_1_0_pivot --"pivot"--> NG_gltf_image_float_float_1_0_place2d
+    NG_gltf_image_float_float_1_0_invert_scale --"scale"--> NG_gltf_image_float_float_1_0_place2d
+    NG_gltf_image_float_float_1_0_negate_rotate --"rotate"--> NG_gltf_image_float_float_1_0_place2d
+    NG_gltf_image_float_float_1_0_negate_offset --"offset"--> NG_gltf_image_float_float_1_0_place2d
+    NG_gltf_image_float_float_1_0_operationorder --"operationorder"--> NG_gltf_image_float_float_1_0_place2d
+    NG_gltf_image_float_float_1_0_factor --"in1"--> NG_gltf_image_float_float_1_0_scale_image
+    NG_gltf_image_float_float_1_0_image --"in2"--> NG_gltf_image_float_float_1_0_scale_image
+    NG_gltf_image_float_float_1_0_scale_image --> NG_gltf_image_float_float_1_0_out
 
 
 </div></code></pre>
@@ -2222,36 +2282,54 @@ graph LR;
 <div id="ND_gltf_image_vector3_vector3_1_0_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_gltf_image_vector3_vector3_1_0_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_gltf_image_vector3_vector3_1_0_image[image] --> NG_gltf_image_vector3_vector3_1_0_out([out])
-    style NG_gltf_image_vector3_vector3_1_0_out fill:#0C0, color:#111
-    NG_gltf_image_vector3_vector3_1_0_fileINT([file]) ==.file==> NG_gltf_image_vector3_vector3_1_0_image[image]
-    style NG_gltf_image_vector3_vector3_1_0_fileINT fill:#0CF, color:#111
-    NG_gltf_image_vector3_vector3_1_0_dfaultINT([default]) ==.default==> NG_gltf_image_vector3_vector3_1_0_image[image]
-    style NG_gltf_image_vector3_vector3_1_0_dfaultINT fill:#0CF, color:#111
-    NG_gltf_image_vector3_vector3_1_0_uaddressmodeINT([uaddressmode]) ==.uaddressmode==> NG_gltf_image_vector3_vector3_1_0_image[image]
-    style NG_gltf_image_vector3_vector3_1_0_uaddressmodeINT fill:#0CF, color:#111
-    NG_gltf_image_vector3_vector3_1_0_vaddressmodeINT([vaddressmode]) ==.vaddressmode==> NG_gltf_image_vector3_vector3_1_0_image[image]
-    style NG_gltf_image_vector3_vector3_1_0_vaddressmodeINT fill:#0CF, color:#111
-    NG_gltf_image_vector3_vector3_1_0_filtertypeINT([filtertype]) ==.filtertype==> NG_gltf_image_vector3_vector3_1_0_image[image]
-    style NG_gltf_image_vector3_vector3_1_0_filtertypeINT fill:#0CF, color:#111
-    NG_gltf_image_vector3_vector3_1_0_place2d[place2d] --".texcoord"--> NG_gltf_image_vector3_vector3_1_0_image[image]
-    NG_gltf_image_vector3_vector3_1_0_texcoordINT([texcoord]) ==.texcoord==> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
-    style NG_gltf_image_vector3_vector3_1_0_texcoordINT fill:#0CF, color:#111
-    NG_gltf_image_vector3_vector3_1_0_pivotINT([pivot]) ==.pivot==> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
-    style NG_gltf_image_vector3_vector3_1_0_pivotINT fill:#0CF, color:#111
-    NG_gltf_image_vector3_vector3_1_0_operationorderINT([operationorder]) ==.operationorder==> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
-    style NG_gltf_image_vector3_vector3_1_0_operationorderINT fill:#0CF, color:#111
-    NG_gltf_image_vector3_vector3_1_0_invert_scale[divide] --".scale"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
-    NG_gltf_image_vector3_vector3_1_0_scaleINT([scale]) ==.in2==> NG_gltf_image_vector3_vector3_1_0_invert_scale[divide]
-    style NG_gltf_image_vector3_vector3_1_0_scaleINT fill:#0CF, color:#111
-    NG_gltf_image_vector3_vector3_1_0_negate_rotate[multiply] --".rotate"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
-    NG_gltf_image_vector3_vector3_1_0_rotateINT([rotate]) ==.in1==> NG_gltf_image_vector3_vector3_1_0_negate_rotate[multiply]
-    style NG_gltf_image_vector3_vector3_1_0_rotateINT fill:#0CF, color:#111
-    NG_gltf_image_vector3_vector3_1_0_negate_offset[multiply] --".offset"--> NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
-    NG_gltf_image_vector3_vector3_1_0_offsetINT([offset]) ==.in1==> NG_gltf_image_vector3_vector3_1_0_negate_offset[multiply]
-    style NG_gltf_image_vector3_vector3_1_0_offsetINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_gltf_image_vector3_vector3_1_0
+    NG_gltf_image_vector3_vector3_1_0_image[image]
+    NG_gltf_image_vector3_vector3_1_0_invert_scale[invert_scale]
+    NG_gltf_image_vector3_vector3_1_0_negate_rotate[negate_rotate]
+    NG_gltf_image_vector3_vector3_1_0_negate_offset[negate_offset]
+    NG_gltf_image_vector3_vector3_1_0_place2d[place2d]
+    style NG_gltf_image_vector3_vector3_1_0_out  fill:#0C0, color:#FFF
+    NG_gltf_image_vector3_vector3_1_0_out([out])
+    style NG_gltf_image_vector3_vector3_1_0_file  fill:#09D, color:#FFF
+    NG_gltf_image_vector3_vector3_1_0_file([file])
+    style NG_gltf_image_vector3_vector3_1_0_default1  fill:#09D, color:#FFF
+    NG_gltf_image_vector3_vector3_1_0_default1([default])
+    style NG_gltf_image_vector3_vector3_1_0_uaddressmode  fill:#09D, color:#FFF
+    NG_gltf_image_vector3_vector3_1_0_uaddressmode([uaddressmode])
+    style NG_gltf_image_vector3_vector3_1_0_vaddressmode  fill:#09D, color:#FFF
+    NG_gltf_image_vector3_vector3_1_0_vaddressmode([vaddressmode])
+    style NG_gltf_image_vector3_vector3_1_0_filtertype  fill:#09D, color:#FFF
+    NG_gltf_image_vector3_vector3_1_0_filtertype([filtertype])
+    style NG_gltf_image_vector3_vector3_1_0_scale  fill:#09D, color:#FFF
+    NG_gltf_image_vector3_vector3_1_0_scale([scale])
+    style NG_gltf_image_vector3_vector3_1_0_rotate  fill:#09D, color:#FFF
+    NG_gltf_image_vector3_vector3_1_0_rotate([rotate])
+    style NG_gltf_image_vector3_vector3_1_0_offset  fill:#09D, color:#FFF
+    NG_gltf_image_vector3_vector3_1_0_offset([offset])
+    style NG_gltf_image_vector3_vector3_1_0_texcoord  fill:#09D, color:#FFF
+    NG_gltf_image_vector3_vector3_1_0_texcoord([texcoord])
+    style NG_gltf_image_vector3_vector3_1_0_pivot  fill:#09D, color:#FFF
+    NG_gltf_image_vector3_vector3_1_0_pivot([pivot])
+    style NG_gltf_image_vector3_vector3_1_0_operationorder  fill:#09D, color:#FFF
+    NG_gltf_image_vector3_vector3_1_0_operationorder([operationorder])
+    end
+    NG_gltf_image_vector3_vector3_1_0_file --"file"--> NG_gltf_image_vector3_vector3_1_0_image
+    NG_gltf_image_vector3_vector3_1_0_default1 --"default"--> NG_gltf_image_vector3_vector3_1_0_image
+    NG_gltf_image_vector3_vector3_1_0_place2d --"texcoord"--> NG_gltf_image_vector3_vector3_1_0_image
+    NG_gltf_image_vector3_vector3_1_0_uaddressmode --"uaddressmode"--> NG_gltf_image_vector3_vector3_1_0_image
+    NG_gltf_image_vector3_vector3_1_0_vaddressmode --"vaddressmode"--> NG_gltf_image_vector3_vector3_1_0_image
+    NG_gltf_image_vector3_vector3_1_0_filtertype --"filtertype"--> NG_gltf_image_vector3_vector3_1_0_image
+    NG_gltf_image_vector3_vector3_1_0_scale --"in2"--> NG_gltf_image_vector3_vector3_1_0_invert_scale
+    NG_gltf_image_vector3_vector3_1_0_rotate --"in1"--> NG_gltf_image_vector3_vector3_1_0_negate_rotate
+    NG_gltf_image_vector3_vector3_1_0_offset --"in1"--> NG_gltf_image_vector3_vector3_1_0_negate_offset
+    NG_gltf_image_vector3_vector3_1_0_texcoord --"texcoord"--> NG_gltf_image_vector3_vector3_1_0_place2d
+    NG_gltf_image_vector3_vector3_1_0_pivot --"pivot"--> NG_gltf_image_vector3_vector3_1_0_place2d
+    NG_gltf_image_vector3_vector3_1_0_invert_scale --"scale"--> NG_gltf_image_vector3_vector3_1_0_place2d
+    NG_gltf_image_vector3_vector3_1_0_negate_rotate --"rotate"--> NG_gltf_image_vector3_vector3_1_0_place2d
+    NG_gltf_image_vector3_vector3_1_0_negate_offset --"offset"--> NG_gltf_image_vector3_vector3_1_0_place2d
+    NG_gltf_image_vector3_vector3_1_0_operationorder --"operationorder"--> NG_gltf_image_vector3_vector3_1_0_place2d
+    NG_gltf_image_vector3_vector3_1_0_image --> NG_gltf_image_vector3_vector3_1_0_out
 
 
 </div></code></pre>

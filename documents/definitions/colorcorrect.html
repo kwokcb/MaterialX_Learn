@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="colorcorrect" class="ms-2 mb-0">
 Category: colorcorrect
@@ -1012,40 +1012,61 @@ Category: colorcorrect
 <div id="ND_colorcorrect_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_colorcorrect_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_colorcorrect_color3_N_exposure[multiply] --> NG_colorcorrect_color3_out([out])
-    style NG_colorcorrect_color3_out fill:#0C0, color:#111
-    NG_colorcorrect_color3_N_contrast[contrast] --".in1"--> NG_colorcorrect_color3_N_exposure[multiply]
-    NG_colorcorrect_color3_contrastINT([contrast]) ==.amount==> NG_colorcorrect_color3_N_contrast[contrast]
-    style NG_colorcorrect_color3_contrastINT fill:#0CF, color:#111
-    NG_colorcorrect_color3_contrastpivotINT([contrastpivot]) ==.pivot==> NG_colorcorrect_color3_N_contrast[contrast]
-    style NG_colorcorrect_color3_contrastpivotINT fill:#0CF, color:#111
-    NG_colorcorrect_color3_N_gain[multiply] --".in"--> NG_colorcorrect_color3_N_contrast[contrast]
-    NG_colorcorrect_color3_gainINT([gain]) ==.in2==> NG_colorcorrect_color3_N_gain[multiply]
-    style NG_colorcorrect_color3_gainINT fill:#0CF, color:#111
-    NG_colorcorrect_color3_N_liftadd[add] --".in1"--> NG_colorcorrect_color3_N_gain[multiply]
-    NG_colorcorrect_color3_liftINT([lift]) ==.in2==> NG_colorcorrect_color3_N_liftadd[add]
-    style NG_colorcorrect_color3_liftINT fill:#0CF, color:#111
-    NG_colorcorrect_color3_N_liftmult[multiply] --".in1"--> NG_colorcorrect_color3_N_liftadd[add]
-    NG_colorcorrect_color3_N_gamma[range] --".in1"--> NG_colorcorrect_color3_N_liftmult[multiply]
-    NG_colorcorrect_color3_gammaINT([gamma]) ==.gamma==> NG_colorcorrect_color3_N_gamma[range]
-    style NG_colorcorrect_color3_gammaINT fill:#0CF, color:#111
-    NG_colorcorrect_color3_N_saturation[saturate] --".in"--> NG_colorcorrect_color3_N_gamma[range]
-    NG_colorcorrect_color3_saturationINT([saturation]) ==.amount==> NG_colorcorrect_color3_N_saturation[saturate]
-    style NG_colorcorrect_color3_saturationINT fill:#0CF, color:#111
-    NG_colorcorrect_color3_N_hsvadjust[hsvadjust] --".in"--> NG_colorcorrect_color3_N_saturation[saturate]
-    NG_colorcorrect_color3_inINT([in]) ==.in==> NG_colorcorrect_color3_N_hsvadjust[hsvadjust]
-    style NG_colorcorrect_color3_inINT fill:#0CF, color:#111
-    NG_colorcorrect_color3_N_parm2hue[combine3] --".amount"--> NG_colorcorrect_color3_N_hsvadjust[hsvadjust]
-    NG_colorcorrect_color3_hueINT([hue]) ==.in1==> NG_colorcorrect_color3_N_parm2hue[combine3]
-    style NG_colorcorrect_color3_hueINT fill:#0CF, color:#111
-    NG_colorcorrect_color3_N_liftsubtract[subtract] --".in2"--> NG_colorcorrect_color3_N_liftmult[multiply]
-    NG_colorcorrect_color3_liftINT([lift]) ==.in2==> NG_colorcorrect_color3_N_liftsubtract[subtract]
-    style NG_colorcorrect_color3_liftINT fill:#0CF, color:#111
-    NG_colorcorrect_color3_N_exposurepwr[power] --".in2"--> NG_colorcorrect_color3_N_exposure[multiply]
-    NG_colorcorrect_color3_exposureINT([exposure]) ==.in2==> NG_colorcorrect_color3_N_exposurepwr[power]
-    style NG_colorcorrect_color3_exposureINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_colorcorrect_color3
+    NG_colorcorrect_color3_N_exposure[N_exposure]
+    NG_colorcorrect_color3_N_contrast[N_contrast]
+    NG_colorcorrect_color3_N_exposurepwr[N_exposurepwr]
+    NG_colorcorrect_color3_N_gain[N_gain]
+    NG_colorcorrect_color3_N_liftadd[N_liftadd]
+    NG_colorcorrect_color3_N_liftmult[N_liftmult]
+    NG_colorcorrect_color3_N_gamma[N_gamma]
+    NG_colorcorrect_color3_N_liftsubtract[N_liftsubtract]
+    NG_colorcorrect_color3_N_saturation[N_saturation]
+    NG_colorcorrect_color3_N_hsvadjust[N_hsvadjust]
+    NG_colorcorrect_color3_N_parm2hue[N_parm2hue]
+    style NG_colorcorrect_color3_out  fill:#0C0, color:#FFF
+    NG_colorcorrect_color3_out([out])
+    style NG_colorcorrect_color3_contrast  fill:#09D, color:#FFF
+    NG_colorcorrect_color3_contrast([contrast])
+    style NG_colorcorrect_color3_contrastpivot  fill:#09D, color:#FFF
+    NG_colorcorrect_color3_contrastpivot([contrastpivot])
+    style NG_colorcorrect_color3_exposure  fill:#09D, color:#FFF
+    NG_colorcorrect_color3_exposure([exposure])
+    style NG_colorcorrect_color3_gain  fill:#09D, color:#FFF
+    NG_colorcorrect_color3_gain([gain])
+    style NG_colorcorrect_color3_lift  fill:#09D, color:#FFF
+    NG_colorcorrect_color3_lift([lift])
+    style NG_colorcorrect_color3_gamma  fill:#09D, color:#FFF
+    NG_colorcorrect_color3_gamma([gamma])
+    style NG_colorcorrect_color3_saturation  fill:#09D, color:#FFF
+    NG_colorcorrect_color3_saturation([saturation])
+    style NG_colorcorrect_color3_in  fill:#09D, color:#FFF
+    NG_colorcorrect_color3_in([in])
+    style NG_colorcorrect_color3_hue  fill:#09D, color:#FFF
+    NG_colorcorrect_color3_hue([hue])
+    end
+    NG_colorcorrect_color3_N_contrast --"in1"--> NG_colorcorrect_color3_N_exposure
+    NG_colorcorrect_color3_N_exposurepwr --"in2"--> NG_colorcorrect_color3_N_exposure
+    NG_colorcorrect_color3_N_gain --"in"--> NG_colorcorrect_color3_N_contrast
+    NG_colorcorrect_color3_contrast --"amount"--> NG_colorcorrect_color3_N_contrast
+    NG_colorcorrect_color3_contrastpivot --"pivot"--> NG_colorcorrect_color3_N_contrast
+    NG_colorcorrect_color3_exposure --"in2"--> NG_colorcorrect_color3_N_exposurepwr
+    NG_colorcorrect_color3_N_liftadd --"in1"--> NG_colorcorrect_color3_N_gain
+    NG_colorcorrect_color3_gain --"in2"--> NG_colorcorrect_color3_N_gain
+    NG_colorcorrect_color3_N_liftmult --"in1"--> NG_colorcorrect_color3_N_liftadd
+    NG_colorcorrect_color3_lift --"in2"--> NG_colorcorrect_color3_N_liftadd
+    NG_colorcorrect_color3_N_gamma --"in1"--> NG_colorcorrect_color3_N_liftmult
+    NG_colorcorrect_color3_N_liftsubtract --"in2"--> NG_colorcorrect_color3_N_liftmult
+    NG_colorcorrect_color3_N_saturation --"in"--> NG_colorcorrect_color3_N_gamma
+    NG_colorcorrect_color3_gamma --"gamma"--> NG_colorcorrect_color3_N_gamma
+    NG_colorcorrect_color3_lift --"in2"--> NG_colorcorrect_color3_N_liftsubtract
+    NG_colorcorrect_color3_N_hsvadjust --"in"--> NG_colorcorrect_color3_N_saturation
+    NG_colorcorrect_color3_saturation --"amount"--> NG_colorcorrect_color3_N_saturation
+    NG_colorcorrect_color3_in --"in"--> NG_colorcorrect_color3_N_hsvadjust
+    NG_colorcorrect_color3_N_parm2hue --"amount"--> NG_colorcorrect_color3_N_hsvadjust
+    NG_colorcorrect_color3_hue --"in1"--> NG_colorcorrect_color3_N_parm2hue
+    NG_colorcorrect_color3_N_exposure --> NG_colorcorrect_color3_out
 
 
 </div></code></pre>
@@ -1469,51 +1490,53 @@ graph LR;
 <div id="ND_colorcorrect_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_colorcorrect_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_colorcorrect_color4_N_combine_with_alpha[combine4] --> NG_colorcorrect_color4_out([out])
-    style NG_colorcorrect_color4_out fill:#0C0, color:#111
-    NG_colorcorrect_color4_N_split_color[separate3] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutr([outr])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutr fill:#0C0, color:#111
-    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutr --".in1"--> NG_colorcorrect_color4_N_combine_with_alpha[combine4]
-    NG_colorcorrect_color4_N_colorcorrect[colorcorrect] --".in"--> NG_colorcorrect_color4_N_split_color[separate3]
-    NG_colorcorrect_color4_hueINT([hue]) ==.hue==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_hueINT fill:#0CF, color:#111
-    NG_colorcorrect_color4_saturationINT([saturation]) ==.saturation==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_saturationINT fill:#0CF, color:#111
-    NG_colorcorrect_color4_gammaINT([gamma]) ==.gamma==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_gammaINT fill:#0CF, color:#111
-    NG_colorcorrect_color4_liftINT([lift]) ==.lift==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_liftINT fill:#0CF, color:#111
-    NG_colorcorrect_color4_gainINT([gain]) ==.gain==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_gainINT fill:#0CF, color:#111
-    NG_colorcorrect_color4_contrastINT([contrast]) ==.contrast==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_contrastINT fill:#0CF, color:#111
-    NG_colorcorrect_color4_contrastpivotINT([contrastpivot]) ==.contrastpivot==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_contrastpivotINT fill:#0CF, color:#111
-    NG_colorcorrect_color4_exposureINT([exposure]) ==.exposure==> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    style NG_colorcorrect_color4_exposureINT fill:#0CF, color:#111
-    NG_colorcorrect_color4_N_combine_color[combine3] --".in"--> NG_colorcorrect_color4_N_colorcorrect[colorcorrect]
-    NG_colorcorrect_color4_N_split_color4[separate4] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outr([outr])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outr fill:#0C0, color:#111
-    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outr --".in1"--> NG_colorcorrect_color4_N_combine_color[combine3]
-    NG_colorcorrect_color4_inINT([in]) ==.in==> NG_colorcorrect_color4_N_split_color4[separate4]
-    style NG_colorcorrect_color4_inINT fill:#0CF, color:#111
-    NG_colorcorrect_color4_N_split_color4[separate4] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outg([outg])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outg fill:#0C0, color:#111
-    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outg --".in2"--> NG_colorcorrect_color4_N_combine_color[combine3]
-    NG_colorcorrect_color4_N_split_color4[separate4] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outb([outb])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outb fill:#0C0, color:#111
-    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outb --".in3"--> NG_colorcorrect_color4_N_combine_color[combine3]
-    NG_colorcorrect_color4_N_split_color[separate3] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutg([outg])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutg fill:#0C0, color:#111
-    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutg --".in2"--> NG_colorcorrect_color4_N_combine_with_alpha[combine4]
-    NG_colorcorrect_color4_N_split_color[separate3] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutb([outb])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutb fill:#0C0, color:#111
-    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_coloroutb --".in3"--> NG_colorcorrect_color4_N_combine_with_alpha[combine4]
-    NG_colorcorrect_color4_N_split_color4[separate4] --> NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outa([outa])
-    style NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outa fill:#0C0, color:#111
-    NG_colorcorrect_color4_NG_colorcorrect_color4_N_split_color4outa --".in4"--> NG_colorcorrect_color4_N_combine_with_alpha[combine4]
-
+graph TB
+    subgraph NG_colorcorrect_color4
+    NG_colorcorrect_color4_N_split_color4[N_split_color4]
+    NG_colorcorrect_color4_N_combine_color[N_combine_color]
+    NG_colorcorrect_color4_N_colorcorrect[N_colorcorrect]
+    NG_colorcorrect_color4_N_split_color[N_split_color]
+    NG_colorcorrect_color4_N_combine_with_alpha[N_combine_with_alpha]
+    style NG_colorcorrect_color4_out  fill:#0C0, color:#FFF
+    NG_colorcorrect_color4_out([out])
+    style NG_colorcorrect_color4_in  fill:#09D, color:#FFF
+    NG_colorcorrect_color4_in([in])
+    style NG_colorcorrect_color4_hue  fill:#09D, color:#FFF
+    NG_colorcorrect_color4_hue([hue])
+    style NG_colorcorrect_color4_saturation  fill:#09D, color:#FFF
+    NG_colorcorrect_color4_saturation([saturation])
+    style NG_colorcorrect_color4_gamma  fill:#09D, color:#FFF
+    NG_colorcorrect_color4_gamma([gamma])
+    style NG_colorcorrect_color4_lift  fill:#09D, color:#FFF
+    NG_colorcorrect_color4_lift([lift])
+    style NG_colorcorrect_color4_gain  fill:#09D, color:#FFF
+    NG_colorcorrect_color4_gain([gain])
+    style NG_colorcorrect_color4_contrast  fill:#09D, color:#FFF
+    NG_colorcorrect_color4_contrast([contrast])
+    style NG_colorcorrect_color4_contrastpivot  fill:#09D, color:#FFF
+    NG_colorcorrect_color4_contrastpivot([contrastpivot])
+    style NG_colorcorrect_color4_exposure  fill:#09D, color:#FFF
+    NG_colorcorrect_color4_exposure([exposure])
+    end
+    NG_colorcorrect_color4_in --"in"--> NG_colorcorrect_color4_N_split_color4
+    NG_colorcorrect_color4_N_split_color4 --"outr-->in1"--> NG_colorcorrect_color4_N_combine_color
+    NG_colorcorrect_color4_N_split_color4 --"outg-->in2"--> NG_colorcorrect_color4_N_combine_color
+    NG_colorcorrect_color4_N_split_color4 --"outb-->in3"--> NG_colorcorrect_color4_N_combine_color
+    NG_colorcorrect_color4_N_combine_color --"in"--> NG_colorcorrect_color4_N_colorcorrect
+    NG_colorcorrect_color4_hue --"hue"--> NG_colorcorrect_color4_N_colorcorrect
+    NG_colorcorrect_color4_saturation --"saturation"--> NG_colorcorrect_color4_N_colorcorrect
+    NG_colorcorrect_color4_gamma --"gamma"--> NG_colorcorrect_color4_N_colorcorrect
+    NG_colorcorrect_color4_lift --"lift"--> NG_colorcorrect_color4_N_colorcorrect
+    NG_colorcorrect_color4_gain --"gain"--> NG_colorcorrect_color4_N_colorcorrect
+    NG_colorcorrect_color4_contrast --"contrast"--> NG_colorcorrect_color4_N_colorcorrect
+    NG_colorcorrect_color4_contrastpivot --"contrastpivot"--> NG_colorcorrect_color4_N_colorcorrect
+    NG_colorcorrect_color4_exposure --"exposure"--> NG_colorcorrect_color4_N_colorcorrect
+    NG_colorcorrect_color4_N_colorcorrect --"in"--> NG_colorcorrect_color4_N_split_color
+    NG_colorcorrect_color4_N_split_color --"outr-->in1"--> NG_colorcorrect_color4_N_combine_with_alpha
+    NG_colorcorrect_color4_N_split_color --"outg-->in2"--> NG_colorcorrect_color4_N_combine_with_alpha
+    NG_colorcorrect_color4_N_split_color --"outb-->in3"--> NG_colorcorrect_color4_N_combine_with_alpha
+    NG_colorcorrect_color4_N_split_color4 --"outa-->in4"--> NG_colorcorrect_color4_N_combine_with_alpha
+    NG_colorcorrect_color4_N_combine_with_alpha --> NG_colorcorrect_color4_out
 
 
 </div></code></pre>

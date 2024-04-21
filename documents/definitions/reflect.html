@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="reflect" class="ms-2 mb-0">
 Category: reflect
@@ -713,21 +713,27 @@ Category: reflect
 <div id="ND_reflect_vector3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_reflect_vector3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_reflect_vector3_reflection_vector[subtract] --> NG_reflect_vector3_out([out])
-    style NG_reflect_vector3_out fill:#0C0, color:#111
-    NG_reflect_vector3_inINT([in]) ==.in1==> NG_reflect_vector3_reflection_vector[subtract]
-    style NG_reflect_vector3_inINT fill:#0CF, color:#111
-    NG_reflect_vector3_NdotI_N_2[multiply] --".in2"--> NG_reflect_vector3_reflection_vector[subtract]
-    NG_reflect_vector3_normalINT([normal]) ==.in1==> NG_reflect_vector3_NdotI_N_2[multiply]
-    style NG_reflect_vector3_normalINT fill:#0CF, color:#111
-    NG_reflect_vector3_NdotI_2[multiply] --".in2"--> NG_reflect_vector3_NdotI_N_2[multiply]
-    NG_reflect_vector3_NdotI[dotproduct] --".in1"--> NG_reflect_vector3_NdotI_2[multiply]
-    NG_reflect_vector3_normalINT([normal]) ==.in1==> NG_reflect_vector3_NdotI[dotproduct]
-    style NG_reflect_vector3_normalINT fill:#0CF, color:#111
-    NG_reflect_vector3_inINT([in]) ==.in2==> NG_reflect_vector3_NdotI[dotproduct]
-    style NG_reflect_vector3_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_reflect_vector3
+    NG_reflect_vector3_NdotI[NdotI]
+    NG_reflect_vector3_NdotI_2[NdotI_2]
+    NG_reflect_vector3_NdotI_N_2[NdotI_N_2]
+    NG_reflect_vector3_reflection_vector[reflection_vector]
+    style NG_reflect_vector3_out  fill:#0C0, color:#FFF
+    NG_reflect_vector3_out([out])
+    style NG_reflect_vector3_normal  fill:#09D, color:#FFF
+    NG_reflect_vector3_normal([normal])
+    style NG_reflect_vector3_in  fill:#09D, color:#FFF
+    NG_reflect_vector3_in([in])
+    end
+    NG_reflect_vector3_normal --"in1"--> NG_reflect_vector3_NdotI
+    NG_reflect_vector3_in --"in2"--> NG_reflect_vector3_NdotI
+    NG_reflect_vector3_NdotI --"in1"--> NG_reflect_vector3_NdotI_2
+    NG_reflect_vector3_normal --"in1"--> NG_reflect_vector3_NdotI_N_2
+    NG_reflect_vector3_NdotI_2 --"in2"--> NG_reflect_vector3_NdotI_N_2
+    NG_reflect_vector3_in --"in1"--> NG_reflect_vector3_reflection_vector
+    NG_reflect_vector3_NdotI_N_2 --"in2"--> NG_reflect_vector3_reflection_vector
+    NG_reflect_vector3_reflection_vector --> NG_reflect_vector3_out
 
 
 </div></code></pre>

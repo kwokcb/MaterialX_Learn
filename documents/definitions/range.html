@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="range" class="ms-2 mb-0">
 Category: range
@@ -800,40 +800,55 @@ Category: range
 <div id="ND_range_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_range_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_range_float_N_switch_float{ifequal} --> NG_range_float_out([out])
-    style NG_range_float_out fill:#0C0, color:#111
-    NG_range_float_doclampINT([doclamp]) ==.value1==> NG_range_float_N_switch_float[ifequal]
-    style NG_range_float_doclampINT fill:#0CF, color:#111
-    NG_range_float_N_clamp_float[clamp] --".in1"--> NG_range_float_N_switch_float{ifequal}
-    style NG_range_float_N_switch_float fill:#F80, color:#111
-    NG_range_float_outlowINT([outlow]) ==.low==> NG_range_float_N_clamp_float[clamp]
-    style NG_range_float_outlowINT fill:#0CF, color:#111
-    NG_range_float_outhighINT([outhigh]) ==.high==> NG_range_float_N_clamp_float[clamp]
-    style NG_range_float_outhighINT fill:#0CF, color:#111
-    NG_range_float_N_remap2_float[remap] --".in"--> NG_range_float_N_clamp_float[clamp]
-    NG_range_float_outlowINT([outlow]) ==.outlow==> NG_range_float_N_remap2_float[remap]
-    style NG_range_float_outlowINT fill:#0CF, color:#111
-    NG_range_float_outhighINT([outhigh]) ==.outhigh==> NG_range_float_N_remap2_float[remap]
-    style NG_range_float_outhighINT fill:#0CF, color:#111
-    NG_range_float_N_gamma_float[multiply] --".in"--> NG_range_float_N_remap2_float[remap]
-    NG_range_float_N_pow_float[power] --".in1"--> NG_range_float_N_gamma_float[multiply]
-    NG_range_float_N_abs_float[absval] --".in1"--> NG_range_float_N_pow_float[power]
-    NG_range_float_N_remap1_float[remap] --".in"--> NG_range_float_N_abs_float[absval]
-    NG_range_float_inINT([in]) ==.in==> NG_range_float_N_remap1_float[remap]
-    style NG_range_float_inINT fill:#0CF, color:#111
-    NG_range_float_inlowINT([inlow]) ==.inlow==> NG_range_float_N_remap1_float[remap]
-    style NG_range_float_inlowINT fill:#0CF, color:#111
-    NG_range_float_inhighINT([inhigh]) ==.inhigh==> NG_range_float_N_remap1_float[remap]
-    style NG_range_float_inhighINT fill:#0CF, color:#111
-    NG_range_float_N_recip_float[divide] --".in2"--> NG_range_float_N_pow_float[power]
-    NG_range_float_gammaINT([gamma]) ==.in2==> NG_range_float_N_recip_float[divide]
-    style NG_range_float_gammaINT fill:#0CF, color:#111
-    NG_range_float_N_sign_float[sign] --".in2"--> NG_range_float_N_gamma_float[multiply]
-    NG_range_float_N_remap1_float[remap] --".in"--> NG_range_float_N_sign_float[sign]
-    NG_range_float_N_remap2_float[remap] --".in2"--> NG_range_float_N_switch_float{ifequal}
-    style NG_range_float_N_switch_float fill:#F80, color:#111
-
+graph TB
+    subgraph NG_range_float
+    NG_range_float_N_remap1_float[N_remap1_float]
+    NG_range_float_N_recip_float[N_recip_float]
+    NG_range_float_N_abs_float[N_abs_float]
+    NG_range_float_N_pow_float[N_pow_float]
+    NG_range_float_N_sign_float[N_sign_float]
+    NG_range_float_N_gamma_float[N_gamma_float]
+    NG_range_float_N_remap2_float[N_remap2_float]
+    NG_range_float_N_clamp_float[N_clamp_float]
+    style NG_range_float_N_switch_float  fill:#C72, color:#FFF
+    NG_range_float_N_switch_float{N_switch_float}
+    style NG_range_float_out  fill:#0C0, color:#FFF
+    NG_range_float_out([out])
+    style NG_range_float_in  fill:#09D, color:#FFF
+    NG_range_float_in([in])
+    style NG_range_float_inlow  fill:#09D, color:#FFF
+    NG_range_float_inlow([inlow])
+    style NG_range_float_inhigh  fill:#09D, color:#FFF
+    NG_range_float_inhigh([inhigh])
+    style NG_range_float_gamma  fill:#09D, color:#FFF
+    NG_range_float_gamma([gamma])
+    style NG_range_float_outlow  fill:#09D, color:#FFF
+    NG_range_float_outlow([outlow])
+    style NG_range_float_outhigh  fill:#09D, color:#FFF
+    NG_range_float_outhigh([outhigh])
+    style NG_range_float_doclamp  fill:#09D, color:#FFF
+    NG_range_float_doclamp([doclamp])
+    end
+    NG_range_float_in --"in"--> NG_range_float_N_remap1_float
+    NG_range_float_inlow --"inlow"--> NG_range_float_N_remap1_float
+    NG_range_float_inhigh --"inhigh"--> NG_range_float_N_remap1_float
+    NG_range_float_gamma --"in2"--> NG_range_float_N_recip_float
+    NG_range_float_N_remap1_float --"in"--> NG_range_float_N_abs_float
+    NG_range_float_N_abs_float --"in1"--> NG_range_float_N_pow_float
+    NG_range_float_N_recip_float --"in2"--> NG_range_float_N_pow_float
+    NG_range_float_N_remap1_float --"in"--> NG_range_float_N_sign_float
+    NG_range_float_N_pow_float --"in1"--> NG_range_float_N_gamma_float
+    NG_range_float_N_sign_float --"in2"--> NG_range_float_N_gamma_float
+    NG_range_float_N_gamma_float --"in"--> NG_range_float_N_remap2_float
+    NG_range_float_outlow --"outlow"--> NG_range_float_N_remap2_float
+    NG_range_float_outhigh --"outhigh"--> NG_range_float_N_remap2_float
+    NG_range_float_N_remap2_float --"in"--> NG_range_float_N_clamp_float
+    NG_range_float_outlow --"low"--> NG_range_float_N_clamp_float
+    NG_range_float_outhigh --"high"--> NG_range_float_N_clamp_float
+    NG_range_float_N_clamp_float --"in1"--> NG_range_float_N_switch_float
+    NG_range_float_N_remap2_float --"in2"--> NG_range_float_N_switch_float
+    NG_range_float_doclamp --"value1"--> NG_range_float_N_switch_float
+    NG_range_float_N_switch_float --> NG_range_float_out
 
 
 </div></code></pre>
@@ -1090,40 +1105,55 @@ graph LR;
 <div id="ND_range_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_range_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_range_color3_N_switch_color3{ifequal} --> NG_range_color3_out([out])
-    style NG_range_color3_out fill:#0C0, color:#111
-    NG_range_color3_doclampINT([doclamp]) ==.value1==> NG_range_color3_N_switch_color3[ifequal]
-    style NG_range_color3_doclampINT fill:#0CF, color:#111
-    NG_range_color3_N_clamp_color3[clamp] --".in1"--> NG_range_color3_N_switch_color3{ifequal}
-    style NG_range_color3_N_switch_color3 fill:#F80, color:#111
-    NG_range_color3_outlowINT([outlow]) ==.low==> NG_range_color3_N_clamp_color3[clamp]
-    style NG_range_color3_outlowINT fill:#0CF, color:#111
-    NG_range_color3_outhighINT([outhigh]) ==.high==> NG_range_color3_N_clamp_color3[clamp]
-    style NG_range_color3_outhighINT fill:#0CF, color:#111
-    NG_range_color3_N_remap2_color3[remap] --".in"--> NG_range_color3_N_clamp_color3[clamp]
-    NG_range_color3_outlowINT([outlow]) ==.outlow==> NG_range_color3_N_remap2_color3[remap]
-    style NG_range_color3_outlowINT fill:#0CF, color:#111
-    NG_range_color3_outhighINT([outhigh]) ==.outhigh==> NG_range_color3_N_remap2_color3[remap]
-    style NG_range_color3_outhighINT fill:#0CF, color:#111
-    NG_range_color3_N_gamma_color3[multiply] --".in"--> NG_range_color3_N_remap2_color3[remap]
-    NG_range_color3_N_pow_color3[power] --".in1"--> NG_range_color3_N_gamma_color3[multiply]
-    NG_range_color3_N_abs_color3[absval] --".in1"--> NG_range_color3_N_pow_color3[power]
-    NG_range_color3_N_remap1_color3[remap] --".in"--> NG_range_color3_N_abs_color3[absval]
-    NG_range_color3_inINT([in]) ==.in==> NG_range_color3_N_remap1_color3[remap]
-    style NG_range_color3_inINT fill:#0CF, color:#111
-    NG_range_color3_inlowINT([inlow]) ==.inlow==> NG_range_color3_N_remap1_color3[remap]
-    style NG_range_color3_inlowINT fill:#0CF, color:#111
-    NG_range_color3_inhighINT([inhigh]) ==.inhigh==> NG_range_color3_N_remap1_color3[remap]
-    style NG_range_color3_inhighINT fill:#0CF, color:#111
-    NG_range_color3_N_recip_color3[divide] --".in2"--> NG_range_color3_N_pow_color3[power]
-    NG_range_color3_gammaINT([gamma]) ==.in2==> NG_range_color3_N_recip_color3[divide]
-    style NG_range_color3_gammaINT fill:#0CF, color:#111
-    NG_range_color3_N_sign_color3[sign] --".in2"--> NG_range_color3_N_gamma_color3[multiply]
-    NG_range_color3_N_remap1_color3[remap] --".in"--> NG_range_color3_N_sign_color3[sign]
-    NG_range_color3_N_remap2_color3[remap] --".in2"--> NG_range_color3_N_switch_color3{ifequal}
-    style NG_range_color3_N_switch_color3 fill:#F80, color:#111
-
+graph TB
+    subgraph NG_range_color3
+    NG_range_color3_N_remap1_color3[N_remap1_color3]
+    NG_range_color3_N_recip_color3[N_recip_color3]
+    NG_range_color3_N_abs_color3[N_abs_color3]
+    NG_range_color3_N_pow_color3[N_pow_color3]
+    NG_range_color3_N_sign_color3[N_sign_color3]
+    NG_range_color3_N_gamma_color3[N_gamma_color3]
+    NG_range_color3_N_remap2_color3[N_remap2_color3]
+    NG_range_color3_N_clamp_color3[N_clamp_color3]
+    style NG_range_color3_N_switch_color3  fill:#C72, color:#FFF
+    NG_range_color3_N_switch_color3{N_switch_color3}
+    style NG_range_color3_out  fill:#0C0, color:#FFF
+    NG_range_color3_out([out])
+    style NG_range_color3_in  fill:#09D, color:#FFF
+    NG_range_color3_in([in])
+    style NG_range_color3_inlow  fill:#09D, color:#FFF
+    NG_range_color3_inlow([inlow])
+    style NG_range_color3_inhigh  fill:#09D, color:#FFF
+    NG_range_color3_inhigh([inhigh])
+    style NG_range_color3_gamma  fill:#09D, color:#FFF
+    NG_range_color3_gamma([gamma])
+    style NG_range_color3_outlow  fill:#09D, color:#FFF
+    NG_range_color3_outlow([outlow])
+    style NG_range_color3_outhigh  fill:#09D, color:#FFF
+    NG_range_color3_outhigh([outhigh])
+    style NG_range_color3_doclamp  fill:#09D, color:#FFF
+    NG_range_color3_doclamp([doclamp])
+    end
+    NG_range_color3_in --"in"--> NG_range_color3_N_remap1_color3
+    NG_range_color3_inlow --"inlow"--> NG_range_color3_N_remap1_color3
+    NG_range_color3_inhigh --"inhigh"--> NG_range_color3_N_remap1_color3
+    NG_range_color3_gamma --"in2"--> NG_range_color3_N_recip_color3
+    NG_range_color3_N_remap1_color3 --"in"--> NG_range_color3_N_abs_color3
+    NG_range_color3_N_abs_color3 --"in1"--> NG_range_color3_N_pow_color3
+    NG_range_color3_N_recip_color3 --"in2"--> NG_range_color3_N_pow_color3
+    NG_range_color3_N_remap1_color3 --"in"--> NG_range_color3_N_sign_color3
+    NG_range_color3_N_pow_color3 --"in1"--> NG_range_color3_N_gamma_color3
+    NG_range_color3_N_sign_color3 --"in2"--> NG_range_color3_N_gamma_color3
+    NG_range_color3_N_gamma_color3 --"in"--> NG_range_color3_N_remap2_color3
+    NG_range_color3_outlow --"outlow"--> NG_range_color3_N_remap2_color3
+    NG_range_color3_outhigh --"outhigh"--> NG_range_color3_N_remap2_color3
+    NG_range_color3_N_remap2_color3 --"in"--> NG_range_color3_N_clamp_color3
+    NG_range_color3_outlow --"low"--> NG_range_color3_N_clamp_color3
+    NG_range_color3_outhigh --"high"--> NG_range_color3_N_clamp_color3
+    NG_range_color3_N_clamp_color3 --"in1"--> NG_range_color3_N_switch_color3
+    NG_range_color3_N_remap2_color3 --"in2"--> NG_range_color3_N_switch_color3
+    NG_range_color3_doclamp --"value1"--> NG_range_color3_N_switch_color3
+    NG_range_color3_N_switch_color3 --> NG_range_color3_out
 
 
 </div></code></pre>
@@ -1398,40 +1428,55 @@ graph LR;
 <div id="ND_range_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_range_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_range_color4_N_switch_color4{ifequal} --> NG_range_color4_out([out])
-    style NG_range_color4_out fill:#0C0, color:#111
-    NG_range_color4_doclampINT([doclamp]) ==.value1==> NG_range_color4_N_switch_color4[ifequal]
-    style NG_range_color4_doclampINT fill:#0CF, color:#111
-    NG_range_color4_N_clamp_color4[clamp] --".in1"--> NG_range_color4_N_switch_color4{ifequal}
-    style NG_range_color4_N_switch_color4 fill:#F80, color:#111
-    NG_range_color4_outlowINT([outlow]) ==.low==> NG_range_color4_N_clamp_color4[clamp]
-    style NG_range_color4_outlowINT fill:#0CF, color:#111
-    NG_range_color4_outhighINT([outhigh]) ==.high==> NG_range_color4_N_clamp_color4[clamp]
-    style NG_range_color4_outhighINT fill:#0CF, color:#111
-    NG_range_color4_N_remap2_color4[remap] --".in"--> NG_range_color4_N_clamp_color4[clamp]
-    NG_range_color4_outlowINT([outlow]) ==.outlow==> NG_range_color4_N_remap2_color4[remap]
-    style NG_range_color4_outlowINT fill:#0CF, color:#111
-    NG_range_color4_outhighINT([outhigh]) ==.outhigh==> NG_range_color4_N_remap2_color4[remap]
-    style NG_range_color4_outhighINT fill:#0CF, color:#111
-    NG_range_color4_N_gamma_color4[multiply] --".in"--> NG_range_color4_N_remap2_color4[remap]
-    NG_range_color4_N_pow_color4[power] --".in1"--> NG_range_color4_N_gamma_color4[multiply]
-    NG_range_color4_N_abs_color4[absval] --".in1"--> NG_range_color4_N_pow_color4[power]
-    NG_range_color4_N_remap1_color4[remap] --".in"--> NG_range_color4_N_abs_color4[absval]
-    NG_range_color4_inINT([in]) ==.in==> NG_range_color4_N_remap1_color4[remap]
-    style NG_range_color4_inINT fill:#0CF, color:#111
-    NG_range_color4_inlowINT([inlow]) ==.inlow==> NG_range_color4_N_remap1_color4[remap]
-    style NG_range_color4_inlowINT fill:#0CF, color:#111
-    NG_range_color4_inhighINT([inhigh]) ==.inhigh==> NG_range_color4_N_remap1_color4[remap]
-    style NG_range_color4_inhighINT fill:#0CF, color:#111
-    NG_range_color4_N_recip_color4[divide] --".in2"--> NG_range_color4_N_pow_color4[power]
-    NG_range_color4_gammaINT([gamma]) ==.in2==> NG_range_color4_N_recip_color4[divide]
-    style NG_range_color4_gammaINT fill:#0CF, color:#111
-    NG_range_color4_N_sign_color4[sign] --".in2"--> NG_range_color4_N_gamma_color4[multiply]
-    NG_range_color4_N_remap1_color4[remap] --".in"--> NG_range_color4_N_sign_color4[sign]
-    NG_range_color4_N_remap2_color4[remap] --".in2"--> NG_range_color4_N_switch_color4{ifequal}
-    style NG_range_color4_N_switch_color4 fill:#F80, color:#111
-
+graph TB
+    subgraph NG_range_color4
+    NG_range_color4_N_remap1_color4[N_remap1_color4]
+    NG_range_color4_N_recip_color4[N_recip_color4]
+    NG_range_color4_N_abs_color4[N_abs_color4]
+    NG_range_color4_N_pow_color4[N_pow_color4]
+    NG_range_color4_N_sign_color4[N_sign_color4]
+    NG_range_color4_N_gamma_color4[N_gamma_color4]
+    NG_range_color4_N_remap2_color4[N_remap2_color4]
+    NG_range_color4_N_clamp_color4[N_clamp_color4]
+    style NG_range_color4_N_switch_color4  fill:#C72, color:#FFF
+    NG_range_color4_N_switch_color4{N_switch_color4}
+    style NG_range_color4_out  fill:#0C0, color:#FFF
+    NG_range_color4_out([out])
+    style NG_range_color4_in  fill:#09D, color:#FFF
+    NG_range_color4_in([in])
+    style NG_range_color4_inlow  fill:#09D, color:#FFF
+    NG_range_color4_inlow([inlow])
+    style NG_range_color4_inhigh  fill:#09D, color:#FFF
+    NG_range_color4_inhigh([inhigh])
+    style NG_range_color4_gamma  fill:#09D, color:#FFF
+    NG_range_color4_gamma([gamma])
+    style NG_range_color4_outlow  fill:#09D, color:#FFF
+    NG_range_color4_outlow([outlow])
+    style NG_range_color4_outhigh  fill:#09D, color:#FFF
+    NG_range_color4_outhigh([outhigh])
+    style NG_range_color4_doclamp  fill:#09D, color:#FFF
+    NG_range_color4_doclamp([doclamp])
+    end
+    NG_range_color4_in --"in"--> NG_range_color4_N_remap1_color4
+    NG_range_color4_inlow --"inlow"--> NG_range_color4_N_remap1_color4
+    NG_range_color4_inhigh --"inhigh"--> NG_range_color4_N_remap1_color4
+    NG_range_color4_gamma --"in2"--> NG_range_color4_N_recip_color4
+    NG_range_color4_N_remap1_color4 --"in"--> NG_range_color4_N_abs_color4
+    NG_range_color4_N_abs_color4 --"in1"--> NG_range_color4_N_pow_color4
+    NG_range_color4_N_recip_color4 --"in2"--> NG_range_color4_N_pow_color4
+    NG_range_color4_N_remap1_color4 --"in"--> NG_range_color4_N_sign_color4
+    NG_range_color4_N_pow_color4 --"in1"--> NG_range_color4_N_gamma_color4
+    NG_range_color4_N_sign_color4 --"in2"--> NG_range_color4_N_gamma_color4
+    NG_range_color4_N_gamma_color4 --"in"--> NG_range_color4_N_remap2_color4
+    NG_range_color4_outlow --"outlow"--> NG_range_color4_N_remap2_color4
+    NG_range_color4_outhigh --"outhigh"--> NG_range_color4_N_remap2_color4
+    NG_range_color4_N_remap2_color4 --"in"--> NG_range_color4_N_clamp_color4
+    NG_range_color4_outlow --"low"--> NG_range_color4_N_clamp_color4
+    NG_range_color4_outhigh --"high"--> NG_range_color4_N_clamp_color4
+    NG_range_color4_N_clamp_color4 --"in1"--> NG_range_color4_N_switch_color4
+    NG_range_color4_N_remap2_color4 --"in2"--> NG_range_color4_N_switch_color4
+    NG_range_color4_doclamp --"value1"--> NG_range_color4_N_switch_color4
+    NG_range_color4_N_switch_color4 --> NG_range_color4_out
 
 
 </div></code></pre>
@@ -1652,40 +1697,55 @@ graph LR;
 <div id="ND_range_vector2_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_range_vector2_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_range_vector2_N_switch_vector2{ifequal} --> NG_range_vector2_out([out])
-    style NG_range_vector2_out fill:#0C0, color:#111
-    NG_range_vector2_doclampINT([doclamp]) ==.value1==> NG_range_vector2_N_switch_vector2[ifequal]
-    style NG_range_vector2_doclampINT fill:#0CF, color:#111
-    NG_range_vector2_N_clamp_vector2[clamp] --".in1"--> NG_range_vector2_N_switch_vector2{ifequal}
-    style NG_range_vector2_N_switch_vector2 fill:#F80, color:#111
-    NG_range_vector2_outlowINT([outlow]) ==.low==> NG_range_vector2_N_clamp_vector2[clamp]
-    style NG_range_vector2_outlowINT fill:#0CF, color:#111
-    NG_range_vector2_outhighINT([outhigh]) ==.high==> NG_range_vector2_N_clamp_vector2[clamp]
-    style NG_range_vector2_outhighINT fill:#0CF, color:#111
-    NG_range_vector2_N_remap2_vector2[remap] --".in"--> NG_range_vector2_N_clamp_vector2[clamp]
-    NG_range_vector2_outlowINT([outlow]) ==.outlow==> NG_range_vector2_N_remap2_vector2[remap]
-    style NG_range_vector2_outlowINT fill:#0CF, color:#111
-    NG_range_vector2_outhighINT([outhigh]) ==.outhigh==> NG_range_vector2_N_remap2_vector2[remap]
-    style NG_range_vector2_outhighINT fill:#0CF, color:#111
-    NG_range_vector2_N_gamma_vector2[multiply] --".in"--> NG_range_vector2_N_remap2_vector2[remap]
-    NG_range_vector2_N_pow_vector2[power] --".in1"--> NG_range_vector2_N_gamma_vector2[multiply]
-    NG_range_vector2_N_abs_vector2[absval] --".in1"--> NG_range_vector2_N_pow_vector2[power]
-    NG_range_vector2_N_remap1_vector2[remap] --".in"--> NG_range_vector2_N_abs_vector2[absval]
-    NG_range_vector2_inINT([in]) ==.in==> NG_range_vector2_N_remap1_vector2[remap]
-    style NG_range_vector2_inINT fill:#0CF, color:#111
-    NG_range_vector2_inlowINT([inlow]) ==.inlow==> NG_range_vector2_N_remap1_vector2[remap]
-    style NG_range_vector2_inlowINT fill:#0CF, color:#111
-    NG_range_vector2_inhighINT([inhigh]) ==.inhigh==> NG_range_vector2_N_remap1_vector2[remap]
-    style NG_range_vector2_inhighINT fill:#0CF, color:#111
-    NG_range_vector2_N_recip_vector2[divide] --".in2"--> NG_range_vector2_N_pow_vector2[power]
-    NG_range_vector2_gammaINT([gamma]) ==.in2==> NG_range_vector2_N_recip_vector2[divide]
-    style NG_range_vector2_gammaINT fill:#0CF, color:#111
-    NG_range_vector2_N_sign_vector2[sign] --".in2"--> NG_range_vector2_N_gamma_vector2[multiply]
-    NG_range_vector2_N_remap1_vector2[remap] --".in"--> NG_range_vector2_N_sign_vector2[sign]
-    NG_range_vector2_N_remap2_vector2[remap] --".in2"--> NG_range_vector2_N_switch_vector2{ifequal}
-    style NG_range_vector2_N_switch_vector2 fill:#F80, color:#111
-
+graph TB
+    subgraph NG_range_vector2
+    NG_range_vector2_N_remap1_vector2[N_remap1_vector2]
+    NG_range_vector2_N_recip_vector2[N_recip_vector2]
+    NG_range_vector2_N_abs_vector2[N_abs_vector2]
+    NG_range_vector2_N_pow_vector2[N_pow_vector2]
+    NG_range_vector2_N_sign_vector2[N_sign_vector2]
+    NG_range_vector2_N_gamma_vector2[N_gamma_vector2]
+    NG_range_vector2_N_remap2_vector2[N_remap2_vector2]
+    NG_range_vector2_N_clamp_vector2[N_clamp_vector2]
+    style NG_range_vector2_N_switch_vector2  fill:#C72, color:#FFF
+    NG_range_vector2_N_switch_vector2{N_switch_vector2}
+    style NG_range_vector2_out  fill:#0C0, color:#FFF
+    NG_range_vector2_out([out])
+    style NG_range_vector2_in  fill:#09D, color:#FFF
+    NG_range_vector2_in([in])
+    style NG_range_vector2_inlow  fill:#09D, color:#FFF
+    NG_range_vector2_inlow([inlow])
+    style NG_range_vector2_inhigh  fill:#09D, color:#FFF
+    NG_range_vector2_inhigh([inhigh])
+    style NG_range_vector2_gamma  fill:#09D, color:#FFF
+    NG_range_vector2_gamma([gamma])
+    style NG_range_vector2_outlow  fill:#09D, color:#FFF
+    NG_range_vector2_outlow([outlow])
+    style NG_range_vector2_outhigh  fill:#09D, color:#FFF
+    NG_range_vector2_outhigh([outhigh])
+    style NG_range_vector2_doclamp  fill:#09D, color:#FFF
+    NG_range_vector2_doclamp([doclamp])
+    end
+    NG_range_vector2_in --"in"--> NG_range_vector2_N_remap1_vector2
+    NG_range_vector2_inlow --"inlow"--> NG_range_vector2_N_remap1_vector2
+    NG_range_vector2_inhigh --"inhigh"--> NG_range_vector2_N_remap1_vector2
+    NG_range_vector2_gamma --"in2"--> NG_range_vector2_N_recip_vector2
+    NG_range_vector2_N_remap1_vector2 --"in"--> NG_range_vector2_N_abs_vector2
+    NG_range_vector2_N_abs_vector2 --"in1"--> NG_range_vector2_N_pow_vector2
+    NG_range_vector2_N_recip_vector2 --"in2"--> NG_range_vector2_N_pow_vector2
+    NG_range_vector2_N_remap1_vector2 --"in"--> NG_range_vector2_N_sign_vector2
+    NG_range_vector2_N_pow_vector2 --"in1"--> NG_range_vector2_N_gamma_vector2
+    NG_range_vector2_N_sign_vector2 --"in2"--> NG_range_vector2_N_gamma_vector2
+    NG_range_vector2_N_gamma_vector2 --"in"--> NG_range_vector2_N_remap2_vector2
+    NG_range_vector2_outlow --"outlow"--> NG_range_vector2_N_remap2_vector2
+    NG_range_vector2_outhigh --"outhigh"--> NG_range_vector2_N_remap2_vector2
+    NG_range_vector2_N_remap2_vector2 --"in"--> NG_range_vector2_N_clamp_vector2
+    NG_range_vector2_outlow --"low"--> NG_range_vector2_N_clamp_vector2
+    NG_range_vector2_outhigh --"high"--> NG_range_vector2_N_clamp_vector2
+    NG_range_vector2_N_clamp_vector2 --"in1"--> NG_range_vector2_N_switch_vector2
+    NG_range_vector2_N_remap2_vector2 --"in2"--> NG_range_vector2_N_switch_vector2
+    NG_range_vector2_doclamp --"value1"--> NG_range_vector2_N_switch_vector2
+    NG_range_vector2_N_switch_vector2 --> NG_range_vector2_out
 
 
 </div></code></pre>
@@ -1924,40 +1984,55 @@ graph LR;
 <div id="ND_range_vector3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_range_vector3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_range_vector3_N_switch_vector3{ifequal} --> NG_range_vector3_out([out])
-    style NG_range_vector3_out fill:#0C0, color:#111
-    NG_range_vector3_doclampINT([doclamp]) ==.value1==> NG_range_vector3_N_switch_vector3[ifequal]
-    style NG_range_vector3_doclampINT fill:#0CF, color:#111
-    NG_range_vector3_N_clamp_vector3[clamp] --".in1"--> NG_range_vector3_N_switch_vector3{ifequal}
-    style NG_range_vector3_N_switch_vector3 fill:#F80, color:#111
-    NG_range_vector3_outlowINT([outlow]) ==.low==> NG_range_vector3_N_clamp_vector3[clamp]
-    style NG_range_vector3_outlowINT fill:#0CF, color:#111
-    NG_range_vector3_outhighINT([outhigh]) ==.high==> NG_range_vector3_N_clamp_vector3[clamp]
-    style NG_range_vector3_outhighINT fill:#0CF, color:#111
-    NG_range_vector3_N_remap2_vector3[remap] --".in"--> NG_range_vector3_N_clamp_vector3[clamp]
-    NG_range_vector3_outlowINT([outlow]) ==.outlow==> NG_range_vector3_N_remap2_vector3[remap]
-    style NG_range_vector3_outlowINT fill:#0CF, color:#111
-    NG_range_vector3_outhighINT([outhigh]) ==.outhigh==> NG_range_vector3_N_remap2_vector3[remap]
-    style NG_range_vector3_outhighINT fill:#0CF, color:#111
-    NG_range_vector3_N_gamma_vector3[multiply] --".in"--> NG_range_vector3_N_remap2_vector3[remap]
-    NG_range_vector3_N_pow_vector3[power] --".in1"--> NG_range_vector3_N_gamma_vector3[multiply]
-    NG_range_vector3_N_abs_vector3[absval] --".in1"--> NG_range_vector3_N_pow_vector3[power]
-    NG_range_vector3_N_remap1_vector3[remap] --".in"--> NG_range_vector3_N_abs_vector3[absval]
-    NG_range_vector3_inINT([in]) ==.in==> NG_range_vector3_N_remap1_vector3[remap]
-    style NG_range_vector3_inINT fill:#0CF, color:#111
-    NG_range_vector3_inlowINT([inlow]) ==.inlow==> NG_range_vector3_N_remap1_vector3[remap]
-    style NG_range_vector3_inlowINT fill:#0CF, color:#111
-    NG_range_vector3_inhighINT([inhigh]) ==.inhigh==> NG_range_vector3_N_remap1_vector3[remap]
-    style NG_range_vector3_inhighINT fill:#0CF, color:#111
-    NG_range_vector3_N_recip_vector3[divide] --".in2"--> NG_range_vector3_N_pow_vector3[power]
-    NG_range_vector3_gammaINT([gamma]) ==.in2==> NG_range_vector3_N_recip_vector3[divide]
-    style NG_range_vector3_gammaINT fill:#0CF, color:#111
-    NG_range_vector3_N_sign_vector3[sign] --".in2"--> NG_range_vector3_N_gamma_vector3[multiply]
-    NG_range_vector3_N_remap1_vector3[remap] --".in"--> NG_range_vector3_N_sign_vector3[sign]
-    NG_range_vector3_N_remap2_vector3[remap] --".in2"--> NG_range_vector3_N_switch_vector3{ifequal}
-    style NG_range_vector3_N_switch_vector3 fill:#F80, color:#111
-
+graph TB
+    subgraph NG_range_vector3
+    NG_range_vector3_N_remap1_vector3[N_remap1_vector3]
+    NG_range_vector3_N_recip_vector3[N_recip_vector3]
+    NG_range_vector3_N_abs_vector3[N_abs_vector3]
+    NG_range_vector3_N_pow_vector3[N_pow_vector3]
+    NG_range_vector3_N_sign_vector3[N_sign_vector3]
+    NG_range_vector3_N_gamma_vector3[N_gamma_vector3]
+    NG_range_vector3_N_remap2_vector3[N_remap2_vector3]
+    NG_range_vector3_N_clamp_vector3[N_clamp_vector3]
+    style NG_range_vector3_N_switch_vector3  fill:#C72, color:#FFF
+    NG_range_vector3_N_switch_vector3{N_switch_vector3}
+    style NG_range_vector3_out  fill:#0C0, color:#FFF
+    NG_range_vector3_out([out])
+    style NG_range_vector3_in  fill:#09D, color:#FFF
+    NG_range_vector3_in([in])
+    style NG_range_vector3_inlow  fill:#09D, color:#FFF
+    NG_range_vector3_inlow([inlow])
+    style NG_range_vector3_inhigh  fill:#09D, color:#FFF
+    NG_range_vector3_inhigh([inhigh])
+    style NG_range_vector3_gamma  fill:#09D, color:#FFF
+    NG_range_vector3_gamma([gamma])
+    style NG_range_vector3_outlow  fill:#09D, color:#FFF
+    NG_range_vector3_outlow([outlow])
+    style NG_range_vector3_outhigh  fill:#09D, color:#FFF
+    NG_range_vector3_outhigh([outhigh])
+    style NG_range_vector3_doclamp  fill:#09D, color:#FFF
+    NG_range_vector3_doclamp([doclamp])
+    end
+    NG_range_vector3_in --"in"--> NG_range_vector3_N_remap1_vector3
+    NG_range_vector3_inlow --"inlow"--> NG_range_vector3_N_remap1_vector3
+    NG_range_vector3_inhigh --"inhigh"--> NG_range_vector3_N_remap1_vector3
+    NG_range_vector3_gamma --"in2"--> NG_range_vector3_N_recip_vector3
+    NG_range_vector3_N_remap1_vector3 --"in"--> NG_range_vector3_N_abs_vector3
+    NG_range_vector3_N_abs_vector3 --"in1"--> NG_range_vector3_N_pow_vector3
+    NG_range_vector3_N_recip_vector3 --"in2"--> NG_range_vector3_N_pow_vector3
+    NG_range_vector3_N_remap1_vector3 --"in"--> NG_range_vector3_N_sign_vector3
+    NG_range_vector3_N_pow_vector3 --"in1"--> NG_range_vector3_N_gamma_vector3
+    NG_range_vector3_N_sign_vector3 --"in2"--> NG_range_vector3_N_gamma_vector3
+    NG_range_vector3_N_gamma_vector3 --"in"--> NG_range_vector3_N_remap2_vector3
+    NG_range_vector3_outlow --"outlow"--> NG_range_vector3_N_remap2_vector3
+    NG_range_vector3_outhigh --"outhigh"--> NG_range_vector3_N_remap2_vector3
+    NG_range_vector3_N_remap2_vector3 --"in"--> NG_range_vector3_N_clamp_vector3
+    NG_range_vector3_outlow --"low"--> NG_range_vector3_N_clamp_vector3
+    NG_range_vector3_outhigh --"high"--> NG_range_vector3_N_clamp_vector3
+    NG_range_vector3_N_clamp_vector3 --"in1"--> NG_range_vector3_N_switch_vector3
+    NG_range_vector3_N_remap2_vector3 --"in2"--> NG_range_vector3_N_switch_vector3
+    NG_range_vector3_doclamp --"value1"--> NG_range_vector3_N_switch_vector3
+    NG_range_vector3_N_switch_vector3 --> NG_range_vector3_out
 
 
 </div></code></pre>
@@ -2214,40 +2289,55 @@ graph LR;
 <div id="ND_range_vector4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_range_vector4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_range_vector4_N_switch_vector4{ifequal} --> NG_range_vector4_out([out])
-    style NG_range_vector4_out fill:#0C0, color:#111
-    NG_range_vector4_doclampINT([doclamp]) ==.value1==> NG_range_vector4_N_switch_vector4[ifequal]
-    style NG_range_vector4_doclampINT fill:#0CF, color:#111
-    NG_range_vector4_N_clamp_vector4[clamp] --".in1"--> NG_range_vector4_N_switch_vector4{ifequal}
-    style NG_range_vector4_N_switch_vector4 fill:#F80, color:#111
-    NG_range_vector4_outlowINT([outlow]) ==.low==> NG_range_vector4_N_clamp_vector4[clamp]
-    style NG_range_vector4_outlowINT fill:#0CF, color:#111
-    NG_range_vector4_outhighINT([outhigh]) ==.high==> NG_range_vector4_N_clamp_vector4[clamp]
-    style NG_range_vector4_outhighINT fill:#0CF, color:#111
-    NG_range_vector4_N_remap2_vector4[remap] --".in"--> NG_range_vector4_N_clamp_vector4[clamp]
-    NG_range_vector4_outlowINT([outlow]) ==.outlow==> NG_range_vector4_N_remap2_vector4[remap]
-    style NG_range_vector4_outlowINT fill:#0CF, color:#111
-    NG_range_vector4_outhighINT([outhigh]) ==.outhigh==> NG_range_vector4_N_remap2_vector4[remap]
-    style NG_range_vector4_outhighINT fill:#0CF, color:#111
-    NG_range_vector4_N_gamma_vector4[multiply] --".in"--> NG_range_vector4_N_remap2_vector4[remap]
-    NG_range_vector4_N_pow_vector4[power] --".in1"--> NG_range_vector4_N_gamma_vector4[multiply]
-    NG_range_vector4_N_abs_vector4[absval] --".in1"--> NG_range_vector4_N_pow_vector4[power]
-    NG_range_vector4_N_remap1_vector4[remap] --".in"--> NG_range_vector4_N_abs_vector4[absval]
-    NG_range_vector4_inINT([in]) ==.in==> NG_range_vector4_N_remap1_vector4[remap]
-    style NG_range_vector4_inINT fill:#0CF, color:#111
-    NG_range_vector4_inlowINT([inlow]) ==.inlow==> NG_range_vector4_N_remap1_vector4[remap]
-    style NG_range_vector4_inlowINT fill:#0CF, color:#111
-    NG_range_vector4_inhighINT([inhigh]) ==.inhigh==> NG_range_vector4_N_remap1_vector4[remap]
-    style NG_range_vector4_inhighINT fill:#0CF, color:#111
-    NG_range_vector4_N_recip_vector4[divide] --".in2"--> NG_range_vector4_N_pow_vector4[power]
-    NG_range_vector4_gammaINT([gamma]) ==.in2==> NG_range_vector4_N_recip_vector4[divide]
-    style NG_range_vector4_gammaINT fill:#0CF, color:#111
-    NG_range_vector4_N_sign_vector4[sign] --".in2"--> NG_range_vector4_N_gamma_vector4[multiply]
-    NG_range_vector4_N_remap1_vector4[remap] --".in"--> NG_range_vector4_N_sign_vector4[sign]
-    NG_range_vector4_N_remap2_vector4[remap] --".in2"--> NG_range_vector4_N_switch_vector4{ifequal}
-    style NG_range_vector4_N_switch_vector4 fill:#F80, color:#111
-
+graph TB
+    subgraph NG_range_vector4
+    NG_range_vector4_N_remap1_vector4[N_remap1_vector4]
+    NG_range_vector4_N_recip_vector4[N_recip_vector4]
+    NG_range_vector4_N_abs_vector4[N_abs_vector4]
+    NG_range_vector4_N_pow_vector4[N_pow_vector4]
+    NG_range_vector4_N_sign_vector4[N_sign_vector4]
+    NG_range_vector4_N_gamma_vector4[N_gamma_vector4]
+    NG_range_vector4_N_remap2_vector4[N_remap2_vector4]
+    NG_range_vector4_N_clamp_vector4[N_clamp_vector4]
+    style NG_range_vector4_N_switch_vector4  fill:#C72, color:#FFF
+    NG_range_vector4_N_switch_vector4{N_switch_vector4}
+    style NG_range_vector4_out  fill:#0C0, color:#FFF
+    NG_range_vector4_out([out])
+    style NG_range_vector4_in  fill:#09D, color:#FFF
+    NG_range_vector4_in([in])
+    style NG_range_vector4_inlow  fill:#09D, color:#FFF
+    NG_range_vector4_inlow([inlow])
+    style NG_range_vector4_inhigh  fill:#09D, color:#FFF
+    NG_range_vector4_inhigh([inhigh])
+    style NG_range_vector4_gamma  fill:#09D, color:#FFF
+    NG_range_vector4_gamma([gamma])
+    style NG_range_vector4_outlow  fill:#09D, color:#FFF
+    NG_range_vector4_outlow([outlow])
+    style NG_range_vector4_outhigh  fill:#09D, color:#FFF
+    NG_range_vector4_outhigh([outhigh])
+    style NG_range_vector4_doclamp  fill:#09D, color:#FFF
+    NG_range_vector4_doclamp([doclamp])
+    end
+    NG_range_vector4_in --"in"--> NG_range_vector4_N_remap1_vector4
+    NG_range_vector4_inlow --"inlow"--> NG_range_vector4_N_remap1_vector4
+    NG_range_vector4_inhigh --"inhigh"--> NG_range_vector4_N_remap1_vector4
+    NG_range_vector4_gamma --"in2"--> NG_range_vector4_N_recip_vector4
+    NG_range_vector4_N_remap1_vector4 --"in"--> NG_range_vector4_N_abs_vector4
+    NG_range_vector4_N_abs_vector4 --"in1"--> NG_range_vector4_N_pow_vector4
+    NG_range_vector4_N_recip_vector4 --"in2"--> NG_range_vector4_N_pow_vector4
+    NG_range_vector4_N_remap1_vector4 --"in"--> NG_range_vector4_N_sign_vector4
+    NG_range_vector4_N_pow_vector4 --"in1"--> NG_range_vector4_N_gamma_vector4
+    NG_range_vector4_N_sign_vector4 --"in2"--> NG_range_vector4_N_gamma_vector4
+    NG_range_vector4_N_gamma_vector4 --"in"--> NG_range_vector4_N_remap2_vector4
+    NG_range_vector4_outlow --"outlow"--> NG_range_vector4_N_remap2_vector4
+    NG_range_vector4_outhigh --"outhigh"--> NG_range_vector4_N_remap2_vector4
+    NG_range_vector4_N_remap2_vector4 --"in"--> NG_range_vector4_N_clamp_vector4
+    NG_range_vector4_outlow --"low"--> NG_range_vector4_N_clamp_vector4
+    NG_range_vector4_outhigh --"high"--> NG_range_vector4_N_clamp_vector4
+    NG_range_vector4_N_clamp_vector4 --"in1"--> NG_range_vector4_N_switch_vector4
+    NG_range_vector4_N_remap2_vector4 --"in2"--> NG_range_vector4_N_switch_vector4
+    NG_range_vector4_doclamp --"value1"--> NG_range_vector4_N_switch_vector4
+    NG_range_vector4_N_switch_vector4 --> NG_range_vector4_out
 
 
 </div></code></pre>
@@ -2464,40 +2554,55 @@ graph LR;
 <div id="ND_range_color3FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_range_color3FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_range_color3FA_N_switch_color3FA{ifequal} --> NG_range_color3FA_out([out])
-    style NG_range_color3FA_out fill:#0C0, color:#111
-    NG_range_color3FA_doclampINT([doclamp]) ==.value1==> NG_range_color3FA_N_switch_color3FA[ifequal]
-    style NG_range_color3FA_doclampINT fill:#0CF, color:#111
-    NG_range_color3FA_N_clamp_color3FA[clamp] --".in1"--> NG_range_color3FA_N_switch_color3FA{ifequal}
-    style NG_range_color3FA_N_switch_color3FA fill:#F80, color:#111
-    NG_range_color3FA_outlowINT([outlow]) ==.low==> NG_range_color3FA_N_clamp_color3FA[clamp]
-    style NG_range_color3FA_outlowINT fill:#0CF, color:#111
-    NG_range_color3FA_outhighINT([outhigh]) ==.high==> NG_range_color3FA_N_clamp_color3FA[clamp]
-    style NG_range_color3FA_outhighINT fill:#0CF, color:#111
-    NG_range_color3FA_N_remap2_color3FA[remap] --".in"--> NG_range_color3FA_N_clamp_color3FA[clamp]
-    NG_range_color3FA_outlowINT([outlow]) ==.outlow==> NG_range_color3FA_N_remap2_color3FA[remap]
-    style NG_range_color3FA_outlowINT fill:#0CF, color:#111
-    NG_range_color3FA_outhighINT([outhigh]) ==.outhigh==> NG_range_color3FA_N_remap2_color3FA[remap]
-    style NG_range_color3FA_outhighINT fill:#0CF, color:#111
-    NG_range_color3FA_N_gamma_color3FA[multiply] --".in"--> NG_range_color3FA_N_remap2_color3FA[remap]
-    NG_range_color3FA_N_pow_color3FA[power] --".in1"--> NG_range_color3FA_N_gamma_color3FA[multiply]
-    NG_range_color3FA_N_abs_color3FA[absval] --".in1"--> NG_range_color3FA_N_pow_color3FA[power]
-    NG_range_color3FA_N_remap1_color3FA[remap] --".in"--> NG_range_color3FA_N_abs_color3FA[absval]
-    NG_range_color3FA_inINT([in]) ==.in==> NG_range_color3FA_N_remap1_color3FA[remap]
-    style NG_range_color3FA_inINT fill:#0CF, color:#111
-    NG_range_color3FA_inlowINT([inlow]) ==.inlow==> NG_range_color3FA_N_remap1_color3FA[remap]
-    style NG_range_color3FA_inlowINT fill:#0CF, color:#111
-    NG_range_color3FA_inhighINT([inhigh]) ==.inhigh==> NG_range_color3FA_N_remap1_color3FA[remap]
-    style NG_range_color3FA_inhighINT fill:#0CF, color:#111
-    NG_range_color3FA_N_recip_color3FA[divide] --".in2"--> NG_range_color3FA_N_pow_color3FA[power]
-    NG_range_color3FA_gammaINT([gamma]) ==.in2==> NG_range_color3FA_N_recip_color3FA[divide]
-    style NG_range_color3FA_gammaINT fill:#0CF, color:#111
-    NG_range_color3FA_N_sign_color3FA[sign] --".in2"--> NG_range_color3FA_N_gamma_color3FA[multiply]
-    NG_range_color3FA_N_remap1_color3FA[remap] --".in"--> NG_range_color3FA_N_sign_color3FA[sign]
-    NG_range_color3FA_N_remap2_color3FA[remap] --".in2"--> NG_range_color3FA_N_switch_color3FA{ifequal}
-    style NG_range_color3FA_N_switch_color3FA fill:#F80, color:#111
-
+graph TB
+    subgraph NG_range_color3FA
+    NG_range_color3FA_N_remap1_color3FA[N_remap1_color3FA]
+    NG_range_color3FA_N_recip_color3FA[N_recip_color3FA]
+    NG_range_color3FA_N_abs_color3FA[N_abs_color3FA]
+    NG_range_color3FA_N_pow_color3FA[N_pow_color3FA]
+    NG_range_color3FA_N_sign_color3FA[N_sign_color3FA]
+    NG_range_color3FA_N_gamma_color3FA[N_gamma_color3FA]
+    NG_range_color3FA_N_remap2_color3FA[N_remap2_color3FA]
+    NG_range_color3FA_N_clamp_color3FA[N_clamp_color3FA]
+    style NG_range_color3FA_N_switch_color3FA  fill:#C72, color:#FFF
+    NG_range_color3FA_N_switch_color3FA{N_switch_color3FA}
+    style NG_range_color3FA_out  fill:#0C0, color:#FFF
+    NG_range_color3FA_out([out])
+    style NG_range_color3FA_in  fill:#09D, color:#FFF
+    NG_range_color3FA_in([in])
+    style NG_range_color3FA_inlow  fill:#09D, color:#FFF
+    NG_range_color3FA_inlow([inlow])
+    style NG_range_color3FA_inhigh  fill:#09D, color:#FFF
+    NG_range_color3FA_inhigh([inhigh])
+    style NG_range_color3FA_gamma  fill:#09D, color:#FFF
+    NG_range_color3FA_gamma([gamma])
+    style NG_range_color3FA_outlow  fill:#09D, color:#FFF
+    NG_range_color3FA_outlow([outlow])
+    style NG_range_color3FA_outhigh  fill:#09D, color:#FFF
+    NG_range_color3FA_outhigh([outhigh])
+    style NG_range_color3FA_doclamp  fill:#09D, color:#FFF
+    NG_range_color3FA_doclamp([doclamp])
+    end
+    NG_range_color3FA_in --"in"--> NG_range_color3FA_N_remap1_color3FA
+    NG_range_color3FA_inlow --"inlow"--> NG_range_color3FA_N_remap1_color3FA
+    NG_range_color3FA_inhigh --"inhigh"--> NG_range_color3FA_N_remap1_color3FA
+    NG_range_color3FA_gamma --"in2"--> NG_range_color3FA_N_recip_color3FA
+    NG_range_color3FA_N_remap1_color3FA --"in"--> NG_range_color3FA_N_abs_color3FA
+    NG_range_color3FA_N_abs_color3FA --"in1"--> NG_range_color3FA_N_pow_color3FA
+    NG_range_color3FA_N_recip_color3FA --"in2"--> NG_range_color3FA_N_pow_color3FA
+    NG_range_color3FA_N_remap1_color3FA --"in"--> NG_range_color3FA_N_sign_color3FA
+    NG_range_color3FA_N_pow_color3FA --"in1"--> NG_range_color3FA_N_gamma_color3FA
+    NG_range_color3FA_N_sign_color3FA --"in2"--> NG_range_color3FA_N_gamma_color3FA
+    NG_range_color3FA_N_gamma_color3FA --"in"--> NG_range_color3FA_N_remap2_color3FA
+    NG_range_color3FA_outlow --"outlow"--> NG_range_color3FA_N_remap2_color3FA
+    NG_range_color3FA_outhigh --"outhigh"--> NG_range_color3FA_N_remap2_color3FA
+    NG_range_color3FA_N_remap2_color3FA --"in"--> NG_range_color3FA_N_clamp_color3FA
+    NG_range_color3FA_outlow --"low"--> NG_range_color3FA_N_clamp_color3FA
+    NG_range_color3FA_outhigh --"high"--> NG_range_color3FA_N_clamp_color3FA
+    NG_range_color3FA_N_clamp_color3FA --"in1"--> NG_range_color3FA_N_switch_color3FA
+    NG_range_color3FA_N_remap2_color3FA --"in2"--> NG_range_color3FA_N_switch_color3FA
+    NG_range_color3FA_doclamp --"value1"--> NG_range_color3FA_N_switch_color3FA
+    NG_range_color3FA_N_switch_color3FA --> NG_range_color3FA_out
 
 
 </div></code></pre>
@@ -2717,40 +2822,55 @@ graph LR;
 <div id="ND_range_color4FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_range_color4FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_range_color4FA_N_switch_color4FA{ifequal} --> NG_range_color4FA_out([out])
-    style NG_range_color4FA_out fill:#0C0, color:#111
-    NG_range_color4FA_doclampINT([doclamp]) ==.value1==> NG_range_color4FA_N_switch_color4FA[ifequal]
-    style NG_range_color4FA_doclampINT fill:#0CF, color:#111
-    NG_range_color4FA_N_clamp_color4FA[clamp] --".in1"--> NG_range_color4FA_N_switch_color4FA{ifequal}
-    style NG_range_color4FA_N_switch_color4FA fill:#F80, color:#111
-    NG_range_color4FA_outlowINT([outlow]) ==.low==> NG_range_color4FA_N_clamp_color4FA[clamp]
-    style NG_range_color4FA_outlowINT fill:#0CF, color:#111
-    NG_range_color4FA_outhighINT([outhigh]) ==.high==> NG_range_color4FA_N_clamp_color4FA[clamp]
-    style NG_range_color4FA_outhighINT fill:#0CF, color:#111
-    NG_range_color4FA_N_remap2_color4FA[remap] --".in"--> NG_range_color4FA_N_clamp_color4FA[clamp]
-    NG_range_color4FA_outlowINT([outlow]) ==.outlow==> NG_range_color4FA_N_remap2_color4FA[remap]
-    style NG_range_color4FA_outlowINT fill:#0CF, color:#111
-    NG_range_color4FA_outhighINT([outhigh]) ==.outhigh==> NG_range_color4FA_N_remap2_color4FA[remap]
-    style NG_range_color4FA_outhighINT fill:#0CF, color:#111
-    NG_range_color4FA_N_gamma_color4FA[multiply] --".in"--> NG_range_color4FA_N_remap2_color4FA[remap]
-    NG_range_color4FA_N_pow_color4FA[power] --".in1"--> NG_range_color4FA_N_gamma_color4FA[multiply]
-    NG_range_color4FA_N_abs_color4FA[absval] --".in1"--> NG_range_color4FA_N_pow_color4FA[power]
-    NG_range_color4FA_N_remap1_color4FA[remap] --".in"--> NG_range_color4FA_N_abs_color4FA[absval]
-    NG_range_color4FA_inINT([in]) ==.in==> NG_range_color4FA_N_remap1_color4FA[remap]
-    style NG_range_color4FA_inINT fill:#0CF, color:#111
-    NG_range_color4FA_inlowINT([inlow]) ==.inlow==> NG_range_color4FA_N_remap1_color4FA[remap]
-    style NG_range_color4FA_inlowINT fill:#0CF, color:#111
-    NG_range_color4FA_inhighINT([inhigh]) ==.inhigh==> NG_range_color4FA_N_remap1_color4FA[remap]
-    style NG_range_color4FA_inhighINT fill:#0CF, color:#111
-    NG_range_color4FA_N_recip_color4FA[divide] --".in2"--> NG_range_color4FA_N_pow_color4FA[power]
-    NG_range_color4FA_gammaINT([gamma]) ==.in2==> NG_range_color4FA_N_recip_color4FA[divide]
-    style NG_range_color4FA_gammaINT fill:#0CF, color:#111
-    NG_range_color4FA_N_sign_color4FA[sign] --".in2"--> NG_range_color4FA_N_gamma_color4FA[multiply]
-    NG_range_color4FA_N_remap1_color4FA[remap] --".in"--> NG_range_color4FA_N_sign_color4FA[sign]
-    NG_range_color4FA_N_remap2_color4FA[remap] --".in2"--> NG_range_color4FA_N_switch_color4FA{ifequal}
-    style NG_range_color4FA_N_switch_color4FA fill:#F80, color:#111
-
+graph TB
+    subgraph NG_range_color4FA
+    NG_range_color4FA_N_remap1_color4FA[N_remap1_color4FA]
+    NG_range_color4FA_N_recip_color4FA[N_recip_color4FA]
+    NG_range_color4FA_N_abs_color4FA[N_abs_color4FA]
+    NG_range_color4FA_N_pow_color4FA[N_pow_color4FA]
+    NG_range_color4FA_N_sign_color4FA[N_sign_color4FA]
+    NG_range_color4FA_N_gamma_color4FA[N_gamma_color4FA]
+    NG_range_color4FA_N_remap2_color4FA[N_remap2_color4FA]
+    NG_range_color4FA_N_clamp_color4FA[N_clamp_color4FA]
+    style NG_range_color4FA_N_switch_color4FA  fill:#C72, color:#FFF
+    NG_range_color4FA_N_switch_color4FA{N_switch_color4FA}
+    style NG_range_color4FA_out  fill:#0C0, color:#FFF
+    NG_range_color4FA_out([out])
+    style NG_range_color4FA_in  fill:#09D, color:#FFF
+    NG_range_color4FA_in([in])
+    style NG_range_color4FA_inlow  fill:#09D, color:#FFF
+    NG_range_color4FA_inlow([inlow])
+    style NG_range_color4FA_inhigh  fill:#09D, color:#FFF
+    NG_range_color4FA_inhigh([inhigh])
+    style NG_range_color4FA_gamma  fill:#09D, color:#FFF
+    NG_range_color4FA_gamma([gamma])
+    style NG_range_color4FA_outlow  fill:#09D, color:#FFF
+    NG_range_color4FA_outlow([outlow])
+    style NG_range_color4FA_outhigh  fill:#09D, color:#FFF
+    NG_range_color4FA_outhigh([outhigh])
+    style NG_range_color4FA_doclamp  fill:#09D, color:#FFF
+    NG_range_color4FA_doclamp([doclamp])
+    end
+    NG_range_color4FA_in --"in"--> NG_range_color4FA_N_remap1_color4FA
+    NG_range_color4FA_inlow --"inlow"--> NG_range_color4FA_N_remap1_color4FA
+    NG_range_color4FA_inhigh --"inhigh"--> NG_range_color4FA_N_remap1_color4FA
+    NG_range_color4FA_gamma --"in2"--> NG_range_color4FA_N_recip_color4FA
+    NG_range_color4FA_N_remap1_color4FA --"in"--> NG_range_color4FA_N_abs_color4FA
+    NG_range_color4FA_N_abs_color4FA --"in1"--> NG_range_color4FA_N_pow_color4FA
+    NG_range_color4FA_N_recip_color4FA --"in2"--> NG_range_color4FA_N_pow_color4FA
+    NG_range_color4FA_N_remap1_color4FA --"in"--> NG_range_color4FA_N_sign_color4FA
+    NG_range_color4FA_N_pow_color4FA --"in1"--> NG_range_color4FA_N_gamma_color4FA
+    NG_range_color4FA_N_sign_color4FA --"in2"--> NG_range_color4FA_N_gamma_color4FA
+    NG_range_color4FA_N_gamma_color4FA --"in"--> NG_range_color4FA_N_remap2_color4FA
+    NG_range_color4FA_outlow --"outlow"--> NG_range_color4FA_N_remap2_color4FA
+    NG_range_color4FA_outhigh --"outhigh"--> NG_range_color4FA_N_remap2_color4FA
+    NG_range_color4FA_N_remap2_color4FA --"in"--> NG_range_color4FA_N_clamp_color4FA
+    NG_range_color4FA_outlow --"low"--> NG_range_color4FA_N_clamp_color4FA
+    NG_range_color4FA_outhigh --"high"--> NG_range_color4FA_N_clamp_color4FA
+    NG_range_color4FA_N_clamp_color4FA --"in1"--> NG_range_color4FA_N_switch_color4FA
+    NG_range_color4FA_N_remap2_color4FA --"in2"--> NG_range_color4FA_N_switch_color4FA
+    NG_range_color4FA_doclamp --"value1"--> NG_range_color4FA_N_switch_color4FA
+    NG_range_color4FA_N_switch_color4FA --> NG_range_color4FA_out
 
 
 </div></code></pre>
@@ -2961,40 +3081,55 @@ graph LR;
 <div id="ND_range_vector2FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_range_vector2FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_range_vector2FA_N_switch_vector2FA{ifequal} --> NG_range_vector2FA_out([out])
-    style NG_range_vector2FA_out fill:#0C0, color:#111
-    NG_range_vector2FA_doclampINT([doclamp]) ==.value1==> NG_range_vector2FA_N_switch_vector2FA[ifequal]
-    style NG_range_vector2FA_doclampINT fill:#0CF, color:#111
-    NG_range_vector2FA_N_clamp_vector2FA[clamp] --".in1"--> NG_range_vector2FA_N_switch_vector2FA{ifequal}
-    style NG_range_vector2FA_N_switch_vector2FA fill:#F80, color:#111
-    NG_range_vector2FA_outlowINT([outlow]) ==.low==> NG_range_vector2FA_N_clamp_vector2FA[clamp]
-    style NG_range_vector2FA_outlowINT fill:#0CF, color:#111
-    NG_range_vector2FA_outhighINT([outhigh]) ==.high==> NG_range_vector2FA_N_clamp_vector2FA[clamp]
-    style NG_range_vector2FA_outhighINT fill:#0CF, color:#111
-    NG_range_vector2FA_N_remap2_vector2FA[remap] --".in"--> NG_range_vector2FA_N_clamp_vector2FA[clamp]
-    NG_range_vector2FA_outlowINT([outlow]) ==.outlow==> NG_range_vector2FA_N_remap2_vector2FA[remap]
-    style NG_range_vector2FA_outlowINT fill:#0CF, color:#111
-    NG_range_vector2FA_outhighINT([outhigh]) ==.outhigh==> NG_range_vector2FA_N_remap2_vector2FA[remap]
-    style NG_range_vector2FA_outhighINT fill:#0CF, color:#111
-    NG_range_vector2FA_N_gamma_vector2FA[multiply] --".in"--> NG_range_vector2FA_N_remap2_vector2FA[remap]
-    NG_range_vector2FA_N_pow_vector2FA[power] --".in1"--> NG_range_vector2FA_N_gamma_vector2FA[multiply]
-    NG_range_vector2FA_N_abs_vector2FA[absval] --".in1"--> NG_range_vector2FA_N_pow_vector2FA[power]
-    NG_range_vector2FA_N_remap1_vector2FA[remap] --".in"--> NG_range_vector2FA_N_abs_vector2FA[absval]
-    NG_range_vector2FA_inINT([in]) ==.in==> NG_range_vector2FA_N_remap1_vector2FA[remap]
-    style NG_range_vector2FA_inINT fill:#0CF, color:#111
-    NG_range_vector2FA_inlowINT([inlow]) ==.inlow==> NG_range_vector2FA_N_remap1_vector2FA[remap]
-    style NG_range_vector2FA_inlowINT fill:#0CF, color:#111
-    NG_range_vector2FA_inhighINT([inhigh]) ==.inhigh==> NG_range_vector2FA_N_remap1_vector2FA[remap]
-    style NG_range_vector2FA_inhighINT fill:#0CF, color:#111
-    NG_range_vector2FA_N_recip_vector2FA[divide] --".in2"--> NG_range_vector2FA_N_pow_vector2FA[power]
-    NG_range_vector2FA_gammaINT([gamma]) ==.in2==> NG_range_vector2FA_N_recip_vector2FA[divide]
-    style NG_range_vector2FA_gammaINT fill:#0CF, color:#111
-    NG_range_vector2FA_N_sign_vector2FA[sign] --".in2"--> NG_range_vector2FA_N_gamma_vector2FA[multiply]
-    NG_range_vector2FA_N_remap1_vector2FA[remap] --".in"--> NG_range_vector2FA_N_sign_vector2FA[sign]
-    NG_range_vector2FA_N_remap2_vector2FA[remap] --".in2"--> NG_range_vector2FA_N_switch_vector2FA{ifequal}
-    style NG_range_vector2FA_N_switch_vector2FA fill:#F80, color:#111
-
+graph TB
+    subgraph NG_range_vector2FA
+    NG_range_vector2FA_N_remap1_vector2FA[N_remap1_vector2FA]
+    NG_range_vector2FA_N_recip_vector2FA[N_recip_vector2FA]
+    NG_range_vector2FA_N_abs_vector2FA[N_abs_vector2FA]
+    NG_range_vector2FA_N_pow_vector2FA[N_pow_vector2FA]
+    NG_range_vector2FA_N_sign_vector2FA[N_sign_vector2FA]
+    NG_range_vector2FA_N_gamma_vector2FA[N_gamma_vector2FA]
+    NG_range_vector2FA_N_remap2_vector2FA[N_remap2_vector2FA]
+    NG_range_vector2FA_N_clamp_vector2FA[N_clamp_vector2FA]
+    style NG_range_vector2FA_N_switch_vector2FA  fill:#C72, color:#FFF
+    NG_range_vector2FA_N_switch_vector2FA{N_switch_vector2FA}
+    style NG_range_vector2FA_out  fill:#0C0, color:#FFF
+    NG_range_vector2FA_out([out])
+    style NG_range_vector2FA_in  fill:#09D, color:#FFF
+    NG_range_vector2FA_in([in])
+    style NG_range_vector2FA_inlow  fill:#09D, color:#FFF
+    NG_range_vector2FA_inlow([inlow])
+    style NG_range_vector2FA_inhigh  fill:#09D, color:#FFF
+    NG_range_vector2FA_inhigh([inhigh])
+    style NG_range_vector2FA_gamma  fill:#09D, color:#FFF
+    NG_range_vector2FA_gamma([gamma])
+    style NG_range_vector2FA_outlow  fill:#09D, color:#FFF
+    NG_range_vector2FA_outlow([outlow])
+    style NG_range_vector2FA_outhigh  fill:#09D, color:#FFF
+    NG_range_vector2FA_outhigh([outhigh])
+    style NG_range_vector2FA_doclamp  fill:#09D, color:#FFF
+    NG_range_vector2FA_doclamp([doclamp])
+    end
+    NG_range_vector2FA_in --"in"--> NG_range_vector2FA_N_remap1_vector2FA
+    NG_range_vector2FA_inlow --"inlow"--> NG_range_vector2FA_N_remap1_vector2FA
+    NG_range_vector2FA_inhigh --"inhigh"--> NG_range_vector2FA_N_remap1_vector2FA
+    NG_range_vector2FA_gamma --"in2"--> NG_range_vector2FA_N_recip_vector2FA
+    NG_range_vector2FA_N_remap1_vector2FA --"in"--> NG_range_vector2FA_N_abs_vector2FA
+    NG_range_vector2FA_N_abs_vector2FA --"in1"--> NG_range_vector2FA_N_pow_vector2FA
+    NG_range_vector2FA_N_recip_vector2FA --"in2"--> NG_range_vector2FA_N_pow_vector2FA
+    NG_range_vector2FA_N_remap1_vector2FA --"in"--> NG_range_vector2FA_N_sign_vector2FA
+    NG_range_vector2FA_N_pow_vector2FA --"in1"--> NG_range_vector2FA_N_gamma_vector2FA
+    NG_range_vector2FA_N_sign_vector2FA --"in2"--> NG_range_vector2FA_N_gamma_vector2FA
+    NG_range_vector2FA_N_gamma_vector2FA --"in"--> NG_range_vector2FA_N_remap2_vector2FA
+    NG_range_vector2FA_outlow --"outlow"--> NG_range_vector2FA_N_remap2_vector2FA
+    NG_range_vector2FA_outhigh --"outhigh"--> NG_range_vector2FA_N_remap2_vector2FA
+    NG_range_vector2FA_N_remap2_vector2FA --"in"--> NG_range_vector2FA_N_clamp_vector2FA
+    NG_range_vector2FA_outlow --"low"--> NG_range_vector2FA_N_clamp_vector2FA
+    NG_range_vector2FA_outhigh --"high"--> NG_range_vector2FA_N_clamp_vector2FA
+    NG_range_vector2FA_N_clamp_vector2FA --"in1"--> NG_range_vector2FA_N_switch_vector2FA
+    NG_range_vector2FA_N_remap2_vector2FA --"in2"--> NG_range_vector2FA_N_switch_vector2FA
+    NG_range_vector2FA_doclamp --"value1"--> NG_range_vector2FA_N_switch_vector2FA
+    NG_range_vector2FA_N_switch_vector2FA --> NG_range_vector2FA_out
 
 
 </div></code></pre>
@@ -3208,40 +3343,55 @@ graph LR;
 <div id="ND_range_vector3FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_range_vector3FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_range_vector3FA_N_switch_vector3FA{ifequal} --> NG_range_vector3FA_out([out])
-    style NG_range_vector3FA_out fill:#0C0, color:#111
-    NG_range_vector3FA_doclampINT([doclamp]) ==.value1==> NG_range_vector3FA_N_switch_vector3FA[ifequal]
-    style NG_range_vector3FA_doclampINT fill:#0CF, color:#111
-    NG_range_vector3FA_N_clamp_vector3FA[clamp] --".in1"--> NG_range_vector3FA_N_switch_vector3FA{ifequal}
-    style NG_range_vector3FA_N_switch_vector3FA fill:#F80, color:#111
-    NG_range_vector3FA_outlowINT([outlow]) ==.low==> NG_range_vector3FA_N_clamp_vector3FA[clamp]
-    style NG_range_vector3FA_outlowINT fill:#0CF, color:#111
-    NG_range_vector3FA_outhighINT([outhigh]) ==.high==> NG_range_vector3FA_N_clamp_vector3FA[clamp]
-    style NG_range_vector3FA_outhighINT fill:#0CF, color:#111
-    NG_range_vector3FA_N_remap2_vector3FA[remap] --".in"--> NG_range_vector3FA_N_clamp_vector3FA[clamp]
-    NG_range_vector3FA_outlowINT([outlow]) ==.outlow==> NG_range_vector3FA_N_remap2_vector3FA[remap]
-    style NG_range_vector3FA_outlowINT fill:#0CF, color:#111
-    NG_range_vector3FA_outhighINT([outhigh]) ==.outhigh==> NG_range_vector3FA_N_remap2_vector3FA[remap]
-    style NG_range_vector3FA_outhighINT fill:#0CF, color:#111
-    NG_range_vector3FA_N_gamma_vector3FA[multiply] --".in"--> NG_range_vector3FA_N_remap2_vector3FA[remap]
-    NG_range_vector3FA_N_pow_vector3FA[power] --".in1"--> NG_range_vector3FA_N_gamma_vector3FA[multiply]
-    NG_range_vector3FA_N_abs_vector3FA[absval] --".in1"--> NG_range_vector3FA_N_pow_vector3FA[power]
-    NG_range_vector3FA_N_remap1_vector3FA[remap] --".in"--> NG_range_vector3FA_N_abs_vector3FA[absval]
-    NG_range_vector3FA_inINT([in]) ==.in==> NG_range_vector3FA_N_remap1_vector3FA[remap]
-    style NG_range_vector3FA_inINT fill:#0CF, color:#111
-    NG_range_vector3FA_inlowINT([inlow]) ==.inlow==> NG_range_vector3FA_N_remap1_vector3FA[remap]
-    style NG_range_vector3FA_inlowINT fill:#0CF, color:#111
-    NG_range_vector3FA_inhighINT([inhigh]) ==.inhigh==> NG_range_vector3FA_N_remap1_vector3FA[remap]
-    style NG_range_vector3FA_inhighINT fill:#0CF, color:#111
-    NG_range_vector3FA_N_recip_vector3FA[divide] --".in2"--> NG_range_vector3FA_N_pow_vector3FA[power]
-    NG_range_vector3FA_gammaINT([gamma]) ==.in2==> NG_range_vector3FA_N_recip_vector3FA[divide]
-    style NG_range_vector3FA_gammaINT fill:#0CF, color:#111
-    NG_range_vector3FA_N_sign_vector3FA[sign] --".in2"--> NG_range_vector3FA_N_gamma_vector3FA[multiply]
-    NG_range_vector3FA_N_remap1_vector3FA[remap] --".in"--> NG_range_vector3FA_N_sign_vector3FA[sign]
-    NG_range_vector3FA_N_remap2_vector3FA[remap] --".in2"--> NG_range_vector3FA_N_switch_vector3FA{ifequal}
-    style NG_range_vector3FA_N_switch_vector3FA fill:#F80, color:#111
-
+graph TB
+    subgraph NG_range_vector3FA
+    NG_range_vector3FA_N_remap1_vector3FA[N_remap1_vector3FA]
+    NG_range_vector3FA_N_recip_vector3FA[N_recip_vector3FA]
+    NG_range_vector3FA_N_abs_vector3FA[N_abs_vector3FA]
+    NG_range_vector3FA_N_pow_vector3FA[N_pow_vector3FA]
+    NG_range_vector3FA_N_sign_vector3FA[N_sign_vector3FA]
+    NG_range_vector3FA_N_gamma_vector3FA[N_gamma_vector3FA]
+    NG_range_vector3FA_N_remap2_vector3FA[N_remap2_vector3FA]
+    NG_range_vector3FA_N_clamp_vector3FA[N_clamp_vector3FA]
+    style NG_range_vector3FA_N_switch_vector3FA  fill:#C72, color:#FFF
+    NG_range_vector3FA_N_switch_vector3FA{N_switch_vector3FA}
+    style NG_range_vector3FA_out  fill:#0C0, color:#FFF
+    NG_range_vector3FA_out([out])
+    style NG_range_vector3FA_in  fill:#09D, color:#FFF
+    NG_range_vector3FA_in([in])
+    style NG_range_vector3FA_inlow  fill:#09D, color:#FFF
+    NG_range_vector3FA_inlow([inlow])
+    style NG_range_vector3FA_inhigh  fill:#09D, color:#FFF
+    NG_range_vector3FA_inhigh([inhigh])
+    style NG_range_vector3FA_gamma  fill:#09D, color:#FFF
+    NG_range_vector3FA_gamma([gamma])
+    style NG_range_vector3FA_outlow  fill:#09D, color:#FFF
+    NG_range_vector3FA_outlow([outlow])
+    style NG_range_vector3FA_outhigh  fill:#09D, color:#FFF
+    NG_range_vector3FA_outhigh([outhigh])
+    style NG_range_vector3FA_doclamp  fill:#09D, color:#FFF
+    NG_range_vector3FA_doclamp([doclamp])
+    end
+    NG_range_vector3FA_in --"in"--> NG_range_vector3FA_N_remap1_vector3FA
+    NG_range_vector3FA_inlow --"inlow"--> NG_range_vector3FA_N_remap1_vector3FA
+    NG_range_vector3FA_inhigh --"inhigh"--> NG_range_vector3FA_N_remap1_vector3FA
+    NG_range_vector3FA_gamma --"in2"--> NG_range_vector3FA_N_recip_vector3FA
+    NG_range_vector3FA_N_remap1_vector3FA --"in"--> NG_range_vector3FA_N_abs_vector3FA
+    NG_range_vector3FA_N_abs_vector3FA --"in1"--> NG_range_vector3FA_N_pow_vector3FA
+    NG_range_vector3FA_N_recip_vector3FA --"in2"--> NG_range_vector3FA_N_pow_vector3FA
+    NG_range_vector3FA_N_remap1_vector3FA --"in"--> NG_range_vector3FA_N_sign_vector3FA
+    NG_range_vector3FA_N_pow_vector3FA --"in1"--> NG_range_vector3FA_N_gamma_vector3FA
+    NG_range_vector3FA_N_sign_vector3FA --"in2"--> NG_range_vector3FA_N_gamma_vector3FA
+    NG_range_vector3FA_N_gamma_vector3FA --"in"--> NG_range_vector3FA_N_remap2_vector3FA
+    NG_range_vector3FA_outlow --"outlow"--> NG_range_vector3FA_N_remap2_vector3FA
+    NG_range_vector3FA_outhigh --"outhigh"--> NG_range_vector3FA_N_remap2_vector3FA
+    NG_range_vector3FA_N_remap2_vector3FA --"in"--> NG_range_vector3FA_N_clamp_vector3FA
+    NG_range_vector3FA_outlow --"low"--> NG_range_vector3FA_N_clamp_vector3FA
+    NG_range_vector3FA_outhigh --"high"--> NG_range_vector3FA_N_clamp_vector3FA
+    NG_range_vector3FA_N_clamp_vector3FA --"in1"--> NG_range_vector3FA_N_switch_vector3FA
+    NG_range_vector3FA_N_remap2_vector3FA --"in2"--> NG_range_vector3FA_N_switch_vector3FA
+    NG_range_vector3FA_doclamp --"value1"--> NG_range_vector3FA_N_switch_vector3FA
+    NG_range_vector3FA_N_switch_vector3FA --> NG_range_vector3FA_out
 
 
 </div></code></pre>
@@ -3458,40 +3608,55 @@ graph LR;
 <div id="ND_range_vector4FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_range_vector4FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_range_vector4FA_N_switch_vector4FA{ifequal} --> NG_range_vector4FA_out([out])
-    style NG_range_vector4FA_out fill:#0C0, color:#111
-    NG_range_vector4FA_doclampINT([doclamp]) ==.value1==> NG_range_vector4FA_N_switch_vector4FA[ifequal]
-    style NG_range_vector4FA_doclampINT fill:#0CF, color:#111
-    NG_range_vector4FA_N_clamp_vector4FA[clamp] --".in1"--> NG_range_vector4FA_N_switch_vector4FA{ifequal}
-    style NG_range_vector4FA_N_switch_vector4FA fill:#F80, color:#111
-    NG_range_vector4FA_outlowINT([outlow]) ==.low==> NG_range_vector4FA_N_clamp_vector4FA[clamp]
-    style NG_range_vector4FA_outlowINT fill:#0CF, color:#111
-    NG_range_vector4FA_outhighINT([outhigh]) ==.high==> NG_range_vector4FA_N_clamp_vector4FA[clamp]
-    style NG_range_vector4FA_outhighINT fill:#0CF, color:#111
-    NG_range_vector4FA_N_remap2_vector4FA[remap] --".in"--> NG_range_vector4FA_N_clamp_vector4FA[clamp]
-    NG_range_vector4FA_outlowINT([outlow]) ==.outlow==> NG_range_vector4FA_N_remap2_vector4FA[remap]
-    style NG_range_vector4FA_outlowINT fill:#0CF, color:#111
-    NG_range_vector4FA_outhighINT([outhigh]) ==.outhigh==> NG_range_vector4FA_N_remap2_vector4FA[remap]
-    style NG_range_vector4FA_outhighINT fill:#0CF, color:#111
-    NG_range_vector4FA_N_gamma_vector4FA[multiply] --".in"--> NG_range_vector4FA_N_remap2_vector4FA[remap]
-    NG_range_vector4FA_N_pow_vector4FA[power] --".in1"--> NG_range_vector4FA_N_gamma_vector4FA[multiply]
-    NG_range_vector4FA_N_abs_vector4FA[absval] --".in1"--> NG_range_vector4FA_N_pow_vector4FA[power]
-    NG_range_vector4FA_N_remap1_vector4FA[remap] --".in"--> NG_range_vector4FA_N_abs_vector4FA[absval]
-    NG_range_vector4FA_inINT([in]) ==.in==> NG_range_vector4FA_N_remap1_vector4FA[remap]
-    style NG_range_vector4FA_inINT fill:#0CF, color:#111
-    NG_range_vector4FA_inlowINT([inlow]) ==.inlow==> NG_range_vector4FA_N_remap1_vector4FA[remap]
-    style NG_range_vector4FA_inlowINT fill:#0CF, color:#111
-    NG_range_vector4FA_inhighINT([inhigh]) ==.inhigh==> NG_range_vector4FA_N_remap1_vector4FA[remap]
-    style NG_range_vector4FA_inhighINT fill:#0CF, color:#111
-    NG_range_vector4FA_N_recip_vector4FA[divide] --".in2"--> NG_range_vector4FA_N_pow_vector4FA[power]
-    NG_range_vector4FA_gammaINT([gamma]) ==.in2==> NG_range_vector4FA_N_recip_vector4FA[divide]
-    style NG_range_vector4FA_gammaINT fill:#0CF, color:#111
-    NG_range_vector4FA_N_sign_vector4FA[sign] --".in2"--> NG_range_vector4FA_N_gamma_vector4FA[multiply]
-    NG_range_vector4FA_N_remap1_vector4FA[remap] --".in"--> NG_range_vector4FA_N_sign_vector4FA[sign]
-    NG_range_vector4FA_N_remap2_vector4FA[remap] --".in2"--> NG_range_vector4FA_N_switch_vector4FA{ifequal}
-    style NG_range_vector4FA_N_switch_vector4FA fill:#F80, color:#111
-
+graph TB
+    subgraph NG_range_vector4FA
+    NG_range_vector4FA_N_remap1_vector4FA[N_remap1_vector4FA]
+    NG_range_vector4FA_N_recip_vector4FA[N_recip_vector4FA]
+    NG_range_vector4FA_N_abs_vector4FA[N_abs_vector4FA]
+    NG_range_vector4FA_N_pow_vector4FA[N_pow_vector4FA]
+    NG_range_vector4FA_N_sign_vector4FA[N_sign_vector4FA]
+    NG_range_vector4FA_N_gamma_vector4FA[N_gamma_vector4FA]
+    NG_range_vector4FA_N_remap2_vector4FA[N_remap2_vector4FA]
+    NG_range_vector4FA_N_clamp_vector4FA[N_clamp_vector4FA]
+    style NG_range_vector4FA_N_switch_vector4FA  fill:#C72, color:#FFF
+    NG_range_vector4FA_N_switch_vector4FA{N_switch_vector4FA}
+    style NG_range_vector4FA_out  fill:#0C0, color:#FFF
+    NG_range_vector4FA_out([out])
+    style NG_range_vector4FA_in  fill:#09D, color:#FFF
+    NG_range_vector4FA_in([in])
+    style NG_range_vector4FA_inlow  fill:#09D, color:#FFF
+    NG_range_vector4FA_inlow([inlow])
+    style NG_range_vector4FA_inhigh  fill:#09D, color:#FFF
+    NG_range_vector4FA_inhigh([inhigh])
+    style NG_range_vector4FA_gamma  fill:#09D, color:#FFF
+    NG_range_vector4FA_gamma([gamma])
+    style NG_range_vector4FA_outlow  fill:#09D, color:#FFF
+    NG_range_vector4FA_outlow([outlow])
+    style NG_range_vector4FA_outhigh  fill:#09D, color:#FFF
+    NG_range_vector4FA_outhigh([outhigh])
+    style NG_range_vector4FA_doclamp  fill:#09D, color:#FFF
+    NG_range_vector4FA_doclamp([doclamp])
+    end
+    NG_range_vector4FA_in --"in"--> NG_range_vector4FA_N_remap1_vector4FA
+    NG_range_vector4FA_inlow --"inlow"--> NG_range_vector4FA_N_remap1_vector4FA
+    NG_range_vector4FA_inhigh --"inhigh"--> NG_range_vector4FA_N_remap1_vector4FA
+    NG_range_vector4FA_gamma --"in2"--> NG_range_vector4FA_N_recip_vector4FA
+    NG_range_vector4FA_N_remap1_vector4FA --"in"--> NG_range_vector4FA_N_abs_vector4FA
+    NG_range_vector4FA_N_abs_vector4FA --"in1"--> NG_range_vector4FA_N_pow_vector4FA
+    NG_range_vector4FA_N_recip_vector4FA --"in2"--> NG_range_vector4FA_N_pow_vector4FA
+    NG_range_vector4FA_N_remap1_vector4FA --"in"--> NG_range_vector4FA_N_sign_vector4FA
+    NG_range_vector4FA_N_pow_vector4FA --"in1"--> NG_range_vector4FA_N_gamma_vector4FA
+    NG_range_vector4FA_N_sign_vector4FA --"in2"--> NG_range_vector4FA_N_gamma_vector4FA
+    NG_range_vector4FA_N_gamma_vector4FA --"in"--> NG_range_vector4FA_N_remap2_vector4FA
+    NG_range_vector4FA_outlow --"outlow"--> NG_range_vector4FA_N_remap2_vector4FA
+    NG_range_vector4FA_outhigh --"outhigh"--> NG_range_vector4FA_N_remap2_vector4FA
+    NG_range_vector4FA_N_remap2_vector4FA --"in"--> NG_range_vector4FA_N_clamp_vector4FA
+    NG_range_vector4FA_outlow --"low"--> NG_range_vector4FA_N_clamp_vector4FA
+    NG_range_vector4FA_outhigh --"high"--> NG_range_vector4FA_N_clamp_vector4FA
+    NG_range_vector4FA_N_clamp_vector4FA --"in1"--> NG_range_vector4FA_N_switch_vector4FA
+    NG_range_vector4FA_N_remap2_vector4FA --"in2"--> NG_range_vector4FA_N_switch_vector4FA
+    NG_range_vector4FA_doclamp --"value1"--> NG_range_vector4FA_N_switch_vector4FA
+    NG_range_vector4FA_N_switch_vector4FA --> NG_range_vector4FA_out
 
 
 </div></code></pre>

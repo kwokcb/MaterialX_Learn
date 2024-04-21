@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="refract" class="ms-2 mb-0">
 Category: refract
@@ -740,43 +740,54 @@ Category: refract
 <div id="ND_refract_vector3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_refract_vector3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_refract_vector3_result{ifgreater} --> NG_refract_vector3_out([out])
-    style NG_refract_vector3_out fill:#0C0, color:#111
-    NG_refract_vector3_k[subtract] --".value2"--> NG_refract_vector3_result{ifgreater}
-    style NG_refract_vector3_result fill:#F80, color:#111
-    NG_refract_vector3_iorsq_one_IdotNsq[multiply] --".in2"--> NG_refract_vector3_k[subtract]
-    NG_refract_vector3_iorsq[multiply] --".in1"--> NG_refract_vector3_iorsq_one_IdotNsq[multiply]
-    NG_refract_vector3_iorINT([ior]) ==.in1==> NG_refract_vector3_iorsq[multiply]
-    style NG_refract_vector3_iorINT fill:#0CF, color:#111
-    NG_refract_vector3_iorINT([ior]) ==.in2==> NG_refract_vector3_iorsq[multiply]
-    style NG_refract_vector3_iorINT fill:#0CF, color:#111
-    NG_refract_vector3_one_IdotNsq[subtract] --".in2"--> NG_refract_vector3_iorsq_one_IdotNsq[multiply]
-    NG_refract_vector3_IdotNsq[multiply] --".in2"--> NG_refract_vector3_one_IdotNsq[subtract]
-    NG_refract_vector3_IdotN[dotproduct] --".in1"--> NG_refract_vector3_IdotNsq[multiply]
-    NG_refract_vector3_inINT([in]) ==.in1==> NG_refract_vector3_IdotN[dotproduct]
-    style NG_refract_vector3_inINT fill:#0CF, color:#111
-    NG_refract_vector3_normalINT([normal]) ==.in2==> NG_refract_vector3_IdotN[dotproduct]
-    style NG_refract_vector3_normalINT fill:#0CF, color:#111
-    NG_refract_vector3_IdotN[dotproduct] --".in2"--> NG_refract_vector3_IdotNsq[multiply]
-    NG_refract_vector3_refract_dir[subtract] --".in2"--> NG_refract_vector3_result{ifgreater}
-    style NG_refract_vector3_result fill:#F80, color:#111
-    NG_refract_vector3_I_scaled[multiply] --".in1"--> NG_refract_vector3_refract_dir[subtract]
-    NG_refract_vector3_inINT([in]) ==.in1==> NG_refract_vector3_I_scaled[multiply]
-    style NG_refract_vector3_inINT fill:#0CF, color:#111
-    NG_refract_vector3_iorINT([ior]) ==.in2==> NG_refract_vector3_I_scaled[multiply]
-    style NG_refract_vector3_iorINT fill:#0CF, color:#111
-    NG_refract_vector3_N_scaled[multiply] --".in2"--> NG_refract_vector3_refract_dir[subtract]
-    NG_refract_vector3_normalINT([normal]) ==.in1==> NG_refract_vector3_N_scaled[multiply]
-    style NG_refract_vector3_normalINT fill:#0CF, color:#111
-    NG_refract_vector3_ior_NdotI_sqrt_k[add] --".in2"--> NG_refract_vector3_N_scaled[multiply]
-    NG_refract_vector3_ior_NdotI[multiply] --".in1"--> NG_refract_vector3_ior_NdotI_sqrt_k[add]
-    NG_refract_vector3_iorINT([ior]) ==.in1==> NG_refract_vector3_ior_NdotI[multiply]
-    style NG_refract_vector3_iorINT fill:#0CF, color:#111
-    NG_refract_vector3_IdotN[dotproduct] --".in2"--> NG_refract_vector3_ior_NdotI[multiply]
-    NG_refract_vector3_sqrt_k[sqrt] --".in2"--> NG_refract_vector3_ior_NdotI_sqrt_k[add]
-    NG_refract_vector3_k[subtract] --".in"--> NG_refract_vector3_sqrt_k[sqrt]
-
+graph TB
+    subgraph NG_refract_vector3
+    NG_refract_vector3_IdotN[IdotN]
+    NG_refract_vector3_IdotNsq[IdotNsq]
+    NG_refract_vector3_iorsq[iorsq]
+    NG_refract_vector3_one_IdotNsq[one_IdotNsq]
+    NG_refract_vector3_iorsq_one_IdotNsq[iorsq_one_IdotNsq]
+    NG_refract_vector3_k[k]
+    NG_refract_vector3_I_scaled[I_scaled]
+    NG_refract_vector3_sqrt_k[sqrt_k]
+    NG_refract_vector3_ior_NdotI[ior_NdotI]
+    NG_refract_vector3_ior_NdotI_sqrt_k[ior_NdotI_sqrt_k]
+    NG_refract_vector3_N_scaled[N_scaled]
+    NG_refract_vector3_refract_dir[refract_dir]
+    NG_refract_vector3_result[result]
+    style NG_refract_vector3_out  fill:#0C0, color:#FFF
+    NG_refract_vector3_out([out])
+    style NG_refract_vector3_in  fill:#09D, color:#FFF
+    NG_refract_vector3_in([in])
+    style NG_refract_vector3_normal  fill:#09D, color:#FFF
+    NG_refract_vector3_normal([normal])
+    style NG_refract_vector3_ior  fill:#09D, color:#FFF
+    NG_refract_vector3_ior([ior])
+    end
+    NG_refract_vector3_in --"in1"--> NG_refract_vector3_IdotN
+    NG_refract_vector3_normal --"in2"--> NG_refract_vector3_IdotN
+    NG_refract_vector3_IdotN --"in1"--> NG_refract_vector3_IdotNsq
+    NG_refract_vector3_IdotN --"in2"--> NG_refract_vector3_IdotNsq
+    NG_refract_vector3_ior --"in1"--> NG_refract_vector3_iorsq
+    NG_refract_vector3_ior --"in2"--> NG_refract_vector3_iorsq
+    NG_refract_vector3_IdotNsq --"in2"--> NG_refract_vector3_one_IdotNsq
+    NG_refract_vector3_iorsq --"in1"--> NG_refract_vector3_iorsq_one_IdotNsq
+    NG_refract_vector3_one_IdotNsq --"in2"--> NG_refract_vector3_iorsq_one_IdotNsq
+    NG_refract_vector3_iorsq_one_IdotNsq --"in2"--> NG_refract_vector3_k
+    NG_refract_vector3_in --"in1"--> NG_refract_vector3_I_scaled
+    NG_refract_vector3_ior --"in2"--> NG_refract_vector3_I_scaled
+    NG_refract_vector3_k --"in"--> NG_refract_vector3_sqrt_k
+    NG_refract_vector3_ior --"in1"--> NG_refract_vector3_ior_NdotI
+    NG_refract_vector3_IdotN --"in2"--> NG_refract_vector3_ior_NdotI
+    NG_refract_vector3_ior_NdotI --"in1"--> NG_refract_vector3_ior_NdotI_sqrt_k
+    NG_refract_vector3_sqrt_k --"in2"--> NG_refract_vector3_ior_NdotI_sqrt_k
+    NG_refract_vector3_normal --"in1"--> NG_refract_vector3_N_scaled
+    NG_refract_vector3_ior_NdotI_sqrt_k --"in2"--> NG_refract_vector3_N_scaled
+    NG_refract_vector3_I_scaled --"in1"--> NG_refract_vector3_refract_dir
+    NG_refract_vector3_N_scaled --"in2"--> NG_refract_vector3_refract_dir
+    NG_refract_vector3_k --"value2"--> NG_refract_vector3_result
+    NG_refract_vector3_refract_dir --"in2"--> NG_refract_vector3_result
+    NG_refract_vector3_result --> NG_refract_vector3_out
 
 
 </div></code></pre>

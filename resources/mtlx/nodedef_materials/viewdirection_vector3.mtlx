@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <viewdirection name="viewdirection_vector3" type="vector3">
     <input name="space" type="string" value="world" enum="model,object,world" uniform="true" />
   </viewdirection>

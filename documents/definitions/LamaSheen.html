@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="LamaSheen" class="ms-2 mb-0">
 Category: LamaSheen
@@ -791,19 +791,28 @@ Category: LamaSheen
 <div id="ND_lama_sheen_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_lama_sheen_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMPL_lama_sheen_sheen_bsdf[sheen_bsdf] --> IMPL_lama_sheen_out([out])
-    style IMPL_lama_sheen_out fill:#0C0, color:#111
-    IMPL_lama_sheen_colorINT([color]) ==.color==> IMPL_lama_sheen_sheen_bsdf[sheen_bsdf]
-    style IMPL_lama_sheen_colorINT fill:#0CF, color:#111
-    IMPL_lama_sheen_normalINT([normal]) ==.normal==> IMPL_lama_sheen_sheen_bsdf[sheen_bsdf]
-    style IMPL_lama_sheen_normalINT fill:#0CF, color:#111
-    IMPL_lama_sheen_roughness_squared[power] --".roughness"--> IMPL_lama_sheen_sheen_bsdf[sheen_bsdf]
-    IMPL_lama_sheen_roughness_remapped[add] --".in1"--> IMPL_lama_sheen_roughness_squared[power]
-    IMPL_lama_sheen_roughness_compressed[multiply] --".in1"--> IMPL_lama_sheen_roughness_remapped[add]
-    IMPL_lama_sheen_roughnessINT([roughness]) ==.in1==> IMPL_lama_sheen_roughness_compressed[multiply]
-    style IMPL_lama_sheen_roughnessINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMPL_lama_sheen
+    IMPL_lama_sheen_roughness_compressed[roughness_compressed]
+    IMPL_lama_sheen_roughness_remapped[roughness_remapped]
+    IMPL_lama_sheen_roughness_squared[roughness_squared]
+    IMPL_lama_sheen_sheen_bsdf[sheen_bsdf]
+    style IMPL_lama_sheen_out  fill:#0C0, color:#FFF
+    IMPL_lama_sheen_out([out])
+    style IMPL_lama_sheen_roughness  fill:#09D, color:#FFF
+    IMPL_lama_sheen_roughness([roughness])
+    style IMPL_lama_sheen_color  fill:#09D, color:#FFF
+    IMPL_lama_sheen_color([color])
+    style IMPL_lama_sheen_normal  fill:#09D, color:#FFF
+    IMPL_lama_sheen_normal([normal])
+    end
+    IMPL_lama_sheen_roughness --"in1"--> IMPL_lama_sheen_roughness_compressed
+    IMPL_lama_sheen_roughness_compressed --"in1"--> IMPL_lama_sheen_roughness_remapped
+    IMPL_lama_sheen_roughness_remapped --"in1"--> IMPL_lama_sheen_roughness_squared
+    IMPL_lama_sheen_color --"color"--> IMPL_lama_sheen_sheen_bsdf
+    IMPL_lama_sheen_roughness_squared --"roughness"--> IMPL_lama_sheen_sheen_bsdf
+    IMPL_lama_sheen_normal --"normal"--> IMPL_lama_sheen_sheen_bsdf
+    IMPL_lama_sheen_sheen_bsdf --> IMPL_lama_sheen_out
 
 
 </div></code></pre>

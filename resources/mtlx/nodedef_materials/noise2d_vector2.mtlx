@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <noise2d name="noise2d_vector2" type="vector2">
     <input name="amplitude" type="vector2" value="1.0, 1.0" />
     <input name="pivot" type="float" value="0.0" />

@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="hexagon" class="ms-2 mb-0">
 Category: hexagon
@@ -715,56 +715,84 @@ Category: hexagon
 <div id="ND_hexagon_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_hexagon_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_hexagon_float_ifgreater_p3{ifgreater} --> NG_hexagon_float_out([out])
-    style NG_hexagon_float_out fill:#0C0, color:#111
-    NG_hexagon_float_p3_sqrt[sqrt] --".value1"--> NG_hexagon_float_ifgreater_p3{ifgreater}
-    style NG_hexagon_float_ifgreater_p3 fill:#F80, color:#111
-    NG_hexagon_float_p3_sum[dotproduct] --".in"--> NG_hexagon_float_p3_sqrt[sqrt]
-    NG_hexagon_float_new_p3[subtract] --".in1"--> NG_hexagon_float_p3_sum[dotproduct]
-    NG_hexagon_float_new_p2[subtract] --".in1"--> NG_hexagon_float_new_p3[subtract]
-    NG_hexagon_float_new_p1[subtract] --".in1"--> NG_hexagon_float_new_p2[subtract]
-    NG_hexagon_float_p[combine2] --".in1"--> NG_hexagon_float_new_p1[subtract]
-    NG_hexagon_float_delta_abs[absval] --".y -> .in1"--> NG_hexagon_float_p[combine2]
-    NG_hexagon_float_delta[subtract] --".in"--> NG_hexagon_float_delta_abs[absval]
-    NG_hexagon_float_texcoordINT([texcoord]) ==.in1==> NG_hexagon_float_delta[subtract]
-    style NG_hexagon_float_texcoordINT fill:#0CF, color:#111
-    NG_hexagon_float_centerINT([center]) ==.in2==> NG_hexagon_float_delta[subtract]
-    style NG_hexagon_float_centerINT fill:#0CF, color:#111
-    NG_hexagon_float_delta_abs[absval] --".x -> .in2"--> NG_hexagon_float_p[combine2]
-    NG_hexagon_float_multiply2_1[multiply] --".in2"--> NG_hexagon_float_new_p1[subtract]
-    NG_hexagon_float_multiply_kxy_min[multiply] --".in1"--> NG_hexagon_float_multiply2_1[multiply]
-    NG_hexagon_float_kxy[combine2] --".in1"--> NG_hexagon_float_multiply_kxy_min[multiply]
-    NG_hexagon_float_k[constant] --".x -> .in1"--> NG_hexagon_float_kxy[combine2]
-    NG_hexagon_float_k[constant] --".y -> .in2"--> NG_hexagon_float_kxy[combine2]
-    NG_hexagon_float_min_dotkxyp_p[min] --".in2"--> NG_hexagon_float_multiply_kxy_min[multiply]
-    NG_hexagon_float_dot_kxy_p[dotproduct] --".in1"--> NG_hexagon_float_min_dotkxyp_p[min]
-    NG_hexagon_float_kxy[combine2] --".in1"--> NG_hexagon_float_dot_kxy_p[dotproduct]
-    NG_hexagon_float_p[combine2] --".in2"--> NG_hexagon_float_dot_kxy_p[dotproduct]
-    NG_hexagon_float_multiply2_2[multiply] --".in2"--> NG_hexagon_float_new_p2[subtract]
-    NG_hexagon_float_multiply_min_comb[multiply] --".in1"--> NG_hexagon_float_multiply2_2[multiply]
-    NG_hexagon_float_combine_mkx_ky[combine2] --".in1"--> NG_hexagon_float_multiply_min_comb[multiply]
-    NG_hexagon_float_minus_k[multiply] --".x -> .in1"--> NG_hexagon_float_combine_mkx_ky[combine2]
-    NG_hexagon_float_k[constant] --".in1"--> NG_hexagon_float_minus_k[multiply]
-    NG_hexagon_float_k[constant] --".y -> .in2"--> NG_hexagon_float_combine_mkx_ky[combine2]
-    NG_hexagon_float_min_0[min] --".in2"--> NG_hexagon_float_multiply_min_comb[multiply]
-    NG_hexagon_float_dot_kxy_p1[dotproduct] --".in1"--> NG_hexagon_float_min_0[min]
-    NG_hexagon_float_combine_mkx_ky[combine2] --".in1"--> NG_hexagon_float_dot_kxy_p1[dotproduct]
-    NG_hexagon_float_new_p1[subtract] --".in2"--> NG_hexagon_float_dot_kxy_p1[dotproduct]
-    NG_hexagon_float_combine_clamp_rad[combine2] --".in2"--> NG_hexagon_float_new_p3[subtract]
-    NG_hexagon_float_radiusINT([radius]) ==.in2==> NG_hexagon_float_combine_clamp_rad[combine2]
-    style NG_hexagon_float_radiusINT fill:#0CF, color:#111
-    NG_hexagon_float_clamp[clamp] --".in1"--> NG_hexagon_float_combine_clamp_rad[combine2]
-    NG_hexagon_float_new_p2[subtract] --".x -> .in"--> NG_hexagon_float_clamp[clamp]
-    NG_hexagon_float_minus_kz_r[multiply] --".low"--> NG_hexagon_float_clamp[clamp]
-    NG_hexagon_float_radiusINT([radius]) ==.in2==> NG_hexagon_float_minus_kz_r[multiply]
-    style NG_hexagon_float_radiusINT fill:#0CF, color:#111
-    NG_hexagon_float_minus_k[multiply] --".z -> .in1"--> NG_hexagon_float_minus_kz_r[multiply]
-    NG_hexagon_float_kz_r1[multiply] --".high"--> NG_hexagon_float_clamp[clamp]
-    NG_hexagon_float_radiusINT([radius]) ==.in2==> NG_hexagon_float_kz_r1[multiply]
-    style NG_hexagon_float_radiusINT fill:#0CF, color:#111
-    NG_hexagon_float_k[constant] --".z -> .in1"--> NG_hexagon_float_kz_r1[multiply]
-
+graph TB
+    subgraph NG_hexagon_float
+    NG_hexagon_float_delta[delta]
+    NG_hexagon_float_delta_abs[delta_abs]
+    NG_hexagon_float_p[p]
+    style NG_hexagon_float_k  fill:#500, color:#FFF
+    NG_hexagon_float_k([k:-0.866025, 0.5, 0.57735])
+    NG_hexagon_float_kz_r1[kz_r1]
+    NG_hexagon_float_minus_k[minus_k]
+    NG_hexagon_float_minus_kz_r[minus_kz_r]
+    NG_hexagon_float_combine_mkx_ky[combine_mkx_ky]
+    NG_hexagon_float_kxy[kxy]
+    NG_hexagon_float_dot_kxy_p[dot_kxy_p]
+    NG_hexagon_float_dot_kxy_p1[dot_kxy_p1]
+    NG_hexagon_float_min_dotkxyp_p[min_dotkxyp_p]
+    NG_hexagon_float_min_0[min_0]
+    NG_hexagon_float_multiply_kxy_min[multiply_kxy_min]
+    NG_hexagon_float_multiply2_1[multiply2_1]
+    NG_hexagon_float_multiply_min_comb[multiply_min_comb]
+    NG_hexagon_float_multiply2_2[multiply2_2]
+    NG_hexagon_float_clamp[clamp]
+    NG_hexagon_float_combine_clamp_rad[combine_clamp_rad]
+    NG_hexagon_float_new_p1[new_p1]
+    NG_hexagon_float_new_p2[new_p2]
+    NG_hexagon_float_new_p3[new_p3]
+    NG_hexagon_float_p3_sum[p3_sum]
+    NG_hexagon_float_p3_sqrt[p3_sqrt]
+    NG_hexagon_float_ifgreater_p3[ifgreater_p3]
+    style NG_hexagon_float_out  fill:#0C0, color:#FFF
+    NG_hexagon_float_out([out])
+    style NG_hexagon_float_texcoord  fill:#09D, color:#FFF
+    NG_hexagon_float_texcoord([texcoord])
+    style NG_hexagon_float_center  fill:#09D, color:#FFF
+    NG_hexagon_float_center([center])
+    style NG_hexagon_float_radius  fill:#09D, color:#FFF
+    NG_hexagon_float_radius([radius])
+    end
+    NG_hexagon_float_texcoord --"in1"--> NG_hexagon_float_delta
+    NG_hexagon_float_center --"in2"--> NG_hexagon_float_delta
+    NG_hexagon_float_delta --"in"--> NG_hexagon_float_delta_abs
+    NG_hexagon_float_delta_abs --"in1"--> NG_hexagon_float_p
+    NG_hexagon_float_delta_abs --"in2"--> NG_hexagon_float_p
+    NG_hexagon_float_k --"in1"--> NG_hexagon_float_kz_r1
+    NG_hexagon_float_radius --"in2"--> NG_hexagon_float_kz_r1
+    NG_hexagon_float_k --"in1"--> NG_hexagon_float_minus_k
+    NG_hexagon_float_minus_k --"in1"--> NG_hexagon_float_minus_kz_r
+    NG_hexagon_float_radius --"in2"--> NG_hexagon_float_minus_kz_r
+    NG_hexagon_float_minus_k --"in1"--> NG_hexagon_float_combine_mkx_ky
+    NG_hexagon_float_k --"in2"--> NG_hexagon_float_combine_mkx_ky
+    NG_hexagon_float_k --"in1"--> NG_hexagon_float_kxy
+    NG_hexagon_float_k --"in2"--> NG_hexagon_float_kxy
+    NG_hexagon_float_kxy --"in1"--> NG_hexagon_float_dot_kxy_p
+    NG_hexagon_float_p --"in2"--> NG_hexagon_float_dot_kxy_p
+    NG_hexagon_float_combine_mkx_ky --"in1"--> NG_hexagon_float_dot_kxy_p1
+    NG_hexagon_float_new_p1 --"in2"--> NG_hexagon_float_dot_kxy_p1
+    NG_hexagon_float_dot_kxy_p --"in1"--> NG_hexagon_float_min_dotkxyp_p
+    NG_hexagon_float_dot_kxy_p1 --"in1"--> NG_hexagon_float_min_0
+    NG_hexagon_float_kxy --"in1"--> NG_hexagon_float_multiply_kxy_min
+    NG_hexagon_float_min_dotkxyp_p --"in2"--> NG_hexagon_float_multiply_kxy_min
+    NG_hexagon_float_multiply_kxy_min --"in1"--> NG_hexagon_float_multiply2_1
+    NG_hexagon_float_combine_mkx_ky --"in1"--> NG_hexagon_float_multiply_min_comb
+    NG_hexagon_float_min_0 --"in2"--> NG_hexagon_float_multiply_min_comb
+    NG_hexagon_float_multiply_min_comb --"in1"--> NG_hexagon_float_multiply2_2
+    NG_hexagon_float_new_p2 --"in"--> NG_hexagon_float_clamp
+    NG_hexagon_float_minus_kz_r --"low"--> NG_hexagon_float_clamp
+    NG_hexagon_float_kz_r1 --"high"--> NG_hexagon_float_clamp
+    NG_hexagon_float_clamp --"in1"--> NG_hexagon_float_combine_clamp_rad
+    NG_hexagon_float_radius --"in2"--> NG_hexagon_float_combine_clamp_rad
+    NG_hexagon_float_p --"in1"--> NG_hexagon_float_new_p1
+    NG_hexagon_float_multiply2_1 --"in2"--> NG_hexagon_float_new_p1
+    NG_hexagon_float_new_p1 --"in1"--> NG_hexagon_float_new_p2
+    NG_hexagon_float_multiply2_2 --"in2"--> NG_hexagon_float_new_p2
+    NG_hexagon_float_new_p2 --"in1"--> NG_hexagon_float_new_p3
+    NG_hexagon_float_combine_clamp_rad --"in2"--> NG_hexagon_float_new_p3
+    NG_hexagon_float_new_p3 --"in1"--> NG_hexagon_float_p3_sum
+    NG_hexagon_float_p3_sum --"in"--> NG_hexagon_float_p3_sqrt
+    NG_hexagon_float_p3_sqrt --"value1"--> NG_hexagon_float_ifgreater_p3
+    NG_hexagon_float_ifgreater_p3 --> NG_hexagon_float_out
 
 
 </div></code></pre>

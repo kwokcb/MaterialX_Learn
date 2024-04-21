@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <UsdPrimvarReader name="UsdPrimvarReader_vector2" type="vector2">
     <input name="varname" type="string" value="geompropvalue_vector2" uniform="true" />
     <input name="fallback" type="vector2" value="0, 0" />

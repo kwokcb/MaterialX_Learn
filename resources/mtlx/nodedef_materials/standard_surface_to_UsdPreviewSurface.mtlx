@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <standard_surface_to_UsdPreviewSurface name="standard_surface_to_UsdPreviewSurface" type="multioutput">
     <input name="metalness" type="float" value="0" />
     <input name="base" type="float" value="1" />

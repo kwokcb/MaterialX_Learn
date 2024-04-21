@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="rec709_display_to_lin_rec709" class="ms-2 mb-0">
 Category: rec709_display_to_lin_rec709
@@ -681,13 +681,18 @@ Category: rec709_display_to_lin_rec709
 <div id="ND_rec709_display_to_lin_rec709_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_rec709_display_to_lin_rec709_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_rec709_display_to_lin_rec709_color3_gamma[power] --> NG_rec709_display_to_lin_rec709_color3_out([out])
-    style NG_rec709_display_to_lin_rec709_color3_out fill:#0C0, color:#111
-    NG_rec709_display_to_lin_rec709_color3_max[max] --".in1"--> NG_rec709_display_to_lin_rec709_color3_gamma[power]
-    NG_rec709_display_to_lin_rec709_color3_inINT([in]) ==.in1==> NG_rec709_display_to_lin_rec709_color3_max[max]
-    style NG_rec709_display_to_lin_rec709_color3_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_rec709_display_to_lin_rec709_color3
+    NG_rec709_display_to_lin_rec709_color3_max[max]
+    NG_rec709_display_to_lin_rec709_color3_gamma[gamma]
+    style NG_rec709_display_to_lin_rec709_color3_out  fill:#0C0, color:#FFF
+    NG_rec709_display_to_lin_rec709_color3_out([out])
+    style NG_rec709_display_to_lin_rec709_color3_in  fill:#09D, color:#FFF
+    NG_rec709_display_to_lin_rec709_color3_in([in])
+    end
+    NG_rec709_display_to_lin_rec709_color3_in --"in1"--> NG_rec709_display_to_lin_rec709_color3_max
+    NG_rec709_display_to_lin_rec709_color3_max --"in1"--> NG_rec709_display_to_lin_rec709_color3_gamma
+    NG_rec709_display_to_lin_rec709_color3_gamma --> NG_rec709_display_to_lin_rec709_color3_out
 
 
 </div></code></pre>
@@ -780,18 +785,23 @@ graph LR;
 <div id="ND_rec709_display_to_lin_rec709_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_rec709_display_to_lin_rec709_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_rec709_display_to_lin_rec709_color4_asColor4[combine4] --> NG_rec709_display_to_lin_rec709_color4_out([out])
-    style NG_rec709_display_to_lin_rec709_color4_out fill:#0C0, color:#111
-    NG_rec709_display_to_lin_rec709_color4_inINT([in]) ==.in4==> NG_rec709_display_to_lin_rec709_color4_asColor4[combine4]
-    style NG_rec709_display_to_lin_rec709_color4_inINT fill:#0CF, color:#111
-    NG_rec709_display_to_lin_rec709_color4_transform[rec709_display_to_lin_rec709] --".r -> .in1"--> NG_rec709_display_to_lin_rec709_color4_asColor4[combine4]
-    NG_rec709_display_to_lin_rec709_color4_asColor3[convert] --".in"--> NG_rec709_display_to_lin_rec709_color4_transform[rec709_display_to_lin_rec709]
-    NG_rec709_display_to_lin_rec709_color4_inINT([in]) ==.in==> NG_rec709_display_to_lin_rec709_color4_asColor3[convert]
-    style NG_rec709_display_to_lin_rec709_color4_inINT fill:#0CF, color:#111
-    NG_rec709_display_to_lin_rec709_color4_transform[rec709_display_to_lin_rec709] --".g -> .in2"--> NG_rec709_display_to_lin_rec709_color4_asColor4[combine4]
-    NG_rec709_display_to_lin_rec709_color4_transform[rec709_display_to_lin_rec709] --".b -> .in3"--> NG_rec709_display_to_lin_rec709_color4_asColor4[combine4]
-
+graph TB
+    subgraph NG_rec709_display_to_lin_rec709_color4
+    NG_rec709_display_to_lin_rec709_color4_asColor3[asColor3]
+    NG_rec709_display_to_lin_rec709_color4_transform[transform]
+    NG_rec709_display_to_lin_rec709_color4_asColor4[asColor4]
+    style NG_rec709_display_to_lin_rec709_color4_out  fill:#0C0, color:#FFF
+    NG_rec709_display_to_lin_rec709_color4_out([out])
+    style NG_rec709_display_to_lin_rec709_color4_in  fill:#09D, color:#FFF
+    NG_rec709_display_to_lin_rec709_color4_in([in])
+    end
+    NG_rec709_display_to_lin_rec709_color4_in --"in"--> NG_rec709_display_to_lin_rec709_color4_asColor3
+    NG_rec709_display_to_lin_rec709_color4_asColor3 --"in"--> NG_rec709_display_to_lin_rec709_color4_transform
+    NG_rec709_display_to_lin_rec709_color4_transform --"in1"--> NG_rec709_display_to_lin_rec709_color4_asColor4
+    NG_rec709_display_to_lin_rec709_color4_transform --"in2"--> NG_rec709_display_to_lin_rec709_color4_asColor4
+    NG_rec709_display_to_lin_rec709_color4_transform --"in3"--> NG_rec709_display_to_lin_rec709_color4_asColor4
+    NG_rec709_display_to_lin_rec709_color4_in --"in4"--> NG_rec709_display_to_lin_rec709_color4_asColor4
+    NG_rec709_display_to_lin_rec709_color4_asColor4 --> NG_rec709_display_to_lin_rec709_color4_out
 
 
 </div></code></pre>

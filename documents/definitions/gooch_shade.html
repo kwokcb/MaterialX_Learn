@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="gooch_shade" class="ms-2 mb-0">
 Category: gooch_shade
@@ -906,37 +906,60 @@ Category: gooch_shade
 <div id="ND_gooch_shade_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_gooch_shade_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_gooch_shade_final_color[add] --> NG_gooch_shade_out([out])
-    style NG_gooch_shade_out fill:#0C0, color:#111
-    NG_gooch_shade_diffuse[mix] --".in1"--> NG_gooch_shade_final_color[add]
-    NG_gooch_shade_warm_colorINT([warm_color]) ==.bg==> NG_gooch_shade_diffuse[mix]
-    style NG_gooch_shade_warm_colorINT fill:#0CF, color:#111
-    NG_gooch_shade_cool_colorINT([cool_color]) ==.fg==> NG_gooch_shade_diffuse[mix]
-    style NG_gooch_shade_cool_colorINT fill:#0CF, color:#111
-    NG_gooch_shade_cool_intensity[divide] --".mix"--> NG_gooch_shade_diffuse[mix]
-    NG_gooch_shade_one_plus_NdotL[add] --".in1"--> NG_gooch_shade_cool_intensity[divide]
-    NG_gooch_shade_NdotL[dotproduct] --".in2"--> NG_gooch_shade_one_plus_NdotL[add]
-    NG_gooch_shade_unit_normal[normalize] --".in1"--> NG_gooch_shade_NdotL[dotproduct]
-    NG_gooch_shade_normal[normal] --".in"--> NG_gooch_shade_unit_normal[normalize]
-    NG_gooch_shade_unit_lightdir[normalize] --".in2"--> NG_gooch_shade_NdotL[dotproduct]
-    NG_gooch_shade_light_directionINT([light_direction]) ==.in==> NG_gooch_shade_unit_lightdir[normalize]
-    style NG_gooch_shade_light_directionINT fill:#0CF, color:#111
-    NG_gooch_shade_specular[multiply] --".in2"--> NG_gooch_shade_final_color[add]
-    NG_gooch_shade_specular_intensityINT([specular_intensity]) ==.in2==> NG_gooch_shade_specular[multiply]
-    style NG_gooch_shade_specular_intensityINT fill:#0CF, color:#111
-    NG_gooch_shade_specular_highlight[power] --".in1"--> NG_gooch_shade_specular[multiply]
-    NG_gooch_shade_shininessINT([shininess]) ==.in2==> NG_gooch_shade_specular_highlight[power]
-    style NG_gooch_shade_shininessINT fill:#0CF, color:#111
-    NG_gooch_shade_VdotR_nonnegative[max] --".in1"--> NG_gooch_shade_specular_highlight[power]
-    NG_gooch_shade_VdotR[dotproduct] --".in1"--> NG_gooch_shade_VdotR_nonnegative[max]
-    NG_gooch_shade_invert_lightdir[multiply] --".in1"--> NG_gooch_shade_VdotR[dotproduct]
-    NG_gooch_shade_unit_lightdir[normalize] --".in1"--> NG_gooch_shade_invert_lightdir[multiply]
-    NG_gooch_shade_view_reflect[reflect] --".in2"--> NG_gooch_shade_VdotR[dotproduct]
-    NG_gooch_shade_unit_viewdir[normalize] --".in"--> NG_gooch_shade_view_reflect[reflect]
-    NG_gooch_shade_viewdir[viewdirection] --".in"--> NG_gooch_shade_unit_viewdir[normalize]
-    NG_gooch_shade_unit_normal[normalize] --".normal"--> NG_gooch_shade_view_reflect[reflect]
-
+graph TB
+    subgraph NG_gooch_shade
+    NG_gooch_shade_normal[normal]
+    NG_gooch_shade_viewdir[viewdir]
+    NG_gooch_shade_unit_normal[unit_normal]
+    NG_gooch_shade_unit_viewdir[unit_viewdir]
+    NG_gooch_shade_unit_lightdir[unit_lightdir]
+    NG_gooch_shade_NdotL[NdotL]
+    NG_gooch_shade_one_plus_NdotL[one_plus_NdotL]
+    NG_gooch_shade_cool_intensity[cool_intensity]
+    NG_gooch_shade_diffuse[diffuse]
+    NG_gooch_shade_view_reflect[view_reflect]
+    NG_gooch_shade_invert_lightdir[invert_lightdir]
+    NG_gooch_shade_VdotR[VdotR]
+    NG_gooch_shade_VdotR_nonnegative[VdotR_nonnegative]
+    NG_gooch_shade_specular_highlight[specular_highlight]
+    NG_gooch_shade_specular[specular]
+    NG_gooch_shade_final_color[final_color]
+    style NG_gooch_shade_out  fill:#0C0, color:#FFF
+    NG_gooch_shade_out([out])
+    style NG_gooch_shade_light_direction  fill:#09D, color:#FFF
+    NG_gooch_shade_light_direction([light_direction])
+    style NG_gooch_shade_warm_color  fill:#09D, color:#FFF
+    NG_gooch_shade_warm_color([warm_color])
+    style NG_gooch_shade_cool_color  fill:#09D, color:#FFF
+    NG_gooch_shade_cool_color([cool_color])
+    style NG_gooch_shade_shininess  fill:#09D, color:#FFF
+    NG_gooch_shade_shininess([shininess])
+    style NG_gooch_shade_specular_intensity  fill:#09D, color:#FFF
+    NG_gooch_shade_specular_intensity([specular_intensity])
+    end
+    NG_gooch_shade_normal --"in"--> NG_gooch_shade_unit_normal
+    NG_gooch_shade_viewdir --"in"--> NG_gooch_shade_unit_viewdir
+    NG_gooch_shade_light_direction --"in"--> NG_gooch_shade_unit_lightdir
+    NG_gooch_shade_unit_normal --"in1"--> NG_gooch_shade_NdotL
+    NG_gooch_shade_unit_lightdir --"in2"--> NG_gooch_shade_NdotL
+    NG_gooch_shade_NdotL --"in2"--> NG_gooch_shade_one_plus_NdotL
+    NG_gooch_shade_one_plus_NdotL --"in1"--> NG_gooch_shade_cool_intensity
+    NG_gooch_shade_warm_color --"bg"--> NG_gooch_shade_diffuse
+    NG_gooch_shade_cool_color --"fg"--> NG_gooch_shade_diffuse
+    NG_gooch_shade_cool_intensity --"mix"--> NG_gooch_shade_diffuse
+    NG_gooch_shade_unit_viewdir --"in"--> NG_gooch_shade_view_reflect
+    NG_gooch_shade_unit_normal --"normal"--> NG_gooch_shade_view_reflect
+    NG_gooch_shade_unit_lightdir --"in1"--> NG_gooch_shade_invert_lightdir
+    NG_gooch_shade_invert_lightdir --"in1"--> NG_gooch_shade_VdotR
+    NG_gooch_shade_view_reflect --"in2"--> NG_gooch_shade_VdotR
+    NG_gooch_shade_VdotR --"in1"--> NG_gooch_shade_VdotR_nonnegative
+    NG_gooch_shade_VdotR_nonnegative --"in1"--> NG_gooch_shade_specular_highlight
+    NG_gooch_shade_shininess --"in2"--> NG_gooch_shade_specular_highlight
+    NG_gooch_shade_specular_highlight --"in1"--> NG_gooch_shade_specular
+    NG_gooch_shade_specular_intensity --"in2"--> NG_gooch_shade_specular
+    NG_gooch_shade_diffuse --"in1"--> NG_gooch_shade_final_color
+    NG_gooch_shade_specular --"in2"--> NG_gooch_shade_final_color
+    NG_gooch_shade_final_color --> NG_gooch_shade_out
 
 
 </div></code></pre>

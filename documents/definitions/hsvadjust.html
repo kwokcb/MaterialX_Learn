@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="hsvadjust" class="ms-2 mb-0">
 Category: hsvadjust
@@ -713,22 +713,34 @@ Category: hsvadjust
 <div id="ND_hsvadjust_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_hsvadjust_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_hsvadjust_color3_N_torgb_color3[hsvtorgb] --> NG_hsvadjust_color3_out([out])
-    style NG_hsvadjust_color3_out fill:#0C0, color:#111
-    NG_hsvadjust_color3_N_tmp3_color3[multiply] --".in"--> NG_hsvadjust_color3_N_torgb_color3[hsvtorgb]
-    NG_hsvadjust_color3_N_tmp2_color3[add] --".in1"--> NG_hsvadjust_color3_N_tmp3_color3[multiply]
-    NG_hsvadjust_color3_N_inhsv_color3[rgbtohsv] --".in1"--> NG_hsvadjust_color3_N_tmp2_color3[add]
-    NG_hsvadjust_color3_inINT([in]) ==.in==> NG_hsvadjust_color3_N_inhsv_color3[rgbtohsv]
-    style NG_hsvadjust_color3_inINT fill:#0CF, color:#111
-    NG_hsvadjust_color3_N_hchans_color3[multiply] --".in2"--> NG_hsvadjust_color3_N_tmp2_color3[add]
-    NG_hsvadjust_color3_N_camount_color3[convert] --".in1"--> NG_hsvadjust_color3_N_hchans_color3[multiply]
-    NG_hsvadjust_color3_amountINT([amount]) ==.in==> NG_hsvadjust_color3_N_camount_color3[convert]
-    style NG_hsvadjust_color3_amountINT fill:#0CF, color:#111
-    NG_hsvadjust_color3_N_svchans_color3[add] --".in2"--> NG_hsvadjust_color3_N_tmp3_color3[multiply]
-    NG_hsvadjust_color3_N_tmp1_color3[multiply] --".in1"--> NG_hsvadjust_color3_N_svchans_color3[add]
-    NG_hsvadjust_color3_N_camount_color3[convert] --".in1"--> NG_hsvadjust_color3_N_tmp1_color3[multiply]
-
+graph TB
+    subgraph NG_hsvadjust_color3
+    NG_hsvadjust_color3_N_inhsv_color3[N_inhsv_color3]
+    NG_hsvadjust_color3_N_camount_color3[N_camount_color3]
+    NG_hsvadjust_color3_N_hchans_color3[N_hchans_color3]
+    NG_hsvadjust_color3_N_tmp1_color3[N_tmp1_color3]
+    NG_hsvadjust_color3_N_svchans_color3[N_svchans_color3]
+    NG_hsvadjust_color3_N_tmp2_color3[N_tmp2_color3]
+    NG_hsvadjust_color3_N_tmp3_color3[N_tmp3_color3]
+    NG_hsvadjust_color3_N_torgb_color3[N_torgb_color3]
+    style NG_hsvadjust_color3_out  fill:#0C0, color:#FFF
+    NG_hsvadjust_color3_out([out])
+    style NG_hsvadjust_color3_in  fill:#09D, color:#FFF
+    NG_hsvadjust_color3_in([in])
+    style NG_hsvadjust_color3_amount  fill:#09D, color:#FFF
+    NG_hsvadjust_color3_amount([amount])
+    end
+    NG_hsvadjust_color3_in --"in"--> NG_hsvadjust_color3_N_inhsv_color3
+    NG_hsvadjust_color3_amount --"in"--> NG_hsvadjust_color3_N_camount_color3
+    NG_hsvadjust_color3_N_camount_color3 --"in1"--> NG_hsvadjust_color3_N_hchans_color3
+    NG_hsvadjust_color3_N_camount_color3 --"in1"--> NG_hsvadjust_color3_N_tmp1_color3
+    NG_hsvadjust_color3_N_tmp1_color3 --"in1"--> NG_hsvadjust_color3_N_svchans_color3
+    NG_hsvadjust_color3_N_inhsv_color3 --"in1"--> NG_hsvadjust_color3_N_tmp2_color3
+    NG_hsvadjust_color3_N_hchans_color3 --"in2"--> NG_hsvadjust_color3_N_tmp2_color3
+    NG_hsvadjust_color3_N_tmp2_color3 --"in1"--> NG_hsvadjust_color3_N_tmp3_color3
+    NG_hsvadjust_color3_N_svchans_color3 --"in2"--> NG_hsvadjust_color3_N_tmp3_color3
+    NG_hsvadjust_color3_N_tmp3_color3 --"in"--> NG_hsvadjust_color3_N_torgb_color3
+    NG_hsvadjust_color3_N_torgb_color3 --> NG_hsvadjust_color3_out
 
 
 </div></code></pre>
@@ -853,23 +865,36 @@ graph LR;
 <div id="ND_hsvadjust_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_hsvadjust_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_hsvadjust_color4_N_torgb_color4[hsvtorgb] --> NG_hsvadjust_color4_out([out])
-    style NG_hsvadjust_color4_out fill:#0C0, color:#111
-    NG_hsvadjust_color4_N_tmp3_color4[multiply] --".in"--> NG_hsvadjust_color4_N_torgb_color4[hsvtorgb]
-    NG_hsvadjust_color4_N_tmp2_color4[add] --".in1"--> NG_hsvadjust_color4_N_tmp3_color4[multiply]
-    NG_hsvadjust_color4_N_inhsv_color4[rgbtohsv] --".in1"--> NG_hsvadjust_color4_N_tmp2_color4[add]
-    NG_hsvadjust_color4_inINT([in]) ==.in==> NG_hsvadjust_color4_N_inhsv_color4[rgbtohsv]
-    style NG_hsvadjust_color4_inINT fill:#0CF, color:#111
-    NG_hsvadjust_color4_N_hchans_color4[multiply] --".in2"--> NG_hsvadjust_color4_N_tmp2_color4[add]
-    NG_hsvadjust_color4_N_camount_color4[convert] --".in1"--> NG_hsvadjust_color4_N_hchans_color4[multiply]
-    NG_hsvadjust_color4_N_camt_color3[convert] --".in"--> NG_hsvadjust_color4_N_camount_color4[convert]
-    NG_hsvadjust_color4_amountINT([amount]) ==.in==> NG_hsvadjust_color4_N_camt_color3[convert]
-    style NG_hsvadjust_color4_amountINT fill:#0CF, color:#111
-    NG_hsvadjust_color4_N_svchans_color4[add] --".in2"--> NG_hsvadjust_color4_N_tmp3_color4[multiply]
-    NG_hsvadjust_color4_N_tmp1_color4[multiply] --".in1"--> NG_hsvadjust_color4_N_svchans_color4[add]
-    NG_hsvadjust_color4_N_camount_color4[convert] --".in1"--> NG_hsvadjust_color4_N_tmp1_color4[multiply]
-
+graph TB
+    subgraph NG_hsvadjust_color4
+    NG_hsvadjust_color4_N_inhsv_color4[N_inhsv_color4]
+    NG_hsvadjust_color4_N_camt_color3[N_camt_color3]
+    NG_hsvadjust_color4_N_camount_color4[N_camount_color4]
+    NG_hsvadjust_color4_N_hchans_color4[N_hchans_color4]
+    NG_hsvadjust_color4_N_tmp1_color4[N_tmp1_color4]
+    NG_hsvadjust_color4_N_svchans_color4[N_svchans_color4]
+    NG_hsvadjust_color4_N_tmp2_color4[N_tmp2_color4]
+    NG_hsvadjust_color4_N_tmp3_color4[N_tmp3_color4]
+    NG_hsvadjust_color4_N_torgb_color4[N_torgb_color4]
+    style NG_hsvadjust_color4_out  fill:#0C0, color:#FFF
+    NG_hsvadjust_color4_out([out])
+    style NG_hsvadjust_color4_in  fill:#09D, color:#FFF
+    NG_hsvadjust_color4_in([in])
+    style NG_hsvadjust_color4_amount  fill:#09D, color:#FFF
+    NG_hsvadjust_color4_amount([amount])
+    end
+    NG_hsvadjust_color4_in --"in"--> NG_hsvadjust_color4_N_inhsv_color4
+    NG_hsvadjust_color4_amount --"in"--> NG_hsvadjust_color4_N_camt_color3
+    NG_hsvadjust_color4_N_camt_color3 --"in"--> NG_hsvadjust_color4_N_camount_color4
+    NG_hsvadjust_color4_N_camount_color4 --"in1"--> NG_hsvadjust_color4_N_hchans_color4
+    NG_hsvadjust_color4_N_camount_color4 --"in1"--> NG_hsvadjust_color4_N_tmp1_color4
+    NG_hsvadjust_color4_N_tmp1_color4 --"in1"--> NG_hsvadjust_color4_N_svchans_color4
+    NG_hsvadjust_color4_N_inhsv_color4 --"in1"--> NG_hsvadjust_color4_N_tmp2_color4
+    NG_hsvadjust_color4_N_hchans_color4 --"in2"--> NG_hsvadjust_color4_N_tmp2_color4
+    NG_hsvadjust_color4_N_tmp2_color4 --"in1"--> NG_hsvadjust_color4_N_tmp3_color4
+    NG_hsvadjust_color4_N_svchans_color4 --"in2"--> NG_hsvadjust_color4_N_tmp3_color4
+    NG_hsvadjust_color4_N_tmp3_color4 --"in"--> NG_hsvadjust_color4_N_torgb_color4
+    NG_hsvadjust_color4_N_torgb_color4 --> NG_hsvadjust_color4_out
 
 
 </div></code></pre>

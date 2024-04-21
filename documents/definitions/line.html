@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="line" class="ms-2 mb-0">
 Category: line
@@ -759,36 +759,51 @@ Category: line
 <div id="ND_line_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_line_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_line_float_dist_comp{ifgreater} --> NG_line_float_out([out])
-    style NG_line_float_out fill:#0C0, color:#111
-    NG_line_float_radiusINT([radius]) ==.value2==> NG_line_float_dist_comp[ifgreater]
-    style NG_line_float_radiusINT fill:#0CF, color:#111
-    NG_line_float_distance[distance] --".value1"--> NG_line_float_dist_comp{ifgreater}
-    style NG_line_float_dist_comp fill:#F80, color:#111
-    NG_line_float_p_a[subtract] --".in1"--> NG_line_float_distance[distance]
-    NG_line_float_point1INT([point1]) ==.in2==> NG_line_float_p_a[subtract]
-    style NG_line_float_point1INT fill:#0CF, color:#111
-    NG_line_float_delta[subtract] --".in1"--> NG_line_float_p_a[subtract]
-    NG_line_float_texcoordINT([texcoord]) ==.in1==> NG_line_float_delta[subtract]
-    style NG_line_float_texcoordINT fill:#0CF, color:#111
-    NG_line_float_centerINT([center]) ==.in2==> NG_line_float_delta[subtract]
-    style NG_line_float_centerINT fill:#0CF, color:#111
-    NG_line_float_multiply_clamp_ba[multiply] --".in2"--> NG_line_float_distance[distance]
-    NG_line_float_b_a[subtract] --".in1"--> NG_line_float_multiply_clamp_ba[multiply]
-    NG_line_float_point2INT([point2]) ==.in1==> NG_line_float_b_a[subtract]
-    style NG_line_float_point2INT fill:#0CF, color:#111
-    NG_line_float_point1INT([point1]) ==.in2==> NG_line_float_b_a[subtract]
-    style NG_line_float_point1INT fill:#0CF, color:#111
-    NG_line_float_clamp[clamp] --".in2"--> NG_line_float_multiply_clamp_ba[multiply]
-    NG_line_float_divide_dots[divide] --".in"--> NG_line_float_clamp[clamp]
-    NG_line_float_dot_pa_ba[dotproduct] --".in1"--> NG_line_float_divide_dots[divide]
-    NG_line_float_p_a[subtract] --".in1"--> NG_line_float_dot_pa_ba[dotproduct]
-    NG_line_float_b_a[subtract] --".in2"--> NG_line_float_dot_pa_ba[dotproduct]
-    NG_line_float_dot_ba_ba[dotproduct] --".in2"--> NG_line_float_divide_dots[divide]
-    NG_line_float_b_a[subtract] --".in1"--> NG_line_float_dot_ba_ba[dotproduct]
-    NG_line_float_b_a[subtract] --".in2"--> NG_line_float_dot_ba_ba[dotproduct]
-
+graph TB
+    subgraph NG_line_float
+    NG_line_float_delta[delta]
+    NG_line_float_p_a[p_a]
+    NG_line_float_b_a[b_a]
+    NG_line_float_dot_pa_ba[dot_pa_ba]
+    NG_line_float_dot_ba_ba[dot_ba_ba]
+    NG_line_float_divide_dots[divide_dots]
+    NG_line_float_clamp[clamp]
+    NG_line_float_multiply_clamp_ba[multiply_clamp_ba]
+    NG_line_float_distance[distance]
+    NG_line_float_dist_comp[dist_comp]
+    style NG_line_float_out  fill:#0C0, color:#FFF
+    NG_line_float_out([out])
+    style NG_line_float_texcoord  fill:#09D, color:#FFF
+    NG_line_float_texcoord([texcoord])
+    style NG_line_float_center  fill:#09D, color:#FFF
+    NG_line_float_center([center])
+    style NG_line_float_point1  fill:#09D, color:#FFF
+    NG_line_float_point1([point1])
+    style NG_line_float_point2  fill:#09D, color:#FFF
+    NG_line_float_point2([point2])
+    style NG_line_float_radius  fill:#09D, color:#FFF
+    NG_line_float_radius([radius])
+    end
+    NG_line_float_texcoord --"in1"--> NG_line_float_delta
+    NG_line_float_center --"in2"--> NG_line_float_delta
+    NG_line_float_delta --"in1"--> NG_line_float_p_a
+    NG_line_float_point1 --"in2"--> NG_line_float_p_a
+    NG_line_float_point2 --"in1"--> NG_line_float_b_a
+    NG_line_float_point1 --"in2"--> NG_line_float_b_a
+    NG_line_float_p_a --"in1"--> NG_line_float_dot_pa_ba
+    NG_line_float_b_a --"in2"--> NG_line_float_dot_pa_ba
+    NG_line_float_b_a --"in1"--> NG_line_float_dot_ba_ba
+    NG_line_float_b_a --"in2"--> NG_line_float_dot_ba_ba
+    NG_line_float_dot_pa_ba --"in1"--> NG_line_float_divide_dots
+    NG_line_float_dot_ba_ba --"in2"--> NG_line_float_divide_dots
+    NG_line_float_divide_dots --"in"--> NG_line_float_clamp
+    NG_line_float_b_a --"in1"--> NG_line_float_multiply_clamp_ba
+    NG_line_float_clamp --"in2"--> NG_line_float_multiply_clamp_ba
+    NG_line_float_p_a --"in1"--> NG_line_float_distance
+    NG_line_float_multiply_clamp_ba --"in2"--> NG_line_float_distance
+    NG_line_float_distance --"value1"--> NG_line_float_dist_comp
+    NG_line_float_radius --"value2"--> NG_line_float_dist_comp
+    NG_line_float_dist_comp --> NG_line_float_out
 
 
 </div></code></pre>

@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="smoothstep" class="ms-2 mb-0">
 Category: smoothstep
@@ -933,16 +933,22 @@ Category: smoothstep
 <div id="ND_smoothstep_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_smoothstep_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_smoothstep_color3_N_smoothstep[smoothstep] --> NG_smoothstep_color3_out([out])
-    style NG_smoothstep_color3_out fill:#0C0, color:#111
-    NG_smoothstep_color3_inINT([in]) ==.in==> NG_smoothstep_color3_N_smoothstep[smoothstep]
-    style NG_smoothstep_color3_inINT fill:#0CF, color:#111
-    NG_smoothstep_color3_lowINT([low]) ==.low==> NG_smoothstep_color3_N_smoothstep[smoothstep]
-    style NG_smoothstep_color3_lowINT fill:#0CF, color:#111
-    NG_smoothstep_color3_highINT([high]) ==.high==> NG_smoothstep_color3_N_smoothstep[smoothstep]
-    style NG_smoothstep_color3_highINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_smoothstep_color3
+    NG_smoothstep_color3_N_smoothstep[N_smoothstep]
+    style NG_smoothstep_color3_out  fill:#0C0, color:#FFF
+    NG_smoothstep_color3_out([out])
+    style NG_smoothstep_color3_in  fill:#09D, color:#FFF
+    NG_smoothstep_color3_in([in])
+    style NG_smoothstep_color3_low  fill:#09D, color:#FFF
+    NG_smoothstep_color3_low([low])
+    style NG_smoothstep_color3_high  fill:#09D, color:#FFF
+    NG_smoothstep_color3_high([high])
+    end
+    NG_smoothstep_color3_in --"in"--> NG_smoothstep_color3_N_smoothstep
+    NG_smoothstep_color3_low --"low"--> NG_smoothstep_color3_N_smoothstep
+    NG_smoothstep_color3_high --"high"--> NG_smoothstep_color3_N_smoothstep
+    NG_smoothstep_color3_N_smoothstep --> NG_smoothstep_color3_out
 
 
 </div></code></pre>
@@ -1104,16 +1110,22 @@ graph LR;
 <div id="ND_smoothstep_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_smoothstep_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_smoothstep_color4_N_smoothstep[smoothstep] --> NG_smoothstep_color4_out([out])
-    style NG_smoothstep_color4_out fill:#0C0, color:#111
-    NG_smoothstep_color4_inINT([in]) ==.in==> NG_smoothstep_color4_N_smoothstep[smoothstep]
-    style NG_smoothstep_color4_inINT fill:#0CF, color:#111
-    NG_smoothstep_color4_lowINT([low]) ==.low==> NG_smoothstep_color4_N_smoothstep[smoothstep]
-    style NG_smoothstep_color4_lowINT fill:#0CF, color:#111
-    NG_smoothstep_color4_highINT([high]) ==.high==> NG_smoothstep_color4_N_smoothstep[smoothstep]
-    style NG_smoothstep_color4_highINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_smoothstep_color4
+    NG_smoothstep_color4_N_smoothstep[N_smoothstep]
+    style NG_smoothstep_color4_out  fill:#0C0, color:#FFF
+    NG_smoothstep_color4_out([out])
+    style NG_smoothstep_color4_in  fill:#09D, color:#FFF
+    NG_smoothstep_color4_in([in])
+    style NG_smoothstep_color4_low  fill:#09D, color:#FFF
+    NG_smoothstep_color4_low([low])
+    style NG_smoothstep_color4_high  fill:#09D, color:#FFF
+    NG_smoothstep_color4_high([high])
+    end
+    NG_smoothstep_color4_in --"in"--> NG_smoothstep_color4_N_smoothstep
+    NG_smoothstep_color4_low --"low"--> NG_smoothstep_color4_N_smoothstep
+    NG_smoothstep_color4_high --"high"--> NG_smoothstep_color4_N_smoothstep
+    NG_smoothstep_color4_N_smoothstep --> NG_smoothstep_color4_out
 
 
 </div></code></pre>
@@ -1862,16 +1874,22 @@ graph LR;
 <div id="ND_smoothstep_color3FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_smoothstep_color3FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_smoothstep_color3FA_N_smoothstep[smoothstep] --> NG_smoothstep_color3FA_out([out])
-    style NG_smoothstep_color3FA_out fill:#0C0, color:#111
-    NG_smoothstep_color3FA_inINT([in]) ==.in==> NG_smoothstep_color3FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_color3FA_inINT fill:#0CF, color:#111
-    NG_smoothstep_color3FA_lowINT([low]) ==.low==> NG_smoothstep_color3FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_color3FA_lowINT fill:#0CF, color:#111
-    NG_smoothstep_color3FA_highINT([high]) ==.high==> NG_smoothstep_color3FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_color3FA_highINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_smoothstep_color3FA
+    NG_smoothstep_color3FA_N_smoothstep[N_smoothstep]
+    style NG_smoothstep_color3FA_out  fill:#0C0, color:#FFF
+    NG_smoothstep_color3FA_out([out])
+    style NG_smoothstep_color3FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_color3FA_in([in])
+    style NG_smoothstep_color3FA_low  fill:#09D, color:#FFF
+    NG_smoothstep_color3FA_low([low])
+    style NG_smoothstep_color3FA_high  fill:#09D, color:#FFF
+    NG_smoothstep_color3FA_high([high])
+    end
+    NG_smoothstep_color3FA_in --"in"--> NG_smoothstep_color3FA_N_smoothstep
+    NG_smoothstep_color3FA_low --"low"--> NG_smoothstep_color3FA_N_smoothstep
+    NG_smoothstep_color3FA_high --"high"--> NG_smoothstep_color3FA_N_smoothstep
+    NG_smoothstep_color3FA_N_smoothstep --> NG_smoothstep_color3FA_out
 
 
 </div></code></pre>
@@ -2011,16 +2029,22 @@ graph LR;
 <div id="ND_smoothstep_color4FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_smoothstep_color4FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_smoothstep_color4FA_N_smoothstep[smoothstep] --> NG_smoothstep_color4FA_out([out])
-    style NG_smoothstep_color4FA_out fill:#0C0, color:#111
-    NG_smoothstep_color4FA_inINT([in]) ==.in==> NG_smoothstep_color4FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_color4FA_inINT fill:#0CF, color:#111
-    NG_smoothstep_color4FA_lowINT([low]) ==.low==> NG_smoothstep_color4FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_color4FA_lowINT fill:#0CF, color:#111
-    NG_smoothstep_color4FA_highINT([high]) ==.high==> NG_smoothstep_color4FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_color4FA_highINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_smoothstep_color4FA
+    NG_smoothstep_color4FA_N_smoothstep[N_smoothstep]
+    style NG_smoothstep_color4FA_out  fill:#0C0, color:#FFF
+    NG_smoothstep_color4FA_out([out])
+    style NG_smoothstep_color4FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_color4FA_in([in])
+    style NG_smoothstep_color4FA_low  fill:#09D, color:#FFF
+    NG_smoothstep_color4FA_low([low])
+    style NG_smoothstep_color4FA_high  fill:#09D, color:#FFF
+    NG_smoothstep_color4FA_high([high])
+    end
+    NG_smoothstep_color4FA_in --"in"--> NG_smoothstep_color4FA_N_smoothstep
+    NG_smoothstep_color4FA_low --"low"--> NG_smoothstep_color4FA_N_smoothstep
+    NG_smoothstep_color4FA_high --"high"--> NG_smoothstep_color4FA_N_smoothstep
+    NG_smoothstep_color4FA_N_smoothstep --> NG_smoothstep_color4FA_out
 
 
 </div></code></pre>
@@ -2151,16 +2175,22 @@ graph LR;
 <div id="ND_smoothstep_vector2FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_smoothstep_vector2FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_smoothstep_vector2FA_N_smoothstep[smoothstep] --> NG_smoothstep_vector2FA_out([out])
-    style NG_smoothstep_vector2FA_out fill:#0C0, color:#111
-    NG_smoothstep_vector2FA_inINT([in]) ==.in==> NG_smoothstep_vector2FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_vector2FA_inINT fill:#0CF, color:#111
-    NG_smoothstep_vector2FA_lowINT([low]) ==.low==> NG_smoothstep_vector2FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_vector2FA_lowINT fill:#0CF, color:#111
-    NG_smoothstep_vector2FA_highINT([high]) ==.high==> NG_smoothstep_vector2FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_vector2FA_highINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_smoothstep_vector2FA
+    NG_smoothstep_vector2FA_N_smoothstep[N_smoothstep]
+    style NG_smoothstep_vector2FA_out  fill:#0C0, color:#FFF
+    NG_smoothstep_vector2FA_out([out])
+    style NG_smoothstep_vector2FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector2FA_in([in])
+    style NG_smoothstep_vector2FA_low  fill:#09D, color:#FFF
+    NG_smoothstep_vector2FA_low([low])
+    style NG_smoothstep_vector2FA_high  fill:#09D, color:#FFF
+    NG_smoothstep_vector2FA_high([high])
+    end
+    NG_smoothstep_vector2FA_in --"in"--> NG_smoothstep_vector2FA_N_smoothstep
+    NG_smoothstep_vector2FA_low --"low"--> NG_smoothstep_vector2FA_N_smoothstep
+    NG_smoothstep_vector2FA_high --"high"--> NG_smoothstep_vector2FA_N_smoothstep
+    NG_smoothstep_vector2FA_N_smoothstep --> NG_smoothstep_vector2FA_out
 
 
 </div></code></pre>
@@ -2294,16 +2324,22 @@ graph LR;
 <div id="ND_smoothstep_vector3FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_smoothstep_vector3FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_smoothstep_vector3FA_N_smoothstep[smoothstep] --> NG_smoothstep_vector3FA_out([out])
-    style NG_smoothstep_vector3FA_out fill:#0C0, color:#111
-    NG_smoothstep_vector3FA_inINT([in]) ==.in==> NG_smoothstep_vector3FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_vector3FA_inINT fill:#0CF, color:#111
-    NG_smoothstep_vector3FA_lowINT([low]) ==.low==> NG_smoothstep_vector3FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_vector3FA_lowINT fill:#0CF, color:#111
-    NG_smoothstep_vector3FA_highINT([high]) ==.high==> NG_smoothstep_vector3FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_vector3FA_highINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_smoothstep_vector3FA
+    NG_smoothstep_vector3FA_N_smoothstep[N_smoothstep]
+    style NG_smoothstep_vector3FA_out  fill:#0C0, color:#FFF
+    NG_smoothstep_vector3FA_out([out])
+    style NG_smoothstep_vector3FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector3FA_in([in])
+    style NG_smoothstep_vector3FA_low  fill:#09D, color:#FFF
+    NG_smoothstep_vector3FA_low([low])
+    style NG_smoothstep_vector3FA_high  fill:#09D, color:#FFF
+    NG_smoothstep_vector3FA_high([high])
+    end
+    NG_smoothstep_vector3FA_in --"in"--> NG_smoothstep_vector3FA_N_smoothstep
+    NG_smoothstep_vector3FA_low --"low"--> NG_smoothstep_vector3FA_N_smoothstep
+    NG_smoothstep_vector3FA_high --"high"--> NG_smoothstep_vector3FA_N_smoothstep
+    NG_smoothstep_vector3FA_N_smoothstep --> NG_smoothstep_vector3FA_out
 
 
 </div></code></pre>
@@ -2440,16 +2476,22 @@ graph LR;
 <div id="ND_smoothstep_vector4FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_smoothstep_vector4FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_smoothstep_vector4FA_N_smoothstep[smoothstep] --> NG_smoothstep_vector4FA_out([out])
-    style NG_smoothstep_vector4FA_out fill:#0C0, color:#111
-    NG_smoothstep_vector4FA_inINT([in]) ==.in==> NG_smoothstep_vector4FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_vector4FA_inINT fill:#0CF, color:#111
-    NG_smoothstep_vector4FA_lowINT([low]) ==.low==> NG_smoothstep_vector4FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_vector4FA_lowINT fill:#0CF, color:#111
-    NG_smoothstep_vector4FA_highINT([high]) ==.high==> NG_smoothstep_vector4FA_N_smoothstep[smoothstep]
-    style NG_smoothstep_vector4FA_highINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_smoothstep_vector4FA
+    NG_smoothstep_vector4FA_N_smoothstep[N_smoothstep]
+    style NG_smoothstep_vector4FA_out  fill:#0C0, color:#FFF
+    NG_smoothstep_vector4FA_out([out])
+    style NG_smoothstep_vector4FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector4FA_in([in])
+    style NG_smoothstep_vector4FA_low  fill:#09D, color:#FFF
+    NG_smoothstep_vector4FA_low([low])
+    style NG_smoothstep_vector4FA_high  fill:#09D, color:#FFF
+    NG_smoothstep_vector4FA_high([high])
+    end
+    NG_smoothstep_vector4FA_in --"in"--> NG_smoothstep_vector4FA_N_smoothstep
+    NG_smoothstep_vector4FA_low --"low"--> NG_smoothstep_vector4FA_N_smoothstep
+    NG_smoothstep_vector4FA_high --"high"--> NG_smoothstep_vector4FA_N_smoothstep
+    NG_smoothstep_vector4FA_N_smoothstep --> NG_smoothstep_vector4FA_out
 
 
 </div></code></pre>

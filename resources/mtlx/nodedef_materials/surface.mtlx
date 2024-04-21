@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <surface name="surface" type="surfaceshader">
     <input name="bsdf" type="BSDF" value="" nodename="oren_nayar_diffuse_bsdf" />
     <input name="edf" type="EDF" value="" nodename="uniform_edf" />

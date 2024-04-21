@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <srgb_texture_to_lin_rec709 name="srgb_texture_to_lin_rec709_color3" type="color3">
     <input name="in" type="color3" value="0.0, 0.0, 0.0" />
   </srgb_texture_to_lin_rec709>

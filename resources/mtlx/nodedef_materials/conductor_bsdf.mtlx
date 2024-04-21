@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <conductor_bsdf name="conductor_bsdf" type="BSDF">
     <input name="weight" type="float" value="1.0" />
     <input name="ior" type="color3" value="0.183, 0.421, 1.373" colorspace="none" />

@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="separate2" class="ms-2 mb-0">
 Category: separate2
@@ -714,16 +714,21 @@ Category: separate2
 <div id="ND_separate2_vector2_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_separate2_vector2_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_separate2_vector2_N_x_vector2[swizzle] --> NG_separate2_vector2_outx([outx])
-    style NG_separate2_vector2_outx fill:#0C0, color:#111
-    NG_separate2_vector2_inINT([in]) ==.in==> NG_separate2_vector2_N_x_vector2[swizzle]
-    style NG_separate2_vector2_inINT fill:#0CF, color:#111
-    NG_separate2_vector2_N_y_vector2[swizzle] --> NG_separate2_vector2_outy([outy])
-    style NG_separate2_vector2_outy fill:#0C0, color:#111
-    NG_separate2_vector2_inINT([in]) ==.in==> NG_separate2_vector2_N_y_vector2[swizzle]
-    style NG_separate2_vector2_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_separate2_vector2
+    NG_separate2_vector2_N_x_vector2[N_x_vector2]
+    NG_separate2_vector2_N_y_vector2[N_y_vector2]
+    style NG_separate2_vector2_outx  fill:#0C0, color:#FFF
+    NG_separate2_vector2_outx([outx])
+    style NG_separate2_vector2_outy  fill:#0C0, color:#FFF
+    NG_separate2_vector2_outy([outy])
+    style NG_separate2_vector2_in  fill:#09D, color:#FFF
+    NG_separate2_vector2_in([in])
+    end
+    NG_separate2_vector2_in --"in"--> NG_separate2_vector2_N_x_vector2
+    NG_separate2_vector2_in --"in"--> NG_separate2_vector2_N_y_vector2
+    NG_separate2_vector2_N_x_vector2 --> NG_separate2_vector2_outx
+    NG_separate2_vector2_N_y_vector2 --> NG_separate2_vector2_outy
 
 
 </div></code></pre>

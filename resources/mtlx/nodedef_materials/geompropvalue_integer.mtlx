@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <geompropvalue name="geompropvalue_integer" type="integer">
     <input name="geomprop" type="string" value="geompropvalue_integer" uniform="true" />
     <input name="default" type="integer" value="0" />

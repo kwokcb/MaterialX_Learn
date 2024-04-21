@@ -2,7 +2,7 @@
 #  # Creating Material Graphs
 # 
 # The following topics will be covered in this book:
-# 1. Creating a node graph containers.
+# 1. Creating a node graph container.
 # 2. Creating container input and output interfaces.
 # 3. Creating nodes in a graph.
 # 4. Connecting nodes in a graph.
@@ -28,14 +28,14 @@ import MaterialX as mx
 from mtlxutils.mxbase import *
 haveVersion1387 = haveVersion(1, 38, 7) 
 if not haveVersion1387:
-    print("** Warning: Recommended minimum version is 1.38.7 for tutorials. Have version: ", mx.__version__)
+    print("** Warning: Minimum version is 1.38.7 for tutorials. Have version: ", mx.__version__)
 
 stdlib = mx.createDocument()
 searchPath = mx.getDefaultDataSearchPath()
 libraryFolders = mx.getDefaultDataLibraryFolders()
 try:
     libFiles = mx.loadLibraries(libraryFolders, searchPath, stdlib)
-    print('Loaded %s standard library definitions' % len(stdlib.getNodeDefs()))
+    print('MaterialX version %s. Loaded %d standard library definitions' % (mx.__version__, len(stdlib.getNodeDefs())))
 except mx.Exception as err:
     print('Failed to load standard library definitions: "', err, '"')
 
@@ -71,7 +71,7 @@ def addNodeGraph(parent, name):
 
 nodeGraph = addNodeGraph(doc,"test_nodegraph")
 if nodeGraph:
-    print('Created nodegraph:', nodeGraph.getNamePath()) 
+    print('Created nodegraph:', mx.prettyPrint(nodeGraph)) 
 
 # %% [markdown]
 # ## Creating Output Interfaces
@@ -104,9 +104,8 @@ type = 'surfaceshader'
 graphOutput = addNodeGraphOutput(nodeGraph, type)
 
 # Print the graph
-text = mx.prettyPrint(nodeGraph).split("\n")
-for t in text:
-    print(t)
+text = mx.prettyPrint(nodeGraph)
+print(text + '</nodegraph>')
 
 # %% [markdown]
 # Note that we are using <a href="https://materialx.org/docs/api/class_element.html" target="_blank">`getNamePath()`</a> to check parent / child relationships. 
@@ -141,7 +140,7 @@ def createNode(definitionName, parent, name):
         if newNode:
             return newNode
     else:
-        print('Cannot find nodedef:',  definitionName)
+        print('Cannot find definition:',  definitionName)
     return None
 
 shaderNode = createNode('ND_standard_surface_surfaceshader', nodeGraph, 'test_shader')
@@ -150,9 +149,8 @@ if shaderNode:
 
 # Print contents of graph
 print('- Graph contents:\n')
-text = mx.prettyPrint(nodeGraph).split("\n")
-for t in text:
-    print('  ', t)    
+text = mx.prettyPrint(nodeGraph)
+print(text + '</nodegraph>')
 
 # %% [markdown]
 # ## Connecting Nodes To Output Interfaces
@@ -160,8 +158,11 @@ for t in text:
 # To allow output data from the shader node to be accessible the shader node's **output** is connected to the 
 # graph containers **output**.
 # 
-# A  utility called `connectOutput()` is used to hide the syntactic differences between connecting to an upstream node graph as
+# A  utility called `connectOutputToOutput()` is used to hide the syntactic differences between connecting to an upstream node graph as
 # opposed to a node, and to check for "type compatibility", where "compatible" means both ports are of the exact same type. 
+# 
+# Note that only upstream nodes, and graphs can to a downstream output. Inputs cannot be directly connected to an output. A `dot` node
+# should be used as a pass-through in this case.
 # 
 # > Unfortunately, adding explicit outputs to nodes is not recommended, otherwise these can be pre-populated on a node to avoid the constant search on the definition if it is not found on the node. Basically a `addOutputFromNodeDef()` utility could be called before
 # making any connections.
@@ -171,8 +172,12 @@ def connectOutputToOutput(outputPort, upstream, upstreamOutputName):
     "Utility to connect a downstream output to an upstream node / node output"
     "If the types differ then no connection is made"
     if not upstream:
-        return
+        return False
     
+    # Cannot directly connect an input to an output
+    if upstream.isA(mx.Input):
+        return False
+
     upstreamType = upstream.getType()
 
     # Check for an explicit upstream output on the upstream node
@@ -214,9 +219,9 @@ else:
 
 
 # Check the graph
-text = mx.prettyPrint(nodeGraph).split("\n")
-for t in text:
-    print(t)
+text = mx.prettyPrint(nodeGraph)
+print("")
+print(text + '</nodegraph>')
 
 # %% [markdown]
 #  ## Making Connections Between Nodes
@@ -229,9 +234,9 @@ for t in text:
 # must be made to see if it exists and if its not added. Then if input and outputs types match
 # then the input can make the connection.
 # 
-# Additionally it is considered "amibiguous" to have both a `value` and a connection on an input, so
+# Additionally it is considered "invalid" to have both a `value` and a connection on an input, so
 # if a value has been set it must be removed. Conversely when a connection is removed a value must be
-# reassigned. 
+# re-assigned. 
 # 
 # As with value setting, the interface `addInputFromNodeDef()` is used to add individual inputs
 # if they do not exist. A utility called `createNode()` is added for convenience.
@@ -250,8 +255,6 @@ def connectNodeToNode(inputNode, inputName, outputNode, outputName):
     if not inputNode or not outputNode:
         return None
 
-    # Add an input to the downstream node if it does not exist
-    inputPort = inputNode.addInputFromNodeDef(inputName)
 
     # Check for the type.
     outputType = outputNode.getType()  
@@ -286,6 +289,9 @@ def connectNodeToNode(inputNode, inputName, outputNode, outputName):
     else:
         print('No output port found matching: ', outputName)        
 
+    # Add an input to the downstream node if it does not exist
+    inputPort = inputNode.addInputFromNodeDef(inputName)
+    
     if inputPort.getType() != outputType:
         print('Input type (%s) and output type (%s) do not match: ' % (inputPort.getType(), outputType))
         return None
@@ -308,10 +314,9 @@ if imageNode and shaderNode:
                                                           nodeGraph.getNamePath()))
         
 # Check the graph
-text = mx.prettyPrint(nodeGraph).split("\n")
+text = mx.prettyPrint(nodeGraph)
 print('\n')
-for t in text:
-    print(t)
+print(text + '</nodegraph>')
 
 # %% [markdown]
 # ## Adding Input Interfaces
@@ -319,7 +324,7 @@ for t in text:
 # Just as child outputs can be added to a `NodeGraph`, child inputs (`Input`) can also be added.
 # Adding inputs can be thought of as exposing the internal inputs as "public" interfaces.
 # 
-# The interface `addInput()` can be used to add one or more inputs. These inputs can then be connected to inputs on node children within the node graph container.
+# The interface `addInputInterface()` can be used to add one or more inputs. These inputs can then be connected to inputs on node children within the node graph container.
 # 
 # > Note that <a href="https://materialx.org/docs/api/class_node_graph.html" target="_blank">`NodeGraph.addInterfaceName()`</a> can **only** be used for a graph which represents an implementation of a definition ('functional nodegraph'). An error condition will always be thrown
 # otherwise. It would be useful if this interface handled non-functional nodegraphs as well.) 
@@ -327,15 +332,16 @@ for t in text:
 # %%
 def addInputInterface(name, typeString, parent):
     "Add a type input interface. Will always create a new interface"
-    validName = parent.createValidChildName(name)
-    typedefs = parent.getDocument().getTypeDefs()
+
     validType = False
+    typedefs = parent.getDocument().getTypeDefs()
     for t in typedefs:
         if typeString in t.getName():
             validType = True
             break
 
     if validType:
+        validName = parent.createValidChildName(name)
         parent.addInput(validName, typeString)
     
 # Add interfaces
@@ -343,11 +349,9 @@ addInputInterface('input_file', 'filename', nodeGraph)
 addInputInterface('color_scale', 'float', nodeGraph)
 
 # Check the graph
-text = mx.prettyPrint(nodeGraph).split("\n")
-print('\n')
-for t in text:
-    print(t)
-
+text = mx.prettyPrint(nodeGraph)
+print('Added input interfaces: "input_file" and "color_scale"\n')
+print(text + '</nodegraph>')
 
 # %% [markdown]
 # The connection for interfaces is slightly different in that instead of an `Output` an `Input` is being connected to a downstream `Input`.
@@ -370,13 +374,13 @@ def connectInterface(nodegraph, interfaceName, internalInput):
         interfaceInput = nodegraph.addInput(interfaceName, internalInput.getType())
 
     # Copy attributes from internal input to interface. 
-    # Remove undesired attributes  as this is not desired to be copied
+    # Remove undesired attributes.
     interfaceInput.copyContentFrom(internalInput)
     interfaceInput.removeAttribute('sourceUri')
     interfaceInput.removeAttribute('interfacename')
 
-    # Long logic to get the value from the internal input if it exists.
-    # If not get the default value
+    # Logic transfer any value from the internal input to the interface.
+    # If none is found then use the the default value as defined by the definition.
     internalInputType = internalInput.getType()
     if internalInput.getValue():
         internaInputValue = internalInput.getValue() 
@@ -397,9 +401,13 @@ def connectInterface(nodegraph, interfaceName, internalInput):
     # specified value
     internalInput.setInterfaceName(interfaceName)
 
-
     return interfaceInput
 
+
+# %% [markdown]
+# First example exposes the 'file' input as an 'input_file' interface to the graph.
+
+# %%
 # Add a 'file' input to the child node 
 imageFileInput = imageNode.addInputFromNodeDef('file')
 imageFileInputType = imageFileInput.getType()
@@ -407,62 +415,71 @@ imageFileInput.setValue("checker.png", imageFileInputType)
 # Connect it to interface intput on "input_file"  
 connectInterface(nodeGraph, "input_file", imageNode.getInput('file'))
 
+print(mx.prettyPrint(nodeGraph) + '</nodegraph>')
 
-# Second example to publish 'base' as an interface. "Transfer"
+# %% [markdown]
+# Second example to expose "base" as a "color_scale" input on the graph.
+
+# %%
+# Second example: Publish 'base' as an interface. "Transfer"
 # the default value from 'base' on the shader node to the interfce input. 
 baseInput = shaderNode.addInputFromNodeDef('base')
 connectInterface(nodeGraph, "color_scale", baseInput)
 
-# Check the graph
-text = mx.prettyPrint(nodeGraph).split("\n")
-for t in text:
-    print(t)
+print(mx.prettyPrint(nodeGraph) + '</nodegraph>')
 
-# Variation of above, where a non-default value is published
+# %% [markdown]
+# Third example to add the 'color_scale' input with the non-default value from 'base_color'
+
+# %%
+# Set a non-default value to be added to the published interface
 baseInput.setValue(0.2, baseInput.getType())
 connectInterface(nodeGraph, "color_scale", baseInput)
 
-# Check the graph
-text = mx.prettyPrint(nodeGraph).split("\n")
-for t in text:
-    print(t)    
+print(mx.prettyPrint(nodeGraph) + '</nodegraph>')
+
+# %% [markdown]
+# As a final step, we check that the document is valid and then write out the entire document to a file.
 
 # %%
 # Check the entire document
-doc.validate()
-writeOptions = mx.XmlWriteOptions()
-writeOptions.writeXIncludeEnable = False
-writeOptions.elementPredicate = skipLibraryElement
-documentContents = mx.writeToXmlString(doc, writeOptions)
-print(documentContents)
+isValid = doc.validate()
+if not isValid:
+    print('Document is not valid')
+else:
+    writeOptions = mx.XmlWriteOptions()
+    writeOptions.writeXIncludeEnable = False
+    writeOptions.elementPredicate = skipLibraryElement
 
-# Save document
-mx.writeToXmlFile(doc, 'data/sample_nodegraph.mtlx', writeOptions)
+    # Save document
+    mx.writeToXmlFile(doc, 'data/sample_nodegraph.mtlx', writeOptions)
+
+    print('Wrote document to file: data/sample_nodegraph.mtlx\n')
+    documentContents = mx.writeToXmlString(doc, writeOptions)
+    print(documentContents)
 
 # %% [markdown]
 # ## Connecting Node to a NodeGraph
 # 
-# To complete this book, a material node (`Material`) will be create and connected to the shader output on the graph.
+# Now that we have a graph with appropriate interfaces we can create a "material" by connecting it to a downstream material node (`material`).
 
 # %%
 # Create  material node 
 materialNode = createNode('ND_surfacematerial', doc, 'my_material')
 if materialNode:
-    print('Create material node:', materialNode.getName())
+    print('Create material node: %s\n' % materialNode.getName())
 
 # Connect the material node to the output of the graph
 connectNodeToNode(materialNode, 'surfaceshader', nodeGraph, 'out')
 
 # Check results
-print(mx.prettyPrint(materialNode))
-text = mx.prettyPrint(nodeGraph).split("\n")
-for t in text:
-    print(t)
+print(mx.prettyPrint(materialNode) + '</material>')
+print(mx.prettyPrint(nodeGraph) + '</nodegraph>')
 
 # %% [markdown]
 # ## Material Graph Result
 # 
-# As a last step we write the document out to see the final results in diagram and rendered form. (Render is done using the `MaterialXView` utility)
+# The resulting document is shown in XML, diagram and rendered form. (The render is performed using the `MaterialXView` utility)
 # 
 # <img src="images/nodegraph_book_sample_graph.svg" width=70%>
 # <img src="images/nodegraph_book_sample_graph.png" width=40%>
@@ -471,14 +488,15 @@ for t in text:
 # Check the entire document
 doc.validate()
 writeOptions = mx.XmlWriteOptions()
-if haveVersion1387:
-    writeOptions.writeXIncludeEnable = False
-    writeOptions.elementPredicate = skipLibraryElement
-documentContents = mx.writeToXmlString(doc, writeOptions)
-print(documentContents)
+writeOptions.writeXIncludeEnable = False
+writeOptions.elementPredicate = skipLibraryElement
 
 # Save document
 mx.writeToXmlFile(doc, 'data/sample_nodegraph.mtlx', writeOptions)
+
+print('Wrote document to file: data/sample_nodegraph.mtlx\n')
+documentContents = mx.writeToXmlString(doc, writeOptions)
+print(documentContents)
 
 # %% [markdown]
 #  ## Removing Input Interfaces
@@ -517,12 +535,84 @@ def unconnectInterface(nodegraph, interfaceName):
     nodegraph.removeChild(interfaceName)
 
 
-unconnectInterface(nodeGraph, "color_scale")
+unconnectInterface(nodeGraph, "input_file")
 
 # Check the graph
-text = mx.prettyPrint(nodeGraph).split("\n")
-for t in text:
-    print(t)
-    
+print(mx.prettyPrint(nodeGraph) + '</nodegraph>')    
+
+# %% [markdown]
+# ## Connecting an upstream node to a graph
+# 
+# As a final connection example we look at connecting an upstream node to a graph. This is done by connecting the node's output to the graph's input.
+# 
+# 1. As noted previsouly, an `input` cannot have both a connection and a value. Thus if the graph input has a value it will be removed before the connection is made. 
+# 2. The utility function has some additional logic to transfer the value to an input on the upstream node if desired. 
+# 3. If the upstream node has multiple outputs, the correct output be specified by setting the `output` attribute on the graph's input. 
+# 
+# > This would be a good general practice to always specify the output but the validation logic currently considers this to be an error.
+
+# %%
+def connectToGraphINput(node, outputName, nodegraph, inputName, transferNodeInput):
+    "Connect an output on a node to an input on a nodegraph"
+    "Returns the input port on the nodegraph if successful, otherwise None"
+
+    if not node or not nodegraph:
+        print('No node or nodegraph specified')
+        return None
+
+    nodedef = node.getNodeDef()
+    if not nodedef:
+        print('Cannot find node definition for node:', node.getName())
+        return None
+
+    outputPort = nodedef.getOutput(outputName)
+    if not outputPort:
+        print('Cannot find output port:', outputName, 'for the node:', node.getName())
+        return None
+
+    inputPort = nodegraph.getInput(inputName)
+    if not inputPort:
+        print('Cannot find input port:', inputName, 'for the nodegraph:', nodegraph.getName())
+        return None
+
+    if outputPort.getType() != inputPort.getType():
+        print('Output type:', outputPort.getType(), 'does not match input type:', inputPort.getType())
+        return None
+
+    # Transfer the value from the graph input to a specified upstream input
+    if transferNodeInput: 
+        if inputPort.getValue():
+            newInput = node.addInputFromNodeDef(transferNodeInput)
+            if newInput and (newInput.getType() == inputPort.getType()):
+                newInput.setValueString(inputPort.getValueString())
+
+    # Remove any value, and set a "connection" but setting the node name        
+    inputPort.removeAttribute('value')
+    inputPort.setAttribute('nodename', node.getName())
+    if node.getType() == 'multioutput':
+        inputPort.setOutputString(outputName)
+
+    return inputPort
+
+# %%
+# Create an upstream constant float node
+colorNode = createNode('ND_constant_float', doc, 'constant_float')
+if colorNode:
+    print('Create color node: %s\n' % colorNode.getName())
+    # Connect the color node to the graph input
+    result = connectToGraphINput(colorNode, 'out', nodeGraph, 'color_scale', 'value')
+    if not result:
+        print('Failed to connect color node to graph input\n')
+
+
+# %% [markdown]
+# The resulting document looks like this:
+# <img src="./images/node_to_graph_connection.svg">
+
+# %%
+
+# Check the graph
+documentContents = mx.writeToXmlString(doc, writeOptions)
+print(documentContents)
 
 

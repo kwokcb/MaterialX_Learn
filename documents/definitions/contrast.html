@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="contrast" class="ms-2 mb-0">
 Category: contrast
@@ -720,20 +720,27 @@ Category: contrast
 <div id="ND_contrast_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_contrast_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_contrast_float_N_add_float[add] --> NG_contrast_float_out([out])
-    style NG_contrast_float_out fill:#0C0, color:#111
-    NG_contrast_float_pivotINT([pivot]) ==.in2==> NG_contrast_float_N_add_float[add]
-    style NG_contrast_float_pivotINT fill:#0CF, color:#111
-    NG_contrast_float_N_mul_float[multiply] --".in1"--> NG_contrast_float_N_add_float[add]
-    NG_contrast_float_amountINT([amount]) ==.in2==> NG_contrast_float_N_mul_float[multiply]
-    style NG_contrast_float_amountINT fill:#0CF, color:#111
-    NG_contrast_float_N_sub_float[subtract] --".in1"--> NG_contrast_float_N_mul_float[multiply]
-    NG_contrast_float_inINT([in]) ==.in1==> NG_contrast_float_N_sub_float[subtract]
-    style NG_contrast_float_inINT fill:#0CF, color:#111
-    NG_contrast_float_pivotINT([pivot]) ==.in2==> NG_contrast_float_N_sub_float[subtract]
-    style NG_contrast_float_pivotINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_contrast_float
+    NG_contrast_float_N_sub_float[N_sub_float]
+    NG_contrast_float_N_mul_float[N_mul_float]
+    NG_contrast_float_N_add_float[N_add_float]
+    style NG_contrast_float_out  fill:#0C0, color:#FFF
+    NG_contrast_float_out([out])
+    style NG_contrast_float_in  fill:#09D, color:#FFF
+    NG_contrast_float_in([in])
+    style NG_contrast_float_pivot  fill:#09D, color:#FFF
+    NG_contrast_float_pivot([pivot])
+    style NG_contrast_float_amount  fill:#09D, color:#FFF
+    NG_contrast_float_amount([amount])
+    end
+    NG_contrast_float_in --"in1"--> NG_contrast_float_N_sub_float
+    NG_contrast_float_pivot --"in2"--> NG_contrast_float_N_sub_float
+    NG_contrast_float_N_sub_float --"in1"--> NG_contrast_float_N_mul_float
+    NG_contrast_float_amount --"in2"--> NG_contrast_float_N_mul_float
+    NG_contrast_float_N_mul_float --"in1"--> NG_contrast_float_N_add_float
+    NG_contrast_float_pivot --"in2"--> NG_contrast_float_N_add_float
+    NG_contrast_float_N_add_float --> NG_contrast_float_out
 
 
 </div></code></pre>
@@ -886,20 +893,27 @@ graph LR;
 <div id="ND_contrast_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_contrast_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_contrast_color3_N_add_color3[add] --> NG_contrast_color3_out([out])
-    style NG_contrast_color3_out fill:#0C0, color:#111
-    NG_contrast_color3_pivotINT([pivot]) ==.in2==> NG_contrast_color3_N_add_color3[add]
-    style NG_contrast_color3_pivotINT fill:#0CF, color:#111
-    NG_contrast_color3_N_mul_color3[multiply] --".in1"--> NG_contrast_color3_N_add_color3[add]
-    NG_contrast_color3_amountINT([amount]) ==.in2==> NG_contrast_color3_N_mul_color3[multiply]
-    style NG_contrast_color3_amountINT fill:#0CF, color:#111
-    NG_contrast_color3_N_sub_color3[subtract] --".in1"--> NG_contrast_color3_N_mul_color3[multiply]
-    NG_contrast_color3_inINT([in]) ==.in1==> NG_contrast_color3_N_sub_color3[subtract]
-    style NG_contrast_color3_inINT fill:#0CF, color:#111
-    NG_contrast_color3_pivotINT([pivot]) ==.in2==> NG_contrast_color3_N_sub_color3[subtract]
-    style NG_contrast_color3_pivotINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_contrast_color3
+    NG_contrast_color3_N_sub_color3[N_sub_color3]
+    NG_contrast_color3_N_mul_color3[N_mul_color3]
+    NG_contrast_color3_N_add_color3[N_add_color3]
+    style NG_contrast_color3_out  fill:#0C0, color:#FFF
+    NG_contrast_color3_out([out])
+    style NG_contrast_color3_in  fill:#09D, color:#FFF
+    NG_contrast_color3_in([in])
+    style NG_contrast_color3_pivot  fill:#09D, color:#FFF
+    NG_contrast_color3_pivot([pivot])
+    style NG_contrast_color3_amount  fill:#09D, color:#FFF
+    NG_contrast_color3_amount([amount])
+    end
+    NG_contrast_color3_in --"in1"--> NG_contrast_color3_N_sub_color3
+    NG_contrast_color3_pivot --"in2"--> NG_contrast_color3_N_sub_color3
+    NG_contrast_color3_N_sub_color3 --"in1"--> NG_contrast_color3_N_mul_color3
+    NG_contrast_color3_amount --"in2"--> NG_contrast_color3_N_mul_color3
+    NG_contrast_color3_N_mul_color3 --"in1"--> NG_contrast_color3_N_add_color3
+    NG_contrast_color3_pivot --"in2"--> NG_contrast_color3_N_add_color3
+    NG_contrast_color3_N_add_color3 --> NG_contrast_color3_out
 
 
 </div></code></pre>
@@ -1061,20 +1075,27 @@ graph LR;
 <div id="ND_contrast_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_contrast_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_contrast_color4_N_add_color4[add] --> NG_contrast_color4_out([out])
-    style NG_contrast_color4_out fill:#0C0, color:#111
-    NG_contrast_color4_pivotINT([pivot]) ==.in2==> NG_contrast_color4_N_add_color4[add]
-    style NG_contrast_color4_pivotINT fill:#0CF, color:#111
-    NG_contrast_color4_N_mul_color4[multiply] --".in1"--> NG_contrast_color4_N_add_color4[add]
-    NG_contrast_color4_amountINT([amount]) ==.in2==> NG_contrast_color4_N_mul_color4[multiply]
-    style NG_contrast_color4_amountINT fill:#0CF, color:#111
-    NG_contrast_color4_N_sub_color4[subtract] --".in1"--> NG_contrast_color4_N_mul_color4[multiply]
-    NG_contrast_color4_inINT([in]) ==.in1==> NG_contrast_color4_N_sub_color4[subtract]
-    style NG_contrast_color4_inINT fill:#0CF, color:#111
-    NG_contrast_color4_pivotINT([pivot]) ==.in2==> NG_contrast_color4_N_sub_color4[subtract]
-    style NG_contrast_color4_pivotINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_contrast_color4
+    NG_contrast_color4_N_sub_color4[N_sub_color4]
+    NG_contrast_color4_N_mul_color4[N_mul_color4]
+    NG_contrast_color4_N_add_color4[N_add_color4]
+    style NG_contrast_color4_out  fill:#0C0, color:#FFF
+    NG_contrast_color4_out([out])
+    style NG_contrast_color4_in  fill:#09D, color:#FFF
+    NG_contrast_color4_in([in])
+    style NG_contrast_color4_pivot  fill:#09D, color:#FFF
+    NG_contrast_color4_pivot([pivot])
+    style NG_contrast_color4_amount  fill:#09D, color:#FFF
+    NG_contrast_color4_amount([amount])
+    end
+    NG_contrast_color4_in --"in1"--> NG_contrast_color4_N_sub_color4
+    NG_contrast_color4_pivot --"in2"--> NG_contrast_color4_N_sub_color4
+    NG_contrast_color4_N_sub_color4 --"in1"--> NG_contrast_color4_N_mul_color4
+    NG_contrast_color4_amount --"in2"--> NG_contrast_color4_N_mul_color4
+    NG_contrast_color4_N_mul_color4 --"in1"--> NG_contrast_color4_N_add_color4
+    NG_contrast_color4_pivot --"in2"--> NG_contrast_color4_N_add_color4
+    NG_contrast_color4_N_add_color4 --> NG_contrast_color4_out
 
 
 </div></code></pre>
@@ -1209,20 +1230,27 @@ graph LR;
 <div id="ND_contrast_vector2_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_contrast_vector2_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_contrast_vector2_N_add_vector2[add] --> NG_contrast_vector2_out([out])
-    style NG_contrast_vector2_out fill:#0C0, color:#111
-    NG_contrast_vector2_pivotINT([pivot]) ==.in2==> NG_contrast_vector2_N_add_vector2[add]
-    style NG_contrast_vector2_pivotINT fill:#0CF, color:#111
-    NG_contrast_vector2_N_mul_vector2[multiply] --".in1"--> NG_contrast_vector2_N_add_vector2[add]
-    NG_contrast_vector2_amountINT([amount]) ==.in2==> NG_contrast_vector2_N_mul_vector2[multiply]
-    style NG_contrast_vector2_amountINT fill:#0CF, color:#111
-    NG_contrast_vector2_N_sub_vector2[subtract] --".in1"--> NG_contrast_vector2_N_mul_vector2[multiply]
-    NG_contrast_vector2_inINT([in]) ==.in1==> NG_contrast_vector2_N_sub_vector2[subtract]
-    style NG_contrast_vector2_inINT fill:#0CF, color:#111
-    NG_contrast_vector2_pivotINT([pivot]) ==.in2==> NG_contrast_vector2_N_sub_vector2[subtract]
-    style NG_contrast_vector2_pivotINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_contrast_vector2
+    NG_contrast_vector2_N_sub_vector2[N_sub_vector2]
+    NG_contrast_vector2_N_mul_vector2[N_mul_vector2]
+    NG_contrast_vector2_N_add_vector2[N_add_vector2]
+    style NG_contrast_vector2_out  fill:#0C0, color:#FFF
+    NG_contrast_vector2_out([out])
+    style NG_contrast_vector2_in  fill:#09D, color:#FFF
+    NG_contrast_vector2_in([in])
+    style NG_contrast_vector2_pivot  fill:#09D, color:#FFF
+    NG_contrast_vector2_pivot([pivot])
+    style NG_contrast_vector2_amount  fill:#09D, color:#FFF
+    NG_contrast_vector2_amount([amount])
+    end
+    NG_contrast_vector2_in --"in1"--> NG_contrast_vector2_N_sub_vector2
+    NG_contrast_vector2_pivot --"in2"--> NG_contrast_vector2_N_sub_vector2
+    NG_contrast_vector2_N_sub_vector2 --"in1"--> NG_contrast_vector2_N_mul_vector2
+    NG_contrast_vector2_amount --"in2"--> NG_contrast_vector2_N_mul_vector2
+    NG_contrast_vector2_N_mul_vector2 --"in1"--> NG_contrast_vector2_N_add_vector2
+    NG_contrast_vector2_pivot --"in2"--> NG_contrast_vector2_N_add_vector2
+    NG_contrast_vector2_N_add_vector2 --> NG_contrast_vector2_out
 
 
 </div></code></pre>
@@ -1366,20 +1394,27 @@ graph LR;
 <div id="ND_contrast_vector3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_contrast_vector3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_contrast_vector3_N_add_vector3[add] --> NG_contrast_vector3_out([out])
-    style NG_contrast_vector3_out fill:#0C0, color:#111
-    NG_contrast_vector3_pivotINT([pivot]) ==.in2==> NG_contrast_vector3_N_add_vector3[add]
-    style NG_contrast_vector3_pivotINT fill:#0CF, color:#111
-    NG_contrast_vector3_N_mul_vector3[multiply] --".in1"--> NG_contrast_vector3_N_add_vector3[add]
-    NG_contrast_vector3_amountINT([amount]) ==.in2==> NG_contrast_vector3_N_mul_vector3[multiply]
-    style NG_contrast_vector3_amountINT fill:#0CF, color:#111
-    NG_contrast_vector3_N_sub_vector3[subtract] --".in1"--> NG_contrast_vector3_N_mul_vector3[multiply]
-    NG_contrast_vector3_inINT([in]) ==.in1==> NG_contrast_vector3_N_sub_vector3[subtract]
-    style NG_contrast_vector3_inINT fill:#0CF, color:#111
-    NG_contrast_vector3_pivotINT([pivot]) ==.in2==> NG_contrast_vector3_N_sub_vector3[subtract]
-    style NG_contrast_vector3_pivotINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_contrast_vector3
+    NG_contrast_vector3_N_sub_vector3[N_sub_vector3]
+    NG_contrast_vector3_N_mul_vector3[N_mul_vector3]
+    NG_contrast_vector3_N_add_vector3[N_add_vector3]
+    style NG_contrast_vector3_out  fill:#0C0, color:#FFF
+    NG_contrast_vector3_out([out])
+    style NG_contrast_vector3_in  fill:#09D, color:#FFF
+    NG_contrast_vector3_in([in])
+    style NG_contrast_vector3_pivot  fill:#09D, color:#FFF
+    NG_contrast_vector3_pivot([pivot])
+    style NG_contrast_vector3_amount  fill:#09D, color:#FFF
+    NG_contrast_vector3_amount([amount])
+    end
+    NG_contrast_vector3_in --"in1"--> NG_contrast_vector3_N_sub_vector3
+    NG_contrast_vector3_pivot --"in2"--> NG_contrast_vector3_N_sub_vector3
+    NG_contrast_vector3_N_sub_vector3 --"in1"--> NG_contrast_vector3_N_mul_vector3
+    NG_contrast_vector3_amount --"in2"--> NG_contrast_vector3_N_mul_vector3
+    NG_contrast_vector3_N_mul_vector3 --"in1"--> NG_contrast_vector3_N_add_vector3
+    NG_contrast_vector3_pivot --"in2"--> NG_contrast_vector3_N_add_vector3
+    NG_contrast_vector3_N_add_vector3 --> NG_contrast_vector3_out
 
 
 </div></code></pre>
@@ -1532,20 +1567,27 @@ graph LR;
 <div id="ND_contrast_vector4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_contrast_vector4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_contrast_vector4_N_add_vector4[add] --> NG_contrast_vector4_out([out])
-    style NG_contrast_vector4_out fill:#0C0, color:#111
-    NG_contrast_vector4_pivotINT([pivot]) ==.in2==> NG_contrast_vector4_N_add_vector4[add]
-    style NG_contrast_vector4_pivotINT fill:#0CF, color:#111
-    NG_contrast_vector4_N_mul_vector4[multiply] --".in1"--> NG_contrast_vector4_N_add_vector4[add]
-    NG_contrast_vector4_amountINT([amount]) ==.in2==> NG_contrast_vector4_N_mul_vector4[multiply]
-    style NG_contrast_vector4_amountINT fill:#0CF, color:#111
-    NG_contrast_vector4_N_sub_vector4[subtract] --".in1"--> NG_contrast_vector4_N_mul_vector4[multiply]
-    NG_contrast_vector4_inINT([in]) ==.in1==> NG_contrast_vector4_N_sub_vector4[subtract]
-    style NG_contrast_vector4_inINT fill:#0CF, color:#111
-    NG_contrast_vector4_pivotINT([pivot]) ==.in2==> NG_contrast_vector4_N_sub_vector4[subtract]
-    style NG_contrast_vector4_pivotINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_contrast_vector4
+    NG_contrast_vector4_N_sub_vector4[N_sub_vector4]
+    NG_contrast_vector4_N_mul_vector4[N_mul_vector4]
+    NG_contrast_vector4_N_add_vector4[N_add_vector4]
+    style NG_contrast_vector4_out  fill:#0C0, color:#FFF
+    NG_contrast_vector4_out([out])
+    style NG_contrast_vector4_in  fill:#09D, color:#FFF
+    NG_contrast_vector4_in([in])
+    style NG_contrast_vector4_pivot  fill:#09D, color:#FFF
+    NG_contrast_vector4_pivot([pivot])
+    style NG_contrast_vector4_amount  fill:#09D, color:#FFF
+    NG_contrast_vector4_amount([amount])
+    end
+    NG_contrast_vector4_in --"in1"--> NG_contrast_vector4_N_sub_vector4
+    NG_contrast_vector4_pivot --"in2"--> NG_contrast_vector4_N_sub_vector4
+    NG_contrast_vector4_N_sub_vector4 --"in1"--> NG_contrast_vector4_N_mul_vector4
+    NG_contrast_vector4_amount --"in2"--> NG_contrast_vector4_N_mul_vector4
+    NG_contrast_vector4_N_mul_vector4 --"in1"--> NG_contrast_vector4_N_add_vector4
+    NG_contrast_vector4_pivot --"in2"--> NG_contrast_vector4_N_add_vector4
+    NG_contrast_vector4_N_add_vector4 --> NG_contrast_vector4_out
 
 
 </div></code></pre>
@@ -1682,20 +1724,27 @@ graph LR;
 <div id="ND_contrast_color3FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_contrast_color3FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_contrast_color3FA_N_add_color3FA[add] --> NG_contrast_color3FA_out([out])
-    style NG_contrast_color3FA_out fill:#0C0, color:#111
-    NG_contrast_color3FA_pivotINT([pivot]) ==.in2==> NG_contrast_color3FA_N_add_color3FA[add]
-    style NG_contrast_color3FA_pivotINT fill:#0CF, color:#111
-    NG_contrast_color3FA_N_mul_color3FA[multiply] --".in1"--> NG_contrast_color3FA_N_add_color3FA[add]
-    NG_contrast_color3FA_amountINT([amount]) ==.in2==> NG_contrast_color3FA_N_mul_color3FA[multiply]
-    style NG_contrast_color3FA_amountINT fill:#0CF, color:#111
-    NG_contrast_color3FA_N_sub_color3FA[subtract] --".in1"--> NG_contrast_color3FA_N_mul_color3FA[multiply]
-    NG_contrast_color3FA_inINT([in]) ==.in1==> NG_contrast_color3FA_N_sub_color3FA[subtract]
-    style NG_contrast_color3FA_inINT fill:#0CF, color:#111
-    NG_contrast_color3FA_pivotINT([pivot]) ==.in2==> NG_contrast_color3FA_N_sub_color3FA[subtract]
-    style NG_contrast_color3FA_pivotINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_contrast_color3FA
+    NG_contrast_color3FA_N_sub_color3FA[N_sub_color3FA]
+    NG_contrast_color3FA_N_mul_color3FA[N_mul_color3FA]
+    NG_contrast_color3FA_N_add_color3FA[N_add_color3FA]
+    style NG_contrast_color3FA_out  fill:#0C0, color:#FFF
+    NG_contrast_color3FA_out([out])
+    style NG_contrast_color3FA_in  fill:#09D, color:#FFF
+    NG_contrast_color3FA_in([in])
+    style NG_contrast_color3FA_pivot  fill:#09D, color:#FFF
+    NG_contrast_color3FA_pivot([pivot])
+    style NG_contrast_color3FA_amount  fill:#09D, color:#FFF
+    NG_contrast_color3FA_amount([amount])
+    end
+    NG_contrast_color3FA_in --"in1"--> NG_contrast_color3FA_N_sub_color3FA
+    NG_contrast_color3FA_pivot --"in2"--> NG_contrast_color3FA_N_sub_color3FA
+    NG_contrast_color3FA_N_sub_color3FA --"in1"--> NG_contrast_color3FA_N_mul_color3FA
+    NG_contrast_color3FA_amount --"in2"--> NG_contrast_color3FA_N_mul_color3FA
+    NG_contrast_color3FA_N_mul_color3FA --"in1"--> NG_contrast_color3FA_N_add_color3FA
+    NG_contrast_color3FA_pivot --"in2"--> NG_contrast_color3FA_N_add_color3FA
+    NG_contrast_color3FA_N_add_color3FA --> NG_contrast_color3FA_out
 
 
 </div></code></pre>
@@ -1835,20 +1884,27 @@ graph LR;
 <div id="ND_contrast_color4FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_contrast_color4FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_contrast_color4FA_N_add_color4FA[add] --> NG_contrast_color4FA_out([out])
-    style NG_contrast_color4FA_out fill:#0C0, color:#111
-    NG_contrast_color4FA_pivotINT([pivot]) ==.in2==> NG_contrast_color4FA_N_add_color4FA[add]
-    style NG_contrast_color4FA_pivotINT fill:#0CF, color:#111
-    NG_contrast_color4FA_N_mul_color4FA[multiply] --".in1"--> NG_contrast_color4FA_N_add_color4FA[add]
-    NG_contrast_color4FA_amountINT([amount]) ==.in2==> NG_contrast_color4FA_N_mul_color4FA[multiply]
-    style NG_contrast_color4FA_amountINT fill:#0CF, color:#111
-    NG_contrast_color4FA_N_sub_color4FA[subtract] --".in1"--> NG_contrast_color4FA_N_mul_color4FA[multiply]
-    NG_contrast_color4FA_inINT([in]) ==.in1==> NG_contrast_color4FA_N_sub_color4FA[subtract]
-    style NG_contrast_color4FA_inINT fill:#0CF, color:#111
-    NG_contrast_color4FA_pivotINT([pivot]) ==.in2==> NG_contrast_color4FA_N_sub_color4FA[subtract]
-    style NG_contrast_color4FA_pivotINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_contrast_color4FA
+    NG_contrast_color4FA_N_sub_color4FA[N_sub_color4FA]
+    NG_contrast_color4FA_N_mul_color4FA[N_mul_color4FA]
+    NG_contrast_color4FA_N_add_color4FA[N_add_color4FA]
+    style NG_contrast_color4FA_out  fill:#0C0, color:#FFF
+    NG_contrast_color4FA_out([out])
+    style NG_contrast_color4FA_in  fill:#09D, color:#FFF
+    NG_contrast_color4FA_in([in])
+    style NG_contrast_color4FA_pivot  fill:#09D, color:#FFF
+    NG_contrast_color4FA_pivot([pivot])
+    style NG_contrast_color4FA_amount  fill:#09D, color:#FFF
+    NG_contrast_color4FA_amount([amount])
+    end
+    NG_contrast_color4FA_in --"in1"--> NG_contrast_color4FA_N_sub_color4FA
+    NG_contrast_color4FA_pivot --"in2"--> NG_contrast_color4FA_N_sub_color4FA
+    NG_contrast_color4FA_N_sub_color4FA --"in1"--> NG_contrast_color4FA_N_mul_color4FA
+    NG_contrast_color4FA_amount --"in2"--> NG_contrast_color4FA_N_mul_color4FA
+    NG_contrast_color4FA_N_mul_color4FA --"in1"--> NG_contrast_color4FA_N_add_color4FA
+    NG_contrast_color4FA_pivot --"in2"--> NG_contrast_color4FA_N_add_color4FA
+    NG_contrast_color4FA_N_add_color4FA --> NG_contrast_color4FA_out
 
 
 </div></code></pre>
@@ -1979,20 +2035,27 @@ graph LR;
 <div id="ND_contrast_vector2FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_contrast_vector2FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_contrast_vector2FA_N_add_vector2FA[add] --> NG_contrast_vector2FA_out([out])
-    style NG_contrast_vector2FA_out fill:#0C0, color:#111
-    NG_contrast_vector2FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector2FA_N_add_vector2FA[add]
-    style NG_contrast_vector2FA_pivotINT fill:#0CF, color:#111
-    NG_contrast_vector2FA_N_mul_vector2FA[multiply] --".in1"--> NG_contrast_vector2FA_N_add_vector2FA[add]
-    NG_contrast_vector2FA_amountINT([amount]) ==.in2==> NG_contrast_vector2FA_N_mul_vector2FA[multiply]
-    style NG_contrast_vector2FA_amountINT fill:#0CF, color:#111
-    NG_contrast_vector2FA_N_sub_vector2FA[subtract] --".in1"--> NG_contrast_vector2FA_N_mul_vector2FA[multiply]
-    NG_contrast_vector2FA_inINT([in]) ==.in1==> NG_contrast_vector2FA_N_sub_vector2FA[subtract]
-    style NG_contrast_vector2FA_inINT fill:#0CF, color:#111
-    NG_contrast_vector2FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector2FA_N_sub_vector2FA[subtract]
-    style NG_contrast_vector2FA_pivotINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_contrast_vector2FA
+    NG_contrast_vector2FA_N_sub_vector2FA[N_sub_vector2FA]
+    NG_contrast_vector2FA_N_mul_vector2FA[N_mul_vector2FA]
+    NG_contrast_vector2FA_N_add_vector2FA[N_add_vector2FA]
+    style NG_contrast_vector2FA_out  fill:#0C0, color:#FFF
+    NG_contrast_vector2FA_out([out])
+    style NG_contrast_vector2FA_in  fill:#09D, color:#FFF
+    NG_contrast_vector2FA_in([in])
+    style NG_contrast_vector2FA_pivot  fill:#09D, color:#FFF
+    NG_contrast_vector2FA_pivot([pivot])
+    style NG_contrast_vector2FA_amount  fill:#09D, color:#FFF
+    NG_contrast_vector2FA_amount([amount])
+    end
+    NG_contrast_vector2FA_in --"in1"--> NG_contrast_vector2FA_N_sub_vector2FA
+    NG_contrast_vector2FA_pivot --"in2"--> NG_contrast_vector2FA_N_sub_vector2FA
+    NG_contrast_vector2FA_N_sub_vector2FA --"in1"--> NG_contrast_vector2FA_N_mul_vector2FA
+    NG_contrast_vector2FA_amount --"in2"--> NG_contrast_vector2FA_N_mul_vector2FA
+    NG_contrast_vector2FA_N_mul_vector2FA --"in1"--> NG_contrast_vector2FA_N_add_vector2FA
+    NG_contrast_vector2FA_pivot --"in2"--> NG_contrast_vector2FA_N_add_vector2FA
+    NG_contrast_vector2FA_N_add_vector2FA --> NG_contrast_vector2FA_out
 
 
 </div></code></pre>
@@ -2126,20 +2189,27 @@ graph LR;
 <div id="ND_contrast_vector3FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_contrast_vector3FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_contrast_vector3FA_N_add_vector3FA[add] --> NG_contrast_vector3FA_out([out])
-    style NG_contrast_vector3FA_out fill:#0C0, color:#111
-    NG_contrast_vector3FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector3FA_N_add_vector3FA[add]
-    style NG_contrast_vector3FA_pivotINT fill:#0CF, color:#111
-    NG_contrast_vector3FA_N_mul_vector3FA[multiply] --".in1"--> NG_contrast_vector3FA_N_add_vector3FA[add]
-    NG_contrast_vector3FA_amountINT([amount]) ==.in2==> NG_contrast_vector3FA_N_mul_vector3FA[multiply]
-    style NG_contrast_vector3FA_amountINT fill:#0CF, color:#111
-    NG_contrast_vector3FA_N_sub_vector3FA[subtract] --".in1"--> NG_contrast_vector3FA_N_mul_vector3FA[multiply]
-    NG_contrast_vector3FA_inINT([in]) ==.in1==> NG_contrast_vector3FA_N_sub_vector3FA[subtract]
-    style NG_contrast_vector3FA_inINT fill:#0CF, color:#111
-    NG_contrast_vector3FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector3FA_N_sub_vector3FA[subtract]
-    style NG_contrast_vector3FA_pivotINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_contrast_vector3FA
+    NG_contrast_vector3FA_N_sub_vector3FA[N_sub_vector3FA]
+    NG_contrast_vector3FA_N_mul_vector3FA[N_mul_vector3FA]
+    NG_contrast_vector3FA_N_add_vector3FA[N_add_vector3FA]
+    style NG_contrast_vector3FA_out  fill:#0C0, color:#FFF
+    NG_contrast_vector3FA_out([out])
+    style NG_contrast_vector3FA_in  fill:#09D, color:#FFF
+    NG_contrast_vector3FA_in([in])
+    style NG_contrast_vector3FA_pivot  fill:#09D, color:#FFF
+    NG_contrast_vector3FA_pivot([pivot])
+    style NG_contrast_vector3FA_amount  fill:#09D, color:#FFF
+    NG_contrast_vector3FA_amount([amount])
+    end
+    NG_contrast_vector3FA_in --"in1"--> NG_contrast_vector3FA_N_sub_vector3FA
+    NG_contrast_vector3FA_pivot --"in2"--> NG_contrast_vector3FA_N_sub_vector3FA
+    NG_contrast_vector3FA_N_sub_vector3FA --"in1"--> NG_contrast_vector3FA_N_mul_vector3FA
+    NG_contrast_vector3FA_amount --"in2"--> NG_contrast_vector3FA_N_mul_vector3FA
+    NG_contrast_vector3FA_N_mul_vector3FA --"in1"--> NG_contrast_vector3FA_N_add_vector3FA
+    NG_contrast_vector3FA_pivot --"in2"--> NG_contrast_vector3FA_N_add_vector3FA
+    NG_contrast_vector3FA_N_add_vector3FA --> NG_contrast_vector3FA_out
 
 
 </div></code></pre>
@@ -2276,20 +2346,27 @@ graph LR;
 <div id="ND_contrast_vector4FA_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_contrast_vector4FA_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_contrast_vector4FA_N_add_vector4FA[add] --> NG_contrast_vector4FA_out([out])
-    style NG_contrast_vector4FA_out fill:#0C0, color:#111
-    NG_contrast_vector4FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector4FA_N_add_vector4FA[add]
-    style NG_contrast_vector4FA_pivotINT fill:#0CF, color:#111
-    NG_contrast_vector4FA_N_mul_vector4FA[multiply] --".in1"--> NG_contrast_vector4FA_N_add_vector4FA[add]
-    NG_contrast_vector4FA_amountINT([amount]) ==.in2==> NG_contrast_vector4FA_N_mul_vector4FA[multiply]
-    style NG_contrast_vector4FA_amountINT fill:#0CF, color:#111
-    NG_contrast_vector4FA_N_sub_vector4FA[subtract] --".in1"--> NG_contrast_vector4FA_N_mul_vector4FA[multiply]
-    NG_contrast_vector4FA_inINT([in]) ==.in1==> NG_contrast_vector4FA_N_sub_vector4FA[subtract]
-    style NG_contrast_vector4FA_inINT fill:#0CF, color:#111
-    NG_contrast_vector4FA_pivotINT([pivot]) ==.in2==> NG_contrast_vector4FA_N_sub_vector4FA[subtract]
-    style NG_contrast_vector4FA_pivotINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_contrast_vector4FA
+    NG_contrast_vector4FA_N_sub_vector4FA[N_sub_vector4FA]
+    NG_contrast_vector4FA_N_mul_vector4FA[N_mul_vector4FA]
+    NG_contrast_vector4FA_N_add_vector4FA[N_add_vector4FA]
+    style NG_contrast_vector4FA_out  fill:#0C0, color:#FFF
+    NG_contrast_vector4FA_out([out])
+    style NG_contrast_vector4FA_in  fill:#09D, color:#FFF
+    NG_contrast_vector4FA_in([in])
+    style NG_contrast_vector4FA_pivot  fill:#09D, color:#FFF
+    NG_contrast_vector4FA_pivot([pivot])
+    style NG_contrast_vector4FA_amount  fill:#09D, color:#FFF
+    NG_contrast_vector4FA_amount([amount])
+    end
+    NG_contrast_vector4FA_in --"in1"--> NG_contrast_vector4FA_N_sub_vector4FA
+    NG_contrast_vector4FA_pivot --"in2"--> NG_contrast_vector4FA_N_sub_vector4FA
+    NG_contrast_vector4FA_N_sub_vector4FA --"in1"--> NG_contrast_vector4FA_N_mul_vector4FA
+    NG_contrast_vector4FA_amount --"in2"--> NG_contrast_vector4FA_N_mul_vector4FA
+    NG_contrast_vector4FA_N_mul_vector4FA --"in1"--> NG_contrast_vector4FA_N_add_vector4FA
+    NG_contrast_vector4FA_pivot --"in2"--> NG_contrast_vector4FA_N_add_vector4FA
+    NG_contrast_vector4FA_N_add_vector4FA --> NG_contrast_vector4FA_out
 
 
 </div></code></pre>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <ifequal name="ifequal_vector3" type="vector3">
     <input name="value1" type="float" value="0.0" />
     <input name="value2" type="float" value="0.0" />

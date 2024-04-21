@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="LamaEmission" class="ms-2 mb-0">
 Category: LamaEmission
@@ -701,12 +701,16 @@ Category: LamaEmission
 <div id="ND_lama_emission_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_lama_emission_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMPL_lama_emission_emission[uniform_edf] --> IMPL_lama_emission_out([out])
-    style IMPL_lama_emission_out fill:#0C0, color:#111
-    IMPL_lama_emission_colorINT([color]) ==.color==> IMPL_lama_emission_emission[uniform_edf]
-    style IMPL_lama_emission_colorINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMPL_lama_emission
+    IMPL_lama_emission_emission[emission]
+    style IMPL_lama_emission_out  fill:#0C0, color:#FFF
+    IMPL_lama_emission_out([out])
+    style IMPL_lama_emission_color  fill:#09D, color:#FFF
+    IMPL_lama_emission_color([color])
+    end
+    IMPL_lama_emission_color --"color"--> IMPL_lama_emission_emission
+    IMPL_lama_emission_emission --> IMPL_lama_emission_out
 
 
 </div></code></pre>

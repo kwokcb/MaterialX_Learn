@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <UsdUVTexture name="UsdUVTexture_23" type="multioutput" version="2.3">
     <input name="file" type="filename" value="" uniform="true" />
     <input name="wrapS" type="string" value="periodic" enum="black,clamp,periodic,mirror" uniform="true" />

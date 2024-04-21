@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <randomfloat name="randomfloat_integer" type="float">
     <input name="in" type="integer" uiname="Input" value="0" />
     <input name="min" type="float" uiname="Minimum" value="0.0" />

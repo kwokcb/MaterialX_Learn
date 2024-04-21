@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <mix name="mix_edf" type="EDF">
     <input name="fg" type="EDF" value="" nodename="uniform_edf" />
     <input name="bg" type="EDF" value="" nodename="uniform_edf2" />

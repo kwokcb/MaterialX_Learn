@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38">
+<materialx version="1.39">
   <dot name="dot_boolean" type="boolean">
     <input name="in" type="boolean" value="false" />
     <input name="note" type="string" value="" uniform="true" />

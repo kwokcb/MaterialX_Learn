@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="UsdPrimvarReader" class="ms-2 mb-0">
 Category: UsdPrimvarReader
@@ -697,14 +697,19 @@ Category: UsdPrimvarReader
 <div id="ND_UsdPrimvarReader_integer_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_UsdPrimvarReader_integer_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMP_UsdPrimvarReader_integer_primvar[geompropvalue] --> IMP_UsdPrimvarReader_integer_out([out])
-    style IMP_UsdPrimvarReader_integer_out fill:#0C0, color:#111
-    IMP_UsdPrimvarReader_integer_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_integer_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_integer_varnameINT fill:#0CF, color:#111
-    IMP_UsdPrimvarReader_integer_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_integer_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_integer_fallbackINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMP_UsdPrimvarReader_integer
+    IMP_UsdPrimvarReader_integer_primvar[primvar]
+    style IMP_UsdPrimvarReader_integer_out  fill:#0C0, color:#FFF
+    IMP_UsdPrimvarReader_integer_out([out])
+    style IMP_UsdPrimvarReader_integer_varname  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_integer_varname([varname])
+    style IMP_UsdPrimvarReader_integer_fallback  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_integer_fallback([fallback])
+    end
+    IMP_UsdPrimvarReader_integer_varname --"geomprop"--> IMP_UsdPrimvarReader_integer_primvar
+    IMP_UsdPrimvarReader_integer_fallback --"default"--> IMP_UsdPrimvarReader_integer_primvar
+    IMP_UsdPrimvarReader_integer_primvar --> IMP_UsdPrimvarReader_integer_out
 
 
 </div></code></pre>
@@ -810,14 +815,19 @@ graph LR;
 <div id="ND_UsdPrimvarReader_boolean_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_UsdPrimvarReader_boolean_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMP_UsdPrimvarReader_boolean_primvar[geompropvalue] --> IMP_UsdPrimvarReader_boolean_out([out])
-    style IMP_UsdPrimvarReader_boolean_out fill:#0C0, color:#111
-    IMP_UsdPrimvarReader_boolean_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_boolean_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_boolean_varnameINT fill:#0CF, color:#111
-    IMP_UsdPrimvarReader_boolean_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_boolean_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_boolean_fallbackINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMP_UsdPrimvarReader_boolean
+    IMP_UsdPrimvarReader_boolean_primvar[primvar]
+    style IMP_UsdPrimvarReader_boolean_out  fill:#0C0, color:#FFF
+    IMP_UsdPrimvarReader_boolean_out([out])
+    style IMP_UsdPrimvarReader_boolean_varname  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_boolean_varname([varname])
+    style IMP_UsdPrimvarReader_boolean_fallback  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_boolean_fallback([fallback])
+    end
+    IMP_UsdPrimvarReader_boolean_varname --"geomprop"--> IMP_UsdPrimvarReader_boolean_primvar
+    IMP_UsdPrimvarReader_boolean_fallback --"default"--> IMP_UsdPrimvarReader_boolean_primvar
+    IMP_UsdPrimvarReader_boolean_primvar --> IMP_UsdPrimvarReader_boolean_out
 
 
 </div></code></pre>
@@ -930,14 +940,19 @@ graph LR;
 <div id="ND_UsdPrimvarReader_string_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_UsdPrimvarReader_string_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMP_UsdPrimvarReader_string_primvar[geompropvalue] --> IMP_UsdPrimvarReader_string_out([out])
-    style IMP_UsdPrimvarReader_string_out fill:#0C0, color:#111
-    IMP_UsdPrimvarReader_string_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_string_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_string_varnameINT fill:#0CF, color:#111
-    IMP_UsdPrimvarReader_string_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_string_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_string_fallbackINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMP_UsdPrimvarReader_string
+    IMP_UsdPrimvarReader_string_primvar[primvar]
+    style IMP_UsdPrimvarReader_string_out  fill:#0C0, color:#FFF
+    IMP_UsdPrimvarReader_string_out([out])
+    style IMP_UsdPrimvarReader_string_varname  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_string_varname([varname])
+    style IMP_UsdPrimvarReader_string_fallback  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_string_fallback([fallback])
+    end
+    IMP_UsdPrimvarReader_string_varname --"geomprop"--> IMP_UsdPrimvarReader_string_primvar
+    IMP_UsdPrimvarReader_string_fallback --"default"--> IMP_UsdPrimvarReader_string_primvar
+    IMP_UsdPrimvarReader_string_primvar --> IMP_UsdPrimvarReader_string_out
 
 
 </div></code></pre>
@@ -1043,14 +1058,19 @@ graph LR;
 <div id="ND_UsdPrimvarReader_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_UsdPrimvarReader_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMP_UsdPrimvarReader_float_primvar[geompropvalue] --> IMP_UsdPrimvarReader_float_out([out])
-    style IMP_UsdPrimvarReader_float_out fill:#0C0, color:#111
-    IMP_UsdPrimvarReader_float_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_float_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_float_varnameINT fill:#0CF, color:#111
-    IMP_UsdPrimvarReader_float_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_float_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_float_fallbackINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMP_UsdPrimvarReader_float
+    IMP_UsdPrimvarReader_float_primvar[primvar]
+    style IMP_UsdPrimvarReader_float_out  fill:#0C0, color:#FFF
+    IMP_UsdPrimvarReader_float_out([out])
+    style IMP_UsdPrimvarReader_float_varname  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_float_varname([varname])
+    style IMP_UsdPrimvarReader_float_fallback  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_float_fallback([fallback])
+    end
+    IMP_UsdPrimvarReader_float_varname --"geomprop"--> IMP_UsdPrimvarReader_float_primvar
+    IMP_UsdPrimvarReader_float_fallback --"default"--> IMP_UsdPrimvarReader_float_primvar
+    IMP_UsdPrimvarReader_float_primvar --> IMP_UsdPrimvarReader_float_out
 
 
 </div></code></pre>
@@ -1158,14 +1178,19 @@ graph LR;
 <div id="ND_UsdPrimvarReader_vector2_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_UsdPrimvarReader_vector2_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMP_UsdPrimvarReader_vector2_primvar[geompropvalue] --> IMP_UsdPrimvarReader_vector2_out([out])
-    style IMP_UsdPrimvarReader_vector2_out fill:#0C0, color:#111
-    IMP_UsdPrimvarReader_vector2_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_vector2_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_vector2_varnameINT fill:#0CF, color:#111
-    IMP_UsdPrimvarReader_vector2_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_vector2_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_vector2_fallbackINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMP_UsdPrimvarReader_vector2
+    IMP_UsdPrimvarReader_vector2_primvar[primvar]
+    style IMP_UsdPrimvarReader_vector2_out  fill:#0C0, color:#FFF
+    IMP_UsdPrimvarReader_vector2_out([out])
+    style IMP_UsdPrimvarReader_vector2_varname  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_vector2_varname([varname])
+    style IMP_UsdPrimvarReader_vector2_fallback  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_vector2_fallback([fallback])
+    end
+    IMP_UsdPrimvarReader_vector2_varname --"geomprop"--> IMP_UsdPrimvarReader_vector2_primvar
+    IMP_UsdPrimvarReader_vector2_fallback --"default"--> IMP_UsdPrimvarReader_vector2_primvar
+    IMP_UsdPrimvarReader_vector2_primvar --> IMP_UsdPrimvarReader_vector2_out
 
 
 </div></code></pre>
@@ -1276,14 +1301,19 @@ graph LR;
 <div id="ND_UsdPrimvarReader_vector3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_UsdPrimvarReader_vector3_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMP_UsdPrimvarReader_vector3_primvar[geompropvalue] --> IMP_UsdPrimvarReader_vector3_out([out])
-    style IMP_UsdPrimvarReader_vector3_out fill:#0C0, color:#111
-    IMP_UsdPrimvarReader_vector3_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_vector3_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_vector3_varnameINT fill:#0CF, color:#111
-    IMP_UsdPrimvarReader_vector3_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_vector3_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_vector3_fallbackINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMP_UsdPrimvarReader_vector3
+    IMP_UsdPrimvarReader_vector3_primvar[primvar]
+    style IMP_UsdPrimvarReader_vector3_out  fill:#0C0, color:#FFF
+    IMP_UsdPrimvarReader_vector3_out([out])
+    style IMP_UsdPrimvarReader_vector3_varname  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_vector3_varname([varname])
+    style IMP_UsdPrimvarReader_vector3_fallback  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_vector3_fallback([fallback])
+    end
+    IMP_UsdPrimvarReader_vector3_varname --"geomprop"--> IMP_UsdPrimvarReader_vector3_primvar
+    IMP_UsdPrimvarReader_vector3_fallback --"default"--> IMP_UsdPrimvarReader_vector3_primvar
+    IMP_UsdPrimvarReader_vector3_primvar --> IMP_UsdPrimvarReader_vector3_out
 
 
 </div></code></pre>
@@ -1397,14 +1427,19 @@ graph LR;
 <div id="ND_UsdPrimvarReader_vector4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_UsdPrimvarReader_vector4_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    IMP_UsdPrimvarReader_vector4_primvar[geompropvalue] --> IMP_UsdPrimvarReader_vector4_out([out])
-    style IMP_UsdPrimvarReader_vector4_out fill:#0C0, color:#111
-    IMP_UsdPrimvarReader_vector4_varnameINT([varname]) ==.geomprop==> IMP_UsdPrimvarReader_vector4_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_vector4_varnameINT fill:#0CF, color:#111
-    IMP_UsdPrimvarReader_vector4_fallbackINT([fallback]) ==.default==> IMP_UsdPrimvarReader_vector4_primvar[geompropvalue]
-    style IMP_UsdPrimvarReader_vector4_fallbackINT fill:#0CF, color:#111
-
+graph TB
+    subgraph IMP_UsdPrimvarReader_vector4
+    IMP_UsdPrimvarReader_vector4_primvar[primvar]
+    style IMP_UsdPrimvarReader_vector4_out  fill:#0C0, color:#FFF
+    IMP_UsdPrimvarReader_vector4_out([out])
+    style IMP_UsdPrimvarReader_vector4_varname  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_vector4_varname([varname])
+    style IMP_UsdPrimvarReader_vector4_fallback  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_vector4_fallback([fallback])
+    end
+    IMP_UsdPrimvarReader_vector4_varname --"geomprop"--> IMP_UsdPrimvarReader_vector4_primvar
+    IMP_UsdPrimvarReader_vector4_fallback --"default"--> IMP_UsdPrimvarReader_vector4_primvar
+    IMP_UsdPrimvarReader_vector4_primvar --> IMP_UsdPrimvarReader_vector4_out
 
 
 </div></code></pre>

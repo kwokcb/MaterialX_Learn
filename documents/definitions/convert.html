@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="convert" class="ms-2 mb-0">
 Category: convert
@@ -3085,12 +3085,16 @@ Category: convert
 <div id="ND_convert_color3_surfaceshader_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_convert_color3_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_convert_color3_surfaceshader_surface[surface_unlit] --> NG_convert_color3_surfaceshader_out([out])
-    style NG_convert_color3_surfaceshader_out fill:#0C0, color:#111
-    NG_convert_color3_surfaceshader_inINT([in]) ==.emission_color==> NG_convert_color3_surfaceshader_surface[surface_unlit]
-    style NG_convert_color3_surfaceshader_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_convert_color3_surfaceshader
+    NG_convert_color3_surfaceshader_surface[surface]
+    style NG_convert_color3_surfaceshader_out  fill:#0C0, color:#FFF
+    NG_convert_color3_surfaceshader_out([out])
+    style NG_convert_color3_surfaceshader_in  fill:#09D, color:#FFF
+    NG_convert_color3_surfaceshader_in([in])
+    end
+    NG_convert_color3_surfaceshader_in --"emission_color"--> NG_convert_color3_surfaceshader_surface
+    NG_convert_color3_surfaceshader_surface --> NG_convert_color3_surfaceshader_out
 
 
 </div></code></pre>
@@ -3184,16 +3188,21 @@ graph LR;
 <div id="ND_convert_color4_surfaceshader_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_convert_color4_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_convert_color4_surfaceshader_surface[surface_unlit] --> NG_convert_color4_surfaceshader_out([out])
-    style NG_convert_color4_surfaceshader_out fill:#0C0, color:#111
-    NG_convert_color4_surfaceshader_convert[convert] --".emission_color"--> NG_convert_color4_surfaceshader_surface[surface_unlit]
-    NG_convert_color4_surfaceshader_inINT([in]) ==.in==> NG_convert_color4_surfaceshader_convert[convert]
-    style NG_convert_color4_surfaceshader_inINT fill:#0CF, color:#111
-    NG_convert_color4_surfaceshader_extract[extract] --".opacity"--> NG_convert_color4_surfaceshader_surface[surface_unlit]
-    NG_convert_color4_surfaceshader_inINT([in]) ==.in==> NG_convert_color4_surfaceshader_extract[extract]
-    style NG_convert_color4_surfaceshader_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_convert_color4_surfaceshader
+    NG_convert_color4_surfaceshader_surface[surface]
+    NG_convert_color4_surfaceshader_extract[extract]
+    NG_convert_color4_surfaceshader_convert[convert]
+    style NG_convert_color4_surfaceshader_out  fill:#0C0, color:#FFF
+    NG_convert_color4_surfaceshader_out([out])
+    style NG_convert_color4_surfaceshader_in  fill:#09D, color:#FFF
+    NG_convert_color4_surfaceshader_in([in])
+    end
+    NG_convert_color4_surfaceshader_convert --"emission_color"--> NG_convert_color4_surfaceshader_surface
+    NG_convert_color4_surfaceshader_extract --"opacity"--> NG_convert_color4_surfaceshader_surface
+    NG_convert_color4_surfaceshader_in --"in"--> NG_convert_color4_surfaceshader_extract
+    NG_convert_color4_surfaceshader_in --"in"--> NG_convert_color4_surfaceshader_convert
+    NG_convert_color4_surfaceshader_surface --> NG_convert_color4_surfaceshader_out
 
 
 </div></code></pre>
@@ -3276,13 +3285,18 @@ graph LR;
 <div id="ND_convert_float_surfaceshader_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_convert_float_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_convert_float_surfaceshader_surface[surface_unlit] --> NG_convert_float_surfaceshader_out([out])
-    style NG_convert_float_surfaceshader_out fill:#0C0, color:#111
-    NG_convert_float_surfaceshader_float_to_color3[convert] --".emission_color"--> NG_convert_float_surfaceshader_surface[surface_unlit]
-    NG_convert_float_surfaceshader_inINT([in]) ==.in==> NG_convert_float_surfaceshader_float_to_color3[convert]
-    style NG_convert_float_surfaceshader_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_convert_float_surfaceshader
+    NG_convert_float_surfaceshader_float_to_color3[float_to_color3]
+    NG_convert_float_surfaceshader_surface[surface]
+    style NG_convert_float_surfaceshader_out  fill:#0C0, color:#FFF
+    NG_convert_float_surfaceshader_out([out])
+    style NG_convert_float_surfaceshader_in  fill:#09D, color:#FFF
+    NG_convert_float_surfaceshader_in([in])
+    end
+    NG_convert_float_surfaceshader_in --"in"--> NG_convert_float_surfaceshader_float_to_color3
+    NG_convert_float_surfaceshader_float_to_color3 --"emission_color"--> NG_convert_float_surfaceshader_surface
+    NG_convert_float_surfaceshader_surface --> NG_convert_float_surfaceshader_out
 
 
 </div></code></pre>
@@ -3367,14 +3381,20 @@ graph LR;
 <div id="ND_convert_vector2_surfaceshader_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_convert_vector2_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_convert_vector2_surfaceshader_surface[surface_unlit] --> NG_convert_vector2_surfaceshader_out([out])
-    style NG_convert_vector2_surfaceshader_out fill:#0C0, color:#111
-    NG_convert_vector2_surfaceshader_vec3_to_color3[convert] --".emission_color"--> NG_convert_vector2_surfaceshader_surface[surface_unlit]
-    NG_convert_vector2_surfaceshader_vec2_to_vec3[convert] --".in"--> NG_convert_vector2_surfaceshader_vec3_to_color3[convert]
-    NG_convert_vector2_surfaceshader_inINT([in]) ==.in==> NG_convert_vector2_surfaceshader_vec2_to_vec3[convert]
-    style NG_convert_vector2_surfaceshader_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_convert_vector2_surfaceshader
+    NG_convert_vector2_surfaceshader_surface[surface]
+    NG_convert_vector2_surfaceshader_vec2_to_vec3[vec2_to_vec3]
+    NG_convert_vector2_surfaceshader_vec3_to_color3[vec3_to_color3]
+    style NG_convert_vector2_surfaceshader_out  fill:#0C0, color:#FFF
+    NG_convert_vector2_surfaceshader_out([out])
+    style NG_convert_vector2_surfaceshader_in  fill:#09D, color:#FFF
+    NG_convert_vector2_surfaceshader_in([in])
+    end
+    NG_convert_vector2_surfaceshader_vec3_to_color3 --"emission_color"--> NG_convert_vector2_surfaceshader_surface
+    NG_convert_vector2_surfaceshader_in --"in"--> NG_convert_vector2_surfaceshader_vec2_to_vec3
+    NG_convert_vector2_surfaceshader_vec2_to_vec3 --"in"--> NG_convert_vector2_surfaceshader_vec3_to_color3
+    NG_convert_vector2_surfaceshader_surface --> NG_convert_vector2_surfaceshader_out
 
 
 </div></code></pre>
@@ -3462,13 +3482,18 @@ graph LR;
 <div id="ND_convert_vector3_surfaceshader_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_convert_vector3_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_convert_vector3_surfaceshader_surface[surface_unlit] --> NG_convert_vector3_surfaceshader_out([out])
-    style NG_convert_vector3_surfaceshader_out fill:#0C0, color:#111
-    NG_convert_vector3_surfaceshader_vec3_to_color3[convert] --".emission_color"--> NG_convert_vector3_surfaceshader_surface[surface_unlit]
-    NG_convert_vector3_surfaceshader_inINT([in]) ==.in==> NG_convert_vector3_surfaceshader_vec3_to_color3[convert]
-    style NG_convert_vector3_surfaceshader_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_convert_vector3_surfaceshader
+    NG_convert_vector3_surfaceshader_surface[surface]
+    NG_convert_vector3_surfaceshader_vec3_to_color3[vec3_to_color3]
+    style NG_convert_vector3_surfaceshader_out  fill:#0C0, color:#FFF
+    NG_convert_vector3_surfaceshader_out([out])
+    style NG_convert_vector3_surfaceshader_in  fill:#09D, color:#FFF
+    NG_convert_vector3_surfaceshader_in([in])
+    end
+    NG_convert_vector3_surfaceshader_vec3_to_color3 --"emission_color"--> NG_convert_vector3_surfaceshader_surface
+    NG_convert_vector3_surfaceshader_in --"in"--> NG_convert_vector3_surfaceshader_vec3_to_color3
+    NG_convert_vector3_surfaceshader_surface --> NG_convert_vector3_surfaceshader_out
 
 
 </div></code></pre>
@@ -3559,16 +3584,23 @@ graph LR;
 <div id="ND_convert_vector4_surfaceshader_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_convert_vector4_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_convert_vector4_surfaceshader_surface[surface_unlit] --> NG_convert_vector4_surfaceshader_out([out])
-    style NG_convert_vector4_surfaceshader_out fill:#0C0, color:#111
-    NG_convert_vector4_surfaceshader_color4_to_color3[convert] --".emission_color"--> NG_convert_vector4_surfaceshader_surface[surface_unlit]
-    NG_convert_vector4_surfaceshader_vec4_to_color4[convert] --".in"--> NG_convert_vector4_surfaceshader_color4_to_color3[convert]
-    NG_convert_vector4_surfaceshader_inINT([in]) ==.in==> NG_convert_vector4_surfaceshader_vec4_to_color4[convert]
-    style NG_convert_vector4_surfaceshader_inINT fill:#0CF, color:#111
-    NG_convert_vector4_surfaceshader_color4_to_float[extract] --".opacity"--> NG_convert_vector4_surfaceshader_surface[surface_unlit]
-    NG_convert_vector4_surfaceshader_vec4_to_color4[convert] --".in"--> NG_convert_vector4_surfaceshader_color4_to_float[extract]
-
+graph TB
+    subgraph NG_convert_vector4_surfaceshader
+    NG_convert_vector4_surfaceshader_surface[surface]
+    NG_convert_vector4_surfaceshader_vec4_to_color4[vec4_to_color4]
+    NG_convert_vector4_surfaceshader_color4_to_float[color4_to_float]
+    NG_convert_vector4_surfaceshader_color4_to_color3[color4_to_color3]
+    style NG_convert_vector4_surfaceshader_out  fill:#0C0, color:#FFF
+    NG_convert_vector4_surfaceshader_out([out])
+    style NG_convert_vector4_surfaceshader_in  fill:#09D, color:#FFF
+    NG_convert_vector4_surfaceshader_in([in])
+    end
+    NG_convert_vector4_surfaceshader_color4_to_color3 --"emission_color"--> NG_convert_vector4_surfaceshader_surface
+    NG_convert_vector4_surfaceshader_color4_to_float --"opacity"--> NG_convert_vector4_surfaceshader_surface
+    NG_convert_vector4_surfaceshader_in --"in"--> NG_convert_vector4_surfaceshader_vec4_to_color4
+    NG_convert_vector4_surfaceshader_vec4_to_color4 --"in"--> NG_convert_vector4_surfaceshader_color4_to_float
+    NG_convert_vector4_surfaceshader_vec4_to_color4 --"in"--> NG_convert_vector4_surfaceshader_color4_to_color3
+    NG_convert_vector4_surfaceshader_surface --> NG_convert_vector4_surfaceshader_out
 
 
 </div></code></pre>
@@ -3651,14 +3683,20 @@ graph LR;
 <div id="ND_convert_integer_surfaceshader_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_convert_integer_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_convert_integer_surfaceshader_surface[surface_unlit] --> NG_convert_integer_surfaceshader_out([out])
-    style NG_convert_integer_surfaceshader_out fill:#0C0, color:#111
-    NG_convert_integer_surfaceshader_float_to_color3[convert] --".emission_color"--> NG_convert_integer_surfaceshader_surface[surface_unlit]
-    NG_convert_integer_surfaceshader_int_to_float[convert] --".in"--> NG_convert_integer_surfaceshader_float_to_color3[convert]
-    NG_convert_integer_surfaceshader_inINT([in]) ==.in==> NG_convert_integer_surfaceshader_int_to_float[convert]
-    style NG_convert_integer_surfaceshader_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_convert_integer_surfaceshader
+    NG_convert_integer_surfaceshader_int_to_float[int_to_float]
+    NG_convert_integer_surfaceshader_float_to_color3[float_to_color3]
+    NG_convert_integer_surfaceshader_surface[surface]
+    style NG_convert_integer_surfaceshader_out  fill:#0C0, color:#FFF
+    NG_convert_integer_surfaceshader_out([out])
+    style NG_convert_integer_surfaceshader_in  fill:#09D, color:#FFF
+    NG_convert_integer_surfaceshader_in([in])
+    end
+    NG_convert_integer_surfaceshader_in --"in"--> NG_convert_integer_surfaceshader_int_to_float
+    NG_convert_integer_surfaceshader_int_to_float --"in"--> NG_convert_integer_surfaceshader_float_to_color3
+    NG_convert_integer_surfaceshader_float_to_color3 --"emission_color"--> NG_convert_integer_surfaceshader_surface
+    NG_convert_integer_surfaceshader_surface --> NG_convert_integer_surfaceshader_out
 
 
 </div></code></pre>
@@ -3741,14 +3779,20 @@ graph LR;
 <div id="ND_convert_boolean_surfaceshader_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_convert_boolean_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_convert_boolean_surfaceshader_surface[surface_unlit] --> NG_convert_boolean_surfaceshader_out([out])
-    style NG_convert_boolean_surfaceshader_out fill:#0C0, color:#111
-    NG_convert_boolean_surfaceshader_float_to_color3[convert] --".emission_color"--> NG_convert_boolean_surfaceshader_surface[surface_unlit]
-    NG_convert_boolean_surfaceshader_bool_to_float[convert] --".in"--> NG_convert_boolean_surfaceshader_float_to_color3[convert]
-    NG_convert_boolean_surfaceshader_inINT([in]) ==.in==> NG_convert_boolean_surfaceshader_bool_to_float[convert]
-    style NG_convert_boolean_surfaceshader_inINT fill:#0CF, color:#111
-
+graph TB
+    subgraph NG_convert_boolean_surfaceshader
+    NG_convert_boolean_surfaceshader_bool_to_float[bool_to_float]
+    NG_convert_boolean_surfaceshader_float_to_color3[float_to_color3]
+    NG_convert_boolean_surfaceshader_surface[surface]
+    style NG_convert_boolean_surfaceshader_out  fill:#0C0, color:#FFF
+    NG_convert_boolean_surfaceshader_out([out])
+    style NG_convert_boolean_surfaceshader_in  fill:#09D, color:#FFF
+    NG_convert_boolean_surfaceshader_in([in])
+    end
+    NG_convert_boolean_surfaceshader_in --"in"--> NG_convert_boolean_surfaceshader_bool_to_float
+    NG_convert_boolean_surfaceshader_bool_to_float --"in"--> NG_convert_boolean_surfaceshader_float_to_color3
+    NG_convert_boolean_surfaceshader_float_to_color3 --"emission_color"--> NG_convert_boolean_surfaceshader_surface
+    NG_convert_boolean_surfaceshader_surface --> NG_convert_boolean_surfaceshader_out
 
 
 </div></code></pre>

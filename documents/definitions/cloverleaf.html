@@ -170,7 +170,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
                         <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Generator</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
                         <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
                     </ul>
@@ -598,7 +598,7 @@
        <div class="row vh-100 overflow-auto" id="nodedefrow">
            <div class="col-12 flex-grow-1 pt-2 pl-2">
                <div class="container-fluid">
-<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Toggle Index</a></div>
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
 <br>
 <b><a id="cloverleaf" class="ms-2 mb-0">
 Category: cloverleaf
@@ -715,54 +715,64 @@ Category: cloverleaf
 <div id="ND_cloverleaf_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
 </div>
 <div id="ND_cloverleaf_float_mrender_mermaid_input" class="mermaid" hidden>
-graph LR; 
-    NG_cloverleaf_float_max[max] --> NG_cloverleaf_float_out([out])
-    style NG_cloverleaf_float_out fill:#0C0, color:#111
-    NG_cloverleaf_float_max1[max] --".in1"--> NG_cloverleaf_float_max[max]
-    NG_cloverleaf_float_circle1[circle] --".in1"--> NG_cloverleaf_float_max1[max]
-    NG_cloverleaf_float_centerINT([center]) ==.center==> NG_cloverleaf_float_circle1[circle]
-    style NG_cloverleaf_float_centerINT fill:#0CF, color:#111
-    NG_cloverleaf_float_radiusINT([radius]) ==.radius==> NG_cloverleaf_float_circle1[circle]
-    style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_coord1[combine2] --".texcoord"--> NG_cloverleaf_float_circle1[circle]
-    NG_cloverleaf_float_sample_add[add] --".x -> .in1"--> NG_cloverleaf_float_coord1[combine2]
-    NG_cloverleaf_float_radiusINT([radius]) ==.in2==> NG_cloverleaf_float_sample_add[add]
-    style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_sample_double[add] --".in1"--> NG_cloverleaf_float_sample_add[add]
-    NG_cloverleaf_float_texcoordINT([texcoord]) ==.in1==> NG_cloverleaf_float_sample_double[add]
-    style NG_cloverleaf_float_texcoordINT fill:#0CF, color:#111
-    NG_cloverleaf_float_texcoordINT([texcoord]) ==.in2==> NG_cloverleaf_float_sample_double[add]
-    style NG_cloverleaf_float_texcoordINT fill:#0CF, color:#111
-    NG_cloverleaf_float_sample_double[add] --".y -> .in2"--> NG_cloverleaf_float_coord1[combine2]
-    NG_cloverleaf_float_circle2[circle] --".in2"--> NG_cloverleaf_float_max1[max]
-    NG_cloverleaf_float_centerINT([center]) ==.center==> NG_cloverleaf_float_circle2[circle]
-    style NG_cloverleaf_float_centerINT fill:#0CF, color:#111
-    NG_cloverleaf_float_radiusINT([radius]) ==.radius==> NG_cloverleaf_float_circle2[circle]
-    style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_coord2[combine2] --".texcoord"--> NG_cloverleaf_float_circle2[circle]
-    NG_cloverleaf_float_sample_subtract[subtract] --".x -> .in1"--> NG_cloverleaf_float_coord2[combine2]
-    NG_cloverleaf_float_radiusINT([radius]) ==.in2==> NG_cloverleaf_float_sample_subtract[subtract]
-    style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_sample_double[add] --".in1"--> NG_cloverleaf_float_sample_subtract[subtract]
-    NG_cloverleaf_float_sample_double[add] --".y -> .in2"--> NG_cloverleaf_float_coord2[combine2]
-    NG_cloverleaf_float_max2[max] --".in2"--> NG_cloverleaf_float_max[max]
-    NG_cloverleaf_float_circle3[circle] --".in1"--> NG_cloverleaf_float_max2[max]
-    NG_cloverleaf_float_centerINT([center]) ==.center==> NG_cloverleaf_float_circle3[circle]
-    style NG_cloverleaf_float_centerINT fill:#0CF, color:#111
-    NG_cloverleaf_float_radiusINT([radius]) ==.radius==> NG_cloverleaf_float_circle3[circle]
-    style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_coord3[combine2] --".texcoord"--> NG_cloverleaf_float_circle3[circle]
-    NG_cloverleaf_float_sample_double[add] --".x -> .in1"--> NG_cloverleaf_float_coord3[combine2]
-    NG_cloverleaf_float_sample_subtract[subtract] --".y -> .in2"--> NG_cloverleaf_float_coord3[combine2]
-    NG_cloverleaf_float_circle4[circle] --".in2"--> NG_cloverleaf_float_max2[max]
-    NG_cloverleaf_float_centerINT([center]) ==.center==> NG_cloverleaf_float_circle4[circle]
-    style NG_cloverleaf_float_centerINT fill:#0CF, color:#111
-    NG_cloverleaf_float_radiusINT([radius]) ==.radius==> NG_cloverleaf_float_circle4[circle]
-    style NG_cloverleaf_float_radiusINT fill:#0CF, color:#111
-    NG_cloverleaf_float_coord4[combine2] --".texcoord"--> NG_cloverleaf_float_circle4[circle]
-    NG_cloverleaf_float_sample_double[add] --".x -> .in1"--> NG_cloverleaf_float_coord4[combine2]
-    NG_cloverleaf_float_sample_add[add] --".y -> .in2"--> NG_cloverleaf_float_coord4[combine2]
-
+graph TB
+    subgraph NG_cloverleaf_float
+    NG_cloverleaf_float_sample_double[sample_double]
+    NG_cloverleaf_float_sample_add[sample_add]
+    NG_cloverleaf_float_sample_subtract[sample_subtract]
+    NG_cloverleaf_float_coord1[coord1]
+    NG_cloverleaf_float_coord2[coord2]
+    NG_cloverleaf_float_coord3[coord3]
+    NG_cloverleaf_float_coord4[coord4]
+    NG_cloverleaf_float_circle1[circle1]
+    NG_cloverleaf_float_circle2[circle2]
+    NG_cloverleaf_float_circle3[circle3]
+    NG_cloverleaf_float_circle4[circle4]
+    NG_cloverleaf_float_max1[max1]
+    NG_cloverleaf_float_max2[max2]
+    NG_cloverleaf_float_max[max]
+    style NG_cloverleaf_float_out  fill:#0C0, color:#FFF
+    NG_cloverleaf_float_out([out])
+    style NG_cloverleaf_float_texcoord  fill:#09D, color:#FFF
+    NG_cloverleaf_float_texcoord([texcoord])
+    style NG_cloverleaf_float_radius  fill:#09D, color:#FFF
+    NG_cloverleaf_float_radius([radius])
+    style NG_cloverleaf_float_center  fill:#09D, color:#FFF
+    NG_cloverleaf_float_center([center])
+    end
+    NG_cloverleaf_float_texcoord --"in1"--> NG_cloverleaf_float_sample_double
+    NG_cloverleaf_float_texcoord --"in2"--> NG_cloverleaf_float_sample_double
+    NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_sample_add
+    NG_cloverleaf_float_radius --"in2"--> NG_cloverleaf_float_sample_add
+    NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_sample_subtract
+    NG_cloverleaf_float_radius --"in2"--> NG_cloverleaf_float_sample_subtract
+    NG_cloverleaf_float_sample_add --"in1"--> NG_cloverleaf_float_coord1
+    NG_cloverleaf_float_sample_double --"in2"--> NG_cloverleaf_float_coord1
+    NG_cloverleaf_float_sample_subtract --"in1"--> NG_cloverleaf_float_coord2
+    NG_cloverleaf_float_sample_double --"in2"--> NG_cloverleaf_float_coord2
+    NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_coord3
+    NG_cloverleaf_float_sample_subtract --"in2"--> NG_cloverleaf_float_coord3
+    NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_coord4
+    NG_cloverleaf_float_sample_add --"in2"--> NG_cloverleaf_float_coord4
+    NG_cloverleaf_float_coord1 --"texcoord"--> NG_cloverleaf_float_circle1
+    NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle1
+    NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle1
+    NG_cloverleaf_float_coord2 --"texcoord"--> NG_cloverleaf_float_circle2
+    NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle2
+    NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle2
+    NG_cloverleaf_float_coord3 --"texcoord"--> NG_cloverleaf_float_circle3
+    NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle3
+    NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle3
+    NG_cloverleaf_float_coord4 --"texcoord"--> NG_cloverleaf_float_circle4
+    NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle4
+    NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle4
+    NG_cloverleaf_float_circle1 --"in1"--> NG_cloverleaf_float_max1
+    NG_cloverleaf_float_circle2 --"in2"--> NG_cloverleaf_float_max1
+    NG_cloverleaf_float_circle3 --"in1"--> NG_cloverleaf_float_max2
+    NG_cloverleaf_float_circle4 --"in2"--> NG_cloverleaf_float_max2
+    NG_cloverleaf_float_max1 --"in1"--> NG_cloverleaf_float_max
+    NG_cloverleaf_float_max2 --"in2"--> NG_cloverleaf_float_max
+    NG_cloverleaf_float_max --> NG_cloverleaf_float_out
 
 
 </div></code></pre>
