@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -795,8 +793,6 @@ graph TB
     NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior]
     NG_standard_surface_surfaceshader_100_metal_bsdf[metal_bsdf]
     NG_standard_surface_surfaceshader_100_metalness_mix[metalness_mix]
-    NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
-    NG_standard_surface_surfaceshader_100_thin_film_layer[thin_film_layer]
     NG_standard_surface_surfaceshader_100_coat_attenuation[coat_attenuation]
     NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[thin_film_layer_attenuated]
     NG_standard_surface_surfaceshader_100_coat_roughness_vector[coat_roughness_vector]
@@ -810,9 +806,11 @@ graph TB
     NG_standard_surface_surfaceshader_100_emission_weight[emission_weight]
     NG_standard_surface_surfaceshader_100_emission_edf[emission_edf]
     NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[coat_tinted_emission_edf]
+    NG_standard_surface_surfaceshader_100_swizzle[swizzle]
     NG_standard_surface_surfaceshader_100_coat_emission_edf[coat_emission_edf]
     NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[blended_coat_emission_edf]
     NG_standard_surface_surfaceshader_100_opacity_luminance[opacity_luminance]
+    NG_standard_surface_surfaceshader_100_swizzle2[swizzle2]
     NG_standard_surface_surfaceshader_100_shader_constructor[shader_constructor]
     style NG_standard_surface_surfaceshader_100_out  fill:#0C0, color:#FFF
     NG_standard_surface_surfaceshader_100_out([out])
@@ -996,10 +994,6 @@ graph TB
     NG_standard_surface_surfaceshader_100_metal_bsdf --"fg"--> NG_standard_surface_surfaceshader_100_metalness_mix
     NG_standard_surface_surfaceshader_100_specular_layer --"bg"--> NG_standard_surface_surfaceshader_100_metalness_mix
     NG_standard_surface_surfaceshader_100_metalness --"mix"--> NG_standard_surface_surfaceshader_100_metalness_mix
-    NG_standard_surface_surfaceshader_100_thin_film_thickness --"thickness"--> NG_standard_surface_surfaceshader_100_thin_film_bsdf
-    NG_standard_surface_surfaceshader_100_thin_film_IOR --"ior"--> NG_standard_surface_surfaceshader_100_thin_film_bsdf
-    NG_standard_surface_surfaceshader_100_thin_film_bsdf --"top"--> NG_standard_surface_surfaceshader_100_thin_film_layer
-    NG_standard_surface_surfaceshader_100_metalness_mix --"base"--> NG_standard_surface_surfaceshader_100_thin_film_layer
     NG_standard_surface_surfaceshader_100_coat_color --"fg"--> NG_standard_surface_surfaceshader_100_coat_attenuation
     NG_standard_surface_surfaceshader_100_coat --"mix"--> NG_standard_surface_surfaceshader_100_coat_attenuation
     NG_standard_surface_surfaceshader_100_metalness_mix --"in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated
@@ -1025,15 +1019,17 @@ graph TB
     NG_standard_surface_surfaceshader_100_emission_weight --"color"--> NG_standard_surface_surfaceshader_100_emission_edf
     NG_standard_surface_surfaceshader_100_emission_edf --"in1"--> NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf
     NG_standard_surface_surfaceshader_100_coat_color --"in2"--> NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf
-    NG_standard_surface_surfaceshader_100_one_minus_coat_ior_to_F0 --"color0"--> NG_standard_surface_surfaceshader_100_coat_emission_edf
+    NG_standard_surface_surfaceshader_100_one_minus_coat_ior_to_F0 --"in"--> NG_standard_surface_surfaceshader_100_swizzle
+    NG_standard_surface_surfaceshader_100_swizzle --"color0"--> NG_standard_surface_surfaceshader_100_coat_emission_edf
     NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf --"base"--> NG_standard_surface_surfaceshader_100_coat_emission_edf
     NG_standard_surface_surfaceshader_100_coat_emission_edf --"fg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf
     NG_standard_surface_surfaceshader_100_emission_edf --"bg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf
     NG_standard_surface_surfaceshader_100_coat --"mix"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf
     NG_standard_surface_surfaceshader_100_opacity --"in"--> NG_standard_surface_surfaceshader_100_opacity_luminance
+    NG_standard_surface_surfaceshader_100_opacity_luminance --"in"--> NG_standard_surface_surfaceshader_100_swizzle2
     NG_standard_surface_surfaceshader_100_coat_layer --"bsdf"--> NG_standard_surface_surfaceshader_100_shader_constructor
     NG_standard_surface_surfaceshader_100_blended_coat_emission_edf --"edf"--> NG_standard_surface_surfaceshader_100_shader_constructor
-    NG_standard_surface_surfaceshader_100_opacity_luminance --"opacity"--> NG_standard_surface_surfaceshader_100_shader_constructor
+    NG_standard_surface_surfaceshader_100_swizzle2 --"opacity"--> NG_standard_surface_surfaceshader_100_shader_constructor
     NG_standard_surface_surfaceshader_100_shader_constructor --> NG_standard_surface_surfaceshader_100_out
 
 
@@ -3315,8 +3311,6 @@ graph TB
     NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior]
     NG_standard_surface_surfaceshader_100_metal_bsdf[metal_bsdf]
     NG_standard_surface_surfaceshader_100_metalness_mix[metalness_mix]
-    NG_standard_surface_surfaceshader_100_thin_film_bsdf[thin_film_bsdf]
-    NG_standard_surface_surfaceshader_100_thin_film_layer[thin_film_layer]
     NG_standard_surface_surfaceshader_100_coat_attenuation[coat_attenuation]
     NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[thin_film_layer_attenuated]
     NG_standard_surface_surfaceshader_100_coat_roughness_vector[coat_roughness_vector]
@@ -3330,9 +3324,11 @@ graph TB
     NG_standard_surface_surfaceshader_100_emission_weight[emission_weight]
     NG_standard_surface_surfaceshader_100_emission_edf[emission_edf]
     NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf[coat_tinted_emission_edf]
+    NG_standard_surface_surfaceshader_100_swizzle[swizzle]
     NG_standard_surface_surfaceshader_100_coat_emission_edf[coat_emission_edf]
     NG_standard_surface_surfaceshader_100_blended_coat_emission_edf[blended_coat_emission_edf]
     NG_standard_surface_surfaceshader_100_opacity_luminance[opacity_luminance]
+    NG_standard_surface_surfaceshader_100_swizzle2[swizzle2]
     NG_standard_surface_surfaceshader_100_shader_constructor[shader_constructor]
     style NG_standard_surface_surfaceshader_100_out  fill:#0C0, color:#FFF
     NG_standard_surface_surfaceshader_100_out([out])
@@ -3516,10 +3512,6 @@ graph TB
     NG_standard_surface_surfaceshader_100_metal_bsdf --"fg"--> NG_standard_surface_surfaceshader_100_metalness_mix
     NG_standard_surface_surfaceshader_100_specular_layer --"bg"--> NG_standard_surface_surfaceshader_100_metalness_mix
     NG_standard_surface_surfaceshader_100_metalness --"mix"--> NG_standard_surface_surfaceshader_100_metalness_mix
-    NG_standard_surface_surfaceshader_100_thin_film_thickness --"thickness"--> NG_standard_surface_surfaceshader_100_thin_film_bsdf
-    NG_standard_surface_surfaceshader_100_thin_film_IOR --"ior"--> NG_standard_surface_surfaceshader_100_thin_film_bsdf
-    NG_standard_surface_surfaceshader_100_thin_film_bsdf --"top"--> NG_standard_surface_surfaceshader_100_thin_film_layer
-    NG_standard_surface_surfaceshader_100_metalness_mix --"base"--> NG_standard_surface_surfaceshader_100_thin_film_layer
     NG_standard_surface_surfaceshader_100_coat_color --"fg"--> NG_standard_surface_surfaceshader_100_coat_attenuation
     NG_standard_surface_surfaceshader_100_coat --"mix"--> NG_standard_surface_surfaceshader_100_coat_attenuation
     NG_standard_surface_surfaceshader_100_metalness_mix --"in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated
@@ -3545,15 +3537,17 @@ graph TB
     NG_standard_surface_surfaceshader_100_emission_weight --"color"--> NG_standard_surface_surfaceshader_100_emission_edf
     NG_standard_surface_surfaceshader_100_emission_edf --"in1"--> NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf
     NG_standard_surface_surfaceshader_100_coat_color --"in2"--> NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf
-    NG_standard_surface_surfaceshader_100_one_minus_coat_ior_to_F0 --"color0"--> NG_standard_surface_surfaceshader_100_coat_emission_edf
+    NG_standard_surface_surfaceshader_100_one_minus_coat_ior_to_F0 --"in"--> NG_standard_surface_surfaceshader_100_swizzle
+    NG_standard_surface_surfaceshader_100_swizzle --"color0"--> NG_standard_surface_surfaceshader_100_coat_emission_edf
     NG_standard_surface_surfaceshader_100_coat_tinted_emission_edf --"base"--> NG_standard_surface_surfaceshader_100_coat_emission_edf
     NG_standard_surface_surfaceshader_100_coat_emission_edf --"fg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf
     NG_standard_surface_surfaceshader_100_emission_edf --"bg"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf
     NG_standard_surface_surfaceshader_100_coat --"mix"--> NG_standard_surface_surfaceshader_100_blended_coat_emission_edf
     NG_standard_surface_surfaceshader_100_opacity --"in"--> NG_standard_surface_surfaceshader_100_opacity_luminance
+    NG_standard_surface_surfaceshader_100_opacity_luminance --"in"--> NG_standard_surface_surfaceshader_100_swizzle2
     NG_standard_surface_surfaceshader_100_coat_layer --"bsdf"--> NG_standard_surface_surfaceshader_100_shader_constructor
     NG_standard_surface_surfaceshader_100_blended_coat_emission_edf --"edf"--> NG_standard_surface_surfaceshader_100_shader_constructor
-    NG_standard_surface_surfaceshader_100_opacity_luminance --"opacity"--> NG_standard_surface_surfaceshader_100_shader_constructor
+    NG_standard_surface_surfaceshader_100_swizzle2 --"opacity"--> NG_standard_surface_surfaceshader_100_shader_constructor
     NG_standard_surface_surfaceshader_100_shader_constructor --> NG_standard_surface_surfaceshader_100_out
 
 

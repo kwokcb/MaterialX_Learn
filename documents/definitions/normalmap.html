@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -603,7 +601,7 @@
 <b><a id="normalmap" class="ms-2 mb-0">
 Category: normalmap
 </a></b>
-<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_normalmap</summary>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_normalmap_float <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.39.0</button></summary>
 <div class="m-0 mt-0">
 <div class="row">
 <div class="col-12">
@@ -617,42 +615,42 @@ Category: normalmap
 </div>
 <div class="row">
 <div class="col-md-5 p-2">
-<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_normalmap_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_normalmap_out_genglsl.png style="min-width:64px">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_normalmap_float_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_normalmap_float_out_genglsl.png style="min-width:64px">
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_normalmap_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_normalmap_menu">
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_normalmap_float_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
+<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_normalmap_float_menu">
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_normalmap_in" role="tab" aria-controls="pills-ND_normalmap_in" aria-selected="true"  onclick="document.getElementById('ND_normalmap_menu').textContent = this.textContent;" >in</div></li>
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_normalmap_float_in" role="tab" aria-controls="pills-ND_normalmap_float_in" aria-selected="true"  onclick="document.getElementById('ND_normalmap_float_menu').textContent = this.textContent;" >in</div></li>
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_normalmap_space" role="tab" aria-controls="pills-ND_normalmap_space" aria-selected="true"  onclick="document.getElementById('ND_normalmap_menu').textContent = this.textContent;" >space</div></li>
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_normalmap_float_space" role="tab" aria-controls="pills-ND_normalmap_float_space" aria-selected="true"  onclick="document.getElementById('ND_normalmap_float_menu').textContent = this.textContent;" >space</div></li>
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_normalmap_scale" role="tab" aria-controls="pills-ND_normalmap_scale" aria-selected="true"  onclick="document.getElementById('ND_normalmap_menu').textContent = this.textContent;" >scale</div></li>
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_normalmap_float_scale" role="tab" aria-controls="pills-ND_normalmap_float_scale" aria-selected="true"  onclick="document.getElementById('ND_normalmap_float_menu').textContent = this.textContent;" >scale</div></li>
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_normalmap_normal" role="tab" aria-controls="pills-ND_normalmap_normal" aria-selected="true"  onclick="document.getElementById('ND_normalmap_menu').textContent = this.textContent;" >normal</div></li>
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_normalmap_float_normal" role="tab" aria-controls="pills-ND_normalmap_float_normal" aria-selected="true"  onclick="document.getElementById('ND_normalmap_float_menu').textContent = this.textContent;" >normal</div></li>
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_normalmap_tangent" role="tab" aria-controls="pills-ND_normalmap_tangent" aria-selected="true"  onclick="document.getElementById('ND_normalmap_menu').textContent = this.textContent;" >tangent</div></li>
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_normalmap_float_tangent" role="tab" aria-controls="pills-ND_normalmap_float_tangent" aria-selected="true"  onclick="document.getElementById('ND_normalmap_float_menu').textContent = this.textContent;" >tangent</div></li>
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_normalmap_out" role="tab" aria-controls="pills-ND_normalmap_out" aria-selected="true"  onclick="document.getElementById('ND_normalmap_menu').textContent = this.textContent;" ><b>out</b></div></li>
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_normalmap_float_out" role="tab" aria-controls="pills-ND_normalmap_float_out" aria-selected="true"  onclick="document.getElementById('ND_normalmap_float_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
 </div>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_normalmap_in"
-  role="tabpanel" aria-labelledby="pills-ND_normalmap_in-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_normalmap_float_in"
+  role="tabpanel" aria-labelledby="pills-ND_normalmap_float_in-tab" tabindex="0">
   <div class="form-group row g-1">
       <label class="col-2 col-form-label col-form-label-sm">Value </label>
       <div class="col-3">
-          <input id="ND_normalmap_in_0" type="number" class="form-control form-control-sm" value="0.5" disabled>
+          <input id="ND_normalmap_float_in_0" type="number" class="form-control form-control-sm" value="0.5" disabled>
       </div>
       <div class="col-3">
-          <input id="ND_normalmap_in_1" type="number" class="form-control form-control-sm" value="0.5" disabled>
+          <input id="ND_normalmap_float_in_1" type="number" class="form-control form-control-sm" value="0.5" disabled>
       </div>
       <div class="col-3">
-          <input id="ND_normalmap_in_2" type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_normalmap_float_in_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
   </div>
   <div class="form-group row g-2">
@@ -664,8 +662,8 @@ Category: normalmap
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_normalmap_space"
-  role="tabpanel" aria-labelledby="pills-ND_normalmap_space-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_normalmap_float_space"
+  role="tabpanel" aria-labelledby="pills-ND_normalmap_float_space-tab" tabindex="0">
   <div class="form-group row g-1">
       <label
           class="col-2 col-form-label col-form-label-sm">Value </label>
@@ -696,13 +694,13 @@ Category: normalmap
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_normalmap_scale"
-  role="tabpanel" aria-labelledby="pills-ND_normalmap_scale-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_normalmap_float_scale"
+  role="tabpanel" aria-labelledby="pills-ND_normalmap_float_scale-tab" tabindex="0">
   <div class="form-group row g-1">
       <label
           class="col-2 col-form-label col-form-label-sm">Value  </label>
       <div class="col">
-          <input id="ND_normalmap_scale" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
+          <input id="ND_normalmap_float_scale" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
   <div class="form-group row g-2">
@@ -714,8 +712,8 @@ Category: normalmap
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_normalmap_normal"
-  role="tabpanel" aria-labelledby="pills-ND_normalmap_normal-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_normalmap_float_normal"
+  role="tabpanel" aria-labelledby="pills-ND_normalmap_float_normal-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-2 col-form-label col-form-label-sm">Type</label>
    <div class="col-10">
@@ -732,8 +730,8 @@ Category: normalmap
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_normalmap_tangent"
-  role="tabpanel" aria-labelledby="pills-ND_normalmap_tangent-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_normalmap_float_tangent"
+  role="tabpanel" aria-labelledby="pills-ND_normalmap_float_tangent-tab" tabindex="0">
   <div class="form-group row g-2">
   <label class="col-2 col-form-label col-form-label-sm">Type</label>
    <div class="col-10">
@@ -750,8 +748,8 @@ Category: normalmap
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_normalmap_out"
-  role="tabpanel" aria-labelledby="pills-ND_normalmap_out-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_normalmap_float_out"
+  role="tabpanel" aria-labelledby="pills-ND_normalmap_float_out-tab" tabindex="0">
   <div class="form-group row g-1">
       <label
           class="col-2 col-form-label col-form-label-sm">Disabled Value</label>

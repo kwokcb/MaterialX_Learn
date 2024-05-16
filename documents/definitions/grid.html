@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -762,11 +760,15 @@ graph TB
     NG_grid_color3_texcoord_scale[texcoord_scale]
     NG_grid_color3_texcoord_bias[texcoord_bias]
     NG_grid_color3_thick_to_size[thick_to_size]
+    NG_grid_color3_swizzle[swizzle]
     NG_grid_color3_mod_Y[mod_Y]
+    NG_grid_color3_swizzle2[swizzle2]
     NG_grid_color3_mod_Y_row[mod_Y_row]
     NG_grid_color3_mody_2[mody_2]
     NG_grid_color3_alt_rows_shift[alt_rows_shift]
+    NG_grid_color3_swizzle3[swizzle3]
     NG_grid_color3_shift_X[shift_X]
+    NG_grid_color3_swizzle4[swizzle4]
     style NG_grid_color3_stagger_selection  fill:#C72, color:#FFF
     NG_grid_color3_stagger_selection{stagger_selection}
     NG_grid_color3_mod_X[mod_X]
@@ -798,15 +800,19 @@ graph TB
     NG_grid_color3_texcoord_scale --"in1"--> NG_grid_color3_texcoord_bias
     NG_grid_color3_uvoffset --"in2"--> NG_grid_color3_texcoord_bias
     NG_grid_color3_thickness --"in2"--> NG_grid_color3_thick_to_size
-    NG_grid_color3_texcoord_bias --"in1"--> NG_grid_color3_mod_Y
-    NG_grid_color3_texcoord_bias --"in1"--> NG_grid_color3_mod_Y_row
+    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_swizzle
+    NG_grid_color3_swizzle --"in1"--> NG_grid_color3_mod_Y
+    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_swizzle2
+    NG_grid_color3_swizzle2 --"in1"--> NG_grid_color3_mod_Y_row
     NG_grid_color3_mod_Y --"in1"--> NG_grid_color3_mody_2
     NG_grid_color3_mod_Y_row --"value1"--> NG_grid_color3_alt_rows_shift
-    NG_grid_color3_texcoord_bias --"in1"--> NG_grid_color3_shift_X
+    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_swizzle3
+    NG_grid_color3_swizzle3 --"in1"--> NG_grid_color3_shift_X
     NG_grid_color3_alt_rows_shift --"in2"--> NG_grid_color3_shift_X
+    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_swizzle4
     NG_grid_color3_staggered --"value1"--> NG_grid_color3_stagger_selection
     NG_grid_color3_shift_X --"in1"--> NG_grid_color3_stagger_selection
-    NG_grid_color3_texcoord_bias --"in2"--> NG_grid_color3_stagger_selection
+    NG_grid_color3_swizzle4 --"in2"--> NG_grid_color3_stagger_selection
     NG_grid_color3_stagger_selection --"in1"--> NG_grid_color3_mod_X
     NG_grid_color3_mod_X --"in1"--> NG_grid_color3_modx_2
     NG_grid_color3_modx_2 --"in1"--> NG_grid_color3_subX_1

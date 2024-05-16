@@ -6,6 +6,11 @@
     <input name="in3" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
     <input name="in4" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
     <input name="in5" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in6" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in7" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in8" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in9" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in10" type="vector4" value="0.0, 0.0, 0.0, 0.0" />
     <input name="which" type="integer" value="0" />
   </switch>
   <convert name="shader_switch_vector4I_out" type="surfaceshader">

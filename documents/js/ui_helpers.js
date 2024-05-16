@@ -13,7 +13,7 @@ function setupTheme() {
         body.setAttribute('data-bs-theme', 'dark');
     } else {
         body.setAttribute('data-bs-theme', 'light');
-    }
+    }   
 
     // Setup mermarid display mode
     mermaid.initialize({
@@ -129,3 +129,134 @@ function setUpSVGInteraction(svgContainerId, svgContentId) {
     svgContainer.addEventListener('mouseleave', handleMouseUp);
     svgContainer.addEventListener('wheel', handleWheel);
 };
+
+function copyContentToClipboard(button) {
+    var targetId = button.getAttribute('data-target');
+    var element = document.getElementById(targetId);
+
+    if (!element) {
+        console.error('Element not found');
+        return;
+    }
+
+    var textToCopy = element.value;
+
+    navigator.clipboard.writeText(textToCopy).then(function() {
+        // Provide some visual feedback
+        //button.classList.add('invert');
+        //setTimeout(function() {
+        //    button.classList.remove('invert');
+        //}, 500);
+    }).catch(function(err) {
+        console.error('Could not copy text: ', err);
+    });
+}
+
+function pasteContentFromClipboard(button) {
+    var targetId = button.getAttribute('data-target');
+    var element = document.getElementById(targetId);
+
+    navigator.clipboard.readText().then(function(text) {
+        if (element) {
+            element.value = text;
+        }
+    }).catch(function(err) {
+        console.error('Could not paste text: ', err);
+    });
+}
+
+function addCopyHandler(copyButton)
+{
+    if (copyButton)
+    {
+        //console.log('Adding copy handler for button: ', copyButton.id, copyButton.getAttribute('data-target'));
+        copyButton.addEventListener('click', function() {
+            copyContentToClipboard(copyButton);
+        });
+    }
+}
+
+function addPasteHandler(pasteButton)
+{
+    if (pasteButton)
+    {
+        //console.log('Adding paste handler for button: ', pasteButton.id, pasteButton.getAttribute('data-target'));
+        pasteButton.addEventListener('click', function() {
+            pasteContentFromClipboard(pasteButton);
+        });
+    }
+}
+
+function addCopyHandlers()
+{
+    const darkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast'))
+        darkMode = true
+
+    var copyButtons = document.getElementsByClassName('copy-button');
+    for (var i = 0; i < copyButtons.length; i++)
+    {
+        var copyButton = copyButtons[i];
+        //console.log('Setting copy button theme: ', darkMode ? 'dark' : 'light');
+        var childImg = copyButton.getElementsByTagName('img')[0];
+        if (childImg)
+            if (darkMode)
+                childImg.classList.add('inverted-svg')
+            else
+                childImg.classList.remove('inverted-svg')
+        copyButton.setAttribute('data-bs-theme', darkMode ? 'dark' : 'light');
+        addCopyHandler(copyButton);
+    }
+
+    var invertButtons = document.getElementsByClassName('invert-button');
+    for (var i = 0; i < invertButtons.length; i++)
+    {
+        var invertButton = invertButtons[i];
+        var childImg = invertButton.getElementsByTagName('img')[0];
+        if (childImg)
+            //console.log('Setting invert button theme: ', invertButton.id, darkMode ? 'dark' : 'light');
+            if (darkMode)
+                childImg.classList.add('inverted-svg')
+    }        
+}
+
+function addPasteHandlers()
+{
+
+    const darkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast'))
+        darkMode = true
+
+    var pasteButtons = document.getElementsByClassName('paste-button');
+    for (var i = 0; i < pasteButtons.length; i++)
+    {
+        var pasteButton = pasteButtons[i];
+        //console.log('Setting paste button theme: ', darkMode ? 'dark' : 'light');
+        var childImg = pasteButton.getElementsByTagName('img')[0];
+        if (childImg)
+            if (darkMode)
+                childImg.classList.add('inverted-svg')
+        pasteButton.setAttribute('data-bs-theme', darkMode ? 'dark' : 'light');
+        addPasteHandler(pasteButton);
+    }
+}
+
+function pasteContentFromClipboard(button, setter) {
+
+    navigator.clipboard.readText().then(function(text) {
+        setter.setValue(text);
+    }).catch(function(err) {
+        console.error('Could not paste text: ', err);
+    });
+}
+
+function addPasteHandler(pasteButton, setterFunction)
+{
+    if (pasteButton)
+    {
+        pasteButton.addEventListener('click', function() {
+            pasteContentFromClipboard(pasteButton, setterFunction);
+        });
+    }
+}
+

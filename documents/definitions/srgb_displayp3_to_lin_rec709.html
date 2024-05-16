@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -796,6 +794,10 @@ graph TB
     subgraph NG_srgb_displayp3_to_lin_rec709_color4
     NG_srgb_displayp3_to_lin_rec709_color4_asColor3[asColor3]
     NG_srgb_displayp3_to_lin_rec709_color4_transform[transform]
+    NG_srgb_displayp3_to_lin_rec709_color4_swizzle[swizzle]
+    NG_srgb_displayp3_to_lin_rec709_color4_swizzle2[swizzle2]
+    NG_srgb_displayp3_to_lin_rec709_color4_swizzle3[swizzle3]
+    NG_srgb_displayp3_to_lin_rec709_color4_swizzle4[swizzle4]
     NG_srgb_displayp3_to_lin_rec709_color4_asColor4[asColor4]
     style NG_srgb_displayp3_to_lin_rec709_color4_out  fill:#0C0, color:#FFF
     NG_srgb_displayp3_to_lin_rec709_color4_out([out])
@@ -804,10 +806,14 @@ graph TB
     end
     NG_srgb_displayp3_to_lin_rec709_color4_in --"in"--> NG_srgb_displayp3_to_lin_rec709_color4_asColor3
     NG_srgb_displayp3_to_lin_rec709_color4_asColor3 --"in"--> NG_srgb_displayp3_to_lin_rec709_color4_transform
-    NG_srgb_displayp3_to_lin_rec709_color4_transform --"in1"--> NG_srgb_displayp3_to_lin_rec709_color4_asColor4
-    NG_srgb_displayp3_to_lin_rec709_color4_transform --"in2"--> NG_srgb_displayp3_to_lin_rec709_color4_asColor4
-    NG_srgb_displayp3_to_lin_rec709_color4_transform --"in3"--> NG_srgb_displayp3_to_lin_rec709_color4_asColor4
-    NG_srgb_displayp3_to_lin_rec709_color4_in --"in4"--> NG_srgb_displayp3_to_lin_rec709_color4_asColor4
+    NG_srgb_displayp3_to_lin_rec709_color4_transform --"in"--> NG_srgb_displayp3_to_lin_rec709_color4_swizzle
+    NG_srgb_displayp3_to_lin_rec709_color4_transform --"in"--> NG_srgb_displayp3_to_lin_rec709_color4_swizzle2
+    NG_srgb_displayp3_to_lin_rec709_color4_transform --"in"--> NG_srgb_displayp3_to_lin_rec709_color4_swizzle3
+    NG_srgb_displayp3_to_lin_rec709_color4_in --"in"--> NG_srgb_displayp3_to_lin_rec709_color4_swizzle4
+    NG_srgb_displayp3_to_lin_rec709_color4_swizzle --"in1"--> NG_srgb_displayp3_to_lin_rec709_color4_asColor4
+    NG_srgb_displayp3_to_lin_rec709_color4_swizzle2 --"in2"--> NG_srgb_displayp3_to_lin_rec709_color4_asColor4
+    NG_srgb_displayp3_to_lin_rec709_color4_swizzle3 --"in3"--> NG_srgb_displayp3_to_lin_rec709_color4_asColor4
+    NG_srgb_displayp3_to_lin_rec709_color4_swizzle4 --"in4"--> NG_srgb_displayp3_to_lin_rec709_color4_asColor4
     NG_srgb_displayp3_to_lin_rec709_color4_asColor4 --> NG_srgb_displayp3_to_lin_rec709_color4_out
 
 

@@ -1,0 +1,74 @@
+{
+  "doc": "Graph connections for: ..\\resources\\Materials\\Examples\\StandardSurface\\gooch_shade.mtlx",
+  "copyright": "Copyright 2024, NanMu Consulting. kwokcb@gmail.com",
+  "graph": {
+    "": [
+      [
+        "default_gooch",
+        "gooch_shade",
+        "color3",
+        ""
+      ],
+      [
+        "unlit_surface",
+        "surface_unlit",
+        "surfaceshader",
+        ""
+      ],
+      [
+        "default_gooch_material",
+        "surfacematerial",
+        "material",
+        ""
+      ],
+      [
+        "red_blue_gooch",
+        "gooch_shade",
+        "color3",
+        ""
+      ],
+      [
+        "redblue_gooch_surface",
+        "surface_unlit",
+        "surfaceshader",
+        ""
+      ],
+      [
+        "redblue_gooch_material",
+        "surfacematerial",
+        "material",
+        ""
+      ]
+    ]
+  },
+  "connections": [
+    [
+      "default_gooch",
+      "",
+      "unlit_surface",
+      "emission_color",
+      "nodename"
+    ],
+    [
+      "unlit_surface",
+      "",
+      "default_gooch_material",
+      "surfaceshader",
+      "nodename"
+    ],
+    [
+      "red_blue_gooch",
+      "",
+      "redblue_gooch_surface",
+      "emission_color",
+      "nodename"
+    ],
+    [
+      "redblue_gooch_surface",
+      "",
+      "redblue_gooch_material",
+      "surfaceshader",
+      "nodename"
+    ]
+  ]
+}

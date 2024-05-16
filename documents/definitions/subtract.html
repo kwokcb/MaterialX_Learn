@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -684,6 +682,161 @@ Category: subtract
   <label class="col-2 col-form-label col-form-label-sm">Type</label>
    <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in1}} - {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in1}} - {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in1}} - {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in1}} - {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_subtract_integer <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.39.0</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">math</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> integer</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_subtract_integer_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_subtract_integer_out_genglsl.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="dropdown">
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_subtract_integer_menu"data-bs-toggle="dropdown" aria-expanded="false">in1</div>
+<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_subtract_integer_menu">
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_subtract_integer_in1" role="tab" aria-controls="pills-ND_subtract_integer_in1" aria-selected="true"  onclick="document.getElementById('ND_subtract_integer_menu').textContent = this.textContent;" >in1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_subtract_integer_in2" role="tab" aria-controls="pills-ND_subtract_integer_in2" aria-selected="true"  onclick="document.getElementById('ND_subtract_integer_menu').textContent = this.textContent;" >in2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_subtract_integer_out" role="tab" aria-controls="pills-ND_subtract_integer_out" aria-selected="true"  onclick="document.getElementById('ND_subtract_integer_menu').textContent = this.textContent;" ><b>out</b></div></li>
+</ul>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_subtract_integer_in1"
+  role="tabpanel" aria-labelledby="pills-ND_subtract_integer_in1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_subtract_integer_in1" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_subtract_integer_in2"
+  role="tabpanel" aria-labelledby="pills-ND_subtract_integer_in2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_subtract_integer_in2" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_subtract_integer_out"
+  role="tabpanel" aria-labelledby="pills-ND_subtract_integer_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
    </div>
   </div>
  </div>

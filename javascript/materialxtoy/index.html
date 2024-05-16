@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>MaterialXToy Editor</title>
+
+    <!-- Syntax styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
+    <!--
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material-ocean.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/blackboard.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/nord.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/monokai.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/base16-dark.min.css">
+    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/night.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+
+    <!-- Graph styles -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/litegraph.js/dist/css/litegraph.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/litegraph.js/dist/css/litegraph-editor.css"> -->
+    <link rel="stylesheet" type="text/css" href="litegraph/litegraph.css">
+    <link rel="stylesheet" type="text/css" href="litegraph/litegraph-editor.css">
+
+
+    <!-- TODO: Enable when floating property panel supported 
+    <style>
+        #canvasContainer {
+            position: relative;
+        }
+
+        .mypanel1 {
+            padding: 4px;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            cursor: move;
+            z-index: 80;
+        }
+    </style>
+    -->
+
+    <style>
+        /* Add any additional styling here */
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            /* Aspect ratio 4:3 */
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            min-width: 128;
+            min-height: 128;
+        }
+
+        .CodeMirror {
+            font-size: 12px;
+        }
+
+        .copy-button,
+        .paste-button {
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+    </style>
+      <link rel="icon" type="images" href="./Images/materialtoy_ai_variant3.png" type="image/x-icon" class="img-fluid">
+
+</head>
+
+<body data-bs-theme="dark">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js"></script>
+
+
+    <!-- Use local version for now which tweaks some UI -->
+    <script src="./litegraph/litegraph.js"></script>
+    <script src="./litegraph/base.js"></script>
+    <!--   
+    <script src="https://cdn.jsdelivr.net/npm/litegraph.js/build/litegraph.js"></script>
+    -->
+
+    <div class="container-fluid p-2">
+
+        <h2 class="bg-gradient p-2 rounded-4"><img class="rounded-4" src="./Images/materialtoy_ai_variant3.png" width="48px"> MaterialXToy Editor</h2>
+        <hr>
+
+        <!-- Align columns to left in row -->
+        <div class="row py-2 align-items-start">
+            <div class="col">
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Clear
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <!-- <li><a class="dropdown-item" id="loadSerialization">JSON Serialization</a></li> -->
+                        <li><a class="dropdown-item" id="clearGraph">Graph</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Create dropdown menu for load buttons-->
+            <div class="col">
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Load
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <!-- <li><a class="dropdown-item" id="loadSerialization">JSON Serialization</a></li> -->
+                        <li><a class="dropdown-item" id="loadMaterialXDocumentFromText" href="#">MaterialX Text</a></li>
+                        <li><a class="dropdown-item" id="loadMaterialXDocumentFromFile" href="#">MaterialX Document</a>
+                        </li>
+                        <li><a class="dropdown-item" id="loadMaterialXDefinitions" href="#">MaterialX Definitions</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Save
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li>
+                            <!-- <div class="dropdown-item" id="downloadGraph">JSON Serialization</div> -->
+                        </li>
+                        <li>
+                            <div class="dropdown-item" id="saveMaterialXGraphText">MaterialX Text</div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item" id="saveMaterialXGraph">MaterialX Document</div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item">
+                                <div class="form-check">
+                                    <label class="form-check-label" for="checkbox">
+                                        Include Libraries
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" id="saveCustomLibs">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Edit
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li>
+                    <div class="dropdown-item" id="createNodeGraph">Create Subgraph</div>
+                    </li>
+                    <li>
+                        <div class="dropdown-item" id="extractNodeGraph">Extract from Subgraph</div>
+                        </li>
+                    </ul>
+            </div>    
+            <div class="col">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    View
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li>
+                        <div class="dropdown-item" id="resetView">Reset View</div>
+                    </li>
+                    <li>
+                        <div class="dropdown-item" id="arrangeGraph">Layout Nodes</div>
+                    </li>
+                    <li>
+                        <div class="dropdown-item" id="centerNode">Center Node (f)</div>
+                    </li>
+                    <li>
+                        <div class="dropdown-item" id="collapseNodes">Collapse Nodes</div>
+                    </li>
+                    <li>
+                        <div class="dropdown-item" id="expandNodes">Expand Nodes</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <button class="btn btn-outline-secondary" id="captureGraph">Capture</button>
+            </div>
+        </div>
+
+        <div id="materialxtoy_editor" class="container-fluid border rounded-4">
+            <div class="row p-0 align-items-left justify-content-left">
+
+                <div class="col-md-9 p-2" id="colContainer">
+                    <div class="canvas-container" id="canvasContainer">
+                        <canvas id="mygraphcanvas" class="rounded-4"></canvas>
+                    </div>
+                </div>
+                <div class="col p-2">
+                    <details open>
+                        <summary class="bg-gradient rounded-2" id="propertypanel_title">
+                            <b><img id="propertypanel_icon" alt="Properties Icon" src="./Images/nodegraph_white.svg"
+                                    width="32px"> Properties</b>
+                        </summary>
+                        <hr>
+                        <div id="propertypanel_content"
+                            style="max-height: 720px; overflow:auto; background-color: rgb(47, 50, 54);">
+                        </div>
+                    </details>
+                </div>
+                <!-- TODO: Floating property editor. To fix mouse event conflicts with LiteGraph -                 
+                <div class="col p-2" id="canvasContainer">
+
+                    <canvas id="mygraphcanvas" class="" width="1280" height="640"></canvas>
+
+
+                    <div class="border mypanel p-2" style="top: 10px; left: 10px; max-height: 512px; overflow:auto;">
+                        <details open>
+                            <summary>
+                                <b><img src="./Images/materialx_logo.webp" width="32px"> Properties</b>
+                            </summary>
+                            <div id="propertypanelcontent" style="background-color: rgb(47, 50, 54);">
+                        </details>
+                    </div>
+                </div>
+                -->
+
+            </div>
+            <div class="row p-0">
+                <div class="col px-2">
+                    <!-- Make text area take up total width of parent-->
+                    <textarea class="rounded p-0" id="console_area" rows="4"
+                        style="max-height: 64px; overflow: auto; background-color: rgb(47, 50, 54); width: 100%;">
+                </textarea>
+                </div>
+            </div>
+
+            <div class="row p-4">
+                <div class="col p-2">
+                    <label for="mtlxdoc">MaterialX Document</label>
+                    <button class="btn btn-sm" id="mtlxdoc_colorspace"></button>
+                    <button class="btn btn-sm copy-button" data-target="mtlxdoc">
+                        <img class="" src="./Images/copy-regular_white.svg" style="width: 24px;" alt="Copy Icon">
+                    </button>
+                    <button id="mtlxdoc_paste" class="btn btn-sm" data-target="mtlxdoc">
+                        <img class="" src="./Images/clipboard_white.svg" style="width: 24px;" alt="Paste Icon">
+                    </button>      
+                    <button id="graphtoxml" class="btn btn-sm" data-target="mtlxdoc">
+                        <img class="" src="./Images/arrow_down_white.svg" style="width: 24px;" alt="Graph to XML">
+                    </button>
+                    <button id="xmltograph" class="btn btn-sm" data-target="mtlxdoc">
+                        <img class="" src="./Images/arrow_up_white.svg" style="width: 24px;" alt="XML to Graph">
+                    </button>
+                    <textarea style="background-color: black" class="form-control fs-3" id="mtlxdoc" placeholder=""
+                        rows="10" width="100%">
+                    </textarea>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="container-fluid border rounded-4">
+
+            <details open>
+                <summary><b>Definition Information</b></summary>
+                <div class="row px-4 pb-2 pt-2">
+                    <div class="col p-2">
+                        <label for="mtlxlib">Functional Definitions</label>
+                        <button class="btn btn-sm copy-button" data-target="mtlxlib">
+                            <img class="" src="./Images/copy-regular_white.svg" style="width: 24px;" alt="Copy Icon">
+                        </button>
+                        <textarea style="background-color: black" class="form-control fs-6" id="mtlxlib"
+                            placeholder="Functional Definitions" disabled rows="10" width="100%">
+                                    </textarea>
+                    </div>
+                </div>
+                <div class="row px-4 pb-2">
+                    <details >
+                        <summary>Available Node Types</summary>
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <table class="table table-bordered font-size-sm">
+                                <thead class="sticky-top table-light">
+                                    <tr>
+                                        <th scope="col">Graph Id</th>
+                                        <th scope="col">Node Definition</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="nodeTypesList" class="table-dark">
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+                </div>
+            </details>
+        </div>
+    </div>
+
+
+    <!-- <script src="JsMaterialXCore.js" type="text/javascript"></script> -->
+    <script type="text/javascript" src="JsMaterialXGenShader.js"></script>
+    <!-- <script type="text/javascript" src="mtlx_stdlib.js"></script> -->
+    <script type="text/javascript" src="JsMaterialXNodeEditor.js"></script>
+
+    <!-- <script src="./litegraph-editor.js"></script> -->
+    <!-- <script src="./base.js"></script>  -->
+
+    <script src="ui_helpers.js"></script>
+
+    <script>
+        // Customize what icon to show based on nodedef name prefix or nodegroup
+        // Note that this is just a heuristic based on current nodegroup and naming 
+        // convention. Default is "mtlx" for MaterialX nodes.
+        var my_icon_map = {
+            "gltf": "./Images/gltf_logo.webp",
+            "usd": "./Images/openusd_logo.webp",
+            "open_pbr": "./Images/openpbr_logo.webp",
+            "houdini": "./Images/houdini_icon.webp",
+            "maya": "./Images/maya_surfaces.webp",
+            "_default_": "./Images/materialx_logo.webp",
+            "_default_graph_": "./Images/nodegraph_white.svg"
+        };
+
+        console.log(my_icon_map['gltf']);
+
+        var canvas = document.getElementById('mygraphcanvas');
+        var cmeditor = setupXMLSyntax();
+        var cmeditor2 = setupJavascriptSyntax();
+        var ui = {
+            console_area: document.getElementById('console_area'),
+            nodeTypesList: document.getElementById('nodeTypesList'),
+            mtlxdoc: cmeditor, 
+            mtlxlib: cmeditor2,
+            mtlxdoc_colorspace: null, // document.getElementById('mtlxdoc_colorspace'),
+            propertypanel_content: document.getElementById('propertypanel_content'),
+            propertypanel_icon: document.getElementById('propertypanel_icon'),
+            icon_map: my_icon_map
+        };
+        var editor = new MxShadingGraphEditor();
+        editor.initialize(false, canvas, ui);
+
+        function addUIHandlers() {
+            // Add event listener to save canvas as image when button is clicked
+            var saveCanvasButton = document.getElementById('captureGraph');
+            saveCanvasButton.addEventListener('click', function () {
+                var canvas = document.getElementById('mygraphcanvas');
+                var dataURL = canvas.toDataURL('image/png');
+                var link = document.createElement('a');
+                link.href = dataURL;
+                link.download = 'graph_capture.png';
+                link.click();
+            });
+
+            // Add load materialx graph event listener
+            var loadMaterialXDocumentFromFile = document.getElementById('loadMaterialXDocumentFromFile');
+            loadMaterialXDocumentFromFile.addEventListener('click', function () {
+                editor.loadMaterialXGraph();
+            });
+
+            // Add load materialx graph from text event listener
+            var texAreaNumber = 0;
+            var loadMaterialXDocumentFromText = document.getElementById('loadMaterialXDocumentFromText');
+            loadMaterialXDocumentFromText.addEventListener('click', function () {
+                var mtlxdoc = document.getElementById('mtlxdoc').value;
+                // Generate a name for the graph
+                if (mtlxdoc.length > 0) {
+                    var name = 'MaterialXGraph' + texAreaNumber++;
+                    editor.loadMaterialXGraphFromString(mtlxdoc, name);
+                }
+            });
+
+            // Add load definitions event listener
+            var loadMaterialXDefinitions = document.getElementById('loadMaterialXDefinitions');
+            loadMaterialXDefinitions.addEventListener('click', function () {
+                editor.loadMaterialXDefinitions();
+            });
+
+            // Add clear graph event listener
+            var clearGraphButton = document.getElementById('clearGraph');
+            clearGraphButton.addEventListener('click', function () {
+                editor.clearGraph();
+            });
+
+            // Add save materialx graph event listener
+            var saveMaterialXGraph = document.getElementById('saveMaterialXGraph');
+            saveMaterialXGraph.addEventListener('click', function () {
+                var saveCustomLibs = document.getElementById('saveCustomLibs').checked;
+                editor.saveMaterialXGraph(saveCustomLibs);
+            });
+
+            // Add save materialx graph text event listener
+            var saveMaterialXGraphText = document.getElementById('saveMaterialXGraphText');
+            saveMaterialXGraphText.addEventListener('click', function () {
+                var saveCustomLibs = document.getElementById('saveCustomLibs').checked;
+                editor.saveMaterialXGraphText(saveCustomLibs);
+            });
+
+            // Add reset view event handler
+            var resetView = document.getElementById('resetView');
+            resetView.addEventListener('click', function () {
+                editor.resetView();
+            });
+
+            // Add arrange graph event listener
+            var arrangeGraphButton = document.getElementById('arrangeGraph');
+            arrangeGraphButton.addEventListener('click', function () {
+                editor.arrangeGraph();
+            });
+
+            // Add center node event listener
+            var centerNodeButton = document.getElementById('centerNode');
+            centerNodeButton.addEventListener('click', function () {
+                editor.centerNode();
+            });
+
+            // Add collapse/expand nodes event listener
+            var collapseNodesButton = document.getElementById('collapseNodes');
+            collapseNodesButton.addEventListener('click', function () {
+                editor.collapseExpandNodes(true);
+            });
+            var expandNodesButton = document.getElementById('expandNodes');
+            expandNodesButton.addEventListener('click', function () {
+                editor.collapseExpandNodes(false);
+            });
+
+            // Add create subgraph event listener
+            var createNodeGraphButton = document.getElementById('createNodeGraph');
+            createNodeGraphButton.addEventListener('click', function () {
+                editor.createNodeGraph();
+            });
+
+            // Add extract subgraph event listener
+            var extractNodeGraphButton = document.getElementById('extractNodeGraph');
+            extractNodeGraphButton.addEventListener('click', function () {
+                editor.extractNodeGraph();
+            });
+
+            /* 
+            // Add load serialization event listener
+            var loadSerialization = document.getElementById('loadSerialization');
+            loadSerialization.addEventListener('click', function () {
+                editor.loadSerialization();
+            });
+
+            // Add download graph event listener
+            var downloadGraph = document.getElementById('downloadGraph');
+            downloadGraph.addEventListener('click', function () {
+                editor.saveSerialization();
+            }); */
+
+            // Add xml to graph event listener
+            var xmltograph = document.getElementById('xmltograph');
+            xmltograph.addEventListener('click', function () {
+                var name = 'MaterialXGraph' + texAreaNumber++;
+                var mtlxdoc = document.getElementById('mtlxdoc').value;
+                editor.loadMaterialXGraphFromString(mtlxdoc, 'MaterialXGraph');
+            });
+
+            // Add graph to xml event listener
+            var graphtoxml = document.getElementById('graphtoxml');
+            graphtoxml.addEventListener('click', function () {
+                var saveCustomLibs = document.getElementById('saveCustomLibs').checked;
+                editor.saveMaterialXGraphText(saveCustomLibs);
+            });
+
+            // Get the canvas element and its container
+            var canvas = document.getElementById('mygraphcanvas');
+            var canvasContainer = document.getElementById('canvasContainer');
+            var colContainer = document.getElementById('colContainer');
+
+            // Create a new ResizeObserver
+            var observer = new ResizeObserver(function (entries) {
+                for (var entry of entries) {
+                    // Get the new width and height of the column
+                    var newWidth = entry.contentRect.width;
+                    var newHeight = entry.contentRect.height;
+
+                    // Set the canvas size to match the column
+                    canvas.width = newWidth;
+                    canvas.height = newHeight;
+
+                    // Mark the editor as dirty to redraw the graph.
+                    editor.setDirty();
+                }
+            });
+
+            // Start observing the canvas container
+            observer.observe(colContainer);
+
+        }
+
+        function setupJavascriptSyntax() {
+            // Initialize CodeMirror for JS syntax highlighting
+            const elem = document.getElementById('mtlxlib');
+            var cmeditor = CodeMirror.fromTextArea(elem, {
+                mode: 'application/javascript',
+                lineNumbers: true,
+                dragDrop: false,
+                theme: 'dracula',
+                readOnly: true
+            });
+
+            elem.value = '';
+            cmeditor.setValue('');
+
+            // Update CodeMirror whenever the textarea content changes
+            cmeditor.on('change', () => {
+                elem.value = cmeditor.getValue();
+            });
+
+            return cmeditor;
+        }
+
+
+        function setupXMLSyntax() {
+            // Initialize CodeMirror for XML syntax highlighting
+            const materialXTextArea = document.getElementById('mtlxdoc');
+            var cmeditor = CodeMirror.fromTextArea(materialXTextArea, {
+                mode: 'application/xml',
+                lineNumbers: true,
+                dragDrop: true,
+                theme: 'night'
+            });
+
+            // Optional: Set an initial value for the textarea
+            const initialXML = '';
+            materialXTextArea.value = initialXML;
+            cmeditor.setValue(initialXML);
+
+            // Update CodeMirror whenever the textarea content changes
+            cmeditor.on('change', (e) => {
+                materialXTextArea.value = cmeditor.getValue();
+            });
+
+            var pasteButton = document.getElementById('mtlxdoc_paste');
+            if (pasteButton)
+                addPasteHandler(pasteButton, cmeditor);
+
+            return cmeditor;
+        }
+
+        addUIHandlers();
+        addCopyHandlers();
+
+    </script>
+
+</body>
+
+</html>

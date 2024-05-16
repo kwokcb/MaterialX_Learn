@@ -6,6 +6,11 @@
     <input name="in3" type="float" value="0.0" />
     <input name="in4" type="float" value="0.0" />
     <input name="in5" type="float" value="0.0" />
+    <input name="in6" type="float" value="0.0" />
+    <input name="in7" type="float" value="0.0" />
+    <input name="in8" type="float" value="0.0" />
+    <input name="in9" type="float" value="0.0" />
+    <input name="in10" type="float" value="0.0" />
     <input name="which" type="float" value="0.0" />
   </switch>
   <convert name="shader_switch_float_out" type="surfaceshader">

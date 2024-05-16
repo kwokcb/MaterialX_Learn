@@ -6,6 +6,11 @@
     <input name="in3" type="color4" value="0.0, 0.0, 0.0, 0.0" />
     <input name="in4" type="color4" value="0.0, 0.0, 0.0, 0.0" />
     <input name="in5" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in6" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in7" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in8" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in9" type="color4" value="0.0, 0.0, 0.0, 0.0" />
+    <input name="in10" type="color4" value="0.0, 0.0, 0.0, 0.0" />
     <input name="which" type="integer" value="0" />
   </switch>
   <convert name="shader_switch_color4I_out" type="surfaceshader">

@@ -3,9 +3,12 @@
   <generalized_schlick_bsdf name="generalized_schlick_bsdf" type="BSDF">
     <input name="weight" type="float" value="1.0" />
     <input name="color0" type="color3" value="1.0, 1.0, 1.0" />
+    <input name="color82" type="color3" value="1.0, 1.0, 1.0" />
     <input name="color90" type="color3" value="1.0, 1.0, 1.0" />
     <input name="exponent" type="float" value="5.0" />
     <input name="roughness" type="vector2" value="0.05, 0.05" />
+    <input name="thinfilm_thickness" type="float" value="0" unittype="distance" unit="nanometer" />
+    <input name="thinfilm_ior" type="float" value="1.5" />
     <input name="distribution" type="string" value="ggx" enum="ggx" uniform="true" />
     <input name="scatter_mode" type="string" value="R" enum="R,T,RT" uniform="true" />
   </generalized_schlick_bsdf>

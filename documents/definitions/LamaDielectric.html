@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -1355,6 +1353,7 @@ graph TB
     subgraph IMPL_lama_dielectric
     IMPL_lama_dielectric_reflectivity_color[reflectivity_color]
     IMPL_lama_dielectric_artistic_ior[artistic_ior]
+    IMPL_lama_dielectric_swizzle[swizzle]
     style IMPL_lama_dielectric_fresnel_mode_switch  fill:#C72, color:#FFF
     IMPL_lama_dielectric_fresnel_mode_switch{fresnel_mode_switch}
     IMPL_lama_dielectric_relative_ior[relative_ior]
@@ -1414,8 +1413,9 @@ graph TB
     end
     IMPL_lama_dielectric_reflectivity --"in"--> IMPL_lama_dielectric_reflectivity_color
     IMPL_lama_dielectric_reflectivity_color --"reflectivity"--> IMPL_lama_dielectric_artistic_ior
+    IMPL_lama_dielectric_artistic_ior --"ior-->in"--> IMPL_lama_dielectric_swizzle
     IMPL_lama_dielectric_IOR --"in1"--> IMPL_lama_dielectric_fresnel_mode_switch
-    IMPL_lama_dielectric_artistic_ior --"ior-->in2"--> IMPL_lama_dielectric_fresnel_mode_switch
+    IMPL_lama_dielectric_swizzle --"in2"--> IMPL_lama_dielectric_fresnel_mode_switch
     IMPL_lama_dielectric_fresnelMode --"which"--> IMPL_lama_dielectric_fresnel_mode_switch
     IMPL_lama_dielectric_fresnel_mode_switch --"in1"--> IMPL_lama_dielectric_relative_ior
     IMPL_lama_dielectric_exteriorIOR --"in2"--> IMPL_lama_dielectric_relative_ior

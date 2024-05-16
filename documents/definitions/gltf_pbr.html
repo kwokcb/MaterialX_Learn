@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -1908,13 +1906,9 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[tf_reflection_bsdf]
     IMPL_gltf_pbr_surfaceshader_tf_transmission_mix[tf_transmission_mix]
     IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[tf_dielectric_bsdf]
-    IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf[dielectric_thinfilm_bsdf]
-    IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf[iridescent_dielectric_bsdf]
     IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix_iridescent_dielectric_bsdf]
     IMPL_gltf_pbr_surfaceshader_metal_bsdf[metal_bsdf]
     IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[tf_metal_bsdf]
-    IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf[metal_thinfilm_bsdf]
-    IMPL_gltf_pbr_surfaceshader_iridescent_metal_bsdf[iridescent_metal_bsdf]
     IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix_iridescent_metal_bsdf]
     IMPL_gltf_pbr_surfaceshader_base_mix[base_mix]
     IMPL_gltf_pbr_surfaceshader_sheen_color_r[sheen_color_r]
@@ -2044,10 +2038,6 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_transmission --"mix"--> IMPL_gltf_pbr_surfaceshader_tf_transmission_mix
     IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf --"top"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf
     IMPL_gltf_pbr_surfaceshader_tf_transmission_mix --"base"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf
-    IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thickness"--> IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf
-    IMPL_gltf_pbr_surfaceshader_iridescence_ior --"ior"--> IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf
-    IMPL_gltf_pbr_surfaceshader_dielectric_thinfilm_bsdf --"top"--> IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf
-    IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf --"base"--> IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf
     IMPL_gltf_pbr_surfaceshader_dielectric_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
     IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
     IMPL_gltf_pbr_surfaceshader_iridescence --"mix"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
@@ -2061,10 +2051,6 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thinfilm_thickness"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_iridescence_ior --"thinfilm_ior"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
-    IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thickness"--> IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf
-    IMPL_gltf_pbr_surfaceshader_iridescence_ior --"ior"--> IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf
-    IMPL_gltf_pbr_surfaceshader_metal_thinfilm_bsdf --"top"--> IMPL_gltf_pbr_surfaceshader_iridescent_metal_bsdf
-    IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf --"base"--> IMPL_gltf_pbr_surfaceshader_iridescent_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_metal_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_iridescence --"mix"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf

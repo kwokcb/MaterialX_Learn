@@ -1,0 +1,29 @@
+{
+  "doc": "Graph connections for: ..\\resources\\Materials\\Examples\\StandardSurface\\standard_surface_gold.mtlx",
+  "copyright": "Copyright 2024, NanMu Consulting. kwokcb@gmail.com",
+  "graph": {
+    "": [
+      [
+        "SR_gold",
+        "standard_surface",
+        "surfaceshader",
+        ""
+      ],
+      [
+        "Gold",
+        "surfacematerial",
+        "material",
+        ""
+      ]
+    ]
+  },
+  "connections": [
+    [
+      "SR_gold",
+      "",
+      "Gold",
+      "surfaceshader",
+      "nodename"
+    ]
+  ]
+}

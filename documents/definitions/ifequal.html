@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -760,6 +758,201 @@ Category: ifequal
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_float({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_ternary({{value1}} == {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_ifequal_integer <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.39.0</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">conditional</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> integer</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_ifequal_integer_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ifequal_integer_out_genglsl.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="dropdown">
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_ifequal_integer_menu"data-bs-toggle="dropdown" aria-expanded="false">value1</div>
+<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_ifequal_integer_menu">
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integer_value1" role="tab" aria-controls="pills-ND_ifequal_integer_value1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integer_menu').textContent = this.textContent;" >value1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integer_value2" role="tab" aria-controls="pills-ND_ifequal_integer_value2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integer_menu').textContent = this.textContent;" >value2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integer_in1" role="tab" aria-controls="pills-ND_ifequal_integer_in1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integer_menu').textContent = this.textContent;" >in1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integer_in2" role="tab" aria-controls="pills-ND_ifequal_integer_in2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integer_menu').textContent = this.textContent;" >in2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integer_out" role="tab" aria-controls="pills-ND_ifequal_integer_out" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integer_menu').textContent = this.textContent;" ><b>out</b></div></li>
+</ul>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_ifequal_integer_value1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integer_value1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_integer_value1" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_integer_value2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integer_value2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_integer_value2" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_integer_in1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integer_in1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_integer_in1" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_integer_in2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integer_in2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_integer_in2" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_integer_out"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integer_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_integer({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
     </div>
   </div>
 <hr>
@@ -1841,6 +2034,560 @@ Category: ifequal
 </div>
 </div>
 </details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_ifequal_matrix33 <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.39.0</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">conditional</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> matrix33</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="dropdown">
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_ifequal_matrix33_menu"data-bs-toggle="dropdown" aria-expanded="false">value1</div>
+<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_ifequal_matrix33_menu">
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33_value1" role="tab" aria-controls="pills-ND_ifequal_matrix33_value1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33_menu').textContent = this.textContent;" >value1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33_value2" role="tab" aria-controls="pills-ND_ifequal_matrix33_value2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33_menu').textContent = this.textContent;" >value2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33_in1" role="tab" aria-controls="pills-ND_ifequal_matrix33_in1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33_menu').textContent = this.textContent;" >in1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33_in2" role="tab" aria-controls="pills-ND_ifequal_matrix33_in2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33_menu').textContent = this.textContent;" >in2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33_out" role="tab" aria-controls="pills-ND_ifequal_matrix33_out" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33_menu').textContent = this.textContent;" ><b>out</b></div></li>
+</ul>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_ifequal_matrix33_value1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33_value1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_matrix33_value1" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix33_value2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33_value2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_matrix33_value2" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix33_in1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33_in1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix33">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix33_in2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33_in2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix33">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix33_out"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix33">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_matrix33({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_ternary({{value1}} == {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_ifequal_matrix44 <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.39.0</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">conditional</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> matrix44</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="dropdown">
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_ifequal_matrix44_menu"data-bs-toggle="dropdown" aria-expanded="false">value1</div>
+<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_ifequal_matrix44_menu">
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44_value1" role="tab" aria-controls="pills-ND_ifequal_matrix44_value1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44_menu').textContent = this.textContent;" >value1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44_value2" role="tab" aria-controls="pills-ND_ifequal_matrix44_value2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44_menu').textContent = this.textContent;" >value2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44_in1" role="tab" aria-controls="pills-ND_ifequal_matrix44_in1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44_menu').textContent = this.textContent;" >in1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44_in2" role="tab" aria-controls="pills-ND_ifequal_matrix44_in2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44_menu').textContent = this.textContent;" >in2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44_out" role="tab" aria-controls="pills-ND_ifequal_matrix44_out" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44_menu').textContent = this.textContent;" ><b>out</b></div></li>
+</ul>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_ifequal_matrix44_value1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44_value1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_matrix44_value1" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix44_value2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44_value2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_matrix44_value2" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix44_in1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44_in1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix44">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix44_in2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44_in2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix44">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix44_out"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix44">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_matrix44({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_ternary({{value1}} == {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
 <details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_ifequal_floatI</summary>
 <div class="m-0 mt-0">
 <div class="row">
@@ -1998,6 +2745,201 @@ Category: ifequal
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_floatI({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_ternary({{value1}} == {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_ifequal_integerI <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.39.0</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">conditional</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> integer</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_ifequal_integerI_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ifequal_integerI_out_genglsl.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="dropdown">
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_ifequal_integerI_menu"data-bs-toggle="dropdown" aria-expanded="false">value1</div>
+<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_ifequal_integerI_menu">
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integerI_value1" role="tab" aria-controls="pills-ND_ifequal_integerI_value1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integerI_menu').textContent = this.textContent;" >value1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integerI_value2" role="tab" aria-controls="pills-ND_ifequal_integerI_value2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integerI_menu').textContent = this.textContent;" >value2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integerI_in1" role="tab" aria-controls="pills-ND_ifequal_integerI_in1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integerI_menu').textContent = this.textContent;" >in1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integerI_in2" role="tab" aria-controls="pills-ND_ifequal_integerI_in2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integerI_menu').textContent = this.textContent;" >in2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integerI_out" role="tab" aria-controls="pills-ND_ifequal_integerI_out" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integerI_menu').textContent = this.textContent;" ><b>out</b></div></li>
+</ul>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_ifequal_integerI_value1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integerI_value1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_integerI_value1" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_integerI_value2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integerI_value2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_integerI_value2" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_integerI_in1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integerI_in1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_integerI_in1" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_integerI_in2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integerI_in2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_integerI_in2" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_integerI_out"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integerI_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_integerI({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
     </div>
   </div>
 <hr>
@@ -3079,6 +4021,560 @@ Category: ifequal
 </div>
 </div>
 </details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_ifequal_matrix33I <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.39.0</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">conditional</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> matrix33</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="dropdown">
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_ifequal_matrix33I_menu"data-bs-toggle="dropdown" aria-expanded="false">value1</div>
+<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_ifequal_matrix33I_menu">
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33I_value1" role="tab" aria-controls="pills-ND_ifequal_matrix33I_value1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33I_menu').textContent = this.textContent;" >value1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33I_value2" role="tab" aria-controls="pills-ND_ifequal_matrix33I_value2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33I_menu').textContent = this.textContent;" >value2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33I_in1" role="tab" aria-controls="pills-ND_ifequal_matrix33I_in1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33I_menu').textContent = this.textContent;" >in1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33I_in2" role="tab" aria-controls="pills-ND_ifequal_matrix33I_in2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33I_menu').textContent = this.textContent;" >in2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33I_out" role="tab" aria-controls="pills-ND_ifequal_matrix33I_out" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33I_menu').textContent = this.textContent;" ><b>out</b></div></li>
+</ul>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_ifequal_matrix33I_value1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33I_value1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_matrix33I_value1" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix33I_value2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33I_value2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_matrix33I_value2" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix33I_in1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33I_in1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix33">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix33I_in2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33I_in2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix33">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix33I_out"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33I_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix33">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_matrix33I({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_ternary({{value1}} == {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_ifequal_matrix44I <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.39.0</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">conditional</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> matrix44</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="dropdown">
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_ifequal_matrix44I_menu"data-bs-toggle="dropdown" aria-expanded="false">value1</div>
+<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_ifequal_matrix44I_menu">
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44I_value1" role="tab" aria-controls="pills-ND_ifequal_matrix44I_value1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44I_menu').textContent = this.textContent;" >value1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44I_value2" role="tab" aria-controls="pills-ND_ifequal_matrix44I_value2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44I_menu').textContent = this.textContent;" >value2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44I_in1" role="tab" aria-controls="pills-ND_ifequal_matrix44I_in1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44I_menu').textContent = this.textContent;" >in1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44I_in2" role="tab" aria-controls="pills-ND_ifequal_matrix44I_in2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44I_menu').textContent = this.textContent;" >in2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44I_out" role="tab" aria-controls="pills-ND_ifequal_matrix44I_out" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44I_menu').textContent = this.textContent;" ><b>out</b></div></li>
+</ul>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_ifequal_matrix44I_value1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44I_value1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_matrix44I_value1" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix44I_value2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44I_value2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_matrix44I_value2" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix44I_in1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44I_in1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix44">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix44I_in2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44I_in2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix44">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix44I_out"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44I_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix44">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_matrix44I({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_ternary({{value1}} == {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
 <details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_ifequal_floatB</summary>
 <div class="m-0 mt-0">
 <div class="row">
@@ -3236,6 +4732,201 @@ Category: ifequal
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_floatB({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_ternary({{value1}} == {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_ifequal_integerB <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.39.0</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">conditional</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> integer</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_ifequal_integerB_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_ifequal_integerB_out_genglsl.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="dropdown">
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_ifequal_integerB_menu"data-bs-toggle="dropdown" aria-expanded="false">value1</div>
+<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_ifequal_integerB_menu">
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integerB_value1" role="tab" aria-controls="pills-ND_ifequal_integerB_value1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integerB_menu').textContent = this.textContent;" >value1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integerB_value2" role="tab" aria-controls="pills-ND_ifequal_integerB_value2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integerB_menu').textContent = this.textContent;" >value2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integerB_in1" role="tab" aria-controls="pills-ND_ifequal_integerB_in1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integerB_menu').textContent = this.textContent;" >in1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integerB_in2" role="tab" aria-controls="pills-ND_ifequal_integerB_in2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integerB_menu').textContent = this.textContent;" >in2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_integerB_out" role="tab" aria-controls="pills-ND_ifequal_integerB_out" aria-selected="true"  onclick="document.getElementById('ND_ifequal_integerB_menu').textContent = this.textContent;" ><b>out</b></div></li>
+</ul>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_ifequal_integerB_value1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integerB_value1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-10">
+          <input id="ND_ifequal_integerB_value1" type="text" class="form-control form-control-sm" value="false" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_integerB_value2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integerB_value2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-10">
+          <input id="ND_ifequal_integerB_value2" type="text" class="form-control form-control-sm" value="false" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_integerB_in1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integerB_in1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_integerB_in1" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_integerB_in2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integerB_in2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_ifequal_integerB_in2" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_integerB_out"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_integerB_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_integerB({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
     </div>
   </div>
 <hr>
@@ -4279,6 +5970,560 @@ Category: ifequal
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_vector4B({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_ternary({{value1}} == {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_ifequal_matrix33B <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.39.0</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">conditional</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> matrix33</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="dropdown">
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_ifequal_matrix33B_menu"data-bs-toggle="dropdown" aria-expanded="false">value1</div>
+<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_ifequal_matrix33B_menu">
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33B_value1" role="tab" aria-controls="pills-ND_ifequal_matrix33B_value1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33B_menu').textContent = this.textContent;" >value1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33B_value2" role="tab" aria-controls="pills-ND_ifequal_matrix33B_value2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33B_menu').textContent = this.textContent;" >value2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33B_in1" role="tab" aria-controls="pills-ND_ifequal_matrix33B_in1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33B_menu').textContent = this.textContent;" >in1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33B_in2" role="tab" aria-controls="pills-ND_ifequal_matrix33B_in2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33B_menu').textContent = this.textContent;" >in2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix33B_out" role="tab" aria-controls="pills-ND_ifequal_matrix33B_out" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix33B_menu').textContent = this.textContent;" ><b>out</b></div></li>
+</ul>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_ifequal_matrix33B_value1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33B_value1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-10">
+          <input id="ND_ifequal_matrix33B_value1" type="text" class="form-control form-control-sm" value="false" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix33B_value2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33B_value2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-10">
+          <input id="ND_ifequal_matrix33B_value2" type="text" class="form-control form-control-sm" value="false" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix33B_in1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33B_in1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix33">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix33B_in2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33B_in2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix33">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix33B_out"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix33B_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix33">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_matrix33B({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_ternary({{value1}} == {{value2}}, {{in1}}, {{in2}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_ifequal_matrix44B <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.39.0</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">conditional</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> matrix44</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="dropdown">
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_ifequal_matrix44B_menu"data-bs-toggle="dropdown" aria-expanded="false">value1</div>
+<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_ifequal_matrix44B_menu">
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44B_value1" role="tab" aria-controls="pills-ND_ifequal_matrix44B_value1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44B_menu').textContent = this.textContent;" >value1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44B_value2" role="tab" aria-controls="pills-ND_ifequal_matrix44B_value2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44B_menu').textContent = this.textContent;" >value2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44B_in1" role="tab" aria-controls="pills-ND_ifequal_matrix44B_in1" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44B_menu').textContent = this.textContent;" >in1</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44B_in2" role="tab" aria-controls="pills-ND_ifequal_matrix44B_in2" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44B_menu').textContent = this.textContent;" >in2</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ifequal_matrix44B_out" role="tab" aria-controls="pills-ND_ifequal_matrix44B_out" aria-selected="true"  onclick="document.getElementById('ND_ifequal_matrix44B_menu').textContent = this.textContent;" ><b>out</b></div></li>
+</ul>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_ifequal_matrix44B_value1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44B_value1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-10">
+          <input id="ND_ifequal_matrix44B_value1" type="text" class="form-control form-control-sm" value="false" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix44B_value2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44B_value2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-10">
+          <input id="ND_ifequal_matrix44B_value2" type="text" class="form-control form-control-sm" value="false" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix44B_in1"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44B_in1-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix44">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix44B_in2"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44B_in2-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix44">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_ifequal_matrix44B_out"
+  role="tabpanel" aria-labelledby="pills-ND_ifequal_matrix44B_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col">
+          <input type="text" class="form-control form-control-sm" value="in1" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix44">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>({{value1}} == {{value2}}) ? {{in1}} : {{in2}} </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_ifequal_matrix44B({{value1}}, {{value2}}, {{in1}}, {{in2}}) </textarea>
     </div>
   </div>
 <hr>

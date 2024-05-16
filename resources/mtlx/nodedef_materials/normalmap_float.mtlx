@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <normalmap name="normalmap_float" type="vector3">
+    <input name="in" type="vector3" value="0.5, 0.5, 1.0" />
+    <input name="space" type="string" value="tangent" enum="tangent, object" uniform="true" />
+    <input name="scale" type="float" value="1.0" />
+  </normalmap>
+  <convert name="shader_normalmap_float_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="normalmap_float" />
+  </convert>
+  <surfacematerial name="material_normalmap_float_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_normalmap_float_out" />
+  </surfacematerial>
+</materialx>

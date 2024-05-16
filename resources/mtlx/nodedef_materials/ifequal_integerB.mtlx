@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <ifequal name="ifequal_integerB" type="integer">
+    <input name="value1" type="boolean" value="false" />
+    <input name="value2" type="boolean" value="false" />
+    <input name="in1" type="integer" value="0" />
+    <input name="in2" type="integer" value="0" />
+  </ifequal>
+  <convert name="shader_ifequal_integerB_out" type="surfaceshader">
+    <input name="in" type="integer" nodename="ifequal_integerB" />
+  </convert>
+  <surfacematerial name="material_ifequal_integerB_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ifequal_integerB_out" />
+  </surfacematerial>
+</materialx>

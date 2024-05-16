@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
   <atan2 name="atan2_vector2" type="vector2">
-    <input name="in1" type="vector2" value="1.0, 1.0" />
-    <input name="in2" type="vector2" value="0.0, 0.0" />
+    <input name="iny" type="vector2" value="1.0, 1.0" />
+    <input name="inx" type="vector2" value="0.0, 0.0" />
   </atan2>
   <convert name="shader_atan2_vector2_out" type="surfaceshader">
     <input name="in" type="vector2" nodename="atan2_vector2" />

@@ -25,13 +25,14 @@
   -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/all.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/brands.min.css"> 
 
   <link rel="stylesheet" href="../../documents/css/style.css">
 
+  <!-- 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> -->
 
   <!--FILL_CONTENT_STYLE-->
 
@@ -40,190 +41,188 @@
 
 </head>
 <body class="min-vh-100">
-<script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script> 
-<script> mermaid.initialize({ startOnLoad: false, theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras") ? "dark" : "base",themeVariables: {    primaryColor: "#F1F1F1",    primaryBorderColor: "#000000",    secondaryColor: "#EFEFFF",    tertiaryColor: "#EEEEEE"}}); </script>
 
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
 </script>
 
 <script src="../../documents/js/definition_card_helpers.js"></script>
 
-<!-- Navigation  -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({
+             startOnLoad: false,
+             theme: document.body.classList.contains("vscode-dark") || document.body.classList.contains("vscode-high-contras")
+             ? "dark"
+             : "base",
+            themeVariables: {
+                primaryColor: "#F1F1F1",
+                primaryBorderColor: "#000000",
+                secondaryColor: "#EFEFFF",
+                tertiaryColor: "#EEEEEE"
+            }});
+</script>
+<!-- Navigation_Area-->
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
-  <div class="container-md container-fluid">
-    <a class="navbar-brand" href="../../index.html">
-      <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
-          class="rounded d-inline-block align-text-center" width="50px">
-        MaterialX Learn</h5>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
-      aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mainMenuContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="../../index.html" role="button">
-            Home
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Learn
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="../../documents/nodes_and_nodegraphs.html">
-                Nodes and Graphs
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../documents/node_definitions.html">
-                Node Definitions
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../documents/documents.html">
-                Documents
-              </a>
-            </li>
-          </ul>
-        </li>
+    <div class="container-md container-fluid">
+        <a class="navbar-brand" href="../../index.html">
+            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+                    class="rounded d-inline-block align-text-center" width="50px">
+                MaterialX Learn</h5>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+            aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenuContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="../../index.html" role="button">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Learn
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="../../documents/nodes_and_nodegraphs.html">
+                                Nodes and Graphs
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../../documents/node_definitions.html">
+                                Node Definitions
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../../documents/documents.html">
+                                Documents
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="../../documents/presentations.html">
+                                Presentations and Media
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-            data-bs-auto-close="outside">Reference</a>
-          <ul class="dropdown-menu shadow">
-              <li><a class="dropdown-item" href="../../documents/definitions/definitions_by_group.html">Library
-                  (By Group)</a></li>
-            <li><a class="dropdown-item" href="../../documents/definitions/all_definitions.html">Library
-                (All)</a></li>
-            <li><a class="dropdown-item" href="../../documents/definitions/library_glossary.html">Library
-                Glossary</a></li>
-            <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank"><img
-                  src="../../documents/images/MaterialXLogo_200x155.png" style="width:20px"> C++ API</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                        data-bs-auto-close="outside">Reference</a>
+                    <ul class="dropdown-menu shadow">
+                        <li><a class="dropdown-item"
+                                href="../../documents/definitions/definitions_by_group.html">Library
+                                (By Group)</a></li>
+                        <li><a class="dropdown-item"
+                                href="../../documents/definitions/all_definitions.html">Library
+                                (All)</a></li>
+                        <li><a class="dropdown-item"
+                                href="../../documents/definitions/library_glossary.html">Library
+                                Glossary</a></li>
+                        <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
+                                target="_blank"><img src="../../documents/images/MaterialXLogo_200x155.png"
+                                    style="width:20px"> C++ API</a></li>
 
-            <li class="dropend">
-              <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library Revisions</a>
-              <ul class="dropdown-menu shadow">
-                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1389_vs_1390.html"> 1.38.9 vs 1.39.0</a></li>
-                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1388_vs_1389.html"> 1.38.8 vs 1.38.9</a></li>
-                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1387_vs_1388.html"> 1.38.7 vs 1.38.8</a></li>
-                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1386_vs_1387.html"> 1.38.6 vs 1.38.7</a></li>
-                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1385_vs_1386.html"> 1.38.5 vs 1.38.6</a></li>
-                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1384_vs_1385.html"> 1.38.4 vs 1.38.5</a></li>
-                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1383_vs_1384.html"> 1.38.3 vs 1.38.4</a></li>
-                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1382_vs_1383.html"> 1.38.2 vs 1.38.3</a></li>
-                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1381_vs_1382.html"> 1.38.1 vs 1.38.2</a></li>
-                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1380_vs_1381.html"> 1.38.0 vs 1.38.1</a></li>
-                <li><a class="dropdown-item" href="_TOP_FOLDER_/documents/mtlx_1380_vs_1390.html"> 1.38.0 vs 1.39.0</a></li>
-              </ul>
-            </li>
+                        <li class="dropend">
+                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
+                                Revisions</a>
+                            <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1389_vs_1390.html">
+                                        1.38.9 vs 1.39.0</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1388_vs_1389.html">
+                                        1.38.8 vs 1.38.9</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1387_vs_1388.html">
+                                        1.38.7 vs 1.38.8</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1386_vs_1387.html">
+                                        1.38.6 vs 1.38.7</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1385_vs_1386.html">
+                                        1.38.5 vs 1.38.6</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1384_vs_1385.html">
+                                        1.38.4 vs 1.38.5</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1383_vs_1384.html">
+                                        1.38.3 vs 1.38.4</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1382_vs_1383.html">
+                                        1.38.2 vs 1.38.3</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1381_vs_1382.html">
+                                        1.38.1 vs 1.38.2</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1380_vs_1381.html">
+                                        1.38.0 vs 1.38.1</a></li>
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1380_vs_1390.html">
+                                        1.38.0 vs 1.39.0</a></li>
+                            </ul>
+                        </li>
 
-            <div class="dropdown-divider"></div>
-            <li>
-              <a class="dropdown-item" href="../../documents/using_library.html">
-                <img src="../../documents/images/info-circle.svg"> Library User Guide
-              </a>
-            </li>
-          </ul>
-        </li>
+                        <div class="dropdown-divider"></div>
+                        <li>
+                            <a class="dropdown-item" href="../../documents/using_library.html">
+                                <img src="../../documents/images/info-circle.svg"> Library User Guide
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">Utilities</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="../../documents/gltfViewer.html">
-                glTF Model Viewer
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../documents/mermaidChecker.html">
-                Graph Visualizer
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">
-                Graph Editing
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">
-                Shader Preview
-              </a>
-            </li>                            
-            <li>
-              <a class="dropdown-item" href="../../documents/mtlx_utilities.html">
-                Python Utilities
-              </a>
-            </li>
-          </ul>
-        </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Utilities</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
+                        <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/mtlx_js_utilities.html">Graph Editing</a></li>
+                        <li><a class="dropdown-item" href="../../javascript/viewer/dist/index_out.html">Shader Preview</a></li>
+                        <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Utilities</a></li>
+                    </ul>
+                </li>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">Develop</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="../../documents/python_MaterialX.html">
-                Notebooks
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../documents/jupyter_example.html">
-                Examples
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../documents/hosting.html">
-                Hosting
-              </a>
-            </li>
-          </ul>
-        </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Develop</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../../documents/python_MaterialX.html">Notebooks</a></li>
+                        <li><a class="dropdown-item" href="../../documents/jupyter_example.html">Examples</a></li>
+                        <li><a class="dropdown-item" href="../../documents/hosting.html">Hosting</a>
+                        </li>
+                    </ul>
+                </li>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">Workflows</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../../documents/workflow_usd.html">USD and MaterialX</a></li>
-            <li><a class="dropdown-item" href="../../documents/workflow_gltf.html">glTF and MaterialX</a></li>
-            <li><a class="dropdown-item" href="../../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
-          </ul>
-        </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Workflows</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../../documents/workflow_usd.html">USD and MaterialX</a></li>
+                        <li><a class="dropdown-item" href="../../documents/workflow_gltf.html">glTF and MaterialX</a></li>
+                        <li><a class="dropdown-item" href="../../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
+                    </ul>
+                </li>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Design</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="../../documents/design.html">
-                UX Design
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../../documents/implementation.html">
-                Implementation
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../documents/about.html" role="button">
-            About
-          </a>
-        </li>
-        <li class="nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../../documents/images/layout-text-sidebar.svg">Index</a></li>
-      </ul>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Design</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../../documents/design.html">UX Design</a></li>
+                        <li><a class="dropdown-item" href="../../documents/property_editor_ui.html">Property Editor UX</a></li>
+                        <li><a class="dropdown-item" href="https://guannan-kwok.github.io/assetLibrary/materialx/" target="_blank">Graphic Design</a></li>
+                        <li><a class="dropdown-item" href="../../documents/implementation.html">Implementation</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../documents/about.html" role="button">
+                        About
+                    </a>
+                </li>
+                <li class="nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../../documents/images/layout-text-sidebar.svg">Index</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav><div class="container-fluid px-0">
  <div class="row ">
    <div class="col-auto p-0">
      <div class="row vh-100 overflow-auto" id="noddict_row">
        <div class="col-auto pt-2 pl-2">
          <div class="container-fluid">
-           <div id="sidebar" class="collapse show collapse-horizontal">
+           <div id="sidebar" class="collapse collapse-horizontal">
 <form class="m-2 d-flex" role="search">
  <input id="searchTOC" class="form-control-sm p-1 ms-2 me-0" type="text" placeholder="Filter value" aria-label="Search">
     <div class="m-0 p-1 btn btn-sm btn-outline-secondary" onclick="return filterTOC()">Filter</div>
@@ -612,14 +611,15 @@ Category: thin_film_bsdf
 <div class="card shadow border mb-4">
 <div class="card-body">
 <div class="row">
-<div class="card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> BSDF</button></div>
-<div class="card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button></div>
-<div class="card-text"> <b>Version: </b>1.0  </div>
-<div class="card-text"><b>Description:</b> Adds an iridescent thin film layer over a microfacet base BSDF..</div>
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbrlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> BSDF</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
 </div>
+<div class="row"><div class="col card-text"><b>Description :</b> Adds an iridescent thin film layer over a microfacet base BSDF.</div></div>
 <div class="row">
 <div class="col-md-5 p-2">
-<img src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
+<img loading="lazy" src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
@@ -761,7 +761,27 @@ Category: thin_film_bsdf
            </div>
        </div>
    </div>
-<script>
+
+  <footer class="bg-dark-subtle footer text-white py-2 pt-2" data-bs-theme="dark">
+    <div class="container">
+      <ul class="social-icons">
+        <button class="btn btn-outline" type="button">
+          <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><b class="fa-brands fa-github fa-2x"
+              style="color: #ffffff;"></b></a>
+        </button>
+        <button class="btn btn-outline " type="button">
+          <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><b class="fa-brands fa-linkedin-in fa-2x"
+              style="color: #0082ca;"></b></a>
+        </button>
+      </ul>
+      <p>
+        <a class="bg-dark p-2 right" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0"
+                src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+        &copy; 2022-2024 NanMu Consulting.</a>
+      </p>      
+    </div>
+  </footer><script>
   var searchInput = document.getElementById("searchTOC")
   if (searchInput) {
    searchInput.addEventListener("keypress", filterOnEnter);
