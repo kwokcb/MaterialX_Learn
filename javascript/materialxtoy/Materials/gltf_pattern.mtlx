@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<materialx version="1.39" colorspace="lin_rec709">
+  <input name="tiling" type="vector2" value="30,10" />
+  <input name="left_ramp" type="color3" value="0.7647058823529411,0.2549019607843137,0.2549019607843137" />
+  <input name="right_ramp" type="color3" value="0.027450980392156862,0.8274509803921568,0.9294117647058824" />
+  <surfacematerial name="surfacematerial_material" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="gltf_pbr_surfaceshader" />
+    <input name="displacementshader" type="displacementshader" value="" />
+  </surfacematerial>
+  <gltf_pbr name="gltf_pbr_surfaceshader" type="surfaceshader">
+    <input name="base_color" type="color3" nodename="mix_color5" />
+    <input name="metallic" type="float" value="1" />
+    <input name="roughness" type="float" value="0.2" />
+    <input name="normal" type="vector3" value="0,0,0" />
+    <input name="tangent" type="vector3" value="0,0,0" />
+    <input name="occlusion" type="float" value="1" />
+    <input name="transmission" type="float" value="0" />
+    <input name="specular" type="float" value="1" />
+    <input name="specular_color" type="color3" value="1,1,1" />
+    <input name="ior" type="float" value="1.5" />
+    <input name="alpha" type="float" value="1" />
+    <input name="alpha_mode" type="integer" value="0" />
+    <input name="alpha_cutoff" type="float" value="0.5" />
+    <input name="iridescence" type="float" value="0" />
+    <input name="iridescence_ior" type="float" value="1.3" />
+    <input name="iridescence_thickness" type="float" value="100" />
+    <input name="sheen_color" type="color3" value="0,0,0" />
+    <input name="sheen_roughness" type="float" value="0" />
+    <input name="clearcoat" type="float" value="0" />
+    <input name="clearcoat_roughness" type="float" value="0" />
+    <input name="clearcoat_normal" type="vector3" value="0,0,0" />
+    <input name="emissive" type="color3" value="0,0,0" />
+    <input name="emissive_strength" type="float" value="1" />
+    <input name="thickness" type="float" value="0" />
+    <input name="attenuation_distance" type="float" value="0" />
+    <input name="attenuation_color" type="color3" value="1,1,1" />
+  </gltf_pbr>
+  <texcoord name="texcoord_vector2" type="vector2">
+    <input name="index" type="integer" value="0" />
+  </texcoord>
+  <ramplr name="ramplr_color3" type="color3">
+    <input name="valuel" type="color3" interfacename="left_ramp" />
+    <input name="valuer" type="color3" interfacename="right_ramp" />
+    <input name="texcoord" type="vector2" nodename="texcoord_vector2" />
+  </ramplr>
+  <tiledhexagons name="tiledhexagons_color3" type="color3">
+    <input name="texcoord" type="vector2" nodename="texcoord_vector2" />
+    <input name="uvtiling" type="vector2" interfacename="tiling" />
+    <input name="uvoffset" type="vector2" value="0.5,0" />
+    <input name="size" type="float" value="0.8" />
+    <input name="staggered" type="boolean" value="true" />
+  </tiledhexagons>
+  <mix name="mix_color4" type="color3">
+    <input name="fg" type="color3" nodename="ramplr_color3" />
+    <input name="bg" type="color3" nodename="tiledhexagons_color3" />
+    <input name="mix" type="float" value="0.8" />
+  </mix>
+  <tiledcircles name="tiledcircles_color3" type="color3">
+    <input name="texcoord" type="vector2" nodename="texcoord_vector2" />
+    <input name="uvtiling" type="vector2" interfacename="tiling" />
+    <input name="uvoffset" type="vector2" value="0,0" />
+    <input name="size" type="float" value="0.5" />
+    <input name="staggered" type="boolean" value="true" />
+  </tiledcircles>
+  <mix name="mix_color5" type="color3">
+    <input name="fg" type="color3" nodename="mix_color4" />
+    <input name="bg" type="color3" nodename="tiledcircles_color3" />
+    <input name="mix" type="float" value="0.5" />
+  </mix>
+</materialx>

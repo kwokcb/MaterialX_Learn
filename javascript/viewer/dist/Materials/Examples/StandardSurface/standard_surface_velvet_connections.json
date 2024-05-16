@@ -1,0 +1,29 @@
+{
+  "doc": "Graph connections for: ..\\resources\\Materials\\Examples\\StandardSurface\\standard_surface_velvet.mtlx",
+  "copyright": "Copyright 2024, NanMu Consulting. kwokcb@gmail.com",
+  "graph": {
+    "": [
+      [
+        "SR_velvet",
+        "standard_surface",
+        "surfaceshader",
+        ""
+      ],
+      [
+        "Velvet",
+        "surfacematerial",
+        "material",
+        ""
+      ]
+    ]
+  },
+  "connections": [
+    [
+      "SR_velvet",
+      "",
+      "Velvet",
+      "surfaceshader",
+      "nodename"
+    ]
+  ]
+}

@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -664,10 +662,6 @@ Category: standard_surface_to_gltf_pbr
 <img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_emissive_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_emissive_out_genglsl.png>
 <div style="font-size: 70%">emissive_out</div>
 </div>
-<div class="col ps-0 pe-0 ms-0 me-0">
-<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_normal_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_normal_out_genglsl.png>
-<div style="font-size: 70%">normal_out</div>
-</div>
 </div>
 </div>
 </div>
@@ -707,8 +701,6 @@ Category: standard_surface_to_gltf_pbr
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_emission_color" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_emission_color" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" >emission_color</div></li>
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_normal" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_normal" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" >normal</div></li>
-<li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_base_color_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_base_color_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>base_color_out</b></div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_metallic_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_metallic_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>metallic_out</b></div></li>
@@ -730,8 +722,6 @@ Category: standard_surface_to_gltf_pbr
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_clearcoat_roughness_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_clearcoat_roughness_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>clearcoat_roughness_out</b></div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_emissive_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_emissive_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>emissive_out</b></div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_normal_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_normal_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>normal_out</b></div></li>
 </ul>
 </ul>
 </div>
@@ -1047,29 +1037,6 @@ Category: standard_surface_to_gltf_pbr
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_normal"
-  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_normal-tab" tabindex="0">
-  <div class="form-group row g-1">
-      <label class="col-2 col-form-label col-form-label-sm">Value </label>
-      <div class="col-3">
-          <input id="ND_standard_surface_to_gltf_pbr_normal_0" type="number" class="form-control form-control-sm" value="1" disabled>
-      </div>
-      <div class="col-3">
-          <input id="ND_standard_surface_to_gltf_pbr_normal_1" type="number" class="form-control form-control-sm" value="1" disabled>
-      </div>
-      <div class="col-3">
-          <input id="ND_standard_surface_to_gltf_pbr_normal_2" type="number" class="form-control form-control-sm" value="1" disabled>
-      </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-10">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
-   </div>
-  </div>
- </div>
-</div>
-<div class="tab-content">
  <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_base_color_out"
   role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_base_color_out-tab" tabindex="0">
   <div class="form-group row g-2">
@@ -1190,17 +1157,6 @@ Category: standard_surface_to_gltf_pbr
   </div>
  </div>
 </div>
-<div class="tab-content">
- <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_normal_out"
-  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_normal_out-tab" tabindex="0">
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-10">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
-   </div>
-  </div>
- </div>
-</div>
 </div>
 </div>
 <p class="card-text"><b></b>
@@ -1215,23 +1171,25 @@ Category: standard_surface_to_gltf_pbr
 <div id="ND_standard_surface_to_gltf_pbr_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_standard_surface_to_gltf_pbr
+    NG_standard_surface_to_gltf_pbr_swizzle[swizzle]
     NG_standard_surface_to_gltf_pbr_has_coat_color[has_coat_color]
     NG_standard_surface_to_gltf_pbr_scaledBaseColor[scaledBaseColor]
     NG_standard_surface_to_gltf_pbr_coatAttenuation[coatAttenuation]
     NG_standard_surface_to_gltf_pbr_mixedBaseColor[mixedBaseColor]
     NG_standard_surface_to_gltf_pbr_constantOneThird[constantOneThird]
     NG_standard_surface_to_gltf_pbr_coatColor[coatColor]
+    NG_standard_surface_to_gltf_pbr_swizzle2[swizzle2]
+    NG_standard_surface_to_gltf_pbr_swizzle3[swizzle3]
     NG_standard_surface_to_gltf_pbr_weightedCoat[weightedCoat]
     style NG_standard_surface_to_gltf_pbr_base_color  fill:#C72, color:#FFF
     NG_standard_surface_to_gltf_pbr_base_color{base_color}
     NG_standard_surface_to_gltf_pbr_metallic[metallic]
     NG_standard_surface_to_gltf_pbr_roughness[roughness]
-    NG_standard_surface_to_gltf_pbr_normal[normal]
     NG_standard_surface_to_gltf_pbr_transmission[transmission]
     NG_standard_surface_to_gltf_pbr_thickness[thickness]
     NG_standard_surface_to_gltf_pbr_attenuation_color[attenuation_color]
     NG_standard_surface_to_gltf_pbr_sheen_color[sheen_color]
-    NG_standard_surface_to_gltf_pbr_sheen_roughness1[sheen_roughness1]
+    NG_standard_surface_to_gltf_pbr_sheen_roughness[sheen_roughness]
     style NG_standard_surface_to_gltf_pbr_clearcoat  fill:#C72, color:#FFF
     NG_standard_surface_to_gltf_pbr_clearcoat{clearcoat}
     NG_standard_surface_to_gltf_pbr_clearcoat_roughness[clearcoat_roughness]
@@ -1258,8 +1216,6 @@ graph TB
     NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out([clearcoat_roughness_out])
     style NG_standard_surface_to_gltf_pbr_emissive_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_emissive_out([emissive_out])
-    style NG_standard_surface_to_gltf_pbr_normal_out  fill:#0C0, color:#FFF
-    NG_standard_surface_to_gltf_pbr_normal_out([normal_out])
     style NG_standard_surface_to_gltf_pbr_coat_color  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_coat_color([coat_color])
     style NG_standard_surface_to_gltf_pbr_base  fill:#09D, color:#FFF
@@ -1270,8 +1226,6 @@ graph TB
     NG_standard_surface_to_gltf_pbr_metalness([metalness])
     style NG_standard_surface_to_gltf_pbr_specular_roughness  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_specular_roughness([specular_roughness])
-    style NG_standard_surface_to_gltf_pbr_normal:in  fill:#09D, color:#FFF
-    NG_standard_surface_to_gltf_pbr_normal:in([normal:in])
     style NG_standard_surface_to_gltf_pbr_transmission:in  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_transmission:in([transmission:in])
     style NG_standard_surface_to_gltf_pbr_transmission_depth  fill:#09D, color:#FFF
@@ -1282,8 +1236,8 @@ graph TB
     NG_standard_surface_to_gltf_pbr_sheen_color:in([sheen_color:in])
     style NG_standard_surface_to_gltf_pbr_sheen  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_sheen([sheen])
-    style NG_standard_surface_to_gltf_pbr_sheen_roughness  fill:#09D, color:#FFF
-    NG_standard_surface_to_gltf_pbr_sheen_roughness([sheen_roughness])
+    style NG_standard_surface_to_gltf_pbr_sheen_roughness:in  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_sheen_roughness:in([sheen_roughness:in])
     style NG_standard_surface_to_gltf_pbr_coat_roughness  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_coat_roughness([coat_roughness])
     style NG_standard_surface_to_gltf_pbr_emission_color  fill:#09D, color:#FFF
@@ -1291,7 +1245,8 @@ graph TB
     style NG_standard_surface_to_gltf_pbr_emission  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_emission([emission])
     end
-    NG_standard_surface_to_gltf_pbr_coat_color --"in1"--> NG_standard_surface_to_gltf_pbr_has_coat_color
+    NG_standard_surface_to_gltf_pbr_coat_color --"in"--> NG_standard_surface_to_gltf_pbr_swizzle
+    NG_standard_surface_to_gltf_pbr_swizzle --"in1"--> NG_standard_surface_to_gltf_pbr_has_coat_color
     NG_standard_surface_to_gltf_pbr_base_color --"in1"--> NG_standard_surface_to_gltf_pbr_scaledBaseColor
     NG_standard_surface_to_gltf_pbr_base --"in2"--> NG_standard_surface_to_gltf_pbr_scaledBaseColor
     NG_standard_surface_to_gltf_pbr_coat_color --"fg"--> NG_standard_surface_to_gltf_pbr_coatAttenuation
@@ -1300,21 +1255,22 @@ graph TB
     NG_standard_surface_to_gltf_pbr_coatAttenuation --"in2"--> NG_standard_surface_to_gltf_pbr_mixedBaseColor
     NG_standard_surface_to_gltf_pbr_coat_color --"in1"--> NG_standard_surface_to_gltf_pbr_coatColor
     NG_standard_surface_to_gltf_pbr_coat --"in2"--> NG_standard_surface_to_gltf_pbr_coatColor
-    NG_standard_surface_to_gltf_pbr_coatColor --"in1"--> NG_standard_surface_to_gltf_pbr_weightedCoat
-    NG_standard_surface_to_gltf_pbr_constantOneThird --"in2"--> NG_standard_surface_to_gltf_pbr_weightedCoat
+    NG_standard_surface_to_gltf_pbr_coatColor --"in"--> NG_standard_surface_to_gltf_pbr_swizzle2
+    NG_standard_surface_to_gltf_pbr_constantOneThird --"in"--> NG_standard_surface_to_gltf_pbr_swizzle3
+    NG_standard_surface_to_gltf_pbr_swizzle2 --"in1"--> NG_standard_surface_to_gltf_pbr_weightedCoat
+    NG_standard_surface_to_gltf_pbr_swizzle3 --"in2"--> NG_standard_surface_to_gltf_pbr_weightedCoat
     NG_standard_surface_to_gltf_pbr_has_coat_color --"value1"--> NG_standard_surface_to_gltf_pbr_base_color
     NG_standard_surface_to_gltf_pbr_scaledBaseColor --"in1"--> NG_standard_surface_to_gltf_pbr_base_color
     NG_standard_surface_to_gltf_pbr_mixedBaseColor --"in2"--> NG_standard_surface_to_gltf_pbr_base_color
     NG_standard_surface_to_gltf_pbr_metalness --"in"--> NG_standard_surface_to_gltf_pbr_metallic
     NG_standard_surface_to_gltf_pbr_specular_roughness --"in"--> NG_standard_surface_to_gltf_pbr_roughness
-    NG_standard_surface_to_gltf_pbr_normal:in --"in"--> NG_standard_surface_to_gltf_pbr_normal
     NG_standard_surface_to_gltf_pbr_transmission:in --"in"--> NG_standard_surface_to_gltf_pbr_transmission
     NG_standard_surface_to_gltf_pbr_transmission_depth --"in"--> NG_standard_surface_to_gltf_pbr_thickness
     NG_standard_surface_to_gltf_pbr_transmission_color --"in"--> NG_standard_surface_to_gltf_pbr_attenuation_color
     NG_standard_surface_to_gltf_pbr_sheen_color:in --"in1"--> NG_standard_surface_to_gltf_pbr_sheen_color
     NG_standard_surface_to_gltf_pbr_sheen --"in2"--> NG_standard_surface_to_gltf_pbr_sheen_color
-    NG_standard_surface_to_gltf_pbr_sheen --"value1"--> NG_standard_surface_to_gltf_pbr_sheen_roughness1
-    NG_standard_surface_to_gltf_pbr_sheen_roughness --"in1"--> NG_standard_surface_to_gltf_pbr_sheen_roughness1
+    NG_standard_surface_to_gltf_pbr_sheen --"value1"--> NG_standard_surface_to_gltf_pbr_sheen_roughness
+    NG_standard_surface_to_gltf_pbr_sheen_roughness:in --"in1"--> NG_standard_surface_to_gltf_pbr_sheen_roughness
     NG_standard_surface_to_gltf_pbr_has_coat_color --"value1"--> NG_standard_surface_to_gltf_pbr_clearcoat
     NG_standard_surface_to_gltf_pbr_coat --"in1"--> NG_standard_surface_to_gltf_pbr_clearcoat
     NG_standard_surface_to_gltf_pbr_weightedCoat --"in2"--> NG_standard_surface_to_gltf_pbr_clearcoat
@@ -1328,11 +1284,10 @@ graph TB
     NG_standard_surface_to_gltf_pbr_thickness --> NG_standard_surface_to_gltf_pbr_thickness_out
     NG_standard_surface_to_gltf_pbr_attenuation_color --> NG_standard_surface_to_gltf_pbr_attenuation_color_out
     NG_standard_surface_to_gltf_pbr_sheen_color --> NG_standard_surface_to_gltf_pbr_sheen_color_out
-    NG_standard_surface_to_gltf_pbr_sheen_roughness1 --> NG_standard_surface_to_gltf_pbr_sheen_roughness_out
+    NG_standard_surface_to_gltf_pbr_sheen_roughness --> NG_standard_surface_to_gltf_pbr_sheen_roughness_out
     NG_standard_surface_to_gltf_pbr_clearcoat --> NG_standard_surface_to_gltf_pbr_clearcoat_out
     NG_standard_surface_to_gltf_pbr_clearcoat_roughness --> NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out
     NG_standard_surface_to_gltf_pbr_emissive --> NG_standard_surface_to_gltf_pbr_emissive_out
-    NG_standard_surface_to_gltf_pbr_normal --> NG_standard_surface_to_gltf_pbr_normal_out
 
 
 </div></code></pre>

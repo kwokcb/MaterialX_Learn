@@ -1,0 +1,29 @@
+{
+  "doc": "Graph connections for: ..\\resources\\Materials\\Examples\\StandardSurface\\standard_surface_plastic.mtlx",
+  "copyright": "Copyright 2024, NanMu Consulting. kwokcb@gmail.com",
+  "graph": {
+    "": [
+      [
+        "SR_plastic",
+        "standard_surface",
+        "surfaceshader",
+        ""
+      ],
+      [
+        "Plastic",
+        "surfacematerial",
+        "material",
+        ""
+      ]
+    ]
+  },
+  "connections": [
+    [
+      "SR_plastic",
+      "",
+      "Plastic",
+      "surfaceshader",
+      "nodename"
+    ]
+  ]
+}

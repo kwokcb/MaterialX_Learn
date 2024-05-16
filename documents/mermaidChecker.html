@@ -51,7 +51,7 @@
 <body>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
   <script src="../documents/js/ui_helpers.js"></script>
-
+  
   </script>  
    
   <!-- Navigation_Area-->
@@ -221,47 +221,69 @@
         <div class="card-body">
 
 
-          <h3>Mermaid Graph Visualizer</h3>
+          <h3><img src="images/mermaid-logo.png" style="width: 36px; height: 36px" alt="Mermaid Logo">
+            Mermaid Graph Visualizer</h3>
 
-          <b>Usage</b>
+          <details open>
+          <summary>Usage</summary>
           <ul>
             <li>
-              Enter, paste or load Mermaid text into the input text area to see the results below <sup>(*)</sup>
+              Enter, paste or load Mermaid text into the input text area to see the results below.
+              A sample graph has been pre-loaded by default. <sup>(*)</sup>
             </li>
             <li>
-              If the text is valid then a graph will be displayed.
+              If the text is valid then a graph will be displayed. Note that Markdown tags <em>```mermaid</em> and <em>```</em> are
+              automatically stripped out.
             </li>
             <li>
-              The graph can be saved to SVG format using the 'Save SVG' button.
+              The graph can be saved as an SVG file.
             </li>
           </ul>
-          <sup>(*) Note: The graphs for standard library definitions can be found
-            <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/documents/images/graphio">here.</a>. A sample "ramp" graph is set by default.
+          <sup>(*) Notes: The graphs for standard library definitions can be found
+            <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/documents/images/graphio">here.</a>, and
+            the graphs for the core MaterialX examples can be found <a
+              href="https://github.com/kwokcb/MaterialX_Learn/tree/main/resources/MaterialX/Examples">
+              here</a>. </sup>
           </sup>
+          </details>
 
           <div class="row flex-nowrap">
 
             <div class="col-sm-12 p-2">
-             
-              <textarea id="mermaid_input" class="mermaid_input form-control form-control-sm"
-                style="width:95%; height:200px; font-size: 14px;" placeholder="Enter mermaid text here..."></textarea>
+
               <p>
-                <label class="col-form-label">
-                  <input id="loadgraph" type="file" accept=".md" style="display:none" />
-                  <button id="" class="btn btn-outline-primary shadow-sm" style="pointer-events: none;">Load
-                    Graph</button>
-                </label>
+              <h5>Input
+                <input id="loadgraph" type="file" accept=".md" style="display:none" />
+                <button id="loadgraphButton" class="btn btn-sm invert-button">
+                  <img class="" src="images/file-earmark-arrow-up.svg" style="width: 24px; height: 24px"
+                    alt="Load Icon">
+                </button>
+                <button id="copy_mermaid_button" class="btn btn-sm copy-button" data-target="mermaid_input">
+                  <img class="" src="images/copy-regular.svg" style="width: 24px; height: 24px" alt="Copy Icon">
+                </button>
+                <button id="paste_mermaid_button" class="btn btn-sm paste-button" data-target="mermaid_input">
+                  <img class="" src="images/clipboard.svg" style="width: 24px; height: 24px" alt="Paste Icon">
+                </button>
+              </h5>
               </p>
+              <textarea id="mermaid_input" class="mermaid_input form-control form-control-sm"
+                style="width:95%; height:200px; font-size: 14px;" placeholder="Enter mermaid text here...">
+              </textarea>
               <br>
+
+              <h5>Graph
+                <button id="saveSVG" class="btn btn-sm invert-button">
+                  <img class="" src="images/file-earmark-arrow-down.svg" style="width: 24px; height: 24px"
+                    alt="Save Icon">
+                </button>
+                <button id="resetSVGView" class="btn btn-sm invert-button">
+                  <img class="" src="images/camera_reset.svg" style="width: 24px; height: 24px" alt="Reset View">
+                </button>
+                <!-- <button id="savePNG" class="btn btn-outline-secondary shadow">Save PNG</button> -->
+              </h5>
 
               <div id="mermaid_output" class="mermaid_output rounded" style="width:95%; border:solid thin lightskyblue">
                 <!-- An svg element called "mermaid_output_rendered" will be inserted on render -->
-              </div>
-              <p></p>
-              <div class="col-sm2 flex">
-                <button id="saveSVG" class="btn btn-outline-primary shadow-sm">Save SVG</button>
-                <button id="resetSVGView" class="btn btn-outline-primary shadow-sm">Reset View</button>
-                <!-- <button id="savePNG" class="btn btn-outline-secondary shadow">Save PNG</button> -->
               </div>
             </div>
           </div>
@@ -269,27 +291,34 @@
       </div>
     </div>
   </div>
-</div>
 
-<script>
-  let prevSVG = ''
-  let originalViewBox = ''
+  <script>
+    let prevSVG = ''
+    let originalViewBox = ''
 
-  function loadGraph() {
-    let input = document.getElementById('loadgraph');
-    let file = input.files[0];
-    if (!file) {
-      console.log("Nothing to read");
-      return;
+    function loadGraph() {
+      console.log('loading graph---->')
+
+      const inputE = document.createElement('input');
+      inputE.type = 'file';
+      inputE.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.readAsText(file, 'UTF-8');
+
+          reader.onload = function (e) {
+            setGraph(e);
+          }
+        }
+      });
+
+      // Trigger the file dialog
+      inputE.click();
     }
-    let fr = new FileReader();
-    fr.onload = setGraph;
-    fr.readAsText(file);
-  }
 
-  function setDefaultGraph()
-  {
-    const lines = `graph LR;
+    function setDefaultGraph() {
+      const lines = `graph LR;
     NG_ramp4_float_N_mix_float[mix] --> NG_ramp4_float_out([out])
     style NG_ramp4_float_out fill:#0C0, color:#111
     NG_ramp4_float_N_mixtop_float[mix] --".bg"--> NG_ramp4_float_N_mix_float[mix]
@@ -310,175 +339,182 @@
     NG_ramp4_float_N_t_float[extract] --".mix"--> NG_ramp4_float_N_mix_float[mix]
     NG_ramp4_float_N_txclamp_float[clamp] --".in"--> NG_ramp4_float_N_t_float[extract] `;
 
-    var inputArea = document.getElementById("mermaid_input");
-    inputArea.value = lines;
-    console.log('Default graph set')
-    renderMermaid();
-  }
-
-  function setGraph(e) {
-    console.log('read lines')
-    let lines = e.target.result;
-    lines = lines.replace('```mermaid', '')
-    lines = lines.replace('```', '')
-    var inputArea = document.getElementById("mermaid_input");
-    inputArea.value = lines;
-    prevSVG = ''
-    renderMermaid();
-  }
-
-  let loadButton = document.getElementById('loadgraph');
-  if (loadButton) {
-    loadButton.addEventListener('change', loadGraph, false);
-  }
-
-  function savePNG(elem, name) {
-    // SvG to image
-    svgBlob = createSvgBlob(elem);
-    const img = new Image();
-    var svgUrl = URL.createObjectURL(svgBlob);
-    img.src = svgUrl;
-
-    // Render SVG to canvas
-    var canvas = document.createElement("canvas");
-    var bbox = elem.getBBox();
-    canvas.width = bbox.width;
-    canvas.height = bbox.height;
-
-    const context = canvas.getContext('2d');
-    context.drawImage(img, 0, 0, bbox.width, bbox.height);
-
-    // Save to disk
-    const url = canvas.toDataURL('image/png');
-    saveURL(url, name);
-  }
-
-  function saveURL(url, name) {
-    var downloadLink = document.createElement("a");
-    downloadLink.href = url;
-    downloadLink.download = name;
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-  }
-
-  function createSvgBlob(elem) {
-    elem.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-    var svgData = elem.outerHTML;
-    var preface = '<?xml version="1.0" standalone="no"?>\r\n';
-    var svgBlob = new Blob([preface, svgData], { type: "image/svg+xml;charset=utf-8" });
-    return svgBlob;
-  }
-
-  function resetSvgView(elem) {
-    if (elem && originalViewBox) {
-      currentViewBox = elem.getAttribute('viewBox');
-      console.log('Resetting viewbox to:\n ' + originalViewBox)
-      elem.setAttribute('viewBox', originalViewBox);
-    }
-    return currentViewBox;
-  }
-
-  function saveSvg(elem, name) {
-    // Restore original viewBox before saving
-    currentViewBox = resetSvgView(elem);
-
-    svgBlob = createSvgBlob(elem);
-
-    // Save to disk
-    var url = URL.createObjectURL(svgBlob);
-    saveURL(url, name);
-
-    // Restore current viewBox
-    if (originalViewBox) {
-      elem.setAttribute('viewBox', currentViewBox);
-    }
-  }
-
-  function renderMermaid() {
-    const output = document.getElementById("mermaid_output");
-    const code = document.getElementById("mermaid_input").value.trim();
-
-    let newSVG = ''
-    let generateDiagram = function (code) {
-      newSVG = code;
-    };
-
-    if (code.length == 0) {
-      prevSVG = ''
-      output.innerHTML = ''
-    }
-    if (code) {
-      let generated = true;
-      prevSVG = output.innerHTML;
-      try {
-        mermaid.render("mermaid_output_rendered", code, generateDiagram)
-      } catch (error) {
-        generated = false
-      }
-
-      if (generated) {
-        output.innerHTML = newSVG;
-        prevSVG = newSVG;
-        var svgContent = document.getElementById('mermaid_output_rendered');
-        originalViewBox = svgContent.getAttribute('viewBox');
-        setUpSVGInteraction('mermaid_output', 'mermaid_output_rendered')
-      }
-      else {
-        // Clear this out so that we don't get the default Mermaid error SVG
-        mermaid_output_rendered = document.getElementById('mermaid_output_rendered');
-        if (mermaid_output_rendered) {
-          mermaid_output_rendered.innerHTML = '';
-        }
-        output.innerHTML = 'Invalid Mermaid text entered. Failed to generate graph.';
-      }
-    }
-  }
-
-  renderButton = document.getElementById("rendergraph")
-  if (renderButton) {
-    renderButton.addEventListener("click", (e) => {
-      renderMermaid()
-    });
-  }
-
-  inputArea = document.getElementById("mermaid_input");
-  if (inputArea) {
-    inputArea.addEventListener('keyup', (event) => {
+      var inputArea = document.getElementById("mermaid_input");
+      inputArea.value = lines;
+      console.log('Default graph set')
       renderMermaid();
-    })
-  }
-
-  // Review view of svg element
-  document.getElementById("resetSVGView").addEventListener("click", (e) => {
-    var svgContent = document.getElementById('mermaid_output_rendered');
-    if (svgContent) {
-      resetSvgView(svgContent);
     }
-  });
 
-  // Save svg element to file
-  document.getElementById("saveSVG").addEventListener("click", (e) => {
-    var svgContent = document.getElementById('mermaid_output_rendered');
-    if (svgContent) {
-      saveSvg(svgContent, "graph.svg");
+    function setGraph(e) {
+      console.log('read lines')
+      let lines = e.target.result;
+      lines = lines.replace('```mermaid', '')
+      lines = lines.replace('```', '')
+      var inputArea = document.getElementById("mermaid_input");
+      inputArea.value = lines;
+      prevSVG = ''
+      renderMermaid();
     }
-  });
 
-  // Save svg element to file as png
-  saveElem = document.getElementById("savePNG");
-  if (saveElem) {
-    saveElem.addEventListener("click", (e) => {
-      const element = document.getElementById("mermaid_output_rendered");
-      if (element) {
-        savePNG(element, "graph.png");
+    let loadButton = document.getElementById('loadgraphButton');
+    if (loadButton) {
+      console.log('Adding event listener for load graph')
+      loadButton.addEventListener('click', loadGraph, false);
+    }
+
+    function savePNG(elem, name) {
+      // SvG to image
+      svgBlob = createSvgBlob(elem);
+      const img = new Image();
+      var svgUrl = URL.createObjectURL(svgBlob);
+      img.src = svgUrl;
+
+      // Render SVG to canvas
+      var canvas = document.createElement("canvas");
+      var bbox = elem.getBBox();
+      canvas.width = bbox.width;
+      canvas.height = bbox.height;
+
+      const context = canvas.getContext('2d');
+      context.drawImage(img, 0, 0, bbox.width, bbox.height);
+
+      // Save to disk
+      const url = canvas.toDataURL('image/png');
+      saveURL(url, name);
+    }
+
+    function saveURL(url, name) {
+      var downloadLink = document.createElement("a");
+      downloadLink.href = url;
+      downloadLink.download = name;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+
+    function createSvgBlob(elem) {
+      elem.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+      var svgData = elem.outerHTML;
+      var preface = '<?xml version="1.0" standalone="no"?>\r\n';
+      var svgBlob = new Blob([preface, svgData], { type: "image/svg+xml;charset=utf-8" });
+      return svgBlob;
+    }
+
+    function resetSvgView(elem) {
+      if (elem && originalViewBox) {
+        currentViewBox = elem.getAttribute('viewBox');
+        console.log('Resetting viewbox to:\n ' + originalViewBox)
+        elem.setAttribute('viewBox', originalViewBox);
+      }
+      return currentViewBox;
+    }
+
+    function saveSvg(elem, name) {
+      // Restore original viewBox before saving
+      currentViewBox = resetSvgView(elem);
+
+      svgBlob = createSvgBlob(elem);
+
+      // Save to disk
+      var url = URL.createObjectURL(svgBlob);
+      saveURL(url, name);
+
+      // Restore current viewBox
+      if (originalViewBox) {
+        elem.setAttribute('viewBox', currentViewBox);
+      }
+    }
+
+    function renderMermaid() {
+      const output = document.getElementById("mermaid_output");
+      var code = document.getElementById("mermaid_input").value.trim();
+      // Strip out any ```mermard or ``` tags
+      code = code.replace('```mermaid', '')
+      code = code.replace('```', '')
+
+      let newSVG = ''
+      let generateDiagram = function (code) {
+        newSVG = code;
+      };
+
+      if (code.length == 0) {
+        prevSVG = ''
+        output.innerHTML = ''
+      }
+      if (code) {
+        let generated = true;
+        prevSVG = output.innerHTML;
+        try {
+          mermaid.render("mermaid_output_rendered", code, generateDiagram)
+        } catch (error) {
+          generated = false
+        }
+
+        if (generated) {
+          output.innerHTML = newSVG;
+          prevSVG = newSVG;
+          var svgContent = document.getElementById('mermaid_output_rendered');
+          originalViewBox = svgContent.getAttribute('viewBox');
+          setUpSVGInteraction('mermaid_output', 'mermaid_output_rendered')
+        }
+        else {
+          // Clear this out so that we don't get the default Mermaid error SVG
+          mermaid_output_rendered = document.getElementById('mermaid_output_rendered');
+          if (mermaid_output_rendered) {
+            mermaid_output_rendered.innerHTML = '';
+          }
+          output.innerHTML = 'Invalid Mermaid text entered. Failed to generate graph.';
+        }
+      }
+    }
+
+    renderButton = document.getElementById("rendergraph")
+    if (renderButton) {
+      renderButton.addEventListener("click", (e) => {
+        renderMermaid()
+      });
+    }
+
+    inputArea = document.getElementById("mermaid_input");
+    if (inputArea) {
+      inputArea.addEventListener('keyup', (event) => {
+        renderMermaid();
+      })
+    }
+
+    // Review view of svg element
+    document.getElementById("resetSVGView").addEventListener("click", (e) => {
+      var svgContent = document.getElementById('mermaid_output_rendered');
+      if (svgContent) {
+        resetSvgView(svgContent);
       }
     });
-  }
 
-  setDefaultGraph();
+    // Save svg element to file
+    document.getElementById("saveSVG").addEventListener("click", (e) => {
+      var svgContent = document.getElementById('mermaid_output_rendered');
+      if (svgContent) {
+        saveSvg(svgContent, "graph.svg");
+      }
+    });
 
-</script>
+    // Save svg element to file as png
+    saveElem = document.getElementById("savePNG");
+    if (saveElem) {
+      saveElem.addEventListener("click", (e) => {
+        const element = document.getElementById("mermaid_output_rendered");
+        if (element) {
+          savePNG(element, "graph.png");
+        }
+      });
+    }
+
+    setDefaultGraph();
+
+    addCopyHandlers();
+    addPasteHandlers();
+
+  </script>
 
     </div>
   </section>

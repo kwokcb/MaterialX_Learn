@@ -1,0 +1,29 @@
+{
+  "doc": "Graph connections for: ..\\resources\\Materials\\Examples\\StandardSurface\\standard_surface_copper.mtlx",
+  "copyright": "Copyright 2024, NanMu Consulting. kwokcb@gmail.com",
+  "graph": {
+    "": [
+      [
+        "SR_copper",
+        "standard_surface",
+        "surfaceshader",
+        ""
+      ],
+      [
+        "Copper",
+        "surfacematerial",
+        "material",
+        ""
+      ]
+    ]
+  },
+  "connections": [
+    [
+      "SR_copper",
+      "",
+      "Copper",
+      "surfaceshader",
+      "nodename"
+    ]
+  ]
+}

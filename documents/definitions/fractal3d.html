@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -1012,6 +1010,7 @@ Category: fractal3d
 graph TB
     subgraph NG_fractal3d_color3
     NG_fractal3d_color3_N_fractal3d[N_fractal3d]
+    NG_fractal3d_color3_swizzle[swizzle]
     style NG_fractal3d_color3_out  fill:#0C0, color:#FFF
     NG_fractal3d_color3_out([out])
     style NG_fractal3d_color3_amplitude  fill:#09D, color:#FFF
@@ -1030,7 +1029,8 @@ graph TB
     NG_fractal3d_color3_lacunarity --"lacunarity"--> NG_fractal3d_color3_N_fractal3d
     NG_fractal3d_color3_diminish --"diminish"--> NG_fractal3d_color3_N_fractal3d
     NG_fractal3d_color3_position --"position"--> NG_fractal3d_color3_N_fractal3d
-    NG_fractal3d_color3_N_fractal3d --> NG_fractal3d_color3_out
+    NG_fractal3d_color3_N_fractal3d --"in"--> NG_fractal3d_color3_swizzle
+    NG_fractal3d_color3_swizzle --> NG_fractal3d_color3_out
 
 
 </div></code></pre>
@@ -1221,6 +1221,7 @@ graph TB
 graph TB
     subgraph NG_fractal3d_color4
     NG_fractal3d_color4_N_fractal3d[N_fractal3d]
+    NG_fractal3d_color4_swizzle[swizzle]
     style NG_fractal3d_color4_out  fill:#0C0, color:#FFF
     NG_fractal3d_color4_out([out])
     style NG_fractal3d_color4_amplitude  fill:#09D, color:#FFF
@@ -1239,7 +1240,8 @@ graph TB
     NG_fractal3d_color4_lacunarity --"lacunarity"--> NG_fractal3d_color4_N_fractal3d
     NG_fractal3d_color4_diminish --"diminish"--> NG_fractal3d_color4_N_fractal3d
     NG_fractal3d_color4_position --"position"--> NG_fractal3d_color4_N_fractal3d
-    NG_fractal3d_color4_N_fractal3d --> NG_fractal3d_color4_out
+    NG_fractal3d_color4_N_fractal3d --"in"--> NG_fractal3d_color4_swizzle
+    NG_fractal3d_color4_swizzle --> NG_fractal3d_color4_out
 
 
 </div></code></pre>
@@ -2156,6 +2158,7 @@ graph TB
 <div id="ND_fractal3d_color3FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_fractal3d_color3FA
+    NG_fractal3d_color3FA_swizzle[swizzle]
     NG_fractal3d_color3FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_color3FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_color3FA_out([out])
@@ -2170,7 +2173,8 @@ graph TB
     style NG_fractal3d_color3FA_position  fill:#09D, color:#FFF
     NG_fractal3d_color3FA_position([position])
     end
-    NG_fractal3d_color3FA_amplitude --"amplitude"--> NG_fractal3d_color3FA_N_fractal3d
+    NG_fractal3d_color3FA_amplitude --"in"--> NG_fractal3d_color3FA_swizzle
+    NG_fractal3d_color3FA_swizzle --"amplitude"--> NG_fractal3d_color3FA_N_fractal3d
     NG_fractal3d_color3FA_octaves --"octaves"--> NG_fractal3d_color3FA_N_fractal3d
     NG_fractal3d_color3FA_lacunarity --"lacunarity"--> NG_fractal3d_color3FA_N_fractal3d
     NG_fractal3d_color3FA_diminish --"diminish"--> NG_fractal3d_color3FA_N_fractal3d
@@ -2357,6 +2361,7 @@ graph TB
 <div id="ND_fractal3d_color4FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_fractal3d_color4FA
+    NG_fractal3d_color4FA_swizzle[swizzle]
     NG_fractal3d_color4FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_color4FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_color4FA_out([out])
@@ -2371,7 +2376,11 @@ graph TB
     style NG_fractal3d_color4FA_position  fill:#09D, color:#FFF
     NG_fractal3d_color4FA_position([position])
     end
-    NG_fractal3d_color4FA_amplitude --"amplitude"--> NG_fractal3d_color4FA_N_fractal3d
+    NG_fractal3d_color4FA_amplitude --"in1"--> NG_fractal3d_color4FA_swizzle
+    NG_fractal3d_color4FA_amplitude --"in2"--> NG_fractal3d_color4FA_swizzle
+    NG_fractal3d_color4FA_amplitude --"in3"--> NG_fractal3d_color4FA_swizzle
+    NG_fractal3d_color4FA_amplitude --"in4"--> NG_fractal3d_color4FA_swizzle
+    NG_fractal3d_color4FA_swizzle --"amplitude"--> NG_fractal3d_color4FA_N_fractal3d
     NG_fractal3d_color4FA_octaves --"octaves"--> NG_fractal3d_color4FA_N_fractal3d
     NG_fractal3d_color4FA_lacunarity --"lacunarity"--> NG_fractal3d_color4FA_N_fractal3d
     NG_fractal3d_color4FA_diminish --"diminish"--> NG_fractal3d_color4FA_N_fractal3d
@@ -2549,6 +2558,7 @@ graph TB
 <div id="ND_fractal3d_vector2FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_fractal3d_vector2FA
+    NG_fractal3d_vector2FA_swizzle[swizzle]
     NG_fractal3d_vector2FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_vector2FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_vector2FA_out([out])
@@ -2563,7 +2573,9 @@ graph TB
     style NG_fractal3d_vector2FA_position  fill:#09D, color:#FFF
     NG_fractal3d_vector2FA_position([position])
     end
-    NG_fractal3d_vector2FA_amplitude --"amplitude"--> NG_fractal3d_vector2FA_N_fractal3d
+    NG_fractal3d_vector2FA_amplitude --"in1"--> NG_fractal3d_vector2FA_swizzle
+    NG_fractal3d_vector2FA_amplitude --"in2"--> NG_fractal3d_vector2FA_swizzle
+    NG_fractal3d_vector2FA_swizzle --"amplitude"--> NG_fractal3d_vector2FA_N_fractal3d
     NG_fractal3d_vector2FA_octaves --"octaves"--> NG_fractal3d_vector2FA_N_fractal3d
     NG_fractal3d_vector2FA_lacunarity --"lacunarity"--> NG_fractal3d_vector2FA_N_fractal3d
     NG_fractal3d_vector2FA_diminish --"diminish"--> NG_fractal3d_vector2FA_N_fractal3d
@@ -2744,6 +2756,7 @@ graph TB
 <div id="ND_fractal3d_vector3FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_fractal3d_vector3FA
+    NG_fractal3d_vector3FA_swizzle[swizzle]
     NG_fractal3d_vector3FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_vector3FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_vector3FA_out([out])
@@ -2758,7 +2771,8 @@ graph TB
     style NG_fractal3d_vector3FA_position  fill:#09D, color:#FFF
     NG_fractal3d_vector3FA_position([position])
     end
-    NG_fractal3d_vector3FA_amplitude --"amplitude"--> NG_fractal3d_vector3FA_N_fractal3d
+    NG_fractal3d_vector3FA_amplitude --"in"--> NG_fractal3d_vector3FA_swizzle
+    NG_fractal3d_vector3FA_swizzle --"amplitude"--> NG_fractal3d_vector3FA_N_fractal3d
     NG_fractal3d_vector3FA_octaves --"octaves"--> NG_fractal3d_vector3FA_N_fractal3d
     NG_fractal3d_vector3FA_lacunarity --"lacunarity"--> NG_fractal3d_vector3FA_N_fractal3d
     NG_fractal3d_vector3FA_diminish --"diminish"--> NG_fractal3d_vector3FA_N_fractal3d
@@ -2942,6 +2956,7 @@ graph TB
 <div id="ND_fractal3d_vector4FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_fractal3d_vector4FA
+    NG_fractal3d_vector4FA_swizzle[swizzle]
     NG_fractal3d_vector4FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_vector4FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_vector4FA_out([out])
@@ -2956,7 +2971,11 @@ graph TB
     style NG_fractal3d_vector4FA_position  fill:#09D, color:#FFF
     NG_fractal3d_vector4FA_position([position])
     end
-    NG_fractal3d_vector4FA_amplitude --"amplitude"--> NG_fractal3d_vector4FA_N_fractal3d
+    NG_fractal3d_vector4FA_amplitude --"in1"--> NG_fractal3d_vector4FA_swizzle
+    NG_fractal3d_vector4FA_amplitude --"in2"--> NG_fractal3d_vector4FA_swizzle
+    NG_fractal3d_vector4FA_amplitude --"in3"--> NG_fractal3d_vector4FA_swizzle
+    NG_fractal3d_vector4FA_amplitude --"in4"--> NG_fractal3d_vector4FA_swizzle
+    NG_fractal3d_vector4FA_swizzle --"amplitude"--> NG_fractal3d_vector4FA_N_fractal3d
     NG_fractal3d_vector4FA_octaves --"octaves"--> NG_fractal3d_vector4FA_N_fractal3d
     NG_fractal3d_vector4FA_lacunarity --"lacunarity"--> NG_fractal3d_vector4FA_N_fractal3d
     NG_fractal3d_vector4FA_diminish --"diminish"--> NG_fractal3d_vector4FA_N_fractal3d

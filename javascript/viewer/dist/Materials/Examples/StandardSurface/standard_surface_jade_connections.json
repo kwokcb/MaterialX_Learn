@@ -1,0 +1,29 @@
+{
+  "doc": "Graph connections for: ..\\resources\\Materials\\Examples\\StandardSurface\\standard_surface_jade.mtlx",
+  "copyright": "Copyright 2024, NanMu Consulting. kwokcb@gmail.com",
+  "graph": {
+    "": [
+      [
+        "SR_jade",
+        "standard_surface",
+        "surfaceshader",
+        ""
+      ],
+      [
+        "Jade",
+        "surfacematerial",
+        "material",
+        ""
+      ]
+    ]
+  },
+  "connections": [
+    [
+      "SR_jade",
+      "",
+      "Jade",
+      "surfaceshader",
+      "nodename"
+    ]
+  ]
+}

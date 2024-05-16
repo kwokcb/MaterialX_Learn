@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -720,9 +718,17 @@ graph TB
     NG_cloverleaf_float_sample_double[sample_double]
     NG_cloverleaf_float_sample_add[sample_add]
     NG_cloverleaf_float_sample_subtract[sample_subtract]
+    NG_cloverleaf_float_swizzle[swizzle]
+    NG_cloverleaf_float_swizzle2[swizzle2]
     NG_cloverleaf_float_coord1[coord1]
+    NG_cloverleaf_float_swizzle3[swizzle3]
+    NG_cloverleaf_float_swizzle4[swizzle4]
     NG_cloverleaf_float_coord2[coord2]
+    NG_cloverleaf_float_swizzle5[swizzle5]
+    NG_cloverleaf_float_swizzle6[swizzle6]
     NG_cloverleaf_float_coord3[coord3]
+    NG_cloverleaf_float_swizzle7[swizzle7]
+    NG_cloverleaf_float_swizzle8[swizzle8]
     NG_cloverleaf_float_coord4[coord4]
     NG_cloverleaf_float_circle1[circle1]
     NG_cloverleaf_float_circle2[circle2]
@@ -746,14 +752,22 @@ graph TB
     NG_cloverleaf_float_radius --"in2"--> NG_cloverleaf_float_sample_add
     NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_sample_subtract
     NG_cloverleaf_float_radius --"in2"--> NG_cloverleaf_float_sample_subtract
-    NG_cloverleaf_float_sample_add --"in1"--> NG_cloverleaf_float_coord1
-    NG_cloverleaf_float_sample_double --"in2"--> NG_cloverleaf_float_coord1
-    NG_cloverleaf_float_sample_subtract --"in1"--> NG_cloverleaf_float_coord2
-    NG_cloverleaf_float_sample_double --"in2"--> NG_cloverleaf_float_coord2
-    NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_coord3
-    NG_cloverleaf_float_sample_subtract --"in2"--> NG_cloverleaf_float_coord3
-    NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_coord4
-    NG_cloverleaf_float_sample_add --"in2"--> NG_cloverleaf_float_coord4
+    NG_cloverleaf_float_sample_add --"in"--> NG_cloverleaf_float_swizzle
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle2
+    NG_cloverleaf_float_swizzle --"in1"--> NG_cloverleaf_float_coord1
+    NG_cloverleaf_float_swizzle2 --"in2"--> NG_cloverleaf_float_coord1
+    NG_cloverleaf_float_sample_subtract --"in"--> NG_cloverleaf_float_swizzle3
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle4
+    NG_cloverleaf_float_swizzle3 --"in1"--> NG_cloverleaf_float_coord2
+    NG_cloverleaf_float_swizzle4 --"in2"--> NG_cloverleaf_float_coord2
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle5
+    NG_cloverleaf_float_sample_subtract --"in"--> NG_cloverleaf_float_swizzle6
+    NG_cloverleaf_float_swizzle5 --"in1"--> NG_cloverleaf_float_coord3
+    NG_cloverleaf_float_swizzle6 --"in2"--> NG_cloverleaf_float_coord3
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle7
+    NG_cloverleaf_float_sample_add --"in"--> NG_cloverleaf_float_swizzle8
+    NG_cloverleaf_float_swizzle7 --"in1"--> NG_cloverleaf_float_coord4
+    NG_cloverleaf_float_swizzle8 --"in2"--> NG_cloverleaf_float_coord4
     NG_cloverleaf_float_coord1 --"texcoord"--> NG_cloverleaf_float_circle1
     NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle1
     NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle1

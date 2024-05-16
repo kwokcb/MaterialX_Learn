@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -622,12 +620,12 @@ Category: atan2
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_atan2_float_menu"data-bs-toggle="dropdown" aria-expanded="false">in1</div>
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_atan2_float_menu"data-bs-toggle="dropdown" aria-expanded="false">iny</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_atan2_float_menu">
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_float_in1" role="tab" aria-controls="pills-ND_atan2_float_in1" aria-selected="true"  onclick="document.getElementById('ND_atan2_float_menu').textContent = this.textContent;" >in1</div></li>
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_float_iny" role="tab" aria-controls="pills-ND_atan2_float_iny" aria-selected="true"  onclick="document.getElementById('ND_atan2_float_menu').textContent = this.textContent;" >iny</div></li>
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_float_in2" role="tab" aria-controls="pills-ND_atan2_float_in2" aria-selected="true"  onclick="document.getElementById('ND_atan2_float_menu').textContent = this.textContent;" >in2</div></li>
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_float_inx" role="tab" aria-controls="pills-ND_atan2_float_inx" aria-selected="true"  onclick="document.getElementById('ND_atan2_float_menu').textContent = this.textContent;" >inx</div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_float_out" role="tab" aria-controls="pills-ND_atan2_float_out" aria-selected="true"  onclick="document.getElementById('ND_atan2_float_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
@@ -635,13 +633,13 @@ Category: atan2
 </div>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_atan2_float_in1"
-  role="tabpanel" aria-labelledby="pills-ND_atan2_float_in1-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_atan2_float_iny"
+  role="tabpanel" aria-labelledby="pills-ND_atan2_float_iny-tab" tabindex="0">
   <div class="form-group row g-1">
       <label
           class="col-2 col-form-label col-form-label-sm">Value  </label>
       <div class="col">
-          <input id="ND_atan2_float_in1" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+          <input id="ND_atan2_float_iny" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
   <div class="form-group row g-2">
@@ -653,13 +651,13 @@ Category: atan2
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_atan2_float_in2"
-  role="tabpanel" aria-labelledby="pills-ND_atan2_float_in2-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_atan2_float_inx"
+  role="tabpanel" aria-labelledby="pills-ND_atan2_float_inx-tab" tabindex="0">
   <div class="form-group row g-1">
       <label
           class="col-2 col-form-label col-form-label-sm">Value  </label>
       <div class="col">
-          <input id="ND_atan2_float_in2" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
+          <input id="ND_atan2_float_inx" type="number" class="form-control form-control-sm" step="0.01" value="1" disabled>
       </div>
   </div>
   <div class="form-group row g-2">
@@ -705,7 +703,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>atan({{in1}}, {{in2}}) </textarea>
+        style="resize: none;" disabled>atan({{iny}}, {{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -719,7 +717,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>math::atan2({{in1}}, {{in2}}) </textarea>
+        style="resize: none;" disabled>math::atan2({{iny}}, {{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -733,7 +731,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>atan({{in1}}, {{in2}}) </textarea>
+        style="resize: none;" disabled>atan({{iny}}, {{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -747,7 +745,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>atan2({{in1}},{{in2}}) </textarea>
+        style="resize: none;" disabled>atan2({{iny}},{{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -777,12 +775,12 @@ Category: atan2
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_atan2_vector2_menu"data-bs-toggle="dropdown" aria-expanded="false">in1</div>
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_atan2_vector2_menu"data-bs-toggle="dropdown" aria-expanded="false">iny</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_atan2_vector2_menu">
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector2_in1" role="tab" aria-controls="pills-ND_atan2_vector2_in1" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector2_menu').textContent = this.textContent;" >in1</div></li>
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector2_iny" role="tab" aria-controls="pills-ND_atan2_vector2_iny" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector2_menu').textContent = this.textContent;" >iny</div></li>
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector2_in2" role="tab" aria-controls="pills-ND_atan2_vector2_in2" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector2_menu').textContent = this.textContent;" >in2</div></li>
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector2_inx" role="tab" aria-controls="pills-ND_atan2_vector2_inx" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector2_menu').textContent = this.textContent;" >inx</div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector2_out" role="tab" aria-controls="pills-ND_atan2_vector2_out" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector2_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
@@ -790,15 +788,15 @@ Category: atan2
 </div>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_atan2_vector2_in1"
-  role="tabpanel" aria-labelledby="pills-ND_atan2_vector2_in1-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_atan2_vector2_iny"
+  role="tabpanel" aria-labelledby="pills-ND_atan2_vector2_iny-tab" tabindex="0">
   <div class="form-group row g-1">
       <label class="col-2 col-form-label col-form-label-sm">Value </label>
       <div class="col-5">
-          <input id="ND_atan2_vector2_in1_0" type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_atan2_vector2_iny_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-5">
-          <input id="ND_atan2_vector2_in1_1" type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_atan2_vector2_iny_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
   </div>
   <div class="form-group row g-2">
@@ -810,15 +808,15 @@ Category: atan2
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_atan2_vector2_in2"
-  role="tabpanel" aria-labelledby="pills-ND_atan2_vector2_in2-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_atan2_vector2_inx"
+  role="tabpanel" aria-labelledby="pills-ND_atan2_vector2_inx-tab" tabindex="0">
   <div class="form-group row g-1">
       <label class="col-2 col-form-label col-form-label-sm">Value </label>
       <div class="col-5">
-          <input id="ND_atan2_vector2_in2_0" type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_atan2_vector2_inx_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-5">
-          <input id="ND_atan2_vector2_in2_1" type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_atan2_vector2_inx_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
   <div class="form-group row g-2">
@@ -864,7 +862,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>atan({{in1}}, {{in2}}) </textarea>
+        style="resize: none;" disabled>atan({{iny}}, {{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -878,7 +876,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>math::atan2({{in1}}, {{in2}}) </textarea>
+        style="resize: none;" disabled>math::atan2({{iny}}, {{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -892,7 +890,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>atan({{in1}}, {{in2}}) </textarea>
+        style="resize: none;" disabled>atan({{iny}}, {{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -906,7 +904,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>atan2({{in1}},{{in2}}) </textarea>
+        style="resize: none;" disabled>atan2({{iny}},{{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -936,12 +934,12 @@ Category: atan2
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_atan2_vector3_menu"data-bs-toggle="dropdown" aria-expanded="false">in1</div>
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_atan2_vector3_menu"data-bs-toggle="dropdown" aria-expanded="false">iny</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_atan2_vector3_menu">
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector3_in1" role="tab" aria-controls="pills-ND_atan2_vector3_in1" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector3_menu').textContent = this.textContent;" >in1</div></li>
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector3_iny" role="tab" aria-controls="pills-ND_atan2_vector3_iny" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector3_menu').textContent = this.textContent;" >iny</div></li>
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector3_in2" role="tab" aria-controls="pills-ND_atan2_vector3_in2" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector3_menu').textContent = this.textContent;" >in2</div></li>
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector3_inx" role="tab" aria-controls="pills-ND_atan2_vector3_inx" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector3_menu').textContent = this.textContent;" >inx</div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector3_out" role="tab" aria-controls="pills-ND_atan2_vector3_out" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector3_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
@@ -949,18 +947,18 @@ Category: atan2
 </div>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_atan2_vector3_in1"
-  role="tabpanel" aria-labelledby="pills-ND_atan2_vector3_in1-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_atan2_vector3_iny"
+  role="tabpanel" aria-labelledby="pills-ND_atan2_vector3_iny-tab" tabindex="0">
   <div class="form-group row g-1">
       <label class="col-2 col-form-label col-form-label-sm">Value </label>
       <div class="col-3">
-          <input id="ND_atan2_vector3_in1_0" type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_atan2_vector3_iny_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-3">
-          <input id="ND_atan2_vector3_in1_1" type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_atan2_vector3_iny_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-3">
-          <input id="ND_atan2_vector3_in1_2" type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_atan2_vector3_iny_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
   </div>
   <div class="form-group row g-2">
@@ -972,18 +970,18 @@ Category: atan2
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_atan2_vector3_in2"
-  role="tabpanel" aria-labelledby="pills-ND_atan2_vector3_in2-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_atan2_vector3_inx"
+  role="tabpanel" aria-labelledby="pills-ND_atan2_vector3_inx-tab" tabindex="0">
   <div class="form-group row g-1">
       <label class="col-2 col-form-label col-form-label-sm">Value </label>
       <div class="col-3">
-          <input id="ND_atan2_vector3_in2_0" type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_atan2_vector3_inx_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-3">
-          <input id="ND_atan2_vector3_in2_1" type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_atan2_vector3_inx_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-3">
-          <input id="ND_atan2_vector3_in2_2" type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_atan2_vector3_inx_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
   <div class="form-group row g-2">
@@ -1029,7 +1027,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>atan({{in1}}, {{in2}}) </textarea>
+        style="resize: none;" disabled>atan({{iny}}, {{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -1043,7 +1041,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>math::atan2({{in1}}, {{in2}}) </textarea>
+        style="resize: none;" disabled>math::atan2({{iny}}, {{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -1057,7 +1055,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>atan({{in1}}, {{in2}}) </textarea>
+        style="resize: none;" disabled>atan({{iny}}, {{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -1071,7 +1069,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>atan2({{in1}},{{in2}}) </textarea>
+        style="resize: none;" disabled>atan2({{iny}},{{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -1101,12 +1099,12 @@ Category: atan2
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
 <ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_atan2_vector4_menu"data-bs-toggle="dropdown" aria-expanded="false">in1</div>
+<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_atan2_vector4_menu"data-bs-toggle="dropdown" aria-expanded="false">iny</div>
 <ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_atan2_vector4_menu">
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector4_in1" role="tab" aria-controls="pills-ND_atan2_vector4_in1" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector4_menu').textContent = this.textContent;" >in1</div></li>
+ <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector4_iny" role="tab" aria-controls="pills-ND_atan2_vector4_iny" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector4_menu').textContent = this.textContent;" >iny</div></li>
 <li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector4_in2" role="tab" aria-controls="pills-ND_atan2_vector4_in2" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector4_menu').textContent = this.textContent;" >in2</div></li>
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector4_inx" role="tab" aria-controls="pills-ND_atan2_vector4_inx" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector4_menu').textContent = this.textContent;" >inx</div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_atan2_vector4_out" role="tab" aria-controls="pills-ND_atan2_vector4_out" aria-selected="true"  onclick="document.getElementById('ND_atan2_vector4_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
@@ -1114,21 +1112,21 @@ Category: atan2
 </div>
 <br>
 <div class="tab-content">
- <div class="tab-pane show active" id="pills-ND_atan2_vector4_in1"
-  role="tabpanel" aria-labelledby="pills-ND_atan2_vector4_in1-tab" tabindex="0">
+ <div class="tab-pane show active" id="pills-ND_atan2_vector4_iny"
+  role="tabpanel" aria-labelledby="pills-ND_atan2_vector4_iny-tab" tabindex="0">
   <div class="form-group row g-1">
       <label class="col-2 col-form-label col-form-label-sm">Value </label>
       <div class="col-2">
-          <input id="ND_atan2_vector4_in1_0" type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_atan2_vector4_iny_0" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-2">
-          <input id="ND_atan2_vector4_in1_1" type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_atan2_vector4_iny_1" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-2">
-          <input id="ND_atan2_vector4_in1_2" type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_atan2_vector4_iny_2" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
       <div class="col-2">
-          <input id="ND_atan2_vector4_in1_3" type="number" class="form-control form-control-sm" value="1" disabled>
+          <input id="ND_atan2_vector4_iny_3" type="number" class="form-control form-control-sm" value="1" disabled>
       </div>
   </div>
   <div class="form-group row g-2">
@@ -1140,21 +1138,21 @@ Category: atan2
  </div>
 </div>
 <div class="tab-content">
- <div class="tab-pane " id="pills-ND_atan2_vector4_in2"
-  role="tabpanel" aria-labelledby="pills-ND_atan2_vector4_in2-tab" tabindex="0">
+ <div class="tab-pane " id="pills-ND_atan2_vector4_inx"
+  role="tabpanel" aria-labelledby="pills-ND_atan2_vector4_inx-tab" tabindex="0">
   <div class="form-group row g-1">
       <label class="col-2 col-form-label col-form-label-sm">Value </label>
       <div class="col-2">
-          <input id="ND_atan2_vector4_in2_0" type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_atan2_vector4_inx_0" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-2">
-          <input id="ND_atan2_vector4_in2_1" type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_atan2_vector4_inx_1" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-2">
-          <input id="ND_atan2_vector4_in2_2" type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_atan2_vector4_inx_2" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
       <div class="col-2">
-          <input id="ND_atan2_vector4_in2_3" type="number" class="form-control form-control-sm" value="0" disabled>
+          <input id="ND_atan2_vector4_inx_3" type="number" class="form-control form-control-sm" value="0" disabled>
       </div>
   </div>
   <div class="form-group row g-2">
@@ -1200,7 +1198,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>atan({{in1}}, {{in2}}) </textarea>
+        style="resize: none;" disabled>atan({{iny}}, {{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -1214,7 +1212,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>math::atan2({{in1}}, {{in2}}) </textarea>
+        style="resize: none;" disabled>math::atan2({{iny}}, {{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -1228,7 +1226,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>atan({{in1}}, {{in2}}) </textarea>
+        style="resize: none;" disabled>atan({{iny}}, {{inx}}) </textarea>
     </div>
   </div>
 <hr>
@@ -1242,7 +1240,7 @@ Category: atan2
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>atan2({{in1}},{{in2}}) </textarea>
+        style="resize: none;" disabled>atan2({{iny}},{{inx}}) </textarea>
     </div>
   </div>
 <hr>

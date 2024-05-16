@@ -1,0 +1,83 @@
+{
+  "doc": "Graph connections for: ..\\resources\\Materials\\Examples\\StandardSurface\\standard_surface_wood_tiled.mtlx",
+  "copyright": "Copyright 2024, NanMu Consulting. kwokcb@gmail.com",
+  "graph": {
+    "NG_wood1": [
+      [
+        "NG_wood1/out_color",
+        "output",
+        "color3",
+        ""
+      ],
+      [
+        "NG_wood1/out_roughness",
+        "output",
+        "float",
+        ""
+      ],
+      [
+        "NG_wood1/image_color",
+        "tiledimage",
+        "color3",
+        ""
+      ],
+      [
+        "NG_wood1/image_roughness",
+        "tiledimage",
+        "float",
+        ""
+      ]
+    ],
+    "": [
+      [
+        "SR_wood1",
+        "standard_surface",
+        "surfaceshader",
+        ""
+      ],
+      [
+        "Tiled_Wood",
+        "surfacematerial",
+        "material",
+        ""
+      ]
+    ]
+  },
+  "connections": [
+    [
+      "NG_wood1/image_color",
+      "",
+      "NG_wood1/out_color",
+      "",
+      "nodename"
+    ],
+    [
+      "NG_wood1/image_roughness",
+      "",
+      "NG_wood1/out_roughness",
+      "",
+      "nodename"
+    ],
+    [
+      "NG_wood1/out_color",
+      "",
+      "SR_wood1",
+      "base_color",
+      "nodename"
+    ],
+    [
+      "NG_wood1/out_roughness",
+      "",
+      "SR_wood1",
+      "specular_roughness",
+      "nodename"
+    ],
+    [
+      "SR_wood1",
+      "",
+      "Tiled_Wood",
+      "surfaceshader",
+      "nodename"
+    ]
+  ]
+}

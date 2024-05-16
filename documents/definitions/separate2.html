@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -716,8 +714,8 @@ Category: separate2
 <div id="ND_separate2_vector2_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_separate2_vector2
-    NG_separate2_vector2_N_x_vector2[N_x_vector2]
-    NG_separate2_vector2_N_y_vector2[N_y_vector2]
+    NG_separate2_vector2_N_extract_0[N_extract_0]
+    NG_separate2_vector2_N_extract_1[N_extract_1]
     style NG_separate2_vector2_outx  fill:#0C0, color:#FFF
     NG_separate2_vector2_outx([outx])
     style NG_separate2_vector2_outy  fill:#0C0, color:#FFF
@@ -725,10 +723,10 @@ graph TB
     style NG_separate2_vector2_in  fill:#09D, color:#FFF
     NG_separate2_vector2_in([in])
     end
-    NG_separate2_vector2_in --"in"--> NG_separate2_vector2_N_x_vector2
-    NG_separate2_vector2_in --"in"--> NG_separate2_vector2_N_y_vector2
-    NG_separate2_vector2_N_x_vector2 --> NG_separate2_vector2_outx
-    NG_separate2_vector2_N_y_vector2 --> NG_separate2_vector2_outy
+    NG_separate2_vector2_in --"in"--> NG_separate2_vector2_N_extract_0
+    NG_separate2_vector2_in --"in"--> NG_separate2_vector2_N_extract_1
+    NG_separate2_vector2_N_extract_0 --> NG_separate2_vector2_outx
+    NG_separate2_vector2_N_extract_1 --> NG_separate2_vector2_outy
 
 
 </div></code></pre>

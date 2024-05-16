@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -715,41 +713,66 @@ Category: extract
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Node Graph</b>
-<img class="bg-light" src="../images/diagram-3.svg">
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
 </summary>
-<button id="ND_extract_color3_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
-<button id="ND_extract_color3_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
-<pre><code class="language-mermaid">
-<div id="ND_extract_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
-</div>
-<div id="ND_extract_color3_mrender_mermaid_input" class="mermaid" hidden>
-graph TB
-    subgraph NG_extract_color3
-    NG_extract_color3_N_r_color3[N_r_color3]
-    NG_extract_color3_N_g_color3[N_g_color3]
-    NG_extract_color3_N_b_color3[N_b_color3]
-    style NG_extract_color3_N_sw_color3  fill:#C72, color:#FFF
-    NG_extract_color3_N_sw_color3{N_sw_color3}
-    style NG_extract_color3_out  fill:#0C0, color:#FFF
-    NG_extract_color3_out([out])
-    style NG_extract_color3_in  fill:#09D, color:#FFF
-    NG_extract_color3_in([in])
-    style NG_extract_color3_index  fill:#09D, color:#FFF
-    NG_extract_color3_index([index])
-    end
-    NG_extract_color3_in --"in"--> NG_extract_color3_N_r_color3
-    NG_extract_color3_in --"in"--> NG_extract_color3_N_g_color3
-    NG_extract_color3_in --"in"--> NG_extract_color3_N_b_color3
-    NG_extract_color3_N_r_color3 --"in1"--> NG_extract_color3_N_sw_color3
-    NG_extract_color3_N_g_color3 --"in2"--> NG_extract_color3_N_sw_color3
-    NG_extract_color3_N_b_color3 --"in3"--> NG_extract_color3_N_sw_color3
-    NG_extract_color3_index --"which"--> NG_extract_color3_N_sw_color3
-    NG_extract_color3_N_sw_color3 --> NG_extract_color3_out
-
-
-</div></code></pre>
-
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_color3({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_extract({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -872,44 +895,66 @@ graph TB
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Node Graph</b>
-<img class="bg-light" src="../images/diagram-3.svg">
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
 </summary>
-<button id="ND_extract_color4_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
-<button id="ND_extract_color4_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
-<pre><code class="language-mermaid">
-<div id="ND_extract_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
-</div>
-<div id="ND_extract_color4_mrender_mermaid_input" class="mermaid" hidden>
-graph TB
-    subgraph NG_extract_color4
-    NG_extract_color4_N_r_color4[N_r_color4]
-    NG_extract_color4_N_g_color4[N_g_color4]
-    NG_extract_color4_N_b_color4[N_b_color4]
-    NG_extract_color4_N_a_color4[N_a_color4]
-    style NG_extract_color4_N_sw_color4  fill:#C72, color:#FFF
-    NG_extract_color4_N_sw_color4{N_sw_color4}
-    style NG_extract_color4_out  fill:#0C0, color:#FFF
-    NG_extract_color4_out([out])
-    style NG_extract_color4_in  fill:#09D, color:#FFF
-    NG_extract_color4_in([in])
-    style NG_extract_color4_index  fill:#09D, color:#FFF
-    NG_extract_color4_index([index])
-    end
-    NG_extract_color4_in --"in"--> NG_extract_color4_N_r_color4
-    NG_extract_color4_in --"in"--> NG_extract_color4_N_g_color4
-    NG_extract_color4_in --"in"--> NG_extract_color4_N_b_color4
-    NG_extract_color4_in --"in"--> NG_extract_color4_N_a_color4
-    NG_extract_color4_N_r_color4 --"in1"--> NG_extract_color4_N_sw_color4
-    NG_extract_color4_N_g_color4 --"in2"--> NG_extract_color4_N_sw_color4
-    NG_extract_color4_N_b_color4 --"in3"--> NG_extract_color4_N_sw_color4
-    NG_extract_color4_N_a_color4 --"in4"--> NG_extract_color4_N_sw_color4
-    NG_extract_color4_index --"which"--> NG_extract_color4_N_sw_color4
-    NG_extract_color4_N_sw_color4 --> NG_extract_color4_out
-
-
-</div></code></pre>
-
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_color4({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_extract({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -1023,38 +1068,66 @@ graph TB
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Node Graph</b>
-<img class="bg-light" src="../images/diagram-3.svg">
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
 </summary>
-<button id="ND_extract_vector2_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
-<button id="ND_extract_vector2_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
-<pre><code class="language-mermaid">
-<div id="ND_extract_vector2_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
-</div>
-<div id="ND_extract_vector2_mrender_mermaid_input" class="mermaid" hidden>
-graph TB
-    subgraph NG_extract_vector2
-    NG_extract_vector2_N_x_vector2[N_x_vector2]
-    NG_extract_vector2_N_y_vector2[N_y_vector2]
-    style NG_extract_vector2_N_sw_vector2  fill:#C72, color:#FFF
-    NG_extract_vector2_N_sw_vector2{N_sw_vector2}
-    style NG_extract_vector2_out  fill:#0C0, color:#FFF
-    NG_extract_vector2_out([out])
-    style NG_extract_vector2_in  fill:#09D, color:#FFF
-    NG_extract_vector2_in([in])
-    style NG_extract_vector2_index  fill:#09D, color:#FFF
-    NG_extract_vector2_index([index])
-    end
-    NG_extract_vector2_in --"in"--> NG_extract_vector2_N_x_vector2
-    NG_extract_vector2_in --"in"--> NG_extract_vector2_N_y_vector2
-    NG_extract_vector2_N_x_vector2 --"in1"--> NG_extract_vector2_N_sw_vector2
-    NG_extract_vector2_N_y_vector2 --"in2"--> NG_extract_vector2_N_sw_vector2
-    NG_extract_vector2_index --"which"--> NG_extract_vector2_N_sw_vector2
-    NG_extract_vector2_N_sw_vector2 --> NG_extract_vector2_out
-
-
-</div></code></pre>
-
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_vector2({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_extract({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -1171,41 +1244,66 @@ graph TB
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Node Graph</b>
-<img class="bg-light" src="../images/diagram-3.svg">
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
 </summary>
-<button id="ND_extract_vector3_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
-<button id="ND_extract_vector3_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
-<pre><code class="language-mermaid">
-<div id="ND_extract_vector3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
-</div>
-<div id="ND_extract_vector3_mrender_mermaid_input" class="mermaid" hidden>
-graph TB
-    subgraph NG_extract_vector3
-    NG_extract_vector3_N_x_vector3[N_x_vector3]
-    NG_extract_vector3_N_y_vector3[N_y_vector3]
-    NG_extract_vector3_N_z_vector3[N_z_vector3]
-    style NG_extract_vector3_N_sw_vector3  fill:#C72, color:#FFF
-    NG_extract_vector3_N_sw_vector3{N_sw_vector3}
-    style NG_extract_vector3_out  fill:#0C0, color:#FFF
-    NG_extract_vector3_out([out])
-    style NG_extract_vector3_in  fill:#09D, color:#FFF
-    NG_extract_vector3_in([in])
-    style NG_extract_vector3_index  fill:#09D, color:#FFF
-    NG_extract_vector3_index([index])
-    end
-    NG_extract_vector3_in --"in"--> NG_extract_vector3_N_x_vector3
-    NG_extract_vector3_in --"in"--> NG_extract_vector3_N_y_vector3
-    NG_extract_vector3_in --"in"--> NG_extract_vector3_N_z_vector3
-    NG_extract_vector3_N_x_vector3 --"in1"--> NG_extract_vector3_N_sw_vector3
-    NG_extract_vector3_N_y_vector3 --"in2"--> NG_extract_vector3_N_sw_vector3
-    NG_extract_vector3_N_z_vector3 --"in3"--> NG_extract_vector3_N_sw_vector3
-    NG_extract_vector3_index --"which"--> NG_extract_vector3_N_sw_vector3
-    NG_extract_vector3_N_sw_vector3 --> NG_extract_vector3_out
-
-
-</div></code></pre>
-
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_vector3({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_extract({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -1325,44 +1423,66 @@ graph TB
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Node Graph</b>
-<img class="bg-light" src="../images/diagram-3.svg">
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
 </summary>
-<button id="ND_extract_vector4_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
-<button id="ND_extract_vector4_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
-<pre><code class="language-mermaid">
-<div id="ND_extract_vector4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
-</div>
-<div id="ND_extract_vector4_mrender_mermaid_input" class="mermaid" hidden>
-graph TB
-    subgraph NG_extract_vector4
-    NG_extract_vector4_N_x_vector4[N_x_vector4]
-    NG_extract_vector4_N_y_vector4[N_y_vector4]
-    NG_extract_vector4_N_z_vector4[N_z_vector4]
-    NG_extract_vector4_N_w_vector4[N_w_vector4]
-    style NG_extract_vector4_N_sw_vector4  fill:#C72, color:#FFF
-    NG_extract_vector4_N_sw_vector4{N_sw_vector4}
-    style NG_extract_vector4_out  fill:#0C0, color:#FFF
-    NG_extract_vector4_out([out])
-    style NG_extract_vector4_in  fill:#09D, color:#FFF
-    NG_extract_vector4_in([in])
-    style NG_extract_vector4_index  fill:#09D, color:#FFF
-    NG_extract_vector4_index([index])
-    end
-    NG_extract_vector4_in --"in"--> NG_extract_vector4_N_x_vector4
-    NG_extract_vector4_in --"in"--> NG_extract_vector4_N_y_vector4
-    NG_extract_vector4_in --"in"--> NG_extract_vector4_N_z_vector4
-    NG_extract_vector4_in --"in"--> NG_extract_vector4_N_w_vector4
-    NG_extract_vector4_N_x_vector4 --"in1"--> NG_extract_vector4_N_sw_vector4
-    NG_extract_vector4_N_y_vector4 --"in2"--> NG_extract_vector4_N_sw_vector4
-    NG_extract_vector4_N_z_vector4 --"in3"--> NG_extract_vector4_N_sw_vector4
-    NG_extract_vector4_N_w_vector4 --"in4"--> NG_extract_vector4_N_sw_vector4
-    NG_extract_vector4_index --"which"--> NG_extract_vector4_N_sw_vector4
-    NG_extract_vector4_N_sw_vector4 --> NG_extract_vector4_out
-
-
-</div></code></pre>
-
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_vector4({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_extract({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>

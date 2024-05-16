@@ -76,6 +76,8 @@
 | **tint** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **ior** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
 | **roughness** | vector2 | 0.05, 0.05 |  |  |  |  |  |  |  |  |  |  |
+| **thinfilm_thickness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **thinfilm_ior** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **distribution** | string | ggx |  |  |  |  |  |  |  |  |  | true |
@@ -99,6 +101,8 @@
 | **ior** | color3 | 0.183, 0.421, 1.373 |  |  |  |  |  |  |  |  |  |  |
 | **extinction** | color3 | 3.424, 2.346, 1.77 |  |  |  |  |  |  |  |  |  |  |
 | **roughness** | vector2 | 0.05, 0.05 |  |  |  |  |  |  |  |  |  |  |
+| **thinfilm_thickness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **thinfilm_ior** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **distribution** | string | ggx |  |  |  |  |  |  |  |  |  | true |
@@ -119,9 +123,12 @@
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **weight** | float | 1.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **color0** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **color82** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **color90** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **exponent** | float | 5.0 |  |  |  |  |  |  |  |  |  |  |
 | **roughness** | vector2 | 0.05, 0.05 |  |  |  |  |  |  |  |  |  |  |
+| **thinfilm_thickness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **thinfilm_ior** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **distribution** | string | ggx |  |  |  |  |  |  |  |  |  | true |

@@ -1,0 +1,29 @@
+{
+  "doc": "Graph connections for: ..\\resources\\Materials\\Examples\\StandardSurface\\standard_surface_glass_tinted.mtlx",
+  "copyright": "Copyright 2024, NanMu Consulting. kwokcb@gmail.com",
+  "graph": {
+    "": [
+      [
+        "SR_glass_tinted",
+        "standard_surface",
+        "surfaceshader",
+        ""
+      ],
+      [
+        "GlassTinted",
+        "surfacematerial",
+        "material",
+        ""
+      ]
+    ]
+  },
+  "connections": [
+    [
+      "SR_glass_tinted",
+      "",
+      "GlassTinted",
+      "surfaceshader",
+      "nodename"
+    ]
+  ]
+}

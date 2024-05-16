@@ -1,0 +1,83 @@
+{
+  "doc": "Graph connections for: ..\\resources\\Materials\\Examples\\StandardSurface\\standard_surface_greysphere_calibration.mtlx",
+  "copyright": "Copyright 2024, NanMu Consulting. kwokcb@gmail.com",
+  "graph": {
+    "NG_Greysphere_Calibration": [
+      [
+        "NG_Greysphere_Calibration/out1",
+        "output",
+        "color3",
+        ""
+      ],
+      [
+        "NG_Greysphere_Calibration/texcoord1",
+        "texcoord",
+        "vector2",
+        ""
+      ],
+      [
+        "NG_Greysphere_Calibration/place2d",
+        "place2d",
+        "vector2",
+        ""
+      ],
+      [
+        "NG_Greysphere_Calibration/image1",
+        "image",
+        "color3",
+        ""
+      ]
+    ],
+    "": [
+      [
+        "SR_Greysphere_Calibration",
+        "standard_surface",
+        "surfaceshader",
+        ""
+      ],
+      [
+        "Greysphere_Calibration",
+        "surfacematerial",
+        "material",
+        ""
+      ]
+    ]
+  },
+  "connections": [
+    [
+      "NG_Greysphere_Calibration/texcoord1",
+      "",
+      "NG_Greysphere_Calibration/place2d",
+      "texcoord",
+      "nodename"
+    ],
+    [
+      "NG_Greysphere_Calibration/place2d",
+      "",
+      "NG_Greysphere_Calibration/image1",
+      "texcoord",
+      "nodename"
+    ],
+    [
+      "NG_Greysphere_Calibration/image1",
+      "",
+      "NG_Greysphere_Calibration/out1",
+      "",
+      "nodename"
+    ],
+    [
+      "NG_Greysphere_Calibration/out1",
+      "",
+      "SR_Greysphere_Calibration",
+      "base_color",
+      "nodename"
+    ],
+    [
+      "SR_Greysphere_Calibration",
+      "",
+      "Greysphere_Calibration",
+      "surfaceshader",
+      "nodename"
+    ]
+  ]
+}

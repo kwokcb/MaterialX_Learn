@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <ifgreatereq name="ifgreatereq_integer" type="integer">
+    <input name="value1" type="float" value="1.0" />
+    <input name="value2" type="float" value="0.0" />
+    <input name="in1" type="integer" value="0" />
+    <input name="in2" type="integer" value="0" />
+  </ifgreatereq>
+  <convert name="shader_ifgreatereq_integer_out" type="surfaceshader">
+    <input name="in" type="integer" nodename="ifgreatereq_integer" />
+  </convert>
+  <surfacematerial name="material_ifgreatereq_integer_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ifgreatereq_integer_out" />
+  </surfacematerial>
+</materialx>

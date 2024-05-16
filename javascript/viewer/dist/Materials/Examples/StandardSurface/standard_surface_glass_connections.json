@@ -1,0 +1,29 @@
+{
+  "doc": "Graph connections for: ..\\resources\\Materials\\Examples\\StandardSurface\\standard_surface_glass.mtlx",
+  "copyright": "Copyright 2024, NanMu Consulting. kwokcb@gmail.com",
+  "graph": {
+    "": [
+      [
+        "SR_glass",
+        "standard_surface",
+        "surfaceshader",
+        ""
+      ],
+      [
+        "Glass",
+        "surfacematerial",
+        "material",
+        ""
+      ]
+    ]
+  },
+  "connections": [
+    [
+      "SR_glass",
+      "",
+      "Glass",
+      "surfaceshader",
+      "nodename"
+    ]
+  ]
+}

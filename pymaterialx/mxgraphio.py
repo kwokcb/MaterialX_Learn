@@ -12,6 +12,16 @@ if not haveVersion1387:
 def skipLibraryElement(elem):
     return not elem.hasSourceUri()
 
+def getFiles(rootPath):
+    ''''''
+    filelist = []
+    for subdir, dirs, files in os.walk(rootPath):
+        for file in files:
+            print('Scan file: ' + file  + ' in ' + subdir)
+            if file.endswith('mtlx'):
+                filelist.append(os.path.join(subdir, file)) 
+    return filelist
+
 def loadFile(filename):
     stdlib = mx.createDocument()
     searchPath = mx.getDefaultDataSearchPath()
@@ -28,9 +38,33 @@ def loadFile(filename):
     mx.readFromXmlFile(doc, filename)
     return doc
 
+
+def loadLibraries(searchPath, libraryFolders):
+    '''Load MaierialX libraries.'''
+    status = ''
+    lib = mx.createDocument()
+    try:
+        libFiles = mx.loadLibraries(libraryFolders, searchPath, lib)
+        status = '- Loaded %d library definitions from %d files' % (len(lib.getNodeDefs()), len(libFiles))
+    except mx.Exception as err:
+        status = '- Failed to load library definitions: "%s"' % err
+
+    return lib, status
+
+def createWorkingDocument(libraries):
+    '''Create a working document and import any libraries'''
+    doc = mx.createDocument()
+    for lib in libraries:
+        doc.importLibrary(lib)
+
+    return doc
+
 def main():
     parser = argparse.ArgumentParser(description="Create graph diagrams from a MaterialX document.")
-    parser.add_argument(dest="inputFilename", help="Filename of the input document.")
+    parser.add_argument(dest="inputPath", help="Path of the input MaterialX document or folder.")
+    parser.add_argument('--outputPath', dest='outputPath', default='', help='File path to output graphs to.')
+    parser.add_argument('--library', dest='libraries', action='append', nargs='+', help='An additional relative path to a custom data library folder (e.g. "libraries/custom")')
+    parser.add_argument('--path', dest='paths', action='append', nargs='+', help='An additional absolute search path location (e.g. "/projects/MaterialX")')
     parser.add_argument("-o", "--output", dest="outputFilename", help="Filename of the output document.")
     parser.add_argument('--orientation', dest='orientation', default='LR', help='Orientation of graphs. LR = left to right, TB = top to bottom. RL and BT are the opposite directions. Default is LR.')
     parser.add_argument('--graphs', dest='graphs', default='', help='Comma separated list of graphs to include in the graph. If empty, all node definitions are included. Example: "image,material"')
@@ -39,53 +73,104 @@ def main():
 
     opts = parser.parse_args()
 
-    # Check that file exists
-    if not os.path.exists(opts.inputFilename):
-        print('File not found:', opts.inputFilename)
+    # Load standard libraries
+    libraries = []
+    searchPath = mx.getDefaultDataSearchPath()
+    libraryFolders = mx.getDefaultDataLibraryFolders()
+    stdlib, status = loadLibraries(searchPath, libraryFolders)
+    if not stdlib:
+        print('Error loading standard libraries: "%s"' % status)
         exit(-1)
+    else:
+        print(status)
+    libraries.append(stdlib)
 
-    doc = loadFile(opts.inputFilename)
+    # Check for additional use libraries
+    userPath = mx.FileSearchPath()
+    userLibraryFolders = []
+    if opts.paths:
+        for pathList in opts.paths:
+            for path in pathList:
+                searchPath.append(path)
+                userPath.append(path)
+    if opts.libraries:
+        for libraryList in opts.libraries:
+            for library in libraryList:
+                userLibraryFolders.append(library)
+    if userLibraryFolders:
+        userlib, status = loadLibraries(userPath, userLibraryFolders)
+        if not userlib:
+            print('Error loading user libraries: "%s"' % status)
+            exit(-1)
+        else:
+            print(status)
+        libraries.append(userlib)    
 
-    if not doc:
-        print('Failed to load doc:', opts.inputFileName)
-        exit(-1)
+    rootPath = opts.inputPath
+    filelist = []
+    if os.path.isdir(rootPath): 
+        filelist = getFiles(rootPath)
+    elif os.path.isfile(rootPath):
+        filelist = [rootPath]
 
-    # Build the graph dictionary and connections
-    graphBuilder = MtlxGraphBuilder(doc)
-    graphBuilder.setIncludeGraphs(opts.graphs)
-    graphBuilder.execute()
+    print('Found %d MaterialX files' % len(filelist))
 
-    if not graphBuilder.getDictionary():
-        print('No nodes found.')
-    if not graphBuilder.getConnections():
-        print('No connections found.')
+    for inputFilename in filelist:
+        try:
+            # Absolute path to inputFilename
+            baseInputFileName = inputFilename
+            inputFilename = os.path.abspath(inputFilename)
+            print('Read document: ' + inputFilename)
+            doc = createWorkingDocument(libraries)
+            if not doc:
+                print('- Error creating working document')
+                continue
+            try:
+                mx.readFromXmlFile(doc, inputFilename)
+            except mx.ExceptionFileMissing as err:
+                print('- Error reading file: ', err)
+                continue
+            except mx.ExceptionParseError as err:
+                print('- Error reading file: ', err)
+                continue
 
-    if opts.outputFilename:
-        filename = opts.outputFilename + '.json'
-    else:    
-        filename = mx.FilePath(opts.inputFilename)
-        filename.removeExtension()
-        filename = filename.asString() + '_connections.json'
-    print('Write connections to JSON file:', filename)
-    graphBuilder.exportToJSON(filename, opts.inputFilename)
+            # Build the graph dictionary and connections
+            graphBuilder = MtlxGraphBuilder(doc)
+            graphBuilder.setIncludeGraphs(opts.graphs)
+            graphBuilder.execute()
 
-    # Export graph to mermaid
-    graphBuilder2 = MtlxGraphBuilder(None)
-    graphBuilder2.importFromJSON(filename)
-    exporter = mermaidGraphExporter(graphBuilder2.getDictionary(), graphBuilder2.getConnections())
-    exporter.setOrientation(opts.orientation)
-    exporter.setEmitCategory(opts.emitCategory)
-    exporter.setEmitType(opts.emitType)
-    exporter.execute()
+            if not graphBuilder.getDictionary():
+                print('No nodes found.')
+                continue
+            if not graphBuilder.getConnections():
+                print('No connections found.')
+                continue
 
-    if opts.outputFilename:
-        filename = opts.outputFilename + '.md'
-    else:    
-        filename = mx.FilePath(opts.inputFilename)
-        filename.removeExtension() 
-        filename = filename.asString() + '_graph.md'
-    print('Write graph to:' + filename)
-    exporter.export(filename)
+            # Export connectivity to JSON file
+            outputFileName = mx.FilePath(inputFilename.replace('.mtlx', '_connections.json'))
+            if opts.outputPath:
+                outputFileName = mx.FilePath(opts.outputPath) / outputFileName.getBaseName()
+            print('- Write connectivity file:', outputFileName.asString())
+            graphBuilder.exportToJSON(outputFileName.asString(), baseInputFileName)
+
+            # Export to Mermaid in Markdown file
+            #graphBuilder2 = MtlxGraphBuilder(None)
+            #graphBuilder2.importFromJSON(outputFileName)
+            exporter = mermaidGraphExporter(graphBuilder.getDictionary(), graphBuilder.getConnections())
+            exporter.setOrientation(opts.orientation)
+            exporter.setEmitCategory(opts.emitCategory)
+            exporter.setEmitType(opts.emitType)
+            exporter.execute()
+
+            outputFileName = mx.FilePath(inputFilename.replace('.mtlx', '.md'))
+            if opts.outputPath:
+                outputFileName = mx.FilePath(opts.outputPath) / outputFileName.getBaseName()
+
+            print('- Write Mermaid graph to file:' + outputFileName.asString())
+            exporter.export(outputFileName.asString())
+
+        except mx.ExceptionFileMissing as err:
+            print(err)
 
 if __name__ == '__main__':
     main()

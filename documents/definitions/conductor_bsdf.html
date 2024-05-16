@@ -269,7 +269,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate2.html">separate2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate3.html">separate3</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="separate4.html">separate4</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="swizzle.html">swizzle</a>
 </div>
 </div>
 <div class="ps-3">
@@ -386,7 +385,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="absval.html">absval</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="acos.html">acos</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="add.html">add</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="arrayappend.html">arrayappend</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="asin.html">asin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="atan2.html">atan2</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ceil.html">ceil</a>
@@ -634,6 +632,10 @@ Category: conductor_bsdf
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_conductor_bsdf_roughness" role="tab" aria-controls="pills-ND_conductor_bsdf_roughness" aria-selected="true"  onclick="document.getElementById('ND_conductor_bsdf_menu').textContent = this.textContent;" >roughness</div></li>
 <li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_conductor_bsdf_thinfilm_thickness" role="tab" aria-controls="pills-ND_conductor_bsdf_thinfilm_thickness" aria-selected="true"  onclick="document.getElementById('ND_conductor_bsdf_menu').textContent = this.textContent;" >thinfilm_thickness</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_conductor_bsdf_thinfilm_ior" role="tab" aria-controls="pills-ND_conductor_bsdf_thinfilm_ior" aria-selected="true"  onclick="document.getElementById('ND_conductor_bsdf_menu').textContent = this.textContent;" >thinfilm_ior</div></li>
+<li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_conductor_bsdf_normal" role="tab" aria-controls="pills-ND_conductor_bsdf_normal" aria-selected="true"  onclick="document.getElementById('ND_conductor_bsdf_menu').textContent = this.textContent;" >normal</div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_conductor_bsdf_tangent" role="tab" aria-controls="pills-ND_conductor_bsdf_tangent" aria-selected="true"  onclick="document.getElementById('ND_conductor_bsdf_menu').textContent = this.textContent;" >tangent</div></li>
@@ -743,6 +745,49 @@ Category: conductor_bsdf
   <label class="col-2 col-form-label col-form-label-sm">Type</label>
    <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_conductor_bsdf_thinfilm_thickness"
+  role="tabpanel" aria-labelledby="pills-ND_conductor_bsdf_thinfilm_thickness-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_conductor_bsdf_thinfilm_thickness" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+<div class="form-group row g-1">
+<label class="col-2 col-form-label col-form-label-sm">Unit Type / Unit: </label>
+ <div class="col-2">
+   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">distance</button>
+   <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">nanometer</button>
+ </div>
+</div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_conductor_bsdf_thinfilm_ior"
+  role="tabpanel" aria-labelledby="pills-ND_conductor_bsdf_thinfilm_ior-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_conductor_bsdf_thinfilm_ior" type="number" class="form-control form-control-sm" step="0.01" value="1.5" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
    </div>
   </div>
  </div>
@@ -863,7 +908,7 @@ Category: conductor_bsdf
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_conductor_bsdf(mxp_weight:{{weight}}, mxp_ior:{{ior}}, mxp_extinction:{{extinction}}, mxp_roughness:{{roughness}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}) </textarea>
+        style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_conductor_bsdf(mxp_weight:{{weight}}, mxp_ior:{{ior}}, mxp_extinction:{{extinction}}, mxp_roughness:{{roughness}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}) </textarea>
     </div>
   </div>
 <hr>
@@ -895,18 +940,11 @@ Category: conductor_bsdf
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/pbrlib/genosl/legacy/mx_conductor_bsdf.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="legacy/mx_conductor_bsdf.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_conductor_bsdf">
-   </div>
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{weight}} * conductor_bsdf({{normal}}, {{tangent}}, {{roughness}}.x, {{roughness}}.y, {{ior}}, {{extinction}}, {{distribution}}, "thinfilm_thickness", {{thinfilm_thickness}}, "thinfilm_ior", {{thinfilm_ior}}) </textarea>
+    </div>
   </div>
 <hr>
 </details>
