@@ -58,7 +58,7 @@
 
   <style>
     .inverted-svg {
-        filter: invert(1);
+      filter: invert(1);
     }
 
     body {
@@ -84,18 +84,18 @@
     }
 
     .CodeMirror {
-            font-size: 12px;
+      font-size: 12px;
     }
   </style>
-<style>
-  /* Add any additional styling here */
-  .canvas-container {
+  <style>
+    /* Add any additional styling here */
+    .canvas-container {
       position: relative;
       width: 100%;
       padding-bottom: 50%;
-  }
+    }
 
-  canvas {
+    canvas {
       position: absolute;
       top: 0;
       left: 0;
@@ -103,7 +103,7 @@
       height: 100%;
       min-width: 128;
       min-height: 128;
-  }
+    }
   </style>
 <script defer src="main.js"></script></head>
 
@@ -304,7 +304,8 @@
     </p>
     <div class="row flex">
       <div class="col-sm-12 p-2">
-        <button class="btn btn-outline-primary shadow-sm" id="loadMaterialXButton" disabled>Load MaterialX Document</button>
+        <button class="btn btn-outline-primary shadow-sm" id="loadMaterialXButton" disabled>Load MaterialX
+          Document</button>
         <button id="materialXTextArea_copy" class="btn btn-sm copy-button" data-target="materialXTextArea">
           <img class="inverted-svg" src="Images/copy-regular.svg" style="width: 24px;" alt="Copy Icon">
         </button>
@@ -315,9 +316,8 @@
     </div>
     <div class="row flex">
       <div class="col-sm-12 p-2">
-            <textarea class="form-control form-control-sm overflow-auto" data-bs-theme="dark" id="materialXTextArea"
-              rows="10" style="width: 100%;"
-              placeholder="Loaded MaterialX document will be displayed here"></textarea><br>
+        <textarea class="form-control form-control-sm overflow-auto" data-bs-theme="dark" id="materialXTextArea"
+          rows="10" style="width: 100%;" placeholder="Loaded MaterialX document will be displayed here"></textarea><br>
       </div>
       <div class="container p-2 shadow-sm">
         <div class="row flex">
@@ -325,7 +325,7 @@
             <button class="btn btn-outline-primary shadow-sm" disabled id="renderButton">Validate and Render</button>
           </div>
           <div class="col-sm-9 p-2">
-            <textarea id="statusLine" class="form-control form-control-sm overflow-auto" disabled rows="1"></textarea>
+            <textarea id="statusLine" class="form-control form-control-sm overflow-auto" disabled rows="2"></textarea>
           </div>
         </div>
         <div class="row flex">
@@ -357,45 +357,91 @@
           </div>
         </div>
 
-        <!-- Button to generate shader -->
-        <button class="btn btn-outline-primary shadow-sm" disabled id="generateShaderButton">Generate Shader</button>
-        <label for="shaderLanguage">Language:</label>
-        <select id="shaderLanguage">
-          <option value="0">ESSL</option>
-          <option value="1">OSL</option>
-          <option value="2">GLSL</option>
-          <option value="3">Metal</option>
-          <option value="4">Vulkan</option>
-          <!-- <option value="5">MDL</option> -->
-        </select>
-        <div class="row flex-nowrap">
-          <div class="col-sm-12 p-2">
-            <label for="materialXShader">Pixel Shader</label>
-            <button id="pixshaderButton" class="btn btn-sm copy-button" data-target="materialXShader">
-              <img class="inverted-svg" src="Images/copy-regular.svg" style="width: 24px;" alt="Copy Icon">
-            </button>
-            <textarea class="overflow-auto form-control form-control-sm" data-bs-theme="dark" id="materialXShader"
-              rows="12" style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
 
-            <label for="materialXShaderVS">Vertex Shader</label>
-            <button id="vertexshaderButton" class="btn btn-sm copy-button" data-target="materialXShaderVS">
-              <img class="inverted-svg" src="Images/copy-regular.svg" style="width: 24px; " alt="Copy Icon">
-            </button>
-            <textarea class="overflow-auto form-control form-control-sm" data-bs-theme="dark" id="materialXShaderVS"
-              rows="3" style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
-            <label for="materialXShaderVS">Pixel Shader Uniforms</label>
-            <p></p>
-            <div class="container p-0" style="max-height: 300px; overflow-y: auto;">
-              <table id="materialXShaderReflect" data-bs-theme="dark" class="table table-bordered">
-              </table>
+        <div class="container m-0 px-0">
+          <div class="row p-2">
+            <div class="col">
+              <label for="loadGeometry">Display Geometry:</label>
+              <select id="loadGeometry">
+                <option value="teapot">Teapot</option>
+                <option value="shaderball">Shader Ball</option>
+                <option value="sphere">Sphere</option>
+                <option value="plane">Plane</option>
+                <option value="cylinder">Cylinder</option>
+                <option value="_loadFromFile_">Custom...</option>
+                <!-- <option value="glTF">glTF Logo</option> -->
+              </select>
             </div>
-            <p></p>
-            <hr>
-            <button class="btn btn-outline-primary shadow-sm" id="saveReflection">Save Reflection Information</button>
-            <a id="reflectionLink" style="display: none;"></a>
+            <div class="col">
+              <div class="form-check">
+                <label class="form-check-label" for="turntableEnabled">
+                  Turntable
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="turntableEnabled">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <label class="form-check-label" for="toggleBackgroundTexture">
+                  Background
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="toggleBackgroundTexture">
+              </div>
+            </div>
           </div>
         </div>
 
+        <!-- Button to generate shader -->
+        <hr>
+        <div class="container m-0 p-0">
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-outline-primary shadow-sm" disabled id="generateShaderButton">Generate
+                Shader</button>
+            </div>
+            <div class="col">
+              <label for="shaderLanguage">Language:</label>
+              <select id="shaderLanguage">
+                <option value="0">ESSL</option>
+                <option value="1">OSL</option>
+                <option value="2">GLSL</option>
+                <option value="3">Metal</option>
+                <option value="4">Vulkan</option>
+                <!-- <option value="5">MDL</option> -->
+              </select>
+            </div>
+          </div>
+          <div class="row flex-nowrap">
+            <div class="col-sm-12 p-2">
+              <label for="materialXShader">Pixel Shader</label>
+              <button id="pixshaderButton" class="btn btn-sm copy-button" data-target="materialXShader">
+                <img class="inverted-svg" src="Images/copy-regular.svg" style="width: 24px;" alt="Copy Icon">
+              </button>
+              <textarea class="overflow-auto form-control form-control-sm" data-bs-theme="dark" id="materialXShader"
+                rows="12" style="width: 100%;"
+                placeholder="Generated shader code will be displayed here"></textarea><br>
+
+              <label for="materialXShaderVS">Vertex Shader</label>
+              <button id="vertexshaderButton" class="btn btn-sm copy-button" data-target="materialXShaderVS">
+                <img class="inverted-svg" src="Images/copy-regular.svg" style="width: 24px; " alt="Copy Icon">
+              </button>
+              <textarea class="overflow-auto form-control form-control-sm" data-bs-theme="dark" id="materialXShaderVS"
+                rows="3" style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
+              <label for="materialXShaderVS">Pixel Shader Uniforms</label>
+              <p></p>
+              <div class="container p-0" style="max-height: 300px; overflow-y: auto;">
+                <table id="materialXShaderReflect" data-bs-theme="dark" class="table table-bordered">
+                </table>
+              </div>
+              <p></p>
+              <hr>
+              <button class="btn btn-outline-primary shadow-sm" id="saveReflection">Save Reflection
+                Information</button>
+              <a id="reflectionLink" style="display: none;"></a>
+            </div>
+          </div>
+
+        </div>
       </div>
 
 
@@ -662,9 +708,8 @@
             });
 
             var pasteButton = document.getElementById('materialXTextArea_paste');
-            if (pasteButton)
-            {
-                addPasteHandler(pasteButton, editor);
+            if (pasteButton) {
+              addPasteHandler(pasteButton, editor);
             }
           }
 
@@ -693,9 +738,9 @@
                 setupXML(fileContents);
               }
 
-              let msg = ''
+              let msg = {}
               // Hack to get standard libraries loaded. The APIs for library handling are not currently
-              // expose....
+              // exposed....
               let generator = new mmx.EsslShaderGenerator();
               let genContext = new mmx.GenContext(generator);
               let stdlib = mmx.loadStandardLibraries(genContext);
@@ -705,18 +750,21 @@
               st = document.getElementById('statusLine')
               if (valid) {
                 st.innerHTML = 'Document is valid.';
-                console.log('Dispatch event:', event);
                 var event = new InputEvent('blah', { bubbles: true });
+                console.log('> Dispatch event:', event);
                 textArea.dispatchEvent(event);
               } else {
-                st.innerHTML = 'Document is not valid.' + msg;
-                console.error('Document is not valid', msg);
+                st.innerHTML = 'Document is not valid.\n' + msg.message;
+                console.error('> Document is not valid', msg.message);
               }
 
               renderableItems = findRenderableElements(mdoc); //mdoc.getMaterialNodes();
+              if (renderableItems.length == 0) {
+                st.innerHTML = st.innerHTML + '\nNo renderable items found';
+                console.log('No renderable items found');
+              }
 
             } catch (error) {
-              st = document.getElementById('statusLine')
               st.innerHTML = error;
               renderableItems = findRenderableElements(mdoc); //mdoc.getMaterialNodes();
               //console.error(error);
@@ -856,7 +904,7 @@
           // generator = mdlgenerator;
           // genContext = mdlgenContext;
           //}
-          console.log('-------------- Use Generator for: %s ---------------', generator.getTarget())
+          //console.log('-------------- Use Generator for: %s ---------------', generator.getTarget())
 
           const isTransparent = mmx.isTransparentSurface(elem, generator.getTarget());
           genContext.getOptions().hwTransparency = isTransparent;

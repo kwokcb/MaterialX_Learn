@@ -4684,8 +4684,9 @@
 			this.inputs[slot].link = null;
 
 			//remove other side
-			var link_info = this.graph.links[link_id];
-			if (link_info) {
+            // WARNING: NODEGRAPh->NODEGRAPH is FAILING as this.graph does not exist !!!!!!!!!!!!!
+			var link_info = this.graph && this.graph.links && this.graph.links[link_id];
+            if (link_info) {
 				var target_node = this.graph.getNodeById(link_info.origin_id);
 				if (!target_node) {
 					return false;
@@ -9405,6 +9406,7 @@ LGraphNode.prototype.executeAction = function(action)
 
             for (var i = 0; i < node.inputs.length; ++i) {
                 var input = node.inputs[i];
+
                 if (!input || input.link == null) {
                     continue;
                 }
@@ -9466,6 +9468,16 @@ LGraphNode.prototype.executeAction = function(action)
                     end_slot.dir ||
                     (node.horizontal ? LiteGraph.UP : LiteGraph.LEFT);
 
+                // Addition. Allow for connection color to override
+                // base connection color. 
+                var override_color = null;
+                if (this.default_connection_color_byTypeOff)
+                {
+                    if (this.default_connection_color_byTypeOff[input.type])
+                    {
+                        override_color = this.default_connection_color_byTypeOff[input.type];
+                    }
+                }                    
                 this.renderLink(
                     ctx,
                     start_node_slotpos,
@@ -9473,7 +9485,7 @@ LGraphNode.prototype.executeAction = function(action)
                     link,
                     false,
                     0,
-                    null,
+                    override_color,
                     start_dir,
                     end_dir
                 );

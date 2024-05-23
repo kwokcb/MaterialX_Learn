@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<materialx version="1.39" colorspace="lin_rec709">
+  <surfacematerial name="surfacematerial_material1" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="surface_unlit_surfaceshader1" />
+    <input name="displacementshader" type="displacementshader" value="" />
+  </surfacematerial>
+  <surface_unlit name="surface_unlit_surfaceshader1" type="surfaceshader">
+    <input name="emission" type="float" value="1" />
+    <input name="emission_color" type="color3" nodegraph="circular_toon" />
+    <input name="transmission" type="float" value="0.1" />
+    <input name="transmission_color" type="color3" value="0,0.15,1" />
+    <input name="opacity" type="float" value="1" />
+  </surface_unlit>
+  <viewdirection name="view_direction" type="vector3">
+    <input name="space" type="string" value="world" />
+  </viewdirection>
+  <normal name="normal__world" type="vector3">
+    <input name="space" type="string" value="world" />
+  </normal>
+  <nodegraph name="circular_toon">
+    <input name="Normal" type="vector3" nodename="normal__world" />
+    <input name="ViewDirection" type="vector3" nodename="view_direction" />
+    <input name="UVTiling" type="vector2" value="20,1" />
+    <input name="UVOffset" type="vector2" value="0,0" />
+    <input name="First_Axis" type="integer" value="0" />
+    <input name="Second_Axis" type="integer" value="2" />
+    <input name="Invert_Pattern" type="boolean" value="false" />
+    <input name="Hilight_Scaling" type="float" value="1.2" />
+    <output name="out" type="color3" nodename="multiply_color6" />
+    <convert name="convert_color5" type="color3">
+      <input name="in" type="float" nodename="facingratio_float2" />
+    </convert>
+    <modulo name="modulo_float2" type="float">
+      <input name="in1" type="float" nodename="extract_float2" />
+      <input name="in2" type="float" value="0.1" />
+    </modulo>
+    <modulo name="modulo_float3" type="float">
+      <input name="in1" type="float" nodename="extract_float3" />
+      <input name="in2" type="float" interfacename="Hilight_Scaling" />
+    </modulo>
+    <combine2 name="combine2_vector4" type="vector2">
+      <input name="in1" type="float" nodename="modulo_float2" />
+      <input name="in2" type="float" value="0" />
+    </combine2>
+    <multiply name="multiply_float2" type="float">
+      <input name="in1" type="float" nodename="facingratio_float2" />
+      <input name="in2" type="float" value="1.2" />
+    </multiply>
+    <position name="position_vector5" type="vector3">
+      <input name="space" type="string" value="world" />
+    </position>
+    <combine2 name="combine2_vector5" type="vector2">
+      <input name="in1" type="float" nodename="modulo_float3" />
+      <input name="in2" type="float" value="0" />
+    </combine2>
+    <extract name="extract_float2" type="float">
+      <input name="in" type="vector3" nodename="position_vector5" />
+      <input name="index" type="integer" interfacename="First_Axis" />
+    </extract>
+    <extract name="extract_float3" type="float">
+      <input name="in" type="vector3" nodename="position_vector5" />
+      <input name="index" type="integer" interfacename="Second_Axis" />
+    </extract>
+    <facingratio name="facingratio_float2" type="float">
+      <input name="viewdirection" type="vector3" interfacename="ViewDirection" />
+      <input name="normal" type="vector3" interfacename="Normal" />
+      <input name="faceforward" type="boolean" value="true" />
+      <input name="invert" type="boolean" interfacename="Invert_Pattern" />
+    </facingratio>
+    <multiply name="multiply_float3" type="float">
+      <input name="in1" type="float" nodename="facingratio_float2" />
+      <input name="in2" type="float" interfacename="Hilight_Scaling" />
+    </multiply>
+    <tiledcircles name="tiledcircles_color6" type="color3">
+      <input name="texcoord" type="vector2" nodename="combine2_vector5" />
+      <input name="uvtiling" type="vector2" interfacename="UVTiling" />
+      <input name="uvoffset" type="vector2" interfacename="UVOffset" />
+      <input name="size" type="float" nodename="multiply_float3" />
+      <input name="staggered" type="boolean" value="true" />
+    </tiledcircles>
+    <tiledcircles name="tiledcircles_color5" type="color3">
+      <input name="texcoord" type="vector2" nodename="combine2_vector4" />
+      <input name="uvtiling" type="vector2" interfacename="UVTiling" />
+      <input name="uvoffset" type="vector2" interfacename="UVOffset" />
+      <input name="size" type="float" nodename="multiply_float2" />
+      <input name="staggered" type="boolean" value="true" />
+    </tiledcircles>
+    <multiply name="multiply_color5" type="color3">
+      <input name="in1" type="color3" nodename="tiledcircles_color6" />
+      <input name="in2" type="color3" nodename="tiledcircles_color5" />
+    </multiply>
+    <multiply name="multiply_color6" type="color3">
+      <input name="in1" type="color3" nodename="multiply_color5" />
+      <input name="in2" type="color3" nodename="convert_color5" />
+    </multiply>
+  </nodegraph>
+</materialx>

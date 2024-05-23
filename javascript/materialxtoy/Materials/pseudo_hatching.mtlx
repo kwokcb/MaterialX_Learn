@@ -4,83 +4,86 @@
     <input name="surfaceshader" type="surfaceshader" nodename="surface_unlit_surfaceshader1" />
     <input name="displacementshader" type="displacementshader" value="" />
   </surfacematerial>
-  <multiply name="multiply_color5" type="color3">
-    <input name="in1" type="color3" nodename="multiply_color4" />
-    <input name="in2" type="color3" nodename="convert_color4" />
-  </multiply>
   <surface_unlit name="surface_unlit_surfaceshader1" type="surfaceshader">
     <input name="emission" type="float" value="1" />
-    <input name="emission_color" type="color3" nodename="multiply_color5" />
+    <input name="emission_color" type="color3" nodegraph="circular_toon" />
     <input name="transmission" type="float" value="0.1" />
     <input name="transmission_color" type="color3" value="0,0.15,1" />
     <input name="opacity" type="float" value="1" />
   </surface_unlit>
-  <position name="position_vector4" type="vector3">
-    <input name="space" type="string" value="world" />
-  </position>
-  <extract name="extract_float1" type="float">
-    <input name="in" type="vector3" nodename="position_vector4" />
-    <input name="index" type="integer" value="0" />
-  </extract>
-  <convert name="convert_color4" type="color3">
-    <input name="in" type="float" nodename="facingratio_float1" />
-  </convert>
-  <extract name="extract_float2" type="float">
-    <input name="in" type="vector3" nodename="position_vector4" />
-    <input name="index" type="integer" value="2" />
-  </extract>
-  <modulo name="modulo_float1" type="float">
-    <input name="in1" type="float" nodename="extract_float1" />
-    <input name="in2" type="float" value="0.1" />
-  </modulo>
-  <modulo name="modulo_float2" type="float">
-    <input name="in1" type="float" nodename="extract_float2" />
-    <input name="in2" type="float" value="0.1" />
-  </modulo>
-  <tiledcircles name="tiledcircles_color5" type="color3">
-    <input name="texcoord" type="vector2" nodename="combine2_vector4" />
-    <input name="uvtiling" type="vector2" value="50,2" />
-    <input name="uvoffset" type="vector2" value="0,0" />
-    <input name="size" type="float" nodename="multiply_float2" />
-    <input name="staggered" type="boolean" value="true" />
-  </tiledcircles>
-  <multiply name="multiply_color4" type="color3">
-    <input name="in1" type="color3" nodename="tiledcircles_color5" />
-    <input name="in2" type="color3" nodename="tiledcircles_color4" />
-  </multiply>
-  <combine2 name="combine2_vector4" type="vector2">
-    <input name="in1" type="float" nodename="modulo_float2" />
-    <input name="in2" type="float" value="0" />
-  </combine2>
-  <normal name="normal_vector4" type="vector3">
-    <input name="space" type="string" value="object" />
-  </normal>
-  <viewdirection name="viewdirection_vector4" type="vector3">
-    <input name="space" type="string" value="world" />
-  </viewdirection>
-  <combine2 name="combine2_vector3" type="vector2">
-    <input name="in1" type="float" nodename="modulo_float1" />
-    <input name="in2" type="float" value="0" />
-  </combine2>
-  <tiledcircles name="tiledcircles_color4" type="color3">
-    <input name="texcoord" type="vector2" nodename="combine2_vector3" />
-    <input name="uvtiling" type="vector2" value="50,2" />
-    <input name="uvoffset" type="vector2" value="0,0" />
-    <input name="size" type="float" nodename="multiply_float1" />
-    <input name="staggered" type="boolean" value="true" />
-  </tiledcircles>
-  <multiply name="multiply_float1" type="float">
-    <input name="in1" type="float" nodename="facingratio_float1" />
-    <input name="in2" type="float" value="1.2" />
-  </multiply>
-  <facingratio name="facingratio_float1" type="float">
-    <input name="viewdirection" type="vector3" nodename="viewdirection_vector4" />
-    <input name="normal" type="vector3" nodename="normal_vector4" />
-    <input name="faceforward" type="boolean" value="true" />
-    <input name="invert" type="boolean" value="false" />
-  </facingratio>
-  <multiply name="multiply_float2" type="float">
-    <input name="in1" type="float" nodename="facingratio_float1" />
-    <input name="in2" type="float" value="1.2" />
-  </multiply>
+  <nodegraph name="circular_toon">
+    <position name="position_vector5" type="vector3">
+      <input name="space" type="string" value="world" />
+    </position>
+    <extract name="extract_float2" type="float">
+      <input name="in" type="vector3" nodename="position_vector5" />
+      <input name="index" type="integer" value="0" />
+    </extract>
+    <convert name="convert_color5" type="color3">
+      <input name="in" type="float" nodename="facingratio_float2" />
+    </convert>
+    <extract name="extract_float3" type="float">
+      <input name="in" type="vector3" nodename="position_vector5" />
+      <input name="index" type="integer" value="2" />
+    </extract>
+    <modulo name="modulo_float2" type="float">
+      <input name="in1" type="float" nodename="extract_float2" />
+      <input name="in2" type="float" value="0.1" />
+    </modulo>
+    <modulo name="modulo_float3" type="float">
+      <input name="in1" type="float" nodename="extract_float3" />
+      <input name="in2" type="float" value="0.1" />
+    </modulo>
+    <tiledcircles name="tiledcircles_color6" type="color3">
+      <input name="texcoord" type="vector2" nodename="combine2_vector5" />
+      <input name="uvtiling" type="vector2" value="50,2" />
+      <input name="uvoffset" type="vector2" value="0,0" />
+      <input name="size" type="float" nodename="multiply_float3" />
+      <input name="staggered" type="boolean" value="true" />
+    </tiledcircles>
+    <multiply name="multiply_color5" type="color3">
+      <input name="in1" type="color3" nodename="tiledcircles_color6" />
+      <input name="in2" type="color3" nodename="tiledcircles_color5" />
+    </multiply>
+    <combine2 name="combine2_vector5" type="vector2">
+      <input name="in1" type="float" nodename="modulo_float3" />
+      <input name="in2" type="float" value="0" />
+    </combine2>
+    <normal name="normal_vector5" type="vector3">
+      <input name="space" type="string" value="object" />
+    </normal>
+    <viewdirection name="viewdirection_vector5" type="vector3">
+      <input name="space" type="string" value="world" />
+    </viewdirection>
+    <combine2 name="combine2_vector4" type="vector2">
+      <input name="in1" type="float" nodename="modulo_float2" />
+      <input name="in2" type="float" value="0" />
+    </combine2>
+    <tiledcircles name="tiledcircles_color5" type="color3">
+      <input name="texcoord" type="vector2" nodename="combine2_vector4" />
+      <input name="uvtiling" type="vector2" value="50,2" />
+      <input name="uvoffset" type="vector2" value="0,0" />
+      <input name="size" type="float" nodename="multiply_float2" />
+      <input name="staggered" type="boolean" value="true" />
+    </tiledcircles>
+    <multiply name="multiply_float2" type="float">
+      <input name="in1" type="float" nodename="facingratio_float2" />
+      <input name="in2" type="float" value="1.2" />
+    </multiply>
+    <facingratio name="facingratio_float2" type="float">
+      <input name="viewdirection" type="vector3" nodename="viewdirection_vector5" />
+      <input name="normal" type="vector3" nodename="normal_vector5" />
+      <input name="faceforward" type="boolean" value="true" />
+      <input name="invert" type="boolean" value="false" />
+    </facingratio>
+    <multiply name="multiply_float3" type="float">
+      <input name="in1" type="float" nodename="facingratio_float2" />
+      <input name="in2" type="float" value="1.2" />
+    </multiply>
+    <output name="out" type="color3" nodename="multiply_color6" />
+    <multiply name="multiply_color6" type="color3">
+      <input name="in1" type="color3" nodename="multiply_color5" />
+      <input name="in2" type="color3" nodename="convert_color5" />
+    </multiply>
+  </nodegraph>
 </materialx>
