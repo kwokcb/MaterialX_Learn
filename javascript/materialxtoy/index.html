@@ -74,7 +74,7 @@
             background: none;
         }
     </style>
-      <link rel="icon" type="images" href="./Images/materialtoy_ai_variant3.png" type="image/x-icon" class="img-fluid">
+    <link rel="icon" type="images" href="./Images/materialtoy_ai_variant3.png" type="image/x-icon" class="img-fluid">
 
 </head>
 
@@ -95,7 +95,8 @@
 
     <div class="container-fluid p-2">
 
-        <h2 class="bg-gradient p-2 rounded-4"><img class="rounded-4" src="./Images/materialtoy_ai_variant3.png" width="48px"> MaterialXToy Editor</h2>
+        <h2 class="bg-gradient p-2 rounded-4"><img class="rounded-4" src="./Images/materialtoy_ai_variant3.png"
+                width="48px"> MaterialXToy Editor</h2>
         <hr>
 
         <!-- Align columns to left in row -->
@@ -148,10 +149,20 @@
                         <li>
                             <div class="dropdown-item">
                                 <div class="form-check">
-                                    <label class="form-check-label" for="checkbox">
+                                    <label class="form-check-label" for="saveCustomLibs">
                                         Include Libraries
                                     </label>
                                     <input class="form-check-input" type="checkbox" value="" id="saveCustomLibs">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item">
+                                <div class="form-check">
+                                    <label class="form-check-label" for="saveNodePositions">
+                                        Save Node Positions
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" id="saveNodePositions">
                                 </div>
                             </div>
                         </li>
@@ -165,19 +176,31 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li>
-                    <div class="dropdown-item" id="createNodeGraph">Create Subgraph</div>
+                        <div class="dropdown-item" id="copySelected">Copy</div>
+                    </li>
+                    <li>
+                        <div class="dropdown-item" id="pasteSelected">Paste</div>
+                    </li>
+                    <li>
+                        <div class="dropdown-item" id="createNodeGraph">Create Subgraph</div>
                     </li>
                     <li>
                         <div class="dropdown-item" id="extractNodeGraph">Extract from Subgraph</div>
-                        </li>
-                    </ul>
-            </div>    
+                    </li>
+                </ul>
+            </div>
             <div class="col">
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     View
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li>
+                        <div class="dropdown-item" id="openSubgraph">Open Subgraph</div>
+                    </li>
+                    <li>
+                        <div class="dropdown-item" id="closeSubgraph">Close Subgraph</div>
+                    </li>
                     <li>
                         <div class="dropdown-item" id="resetView">Reset View</div>
                     </li>
@@ -242,7 +265,7 @@
                 <div class="col px-2">
                     <!-- Make text area take up total width of parent-->
                     <textarea class="rounded p-0" id="console_area" rows="4"
-                        style="max-height: 64px; overflow: auto; background-color: rgb(47, 50, 54); width: 100%;">
+                        style="max-height: 512px; overflow: auto; background-color: rgb(47, 50, 54); width: 100%;">
                 </textarea>
                 </div>
             </div>
@@ -256,7 +279,7 @@
                     </button>
                     <button id="mtlxdoc_paste" class="btn btn-sm" data-target="mtlxdoc">
                         <img class="" src="./Images/clipboard_white.svg" style="width: 24px;" alt="Paste Icon">
-                    </button>      
+                    </button>
                     <button id="graphtoxml" class="btn btn-sm" data-target="mtlxdoc">
                         <img class="" src="./Images/arrow_down_white.svg" style="width: 24px;" alt="Graph to XML">
                     </button>
@@ -288,7 +311,7 @@
                     </div>
                 </div>
                 <div class="row px-4 pb-2">
-                    <details >
+                    <details>
                         <summary>Available Node Types</summary>
                         <div style="max-height: 400px; overflow-y: auto;">
                             <table class="table table-bordered font-size-sm">
@@ -341,7 +364,7 @@
         var ui = {
             console_area: document.getElementById('console_area'),
             nodeTypesList: document.getElementById('nodeTypesList'),
-            mtlxdoc: cmeditor, 
+            mtlxdoc: cmeditor,
             mtlxlib: cmeditor2,
             mtlxdoc_colorspace: null, // document.getElementById('mtlxdoc_colorspace'),
             propertypanel_content: document.getElementById('propertypanel_content'),
@@ -363,10 +386,13 @@
                 link.click();
             });
 
+            // TODO: Make this a user option
+            var auto_arrange_size = 80;
+
             // Add load materialx graph event listener
             var loadMaterialXDocumentFromFile = document.getElementById('loadMaterialXDocumentFromFile');
             loadMaterialXDocumentFromFile.addEventListener('click', function () {
-                editor.loadMaterialXGraph();
+                editor.loadGraphFromFile('mtlx', auto_arrange_size);
             });
 
             // Add load materialx graph from text event listener
@@ -377,14 +403,14 @@
                 // Generate a name for the graph
                 if (mtlxdoc.length > 0) {
                     var name = 'MaterialXGraph' + texAreaNumber++;
-                    editor.loadMaterialXGraphFromString(mtlxdoc, name);
+                    editor.loadGraphFromString('mtlx', mtlxdoc, name, auto_arrange_size);
                 }
             });
 
             // Add load definitions event listener
             var loadMaterialXDefinitions = document.getElementById('loadMaterialXDefinitions');
             loadMaterialXDefinitions.addEventListener('click', function () {
-                editor.loadMaterialXDefinitions();
+                editor.loadDefinitionsFromFile('mtlx');
             });
 
             // Add clear graph event listener
@@ -397,15 +423,28 @@
             var saveMaterialXGraph = document.getElementById('saveMaterialXGraph');
             saveMaterialXGraph.addEventListener('click', function () {
                 var saveCustomLibs = document.getElementById('saveCustomLibs').checked;
-                editor.saveMaterialXGraph(saveCustomLibs);
+                var saveNodePositions = document.getElementById('saveNodePositions').checked;
+                editor.saveGraphToFile('mtlx', saveCustomLibs, saveNodePositions);
             });
 
             // Add save materialx graph text event listener
             var saveMaterialXGraphText = document.getElementById('saveMaterialXGraphText');
             saveMaterialXGraphText.addEventListener('click', function () {
-                var saveCustomLibs = document.getElementById('saveCustomLibs').checked;
-                editor.saveMaterialXGraphText(saveCustomLibs);
+                saveToStringUI();
             });
+
+            // Add open subgraph event handler
+            var openSubgraph = document.getElementById('openSubgraph');
+            openSubgraph.addEventListener('click', function () {
+                editor.openSubgraph();
+            });
+
+            // Add close subgraph event handler
+            var closeSubgraph = document.getElementById('closeSubgraph');
+            closeSubgraph.addEventListener('click', function () {
+                editor.closeSubgraph();
+            });
+
 
             // Add reset view event handler
             var resetView = document.getElementById('resetView');
@@ -433,6 +472,18 @@
             var expandNodesButton = document.getElementById('expandNodes');
             expandNodesButton.addEventListener('click', function () {
                 editor.collapseExpandNodes(false);
+            });
+
+            // Add copy selected event listener
+            var copySelectedButton = document.getElementById('copySelected');
+            copySelectedButton.addEventListener('click', function () {
+                editor.copyToClipboard();
+            });
+
+            // Add paste selected event listener
+            var pasteSelectedButton = document.getElementById('pasteSelected');
+            pasteSelectedButton.addEventListener('click', function () {
+                editor.pasteFromClipboard();
             });
 
             // Add create subgraph event listener
@@ -465,14 +516,20 @@
             xmltograph.addEventListener('click', function () {
                 var name = 'MaterialXGraph' + texAreaNumber++;
                 var mtlxdoc = document.getElementById('mtlxdoc').value;
-                editor.loadMaterialXGraphFromString(mtlxdoc, 'MaterialXGraph');
+                editor.loadGraphFromString('mtlx', mtlxdoc, 'MaterialXGraph', auto_arrange_size);
             });
+
+            function saveToStringUI() {
+                var saveCustomLibs = document.getElementById('saveCustomLibs').checked;
+                var saveNodePositions = document.getElementById('saveNodePositions').checked;
+                result = editor.saveGraphToString('mtlx', saveCustomLibs, saveNodePositions);
+                cmeditor.setValue(result);
+            }
 
             // Add graph to xml event listener
             var graphtoxml = document.getElementById('graphtoxml');
             graphtoxml.addEventListener('click', function () {
-                var saveCustomLibs = document.getElementById('saveCustomLibs').checked;
-                editor.saveMaterialXGraphText(saveCustomLibs);
+                saveToStringUI();
             });
 
             // Get the canvas element and its container

@@ -244,7 +244,38 @@ class MtlxNodeGraph:
         return interfaceInput
 
     @staticmethod
-    def unconnectInterface(nodegraph, interfaceName):
+    def findInputsUsingInterface(nodegraph, interfaceName):
+
+    connectedInputs = []    
+    connectedOutputs = []
+    interfaceInput = nodegraph.getInput(interfaceName)
+    if not interfaceInput:
+        return
+    
+    # Find all downstream connections for this interface
+    
+    for child in nodegraph.getChildren():
+        if child == interfaceInput:
+            continue
+
+        # Remove connection on node inputs and copy interface value
+        # to the input value so behaviour does not change
+        if child.isA(mx.Node):
+            for input in child.getInputs():
+                childInterfaceName = input.getAttribute('interfacename')
+                if childInterfaceName == interfaceName:
+                    connectedInputs.append(input.getNamePath())
+
+        # Remove connection on the output. Value are not copied over.
+        elif child.isA(mx.Output):
+            childInterfaceName = child.getAttribute('interfacename')
+            if childInterfaceName == interfaceName:
+                connectedOutputs.append(child.getNamePath())
+
+        return connectedInputs, connectedOutputs
+
+    @staticmethod
+    def unconnectInterface(nodegraph, interfaceName, removeInterface=True):
         '''
         Remove an interface input from a nodegraph
         '''
@@ -272,4 +303,5 @@ class MtlxNodeGraph:
                 if childInterfaceName == interfaceName:
                     input.removeAttribute('interfacename')
 
-        nodegraph.removeChild(interfaceName)
+        if removeInterface:
+            nodegraph.removeChild(interfaceName)

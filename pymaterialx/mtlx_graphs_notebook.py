@@ -499,20 +499,68 @@ documentContents = mx.writeToXmlString(doc, writeOptions)
 print(documentContents)
 
 # %% [markdown]
-#  ## Removing Input Interfaces
+#  ## Finding Input Interfaces
 #  
-#  These interfaces can be "unpublished" by removing them from the graph and breaking any connections to
-#  downstream nodes or outputs. To attempt to keep the behaviour the same the interface's value is copied to
-#  the input. 
+#  Sometimes it can be useful to find what inputs nodegraph are connected downstream to a given interface input.
+#  The `findInputsUsingInterface()` utility demonstrates how to do this.
+# 
 
 # %%
-def unconnectInterface(nodegraph, interfaceName):
+def findInputsUsingInterface(nodegraph, interfaceName):
+
+    connectedInputs = []    
+    connectedOutputs = []
+    interfaceInput = nodegraph.getInput(interfaceName)
+    if not interfaceInput:
+        return
+    
+    # Find all downstream connections for this interface
+    
+    for child in nodegraph.getChildren():
+        if child == interfaceInput:
+            continue
+
+        # Remove connection on node inputs and copy interface value
+        # to the input value so behaviour does not change
+        if child.isA(mx.Node):
+            for input in child.getInputs():
+                childInterfaceName = input.getAttribute('interfacename')
+                if childInterfaceName == interfaceName:
+                    connectedInputs.append(input.getNamePath())
+
+        # Remove connection on the output. Value are not copied over.
+        elif child.isA(mx.Output):
+            childInterfaceName = child.getAttribute('interfacename')
+            if childInterfaceName == interfaceName:
+                connectedOutputs.append(child.getNamePath())
+
+    return connectedInputs, connectedOutputs
+
+
+# %%
+connectedInputs, connectedOutputs = findInputsUsingInterface(nodeGraph, "input_file")
+print('Connected inputs:', connectedInputs)
+print('Connected outputs:', connectedOutputs)
+
+# %% [markdown]
+#  ## Disconnecting and Removing Input Interfaces
+#  
+#  These interfaces can be "unpublished" by removing them from the graph and breaking any connections to
+#  downstream nodes or outputs. It is may be desirable to leave the interface input for later usage as well.
+# 
+# The `unconnectInterface()` utility demonstrates how to do this with the option to remove the interface input as well. 
+# To attempt to keep the behaviour the same the interface's value is copied to the input. 
+
+# %%
+
+def unconnectInterface(nodegraph, interfaceName, removeInterface=True):
     
     interfaceInput = nodegraph.getInput(interfaceName)
     if not interfaceInput:
         return
     
     # Find all downstream connections for this interface
+    
     for child in nodegraph.getChildren():
         if child == interfaceInput:
             continue
@@ -532,10 +580,13 @@ def unconnectInterface(nodegraph, interfaceName):
             if childInterfaceName == interfaceName:
                 input.removeAttribute('interfacename')
 
-    nodegraph.removeChild(interfaceName)
+    if removeInterface:
+        nodegraph.removeChild(interfaceName)
 
 
-unconnectInterface(nodeGraph, "input_file")
+# %%
+# Disconnect and remove the interface
+unconnectInterface(nodeGraph, "input_file", True)
 
 # Check the graph
 print(mx.prettyPrint(nodeGraph) + '</nodegraph>')    
