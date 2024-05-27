@@ -16,7 +16,7 @@ function setupTheme() {
     }   
 }
 
-setupTheme();
+//setupTheme();
 
 // Interaction for SVG display area
 function setUpSVGInteraction(svgContainerId, svgContentId) {
@@ -189,7 +189,7 @@ function addPasteHandler(pasteButton, setterFunction)
 {
     if (pasteButton)
     {
-        console.log('Adding paste handler for button: ', pasteButton.id, pasteButton.getAttribute('data-target'));
+        //console.log('Adding paste handler for button: ', pasteButton.id, pasteButton.getAttribute('data-target'));
         pasteButton.addEventListener('click', function() {
             pasteContentFromClipboard(pasteButton, setterFunction);
         });

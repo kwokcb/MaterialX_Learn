@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="130"
+   height="130"
+   viewBox="0 0 130 130"
+   fill="none"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="center camera_white.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="6.4"
+     inkscape:cx="64.921875"
+     inkscape:cy="65"
+     inkscape:window-width="1920"
+     inkscape:window-height="1028"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <rect
+     width="130"
+     height="130"
+     rx="65"
+     fill="#3C3C3C"
+     id="rect1"
+     style="fill:#000000" />
+  <path
+     d="M84.175 30.0084L74.5875 39.5417L65 30.0084L55.4125 39.5417L45.825 30.0084L65 10.8334L84.175 30.0084ZM99.9916 84.175L90.4583 74.5875L99.9916 65L90.4583 55.4125L99.9916 45.825L119.167 65L99.9916 84.175ZM45.825 99.9917L55.4125 90.4584L65 99.9917L74.5875 90.4584L84.175 99.9917L65 119.167L45.825 99.9917ZM30.0083 45.825L39.5416 55.4125L30.0083 65L39.5416 74.5875L30.0083 84.175L10.8333 65L30.0083 45.825Z"
+     fill="white"
+     id="path1" />
+  <path
+     d="M65 81.25C73.9746 81.25 81.25 73.9746 81.25 65C81.25 56.0254 73.9746 48.75 65 48.75C56.0254 48.75 48.75 56.0254 48.75 65C48.75 73.9746 56.0254 81.25 65 81.25Z"
+     fill="white"
+     id="path2" />
+</svg>
