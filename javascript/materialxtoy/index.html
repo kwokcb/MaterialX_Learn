@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>MaterialXToy Editor</title>
+    <title>MaterialX Graph Editor</title>
 
     <!-- Syntax styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
@@ -74,7 +74,7 @@
             background: none;
         }
     </style>
-    <link rel="icon" type="images" href="./Images/materialtoy_ai_variant3.png" type="image/x-icon" class="img-fluid">
+    <link rel="icon" type="images" href="./Images/logo_wave3.png" type="image/x-icon" class="img-fluid">
 
 </head>
 
@@ -95,8 +95,8 @@
 
     <div class="container-fluid p-2">
 
-        <h2 class="bg-gradient p-2 rounded-4"><img class="rounded-4" src="./Images/materialtoy_ai_variant3.png"
-                width="48px"> MaterialXToy Editor</h2>
+        <h2 class="bg-gradient p-2 rounded-4"><img class="rounded-4" src="./Images/logo_wave3.png"
+                width="50px"> MaterialX Graph Editor</h2>
         <hr>
 
         <!-- Align columns to left in row -->
@@ -108,7 +108,6 @@
                         Clear
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <!-- <li><a class="dropdown-item" id="loadSerialization">JSON Serialization</a></li> -->
                         <li><a class="dropdown-item" id="clearGraph">Graph</a></li>
                     </ul>
                 </div>
@@ -121,11 +120,10 @@
                         Load
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <!-- <li><a class="dropdown-item" id="loadSerialization">JSON Serialization</a></li> -->
-                        <li><a class="dropdown-item" id="loadMaterialXDocumentFromText" href="#">MaterialX Text</a></li>
-                        <li><a class="dropdown-item" id="loadMaterialXDocumentFromFile" href="#">MaterialX Document</a>
-                        </li>
-                        <li><a class="dropdown-item" id="loadMaterialXDefinitions" href="#">MaterialX Definitions</a>
+                        <!-- <li><div class="dropdown-item" id="loadSerialization">JSON Serialization</div></li> --> 
+                        <li><div class="dropdown-item" id="loadMaterialXDocumentFromText">MaterialX Text</div></li>
+                        <li><div class="dropdown-item" id="loadMaterialXDocumentFromFile">MaterialX Document</div></li>
+                        <li><div class="dropdown-item" id="loadMaterialXDefinitions" >MaterialX Definitions</div>
                         </li>
                     </ul>
                 </div>
@@ -137,9 +135,9 @@
                         Save
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li>
-                            <!-- <div class="dropdown-item" id="downloadGraph">JSON Serialization</div> -->
-                        </li>
+                        <!-- <li>
+                            <div class="dropdown-item" id="downloadGraph">JSON Serialization</div> 
+                        </li> -->
                         <li>
                             <div class="dropdown-item" id="saveMaterialXGraphText">MaterialX Text</div>
                         </li>
@@ -333,286 +331,23 @@
 
 
     <!-- <script src="JsMaterialXCore.js" type="text/javascript"></script> -->
-    <script type="text/javascript" src="JsMaterialXGenShader.js"></script>
+    <script type="text/javascript" src="../JsMaterialXGenShader.js"></script>
+    <!-- TODO: Add logic to load from pre-built JS definitions file for those that
+         want independence from MaterialX. e.g. for a glTF texture procedurals -->    
     <!-- <script type="text/javascript" src="mtlx_stdlib.js"></script> -->
-    <script type="text/javascript" src="JsMaterialXNodeEditor.js"></script>
+    <script type="text/javascript" src="../JsMaterialXNodeEditor.js"></script>
 
     <!-- <script src="./litegraph-editor.js"></script> -->
     <!-- <script src="./base.js"></script>  -->
 
     <script src="ui_helpers.js"></script>
-
-    <script>
-        // Customize what icon to show based on nodedef name prefix or nodegroup
-        // Note that this is just a heuristic based on current nodegroup and naming 
-        // convention. Default is "mtlx" for MaterialX nodes.
-        var my_icon_map = {
-            "gltf": "./Images/gltf_logo.webp",
-            "usd": "./Images/openusd_logo.webp",
-            "open_pbr": "./Images/openpbr_logo.webp",
-            "houdini": "./Images/houdini_icon.webp",
-            "maya": "./Images/maya_surfaces.webp",
-            "_default_": "./Images/materialx_logo.webp",
-            "_default_graph_": "./Images/nodegraph_white.svg"
-        };
-
-        console.log(my_icon_map['gltf']);
-
-        var canvas = document.getElementById('mygraphcanvas');
-        var cmeditor = setupXMLSyntax();
-        var cmeditor2 = setupJavascriptSyntax();
-        var ui = {
-            console_area: document.getElementById('console_area'),
-            nodeTypesList: document.getElementById('nodeTypesList'),
-            mtlxdoc: cmeditor,
-            mtlxlib: cmeditor2,
-            mtlxdoc_colorspace: null, // document.getElementById('mtlxdoc_colorspace'),
-            propertypanel_content: document.getElementById('propertypanel_content'),
-            propertypanel_icon: document.getElementById('propertypanel_icon'),
-            icon_map: my_icon_map
-        };
-        var editor = new MxShadingGraphEditor();
-        editor.initialize(false, canvas, ui);
-
-        function addUIHandlers() {
-            // Add event listener to save canvas as image when button is clicked
-            var saveCanvasButton = document.getElementById('captureGraph');
-            saveCanvasButton.addEventListener('click', function () {
-                var canvas = document.getElementById('mygraphcanvas');
-                var dataURL = canvas.toDataURL('image/png');
-                var link = document.createElement('a');
-                link.href = dataURL;
-                link.download = 'graph_capture.png';
-                link.click();
-            });
-
-            // TODO: Make this a user option
-            var auto_arrange_size = 80;
-
-            // Add load materialx graph event listener
-            var loadMaterialXDocumentFromFile = document.getElementById('loadMaterialXDocumentFromFile');
-            loadMaterialXDocumentFromFile.addEventListener('click', function () {
-                editor.loadGraphFromFile('mtlx', auto_arrange_size);
-            });
-
-            // Add load materialx graph from text event listener
-            var texAreaNumber = 0;
-            var loadMaterialXDocumentFromText = document.getElementById('loadMaterialXDocumentFromText');
-            loadMaterialXDocumentFromText.addEventListener('click', function () {
-                var mtlxdoc = document.getElementById('mtlxdoc').value;
-                // Generate a name for the graph
-                if (mtlxdoc.length > 0) {
-                    var name = 'MaterialXGraph' + texAreaNumber++;
-                    editor.loadGraphFromString('mtlx', mtlxdoc, name, auto_arrange_size);
-                }
-            });
-
-            // Add load definitions event listener
-            var loadMaterialXDefinitions = document.getElementById('loadMaterialXDefinitions');
-            loadMaterialXDefinitions.addEventListener('click', function () {
-                editor.loadDefinitionsFromFile('mtlx');
-            });
-
-            // Add clear graph event listener
-            var clearGraphButton = document.getElementById('clearGraph');
-            clearGraphButton.addEventListener('click', function () {
-                editor.clearGraph();
-            });
-
-            // Add save materialx graph event listener
-            var saveMaterialXGraph = document.getElementById('saveMaterialXGraph');
-            saveMaterialXGraph.addEventListener('click', function () {
-                var saveCustomLibs = document.getElementById('saveCustomLibs').checked;
-                var saveNodePositions = document.getElementById('saveNodePositions').checked;
-                editor.saveGraphToFile('mtlx', saveCustomLibs, saveNodePositions);
-            });
-
-            // Add save materialx graph text event listener
-            var saveMaterialXGraphText = document.getElementById('saveMaterialXGraphText');
-            saveMaterialXGraphText.addEventListener('click', function () {
-                saveToStringUI();
-            });
-
-            // Add open subgraph event handler
-            var openSubgraph = document.getElementById('openSubgraph');
-            openSubgraph.addEventListener('click', function () {
-                editor.openSubgraph();
-            });
-
-            // Add close subgraph event handler
-            var closeSubgraph = document.getElementById('closeSubgraph');
-            closeSubgraph.addEventListener('click', function () {
-                editor.closeSubgraph();
-            });
-
-
-            // Add reset view event handler
-            var resetView = document.getElementById('resetView');
-            resetView.addEventListener('click', function () {
-                editor.resetView();
-            });
-
-            // Add arrange graph event listener
-            var arrangeGraphButton = document.getElementById('arrangeGraph');
-            arrangeGraphButton.addEventListener('click', function () {
-                editor.arrangeGraph();
-            });
-
-            // Add center node event listener
-            var centerNodeButton = document.getElementById('centerNode');
-            centerNodeButton.addEventListener('click', function () {
-                editor.centerNode();
-            });
-
-            // Add collapse/expand nodes event listener
-            var collapseNodesButton = document.getElementById('collapseNodes');
-            collapseNodesButton.addEventListener('click', function () {
-                editor.collapseExpandNodes(true);
-            });
-            var expandNodesButton = document.getElementById('expandNodes');
-            expandNodesButton.addEventListener('click', function () {
-                editor.collapseExpandNodes(false);
-            });
-
-            // Add copy selected event listener
-            var copySelectedButton = document.getElementById('copySelected');
-            copySelectedButton.addEventListener('click', function () {
-                editor.copyToClipboard();
-            });
-
-            // Add paste selected event listener
-            var pasteSelectedButton = document.getElementById('pasteSelected');
-            pasteSelectedButton.addEventListener('click', function () {
-                editor.pasteFromClipboard();
-            });
-
-            // Add create subgraph event listener
-            var createNodeGraphButton = document.getElementById('createNodeGraph');
-            createNodeGraphButton.addEventListener('click', function () {
-                editor.createNodeGraph();
-            });
-
-            // Add extract subgraph event listener
-            var extractNodeGraphButton = document.getElementById('extractNodeGraph');
-            extractNodeGraphButton.addEventListener('click', function () {
-                editor.extractNodeGraph();
-            });
-
-            /* 
-            // Add load serialization event listener
-            var loadSerialization = document.getElementById('loadSerialization');
-            loadSerialization.addEventListener('click', function () {
-                editor.loadSerialization();
-            });
-
-            // Add download graph event listener
-            var downloadGraph = document.getElementById('downloadGraph');
-            downloadGraph.addEventListener('click', function () {
-                editor.saveSerialization();
-            }); */
-
-            // Add xml to graph event listener
-            var xmltograph = document.getElementById('xmltograph');
-            xmltograph.addEventListener('click', function () {
-                var name = 'MaterialXGraph' + texAreaNumber++;
-                var mtlxdoc = document.getElementById('mtlxdoc').value;
-                editor.loadGraphFromString('mtlx', mtlxdoc, 'MaterialXGraph', auto_arrange_size);
-            });
-
-            function saveToStringUI() {
-                var saveCustomLibs = document.getElementById('saveCustomLibs').checked;
-                var saveNodePositions = document.getElementById('saveNodePositions').checked;
-                result = editor.saveGraphToString('mtlx', saveCustomLibs, saveNodePositions);
-                cmeditor.setValue(result);
-            }
-
-            // Add graph to xml event listener
-            var graphtoxml = document.getElementById('graphtoxml');
-            graphtoxml.addEventListener('click', function () {
-                saveToStringUI();
-            });
-
-            // Get the canvas element and its container
-            var canvas = document.getElementById('mygraphcanvas');
-            var canvasContainer = document.getElementById('canvasContainer');
-            var colContainer = document.getElementById('colContainer');
-
-            // Create a new ResizeObserver
-            var observer = new ResizeObserver(function (entries) {
-                for (var entry of entries) {
-                    // Get the new width and height of the column
-                    var newWidth = entry.contentRect.width;
-                    var newHeight = entry.contentRect.height;
-
-                    // Set the canvas size to match the column
-                    canvas.width = newWidth;
-                    canvas.height = newHeight;
-
-                    // Mark the editor as dirty to redraw the graph.
-                    editor.setDirty();
-                }
-            });
-
-            // Start observing the canvas container
-            observer.observe(colContainer);
-
-        }
-
-        function setupJavascriptSyntax() {
-            // Initialize CodeMirror for JS syntax highlighting
-            const elem = document.getElementById('mtlxlib');
-            var cmeditor = CodeMirror.fromTextArea(elem, {
-                mode: 'application/javascript',
-                lineNumbers: true,
-                dragDrop: false,
-                theme: 'dracula',
-                readOnly: true
-            });
-
-            elem.value = '';
-            cmeditor.setValue('');
-
-            // Update CodeMirror whenever the textarea content changes
-            cmeditor.on('change', () => {
-                elem.value = cmeditor.getValue();
-            });
-
-            return cmeditor;
-        }
-
-
-        function setupXMLSyntax() {
-            // Initialize CodeMirror for XML syntax highlighting
-            const materialXTextArea = document.getElementById('mtlxdoc');
-            var cmeditor = CodeMirror.fromTextArea(materialXTextArea, {
-                mode: 'application/xml',
-                lineNumbers: true,
-                dragDrop: true,
-                theme: 'night'
-            });
-
-            // Optional: Set an initial value for the textarea
-            const initialXML = '';
-            materialXTextArea.value = initialXML;
-            cmeditor.setValue(initialXML);
-
-            // Update CodeMirror whenever the textarea content changes
-            cmeditor.on('change', (e) => {
-                materialXTextArea.value = cmeditor.getValue();
-            });
-
-            var pasteButton = document.getElementById('mtlxdoc_paste');
-            if (pasteButton)
-                addPasteHandler(pasteButton, cmeditor);
-
-            return cmeditor;
-        }
-
-        addUIHandlers();
-        addCopyHandlers();
-
+    <script type="module">
+        import { initializeNodeEditor } from '../node_editor.js';
+        let materialFilename = "./Materials/compound_graph_example.mtlx";
+        let geometryFilename = "";
+        let renderer = null;
+        initializeNodeEditor(materialFilename, geometryFilename, renderer);
     </script>
-
 </body>
 
 </html>
