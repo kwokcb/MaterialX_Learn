@@ -2377,7 +2377,8 @@ class MxShadingGraphEditor {
 
             //console.log('Scan input:', inputName, ' on node: ', node.graph);
 
-            var property_info = node.properties_info[i];
+            var property_info = node.getPropertyInfo(inputName);
+            //console.log('1. get property info for i: ', inputName, 'info: ', property_info)
 
             var skipInterorConnectedInput = false;
             if (node.graph._is_subgraph)
@@ -2456,11 +2457,15 @@ class MxShadingGraphEditor {
                         
                         propertypanelcontent.appendChild(current_details);
                     }
+                    else
+                    {
+                        //current_details = null;
+                    }
                 }
                 else {
                     current_details = null;
                 }
-                //console.log('>>>>>>>>>>>> uiName:', uiName, 'uimin:', uimin, 'uimax:', uimax);
+                //console.log('2. uiName:', uiName, 'uimin:', uimin, 'uimax:', uimax, 'uiFolder:', property_info.uifolder);
             }
             else {
                 current_details = null;
@@ -2915,10 +2920,14 @@ class MxShadingGraphEditor {
             }
             //elem.innerHTML = "<em>" + i  + "</em> : " + property;
             if (elem) {
-                if (current_details)
+                if (current_details) {
+                    //console.log('3a. append child to details:', current_details.id, elem, inputName);
                     current_details.appendChild(elem);
-                else
+                }
+                else {
                     propertypanelcontent.appendChild(elem);
+                    //console.log('3b. append child to parent content:', elem, inputName);
+                }
             }
         }
     }
