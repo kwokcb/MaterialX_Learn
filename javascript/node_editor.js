@@ -20,17 +20,39 @@ export function initializeNodeEditor(materialFilename, geometryFilename, theRend
         return fetch(uri)
             .then(response => {
                 if (response.ok) {
-                    return true;
+                    return Promise.resolve(true);
                 } else {
-                    return false;
+                    return Promise.resolve(false);
                 }
             })
             .catch(error => {
                 console.log('Error checking URI:', error);
-                return false;
+                return Promise.resolve(false);
             });
-    }
+    }    
 
+    function renderableItemUpdater(renderableItems) {
+
+        let renderableItemSelect = document.getElementById('renderableItem');
+        if (renderableItemSelect) {
+    
+            while (renderableItemSelect.firstChild) {
+                renderableItemSelect.removeChild(renderableItemSelect.firstChild);
+            }
+                for (let i = 0; i < renderableItems.length; i++) {
+                    let item = renderableItems[i];
+                    let option = document.createElement('option');
+                    option.value = item;
+                    let uiitem = item;
+                    // Truncate the name so it will fit into UI.
+                    if (uiitem.length > 12)
+                        uiitem = uiitem.substring(0, 12) + '...';
+                    option.text = uiitem; 
+                    renderableItemSelect.appendChild(option);
+            }                             
+        }    
+    }
+    
     if (theRenderer) {
         var viewer = theRenderer.initializeViewer(materialFilename, geometryFilename);
         console.log('Setup viewer:', viewer);
@@ -48,6 +70,7 @@ export function initializeNodeEditor(materialFilename, geometryFilename, theRend
     var ui = {
         console_area: document.getElementById('console_area'),
         nodeTypesList: document.getElementById('nodeTypesList'),
+        renderableItemUpdater: renderableItemUpdater,
         mtlxdoc: cmeditor,
         mtlxlib: cmeditor2,
         mtlxdoc_colorspace: null, // document.getElementById('mtlxdoc_colorspace'),
@@ -203,41 +226,10 @@ export function initializeNodeEditor(materialFilename, geometryFilename, theRend
             editor.loadGraphFromString('mtlx', mtlxdoc, 'MaterialXGraph', auto_arrange_size);
         });
 
-        /* function updateRenderableItemUI(renderableItems) {
-            let renderableItemSelect = document.getElementById('renderableItem');
-            // Remove any previous children
-            while (renderableItemSelect.firstChild) {
-                renderableItemSelect.removeChild(renderableItemSelect.firstChild);
-            }
-            for (let i = 0; i < renderableItems.length; i++) {
-                let item = renderableItems[i];
-                let option = document.createElement('option');
-                option.value = i;
-                option.text = item; // item.getNamePath();
-                renderableItemSelect.appendChild(option);
-            }
-        } */
-
         function updateRenderableItemUI()
         {
             let renderableItems = editor.findRenderableItems();
-
-            // Update selection for renderables
-            let renderableItemSelect = document.getElementById('renderableItem');
-            while (renderableItemSelect.firstChild) {
-                renderableItemSelect.removeChild(renderableItemSelect.firstChild);
-            }
-            for (let i = 0; i < renderableItems.length; i++) {
-                let item = renderableItems[i];
-                let option = document.createElement('option');
-                option.value = item;
-                let uiitem = item;
-                // Truncate the name so it will fit into UI.
-                if (uiitem.length > 12)
-                    uiitem = uiitem.substring(0, 12) + '...';
-                option.text = uiitem; 
-                renderableItemSelect.appendChild(option);
-            }          
+            renderableItemUpdater(renderableItems);
         }
 
         function saveToStringUI() {
@@ -322,7 +314,7 @@ export function initializeNodeEditor(materialFilename, geometryFilename, theRend
                         var fileURL = URL.createObjectURL(file);
                         if (theRenderer)
                             theRenderer.setRenderGeometry(fileURL);
-                        console.log('Change geometry to:', fileURL);
+                        console.log('Change geometry to:', fileURL, 'from file:', file.name);
                     }
                 }
                 fileInput.click();

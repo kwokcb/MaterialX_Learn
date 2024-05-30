@@ -46,6 +46,14 @@ doc.importLibrary(stdlib)
 def skipLibraryElement(elem):
     return not elem.hasSourceUri()
 
+def validateDocument(doc):
+    valid, errors = doc.validate()
+    if not valid:
+        print('> Document is not valid')
+        print('> ' + errors)
+    else:
+        print('> Document is valid')
+
 # %% [markdown]
 # # Creating a Node Graph
 # 
@@ -486,7 +494,7 @@ print(mx.prettyPrint(nodeGraph) + '</nodegraph>')
 
 # %%
 # Check the entire document
-doc.validate()
+validateDocument(doc)
 writeOptions = mx.XmlWriteOptions()
 writeOptions.writeXIncludeEnable = False
 writeOptions.elementPredicate = skipLibraryElement
@@ -499,6 +507,89 @@ documentContents = mx.writeToXmlString(doc, writeOptions)
 print(documentContents)
 
 # %% [markdown]
+# ## Renaming Nodes 
+# 
+# If you just rename a node without renaming references to it, then the references will be broken.
+# Currently the interface for setting node names is "unsafe" in that it does not check for references to the node.
+# 
+# Below a utility is added to rename a node and update all references to it. It uses the existing interface getDownStreamPorts() to find all references to a node
+# and updates them.
+
+# %%
+def renameNode(node, newName : str, updateReferences : bool = True):
+
+    if not node or not newName:
+        return
+    if not (node.isA(mx.Node) or node.isA(mx.NodeGraph)):
+        print('A non-node or non-nodegraph was passed to renameNode()')
+        return 
+    if node.getName() == newName:
+        return
+
+    parent = node.getParent()
+    if not parent:
+        return
+
+    newName = parent.createValidChildName(newName)
+
+    if updateReferences:
+        downStreamPorts = node.getDownstreamPorts()
+        if downStreamPorts:
+            for port in downStreamPorts:
+                #if (port.getNodeName() == node.getName()): This is assumed from getDownstreamPorts()
+                oldName = port.getNodeName()
+                if (port.getAttribute('nodename')):
+                    port.setNodeName(newName)
+                    print('  > Update downstream port: "' + port.getNamePath() + '" from:"' + oldName + '" to "' + port.getAttribute('nodename') + '"')
+                elif (port.getAttribute('nodegraph')):
+                    port.setAttribute('nodegraph', newName)
+                    print('  > Update downstream port: "' + port.getNamePath() + '" from:"' + oldName + '" to "' + port.getAttribute('nodegraph') + '"')
+                elif (port.getAttribute('interfacename')):
+                    port.setAttribute('interfacename', newName)
+                    print('  > Update downstream port: "' + port.getNamePath() + '" from:"' + oldName + '" to "' + port.getAttribute('interfacename') + '"')
+
+    node.setName(newName)
+
+
+# %%
+# Test renaming to the same name. This will be a no-op
+shaderNode = nodeGraph.getNode('test_shader')
+renameNode(shaderNode, 'test_shader') 
+print('> Result with renaming to same name:\n')
+print(mx.prettyPrint(nodeGraph) + '</nodegraph>')
+
+
+# %%
+
+print('> Rename with new names, but without updating references:')
+# Then rename to a new name
+renameNode(shaderNode, 'new_shader', False) 
+# Also rename the image node
+imageNode = nodeGraph.getNode('test_image')
+renameNode(imageNode, 'new_image', False)
+
+print(mx.prettyPrint(nodeGraph) + '</nodegraph>')
+
+
+# %%
+validateDocument(doc)
+
+# Restore old names
+shaderNode.setName('test_shader')
+imageNode.setName('test_image')
+
+
+# %%
+
+print('> Rename with new names, but with references updated:')
+renameNode(shaderNode, 'new_shader', True) 
+renameNode(imageNode, 'new_image', True)
+print(mx.prettyPrint(nodeGraph) + '</nodegraph>')
+
+# Check the entire document
+validateDocument(doc);
+
+# %% [markdown]
 #  ## Finding Input Interfaces
 #  
 #  Sometimes it can be useful to find what inputs nodegraph are connected downstream to a given interface input.
@@ -506,7 +597,7 @@ print(documentContents)
 # 
 
 # %%
-def findInputsUsingInterface(nodegraph, interfaceName):
+def findDownStreamElementsUsingInterface(nodegraph, interfaceName):
 
     connectedInputs = []    
     connectedOutputs = []
@@ -520,15 +611,16 @@ def findInputsUsingInterface(nodegraph, interfaceName):
         if child == interfaceInput:
             continue
 
-        # Remove connection on node inputs and copy interface value
-        # to the input value so behaviour does not change
+        # Check inputs on nodes
         if child.isA(mx.Node):
             for input in child.getInputs():
                 childInterfaceName = input.getAttribute('interfacename')
                 if childInterfaceName == interfaceName:
                     connectedInputs.append(input.getNamePath())
 
-        # Remove connection on the output. Value are not copied over.
+        # Check outputs on a nodegraph. Note this is not fully supported for code generation
+        # as of 1.38.10 but instead a 'dot' node is recommended to be used between an
+        # input interface and an output interface. This would be found in the node check above.
         elif child.isA(mx.Output):
             childInterfaceName = child.getAttribute('interfacename')
             if childInterfaceName == interfaceName:
@@ -538,7 +630,7 @@ def findInputsUsingInterface(nodegraph, interfaceName):
 
 
 # %%
-connectedInputs, connectedOutputs = findInputsUsingInterface(nodeGraph, "input_file")
+connectedInputs, connectedOutputs = findDownStreamElementsUsingInterface(nodeGraph, "input_file")
 print('Connected inputs:', connectedInputs)
 print('Connected outputs:', connectedOutputs)
 
@@ -665,5 +757,58 @@ if colorNode:
 # Check the graph
 documentContents = mx.writeToXmlString(doc, writeOptions)
 print(documentContents)
+
+# %% [markdown]
+# ## Renaming (Revisited)
+# 
+# Now that we have a fully formed graph, we can perform some final renaming on the top level constant and nodegraph.
+
+# %%
+renameNode(doc.getNode('constant_float'), 'new_constant_float', True);
+documentContents = mx.writeToXmlString(doc, writeOptions)
+print(documentContents)
+validateDocument(doc)
+
+# %%
+nodegraph = doc.getNodeGraph('test_nodegraph')
+renameNode(nodegraph, 'new_nodegraph', True)
+documentContents = mx.writeToXmlString(doc, writeOptions)
+print(documentContents)
+validateDocument(doc)
+
+# %% [markdown]
+# ### Renaming Ports
+# 
+# At the current time there is no API support for quickly finding the downstream ports from a given port.
+# The renameNode() utility has a firewall check to avoid trying to call getDownstreamPorts() on a port.
+
+# %%
+# This does not work
+colorScale = nodegraph.getInput('color_scale')
+if colorScale:
+    renameNode(colorScale, 'new_color_scale', True)
+    print('> No change in color scale name:', colorScale.getName())
+
+# %% [markdown]
+#  The workaround is to use logic like findDownStreamElementsUsingInterface() to find the downstream ports and rename them.
+
+# %%
+# Use traversal to find and rename
+newScaleName = 'new_color_scale'
+downstreamInputs, downstreamOutputs = findDownStreamElementsUsingInterface(nodegraph, colorScale.getName())
+# Combine inputs and outputs
+downstreamInputs.extend(downstreamOutputs)
+if downstreamInputs:
+    for item in downstreamInputs:
+        downStreamElement = doc.getDescendant(item)
+        if (downStreamElement):
+            print('> Rename:' + downStreamElement.getNamePath() + ' interfacename from ' + colorScale.getName() + ' to ' + newScaleName)
+            downStreamElement.setAttribute('interfacename', newScaleName)
+            colorScale.setName(newScaleName)
+
+print(' ')
+documentContents = mx.writeToXmlString(doc, writeOptions)
+print(documentContents)
+validateDocument(doc)
 
 
