@@ -1,3 +1,7 @@
+# Site Retirement
+
+## Support for this repo and site will halt after the MaterialX 1.39 official release.
+
 # Welcome to "MaterialX Learn"
 [![main](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml/badge.svg)](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml)
 
