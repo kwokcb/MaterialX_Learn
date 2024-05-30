@@ -275,6 +275,41 @@ class MtlxNodeGraph:
         return connectedInputs, connectedOutputs
 
     @staticmethod
+    def renameNode(node : mx.Node, newName : str, updateReferences : bool = True):
+        '''
+        Rename a node and update downstream references if desired
+        '''
+
+        if not node or not newName:
+            return
+        if not (node.isA(mx.Node) or node.isA(mx.NodeGraph)):
+            return 
+        if node.getName() == newName:
+            return
+
+        parent = node.getParent()
+        if not parent:
+            return
+
+        newName = parent.createValidChildName(newName)
+
+        if updateReferences:
+            downStreamPorts = node.getDownstreamPorts()
+            if downStreamPorts:
+                for port in downStreamPorts:
+                    if (port.getAttribute('nodename')):
+                        port.setNodeName(newName)
+                        node.setName(newName)
+                    elif (port.getAttribute('nodegraph')):
+                        port.setAttribute('nodegraph', newName)
+                        node.setName(newName)
+                    elif (port.getAttribute('interfacename')):
+                        port.setAttribute('interfacename', newName)
+                        node.setName(newName)
+        else:
+            node.setName(newName)
+
+    @staticmethod
     def unconnectInterface(nodegraph, interfaceName, removeInterface=True):
         '''
         Remove an interface input from a nodegraph

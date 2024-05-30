@@ -18,7 +18,7 @@
 # - The utilities (including Mermaid generation) in this tutorial are collected in the `mtlxutils` file: `mxtraversal.py`.
 # - The command `mxgraphio.py` found in the `pymaterialx` folder wraps up these utilities.  
 # - All Mermaid diagrams on this site are generated using the `mxgraphio.py` command line utility or the `mtlxutils` library.
-# - The Javascript module `JsMaterialGraph` is used for interactive graph generation on the <a href="../javascript/mtlx_js_utilities.html">Graph Editing</a> page.
+# - The Javascript module `JsMaterialGraph` is used for interactive graph generation on the <a href="../javascript/graphing_utilities.html">Graph Editing</a> page.
 
 # %% [markdown]
 # ### Setup

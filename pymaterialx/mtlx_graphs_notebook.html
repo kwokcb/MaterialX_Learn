@@ -15173,6 +15173,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="c1"># Write predicate</span>
 <span class="k">def</span> <span class="nf">skipLibraryElement</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
     <span class="k">return</span> <span class="ow">not</span> <span class="n">elem</span><span class="o">.</span><span class="n">hasSourceUri</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">validateDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+    <span class="n">valid</span><span class="p">,</span> <span class="n">errors</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">valid</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; Document is not valid&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; &#39;</span> <span class="o">+</span> <span class="n">errors</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; Document is valid&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -16270,7 +16278,7 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check the entire document</span>
-<span class="n">doc</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+<span class="n">validateDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
 <span class="n">writeOptions</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">XmlWriteOptions</span><span class="p">()</span>
 <span class="n">writeOptions</span><span class="o">.</span><span class="n">writeXIncludeEnable</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">writeOptions</span><span class="o">.</span><span class="n">elementPredicate</span> <span class="o">=</span> <span class="n">skipLibraryElement</span>
@@ -16300,7 +16308,8 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Wrote document to file: data/sample_nodegraph.mtlx
+<pre>&gt; Document is valid
+Wrote document to file: data/sample_nodegraph.mtlx
 
 &lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;materialx version=&#34;1.39&#34;&gt;
@@ -16336,6 +16345,286 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Renaming-Nodes">Renaming Nodes<a class="anchor-link" href="#Renaming-Nodes">&#182;</a></h2><p>If you just rename a node without renaming references to it, then the references will be broken.
+Currently the interface for setting node names is &quot;unsafe&quot; in that it does not check for references to the node.</p>
+<p>Below a utility is added to rename a node and update all references to it. It uses the existing interface getDownStreamPorts() to find all references to a node
+and updates them.</p>
+
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">renameNode</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">newName</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">updateReferences</span> <span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">newName</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">isA</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">Node</span><span class="p">)</span> <span class="ow">or</span> <span class="n">node</span><span class="o">.</span><span class="n">isA</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">NodeGraph</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A non-node or non-nodegraph was passed to renameNode()&#39;</span><span class="p">)</span>
+        <span class="k">return</span> 
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span> <span class="o">==</span> <span class="n">newName</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">getParent</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">parent</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="n">newName</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">newName</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">updateReferences</span><span class="p">:</span>
+        <span class="n">downStreamPorts</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">getDownstreamPorts</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">downStreamPorts</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="n">downStreamPorts</span><span class="p">:</span>
+                <span class="c1">#if (port.getNodeName() == node.getName()): This is assumed from getDownstreamPorts()</span>
+                <span class="n">oldName</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">getNodeName</span><span class="p">()</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">port</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;nodename&#39;</span><span class="p">)):</span>
+                    <span class="n">port</span><span class="o">.</span><span class="n">setNodeName</span><span class="p">(</span><span class="n">newName</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  &gt; Update downstream port: &quot;&#39;</span> <span class="o">+</span> <span class="n">port</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&quot; from:&quot;&#39;</span> <span class="o">+</span> <span class="n">oldName</span> <span class="o">+</span> <span class="s1">&#39;&quot; to &quot;&#39;</span> <span class="o">+</span> <span class="n">port</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;nodename&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="p">(</span><span class="n">port</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;nodegraph&#39;</span><span class="p">)):</span>
+                    <span class="n">port</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s1">&#39;nodegraph&#39;</span><span class="p">,</span> <span class="n">newName</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  &gt; Update downstream port: &quot;&#39;</span> <span class="o">+</span> <span class="n">port</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&quot; from:&quot;&#39;</span> <span class="o">+</span> <span class="n">oldName</span> <span class="o">+</span> <span class="s1">&#39;&quot; to &quot;&#39;</span> <span class="o">+</span> <span class="n">port</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;nodegraph&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="p">(</span><span class="n">port</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;interfacename&#39;</span><span class="p">)):</span>
+                    <span class="n">port</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s1">&#39;interfacename&#39;</span><span class="p">,</span> <span class="n">newName</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  &gt; Update downstream port: &quot;&#39;</span> <span class="o">+</span> <span class="n">port</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;&quot; from:&quot;&#39;</span> <span class="o">+</span> <span class="n">oldName</span> <span class="o">+</span> <span class="s1">&#39;&quot; to &quot;&#39;</span> <span class="o">+</span> <span class="n">port</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;interfacename&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+
+    <span class="n">node</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">newName</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Test renaming to the same name. This will be a no-op</span>
+<span class="n">shaderNode</span> <span class="o">=</span> <span class="n">nodeGraph</span><span class="o">.</span><span class="n">getNode</span><span class="p">(</span><span class="s1">&#39;test_shader&#39;</span><span class="p">)</span>
+<span class="n">renameNode</span><span class="p">(</span><span class="n">shaderNode</span><span class="p">,</span> <span class="s1">&#39;test_shader&#39;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; Result with renaming to same name:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>&gt; Result with renaming to same name:
+
+&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
+  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
+  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
+    &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
+  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
+  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
+  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
+&lt;/nodegraph&gt;
+
+&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
+  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
+  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
+    &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
+  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
+  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
+  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
+&lt;/nodegraph&gt;
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; Rename with new names, but without updating references:&#39;</span><span class="p">)</span>
+<span class="c1"># Then rename to a new name</span>
+<span class="n">renameNode</span><span class="p">(</span><span class="n">shaderNode</span><span class="p">,</span> <span class="s1">&#39;new_shader&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> 
+<span class="c1"># Also rename the image node</span>
+<span class="n">imageNode</span> <span class="o">=</span> <span class="n">nodeGraph</span><span class="o">.</span><span class="n">getNode</span><span class="p">(</span><span class="s1">&#39;test_image&#39;</span><span class="p">)</span>
+<span class="n">renameNode</span><span class="p">(</span><span class="n">imageNode</span><span class="p">,</span> <span class="s1">&#39;new_image&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>&gt; Rename with new names, but without updating references:
+&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
+  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
+  &lt;standard_surface name=&#34;new_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
+    &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
+  &lt;image name=&#34;new_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
+  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
+  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
+&lt;/nodegraph&gt;
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">validateDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+
+<span class="c1"># Restore old names</span>
+<span class="n">shaderNode</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s1">&#39;test_shader&#39;</span><span class="p">)</span>
+<span class="n">imageNode</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s1">&#39;test_image&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>&gt; Document is not valid
+&gt; Invalid port connection: &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
+Invalid port connection: &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; Rename with new names, but with references updated:&#39;</span><span class="p">)</span>
+<span class="n">renameNode</span><span class="p">(</span><span class="n">shaderNode</span><span class="p">,</span> <span class="s1">&#39;new_shader&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> 
+<span class="n">renameNode</span><span class="p">(</span><span class="n">imageNode</span><span class="p">,</span> <span class="s1">&#39;new_image&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mx</span><span class="o">.</span><span class="n">prettyPrint</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/nodegraph&gt;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Check the entire document</span>
+<span class="n">validateDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">);</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>&gt; Rename with new names, but with references updated:
+  &gt; Update downstream port: &#34;test_nodegraph/out&#34; from:&#34;test_shader&#34; to &#34;new_shader&#34;
+  &gt; Update downstream port: &#34;test_nodegraph/new_shader/base_color&#34; from:&#34;test_image&#34; to &#34;new_image&#34;
+&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
+  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;new_shader&#34;&gt;
+  &lt;standard_surface name=&#34;new_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;new_image&#34;&gt;
+    &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
+  &lt;image name=&#34;new_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+    &lt;input name=&#34;file&#34; type=&#34;filename&#34; interfacename=&#34;input_file&#34;&gt;
+  &lt;input name=&#34;input_file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
+  &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
+&lt;/nodegraph&gt;
+&gt; Document is valid
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Finding-Input-Interfaces">Finding Input Interfaces<a class="anchor-link" href="#Finding-Input-Interfaces">&#182;</a></h2><p>Sometimes it can be useful to find what inputs nodegraph are connected downstream to a given interface input.
  The <code>findInputsUsingInterface()</code> utility demonstrates how to do this.</p>
 
@@ -16350,7 +16639,7 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">findInputsUsingInterface</span><span class="p">(</span><span class="n">nodegraph</span><span class="p">,</span> <span class="n">interfaceName</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">findDownStreamElementsUsingInterface</span><span class="p">(</span><span class="n">nodegraph</span><span class="p">,</span> <span class="n">interfaceName</span><span class="p">):</span>
 
     <span class="n">connectedInputs</span> <span class="o">=</span> <span class="p">[]</span>    
     <span class="n">connectedOutputs</span> <span class="o">=</span> <span class="p">[]</span>
@@ -16395,7 +16684,7 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">connectedInputs</span><span class="p">,</span> <span class="n">connectedOutputs</span> <span class="o">=</span> <span class="n">findInputsUsingInterface</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;input_file&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">connectedInputs</span><span class="p">,</span> <span class="n">connectedOutputs</span> <span class="o">=</span> <span class="n">findDownStreamElementsUsingInterface</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="s2">&quot;input_file&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connected inputs:&#39;</span><span class="p">,</span> <span class="n">connectedInputs</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Connected outputs:&#39;</span><span class="p">,</span> <span class="n">connectedOutputs</span><span class="p">)</span>
 </pre></div>
@@ -16417,7 +16706,7 @@ Adding inputs can be thought of as exposing the internal inputs as &quot;public&
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Connected inputs: [&#39;test_nodegraph/test_image/file&#39;]
+<pre>Connected inputs: [&#39;test_nodegraph/new_image/file&#39;]
 Connected outputs: []
 </pre>
 </div>
@@ -16519,11 +16808,11 @@ To attempt to keep the behaviour the same the interface's value is copied to the
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>&lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34;&gt;
-  &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34;&gt;
+  &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;new_shader&#34;&gt;
+  &lt;standard_surface name=&#34;new_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+    &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;new_image&#34;&gt;
     &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34;&gt;
-  &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+  &lt;image name=&#34;new_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
     &lt;input name=&#34;file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34;&gt;
   &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; value=&#34;0.2&#34;&gt;
 &lt;/nodegraph&gt;
@@ -16702,12 +16991,12 @@ To attempt to keep the behaviour the same the interface's value is copied to the
 <pre>&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;materialx version=&#34;1.39&#34;&gt;
   &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
-    &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;test_shader&#34; /&gt;
-    &lt;standard_surface name=&#34;test_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
-      &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;test_image&#34; /&gt;
+    &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;new_shader&#34; /&gt;
+    &lt;standard_surface name=&#34;new_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+      &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;new_image&#34; /&gt;
       &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34; /&gt;
     &lt;/standard_surface&gt;
-    &lt;image name=&#34;test_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+    &lt;image name=&#34;new_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
       &lt;input name=&#34;file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34; /&gt;
     &lt;/image&gt;
     &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; nodename=&#34;constant_float&#34; /&gt;
@@ -16720,6 +17009,286 @@ To attempt to keep the behaviour the same the interface's value is copied to the
   &lt;/constant&gt;
 &lt;/materialx&gt;
 
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Renaming-(Revisited)">Renaming (Revisited)<a class="anchor-link" href="#Renaming-(Revisited)">&#182;</a></h2><p>Now that we have a fully formed graph, we can perform some final renaming on the top level constant and nodegraph.</p>
+
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">renameNode</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">getNode</span><span class="p">(</span><span class="s1">&#39;constant_float&#39;</span><span class="p">),</span> <span class="s1">&#39;new_constant_float&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">);</span>
+<span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">documentContents</span><span class="p">)</span>
+<span class="n">validateDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>  &gt; Update downstream port: &#34;test_nodegraph/color_scale&#34; from:&#34;constant_float&#34; to &#34;new_constant_float&#34;
+&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;materialx version=&#34;1.39&#34;&gt;
+  &lt;nodegraph name=&#34;test_nodegraph&#34;&gt;
+    &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;new_shader&#34; /&gt;
+    &lt;standard_surface name=&#34;new_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+      &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;new_image&#34; /&gt;
+      &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34; /&gt;
+    &lt;/standard_surface&gt;
+    &lt;image name=&#34;new_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+      &lt;input name=&#34;file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34; /&gt;
+    &lt;/image&gt;
+    &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; nodename=&#34;new_constant_float&#34; /&gt;
+  &lt;/nodegraph&gt;
+  &lt;surfacematerial name=&#34;my_material&#34; type=&#34;material&#34; nodedef=&#34;ND_surfacematerial&#34;&gt;
+    &lt;input name=&#34;surfaceshader&#34; type=&#34;surfaceshader&#34; nodegraph=&#34;test_nodegraph&#34; /&gt;
+  &lt;/surfacematerial&gt;
+  &lt;constant name=&#34;new_constant_float&#34; type=&#34;float&#34; nodedef=&#34;ND_constant_float&#34;&gt;
+    &lt;input name=&#34;value&#34; type=&#34;float&#34; value=&#34;0.2&#34; /&gt;
+  &lt;/constant&gt;
+&lt;/materialx&gt;
+
+&gt; Document is valid
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nodegraph</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getNodeGraph</span><span class="p">(</span><span class="s1">&#39;test_nodegraph&#39;</span><span class="p">)</span>
+<span class="n">renameNode</span><span class="p">(</span><span class="n">nodegraph</span><span class="p">,</span> <span class="s1">&#39;new_nodegraph&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">documentContents</span><span class="p">)</span>
+<span class="n">validateDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>  &gt; Update downstream port: &#34;my_material/surfaceshader&#34; from:&#34;&#34; to &#34;new_nodegraph&#34;
+&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;materialx version=&#34;1.39&#34;&gt;
+  &lt;nodegraph name=&#34;new_nodegraph&#34;&gt;
+    &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;new_shader&#34; /&gt;
+    &lt;standard_surface name=&#34;new_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+      &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;new_image&#34; /&gt;
+      &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;color_scale&#34; /&gt;
+    &lt;/standard_surface&gt;
+    &lt;image name=&#34;new_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+      &lt;input name=&#34;file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34; /&gt;
+    &lt;/image&gt;
+    &lt;input name=&#34;color_scale&#34; type=&#34;float&#34; nodename=&#34;new_constant_float&#34; /&gt;
+  &lt;/nodegraph&gt;
+  &lt;surfacematerial name=&#34;my_material&#34; type=&#34;material&#34; nodedef=&#34;ND_surfacematerial&#34;&gt;
+    &lt;input name=&#34;surfaceshader&#34; type=&#34;surfaceshader&#34; nodegraph=&#34;new_nodegraph&#34; /&gt;
+  &lt;/surfacematerial&gt;
+  &lt;constant name=&#34;new_constant_float&#34; type=&#34;float&#34; nodedef=&#34;ND_constant_float&#34;&gt;
+    &lt;input name=&#34;value&#34; type=&#34;float&#34; value=&#34;0.2&#34; /&gt;
+  &lt;/constant&gt;
+&lt;/materialx&gt;
+
+&gt; Document is valid
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Renaming-Ports">Renaming Ports<a class="anchor-link" href="#Renaming-Ports">&#182;</a></h3><p>At the current time there is no API support for quickly finding the downstream ports from a given port.
+The renameNode() utility has a firewall check to avoid trying to call getDownstreamPorts() on a port.</p>
+
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This does not work</span>
+<span class="n">colorScale</span> <span class="o">=</span> <span class="n">nodegraph</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="s1">&#39;color_scale&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">colorScale</span><span class="p">:</span>
+    <span class="n">renameNode</span><span class="p">(</span><span class="n">colorScale</span><span class="p">,</span> <span class="s1">&#39;new_color_scale&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; No change in color scale name:&#39;</span><span class="p">,</span> <span class="n">colorScale</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>A non-node or non-nodegraph was passed to renameNode()
+&gt; No change in color scale name: color_scale
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The workaround is to use logic like findDownStreamElementsUsingInterface() to find the downstream ports and rename them.</p>
+
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use traversal to find and rename</span>
+<span class="n">newScaleName</span> <span class="o">=</span> <span class="s1">&#39;new_color_scale&#39;</span>
+<span class="n">downstreamInputs</span><span class="p">,</span> <span class="n">downstreamOutputs</span> <span class="o">=</span> <span class="n">findDownStreamElementsUsingInterface</span><span class="p">(</span><span class="n">nodegraph</span><span class="p">,</span> <span class="n">colorScale</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+<span class="c1"># Combine inputs and outputs</span>
+<span class="n">downstreamInputs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">downstreamOutputs</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">downstreamInputs</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">downstreamInputs</span><span class="p">:</span>
+        <span class="n">downStreamElement</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getDescendant</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">downStreamElement</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; Rename:&#39;</span> <span class="o">+</span> <span class="n">downStreamElement</span><span class="o">.</span><span class="n">getNamePath</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; interfacename from &#39;</span> <span class="o">+</span> <span class="n">colorScale</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; to &#39;</span> <span class="o">+</span> <span class="n">newScaleName</span><span class="p">)</span>
+            <span class="n">downStreamElement</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s1">&#39;interfacename&#39;</span><span class="p">,</span> <span class="n">newScaleName</span><span class="p">)</span>
+            <span class="n">colorScale</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">newScaleName</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">documentContents</span><span class="p">)</span>
+<span class="n">validateDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>&gt; Rename:new_nodegraph/new_shader/base interfacename from color_scale to new_color_scale
+ 
+&lt;?xml version=&#34;1.0&#34;?&gt;
+&lt;materialx version=&#34;1.39&#34;&gt;
+  &lt;nodegraph name=&#34;new_nodegraph&#34;&gt;
+    &lt;output name=&#34;out&#34; type=&#34;surfaceshader&#34; nodename=&#34;new_shader&#34; /&gt;
+    &lt;standard_surface name=&#34;new_shader&#34; type=&#34;surfaceshader&#34; nodedef=&#34;ND_standard_surface_surfaceshader&#34;&gt;
+      &lt;input name=&#34;base_color&#34; type=&#34;color3&#34; nodename=&#34;new_image&#34; /&gt;
+      &lt;input name=&#34;base&#34; type=&#34;float&#34; interfacename=&#34;new_color_scale&#34; /&gt;
+    &lt;/standard_surface&gt;
+    &lt;image name=&#34;new_image&#34; type=&#34;color3&#34; nodedef=&#34;ND_image_color3&#34;&gt;
+      &lt;input name=&#34;file&#34; type=&#34;filename&#34; value=&#34;checker.png&#34; /&gt;
+    &lt;/image&gt;
+    &lt;input name=&#34;new_color_scale&#34; type=&#34;float&#34; nodename=&#34;new_constant_float&#34; /&gt;
+  &lt;/nodegraph&gt;
+  &lt;surfacematerial name=&#34;my_material&#34; type=&#34;material&#34; nodedef=&#34;ND_surfacematerial&#34;&gt;
+    &lt;input name=&#34;surfaceshader&#34; type=&#34;surfaceshader&#34; nodegraph=&#34;new_nodegraph&#34; /&gt;
+  &lt;/surfacematerial&gt;
+  &lt;constant name=&#34;new_constant_float&#34; type=&#34;float&#34; nodedef=&#34;ND_constant_float&#34;&gt;
+    &lt;input name=&#34;value&#34; type=&#34;float&#34; value=&#34;0.2&#34; /&gt;
+  &lt;/constant&gt;
+&lt;/materialx&gt;
+
+&gt; Document is valid
 </pre>
 </div>
 </div>

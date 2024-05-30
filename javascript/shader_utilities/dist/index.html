@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html>
+
+<!--StyleStart-->
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/night.min.css">
+
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/monokai.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material-darker.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/abbott.min.css">
+  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/xml/xml.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/json/json.min.js"></script> -->
+
+  <style>
+    .inverted-svg {
+      filter: invert(1);
+    }
+
+    body {
+      font-family: Arial
+    }
+
+    /* Property editor item color */
+    .peditoritem {
+      background-color: #334444;
+    }
+
+    /* Property editor folder color */
+    .peditorfolder {
+      background-color: #333333;
+    }
+
+    .peditor_material_assigned {
+      background-color: #006cb8;
+    }
+
+    .peditor_material_assigned:hover {
+      background-color: #32adff;
+    }
+
+    .CodeMirror {
+      font-size: 12px;
+    }
+  </style>
+  <style>
+    /* Add any additional styling here */
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 50%;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      min-width: 128;
+      min-height: 128;
+    }
+  </style>
+<script defer src="main.js"></script></head>
+<!--StyleEnd-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"> -->
+  <title>MaterialX Rendering Utilities</title>
+  <!-- <link rel="icon" type="image/x-icon" href="public/favicon.ico" /> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <!--Start-->
+  <title>MaterialX Shader Utilities</title>
+
+  <script type="text/javascript" src="JsMaterialXGenShader.js"></script>
+
+  <div class="container p-2">
+
+    <h2>MaterialX Shader Utilities</h2>
+    The following is a set of utilities to work with MaterialX shaders using it's Javascript
+    packages.
+
+    <h3>Document Visualization</h3>
+    <p>A MaterialX document can be loaded in and previewed as text.</p>
+    <ul>
+      <li>A selected material from the document can be rendered in 3D using MaterialX shader generation</li>
+      <li>A selected material from the document can have it's shader code shown as text</li>
+    </ul>
+    </p>
+    <p>
+      <b>Caveats</b>: The Javascript libraries for MaterialX can be quite slow to load. Please wait until
+      the page is fully loaded before using the utilities. The page will be ready when a default
+      material is rendered in the 3D view. The shader setup is known to be quite slow using ThreeJS
+      raw shaders due to the number of uniforms that are generated via MaterialX code generation.
+    </p>
+    <div class="row flex">
+      <div class="col-sm-12 p-2">
+        <button class="btn btn-outline-primary shadow-sm" id="loadMaterialXButton" disabled>Load MaterialX
+          Document</button>
+        <button id="materialXTextArea_copy" class="btn btn-sm copy-button" data-target="materialXTextArea">
+          <img class="inverted-svg" src="Images/copy-regular.svg" style="width: 24px;" alt="Copy Icon">
+        </button>
+        <button id="materialXTextArea_paste" class="btn btn-sm" data-target="materialXTextArea">
+          <img class="inverted-svg" src="Images/clipboard.svg" style="width: 24px;" alt="Copy Icon">
+        </button>
+      </div>
+    </div>
+    <div class="row flex">
+      <div class="col-sm-12 p-2">
+        <textarea class="form-control form-control-sm overflow-auto" data-bs-theme="dark" id="materialXTextArea"
+          rows="10" style="width: 100%;" placeholder="Loaded MaterialX document will be displayed here"></textarea><br>
+      </div>
+      <div class="container p-2 shadow-sm">
+        <div class="row flex">
+          <div class="col-sm-3 p-2">
+            <button class="btn btn-outline-primary shadow-sm" disabled id="renderButton">Validate and Render</button>
+          </div>
+          <div class="col-sm-9 p-2">
+            <textarea id="statusLine" class="form-control form-control-sm overflow-auto" disabled rows="2"></textarea>
+          </div>
+        </div>
+        <div class="row flex">
+          <div class="col-sm-12 p-2">
+            <label for="renderableItem">Renderable Item:</label>
+            <select id="renderableItem">
+              <!-- <option value="0"></option>
+                                        <option value="1"></option> -->
+            </select>
+            <br>
+            <label for="shaderInterface">Shader Interface:</label>
+            <select id="shaderInterface">
+              <option value="0">Reduced</option>
+              <option value="1">Complete</option>
+            </select>
+          </div>
+          <div>
+          </div>
+        </div>
+
+        <p></p>
+        <div class="container m-0 p-0">
+          <div class="row">
+            <div class="col" id="colContainer">
+              <div class="canvas-container" id="canvasContainer">
+                <canvas id="webglcanvas" tabindex=1 class="rounded-4" style="outline: none"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container m-0 px-0">
+          <div class="row p-2">
+            <div class="col">
+              <label for="loadGeometry">Display Geometry:</label>
+              <select id="loadGeometry">
+                <option value="teapot">Teapot</option>
+                <option value="shaderball">Shader Ball</option>
+                <option value="sphere">Sphere</option>
+                <option value="plane">Plane</option>
+                <option value="cylinder">Cylinder</option>
+                <option value="_loadFromFile_">Custom...</option>
+                <!-- <option value="glTF">glTF Logo</option> -->
+              </select>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <label class="form-check-label" for="turntableEnabled">
+                  Turntable
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="turntableEnabled">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <label class="form-check-label" for="toggleBackgroundTexture">
+                  Background
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="toggleBackgroundTexture">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Button to generate shader -->
+        <hr>
+        <div class="container m-0 p-0">
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-outline-primary shadow-sm" disabled id="generateShaderButton">Generate
+                Shader</button>
+            </div>
+            <div class="col">
+              <label for="shaderLanguage">Language:</label>
+              <select id="shaderLanguage">
+                <option value="0">ESSL</option>
+                <option value="1">OSL</option>
+                <option value="2">GLSL</option>
+                <option value="3">Metal</option>
+                <option value="4">Vulkan</option>
+                <!-- <option value="5">MDL</option> -->
+              </select>
+            </div>
+          </div>
+          <div class="row flex-nowrap">
+            <div class="col-sm-12 p-2">
+              <label for="materialXShader">Pixel Shader</label>
+              <button id="pixshaderButton" class="btn btn-sm copy-button" data-target="materialXShader">
+                <img class="inverted-svg" src="Images/copy-regular.svg" style="width: 24px;" alt="Copy Icon">
+              </button>
+              <textarea class="overflow-auto form-control form-control-sm" data-bs-theme="dark" id="materialXShader"
+                rows="12" style="width: 100%;"
+                placeholder="Generated shader code will be displayed here"></textarea><br>
+
+              <label for="materialXShaderVS">Vertex Shader</label>
+              <button id="vertexshaderButton" class="btn btn-sm copy-button" data-target="materialXShaderVS">
+                <img class="inverted-svg" src="Images/copy-regular.svg" style="width: 24px; " alt="Copy Icon">
+              </button>
+              <textarea class="overflow-auto form-control form-control-sm" data-bs-theme="dark" id="materialXShaderVS"
+                rows="3" style="width: 100%;" placeholder="Generated shader code will be displayed here"></textarea><br>
+              <label for="materialXShaderVS">Pixel Shader Uniforms</label>
+              <p></p>
+              <div class="container p-0" style="max-height: 300px; overflow-y: auto;">
+                <table id="materialXShaderReflect" data-bs-theme="dark" class="table table-bordered">
+                </table>
+              </div>
+              <p></p>
+              <hr>
+              <button class="btn btn-outline-primary shadow-sm" id="saveReflection">Save Reflection
+                Information</button>
+              <a id="reflectionLink" style="display: none;"></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <script type="text/javascript">
+        console.log("Load MaterialX");
+
+        let mmx = null;
+        let mdoc = null;
+        let renderableItems = [];
+
+        let esslgenerator = null;
+        let esslgenContext = null;
+        let oslgenerator = null;
+        let oslgenContext = null;
+        let glslgenerator = null;
+        let glslgenContext = null;
+        let mslgenerator = null;
+        let mslgenContext = null;
+        let vkgenerator = null;
+        let vkgenContext = null;
+        let mdlgenerator = null;
+        let mdlgenContext = null;
+        let stdlib = null;
+
+        function setupGenerators(maindoc) {
+          if (esslgenerator != null)
+            return;
+
+          esslgenerator = new mmx.EsslShaderGenerator();
+          esslgenContext = new mmx.GenContext(esslgenerator);
+          stdlib = mmx.loadStandardLibraries(esslgenContext);
+          maindoc.importLibrary(stdlib);
+
+          oslgenerator = new mmx.OslShaderGenerator();
+          oslgenContext = new mmx.GenContext(oslgenerator);
+          mmx.loadStandardLibraries(oslgenContext);
+
+          glslgenerator = new mmx.GlslShaderGenerator();
+          glslgenContext = new mmx.GenContext(glslgenerator);
+          mmx.loadStandardLibraries(glslgenContext);
+
+          mslgenerator = new mmx.MslShaderGenerator();
+          mslgenContext = new mmx.GenContext(mslgenerator);
+          mmx.loadStandardLibraries(mslgenContext);
+
+          vkgenerator = new mmx.VkShaderGenerator();
+          vkgenContext = new mmx.GenContext(vkgenerator);
+          mmx.loadStandardLibraries(vkgenContext);
+
+          //mdlgenerator = new mmx.MdlShaderGenerator();
+          //mdlgenContext = new mmx.GenContext(mdlgenerator);
+          //mmx.loadStandardLibraries(mdlgenContext);
+
+        }
+
+        function loadMaterialX() {
+          return new Promise((resolve, reject) => {
+            MaterialX().then((mmtlx) => {
+              // Save the MaterialX instance to the global variable
+              mmx = mmtlx;
+
+              console.log("MaterialX loaded");
+
+              // Enable the buttons to load MaterialX documents, generate shaders, and render
+              document.getElementById('loadMaterialXButton').disabled = false;
+              document.getElementById('generateShaderButton').disabled = false;
+              document.getElementById('renderButton').disabled = false;
+
+              // Resolve the promise
+              resolve();
+            }).catch((error) => {
+              // Reject the promise if there's an error
+              reject(error);
+            });
+          });
+        }
+
+        function loadInitialText(filePath) {
+          try {
+            fetch(filePath)
+              .then(response => response.blob())
+              .then(blob => {
+                // Now 'blob' contains the binary data of the file
+                //console.log(blob);
+
+                // You can use the Blob in your application, for example, in FileReader
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                  //console.log('Read file:', e.target.result);
+                  showDocument(e.target.result);
+                }
+                reader.readAsText(blob);
+              })
+          } catch (error) {
+            console.error('Error loading file %s:' % filePath, error);
+          }
+        }
+
+        // Call the asynchronous function and then perform additional logic
+        loadMaterialX().then(() => {
+          // Get URL options. Fallback to defaults if not specified.
+          let materialFilename = new URLSearchParams(document.location.search).get("file");
+          if (!materialFilename) {
+            materialFilename = 'Materials/Examples/StandardSurface/gooch_shade.mtlx';
+          }
+          loadInitialText(materialFilename);
+
+        }).catch((error) => {
+          console.error("Error loading MaterialX:", error);
+        });
+
+        // Attach event listener to the button
+        document.getElementById('loadMaterialXButton').addEventListener('click', () => {
+          // Open file dialog
+          const input = document.createElement('input');
+          input.type = 'file';
+          input.accept = '.mtlx';
+          input.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+              loadMaterialXDocument(file, file.name);
+            }
+          });
+
+          // Trigger the file dialog
+          input.click();
+        });
+
+        const ALL_GEOMETRY_SPECIFIER = "*";
+        const NO_GEOMETRY_SPECIFIER = "";
+
+        function findRenderableElements(mdoc) {
+          const materialNodes = mdoc.getMaterialNodes();
+          let shaderList = [];
+          let foundRenderable = false;
+          let renderableItems = [];
+
+          for (let i = 0; i < materialNodes.length; ++i) {
+            let materialNode = materialNodes[i];
+            if (materialNode) {
+              //console.log('Scan material: ', materialNode.getNamePath());
+              let shaderNodes = mmx.getShaderNodes(materialNode)
+              if (shaderNodes.length > 0) {
+                let shaderNodePath = shaderNodes[0].getNamePath()
+                if (!shaderList.includes(shaderNodePath)) {
+                  let assignment = NO_GEOMETRY_SPECIFIER;
+                  if (foundRenderable == false) {
+                    assignment = ALL_GEOMETRY_SPECIFIER;
+                    foundRenderable = true;
+                  }
+                  //console.log('-- add shader: ', shaderNodePath);
+                  shaderList.push(shaderNodePath);
+                  renderableItems.push(shaderNodePath);
+                }
+              }
+            }
+          }
+          const nodeGraphs = mdoc.getNodeGraphs();
+          for (let i = 0; i < nodeGraphs.length; ++i) {
+            let nodeGraph = nodeGraphs[i];
+            if (nodeGraph) {
+              if (nodeGraph.hasAttribute('nodedef') || nodeGraph.hasSourceUri()) {
+                continue;
+              }
+              // Skip any nodegraph that is connected to something downstream
+              if (nodeGraph.getDownstreamPorts().length > 0) {
+                continue
+              }
+              let outputs = nodeGraph.getOutputs();
+              for (let j = 0; j < outputs.length; ++j) {
+                let output = outputs[j];
+                {
+                  let assignment = NO_GEOMETRY_SPECIFIER;
+                  if (foundRenderable == false) {
+                    assignment = ALL_GEOMETRY_SPECIFIER;
+                    foundRenderable = true;
+                  }
+                  //let newMat = new MaterialAssign(output, assignment, null);
+                  renderableItems.push(output.getNamePath());
+                }
+              }
+            }
+          }
+          const outputs = mdoc.getOutputs();
+          for (let i = 0; i < outputs.length; ++i) {
+            let output = outputs[i];
+            if (output) {
+              let assignment = NO_GEOMETRY_SPECIFIER;
+              if (foundRenderable == false) {
+                assignment = ALL_GEOMETRY_SPECIFIER;
+                foundRenderable = true;
+              }
+              renderableItems.push(output.getNamePath());
+            }
+          }
+
+          /*
+          const allNodes = mdoc.getNodes();
+          console.log('All Nodes:', allNodes.length, allNodes); 
+          for (let i = 0; i < allNodes.length; ++i) {
+            let node = allNodes[i];
+            if (node) {
+                if (node.getType() == 'surfaceshader') {
+                let shaderNodePath = node.getNamePath()
+                if (!shaderList.includes(shaderNodePath)) {
+                  console.log('========================= Node:', node.getNamePath(), node.getCategory(), node.getType());
+                  let assignment = NO_GEOMETRY_SPECIFIER;
+                  if (foundRenderable == false) {
+                    assignment = ALL_GEOMETRY_SPECIFIER;
+                    foundRenderable = true;
+                  }
+                  shaderList.push(shaderNodePath);
+                  // Create a dummy surface material
+                  let surfaceMaterial = mdoc.addChildOfCategory('surfacematerial', shaderNodePath + '_material');
+                  let sm_input = surfaceMaterial.addInput('surfaceshader', 'surfaceshader');
+                  sm_input.setValueString(shaderNodePath, 'surfaceshader');
+                  renderableItems.push(shaderNodePath);
+                  console.log('Add dummy material:', mmx.prettyPrint(surfaceMaterial));
+                }
+              }
+            }
+            
+          } */
+
+          //console.log('----------- Renderable Items:', renderableItems);
+          // Update selection for renderables
+          let renderableItemSelect = document.getElementById('renderableItem');
+          if (renderableItemSelect)
+          {
+            // Remove any previous children
+            while (renderableItemSelect.firstChild) {
+              renderableItemSelect.removeChild(renderableItemSelect.firstChild);
+            }
+            for (let i = 0; i < renderableItems.length; i++) {
+              let item = renderableItems[i];
+              let option = document.createElement('option');
+              option.value = i;
+              option.text = item; // item.getNamePath();
+              renderableItemSelect.appendChild(option);
+            }
+          }
+
+          return renderableItems;
+        }
+
+        var editor = null;
+        function setupXML(contents) {
+          // Initialize CodeMirror for XML syntax highlighting
+          if (!editor) {
+            materialXTextArea = document.getElementById('materialXTextArea');
+            editor = CodeMirror.fromTextArea(materialXTextArea, {
+              mode: 'application/xml',
+              lineNumbers: true,
+              dragDrop: true,
+              theme: 'night',
+            });
+
+            // Optional: Set an initial value for the textarea
+            //const initialXML = ''; //'<?xml version="1.0" encoding="utf-8"?>\r\n<materialx version="1.38" colorspace="lin_rec709">\r\n</materialx>';
+            //materialXTextArea.value = initialXML;
+
+            // Update CodeMirror whenever the textarea content changes
+            editor.on('change', () => {
+              //console.log('Editor Content changed');
+              // Copy the content from CodeMirror back to the textarea
+              materialXTextArea.value = editor.getValue();
+            });
+
+            var pasteButton = document.getElementById('materialXTextArea_paste');
+            if (pasteButton) {
+              addPasteHandler(pasteButton, editor);
+            }
+          }
+
+          editor.setValue(contents);
+        }
+
+        function showDocument(fileContents) {
+          (async () => {
+            try {
+              st = document.getElementById('statusLine');
+              st.innerHTML = '';
+              st.disabled = true;
+
+              mdoc = mmx.createDocument();
+
+              const readOptions = new mmx.XmlReadOptions();
+              readOptions.readXIncludes = false;
+              await mmx.readFromXmlString(mdoc, fileContents, '', readOptions);
+              //console.log('Read document:', mmx.prettyPrint(mdoc));
+
+              // Update the text area with the file contents
+              let textArea = document.getElementById('materialXTextArea');
+              if (textArea.value != fileContents) {
+                //console.log('update text area:', textArea);
+                textArea.value = fileContents;
+                setupXML(fileContents);
+              }
+
+              let msg = {}
+              // Hack to get standard libraries loaded. The APIs for library handling are not currently 
+              // exposed....
+              let generator = new mmx.EsslShaderGenerator();
+              let genContext = new mmx.GenContext(generator);
+              let stdlib = mmx.loadStandardLibraries(genContext);
+              mdoc.importLibrary(stdlib);
+              let valid = mdoc.validate(msg);
+
+              st = document.getElementById('statusLine')
+              if (valid) {
+                st.innerHTML = 'Document is valid.';
+                var event = new InputEvent('blah', { bubbles: true });
+                console.log('>  Dispatch event:', event);
+                textArea.dispatchEvent(event);
+              } else {
+                st.innerHTML = 'Document is not valid.\n' + msg.message;
+                console.error('> Document is not valid', msg.message);
+              }
+
+              renderableItems = findRenderableElements(mdoc); //mdoc.getMaterialNodes();     
+              if (renderableItems.length == 0) {
+                st.innerHTML = st.innerHTML + '\nNo renderable items found';
+                console.log('No renderable items found');
+              }
+
+            } catch (error) {
+              st.innerHTML = error;
+              renderableItems = findRenderableElements(mdoc); //mdoc.getMaterialNodes();            
+              //console.error(error);
+            }
+          })();
+        }
+
+        function loadMaterialXDocument(file, fileName) {
+          if (mmx) {
+            // Load the content from the specified file (replace this with actual loading logic)
+            console.log("Loading content from file:", file.name);
+
+            const reader = new FileReader();
+            reader.readAsText(file, 'UTF-8');
+
+            reader.onload = function (e) {
+              // Display the contents of the file in the output div
+              let fileContents = e.target.result;
+              //console.log(e.target);
+              showDocument(fileContents);
+            }
+
+          } else {
+            console.error("MaterialX is not initialized");
+          }
+        }
+
+        /*
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize CodeMirror for XML syntax highlighting
+            const xmlTextarea = document.getElementById('materialXTextArea');
+            const editor = CodeMirror.fromTextArea(xmlTextarea, {
+                mode: 'application/xml',
+                lineNumbers: true,
+                theme: 'monokai' // You can choose a different theme
+            });
+            
+            // Update CodeMirror whenever the textarea content changes
+            editor.on('change', () => {
+                // Copy the content from CodeMirror back to the textarea
+                console.log('Content changed');
+                xmlTextarea.value = editor.getValue();
+            });
+            editor.on('input', () => {
+                // Copy the content from CodeMirror back to the textarea
+                console.log('Content changed');
+                xmlTextarea.value = editor.getValue();
+            });
+        }); */
+
+        function getUniformValues(shaderStage) {
+          //console.log('Get Uniforms for stage:', shaderStage);
+          let foundUniforms = {};
+          const uniformBlocks = Object.values(shaderStage.getUniformBlocks());
+
+
+          let uniformsResult = []
+          uniformBlocks.forEach(uniforms => {
+            if (!uniforms.empty()) {
+              for (let i = 0; i < uniforms.size(); ++i) {
+                const var1 = uniforms.get(i);
+                const value = var1.getValue()?.getValueString();
+                const name = var1.getVariable();
+
+                //console.log('Uniform:', name, var1.getType().getName(), value, var1.getPath())
+                uniformEntry = [name, var1.getType().getName(), value, var1.getPath()];
+                uniformsResult.push(uniformEntry);
+                //foundUniforms[name] = { var1.getType().getName(), value, name, uniforms };
+              }
+            }
+          });
+          return uniformsResult;
+        }
+
+        let cachedReflectionData = ''
+
+        function saveReflection() {
+          if (cachedReflectionData) {
+            console.log('Save Reflection...');
+            let outputJSON = {}
+            let jsonString = JSON.stringify(cachedReflectionData, null, 2);
+            var blob = new Blob([jsonString], { type: 'application/json' });
+
+            // Create a link element
+            var a = document.getElementById('reflectionLink');
+            a.href = URL.createObjectURL(blob);
+            a.download = cachedReflectionData.element + '_' +
+              cachedReflectionData.generate + '_' +
+              cachedReflectionData.interface +
+              '_reflection.json';
+            a.click();
+          }
+        }
+        document.getElementById('saveReflection').addEventListener('click', saveReflection);
+
+        // Add event handler for generate shader
+        document.getElementById('generateShaderButton').addEventListener('click', () => {
+          if (renderableItems.length == 0) {
+            console.error('No renderable items found');
+            return;
+          }
+          let renderableItemSelect = document.getElementById('renderableItem');
+          // Get selected items content
+          let selectedIndex = renderableItemSelect.value;
+          let elemPath = renderableItems[selectedIndex]
+          let elem = mdoc.getDescendant(elemPath);
+          if (!elem) {
+            console.error('Renderable item not found');
+            return;
+          }
+
+          let pixelSource = ''
+          let vertexSource = ''
+
+          setupGenerators(mdoc)
+
+          let generator = esslgenerator;
+          let genContext = esslgenContext;
+          let shaderLanguage = document.getElementById('shaderLanguage').value;
+          if (shaderLanguage == 1) {
+            generator = oslgenerator;
+            genContext = oslgenContext;
+          }
+          else if (shaderLanguage == 2) {
+            generator = glslgenerator;
+            genContext = glslgenContext;
+          }
+          else if (shaderLanguage == 3) {
+            generator = mslgenerator;
+            genContext = mslgenContext;
+          }
+          else if (shaderLanguage == 4) {
+            generator = vkgenerator;
+            genContext = vkgenContext;
+          }
+          //else if (shaderLanguage == 5) {
+          //  generator = mdlgenerator;
+          //  genContext = mdlgenContext;
+          //}
+          //console.log('-------------- Use Generator for: %s ---------------', generator.getTarget())
+
+          const isTransparent = mmx.isTransparentSurface(elem, generator.getTarget());
+          genContext.getOptions().hwTransparency = isTransparent;
+          // Always set to complete. 
+          // Can consider option to set to reduced as the parsing of large numbers of uniforms (e.g. on shading models)
+          // can be quite expensive.
+          let interface = document.getElementById('shaderInterface').value;
+          let interfaceString = 'Reduced';
+          if (interface == 0) {
+            genContext.getOptions().shaderInterfaceType = mmx.ShaderInterfaceType.SHADER_INTERFACE_REDUCED;
+          } else {
+            interfaceString = 'Complete';
+            genContext.getOptions().shaderInterfaceType = mmx.ShaderInterfaceType.SHADER_INTERFACE_COMPLETE;
+          }
+
+          console.log('Generate Shader: ', elemPath, elem, genContext);
+          let shader = null;
+          try {
+            shader = generator.generate(mmx.createValidName(elemPath), elem, genContext);
+          } catch (error) {
+            pixelSource = 'Error generating shader:' + error;
+          }
+          let noVertexShader = (shaderLanguage == 1 || shaderLanguage == 5)
+
+          if (shader) {
+            if (!noVertexShader)
+              vertexSource = shader.getSourceCode("vertex");
+            pixelSource = shader.getSourceCode("pixel");
+          }
+          let graphTextArea = document.getElementById('materialXShader');
+          pixelSource = '//\n// Pixel shader for:' + elemPath + ' \n' +
+            '// Shader interface: ' + interfaceString + '\n//\n' + pixelSource;
+          graphTextArea.value = pixelSource;
+
+          let vsArea = document.getElementById('materialXShaderVS');
+          if (!noVertexShader)
+            vsArea.value = '//\n// Vertex shader for:' + elemPath + ' \n' +
+              '// Shader interface: ' + interfaceString + '\n//\n' + vertexSource;
+          else
+            vsArea.value = '// No vertex shader for language';
+
+          //let uniforms = getUniformValues(shader.getStage('vertex'));
+          //console.log('Vertex Uniforms:', uniforms);
+          if (!shader.getStage('pixel')) {
+            console.warn('No pixel shader stage found');
+          }
+          else {
+            let pixelUniforms = getUniformValues(shader.getStage('pixel'));
+            cachedReflectionData =
+            {
+              "element": elemPath,
+              "generate": generator.getTarget(),
+              "interface": interfaceString.toLowerCase(),
+              "uniforms": pixelUniforms
+            };
+            if (vertexSource == '')
+              cachedReflectionData.vertex = 'None';
+            else
+              cachedReflectionData.vertex = vertexSource;
+            if (pixelSource == '')
+              cachedReflectionData.pixel = 'None';
+            else
+              cachedReflectionData.pixel = pixelSource;
+
+            let reflectionArea = document.getElementById('materialXShaderReflect');
+            // remove any previous children
+            while (reflectionArea.firstChild) {
+              reflectionArea.removeChild(reflectionArea.firstChild);
+            }
+
+            // Add header:
+            let headers = ['Uniform', 'Type', 'Value', 'Path'];
+            let headerRow = document.createElement('tr');
+            headers.forEach(function (title) {
+              var headerCell = document.createElement("th");
+              headerCell.textContent = title;
+              headerRow.appendChild(headerCell);
+            });
+            reflectionArea.appendChild(headerRow);
+
+            // Add content
+            for (let i = 0; i < pixelUniforms.length; i++) {
+              let uniform = pixelUniforms[i];
+              let row = document.createElement('tr');
+              for (let j = 0; j < uniform.length; j++) {
+                let cell = document.createElement('td');
+                cell.textContent = uniform[j];
+                row.appendChild(cell);
+              }
+              reflectionArea.appendChild(row);
+            }
+            //let jsonResult = JSON.stringify(cachedReflectionData, null, 2);
+            //console.log('Reflection Data:', jsonResult);
+          }
+        }
+        );
+
+        let renderButton = document.getElementById('renderButton');
+        if (renderButton) {
+          renderButton.addEventListener('click', () => {
+            console.log('Update from text area');
+            let textArea = document.getElementById('materialXTextArea');
+            showDocument(textArea.value);
+          });
+        }
+
+        addCopyHandlers();
+        addPasteHandlers();
+
+      </script>
+      <!--End-->
+</body>
+
+</html>

@@ -51,7 +51,7 @@
 <body>
   
   <script src="./documents/js/ui_helpers.js"></script>
-
+  
   </script>  
    
   <!-- Navigation_Area-->
@@ -161,11 +161,13 @@
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Utilities</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="./documents/gltfViewer.html">glTF Model Viewer</a></li>
+                        <li><a class="dropdown-item" href="./javascript/node_editor/index_out.html">Node Graph Editor</a></li>
+                        <li><a class="dropdown-item" href="./javascript/shader_editor/dist/index_out.html">Shader Graph Editor</a></li>
+                        <li><a class="dropdown-item" href="./javascript/shader_utilities/dist/index_out.html">Shader Utilities</a></li>
+                        <li><a class="dropdown-item" href="./javascript/graphing_utilities.html">Node Graph Utilities</a></li>
                         <li><a class="dropdown-item" href="./documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="./javascript/mtlx_js_utilities.html">Graph Editing</a></li>
-                        <li><a class="dropdown-item" href="./javascript/viewer/dist/index_out.html">Shader Preview</a></li>
-                        <li><a class="dropdown-item" href="./documents/mtlx_utilities.html">Python Utilities</a></li>
+                        <li><a class="dropdown-item" href="./documents/gltfViewer.html">glTF Model Viewer</a></li>
+                        <li><a class="dropdown-item" href="./documents/mtlx_utilities.html">Python Modules</a></li>
                     </ul>
                 </li>
 
@@ -219,9 +221,17 @@
     cursor: pointer;
     z-index: 100;
   }
-</style>
 
-<!-- <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+  .clickable-image {
+      transition: transform 0.3s;
+  }
+
+  .clickable-image:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+  }
+</style>
+<!-- <script type="module" src="https://unpkg.com/@google/model-shader_utilities/dist/model-viewer.js">
 </script> -->
 
 
@@ -254,391 +264,262 @@
   </div>
 
   <!-- What's New -->
-  <div class="row mb-0">
-    <div class="col-md-6">
-      <h3 class="d-inline-block mb-2">Updates</h3>
-      <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative"
-        style="max-height: 20em">
-        <div class="col p-2 d-flex flex-column position-static">
-          <div class="mb-1 text-muted">April, 2024</div>
-          <b class="mb-0">Shaders and Graph</b>
-          <div class="row">
-            <div class="col-5">
-              <img alt="Shader reflection example" load="lazy" src="./documents/images/shader_reflection_example.webp"
-                width="100%">
-              <img alt="Graph editing example" load="lazy" src="./documents/images/graph_editing_util_april_2024.webp"
-                width="100%">
-            </div>
-            <div class="col-7">
-              <li>
-                <a href="./javascript/viewer/dist/index_out.html">Shader Preview</a> utility has full reflection
-                information available including generation for: OSL, GLSL, MetalSL, Vulkan and MDL language
-                targets, and uniform/path reflection as controlled by "complete" vs "reduced" generation.
-              </li>
-              <li>
-                <a href="./javascript/mtlx_js_utilities.html">Graph Editing </a>
-                utility uses a new connectivity and graph builder JS module and has support for
-                generation of definitions from node graphs.
-              </li>
-              <li>
-                Python notebooks: A new <b>connectivity</b> book has been with accompanying support classes in
-                <a href="pymaterialx/mtlxutils/mxtraversal.py">mxtraversal.py</a>
-                for connectivity extractiom and Mermaid graph building logic now fully exposed and reusable.
-                A <b>shader reflection</b> utility been added to the shader generation notebook.
-                Definition creation and other notebooks have be updated to 1.39.
-              </li>
-            </div>
-          </div>
-
-          <div class="mb-1 text-muted">March, 2024</div>
-          <b class="mb-0">Utilities, Definitions</b>
-          <div class="row">
-            <div class="col-4">
-              <img alt="Mobile 3d column layout" load="lazy"
-                src="./documents/images/mobile_color_no_wrap_three_columns.webp" width="100%">
-            </div>
-            <div class="col-8">
-              <ul>
-                <li>The property panel for definitions has been revamped to be more 3D editing and mobile
-                  friendly. See <a href="./documents/property_editor_ui.html">the design document</a> for more
-                  information.
-                </li>
-                <li>
-                  <a href="https://guannan-kwok.github.io/assetLibrary/materialx/" target="_blank">
-                    <img load="lazy" src="./documents/images/web_logo_poster.webp" width="24px">Graphic Design
-                  </a> asset documentation is now available for the site.
-                </li>
-                </li>
-                <li>
-                  The definitions reference is now in sync with 1.39 and includes a <a
-                    href="./documents/jupyter_example.html">
-                    "Node Usage" notebook</a> with code to determine the node usage in nodegraph implementations and
-                  which implementations use a given node.
-                </li>
-              </ul>
-            </div>
-          </div>
-          <hr>
-
-          <div class="mb-1 text-muted">February, 2024</div>
-          <details>
-            <b class="mb-0">Utilities</b>
-            <div class="row">
-              <div class="col-6">
-                <img alt="Javascript Graphing" load="lazy" src="documents/images/js_doc_hilight_graph.png" width="100%">
-              </div>
-              <div class="col-6">
-                <img alt="Javascript Rendering" load="lazy" src="documents/images/js_codegen_render.png" width="100%">
-              </div>
-            </div>
-            <p>
-              Start of new modular utilities using MaterialX Javascript modules: Core and ShaderGen. Latter is now
-              exposed as a public module. Utilities including <a href="javascript/mtlx_js_utilities.html">syntax
-                hilighting,
-                graph
-                generation</a> and <a href="javascript/viewer/dist/index_out.html">code generation, and 3D viewer</a>.
-              Viewer requirements have been a driver for core updates.
-            </p>
-            <p>
-              Definition library comparisons are now available under the "Reference->Library Revisions" menu. This
-              includes comparisons of the standard library from <a href="mtlx_1388_vs_1389.html">1.38.0 to
-                1.38.9</a>. The latest version denotes the start of a NPR library and the inclusion of the OpenPBR
-              reference implementation.
-            </p>
-            <!---------------------------------------------------------------------------------------------------->
-            <hr>
-
-            <b class="mb-0">Tutorials and Workflows</b>
-            <div class="mb-1 text-muted">November 2023 - January, 2024</div>
-            <p>New additions have mostly been centered pipeline / Web development
-              including glTF/JSON interop and glTF
-              incorporation into the <a href="https://github.com/PrismPipeline/QuiltiX" target="_blank">QuiltiX
-                editor</a>as well as additional OpenUSD support utilities.
-
-              <img alt="QuiltiX GLTF JSON USD" load="lazy" src="documents/images/QuiltiX_GLTF_JSON_USD.webp"
-                height="256em" role="img" aria-label="Placeholder: Thumbnail" class="img-fluid"
-                preserveAspectRatio="xMidYMid slice" focusable="false">
-            <p>
-              Start of interactive previews for references starting with
-              <a href="documents/definitions/gltf_pbr.html">glTF pbr</a>.
-              <img alt="Reference Preview Rendering" load="lazy" style="border: 1px solid rgb(76, 76, 76);"
-                src="./documents/images/gltf_pbr_interactive_preview_reference.png" width="100%">
-              Improvements to <a href="documents/gltfViewer.html">glTF
-                utility viewer</a> support also added including drag and drop of glTF and environment files.
-            </p>
-            <p>
-              Working group information for a new procedural texture <a href="https://www.khronos.org/gltf/">
-                glTF</a> (JSON) specification can be found for members of the Khronos glTF PBR working group.
-            </p>
-            <p>
-              Additional work to improve supported graphs, usability and performance of the ASWF MaterialX web viewer
-              can be found <a href="https://academysoftwarefoundation.github.io/MaterialX" target="_blank">here</a>.
-              (OpenPBR graph shown in viewer below)
-              <img alt="OpenPBR node graph" load="lazy" src="./documents/images/openpbr_graph_jan_2024.webp"
-                width="100%">
-              (Note: <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/resources/mtlx/nodedef_materials"
-                target="_blank">Graphs</a> used to create reference images are now previewable in the web viewer)
-            </p>
-          </details>
-        </div>
-
-
-        <div class="col-auto d-flex d-lg-block">
-          <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <h3 class="d-inline-block mb-2">News</h3>
-      <div class="row g-0 border rounded overflow-auto flex-md-row mb-4 shadow-sm h-md-250 position-relative"
-        style="max-height: 20em">
-        <div class="col p-4 d-flex flex-column position-static">
-          <div class="mb-1 text-muted">April, 2024</div>
+  <div class="rounded-4 p-2 row mb-0" style="background-color: black; color: lightgrey">
+    <div class="col">
+      <h3>Site Retirement</h3>
+      <p style="color: red">The official release of MaterialX 1.39 will mark the end of updates for this site. This is
+        due to lack of funding, and user interest.
+        This site and corresponding GitHub repositories will <b>not</b> be archived. Utilities may end up residing in
+        repos and/or published to <em>npm</em> or <em>PyPi</em>.
+        <b>Anyone wishing to capture or continue this work please contact me.
+        </b>
+      </p>
+      <h3>New Initiative</h3>
+      <div class="row py-1">
+        <div class="col">
           <p>
-            Read about the latest updates for <a href="./documents/presentations.html">Khronos glTF shading
-              networks</a> on the presentation page. The update on this extension was presented at <a href="
-              https://www.khronos.org/events/webgl-webgpu-meetup-GDC-2024" target="_blank">GDC 2024</a>, with the
-            WIP draft specification available <a
-              href="https://github.com/KhronosGroup/glTF/tree/KHR_texture_procedurals/extensions/2.0/Khronos/KHR_texture_procedurals"
-              target="_blank">on the Khronos github</a>.
+            Procedural pattern / shader generation using MaterialX graphs is the current focus.
+            A supporting Web-based shader graph editor is now publicly available <a href="../javascript/shader_editor/dist/index.html">here</a>.
+            A video demonstrating some features can be found <a href="documents/presentations.html">here</a>
           </p>
-          <div class="mb-1 text-muted">March, 2024</div>
-          <p><b class="mb-0">MaterialX 1.39 Sync</b>
-            The next major version release will 1.39. As such, the site is now be tracking that development branch.
-            Where applicable information on the 1.38.10 patch release will be included.
+          <p>
+            Analysis on how this was built, how it can be integrated into a pipeline as well as usage examples will be forthcoming in a new site and repoitory.
           </p>
-          <div class="mb-1 text-muted">February, 2024</div>
-          <details>
-            <b class="mb-0">MaterialX 1.38.9 Sync</b>
-            <p class="card-text mb-auto">This site has a tagged release which sync's with the official MaterialX 1.38.9
-              release. Includes:
-            </p>
-            <ul>
-              <li>
-                Standard library updates and the recent start of an <b>NPR</b> library.
-              </li>
-              <li>
-                Inclusion of
-                <a
-                  href="https://github.com/AcademySoftwareFoundation/OpenPBR/blob/main/reference/open_pbr_surface.mtlx">
-                  OpenPBR</a> MaterialX reference implementation (See <a
-                  href="documents/definitions/open_pbr_surface.html">reference section</a>).
-                <img alt="OpenBLR Graph" load="lazy" class="p-3 bg-light" style="border: 1px solid rgb(76, 76, 76);"
-                  src="./documents/images/openpbr_graph_jan_2024.svg" width="100%">
-              </li>
-            </ul>
-            <hr>
-            <b class="mb-0">Development Updates</b>
-            <div class="mb-1 text-muted">November 2023 - January, 2024</div>
-            <p class="card-text mb-auto">
-              Extraction and creation of PyPi Python packages with corresponding documentation with
-              Jupyter notebook examples available for general use:
-            <ul>
-              <li><a href="https://kwokcb.github.io/materialxgltf/" target="_blank">MaterialX / glTF</a> bi-directional
-                translation package
-                <img alt="Web chess set" load="lazy" src="documents/images/ThreeJS_editor_chessset.webp" width="50%">
-              </li>
-              <li><a href="https://kwokcb.github.io/materialxjson/" target="_blank">MaterialX XML / JSON</a>
-                bi-directional converter package</li>
-            </ul>
-          </details>
         </div>
-        <!--
-        <div class="col-auto d-none d-lg-block">
-          <img src="documents/images/MaterialXLogo2K.png" height="100" role="img" aria-label="Placeholder: Thumbnail"
-            preserveAspectRatio="xMidYMid slice" focusable="false">
-          <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">
-        </div>-->
-      </div>
-    </div>
-  </div>
-
-  <!-- Content Cards -->
-  <h3 class="d-inline-block mb-2">Learn</h3>
-  <div class="container-fluid px-2 py-2 border shadow" id="hanging-icons">
-
-    <div class="row ps-2 pe-0 row-cols-1 row-cols-sm-3 bg-body-tertiary d-flex flex-row overflow-auto"
-      style="max-height: 20em">
-
-      <div class="col pt-3 pb-3">
-        <div>
-          <img load="lazy" src="documents/images/FireplaceMaterial.webp" alt="Learn"
-            class="rounded-4 shadow border border-grey img-fluid w-50 ">
-          <p>
-          <h3 class="fs-5 ">Learn</h3>
-          MaterialX concepts and interfaces and usage</p>
-          <div class="dropdown">
-            <button class="btn btn-sm btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Learn More
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="./documents/nodes_and_nodegraphs.html">Node and Graphs</a></li>
-              <li><a class="dropdown-item" href="./documents/documents.html">Documents</a></li>
-              <li><a class="dropdown-item" href="./documents/node_definitions.html">Definitions</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="./documents/presentations.html">Presentations</a></li>
-            </ul>
-          </div>
+        <div class="border-start col-2">
+          <img src="documents/images/utilities_menu.png" width="100%">
         </div>
-      </div>
-
-      <div class="col pt-3 pb-3">
-        <div>
-          <img load="lazy" src="documents/images/DirtyWoodMaterial.webp" alt="Reference"
-            class="rounded-4 shadow border border-grey img-fluid w-50 ">
+        <div class="col">
           <p>
-          <h3 class="fs-5">Reference</h3>
-          Reference for types, color management and node library</p>
-          <button class="btn btn-sm btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-            Learn More
-          </button>
-
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" href="./documents/definitions/library_glossary.html">Glossary</a></li>
-            <li><a class="dropdown-item" href="./documents/definitions/definitions_by_group.html">Node Library</a></li>
-            <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
-                <img load="lazy" src="documents/images/MaterialXLogo_200x155.png" style="width:20"> C++ API
-              </a></li>
-            <li>
-              <a class="dropdown-item" href="documents/using_library.html">
-                <img load="lazy" src="documents/images/info-circle.svg"> Library User Guide
-              </a>
-            </li>
-            <li class="dropend" data-bs-auto-close="outside">
-              <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library Revisions</a>
-              <ul class="dropdown-menu shadow">
-                <li><a class="dropdown-item" href="documents/mtlx_1389_vs_1390.html"> 1.38.8 vs 1.39.0 </a></li>
-                <li><a class="dropdown-item" href="documents/mtlx_1388_vs_1389.html"> 1.38.8 vs 1.38.9 </a></li>
-                <li><a class="dropdown-item" href="documents/mtlx_1387_vs_1388.html"> 1.38.7 vs 1.38.8 </a></li>
-                <li><a class="dropdown-item" href="documents/mtlx_1386_vs_1387.html"> 1.38.6 vs 1.38.7 </a></li>
-                <li><a class="dropdown-item" href="documents/mtlx_1385_vs_1386.html"> 1.38.5 vs 1.38.6 </a></li>
-                <li><a class="dropdown-item" href="documents/mtlx_1384_vs_1385.html"> 1.38.4 vs 1.38.5 </a></li>
-                <li><a class="dropdown-item" href="documents/mtlx_1383_vs_1384.html"> 1.38.3 vs 1.38.4 </a></li>
-                <li><a class="dropdown-item" href="documents/mtlx_1382_vs_1383.html"> 1.38.2 vs 1.38.3 </a></li>
-                <li><a class="dropdown-item" href="documents/mtlx_1381_vs_1382.html"> 1.38.1 vs 1.38.2 </a></li>
-                <li><a class="dropdown-item" href="documents/mtlx_1380_vs_1381.html"> 1.38.0 vs 1.38.1 </a></li>
-                <li><a class="dropdown-item" href="documents/mtlx_1380_vs_1390.html"> 1.38.0 vs 1.39.0 </a></li>
-              </ul>
-            </li>
+            The Web based modules currently can be accessed via the pages under the "Utilities" menu.
+          <p>
+          <ul>
+            <li><a href="javascript/node_editor/index_out.html">Web-based node graph editor module with and definition and library management</a></li>
+            <li><a href="javascript/shader_editor/dist/index_out.html">Plug-in shader preview + integration</a></li>
+            <li><a href="javascript/shader_utilities/dist/index_out.html">Shader reflection utilities</a></li>
+            <li><a href="javascript/graphing_utilities.html">Definition publishing</a></li>
+            <li><a href="javascript/graphing_utilities.html">Connectivity and graph generation utilities</a></li>
           </ul>
-
         </div>
       </div>
-
-      <div class="col pt-3 pb-3">
-        <div>
-          <img load="lazy" src="documents/images/graph.png" alt="Bootstrap"
-            class="rounded-4 border shadow border-grey img-fluid w-50 ">
-          <p>
-          <h3 class="fs-5">Utilities</h3>
-          Utilities to aid with manipulating and enhancing MaterialX</p>
-          <div class="dropdown">
-            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Learn More
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="./documents/gltfViewer.html">glTF Model Viewer</a></li>
-              <li><a class="dropdown-item" href="./documents/mermaidChecker.html">Graph Visualizer</a></li>
-              <li><a class="dropdown-item" href="./javascript/mtlx_js_utilities.html">Graph Editing</a>
-              </li>
-              <li><a class="dropdown-item" href="./javascript/viewer/dist/index_out.html">Shader Preview</a>
-              </li>
-              <li><a class="dropdown-item" href="./documents/mtlx_utilities.html">Python Utilities</a></li>
-            </ul>
-          </div>
-          </a>
+      <div class="row">
+        <div class="col">
+          <img class="clickable-image" src="documents/images/shader_graph_snapshot1.png" width="100%" data-bs-toggle="modal"
+            data-bs-target="#imageModal" onclick="showImage(this.src)">
         </div>
-      </div>
-
-      <div class="col pt-3 pb-3">
-        <div>
-          <img load="lazy" src="documents/images/VSCode_Environment2.webp" alt="Bootstrap"
-            class="rounded-4 shadow border border-grey img-fluid w-50 ">
-          <p>
-          <h3 class="fs-5 ">Develop</h3>
-          Developing using MaterialX through examples and tutorials</p>
-          <div class="dropdown">
-            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Learn More
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="documents/python_MaterialX.html">Notebooks</a></li>
-              <li><a class="dropdown-item" href="documents/jupyter_example.html">Examples</a></li>
-              <li><a class="dropdown-item" href="documents/hosting.html">Hosting</a></li>
-            </ul>
-          </div>
-          </a>
+        <div class="col">
+          <img class="clickable-image" src="documents/images/shader_graph_snapshot2.png" width="100%" data-bs-toggle="modal"
+            data-bs-target="#imageModal" onclick="showImage(this.src)">
         </div>
-      </div>
-
-      <div class="col pt-3 pb-3">
-        <div>
-          <img load="lazy" src="documents/images/Sample_ShaderBall_Brick.webp" alt="Bootstrap"
-            class="rounded-4 border shadow border-grey img-fluid w-50 ">
-          <p>
-          <h3 class="fs-5 ">Workflows</h3>
-          Articles and helpers related to various workflows</p>
-          <div class="dropdown">
-            <button class="btn btn-sm btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Learn More
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="documents/workflow_usd.html">USD and MaterialX</a></li>
-              <li><a class="dropdown-item" href="documents/workflow_gltf.html">glTF and MaterialX</a></li>
-              <li><a class="dropdown-item" href="documents/workflow_ocio.html">OCIO and MaterialX</a></li>
-            </ul>
+        <div class="col">
+          <img class="clickable-image" src="documents/images/shader_graph_snapshot4.png" width="100%" data-bs-toggle="modal"
+            data-bs-target="#imageModal" onclick="showImage(this.src)">
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="snapModel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-body">
+                <img id="modalImage" src="" style="width: 100%;">
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <div class="row px-4">
+        From left to right: glTF sample boombox material, custom hatch material, custom "Emerald Peaks Wallpaper" material from GPUOpen Materialx Library
+      </div>
+      <div class="row p-2">
 
-      <div class="col pt-3 pb-3 ">
-        <div>
-          <img load="lazy" src="documents/images/Design_Icon.png" alt="Bootstrap"
-            class="rounded-4 border shadow border-black img-fluid w-50 ">
-          <p>
-          <h3 class="fs-5 ">Design</h3>
-          UX design and implementation architecture for the site</p>
-          <div class="dropdown">
-            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Learn More
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="./documents/design.html">UX Design</a></li>
-              <li><a class="dropdown-item" href="./documents/property_editor_ui.html">Property Editor UX</a>
-              </li>
-              <li><a class="dropdown-item" href="https://guannan-kwok.github.io/assetLibrary/materialx/"
-                  target="_blank">Graphic Design</a></li>
-              <li><a class="dropdown-item" href="./documents/implementation.html">Implementation</a></li>
-            </ul>
+        <!-- Content Cards -->
+        <h3 class="d-inline-block mb-2">Learn</h3>
+        <div class="container-fluid px-2 py-2 shadow" id="hanging-icons">
+
+          <div class="rounded-4 row ps-2 pe-0 row-cols-1 row-cols-sm-3 bg-body-tertiary d-flex flex-row">
+
+            <div class="col pt-3 pb-3">
+              <div>
+                <img load="lazy" src="documents/images/FireplaceMaterial.webp" alt="Learn"
+                  class="rounded-4 shadow border border-grey img-fluid w-50 ">
+                <p>
+                <h3 class="fs-5 ">Learn</h3>
+                MaterialX concepts and interfaces and usage</p>
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-sm btn-outline-primary dropdown-toggle" type="button"
+                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Learn More
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="./documents/nodes_and_nodegraphs.html">Node and Graphs</a></li>
+                    <li><a class="dropdown-item" href="./documents/documents.html">Documents</a></li>
+                    <li><a class="dropdown-item" href="./documents/node_definitions.html">Definitions</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="./documents/presentations.html">Presentations</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col pt-3 pb-3">
+              <div>
+                <img load="lazy" src="documents/images/DirtyWoodMaterial.webp" alt="Reference"
+                  class="rounded-4 shadow border border-grey img-fluid w-50 ">
+                <p>
+                <h3 class="fs-5">Reference</h3>
+                Reference for types, color management and node library</p>
+                <button class="btn btn-sm btn-sm btn-outline-primary dropdown-toggle" type="button"
+                  id="dropdownMenuButton" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                  Learn More
+                </button>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item" href="./documents/definitions/library_glossary.html">Glossary</a></li>
+                  <li><a class="dropdown-item" href="./documents/definitions/definitions_by_group.html">Node Library</a>
+                  </li>
+                  <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html" target="_blank">
+                      <img load="lazy" src="documents/images/MaterialXLogo_200x155.png" style="width:20"> C++ API
+                    </a></li>
+                  <li>
+                    <a class="dropdown-item" href="documents/using_library.html">
+                      <img load="lazy" src="documents/images/info-circle.svg"> Library User Guide
+                    </a>
+                  </li>
+                  <li class="dropend" data-bs-auto-close="outside">
+                    <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library Revisions</a>
+                    <ul class="dropdown-menu shadow">
+                      <li><a class="dropdown-item" href="documents/mtlx_1389_vs_1390.html"> 1.38.8 vs 1.39.0 </a></li>
+                      <li><a class="dropdown-item" href="documents/mtlx_1388_vs_1389.html"> 1.38.8 vs 1.38.9 </a></li>
+                      <li><a class="dropdown-item" href="documents/mtlx_1387_vs_1388.html"> 1.38.7 vs 1.38.8 </a></li>
+                      <li><a class="dropdown-item" href="documents/mtlx_1386_vs_1387.html"> 1.38.6 vs 1.38.7 </a></li>
+                      <li><a class="dropdown-item" href="documents/mtlx_1385_vs_1386.html"> 1.38.5 vs 1.38.6 </a></li>
+                      <li><a class="dropdown-item" href="documents/mtlx_1384_vs_1385.html"> 1.38.4 vs 1.38.5 </a></li>
+                      <li><a class="dropdown-item" href="documents/mtlx_1383_vs_1384.html"> 1.38.3 vs 1.38.4 </a></li>
+                      <li><a class="dropdown-item" href="documents/mtlx_1382_vs_1383.html"> 1.38.2 vs 1.38.3 </a></li>
+                      <li><a class="dropdown-item" href="documents/mtlx_1381_vs_1382.html"> 1.38.1 vs 1.38.2 </a></li>
+                      <li><a class="dropdown-item" href="documents/mtlx_1380_vs_1381.html"> 1.38.0 vs 1.38.1 </a></li>
+                      <li><a class="dropdown-item" href="documents/mtlx_1380_vs_1390.html"> 1.38.0 vs 1.39.0 </a></li>
+                    </ul>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+
+            <div class="col pt-3 pb-3">
+              <div>
+                <img load="lazy" src="documents/images/graph.png" alt="Bootstrap"
+                  class="rounded-4 border shadow border-grey img-fluid w-50 ">
+                <p>
+                <h3 class="fs-5">Utilities</h3>
+                Utilities to aid with manipulating and enhancing MaterialX</p>
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Learn More
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="./documents/gltfViewer.html">glTF Model Viewer</a>
+                    </li>
+                    <li><a class="dropdown-item" href="./documents/mermaidChecker.html">Graph Visualizer</a>
+                    </li>
+                    <li><a class="dropdown-item" href="./javascript/graphing_utilities.html">Graph
+                        Editing</a>
+                    </li>
+                    <li><a class="dropdown-item"
+                        href="./javascript/shader_utilities/dist/index_out.html">Shader
+                        Preview</a>
+                    </li>
+                    <li><a class="dropdown-item" href="./documents/mtlx_utilities.html">Python Utilities</a>
+                    </li>
+                  </ul>
+                </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="col pt-3 pb-3">
+              <div>
+                <img load="lazy" src="documents/images/VSCode_Environment2.webp" alt="Bootstrap"
+                  class="rounded-4 shadow border border-grey img-fluid w-50 ">
+                <p>
+                <h3 class="fs-5 ">Develop</h3>
+                Developing using MaterialX through examples and tutorials</p>
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Learn More
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="documents/python_MaterialX.html">Notebooks</a></li>
+                    <li><a class="dropdown-item" href="documents/jupyter_example.html">Examples</a></li>
+                    <li><a class="dropdown-item" href="documents/hosting.html">Hosting</a></li>
+                  </ul>
+                </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="col pt-3 pb-3">
+              <div>
+                <img load="lazy" src="documents/images/Sample_ShaderBall_Brick.webp" alt="Bootstrap"
+                  class="rounded-4 border shadow border-grey img-fluid w-50 ">
+                <p>
+                <h3 class="fs-5 ">Workflows</h3>
+                Articles and helpers related to various workflows</p>
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-sm btn-outline-primary dropdown-toggle" type="button"
+                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Learn More
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="documents/workflow_usd.html">USD and MaterialX</a></li>
+                    <li><a class="dropdown-item" href="documents/workflow_gltf.html">glTF and MaterialX</a></li>
+                    <li><a class="dropdown-item" href="documents/workflow_ocio.html">OCIO and MaterialX</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col pt-3 pb-3 ">
+              <div>
+                <img load="lazy" src="documents/images/Design_Icon.png" alt="Bootstrap"
+                  class="rounded-4 border shadow border-black img-fluid w-50 ">
+                <p>
+                <h3 class="fs-5 ">Design</h3>
+                UX design and implementation architecture for the site</p>
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Learn More
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="./documents/design.html">UX Design</a></li>
+                    <li><a class="dropdown-item" href="./documents/property_editor_ui.html">Property Editor
+                        UX</a>
+                    </li>
+                    <li><a class="dropdown-item" href="https://guannan-kwok.github.io/assetLibrary/materialx/"
+                        target="_blank">Graphic Design</a></li>
+                    <li><a class="dropdown-item" href="./documents/implementation.html">Implementation</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
           </div>
+
         </div>
       </div>
 
-    </div>
+      <script>
+        function showImage(src) {
+            document.getElementById('modalImage').src = src;
+        }
+      </script>
 
-  </div>
-</div>
-
-<!--
-<script>
-  function loadViewer(event) {
-    console.log('clicked');
-    viewer = document.getElementById('viewer');
-    viewer.hidden = false
-    event.target.hidden = true
-  }
-
-  document.getElementById('load_viewer').addEventListener('click', loadViewer);
-</script>
--->
 
     </div>
   </section>
