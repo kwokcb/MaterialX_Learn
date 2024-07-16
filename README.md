@@ -1,6 +1,11 @@
-# Site Retirement
+# *End of Line*
 
-## Support for this repo and site will halt after the MaterialX 1.39 official release.
+This repo and site is sync'ed to the MaterialX 1.39 official release. No new learning updates are scheduled. Tooling and development libraries will be migrated out
+in the very near future. The repo will eventually be made private though the site will remain up.
+
+Please contact the authers if you wish to sponser any future work.
+
+<hr>
 
 # Welcome to "MaterialX Learn"
 [![main](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml/badge.svg)](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml)
