@@ -1,0 +1,535 @@
+{
+  "images": [
+    {
+      "uri": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVQI12P4z/AfAAQAAf/zKSWvAAAAAElFTkSuQmCC",
+      "name": "KHR_texture_procedural_fallback"
+    }
+  ],
+  "textures": [
+    {
+      "source": 0
+    }
+  ],
+  "extensions": {
+    "KHR_texture_procedurals": {
+      "procedurals": [
+        {
+          "name": "MARBLE_GRAPH",
+          "nodetype": "nodegraph",
+          "type": "color3",
+          "inputs": [
+            {
+              "name": "base_color_1",
+              "nodetype": "input",
+              "uiname": "Color 1",
+              "uifolder": "Marble Color",
+              "type": "color3",
+              "value": [
+                0.8,
+                0.8,
+                0.8
+              ]
+            },
+            {
+              "name": "base_color_2",
+              "nodetype": "input",
+              "uiname": "Color 2",
+              "uifolder": "Marble Color",
+              "type": "color3",
+              "value": [
+                0.1,
+                0.1,
+                0.3
+              ]
+            },
+            {
+              "name": "noise_scale_1",
+              "nodetype": "input",
+              "uiname": "Scale 1",
+              "uifolder": "Marble Noise",
+              "type": "float",
+              "value": 6
+            },
+            {
+              "name": "noise_scale_2",
+              "nodetype": "input",
+              "uiname": "Scale 2",
+              "uifolder": "Marble Noise",
+              "type": "float",
+              "value": 4
+            },
+            {
+              "name": "noise_power",
+              "nodetype": "input",
+              "uiname": "Power",
+              "uifolder": "Marble Noise",
+              "type": "float",
+              "value": 3
+            },
+            {
+              "name": "noise_octaves",
+              "nodetype": "input",
+              "uiname": "Octaves",
+              "uifolder": "Marble Noise",
+              "type": "integer",
+              "value": 3
+            }
+          ],
+          "outputs": [
+            {
+              "name": "out",
+              "nodetype": "output",
+              "type": "color3",
+              "node": 11
+            }
+          ],
+          "nodes": [
+            {
+              "name": "obj_pos",
+              "nodetype": "position",
+              "type": "vector3",
+              "inputs": [
+                {
+                  "name": "space",
+                  "nodetype": "input",
+                  "type": "string",
+                  "value": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "vector3"
+                }
+              ]
+            },
+            {
+              "name": "add_xyz",
+              "nodetype": "dotproduct",
+              "type": "float",
+              "inputs": [
+                {
+                  "name": "in1",
+                  "nodetype": "input",
+                  "type": "vector3",
+                  "node": 0
+                },
+                {
+                  "name": "in2",
+                  "nodetype": "input",
+                  "type": "vector3",
+                  "value": [
+                    1,
+                    1,
+                    1
+                  ]
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "float"
+                }
+              ]
+            },
+            {
+              "name": "scale_xyz",
+              "nodetype": "multiply",
+              "type": "float",
+              "inputs": [
+                {
+                  "name": "in1",
+                  "nodetype": "input",
+                  "type": "float",
+                  "node": 1
+                },
+                {
+                  "name": "in2",
+                  "nodetype": "input",
+                  "type": "float",
+                  "input": 2
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "float"
+                }
+              ]
+            },
+            {
+              "name": "scale_pos",
+              "nodetype": "multiply",
+              "type": "vector3",
+              "inputs": [
+                {
+                  "name": "in1",
+                  "nodetype": "input",
+                  "type": "vector3",
+                  "node": 0
+                },
+                {
+                  "name": "in2",
+                  "nodetype": "input",
+                  "type": "float",
+                  "input": 3
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "vector3"
+                }
+              ]
+            },
+            {
+              "name": "noise",
+              "nodetype": "fractal3d",
+              "type": "float",
+              "inputs": [
+                {
+                  "name": "amplitude",
+                  "nodetype": "input",
+                  "type": "float",
+                  "value": 1
+                },
+                {
+                  "name": "octaves",
+                  "nodetype": "input",
+                  "type": "integer",
+                  "input": 5
+                },
+                {
+                  "name": "lacunarity",
+                  "nodetype": "input",
+                  "type": "float",
+                  "value": 2
+                },
+                {
+                  "name": "diminish",
+                  "nodetype": "input",
+                  "type": "float",
+                  "value": 0.5
+                },
+                {
+                  "name": "position",
+                  "nodetype": "input",
+                  "type": "vector3",
+                  "node": 3
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "float"
+                }
+              ]
+            },
+            {
+              "name": "scale_noise",
+              "nodetype": "multiply",
+              "type": "float",
+              "inputs": [
+                {
+                  "name": "in1",
+                  "nodetype": "input",
+                  "type": "float",
+                  "node": 4
+                },
+                {
+                  "name": "in2",
+                  "nodetype": "input",
+                  "type": "float",
+                  "value": 3
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "float"
+                }
+              ]
+            },
+            {
+              "name": "sum",
+              "nodetype": "add",
+              "type": "float",
+              "inputs": [
+                {
+                  "name": "in1",
+                  "nodetype": "input",
+                  "type": "float",
+                  "node": 2
+                },
+                {
+                  "name": "in2",
+                  "nodetype": "input",
+                  "type": "float",
+                  "node": 5
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "float"
+                }
+              ]
+            },
+            {
+              "name": "sin",
+              "nodetype": "sin",
+              "type": "float",
+              "inputs": [
+                {
+                  "name": "in",
+                  "nodetype": "input",
+                  "type": "float",
+                  "node": 6
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "float"
+                }
+              ]
+            },
+            {
+              "name": "scale",
+              "nodetype": "multiply",
+              "type": "float",
+              "inputs": [
+                {
+                  "name": "in1",
+                  "nodetype": "input",
+                  "type": "float",
+                  "node": 7
+                },
+                {
+                  "name": "in2",
+                  "nodetype": "input",
+                  "type": "float",
+                  "value": 0.5
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "float"
+                }
+              ]
+            },
+            {
+              "name": "bias",
+              "nodetype": "add",
+              "type": "float",
+              "inputs": [
+                {
+                  "name": "in1",
+                  "nodetype": "input",
+                  "type": "float",
+                  "node": 8
+                },
+                {
+                  "name": "in2",
+                  "nodetype": "input",
+                  "type": "float",
+                  "value": 0.5
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "float"
+                }
+              ]
+            },
+            {
+              "name": "power",
+              "nodetype": "power",
+              "type": "float",
+              "inputs": [
+                {
+                  "name": "in1",
+                  "nodetype": "input",
+                  "type": "float",
+                  "node": 9
+                },
+                {
+                  "name": "in2",
+                  "nodetype": "input",
+                  "type": "float",
+                  "input": 4
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "float"
+                }
+              ]
+            },
+            {
+              "name": "color_mix",
+              "nodetype": "mix",
+              "type": "color3",
+              "inputs": [
+                {
+                  "name": "fg",
+                  "nodetype": "input",
+                  "type": "color3",
+                  "input": 1
+                },
+                {
+                  "name": "bg",
+                  "nodetype": "input",
+                  "type": "color3",
+                  "input": 0
+                },
+                {
+                  "name": "mix",
+                  "nodetype": "input",
+                  "type": "float",
+                  "node": 10
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "color3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CHECKER_GRAPH",
+          "nodetype": "nodegraph",
+          "type": "color3",
+          "inputs": [],
+          "outputs": [
+            {
+              "name": "out",
+              "nodetype": "output",
+              "type": "color3",
+              "node": 0
+            }
+          ],
+          "nodes": [
+            {
+              "name": "checkerboard_color4",
+              "nodetype": "checkerboard",
+              "type": "color3",
+              "inputs": [
+                {
+                  "name": "color1",
+                  "nodetype": "input",
+                  "type": "color3",
+                  "value": [
+                    1,
+                    1,
+                    1
+                  ]
+                },
+                {
+                  "name": "color2",
+                  "nodetype": "input",
+                  "type": "color3",
+                  "value": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "name": "uvtiling",
+                  "nodetype": "input",
+                  "type": "vector2",
+                  "value": [
+                    8,
+                    8
+                  ]
+                },
+                {
+                  "name": "uvoffset",
+                  "nodetype": "input",
+                  "type": "vector2",
+                  "value": [
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "name": "texcoord",
+                  "nodetype": "input",
+                  "type": "vector2",
+                  "value": [
+                    0,
+                    0
+                  ]
+                }
+              ],
+              "outputs": [
+                {
+                  "nodetype": "output",
+                  "name": "out",
+                  "type": "color3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "materials": [
+    {
+      "name": "MARBLE_SHADER",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0,
+          "extensions": {
+            "KHR_texture_procedurals": {
+              "index": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "surface_unlit_surfaceshader1",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0,
+          "extensions": {
+            "KHR_materials_unlit": {},
+            "KHR_texture_procedurals": {
+              "index": 1
+            }
+          }
+        }
+      }
+    }
+  ],
+  "asset": {
+    "version": "2.0",
+    "generator": "MaterialX 1.39 to glTF 2.0 procedural textures converter",
+    "copyright": "Copyright (c) 2024, Bernard Kwok"
+  },
+  "extensionsUsed": [
+    "KHR_texture_procedurals",
+    "EXT_texture_procedurals_mx_1_39"
+  ]
+}

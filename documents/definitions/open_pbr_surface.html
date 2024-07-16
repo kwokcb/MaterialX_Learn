@@ -603,7 +603,7 @@
 <b><a id="open_pbr_surface" class="ms-2 mb-0">
 Category: open_pbr_surface
 </a></b>
-<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_open_pbr_surface_surfaceshader <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.39.0</button></summary>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_open_pbr_surface_surfaceshader <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.38.9</button></summary>
 <div class="m-0 mt-0">
 <div class="row">
 <div class="col-12">
@@ -2841,6 +2841,8 @@ graph TB
     NG_open_pbr_surface_surfaceshader_metal_edgecolor[metal_edgecolor]
     NG_open_pbr_surface_surfaceshader_metal_bsdf[metal_bsdf]
     NG_open_pbr_surface_surfaceshader_base_substrate[base_substrate]
+    NG_open_pbr_surface_surfaceshader_thin_film_bsdf[thin_film_bsdf]
+    NG_open_pbr_surface_surfaceshader_thin_film_layer[thin_film_layer]
     NG_open_pbr_surface_surfaceshader_half_over_coat_F0[half_over_coat_F0]
     NG_open_pbr_surface_surfaceshader_coat_ior_level_upper_bound[coat_ior_level_upper_bound]
     NG_open_pbr_surface_surfaceshader_coat_ior_level_clamped[coat_ior_level_clamped]
@@ -2866,11 +2868,9 @@ graph TB
     NG_open_pbr_surface_surfaceshader_uncoated_emission_edf[uncoated_emission_edf]
     NG_open_pbr_surface_surfaceshader_coat_tinted_emission_edf[coat_tinted_emission_edf]
     NG_open_pbr_surface_surfaceshader_one_minus_coat_F0[one_minus_coat_F0]
-    NG_open_pbr_surface_surfaceshader_swizzle[swizzle]
     NG_open_pbr_surface_surfaceshader_coated_emission_edf[coated_emission_edf]
     NG_open_pbr_surface_surfaceshader_emission_edf[emission_edf]
     NG_open_pbr_surface_surfaceshader_opacity_luminance[opacity_luminance]
-    NG_open_pbr_surface_surfaceshader_swizzle2[swizzle2]
     NG_open_pbr_surface_surfaceshader_shader_constructor[shader_constructor]
     style NG_open_pbr_surface_surfaceshader_out  fill:#0C0, color:#FFF
     NG_open_pbr_surface_surfaceshader_out([out])
@@ -2918,10 +2918,6 @@ graph TB
     NG_open_pbr_surface_surfaceshader_specular_ior_level([specular_ior_level])
     style NG_open_pbr_surface_surfaceshader_transmission_color  fill:#09D, color:#FFF
     NG_open_pbr_surface_surfaceshader_transmission_color([transmission_color])
-    style NG_open_pbr_surface_surfaceshader_thin_film_thickness  fill:#09D, color:#FFF
-    NG_open_pbr_surface_surfaceshader_thin_film_thickness([thin_film_thickness])
-    style NG_open_pbr_surface_surfaceshader_thin_film_ior  fill:#09D, color:#FFF
-    NG_open_pbr_surface_surfaceshader_thin_film_ior([thin_film_ior])
     style NG_open_pbr_surface_surfaceshader_transmission_weight  fill:#09D, color:#FFF
     NG_open_pbr_surface_surfaceshader_transmission_weight([transmission_weight])
     style NG_open_pbr_surface_surfaceshader_specular_weight  fill:#09D, color:#FFF
@@ -2930,6 +2926,10 @@ graph TB
     NG_open_pbr_surface_surfaceshader_specular_color([specular_color])
     style NG_open_pbr_surface_surfaceshader_base_metalness  fill:#09D, color:#FFF
     NG_open_pbr_surface_surfaceshader_base_metalness([base_metalness])
+    style NG_open_pbr_surface_surfaceshader_thin_film_thickness  fill:#09D, color:#FFF
+    NG_open_pbr_surface_surfaceshader_thin_film_thickness([thin_film_thickness])
+    style NG_open_pbr_surface_surfaceshader_thin_film_ior  fill:#09D, color:#FFF
+    NG_open_pbr_surface_surfaceshader_thin_film_ior([thin_film_ior])
     style NG_open_pbr_surface_surfaceshader_coat_ior_level  fill:#09D, color:#FFF
     NG_open_pbr_surface_surfaceshader_coat_ior_level([coat_ior_level])
     style NG_open_pbr_surface_surfaceshader_coat_color  fill:#09D, color:#FFF
@@ -3049,8 +3049,6 @@ graph TB
     NG_open_pbr_surface_surfaceshader_transmission_roughness --"roughness"--> NG_open_pbr_surface_surfaceshader_dielectric_transmission
     NG_open_pbr_surface_surfaceshader_geometry_normal --"normal"--> NG_open_pbr_surface_surfaceshader_dielectric_transmission
     NG_open_pbr_surface_surfaceshader_main_tangent --"tangent"--> NG_open_pbr_surface_surfaceshader_dielectric_transmission
-    NG_open_pbr_surface_surfaceshader_thin_film_thickness --"thinfilm_thickness"--> NG_open_pbr_surface_surfaceshader_dielectric_transmission
-    NG_open_pbr_surface_surfaceshader_thin_film_ior --"thinfilm_ior"--> NG_open_pbr_surface_surfaceshader_dielectric_transmission
     NG_open_pbr_surface_surfaceshader_dielectric_transmission --"fg"--> NG_open_pbr_surface_surfaceshader_dielectric_substrate
     NG_open_pbr_surface_surfaceshader_opaque_base --"bg"--> NG_open_pbr_surface_surfaceshader_dielectric_substrate
     NG_open_pbr_surface_surfaceshader_transmission_weight --"mix"--> NG_open_pbr_surface_surfaceshader_dielectric_substrate
@@ -3060,8 +3058,6 @@ graph TB
     NG_open_pbr_surface_surfaceshader_main_roughness --"roughness"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection
     NG_open_pbr_surface_surfaceshader_geometry_normal --"normal"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection
     NG_open_pbr_surface_surfaceshader_main_tangent --"tangent"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection
-    NG_open_pbr_surface_surfaceshader_thin_film_thickness --"thinfilm_thickness"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection
-    NG_open_pbr_surface_surfaceshader_thin_film_ior --"thinfilm_ior"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection
     NG_open_pbr_surface_surfaceshader_dielectric_reflection --"top"--> NG_open_pbr_surface_surfaceshader_dielectric_base
     NG_open_pbr_surface_surfaceshader_dielectric_substrate --"base"--> NG_open_pbr_surface_surfaceshader_dielectric_base
     NG_open_pbr_surface_surfaceshader_base_color --"in1"--> NG_open_pbr_surface_surfaceshader_metal_reflectivity
@@ -3073,11 +3069,13 @@ graph TB
     NG_open_pbr_surface_surfaceshader_main_roughness --"roughness"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_geometry_normal --"normal"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_main_tangent --"tangent"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
-    NG_open_pbr_surface_surfaceshader_thin_film_thickness --"thinfilm_thickness"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
-    NG_open_pbr_surface_surfaceshader_thin_film_ior --"thinfilm_ior"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_metal_bsdf --"fg"--> NG_open_pbr_surface_surfaceshader_base_substrate
     NG_open_pbr_surface_surfaceshader_dielectric_base --"bg"--> NG_open_pbr_surface_surfaceshader_base_substrate
     NG_open_pbr_surface_surfaceshader_base_metalness --"mix"--> NG_open_pbr_surface_surfaceshader_base_substrate
+    NG_open_pbr_surface_surfaceshader_thin_film_thickness --"thickness"--> NG_open_pbr_surface_surfaceshader_thin_film_bsdf
+    NG_open_pbr_surface_surfaceshader_thin_film_ior --"ior"--> NG_open_pbr_surface_surfaceshader_thin_film_bsdf
+    NG_open_pbr_surface_surfaceshader_thin_film_bsdf --"top"--> NG_open_pbr_surface_surfaceshader_thin_film_layer
+    NG_open_pbr_surface_surfaceshader_base_substrate --"base"--> NG_open_pbr_surface_surfaceshader_thin_film_layer
     NG_open_pbr_surface_surfaceshader_coat_ior_to_F0 --"in2"--> NG_open_pbr_surface_surfaceshader_half_over_coat_F0
     NG_open_pbr_surface_surfaceshader_half_over_coat_F0 --"in2"--> NG_open_pbr_surface_surfaceshader_coat_ior_level_upper_bound
     NG_open_pbr_surface_surfaceshader_coat_ior_level --"in"--> NG_open_pbr_surface_surfaceshader_coat_ior_level_clamped
@@ -3094,7 +3092,7 @@ graph TB
     NG_open_pbr_surface_surfaceshader_coat_weight --"mix"--> NG_open_pbr_surface_surfaceshader_modulated_coat_ior
     NG_open_pbr_surface_surfaceshader_coat_color --"fg"--> NG_open_pbr_surface_surfaceshader_coat_attenuation
     NG_open_pbr_surface_surfaceshader_coat_weight --"mix"--> NG_open_pbr_surface_surfaceshader_coat_attenuation
-    NG_open_pbr_surface_surfaceshader_base_substrate --"in1"--> NG_open_pbr_surface_surfaceshader_coat_substrate_attenuated
+    NG_open_pbr_surface_surfaceshader_thin_film_layer --"in1"--> NG_open_pbr_surface_surfaceshader_coat_substrate_attenuated
     NG_open_pbr_surface_surfaceshader_coat_attenuation --"in2"--> NG_open_pbr_surface_surfaceshader_coat_substrate_attenuated
     NG_open_pbr_surface_surfaceshader_coat_roughness --"roughness"--> NG_open_pbr_surface_surfaceshader_coat_roughness_vector
     NG_open_pbr_surface_surfaceshader_coat_anisotropy --"anisotropy"--> NG_open_pbr_surface_surfaceshader_coat_roughness_vector
@@ -3123,17 +3121,15 @@ graph TB
     NG_open_pbr_surface_surfaceshader_uncoated_emission_edf --"in1"--> NG_open_pbr_surface_surfaceshader_coat_tinted_emission_edf
     NG_open_pbr_surface_surfaceshader_coat_color --"in2"--> NG_open_pbr_surface_surfaceshader_coat_tinted_emission_edf
     NG_open_pbr_surface_surfaceshader_coat_ior_to_F0 --"in2"--> NG_open_pbr_surface_surfaceshader_one_minus_coat_F0
-    NG_open_pbr_surface_surfaceshader_one_minus_coat_F0 --"in"--> NG_open_pbr_surface_surfaceshader_swizzle
-    NG_open_pbr_surface_surfaceshader_swizzle --"color0"--> NG_open_pbr_surface_surfaceshader_coated_emission_edf
+    NG_open_pbr_surface_surfaceshader_one_minus_coat_F0 --"color0"--> NG_open_pbr_surface_surfaceshader_coated_emission_edf
     NG_open_pbr_surface_surfaceshader_coat_tinted_emission_edf --"base"--> NG_open_pbr_surface_surfaceshader_coated_emission_edf
     NG_open_pbr_surface_surfaceshader_coated_emission_edf --"fg"--> NG_open_pbr_surface_surfaceshader_emission_edf
     NG_open_pbr_surface_surfaceshader_uncoated_emission_edf --"bg"--> NG_open_pbr_surface_surfaceshader_emission_edf
     NG_open_pbr_surface_surfaceshader_coat_weight --"mix"--> NG_open_pbr_surface_surfaceshader_emission_edf
     NG_open_pbr_surface_surfaceshader_geometry_opacity --"in"--> NG_open_pbr_surface_surfaceshader_opacity_luminance
-    NG_open_pbr_surface_surfaceshader_opacity_luminance --"in"--> NG_open_pbr_surface_surfaceshader_swizzle2
     NG_open_pbr_surface_surfaceshader_fuzz_layer --"bsdf"--> NG_open_pbr_surface_surfaceshader_shader_constructor
     NG_open_pbr_surface_surfaceshader_emission_edf --"edf"--> NG_open_pbr_surface_surfaceshader_shader_constructor
-    NG_open_pbr_surface_surfaceshader_swizzle2 --"opacity"--> NG_open_pbr_surface_surfaceshader_shader_constructor
+    NG_open_pbr_surface_surfaceshader_opacity_luminance --"opacity"--> NG_open_pbr_surface_surfaceshader_shader_constructor
     NG_open_pbr_surface_surfaceshader_shader_constructor --> NG_open_pbr_surface_surfaceshader_out
 
 

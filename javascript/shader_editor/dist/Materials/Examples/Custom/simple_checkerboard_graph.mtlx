@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<materialx version="1.39" colorspace="lin_rec709">
+  <checkerboard name="mychecker" type="color3">
+    <input name="color1" type="color3" value="0,0.7,1" />
+    <input name="color2" type="color3" value="1,0,0" />
+    <input name="uvtiling" type="vector2" value="8,8" />
+    <input name="uvoffset" type="vector2" value="0,0" />
+    <input name="texcoord" type="vector2" value="0,0" />
+  </checkerboard>
+  <surfacematerial name="surfacematerial_material1" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="myshader" />
+    <input name="displacementshader" type="displacementshader" value="" />
+  </surfacematerial>
+  <surface_unlit name="myshader" type="surfaceshader">
+    <input name="emission" type="float" value="1" />
+    <input name="emission_color" type="color3" nodename="mychecker" />
+    <input name="transmission" type="float" value="0" />
+    <input name="transmission_color" type="color3" value="1,1,1" />
+    <input name="opacity" type="float" value="1" />
+  </surface_unlit>
+</materialx>

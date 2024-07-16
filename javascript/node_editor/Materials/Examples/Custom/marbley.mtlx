@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<materialx version="1.39" colorspace="lin_rec709">
+  <surfacematerial name="Marbley" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Marbley_shader" />
+    <input name="backsurfaceshader" type="surfaceshader" value="" />
+    <input name="displacementshader" type="displacementshader" value="" />
+  </surfacematerial>
+  <surfacematerial name="Noise" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Noise_shader" />
+    <input name="backsurfaceshader" type="surfaceshader" value="" />
+    <input name="displacementshader" type="displacementshader" value="" />
+  </surfacematerial>
+  <surfacematerial name="Position" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="Position_Shader" />
+    <input name="backsurfaceshader" type="surfaceshader" value="" />
+    <input name="displacementshader" type="displacementshader" value="" />
+  </surfacematerial>
+  <surface_unlit name="Noise_shader" type="surfaceshader">
+    <input name="emission" type="float" nodegraph="Marbley_Graph" output="out" />
+    <input name="emission_color" type="color3" value="1,1,1" />
+    <input name="transmission" type="float" value="0" />
+    <input name="transmission_color" type="color3" value="1,1,1" />
+    <input name="opacity" type="float" value="1" />
+  </surface_unlit>
+  <surface_unlit name="Position_Shader" type="surfaceshader">
+    <input name="emission" type="float" value="1" />
+    <input name="emission_color" type="color3" nodegraph="Marbley_Graph" output="out_pos" />
+    <input name="transmission" type="float" value="0" />
+    <input name="transmission_color" type="color3" value="1,1,1" />
+    <input name="opacity" type="float" value="1" />
+  </surface_unlit>
+  <open_pbr_surface name="Marbley_shader" type="surfaceshader">
+    <input name="base_weight" type="float" value="1" />
+    <input name="base_color" type="color3" value="0,0.5176470588235295,1" />
+    <input name="base_diffuse_roughness" type="float" value="0" />
+    <input name="base_metalness" type="float" value="0.01" />
+    <input name="specular_weight" type="float" value="1" />
+    <input name="specular_color" type="color3" value="0.9607843137254902,0.9607843137254902,0.9607843137254902" />
+    <input name="specular_roughness" type="float" value="0" />
+    <input name="specular_ior" type="float" value="1.9" />
+    <input name="specular_roughness_anisotropy" type="float" value="0" />
+    <input name="transmission_weight" type="float" value="1" />
+    <input name="transmission_color" type="color3" value="0.8980392156862745,0.7098039215686275,0.9098039215686274" />
+    <input name="transmission_depth" type="float" value="0" />
+    <input name="transmission_scatter" type="color3" value="0,0,0" />
+    <input name="transmission_scatter_anisotropy" type="float" value="0" />
+    <input name="transmission_dispersion_scale" type="float" value="0" />
+    <input name="transmission_dispersion_abbe_number" type="float" value="20" />
+    <input name="subsurface_weight" type="float" value="0" />
+    <input name="subsurface_color" type="color3" value="0.8,0.8,0.8" />
+    <input name="subsurface_radius" type="float" value="1" />
+    <input name="subsurface_radius_scale" type="color3" value="1,0.5,0.25" />
+    <input name="subsurface_scatter_anisotropy" type="float" value="0" />
+    <input name="fuzz_weight" type="float" value="0.5" />
+    <input name="fuzz_color" type="color3" value="0.9725490196078431,0.8980392156862745,0.6274509803921569" />
+    <input name="fuzz_roughness" type="float" value="0.5" />
+    <input name="coat_weight" type="float" value="0.4" />
+    <input name="coat_color" type="color3" value="1,1,1" />
+    <input name="coat_roughness" type="float" nodegraph="Marbley_Graph" output="out" />
+    <input name="coat_roughness_anisotropy" type="float" value="0" />
+    <input name="coat_ior" type="float" value="1.6" />
+    <input name="coat_darkening" type="float" value="1" />
+    <input name="thin_film_weight" type="float" value="0" />
+    <input name="thin_film_thickness" type="float" value="0.5" />
+    <input name="thin_film_ior" type="float" value="1.4" />
+    <input name="emission_luminance" type="float" value="0" />
+    <input name="emission_color" type="color3" value="1,1,1" />
+    <input name="geometry_opacity" type="float" value="1" />
+    <input name="geometry_thin_walled" type="boolean" value="false" />
+    <input name="geometry_normal" type="vector3" value="0,0,0" />
+    <input name="geometry_coat_normal" type="vector3" value="0,0,0" />
+    <input name="geometry_tangent" type="vector3" value="0,0,0" />
+    <input name="geometry_coat_tangent" type="vector3" value="0,0,0" />
+  </open_pbr_surface>
+  <nodegraph name="Marbley_Graph">
+    <input name="Amplitude" type="float" value="3" />
+    <input name="Scale" type="vector3" value="3,2,3" />
+    <output name="out" type="float" nodename="noise3d_float2" />
+    <output name="out_pos" type="color3" nodename="convert_color4" />
+    <convert name="convert_vector5" type="vector3">
+      <input name="in" type="float" nodename="facingratio_float2" />
+    </convert>
+    <facingratio name="facingratio_float2" type="float">
+      <input name="viewdirection" type="vector3" value="0,0,0" />
+      <input name="normal" type="vector3" value="0,0,0" />
+      <input name="faceforward" type="boolean" value="false" />
+      <input name="invert" type="boolean" value="false" />
+    </facingratio>
+    <position name="position_vector5" type="vector3">
+      <input name="space" type="string" value="object" />
+    </position>
+    <multiply name="multiply_vector5" type="vector3">
+      <input name="in1" type="vector3" nodename="multiply_vector6" />
+      <input name="in2" type="vector3" nodename="convert_vector5" />
+    </multiply>
+    <convert name="convert_color4" type="color3">
+      <input name="in" type="vector3" nodename="multiply_vector5" />
+    </convert>
+    <noise3d name="noise3d_float2" type="float">
+      <input name="amplitude" type="float" interfacename="Amplitude" />
+      <input name="pivot" type="float" value="0" />
+      <input name="position" type="vector3" nodename="multiply_vector5" />
+    </noise3d>
+    <multiply name="multiply_vector6" type="vector3">
+      <input name="in1" type="vector3" nodename="position_vector5" />
+      <input name="in2" type="vector3" interfacename="Scale" />
+    </multiply>
+  </nodegraph>
+</materialx>

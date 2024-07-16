@@ -764,13 +764,10 @@ graph TB
     NG_tiledcircles_color3_mod_texcoord[mod_texcoord]
     NG_tiledcircles_color3_mod_texcoord_2[mod_texcoord_2]
     NG_tiledcircles_color3_recenter[recenter]
-    NG_tiledcircles_color3_swizzle[swizzle]
     NG_tiledcircles_color3_stagg_Y[stagg_Y]
     NG_tiledcircles_color3_delta_X[delta_X]
-    NG_tiledcircles_color3_swizzle2[swizzle2]
     NG_tiledcircles_color3_shift_X[shift_X]
     NG_tiledcircles_color3_mod_X_1[mod_X_1]
-    NG_tiledcircles_color3_swizzle3[swizzle3]
     NG_tiledcircles_color3_mod_Y_1[mod_Y_1]
     NG_tiledcircles_color3_coord_adj_1[coord_adj_1]
     NG_tiledcircles_color3_coord_adj_2[coord_adj_2]
@@ -808,15 +805,12 @@ graph TB
     NG_tiledcircles_color3_texcoord_bias --"in1"--> NG_tiledcircles_color3_mod_texcoord
     NG_tiledcircles_color3_mod_texcoord --"in1"--> NG_tiledcircles_color3_mod_texcoord_2
     NG_tiledcircles_color3_mod_texcoord_2 --"in1"--> NG_tiledcircles_color3_recenter
-    NG_tiledcircles_color3_texcoord_bias --"in"--> NG_tiledcircles_color3_swizzle
-    NG_tiledcircles_color3_swizzle --"in1"--> NG_tiledcircles_color3_stagg_Y
+    NG_tiledcircles_color3_texcoord_bias --"in1"--> NG_tiledcircles_color3_stagg_Y
     NG_tiledcircles_color3_stagg_Y --"value1"--> NG_tiledcircles_color3_delta_X
-    NG_tiledcircles_color3_texcoord_bias --"in"--> NG_tiledcircles_color3_swizzle2
-    NG_tiledcircles_color3_swizzle2 --"in1"--> NG_tiledcircles_color3_shift_X
+    NG_tiledcircles_color3_texcoord_bias --"in1"--> NG_tiledcircles_color3_shift_X
     NG_tiledcircles_color3_delta_X --"in2"--> NG_tiledcircles_color3_shift_X
     NG_tiledcircles_color3_shift_X --"in1"--> NG_tiledcircles_color3_mod_X_1
-    NG_tiledcircles_color3_texcoord_bias --"in"--> NG_tiledcircles_color3_swizzle3
-    NG_tiledcircles_color3_swizzle3 --"in1"--> NG_tiledcircles_color3_mod_Y_1
+    NG_tiledcircles_color3_texcoord_bias --"in1"--> NG_tiledcircles_color3_mod_Y_1
     NG_tiledcircles_color3_mod_X_1 --"in2"--> NG_tiledcircles_color3_coord_adj_1
     NG_tiledcircles_color3_mod_X_1 --"in1"--> NG_tiledcircles_color3_coord_adj_2
     NG_tiledcircles_color3_mod_Y_1 --"in2"--> NG_tiledcircles_color3_coord_adj_3

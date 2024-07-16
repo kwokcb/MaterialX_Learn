@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<materialx version="1.38" colorspace="lin_rec709" fileprefix="Images/boombox/">
+<materialx version="1.38" colorspace="lin_rec709" fileprefix="Materials/Examples/GltfPbr/boombox/">
   <gltf_colorimage name="image_basecolor" type="multioutput">
     <input name="file" type="filename" value="BoomBox_baseColor.png" colorspace="srgb_texture" />
   </gltf_colorimage>

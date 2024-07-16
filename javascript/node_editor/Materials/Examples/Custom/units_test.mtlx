@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<materialx version="1.39" colorspace="lin_rec709">
+  <output name="image1_output" type="float" nodename="image1" />
+  <output name="image2_output" type="vector2" nodename="image2" />
+  <output name="image3_output" type="vector3" nodename="image3" />
+  <output name="image4_output" type="vector4" nodename="image4" />
+  <image name="image4" type="vector4">
+    <input name="file" type="filename" value="Images/grid.png" unit="millimeter" unittype="distance" />
+  </image>
+  <image name="image2" type="vector2">
+    <input name="file" type="filename" value="Images/grid.png" unit="foot" unittype="distance" />
+  </image>
+  <image name="image3" type="vector3">
+    <input name="file" type="filename" value="Images/grid.png" unit="inch" unittype="distance" />
+  </image>
+  <image name="image1" type="float">
+    <input name="file" type="filename" value="Images/grid.png" unit="kilometer" unittype="distance" />
+  </image>
+</materialx>

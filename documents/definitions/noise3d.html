@@ -932,7 +932,6 @@ Category: noise3d
 graph TB
     subgraph NG_noise3d_color3
     NG_noise3d_color3_N_noise3d[N_noise3d]
-    NG_noise3d_color3_swizzle[swizzle]
     style NG_noise3d_color3_out  fill:#0C0, color:#FFF
     NG_noise3d_color3_out([out])
     style NG_noise3d_color3_amplitude  fill:#09D, color:#FFF
@@ -945,8 +944,7 @@ graph TB
     NG_noise3d_color3_amplitude --"amplitude"--> NG_noise3d_color3_N_noise3d
     NG_noise3d_color3_pivot --"pivot"--> NG_noise3d_color3_N_noise3d
     NG_noise3d_color3_position --"position"--> NG_noise3d_color3_N_noise3d
-    NG_noise3d_color3_N_noise3d --"in"--> NG_noise3d_color3_swizzle
-    NG_noise3d_color3_swizzle --> NG_noise3d_color3_out
+    NG_noise3d_color3_N_noise3d --> NG_noise3d_color3_out
 
 
 </div></code></pre>
@@ -1097,7 +1095,6 @@ graph TB
 graph TB
     subgraph NG_noise3d_color4
     NG_noise3d_color4_N_noise3d[N_noise3d]
-    NG_noise3d_color4_swizzle[swizzle]
     style NG_noise3d_color4_out  fill:#0C0, color:#FFF
     NG_noise3d_color4_out([out])
     style NG_noise3d_color4_amplitude  fill:#09D, color:#FFF
@@ -1110,8 +1107,7 @@ graph TB
     NG_noise3d_color4_amplitude --"amplitude"--> NG_noise3d_color4_N_noise3d
     NG_noise3d_color4_pivot --"pivot"--> NG_noise3d_color4_N_noise3d
     NG_noise3d_color4_position --"position"--> NG_noise3d_color4_N_noise3d
-    NG_noise3d_color4_N_noise3d --"in"--> NG_noise3d_color4_swizzle
-    NG_noise3d_color4_swizzle --> NG_noise3d_color4_out
+    NG_noise3d_color4_N_noise3d --> NG_noise3d_color4_out
 
 
 </div></code></pre>
@@ -1868,7 +1864,6 @@ graph TB
 <div id="ND_noise3d_color3FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_noise3d_color3FA
-    NG_noise3d_color3FA_swizzle[swizzle]
     NG_noise3d_color3FA_N_noise3d[N_noise3d]
     style NG_noise3d_color3FA_out  fill:#0C0, color:#FFF
     NG_noise3d_color3FA_out([out])
@@ -1879,8 +1874,7 @@ graph TB
     style NG_noise3d_color3FA_position  fill:#09D, color:#FFF
     NG_noise3d_color3FA_position([position])
     end
-    NG_noise3d_color3FA_amplitude --"in"--> NG_noise3d_color3FA_swizzle
-    NG_noise3d_color3FA_swizzle --"amplitude"--> NG_noise3d_color3FA_N_noise3d
+    NG_noise3d_color3FA_amplitude --"amplitude"--> NG_noise3d_color3FA_N_noise3d
     NG_noise3d_color3FA_pivot --"pivot"--> NG_noise3d_color3FA_N_noise3d
     NG_noise3d_color3FA_position --"position"--> NG_noise3d_color3FA_N_noise3d
     NG_noise3d_color3FA_N_noise3d --> NG_noise3d_color3FA_out
@@ -2025,7 +2019,6 @@ graph TB
 <div id="ND_noise3d_color4FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_noise3d_color4FA
-    NG_noise3d_color4FA_swizzle[swizzle]
     NG_noise3d_color4FA_N_noise3d[N_noise3d]
     style NG_noise3d_color4FA_out  fill:#0C0, color:#FFF
     NG_noise3d_color4FA_out([out])
@@ -2036,11 +2029,7 @@ graph TB
     style NG_noise3d_color4FA_position  fill:#09D, color:#FFF
     NG_noise3d_color4FA_position([position])
     end
-    NG_noise3d_color4FA_amplitude --"in1"--> NG_noise3d_color4FA_swizzle
-    NG_noise3d_color4FA_amplitude --"in2"--> NG_noise3d_color4FA_swizzle
-    NG_noise3d_color4FA_amplitude --"in3"--> NG_noise3d_color4FA_swizzle
-    NG_noise3d_color4FA_amplitude --"in4"--> NG_noise3d_color4FA_swizzle
-    NG_noise3d_color4FA_swizzle --"amplitude"--> NG_noise3d_color4FA_N_noise3d
+    NG_noise3d_color4FA_amplitude --"amplitude"--> NG_noise3d_color4FA_N_noise3d
     NG_noise3d_color4FA_pivot --"pivot"--> NG_noise3d_color4FA_N_noise3d
     NG_noise3d_color4FA_position --"position"--> NG_noise3d_color4FA_N_noise3d
     NG_noise3d_color4FA_N_noise3d --> NG_noise3d_color4FA_out
@@ -2176,7 +2165,6 @@ graph TB
 <div id="ND_noise3d_vector2FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_noise3d_vector2FA
-    NG_noise3d_vector2FA_swizzle[swizzle]
     NG_noise3d_vector2FA_N_noise3d[N_noise3d]
     style NG_noise3d_vector2FA_out  fill:#0C0, color:#FFF
     NG_noise3d_vector2FA_out([out])
@@ -2187,9 +2175,7 @@ graph TB
     style NG_noise3d_vector2FA_position  fill:#09D, color:#FFF
     NG_noise3d_vector2FA_position([position])
     end
-    NG_noise3d_vector2FA_amplitude --"in1"--> NG_noise3d_vector2FA_swizzle
-    NG_noise3d_vector2FA_amplitude --"in2"--> NG_noise3d_vector2FA_swizzle
-    NG_noise3d_vector2FA_swizzle --"amplitude"--> NG_noise3d_vector2FA_N_noise3d
+    NG_noise3d_vector2FA_amplitude --"amplitude"--> NG_noise3d_vector2FA_N_noise3d
     NG_noise3d_vector2FA_pivot --"pivot"--> NG_noise3d_vector2FA_N_noise3d
     NG_noise3d_vector2FA_position --"position"--> NG_noise3d_vector2FA_N_noise3d
     NG_noise3d_vector2FA_N_noise3d --> NG_noise3d_vector2FA_out
@@ -2328,7 +2314,6 @@ graph TB
 <div id="ND_noise3d_vector3FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_noise3d_vector3FA
-    NG_noise3d_vector3FA_swizzle[swizzle]
     NG_noise3d_vector3FA_N_noise3d[N_noise3d]
     style NG_noise3d_vector3FA_out  fill:#0C0, color:#FFF
     NG_noise3d_vector3FA_out([out])
@@ -2339,8 +2324,7 @@ graph TB
     style NG_noise3d_vector3FA_position  fill:#09D, color:#FFF
     NG_noise3d_vector3FA_position([position])
     end
-    NG_noise3d_vector3FA_amplitude --"in"--> NG_noise3d_vector3FA_swizzle
-    NG_noise3d_vector3FA_swizzle --"amplitude"--> NG_noise3d_vector3FA_N_noise3d
+    NG_noise3d_vector3FA_amplitude --"amplitude"--> NG_noise3d_vector3FA_N_noise3d
     NG_noise3d_vector3FA_pivot --"pivot"--> NG_noise3d_vector3FA_N_noise3d
     NG_noise3d_vector3FA_position --"position"--> NG_noise3d_vector3FA_N_noise3d
     NG_noise3d_vector3FA_N_noise3d --> NG_noise3d_vector3FA_out
@@ -2482,7 +2466,6 @@ graph TB
 <div id="ND_noise3d_vector4FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_noise3d_vector4FA
-    NG_noise3d_vector4FA_swizzle[swizzle]
     NG_noise3d_vector4FA_N_noise3d[N_noise3d]
     style NG_noise3d_vector4FA_out  fill:#0C0, color:#FFF
     NG_noise3d_vector4FA_out([out])
@@ -2493,11 +2476,7 @@ graph TB
     style NG_noise3d_vector4FA_position  fill:#09D, color:#FFF
     NG_noise3d_vector4FA_position([position])
     end
-    NG_noise3d_vector4FA_amplitude --"in1"--> NG_noise3d_vector4FA_swizzle
-    NG_noise3d_vector4FA_amplitude --"in2"--> NG_noise3d_vector4FA_swizzle
-    NG_noise3d_vector4FA_amplitude --"in3"--> NG_noise3d_vector4FA_swizzle
-    NG_noise3d_vector4FA_amplitude --"in4"--> NG_noise3d_vector4FA_swizzle
-    NG_noise3d_vector4FA_swizzle --"amplitude"--> NG_noise3d_vector4FA_N_noise3d
+    NG_noise3d_vector4FA_amplitude --"amplitude"--> NG_noise3d_vector4FA_N_noise3d
     NG_noise3d_vector4FA_pivot --"pivot"--> NG_noise3d_vector4FA_N_noise3d
     NG_noise3d_vector4FA_position --"position"--> NG_noise3d_vector4FA_N_noise3d
     NG_noise3d_vector4FA_N_noise3d --> NG_noise3d_vector4FA_out

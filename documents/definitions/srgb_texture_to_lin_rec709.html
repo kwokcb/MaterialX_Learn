@@ -685,11 +685,8 @@ graph TB
     subgraph NG_srgb_texture_to_lin_rec709_color3
     style NG_srgb_texture_to_lin_rec709_color3_threshhold  fill:#500, color:#FFF
     NG_srgb_texture_to_lin_rec709_color3_threshhold([threshhold:0.04045])
-    NG_srgb_texture_to_lin_rec709_color3_swizzle[swizzle]
     NG_srgb_texture_to_lin_rec709_color3_isAboveR[isAboveR]
-    NG_srgb_texture_to_lin_rec709_color3_swizzle2[swizzle2]
     NG_srgb_texture_to_lin_rec709_color3_isAboveG[isAboveG]
-    NG_srgb_texture_to_lin_rec709_color3_swizzle3[swizzle3]
     NG_srgb_texture_to_lin_rec709_color3_isAboveB[isAboveB]
     NG_srgb_texture_to_lin_rec709_color3_isAbove[isAbove]
     NG_srgb_texture_to_lin_rec709_color3_linSeg[linSeg]
@@ -703,14 +700,11 @@ graph TB
     style NG_srgb_texture_to_lin_rec709_color3_in  fill:#09D, color:#FFF
     NG_srgb_texture_to_lin_rec709_color3_in([in])
     end
-    NG_srgb_texture_to_lin_rec709_color3_in --"in"--> NG_srgb_texture_to_lin_rec709_color3_swizzle
-    NG_srgb_texture_to_lin_rec709_color3_swizzle --"value1"--> NG_srgb_texture_to_lin_rec709_color3_isAboveR
+    NG_srgb_texture_to_lin_rec709_color3_in --"value1"--> NG_srgb_texture_to_lin_rec709_color3_isAboveR
     NG_srgb_texture_to_lin_rec709_color3_threshhold --"value2"--> NG_srgb_texture_to_lin_rec709_color3_isAboveR
-    NG_srgb_texture_to_lin_rec709_color3_in --"in"--> NG_srgb_texture_to_lin_rec709_color3_swizzle2
-    NG_srgb_texture_to_lin_rec709_color3_swizzle2 --"value1"--> NG_srgb_texture_to_lin_rec709_color3_isAboveG
+    NG_srgb_texture_to_lin_rec709_color3_in --"value1"--> NG_srgb_texture_to_lin_rec709_color3_isAboveG
     NG_srgb_texture_to_lin_rec709_color3_threshhold --"value2"--> NG_srgb_texture_to_lin_rec709_color3_isAboveG
-    NG_srgb_texture_to_lin_rec709_color3_in --"in"--> NG_srgb_texture_to_lin_rec709_color3_swizzle3
-    NG_srgb_texture_to_lin_rec709_color3_swizzle3 --"value1"--> NG_srgb_texture_to_lin_rec709_color3_isAboveB
+    NG_srgb_texture_to_lin_rec709_color3_in --"value1"--> NG_srgb_texture_to_lin_rec709_color3_isAboveB
     NG_srgb_texture_to_lin_rec709_color3_threshhold --"value2"--> NG_srgb_texture_to_lin_rec709_color3_isAboveB
     NG_srgb_texture_to_lin_rec709_color3_isAboveR --"in1"--> NG_srgb_texture_to_lin_rec709_color3_isAbove
     NG_srgb_texture_to_lin_rec709_color3_isAboveG --"in2"--> NG_srgb_texture_to_lin_rec709_color3_isAbove
@@ -820,10 +814,6 @@ graph TB
     subgraph NG_srgb_texture_to_lin_rec709_color4
     NG_srgb_texture_to_lin_rec709_color4_asColor3[asColor3]
     NG_srgb_texture_to_lin_rec709_color4_transform[transform]
-    NG_srgb_texture_to_lin_rec709_color4_swizzle[swizzle]
-    NG_srgb_texture_to_lin_rec709_color4_swizzle2[swizzle2]
-    NG_srgb_texture_to_lin_rec709_color4_swizzle3[swizzle3]
-    NG_srgb_texture_to_lin_rec709_color4_swizzle4[swizzle4]
     NG_srgb_texture_to_lin_rec709_color4_asColor4[asColor4]
     style NG_srgb_texture_to_lin_rec709_color4_out  fill:#0C0, color:#FFF
     NG_srgb_texture_to_lin_rec709_color4_out([out])
@@ -832,14 +822,10 @@ graph TB
     end
     NG_srgb_texture_to_lin_rec709_color4_in --"in"--> NG_srgb_texture_to_lin_rec709_color4_asColor3
     NG_srgb_texture_to_lin_rec709_color4_asColor3 --"in"--> NG_srgb_texture_to_lin_rec709_color4_transform
-    NG_srgb_texture_to_lin_rec709_color4_transform --"in"--> NG_srgb_texture_to_lin_rec709_color4_swizzle
-    NG_srgb_texture_to_lin_rec709_color4_transform --"in"--> NG_srgb_texture_to_lin_rec709_color4_swizzle2
-    NG_srgb_texture_to_lin_rec709_color4_transform --"in"--> NG_srgb_texture_to_lin_rec709_color4_swizzle3
-    NG_srgb_texture_to_lin_rec709_color4_in --"in"--> NG_srgb_texture_to_lin_rec709_color4_swizzle4
-    NG_srgb_texture_to_lin_rec709_color4_swizzle --"in1"--> NG_srgb_texture_to_lin_rec709_color4_asColor4
-    NG_srgb_texture_to_lin_rec709_color4_swizzle2 --"in2"--> NG_srgb_texture_to_lin_rec709_color4_asColor4
-    NG_srgb_texture_to_lin_rec709_color4_swizzle3 --"in3"--> NG_srgb_texture_to_lin_rec709_color4_asColor4
-    NG_srgb_texture_to_lin_rec709_color4_swizzle4 --"in4"--> NG_srgb_texture_to_lin_rec709_color4_asColor4
+    NG_srgb_texture_to_lin_rec709_color4_transform --"in1"--> NG_srgb_texture_to_lin_rec709_color4_asColor4
+    NG_srgb_texture_to_lin_rec709_color4_transform --"in2"--> NG_srgb_texture_to_lin_rec709_color4_asColor4
+    NG_srgb_texture_to_lin_rec709_color4_transform --"in3"--> NG_srgb_texture_to_lin_rec709_color4_asColor4
+    NG_srgb_texture_to_lin_rec709_color4_in --"in4"--> NG_srgb_texture_to_lin_rec709_color4_asColor4
     NG_srgb_texture_to_lin_rec709_color4_asColor4 --> NG_srgb_texture_to_lin_rec709_color4_out
 
 
