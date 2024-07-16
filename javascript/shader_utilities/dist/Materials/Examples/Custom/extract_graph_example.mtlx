@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.39" colorspace="lin_rec709">
+  <nodegraph name="extract_graph">
+    <input name="add_1" type="color3" value="0,0,0" />
+    <input name="add_2" type="color3" value="0,0,0" />
+    <output name="output_color4" type="color3" nodename="add_color4" />
+    <add name="add_color4" type="color3">
+      <input name="in1" type="color3" interfacename="add_1" />
+      <input name="in2" type="color3" interfacename="add_2" />
+    </add>
+  </nodegraph>
+</materialx>

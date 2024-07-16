@@ -55,6 +55,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/json/json.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script src="./node_editor/ui_helpers.js"></script>
 
     <script src="JsMaterialXGraph.js" type="text/javascript"></script>
 
@@ -64,10 +65,13 @@
         }
 
         .CodeMirror {
-            font-size: 12px;
+            font-size: 11px;
             border: solid thin lightskyblue;
+            height: 50em;
         }
     </style>
+    <link rel="icon" type="images" href="./node_editor/Icons/logo_wave3.png" type="image/x-icon" class="img-fluid">
+
 
 
   <title>MaterialX Learn</title>
@@ -243,197 +247,242 @@
   <!-- Section Information -->
   <section class="py-0 px-0 g-0">
     <div class="container-fluid p-4">
-          <div class="container-fluid p-4">
-        <h2>Graph Utilities</h2>
+          <div class="container-fluid p-2">
+        <h2 class="bg-gradient p-2 rounded-4">
+            <img class="rounded-4" src="./node_editor/Icons/logo_wave3.png" width="50px">
+            MaterialX NodeGraph Utilities
+        </h2>
 
-        <p>The following is a set of graph related utilities to work with MaterialX using it's Javascript
-            packages. Specifically only the <b>JsMaterialXCore</b> package is used as it is much
-            more lightweight than the the full MaterialX package which includes shader generation.
-        </p>
-        The utilities collected together into a
-        <b>materialxgraph</b> package which can be reused in other projects. Currently the package includes:
-        <ul>
-            <li>A class which allows for the extraction of node, graph and connectivity information into a MaterialX
-                independent format. This can be serialized to JSON for further processing.
-            </li>
-            <li>A class that can consume the JSON connectivity information and construct Mermaid graphs.</li>
-        </ul>
-        </p>
+        <div id="materialxtoy_nodegraph_utilities" class="container-fluid border rounded-4">
+            <div class="row p-2 align-items-left justify-content-left">
 
-        <p>Using this package, a MaterialX file can be loaded in and previewed as text or visualized as a "Mermaid"
-            graph.
-            The separate <a href="../documents/mermaidChecker.html">Mermaid Visualizer</a> can also be used.
-            It uses the same <b>JsMaterialXGraph</b> package.
-            Additionally, the node and connectively information
-        </p>
-        <p>
-            A simple MaterialX graph is loaded in by default.
-        </p>
-        <button class="btn btn-outline-primary shadow" id="loadMaterialXButton">Load MaterialX Document</button>
-        <button class="btn btn-sm copy-button" data-target="materialXTextArea">
-            <img class="" src="../documents/images/copy-regular.svg" style="width: 24px; height: 24px" alt="Copy Icon">
-        </button>
-        <button id="materialXTextArea_paste" class="btn btn-sm" data-target="materialXTextArea">
-            <img class="" src="../documents/images/clipboard_white.svg" style="width: 24px; height: 24px" alt="Copy Icon">
-        </button>
-        <div class="row ">
-            <div class="col-12 p-2">
-                <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXTextArea" rows="15"
-                    style="width: 100%; " placeholder="Loaded MaterialX document will be displayed here"
-                    value='<?xml version="1.0" encoding="utf-8"?>\r\n<materialx version="1.38" colorspace="lin_rec709">\r\n</materialx>'>
-                </textarea>
+                <!-- LHS Source -->
+                <div class="col-12 p-2" id="colContainer">
+
+                    <button style="font-size: 14px;" class="btn btn-primary shadow" id="loadMaterialXButton">
+                        Load Document
+                    </button>
+                    <button class="btn btn-sm copy-button" data-target="materialXTextArea">
+                        <img class="" src="../documents/icons/copy-regular_white.svg" style="width: 18px; height: 18px"
+                            alt="Copy Icon">
+                    </button>
+                    <button id="materialXTextArea_paste" class="btn btn-sm" data-target="materialXTextArea">
+                        <img class="" src="../documents/icons/clipboard_white.svg" style="width: 18px; height: 18px"
+                            alt="Copy Icon">
+                    </button>
+                    <div class="row ">
+                        <div class="col-12 p-2">
+                            <textarea class="form-control form-control-sm" data-bs-theme="dark" id="materialXTextArea"
+                                rows="15" style="width: 100%; "
+                                placeholder="Loaded MaterialX document will be displayed here"
+                                value='<?xml version="1.0" encoding="utf-8"?>\r\n<materialx version="1.38" colorspace="lin_rec709">\r\n</materialx>'>
+                            </textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RHS Definitions -->
+                <div class="col p-2">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="definition_tab_button" data-bs-toggle="tab" data-bs-target="#definition_tab" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                            Create Definition</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="graphing_tab_button" data-bs-toggle="tab" data-bs-target="#graphing_tab" type="button" role="tab" aria-controls="home" aria-selected="true">
+                            Create Diagram</button>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content" id="myTabContent">
+                    <div style="font-size: 12px" class="tab-pane fade" id="graphing_tab" role="tabpanel" aria-labelledby="graphing_tab_button">
+
+                    <!-- Button to generate graph -->
+                        <div class="bg-gradient fs-5">Graph Connectivity</div>
+                        <p></p>
+                        <div class="row" >
+                            <div class="col-2">
+                                <button style="font-size: 12px" class="btn btn-sm btn-primary shadow" id="generateGraphButton">
+                                    Generate Graph
+                                </button>
+                            </div>
+                            <div class="col border-start">
+                                <label for="graphOrientation">Graph Orientation:</label>
+                                <select id="graphOrientation">
+                                    <option style="font-size: 11px;" value="0">Left to Right</option>
+                                    <option style="font-size: 11px;" value="1">Top to Bottom</option>
+                                </select>
+                                <!-- Show node categories or node names -->
+                                <div class="form-check">
+                                    <label class="form-check-label" for="graphOptions">
+                                        Label Nodes with Categories
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" id="labelCategories">
+                                    </input>
+                                </div>
+                                <!-- Show node types -->
+                                <div class="form-check">
+                                    <label class="form-check-label" for="graphOptions">
+                                        Label Nodes with Types
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" value="" id="labelTypes">
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row d-flex">
+                            <div class="col">
+                                <b>Connectivity Information</b>
+                                <button class="btn btn-sm copy-button" data-target="json_output">
+                                    <img class="" src="../documents/icons/copy-regular_white.svg"
+                                        style="width: 16px; height: 16px" alt="Copy Icon">
+                                </button>
+                                <textarea id="json_output" class="form-control form-control-sm" data-bs-theme="dark"
+                                    rows="10"
+                                    style="font-size: 12px; width: 100%; border:solid thin lightskyblue; background-color: #000000"
+                                    placeholder="Generated JSON information will be displayed here"></textarea><br>
+                            </div>
+                            <div class="col">
+                                <b>Mermaid</b>
+                                <button class="btn btn-sm copy-button" data-target="mermaid_input">
+                                    <img class="" src="../documents/icons/copy-regular_white.svg"
+                                        style="width: 16px; height: 16px" alt="Copy Icon">
+                                </button>
+                                <textarea id="mermaid_input" class="form-control form-control-sm" data-bs-theme="dark"
+                                    rows="10"
+                                    style="font-size: 12px; width: 100%; border:solid thin lightskyblue; background-color: #000000"
+                                    placeholder="Generated Mermaid Graph will be displayed here"></textarea><br>
+                            </div>
+                        </div>
+
+                        <div class="row pb-2">
+                            <div class="col-12">
+                                <label for="mermaid_output"><b>Diagram</b></label>
+                                <div id="mermaid_output" class="p-2 mermaid_output rounded"
+                                    style="min-width: 64px; border:solid thin lightskyblue;">
+                                    <!-- An svg element called "mermaid_output_rendered" will be inserted on render -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-12">
+                                <button id="saveSVG" style="font-size: 12px" class="btn btn-sm btn-primary shadow-sm">Save Diagram</button>
+                                <button id="resetSVGView" style="font-size: 12px" class="btn btn-sm btn-primary shadow-sm">Reset
+                                    View</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade show active" style="font-size: 12px" id="definition_tab" role="tabpanel" aria-labelledby="definition_tab_button">
+
+                            <div class="bg-gradient fs-5" >Graph Definitions</div>
+    
+                            <div class="row border-bottom p-2">
+                                <div class="col-2 p-2 py-1">
+                                    <button style="font-size: 12px" class="btn btn-sm btn-primary shadow" id="updateGraphs">
+                                        Update Graph List
+                                    </button>
+                                </div>
+                                <div class="col p-2 py-1">
+                                    <select id="nodeGraphs">
+                                        <!-- Filled in programmatically -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row p-2">
+                                <div class="col">
+    
+                                    <div class="row">
+                                        <div class="col-2 p-2 py-1">
+                                            <label for="definitionName">Definition Category</label>
+                                        </div>
+                                        <div class="col p-2 py-1">
+                                            <input type="text" id="definitionName" placeholder="Nodegraph name will be used by default"
+                                                style="font-size: 12px; width: 100%; border:solid thin lightskyblue">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-2 p-2 py-1">
+                                            <label for="nodegroupName">Node Group</label>
+                                        </div>
+                                            <div class="col p-2 py-1">
+                                                <input type="text" id="nodegroupName" value="procedural"
+                                                placeholder="procedural" style="width: 100%; font-size: 12px; border:solid thin lightskyblue">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-2 p-2 py-1">
+                                            <label for="nodegroupName">Version</label>
+                                        </div>
+                                        <div class="col p-2 py-1">
+                                            <input type="text" id="versionString" value="1.0"
+                                            placeholder="1.0" style="width: 100%; font-size: 12px; border:solid thin lightskyblue">
+                                        </div>
+                                        <div class="col-2 p-2 py-1">
+                                            <label for="isDefaultVersion">Default Version:</label>
+                                            <input type="checkbox" id="isDefaultVersion" value="1" checked>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-2 p-2 py-1">
+                                            <label for="documentationString">Documentation</label>
+                                        </div>
+                                            <div class="col p-2 py-1">
+                                                <textarea id="documentationString" class="form-control form-control-sm"
+                                                data-bs-theme="dark" rows="2"
+                                                style="font-size: 12px; border:solid thin lightskyblue; background-color: #000000"
+                                                placeholder="Add definition documentation."></textarea><br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button style="font-size: 12px" class="btn btn-sm btn-primary shadow" id="createDefinition">Create
+                                        Definition</button>
+                                    <button style="font-size: 12px" class="btn btn-sm btn-primary shadow" id="saveDefinition">Save
+                                        Definition</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 p-2">
+                                    <label for="definition_output2"><b>Node Definition</b></label>
+                                    <button class="btn btn-sm copy-button" data-target="definition_output2">
+                                        <img class="" src="../documents/icons/copy-regular_white.svg"
+                                            style="width: 16px; height: 16px" alt="Copy Icon">
+                                    </button>
+                                    <textarea id="definition_output2" class="form-control form-control-sm"
+                                        data-bs-theme="dark" rows="10" style="width=100%; border:solid thin lightskyblue"
+                                        placeholder="Generated definition will be displayed here"></textarea><br>
+                                </div>
+                                <div class="col-6 p-2">
+                                    <label for="definition_output"><b>Node Graph Implementation</b></label>
+                                    <button class="btn btn-sm copy-button" data-target="definition_output">
+                                        <img class="" src="../documents/icons/copy-regular_white.svg"
+                                            style="width: 16px; height: 16px" alt="Copy Icon">
+                                    </button>
+                                    <textarea id="definition_output" class="form-control form-control-sm"
+                                        data-bs-theme="dark" rows="10" style="width=100%; border:solid thin lightskyblue"
+                                        placeholder="Generated definition will be displayed here"></textarea><br>
+                                </div>
+                            </div>
+        
+                    </div>
+                </div>
+
+
+                </div>
+
             </div>
         </div>
 
-        <hr>
-
-        <!-- Button to generate graph -->
-        <details open>
-            <summary class="fs-3">Graph Connectivity</summary>
-            <p></p>
-            <div class="row">
-                <div class="col-2">
-                    <button class="btn btn-outline-primary shadow" id="generateGraphButton">Generate Graph</button>
-                </div>
-                <div class="col-10 border-start">
-                    <label for="graphOrientation">Graph Orientation:</label>
-                    <select id="graphOrientation">
-                        <option value="0">Left to Right</option>
-                        <option value="1">Top to Bottom</option>
-                    </select>
-                    <!-- Show node categories or node names -->
-                    <div class="form-check">
-                        <label class="form-check-label" for="graphOptions">
-                            Label Nodes with Categories
-                        </label>
-                        <input class="form-check-input" type="checkbox" value="" id="labelCategories">
-                        </input>
-                    </div>
-                    <!-- Show node types -->
-                    <div class="form-check">
-                        <label class="form-check-label" for="graphOptions">
-                            Label Nodes with Types
-                        </label>
-                        <input class="form-check-input" type="checkbox" value="" id="labelTypes">
-                        </input>
-                    </div>
-                </div>
-            </div>
-            <div class="row d-flex">
-                <div class="col">
-                    <b>Connectivity</b>
-                    <button class="btn btn-sm copy-button" data-target="json_output">
-                        <img class="" src="../documents/images/copy-regular.svg" style="width: 16px; height: 16px"
-                            alt="Copy Icon">
-                    </button>
-                    <textarea id="json_output" class="form-control form-control-sm" data-bs-theme="dark" rows="10"
-                        style="width: 100%; border:solid thin lightskyblue; background-color: #000000"
-                        placeholder="Generated JSON information will be displayed here"></textarea><br>
-                </div>
-                <div class="col">
-                    <b>Mermaid</b>
-                    <button class="btn btn-sm copy-button" data-target="mermaid_input">
-                        <img class="" src="../documents/images/copy-regular.svg" style="width: 16px; height: 16px"
-                            alt="Copy Icon">
-                    </button>
-                    <textarea id="mermaid_input" class="form-control form-control-sm" data-bs-theme="dark" rows="10"
-                        style="width: 100%; border:solid thin lightskyblue; background-color: #000000"
-                        placeholder="Generated Mermaid Graph will be displayed here"></textarea><br>
-                </div>
-            </div>
-
-            <div class="row pb-2">
-                <div class="col-12">
-                    <label for="mermaid_output"><b>Graph</b></label>
-                    <div id="mermaid_output" class="mermaid_output rounded" style="border:solid thin lightskyblue">
-                        <!-- An svg element called "mermaid_output_rendered" will be inserted on render -->
-                    </div>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="col-12">
-                    <button id="saveSVG" class="btn btn-outline-primary shadow-sm">Save SVG</button>
-                    <button id="resetSVGView" class="btn btn-outline-primary shadow-sm">Reset View</button>
-                </div>
-            </div>
-
-        </details>
-        <hr>
-
-        <details open>
-            <summary class="fs-3">Graph Definitions</summary>
-            <p></p>
-
-            <div class="row pb-2 border-bottom p-2">
-                <div class="col">
-                    <button class="btn btn-outline-primary shadow" id="updateGraphs">Node Graph</button>
-                </div>
-                <div class="col-10 border-start">
-                    <select id="nodeGraphs">
-                    </select>
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col">
-                    <button class="btn btn-outline-primary shadow" id="createDefinition">Create Definition</button>
-                    <button class="btn btn-outline-primary shadow" id="saveDefinition">Save Definition</button>
-                </div>
-                <div class="col-10 border-start">
-
-                    <div class="row">
-                        <div class="col p-2">
-                            <label for="definitionName">Definition Category</label>
-                            <input type="text" id="definitionName" placeholder="Set definition category."
-                                style="border:solid thin lightskyblue">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col p-2">
-                            <label for="nodegroupName">Node Group</label>
-                            <input type="text" id="nodegroupName" value="procedural" placeholder="procedural"
-                                style="border:solid thin lightskyblue">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col p-2">
-                            <label for="documentationString">Documentation</label>
-                            <textarea id="documentationString" class="form-control form-control-sm" data-bs-theme="dark"
-                                rows="1" style="border:solid thin lightskyblue; background-color: #000000"
-                                placeholder="Add definition documentation."></textarea><br>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col p-0">
-                    <label for="definition_output"><b>Functional Graph</b></label>
-                    <button class="btn btn-sm copy-button" data-target="definition_output">
-                        <img class="" src="../documents/images/copy-regular.svg" style="width: 16px; height: 16px"
-                            alt="Copy Icon">
-                    </button>
-                    <textarea id="definition_output" class="form-control form-control-sm" data-bs-theme="dark" rows="10"
-                        style="border:solid thin lightskyblue"
-                        placeholder="Generated definition will be displayed here"></textarea><br>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col p-0">
-                    <label for="definition_output2"><b>Node Definition</b></label>
-                    <button class="btn btn-sm copy-button" data-target="definition_output2">
-                        <img class="" src="../documents/images/copy-regular.svg" style="width: 16px; height: 16px"
-                            alt="Copy Icon">
-                    </button>
-                    <textarea id="definition_output2" class="form-control form-control-sm" data-bs-theme="dark" rows="5"
-                        style="border:solid thin lightskyblue"
-                        placeholder="Generated definition will be displayed here"></textarea><br>
-                </div>
-            </div>
-
-        </details>
 
         <script src="JsMaterialXCore.js" type="text/javascript"></script>
         <script type="text/javascript">
-            console.log("Load MaterialX...");
 
             var mx = null;
             var doc = null;
@@ -446,15 +495,6 @@
                     MaterialX().then((mtlx) => {
                         // Save the MaterialX instance to the global variable
                         mx = mtlx;
-                        /*
-                        console.log("MaterialX loaded", mx);
-                        for (var key in mtlx) {
-                            if (Object.hasOwnProperty.call(mtlx, key)) {
-                                var func = mtlx[key];
-                                console.log(key, func);
-                                }
-                            }
-                        } */
                         resolve();
                     }).catch((error) => {
                         reject(error);
@@ -472,7 +512,7 @@
                 console.error("Error loading MaterialX:", error);
             });
 
-            // Attach event listener to the button
+            // Attach event listener for load button
             document.getElementById('loadMaterialXButton').addEventListener('click', () => {
                 // Open file dialog
                 const input = document.createElement('input');
@@ -549,6 +589,8 @@
                         }
 
                         updateNodeGraphMenu();
+                        createDefinition(false);
+                        generateMermaid();
 
                     } catch (error) {
                         console.error('Error:', error);
@@ -586,6 +628,8 @@
                                 }
 
                                 updateNodeGraphMenu();
+                                createDefinition(false);
+                                generateMermaid();
 
                             } catch (error) {
                                 console.error('Error:', error);
@@ -621,8 +665,7 @@
                 });
                 editor.setSize('auto', '300px');
                 var pasteButton = document.getElementById('materialXTextArea_paste');
-                if (pasteButton)
-                {
+                if (pasteButton) {
                     addPasteHandler(pasteButton, editor);
                 }
 
@@ -631,7 +674,7 @@
                 defeditor = CodeMirror.fromTextArea(definitionArea, {
                     mode: 'application/xml',
                     lineNumbers: true,
-                    dragDrop: true,
+                    dragDrop: false,
                     theme: 'night'
                 });
                 defeditor.setSize('auto', '300px');
@@ -643,7 +686,7 @@
                 defeditor2 = CodeMirror.fromTextArea(definitionArea2, {
                     mode: 'application/xml',
                     lineNumbers: true,
-                    dragDrop: true,
+                    dragDrop: false,
                     theme: 'night'
                 });
                 defeditor2.setSize('auto', '200px');
@@ -782,9 +825,8 @@
                 return mermaidText;
             }
 
-            // Add event handler for generate graph
-            document.getElementById('generateGraphButton').addEventListener('click', () => {
-
+            function generateMermaid()
+            {
                 let graphTextArea = document.getElementById('mermaid_input');
                 let materialXTextArea = document.getElementById('materialXTextArea');
 
@@ -825,6 +867,8 @@
                             graphTextArea.value = 'MaterialX document is invalid: ' + error;
                             return;
                         }
+
+                        updateNodeGraphMenu();
 
                         //console.log('Use new builder !')
 
@@ -871,6 +915,20 @@
                         return;
                     }
                 })();
+            }
+
+            // Add event handler for graph generation
+            document.getElementById('generateGraphButton').addEventListener('click', () => {
+                generateMermaid();
+            });
+            document.getElementById('labelCategories').addEventListener('click', () => {
+                generateMermaid();
+            });
+            document.getElementById('labelTypes').addEventListener('click', () => {
+                generateMermaid();
+            });
+            document.getElementById('graphOrientation').addEventListener('change', () => {
+                generateMermaid();
             });
 
             function saveURL(url, name) {
@@ -971,27 +1029,62 @@
                 }
             });
 
-            function updateNodeGraphMenu() {
+            function updateDocumentFromTextArea(createDefinitions) {
+                let materialXTextArea = document.getElementById('materialXTextArea');
+                let xmlString = materialXTextArea.value;
+                (async () => {
+                    try {
+                        const readOptions = new mx.XmlReadOptions();
+                        readOptions.readXIncludes = false;
+                        doc.clearContent();
+                        await mx.readFromXmlString(doc, xmlString, '', readOptions);
+                        //console.log('Document updated from text area.........');
+                        updateNodeGraphMenu()
+                        if (createDefinitions)
+                            createDefinition(false);
+                        //generateMermaid();
+
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
+                })();
+            }
+
+            function updateNodeGraphMenu()
+            {
                 let nodeGraphsDropdown = document.getElementById('nodeGraphs');
+                // Get current selection
+                let selectedNodeGraph = nodeGraphsDropdown.value;
                 while (nodeGraphsDropdown.firstChild) {
                     nodeGraphsDropdown.removeChild(nodeGraphsDropdown.firstChild);
                 }
+                //console.log('Scan for nodegraphs');
                 let nodeGraphs = doc.getNodeGraphs();
                 for (let nodeGraph of nodeGraphs) {
                     let option = document.createElement('option');
+                    if (selectedNodeGraph == nodeGraph.getName())
+                    {
+                        option.selected = true;
+                    }
                     option.value = nodeGraph.getName();
                     option.text = nodeGraph.getName();
                     //console.log('NodeGraph:', nodeGraph.getName());
                     nodeGraphsDropdown.appendChild(option);
                 }
+                // Clear the output editors
+                if (nodeGraphs.length == 0) {
+                    defeditor.setValue('');
+                    defeditor2.setValue('');
+                }
             }
 
             // Update nodegraphs on updateGraphs button click
             document.getElementById('updateGraphs').addEventListener('click', () => {
-                updateNodeGraphMenu();
+                updateDocumentFromTextArea(false);
             });
 
-            function createDefinition(writeToDisk) {
+            function createDefinition(writeToDisk)
+            {
                 let nodeGraphsDropdown = document.getElementById('nodeGraphs');
                 let selectedNodeGraph = nodeGraphsDropdown.value;
                 if (selectedNodeGraph) {
@@ -1000,7 +1093,7 @@
                     if (nodeGraph) {
                         console.log('Creation definition for nodegraph:', nodeGraph.getNamePath());
 
-                        let creator = new MaterialXDefinitionCreator(nodeGraph);
+                        let creator = new MxDefinitionCreator(nodeGraph);
                         let creator_options = creator.getDefaultOptions();
                         let nodegroupName = document.getElementById('nodegroupName').value;
                         if (nodegroupName) {
@@ -1010,6 +1103,12 @@
                         if (definitionName) {
                             creator_options[creator.DEFINITION_NAME] = definitionName;
                         }
+                        let versionString = document.getElementById('versionString').value;
+                        if (versionString) {
+                            creator_options[creator.VERSION] = versionString;
+                        }
+                        let isDefaultVersion = document.getElementById('isDefaultVersion').checked;
+                        creator_options[creator.DEFAULT_VERSION] = isDefaultVersion;
                         let documentationString = document.getElementById('documentationString').value;
                         if (documentationString) {
                             // Remove any newlines
@@ -1055,7 +1154,7 @@
             }
 
             document.getElementById('createDefinition').addEventListener('click', () => {
-                createDefinition(false);
+                updateDocumentFromTextArea(true);
             });
             document.getElementById('saveDefinition').addEventListener('click', () => {
                 createDefinition(true);
@@ -1092,6 +1191,9 @@
 
             setupTheme();
             addCopyHandlers();
+
+            // Make body dark theme
+            document.body.setAttribute('data-bs-theme', 'dark');
 
         </script>
 

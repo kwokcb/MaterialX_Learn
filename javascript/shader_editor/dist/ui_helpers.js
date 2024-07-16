@@ -208,11 +208,11 @@ function addCopyHandlers()
         var copyButton = copyButtons[i];
         //console.log('Setting copy button theme: ', darkMode ? 'dark' : 'light');
         var childImg = copyButton.getElementsByTagName('img')[0];
-        if (childImg)
-            if (darkMode)
-                childImg.classList.add('inverted-svg')
-            else
-                childImg.classList.remove('inverted-svg')
+        //if (childImg)
+        //    if (darkMode)
+        //        childImg.classList.add('inverted-svg')
+        //    else
+        //        childImg.classList.remove('inverted-svg')
         copyButton.setAttribute('data-bs-theme', darkMode ? 'dark' : 'light');
         addCopyHandler(copyButton);
     }

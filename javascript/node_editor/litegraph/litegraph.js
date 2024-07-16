@@ -2767,8 +2767,9 @@
 			return;
 		var prev_value = this.properties[name];
         this.properties[name] = value;
+        
         if (this.onPropertyChanged) {
-            if( this.onPropertyChanged(name, value, prev_value) === false ) //abort change
+                if( this.onPropertyChanged(name, value, prev_value) === false ) //abort change
 				this.properties[name] = prev_value;
         }
 		if(this.widgets) //widgets could be linked to properties

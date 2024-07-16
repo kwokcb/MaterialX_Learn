@@ -1,74 +1,873 @@
 
 // Globals
-var ne_mx = null;
-var doc = null;
-var stdlib = null;
-var customlibs = [];
-var customDocLibs = [];
-var graph = null;
-var graphcanvas = null;
+var ne_mx = null;       // MaterialX module
+var doc = null;         // Working document
+var stdlib = null;      // Standard libraries
+var customlibs = [];    // Custom definition loaded in by user
+var customDocLibs = []; // Definitions loaded in as part of document
+var graph = null;       // Current graph
+var graphcanvas = null; // Current graph canvas
 
-// Base Class for Graph Handler
-class MxGraphHandler
+/**
+ * @class MxGraphMonitor
+ * 
+ * This class provides a monitoring interface for the graph editor.
+ * It will monitor the following changes to the graph: 
+ * - Connection changed
+ * - Node added
+ * - Node removed
+ * - Node renamed
+ * - Node selected
+ * - Node deselected
+ * - Property changed
+ * - Property info changed
+ */
+class MxGraphMonitor 
 {
-    constructor(id, extension)
+    constructor(name) 
     {
+        this.name = name;
+        this.debug = true;
+        this.monitoring = true;
+        this.renderer = null;
+
+        /** 
+         * Output a debug message to the console.
+         * 
+         * @param {string} text - The text to output.
+         * @param {string} path - The path to output.
+         * @returns {void}
+         */
+        this.debugMessage = function(text, path)
+        {
+            if (this.debug) {
+                console.log(text + path);
+            }
+        }
+
+        /** 
+         * Get a '/' separated path.
+         * 
+         * @param {Node} node - The node to get the path for.
+         * @param {string} parentGraph - The parent graph of the node.
+         * @returns {string} The path of the node.
+         */
+        this.getPath = function(node, parentGraph) {
+
+            let path = '';
+            if (parentGraph.length > 0)
+                path = path + parentGraph + '/'            
+            path += node.title;
+            return path;
+        }
+
+        /**
+         * Callback for when a scene / document level change is made
+         * 
+         * @param {string} attribute - The attribute that changed.
+         * @param {string} value - The new value of the attribute.
+         * @param {string} prevValue - The previous value of the attribute.
+         * @returns {void}
+         */
+        this.onDocumentChange = function(attribute, value, prevValue)
+        {
+            if (!this.monitoring)
+            {
+                return;
+            }
+    
+            if (this.debug) {
+                this.debugMessage('Monitor> Document attribute "' + attribute + '" changed from: ' + prevValue + ' to: ' + value, '');
+            }
+        }
+
+        /** 
+         * Callback for when a connection changes in the graph.
+         * 
+         * @param {Node} node - The node where the connection changed.
+         * @param {string} parentGraph - The parent graph of the node.
+         * @returns {void}
+         */
+        this.onConnectionChange = function(node, parentGraph)
+        {
+            if (!this.monitoring)
+            {
+                return;
+            }
+
+            if (this.debug) {
+                this.debugMessage('Monitor> Connection change: ', this.getPath(node, parentGraph));
+            }
+        }
+
+        /** 
+        * Callback for connection to output. 
+        * 
+        * @param {number} slot - The slot that was connected.
+        * @param {string} input_type - The type of the input.
+        * @param {any} input - The input that was connected.
+        * @param {Node} target_node - The target node of the connection.
+        * @param {number} target_slot - The target slot of the connection.
+        * @returns {void}
+        */
+        this.onConnectOutput = function(slot, input_type, input, target_node, target_slot, node) 
+        {
+            if (!this.monitoring)
+            {
+                return;
+            }
+
+            if (this.debug) {
+                let targetPath = this.getPath(node, this.getParentPath(node));
+                let targetOutput = node.outputs[slot].name;
+                let sourcePath = this.getPath(target_node, this.getParentPath(target_node));
+                let sourceInput = input.name;
+
+                this.debugMessage('Monitor> Output connection change: ' +
+                    targetPath + "[" + slot + "]." + targetOutput + ' to: ' +
+                    sourcePath + "[" + target_slot + "]." + sourceInput + " (" + input_type + ")", "");
+            }
+        }
+
+        /** 
+         * Callback for connection to output.
+         * 
+         * @param {number} target_slot - The target slot that was connected.
+         * @param {string} output_type - The type of the output.
+         * @param {any} output - The output that was connected.
+         * @param {Node} source - The source node of the connection.
+         * @param {number} slot - The slot of the source node.
+         * @returns {void}
+         */
+        this.onConnectInput = function(target_slot, output_type, output, source, slot, node) {
+
+            if (!this.monitoring)
+            {
+                return;
+            }
+
+            // checker -> input
+            if (this.debug) {
+                let sourcePath = this.getPath(source, this.getParentPath(source));
+                let sourceOutput = output.name;
+                let targetPath = this.getPath(node, this.getParentPath(node));
+                let targetInput = node.inputs[target_slot].name;
+
+                this.debugMessage('Monitor> Input connection change: ' +
+                    sourcePath + "[" + slot + "]." + sourceOutput + ' to: ' +
+                    targetPath + "[" + target_slot + "]." + targetInput + " (" + output_type + ")", "");
+            }    
+        }           
+
+
+        /** 
+         * Callback for when a node is added to the graph.
+         * 
+         * @param {Node} node - The node that was added.
+         * @param {string} parentGraph - The parent graph of the node.
+         */
+        this.onNodeAdded = function(node, parentGraph)
+        {
+            if (!this.monitoring)
+            {
+                return;
+            }
+
+            // Go through all inputs on the node and remove hidden attribute
+            // Needed to allow cut-paste of nodes which were loaded in with
+            // hidden inputs.
+            /* for (let i = 0; i < node.inputs.length; i++) {
+                let input = node.inputs[i];
+                if (input.hidden) {
+                    // Remove hidden attribute
+                    delete input.hidden;
+                }
+            } */
+    
+            if (this.debug) {
+                this.debugMessage('Monitor> Node added: ', this.getPath(node, parentGraph));
+            }
+        }
+
+        /** 
+         * Callback for when a node is removed from the graph.
+         * 
+         * @param {Node} node - The node that was removed.
+         * @param {string} parentGraph - The parent graph of the node.
+         * @returns {void}
+         */
+        this.onNodeRemoved = function(node, parentGraph)
+        {
+            if (!this.monitoring)
+            {
+                return;
+            }
+    
+            if (this.debug) {
+                this.debugMessage('Monitor> Node removed: ', this.getPath(node, parentGraph));
+            }
+        }
+
+        /** 
+         * Get the parent path of a node.
+         * 
+         * @param {Node} node - The node to get the parent path for.
+         * @returns {string} The parent path of the node.
+         */
+        this.getParentPath = function(node)
+        {
+            let path = '';
+            var is_subgraph = graphcanvas.graph._is_subgraph;
+            if (is_subgraph) {
+                path = graphcanvas.graph._subgraph_node.title + '/';
+            }
+            else
+            {
+                if (node.graph)
+                {
+                    is_subgraph = node.graph._is_subgraph;
+                    if (is_subgraph) {
+                        path = node.graph._subgraph_node.title + '/';
+                    }                            
+                }
+            }
+            return path;
+        }
+
+        /** 
+         * Callback for when a node is renamed in the graph.
+         * 
+         * @param {Node} node - The node that was renamed.
+         * @param {string} newName - The new name of the node.
+         * @returns {void}
+         */
+        this.onNodeRenamed = function(node, newName)
+        {
+            if (!this.monitoring)
+            {
+                return;
+            }    
+
+            let parentPath = this.getParentPath(node);
+            let path = parentPath + node.title;
+            let newpath = parentPath + newName;
+            if (this.debug) {
+                this.debugMessage('Monitor> Node renamed: ', path + ' to: ' + newpath);
+            }
+        }
+
+        /**
+         * Callback for when a node is selected in the graph.
+         * 
+         * @param {Node} node - The node that was selected.
+         * @param {string} parentGraph - The parent graph of the node.
+         * @returns {void}
+         */
+        this.onNodeSelected = function(node, parentGraph)
+        {
+            if (!this.monitoring)
+            {
+                return;
+            }
+    
+            if (this.debug) {
+                this.debugMessage('Monitor> Node selected: ', this.getPath(node, parentGraph));
+            }
+        }
+
+        /**
+         * Callback for when a node is deselected in the graph.
+         * 
+         * @param {Node} node - The node that was deselected.
+         * @param {string} parentGraph - The parent graph of the node.
+         * @returns {void}
+         */
+        this.onNodeDeselected = function(node, parentGraph)
+        {
+            if (!this.monitoring)
+            {
+                return;
+            }
+
+            if (this.debug) {
+                //this.debugMessage('-> Node unselected at path: ', this.getPath(node, parentGraph));
+            }
+        }
+
+        /** 
+         * Callback for when a property changes on a node in the graph.
+         * 
+         * @param {string} nodeName - The name of the node.
+         * @param {string} propertyName - The name of the property that changed.
+         * @param {string} newValue - The new value of the property.
+         * @param {string} previousValue - The previous value of the property.
+         * @param {Node} node - The node where the property changed.
+         * @returns {void}
+         */
+        this.onPropertyChanged = function (nodeName, propertyName, newValue, previousValue, node)
+        {
+            if (!this.monitoring)
+            {
+                return;
+            }
+    
+            let path = this.getParentPath(node) + nodeName;
+            if (this.debug) {
+                console.log('Monitor> Property changed:', path, '. Property: ' + propertyName + 
+                '. Value: ' + newValue + '. Previous Value: ' + previousValue, '. Category:', node.nodedef_node);
+            }
+        }
+
+        /** 
+         * Callback for when a property info changes on a node in the graph.
+         * 
+         * @param {string} nodeName - The name of the node.
+         * @param {string} propertyName - The name of the property that changed.
+         * @param {string} propertyInfoName - The name of the property info that changed.
+         * @param {string} newValue - The new value of the property info.
+         * @param {string} previousValue - The previous value of the property info.
+         * @param {Node} node - The node where the property info changed.
+         * @returns {void}
+         */
+        this.onPropertyInfoChanged = function(nodeName, propertyName, propertyInfoName, newValue, previousValue, node)
+        {
+            if (!this.monitoring)
+            {
+                return;
+            }
+    
+            let path = this.getParentPath(node) + nodeName;
+            if (this.debug) {
+                console.log('Monitor> Property Info changed:', path, '. Property: ' + propertyName + 
+                    '. Property Info: ' + propertyInfoName +
+                '. Value: ' + newValue + '. Previous Value: ' + previousValue, '. Category:', node.nodedef_node);
+            }    
+        }
+    }
+
+    /** 
+     * Get the name of the monitor.
+     * 
+     * @returns {string} The name of the monitor.
+     */
+    getName()
+    {
+        return this.name;
+    }
+
+    /**
+     * Set the renderer for the monitor.
+     * 
+     * @param {Renderer} theRenderer - The renderer to set.
+     * @returns {void}
+     */
+    setRenderer(theRenderer)
+    {
+        this.renderer = theRenderer
+    }
+
+    /**
+     * Set the monitoring state of the monitor.
+     * 
+     * @param {boolean} monitor - The monitoring state to set.
+     * @returns {void}
+     */
+    setMonitoring(monitor)
+    {
+        this.monitoring = monitor;
+    }
+
+    /** 
+     * Get the monitoring state of the monitor.
+     * 
+     * @returns {boolean} The monitoring state of the monitor.
+     */
+    getMonitoring()
+    {
+        return this.monitoring;
+    }
+
+    /** 
+     * Set connection change callback.
+     * 
+     * @param {function} callback - The callback to set.
+     * @returns {void}
+     */
+    setOnConnectionChange(callback)
+    {
+        if (callback)
+        {
+            this.onConnectionChange = callback;
+        }
+    }
+
+    /** 
+     * Set node added callback.
+     * 
+     * @param {function} callback - The callback to set.
+     * @returns {void}
+     */
+    setOnNodeAdded(callback)
+    {
+        if (callback)
+        {
+            this.onNodeAdded = callback;
+        }
+    }
+
+    /** 
+     * Set node removed callback.
+     * 
+     * @param {function} callback - The callback to set.
+     * @returns {void}
+     */
+    setOnNodeRemoved(callback)
+    {
+        if (callback)
+        {
+            this.onNodeRemoved = callback;
+        }
+    }   
+    
+    /**
+     * Set node renamed callback.
+     * 
+     * @param {function} callback - The callback to set.
+     * @returns {void}
+     */
+    setOnNodeRenamed(callback)
+    {
+        if (callback)
+        {
+            this.onNodeRenamed = callback;
+        }
+    }
+
+    /** 
+     * Set node selected callback.
+     * 
+     * @param {function} callback - The callback to set.
+     * @returns {void}
+     */
+    setOnNodeSelected(callback)
+    {
+        if (callback)
+        {
+            this.onNodeSelected = callback;
+        }
+    }
+
+    /** 
+     * Set node deselected callback.
+     * 
+     * @param {function} callback - The callback to set.
+     * @returns {void}
+     */
+    setOnNodeDeselected(callback)
+    {
+        if (callback)
+        {
+            this.onNodeDeselected = callback;            
+        }
+    }
+
+    /** 
+     * Set property changed callback.
+     * 
+     * @param {function} callback - The callback to set.
+     * @returns {void}
+     */
+    setOnPropertyChanged(callback)
+    {
+        if (callback)
+        {
+            this.onPropertyChanged = callback;            
+        }    
+    }
+
+    /** 
+     * Core monitoring of graph changes.
+     * 
+     * @param {LiteGraph} theGraph - The graph to monitor.
+     * @param {boolean} monitor - The monitoring state.
+     */
+    monitorGraph(theGraph, monitor) 
+    {
+        // Update monitor state
+        this.monitoring = monitor;
+    
+        if (!theGraph)
+            return;
+
+        theGraph.onConnectionChange = null;
+        theGraph.onNodeAdded = null;
+        theGraph.onNodeRemoved = null;
+
+        if (monitor) {
+
+            console.log('> Monitor graph: ', graph.title? graph.title : 'ROOT')
+
+            var that = this;
+
+            theGraph.onConnectionChange = function (node) {
+                let parentGraph = '';
+                var is_subgraph = node.graph._is_subgraph;
+                if (is_subgraph)
+                    parentGraph = graphcanvas.graph._subgraph_node.title;
+                that.onConnectionChange(node, parentGraph);
+
+                var selected = graphcanvas.selected_nodes;
+                for (var s in selected) {
+                    //console.log('update selected node:', selected[s].title);
+                    MxShadingGraphEditor.theEditor.updatePropertyPanel(selected[s]);
+                    break;
+                }
+            }
+
+            theGraph.onNodeAdded = function (node) {
+                let parentGraph = '';
+
+                if (node.type == 'graph/subgraph') {
+                    // Use MaterialX naming for subgraphs
+
+                    // Scan the subgraph for any nodes which are not in the node inputs list.
+                    var node_subgraph = node.subgraph;
+                    var node_graph = node.graph;
+                    if (node_subgraph) {
+                        //console.log('** Scan subgraph: ', node_subgraph)
+                        for (var i in node_subgraph._nodes) {
+                            let theNode = node_subgraph._nodes[i];
+                            if (!node_graph.findNodeByTitle(theNode.title)) {
+                                if (theNode.nodedef_node == 'input') {
+                                    node.addInput(theNode.title, theNode.nodedef_type);
+                                    //console.log('--> Promote input node to subgraph node.', theNode.title);
+                                }
+                                else if (theNode.nodedef_node == 'output') {
+                                    //console.log('--> Promote output node to subgraph node.', theNode.title);
+                                    node.addOutput(theNode.title, theNode.nodedef_type);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                node.title = MxShadingGraphEditor.theEditor.handler.createValidName(node.title)
+                node.setSize(node.computeSize());
+                //console.log('-> Node Added:', node, '. Type:', node.type, '. Graph:', node.graph._2458graph);
+
+                // Expose node as an input or output on the subgraph
+                var is_subgraph = node.graph._is_subgraph;
+                if (is_subgraph) {
+                    parentGraph = graphcanvas.graph._subgraph_node.title;
+
+                    if (node.nodedef_node == 'input') {
+                        //console.log('Adding input node to subgraph.', node.title, node.graph);
+                        node.graph.addInput(node.title, node.nodedef_type);
+                    }
+                    else if (node.nodedef_node == 'output') {
+                        //console.log('Adding output node to subgraph.');
+                        node.graph.addOutput(node.title, node.nodedef_type);
+                    }
+                }
+
+                if (node.type == 'graph/subgraph') {
+                    that.monitorGraph(node.subgraph, monitor);
+                }
+
+                that.onNodeAdded(node, parentGraph);
+            }
+
+            //console.log('Monitor graph remove:', theGraph.title);
+            theGraph.onNodeRemoved = function (node) {
+
+                let parentGraph = '';
+                /* This is too late the graph reference has already been removed */
+                var is_subgraph = graphcanvas.graph._is_subgraph;
+                if (is_subgraph) {
+                    parentGraph = graphcanvas.graph._subgraph_node.title;
+                    if (node.nodedef_node == 'input') {
+                        //console.log('Removing input node from subgraph.', parentGraph);
+                        graphcanvas.graph.removeInput(node.title);
+                    }
+                    else if (node.nodedef_node == 'output') {
+                        //console.log('Removing output node from subgraph.', parentGraph);
+                        graphcanvas.graph.removeOutput(node.title);
+                    }
+                }
+
+                that.onNodeRemoved(node, parentGraph);
+            }
+
+            for (var i in theGraph._nodes) {
+                var node = theGraph._nodes[i];
+                if (node.type == 'graph/subgraph') {
+                    console.log('> Monitor subgraph:', node.title);
+                    that.monitorGraph(node.subgraph, monitor);
+                    node.onConnectInput = MxShadingGraphEditor.theEditor.onConnectInput;
+                }
+            }
+        }            
+    }
+}
+
+
+/**
+ * @class MxGraphHandler
+ * 
+ * Base class for graph handlers. 
+ */
+class MxGraphHandler 
+{
+    constructor(id, extension) {
         // Identifier
         this.id = id;
-        // Extension
+        // Extension of format that this handler is associated with
+        // Generally the same as the file extension (e.g. mtlx for MaterialX)
         this.extension = extension;
         // Editor
         this.editor = null;
 
+        // Keep track of global color space and distance unit
         this.DEFAULT_COLOR_SPACE = 'lin_rec709';
-        this.DEFAULT_UNIT = 'meter';
-        this.activeColorSpace = this.DEFAULT_COLOR_SPACE;
-        this.activeUnit = this.DEFAULT_UNIT;
+        this.DEFAULT_DISTANCE_UNIT = 'meter';
+        this.sourceColorSpace = this.DEFAULT_COLOR_SPACE;
+        this.targetDistanceUnit = this.DEFAULT_DISTANCE_UNIT;
+        this.colorSpaces = [];
+        this.units = [];
+
+        // List of additional converters that can convert to the format
+        // that this handler can handle
+        this.converters = [];
+        
+        // Graph monitoring instance
+        this.monitor = null;
     }
 
-    setActiveColorSpace(colorSpace)
-    {
-        if (colorSpace && colorSpace.length > 0)
-            this.activeColorSpace = colorSpace;
-        else
-            this.activeColorSpace = this.DEFAULT_COLOR_SPACE;
+    /** 
+     * Add a converter to the handler.
+     * 
+     * @param {Converter} converter - The converter to add.
+     * @returns {void}
+     */
+    addConverter(converter) {
+        // Add to front of list
+        this.converters.unshift(converter);
+        //this.converters.push(converter);
     }
 
-    setActiveUnit(unit)
+    /** 
+     * Set the monitor for the handler.
+     * 
+     * @param {MxGraphMonitor} monitor - The monitor to set.
+     * @returns {void}
+     */
+    setMonitor(monitor)
     {
+        this.monitor = monitor;
+    }
+    
+    /** 
+     * Return if the handler can export to the given extension / format.
+     * Will test any additional converters that have been added to the handler.
+     * 
+     * @param {string} extension - The extension to check.
+     * @returns {boolean} True if the handler can export to the extension, false otherwise.
+     */
+    canExport(extension)
+    {
+        if (extension == 'mtlx')
+        {
+            return true;
+        }
+        if (this.getExporter(extension))
+        {
+            return true;
+        }
+        return false; 
+    }
+
+    /** 
+     * Find the first exporter that can export to the given extension / format.
+     * 
+     * @param {string} extension - The extension to check.
+     * @returns {Converter} The first converter that can export to the extension, or null if none found.
+     */
+    getExporter(extension='') {
+        for (let converter of this.converters) {
+            if (converter.exportType() == extension) {
+                return converter;
+            }
+        }
+        return null;
+    }
+
+    /** 
+     * Return if the handler can import the given extension / format.
+     * 
+     * @param {string} extension - The extension to check.
+     * @returns {boolean} True if the handler can import the extension, false otherwise.
+     */
+    canImport(extension)
+    {
+        if (extension == 'mtlx')
+        {
+            return true;
+        }
+        if (this.getImporter(extension))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Find the first importer that can import the given extension / format.
+     * 
+     * @param {string} extension - The extension to check.
+     * @returns {Converter} The first converter that can import the extension, or null if none found.
+     */
+    getImporter(extension='') {
+        for (let converter of this.converters) {
+            if (converter.importType() == extension) {
+                return converter;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Set the color spaces used by the handler.
+     * 
+     * @param {Array} colorSpaces - The color spaces to set.
+     * @returns {void} 
+     */
+    setColorSpaces(colorSpaces) {
+        this.colorSpaces = colorSpaces;
+    }
+
+    /**
+     * Get the color spaces used by the handler.
+     * 
+     * @returns {Array} The color spaces used by the handler.
+     */
+    getColorSpaces() {
+        return this.colorSpaces;
+    }
+
+    /**
+     * Set the units used by the handler.
+     * 
+     * @param {Array} units - The units to set.
+     * @returns {void}
+     */
+    setUnits(units) {
+        this.units = units;
+    }
+
+    /** 
+     * Get the units used by the handler.
+     * 
+     * @returns {Array} The units used by the handler.
+     */
+    getUnits() {
+        return this.units;
+    }
+
+    /** 
+     * Set the source color space for the handler.
+     * 
+     * @param {string} colorSpace - The source color space to set.
+     * @returns {void}
+     */
+    setSourceColorSpace(colorSpace) {
+        let newSpace = this.DEFAULT_COLOR_SPACE;
+        if (colorSpace && colorSpace.length > 0)        
+            newSpace = colorSpace;
+
+        if (this.monitor)
+        {
+            this.monitor.onDocumentChange('colorspace', colorSpace, this.sourceColorSpace);
+        }
+        this.sourceColorSpace = newSpace;
+    }
+
+    /**
+     * Set the target distance unit for the handler.
+     * 
+     * @param {string} unit - The target distance unit to set.
+     * @returns {void}
+     */
+    setTargetDistanceUnit(unit) {
+        let newUnit = this.DEFAULT_DISTANCE_UNIT;
         if (unit && unit.length > 0)
-            this.activeUnit = unit;
-        else
-            this.activeUnit = this.DEFAULT_UNIT;
+            newUnit = unit;
+
+        if (this.monitor)
+        {
+            this.monitor.onDocumentChange('distanceunit', newUnit, this.targetDistanceUnit);
+        }
+        this.targetDistanceUnit = newUnit;
+        //console.log('Handler SET target distance unit:', this.targetDistanceUnit);
     }
 
-    getActiveColorSpace()
-    {
-        return this.activeColorSpace;
+    /**
+     * Get the source color space for the handler.
+     * 
+     * @returns {string} The source color space for the handler.
+     */
+    getSourceColorSpace() {
+        //console.log('Handler GET source colorspace:', this.sourceColorSpace);
+        return this.sourceColorSpace;
     }
 
-    getActiveUnit()
-    {
-        return this.activeUnit;
+    /**
+     * Get the target distance unit for the handler.
+     * 
+     * @returns {string} The target distance unit for the handler.
+     */
+    getTargetDistanceUnit() {
+        //console.log('Handler GET source distance unit:', this.targetDistanceUnit);
+        return this.targetDistanceUnit;
     }
 
-    getExtension()
-    {
+    /**
+     * Get the extension /format for the handler.
+     * 
+     * @returns {string} The extension / format for the handler.
+     */
+    getExtension() {
         return this.extension;
-    }
+    }    
 
-    initialize(editor)
-    {
+    /**
+     * Initialize the handler for the given editor. Default implementation just sets the editor instance.
+     * 
+     * @param {Editor} editor - The editor instance.
+     * @returns {void}
+     */
+    initialize(editor) {
         this.editor = editor;
     }
 
-    createValidName(name)
-    {
+    /**  
+     * Create a valid name for the given name. Default implementation returns the name as is.
+     * 
+     * @param {string} name - The name to create a valid name for.
+     * @returns {string} The valid name created.
+     */      
+    createValidName(name) {
         return name;
     }
 
-    getDefaultValue(value, _type) 
-    {
+    /**
+     * Get default value as a string for the given value and type. If no value is specified
+     * a default value will be returned based on the type.
+     * 
+     * @param {string} value - The value to get the default value for.
+     * @param {string} _type - The type of the value.
+     * @returns {string} The default value for the given value and type.
+     */
+    getDefaultValue(value, _type) {
         if (_type === 'string' || _type === 'filename') {
             value = "'" + value + "'";
         }
@@ -115,55 +914,33 @@ class MxGraphHandler
             value = "''";
         }
         return value;
-    }    
-
-    /*
-    getDefaultValueRaw(value, _type) {
-        if (_type === 'integer' || _type === 'float') {
-            if (value.length == 0) {
-                value = 0;
-            }
-        }
-        else if (_type === 'string' || _type === 'filename') {
-            //value = value + "'";
-        }
-        else if (isArray(_type)) {
-            if (value.length == 0) {
-                if (_type === 'color3')
-                    value = [0.0, 0.0, 0.0];
-                else if (_type === 'color4')
-                    value = [0.0, 0.0, 0.0, 0.0];
-                else if (_type === 'vector2')
-                    value = [0.0, 0.0];
-                else if (_type === 'vector3')
-                    value = [0.0, 0.0, 0.0];
-                else if (_type === 'vector4')
-                    value = [0.0, 0.0, 0.0, 0.0];
-                else if (_type === 'matrix33')
-                    value = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0];
-                else if (_type === 'matrix44')
-                    value = [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0];
-            }
-            else {
-                value = [value];
-            }
-        }
-
-        if (value.length == 0) {
-            //console.log('No value for input:', _name, 'type:', _type, 'value:', value);
-            value = "";
-        }
-        return value;
     }
-    */    
 };
 
+/**
+ * @class MxMaterialXHandler
+ * 
+ * This class extends the MxGraphHandler class to provide MaterialX-specific functionality
+ * for handling MaterialX graphs within the editor.
+ */
 class MxMaterialXHandler extends MxGraphHandler {
-    constructor(id, extension)
-    {
+
+    /** 
+     * Constructor for the MxMaterialXHandler class.
+     * 
+     * @param {string} id - The identifier for the handler.
+     * @param {string} extension - The associated extension for the handler.
+     */
+    constructor(id, extension) {
         super(id, extension);
     }
 
+    /**
+     * Load in the MaterialX library.
+     * Sets the global ne_mx variable to the MaterialX instance.
+     * 
+     * @returns {Promise} A promise that resolves when the MaterialX library is loaded.
+     */
     loadMaterialX() {
         return new Promise((resolve, reject) => {
             MaterialX().then((ne_mtlx) => {
@@ -176,7 +953,13 @@ class MxMaterialXHandler extends MxGraphHandler {
         });
     }
 
-    loadDefaultDocument(editor, materialFilename) {
+    /**
+     * Load the MaterialX document from library into the editor.
+     * 
+     * @param {Editor} editor - The editor instance.
+     * @param {string} materialFilename - The filename of the library MaterialX document to graph.
+     */
+    loadLibraryDocument(editor, materialFilename) {
 
         function loadInitialText(filePath, handler) {
             try {
@@ -185,7 +968,7 @@ class MxMaterialXHandler extends MxGraphHandler {
                     .then(blob => {
                         const reader = new FileReader();
                         reader.onload = function (e) {
-                            console.log('Loaded startup document:', filePath);
+                            console.log('Loaded document:', filePath);
                             editor.loadGraphFromString('mtlx', e.target.result, filePath, 80);
                         }
                         reader.readAsText(blob);
@@ -196,11 +979,19 @@ class MxMaterialXHandler extends MxGraphHandler {
         }
 
         loadInitialText(materialFilename, this);
-    }    
+    }
 
-    // Initialize the MaterialX handler for the given editor
-    initialize(editor, materialFilename)
-    {
+    /** 
+        Initialize the MaterialX handler for the given editor.
+        
+        Initializes MaterialX and sets up the MaterialX document and standard libraries.
+        If a default MaterialX document is provided, it will be loaded into the editor.
+        The standard libraries are scanned for colorspaces and units, which are cached for later usage.
+
+        @param {Editor} editor - The editor instance
+        @param {string} materialFilename - The filename of the default MaterialX document to graph   
+     */
+    initialize(editor, materialFilename) {
         super.initialize(editor);
 
         if (!ne_mx) {
@@ -216,13 +1007,48 @@ class MxMaterialXHandler extends MxGraphHandler {
                 stdlib = ne_mx.loadStandardLibraries(genContext);
                 editor.debugOutput('Loaded standard libraries definitions:' + stdlib.getNodeDefs().length, 0, false);
 
+                // Find units, unittype pairs available. Keep in unique list.
+                let units = new Map();
+                for (let ud of stdlib.getUnitDefs()) {
+                    let unittype = ud.getAttribute('unittype')
+                    for (let unit of ud.getChildren()) {
+                        units.set(unit.getName(), unittype);
+                    }
+                }
+                // Sort units
+                this.setUnits(Array.from(units).sort());
+                console.log('> Setup real-world units: ', this.getUnits());
+
+                // Find the colorspaces available. Keep in unique list. Hack as there
+                // is no way to find a list of colorspaces.
+                let colorSpaces = new Set();
+                let docNodeDefs = stdlib.getNodeDefs();
+                for (let i = 0; i < docNodeDefs.length; i++) {
+                    let cmnode = docNodeDefs[i];
+                    if (cmnode.getNodeGroup() === 'colortransform') {
+                        let name = cmnode.getName();
+                        name = name.replace('ND_', '');
+                        let namesplit = name.split('_to_');
+                        let type = 'color3';
+                        if (namesplit[1].includes('color4')) {
+                            namesplit[1] = namesplit[1].replace('_color4', '');
+                            type = 'color4';
+                        } else {
+                            namesplit[1] = namesplit[1].replace('_color3', '');
+                        }
+                        colorSpaces.add(namesplit[0]);
+                        colorSpaces.add(namesplit[1]);
+                    }
+                }
+                // Sort the colorspaces
+                this.setColorSpaces(Array.from(colorSpaces).sort())
+                console.log('Set up colorspaces: ', this.getColorSpaces());
+
                 var definitionsList = [];
                 var result = this.createLiteGraphDefinitions(stdlib, false, true, definitionsList, 'mtlx', MxShadingGraphEditor.theEditor);
-                var textarea = editor.ui.mtlxlib;
-                if (textarea)
-                {
-                    //console.log('set value', result);
-                    textarea.setValue(result);
+                var definitionsDisplayUpdater = editor.ui.definitionsDisplayUpdater;
+                if (definitionsDisplayUpdater) {
+                    definitionsDisplayUpdater(result);
                 }
 
                 editor.clearNodeTypes();
@@ -241,9 +1067,8 @@ class MxMaterialXHandler extends MxGraphHandler {
 
                 editor.displayNodeTypes();
 
-                if (materialFilename.length> 0)
-                {
-                    this.loadDefaultDocument(editor, materialFilename);
+                if (materialFilename.length > 0) {
+                    this.loadLibraryDocument(editor, materialFilename);
                 }
 
                 editor.updatePropertyPanel(null);
@@ -251,25 +1076,38 @@ class MxMaterialXHandler extends MxGraphHandler {
             }).catch((error) => {
                 editor.debugOutput("Error on initialization:" + error, 2);
             });
-        }    
+        }
     }
-    
+
+    /** 
+     * Find all MaterialX renderable items in a graph.
+     * 
+     * @param {LiteGraph} graph - The graph to scan.
+     * @returns {Array} An array of MaterialX renderable items found in the graph.
+     */
     findRenderableItems(graph) {
 
-        let mdoc = this.saveGraphToDocument(graph, false, false);
+        let graphWriteOptions = { writeCustomLibs : false, saveNodePositions: false, writeOutputs : true };
+        let mdoc = this.saveGraphToDocument(graph, graphWriteOptions);
         if (!mdoc) {
             console.log('Failed to save graph to document');
             return;
         }
         return this.findRenderableItemsInDoc(mdoc);
     }
-            
+
+    /** 
+     * Find all renderable items in the MaterialX document.
+     * 
+     * @param {Document} mdoc - The MaterialX document to scan.
+     * @returns {Array} An array of renderable items found in the document.
+     */
     findRenderableItemsInDoc(mdoc) {
 
         const materialNodes = mdoc.getMaterialNodes();
         let shaderList = [];
         let renderableItems = [];
-    
+
         for (let i = 0; i < materialNodes.length; ++i) {
             let materialNode = materialNodes[i];
             if (materialNode) {
@@ -300,7 +1138,6 @@ class MxMaterialXHandler extends MxGraphHandler {
                 for (let j = 0; j < outputs.length; ++j) {
                     let output = outputs[j];
                     {
-                        //let newMat = new MaterialAssign(output, assignment, null);
                         renderableItems.push(output.getNamePath());
                     }
                 }
@@ -313,41 +1150,26 @@ class MxMaterialXHandler extends MxGraphHandler {
                 renderableItems.push(output.getNamePath());
             }
         }
-    
-        /*
-        const allNodes = mdoc.getNodes();
-        console.log('All Nodes:', allNodes.length, allNodes); 
-        for (let i = 0; i < allNodes.length; ++i) {
-          let node = allNodes[i];
-          if (node) {
-              if (node.getType() == 'surfaceshader') {
-              let shaderNodePath = node.getNamePath()
-              if (!shaderList.includes(shaderNodePath)) {
-                console.log('========================= Node:', node.getNamePath(), node.getCategory(), node.getType());
-                let assignment = NO_GEOMETRY_SPECIFIER;
-                if (foundRenderable == false) {
-                  assignment = ALL_GEOMETRY_SPECIFIER;
-                  foundRenderable = true;
-                }
-                shaderList.push(shaderNodePath);
-                // Create a dummy surface material
-                let surfaceMaterial = mdoc.addChildOfCategory('surfacematerial', shaderNodePath + '_material');
-                let sm_input = surfaceMaterial.addInput('surfaceshader', 'surfaceshader');
-                sm_input.setValueString(shaderNodePath, 'surfaceshader');
-                renderableItems.push(shaderNodePath);
-                console.log('Add dummy material:', ne_mx.prettyPrint(surfaceMaterial));
-              }
-            }
-          }
-          
-        } */
-        
+
         return renderableItems;
     }
-    
 
-    buildMetaData(colorSpace, unit, unitType, uiname, uimin, uimax, uifolder, _type)
-    {
+    /**
+     * Builds and returns metadata for a node based on the provided parameters.
+     * This metadata can be used to enhance the node's representation and interaction
+     * within the UI, specifying details like color space, unit, and UI properties.
+     *
+     * @param {string} colorSpace - The color space of the node (e.g., 'sRGB', 'linear').
+     * @param {string} unit - The unit of measurement for the node's value (e.g., 'meters', 'seconds').
+     * @param {string} unitType - The type of unit measurement (e.g., 'distance', 'time').
+     * @param {string} uiname - The name to display in the UI for this node.
+     * @param {number} uimin - The minimum value allowed for this node in the UI.
+     * @param {number} uimax - The maximum value allowed for this node in the UI.
+     * @param {string} uifolder - The folder/group in the UI where this node should be placed.
+     * @param {string} _type - The data type of the node (e.g., 'float', 'vector3').
+     * @returns {Object} An object containing the constructed metadata based on the input parameters.
+     */
+    buildMetaData(colorSpace, unit, unitType, uiname, uimin, uimax, uifolder, _type) {
         // Create a struct with the metadata names as key and value
         var metaData = {};
         metaData['colorspace'] = colorSpace;
@@ -358,8 +1180,7 @@ class MxMaterialXHandler extends MxGraphHandler {
             if (uimin) {
                 uimin = uimin.split(',').map(Number);
             }
-            if (uimax)
-            {
+            if (uimax) {
                 uimax = uimax.split(',').map(Number);
             }
         }
@@ -371,12 +1192,24 @@ class MxMaterialXHandler extends MxGraphHandler {
         return metaData;
     }
 
-    createLiteGraphDefinitions(doc, debug, addInputOutputs, definitionsList, libraryPrefix='mtlx',
-        editor, icon='')
+    /**
+     * Creates LiteGraph node definitions based on the MaterialX document.
+     * This function parses the MaterialX document to extract node definitions
+     * and generates Javascript code for corresponding LiteGraph nodes that can be used within the editor.
+     * 
+     * @param {Document} doc - The MaterialX document to parse.
+     * @param {boolean} debug - Flag to enable debug logging.
+     * @param {boolean} addInputOutputs - Flag to determine whether to add inputs and outputs to the LiteGraph nodes.
+     * @param {Array} definitionsList - List to store the generated LiteGraph node definitions.
+     * @param {string} libraryPrefix - Prefix to use for the LiteGraph nodes, default is 'mtlx'.
+     * @param {Editor} editor - The instance of the editor where the nodes will be used.
+     * @param {string} icon - Icon to use for the LiteGraph nodes, default is an empty string.
+     * @returns {void}
+     */
+    createLiteGraphDefinitions(doc, debug, addInputOutputs, definitionsList, libraryPrefix = 'mtlx',
+        editor, icon = '')         
     {
-        //var ctor_code = "function loadMaterialXDefinitions(){\n";
-
-        var ctor_code = ""
+        var definition_code = ""
 
         console.log('Creating LiteGraph definitions from MaterialX document:', doc);
 
@@ -384,7 +1217,14 @@ class MxMaterialXHandler extends MxGraphHandler {
         var nodeDefs = doc.getNodeDefs();
 
         if (debug)
-            ctor_code += "console.log('Loading MaterialX Definitions...');\n";
+            definition_code += "console.log('Loading MaterialX Definitions...');\n";
+
+        definition_code += "// MaterialX LiteGraph Functional Definitions\n"
+        definition_code += "//\n";
+        definition_code += "// MaterialX Version: " + ne_mx.getVersionString() + "\n";
+        const date = new Date();
+        definition_code += "// Generated on: " + date.toString() + "\n"; 
+        definition_code += "//\n";
 
         var TMAP = {}
         TMAP['float'] = 'float';
@@ -422,40 +1262,13 @@ class MxMaterialXHandler extends MxGraphHandler {
         CMAP['string'] = "#395";
         CMAP['filename'] = "#888";
         CMAP['boolean'] = "#060";
-        /*
-        CMAP['float'] = "#753";
-        CMAP['color3'] = "#679";
-        CMAP['color4'] = "#899";
-        CMAP['vector2'] = "#A32";
-        CMAP['vector3'] = "#A76";
-        CMAP['vector4'] = "#A98";
-        CMAP['matrix33'] = "#333";
-        CMAP['matrix44'] = "#444";
-        CMAP['integer'] = "#A32";
-        CMAP['string'] = "#888";
-        CMAP['boolean'] = "#48A";
-        CMAP['filename'] = "#58E";
-        */
-        /*
-        float: "#753",
-        vector2: "#A32",
-        vector3: "#A76",
-        vector4: "#A98",
-        color3: "#679",
-        color4: "#899",
-        matrix33: "#333",
-        matrix44: "#444",
-        string: "#888",
-        filename: "#58E",
-        boolean: "#48A", */
 
         var inputTypes = ['float', 'color3', 'color4', 'vector2', 'vector3', 'vector4', 'matrix33', 'matrix44', 'integer', 'string', 'boolean', 'filename', 'BSDF', 'EDF', 'VDF', 'surfaceshader', 'volumeshader', 'displacementshader', 'lightshader', 'material', 'vector2array'];
         var outputTypes = ['float', 'color3', 'color4', 'vector2', 'vector3', 'vector4', 'matrix33', 'matrix44', 'integer', 'string', 'boolean', 'filename', 'BSDF', 'EDF', 'VDF', 'surfaceshader', 'volumeshader', 'displacementshader', 'lightshader', 'material', 'vector2array'];
 
         // TODO: Support tokens
         var supporTokens = false;
-        if (supporTokens)
-        {
+        if (supporTokens) {
             inputTypes.push('token');
             TMAP['token'] = 'string';
         }
@@ -464,59 +1277,123 @@ class MxMaterialXHandler extends MxGraphHandler {
         const OUTPUT_ND = 'ND_output_';
         const INPUT_NODE_STRING = 'input';
         const OUTPUT_NODE_STRING = 'output';
-        const LIBRARY_ICON = editor.ui.icon_map['_default_'];
+        const LIBRARY_ICON = '';
 
         // Register inputs (which have no nodedef)
-        if (addInputOutputs)
-        {
+        if (addInputOutputs) {
             for (var _type of inputTypes) {
                 var id = libraryPrefix + '/input/input_' + _type;
                 var functionName = ne_mx.createValidName(id);
                 var titleName = 'input_' + _type;
-                ctor_code += "\n// MaterialX node type: " + id + "\n//\n";
-                ctor_code += "function " + functionName + "() {\n";
+                definition_code += "\n/**\n"; 
+                definition_code += "  * @function "+ functionName + "\n";
+                definition_code += "  * @description Library: " + libraryPrefix + ". Category: input. Type: " + _type + "\n";
+                definition_code += "  *   LiteGraph id: " + id + "\n"; 
+                definition_code += "  */\n";
+                definition_code += "function " + functionName + "() {\n";
                 {
-                    ctor_code += "  this.nodedef_icon = '" + LIBRARY_ICON + "';\n";
-                    ctor_code += "  this.nodedef_name = '" + INPUT_ND + _type + "';\n";
-                    ctor_code += "  this.nodedef_node = '" + INPUT_NODE_STRING + "';\n";
-                    ctor_code += "  this.nodedef_type = '" + _type + "';\n";
-                    ctor_code += "  this.nodedef_group = '" + INPUT_NODE_STRING + "';\n";
+                    definition_code += "  this.nodedef_icon = '" + LIBRARY_ICON + "';\n";
+                    definition_code += "  this.nodedef_name = '" + INPUT_ND + _type + "';\n";
+                    definition_code += "  this.nodedef_node = '" + INPUT_NODE_STRING + "';\n";
+                    definition_code += "  this.nodedef_type = '" + _type + "';\n";
+                    definition_code += "  this.nodedef_group = '" + INPUT_NODE_STRING + "';\n";
                     if (_type == 'token')
                         _type = 'string';
-                    ctor_code += "  this.addInput('in', '" + TMAP[_type] + "');\n";
+                    definition_code += "  this.addInput('in', '" + TMAP[_type] + "');\n";
                     var value = this.getDefaultValue('', _type);
                     var metaData = this.buildMetaData('', '', '', '', null, null, '', null);
                     metaData = JSON.stringify(metaData);
-                    ctor_code += "  this.addProperty('in', " + value + ", '" + _type + "'," + metaData + ");\n";
-                    ctor_code += "  this.addOutput('out', '" + TMAP[_type] + "');\n";
 
-                    ctor_code += "  this.title = '" + titleName + "';\n"
+                    // TODO: It's not possible to add a default colorspace since you 
+                    // don't know what node type it will feed into. i.e. the specification
+                    // is underdefined at this time (1.39)
+                    if (_type == 'filename')
+                    {
+                        ; // Nothing for now.
+                    }
+
+                    definition_code += "  this.addProperty('in', " + value + ", '" + _type + "'," + metaData + ");\n";
+                    definition_code += "  this.addOutput('out', '" + TMAP[_type] + "');\n";
+
+                    definition_code += "  this.title = '" + titleName + "';\n"
                     var desc = '"MaterialX:' + id + '"';
-                    ctor_code += "  this.desc = " + desc + ";\n";
+                    definition_code += "  this.desc = " + desc + ";\n";
 
                     var onNodeCreated = "function() {\n";
                     onNodeCreated += "    //console.log('Node created:', this);\n";
                     onNodeCreated += "  }";
-                    ctor_code += "  this.onNodeCreated = " + onNodeCreated + "\n";
+                    definition_code += "  this.onNodeCreated = " + onNodeCreated + "\n";
                     var onRemoved = "function() {\n";
                     onRemoved += "    //console.log('Node removed:', this);\n";
                     onRemoved += "  }";
-                    ctor_code += "  this.onRemoved = " + onRemoved + "\n";
+                    definition_code += "  this.onRemoved = " + onRemoved + "\n";
 
-                    ctor_code += "  this.color = '#004C94';\n";
-                    ctor_code += "  this.bgcolor = '#000';\n";
-                    if (_type in CMAP)
+                    // Property changed callback
+                    let monitor = editor.monitor;
+                    var onPropertyChanged = "function(name, value, prev_value) {\n";
+                    if (monitor)
                     {
-                        ctor_code += "  this.boxcolor = '" + CMAP[_type] + "';\n";
-                    }    
-                    ctor_code += "  this.shape = LiteGraph.ROUND_SHAPE;\n";
+                        onPropertyChanged += " MxShadingGraphEditor.theEditor.monitor.onPropertyChanged(this.title, name, value, prev_value, this);\n";
+                    }
+                    else
+                    {
+                        onPropertyChanged += "    console.log('+ Internal property changed:', this.title, name, value, prev_value, this);\n";
+                    }
+                    onPropertyChanged += "  }";
+                    definition_code += "  this.onPropertyChanged = " + onPropertyChanged + "\n";
 
-                    ctor_code += "  this.onExecute = function() {\n";
-                    ctor_code += "    console.log('Executing node: ', this);\n";
-                    ctor_code += "  }\n";
+                    // Property info / attribute changed callback
+                    var onPropertyInfoChanged = "function(name, info, value, prev_value) {\n";
+                    if (monitor)
+                    {
+                        onPropertyInfoChanged += " MxShadingGraphEditor.theEditor.monitor.onPropertyInfoChanged(this.title, name, info, value, prev_value, this);\n";
+                    }
+                    else
+                    {
+                        onPropertyInfoChanged += "    console.log('+ Internal property info changed:', this.title, name, info, value, prev_value, this);\n";
+                    }
+                    onPropertyInfoChanged += "  }"                    
+                    definition_code += "  this.onPropertyInfoChanged = " + onPropertyInfoChanged + "\n";
+
+                    // Output connection callback 
+                    var onConnectOutput = "function(slot, input_type, input, target_node, target_slot) {\n";
+                    if (monitor)
+                    {
+                        onConnectOutput += " MxShadingGraphEditor.theEditor.monitor.onConnectOutput(slot, input_type, input, target_node, target_slot, this);\n";
+                    }
+                    else
+                    {
+                        onConnectOutput += "    console.log('+ Output connection changed:', this.title, slot, input_type, input, target_node, target_slot);\n";
+                    }
+                    onConnectOutput += "  }"                    
+                    definition_code += "  this.onConnectOutput = " + onConnectOutput + "\n";    
+    
+                    // Input connection callback 
+                    var onConnectInput = "function(target_slot, output_type, output, source, slot) {\n";
+                    if (monitor)
+                    {
+                        onConnectInput += " MxShadingGraphEditor.theEditor.monitor.onConnectInput(target_slot, output_type, output, source, slot, this);\n";
+                    }
+                    else
+                    {
+                        onConnectInput += "    console.log('+ Input connection changed:', this.title, target_slot, output_type, output, source, slot);\n";
+                    }
+                    onConnectInput += "  }"                    
+                    definition_code += "  this.onConnectInput = " + onConnectInput + "\n";
+
+                    definition_code += "  this.color = '#004C94';\n";
+                    definition_code += "  this.bgcolor = '#000';\n";
+                    if (_type in CMAP) {
+                        definition_code += "  this.boxcolor = '" + CMAP[_type] + "';\n";
+                    }
+                    definition_code += "  this.shape = LiteGraph.ROUND_SHAPE;\n";
+
+                    definition_code += "  this.onExecute = function() {\n";
+                    definition_code += "    console.log('Executing node: ', this);\n";
+                    definition_code += "  }\n";
                 }
-                ctor_code += "}\n"
-                ctor_code += "LiteGraph.registerNodeType('" + id + "', " + functionName + ");\n";                
+                definition_code += "}\n"
+                definition_code += "LiteGraph.registerNodeType('" + id + "', " + functionName + ");\n";
             }
 
             // Register outputs (which have no nodedef)
@@ -524,46 +1401,103 @@ class MxMaterialXHandler extends MxGraphHandler {
                 var id = libraryPrefix + '/output/output_' + _type;
                 var functionName = ne_mx.createValidName(id);
                 var titleName = 'output_' + _type;
-                ctor_code += "\n// MaterialX node type: " + id + "\n//\n";
-                ctor_code += "function " + functionName + "() {\n";
-                {
-                    ctor_code += "  this.title = '" + titleName + "';\n"
-                    var desc = '"MaterialX Node :' + id + '"';
-                    ctor_code += "  this.desc = " + desc + ";\n";
 
-                    ctor_code += "  this.nodedef_icon = '" + LIBRARY_ICON + "';\n";
-                    ctor_code += "  this.nodedef_name = '" + OUTPUT_ND + + _type + "';\n";
-                    ctor_code += "  this.nodedef_node = '" + OUTPUT_NODE_STRING + "';\n";
-                    ctor_code += "  this.nodedef_type = '" + _type + "';\n";
-                    ctor_code += "  this.nodedef_group = '" + OUTPUT_NODE_STRING + "';\n";
-                    ctor_code += "  this.addInput('in', '" + TMAP[_type] + "');\n";
+                definition_code += "\n/**\n"; 
+                definition_code += "  * @function "+ functionName + "\n";
+                definition_code += "  * @description Library: " + libraryPrefix + ". Category: output. Type: " + _type + "\n";
+                definition_code += "  *   LiteGraph id: " + id + "\n"; 
+                definition_code += "  */\n";
+
+                definition_code += "function " + functionName + "() {\n";
+                {
+                    definition_code += "  this.title = '" + titleName + "';\n"
+                    var desc = '"MaterialX Node :' + id + '"';
+                    definition_code += "  this.desc = " + desc + ";\n";
+
+                    definition_code += "  this.nodedef_icon = '" + LIBRARY_ICON + "';\n";
+                    definition_code += "  this.nodedef_name = '" + OUTPUT_ND + + _type + "';\n";
+                    definition_code += "  this.nodedef_node = '" + OUTPUT_NODE_STRING + "';\n";
+                    definition_code += "  this.nodedef_type = '" + _type + "';\n";
+                    definition_code += "  this.nodedef_group = '" + OUTPUT_NODE_STRING + "';\n";
+                    definition_code += "  this.addInput('in', '" + TMAP[_type] + "');\n";
                     var value = this.getDefaultValue('', _type);
-                    ctor_code += "  this.addProperty('in', " + value + ", '" + _type + "');\n";
-                    ctor_code += "  this.addOutput('out', '" + TMAP[_type] + "');\n";
+                    definition_code += "  this.addProperty('in', " + value + ", '" + _type + "');\n";
+                    definition_code += "  this.addOutput('out', '" + TMAP[_type] + "');\n";
 
                     var onNodeCreated = "function() {\n";
                     onNodeCreated += "  //console.log('Node created:', this);\n";
                     onNodeCreated += "  }";
-                    ctor_code += "  this.onNodeCreated = " + onNodeCreated + "\n";
+                    definition_code += "  this.onNodeCreated = " + onNodeCreated + "\n";
                     var onRemoved = "function() {\n";
                     onRemoved += "  //console.log('Node removed:', this);\n";
                     onRemoved += "  }";
-                    ctor_code += "  this.onRemoved = " + onRemoved + "\n";
+                    definition_code += "  this.onRemoved = " + onRemoved + "\n";
 
-                    ctor_code += "  this.color = '#004C94';\n";
-                    ctor_code += "  this.bgcolor = '#000';\n";
-                    if (_type in CMAP)
+                    let monitor = editor.monitor;
+                    var onPropertyChanged = "function(name, value, prev_value) {\n";
+                    if (monitor)
                     {
-                        ctor_code += "  this.boxcolor = '" + CMAP[_type] + "';\n";
-                    }    
-                    ctor_code += "  this.shape = LiteGraph.ROUND_SHAPE;\n";
-                    
-                    ctor_code += "  this.onExecute = function() {\n";
-                    ctor_code += "  console.log('Executing node:', this);\n";
-                    ctor_code += "  }\n";
+                        onPropertyChanged += " MxShadingGraphEditor.theEditor.monitor.onPropertyChanged(this.title, name, value, prev_value, this);\n";
+                    }
+                    else
+                    {
+                        onPropertyChanged += "    console.log('+ Internal property changed:', this.title, name, value, prev_value, this);\n";
+                    }
+                    onPropertyChanged += "  }";
+                    definition_code += "  this.onPropertyChanged = " + onPropertyChanged + "\n";    
+
+                    var onPropertyInfoChanged = "function(name, info, value, prev_value) {\n";
+                    if (monitor)
+                    {
+                        onPropertyInfoChanged += " MxShadingGraphEditor.theEditor.monitor.onPropertyInfoChanged(this.title, name, info, value, prev_value, this);\n";
+                    }
+                    else
+                    {
+                        onPropertyInfoChanged += "    console.log('+ Internal property info changed:', this.title, name, info, value, prev_value, this);\n";
+                    }
+                    onPropertyInfoChanged += "  }"                    
+                    definition_code += "  this.onPropertyInfoChanged = " + onPropertyInfoChanged + "\n";
+
+
+                    // Output connection callback 
+                    var onConnectOutput = "function(slot, input_type, input, target_node, target_slot) {\n";
+                    if (monitor)
+                    {
+                        onConnectOutput += " MxShadingGraphEditor.theEditor.monitor.onConnectOutput(slot, input_type, input, target_node, target_slot, this);\n";
+                    }
+                    else
+                    {
+                        onConnectOutput += "    console.log('+ Output connection changed:', this.title, slot, input_type, input, target_node, target_slot);\n";
+                    }
+                    onConnectOutput += "  }"                    
+                    definition_code += "  this.onConnectOutput = " + onConnectOutput + "\n";    
+    
+                    // Input connection callback 
+                    var onConnectInput = "function(target_slot, output_type, output, source, slot) {\n";
+                    if (monitor)
+                    {
+                        onConnectInput += " MxShadingGraphEditor.theEditor.monitor.onConnectInput(target_slot, output_type, output, source, slot, this);\n";
+                    }
+                    else
+                    {
+                        onConnectInput += "    console.log('+ Input connection changed:', this.title, target_slot, output_type, output, source, slot);\n";
+                    }
+                    onConnectInput += "  }"                    
+                    definition_code += "  this.onConnectInput = " + onConnectInput + "\n";
+
+                    definition_code += "  this.color = '#004C94';\n";
+                    definition_code += "  this.bgcolor = '#000';\n";
+                    if (_type in CMAP) {
+                        definition_code += "  this.boxcolor = '" + CMAP[_type] + "';\n";
+                    }
+                    definition_code += "  this.shape = LiteGraph.ROUND_SHAPE;\n";
+
+                    definition_code += "  this.onExecute = function() {\n";
+                    definition_code += "  console.log('Executing node:', this);\n";
+                    definition_code += "  }\n";
                 }
-                ctor_code += "}\n"
-                ctor_code += "LiteGraph.registerNodeType('" + id + "', " + functionName + ");\n";
+                definition_code += "}\n"
+                definition_code += "LiteGraph.registerNodeType('" + id + "', " + functionName + ");\n";
                 definitionsList.push(id);
             }
         }
@@ -577,46 +1511,50 @@ class MxMaterialXHandler extends MxGraphHandler {
             var functionName = ne_mx.createValidName(id);
             var nodeType = nodeDef.getType();
             var titleName = nodeDef.getNodeString() + "_" + nodeType;
-            var swatchLocation = 'https://materialx.nanmucreative.com/resources/mtlx/nodedef_materials/';
+            var swatchLocation = 'https://kwokcb.github.io/MaterialX_Learn/resources/mtlx/nodedef_materials/';
             var outputs = nodeDef.getActiveOutputs();
             var outputName = outputs[0].getName(); // TODO: Handle swatch for multiple outputs
-            var swatchId =  swatchLocation + 'material_' + nodeDefName + '_' + outputName + '_genglsl.png';
+            var swatchId = swatchLocation + 'material_' + nodeDefName + '_' + outputName + '_genglsl.png';
             swatchId = swatchId.replace('ND_', '');
             if (debug)
-                console.log('\n--- Registering node type:', id, '----');                
+                console.log('\n--- Registering node type:', id, '----');
 
-            ctor_code += "\n// MaterialX node type: " + id + "\n//\n";
-            ctor_code += "function " + functionName + "() {\n";
+
+            definition_code += "\n/**\n"; 
+            definition_code += "  * @function "+ functionName + "\n";
+            definition_code += "  * @description Library: " + libraryPrefix + ". Category: " + nodeString + ". Type: " + nodeType + "\n";
+            definition_code += "  *   LiteGraph id: " + id + "\n"; 
+            definition_code += "  */\n";
+
+            definition_code += "function " + functionName + "() {\n";
             {
                 var nodeGroup = nodeDef.getNodeGroup();
                 var nodeString = nodeDef.getNodeString();
                 var theIcon = icon;
-                if (theIcon.length == 0)
-                {
-                    for (var key in editor.ui.icon_map)
-                    {
-                        if (nodeString.toLowerCase().startsWith(key.toLowerCase()))
-                        {
-                            theIcon = editor.ui.icon_map[key];
+                if (theIcon.length == 0) {
+                    for (var key in editor.ui.icon_map) {
+                        if (nodeString.toLowerCase().startsWith(key.toLowerCase())) {
+                            if (key in editor.ui.icon_map)
+                                theIcon = editor.ui.icon_map[key];
                             //console.log('set icon:', theIcon, 'for:', key, nodeString);
                             break;
                         }
-                        else if (nodeGroup.toLowerCase().startsWith(key.toLowerCase()))
-                        {
-                            theIcon = editor.ui.icon_map[key];
+                        else if (nodeGroup.toLowerCase().startsWith(key.toLowerCase())) {
+                            if (key in editor.ui.icon_map)
+                                theIcon = editor.ui.icon_map[key];
                             //console.log('set icon:', theIcon, 'for:', key, nodeGroup);
                             break;
                         }
                     }
                 }
 
-                ctor_code += "  this.nodedef_icon = '" + theIcon + "';\n";
-                ctor_code += "  this.nodedef_name = '" + nodeDefName + "';\n";
-                ctor_code += "  this.nodedef_type = '" + nodeType + "';\n";
-                ctor_code += "  this.nodedef_node = '" + nodeString + "';\n";
-                ctor_code += "  this.nodedef_href = 'https://materialx.nanmucreative.com/documents/definitions/" + nodeString + ".html';\n";
-                ctor_code += "  this.nodedef_swatch = '" + swatchId + "';\n";
-                ctor_code += "  this.nodedef_group = '" + nodeGroup + "';\n";
+                definition_code += "  this.nodedef_icon = '" + theIcon + "';\n";
+                definition_code += "  this.nodedef_name = '" + nodeDefName + "';\n";
+                definition_code += "  this.nodedef_type = '" + nodeType + "';\n";
+                definition_code += "  this.nodedef_node = '" + nodeString + "';\n";
+                definition_code += "  this.nodedef_href = 'https://kwokcb.github.io/MaterialX_Learn/documents/definitions/" + nodeString + ".html';\n";
+                definition_code += "  this.nodedef_swatch = '" + swatchId + "';\n";
+                definition_code += "  this.nodedef_group = '" + nodeGroup + "';\n";
 
                 for (var input of nodeDef.getActiveInputs()) {
                     var _name = input.getName();
@@ -625,25 +1563,76 @@ class MxMaterialXHandler extends MxGraphHandler {
                         _type = TMAP[_type];
                     else
                         console.log('Unmappable type:', _type)
-                    ctor_code += "  this.addInput('" + _name + "','" + _type + "');\n";
+                    definition_code += "  this.addInput('" + _name + "','" + _type + "');\n";
 
-                    var value = input.getValueString();
+                    let value = input.getValueString();
                     value = this.getDefaultValue(value, _type);
-                    var uiname = input.getAttribute('uiname');
-                    var uimin = input.getAttribute('uimin');
-                    if (uimin.length == 0)
-                    {
+                    let uiname = input.getAttribute('uiname');
+
+                    let uimin = input.getAttribute('uimin');
+                    if (uimin.length == 0) {
                         uimin = null;
                     }
-                    var uimax = input.getAttribute('uimax');
-                    if (uimax.length == 0)
-                    {
+                    let uimax = input.getAttribute('uimax');
+                    if (uimax.length == 0) {
                         uimax = null;
+                    }
+                    let uisoftmin = input.getAttribute('uisoftmin');
+                    if (uisoftmin.length > 0) {
+                        uimin = uisoftmin;
+                    }
+                    let uisoftmax = input.getAttribute('uisoftmax');
+                    if (uisoftmax.length > 0) {
+                        uimax = uisoftmax;
                     }
                     var uifolder = input.getAttribute('uifolder');
                     var metaData = this.buildMetaData('', '', '', uiname, uimin, uimax, uifolder, _type);
+
+                    // Add colorspace on nodedefs
+                    let colorspace = input.getAttribute('colorspace');     
+                    let nodeDefType = nodeDef.getType();               
+                    if (_type == 'filename' && (nodeDefType == 'color3' || nodeDefType == 'color4'))
+                    {
+                        if (colorspace.length == 0)
+                        {
+                            colorspace = 'none';
+                        }
+                    }
+                    if (colorspace.length > 0)
+                        metaData['colorspace'] = colorspace;
+
+                    // TODO: Add units, unitype on nodedefs. There is no
+                    // default unittype or units.
+                    let unitAttributes = ['unit', 'unittype'];
+                    for (let unitAttribute of unitAttributes)
+                    {
+                        let value = input.getAttribute(unitAttribute);
+                        if (value.length > 0)
+                        {
+                            metaData[unitAttribute] = value;
+                        }
+                    }
+
+                    // Add in defaultgeomprop to denote geometric inputs.
+                    let defaultgeomprop = input.getAttribute('defaultgeomprop')
+                    metaData['defaultgeomprop'] = defaultgeomprop;
+
+                    // Add enumerations
+                    let enums = input.getAttribute('enum');
+                    if (enums.length > 0)
+                    {                        
+                        metaData['enum'] = enums.split(',');
+                        metaData['enum'].map(function(x) { return x.trim(); });                
+                    }
+                    let enumvalues = input.getAttribute('enumvalues');
+                    if (enumvalues.length > 0)
+                    {                        
+                        metaData['enumvalues'] = enumvalues.split(',');
+                        metaData['enumvalues'].map(function(x) { return x.trim(); });                
+                    }
+
                     metaData = JSON.stringify(metaData);
-                    ctor_code += "  this.addProperty('" + _name + "', " + value + ", '" + _type + "'," + metaData + ");\n";
+                    definition_code += "  this.addProperty('" + _name + "', " + value + ", '" + _type + "'," + metaData + ");\n";
                 }
                 for (var output of nodeDef.getActiveOutputs()) {
                     var _name = output.getName();
@@ -654,89 +1643,169 @@ class MxMaterialXHandler extends MxGraphHandler {
                         console.log('Unmappable type:', _type)
                     //if(_type && _type.constructor === String)
                     //   _type = '"'+_type+'"';
-                    ctor_code += "  this.addOutput('" + _name + "','" + _type + "');\n";
+                    definition_code += "  this.addOutput('" + _name + "','" + _type + "');\n";
                 }
 
-                ctor_code += "  this.title = '" + titleName + "';\n"
+                definition_code += "  this.title = '" + titleName + "';\n"
                 var desc = '"MaterialX:' + id + '"';
-                ctor_code += "  this.desc = " + desc + ";\n";
+                definition_code += "  this.desc = " + desc + ";\n";
+
+                //definition_code += "  /**\n";
+                //definition_code += "   * @function " + "onNodeCreated" + "\n"; 
+                //definition_code += "   */";
 
                 var onNodeCreated = "function() {\n";
                 onNodeCreated += "  //console.log('Node created:', this);\n";
                 onNodeCreated += "}";
-                ctor_code += "  this.onNodeCreated = " + onNodeCreated + "\n";
+                definition_code += "  this.onNodeCreated = " + onNodeCreated + "\n";
                 var onRemoved = "function() {\n";
                 onRemoved += "  //console.log('Node removed:', this);\n";
                 onRemoved += "  }";
-                ctor_code += "  this.onRemoved = " + onRemoved + "\n";
+                definition_code += "  this.onRemoved = " + onRemoved + "\n";
+
+                let monitor = editor.monitor;
+                var onPropertyChanged = "function(name, value, prev_value) {\n";
+                if (monitor)
+                {
+                    onPropertyChanged += " MxShadingGraphEditor.theEditor.monitor.onPropertyChanged(this.title, name, value, prev_value, this);\n";
+                }
+                else
+                {
+                    onPropertyChanged += "    console.log('+ Internal property changed:', this.title, name, value, prev_value, this);\n";
+                }
+                onPropertyChanged += "  }";
+                definition_code += "  this.onPropertyChanged = " + onPropertyChanged + "\n";
+
+                var onPropertyInfoChanged = "function(name, info, value, prev_value) {\n";
+                if (monitor)
+                {
+                    onPropertyInfoChanged += " MxShadingGraphEditor.theEditor.monitor.onPropertyInfoChanged(this.title, name, info, value, prev_value, this);\n";
+                }
+                else
+                {
+                    onPropertyInfoChanged += "    console.log('+ Internal property info changed:', this.title, name, info, value, prev_value, this);\n";
+                }
+                onPropertyInfoChanged += "  }"                    
+                definition_code += "  this.onPropertyInfoChanged = " + onPropertyInfoChanged + "\n";
+
+                // Output connection callback 
+                var onConnectOutput = "function(slot, input_type, input, target_node, target_slot) {\n";
+                if (monitor)
+                {
+                    onConnectOutput += " MxShadingGraphEditor.theEditor.monitor.onConnectOutput(slot, input_type, input, target_node, target_slot, this);\n";
+                }
+                else
+                {
+                    onConnectOutput += "    console.log('+ Output connection changed:', this.title, slot, input_type, input, target_node, target_slot);\n";
+                }
+                onConnectOutput += "  }"                    
+                definition_code += "  this.onConnectOutput = " + onConnectOutput + "\n";    
+
+                // Input connection callback 
+                var onConnectInput = "function(target_slot, output_type, output, source, slot) {\n";
+                if (monitor)
+                {
+                    onConnectInput += " MxShadingGraphEditor.theEditor.monitor.onConnectInput(target_slot, output_type, output, source, slot, this);\n";
+                }
+                else
+                {
+                    onConnectInput += "    console.log('+ Input connection changed:', this.title, target_slot, output_type, output, source, slot);\n";
+                }
+                onConnectInput += "  }"                    
+                definition_code += "  this.onConnectInput = " + onConnectInput + "\n";
 
                 // Set the background color to slate grey
-                ctor_code += "  this.bgcolor = '#111';\n";
+                definition_code += "  this.bgcolor = '#111';\n";
                 //console.log('Node group:', nodeGroup, nodeDefName);
-                if (nodeGroup == 'conditional')
-                {
+                if (nodeGroup == 'conditional') {
                     //console.log('Cond Node group:', nodeGroup)
-                    ctor_code += "  this.color = '#532200';\n";     
-                    ctor_code += "  this.title_text_color = '#000';\n";               
-                    ctor_code += "  this.shape = LiteGraph.CARD_SHAPE;\n";
+                    definition_code += "  this.color = '#532200';\n";
+                    definition_code += "  this.title_text_color = '#000';\n";
+                    definition_code += "  this.shape = LiteGraph.CARD_SHAPE;\n";
                 }
- 
-                else if (nodeString != 'convert' && 
-                        (nodeGroup == 'shader' || nodeType == 'surfaceshader' || nodeType == 'volumshader' || nodeType == 'displacementshader'))
-                {
-                    ctor_code += "  this.color = '#232';\n";                        
-                    ctor_code += "  this.shape = LiteGraph.ROUND_SHAPE;\n";
+
+                else if (nodeString != 'convert' &&
+                    (nodeGroup == 'shader' || nodeType == 'surfaceshader' || nodeType == 'volumshader' || nodeType == 'displacementshader')) {
+                    definition_code += "  this.color = '#232';\n";
+                    definition_code += "  this.shape = LiteGraph.ROUND_SHAPE;\n";
                 }
-                else if (nodeGroup == 'material')
-                {
-                    ctor_code += "  this.color = '#151';\n";                        
-                    ctor_code += "  this.shape = LiteGraph.BOX_SHAPE;\n";                    
+                else if (nodeGroup == 'material') {
+                    definition_code += "  this.color = '#151';\n";
+                    definition_code += "  this.shape = LiteGraph.BOX_SHAPE;\n";
                 }
-                else 
-                {
-                    ctor_code += "  this.color = '#222';\n";
-                    ctor_code += "  this.shape = LiteGraph.ROUND_SHAPE;\n";
+                else {
+                    definition_code += "  this.color = '#222';\n";
+                    definition_code += "  this.shape = LiteGraph.ROUND_SHAPE;\n";
                 }
-                if (nodeType in CMAP)
-                {
-                    ctor_code += "  this.boxcolor = '" + CMAP[nodeType] + "';\n";
+                if (nodeType in CMAP) {
+                    definition_code += "  this.boxcolor = '" + CMAP[nodeType] + "';\n";
                 }
             }
-            ctor_code += "}\n"
+            definition_code += "}\n"
 
             // Register the node type
-            ctor_code += functionName + ".nodedef_name = '" + nodeDefName + "';\n";
-            ctor_code += functionName + ".nodedef_node = '" + nodeString + "';\n";
-            ctor_code += functionName + ".nodedef_href = 'https://materialx.nanmucreative.com/documents/definitions/" + nodeString + ".html';\n";
+            definition_code += functionName + ".nodedef_name = '" + nodeDefName + "';\n";
+            definition_code += functionName + ".nodedef_node = '" + nodeString + "';\n";
+            definition_code += functionName + ".nodedef_href = 'https://kwokcb.github.io/MaterialX_Learn/documents/definitions/" + nodeString + ".html';\n";
 
-            ctor_code += "LiteGraph.registerNodeType(" + "'" + id + "'," + functionName + ");\n";
+            definition_code += "LiteGraph.registerNodeType(" + "'" + id + "'," + functionName + ");\n";
             definitionsList.push(id);
             if (debug)
-                ctor_code += "console.log('Registered node type:', '" + id + "');\n";
+                definition_code += "console.log('Registered node type:', '" + id + "');\n";
         }
 
-        //ctor_code += "}\n";
-        return ctor_code;
+        //definition_code += "}\n";
+        return definition_code;
     }
 
-    validateDocument(doc)
+    /**
+     * Validates the provided MaterialX document.
+     * 
+     * @param {Document} doc - The MaterialX document to validate.
+     * @returns {boolean} True if the document is valid, false otherwise.
+     */
+    validateDocument(doc) 
     {
+        if (!doc || !stdlib)
+        {
+            return true;
+        }
+
+        // Need to create a dummy "validation" doc
+        let validationDocument = ne_mx.createDocument();
+        validationDocument.copyContentFrom(doc);
+        validationDocument.importLibrary(stdlib);
+
         var errors = {};
-        var valid = doc.validate(errors);
+        var valid = validationDocument.validate(errors);
         if (!valid) {
             this.editor.debugOutput('Failed to validate document:\n' + errors.message, 2);
         }
     }
 
-    saveGraphToDocument(graph, writeCustomLibs = true, saveNodePositions = false) 
-    {
+    /**
+     * Saves the graph to a MaterialX document.
+     * 
+     * @param {Graph} graph - The graph to save.
+     * @param {Object} graphWriteOptions - Options to use when writing the graph.
+     * @returns {Document} The MaterialX document containing the graph.
+     */
+    saveGraphToDocument(graph, graphWriteOptions) {
+
         if (!ne_mx) {
             this.editor.debugOutput("MaterialX is not initialized", 2);
             return;
         }
+        
+        let writeCustomLibs = graphWriteOptions.writeCustomLibs;
+        if (writeCustomLibs == undefined)
+        {
+            console.error('Graph output option: writeCustomLibs is undefined.')
+            writeCustomLibs = true;
+        }
 
         var outputDoc = ne_mx.createDocument();
-        
+
         if (!stdlib) {
             var generator = new ne_mx.EsslShaderGenerator();
             var genContext = new ne_mx.GenContext(generator);
@@ -744,61 +1813,97 @@ class MxMaterialXHandler extends MxGraphHandler {
         }
 
         // Handle top level
-        this.writeGraphToDocument(outputDoc, graph, saveNodePositions);
+        this.writeGraphToDocument(outputDoc, graph, graphWriteOptions);
 
-        if (writeCustomLibs)
-        {
+        if (writeCustomLibs) {
             console.log('Write custom libraries:', customlibs.length);
-            for (var customlib of customlibs)
-            { 
+            for (var customlib of customlibs) {
                 outputDoc.importLibrary(customlib[1]);
             }
             console.log('Write document custom definitions:', customDocLibs.length);
-            for (var customDocLib of customDocLibs)
-            {
+            for (var customDocLib of customDocLibs) {
                 outputDoc.importLibrary(customDocLib[1]);
             }
         }
 
-        // TODO: Add in another other globals
-        outputDoc.setColorSpace(this.getActiveColorSpace());
+        // TODO: Add in other globals
+        outputDoc.setColorSpace(this.getSourceColorSpace());
         outputDoc.removeAttribute('fileprefix');
 
         this.validateDocument(outputDoc);
 
         return outputDoc;
     }
-    
-    saveGraphToString(graph, writeCustomLibs = true, saveNodePositions = false) {
+
+    /**
+     * Saves the graph to a string in the specified format.
+     * 
+     * @param {string} extension - The file extension to save the graph as.
+     * @param {Graph} graph - The graph to save.
+     * @param {Object} graphWriteOptions - Options to use when writing the graph.
+     * @returns {Array} An array containing the data string and any error messages.
+     */
+    saveGraphToString(extension, graph, graphWriteOptions) {
+
         if (!ne_mx) {
             this.editor.debugOutput("MaterialX is not initialized", 2);
-            return;
+            return ['', 'MaterialX is not initialized'];
         }
 
-        var outputDoc = this.saveGraphToDocument(graph, writeCustomLibs, saveNodePositions);
+        var outputDoc = this.saveGraphToDocument(graph, graphWriteOptions);
         if (!outputDoc) {
             this.editor.debugOutput("Failed to save graph to document", 2);
-            return;
+            return ['', 'Failed to save graph to document'];
         }
 
-        const writeOptions = new ne_mx.XmlWriteOptions();
-        writeOptions.writeXIncludeEnable = false;
-        var data = '';
-        try {
-            data = ne_mx.writeToXmlString(outputDoc, writeOptions);
-        } catch (e) {
-            this.editor.debugOutput("Failed to write graph:" + e, 2);
+        if (extension == 'mtlx')
+        {
+            const writeOptions = new ne_mx.XmlWriteOptions();
+            writeOptions.writeXIncludeEnable = false;
+            var data = '';
+            try {
+                data = ne_mx.writeToXmlString(outputDoc, writeOptions);
+            } catch (e) {
+                this.editor.debugOutput("Failed to write graph:" + e, 2);
+            }
+            return [data, ''];                
         }
-        return data;
+
+        // Look for a registered exporter
+        else
+        {            
+            let exporter = this.getExporter(extension);
+            if (!exporter) {
+                this.editor.debugOutput('Failed to find ' + extension + ' exporter', 2);
+            }
+            else { 
+                let exportDoc = ne_mx.createDocument();
+                exportDoc.copyContentFrom(outputDoc);
+                exportDoc.importLibrary(stdlib);
+
+                let result = exporter.export(ne_mx, exportDoc);
+                return result;
+            }
+        }
+        return ['', 'Failed to export graph to ' + extension];
     }
 
-    saveGraphToFile(graph, saveCustomLibs = true, saveNodePositions = false) {
-        var data = this.saveGraphToString(graph, saveCustomLibs, saveNodePositions);
-        if (!data) {
+    /** 
+     * Saves the graph to a file with the specified extension.
+     *
+     * @param {string} extension - The file extension to save the graph as.
+     * @param {Graph} graph - The graph to save.
+     * @param {Object} graphWriteOptions - Options to use when writing the graph.
+     * @returns {void} 
+    */
+    saveGraphToFile(extension, graph, graphWriteOptions) 
+    {
+        var data = this.saveGraphToString(extension, graph, graphWriteOptions);
+        if (!data[0]) {
             return;
         }
 
-        var blob = new Blob([data], { type: "text/plain" });
+        var blob = new Blob([data[0]], { type: "text/plain" });
         var url = URL.createObjectURL(blob);
         var a = document.createElement("a");
         a.href = url;
@@ -806,7 +1911,15 @@ class MxMaterialXHandler extends MxGraphHandler {
         a.click();
     }
 
-    writeGraphToDocument(mltxgraph, graph, saveNodePositions = false) {
+    /** 
+     * Writes the graph to the specified MaterialX document.
+     * 
+     * @param {Document} mltxgraph - The MaterialX document to write the graph to.
+     * @param {Graph} graph - The graph to write.
+     * @param {Object} graphWriteOptions - Options to use when writing the graph.
+     * @returns {void}
+     */
+    writeGraphToDocument(mltxgraph, graph, graphWriteOptions) {
 
         var debug = false;
 
@@ -819,7 +1932,7 @@ class MxMaterialXHandler extends MxGraphHandler {
                 var subgraphNode = mltxgraph.addChildOfCategory('nodegraph', node.title);
                 if (debug)
                     console.log('---->>> Scan NodeGraph:', node.title);
-                this.writeGraphToDocument(subgraphNode, subgraph, saveNodePositions);
+                this.writeGraphToDocument(subgraphNode, subgraph, graphWriteOptions);
                 continue;
             }
 
@@ -851,9 +1964,9 @@ class MxMaterialXHandler extends MxGraphHandler {
             {
                 if (nodedefName) {
                     nodeElement = mltxgraph.addChildOfCategory(node.nodedef_node, node.nodedef_type);
-                    nodeElement.setType(node.nodedef_type);
-                    if (saveNodePositions)
-                    {
+                    nodeElement.setType(node.nodedef_type);                               
+
+                    if (graphWriteOptions.saveNodePositions) {
                         // TODO: Get properly remapping for xpos, ypos.
                         nodeElement.setAttribute('xpos', JSON.stringify(node.pos[0]));
                         nodeElement.setAttribute('ypos', JSON.stringify(node.pos[1]));
@@ -874,7 +1987,6 @@ class MxMaterialXHandler extends MxGraphHandler {
                 continue;
             }
 
-            // Add inputs
             var properties = node.properties;
 
             var node_inputs = node.inputs;
@@ -888,32 +2000,50 @@ class MxMaterialXHandler extends MxGraphHandler {
                 isOutputNode = true;
                 node_inputs = [node];
             }
+
+            // Add all outputs if the type is multioutput, or user option set
+            if (!isInputNode && !isOutputNode)
+            {
+                if (node.nodedef_type == "multioutput")
+                {                        
+                    console.log('Write outputs for:', node, '. type: ', node.nodedef_type);
+                    for (var output of node.outputs) {
+                        var outputName = output.name;
+                        var outputType = output.type;
+                        var outputElement = nodeElement.addOutput(outputName, outputType);
+                        if (debug) {
+                            console.log('> Read: node.nodedef_type: ', node.nodedef_type);
+                            console.log('> Write: output:', outputElement.getNamePath(), outputElement.getType());
+                        }
+                    }
+                }                     
+            }
+
+            // Add inputs
             if (node_inputs) {
 
                 var inputs = node_inputs;
                 for (var i in inputs) {
-                    var input = inputs[i];
+                    let input = inputs[i];
                     if (debug)
                         console.log('---- Write port:', input);
-    
-                    var inputName = input.name;
-                    var inputType = input.type;
+
+                    let inputName = input.name;
+                    let inputType = input.type;
                     if (nodeElement.getCategory() == 'input' ||
                         nodeElement.getCategory() == 'output') {
                         inputName = 'in';
                         inputType = node.nodedef_type;
-                    }                        
+                    }
 
                     //var inputType = input.type;
                     var inputElement = null;
                     var nodeToCheck = node;
-                    var inputNode = null; 
+                    var inputNode = null;
                     var inputLink = null;
-                    if (isInputNode && node.graph._subgraph_node)
-                    {
+                    if (isInputNode && node.graph._subgraph_node) {
                         nodeToCheck = node.graph._subgraph_node;
-                        for (var i=0; i<nodeToCheck.inputs.length; i++)
-                        {
+                        for (var i = 0; i < nodeToCheck.inputs.length; i++) {
                             var nci = nodeToCheck.inputs[i];
                             if (nci.name == node.title) {
                                 inputNode = nodeToCheck.getInputNode(i);
@@ -923,8 +2053,7 @@ class MxMaterialXHandler extends MxGraphHandler {
                             }
                         }
                     }
-                    else
-                    {
+                    else {
                         inputNode = node.getInputNode(i);
                         inputLink = node.getInputLink(i);
                     }
@@ -961,15 +2090,15 @@ class MxMaterialXHandler extends MxGraphHandler {
                         else {
                             //var upstream_nodeType = nodeTypes[inputNode.type];
                             //if (upstream_nodeType) 
+                            //console.log('Write connection: ', inputNode.title)
                             {
                                 if (inputNode.nodedef_node == 'input') {
                                     inputElement.setInterfaceName(inputNode.title);
                                 }
                                 else {
                                     inputElement.setNodeName(inputNode.title);
-                                    // TODO: Need to check that upstream has > 1 output.
-                                    // Put up an issue that this is really annoying to
-                                    // disallow an explicit output in validation !!! 
+                                    // Need to check that upstream has > 1 output.
+                                    // TODO: Log issue that this is annoying to disallow an explicit output in validation. 
                                     if (numInputOutputs > 1 && inputNode.nodedef_node != 'output') {
                                         // Set output string if there was an output link.
                                         if (inputLinkOutput) {
@@ -981,15 +2110,18 @@ class MxMaterialXHandler extends MxGraphHandler {
                         }
                     }
                     else {
+
                         var inputValue = node.properties[inputName];
                         if (inputValue == null) {
                             console.log('Cannot find property value for input:', inputName);
                         }
                         else {
+
+
                             var origValue = inputValue;
                             //var inputType = propInfo.type;                            
                             if (inputType in ['float', 'integer', 'vector2', 'vector3', 'vector4',
-                                'matrix33', 'matrix44', 'color3', 'color4']) {                                
+                                'matrix33', 'matrix44', 'color3', 'color4']) {
                                 inputValue = '"' + parseFloat(inputValue) + '"';
                             }
                             else if (inputType === 'boolean') {
@@ -1002,25 +2134,31 @@ class MxMaterialXHandler extends MxGraphHandler {
                                 inputValue = inputValue.toString();
                             }
                             //console.log('Write input:', inputElement, node, inputName, origValue, inputValue, inputType);
+                            
                             if (nodeElement.getCategory() != 'input' &&
                                 nodeElement.getCategory() != 'output') {
                                 inputElement = nodeElement.getInput(inputName);
                                 if (!inputElement)
                                     inputElement = nodeElement.addInput(inputName, inputType);
                                 else {
-                                    // TODO: Seems that c+paste adds same input > once ???
+                                    // TODO: LiteGraph seems that copy+paste adds same input > once.
                                     console.log('Error> Trying add input more than once:', inputName, ' to node: ', nodeElement.getNamePath());
                                 }
                             }
                             else {
                                 inputElement = nodeElement;
                             }
-                            inputElement.setValueString(inputValue, inputType);
+
+                            try {
+                                inputElement.setValueString(inputValue, inputType);
+                            }
+                            catch (e) {
+                                console.warn("Set value error: ", e);
+                            }
                         }
                     }
 
-                    if (inputElement)
-                    {
+                    if (inputElement) {
                         var propInfo = null;
                         var skip_attributes = [];
                         if (isInputNode || isOutputNode) {
@@ -1035,44 +2173,28 @@ class MxMaterialXHandler extends MxGraphHandler {
                                 propInfo = node.properties_info[i];
                             }
                         }
-                        if (propInfo)
-                        {
+                        if (propInfo) {
                             //console.log('Scan propinfo:', propInfo, 'for input:', inputElement.getNamePath(), 'prop_info:', propInfo);
 
                             // Write node_properties metadata to input
-                            for (var propAttribute in propInfo)
-                            {
+                            skip_attributes = skip_attributes.concat(['defaultgeomprop', 'enum', 'enumvalues']);
+                            //console.log('SKIP ATTRIBUTES:', skip_attributes);
+                            for (var propAttribute in propInfo) {
                                 if (skip_attributes.includes(propAttribute))
                                     continue;
-                                
+
                                 //console.log('-- scan attrib:', propAttribute);
                                 var propAttributeValue = propInfo[propAttribute];
-                                if (propAttributeValue && propAttributeValue.length > 0)
-                                {
-                                    //console.log('---- save attribute:', propAttribute, propAttributeValue, 'on input:', inputElement.getNamePath());
+                                if (propAttributeValue && propAttributeValue.length > 0) {
                                     inputElement.setAttribute(propAttribute, propAttributeValue);
-                                }                                                
-                            }                     
-                        }       
+                                }
+                            }
+                        }
                     }
                 }
 
                 if (debug)
                     console.log('---- END Write inputs:', node.inputs);
-            }
-
-            // Add outputs
-            if (node.outputs) {
-                /*
-                var outputs = node.outputs;
-                for (var i in outputs)
-                {
-                    var output = outputs[i];
-                    var outputName = output.name;
-                    var outputType = output.type;
-                    var outputElement = nodeElement.addOutput(outputName, outputType);
-                }
-                */
             }
 
             if (debug)
@@ -1083,6 +2205,12 @@ class MxMaterialXHandler extends MxGraphHandler {
             console.log('***** END Scan Graph:', graph.title);
     }
 
+    /**
+     * Determines if the specified type is an array type.
+     * 
+     * @param {string} _type - The type to check.
+     * @returns {boolean} True if the type is an array type, false otherwise.
+     */
     isArray(_type) {
         var ARRAY_TYPES = ['color3', 'color4', 'vector2', 'vector3', 'vector4', 'matrix33', 'matrix44'];
         if (ARRAY_TYPES.includes(_type)) {
@@ -1091,6 +2219,16 @@ class MxMaterialXHandler extends MxGraphHandler {
         return false;
     }
 
+    /** 
+     * Builds the connections between MaterialX nodes.
+     * 
+     * @param {} editor - The graph editor.
+     * @param {Node} node - The MaterialXnode to build connections for.
+     * @param {Node} lg_node - The LiteGraph node
+     * @param {Array} explicitInputs - The explicit inputs to the node.
+     * @param {LiteGraph} graph - The LiteGraph parent.
+     * @param {NodeGraph} parentGraph - The parent MaterialX graph.
+     */
     buildConnections(editor, node, lg_node, explicitInputs, graph, parentGraph) {
 
         var nodeInputs = [];
@@ -1114,7 +2252,7 @@ class MxMaterialXHandler extends MxGraphHandler {
             var nodeName = input.getNodeName();
             var nodeGraphName = input.getNodeGraphString();
             var inputInterfaceName = input.getInterfaceName();
-            var outputName = input.getOutputString();                    
+            var outputName = input.getOutputString();
 
             if (nodeName.length ||
                 nodeGraphName.length ||
@@ -1143,8 +2281,7 @@ class MxMaterialXHandler extends MxGraphHandler {
                 }
 
                 var graphToCheck = graph;
-                if (isInput && graph._subgraph_node)
-                {
+                if (isInput && graph._subgraph_node) {
                     target_node = graph._subgraph_node;
                     target_slot = target_node.findInputSlot(lg_node.title);
                     // Go up to parent graph
@@ -1152,15 +2289,6 @@ class MxMaterialXHandler extends MxGraphHandler {
                     //console.log(' go up to parent graph:', graphToCheck,
                     //    'from:', graph, 'subgraph:', graph._subgraph_node,
                     //'target_node:', target_node.title, 'target_slot:', target_slot);
-
-                    // Need to scan parent graph here if interfacename and input
-                    /* for (var p = 0; p < parentGraph._nodes.length; ++p) {
-                        console.log('local check graph node title', parentGraph._nodes[p].title, source_name);
-                        if (parentGraph._nodes[p].title == source_name) {
-                            source_node = parentGraph._nodes[p];
-                            break;
-                        }
-                    } */
                 }
                 source_node = graphToCheck.findNodeByTitle(source_name);
                 if (source_node) {
@@ -1173,24 +2301,20 @@ class MxMaterialXHandler extends MxGraphHandler {
                             editor.debugOutput('Failed to find output slot:' + outputName, 1);
                         }
                         var linkInfo = source_node.connect(source_slot, target_node, target_slot);
-                        if (!linkInfo)
-                        {
+                        if (!linkInfo) {
                             editor.debugOutput('Failed to connect:' + source_node.title + '.' + outputName, '->', target_node.title + '.' + _name), 1, false;
                         }
                     }
                     //console.log('CONNECT START: source[', source_node.title, '.', source_slot,
                     //    '] --> target[:', target_node.title, ".", target_slot);
                     var linkInfo = null;
-                    if (source_slot == null || target_slot == null || target_node == null)
-                    {
+                    if (source_slot == null || target_slot == null || target_node == null) {
                         console.warning('Cannot connect!')
-                    } 
-                    else 
-                    {
+                    }
+                    else {
                         linkInfo = source_node.connect(source_slot, target_node, target_slot);
                     }
-                    if (!linkInfo) 
-                    {
+                    if (!linkInfo) {
                         editor.debugOutput('Failed to connect:' + source_node.title + '.' + outputName, '->', target_node.title + '.' + _name, 1);
                     }
                     //console.log('CONNECT END: source[', source_node.title, '.', source_slot,
@@ -1210,7 +2334,7 @@ class MxMaterialXHandler extends MxGraphHandler {
                         let valueArray = _value.split(/[\s,]+/);
                         _value = valueArray;
                     }
-                    
+
                     //console.log('-- Value Input:', 
                     //lg_node.title + "." + _name, 'value:', _value);
                     lg_node.setProperty(_name, _value);
@@ -1218,53 +2342,95 @@ class MxMaterialXHandler extends MxGraphHandler {
             }
 
             var property_info = lg_node.getPropertyInfo(_name);
-            this.loadInputMetaData(input, property_info);
+            this.loadInputMetaData(node, input, property_info);
         }
     }
 
-    loadInputMetaData(input, property_info)
-    {
+    /**
+     * Set the meta-data for the specified input based on LiteGraph node property info
+     * 
+     * @param {Node} node - The MaterialX node parent of the input. If parent is a nodegraph then null is passed in.
+     * @param {Input} input - The input to load the meta-data for.
+     * @param {Object} property_info - The property info object to load the meta-data into.
+     * @returns {void}
+     */
+    loadInputMetaData(node, input, property_info) {
         if (input && property_info) {
 
             // Load in basic meta-data
             var colorspace = input.getColorSpace();
             if (colorspace.length > 0)
                 property_info['colorspace'] = colorspace;
-            
+
             var unit = input.getUnit();
             if (unit.length > 0)
                 property_info['unit'] = unit;
-            
+
             var uiname = input.getAttribute('uiname');
             if (uiname.length > 0)
                 property_info['uiname'] = uiname;
-            
+
             var uimin = input.getAttribute('uimin');
             if (uimin.length > 0)
                 property_info['uimin'] = uimin;
-            
+
             var uimax = input.getAttribute('uimax');
             if (uimax.length > 0)
                 property_info['uimax'] = uimax;
-            
+            var uisoftmin = input.getAttribute('uisoftmin');
+            if (uisoftmin.length > 0)
+                property_info['uimin'] = uisoftmin;
+
+            var uisoftmax = input.getAttribute('uisoftmax');
+            if (uisoftmax.length > 0)
+                property_info['uimax'] = uisoftmax;
+
             var uifolder = input.getAttribute('uifolder');
             if (uifolder.length > 0)
-                property_info['uifolder'] = uifolder;  
+                property_info['uifolder'] = uifolder;
 
             var basicMetaData = ['colorspace', 'unit', 'uiname', 'uimin', 'uimax', 'uifolder', 'name', 'type', 'output', 'nodename', 'nodegraph'];
-            for (var attrName of input.getAttributeNames())
-            {
+            for (var attrName of input.getAttributeNames()) {
                 if (!basicMetaData.includes(attrName)) {
                     property_info[attrName] = input.getAttribute(attrName);
                 }
             }
+            
+            if (node && input.getType() == 'filename') 
+            {
+                let nodeType = node.getType();
+                let colorTypes = ['color3', 'color4'];
+                //console.log('Load input metadata for:', input.getName(), input.getType(), property_info, nodeType);
+                if (colorTypes.includes(nodeType))
+                {
+                    if (!property_info['colorspace']) {
+                        console.log('Auto create "none" colorspace for input:', input.getName());
+                        let doc = node.getDocument();
+                        let defaultColorSpace = 'none';
+                        // For now don't use the document color space as 'none' is more flexible.
+                        //let docColorSpace = doc.getAttribute('colorspace');
+                        //if (docColorSpace.length > 0)
+                        //    defaultColorSpace = docColorSpace;
+                        property_info['colorspace'] = defaultColorSpace;
+                    }
+                }
+            } 
 
             //console.log('load input metadata for:', input.getNamePath(), property_info);
         }
     }
 
+    /** 
+     * Builds the LiteGraph graph from the specified MaterialX document.
+     * 
+     * @param {Document} doc - The MaterialX document to build the graph from.
+     * @param {GraphEditor} editor - The graph editor.
+     * @param {boolean} auto_arrange - True to auto-arrange the graph, false otherwise.
+     * @returns {void}
+     */
     buildGraphFromDoc(doc, editor, auto_arrange) {
-        var debug = false;
+        let debug = false;
+        let loadNodePositions = false; // TODO: Some issues with UI update when setting xpos, ypos. To address.
 
         //console.log('Build graph from doc. auto_arrange: ', auto_arrange);
         if (!ne_mx) {
@@ -1275,8 +2441,8 @@ class MxMaterialXHandler extends MxGraphHandler {
         editor.clearGraph();
 
         // Don't try and update the graph while building it
-        editor.monitorGraph(graph, false);
-      
+        editor.monitor.monitorGraph(graph, false);
+
         // Index here is index into litegraph nodes
         var mtlxNodes = [];
         var mtlxNodeDefs = [];
@@ -1300,18 +2466,19 @@ class MxMaterialXHandler extends MxGraphHandler {
                     lg_node.setProperty('in', _value);
                 }
 
-                var xpos = interfaceInput.getAttribute('xpos');
-                var ypos = interfaceInput.getAttribute('ypos');
-                if (xpos.length > 0 && ypos.length > 0)
-                {
-                    ;//lg_node.pos[0] = xpos;
-                    ;//lg_node.pos[1] = ypos;
+                if (loadNodePositions) {
+                    var xpos = interfaceInput.getAttribute('xpos');
+                    var ypos = interfaceInput.getAttribute('ypos');
+                    if (xpos.length > 0 && ypos.length > 0) {
+                        lg_node.pos[0] = xpos;
+                        lg_node.pos[1] = ypos;
+                        //lg_node.flags.collapsed = false;
+                    }
                 }
-                //lg_node.flags.collapsed = false;
 
                 // Make sure size is updated
                 lg_node.setSize(lg_node.computeSize());
-                
+
                 graph.add(lg_node);
 
                 //mtlxNodes.push([interfaceInput, lg_node, graph]);                        
@@ -1326,18 +2493,19 @@ class MxMaterialXHandler extends MxGraphHandler {
             if (lg_node) {
                 lg_node.title = interfaceOutput.getName();
                 graph.add(lg_node);
-                if (debug)
-                {
+                if (debug) {
                     console.log('Add graph output:', lg_node.title);
                 }
 
                 // Make sure size is updated
                 lg_node.setSize(lg_node.computeSize());
 
-                var xpos = interfaceOutput.getAttribute('xpos');
-                var ypos = interfaceOutput.getAttribute('ypos');
-                if (xpos.length > 0 && ypos.length > 0)
-                    ;//lg_node.pos = [xpos, ypos];
+                if (loadNodePositions) {
+                    var xpos = interfaceOutput.getAttribute('xpos');
+                    var ypos = interfaceOutput.getAttribute('ypos');
+                    if (xpos.length > 0 && ypos.length > 0)
+                        lg_node.pos = [xpos, ypos];
+                }
 
                 mtlxNodes.push([interfaceOutput, lg_node, graph]);
             }
@@ -1366,10 +2534,12 @@ class MxMaterialXHandler extends MxGraphHandler {
                 // Make sure size is updated
                 lg_node.setSize(lg_node.computeSize());
 
-                var xpos = node.getAttribute('xpos');
-                var ypos = node.getAttribute('ypos');
-                if (xpos.length > 0 && ypos.length > 0)
-                    ;//lg_node.pos = [xpos, ypos];
+                if (loadNodePositions) {
+                    var xpos = node.getAttribute('xpos');
+                    var ypos = node.getAttribute('ypos');
+                    if (xpos.length > 0 && ypos.length > 0)
+                        lg_node.pos = [xpos, ypos];
+                }
 
                 mtlxNodes.push([node, lg_node, graph]);
                 mtlxNodeDefs.push(nodeDef);
@@ -1377,27 +2547,26 @@ class MxMaterialXHandler extends MxGraphHandler {
             else {
                 editor.debugOutput('Failed to create node:' + node.getName(), 2);
             }
-        }        
+        }
 
         for (var nodegraph of doc.getNodeGraphs()) {
             if (nodegraph.hasSourceUri()) {
                 continue;
             }
             var nodedefAttrib = nodegraph.getAttribute('nodedef');
-            if (nodedefAttrib && nodedefAttrib.length > 0)
-            {
+            if (nodedefAttrib && nodedefAttrib.length > 0) {
                 console.log('Skip loading in functional graph:', nodegraph.getName(), 'nodedef:', nodedefAttrib);
                 continue;
             }
             if (debug)
                 console.log('Create nodegraph:', nodegraph.getName());
-            
+
             var title = nodegraph.getName();
             var subgraphNode = LiteGraph.createNode("graph/subgraph", title);
             //var subgraph = new LiteGraph.LGraph();
             //subgraphNode._subgraph_node = subgraph;
             //subgraphNode.bgcolor = "#112";
-            subgraphNode.bgImageUrl = "./Images/nodegraph.png";
+            subgraphNode.bgImageUrl = "./Icons/nodegraph.png";
 
             var mtlxSubGraphNodes = [];
             for (var interfaceInput of nodegraph.getInputs()) {
@@ -1407,7 +2576,7 @@ class MxMaterialXHandler extends MxGraphHandler {
                 var lg_node = LiteGraph.createNode(id);
                 if (lg_node) {
                     lg_node.title = interfaceInput.getName();
-                    this.loadInputMetaData(interfaceInput, lg_node.properties_info[0]);       
+                    this.loadInputMetaData(null, interfaceInput, lg_node.properties_info[0]);
                     subgraphNode.subgraph.add(lg_node);
 
                     if (debug)
@@ -1427,13 +2596,15 @@ class MxMaterialXHandler extends MxGraphHandler {
 
                     // Make sure size is updated
                     lg_node.setSize(lg_node.computeSize());
-                    
-                    var xpos = nodegraph.getAttribute('xpos');
-                    var ypos = nodegraph.getAttribute('ypos');
-                    if (xpos.length > 0 && ypos.length > 0)
-                        ; // lg_node.pos = [xpos, ypos];
 
-                    mtlxSubGraphNodes.push([interfaceInput, lg_node, graph]);                        
+                    if (loadNodePositions) {
+                        var xpos = nodegraph.getAttribute('xpos');
+                        var ypos = nodegraph.getAttribute('ypos');
+                        if (xpos.length > 0 && ypos.length > 0)
+                            lg_node.pos = [xpos, ypos];
+                    }
+
+                    mtlxSubGraphNodes.push([interfaceInput, lg_node, graph]);
                 }
             }
 
@@ -1454,10 +2625,12 @@ class MxMaterialXHandler extends MxGraphHandler {
                     // Make sure size is updated
                     lg_node.setSize(lg_node.computeSize());
 
-                    var xpos = interfaceOutput.getAttribute('xpos');
-                    var ypos = interfaceOutput.getAttribute('ypos');
-                    if (xpos.length > 0 && ypos.length > 0)
-                        ; // lg_node.pos = [xpos, ypos];
+                    if (loadNodePositions) {
+                        var xpos = interfaceOutput.getAttribute('xpos');
+                        var ypos = interfaceOutput.getAttribute('ypos');
+                        if (xpos.length > 0 && ypos.length > 0)
+                            lg_node.pos = [xpos, ypos];
+                    }
 
                     mtlxSubGraphNodes.push([interfaceOutput, lg_node, graph]);
                 }
@@ -1484,14 +2657,16 @@ class MxMaterialXHandler extends MxGraphHandler {
                 // Make sure size is updated
                 lg_node.setSize(lg_node.computeSize());
 
-                var xpos = node.getAttribute('xpos');
-                var ypos = node.getAttribute('ypos');
-                if (xpos.length > 0 && ypos.length > 0)
-                    ; // lg_node.pos = [xpos, ypos];
+                if (loadNodePositions) {
+                    var xpos = node.getAttribute('xpos');
+                    var ypos = node.getAttribute('ypos');
+                    if (xpos.length > 0 && ypos.length > 0)
+                        lg_node.pos = [xpos, ypos];
+                }
 
                 mtlxSubGraphNodes.push([node, lg_node, graph]);
             }
-            
+
             for (var item of mtlxSubGraphNodes) {
                 var node = item[0];
                 var lg_node = item[1];
@@ -1508,8 +2683,7 @@ class MxMaterialXHandler extends MxGraphHandler {
             if (debug)
                 console.log('Add subgraph:', subgraphNode.title);
 
-            if (auto_arrange > 0)
-            {
+            if (auto_arrange > 0) {
                 subgraphNode.subgraph.arrange(auto_arrange);
             }
 
@@ -1529,15 +2703,14 @@ class MxMaterialXHandler extends MxGraphHandler {
             //console.log('Build connections for:', lg_node.title);
             this.buildConnections(editor, node, lg_node, explicitInputs, graph, null);
 
-            if (lg_node.nodedef_node == 'input' || lg_node.nodedef_node == 'output') 
-            {
+            if (lg_node.nodedef_node == 'input' || lg_node.nodedef_node == 'output') {
                 continue;
             }
 
+            /* 
             var removeInputs = [];
             var nodeDef = mtlxNodeDefs[itemCount];
-            if (nodeDef)
-            {
+            if (nodeDef) {
                 for (var nodeDefInput of nodeDef.getActiveInputs()) {
                     var _name = nodeDefInput.getName();
                     if (!explicitInputs.includes(_name)) {
@@ -1546,20 +2719,21 @@ class MxMaterialXHandler extends MxGraphHandler {
                 }
                 for (var _name of removeInputs) {
                     var slot = lg_node.findInputSlot(_name);
-                    //console.log('Remove input:', _name, ' on: ', lg_node);
-                    lg_node.removeInput(slot);
+                    lg_node.inputs[slot].hidden = true; 
+                    console.log('Hide input:', _name, '. ', slot, ' on: ', lg_node);
+                    //lg_node.removeInput(slot);
                 }
 
                 // Make sure size is updated
                 lg_node.setSize(lg_node.computeSize());
             }
+            */
             itemCount++;
         }
 
-        editor.monitorGraph(graph, true);
+        editor.monitor.monitorGraph(graph, true);
 
-        if (auto_arrange > 0)
-        {
+        if (auto_arrange > 0) {
             graph.arrange(auto_arrange);
         }
 
@@ -1567,35 +2741,40 @@ class MxMaterialXHandler extends MxGraphHandler {
         graphcanvas.setDirty(true, true);
     }
 
-    loadDefinitionsFromFile()
-    {
+    /**
+     * Load MaterialX document containing node definitions from a file.
+     * 
+     * @returns {void}
+     */
+    loadDefinitionsFromFile() {
         var that = this;
 
         // Load mtlx document from disk
         var input = document.createElement("input");
+        input.style = this.fontSizeStyle;
         input.type = "file";
         input.accept = ".mtlx";
         input.onchange = function (e) {
             var file = e.target.files[0];
             console.log('Loading definitions from file: ' + file.name);
-            
+
             if (ne_mx) {
                 // Load the content from the specified file (replace this with actual loading logic)
-    
+
                 const reader = new FileReader();
                 reader.readAsText(file, 'UTF-8');
-    
+
                 reader.onload = function (e) {
                     // Display the contents of the file in the output div
                     let fileContents = e.target.result;
                     //console.log(fileContents);
-    
+
                     (async () => {
                         try {
                             const readOptions = new ne_mx.XmlReadOptions();
                             readOptions.readXIncludes = false;
                             var customLib = ne_mx.createDocument();
-    
+
                             await ne_mx.readFromXmlString(customLib, fileContents, '', readOptions);
 
                             // Create JS from custom library
@@ -1603,20 +2782,18 @@ class MxMaterialXHandler extends MxGraphHandler {
                                 console.log('Create custom library definitions')
                                 var iconName = '';
                                 var scanForIcon = false;
-                                if (scanForIcon)
-                                {
+                                if (scanForIcon) {
                                     // Icon name is filename with webp as extension 
                                     var iconName = file.name.replace(/\.[^/.]+$/, ".webp");
                                     // Check if iconName file exists
                                     var iconExists = await that.editor.uriExists(iconName);
                                     if (!iconExists) {
                                         iconName = '';
-                                    } 
+                                    }
                                 }
                                 var definitionsList = [];
-                                var result = that.createLiteGraphDefinitions(customLib, false, false, definitionsList , 'mtlx', that.editor, iconName);
-                                if (result)
-                                {
+                                var result = that.createLiteGraphDefinitions(customLib, false, false, definitionsList, 'mtlx', that.editor, iconName);
+                                if (result) {
                                     eval(result);
                                     var definitionsListString = definitionsList.join(', ');
                                     that.editor.debugOutput("Registered custom node types: [" + definitionsListString + "]", 0, false);
@@ -1628,15 +2805,15 @@ class MxMaterialXHandler extends MxGraphHandler {
 
 
                             // Keep track of libraries loaded by filename.
-                            customlibs.push([file.name, customLib]);            
-    
+                            customlibs.push([file.name, customLib]);
+
                         } catch (error) {
                             that.editor.debugOutput('Error reading definitions:' + error, 2, false);
                         }
                     })();
-    
+
                 };
-    
+
             } else {
                 that.editor.debugOutput("MaterialX is not initialized", 2);
             }
@@ -1644,20 +2821,49 @@ class MxMaterialXHandler extends MxGraphHandler {
             //customlibs
         };
         input.click();
-    }            
+    }
 
-    loadFromString(fileContents, fileName, auto_arrange) 
-    {
+    /** 
+     * Load graph editor from a string
+     * 
+     * @param {string} extension - The extension indicating the format of the string.
+     * @param {string} fileContents - The document string.  
+     * @param {string} fileName - The identifier for the source file, or a arbitrary name.
+     * @param {boolean} auto_arrange - True to auto-arrange the graph, false otherwise.
+     * @returns {void}
+     */
+    loadFromString(extension, fileContents, fileName, auto_arrange) {
         if (!ne_mx) {
             console.log('MaterialX is not initialized');
             return;
         }
 
+        // Check if we need to pre-convert from extension type to mtlx
+        if (extension != 'mtlx')
+        {
+            let converter = this.getImporter(extension);
+            if (converter) {
+                let result = converter.import(ne_mx, fileContents, stdlib);
+                if (result) {
+                    fileContents = result[0];
+                } 
+                else {
+                    console.log('Failed to convert from:', extension, 'to mtlx. Errors:', result[1]);
+                    return;
+                }
+            }    
+            else
+            {
+                console.log('Failed to find converter from:', extension, 'to mtlx.');
+                return;
+            }
+        }    
+
         (async () => {
             try {
                 const readOptions = new ne_mx.XmlReadOptions();
                 readOptions.readXIncludes = false;
-                
+
                 doc.clearContent();
 
                 doc.importLibrary(stdlib);
@@ -1666,7 +2872,7 @@ class MxMaterialXHandler extends MxGraphHandler {
                     doc.importLibrary(item[1]);
                 }
                 var loadDoc = ne_mx.createDocument();
-                await ne_mx.readFromXmlString(loadDoc, fileContents, '', readOptions);          
+                await ne_mx.readFromXmlString(loadDoc, fileContents, '', readOptions);
 
                 // Check if nodedef is not in existingDefs
                 //
@@ -1694,11 +2900,11 @@ class MxMaterialXHandler extends MxGraphHandler {
 
                     for (var child of customLib.getChildren()) {
                         if (!keepChildren.includes(child.getName())) {
-                            console.log('Remove child:', child.getName());
+                            //console.log('Remove child:', child.getName());
                             customLib.removeChild(child.getName());
                         }
                     }
-    
+
                     var additionDefs = [];
                     var result = this.createLiteGraphDefinitions(customLib, true, false, additionDefs, 'mtlx', MxShadingGraphEditor.theEditor);
                     try {
@@ -1710,7 +2916,9 @@ class MxMaterialXHandler extends MxGraphHandler {
                 }
 
                 doc.copyContentFrom(loadDoc);
+
                 this.validateDocument(doc);
+                
                 this.buildGraphFromDoc(doc, MxShadingGraphEditor.theEditor, auto_arrange);
 
                 // Must do this after build as build will clear customDocLibs array
@@ -1718,13 +2926,10 @@ class MxMaterialXHandler extends MxGraphHandler {
                     customDocLibs.push([fileName, customLib]);
                 }
 
-                var documentColorSace = doc.getColorSpace();
-                this.setActiveColorSpace(documentColorSace);
-                documentColorSace = this.getActiveColorSpace();
-                //console.log('Document colorspace:', documentColorSace);
-                var csArea = MxShadingGraphEditor.theEditor.ui.mtlxdoc_colorspace;
-                if (csArea)
-                    csArea.innerHTML = documentColorSace;
+                // Get the document's colorspace and set it as the active colorspace
+                var documentColorSpace = doc.getColorSpace();
+                this.setSourceColorSpace(documentColorSpace);
+                documentColorSpace = this.getSourceColorSpace();
                 MxShadingGraphEditor.theEditor.updatePropertyPanel(null);
 
                 // Cleanup document, and get up-to-date contents after any possible upgrade.
@@ -1736,13 +2941,13 @@ class MxMaterialXHandler extends MxGraphHandler {
                 MxShadingGraphEditor.theEditor.debugOutput('Loaded document: "' + fileName + '"', 0, false);
 
                 // Update mtlx text area
-                let textArea = MxShadingGraphEditor.theEditor.ui.mtlxdoc;
-                if (!textArea) {
-                    MxShadingGraphEditor.theEditor.debugOutput('Failed to find text area for mtlxdoc', 2, false);
+                let documentDisplayUpdater = MxShadingGraphEditor.theEditor.ui.documentDisplayUpdater;
+                if (documentDisplayUpdater) {
+                    documentDisplayUpdater(fileContents);
                 }
                 else {
-                    textArea.setValue(fileContents);
-                }        
+                    console.log('No docDisplayUpdater!!!');
+                }
 
                 // Update render items in UI
                 let renderableItemUpdater = MxShadingGraphEditor.theEditor.ui.renderableItemUpdater;
@@ -1753,20 +2958,29 @@ class MxMaterialXHandler extends MxGraphHandler {
                     }
                     renderableItemUpdater(renderableItems);
                 }
-                
+
             } catch (error) {
                 MxShadingGraphEditor.theEditor.debugOutput('Error reading document: ' + fileName + '. Error: ' + error, 2, false);
             }
         })();
     }
 
-    loadFromFile(file, fileName, editor, auto_arrange) {
+    /** 
+     * Load graph editor from a file
+     * 
+     * @param {string} extension - The extension indicating the format of the file.
+     * @param {File} file - The file to load the graph from.
+     * @param {string} fileName - The identifier for the source file, or a arbitrary name.
+     * @param {GraphEditor} editor - The graph editor.
+     * @param {boolean} auto_arrange - True to auto-arrange the graph, false otherwise.
+     * @returns {void}
+     */
+    loadFromFile(extension, file, fileName, editor, auto_arrange) {
         var debug = false;
 
-        if (ne_mx) 
-        {
-            if (!this.loadMaterialXLibraries())
-                return;    
+        if (ne_mx) {
+            if (!this.loadMaterialXLibraries(stdlib))
+                return;
 
             // Load the content from the specified file (replace this with actual loading logic)
 
@@ -1775,19 +2989,31 @@ class MxMaterialXHandler extends MxGraphHandler {
             reader.accept = '.mtlx';
 
             var that = this;
-            reader.onload = function (e) {
-                // Display the contents of the file in the output div
-                let fileContents = e.target.result;
+            console.log('loadFromFile:', file, fileName);
+            try {
+                reader.onload = function (e) {
+                    // Display the contents of the file in the output div
+                    let fileContents = e.target.result;
+                    console.log("read file: ", file.name, " with extension: ", extension, " and length: ", fileContents.length);
 
-                that.loadFromString(fileContents, fileName, auto_arrange);
-            };
+                    that.loadFromString(extension, fileContents, fileName, auto_arrange);
+                };
+            } catch (error) {
+                MxShadingGraphEditor.theEditor.debugOutput('Error reading document: ' + fileName + '. Error: ' + error, 2, false);
+            }
 
         } else {
             editor.debugOutput("MaterialX is not initialized", 2, false);
         }
-    }    
+    }
 
-    loadMaterialXLibraries() {
+    /** 
+     * Load MaterialX definition libraries.
+     * 
+     * @returns {Document} The MaterialX document containing the standard libraries.
+     */
+    loadMaterialXLibraries(stdlib) 
+    {
         if (stdlib)
             return stdlib;
 
@@ -1806,12 +3032,16 @@ class MxMaterialXHandler extends MxGraphHandler {
         return stdlib;
     }
 
-    // Create a valid MaterialX name
-    createValidName(name, msg=null)
-    {
+    /** 
+     * Create a valid MaterialX name within the context of the current graph.
+     * 
+     * @param {string} name - The name to validate.
+     * @param {string} msg - The message to display if the name is invalid.
+     * @returns {string} The valid name.
+    */
+    createValidName(name, msg = null) {
         if (name.length == 0) {
-            if (msg)
-            {
+            if (msg) {
                 msg = 'Setting empty name as "blank"';
             }
             name = "blank";
@@ -1846,113 +3076,165 @@ class MxMaterialXHandler extends MxGraphHandler {
             i++;
             valid_name = rootName + i.toString();
         }
-        return valid_name;        
+        return valid_name;
     }
 };
 
-class MxShadingGraphEditor {
-    //
-    // This class is a wrapper around the LiteGraph library to provide a MaterialX node editor.
-    // It is designed to work with the MaterialX JavaScript API.
-    //
-    // List of methods:
-    // - constructor
-    // - setUI
-    // - setDirty
-    // - debugOutput
-    // - arrangeGraph
-    // - resetView
-    // - clearGraph
-    // - saveSerialization
-    // - loadSerialization
-    // - saveGraph
-    // - saveGraphToString
-    // - ladDefinitions
-    // - loadGraph
-    // - loadGraphFromString
-    // - rgbToHex
-    // - createButtonWithImageAndText
-    // - openImageDialog
-    // - updatePropertyPanel     
-    //
+/**
+ * @class MxShadingGraphEditor
+ * 
+ * This class is a wrapper around the LiteGraph library to provide a MaterialX node editor.
+ * It is designed to work with the MaterialX JavaScript API.
+ */
+class MxShadingGraphEditor 
+{
+    /** 
+     * Default constructor. Initializes the handler along with any converters
+     */
     constructor() {
-        if (!MxShadingGraphEditor.theEditor)
-        {
+        if (!MxShadingGraphEditor.theEditor) {
             MxShadingGraphEditor.theEditor = this;
+
+            this.ui = null;
+            this.fontSizeStyle = 'font-size: 11px;';
+
             this.handler = new MxMaterialXHandler('MaterialX Handler', 'mtlx');
-            console.log('Create new editor', MxShadingGraphEditor.theEditor, ' and handler: ', this.handler);
+            let gltfConverter = new glTFMaterialX();
+            this.handler.addConverter(gltfConverter);
+            
+            console.log('Create new editor with exporter for:', gltfConverter.exportType());            
+            
         }
         return MxShadingGraphEditor.theEditor;
     }
 
+    /**
+     * Set the UI callbacks for the editor.
+     * 
+     * @param {Object} ui - The UI object containing the callbacks.
+     * @returns {void}
+     */
     setUI(ui) {
         this.ui = ui;
     }
 
-    setDirty()
-    {
-        if (graphcanvas)
-        {
+    /**
+     * Notify the editor to update it's graph
+     */
+    setDirty() {
+        if (graph)
+            graph.setDirtyCanvas(true, true);
+        if (graphcanvas) {
             graphcanvas.setDirty(true, true);
-            //graphcanvas.resize();
+            graphcanvas.resize();
         }
     }
 
+    /**
+     * Output debug information to the console or the UI console logger.
+     * 
+     * @param {string} text - The text to output.
+     * @param {number} severity - The severity of the message.
+     * @param {boolean} clear - True to clear the console, false otherwise.
+     * @returns {void}
+     */
     debugOutput(text, severity, clear = null) {
-        var console_area = MxShadingGraphEditor.theEditor.ui.console_area;
-        if (!console_area) {
-            console.error('No console area found!');
-            return;
-        }
-        if (severity === 2) {
-            text = '> Error: ' + text
-        }
-        else if (severity === 1) {
-            text = '> Warning: ' + text
+        var consoleLog = MxShadingGraphEditor.theEditor.ui.consoleLogger;
+        if (consoleLog) {
+            consoleLog(text, severity, clear);
         }
         else {
-            if (text.length)
-                text = '> ' + text;
+            console.log('> ', text, ' severity:', severity);
         }
-
-        //if (clear) {
-        //    console_area.value = text + '\n';
-        //}
-        //else 
-        {
-            console_area.value = console_area.value + text + '\n';
-        }
-        // Scroll to latest entry.
-        console_area.scrollTop = console_area.scrollHeight;
     }
 
-    arrangeGraph() {
+    /**
+     * Set global color space for the editor.
+     * 
+     * @param {string} colorSpace - The color space to set.
+     * @returns {void}
+     */
+    setSourceColorSpace(colorSpace) {
+        if (this.handler) {
+            this.handler.setSourceColorSpace(colorSpace);
+        }
+    }
+
+    /**
+     * Set the global distance unit for the editor.
+     * 
+     * @param {string} unit - The distance unit to set.
+     * @returns {void}
+     */
+    setTargetDistanceUnit(unit) {
+        if (this.handler) {
+            this.handler.setTargetDistanceUnit(unit);
+        }
+    }
+
+    /**
+     * Get the global color space for the editor.
+     * 
+     * @returns {string} The color space.
+     */
+    getSourceColorSpace() {
+        if (this.handler) {
+            return this.handler.getSourceColorSpace();
+        }
+        return 'lin_rec709';
+    }
+
+    /**
+     * Get the global distance unit for the editor.
+     * 
+     * @returns {string} The distance unit.
+     */
+    getTargetDistanceUnit() {
+        if (this.handler) {
+            return this.handler.getTargetDistanceUnit();
+        }
+        return 'meter';
+    }
+
+    /**
+     * Auto layout the nodes in the graph.
+     * 
+     * @param {number} spacing - The spacing between nodes.
+     * @returns {void}
+     */
+    arrangeGraph(spacing = 80) {
         // This does not track the current subgraph.
         if (graphcanvas) {
-            graphcanvas.graph.arrange(80);
+            graphcanvas.graph.arrange(spacing);
         }
     }
 
-    openSubgraph()
-    {
+    /**
+     * Open the subgraph for the selected node. The first node selected is used.
+     */
+    openSubgraph() {
         var selected = graphcanvas.selected_nodes;
         for (var s in selected) {
             var node = selected[s];
             if (node.type == 'graph/subgraph') {
-                console.log('Open subgraph', node.title );
                 graphcanvas.openSubgraph(node.subgraph);
                 break;
             }
         }
     }
 
-    closeSubgraph()
-    {
+    /**
+     * Close the current subgraph open, if any.
+     */
+    closeSubgraph() {
         if (graphcanvas) {
             graphcanvas.closeSubgraph();
         }
     }
 
+    /**
+     * Reset the view of the graph.
+     */
     resetView() {
         if (graphcanvas) {
             graphcanvas.ds.reset();
@@ -1960,15 +3242,15 @@ class MxShadingGraphEditor {
         }
     }
 
+    /**
+     * Reset the graph editor. Will also reset the global color space and distance unit
+     * to their default values.
+     */
     clearGraph() {
-        //localStorage.setItem(
-        //    "litegrapheditor_clipboard", ""
-        //);
 
-        this.handler.activeColorSpace = this.handler.DEFAULT_COLOR_SPACE;
-        this.handler.activeUnits = this.handler.DEFAULT_UNITS;
+        this.handler.sourceColorSpace = this.handler.DEFAULT_COLOR_SPACE;
+        this.handler.targetDistanceUnits = this.handler.DEFAULT_DISTANCE_UNITS;
         MxShadingGraphEditor.theEditor.updatePropertyPanel(null);
-        MxShadingGraphEditor.theEditor.debugOutput('', 0, false);
         this.updatePropertyPanel(null);
         if (graphcanvas) {
             // Set back to top graph
@@ -1977,24 +3259,30 @@ class MxShadingGraphEditor {
             graphcanvas.ds.reset();
             graphcanvas.setDirty(true, true);
         }
-        //console.log('Clear graph', customDocLibs);
         customDocLibs = [];
     }
 
+    /**
+     * Use built-in serialization to save the graph to file.
+     */
     saveSerialization() {
         var data = JSON.stringify(graph.serialize(), null, 2);
         var blob = new Blob([data], { type: "text/plain" });
         var url = URL.createObjectURL(blob);
         var a = document.createElement("a");
         a.href = url;
-        a.download = "my_lite_graph.json";
+        a.download = "serialized_graph.json";
         a.click();
     }
 
+    /**
+     * Use built-in serialization to load the graph from file.
+     */
     loadSerialization() {
         MxShadingGraphEditor.theEditor.clearGraph();
 
         var input = document.createElement("input");
+        input.style = this.fontSizeStyle;
         input.type = "file";
         input.accept = ".json";
         input.onchange = function (e) {
@@ -2009,67 +3297,119 @@ class MxShadingGraphEditor {
         input.click();
     }
 
-    saveGraphToFile(extension, saveCustomLibs, saveNodePositions)
-    {
-        if (extension == 'mtlx')
-            this.handler.saveGraphToFile(graph, saveCustomLibs, saveNodePositions);
-    }    
-
-    saveGraphToString(extension, saveCustomLibs, saveNodePositions)
-    {
-        if (extension == 'mtlx')
-            return this.handler.saveGraphToString(graph, saveCustomLibs, saveNodePositions);
-        return '';
-    }
-        
-    loadDefinitionsFromFile(extension)
-    {
-        if (extension == 'mtlx')
+    /** 
+     * Save the graph to a file with the specified extension.
+     * 
+     * @param {string} extension - The extension to save the graph to.
+     * @param {Object} graphWriteOptions - The options for writing the graph.
+     * @returns {void}
+     */
+    saveGraphToFile(extension, graphWriteOptions) {
+        if (this.handler.canExport(extension)) {
+            this.handler.saveGraphToFile(extension, graph, graphWriteOptions);
+        }
+        else
         {
-            this.handler.loadDefinitionsFromFile();
+            this.debugOutput('Unsupported extension for saving graph:' + extension, 2, false);
         }
     }
 
+    /** 
+     * Save the graph to a string with the specified extension.
+     * 
+     * @param {string} extension - The extension to save the graph to.
+     * @param {Object} graphWriteOptions - The options for writing the graph.
+     */
+    saveGraphToString(extension, graphWriteOptions) {
+        if (this.handler.canExport(extension)) {
+            return this.handler.saveGraphToString(extension, graph, graphWriteOptions);
+        }
+        else
+        {
+            this.debugOutput('Unsupported extension for saving graph: ' + extension, 2, false);
+            return '';
+        }
+    }
+
+    /** 
+     * Load the graph from a file with the specified extension.
+     * Currently only definitions specified using MaterialX are supported.
+     * 
+     * @param {string} extension - The extension to load the graph from.
+     */
+    loadDefinitionsFromFile(extension) {
+        if (extension == 'mtlx') {
+            this.handler.loadDefinitionsFromFile();
+        }
+        else
+        {
+            this.debugOutput('Unsupported extension for loading definitions: ' + extension, 2, false);
+        }
+    }
+
+    /**
+     * Load the graph from a file with the specified extension.
+     * 
+     * @param {string} extension - The extension to load the graph from.
+     * @param {boolean} auto_arrange - True to auto-arrange the graph, false otherwise.
+     * @returns {void}
+     */
     loadGraphFromFile(extension, auto_arrange) {
 
-        if (extension != this.handler.getExtension())
-        {
-            this.debugOutput('Unsupported extension for loading graph', 2, false);
+        if (!this.handler.canImport(extension)) {
+            this.debugOutput('Unsupported extension for loading graph: ' + extension, 2, false);
             return;
         }
 
-        // Load document from disk. TODO: handle other extensions
+        // Load document from disk.
         var input = document.createElement("input");
+        input.style = this.fontSizeStyle;
         input.type = "file";
         input.accept = "." + this.handler.getExtension();
-        console.log('Accept:', input.accept);
         input.onchange = function (e) {
             var file = e.target.files[0];
             console.log('Loading file: ' + file.name);
-            MxShadingGraphEditor.theEditor.handler.loadFromFile(file, file.name, MxShadingGraphEditor.theEditor, auto_arrange);
+            MxShadingGraphEditor.theEditor.handler.loadFromFile(extension, file, file.name, MxShadingGraphEditor.theEditor, auto_arrange);
         };
         input.click();
     }
 
+    /** 
+     * Find all renderable elements in the graph using the handler.
+     * 
+     * @returns {Array} The list of renderable items.
+     */
     findRenderableItems() {
         return this.handler.findRenderableItems(graph);
     }
 
-    loadGraphFromString(extension, content, fileName, auto_arrange)
-    {
-        if (extension != this.handler.getExtension())
-        {
-            this.debugOutput('Unsupported extension for loading graph', 2, false);
+    /** 
+     * Load the graph from a string with the specified extension.
+     * 
+     * @param {string} extension - The extension to load the graph from.
+     * @param {string} content - The content of the graph.
+     * @param {string} fileName - The identifier for the source file, or a arbitrary name.
+     * @param {boolean} auto_arrange - True to auto-arrange the graph, false otherwise.
+     * @returns {void}
+     */
+    loadGraphFromString(extension, content, fileName, auto_arrange) {
+        if (!this.handler.canImport(extension)) {
+            this.debugOutput('Unsupported extension for loading graph: ' + extension, 2, false);
             return;
         }
-    
-        // TODO: handle other extensions
+
         if (content.length > 0)
-            this.handler.loadFromString(content, fileName, auto_arrange);
+            this.handler.loadFromString(extension, content, fileName, auto_arrange);
         else
             MxShadingGraphEditor.theEditor.debugOutput('No content to load', 2, false);
     }
 
+    /**
+     * Utility to convert a color from RGB to hex.
+     * 
+     * @param {Array} rgb - The RGB color to convert.
+     * @returns {string} The hex color.
+     */
     rgbToHex(rgb) {
         if (!rgb) {
             console.log('rgbToHex empty !', rgb);
@@ -2081,6 +3421,14 @@ class MxShadingGraphEditor {
         }).join('');
     }
 
+    /**
+     * Create a DOM button with an image and text.
+     * 
+     * @param {string} imageSrc - The source of the image.
+     * @param {string} text - The text to display.
+     * @param {string} id - The identifier for the button.
+     * @returns {Element} The button element.
+     */
     createButtonWithImageAndText(imageSrc, text, id) {
         // Create image element
         var img = document.createElement("img");
@@ -2096,16 +3444,22 @@ class MxShadingGraphEditor {
         // Create button element
         var button = document.createElement("button");
         button.id = id;
-        button.classList.add("btn", "btn-sm", "btn-outline-secondary", "form-control", "form-control-sm"); 
-        button.appendChild(img); 
+        button.classList.add("btn", "btn-sm", "btn-outline-secondary", "form-control", "form-control-sm");
+        button.style = this.fontSizeStyle;
+        button.appendChild(img);
         button.appendChild(span);
 
         return button;
     }
 
-
+    /** 
+     * Open a dialog to select a image file to load.
+     * 
+     * @param {Node} theNode - The node to update.
+     * @param {string} updateProp - The property to update.
+     * @param {boolean} wantURI - True to get the URI, false to get the file.
+     */
     openImageDialog(theNode, updateProp, wantURI) {
-        //console.log('updateImageDialog', theNode, updateProp, wantURI);
 
         // Dynamically create a file input element
         var fileInput = document.createElement('input');
@@ -2127,11 +3481,10 @@ class MxShadingGraphEditor {
             var textInput = document.getElementById(updateElementId);
             //console.log('New filename:', fileURI, 'updateElementId:', updateElementId, 'updateProp:', updateProp);
             textInput.value = fileURI;
-            theNode.properties[updateProp] = fileURI;
+            theNode.setProperty(updateProp, fileURI);
 
             var propertypanel_preview = document.getElementById('propertypanel_preview');
-            if (propertypanel_preview)
-            {
+            if (propertypanel_preview) {
                 propertypanel_preview.src = URL.createObjectURL(file);
                 propertypanel_preview.style.display = "block";
             }
@@ -2146,7 +3499,6 @@ class MxShadingGraphEditor {
 
                     // Read the file as a data URL (base64 encoded string)
                     reader.readAsDataURL(file);
-
                     propertypanel_preview.style.display = "block";
                 }
             }
@@ -2155,8 +3507,13 @@ class MxShadingGraphEditor {
         });
     }
 
+    /**
+     * Check if a URI exists.
+     * 
+     * @param {string} uri - The URI to check.
+     * @returns {boolean} true if the URI exists, false otherwise.
+     */
     uriExists(uri) {
-        // Add try / catch block to handle network errors        
         return fetch(uri)
             .then(response => {
                 if (response.ok) {
@@ -2171,6 +3528,94 @@ class MxShadingGraphEditor {
             });
     }
 
+    /**
+     * Create a color space input element.
+     * 
+     * @param {Array} colorSpaces - The list of color spaces.
+     * @param {string} activeItem - The selected color space.
+     * @returns {Element} The color space input element.
+     */
+    createColorSpaceInput(colorSpaces, activeItem) {
+        var select = document.createElement("select");
+        select.className = "form-control form-control-sm";
+        select.style = this.fontSizeStyle;
+        select.id = "propertypanel_colorspace";
+        for (var i = 0; i < colorSpaces.length; i++) {
+            var option = document.createElement("option");
+            option.value = colorSpaces[i];
+            option.text = colorSpaces[i];
+            select.add(option);
+        }
+        // Add "none" option
+        var option = document.createElement("option");
+        option.value = "none";
+        option.text = "none";
+        select.add(option);
+        
+        select.value = activeItem;
+        return select;
+    }
+
+    /**
+     * Create a units input element.
+     * 
+     * @param {Array} units - The list of units.
+     * @param {string} unittype - The type of unit.
+     * @param {string} activeItem - The selected unit.
+     * @returns {Element} The units input element.
+     */
+    createUnitsInput(units, unittype, activeItem) {
+        var select = document.createElement("select");
+        select.className = "form-control form-control-sm";
+        select.style = this.fontSizeStyle;
+        select.id = "propertypanel_units";
+        for (var i = 0; i < units.length; i++) {
+            var option = document.createElement("option");
+            var unit_pair = units[i];
+            if (unit_pair[1] == unittype) {
+                option.value = unit_pair[0];
+                option.text = unit_pair[0];
+                select.add(option);
+            }
+        }
+        select.value = activeItem;
+        return select;
+    }
+
+    /** 
+     * Update the image preview in the property panel.
+     * 
+     * @param {string} curImage - The image to preview.
+     * @returns {void}
+     */
+    updateImagePreview(curImage) {
+        var propertypanel_preview = document.getElementById('propertypanel_preview');
+        if (curImage && propertypanel_preview) {
+            this.uriExists(curImage)
+                .then(exists => {
+                    if (exists) {
+                        propertypanel_preview.src = curImage;
+                        propertypanel_preview.style.display = "block";
+                    } else {
+                        //propertypanel_preview.style.display = "none";
+                        propertypanel_preview.src = "./Icons/no_image.png";
+                        propertypanel_preview.style.display = "block";
+                        MxShadingGraphEditor.theEditor.debugOutput('Image does not exist: ' + curImage, 1);
+                    }
+                });
+        }
+    }
+
+    /** 
+     * This method is called when a node is selected in the graph.
+     * - It will update the property panel with the properties of the selected node.
+     * - If a subgraph is selected, it updates the property panel with the subgraph properties.
+     * - If the parent graph is the root and node node is selected, it updates the property panel with the document properties.
+     * - If the parent graph is a subgraph and no node is selected, it updates the property panel with the subgraph properties.
+     * 
+     * @param {Node} node - The selected node in the graph.
+     * @returns {void}
+    */
     updatePropertyPanel(node) {
         //console.log('Update Panel For:', node);
         var propertypanelcontent = MxShadingGraphEditor.theEditor.ui.propertypanel_content;
@@ -2186,46 +3631,71 @@ class MxShadingGraphEditor {
         // Update icon
         var panelIcon = MxShadingGraphEditor.theEditor.ui.propertypanel_icon;
         if (node && node.nodedef_icon) {
-            //if (panelIcon.src != node.nodedef_icon)
-                panelIcon.src = node.nodedef_icon;
+            panelIcon.src = node.nodedef_icon;
         }
-        else {
+        else if (this.ui.icon_map) {
             if (!node)
                 panelIcon.src = this.ui.icon_map['_default_graph_'];
             else
-            panelIcon.src = this.ui.icon_map['_default_'];
+                panelIcon.src = this.ui.icon_map['_default_'];
         }
 
         propertypanelcontent.innerHTML = "";
 
-        if (!node && graphcanvas.graph._subgraph_node)
-        {
+        let colorSpaces = this.handler.getColorSpaces();
+        let targetUnits = this.handler.getUnits();
+
+        if (!node && graphcanvas.graph._subgraph_node) {
             node = graphcanvas.graph._subgraph_node;
-            console.log('In subgraph but no node deleted. Select subgram node', node)
+            //console.log('In subgraph but no node selected. Select subgraph node', node)
         }
         else if (!node && !graphcanvas.graph._is_subgraph) {
-            var docInfo = [ ['Colorspace', this.handler.activeColorSpace],
-                            ['Units', this.handler.activeUnit ]];
+            var docInfo = [['Colorspace', this.getSourceColorSpace()],
+            ['Distance', this.getTargetDistanceUnit()]];
 
-            for (var item of docInfo) {
-                
-                var elem = document.createElement("div");
+            for (let item of docInfo) {
+
+                let elem = document.createElement("div");
                 elem.className = "row px-1 py-0";
-                var label = document.createElement("div");
+                let label = document.createElement("div");
                 label.className = "col py-0 col-form-label-sm text-left";
-                label.innerHTML = "<b>" + item[0] + "</b>";                
+                label.style = this.fontSizeStyle;
+                label.innerHTML = "<b>" + item[0] + "</b>";
                 elem.appendChild(label);
-                
-                var inputCol = document.createElement("div");
-                inputCol.className = "col text-left";
-                var nameInput = document.createElement("input");
-                nameInput.type = "text";
-                nameInput.value = item[1];
-                nameInput.className = "form-control form-control-sm";
-                nameInput.disabled = true;
-                elem.appendChild(inputCol);
-                inputCol.appendChild(nameInput);
 
+                if (item[0] == 'Colorspace' && colorSpaces.length > 0) {
+                    // Create colorspace drop down
+                    var inputCol = document.createElement("div");
+                    inputCol.className = "col text-left";
+                    var select = this.createColorSpaceInput(colorSpaces, item[1]);
+                    select.onchange = function (e) {
+                        MxShadingGraphEditor.theEditor.setSourceColorSpace(e.target.value);
+                    }
+                    inputCol.appendChild(select);
+                    elem.appendChild(inputCol);
+                }
+                else if (item[0] == 'Distance' && targetUnits.length > 0) {
+                    // Create units drop down
+                    var inputCol = document.createElement("div");
+                    inputCol.className = "col text-left";
+                    var select = this.createUnitsInput(targetUnits, 'distance', item[1]);
+                    select.onchange = function (e) {
+                        MxShadingGraphEditor.theEditor.setTargetDistanceUnit(e.target.value);
+                    }
+                    inputCol.appendChild(select);
+                    elem.appendChild(inputCol);
+                }
+                /*                        var inputCol = document.createElement("div");
+                    inputCol.className = "col text-left";
+                    var nameInput = document.createElement("input");
+                    nameInput.type = "text";
+                    nameInput.value = item[1];
+                    nameInput.className = "form-control form-control-sm";
+                    nameInput.disabled = true;
+                    elem.appendChild(inputCol);
+                    inputCol.appendChild(nameInput);
+                }
+                */
                 propertypanelcontent.appendChild(elem);
             }
             return;
@@ -2234,7 +3704,7 @@ class MxShadingGraphEditor {
         var _category = node.nodedef_node;
         var _type = node.nodedef_type;
 
-        var isNodeGraph = node.type == 'graph/subgraph'; 
+        var isNodeGraph = node.type == 'graph/subgraph';
         if (isNodeGraph) {
             _category = 'nodegraph';
             if (node.outputs) {
@@ -2255,25 +3725,38 @@ class MxShadingGraphEditor {
             }
         }
 
+        // Identification row
         var elem = document.createElement("div");
-        elem.className = "row px-1 py-0";
+        elem.className = "row px-1 py-1";
+
+        // Node category and output type
         var label = document.createElement("div");
-        label.className = "col-4 py-0 col-form-label-sm text-left";
+        label.className = "col-4 px-1 py-0 col-form-label-sm text-end";
+        label.style = this.fontSizeStyle;
         label.innerHTML = "<b>" + _category;
         if (_type.length > 0) {
             label.innerHTML += '<br>' + _type;
         }
         label.innerHTML += "</b>";
+        elem.appendChild(label);
 
+        // Node name / title
         var inputCol = document.createElement("div");
-        inputCol.className = "col text-left";
+        inputCol.className = "col py-0";
         var nameInput = document.createElement("input");
+        nameInput.style = this.fontSizeStyle;
         nameInput.type = "text";
         nameInput.value = node.title;
         nameInput.className = "form-control form-control-sm";
+        let that = this;
         nameInput.onchange = function (e) {
             var oldTitle = node.title;
-            node.title = MxShadingGraphEditor.theEditor.handler.createValidName(e.target.value);
+            var newTitle = MxShadingGraphEditor.theEditor.handler.createValidName(e.target.value);
+            if (newTitle != oldTitle)
+            {
+                that.monitor.onNodeRenamed(node, newTitle);
+                node.title = newTitle;
+            } 
             e.target.value = node.title;
             //console.log('node.graph._is_subgraph:', node)
             if (node.graph._is_subgraph) {
@@ -2293,15 +3776,15 @@ class MxShadingGraphEditor {
         }
         inputCol.appendChild(nameInput);
 
-        // TODO: Preview image
+        // TODO: Generate swatches on the fly
         if (node.nodedef_node != 'input' && node.nodedef_node != 'output'
             && node.type != 'graph/subgraph') {
             var imagePreview = document.createElement("img");
-            imagePreview.src = "./Images/no_image.png";
+            imagePreview.src = "./Icons/no_image.png";
             var previewSet = false;
             //console.log('Check for preview:', node.nodedef_swatch, 'category:', _category)
             imagePreview.style.display = "none";
-            imagePreview.src = "./Images/no_image.png";
+            imagePreview.src = "./Icons/no_image.png";
             /* if (node.nodedef_swatch && 
                 (_type == 'BSDF' || _type == 'EDF' || _type == 'surfaceshader'))
             {
@@ -2321,55 +3804,39 @@ class MxShadingGraphEditor {
 
         elem.appendChild(label);
         elem.appendChild(inputCol);
-        propertypanelcontent.appendChild(elem);
-
-        // TODO: Add toggle for showing/hiding all inputs
-        var addShow = false;
-        if (addShow) {
-            var elem = document.createElement("div");
-            elem.className = "row px-1 py-0";
-
-            var label = document.createElement("div");
-            label.className = "col-12 col-form-label-sm";
-            label.innerHTML = "All Inputs: ";
-            elem.appendChild(label);
-            var input = document.createElement("input");
-            input.type = "checkbox";
-            label.appendChild(input);
-
-            var showAll = false;
-            if (node.showAllInputs) {
-                showAll = node.showAllInputs;
+        
+        // Toggle show/hide of inputs with default values         
+        if (!isNodeGraph)
+        {
+            var filterCol = document.createElement("div");
+            filterCol.className = "col-2 py-0";
+            filterCol.width = 16;
+            var filterIcon = document.createElement("button");
+            if (node.showDefaultValueInputs == null)
+            {
+                node.showDefaultValueInputs = true;
             }
-            input.checked = showAll;
-            input.onclick = function (e) {
-                var show = e.target.checked;
-                node.showAllInputs = show;
-
-                // Need to keep all old + new inputs in order. Easiest
-                // is to keep a list of all inputs, remove old and add new.
-                for (var index in node.properties_info) {
-                    var propInfo = node.properties_info[index];
-                    var found = false;
-                    for (var i = 0; i < node.inputs.length; ++i) {
-                        if (node.inputs[i].name == propInfo.name) {
-                            found = true;
-                            break;
-                        }
-                    }                    
-                    if (!found) {
-                        console.log('Add missing input:', propInfo.name, propInfo.default_value, propInfo.type);
-                        //node.addInput(propInfo.name, propInfo.type);
-                        //node.addProperty(propInfo.name, propInfo.value, propInfo.type);
-                    }
-                }
+            var img = document.createElement("img");
+            if (node.showDefaultValueInputs)
+            {
+                img.src = "./Icons/funnel_white.svg";
+                filterIcon.className = "btn btn-sm btn-outline-secondary";
             }
-
-            if (current_details)
-                current_details.appendChild(elem);
             else
-                propertypanelcontent.appendChild(elem);
+            {
+                img.src = "./Icons/funnel-fill_white.svg";
+                filterIcon.className = "btn btn-sm btn-outline-warning";
+            }
+            filterIcon.appendChild(img);
+            filterIcon.onclick = function (e) {
+                node.showDefaultValueInputs = !node.showDefaultValueInputs;
+                MxShadingGraphEditor.theEditor.updatePropertyPanel(node);
+            }
+            filterCol.appendChild(filterIcon);
+            elem.appendChild(filterCol); 
         }
+        
+        propertypanelcontent.appendChild(elem);
 
         var hr = document.createElement("hr");
         hr.classList.add("my-1");
@@ -2379,86 +3846,79 @@ class MxShadingGraphEditor {
         var first_details = true;
         var nodeInputs = node.inputs
 
-        var targetNodes = [];
+        let targetNodes = [];
         for (var i in nodeInputs) {
-            var nodeInput = nodeInputs[i];
-            var inputName = nodeInput.name;
-            var nodeInputLink = nodeInput.link; 
-            var uiName = inputName;
-            var uimin = null;
-            var uimax = null;
-            var colorspace = '';
-            var units = '';
+            let nodeInput = nodeInputs[i];
+
+            let inputName = nodeInput.name;
+            let nodeInputLink = nodeInput.link;
+            let uiName = inputName;
+            // remove "_" from uiName
+            uiName = uiName.replace(/_/g, ' ');
+            let uimin = null;
+            let uimax = null;
+            let colorspace = '';
+            let units = '';
+            let defaultgeomprop = '';
 
             //console.log('Scan input:', inputName, ' on node: ', node.graph);
 
-            var property_info = node.getPropertyInfo(inputName);
+            let property_info = node.getPropertyInfo(inputName);
             //console.log('1. get property info for i: ', inputName, 'info: ', property_info)
 
             var skipInterorConnectedInput = false;
-            if (node.graph._is_subgraph)
-            {
+            if (node.graph._is_subgraph) {
                 // Find input on subgraph node
                 //console.log('Check subgraph for link:', node.graph)
                 var sg_node = node.graph._subgraph_node;
-                if (sg_node)
-                {
+                if (sg_node) {
                     //console.log('Check for input on sg node', sg_node, node.title);
                     var slot = sg_node.findInputSlot(node.title);
-                    if (slot != null)
-                    {
-                        if (sg_node.inputs)
-                        {
+                    if (slot != null) {
+                        if (sg_node.inputs) {
                             //property_info = sg_node.properties_info[slot];
                             var slotInput = sg_node.inputs[slot];
                             //console.log('check slot: ', slotInput.link);
-                            if (slotInput != null && slotInput.link != null)
-                            {
+                            if (slotInput != null && slotInput.link != null) {
                                 skipInterorConnectedInput = true;
                             }
                         }
-                        else
-                        {
-                            console.log('Error: no subgraph node inputs for subgraph input!', sg_node, node.title);
+                        else {
+                            //console.log('Error: no subgraph node inputs for subgraph input!', sg_node, node.title);
                         }
                     }
-                } 
-            }        
+                }
+            }
 
-            if (skipInterorConnectedInput)
-            {
-                console.log('Skip interior connected input: ', nodeInput);  
+            if (skipInterorConnectedInput) {
+                console.log('Skip interior connected input: ', nodeInput);
                 continue;
             }
 
             //console.log('Property info:', property_info, ' for input:', inputName);
-            if (property_info)
-            {
-                if (property_info.colorspace)
+            if (property_info) {
+                if (property_info.defaultgeomprop)
                 {
+                    defaultgeomprop = property_info.defaultgeomprop;
+                }
+                if (property_info.colorspace) {
                     colorspace = property_info.colorspace;
                 }
-                if (property_info.unit)
-                {
+                if (property_info.unit) {
                     units = property_info.unit;
                 }
-                if (property_info.uiname)
-                {
+                if (property_info.uiname) {
                     uiName = property_info.uiname;
                 }
-                if (property_info.uimin)
-                {
+                if (property_info.uimin) {
                     uimin = property_info.uimin;
                 }
-                if (property_info.uimax)
-                {
+                if (property_info.uimax) {
                     uimax = property_info.uimax;
                 }
-                if (property_info.uifolder && property_info.uifolder.length > 0)
-                {
+                if (property_info.uifolder && property_info.uifolder.length > 0) {
                     // Create a details element
-                    if (current_details == null || current_details.id != property_info.uifolder)
-                    {
+                    if (current_details == null || current_details.id != property_info.uifolder) {
                         //console.log('Create new details:', property_info.uifolder);
                         current_details = document.createElement("details");
                         current_details.id = property_info.uifolder;
@@ -2466,14 +3926,13 @@ class MxShadingGraphEditor {
                         current_details.classList.add('w-100', 'p-1', 'border', 'border-secondary', 'rounded', 'my-1');
                         first_details = false;
                         var summary = document.createElement('summary')
-                        summary.innerHTML = property_info.uifolder;
+                        summary.style = this.fontSizeStyle;
+                        summary.innerHTML = "<b>" + property_info.uifolder + "</b>"
                         //summary.classList.add('btn', 'btn-sm', 'btn-outline-secondary', 'btn-block');
-                        current_details.appendChild(summary);                    
-                        
-                        propertypanelcontent.appendChild(current_details);
+                        current_details.appendChild(summary);
+
                     }
-                    else
-                    {
+                    else {
                         //current_details = null;
                     }
                 }
@@ -2499,8 +3958,8 @@ class MxShadingGraphEditor {
                 let linkNode = linkId && nodegraph.getNodeById(linkId);
                 if (linkNode) {
 
-                   
-                    //console.log('linkNode:', linkNode);
+
+                    //console.log('linkNode:', linkNode);`
                     let linkSlot = link.origin_slot;
                     //console.log('linkSlot:', linkSlot);
                     let linkOutput = linkNode.outputs[linkSlot];
@@ -2514,15 +3973,8 @@ class MxShadingGraphEditor {
                     if (buttonText.length > 15) {
                         buttonText = buttonText.substring(0, 15) + "...";
                     }
-                    let input = this.createButtonWithImageAndText("./Images/arrow_up_white.svg", buttonText, id);
+                    let input = this.createButtonWithImageAndText("./Icons/arrow_up_white.svg", buttonText, id);
 
-                    //var input = document.createElement("div");
-                    //input.id = "__pp:" + inputName;
-                    //input.type = "text";
-                    //input.value = upstreamLink;
-                    //input.disabled = true;
-                    //input.className = "btn form-control form-control-sm";
-                    //input.style = "background-color: #252";
                     input.onclick = function (e) {
 
                         var inputName = e.target.id;
@@ -2533,7 +3985,6 @@ class MxShadingGraphEditor {
 
                         console.log('Jump to node:', linkNode.title);
                         graphcanvas.selectNodes([linkNode]);
-                        //node.setDirtyCanvas(true, true);
                         MxShadingGraphEditor.theEditor.updatePropertyPanel(linkNode);
                         node.setDirtyCanvas(true, true);
                     }
@@ -2545,7 +3996,9 @@ class MxShadingGraphEditor {
                     input.id = "__pp:" + inputName;
 
                     var label = document.createElement("div");
-                    label.className = "col-4 p-0 col-form-label-sm text-end";
+                    // invert-button
+                    label.className = "col-4 px-1 py-0 col-form-label-sm text-end";
+                    label.style = this.fontSizeStyle;
                     label.innerHTML = uiName;
                     label.for = input.id;
                     elem.appendChild(label);
@@ -2562,43 +4015,53 @@ class MxShadingGraphEditor {
                     var propvalue = document.createElement("div");
                     propvalue.className = "col p-1";
                     propvalue.appendChild(input);
-                    
+
                     elem.appendChild(propvalue);
                 }
             }
 
-            else {
-
+            else {  
+        
                 targetNodes[i] = node;
-                let targetNode = targetNodes[i]; 
-                var propertyKey = inputName;
+                let targetNode = targetNodes[i];
+                let propertyKey = inputName;
 
                 var property = targetNode.properties[inputName];
                 if (property == null) {
-                    if (isNodeGraph)
-                    {
+                    if (isNodeGraph) {
                         var subgraph = targetNode.subgraph;
-                        if (subgraph)
-                        {
+                        if (subgraph) {
                             //console.log('Find node by title', inputName, ' in subgraph', subgraph._nodes);
                             var subNode = subgraph.findNodeByTitle(inputName);
-                            if (subNode)
-                            {
+                            if (subNode) {
                                 targetNodes[i] = subNode;
                                 propertyKey = 'in';
                                 property = targetNodes[i].properties['in'];
                                 //console.log('Route to subgraph target node:', targetNode, targetNode.title, '. ', inputName, ' = ', JSON.stringify(property), 'propkey=', propertyKey);
                             }
-                        }                        
+                        }
                     }
-                    if (property == null)
-                    {
+                    if (property == null) {
                         console.log('Update: Cannot find property value for input:', inputName);
                         continue;
                     }
                 }
-                else {
-                    //console.log('handle propery value: ', property, 'for input', input);
+
+                // Check if there is a default property value. If so skip showing it
+                if (defaultgeomprop)
+                {
+                    //console.log('Skip input with defaultgeomprop: ' + inputName);
+                    continue;
+                }
+
+                // Check if property value is same as property info default value
+                if (!node.showDefaultValueInputs && !isNodeGraph)
+                {
+                    let isDefault = node.isDefaultValue(inputName);
+                    if (isDefault)
+                    {
+                        continue;
+                    }                
                 }
 
                 // Add new row
@@ -2607,92 +4070,125 @@ class MxShadingGraphEditor {
 
                 var input = null;
                 var input_btn = null;
+                let input_slider = null;
                 var colorspace_unit_btn = null;
                 var useFormControl = true;
 
-                // TODO: Clean this up to be a drop-down and only apply to numbers / colors
+                // Add colorspace drop-down if specified.
                 if (colorspace.length > 0) {
-                    /* 
-                    // Create drop-down menu
-                    /* 
-                    colorspace_unit_btn = document.createElement("div");
-                    colorspace_unit_btn.classList.add("dropdown");
-                    var dropdownButton = document.createElement("button");
-                    dropdownButton.classList.add("btn", "btn-sm", "btn-outline-secondary", "dropdown-toggle");
-                    dropdownButton.type = "button";
-                    dropdownButton.id = "dropdownMenuButton";
-                    dropdownButton.setAttribute("data-bs-toggle", "dropdown");
-                    dropdownButton.setAttribute("aria-expanded", "false");                    
-                    dropdownButton.innerHTML = "+";
-                    var dropdownMenu = document.createElement("ul");
-                    dropdownMenu.classList.add("dropdown-menu");
-                    dropdownMenu.setAttribute("aria-labelledby", "dropdownMenuButton");
-                    var dropdownItem = document.createElement("li");
-                    dropdownItem.classList.add("dropdown-item");
-                    dropdownItem.innerHTML = colorspace;
-                    dropdownMenu.appendChild(dropdownItem);
-                    colorspace_unit_btn.appendChild(dropdownMenu);
-                    */
-                    colorspace_unit_btn = document.createElement("button");
-                    colorspace_unit_btn.classList.add("btn", "py-0", "btn-sm", "btn-outline-secondary");
-                    colorspace_unit_btn.innerHTML = colorspace;
-                    
-                    console.log('Show MetaData Colorspace:', colorspace, ' for input:', inputName, ' on node:', node.title)
+                    // Create drop-down menu to choose colorspace from list stored
+                    // in the handler class getColorSpaces() method.
+                    //
+                    colorspace_unit_btn = this.createColorSpaceInput(colorSpaces, colorspace);
+                    let theNode = targetNodes[i];
+                    colorspace_unit_btn.onchange = function (e) {
+
+                        theNode.setPropertyInfo(inputName, 'colorspace', e.target.value);
+                    }
                 }
-                else if (units.length > 0) {
-                    colorspace_unit_btn = document.createElement("button");
-                    colorspace_unit_btn.classList.add("btn", "py-0", "btn-sm", "btn-outline-secondary");
-                    colorspace_unit_btn.innerHTML = units;
-                    console.log('Show MetaData Units:', units, ' for input:', inputName, ' on node:', node.title)
+                else if (units.length > 0 && property_info.unittype) {
+                    // Add units drop-down if specified.
+                    colorspace_unit_btn = this.createUnitsInput(targetUnits, property_info.unittype, units);
+                    let theNode = targetNodes[i];
+                    colorspace_unit_btn.onchange = function (e) {
+                        theNode.setPropertyInfo(inputName, 'unit', e.target.value);
+                    }
                 }
 
                 var proptype = nodeInput.type;
                 if (proptype == 'float' || proptype == 'integer') {
                     var isFloat = proptype == 'float';
+
                     input = document.createElement("input");
+                    input.id = propertyKey + '_box';
+                    input.style = this.fontSizeStyle;
                     input.type = 'number';
-                    input.value = property;
-                    if (uimin)
-                    {
+                    input.classList.add("form-control", "form-control-sm", "ps-0");
+                    input.setAttribute('propertyKey', propertyKey);
+
+                    input_slider = document.createElement("input");
+                    input_slider.id = propertyKey + '_slider';
+                    //input_slider.style = this.fontSizeStyle;
+                    input_slider.type = 'range';
+                    input_slider.classList.add('form-range', 'custom-slider', 'pe-0');
+                    input_slider.setAttribute('propertyKey', propertyKey);
+
+                    if (uimin) {
                         input.min = uimin;
                     }
-                    if (uimax)
-                    {
+                    else {
+                        input.min = Math.min(property, 0);
+                    }
+                    if (uimax) {
                         input.max = uimax;
                     }
-                    if (input.min && input.max && isFloat)
-                    {
-                        input.step = uimax - uimin / 100.0;
-                    }                    
-                    input.setAttribute('propertyKey', propertyKey);
+                    else {
+                        if (isFloat) 
+                        {
+                            input.max = Math.max(property*3, 10.0);
+                        }
+                        else {
+                            input.max = Math.max(property*3, 100);
+                        }
+                    }
+
+
+                    input_slider.min = input.min;
+                    input_slider.max = input.max;
+                    if (isFloat) {
+                        input.step = (input.max - input.min) / 100.0;
+                        input_slider.step = input.step;
+                    }
+                    else {
+                        input_slider.step = 1;
+                        input.step = 1;
+                    }
+
+                    input.value = input_slider.value = property;
+
+                    /* console.log('> ' + propertyKey + ' - Set up slider: min, max, value',
+                        input_slider.min, input_slider.max, input_slider.value
+                    );
+                    console.log('> ' + propertyKey + ' - Set up box: min, max, value',
+                        input.min, input.max, input.value
+                    ); */
+
+                    let theBox = input;
+                    let theSlider = input_slider;
                     let theNode = targetNodes[i];
+                    input_slider.onchange = function (e) {
+                        var pi = e.target.getAttribute('propertyKey');
+                        var val = parseFloat(e.target.value);
+                        theNode.setProperty(pi, val);
+                        //console.log('Update scalar property:', pi, parseFloat(e.target.value), theNode.title, theNode.properties)
+                    }
+                    input_slider.oninput = function(e) {
+                        var pi = e.target.getAttribute('propertyKey');
+                        var val = parseFloat(e.target.value);
+                        theNode.setProperty(pi, val);
+                        theBox.value = e.target.value;
+                    }
+
                     input.onchange = function (e) {
                         var pi = e.target.getAttribute('propertyKey');
                         var val = parseFloat(e.target.value);
-                        theNode.properties[pi] = val;
-                        console.log('Update scalar property:', pi, parseFloat(e.target.value), theNode.title, theNode.properties)
+                        theNode.setProperty(pi, val);
+                        //console.log('Update scalar property:', pi, parseFloat(e.target.value), theNode.title, theNode.properties)
+                    }
+                    input.oninput = function(e) {
+                        var pi = e.target.getAttribute('propertyKey');
+                        var val = parseFloat(e.target.value);
+                        theNode.setProperty(pi, val);
+                        theSlider.value = e.target.value;
                     }
                 }
                 else if (proptype == 'string' || proptype == 'filename') {
                     input = document.createElement("input");
+                    input.style = this.fontSizeStyle;
                     input.type = "text";
                     if (proptype == 'filename') {
-                        var propertypanel_preview = document.getElementById('propertypanel_preview');
                         var curImage = property;
-                        if (curImage && propertypanel_preview) {
-                            this.uriExists(curImage)
-                                .then(exists => {
-                                    if (exists) {
-                                        propertypanel_preview.src = curImage;
-                                        propertypanel_preview.style.display = "block";
-                                    } else {
-                                        //propertypanel_preview.style.display = "none";
-                                        propertypanel_preview.src = "./Images/no_image.png";
-                                        propertypanel_preview.style.display = "block";
-                                        MxShadingGraphEditor.theEditor.debugOutput('Image does not exist: ' + curImage, 1);
-                                    }
-                                });
-                        }
+                        this.updateImagePreview(curImage);
 
                         input_btn = document.createElement("button");
                         input_btn.classList.add("btn", "btn-sm", "btn-outline-secondary");
@@ -2702,146 +4198,179 @@ class MxShadingGraphEditor {
                         let theNode = targetNodes[i];
                         input_btn.onclick = function (e) {
                             var pi = e.target.getAttribute('propertyKey');
-                            console.log('pi:', pi);
                             MxShadingGraphEditor.theEditor.openImageDialog(theNode, pi, false);
                         }
                     }
-                    input.value = property;
-                    input.setAttribute('propertyKey', propertyKey);
-                    let theNode = targetNodes[i];
-                    input.onchange = function (e) {
-                        var pi = e.target.getAttribute('propertyKey');
-                        theNode.properties[pi] = e.target.value;
-                        console.log('Update string property:', pi, theNode.properties[pi])
+
+                    else 
+                    {
+                        // Check if there is a 'enm' property
+                        console.log('------------------- handle enum property info:', property_info, '. property:', property);
+                        if (property_info && property_info.enum) {
+                            
+                            console.log('----------------- found enum property info:', property_info.enum);
+
+                            // Create drop-down menu to choose from list stored in the handler class.                            
+                            input = document.createElement("select");
+                            input.style = this.fontSizeStyle;
+                            input.classList.add("form-control", "form-control-sm");
+
+                            input.setAttribute('propertyKey', propertyKey);
+                            let theNode = targetNodes[i];
+                            let enums = property_info.enum;
+                            for (let j = 0; j < enums.length; j++) {
+                                let option = document.createElement("option");
+                                option.value = enums[j];
+                                option.text = enums[j];
+                                input.add(option);
+                            }
+                            input.value = property;
+                            input.setAttribute('propertyKey', propertyKey);
+                            input.onchange = function (e) {
+                                var pi = e.target.getAttribute('propertyKey');
+                                theNode.setProperty(pi, e.target.value);
+                                //console.log('Update string property:', pi, theNode.properties[pi])
+                            }
+                        }
+                    }
+
+                    if (property_info && !property_info.enm) {
+                        input.value = property;
+                        input.setAttribute('propertyKey', propertyKey);
+                        let theNode = targetNodes[i];
+                        let isFilename = proptype == 'filename';
+                        let that = this;
+                        input.onchange = function (e) {
+                            var pi = e.target.getAttribute('propertyKey');
+                            //theNode.properties[pi] = e.target.value;
+                            theNode.setProperty(pi, e.target.value);
+                            if (isFilename) {
+                                //console.log('Update filename property:', pi, theNode.properties[pi])
+                                that.updateImagePreview(e.target.value);
+                            }
+                            else {
+                                //console.log('Update string property:', pi, theNode.properties[pi])
+                            }
+                        }
                     }
                 }
                 else if (proptype == 'boolean') {
                     //console.log('Add Boolean property:', property);
                     input = document.createElement("input");
+                    input.style = this.fontSizeStyle;
                     input.type = "checkbox";
                     input.classList = "form-check-input";
-                    //input.style.width = "10%";
-                    //input.style.height = "50%";
                     useFormControl = false;
                     input.checked = property;
                     input.setAttribute('propertyKey', propertyKey);
                     let theNode = targetNodes[i];
                     input.onchange = function (e) {
                         var pi = e.target.getAttribute('propertyKey');
-                        theNode.properties[pi] = e.target.checked;
-                        console.log('Update boolean property:', pi, theNode.properties[pi]);
+                        //theNode.properties[pi] = e.target.checked;
+                        theNode.setProperty(pi, e.target.checked);
+                        //console.log('Update boolean property:', pi, theNode.properties[pi]);
                     }
                 }
 
-                else if (proptype == 'vector2' || proptype == 'vector3' || proptype == 'vector4') {
+                else if (proptype == 'vector2' || proptype == 'vector3' || proptype == 'vector4') 
+                {
                     // Find index of proptype in ['vector2', 'vector3', 'vector4' ]
                     var vector_size = ['vector2', 'vector3', 'vector4'].indexOf(proptype) + 2;
-                    var input = document.createElement("div");
+                    input = document.createElement("div");
                     useFormControl = false;
 
-                    input.className = "row py-1 ps-2";
+                    input.className = "row py-1 ps-4 pe-0";
+
+                    for (let v=0; v<vector_size; v++) 
                     {
                         //console.log('Vector property:[', 0, '] = ', property[0], proptype)
-                        var subinput = document.createElement("input");
+                        let subinput = document.createElement("input");
+                        subinput.style = this.fontSizeStyle;
                         subinput.type = 'number';
                         subinput.classList.add("form-control");
                         subinput.classList.add("form-control-sm");
-                        subinput.value = property[0];
+                        subinput.setAttribute('propertyKey', propertyKey);
+
+                        let subinput_slider = document.createElement("input");
+                        subinput_slider.id = propertyKey + '_slider';
+                        subinput_slider.type = 'range';
+                        subinput_slider.classList.add('form-range', 'custom-slider', 'pe-0');
+                        subinput_slider.setAttribute('propertyKey', propertyKey);
+
                         if (uimin) {
-                            subinput.min = uimin[0];                            
+                            subinput.min = uimin[v];
+                        }
+                        else {
+                            subinput.min = Math.min(property[v]*3, 0);
                         }
                         if (uimax) {
-                            subinput.max = uimax[0];
+                            subinput.max = uimax[v];
                         }
-                        if (uimin && uimax) {
-                            subinput.step = (uimax[0] - uimin[0]) / 100.0;
+                        else {
+                            subinput.max = Math.max(property[v]*3, 10.0);
                         }
-                        subinput.setAttribute('propertyKey', propertyKey);
+    
+                        subinput_slider.min = subinput.min;
+                        subinput_slider.max = subinput.max;
+                        subinput.step = (subinput.max - subinput.min) / 100.0;
+                        subinput_slider.step = subinput.step;
+
+                        subinput.value = subinput_slider.value = property[v];
+
                         let theNode = targetNodes[i];
-                        subinput.onchange = function (e) {
-                            var pi = e.target.getAttribute('propertyKey');
-                            var value = parseFloat(e.target.value);
-                            theNode.properties[pi][0] = value;
+                        let vector_index = v;
+                        let theBox = subinput;
+                        let theSlider = subinput_slider;
+                        theBox.onchange = function (e) {
+                            let pi = e.target.getAttribute('propertyKey');
+                            let value = parseFloat(e.target.value);
+                            let newValue = theNode.properties[pi].map(item => item);
+                            newValue[vector_index] = value; 
+                            theNode.setProperty(pi, newValue);
+                            //theNode.properties[pi][0] = value;
+                            //console.log('Update Vector property:"', pi, '"', 0, parseFloat(e.target.value), theNode.properties[pi])
                         }
-                        input.appendChild(subinput);
-                    }
-                    {
-                        //console.log('Vector property:[', 1, '] = ', property[0], proptype)
-                        var subinput = document.createElement("input");
-                        subinput.type = 'number';
-                        subinput.value = property[1];
-                        if (uimin) {
-                            subinput.min = uimin[1];                            
+                        theBox.oninput = function(e) {
+                            let pi = e.target.getAttribute('propertyKey');
+                            let value = parseFloat(e.target.value);
+                            let newValue = theNode.properties[pi].map(item => item);
+                            newValue[vector_index] = value; 
+                            theNode.setProperty(pi, newValue);
+                            theSlider.value = e.target.value;
+                        }                        
+
+                        theSlider.onchange = function (e) {
+                            let pi = e.target.getAttribute('propertyKey');
+                            let value = parseFloat(e.target.value);
+                            let newValue = theNode.properties[pi].map(item => item);
+                            newValue[vector_index] = value; 
+                            theNode.setProperty(pi, newValue);
+                            //console.log('Update scalar property:', pi, parseFloat(e.target.value), theNode.title, theNode.properties)
                         }
-                        if (uimax) {
-                            subinput.max = uimax[1];
+                        theSlider.oninput = function(e) {
+                            let pi = e.target.getAttribute('propertyKey');
+                            let value = parseFloat(e.target.value);
+                            let newValue = theNode.properties[pi].map(item => item);
+                            newValue[vector_index] = value; 
+                            theNode.setProperty(pi, newValue);
+                            theBox.value = e.target.value;
                         }
-                        if (uimin && uimax) {
-                            subinput.step = (uimax[1] - uimin[1]) / 100.0;
-                        }
-                        subinput.setAttribute('propertyKey', propertyKey);
-                        subinput.classList.add("form-control");
-                        subinput.classList.add("form-control-sm");
-                        let theNode = targetNodes[i];
-                        subinput.onchange = function (e) {
-                            var pi = e.target.getAttribute('propertyKey');
-                            var value = parseFloat(e.target.value);
-                            theNode.properties[pi][1] = value;
-                            console.log('Update Vector property:"', pi, '"', 1, parseFloat(e.target.value), theNode.properties[pi])
-                        }
-                        input.appendChild(subinput);
-                    }
-                    if (vector_size > 2) {
-                        //console.log('Vector property:[', 2, '] = ', property[0], proptype)
-                        var subinput = document.createElement("input");
-                        subinput.type = 'number';
-                        if (uimin) {
-                            subinput.min = uimin[2];                            
-                        }
-                        if (uimax) {
-                            subinput.max = uimax[2];
-                        }
-                        if (uimin && uimax) {
-                            subinput.step = (uimax[2] - uimin[2]) / 100.0;
-                        }
-                        subinput.value = property[2];
-                        subinput.setAttribute('propertyKey', propertyKey);
-                        subinput.classList.add("form-control");
-                        subinput.classList.add("form-control-sm");
-                        let theNode = targetNodes[i];
-                        subinput.onchange = function (e) {
-                            var pi = e.target.getAttribute('propertyKey');
-                            var value = parseFloat(e.target.value);
-                            theNode.properties[pi][2] = value;
-                            console.log('Update Vector property:"', pi, '"', 2, parseFloat(e.target.value), theNode.properties[pi])
-                        }
-                        input.appendChild(subinput);
-                    }
-                    if (vector_size > 3) {
-                        //console.log('Vector property:[', 3, '] = ', property[0], proptype)
-                        var subinput = document.createElement("input");
-                        subinput.type = 'number';
-                        if (uimin) {
-                            subinput.min = uimin[3];                            
-                        }
-                        if (uimax) {
-                            subinput.max = uimax[3];
-                        }
-                        if (uimin && uimax) {
-                            subinput.step = (uimax[3] - uimin[3]) / 100.0;
-                        }
-                        subinput.value = property[3];
-                        subinput.setAttribute('propertyKey', propertyKey);
-                        subinput.classList.add("form-control");
-                        subinput.classList.add("form-control-sm");
-                        let theNode = targetNodes[i];
-                        subinput.onchange = function (e) {
-                            var pi = e.target.getAttribute('propertyKey');
-                            var value = parseFloat(e.target.value);
-                            theNode.properties[pi][3] = value;
-                            console.log('Update Vector property:"', pi, '"', 3, parseFloat(e.target.value), theNode.properties[pi])
-                        }
-                        input.appendChild(subinput);
+    
+
+                        let propvalue_slider = document.createElement("div");
+                        propvalue_slider.className = "col p-0";
+                        propvalue_slider.appendChild(subinput_slider);
+
+                        let propvalue_box = document.createElement("div");
+                        propvalue_box.className = "col p-0";
+                        propvalue_box.appendChild(subinput);                                                
+
+                        let input_row = document.createElement("div");
+                        input_row.className = "row p-0";
+                        input_row.appendChild(propvalue_slider);                        
+                        input_row.appendChild(propvalue_box);
+    
+                        input.appendChild(input_row);
                     }
                 }
                 else if (proptype == 'color3' || proptype == 'color4') {
@@ -2858,44 +4387,44 @@ class MxShadingGraphEditor {
                         rgb[0] = parseInt(hex.substring(1, 3), 16) / 255.0;
                         rgb[1] = parseInt(hex.substring(3, 5), 16) / 255.0;
                         rgb[2] = parseInt(hex.substring(5, 7), 16) / 255.0;
-                        
+
                         var pi = e.target.getAttribute('propertyKey');
-                        theNode.properties[pi] = rgb;
-                        console.log('set color property:', theNode.title, theNode.properties[pi], 'key=', pi, rgb, e.target.value);
+                        theNode.setProperty(pi, rgb);
                     }
+                    let func = function (e) {
+                        // Convert hex to rgb in 0..1 range
+                        var hex = e.target.value;
+                        var rgb = [0, 0, 0];
+                        rgb[0] = parseInt(hex.substring(1, 3), 16) / 255.0;
+                        rgb[1] = parseInt(hex.substring(3, 5), 16) / 255.0;
+                        rgb[2] = parseInt(hex.substring(5, 7), 16) / 255.0;
+
+                        var pi = e.target.getAttribute('propertyKey');
+                        theNode.setProperty(pi, rgb);
+                    }
+                    input.onchange = func;
+                    input.oninput = func;
                 }
                 else {
                     input = document.createElement("input");
+                    input.style = this.fontSizeStyle;
                     input.type = "text";
                     input.value = property;
-                    var propertyKey = inputName;
+                    let propertyKey = inputName;
                     let theNode = targetNodes[i];
                     input.onchange = function (e) {
-                        theNode.properties[propertyKey] = e.target.value;
+                        theNode.setProperty(propertyKey, e.target.value);
+                        //theNode.properties[propertyKey] = e.target.value;
                     }
                 }
-                /*
-                TODO: Handle enumerations
-                else if (proptype == 'enum') {
-                    var input = document.createElement("select");
-                    for (var j in nodes.inputs[i].values) {
-                        var option = document.createElement("option");
-                        option.value = j;
-                        option.innerHTML = nodes.inputs[i].values[j];
-                        input.appendChild(option);
-                    }
-                    input.value = property;
-                    input.onchange = function (e) {
-                        targetNode.properties[i] = e.target.value;
-                    }
-                } */
 
                 if (input) {
                     input.id = "__pp:" + inputName;
                     //console.log('> Add input:', input.id);
 
                     var label = document.createElement("div");
-                    label.className = "col-4 p-0 col-form-label-sm text-end font-small";
+                    label.className = "col-4 p-0 col-form-label-sm text-end";
+                    label.style = this.fontSizeStyle;
                     label.innerHTML = uiName;
                     label.for = input.id;
                     elem.appendChild(label);
@@ -2911,30 +4440,44 @@ class MxShadingGraphEditor {
 
                     var propvalue = document.createElement("div");
                     propvalue.className = "col py-0";
+                    if (input_slider)
+                    {
+                        propvalue.classList.add('ps-1');
+                    }
                     propvalue.appendChild(input);
 
                     if (input_btn) {
                         var propbutton = document.createElement("div");
-                        propbutton.className = "col-1 py-0";
+                        propbutton.className = "col-2 py-0";
                         //console.log('Add input button:', input_btn);
                         propbutton.appendChild(input_btn);
                         elem.appendChild(propbutton);
                     }
-                    if (colorspace_unit_btn) {                   
+                    if (colorspace_unit_btn) {
                         //console.log('Add cs / unit button:', input_btn);
                         var propbutton = document.createElement("div");
-                        propbutton.className = "col col-form-label-sm font-small";
-                        var details = document.createElement("details");     
+                        propbutton.className = "col col-form-label-sm";
+                        var details = document.createElement("details");
                         var summary = document.createElement('summary')
+                        summary.style = this.fontSizeStyle;
                         if (colorspace.length > 0)
                             summary.innerHTML = "Colorspace";
-                        else if (units.length > 0)
+                        else if (targetUnits.length > 0)
                             summary.innerHTML = "Units";
                         details.appendChild(summary);
                         details.appendChild(colorspace_unit_btn);
                         propbutton.appendChild(details);
                         propvalue.appendChild(propbutton);
                     }
+
+                    if (input_slider)
+                    {
+                        var propvalue_slider = document.createElement("div");
+                        propvalue_slider.className = "col py-0 pe-0";
+                        propvalue_slider.appendChild(input_slider);
+                        elem.appendChild(propvalue_slider);
+                    }    
+
                     elem.appendChild(propvalue);
                 }
             }
@@ -2943,6 +4486,10 @@ class MxShadingGraphEditor {
                 if (current_details) {
                     //console.log('3a. append child to details:', current_details.id, elem, inputName);
                     current_details.appendChild(elem);
+                    // It current_details not already in the propertypanelcontent, add it.
+                    if (current_details.parentElement == null) {
+                        propertypanelcontent.appendChild(current_details);
+                    }
                 }
                 else {
                     propertypanelcontent.appendChild(elem);
@@ -2950,166 +4497,34 @@ class MxShadingGraphEditor {
                 }
             }
         }
+
     }
 
-    onConnectOutput(slot, input_type, input, target_node, target_slot)
-    {
-        console.log('**** Connect output');
-        console.log(' - slot:', slot);
-        console.log(' - input type: ', input_type)
-        console.log(' - input:', input);
-        console.log(' - target_node', target_node); 
-        console.log(' - target slot', target_slot);
-    }
 
-    onConnectInput(target_slot, output_type, output, source, slot)
-    {
-        console.log('**** Node connection changed');
-        console.log(' - target_slot:', target_slot);
-        console.log(' - output_type: ', output_type)
-        console.log(' - output:', output);
-        console.log(' - source', source); 
-        console.log(' - source slot', slot);
-    }
-
-    monitorGraph(theGraph, monitor) {
-        if (!theGraph)
-            return;
-
-        theGraph.onConnectionChange = null;
-        theGraph.onNodeAdded = null;
-        theGraph.onNodeRemoved = null;
-
-        if (monitor) {
-
-            var that = this;
-            //console.log('Monitor connection change:', theGraph.title);
-            theGraph.onConnectionChange = function (node) 
-            {
-                //console.log('On connection change:', node.title, node);
-                var selected = graphcanvas.selected_nodes;
-                for (var s in selected) {
-                    console.log('update selected node:', selected[s].title);
-                    that.updatePropertyPanel(selected[s]);
-                    break;
-                }
-            }
-
-            //console.log('Monitor graph add:', theGraph.title);
-            theGraph.onNodeAdded = function (node) {
-
-                node.onConnectOutput = MxShadingGraphEditor.theEditor.onConnectOutput;
-
-                if (node.type == 'graph/subgraph') {
-                    // Use MaterialX naming for subgraphs
-                    //node.title = 'nodegraph';
-                    //console.log('Monitor new subgraph node for connection change:', node.title, node);
-                    node.onConnectInput = MxShadingGraphEditor.theEditor.onConnectInput;
-                    //node.onConnectionChange = function (node) {
-                    //    console.log('**** Subgraph connection changed');
-                    //}
-
-                    //MxShadingGraphEditor.theEditor.monitorGraph(node.subgraph, monitor);
-
-                    // Scan the subgraph for any nodes which are not in the node inputs list.
-                    var node_subgraph = node.subgraph;
-                    var node_graph = node.graph;
-                    if (node_subgraph)
-                    {
-                        //console.log('** Scan subgraph: ', node_subgraph)
-                        for (var i in node_subgraph._nodes)
-                        {
-                            let theNode = node_subgraph._nodes[i];
-                            //console.log('*** scan subgrapn node: ', theNode.title)
-                            if (!node_graph.findNodeByTitle(theNode.title))
-                            {
-                                if (theNode.nodedef_node == 'input') {
-                                    console.log('-0-0-0 add input', theNode.title)
-                                    node.addInput(theNode.title, theNode.nodedef_type);
-                                    console.log('--> Promote input node to subgraph node.', theNode.title);
-                                }
-                                else if (theNode.nodedef_node == 'output') {
-                                    console.log('--> Promote output node to subgraph node.', theNode.title);
-                                    node.addOutput(theNode.title, theNode.nodedef_type);            
-                                }
-                            }
-                        }
-                    }
-                }
-
-                node.title = MxShadingGraphEditor.theEditor.handler.createValidName(node.title)
-                node.setSize(node.computeSize());
-                //console.log('-> Node Added:', node, '. Type:', node.type, '. Graph:', node.graph._2458graph);
-
-                // Expose node as an input or output on the subgraph
-                var is_subgraph = node.graph._is_subgraph;;
-                if (is_subgraph) {
-
-                    if (node.nodedef_node == 'input') {
-                        console.log('Adding input node to subgraph.', node.title, node.graph);
-                        node.graph.addInput(node.title, node.nodedef_type);
-                    }
-                    else if (node.nodedef_node == 'output') {
-                        console.log('Adding output node to subgraph.');
-                        node.graph.addOutput(node.title, node.nodedef_type);
-                    }
-                }
-
-                if (node.type == 'graph/subgraph') {
-                    MxShadingGraphEditor.theEditor.monitorGraph(node.subgraph, monitor);
-                }
-            }
-
-            //console.log('Monitor graph remove:', theGraph.title);
-            theGraph.onNodeRemoved = function (node) {
-                //console.log('-> Node Removed:', node, '. Type:', node.type, '. Graph:', graphcanvas.graph);
-                /* This is too late the graph reference has already been removed */
-                var is_subgraph = graphcanvas.graph._is_subgraph;
-                if (is_subgraph) {
-                    if (node.nodedef_node == 'input') {
-                        console.log('Removing input node from subgraph.');
-                        graphcanvas.graph.removeInput(node.title);
-                    }
-                    else if (node.nodedef_node == 'output') {
-                        console.log('Removing output node from subgraph.');
-                        graphcanvas.graph.removeOutput(node.title);
-                    }
-                }
-            }
-        }
-
-
-        for (var i in theGraph._nodes) {
-            var node = theGraph._nodes[i];
-            if (node.type == 'graph/subgraph') {
-                //console.log('Monitor node:', node.title);
-                this.monitorGraph(node.subgraph, monitor);
-                node.onConnectInput = MxShadingGraphEditor.theEditor.onConnectInput;
-                //node.onConnectionChange = function (node) {
-                //    console.log('**** Subgraph connection changed');
-                //}
-            }
-        }
-    }
-
-    initializeLiteGraph(canvas) 
-    {
-        // Initialize Litegraph
+    /**
+     * Initialize the LiteGraph graph editor for a given canvas element.
+     * 
+     * @param {HTMLCanvasElement} canvas The canvas element to use for the graph editor.
+     * @returns {void}
+     */
+    initializeLiteGraph(canvas, readOnly = false) {
+        // Initialize LiteGraph
         graph = new LiteGraph.LGraph();
         graphcanvas = new LiteGraph.LGraphCanvas(canvas, graph);
-        graphcanvas.onShowNodePanel = function (node) {
-            ;  // Making this a no-op as will not use the default panel
-        }
-        graphcanvas.onNodeSelected = function (node) {
-            console.log('Selected node:', node.title, node);
-            MxShadingGraphEditor.theEditor.updatePropertyPanel(node);
-        }
-        graphcanvas.onNodeDeselected = function (node) {
-            //console.log('Node Deselected:', node);
-            MxShadingGraphEditor.theEditor.updatePropertyPanel(null);
+
+        if (readOnly)
+        {
+            // Put red border around canvas as an indicator
+            //canvas.style.border = "2px solid #ffc107";
+            canvas.style.border = "1px solid #ff1107";
         }
 
-        // Todo: Move this to application site and expose settings to use.
+        //
+        // Set up graph overrides
+        //
+
+        // Set up connection colors (off = not connected, on = connected)
+        // TODO: Move this to application site and expose settings to user.
         graphcanvas.default_connection_color_byTypeOff = {
             integer: "#A32",
             float: "#161",
@@ -3124,7 +4539,7 @@ class MxShadingGraphEditor {
             filename: "#888",
             boolean: "#060",
         };
-        
+
         graphcanvas.default_connection_color_byType = {
             integer: "#D52",
             float: "#1D1",
@@ -3139,46 +4554,149 @@ class MxShadingGraphEditor {
             filename: "#FFF",
             boolean: "#0F0",
         };
-        /*    float: "#666",
-            vector3: "#888",
-            color3: "#89A",
-            vector4: "#99B",
-            color4: "#9AC",
-            matrix33: "#9BD",
-            matrix44: "#9CE",
-            string: "#9DF",
-            filename: "#9EF",
-            boolean: "#AF0",
-        }; */
 
-        //console.log('Setup graph canvas:', graphcanvas);
+        // Making this a no-op as will not use the default panel
+        graphcanvas.onShowNodePanel = function (node) {
+            ;  
+        }
 
+        // Override to handle node selection
+        graphcanvas.onNodeSelected = function (node) {
+            if (MxShadingGraphEditor.theEditor.monitor)
+            {
+                let parentGraph = '';
+                var is_subgraph = graphcanvas.graph._is_subgraph;
+                if (is_subgraph) 
+                    parentGraph = graphcanvas.graph._subgraph_node.title;
+                MxShadingGraphEditor.theEditor.monitor.onNodeSelected(node, parentGraph);
+            }
+            MxShadingGraphEditor.theEditor.updatePropertyPanel(node);
+        }
+
+        // Override to handle node deselection
+        graphcanvas.onNodeDeselected = function (node) {
+            if (MxShadingGraphEditor.theEditor.monitor)
+            {
+                let parentGraph = '';
+                var is_subgraph = graphcanvas.graph._is_subgraph;
+                if (is_subgraph) 
+                    parentGraph = graphcanvas.graph._subgraph_node.title;
+                MxShadingGraphEditor.theEditor.monitor.onNodeDeselected(node, parentGraph);
+            }
+            MxShadingGraphEditor.theEditor.updatePropertyPanel(null);
+        }
+
+        // Add monitoring method for property info changes.
+        // This API does not currently exist in LiteGraph, only getPropertyInfo() does.
+        LGraphNode.prototype.setPropertyInfo = function(property, propertyInfo, value)
+        {
+            var info = null;
+    
+            if (this.properties_info) {
+                for (var i = 0; i < this.properties_info.length; ++i) {
+                    if (this.properties_info[i].name == property) {
+                        info = this.properties_info[i];
+                        break;
+                    }
+                }
+            }    
+            
+            if (info && info[propertyInfo])
+            {    
+                if (this.onPropertyInfoChanged)
+                {
+                    this.onPropertyInfoChanged(property, propertyInfo, value, info[propertyInfo]);
+                } 
+                info[propertyInfo] = value;
+            }
+            else
+            {
+                console.warning('Failed to set property: ', property, '. info: ', propertyInfo, '. Value: ', value, '. Infos: ', this.properties_info);
+            }
+        }
+
+        // Add in a method to check if an input / property is the default value
+        LGraphNode.prototype.isDefaultValue = function(property)
+        {
+            let info = null;
+
+            // Check if the property exists
+            if (this.properties[property] == null)
+            {
+                console.warn('> Property value does not exist:', property);
+                return false;
+            }
+            // Check if the property is linked
+            if (this.getInputLink(property))
+            {
+                return false;
+            }
+    
+            if (this.properties_info != null) 
+            {
+                for (let i = 0; i < this.properties_info.length; ++i) {
+                    if (this.properties_info[i].name == property) {
+                        info = this.properties_info[i];
+                        break;
+                    }
+                }
+            }    
+            
+            if (info != null && info.default_value != null)
+            {
+                let property_string = this.properties[property];
+                let default_value_string = info.default_value;
+                let isDefault = false;
+                if (Array.isArray(default_value_string)) {
+                    default_value_string = default_value_string.map(String); // or .map(element => String(element))
+                    property_string = property_string.map(String); // or .map(element => String(element))
+                    isDefault = (JSON.stringify(default_value_string) == JSON.stringify(property_string));                                 
+                }
+                else
+                {
+                    isDefault = (default_value_string == property_string);
+                }
+                return isDefault;
+            }
+            else 
+            {
+                console.warn('> Default value does not exist for:', property);
+            }
+            return false;
+        }
+
+        //
+        // Set up graph
+        //
         graphcanvas.resize();
-
-        this.monitorGraph(graph, true);
+        this.monitor.monitorGraph(graph, true);
         graph.arrange(80);
 
-        // Run the graph
+        // Run the graph. TODO: Add execution control.
         //graph.runStep();
 
-        // Enable interaction
+        // Override global options
         //graphcanvas.hide_unconnected = false;
-        graphcanvas.allow_interaction = true;
-        graphcanvas.allow_dragnodes = true;
-        graphcanvas.allow_searchbox = true;
-        graphcanvas.render_connections_arrows = true;
-        graphcanvas.clear_background_color = "#222223";
-        graphcanvas.max_zoom = 0.25;
-        graphcanvas.connections_width = 2;
-        graphcanvas.render_canvas_border = false;
-        graphcanvas.align_to_grid = false;
-        graphcanvas.render_connection_arrows = false;
-        graphcanvas.render_curved_connections = true;
-        //graphcanvas.background_image = null; 
+        console.log('> Read only mode: ', readOnly);
+        graphcanvas.read_only = readOnly;
+        graphcanvas.allow_interaction = !readOnly;      // Allow user interaction. TODO: Add option to turn this off
+        graphcanvas.allow_dragnodes = !readOnly;        // Allow dragging nodes
+        graphcanvas.allow_searchbox = !readOnly;        // Allow search box
+        graphcanvas.render_connections_arrows = true;   // Render connection arrows
+        graphcanvas.clear_background_color = "#222223"; // Set background color
+        graphcanvas.max_zoom = 0.15;                    // Set maximum zoom level
+        graphcanvas.connections_width = 2;              // Set connection width
+        graphcanvas.render_canvas_border = false;       //  Set canvas border
+        graphcanvas.align_to_grid = false;              // Align to grid
+        graphcanvas.render_connection_arrows = false;   // Render connection arrows
+        graphcanvas.render_curved_connections = true;   // Render curved connections
+        //graphcanvas.background_image = null;          // Set background image
+        graphcanvas.show_info = false;                  // Turn off HUD
+        graph.ctrl_shift_v_paste_connect_unselected_outputs = true;
 
-        // Turn off HUD
-        graphcanvas.show_info = false;
-
+        //
+        // Event handler overrides. TODO: Add more shortcuts
+        //
         // Ad event handler to call centerOnNode with f key press within the canvas area
         canvas.addEventListener("keydown", function (e) {
             if (e.key === "f") {
@@ -3193,8 +4711,57 @@ class MxShadingGraphEditor {
             }
         });
 
+
+        var isIdle = true;
+        var context = canvas.getContext('2d');
+
+        function drawstart(event) {
+            //context.beginPath();
+            //context.moveTo(event.pageX - canvas.offsetLeft, event.pageY - canvas.offsetTop);
+            console.log('>>>>>>>>>>> draw start');
+            isIdle = false;
+        }
+
+        function drawmove(event) {
+            if (isIdle) return;
+            //context.lineTo(event.pageX - canvas.offsetLeft, event.pageY - canvas.offsetTop);
+            //context.stroke();
+            console.log('>>>>>>>>>>> draw move');
+        }
+
+        function drawend(event) {
+            if (isIdle) return;
+            drawmove(event);
+            console.log('>>>>>>>>>>> draw move');
+            isIdle = true;
+        }
+
+        function touchstart(event) {
+            drawstart(event.touches[0]);
+        }
+
+        function touchmove(event) {
+            drawmove(event.touches[0]);
+            //event.preventDefault();
+        }
+
+        function touchend(event) {
+            drawend(event.changedTouches[0]);
+        }
+
+        //canvas.addEventListener('touchstart', touchstart, false);
+        //canvas.addEventListener('touchmove', touchmove, false);
+        //canvas.addEventListener('touchend', touchend, false);
+
+        //canvas.addEventListener('mousedown', drawstart, false);
+        //canvas.addEventListener('mousemove', drawmove, false);
+        //canvas.addEventListener('mouseup', drawend, false);        
+
     }
 
+    /**
+     * Center the graph on a selected node.
+     */
     centerNode() {
         var selected = graphcanvas.selected_nodes;
         for (var s in selected) {
@@ -3204,6 +4771,9 @@ class MxShadingGraphEditor {
         }
     }
 
+    /**
+     * Remove built in node types, except for subgraph
+     */
     clearNodeTypes() {
         LiteGraph.searchbox_extras = [];
         var nodeTypes = LiteGraph.registered_node_types;
@@ -3215,6 +4785,9 @@ class MxShadingGraphEditor {
         }
     }
 
+    /**
+     * Collapse or expand a node.
+     */
     collapseNode(node, collapse) {
         if (node.constructor.collapsable === false) {
             return false;
@@ -3226,22 +4799,24 @@ class MxShadingGraphEditor {
         return false;
     }
 
+    /** 
+     * Collapse or expand selected nodes.
+     */
     collapseExpandNodes(collapse) {
         var curGraph = graphcanvas.graph;
 
         var selected_nodes = graphcanvas.selected_nodes;
-        console.log('Selected nodes:', selected_nodes);
+        //console.log('Selected nodes:', selected_nodes);
         var modified = false;
         if (selected_nodes) {
             for (var i in selected_nodes) {
                 var node = selected_nodes[i];
-                console.log('Collapse/Expand:', node.title, collapse);
+                //console.log('Collapse/Expand:', node.title, collapse);
                 if (this.collapseNode(node, collapse))
                     modified = true;
             }
         }
-        if (!modified)
-        {
+        if (!modified) {
             var nodes = curGraph._nodes;
             for (var i in nodes) {
                 var node = nodes[i];
@@ -3250,21 +4825,29 @@ class MxShadingGraphEditor {
             }
         }
 
-        if (modified)
-        {
+        if (modified) {
             graph._version++;
             graph.setDirtyCanvas(true, true);
         }
     }
 
+    /**
+     * Copy selected nodes to the clipboard.
+     */
     copyToClipboard() {
         graphcanvas.copyToClipboard();
     }
 
+    /**
+     * Paste nodes from the clipboard.
+     */
     pasteFromClipboard() {
-        graphcanvas.pasteFromClipboard();
+        graphcanvas.pasteFromClipboard(true);
     }
 
+    /**
+     * Extract the nodes in a subgraph to the main graph.
+     */
     extractNodeGraph() {
         var selected = graphcanvas.selected_nodes;
         if (selected.length == 0) {
@@ -3289,7 +4872,7 @@ class MxShadingGraphEditor {
         var subGraphNodes = subGraph.subgraph._nodes;
         for (var i in subGraphNodes) {
             var node = subGraphNodes[i];
-            console.log('Select subgraph node:', node.title);
+            //console.log('Select subgraph node:', node.title);
         }
 
         graphcanvas.openSubgraph(subGraph.subgraph);
@@ -3302,10 +4885,13 @@ class MxShadingGraphEditor {
         graphcanvas.pasteFromClipboard();
     }
 
+    /**
+     * Create a new node subgraph from selected.
+     * TODO: Handle connections between new graph and parent graph.
+     */
     createNodeGraph() {
         // Disallow testing for now.
-        if (graphcanvas.graph._is_subgraph)
-        {
+        if (graphcanvas.graph._is_subgraph) {
             this.debugOutput('Cannot create nest subgraphs.', 1);
             return;
         }
@@ -3318,7 +4904,7 @@ class MxShadingGraphEditor {
         }
 
         // Copy the selected nodes to the clipboard
-        graphcanvas.copyToClipboard();            
+        graphcanvas.copyToClipboard();
 
         // Create a new graph/subgraph node
         var node = LiteGraph.createNode('graph/subgraph');
@@ -3334,112 +4920,39 @@ class MxShadingGraphEditor {
         graphcanvas.setDirty(true, true);
     }
 
+    /**
+     * Display the available node types in the UI if a UI updater is set.
+     */
     displayNodeTypes() {
-        // Get the list of available node types
-        var nodeTypes = LiteGraph.registered_node_types;
-
-        // Get the list container
-        var nodeList = this.ui.nodeTypesList;
-        if (!nodeList) {
+        // Get the node list display updater
+        var nodeTypesListUpdater = this.ui.nodeTypesListUpdater;
+        if (!nodeTypesListUpdater) {
             return;
         }
-        
-        // Clear all children of nodeList
-        while (nodeList.firstChild) {
-            nodeList.removeChild(nodeList.firstChild);
-        }
 
-        // Iterate over the node types and add them to the list        
-        for (var typeName in nodeTypes) {            
-
-            var rowItem = document.createElement("tr");
-
-            var cellItem = document.createElement("td");
-            cellItem.textContent = typeName;
-            rowItem.appendChild(cellItem);
-
-            cellItem = document.createElement("td");
-            var nodeDefString = '<None>';
-            var nodeDefName = nodeTypes[typeName].nodedef_name;
-            var nodeDefNode = nodeTypes[typeName].nodedef_node
-            var nodeDefHref = nodeTypes[typeName].nodedef_href;
-            if (nodeDefName) {
-                if (nodeDefNode)
-                {
-                    var link = document.createElement("a");
-                    link.target = "_blank";
-                    link.href = nodeDefHref;
-                    link.textContent = nodeDefNode + " ( " + nodeDefName + " )";
-                    cellItem.appendChild(link);
-                }
-                else
-                {
-                    cellItem.textContent = nodeDefName;                
-                }
-            }
-            else {
-                cellItem.textContent = nodeDefString;
-            }
-            rowItem.appendChild(cellItem);
-
-            nodeList.appendChild(rowItem);
-        }
+        // Get the list of available node types
+        var nodeTypes = LiteGraph.registered_node_types;
+        nodeTypesListUpdater(nodeTypes);
     }
 
-
-    initialize(createMode, canvas, ui, materialFilename) {
+    /**
+     * Initialize the editor
+     * @param {HTMLCanvasElement} canvas The canvas element to use for the graph editor.
+     * @param {Object} ui The UI updater object to use for the editor.
+     * @param {Object} monitor The monitor object to use for the editor.
+     * @param {string} materialFilename The optional filename of the material to load.
+     * @param {boolean} readOnly Set to true to make the editor read only.
+     * @returns {void}
+     */
+    initialize(canvas, ui, monitor, materialFilename, readOnly = false) {
 
         this.setUI(ui);
-        this.initializeLiteGraph(canvas);
+        if (monitor) {
+            console.log('Set custom monitor:', monitor.getName());
+        }
+        this.monitor = monitor;         
+        this.initializeLiteGraph(canvas, readOnly);
         this.handler.initialize(MxShadingGraphEditor.theEditor, materialFilename);
+        this.handler.setMonitor(this.monitor);
     }
 }
-
-/*
-document.addEventListener('DOMContentLoaded', () {
-    console.log('Setup property panel event handlers...')
-    var panel1 = document.getElementById('propertypanelcontent');
-    //var panel2 = document.getElementById('panel2');
-    var isDraggingPanel1 = false;
-    //var isDraggingPanel2 = false;
-    var offsetX1, offsetY1, offsetX2, offsetY2;
-
-    panel1.addEventListener('mousedown', (e) {
-        console.log('mousedown:', e.target.id);
-        isDraggingPanel1 = true;
-        var rect = panel1.getBoundingClientRect();
-        offsetX1 = e.clientX - rect.left;
-        offsetY1 = e.clientY - rect.top;
-        e.stopPropagation();
-    });
-
-
-    document.addEventListener('mousemove', (e) {
-        if (isDraggingPanel1) {
-            handleDragging(panel1, offsetX1, offsetY1, e);
-        }
-    });
-
-    document.addEventListener('mouseup', () {
-        isDraggingPanel1 = false;
-        //isDraggingPanel2 = false;
-    });
-
-    handleDragging(panel, offsetX, offsetY, e) {
-        var canvas = document.getElementById('graphcanvas');
-        var canvasRect = canvas.getBoundingClientRect();
-        var canvasLeft = canvasRect.left + window.pageXOffset;
-        var canvasTop = canvasRect.top + window.pageYOffset;
-        var canvasRight = canvasLeft + canvas.width;
-        var canvasBottom = canvasTop + canvas.height;
-
-        var x = e.clientX - offsetX;
-        var y = e.clientY - offsetY;
-
-        x = Math.min(Math.max(canvasLeft, x), canvasRight - panel.offsetWidth);
-        y = Math.min(Math.max(canvasTop, y), canvasBottom - panel.offsetHeight);
-
-        panel.style.left = x - canvasLeft + 'px';
-        panel.style.top = y - canvasTop + 'px';
-    }
-}); */

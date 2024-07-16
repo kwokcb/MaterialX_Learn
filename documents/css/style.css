@@ -179,11 +179,15 @@ model-viewer {
 
 /* Custom styles for input range thumb */
 input[type="range"]::-webkit-slider-thumb {
-  background-color: #7d7d7d;
+  /* background-color: #7d7d7d; */
+  background: white;
+  border: 2px solid black;
+  cursor: pointer;
+  
   /* Change thumb color in Webkit browsers (Chrome, Safari) */
-  width: 16px;
+  width: 20%
   /* Set the width of the thumb */
-  height: 16px;
+  /* height: 16px; */
   /* Set the height of the thumb */
   transform: translateY(0%);
 }
@@ -195,11 +199,15 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 input[type="range"]::-moz-range-thumb {
-  background-color: #7d7d7d;
+  /* background-color: #7d7d7d; */
+  background: white;
+  border: 2px solid black;
+  cursor: pointer;
+
   /* Change thumb color in Mozilla Firefox */
-  width: 16px;
+  width: 20%;
   /* Set the width of the thumb */
-  height: 16px;
+  /* height: 16px; */
   /* Set the height of the thumb */
   transform: translateY(0%);
 }
@@ -210,11 +218,15 @@ input[type="range"]::-moz-range-track {
 }
 
 input[type="range"]:active::-ms-thumb {
-  background-color: #7d7d7d;
+  /* background-color: #7d7d7d; */
+  background: white;
+  border: 2px solid black;
+  cursor: pointer;
+
   /* Change thumb color in Microsoft Edge */
-  width: 16px;
+  width: 20%;
   /* Set the width of the thumb */
-  height: 16px;
+  /* height: 16px; */
   /* Set the height of the thumb */
   transform: translateY(0%);
 }
@@ -225,17 +237,27 @@ input[type="range"]::-ms-track {
 }
 
 input[type="range"]:active::-webkit-slider-thumb {
-  background-color: #7d7d7d;
+  /* background-color: #7d7d7d; */
+  background: white;
+  border: 2px solid black;
+  cursor: pointer;
+
   /* Change thumb color in Webkit browsers (Chrome, Safari) */
 }
 
 input[type="range"]::-moz-range-thumb {
-  background-color: #7d7d7d;
+  /* background-color: #7d7d7d; */
+  background: white;
+  border: 2px solid black;
+  cursor: pointer;
   /* Change thumb color in Mozilla Firefox */
 }
 
 input[type="range"]:active::-ms-thumb {
-  background-color: #7d7d7d;
+   /* background-color: #7d7d7d; */
+   background: white;
+   border: 2px solid black;
+   cursor: pointer;
   /* Change thumb color in Microsoft Edge */
 }
 

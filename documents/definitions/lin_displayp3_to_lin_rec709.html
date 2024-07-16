@@ -794,10 +794,6 @@ graph TB
     subgraph NG_lin_displayp3_to_lin_rec709_color4
     NG_lin_displayp3_to_lin_rec709_color4_asColor3[asColor3]
     NG_lin_displayp3_to_lin_rec709_color4_transform[transform]
-    NG_lin_displayp3_to_lin_rec709_color4_swizzle[swizzle]
-    NG_lin_displayp3_to_lin_rec709_color4_swizzle2[swizzle2]
-    NG_lin_displayp3_to_lin_rec709_color4_swizzle3[swizzle3]
-    NG_lin_displayp3_to_lin_rec709_color4_swizzle4[swizzle4]
     NG_lin_displayp3_to_lin_rec709_color4_asColor4[asColor4]
     style NG_lin_displayp3_to_lin_rec709_color4_out  fill:#0C0, color:#FFF
     NG_lin_displayp3_to_lin_rec709_color4_out([out])
@@ -806,14 +802,10 @@ graph TB
     end
     NG_lin_displayp3_to_lin_rec709_color4_in --"in"--> NG_lin_displayp3_to_lin_rec709_color4_asColor3
     NG_lin_displayp3_to_lin_rec709_color4_asColor3 --"in"--> NG_lin_displayp3_to_lin_rec709_color4_transform
-    NG_lin_displayp3_to_lin_rec709_color4_transform --"in"--> NG_lin_displayp3_to_lin_rec709_color4_swizzle
-    NG_lin_displayp3_to_lin_rec709_color4_transform --"in"--> NG_lin_displayp3_to_lin_rec709_color4_swizzle2
-    NG_lin_displayp3_to_lin_rec709_color4_transform --"in"--> NG_lin_displayp3_to_lin_rec709_color4_swizzle3
-    NG_lin_displayp3_to_lin_rec709_color4_in --"in"--> NG_lin_displayp3_to_lin_rec709_color4_swizzle4
-    NG_lin_displayp3_to_lin_rec709_color4_swizzle --"in1"--> NG_lin_displayp3_to_lin_rec709_color4_asColor4
-    NG_lin_displayp3_to_lin_rec709_color4_swizzle2 --"in2"--> NG_lin_displayp3_to_lin_rec709_color4_asColor4
-    NG_lin_displayp3_to_lin_rec709_color4_swizzle3 --"in3"--> NG_lin_displayp3_to_lin_rec709_color4_asColor4
-    NG_lin_displayp3_to_lin_rec709_color4_swizzle4 --"in4"--> NG_lin_displayp3_to_lin_rec709_color4_asColor4
+    NG_lin_displayp3_to_lin_rec709_color4_transform --"in1"--> NG_lin_displayp3_to_lin_rec709_color4_asColor4
+    NG_lin_displayp3_to_lin_rec709_color4_transform --"in2"--> NG_lin_displayp3_to_lin_rec709_color4_asColor4
+    NG_lin_displayp3_to_lin_rec709_color4_transform --"in3"--> NG_lin_displayp3_to_lin_rec709_color4_asColor4
+    NG_lin_displayp3_to_lin_rec709_color4_in --"in4"--> NG_lin_displayp3_to_lin_rec709_color4_asColor4
     NG_lin_displayp3_to_lin_rec709_color4_asColor4 --> NG_lin_displayp3_to_lin_rec709_color4_out
 
 

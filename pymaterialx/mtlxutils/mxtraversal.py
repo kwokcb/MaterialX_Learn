@@ -455,7 +455,7 @@ class MtlxGraphBuilder():
             self.graphDictionary = data['graph']
             self.connections = data['connections']
 
-class mermaidGraphExporter:
+class MxMermaidGraphExporter:
     def __init__(self, graphDictionary, connections):
         self.graphDictionary = graphDictionary
         self.connections = connections

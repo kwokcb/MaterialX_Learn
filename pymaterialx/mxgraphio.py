@@ -1,6 +1,6 @@
 import MaterialX as mx
 import argparse, os
-from mtlxutils.mxtraversal import MtlxGraphBuilder, mermaidGraphExporter
+from mtlxutils.mxtraversal import MtlxGraphBuilder, MxMermaidGraphExporter
 
 # Version check
 from mtlxutils.mxbase import *
@@ -156,7 +156,7 @@ def main():
             # Export to Mermaid in Markdown file
             #graphBuilder2 = MtlxGraphBuilder(None)
             #graphBuilder2.importFromJSON(outputFileName)
-            exporter = mermaidGraphExporter(graphBuilder.getDictionary(), graphBuilder.getConnections())
+            exporter = MxMermaidGraphExporter(graphBuilder.getDictionary(), graphBuilder.getConnections())
             exporter.setOrientation(opts.orientation)
             exporter.setEmitCategory(opts.emitCategory)
             exporter.setEmitType(opts.emitType)

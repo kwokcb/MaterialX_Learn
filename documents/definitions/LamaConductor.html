@@ -1340,6 +1340,8 @@ graph TB
     IMPL_lama_conductor_tangent_rotate_normalize[tangent_rotate_normalize]
     IMPL_lama_conductor_conductor_bsdf[conductor_bsdf]
     IMPL_lama_conductor_iridescence_relative_ior[iridescence_relative_ior]
+    IMPL_lama_conductor_thin_film_bsdf[thin_film_bsdf]
+    IMPL_lama_conductor_thin_film_conductor_bsdf[thin_film_conductor_bsdf]
     IMPL_lama_conductor_tinted_bsdf[tinted_bsdf]
     style IMPL_lama_conductor_out  fill:#0C0, color:#FFF
     IMPL_lama_conductor_out([out])
@@ -1412,11 +1414,13 @@ graph TB
     IMPL_lama_conductor_roughness_anisotropic_squared_clamped --"roughness"--> IMPL_lama_conductor_conductor_bsdf
     IMPL_lama_conductor_normal --"normal"--> IMPL_lama_conductor_conductor_bsdf
     IMPL_lama_conductor_tangent_rotate_normalize --"tangent"--> IMPL_lama_conductor_conductor_bsdf
-    IMPL_lama_conductor_iridescenceThickness --"thinfilm_thickness"--> IMPL_lama_conductor_conductor_bsdf
-    IMPL_lama_conductor_iridescence_relative_ior --"thinfilm_ior"--> IMPL_lama_conductor_conductor_bsdf
     IMPL_lama_conductor_iridescenceIOR --"in1"--> IMPL_lama_conductor_iridescence_relative_ior
     IMPL_lama_conductor_exteriorIOR --"in2"--> IMPL_lama_conductor_iridescence_relative_ior
-    IMPL_lama_conductor_conductor_bsdf --"in1"--> IMPL_lama_conductor_tinted_bsdf
+    IMPL_lama_conductor_iridescenceThickness --"thickness"--> IMPL_lama_conductor_thin_film_bsdf
+    IMPL_lama_conductor_iridescence_relative_ior --"ior"--> IMPL_lama_conductor_thin_film_bsdf
+    IMPL_lama_conductor_thin_film_bsdf --"top"--> IMPL_lama_conductor_thin_film_conductor_bsdf
+    IMPL_lama_conductor_conductor_bsdf --"base"--> IMPL_lama_conductor_thin_film_conductor_bsdf
+    IMPL_lama_conductor_thin_film_conductor_bsdf --"in1"--> IMPL_lama_conductor_tinted_bsdf
     IMPL_lama_conductor_tint --"in2"--> IMPL_lama_conductor_tinted_bsdf
     IMPL_lama_conductor_tinted_bsdf --> IMPL_lama_conductor_out
 

@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <gltf_pbr name="SHD_glassDish" type="surfaceshader" xpos="13.768116" ypos="-5.250000">
+    <input name="occlusion" type="float" nodename="image_occlusion" />
+    <input name="base_color" type="color3" value="1, 1, 1" />
+    <input name="alpha" type="float" value="1" />
+    <input name="metallic" type="float" value="0" />
+    <input name="roughness" type="float" value="0.07" />
+    <input name="iridescence" type="float" nodename="image_iridescence" />
+    <input name="iridescence_ior" type="float" value="1.3" />
+    <input name="iridescence_thickness" type="float" nodename="image_iridescence_thickness" />
+    <input name="transmission" type="float" value="1" />
+    <input name="emissive" type="color3" value="0, 0, 0" />
+    <input name="thickness" type="float" value="0.01" />
+    <input name="attenuation_color" type="color3" value="1, 1, 1" />
+    <input name="attenuation_distance" type="float" value="3.40282e+38" />
+  </gltf_pbr>
+  <surfacematerial name="MAT_glassDish" type="material" xpos="17.391304" ypos="0.000000">
+    <input name="surfaceshader" type="surfaceshader" nodename="SHD_glassDish" />
+  </surfacematerial>
+  <gltf_image name="image_occlusion" type="float" xpos="10.144928" ypos="-5.732759">
+    <input name="file" type="filename" value="goldleaf_orm.png" />
+  </gltf_image>
+  <gltf_image name="image_iridescence" type="float" xpos="10.144928" ypos="-4.396552">
+    <input name="file" type="filename" value="glassdish_irid.png" />
+  </gltf_image>
+  <gltf_iridescence_thickness name="image_iridescence_thickness" type="float" xpos="10.144928" ypos="-3.060345">
+    <input name="file" type="filename" value="glassdish_irid.png" />
+    <input name="thicknessMin" type="float" value="500" />
+    <input name="thicknessMax" type="float" value="550" />
+  </gltf_iridescence_thickness>
+  <gltf_pbr name="SHD_olives" type="surfaceshader" xpos="13.768116" ypos="-0.379310">
+    <input name="base_color" type="color3" nodename="image_basecolor" />
+    <input name="metallic" type="float" value="1" nodename="image_orm" channels="z" />
+    <input name="roughness" type="float" value="1" nodename="image_orm" channels="y" />
+    <input name="occlusion" type="float" value="1" nodename="image_orm" channels="x" />
+    <input name="normal" type="vector3" nodename="image_normal" />
+    <input name="emissive" type="color3" value="0, 0, 0" />
+  </gltf_pbr>
+  <surfacematerial name="MAT_olives" type="material" xpos="17.391304" ypos="1.336207">
+    <input name="surfaceshader" type="surfaceshader" nodename="SHD_olives" />
+  </surfacematerial>
+  <gltf_image name="image_basecolor" type="color3" xpos="10.144928" ypos="-1.137931">
+    <input name="file" type="filename" value="olives_col.png" colorspace="srgb_texture" />
+  </gltf_image>
+  <gltf_image name="image_orm" type="vector3" xpos="10.144928" ypos="0.198276">
+    <input name="file" type="filename" value="olives_orm.png" />
+  </gltf_image>
+  <gltf_normalmap name="image_normal" type="vector3" xpos="10.144928" ypos="1.534483">
+    <input name="file" type="filename" value="olives_nrm.png" />
+  </gltf_normalmap>
+  <gltf_pbr name="SHD_glassCover" type="surfaceshader" xpos="13.768116" ypos="2.396552">
+    <input name="base_color" type="color3" value="1, 1, 1" />
+    <input name="alpha" type="float" value="1" />
+    <input name="metallic" type="float" value="1" nodename="image_orm2" channels="z" />
+    <input name="roughness" type="float" value="1" nodename="image_orm2" channels="y" />
+    <input name="occlusion" type="float" value="1" nodename="image_orm2" channels="x" />
+    <input name="normal" type="vector3" nodename="image_normal2" />
+    <input name="iridescence" type="float" nodename="image_iridescence2" />
+    <input name="iridescence_ior" type="float" value="1.3" />
+    <input name="iridescence_thickness" type="float" nodename="image_iridescence_thickness2" />
+    <input name="transmission" type="float" value="1" />
+    <input name="ior" type="float" value="1.5" />
+    <input name="emissive" type="color3" value="0, 0, 0" />
+    <input name="thickness" type="float" nodename="thickness" />
+    <input name="attenuation_color" type="color3" value="1, 1, 1" />
+    <input name="attenuation_distance" type="float" value="3.40282e+38" />
+  </gltf_pbr>
+  <surfacematerial name="MAT_glassCover" type="material" xpos="17.391304" ypos="2.672414">
+    <input name="surfaceshader" type="surfaceshader" nodename="SHD_glassCover" />
+  </surfacematerial>
+  <gltf_image name="image_orm2" type="vector3" xpos="10.144928" ypos="2.870690">
+    <input name="file" type="filename" value="glasscover_orm.png" />
+  </gltf_image>
+  <gltf_normalmap name="image_normal2" type="vector3" xpos="10.144928" ypos="4.206897">
+    <input name="file" type="filename" value="glasscover_nrm.png" />
+  </gltf_normalmap>
+  <gltf_image name="image_iridescence2" type="float" xpos="10.144928" ypos="5.543103">
+    <input name="file" type="filename" value="glasscover_irid.png" />
+  </gltf_image>
+  <gltf_iridescence_thickness name="image_iridescence_thickness2" type="float" xpos="10.144928" ypos="6.879310">
+    <input name="file" type="filename" value="glasscover_irid.png" />
+    <input name="thicknessMin" type="float" value="500" />
+    <input name="thicknessMax" type="float" value="550" />
+  </gltf_iridescence_thickness>
+  <gltf_image name="thickness" type="float" xpos="10.144928" ypos="8.801724">
+    <input name="file" type="filename" value="glasscover_thick.png" />
+  </gltf_image>
+  <gltf_pbr name="SHD_goldLeaf" type="surfaceshader" xpos="13.768116" ypos="7.836207">
+    <input name="base_color" type="color3" nodename="image_basecolor2" />
+    <input name="metallic" type="float" value="1" nodename="image_orm3" channels="z" />
+    <input name="roughness" type="float" value="1" nodename="image_orm3" channels="y" />
+    <input name="occlusion" type="float" value="1" nodename="image_orm3" channels="x" />
+    <input name="alpha_mode" type="integer" value="1" />
+    <input name="normal" type="vector3" nodename="image_normal3" />
+    <input name="emissive" type="color3" value="0, 0, 0" />
+  </gltf_pbr>
+  <surfacematerial name="MAT_goldLeaf" type="material" xpos="17.391304" ypos="4.008621">
+    <input name="surfaceshader" type="surfaceshader" nodename="SHD_goldLeaf" />
+  </surfacematerial>
+  <gltf_image name="image_basecolor2" type="color3" xpos="10.144928" ypos="10.137931">
+    <input name="file" type="filename" value="goldleaf_col.png" colorspace="srgb_texture" />
+  </gltf_image>
+  <gltf_image name="image_orm3" type="vector3" xpos="10.144928" ypos="11.474138">
+    <input name="file" type="filename" value="goldleaf_orm.png" />
+  </gltf_image>
+  <gltf_normalmap name="image_normal3" type="vector3" xpos="10.144928" ypos="12.810345">
+    <input name="file" type="filename" value="goldleaf_nrm.png" />
+  </gltf_normalmap>
+</materialx>

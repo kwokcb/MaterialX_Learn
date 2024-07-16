@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<materialx version="1.39" colorspace="lin_rec709">
+  <nodegraph name="nodegraph1">
+    <constant name="PI" type="float" xpos="-49.652172" ypos="-1.482759">
+      <input name="value" type="float" value="3.141592653589793238462643" />
+    </constant>
+    <cos name="cos_float" type="float" xpos="-42.913044" ypos="0.318966">
+      <input name="in" type="float" nodename="pi_div_sides" />
+    </cos>
+    <input name="sides" type="float" value="10" xpos="-49.289856" ypos="1.551724" uimin="3" uimax="100" />
+    <input name="width" type="float" value="1" xpos="-43.007248" ypos="3.060345" />
+    <input name="height" type="float" value="1" xpos="-40.362320" ypos="3.612069" />
+    <multiply name="aWidth" type="float" xpos="-37.043480" ypos="-0.508621">
+      <input name="in2" type="float" interfacename="width" />
+      <input name="in1" type="float" nodename="cos_float" />
+    </multiply>
+    <multiply name="aHeight" type="float" xpos="-37.014492" ypos="1.387931">
+      <input name="in2" type="float" interfacename="height" />
+      <input name="in1" type="float" nodename="cos_float" />
+    </multiply>
+    <texcoord name="texcoord_vector2" type="vector2" xpos="-40.579712" ypos="-2.448276" />
+    <multiply name="times_2" type="vector2" xpos="-36.956520" ypos="-2.534483">
+      <input name="in1" type="vector2" nodename="texcoord_vector2" />
+      <input name="in2" type="vector2" value="2, 2" />
+    </multiply>
+    <subtract name="minus_1" type="vector2" xpos="-33.202900" ypos="-2.310345">
+      <input name="in1" type="vector2" nodename="times_2" />
+      <input name="in2" type="vector2" value="1, 1" />
+    </subtract>
+    <combine2 name="width_height_vec" type="vector2" xpos="-33.420288" ypos="2.206897">
+      <input name="in1" type="float" nodename="aWidth" />
+      <input name="in2" type="float" nodename="aHeight" />
+    </combine2>
+    <divide name="uv" type="vector2" xpos="-30.666666" ypos="-2.206897">
+      <input name="in2" type="vector2" nodename="width_height_vec" />
+      <input name="in1" type="vector2" nodename="minus_1" />
+    </divide>
+    <convert name="convert_float_surfaceshader" type="surfaceshader" xpos="-32.456520" ypos="6.646552">
+      <input name="in" type="float" value="0" />
+    </convert>
+    <multiply name="multiply_vector2" type="vector2" xpos="-28.202898" ypos="-1.922414">
+      <input name="in1" type="vector2" nodename="uv" />
+      <input name="in2" type="vector2" value="1, -1" />
+    </multiply>
+    <atan2 name="pCoord" type="float" xpos="-21.362318" ypos="-3.172414">
+      <input name="inx" type="float" nodename="extract_x" />
+      <input name="iny" type="float" nodename="extract_y" />
+    </atan2>
+    <convert name="convert_vector2_surfaceshader" type="surfaceshader" xpos="-27.173914" ypos="6.646552">
+      <input name="in" type="vector2" value="0, 0" />
+    </convert>
+    <dot name="unity_note" type="float" xpos="14.014493" ypos="-2.172414">
+      <input name="note" type="string" value="https://docs.unity3d.com/Packages/com.unity.shadergraph@6.9/manual/Polygon-Node.html" />
+    </dot>
+    <extract name="extract_x" type="float" xpos="-24.956522" ypos="-4.370690">
+      <input name="in" type="vector2" nodename="multiply_vector2" />
+    </extract>
+    <extract name="extract_y" type="float" xpos="-24.724638" ypos="-2.586207">
+      <input name="in" type="vector2" nodename="multiply_vector2" />
+      <input name="index" type="integer" value="1" />
+    </extract>
+    <divide name="pi_div_sides" type="float" xpos="-46.231884" ypos="0.008621">
+      <input name="in1" type="float" nodename="PI" />
+      <input name="in2" type="float" interfacename="sides" />
+    </divide>
+    <multiply name="r" type="float" xpos="-18.724638" ypos="0.422414">
+      <input name="in1" type="float" nodename="pi_div_sides" />
+      <input name="in2" type="float" value="2" />
+    </multiply>
+    <add name="pCoord_plus_half" type="float" xpos="-17.188406" ypos="-4.931035">
+      <input name="in1" type="float" nodename="pCoord" />
+      <input name="in2" type="float" value="0.5" />
+    </add>
+    <divide name="divide_r" type="float" xpos="-15.101449" ypos="1.698276">
+      <input name="in2" type="float" nodename="r" />
+      <input name="in1" type="float" nodename="pCoord_plus_half" />
+    </divide>
+    <floor name="floor_float" type="float" xpos="-13.014493" ypos="1.956897">
+      <input name="in" type="float" nodename="divide_r" />
+    </floor>
+    <multiply name="multiply_r" type="float" xpos="-10.260870" ypos="-0.646552">
+      <input name="in2" type="float" nodename="r" />
+      <input name="in1" type="float" nodename="floor_float" />
+    </multiply>
+    <subtract name="subtract_pCoord" type="float" xpos="-7.000000" ypos="-2.448276">
+      <input name="in1" type="float" nodename="multiply_r" />
+      <input name="in2" type="float" nodename="pCoord" />
+    </subtract>
+    <cos name="cos_float2" type="float" xpos="-4.521739" ypos="-0.508621">
+      <input name="in" type="float" nodename="subtract_pCoord" />
+    </cos>
+    <multiply name="distance" type="float" xpos="0.782609" ypos="1.931034">
+      <input name="in1" type="float" nodename="cos_float2" />
+      <input name="in2" type="float" nodename="length_texcoord" />
+    </multiply>
+    <magnitude name="length_texcoord" type="float" xpos="-19.376812" ypos="4.732759">
+      <input name="in" type="vector2" nodename="multiply_vector2" />
+    </magnitude>
+    <clamp name="clamp_float" type="float" xpos="13.768116" ypos="-0.370690">
+      <input name="in" type="float" nodename="divide_float3" />
+      <input name="high" type="float" value="1" />
+      <input name="low" type="float" value="0" />
+    </clamp>
+    <subtract name="one_min_distance" type="float" xpos="3.673913" ypos="1.818966">
+      <input name="in1" type="float" value="1" />
+      <input name="in2" type="float" nodename="distance" />
+    </subtract>
+    <divide name="divide_float3" type="float" xpos="7.963768" ypos="1.655172">
+      <input name="in1" type="float" nodename="one_min_distance" />
+      <input name="in2" type="float" value="0.001" />
+    </divide>
+    <output name="output_float" type="float" nodename="clamp_float" xpos="17.391304" ypos="0.000000" />
+  </nodegraph>
+</materialx>
