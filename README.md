@@ -27,13 +27,6 @@ If you find value in here and want support its progress, Please consider sponsor
 <img src="./documents/images/march_2024_1.38.9_final.png" width="60%">
 </a>
 
-## March, 2024 Update
-* Update to 1.38.9 release which includes support for things like NPR library. 
-* Inclusion of OpenPBR reference definition 
-* Usability / workflow enhancements in progress, including:
-  * enhanced Javascript / Web support for graphing, shader generation and preview
-  * property editor revamp for definitions include shader preview, graph and interaction.
-
 ## Visit the Repository Content
 The content for the site is provided in the following sub-folders:
 
