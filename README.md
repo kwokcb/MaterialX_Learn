@@ -1,7 +1,6 @@
 # Site Status
 
-## Support for this repo and site has halted as of the MaterialX 1.39 official release. Please sponser the authors for any
-further development. Thank you.
+## Support for this repo and site has halted as of the MaterialX 1.39 official release. Please sponser the authors for any further development. Thank you.
 
 # Welcome to "MaterialX Elements"
 [![main](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml/badge.svg)](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml)
