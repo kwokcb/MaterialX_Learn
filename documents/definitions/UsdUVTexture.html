@@ -36,7 +36,7 @@
 
   <!--FILL_CONTENT_STYLE-->
 
-  <title>MaterialX Learn</title>
+  <title>MaterialX Elements</title>
   <link rel="icon" type="images" href="../../documents/images/logo3d_icon.png" class="img-fluid">
 
 </head>
@@ -65,9 +65,9 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="../../index.html">
-            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Elements"
                     class="rounded d-inline-block align-text-center" width="50px">
-                MaterialX Learn</h5>
+                MaterialX Elements</h5>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
             aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -82,7 +82,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Learn
+                        Fundamentals
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -164,6 +164,7 @@
                     </ul>
                 </li>
 
+                <!-- 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Utilities</a>
@@ -177,10 +178,10 @@
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Modules</a></li>
                     </ul>
                 </li>
-
+                -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">Develop</a>
+                        aria-expanded="false">Interactive Learning</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/python_MaterialX.html">Notebooks</a></li>
                         <li><a class="dropdown-item" href="../../documents/jupyter_example.html">Examples</a></li>
@@ -189,6 +190,7 @@
                     </ul>
                 </li>
 
+                <!--
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Workflows</a>
@@ -198,6 +200,7 @@
                         <li><a class="dropdown-item" href="../../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
                     </ul>
                 </li>
+                -->                     
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -751,14 +754,19 @@ graph TB
     IMP_UsdUVTexture_22_image_reader[image_reader]
     IMP_UsdUVTexture_22_image_scale[image_scale]
     IMP_UsdUVTexture_22_image_bias[image_bias]
+    IMP_UsdUVTexture_22_swizzle[swizzle]
     style IMP_UsdUVTexture_22_r  fill:#0C0, color:#FFF
     IMP_UsdUVTexture_22_r([r])
+    IMP_UsdUVTexture_22_swizzle2[swizzle2]
     style IMP_UsdUVTexture_22_g  fill:#0C0, color:#FFF
     IMP_UsdUVTexture_22_g([g])
+    IMP_UsdUVTexture_22_swizzle3[swizzle3]
     style IMP_UsdUVTexture_22_b  fill:#0C0, color:#FFF
     IMP_UsdUVTexture_22_b([b])
+    IMP_UsdUVTexture_22_swizzle4[swizzle4]
     style IMP_UsdUVTexture_22_a  fill:#0C0, color:#FFF
     IMP_UsdUVTexture_22_a([a])
+    IMP_UsdUVTexture_22_swizzle5[swizzle5]
     style IMP_UsdUVTexture_22_rgb  fill:#0C0, color:#FFF
     IMP_UsdUVTexture_22_rgb([rgb])
     style IMP_UsdUVTexture_22_rgba  fill:#0C0, color:#FFF
@@ -787,11 +795,16 @@ graph TB
     IMP_UsdUVTexture_22_scale --"in2"--> IMP_UsdUVTexture_22_image_scale
     IMP_UsdUVTexture_22_image_scale --"in1"--> IMP_UsdUVTexture_22_image_bias
     IMP_UsdUVTexture_22_bias --"in2"--> IMP_UsdUVTexture_22_image_bias
-    IMP_UsdUVTexture_22_image_bias --> IMP_UsdUVTexture_22_r
-    IMP_UsdUVTexture_22_image_bias --> IMP_UsdUVTexture_22_g
-    IMP_UsdUVTexture_22_image_bias --> IMP_UsdUVTexture_22_b
-    IMP_UsdUVTexture_22_image_bias --> IMP_UsdUVTexture_22_a
-    IMP_UsdUVTexture_22_image_bias --> IMP_UsdUVTexture_22_rgb
+    IMP_UsdUVTexture_22_image_bias --"in"--> IMP_UsdUVTexture_22_swizzle
+    IMP_UsdUVTexture_22_swizzle --> IMP_UsdUVTexture_22_r
+    IMP_UsdUVTexture_22_image_bias --"in"--> IMP_UsdUVTexture_22_swizzle2
+    IMP_UsdUVTexture_22_swizzle2 --> IMP_UsdUVTexture_22_g
+    IMP_UsdUVTexture_22_image_bias --"in"--> IMP_UsdUVTexture_22_swizzle3
+    IMP_UsdUVTexture_22_swizzle3 --> IMP_UsdUVTexture_22_b
+    IMP_UsdUVTexture_22_image_bias --"in"--> IMP_UsdUVTexture_22_swizzle4
+    IMP_UsdUVTexture_22_swizzle4 --> IMP_UsdUVTexture_22_a
+    IMP_UsdUVTexture_22_image_bias --"in"--> IMP_UsdUVTexture_22_swizzle5
+    IMP_UsdUVTexture_22_swizzle5 --> IMP_UsdUVTexture_22_rgb
     IMP_UsdUVTexture_22_image_bias --> IMP_UsdUVTexture_22_rgba
 
 
@@ -1152,14 +1165,19 @@ graph TB
     IMP_UsdUVTexture_23_image_reader[image_reader]
     IMP_UsdUVTexture_23_image_scale[image_scale]
     IMP_UsdUVTexture_23_image_bias[image_bias]
+    IMP_UsdUVTexture_23_swizzle[swizzle]
     style IMP_UsdUVTexture_23_r  fill:#0C0, color:#FFF
     IMP_UsdUVTexture_23_r([r])
+    IMP_UsdUVTexture_23_swizzle2[swizzle2]
     style IMP_UsdUVTexture_23_g  fill:#0C0, color:#FFF
     IMP_UsdUVTexture_23_g([g])
+    IMP_UsdUVTexture_23_swizzle3[swizzle3]
     style IMP_UsdUVTexture_23_b  fill:#0C0, color:#FFF
     IMP_UsdUVTexture_23_b([b])
+    IMP_UsdUVTexture_23_swizzle4[swizzle4]
     style IMP_UsdUVTexture_23_a  fill:#0C0, color:#FFF
     IMP_UsdUVTexture_23_a([a])
+    IMP_UsdUVTexture_23_swizzle5[swizzle5]
     style IMP_UsdUVTexture_23_rgb  fill:#0C0, color:#FFF
     IMP_UsdUVTexture_23_rgb([rgb])
     style IMP_UsdUVTexture_23_file  fill:#09D, color:#FFF
@@ -1186,11 +1204,16 @@ graph TB
     IMP_UsdUVTexture_23_scale --"in2"--> IMP_UsdUVTexture_23_image_scale
     IMP_UsdUVTexture_23_image_scale --"in1"--> IMP_UsdUVTexture_23_image_bias
     IMP_UsdUVTexture_23_bias --"in2"--> IMP_UsdUVTexture_23_image_bias
-    IMP_UsdUVTexture_23_image_bias --> IMP_UsdUVTexture_23_r
-    IMP_UsdUVTexture_23_image_bias --> IMP_UsdUVTexture_23_g
-    IMP_UsdUVTexture_23_image_bias --> IMP_UsdUVTexture_23_b
-    IMP_UsdUVTexture_23_image_bias --> IMP_UsdUVTexture_23_a
-    IMP_UsdUVTexture_23_image_bias --> IMP_UsdUVTexture_23_rgb
+    IMP_UsdUVTexture_23_image_bias --"in"--> IMP_UsdUVTexture_23_swizzle
+    IMP_UsdUVTexture_23_swizzle --> IMP_UsdUVTexture_23_r
+    IMP_UsdUVTexture_23_image_bias --"in"--> IMP_UsdUVTexture_23_swizzle2
+    IMP_UsdUVTexture_23_swizzle2 --> IMP_UsdUVTexture_23_g
+    IMP_UsdUVTexture_23_image_bias --"in"--> IMP_UsdUVTexture_23_swizzle3
+    IMP_UsdUVTexture_23_swizzle3 --> IMP_UsdUVTexture_23_b
+    IMP_UsdUVTexture_23_image_bias --"in"--> IMP_UsdUVTexture_23_swizzle4
+    IMP_UsdUVTexture_23_swizzle4 --> IMP_UsdUVTexture_23_a
+    IMP_UsdUVTexture_23_image_bias --"in"--> IMP_UsdUVTexture_23_swizzle5
+    IMP_UsdUVTexture_23_swizzle5 --> IMP_UsdUVTexture_23_rgb
 
 
 </div></code></pre>

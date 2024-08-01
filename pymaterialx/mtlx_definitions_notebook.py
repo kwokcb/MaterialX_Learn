@@ -23,6 +23,7 @@ import mtlxutils.mxfile as mxf
 from mtlxutils.mxnodegraph import MtlxNodeGraph as mxg
 # For markdown display
 from IPython.display import display_markdown
+import re
 
 # Version check
 from mtlxutils.mxbase import *
@@ -33,9 +34,11 @@ if not haveVersion1387:
 stdlib = mx.createDocument()
 searchPath = mx.getDefaultDataSearchPath()
 libraryFolders = mx.getDefaultDataLibraryFolders()
+libFiles = None
 try:
     libFiles = mx.loadLibraries(libraryFolders, searchPath, stdlib)
-    print('Loaded %s standard library definitions' % len(stdlib.getNodeDefs()))
+
+    print('Loaded %s standard library definitions for MaterialX version %s' % (len(stdlib.getNodeDefs()), mx.__version__))
 except mx.Exception as err:
     print('Failed to load standard library definitions: "', err, '"')
 
@@ -45,6 +48,93 @@ doc.importLibrary(stdlib)
 # Write predicate
 def skipLibraryElement(elem):
     return not elem.hasSourceUri()
+
+# %% [markdown]
+# ## Moving Comments into Node Definitions
+
+# %%
+def transferCommentsToNodeDefs(libFile):
+    
+    readOptions = mx.XmlReadOptions()
+    readOptions.readComments = True
+    readOptions.readNewlines = True    
+    readOptions.upgradeVersion = False
+
+    outputDoc = mx.createDocument()
+    mx.readFromXmlFile(outputDoc, libFile,  mx.FileSearchPath(), readOptions)        
+
+    # Extract out comments and nodedefs
+    currentComment = []
+    children = outputDoc.getChildren()
+    for child in children:
+        if child.getCategory() == 'comment':
+            docstring = child.getAttribute('doc')
+            docstring = docstring.strip()
+            docstring = re.sub(r'\s+', ' ', docstring.replace('\n', '').lstrip())
+            currentComment.append(['comment', docstring, child.getName() ])
+        elif child.getCategory() == 'nodedef':
+            currentComment.append(['nodedef', child.getName()])
+
+    strippedComments = []
+    # Heuristic to find comments for nodedefs:
+    # 1. Accumulate nodedefs until a comment is found
+    # 2. Add an association between the comment and nodedefs
+    # 3. Skip if a comment is found immediately before a comment
+    # 4. Keep track of comments to remove
+    hitComment = False
+    nodedefList = []
+    removeComments = []
+    for i in range(len(currentComment)-1, -1, -1):
+        if not hitComment and currentComment[i][0] == 'comment':
+            if len(nodedefList) > 0:
+                # Keep track of comments to remove.
+                # Add [ nodedef, comment ] pair 
+                removeComments.append(currentComment[i][2])
+                for nodedef in nodedefList:
+                    strippedComments.append([nodedef, currentComment[i][1]])
+                nodedefList.clear();
+            hitComment = True
+        elif currentComment[i][0] == 'nodedef':
+            nodedefList.append(currentComment[i][1])
+            hitComment = False
+
+    # Apply comments to nodedefs:
+    # 1. Find nodedefs
+    # 2. Add new comments to existing comments
+    print('nodedefs with new comments')
+    for i in range(len(strippedComments)):
+        print(strippedComments[i])
+
+        nodedef = outputDoc.getChild(strippedComments[i][0])
+        if nodedef is None:
+            print('Cannot find nodedef:', strippedComments[i][0])
+            continue
+        currentDoc = nodedef.getAttribute('doc')
+        newDoc = strippedComments[i][1]
+        if len(currentDoc) > 0:
+            newDoc = newDoc + ". " + currentDoc
+        nodedef.setAttribute('doc',  newDoc)
+
+    # Remove comments
+    for i in range(len(removeComments)):
+        outputDoc.removeChild(removeComments[i])
+
+    return outputDoc
+
+# remove duplicates from libFiles
+transferredDoc = None
+libFiles = list(dict.fromkeys(libFiles))
+for libFile in libFiles:
+    if 'stdlib_defs.mtlx' in libFile:
+
+        print('> Transfer comments to nodedefs for file::', libFile)
+        transferredDoc = transferCommentsToNodeDefs(libFile)
+        break
+
+if transferredDoc is None:
+    print('Failed to transfer comments to nodedefs')
+else:
+    mx.writeToXmlFile(transferredDoc, 'data/stdlib_defs_doc_transfer.mtlx')
 
 # %% [markdown]
 # ## 1. Creating Definitions from Compound Graphs
@@ -85,9 +175,20 @@ def createDefinitionAndFunctionalGraph(nodeGraph, cparam):
     Returns:
     - Node definition and functional node graph
     '''
-    definition = doc.addNodeDefFromGraph(nodeGraph, cparam['nodedefName'],
-                            cparam['category'], cparam['version'], cparam['defaultversion'], 
-                            cparam['nodegroup'], cparam['nodegraphName'])
+    version_major, version_minor, version_patch = mx.getVersionIntegers()
+    if version_major >=1 and version_minor >= 39:
+        print('Using 1.39 or later API to create definition...')
+        definition = doc.addNodeDefFromGraph(nodeGraph, cparam['nodedefName'], cparam['category'], cparam['nodegraphName'])
+        if len(cparam['version']) > 0:
+            definition.setVersionString(cparam['version'])
+        if cparam['defaultversion'] != None:
+            definition.setDefaultVersion(cparam['defaultversion'])
+        if len(cparam['nodegroup']) > 0:
+            definition.setNodeGroup(cparam['nodegroup'])
+    else:
+        definition = doc.addNodeDefFromGraph(nodeGraph, cparam['nodedefName'],
+                                             cparam['category'], cparam['version'], cparam['defaultversion'], 
+                                             cparam['nodegroup'], cparam['nodegraphName'])
     funcgraph = doc.getNodeGraph(cparam['nodegraphName'])
 
     return definition, funcgraph
@@ -320,7 +421,6 @@ def writeToMarkdown(val):
 # * A node group is always added. This setting is difficult to infer based on just the compound node graph so can be a user speified choice based on the available groups returned from `getNodeGroups()` or a new custom one.
 
 # %%
-
 def generateIdentifier(category, version, nodeGraph):
     '''
     Utility to generate a unique identifier for a definition. Takes into account
@@ -368,7 +468,7 @@ def createImplIdentifier(identifier):
     return nodegraphName
 
 # Read in an example with a compound graph
-doc, libFiles = mxf.MtlxFile.createWorkingDocument()
+doc, libFiles, status = mxf.MtlxFile.createWorkingDocument()
 mx.readFromXmlFile(doc, mx.FilePath('./data/test_procedural.mtlx'))
 
 # Determine the node group and version
@@ -403,6 +503,9 @@ for nodeGraph in compoundGraphs:
         documentContents = writeDocToString(defDoc)
         writeDocToMarkdown(documentContents)
     break
+
+# %% [markdown]
+# 
 
 # %% [markdown]
 # ### 1.38.7 Definition Patching
@@ -464,7 +567,7 @@ def patchDefinition(definition, funcgraph, documentation, namespace):
 
 # %%
 # Run definition creation again with patching logic
-doc, libFiles = mxf.MtlxFile.createWorkingDocument()
+doc, libFiles, status = mxf.MtlxFile.createWorkingDocument()
 mx.readFromXmlFile(doc, mx.FilePath('./data/test_procedural.mtlx'))
 
 compoundGraphs = findCompoundGraphs(doc, libFiles)
@@ -552,7 +655,7 @@ def addSourceNodeDefinition(doc, cparam):
     return newDef
 
 # Create a working document and add a nodedef
-doc, libFiles = mxf.MtlxFile.createWorkingDocument()
+doc, libFiles, status = mxf.MtlxFile.createWorkingDocument()
 
 cparam = {}
 category = nodeGraph.getName().lower()
@@ -626,10 +729,10 @@ def copyGraphInterface(newDef, refNodeGraph):
 
 # %%
 # Create new workgin document
-sourceCodeDoc, libFiles = mxf.MtlxFile.createWorkingDocument()
+sourceCodeDoc, libFiles, status = mxf.MtlxFile.createWorkingDocument()
 
 # Read in reference nodegraph
-refdoc, reflibFiles = mxf.MtlxFile.createWorkingDocument()
+refdoc, reflibFiles, status = mxf.MtlxFile.createWorkingDocument()
 mx.readFromXmlFile(refdoc, mx.FilePath('./data/myadd_compound_graph.mtlx'))
 
 # Create a new empty definition
@@ -895,7 +998,7 @@ mxf.MtlxFile.writeDocumentToFile(filesource_doc, './data/myadd_definition_file.m
 # 
 
 # %%
-doc, libFiles = mxf.MtlxFile.createWorkingDocument()
+doc, libFiles, status = mxf.MtlxFile.createWorkingDocument()
 mx.readFromXmlFile(doc, 'data/standard_surface_marble_solid.mtlx')
 
 nodeGraph = doc.getNodeGraph('NG_marble1')

@@ -36,7 +36,7 @@
 
   <!--FILL_CONTENT_STYLE-->
 
-  <title>MaterialX Learn</title>
+  <title>MaterialX Elements</title>
   <link rel="icon" type="images" href="../../documents/images/logo3d_icon.png" class="img-fluid">
 
 </head>
@@ -65,9 +65,9 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="../../index.html">
-            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Elements"
                     class="rounded d-inline-block align-text-center" width="50px">
-                MaterialX Learn</h5>
+                MaterialX Elements</h5>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
             aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -82,7 +82,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Learn
+                        Fundamentals
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -164,6 +164,7 @@
                     </ul>
                 </li>
 
+                <!-- 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Utilities</a>
@@ -177,10 +178,10 @@
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Modules</a></li>
                     </ul>
                 </li>
-
+                -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">Develop</a>
+                        aria-expanded="false">Interactive Learning</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/python_MaterialX.html">Notebooks</a></li>
                         <li><a class="dropdown-item" href="../../documents/jupyter_example.html">Examples</a></li>
@@ -189,6 +190,7 @@
                     </ul>
                 </li>
 
+                <!--
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Workflows</a>
@@ -198,6 +200,7 @@
                         <li><a class="dropdown-item" href="../../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
                     </ul>
                 </li>
+                -->                     
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -1173,12 +1176,15 @@ Category: standard_surface_to_gltf_pbr
 <div id="ND_standard_surface_to_gltf_pbr_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_standard_surface_to_gltf_pbr
+    NG_standard_surface_to_gltf_pbr_swizzle[swizzle]
     NG_standard_surface_to_gltf_pbr_has_coat_color[has_coat_color]
     NG_standard_surface_to_gltf_pbr_scaledBaseColor[scaledBaseColor]
     NG_standard_surface_to_gltf_pbr_coatAttenuation[coatAttenuation]
     NG_standard_surface_to_gltf_pbr_mixedBaseColor[mixedBaseColor]
     NG_standard_surface_to_gltf_pbr_constantOneThird[constantOneThird]
     NG_standard_surface_to_gltf_pbr_coatColor[coatColor]
+    NG_standard_surface_to_gltf_pbr_swizzle2[swizzle2]
+    NG_standard_surface_to_gltf_pbr_swizzle3[swizzle3]
     NG_standard_surface_to_gltf_pbr_weightedCoat[weightedCoat]
     style NG_standard_surface_to_gltf_pbr_base_color  fill:#C72, color:#FFF
     NG_standard_surface_to_gltf_pbr_base_color{base_color}
@@ -1244,7 +1250,8 @@ graph TB
     style NG_standard_surface_to_gltf_pbr_emission  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_emission([emission])
     end
-    NG_standard_surface_to_gltf_pbr_coat_color --"in1"--> NG_standard_surface_to_gltf_pbr_has_coat_color
+    NG_standard_surface_to_gltf_pbr_coat_color --"in"--> NG_standard_surface_to_gltf_pbr_swizzle
+    NG_standard_surface_to_gltf_pbr_swizzle --"in1"--> NG_standard_surface_to_gltf_pbr_has_coat_color
     NG_standard_surface_to_gltf_pbr_base_color --"in1"--> NG_standard_surface_to_gltf_pbr_scaledBaseColor
     NG_standard_surface_to_gltf_pbr_base --"in2"--> NG_standard_surface_to_gltf_pbr_scaledBaseColor
     NG_standard_surface_to_gltf_pbr_coat_color --"fg"--> NG_standard_surface_to_gltf_pbr_coatAttenuation
@@ -1253,8 +1260,10 @@ graph TB
     NG_standard_surface_to_gltf_pbr_coatAttenuation --"in2"--> NG_standard_surface_to_gltf_pbr_mixedBaseColor
     NG_standard_surface_to_gltf_pbr_coat_color --"in1"--> NG_standard_surface_to_gltf_pbr_coatColor
     NG_standard_surface_to_gltf_pbr_coat --"in2"--> NG_standard_surface_to_gltf_pbr_coatColor
-    NG_standard_surface_to_gltf_pbr_coatColor --"in1"--> NG_standard_surface_to_gltf_pbr_weightedCoat
-    NG_standard_surface_to_gltf_pbr_constantOneThird --"in2"--> NG_standard_surface_to_gltf_pbr_weightedCoat
+    NG_standard_surface_to_gltf_pbr_coatColor --"in"--> NG_standard_surface_to_gltf_pbr_swizzle2
+    NG_standard_surface_to_gltf_pbr_constantOneThird --"in"--> NG_standard_surface_to_gltf_pbr_swizzle3
+    NG_standard_surface_to_gltf_pbr_swizzle2 --"in1"--> NG_standard_surface_to_gltf_pbr_weightedCoat
+    NG_standard_surface_to_gltf_pbr_swizzle3 --"in2"--> NG_standard_surface_to_gltf_pbr_weightedCoat
     NG_standard_surface_to_gltf_pbr_has_coat_color --"value1"--> NG_standard_surface_to_gltf_pbr_base_color
     NG_standard_surface_to_gltf_pbr_scaledBaseColor --"in1"--> NG_standard_surface_to_gltf_pbr_base_color
     NG_standard_surface_to_gltf_pbr_mixedBaseColor --"in2"--> NG_standard_surface_to_gltf_pbr_base_color

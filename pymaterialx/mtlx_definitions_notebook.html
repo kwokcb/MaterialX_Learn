@@ -15139,6 +15139,7 @@ of a working document.</p>
 <span class="kn">from</span> <span class="nn">mtlxutils.mxnodegraph</span> <span class="kn">import</span> <span class="n">MtlxNodeGraph</span> <span class="k">as</span> <span class="n">mxg</span>
 <span class="c1"># For markdown display</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display_markdown</span>
+<span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">os</span>
 
 <span class="c1"># Version check</span>
 <span class="kn">from</span> <span class="nn">mtlxutils.mxbase</span> <span class="kn">import</span> <span class="o">*</span>
@@ -15149,9 +15150,11 @@ of a working document.</p>
 <span class="n">stdlib</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
 <span class="n">searchPath</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">getDefaultDataSearchPath</span><span class="p">()</span>
 <span class="n">libraryFolders</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">getDefaultDataLibraryFolders</span><span class="p">()</span>
+<span class="n">libFiles</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">libFiles</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">loadLibraries</span><span class="p">(</span><span class="n">libraryFolders</span><span class="p">,</span> <span class="n">searchPath</span><span class="p">,</span> <span class="n">stdlib</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loaded </span><span class="si">%s</span><span class="s1"> standard library definitions&#39;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">stdlib</span><span class="o">.</span><span class="n">getNodeDefs</span><span class="p">()))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loaded </span><span class="si">%s</span><span class="s1"> standard library definitions for MaterialX version </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stdlib</span><span class="o">.</span><span class="n">getNodeDefs</span><span class="p">()),</span> <span class="n">mx</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
 <span class="k">except</span> <span class="n">mx</span><span class="o">.</span><span class="n">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to load standard library definitions: &quot;&#39;</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
 
@@ -15180,9 +15183,188 @@ of a working document.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Loaded 750 standard library definitions
+<pre>Loaded 750 standard library definitions for MaterialX version 1.39.0
 </pre>
 </div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Moving-Comments-into-Node-Definitions">Moving Comments into Node Definitions<a class="anchor-link" href="#Moving-Comments-into-Node-Definitions">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sanitizeXMLString</span><span class="p">(</span><span class="n">xmlString</span><span class="p">):</span>
+    <span class="c1"># Add more here as needed</span>
+    <span class="n">replacements</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;&lt;&#39;</span><span class="p">:</span> <span class="s1">&#39;&amp;lt;&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;&gt;&#39;</span><span class="p">:</span> <span class="s1">&#39;&amp;gt;&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;&amp;&#39;</span><span class="p">:</span> <span class="s1">&#39;&amp;amp;&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;&quot;&#39;</span><span class="p">:</span> <span class="s1">&#39;&amp;quot;&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;&#39;&quot;</span><span class="p">:</span> <span class="s1">&#39;&amp;apos;&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="p">,</span>
+        <span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="p">,</span>
+        <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">:</span> <span class="s1">&#39;    &#39;</span><span class="p">,</span> <span class="c1"># Using 4 spaces for tabs</span>
+        <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">:</span> <span class="s1">&#39; &#39;</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Replace each invalid character with its &amp; equivalent or space</span>
+    <span class="k">for</span> <span class="n">char</span><span class="p">,</span> <span class="n">replacement</span> <span class="ow">in</span> <span class="n">replacements</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">xmlString</span> <span class="o">=</span> <span class="n">xmlString</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="n">replacement</span><span class="p">)</span>
+
+    <span class="c1"># Strip out leading and trailing whitespace    </span>
+    <span class="n">xmlString</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">xmlString</span><span class="p">)</span> 
+    <span class="n">xmlString</span> <span class="o">=</span> <span class="n">xmlString</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">xmlString</span>
+
+<span class="k">def</span> <span class="nf">transferCommentsToNodeDefs</span><span class="p">(</span><span class="n">libFile</span><span class="p">):</span>
+    
+    <span class="n">readOptions</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">XmlReadOptions</span><span class="p">()</span>
+    <span class="n">readOptions</span><span class="o">.</span><span class="n">readComments</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">readOptions</span><span class="o">.</span><span class="n">readNewlines</span> <span class="o">=</span> <span class="kc">True</span>    
+    <span class="n">readOptions</span><span class="o">.</span><span class="n">upgradeVersion</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="n">outputDoc</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">createDocument</span><span class="p">()</span>
+    <span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlFile</span><span class="p">(</span><span class="n">outputDoc</span><span class="p">,</span> <span class="n">libFile</span><span class="p">,</span>  <span class="n">mx</span><span class="o">.</span><span class="n">FileSearchPath</span><span class="p">(),</span> <span class="n">readOptions</span><span class="p">)</span>        
+
+    <span class="c1"># Extract out comments and nodedefs</span>
+    <span class="n">currentComment</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">children</span> <span class="o">=</span> <span class="n">outputDoc</span><span class="o">.</span><span class="n">getChildren</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">getCategory</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;comment&#39;</span><span class="p">:</span>
+            <span class="n">docstring</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;doc&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">docstring</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">docstring</span> <span class="o">=</span> <span class="n">sanitizeXMLString</span><span class="p">(</span><span class="n">docstring</span><span class="p">)</span>
+            <span class="c1"># Repace end .. with .</span>
+            <span class="k">if</span> <span class="n">docstring</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">):</span>
+                <span class="n">docstring</span> <span class="o">=</span> <span class="n">docstring</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">currentComment</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s1">&#39;comment&#39;</span><span class="p">,</span> <span class="n">docstring</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span> <span class="p">])</span>
+        <span class="k">elif</span> <span class="n">child</span><span class="o">.</span><span class="n">getCategory</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;nodedef&#39;</span><span class="p">:</span>
+            <span class="n">currentComment</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s1">&#39;nodedef&#39;</span><span class="p">,</span> <span class="n">child</span><span class="o">.</span><span class="n">getName</span><span class="p">()])</span>
+
+    <span class="n">strippedComments</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># Heuristic to find comments for nodedefs:</span>
+    <span class="c1"># 1. Accumulate nodedefs until a comment is found</span>
+    <span class="c1"># 2. Add an association between the comment and nodedefs</span>
+    <span class="c1"># 3. Skip if a comment is found immediately before a comment</span>
+    <span class="c1"># 4. Keep track of comments to remove</span>
+    <span class="n">hitComment</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">nodedefList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">removeComments</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">currentComment</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">hitComment</span> <span class="ow">and</span> <span class="n">currentComment</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;comment&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodedefList</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># Keep track of comments to remove.</span>
+                <span class="c1"># Add [ nodedef, comment ] pair </span>
+                <span class="n">removeComments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">currentComment</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+                <span class="k">for</span> <span class="n">nodedef</span> <span class="ow">in</span> <span class="n">nodedefList</span><span class="p">:</span>
+                    <span class="n">strippedComments</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">nodedef</span><span class="p">,</span> <span class="n">currentComment</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]])</span>
+                <span class="n">nodedefList</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span>
+            <span class="n">hitComment</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="n">currentComment</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;nodedef&#39;</span><span class="p">:</span>
+            <span class="n">nodedefList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">currentComment</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">hitComment</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># Apply comments to nodedefs:</span>
+    <span class="c1"># 1. Find nodedefs</span>
+    <span class="c1"># 2. Add new comments to existing comments</span>
+    <span class="n">numStrippedComments</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">strippedComments</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">numStrippedComments</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No comments to transfer&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">outputDoc</span><span class="p">,</span> <span class="n">numStrippedComments</span>
+     
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numStrippedComments</span><span class="p">):</span>
+
+        <span class="n">nodedef</span> <span class="o">=</span> <span class="n">outputDoc</span><span class="o">.</span><span class="n">getChild</span><span class="p">(</span><span class="n">strippedComments</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">nodedef</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cannot find nodedef:&#39;</span><span class="p">,</span> <span class="n">strippedComments</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">continue</span>
+        <span class="n">currentDoc</span> <span class="o">=</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;doc&#39;</span><span class="p">)</span>
+        <span class="n">newDoc</span> <span class="o">=</span> <span class="n">strippedComments</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">currentDoc</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">newDoc</span> <span class="o">=</span> <span class="n">newDoc</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">currentDoc</span>
+        <span class="n">nodedef</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s1">&#39;doc&#39;</span><span class="p">,</span>  <span class="n">newDoc</span><span class="p">)</span>
+
+    <span class="c1"># Remove comments</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">removeComments</span><span class="p">)):</span>
+        <span class="n">outputDoc</span><span class="o">.</span><span class="n">removeChild</span><span class="p">(</span><span class="n">removeComments</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">outputDoc</span><span class="p">,</span> <span class="n">numStrippedComments</span>
+
+<span class="c1"># remove duplicates from libFiles</span>
+<span class="n">transferredDoc</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">libFiles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">libFiles</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">libFile</span> <span class="ow">in</span> <span class="n">libFiles</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;stdlib_defs.mtlx&#39;</span> <span class="ow">in</span> <span class="n">libFile</span><span class="p">:</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; Transfer comments to nodedefs for file::&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">libFile</span><span class="p">))</span>
+        <span class="n">transferredDoc</span><span class="p">,</span> <span class="n">numStripped</span> <span class="o">=</span> <span class="n">transferCommentsToNodeDefs</span><span class="p">(</span><span class="n">libFile</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">numStripped</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; Transferred </span><span class="si">%d</span><span class="s1"> comments to nodedefs&#39;</span> <span class="o">%</span> <span class="n">numStripped</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; No comments to transfer&#39;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+<span class="k">if</span> <span class="n">transferredDoc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; Failed to transfer comments to nodedefs&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt; Write transferred document to file: data/stdlib_defs_doc_transfer.mtlx&#39;</span><span class="p">)</span>
+    <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlFile</span><span class="p">(</span><span class="n">transferredDoc</span><span class="p">,</span> <span class="s1">&#39;data/stdlib_defs_doc_transfer.mtlx&#39;</span><span class="p">)</span>
+    <span class="n">writeToMarkdown</span><span class="p">(</span><span class="s1">&#39;&amp;gt; [Download stdlib_defs_doc_transfer.mtlx](data/stdlib_defs_doc_transfer.mtlx)&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>&gt; Transfer comments to nodedefs for file:: stdlib_defs.mtlx
+&gt; Transferred 646 comments to nodedefs
+&gt; Write transferred document to file: data/stdlib_defs_doc_transfer.mtlx
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
+<p>&gt; <a href="data/stdlib_defs_doc_transfer.mtlx">Download stdlib_defs_doc_transfer.mtlx</a></p>
+
+</div>
+
 </div>
 
 </div>
@@ -15252,9 +15434,20 @@ of a working document.</p>
 <span class="sd">    Returns:</span>
 <span class="sd">    - Node definition and functional node graph</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">definition</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNodeDefFromGraph</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;nodedefName&#39;</span><span class="p">],</span>
-                            <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">],</span> <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">],</span> <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;defaultversion&#39;</span><span class="p">],</span> 
-                            <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;nodegroup&#39;</span><span class="p">],</span> <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;nodegraphName&#39;</span><span class="p">])</span>
+    <span class="n">version_major</span><span class="p">,</span> <span class="n">version_minor</span><span class="p">,</span> <span class="n">version_patch</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">getVersionIntegers</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">version_major</span> <span class="o">&gt;=</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">version_minor</span> <span class="o">&gt;=</span> <span class="mi">39</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Using 1.39 or later API to create definition...&#39;</span><span class="p">)</span>
+        <span class="n">definition</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNodeDefFromGraph</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;nodedefName&#39;</span><span class="p">],</span> <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">],</span> <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;nodegraphName&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">definition</span><span class="o">.</span><span class="n">setVersionString</span><span class="p">(</span><span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;defaultversion&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">definition</span><span class="o">.</span><span class="n">setDefaultVersion</span><span class="p">(</span><span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;defaultversion&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;nodegroup&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">definition</span><span class="o">.</span><span class="n">setNodeGroup</span><span class="p">(</span><span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;nodegroup&#39;</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">definition</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">addNodeDefFromGraph</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;nodedefName&#39;</span><span class="p">],</span>
+                                             <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;category&#39;</span><span class="p">],</span> <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">],</span> <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;defaultversion&#39;</span><span class="p">],</span> 
+                                             <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;nodegroup&#39;</span><span class="p">],</span> <span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;nodegraphName&#39;</span><span class="p">])</span>
     <span class="n">funcgraph</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getNodeGraph</span><span class="p">(</span><span class="n">cparam</span><span class="p">[</span><span class="s1">&#39;nodegraphName&#39;</span><span class="p">])</span>
 
     <span class="k">return</span> <span class="n">definition</span><span class="p">,</span> <span class="n">funcgraph</span>
@@ -15801,48 +15994,58 @@ separate separate document(s).</p>
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Using 1.39 or later API to create definition...
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;materialx</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.39&quot;</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="cm">&lt;!-- Node: &lt;myprocedural&gt; --&gt;</span>
-<span class="w">  </span><span class="nt">&lt;nodedef</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ND_myprocedural_1_0_color3&quot;</span><span class="w"> </span><span class="na">node=</span><span class="s">&quot;myprocedural&quot;</span><span class="w"> </span><span class="na">nodegroup=</span><span class="s">&quot;texture2d&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="w"> </span><span class="na">isdefaultversion=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nodedef</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ND_myprocedural_1_0_color3&quot;</span><span class="w"> </span><span class="na">node=</span><span class="s">&quot;myprocedural&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="w"> </span><span class="na">isdefaultversion=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">nodegroup=</span><span class="s">&quot;texture2d&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;modulo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;2.1, 1.1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;threshold&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;float&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;1.2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;repeat&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;13.2, 9.9&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;noiseAmplitude&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector3&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;1.3, 1.7, 4.8&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;output</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;output_color3&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/nodedef&gt;</span>
 <span class="w">  </span><span class="cm">&lt;!-- Node: &lt;myprocedural&gt; --&gt;</span>
 <span class="w">  </span><span class="nt">&lt;nodegraph</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;NG_myprocedural_1_0_color3&quot;</span><span class="w"> </span><span class="na">nodedef=</span><span class="s">&quot;ND_myprocedural_1_0_color3&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;ramplr</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ramplr_color3&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;7.246377&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;0.594828&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ramplr</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ramplr_color3&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;valuer&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.088713, 0.647922, 0.168014&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;texcoord&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">nodename=</span><span class="s">&quot;modulo_vector2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/ramplr&gt;</span>
-<span class="w">    </span><span class="nt">&lt;output</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;output_color3&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;17.391304&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;0.000000&quot;</span><span class="w"> </span><span class="na">nodename=</span><span class="s">&quot;ifgreater_color3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;ifgreater</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ifgreater_color3&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;12.318841&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;-0.508621&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;output</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;output_color3&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="w"> </span><span class="na">nodename=</span><span class="s">&quot;ifgreater_color3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ifgreater</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ifgreater_color3&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;in1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="w"> </span><span class="na">nodename=</span><span class="s">&quot;ramplr_color3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;in2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="w"> </span><span class="na">nodename=</span><span class="s">&quot;noise2d_color3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;value1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;float&quot;</span><span class="w"> </span><span class="na">nodename=</span><span class="s">&quot;separate2_vector2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;value2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;float&quot;</span><span class="w"> </span><span class="na">interfacename=</span><span class="s">&quot;threshold&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/ifgreater&gt;</span>
-<span class="w">    </span><span class="nt">&lt;texcoord</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;texcoord_vector2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;-7.963768&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;-0.482759&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;separate2</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;separate2_vector2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;multioutput&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;7.246377&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;-2.362069&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;texcoord</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;texcoord_vector2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;separate2</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;separate2_vector2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;multioutput&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;in&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">nodename=</span><span class="s">&quot;modulo_vector2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/separate2&gt;</span>
-<span class="w">    </span><span class="nt">&lt;modulo</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;modulo_vector2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;2.173913&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;-0.172414&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;modulo</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;modulo_vector2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;in1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">nodename=</span><span class="s">&quot;multiply_vector2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;in2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">interfacename=</span><span class="s">&quot;modulo&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/modulo&gt;</span>
-<span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;modulo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;2.1, 1.1&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;-2.659420&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;0.853448&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;noise2d</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;noise2d_color3&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;7.246377&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;2.206897&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;noise2d</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;noise2d_color3&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;texcoord&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">nodename=</span><span class="s">&quot;modulo_vector2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;amplitude&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector3&quot;</span><span class="w"> </span><span class="na">interfacename=</span><span class="s">&quot;noiseAmplitude&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/noise2d&gt;</span>
-<span class="w">    </span><span class="nt">&lt;multiply</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;multiply_vector2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;-2.898551&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;-0.862069&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;multiply</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;multiply_vector2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="nt">&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;in1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">nodename=</span><span class="s">&quot;texcoord_vector2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;in2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">interfacename=</span><span class="s">&quot;repeat&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/multiply&gt;</span>
-<span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;threshold&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;float&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;1.2&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;7.202899&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;-0.646552&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;repeat&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;13.2, 9.9&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;-7.963768&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;0.534483&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;noiseAmplitude&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector3&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;1.3, 1.7, 4.8&quot;</span><span class="w"> </span><span class="na">xpos=</span><span class="s">&quot;4.326087&quot;</span><span class="w"> </span><span class="na">ypos=</span><span class="s">&quot;3.060345&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/nodegraph&gt;</span>
 <span class="nt">&lt;/materialx&gt;</span>
 </pre></div>
@@ -15855,6 +16058,17 @@ separate separate document(s).</p>
 
 </div>
 
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
+</div>
+</div>
 </div>
 <div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -16006,13 +16220,23 @@ separate separate document(s).</p>
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Using 1.39 or later API to create definition...
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;materialx</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.39&quot;</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="cm">&lt;!-- Definition: nodeGraph.getName() --&gt;</span>
-<span class="w">  </span><span class="nt">&lt;nodedef</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ND_myprocedural_1_0_color3&quot;</span><span class="w"> </span><span class="na">node=</span><span class="s">&quot;myprocedural&quot;</span><span class="w"> </span><span class="na">nodegroup=</span><span class="s">&quot;texture2d&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="w"> </span><span class="na">isdefaultversion=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">doc=</span><span class="s">&quot;Documentation for new definition: myProcedural&quot;</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;mynamespace&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nodedef</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ND_myprocedural_1_0_color3&quot;</span><span class="w"> </span><span class="na">node=</span><span class="s">&quot;myprocedural&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="w"> </span><span class="na">isdefaultversion=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">nodegroup=</span><span class="s">&quot;texture2d&quot;</span><span class="w"> </span><span class="na">doc=</span><span class="s">&quot;Documentation for new definition: myProcedural&quot;</span><span class="w"> </span><span class="na">namespace=</span><span class="s">&quot;mynamespace&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;modulo&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;2.1, 1.1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;threshold&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;float&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;1.2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;repeat&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;vector2&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;13.2, 9.9&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
@@ -16800,6 +17024,16 @@ newlines properly on XML load and save.</p>
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Using 1.39 or later API to create definition...
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
@@ -16818,7 +17052,7 @@ newlines properly on XML load and save.</p>
 <div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;materialx</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.39&quot;</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="cm">&lt;!--Custom marble definition: : mymarble --&gt;</span>
-<span class="w">  </span><span class="nt">&lt;nodedef</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ND_mymarble&quot;</span><span class="w"> </span><span class="na">node=</span><span class="s">&quot;mymarble&quot;</span><span class="w"> </span><span class="na">nodegroup=</span><span class="s">&quot;texture2d&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="w"> </span><span class="na">isdefaultversion=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">doc=</span><span class="s">&quot;Custom marble texture defintion: mymarble&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nodedef</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ND_mymarble&quot;</span><span class="w"> </span><span class="na">node=</span><span class="s">&quot;mymarble&quot;</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="w"> </span><span class="na">isdefaultversion=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">nodegroup=</span><span class="s">&quot;texture2d&quot;</span><span class="w"> </span><span class="na">doc=</span><span class="s">&quot;Custom marble texture defintion: mymarble&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_color_1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.8, 0.8, 0.8&quot;</span><span class="w"> </span><span class="na">uiname=</span><span class="s">&quot;Color 1&quot;</span><span class="w"> </span><span class="na">uifolder=</span><span class="s">&quot;Marble Color&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;base_color_2&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;color3&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;0.1, 0.1, 0.3&quot;</span><span class="w"> </span><span class="na">uiname=</span><span class="s">&quot;Color 2&quot;</span><span class="w"> </span><span class="na">uifolder=</span><span class="s">&quot;Marble Color&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;noise_scale_1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;float&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;6.0&quot;</span><span class="w"> </span><span class="na">uisoftmin=</span><span class="s">&quot;1.0&quot;</span><span class="w"> </span><span class="na">uisoftmax=</span><span class="s">&quot;10.0&quot;</span><span class="w"> </span><span class="na">uiname=</span><span class="s">&quot;Scale 1&quot;</span><span class="w"> </span><span class="na">uifolder=</span><span class="s">&quot;Marble Noise&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
