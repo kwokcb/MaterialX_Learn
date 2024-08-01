@@ -43,7 +43,7 @@
 
   
 
-  <title>MaterialX Learn</title>
+  <title>MaterialX Elements</title>
   <link rel="icon" type="images" href="../documents/images/logo3d_icon.png" type="image/x-icon" class="img-fluid">
 
 </head>
@@ -58,9 +58,9 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="../index.html">
-            <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Elements"
                     class="rounded d-inline-block align-text-center" width="50px">
-                MaterialX Learn</h5>
+                MaterialX Elements</h5>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
             aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -75,7 +75,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Learn
+                        Fundamentals
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -157,6 +157,7 @@
                     </ul>
                 </li>
 
+                <!-- 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Utilities</a>
@@ -170,10 +171,10 @@
                         <li><a class="dropdown-item" href="../documents/mtlx_utilities.html">Python Modules</a></li>
                     </ul>
                 </li>
-
+                -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">Develop</a>
+                        aria-expanded="false">Interactive Learning</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../documents/python_MaterialX.html">Notebooks</a></li>
                         <li><a class="dropdown-item" href="../documents/jupyter_example.html">Examples</a></li>
@@ -182,6 +183,7 @@
                     </ul>
                 </li>
 
+                <!--
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Workflows</a>
@@ -191,6 +193,7 @@
                         <li><a class="dropdown-item" href="../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
                     </ul>
                 </li>
+                -->                     
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -221,11 +224,11 @@
 <h2 id="materialx-library-comparison">MaterialX Library Comparison</h2>
 <h3 id="libraries-loaded">Libraries Loaded</h3>
 <ul>
-<li>Loaded 663 first library definitions from 26 files. Version 1.38.9<ul>
+<li>Loaded 663 first library definitions from 26 files. Version 1.39.0<ul>
 <li>First library location: ['../../resources/libraries_1.38.1']. Search path: ""</li>
 </ul>
 </li>
-<li>Loaded 663 second library definitions from 26 files. Version 1.38<ul>
+<li>Loaded 663 second library definitions from 26 files. Version 1.39<ul>
 <li>Second library location: ['../../resources/libraries_1.38.0']. Search path: ""</li>
 </ul>
 </li>
@@ -3761,7 +3764,7 @@ Second library implementation count: 2172</p>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Name <th> Change </tr>
-<tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/standard_surface.html">IMPL_standard_surface_surfaceshader</a> <td> - Number of children on: <code>IMPL_standard_surface_surfaceshader</code> changed from ( 51 ) to ( 50 )<br>- swizzle <code>/opacity_luminance_r</code> removed from <code>IMPL_standard_surface_surfaceshader</code><br>- attribute: <code>channels</code>=( <code>r</code> ) added to: <code>opacity</code><br>  - attribute: <code>nodename</code> changed on <code>opacity</code> from <code>( opacity_luminance_r )</code> to <code>( opacity_luminance )</code><br></tr>
+<tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/standard_surface.html">IMPL_standard_surface_surfaceshader</a> <td> - extract <code>/opacity_luminance_r</code> removed from <code>IMPL_standard_surface_surfaceshader</code><br>- extract <code>/swizzle</code> add to <code>IMPL_standard_surface_surfaceshader</code><br>  - attribute: <code>nodename</code> changed on <code>opacity</code> from <code>( opacity_luminance_r )</code> to <code>( swizzle )</code><br></tr>
 </table>
 
 </details>

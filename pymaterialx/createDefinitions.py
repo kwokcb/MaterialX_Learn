@@ -21,12 +21,36 @@ e.g. python createdefinition.py
 import sys, argparse, os
 import MaterialX as mx
 
+def sanitizeXMLString(xmlString):
+    # Add more here as needed
+    replacements = {
+        '<': '&lt;',
+        '>': '&gt;',
+        '&': '&amp;',
+        '"': '&quot;',
+        "'": '&apos;',
+        '\n': ' ',
+        '\r': ' ',
+        '\t': '    ', # Using 4 spaces for tabs
+        '\\': ' '
+    }
+
+    # Replace each invalid character with its & equivalent or space
+    for char, replacement in replacements.items():
+        xmlString = xmlString.replace(char, replacement)
+
+    # Strip out leading and trailing whitespace    
+    xmlString = re.sub(r'\s+', ' ', xmlString) 
+    xmlString = xmlString.lstrip().strip()
+    return xmlString
+
 def main():
     parser = argparse.ArgumentParser(description="Create definition and functional graph from compound graphs.")
     parser.add_argument("--category", dest="category", default='', help="Category of the definition. If not specified the nodegraph name will be used")
     parser.add_argument("--nodegroup", dest="nodegroup", default='', help="Node group of the definition. Defaults to an empty string")
+    parser.add_argument("--uiname", dest="uiname", default='', help="User facing name. Defaults to an empty string")
     parser.add_argument("--version", dest="version", default='', help="Version string of the definition. Defaults to empty string")
-    parser.add_argument("--defaultversion", dest="defaultversion", type=mx.stringToBoolean, default=False, help="Flag to indicate this is the default version. Defaults to false.")
+    parser.add_argument("--defaultversion", dest="defaultversion", type=mx.stringToBoolean, default=None, help="Flag to indicate this is the default version. Defaults to None.")
     parser.add_argument("--namespace", dest="namespace", default='', help="Namespace of the definition. Defaults to an empty string.")
     parser.add_argument("--comment", dest="comment", default='', help="XML comment to embed before the definition or nodegraph")
     parser.add_argument("--documentation", dest="documentation", default='', help="Definition documentation")
@@ -37,9 +61,9 @@ def main():
     opts = parser.parse_args()
 
     version_major, version_minor, version_patch = mx.getVersionIntegers()
-    use_1_38_8 = False
-    if version_major >=1 and version_minor >= 38 and version_patch >= 8:
-        use_1_38_8 = True
+    use_1_39 = False
+    if version_major >=1 and version_minor >= 39:
+        use_1_39 = True
 
     doc = mx.createDocument()
     try:
@@ -62,6 +86,7 @@ def main():
             print('Skip functional nodegraph %s' % nodeGraph.getNamePath())
             continue
     
+        uiname = mx.createValidName(opts.uiname)
         version = mx.createValidName(opts.version) 
         category = mx.createValidName(opts.category)
         nodegroup = mx.createValidName(opts.nodegroup)
@@ -72,6 +97,7 @@ def main():
         # User nodegraph name if no category provided as a a category name
         # must be provided
         if not category:
+            print('Use nodegraph name for category as no category specified')
             category = nodeGraph.getName() 
 
         # Build identifier for new nodedef and functional graph. Includes:
@@ -96,16 +122,16 @@ def main():
         identifier = identifier + parameter_signature
 
         # Prefix with "ND_" or "NG_" for definition and functional graph names
-        nodedefName = 'ND_' + identifier
-        nodegraphName = 'NG_' + identifier
+        nodedefName = doc.createValidChildName('ND_' + identifier)
+        nodegraphName = doc.createValidChildName('NG_' + identifier)
 
-        # Create the definition
+        # Create the definition. Use appropriate signature for pre-1.39 and post 1.39
         definition = None
-        if use_1_38_8:
+        if use_1_39:
             definition = doc.addNodeDefFromGraph(nodeGraph, nodedefName,
-                            category, opts.version, defaultversion, nodegroup, nodegraphName,
-                            documentation, namespace)
+                            category, nodegraphName)
         else:
+            print('Using pre-1.39 creation API...')
             definition = doc.addNodeDefFromGraph(nodeGraph, nodedefName,
                             category, opts.version, defaultversion, nodegroup, nodegraphName)
         funcgraph = doc.getNodeGraph(nodegraphName)
@@ -114,12 +140,31 @@ def main():
             print('Failed to create definition for nodegraph %s' % nodeGraph.getNamePath())
             continue
 
-        if not use_1_38_8:
-            print('Patch 1.38.8 definition creation...')
-            definition.setDocString(documentation)
-            definition.setNamespace(namespace)
+        if len(uiname) > 0:
+            definition.setAttribute('uiname', uiname)
 
+        if len(documentation) > 0:
+            documentation = sanitizeXMLString(documentation)
+            definition.setDocString(documentation)
+
+        if len(namespace) > 0:
+            definition.setNamespace(namespace)
             funcgraph.setNamespace(namespace)
+            # WARNING: Need to rename the nodedef reference
+            funcgraph.setNodeDefString(namespace + ":" + funcgraph.getNodeDefString())
+
+        if use_1_39:
+            # Patch 1.39 to match pre-1.39 
+            if len(version) > 0:
+                definition.setVersionString(version)
+            if defaultversion:
+                definition.setDefaultVersion(defaultversion)
+            if len(nodegroup) > 0:
+                definition.setNodeGroup(nodegroup)            
+
+        else:
+            # Patch pre-1.39
+
             for graphChild in funcgraph.getChildren():
                 graphChild.removeAttribute('xpos')
                 graphChild.removeAttribute('ypos')
@@ -155,7 +200,7 @@ def main():
         # Generate an XML comment string from the given comment.
         commentString = ''
         if opts.comment:
-            commentString = '\n\tNode: <' + category + '> '
+            commentString = '\n\tNode: &lt;' + category + '&gt; '
             commentString = commentString + '\n\t' + opts.comment + '\n  '
 
         # Separate out the new definition and functional graph and write

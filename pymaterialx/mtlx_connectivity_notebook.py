@@ -12,7 +12,7 @@
 # 
 # The logic shown here has been encapsulated as two Python classes in the `mtlxutils` library insdie `traversal.py`:
 # 1. `MtlxGraphBuilder` : Class which builds the connectivity information and allows for serialization to JSON format.
-# 2. `mermaidGraphExporter` : Class which can read and parse the connectivity information to produce Mermaid graphs. <img src="../documents/images/mermaid-logo.png" width=24px>
+# 2. `MxMermaidGraphExporter` : Class which can read and parse the connectivity information to produce Mermaid graphs. <img src="../documents/images/mermaid-logo.png" width=24px>
 # 
 # For this site:
 # - The utilities (including Mermaid generation) in this tutorial are collected in the `mtlxutils` file: `mxtraversal.py`.
@@ -532,7 +532,7 @@ exportGraphAsJSON(graphDictionary, connections, filename)
 # > Note that there is no dependence on MaterialX for any of the parsing or display logic. 
 
 # %%
-class mermaidGraphExporter:
+class MxMermaidGraphExporter:
     def __init__(self, graphDictionary, connections):
         self.graphDictionary = graphDictionary
         self.connections = connections
@@ -657,7 +657,7 @@ class mermaidGraphExporter:
 # To visualize the Mermaid graph we export the graph to Markdown within a HTML document.
 
 # %%
-exporter = mermaidGraphExporter(graphDictionary, connections)
+exporter = MxMermaidGraphExporter(graphDictionary, connections)
 exporter.setOrientation('TB')
 exporter.execute()
 
@@ -687,7 +687,7 @@ print('Write graph to HTML file: ./data/graphtest_output.html')
 # 3. Emitting the graph in different orientations.
 
 # %%
-exporter = mermaidGraphExporter(graphDictionary, connections)
+exporter = MxMermaidGraphExporter(graphDictionary, connections)
 exporter.setOrientation('BT')
 exporter.setEmitCategory(True)
 exporter.setEmitType(True)

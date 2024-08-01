@@ -36,7 +36,7 @@
 
   <!--FILL_CONTENT_STYLE-->
 
-  <title>MaterialX Learn</title>
+  <title>MaterialX Elements</title>
   <link rel="icon" type="images" href="../../documents/images/logo3d_icon.png" class="img-fluid">
 
 </head>
@@ -65,9 +65,9 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="../../index.html">
-            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Elements"
                     class="rounded d-inline-block align-text-center" width="50px">
-                MaterialX Learn</h5>
+                MaterialX Elements</h5>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
             aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -82,7 +82,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Learn
+                        Fundamentals
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -164,6 +164,7 @@
                     </ul>
                 </li>
 
+                <!-- 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Utilities</a>
@@ -177,10 +178,10 @@
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Modules</a></li>
                     </ul>
                 </li>
-
+                -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">Develop</a>
+                        aria-expanded="false">Interactive Learning</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/python_MaterialX.html">Notebooks</a></li>
                         <li><a class="dropdown-item" href="../../documents/jupyter_example.html">Examples</a></li>
@@ -189,6 +190,7 @@
                     </ul>
                 </li>
 
+                <!--
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Workflows</a>
@@ -198,6 +200,7 @@
                         <li><a class="dropdown-item" href="../../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
                     </ul>
                 </li>
+                -->                     
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -719,13 +722,21 @@ graph TB
     subgraph NG_hexagon_float
     NG_hexagon_float_delta[delta]
     NG_hexagon_float_delta_abs[delta_abs]
+    NG_hexagon_float_swizzle[swizzle]
+    NG_hexagon_float_swizzle2[swizzle2]
     NG_hexagon_float_p[p]
     style NG_hexagon_float_k  fill:#500, color:#FFF
     NG_hexagon_float_k([k:-0.866025, 0.5, 0.57735])
+    NG_hexagon_float_swizzle3[swizzle3]
     NG_hexagon_float_kz_r1[kz_r1]
     NG_hexagon_float_minus_k[minus_k]
+    NG_hexagon_float_swizzle4[swizzle4]
     NG_hexagon_float_minus_kz_r[minus_kz_r]
+    NG_hexagon_float_swizzle5[swizzle5]
+    NG_hexagon_float_swizzle6[swizzle6]
     NG_hexagon_float_combine_mkx_ky[combine_mkx_ky]
+    NG_hexagon_float_swizzle7[swizzle7]
+    NG_hexagon_float_swizzle8[swizzle8]
     NG_hexagon_float_kxy[kxy]
     NG_hexagon_float_dot_kxy_p[dot_kxy_p]
     NG_hexagon_float_dot_kxy_p1[dot_kxy_p1]
@@ -735,6 +746,7 @@ graph TB
     NG_hexagon_float_multiply2_1[multiply2_1]
     NG_hexagon_float_multiply_min_comb[multiply_min_comb]
     NG_hexagon_float_multiply2_2[multiply2_2]
+    NG_hexagon_float_swizzle9[swizzle9]
     NG_hexagon_float_clamp[clamp]
     NG_hexagon_float_combine_clamp_rad[combine_clamp_rad]
     NG_hexagon_float_new_p1[new_p1]
@@ -755,17 +767,25 @@ graph TB
     NG_hexagon_float_texcoord --"in1"--> NG_hexagon_float_delta
     NG_hexagon_float_center --"in2"--> NG_hexagon_float_delta
     NG_hexagon_float_delta --"in"--> NG_hexagon_float_delta_abs
-    NG_hexagon_float_delta_abs --"in1"--> NG_hexagon_float_p
-    NG_hexagon_float_delta_abs --"in2"--> NG_hexagon_float_p
-    NG_hexagon_float_k --"in1"--> NG_hexagon_float_kz_r1
+    NG_hexagon_float_delta_abs --"in"--> NG_hexagon_float_swizzle
+    NG_hexagon_float_delta_abs --"in"--> NG_hexagon_float_swizzle2
+    NG_hexagon_float_swizzle --"in1"--> NG_hexagon_float_p
+    NG_hexagon_float_swizzle2 --"in2"--> NG_hexagon_float_p
+    NG_hexagon_float_k --"in"--> NG_hexagon_float_swizzle3
+    NG_hexagon_float_swizzle3 --"in1"--> NG_hexagon_float_kz_r1
     NG_hexagon_float_radius --"in2"--> NG_hexagon_float_kz_r1
     NG_hexagon_float_k --"in1"--> NG_hexagon_float_minus_k
-    NG_hexagon_float_minus_k --"in1"--> NG_hexagon_float_minus_kz_r
+    NG_hexagon_float_minus_k --"in"--> NG_hexagon_float_swizzle4
+    NG_hexagon_float_swizzle4 --"in1"--> NG_hexagon_float_minus_kz_r
     NG_hexagon_float_radius --"in2"--> NG_hexagon_float_minus_kz_r
-    NG_hexagon_float_minus_k --"in1"--> NG_hexagon_float_combine_mkx_ky
-    NG_hexagon_float_k --"in2"--> NG_hexagon_float_combine_mkx_ky
-    NG_hexagon_float_k --"in1"--> NG_hexagon_float_kxy
-    NG_hexagon_float_k --"in2"--> NG_hexagon_float_kxy
+    NG_hexagon_float_minus_k --"in"--> NG_hexagon_float_swizzle5
+    NG_hexagon_float_k --"in"--> NG_hexagon_float_swizzle6
+    NG_hexagon_float_swizzle5 --"in1"--> NG_hexagon_float_combine_mkx_ky
+    NG_hexagon_float_swizzle6 --"in2"--> NG_hexagon_float_combine_mkx_ky
+    NG_hexagon_float_k --"in"--> NG_hexagon_float_swizzle7
+    NG_hexagon_float_k --"in"--> NG_hexagon_float_swizzle8
+    NG_hexagon_float_swizzle7 --"in1"--> NG_hexagon_float_kxy
+    NG_hexagon_float_swizzle8 --"in2"--> NG_hexagon_float_kxy
     NG_hexagon_float_kxy --"in1"--> NG_hexagon_float_dot_kxy_p
     NG_hexagon_float_p --"in2"--> NG_hexagon_float_dot_kxy_p
     NG_hexagon_float_combine_mkx_ky --"in1"--> NG_hexagon_float_dot_kxy_p1
@@ -778,7 +798,8 @@ graph TB
     NG_hexagon_float_combine_mkx_ky --"in1"--> NG_hexagon_float_multiply_min_comb
     NG_hexagon_float_min_0 --"in2"--> NG_hexagon_float_multiply_min_comb
     NG_hexagon_float_multiply_min_comb --"in1"--> NG_hexagon_float_multiply2_2
-    NG_hexagon_float_new_p2 --"in"--> NG_hexagon_float_clamp
+    NG_hexagon_float_new_p2 --"in"--> NG_hexagon_float_swizzle9
+    NG_hexagon_float_swizzle9 --"in"--> NG_hexagon_float_clamp
     NG_hexagon_float_minus_kz_r --"low"--> NG_hexagon_float_clamp
     NG_hexagon_float_kz_r1 --"high"--> NG_hexagon_float_clamp
     NG_hexagon_float_clamp --"in1"--> NG_hexagon_float_combine_clamp_rad

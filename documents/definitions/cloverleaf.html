@@ -36,7 +36,7 @@
 
   <!--FILL_CONTENT_STYLE-->
 
-  <title>MaterialX Learn</title>
+  <title>MaterialX Elements</title>
   <link rel="icon" type="images" href="../../documents/images/logo3d_icon.png" class="img-fluid">
 
 </head>
@@ -65,9 +65,9 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="../../index.html">
-            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Elements"
                     class="rounded d-inline-block align-text-center" width="50px">
-                MaterialX Learn</h5>
+                MaterialX Elements</h5>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
             aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -82,7 +82,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Learn
+                        Fundamentals
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -164,6 +164,7 @@
                     </ul>
                 </li>
 
+                <!-- 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Utilities</a>
@@ -177,10 +178,10 @@
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Modules</a></li>
                     </ul>
                 </li>
-
+                -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">Develop</a>
+                        aria-expanded="false">Interactive Learning</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/python_MaterialX.html">Notebooks</a></li>
                         <li><a class="dropdown-item" href="../../documents/jupyter_example.html">Examples</a></li>
@@ -189,6 +190,7 @@
                     </ul>
                 </li>
 
+                <!--
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Workflows</a>
@@ -198,6 +200,7 @@
                         <li><a class="dropdown-item" href="../../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
                     </ul>
                 </li>
+                -->                     
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -720,9 +723,17 @@ graph TB
     NG_cloverleaf_float_sample_double[sample_double]
     NG_cloverleaf_float_sample_add[sample_add]
     NG_cloverleaf_float_sample_subtract[sample_subtract]
+    NG_cloverleaf_float_swizzle[swizzle]
+    NG_cloverleaf_float_swizzle2[swizzle2]
     NG_cloverleaf_float_coord1[coord1]
+    NG_cloverleaf_float_swizzle3[swizzle3]
+    NG_cloverleaf_float_swizzle4[swizzle4]
     NG_cloverleaf_float_coord2[coord2]
+    NG_cloverleaf_float_swizzle5[swizzle5]
+    NG_cloverleaf_float_swizzle6[swizzle6]
     NG_cloverleaf_float_coord3[coord3]
+    NG_cloverleaf_float_swizzle7[swizzle7]
+    NG_cloverleaf_float_swizzle8[swizzle8]
     NG_cloverleaf_float_coord4[coord4]
     NG_cloverleaf_float_circle1[circle1]
     NG_cloverleaf_float_circle2[circle2]
@@ -746,14 +757,22 @@ graph TB
     NG_cloverleaf_float_radius --"in2"--> NG_cloverleaf_float_sample_add
     NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_sample_subtract
     NG_cloverleaf_float_radius --"in2"--> NG_cloverleaf_float_sample_subtract
-    NG_cloverleaf_float_sample_add --"in1"--> NG_cloverleaf_float_coord1
-    NG_cloverleaf_float_sample_double --"in2"--> NG_cloverleaf_float_coord1
-    NG_cloverleaf_float_sample_subtract --"in1"--> NG_cloverleaf_float_coord2
-    NG_cloverleaf_float_sample_double --"in2"--> NG_cloverleaf_float_coord2
-    NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_coord3
-    NG_cloverleaf_float_sample_subtract --"in2"--> NG_cloverleaf_float_coord3
-    NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_coord4
-    NG_cloverleaf_float_sample_add --"in2"--> NG_cloverleaf_float_coord4
+    NG_cloverleaf_float_sample_add --"in"--> NG_cloverleaf_float_swizzle
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle2
+    NG_cloverleaf_float_swizzle --"in1"--> NG_cloverleaf_float_coord1
+    NG_cloverleaf_float_swizzle2 --"in2"--> NG_cloverleaf_float_coord1
+    NG_cloverleaf_float_sample_subtract --"in"--> NG_cloverleaf_float_swizzle3
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle4
+    NG_cloverleaf_float_swizzle3 --"in1"--> NG_cloverleaf_float_coord2
+    NG_cloverleaf_float_swizzle4 --"in2"--> NG_cloverleaf_float_coord2
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle5
+    NG_cloverleaf_float_sample_subtract --"in"--> NG_cloverleaf_float_swizzle6
+    NG_cloverleaf_float_swizzle5 --"in1"--> NG_cloverleaf_float_coord3
+    NG_cloverleaf_float_swizzle6 --"in2"--> NG_cloverleaf_float_coord3
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle7
+    NG_cloverleaf_float_sample_add --"in"--> NG_cloverleaf_float_swizzle8
+    NG_cloverleaf_float_swizzle7 --"in1"--> NG_cloverleaf_float_coord4
+    NG_cloverleaf_float_swizzle8 --"in2"--> NG_cloverleaf_float_coord4
     NG_cloverleaf_float_coord1 --"texcoord"--> NG_cloverleaf_float_circle1
     NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle1
     NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle1

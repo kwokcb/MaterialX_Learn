@@ -246,17 +246,17 @@ class MtlxNodeGraph:
     @staticmethod
     def findInputsUsingInterface(nodegraph, interfaceName):
 
-    connectedInputs = []    
-    connectedOutputs = []
-    interfaceInput = nodegraph.getInput(interfaceName)
-    if not interfaceInput:
-        return
-    
-    # Find all downstream connections for this interface
-    
-    for child in nodegraph.getChildren():
-        if child == interfaceInput:
-            continue
+        connectedInputs = []    
+        connectedOutputs = []
+        interfaceInput = nodegraph.getInput(interfaceName)
+        if not interfaceInput:
+            return
+        
+        # Find all downstream connections for this interface
+        
+        for child in nodegraph.getChildren():
+            if child == interfaceInput:
+                continue
 
         # Remove connection on node inputs and copy interface value
         # to the input value so behaviour does not change

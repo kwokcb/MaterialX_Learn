@@ -36,7 +36,7 @@
 
   <!--FILL_CONTENT_STYLE-->
 
-  <title>MaterialX Learn</title>
+  <title>MaterialX Elements</title>
   <link rel="icon" type="images" href="../../documents/images/logo3d_icon.png" class="img-fluid">
 
 </head>
@@ -65,9 +65,9 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="../../index.html">
-            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Elements"
                     class="rounded d-inline-block align-text-center" width="50px">
-                MaterialX Learn</h5>
+                MaterialX Elements</h5>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
             aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -82,7 +82,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Learn
+                        Fundamentals
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -164,6 +164,7 @@
                     </ul>
                 </li>
 
+                <!-- 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Utilities</a>
@@ -177,10 +178,10 @@
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Modules</a></li>
                     </ul>
                 </li>
-
+                -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">Develop</a>
+                        aria-expanded="false">Interactive Learning</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/python_MaterialX.html">Notebooks</a></li>
                         <li><a class="dropdown-item" href="../../documents/jupyter_example.html">Examples</a></li>
@@ -189,6 +190,7 @@
                     </ul>
                 </li>
 
+                <!--
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Workflows</a>
@@ -198,6 +200,7 @@
                         <li><a class="dropdown-item" href="../../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
                     </ul>
                 </li>
+                -->                     
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -764,10 +767,13 @@ graph TB
     NG_tiledhexagons_color3_mod_texcoord[mod_texcoord]
     NG_tiledhexagons_color3_mod_texcoord_2[mod_texcoord_2]
     NG_tiledhexagons_color3_recenter[recenter]
+    NG_tiledhexagons_color3_swizzle[swizzle]
     NG_tiledhexagons_color3_stagg_Y[stagg_Y]
     NG_tiledhexagons_color3_delta_X[delta_X]
+    NG_tiledhexagons_color3_swizzle2[swizzle2]
     NG_tiledhexagons_color3_shift_X[shift_X]
     NG_tiledhexagons_color3_mod_X_1[mod_X_1]
+    NG_tiledhexagons_color3_swizzle3[swizzle3]
     NG_tiledhexagons_color3_mod_Y_1[mod_Y_1]
     NG_tiledhexagons_color3_coord_adj_1[coord_adj_1]
     NG_tiledhexagons_color3_coord_adj_2[coord_adj_2]
@@ -805,12 +811,15 @@ graph TB
     NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_mod_texcoord
     NG_tiledhexagons_color3_mod_texcoord --"in1"--> NG_tiledhexagons_color3_mod_texcoord_2
     NG_tiledhexagons_color3_mod_texcoord_2 --"in1"--> NG_tiledhexagons_color3_recenter
-    NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_stagg_Y
+    NG_tiledhexagons_color3_texcoord_bias --"in"--> NG_tiledhexagons_color3_swizzle
+    NG_tiledhexagons_color3_swizzle --"in1"--> NG_tiledhexagons_color3_stagg_Y
     NG_tiledhexagons_color3_stagg_Y --"value1"--> NG_tiledhexagons_color3_delta_X
-    NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_shift_X
+    NG_tiledhexagons_color3_texcoord_bias --"in"--> NG_tiledhexagons_color3_swizzle2
+    NG_tiledhexagons_color3_swizzle2 --"in1"--> NG_tiledhexagons_color3_shift_X
     NG_tiledhexagons_color3_delta_X --"in2"--> NG_tiledhexagons_color3_shift_X
     NG_tiledhexagons_color3_shift_X --"in1"--> NG_tiledhexagons_color3_mod_X_1
-    NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_mod_Y_1
+    NG_tiledhexagons_color3_texcoord_bias --"in"--> NG_tiledhexagons_color3_swizzle3
+    NG_tiledhexagons_color3_swizzle3 --"in1"--> NG_tiledhexagons_color3_mod_Y_1
     NG_tiledhexagons_color3_mod_X_1 --"in2"--> NG_tiledhexagons_color3_coord_adj_1
     NG_tiledhexagons_color3_mod_X_1 --"in1"--> NG_tiledhexagons_color3_coord_adj_2
     NG_tiledhexagons_color3_mod_Y_1 --"in2"--> NG_tiledhexagons_color3_coord_adj_3

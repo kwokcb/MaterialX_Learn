@@ -36,7 +36,7 @@
 
   <!--FILL_CONTENT_STYLE-->
 
-  <title>MaterialX Learn</title>
+  <title>MaterialX Elements</title>
   <link rel="icon" type="images" href="../../documents/images/logo3d_icon.png" class="img-fluid">
 
 </head>
@@ -65,9 +65,9 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
     <div class="container-md container-fluid">
         <a class="navbar-brand" href="../../index.html">
-            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Learn"
+            <h5><img src="../../documents/images/logo3d_2_small.png" alt="MaterialX Elements"
                     class="rounded d-inline-block align-text-center" width="50px">
-                MaterialX Learn</h5>
+                MaterialX Elements</h5>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
             aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
@@ -82,7 +82,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Learn
+                        Fundamentals
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -164,6 +164,7 @@
                     </ul>
                 </li>
 
+                <!-- 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Utilities</a>
@@ -177,10 +178,10 @@
                         <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Modules</a></li>
                     </ul>
                 </li>
-
+                -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">Develop</a>
+                        aria-expanded="false">Interactive Learning</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../../documents/python_MaterialX.html">Notebooks</a></li>
                         <li><a class="dropdown-item" href="../../documents/jupyter_example.html">Examples</a></li>
@@ -189,6 +190,7 @@
                     </ul>
                 </li>
 
+                <!--
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Workflows</a>
@@ -198,6 +200,7 @@
                         <li><a class="dropdown-item" href="../../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
                     </ul>
                 </li>
+                -->                     
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -935,7 +938,11 @@ Category: smoothstep
 <div id="ND_smoothstep_color3_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_smoothstep_color3
+    NG_smoothstep_color3_swizzle[swizzle]
+    NG_smoothstep_color3_swizzle2[swizzle2]
+    NG_smoothstep_color3_swizzle3[swizzle3]
     NG_smoothstep_color3_N_smoothstep[N_smoothstep]
+    NG_smoothstep_color3_swizzle4[swizzle4]
     style NG_smoothstep_color3_out  fill:#0C0, color:#FFF
     NG_smoothstep_color3_out([out])
     style NG_smoothstep_color3_in  fill:#09D, color:#FFF
@@ -945,10 +952,14 @@ graph TB
     style NG_smoothstep_color3_high  fill:#09D, color:#FFF
     NG_smoothstep_color3_high([high])
     end
-    NG_smoothstep_color3_in --"in"--> NG_smoothstep_color3_N_smoothstep
-    NG_smoothstep_color3_low --"low"--> NG_smoothstep_color3_N_smoothstep
-    NG_smoothstep_color3_high --"high"--> NG_smoothstep_color3_N_smoothstep
-    NG_smoothstep_color3_N_smoothstep --> NG_smoothstep_color3_out
+    NG_smoothstep_color3_in --"in"--> NG_smoothstep_color3_swizzle
+    NG_smoothstep_color3_low --"in"--> NG_smoothstep_color3_swizzle2
+    NG_smoothstep_color3_high --"in"--> NG_smoothstep_color3_swizzle3
+    NG_smoothstep_color3_swizzle --"in"--> NG_smoothstep_color3_N_smoothstep
+    NG_smoothstep_color3_swizzle2 --"low"--> NG_smoothstep_color3_N_smoothstep
+    NG_smoothstep_color3_swizzle3 --"high"--> NG_smoothstep_color3_N_smoothstep
+    NG_smoothstep_color3_N_smoothstep --"in"--> NG_smoothstep_color3_swizzle4
+    NG_smoothstep_color3_swizzle4 --> NG_smoothstep_color3_out
 
 
 </div></code></pre>
@@ -1112,7 +1123,11 @@ graph TB
 <div id="ND_smoothstep_color4_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_smoothstep_color4
+    NG_smoothstep_color4_swizzle[swizzle]
+    NG_smoothstep_color4_swizzle2[swizzle2]
+    NG_smoothstep_color4_swizzle3[swizzle3]
     NG_smoothstep_color4_N_smoothstep[N_smoothstep]
+    NG_smoothstep_color4_swizzle4[swizzle4]
     style NG_smoothstep_color4_out  fill:#0C0, color:#FFF
     NG_smoothstep_color4_out([out])
     style NG_smoothstep_color4_in  fill:#09D, color:#FFF
@@ -1122,10 +1137,14 @@ graph TB
     style NG_smoothstep_color4_high  fill:#09D, color:#FFF
     NG_smoothstep_color4_high([high])
     end
-    NG_smoothstep_color4_in --"in"--> NG_smoothstep_color4_N_smoothstep
-    NG_smoothstep_color4_low --"low"--> NG_smoothstep_color4_N_smoothstep
-    NG_smoothstep_color4_high --"high"--> NG_smoothstep_color4_N_smoothstep
-    NG_smoothstep_color4_N_smoothstep --> NG_smoothstep_color4_out
+    NG_smoothstep_color4_in --"in"--> NG_smoothstep_color4_swizzle
+    NG_smoothstep_color4_low --"in"--> NG_smoothstep_color4_swizzle2
+    NG_smoothstep_color4_high --"in"--> NG_smoothstep_color4_swizzle3
+    NG_smoothstep_color4_swizzle --"in"--> NG_smoothstep_color4_N_smoothstep
+    NG_smoothstep_color4_swizzle2 --"low"--> NG_smoothstep_color4_N_smoothstep
+    NG_smoothstep_color4_swizzle3 --"high"--> NG_smoothstep_color4_N_smoothstep
+    NG_smoothstep_color4_N_smoothstep --"in"--> NG_smoothstep_color4_swizzle4
+    NG_smoothstep_color4_swizzle4 --> NG_smoothstep_color4_out
 
 
 </div></code></pre>
@@ -1876,19 +1895,23 @@ graph TB
 <div id="ND_smoothstep_color3FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_smoothstep_color3FA
+    NG_smoothstep_color3FA_swizzle[swizzle]
+    NG_smoothstep_color3FA_swizzle2[swizzle2]
     NG_smoothstep_color3FA_N_smoothstep[N_smoothstep]
     style NG_smoothstep_color3FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_color3FA_out([out])
-    style NG_smoothstep_color3FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_color3FA_in([in])
     style NG_smoothstep_color3FA_low  fill:#09D, color:#FFF
     NG_smoothstep_color3FA_low([low])
     style NG_smoothstep_color3FA_high  fill:#09D, color:#FFF
     NG_smoothstep_color3FA_high([high])
+    style NG_smoothstep_color3FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_color3FA_in([in])
     end
+    NG_smoothstep_color3FA_low --"in"--> NG_smoothstep_color3FA_swizzle
+    NG_smoothstep_color3FA_high --"in"--> NG_smoothstep_color3FA_swizzle2
     NG_smoothstep_color3FA_in --"in"--> NG_smoothstep_color3FA_N_smoothstep
-    NG_smoothstep_color3FA_low --"low"--> NG_smoothstep_color3FA_N_smoothstep
-    NG_smoothstep_color3FA_high --"high"--> NG_smoothstep_color3FA_N_smoothstep
+    NG_smoothstep_color3FA_swizzle --"low"--> NG_smoothstep_color3FA_N_smoothstep
+    NG_smoothstep_color3FA_swizzle2 --"high"--> NG_smoothstep_color3FA_N_smoothstep
     NG_smoothstep_color3FA_N_smoothstep --> NG_smoothstep_color3FA_out
 
 
@@ -2031,19 +2054,29 @@ graph TB
 <div id="ND_smoothstep_color4FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_smoothstep_color4FA
+    NG_smoothstep_color4FA_swizzle[swizzle]
+    NG_smoothstep_color4FA_swizzle2[swizzle2]
     NG_smoothstep_color4FA_N_smoothstep[N_smoothstep]
     style NG_smoothstep_color4FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_color4FA_out([out])
-    style NG_smoothstep_color4FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_color4FA_in([in])
     style NG_smoothstep_color4FA_low  fill:#09D, color:#FFF
     NG_smoothstep_color4FA_low([low])
     style NG_smoothstep_color4FA_high  fill:#09D, color:#FFF
     NG_smoothstep_color4FA_high([high])
+    style NG_smoothstep_color4FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_color4FA_in([in])
     end
+    NG_smoothstep_color4FA_low --"in1"--> NG_smoothstep_color4FA_swizzle
+    NG_smoothstep_color4FA_low --"in2"--> NG_smoothstep_color4FA_swizzle
+    NG_smoothstep_color4FA_low --"in3"--> NG_smoothstep_color4FA_swizzle
+    NG_smoothstep_color4FA_low --"in4"--> NG_smoothstep_color4FA_swizzle
+    NG_smoothstep_color4FA_high --"in1"--> NG_smoothstep_color4FA_swizzle2
+    NG_smoothstep_color4FA_high --"in2"--> NG_smoothstep_color4FA_swizzle2
+    NG_smoothstep_color4FA_high --"in3"--> NG_smoothstep_color4FA_swizzle2
+    NG_smoothstep_color4FA_high --"in4"--> NG_smoothstep_color4FA_swizzle2
     NG_smoothstep_color4FA_in --"in"--> NG_smoothstep_color4FA_N_smoothstep
-    NG_smoothstep_color4FA_low --"low"--> NG_smoothstep_color4FA_N_smoothstep
-    NG_smoothstep_color4FA_high --"high"--> NG_smoothstep_color4FA_N_smoothstep
+    NG_smoothstep_color4FA_swizzle --"low"--> NG_smoothstep_color4FA_N_smoothstep
+    NG_smoothstep_color4FA_swizzle2 --"high"--> NG_smoothstep_color4FA_N_smoothstep
     NG_smoothstep_color4FA_N_smoothstep --> NG_smoothstep_color4FA_out
 
 
@@ -2177,19 +2210,25 @@ graph TB
 <div id="ND_smoothstep_vector2FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_smoothstep_vector2FA
+    NG_smoothstep_vector2FA_swizzle[swizzle]
+    NG_smoothstep_vector2FA_swizzle2[swizzle2]
     NG_smoothstep_vector2FA_N_smoothstep[N_smoothstep]
     style NG_smoothstep_vector2FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_vector2FA_out([out])
-    style NG_smoothstep_vector2FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_vector2FA_in([in])
     style NG_smoothstep_vector2FA_low  fill:#09D, color:#FFF
     NG_smoothstep_vector2FA_low([low])
     style NG_smoothstep_vector2FA_high  fill:#09D, color:#FFF
     NG_smoothstep_vector2FA_high([high])
+    style NG_smoothstep_vector2FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector2FA_in([in])
     end
+    NG_smoothstep_vector2FA_low --"in1"--> NG_smoothstep_vector2FA_swizzle
+    NG_smoothstep_vector2FA_low --"in2"--> NG_smoothstep_vector2FA_swizzle
+    NG_smoothstep_vector2FA_high --"in1"--> NG_smoothstep_vector2FA_swizzle2
+    NG_smoothstep_vector2FA_high --"in2"--> NG_smoothstep_vector2FA_swizzle2
     NG_smoothstep_vector2FA_in --"in"--> NG_smoothstep_vector2FA_N_smoothstep
-    NG_smoothstep_vector2FA_low --"low"--> NG_smoothstep_vector2FA_N_smoothstep
-    NG_smoothstep_vector2FA_high --"high"--> NG_smoothstep_vector2FA_N_smoothstep
+    NG_smoothstep_vector2FA_swizzle --"low"--> NG_smoothstep_vector2FA_N_smoothstep
+    NG_smoothstep_vector2FA_swizzle2 --"high"--> NG_smoothstep_vector2FA_N_smoothstep
     NG_smoothstep_vector2FA_N_smoothstep --> NG_smoothstep_vector2FA_out
 
 
@@ -2326,19 +2365,23 @@ graph TB
 <div id="ND_smoothstep_vector3FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_smoothstep_vector3FA
+    NG_smoothstep_vector3FA_swizzle[swizzle]
+    NG_smoothstep_vector3FA_swizzle2[swizzle2]
     NG_smoothstep_vector3FA_N_smoothstep[N_smoothstep]
     style NG_smoothstep_vector3FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_vector3FA_out([out])
-    style NG_smoothstep_vector3FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_vector3FA_in([in])
     style NG_smoothstep_vector3FA_low  fill:#09D, color:#FFF
     NG_smoothstep_vector3FA_low([low])
     style NG_smoothstep_vector3FA_high  fill:#09D, color:#FFF
     NG_smoothstep_vector3FA_high([high])
+    style NG_smoothstep_vector3FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector3FA_in([in])
     end
+    NG_smoothstep_vector3FA_low --"in"--> NG_smoothstep_vector3FA_swizzle
+    NG_smoothstep_vector3FA_high --"in"--> NG_smoothstep_vector3FA_swizzle2
     NG_smoothstep_vector3FA_in --"in"--> NG_smoothstep_vector3FA_N_smoothstep
-    NG_smoothstep_vector3FA_low --"low"--> NG_smoothstep_vector3FA_N_smoothstep
-    NG_smoothstep_vector3FA_high --"high"--> NG_smoothstep_vector3FA_N_smoothstep
+    NG_smoothstep_vector3FA_swizzle --"low"--> NG_smoothstep_vector3FA_N_smoothstep
+    NG_smoothstep_vector3FA_swizzle2 --"high"--> NG_smoothstep_vector3FA_N_smoothstep
     NG_smoothstep_vector3FA_N_smoothstep --> NG_smoothstep_vector3FA_out
 
 
@@ -2478,19 +2521,29 @@ graph TB
 <div id="ND_smoothstep_vector4FA_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_smoothstep_vector4FA
+    NG_smoothstep_vector4FA_swizzle[swizzle]
+    NG_smoothstep_vector4FA_swizzle2[swizzle2]
     NG_smoothstep_vector4FA_N_smoothstep[N_smoothstep]
     style NG_smoothstep_vector4FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_vector4FA_out([out])
-    style NG_smoothstep_vector4FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_vector4FA_in([in])
     style NG_smoothstep_vector4FA_low  fill:#09D, color:#FFF
     NG_smoothstep_vector4FA_low([low])
     style NG_smoothstep_vector4FA_high  fill:#09D, color:#FFF
     NG_smoothstep_vector4FA_high([high])
+    style NG_smoothstep_vector4FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector4FA_in([in])
     end
+    NG_smoothstep_vector4FA_low --"in1"--> NG_smoothstep_vector4FA_swizzle
+    NG_smoothstep_vector4FA_low --"in2"--> NG_smoothstep_vector4FA_swizzle
+    NG_smoothstep_vector4FA_low --"in3"--> NG_smoothstep_vector4FA_swizzle
+    NG_smoothstep_vector4FA_low --"in4"--> NG_smoothstep_vector4FA_swizzle
+    NG_smoothstep_vector4FA_high --"in1"--> NG_smoothstep_vector4FA_swizzle2
+    NG_smoothstep_vector4FA_high --"in2"--> NG_smoothstep_vector4FA_swizzle2
+    NG_smoothstep_vector4FA_high --"in3"--> NG_smoothstep_vector4FA_swizzle2
+    NG_smoothstep_vector4FA_high --"in4"--> NG_smoothstep_vector4FA_swizzle2
     NG_smoothstep_vector4FA_in --"in"--> NG_smoothstep_vector4FA_N_smoothstep
-    NG_smoothstep_vector4FA_low --"low"--> NG_smoothstep_vector4FA_N_smoothstep
-    NG_smoothstep_vector4FA_high --"high"--> NG_smoothstep_vector4FA_N_smoothstep
+    NG_smoothstep_vector4FA_swizzle --"low"--> NG_smoothstep_vector4FA_N_smoothstep
+    NG_smoothstep_vector4FA_swizzle2 --"high"--> NG_smoothstep_vector4FA_N_smoothstep
     NG_smoothstep_vector4FA_N_smoothstep --> NG_smoothstep_vector4FA_out
 
 

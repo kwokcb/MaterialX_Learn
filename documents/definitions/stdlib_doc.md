@@ -2761,6 +2761,7 @@ graph TB
 graph TB
     subgraph NG_noise2d_color3
     NG_noise2d_color3_N_noise2d[N_noise2d]
+    NG_noise2d_color3_swizzle[swizzle]
     style NG_noise2d_color3_out  fill:#0C0, color:#FFF
     NG_noise2d_color3_out([out])
     style NG_noise2d_color3_amplitude  fill:#09D, color:#FFF
@@ -2773,7 +2774,8 @@ graph TB
     NG_noise2d_color3_amplitude --"amplitude"--> NG_noise2d_color3_N_noise2d
     NG_noise2d_color3_pivot --"pivot"--> NG_noise2d_color3_N_noise2d
     NG_noise2d_color3_texcoord --"texcoord"--> NG_noise2d_color3_N_noise2d
-    NG_noise2d_color3_N_noise2d --> NG_noise2d_color3_out
+    NG_noise2d_color3_N_noise2d --"in"--> NG_noise2d_color3_swizzle
+    NG_noise2d_color3_swizzle --> NG_noise2d_color3_out
 ```
  
 
@@ -2798,6 +2800,7 @@ graph TB
 graph TB
     subgraph NG_noise2d_color4
     NG_noise2d_color4_N_noise2d[N_noise2d]
+    NG_noise2d_color4_swizzle[swizzle]
     style NG_noise2d_color4_out  fill:#0C0, color:#FFF
     NG_noise2d_color4_out([out])
     style NG_noise2d_color4_amplitude  fill:#09D, color:#FFF
@@ -2810,7 +2813,8 @@ graph TB
     NG_noise2d_color4_amplitude --"amplitude"--> NG_noise2d_color4_N_noise2d
     NG_noise2d_color4_pivot --"pivot"--> NG_noise2d_color4_N_noise2d
     NG_noise2d_color4_texcoord --"texcoord"--> NG_noise2d_color4_N_noise2d
-    NG_noise2d_color4_N_noise2d --> NG_noise2d_color4_out
+    NG_noise2d_color4_N_noise2d --"in"--> NG_noise2d_color4_swizzle
+    NG_noise2d_color4_swizzle --> NG_noise2d_color4_out
 ```
  
 
@@ -2885,6 +2889,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise2d_color3FA
+    NG_noise2d_color3FA_swizzle[swizzle]
     NG_noise2d_color3FA_N_noise2d[N_noise2d]
     style NG_noise2d_color3FA_out  fill:#0C0, color:#FFF
     NG_noise2d_color3FA_out([out])
@@ -2895,7 +2900,8 @@ graph TB
     style NG_noise2d_color3FA_texcoord  fill:#09D, color:#FFF
     NG_noise2d_color3FA_texcoord([texcoord])
     end
-    NG_noise2d_color3FA_amplitude --"amplitude"--> NG_noise2d_color3FA_N_noise2d
+    NG_noise2d_color3FA_amplitude --"in"--> NG_noise2d_color3FA_swizzle
+    NG_noise2d_color3FA_swizzle --"amplitude"--> NG_noise2d_color3FA_N_noise2d
     NG_noise2d_color3FA_pivot --"pivot"--> NG_noise2d_color3FA_N_noise2d
     NG_noise2d_color3FA_texcoord --"texcoord"--> NG_noise2d_color3FA_N_noise2d
     NG_noise2d_color3FA_N_noise2d --> NG_noise2d_color3FA_out
@@ -2922,6 +2928,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise2d_color4FA
+    NG_noise2d_color4FA_swizzle[swizzle]
     NG_noise2d_color4FA_N_noise2d[N_noise2d]
     style NG_noise2d_color4FA_out  fill:#0C0, color:#FFF
     NG_noise2d_color4FA_out([out])
@@ -2932,7 +2939,11 @@ graph TB
     style NG_noise2d_color4FA_texcoord  fill:#09D, color:#FFF
     NG_noise2d_color4FA_texcoord([texcoord])
     end
-    NG_noise2d_color4FA_amplitude --"amplitude"--> NG_noise2d_color4FA_N_noise2d
+    NG_noise2d_color4FA_amplitude --"in1"--> NG_noise2d_color4FA_swizzle
+    NG_noise2d_color4FA_amplitude --"in2"--> NG_noise2d_color4FA_swizzle
+    NG_noise2d_color4FA_amplitude --"in3"--> NG_noise2d_color4FA_swizzle
+    NG_noise2d_color4FA_amplitude --"in4"--> NG_noise2d_color4FA_swizzle
+    NG_noise2d_color4FA_swizzle --"amplitude"--> NG_noise2d_color4FA_N_noise2d
     NG_noise2d_color4FA_pivot --"pivot"--> NG_noise2d_color4FA_N_noise2d
     NG_noise2d_color4FA_texcoord --"texcoord"--> NG_noise2d_color4FA_N_noise2d
     NG_noise2d_color4FA_N_noise2d --> NG_noise2d_color4FA_out
@@ -2959,6 +2970,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise2d_vector2FA
+    NG_noise2d_vector2FA_swizzle[swizzle]
     NG_noise2d_vector2FA_N_noise2d[N_noise2d]
     style NG_noise2d_vector2FA_out  fill:#0C0, color:#FFF
     NG_noise2d_vector2FA_out([out])
@@ -2969,7 +2981,9 @@ graph TB
     style NG_noise2d_vector2FA_texcoord  fill:#09D, color:#FFF
     NG_noise2d_vector2FA_texcoord([texcoord])
     end
-    NG_noise2d_vector2FA_amplitude --"amplitude"--> NG_noise2d_vector2FA_N_noise2d
+    NG_noise2d_vector2FA_amplitude --"in1"--> NG_noise2d_vector2FA_swizzle
+    NG_noise2d_vector2FA_amplitude --"in2"--> NG_noise2d_vector2FA_swizzle
+    NG_noise2d_vector2FA_swizzle --"amplitude"--> NG_noise2d_vector2FA_N_noise2d
     NG_noise2d_vector2FA_pivot --"pivot"--> NG_noise2d_vector2FA_N_noise2d
     NG_noise2d_vector2FA_texcoord --"texcoord"--> NG_noise2d_vector2FA_N_noise2d
     NG_noise2d_vector2FA_N_noise2d --> NG_noise2d_vector2FA_out
@@ -2996,6 +3010,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise2d_vector3FA
+    NG_noise2d_vector3FA_swizzle[swizzle]
     NG_noise2d_vector3FA_N_noise2d[N_noise2d]
     style NG_noise2d_vector3FA_out  fill:#0C0, color:#FFF
     NG_noise2d_vector3FA_out([out])
@@ -3006,7 +3021,8 @@ graph TB
     style NG_noise2d_vector3FA_texcoord  fill:#09D, color:#FFF
     NG_noise2d_vector3FA_texcoord([texcoord])
     end
-    NG_noise2d_vector3FA_amplitude --"amplitude"--> NG_noise2d_vector3FA_N_noise2d
+    NG_noise2d_vector3FA_amplitude --"in"--> NG_noise2d_vector3FA_swizzle
+    NG_noise2d_vector3FA_swizzle --"amplitude"--> NG_noise2d_vector3FA_N_noise2d
     NG_noise2d_vector3FA_pivot --"pivot"--> NG_noise2d_vector3FA_N_noise2d
     NG_noise2d_vector3FA_texcoord --"texcoord"--> NG_noise2d_vector3FA_N_noise2d
     NG_noise2d_vector3FA_N_noise2d --> NG_noise2d_vector3FA_out
@@ -3033,6 +3049,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise2d_vector4FA
+    NG_noise2d_vector4FA_swizzle[swizzle]
     NG_noise2d_vector4FA_N_noise2d[N_noise2d]
     style NG_noise2d_vector4FA_out  fill:#0C0, color:#FFF
     NG_noise2d_vector4FA_out([out])
@@ -3043,7 +3060,11 @@ graph TB
     style NG_noise2d_vector4FA_texcoord  fill:#09D, color:#FFF
     NG_noise2d_vector4FA_texcoord([texcoord])
     end
-    NG_noise2d_vector4FA_amplitude --"amplitude"--> NG_noise2d_vector4FA_N_noise2d
+    NG_noise2d_vector4FA_amplitude --"in1"--> NG_noise2d_vector4FA_swizzle
+    NG_noise2d_vector4FA_amplitude --"in2"--> NG_noise2d_vector4FA_swizzle
+    NG_noise2d_vector4FA_amplitude --"in3"--> NG_noise2d_vector4FA_swizzle
+    NG_noise2d_vector4FA_amplitude --"in4"--> NG_noise2d_vector4FA_swizzle
+    NG_noise2d_vector4FA_swizzle --"amplitude"--> NG_noise2d_vector4FA_N_noise2d
     NG_noise2d_vector4FA_pivot --"pivot"--> NG_noise2d_vector4FA_N_noise2d
     NG_noise2d_vector4FA_texcoord --"texcoord"--> NG_noise2d_vector4FA_N_noise2d
     NG_noise2d_vector4FA_N_noise2d --> NG_noise2d_vector4FA_out
@@ -3089,6 +3110,7 @@ graph TB
 graph TB
     subgraph NG_noise3d_color3
     NG_noise3d_color3_N_noise3d[N_noise3d]
+    NG_noise3d_color3_swizzle[swizzle]
     style NG_noise3d_color3_out  fill:#0C0, color:#FFF
     NG_noise3d_color3_out([out])
     style NG_noise3d_color3_amplitude  fill:#09D, color:#FFF
@@ -3101,7 +3123,8 @@ graph TB
     NG_noise3d_color3_amplitude --"amplitude"--> NG_noise3d_color3_N_noise3d
     NG_noise3d_color3_pivot --"pivot"--> NG_noise3d_color3_N_noise3d
     NG_noise3d_color3_position --"position"--> NG_noise3d_color3_N_noise3d
-    NG_noise3d_color3_N_noise3d --> NG_noise3d_color3_out
+    NG_noise3d_color3_N_noise3d --"in"--> NG_noise3d_color3_swizzle
+    NG_noise3d_color3_swizzle --> NG_noise3d_color3_out
 ```
  
 
@@ -3126,6 +3149,7 @@ graph TB
 graph TB
     subgraph NG_noise3d_color4
     NG_noise3d_color4_N_noise3d[N_noise3d]
+    NG_noise3d_color4_swizzle[swizzle]
     style NG_noise3d_color4_out  fill:#0C0, color:#FFF
     NG_noise3d_color4_out([out])
     style NG_noise3d_color4_amplitude  fill:#09D, color:#FFF
@@ -3138,7 +3162,8 @@ graph TB
     NG_noise3d_color4_amplitude --"amplitude"--> NG_noise3d_color4_N_noise3d
     NG_noise3d_color4_pivot --"pivot"--> NG_noise3d_color4_N_noise3d
     NG_noise3d_color4_position --"position"--> NG_noise3d_color4_N_noise3d
-    NG_noise3d_color4_N_noise3d --> NG_noise3d_color4_out
+    NG_noise3d_color4_N_noise3d --"in"--> NG_noise3d_color4_swizzle
+    NG_noise3d_color4_swizzle --> NG_noise3d_color4_out
 ```
  
 
@@ -3213,6 +3238,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise3d_color3FA
+    NG_noise3d_color3FA_swizzle[swizzle]
     NG_noise3d_color3FA_N_noise3d[N_noise3d]
     style NG_noise3d_color3FA_out  fill:#0C0, color:#FFF
     NG_noise3d_color3FA_out([out])
@@ -3223,7 +3249,8 @@ graph TB
     style NG_noise3d_color3FA_position  fill:#09D, color:#FFF
     NG_noise3d_color3FA_position([position])
     end
-    NG_noise3d_color3FA_amplitude --"amplitude"--> NG_noise3d_color3FA_N_noise3d
+    NG_noise3d_color3FA_amplitude --"in"--> NG_noise3d_color3FA_swizzle
+    NG_noise3d_color3FA_swizzle --"amplitude"--> NG_noise3d_color3FA_N_noise3d
     NG_noise3d_color3FA_pivot --"pivot"--> NG_noise3d_color3FA_N_noise3d
     NG_noise3d_color3FA_position --"position"--> NG_noise3d_color3FA_N_noise3d
     NG_noise3d_color3FA_N_noise3d --> NG_noise3d_color3FA_out
@@ -3250,6 +3277,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise3d_color4FA
+    NG_noise3d_color4FA_swizzle[swizzle]
     NG_noise3d_color4FA_N_noise3d[N_noise3d]
     style NG_noise3d_color4FA_out  fill:#0C0, color:#FFF
     NG_noise3d_color4FA_out([out])
@@ -3260,7 +3288,11 @@ graph TB
     style NG_noise3d_color4FA_position  fill:#09D, color:#FFF
     NG_noise3d_color4FA_position([position])
     end
-    NG_noise3d_color4FA_amplitude --"amplitude"--> NG_noise3d_color4FA_N_noise3d
+    NG_noise3d_color4FA_amplitude --"in1"--> NG_noise3d_color4FA_swizzle
+    NG_noise3d_color4FA_amplitude --"in2"--> NG_noise3d_color4FA_swizzle
+    NG_noise3d_color4FA_amplitude --"in3"--> NG_noise3d_color4FA_swizzle
+    NG_noise3d_color4FA_amplitude --"in4"--> NG_noise3d_color4FA_swizzle
+    NG_noise3d_color4FA_swizzle --"amplitude"--> NG_noise3d_color4FA_N_noise3d
     NG_noise3d_color4FA_pivot --"pivot"--> NG_noise3d_color4FA_N_noise3d
     NG_noise3d_color4FA_position --"position"--> NG_noise3d_color4FA_N_noise3d
     NG_noise3d_color4FA_N_noise3d --> NG_noise3d_color4FA_out
@@ -3287,6 +3319,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise3d_vector2FA
+    NG_noise3d_vector2FA_swizzle[swizzle]
     NG_noise3d_vector2FA_N_noise3d[N_noise3d]
     style NG_noise3d_vector2FA_out  fill:#0C0, color:#FFF
     NG_noise3d_vector2FA_out([out])
@@ -3297,7 +3330,9 @@ graph TB
     style NG_noise3d_vector2FA_position  fill:#09D, color:#FFF
     NG_noise3d_vector2FA_position([position])
     end
-    NG_noise3d_vector2FA_amplitude --"amplitude"--> NG_noise3d_vector2FA_N_noise3d
+    NG_noise3d_vector2FA_amplitude --"in1"--> NG_noise3d_vector2FA_swizzle
+    NG_noise3d_vector2FA_amplitude --"in2"--> NG_noise3d_vector2FA_swizzle
+    NG_noise3d_vector2FA_swizzle --"amplitude"--> NG_noise3d_vector2FA_N_noise3d
     NG_noise3d_vector2FA_pivot --"pivot"--> NG_noise3d_vector2FA_N_noise3d
     NG_noise3d_vector2FA_position --"position"--> NG_noise3d_vector2FA_N_noise3d
     NG_noise3d_vector2FA_N_noise3d --> NG_noise3d_vector2FA_out
@@ -3324,6 +3359,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise3d_vector3FA
+    NG_noise3d_vector3FA_swizzle[swizzle]
     NG_noise3d_vector3FA_N_noise3d[N_noise3d]
     style NG_noise3d_vector3FA_out  fill:#0C0, color:#FFF
     NG_noise3d_vector3FA_out([out])
@@ -3334,7 +3370,8 @@ graph TB
     style NG_noise3d_vector3FA_position  fill:#09D, color:#FFF
     NG_noise3d_vector3FA_position([position])
     end
-    NG_noise3d_vector3FA_amplitude --"amplitude"--> NG_noise3d_vector3FA_N_noise3d
+    NG_noise3d_vector3FA_amplitude --"in"--> NG_noise3d_vector3FA_swizzle
+    NG_noise3d_vector3FA_swizzle --"amplitude"--> NG_noise3d_vector3FA_N_noise3d
     NG_noise3d_vector3FA_pivot --"pivot"--> NG_noise3d_vector3FA_N_noise3d
     NG_noise3d_vector3FA_position --"position"--> NG_noise3d_vector3FA_N_noise3d
     NG_noise3d_vector3FA_N_noise3d --> NG_noise3d_vector3FA_out
@@ -3361,6 +3398,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise3d_vector4FA
+    NG_noise3d_vector4FA_swizzle[swizzle]
     NG_noise3d_vector4FA_N_noise3d[N_noise3d]
     style NG_noise3d_vector4FA_out  fill:#0C0, color:#FFF
     NG_noise3d_vector4FA_out([out])
@@ -3371,7 +3409,11 @@ graph TB
     style NG_noise3d_vector4FA_position  fill:#09D, color:#FFF
     NG_noise3d_vector4FA_position([position])
     end
-    NG_noise3d_vector4FA_amplitude --"amplitude"--> NG_noise3d_vector4FA_N_noise3d
+    NG_noise3d_vector4FA_amplitude --"in1"--> NG_noise3d_vector4FA_swizzle
+    NG_noise3d_vector4FA_amplitude --"in2"--> NG_noise3d_vector4FA_swizzle
+    NG_noise3d_vector4FA_amplitude --"in3"--> NG_noise3d_vector4FA_swizzle
+    NG_noise3d_vector4FA_amplitude --"in4"--> NG_noise3d_vector4FA_swizzle
+    NG_noise3d_vector4FA_swizzle --"amplitude"--> NG_noise3d_vector4FA_N_noise3d
     NG_noise3d_vector4FA_pivot --"pivot"--> NG_noise3d_vector4FA_N_noise3d
     NG_noise3d_vector4FA_position --"position"--> NG_noise3d_vector4FA_N_noise3d
     NG_noise3d_vector4FA_N_noise3d --> NG_noise3d_vector4FA_out
@@ -3419,6 +3461,7 @@ graph TB
 graph TB
     subgraph NG_fractal3d_color3
     NG_fractal3d_color3_N_fractal3d[N_fractal3d]
+    NG_fractal3d_color3_swizzle[swizzle]
     style NG_fractal3d_color3_out  fill:#0C0, color:#FFF
     NG_fractal3d_color3_out([out])
     style NG_fractal3d_color3_amplitude  fill:#09D, color:#FFF
@@ -3437,7 +3480,8 @@ graph TB
     NG_fractal3d_color3_lacunarity --"lacunarity"--> NG_fractal3d_color3_N_fractal3d
     NG_fractal3d_color3_diminish --"diminish"--> NG_fractal3d_color3_N_fractal3d
     NG_fractal3d_color3_position --"position"--> NG_fractal3d_color3_N_fractal3d
-    NG_fractal3d_color3_N_fractal3d --> NG_fractal3d_color3_out
+    NG_fractal3d_color3_N_fractal3d --"in"--> NG_fractal3d_color3_swizzle
+    NG_fractal3d_color3_swizzle --> NG_fractal3d_color3_out
 ```
  
 
@@ -3464,6 +3508,7 @@ graph TB
 graph TB
     subgraph NG_fractal3d_color4
     NG_fractal3d_color4_N_fractal3d[N_fractal3d]
+    NG_fractal3d_color4_swizzle[swizzle]
     style NG_fractal3d_color4_out  fill:#0C0, color:#FFF
     NG_fractal3d_color4_out([out])
     style NG_fractal3d_color4_amplitude  fill:#09D, color:#FFF
@@ -3482,7 +3527,8 @@ graph TB
     NG_fractal3d_color4_lacunarity --"lacunarity"--> NG_fractal3d_color4_N_fractal3d
     NG_fractal3d_color4_diminish --"diminish"--> NG_fractal3d_color4_N_fractal3d
     NG_fractal3d_color4_position --"position"--> NG_fractal3d_color4_N_fractal3d
-    NG_fractal3d_color4_N_fractal3d --> NG_fractal3d_color4_out
+    NG_fractal3d_color4_N_fractal3d --"in"--> NG_fractal3d_color4_swizzle
+    NG_fractal3d_color4_swizzle --> NG_fractal3d_color4_out
 ```
  
 
@@ -3565,6 +3611,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_fractal3d_color3FA
+    NG_fractal3d_color3FA_swizzle[swizzle]
     NG_fractal3d_color3FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_color3FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_color3FA_out([out])
@@ -3579,7 +3626,8 @@ graph TB
     style NG_fractal3d_color3FA_position  fill:#09D, color:#FFF
     NG_fractal3d_color3FA_position([position])
     end
-    NG_fractal3d_color3FA_amplitude --"amplitude"--> NG_fractal3d_color3FA_N_fractal3d
+    NG_fractal3d_color3FA_amplitude --"in"--> NG_fractal3d_color3FA_swizzle
+    NG_fractal3d_color3FA_swizzle --"amplitude"--> NG_fractal3d_color3FA_N_fractal3d
     NG_fractal3d_color3FA_octaves --"octaves"--> NG_fractal3d_color3FA_N_fractal3d
     NG_fractal3d_color3FA_lacunarity --"lacunarity"--> NG_fractal3d_color3FA_N_fractal3d
     NG_fractal3d_color3FA_diminish --"diminish"--> NG_fractal3d_color3FA_N_fractal3d
@@ -3610,6 +3658,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_fractal3d_color4FA
+    NG_fractal3d_color4FA_swizzle[swizzle]
     NG_fractal3d_color4FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_color4FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_color4FA_out([out])
@@ -3624,7 +3673,11 @@ graph TB
     style NG_fractal3d_color4FA_position  fill:#09D, color:#FFF
     NG_fractal3d_color4FA_position([position])
     end
-    NG_fractal3d_color4FA_amplitude --"amplitude"--> NG_fractal3d_color4FA_N_fractal3d
+    NG_fractal3d_color4FA_amplitude --"in1"--> NG_fractal3d_color4FA_swizzle
+    NG_fractal3d_color4FA_amplitude --"in2"--> NG_fractal3d_color4FA_swizzle
+    NG_fractal3d_color4FA_amplitude --"in3"--> NG_fractal3d_color4FA_swizzle
+    NG_fractal3d_color4FA_amplitude --"in4"--> NG_fractal3d_color4FA_swizzle
+    NG_fractal3d_color4FA_swizzle --"amplitude"--> NG_fractal3d_color4FA_N_fractal3d
     NG_fractal3d_color4FA_octaves --"octaves"--> NG_fractal3d_color4FA_N_fractal3d
     NG_fractal3d_color4FA_lacunarity --"lacunarity"--> NG_fractal3d_color4FA_N_fractal3d
     NG_fractal3d_color4FA_diminish --"diminish"--> NG_fractal3d_color4FA_N_fractal3d
@@ -3655,6 +3708,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_fractal3d_vector2FA
+    NG_fractal3d_vector2FA_swizzle[swizzle]
     NG_fractal3d_vector2FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_vector2FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_vector2FA_out([out])
@@ -3669,7 +3723,9 @@ graph TB
     style NG_fractal3d_vector2FA_position  fill:#09D, color:#FFF
     NG_fractal3d_vector2FA_position([position])
     end
-    NG_fractal3d_vector2FA_amplitude --"amplitude"--> NG_fractal3d_vector2FA_N_fractal3d
+    NG_fractal3d_vector2FA_amplitude --"in1"--> NG_fractal3d_vector2FA_swizzle
+    NG_fractal3d_vector2FA_amplitude --"in2"--> NG_fractal3d_vector2FA_swizzle
+    NG_fractal3d_vector2FA_swizzle --"amplitude"--> NG_fractal3d_vector2FA_N_fractal3d
     NG_fractal3d_vector2FA_octaves --"octaves"--> NG_fractal3d_vector2FA_N_fractal3d
     NG_fractal3d_vector2FA_lacunarity --"lacunarity"--> NG_fractal3d_vector2FA_N_fractal3d
     NG_fractal3d_vector2FA_diminish --"diminish"--> NG_fractal3d_vector2FA_N_fractal3d
@@ -3700,6 +3756,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_fractal3d_vector3FA
+    NG_fractal3d_vector3FA_swizzle[swizzle]
     NG_fractal3d_vector3FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_vector3FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_vector3FA_out([out])
@@ -3714,7 +3771,8 @@ graph TB
     style NG_fractal3d_vector3FA_position  fill:#09D, color:#FFF
     NG_fractal3d_vector3FA_position([position])
     end
-    NG_fractal3d_vector3FA_amplitude --"amplitude"--> NG_fractal3d_vector3FA_N_fractal3d
+    NG_fractal3d_vector3FA_amplitude --"in"--> NG_fractal3d_vector3FA_swizzle
+    NG_fractal3d_vector3FA_swizzle --"amplitude"--> NG_fractal3d_vector3FA_N_fractal3d
     NG_fractal3d_vector3FA_octaves --"octaves"--> NG_fractal3d_vector3FA_N_fractal3d
     NG_fractal3d_vector3FA_lacunarity --"lacunarity"--> NG_fractal3d_vector3FA_N_fractal3d
     NG_fractal3d_vector3FA_diminish --"diminish"--> NG_fractal3d_vector3FA_N_fractal3d
@@ -3745,6 +3803,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_fractal3d_vector4FA
+    NG_fractal3d_vector4FA_swizzle[swizzle]
     NG_fractal3d_vector4FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_vector4FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_vector4FA_out([out])
@@ -3759,7 +3818,11 @@ graph TB
     style NG_fractal3d_vector4FA_position  fill:#09D, color:#FFF
     NG_fractal3d_vector4FA_position([position])
     end
-    NG_fractal3d_vector4FA_amplitude --"amplitude"--> NG_fractal3d_vector4FA_N_fractal3d
+    NG_fractal3d_vector4FA_amplitude --"in1"--> NG_fractal3d_vector4FA_swizzle
+    NG_fractal3d_vector4FA_amplitude --"in2"--> NG_fractal3d_vector4FA_swizzle
+    NG_fractal3d_vector4FA_amplitude --"in3"--> NG_fractal3d_vector4FA_swizzle
+    NG_fractal3d_vector4FA_amplitude --"in4"--> NG_fractal3d_vector4FA_swizzle
+    NG_fractal3d_vector4FA_swizzle --"amplitude"--> NG_fractal3d_vector4FA_N_fractal3d
     NG_fractal3d_vector4FA_octaves --"octaves"--> NG_fractal3d_vector4FA_N_fractal3d
     NG_fractal3d_vector4FA_lacunarity --"lacunarity"--> NG_fractal3d_vector4FA_N_fractal3d
     NG_fractal3d_vector4FA_diminish --"diminish"--> NG_fractal3d_vector4FA_N_fractal3d
@@ -4539,9 +4602,17 @@ graph TB
     NG_cloverleaf_float_sample_double[sample_double]
     NG_cloverleaf_float_sample_add[sample_add]
     NG_cloverleaf_float_sample_subtract[sample_subtract]
+    NG_cloverleaf_float_swizzle[swizzle]
+    NG_cloverleaf_float_swizzle2[swizzle2]
     NG_cloverleaf_float_coord1[coord1]
+    NG_cloverleaf_float_swizzle3[swizzle3]
+    NG_cloverleaf_float_swizzle4[swizzle4]
     NG_cloverleaf_float_coord2[coord2]
+    NG_cloverleaf_float_swizzle5[swizzle5]
+    NG_cloverleaf_float_swizzle6[swizzle6]
     NG_cloverleaf_float_coord3[coord3]
+    NG_cloverleaf_float_swizzle7[swizzle7]
+    NG_cloverleaf_float_swizzle8[swizzle8]
     NG_cloverleaf_float_coord4[coord4]
     NG_cloverleaf_float_circle1[circle1]
     NG_cloverleaf_float_circle2[circle2]
@@ -4565,14 +4636,22 @@ graph TB
     NG_cloverleaf_float_radius --"in2"--> NG_cloverleaf_float_sample_add
     NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_sample_subtract
     NG_cloverleaf_float_radius --"in2"--> NG_cloverleaf_float_sample_subtract
-    NG_cloverleaf_float_sample_add --"in1"--> NG_cloverleaf_float_coord1
-    NG_cloverleaf_float_sample_double --"in2"--> NG_cloverleaf_float_coord1
-    NG_cloverleaf_float_sample_subtract --"in1"--> NG_cloverleaf_float_coord2
-    NG_cloverleaf_float_sample_double --"in2"--> NG_cloverleaf_float_coord2
-    NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_coord3
-    NG_cloverleaf_float_sample_subtract --"in2"--> NG_cloverleaf_float_coord3
-    NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_coord4
-    NG_cloverleaf_float_sample_add --"in2"--> NG_cloverleaf_float_coord4
+    NG_cloverleaf_float_sample_add --"in"--> NG_cloverleaf_float_swizzle
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle2
+    NG_cloverleaf_float_swizzle --"in1"--> NG_cloverleaf_float_coord1
+    NG_cloverleaf_float_swizzle2 --"in2"--> NG_cloverleaf_float_coord1
+    NG_cloverleaf_float_sample_subtract --"in"--> NG_cloverleaf_float_swizzle3
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle4
+    NG_cloverleaf_float_swizzle3 --"in1"--> NG_cloverleaf_float_coord2
+    NG_cloverleaf_float_swizzle4 --"in2"--> NG_cloverleaf_float_coord2
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle5
+    NG_cloverleaf_float_sample_subtract --"in"--> NG_cloverleaf_float_swizzle6
+    NG_cloverleaf_float_swizzle5 --"in1"--> NG_cloverleaf_float_coord3
+    NG_cloverleaf_float_swizzle6 --"in2"--> NG_cloverleaf_float_coord3
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle7
+    NG_cloverleaf_float_sample_add --"in"--> NG_cloverleaf_float_swizzle8
+    NG_cloverleaf_float_swizzle7 --"in1"--> NG_cloverleaf_float_coord4
+    NG_cloverleaf_float_swizzle8 --"in2"--> NG_cloverleaf_float_coord4
     NG_cloverleaf_float_coord1 --"texcoord"--> NG_cloverleaf_float_circle1
     NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle1
     NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle1
@@ -4618,13 +4697,21 @@ graph TB
     subgraph NG_hexagon_float
     NG_hexagon_float_delta[delta]
     NG_hexagon_float_delta_abs[delta_abs]
+    NG_hexagon_float_swizzle[swizzle]
+    NG_hexagon_float_swizzle2[swizzle2]
     NG_hexagon_float_p[p]
     style NG_hexagon_float_k  fill:#500, color:#FFF
     NG_hexagon_float_k([k:-0.866025, 0.5, 0.57735])
+    NG_hexagon_float_swizzle3[swizzle3]
     NG_hexagon_float_kz_r1[kz_r1]
     NG_hexagon_float_minus_k[minus_k]
+    NG_hexagon_float_swizzle4[swizzle4]
     NG_hexagon_float_minus_kz_r[minus_kz_r]
+    NG_hexagon_float_swizzle5[swizzle5]
+    NG_hexagon_float_swizzle6[swizzle6]
     NG_hexagon_float_combine_mkx_ky[combine_mkx_ky]
+    NG_hexagon_float_swizzle7[swizzle7]
+    NG_hexagon_float_swizzle8[swizzle8]
     NG_hexagon_float_kxy[kxy]
     NG_hexagon_float_dot_kxy_p[dot_kxy_p]
     NG_hexagon_float_dot_kxy_p1[dot_kxy_p1]
@@ -4634,6 +4721,7 @@ graph TB
     NG_hexagon_float_multiply2_1[multiply2_1]
     NG_hexagon_float_multiply_min_comb[multiply_min_comb]
     NG_hexagon_float_multiply2_2[multiply2_2]
+    NG_hexagon_float_swizzle9[swizzle9]
     NG_hexagon_float_clamp[clamp]
     NG_hexagon_float_combine_clamp_rad[combine_clamp_rad]
     NG_hexagon_float_new_p1[new_p1]
@@ -4654,17 +4742,25 @@ graph TB
     NG_hexagon_float_texcoord --"in1"--> NG_hexagon_float_delta
     NG_hexagon_float_center --"in2"--> NG_hexagon_float_delta
     NG_hexagon_float_delta --"in"--> NG_hexagon_float_delta_abs
-    NG_hexagon_float_delta_abs --"in1"--> NG_hexagon_float_p
-    NG_hexagon_float_delta_abs --"in2"--> NG_hexagon_float_p
-    NG_hexagon_float_k --"in1"--> NG_hexagon_float_kz_r1
+    NG_hexagon_float_delta_abs --"in"--> NG_hexagon_float_swizzle
+    NG_hexagon_float_delta_abs --"in"--> NG_hexagon_float_swizzle2
+    NG_hexagon_float_swizzle --"in1"--> NG_hexagon_float_p
+    NG_hexagon_float_swizzle2 --"in2"--> NG_hexagon_float_p
+    NG_hexagon_float_k --"in"--> NG_hexagon_float_swizzle3
+    NG_hexagon_float_swizzle3 --"in1"--> NG_hexagon_float_kz_r1
     NG_hexagon_float_radius --"in2"--> NG_hexagon_float_kz_r1
     NG_hexagon_float_k --"in1"--> NG_hexagon_float_minus_k
-    NG_hexagon_float_minus_k --"in1"--> NG_hexagon_float_minus_kz_r
+    NG_hexagon_float_minus_k --"in"--> NG_hexagon_float_swizzle4
+    NG_hexagon_float_swizzle4 --"in1"--> NG_hexagon_float_minus_kz_r
     NG_hexagon_float_radius --"in2"--> NG_hexagon_float_minus_kz_r
-    NG_hexagon_float_minus_k --"in1"--> NG_hexagon_float_combine_mkx_ky
-    NG_hexagon_float_k --"in2"--> NG_hexagon_float_combine_mkx_ky
-    NG_hexagon_float_k --"in1"--> NG_hexagon_float_kxy
-    NG_hexagon_float_k --"in2"--> NG_hexagon_float_kxy
+    NG_hexagon_float_minus_k --"in"--> NG_hexagon_float_swizzle5
+    NG_hexagon_float_k --"in"--> NG_hexagon_float_swizzle6
+    NG_hexagon_float_swizzle5 --"in1"--> NG_hexagon_float_combine_mkx_ky
+    NG_hexagon_float_swizzle6 --"in2"--> NG_hexagon_float_combine_mkx_ky
+    NG_hexagon_float_k --"in"--> NG_hexagon_float_swizzle7
+    NG_hexagon_float_k --"in"--> NG_hexagon_float_swizzle8
+    NG_hexagon_float_swizzle7 --"in1"--> NG_hexagon_float_kxy
+    NG_hexagon_float_swizzle8 --"in2"--> NG_hexagon_float_kxy
     NG_hexagon_float_kxy --"in1"--> NG_hexagon_float_dot_kxy_p
     NG_hexagon_float_p --"in2"--> NG_hexagon_float_dot_kxy_p
     NG_hexagon_float_combine_mkx_ky --"in1"--> NG_hexagon_float_dot_kxy_p1
@@ -4677,7 +4773,8 @@ graph TB
     NG_hexagon_float_combine_mkx_ky --"in1"--> NG_hexagon_float_multiply_min_comb
     NG_hexagon_float_min_0 --"in2"--> NG_hexagon_float_multiply_min_comb
     NG_hexagon_float_multiply_min_comb --"in1"--> NG_hexagon_float_multiply2_2
-    NG_hexagon_float_new_p2 --"in"--> NG_hexagon_float_clamp
+    NG_hexagon_float_new_p2 --"in"--> NG_hexagon_float_swizzle9
+    NG_hexagon_float_swizzle9 --"in"--> NG_hexagon_float_clamp
     NG_hexagon_float_minus_kz_r --"low"--> NG_hexagon_float_clamp
     NG_hexagon_float_kz_r1 --"high"--> NG_hexagon_float_clamp
     NG_hexagon_float_clamp --"in1"--> NG_hexagon_float_combine_clamp_rad
@@ -4719,11 +4816,15 @@ graph TB
     NG_grid_color3_texcoord_scale[texcoord_scale]
     NG_grid_color3_texcoord_bias[texcoord_bias]
     NG_grid_color3_thick_to_size[thick_to_size]
+    NG_grid_color3_swizzle[swizzle]
     NG_grid_color3_mod_Y[mod_Y]
+    NG_grid_color3_swizzle2[swizzle2]
     NG_grid_color3_mod_Y_row[mod_Y_row]
     NG_grid_color3_mody_2[mody_2]
     NG_grid_color3_alt_rows_shift[alt_rows_shift]
+    NG_grid_color3_swizzle3[swizzle3]
     NG_grid_color3_shift_X[shift_X]
+    NG_grid_color3_swizzle4[swizzle4]
     style NG_grid_color3_stagger_selection  fill:#C72, color:#FFF
     NG_grid_color3_stagger_selection{stagger_selection}
     NG_grid_color3_mod_X[mod_X]
@@ -4755,15 +4856,19 @@ graph TB
     NG_grid_color3_texcoord_scale --"in1"--> NG_grid_color3_texcoord_bias
     NG_grid_color3_uvoffset --"in2"--> NG_grid_color3_texcoord_bias
     NG_grid_color3_thickness --"in2"--> NG_grid_color3_thick_to_size
-    NG_grid_color3_texcoord_bias --"in1"--> NG_grid_color3_mod_Y
-    NG_grid_color3_texcoord_bias --"in1"--> NG_grid_color3_mod_Y_row
+    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_swizzle
+    NG_grid_color3_swizzle --"in1"--> NG_grid_color3_mod_Y
+    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_swizzle2
+    NG_grid_color3_swizzle2 --"in1"--> NG_grid_color3_mod_Y_row
     NG_grid_color3_mod_Y --"in1"--> NG_grid_color3_mody_2
     NG_grid_color3_mod_Y_row --"value1"--> NG_grid_color3_alt_rows_shift
-    NG_grid_color3_texcoord_bias --"in1"--> NG_grid_color3_shift_X
+    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_swizzle3
+    NG_grid_color3_swizzle3 --"in1"--> NG_grid_color3_shift_X
     NG_grid_color3_alt_rows_shift --"in2"--> NG_grid_color3_shift_X
+    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_swizzle4
     NG_grid_color3_staggered --"value1"--> NG_grid_color3_stagger_selection
     NG_grid_color3_shift_X --"in1"--> NG_grid_color3_stagger_selection
-    NG_grid_color3_texcoord_bias --"in2"--> NG_grid_color3_stagger_selection
+    NG_grid_color3_swizzle4 --"in2"--> NG_grid_color3_stagger_selection
     NG_grid_color3_stagger_selection --"in1"--> NG_grid_color3_mod_X
     NG_grid_color3_mod_X --"in1"--> NG_grid_color3_modx_2
     NG_grid_color3_modx_2 --"in1"--> NG_grid_color3_subX_1
@@ -4807,11 +4912,15 @@ graph TB
     subgraph NG_crosshatch_color3
     NG_crosshatch_color3_texcoord_scale[texcoord_scale]
     NG_crosshatch_color3_texcoord_bias[texcoord_bias]
+    NG_crosshatch_color3_swizzle[swizzle]
     NG_crosshatch_color3_mod_Y[mod_Y]
+    NG_crosshatch_color3_swizzle2[swizzle2]
     NG_crosshatch_color3_mod_Y_row[mod_Y_row]
     NG_crosshatch_color3_mody_2[mody_2]
     NG_crosshatch_color3_alt_rows_shift[alt_rows_shift]
+    NG_crosshatch_color3_swizzle3[swizzle3]
     NG_crosshatch_color3_shift_X[shift_X]
+    NG_crosshatch_color3_swizzle4[swizzle4]
     style NG_crosshatch_color3_stagger_selection  fill:#C72, color:#FFF
     NG_crosshatch_color3_stagger_selection{stagger_selection}
     NG_crosshatch_color3_mod_X[mod_X]
@@ -4841,15 +4950,19 @@ graph TB
     NG_crosshatch_color3_uvtiling --"in2"--> NG_crosshatch_color3_texcoord_scale
     NG_crosshatch_color3_texcoord_scale --"in1"--> NG_crosshatch_color3_texcoord_bias
     NG_crosshatch_color3_uvoffset --"in2"--> NG_crosshatch_color3_texcoord_bias
-    NG_crosshatch_color3_texcoord_bias --"in1"--> NG_crosshatch_color3_mod_Y
-    NG_crosshatch_color3_texcoord_bias --"in1"--> NG_crosshatch_color3_mod_Y_row
+    NG_crosshatch_color3_texcoord_bias --"in"--> NG_crosshatch_color3_swizzle
+    NG_crosshatch_color3_swizzle --"in1"--> NG_crosshatch_color3_mod_Y
+    NG_crosshatch_color3_texcoord_bias --"in"--> NG_crosshatch_color3_swizzle2
+    NG_crosshatch_color3_swizzle2 --"in1"--> NG_crosshatch_color3_mod_Y_row
     NG_crosshatch_color3_mod_Y --"in1"--> NG_crosshatch_color3_mody_2
     NG_crosshatch_color3_mod_Y_row --"value1"--> NG_crosshatch_color3_alt_rows_shift
-    NG_crosshatch_color3_texcoord_bias --"in1"--> NG_crosshatch_color3_shift_X
+    NG_crosshatch_color3_texcoord_bias --"in"--> NG_crosshatch_color3_swizzle3
+    NG_crosshatch_color3_swizzle3 --"in1"--> NG_crosshatch_color3_shift_X
     NG_crosshatch_color3_alt_rows_shift --"in2"--> NG_crosshatch_color3_shift_X
+    NG_crosshatch_color3_texcoord_bias --"in"--> NG_crosshatch_color3_swizzle4
     NG_crosshatch_color3_staggered --"value1"--> NG_crosshatch_color3_stagger_selection
     NG_crosshatch_color3_shift_X --"in1"--> NG_crosshatch_color3_stagger_selection
-    NG_crosshatch_color3_texcoord_bias --"in2"--> NG_crosshatch_color3_stagger_selection
+    NG_crosshatch_color3_swizzle4 --"in2"--> NG_crosshatch_color3_stagger_selection
     NG_crosshatch_color3_stagger_selection --"in1"--> NG_crosshatch_color3_mod_X
     NG_crosshatch_color3_mod_X --"in1"--> NG_crosshatch_color3_modx_2
     NG_crosshatch_color3_modx_2 --"in1"--> NG_crosshatch_color3_subX_1
@@ -4897,10 +5010,13 @@ graph TB
     NG_tiledcircles_color3_mod_texcoord[mod_texcoord]
     NG_tiledcircles_color3_mod_texcoord_2[mod_texcoord_2]
     NG_tiledcircles_color3_recenter[recenter]
+    NG_tiledcircles_color3_swizzle[swizzle]
     NG_tiledcircles_color3_stagg_Y[stagg_Y]
     NG_tiledcircles_color3_delta_X[delta_X]
+    NG_tiledcircles_color3_swizzle2[swizzle2]
     NG_tiledcircles_color3_shift_X[shift_X]
     NG_tiledcircles_color3_mod_X_1[mod_X_1]
+    NG_tiledcircles_color3_swizzle3[swizzle3]
     NG_tiledcircles_color3_mod_Y_1[mod_Y_1]
     NG_tiledcircles_color3_coord_adj_1[coord_adj_1]
     NG_tiledcircles_color3_coord_adj_2[coord_adj_2]
@@ -4938,12 +5054,15 @@ graph TB
     NG_tiledcircles_color3_texcoord_bias --"in1"--> NG_tiledcircles_color3_mod_texcoord
     NG_tiledcircles_color3_mod_texcoord --"in1"--> NG_tiledcircles_color3_mod_texcoord_2
     NG_tiledcircles_color3_mod_texcoord_2 --"in1"--> NG_tiledcircles_color3_recenter
-    NG_tiledcircles_color3_texcoord_bias --"in1"--> NG_tiledcircles_color3_stagg_Y
+    NG_tiledcircles_color3_texcoord_bias --"in"--> NG_tiledcircles_color3_swizzle
+    NG_tiledcircles_color3_swizzle --"in1"--> NG_tiledcircles_color3_stagg_Y
     NG_tiledcircles_color3_stagg_Y --"value1"--> NG_tiledcircles_color3_delta_X
-    NG_tiledcircles_color3_texcoord_bias --"in1"--> NG_tiledcircles_color3_shift_X
+    NG_tiledcircles_color3_texcoord_bias --"in"--> NG_tiledcircles_color3_swizzle2
+    NG_tiledcircles_color3_swizzle2 --"in1"--> NG_tiledcircles_color3_shift_X
     NG_tiledcircles_color3_delta_X --"in2"--> NG_tiledcircles_color3_shift_X
     NG_tiledcircles_color3_shift_X --"in1"--> NG_tiledcircles_color3_mod_X_1
-    NG_tiledcircles_color3_texcoord_bias --"in1"--> NG_tiledcircles_color3_mod_Y_1
+    NG_tiledcircles_color3_texcoord_bias --"in"--> NG_tiledcircles_color3_swizzle3
+    NG_tiledcircles_color3_swizzle3 --"in1"--> NG_tiledcircles_color3_mod_Y_1
     NG_tiledcircles_color3_mod_X_1 --"in2"--> NG_tiledcircles_color3_coord_adj_1
     NG_tiledcircles_color3_mod_X_1 --"in1"--> NG_tiledcircles_color3_coord_adj_2
     NG_tiledcircles_color3_mod_Y_1 --"in2"--> NG_tiledcircles_color3_coord_adj_3
@@ -5002,10 +5121,13 @@ graph TB
     NG_tiledcloverleafs_color3_mod_texcoord[mod_texcoord]
     NG_tiledcloverleafs_color3_mod_texcoord_2[mod_texcoord_2]
     NG_tiledcloverleafs_color3_recenter[recenter]
+    NG_tiledcloverleafs_color3_swizzle[swizzle]
     NG_tiledcloverleafs_color3_stagg_Y[stagg_Y]
     NG_tiledcloverleafs_color3_delta_X[delta_X]
+    NG_tiledcloverleafs_color3_swizzle2[swizzle2]
     NG_tiledcloverleafs_color3_shift_X[shift_X]
     NG_tiledcloverleafs_color3_mod_X_1[mod_X_1]
+    NG_tiledcloverleafs_color3_swizzle3[swizzle3]
     NG_tiledcloverleafs_color3_mod_Y_1[mod_Y_1]
     NG_tiledcloverleafs_color3_coord_adj_1[coord_adj_1]
     NG_tiledcloverleafs_color3_coord_adj_2[coord_adj_2]
@@ -5043,12 +5165,15 @@ graph TB
     NG_tiledcloverleafs_color3_texcoord_bias --"in1"--> NG_tiledcloverleafs_color3_mod_texcoord
     NG_tiledcloverleafs_color3_mod_texcoord --"in1"--> NG_tiledcloverleafs_color3_mod_texcoord_2
     NG_tiledcloverleafs_color3_mod_texcoord_2 --"in1"--> NG_tiledcloverleafs_color3_recenter
-    NG_tiledcloverleafs_color3_texcoord_bias --"in1"--> NG_tiledcloverleafs_color3_stagg_Y
+    NG_tiledcloverleafs_color3_texcoord_bias --"in"--> NG_tiledcloverleafs_color3_swizzle
+    NG_tiledcloverleafs_color3_swizzle --"in1"--> NG_tiledcloverleafs_color3_stagg_Y
     NG_tiledcloverleafs_color3_stagg_Y --"value1"--> NG_tiledcloverleafs_color3_delta_X
-    NG_tiledcloverleafs_color3_texcoord_bias --"in1"--> NG_tiledcloverleafs_color3_shift_X
+    NG_tiledcloverleafs_color3_texcoord_bias --"in"--> NG_tiledcloverleafs_color3_swizzle2
+    NG_tiledcloverleafs_color3_swizzle2 --"in1"--> NG_tiledcloverleafs_color3_shift_X
     NG_tiledcloverleafs_color3_delta_X --"in2"--> NG_tiledcloverleafs_color3_shift_X
     NG_tiledcloverleafs_color3_shift_X --"in1"--> NG_tiledcloverleafs_color3_mod_X_1
-    NG_tiledcloverleafs_color3_texcoord_bias --"in1"--> NG_tiledcloverleafs_color3_mod_Y_1
+    NG_tiledcloverleafs_color3_texcoord_bias --"in"--> NG_tiledcloverleafs_color3_swizzle3
+    NG_tiledcloverleafs_color3_swizzle3 --"in1"--> NG_tiledcloverleafs_color3_mod_Y_1
     NG_tiledcloverleafs_color3_mod_X_1 --"in2"--> NG_tiledcloverleafs_color3_coord_adj_1
     NG_tiledcloverleafs_color3_mod_X_1 --"in1"--> NG_tiledcloverleafs_color3_coord_adj_2
     NG_tiledcloverleafs_color3_mod_Y_1 --"in2"--> NG_tiledcloverleafs_color3_coord_adj_3
@@ -5107,10 +5232,13 @@ graph TB
     NG_tiledhexagons_color3_mod_texcoord[mod_texcoord]
     NG_tiledhexagons_color3_mod_texcoord_2[mod_texcoord_2]
     NG_tiledhexagons_color3_recenter[recenter]
+    NG_tiledhexagons_color3_swizzle[swizzle]
     NG_tiledhexagons_color3_stagg_Y[stagg_Y]
     NG_tiledhexagons_color3_delta_X[delta_X]
+    NG_tiledhexagons_color3_swizzle2[swizzle2]
     NG_tiledhexagons_color3_shift_X[shift_X]
     NG_tiledhexagons_color3_mod_X_1[mod_X_1]
+    NG_tiledhexagons_color3_swizzle3[swizzle3]
     NG_tiledhexagons_color3_mod_Y_1[mod_Y_1]
     NG_tiledhexagons_color3_coord_adj_1[coord_adj_1]
     NG_tiledhexagons_color3_coord_adj_2[coord_adj_2]
@@ -5148,12 +5276,15 @@ graph TB
     NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_mod_texcoord
     NG_tiledhexagons_color3_mod_texcoord --"in1"--> NG_tiledhexagons_color3_mod_texcoord_2
     NG_tiledhexagons_color3_mod_texcoord_2 --"in1"--> NG_tiledhexagons_color3_recenter
-    NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_stagg_Y
+    NG_tiledhexagons_color3_texcoord_bias --"in"--> NG_tiledhexagons_color3_swizzle
+    NG_tiledhexagons_color3_swizzle --"in1"--> NG_tiledhexagons_color3_stagg_Y
     NG_tiledhexagons_color3_stagg_Y --"value1"--> NG_tiledhexagons_color3_delta_X
-    NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_shift_X
+    NG_tiledhexagons_color3_texcoord_bias --"in"--> NG_tiledhexagons_color3_swizzle2
+    NG_tiledhexagons_color3_swizzle2 --"in1"--> NG_tiledhexagons_color3_shift_X
     NG_tiledhexagons_color3_delta_X --"in2"--> NG_tiledhexagons_color3_shift_X
     NG_tiledhexagons_color3_shift_X --"in1"--> NG_tiledhexagons_color3_mod_X_1
-    NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_mod_Y_1
+    NG_tiledhexagons_color3_texcoord_bias --"in"--> NG_tiledhexagons_color3_swizzle3
+    NG_tiledhexagons_color3_swizzle3 --"in1"--> NG_tiledhexagons_color3_mod_Y_1
     NG_tiledhexagons_color3_mod_X_1 --"in2"--> NG_tiledhexagons_color3_coord_adj_1
     NG_tiledhexagons_color3_mod_X_1 --"in1"--> NG_tiledhexagons_color3_coord_adj_2
     NG_tiledhexagons_color3_mod_Y_1 --"in2"--> NG_tiledhexagons_color3_coord_adj_3
@@ -5499,6 +5630,8 @@ graph TB
     NG_bump_vector3_N_normalmap[N_normalmap]
     style NG_bump_vector3_out  fill:#0C0, color:#FFF
     NG_bump_vector3_out([out])
+    NG_bump_vector3_normalmap_cross[normalmap_cross]
+    NG_bump_vector3_normalmap_cross_norm[normalmap_cross_norm]
     style NG_bump_vector3_height  fill:#09D, color:#FFF
     NG_bump_vector3_height([height])
     style NG_bump_vector3_normal  fill:#09D, color:#FFF
@@ -5513,7 +5646,11 @@ graph TB
     NG_bump_vector3_normal --"normal"--> NG_bump_vector3_N_normalmap
     NG_bump_vector3_scale --"scale"--> NG_bump_vector3_N_normalmap
     NG_bump_vector3_tangent --"tangent"--> NG_bump_vector3_N_normalmap
+    NG_bump_vector3_normalmap_cross_norm --"bitangent"--> NG_bump_vector3_N_normalmap
     NG_bump_vector3_N_normalmap --> NG_bump_vector3_out
+    NG_bump_vector3_normal --"in1"--> NG_bump_vector3_normalmap_cross
+    NG_bump_vector3_tangent --"in2"--> NG_bump_vector3_normalmap_cross
+    NG_bump_vector3_normalmap_cross --"in"--> NG_bump_vector3_normalmap_cross_norm
 ```
  
 
@@ -10115,7 +10252,11 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_color3
+    NG_smoothstep_color3_swizzle[swizzle]
+    NG_smoothstep_color3_swizzle2[swizzle2]
+    NG_smoothstep_color3_swizzle3[swizzle3]
     NG_smoothstep_color3_N_smoothstep[N_smoothstep]
+    NG_smoothstep_color3_swizzle4[swizzle4]
     style NG_smoothstep_color3_out  fill:#0C0, color:#FFF
     NG_smoothstep_color3_out([out])
     style NG_smoothstep_color3_in  fill:#09D, color:#FFF
@@ -10125,10 +10266,14 @@ graph TB
     style NG_smoothstep_color3_high  fill:#09D, color:#FFF
     NG_smoothstep_color3_high([high])
     end
-    NG_smoothstep_color3_in --"in"--> NG_smoothstep_color3_N_smoothstep
-    NG_smoothstep_color3_low --"low"--> NG_smoothstep_color3_N_smoothstep
-    NG_smoothstep_color3_high --"high"--> NG_smoothstep_color3_N_smoothstep
-    NG_smoothstep_color3_N_smoothstep --> NG_smoothstep_color3_out
+    NG_smoothstep_color3_in --"in"--> NG_smoothstep_color3_swizzle
+    NG_smoothstep_color3_low --"in"--> NG_smoothstep_color3_swizzle2
+    NG_smoothstep_color3_high --"in"--> NG_smoothstep_color3_swizzle3
+    NG_smoothstep_color3_swizzle --"in"--> NG_smoothstep_color3_N_smoothstep
+    NG_smoothstep_color3_swizzle2 --"low"--> NG_smoothstep_color3_N_smoothstep
+    NG_smoothstep_color3_swizzle3 --"high"--> NG_smoothstep_color3_N_smoothstep
+    NG_smoothstep_color3_N_smoothstep --"in"--> NG_smoothstep_color3_swizzle4
+    NG_smoothstep_color3_swizzle4 --> NG_smoothstep_color3_out
 ```
  
 
@@ -10152,7 +10297,11 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_color4
+    NG_smoothstep_color4_swizzle[swizzle]
+    NG_smoothstep_color4_swizzle2[swizzle2]
+    NG_smoothstep_color4_swizzle3[swizzle3]
     NG_smoothstep_color4_N_smoothstep[N_smoothstep]
+    NG_smoothstep_color4_swizzle4[swizzle4]
     style NG_smoothstep_color4_out  fill:#0C0, color:#FFF
     NG_smoothstep_color4_out([out])
     style NG_smoothstep_color4_in  fill:#09D, color:#FFF
@@ -10162,10 +10311,14 @@ graph TB
     style NG_smoothstep_color4_high  fill:#09D, color:#FFF
     NG_smoothstep_color4_high([high])
     end
-    NG_smoothstep_color4_in --"in"--> NG_smoothstep_color4_N_smoothstep
-    NG_smoothstep_color4_low --"low"--> NG_smoothstep_color4_N_smoothstep
-    NG_smoothstep_color4_high --"high"--> NG_smoothstep_color4_N_smoothstep
-    NG_smoothstep_color4_N_smoothstep --> NG_smoothstep_color4_out
+    NG_smoothstep_color4_in --"in"--> NG_smoothstep_color4_swizzle
+    NG_smoothstep_color4_low --"in"--> NG_smoothstep_color4_swizzle2
+    NG_smoothstep_color4_high --"in"--> NG_smoothstep_color4_swizzle3
+    NG_smoothstep_color4_swizzle --"in"--> NG_smoothstep_color4_N_smoothstep
+    NG_smoothstep_color4_swizzle2 --"low"--> NG_smoothstep_color4_N_smoothstep
+    NG_smoothstep_color4_swizzle3 --"high"--> NG_smoothstep_color4_N_smoothstep
+    NG_smoothstep_color4_N_smoothstep --"in"--> NG_smoothstep_color4_swizzle4
+    NG_smoothstep_color4_swizzle4 --> NG_smoothstep_color4_out
 ```
  
 
@@ -10240,19 +10393,23 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_color3FA
+    NG_smoothstep_color3FA_swizzle[swizzle]
+    NG_smoothstep_color3FA_swizzle2[swizzle2]
     NG_smoothstep_color3FA_N_smoothstep[N_smoothstep]
     style NG_smoothstep_color3FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_color3FA_out([out])
-    style NG_smoothstep_color3FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_color3FA_in([in])
     style NG_smoothstep_color3FA_low  fill:#09D, color:#FFF
     NG_smoothstep_color3FA_low([low])
     style NG_smoothstep_color3FA_high  fill:#09D, color:#FFF
     NG_smoothstep_color3FA_high([high])
+    style NG_smoothstep_color3FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_color3FA_in([in])
     end
+    NG_smoothstep_color3FA_low --"in"--> NG_smoothstep_color3FA_swizzle
+    NG_smoothstep_color3FA_high --"in"--> NG_smoothstep_color3FA_swizzle2
     NG_smoothstep_color3FA_in --"in"--> NG_smoothstep_color3FA_N_smoothstep
-    NG_smoothstep_color3FA_low --"low"--> NG_smoothstep_color3FA_N_smoothstep
-    NG_smoothstep_color3FA_high --"high"--> NG_smoothstep_color3FA_N_smoothstep
+    NG_smoothstep_color3FA_swizzle --"low"--> NG_smoothstep_color3FA_N_smoothstep
+    NG_smoothstep_color3FA_swizzle2 --"high"--> NG_smoothstep_color3FA_N_smoothstep
     NG_smoothstep_color3FA_N_smoothstep --> NG_smoothstep_color3FA_out
 ```
  
@@ -10277,19 +10434,29 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_color4FA
+    NG_smoothstep_color4FA_swizzle[swizzle]
+    NG_smoothstep_color4FA_swizzle2[swizzle2]
     NG_smoothstep_color4FA_N_smoothstep[N_smoothstep]
     style NG_smoothstep_color4FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_color4FA_out([out])
-    style NG_smoothstep_color4FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_color4FA_in([in])
     style NG_smoothstep_color4FA_low  fill:#09D, color:#FFF
     NG_smoothstep_color4FA_low([low])
     style NG_smoothstep_color4FA_high  fill:#09D, color:#FFF
     NG_smoothstep_color4FA_high([high])
+    style NG_smoothstep_color4FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_color4FA_in([in])
     end
+    NG_smoothstep_color4FA_low --"in1"--> NG_smoothstep_color4FA_swizzle
+    NG_smoothstep_color4FA_low --"in2"--> NG_smoothstep_color4FA_swizzle
+    NG_smoothstep_color4FA_low --"in3"--> NG_smoothstep_color4FA_swizzle
+    NG_smoothstep_color4FA_low --"in4"--> NG_smoothstep_color4FA_swizzle
+    NG_smoothstep_color4FA_high --"in1"--> NG_smoothstep_color4FA_swizzle2
+    NG_smoothstep_color4FA_high --"in2"--> NG_smoothstep_color4FA_swizzle2
+    NG_smoothstep_color4FA_high --"in3"--> NG_smoothstep_color4FA_swizzle2
+    NG_smoothstep_color4FA_high --"in4"--> NG_smoothstep_color4FA_swizzle2
     NG_smoothstep_color4FA_in --"in"--> NG_smoothstep_color4FA_N_smoothstep
-    NG_smoothstep_color4FA_low --"low"--> NG_smoothstep_color4FA_N_smoothstep
-    NG_smoothstep_color4FA_high --"high"--> NG_smoothstep_color4FA_N_smoothstep
+    NG_smoothstep_color4FA_swizzle --"low"--> NG_smoothstep_color4FA_N_smoothstep
+    NG_smoothstep_color4FA_swizzle2 --"high"--> NG_smoothstep_color4FA_N_smoothstep
     NG_smoothstep_color4FA_N_smoothstep --> NG_smoothstep_color4FA_out
 ```
  
@@ -10314,19 +10481,25 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_vector2FA
+    NG_smoothstep_vector2FA_swizzle[swizzle]
+    NG_smoothstep_vector2FA_swizzle2[swizzle2]
     NG_smoothstep_vector2FA_N_smoothstep[N_smoothstep]
     style NG_smoothstep_vector2FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_vector2FA_out([out])
-    style NG_smoothstep_vector2FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_vector2FA_in([in])
     style NG_smoothstep_vector2FA_low  fill:#09D, color:#FFF
     NG_smoothstep_vector2FA_low([low])
     style NG_smoothstep_vector2FA_high  fill:#09D, color:#FFF
     NG_smoothstep_vector2FA_high([high])
+    style NG_smoothstep_vector2FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector2FA_in([in])
     end
+    NG_smoothstep_vector2FA_low --"in1"--> NG_smoothstep_vector2FA_swizzle
+    NG_smoothstep_vector2FA_low --"in2"--> NG_smoothstep_vector2FA_swizzle
+    NG_smoothstep_vector2FA_high --"in1"--> NG_smoothstep_vector2FA_swizzle2
+    NG_smoothstep_vector2FA_high --"in2"--> NG_smoothstep_vector2FA_swizzle2
     NG_smoothstep_vector2FA_in --"in"--> NG_smoothstep_vector2FA_N_smoothstep
-    NG_smoothstep_vector2FA_low --"low"--> NG_smoothstep_vector2FA_N_smoothstep
-    NG_smoothstep_vector2FA_high --"high"--> NG_smoothstep_vector2FA_N_smoothstep
+    NG_smoothstep_vector2FA_swizzle --"low"--> NG_smoothstep_vector2FA_N_smoothstep
+    NG_smoothstep_vector2FA_swizzle2 --"high"--> NG_smoothstep_vector2FA_N_smoothstep
     NG_smoothstep_vector2FA_N_smoothstep --> NG_smoothstep_vector2FA_out
 ```
  
@@ -10351,19 +10524,23 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_vector3FA
+    NG_smoothstep_vector3FA_swizzle[swizzle]
+    NG_smoothstep_vector3FA_swizzle2[swizzle2]
     NG_smoothstep_vector3FA_N_smoothstep[N_smoothstep]
     style NG_smoothstep_vector3FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_vector3FA_out([out])
-    style NG_smoothstep_vector3FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_vector3FA_in([in])
     style NG_smoothstep_vector3FA_low  fill:#09D, color:#FFF
     NG_smoothstep_vector3FA_low([low])
     style NG_smoothstep_vector3FA_high  fill:#09D, color:#FFF
     NG_smoothstep_vector3FA_high([high])
+    style NG_smoothstep_vector3FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector3FA_in([in])
     end
+    NG_smoothstep_vector3FA_low --"in"--> NG_smoothstep_vector3FA_swizzle
+    NG_smoothstep_vector3FA_high --"in"--> NG_smoothstep_vector3FA_swizzle2
     NG_smoothstep_vector3FA_in --"in"--> NG_smoothstep_vector3FA_N_smoothstep
-    NG_smoothstep_vector3FA_low --"low"--> NG_smoothstep_vector3FA_N_smoothstep
-    NG_smoothstep_vector3FA_high --"high"--> NG_smoothstep_vector3FA_N_smoothstep
+    NG_smoothstep_vector3FA_swizzle --"low"--> NG_smoothstep_vector3FA_N_smoothstep
+    NG_smoothstep_vector3FA_swizzle2 --"high"--> NG_smoothstep_vector3FA_N_smoothstep
     NG_smoothstep_vector3FA_N_smoothstep --> NG_smoothstep_vector3FA_out
 ```
  
@@ -10388,19 +10565,29 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_vector4FA
+    NG_smoothstep_vector4FA_swizzle[swizzle]
+    NG_smoothstep_vector4FA_swizzle2[swizzle2]
     NG_smoothstep_vector4FA_N_smoothstep[N_smoothstep]
     style NG_smoothstep_vector4FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_vector4FA_out([out])
-    style NG_smoothstep_vector4FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_vector4FA_in([in])
     style NG_smoothstep_vector4FA_low  fill:#09D, color:#FFF
     NG_smoothstep_vector4FA_low([low])
     style NG_smoothstep_vector4FA_high  fill:#09D, color:#FFF
     NG_smoothstep_vector4FA_high([high])
+    style NG_smoothstep_vector4FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector4FA_in([in])
     end
+    NG_smoothstep_vector4FA_low --"in1"--> NG_smoothstep_vector4FA_swizzle
+    NG_smoothstep_vector4FA_low --"in2"--> NG_smoothstep_vector4FA_swizzle
+    NG_smoothstep_vector4FA_low --"in3"--> NG_smoothstep_vector4FA_swizzle
+    NG_smoothstep_vector4FA_low --"in4"--> NG_smoothstep_vector4FA_swizzle
+    NG_smoothstep_vector4FA_high --"in1"--> NG_smoothstep_vector4FA_swizzle2
+    NG_smoothstep_vector4FA_high --"in2"--> NG_smoothstep_vector4FA_swizzle2
+    NG_smoothstep_vector4FA_high --"in3"--> NG_smoothstep_vector4FA_swizzle2
+    NG_smoothstep_vector4FA_high --"in4"--> NG_smoothstep_vector4FA_swizzle2
     NG_smoothstep_vector4FA_in --"in"--> NG_smoothstep_vector4FA_N_smoothstep
-    NG_smoothstep_vector4FA_low --"low"--> NG_smoothstep_vector4FA_N_smoothstep
-    NG_smoothstep_vector4FA_high --"high"--> NG_smoothstep_vector4FA_N_smoothstep
+    NG_smoothstep_vector4FA_swizzle --"low"--> NG_smoothstep_vector4FA_N_smoothstep
+    NG_smoothstep_vector4FA_swizzle2 --"high"--> NG_smoothstep_vector4FA_N_smoothstep
     NG_smoothstep_vector4FA_N_smoothstep --> NG_smoothstep_vector4FA_out
 ```
  
