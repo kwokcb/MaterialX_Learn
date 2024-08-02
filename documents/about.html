@@ -23,6 +23,21 @@
       height: 256px;
       background-color: #7d7d7d;
     }
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: auto;
+    }
+
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   </style>
 
   <!-- <link rel="icon" href="../documents/images/logo3d_icon.png" type="image/x-icon" /> -->
@@ -255,39 +270,14 @@
                     camera-controls touch-action="pan-y" src="../resources/logo3d.glb"
                     disable-zoom disable-pan disable-tap camera-orbit="160deg 66deg 20m"
                     environment-image="./images/rural_crossroads_1k.hdr" alt="logo viewer"
-                    poster="./images/web_logo_poster.png" exposure="1.0" shadow-softness="0.5" shadow-intensity="0.7"
+                    poster="./images/web_logo_poster.png" exposure="0.8" shadow-softness="1.0" shadow-intensity="0.5"
                     skybox-image="">
                 </model-viewer>
               </div>
             </div>
           </div>
           </p>
-          <h4>Sponsor</h4>
-          <p>If you find value in here and want support its progress,
-            we kindly invite you to consider sponsoring the project. It will help to keep it going and evolve.
-          </p>
-          <p>
-          <iframe src="https://github.com/sponsors/kwokcb/card" title="Sponsor kwokcb" height="225" width="600"
-            style="border: 0;"></iframe>
-        </p>
-          <h4>Development</h4>
-          <p>
-            <button class="btn bg-light btn-outline-primary">
-              <a class="button " href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><img
-                  src="images/GitHub_Logo.png" width="40"></a>
-            </button>
-            The hope is that this site will grow organically over time based on user feedback.
-            Naturally any contributions are greatly appreciated, especially in terms of "learning" tutorials,
-            and example user workflows. More will be added to the GitHub repo
-            as things progress. Currently all content is structured to be as reusable as possible outside of this
-            site,
-            even if not fully discussed yet.
-            <br>
-            <em>To contribute to the MaterialX open source effort any applicable work done here will be
-              integrated back into the <a href="https://github.com/AcademySoftwareFoundation/MaterialX"
-                target="_blank">core repository
-              </a>.</em>
-          </p>
+ 
           <h4>Authors</h4>
           <div class="container">
             <div class="row p-2 rounded-4 border btn-outline-secondary shadow justify-content-md-center">
@@ -316,6 +306,35 @@
             <sub>Note: Image filtering written as a <a href="images/image_filter_graph.svg" target="_blank">MaterialX
                 graph</a></sub>
           </div>
+
+          <p></p>
+          <h4>Development</h4>
+          <p>
+            <button class="btn bg-light btn-outline-primary">
+              <a class="button " href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><img
+                  src="images/GitHub_Logo.png" width="40"></a>
+            </button>
+            To contribute please clone the repository, raise an issue, and / or submit a pull request.
+            <br>
+            <em>To contribute to the MaterialX open source effort any applicable work done here will be
+              integrated back into the <a href="https://github.com/AcademySoftwareFoundation/MaterialX"
+                target="_blank">core repository
+              </a>.</em>
+          </p>
+ 
+
+          <h4>Sponsor</h4>
+          <p>If you find value in here and want support its progress,
+            we kindly invite you to consider sponsoring the project. It will help to keep it going and evolve.
+          </p>
+          <p>
+          <div class="iframe-container">
+          <iframe src="https://github.com/sponsors/kwokcb/card" title="Sponsor kwokcb"
+            frameborder="0">
+          </iframe>
+          </div>
+        </p>
+
         </div>
       </div>
     </div>

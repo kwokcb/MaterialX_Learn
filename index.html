@@ -234,8 +234,8 @@
       cursor: pointer;
   }
 </style>
-<!-- <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
-</script> -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+</script>
 
 
 <div class="container-fluid bg-body-tertiary px-1 py-1">
@@ -255,21 +255,22 @@
 
     </div>
     <div class="col-6 d-flex p-0 justify-content-center align-items-center">
-      <img load="lazy" id="load_viewer" src="./documents/images/web_logo_poster.webp" height="150">
-      <!-- <model-viewer id="viewer" class="rounded-4 p-0 " interaction-prompt="none"
-        style="background-color: rgba(59, 59, 59, 0.0); width: 100%; height: 100%;" id="blah" camera-controls
-        touch-action="pan-y" src="./resources/logo3d.glb" disable-zoom disable-pan disable-tap
-        camera-orbit="160deg 66deg 20m" environment-image="./documents/images/narrow_moonlit_road_1k.hdr"
-        alt="logo viewer" poster="" exposure="1.0" shadow-softness="0.5" shadow-intensity="0.7" skybox-image=""
-        hidden >
-      </model-viewer> -->
+      <!-- <img load="lazy" id="load_viewer" src="./documents/images/web_logo_poster.webp" height="150">-->
+      <model-viewer class="rounded-4" style="background-color: rgba(59, 59, 59, 0.0); width: 100%; height:100%" id="blah"
+      camera-controls touch-action="pan-y" src="./resources/logo3d.glb"
+      disable-zoom disable-pan disable-tap camera-orbit="160deg 66deg 20m"
+      environment-image="./documents/images/rural_crossroads_1k.hdr" alt="logo viewer"
+      poster="./documents/images/web_logo_poster.png" exposure="0.8" shadow-softness="1.0" shadow-intensity="0.0"
+      skybox-image="">
+  </model-viewer>
+
     </div>
   </div>
 
   <!-- What's New -->
-  <div class="rounded-4 p-2 row mb-0" style="background-color: black; color: lightgrey">
+  <div class="rounded-4 p-2 row mb-0" >
     <div class="col">
-      <h3 style="color: rgb(23, 105, 171)">"From Learn to Elements..."</h3>
+      <h3 style="color: rgb(210, 168, 0)">"From Learn to Elements..."</h3>
       <p>The site is up-to-date to the 1.39 release of MaterialX. Please consider supporting the site by submitting a
         <a target="_blank" href="https://github.com/kwokcb/MaterialX_Learn/issues/new">Github request</a>
         and sponsoring the site through <a target="_blank" href="https://github.com/sponsors/kwokcb?o=esc">Github Sponsors</a>.
@@ -283,10 +284,10 @@
       </p>
 
         <!-- Content Cards -->
-        <h3 class="d-inline-block mb-2">Learn</h3>
-        <div class="container-fluid px-2 py-2 shadow" id="hanging-icons">
+        <h3 class="d-inline-block mb-2">Resources</h3>
+        <div class="container-fluid px-2 py-2 shadow" id="hanging-icons" >
 
-          <div class="rounded-4 row ps-2 pe-0 row-cols-1 row-cols-4 bg-body-tertiary d-flex flex-row">
+          <div class="rounded-4 row ps-2 pe-0 bg-body-tertiary d-flex flex-row">
 
             <div class="col pt-3 pb-3">
               <div>
@@ -294,7 +295,7 @@
                   class="rounded-4 shadow border border-grey img-fluid w-50 ">
                 <p>
                 <h3 class="fs-5 ">Fundamentals</h3>
-                MaterialX concepts and interfaces and usage</p>
+                MaterialX concepts, interfaces and usage. Media</p>
                 <div class="dropdown">
                   <button class="btn btn-sm btn-sm btn-outline-primary dropdown-toggle" type="button"
                     id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -319,7 +320,7 @@
                   class="rounded-4 shadow border border-grey img-fluid w-50 ">
                 <p>
                 <h3 class="fs-5">Reference</h3>
-                Reference for types, color management and node library</p>
+                Definition reference, C++ API, Glossary, Version Comparisons</p>
                 <button class="btn btn-sm btn-sm btn-outline-primary dropdown-toggle" type="button"
                   id="dropdownMenuButton" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                   Learn More
@@ -398,7 +399,7 @@
                   class="rounded-4 shadow border border-grey img-fluid w-50 ">
                 <p>
                 <h3 class="fs-5 ">Interactive Learning</h3>
-                Learn to develop MaterialX through examples and interactive tutorials</p>
+                Develop with MaterialX via interactive tutorials / examples</p>
                 <div class="dropdown">
                   <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -443,8 +444,8 @@
                 <img load="lazy" src="documents/images/Design_Icon.png" alt="Bootstrap"
                   class="rounded-4 border shadow border-black img-fluid w-50 ">
                 <p>
-                <h3 class="fs-5 ">Design</h3>
-                UX design and implementation architecture for the site</p>
+                <h3 class="fs-5 ">Design & Architecture</h3>
+                Learn how this was built: UX and Development Architecture </p>
                 <div class="dropdown">
                   <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-bs-toggle="dropdown" aria-expanded="false">
