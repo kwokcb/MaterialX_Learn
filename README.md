@@ -1,20 +1,25 @@
 # Site Status
 
-## Support for this repo and site has halted as of the MaterialX 1.39 official release. Please sponser the authors for any further development. Thank you.
+## Support for this repo and site has halted as of the MaterialX 1.39 official release. Please sponsor the authors for any further development. Thank you.
 
 # Welcome to "MaterialX Elements"
 [![main](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml/badge.svg)](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml)
 
 
-## Visit The Site 
+## Visit
+
+<table>
+<tr>
+<td>
 <a href="https://kwokcb.github.io/MaterialX_Learn/">
 <img src="./documents/images/silicon_2_yellow.png" width=100%>
+This site
+<td>
+<a href="https://kwokcb.github.io/MaterialXLab/documents/compounds.html">
+<img src="./documents/images/silicon_dioxide.png" width=100%>
+"Sister" site
 </a>
-
-<p>
-<img src="./documents/images/silicon_dioxide.png" width=48px>
-A new "sister" site is in progress. Stay Tuned...
-</p>
+</table>
 
 ## Overview
 
