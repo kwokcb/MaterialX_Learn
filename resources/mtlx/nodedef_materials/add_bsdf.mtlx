@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
   <add name="add_bsdf" type="BSDF">
-    <input name="in1" type="BSDF" value="" nodename="oren_nayar_diffuse_bsdf" />
-    <input name="in2" type="BSDF" value="" nodename="oren_nayar_diffuse_bsdf2" />
+    <input name="in1" type="BSDF" nodename="oren_nayar_diffuse_bsdf" />
+    <input name="in2" type="BSDF" nodename="oren_nayar_diffuse_bsdf2" />
   </add>
   <oren_nayar_diffuse_bsdf name="oren_nayar_diffuse_bsdf" type="BSDF" />
   <oren_nayar_diffuse_bsdf name="oren_nayar_diffuse_bsdf2" type="BSDF" />

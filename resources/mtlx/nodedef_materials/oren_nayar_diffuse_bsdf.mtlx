@@ -4,6 +4,7 @@
     <input name="weight" type="float" value="1.0" />
     <input name="color" type="color3" value="0.18, 0.18, 0.18" />
     <input name="roughness" type="float" value="0.0" />
+    <input name="energy_compensation" type="boolean" value="false" uniform="true" />
   </oren_nayar_diffuse_bsdf>
   <surface name="shader_oren_nayar_diffuse_bsdf_out" type="surfaceshader">
     <input name="bsdf" type="BSDF" nodename="oren_nayar_diffuse_bsdf" />

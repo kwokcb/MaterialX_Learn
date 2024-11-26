@@ -1,43 +1,42 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
-  <open_pbr_surface name="open_pbr_surface_surfaceshader" type="surfaceshader" version="0.2">
+  <open_pbr_surface name="open_pbr_surface_surfaceshader" type="surfaceshader" version="1.1">
     <input name="base_weight" type="float" value="1.0" uiname="Base Weight" />
     <input name="base_color" type="color3" value="0.8, 0.8, 0.8" uiname="Base Color" />
-    <input name="base_roughness" type="float" value="0.0" uiname="Base Roughness" />
+    <input name="base_diffuse_roughness" type="float" value="0.0" uiname="Base Diffuse Roughness" />
     <input name="base_metalness" type="float" value="0.0" uiname="Base Metalness" />
     <input name="specular_weight" type="float" value="1.0" uiname="Specular Weight" />
     <input name="specular_color" type="color3" value="1, 1, 1" uiname="Specular Color" />
     <input name="specular_roughness" type="float" value="0.3" uiname="Specular Roughness" />
     <input name="specular_ior" type="float" value="1.5" uiname="Specular Index of Refraction" />
-    <input name="specular_ior_level" type="float" value="0.5" uiname="Specular IOR Level" />
-    <input name="specular_anisotropy" type="float" value="0.0" uiname="Specular Anisotropy" />
-    <input name="specular_rotation" type="float" value="0.0" uiname="Specular Rotation" />
-    <input name="transmission_weight" type="float" value="0.0" uiname="Transmission Weight" />
+    <input name="specular_roughness_anisotropy" type="float" value="0.0" uiname="Specular Anisotropy" />
+    <input name="transmission_weight" type="float" value="0.0" uiname="Transmission Weight" hint="transparency" />
     <input name="transmission_color" type="color3" value="1, 1, 1" uiname="Transmission Color" />
     <input name="transmission_depth" type="float" value="0.0" uiname="Transmission Depth" />
     <input name="transmission_scatter" type="color3" value="0, 0, 0" uiname="Transmission Scatter" />
     <input name="transmission_scatter_anisotropy" type="float" value="0.0" uiname="Transmission Anisotropy" />
-    <input name="transmission_dispersion" type="float" value="0.0" uiname="Transmission Dispersion" />
-    <input name="subsurface_weight" type="float" value="0" uiname="Subsurface" />
+    <input name="transmission_dispersion_scale" type="float" value="0.0" uiname="Transmission Dispersion Scale" />
+    <input name="transmission_dispersion_abbe_number" type="float" value="20.0" uiname="Transmission Dispersion Abbe Number" />
+    <input name="subsurface_weight" type="float" value="0" uiname="Subsurface Weight" />
     <input name="subsurface_color" type="color3" value="0.8, 0.8, 0.8" uiname="Subsurface Color" />
     <input name="subsurface_radius" type="float" value="1.0" uiname="Subsurface Radius" />
     <input name="subsurface_radius_scale" type="color3" value="1.0, 0.5, 0.25" uiname="Subsurface Radius Scale" />
-    <input name="subsurface_anisotropy" type="float" value="0.0" uiname="Subsurface Anisotropy" />
+    <input name="subsurface_scatter_anisotropy" type="float" value="0.0" uiname="Subsurface Anisotropy" />
     <input name="fuzz_weight" type="float" value="0.0" uiname="Fuzz Weight" />
     <input name="fuzz_color" type="color3" value="1, 1, 1" uiname="Fuzz Color" />
     <input name="fuzz_roughness" type="float" value="0.5" uiname="Fuzz Roughness" />
     <input name="coat_weight" type="float" value="0.0" uiname="Coat Weight" />
     <input name="coat_color" type="color3" value="1, 1, 1" uiname="Coat Color" />
     <input name="coat_roughness" type="float" value="0.0" uiname="Coat Roughness" />
-    <input name="coat_anisotropy" type="float" value="0.0" uiname="Coat Anisotropy" />
-    <input name="coat_rotation" type="float" value="0.0" uiname="Coat Rotation" />
+    <input name="coat_roughness_anisotropy" type="float" value="0.0" uiname="Coat Anisotropy" />
     <input name="coat_ior" type="float" value="1.6" uiname="Coat Index of Refraction" />
-    <input name="coat_ior_level" type="float" value="0.5" uiname="Coat IOR Level" />
-    <input name="thin_film_thickness" type="float" value="0" uiname="Thin Film Thickness" />
-    <input name="thin_film_ior" type="float" value="1.5" uiname="Thin Film Index of Refraction" />
+    <input name="coat_darkening" type="float" value="1.0" uiname="Coat Darkening" />
+    <input name="thin_film_weight" type="float" value="0" uiname="Thin Film Weight" />
+    <input name="thin_film_thickness" type="float" value="0.5" uiname="Thin Film Thickness" />
+    <input name="thin_film_ior" type="float" value="1.4" uiname="Thin Film Index of Refraction" />
     <input name="emission_luminance" type="float" value="0.0" uiname="Emission Luminance" />
     <input name="emission_color" type="color3" value="1, 1, 1" uiname="Emission Color" />
-    <input name="geometry_opacity" type="color3" value="1, 1, 1" uiname="Opacity" />
+    <input name="geometry_opacity" type="float" value="1" uiname="Opacity" hint="opacity" />
     <input name="geometry_thin_walled" type="boolean" value="false" uiname="Thin Walled" />
   </open_pbr_surface>
   <surfacematerial name="material_open_pbr_surface_surfaceshader_out" type="material">

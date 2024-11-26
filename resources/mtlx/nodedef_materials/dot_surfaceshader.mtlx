@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
   <dot name="dot_surfaceshader" type="surfaceshader">
-    <input name="in" type="surfaceshader" value="" nodename="standard_surface" />
+    <input name="in" type="surfaceshader" nodename="standard_surface" />
     <input name="note" type="string" value="" uniform="true" />
   </dot>
   <standard_surface name="standard_surface" type="surfaceshader" />

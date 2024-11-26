@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
   <layer name="layer_bsdf" type="BSDF">
-    <input name="top" type="BSDF" value="" nodename="oren_nayar_diffuse_bsdf" />
-    <input name="base" type="BSDF" value="" nodename="oren_nayar_diffuse_bsdf2" />
+    <input name="top" type="BSDF" nodename="oren_nayar_diffuse_bsdf" />
+    <input name="base" type="BSDF" nodename="oren_nayar_diffuse_bsdf2" />
   </layer>
   <oren_nayar_diffuse_bsdf name="oren_nayar_diffuse_bsdf" type="BSDF" />
   <oren_nayar_diffuse_bsdf name="oren_nayar_diffuse_bsdf2" type="BSDF" />

@@ -14,11 +14,6 @@
     <input name="sssUnitLength" type="float" value="0.00328" uiname="Unit Length" />
     <input name="mode" type="integer" uniform="true" enum="Reflection,Transmission,Reflection(with direct illumination)" enumvalues="0,1,2" value="0" uiname="Mode" />
     <input name="albedoInversionMethod" type="integer" enum="Pixar,Chiang" enumvalues="0,1" value="0" uiname="Albedo Inversion Method" />
-    <input name="diffuseLobeName" type="string" uniform="true" value="diffuse" uiname="Diffuse Lobe Name" />
-    <input name="sssEntryLobeName" type="string" uniform="true" value="irradiance" uiname="SSS Entry Lobe Name" />
-    <input name="sssExitLobeName" type="string" uniform="true" value="" uiname="SSS Exit Lobe Name" />
-    <input name="sssId" type="integer" uniform="true" value="0" enum="0, 1" enumvalues="0, 1" uiname="SSS Id" />
-    <input name="matte" type="string" uniform="true" value="" uiname="Matte" />
   </LamaSSS>
   <surface name="shader_lama_sss_out" type="surfaceshader">
     <input name="bsdf" type="BSDF" nodename="lama_sss" />

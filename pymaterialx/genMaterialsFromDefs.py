@@ -33,6 +33,7 @@ def addMaterialGraphs(node, doc, outdoc, nodedef):
             shaderNode = outdoc.addNode("surface", shaderNodeName, "surfaceshader")
             newInput = shaderNode.addInput(outputType.lower(), outputType)
             newInput.setNodeName(node.getName())
+            newInput.removeAttribute('value')
             if isMultiOutput:
                 newInput.setAttribute('output', outputName)
             materialNode = outdoc.addMaterialNode(materialNodeName, shaderNode)
@@ -56,7 +57,8 @@ def addMaterialGraphs(node, doc, outdoc, nodedef):
                 shaderNode = outdoc.addNodeInstance(convertNode, shaderNodeName)
                 shaderNode.removeAttribute('nodedef')
                 newInput = shaderNode.addInput('in', outputType)
-                newInput.setNodeName(node.getName())                        
+                newInput.setNodeName(node.getName())
+                newInput.removeAttribute('value')
                 if isMultiOutput:
                     newInput.setAttribute('output', outputName)    
                 materialNode = outdoc.addMaterialNode(materialNodeName, shaderNode)
@@ -105,15 +107,18 @@ def createNodeInstance(nodedef, nodeName, outdoc, setEmptyValues):
                         bsdfNodeName = outdoc.createValidChildName('oren_nayar_diffuse_bsdf')
                         bsdfNode = outdoc.addNode('oren_nayar_diffuse_bsdf', bsdfNodeName, inputType)
                         newElem.setNodeName(bsdfNode.getName())
+                        newElem.removeAttribute('value')
                     elif inputType == "EDF":
                         # Create an input uniform node
                         edfNodeName = outdoc.createValidChildName('uniform_edf')
                         edfNode = outdoc.addNode('uniform_edf', edfNodeName, inputType)
                         newElem.setNodeName(edfNode.getName())
+                        newElem.removeAttribute('value')
                     elif inputType == 'surfaceshader':
                         ssNodeName = outdoc.createValidChildName('standard_surface')
                         ssNode = outdoc.addNode('standard_surface', ssNodeName, inputType)
                         newElem.setNodeName(ssNode.getName())
+                        newElem.removeAttribute('value')
                     # There are no "existing" core definitions for either of these so nothing
                     # added here for now.    
                     #elif inputType == 'displacementshader':

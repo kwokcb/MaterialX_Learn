@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <not name="logical_not" type="boolean">
+    <input name="in" type="boolean" value="false" />
+  </not>
+  <convert name="shader_logical_not_out" type="surfaceshader">
+    <input name="in" type="boolean" nodename="logical_not" />
+  </convert>
+  <surfacematerial name="material_logical_not_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_logical_not_out" />
+  </surfacematerial>
+</materialx>

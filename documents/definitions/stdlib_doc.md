@@ -1,5 +1,5 @@
 ### Node Group: adjustment
-* [colorcorrect](#node-colorcorrect) [contrast](#node-contrast) [curveadjust](#node-curveadjust) [hsvadjust](#node-hsvadjust) [hsvtorgb](#node-hsvtorgb) [luminance](#node-luminance) [range](#node-range) [remap](#node-remap) [rgbtohsv](#node-rgbtohsv) [saturate](#node-saturate) [smoothstep](#node-smoothstep) 
+* [colorcorrect](#node-colorcorrect) [contrast](#node-contrast) [hsvadjust](#node-hsvadjust) [hsvtorgb](#node-hsvtorgb) [luminance](#node-luminance) [range](#node-range) [remap](#node-remap) [rgbtohsv](#node-rgbtohsv) [saturate](#node-saturate) [smoothstep](#node-smoothstep) 
 ---------
 ### Node Group: application
 * [frame](#node-frame) [time](#node-time) 
@@ -11,16 +11,13 @@
 * [burn](#node-burn) [difference](#node-difference) [disjointover](#node-disjointover) [dodge](#node-dodge) [in](#node-in) [inside](#node-inside) [mask](#node-mask) [matte](#node-matte) [minus](#node-minus) [mix](#node-mix) [out](#node-out) [outside](#node-outside) [over](#node-over) [overlay](#node-overlay) [plus](#node-plus) [premult](#node-premult) [screen](#node-screen) [unpremult](#node-unpremult) 
 ---------
 ### Node Group: conditional
-* [ifequal](#node-ifequal) [ifgreater](#node-ifgreater) [ifgreatereq](#node-ifgreatereq) [switch](#node-switch) 
+* [and](#node-and) [ifequal](#node-ifequal) [ifgreater](#node-ifgreater) [ifgreatereq](#node-ifgreatereq) [not](#node-not) [or](#node-or) [switch](#node-switch) [xor](#node-xor) 
 ---------
 ### Node Group: convolution2d
 * [blur](#node-blur) [heighttonormal](#node-heighttonormal) 
 ---------
 ### Node Group: geometric
 * [bitangent](#node-bitangent) [bump](#node-bump) [geomcolor](#node-geomcolor) [geompropvalue](#node-geompropvalue) [normal](#node-normal) [position](#node-position) [tangent](#node-tangent) [texcoord](#node-texcoord) 
----------
-### Node Group: global
-* [ambientocclusion](#node-ambientocclusion) 
 ---------
 ### Node Group: material
 * [surfacematerial](#node-surfacematerial) [volumematerial](#node-volumematerial) 
@@ -65,6 +62,7 @@
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **surfaceshader** | surfaceshader |  |  |  |  |  |  |  |  |  |  |  |
+| **backsurfaceshader** | surfaceshader |  |  |  |  |  |  |  |  |  |  |  |
 | **displacementshader** | displacementshader |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | material | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *volumematerial*
@@ -2761,7 +2759,7 @@ graph TB
 graph TB
     subgraph NG_noise2d_color3
     NG_noise2d_color3_N_noise2d[N_noise2d]
-    NG_noise2d_color3_swizzle[swizzle]
+    NG_noise2d_color3_N_convert[N_convert]
     style NG_noise2d_color3_out  fill:#0C0, color:#FFF
     NG_noise2d_color3_out([out])
     style NG_noise2d_color3_amplitude  fill:#09D, color:#FFF
@@ -2774,8 +2772,8 @@ graph TB
     NG_noise2d_color3_amplitude --"amplitude"--> NG_noise2d_color3_N_noise2d
     NG_noise2d_color3_pivot --"pivot"--> NG_noise2d_color3_N_noise2d
     NG_noise2d_color3_texcoord --"texcoord"--> NG_noise2d_color3_N_noise2d
-    NG_noise2d_color3_N_noise2d --"in"--> NG_noise2d_color3_swizzle
-    NG_noise2d_color3_swizzle --> NG_noise2d_color3_out
+    NG_noise2d_color3_N_noise2d --"in"--> NG_noise2d_color3_N_convert
+    NG_noise2d_color3_N_convert --> NG_noise2d_color3_out
 ```
  
 
@@ -2800,7 +2798,7 @@ graph TB
 graph TB
     subgraph NG_noise2d_color4
     NG_noise2d_color4_N_noise2d[N_noise2d]
-    NG_noise2d_color4_swizzle[swizzle]
+    NG_noise2d_color4_N_convert[N_convert]
     style NG_noise2d_color4_out  fill:#0C0, color:#FFF
     NG_noise2d_color4_out([out])
     style NG_noise2d_color4_amplitude  fill:#09D, color:#FFF
@@ -2813,8 +2811,8 @@ graph TB
     NG_noise2d_color4_amplitude --"amplitude"--> NG_noise2d_color4_N_noise2d
     NG_noise2d_color4_pivot --"pivot"--> NG_noise2d_color4_N_noise2d
     NG_noise2d_color4_texcoord --"texcoord"--> NG_noise2d_color4_N_noise2d
-    NG_noise2d_color4_N_noise2d --"in"--> NG_noise2d_color4_swizzle
-    NG_noise2d_color4_swizzle --> NG_noise2d_color4_out
+    NG_noise2d_color4_N_noise2d --"in"--> NG_noise2d_color4_N_convert
+    NG_noise2d_color4_N_convert --> NG_noise2d_color4_out
 ```
  
 
@@ -2889,7 +2887,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise2d_color3FA
-    NG_noise2d_color3FA_swizzle[swizzle]
+    NG_noise2d_color3FA_N_convert[N_convert]
     NG_noise2d_color3FA_N_noise2d[N_noise2d]
     style NG_noise2d_color3FA_out  fill:#0C0, color:#FFF
     NG_noise2d_color3FA_out([out])
@@ -2900,8 +2898,8 @@ graph TB
     style NG_noise2d_color3FA_texcoord  fill:#09D, color:#FFF
     NG_noise2d_color3FA_texcoord([texcoord])
     end
-    NG_noise2d_color3FA_amplitude --"in"--> NG_noise2d_color3FA_swizzle
-    NG_noise2d_color3FA_swizzle --"amplitude"--> NG_noise2d_color3FA_N_noise2d
+    NG_noise2d_color3FA_amplitude --"in"--> NG_noise2d_color3FA_N_convert
+    NG_noise2d_color3FA_N_convert --"amplitude"--> NG_noise2d_color3FA_N_noise2d
     NG_noise2d_color3FA_pivot --"pivot"--> NG_noise2d_color3FA_N_noise2d
     NG_noise2d_color3FA_texcoord --"texcoord"--> NG_noise2d_color3FA_N_noise2d
     NG_noise2d_color3FA_N_noise2d --> NG_noise2d_color3FA_out
@@ -2928,7 +2926,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise2d_color4FA
-    NG_noise2d_color4FA_swizzle[swizzle]
+    NG_noise2d_color4FA_N_convert[N_convert]
     NG_noise2d_color4FA_N_noise2d[N_noise2d]
     style NG_noise2d_color4FA_out  fill:#0C0, color:#FFF
     NG_noise2d_color4FA_out([out])
@@ -2939,11 +2937,8 @@ graph TB
     style NG_noise2d_color4FA_texcoord  fill:#09D, color:#FFF
     NG_noise2d_color4FA_texcoord([texcoord])
     end
-    NG_noise2d_color4FA_amplitude --"in1"--> NG_noise2d_color4FA_swizzle
-    NG_noise2d_color4FA_amplitude --"in2"--> NG_noise2d_color4FA_swizzle
-    NG_noise2d_color4FA_amplitude --"in3"--> NG_noise2d_color4FA_swizzle
-    NG_noise2d_color4FA_amplitude --"in4"--> NG_noise2d_color4FA_swizzle
-    NG_noise2d_color4FA_swizzle --"amplitude"--> NG_noise2d_color4FA_N_noise2d
+    NG_noise2d_color4FA_amplitude --"in"--> NG_noise2d_color4FA_N_convert
+    NG_noise2d_color4FA_N_convert --"amplitude"--> NG_noise2d_color4FA_N_noise2d
     NG_noise2d_color4FA_pivot --"pivot"--> NG_noise2d_color4FA_N_noise2d
     NG_noise2d_color4FA_texcoord --"texcoord"--> NG_noise2d_color4FA_N_noise2d
     NG_noise2d_color4FA_N_noise2d --> NG_noise2d_color4FA_out
@@ -2970,7 +2965,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise2d_vector2FA
-    NG_noise2d_vector2FA_swizzle[swizzle]
+    NG_noise2d_vector2FA_N_convert[N_convert]
     NG_noise2d_vector2FA_N_noise2d[N_noise2d]
     style NG_noise2d_vector2FA_out  fill:#0C0, color:#FFF
     NG_noise2d_vector2FA_out([out])
@@ -2981,9 +2976,8 @@ graph TB
     style NG_noise2d_vector2FA_texcoord  fill:#09D, color:#FFF
     NG_noise2d_vector2FA_texcoord([texcoord])
     end
-    NG_noise2d_vector2FA_amplitude --"in1"--> NG_noise2d_vector2FA_swizzle
-    NG_noise2d_vector2FA_amplitude --"in2"--> NG_noise2d_vector2FA_swizzle
-    NG_noise2d_vector2FA_swizzle --"amplitude"--> NG_noise2d_vector2FA_N_noise2d
+    NG_noise2d_vector2FA_amplitude --"in"--> NG_noise2d_vector2FA_N_convert
+    NG_noise2d_vector2FA_N_convert --"amplitude"--> NG_noise2d_vector2FA_N_noise2d
     NG_noise2d_vector2FA_pivot --"pivot"--> NG_noise2d_vector2FA_N_noise2d
     NG_noise2d_vector2FA_texcoord --"texcoord"--> NG_noise2d_vector2FA_N_noise2d
     NG_noise2d_vector2FA_N_noise2d --> NG_noise2d_vector2FA_out
@@ -3010,7 +3004,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise2d_vector3FA
-    NG_noise2d_vector3FA_swizzle[swizzle]
+    NG_noise2d_vector3FA_N_convert[N_convert]
     NG_noise2d_vector3FA_N_noise2d[N_noise2d]
     style NG_noise2d_vector3FA_out  fill:#0C0, color:#FFF
     NG_noise2d_vector3FA_out([out])
@@ -3021,8 +3015,8 @@ graph TB
     style NG_noise2d_vector3FA_texcoord  fill:#09D, color:#FFF
     NG_noise2d_vector3FA_texcoord([texcoord])
     end
-    NG_noise2d_vector3FA_amplitude --"in"--> NG_noise2d_vector3FA_swizzle
-    NG_noise2d_vector3FA_swizzle --"amplitude"--> NG_noise2d_vector3FA_N_noise2d
+    NG_noise2d_vector3FA_amplitude --"in"--> NG_noise2d_vector3FA_N_convert
+    NG_noise2d_vector3FA_N_convert --"amplitude"--> NG_noise2d_vector3FA_N_noise2d
     NG_noise2d_vector3FA_pivot --"pivot"--> NG_noise2d_vector3FA_N_noise2d
     NG_noise2d_vector3FA_texcoord --"texcoord"--> NG_noise2d_vector3FA_N_noise2d
     NG_noise2d_vector3FA_N_noise2d --> NG_noise2d_vector3FA_out
@@ -3049,7 +3043,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise2d_vector4FA
-    NG_noise2d_vector4FA_swizzle[swizzle]
+    NG_noise2d_vector4FA_N_convert[N_convert]
     NG_noise2d_vector4FA_N_noise2d[N_noise2d]
     style NG_noise2d_vector4FA_out  fill:#0C0, color:#FFF
     NG_noise2d_vector4FA_out([out])
@@ -3060,11 +3054,8 @@ graph TB
     style NG_noise2d_vector4FA_texcoord  fill:#09D, color:#FFF
     NG_noise2d_vector4FA_texcoord([texcoord])
     end
-    NG_noise2d_vector4FA_amplitude --"in1"--> NG_noise2d_vector4FA_swizzle
-    NG_noise2d_vector4FA_amplitude --"in2"--> NG_noise2d_vector4FA_swizzle
-    NG_noise2d_vector4FA_amplitude --"in3"--> NG_noise2d_vector4FA_swizzle
-    NG_noise2d_vector4FA_amplitude --"in4"--> NG_noise2d_vector4FA_swizzle
-    NG_noise2d_vector4FA_swizzle --"amplitude"--> NG_noise2d_vector4FA_N_noise2d
+    NG_noise2d_vector4FA_amplitude --"in"--> NG_noise2d_vector4FA_N_convert
+    NG_noise2d_vector4FA_N_convert --"amplitude"--> NG_noise2d_vector4FA_N_noise2d
     NG_noise2d_vector4FA_pivot --"pivot"--> NG_noise2d_vector4FA_N_noise2d
     NG_noise2d_vector4FA_texcoord --"texcoord"--> NG_noise2d_vector4FA_N_noise2d
     NG_noise2d_vector4FA_N_noise2d --> NG_noise2d_vector4FA_out
@@ -3110,7 +3101,7 @@ graph TB
 graph TB
     subgraph NG_noise3d_color3
     NG_noise3d_color3_N_noise3d[N_noise3d]
-    NG_noise3d_color3_swizzle[swizzle]
+    NG_noise3d_color3_N_convert[N_convert]
     style NG_noise3d_color3_out  fill:#0C0, color:#FFF
     NG_noise3d_color3_out([out])
     style NG_noise3d_color3_amplitude  fill:#09D, color:#FFF
@@ -3123,8 +3114,8 @@ graph TB
     NG_noise3d_color3_amplitude --"amplitude"--> NG_noise3d_color3_N_noise3d
     NG_noise3d_color3_pivot --"pivot"--> NG_noise3d_color3_N_noise3d
     NG_noise3d_color3_position --"position"--> NG_noise3d_color3_N_noise3d
-    NG_noise3d_color3_N_noise3d --"in"--> NG_noise3d_color3_swizzle
-    NG_noise3d_color3_swizzle --> NG_noise3d_color3_out
+    NG_noise3d_color3_N_noise3d --"in"--> NG_noise3d_color3_N_convert
+    NG_noise3d_color3_N_convert --> NG_noise3d_color3_out
 ```
  
 
@@ -3149,7 +3140,7 @@ graph TB
 graph TB
     subgraph NG_noise3d_color4
     NG_noise3d_color4_N_noise3d[N_noise3d]
-    NG_noise3d_color4_swizzle[swizzle]
+    NG_noise3d_color4_N_convert[N_convert]
     style NG_noise3d_color4_out  fill:#0C0, color:#FFF
     NG_noise3d_color4_out([out])
     style NG_noise3d_color4_amplitude  fill:#09D, color:#FFF
@@ -3162,8 +3153,8 @@ graph TB
     NG_noise3d_color4_amplitude --"amplitude"--> NG_noise3d_color4_N_noise3d
     NG_noise3d_color4_pivot --"pivot"--> NG_noise3d_color4_N_noise3d
     NG_noise3d_color4_position --"position"--> NG_noise3d_color4_N_noise3d
-    NG_noise3d_color4_N_noise3d --"in"--> NG_noise3d_color4_swizzle
-    NG_noise3d_color4_swizzle --> NG_noise3d_color4_out
+    NG_noise3d_color4_N_noise3d --"in"--> NG_noise3d_color4_N_convert
+    NG_noise3d_color4_N_convert --> NG_noise3d_color4_out
 ```
  
 
@@ -3238,7 +3229,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise3d_color3FA
-    NG_noise3d_color3FA_swizzle[swizzle]
+    NG_noise3d_color3FA_N_convert[N_convert]
     NG_noise3d_color3FA_N_noise3d[N_noise3d]
     style NG_noise3d_color3FA_out  fill:#0C0, color:#FFF
     NG_noise3d_color3FA_out([out])
@@ -3249,8 +3240,8 @@ graph TB
     style NG_noise3d_color3FA_position  fill:#09D, color:#FFF
     NG_noise3d_color3FA_position([position])
     end
-    NG_noise3d_color3FA_amplitude --"in"--> NG_noise3d_color3FA_swizzle
-    NG_noise3d_color3FA_swizzle --"amplitude"--> NG_noise3d_color3FA_N_noise3d
+    NG_noise3d_color3FA_amplitude --"in"--> NG_noise3d_color3FA_N_convert
+    NG_noise3d_color3FA_N_convert --"amplitude"--> NG_noise3d_color3FA_N_noise3d
     NG_noise3d_color3FA_pivot --"pivot"--> NG_noise3d_color3FA_N_noise3d
     NG_noise3d_color3FA_position --"position"--> NG_noise3d_color3FA_N_noise3d
     NG_noise3d_color3FA_N_noise3d --> NG_noise3d_color3FA_out
@@ -3277,7 +3268,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise3d_color4FA
-    NG_noise3d_color4FA_swizzle[swizzle]
+    NG_noise3d_color4FA_N_convert[N_convert]
     NG_noise3d_color4FA_N_noise3d[N_noise3d]
     style NG_noise3d_color4FA_out  fill:#0C0, color:#FFF
     NG_noise3d_color4FA_out([out])
@@ -3288,11 +3279,8 @@ graph TB
     style NG_noise3d_color4FA_position  fill:#09D, color:#FFF
     NG_noise3d_color4FA_position([position])
     end
-    NG_noise3d_color4FA_amplitude --"in1"--> NG_noise3d_color4FA_swizzle
-    NG_noise3d_color4FA_amplitude --"in2"--> NG_noise3d_color4FA_swizzle
-    NG_noise3d_color4FA_amplitude --"in3"--> NG_noise3d_color4FA_swizzle
-    NG_noise3d_color4FA_amplitude --"in4"--> NG_noise3d_color4FA_swizzle
-    NG_noise3d_color4FA_swizzle --"amplitude"--> NG_noise3d_color4FA_N_noise3d
+    NG_noise3d_color4FA_amplitude --"in"--> NG_noise3d_color4FA_N_convert
+    NG_noise3d_color4FA_N_convert --"amplitude"--> NG_noise3d_color4FA_N_noise3d
     NG_noise3d_color4FA_pivot --"pivot"--> NG_noise3d_color4FA_N_noise3d
     NG_noise3d_color4FA_position --"position"--> NG_noise3d_color4FA_N_noise3d
     NG_noise3d_color4FA_N_noise3d --> NG_noise3d_color4FA_out
@@ -3319,7 +3307,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise3d_vector2FA
-    NG_noise3d_vector2FA_swizzle[swizzle]
+    NG_noise3d_vector2FA_N_convert[N_convert]
     NG_noise3d_vector2FA_N_noise3d[N_noise3d]
     style NG_noise3d_vector2FA_out  fill:#0C0, color:#FFF
     NG_noise3d_vector2FA_out([out])
@@ -3330,9 +3318,8 @@ graph TB
     style NG_noise3d_vector2FA_position  fill:#09D, color:#FFF
     NG_noise3d_vector2FA_position([position])
     end
-    NG_noise3d_vector2FA_amplitude --"in1"--> NG_noise3d_vector2FA_swizzle
-    NG_noise3d_vector2FA_amplitude --"in2"--> NG_noise3d_vector2FA_swizzle
-    NG_noise3d_vector2FA_swizzle --"amplitude"--> NG_noise3d_vector2FA_N_noise3d
+    NG_noise3d_vector2FA_amplitude --"in"--> NG_noise3d_vector2FA_N_convert
+    NG_noise3d_vector2FA_N_convert --"amplitude"--> NG_noise3d_vector2FA_N_noise3d
     NG_noise3d_vector2FA_pivot --"pivot"--> NG_noise3d_vector2FA_N_noise3d
     NG_noise3d_vector2FA_position --"position"--> NG_noise3d_vector2FA_N_noise3d
     NG_noise3d_vector2FA_N_noise3d --> NG_noise3d_vector2FA_out
@@ -3359,7 +3346,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise3d_vector3FA
-    NG_noise3d_vector3FA_swizzle[swizzle]
+    NG_noise3d_vector3FA_N_convert[N_convert]
     NG_noise3d_vector3FA_N_noise3d[N_noise3d]
     style NG_noise3d_vector3FA_out  fill:#0C0, color:#FFF
     NG_noise3d_vector3FA_out([out])
@@ -3370,8 +3357,8 @@ graph TB
     style NG_noise3d_vector3FA_position  fill:#09D, color:#FFF
     NG_noise3d_vector3FA_position([position])
     end
-    NG_noise3d_vector3FA_amplitude --"in"--> NG_noise3d_vector3FA_swizzle
-    NG_noise3d_vector3FA_swizzle --"amplitude"--> NG_noise3d_vector3FA_N_noise3d
+    NG_noise3d_vector3FA_amplitude --"in"--> NG_noise3d_vector3FA_N_convert
+    NG_noise3d_vector3FA_N_convert --"amplitude"--> NG_noise3d_vector3FA_N_noise3d
     NG_noise3d_vector3FA_pivot --"pivot"--> NG_noise3d_vector3FA_N_noise3d
     NG_noise3d_vector3FA_position --"position"--> NG_noise3d_vector3FA_N_noise3d
     NG_noise3d_vector3FA_N_noise3d --> NG_noise3d_vector3FA_out
@@ -3398,7 +3385,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_noise3d_vector4FA
-    NG_noise3d_vector4FA_swizzle[swizzle]
+    NG_noise3d_vector4FA_N_convert[N_convert]
     NG_noise3d_vector4FA_N_noise3d[N_noise3d]
     style NG_noise3d_vector4FA_out  fill:#0C0, color:#FFF
     NG_noise3d_vector4FA_out([out])
@@ -3409,11 +3396,8 @@ graph TB
     style NG_noise3d_vector4FA_position  fill:#09D, color:#FFF
     NG_noise3d_vector4FA_position([position])
     end
-    NG_noise3d_vector4FA_amplitude --"in1"--> NG_noise3d_vector4FA_swizzle
-    NG_noise3d_vector4FA_amplitude --"in2"--> NG_noise3d_vector4FA_swizzle
-    NG_noise3d_vector4FA_amplitude --"in3"--> NG_noise3d_vector4FA_swizzle
-    NG_noise3d_vector4FA_amplitude --"in4"--> NG_noise3d_vector4FA_swizzle
-    NG_noise3d_vector4FA_swizzle --"amplitude"--> NG_noise3d_vector4FA_N_noise3d
+    NG_noise3d_vector4FA_amplitude --"in"--> NG_noise3d_vector4FA_N_convert
+    NG_noise3d_vector4FA_N_convert --"amplitude"--> NG_noise3d_vector4FA_N_noise3d
     NG_noise3d_vector4FA_pivot --"pivot"--> NG_noise3d_vector4FA_N_noise3d
     NG_noise3d_vector4FA_position --"position"--> NG_noise3d_vector4FA_N_noise3d
     NG_noise3d_vector4FA_N_noise3d --> NG_noise3d_vector4FA_out
@@ -3461,7 +3445,7 @@ graph TB
 graph TB
     subgraph NG_fractal3d_color3
     NG_fractal3d_color3_N_fractal3d[N_fractal3d]
-    NG_fractal3d_color3_swizzle[swizzle]
+    NG_fractal3d_color3_N_convert[N_convert]
     style NG_fractal3d_color3_out  fill:#0C0, color:#FFF
     NG_fractal3d_color3_out([out])
     style NG_fractal3d_color3_amplitude  fill:#09D, color:#FFF
@@ -3480,8 +3464,8 @@ graph TB
     NG_fractal3d_color3_lacunarity --"lacunarity"--> NG_fractal3d_color3_N_fractal3d
     NG_fractal3d_color3_diminish --"diminish"--> NG_fractal3d_color3_N_fractal3d
     NG_fractal3d_color3_position --"position"--> NG_fractal3d_color3_N_fractal3d
-    NG_fractal3d_color3_N_fractal3d --"in"--> NG_fractal3d_color3_swizzle
-    NG_fractal3d_color3_swizzle --> NG_fractal3d_color3_out
+    NG_fractal3d_color3_N_fractal3d --"in"--> NG_fractal3d_color3_N_convert
+    NG_fractal3d_color3_N_convert --> NG_fractal3d_color3_out
 ```
  
 
@@ -3508,7 +3492,7 @@ graph TB
 graph TB
     subgraph NG_fractal3d_color4
     NG_fractal3d_color4_N_fractal3d[N_fractal3d]
-    NG_fractal3d_color4_swizzle[swizzle]
+    NG_fractal3d_color4_N_convert[N_convert]
     style NG_fractal3d_color4_out  fill:#0C0, color:#FFF
     NG_fractal3d_color4_out([out])
     style NG_fractal3d_color4_amplitude  fill:#09D, color:#FFF
@@ -3527,8 +3511,8 @@ graph TB
     NG_fractal3d_color4_lacunarity --"lacunarity"--> NG_fractal3d_color4_N_fractal3d
     NG_fractal3d_color4_diminish --"diminish"--> NG_fractal3d_color4_N_fractal3d
     NG_fractal3d_color4_position --"position"--> NG_fractal3d_color4_N_fractal3d
-    NG_fractal3d_color4_N_fractal3d --"in"--> NG_fractal3d_color4_swizzle
-    NG_fractal3d_color4_swizzle --> NG_fractal3d_color4_out
+    NG_fractal3d_color4_N_fractal3d --"in"--> NG_fractal3d_color4_N_convert
+    NG_fractal3d_color4_N_convert --> NG_fractal3d_color4_out
 ```
  
 
@@ -3611,7 +3595,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_fractal3d_color3FA
-    NG_fractal3d_color3FA_swizzle[swizzle]
+    NG_fractal3d_color3FA_N_convert[N_convert]
     NG_fractal3d_color3FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_color3FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_color3FA_out([out])
@@ -3626,8 +3610,8 @@ graph TB
     style NG_fractal3d_color3FA_position  fill:#09D, color:#FFF
     NG_fractal3d_color3FA_position([position])
     end
-    NG_fractal3d_color3FA_amplitude --"in"--> NG_fractal3d_color3FA_swizzle
-    NG_fractal3d_color3FA_swizzle --"amplitude"--> NG_fractal3d_color3FA_N_fractal3d
+    NG_fractal3d_color3FA_amplitude --"in"--> NG_fractal3d_color3FA_N_convert
+    NG_fractal3d_color3FA_N_convert --"amplitude"--> NG_fractal3d_color3FA_N_fractal3d
     NG_fractal3d_color3FA_octaves --"octaves"--> NG_fractal3d_color3FA_N_fractal3d
     NG_fractal3d_color3FA_lacunarity --"lacunarity"--> NG_fractal3d_color3FA_N_fractal3d
     NG_fractal3d_color3FA_diminish --"diminish"--> NG_fractal3d_color3FA_N_fractal3d
@@ -3658,7 +3642,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_fractal3d_color4FA
-    NG_fractal3d_color4FA_swizzle[swizzle]
+    NG_fractal3d_color4FA_N_convert[N_convert]
     NG_fractal3d_color4FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_color4FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_color4FA_out([out])
@@ -3673,11 +3657,8 @@ graph TB
     style NG_fractal3d_color4FA_position  fill:#09D, color:#FFF
     NG_fractal3d_color4FA_position([position])
     end
-    NG_fractal3d_color4FA_amplitude --"in1"--> NG_fractal3d_color4FA_swizzle
-    NG_fractal3d_color4FA_amplitude --"in2"--> NG_fractal3d_color4FA_swizzle
-    NG_fractal3d_color4FA_amplitude --"in3"--> NG_fractal3d_color4FA_swizzle
-    NG_fractal3d_color4FA_amplitude --"in4"--> NG_fractal3d_color4FA_swizzle
-    NG_fractal3d_color4FA_swizzle --"amplitude"--> NG_fractal3d_color4FA_N_fractal3d
+    NG_fractal3d_color4FA_amplitude --"in"--> NG_fractal3d_color4FA_N_convert
+    NG_fractal3d_color4FA_N_convert --"amplitude"--> NG_fractal3d_color4FA_N_fractal3d
     NG_fractal3d_color4FA_octaves --"octaves"--> NG_fractal3d_color4FA_N_fractal3d
     NG_fractal3d_color4FA_lacunarity --"lacunarity"--> NG_fractal3d_color4FA_N_fractal3d
     NG_fractal3d_color4FA_diminish --"diminish"--> NG_fractal3d_color4FA_N_fractal3d
@@ -3708,7 +3689,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_fractal3d_vector2FA
-    NG_fractal3d_vector2FA_swizzle[swizzle]
+    NG_fractal3d_vector2FA_N_convert[N_convert]
     NG_fractal3d_vector2FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_vector2FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_vector2FA_out([out])
@@ -3723,9 +3704,8 @@ graph TB
     style NG_fractal3d_vector2FA_position  fill:#09D, color:#FFF
     NG_fractal3d_vector2FA_position([position])
     end
-    NG_fractal3d_vector2FA_amplitude --"in1"--> NG_fractal3d_vector2FA_swizzle
-    NG_fractal3d_vector2FA_amplitude --"in2"--> NG_fractal3d_vector2FA_swizzle
-    NG_fractal3d_vector2FA_swizzle --"amplitude"--> NG_fractal3d_vector2FA_N_fractal3d
+    NG_fractal3d_vector2FA_amplitude --"in"--> NG_fractal3d_vector2FA_N_convert
+    NG_fractal3d_vector2FA_N_convert --"amplitude"--> NG_fractal3d_vector2FA_N_fractal3d
     NG_fractal3d_vector2FA_octaves --"octaves"--> NG_fractal3d_vector2FA_N_fractal3d
     NG_fractal3d_vector2FA_lacunarity --"lacunarity"--> NG_fractal3d_vector2FA_N_fractal3d
     NG_fractal3d_vector2FA_diminish --"diminish"--> NG_fractal3d_vector2FA_N_fractal3d
@@ -3756,7 +3736,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_fractal3d_vector3FA
-    NG_fractal3d_vector3FA_swizzle[swizzle]
+    NG_fractal3d_vector3FA_N_convert[N_convert]
     NG_fractal3d_vector3FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_vector3FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_vector3FA_out([out])
@@ -3771,8 +3751,8 @@ graph TB
     style NG_fractal3d_vector3FA_position  fill:#09D, color:#FFF
     NG_fractal3d_vector3FA_position([position])
     end
-    NG_fractal3d_vector3FA_amplitude --"in"--> NG_fractal3d_vector3FA_swizzle
-    NG_fractal3d_vector3FA_swizzle --"amplitude"--> NG_fractal3d_vector3FA_N_fractal3d
+    NG_fractal3d_vector3FA_amplitude --"in"--> NG_fractal3d_vector3FA_N_convert
+    NG_fractal3d_vector3FA_N_convert --"amplitude"--> NG_fractal3d_vector3FA_N_fractal3d
     NG_fractal3d_vector3FA_octaves --"octaves"--> NG_fractal3d_vector3FA_N_fractal3d
     NG_fractal3d_vector3FA_lacunarity --"lacunarity"--> NG_fractal3d_vector3FA_N_fractal3d
     NG_fractal3d_vector3FA_diminish --"diminish"--> NG_fractal3d_vector3FA_N_fractal3d
@@ -3803,7 +3783,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_fractal3d_vector4FA
-    NG_fractal3d_vector4FA_swizzle[swizzle]
+    NG_fractal3d_vector4FA_N_convert[N_convert]
     NG_fractal3d_vector4FA_N_fractal3d[N_fractal3d]
     style NG_fractal3d_vector4FA_out  fill:#0C0, color:#FFF
     NG_fractal3d_vector4FA_out([out])
@@ -3818,11 +3798,8 @@ graph TB
     style NG_fractal3d_vector4FA_position  fill:#09D, color:#FFF
     NG_fractal3d_vector4FA_position([position])
     end
-    NG_fractal3d_vector4FA_amplitude --"in1"--> NG_fractal3d_vector4FA_swizzle
-    NG_fractal3d_vector4FA_amplitude --"in2"--> NG_fractal3d_vector4FA_swizzle
-    NG_fractal3d_vector4FA_amplitude --"in3"--> NG_fractal3d_vector4FA_swizzle
-    NG_fractal3d_vector4FA_amplitude --"in4"--> NG_fractal3d_vector4FA_swizzle
-    NG_fractal3d_vector4FA_swizzle --"amplitude"--> NG_fractal3d_vector4FA_N_fractal3d
+    NG_fractal3d_vector4FA_amplitude --"in"--> NG_fractal3d_vector4FA_N_convert
+    NG_fractal3d_vector4FA_N_convert --"amplitude"--> NG_fractal3d_vector4FA_N_fractal3d
     NG_fractal3d_vector4FA_octaves --"octaves"--> NG_fractal3d_vector4FA_N_fractal3d
     NG_fractal3d_vector4FA_lacunarity --"lacunarity"--> NG_fractal3d_vector4FA_N_fractal3d
     NG_fractal3d_vector4FA_diminish --"diminish"--> NG_fractal3d_vector4FA_N_fractal3d
@@ -4602,17 +4579,12 @@ graph TB
     NG_cloverleaf_float_sample_double[sample_double]
     NG_cloverleaf_float_sample_add[sample_add]
     NG_cloverleaf_float_sample_subtract[sample_subtract]
-    NG_cloverleaf_float_swizzle[swizzle]
-    NG_cloverleaf_float_swizzle2[swizzle2]
+    NG_cloverleaf_float_sample_double_separate[sample_double_separate]
+    NG_cloverleaf_float_sample_add_separate[sample_add_separate]
+    NG_cloverleaf_float_sample_subtract_separate[sample_subtract_separate]
     NG_cloverleaf_float_coord1[coord1]
-    NG_cloverleaf_float_swizzle3[swizzle3]
-    NG_cloverleaf_float_swizzle4[swizzle4]
     NG_cloverleaf_float_coord2[coord2]
-    NG_cloverleaf_float_swizzle5[swizzle5]
-    NG_cloverleaf_float_swizzle6[swizzle6]
     NG_cloverleaf_float_coord3[coord3]
-    NG_cloverleaf_float_swizzle7[swizzle7]
-    NG_cloverleaf_float_swizzle8[swizzle8]
     NG_cloverleaf_float_coord4[coord4]
     NG_cloverleaf_float_circle1[circle1]
     NG_cloverleaf_float_circle2[circle2]
@@ -4636,22 +4608,17 @@ graph TB
     NG_cloverleaf_float_radius --"in2"--> NG_cloverleaf_float_sample_add
     NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_sample_subtract
     NG_cloverleaf_float_radius --"in2"--> NG_cloverleaf_float_sample_subtract
-    NG_cloverleaf_float_sample_add --"in"--> NG_cloverleaf_float_swizzle
-    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle2
-    NG_cloverleaf_float_swizzle --"in1"--> NG_cloverleaf_float_coord1
-    NG_cloverleaf_float_swizzle2 --"in2"--> NG_cloverleaf_float_coord1
-    NG_cloverleaf_float_sample_subtract --"in"--> NG_cloverleaf_float_swizzle3
-    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle4
-    NG_cloverleaf_float_swizzle3 --"in1"--> NG_cloverleaf_float_coord2
-    NG_cloverleaf_float_swizzle4 --"in2"--> NG_cloverleaf_float_coord2
-    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle5
-    NG_cloverleaf_float_sample_subtract --"in"--> NG_cloverleaf_float_swizzle6
-    NG_cloverleaf_float_swizzle5 --"in1"--> NG_cloverleaf_float_coord3
-    NG_cloverleaf_float_swizzle6 --"in2"--> NG_cloverleaf_float_coord3
-    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_swizzle7
-    NG_cloverleaf_float_sample_add --"in"--> NG_cloverleaf_float_swizzle8
-    NG_cloverleaf_float_swizzle7 --"in1"--> NG_cloverleaf_float_coord4
-    NG_cloverleaf_float_swizzle8 --"in2"--> NG_cloverleaf_float_coord4
+    NG_cloverleaf_float_sample_double --"in"--> NG_cloverleaf_float_sample_double_separate
+    NG_cloverleaf_float_sample_add --"in"--> NG_cloverleaf_float_sample_add_separate
+    NG_cloverleaf_float_sample_subtract --"in"--> NG_cloverleaf_float_sample_subtract_separate
+    NG_cloverleaf_float_sample_add_separate --"outx-->in1"--> NG_cloverleaf_float_coord1
+    NG_cloverleaf_float_sample_double_separate --"outy-->in2"--> NG_cloverleaf_float_coord1
+    NG_cloverleaf_float_sample_subtract_separate --"outx-->in1"--> NG_cloverleaf_float_coord2
+    NG_cloverleaf_float_sample_double_separate --"outy-->in2"--> NG_cloverleaf_float_coord2
+    NG_cloverleaf_float_sample_double_separate --"outx-->in1"--> NG_cloverleaf_float_coord3
+    NG_cloverleaf_float_sample_subtract_separate --"outy-->in2"--> NG_cloverleaf_float_coord3
+    NG_cloverleaf_float_sample_double_separate --"outx-->in1"--> NG_cloverleaf_float_coord4
+    NG_cloverleaf_float_sample_add_separate --"outy-->in2"--> NG_cloverleaf_float_coord4
     NG_cloverleaf_float_coord1 --"texcoord"--> NG_cloverleaf_float_circle1
     NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle1
     NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle1
@@ -4695,23 +4662,18 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_hexagon_float
-    NG_hexagon_float_delta[delta]
-    NG_hexagon_float_delta_abs[delta_abs]
-    NG_hexagon_float_swizzle[swizzle]
-    NG_hexagon_float_swizzle2[swizzle2]
-    NG_hexagon_float_p[p]
     style NG_hexagon_float_k  fill:#500, color:#FFF
     NG_hexagon_float_k([k:-0.866025, 0.5, 0.57735])
-    NG_hexagon_float_swizzle3[swizzle3]
-    NG_hexagon_float_kz_r1[kz_r1]
     NG_hexagon_float_minus_k[minus_k]
-    NG_hexagon_float_swizzle4[swizzle4]
+    NG_hexagon_float_k_separate[k_separate]
+    NG_hexagon_float_minus_k_separate[minus_k_separate]
+    NG_hexagon_float_delta[delta]
+    NG_hexagon_float_delta_abs[delta_abs]
+    NG_hexagon_float_delta_abs_separate[delta_abs_separate]
+    NG_hexagon_float_p[p]
+    NG_hexagon_float_kz_r1[kz_r1]
     NG_hexagon_float_minus_kz_r[minus_kz_r]
-    NG_hexagon_float_swizzle5[swizzle5]
-    NG_hexagon_float_swizzle6[swizzle6]
     NG_hexagon_float_combine_mkx_ky[combine_mkx_ky]
-    NG_hexagon_float_swizzle7[swizzle7]
-    NG_hexagon_float_swizzle8[swizzle8]
     NG_hexagon_float_kxy[kxy]
     NG_hexagon_float_dot_kxy_p[dot_kxy_p]
     NG_hexagon_float_dot_kxy_p1[dot_kxy_p1]
@@ -4721,7 +4683,7 @@ graph TB
     NG_hexagon_float_multiply2_1[multiply2_1]
     NG_hexagon_float_multiply_min_comb[multiply_min_comb]
     NG_hexagon_float_multiply2_2[multiply2_2]
-    NG_hexagon_float_swizzle9[swizzle9]
+    NG_hexagon_float_new_p2_x[new_p2_x]
     NG_hexagon_float_clamp[clamp]
     NG_hexagon_float_combine_clamp_rad[combine_clamp_rad]
     NG_hexagon_float_new_p1[new_p1]
@@ -4739,28 +4701,23 @@ graph TB
     style NG_hexagon_float_radius  fill:#09D, color:#FFF
     NG_hexagon_float_radius([radius])
     end
+    NG_hexagon_float_k --"in1"--> NG_hexagon_float_minus_k
+    NG_hexagon_float_k --"in"--> NG_hexagon_float_k_separate
+    NG_hexagon_float_minus_k --"in"--> NG_hexagon_float_minus_k_separate
     NG_hexagon_float_texcoord --"in1"--> NG_hexagon_float_delta
     NG_hexagon_float_center --"in2"--> NG_hexagon_float_delta
     NG_hexagon_float_delta --"in"--> NG_hexagon_float_delta_abs
-    NG_hexagon_float_delta_abs --"in"--> NG_hexagon_float_swizzle
-    NG_hexagon_float_delta_abs --"in"--> NG_hexagon_float_swizzle2
-    NG_hexagon_float_swizzle --"in1"--> NG_hexagon_float_p
-    NG_hexagon_float_swizzle2 --"in2"--> NG_hexagon_float_p
-    NG_hexagon_float_k --"in"--> NG_hexagon_float_swizzle3
-    NG_hexagon_float_swizzle3 --"in1"--> NG_hexagon_float_kz_r1
+    NG_hexagon_float_delta_abs --"in"--> NG_hexagon_float_delta_abs_separate
+    NG_hexagon_float_delta_abs_separate --"outy-->in1"--> NG_hexagon_float_p
+    NG_hexagon_float_delta_abs_separate --"outx-->in2"--> NG_hexagon_float_p
+    NG_hexagon_float_k_separate --"outz-->in1"--> NG_hexagon_float_kz_r1
     NG_hexagon_float_radius --"in2"--> NG_hexagon_float_kz_r1
-    NG_hexagon_float_k --"in1"--> NG_hexagon_float_minus_k
-    NG_hexagon_float_minus_k --"in"--> NG_hexagon_float_swizzle4
-    NG_hexagon_float_swizzle4 --"in1"--> NG_hexagon_float_minus_kz_r
+    NG_hexagon_float_minus_k_separate --"outz-->in1"--> NG_hexagon_float_minus_kz_r
     NG_hexagon_float_radius --"in2"--> NG_hexagon_float_minus_kz_r
-    NG_hexagon_float_minus_k --"in"--> NG_hexagon_float_swizzle5
-    NG_hexagon_float_k --"in"--> NG_hexagon_float_swizzle6
-    NG_hexagon_float_swizzle5 --"in1"--> NG_hexagon_float_combine_mkx_ky
-    NG_hexagon_float_swizzle6 --"in2"--> NG_hexagon_float_combine_mkx_ky
-    NG_hexagon_float_k --"in"--> NG_hexagon_float_swizzle7
-    NG_hexagon_float_k --"in"--> NG_hexagon_float_swizzle8
-    NG_hexagon_float_swizzle7 --"in1"--> NG_hexagon_float_kxy
-    NG_hexagon_float_swizzle8 --"in2"--> NG_hexagon_float_kxy
+    NG_hexagon_float_minus_k_separate --"outx-->in1"--> NG_hexagon_float_combine_mkx_ky
+    NG_hexagon_float_k_separate --"outy-->in2"--> NG_hexagon_float_combine_mkx_ky
+    NG_hexagon_float_k_separate --"outx-->in1"--> NG_hexagon_float_kxy
+    NG_hexagon_float_k_separate --"outy-->in2"--> NG_hexagon_float_kxy
     NG_hexagon_float_kxy --"in1"--> NG_hexagon_float_dot_kxy_p
     NG_hexagon_float_p --"in2"--> NG_hexagon_float_dot_kxy_p
     NG_hexagon_float_combine_mkx_ky --"in1"--> NG_hexagon_float_dot_kxy_p1
@@ -4773,8 +4730,8 @@ graph TB
     NG_hexagon_float_combine_mkx_ky --"in1"--> NG_hexagon_float_multiply_min_comb
     NG_hexagon_float_min_0 --"in2"--> NG_hexagon_float_multiply_min_comb
     NG_hexagon_float_multiply_min_comb --"in1"--> NG_hexagon_float_multiply2_2
-    NG_hexagon_float_new_p2 --"in"--> NG_hexagon_float_swizzle9
-    NG_hexagon_float_swizzle9 --"in"--> NG_hexagon_float_clamp
+    NG_hexagon_float_new_p2 --"in"--> NG_hexagon_float_new_p2_x
+    NG_hexagon_float_new_p2_x --"in"--> NG_hexagon_float_clamp
     NG_hexagon_float_minus_kz_r --"low"--> NG_hexagon_float_clamp
     NG_hexagon_float_kz_r1 --"high"--> NG_hexagon_float_clamp
     NG_hexagon_float_clamp --"in1"--> NG_hexagon_float_combine_clamp_rad
@@ -4815,16 +4772,13 @@ graph TB
     subgraph NG_grid_color3
     NG_grid_color3_texcoord_scale[texcoord_scale]
     NG_grid_color3_texcoord_bias[texcoord_bias]
+    NG_grid_color3_texcoord_bias_separate[texcoord_bias_separate]
     NG_grid_color3_thick_to_size[thick_to_size]
-    NG_grid_color3_swizzle[swizzle]
     NG_grid_color3_mod_Y[mod_Y]
-    NG_grid_color3_swizzle2[swizzle2]
     NG_grid_color3_mod_Y_row[mod_Y_row]
     NG_grid_color3_mody_2[mody_2]
     NG_grid_color3_alt_rows_shift[alt_rows_shift]
-    NG_grid_color3_swizzle3[swizzle3]
     NG_grid_color3_shift_X[shift_X]
-    NG_grid_color3_swizzle4[swizzle4]
     style NG_grid_color3_stagger_selection  fill:#C72, color:#FFF
     NG_grid_color3_stagger_selection{stagger_selection}
     NG_grid_color3_mod_X[mod_X]
@@ -4855,20 +4809,17 @@ graph TB
     NG_grid_color3_uvtiling --"in2"--> NG_grid_color3_texcoord_scale
     NG_grid_color3_texcoord_scale --"in1"--> NG_grid_color3_texcoord_bias
     NG_grid_color3_uvoffset --"in2"--> NG_grid_color3_texcoord_bias
+    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_texcoord_bias_separate
     NG_grid_color3_thickness --"in2"--> NG_grid_color3_thick_to_size
-    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_swizzle
-    NG_grid_color3_swizzle --"in1"--> NG_grid_color3_mod_Y
-    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_swizzle2
-    NG_grid_color3_swizzle2 --"in1"--> NG_grid_color3_mod_Y_row
+    NG_grid_color3_texcoord_bias_separate --"outy-->in1"--> NG_grid_color3_mod_Y
+    NG_grid_color3_texcoord_bias_separate --"outy-->in1"--> NG_grid_color3_mod_Y_row
     NG_grid_color3_mod_Y --"in1"--> NG_grid_color3_mody_2
     NG_grid_color3_mod_Y_row --"value1"--> NG_grid_color3_alt_rows_shift
-    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_swizzle3
-    NG_grid_color3_swizzle3 --"in1"--> NG_grid_color3_shift_X
+    NG_grid_color3_texcoord_bias_separate --"outx-->in1"--> NG_grid_color3_shift_X
     NG_grid_color3_alt_rows_shift --"in2"--> NG_grid_color3_shift_X
-    NG_grid_color3_texcoord_bias --"in"--> NG_grid_color3_swizzle4
     NG_grid_color3_staggered --"value1"--> NG_grid_color3_stagger_selection
     NG_grid_color3_shift_X --"in1"--> NG_grid_color3_stagger_selection
-    NG_grid_color3_swizzle4 --"in2"--> NG_grid_color3_stagger_selection
+    NG_grid_color3_texcoord_bias_separate --"outx-->in2"--> NG_grid_color3_stagger_selection
     NG_grid_color3_stagger_selection --"in1"--> NG_grid_color3_mod_X
     NG_grid_color3_mod_X --"in1"--> NG_grid_color3_modx_2
     NG_grid_color3_modx_2 --"in1"--> NG_grid_color3_subX_1
@@ -4912,15 +4863,12 @@ graph TB
     subgraph NG_crosshatch_color3
     NG_crosshatch_color3_texcoord_scale[texcoord_scale]
     NG_crosshatch_color3_texcoord_bias[texcoord_bias]
-    NG_crosshatch_color3_swizzle[swizzle]
+    NG_crosshatch_color3_texcoord_bias_separate[texcoord_bias_separate]
     NG_crosshatch_color3_mod_Y[mod_Y]
-    NG_crosshatch_color3_swizzle2[swizzle2]
     NG_crosshatch_color3_mod_Y_row[mod_Y_row]
     NG_crosshatch_color3_mody_2[mody_2]
     NG_crosshatch_color3_alt_rows_shift[alt_rows_shift]
-    NG_crosshatch_color3_swizzle3[swizzle3]
     NG_crosshatch_color3_shift_X[shift_X]
-    NG_crosshatch_color3_swizzle4[swizzle4]
     style NG_crosshatch_color3_stagger_selection  fill:#C72, color:#FFF
     NG_crosshatch_color3_stagger_selection{stagger_selection}
     NG_crosshatch_color3_mod_X[mod_X]
@@ -4950,19 +4898,16 @@ graph TB
     NG_crosshatch_color3_uvtiling --"in2"--> NG_crosshatch_color3_texcoord_scale
     NG_crosshatch_color3_texcoord_scale --"in1"--> NG_crosshatch_color3_texcoord_bias
     NG_crosshatch_color3_uvoffset --"in2"--> NG_crosshatch_color3_texcoord_bias
-    NG_crosshatch_color3_texcoord_bias --"in"--> NG_crosshatch_color3_swizzle
-    NG_crosshatch_color3_swizzle --"in1"--> NG_crosshatch_color3_mod_Y
-    NG_crosshatch_color3_texcoord_bias --"in"--> NG_crosshatch_color3_swizzle2
-    NG_crosshatch_color3_swizzle2 --"in1"--> NG_crosshatch_color3_mod_Y_row
+    NG_crosshatch_color3_texcoord_bias --"in"--> NG_crosshatch_color3_texcoord_bias_separate
+    NG_crosshatch_color3_texcoord_bias_separate --"outy-->in1"--> NG_crosshatch_color3_mod_Y
+    NG_crosshatch_color3_texcoord_bias_separate --"outy-->in1"--> NG_crosshatch_color3_mod_Y_row
     NG_crosshatch_color3_mod_Y --"in1"--> NG_crosshatch_color3_mody_2
     NG_crosshatch_color3_mod_Y_row --"value1"--> NG_crosshatch_color3_alt_rows_shift
-    NG_crosshatch_color3_texcoord_bias --"in"--> NG_crosshatch_color3_swizzle3
-    NG_crosshatch_color3_swizzle3 --"in1"--> NG_crosshatch_color3_shift_X
+    NG_crosshatch_color3_texcoord_bias_separate --"outx-->in1"--> NG_crosshatch_color3_shift_X
     NG_crosshatch_color3_alt_rows_shift --"in2"--> NG_crosshatch_color3_shift_X
-    NG_crosshatch_color3_texcoord_bias --"in"--> NG_crosshatch_color3_swizzle4
     NG_crosshatch_color3_staggered --"value1"--> NG_crosshatch_color3_stagger_selection
     NG_crosshatch_color3_shift_X --"in1"--> NG_crosshatch_color3_stagger_selection
-    NG_crosshatch_color3_swizzle4 --"in2"--> NG_crosshatch_color3_stagger_selection
+    NG_crosshatch_color3_texcoord_bias_separate --"outx-->in2"--> NG_crosshatch_color3_stagger_selection
     NG_crosshatch_color3_stagger_selection --"in1"--> NG_crosshatch_color3_mod_X
     NG_crosshatch_color3_mod_X --"in1"--> NG_crosshatch_color3_modx_2
     NG_crosshatch_color3_modx_2 --"in1"--> NG_crosshatch_color3_subX_1
@@ -5007,16 +4952,14 @@ graph TB
     subgraph NG_tiledcircles_color3
     NG_tiledcircles_color3_texcoord_scale[texcoord_scale]
     NG_tiledcircles_color3_texcoord_bias[texcoord_bias]
+    NG_tiledcircles_color3_texcoord_bias_separate[texcoord_bias_separate]
     NG_tiledcircles_color3_mod_texcoord[mod_texcoord]
     NG_tiledcircles_color3_mod_texcoord_2[mod_texcoord_2]
     NG_tiledcircles_color3_recenter[recenter]
-    NG_tiledcircles_color3_swizzle[swizzle]
     NG_tiledcircles_color3_stagg_Y[stagg_Y]
     NG_tiledcircles_color3_delta_X[delta_X]
-    NG_tiledcircles_color3_swizzle2[swizzle2]
     NG_tiledcircles_color3_shift_X[shift_X]
     NG_tiledcircles_color3_mod_X_1[mod_X_1]
-    NG_tiledcircles_color3_swizzle3[swizzle3]
     NG_tiledcircles_color3_mod_Y_1[mod_Y_1]
     NG_tiledcircles_color3_coord_adj_1[coord_adj_1]
     NG_tiledcircles_color3_coord_adj_2[coord_adj_2]
@@ -5051,18 +4994,16 @@ graph TB
     NG_tiledcircles_color3_uvtiling --"in2"--> NG_tiledcircles_color3_texcoord_scale
     NG_tiledcircles_color3_texcoord_scale --"in1"--> NG_tiledcircles_color3_texcoord_bias
     NG_tiledcircles_color3_uvoffset --"in2"--> NG_tiledcircles_color3_texcoord_bias
+    NG_tiledcircles_color3_texcoord_bias --"in"--> NG_tiledcircles_color3_texcoord_bias_separate
     NG_tiledcircles_color3_texcoord_bias --"in1"--> NG_tiledcircles_color3_mod_texcoord
     NG_tiledcircles_color3_mod_texcoord --"in1"--> NG_tiledcircles_color3_mod_texcoord_2
     NG_tiledcircles_color3_mod_texcoord_2 --"in1"--> NG_tiledcircles_color3_recenter
-    NG_tiledcircles_color3_texcoord_bias --"in"--> NG_tiledcircles_color3_swizzle
-    NG_tiledcircles_color3_swizzle --"in1"--> NG_tiledcircles_color3_stagg_Y
+    NG_tiledcircles_color3_texcoord_bias_separate --"outy-->in1"--> NG_tiledcircles_color3_stagg_Y
     NG_tiledcircles_color3_stagg_Y --"value1"--> NG_tiledcircles_color3_delta_X
-    NG_tiledcircles_color3_texcoord_bias --"in"--> NG_tiledcircles_color3_swizzle2
-    NG_tiledcircles_color3_swizzle2 --"in1"--> NG_tiledcircles_color3_shift_X
+    NG_tiledcircles_color3_texcoord_bias_separate --"outx-->in1"--> NG_tiledcircles_color3_shift_X
     NG_tiledcircles_color3_delta_X --"in2"--> NG_tiledcircles_color3_shift_X
     NG_tiledcircles_color3_shift_X --"in1"--> NG_tiledcircles_color3_mod_X_1
-    NG_tiledcircles_color3_texcoord_bias --"in"--> NG_tiledcircles_color3_swizzle3
-    NG_tiledcircles_color3_swizzle3 --"in1"--> NG_tiledcircles_color3_mod_Y_1
+    NG_tiledcircles_color3_texcoord_bias_separate --"outy-->in1"--> NG_tiledcircles_color3_mod_Y_1
     NG_tiledcircles_color3_mod_X_1 --"in2"--> NG_tiledcircles_color3_coord_adj_1
     NG_tiledcircles_color3_mod_X_1 --"in1"--> NG_tiledcircles_color3_coord_adj_2
     NG_tiledcircles_color3_mod_Y_1 --"in2"--> NG_tiledcircles_color3_coord_adj_3
@@ -5118,16 +5059,14 @@ graph TB
     subgraph NG_tiledcloverleafs_color3
     NG_tiledcloverleafs_color3_texcoord_scale[texcoord_scale]
     NG_tiledcloverleafs_color3_texcoord_bias[texcoord_bias]
+    NG_tiledcloverleafs_color3_texcoord_bias_separate[texcoord_bias_separate]
     NG_tiledcloverleafs_color3_mod_texcoord[mod_texcoord]
     NG_tiledcloverleafs_color3_mod_texcoord_2[mod_texcoord_2]
     NG_tiledcloverleafs_color3_recenter[recenter]
-    NG_tiledcloverleafs_color3_swizzle[swizzle]
     NG_tiledcloverleafs_color3_stagg_Y[stagg_Y]
     NG_tiledcloverleafs_color3_delta_X[delta_X]
-    NG_tiledcloverleafs_color3_swizzle2[swizzle2]
     NG_tiledcloverleafs_color3_shift_X[shift_X]
     NG_tiledcloverleafs_color3_mod_X_1[mod_X_1]
-    NG_tiledcloverleafs_color3_swizzle3[swizzle3]
     NG_tiledcloverleafs_color3_mod_Y_1[mod_Y_1]
     NG_tiledcloverleafs_color3_coord_adj_1[coord_adj_1]
     NG_tiledcloverleafs_color3_coord_adj_2[coord_adj_2]
@@ -5162,18 +5101,16 @@ graph TB
     NG_tiledcloverleafs_color3_uvtiling --"in2"--> NG_tiledcloverleafs_color3_texcoord_scale
     NG_tiledcloverleafs_color3_texcoord_scale --"in1"--> NG_tiledcloverleafs_color3_texcoord_bias
     NG_tiledcloverleafs_color3_uvoffset --"in2"--> NG_tiledcloverleafs_color3_texcoord_bias
+    NG_tiledcloverleafs_color3_texcoord_bias --"in"--> NG_tiledcloverleafs_color3_texcoord_bias_separate
     NG_tiledcloverleafs_color3_texcoord_bias --"in1"--> NG_tiledcloverleafs_color3_mod_texcoord
     NG_tiledcloverleafs_color3_mod_texcoord --"in1"--> NG_tiledcloverleafs_color3_mod_texcoord_2
     NG_tiledcloverleafs_color3_mod_texcoord_2 --"in1"--> NG_tiledcloverleafs_color3_recenter
-    NG_tiledcloverleafs_color3_texcoord_bias --"in"--> NG_tiledcloverleafs_color3_swizzle
-    NG_tiledcloverleafs_color3_swizzle --"in1"--> NG_tiledcloverleafs_color3_stagg_Y
+    NG_tiledcloverleafs_color3_texcoord_bias_separate --"outy-->in1"--> NG_tiledcloverleafs_color3_stagg_Y
     NG_tiledcloverleafs_color3_stagg_Y --"value1"--> NG_tiledcloverleafs_color3_delta_X
-    NG_tiledcloverleafs_color3_texcoord_bias --"in"--> NG_tiledcloverleafs_color3_swizzle2
-    NG_tiledcloverleafs_color3_swizzle2 --"in1"--> NG_tiledcloverleafs_color3_shift_X
+    NG_tiledcloverleafs_color3_texcoord_bias_separate --"outx-->in1"--> NG_tiledcloverleafs_color3_shift_X
     NG_tiledcloverleafs_color3_delta_X --"in2"--> NG_tiledcloverleafs_color3_shift_X
     NG_tiledcloverleafs_color3_shift_X --"in1"--> NG_tiledcloverleafs_color3_mod_X_1
-    NG_tiledcloverleafs_color3_texcoord_bias --"in"--> NG_tiledcloverleafs_color3_swizzle3
-    NG_tiledcloverleafs_color3_swizzle3 --"in1"--> NG_tiledcloverleafs_color3_mod_Y_1
+    NG_tiledcloverleafs_color3_texcoord_bias_separate --"outy-->in1"--> NG_tiledcloverleafs_color3_mod_Y_1
     NG_tiledcloverleafs_color3_mod_X_1 --"in2"--> NG_tiledcloverleafs_color3_coord_adj_1
     NG_tiledcloverleafs_color3_mod_X_1 --"in1"--> NG_tiledcloverleafs_color3_coord_adj_2
     NG_tiledcloverleafs_color3_mod_Y_1 --"in2"--> NG_tiledcloverleafs_color3_coord_adj_3
@@ -5229,16 +5166,14 @@ graph TB
     subgraph NG_tiledhexagons_color3
     NG_tiledhexagons_color3_texcoord_scale[texcoord_scale]
     NG_tiledhexagons_color3_texcoord_bias[texcoord_bias]
+    NG_tiledhexagons_color3_texcoord_bias_separate[texcoord_bias_separate]
     NG_tiledhexagons_color3_mod_texcoord[mod_texcoord]
     NG_tiledhexagons_color3_mod_texcoord_2[mod_texcoord_2]
     NG_tiledhexagons_color3_recenter[recenter]
-    NG_tiledhexagons_color3_swizzle[swizzle]
     NG_tiledhexagons_color3_stagg_Y[stagg_Y]
     NG_tiledhexagons_color3_delta_X[delta_X]
-    NG_tiledhexagons_color3_swizzle2[swizzle2]
     NG_tiledhexagons_color3_shift_X[shift_X]
     NG_tiledhexagons_color3_mod_X_1[mod_X_1]
-    NG_tiledhexagons_color3_swizzle3[swizzle3]
     NG_tiledhexagons_color3_mod_Y_1[mod_Y_1]
     NG_tiledhexagons_color3_coord_adj_1[coord_adj_1]
     NG_tiledhexagons_color3_coord_adj_2[coord_adj_2]
@@ -5273,18 +5208,16 @@ graph TB
     NG_tiledhexagons_color3_uvtiling --"in2"--> NG_tiledhexagons_color3_texcoord_scale
     NG_tiledhexagons_color3_texcoord_scale --"in1"--> NG_tiledhexagons_color3_texcoord_bias
     NG_tiledhexagons_color3_uvoffset --"in2"--> NG_tiledhexagons_color3_texcoord_bias
+    NG_tiledhexagons_color3_texcoord_bias --"in"--> NG_tiledhexagons_color3_texcoord_bias_separate
     NG_tiledhexagons_color3_texcoord_bias --"in1"--> NG_tiledhexagons_color3_mod_texcoord
     NG_tiledhexagons_color3_mod_texcoord --"in1"--> NG_tiledhexagons_color3_mod_texcoord_2
     NG_tiledhexagons_color3_mod_texcoord_2 --"in1"--> NG_tiledhexagons_color3_recenter
-    NG_tiledhexagons_color3_texcoord_bias --"in"--> NG_tiledhexagons_color3_swizzle
-    NG_tiledhexagons_color3_swizzle --"in1"--> NG_tiledhexagons_color3_stagg_Y
+    NG_tiledhexagons_color3_texcoord_bias_separate --"outy-->in1"--> NG_tiledhexagons_color3_stagg_Y
     NG_tiledhexagons_color3_stagg_Y --"value1"--> NG_tiledhexagons_color3_delta_X
-    NG_tiledhexagons_color3_texcoord_bias --"in"--> NG_tiledhexagons_color3_swizzle2
-    NG_tiledhexagons_color3_swizzle2 --"in1"--> NG_tiledhexagons_color3_shift_X
+    NG_tiledhexagons_color3_texcoord_bias_separate --"outx-->in1"--> NG_tiledhexagons_color3_shift_X
     NG_tiledhexagons_color3_delta_X --"in2"--> NG_tiledhexagons_color3_shift_X
     NG_tiledhexagons_color3_shift_X --"in1"--> NG_tiledhexagons_color3_mod_X_1
-    NG_tiledhexagons_color3_texcoord_bias --"in"--> NG_tiledhexagons_color3_swizzle3
-    NG_tiledhexagons_color3_swizzle3 --"in1"--> NG_tiledhexagons_color3_mod_Y_1
+    NG_tiledhexagons_color3_texcoord_bias_separate --"outy-->in1"--> NG_tiledhexagons_color3_mod_Y_1
     NG_tiledhexagons_color3_mod_X_1 --"in2"--> NG_tiledhexagons_color3_coord_adj_1
     NG_tiledhexagons_color3_mod_X_1 --"in1"--> NG_tiledhexagons_color3_coord_adj_2
     NG_tiledhexagons_color3_mod_Y_1 --"in2"--> NG_tiledhexagons_color3_coord_adj_3
@@ -5630,8 +5563,6 @@ graph TB
     NG_bump_vector3_N_normalmap[N_normalmap]
     style NG_bump_vector3_out  fill:#0C0, color:#FFF
     NG_bump_vector3_out([out])
-    NG_bump_vector3_normalmap_cross[normalmap_cross]
-    NG_bump_vector3_normalmap_cross_norm[normalmap_cross_norm]
     style NG_bump_vector3_height  fill:#09D, color:#FFF
     NG_bump_vector3_height([height])
     style NG_bump_vector3_normal  fill:#09D, color:#FFF
@@ -5646,11 +5577,7 @@ graph TB
     NG_bump_vector3_normal --"normal"--> NG_bump_vector3_N_normalmap
     NG_bump_vector3_scale --"scale"--> NG_bump_vector3_N_normalmap
     NG_bump_vector3_tangent --"tangent"--> NG_bump_vector3_N_normalmap
-    NG_bump_vector3_normalmap_cross_norm --"bitangent"--> NG_bump_vector3_N_normalmap
     NG_bump_vector3_N_normalmap --> NG_bump_vector3_out
-    NG_bump_vector3_normal --"in1"--> NG_bump_vector3_normalmap_cross
-    NG_bump_vector3_tangent --"in2"--> NG_bump_vector3_normalmap_cross
-    NG_bump_vector3_normalmap_cross --"in"--> NG_bump_vector3_normalmap_cross_norm
 ```
  
 
@@ -5661,23 +5588,6 @@ graph TB
 | **normal** | vector3 | None | Normal |  |  |  |  |  |  |  | Surface normal; defaults to the current world-space normal. |  |
 | **tangent** | vector3 | None | Tangent |  |  |  |  |  |  |  | Surface tangent vector, defaults to the current world-space tangent vector. |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  | Offset surface normal; connect this to a shader's 'normal' input. |  |
-### Category: *ambientocclusion*
-<details open><summary>ND_ambientocclusion_float</summary>
-<p>
- 
-* *Nodedef*: ND_ambientocclusion_float
-* *Type*: float
-* *Group*: global
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **coneangle** | float | 90.0 |  |  |  |  |  |  |  |  |  |  |
-| **maxdistance** | float | 9.999999680285692e+37 |  |  |  |  |  |  |  |  |  |  |
-| *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *frame*
 <details open><summary>ND_frame_float</summary>
 <p>
@@ -9633,10 +9543,10 @@ graph TB
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0.5, 0.5, 1 |  |  |  |  |  |  |  |  |  |  |
-| **space** | string | tangent |  |  |  |  |  |  |  |  |  | true |
 | **scale** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **bitangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_normalmap_vector2</summary>
 <p>
@@ -9652,10 +9562,10 @@ graph TB
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0.5, 0.5, 1 |  |  |  |  |  |  |  |  |  |  |
-| **space** | string | tangent |  |  |  |  |  |  |  |  |  | true |
 | **scale** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **bitangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *transpose*
 <details open><summary>ND_transpose_matrix33</summary>
@@ -10252,11 +10162,13 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_color3
-    NG_smoothstep_color3_swizzle[swizzle]
-    NG_smoothstep_color3_swizzle2[swizzle2]
-    NG_smoothstep_color3_swizzle3[swizzle3]
-    NG_smoothstep_color3_N_smoothstep[N_smoothstep]
-    NG_smoothstep_color3_swizzle4[swizzle4]
+    NG_smoothstep_color3_separate_in[separate_in]
+    NG_smoothstep_color3_separate_low[separate_low]
+    NG_smoothstep_color3_separate_high[separate_high]
+    NG_smoothstep_color3_smoothstep_r[smoothstep_r]
+    NG_smoothstep_color3_smoothstep_g[smoothstep_g]
+    NG_smoothstep_color3_smoothstep_b[smoothstep_b]
+    NG_smoothstep_color3_combine[combine]
     style NG_smoothstep_color3_out  fill:#0C0, color:#FFF
     NG_smoothstep_color3_out([out])
     style NG_smoothstep_color3_in  fill:#09D, color:#FFF
@@ -10266,14 +10178,22 @@ graph TB
     style NG_smoothstep_color3_high  fill:#09D, color:#FFF
     NG_smoothstep_color3_high([high])
     end
-    NG_smoothstep_color3_in --"in"--> NG_smoothstep_color3_swizzle
-    NG_smoothstep_color3_low --"in"--> NG_smoothstep_color3_swizzle2
-    NG_smoothstep_color3_high --"in"--> NG_smoothstep_color3_swizzle3
-    NG_smoothstep_color3_swizzle --"in"--> NG_smoothstep_color3_N_smoothstep
-    NG_smoothstep_color3_swizzle2 --"low"--> NG_smoothstep_color3_N_smoothstep
-    NG_smoothstep_color3_swizzle3 --"high"--> NG_smoothstep_color3_N_smoothstep
-    NG_smoothstep_color3_N_smoothstep --"in"--> NG_smoothstep_color3_swizzle4
-    NG_smoothstep_color3_swizzle4 --> NG_smoothstep_color3_out
+    NG_smoothstep_color3_in --"in"--> NG_smoothstep_color3_separate_in
+    NG_smoothstep_color3_low --"in"--> NG_smoothstep_color3_separate_low
+    NG_smoothstep_color3_high --"in"--> NG_smoothstep_color3_separate_high
+    NG_smoothstep_color3_separate_in --"outr-->in"--> NG_smoothstep_color3_smoothstep_r
+    NG_smoothstep_color3_separate_low --"outr-->low"--> NG_smoothstep_color3_smoothstep_r
+    NG_smoothstep_color3_separate_high --"outr-->high"--> NG_smoothstep_color3_smoothstep_r
+    NG_smoothstep_color3_separate_in --"outg-->in"--> NG_smoothstep_color3_smoothstep_g
+    NG_smoothstep_color3_separate_low --"outg-->low"--> NG_smoothstep_color3_smoothstep_g
+    NG_smoothstep_color3_separate_high --"outg-->high"--> NG_smoothstep_color3_smoothstep_g
+    NG_smoothstep_color3_separate_in --"outb-->in"--> NG_smoothstep_color3_smoothstep_b
+    NG_smoothstep_color3_separate_low --"outb-->low"--> NG_smoothstep_color3_smoothstep_b
+    NG_smoothstep_color3_separate_high --"outb-->high"--> NG_smoothstep_color3_smoothstep_b
+    NG_smoothstep_color3_smoothstep_r --"in1"--> NG_smoothstep_color3_combine
+    NG_smoothstep_color3_smoothstep_g --"in2"--> NG_smoothstep_color3_combine
+    NG_smoothstep_color3_smoothstep_b --"in3"--> NG_smoothstep_color3_combine
+    NG_smoothstep_color3_combine --> NG_smoothstep_color3_out
 ```
  
 
@@ -10297,11 +10217,14 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_color4
-    NG_smoothstep_color4_swizzle[swizzle]
-    NG_smoothstep_color4_swizzle2[swizzle2]
-    NG_smoothstep_color4_swizzle3[swizzle3]
-    NG_smoothstep_color4_N_smoothstep[N_smoothstep]
-    NG_smoothstep_color4_swizzle4[swizzle4]
+    NG_smoothstep_color4_separate_in[separate_in]
+    NG_smoothstep_color4_separate_low[separate_low]
+    NG_smoothstep_color4_separate_high[separate_high]
+    NG_smoothstep_color4_smoothstep_r[smoothstep_r]
+    NG_smoothstep_color4_smoothstep_g[smoothstep_g]
+    NG_smoothstep_color4_smoothstep_b[smoothstep_b]
+    NG_smoothstep_color4_smoothstep_a[smoothstep_a]
+    NG_smoothstep_color4_combine[combine]
     style NG_smoothstep_color4_out  fill:#0C0, color:#FFF
     NG_smoothstep_color4_out([out])
     style NG_smoothstep_color4_in  fill:#09D, color:#FFF
@@ -10311,14 +10234,26 @@ graph TB
     style NG_smoothstep_color4_high  fill:#09D, color:#FFF
     NG_smoothstep_color4_high([high])
     end
-    NG_smoothstep_color4_in --"in"--> NG_smoothstep_color4_swizzle
-    NG_smoothstep_color4_low --"in"--> NG_smoothstep_color4_swizzle2
-    NG_smoothstep_color4_high --"in"--> NG_smoothstep_color4_swizzle3
-    NG_smoothstep_color4_swizzle --"in"--> NG_smoothstep_color4_N_smoothstep
-    NG_smoothstep_color4_swizzle2 --"low"--> NG_smoothstep_color4_N_smoothstep
-    NG_smoothstep_color4_swizzle3 --"high"--> NG_smoothstep_color4_N_smoothstep
-    NG_smoothstep_color4_N_smoothstep --"in"--> NG_smoothstep_color4_swizzle4
-    NG_smoothstep_color4_swizzle4 --> NG_smoothstep_color4_out
+    NG_smoothstep_color4_in --"in"--> NG_smoothstep_color4_separate_in
+    NG_smoothstep_color4_low --"in"--> NG_smoothstep_color4_separate_low
+    NG_smoothstep_color4_high --"in"--> NG_smoothstep_color4_separate_high
+    NG_smoothstep_color4_separate_in --"outr-->in"--> NG_smoothstep_color4_smoothstep_r
+    NG_smoothstep_color4_separate_low --"outr-->low"--> NG_smoothstep_color4_smoothstep_r
+    NG_smoothstep_color4_separate_high --"outr-->high"--> NG_smoothstep_color4_smoothstep_r
+    NG_smoothstep_color4_separate_in --"outg-->in"--> NG_smoothstep_color4_smoothstep_g
+    NG_smoothstep_color4_separate_low --"outg-->low"--> NG_smoothstep_color4_smoothstep_g
+    NG_smoothstep_color4_separate_high --"outg-->high"--> NG_smoothstep_color4_smoothstep_g
+    NG_smoothstep_color4_separate_in --"outb-->in"--> NG_smoothstep_color4_smoothstep_b
+    NG_smoothstep_color4_separate_low --"outb-->low"--> NG_smoothstep_color4_smoothstep_b
+    NG_smoothstep_color4_separate_high --"outb-->high"--> NG_smoothstep_color4_smoothstep_b
+    NG_smoothstep_color4_separate_in --"outa-->in"--> NG_smoothstep_color4_smoothstep_a
+    NG_smoothstep_color4_separate_low --"outa-->low"--> NG_smoothstep_color4_smoothstep_a
+    NG_smoothstep_color4_separate_high --"outa-->high"--> NG_smoothstep_color4_smoothstep_a
+    NG_smoothstep_color4_smoothstep_r --"in1"--> NG_smoothstep_color4_combine
+    NG_smoothstep_color4_smoothstep_g --"in2"--> NG_smoothstep_color4_combine
+    NG_smoothstep_color4_smoothstep_b --"in3"--> NG_smoothstep_color4_combine
+    NG_smoothstep_color4_smoothstep_a --"in4"--> NG_smoothstep_color4_combine
+    NG_smoothstep_color4_combine --> NG_smoothstep_color4_out
 ```
  
 
@@ -10336,7 +10271,40 @@ graph TB
 * *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_smoothstep_vector2
+
+
+```mermaid
+graph TB
+    subgraph NG_smoothstep_vector2
+    NG_smoothstep_vector2_separate_in[separate_in]
+    NG_smoothstep_vector2_separate_low[separate_low]
+    NG_smoothstep_vector2_separate_high[separate_high]
+    NG_smoothstep_vector2_smoothstep_x[smoothstep_x]
+    NG_smoothstep_vector2_smoothstep_y[smoothstep_y]
+    NG_smoothstep_vector2_combine[combine]
+    style NG_smoothstep_vector2_out  fill:#0C0, color:#FFF
+    NG_smoothstep_vector2_out([out])
+    style NG_smoothstep_vector2_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector2_in([in])
+    style NG_smoothstep_vector2_low  fill:#09D, color:#FFF
+    NG_smoothstep_vector2_low([low])
+    style NG_smoothstep_vector2_high  fill:#09D, color:#FFF
+    NG_smoothstep_vector2_high([high])
+    end
+    NG_smoothstep_vector2_in --"in"--> NG_smoothstep_vector2_separate_in
+    NG_smoothstep_vector2_low --"in"--> NG_smoothstep_vector2_separate_low
+    NG_smoothstep_vector2_high --"in"--> NG_smoothstep_vector2_separate_high
+    NG_smoothstep_vector2_separate_in --"outx-->in"--> NG_smoothstep_vector2_smoothstep_x
+    NG_smoothstep_vector2_separate_low --"outx-->low"--> NG_smoothstep_vector2_smoothstep_x
+    NG_smoothstep_vector2_separate_high --"outx-->high"--> NG_smoothstep_vector2_smoothstep_x
+    NG_smoothstep_vector2_separate_in --"outy-->in"--> NG_smoothstep_vector2_smoothstep_y
+    NG_smoothstep_vector2_separate_low --"outy-->low"--> NG_smoothstep_vector2_smoothstep_y
+    NG_smoothstep_vector2_separate_high --"outy-->high"--> NG_smoothstep_vector2_smoothstep_y
+    NG_smoothstep_vector2_smoothstep_x --"in1"--> NG_smoothstep_vector2_combine
+    NG_smoothstep_vector2_smoothstep_y --"in2"--> NG_smoothstep_vector2_combine
+    NG_smoothstep_vector2_combine --> NG_smoothstep_vector2_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10353,7 +10321,45 @@ graph TB
 * *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_smoothstep_vector3
+
+
+```mermaid
+graph TB
+    subgraph NG_smoothstep_vector3
+    NG_smoothstep_vector3_separate_in[separate_in]
+    NG_smoothstep_vector3_separate_low[separate_low]
+    NG_smoothstep_vector3_separate_high[separate_high]
+    NG_smoothstep_vector3_smoothstep_x[smoothstep_x]
+    NG_smoothstep_vector3_smoothstep_y[smoothstep_y]
+    NG_smoothstep_vector3_smoothstep_z[smoothstep_z]
+    NG_smoothstep_vector3_combine[combine]
+    style NG_smoothstep_vector3_out  fill:#0C0, color:#FFF
+    NG_smoothstep_vector3_out([out])
+    style NG_smoothstep_vector3_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector3_in([in])
+    style NG_smoothstep_vector3_low  fill:#09D, color:#FFF
+    NG_smoothstep_vector3_low([low])
+    style NG_smoothstep_vector3_high  fill:#09D, color:#FFF
+    NG_smoothstep_vector3_high([high])
+    end
+    NG_smoothstep_vector3_in --"in"--> NG_smoothstep_vector3_separate_in
+    NG_smoothstep_vector3_low --"in"--> NG_smoothstep_vector3_separate_low
+    NG_smoothstep_vector3_high --"in"--> NG_smoothstep_vector3_separate_high
+    NG_smoothstep_vector3_separate_in --"outx-->in"--> NG_smoothstep_vector3_smoothstep_x
+    NG_smoothstep_vector3_separate_low --"outx-->low"--> NG_smoothstep_vector3_smoothstep_x
+    NG_smoothstep_vector3_separate_high --"outx-->high"--> NG_smoothstep_vector3_smoothstep_x
+    NG_smoothstep_vector3_separate_in --"outy-->in"--> NG_smoothstep_vector3_smoothstep_y
+    NG_smoothstep_vector3_separate_low --"outy-->low"--> NG_smoothstep_vector3_smoothstep_y
+    NG_smoothstep_vector3_separate_high --"outy-->high"--> NG_smoothstep_vector3_smoothstep_y
+    NG_smoothstep_vector3_separate_in --"outz-->in"--> NG_smoothstep_vector3_smoothstep_z
+    NG_smoothstep_vector3_separate_low --"outz-->low"--> NG_smoothstep_vector3_smoothstep_z
+    NG_smoothstep_vector3_separate_high --"outz-->high"--> NG_smoothstep_vector3_smoothstep_z
+    NG_smoothstep_vector3_smoothstep_x --"in1"--> NG_smoothstep_vector3_combine
+    NG_smoothstep_vector3_smoothstep_y --"in2"--> NG_smoothstep_vector3_combine
+    NG_smoothstep_vector3_smoothstep_z --"in3"--> NG_smoothstep_vector3_combine
+    NG_smoothstep_vector3_combine --> NG_smoothstep_vector3_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10370,7 +10376,50 @@ graph TB
 * *Group*: adjustment
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_smoothstep_vector4
+
+
+```mermaid
+graph TB
+    subgraph NG_smoothstep_vector4
+    NG_smoothstep_vector4_separate_in[separate_in]
+    NG_smoothstep_vector4_separate_low[separate_low]
+    NG_smoothstep_vector4_separate_high[separate_high]
+    NG_smoothstep_vector4_smoothstep_x[smoothstep_x]
+    NG_smoothstep_vector4_smoothstep_y[smoothstep_y]
+    NG_smoothstep_vector4_smoothstep_z[smoothstep_z]
+    NG_smoothstep_vector4_smoothstep_w[smoothstep_w]
+    NG_smoothstep_vector4_combine[combine]
+    style NG_smoothstep_vector4_out  fill:#0C0, color:#FFF
+    NG_smoothstep_vector4_out([out])
+    style NG_smoothstep_vector4_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector4_in([in])
+    style NG_smoothstep_vector4_low  fill:#09D, color:#FFF
+    NG_smoothstep_vector4_low([low])
+    style NG_smoothstep_vector4_high  fill:#09D, color:#FFF
+    NG_smoothstep_vector4_high([high])
+    end
+    NG_smoothstep_vector4_in --"in"--> NG_smoothstep_vector4_separate_in
+    NG_smoothstep_vector4_low --"in"--> NG_smoothstep_vector4_separate_low
+    NG_smoothstep_vector4_high --"in"--> NG_smoothstep_vector4_separate_high
+    NG_smoothstep_vector4_separate_in --"outx-->in"--> NG_smoothstep_vector4_smoothstep_x
+    NG_smoothstep_vector4_separate_low --"outx-->low"--> NG_smoothstep_vector4_smoothstep_x
+    NG_smoothstep_vector4_separate_high --"outx-->high"--> NG_smoothstep_vector4_smoothstep_x
+    NG_smoothstep_vector4_separate_in --"outy-->in"--> NG_smoothstep_vector4_smoothstep_y
+    NG_smoothstep_vector4_separate_low --"outy-->low"--> NG_smoothstep_vector4_smoothstep_y
+    NG_smoothstep_vector4_separate_high --"outy-->high"--> NG_smoothstep_vector4_smoothstep_y
+    NG_smoothstep_vector4_separate_in --"outz-->in"--> NG_smoothstep_vector4_smoothstep_z
+    NG_smoothstep_vector4_separate_low --"outz-->low"--> NG_smoothstep_vector4_smoothstep_z
+    NG_smoothstep_vector4_separate_high --"outz-->high"--> NG_smoothstep_vector4_smoothstep_z
+    NG_smoothstep_vector4_separate_in --"outw-->in"--> NG_smoothstep_vector4_smoothstep_w
+    NG_smoothstep_vector4_separate_low --"outw-->low"--> NG_smoothstep_vector4_smoothstep_w
+    NG_smoothstep_vector4_separate_high --"outw-->high"--> NG_smoothstep_vector4_smoothstep_w
+    NG_smoothstep_vector4_smoothstep_x --"in1"--> NG_smoothstep_vector4_combine
+    NG_smoothstep_vector4_smoothstep_y --"in2"--> NG_smoothstep_vector4_combine
+    NG_smoothstep_vector4_smoothstep_z --"in3"--> NG_smoothstep_vector4_combine
+    NG_smoothstep_vector4_smoothstep_w --"in4"--> NG_smoothstep_vector4_combine
+    NG_smoothstep_vector4_combine --> NG_smoothstep_vector4_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10393,24 +10442,34 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_color3FA
-    NG_smoothstep_color3FA_swizzle[swizzle]
-    NG_smoothstep_color3FA_swizzle2[swizzle2]
-    NG_smoothstep_color3FA_N_smoothstep[N_smoothstep]
+    NG_smoothstep_color3FA_separate_in[separate_in]
+    NG_smoothstep_color3FA_smoothstep_r[smoothstep_r]
+    NG_smoothstep_color3FA_smoothstep_g[smoothstep_g]
+    NG_smoothstep_color3FA_smoothstep_b[smoothstep_b]
+    NG_smoothstep_color3FA_combine[combine]
     style NG_smoothstep_color3FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_color3FA_out([out])
+    style NG_smoothstep_color3FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_color3FA_in([in])
     style NG_smoothstep_color3FA_low  fill:#09D, color:#FFF
     NG_smoothstep_color3FA_low([low])
     style NG_smoothstep_color3FA_high  fill:#09D, color:#FFF
     NG_smoothstep_color3FA_high([high])
-    style NG_smoothstep_color3FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_color3FA_in([in])
     end
-    NG_smoothstep_color3FA_low --"in"--> NG_smoothstep_color3FA_swizzle
-    NG_smoothstep_color3FA_high --"in"--> NG_smoothstep_color3FA_swizzle2
-    NG_smoothstep_color3FA_in --"in"--> NG_smoothstep_color3FA_N_smoothstep
-    NG_smoothstep_color3FA_swizzle --"low"--> NG_smoothstep_color3FA_N_smoothstep
-    NG_smoothstep_color3FA_swizzle2 --"high"--> NG_smoothstep_color3FA_N_smoothstep
-    NG_smoothstep_color3FA_N_smoothstep --> NG_smoothstep_color3FA_out
+    NG_smoothstep_color3FA_in --"in"--> NG_smoothstep_color3FA_separate_in
+    NG_smoothstep_color3FA_separate_in --"outr-->in"--> NG_smoothstep_color3FA_smoothstep_r
+    NG_smoothstep_color3FA_low --"low"--> NG_smoothstep_color3FA_smoothstep_r
+    NG_smoothstep_color3FA_high --"high"--> NG_smoothstep_color3FA_smoothstep_r
+    NG_smoothstep_color3FA_separate_in --"outg-->in"--> NG_smoothstep_color3FA_smoothstep_g
+    NG_smoothstep_color3FA_low --"low"--> NG_smoothstep_color3FA_smoothstep_g
+    NG_smoothstep_color3FA_high --"high"--> NG_smoothstep_color3FA_smoothstep_g
+    NG_smoothstep_color3FA_separate_in --"outb-->in"--> NG_smoothstep_color3FA_smoothstep_b
+    NG_smoothstep_color3FA_low --"low"--> NG_smoothstep_color3FA_smoothstep_b
+    NG_smoothstep_color3FA_high --"high"--> NG_smoothstep_color3FA_smoothstep_b
+    NG_smoothstep_color3FA_smoothstep_r --"in1"--> NG_smoothstep_color3FA_combine
+    NG_smoothstep_color3FA_smoothstep_g --"in2"--> NG_smoothstep_color3FA_combine
+    NG_smoothstep_color3FA_smoothstep_b --"in3"--> NG_smoothstep_color3FA_combine
+    NG_smoothstep_color3FA_combine --> NG_smoothstep_color3FA_out
 ```
  
 
@@ -10434,30 +10493,39 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_color4FA
-    NG_smoothstep_color4FA_swizzle[swizzle]
-    NG_smoothstep_color4FA_swizzle2[swizzle2]
-    NG_smoothstep_color4FA_N_smoothstep[N_smoothstep]
+    NG_smoothstep_color4FA_separate_in[separate_in]
+    NG_smoothstep_color4FA_smoothstep_r[smoothstep_r]
+    NG_smoothstep_color4FA_smoothstep_g[smoothstep_g]
+    NG_smoothstep_color4FA_smoothstep_b[smoothstep_b]
+    NG_smoothstep_color4FA_smoothstep_a[smoothstep_a]
+    NG_smoothstep_color4FA_combine[combine]
     style NG_smoothstep_color4FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_color4FA_out([out])
+    style NG_smoothstep_color4FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_color4FA_in([in])
     style NG_smoothstep_color4FA_low  fill:#09D, color:#FFF
     NG_smoothstep_color4FA_low([low])
     style NG_smoothstep_color4FA_high  fill:#09D, color:#FFF
     NG_smoothstep_color4FA_high([high])
-    style NG_smoothstep_color4FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_color4FA_in([in])
     end
-    NG_smoothstep_color4FA_low --"in1"--> NG_smoothstep_color4FA_swizzle
-    NG_smoothstep_color4FA_low --"in2"--> NG_smoothstep_color4FA_swizzle
-    NG_smoothstep_color4FA_low --"in3"--> NG_smoothstep_color4FA_swizzle
-    NG_smoothstep_color4FA_low --"in4"--> NG_smoothstep_color4FA_swizzle
-    NG_smoothstep_color4FA_high --"in1"--> NG_smoothstep_color4FA_swizzle2
-    NG_smoothstep_color4FA_high --"in2"--> NG_smoothstep_color4FA_swizzle2
-    NG_smoothstep_color4FA_high --"in3"--> NG_smoothstep_color4FA_swizzle2
-    NG_smoothstep_color4FA_high --"in4"--> NG_smoothstep_color4FA_swizzle2
-    NG_smoothstep_color4FA_in --"in"--> NG_smoothstep_color4FA_N_smoothstep
-    NG_smoothstep_color4FA_swizzle --"low"--> NG_smoothstep_color4FA_N_smoothstep
-    NG_smoothstep_color4FA_swizzle2 --"high"--> NG_smoothstep_color4FA_N_smoothstep
-    NG_smoothstep_color4FA_N_smoothstep --> NG_smoothstep_color4FA_out
+    NG_smoothstep_color4FA_in --"in"--> NG_smoothstep_color4FA_separate_in
+    NG_smoothstep_color4FA_separate_in --"outr-->in"--> NG_smoothstep_color4FA_smoothstep_r
+    NG_smoothstep_color4FA_low --"low"--> NG_smoothstep_color4FA_smoothstep_r
+    NG_smoothstep_color4FA_high --"high"--> NG_smoothstep_color4FA_smoothstep_r
+    NG_smoothstep_color4FA_separate_in --"outg-->in"--> NG_smoothstep_color4FA_smoothstep_g
+    NG_smoothstep_color4FA_low --"low"--> NG_smoothstep_color4FA_smoothstep_g
+    NG_smoothstep_color4FA_high --"high"--> NG_smoothstep_color4FA_smoothstep_g
+    NG_smoothstep_color4FA_separate_in --"outb-->in"--> NG_smoothstep_color4FA_smoothstep_b
+    NG_smoothstep_color4FA_low --"low"--> NG_smoothstep_color4FA_smoothstep_b
+    NG_smoothstep_color4FA_high --"high"--> NG_smoothstep_color4FA_smoothstep_b
+    NG_smoothstep_color4FA_separate_in --"outa-->in"--> NG_smoothstep_color4FA_smoothstep_a
+    NG_smoothstep_color4FA_low --"low"--> NG_smoothstep_color4FA_smoothstep_a
+    NG_smoothstep_color4FA_high --"high"--> NG_smoothstep_color4FA_smoothstep_a
+    NG_smoothstep_color4FA_smoothstep_r --"in1"--> NG_smoothstep_color4FA_combine
+    NG_smoothstep_color4FA_smoothstep_g --"in2"--> NG_smoothstep_color4FA_combine
+    NG_smoothstep_color4FA_smoothstep_b --"in3"--> NG_smoothstep_color4FA_combine
+    NG_smoothstep_color4FA_smoothstep_a --"in4"--> NG_smoothstep_color4FA_combine
+    NG_smoothstep_color4FA_combine --> NG_smoothstep_color4FA_out
 ```
  
 
@@ -10481,26 +10549,29 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_vector2FA
-    NG_smoothstep_vector2FA_swizzle[swizzle]
-    NG_smoothstep_vector2FA_swizzle2[swizzle2]
-    NG_smoothstep_vector2FA_N_smoothstep[N_smoothstep]
+    NG_smoothstep_vector2FA_separate_in[separate_in]
+    NG_smoothstep_vector2FA_smoothstep_x[smoothstep_x]
+    NG_smoothstep_vector2FA_smoothstep_y[smoothstep_y]
+    NG_smoothstep_vector2FA_combine[combine]
     style NG_smoothstep_vector2FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_vector2FA_out([out])
+    style NG_smoothstep_vector2FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector2FA_in([in])
     style NG_smoothstep_vector2FA_low  fill:#09D, color:#FFF
     NG_smoothstep_vector2FA_low([low])
     style NG_smoothstep_vector2FA_high  fill:#09D, color:#FFF
     NG_smoothstep_vector2FA_high([high])
-    style NG_smoothstep_vector2FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_vector2FA_in([in])
     end
-    NG_smoothstep_vector2FA_low --"in1"--> NG_smoothstep_vector2FA_swizzle
-    NG_smoothstep_vector2FA_low --"in2"--> NG_smoothstep_vector2FA_swizzle
-    NG_smoothstep_vector2FA_high --"in1"--> NG_smoothstep_vector2FA_swizzle2
-    NG_smoothstep_vector2FA_high --"in2"--> NG_smoothstep_vector2FA_swizzle2
-    NG_smoothstep_vector2FA_in --"in"--> NG_smoothstep_vector2FA_N_smoothstep
-    NG_smoothstep_vector2FA_swizzle --"low"--> NG_smoothstep_vector2FA_N_smoothstep
-    NG_smoothstep_vector2FA_swizzle2 --"high"--> NG_smoothstep_vector2FA_N_smoothstep
-    NG_smoothstep_vector2FA_N_smoothstep --> NG_smoothstep_vector2FA_out
+    NG_smoothstep_vector2FA_in --"in"--> NG_smoothstep_vector2FA_separate_in
+    NG_smoothstep_vector2FA_separate_in --"outx-->in"--> NG_smoothstep_vector2FA_smoothstep_x
+    NG_smoothstep_vector2FA_low --"low"--> NG_smoothstep_vector2FA_smoothstep_x
+    NG_smoothstep_vector2FA_high --"high"--> NG_smoothstep_vector2FA_smoothstep_x
+    NG_smoothstep_vector2FA_separate_in --"outy-->in"--> NG_smoothstep_vector2FA_smoothstep_y
+    NG_smoothstep_vector2FA_low --"low"--> NG_smoothstep_vector2FA_smoothstep_y
+    NG_smoothstep_vector2FA_high --"high"--> NG_smoothstep_vector2FA_smoothstep_y
+    NG_smoothstep_vector2FA_smoothstep_x --"in1"--> NG_smoothstep_vector2FA_combine
+    NG_smoothstep_vector2FA_smoothstep_y --"in2"--> NG_smoothstep_vector2FA_combine
+    NG_smoothstep_vector2FA_combine --> NG_smoothstep_vector2FA_out
 ```
  
 
@@ -10524,24 +10595,34 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_vector3FA
-    NG_smoothstep_vector3FA_swizzle[swizzle]
-    NG_smoothstep_vector3FA_swizzle2[swizzle2]
-    NG_smoothstep_vector3FA_N_smoothstep[N_smoothstep]
+    NG_smoothstep_vector3FA_separate_in[separate_in]
+    NG_smoothstep_vector3FA_smoothstep_x[smoothstep_x]
+    NG_smoothstep_vector3FA_smoothstep_y[smoothstep_y]
+    NG_smoothstep_vector3FA_smoothstep_z[smoothstep_z]
+    NG_smoothstep_vector3FA_combine[combine]
     style NG_smoothstep_vector3FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_vector3FA_out([out])
+    style NG_smoothstep_vector3FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector3FA_in([in])
     style NG_smoothstep_vector3FA_low  fill:#09D, color:#FFF
     NG_smoothstep_vector3FA_low([low])
     style NG_smoothstep_vector3FA_high  fill:#09D, color:#FFF
     NG_smoothstep_vector3FA_high([high])
-    style NG_smoothstep_vector3FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_vector3FA_in([in])
     end
-    NG_smoothstep_vector3FA_low --"in"--> NG_smoothstep_vector3FA_swizzle
-    NG_smoothstep_vector3FA_high --"in"--> NG_smoothstep_vector3FA_swizzle2
-    NG_smoothstep_vector3FA_in --"in"--> NG_smoothstep_vector3FA_N_smoothstep
-    NG_smoothstep_vector3FA_swizzle --"low"--> NG_smoothstep_vector3FA_N_smoothstep
-    NG_smoothstep_vector3FA_swizzle2 --"high"--> NG_smoothstep_vector3FA_N_smoothstep
-    NG_smoothstep_vector3FA_N_smoothstep --> NG_smoothstep_vector3FA_out
+    NG_smoothstep_vector3FA_in --"in"--> NG_smoothstep_vector3FA_separate_in
+    NG_smoothstep_vector3FA_separate_in --"outx-->in"--> NG_smoothstep_vector3FA_smoothstep_x
+    NG_smoothstep_vector3FA_low --"low"--> NG_smoothstep_vector3FA_smoothstep_x
+    NG_smoothstep_vector3FA_high --"high"--> NG_smoothstep_vector3FA_smoothstep_x
+    NG_smoothstep_vector3FA_separate_in --"outy-->in"--> NG_smoothstep_vector3FA_smoothstep_y
+    NG_smoothstep_vector3FA_low --"low"--> NG_smoothstep_vector3FA_smoothstep_y
+    NG_smoothstep_vector3FA_high --"high"--> NG_smoothstep_vector3FA_smoothstep_y
+    NG_smoothstep_vector3FA_separate_in --"outz-->in"--> NG_smoothstep_vector3FA_smoothstep_z
+    NG_smoothstep_vector3FA_low --"low"--> NG_smoothstep_vector3FA_smoothstep_z
+    NG_smoothstep_vector3FA_high --"high"--> NG_smoothstep_vector3FA_smoothstep_z
+    NG_smoothstep_vector3FA_smoothstep_x --"in1"--> NG_smoothstep_vector3FA_combine
+    NG_smoothstep_vector3FA_smoothstep_y --"in2"--> NG_smoothstep_vector3FA_combine
+    NG_smoothstep_vector3FA_smoothstep_z --"in3"--> NG_smoothstep_vector3FA_combine
+    NG_smoothstep_vector3FA_combine --> NG_smoothstep_vector3FA_out
 ```
  
 
@@ -10565,30 +10646,39 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_smoothstep_vector4FA
-    NG_smoothstep_vector4FA_swizzle[swizzle]
-    NG_smoothstep_vector4FA_swizzle2[swizzle2]
-    NG_smoothstep_vector4FA_N_smoothstep[N_smoothstep]
+    NG_smoothstep_vector4FA_separate_in[separate_in]
+    NG_smoothstep_vector4FA_smoothstep_x[smoothstep_x]
+    NG_smoothstep_vector4FA_smoothstep_y[smoothstep_y]
+    NG_smoothstep_vector4FA_smoothstep_z[smoothstep_z]
+    NG_smoothstep_vector4FA_smoothstep_w[smoothstep_w]
+    NG_smoothstep_vector4FA_combine[combine]
     style NG_smoothstep_vector4FA_out  fill:#0C0, color:#FFF
     NG_smoothstep_vector4FA_out([out])
+    style NG_smoothstep_vector4FA_in  fill:#09D, color:#FFF
+    NG_smoothstep_vector4FA_in([in])
     style NG_smoothstep_vector4FA_low  fill:#09D, color:#FFF
     NG_smoothstep_vector4FA_low([low])
     style NG_smoothstep_vector4FA_high  fill:#09D, color:#FFF
     NG_smoothstep_vector4FA_high([high])
-    style NG_smoothstep_vector4FA_in  fill:#09D, color:#FFF
-    NG_smoothstep_vector4FA_in([in])
     end
-    NG_smoothstep_vector4FA_low --"in1"--> NG_smoothstep_vector4FA_swizzle
-    NG_smoothstep_vector4FA_low --"in2"--> NG_smoothstep_vector4FA_swizzle
-    NG_smoothstep_vector4FA_low --"in3"--> NG_smoothstep_vector4FA_swizzle
-    NG_smoothstep_vector4FA_low --"in4"--> NG_smoothstep_vector4FA_swizzle
-    NG_smoothstep_vector4FA_high --"in1"--> NG_smoothstep_vector4FA_swizzle2
-    NG_smoothstep_vector4FA_high --"in2"--> NG_smoothstep_vector4FA_swizzle2
-    NG_smoothstep_vector4FA_high --"in3"--> NG_smoothstep_vector4FA_swizzle2
-    NG_smoothstep_vector4FA_high --"in4"--> NG_smoothstep_vector4FA_swizzle2
-    NG_smoothstep_vector4FA_in --"in"--> NG_smoothstep_vector4FA_N_smoothstep
-    NG_smoothstep_vector4FA_swizzle --"low"--> NG_smoothstep_vector4FA_N_smoothstep
-    NG_smoothstep_vector4FA_swizzle2 --"high"--> NG_smoothstep_vector4FA_N_smoothstep
-    NG_smoothstep_vector4FA_N_smoothstep --> NG_smoothstep_vector4FA_out
+    NG_smoothstep_vector4FA_in --"in"--> NG_smoothstep_vector4FA_separate_in
+    NG_smoothstep_vector4FA_separate_in --"outx-->in"--> NG_smoothstep_vector4FA_smoothstep_x
+    NG_smoothstep_vector4FA_low --"low"--> NG_smoothstep_vector4FA_smoothstep_x
+    NG_smoothstep_vector4FA_high --"high"--> NG_smoothstep_vector4FA_smoothstep_x
+    NG_smoothstep_vector4FA_separate_in --"outy-->in"--> NG_smoothstep_vector4FA_smoothstep_y
+    NG_smoothstep_vector4FA_low --"low"--> NG_smoothstep_vector4FA_smoothstep_y
+    NG_smoothstep_vector4FA_high --"high"--> NG_smoothstep_vector4FA_smoothstep_y
+    NG_smoothstep_vector4FA_separate_in --"outz-->in"--> NG_smoothstep_vector4FA_smoothstep_z
+    NG_smoothstep_vector4FA_low --"low"--> NG_smoothstep_vector4FA_smoothstep_z
+    NG_smoothstep_vector4FA_high --"high"--> NG_smoothstep_vector4FA_smoothstep_z
+    NG_smoothstep_vector4FA_separate_in --"outw-->in"--> NG_smoothstep_vector4FA_smoothstep_w
+    NG_smoothstep_vector4FA_low --"low"--> NG_smoothstep_vector4FA_smoothstep_w
+    NG_smoothstep_vector4FA_high --"high"--> NG_smoothstep_vector4FA_smoothstep_w
+    NG_smoothstep_vector4FA_smoothstep_x --"in1"--> NG_smoothstep_vector4FA_combine
+    NG_smoothstep_vector4FA_smoothstep_y --"in2"--> NG_smoothstep_vector4FA_combine
+    NG_smoothstep_vector4FA_smoothstep_z --"in3"--> NG_smoothstep_vector4FA_combine
+    NG_smoothstep_vector4FA_smoothstep_w --"in4"--> NG_smoothstep_vector4FA_combine
+    NG_smoothstep_vector4FA_combine --> NG_smoothstep_vector4FA_out
 ```
  
 
@@ -10597,103 +10687,6 @@ graph TB
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **low** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **high** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
-| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-### Category: *curveadjust*
-<details open><summary>ND_curveadjust_float</summary>
-<p>
- 
-* *Nodedef*: ND_curveadjust_float
-* *Type*: float
-* *Group*: adjustment
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **knots** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
-| *out* | float | None |  |  |  |  |  |  |  |  |  |  |
-<details open><summary>ND_curveadjust_color3</summary>
-<p>
- 
-* *Nodedef*: ND_curveadjust_color3
-* *Type*: color3
-* *Group*: adjustment
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| **knots** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
-| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
-<details open><summary>ND_curveadjust_color4</summary>
-<p>
- 
-* *Nodedef*: ND_curveadjust_color4
-* *Type*: color4
-* *Group*: adjustment
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| **knots** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
-| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details open><summary>ND_curveadjust_vector2</summary>
-<p>
- 
-* *Nodedef*: ND_curveadjust_vector2
-* *Type*: vector2
-* *Group*: adjustment
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| **knots** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
-| *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
-<details open><summary>ND_curveadjust_vector3</summary>
-<p>
- 
-* *Nodedef*: ND_curveadjust_vector3
-* *Type*: vector3
-* *Group*: adjustment
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| **knots** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
-| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details open><summary>ND_curveadjust_vector4</summary>
-<p>
- 
-* *Nodedef*: ND_curveadjust_vector4
-* *Type*: vector4
-* *Group*: adjustment
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| **knots** | vector2array |  |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *luminance*
 <details open><summary>ND_luminance_color3</summary>
@@ -13527,6 +13520,22 @@ graph TB
 | **in1** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_ifgreater_boolean</summary>
+<p>
+ 
+* *Nodedef*: ND_ifgreater_boolean
+* *Type*: boolean
+* *Group*: conditional
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **value1** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **value2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_ifgreater_floatI</summary>
 <p>
  
@@ -13689,6 +13698,22 @@ graph TB
 | **in1** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_ifgreater_booleanI</summary>
+<p>
+ 
+* *Nodedef*: ND_ifgreater_booleanI
+* *Type*: boolean
+* *Group*: conditional
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **value1** | integer | 1 |  |  |  |  |  |  |  |  |  |  |
+| **value2** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ifgreatereq*
 <details open><summary>ND_ifgreatereq_float</summary>
 <p>
@@ -13852,6 +13877,22 @@ graph TB
 | **in1** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_ifgreatereq_boolean</summary>
+<p>
+ 
+* *Nodedef*: ND_ifgreatereq_boolean
+* *Type*: boolean
+* *Group*: conditional
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **value1** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **value2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_ifgreatereq_floatI</summary>
 <p>
  
@@ -14014,6 +14055,22 @@ graph TB
 | **in1** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_ifgreatereq_booleanI</summary>
+<p>
+ 
+* *Nodedef*: ND_ifgreatereq_booleanI
+* *Type*: boolean
+* *Group*: conditional
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **value1** | integer | 1 |  |  |  |  |  |  |  |  |  |  |
+| **value2** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ifequal*
 <details open><summary>ND_ifequal_float</summary>
 <p>
@@ -14177,6 +14234,22 @@ graph TB
 | **in1** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_ifequal_boolean</summary>
+<p>
+ 
+* *Nodedef*: ND_ifequal_boolean
+* *Type*: boolean
+* *Group*: conditional
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **value1** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **value2** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_ifequal_floatI</summary>
 <p>
  
@@ -14339,6 +14412,22 @@ graph TB
 | **in1** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_ifequal_booleanI</summary>
+<p>
+ 
+* *Nodedef*: ND_ifequal_booleanI
+* *Type*: boolean
+* *Group*: conditional
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **value1** | integer | 1 |  |  |  |  |  |  |  |  |  |  |
+| **value2** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_ifequal_floatB</summary>
 <p>
  
@@ -14501,6 +14590,22 @@ graph TB
 | **in1** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_ifequal_booleanB</summary>
+<p>
+ 
+* *Nodedef*: ND_ifequal_booleanB
+* *Type*: boolean
+* *Group*: conditional
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **value1** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| **value2** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *switch*
 <details open><summary>ND_switch_float</summary>
 <p>
@@ -14510,7 +14615,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_float
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_float
+    NG_switch_float_ifgreater_10[ifgreater_10]
+    NG_switch_float_ifgreater_9[ifgreater_9]
+    NG_switch_float_ifgreater_8[ifgreater_8]
+    NG_switch_float_ifgreater_7[ifgreater_7]
+    NG_switch_float_ifgreater_6[ifgreater_6]
+    NG_switch_float_ifgreater_5[ifgreater_5]
+    NG_switch_float_ifgreater_4[ifgreater_4]
+    NG_switch_float_ifgreater_3[ifgreater_3]
+    NG_switch_float_ifgreater_2[ifgreater_2]
+    NG_switch_float_ifgreater_1[ifgreater_1]
+    style NG_switch_float_out  fill:#0C0, color:#FFF
+    NG_switch_float_out([out])
+    style NG_switch_float_which  fill:#09D, color:#FFF
+    NG_switch_float_which([which])
+    style NG_switch_float_in10  fill:#09D, color:#FFF
+    NG_switch_float_in10([in10])
+    style NG_switch_float_in9  fill:#09D, color:#FFF
+    NG_switch_float_in9([in9])
+    style NG_switch_float_in8  fill:#09D, color:#FFF
+    NG_switch_float_in8([in8])
+    style NG_switch_float_in7  fill:#09D, color:#FFF
+    NG_switch_float_in7([in7])
+    style NG_switch_float_in6  fill:#09D, color:#FFF
+    NG_switch_float_in6([in6])
+    style NG_switch_float_in5  fill:#09D, color:#FFF
+    NG_switch_float_in5([in5])
+    style NG_switch_float_in4  fill:#09D, color:#FFF
+    NG_switch_float_in4([in4])
+    style NG_switch_float_in3  fill:#09D, color:#FFF
+    NG_switch_float_in3([in3])
+    style NG_switch_float_in2  fill:#09D, color:#FFF
+    NG_switch_float_in2([in2])
+    style NG_switch_float_in1  fill:#09D, color:#FFF
+    NG_switch_float_in1([in1])
+    end
+    NG_switch_float_which --"value2"--> NG_switch_float_ifgreater_10
+    NG_switch_float_in10 --"in1"--> NG_switch_float_ifgreater_10
+    NG_switch_float_which --"value2"--> NG_switch_float_ifgreater_9
+    NG_switch_float_in9 --"in1"--> NG_switch_float_ifgreater_9
+    NG_switch_float_ifgreater_10 --"in2"--> NG_switch_float_ifgreater_9
+    NG_switch_float_which --"value2"--> NG_switch_float_ifgreater_8
+    NG_switch_float_in8 --"in1"--> NG_switch_float_ifgreater_8
+    NG_switch_float_ifgreater_9 --"in2"--> NG_switch_float_ifgreater_8
+    NG_switch_float_which --"value2"--> NG_switch_float_ifgreater_7
+    NG_switch_float_in7 --"in1"--> NG_switch_float_ifgreater_7
+    NG_switch_float_ifgreater_8 --"in2"--> NG_switch_float_ifgreater_7
+    NG_switch_float_which --"value2"--> NG_switch_float_ifgreater_6
+    NG_switch_float_in6 --"in1"--> NG_switch_float_ifgreater_6
+    NG_switch_float_ifgreater_7 --"in2"--> NG_switch_float_ifgreater_6
+    NG_switch_float_which --"value2"--> NG_switch_float_ifgreater_5
+    NG_switch_float_in5 --"in1"--> NG_switch_float_ifgreater_5
+    NG_switch_float_ifgreater_6 --"in2"--> NG_switch_float_ifgreater_5
+    NG_switch_float_which --"value2"--> NG_switch_float_ifgreater_4
+    NG_switch_float_in4 --"in1"--> NG_switch_float_ifgreater_4
+    NG_switch_float_ifgreater_5 --"in2"--> NG_switch_float_ifgreater_4
+    NG_switch_float_which --"value2"--> NG_switch_float_ifgreater_3
+    NG_switch_float_in3 --"in1"--> NG_switch_float_ifgreater_3
+    NG_switch_float_ifgreater_4 --"in2"--> NG_switch_float_ifgreater_3
+    NG_switch_float_which --"value2"--> NG_switch_float_ifgreater_2
+    NG_switch_float_in2 --"in1"--> NG_switch_float_ifgreater_2
+    NG_switch_float_ifgreater_3 --"in2"--> NG_switch_float_ifgreater_2
+    NG_switch_float_which --"value2"--> NG_switch_float_ifgreater_1
+    NG_switch_float_in1 --"in1"--> NG_switch_float_ifgreater_1
+    NG_switch_float_ifgreater_2 --"in2"--> NG_switch_float_ifgreater_1
+    NG_switch_float_ifgreater_1 --> NG_switch_float_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14535,7 +14711,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_color3
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_color3
+    NG_switch_color3_ifgreater_10[ifgreater_10]
+    NG_switch_color3_ifgreater_9[ifgreater_9]
+    NG_switch_color3_ifgreater_8[ifgreater_8]
+    NG_switch_color3_ifgreater_7[ifgreater_7]
+    NG_switch_color3_ifgreater_6[ifgreater_6]
+    NG_switch_color3_ifgreater_5[ifgreater_5]
+    NG_switch_color3_ifgreater_4[ifgreater_4]
+    NG_switch_color3_ifgreater_3[ifgreater_3]
+    NG_switch_color3_ifgreater_2[ifgreater_2]
+    NG_switch_color3_ifgreater_1[ifgreater_1]
+    style NG_switch_color3_out  fill:#0C0, color:#FFF
+    NG_switch_color3_out([out])
+    style NG_switch_color3_which  fill:#09D, color:#FFF
+    NG_switch_color3_which([which])
+    style NG_switch_color3_in10  fill:#09D, color:#FFF
+    NG_switch_color3_in10([in10])
+    style NG_switch_color3_in9  fill:#09D, color:#FFF
+    NG_switch_color3_in9([in9])
+    style NG_switch_color3_in8  fill:#09D, color:#FFF
+    NG_switch_color3_in8([in8])
+    style NG_switch_color3_in7  fill:#09D, color:#FFF
+    NG_switch_color3_in7([in7])
+    style NG_switch_color3_in6  fill:#09D, color:#FFF
+    NG_switch_color3_in6([in6])
+    style NG_switch_color3_in5  fill:#09D, color:#FFF
+    NG_switch_color3_in5([in5])
+    style NG_switch_color3_in4  fill:#09D, color:#FFF
+    NG_switch_color3_in4([in4])
+    style NG_switch_color3_in3  fill:#09D, color:#FFF
+    NG_switch_color3_in3([in3])
+    style NG_switch_color3_in2  fill:#09D, color:#FFF
+    NG_switch_color3_in2([in2])
+    style NG_switch_color3_in1  fill:#09D, color:#FFF
+    NG_switch_color3_in1([in1])
+    end
+    NG_switch_color3_which --"value2"--> NG_switch_color3_ifgreater_10
+    NG_switch_color3_in10 --"in1"--> NG_switch_color3_ifgreater_10
+    NG_switch_color3_which --"value2"--> NG_switch_color3_ifgreater_9
+    NG_switch_color3_in9 --"in1"--> NG_switch_color3_ifgreater_9
+    NG_switch_color3_ifgreater_10 --"in2"--> NG_switch_color3_ifgreater_9
+    NG_switch_color3_which --"value2"--> NG_switch_color3_ifgreater_8
+    NG_switch_color3_in8 --"in1"--> NG_switch_color3_ifgreater_8
+    NG_switch_color3_ifgreater_9 --"in2"--> NG_switch_color3_ifgreater_8
+    NG_switch_color3_which --"value2"--> NG_switch_color3_ifgreater_7
+    NG_switch_color3_in7 --"in1"--> NG_switch_color3_ifgreater_7
+    NG_switch_color3_ifgreater_8 --"in2"--> NG_switch_color3_ifgreater_7
+    NG_switch_color3_which --"value2"--> NG_switch_color3_ifgreater_6
+    NG_switch_color3_in6 --"in1"--> NG_switch_color3_ifgreater_6
+    NG_switch_color3_ifgreater_7 --"in2"--> NG_switch_color3_ifgreater_6
+    NG_switch_color3_which --"value2"--> NG_switch_color3_ifgreater_5
+    NG_switch_color3_in5 --"in1"--> NG_switch_color3_ifgreater_5
+    NG_switch_color3_ifgreater_6 --"in2"--> NG_switch_color3_ifgreater_5
+    NG_switch_color3_which --"value2"--> NG_switch_color3_ifgreater_4
+    NG_switch_color3_in4 --"in1"--> NG_switch_color3_ifgreater_4
+    NG_switch_color3_ifgreater_5 --"in2"--> NG_switch_color3_ifgreater_4
+    NG_switch_color3_which --"value2"--> NG_switch_color3_ifgreater_3
+    NG_switch_color3_in3 --"in1"--> NG_switch_color3_ifgreater_3
+    NG_switch_color3_ifgreater_4 --"in2"--> NG_switch_color3_ifgreater_3
+    NG_switch_color3_which --"value2"--> NG_switch_color3_ifgreater_2
+    NG_switch_color3_in2 --"in1"--> NG_switch_color3_ifgreater_2
+    NG_switch_color3_ifgreater_3 --"in2"--> NG_switch_color3_ifgreater_2
+    NG_switch_color3_which --"value2"--> NG_switch_color3_ifgreater_1
+    NG_switch_color3_in1 --"in1"--> NG_switch_color3_ifgreater_1
+    NG_switch_color3_ifgreater_2 --"in2"--> NG_switch_color3_ifgreater_1
+    NG_switch_color3_ifgreater_1 --> NG_switch_color3_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14560,7 +14807,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_color4
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_color4
+    NG_switch_color4_ifgreater_10[ifgreater_10]
+    NG_switch_color4_ifgreater_9[ifgreater_9]
+    NG_switch_color4_ifgreater_8[ifgreater_8]
+    NG_switch_color4_ifgreater_7[ifgreater_7]
+    NG_switch_color4_ifgreater_6[ifgreater_6]
+    NG_switch_color4_ifgreater_5[ifgreater_5]
+    NG_switch_color4_ifgreater_4[ifgreater_4]
+    NG_switch_color4_ifgreater_3[ifgreater_3]
+    NG_switch_color4_ifgreater_2[ifgreater_2]
+    NG_switch_color4_ifgreater_1[ifgreater_1]
+    style NG_switch_color4_out  fill:#0C0, color:#FFF
+    NG_switch_color4_out([out])
+    style NG_switch_color4_which  fill:#09D, color:#FFF
+    NG_switch_color4_which([which])
+    style NG_switch_color4_in10  fill:#09D, color:#FFF
+    NG_switch_color4_in10([in10])
+    style NG_switch_color4_in9  fill:#09D, color:#FFF
+    NG_switch_color4_in9([in9])
+    style NG_switch_color4_in8  fill:#09D, color:#FFF
+    NG_switch_color4_in8([in8])
+    style NG_switch_color4_in7  fill:#09D, color:#FFF
+    NG_switch_color4_in7([in7])
+    style NG_switch_color4_in6  fill:#09D, color:#FFF
+    NG_switch_color4_in6([in6])
+    style NG_switch_color4_in5  fill:#09D, color:#FFF
+    NG_switch_color4_in5([in5])
+    style NG_switch_color4_in4  fill:#09D, color:#FFF
+    NG_switch_color4_in4([in4])
+    style NG_switch_color4_in3  fill:#09D, color:#FFF
+    NG_switch_color4_in3([in3])
+    style NG_switch_color4_in2  fill:#09D, color:#FFF
+    NG_switch_color4_in2([in2])
+    style NG_switch_color4_in1  fill:#09D, color:#FFF
+    NG_switch_color4_in1([in1])
+    end
+    NG_switch_color4_which --"value2"--> NG_switch_color4_ifgreater_10
+    NG_switch_color4_in10 --"in1"--> NG_switch_color4_ifgreater_10
+    NG_switch_color4_which --"value2"--> NG_switch_color4_ifgreater_9
+    NG_switch_color4_in9 --"in1"--> NG_switch_color4_ifgreater_9
+    NG_switch_color4_ifgreater_10 --"in2"--> NG_switch_color4_ifgreater_9
+    NG_switch_color4_which --"value2"--> NG_switch_color4_ifgreater_8
+    NG_switch_color4_in8 --"in1"--> NG_switch_color4_ifgreater_8
+    NG_switch_color4_ifgreater_9 --"in2"--> NG_switch_color4_ifgreater_8
+    NG_switch_color4_which --"value2"--> NG_switch_color4_ifgreater_7
+    NG_switch_color4_in7 --"in1"--> NG_switch_color4_ifgreater_7
+    NG_switch_color4_ifgreater_8 --"in2"--> NG_switch_color4_ifgreater_7
+    NG_switch_color4_which --"value2"--> NG_switch_color4_ifgreater_6
+    NG_switch_color4_in6 --"in1"--> NG_switch_color4_ifgreater_6
+    NG_switch_color4_ifgreater_7 --"in2"--> NG_switch_color4_ifgreater_6
+    NG_switch_color4_which --"value2"--> NG_switch_color4_ifgreater_5
+    NG_switch_color4_in5 --"in1"--> NG_switch_color4_ifgreater_5
+    NG_switch_color4_ifgreater_6 --"in2"--> NG_switch_color4_ifgreater_5
+    NG_switch_color4_which --"value2"--> NG_switch_color4_ifgreater_4
+    NG_switch_color4_in4 --"in1"--> NG_switch_color4_ifgreater_4
+    NG_switch_color4_ifgreater_5 --"in2"--> NG_switch_color4_ifgreater_4
+    NG_switch_color4_which --"value2"--> NG_switch_color4_ifgreater_3
+    NG_switch_color4_in3 --"in1"--> NG_switch_color4_ifgreater_3
+    NG_switch_color4_ifgreater_4 --"in2"--> NG_switch_color4_ifgreater_3
+    NG_switch_color4_which --"value2"--> NG_switch_color4_ifgreater_2
+    NG_switch_color4_in2 --"in1"--> NG_switch_color4_ifgreater_2
+    NG_switch_color4_ifgreater_3 --"in2"--> NG_switch_color4_ifgreater_2
+    NG_switch_color4_which --"value2"--> NG_switch_color4_ifgreater_1
+    NG_switch_color4_in1 --"in1"--> NG_switch_color4_ifgreater_1
+    NG_switch_color4_ifgreater_2 --"in2"--> NG_switch_color4_ifgreater_1
+    NG_switch_color4_ifgreater_1 --> NG_switch_color4_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14585,7 +14903,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_vector2
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_vector2
+    NG_switch_vector2_ifgreater_10[ifgreater_10]
+    NG_switch_vector2_ifgreater_9[ifgreater_9]
+    NG_switch_vector2_ifgreater_8[ifgreater_8]
+    NG_switch_vector2_ifgreater_7[ifgreater_7]
+    NG_switch_vector2_ifgreater_6[ifgreater_6]
+    NG_switch_vector2_ifgreater_5[ifgreater_5]
+    NG_switch_vector2_ifgreater_4[ifgreater_4]
+    NG_switch_vector2_ifgreater_3[ifgreater_3]
+    NG_switch_vector2_ifgreater_2[ifgreater_2]
+    NG_switch_vector2_ifgreater_1[ifgreater_1]
+    style NG_switch_vector2_out  fill:#0C0, color:#FFF
+    NG_switch_vector2_out([out])
+    style NG_switch_vector2_which  fill:#09D, color:#FFF
+    NG_switch_vector2_which([which])
+    style NG_switch_vector2_in10  fill:#09D, color:#FFF
+    NG_switch_vector2_in10([in10])
+    style NG_switch_vector2_in9  fill:#09D, color:#FFF
+    NG_switch_vector2_in9([in9])
+    style NG_switch_vector2_in8  fill:#09D, color:#FFF
+    NG_switch_vector2_in8([in8])
+    style NG_switch_vector2_in7  fill:#09D, color:#FFF
+    NG_switch_vector2_in7([in7])
+    style NG_switch_vector2_in6  fill:#09D, color:#FFF
+    NG_switch_vector2_in6([in6])
+    style NG_switch_vector2_in5  fill:#09D, color:#FFF
+    NG_switch_vector2_in5([in5])
+    style NG_switch_vector2_in4  fill:#09D, color:#FFF
+    NG_switch_vector2_in4([in4])
+    style NG_switch_vector2_in3  fill:#09D, color:#FFF
+    NG_switch_vector2_in3([in3])
+    style NG_switch_vector2_in2  fill:#09D, color:#FFF
+    NG_switch_vector2_in2([in2])
+    style NG_switch_vector2_in1  fill:#09D, color:#FFF
+    NG_switch_vector2_in1([in1])
+    end
+    NG_switch_vector2_which --"value2"--> NG_switch_vector2_ifgreater_10
+    NG_switch_vector2_in10 --"in1"--> NG_switch_vector2_ifgreater_10
+    NG_switch_vector2_which --"value2"--> NG_switch_vector2_ifgreater_9
+    NG_switch_vector2_in9 --"in1"--> NG_switch_vector2_ifgreater_9
+    NG_switch_vector2_ifgreater_10 --"in2"--> NG_switch_vector2_ifgreater_9
+    NG_switch_vector2_which --"value2"--> NG_switch_vector2_ifgreater_8
+    NG_switch_vector2_in8 --"in1"--> NG_switch_vector2_ifgreater_8
+    NG_switch_vector2_ifgreater_9 --"in2"--> NG_switch_vector2_ifgreater_8
+    NG_switch_vector2_which --"value2"--> NG_switch_vector2_ifgreater_7
+    NG_switch_vector2_in7 --"in1"--> NG_switch_vector2_ifgreater_7
+    NG_switch_vector2_ifgreater_8 --"in2"--> NG_switch_vector2_ifgreater_7
+    NG_switch_vector2_which --"value2"--> NG_switch_vector2_ifgreater_6
+    NG_switch_vector2_in6 --"in1"--> NG_switch_vector2_ifgreater_6
+    NG_switch_vector2_ifgreater_7 --"in2"--> NG_switch_vector2_ifgreater_6
+    NG_switch_vector2_which --"value2"--> NG_switch_vector2_ifgreater_5
+    NG_switch_vector2_in5 --"in1"--> NG_switch_vector2_ifgreater_5
+    NG_switch_vector2_ifgreater_6 --"in2"--> NG_switch_vector2_ifgreater_5
+    NG_switch_vector2_which --"value2"--> NG_switch_vector2_ifgreater_4
+    NG_switch_vector2_in4 --"in1"--> NG_switch_vector2_ifgreater_4
+    NG_switch_vector2_ifgreater_5 --"in2"--> NG_switch_vector2_ifgreater_4
+    NG_switch_vector2_which --"value2"--> NG_switch_vector2_ifgreater_3
+    NG_switch_vector2_in3 --"in1"--> NG_switch_vector2_ifgreater_3
+    NG_switch_vector2_ifgreater_4 --"in2"--> NG_switch_vector2_ifgreater_3
+    NG_switch_vector2_which --"value2"--> NG_switch_vector2_ifgreater_2
+    NG_switch_vector2_in2 --"in1"--> NG_switch_vector2_ifgreater_2
+    NG_switch_vector2_ifgreater_3 --"in2"--> NG_switch_vector2_ifgreater_2
+    NG_switch_vector2_which --"value2"--> NG_switch_vector2_ifgreater_1
+    NG_switch_vector2_in1 --"in1"--> NG_switch_vector2_ifgreater_1
+    NG_switch_vector2_ifgreater_2 --"in2"--> NG_switch_vector2_ifgreater_1
+    NG_switch_vector2_ifgreater_1 --> NG_switch_vector2_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14610,7 +14999,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_vector3
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_vector3
+    NG_switch_vector3_ifgreater_10[ifgreater_10]
+    NG_switch_vector3_ifgreater_9[ifgreater_9]
+    NG_switch_vector3_ifgreater_8[ifgreater_8]
+    NG_switch_vector3_ifgreater_7[ifgreater_7]
+    NG_switch_vector3_ifgreater_6[ifgreater_6]
+    NG_switch_vector3_ifgreater_5[ifgreater_5]
+    NG_switch_vector3_ifgreater_4[ifgreater_4]
+    NG_switch_vector3_ifgreater_3[ifgreater_3]
+    NG_switch_vector3_ifgreater_2[ifgreater_2]
+    NG_switch_vector3_ifgreater_1[ifgreater_1]
+    style NG_switch_vector3_out  fill:#0C0, color:#FFF
+    NG_switch_vector3_out([out])
+    style NG_switch_vector3_which  fill:#09D, color:#FFF
+    NG_switch_vector3_which([which])
+    style NG_switch_vector3_in10  fill:#09D, color:#FFF
+    NG_switch_vector3_in10([in10])
+    style NG_switch_vector3_in9  fill:#09D, color:#FFF
+    NG_switch_vector3_in9([in9])
+    style NG_switch_vector3_in8  fill:#09D, color:#FFF
+    NG_switch_vector3_in8([in8])
+    style NG_switch_vector3_in7  fill:#09D, color:#FFF
+    NG_switch_vector3_in7([in7])
+    style NG_switch_vector3_in6  fill:#09D, color:#FFF
+    NG_switch_vector3_in6([in6])
+    style NG_switch_vector3_in5  fill:#09D, color:#FFF
+    NG_switch_vector3_in5([in5])
+    style NG_switch_vector3_in4  fill:#09D, color:#FFF
+    NG_switch_vector3_in4([in4])
+    style NG_switch_vector3_in3  fill:#09D, color:#FFF
+    NG_switch_vector3_in3([in3])
+    style NG_switch_vector3_in2  fill:#09D, color:#FFF
+    NG_switch_vector3_in2([in2])
+    style NG_switch_vector3_in1  fill:#09D, color:#FFF
+    NG_switch_vector3_in1([in1])
+    end
+    NG_switch_vector3_which --"value2"--> NG_switch_vector3_ifgreater_10
+    NG_switch_vector3_in10 --"in1"--> NG_switch_vector3_ifgreater_10
+    NG_switch_vector3_which --"value2"--> NG_switch_vector3_ifgreater_9
+    NG_switch_vector3_in9 --"in1"--> NG_switch_vector3_ifgreater_9
+    NG_switch_vector3_ifgreater_10 --"in2"--> NG_switch_vector3_ifgreater_9
+    NG_switch_vector3_which --"value2"--> NG_switch_vector3_ifgreater_8
+    NG_switch_vector3_in8 --"in1"--> NG_switch_vector3_ifgreater_8
+    NG_switch_vector3_ifgreater_9 --"in2"--> NG_switch_vector3_ifgreater_8
+    NG_switch_vector3_which --"value2"--> NG_switch_vector3_ifgreater_7
+    NG_switch_vector3_in7 --"in1"--> NG_switch_vector3_ifgreater_7
+    NG_switch_vector3_ifgreater_8 --"in2"--> NG_switch_vector3_ifgreater_7
+    NG_switch_vector3_which --"value2"--> NG_switch_vector3_ifgreater_6
+    NG_switch_vector3_in6 --"in1"--> NG_switch_vector3_ifgreater_6
+    NG_switch_vector3_ifgreater_7 --"in2"--> NG_switch_vector3_ifgreater_6
+    NG_switch_vector3_which --"value2"--> NG_switch_vector3_ifgreater_5
+    NG_switch_vector3_in5 --"in1"--> NG_switch_vector3_ifgreater_5
+    NG_switch_vector3_ifgreater_6 --"in2"--> NG_switch_vector3_ifgreater_5
+    NG_switch_vector3_which --"value2"--> NG_switch_vector3_ifgreater_4
+    NG_switch_vector3_in4 --"in1"--> NG_switch_vector3_ifgreater_4
+    NG_switch_vector3_ifgreater_5 --"in2"--> NG_switch_vector3_ifgreater_4
+    NG_switch_vector3_which --"value2"--> NG_switch_vector3_ifgreater_3
+    NG_switch_vector3_in3 --"in1"--> NG_switch_vector3_ifgreater_3
+    NG_switch_vector3_ifgreater_4 --"in2"--> NG_switch_vector3_ifgreater_3
+    NG_switch_vector3_which --"value2"--> NG_switch_vector3_ifgreater_2
+    NG_switch_vector3_in2 --"in1"--> NG_switch_vector3_ifgreater_2
+    NG_switch_vector3_ifgreater_3 --"in2"--> NG_switch_vector3_ifgreater_2
+    NG_switch_vector3_which --"value2"--> NG_switch_vector3_ifgreater_1
+    NG_switch_vector3_in1 --"in1"--> NG_switch_vector3_ifgreater_1
+    NG_switch_vector3_ifgreater_2 --"in2"--> NG_switch_vector3_ifgreater_1
+    NG_switch_vector3_ifgreater_1 --> NG_switch_vector3_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14635,7 +15095,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_vector4
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_vector4
+    NG_switch_vector4_ifgreater_10[ifgreater_10]
+    NG_switch_vector4_ifgreater_9[ifgreater_9]
+    NG_switch_vector4_ifgreater_8[ifgreater_8]
+    NG_switch_vector4_ifgreater_7[ifgreater_7]
+    NG_switch_vector4_ifgreater_6[ifgreater_6]
+    NG_switch_vector4_ifgreater_5[ifgreater_5]
+    NG_switch_vector4_ifgreater_4[ifgreater_4]
+    NG_switch_vector4_ifgreater_3[ifgreater_3]
+    NG_switch_vector4_ifgreater_2[ifgreater_2]
+    NG_switch_vector4_ifgreater_1[ifgreater_1]
+    style NG_switch_vector4_out  fill:#0C0, color:#FFF
+    NG_switch_vector4_out([out])
+    style NG_switch_vector4_which  fill:#09D, color:#FFF
+    NG_switch_vector4_which([which])
+    style NG_switch_vector4_in10  fill:#09D, color:#FFF
+    NG_switch_vector4_in10([in10])
+    style NG_switch_vector4_in9  fill:#09D, color:#FFF
+    NG_switch_vector4_in9([in9])
+    style NG_switch_vector4_in8  fill:#09D, color:#FFF
+    NG_switch_vector4_in8([in8])
+    style NG_switch_vector4_in7  fill:#09D, color:#FFF
+    NG_switch_vector4_in7([in7])
+    style NG_switch_vector4_in6  fill:#09D, color:#FFF
+    NG_switch_vector4_in6([in6])
+    style NG_switch_vector4_in5  fill:#09D, color:#FFF
+    NG_switch_vector4_in5([in5])
+    style NG_switch_vector4_in4  fill:#09D, color:#FFF
+    NG_switch_vector4_in4([in4])
+    style NG_switch_vector4_in3  fill:#09D, color:#FFF
+    NG_switch_vector4_in3([in3])
+    style NG_switch_vector4_in2  fill:#09D, color:#FFF
+    NG_switch_vector4_in2([in2])
+    style NG_switch_vector4_in1  fill:#09D, color:#FFF
+    NG_switch_vector4_in1([in1])
+    end
+    NG_switch_vector4_which --"value2"--> NG_switch_vector4_ifgreater_10
+    NG_switch_vector4_in10 --"in1"--> NG_switch_vector4_ifgreater_10
+    NG_switch_vector4_which --"value2"--> NG_switch_vector4_ifgreater_9
+    NG_switch_vector4_in9 --"in1"--> NG_switch_vector4_ifgreater_9
+    NG_switch_vector4_ifgreater_10 --"in2"--> NG_switch_vector4_ifgreater_9
+    NG_switch_vector4_which --"value2"--> NG_switch_vector4_ifgreater_8
+    NG_switch_vector4_in8 --"in1"--> NG_switch_vector4_ifgreater_8
+    NG_switch_vector4_ifgreater_9 --"in2"--> NG_switch_vector4_ifgreater_8
+    NG_switch_vector4_which --"value2"--> NG_switch_vector4_ifgreater_7
+    NG_switch_vector4_in7 --"in1"--> NG_switch_vector4_ifgreater_7
+    NG_switch_vector4_ifgreater_8 --"in2"--> NG_switch_vector4_ifgreater_7
+    NG_switch_vector4_which --"value2"--> NG_switch_vector4_ifgreater_6
+    NG_switch_vector4_in6 --"in1"--> NG_switch_vector4_ifgreater_6
+    NG_switch_vector4_ifgreater_7 --"in2"--> NG_switch_vector4_ifgreater_6
+    NG_switch_vector4_which --"value2"--> NG_switch_vector4_ifgreater_5
+    NG_switch_vector4_in5 --"in1"--> NG_switch_vector4_ifgreater_5
+    NG_switch_vector4_ifgreater_6 --"in2"--> NG_switch_vector4_ifgreater_5
+    NG_switch_vector4_which --"value2"--> NG_switch_vector4_ifgreater_4
+    NG_switch_vector4_in4 --"in1"--> NG_switch_vector4_ifgreater_4
+    NG_switch_vector4_ifgreater_5 --"in2"--> NG_switch_vector4_ifgreater_4
+    NG_switch_vector4_which --"value2"--> NG_switch_vector4_ifgreater_3
+    NG_switch_vector4_in3 --"in1"--> NG_switch_vector4_ifgreater_3
+    NG_switch_vector4_ifgreater_4 --"in2"--> NG_switch_vector4_ifgreater_3
+    NG_switch_vector4_which --"value2"--> NG_switch_vector4_ifgreater_2
+    NG_switch_vector4_in2 --"in1"--> NG_switch_vector4_ifgreater_2
+    NG_switch_vector4_ifgreater_3 --"in2"--> NG_switch_vector4_ifgreater_2
+    NG_switch_vector4_which --"value2"--> NG_switch_vector4_ifgreater_1
+    NG_switch_vector4_in1 --"in1"--> NG_switch_vector4_ifgreater_1
+    NG_switch_vector4_ifgreater_2 --"in2"--> NG_switch_vector4_ifgreater_1
+    NG_switch_vector4_ifgreater_1 --> NG_switch_vector4_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14660,7 +15191,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_matrix33
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_matrix33
+    NG_switch_matrix33_ifgreater_10[ifgreater_10]
+    NG_switch_matrix33_ifgreater_9[ifgreater_9]
+    NG_switch_matrix33_ifgreater_8[ifgreater_8]
+    NG_switch_matrix33_ifgreater_7[ifgreater_7]
+    NG_switch_matrix33_ifgreater_6[ifgreater_6]
+    NG_switch_matrix33_ifgreater_5[ifgreater_5]
+    NG_switch_matrix33_ifgreater_4[ifgreater_4]
+    NG_switch_matrix33_ifgreater_3[ifgreater_3]
+    NG_switch_matrix33_ifgreater_2[ifgreater_2]
+    NG_switch_matrix33_ifgreater_1[ifgreater_1]
+    style NG_switch_matrix33_out  fill:#0C0, color:#FFF
+    NG_switch_matrix33_out([out])
+    style NG_switch_matrix33_which  fill:#09D, color:#FFF
+    NG_switch_matrix33_which([which])
+    style NG_switch_matrix33_in10  fill:#09D, color:#FFF
+    NG_switch_matrix33_in10([in10])
+    style NG_switch_matrix33_in9  fill:#09D, color:#FFF
+    NG_switch_matrix33_in9([in9])
+    style NG_switch_matrix33_in8  fill:#09D, color:#FFF
+    NG_switch_matrix33_in8([in8])
+    style NG_switch_matrix33_in7  fill:#09D, color:#FFF
+    NG_switch_matrix33_in7([in7])
+    style NG_switch_matrix33_in6  fill:#09D, color:#FFF
+    NG_switch_matrix33_in6([in6])
+    style NG_switch_matrix33_in5  fill:#09D, color:#FFF
+    NG_switch_matrix33_in5([in5])
+    style NG_switch_matrix33_in4  fill:#09D, color:#FFF
+    NG_switch_matrix33_in4([in4])
+    style NG_switch_matrix33_in3  fill:#09D, color:#FFF
+    NG_switch_matrix33_in3([in3])
+    style NG_switch_matrix33_in2  fill:#09D, color:#FFF
+    NG_switch_matrix33_in2([in2])
+    style NG_switch_matrix33_in1  fill:#09D, color:#FFF
+    NG_switch_matrix33_in1([in1])
+    end
+    NG_switch_matrix33_which --"value2"--> NG_switch_matrix33_ifgreater_10
+    NG_switch_matrix33_in10 --"in1"--> NG_switch_matrix33_ifgreater_10
+    NG_switch_matrix33_which --"value2"--> NG_switch_matrix33_ifgreater_9
+    NG_switch_matrix33_in9 --"in1"--> NG_switch_matrix33_ifgreater_9
+    NG_switch_matrix33_ifgreater_10 --"in2"--> NG_switch_matrix33_ifgreater_9
+    NG_switch_matrix33_which --"value2"--> NG_switch_matrix33_ifgreater_8
+    NG_switch_matrix33_in8 --"in1"--> NG_switch_matrix33_ifgreater_8
+    NG_switch_matrix33_ifgreater_9 --"in2"--> NG_switch_matrix33_ifgreater_8
+    NG_switch_matrix33_which --"value2"--> NG_switch_matrix33_ifgreater_7
+    NG_switch_matrix33_in7 --"in1"--> NG_switch_matrix33_ifgreater_7
+    NG_switch_matrix33_ifgreater_8 --"in2"--> NG_switch_matrix33_ifgreater_7
+    NG_switch_matrix33_which --"value2"--> NG_switch_matrix33_ifgreater_6
+    NG_switch_matrix33_in6 --"in1"--> NG_switch_matrix33_ifgreater_6
+    NG_switch_matrix33_ifgreater_7 --"in2"--> NG_switch_matrix33_ifgreater_6
+    NG_switch_matrix33_which --"value2"--> NG_switch_matrix33_ifgreater_5
+    NG_switch_matrix33_in5 --"in1"--> NG_switch_matrix33_ifgreater_5
+    NG_switch_matrix33_ifgreater_6 --"in2"--> NG_switch_matrix33_ifgreater_5
+    NG_switch_matrix33_which --"value2"--> NG_switch_matrix33_ifgreater_4
+    NG_switch_matrix33_in4 --"in1"--> NG_switch_matrix33_ifgreater_4
+    NG_switch_matrix33_ifgreater_5 --"in2"--> NG_switch_matrix33_ifgreater_4
+    NG_switch_matrix33_which --"value2"--> NG_switch_matrix33_ifgreater_3
+    NG_switch_matrix33_in3 --"in1"--> NG_switch_matrix33_ifgreater_3
+    NG_switch_matrix33_ifgreater_4 --"in2"--> NG_switch_matrix33_ifgreater_3
+    NG_switch_matrix33_which --"value2"--> NG_switch_matrix33_ifgreater_2
+    NG_switch_matrix33_in2 --"in1"--> NG_switch_matrix33_ifgreater_2
+    NG_switch_matrix33_ifgreater_3 --"in2"--> NG_switch_matrix33_ifgreater_2
+    NG_switch_matrix33_which --"value2"--> NG_switch_matrix33_ifgreater_1
+    NG_switch_matrix33_in1 --"in1"--> NG_switch_matrix33_ifgreater_1
+    NG_switch_matrix33_ifgreater_2 --"in2"--> NG_switch_matrix33_ifgreater_1
+    NG_switch_matrix33_ifgreater_1 --> NG_switch_matrix33_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14685,7 +15287,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_matrix44
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_matrix44
+    NG_switch_matrix44_ifgreater_10[ifgreater_10]
+    NG_switch_matrix44_ifgreater_9[ifgreater_9]
+    NG_switch_matrix44_ifgreater_8[ifgreater_8]
+    NG_switch_matrix44_ifgreater_7[ifgreater_7]
+    NG_switch_matrix44_ifgreater_6[ifgreater_6]
+    NG_switch_matrix44_ifgreater_5[ifgreater_5]
+    NG_switch_matrix44_ifgreater_4[ifgreater_4]
+    NG_switch_matrix44_ifgreater_3[ifgreater_3]
+    NG_switch_matrix44_ifgreater_2[ifgreater_2]
+    NG_switch_matrix44_ifgreater_1[ifgreater_1]
+    style NG_switch_matrix44_out  fill:#0C0, color:#FFF
+    NG_switch_matrix44_out([out])
+    style NG_switch_matrix44_which  fill:#09D, color:#FFF
+    NG_switch_matrix44_which([which])
+    style NG_switch_matrix44_in10  fill:#09D, color:#FFF
+    NG_switch_matrix44_in10([in10])
+    style NG_switch_matrix44_in9  fill:#09D, color:#FFF
+    NG_switch_matrix44_in9([in9])
+    style NG_switch_matrix44_in8  fill:#09D, color:#FFF
+    NG_switch_matrix44_in8([in8])
+    style NG_switch_matrix44_in7  fill:#09D, color:#FFF
+    NG_switch_matrix44_in7([in7])
+    style NG_switch_matrix44_in6  fill:#09D, color:#FFF
+    NG_switch_matrix44_in6([in6])
+    style NG_switch_matrix44_in5  fill:#09D, color:#FFF
+    NG_switch_matrix44_in5([in5])
+    style NG_switch_matrix44_in4  fill:#09D, color:#FFF
+    NG_switch_matrix44_in4([in4])
+    style NG_switch_matrix44_in3  fill:#09D, color:#FFF
+    NG_switch_matrix44_in3([in3])
+    style NG_switch_matrix44_in2  fill:#09D, color:#FFF
+    NG_switch_matrix44_in2([in2])
+    style NG_switch_matrix44_in1  fill:#09D, color:#FFF
+    NG_switch_matrix44_in1([in1])
+    end
+    NG_switch_matrix44_which --"value2"--> NG_switch_matrix44_ifgreater_10
+    NG_switch_matrix44_in10 --"in1"--> NG_switch_matrix44_ifgreater_10
+    NG_switch_matrix44_which --"value2"--> NG_switch_matrix44_ifgreater_9
+    NG_switch_matrix44_in9 --"in1"--> NG_switch_matrix44_ifgreater_9
+    NG_switch_matrix44_ifgreater_10 --"in2"--> NG_switch_matrix44_ifgreater_9
+    NG_switch_matrix44_which --"value2"--> NG_switch_matrix44_ifgreater_8
+    NG_switch_matrix44_in8 --"in1"--> NG_switch_matrix44_ifgreater_8
+    NG_switch_matrix44_ifgreater_9 --"in2"--> NG_switch_matrix44_ifgreater_8
+    NG_switch_matrix44_which --"value2"--> NG_switch_matrix44_ifgreater_7
+    NG_switch_matrix44_in7 --"in1"--> NG_switch_matrix44_ifgreater_7
+    NG_switch_matrix44_ifgreater_8 --"in2"--> NG_switch_matrix44_ifgreater_7
+    NG_switch_matrix44_which --"value2"--> NG_switch_matrix44_ifgreater_6
+    NG_switch_matrix44_in6 --"in1"--> NG_switch_matrix44_ifgreater_6
+    NG_switch_matrix44_ifgreater_7 --"in2"--> NG_switch_matrix44_ifgreater_6
+    NG_switch_matrix44_which --"value2"--> NG_switch_matrix44_ifgreater_5
+    NG_switch_matrix44_in5 --"in1"--> NG_switch_matrix44_ifgreater_5
+    NG_switch_matrix44_ifgreater_6 --"in2"--> NG_switch_matrix44_ifgreater_5
+    NG_switch_matrix44_which --"value2"--> NG_switch_matrix44_ifgreater_4
+    NG_switch_matrix44_in4 --"in1"--> NG_switch_matrix44_ifgreater_4
+    NG_switch_matrix44_ifgreater_5 --"in2"--> NG_switch_matrix44_ifgreater_4
+    NG_switch_matrix44_which --"value2"--> NG_switch_matrix44_ifgreater_3
+    NG_switch_matrix44_in3 --"in1"--> NG_switch_matrix44_ifgreater_3
+    NG_switch_matrix44_ifgreater_4 --"in2"--> NG_switch_matrix44_ifgreater_3
+    NG_switch_matrix44_which --"value2"--> NG_switch_matrix44_ifgreater_2
+    NG_switch_matrix44_in2 --"in1"--> NG_switch_matrix44_ifgreater_2
+    NG_switch_matrix44_ifgreater_3 --"in2"--> NG_switch_matrix44_ifgreater_2
+    NG_switch_matrix44_which --"value2"--> NG_switch_matrix44_ifgreater_1
+    NG_switch_matrix44_in1 --"in1"--> NG_switch_matrix44_ifgreater_1
+    NG_switch_matrix44_ifgreater_2 --"in2"--> NG_switch_matrix44_ifgreater_1
+    NG_switch_matrix44_ifgreater_1 --> NG_switch_matrix44_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14710,7 +15383,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_floatI
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_floatI
+    NG_switch_floatI_ifgreater_10[ifgreater_10]
+    NG_switch_floatI_ifgreater_9[ifgreater_9]
+    NG_switch_floatI_ifgreater_8[ifgreater_8]
+    NG_switch_floatI_ifgreater_7[ifgreater_7]
+    NG_switch_floatI_ifgreater_6[ifgreater_6]
+    NG_switch_floatI_ifgreater_5[ifgreater_5]
+    NG_switch_floatI_ifgreater_4[ifgreater_4]
+    NG_switch_floatI_ifgreater_3[ifgreater_3]
+    NG_switch_floatI_ifgreater_2[ifgreater_2]
+    NG_switch_floatI_ifgreater_1[ifgreater_1]
+    style NG_switch_floatI_out  fill:#0C0, color:#FFF
+    NG_switch_floatI_out([out])
+    style NG_switch_floatI_which  fill:#09D, color:#FFF
+    NG_switch_floatI_which([which])
+    style NG_switch_floatI_in10  fill:#09D, color:#FFF
+    NG_switch_floatI_in10([in10])
+    style NG_switch_floatI_in9  fill:#09D, color:#FFF
+    NG_switch_floatI_in9([in9])
+    style NG_switch_floatI_in8  fill:#09D, color:#FFF
+    NG_switch_floatI_in8([in8])
+    style NG_switch_floatI_in7  fill:#09D, color:#FFF
+    NG_switch_floatI_in7([in7])
+    style NG_switch_floatI_in6  fill:#09D, color:#FFF
+    NG_switch_floatI_in6([in6])
+    style NG_switch_floatI_in5  fill:#09D, color:#FFF
+    NG_switch_floatI_in5([in5])
+    style NG_switch_floatI_in4  fill:#09D, color:#FFF
+    NG_switch_floatI_in4([in4])
+    style NG_switch_floatI_in3  fill:#09D, color:#FFF
+    NG_switch_floatI_in3([in3])
+    style NG_switch_floatI_in2  fill:#09D, color:#FFF
+    NG_switch_floatI_in2([in2])
+    style NG_switch_floatI_in1  fill:#09D, color:#FFF
+    NG_switch_floatI_in1([in1])
+    end
+    NG_switch_floatI_which --"value2"--> NG_switch_floatI_ifgreater_10
+    NG_switch_floatI_in10 --"in1"--> NG_switch_floatI_ifgreater_10
+    NG_switch_floatI_which --"value2"--> NG_switch_floatI_ifgreater_9
+    NG_switch_floatI_in9 --"in1"--> NG_switch_floatI_ifgreater_9
+    NG_switch_floatI_ifgreater_10 --"in2"--> NG_switch_floatI_ifgreater_9
+    NG_switch_floatI_which --"value2"--> NG_switch_floatI_ifgreater_8
+    NG_switch_floatI_in8 --"in1"--> NG_switch_floatI_ifgreater_8
+    NG_switch_floatI_ifgreater_9 --"in2"--> NG_switch_floatI_ifgreater_8
+    NG_switch_floatI_which --"value2"--> NG_switch_floatI_ifgreater_7
+    NG_switch_floatI_in7 --"in1"--> NG_switch_floatI_ifgreater_7
+    NG_switch_floatI_ifgreater_8 --"in2"--> NG_switch_floatI_ifgreater_7
+    NG_switch_floatI_which --"value2"--> NG_switch_floatI_ifgreater_6
+    NG_switch_floatI_in6 --"in1"--> NG_switch_floatI_ifgreater_6
+    NG_switch_floatI_ifgreater_7 --"in2"--> NG_switch_floatI_ifgreater_6
+    NG_switch_floatI_which --"value2"--> NG_switch_floatI_ifgreater_5
+    NG_switch_floatI_in5 --"in1"--> NG_switch_floatI_ifgreater_5
+    NG_switch_floatI_ifgreater_6 --"in2"--> NG_switch_floatI_ifgreater_5
+    NG_switch_floatI_which --"value2"--> NG_switch_floatI_ifgreater_4
+    NG_switch_floatI_in4 --"in1"--> NG_switch_floatI_ifgreater_4
+    NG_switch_floatI_ifgreater_5 --"in2"--> NG_switch_floatI_ifgreater_4
+    NG_switch_floatI_which --"value2"--> NG_switch_floatI_ifgreater_3
+    NG_switch_floatI_in3 --"in1"--> NG_switch_floatI_ifgreater_3
+    NG_switch_floatI_ifgreater_4 --"in2"--> NG_switch_floatI_ifgreater_3
+    NG_switch_floatI_which --"value2"--> NG_switch_floatI_ifgreater_2
+    NG_switch_floatI_in2 --"in1"--> NG_switch_floatI_ifgreater_2
+    NG_switch_floatI_ifgreater_3 --"in2"--> NG_switch_floatI_ifgreater_2
+    NG_switch_floatI_which --"value2"--> NG_switch_floatI_ifgreater_1
+    NG_switch_floatI_in1 --"in1"--> NG_switch_floatI_ifgreater_1
+    NG_switch_floatI_ifgreater_2 --"in2"--> NG_switch_floatI_ifgreater_1
+    NG_switch_floatI_ifgreater_1 --> NG_switch_floatI_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14735,7 +15479,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_color3I
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_color3I
+    NG_switch_color3I_ifgreater_10[ifgreater_10]
+    NG_switch_color3I_ifgreater_9[ifgreater_9]
+    NG_switch_color3I_ifgreater_8[ifgreater_8]
+    NG_switch_color3I_ifgreater_7[ifgreater_7]
+    NG_switch_color3I_ifgreater_6[ifgreater_6]
+    NG_switch_color3I_ifgreater_5[ifgreater_5]
+    NG_switch_color3I_ifgreater_4[ifgreater_4]
+    NG_switch_color3I_ifgreater_3[ifgreater_3]
+    NG_switch_color3I_ifgreater_2[ifgreater_2]
+    NG_switch_color3I_ifgreater_1[ifgreater_1]
+    style NG_switch_color3I_out  fill:#0C0, color:#FFF
+    NG_switch_color3I_out([out])
+    style NG_switch_color3I_which  fill:#09D, color:#FFF
+    NG_switch_color3I_which([which])
+    style NG_switch_color3I_in10  fill:#09D, color:#FFF
+    NG_switch_color3I_in10([in10])
+    style NG_switch_color3I_in9  fill:#09D, color:#FFF
+    NG_switch_color3I_in9([in9])
+    style NG_switch_color3I_in8  fill:#09D, color:#FFF
+    NG_switch_color3I_in8([in8])
+    style NG_switch_color3I_in7  fill:#09D, color:#FFF
+    NG_switch_color3I_in7([in7])
+    style NG_switch_color3I_in6  fill:#09D, color:#FFF
+    NG_switch_color3I_in6([in6])
+    style NG_switch_color3I_in5  fill:#09D, color:#FFF
+    NG_switch_color3I_in5([in5])
+    style NG_switch_color3I_in4  fill:#09D, color:#FFF
+    NG_switch_color3I_in4([in4])
+    style NG_switch_color3I_in3  fill:#09D, color:#FFF
+    NG_switch_color3I_in3([in3])
+    style NG_switch_color3I_in2  fill:#09D, color:#FFF
+    NG_switch_color3I_in2([in2])
+    style NG_switch_color3I_in1  fill:#09D, color:#FFF
+    NG_switch_color3I_in1([in1])
+    end
+    NG_switch_color3I_which --"value2"--> NG_switch_color3I_ifgreater_10
+    NG_switch_color3I_in10 --"in1"--> NG_switch_color3I_ifgreater_10
+    NG_switch_color3I_which --"value2"--> NG_switch_color3I_ifgreater_9
+    NG_switch_color3I_in9 --"in1"--> NG_switch_color3I_ifgreater_9
+    NG_switch_color3I_ifgreater_10 --"in2"--> NG_switch_color3I_ifgreater_9
+    NG_switch_color3I_which --"value2"--> NG_switch_color3I_ifgreater_8
+    NG_switch_color3I_in8 --"in1"--> NG_switch_color3I_ifgreater_8
+    NG_switch_color3I_ifgreater_9 --"in2"--> NG_switch_color3I_ifgreater_8
+    NG_switch_color3I_which --"value2"--> NG_switch_color3I_ifgreater_7
+    NG_switch_color3I_in7 --"in1"--> NG_switch_color3I_ifgreater_7
+    NG_switch_color3I_ifgreater_8 --"in2"--> NG_switch_color3I_ifgreater_7
+    NG_switch_color3I_which --"value2"--> NG_switch_color3I_ifgreater_6
+    NG_switch_color3I_in6 --"in1"--> NG_switch_color3I_ifgreater_6
+    NG_switch_color3I_ifgreater_7 --"in2"--> NG_switch_color3I_ifgreater_6
+    NG_switch_color3I_which --"value2"--> NG_switch_color3I_ifgreater_5
+    NG_switch_color3I_in5 --"in1"--> NG_switch_color3I_ifgreater_5
+    NG_switch_color3I_ifgreater_6 --"in2"--> NG_switch_color3I_ifgreater_5
+    NG_switch_color3I_which --"value2"--> NG_switch_color3I_ifgreater_4
+    NG_switch_color3I_in4 --"in1"--> NG_switch_color3I_ifgreater_4
+    NG_switch_color3I_ifgreater_5 --"in2"--> NG_switch_color3I_ifgreater_4
+    NG_switch_color3I_which --"value2"--> NG_switch_color3I_ifgreater_3
+    NG_switch_color3I_in3 --"in1"--> NG_switch_color3I_ifgreater_3
+    NG_switch_color3I_ifgreater_4 --"in2"--> NG_switch_color3I_ifgreater_3
+    NG_switch_color3I_which --"value2"--> NG_switch_color3I_ifgreater_2
+    NG_switch_color3I_in2 --"in1"--> NG_switch_color3I_ifgreater_2
+    NG_switch_color3I_ifgreater_3 --"in2"--> NG_switch_color3I_ifgreater_2
+    NG_switch_color3I_which --"value2"--> NG_switch_color3I_ifgreater_1
+    NG_switch_color3I_in1 --"in1"--> NG_switch_color3I_ifgreater_1
+    NG_switch_color3I_ifgreater_2 --"in2"--> NG_switch_color3I_ifgreater_1
+    NG_switch_color3I_ifgreater_1 --> NG_switch_color3I_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14760,7 +15575,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_color4I
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_color4I
+    NG_switch_color4I_ifgreater_10[ifgreater_10]
+    NG_switch_color4I_ifgreater_9[ifgreater_9]
+    NG_switch_color4I_ifgreater_8[ifgreater_8]
+    NG_switch_color4I_ifgreater_7[ifgreater_7]
+    NG_switch_color4I_ifgreater_6[ifgreater_6]
+    NG_switch_color4I_ifgreater_5[ifgreater_5]
+    NG_switch_color4I_ifgreater_4[ifgreater_4]
+    NG_switch_color4I_ifgreater_3[ifgreater_3]
+    NG_switch_color4I_ifgreater_2[ifgreater_2]
+    NG_switch_color4I_ifgreater_1[ifgreater_1]
+    style NG_switch_color4I_out  fill:#0C0, color:#FFF
+    NG_switch_color4I_out([out])
+    style NG_switch_color4I_which  fill:#09D, color:#FFF
+    NG_switch_color4I_which([which])
+    style NG_switch_color4I_in10  fill:#09D, color:#FFF
+    NG_switch_color4I_in10([in10])
+    style NG_switch_color4I_in9  fill:#09D, color:#FFF
+    NG_switch_color4I_in9([in9])
+    style NG_switch_color4I_in8  fill:#09D, color:#FFF
+    NG_switch_color4I_in8([in8])
+    style NG_switch_color4I_in7  fill:#09D, color:#FFF
+    NG_switch_color4I_in7([in7])
+    style NG_switch_color4I_in6  fill:#09D, color:#FFF
+    NG_switch_color4I_in6([in6])
+    style NG_switch_color4I_in5  fill:#09D, color:#FFF
+    NG_switch_color4I_in5([in5])
+    style NG_switch_color4I_in4  fill:#09D, color:#FFF
+    NG_switch_color4I_in4([in4])
+    style NG_switch_color4I_in3  fill:#09D, color:#FFF
+    NG_switch_color4I_in3([in3])
+    style NG_switch_color4I_in2  fill:#09D, color:#FFF
+    NG_switch_color4I_in2([in2])
+    style NG_switch_color4I_in1  fill:#09D, color:#FFF
+    NG_switch_color4I_in1([in1])
+    end
+    NG_switch_color4I_which --"value2"--> NG_switch_color4I_ifgreater_10
+    NG_switch_color4I_in10 --"in1"--> NG_switch_color4I_ifgreater_10
+    NG_switch_color4I_which --"value2"--> NG_switch_color4I_ifgreater_9
+    NG_switch_color4I_in9 --"in1"--> NG_switch_color4I_ifgreater_9
+    NG_switch_color4I_ifgreater_10 --"in2"--> NG_switch_color4I_ifgreater_9
+    NG_switch_color4I_which --"value2"--> NG_switch_color4I_ifgreater_8
+    NG_switch_color4I_in8 --"in1"--> NG_switch_color4I_ifgreater_8
+    NG_switch_color4I_ifgreater_9 --"in2"--> NG_switch_color4I_ifgreater_8
+    NG_switch_color4I_which --"value2"--> NG_switch_color4I_ifgreater_7
+    NG_switch_color4I_in7 --"in1"--> NG_switch_color4I_ifgreater_7
+    NG_switch_color4I_ifgreater_8 --"in2"--> NG_switch_color4I_ifgreater_7
+    NG_switch_color4I_which --"value2"--> NG_switch_color4I_ifgreater_6
+    NG_switch_color4I_in6 --"in1"--> NG_switch_color4I_ifgreater_6
+    NG_switch_color4I_ifgreater_7 --"in2"--> NG_switch_color4I_ifgreater_6
+    NG_switch_color4I_which --"value2"--> NG_switch_color4I_ifgreater_5
+    NG_switch_color4I_in5 --"in1"--> NG_switch_color4I_ifgreater_5
+    NG_switch_color4I_ifgreater_6 --"in2"--> NG_switch_color4I_ifgreater_5
+    NG_switch_color4I_which --"value2"--> NG_switch_color4I_ifgreater_4
+    NG_switch_color4I_in4 --"in1"--> NG_switch_color4I_ifgreater_4
+    NG_switch_color4I_ifgreater_5 --"in2"--> NG_switch_color4I_ifgreater_4
+    NG_switch_color4I_which --"value2"--> NG_switch_color4I_ifgreater_3
+    NG_switch_color4I_in3 --"in1"--> NG_switch_color4I_ifgreater_3
+    NG_switch_color4I_ifgreater_4 --"in2"--> NG_switch_color4I_ifgreater_3
+    NG_switch_color4I_which --"value2"--> NG_switch_color4I_ifgreater_2
+    NG_switch_color4I_in2 --"in1"--> NG_switch_color4I_ifgreater_2
+    NG_switch_color4I_ifgreater_3 --"in2"--> NG_switch_color4I_ifgreater_2
+    NG_switch_color4I_which --"value2"--> NG_switch_color4I_ifgreater_1
+    NG_switch_color4I_in1 --"in1"--> NG_switch_color4I_ifgreater_1
+    NG_switch_color4I_ifgreater_2 --"in2"--> NG_switch_color4I_ifgreater_1
+    NG_switch_color4I_ifgreater_1 --> NG_switch_color4I_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14785,7 +15671,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_vector2I
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_vector2I
+    NG_switch_vector2I_ifgreater_10[ifgreater_10]
+    NG_switch_vector2I_ifgreater_9[ifgreater_9]
+    NG_switch_vector2I_ifgreater_8[ifgreater_8]
+    NG_switch_vector2I_ifgreater_7[ifgreater_7]
+    NG_switch_vector2I_ifgreater_6[ifgreater_6]
+    NG_switch_vector2I_ifgreater_5[ifgreater_5]
+    NG_switch_vector2I_ifgreater_4[ifgreater_4]
+    NG_switch_vector2I_ifgreater_3[ifgreater_3]
+    NG_switch_vector2I_ifgreater_2[ifgreater_2]
+    NG_switch_vector2I_ifgreater_1[ifgreater_1]
+    style NG_switch_vector2I_out  fill:#0C0, color:#FFF
+    NG_switch_vector2I_out([out])
+    style NG_switch_vector2I_which  fill:#09D, color:#FFF
+    NG_switch_vector2I_which([which])
+    style NG_switch_vector2I_in10  fill:#09D, color:#FFF
+    NG_switch_vector2I_in10([in10])
+    style NG_switch_vector2I_in9  fill:#09D, color:#FFF
+    NG_switch_vector2I_in9([in9])
+    style NG_switch_vector2I_in8  fill:#09D, color:#FFF
+    NG_switch_vector2I_in8([in8])
+    style NG_switch_vector2I_in7  fill:#09D, color:#FFF
+    NG_switch_vector2I_in7([in7])
+    style NG_switch_vector2I_in6  fill:#09D, color:#FFF
+    NG_switch_vector2I_in6([in6])
+    style NG_switch_vector2I_in5  fill:#09D, color:#FFF
+    NG_switch_vector2I_in5([in5])
+    style NG_switch_vector2I_in4  fill:#09D, color:#FFF
+    NG_switch_vector2I_in4([in4])
+    style NG_switch_vector2I_in3  fill:#09D, color:#FFF
+    NG_switch_vector2I_in3([in3])
+    style NG_switch_vector2I_in2  fill:#09D, color:#FFF
+    NG_switch_vector2I_in2([in2])
+    style NG_switch_vector2I_in1  fill:#09D, color:#FFF
+    NG_switch_vector2I_in1([in1])
+    end
+    NG_switch_vector2I_which --"value2"--> NG_switch_vector2I_ifgreater_10
+    NG_switch_vector2I_in10 --"in1"--> NG_switch_vector2I_ifgreater_10
+    NG_switch_vector2I_which --"value2"--> NG_switch_vector2I_ifgreater_9
+    NG_switch_vector2I_in9 --"in1"--> NG_switch_vector2I_ifgreater_9
+    NG_switch_vector2I_ifgreater_10 --"in2"--> NG_switch_vector2I_ifgreater_9
+    NG_switch_vector2I_which --"value2"--> NG_switch_vector2I_ifgreater_8
+    NG_switch_vector2I_in8 --"in1"--> NG_switch_vector2I_ifgreater_8
+    NG_switch_vector2I_ifgreater_9 --"in2"--> NG_switch_vector2I_ifgreater_8
+    NG_switch_vector2I_which --"value2"--> NG_switch_vector2I_ifgreater_7
+    NG_switch_vector2I_in7 --"in1"--> NG_switch_vector2I_ifgreater_7
+    NG_switch_vector2I_ifgreater_8 --"in2"--> NG_switch_vector2I_ifgreater_7
+    NG_switch_vector2I_which --"value2"--> NG_switch_vector2I_ifgreater_6
+    NG_switch_vector2I_in6 --"in1"--> NG_switch_vector2I_ifgreater_6
+    NG_switch_vector2I_ifgreater_7 --"in2"--> NG_switch_vector2I_ifgreater_6
+    NG_switch_vector2I_which --"value2"--> NG_switch_vector2I_ifgreater_5
+    NG_switch_vector2I_in5 --"in1"--> NG_switch_vector2I_ifgreater_5
+    NG_switch_vector2I_ifgreater_6 --"in2"--> NG_switch_vector2I_ifgreater_5
+    NG_switch_vector2I_which --"value2"--> NG_switch_vector2I_ifgreater_4
+    NG_switch_vector2I_in4 --"in1"--> NG_switch_vector2I_ifgreater_4
+    NG_switch_vector2I_ifgreater_5 --"in2"--> NG_switch_vector2I_ifgreater_4
+    NG_switch_vector2I_which --"value2"--> NG_switch_vector2I_ifgreater_3
+    NG_switch_vector2I_in3 --"in1"--> NG_switch_vector2I_ifgreater_3
+    NG_switch_vector2I_ifgreater_4 --"in2"--> NG_switch_vector2I_ifgreater_3
+    NG_switch_vector2I_which --"value2"--> NG_switch_vector2I_ifgreater_2
+    NG_switch_vector2I_in2 --"in1"--> NG_switch_vector2I_ifgreater_2
+    NG_switch_vector2I_ifgreater_3 --"in2"--> NG_switch_vector2I_ifgreater_2
+    NG_switch_vector2I_which --"value2"--> NG_switch_vector2I_ifgreater_1
+    NG_switch_vector2I_in1 --"in1"--> NG_switch_vector2I_ifgreater_1
+    NG_switch_vector2I_ifgreater_2 --"in2"--> NG_switch_vector2I_ifgreater_1
+    NG_switch_vector2I_ifgreater_1 --> NG_switch_vector2I_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14810,7 +15767,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_vector3I
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_vector3I
+    NG_switch_vector3I_ifgreater_10[ifgreater_10]
+    NG_switch_vector3I_ifgreater_9[ifgreater_9]
+    NG_switch_vector3I_ifgreater_8[ifgreater_8]
+    NG_switch_vector3I_ifgreater_7[ifgreater_7]
+    NG_switch_vector3I_ifgreater_6[ifgreater_6]
+    NG_switch_vector3I_ifgreater_5[ifgreater_5]
+    NG_switch_vector3I_ifgreater_4[ifgreater_4]
+    NG_switch_vector3I_ifgreater_3[ifgreater_3]
+    NG_switch_vector3I_ifgreater_2[ifgreater_2]
+    NG_switch_vector3I_ifgreater_1[ifgreater_1]
+    style NG_switch_vector3I_out  fill:#0C0, color:#FFF
+    NG_switch_vector3I_out([out])
+    style NG_switch_vector3I_which  fill:#09D, color:#FFF
+    NG_switch_vector3I_which([which])
+    style NG_switch_vector3I_in10  fill:#09D, color:#FFF
+    NG_switch_vector3I_in10([in10])
+    style NG_switch_vector3I_in9  fill:#09D, color:#FFF
+    NG_switch_vector3I_in9([in9])
+    style NG_switch_vector3I_in8  fill:#09D, color:#FFF
+    NG_switch_vector3I_in8([in8])
+    style NG_switch_vector3I_in7  fill:#09D, color:#FFF
+    NG_switch_vector3I_in7([in7])
+    style NG_switch_vector3I_in6  fill:#09D, color:#FFF
+    NG_switch_vector3I_in6([in6])
+    style NG_switch_vector3I_in5  fill:#09D, color:#FFF
+    NG_switch_vector3I_in5([in5])
+    style NG_switch_vector3I_in4  fill:#09D, color:#FFF
+    NG_switch_vector3I_in4([in4])
+    style NG_switch_vector3I_in3  fill:#09D, color:#FFF
+    NG_switch_vector3I_in3([in3])
+    style NG_switch_vector3I_in2  fill:#09D, color:#FFF
+    NG_switch_vector3I_in2([in2])
+    style NG_switch_vector3I_in1  fill:#09D, color:#FFF
+    NG_switch_vector3I_in1([in1])
+    end
+    NG_switch_vector3I_which --"value2"--> NG_switch_vector3I_ifgreater_10
+    NG_switch_vector3I_in10 --"in1"--> NG_switch_vector3I_ifgreater_10
+    NG_switch_vector3I_which --"value2"--> NG_switch_vector3I_ifgreater_9
+    NG_switch_vector3I_in9 --"in1"--> NG_switch_vector3I_ifgreater_9
+    NG_switch_vector3I_ifgreater_10 --"in2"--> NG_switch_vector3I_ifgreater_9
+    NG_switch_vector3I_which --"value2"--> NG_switch_vector3I_ifgreater_8
+    NG_switch_vector3I_in8 --"in1"--> NG_switch_vector3I_ifgreater_8
+    NG_switch_vector3I_ifgreater_9 --"in2"--> NG_switch_vector3I_ifgreater_8
+    NG_switch_vector3I_which --"value2"--> NG_switch_vector3I_ifgreater_7
+    NG_switch_vector3I_in7 --"in1"--> NG_switch_vector3I_ifgreater_7
+    NG_switch_vector3I_ifgreater_8 --"in2"--> NG_switch_vector3I_ifgreater_7
+    NG_switch_vector3I_which --"value2"--> NG_switch_vector3I_ifgreater_6
+    NG_switch_vector3I_in6 --"in1"--> NG_switch_vector3I_ifgreater_6
+    NG_switch_vector3I_ifgreater_7 --"in2"--> NG_switch_vector3I_ifgreater_6
+    NG_switch_vector3I_which --"value2"--> NG_switch_vector3I_ifgreater_5
+    NG_switch_vector3I_in5 --"in1"--> NG_switch_vector3I_ifgreater_5
+    NG_switch_vector3I_ifgreater_6 --"in2"--> NG_switch_vector3I_ifgreater_5
+    NG_switch_vector3I_which --"value2"--> NG_switch_vector3I_ifgreater_4
+    NG_switch_vector3I_in4 --"in1"--> NG_switch_vector3I_ifgreater_4
+    NG_switch_vector3I_ifgreater_5 --"in2"--> NG_switch_vector3I_ifgreater_4
+    NG_switch_vector3I_which --"value2"--> NG_switch_vector3I_ifgreater_3
+    NG_switch_vector3I_in3 --"in1"--> NG_switch_vector3I_ifgreater_3
+    NG_switch_vector3I_ifgreater_4 --"in2"--> NG_switch_vector3I_ifgreater_3
+    NG_switch_vector3I_which --"value2"--> NG_switch_vector3I_ifgreater_2
+    NG_switch_vector3I_in2 --"in1"--> NG_switch_vector3I_ifgreater_2
+    NG_switch_vector3I_ifgreater_3 --"in2"--> NG_switch_vector3I_ifgreater_2
+    NG_switch_vector3I_which --"value2"--> NG_switch_vector3I_ifgreater_1
+    NG_switch_vector3I_in1 --"in1"--> NG_switch_vector3I_ifgreater_1
+    NG_switch_vector3I_ifgreater_2 --"in2"--> NG_switch_vector3I_ifgreater_1
+    NG_switch_vector3I_ifgreater_1 --> NG_switch_vector3I_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14835,7 +15863,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_vector4I
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_vector4I
+    NG_switch_vector4I_ifgreater_10[ifgreater_10]
+    NG_switch_vector4I_ifgreater_9[ifgreater_9]
+    NG_switch_vector4I_ifgreater_8[ifgreater_8]
+    NG_switch_vector4I_ifgreater_7[ifgreater_7]
+    NG_switch_vector4I_ifgreater_6[ifgreater_6]
+    NG_switch_vector4I_ifgreater_5[ifgreater_5]
+    NG_switch_vector4I_ifgreater_4[ifgreater_4]
+    NG_switch_vector4I_ifgreater_3[ifgreater_3]
+    NG_switch_vector4I_ifgreater_2[ifgreater_2]
+    NG_switch_vector4I_ifgreater_1[ifgreater_1]
+    style NG_switch_vector4I_out  fill:#0C0, color:#FFF
+    NG_switch_vector4I_out([out])
+    style NG_switch_vector4I_which  fill:#09D, color:#FFF
+    NG_switch_vector4I_which([which])
+    style NG_switch_vector4I_in10  fill:#09D, color:#FFF
+    NG_switch_vector4I_in10([in10])
+    style NG_switch_vector4I_in9  fill:#09D, color:#FFF
+    NG_switch_vector4I_in9([in9])
+    style NG_switch_vector4I_in8  fill:#09D, color:#FFF
+    NG_switch_vector4I_in8([in8])
+    style NG_switch_vector4I_in7  fill:#09D, color:#FFF
+    NG_switch_vector4I_in7([in7])
+    style NG_switch_vector4I_in6  fill:#09D, color:#FFF
+    NG_switch_vector4I_in6([in6])
+    style NG_switch_vector4I_in5  fill:#09D, color:#FFF
+    NG_switch_vector4I_in5([in5])
+    style NG_switch_vector4I_in4  fill:#09D, color:#FFF
+    NG_switch_vector4I_in4([in4])
+    style NG_switch_vector4I_in3  fill:#09D, color:#FFF
+    NG_switch_vector4I_in3([in3])
+    style NG_switch_vector4I_in2  fill:#09D, color:#FFF
+    NG_switch_vector4I_in2([in2])
+    style NG_switch_vector4I_in1  fill:#09D, color:#FFF
+    NG_switch_vector4I_in1([in1])
+    end
+    NG_switch_vector4I_which --"value2"--> NG_switch_vector4I_ifgreater_10
+    NG_switch_vector4I_in10 --"in1"--> NG_switch_vector4I_ifgreater_10
+    NG_switch_vector4I_which --"value2"--> NG_switch_vector4I_ifgreater_9
+    NG_switch_vector4I_in9 --"in1"--> NG_switch_vector4I_ifgreater_9
+    NG_switch_vector4I_ifgreater_10 --"in2"--> NG_switch_vector4I_ifgreater_9
+    NG_switch_vector4I_which --"value2"--> NG_switch_vector4I_ifgreater_8
+    NG_switch_vector4I_in8 --"in1"--> NG_switch_vector4I_ifgreater_8
+    NG_switch_vector4I_ifgreater_9 --"in2"--> NG_switch_vector4I_ifgreater_8
+    NG_switch_vector4I_which --"value2"--> NG_switch_vector4I_ifgreater_7
+    NG_switch_vector4I_in7 --"in1"--> NG_switch_vector4I_ifgreater_7
+    NG_switch_vector4I_ifgreater_8 --"in2"--> NG_switch_vector4I_ifgreater_7
+    NG_switch_vector4I_which --"value2"--> NG_switch_vector4I_ifgreater_6
+    NG_switch_vector4I_in6 --"in1"--> NG_switch_vector4I_ifgreater_6
+    NG_switch_vector4I_ifgreater_7 --"in2"--> NG_switch_vector4I_ifgreater_6
+    NG_switch_vector4I_which --"value2"--> NG_switch_vector4I_ifgreater_5
+    NG_switch_vector4I_in5 --"in1"--> NG_switch_vector4I_ifgreater_5
+    NG_switch_vector4I_ifgreater_6 --"in2"--> NG_switch_vector4I_ifgreater_5
+    NG_switch_vector4I_which --"value2"--> NG_switch_vector4I_ifgreater_4
+    NG_switch_vector4I_in4 --"in1"--> NG_switch_vector4I_ifgreater_4
+    NG_switch_vector4I_ifgreater_5 --"in2"--> NG_switch_vector4I_ifgreater_4
+    NG_switch_vector4I_which --"value2"--> NG_switch_vector4I_ifgreater_3
+    NG_switch_vector4I_in3 --"in1"--> NG_switch_vector4I_ifgreater_3
+    NG_switch_vector4I_ifgreater_4 --"in2"--> NG_switch_vector4I_ifgreater_3
+    NG_switch_vector4I_which --"value2"--> NG_switch_vector4I_ifgreater_2
+    NG_switch_vector4I_in2 --"in1"--> NG_switch_vector4I_ifgreater_2
+    NG_switch_vector4I_ifgreater_3 --"in2"--> NG_switch_vector4I_ifgreater_2
+    NG_switch_vector4I_which --"value2"--> NG_switch_vector4I_ifgreater_1
+    NG_switch_vector4I_in1 --"in1"--> NG_switch_vector4I_ifgreater_1
+    NG_switch_vector4I_ifgreater_2 --"in2"--> NG_switch_vector4I_ifgreater_1
+    NG_switch_vector4I_ifgreater_1 --> NG_switch_vector4I_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14860,7 +15959,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_matrix33I
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_matrix33I
+    NG_switch_matrix33I_ifgreater_10[ifgreater_10]
+    NG_switch_matrix33I_ifgreater_9[ifgreater_9]
+    NG_switch_matrix33I_ifgreater_8[ifgreater_8]
+    NG_switch_matrix33I_ifgreater_7[ifgreater_7]
+    NG_switch_matrix33I_ifgreater_6[ifgreater_6]
+    NG_switch_matrix33I_ifgreater_5[ifgreater_5]
+    NG_switch_matrix33I_ifgreater_4[ifgreater_4]
+    NG_switch_matrix33I_ifgreater_3[ifgreater_3]
+    NG_switch_matrix33I_ifgreater_2[ifgreater_2]
+    NG_switch_matrix33I_ifgreater_1[ifgreater_1]
+    style NG_switch_matrix33I_out  fill:#0C0, color:#FFF
+    NG_switch_matrix33I_out([out])
+    style NG_switch_matrix33I_which  fill:#09D, color:#FFF
+    NG_switch_matrix33I_which([which])
+    style NG_switch_matrix33I_in10  fill:#09D, color:#FFF
+    NG_switch_matrix33I_in10([in10])
+    style NG_switch_matrix33I_in9  fill:#09D, color:#FFF
+    NG_switch_matrix33I_in9([in9])
+    style NG_switch_matrix33I_in8  fill:#09D, color:#FFF
+    NG_switch_matrix33I_in8([in8])
+    style NG_switch_matrix33I_in7  fill:#09D, color:#FFF
+    NG_switch_matrix33I_in7([in7])
+    style NG_switch_matrix33I_in6  fill:#09D, color:#FFF
+    NG_switch_matrix33I_in6([in6])
+    style NG_switch_matrix33I_in5  fill:#09D, color:#FFF
+    NG_switch_matrix33I_in5([in5])
+    style NG_switch_matrix33I_in4  fill:#09D, color:#FFF
+    NG_switch_matrix33I_in4([in4])
+    style NG_switch_matrix33I_in3  fill:#09D, color:#FFF
+    NG_switch_matrix33I_in3([in3])
+    style NG_switch_matrix33I_in2  fill:#09D, color:#FFF
+    NG_switch_matrix33I_in2([in2])
+    style NG_switch_matrix33I_in1  fill:#09D, color:#FFF
+    NG_switch_matrix33I_in1([in1])
+    end
+    NG_switch_matrix33I_which --"value2"--> NG_switch_matrix33I_ifgreater_10
+    NG_switch_matrix33I_in10 --"in1"--> NG_switch_matrix33I_ifgreater_10
+    NG_switch_matrix33I_which --"value2"--> NG_switch_matrix33I_ifgreater_9
+    NG_switch_matrix33I_in9 --"in1"--> NG_switch_matrix33I_ifgreater_9
+    NG_switch_matrix33I_ifgreater_10 --"in2"--> NG_switch_matrix33I_ifgreater_9
+    NG_switch_matrix33I_which --"value2"--> NG_switch_matrix33I_ifgreater_8
+    NG_switch_matrix33I_in8 --"in1"--> NG_switch_matrix33I_ifgreater_8
+    NG_switch_matrix33I_ifgreater_9 --"in2"--> NG_switch_matrix33I_ifgreater_8
+    NG_switch_matrix33I_which --"value2"--> NG_switch_matrix33I_ifgreater_7
+    NG_switch_matrix33I_in7 --"in1"--> NG_switch_matrix33I_ifgreater_7
+    NG_switch_matrix33I_ifgreater_8 --"in2"--> NG_switch_matrix33I_ifgreater_7
+    NG_switch_matrix33I_which --"value2"--> NG_switch_matrix33I_ifgreater_6
+    NG_switch_matrix33I_in6 --"in1"--> NG_switch_matrix33I_ifgreater_6
+    NG_switch_matrix33I_ifgreater_7 --"in2"--> NG_switch_matrix33I_ifgreater_6
+    NG_switch_matrix33I_which --"value2"--> NG_switch_matrix33I_ifgreater_5
+    NG_switch_matrix33I_in5 --"in1"--> NG_switch_matrix33I_ifgreater_5
+    NG_switch_matrix33I_ifgreater_6 --"in2"--> NG_switch_matrix33I_ifgreater_5
+    NG_switch_matrix33I_which --"value2"--> NG_switch_matrix33I_ifgreater_4
+    NG_switch_matrix33I_in4 --"in1"--> NG_switch_matrix33I_ifgreater_4
+    NG_switch_matrix33I_ifgreater_5 --"in2"--> NG_switch_matrix33I_ifgreater_4
+    NG_switch_matrix33I_which --"value2"--> NG_switch_matrix33I_ifgreater_3
+    NG_switch_matrix33I_in3 --"in1"--> NG_switch_matrix33I_ifgreater_3
+    NG_switch_matrix33I_ifgreater_4 --"in2"--> NG_switch_matrix33I_ifgreater_3
+    NG_switch_matrix33I_which --"value2"--> NG_switch_matrix33I_ifgreater_2
+    NG_switch_matrix33I_in2 --"in1"--> NG_switch_matrix33I_ifgreater_2
+    NG_switch_matrix33I_ifgreater_3 --"in2"--> NG_switch_matrix33I_ifgreater_2
+    NG_switch_matrix33I_which --"value2"--> NG_switch_matrix33I_ifgreater_1
+    NG_switch_matrix33I_in1 --"in1"--> NG_switch_matrix33I_ifgreater_1
+    NG_switch_matrix33I_ifgreater_2 --"in2"--> NG_switch_matrix33I_ifgreater_1
+    NG_switch_matrix33I_ifgreater_1 --> NG_switch_matrix33I_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14885,7 +16055,78 @@ graph TB
 * *Group*: conditional
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_switch_matrix44I
+
+
+```mermaid
+graph TB
+    subgraph NG_switch_matrix44I
+    NG_switch_matrix44I_ifgreater_10[ifgreater_10]
+    NG_switch_matrix44I_ifgreater_9[ifgreater_9]
+    NG_switch_matrix44I_ifgreater_8[ifgreater_8]
+    NG_switch_matrix44I_ifgreater_7[ifgreater_7]
+    NG_switch_matrix44I_ifgreater_6[ifgreater_6]
+    NG_switch_matrix44I_ifgreater_5[ifgreater_5]
+    NG_switch_matrix44I_ifgreater_4[ifgreater_4]
+    NG_switch_matrix44I_ifgreater_3[ifgreater_3]
+    NG_switch_matrix44I_ifgreater_2[ifgreater_2]
+    NG_switch_matrix44I_ifgreater_1[ifgreater_1]
+    style NG_switch_matrix44I_out  fill:#0C0, color:#FFF
+    NG_switch_matrix44I_out([out])
+    style NG_switch_matrix44I_which  fill:#09D, color:#FFF
+    NG_switch_matrix44I_which([which])
+    style NG_switch_matrix44I_in10  fill:#09D, color:#FFF
+    NG_switch_matrix44I_in10([in10])
+    style NG_switch_matrix44I_in9  fill:#09D, color:#FFF
+    NG_switch_matrix44I_in9([in9])
+    style NG_switch_matrix44I_in8  fill:#09D, color:#FFF
+    NG_switch_matrix44I_in8([in8])
+    style NG_switch_matrix44I_in7  fill:#09D, color:#FFF
+    NG_switch_matrix44I_in7([in7])
+    style NG_switch_matrix44I_in6  fill:#09D, color:#FFF
+    NG_switch_matrix44I_in6([in6])
+    style NG_switch_matrix44I_in5  fill:#09D, color:#FFF
+    NG_switch_matrix44I_in5([in5])
+    style NG_switch_matrix44I_in4  fill:#09D, color:#FFF
+    NG_switch_matrix44I_in4([in4])
+    style NG_switch_matrix44I_in3  fill:#09D, color:#FFF
+    NG_switch_matrix44I_in3([in3])
+    style NG_switch_matrix44I_in2  fill:#09D, color:#FFF
+    NG_switch_matrix44I_in2([in2])
+    style NG_switch_matrix44I_in1  fill:#09D, color:#FFF
+    NG_switch_matrix44I_in1([in1])
+    end
+    NG_switch_matrix44I_which --"value2"--> NG_switch_matrix44I_ifgreater_10
+    NG_switch_matrix44I_in10 --"in1"--> NG_switch_matrix44I_ifgreater_10
+    NG_switch_matrix44I_which --"value2"--> NG_switch_matrix44I_ifgreater_9
+    NG_switch_matrix44I_in9 --"in1"--> NG_switch_matrix44I_ifgreater_9
+    NG_switch_matrix44I_ifgreater_10 --"in2"--> NG_switch_matrix44I_ifgreater_9
+    NG_switch_matrix44I_which --"value2"--> NG_switch_matrix44I_ifgreater_8
+    NG_switch_matrix44I_in8 --"in1"--> NG_switch_matrix44I_ifgreater_8
+    NG_switch_matrix44I_ifgreater_9 --"in2"--> NG_switch_matrix44I_ifgreater_8
+    NG_switch_matrix44I_which --"value2"--> NG_switch_matrix44I_ifgreater_7
+    NG_switch_matrix44I_in7 --"in1"--> NG_switch_matrix44I_ifgreater_7
+    NG_switch_matrix44I_ifgreater_8 --"in2"--> NG_switch_matrix44I_ifgreater_7
+    NG_switch_matrix44I_which --"value2"--> NG_switch_matrix44I_ifgreater_6
+    NG_switch_matrix44I_in6 --"in1"--> NG_switch_matrix44I_ifgreater_6
+    NG_switch_matrix44I_ifgreater_7 --"in2"--> NG_switch_matrix44I_ifgreater_6
+    NG_switch_matrix44I_which --"value2"--> NG_switch_matrix44I_ifgreater_5
+    NG_switch_matrix44I_in5 --"in1"--> NG_switch_matrix44I_ifgreater_5
+    NG_switch_matrix44I_ifgreater_6 --"in2"--> NG_switch_matrix44I_ifgreater_5
+    NG_switch_matrix44I_which --"value2"--> NG_switch_matrix44I_ifgreater_4
+    NG_switch_matrix44I_in4 --"in1"--> NG_switch_matrix44I_ifgreater_4
+    NG_switch_matrix44I_ifgreater_5 --"in2"--> NG_switch_matrix44I_ifgreater_4
+    NG_switch_matrix44I_which --"value2"--> NG_switch_matrix44I_ifgreater_3
+    NG_switch_matrix44I_in3 --"in1"--> NG_switch_matrix44I_ifgreater_3
+    NG_switch_matrix44I_ifgreater_4 --"in2"--> NG_switch_matrix44I_ifgreater_3
+    NG_switch_matrix44I_which --"value2"--> NG_switch_matrix44I_ifgreater_2
+    NG_switch_matrix44I_in2 --"in1"--> NG_switch_matrix44I_ifgreater_2
+    NG_switch_matrix44I_ifgreater_3 --"in2"--> NG_switch_matrix44I_ifgreater_2
+    NG_switch_matrix44I_which --"value2"--> NG_switch_matrix44I_ifgreater_1
+    NG_switch_matrix44I_in1 --"in1"--> NG_switch_matrix44I_ifgreater_1
+    NG_switch_matrix44I_ifgreater_2 --"in2"--> NG_switch_matrix44I_ifgreater_1
+    NG_switch_matrix44I_ifgreater_1 --> NG_switch_matrix44I_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14911,7 +16152,23 @@ graph TB
 * *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_convert_float_color3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_float_color3
+    NG_convert_float_color3_combine[combine]
+    style NG_convert_float_color3_out  fill:#0C0, color:#FFF
+    NG_convert_float_color3_out([out])
+    style NG_convert_float_color3_in  fill:#09D, color:#FFF
+    NG_convert_float_color3_in([in])
+    end
+    NG_convert_float_color3_in --"in1"--> NG_convert_float_color3_combine
+    NG_convert_float_color3_in --"in2"--> NG_convert_float_color3_combine
+    NG_convert_float_color3_in --"in3"--> NG_convert_float_color3_combine
+    NG_convert_float_color3_combine --> NG_convert_float_color3_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14926,7 +16183,24 @@ graph TB
 * *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_convert_float_color4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_float_color4
+    NG_convert_float_color4_combine[combine]
+    style NG_convert_float_color4_out  fill:#0C0, color:#FFF
+    NG_convert_float_color4_out([out])
+    style NG_convert_float_color4_in  fill:#09D, color:#FFF
+    NG_convert_float_color4_in([in])
+    end
+    NG_convert_float_color4_in --"in1"--> NG_convert_float_color4_combine
+    NG_convert_float_color4_in --"in2"--> NG_convert_float_color4_combine
+    NG_convert_float_color4_in --"in3"--> NG_convert_float_color4_combine
+    NG_convert_float_color4_in --"in4"--> NG_convert_float_color4_combine
+    NG_convert_float_color4_combine --> NG_convert_float_color4_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14941,7 +16215,22 @@ graph TB
 * *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_convert_float_vector2
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_float_vector2
+    NG_convert_float_vector2_combine[combine]
+    style NG_convert_float_vector2_out  fill:#0C0, color:#FFF
+    NG_convert_float_vector2_out([out])
+    style NG_convert_float_vector2_in  fill:#09D, color:#FFF
+    NG_convert_float_vector2_in([in])
+    end
+    NG_convert_float_vector2_in --"in1"--> NG_convert_float_vector2_combine
+    NG_convert_float_vector2_in --"in2"--> NG_convert_float_vector2_combine
+    NG_convert_float_vector2_combine --> NG_convert_float_vector2_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14956,7 +16245,23 @@ graph TB
 * *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_convert_float_vector3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_float_vector3
+    NG_convert_float_vector3_combine[combine]
+    style NG_convert_float_vector3_out  fill:#0C0, color:#FFF
+    NG_convert_float_vector3_out([out])
+    style NG_convert_float_vector3_in  fill:#09D, color:#FFF
+    NG_convert_float_vector3_in([in])
+    end
+    NG_convert_float_vector3_in --"in1"--> NG_convert_float_vector3_combine
+    NG_convert_float_vector3_in --"in2"--> NG_convert_float_vector3_combine
+    NG_convert_float_vector3_in --"in3"--> NG_convert_float_vector3_combine
+    NG_convert_float_vector3_combine --> NG_convert_float_vector3_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -14971,13 +16276,357 @@ graph TB
 * *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_convert_float_vector4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_float_vector4
+    NG_convert_float_vector4_combine[combine]
+    style NG_convert_float_vector4_out  fill:#0C0, color:#FFF
+    NG_convert_float_vector4_out([out])
+    style NG_convert_float_vector4_in  fill:#09D, color:#FFF
+    NG_convert_float_vector4_in([in])
+    end
+    NG_convert_float_vector4_in --"in1"--> NG_convert_float_vector4_combine
+    NG_convert_float_vector4_in --"in2"--> NG_convert_float_vector4_combine
+    NG_convert_float_vector4_in --"in3"--> NG_convert_float_vector4_combine
+    NG_convert_float_vector4_in --"in4"--> NG_convert_float_vector4_combine
+    NG_convert_float_vector4_combine --> NG_convert_float_vector4_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_color3_color4</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_color3_color4
+* *Type*: color4
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_color3_color4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_color3_color4
+    NG_convert_color3_color4_separate[separate]
+    NG_convert_color3_color4_combine[combine]
+    style NG_convert_color3_color4_out  fill:#0C0, color:#FFF
+    NG_convert_color3_color4_out([out])
+    style NG_convert_color3_color4_in  fill:#09D, color:#FFF
+    NG_convert_color3_color4_in([in])
+    end
+    NG_convert_color3_color4_in --"in"--> NG_convert_color3_color4_separate
+    NG_convert_color3_color4_separate --"outr-->in1"--> NG_convert_color3_color4_combine
+    NG_convert_color3_color4_separate --"outg-->in2"--> NG_convert_color3_color4_combine
+    NG_convert_color3_color4_separate --"outb-->in3"--> NG_convert_color3_color4_combine
+    NG_convert_color3_color4_combine --> NG_convert_color3_color4_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_color3_vector2</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_color3_vector2
+* *Type*: vector2
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_color3_vector2
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_color3_vector2
+    NG_convert_color3_vector2_separate[separate]
+    NG_convert_color3_vector2_combine[combine]
+    style NG_convert_color3_vector2_out  fill:#0C0, color:#FFF
+    NG_convert_color3_vector2_out([out])
+    style NG_convert_color3_vector2_in  fill:#09D, color:#FFF
+    NG_convert_color3_vector2_in([in])
+    end
+    NG_convert_color3_vector2_in --"in"--> NG_convert_color3_vector2_separate
+    NG_convert_color3_vector2_separate --"outr-->in1"--> NG_convert_color3_vector2_combine
+    NG_convert_color3_vector2_separate --"outg-->in2"--> NG_convert_color3_vector2_combine
+    NG_convert_color3_vector2_combine --> NG_convert_color3_vector2_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_color3_vector3</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_color3_vector3
+* *Type*: vector3
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_color3_vector3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_color3_vector3
+    NG_convert_color3_vector3_separate[separate]
+    NG_convert_color3_vector3_combine[combine]
+    style NG_convert_color3_vector3_out  fill:#0C0, color:#FFF
+    NG_convert_color3_vector3_out([out])
+    style NG_convert_color3_vector3_in  fill:#09D, color:#FFF
+    NG_convert_color3_vector3_in([in])
+    end
+    NG_convert_color3_vector3_in --"in"--> NG_convert_color3_vector3_separate
+    NG_convert_color3_vector3_separate --"outr-->in1"--> NG_convert_color3_vector3_combine
+    NG_convert_color3_vector3_separate --"outg-->in2"--> NG_convert_color3_vector3_combine
+    NG_convert_color3_vector3_separate --"outb-->in3"--> NG_convert_color3_vector3_combine
+    NG_convert_color3_vector3_combine --> NG_convert_color3_vector3_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_color3_vector4</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_color3_vector4
+* *Type*: vector4
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_color3_vector4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_color3_vector4
+    NG_convert_color3_vector4_separate[separate]
+    NG_convert_color3_vector4_combine[combine]
+    style NG_convert_color3_vector4_out  fill:#0C0, color:#FFF
+    NG_convert_color3_vector4_out([out])
+    style NG_convert_color3_vector4_in  fill:#09D, color:#FFF
+    NG_convert_color3_vector4_in([in])
+    end
+    NG_convert_color3_vector4_in --"in"--> NG_convert_color3_vector4_separate
+    NG_convert_color3_vector4_separate --"outr-->in1"--> NG_convert_color3_vector4_combine
+    NG_convert_color3_vector4_separate --"outg-->in2"--> NG_convert_color3_vector4_combine
+    NG_convert_color3_vector4_separate --"outb-->in3"--> NG_convert_color3_vector4_combine
+    NG_convert_color3_vector4_combine --> NG_convert_color3_vector4_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_color4_color3</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_color4_color3
+* *Type*: color3
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_color4_color3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_color4_color3
+    NG_convert_color4_color3_separate[separate]
+    NG_convert_color4_color3_combine[combine]
+    style NG_convert_color4_color3_out  fill:#0C0, color:#FFF
+    NG_convert_color4_color3_out([out])
+    style NG_convert_color4_color3_in  fill:#09D, color:#FFF
+    NG_convert_color4_color3_in([in])
+    end
+    NG_convert_color4_color3_in --"in"--> NG_convert_color4_color3_separate
+    NG_convert_color4_color3_separate --"outr-->in1"--> NG_convert_color4_color3_combine
+    NG_convert_color4_color3_separate --"outg-->in2"--> NG_convert_color4_color3_combine
+    NG_convert_color4_color3_separate --"outb-->in3"--> NG_convert_color4_color3_combine
+    NG_convert_color4_color3_combine --> NG_convert_color4_color3_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_color4_vector2</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_color4_vector2
+* *Type*: vector2
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_color4_vector2
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_color4_vector2
+    NG_convert_color4_vector2_separate[separate]
+    NG_convert_color4_vector2_combine[combine]
+    style NG_convert_color4_vector2_out  fill:#0C0, color:#FFF
+    NG_convert_color4_vector2_out([out])
+    style NG_convert_color4_vector2_in  fill:#09D, color:#FFF
+    NG_convert_color4_vector2_in([in])
+    end
+    NG_convert_color4_vector2_in --"in"--> NG_convert_color4_vector2_separate
+    NG_convert_color4_vector2_separate --"outr-->in1"--> NG_convert_color4_vector2_combine
+    NG_convert_color4_vector2_separate --"outg-->in2"--> NG_convert_color4_vector2_combine
+    NG_convert_color4_vector2_combine --> NG_convert_color4_vector2_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_color4_vector3</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_color4_vector3
+* *Type*: vector3
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_color4_vector3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_color4_vector3
+    NG_convert_color4_vector3_separate[separate]
+    NG_convert_color4_vector3_combine[combine]
+    style NG_convert_color4_vector3_out  fill:#0C0, color:#FFF
+    NG_convert_color4_vector3_out([out])
+    style NG_convert_color4_vector3_in  fill:#09D, color:#FFF
+    NG_convert_color4_vector3_in([in])
+    end
+    NG_convert_color4_vector3_in --"in"--> NG_convert_color4_vector3_separate
+    NG_convert_color4_vector3_separate --"outr-->in1"--> NG_convert_color4_vector3_combine
+    NG_convert_color4_vector3_separate --"outg-->in2"--> NG_convert_color4_vector3_combine
+    NG_convert_color4_vector3_separate --"outb-->in3"--> NG_convert_color4_vector3_combine
+    NG_convert_color4_vector3_combine --> NG_convert_color4_vector3_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_color4_vector4</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_color4_vector4
+* *Type*: vector4
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_color4_vector4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_color4_vector4
+    NG_convert_color4_vector4_separate[separate]
+    NG_convert_color4_vector4_combine[combine]
+    style NG_convert_color4_vector4_out  fill:#0C0, color:#FFF
+    NG_convert_color4_vector4_out([out])
+    style NG_convert_color4_vector4_in  fill:#09D, color:#FFF
+    NG_convert_color4_vector4_in([in])
+    end
+    NG_convert_color4_vector4_in --"in"--> NG_convert_color4_vector4_separate
+    NG_convert_color4_vector4_separate --"outr-->in1"--> NG_convert_color4_vector4_combine
+    NG_convert_color4_vector4_separate --"outg-->in2"--> NG_convert_color4_vector4_combine
+    NG_convert_color4_vector4_separate --"outb-->in3"--> NG_convert_color4_vector4_combine
+    NG_convert_color4_vector4_separate --"outa-->in4"--> NG_convert_color4_vector4_combine
+    NG_convert_color4_vector4_combine --> NG_convert_color4_vector4_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_vector2_color3</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_vector2_color3
+* *Type*: color3
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_vector2_color3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_vector2_color3
+    NG_convert_vector2_color3_separate[separate]
+    NG_convert_vector2_color3_combine[combine]
+    style NG_convert_vector2_color3_out  fill:#0C0, color:#FFF
+    NG_convert_vector2_color3_out([out])
+    style NG_convert_vector2_color3_in  fill:#09D, color:#FFF
+    NG_convert_vector2_color3_in([in])
+    end
+    NG_convert_vector2_color3_in --"in"--> NG_convert_vector2_color3_separate
+    NG_convert_vector2_color3_separate --"outx-->in1"--> NG_convert_vector2_color3_combine
+    NG_convert_vector2_color3_separate --"outy-->in2"--> NG_convert_vector2_color3_combine
+    NG_convert_vector2_color3_combine --> NG_convert_vector2_color3_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_vector2_color4</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_vector2_color4
+* *Type*: color4
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_vector2_color4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_vector2_color4
+    NG_convert_vector2_color4_separate[separate]
+    NG_convert_vector2_color4_combine[combine]
+    style NG_convert_vector2_color4_out  fill:#0C0, color:#FFF
+    NG_convert_vector2_color4_out([out])
+    style NG_convert_vector2_color4_in  fill:#09D, color:#FFF
+    NG_convert_vector2_color4_in([in])
+    end
+    NG_convert_vector2_color4_in --"in"--> NG_convert_vector2_color4_separate
+    NG_convert_vector2_color4_separate --"outx-->in1"--> NG_convert_vector2_color4_combine
+    NG_convert_vector2_color4_separate --"outy-->in2"--> NG_convert_vector2_color4_combine
+    NG_convert_vector2_color4_combine --> NG_convert_vector2_color4_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_convert_vector2_vector3</summary>
 <p>
  
@@ -14986,13 +16635,62 @@ graph TB
 * *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_convert_vector2_vector3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_vector2_vector3
+    NG_convert_vector2_vector3_separate[separate]
+    NG_convert_vector2_vector3_combine[combine]
+    style NG_convert_vector2_vector3_out  fill:#0C0, color:#FFF
+    NG_convert_vector2_vector3_out([out])
+    style NG_convert_vector2_vector3_in  fill:#09D, color:#FFF
+    NG_convert_vector2_vector3_in([in])
+    end
+    NG_convert_vector2_vector3_in --"in"--> NG_convert_vector2_vector3_separate
+    NG_convert_vector2_vector3_separate --"outx-->in1"--> NG_convert_vector2_vector3_combine
+    NG_convert_vector2_vector3_separate --"outy-->in2"--> NG_convert_vector2_vector3_combine
+    NG_convert_vector2_vector3_combine --> NG_convert_vector2_vector3_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_vector2_vector4</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_vector2_vector4
+* *Type*: vector4
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_vector2_vector4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_vector2_vector4
+    NG_convert_vector2_vector4_separate[separate]
+    NG_convert_vector2_vector4_combine[combine]
+    style NG_convert_vector2_vector4_out  fill:#0C0, color:#FFF
+    NG_convert_vector2_vector4_out([out])
+    style NG_convert_vector2_vector4_in  fill:#09D, color:#FFF
+    NG_convert_vector2_vector4_in([in])
+    end
+    NG_convert_vector2_vector4_in --"in"--> NG_convert_vector2_vector4_separate
+    NG_convert_vector2_vector4_separate --"outx-->in1"--> NG_convert_vector2_vector4_combine
+    NG_convert_vector2_vector4_separate --"outy-->in2"--> NG_convert_vector2_vector4_combine
+    NG_convert_vector2_vector4_combine --> NG_convert_vector2_vector4_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_convert_vector3_color3</summary>
 <p>
  
@@ -15001,13 +16699,64 @@ graph TB
 * *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_convert_vector3_color3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_vector3_color3
+    NG_convert_vector3_color3_separate[separate]
+    NG_convert_vector3_color3_combine[combine]
+    style NG_convert_vector3_color3_out  fill:#0C0, color:#FFF
+    NG_convert_vector3_color3_out([out])
+    style NG_convert_vector3_color3_in  fill:#09D, color:#FFF
+    NG_convert_vector3_color3_in([in])
+    end
+    NG_convert_vector3_color3_in --"in"--> NG_convert_vector3_color3_separate
+    NG_convert_vector3_color3_separate --"outx-->in1"--> NG_convert_vector3_color3_combine
+    NG_convert_vector3_color3_separate --"outy-->in2"--> NG_convert_vector3_color3_combine
+    NG_convert_vector3_color3_separate --"outz-->in3"--> NG_convert_vector3_color3_combine
+    NG_convert_vector3_color3_combine --> NG_convert_vector3_color3_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_vector3_color4</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_vector3_color4
+* *Type*: color4
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_vector3_color4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_vector3_color4
+    NG_convert_vector3_color4_separate[separate]
+    NG_convert_vector3_color4_combine[combine]
+    style NG_convert_vector3_color4_out  fill:#0C0, color:#FFF
+    NG_convert_vector3_color4_out([out])
+    style NG_convert_vector3_color4_in  fill:#09D, color:#FFF
+    NG_convert_vector3_color4_in([in])
+    end
+    NG_convert_vector3_color4_in --"in"--> NG_convert_vector3_color4_separate
+    NG_convert_vector3_color4_separate --"outx-->in1"--> NG_convert_vector3_color4_combine
+    NG_convert_vector3_color4_separate --"outy-->in2"--> NG_convert_vector3_color4_combine
+    NG_convert_vector3_color4_separate --"outz-->in3"--> NG_convert_vector3_color4_combine
+    NG_convert_vector3_color4_combine --> NG_convert_vector3_color4_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_convert_vector3_vector2</summary>
 <p>
  
@@ -15016,7 +16765,24 @@ graph TB
 * *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_convert_vector3_vector2
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_vector3_vector2
+    NG_convert_vector3_vector2_separate[separate]
+    NG_convert_vector3_vector2_combine[combine]
+    style NG_convert_vector3_vector2_out  fill:#0C0, color:#FFF
+    NG_convert_vector3_vector2_out([out])
+    style NG_convert_vector3_vector2_in  fill:#09D, color:#FFF
+    NG_convert_vector3_vector2_in([in])
+    end
+    NG_convert_vector3_vector2_in --"in"--> NG_convert_vector3_vector2_separate
+    NG_convert_vector3_vector2_separate --"outx-->in1"--> NG_convert_vector3_vector2_combine
+    NG_convert_vector3_vector2_separate --"outy-->in2"--> NG_convert_vector3_vector2_combine
+    NG_convert_vector3_vector2_combine --> NG_convert_vector3_vector2_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -15031,13 +16797,64 @@ graph TB
 * *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_convert_vector3_vector4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_vector3_vector4
+    NG_convert_vector3_vector4_separate[separate]
+    NG_convert_vector3_vector4_combine[combine]
+    style NG_convert_vector3_vector4_out  fill:#0C0, color:#FFF
+    NG_convert_vector3_vector4_out([out])
+    style NG_convert_vector3_vector4_in  fill:#09D, color:#FFF
+    NG_convert_vector3_vector4_in([in])
+    end
+    NG_convert_vector3_vector4_in --"in"--> NG_convert_vector3_vector4_separate
+    NG_convert_vector3_vector4_separate --"outx-->in1"--> NG_convert_vector3_vector4_combine
+    NG_convert_vector3_vector4_separate --"outy-->in2"--> NG_convert_vector3_vector4_combine
+    NG_convert_vector3_vector4_separate --"outz-->in3"--> NG_convert_vector3_vector4_combine
+    NG_convert_vector3_vector4_combine --> NG_convert_vector3_vector4_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_vector4_color3</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_vector4_color3
+* *Type*: color3
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_vector4_color3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_vector4_color3
+    NG_convert_vector4_color3_separate[separate]
+    NG_convert_vector4_color3_combine[combine]
+    style NG_convert_vector4_color3_out  fill:#0C0, color:#FFF
+    NG_convert_vector4_color3_out([out])
+    style NG_convert_vector4_color3_in  fill:#09D, color:#FFF
+    NG_convert_vector4_color3_in([in])
+    end
+    NG_convert_vector4_color3_in --"in"--> NG_convert_vector4_color3_separate
+    NG_convert_vector4_color3_separate --"outx-->in1"--> NG_convert_vector4_color3_combine
+    NG_convert_vector4_color3_separate --"outy-->in2"--> NG_convert_vector4_color3_combine
+    NG_convert_vector4_color3_separate --"outz-->in3"--> NG_convert_vector4_color3_combine
+    NG_convert_vector4_color3_combine --> NG_convert_vector4_color3_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_convert_vector4_color4</summary>
 <p>
  
@@ -15046,13 +16863,64 @@ graph TB
 * *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_convert_vector4_color4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_vector4_color4
+    NG_convert_vector4_color4_separate[separate]
+    NG_convert_vector4_color4_combine[combine]
+    style NG_convert_vector4_color4_out  fill:#0C0, color:#FFF
+    NG_convert_vector4_color4_out([out])
+    style NG_convert_vector4_color4_in  fill:#09D, color:#FFF
+    NG_convert_vector4_color4_in([in])
+    end
+    NG_convert_vector4_color4_in --"in"--> NG_convert_vector4_color4_separate
+    NG_convert_vector4_color4_separate --"outx-->in1"--> NG_convert_vector4_color4_combine
+    NG_convert_vector4_color4_separate --"outy-->in2"--> NG_convert_vector4_color4_combine
+    NG_convert_vector4_color4_separate --"outz-->in3"--> NG_convert_vector4_color4_combine
+    NG_convert_vector4_color4_separate --"outw-->in4"--> NG_convert_vector4_color4_combine
+    NG_convert_vector4_color4_combine --> NG_convert_vector4_color4_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_vector4_vector2</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_vector4_vector2
+* *Type*: vector2
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_vector4_vector2
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_vector4_vector2
+    NG_convert_vector4_vector2_separate[separate]
+    NG_convert_vector4_vector2_combine[combine]
+    style NG_convert_vector4_vector2_out  fill:#0C0, color:#FFF
+    NG_convert_vector4_vector2_out([out])
+    style NG_convert_vector4_vector2_in  fill:#09D, color:#FFF
+    NG_convert_vector4_vector2_in([in])
+    end
+    NG_convert_vector4_vector2_in --"in"--> NG_convert_vector4_vector2_separate
+    NG_convert_vector4_vector2_separate --"outx-->in1"--> NG_convert_vector4_vector2_combine
+    NG_convert_vector4_vector2_separate --"outy-->in2"--> NG_convert_vector4_vector2_combine
+    NG_convert_vector4_vector2_combine --> NG_convert_vector4_vector2_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_convert_vector4_vector3</summary>
 <p>
  
@@ -15061,73 +16929,31 @@ graph TB
 * *Group*: channel
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_convert_vector4_vector3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_vector4_vector3
+    NG_convert_vector4_vector3_separate[separate]
+    NG_convert_vector4_vector3_combine[combine]
+    style NG_convert_vector4_vector3_out  fill:#0C0, color:#FFF
+    NG_convert_vector4_vector3_out([out])
+    style NG_convert_vector4_vector3_in  fill:#09D, color:#FFF
+    NG_convert_vector4_vector3_in([in])
+    end
+    NG_convert_vector4_vector3_in --"in"--> NG_convert_vector4_vector3_separate
+    NG_convert_vector4_vector3_separate --"outx-->in1"--> NG_convert_vector4_vector3_combine
+    NG_convert_vector4_vector3_separate --"outy-->in2"--> NG_convert_vector4_vector3_combine
+    NG_convert_vector4_vector3_separate --"outz-->in3"--> NG_convert_vector4_vector3_combine
+    NG_convert_vector4_vector3_combine --> NG_convert_vector4_vector3_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details open><summary>ND_convert_color3_vector3</summary>
-<p>
- 
-* *Nodedef*: ND_convert_color3_vector3
-* *Type*: vector3
-* *Group*: channel
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
-<details open><summary>ND_convert_color4_vector4</summary>
-<p>
- 
-* *Nodedef*: ND_convert_color4_vector4
-* *Type*: vector4
-* *Group*: channel
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
-<details open><summary>ND_convert_color3_color4</summary>
-<p>
- 
-* *Nodedef*: ND_convert_color3_color4
-* *Type*: color4
-* *Group*: channel
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
-<details open><summary>ND_convert_color4_color3</summary>
-<p>
- 
-* *Nodedef*: ND_convert_color4_color3
-* *Type*: color3
-* *Group*: channel
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_convert_boolean_float</summary>
 <p>
  
@@ -15143,6 +16969,191 @@ graph TB
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_boolean_color3</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_boolean_color3
+* *Type*: color3
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_boolean_color3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_boolean_color3
+    NG_convert_boolean_color3_convert_to_float[convert_to_float]
+    NG_convert_boolean_color3_convert[convert]
+    style NG_convert_boolean_color3_out  fill:#0C0, color:#FFF
+    NG_convert_boolean_color3_out([out])
+    style NG_convert_boolean_color3_in  fill:#09D, color:#FFF
+    NG_convert_boolean_color3_in([in])
+    end
+    NG_convert_boolean_color3_in --"in"--> NG_convert_boolean_color3_convert_to_float
+    NG_convert_boolean_color3_convert_to_float --"in"--> NG_convert_boolean_color3_convert
+    NG_convert_boolean_color3_convert --> NG_convert_boolean_color3_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_boolean_color4</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_boolean_color4
+* *Type*: color4
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_boolean_color4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_boolean_color4
+    NG_convert_boolean_color4_convert_to_float[convert_to_float]
+    NG_convert_boolean_color4_convert[convert]
+    style NG_convert_boolean_color4_out  fill:#0C0, color:#FFF
+    NG_convert_boolean_color4_out([out])
+    style NG_convert_boolean_color4_in  fill:#09D, color:#FFF
+    NG_convert_boolean_color4_in([in])
+    end
+    NG_convert_boolean_color4_in --"in"--> NG_convert_boolean_color4_convert_to_float
+    NG_convert_boolean_color4_convert_to_float --"in"--> NG_convert_boolean_color4_convert
+    NG_convert_boolean_color4_convert --> NG_convert_boolean_color4_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_boolean_vector2</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_boolean_vector2
+* *Type*: vector2
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_boolean_vector2
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_boolean_vector2
+    NG_convert_boolean_vector2_convert_to_float[convert_to_float]
+    NG_convert_boolean_vector2_convert[convert]
+    style NG_convert_boolean_vector2_out  fill:#0C0, color:#FFF
+    NG_convert_boolean_vector2_out([out])
+    style NG_convert_boolean_vector2_in  fill:#09D, color:#FFF
+    NG_convert_boolean_vector2_in([in])
+    end
+    NG_convert_boolean_vector2_in --"in"--> NG_convert_boolean_vector2_convert_to_float
+    NG_convert_boolean_vector2_convert_to_float --"in"--> NG_convert_boolean_vector2_convert
+    NG_convert_boolean_vector2_convert --> NG_convert_boolean_vector2_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_boolean_vector3</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_boolean_vector3
+* *Type*: vector3
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_boolean_vector3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_boolean_vector3
+    NG_convert_boolean_vector3_convert_to_float[convert_to_float]
+    NG_convert_boolean_vector3_convert[convert]
+    style NG_convert_boolean_vector3_out  fill:#0C0, color:#FFF
+    NG_convert_boolean_vector3_out([out])
+    style NG_convert_boolean_vector3_in  fill:#09D, color:#FFF
+    NG_convert_boolean_vector3_in([in])
+    end
+    NG_convert_boolean_vector3_in --"in"--> NG_convert_boolean_vector3_convert_to_float
+    NG_convert_boolean_vector3_convert_to_float --"in"--> NG_convert_boolean_vector3_convert
+    NG_convert_boolean_vector3_convert --> NG_convert_boolean_vector3_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_boolean_vector4</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_boolean_vector4
+* *Type*: vector4
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_boolean_vector4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_boolean_vector4
+    NG_convert_boolean_vector4_convert_to_float[convert_to_float]
+    NG_convert_boolean_vector4_convert[convert]
+    style NG_convert_boolean_vector4_out  fill:#0C0, color:#FFF
+    NG_convert_boolean_vector4_out([out])
+    style NG_convert_boolean_vector4_in  fill:#09D, color:#FFF
+    NG_convert_boolean_vector4_in([in])
+    end
+    NG_convert_boolean_vector4_in --"in"--> NG_convert_boolean_vector4_convert_to_float
+    NG_convert_boolean_vector4_convert_to_float --"in"--> NG_convert_boolean_vector4_convert
+    NG_convert_boolean_vector4_convert --> NG_convert_boolean_vector4_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_boolean_integer</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_boolean_integer
+* *Type*: integer
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_boolean_integer
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_boolean_integer
+    style NG_convert_boolean_integer_ifequal  fill:#C72, color:#FFF
+    NG_convert_boolean_integer_ifequal{ifequal}
+    style NG_convert_boolean_integer_out  fill:#0C0, color:#FFF
+    NG_convert_boolean_integer_out([out])
+    style NG_convert_boolean_integer_in  fill:#09D, color:#FFF
+    NG_convert_boolean_integer_in([in])
+    end
+    NG_convert_boolean_integer_in --"value1"--> NG_convert_boolean_integer_ifequal
+    NG_convert_boolean_integer_ifequal --> NG_convert_boolean_integer_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| *out* | integer | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_convert_integer_float</summary>
 <p>
  
@@ -15158,6 +17169,193 @@ graph TB
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_integer_color3</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_integer_color3
+* *Type*: color3
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_integer_color3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_integer_color3
+    NG_convert_integer_color3_convert_to_float[convert_to_float]
+    NG_convert_integer_color3_convert[convert]
+    style NG_convert_integer_color3_out  fill:#0C0, color:#FFF
+    NG_convert_integer_color3_out([out])
+    style NG_convert_integer_color3_in  fill:#09D, color:#FFF
+    NG_convert_integer_color3_in([in])
+    end
+    NG_convert_integer_color3_in --"in"--> NG_convert_integer_color3_convert_to_float
+    NG_convert_integer_color3_convert_to_float --"in"--> NG_convert_integer_color3_convert
+    NG_convert_integer_color3_convert --> NG_convert_integer_color3_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_integer_color4</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_integer_color4
+* *Type*: color4
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_integer_color4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_integer_color4
+    NG_convert_integer_color4_convert_to_float[convert_to_float]
+    NG_convert_integer_color4_convert[convert]
+    style NG_convert_integer_color4_out  fill:#0C0, color:#FFF
+    NG_convert_integer_color4_out([out])
+    style NG_convert_integer_color4_in  fill:#09D, color:#FFF
+    NG_convert_integer_color4_in([in])
+    end
+    NG_convert_integer_color4_in --"in"--> NG_convert_integer_color4_convert_to_float
+    NG_convert_integer_color4_convert_to_float --"in"--> NG_convert_integer_color4_convert
+    NG_convert_integer_color4_convert --> NG_convert_integer_color4_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_integer_vector2</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_integer_vector2
+* *Type*: vector2
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_integer_vector2
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_integer_vector2
+    NG_convert_integer_vector2_convert_to_float[convert_to_float]
+    NG_convert_integer_vector2_convert[convert]
+    style NG_convert_integer_vector2_out  fill:#0C0, color:#FFF
+    NG_convert_integer_vector2_out([out])
+    style NG_convert_integer_vector2_in  fill:#09D, color:#FFF
+    NG_convert_integer_vector2_in([in])
+    end
+    NG_convert_integer_vector2_in --"in"--> NG_convert_integer_vector2_convert_to_float
+    NG_convert_integer_vector2_convert_to_float --"in"--> NG_convert_integer_vector2_convert
+    NG_convert_integer_vector2_convert --> NG_convert_integer_vector2_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_integer_vector3</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_integer_vector3
+* *Type*: vector3
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_integer_vector3
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_integer_vector3
+    NG_convert_integer_vector3_convert_to_float[convert_to_float]
+    NG_convert_integer_vector3_convert[convert]
+    style NG_convert_integer_vector3_out  fill:#0C0, color:#FFF
+    NG_convert_integer_vector3_out([out])
+    style NG_convert_integer_vector3_in  fill:#09D, color:#FFF
+    NG_convert_integer_vector3_in([in])
+    end
+    NG_convert_integer_vector3_in --"in"--> NG_convert_integer_vector3_convert_to_float
+    NG_convert_integer_vector3_convert_to_float --"in"--> NG_convert_integer_vector3_convert
+    NG_convert_integer_vector3_convert --> NG_convert_integer_vector3_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_integer_vector4</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_integer_vector4
+* *Type*: vector4
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_integer_vector4
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_integer_vector4
+    NG_convert_integer_vector4_convert_to_float[convert_to_float]
+    NG_convert_integer_vector4_convert[convert]
+    style NG_convert_integer_vector4_out  fill:#0C0, color:#FFF
+    NG_convert_integer_vector4_out([out])
+    style NG_convert_integer_vector4_in  fill:#09D, color:#FFF
+    NG_convert_integer_vector4_in([in])
+    end
+    NG_convert_integer_vector4_in --"in"--> NG_convert_integer_vector4_convert_to_float
+    NG_convert_integer_vector4_convert_to_float --"in"--> NG_convert_integer_vector4_convert
+    NG_convert_integer_vector4_convert --> NG_convert_integer_vector4_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_convert_integer_boolean</summary>
+<p>
+ 
+* *Nodedef*: ND_convert_integer_boolean
+* *Type*: boolean
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_convert_integer_boolean
+
+
+```mermaid
+graph TB
+    subgraph NG_convert_integer_boolean
+    style NG_convert_integer_boolean_ifequal  fill:#C72, color:#FFF
+    NG_convert_integer_boolean_ifequal{ifequal}
+    NG_convert_integer_boolean_not[not]
+    style NG_convert_integer_boolean_out  fill:#0C0, color:#FFF
+    NG_convert_integer_boolean_out([out])
+    style NG_convert_integer_boolean_in  fill:#09D, color:#FFF
+    NG_convert_integer_boolean_in([in])
+    end
+    NG_convert_integer_boolean_in --"value1"--> NG_convert_integer_boolean_ifequal
+    NG_convert_integer_boolean_ifequal --"in"--> NG_convert_integer_boolean_not
+    NG_convert_integer_boolean_not --> NG_convert_integer_boolean_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_convert_color3_surfaceshader</summary>
 <p>
  
@@ -16024,6 +18222,100 @@ graph TB
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **scale** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *and*
+<details open><summary>ND_logical_and</summary>
+<p>
+ 
+* *Nodedef*: ND_logical_and
+* *Type*: boolean
+* *Group*: conditional
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| **in2** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *or*
+<details open><summary>ND_logical_or</summary>
+<p>
+ 
+* *Nodedef*: ND_logical_or
+* *Type*: boolean
+* *Group*: conditional
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| **in2** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *xor*
+<details open><summary>ND_logical_xor</summary>
+<p>
+ 
+* *Nodedef*: ND_logical_xor
+* *Type*: boolean
+* *Group*: conditional
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_logical_xor
+
+
+```mermaid
+graph TB
+    subgraph NG_logical_xor
+    NG_logical_xor_not_in1[not_in1]
+    NG_logical_xor_not_in2[not_in2]
+    NG_logical_xor_in1_and_not_in2[in1_and_not_in2]
+    NG_logical_xor_in2_and_not_in1[in2_and_not_in1]
+    NG_logical_xor_or[or]
+    style NG_logical_xor_out  fill:#0C0, color:#FFF
+    NG_logical_xor_out([out])
+    style NG_logical_xor_in1  fill:#09D, color:#FFF
+    NG_logical_xor_in1([in1])
+    style NG_logical_xor_in2  fill:#09D, color:#FFF
+    NG_logical_xor_in2([in2])
+    end
+    NG_logical_xor_in1 --"in"--> NG_logical_xor_not_in1
+    NG_logical_xor_in2 --"in"--> NG_logical_xor_not_in2
+    NG_logical_xor_in1 --"in1"--> NG_logical_xor_in1_and_not_in2
+    NG_logical_xor_not_in2 --"in2"--> NG_logical_xor_in1_and_not_in2
+    NG_logical_xor_in2 --"in1"--> NG_logical_xor_in2_and_not_in1
+    NG_logical_xor_not_in1 --"in2"--> NG_logical_xor_in2_and_not_in1
+    NG_logical_xor_in1_and_not_in2 --"in1"--> NG_logical_xor_or
+    NG_logical_xor_in2_and_not_in1 --"in2"--> NG_logical_xor_or
+    NG_logical_xor_or --> NG_logical_xor_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in1** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| **in2** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *not*
+<details open><summary>ND_logical_not</summary>
+<p>
+ 
+* *Nodedef*: ND_logical_not
+* *Type*: boolean
+* *Group*: conditional
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *dot*
 <details open><summary>ND_dot_float</summary>
 <p>

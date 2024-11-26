@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <convert name="convert_vector2_color3" type="color3">
+    <input name="in" type="vector2" value="0.0, 0.0" />
+  </convert>
+  <convert name="shader_convert_vector2_color3_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="convert_vector2_color3" />
+  </convert>
+  <surfacematerial name="material_convert_vector2_color3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_convert_vector2_color3_out" />
+  </surfacematerial>
+</materialx>

@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
   <surface name="surface" type="surfaceshader">
-    <input name="bsdf" type="BSDF" value="" nodename="oren_nayar_diffuse_bsdf" />
-    <input name="edf" type="EDF" value="" nodename="uniform_edf" />
+    <input name="bsdf" type="BSDF" nodename="oren_nayar_diffuse_bsdf" />
+    <input name="edf" type="EDF" nodename="uniform_edf" />
     <input name="opacity" type="float" value="1.0" />
+    <input name="thin_walled" type="boolean" value="false" uniform="true" />
   </surface>
   <oren_nayar_diffuse_bsdf name="oren_nayar_diffuse_bsdf" type="BSDF" />
   <uniform_edf name="uniform_edf" type="EDF" />

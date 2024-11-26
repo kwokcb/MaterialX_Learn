@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <convert name="convert_boolean_vector4" type="vector4">
+    <input name="in" type="boolean" value="false" />
+  </convert>
+  <convert name="shader_convert_boolean_vector4_out" type="surfaceshader">
+    <input name="in" type="vector4" nodename="convert_boolean_vector4" />
+  </convert>
+  <surfacematerial name="material_convert_boolean_vector4_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_convert_boolean_vector4_out" />
+  </surfacematerial>
+</materialx>

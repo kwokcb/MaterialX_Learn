@@ -1,6 +1,6 @@
 # Site Status
 
-## Support for this repo and site has halted as of the MaterialX 1.39 official release. Please sponsor the authors for any further development. Thank you.
+## This site is in maintenance mode with the exception of updates for new MaterialX releases. Please sponsor the authors for any additional development.
 
 # Welcome to "MaterialX Elements"
 [![main](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml/badge.svg)](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml)
@@ -23,8 +23,13 @@ This site
 
 ## Overview
 
-This is a complementary site for those interested in learning about MaterialX. Content includes:
+This is a complementary site for those interested in learning about MaterialX. 
+
+Content is synced with the MaterialX `1.39.2` release.
+
+Content includes:
 * Node definition library with image and node graph previews. 
+* Release to release delta comparisons.
 * Glossary of basic types, geometric definitions, color management and real-world unit definitions. 
 * Fundamental concepts (Nodes, Nodegraphs, Documents, Definitions) 
 * Python environment setup for MaterialX, OpenUSD, OpenColorIO, and Blender.
