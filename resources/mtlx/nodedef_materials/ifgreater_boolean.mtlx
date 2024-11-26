@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <ifgreater name="ifgreater_boolean" type="boolean">
+    <input name="value1" type="float" value="1.0" />
+    <input name="value2" type="float" value="0.0" />
+  </ifgreater>
+  <convert name="shader_ifgreater_boolean_out" type="surfaceshader">
+    <input name="in" type="boolean" nodename="ifgreater_boolean" />
+  </convert>
+  <surfacematerial name="material_ifgreater_boolean_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ifgreater_boolean_out" />
+  </surfacematerial>
+</materialx>

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
   <add name="add_edf" type="EDF">
-    <input name="in1" type="EDF" value="" nodename="uniform_edf" />
-    <input name="in2" type="EDF" value="" nodename="uniform_edf2" />
+    <input name="in1" type="EDF" nodename="uniform_edf" />
+    <input name="in2" type="EDF" nodename="uniform_edf2" />
   </add>
   <uniform_edf name="uniform_edf" type="EDF" />
   <uniform_edf name="uniform_edf2" type="EDF" />

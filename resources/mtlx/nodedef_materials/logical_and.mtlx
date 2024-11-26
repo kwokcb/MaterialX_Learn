@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <and name="logical_and" type="boolean">
+    <input name="in1" type="boolean" value="false" />
+    <input name="in2" type="boolean" value="false" />
+  </and>
+  <convert name="shader_logical_and_out" type="surfaceshader">
+    <input name="in" type="boolean" nodename="logical_and" />
+  </convert>
+  <surfacematerial name="material_logical_and_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_logical_and_out" />
+  </surfacematerial>
+</materialx>

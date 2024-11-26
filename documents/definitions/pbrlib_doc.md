@@ -1,5 +1,5 @@
 ### Node Group: pbr
-* [absorption_vdf](#node-absorption_vdf) [add](#node-add) [anisotropic_vdf](#node-anisotropic_vdf) [artistic_ior](#node-artistic_ior) [blackbody](#node-blackbody) [burley_diffuse_bsdf](#node-burley_diffuse_bsdf) [conductor_bsdf](#node-conductor_bsdf) [conical_edf](#node-conical_edf) [dielectric_bsdf](#node-dielectric_bsdf) [displacement](#node-displacement) [generalized_schlick_bsdf](#node-generalized_schlick_bsdf) [generalized_schlick_edf](#node-generalized_schlick_edf) [glossiness_anisotropy](#node-glossiness_anisotropy) [layer](#node-layer) [light](#node-light) [measured_edf](#node-measured_edf) [mix](#node-mix) [multiply](#node-multiply) [oren_nayar_diffuse_bsdf](#node-oren_nayar_diffuse_bsdf) [roughness_anisotropy](#node-roughness_anisotropy) [roughness_dual](#node-roughness_dual) [sheen_bsdf](#node-sheen_bsdf) [subsurface_bsdf](#node-subsurface_bsdf) [surface](#node-surface) [thin_surface](#node-thin_surface) [translucent_bsdf](#node-translucent_bsdf) [uniform_edf](#node-uniform_edf) [volume](#node-volume) 
+* [absorption_vdf](#node-absorption_vdf) [add](#node-add) [anisotropic_vdf](#node-anisotropic_vdf) [artistic_ior](#node-artistic_ior) [blackbody](#node-blackbody) [burley_diffuse_bsdf](#node-burley_diffuse_bsdf) [chiang_hair_absorption_from_color](#node-chiang_hair_absorption_from_color) [chiang_hair_bsdf](#node-chiang_hair_bsdf) [chiang_hair_roughness](#node-chiang_hair_roughness) [conductor_bsdf](#node-conductor_bsdf) [conical_edf](#node-conical_edf) [deon_hair_absorption_from_melanin](#node-deon_hair_absorption_from_melanin) [dielectric_bsdf](#node-dielectric_bsdf) [displacement](#node-displacement) [generalized_schlick_bsdf](#node-generalized_schlick_bsdf) [generalized_schlick_edf](#node-generalized_schlick_edf) [glossiness_anisotropy](#node-glossiness_anisotropy) [layer](#node-layer) [light](#node-light) [measured_edf](#node-measured_edf) [mix](#node-mix) [multiply](#node-multiply) [oren_nayar_diffuse_bsdf](#node-oren_nayar_diffuse_bsdf) [roughness_anisotropy](#node-roughness_anisotropy) [roughness_dual](#node-roughness_dual) [sheen_bsdf](#node-sheen_bsdf) [subsurface_bsdf](#node-subsurface_bsdf) [surface](#node-surface) [translucent_bsdf](#node-translucent_bsdf) [uniform_edf](#node-uniform_edf) [volume](#node-volume) 
 ---------
  
 ### Category: *oren_nayar_diffuse_bsdf*
@@ -20,6 +20,7 @@
 | **color** | color3 | 0.18, 0.18, 0.18 |  |  |  |  |  |  |  |  |  |  |
 | **roughness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **energy_compensation** | boolean | False |  |  |  |  |  |  |  |  |  | true |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *burley_diffuse_bsdf*
 <details open><summary>ND_burley_diffuse_bsdf</summary>
@@ -150,7 +151,7 @@
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **weight** | float | 1.0 |  | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **color** | color3 | 0.18, 0.18, 0.18 |  |  |  |  |  |  |  |  |  |  |
-| **radius** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **radius** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **anisotropy** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
@@ -172,6 +173,33 @@
 | **color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **roughness** | float | 0.3 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **mode** | string | conty_kulla |  |  |  |  |  |  |  |  |  | true |
+| *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *chiang_hair_bsdf*
+<details open><summary>ND_chiang_hair_bsdf</summary>
+<p>
+ 
+* *Nodedef*: ND_chiang_hair_bsdf
+* *Type*: BSDF
+* *Group*: pbr
+* *Version*: 1.0. Is default: False
+* *Doc*: A BSDF node for Chiang hair shading model.
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **tint_R** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **tint_TT** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **tint_TRT** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **ior** | float | 1.55 |  |  |  |  |  |  |  |  |  |  |
+| **roughness_R** | vector2 | 0.1, 0.1 |  |  |  |  |  |  |  |  |  |  |
+| **roughness_TT** | vector2 | 0.05, 0.05 |  |  |  |  |  |  |  |  |  |  |
+| **roughness_TRT** | vector2 | 0.2, 0.2 |  |  |  |  |  |  |  |  |  |  |
+| **cuticle_angle** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **absorption_coefficient** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **curve_direction** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *uniform_edf*
 <details open><summary>ND_uniform_edf</summary>
@@ -296,26 +324,7 @@
 | **bsdf** | BSDF |  |  |  |  |  |  |  |  |  | Distribution function for surface scattering. |  |
 | **edf** | EDF |  |  |  |  |  |  |  |  |  | Distribution function for surface emission. |  |
 | **opacity** | float | 1.0 |  |  |  |  |  |  |  |  | Surface cutout opacity |  |
-| *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
-### Category: *thin_surface*
-<details open><summary>ND_thin_surface</summary>
-<p>
- 
-* *Nodedef*: ND_thin_surface
-* *Type*: surfaceshader
-* *Group*: pbr
-* *Version*: 1.0. Is default: False
-* *Doc*: A constructor node for the surfaceshader type for non-closed 'thin' objects.
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **front_bsdf** | BSDF |  |  |  |  |  |  |  |  |  | Distribution function for front-side surface scattering. |  |
-| **front_edf** | EDF |  |  |  |  |  |  |  |  |  | Distribution function for front-side surface emission. |  |
-| **back_bsdf** | BSDF |  |  |  |  |  |  |  |  |  | Distribution function for back-side surface scattering. |  |
-| **back_edf** | EDF |  |  |  |  |  |  |  |  |  | Distribution function for back-side surface emission. |  |
-| **opacity** | float | 1.0 |  |  |  |  |  |  |  |  | Surface cutout opacity |  |
+| **thin_walled** | boolean | False |  |  |  |  |  |  |  |  | Option to make the surface thin-walled. | true |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *volume*
 <details open><summary>ND_volume</summary>
@@ -719,5 +728,62 @@ graph TB
 | **edge_color** | color3 | 0.998, 0.981, 0.751 |  |  |  |  |  |  |  |  |  |  |
 | *ior* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 | *extinction* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *deon_hair_absorption_from_melanin*
+<details open><summary>ND_deon_hair_absorption_from_melanin</summary>
+<p>
+ 
+* *Nodedef*: ND_deon_hair_absorption_from_melanin
+* *Type*: vector3
+* *Group*: pbr
+* *Version*: 1.0. Is default: False
+* *Doc*: Calculates hair absorption from melanin parameters.
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **melanin_concentration** | float | 0.25 |  |  |  |  |  |  |  |  |  |  |
+| **melanin_redness** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **eumelanin_color** | color3 | 0.657704, 0.498077, 0.254107 |  |  |  |  |  |  |  | true | constant from d'Eon et al. 2011, converted to color via exp(-c) |  |
+| **pheomelanin_color** | color3 | 0.829444, 0.67032, 0.349938 |  |  |  |  |  |  |  | true | constant from d'Eon et al. 2011, converted to color via exp(-c) |  |
+| *absorption* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *chiang_hair_absorption_from_color*
+<details open><summary>ND_chiang_hair_absorption_from_color</summary>
+<p>
+ 
+* *Nodedef*: ND_chiang_hair_absorption_from_color
+* *Type*: vector3
+* *Group*: pbr
+* *Version*: 1.0. Is default: False
+* *Doc*: Calculates hair absorption from a color.
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **azimuthal_roughness** | float | 0.2 |  |  |  |  |  |  |  |  |  |  |
+| *absorption* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *chiang_hair_roughness*
+<details open><summary>ND_chiang_hair_roughness</summary>
+<p>
+ 
+* *Nodedef*: ND_chiang_hair_roughness
+* *Type*: multioutput
+* *Group*: pbr
+* *Version*: 1.0. Is default: False
+* *Doc*: Calculates hair roughness for R, TT and TRT component.
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **longitudinal** | float | 0.1 |  |  |  |  |  |  |  |  |  |  |
+| **azimuthal** | float | 0.2 |  |  |  |  |  |  |  |  |  |  |
+| **scale_TT** | float | 0.5 |  |  |  |  |  |  |  | true |  |  |
+| **scale_TRT** | float | 2.0 |  |  |  |  |  |  |  | true |  |  |
+| *roughness_R* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *roughness_TT* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *roughness_TRT* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  

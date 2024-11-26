@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <chiang_hair_absorption_from_color name="chiang_hair_absorption_from_color" type="vector3">
+    <input name="color" type="color3" value="1.0, 1.0, 1.0" />
+    <input name="azimuthal_roughness" type="float" value="0.2" />
+  </chiang_hair_absorption_from_color>
+  <convert name="shader_chiang_hair_absorption_from_color_absorption" type="surfaceshader">
+    <input name="in" type="vector3" nodename="chiang_hair_absorption_from_color" />
+  </convert>
+  <surfacematerial name="material_chiang_hair_absorption_from_color_absorption" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_chiang_hair_absorption_from_color_absorption" />
+  </surfacematerial>
+</materialx>

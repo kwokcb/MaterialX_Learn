@@ -4,7 +4,7 @@
     <input name="color0" type="color3" value="1.0, 1.0, 1.0" />
     <input name="color90" type="color3" value="1.0, 1.0, 1.0" />
     <input name="exponent" type="float" value="5.0" />
-    <input name="base" type="EDF" value="" nodename="uniform_edf" />
+    <input name="base" type="EDF" nodename="uniform_edf" />
   </generalized_schlick_edf>
   <uniform_edf name="uniform_edf" type="EDF" />
   <surface name="shader_generalized_schlick_edf_out" type="surfaceshader">

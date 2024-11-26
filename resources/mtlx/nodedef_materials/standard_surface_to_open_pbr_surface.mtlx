@@ -1,0 +1,256 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <standard_surface_to_open_pbr_surface name="standard_surface_to_open_pbr_surface" type="multioutput">
+    <input name="base" type="float" value="0.8" />
+    <input name="base_color" type="color3" value="1.0, 1.0, 1.0" />
+    <input name="diffuse_roughness" type="float" value="0" />
+    <input name="metalness" type="float" value="0" />
+    <input name="specular" type="float" value="1" />
+    <input name="specular_color" type="color3" value="1, 1, 1" />
+    <input name="specular_roughness" type="float" value="0.2" />
+    <input name="specular_IOR" type="float" value="1.5" />
+    <input name="specular_anisotropy" type="float" value="0" />
+    <input name="transmission" type="float" value="0" />
+    <input name="transmission_color" type="color3" value="1, 1, 1" />
+    <input name="transmission_depth" type="float" value="0" />
+    <input name="transmission_scatter" type="color3" value="0, 0, 0" />
+    <input name="transmission_scatter_anisotropy" type="float" value="0" />
+    <input name="transmission_dispersion" type="float" value="0" />
+    <input name="subsurface" type="float" value="0" />
+    <input name="subsurface_color" type="color3" value="1, 1, 1" />
+    <input name="subsurface_radius" type="color3" value="1, 1, 1" />
+    <input name="subsurface_scale" type="float" value="1" />
+    <input name="subsurface_anisotropy" type="float" value="0" />
+    <input name="sheen" type="float" value="0" />
+    <input name="sheen_color" type="color3" value="1, 1, 1" />
+    <input name="sheen_roughness" type="float" value="0.3" />
+    <input name="coat" type="float" value="0" />
+    <input name="coat_color" type="color3" value="1, 1, 1" />
+    <input name="coat_roughness" type="float" value="0.1" />
+    <input name="coat_anisotropy" type="float" value="0.0" />
+    <input name="coat_IOR" type="float" value="1.5" />
+    <input name="coat_affect_roughness" type="float" value="0" />
+    <input name="thin_film_thickness" type="float" value="0" />
+    <input name="thin_film_IOR" type="float" value="1.5" />
+    <input name="emission" type="float" value="0" />
+    <input name="emission_color" type="color3" value="1, 1, 1" />
+    <input name="opacity" type="color3" value="1, 1, 1" />
+    <input name="thin_walled" type="boolean" value="false" />
+  </standard_surface_to_open_pbr_surface>
+  <convert name="shader_standard_surface_to_open_pbr_surface_base_weight_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="base_weight_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_base_weight_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_base_weight_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_base_color_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="standard_surface_to_open_pbr_surface" output="base_color_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_base_color_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_base_color_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_base_diffuse_roughness_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="base_diffuse_roughness_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_base_diffuse_roughness_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_base_diffuse_roughness_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_base_metalness_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="base_metalness_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_base_metalness_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_base_metalness_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_specular_weight_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="specular_weight_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_specular_weight_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_specular_weight_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_specular_color_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="standard_surface_to_open_pbr_surface" output="specular_color_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_specular_color_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_specular_color_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_specular_roughness_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="specular_roughness_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_specular_roughness_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_specular_roughness_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_specular_ior_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="specular_ior_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_specular_ior_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_specular_ior_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_specular_roughness_anisotropy_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="specular_roughness_anisotropy_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_specular_roughness_anisotropy_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_specular_roughness_anisotropy_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_transmission_weight_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="transmission_weight_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_transmission_weight_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_transmission_weight_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_transmission_color_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="standard_surface_to_open_pbr_surface" output="transmission_color_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_transmission_color_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_transmission_color_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_transmission_depth_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="transmission_depth_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_transmission_depth_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_transmission_depth_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_transmission_scatter_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="standard_surface_to_open_pbr_surface" output="transmission_scatter_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_transmission_scatter_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_transmission_scatter_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_transmission_scatter_anisotropy_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="transmission_scatter_anisotropy_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_transmission_scatter_anisotropy_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_transmission_scatter_anisotropy_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_transmission_dispersion_scale_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="transmission_dispersion_scale_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_transmission_dispersion_scale_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_transmission_dispersion_scale_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_subsurface_weight_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="subsurface_weight_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_subsurface_weight_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_subsurface_weight_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_subsurface_color_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="standard_surface_to_open_pbr_surface" output="subsurface_color_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_subsurface_color_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_subsurface_color_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_subsurface_radius_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="subsurface_radius_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_subsurface_radius_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_subsurface_radius_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_subsurface_radius_scale_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="standard_surface_to_open_pbr_surface" output="subsurface_radius_scale_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_subsurface_radius_scale_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_subsurface_radius_scale_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_subsurface_scatter_anisotropy_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="subsurface_scatter_anisotropy_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_subsurface_scatter_anisotropy_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_subsurface_scatter_anisotropy_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_fuzz_weight_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="fuzz_weight_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_fuzz_weight_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_fuzz_weight_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_fuzz_color_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="standard_surface_to_open_pbr_surface" output="fuzz_color_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_fuzz_color_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_fuzz_color_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_fuzz_roughness_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="fuzz_roughness_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_fuzz_roughness_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_fuzz_roughness_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_coat_weight_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="coat_weight_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_coat_weight_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_coat_weight_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_coat_color_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="standard_surface_to_open_pbr_surface" output="coat_color_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_coat_color_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_coat_color_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_coat_roughness_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="coat_roughness_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_coat_roughness_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_coat_roughness_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_coat_roughness_anisotropy_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="coat_roughness_anisotropy_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_coat_roughness_anisotropy_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_coat_roughness_anisotropy_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_coat_ior_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="coat_ior_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_coat_ior_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_coat_ior_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_coat_darkening_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="coat_darkening_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_coat_darkening_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_coat_darkening_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_thin_film_weight_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="thin_film_weight_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_thin_film_weight_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_thin_film_weight_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_thin_film_thickness_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="thin_film_thickness_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_thin_film_thickness_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_thin_film_thickness_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_thin_film_ior_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="thin_film_ior_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_thin_film_ior_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_thin_film_ior_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_emission_luminance_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="emission_luminance_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_emission_luminance_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_emission_luminance_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_emission_color_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="standard_surface_to_open_pbr_surface" output="emission_color_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_emission_color_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_emission_color_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_geometry_opacity_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_open_pbr_surface" output="geometry_opacity_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_geometry_opacity_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_geometry_opacity_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_open_pbr_surface_geometry_thin_walled_out" type="surfaceshader">
+    <input name="in" type="boolean" nodename="standard_surface_to_open_pbr_surface" output="geometry_thin_walled_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_open_pbr_surface_geometry_thin_walled_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_open_pbr_surface_geometry_thin_walled_out" />
+  </surfacematerial>
+</materialx>

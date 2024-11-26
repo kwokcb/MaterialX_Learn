@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
   <layer name="layer_vdf" type="BSDF">
-    <input name="top" type="BSDF" value="" nodename="oren_nayar_diffuse_bsdf" />
+    <input name="top" type="BSDF" nodename="oren_nayar_diffuse_bsdf" />
     <input name="base" type="VDF" value="" />
   </layer>
   <oren_nayar_diffuse_bsdf name="oren_nayar_diffuse_bsdf" type="BSDF" />

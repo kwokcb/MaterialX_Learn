@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
   <mix name="mix_edf" type="EDF">
-    <input name="fg" type="EDF" value="" nodename="uniform_edf" />
-    <input name="bg" type="EDF" value="" nodename="uniform_edf2" />
+    <input name="fg" type="EDF" nodename="uniform_edf" />
+    <input name="bg" type="EDF" nodename="uniform_edf2" />
     <input name="mix" type="float" value="0.0" />
   </mix>
   <uniform_edf name="uniform_edf" type="EDF" />

@@ -2,7 +2,6 @@
 <materialx version="1.39">
   <normalmap name="normalmap_vector2" type="vector3">
     <input name="in" type="vector3" value="0.5, 0.5, 1.0" />
-    <input name="space" type="string" value="tangent" enum="tangent, object" uniform="true" />
     <input name="scale" type="vector2" value="1.0, 1.0" />
   </normalmap>
   <convert name="shader_normalmap_vector2_out" type="surfaceshader">

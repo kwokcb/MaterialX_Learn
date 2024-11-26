@@ -2,7 +2,7 @@
 <materialx version="1.39">
   <volume name="volume" type="volumeshader">
     <input name="vdf" type="VDF" value="" />
-    <input name="edf" type="EDF" value="" nodename="uniform_edf" />
+    <input name="edf" type="EDF" nodename="uniform_edf" />
   </volume>
   <uniform_edf name="uniform_edf" type="EDF" />
   <volumematerial name="material_volume_out" type="material">

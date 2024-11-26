@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <open_pbr_anisotropy name="open_pbr_anisotropy" type="vector2">
+    <input name="roughness" type="float" value="0.0" />
+    <input name="anisotropy" type="float" value="0.0" />
+  </open_pbr_anisotropy>
+  <convert name="shader_open_pbr_anisotropy_out" type="surfaceshader">
+    <input name="in" type="vector2" nodename="open_pbr_anisotropy" />
+  </convert>
+  <surfacematerial name="material_open_pbr_anisotropy_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_open_pbr_anisotropy_out" />
+  </surfacematerial>
+</materialx>

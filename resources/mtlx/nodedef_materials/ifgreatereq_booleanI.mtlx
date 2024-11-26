@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <ifgreatereq name="ifgreatereq_booleanI" type="boolean">
+    <input name="value1" type="integer" value="1" />
+    <input name="value2" type="integer" value="0" />
+  </ifgreatereq>
+  <convert name="shader_ifgreatereq_booleanI_out" type="surfaceshader">
+    <input name="in" type="boolean" nodename="ifgreatereq_booleanI" />
+  </convert>
+  <surfacematerial name="material_ifgreatereq_booleanI_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ifgreatereq_booleanI_out" />
+  </surfacematerial>
+</materialx>

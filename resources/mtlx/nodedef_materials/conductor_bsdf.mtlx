@@ -2,8 +2,8 @@
 <materialx version="1.39">
   <conductor_bsdf name="conductor_bsdf" type="BSDF">
     <input name="weight" type="float" value="1.0" />
-    <input name="ior" type="color3" value="0.183, 0.421, 1.373" colorspace="none" />
-    <input name="extinction" type="color3" value="3.424, 2.346, 1.770" colorspace="none" />
+    <input name="ior" type="color3" value="0.183, 0.421, 1.373" />
+    <input name="extinction" type="color3" value="3.424, 2.346, 1.770" />
     <input name="roughness" type="vector2" value="0.05, 0.05" />
     <input name="thinfilm_thickness" type="float" value="0" unittype="distance" unit="nanometer" />
     <input name="thinfilm_ior" type="float" value="1.5" />

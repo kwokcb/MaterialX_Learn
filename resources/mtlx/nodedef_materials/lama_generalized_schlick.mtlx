@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <LamaGeneralizedSchlick name="lama_generalized_schlick" type="BSDF" version="1.0">
+    <input name="reflectionTint" type="color3" value="1.0, 1.0, 1.0" uiname="Reflection Tint" />
+    <input name="transmissionTint" type="color3" value="1.0, 1.0, 1.0" uiname="Transmission Tint" />
+    <input name="fresnelMode" type="integer" uniform="true" enum="Artistic,Scientific" enumvalues="0,1" value="0" uiname="Fresnel Mode" />
+    <input name="IOR" type="vector3" value="1.5,1.5,1.5" uiname="IOR" />
+    <input name="reflectivity" type="color3" value="0.04, 0.04, 0.04" uiname="Reflectivity" />
+    <input name="reflectivity90" type="color3" value="1.0, 1.0, 1.0" uiname="Reflectivity 90" />
+    <input name="reflectivityProfile" type="float" value="0.2" uiname="ReflectivityProfile" />
+    <input name="roughness" type="float" value="0.1" uiname="Roughness" />
+    <input name="anisotropy" type="float" value="-1.0" uiname="Anisotropy" />
+    <input name="anisotropyRotation" type="float" value="0.0" uiname="Rotation" />
+    <input name="absorptionColor" type="color3" value="1.0, 1.0, 1.0" uiname="Absorption Color" />
+    <input name="absorptionRadius" type="float" value="1.0" uiname="Absorption Radius" />
+    <input name="scatterColor" type="color3" value="0.0, 0.0, 0.0" uiname="Scatter Color" />
+    <input name="scatterAnisotropy" type="float" value="0.0" uiname="Scatter Anisotropy" />
+  </LamaGeneralizedSchlick>
+  <surface name="shader_lama_generalized_schlick_out" type="surfaceshader">
+    <input name="bsdf" type="BSDF" nodename="lama_generalized_schlick" />
+  </surface>
+  <surfacematerial name="material_lama_generalized_schlick_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_lama_generalized_schlick_out" />
+  </surfacematerial>
+</materialx>

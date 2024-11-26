@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <!--
+	Node: <asd> 
+	super comment
+  -->
+  <nodedef name="ND_asd_color3" node="asd" doc="my docs" namespace="nm" nodegroup="proc">
+    <input name="ramp_right" type="color3" value="0.8392156862745098,0.12156862745098039,0.12156862745098039" />
+    <input name="ramp_left" type="color3" value="0.08627450980392157,0.44313725490196076,0.7137254901960784" />
+    <input name="hex_size" type="float" value="0.4" />
+    <input name="hex_tiling" type="vector2" value="20,10" />
+    <output name="out" type="color3" />
+  </nodedef>
+  <nodegraph name="NG_asd_color3" nodedef="nm:ND_asd_color3" namespace="nm">
+    <output name="out" type="color3" nodename="multiply_color4" />
+    <texcoord name="texcoord_vector3" type="vector2">
+      <input name="index" type="integer" value="0" />
+    </texcoord>
+    <multiply name="multiply_color4" type="color3">
+      <input name="in1" type="color3" nodename="tiledhexagons_color4" />
+      <input name="in2" type="color3" nodename="ramplr_color4" />
+    </multiply>
+    <tiledhexagons name="tiledhexagons_color4" type="color3">
+      <input name="texcoord" type="vector2" nodename="texcoord_vector3" />
+      <input name="uvtiling" type="vector2" interfacename="hex_tiling" />
+      <input name="uvoffset" type="vector2" value="0,0" />
+      <input name="size" type="float" interfacename="hex_size" />
+      <input name="staggered" type="boolean" value="false" />
+    </tiledhexagons>
+    <ramplr name="ramplr_color4" type="color3">
+      <input name="valuel" type="color3" interfacename="ramp_left" />
+      <input name="valuer" type="color3" interfacename="ramp_right" />
+      <input name="texcoord" type="vector2" nodename="texcoord_vector3" />
+    </ramplr>
+  </nodegraph>
+</materialx>

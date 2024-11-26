@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
-  <UsdPreviewSurface name="UsdPreviewSurface_surfaceshader" type="surfaceshader" version="2.3">
-    <input name="diffuseColor" type="color3" value="0.18, 0.18, 0.18" />
-    <input name="emissiveColor" type="color3" value="0, 0, 0" />
-    <input name="useSpecularWorkflow" type="integer" value="0" uistep="1" />
-    <input name="specularColor" type="color3" value="0, 0, 0" />
-    <input name="metallic" type="float" value="0" />
-    <input name="roughness" type="float" value="0.5" />
-    <input name="clearcoat" type="float" value="0" />
-    <input name="clearcoatRoughness" type="float" value="0.01" />
-    <input name="opacity" type="float" value="1" />
-    <input name="opacityThreshold" type="float" value="0" />
-    <input name="ior" type="float" value="1.5" />
-    <input name="normal" type="vector3" value="0, 0, 1" uistep="0.01" />
-    <input name="displacement" type="float" value="0" />
-    <input name="occlusion" type="float" value="1" />
+  <UsdPreviewSurface name="UsdPreviewSurface_surfaceshader" type="surfaceshader" version="2.5">
+    <input name="diffuseColor" type="color3" value="0.18, 0.18, 0.18" uiname="Diffuse Color" />
+    <input name="emissiveColor" type="color3" value="0, 0, 0" uiname="Emissive Color" />
+    <input name="useSpecularWorkflow" type="integer" value="0" uistep="1" uiname="Use Specular Workflow" />
+    <input name="specularColor" type="color3" value="0, 0, 0" uiname="Specular Color" />
+    <input name="metallic" type="float" value="0" uiname="Metallic" />
+    <input name="roughness" type="float" value="0.5" uiname="Roughness" />
+    <input name="clearcoat" type="float" value="0" uiname="Clearcoat" />
+    <input name="clearcoatRoughness" type="float" value="0.01" uiname="Clearcoat Roughness" />
+    <input name="opacity" type="float" value="1" uiname="Opacity" />
+    <input name="opacityThreshold" type="float" value="0" uiname="Opacity Threshold" />
+    <input name="ior" type="float" value="1.5" uiname="Index of Refraction" />
+    <input name="normal" type="vector3" value="0, 0, 1" uistep="0.01" uiname="Normal" />
+    <input name="displacement" type="float" value="0" uiname="Displacement" />
+    <input name="occlusion" type="float" value="1" uiname="Occlusion" />
   </UsdPreviewSurface>
   <surfacematerial name="material_UsdPreviewSurface_surfaceshader_out" type="material">
     <input name="surfaceshader" type="surfaceshader" nodename="UsdPreviewSurface_surfaceshader" />
