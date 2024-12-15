@@ -2,6 +2,7 @@
 <materialx version="1.39">
   <worleynoise3d name="worleynoise3d_vector3" type="vector3">
     <input name="jitter" type="float" value="1.0" />
+    <input name="style" uiname="Cell Style" type="integer" value="0" enum="Distance,Solid" enumvalues="0,1" />
   </worleynoise3d>
   <convert name="shader_worleynoise3d_vector3_out" type="surfaceshader">
     <input name="in" type="vector3" nodename="worleynoise3d_vector3" />

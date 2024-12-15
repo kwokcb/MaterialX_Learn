@@ -243,7 +243,7 @@
 <h2 id="materialx-library-comparison">MaterialX Library Comparison</h2>
 <h3 id="libraries-loaded">Libraries Loaded</h3>
 <ul>
-<li>Loaded 778 first library definitions from 52 files. Version 1.39.2<ul>
+<li>Loaded 780 first library definitions from 50 files. Version 1.39.2<ul>
 <li>First library location: ['../../pymaterialx/python/MaterialX/libraries']. Search path: ""</li>
 </ul>
 </li>
@@ -256,10 +256,10 @@
 
 <h3 id="node-definition-comparison">Node Definition Comparison</h3>
 <ul>
-<li>First library has 778 nodedefs.</li>
+<li>First library has 780 nodedefs.</li>
 <li>Second library has 780 nodedefs</li>
 </ul>
-<details><summary>7 node definitions removed</summary>
+<details><summary>10 node definitions removed</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Name <th> Category </tr>
@@ -270,24 +270,32 @@
 <tr><td> ND_curveadjust_vector2 <td> curveadjust </tr>
 <tr><td> ND_curveadjust_vector3 <td> curveadjust </tr>
 <tr><td> ND_curveadjust_vector4 <td> curveadjust </tr>
+<tr><td> ND_disney_brdf_2012_surface <td> disney_brdf_2012 </tr>
+<tr><td> ND_disney_bsdf_2015_surface <td> disney_bsdf_2015 </tr>
+<tr><td> ND_geompropvalue_string <td> geompropvalue </tr>
 </table>
 
 </details>
 
-<details><summary>5 node definitions added. (Sorted by category)</summary>
+<details><summary>10 node definitions added. (Sorted by category)</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Name <th> Category <th> NodeGroup </tr>
+<tr><td> <a href="../documents/definitions/UsdPrimvarReader.html">ND_UsdPrimvarReader_filename</a> <td> UsdPrimvarReader <td> geometric </tr>
 <tr><td> <a href="../documents/definitions/chiang_hair_absorption_from_color.html">ND_chiang_hair_absorption_from_color</a> <td> chiang_hair_absorption_from_color <td> pbr </tr>
 <tr><td> <a href="../documents/definitions/chiang_hair_bsdf.html">ND_chiang_hair_bsdf</a> <td> chiang_hair_bsdf <td> pbr </tr>
 <tr><td> <a href="../documents/definitions/chiang_hair_roughness.html">ND_chiang_hair_roughness</a> <td> chiang_hair_roughness <td> pbr </tr>
 <tr><td> <a href="../documents/definitions/deon_hair_absorption_from_melanin.html">ND_deon_hair_absorption_from_melanin</a> <td> deon_hair_absorption_from_melanin <td> pbr </tr>
 <tr><td> <a href="../documents/definitions/disney_principled.html">ND_disney_principled</a> <td> disney_principled <td> pbr </tr>
+<tr><td> <a href="../documents/definitions/geompropvalueuniform.html">ND_geompropvalueuniform_string</a> <td> geompropvalueuniform <td> geometric </tr>
+<tr><td> <a href="../documents/definitions/geompropvalueuniform.html">ND_geompropvalueuniform_filename</a> <td> geompropvalueuniform <td> geometric </tr>
+<tr><td> <a href="../documents/definitions/ramp.html">ND_ramp</a> <td> ramp <td> procedural2d </tr>
+<tr><td> <a href="../documents/definitions/ramp_gradient.html">ND_ramp_gradient</a> <td> ramp_gradient <td> procedural2d </tr>
 </table>
 
 </details>
 
-<details><summary>5 new node categories were added</summary>
+<details><summary>8 new node categories were added</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Node category <th> Node group <th> Type </tr>
@@ -296,17 +304,44 @@
 <tr><td> <a href="../documents/definitions/chiang_hair_roughness.html">chiang_hair_roughness</a> <td> pbr <td> multioutput </tr>
 <tr><td> <a href="../documents/definitions/deon_hair_absorption_from_melanin.html">deon_hair_absorption_from_melanin</a> <td> pbr <td> vector3 </tr>
 <tr><td> <a href="../documents/definitions/disney_principled.html">disney_principled</a> <td> pbr <td> surfaceshader </tr>
+<tr><td> <a href="../documents/definitions/geompropvalueuniform.html">geompropvalueuniform</a> <td> geometric <td> filename </tr>
+<tr><td> <a href="../documents/definitions/ramp.html">ramp</a> <td> procedural2d <td> color4 </tr>
+<tr><td> <a href="../documents/definitions/ramp_gradient.html">ramp_gradient</a> <td> procedural2d <td> color4 </tr>
 </table>
 
 </details>
 
-<details><summary>1 definitions modified</summary>
+<details><summary>9 definitions modified</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Name <th> Change <tr>
 <tr><td> <a href="../documents/definitions/UsdPreviewSurface.html">ND_UsdPreviewSurface_surfaceshader</a> <td>
 
    - attribute: <code>doc</code> changed on <code>ND_UsdPreviewSurface_surfaceshader</code> from <code>( USD preview surface shader )</code> to <code>( UsdPreviewSurface shader )</code><br>  - attribute: <code>version</code> changed on <code>ND_UsdPreviewSurface_surfaceshader</code> from <code>( 2.3 )</code> to <code>( 2.5 )</code><br>- attribute: <code>uiname</code>=( <code>Diffuse Color</code> ) added to: <code>diffuseColor</code><br>- attribute: <code>uiname</code>=( <code>Emissive Color</code> ) added to: <code>emissiveColor</code><br>- attribute: <code>uiname</code>=( <code>Use Specular Workflow</code> ) added to: <code>useSpecularWorkflow</code><br>- attribute: <code>uiname</code>=( <code>Specular Color</code> ) added to: <code>specularColor</code><br>- attribute: <code>uiname</code>=( <code>Metallic</code> ) added to: <code>metallic</code><br>- attribute: <code>uiname</code>=( <code>Roughness</code> ) added to: <code>roughness</code><br>- attribute: <code>uiname</code>=( <code>Clearcoat</code> ) added to: <code>clearcoat</code><br>- attribute: <code>uiname</code>=( <code>Clearcoat Roughness</code> ) added to: <code>clearcoatRoughness</code><br>- attribute: <code>uiname</code>=( <code>Opacity</code> ) added to: <code>opacity</code><br>- attribute: <code>uiname</code>=( <code>Opacity Threshold</code> ) added to: <code>opacityThreshold</code><br>- attribute: <code>uiname</code>=( <code>Index of Refraction</code> ) added to: <code>ior</code><br>- attribute: <code>uiname</code>=( <code>Normal</code> ) added to: <code>normal</code><br>- attribute: <code>uiname</code>=( <code>Displacement</code> ) added to: <code>displacement</code><br>- attribute: <code>uiname</code>=( <code>Occlusion</code> ) added to: <code>occlusion</code><br></tr>
+<tr><td> <a href="../documents/definitions/UsdPrimvarReader.html">ND_UsdPrimvarReader_string</a> <td>
+
+ - attribute: <code>uniform</code>=( <code>true</code> ) added to: <code>fallback</code><br>- attribute: <code>uniform</code>=( <code>true</code> ) added to: <code>out</code><br></tr>
+<tr><td> <a href="../documents/definitions/standard_surface_to_UsdPreviewSurface.html">ND_standard_surface_to_UsdPreviewSurface</a> <td>
+
+ - Number of children on: <code>ND_standard_surface_to_UsdPreviewSurface</code> changed from ( 23 ) to ( 25 )<br>- input <code>/subsurface</code> added to <code>ND_standard_surface_to_UsdPreviewSurface</code>. Value=( 0 )<br>- input <code>/subsurface_color</code> added to <code>ND_standard_surface_to_UsdPreviewSurface</code>. Value=( 1, 1, 1 )<br></tr>
+<tr><td> <a href="../documents/definitions/worleynoise2d.html">ND_worleynoise2d_float</a> <td>
+
+ - Number of children on: <code>ND_worleynoise2d_float</code> changed from ( 3 ) to ( 4 )<br>- input <code>/style</code> added to <code>ND_worleynoise2d_float</code>. Value=( 0 )<br></tr>
+<tr><td> <a href="../documents/definitions/worleynoise2d.html">ND_worleynoise2d_vector2</a> <td>
+
+ - Number of children on: <code>ND_worleynoise2d_vector2</code> changed from ( 3 ) to ( 4 )<br>- input <code>/style</code> added to <code>ND_worleynoise2d_vector2</code>. Value=( 0 )<br></tr>
+<tr><td> <a href="../documents/definitions/worleynoise2d.html">ND_worleynoise2d_vector3</a> <td>
+
+ - Number of children on: <code>ND_worleynoise2d_vector3</code> changed from ( 3 ) to ( 4 )<br>- input <code>/style</code> added to <code>ND_worleynoise2d_vector3</code>. Value=( 0 )<br></tr>
+<tr><td> <a href="../documents/definitions/worleynoise3d.html">ND_worleynoise3d_float</a> <td>
+
+ - Number of children on: <code>ND_worleynoise3d_float</code> changed from ( 3 ) to ( 4 )<br>- input <code>/style</code> added to <code>ND_worleynoise3d_float</code>. Value=( 0 )<br></tr>
+<tr><td> <a href="../documents/definitions/worleynoise3d.html">ND_worleynoise3d_vector2</a> <td>
+
+ - Number of children on: <code>ND_worleynoise3d_vector2</code> changed from ( 3 ) to ( 4 )<br>- input <code>/style</code> added to <code>ND_worleynoise3d_vector2</code>. Value=( 0 )<br></tr>
+<tr><td> <a href="../documents/definitions/worleynoise3d.html">ND_worleynoise3d_vector3</a> <td>
+
+ - Number of children on: <code>ND_worleynoise3d_vector3</code> changed from ( 3 ) to ( 4 )<br>- input <code>/style</code> added to <code>ND_worleynoise3d_vector3</code>. Value=( 0 )<br></tr>
 </table>
 
 </details>
@@ -319,7 +354,7 @@
 <li>Second library shader targets: <em>['essl', 'genglsl', 'genmdl', 'genmsl', 'genosl']</em></li>
 </ul>
 <h5 id="first-library-definitions-implementations">First Library Definitions / Implementations</h5>
-<details><summary>517 shaders: essl</summary>
+<details><summary>518 shaders: essl</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>Implementation</th><th>File</th></tr><tr><td>ND_point_light<td>IM_point_light_genglsl<td>lights_genglsl_impl.mtlx
 </tr><tr><td>ND_directional_light<td>IM_directional_light_genglsl<td>lights_genglsl_impl.mtlx
@@ -433,13 +468,14 @@
 </tr><tr><td>ND_geomcolor_color4<td>IM_geomcolor_color4_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_integer<td>IM_geompropvalue_integer_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_boolean<td>IM_geompropvalue_boolean_genglsl<td>stdlib_genglsl_impl.mtlx
-</tr><tr><td>ND_geompropvalue_string<td>IM_geompropvalue_string_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_float<td>IM_geompropvalue_float_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_color3<td>IM_geompropvalue_color3_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_color4<td>IM_geompropvalue_color4_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector2<td>IM_geompropvalue_vector2_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector3<td>IM_geompropvalue_vector3_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector4<td>IM_geompropvalue_vector4_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_geompropvalueuniform_string<td>IM_geompropvalue_string_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_geompropvalueuniform_filename<td>IM_geompropvalue_filename_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_frame_float<td>IM_frame_float_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_time_float<td>IM_time_float_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_add_float<td>IM_add_float_genglsl<td>stdlib_genglsl_impl.mtlx
@@ -841,7 +877,7 @@
 </tr></table>
 </details>
 
-<details><summary>517 shaders: genglsl</summary>
+<details><summary>518 shaders: genglsl</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>Implementation</th><th>File</th></tr><tr><td>ND_point_light<td>IM_point_light_genglsl<td>lights_genglsl_impl.mtlx
 </tr><tr><td>ND_directional_light<td>IM_directional_light_genglsl<td>lights_genglsl_impl.mtlx
@@ -955,13 +991,14 @@
 </tr><tr><td>ND_geomcolor_color4<td>IM_geomcolor_color4_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_integer<td>IM_geompropvalue_integer_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_boolean<td>IM_geompropvalue_boolean_genglsl<td>stdlib_genglsl_impl.mtlx
-</tr><tr><td>ND_geompropvalue_string<td>IM_geompropvalue_string_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_float<td>IM_geompropvalue_float_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_color3<td>IM_geompropvalue_color3_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_color4<td>IM_geompropvalue_color4_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector2<td>IM_geompropvalue_vector2_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector3<td>IM_geompropvalue_vector3_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector4<td>IM_geompropvalue_vector4_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_geompropvalueuniform_string<td>IM_geompropvalue_string_genglsl<td>stdlib_genglsl_impl.mtlx
+</tr><tr><td>ND_geompropvalueuniform_filename<td>IM_geompropvalue_filename_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_frame_float<td>IM_frame_float_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_time_float<td>IM_time_float_genglsl<td>stdlib_genglsl_impl.mtlx
 </tr><tr><td>ND_add_float<td>IM_add_float_genglsl<td>stdlib_genglsl_impl.mtlx
@@ -1363,7 +1400,7 @@
 </tr></table>
 </details>
 
-<details><summary>527 shaders: genmdl</summary>
+<details><summary>528 shaders: genmdl</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>Implementation</th><th>File</th></tr><tr><td>ND_viewdirection_vector3<td>IM_viewdirection_vector3_genmdl<td>nprlib_genmdl_impl.mtlx
 </tr><tr><td>ND_oren_nayar_diffuse_bsdf<td>IM_oren_nayar_diffuse_bsdf_genmdl<td>pbrlib_genmdl_impl.mtlx
@@ -1482,13 +1519,14 @@
 </tr><tr><td>ND_geomcolor_color4<td>IM_geomcolor_color4_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_integer<td>IM_geompropvalue_integer_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_boolean<td>IM_geompropvalue_boolean_genmdl<td>stdlib_genmdl_impl.mtlx
-</tr><tr><td>ND_geompropvalue_string<td>IM_geompropvalue_string_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_float<td>IM_geompropvalue_float_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_color3<td>IM_geompropvalue_color3_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_color4<td>IM_geompropvalue_color4_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector2<td>IM_geompropvalue_vector2_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector3<td>IM_geompropvalue_vector3_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector4<td>IM_geompropvalue_vector4_genmdl<td>stdlib_genmdl_impl.mtlx
+</tr><tr><td>ND_geompropvalueuniform_string<td>IM_geompropvalue_string_genmdl<td>stdlib_genmdl_impl.mtlx
+</tr><tr><td>ND_geompropvalueuniform_filename<td>IM_geompropvalue_filename_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_frame_float<td>IM_frame_float_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_time_float<td>IM_time_float_genmdl<td>stdlib_genmdl_impl.mtlx
 </tr><tr><td>ND_add_float<td>IM_add_float_genmdl<td>stdlib_genmdl_impl.mtlx
@@ -1895,7 +1933,7 @@
 </tr></table>
 </details>
 
-<details><summary>62 shaders: genmsl</summary>
+<details><summary>63 shaders: genmsl</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>Implementation</th><th>File</th></tr><tr><td>ND_point_light<td>IM_point_light_genmsl<td>lights_genmsl_impl.mtlx
 </tr><tr><td>ND_directional_light<td>IM_directional_light_genmsl<td>lights_genmsl_impl.mtlx
@@ -1932,13 +1970,14 @@
 </tr><tr><td>ND_geomcolor_color4<td>IM_geomcolor_color4_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_integer<td>IM_geompropvalue_integer_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_boolean<td>IM_geompropvalue_boolean_genmsl<td>stdlib_genmsl_impl.mtlx
-</tr><tr><td>ND_geompropvalue_string<td>IM_geompropvalue_string_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_float<td>IM_geompropvalue_float_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_color3<td>IM_geompropvalue_color3_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_color4<td>IM_geompropvalue_color4_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector2<td>IM_geompropvalue_vector2_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector3<td>IM_geompropvalue_vector3_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector4<td>IM_geompropvalue_vector4_genmsl<td>stdlib_genmsl_impl.mtlx
+</tr><tr><td>ND_geompropvalueuniform_string<td>IM_geompropvalue_string_genmsl<td>stdlib_genmsl_impl.mtlx
+</tr><tr><td>ND_geompropvalueuniform_filename<td>IM_geompropvalue_filename_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_frame_float<td>IM_frame_float_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_time_float<td>IM_time_float_genmsl<td>stdlib_genmsl_impl.mtlx
 </tr><tr><td>ND_transformpoint_vector3<td>IM_transformpoint_vector3_genmsl<td>stdlib_genmsl_impl.mtlx
@@ -1962,7 +2001,7 @@
 </tr></table>
 </details>
 
-<details><summary>516 shaders: genosl</summary>
+<details><summary>517 shaders: genosl</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>Implementation</th><th>File</th></tr><tr><td>ND_viewdirection_vector3<td>IM_viewdirection_vector3_genosl<td>nprlib_genosl_impl.mtlx
 </tr><tr><td>ND_oren_nayar_diffuse_bsdf<td>IM_oren_nayar_diffuse_bsdf_genosl<td>pbrlib_genosl_impl.mtlx
@@ -2072,13 +2111,14 @@
 </tr><tr><td>ND_geomcolor_color4<td>IM_geomcolor_color4_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_integer<td>IM_geompropvalue_integer_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_boolean<td>IM_geompropvalue_boolean_genosl<td>stdlib_genosl_impl.mtlx
-</tr><tr><td>ND_geompropvalue_string<td>IM_geompropvalue_string_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_float<td>IM_geompropvalue_float_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_color3<td>IM_geompropvalue_color3_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_color4<td>IM_geompropvalue_color4_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector2<td>IM_geompropvalue_vector2_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector3<td>IM_geompropvalue_vector3_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_geompropvalue_vector4<td>IM_geompropvalue_vector4_genosl<td>stdlib_genosl_impl.mtlx
+</tr><tr><td>ND_geompropvalueuniform_string<td>IM_geompropvalue_string_genosl<td>stdlib_genosl_impl.mtlx
+</tr><tr><td>ND_geompropvalueuniform_filename<td>IM_geompropvalue_filename_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_frame_float<td>IM_frame_float_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_time_float<td>IM_time_float_genosl<td>stdlib_genosl_impl.mtlx
 </tr><tr><td>ND_add_float<td>IM_add_float_genosl<td>stdlib_genosl_impl.mtlx
@@ -2483,11 +2523,9 @@
 </tr></table>
 </details>
 
-<details><summary>249 node graphs</summary>
+<details><summary>250 node graphs</summary>
 
-<table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>NodeGraph</th><th>File</th></tr><tr><td>ND_disney_brdf_2012_surface<td>IM_disney_brdf_2012_surface_brdf_explorer<td>disney_brdf_2012.mtlx
-</tr><tr><td>ND_disney_bsdf_2015_surface<td>IM_disney_bsdf_2015_surface_pbrt<td>disney_brdf_2015.mtlx
-</tr><tr><td>ND_disney_principled<td>NG_disney_principled<td>disney_principled.mtlx
+<table class="table-fixed table shadow table-striped table-hover table-responsive"><tr><th>Definition</th><th>NodeGraph</th><th>File</th></tr><tr><td>ND_disney_principled<td>NG_disney_principled<td>disney_principled.mtlx
 </tr><tr><td>ND_gltf_pbr_surfaceshader<td>IMPL_gltf_pbr_surfaceshader<td>gltf_pbr.mtlx
 </tr><tr><td>ND_gltf_colorimage<td>NG_gltf_colorimage<td>gltf_pbr.mtlx
 </tr><tr><td>ND_gltf_image_color3_color3_1_0<td>NG_NG_gltf_image_color3_color3_1_0<td>gltf_pbr.mtlx
@@ -2505,6 +2543,7 @@
 </tr><tr><td>ND_UsdPrimvarReader_integer<td>IMP_UsdPrimvarReader_integer<td>usd_preview_surface.mtlx
 </tr><tr><td>ND_UsdPrimvarReader_boolean<td>IMP_UsdPrimvarReader_boolean<td>usd_preview_surface.mtlx
 </tr><tr><td>ND_UsdPrimvarReader_string<td>IMP_UsdPrimvarReader_string<td>usd_preview_surface.mtlx
+</tr><tr><td>ND_UsdPrimvarReader_filename<td>IMP_UsdPrimvarReader_filename<td>usd_preview_surface.mtlx
 </tr><tr><td>ND_UsdPrimvarReader_float<td>IMP_UsdPrimvarReader_float<td>usd_preview_surface.mtlx
 </tr><tr><td>ND_UsdPrimvarReader_vector2<td>IMP_UsdPrimvarReader_vector2<td>usd_preview_surface.mtlx
 </tr><tr><td>ND_UsdPrimvarReader_vector3<td>IMP_UsdPrimvarReader_vector3<td>usd_preview_surface.mtlx
@@ -2564,6 +2603,8 @@
 </tr><tr><td>ND_triplanarprojection_vector2<td>NG_triplanarprojection_vector2<td>stdlib_ng.mtlx
 </tr><tr><td>ND_triplanarprojection_vector3<td>NG_triplanarprojection_vector3<td>stdlib_ng.mtlx
 </tr><tr><td>ND_triplanarprojection_vector4<td>NG_triplanarprojection_vector4<td>stdlib_ng.mtlx
+</tr><tr><td>ND_ramp<td>NG_ramp<td>stdlib_ng.mtlx
+</tr><tr><td>ND_ramp_gradient<td>NG_ramp_gradient<td>stdlib_ng.mtlx
 </tr><tr><td>ND_ramp4_float<td>NG_ramp4_float<td>stdlib_ng.mtlx
 </tr><tr><td>ND_ramp4_color3<td>NG_ramp4_color3<td>stdlib_ng.mtlx
 </tr><tr><td>ND_ramp4_color4<td>NG_ramp4_color4<td>stdlib_ng.mtlx
@@ -5596,12 +5637,13 @@
 <hr>
 
 <h3 id="implementation-comparison">Implementation Comparison</h3>
-<p>First library implementation count: 2325
+<p>First library implementation count: 2332
 Second library implementation count: 2312</p>
-<details><summary>13 implementations added</summary>
+<details><summary>20 implementations added</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Name <th> Node Category <th> Node Type <th></tr>
+<tr><td> IMP_UsdPrimvarReader_filename <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/UsdPrimvarReader.html">UsdPrimvarReader</a> <td> filename </tr>
 <tr><td> IM_chiang_hair_absorption_from_color_genglsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/chiang_hair_absorption_from_color.html">chiang_hair_absorption_from_color</a> <td> vector3 </tr>
 <tr><td> IM_chiang_hair_absorption_from_color_genmdl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/chiang_hair_absorption_from_color.html">chiang_hair_absorption_from_color</a> <td> vector3 </tr>
 <tr><td> IM_chiang_hair_absorption_from_color_genosl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/chiang_hair_absorption_from_color.html">chiang_hair_absorption_from_color</a> <td> vector3 </tr>
@@ -5614,15 +5656,22 @@ Second library implementation count: 2312</p>
 <tr><td> IM_deon_hair_absorption_from_melanin_genglsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/deon_hair_absorption_from_melanin.html">deon_hair_absorption_from_melanin</a> <td> vector3 </tr>
 <tr><td> IM_deon_hair_absorption_from_melanin_genmdl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/deon_hair_absorption_from_melanin.html">deon_hair_absorption_from_melanin</a> <td> vector3 </tr>
 <tr><td> IM_deon_hair_absorption_from_melanin_genosl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/deon_hair_absorption_from_melanin.html">deon_hair_absorption_from_melanin</a> <td> vector3 </tr>
+<tr><td> IM_geompropvalue_filename_genglsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/geompropvalueuniform.html">geompropvalueuniform</a> <td> filename </tr>
+<tr><td> IM_geompropvalue_filename_genmdl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/geompropvalueuniform.html">geompropvalueuniform</a> <td> filename </tr>
+<tr><td> IM_geompropvalue_filename_genmsl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/geompropvalueuniform.html">geompropvalueuniform</a> <td> filename </tr>
+<tr><td> IM_geompropvalue_filename_genosl <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/geompropvalueuniform.html">geompropvalueuniform</a> <td> filename </tr>
 <tr><td> NG_disney_principled <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/disney_principled.html">disney_principled</a> <td> surfaceshader </tr>
+<tr><td> NG_ramp <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/ramp.html">ramp</a> <td> color4 </tr>
+<tr><td> NG_ramp_gradient <td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/ramp_gradient.html">ramp_gradient</a> <td> color4 </tr>
 </table>
 
 </details>
 
-<details><summary>43 implementations modified</summary>
+<details><summary>48 implementations modified</summary>
 
 <table class="table-fixed table shadow table-striped table-hover table-responsive">
 <tr><th> Name <th> Change </tr>
+<tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/UsdPrimvarReader.html">IMP_UsdPrimvarReader_string</a> <td> - Category changed on: <code>primvar</code> from <code>geompropvalueuniform</code> to <code>geompropvalue</code><br>- attribute: <code>uniform</code>=( <code>true</code> ) added to: <code>out</code><br></tr>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/acos.html">IM_acos_float_genglsl</a> <td>   - attribute: <code>sourcecode</code> changed on <code>IM_acos_float_genglsl</code> from <code>( acos({{in}}) )</code> to <code>( mx_acos({{in}}) )</code><br></tr>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/acos.html">IM_acos_vector2_genglsl</a> <td>   - attribute: <code>sourcecode</code> changed on <code>IM_acos_vector2_genglsl</code> from <code>( acos({{in}}) )</code> to <code>( mx_acos({{in}}) )</code><br></tr>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/acos.html">IM_acos_vector3_genglsl</a> <td>   - attribute: <code>sourcecode</code> changed on <code>IM_acos_vector3_genglsl</code> from <code>( acos({{in}}) )</code> to <code>( mx_acos({{in}}) )</code><br></tr>
@@ -5642,6 +5691,10 @@ Second library implementation count: 2312</p>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/cos.html">IM_cos_vector4_genglsl</a> <td>   - attribute: <code>sourcecode</code> changed on <code>IM_cos_vector4_genglsl</code> from <code>( cos({{in}}) )</code> to <code>( mx_cos({{in}}) )</code><br></tr>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/dielectric_bsdf.html">IM_dielectric_bsdf_genmdl</a> <td>   - attribute: <code>sourcecode</code> changed on <code>IM_dielectric_bsdf_genmdl</code> from <code>( materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_dielectric_bsdf(mxp_weight:{{weight}}, mxp_tint:{{tint}}, mxp_ior:{{ior}}, mxp_roughness:{{roughness}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}, mxp_scatter_mode:{{scatter_mode}}, mxp_base:{{base}}) )</code> to <code>( materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_dielectric_bsdf(mxp_weight:{{weight}}, mxp_tint:{{tint}}, mxp_ior:{{ior}}, mxp_roughness:{{roughness}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}, mxp_scatter_mode:{{scatter_mode}}, mxp_base:{{base}}, mxp_top_weight:{{top_weight}}) )</code><br></tr>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/generalized_schlick_bsdf.html">IM_generalized_schlick_bsdf_genmdl</a> <td>   - attribute: <code>sourcecode</code> changed on <code>IM_generalized_schlick_bsdf_genmdl</code> from <code>( materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_generalized_schlick_bsdf(mxp_weight:{{weight}}, mxp_color0:{{color0}}, mxp_color90:{{color90}}, mxp_exponent:{{exponent}},mxp_roughness:{{roughness}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}, mxp_scatter_mode:{{scatter_mode}}, mxp_base:{{base}}) )</code> to <code>( materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_generalized_schlick_bsdf(mxp_weight:{{weight}}, mxp_color0:{{color0}}, mxp_color82:{{color82}}, mxp_color90:{{color90}}, mxp_exponent:{{exponent}},mxp_roughness:{{roughness}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}, mxp_scatter_mode:{{scatter_mode}}, mxp_base:{{base}}, mxp_top_weight:{{top_weight}}) )</code><br></tr>
+<tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/geompropvalueuniform.html">IM_geompropvalue_string_genglsl</a> <td>   - attribute: <code>nodedef</code> changed on <code>IM_geompropvalue_string_genglsl</code> from <code>( ND_geompropvalue_string )</code> to <code>( ND_geompropvalueuniform_string )</code><br></tr>
+<tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/geompropvalueuniform.html">IM_geompropvalue_string_genmdl</a> <td>   - attribute: <code>nodedef</code> changed on <code>IM_geompropvalue_string_genmdl</code> from <code>( ND_geompropvalue_string )</code> to <code>( ND_geompropvalueuniform_string )</code><br></tr>
+<tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/geompropvalueuniform.html">IM_geompropvalue_string_genmsl</a> <td>   - attribute: <code>nodedef</code> changed on <code>IM_geompropvalue_string_genmsl</code> from <code>( ND_geompropvalue_string )</code> to <code>( ND_geompropvalueuniform_string )</code><br></tr>
+<tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/geompropvalueuniform.html">IM_geompropvalue_string_genosl</a> <td>   - attribute: <code>nodedef</code> changed on <code>IM_geompropvalue_string_genosl</code> from <code>( ND_geompropvalue_string )</code> to <code>( ND_geompropvalueuniform_string )</code><br></tr>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/invertmatrix.html">IM_invertmatrix_matrix33_genglsl</a> <td>   - attribute: <code>sourcecode</code> changed on <code>IM_invertmatrix_matrix33_genglsl</code> from <code>( inverse({{in}}) )</code> to <code>( mx_inverse({{in}}) )</code><br></tr>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/invertmatrix.html">IM_invertmatrix_matrix44_genglsl</a> <td>   - attribute: <code>sourcecode</code> changed on <code>IM_invertmatrix_matrix44_genglsl</code> from <code>( inverse({{in}}) )</code> to <code>( mx_inverse({{in}}) )</code><br></tr>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/modulo.html">IM_modulo_color3FA_genglsl</a> <td>   - attribute: <code>sourcecode</code> changed on <code>IM_modulo_color3FA_genglsl</code> from <code>( mod({{in1}}, {{in2}}) )</code> to <code>( mx_mod({{in1}}, {{in2}}) )</code><br></tr>
@@ -5664,7 +5717,7 @@ Second library implementation count: 2312</p>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/tan.html">IM_tan_vector2_genglsl</a> <td>   - attribute: <code>sourcecode</code> changed on <code>IM_tan_vector2_genglsl</code> from <code>( tan({{in}}) )</code> to <code>( mx_tan({{in}}) )</code><br></tr>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/tan.html">IM_tan_vector3_genglsl</a> <td>   - attribute: <code>sourcecode</code> changed on <code>IM_tan_vector3_genglsl</code> from <code>( tan({{in}}) )</code> to <code>( mx_tan({{in}}) )</code><br></tr>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/tan.html">IM_tan_vector4_genglsl</a> <td>   - attribute: <code>sourcecode</code> changed on <code>IM_tan_vector4_genglsl</code> from <code>( tan({{in}}) )</code> to <code>( mx_tan({{in}}) )</code><br></tr>
-<tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/standard_surface_to_UsdPreviewSurface.html">NG_standard_surface_to_UsdPreviewSurface</a> <td> - Number of children on: <code>NG_standard_surface_to_UsdPreviewSurface</code> changed from ( 26 ) to ( 27 )<br>- multiply <code>/scaledEmissionColor</code> add to <code>NG_standard_surface_to_UsdPreviewSurface</code><br>- attribute: <code>interfacename</code>=( <code>emission_color</code> ) removed from: <code>in1</code><br>- attribute: <code>nodename</code>=( <code>scaledEmissionColor</code> ) added to: <code>in1</code><br>- attribute: <code>interfacename</code>=( <code>emission</code> ) removed from: <code>in2</code><br>- attribute: <code>nodename</code>=( <code>coatAttenuation</code> ) added to: <code>in2</code><br>  - attribute: <code>type</code> changed on <code>in2</code> from <code>( float )</code> to <code>( color3 )</code><br></tr>
+<tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/standard_surface_to_UsdPreviewSurface.html">NG_standard_surface_to_UsdPreviewSurface</a> <td> - Number of children on: <code>NG_standard_surface_to_UsdPreviewSurface</code> changed from ( 26 ) to ( 28 )<br>- mix <code>/albedoOpaqueDielectric</code> add to <code>NG_standard_surface_to_UsdPreviewSurface</code><br>- multiply <code>/scaledEmissionColor</code> add to <code>NG_standard_surface_to_UsdPreviewSurface</code><br>  - attribute: <code>nodename</code> changed on <code>in1</code> from <code>( scaledBaseColor )</code> to <code>( albedoOpaqueDielectric )</code><br>- attribute: <code>interfacename</code>=( <code>emission_color</code> ) removed from: <code>in1</code><br>- attribute: <code>nodename</code>=( <code>scaledEmissionColor</code> ) added to: <code>in1</code><br>- attribute: <code>interfacename</code>=( <code>emission</code> ) removed from: <code>in2</code><br>- attribute: <code>nodename</code>=( <code>coatAttenuation</code> ) added to: <code>in2</code><br>  - attribute: <code>type</code> changed on <code>in2</code> from <code>( float )</code> to <code>( color3 )</code><br></tr>
 <tr><td> <a href="https://kwokcb.github.io/MaterialX_Learn/documents/definitions/standard_surface_to_gltf_pbr.html">NG_standard_surface_to_gltf_pbr</a> <td> - Number of children on: <code>NG_standard_surface_to_gltf_pbr</code> changed from ( 32 ) to ( 35 )<br>- ifequal <code>/baseColor</code> add to <code>NG_standard_surface_to_gltf_pbr</code><br>- ifgreater <code>/transmissionBaseColor</code> add to <code>NG_standard_surface_to_gltf_pbr</code><br>- ifgreater <code>/transmissionAttenuationColor</code> add to <code>NG_standard_surface_to_gltf_pbr</code><br>- Category changed on: <code>base_color</code> from <code>ifgreater</code> to <code>ifequal</code><br>- attribute: <code>nodename</code>=( <code>hasCoatColor</code> ) removed from: <code>value1</code><br>- attribute: <code>interfacename</code>=( <code>transmission</code> ) added to: <code>value1</code><br>  - attribute: <code>nodename</code> changed on <code>in1</code> from <code>( scaledBaseColor )</code> to <code>( transmissionBaseColor )</code><br>  - attribute: <code>nodename</code> changed on <code>in2</code> from <code>( mixedBaseColor )</code> to <code>( baseColor )</code><br>- Category changed on: <code>attenuation_color</code> from <code>ifgreater</code> to <code>dot</code><br>- Number of children on: <code>attenuation_color</code> changed from ( 1 ) to ( 4 )<br>- input <code>/in</code> removed from <code>NG_standard_surface_to_gltf_pbr/attenuation_color</code>. Value=(  )<br>- input <code>/value1</code> added to <code>NG_standard_surface_to_gltf_pbr/attenuation_color</code>. Value=(  )<br>- input <code>/value2</code> added to <code>NG_standard_surface_to_gltf_pbr/attenuation_color</code>. Value=( 0 )<br>- input <code>/in1</code> added to <code>NG_standard_surface_to_gltf_pbr/attenuation_color</code>. Value=(  )<br>- input <code>/in2</code> added to <code>NG_standard_surface_to_gltf_pbr/attenuation_color</code>. Value=( 1, 1, 1 )<br></tr>
 </table>
 

@@ -17,7 +17,7 @@
 * [blur](#node-blur) [heighttonormal](#node-heighttonormal) 
 ---------
 ### Node Group: geometric
-* [bitangent](#node-bitangent) [bump](#node-bump) [geomcolor](#node-geomcolor) [geompropvalue](#node-geompropvalue) [normal](#node-normal) [position](#node-position) [tangent](#node-tangent) [texcoord](#node-texcoord) 
+* [bitangent](#node-bitangent) [bump](#node-bump) [geomcolor](#node-geomcolor) [geompropvalue](#node-geompropvalue) [geompropvalueuniform](#node-geompropvalueuniform) [normal](#node-normal) [position](#node-position) [tangent](#node-tangent) [texcoord](#node-texcoord) 
 ---------
 ### Node Group: material
 * [surfacematerial](#node-surfacematerial) [volumematerial](#node-volumematerial) 
@@ -32,7 +32,7 @@
 * [constant](#node-constant) [randomfloat](#node-randomfloat) 
 ---------
 ### Node Group: procedural2d
-* [cellnoise2d](#node-cellnoise2d) [checkerboard](#node-checkerboard) [circle](#node-circle) [cloverleaf](#node-cloverleaf) [crosshatch](#node-crosshatch) [grid](#node-grid) [hexagon](#node-hexagon) [line](#node-line) [noise2d](#node-noise2d) [ramp4](#node-ramp4) [ramplr](#node-ramplr) [ramptb](#node-ramptb) [splitlr](#node-splitlr) [splittb](#node-splittb) [tiledcircles](#node-tiledcircles) [tiledcloverleafs](#node-tiledcloverleafs) [tiledhexagons](#node-tiledhexagons) [unifiednoise2d](#node-unifiednoise2d) [worleynoise2d](#node-worleynoise2d) 
+* [cellnoise2d](#node-cellnoise2d) [checkerboard](#node-checkerboard) [circle](#node-circle) [cloverleaf](#node-cloverleaf) [crosshatch](#node-crosshatch) [grid](#node-grid) [hexagon](#node-hexagon) [line](#node-line) [noise2d](#node-noise2d) [ramp](#node-ramp) [ramp4](#node-ramp4) [ramp_gradient](#node-ramp_gradient) [ramplr](#node-ramplr) [ramptb](#node-ramptb) [splitlr](#node-splitlr) [splittb](#node-splittb) [tiledcircles](#node-tiledcircles) [tiledcloverleafs](#node-tiledcloverleafs) [tiledhexagons](#node-tiledhexagons) [unifiednoise2d](#node-unifiednoise2d) [worleynoise2d](#node-worleynoise2d) 
 ---------
 ### Node Group: procedural3d
 * [cellnoise3d](#node-cellnoise3d) [fractal3d](#node-fractal3d) [noise3d](#node-noise3d) [randomcolor](#node-randomcolor) [unifiednoise3d](#node-unifiednoise3d) [worleynoise3d](#node-worleynoise3d) 
@@ -1959,6 +1959,315 @@ graph TB
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **value** | filename |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | filename | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *ramp*
+<details open><summary>ND_ramp</summary>
+<p>
+ 
+* *Nodedef*: ND_ramp
+* *Type*: color4
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_ramp
+
+
+```mermaid
+graph TB
+    subgraph NG_ramp
+    NG_ramp_separate1[separate1]
+    NG_ramp_ramp_gradient1[ramp_gradient1]
+    NG_ramp_ramp_gradient2[ramp_gradient2]
+    NG_ramp_ramp_gradient3[ramp_gradient3]
+    NG_ramp_ramp_gradient4[ramp_gradient4]
+    NG_ramp_ramp_gradient5[ramp_gradient5]
+    NG_ramp_ramp_gradient6[ramp_gradient6]
+    NG_ramp_ramp_gradient7[ramp_gradient7]
+    NG_ramp_ramp_gradient8[ramp_gradient8]
+    NG_ramp_ramp_gradient9[ramp_gradient9]
+    style NG_ramp_ramp_type_selector  fill:#C72, color:#FFF
+    NG_ramp_ramp_type_selector{ramp_type_selector}
+    NG_ramp_box_multiply[box_multiply]
+    NG_ramp_box_ifgreater[box_ifgreater]
+    NG_ramp_box_absval[box_absval]
+    NG_ramp_separate7[separate7]
+    NG_ramp_separate6[separate6]
+    NG_ramp_radial_atan2[radial_atan2]
+    NG_ramp_radial_divide[radial_divide]
+    NG_ramp_radial_add[radial_add]
+    NG_ramp_circular_multiply[circular_multiply]
+    NG_ramp_circular_magnitude[circular_magnitude]
+    NG_ramp_subtract_half[subtract_half]
+    NG_ramp_separate9[separate9]
+    style NG_ramp_out  fill:#0C0, color:#FFF
+    NG_ramp_out([out])
+    style NG_ramp_texcoord  fill:#09D, color:#FFF
+    NG_ramp_texcoord([texcoord])
+    style NG_ramp_interpolation  fill:#09D, color:#FFF
+    NG_ramp_interpolation([interpolation])
+    style NG_ramp_num_intervals  fill:#09D, color:#FFF
+    NG_ramp_num_intervals([num_intervals])
+    style NG_ramp_interval1  fill:#09D, color:#FFF
+    NG_ramp_interval1([interval1])
+    style NG_ramp_interval2  fill:#09D, color:#FFF
+    NG_ramp_interval2([interval2])
+    style NG_ramp_color1  fill:#09D, color:#FFF
+    NG_ramp_color1([color1])
+    style NG_ramp_color2  fill:#09D, color:#FFF
+    NG_ramp_color2([color2])
+    style NG_ramp_interval3  fill:#09D, color:#FFF
+    NG_ramp_interval3([interval3])
+    style NG_ramp_color3  fill:#09D, color:#FFF
+    NG_ramp_color3([color3])
+    style NG_ramp_interval4  fill:#09D, color:#FFF
+    NG_ramp_interval4([interval4])
+    style NG_ramp_color4  fill:#09D, color:#FFF
+    NG_ramp_color4([color4])
+    style NG_ramp_interval5  fill:#09D, color:#FFF
+    NG_ramp_interval5([interval5])
+    style NG_ramp_color5  fill:#09D, color:#FFF
+    NG_ramp_color5([color5])
+    style NG_ramp_interval6  fill:#09D, color:#FFF
+    NG_ramp_interval6([interval6])
+    style NG_ramp_color6  fill:#09D, color:#FFF
+    NG_ramp_color6([color6])
+    style NG_ramp_interval7  fill:#09D, color:#FFF
+    NG_ramp_interval7([interval7])
+    style NG_ramp_color7  fill:#09D, color:#FFF
+    NG_ramp_color7([color7])
+    style NG_ramp_interval8  fill:#09D, color:#FFF
+    NG_ramp_interval8([interval8])
+    style NG_ramp_color8  fill:#09D, color:#FFF
+    NG_ramp_color8([color8])
+    style NG_ramp_interval9  fill:#09D, color:#FFF
+    NG_ramp_interval9([interval9])
+    style NG_ramp_color9  fill:#09D, color:#FFF
+    NG_ramp_color9([color9])
+    style NG_ramp_interval10  fill:#09D, color:#FFF
+    NG_ramp_interval10([interval10])
+    style NG_ramp_color10  fill:#09D, color:#FFF
+    NG_ramp_color10([color10])
+    style NG_ramp_type  fill:#09D, color:#FFF
+    NG_ramp_type([type])
+    end
+    NG_ramp_texcoord --"in"--> NG_ramp_separate1
+    NG_ramp_interpolation --"interpolation"--> NG_ramp_ramp_gradient1
+    NG_ramp_num_intervals --"num_intervals"--> NG_ramp_ramp_gradient1
+    NG_ramp_interval1 --"interval1"--> NG_ramp_ramp_gradient1
+    NG_ramp_interval2 --"interval2"--> NG_ramp_ramp_gradient1
+    NG_ramp_color1 --"color1"--> NG_ramp_ramp_gradient1
+    NG_ramp_color1 --"prev_color"--> NG_ramp_ramp_gradient1
+    NG_ramp_color2 --"color2"--> NG_ramp_ramp_gradient1
+    NG_ramp_ramp_type_selector --"x"--> NG_ramp_ramp_gradient1
+    NG_ramp_ramp_gradient1 --"prev_color"--> NG_ramp_ramp_gradient2
+    NG_ramp_interpolation --"interpolation"--> NG_ramp_ramp_gradient2
+    NG_ramp_num_intervals --"num_intervals"--> NG_ramp_ramp_gradient2
+    NG_ramp_interval2 --"interval1"--> NG_ramp_ramp_gradient2
+    NG_ramp_interval3 --"interval2"--> NG_ramp_ramp_gradient2
+    NG_ramp_color2 --"color1"--> NG_ramp_ramp_gradient2
+    NG_ramp_color3 --"color2"--> NG_ramp_ramp_gradient2
+    NG_ramp_ramp_type_selector --"x"--> NG_ramp_ramp_gradient2
+    NG_ramp_ramp_gradient2 --"prev_color"--> NG_ramp_ramp_gradient3
+    NG_ramp_interpolation --"interpolation"--> NG_ramp_ramp_gradient3
+    NG_ramp_num_intervals --"num_intervals"--> NG_ramp_ramp_gradient3
+    NG_ramp_interval3 --"interval1"--> NG_ramp_ramp_gradient3
+    NG_ramp_interval4 --"interval2"--> NG_ramp_ramp_gradient3
+    NG_ramp_color3 --"color1"--> NG_ramp_ramp_gradient3
+    NG_ramp_color4 --"color2"--> NG_ramp_ramp_gradient3
+    NG_ramp_ramp_type_selector --"x"--> NG_ramp_ramp_gradient3
+    NG_ramp_ramp_gradient3 --"prev_color"--> NG_ramp_ramp_gradient4
+    NG_ramp_interpolation --"interpolation"--> NG_ramp_ramp_gradient4
+    NG_ramp_num_intervals --"num_intervals"--> NG_ramp_ramp_gradient4
+    NG_ramp_interval4 --"interval1"--> NG_ramp_ramp_gradient4
+    NG_ramp_interval5 --"interval2"--> NG_ramp_ramp_gradient4
+    NG_ramp_color4 --"color1"--> NG_ramp_ramp_gradient4
+    NG_ramp_color5 --"color2"--> NG_ramp_ramp_gradient4
+    NG_ramp_ramp_type_selector --"x"--> NG_ramp_ramp_gradient4
+    NG_ramp_ramp_gradient4 --"prev_color"--> NG_ramp_ramp_gradient5
+    NG_ramp_interpolation --"interpolation"--> NG_ramp_ramp_gradient5
+    NG_ramp_num_intervals --"num_intervals"--> NG_ramp_ramp_gradient5
+    NG_ramp_interval5 --"interval1"--> NG_ramp_ramp_gradient5
+    NG_ramp_interval6 --"interval2"--> NG_ramp_ramp_gradient5
+    NG_ramp_color5 --"color1"--> NG_ramp_ramp_gradient5
+    NG_ramp_color6 --"color2"--> NG_ramp_ramp_gradient5
+    NG_ramp_ramp_type_selector --"x"--> NG_ramp_ramp_gradient5
+    NG_ramp_interpolation --"interpolation"--> NG_ramp_ramp_gradient6
+    NG_ramp_ramp_gradient5 --"prev_color"--> NG_ramp_ramp_gradient6
+    NG_ramp_num_intervals --"num_intervals"--> NG_ramp_ramp_gradient6
+    NG_ramp_interval6 --"interval1"--> NG_ramp_ramp_gradient6
+    NG_ramp_interval7 --"interval2"--> NG_ramp_ramp_gradient6
+    NG_ramp_color6 --"color1"--> NG_ramp_ramp_gradient6
+    NG_ramp_color7 --"color2"--> NG_ramp_ramp_gradient6
+    NG_ramp_ramp_type_selector --"x"--> NG_ramp_ramp_gradient6
+    NG_ramp_ramp_gradient6 --"prev_color"--> NG_ramp_ramp_gradient7
+    NG_ramp_interpolation --"interpolation"--> NG_ramp_ramp_gradient7
+    NG_ramp_num_intervals --"num_intervals"--> NG_ramp_ramp_gradient7
+    NG_ramp_interval7 --"interval1"--> NG_ramp_ramp_gradient7
+    NG_ramp_interval8 --"interval2"--> NG_ramp_ramp_gradient7
+    NG_ramp_color7 --"color1"--> NG_ramp_ramp_gradient7
+    NG_ramp_color8 --"color2"--> NG_ramp_ramp_gradient7
+    NG_ramp_ramp_type_selector --"x"--> NG_ramp_ramp_gradient7
+    NG_ramp_interpolation --"interpolation"--> NG_ramp_ramp_gradient8
+    NG_ramp_ramp_gradient7 --"prev_color"--> NG_ramp_ramp_gradient8
+    NG_ramp_num_intervals --"num_intervals"--> NG_ramp_ramp_gradient8
+    NG_ramp_interval8 --"interval1"--> NG_ramp_ramp_gradient8
+    NG_ramp_interval9 --"interval2"--> NG_ramp_ramp_gradient8
+    NG_ramp_color8 --"color1"--> NG_ramp_ramp_gradient8
+    NG_ramp_color9 --"color2"--> NG_ramp_ramp_gradient8
+    NG_ramp_ramp_type_selector --"x"--> NG_ramp_ramp_gradient8
+    NG_ramp_interpolation --"interpolation"--> NG_ramp_ramp_gradient9
+    NG_ramp_ramp_gradient8 --"prev_color"--> NG_ramp_ramp_gradient9
+    NG_ramp_num_intervals --"num_intervals"--> NG_ramp_ramp_gradient9
+    NG_ramp_interval9 --"interval1"--> NG_ramp_ramp_gradient9
+    NG_ramp_interval10 --"interval2"--> NG_ramp_ramp_gradient9
+    NG_ramp_color9 --"color1"--> NG_ramp_ramp_gradient9
+    NG_ramp_color10 --"color2"--> NG_ramp_ramp_gradient9
+    NG_ramp_ramp_type_selector --"x"--> NG_ramp_ramp_gradient9
+    NG_ramp_type --"which"--> NG_ramp_ramp_type_selector
+    NG_ramp_separate1 --"outx-->in1"--> NG_ramp_ramp_type_selector
+    NG_ramp_radial_add --"in2"--> NG_ramp_ramp_type_selector
+    NG_ramp_circular_magnitude --"in3"--> NG_ramp_ramp_type_selector
+    NG_ramp_box_ifgreater --"in4"--> NG_ramp_ramp_type_selector
+    NG_ramp_box_absval --"in1"--> NG_ramp_box_multiply
+    NG_ramp_separate6 --"outx-->value1"--> NG_ramp_box_ifgreater
+    NG_ramp_separate6 --"outy-->value2"--> NG_ramp_box_ifgreater
+    NG_ramp_separate7 --"outx-->in1"--> NG_ramp_box_ifgreater
+    NG_ramp_separate7 --"outy-->in2"--> NG_ramp_box_ifgreater
+    NG_ramp_subtract_half --"in"--> NG_ramp_box_absval
+    NG_ramp_box_multiply --"in"--> NG_ramp_separate7
+    NG_ramp_box_absval --"in"--> NG_ramp_separate6
+    NG_ramp_separate9 --"outy-->inx"--> NG_ramp_radial_atan2
+    NG_ramp_separate9 --"outx-->iny"--> NG_ramp_radial_atan2
+    NG_ramp_radial_atan2 --"in1"--> NG_ramp_radial_divide
+    NG_ramp_radial_divide --"in1"--> NG_ramp_radial_add
+    NG_ramp_subtract_half --"in1"--> NG_ramp_circular_multiply
+    NG_ramp_circular_multiply --"in"--> NG_ramp_circular_magnitude
+    NG_ramp_texcoord --"in1"--> NG_ramp_subtract_half
+    NG_ramp_subtract_half --"in"--> NG_ramp_separate9
+    NG_ramp_ramp_gradient9 --> NG_ramp_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| **type** | integer | 0 |  |  |  |  |  |  |  |  |  |  |
+| **interpolation** | integer | 1 |  |  |  |  |  |  |  |  |  |  |
+| **num_intervals** | integer | 2 |  | 2 | 10 |  |  |  |  |  |  |  |
+| **interval1** | float | 0.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **color1** | color4 | 0, 0, 0, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| **interval2** | float | 1.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **color2** | color4 | 1, 1, 1, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| **interval3** | float | 1.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **color3** | color4 | 1, 1, 1, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| **interval4** | float | 1.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **color4** | color4 | 1, 1, 1, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| **interval5** | float | 1.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **color5** | color4 | 1, 1, 1, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| **interval6** | float | 1.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **color6** | color4 | 1, 1, 1, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| **interval7** | float | 1.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **color7** | color4 | 1, 1, 1, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| **interval8** | float | 1.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **color8** | color4 | 1, 1, 1, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| **interval9** | float | 1.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **color9** | color4 | 1, 1, 1, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| **interval10** | float | 1.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **color10** | color4 | 1, 1, 1, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *ramp_gradient*
+<details open><summary>ND_ramp_gradient</summary>
+<p>
+ 
+* *Nodedef*: ND_ramp_gradient
+* *Type*: color4
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_ramp_gradient
+
+
+```mermaid
+graph TB
+    subgraph NG_ramp_gradient
+    NG_ramp_gradient_linear_clamp[linear_clamp]
+    NG_ramp_gradient_linear_remap[linear_remap]
+    NG_ramp_gradient_smoothstep[smoothstep]
+    style NG_ramp_gradient_interpolation_selector  fill:#C72, color:#FFF
+    NG_ramp_gradient_interpolation_selector{interpolation_selector}
+    NG_ramp_gradient_mix3[mix3]
+    NG_ramp_gradient_step_ifgreater[step_ifgreater]
+    style NG_ramp_gradient_interpolation_selector2  fill:#C72, color:#FFF
+    NG_ramp_gradient_interpolation_selector2{interpolation_selector2}
+    NG_ramp_gradient_ifgreater3[ifgreater3]
+    NG_ramp_gradient_ifgreatereq1[ifgreatereq1]
+    style NG_ramp_gradient_out  fill:#0C0, color:#FFF
+    NG_ramp_gradient_out([out])
+    style NG_ramp_gradient_x  fill:#09D, color:#FFF
+    NG_ramp_gradient_x([x])
+    style NG_ramp_gradient_interval1  fill:#09D, color:#FFF
+    NG_ramp_gradient_interval1([interval1])
+    style NG_ramp_gradient_interval2  fill:#09D, color:#FFF
+    NG_ramp_gradient_interval2([interval2])
+    style NG_ramp_gradient_interpolation  fill:#09D, color:#FFF
+    NG_ramp_gradient_interpolation([interpolation])
+    style NG_ramp_gradient_color2  fill:#09D, color:#FFF
+    NG_ramp_gradient_color2([color2])
+    style NG_ramp_gradient_color1  fill:#09D, color:#FFF
+    NG_ramp_gradient_color1([color1])
+    style NG_ramp_gradient_prev_color  fill:#09D, color:#FFF
+    NG_ramp_gradient_prev_color([prev_color])
+    style NG_ramp_gradient_interval_num  fill:#09D, color:#FFF
+    NG_ramp_gradient_interval_num([interval_num])
+    style NG_ramp_gradient_num_intervals  fill:#09D, color:#FFF
+    NG_ramp_gradient_num_intervals([num_intervals])
+    end
+    NG_ramp_gradient_x --"in"--> NG_ramp_gradient_linear_clamp
+    NG_ramp_gradient_interval1 --"low"--> NG_ramp_gradient_linear_clamp
+    NG_ramp_gradient_interval2 --"high"--> NG_ramp_gradient_linear_clamp
+    NG_ramp_gradient_linear_clamp --"in"--> NG_ramp_gradient_linear_remap
+    NG_ramp_gradient_interval1 --"inlow"--> NG_ramp_gradient_linear_remap
+    NG_ramp_gradient_interval2 --"inhigh"--> NG_ramp_gradient_linear_remap
+    NG_ramp_gradient_x --"in"--> NG_ramp_gradient_smoothstep
+    NG_ramp_gradient_interval1 --"low"--> NG_ramp_gradient_smoothstep
+    NG_ramp_gradient_interval2 --"high"--> NG_ramp_gradient_smoothstep
+    NG_ramp_gradient_interpolation --"which"--> NG_ramp_gradient_interpolation_selector
+    NG_ramp_gradient_linear_remap --"in1"--> NG_ramp_gradient_interpolation_selector
+    NG_ramp_gradient_smoothstep --"in2"--> NG_ramp_gradient_interpolation_selector
+    NG_ramp_gradient_color2 --"fg"--> NG_ramp_gradient_mix3
+    NG_ramp_gradient_color1 --"bg"--> NG_ramp_gradient_mix3
+    NG_ramp_gradient_interpolation_selector --"mix"--> NG_ramp_gradient_mix3
+    NG_ramp_gradient_x --"value2"--> NG_ramp_gradient_step_ifgreater
+    NG_ramp_gradient_color1 --"in1"--> NG_ramp_gradient_step_ifgreater
+    NG_ramp_gradient_color2 --"in2"--> NG_ramp_gradient_step_ifgreater
+    NG_ramp_gradient_interval2 --"value1"--> NG_ramp_gradient_step_ifgreater
+    NG_ramp_gradient_mix3 --"in1"--> NG_ramp_gradient_interpolation_selector2
+    NG_ramp_gradient_mix3 --"in2"--> NG_ramp_gradient_interpolation_selector2
+    NG_ramp_gradient_interpolation --"which"--> NG_ramp_gradient_interpolation_selector2
+    NG_ramp_gradient_step_ifgreater --"in3"--> NG_ramp_gradient_interpolation_selector2
+    NG_ramp_gradient_x --"value1"--> NG_ramp_gradient_ifgreater3
+    NG_ramp_gradient_interval1 --"value2"--> NG_ramp_gradient_ifgreater3
+    NG_ramp_gradient_interpolation_selector2 --"in1"--> NG_ramp_gradient_ifgreater3
+    NG_ramp_gradient_prev_color --"in2"--> NG_ramp_gradient_ifgreater3
+    NG_ramp_gradient_interval_num --"value1"--> NG_ramp_gradient_ifgreatereq1
+    NG_ramp_gradient_num_intervals --"value2"--> NG_ramp_gradient_ifgreatereq1
+    NG_ramp_gradient_prev_color --"in1"--> NG_ramp_gradient_ifgreatereq1
+    NG_ramp_gradient_ifgreater3 --"in2"--> NG_ramp_gradient_ifgreatereq1
+    NG_ramp_gradient_ifgreatereq1 --> NG_ramp_gradient_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **x** | float | 0.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **interval1** | float | 0.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **interval2** | float | 1.0 |  | 0 | 1 |  |  |  |  |  |  |  |
+| **color1** | color4 | 0, 0, 0, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| **color2** | color4 | 1, 1, 1, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| **interpolation** | integer | 1 |  |  |  |  |  |  |  |  |  |  |
+| **prev_color** | color4 | 0, 0, 0, 1 |  | 0,0,0,0 | 1,1,1,1 |  |  |  |  |  |  |  |
+| **interval_num** | integer | 1 |  |  |  |  |  |  |  |  |  |  |
+| **num_intervals** | integer | 2 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *ramplr*
 <details open><summary>ND_ramplr_float</summary>
 <p>
@@ -3864,6 +4173,7 @@ graph TB
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **jitter** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **style** | integer | 0 | Cell Style |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_worleynoise2d_vector2</summary>
 <p>
@@ -3880,6 +4190,7 @@ graph TB
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **jitter** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **style** | integer | 0 | Cell Style |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_worleynoise2d_vector3</summary>
 <p>
@@ -3896,6 +4207,7 @@ graph TB
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | **jitter** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **style** | integer | 0 | Cell Style |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *worleynoise3d*
 <details open><summary>ND_worleynoise3d_float</summary>
@@ -3913,6 +4225,7 @@ graph TB
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **jitter** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **style** | integer | 0 | Cell Style |  |  |  |  |  |  |  |  |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_worleynoise3d_vector2</summary>
 <p>
@@ -3929,6 +4242,7 @@ graph TB
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **jitter** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **style** | integer | 0 | Cell Style |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_worleynoise3d_vector3</summary>
 <p>
@@ -3945,6 +4259,7 @@ graph TB
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **jitter** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **style** | integer | 0 | Cell Style |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *unifiednoise2d*
 <details open><summary>ND_unifiednoise2d_float</summary>
@@ -5432,22 +5747,6 @@ graph TB
 | **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **default** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *out* | boolean | None |  |  |  |  |  |  |  |  |  |  |
-<details open><summary>ND_geompropvalue_string</summary>
-<p>
- 
-* *Nodedef*: ND_geompropvalue_string
-* *Type*: string
-* *Group*: geometric
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
-| **default** | string |  |  |  |  |  |  |  |  |  |  | true |
-| *out* | string | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_geompropvalue_float</summary>
 <p>
  
@@ -5544,6 +5843,39 @@ graph TB
 | **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
 | **default** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *geompropvalueuniform*
+<details open><summary>ND_geompropvalueuniform_string</summary>
+<p>
+ 
+* *Nodedef*: ND_geompropvalueuniform_string
+* *Type*: string
+* *Group*: geometric
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
+| **default** | string |  |  |  |  |  |  |  |  |  |  | true |
+| *out* | string | None |  |  |  |  |  |  |  |  |  | true |
+<details open><summary>ND_geompropvalueuniform_filename</summary>
+<p>
+ 
+* *Nodedef*: ND_geompropvalueuniform_filename
+* *Type*: filename
+* *Group*: geometric
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **geomprop** | string |  |  |  |  |  |  |  |  |  |  | true |
+| **default** | filename |  |  |  |  |  |  |  |  |  |  | true |
+| *out* | filename | None |  |  |  |  |  |  |  |  |  | true |
 ### Category: *bump*
 <details open><summary>ND_bump_vector3</summary>
 <p>

@@ -5,7 +5,7 @@
 * [UsdTransform2d](#node-UsdTransform2d) 
 ---------
 ### Node Group: pbr
-* [LamaAdd](#node-LamaAdd) [LamaConductor](#node-LamaConductor) [LamaDielectric](#node-LamaDielectric) [LamaDiffuse](#node-LamaDiffuse) [LamaEmission](#node-LamaEmission) [LamaGeneralizedSchlick](#node-LamaGeneralizedSchlick) [LamaIridescence](#node-LamaIridescence) [LamaLayer](#node-LamaLayer) [LamaMix](#node-LamaMix) [LamaSSS](#node-LamaSSS) [LamaSheen](#node-LamaSheen) [LamaSurface](#node-LamaSurface) [LamaTranslucent](#node-LamaTranslucent) [UsdPreviewSurface](#node-UsdPreviewSurface) [disney_brdf_2012](#node-disney_brdf_2012) [disney_bsdf_2015](#node-disney_bsdf_2015) [disney_principled](#node-disney_principled) [gltf_pbr](#node-gltf_pbr) [open_pbr_anisotropy](#node-open_pbr_anisotropy) [open_pbr_surface](#node-open_pbr_surface) [standard_surface](#node-standard_surface) 
+* [LamaAdd](#node-LamaAdd) [LamaConductor](#node-LamaConductor) [LamaDielectric](#node-LamaDielectric) [LamaDiffuse](#node-LamaDiffuse) [LamaEmission](#node-LamaEmission) [LamaGeneralizedSchlick](#node-LamaGeneralizedSchlick) [LamaIridescence](#node-LamaIridescence) [LamaLayer](#node-LamaLayer) [LamaMix](#node-LamaMix) [LamaSSS](#node-LamaSSS) [LamaSheen](#node-LamaSheen) [LamaSurface](#node-LamaSurface) [LamaTranslucent](#node-LamaTranslucent) [UsdPreviewSurface](#node-UsdPreviewSurface) [disney_principled](#node-disney_principled) [gltf_pbr](#node-gltf_pbr) [open_pbr_anisotropy](#node-open_pbr_anisotropy) [open_pbr_surface](#node-open_pbr_surface) [standard_surface](#node-standard_surface) 
 ---------
 ### Node Group: texture2d
 * [UsdUVTexture](#node-UsdUVTexture) [gltf_colorimage](#node-gltf_colorimage) [gltf_image](#node-gltf_image) [gltf_iridescence_thickness](#node-gltf_iridescence_thickness) [gltf_normalmap](#node-gltf_normalmap) 
@@ -14,62 +14,6 @@
 * [open_pbr_surface_to_standard_surface](#node-open_pbr_surface_to_standard_surface) [standard_surface_to_UsdPreviewSurface](#node-standard_surface_to_UsdPreviewSurface) [standard_surface_to_gltf_pbr](#node-standard_surface_to_gltf_pbr) [standard_surface_to_open_pbr_surface](#node-standard_surface_to_open_pbr_surface) 
 ---------
  
-### Category: *disney_brdf_2012*
-<details open><summary>ND_disney_brdf_2012_surface</summary>
-<p>
- 
-* *Nodedef*: ND_disney_brdf_2012_surface
-* *Type*: surfaceshader
-* *Group*: pbr
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **baseColor** | color3 | 0.16, 0.16, 0.16 |  |  |  |  |  |  |  |  |  |  |
-| **metallic** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **subsurface** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **specular** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
-| **roughness** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
-| **specularTint** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **anisotropic** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **sheen** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **sheenTint** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
-| **clearcoat** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **clearcoatGloss** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
-| *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
-### Category: *disney_bsdf_2015*
-<details open><summary>ND_disney_bsdf_2015_surface</summary>
-<p>
- 
-* *Nodedef*: ND_disney_bsdf_2015_surface
-* *Type*: surfaceshader
-* *Group*: pbr
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **baseColor** | color3 | 0.16, 0.16, 0.16 |  |  |  |  |  |  |  |  |  |  |
-| **metallic** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **roughness** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
-| **anisotropic** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **specularTint** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **sheen** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **sheenTint** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
-| **clearcoat** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **clearcoatGloss** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
-| **specTrans** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **ior** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
-| **scatterDistance** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| **flatness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **diffTrans** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **thin** | boolean | False |  |  |  |  |  |  |  |  |  | true |
-| *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *disney_principled*
 <details open><summary>ND_disney_principled</summary>
 <p>
@@ -2603,8 +2547,41 @@ graph TB
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **varname** | string |  |  |  |  |  |  |  |  |  |  | true |
-| **fallback** | string |  |  |  |  |  |  |  |  |  |  |  |
-| *out* | string | None |  |  |  |  |  |  |  |  |  |  |
+| **fallback** | string |  |  |  |  |  |  |  |  |  |  | true |
+| *out* | string | None |  |  |  |  |  |  |  |  |  | true |
+<details open><summary>ND_UsdPrimvarReader_filename</summary>
+<p>
+ 
+* *Nodedef*: ND_UsdPrimvarReader_filename
+* *Type*: filename
+* *Group*: geometric
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: IMP_UsdPrimvarReader_filename
+
+
+```mermaid
+graph TB
+    subgraph IMP_UsdPrimvarReader_filename
+    IMP_UsdPrimvarReader_filename_primvar[primvar]
+    style IMP_UsdPrimvarReader_filename_out  fill:#0C0, color:#FFF
+    IMP_UsdPrimvarReader_filename_out([out])
+    style IMP_UsdPrimvarReader_filename_varname  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_filename_varname([varname])
+    style IMP_UsdPrimvarReader_filename_fallback  fill:#09D, color:#FFF
+    IMP_UsdPrimvarReader_filename_fallback([fallback])
+    end
+    IMP_UsdPrimvarReader_filename_varname --"geomprop"--> IMP_UsdPrimvarReader_filename_primvar
+    IMP_UsdPrimvarReader_filename_fallback --"default"--> IMP_UsdPrimvarReader_filename_primvar
+    IMP_UsdPrimvarReader_filename_primvar --> IMP_UsdPrimvarReader_filename_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **varname** | string |  |  |  |  |  |  |  |  |  |  | true |
+| **fallback** | filename |  |  |  |  |  |  |  |  |  |  | true |
+| *out* | filename | None |  |  |  |  |  |  |  |  |  | true |
 <details open><summary>ND_UsdPrimvarReader_float</summary>
 <p>
  
@@ -4695,6 +4672,7 @@ graph TB
     NG_standard_surface_to_UsdPreviewSurface_constantOneThirdVector[constantOneThirdVector]
     NG_standard_surface_to_UsdPreviewSurface_metallic[metallic]
     NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor[scaledBaseColor]
+    NG_standard_surface_to_UsdPreviewSurface_albedoOpaqueDielectric[albedoOpaqueDielectric]
     NG_standard_surface_to_UsdPreviewSurface_coatAttenuation[coatAttenuation]
     NG_standard_surface_to_UsdPreviewSurface_diffuseColor[diffuseColor]
     NG_standard_surface_to_UsdPreviewSurface_roughness[roughness]
@@ -4733,6 +4711,10 @@ graph TB
     NG_standard_surface_to_UsdPreviewSurface_base_color([base_color])
     style NG_standard_surface_to_UsdPreviewSurface_base  fill:#09D, color:#FFF
     NG_standard_surface_to_UsdPreviewSurface_base([base])
+    style NG_standard_surface_to_UsdPreviewSurface_subsurface_color  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_subsurface_color([subsurface_color])
+    style NG_standard_surface_to_UsdPreviewSurface_subsurface  fill:#09D, color:#FFF
+    NG_standard_surface_to_UsdPreviewSurface_subsurface([subsurface])
     style NG_standard_surface_to_UsdPreviewSurface_coat_color  fill:#09D, color:#FFF
     NG_standard_surface_to_UsdPreviewSurface_coat_color([coat_color])
     style NG_standard_surface_to_UsdPreviewSurface_coat  fill:#09D, color:#FFF
@@ -4752,9 +4734,12 @@ graph TB
     NG_standard_surface_to_UsdPreviewSurface_metalness --"in"--> NG_standard_surface_to_UsdPreviewSurface_metallic
     NG_standard_surface_to_UsdPreviewSurface_base_color --"in1"--> NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor
     NG_standard_surface_to_UsdPreviewSurface_base --"in2"--> NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor
+    NG_standard_surface_to_UsdPreviewSurface_subsurface_color --"fg"--> NG_standard_surface_to_UsdPreviewSurface_albedoOpaqueDielectric
+    NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor --"bg"--> NG_standard_surface_to_UsdPreviewSurface_albedoOpaqueDielectric
+    NG_standard_surface_to_UsdPreviewSurface_subsurface --"mix"--> NG_standard_surface_to_UsdPreviewSurface_albedoOpaqueDielectric
     NG_standard_surface_to_UsdPreviewSurface_coat_color --"fg"--> NG_standard_surface_to_UsdPreviewSurface_coatAttenuation
     NG_standard_surface_to_UsdPreviewSurface_coat --"mix"--> NG_standard_surface_to_UsdPreviewSurface_coatAttenuation
-    NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor --"in1"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor
+    NG_standard_surface_to_UsdPreviewSurface_albedoOpaqueDielectric --"in1"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor
     NG_standard_surface_to_UsdPreviewSurface_coatAttenuation --"in2"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor
     NG_standard_surface_to_UsdPreviewSurface_specular_roughness --"in"--> NG_standard_surface_to_UsdPreviewSurface_roughness
     NG_standard_surface_to_UsdPreviewSurface_specular_IOR --"in"--> NG_standard_surface_to_UsdPreviewSurface_ior
@@ -4797,6 +4782,8 @@ graph TB
 | **coat** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **coat_color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **coat_roughness** | float | 0.1 |  |  |  |  |  |  |  |  |  |  |
+| **subsurface** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **subsurface_color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **emission** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **emission_color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **opacity** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
