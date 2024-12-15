@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <ramp name="ramp" type="color4">
+    <input name="type" type="integer" value="0" enum="standard,radial,circular,box" enumvalues="0,1,2,3" />
+    <input name="interpolation" type="integer" value="1" enum="linear,smooth,step" enumvalues="0,1,2" />
+    <input name="num_intervals" type="integer" value="2" />
+    <input name="interval1" type="float" value="0" />
+    <input name="color1" type="color4" value="0,0,0,1" />
+    <input name="interval2" type="float" value="1" />
+    <input name="color2" type="color4" value="1,1,1,1" />
+    <input name="interval3" type="float" value="1" />
+    <input name="color3" type="color4" value="1,1,1,1" />
+    <input name="interval4" type="float" value="1" />
+    <input name="color4" type="color4" value="1,1,1,1" />
+    <input name="interval5" type="float" value="1" />
+    <input name="color5" type="color4" value="1,1,1,1" />
+    <input name="interval6" type="float" value="1" />
+    <input name="color6" type="color4" value="1,1,1,1" />
+    <input name="interval7" type="float" value="1" />
+    <input name="color7" type="color4" value="1,1,1,1" />
+    <input name="interval8" type="float" value="1" />
+    <input name="color8" type="color4" value="1,1,1,1" />
+    <input name="interval9" type="float" value="1" />
+    <input name="color9" type="color4" value="1,1,1,1" />
+    <input name="interval10" type="float" value="1" />
+    <input name="color10" type="color4" value="1,1,1,1" />
+  </ramp>
+  <convert name="shader_ramp_out" type="surfaceshader">
+    <input name="in" type="color4" nodename="ramp" />
+  </convert>
+  <surfacematerial name="material_ramp_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ramp_out" />
+  </surfacematerial>
+</materialx>

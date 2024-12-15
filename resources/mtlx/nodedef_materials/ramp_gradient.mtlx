@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <ramp_gradient name="ramp_gradient" type="color4">
+    <input name="x" type="float" value="0" />
+    <input name="interval1" type="float" value="0" />
+    <input name="interval2" type="float" value="1" />
+    <input name="color1" type="color4" value="0,0,0,1" />
+    <input name="color2" type="color4" value="1,1,1,1" />
+    <input name="interpolation" type="integer" value="1" enum="linear,smooth,step" enumvalues="0,1,2" />
+    <input name="prev_color" type="color4" value="0,0,0,1" />
+    <input name="interval_num" type="integer" value="1" />
+    <input name="num_intervals" type="integer" value="2" />
+  </ramp_gradient>
+  <convert name="shader_ramp_gradient_out" type="surfaceshader">
+    <input name="in" type="color4" nodename="ramp_gradient" />
+  </convert>
+  <surfacematerial name="material_ramp_gradient_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_ramp_gradient_out" />
+  </surfacematerial>
+</materialx>
