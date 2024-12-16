@@ -1,0 +1,23 @@
+<!-- Type definitions -->
+<p>
+    The following table lists all core supported types for node inputs, outputs and tokens types.
+</p>
+<p>
+    These are defined as 'typedef' elements in the standard library. The name of the 'typedef' is used
+    to specify the `type' of an input, output or token.
+    Note that except for the 'Description', the column headings for this section are the attribute names 
+    on a 'typedef'.
+    </p>
+<p>
+    Though new types can theoretically be defined this is not recommended as these new types is not
+    automatically recognized. For instance, both file I/O and shader generation will not recognize these types.
+</p>
+<p>
+    The associated API for a 'typedef' is <a href="https://materialx.org/docs/api/class_type_def.html" target="_blank">TypeDef</a>
+    and can be accessed via the <a href="https://materialx.org/docs/api/class_document.html" target="_blank">'getTypeDef()'</a>
+    document API.
+</p>
+<p>
+    Note that the type 'geomname' is not used as a type for inputs, outputs or tokens and 'none'
+    was used for background nodes but has been deprecated as of version 1.38.
+</p>

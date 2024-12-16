@@ -1,0 +1,85 @@
+<!--Start-->
+<div class="container-fluid p-0">
+  <div class="row flex-nowrap">
+    <div class="col-12 p-0 pt-2 pl-2">
+      <div class="card border shadow border mb-4">
+        <div class="card-body">
+
+          <h2 id="materialx-utilities-collection">MaterialX Python Utilities</h2>
+          <p>The Python package <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/mtlxutils/"
+              target="_blank">
+              mtlxutils</a> contains a collection of the utilities</p>
+
+
+          <p>This package is used in <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx">
+              Python command line utilities</a> which can be of general use.
+            A number of these are used in the <em>Github</em> actions workflow used to build this site
+            as outlined in the <a href="implementation.html">Implementation</a> page.
+          <ul>
+            <li><b>genMaterialsFromDefs.py</b> : For creation of nodegraphs based on definitions (nodedefs).
+              "Sampling" of node outputs is accomplished by using new "convert" nodes introduced in 1.38.7
+              and forward.
+            </li>
+            <li><b>renderDocuments.py</b> : For rendering of renderable nodes in documents. This is used
+              to render the graphs created by <code>genMaterialsFromDefs</code>. The renderer is
+              the same as used for render unit testing for GLSL code generated shaders.
+              The content can be found in the <a
+                href="https://github.com/kwokcb/MaterialX_Learn/tree/main/resources/mtlx/nodedef_materials">resources
+                folder</a>
+            </li>
+            <li><b>generateMermaidGraph.py</b> : For creation Mermaid graphs from MaterialX node graphs.
+              A variant of this (which includes additional node coloring) is used to generate the node reference
+              documentation. </li>
+            <li><b>createDefinitions.py</b> : For creation of definitions from node graphs.</li>
+            <li><b>usd2Mtlx.py</b> : For converting to and from Usd / MaterialX node graphs.</li>
+          </ul>
+
+          <p>
+            Note: Additional package enhancements and command like utilities will be exposed over time
+            once they are factored out into reusable modules. This includes the Python script used
+            to generate all the node reference documentation.
+          </p>
+          <p>The minimum MaterialX package version is <code>1.38.8</code>.</p>
+
+          <p>
+            The package and utilities are used (and explained) within the various
+            <b>Python <a href="https://kwokcb.github.io/MaterialX_Learn/documents/jupyter_example.html">tutorials</a>
+            </b>
+          </p>
+          <h2 id="%22core%22-utilities">Core Utilities</h2>
+          <ul>
+            <li><code>mxbase</code> : Utility for minimum version checking.</li>
+            <li><code>mxfile</code> : File utilities including: creating &quot;working&quot; documents, loading in
+              default libraries, library write filter predicate, and write to file / string wrappers. Used by various
+              notebooks. Logic described in the <a
+                href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/mtlx_basics_notebook.ipynb">Basics
+                notebook</a></li>
+            <li><code>mxodegraph</code> : Node and nodegraph creation as explained in the <a
+                href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/mtlx_graphs_notebook.ipynb">Nodegraph
+                notebook</a></li>
+            <li><code>mxtraversal</code> : Nodegraph connectivity and sample usage to create <code>Mermaid</code>
+              graphs as explained in the <a
+                href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/mtlx_connectivity_notebook.ipynb">Traversal
+                noetbook</a></li>
+            <li><code>mxshadergen</code> : Utilities for shader generation as explained in the <a
+                href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_shadergen_notebook.ipynb">Shader
+                Generation Notebook</a></li>
+            <li><code>mxrenderer</code> : Utilities for rendering with a default GLSL renderer as covered in the <a
+                href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_render_notebook.ipynb">Rendering
+                Notebook</a></li>
+          </ul>
+          <h2 id="%22supplemental%22-utilities">Supplemental Utilities</h2>
+          <ul>
+            <li><code>mxusd</code> : MaterialX / Usd graphing mapping utilities as explained in the <a
+                href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/mtlx_usd_notebook.ipynb">MaterialX
+                / Usd notebook</a>. Note that<br>
+              the Usd / MaterialX conversion logic is not included here as <code>UsdMtlx</code> from the the official
+              Usd release should be used.</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End-->

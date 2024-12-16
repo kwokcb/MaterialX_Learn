@@ -1,0 +1,23 @@
+<!-- Unit Definitions -->
+<p>A float, vector, and matrix input values can be specified in real world units. There are different
+    types of units which can be used. For now only distance and angle unit types are supported.
+</p>
+<p>For each unit a scaling factor is provided relative to the "base" unit which has a scale value of
+    1. For instance the unit "foot" has a scale of "0.3048" which means that to convert from a foot
+    value to a "meter" the given scaling must be applied.
+</p>
+<p><a href="rotate3d.html" target="_blank">'rotate3d'</a> shows an example of defining units for input angle.
+</p>
+<p>Note that <b>both</b> the unit type ('unitype' attribute) and unit name ('unit' attribute) must be
+    specified together to be valid. Except for the 'Description', the column headings for this 
+    section are the attribute names on the respective elements.
+</p>
+<p>The API class interface for a 'unit' is <a href="https://materialx.org/docs/api/class_unit.html"
+        target="_blank">Unit</a> and for a 'unittype' is
+    <a href="https://materialx.org/docs/api/class_unit_type_def.html" target="_blank">UnitTypeDef</a>
+</p>
+<p>Example usage of units for code generation can be found in the 
+    <a href="../../pymaterialx/mtlx_shadergen_notebook.html" target="_blank">
+      <img src="../images/python-logo-only.svg" width="15"> Python Shader Generation Example
+    </a>
+</p>

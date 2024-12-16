@@ -1,0 +1,577 @@
+<!--Start-->
+
+<div class="container-fluid p-0">
+  <div class="row flex-nowrap">
+    <div class="col-12 p-0 pt-2 pl-2">
+
+      <h2>Documents</h2>
+
+      <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="top-toggle nav-link active" id="pills-properties-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-properties" type="button" role="tab" aria-controls="pills-properties"
+            aria-selected="true">Properties</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="top-toggle nav-link " id="pills-mgmt-tab" data-bs-toggle="pill" data-bs-target="#pills-mgmt"
+            type="button" role="tab" aria-controls="pills-mgmt" aria-selected="false">Document Management</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="top-toggle nav-link " id="pills-interop-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-interop" type="button" role="tab" aria-controls="pills-interop"
+            aria-selected="false">Interoperability</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="top-toggle nav-link " id="pills-upgrade-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-upgrade" type="button" role="tab" aria-controls="pills-upgrade"
+            aria-selected="false">Compatibility and
+            Upgrade</button>
+        </li>
+      </ul>
+
+      <!-- Properties -->
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-properties" role="tabpanel"
+          aria-labelledby="pills-properties-tab" tabindex="0">
+
+          <div class="card border-secondary shadow border mb-4">
+            <div class="card-body">
+              <div class="btn btn-lg border-secondary shadow-sm w-100"">Properties</div>
+                <p></p>
+                <p>
+                  Documents are top level containers of all 'elements' supported by MaterialX.
+                </p>
+                <p>
+                  It is useful to split up the contents of documents based on these semantic categories:
+                <ul>
+                  <li><b>Shaders and Materials</b>: This includes all nodes, graphs, definitions, implementations and
+                    shader
+                    translation</li>
+                  <li><b>Geometry Bindings</b>: This includes looks, material assignments, and application bindings.
+                    This section will not cover this topic and any associated document level properties such as
+                    geometry identifier tokens.
+                  </li>
+                </ul>
+                Usage of geometry bindings can be considered to be " optional" especially as it can overlap with other
+                systems such as USD which perform this functionality. Splitting into separate documents is required as
+                there no other organization or partition mechanism save for `backdrop` elements. These however only
+                support node groupings, and do not affect functionality. </p>
+                <p>
+                  The corresponding API class is <a href="https://materialx.org/docs/api/class_document.html"
+                    target="_blank">Document</a>.
+                  Here you will find a listing of interfaces roughly broken down by the type of element.
+                </p>
+                <p>
+                  Some important properties that are maintained at the document level include:
+                <ol>
+                  <li>
+                    <p><b>Version ('version')</b>: This is the MaterialX version used to store the document
+                      contents. <a href="https://materialx.org/docs/api/class_document.html" target="_blank">
+                        getVersionIntegers()</a> in the Document API should be used.
+                      This differs from:
+                    <ul>
+                      <li>The runtime version currently executing. This can be queried using the
+                        <a href="https://materialx.org/docs/api/_material_x_core_2_util_8h.html"
+                          target="_blank">getVersionString()</a>
+                        interface.
+                        It is important to note that the "build" version is <em>not</em> stored in a document,
+                        but releases do include a build version that can be queried from this interface.
+                        For example a document may have version "1.38", but the build version could be '1.38.2".
+                        See the section on "Compatibility and Upgrade" to see how this affects the logic there.
+                      </li>
+                      <li>The version associated with a definition or definition and the shading language version for
+                        code generators. There is no correlation between these versions and the MaterialX runtime or
+                        document version.</li>
+                    </ul>
+                    </p>
+                  </li>
+                  <li>
+                    <p><b>Namespace ('namespace')</b> : This can be used to partition content and/or indicate ownership.
+                      Namespaces must be handled properly when combining documents at runtime.
+                  </li>
+                  </p>
+                  <li>
+                    <p><b>Colorspace ('colorspace')</b> : This can be used to define the working color space, and as
+                      with
+                      namespaces care must be handled properly when combining documents at runtime.</p>
+                  </li>
+                  <li>
+                    <p><b>Source URI ('sourceuri') </b> : References to where content originated from can be specified
+                      here, and is
+                      useful as a partitioning mechanism. Documents do not by default store a 'sourceuri'.</p>
+                  </li>
+                  <li>
+                    <p><b>File Prefix ('fileprefix')</b> : Is a token prepended to any file name (`filename` type)
+                      references.
+                      It is a handy way to set the root directory for all image file names,
+                      without having to modify each individual reference. Note that
+                      'fileprefix' will not be used to prefix file names which have absolute paths and that `fileprefix`
+                      can also be defined on a node graph -- which will prepend it's token before the document's token.
+                    </p>
+                    <p>
+                      The API interface for 'resolving' identifiers such as file names is <a
+                        href="https://materialx.org/docs/api/class_string_resolver.html"
+                        target="_blank">StringResolver</a>.
+                      Within the API the word <b>resolved</b> is used to indicate interface variants which return the
+                      value after applying a resolver. For example <a
+                        href="https://materialx.org/docs/api/class_value_element.html" target="_blank">
+                        getResolvedValueString()</a> would return a filename
+                      with any `fileprefix` tokens added.
+                    </p>
+                  </li>
+                </ol>
+                </p>
+
+                <div class="btn btn-lg border-secondary shadow-sm w-100"">Actions</div>
+                <p></p>
+                <ul>
+                  <li>The term <b>" resolve"</b> means to take
+                  some data and find the form which can natively be consumed by some deployment / integration.
+                  This will mostly apply to identifiers and URI paths.
+                  </li>
+                  <li>
+                    The term <b>"flatten"</b> means to convert something that is built up from simpler parts,
+                    back to those simpler parts. This will mostly apply to node definitions and conversion
+                    into their corresponding nodes and node graphs, but also means to transfer
+                    document attributes such as `fileprefx`, `colorspace` and `namespace` to each element
+                    inside a document.
+                  </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- File Management -->
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show" id="pills-mgmt" role="tabpanel" aria-labelledby="pills-mgmt-tab"
+              tabindex="0">
+
+              <div class="card border-secondary shadow border mb-4">
+                <div class="card-body">
+                  <div class="btn btn-lg border-secondary shadow-sm w-100"">Single Document Model</div>
+                <p></p>
+                <p>
+                  Even though any number of documents may be kept in files for interoperability,
+                  it is recommended to work on a single " working" document at runtime, though there is no formal
+                    designation for this. Document creation interfaces work under the premise that: <ul>
+                    <li>content is cumulative (appended) to a given document</li>
+                    <li>some validity checks are performed at read time</li>
+                    <li>duplicate elements cannot be created and thus not added. Note that this can result in
+                      an incomplete reading of data.</li>
+                    <li>nodes with categories which are not defined are invalid. There is now way to preserve nodes
+                      which
+                      are
+                      an unknown category, making it possible that reading or write loses data. As a guiding rule
+                      node definitions should be loaded into a document before any instances of those definitions.
+                    </li>
+                    </ul>
+
+                    <div class="btn btn-lg border-secondary shadow-sm w-100"">Interfaces</div>
+                <p></p>
+                <p>
+                  The following are the main interfaces for dealing with documents.
+                  The <a href=" jupyter_example.html" target="_blank">Python "Basics" Example</a> provides
+                      examples of using these interfaces.
+                      </p>
+                      <ul>
+                        <li><b>Creating Documents</b>:
+                          <p>
+                            An empty document can be created using global interface <a
+                              href="https://materialx.org/docs/api/class_document.html"
+                              target="_blank">createDocument()</a>.
+                            Any number of of documents may be created and
+                            manipulated independently of each other.
+                          </p>
+                          <p>
+                            A document is allowed to become "invalid" (not follow the specification). The 'validate()'
+                            API can be used to check for adherence to the specification. The Python utility
+                            <a href="https://github.com/AcademySoftwareFoundation/MaterialX/blob/main/python/Scripts/mxvalidate.py"
+                              target="_blank">
+                              mxvalidate.py</a> uses this interface to perform document validation.
+                          </p>
+                        </li>
+                        <li><b>Reading Documents</b>:<br>
+                          The core distribution of MaterialX allows reading and writing in <a
+                            href="https://materialx.org/docs/api/_xml_io_8h.html" target="_blank">
+                            XML format support</a>.
+                          The <a href="https://materialx.org/docs/api/class_element.html" target="_blank">API interfaces
+                            which
+                            start with readXML</a>
+                          can be used for reading. Options for reading can be provided the the structure:
+                          <a href="https://materialx.org/docs/api/class_xml_read_options.html"
+                            target="_blank">XmlReadOptions</a>)
+                          <p>
+                            The diagram below shows a document which is read and appended.
+                            <br>
+                            <img class="p-2 bg-light" src="./images/read_documents.svg" />
+                          </p>
+                          <p>
+                            Since read only performs duplicate element checking,
+                            it is recommended to always run a `validate()` check afterwards.
+                          </p>
+
+                        </li>
+                        <li><b>Copying Documents</b>:<br>
+                          The interface <a href="https://materialx.org/docs/api/class_element.html"
+                            target="_blank">copyContentFrom()</a>
+                          can be used to replace the contents for a any document element including the
+                          entire document itself.
+                          <p>
+                            Below is shown an example document which copies the content of another document.
+                            <br>
+                            <img class="p-2 bg-light" src="./icons/copycontents_document.svg" />
+                          </p>
+                        </li>
+                        <li>
+                          <b>Importing Documents</b>:<br>
+                          <p>
+                            The <a href="https://materialx.org/docs/api/class_document.html" target="_blank">
+                              importLibrary()</a> interface is specialized for reading in node
+                            definition libraries and include files, making use of `copyContentsFrom()` to
+                            copy elements into the destination document. <em>An important item to point out is
+                              that the URI for the source document is set on every copied element.</em><br>
+                            <img class="p-2 bg-light" src="./images/import_document_sourceURI.svg" />
+                          </p>
+
+                          <button class="btn btn-warning border-dark shadow-lg" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#namespace_fileprefix" aria-expanded="false"
+                            aria-controls="collapseExample">
+                            Namespace and Fileprefix Handling <img src="images/caret-down-fill.svg" style="color:black">
+                            <!-- <img src="images/caret-right-fill.svg" style="color:black"> -->
+                          </button>
+                          <div class="collapse" id="namespace_fileprefix">
+                            <div class="card border-secondary shadow border p-2">
+                              <p>If the source document has a `namespace` qualifier, this namespace is
+                                "flattened" so that the copied elements have namespace qualifiers prepended to their
+                                identifiers.
+                              </p>
+                              <p>A namespace delimiter is represented as a <b>':'</b>. Thus if a source document
+                                has a namespace `mynamespace` and and element `myelement`, then the "flattened"
+                                element's identifier would be:
+                                <code>
+                          mynamespace:myelement
+                        </code>
+                              </p>
+                              <p>
+                                The word "qualified" in an interface indicates that it supports returns
+                                identifiers taking into account namespaces . For example,
+                                <a href="https://materialx.org/docs/api/class_element.html"
+                                  target="_blank">getQualifiedName()</a> versus 'getName()'.
+                              </p>
+                              <p>
+                                The diagram below shows an example document with a 'namespace' and a 'fileprefix'.
+                                "Flattening"
+                                basically means that every imported element's name has the 'namespace' prepended, and
+                                each filename string attribute has the 'fileprefix' file path prepended.
+                                <br>
+                                <img class="p-2 bg-light" src="./images/import_document.svg" />
+                              </p>
+                            </div>
+                          </div>
+                          <p></p>
+                        </li>
+
+                        <li>
+                          <p><b>Includes</b>:<br>
+                            Currently the only "inclusion" mechanism is via XML include directives.
+                            My default these directives are added when importing a library, but can also be
+                            explicitly added in. Aside from the regular caveats for using include files, it is
+                            not recommended to keep include references to library files to allow independence of a
+                            document from the library files being used.</p>
+                        </li>
+
+                        <li>
+                          <p><b>Writing Documents:</b><br>
+                            Akin to reading interfaces there is a series of write interfaces starting with
+                            <em>writeXml</em>,
+                            and corresponding set of write options <a
+                              href="https://materialx.org/docs/api/class_xml_write_options.html"
+                              target="_blank">(XMLWriteOptions)</a>.
+                          </p>
+                        </li>
+                      </ul>
+
+                      <div class="btn btn-lg border-secondary shadow-sm w-100"">File " References"</div>
+                        <p>
+                          As there is no current concept of one document referencing another document at runtime, it can
+                          be hard to determine where content originates from once "merged" into the main document.
+                        </p>
+                        <p>One way to keep track of where content comes from is the fact at import always "tags"
+                          imported
+                          elements with their original URI. (<em>sourceURI</em> as shown in the image diagram). This can
+                          be useful for
+                          a various workflows including
+                          exclusion of these elements at write time. An example can be to exclude
+                          library definitions from node instances as shown below:<br>
+                          <img class="p-2 bg-light" src="images/export_document.svg">
+                        </p>
+                        <p>
+                          At runtime, these tags can be used for instance to
+                          enforce additional user rules such as being non-editable, or non-deletable.
+
+                        </p>
+
+                        <div class="btn btn-lg border-secondary shadow-sm w-100"">File " Collections"</div>
+                          <br>
+                          <p>
+                            For node definitions, there is currently no formal construct for a "collection" (set) of
+                            documents
+                            to be used as a "library" / "module" / "package" etc and is thus up to the user
+                            to overlay semantics to partition content.
+                          </p>
+                          <p>
+                            Take for example the folder structure for the "standard" libraries which
+                            come with the MaterialX distribution. Note that the folder names can be used
+                            to semantically separate a 'bxdf', and 'pbrlib', and 'stdlib' library, but
+                            there is no information within a document or set of documents which indicate it
+                            is or belongs to a "library".
+                          <pre>
+                  |--bxdf
+                  |   |--lama
+                  |   +---translation
+                  +---lights
+                  |   |---genglsl
+                  |   +---genmsl
+                  +---pbrlib
+                  |   +---genglsl
+                  |   |   +---lib
+                  |   +---genmdl
+                  |   +---genmsl
+                  |   +---genosl
+                  |       +---legacy
+                  |       +---lib
+                  +---stdlib
+                  |   +---genglsl
+                  |   |   +---lib
+                  |   +---genmdl
+                  |   +---genmsl
+                  |   |   +---lib
+                  |   +---genosl
+                  |       +---include
+                  |       +---lib
+                  +---targets
+                </pre>
+                          In this case the 'import' API, will return a list of all files read under a given
+                          folder. These can be used to keep track of what documents have been read. As
+                          all the imported elements are tagged with the 'sourcuri' for the file it
+                          is read from, this can be used to filter out 'library' content from non-library
+                          content.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Interop -->
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show" id="pills-interop" role="tabpanel"
+                      aria-labelledby="pills-interop-tab" tabindex="0">
+
+                      <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
+                          <div class="btn btn-lg border-secondary shadow-sm w-100"">Interoperability</div>
+                <p></p>
+                <p>
+                  By intent, the MaterialX format is designed for interoperability using a standard set (library) of
+                  definitions.
+                </p>
+                <p>
+                  Some points of interest for interop follow:
+                </p>
+                <p>
+                <ul>
+                  <li>
+                    <p><b>Independence of interfaces from implementations</b> is intentional. Any definitions which are
+                      based on
+                      standard library definitions can be supported by all core backend shader implementations thus
+                      providing for <b>implementation standardization</b>. Source code implementations for standard
+                      library definitions
+                      are written to conform with one another. e.g the GLS, OSL, MDL and MSL implementations are meant to be
+                      logically identical.</p>
+                  </li>
+                  <li>Dependent resources are not embedded into the file format
+                    itself but only referenced. For example, geometry and images
+                    is not encoded into the MaterialX format, though it is an interesting avenue
+                    which has been followed by other formats.
+                    <ul>
+
+                      <li>One " downside" is that additional "side-car" files which define intrinsically part of
+                            an "asset" need to be kept track of somewhere else. </li>
+                            <li>An "upside" is no dependence on additional resource
+                              handling utilities is required as part of the core distribution.
+                            </li>
+                            </ul>
+                            <p>
+                              Naturally transferring to a system which embeds dependent data requires additional logic ,
+                              and
+                              conversely transforming from such a system requires "unpacking" logic.
+                              For example `glTF` embeds images and requiring specific packing and unpacking (e.g. is
+                              "occlusion, roughness, metalic" packing into single images). Some of these are not as
+                              bespoke, so
+                              could be potentially encoded as reusable node graphs.
+                            </p>
+                            <p>
+                              More extensive documentation for this format's interop can be found
+                              <a href="workflow_gltf.html">
+                                in this project.</a>
+                            </p>
+                            </li>
+                            <li>
+                              <p>It is useful to keep image references using relative URI paths and use `fileprefix`
+                                specifiers
+                                and only "resolve" to absolute paths during deployment (e.g. when
+                                sending to a renderer or code generation).). Utilities to resolve are categorized
+                                as part of the "resolving" process. This would also include `UDIM` file name resolution.
+                              </p>
+
+                              <p>It is also useful to keep `colorspace` and `unit`s unresolved. For both,
+                                resolution logic is dependent on the deployment target. e.g. the working colorspace for
+                                a render,
+                                or the unit applied to geometry within an application.</p>
+
+                              <p>A <a href="https://materialx.org/docs/api/_material_x_format_2_util_8h.html"
+                                  target="_blank">flattenFilenames() utility</a> is provided to perform
+                                performs both flattening and resolving using built in resolvers for `fileprefix` as well
+                                as accepting a custom resolver. The last option is useful to perform custom application
+                                / renderer
+                                specific token substitution.</p>
+                            </li>
+                            <li>
+                              <p>Node Definitions: It is useful to keep definitions which encapsulate a logical entity
+                                for
+                                a user and to only "flatten" these into it's atomic definitions, or
+                                shader code at deployment time. For example a "plastic" material could be a definition
+                                which is
+                                converted to standard library nodes at some later time. However for interop purposes,
+                                instances of
+                                the plastic material are passed around.
+                                <br><br>
+                                A node definition "flattening" can be achieved using the <a
+                                  href="https://materialx.org/docs/api/class_graph_element.html" target="_blank">
+                                  flattenSubgraphs()
+                                </a> API interface.
+                              </p>
+                              <p>
+                                An integration may deem that it is too "costly" to keep abstract definitions and instead
+                                keep only standard library nodes, or just source code. The first, still allows for
+                                implementation
+                                independence and maintains interoperability, but the latter does not.
+                                For example `Three.js` keeps static code snippets for
+                                definitions. This static source code can easily be out of sync and can lose important
+                                properties
+                                like versioning.
+                              </p>
+                            </li>
+                            </ul>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Compatibility -->
+                    <div class="tab-content" id="pills-tabContent">
+                      <div class="tab-pane fade show" id="pills-upgrade" role="tabpanel"
+                        aria-labelledby="pills-upgrade-tab" tabindex="0">
+
+                        <div class="card border-secondary shadow border mb-4">
+                          <div class="card-body">
+                            <div class="btn btn-lg border-secondary shadow-sm w-100"">Compatibility and Upgrade</div>
+                <p></p>
+                <p>
+                  MaterialX has been designed to be file format backwards compatible. Thus
+                  any older document can always be assumed to be compatible with the current
+                  version of MateriaX.
+
+                  There is a built in " upgrade" mechanism which is available as a document level utility (<a
+                              href="https://materialx.org/docs/api/class_document.html" target="_blank">
+                              `upgradeVersion()`</a>)
+                              to upgrade a documents contents current runtime version.
+                              Note that issues can ensue by running different run-times with different versions as
+                              you may end up with incompatible documents. A "single version" model is recommended.
+                              <br><br>
+                              <img class="p-2 bg-light" src="./images/upgrade_document.svg" />
+                              </p>
+                              <p>
+                                An upgrade will automatically be performed as part of document reading.
+                              </p>
+                              <p>
+                                Note that for and between patch releases the version number of saved documents
+                                does not change and thus upgrade will not occur.
+                                For example, a patch release of "1.38.6" will not perform any upgrade for a document
+                                of version "1.38" as only the major (1) and minor (38) versions are compared.
+                                <br><br>
+                                <img class="p-2 bg-light" src="./images/upgrade_patch_releases.svg" />
+                              </p>
+                              <p>
+                                Automatic upgrading can be overridden
+                                via the `upgradeVersion` option on <a
+                                  href="https://materialx.org/docs/api/class_xml_read_options.html"
+                                  target="_blank">XmlReadOptions
+                                </a> (See description of reading in `Document Management`)
+                                A small caveat is that if something has been deprecated and removed from a release the
+                                document
+                                may not read in properly.
+                                For convenience, a Material release includes a Python utility script
+                                <a href="https://github.com/AcademySoftwareFoundation/MaterialX/blob/main/python/Scripts/mxformat.py"
+                                  target="_blank">
+                                  (mxformat.py)</a>
+                                which can be used to perform automate document upgrades and formatting.
+                              </p>
+                              <p>There is no mechanism to "downgrade" a document to an earlier version.
+                                Examples of changes to be watchful for include existing node definition changes,
+                                and addition of new definitions. It is recommended to <b>not</b>
+                                replace older versions with a newer version if not required.
+                                <br><br>
+                                <img class="p-2 bg-light" src="./images/downgrade_document.svg" />
+                              </p>
+                              <p>Note that if there are resource or geometric binding dependencies
+                                it may be required to version them as well. An example of this is "standard_surface"
+                                which changed the default values of it's `base` and `base_color` attributes by swapping
+                                them
+                                (0.8, and 1.0 in the older version and 1.0 and 0.8 in the newer). Thus if there was a
+                                previous texture
+                                bound to `base` which assumed
+                                a modulation by a `base_color` of 1.0, then it's contents would need to be modified
+                                taking into
+                                account
+                                that the current `base_color` is now 0.8.
+                                <br><br>
+                                <img class="p-2 bg-light" src="./images/upgrade_resources.svg" />
+                              </p>
+
+                              </p>
+                              <p>
+                                Basically, the upgrade mechanism does not know and thus cannot take into consideration
+                                external
+                                content and non-standard library definitions changes. This is the responsibility of the
+                                integration.
+                              </p>
+                              <p>
+                                Anything that is stored which is not part of a MaterialX document is also not taken into
+                                consideration
+                                when upgrading. This includes derived / generated content such as shader code. For
+                                instance if `OSL`
+                                code is
+                                generated for a given version, if that code implementation changes in a future version
+                                the originally
+                                generated code may not be compatible with the newly generated code.
+                                Thus as with interoperability, it is recommended to keep data in it's "original"
+                                MaterialX form
+                                as much as possible.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!--End-->

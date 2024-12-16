@@ -1,0 +1,58 @@
+<!-- Color management definitions description -->
+<h5>Node Definitions</h5>
+<p>As of <b>1.38.8</b> color space transforms have node definitions and can thus be
+instantiated as nodes in a shader graph. Each definition name is of the form:
+being:
+<pre>
+    &lt;source_space_name&gt;_to_&lt;definition_space_name&gt;
+</pre>
+such that source and destination color space names conform those found in the
+<a href="https://github.com/colour-science/OpenColorIO-Configs/blob/master/aces_1.2/config.ocio"
+    target="_blank">AcesCg 1.2 OCIO configuration</a>.
+</p>
+<p>
+    All definitions use the node group `colortransform` and can be found under that group
+    in the library reference:
+    <br>
+    <img src="../images/cm_nodedefs.png" width="20%">
+    <br>
+    An example is the <a href="acescg_to_lin_rec709.html">AcesCg to LinRec709 transform</a>
+</p>    
+<p>
+    Note that any transforms which are currently specified as only
+    implementations will need to provide a node definition in addition to the implementation or they will not be
+    recognized as being a valid source color space. This includes usage within shader code generation.  
+</p>
+
+<h5>Usage on Inputs</h5>
+<p>A color space transform can be used by specifying the source space 'colorspace' attribute on the any 3 and 4 channel color inputs.
+    It is invalid to set this on any other element type.
+</p>
+<p>The <a href="artistic_ior.html" target="_blank">artistic_ior</a> definition shows an example of
+    specifying an 'edge_color' input 'colorspace' as <em>'lin_rec709'</em>.
+    <hr> 
+    <img src="../images/colorspace_input_example.png" width="50%">
+    <hr> 
+    In the same example the 'ior' input has a 'colorspace' value of <em>'none'</em>. 'none' has a special
+    meaning which indicates that the input should not be interpreted as a color
+    which can be transformed (there is no color swatch to indicate this).
+    <hr> 
+    <img src="../images/non_color_example.png" width="40%"> 
+    <hr> 
+</p>
+<p>For evaluation, the 'colorspace' attribute value can be parsed to determine the input colorspace. 
+    For code generation, either the
+    colorspace name is passed on to the generated shader code, or it is replaced with color transformation code 
+    which is added into the generated shader code. A code generation option is provided for user control.
+</p>
+<p>The corresponding API class for a transform is
+    <a href="https://materialx.org/docs/api/struct_color_space_transform.html" target="_blank">ColorSpaceTransform</a>
+</p>
+<p>Example usage of color management for code generation can be found in the 
+    <a href="../../pymaterialx/mtlx_shadergen_notebook.html" target="_blank">
+        <img src="../images/python-logo-only.svg" width="15"> Python Shader Generation Example
+    </a>
+</p>
+<hr>
+<h5>Available Transforms</h5>
+<p>The list of currently available transforms is listed in the table below:</p>
