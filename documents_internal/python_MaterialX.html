@@ -1,0 +1,693 @@
+<!--Start-->
+	<div class="container-fluid p-0">
+		<div class="row flex-nowrap">
+			<div class="col-12 p-0 pt-2 pl-2">
+				<div class="mb-4">
+
+					<ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="top-toggle nav-link active" id="pills-python-tab" data-bs-toggle="pill"
+								data-bs-target="#pills-python" type="button" role="tab" aria-controls="pills-python"
+								aria-selected="false" aria-selected="true">Setup</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="top-toggle nav-link" id="pills-examples-tab" data-bs-toggle="pill"
+								data-bs-target="#pills-examples" type="button" role="tab" aria-controls="pills-examples"
+								aria-selected="false">First Example</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="top-toggle nav-link" id="pills-notebooks-tab" data-bs-toggle="pill"
+								data-bs-target="#pills-notebooks" type="button" role="tab"
+								aria-controls="pills-notebooks" aria-selected="false">Tutorials</button>
+						</li>
+					</ul>
+
+					<div class="tab-content" id="pills-tabContent">
+						<div class="tab-pane fade show active" id="pills-python" role="tabpanel"
+							aria-labelledby="pills-python-tab" tabindex="0">
+
+							<div class="card border-secondary shadow border mb-4">
+								<div class="card-body">
+
+									<h2 id="python-materialx-in-visual-studio-code">Python MaterialX</h2>
+									
+									<p>MaterialX release distributions include Python sub-modules for editing
+										documents, code generation, and rendering. The sub-modules are wrappers
+										for C++ libraries also shipped with releases.
+									</p>
+									<p>
+										For content on this site the minimum requirement is MaterialX version <b>1.38.7</b> is
+										and Python <b>3.9</b>.
+									</p>
+
+									<p> A Visual Studio Code environment has been chosen to provide tutorials and 
+										utilities written in Python. Published content can be directly
+										accessed in  <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx"
+										target ="_blank"><img src="images/GitHub_Logo.png" style="width:4em"></a>.
+									</p>
+									<p>The following videos and corresponding text instructions can be followed
+										to set up an appropriate environment.
+										<table class="table border-secondary shadow table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+											<tr>
+											<td><h4>Using MaterialX version 1.38.8 or later</h4><br>
+												<video width="100%" controls>
+													<source src="../pymaterialx/videos/MaterialX_Learn_Python_Setup_PyPi.mp4" type="video/mp4">									
+												</video>
+												<p>As of version 1.38.8, MaterialX Python package can be downloaded and install
+													from <a href="https://pypi.org/project/MaterialX/" target="_blank">PyPi</a>.
+													<ul>
+														<li>The easiest way to do this is to use call <code>pip install MaterialX</code>.
+														</li>
+														<li>If a a particular distribution is not pre-built, an attempt will be made to build the package locally
+															as a convenience.
+														</li>
+													</ul>													
+												</p>
+											</td>
+											<td><h4>Using MaterialX versions prior to 1.38.8</h4><br>
+												<video width="100%" controls>
+													<source src="../pymaterialx/videos/MaterialX_Learn_Python_Setup.mp4" type="video/mp4">									
+												</video>
+												<p>For users who wish to use earlier versions they can:
+													<ul>
+														<li>Download releases from the MaterialX <a href="https://github.com/AcademySoftwareFoundation/MaterialX/releases/"
+														target="_black">Github</a></li>
+														<li>Use packages included with application 
+														integrations or other distributions such as Usd, or</li>
+														<li>Use custom builds.</li>  
+													</ul>
+												</p>			
+											</td>
+											</tr>
+										</table>										
+									</p>
+																																	
+									<h5 id="environment-setup">Prerequisites</h5>
+									<p>The basic requirements are:
+									<p>
+									<ul>
+										<li>Installation of a version of 
+											<a href=" https://www.python.org/downloads/" target="_blank">Python</a>					   
+											that matches the Python version of the MaterialX package. 										
+										</li>
+										<li>Installation of <a href="https://pip.pypa.io/en/stable/installation/" target="_blank">pip</a>
+										</li>
+										<li>Installation of the VSCode <a href="https://code.visualstudio.com/docs/languages/python"
+											target ="_blank">Python extension</a> with the interpreter
+											referencing the installed version.
+										</li>
+										<li>Setup of a virtual environment following the instructions found <a
+												href="https://code.visualstudio.com/docs/python/environments"
+												target="_blank">here</a>. Basically:
+											<ul>
+												<li> <code> &#8984;/Ctrl+Shift+P</code> can be used to run the command
+													<code>Python: Create Environment</code>.
+												</li>
+												<li>Choose to create a <code>virtual environment></code> (versus a
+													<code>Conda</code> environment).
+												</li>
+												<li>Choose the Python interpreter that matching the MaterialX Python version.
+												</li>
+											</ul>
+											Once setup a <em>.venv</em> folder will be created within the workspace.
+										</li>
+										<li>Installation of the  
+											<a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks"
+												target="_blank">Jupyter extension</a> 
+												for VScode if using the Notebook tutorials.
+										</li>
+									</ul>
+									</p>
+									
+									<h5 id="adding-materialx-modules">Installing MaterialX Python</h5>
+									<p>We will use a simple example file called <a
+											href="../pymaterialx/hello_materialx.py" download>
+											hello_materialx.py</a>.
+										Add this file to your workspace and attempt to run it.</p>
+									<p>This will result in an import error if MaterialX is not installed
+										yet.</p>
+									<pre class="hljs"><code><div>import MaterialX as mx
+ModuleNotFoundError: No module named 'MaterialX'
+</div></code></pre>
+									<p>	
+										To install the MaterialX package into the virtual environment a 
+										VSCode workspace terminal <sup>(1)</sup> can be opened and
+										<code>pip</code> used to install from
+										<ul>
+											<li>The MaterialX package location using:
+												<code>python -m pip install .</code>
+											</li>
+											<li>
+												the PyPi distribution using: <code>pip install MaterialX</code>
+											</li>
+										</ul>
+									</p>
+									<p>This will add the MaterialX modules to the virtual environment under
+										<em>.venv/Lib/site-packages</em>.
+										The modules installed will depend on the ones found in the package location.
+										<br><img src="./images/VSCode_PythonModules.png" style="width: 40%">
+									</p>
+									<p>Other dependent packages can be added using <code>pip</code> or other means
+										as necessary.</p>
+									<sup>
+									<p>&nbsp;</p>
+									<p>(1) A security alert may show up when running from the terminal. If so, follow the
+										the 
+										<a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3"
+										>instructions provided</a>
+										to to set up appropriate permissions
+									</p>
+									</sup>	
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-content" id="pills-tabContent">
+						<div class="tab-pane fade" id="pills-examples" role="tabpanel"
+							aria-labelledby="pills-examples-tab" tabindex="0">
+
+							<div class="card border-secondary shadow border mb-4">
+								<div class="card-body">
+
+
+									<h2 id="test-example">Import Example</h2>
+									<p>Importing <code>MaterialX</code> will include all sub-modules. This differs from
+										C++ where individual sub-modules can be loaded.
+										Shown below is how to import MaterialX with the module name mx.
+									<pre class="hljs"><code>import MaterialX as mx</code></pre>
+									</p>
+									<p>At a minimum a document must be created as all operations are based on
+										documents.</p>
+									<p>To test that the environment works properly the test example creates a
+										document and checks the
+										version of
+										MaterialX.</p>
+									<pre class="hljs"><code><div>doc = mx.createDocument()
+print(<span class="hljs-string">'Hello MaterialX (Version %s)'</span> % doc.getVersionString())    
+</div></code></pre>
+
+									<h5 id="minimal-%22useful%22-example">Minimal "Useful" Example</h5>
+									<p>To do any useful operations, the standard MaterialX libraries need to be
+										loaded.
+										The <a href="../pymaterialx/load_libraries.py" download>load_libraries.py</a>
+										example shows this minimal setup.</p>
+									</p>
+									<code><pre>
+import MaterialX as mx
+
+# Create library document and load in default data libraries
+stdlib = mx.createDocument()
+libFiles = mx.loadLibraries(mx.getDefaultDataLibraryFolders(), mx.getDefaultDataSearchPath(), stdlib)
+
+# Create main document and import the library document
+doc = mx.createDocument()
+doc.importLibrary(stdlib)
+
+print('Loaded library file: %d' % len(libFiles))
+</code></pre>
+									<p>Note that the "standard" libraries are in the
+										<code>libraries</code> folder in
+										the Python package location. The key interfaces used are:
+									</p>
+									<ul>
+										<li>the <code>loadLibraries</code> to load in the standard library definitions.
+										</li>
+										<li>the Document <code>importLibrary</code> to import the libraries
+											into a working / main document.</li>
+									</ul>
+									<p>
+										From here, the learning notebooks can be used to discover how to 
+										do something useful with MaterialX.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-content" id="pills-tabContent">
+						<div class="tab-pane fade show" id="pills-notebooks" role="tabpanel"
+							aria-labelledby="pills-notebooks-tab" tabindex="0">
+
+							<div class="card border-secondary shadow border mb-4">
+								<div class="card-body">
+
+									<h2>Learning Notebooks</h2>
+									<p>A series of <a hef="https://jupyter-notebook.readthedocs.io/"
+											target="_blank">Jupyter</a>
+										learning notebooks are regularly being added and updated.
+										User can clone or copy the repo to run locally, or as of MaterialX 1.38.8, remotely using
+										`Github Codespaces` or `Google Colab`. 
+									</p>
+									<p>
+										See the <b><a href="hosting.html">Hosting</a> page</b>
+										for more details.
+									</p>
+									<p>
+									Any contribution requests or comments can be posted as pull requests on
+									<a href="https://github.com/kwokcb/MaterialX_Learn"><img src="images/GitHub_Logo.png" style="width:4em"></a>.
+									</p>											
+									<p>
+										<em>It is recommended to use the MaterialX packages which are
+										available via <a
+											href="https://pypi.org/project/MaterialX/" target="_blank">PyPi</a> 
+											which are available starting with version 1.38.8.</em>
+									</p>
+									<p>
+										For those which may not have access to the execution environment
+										or simply wish to read the notebook pre-evaluated, the results of executing the
+										notebooks are provided in the
+										<a href="jupyter_example.html" target="_blank">Examples</a> page.
+										These pages are generated directly from the sample notebooks.
+									</p>
+									<b>Available Notebooks</b>
+									<p>
+										A Python file (with markdown), a notebook and a link to content on Github
+										is given below.
+										<br>Note that it is possible to start with the Python
+										itself and convert to a notebook in VSCode or export from a notebook 
+										to Python.
+									</p>
+									</p>
+									<table class="table-fixed table border-secondary shadow table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+										<thead class="table-primary">																		
+											<tr>
+											<th scope="col" style="width:25%">Notebook</th>
+											<th scope="col" style="width:25%">Raw Python (py)</th>
+											<th scope="col" style="width:25%">Raw Notebook (ipynb)</th>
+											<th scope="col" style="width:25%">Notebook in Github</th>
+											</tr>
+										</thead>
+									</table>
+									</table>
+									<div div style="height: 500px; overflow: auto">
+										<table class="table-fixed table border-secondary shadow table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
+											<tbody>
+											<tr>
+												<td style="width:25%">Basics
+													<ul>
+														<li>Import MaterialX</li>
+														<li>Create Document and load definitions</li>
+														<li>Read and Write Documents</li>
+														<li>Create, find and delete nodes</li>
+														<li>Connect nodes</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_basics_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_basics_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_basics_notebook.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>
+											</tr>
+
+											<tr>
+												<td style="width:25%">NodeGraph Basics
+													<ul>
+														<li>Creating Graph Containers</li>
+														<li>Adding Nodes to a Graph</li>
+														<li>Connecting Nodes</li>
+														<li>Adding Input and Output Interfaces</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_graphs_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_graphs_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_graphs_notebook.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>
+
+											<tr>
+												<td style="width:25%">NodeGraph Traversal
+													<ul>
+														<li>Basic Graph Traversal</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_traversal_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_traversal_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_traversal_notebook.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>
+
+											<tr>
+												<td style="width:25%">NodeGraph Connectivity
+													<ul>
+														<li>Graph Node and Connectivity Inspection</li>
+														<li>Exporting Connectivity</li>
+														<li>Node Graph Building: Mermaid Diagrams</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_connectivity_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_connectivity_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_connectivity_notebook.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>
+
+											<tr>
+												<td style="width:25%">Library Comparison
+													<ul>
+														<li>Comparing Documents</li>
+														<li>Library Definition Comparison</li>
+														<li>Detailed Element Comparison</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_comparing_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_comparing_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_comparing_notebook.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>
+
+											<tr>
+												<td style="width:25%">Node Libraries
+													<ul>
+														<li>Loading in custom definition libraries</li>
+														<li>Using custom exported content</li>
+														<li>Creating / editing graphs using custom definitions</li>
+														<li>Definitions implemented with source code</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_definitions_libraries_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_definitions_libraries_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>	
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_definitions_libraries_notebook.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>
+
+											<tr>
+												<td style="width:25%">Creating Definitions
+													<ul>
+														<li>Create Nodegraph Implementations</li>
+														<li>Create Source Code Implementations</li>
+														<li>Updating Standard Libraries</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_definitions_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="..//pymaterialx/mtlx_definitions_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>	
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_definitions_notebook.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>
+
+											<tr>
+												<td style="width:25%">ShaderGen
+													<ul>
+														<li>Generators</li>
+														<li>Generation Context</li>
+														<li>CMS and Units</li>
+														<li>Source Code</li>
+														<li>Introspection</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_shadergen_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_shadergen_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_shadergen_notebook.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>
+
+											<tr>
+												<td style="width:25%">Rendering
+													<ul>
+														<li>Determining "renderable" items</li>
+														<li>Creating "renderable" graphs</li>
+														<li>Rendering "roots": nodes, outputs, shaders, materials </li>
+														<li>Accessing uniform sources and binding</li>
+														<li>Accessing geometric sources and binding</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_render_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_render_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_render_notebook.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>
+
+											<tr>
+												<td style="width:25%">Targets and Implementations
+													<ul>
+														<li></li>
+														<li>Defining Targets and Inheritance</li>
+														<li>Setting Targets on Implementations and Definitions</li>
+														<li>Definitions w/o Targets</li>
+														<li>Inheritance issues</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_targets_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="..//pymaterialx/mtlx_targets_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>	
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_targets_notebook.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>
+
+											<tr>
+												<td style="width:25%">JSON / MaterialX
+													<ul>
+														<li>Extracting Node Graphs</li>
+														<li>JSON Serialization</li>
+														<li>JSON Schemas and Validation</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_json_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_json_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_json_notebook.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>
+
+											<tr>
+												<td style="width:25%">Using Copilot With MaterialX
+													<ul>
+														<li>Copilot for Source</li>
+														<li>Key Factors</li>
+														<li>Setup</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_copilot.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_copilot.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_copilot.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>
+
+											<tr>
+												<td style="width:25%">Google Bard 
+													Basic knowledge and source testing.
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_bard.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_bard.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_bard.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>											
+
+											<tr>
+												<td style="width:25%">USD and MaterialX Graphs
+													<ul>
+														<li>USD setup</li>
+														<li>Shade tree traversal of Usd Stage </li>
+														<li>Mapping Usd to MaterialX and back</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_usd_notebook.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/mtlx_usd_notebook.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_usd_notebook.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>
+
+											<tr>
+												<td style="width:25%">Blender and MaterialX Graphs
+													<ul>
+														<li>MaterialX Python in Blender</li>
+														<li>Mapping Blender to MaterialX</li>
+													</ul>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/blender_export_mtlx_noui.py">
+														<img src="images/python-logo-only.svg" style="width:4em">
+													</a>
+												</td>
+												<td style="width:25%">
+													<a href="../pymaterialx/blender_export_mtlx_noui.ipynb">
+														<img src="images/Jupyter_logo.svg" style="width:4em">
+													</a>
+												<td style="width:25%">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/blender_export_mtlx_noui.ipynb">
+														<img src="images/GitHub_Logo.png" style="width:4em">
+													</a>
+												</td>	
+											</tr>												
+
+											</tbody>
+										</table>
+									</div>
+									<p>
+										The notebook files can be read in to Visual Studio Code to run or modify as desired.
+									</p>
+									<p>
+										Below is an example of the "Basics" notebook after execution inside of VSCode.
+									</p>
+									<img src="./images/VSCode_Environment.png" style="width: 70%">
+									<p></p>
+									<p>
+										Below is a snapshot of Python and Markdown with meta data tags 
+										within a Python generated from a notebook.
+									</p>
+									<img src="./images/VSCode_Python_Markdown_Example.png" style="width: 70%">
+									<p></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/mermaid_setup.js"></script>
+	<script>
+		//monitor_mermaid_tabs()
+	</script>
+<!--End-->

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<!--Start-->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+</script>
+
+<div class="container-fluid p-0">
+  <div class="row flex-nowrap">
+    <div class="col-12 p-0 pt-2 pl-4">
+      <div class="card btn-outline-secondary shadow border mb-4">
+        <div class="card-body" style="font-size:80%">
+          <h2>About</h2>
+          <p>The aim of this site is target as wide an audience as possible, with the
+            primary goals to aid in learning, developing and integrating MaterialX with
+            respect to user workflows.
+          </p>
+          <p>
+            Detailed specification information can be found at the
+            <a href="https://materialx.org/">MaterialX site</a>
+            which includes additional documents and presentations from the authors.
+            The aim is not to reproduce but to distill and enhance with complementary content.
+          </p>
+          <p>
+            In the "spirit" of MaterialX, the site design tries to match the related content.
+            Where applicable, all drawings and renderings (including the site logo) are generated using MaterialX.
+          <div class="container">
+            <div class="row p-1 rounded-4 border btn-outline-secondary shadow justify-content-evenly">
+              <!--md-center-->
+              <div class="col-4">
+                <img src="./images/MX Learn.svg" class="img-fluid" style="height:100%">
+              </div>
+              <div class="col-4">
+                <img src="./images/logo3d_2.png" class="rounded-4 img-fluid" style="width:75%">
+              </div>
+              <div class="col-4">
+                <model-viewer class="rounded-4" style="background-color: rgba(59, 59, 59, 0.0); width: 100%; height:100%" id="blah" 
+                    camera-controls touch-action="pan-y" src="../resources/logo3d.glb" 
+                    disable-zoom disable-pan disable-tap camera-orbit="160deg 66deg 20m"
+                    environment-image="./images/rural_crossroads_1k.hdr" alt="logo viewer" 
+                    poster="./images/web_logo_poster.png" exposure="0.8" shadow-softness="1.0" shadow-intensity="0.5"
+                    skybox-image="">
+                </model-viewer>
+              </div>
+            </div>
+          </div>
+          </p>
+ 
+          <h4>Authors</h4>
+          <div class="container">
+            <div class="row p-2 rounded-4 border btn-outline-secondary shadow justify-content-md-center">
+              <div class="col-6 " >
+                <p>
+                  <a href="https://www.linkedin.com/in/bernard-cb-kwok/" target="_blank">
+                    <img src="images/bernard_filtered.png" class="m-2 rounded-4 float-end" height="128">
+                    Bernard Kwok</a>: Bernard has been working in the graphics industry for 30+ years in the areas
+                  of rendering, games and interactive workflows. His current passion is open standards
+                  and is an active contributor for
+                  <a href="https://github.com/AcademySoftwareFoundation/MaterialX" target="_blank">
+                    MaterialX
+                  </a>
+                  at the <a href="https://materialx.org/Contributing.html#Contributors" target="_blank">
+                    Academy Software Foundation</a> and the <a href="https://www.khronos.org/gltf/" target="_blank">Khronos glTF PBR</a> working group.
+                </p>
+              </div>
+              <div class="col-6">
+                
+                <a href="https://www.linkedin.com/in/mgkwok/" target="_blank"><img src="images/matthew_filtered.png" class="m-2  rounded-4 float-end" height="128">
+                  Matthew Kwok</a>: Matthew is a <a href="https://guannankwok.wixstudio.io/uxportfolio" target="_blank">UX designer</a> with experience in product design for content creation.
+                His current interests lie in the area of learning and visualization for web and AR,
+                which includes workflows using realistic materials.
+              </div>
+            </div>
+            <sub>Note: Image filtering written as a <a href="images/image_filter_graph.svg" target="_blank">MaterialX
+                graph</a></sub>
+          </div>
+
+          <p></p>
+          <h4>Development</h4>
+          <p>
+            <button class="btn bg-light btn-outline-primary">
+              <a class="button " href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><img
+                  src="images/GitHub_Logo.png" width="40"></a>
+            </button>
+            To contribute please clone the repository, raise an issue, and / or submit a pull request.
+            <br>
+            <em>To contribute to the MaterialX open source effort any applicable work done here will be
+              integrated back into the <a href="https://github.com/AcademySoftwareFoundation/MaterialX"
+                target="_blank">core repository
+              </a>.</em>
+          </p>
+ 
+
+          <h4>Sponsor</h4>
+          <p>If you find value in here and want support its progress,
+            we kindly invite you to consider sponsoring the project. It will help to keep it going and evolve.
+          </p>
+          <p>
+          <div class="iframe-container">
+          <iframe src="https://github.com/sponsors/kwokcb/card" title="Sponsor kwokcb" 
+            frameborder="0">
+          </iframe>
+          </div>  
+        </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End-->
+
+</html>

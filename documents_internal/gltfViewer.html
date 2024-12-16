@@ -1,0 +1,220 @@
+<!--Start-->
+  <div class="container-fluid p-0">
+    <div class="row flex-nowrap">
+      <div class="col-12 p-0 pt-2 pl-2">
+        <div class="card border shadow border mb-4">
+          <div class="card-body">
+
+
+            <h3>glTF Viewer</h3>
+
+            <div class="row flex width=100% height=100%">
+              <div class="col-sm-12 p-2">
+                <model-viewer
+                  class="rounded-2"
+                  style="background-color: rgba(59, 59, 59, 0); width: 100%; height: 32em" id="viewer1" ar
+                  interaction-prompt="none"
+                  disable-pan disable-tap camera-controls touch-action="pan-y"
+                  src="https://kwokcb.github.io/materialxgltf/docs/data/RTS/gltf_pbr_default.mtlx.glb" shadow-intensity="0.5"
+                  environment-image="./images/rural_crossroads_1k.hdr" alt="glTF model viewer"
+                  poster=""
+                  exposure="1.0" shadow-softness="0.5" shadow-intensity="0.7"
+                  skybox-image="">
+                </model-viewer>
+              </div>
+            </div>
+
+            <div class="row flex">
+              <div class="col-12 p-2 flex">
+                  <button id="loadgltf" class="btn btn-outline-primary shadow-sm">Load</button>
+                  <button id="saveimage" class="btn btn-outline-primary shadow-sm">Snapshot</button>
+                  <button id="togglebackground" class="btn btn-outline-primary shadow-sm">Background</button>
+                  <button id="resetcamera" class="btn btn-outline-primary shadow-sm">Reset Camera</button>
+                  <input id="fileInput" type="file" style="display: none;">
+              </div>
+            </div>
+
+            <div class="row">
+              <details>
+              <summary>Usage</summary>
+              <p>
+              <ul>
+                <li>Use "Load" to load in a glTF file, or
+                Drag and drop glTF files (GLB) or environment files (HDR) into the viewer</li>
+                <li>Use "Snapshot" to save a snapshot of the rendered file to disk.</li>
+                <li>Use "Background" to toggle on and off the background.</li>
+                <li>Use "Reset Camera" to reset the camera to it's default parameters.</li>
+              </ul>
+              </p>
+            </details>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">    
+  </script>  
+  <script>
+
+    fileInput.addEventListener('change', (event) => {
+      const selectedFile = event.target.files[0]; // Get the selected file
+      if (selectedFile) {
+        const modelViewer = document.querySelector("model-viewer#viewer1");
+        if (modelViewer) {
+          const fileURL = URL.createObjectURL(selectedFile);
+          console.log(`Load file: ${fileURL}`);
+          modelViewer.setAttribute("src", fileURL)
+        }
+      }
+    });
+
+    function loadgltf(e) {
+      console.log('load gltf')
+      const fileInput = document.getElementById('fileInput');
+      fileInput.click();
+    }
+
+    let loadButton = document.getElementById('loadgltf');
+    if (loadButton) {
+      loadButton.addEventListener('click', loadgltf, false);
+    }
+
+    function saveURL(url, name) {
+      var downloadLink = document.createElement("a");
+      downloadLink.href = url;
+      downloadLink.download = name;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+
+    // Save image to file
+    saveElem = document.getElementById("saveimage");
+    if (saveElem) {
+      saveElem.addEventListener("click", (e) => {
+        const modelViewer = document.querySelector("model-viewer#viewer1");
+        if (modelViewer) {
+          url = modelViewer.toDataURL('image/png')
+          if (url) {
+            saveURL(url, "model.png");
+          }
+        }
+      });
+    }
+
+    // Toggle background
+    toggleBackground = document.getElementById("togglebackground");
+    if (toggleBackground) {
+      toggleBackground.addEventListener("click", (e) => {
+        const modelViewer = document.querySelector("model-viewer#viewer1");
+        if (modelViewer) {
+          currentEnvironment = modelViewer.getAttribute("environment-image");
+          currentSkyBox = modelViewer.getAttribute("skybox-image");
+          if (currentSkyBox == "") {
+            modelViewer.setAttribute("skybox-image", currentEnvironment);
+          }
+          else {
+            modelViewer.setAttribute("skybox-image", "");
+          }
+        }
+      });
+    }
+
+    // Reset camera
+    resetCamera = document.getElementById("resetcamera");
+    if (resetCamera) {
+      resetCamera.addEventListener("click", (e) => {
+        const modelViewer = document.querySelector("model-viewer#viewer1");
+        if (modelViewer) {
+          modelViewer.cameraOrbit = "";
+        }
+      });
+    }
+
+    /////////////////////////////////////////////////////////////////////////////
+    // Drag and Drop:
+    // - Handles dropping of glb model files and hdr environment files into model-viewer
+    //
+    const modelViewer = document.querySelector("model-viewer#viewer1");
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      modelViewer.addEventListener(eventName, preventDefaults, false)
+      document.body.addEventListener(eventName, preventDefaults, false)
+    })
+
+      // Highlight drop area when item is dragged over it
+      ;['dragenter', 'dragover'].forEach(eventName => {
+        modelViewer.addEventListener(eventName, highlight, false)
+      })
+
+      ;['dragleave', 'drop'].forEach(eventName => {
+        modelViewer.addEventListener(eventName, unhighlight, false)
+      })
+
+    // Handle dropped files
+    modelViewer.addEventListener('drop', handleDrop, false)
+
+    function preventDefaults(e) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+
+    function highlight(e) {
+      modelViewer.classList.add('highlight')
+    }
+
+    function unhighlight(e) {
+      modelViewer.classList.remove('highlight')
+    }
+
+    function handleDrop(e) {
+      var dt = e.dataTransfer
+      var files = dt.files
+
+      handleFiles(files)
+    }
+
+    function handleFiles(files) {
+      ([...files]).forEach(uploadFile)
+    }
+
+    function uploadFile(file) 
+    {
+      const modelViewer = document.querySelector("model-viewer#viewer1");
+      if (modelViewer) {
+        console.log('Dropped file:', file);
+
+        const fileURL = URL.createObjectURL(file);
+
+        // If file ends in glb then set src
+        if (file.name.endsWith('.glb')) {
+          console.log("Change model to: ", file.name)
+          modelViewer.setAttribute("src", fileURL);
+        }
+        // If file ends in hdr or exr then set environment-image
+        else if (file.name.endsWith('.hdr')) {
+          currentEnvironmentURL = fileURL;
+          currentEnvironment = currentEnvironmentURL;
+          currentEnvironment += '#.hdr';
+          console.log("Change environment to: ", file.name, currentEnvironment)
+          modelViewer.setAttribute("environment-image", currentEnvironment);
+          currentSkyBox = modelViewer.getAttribute("skybox-image");
+          if (currentSkyBox != "") {
+            modelViewer.setAttribute("skybox-image", currentEnvironment);
+          }
+        }
+        else {
+          console.log("Unsupported file type for drag+drop: ", file.name)
+        }
+
+      }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////    
+
+  </script>
+<!--End-->

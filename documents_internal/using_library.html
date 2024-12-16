@@ -1,0 +1,1323 @@
+<!--Start-->
+
+<div class="container-fluid p-0">
+    <div class="row flex-nowrap">
+        <div class="col-12 p-0 pt-2 pl-2">
+
+            <h2>Node Library User Guide</h2>
+
+            <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="top-toggle nav-link active" id="pills-userint-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-userint" type="button" role="tab" aria-controls="pills-userint"
+                        aria-selected="true">Using the Library</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent2">
+                <div class="tab-pane fade show active" id="pills-userint" role="tabpanel"
+                    aria-labelledby="pills-userint-tab">
+
+                    <div class="card border-secondary shadow border mb-4">
+                        <div class="card-body">
+
+                            <p>Library information is organized into various node groups with associated node
+                                definitions.</p>
+                            <p>
+                                Shown here is an <em>interactive</em> "template" of the 'card UI' used to display node
+                                definition
+                                information. Attributes are shown as rows. Various definition information can
+                                be shown/hidden by clicking the section tabs (
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                </svg> /
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                                )
+                            </p>
+                            <p>
+                                Within the card template below are explanations for how to read attribute values and
+                                what their usage is.
+                                These can be found within the <a
+                                    class="custom btn btn-sm border border-secondary shadow">colored boxes </a>
+                            </p>
+                            <p>
+                                For brevity, only essential API calls shown in the template. Otherwise
+                                the <b>attribute</b> names used indicate which attribute is examined.
+                                Also, only the non-inherited inputs and outputs are shown per node
+                                definition.
+                            </p>
+                            <hr>
+
+                            <div data-bs-theme="light"
+                                class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                <div class="card-header border-0">
+                                    <h6>Category Section</h6>
+                                </div>
+                                <br>
+                                For each category ('node' attribute) one or more implementations may be shown. In this
+                                template only one is
+                                shown.
+
+                            </div>
+                            <br>
+                            <container data-bs-theme="light">
+                                <b>Category: </b>'node'
+                                <details open>
+                                    <summary
+                                        class="card-header rounded bg-primary bg-opacity-50 text-white m-4 px-2 p-3 mb-0">
+                                        Definition Name: 'name'</summary>
+
+                                    <div class="m-4 mt-0">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card border-secondary shadow border mb-4">
+                                                    <div class="card-body">
+
+
+                                                        <div
+                                                            class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                            <div class="card-header border-0">
+                                                                <h6>Definition Section</h6>
+                                                            </div>
+                                                            <br>
+                                                            <p>For each definition one or more reference images may be
+                                                                shown in the order
+                                                                that the outputs are listed.
+                                                            </p>
+                                                        </div>
+                                                        <br>
+                                                        <p class="card-text"><img src="images/Default_osl.png"
+                                                                class="rounded float-left" alt="..."
+                                                                style="width: 128px; max-width: 50%;"></p>
+
+
+                                                        <br>
+                                                        <div
+                                                            class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                            <b>Type</b> The output type. If there is more than one
+                                                            output then 'multioutput'
+                                                            is shown.
+                                                        </div>
+                                                        <br>
+
+                                                        <p class="card-text"><b>Type </b>
+                                                            <button type="button"
+                                                                class="btn btn-sm btn-outline-secondary pt-0 pb-0">'type'
+                                                            </button> <b>
+                                                        </p></b>
+
+
+                                                        <br>
+                                                        <div
+                                                            class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                            <b>Node Group</b> What node group is this node a part of.
+                                                        </div>
+                                                        <br>
+
+                                                        <p class="card-text"><b>Node Group </b>
+                                                            <button type="button"
+                                                                class="btn btn-sm btn-outline-secondary pt-0 pb-0">'nodegroup'</button>
+                                                        </p>
+
+                                                        <br>
+                                                        <div
+                                                            class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                            <b>Versioning / Inheritance</b>The version for this
+                                                            definition, whether
+                                                            it is the default version and whether it inherits from
+                                                            another definition.
+                                                        </div>
+                                                        <br>
+
+                                                        <p class="card-text">
+                                                            <b>Version </b>'version' ( 'isdefault' )
+                                                            <b>Inherits From </b><button type="button"
+                                                                class="btn btn-sm btn-outline-secondary pt-0 pb-0">'inherit'</button>
+                                                        </p>
+
+
+                                                        <br>
+                                                        <div
+                                                            class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                            <b>Description</b>Definition description
+                                                        </div>
+                                                        <br>
+
+                                                        <p class="card-text"><b>Description:
+                                                            </b>
+                                                        <div class="col-sm-8">
+                                                            <textarea class="form-control form-control-sm" rows="1"
+                                                                style="resize: none;" disabled>'doc'</textarea>
+                                                        </div>
+                                                        </p>
+
+                                                        <div
+                                                            class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                            <div class="card-header border-0">
+                                                                <h6>Code / Node Graph Implementation Sections</h6>
+                                                            </div>
+                                                            <br>
+                                                            <p>Either code or node graph implementations are
+                                                                displayed depending on the node definition.</p>
+                                                            <p>'Code implementation' shows which languages are
+                                                                implemented and where the
+                                                                code is stored or generated.
+                                                            <ul>
+                                                                <li>If it's inlined source code it is shown directly on
+                                                                    this page.</li>
+                                                                <li>If the code is stored in a file, a link to the file
+                                                                    is given</li>
+                                                                <li>If the code is generated by a code generator for a
+                                                                    given 'target'
+                                                                    then 'Via Code Generation' is shown.
+                                                                    (e.g. <a
+                                                                        href="definitions/position.html">position</a>)
+                                                                </li>
+                                                            </ul>
+                                                            'Function' is the name of the function to look for within
+                                                            the source
+                                                            code.</p>
+                                                            <p>Alternatively, the node graph sections shows the graph
+                                                                for the node
+                                                                definition. The "Draw Graph" button can be selected
+                                                                to draw the graph. Additionally, users can copy the
+                                                                Mermaid graph
+                                                                using 'Copy Graph' to the
+                                                                <a href="mermaidChecker.html">Graph Visualizer
+                                                                    utility</a> to examine, customize, and
+                                                                save as desired.
+                                                            </p>
+                                                        </div>
+                                                        <br>
+                                                        <details open>
+
+                                                            <summary><b>Code Implementation</b>
+                                                                getImplementation()
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="currentColor"
+                                                                    class="bi bi-code-square" viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                                    <path
+                                                                        d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z" />
+                                                                </svg>
+                                                            </summary>
+                                                            <br>
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+                                                                <div class="col-sm-2">
+                                                                    <input type="button"
+                                                                        class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0"
+                                                                        value="'target'">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">File:</label>
+                                                                <div class="col-sm-8">
+                                                                    <input type="button"
+                                                                        class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0"
+                                                                        value="'file'">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+                                                                <div class="col-sm-2">
+                                                                    <input type="button"
+                                                                        class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0"
+                                                                        value="'target'">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+                                                                <div class="col-sm-8">
+                                                                    <textarea class="form-control form-control-sm"
+                                                                        rows="3" style="resize: none;"
+                                                                        disabled>'sourcecode' </textarea>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">Target:</label>
+                                                                <div class="col-sm-2">
+                                                                    <input type="button"
+                                                                        class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0"
+                                                                        value="'target'">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">Code:</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="button"
+                                                                        class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0"
+                                                                        value="Via Code Generation">
+                                                                </div>
+                                                            </div>
+
+                                                            <hr>
+                                                            <div class="form-group row g-2">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-sm">Function:</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="button"
+                                                                        class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0"
+                                                                        value="function">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                        </details>
+
+                                                        <br>
+
+
+                                                        <details open>
+                                                            <summary>
+                                                                <b>Node Graph</b>
+                                                                getImplementation()
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="currentColor"
+                                                                    class="bi bi-diagram-3 text-primary"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z" />
+                                                                </svg>
+                                                                </p>
+                                                            </summary>
+                                                            <br>
+                                                            <img src="./images/draw_copy_graph_option.png"
+                                                                style="width:20%"><br>
+                                                            <img src="./images/sample_graph.svg" style="width:30%">
+                                                        </details>
+                                                        </p>
+                                                        <details open>
+                                                            <div
+                                                                class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                <div class="card-header border-0">
+                                                                    <h6>Inputs and Outputs Section</h6>
+                                                                </div>
+                                                                The input and output parameters / ports are listed as a
+                                                                list of
+                                                                buttons, with outputs labelled with bold text.
+                                                                A user can select a port to display port details.
+                                                                A single example of an input and and output
+                                                                are shown.
+                                                                <br><br>
+                                                                Select the input or output buttons
+                                                                to see the differences between input and output
+                                                                attributes.
+                                                            </div>
+
+                                                            <summary class="card-text"><b>Parameters:
+                                                                </b>getValueElements()</summary>
+                                                            <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+                                                                <li class="nav-item" role="presentation">
+                                                                    <button class="nav-link active"
+                                                                        id="pills-baseColor-tab" data-bs-toggle="pill"
+                                                                        data-bs-target="#pills-baseColor" type="button"
+                                                                        role="tab" aria-controls="pills-baseColor"
+                                                                        aria-selected="true">Input 'name'</button>
+                                                                </li>
+                                                                <li class="nav-item" role="presentation">
+                                                                    <button class="nav-link " id="pills-out-tab"
+                                                                        data-bs-toggle="pill"
+                                                                        data-bs-target="#pills-out" type="button"
+                                                                        role="tab" aria-controls="pills-specular"
+                                                                        aria-selected="false"><b>Output
+                                                                            'name'</b></button>
+                                                                </li>
+                                                            </ul>
+
+
+                                                            <div class="tab-content" id="pills-tabContent">
+                                                                <div class="tab-pane fade show active"
+                                                                    id="pills-baseColor" role="tabpanel"
+                                                                    aria-labelledby="pills-baseColor-tab" tabindex="0">
+
+                                                                    <div class="form-group row g-2">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <textarea
+                                                                                class="form-control form-control-sm"
+                                                                                id="form_description" rows="3"
+                                                                                style="resize: none;" disabled>'doc'
+                                                                            </textarea>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br>
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                        <b>Uniform</b>A checkbox is used to indicate if
+                                                                        the input
+                                                                        values are expected to be uniform or varying.
+                                                                    </div>
+                                                                    <br>
+
+                                                                    <div class="form-group row g-2">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Type
+                                                                            /
+                                                                            Uniform:</label>
+                                                                        <div class="col-sm-2">
+                                                                            <button type="button"
+                                                                                class="btn btn-sm btn-outline-secondary pt-0 pb-0">'type'</button>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-sm-7">
+                                                                            <input type="checkbox" id="blah"
+                                                                                name="Advanced"
+                                                                                class="form-check-input form-check-sm"
+                                                                                checked disabled>
+                                                                            <label>
+                                                                                ('uniform')</label><br>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <br>
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                        <b>Enumerations</b>
+                                                                        <p>Set of possible named values for an
+                                                                            enumeration shown in open
+                                                                            dropdown menus, with string labels on the
+                                                                            left and if it exists, any
+                                                                            associated numeric value on the right.
+                                                                            <a href="./definitions/LamaConductor.html">'Lama
+                                                                                Conductor'</a>
+                                                                            'fresnelMode' input is an example.
+                                                                        </p>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Possible
+                                                                            Values: </label>
+                                                                        <div class="col-sm-4">
+                                                                            <select class="form-select form-select-sm"
+                                                                                style="font-size:90%" size="3"
+                                                                                aria-label="size 3 select example .form-select-sm"
+                                                                                disabled>
+                                                                                <option value="1">
+                                                                                    'enum'
+                                                                                </option>
+                                                                                <option value="2">
+                                                                                    'enum'
+                                                                                </option>
+                                                                                <option value="3">
+                                                                                    'enum'
+                                                                                </option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <select class="form-select form-select-sm"
+                                                                                style="font-size:90%" size="3"
+                                                                                aria-label="size 3 select example .form-select-sm"
+                                                                                disabled>
+                                                                                <option value="1">
+                                                                                    'enumvalues'
+                                                                                </option>
+                                                                                <option value="2">
+                                                                                    'enumvalues'
+                                                                                </option>
+                                                                                <option value="3">
+                                                                                    'enumvalues'
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br>
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                        <b>Colors</b>
+                                                                        Color values are in have no assumed
+                                                                        range or representation. The associated color
+                                                                        swatch provides a visual
+                                                                        in RGB space for reference. Input colorspace is
+                                                                        shown if specified.
+                                                                    </div>
+                                                                    <br>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Value (color3):
+                                                                        </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value='value' disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-3">
+                                                                            <input type="color" value="#ffff00"
+                                                                                disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Value (color4):
+                                                                        </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value='value' disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value='value' disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="color" value="#ff0000"
+                                                                                disabled>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Colorspace
+                                                                            (color3/color4): </label>
+                                                                        <div class="col-sm-2">
+                                                                            <button type="button"
+                                                                                class="btn btn-sm btn-outline-secondary pt-0 pb-0">'colorspace'</button>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <hr>
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                        <b>Floats and Vectors</b>Vector values are shown
+                                                                        in the fields in x, y
+                                                                        z and w order. Float values show a single field.
+                                                                    </div>
+                                                                    <br>
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                        <b>Matrices</b>Matrix values are shown in row
+                                                                        major order.
+                                                                    </div>
+                                                                    <br>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Value (vector4): </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Value (vector3): </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Value (vector2): </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Value:
+                                                                            (matrix33)
+                                                                        </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Value:
+                                                                            (matrix44)
+                                                                        </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Value (float): </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br>
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                        <b>Real World Units</b>
+                                                                        <p>Vectors and matrices may have an optional
+                                                                            `unit` and `unit` type specified. For
+                                                                            example the rotation amount for
+                                                                            <a
+                                                                                href="definitions/place2d.html">place2d</a>
+                                                                            is specified as an angle in degrees.
+                                                                        </p>
+                                                                    </div>
+                                                                    <br>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Unit
+                                                                            Type / Unit: </label>
+                                                                        <div class="col-sm-2">
+                                                                            <button type="button"
+                                                                                class="btn btn-sm btn-outline-secondary pt-0 pb-0">'unittype'</button>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <button type="button"
+                                                                                class="btn btn-sm btn-outline-secondary pt-0 pb-0">'unit'</button>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br>
+                                                                    <div
+                                                                        class="ps-2 custom card border border-secondary shadow py-2 pe-2  col-sm-6">
+                                                                        <b>Default geometry</b>Geometry specified to be
+                                                                        bound by default
+                                                                        is optional. The name of a built in semantic
+                                                                        name such as 'Nworld'
+                                                                        (normals in world space) is shown.
+                                                                    </div>
+                                                                    <br>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Geometry
+                                                                            Property: </label>
+                                                                        <div class="col-sm-6">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'defaultgeomprop'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <hr>
+
+                                                                    <div
+                                                                        class="custom card border border-secondary shadow py-2 pe-2 ps-2 col-sm-6">
+                                                                        A checkbox is shown to represent a boolean type.
+                                                                        A filled in checkbox means true and an
+                                                                        unfilled one means false.
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Value
+                                                                            (boolean):
+                                                                        </label>
+                                                                        <div class="col-sm-1">
+                                                                            <input type="checkbox"
+                                                                                class="form-check-input form-check-sm"
+                                                                                checked disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr>
+
+                                                                    <div
+                                                                        class="custom card border border-secondary shadow py-2 pe-2 ps-2 col-sm-6">
+                                                                        <b>UI attributes</b>
+                                                                        UI attribute hint are shown in a row with
+                                                                        each field value corresponds to 1st name /
+                                                                        -> 2nd name / -> 3rd name /.
+                                                                        A checkbox is shown if the input is considered
+                                                                        'advanced'.
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group row g-1">
+
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">UI
+                                                                            <b>Min/Max/Step:</b> </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'uimin'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'uimax'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'uistep'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">UI
+                                                                            <b> Soft Min/Max:</b> </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'uisoftmin'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'uisoftmax'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group row g-2">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">UI
+                                                                            <b>Name / Folder:</b> </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'uiname')" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'uifolder'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="checkbox" id="blah"
+                                                                                name="Advanced"
+                                                                                class="form-check-input form-check-sm"
+                                                                                checked disabled>
+                                                                            <label for="blah">
+                                                                                ('uiadvanced')</label><br>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <!--------------------------------------------------------------------------------------------------->
+                                                                <div class="tab-pane fade" id="pills-out"
+                                                                    role="tabpanel" aria-labelledby="pills-out-tab"
+                                                                    tabindex="0">
+
+                                                                    <div class="form-group row g-2">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Description:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <textarea
+                                                                                class="form-control form-control-sm"
+                                                                                id="form_description" rows="3"
+                                                                                style="resize: none;" disabled>'doc'
+                                                                            </textarea>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-2">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Type:</label>
+                                                                        <div class="col-sm-2">
+                                                                            <button type="button"
+                                                                                class="btn btn-sm btn-outline-secondary pt-0 pb-0">'type'</button>
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Possible
+                                                                            Values: </label>
+                                                                        <div class="col-sm-4">
+                                                                            <select class="form-select form-select-sm"
+                                                                                style="font-size:90%" size="3"
+                                                                                aria-label="size 3 select example .form-select-sm"
+                                                                                disabled>
+                                                                                <option value="1">
+                                                                                    'enum'
+                                                                                </option>
+                                                                                <option value="2">
+                                                                                    'enum'
+                                                                                </option>
+                                                                                <option value="3">
+                                                                                    'enum'
+                                                                                </option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <select class="form-select form-select-sm"
+                                                                                style="font-size:90%" size="3"
+                                                                                aria-label="size 3 select example .form-select-sm"
+                                                                                disabled>
+                                                                                <option value="1">
+                                                                                    'enumvalues'
+                                                                                </option>
+                                                                                <option value="2">
+                                                                                    'enumvalues'
+                                                                                </option>
+                                                                                <option value="3">
+                                                                                    'enumvalues'
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Default (color3): </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value='value' disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-3">
+                                                                            <input type="color" value="#ffff00"
+                                                                                disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Default (color4): </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value='value' disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value='value' disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="color" value="#ff0000"
+                                                                                disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Default (vector4): </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Default (vector3): </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Default (vector2): </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Default:
+                                                                            (matrix33)
+                                                                        </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Default:
+                                                                            (matrix44)
+                                                                        </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm"></label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Default (float): </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">
+                                                                            Default (string): </label>
+                                                                        <div class="col-sm-2">
+                                                                            <input type="text"
+                                                                                class="form-control form-control-sm"
+                                                                                value="'value'" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row g-1">
+                                                                        <label
+                                                                            class="col-sm-2 col-form-label col-form-label-sm">Default
+                                                                            (boolean):
+                                                                        </label>
+                                                                        <div class="col-sm-1">
+                                                                            <input type="checkbox"
+                                                                                class="form-check-input form-check-sm"
+                                                                                checked disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </details>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </details>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/mermaid_setup.js"></script>
+<script>
+    monitor_mermaid_tabs()
+</script>
+<!--End-->

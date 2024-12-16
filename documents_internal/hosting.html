@@ -1,0 +1,219 @@
+<!--Start-->
+
+<div class="container-fluid p-0">
+    <div class="row flex-nowrap">
+        <div class="col-12 p-0 pt-2 pl-2">
+            <div class="card border shadow border mb-4">
+                <div class="card-body">
+
+                    <h2 id="hosting-jupyter-notebooks">Hosting Jupyter Notebooks</h2>
+                    <p>There are various ways to host Jupyter notebooks on a server. In this
+                        section we will only cover two options:</p>
+                    <ol type="1">
+                        <li><a href="#1-hosting-using-github-codespaces">Github
+                                Codespaces</a></li>
+                        <li><a href="#2-hosting-using-google-colab">Google Colab</a></li>
+                    </ol>
+                    <p>At time of writing the recommended option is using
+                        <code>Github Codespaces</code>.
+                    </p>
+                    <h3 id="hosting-using-github-codespaces">1. Hosting Using Github
+                        Codespaces</h3>
+                    <p>Github Codespaces is a feature available to all tiers of Github users
+                        for individuals and organizations.</p>
+                    <p>(At time of writing). Codespaces are hosted on a <code>Linux</code>
+                        environment running <code>Ubuntu</code>. Also a default Python version
+                        is used as the interpreter (e.g. 3.10.8).</p>
+                    <p>It is possible to change the interpreter inside the <a
+                            href="https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/setting-up-your-python-project-for-codespaces">devcontainer.json</a>
+                        file in the <code>.devcontainer</code> folder. It is also possible
+                        create a virtual environment and chose a Python version as the
+                        interpreter.</p>
+                    <p>The current MaterialX package has been tested to run on this
+                        configuration, but <strong>it is advisable to check other packages for
+                            compatibility</strong>.</p>
+                    <p>This section will cover a small subset of functionality to get
+                        started. For more information please refer to the <a
+                            href="https://docs.github.com/en/codespaces/overview">Github Codespaces
+                            documentation</a>.</p>
+                    <p>To run the notebooks on this site the simplest approaches are:</p>
+                    <ol type="1">
+                        <li>
+                            <p>Fork the MaterialX Elements repository so that a codespace can be
+                                created on the fork. This will allow you to edit the notebooks and push
+                                changes back to your fork.</p>
+                        </li>
+                        <li>
+                            <p>Create your own repository and code space and copy over the
+                                notebooks of interest from the <code>pymaterialx</code> folder. Note
+                                that some notebooks use the utility scripts found in the
+                                <code>mtlxutils</code> folder. It is thus advisable to copy over this
+                                subfolder as well.
+                            </p>
+                        </li>
+                    </ol>
+                    <h4 id="sample-repository">1.1 Sample Repository</h4>
+                    <p>An example Github repository with the notebooks and utility scripts
+                        can be found <a href="https://github.com/kwokcb/MaterialX_Learn_Sample_Codespace">here</a></p>
+                    <ul>
+                        <li>
+                            <p>The <a
+                                    href="https://github.com/kwokcb/MaterialX_Learn_Sample_Codespace/blob/main/.devcontainer/devcontainer.json">devcontainer.json</a>
+                                file includes a startup command to install package dependencies from the
+                                <a
+                                    href="https://github.com/kwokcb/MaterialX_Learn_Sample_Codespace/blob/main/requirements.txt">requirements.txt</a>.
+                            </p>
+                        </li>
+                        <li>
+                            <p>This file includes minimally the IPython and MaterialX
+                                packages.</p>
+                        </li>
+                    </ul>
+                    <h4 id="adding-a-codespace">1.2 Adding a Codespace</h4>
+                    <p>To add a codespace to your repository, click on the <code>Code</code>
+                        button and select <code>New Codespace</code> from the dropdown menu.</p>
+                    <p>Below is an example of a codespace creation for the sample repository
+                        using <code>main</code> branch.</p>
+                    <p><img width="30%" src="images/create_codespace_github.png"></p>
+                    <p>By default a “randomly” named new codespace is created with default
+                        options. It is possible to also create with custom options by using the
+                        “…” button. The codespace can be renamed after creation.</p>
+                    <p>Also by default a <code>Visual Studio Code for Web</code> is used as
+                        the editor. This can be modified from your Github Settings for
+                        <code>CodeSpaces</code>
+                    </p>
+                    <p><img width="60%" src="images/create_codespace_github_editor_prefs.png"></p>
+                    <h4 id="using-a-codespace">1.3 Using a Codespace</h4>
+                    <p><img width="100%" src="images/create_codespace_github_2.png"></p>
+                    <p>If using the Visual Studio Code for Web editor, the editor is pretty
+                        well the same as the desktop version.</p>
+                    <p>From here it is possible to modify, add / remove content as desired,
+                        and push changes back to the repository.</p>
+                    <p>It is possible to sync the the Web editor with the desktop editor as
+                        desired. Additional extensions can be installed as desired. For example
+                        for the JSON notebook the <code>JSONcrack</code> extension was
+                        installed.</p>
+                    <p><img width="100%" src="images/codespace_extension.png"></p>
+                    <h4 id="python-packages">1.4 Python Packages</h4>
+                    <p>Some Python packages are pre-installed in the codespace. To check
+                        what is already available the terminal window can be opened and the
+                        <code>pip list</code> command can be used.
+                    </p>
+                    <p><img width="100%" src="images/codespace_packages.png"></p>
+                    <p>If additional Python packages are required they can be installed
+                        inside a notebook, or in a terminal window. For example the
+                        <code>OpenUsd</code> package can be installed using:
+                        <code>pip install usd-core</code>.
+                    </p>
+                    <p><img width="100%" src="images/codespace_usd_install.png"></p>
+                    <p>If the package is general to many notebooks the `requirements.txt``
+                        file can be modified and the codespace restarted.</p>
+                    <p>As the MaterialX Package is loaded on startup, notebooks using this
+                        package can be run without any additional installation.</p>
+                    <h4 id="gpu-rendering">1.5 GPU Rendering</h4>
+                    <p>At time of writing it does not seem possible to render images using a
+                        GPU, though this has not been investigated in detail. As the “rendering
+                        notebook” uses OpenGL on Linux, it the rendering of images using
+                        notebook is not currently possible in a Codespace environment. It is
+                        unknown if MSL will work as a Apple OS environment is not available.</p>
+                    <h3 id="hosting-using-google-colab">2. Hosting Using Google Colab</h3>
+                    <p>Unlike codespaces, an entire environment setup does not seem possible
+                        with performing a number extra steps. This is especially true if there
+                        is dependent resources required and to share the notebook.</p>
+                    <h4 id="browser-access">2.1 Browser Access</h4>
+                    <p>A quick way to examine any notebook is to use the
+                        <a href="https://chrome.google.com/webstore/detail/open-in-colab/iogfkhleblhcpcekbiedikdehleodpjo"
+                            target="_blank">Open
+                            in Colab Chrome extension</a>.
+                    </p>
+                    <p>This option however fails to work well for execution when context
+                        data or utility scripts are required as only that file is available.</p>
+                    <h4 id="github-repository-usage">2.2 Github Repository Usage</h4>
+                    <p>It is possible to access both private and public Github repositories
+                        using Colab via
+                        <a href="https://colab.research.google.com/github/" target="_blank">this
+                            browser link</a>.
+                    </p>
+                    <p><img src="./images/colab_github_notebook_access.png" width="60%"></p>
+                    <p>To use the repo with extra steps for authentication the repo
+                        containing the notebooks can be <code>clone</code>d into the Colab
+                        environment. This is done by running the following Colab cell:</p>
+                    <div class="sourceCode" id="cb1">
+                        <pre
+                            class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clone the repo</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git clone <span class="op">&lt;</span>address of Github repository<span class="op">&gt;</span></span></code></pre>
+                    </div>
+                    <p>For this example the repository is
+                        <code>https://github.com/kwokcb/MaterialX_Learn_Sample_Codespace</code>,
+                        and the notebook is <code>mtlx_json_nootbook.ipynb</code>.
+                    </p>
+                    <p>This is also “safe” in the sense that a user of this notebook is not
+                        able to save back to the original repository.</p>
+                    <p>After this is done, the current folder can be changed to the root
+                        where the notebook resides in order to execute it using the following
+                        cell:</p>
+                    <div class="sourceCode" id="cb2">
+                        <pre
+                            class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the current folder to point to the appropriate folder.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">&#39;MaterialX_Learn_Sample_Codespace/notebooks&#39;</span>) </span></code></pre>
+                    </div>
+                    <p>where <code>MaterialX_Learn_Sample_Codespace/notebooks</code> is the
+                        path folder containing the notebook.</p>
+                    <p>Below is a snapshot of the loaded notebook after the clone and folder
+                        change is executed.
+                        <img src="images/colable_github_setup.png" width="100%">
+                    </p>
+                    <p>Note that notebooks in the learning site may require: 1. Python
+                        utilities found in the <code>mtlxutils</code> sub-folder 2. Resource
+                        files found in the <code>data</code> sub-folder</p>
+                    <h5 id="github-file-access-via-uri">2.2.1 Github File Access Via
+                        URI</h5>
+                    <p>It is possible to access individual files from Github if the URI is
+                        known. Note that the MaterialX file access API does not directly support
+                        network access and thus something like the <code>urlib</code> module
+                        must be used.</p>
+                    <p>For an example of this see the
+                        <a href="../pymaterialx/mtlx_basics_notebook.html" target="_blank">Basics
+                            notebook</a>
+                    </p>
+                    <h4 id="google-drive-usage">2.3 Google Drive Usage</h4>
+                    <p>If sharing is <strong>not</strong> required and “write” privileges
+                        make be required then the notebook and dpendendt files can also be
+                        uploaded to <code>Google Drive</code> and opened in Colab from
+                        there.</p>
+                    <p>Below is an example of same repository copied to Google Drive and
+                        opened from there.</p>
+                    <p><img src="./images/google_drive_colab.png" width="60%"></p>
+                    <p>To use the notebook Google Drive must be explicitly mounted using the
+                        following cell:</p>
+                    <div class="sourceCode" id="cb3">
+                        <pre
+                            class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mount Google Drive</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>drive.mount(<span class="st">&#39;/content/drive&#39;</span>)</span></code></pre>
+                    </div>
+                    <p>The current folder can then be changed to location of the
+                        notebook.</p>
+                    <h4 id="installing-package-dependencies">2.4 Installing Package
+                        Dependencies</h4>
+                    <p>At time of writing there unfortunately appears to be nothing
+                        equivalent in <code>Colab</code> to the “dev container” setup found in
+                        <code>Codespace</code>s.
+                    </p>
+                    <p>Thus it is necessary to install the `MaterialX`` or any other package
+                        dependencies from within each notebook. For example to use MaterialX the
+                        follow cell can be added to the notebook:</p>
+                    <div class="sourceCode" id="cb4">
+                        <pre
+                            class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install MaterialX from PyPi</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install MaterialX</span></code></pre>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End-->

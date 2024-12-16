@@ -1,0 +1,420 @@
+<!--Start-->
+<div class="container-fluid p-0">
+  <div class="row flex-nowrap">
+    <div class="col-12 p-0 pt-2 pl-2">
+
+      <h2>Node Definitions</h2>
+
+      <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="top-toggle nav-link active" id="pills-library-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-library" type="button" role="tab" aria-controls="pills-library"
+            aria-selected="true">Libraries</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="top-toggle nav-link " id="pills-nodedef-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-nodedef" type="button" role="tab" aria-controls="pills-nodedef"
+            aria-selected="false">Definitions</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="top-toggle nav-link " id="pills-nodedefparam-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-nodedefparam" type="button" role="tab" aria-controls="pills-nodedefparam"
+            aria-selected="false">Parameters and Attributes</button>
+        </li>
+
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="top-toggle nav-link " id="pills-impltarget-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-impltarget" type="button" role="tab" aria-controls="pills-impltarget"
+            aria-selected="false">Implementations</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="top-toggle nav-link " id="pills-apiaccess-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-apiaccess" type="button" role="tab" aria-controls="pills-apiaccess"
+            aria-selected="false">API</button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-library" role="tabpanel" aria-labelledby="pills-library-tab"
+          tabindex="0">
+
+          <div class="card border-secondary shadow border mb-4">
+            <div class="card-body">
+
+              <p>MaterialX ships with <a
+                  href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries"
+                  target="_blank">definitions</a>
+                which are partitioned into a few semantic categories:
+              <ul>
+                <li>stdlib: A set of core or "standard" definitions. This includes definitions for
+                  vector,
+                  color
+                  and image manipulation</li>
+                <li>pbrlib: A set of definitions representing physically based shader nodes.</li>
+                <li>bxdf: A set of industry standard shading models.</li>
+                <li>translation: A set of shading model translators</li>
+              </ul>
+              </p>
+              <p>
+                Each set can be thought of as a <b>library</b>. There is not specific "library"
+                format, but
+                instead each file is a MaterialX document.
+              </p>
+              <p>
+                Shown below are the definition dependencies.
+                Definitions in higher libraries
+                depend on definitions in "lower" libraries. Custom definitions can be built using
+                existing
+                standard definitions or other
+                custom definitions. For example the 'pbr' library definitions use 'stdlib' definitions.
+                <br><img class="bg-light p-2 rounded" src="./images/MaterialX_Core_Libraries.svg">
+              </p>
+              <!-- </details> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show" id="pills-nodedef" role="tabpanel" aria-labelledby="pills-nodedef-tab">
+
+          <div class="card border-secondary shadow border mb-4">
+            <div class="card-body">
+
+              <p>
+                In MaterialX a node definition is called a <a href="https://materialx.org/docs/api/class_node_def.html"
+                  target="_blank"><b>&lt;nodedef&gt;</b></a>.
+              </p>
+              <ul>
+                <li>A definition should have 1 or more input and output parameters for data flow to
+                  occur.
+                </li>
+                <li>The nodedef itself as well as it's parameters have <b>attributes</b>.</li>
+                <li>The identifier for all attributes are lowercase strings.
+                </li>
+              </ul>
+              <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;">Required Attributes
+              </div>
+              <p>
+                <img class="bg-light p-2 rounded" src="./images/ui_nodedef_attributes.PNG" style="width: 50%">
+              </p>
+              Required definition attributes include:
+              <ul>
+                <li>A unique <b>name</b> attribute
+                  <p>For the libraries shipping with
+                    MaterialX a "ND_" prefix is used as a prefix with the
+                    the follow proposed syntax template to provide long term uniqueness:<br><br>
+                    <code>ND_&lt;node category&gt;_&lt;type&gt;[_&lt;version&gt;]</code>
+                  </p>
+                  <p>
+                    While it is possible to change this name later on, this can cause issues
+                    with dependents that reference this name directly. This includes references
+                    for node instances which are stored in a MaterialX document.
+                  </p>
+                </li>
+                <li>A <b>node</b> attribute: This is
+                  the unique identifier to indicate the <b>category</b> of a node instance.
+                  One or more node definitions may use the same category, though each must have a
+                  unique "signature" (unique set of input, output, and token parameters).
+                </li>
+                <li>An output <b>type</b> attributes:
+                  Different definitions for the same category can have the same or
+                  differing output types. If there is more than one output parameter on a
+                  definition
+                  then the definition's type is <b>multioutput</b>. In this case the individual
+                  output
+                  parameter types
+                  must be examined. Two or more definitions with the same category may have a
+                  "multioutput" type.
+                  <p>
+                    Shown below are the preview images for an <a
+                      href="./definitions/standard_surface_to_UsdPreviewSurface.html" target="_blank">example definition
+                      with multiple outputs</a>:<br>
+                    <img class="bg-light p-2 rounded" src="./images/multioutput_preview_swatches.png"
+                      style="width: 50%">
+                  </p>
+                </li>
+              </ul>
+              Additionally, it is worthwhile to consider versioning as being "required":
+              <ul>
+                <li>
+                  Though not strictly required it is very useful to have some
+                  description of the definition.
+                  This is specified in the <b>doc</b> attribute of the definition wherein all
+                  text is assumed to be in UTF-8 format.
+                </li>
+                <li>
+                  It is recommended to have a <b>version</b>
+                  identifier and have this as part of the nodedef identifier.
+                  This avoids complications trying to add versioning later on.
+                  A recommended version number is either "1.0" , or a number
+                  matching the version of a given external specification. For example versions for
+                  "USD"
+                  definitions start with "2.x".
+                  </p>
+                  <p>
+                    An accompanying <b>isdefaultversion</b> attribute should
+                    be provided to determine the default definition to
+                    instantiate when no explicit version is specified.
+                    Versioning is also important to allow for "upgrade" logic support
+                    (future-proofing).
+                  </p>
+                </li>
+              </ul>
+              <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">Node Groups</div>
+              <p>
+                The node group (<b>nodegroup</b>) attribute is also recommended as being mandatory.
+                It specifies the semantic used for evaluation including shader code
+                generation. This includes:
+              <ul>
+                <li><b>"texture": </b> Texture lookups test for this group identifier for example to
+                  perform convolutions</li>
+                <li><b>"adjustment": </b>Used for heuristics to test for transparency </li>
+                <li><b>"conditional": </b>Will cause branching in shader and re-generation is required
+                  for different conditions</li>
+                <li><b>"organization": </b>Does not perform any computation</li>
+                <li><b>"translation:": </b>Is a shading model translator</li>
+              </ul>
+              </p>
+              <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">Inheritance</div>
+              <p>
+                The <b>inherit</b> attribute indicates that a definition inherits it's
+                interface from another definition. Inheritance allows for reuse and specialization
+                and may
+                also be used handling version changes. "inherit" should be set to another
+                definition's
+                unique "name".
+              </p>
+              <p>
+                For example the <a href="definitions/standard_surface.html" target="_blank">standard surface</a>
+                and <a href="definitions/UsdUVTexture.html" target="_blank">USD texture</a> definitions use
+                inheritance. In one case to change the default values for inputs and in the
+                latter to remove an output from a newer version.<br>
+                <img class="bg-light p-2 rounded" src="images/definition_inherits_example.png" , width="50%">
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show " id="pills-nodedefparam" role="tabpanel"
+          aria-labelledby="pills-nodedefparam-tab">
+
+          <div class="card border-secondary shadow border mb-4">
+            <div class="card-body">
+
+              <p>For reference the set of input and output parameter attributes is shown below. This
+                includes all the
+                possible attribute and value variants. The set of attributes for inputs differ from
+                those of outputs.
+              <div class="row flex-nowrap">
+                <div class="col col-6">
+                  <img class="bg-light p-2 rounded" src="./images/ui_input_parameters.png" style="width:100%">
+                </div>
+                <div class="col col-6">
+                  <img class="bg-light p-2 rounded" src="./images/ui_output_parameters.png" style="width:100%">
+                </div>
+              </div>
+              </p>
+              <p>
+                The required attributes are:
+              <ul>
+                <li><b>name: </b> The name must be unique between all parameters on
+                  the definition.</li>
+                <li><b>type: </b>The parameter type.
+                  Refer to the <a href="./definitions/library_glossary.html" target="_blank">
+                    library glossary</a> for a list of supported types.
+                </li>
+              </ul>
+              Optional attributes include:
+              <ul>
+                <li><b>doc</b>: Description (documentation) of the parameter. It is recommended to
+                  add a description so users will understand the meaning of the parameter.</li>
+                <li><b>uniform</b> (input only): If specified the input data is uniform (vs varying)
+                  Only inputs can have this specified.</li>
+                <li><b>enumvalues</b> and <b>enum</b>: The set of possible values
+                  and their corresponding labels respectively.
+                </li>
+                <li><b>value</b> (input only): The default value for inputs. Depending on the type,
+                  values may be qualified by additional attributes:
+                  <ul>
+                    <li><b>unit</b> and <b>unittype</b>: For floats and vectors. Defines
+                      the unit and unit type for the input (e.g. "cm" and
+                      "distance"). Either one or the
+                      other may be specified.
+                      Refer to the <a href="./definitions/library_glossary.html" target="_blank">
+                        library glossary</a> for supported unit and unit types.
+                    </li>
+                </li>
+                <li><b>colorspace</b>: For color3 and color4 and filename
+                  types. Defines the input color space. Note that a value
+                  of "none" means that this is a non-physical
+                  color and should not undergo any colorspace transforms.
+                  Refer to the <a href="./definitions/library_glossary.html" target="_blank">
+                    library glossary</a> for supported color space identifiers.
+                </li>
+                <li><b>defaultgeomprop</b>: String identifier of a default
+                  geometry stream to route as input.
+                  Refer to the <a href="./definitions/library_glossary.html" target="_blank">
+                    library glossary</a> for supported default geometry identifiers.
+                </li>
+              </ul>
+              </li>
+              <li><b>default</b> (output only): The default value of an output when a node
+                instance is disabled (The <b>disable</b> attribute is set true)</li>
+              <li><b>defaultinput</b> (output only): The value on a definition's input to use
+                by default value when a node instance is disabled.</li>
+              </ul>
+              Optional UI Attributes for Inputs
+              <ul>
+                <li><b>uimin</b>, <b>uisoftmin</b> Hard and soft UI minimum value</li>
+                <li><b>uimax</b>, <b>uisoftmax</b> Hard and soft UI maximum value</li>
+                <li><b>uistep</b> UI step size value</li>
+                <li><b>uifolder</b> Can be used to group parameters in the UI</li>
+                <li><b>uiadvanced</b> Considered to be for "advanced" users</li>
+                </li>
+              </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show " id="pills-impltarget" role="tabpanel" aria-labelledby="pills-impltarget-tab">
+
+          <div class="card border-secondary shadow border mb-4">
+            <div class="card-body">
+
+              <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">Implementations
+                and Functional Graphs</div>
+              <p></p>
+              <p>
+                A definition can be implemented either in code or using a functional
+                node graph. A definition can have a different implementation depending
+                on shading language <b>target</b> (e.g. OSL). <a
+                  href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/targets"
+                  target="_blank">Targets</a>
+                are provided as part
+                of the standard definition libraries. The syntax is:
+                <code>gen_&lt;language name&gt;</code>
+              </p>
+              <p>
+                A implementation represented as a node graph
+                is <em>inherently independent</em> of a target (even though any node in graph may be target specific).
+                The association between a node definition and
+                a node graph can either be specified via the <b>nodedef</b>
+                attribute on a node graph or via an
+                <code>&lt;implementation&gt;</code>
+                association as of version 1.38.4.
+              </p>
+              <p>
+                The recommended functional graph name should start with "NG_" and be of the
+                form:<br><br>
+                <code>NG_&lt;node category&gt;_&lt;type&gt;[_&lt;version&gt;]</code>
+              </p>
+              <p>
+                The following diagram shows the two possible ways implementations can be
+                associated with definitions. As of 1.38.4 the &lt;implementation&gt; approach
+                is recommended as it the same way that code associations are specified.<br>
+                <img class="bg-light p-2 rounded" src="./images/impl_diagram1.svg" style="width:40%">
+                <br>or<br>
+                <img class="bg-light p-2 rounded" src="./images/impl_diagram2.svg" style="width:40%">
+              </p>
+              <div class="btn btn-lg border-secondary shadow-sm w-100"" style=" pointer-events: none;">Functional Node
+                Graph Diagrams</div>
+              <p></p>
+              <p>
+                For the node definition documentation, diagrams of node graphs are
+                generated from MaterialX library documents. The conventions for different components
+                are shown in the sample diagram below:<br>
+                <img class="bg-light p-2 rounded" src="./images/ui_nodedef_graph_elements.svg" style="width:50%">
+              <ol>
+                <li>Nodes and node graphs are rectangular boxes (*)</li>
+                <li>Outputs and inputs on functional node graphs are rounded and color-coded</li>
+                <li>Conditional nodes are diamond shapes</li>
+                <li>Data flow is drawn as lines with arrows (<b>edges</b>)</li>
+                <li>An edge which connects to a node input is denoted using the
+                  syntax<code>.input_name</code></li>
+              </ol>
+              (*) Note that even through the specification indicates that nodegraphs can contain other
+              nodegraphs the current
+              implementation <b>(up to version 1.39)</b> at time of writing does not support this. Thus the nodegraph
+              box is not
+              drawn for
+              functional node graphs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show " id="pills-apiaccess" role="tabpanel" aria-labelledby="pills-apiaccess-tab">
+
+          <div class="card border-secondary shadow border mb-4">
+            <div class="card-body">
+
+              <p>
+                To retrieve information following are important API classes:
+              <ul>
+                <li><a href="https://materialx.org/docs/api/class_document.html" target="_blank"><em>Document</em>:</a>
+                  document api to get nodedefs va
+                  <code>getNodeDefs()</code>
+                </li>
+                <li><a href="https://materialx.org/docs/api/class_node_def.html" target="_blank"><em>NodeDef</em>:</a>
+                  node
+                  definition</li>
+                <li><a href="https://materialx.org/docs/api/class_implementation.html"
+                    target="_blank"><em>Implementation</em></a>:
+                  nodedef definition implementation</li>
+                <li><a href="https://materialx.org/docs/api/class_node_graph.html" target="_blank">
+                    <em>NodeGraph</em></a>:
+                  node graph implementation</li>
+                <li><a href="https://materialx.org/docs/api/class_input.html" target="_blank"><em>Input</em></a>:
+                  interface
+                  and node inputs for definitions and
+                  node graph implementation nodes</li>
+                <li><a href="https://materialx.org/docs/api/class_output.html" target="_blank"><em>Output</em></a>:
+                  outputs
+                  for definitions, node graphs and nodes</li>
+              </ul>
+              </p>
+              <p>Input and output ports can be inherited from a parent definition. Note that in
+                MaterialX
+                terminology, getting <b>active</b> information means to get inherited information.
+                <a href="https://materialx.org/docs/api/class_interface_element.html" target="_blank">Corresponding
+                  APIs</a>
+                having
+                an "Active" API variants (e.g. <code>getActiveValueElements()</code> vs
+                <code>getValueElements()</code>).
+              </p>
+              <p>
+                To get input and output attribute information the follow method is available:
+                <a href="https://materialx.org/docs/api/class_element.html" target="_blank">
+                  <code class="language-cpp">Element::getAttribute(&lt;attribute name&gt;)</code></a>
+              </p>
+              <p>
+                The general method to get value information (marked as 'value' in the template) is:
+                <a href="https://materialx.org/docs/api/class_value_element.html" target="_blank">
+                  <code class="language-c++">ValueElement::getValue()</code></a>
+              </p>
+              The API calls have the same name for all supported APIs (Python, Javascript, C++)
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="js/mermaid_setup.js"></script>
+<script>
+  monitor_mermaid_tabs()
+</script>
+<!--End-->

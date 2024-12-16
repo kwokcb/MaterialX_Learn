@@ -5,7 +5,13 @@ By default the output image(s) is written to the current working directory.
 import MaterialX as mx
 from mtlxutils import mxrenderer
 from mtlxutils import mxbase
-import os, argparse
+import os
+import argparse
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 def loadLibraries(searchPath, libraryFolders):
     status = ''
@@ -28,13 +34,13 @@ def createWorkingDocument(libraries):
 
 def haveVersion(major, minor, patch):
     """
-    Check if the current vesion matches a given version
+    Check if the current version matches a given version
     """ 
     return mxbase.haveVersion(major, minor, patch)
 
 def getFiles(rootPath):
     filelist = []
-    exts = ('mtlx', 'MTLX' )
+    exts = ('mtlx', 'MTLX')
     for subdir, dirs, files in os.walk(rootPath):
         for file in files:
             if file.lower().endswith(exts):
@@ -52,7 +58,7 @@ def main():
     opts = parser.parse_args()
 
     if not haveVersion(1, 38, 7):
-        print('Minimum MaterialX version is 1.38.7. Exiting')
+        logger.error('Minimum MaterialX version is 1.38.7. Exiting')
         exit(-1)
 
     # Get absolute path of opts.outputPath
@@ -61,7 +67,7 @@ def main():
     outputPath = mx.FilePath(opts.outputPath)
     # Check that output path exists
     if outputPath.size() > 0 and not os.path.isdir(outputPath.asString()):
-        print('Output path "%s" does not exist.' % outputPath.asString())
+        logger.error('Output path "%s" does not exist.', outputPath.asString())
         exit(-1)
 
     fileList = []
@@ -76,10 +82,10 @@ def main():
     libraryFolders = mx.getDefaultDataLibraryFolders()
     stdlib, status = loadLibraries(searchPath, libraryFolders)
     if not stdlib:
-        print('Error loading standard libraries: "%s"' % status)
+        logger.error('Error loading standard libraries: "%s"', status)
         exit(-1)
     else:
-        print(status)
+        logger.info(status)
     libraries.append(stdlib)
 
     # Check for additional use libraries
@@ -94,14 +100,13 @@ def main():
         for libraryList in opts.libraries:
             for library in libraryList:
                 userLibraryFolders.append(library)
-    #print('-- user search path: ', searchPath.asString())
-    #print('-- user library folders: ', libraryFolders)
+
     userlib, status = loadLibraries(userPath, userLibraryFolders)
     if not userlib:
-        print('Error loading user libraries: "%s"' % status)
+        logger.error('Error loading user libraries: "%s"', status)
         exit(-1)
     else:
-        print(status)
+        logger.info('Loaded user libraries successfully: "%s"', status)
     libraries.append(userlib)
 
     renderer = None
@@ -109,10 +114,10 @@ def main():
         w = h = opts.size
         # TODO: The files should be packaged and the resources added as part of the package. 
         # Load in lighting. 
-        radianceFilePath = './data/lights/san_giuseppe_bridge.hdr'
-        irradianceFilePath = './data/lights/irradiance/san_giuseppe_bridge.hdr'
+        radianceFilePath = '../resources/Lights/san_giuseppe_bridge.hdr'
+        irradianceFilePath = '../resources/Lights/irradiance/san_giuseppe_bridge.hdr'
         if not os.path.exists(radianceFilePath) or not os.path.exists(irradianceFilePath):
-            print('-- Radiance or Irradiance file does not exist. Exiting')
+            logger.error('-- Radiance or Irradiance file does not exist. Exiting')
             exit(-1)
 
         # Load in geometry.
@@ -120,14 +125,14 @@ def main():
         if len(opts.geometryPath) > 0:
             geometryShape = opts.geometryPath
         if not os.path.exists(geometryShape):
-            print('-- Geometry shape "%s" does not exist. Exiting' % geometryShape)
+            logger.error('-- Geometry shape "%s" does not exist. Exiting', geometryShape)
             exit(-1)
         renderer = mxrenderer.initializeRenderer(stdlib, searchPath, radianceFilePath, irradianceFilePath, w, h, 
                                                  geometryShape)
         renderer.addToRenderLog('--------------------------')
 
     if not renderer:
-        print('Error initializing renderer')
+        logger.error('Error initializing renderer')
         exit(-1)
 
     for fileName in fileList:
@@ -136,7 +141,7 @@ def main():
         # Create a new working document for each file
         doc = createWorkingDocument(libraries)
         if not doc:
-            print('Error creating working document')
+            logger.error('Error creating working document')
             continue
 
         try:
@@ -151,22 +156,22 @@ def main():
             fullSearchPath.append(abspath)   
 
         except mx.ExceptionFileMissing as err:
-            print('File %s could not be loaded: "' % fileName, err, '"')
+            logger.error('File %s could not be loaded: "%s"', fileName, err)
             continue
         except mx.Exception as err:
-            print('File %s fail to load properly: "' % fileName, err, '"')
+            logger.error('File %s failed to load properly: "%s"', fileName, err)
             continue
 
-        print('Render file:' + fileName)
+        logger.info('Render file: %s', fileName)
         renderer.addToRenderLog('Render file:' + fileName + '. SearchPath: ' + fullSearchPath.asString())
         rendered, errors = mxrenderer.performRender(renderer, doc, fileName, outputPath, fullSearchPath)
         if not rendered:
-            print('Error rendering file: "%s"' % fileName)
-            print('Errors: "%s"' % errors)
+            logger.error('Error rendering file: "%s"', fileName)
+            logger.error('Errors: "%s"', errors)
         renderer.addToRenderLog('--- Finished rendering file "%s"\n' % fileName)
 
     # Open text file
-    print('Wrote render log to: render_log.txt')
+    logger.info('Wrote render log to: render_log.txt')
     with open('render_log.txt', 'w') as f:
         f.write('\n'.join(renderer.getRenderLog()))        
 

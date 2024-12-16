@@ -1,0 +1,466 @@
+<!--Start-->
+<div class="container-fluid p-0">
+  <div class="row flex-nowrap">
+    <div class="col-sm-12 p-0 pt-2 pl-2">
+
+      <h2 id="nodes-and-node-graphs">Nodes and Node Graphs</h2>
+
+      <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="top-toggle nav-link active" id="pills-library-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-library" type="button" role="tab" aria-controls="pills-library"
+            aria-selected="true">Nodes and Graphs</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="top-toggle nav-link " id="pills-nodedef-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-nodedef" type="button" role="tab" aria-controls="pills-nodedef"
+            aria-selected="false">Connections</button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-library" role="tabpanel" aria-labelledby="pills-library-tab"
+          tabindex="0">
+
+          <div class="card border-secondary shadow border mb-4">
+            <div class="card-body">
+              <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;"
+                id="1-introduction">
+                Introduction</div>
+
+              <p>In MaterialX, shading computations are represented via a graph of nodes.</p>
+              <p>The basic components for all graphs are:</p>
+              <ol>
+                <li>Nodes</li>
+                <li>Ports</li>
+                <li>Connections</li>
+              </ol>
+              <p><strong>Notation</strong>: <em>XML</em> notation will be used to denote
+                types of components, such that a component is bracketed by start and end angle braces:
+                <code>&lt;</code>
+                and
+                <code>&gt;</code>. For example a node is denoted as <code>&lt;node&gt;</code>.
+              </p>
+              <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="nodes">Nodes
+              </div>
+              <p>A <code>&lt;node&gt;</code> can be thought of as representing an atomic unit of computation. They
+                are
+                instances of <a href="https://materialx.org/docs/api/class_node_def.html">node definitions
+                </a>. Definitions determine the
+                public interface for a computation. Details about definitions can be found
+                <a href="node_definitions.html">here</a>.
+              </p>
+              <p>The API class is called <a href="https://materialx.org/docs/api/class_node.html"><code>Node</code></a>.
+              </p>
+              <p>There are various semantic types for nodes within MaterialX. For the purposes of shader
+                computation, we
+                will
+                consider nodes which either:</p>
+              <ol>
+                <li>Perform a <strong>computation</strong> on or route input values to produce output values. This
+                  includes
+                  nodes which may extract or combine channels of an input or output.</li>
+                <li>Perform <strong>conditional</strong> branching logic (such as an 'if' or 'switch' condition)
+                </li>
+                <li>Route <strong>application data</strong> such as constants, geometry, or images.
+                </li>
+              </ol>
+              <p>Each node must have a unique string identifier (<code>name</code>). This identifier can only
+                contain
+                alphanumeric characters, excluding the path separator character: <code>/</code>.
+                To aid with identifier naming, Materialx provides identifier creation
+                utilities (e.g. <a href="https://materialx.org/docs/api/class_element.html">createValidChildName()</a>
+                )</p>
+              <p>For the purposes of illustration, rectangular boxes are used to denote nodes. For example, the
+                following diagram
+                shows
+                3 nodes named &quot;node1&quot;, &quot;node2&quot;, and &quot;node3&quot;</p>
+              <pre><code class="language-mermaid"><div class="mermaid">graph TD;
+              node1
+              node2
+              node3
+          </div></code></pre>
+              <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;"
+                id="interfaces-and-ports">
+                Interfaces
+                and Ports</div>
+              <p>Each node's definition is specified by an interface which contains 0 or more
+                port elements or <strong>ports</strong> for short. All ports are "strongly typed" (
+                all ports must have a defined type ).</p>
+              <p>The API class for ports is <a
+                  href="https://materialx.org/docs/api/class_port_element.html"><code>PortElement</code></a>.</p>
+              <ul>
+                <li>Ports which receive data are called <a
+                    href="https://materialx.org/docs/api/class_input.html"><strong>inputs</strong></a>
+                  (<code>&lt;input&gt;</code>)</li>
+                <li>Ports which send data are called <a
+                    href="https://materialx.org/docs/api/class_output.html"><strong>outputs</strong></a>
+                  (<code>&lt;output&gt;</code>).</li>
+                <li>A port's <code>type</code> is defined by the API class <a
+                    href="https://materialx.org/docs/api/class_typed_element.html"><code>TypedElement</code></a>,
+                  Types are defined as part of the standard library definitions using
+                  a `<typedef>` element type. The
+                    <a href="./definitions/library_glossary.html">library glossary</a> lists these allowed types.
+                    An
+                    example type is <code>color3</code> to represent 3 channel colors.</li>
+              </ul>
+              <p>While a definition specifies the entire interface, it is <strong>not</strong> required that any
+                of
+                these ports be explicitly specified on the node instance:</p>
+              <ul>
+                <li>If and only if a connection is required and / or a non-default value is required does an input
+                  need to be
+                  specified.</li>
+                <li>Outputs do not need to be specified explicitly for a node.</li>
+              </ul>
+              <p><strong>Notation</strong>: A dot (".") will be used to indicate that an input or
+                output is part of a node. Thus in the diagram shown, the notation used to indicate
+                &quot;Input1&quot;
+                would be <em>&quot;Node.Input1&quot;</em>.</p>
+              <img class="rounded p-2 bg-light" src="./images/InputsOutputs.svg">
+              <p>
+              <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="containers">
+                Containers
+              </div>
+              <p></p>
+              <p>A <strong>graph element</strong> is a container for a set of nodes.</p>
+              <p>The API class is called <a
+                  href="https://materialx.org/docs/api/class_graph_element.html"><code>GraphElement</code></a>.
+              </p>
+              <p>Graph elements themselves cannot be created. Instead either of the following can be instantiated:
+              </p>
+              <ul>
+                <li>
+                  <p><strong>Document</strong>: A MaterialX document (<code>&lt;document&gt;</code>) is a top
+                    level
+                    container
+                    which can be thought as corresponding to a single &quot;file&quot;. The API class: <a
+                      href="https://materialx.org/docs/api/class_document.html"><code>Document</code></a>.</p>
+                </li>
+                <li>
+                  <p><strong>Node graph</strong>: A container which resides within a document or another node
+                    graph
+                    <code>&lt;nodegraph&gt;</code>. The API class is: <a
+                      href="https://materialx.org/docs/api/class_node_graph.html"><code>NodeGraph</code></a>.
+                  </p>
+                </li>
+              </ul>
+              <p>Graph elements can contain:</p>
+              <ul>
+                <li>0 or more nodes or node graphs and</li>
+                <li>0 or more direct child <code>&lt;input&gt;</code>s or <code>&lt;output&gt;</code>s.</li>
+              </ul>
+              <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;"
+                id="scope-and-path-notation">
+                Scope and Path Notation</div>
+              <p>Direct children of a graph element are considered to be in <strong>scope</strong>.</p>
+              <p>The follow scoping rules apply:</p>
+              <ul>
+                <li>Every direct child must have a unique string identifier <sup>(1)</sup></li>
+                <li><code>&lt;document&gt;</code>s and <code>&lt;nodegraph&gt;</code>s cannot contain child
+                  <code>&lt;document&gt;</code>s. There is no concept of a document referencing another document.
+                </li>
+                <li><code>&lt;input&gt;</code>s cannot be instantiated as direct children of a
+                  <code>&lt;document&gt;</code>.
+                </li>
+              </ul>
+              <p>
+                <sup>
+                  (1) Note that <code>&lt;document&gt;</code>s have no identifier by default.
+                </sup>
+              </p>
+              <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;"
+                id="document-scope">Document Scope
+              </div>
+              <p>The diagram below shows a <code>&lt;document&gt;</code> with valid children. &quot;my_node&quot;
+                is a
+                node
+                instance, and &quot;my_nodegraph&quot; a node graph.
+              <pre><code class="language-mermaid"><div class="mermaid rounded">graph TD
+             subgraph document
+                my_node 
+                subgraph my_nodegraph
+                end
+            end</div></code></pre>
+
+              <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;"
+                id="node-graph-scope">Node Graph Scope
+              </div>
+              <p>This example shows valid children for a node graph called "my_nodegraph"</p>
+              <ul>
+                <li>an <code>&lt;input&gt;</code> called &quot;input1&quot;,</li>
+                <li>an <code>&lt;output&gt;</code> called &quot;output1&quot;</li>
+                <li>a node called &quot;node1&quot;</li>
+                <li>a <code>&lt;nodegraph&gt;</code> called &quot;nodegraph2&quot; which contains a child node
+                  called &quot;node2&quot;</li>
+              </ul>
+              <pre><code class="language-mermaid"><div class="mermaid">graph TD
+              subgraph nodegraph2
+                node2
+              end
+             subgraph my_nodegraph
+                input1(input1)
+                style input1 fill:#1b1,color:#fff 
+                output1(output1) 
+                style output1 fill:#0bb,color:#fff
+                node1 
+                nodegraph2
+            end
+          </div></code></pre>
+              <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="paths">Paths
+              </div>
+              <p>Parent / child relationships can be described using a string <strong>path</strong> with
+                forward-slashes
+                (&quot;/&quot;) being used as path separators:</p>
+              <pre class="hljs"><code><div>  &lt;parent identifier&gt;/&lt;child identifier&gt;
+          </div></code></pre>
+              <p>In the above example, the path to &quot;node2&quot; would be
+                <code>my_nodegraph/nodegraph2/node2</code>
+                while
+                the
+                path to <code>input1</code> is <code>my_nodegraph.input1</code>.
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade" id="pills-nodedef" role="tabpanel" aria-labelledby="pills-nodedef-tab">
+
+          <div class="card border-secondary shadow border mb-4">
+            <div class="card-body">
+
+              <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;" id="connections">
+                Connections
+              </div>
+              <p>Connections can be formed between node instance or nodegraph ports
+                to create graphs. While node graphs can have no outputs,
+                they generally of no use as they cannot be connected to anything.
+              <p>The following is an example of a node and a node graph showing various typed inputs and outputs.
+                These <code>&lt;input&gt;</code>s and <code>&lt;output&gt;</code>s on <code>&lt;node&gt;</code>s
+                or
+                <code>&lt;nodegraph&gt;</code>s define what is connectable.
+              </p>
+              <img class="p-2 rounded bg-light" src="images/node_and_nodgraph_connections.svg">
+              <br><sub>The above figure shows ports which are color coded
+                to indicate whether they are inputs or outputs. The arrows which are
+                connect to ports show the direction that data flows.
+              </sub>
+              <p></p>
+              <p>Key attributes to consider for connectivity for an <code>&lt;input&gt;</code> includes:</p>
+              <ul>
+                <li><code>type</code>: Every port has a type with the list of valid types defined by
+                  the standard library definitions. <code>float</code> and <code>integer</code> tuples and arrays
+                  as well as <code>string</code> and <code>filename</code> are common types.</li>
+                <li><code>uniform</code>: A input can be marked as only accepting uniform values (non-varying
+                  across input geometry).</li>
+                <li><code>channel</code>: An input can indicate that a specific channel be extracted from incoming
+                  data
+                  . For example the <code>x</code> channel of a vector can be extracted. A &quot;dot&quot;
+                  notation is used to specified channels on data</li>
+                <br>
+                <pre class="hljs"><code><div>&lt;type&gt;.&lt;channel identifier&gt;</div></code></pre>
+              </ul>
+              <p>The rules for connection validity are as follows. <strong>It is assumed that all connections
+                  are within the same scope</strong>.</p>
+              <ul>
+                <li>A <code>&lt;node&gt;</code> or <code>&lt;nodegraph&gt;</code> <code>&lt;output&gt;</code> may
+                  be
+                  connected
+                  one or more <code>&lt;input&gt;</code>s on another node or <code>nodegraph</code>
+                  <code>&lt;input&gt;</code>.
+                </li>
+                <li>Ports cannot connect to themselves or other ports on the same node or node graph. (i.e. cycles
+                  / loops
+                  are not allowed)
+                </li>
+
+                <li>An <code>&lt;output&gt;</code> can connect to one or more <code>&lt;inputs&gt;</code>.
+                  (fan-out
+                  allowed)
+                </li>
+                <li>An <code>&lt;input&gt;</code> can be connected to at most one <code>&lt;output&gt;</code>.
+                  (fan-in
+                  disallowed)</li>
+                <li>Ports of different <code>type</code>s cannot be connected. This takes in to consideration the
+                  type
+                  produced after applying any <code>channel</code> extraction.
+                  <p></p>
+                  <p>
+                    For example, a single channel
+                    which is extracted from a float vector can be connected to a float input.
+                    <br>
+                    <img class="rounded p-2 bg-light" src="images/extract_connection.svg">
+                  </p>
+                </li>
+                <li>Ports with different <code>uniform</code> attributes values cannot be connected.</li>
+                <li><code>string</code> and <code>filename</code> typed constants can be connected to
+                  <code>filename</code>
+                  types.
+                </li>
+              </ul>
+              <p>For a given connection the source node / port is considered to be <strong>upstream</strong> of
+                the second
+                node / port, which is <strong>downstream</strong>.</p>
+              <p>The following is an example diagram showing how inputs, outputs and connections are drawn:</p>
+              <ol>
+                <li>Downstream <code>input</code> and upstream <code>output</code>s are color-coded rounded
+                  rectangles.
+                </li>
+                <li>Connections are denoted with lines. Arrows denote the direction of data flow (pointing
+                  downstream)
+                </li>
+              </ol>
+              <pre><code class="language-mermaid"><div class="mermaid bg-light">graph LR;
+        input1(input1)
+        output1(output1)
+        style output1 fill:#1b1,color:#fff 
+        style input1 fill:#0bb,color:#fff
+        output1 --> input1</div></code></pre>
+              <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;"
+                id="inter-node--graph-connections">
+                Inter Node / Graph Connections</div>
+              <p>The possible pair-wise configurations are shown below:</p>
+              <ol>
+                <li>Node-to-node: This example shows <code>node1</code>'s input <code>input1</code> is connected
+                  to
+                  <code>node2</code>'s output called <code>output1</code>.
+                  <pre><code class="language-mermaid"><div class="mermaid bg-light">graph LR;
+    input1(node1.input1)
+    output1(node2.output1)
+    style output1 fill:#1b1,color:#fff 
+    style input1 fill:#0bb,color:#fff
+    output1 --> input1</div></code></pre>
+
+                <li>Node-to-node graph connection:</li>
+                <pre><code class="language-mermaid"><div class="mermaid bg-light">  graph LR;
+      output1(node.output1)
+      subgraph nodegraph
+        input1(.input1)
+      end
+      style output1 fill:#1b1,color:#fff 
+      style input1 fill:#0bb,color:#fff
+      output1 --> input1</div></code></pre>
+
+                <li>Node graph-to-node connection:</li>
+                <pre><code class="language-mermaid"><div class="mermaid bg-light"> graph LR;
+    subgraph nodegraph
+      output1(.output1)
+    end
+    input1(node.input1)
+    style output1 fill:#1b1,color:#fff 
+    style input1 fill:#0bb,color:#fff
+    output1 --> input1
+</div></code></pre>
+                <li>Node graph-to-node graph connection:</li>
+                <pre><code class="language-mermaid"><div class="mermaid bg-light">graph LR;
+    subgraph nodegraph3
+      output1(.output1)
+    end
+    subgraph nodegraph
+      input1(.input1)
+    end
+    style output1 fill:#1b1,color:#fff 
+    style input1 fill:#0bb,color:#fff
+    output1 --> input1</div></code></pre>
+
+                <li>Combining some of the variants together a shader graph could look like the following.
+                  Fan-out is shown for one of the outputs on node graph <code>nodegraph3</code>.</li>
+                <pre>
+          <code class="language-mermaid">
+            <div class="mermaid bg-light">graph TB
+    node3(node3.out) --> node2(node2.in1)
+    node2 --> node0.input1(.input1)
+    node2 --> nodegraph2.input2(.input2)
+    subgraph nodegraph3;
+      nodegraph3.output1(.output1)
+    end
+    nodegraph3.output1 --> node0.input2(.input2)
+    nodegraph3.output1 --> nodegraph2.input1(.input1)
+    subgraph node0;
+      node0.output1(.output1)
+      node0.input2
+      node0.input1
+    end
+    subgraph nodegraph2;
+      nodegraph2.input1(.input1)
+      nodegraph2.input2(.input2)
+      nodegraph2.output1(.output1) 
+    end    
+    subgraph node1
+      node0.output1 --> node1.input1(.input1)
+      nodegraph2.output1 --> node1.input2(.input2)
+    end
+    style node3 fill:#1b1,color:#fff 
+    style node0.output1 fill:#1b1,color:#fff 
+    style nodegraph3.output1 fill:#1b1,color:#fff 
+    style nodegraph2.output1 fill:#1b1,color:#fff 
+    style node0.input1 fill:#0bb,color:#fff
+    style node0.input2 fill:#0bb,color:#fff
+    style nodegraph2.input1 fill:#0bb,color:#fff
+    style nodegraph2.input2 fill:#0bb,color:#fff
+    style node2 fill:#0bb,color:#fff
+    style node1.input1 fill:#0bb,color:#fff
+    style node1.input2 fill:#0bb,color:#fff</div></code></pre>
+              </ol>
+
+              <div class="btn btn-lg border-secondary shadow-sm w-100" style="pointer-events: none;"
+                id="intra-graph--interface-connections">Intra Graph / Interface Connections</div>
+              <p>The direct <code>&lt;input&gt;</code> and <code>&lt;output&gt;</code> children of a
+                <code>&lt;nodegraph&gt;</code> are considered to be the exposed <strong>interface</strong> of the
+                graph.
+              </p>
+              <p>It is only through these interfaces that connections can be made to ports which are outside the
+                scope of
+                the
+                nodegraph. These interfaces can in turn be connected to node ports within the scope of the node
+                graph such
+                that:</p>
+              <ol>
+                <li>A <code>&lt;nodegraph&gt;</code> <code>&lt;input&gt;</code> may be connected to one or more
+                  node's
+                  <code>&lt;input&gt;</code> within the same graph.
+                </li>
+                <pre>
+          <code class="language-mermaid">
+          <div class="mermaid bg-light">graph TB
+    subgraph nodegraph2
+        .input1(.input1) --> node1.input1
+        .input1 --> node2.input2
+        .input2(.input2) --> node2.input1
+        style .input1 fill:#1b1,color:#fff 
+        style .input2 fill:#1b1,color:#fff 
+    end</div></code></pre>
+                <li>The <code>&lt;output&gt;</code>s of a node within the same nodegraph may be connected to one
+                  or
+                  more nodegraph outputs.</li>
+                <div class="mermaid bg-light fragment blah">graph TB
+                  subgraph nodegraph2
+                  node1.output1 --> .output1(.output1)
+                  node1.output1 --> .output2(.output2)
+                  node1.output2 --> .output3(.output3)
+                  style .output1 fill:#0bb,color:#fff
+                  style .output2 fill:#0bb,color:#fff
+                  style .output3 fill:#0bb,color:#fff
+                  end
+                </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/mermaid_setup.js"></script>
+  <script>
+    monitor_mermaid_tabs()
+  </script>
+  <!--End-->
+
+  </html>
