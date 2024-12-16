@@ -1,6 +1,10 @@
 # Site Status
 
-## This site is in maintenance mode with the exception of updates for new MaterialX releases. Please sponsor the authors for any additional development.
+This site is now open for external contributions. Major 
+updates to synchronize with the latest MaterialX releases 
+can be performed by maintainers or external contributors. 
+
+Please sponsor the authors for any additional development.
 
 # Welcome to "MaterialX Elements"
 [![main](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml/badge.svg)](https://github.com/kwokcb/MaterialX_Plus/actions/workflows/main.yml)
@@ -42,4 +46,8 @@ The content for the site is provided in the following sub-folders:
 * [PyMaterialX](pymaterialx) Python Tutorials,  Jupyter Notebooks and Python utilities. 
 * Python modules [mxltutils](pymaterialx/mtlxutils))
 * [Resources](resources) Additional MaterialX resource files.
+
+
+## Contributing
+The mechanisms for building this site are now exposed. Folks are encouraged to contribute. Please see the contribution guidelines in the Github repo for more details.
 
