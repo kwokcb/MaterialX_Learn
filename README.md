@@ -50,7 +50,7 @@ The content for the site is provided in the following sub-folders:
 
 ## Building
 
-See the [README.md](Utilities/README.md) file in [Utilities](utilities) for
+See the [README.md](utilities/README.md) file in [Utilities](utilities) for
 details on how to build this site. Except for writing content the majority of the site is generated procedurally. For Windows users run the shell scripts
 from the appropriate command prompt (e.g `git-bash`).
 
