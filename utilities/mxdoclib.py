@@ -550,6 +550,8 @@ def printNodeDefs(doc, opts, nodedict, f, compareLibDict):
                         break
                     curVersion = libVersion                                    
 
+            if len(implName) == 0:
+                implName = '1.38.0 or earlier'
             if len(implName) > 0:
                 #print('------ library version is', implName, ' for def: ', nd.getName())
                 print('<details open class="p-0">'
