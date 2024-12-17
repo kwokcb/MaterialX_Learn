@@ -39,7 +39,7 @@ We’d love your help with code, tools, interactive learning features, or better
    - Update any relevant documentation.
 
 5. **Run Build Scripts:**
-   Make sure everything builds properly. Check out the `utilities` folder for the right scripts to set up your pages for publishing. (More details coming soon!)
+   Make sure everything builds properly. Read the instructions in the the [utilities](utilities) folder for instructions on how to (re)build the site.
 
 6. **Commit Your Changes:**
    Write clear, simple commit messages:

@@ -46,7 +46,13 @@ The content for the site is provided in the following sub-folders:
 * [PyMaterialX](pymaterialx) Python Tutorials,  Jupyter Notebooks and Python utilities. 
 * Python modules [mxltutils](pymaterialx/mtlxutils))
 * [Resources](resources) Additional MaterialX resource files.
+* [Utilities](utilities) Utilities to build the site.
 
+## Building
+
+See the [README.md](Utilities/README.md) file in [Utilities](utilities) for
+details on how to build this site. Except for writing content the majority of the site is generated procedurally. For Windows users run the shell scripts
+from the appropriate command prompt (e.g `git-bash`).
 
 ## Contributing
 The mechanisms for building this site are now exposed. Folks are encouraged to contribute. Please see the contribution guidelines in the Github repo for more details.
