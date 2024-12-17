@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Authors: Bernard Kwok and Matthew Kwok. Resource site for the
+  Academy Software Foundation MaterialX -- an open source industry standard for 3D / Cg materials.
+  Resources include interaction with related standards: OpenUSD, Khronos glTF, OpenImageIO.">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J7404418VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-J7404418VP');
+  </script>
+
+  <style>
+    model-viewer {
+      width: 256px;
+      height: 256px;
+      background-color: #7d7d7d;
+    }
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: auto;
+    }
+
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/brands.min.css"> 
+
+  <link rel="stylesheet" href="../documents/css/style.css">
+
+  
+
+  <title>MaterialX Elements</title>
+  <link rel="icon" type="images" href="../documents/images/logo3d_icon.png" type="image/x-icon" class="img-fluid">
+
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+  <script src="../documents/js/ui_helpers.js"></script>
+  
+  </script>  
+   
+  <!-- Navigation_Area-->
+<nav class="navbar sticky-top navbar-expand-lg bg-dark-subtle" data-bs-theme="dark">
+    <div class="container-md container-fluid">
+        <a class="navbar-brand" href="../index.html">
+            <h5><img src="../documents/images/logo3d_2_small.png" alt="MaterialX Elements"
+                    class="rounded d-inline-block align-text-center" width="50px">
+                MaterialX Elements</h5>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuContent"
+            aria-controls="mainMenuContent" aria-expanded="false" aria-label="Toggle top menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenuContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="../index.html" role="button">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Fundamentals
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="../documents/nodes_and_nodegraphs.html">
+                                Nodes and Graphs
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../documents/node_definitions.html">
+                                Node Definitions
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="../documents/documents.html">
+                                Documents
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="../documents/presentations.html">
+                                Presentations and Media
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                        data-bs-auto-close="outside">Reference</a>
+                    <ul class="dropdown-menu shadow">
+                        <li><a class="dropdown-item"
+                                href="../documents/definitions/definitions_by_group.html">Library
+                                (By Group)</a></li>
+                        <li><a class="dropdown-item"
+                                href="../documents/definitions/all_definitions.html">Library
+                                (All)</a></li>
+                        <li><a class="dropdown-item"
+                                href="../documents/definitions/library_glossary.html">Library
+                                Glossary</a></li>
+                        <li><a class="dropdown-item" href="https://materialx.org/docs/api/annotated.html"
+                                target="_blank"><img src="../documents/images/MaterialXLogo_200x155.png"
+                                    style="width:20px"> C++ API</a></li>
+
+                        <li class="dropend">
+                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
+                                Revisions</a>
+                            <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../documents/mtlx_1391_vs_1392.html">
+                                        1.39.1 vs 1.39.2</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1390_vs_1391.html">
+                                        1.39.0 vs 1.39.1</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1389_vs_1390.html">
+                                        1.38.9 vs 1.39.0</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1388_vs_1389.html">
+                                        1.38.8 vs 1.38.9</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1387_vs_1388.html">
+                                        1.38.7 vs 1.38.8</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1386_vs_1387.html">
+                                        1.38.6 vs 1.38.7</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1385_vs_1386.html">
+                                        1.38.5 vs 1.38.6</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1384_vs_1385.html">
+                                        1.38.4 vs 1.38.5</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1383_vs_1384.html">
+                                        1.38.3 vs 1.38.4</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1382_vs_1383.html">
+                                        1.38.2 vs 1.38.3</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1381_vs_1382.html">
+                                        1.38.1 vs 1.38.2</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1380_vs_1381.html">
+                                        1.38.0 vs 1.38.1</a></li>
+                                <li><a class="dropdown-item" href="../documents/mtlx_1380_vs_1390.html">
+                                        1.38.0 vs 1.39.0</a></li>
+                            </ul>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+                        <li>
+                            <a class="dropdown-item" href="../documents/using_library.html">
+                                <img src="../documents/images/info-circle.svg"> Library User Guide
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Interactive Learning</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../documents/python_MaterialX.html">Notebooks</a></li>
+                        <li><a class="dropdown-item" href="../documents/jupyter_example.html">Examples</a></li>
+                        <li><a class="dropdown-item" href="../documents/hosting.html">Hosting</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Design</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../documents/design.html">UX Design</a></li>
+                        <li><a class="dropdown-item" href="../documents/property_editor_ui.html">Property Editor UX</a></li>
+                        <li><a class="dropdown-item" href="https://guannan-kwok.github.io/assetLibrary/materialx/" target="_blank">Graphic Design</a></li>
+                        <li><a class="dropdown-item" href="../documents/implementation.html">Implementation</a></li>
+                        <li><a class="dropdown-item" href="../documents/build_site.html">Building The Site</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../documents/about.html" role="button">
+                        About
+                    </a>
+                </li>
+                <!--INDEX_ITEM-->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+  <!-- Section Information -->
+  <section class="py-0 px-0 g-0">
+    <div class="container-fluid p-4">
+      <!--Start-->
+<h2 id="building-this-site">Building This Site</h2>
+<p>This site is generated using the scripts provided in this folder.</p>
+<p>All reference content is generated procedurally based on information provided
+by a MaterialX distribution. The current minimal version requirement is 1.38.8.
+Reference content prior to this has been cached but can also be rebuilt using
+a provided script.</p>
+<p>The "core" scripts for site generation (as well as some static data content) reside in
+the <code>pymaterialx</code> folder.</p>
+<h3 id="content">Content</h3>
+<p>Learning content is provided as static content and / or is procedurally generated.
+Interactive content such as <code>Jupyter</code> notebooks are executed to generate results.</p>
+<p>Static is comprised of either <code>Markdown</code> or <code>HTML</code> files. 
+- All HTML content can assume usage of <code>Bootstrap</code>. The current version used is <code>5.3.1</code>. 
+- <code>Mermaid</code> is used for MaterialX node graph diagram generation (including <code>SVG</code> export). The version of used is <code>9</code>.
+- All other diagrams are created using <code>draw.io</code>. Log an issue as required for any desired changes.
+- Images can be converted to <code>webp</code> format to optimize image sizes for better website performance.
+- Rendered images such as "shader balls" have not been optimized to avoid possible artifacts.</p>
+<h3 id="build-requirements">Build Requirements</h3>
+<p>All scripts are written in Python. It is recommended to work using a virtual environment using <code>venv</code>. 
+With the following packages assumed to be installed:</p>
+<ul>
+<li><code>pip</code> : For package management. This is available when setting up a virtual environment. This can
+also be installed separately if desired.</li>
+<li><a href="https://pypi.org/project/MaterialX/" target="_blank">MaterialX</a>: The desired release version should be installed This can be a local builds or pre-release versions to allow for increment site
+update between / before official releases.</li>
+<li><a href="https://pypi.org/project/Markdown/" target="_blank">Markdown</a>: For conversion from Markdown to HTML.</li>
+</ul>
+<p>Some <code>Jupyter</code> notebooks require additional packages. They should be installed as needed (e.g. <code>pxr</code> for the
+<code>OpenUSD</code> notebook). Dependencies are explicitly mentioned in each notebook.</p>
+<p>Image optimization is not scripted. Conversion us performed using <code>cwebp</code> from the <a href="https://developers.google.com/speed/webp/download" target="_blank">WebP library</a>. </p>
+<h3 id="script-breakdown">Script Breakdown</h3>
+<ul>
+<li>
+<p><code>buid_prep.sh</code> : Optional script to install (using <code>pip</code>) and copy over MaterialX Python libraries to publishing area under <code>pymaterialx</code>.</p>
+</li>
+<li>
+<p><code>build_compare</code> : Just runs the version comparison between the standard node library. Requires current
+version to copied under <code>pymaterialx</code>.</p>
+</li>
+<li>
+<p><code>build_render.sh</code> : Creates a sample node graph for every node definition which has an implementation. Uses a renderer to generate all sample swatches for reference pages. The default is to use the Python based OpenGL renderer which performs the equivalent logic to the MaterialX renderer used for test suite rendering. This script can be modified to use other renders. The output is expected to be squire. The default size is 512x512 png files.</p>
+</li>
+<li>
+<p><code>build_docs.sh</code> Calls <code>build_compare</code> to build comparisons. Prepares all internal content for publishing. This includes using the templated component files found in the utilities folder. These should not be modified for branches / forks without notifying the authors of this site. The main scripts used are:</p>
+<ul>
+<li>
+<p><code>mxdoclib.py</code> : A extensively enhanced version of the simple example script provided as part of the MaterialX distribution. Generates all dynamica content found in the top level <code>documents</code> folder. That folder's contents should never be directly modified as it will be replaced via this script. Assumes that all swatches have been generated before hand. All Mermaid diagrams are referenced but not converted to static SVG as this process is very slow for hundreds of diagrams.</p>
+</li>
+<li>
+<p><code>mdhtml.py</code> : Performs publishing of Markdown / HTML content to final HTML content. Requires the <code>Markdown</code> package to be installed. </p>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<div class="mermaid">    
+    graph BT;
+        subgraph DarkGreyContainer ["Build Logic"]
+
+            build_prep -->|setup| python[(MateraiX Python Package)] 
+            python -->|used by| build_render 
+            build_render -->|generates| defs[(nodedef docs and renders)]
+            python -->|used by| build_compare
+            python -->|used by| mxdoc[mxdoclib.py] 
+            defs[(Definition MTLX and Renderings)] -->|referenced by| mxdoc
+            build_compare -->|generate| compare_md[(Comparison Markdown)]
+            build_docs ==>|calls| mxdoc[mxdoclib.py] --> reference[(Reference Documents)] 
+            compare_md ==>|referenced by| build_docs 
+            build_docs ==>|calls| mdhtml[mdhtml.py] ==> compare_html[(Comparison Documents)]
+            top_md[(Internal Documents)] ==>|referenced by| build_docs ==>|calls| mdhtml[mdhtml.py] --> main[(Main documents)] 
+
+            %% Styling nodes %%
+            classDef process fill:#bbffbb,stroke:#00000,stroke-width:2px,color:#000;
+            classDef data fill:#d9f7d0,stroke:#000000,stroke-width:2px,color:#000;
+            classDef script fill:#ddeeff,stroke:#000000,stroke-width:2px,color:#000;
+            classDef document fill:#dddddd,stroke:#000000,stroke-width:2px,color:#000;
+
+            %% Apply styles %%
+            class build_prep,build_render,build_compare,build_docs process;
+            class mxdoc,mdhtml script;
+            class top_md,top_html,python,defs,compare_md,reference,compare_html,data,main document;
+        end
+</div>
+
+<hr />
+<!--End-->
+<script type="module">mermaid.initialize({ startOnLoad: true });</script>
+
+    </div>
+  </section>
+
+  <footer class="bg-dark-subtle footer text-white py-2 pt-2" data-bs-theme="dark">
+  <div class="container">
+    <ul class="social-icons">
+      <button class="btn btn-outline" type="button">
+        <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><b class="fa-brands fa-github fa-2x"
+            style="color: #ffffff;"></b></a>
+      </button>
+      <button class="btn btn-outline " type="button">
+        <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><b class="fa-brands fa-linkedin-in fa-2x"
+            style="color: #0082ca;"></b></a>
+      </button>
+    </ul>
+    <p>
+      <a class="bg-dark p-2 right" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+          <img alt="Creative Commons License" style="border-width:0"
+              src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+              <a href="https://kwokcb.github.io/nanmuconsulting/" target="_blank">
+      &copy; 2022-2024 NanMu Consulting.</a>
+    </p>      
+  </div>
+</footer>
+
+
+</body>
+
+</html>

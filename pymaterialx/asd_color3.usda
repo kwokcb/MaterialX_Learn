@@ -1,0 +1,16 @@
+#usda 1.0
+
+def "Root"
+{
+    def Material "Material" (
+        prepend references = @asd_color3.mtlx@
+    )
+    {
+    }
+
+    def Xform "mesh"
+    {
+        rel material:binding = </Root/Material>
+    }
+}
+
