@@ -550,6 +550,8 @@ def printNodeDefs(doc, opts, nodedict, f, compareLibDict):
                         break
                     curVersion = libVersion                                    
 
+            if len(implName) == 0:
+                implName = '1.38.0 or earlier'
             if len(implName) > 0:
                 #print('------ library version is', implName, ' for def: ', nd.getName())
                 print('<details open class="p-0">'
@@ -1518,24 +1520,23 @@ def main():
     major, minor, patch = mx.getVersionIntegers()
     print('Build dict for: major %d minor %d patch %d' % (major, minor, patch))
     # Look for previous version libraries
-    if patch == 0:
-        curPatch = 9
-        minor = minor - 1
-    else:
-        curPatch = patch-1
     comparePath = mx.FilePath(opts.compareLib)
     compareLibDict = dict()
     # Add the current version
     compareLibDict[mx.getVersionString()] = doc
-    while curPatch >= 0:
-        prevVersion = '%d.%d.%d' % (major, minor, curPatch)
+    while minor >= 38:
+        if patch == 0:
+            patch = 9
+            minor = minor - 1
+        else:
+            patch = patch - 1
+        prevVersion = '%d.%d.%d' % (major, minor, patch)
         compareLibPath = comparePath / ("libraries_" + prevVersion)
         if compareLibPath.exists():
             compareDoc = mx.createDocument()
             readDocuments(compareLibPath.asString(), compareDoc)
             compareLibDict[prevVersion] = compareDoc 
             print('Add comparison version %s from %s' % (prevVersion, compareLibPath.asString()))
-        curPatch = curPatch - 1
 
     nodedict = getNodeDictionary(doc)
     printNodeDefs(doc, opts, nodedict, f, compareLibDict) 
