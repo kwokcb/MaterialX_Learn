@@ -30,4 +30,6 @@ python mdhtml.py ../documents_internal/node_definitions.html -t template.html --
 python mdhtml.py ../documents_internal/gltfViewer.html -t template.html --top ".." -o ../documents -of gltfViewer.html
 python mdhtml.py ../documents_internal/property_editor_ui.md -t template.html --top ".." -o ../documents -of property_editor_ui.html
 
+python mdhtml.py ./README.md -t template.html --top ".." -o ../documents -of build_site.html -cm True
+
 rm -rf ./mtlxutils

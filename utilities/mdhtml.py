@@ -1,10 +1,15 @@
-# Can also do this using:
+# Can also do this using::
 # python -m markdown <file>.md -f <file>.html
 import markdown
-import sys, os, argparse, shutil
+import sys
+import re
+import os
+import argparse
+import shutil
 
 def convertToHtml(inputFileName, outputFileName, templateFileName=None, iframe=False, topFolder="..",
-                  docFolder=".", footerFileName='footer.html', navFileName='navigation.html', removeMermaid=False):
+                  docFolder=".", footerFileName='footer.html', navFileName='navigation.html', removeMermaid=False,
+                  convertMermaid=False):
 
     f = None
     html = ''
@@ -13,7 +18,12 @@ def convertToHtml(inputFileName, outputFileName, templateFileName=None, iframe=F
         f = open(inputFileName, 'r', encoding="utf-8")
         text = f.read()
         if inputFileName.endswith('.md'):
+            if convertMermaid:
+                text = re.sub( r'```mermaid(.*?)```', r'<div class="mermaid">\1</div>', text, flags=re.DOTALL )
             html = markdown.markdown(text, tab_length=2, extensions=['extra', 'md_in_html', 'codehilite', 'tables', 'toc'])
+            if convertMermaid:
+                mermaidScript = '\n<script type="module">mermaid.initialize({ startOnLoad: true });</script>\n'
+                html = html + mermaidScript
         else:
             html = ''
             # Read a line at a time from the html and print
@@ -130,6 +140,7 @@ def main():
     # Add doc folder
     parser.add_argument('-d', '--doc', dest='docfolder', default=".", help='Document foloder. Default is .' )
     parser.add_argument('-r', '--removeMermaid', dest='removeMermaid', type=bool, default=False, help='Remove Mermaid script from the HTML file. Default is False' )
+    parser.add_argument('-cm', '--convertMermaid', dest='convertMermaid', type=bool, default=False, help='Convert Markdown mermaid to HTML Mermaid reference. Default is False' )
     opts = parser.parse_args()
 
     extensionCheck = '.md'
@@ -179,7 +190,7 @@ def main():
     for filePair in filePairs:
         print('- Convert %s to %s' % (filePair[0], filePair[1]))
         convertToHtml(filePair[0], filePair[1], opts.template, opts.iframe, opts.topfolder, opts.docfolder, 'footer.html',
-                      'navigation.html',  opts.removeMermaid)
+                      'navigation.html',  opts.removeMermaid, opts.convertMermaid)
 
 if __name__ == '__main__':
     main()
