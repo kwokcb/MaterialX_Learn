@@ -4838,7 +4838,7 @@ graph TB
 * *Type*: float
 * *Group*: procedural2d
 * *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
+* *Doc*:    This node computes whether a point lies within a circle defined by a `center` and a `radius`. The formulas are:  1. Subtract the center from the texcoord:    $$    delta = texcoord - center    $$  2. Compute the square of the distance:    $$    distSquared = dot(delta, delta)    $$  3. Compute the square of the radius:    $$    radiusSquared = radius * radius    $$  4. Compare the squared distance with the squared radius:    $$    inCircle =    \begin{cases}    0, & if & distSquared \gt radiusSquared \\    1, & if & distSquared \leq radiusSquared    \end{cases}    $$  5. The final output:    $$    out = inCircle    $$   
 * *Nodegraph*: NG_circle_float
 
 
