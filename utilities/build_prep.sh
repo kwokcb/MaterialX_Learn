@@ -11,7 +11,11 @@ pushd "$PYTHON_PACKAGE_LOCATION"
 pip install .
 popd
 
-echo "--------- Copying Python files"
-rm -rf ../../pymaterialx/python
-cp -R "$PYTHON_PACKAGE_LOCATION" ../../pymaterialx/
+echo "--------- Copying Python files to ../pymaterialx/python"
+rm -rf ../pymaterialx/python
+cp -R "$PYTHON_PACKAGE_LOCATION" ../pymaterialx/
+rm -rf ../pymaterialx/python/MaterialX.egg-info/
+rm -rf ../pymaterialx/python/build/
+rm -rf ../pymaterialx/python/dist/
+echo "--------- Finished copying Python files to ../pymaterialx/python"
 
