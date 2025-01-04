@@ -20,19 +20,11 @@
   </style>
 
   <link rel="icon" href="../../documents/images/logo3d_icon.png" type="image/x-icon" />
-  <!--
-  <link rel="icon" href="../../documents/images/logo3d_2_small.png" type="image/x-icon" />
-  -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.0/css/brands.min.css"> 
 
   <link rel="stylesheet" href="../../documents/css/style.css">
-
-  <!-- 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> -->
 
   <!--FILL_CONTENT_STYLE-->
 
@@ -168,21 +160,6 @@
                     </ul>
                 </li>
 
-                <!-- 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">Utilities</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../../javascript/node_editor/index_out.html">Node Graph Editor</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/shader_editor/dist/index_out.html">Shader Graph Editor</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/shader_utilities/dist/index_out.html">Shader Utilities</a></li>
-                        <li><a class="dropdown-item" href="../../javascript/graphing_utilities.html">Node Graph Utilities</a></li>
-                        <li><a class="dropdown-item" href="../../documents/mermaidChecker.html">Graph Visualizer</a></li>
-                        <li><a class="dropdown-item" href="../../documents/gltfViewer.html">glTF Model Viewer</a></li>
-                        <li><a class="dropdown-item" href="../../documents/mtlx_utilities.html">Python Modules</a></li>
-                    </ul>
-                </li>
-                -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Interactive Learning</a>
@@ -194,18 +171,6 @@
                     </ul>
                 </li>
 
-                <!--
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">Workflows</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../../documents/workflow_usd.html">USD and MaterialX</a></li>
-                        <li><a class="dropdown-item" href="../../documents/workflow_gltf.html">glTF and MaterialX</a></li>
-                        <li><a class="dropdown-item" href="../../documents/workflow_ocio.html">OCIO and MaterialX</a></li>
-                    </ul>
-                </li>
-                -->                     
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Design</a>
@@ -214,6 +179,7 @@
                         <li><a class="dropdown-item" href="../../documents/property_editor_ui.html">Property Editor UX</a></li>
                         <li><a class="dropdown-item" href="https://guannan-kwok.github.io/assetLibrary/materialx/" target="_blank">Graphic Design</a></li>
                         <li><a class="dropdown-item" href="../../documents/implementation.html">Implementation</a></li>
+                        <li><a class="dropdown-item" href="../../documents/build_site.html">Building The Site</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -355,6 +321,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="bump.html">bump</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="geomcolor.html">geomcolor</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="geompropvalue.html">geompropvalue</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="geompropvalueuniform.html">geompropvalueuniform</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="normal.html">normal</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="position.html">position</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="tangent.html">tangent</a>
@@ -533,7 +500,9 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hexagon.html">hexagon</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="line.html">line</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="noise2d.html">noise2d</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ramp.html">ramp</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ramp4.html">ramp4</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ramp_gradient.html">ramp_gradient</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ramplr.html">ramplr</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ramptb.html">ramptb</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="splitlr.html">splitlr</a>
@@ -615,7 +584,7 @@
 <b><a id="disney_brdf_2012" class="ms-2 mb-0">
 Category: disney_brdf_2012
 </a></b>
-<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_disney_brdf_2012_surface</summary>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_disney_brdf_2012_surface <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.38.0 or earlier</button></summary>
 <div class="m-0 mt-0">
 <div class="row">
 <div class="col-12">
@@ -915,26 +884,28 @@ Category: disney_brdf_2012
        </div>
    </div>
 
-  <footer class="bg-dark-subtle footer text-white py-2 pt-2" data-bs-theme="dark">
-    <div class="container">
-      <ul class="social-icons">
-        <button class="btn btn-outline" type="button">
-          <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><b class="fa-brands fa-github fa-2x"
-              style="color: #ffffff;"></b></a>
-        </button>
-        <button class="btn btn-outline " type="button">
-          <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><b class="fa-brands fa-linkedin-in fa-2x"
-              style="color: #0082ca;"></b></a>
-        </button>
-      </ul>
-      <p>
-        <a class="bg-dark p-2 right" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-            <img alt="Creative Commons License" style="border-width:0"
-                src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
-        &copy; 2022-2024 NanMu Consulting.</a>
-      </p>      
-    </div>
-  </footer><script>
+<footer class="bg-dark-subtle footer text-white py-2 pt-2" data-bs-theme="dark">
+  <div class="container">
+    <ul class="social-icons">
+      <button class="btn btn-outline" type="button">
+        <a href="https://github.com/kwokcb/MaterialX_Learn" target="_blank"><b class="fa-brands fa-github fa-2x"
+            style="color: #ffffff;"></b></a>
+      </button>
+      <button class="btn btn-outline " type="button">
+        <a href="https://www.linkedin.com/in/bernard-kwok/" target="_blank"><b class="fa-brands fa-linkedin-in fa-2x"
+            style="color: #0082ca;"></b></a>
+      </button>
+    </ul>
+    <p>
+      <a class="bg-dark p-2 right" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+          <img alt="Creative Commons License" style="border-width:0"
+              src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+              <a href="https://kwokcb.github.io/nanmuconsulting/" target="_blank">
+      &copy; 2022-2024 NanMu Consulting.</a>
+    </p>      
+  </div>
+</footer>
+<script>
   var searchInput = document.getElementById("searchTOC")
   if (searchInput) {
    searchInput.addEventListener("keypress", filterOnEnter);

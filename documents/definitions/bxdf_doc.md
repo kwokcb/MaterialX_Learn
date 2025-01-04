@@ -5,7 +5,7 @@
 * [UsdTransform2d](#node-UsdTransform2d) 
 ---------
 ### Node Group: pbr
-* [LamaAdd](#node-LamaAdd) [LamaConductor](#node-LamaConductor) [LamaDielectric](#node-LamaDielectric) [LamaDiffuse](#node-LamaDiffuse) [LamaEmission](#node-LamaEmission) [LamaGeneralizedSchlick](#node-LamaGeneralizedSchlick) [LamaIridescence](#node-LamaIridescence) [LamaLayer](#node-LamaLayer) [LamaMix](#node-LamaMix) [LamaSSS](#node-LamaSSS) [LamaSheen](#node-LamaSheen) [LamaSurface](#node-LamaSurface) [LamaTranslucent](#node-LamaTranslucent) [UsdPreviewSurface](#node-UsdPreviewSurface) [disney_principled](#node-disney_principled) [gltf_pbr](#node-gltf_pbr) [open_pbr_anisotropy](#node-open_pbr_anisotropy) [open_pbr_surface](#node-open_pbr_surface) [standard_surface](#node-standard_surface) 
+* [LamaAdd](#node-LamaAdd) [LamaConductor](#node-LamaConductor) [LamaDielectric](#node-LamaDielectric) [LamaDiffuse](#node-LamaDiffuse) [LamaEmission](#node-LamaEmission) [LamaGeneralizedSchlick](#node-LamaGeneralizedSchlick) [LamaIridescence](#node-LamaIridescence) [LamaLayer](#node-LamaLayer) [LamaMix](#node-LamaMix) [LamaSSS](#node-LamaSSS) [LamaSheen](#node-LamaSheen) [LamaSurface](#node-LamaSurface) [LamaTranslucent](#node-LamaTranslucent) [UsdPreviewSurface](#node-UsdPreviewSurface) [disney_brdf_2012](#node-disney_brdf_2012) [disney_bsdf_2015](#node-disney_bsdf_2015) [disney_principled](#node-disney_principled) [gltf_pbr](#node-gltf_pbr) [open_pbr_anisotropy](#node-open_pbr_anisotropy) [open_pbr_surface](#node-open_pbr_surface) [standard_surface](#node-standard_surface) 
 ---------
 ### Node Group: texture2d
 * [UsdUVTexture](#node-UsdUVTexture) [gltf_colorimage](#node-gltf_colorimage) [gltf_image](#node-gltf_image) [gltf_iridescence_thickness](#node-gltf_iridescence_thickness) [gltf_normalmap](#node-gltf_normalmap) 
@@ -14,6 +14,62 @@
 * [open_pbr_surface_to_standard_surface](#node-open_pbr_surface_to_standard_surface) [standard_surface_to_UsdPreviewSurface](#node-standard_surface_to_UsdPreviewSurface) [standard_surface_to_gltf_pbr](#node-standard_surface_to_gltf_pbr) [standard_surface_to_open_pbr_surface](#node-standard_surface_to_open_pbr_surface) 
 ---------
  
+### Category: *disney_brdf_2012*
+<details open><summary>ND_disney_brdf_2012_surface</summary>
+<p>
+ 
+* *Nodedef*: ND_disney_brdf_2012_surface
+* *Type*: surfaceshader
+* *Group*: pbr
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **baseColor** | color3 | 0.16, 0.16, 0.16 |  |  |  |  |  |  |  |  |  |  |
+| **metallic** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **subsurface** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **specular** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **roughness** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **specularTint** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **anisotropic** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **sheen** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **sheenTint** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **clearcoat** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **clearcoatGloss** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *disney_bsdf_2015*
+<details open><summary>ND_disney_bsdf_2015_surface</summary>
+<p>
+ 
+* *Nodedef*: ND_disney_bsdf_2015_surface
+* *Type*: surfaceshader
+* *Group*: pbr
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **baseColor** | color3 | 0.16, 0.16, 0.16 |  |  |  |  |  |  |  |  |  |  |
+| **metallic** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **roughness** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **anisotropic** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **specularTint** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **sheen** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **sheenTint** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **clearcoat** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **clearcoatGloss** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **specTrans** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **ior** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
+| **scatterDistance** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **flatness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **diffTrans** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **thin** | boolean | False |  |  |  |  |  |  |  |  |  | true |
+| *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *disney_principled*
 <details open><summary>ND_disney_principled</summary>
 <p>
