@@ -31,6 +31,19 @@
   <title>MaterialX Elements</title>
   <link rel="icon" type="images" href="../../documents/images/logo3d_icon.png" class="img-fluid">
 
+  <script type="text/javascript" async>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$']], // Enable single dollar signs for inline math
+        displayMath: [['$$', '$$']] // Double dollar signs for block math
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'], // Avoid parsing code blocks
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 </head>
 <body class="min-vh-100">
 
@@ -596,6 +609,7 @@ Category: circle
 <div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> float</button></div>
 <div class="col-sm card-text"> <b>Version : </b>1.0  </div>
 </div>
+<div class="row"><div class="col card-text"><b>Description :</b>    This node computes whether a point lies within a circle defined by a `center` and a `radius`. The formulas are:  1. Subtract the center from the texcoord:    $$    delta = texcoord - center    $$  2. Compute the square of the distance:    $$    distSquared = dot(delta, delta)    $$  3. Compute the square of the radius:    $$    radiusSquared = radius * radius    $$  4. Compare the squared distance with the squared radius:    $$    inCircle =    \begin{cases}    0, & if & distSquared \gt radiusSquared \\    1, & if & distSquared \leq radiusSquared    \end{cases}    $$  5. The final output:    $$    out = inCircle    $$   </div></div>
 <div class="row">
 <div class="col-md-5 p-2">
 <img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_circle_float_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_circle_float_out_genglsl.png style="min-width:64px">
