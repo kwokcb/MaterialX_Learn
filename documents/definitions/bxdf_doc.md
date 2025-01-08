@@ -2197,7 +2197,7 @@ graph TB
 * *Nodedef*: ND_UsdPreviewSurface_surfaceshader
 * *Type*: surfaceshader
 * *Group*: pbr
-* *Version*: 2.5. Is default: True
+* *Version*: 2.6. Is default: True
 * *Doc*: UsdPreviewSurface shader
 * *Nodegraph*: IMP_UsdPreviewSurface_surfaceshader
 
@@ -2213,6 +2213,7 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[diffuse_bsdf_weight]
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[diffuse_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[transmission_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount[transmission_mix_amount]
     IMP_UsdPreviewSurface_surfaceshader_transmission_mix[transmission_mix]
     IMP_UsdPreviewSurface_surfaceshader_specular_roughness[specular_roughness]
     IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[specular_bsdf1]
@@ -2237,6 +2238,10 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_emission_edf[emission_edf]
     style IMP_UsdPreviewSurface_surfaceshader_cutout_opacity  fill:#C72, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_cutout_opacity{cutout_opacity}
+    style IMP_UsdPreviewSurface_surfaceshader_opacity_presence  fill:#C72, color:#FFF
+    IMP_UsdPreviewSurface_surfaceshader_opacity_presence{opacity_presence}
+    style IMP_UsdPreviewSurface_surfaceshader_opacity_switch  fill:#C72, color:#FFF
+    IMP_UsdPreviewSurface_surfaceshader_opacity_switch{opacity_switch}
     IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface_constructor]
     style IMP_UsdPreviewSurface_surfaceshader_out  fill:#0C0, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_out([out])
@@ -2250,6 +2255,8 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_diffuseColor([diffuseColor])
     style IMP_UsdPreviewSurface_surfaceshader_ior  fill:#09D, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_ior([ior])
+    style IMP_UsdPreviewSurface_surfaceshader_opacityThreshold  fill:#09D, color:#FFF
+    IMP_UsdPreviewSurface_surfaceshader_opacityThreshold([opacityThreshold])
     style IMP_UsdPreviewSurface_surfaceshader_opacity  fill:#09D, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_opacity([opacity])
     style IMP_UsdPreviewSurface_surfaceshader_roughness  fill:#09D, color:#FFF
@@ -2262,8 +2269,8 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_clearcoat([clearcoat])
     style IMP_UsdPreviewSurface_surfaceshader_emissiveColor  fill:#09D, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_emissiveColor([emissiveColor])
-    style IMP_UsdPreviewSurface_surfaceshader_opacityThreshold  fill:#09D, color:#FFF
-    IMP_UsdPreviewSurface_surfaceshader_opacityThreshold([opacityThreshold])
+    style IMP_UsdPreviewSurface_surfaceshader_opacityMode  fill:#09D, color:#FFF
+    IMP_UsdPreviewSurface_surfaceshader_opacityMode([opacityMode])
     end
     IMP_UsdPreviewSurface_surfaceshader_useSpecularWorkflow --"in"--> IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float
     IMP_UsdPreviewSurface_surfaceshader_normal --"in1"--> IMP_UsdPreviewSurface_surfaceshader_scale_normal
@@ -2277,9 +2284,11 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_surface_normal --"normal"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf
     IMP_UsdPreviewSurface_surfaceshader_ior --"ior"--> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf
     IMP_UsdPreviewSurface_surfaceshader_surface_normal --"normal"--> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf
+    IMP_UsdPreviewSurface_surfaceshader_opacityThreshold --"value1"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount
+    IMP_UsdPreviewSurface_surfaceshader_opacity --"in2"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf --"fg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
     IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf --"bg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
-    IMP_UsdPreviewSurface_surfaceshader_opacity --"mix"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
+    IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount --"mix"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
     IMP_UsdPreviewSurface_surfaceshader_roughness --"roughness"--> IMP_UsdPreviewSurface_surfaceshader_specular_roughness
     IMP_UsdPreviewSurface_surfaceshader_specularColor --"color0"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1
     IMP_UsdPreviewSurface_surfaceshader_specular_roughness --"roughness"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1
@@ -2328,9 +2337,14 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_emissiveColor --"color"--> IMP_UsdPreviewSurface_surfaceshader_emission_edf
     IMP_UsdPreviewSurface_surfaceshader_opacity --"value1"--> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity
     IMP_UsdPreviewSurface_surfaceshader_opacityThreshold --"value2"--> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity
+    IMP_UsdPreviewSurface_surfaceshader_opacity --"value1"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
+    IMP_UsdPreviewSurface_surfaceshader_cutout_opacity --"in2"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
+    IMP_UsdPreviewSurface_surfaceshader_cutout_opacity --"in1"--> IMP_UsdPreviewSurface_surfaceshader_opacity_switch
+    IMP_UsdPreviewSurface_surfaceshader_opacity_presence --"in2"--> IMP_UsdPreviewSurface_surfaceshader_opacity_switch
+    IMP_UsdPreviewSurface_surfaceshader_opacityMode --"which"--> IMP_UsdPreviewSurface_surfaceshader_opacity_switch
     IMP_UsdPreviewSurface_surfaceshader_coat_bsdf --"bsdf"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor
     IMP_UsdPreviewSurface_surfaceshader_emission_edf --"edf"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor
-    IMP_UsdPreviewSurface_surfaceshader_cutout_opacity --"opacity"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor
+    IMP_UsdPreviewSurface_surfaceshader_opacity_switch --"opacity"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor
     IMP_UsdPreviewSurface_surfaceshader_surface_constructor --> IMP_UsdPreviewSurface_surfaceshader_out
 ```
  
@@ -2346,6 +2360,7 @@ graph TB
 | **clearcoat** | float | 0.0 | Clearcoat | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **clearcoatRoughness** | float | 0.01 | Clearcoat Roughness | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **opacity** | float | 1.0 | Opacity | 0.0 | 1.0 |  |  |  |  |  |  |  |
+| **opacityMode** | integer | 0 | Opacity Mode |  |  |  |  |  |  |  |  |  |
 | **opacityThreshold** | float | 0.0 | Opacity Threshold | 0.0 | 1.0 |  |  |  |  |  |  |  |
 | **ior** | float | 1.5 | Index of Refraction | 0.0 |  | 1.0 | 3.0 |  |  |  |  |  |
 | **normal** | vector3 | 0, 0, 1 | Normal | -1.0,-1.0,-1.0 | 1.0,1.0,1.0 |  |  | 0.01 |  |  |  |  |

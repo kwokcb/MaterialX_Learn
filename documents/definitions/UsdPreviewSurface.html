@@ -607,7 +607,7 @@ Category: UsdPreviewSurface
 <div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">bxdf</button></div>
 <div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button></div>
 <div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></div>
-<div class="col-sm card-text"> <b>Version : </b>2.5 (default) </div>
+<div class="col-sm card-text"> <b>Version : </b>2.6 (default) </div>
 </div>
 <div class="row"><div class="col card-text"><b>Description :</b> UsdPreviewSurface shader</div></div>
 <div class="row">
@@ -637,6 +637,8 @@ Category: UsdPreviewSurface
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_UsdPreviewSurface_surfaceshader_clearcoatRoughness" role="tab" aria-controls="pills-ND_UsdPreviewSurface_surfaceshader_clearcoatRoughness" aria-selected="true"  onclick="document.getElementById('ND_UsdPreviewSurface_surfaceshader_menu').textContent = this.textContent;" >clearcoatRoughness</div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_UsdPreviewSurface_surfaceshader_opacity" role="tab" aria-controls="pills-ND_UsdPreviewSurface_surfaceshader_opacity" aria-selected="true"  onclick="document.getElementById('ND_UsdPreviewSurface_surfaceshader_menu').textContent = this.textContent;" >opacity</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_UsdPreviewSurface_surfaceshader_opacityMode" role="tab" aria-controls="pills-ND_UsdPreviewSurface_surfaceshader_opacityMode" aria-selected="true"  onclick="document.getElementById('ND_UsdPreviewSurface_surfaceshader_menu').textContent = this.textContent;" >opacityMode</div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_UsdPreviewSurface_surfaceshader_opacityThreshold" role="tab" aria-controls="pills-ND_UsdPreviewSurface_surfaceshader_opacityThreshold" aria-selected="true"  onclick="document.getElementById('ND_UsdPreviewSurface_surfaceshader_menu').textContent = this.textContent;" >opacityThreshold</div></li>
 <li class="nav-item dropdown-item" role="presentation">
@@ -1056,6 +1058,52 @@ Category: UsdPreviewSurface
  </div>
 </div>
 <div class="tab-content">
+ <div class="tab-pane " id="pills-ND_UsdPreviewSurface_surfaceshader_opacityMode"
+  role="tabpanel" aria-labelledby="pills-ND_UsdPreviewSurface_surfaceshader_opacityMode-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_UsdPreviewSurface_surfaceshader_opacityMode" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Possible Values: </label>
+      <div class="col-2">
+        <select class="form-select form-select-sm" style="font-size:90%" size="2" disabled>
+          <option>transparent</option>
+          <option>presence</option>
+       </select>
+      </div>
+      <div class="col-2">
+        <select class="form-select form-select-sm" style="font-size:90%" size="2" disabled>
+       <option>0 </option>
+       <option>1 </option>
+        </select>
+       </div>
+  </div>
+<div class="form-group row g-1">
+<label class="col-2 col-form-label col-form-label-sm">UI Name | Grp. | Adv.</label>
+ <div class="col-4">
+  <input type="text" class="form-control form-control-sm" value="Opacity Mode" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="none" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="false" disabled>
+ </div>
+</div>
+ </div>
+</div>
+<div class="tab-content">
  <div class="tab-pane " id="pills-ND_UsdPreviewSurface_surfaceshader_opacityThreshold"
   role="tabpanel" aria-labelledby="pills-ND_UsdPreviewSurface_surfaceshader_opacityThreshold-tab" tabindex="0">
   <div class="form-group row g-1">
@@ -1291,6 +1339,7 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[diffuse_bsdf_weight]
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[diffuse_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[transmission_bsdf]
+    IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount[transmission_mix_amount]
     IMP_UsdPreviewSurface_surfaceshader_transmission_mix[transmission_mix]
     IMP_UsdPreviewSurface_surfaceshader_specular_roughness[specular_roughness]
     IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[specular_bsdf1]
@@ -1315,6 +1364,10 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_emission_edf[emission_edf]
     style IMP_UsdPreviewSurface_surfaceshader_cutout_opacity  fill:#C72, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_cutout_opacity{cutout_opacity}
+    style IMP_UsdPreviewSurface_surfaceshader_opacity_presence  fill:#C72, color:#FFF
+    IMP_UsdPreviewSurface_surfaceshader_opacity_presence{opacity_presence}
+    style IMP_UsdPreviewSurface_surfaceshader_opacity_switch  fill:#C72, color:#FFF
+    IMP_UsdPreviewSurface_surfaceshader_opacity_switch{opacity_switch}
     IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface_constructor]
     style IMP_UsdPreviewSurface_surfaceshader_out  fill:#0C0, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_out([out])
@@ -1328,6 +1381,8 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_diffuseColor([diffuseColor])
     style IMP_UsdPreviewSurface_surfaceshader_ior  fill:#09D, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_ior([ior])
+    style IMP_UsdPreviewSurface_surfaceshader_opacityThreshold  fill:#09D, color:#FFF
+    IMP_UsdPreviewSurface_surfaceshader_opacityThreshold([opacityThreshold])
     style IMP_UsdPreviewSurface_surfaceshader_opacity  fill:#09D, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_opacity([opacity])
     style IMP_UsdPreviewSurface_surfaceshader_roughness  fill:#09D, color:#FFF
@@ -1340,8 +1395,8 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_clearcoat([clearcoat])
     style IMP_UsdPreviewSurface_surfaceshader_emissiveColor  fill:#09D, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_emissiveColor([emissiveColor])
-    style IMP_UsdPreviewSurface_surfaceshader_opacityThreshold  fill:#09D, color:#FFF
-    IMP_UsdPreviewSurface_surfaceshader_opacityThreshold([opacityThreshold])
+    style IMP_UsdPreviewSurface_surfaceshader_opacityMode  fill:#09D, color:#FFF
+    IMP_UsdPreviewSurface_surfaceshader_opacityMode([opacityMode])
     end
     IMP_UsdPreviewSurface_surfaceshader_useSpecularWorkflow --"in"--> IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float
     IMP_UsdPreviewSurface_surfaceshader_normal --"in1"--> IMP_UsdPreviewSurface_surfaceshader_scale_normal
@@ -1355,9 +1410,11 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_surface_normal --"normal"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf
     IMP_UsdPreviewSurface_surfaceshader_ior --"ior"--> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf
     IMP_UsdPreviewSurface_surfaceshader_surface_normal --"normal"--> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf
+    IMP_UsdPreviewSurface_surfaceshader_opacityThreshold --"value1"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount
+    IMP_UsdPreviewSurface_surfaceshader_opacity --"in2"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf --"fg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
     IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf --"bg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
-    IMP_UsdPreviewSurface_surfaceshader_opacity --"mix"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
+    IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount --"mix"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
     IMP_UsdPreviewSurface_surfaceshader_roughness --"roughness"--> IMP_UsdPreviewSurface_surfaceshader_specular_roughness
     IMP_UsdPreviewSurface_surfaceshader_specularColor --"color0"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1
     IMP_UsdPreviewSurface_surfaceshader_specular_roughness --"roughness"--> IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1
@@ -1406,9 +1463,14 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_emissiveColor --"color"--> IMP_UsdPreviewSurface_surfaceshader_emission_edf
     IMP_UsdPreviewSurface_surfaceshader_opacity --"value1"--> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity
     IMP_UsdPreviewSurface_surfaceshader_opacityThreshold --"value2"--> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity
+    IMP_UsdPreviewSurface_surfaceshader_opacity --"value1"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
+    IMP_UsdPreviewSurface_surfaceshader_cutout_opacity --"in2"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
+    IMP_UsdPreviewSurface_surfaceshader_cutout_opacity --"in1"--> IMP_UsdPreviewSurface_surfaceshader_opacity_switch
+    IMP_UsdPreviewSurface_surfaceshader_opacity_presence --"in2"--> IMP_UsdPreviewSurface_surfaceshader_opacity_switch
+    IMP_UsdPreviewSurface_surfaceshader_opacityMode --"which"--> IMP_UsdPreviewSurface_surfaceshader_opacity_switch
     IMP_UsdPreviewSurface_surfaceshader_coat_bsdf --"bsdf"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor
     IMP_UsdPreviewSurface_surfaceshader_emission_edf --"edf"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor
-    IMP_UsdPreviewSurface_surfaceshader_cutout_opacity --"opacity"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor
+    IMP_UsdPreviewSurface_surfaceshader_opacity_switch --"opacity"--> IMP_UsdPreviewSurface_surfaceshader_surface_constructor
     IMP_UsdPreviewSurface_surfaceshader_surface_constructor --> IMP_UsdPreviewSurface_surfaceshader_out
 
 
