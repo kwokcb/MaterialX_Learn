@@ -5,7 +5,7 @@
 * [UsdTransform2d](#node-UsdTransform2d) 
 ---------
 ### Node Group: pbr
-* [LamaAdd](#node-LamaAdd) [LamaConductor](#node-LamaConductor) [LamaDielectric](#node-LamaDielectric) [LamaDiffuse](#node-LamaDiffuse) [LamaEmission](#node-LamaEmission) [LamaGeneralizedSchlick](#node-LamaGeneralizedSchlick) [LamaIridescence](#node-LamaIridescence) [LamaLayer](#node-LamaLayer) [LamaMix](#node-LamaMix) [LamaSSS](#node-LamaSSS) [LamaSheen](#node-LamaSheen) [LamaSurface](#node-LamaSurface) [LamaTranslucent](#node-LamaTranslucent) [UsdPreviewSurface](#node-UsdPreviewSurface) [disney_brdf_2012](#node-disney_brdf_2012) [disney_bsdf_2015](#node-disney_bsdf_2015) [disney_principled](#node-disney_principled) [gltf_pbr](#node-gltf_pbr) [open_pbr_anisotropy](#node-open_pbr_anisotropy) [open_pbr_surface](#node-open_pbr_surface) [standard_surface](#node-standard_surface) 
+* [LamaAdd](#node-LamaAdd) [LamaConductor](#node-LamaConductor) [LamaDielectric](#node-LamaDielectric) [LamaDiffuse](#node-LamaDiffuse) [LamaEmission](#node-LamaEmission) [LamaGeneralizedSchlick](#node-LamaGeneralizedSchlick) [LamaIridescence](#node-LamaIridescence) [LamaLayer](#node-LamaLayer) [LamaMix](#node-LamaMix) [LamaSSS](#node-LamaSSS) [LamaSheen](#node-LamaSheen) [LamaSurface](#node-LamaSurface) [LamaTranslucent](#node-LamaTranslucent) [UsdPreviewSurface](#node-UsdPreviewSurface) [disney_principled](#node-disney_principled) [gltf_pbr](#node-gltf_pbr) [open_pbr_anisotropy](#node-open_pbr_anisotropy) [open_pbr_surface](#node-open_pbr_surface) [standard_surface](#node-standard_surface) 
 ---------
 ### Node Group: texture2d
 * [UsdUVTexture](#node-UsdUVTexture) [gltf_colorimage](#node-gltf_colorimage) [gltf_image](#node-gltf_image) [gltf_iridescence_thickness](#node-gltf_iridescence_thickness) [gltf_normalmap](#node-gltf_normalmap) 
@@ -14,62 +14,6 @@
 * [open_pbr_surface_to_standard_surface](#node-open_pbr_surface_to_standard_surface) [standard_surface_to_UsdPreviewSurface](#node-standard_surface_to_UsdPreviewSurface) [standard_surface_to_gltf_pbr](#node-standard_surface_to_gltf_pbr) [standard_surface_to_open_pbr_surface](#node-standard_surface_to_open_pbr_surface) 
 ---------
  
-### Category: *disney_brdf_2012*
-<details open><summary>ND_disney_brdf_2012_surface</summary>
-<p>
- 
-* *Nodedef*: ND_disney_brdf_2012_surface
-* *Type*: surfaceshader
-* *Group*: pbr
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **baseColor** | color3 | 0.16, 0.16, 0.16 |  |  |  |  |  |  |  |  |  |  |
-| **metallic** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **subsurface** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **specular** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
-| **roughness** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
-| **specularTint** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **anisotropic** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **sheen** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **sheenTint** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
-| **clearcoat** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **clearcoatGloss** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
-| *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
-### Category: *disney_bsdf_2015*
-<details open><summary>ND_disney_bsdf_2015_surface</summary>
-<p>
- 
-* *Nodedef*: ND_disney_bsdf_2015_surface
-* *Type*: surfaceshader
-* *Group*: pbr
-* *Version*: 1.0. Is default: False
-* *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
- 
-
-| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **baseColor** | color3 | 0.16, 0.16, 0.16 |  |  |  |  |  |  |  |  |  |  |
-| **metallic** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **roughness** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
-| **anisotropic** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **specularTint** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **sheen** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **sheenTint** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
-| **clearcoat** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **clearcoatGloss** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
-| **specTrans** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **ior** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
-| **scatterDistance** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
-| **flatness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **diffTrans** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **thin** | boolean | False |  |  |  |  |  |  |  |  |  | true |
-| *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *disney_principled*
 <details open><summary>ND_disney_principled</summary>
 <p>
@@ -3020,7 +2964,7 @@ graph TB
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **tint** | color3 | 1, 1, 1 | Tint |  |  |  |  |  | Main |  | Overall color multiplier. It should be used with parcimony, as a non-white value breaks physicality. The prefered way to define the color of a conductor is through the Fresnel attributes right below. |  |
+| **tint** | color3 | 1, 1, 1 | Tint |  |  |  |  |  | Main |  | Overall color multiplier. It should be used with parsimony, as a non-white value breaks physicality. The preferred way to define the color of a conductor is through the Fresnel attributes right below. |  |
 | **fresnelMode** | integer | 0 | Fresnel Mode |  |  |  |  |  | Main |  | Switches the Fresnel between Artistic and Scientific parameters. The Artistic mode offers reflectivity in the normal direction and reflectivity90 at the grazing angle. The Scientific mode provides an index of refraction for each rgb component. Note that IOR is only used to calculate the reflectivity value used by the Schlick approximation. When reflectivity90 is 1, then both modes achieve identical results, as one can be mapped to the other. | true |
 | **IOR** | vector3 | 0.18, 0.42, 1.37 | IOR |  |  |  |  |  | Main |  | Index of refraction (often denoted by eta), defining the color reflected by the surface in the normal direction. |  |
 | **extinction** | vector3 | 3.42, 2.35, 1.77 | Extinction |  |  |  |  |  | Main |  | Extinction coefficient (often denoted by kappa), influencing how the reflected color curve evolves between its value in the normal direction (or 0 degree), and 1 when reaching 90 degrees. A null value does not deviate the curve at all. |  |
@@ -3030,7 +2974,7 @@ graph TB
 | **normal** | vector3 | None | Normal |  |  |  |  |  | Main |  | Shading normal, typically defined by bump or normal mapping. Defaults to the smooth surface normal if not set. |  |
 | **anisotropy** | float | 0.0 | Anisotropy | -1.0 | 1.0 |  |  |  | Anisotropy |  | Defines the amount of anisotropy, changing the co-tangent axis roughness from the original value to 1 (or to 0 with a negative value). |  |
 | **anisotropyDirection** | vector3 | None | Direction |  |  |  |  |  | Anisotropy |  | Overrides the surface tangent as the anisotropy direction. |  |
-| **anisotropyRotation** | float | 0.0 | Rotation |  |  | 0.0 | 1.0 |  | Anisotropy |  | Rotates the anisotropy direction (possibly overriden by the previous attribute) around the normal, from 0 to 360 degrees. |  |
+| **anisotropyRotation** | float | 0.0 | Rotation |  |  | 0.0 | 1.0 |  | Anisotropy |  | Rotates the anisotropy direction (possibly overridden by the previous attribute) around the normal, from 0 to 360 degrees. |  |
 | *out* | BSDF | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *LamaDielectric*
 <details open><summary>ND_lama_dielectric</summary>
@@ -3156,8 +3100,8 @@ graph TB
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **reflectionTint** | color3 | 1, 1, 1 | Reflection Tint |  |  |  |  |  | Main |  | Color multiplier for external reflection. It should be used with parcimony, as a non-white value breaks physicality. |  |
-| **transmissionTint** | color3 | 1, 1, 1 | Transmission Tint |  |  |  |  |  | Main |  | Color multiplier for rays going inside the medium (covers external transmission and internal reflection). It should be used with parcimony, as a non-white value breaks physicality. The prefered way to define the color of a dielectric is through the Interior attributes right below. |  |
+| **reflectionTint** | color3 | 1, 1, 1 | Reflection Tint |  |  |  |  |  | Main |  | Color multiplier for external reflection. It should be used with parsimony, as a non-white value breaks physicality. |  |
+| **transmissionTint** | color3 | 1, 1, 1 | Transmission Tint |  |  |  |  |  | Main |  | Color multiplier for rays going inside the medium (covers external transmission and internal reflection). It should be used with parcimony, as a non-white value breaks physicality. The preferred way to define the color of a dielectric is through the Interior attributes right below. |  |
 | **fresnelMode** | integer | 0 | Fresnel Mode |  |  |  |  |  | Main |  | Switches the Fresnel parameterization between Artistic and Scientific mode. The Artistic mode offers a scalar value defining the reflectivity in the normal direction. The Scientific mode proposes an index of refraction. Both parameterizations can achieve identical results, as one can be mapped to the other. | true |
 | **IOR** | float | 1.5 | IOR | 1.0 | 3.0 |  |  |  | Main |  | Index of refraction (often denoted by eta), defining the amount reflected by the surface in the normal direction, and how the rays are bent by refraction. |  |
 | **reflectivity** | float | 0.04 | Reflectivity | 0.0 | 1.0 | 0.0 | 0.25 |  | Main |  | Amount reflected by the surface in the normal direction. Also affects how the rays are bent by refraction. |  |
@@ -3165,7 +3109,7 @@ graph TB
 | **normal** | vector3 | None | Normal |  |  |  |  |  | Main |  | Shading normal, typically defined by bump or normal mapping. Defaults to the smooth surface normal if not set. |  |
 | **anisotropy** | float | 0.0 | Anisotropy | -1.0 | 1.0 |  |  |  | Anisotropy |  | Defines the amount of anisotropy, changing the co-tangent axis roughness from the original value to 1 (or to 0 with a negative value). |  |
 | **direction** | vector3 | None | Direction |  |  |  |  |  | Anisotropy |  | Overrides the surface tangent as the anisotropy direction. |  |
-| **rotation** | float | 0.0 | Rotation |  |  | 0.0 | 1.0 |  | Anisotropy |  | Rotates the anisotropy direction (possibly overriden by the previous attribute) around the normal, from 0 to 360 degrees. |  |
+| **rotation** | float | 0.0 | Rotation |  |  | 0.0 | 1.0 |  | Anisotropy |  | Rotates the anisotropy direction (possibly overridden by the previous attribute) around the normal, from 0 to 360 degrees. |  |
 | **absorptionColor** | color3 | 1, 1, 1 | Absorption Color |  |  |  |  |  | Interior |  | Interior volume absorption color. It is defined as the negative logarithm of the extinction coefficient, with values between 0 and 1, such that the object itself and its shadows are tinted proportionnally. If set to 1, there is no absorption, and if set to 0, the object will be completely opaque. Note that for single scattering to kick in, the value must be inferior to 1. This value will also act as coating color, when this node is used as the top material in a layer node. |  |
 | **absorptionRadius** | float | 1.0 | Absorption Radius | 0.0 |  |  |  |  | Interior |  | Distance, in world space units, at which the Absorption Color is assumed to be reached. Can be used to control the rate of absorption. |  |
 | **scatterColor** | color3 | 0, 0, 0 | Scatter Color |  |  |  |  |  | Interior |  | Color (aka scattering albedo) of the medium, defines what proportion of the light hitting volumetric particles is scattered around by the phase function (as opposed to just absorbed), for each color channel. Only takes effect if the corresponding channel has a non-null density, in other words if the Absorption Color value for that channel is inferior to 1. |  |
@@ -3386,8 +3330,8 @@ graph TB
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **reflectionTint** | color3 | 1, 1, 1 | Reflection Tint |  |  |  |  |  | Main |  | Color multiplier for external reflection. It should be used with parcimony, as a non-white value breaks physicality. |  |
-| **transmissionTint** | color3 | 1, 1, 1 | Transmission Tint |  |  |  |  |  | Main |  | Color multiplier for rays going inside the medium (covers external transmission and internal reflection). It should be used sparingly, as a non-white value breaks physicality. The prefered way to define the color of a dielectric is through the Interior attributes right below. |  |
+| **reflectionTint** | color3 | 1, 1, 1 | Reflection Tint |  |  |  |  |  | Main |  | Color multiplier for external reflection. It should be used with parsimony, as a non-white value breaks physicality. |  |
+| **transmissionTint** | color3 | 1, 1, 1 | Transmission Tint |  |  |  |  |  | Main |  | Color multiplier for rays going inside the medium (covers external transmission and internal reflection). It should be used sparingly, as a non-white value breaks physicality. The preferred way to define the color of a dielectric is through the Interior attributes right below. |  |
 | **fresnelMode** | integer | 0 | Fresnel Mode |  |  |  |  |  | Main |  | Switches the Fresnel between Artistic and Scientific parameters. The Artistic mode offers reflectivity in the normal direction and reflectivity90 at the grazing angle. The Scientific mode provides an index of refraction for each rgb component. Note that IOR is only used to calculate the reflectivity value used by the Schlick approximation. When reflectivity90 is 1, then both modes achieve identical results, as one can be mapped to the other. | true |
 | **IOR** | vector3 | 1.5, 1.5, 1.5 | IOR |  |  |  |  |  | Main |  | Index of refraction (often denoted by eta), defining the amount reflected by the surface in the normal direction, and how the rays are bent by refraction. A separate value can be specified for each color channel, if desired. |  |
 | **reflectivity** | color3 | 0.04, 0.04, 0.04 | Reflectivity |  |  |  |  |  | Main |  | Color reflected by the surface in the normal direction. |  |
@@ -3397,7 +3341,7 @@ graph TB
 | **normal** | vector3 | None | Normal |  |  |  |  |  | Main |  | Shading normal, typically defined by bump or normal mapping. Defaults to the smooth surface normal if not set. |  |
 | **anisotropy** | float | -1.0 | Anisotropy | -1.0 | 1.0 |  |  |  | Anisotropy |  | Defines the roughness in the co-tangent direction, giving anisotropic reflection if the value differs from the roughness parameter value. A negative value (the default) means use the original roughness value, i.e. no anisotropy.  |  |
 | **anisotropyDirection** | vector3 | None | Direction |  |  |  |  |  | Anisotropy |  | Overrides the surface tangent as the anisotropy direction. |  |
-| **anisotropyRotation** | float | 0.0 | Rotation |  |  | 0.0 | 1.0 |  | Anisotropy |  | Rotates the anisotropy direction (possibly overriden by the previous attribute) around the normal, from 0 to 360 degrees. |  |
+| **anisotropyRotation** | float | 0.0 | Rotation |  |  | 0.0 | 1.0 |  | Anisotropy |  | Rotates the anisotropy direction (possibly overridden by the previous attribute) around the normal, from 0 to 360 degrees. |  |
 | **absorptionColor** | color3 | 1, 1, 1 | Absorption Color |  |  |  |  |  | Interior |  | Interior volume absorption color. It is defined as the negative logarithm of the extinction coefficient, with values between 0 and 1, such that the object itself and its shadows are tinted proportionally. If set to 1, there is no absorption, and if set to 0, the object will be completely opaque. Note that for single scattering to kick in, the value must be inferior to 1. This value will also act as coating color, when this node is used as top layer in a stack. |  |
 | **absorptionRadius** | float | 1.0 | Absorption Radius | 0.0 |  |  |  |  | Interior |  | Distance, in world space units, at which the Absorption Color is assumed to be reached. Can be used to control the rate of absorption. |  |
 | **scatterColor** | color3 | 0, 0, 0 | Scatter Color |  |  |  |  |  | Interior |  | Color (aka scattering albedo) of the medium, defines what proportion of the light hitting volumetric particles is scattered around by the phase function (as opposed to just absorbed), for each color channel. Only takes effect if the corresponding channel has a non-null density, in other words if the Absorption Color value for that channel is inferior to 1. |  |
@@ -3488,7 +3432,7 @@ graph TB
 | **roughness** | float | 0.01 | Roughness | 0.0 | 1.0 |  |  |  | Main |  | Micro-facet distribution roughness. |  |
 | **anisotropy** | float | 0.0 | Anisotropy | -1.0 | 1.0 |  |  |  | Anisotropy |  | Defines the amount of anisotropy, changing the co-tangent axis roughness from the original value to 1 (or to 0 with a negative value). |  |
 | **anisotropyDirection** | vector3 | None | Direction |  |  |  |  |  | Anisotropy |  | Overrides the surface tangent as the anisotropy direction. |  |
-| **anisotropyRotation** | float | 0.0 | Rotation |  |  | 0.0 | 1.0 |  | Anisotropy |  | Rotates the anisotropy direction (possibly overriden by the previous attribute) around the normal, from 0 to 360 degrees. |  |
+| **anisotropyRotation** | float | 0.0 | Rotation |  |  | 0.0 | 1.0 |  | Anisotropy |  | Rotates the anisotropy direction (possibly overridden by the previous attribute) around the normal, from 0 to 360 degrees. |  |
 | **relativeFilmThickness** | float | 0.5 | Relative Thickness | 0.0 | 1.0 |  |  |  | Main |  | Relative thin film thickness in the range from 0 to 1 will be scaled to the minimum and maximum thickness, respectively. |  |
 | **minFilmThickness** | float | 400.0 | Min. Thickness | 0.0 |  | 0.0 | 1000.0 |  | Main |  | Minimum thin film thickness in nanometers, driving the iridescent effect. |  |
 | **maxFilmThickness** | float | 800.0 | Max. Thickness | 0.0 |  | 0.0 | 1000.0 |  | Main |  | Maximum thin film thickness in nanometers, driving the iridescent effect. |  |
