@@ -7705,21 +7705,21 @@ The key element that is returned from the iterator is an <a href="https://materi
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Edge: NG_marble1/sin --&gt; NG_marble1/scale/in1
-Edge: NG_marble1/scale_xyz --&gt; NG_marble1/sum/in1
-Edge: NG_marble1/scale_noise --&gt; NG_marble1/sum/in2
+<pre>Edge: NG_marble1/scale_noise --&gt; NG_marble1/sum/in2
 Edge: SR_marble1 --&gt; Marble_3D/surfaceshader
-Edge: NG_marble1/scale --&gt; NG_marble1/bias/in1
+Edge: NG_marble1/color_mix --&gt; SR_marble1/base_color
+Edge: NG_marble1/sin --&gt; NG_marble1/scale/in1
 Edge: NG_marble1/add_xyz --&gt; NG_marble1/scale_xyz/in1
-Edge: NG_marble1/scale_pos --&gt; NG_marble1/noise/position
+Edge: NG_marble1/obj_pos --&gt; NG_marble1/add_xyz/in1
 Edge: NG_marble1/obj_pos --&gt; NG_marble1/scale_pos/in1
+Edge: NG_marble1/power --&gt; NG_marble1/color_mix/mix
+Edge: NG_marble1/scale_xyz --&gt; NG_marble1/sum/in1
+Edge: NG_marble1/color_mix --&gt; SR_marble1/subsurface_color
+Edge: NG_marble1/scale_pos --&gt; NG_marble1/noise/position
 Edge: NG_marble1/noise --&gt; NG_marble1/scale_noise/in1
 Edge: NG_marble1/bias --&gt; NG_marble1/power/in1
 Edge: NG_marble1/sum --&gt; NG_marble1/sin/in
-Edge: NG_marble1/color_mix --&gt; SR_marble1/subsurface_color
-Edge: NG_marble1/color_mix --&gt; SR_marble1/base_color
-Edge: NG_marble1/obj_pos --&gt; NG_marble1/add_xyz/in1
-Edge: NG_marble1/power --&gt; NG_marble1/color_mix/mix
+Edge: NG_marble1/scale --&gt; NG_marble1/bias/in1
 </pre>
 </div>
 </div>
@@ -8081,33 +8081,33 @@ to output and generates a string list containing the text for the Mermaid graph.
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>  graph TB;
-    NG_marble1_scale_xyz[NG_marble1/scale_xyz] --".in1"--&gt; NG_marble1_sum[NG_marble1/sum]
+    NG_marble1_scale_pos[NG_marble1/scale_pos] --".position"--&gt; NG_marble1_noise[NG_marble1/noise]
     NG_marble1_obj_pos[NG_marble1/obj_pos] --".in1"--&gt; NG_marble1_scale_pos[NG_marble1/scale_pos]
-    NG_marble1_scale_noise[NG_marble1/scale_noise] --".in2"--&gt; NG_marble1_sum[NG_marble1/sum]
+    NG_marble1_color_mix[NG_marble1/color_mix] --".subsurface_color"--&gt; SR_marble1[SR_marble1]
+    NG_marble1_sin[NG_marble1/sin] --".in1"--&gt; NG_marble1_scale[NG_marble1/scale]
     NG_marble1_color_mix[NG_marble1/color_mix] --".base_color"--&gt; SR_marble1[SR_marble1]
-    NG_marble1_power[NG_marble1/power] --".mix"--&gt; NG_marble1_color_mix[NG_marble1/color_mix]
-    NG_marble1_add_xyz[NG_marble1/add_xyz] --".in1"--&gt; NG_marble1_scale_xyz[NG_marble1/scale_xyz]
-    NG_marble1_obj_pos[NG_marble1/obj_pos] --".in1"--&gt; NG_marble1_add_xyz[NG_marble1/add_xyz]
-    NG_marble1_bias[NG_marble1/bias] --".in1"--&gt; NG_marble1_power[NG_marble1/power]
-    NG_marble1_sum[NG_marble1/sum] --".in"--&gt; NG_marble1_sin[NG_marble1/sin]
+    NG_marble1_scale_noise[NG_marble1/scale_noise] --".in2"--&gt; NG_marble1_sum[NG_marble1/sum]
     SR_marble1[SR_marble1] --".surfaceshader"--&gt; Marble_3D[Marble_3D]
     NG_marble1_noise[NG_marble1/noise] --".in1"--&gt; NG_marble1_scale_noise[NG_marble1/scale_noise]
+    NG_marble1_scale_xyz[NG_marble1/scale_xyz] --".in1"--&gt; NG_marble1_sum[NG_marble1/sum]
+    NG_marble1_obj_pos[NG_marble1/obj_pos] --".in1"--&gt; NG_marble1_add_xyz[NG_marble1/add_xyz]
+    NG_marble1_add_xyz[NG_marble1/add_xyz] --".in1"--&gt; NG_marble1_scale_xyz[NG_marble1/scale_xyz]
+    NG_marble1_bias[NG_marble1/bias] --".in1"--&gt; NG_marble1_power[NG_marble1/power]
+    NG_marble1_sum[NG_marble1/sum] --".in"--&gt; NG_marble1_sin[NG_marble1/sin]
+    NG_marble1_power[NG_marble1/power] --".mix"--&gt; NG_marble1_color_mix[NG_marble1/color_mix]
     NG_marble1_scale[NG_marble1/scale] --".in1"--&gt; NG_marble1_bias[NG_marble1/bias]
-    NG_marble1_sin[NG_marble1/sin] --".in1"--&gt; NG_marble1_scale[NG_marble1/scale]
-    NG_marble1_color_mix[NG_marble1/color_mix] --".subsurface_color"--&gt; SR_marble1[SR_marble1]
-    NG_marble1_scale_pos[NG_marble1/scale_pos] --".position"--&gt; NG_marble1_noise[NG_marble1/noise]
 subgraph NG_marble1:
-   NG_marble1_color_mix
-   NG_marble1_power
-   NG_marble1_scale
-   NG_marble1_add_xyz
+   NG_marble1_obj_pos
    NG_marble1_scale_noise
    NG_marble1_bias
-   NG_marble1_obj_pos
+   NG_marble1_sum
    NG_marble1_scale_xyz
    NG_marble1_sin
-   NG_marble1_sum
+   NG_marble1_scale
    NG_marble1_noise
+   NG_marble1_color_mix
+   NG_marble1_add_xyz
+   NG_marble1_power
    NG_marble1_scale_pos
 end
 </pre>
@@ -8350,48 +8350,48 @@ the upstream node has multiple outputs, and would be useful to be addressed in a
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
 <div class="jp-Mermaid"><pre class="mermaid">
 graph TB;
-    NG_marble1_noise_octaves([noise_octaves]) --".octaves"--&gt; NG_marble1_noise
-    NG_marble1_color_mix[NG_marble1/color_mix] --&gt; NG_marble1_out[out]
-    NG_marble1_base_color_1([base_color_1]) --".bg"--&gt; NG_marble1_color_mix
-    NG_marble1_scale_xyz[NG_marble1/scale_xyz] --".in1"--&gt; NG_marble1_sum[NG_marble1/sum]
-    NG_marble1_out[NG_marble1/out] --".base_color"--&gt; SR_marble1[SR_marble1]
-    NG_marble1_add_xyz[NG_marble1/add_xyz] --".in1"--&gt; NG_marble1_scale_xyz[NG_marble1/scale_xyz]
-    NG_marble1_obj_pos[NG_marble1/obj_pos] --".in1"--&gt; NG_marble1_add_xyz[NG_marble1/add_xyz]
-    SR_marble1[SR_marble1] --".surfaceshader"--&gt; Marble_3D[Marble_3D]
-    NG_marble1_sum[NG_marble1/sum] --".in"--&gt; NG_marble1_sin[NG_marble1/sin]
+    NG_marble1_noise_scale_2([noise_scale_2]) --".in2"--&gt; NG_marble1_scale_pos
+    NG_marble1_power[NG_marble1/power] --".mix"--&gt; NG_marble1_color_mix[NG_marble1/color_mix]
+    NG_marble1_noise_power([noise_power]) --".in2"--&gt; NG_marble1_power
     NG_marble1_obj_pos[NG_marble1/obj_pos] --".in1"--&gt; NG_marble1_scale_pos[NG_marble1/scale_pos]
     NG_marble1_base_color_2([base_color_2]) --".fg"--&gt; NG_marble1_color_mix
-    NG_marble1_scale_noise[NG_marble1/scale_noise] --".in2"--&gt; NG_marble1_sum[NG_marble1/sum]
     NG_marble1_out[NG_marble1/out] --".subsurface_color"--&gt; SR_marble1[SR_marble1]
-    NG_marble1_noise_scale_1([noise_scale_1]) --".in2"--&gt; NG_marble1_scale_xyz
-    NG_marble1_scale[NG_marble1/scale] --".in1"--&gt; NG_marble1_bias[NG_marble1/bias]
-    NG_marble1_power[NG_marble1/power] --".mix"--&gt; NG_marble1_color_mix[NG_marble1/color_mix]
-    NG_marble1_scale_pos[NG_marble1/scale_pos] --".position"--&gt; NG_marble1_noise[NG_marble1/noise]
-    NG_marble1_noise_scale_2([noise_scale_2]) --".in2"--&gt; NG_marble1_scale_pos
-    NG_marble1_noise_power([noise_power]) --".in2"--&gt; NG_marble1_power
-    NG_marble1_bias[NG_marble1/bias] --".in1"--&gt; NG_marble1_power[NG_marble1/power]
+    SR_marble1[SR_marble1] --".surfaceshader"--&gt; Marble_3D[Marble_3D]
     NG_marble1_noise[NG_marble1/noise] --".in1"--&gt; NG_marble1_scale_noise[NG_marble1/scale_noise]
+    NG_marble1_out[NG_marble1/out] --".base_color"--&gt; SR_marble1[SR_marble1]
+    NG_marble1_bias[NG_marble1/bias] --".in1"--&gt; NG_marble1_power[NG_marble1/power]
+    NG_marble1_scale[NG_marble1/scale] --".in1"--&gt; NG_marble1_bias[NG_marble1/bias]
+    NG_marble1_scale_pos[NG_marble1/scale_pos] --".position"--&gt; NG_marble1_noise[NG_marble1/noise]
+    NG_marble1_noise_scale_1([noise_scale_1]) --".in2"--&gt; NG_marble1_scale_xyz
+    NG_marble1_obj_pos[NG_marble1/obj_pos] --".in1"--&gt; NG_marble1_add_xyz[NG_marble1/add_xyz]
+    NG_marble1_add_xyz[NG_marble1/add_xyz] --".in1"--&gt; NG_marble1_scale_xyz[NG_marble1/scale_xyz]
+    NG_marble1_color_mix[NG_marble1/color_mix] --&gt; NG_marble1_out[out]
+    NG_marble1_sum[NG_marble1/sum] --".in"--&gt; NG_marble1_sin[NG_marble1/sin]
+    NG_marble1_base_color_1([base_color_1]) --".bg"--&gt; NG_marble1_color_mix
+    NG_marble1_scale_noise[NG_marble1/scale_noise] --".in2"--&gt; NG_marble1_sum[NG_marble1/sum]
+    NG_marble1_noise_octaves([noise_octaves]) --".octaves"--&gt; NG_marble1_noise
+    NG_marble1_scale_xyz[NG_marble1/scale_xyz] --".in1"--&gt; NG_marble1_sum[NG_marble1/sum]
     NG_marble1_sin[NG_marble1/sin] --".in1"--&gt; NG_marble1_scale[NG_marble1/scale]
 subgraph NG_marble1:
-   NG_marble1_add_xyz
-   NG_marble1_noise_scale_1
-   NG_marble1_scale_xyz
-   NG_marble1_sum
-   NG_marble1_base_color_2
    NG_marble1_scale_noise
-   NG_marble1_bias
-   NG_marble1_sin
-   NG_marble1_power
-   NG_marble1_obj_pos
-   NG_marble1_noise_octaves
-   NG_marble1_base_color_1
-   NG_marble1_scale_pos
-   NG_marble1_color_mix
    NG_marble1_scale
-   NG_marble1_out
-   NG_marble1_noise_scale_2
+   NG_marble1_base_color_1
+   NG_marble1_noise_octaves
+   NG_marble1_scale_xyz
+   NG_marble1_obj_pos
+   NG_marble1_add_xyz
+   NG_marble1_base_color_2
+   NG_marble1_sin
+   NG_marble1_color_mix
+   NG_marble1_scale_pos
    NG_marble1_noise_power
+   NG_marble1_bias
+   NG_marble1_out
+   NG_marble1_sum
    NG_marble1_noise
+   NG_marble1_noise_scale_2
+   NG_marble1_noise_scale_1
+   NG_marble1_power
 end
 </pre></div>
 </div>

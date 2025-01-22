@@ -7583,7 +7583,7 @@ and loading in standard libraries.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Loaded 766 standard library definitions
+<pre>Loaded 780 standard library definitions
 </pre>
 </div>
 </div>
@@ -8122,6 +8122,7 @@ Then for each block the list of shader ports is printed out. Note that "private"
 Stage name: "pixel"
 ------------------------------
 - Block:  PublicUniforms
+  - Variable: backsurfaceshader. Value: (&lt;NONE&gt;). Type: surfaceshader, Path: "&lt;NONE&gt;"
   - Variable: displacementshader1. Value: (&lt;NONE&gt;). Type: displacementshader, Path: "&lt;NONE&gt;"
   - Variable: add_xyz_in2. Value: (1, 1, 1). Type: vector3, Path: "NG_marble1/add_xyz/in2"
   - Variable: scale_pos_in2. Value: (4). Type: float, Path: "NG_marble1/noise_scale_2"
@@ -8236,10 +8237,12 @@ In the sample code below we scan the source for "uniforms" and prints them out.<
 - "pixel" Stage Code:
    uniform mat4 u_envMatrix = mat4(-1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 1.000000);
    uniform sampler2D u_envRadiance;
+   uniform float u_envLightIntensity = 1.000000;
    uniform int u_envRadianceMips = 1;
    uniform int u_envRadianceSamples = 16;
    uniform sampler2D u_envIrradiance;
    uniform bool u_refractionTwoSided = false;
+   uniform surfaceshader backsurfaceshader;
    uniform displacementshader displacementshader1;
    uniform vec3 add_xyz_in2 = vec3(1.000000, 1.000000, 1.000000);
    uniform float scale_pos_in2 = 4.000000;
