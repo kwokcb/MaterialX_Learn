@@ -15101,7 +15101,116 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     }
     init_mathjax();
     </script>
-    <!-- End of mathjax configuration --></head>
+    <!-- End of mathjax configuration --><script type="module">
+  document.addEventListener("DOMContentLoaded", async () => {
+    const diagrams = document.querySelectorAll(".jp-Mermaid > pre.mermaid");
+    // do not load mermaidjs if not needed
+    if (!diagrams.length) {
+      return;
+    }
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.3/mermaid.esm.min.mjs")).default;
+
+    mermaid.initialize({
+      maxTextSize: 100000,
+      startOnLoad: false,
+      fontFamily: window
+        .getComputedStyle(document.body)
+        .getPropertyValue("--jp-ui-font-family"),
+      theme: document.querySelector("body[data-jp-theme-light='true']")
+        ? "default"
+        : "dark",
+    });
+
+    let _nextMermaidId = 0;
+
+    function makeMermaidImage(svg) {
+      const img = document.createElement('img');
+      const maxWidth = svg.match(/max-width: (\d+)/);
+      if (maxWidth && maxWidth[1]) {
+        const width = parseInt(maxWidth[1]);
+        if (width && !Number.isNaN(width) && Number.isFinite(width)) {
+          img.width = width;
+        }
+      }
+      img.setAttribute('src', `data:image/svg+xml,${encodeURIComponent(svg)}`);
+      return img;
+    }
+
+    async function makeMermaidError(text) {
+      let errorMessage = '';
+      try {
+        await mermaid.parse(text);
+      } catch (err) {
+        errorMessage = `${err}`;
+      }
+
+      const result = document.createElement('details');
+      const summary = document.createElement('summary');
+      const pre = document.createElement('pre');
+      const code = document.createElement('code');
+      code.innerText = text;
+      pre.appendChild(code);
+      summary.appendChild(pre);
+      result.appendChild(summary);
+
+      const warning = document.createElement('pre');
+      warning.innerText = errorMessage;
+      result.appendChild(warning);
+      return result;
+    }
+
+    async function renderOneMarmaid(src) {
+      const id = `jp-mermaid-${_nextMermaidId++}`;
+      const parent = src.parentNode;
+      let raw = src.textContent.trim();
+      const el = document.createElement("div");
+      el.style.visibility = "hidden";
+      document.body.appendChild(el);
+      let result = null;
+      try {
+        const { svg } = await mermaid.render(id, raw, el);
+        result = makeMermaidImage(svg);
+      } catch (err) {
+        parent.classList.add("jp-mod-warning");
+        result = await makeMermaidError(raw);
+      } finally {
+        el.remove();
+      }
+      parent.classList.add("jp-RenderedMermaid");
+      parent.appendChild(result);
+    }
+
+    void Promise.all([...diagrams].map(renderOneMarmaid));
+  });
+</script>
+<style>
+  .jp-RenderedMarkdown .jp-Mermaid:not(.jp-RenderedMermaid) {
+    display: none;
+  }
+  .jp-RenderedMarkdown .jp-RenderedMermaid.jp-mod-warning {
+    width: auto;
+    padding: 10px;
+    border: var(--jp-border-width) solid var(--jp-warn-color2);
+    border-radius: var(--jp-border-radius);
+    color: var(--jp-ui-font-color1);
+    font-size: var(--jp-ui-font-size1);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .jp-RenderedMarkdown .jp-RenderedMermaid.jp-mod-warning details > pre {
+    margin-top: 1em;
+  }
+  .jp-RenderedMarkdown .jp-RenderedMermaid.jp-mod-warning summary {
+    color: var(--jp-warn-color2);
+  }
+  .jp-RenderedMarkdown .jp-RenderedMermaid.jp-mod-warning summary > pre {
+    display: inline-block;
+  }
+  .jp-RenderedMermaid > .mermaid {
+    display: none;
+  }
+</style>
+<!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 
 <div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -15120,9 +15229,9 @@ such as from <a href="https://openusd.org/release/tut_usd_tutorials.html" target
 <li>Translating a MaterialX into Usd format with the same focus.</li>
 </ol>
 <blockquote>
-<p>Neither translators are intended to be a full importer or exporter but rather usable for learning purposes, noting that</p>
+<p>Neither translators are intended to be a full importer or exporter but rather usable for learning purposes, noting that
+<a href="https://github.com/PixarAnimationStudios/USD/tree/release/pxr/usd/usdMtlx" target="_blank">UsdMtlx</a> import is not available as part of the core Usd Python package, and code such as <a href="https://github.com/PixarAnimationStudios/USD/blob/release/pxr/imaging/hdSt/materialXFilter.h" target="_blank">UsdFilter</a> for HDStorm is specifically targeted for a given render delegate and is also not exposed.</p>
 </blockquote>
-<p><a href="https://github.com/PixarAnimationStudios/USD/tree/release/pxr/usd/usdMtlx" target="_blank">UsdMtlx</a> import is not available as part of the core Usd Python package, and code such as <a href="https://github.com/PixarAnimationStudios/USD/blob/release/pxr/imaging/hdSt/materialXFilter.h" target="_blank">UsdFilter</a> for HDStorm is specifically targeted for a given render delegate and is also not exposed.</p>
 
 </div>
 </div>
@@ -15144,7 +15253,7 @@ such as from <a href="https://openusd.org/release/tut_usd_tutorials.html" target
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#pip install usd-core</span>
@@ -15162,7 +15271,7 @@ such as from <a href="https://openusd.org/release/tut_usd_tutorials.html" target
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>After installation various packages can be imported.  <code>Usd</code>, <code>UsdShade</code>, <code>Sdf</code>, and <code>Gf</code> are the main packages used. The MaterialX package is also imported. 
+<p>After installation various packages can be imported.  <code>Usd</code>, <code>UsdShade</code>, <code>Sdf</code>, and <code>Gf</code> are the main packages used. The MaterialX package is also imported.
 | Note that the definition registry (<code>Sdr</code>) does not contain any MaterialX definitions.</p>
 
 </div>
@@ -15173,7 +15282,7 @@ such as from <a href="https://openusd.org/release/tut_usd_tutorials.html" target
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pxr</span> <span class="kn">import</span> <span class="n">Usd</span>
@@ -15212,9 +15321,9 @@ such as from <a href="https://openusd.org/release/tut_usd_tutorials.html" target
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Using Usd Version: 0.23.11
-- Sdr nodes { UsdTransform2d, HwPtexTexture, HwFieldReader_float, HwUvTexture, CylinderLight, HwFieldReader, HwFieldReader_float2, MeshLight, HwFieldReader_float3, HwPrimvar, DomeLight, DomeLight_1, DiskLight, UsdPrimvarReader_string, PortalLight, RectLight, GeometryLight, UsdPrimvarReader_float4, SphereLight, DistantLight, VolumeLight, UsdPreviewSurface, UsdUVTexture, UsdPrimvarReader_float, UsdPrimvarReader_float2, UsdPrimvarReader_float3, UsdPrimvarReader_int, UsdPrimvarReader_normal, UsdPrimvarReader_point, UsdPrimvarReader_vector, UsdPrimvarReader_matrix }
-Using MaterialX Version: 1.39.0
+<pre>Using Usd Version: 0.25.2
+- Sdr nodes { PortalLight, GeometryLight, SphereLight, DomeLight_1, CylinderLight, RectLight, DistantLight, DomeLight, DiskLight, MeshLight, VolumeLight }
+Using MaterialX Version: 1.39.2
 </pre>
 </div>
 </div>
@@ -15240,7 +15349,7 @@ Using MaterialX Version: 1.39.0
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load in a sample file</span>
@@ -15276,9 +15385,10 @@ Using MaterialX Version: 1.39.0
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <details><summary>Flattened Usd File</summary>
+
 <div class="highlight"><pre><span></span><span class="c1">#usda 1.0</span>
 <span class="p">(</span>
-<span class="w">    </span>doc<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;Generated from Composed Stage of root layer d:\\Work\\materialx\\MaterialX_Learn_Private\\pymaterialx\\data\\sphere_with_nodegraphs.usda</span>
+<span class="w">    </span>doc<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;Generated from Composed Stage of root layer d:\\Work\\materialx\\MaterialX_Learn\\pymaterialx\\data\\sphere_with_nodegraphs.usda</span>
 <span class="s">&quot;&quot;&quot;</span>
 <span class="w">    </span><span class="n n-Builtins">endTimeCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 <span class="w">    </span>framesPerSecond<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">24</span>
@@ -15383,6 +15493,7 @@ Using MaterialX Version: 1.39.0
 </pre></div>
 </details>
 
+
 </div>
 
 </div>
@@ -15408,7 +15519,7 @@ Using MaterialX Version: 1.39.0
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Start from the root</span>
@@ -15528,7 +15639,7 @@ Using MaterialX Version: 1.39.0
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">printValueElements</span><span class="p">(</span><span class="n">shaderInterface</span><span class="p">,</span> <span class="n">indent</span><span class="p">):</span>
@@ -15658,8 +15769,8 @@ Using MaterialX Version: 1.39.0
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="4.-Usd-to-MaterialX-Translation">4. Usd to MaterialX Translation<a class="anchor-link" href="#4.-Usd-to-MaterialX-Translation">&#182;</a></h2><p>The previous example is modified to create MaterialX graphs, shaders and materials.</p>
-<p>Note that the shading network contains nested nodegraphs. That is a nodegraph can contain another nodegraph. 
-While this is part of the MaterialX specification, full support for this does not currently exist at time of writing. 
+<p>Note that the shading network contains nested nodegraphs. That is a nodegraph can contain another nodegraph.
+While this is part of the MaterialX specification, full support for this does not currently exist at time of writing.
 For the purposes of translation / interop, logic is included which can general enough to support any level of graph nesting.</p>
 <p>As required a user can perform a &quot;flattening&quot; process by traversing through the node connections to remove nodegraph nesting as is done for <code>UsdMtlx</code> for conversion from Usd to MaterialX. This is not included as part of the logic for this example.</p>
 <h3 id="4.1-Setup">4.1 Setup<a class="anchor-link" href="#4.1-Setup">&#182;</a></h3><p>The first step is to add in a basic setup for MaterialX to create a working document and load in standard definitions.</p>
@@ -15672,7 +15783,7 @@ For the purposes of translation / interop, logic is included which can general e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Perform basic setup</span>
@@ -15707,7 +15818,7 @@ For the purposes of translation / interop, logic is included which can general e
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Created working document. Loaded in 750 definitions
+<pre>Created working document. Loaded in 780 definitions
 </pre>
 </div>
 </div>
@@ -15741,7 +15852,7 @@ For the purposes of translation / interop, logic is included which can general e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mapUsdTypeToMtlx</span><span class="p">(</span><span class="n">usdType</span><span class="p">):</span>
@@ -15876,7 +15987,7 @@ has multiple outputs.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">isMultiOutput</span><span class="p">(</span><span class="n">prim</span><span class="p">):</span>
@@ -15948,7 +16059,7 @@ has multiple outputs.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mapUsdTokenToType</span><span class="p">(</span><span class="n">mtlxType</span><span class="p">,</span> <span class="n">usdBaseName</span><span class="p">,</span> <span class="n">mtlxPrefix</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -16133,7 +16244,7 @@ has multiple outputs.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">emitMaterialX</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">indent</span><span class="p">,</span> <span class="n">prim</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
@@ -16238,7 +16349,7 @@ has multiple outputs.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Loaded in 750 definitions
+<pre>Loaded in 780 definitions
 </pre>
 </div>
 </div>
@@ -16251,6 +16362,7 @@ has multiple outputs.</p>
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <details open><summary>Resulting Generated MaterialX</summary>
+
 <div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;materialx</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.39&quot;</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;surfacematerial</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;collect1&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;material&quot;</span><span class="nt">&gt;</span>
@@ -16300,6 +16412,7 @@ has multiple outputs.</p>
 </pre></div>
 </details>
 
+
 </div>
 
 </div>
@@ -16338,7 +16451,7 @@ This example only handles <strong>value</strong> changes by updating matching in
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Note that the MaterialX path cannot start with &#39;/&#39; otherwise `getDescendent)` will fail to</span>
@@ -16429,7 +16542,7 @@ so is not available unless a custom / local build is used.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">createSimpleMtlx</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">materialScope</span><span class="p">):</span>
@@ -16552,7 +16665,7 @@ but in this case for the reverse mapping from MaterialX to Usd.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="6.1.1-MaterialX-to-Usd-:-Type-and-Value-Mapping">6.1.1 MaterialX to Usd : Type and Value Mapping<a class="anchor-link" href="#6.1.1-MaterialX-to-Usd-:-Type-and-Value-Mapping">&#182;</a></h4><p>The <code>mapMtxToUsdType()</code> and <code>mapMtxToUsdValue()</code> utilities provide mappings for type and value respectively. 
+<h4 id="6.1.1-MaterialX-to-Usd-:-Type-and-Value-Mapping">6.1.1 MaterialX to Usd : Type and Value Mapping<a class="anchor-link" href="#6.1.1-MaterialX-to-Usd-:-Type-and-Value-Mapping">&#182;</a></h4><p>The <code>mapMtxToUsdType()</code> and <code>mapMtxToUsdValue()</code> utilities provide mappings for type and value respectively.
 The mapping is from MaterialX type name to an Usd <a href="https://openusd.org/release/api/class_sdf_value_type_name.html" target="_blank">Sdf</a> type, and from a MaterialX <code>Value</code> to a Usd <code>Gf</code> value.</p>
 
 </div>
@@ -16563,7 +16676,7 @@ The mapping is from MaterialX type name to an Usd <a href="https://openusd.org/r
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mapMtxToUsdType</span><span class="p">(</span><span class="n">mtlxType</span><span class="p">):</span>
@@ -16646,7 +16759,7 @@ was supported in MaterialX, and the document path (from <code>getNamePath()</cod
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mapMtlxToUsdShaderNotation</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
@@ -16841,7 +16954,7 @@ was supported in MaterialX, and the document path (from <code>getNamePath()</cod
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">emitUsdValueElements</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">usdNode</span><span class="p">,</span> <span class="n">emitAllValueElements</span><span class="p">):</span>
@@ -16938,10 +17051,8 @@ was supported in MaterialX, and the document path (from <code>getNamePath()</cod
 <li><code>UsdShade.Material.Define()</code> respectively.</li>
 </ul>
 </li>
-<li>All MaterialX node instances are checked for a corresponding MaterialX definition (<code>nodedef</code>), and if found will set</li>
-</ul>
-<p>the identifier as the shader id for the Usd shader node.</p>
-<ul>
+<li>All MaterialX node instances are checked for a corresponding MaterialX definition (<code>nodedef</code>), and if found will set
+the identifier as the shader id for the Usd shader node.</li>
 <li>Connections are then made between Usd nodes based on the connections found on MaterialX nodes.</li>
 </ul>
 
@@ -16953,7 +17064,7 @@ was supported in MaterialX, and the document path (from <code>getNamePath()</cod
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">moveChild</span><span class="p">(</span><span class="n">newParent</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
@@ -17054,7 +17165,7 @@ creates a stage in memory and then performs the conversion.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">findMaterialXNodes</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
@@ -17093,7 +17204,7 @@ creates a stage in memory and then performs the conversion.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">convertMtlxToUsd</span><span class="p">(</span><span class="n">mtlxFileName</span><span class="p">,</span> <span class="n">emitAllValueElements</span><span class="p">):</span>
@@ -17170,7 +17281,7 @@ creates a stage in memory and then performs the conversion.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">testFile</span> <span class="o">=</span> <span class="s1">&#39;data/sample_marble.mtlx&#39;</span>
@@ -17239,6 +17350,7 @@ creates a stage in memory and then performs the conversion.</p>
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <details><summary>Usd Results</summary>
+
 <div class="highlight"><pre><span></span><span class="c1">#usda 1.0</span>
 
 <span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;Marble_3D&quot;</span>
@@ -17424,6 +17536,7 @@ creates a stage in memory and then performs the conversion.</p>
 </pre></div>
 </details>
 
+
 </div>
 
 </div>
@@ -17436,6 +17549,7 @@ creates a stage in memory and then performs the conversion.</p>
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <details><summary>Converted Back to MaterialX</summary>
+
 <div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;materialx</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.39&quot;</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;surfacematerial</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Marble_3D&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;material&quot;</span><span class="nt">&gt;</span>
@@ -17545,6 +17659,7 @@ creates a stage in memory and then performs the conversion.</p>
 </pre></div>
 </details>
 
+
 </div>
 
 </div>
@@ -17570,7 +17685,7 @@ creates a stage in memory and then performs the conversion.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">testFile</span> <span class="o">=</span> <span class="s1">&#39;data/sample_nodegraph.mtlx&#39;</span>
@@ -17632,6 +17747,7 @@ creates a stage in memory and then performs the conversion.</p>
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <details><summary>Usd Results</summary>
+
 <div class="highlight"><pre><span></span><span class="c1">#usda 1.0</span>
 
 <span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;my_material&quot;</span>
@@ -17663,6 +17779,7 @@ creates a stage in memory and then performs the conversion.</p>
 </pre></div>
 </details>
 
+
 </div>
 
 </div>
@@ -17675,6 +17792,7 @@ creates a stage in memory and then performs the conversion.</p>
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <details><summary>Converted Back to MaterialX</summary>
+
 <div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;materialx</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.39&quot;</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;surfacematerial</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;my_material&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;material&quot;</span><span class="nt">&gt;</span>
@@ -17695,6 +17813,7 @@ creates a stage in memory and then performs the conversion.</p>
 <span class="nt">&lt;/materialx&gt;</span>
 </pre></div>
 </details>
+
 
 </div>
 
@@ -17723,7 +17842,7 @@ performing data model interop. At time of writing, this round trip logic is not 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">testFile</span> <span class="o">=</span> <span class="s1">&#39;data/test_usd_mtlx.mtlx&#39;</span>
@@ -17776,6 +17895,7 @@ performing data model interop. At time of writing, this round trip logic is not 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <details><summary>Usd Results</summary>
+
 <div class="highlight"><pre><span></span><span class="c1">#usda 1.0</span>
 
 <span class="k k-Tokens">def</span><span class="w"> </span>Material<span class="w"> </span><span class="s">&quot;collect1&quot;</span>
@@ -17852,6 +17972,7 @@ performing data model interop. At time of writing, this round trip logic is not 
 </pre></div>
 </details>
 
+
 </div>
 
 </div>
@@ -17877,7 +17998,7 @@ performing data model interop. At time of writing, this round trip logic is not 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">typestring</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -17909,6 +18030,7 @@ performing data model interop. At time of writing, this round trip logic is not 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
 <details><summary>Usd Types</summary>
+
 <ul>
 <li>Type : Asset</li>
 <li>Type : AssetArray</li>
@@ -18020,9 +18142,10 @@ performing data model interop. At time of writing, this round trip logic is not 
 <li>Type : Vector3f</li>
 <li>Type : Vector3fArray</li>
 <li>Type : Vector3h</li>
-<li>Type : Vector3hArray</li>
+<li>Type : Vector3hArray</details>
+
+</li>
 </ul>
-</details>
 
 </div>
 
