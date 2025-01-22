@@ -10,7 +10,7 @@
 #    echo "Creating html $file..."
 #    python -m jupyter nbconvert --to html "$file" > html_log.txt
 #done
-for file in *.ipynb; do
-    echo "Creating Python $file..."
-    python -m jupyter nbconvert --to python "$file" > python_log.txt
-done
+#for file in *.ipynb; do
+#    echo "Creating Python $file..."
+#    python -m jupyter nbconvert --to python "$file" > python_log.txt
+#done
