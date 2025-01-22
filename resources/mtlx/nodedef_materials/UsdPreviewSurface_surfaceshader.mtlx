@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
-  <UsdPreviewSurface name="UsdPreviewSurface_surfaceshader" type="surfaceshader" version="2.5">
+  <UsdPreviewSurface name="UsdPreviewSurface_surfaceshader" type="surfaceshader" version="2.6">
     <input name="diffuseColor" type="color3" value="0.18, 0.18, 0.18" uiname="Diffuse Color" />
     <input name="emissiveColor" type="color3" value="0, 0, 0" uiname="Emissive Color" />
     <input name="useSpecularWorkflow" type="integer" value="0" uistep="1" uiname="Use Specular Workflow" />
@@ -10,6 +10,7 @@
     <input name="clearcoat" type="float" value="0" uiname="Clearcoat" />
     <input name="clearcoatRoughness" type="float" value="0.01" uiname="Clearcoat Roughness" />
     <input name="opacity" type="float" value="1" uiname="Opacity" />
+    <input name="opacityMode" type="integer" enum="transparent,presence" enumvalues="0,1" value="0" uiname="Opacity Mode" />
     <input name="opacityThreshold" type="float" value="0" uiname="Opacity Threshold" />
     <input name="ior" type="float" value="1.5" uiname="Index of Refraction" />
     <input name="normal" type="vector3" value="0, 0, 1" uistep="0.01" uiname="Normal" />

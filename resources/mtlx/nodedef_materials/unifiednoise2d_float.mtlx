@@ -11,6 +11,7 @@
     <input name="lacunarity" type="float" uiname="Lacunarity" value="2" />
     <input name="diminish" type="float" uiname="Diminish" value="0.5" />
     <input name="type" type="integer" uiname="Noise Type" value="0" enum="Perlin,Cell,Worley,Fractal" enumvalues="0,1,2,3" />
+    <input name="style" uiname="Worley Cell Style" type="integer" value="0" enum="Distance,Solid" enumvalues="0,1" />
   </unifiednoise2d>
   <convert name="shader_unifiednoise2d_float_out" type="surfaceshader">
     <input name="in" type="float" nodename="unifiednoise2d_float" />

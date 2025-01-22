@@ -463,8 +463,6 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="conical_edf.html">conical_edf</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="deon_hair_absorption_from_melanin.html">deon_hair_absorption_from_melanin</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="dielectric_bsdf.html">dielectric_bsdf</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="disney_brdf_2012.html">disney_brdf_2012</a>
-<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="disney_bsdf_2015.html">disney_bsdf_2015</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="disney_principled.html">disney_principled</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="displacement.html">displacement</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="generalized_schlick_bsdf.html">generalized_schlick_bsdf</a>
@@ -640,6 +638,8 @@ Category: unifiednoise2d
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_unifiednoise2d_float_diminish" role="tab" aria-controls="pills-ND_unifiednoise2d_float_diminish" aria-selected="true"  onclick="document.getElementById('ND_unifiednoise2d_float_menu').textContent = this.textContent;" >diminish</div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_unifiednoise2d_float_type" role="tab" aria-controls="pills-ND_unifiednoise2d_float_type" aria-selected="true"  onclick="document.getElementById('ND_unifiednoise2d_float_menu').textContent = this.textContent;" >type</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_unifiednoise2d_float_style" role="tab" aria-controls="pills-ND_unifiednoise2d_float_style" aria-selected="true"  onclick="document.getElementById('ND_unifiednoise2d_float_menu').textContent = this.textContent;" >style</div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_unifiednoise2d_float_out" role="tab" aria-controls="pills-ND_unifiednoise2d_float_out" aria-selected="true"  onclick="document.getElementById('ND_unifiednoise2d_float_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
@@ -1078,6 +1078,59 @@ Category: unifiednoise2d
  </div>
 </div>
 <div class="tab-content">
+ <div class="tab-pane " id="pills-ND_unifiednoise2d_float_style"
+  role="tabpanel" aria-labelledby="pills-ND_unifiednoise2d_float_style-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Sets the style of cell used when Noise Type is set to Worley. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_unifiednoise2d_float_style" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Possible Values: </label>
+      <div class="col-2">
+        <select class="form-select form-select-sm" style="font-size:90%" size="2" disabled>
+          <option>Distance</option>
+          <option>Solid</option>
+       </select>
+      </div>
+      <div class="col-2">
+        <select class="form-select form-select-sm" style="font-size:90%" size="2" disabled>
+       <option>0 </option>
+       <option>1 </option>
+        </select>
+       </div>
+  </div>
+<div class="form-group row g-1">
+<label class="col-2 col-form-label col-form-label-sm">UI Name | Grp. | Adv.</label>
+ <div class="col-4">
+  <input type="text" class="form-control form-control-sm" value="Worley Cell Style" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="none" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="false" disabled>
+ </div>
+</div>
+ </div>
+</div>
+<div class="tab-content">
  <div class="tab-pane " id="pills-ND_unifiednoise2d_float_out"
   role="tabpanel" aria-labelledby="pills-ND_unifiednoise2d_float_out-tab" tabindex="0">
   <div class="form-group row g-2">
@@ -1128,6 +1181,8 @@ graph TB
     NG_unifiednoise2d_float_type([type])
     style NG_unifiednoise2d_float_jitter  fill:#09D, color:#FFF
     NG_unifiednoise2d_float_jitter([jitter])
+    style NG_unifiednoise2d_float_style  fill:#09D, color:#FFF
+    NG_unifiednoise2d_float_style([style])
     style NG_unifiednoise2d_float_octaves  fill:#09D, color:#FFF
     NG_unifiednoise2d_float_octaves([octaves])
     style NG_unifiednoise2d_float_lacunarity  fill:#09D, color:#FFF
@@ -1154,6 +1209,7 @@ graph TB
     NG_unifiednoise2d_float_N_apply_cell_jitter --"texcoord"--> NG_unifiednoise2d_float_N_cellnoise2d
     NG_unifiednoise2d_float_N_apply_offset --"texcoord"--> NG_unifiednoise2d_float_N_worleynoise2d
     NG_unifiednoise2d_float_jitter --"jitter"--> NG_unifiednoise2d_float_N_worleynoise2d
+    NG_unifiednoise2d_float_style --"style"--> NG_unifiednoise2d_float_N_worleynoise2d
     NG_unifiednoise2d_float_octaves --"octaves"--> NG_unifiednoise2d_float_N_fractal3d
     NG_unifiednoise2d_float_lacunarity --"lacunarity"--> NG_unifiednoise2d_float_N_fractal3d
     NG_unifiednoise2d_float_diminish --"diminish"--> NG_unifiednoise2d_float_N_fractal3d

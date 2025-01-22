@@ -4302,6 +4302,8 @@ graph TB
     NG_unifiednoise2d_float_type([type])
     style NG_unifiednoise2d_float_jitter  fill:#09D, color:#FFF
     NG_unifiednoise2d_float_jitter([jitter])
+    style NG_unifiednoise2d_float_style  fill:#09D, color:#FFF
+    NG_unifiednoise2d_float_style([style])
     style NG_unifiednoise2d_float_octaves  fill:#09D, color:#FFF
     NG_unifiednoise2d_float_octaves([octaves])
     style NG_unifiednoise2d_float_lacunarity  fill:#09D, color:#FFF
@@ -4328,6 +4330,7 @@ graph TB
     NG_unifiednoise2d_float_N_apply_cell_jitter --"texcoord"--> NG_unifiednoise2d_float_N_cellnoise2d
     NG_unifiednoise2d_float_N_apply_offset --"texcoord"--> NG_unifiednoise2d_float_N_worleynoise2d
     NG_unifiednoise2d_float_jitter --"jitter"--> NG_unifiednoise2d_float_N_worleynoise2d
+    NG_unifiednoise2d_float_style --"style"--> NG_unifiednoise2d_float_N_worleynoise2d
     NG_unifiednoise2d_float_octaves --"octaves"--> NG_unifiednoise2d_float_N_fractal3d
     NG_unifiednoise2d_float_lacunarity --"lacunarity"--> NG_unifiednoise2d_float_N_fractal3d
     NG_unifiednoise2d_float_diminish --"diminish"--> NG_unifiednoise2d_float_N_fractal3d
@@ -4361,6 +4364,7 @@ graph TB
 | **lacunarity** | float | 2.0 | Lacunarity |  |  |  |  |  | Fractal |  | The exponential scale between successive octaves of Fractal noise. Default is 2.0. |  |
 | **diminish** | float | 0.5 | Diminish |  |  | 0.0 | 1.0 |  | Fractal |  | The rate at which noise amplitude is diminished for each octave of Fractal noise. Default is 0.5. |  |
 | **type** | integer | 0 | Noise Type |  |  | 0 | 3 |  | Common |  | Menu to select the type of noise: Perlin, Cell, Worley, or Fractal. Default is Perlin. |  |
+| **style** | integer | 0 | Worley Cell Style |  |  |  |  |  |  |  | Sets the style of cell used when Noise Type is set to Worley. |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *unifiednoise3d*
 <details open><summary>ND_unifiednoise3d_float</summary>
@@ -4401,6 +4405,8 @@ graph TB
     NG_unifiednoise3d_float_type([type])
     style NG_unifiednoise3d_float_jitter  fill:#09D, color:#FFF
     NG_unifiednoise3d_float_jitter([jitter])
+    style NG_unifiednoise3d_float_style  fill:#09D, color:#FFF
+    NG_unifiednoise3d_float_style([style])
     style NG_unifiednoise3d_float_octaves  fill:#09D, color:#FFF
     NG_unifiednoise3d_float_octaves([octaves])
     style NG_unifiednoise3d_float_lacunarity  fill:#09D, color:#FFF
@@ -4427,6 +4433,7 @@ graph TB
     NG_unifiednoise3d_float_N_apply_cell_jitter --"position"--> NG_unifiednoise3d_float_N_cellnoise3d
     NG_unifiednoise3d_float_N_apply_offset --"position"--> NG_unifiednoise3d_float_N_worleynoise3d
     NG_unifiednoise3d_float_jitter --"jitter"--> NG_unifiednoise3d_float_N_worleynoise3d
+    NG_unifiednoise3d_float_style --"style"--> NG_unifiednoise3d_float_N_worleynoise3d
     NG_unifiednoise3d_float_octaves --"octaves"--> NG_unifiednoise3d_float_N_fractal3d
     NG_unifiednoise3d_float_lacunarity --"lacunarity"--> NG_unifiednoise3d_float_N_fractal3d
     NG_unifiednoise3d_float_diminish --"diminish"--> NG_unifiednoise3d_float_N_fractal3d
@@ -4456,6 +4463,7 @@ graph TB
 | **lacunarity** | float | 2.0 | Lacunarity |  |  |  |  |  | Fractal |  | The exponential scale between successive octaves of Fractal noise. Default is 2.0. |  |
 | **diminish** | float | 0.5 | Diminish |  |  | 0.0 | 1.0 |  | Fractal |  | The rate at which noise amplitude is diminished for each octave of Fractal noise. Default is 0.5. |  |
 | **type** | integer | 0 | Noise Type |  |  | 0 | 3 |  | Common |  | Menu to select the type of noise: Perlin, Cell, Worley, or Fractal. Default is Perlin. |  |
+| **style** | integer | 0 | Worley Cell Style |  |  |  |  |  |  |  | Sets the style of cell used when Noise Type is set to Worley. |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *randomfloat*
 <details open><summary>ND_randomfloat_float</summary>
@@ -4838,7 +4846,7 @@ graph TB
 * *Type*: float
 * *Group*: procedural2d
 * *Version*: 1.0. Is default: False
-* *Doc*:    This node computes whether a point lies within a circle defined by a `center` and a `radius`. The formulas are:  1. Subtract the center from the texcoord:    $$    delta = texcoord - center    $$  2. Compute the square of the distance:    $$    distSquared = dot(delta, delta)    $$  3. Compute the square of the radius:    $$    radiusSquared = radius * radius    $$  4. Compare the squared distance with the squared radius:    $$    inCircle =    \begin{cases}    0, & if & distSquared \gt radiusSquared \\    1, & if & distSquared \leq radiusSquared    \end{cases}    $$  5. The final output:    $$    out = inCircle    $$   
+* *Doc*: UNDOCUMENTED
 * *Nodegraph*: NG_circle_float
 
 
@@ -12654,7 +12662,7 @@ graph TB
 | **gain** | float | 1.0 | Gain |  |  | 0.0 | 1.0 |  |  |  | Multiplier increases lighter color values, leaving black values unchanged. |  |
 | **contrast** | float | 1.0 | Contrast |  |  | 0.0 | 1.0 |  |  |  | Linearly increase or decrease the color contrast. |  |
 | **contrastpivot** | float | 0.5 | Contrast Pivot |  |  | 0.0 | 1.0 |  |  |  | Pivot value around which contrast applies. This value will not change as contrast is adjusted. |  |
-| **exposure** | float | 0.0 | Exposure |  |  | -1.0 | 1.0 |  |  |  | Multplier which increases or decreases color brightness by 2^value. |  |
+| **exposure** | float | 0.0 | Exposure |  |  | -1.0 | 1.0 |  |  |  | Multiplier which increases or decreases color brightness by 2^value. |  |
 | *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 <details open><summary>ND_colorcorrect_color4</summary>
 <p>
@@ -12728,7 +12736,7 @@ graph TB
 | **gain** | float | 1.0 | Gain |  |  | 0.0 | 1.0 |  |  |  | Multiplier increases lighter color values, leaving black values unchanged. |  |
 | **contrast** | float | 1.0 | Contrast |  |  | 0.0 | 1.0 |  |  |  | Linearly increase or decrease the color contrast. |  |
 | **contrastpivot** | float | 0.5 | Contrast Pivot |  |  | 0.0 | 1.0 |  |  |  | Pivot value around which contrast applies. This value will not change as contrast is adjusted. |  |
-| **exposure** | float | 0.0 | Exposure |  |  | -1.0 | 1.0 |  |  |  | Multplier which increases or decreases color brightness by 2^value. |  |
+| **exposure** | float | 0.0 | Exposure |  |  | -1.0 | 1.0 |  |  |  | Multiplier which increases or decreases color brightness by 2^value. |  |
 | *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *premult*
 <details open><summary>ND_premult_color4</summary>
