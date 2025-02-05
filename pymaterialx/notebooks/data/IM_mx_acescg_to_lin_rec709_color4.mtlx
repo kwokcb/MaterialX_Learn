@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <!-- Color space acescg to lin_rec709 transform. Generated via OCIO for target: genmsl-->
+  <implementation name="IM_acescg_to_lin_rec709_color4_genmsl" file="mx_acescg_to_lin_rec709_color4.metal" function="mx_acescg_to_lin_rec709_color4" target="genmsl" nodedef="ND_acescg_to_lin_rec709_color4" />
+  <!-- Color space acescg to lin_rec709 transform. Generated via OCIO for target: genglsl-->
+  <implementation name="IM_acescg_to_lin_rec709_color4_genglsl" file="mx_acescg_to_lin_rec709_color4.glsl" function="mx_acescg_to_lin_rec709_color4" target="genglsl" nodedef="ND_acescg_to_lin_rec709_color4" />
+  <!-- Color space acescg to lin_rec709 transform. Generated via OCIO for target: genosl-->
+  <implementation name="IM_acescg_to_lin_rec709_color4_genosl" file="mx_acescg_to_lin_rec709_color4.osl" function="mx_acescg_to_lin_rec709_color4" target="genosl" nodedef="ND_acescg_to_lin_rec709_color4" />
+</materialx>

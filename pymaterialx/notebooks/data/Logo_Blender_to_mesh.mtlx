@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <look name="Default_Look">
+    <materialassign name="Curve_Material_Material" material="Curve_Material_Material" geom="Mesh_Curve" />
+    <materialassign name="SVGMat_001_Material" material="SVGMat_001_Material" geom="Mesh_Curve_001" />
+    <materialassign name="SVGMat_002_Material" material="SVGMat_002_Material" geom="Mesh_Curve_002" />
+    <materialassign name="SVGMat_003_Material" material="SVGMat_003_Material" geom="Mesh_Curve_003" />
+    <materialassign name="SVGMat_004_Material" material="SVGMat_004_Material" geom="Mesh_Curve_004" />
+    <materialassign name="SVGMat_005_Material" material="SVGMat_005_Material" geom="Mesh_Curve_005" />
+    <materialassign name="SVGMat_006_Material" material="SVGMat_006_Material" geom="Mesh_Curve_006" />
+    <materialassign name="SVGMat_007_Material" material="SVGMat_007_Material" geom="Mesh_Curve_007" />
+    <materialassign name="SVGMat_008_Material" material="SVGMat_008_Material" geom="Mesh_Curve_008" />
+    <materialassign name="SVGMat_009_Material" material="SVGMat_009_Material" geom="Mesh_Curve_009" />
+    <materialassign name="SVGMat_010_Material" material="SVGMat_010_Material" geom="Mesh_Curve_010" />
+  </look>
+  <standard_surface name="Curve_Material_Shader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">
+    <input name="base_color" type="color3" value="0.8, 0.8, 0.8" />
+  </standard_surface>
+  <surfacematerial name="Curve_Material_Material" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="Curve_Material_Shader" />
+  </surfacematerial>
+  <standard_surface name="SVGMat_001_Shader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">
+    <input name="base_color" type="color3" value="1, 1, 1" />
+  </standard_surface>
+  <surfacematerial name="SVGMat_001_Material" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="SVGMat_001_Shader" />
+  </surfacematerial>
+  <standard_surface name="SVGMat_002_Shader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">
+    <input name="base_color" type="color3" value="0.0193824, 0.0953075, 0.242281" />
+  </standard_surface>
+  <surfacematerial name="SVGMat_002_Material" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="SVGMat_002_Shader" />
+  </surfacematerial>
+  <standard_surface name="SVGMat_003_Shader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">
+    <input name="base_color" type="color3" value="0.822786, 0.181164, 0" />
+  </standard_surface>
+  <surfacematerial name="SVGMat_003_Material" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="SVGMat_003_Shader" />
+  </surfacematerial>
+  <standard_surface name="SVGMat_004_Shader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">
+    <input name="base_color" type="color3" value="0.0193824, 0.0953075, 0.242281" />
+  </standard_surface>
+  <surfacematerial name="SVGMat_004_Material" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="SVGMat_004_Shader" />
+  </surfacematerial>
+  <standard_surface name="SVGMat_005_Shader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">
+    <input name="base_color" type="color3" value="0.0193824, 0.0953075, 0.242281" />
+  </standard_surface>
+  <surfacematerial name="SVGMat_005_Material" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="SVGMat_005_Shader" />
+  </surfacematerial>
+  <standard_surface name="SVGMat_006_Shader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">
+    <input name="base_color" type="color3" value="0.0193824, 0.0953075, 0.242281" />
+  </standard_surface>
+  <surfacematerial name="SVGMat_006_Material" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="SVGMat_006_Shader" />
+  </surfacematerial>
+  <standard_surface name="SVGMat_007_Shader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">
+    <input name="base_color" type="color3" value="0.0193824, 0.0953075, 0.242281" />
+  </standard_surface>
+  <surfacematerial name="SVGMat_007_Material" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="SVGMat_007_Shader" />
+  </surfacematerial>
+  <standard_surface name="SVGMat_008_Shader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">
+    <input name="base_color" type="color3" value="0.0193824, 0.0953075, 0.242281" />
+  </standard_surface>
+  <surfacematerial name="SVGMat_008_Material" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="SVGMat_008_Shader" />
+  </surfacematerial>
+  <standard_surface name="SVGMat_009_Shader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">
+    <input name="base_color" type="color3" value="0.0193824, 0.0953075, 0.242281" />
+  </standard_surface>
+  <surfacematerial name="SVGMat_009_Material" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="SVGMat_009_Shader" />
+  </surfacematerial>
+  <standard_surface name="SVGMat_010_Shader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">
+    <input name="base_color" type="color3" value="0.0193824, 0.0953075, 0.242281" />
+  </standard_surface>
+  <surfacematerial name="SVGMat_010_Material" type="material" nodedef="ND_surfacematerial">
+    <input name="surfaceshader" type="surfaceshader" nodename="SVGMat_010_Shader" />
+  </surfacematerial>
+</materialx>

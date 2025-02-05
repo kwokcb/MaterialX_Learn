@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+  <standard_surface name="SR_marble1" type="surfaceshader" xpos="6.159420" ypos="-0.672414">
+    <input name="base" type="float" value="1" />
+    <input name="base_color" type="color3" nodename="switch_color3" />
+    <input name="specular_roughness" type="float" value="0.1" />
+    <input name="subsurface" type="float" value="0.4" />
+    <input name="subsurface_color" type="color3" value="1, 1, 1" />
+  </standard_surface>
+  <surfacematerial name="Marble_3D" type="material" xpos="8.695652" ypos="0.000000">
+    <input name="surfaceshader" type="surfaceshader" nodename="SR_marble1" />
+  </surfacematerial>
+  <switch name="switch_color3" type="color3" xpos="3.891304" ypos="-0.525862">
+    <input name="in1" type="color3" nodename="image_color3" />
+    <input name="in2" type="color3" nodename="image_color4" />
+    <input name="in3" type="color3" nodename="image_color5" />
+  </switch>
+  <image name="image_color3" type="color3" xpos="1.260870" ypos="-2.198276" />
+  <image name="image_color4" type="color3" xpos="0.746377" ypos="1.689655" />
+  <image name="image_color5" type="color3" xpos="1.094203" ypos="3.206897" />
+</materialx>

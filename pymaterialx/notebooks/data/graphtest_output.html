@@ -1,0 +1,74 @@
+<script src='https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js'></script>
+<div class="mermaid">
+graph TB
+    subgraph upstream3
+    upstream3_file([file:resources/Images/cloth.png])
+    style upstream3_file  fill:#09D, color:#111
+    upstream3_file1([file1:resources/Images/grid.png])
+    style upstream3_file1  fill:#09D, color:#111
+    upstream3_out([out])
+    style upstream3_out   fill:#0C0, color:#111
+    upstream3_out1([out1])
+    style upstream3_out1   fill:#0C0, color:#111
+    upstream3_upstream_image[upstream_image]
+    upstream3_upstream_image1[upstream_image1]
+    end
+    subgraph upstream2
+    upstream2_upstream2_in1([upstream2_in1])
+    style upstream2_upstream2_in1  fill:#09D, color:#111
+    upstream2_upstream2_in2([upstream2_in2])
+    style upstream2_upstream2_in2  fill:#09D, color:#111
+    upstream2_upstream2_out1([upstream2_out1])
+    style upstream2_upstream2_out1   fill:#0C0, color:#111
+    upstream2_upstream2_out2([upstream2_out2])
+    style upstream2_upstream2_out2   fill:#0C0, color:#111
+    upstream2_multiply_by_image[multiply_by_image]
+    upstream2_make_red[make_red]
+    upstream2_image[image:resources/Images/grid.png]
+    end
+    subgraph upstream1
+    upstream1_upstream1_in1([upstream1_in1])
+    style upstream1_upstream1_in1  fill:#09D, color:#111
+    upstream1_upstream1_in2([upstream1_in2])
+    style upstream1_upstream1_in2  fill:#09D, color:#111
+    upstream1_upstream1_out1([upstream1_out1])
+    style upstream1_upstream1_out1   fill:#0C0, color:#111
+    upstream1_upstream1_out2([upstream1_out2])
+    style upstream1_upstream1_out2   fill:#0C0, color:#111
+    upstream1_make_yellow[make_yellow]
+    upstream1_remove_red[remove_red]
+    end
+    top_upstream1_out1([top_upstream1_out1])
+    style top_upstream1_out1   fill:#0C0, color:#111
+    top_upstream1_out2([top_upstream1_out2])
+    style top_upstream1_out2   fill:#0C0, color:#111
+    standard_surface[standard_surface]
+    standard_surface1[standard_surface1]
+    surfacematerial([surfacematerial])
+    style surfacematerial   fill:#090, color:#111
+    surfacematerial1([surfacematerial1])
+    style surfacematerial1   fill:#090, color:#111
+    upstream3_file --"file"--> upstream3_upstream_image
+    upstream3_file1 --"file"--> upstream3_upstream_image1
+    upstream3_upstream_image --> upstream3_out
+    upstream3_upstream_image1 --> upstream3_out1
+    upstream3_out --> upstream2_upstream2_in1
+    upstream3_out1 --> upstream2_upstream2_in2
+    upstream2_upstream2_in1 --"in1"--> upstream2_multiply_by_image
+    upstream2_image --"in2"--> upstream2_multiply_by_image
+    upstream2_upstream2_in2 --"in1"--> upstream2_make_red
+    upstream2_multiply_by_image --> upstream2_upstream2_out1
+    upstream2_make_red --> upstream2_upstream2_out2
+    upstream2_upstream2_out1 --> upstream1_upstream1_in1
+    upstream2_upstream2_out2 --> upstream1_upstream1_in2
+    upstream1_upstream1_in1 --"in1"--> upstream1_make_yellow
+    upstream1_upstream1_in2 --"in1"--> upstream1_remove_red
+    upstream1_make_yellow --> upstream1_upstream1_out1
+    upstream1_remove_red --> upstream1_upstream1_out2
+    upstream1_upstream1_out1 --> top_upstream1_out1
+    upstream1_upstream1_out2 --> top_upstream1_out2
+    upstream1_upstream1_out1 --"base_color"--> standard_surface
+    upstream1_upstream1_out2 --"base_color"--> standard_surface1
+    standard_surface --"surfaceshader"--> surfacematerial
+    standard_surface1 --"surfaceshader"--> surfacematerial1
+</div>

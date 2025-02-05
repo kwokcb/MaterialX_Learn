@@ -3,7 +3,7 @@
 ![](images/usd_materialx_interop.png)
 
 The [Usd / MaterialX
-notebook](../pymaterialx/mtlx_definitions_libraries_notebook.html)
+notebook](../pymaterialx/notebooks/mtlx_definitions_libraries_notebook.html)
 examines the interoperability of material / shader graphs between `Usd`
 and `MaterialX`.
 

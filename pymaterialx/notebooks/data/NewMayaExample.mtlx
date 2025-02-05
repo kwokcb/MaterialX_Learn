@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <!--
+    The contents of this document were generated from Usd using the mxusd Python class.
+
+    - User search paths: C:\Users\home\Desktop\Maya_materialx_libraries\libraries
+    - User libraries: adsk
+
+  -->
+  <surfacematerial name="MtlxOnlyMaterial" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="MtlxStandardSurfaceShader" />
+  </surfacematerial>
+  <standard_surface name="MtlxStandardSurfaceShader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader">
+    <input name="base_color" type="color3" nodegraph="MyGraph" />
+  </standard_surface>
+  <nodegraph name="MyGraph">
+    <output name="out" type="color3" nodename="MtlxImage" />
+    <image name="MtlxImage" type="color3" nodedef="ND_image_color3">
+      <input name="file" type="filename" value="d:/Work/materialx/bernard_MaterialX_2/resources/Images/grid.png" />
+    </image>
+  </nodegraph>
+  <surfacematerial name="MtlxMayaMaterial" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="MtlxMayaBlinn1" />
+  </surfacematerial>
+  <MayaBlinn name="MtlxMayaBlinn1" type="surfaceshader" nodedef="MayaND_blinn_surfaceshader">
+    <input name="color" type="color3" nodegraph="MyBlinnGraph" />
+  </MayaBlinn>
+  <nodegraph name="MyBlinnGraph">
+    <output name="out" type="color3" nodename="convert2" />
+    <image name="MtlxImage" type="color3" nodedef="ND_image_color3">
+      <input name="file" type="filename" value="d:/Work/materialx/bernard_MaterialX_2/resources/Images/grid.png" />
+    </image>
+    <fileTexture name="MayaFileTexture" type="color3" nodedef="MayaND_fileTexture_color3">
+      <input name="exposure" type="float" value="0.023250000551342964" />
+      <input name="inColor" type="color3" nodename="MtlxImage" />
+      <input name="invert" type="boolean" value="false" />
+    </fileTexture>
+    <LdkColorCorrect name="LdkColorCorrect1" type="color4" nodedef="LdkND_ColorCorrect_color4">
+      <input name="inColor" type="color3" nodename="MayaFileTexture" />
+    </LdkColorCorrect>
+    <convert name="convert2" type="color3" nodedef="ND_convert_color4_color3">
+      <input name="in" type="color4" nodename="LdkColorCorrect1" />
+    </convert>
+  </nodegraph>
+</materialx>

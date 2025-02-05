@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+  <surfacematerial name="MayaBliinChecker" type="material" xpos="14.442029" ypos="-2.456897">
+    <input name="surfaceshader" type="surfaceshader" nodename="MayaBlinn_1" />
+  </surfacematerial>
+  <MayaBlinn name="MayaBlinn_1" type="surfaceshader" xpos="12.239130" ypos="-3.112069">
+    <input name="color" type="color3" nodename="fileTexture_color3" />
+  </MayaBlinn>
+  <fileTexture name="fileTexture_color3" type="color3" xpos="9.014493" ypos="-3.198276">
+    <input name="inColor" type="color3" nodename="image_color3" />
+    <input name="invert" type="boolean" value="true" />
+    <input name="uvCoord" type="vector2" value="0, 0" />
+    <input name="exposure" type="float" value="0" />
+  </fileTexture>
+  <image name="image_color3" type="color3" xpos="6.898551" ypos="-3.163793">
+    <input name="file" type="filename" value="" fileprefix="checker.png" />
+  </image>
+</materialx>

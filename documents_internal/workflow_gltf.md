@@ -22,7 +22,7 @@ There is currently an initiative to define a MaterialX extension for glTF which 
 
 This includes a proposal to support serialization of MaterialX to `JSON` format.
 
-The <a href="../pymaterialx/mtlx_json_notebook.html" target="_blank">JSON notebook</a> presents one way to extract out MaterialX pattern graphs and serialize to `JSON`. This ties in with the general <a href="https://https://github.com/AcademySoftwareFoundation/MaterialX/issues/1500">MaterialX JSON Serialization Proposal</a> which is currently under discussion.
+The <a href="../pymaterialx/notebooks/mtlx_json_notebook.html" target="_blank">JSON notebook</a> presents one way to extract out MaterialX pattern graphs and serialize to `JSON`. This ties in with the general <a href="https://https://github.com/AcademySoftwareFoundation/MaterialX/issues/1500">MaterialX JSON Serialization Proposal</a> which is currently under discussion.
 
 Some original notes can be found <a href="https://wiki.aswf.io/display/WGUSD/glTF+MaterialX+USD+Interop" target="_blank">here</a> with the initiative being presented during the 
 <a href="https://www.khronos.org/developers/linkto/gltf-transforming-3d-asset-delivery-for-real-time-graphics>" target="_blank">gltF: Transforming 3D Asset Deleivery for Real-Time Graphics</a> presentation by the Khronos Group at Siggraph 2023.

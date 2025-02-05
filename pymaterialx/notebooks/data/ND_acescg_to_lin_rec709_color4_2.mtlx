@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <!-- Color space acescg to lin_rec709 transform. Generated via OCIO. -->
+  <nodedef name="ND_acescg_to_lin_rec709_color4" node="acescg_to_lin_rec709" nodegroup="colortransform">
+    <output name="out" type="color4" default="in" />
+    <input name="in" type="color4" value="0, 0, 0, 1" />
+  </nodedef>
+  <nodedef name="ND_acescg_to_lin_rec709_color3" node="acescg_to_lin_rec709" nodegroup="colortransform">
+    <output name="out" type="color3" />
+    <input name="in" type="color3" value="0, 0, 0" />
+  </nodedef>
+  <nodegraph name="NG_acescg_to_lin_rec709_color3" nodedef="ND_acescg_to_lin_rec709_color3">
+    <acescg_to_lin_rec709 name="node1" type="color4" nodedef="ND_acescg_to_lin_rec709_color4">
+      <input name="in" type="color4" value="0, 0, 0, 1" nodename="c3to4" />
+    </acescg_to_lin_rec709>
+    <convert name="c3to4" type="color4">
+      <input name="in" type="color3" interfacename="in" />
+    </convert>
+    <convert name="c4to3" type="color3">
+      <input name="in" type="color4" nodename="node1" />
+    </convert>
+    <output name="out" type="color3" nodename="c4to3" />
+  </nodegraph>
+</materialx>
