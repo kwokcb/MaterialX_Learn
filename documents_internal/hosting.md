@@ -130,7 +130,7 @@ Note that notebooks in the learning site may require:
 It is possible to access individual files from Github if the URI is known. Note that the MaterialX file access API does not directly support network access and thus something like the `urlib` module must be used.
 
 For an example of this see the 
-<a href="../pymaterialx/mtlx_basics_notebook.html" target="_blank">Basics notebook</a>
+<a href="../pymaterialx/notebooks/mtlx_basics_notebook.html" target="_blank">Basics notebook</a>
 
 #### 2.3 Google Drive Usage
 

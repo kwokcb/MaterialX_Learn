@@ -42,7 +42,7 @@
 
 									<p> A Visual Studio Code environment has been chosen to provide tutorials and 
 										utilities written in Python. Published content can be directly
-										accessed in  <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx"
+										accessed in  <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterial/notebooks/x"
 										target ="_blank"><img src="images/GitHub_Logo.png" style="width:4em"></a>.
 									</p>
 									<p>The following videos and corresponding text instructions can be followed
@@ -50,7 +50,7 @@
 										<table class="table border-secondary shadow table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
 											<tr>
 											<td><h4>Using MaterialX version 1.38.8 or later</h4><br>
-												<video width="100%" controls>
+												<video width="100%" controls loading="lazy">
 													<source src="../pymaterialx/videos/MaterialX_Learn_Python_Setup_PyPi.mp4" type="video/mp4">									
 												</video>
 												<p>As of version 1.38.8, MaterialX Python package can be downloaded and install
@@ -65,7 +65,7 @@
 												</p>
 											</td>
 											<td><h4>Using MaterialX versions prior to 1.38.8</h4><br>
-												<video width="100%" controls>
+												<video width="100%" controls loading="lazy">
 													<source src="../pymaterialx/videos/MaterialX_Learn_Python_Setup.mp4" type="video/mp4">									
 												</video>
 												<p>For users who wish to use earlier versions they can:
@@ -237,7 +237,7 @@ print('Loaded library file: %d' % len(libFiles))
 											target="_blank">Jupyter</a>
 										learning notebooks are regularly being added and updated.
 										User can clone or copy the repo to run locally, or as of MaterialX 1.38.8, remotely using
-										`Github Codespaces` or `Google Colab`. 
+										`Github Codespaces` or `Google Colab`.
 									</p>
 									<p>
 										See the <b><a href="hosting.html">Hosting</a> page</b>
@@ -246,11 +246,11 @@ print('Loaded library file: %d' % len(libFiles))
 									<p>
 									Any contribution requests or comments can be posted as pull requests on
 									<a href="https://github.com/kwokcb/MaterialX_Learn"><img src="images/GitHub_Logo.png" style="width:4em"></a>.
-									</p>											
+									</p>
 									<p>
 										<em>It is recommended to use the MaterialX packages which are
 										available via <a
-											href="https://pypi.org/project/MaterialX/" target="_blank">PyPi</a> 
+											href="https://pypi.org/project/MaterialX/" target="_blank">PyPi</a>
 											which are available starting with version 1.38.8.</em>
 									</p>
 									<p>
@@ -265,17 +265,15 @@ print('Loaded library file: %d' % len(libFiles))
 										A Python file (with markdown), a notebook and a link to content on Github
 										is given below.
 										<br>Note that it is possible to start with the Python
-										itself and convert to a notebook in VSCode or export from a notebook 
+										itself and convert to a notebook in VSCode or export from a notebook
 										to Python.
 									</p>
 									</p>
 									<table class="table-fixed table border-secondary shadow table-light table-striped table-hover table-borderless table-responsive" style="font-size: 90%">
-										<thead class="table-primary">																		
+										<thead class="table-primary">
 											<tr>
+											<th scope="col" style="width:25%">Description</th>
 											<th scope="col" style="width:25%">Notebook</th>
-											<th scope="col" style="width:25%">Raw Python (py)</th>
-											<th scope="col" style="width:25%">Raw Notebook (ipynb)</th>
-											<th scope="col" style="width:25%">Notebook in Github</th>
 											</tr>
 										</thead>
 									</table>
@@ -294,17 +292,7 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_basics_notebook.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_basics_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_basics_notebook.ipynb">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/notebooks/mtlx_basics_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
 												</td>
@@ -320,20 +308,10 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_graphs_notebook.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_graphs_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_graphs_notebook.ipynb">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/notebooks/mtlx_graphs_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -343,20 +321,10 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_traversal_notebook.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_traversal_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_traversal_notebook.ipynb">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/notebooks/mtlx_traversal_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -368,20 +336,10 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_connectivity_notebook.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_connectivity_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_connectivity_notebook.ipynb">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/notebooks/mtlx_connectivity_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -393,20 +351,10 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_comparing_notebook.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_comparing_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_comparing_notebook.ipynb">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/notebooks/mtlx_comparing_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -419,20 +367,10 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_definitions_libraries_notebook.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_definitions_libraries_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>	
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_definitions_libraries_notebook.ipynb">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/notebooks/mtlx_definitions_libraries_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -444,20 +382,10 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_definitions_notebook.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="..//pymaterialx/mtlx_definitions_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>	
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_definitions_notebook.ipynb">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/notebooks/mtlx_definitions_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -471,20 +399,10 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_shadergen_notebook.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_shadergen_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_shadergen_notebook.ipynb">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/notebooks/mtlx_shadergen_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -498,20 +416,10 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_render_notebook.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_render_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_render_notebook.ipynb">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/notebooks/mtlx_render_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -525,20 +433,10 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_targets_notebook.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="..//pymaterialx/mtlx_targets_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>	
-												<td style="width:25%">
 													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_targets_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -550,67 +448,11 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_json_notebook.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_json_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_json_notebook.ipynb">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/notebooks/mtlx_json_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
-
-											<tr>
-												<td style="width:25%">Using Copilot With MaterialX
-													<ul>
-														<li>Copilot for Source</li>
-														<li>Key Factors</li>
-														<li>Setup</li>
-													</ul>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_copilot.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_copilot.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_copilot.ipynb">
-														<img src="images/GitHub_Logo.png" style="width:4em">
-													</a>
-												</td>	
-											</tr>
-
-											<tr>
-												<td style="width:25%">Google Bard 
-													Basic knowledge and source testing.
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_bard.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_bard.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_bard.ipynb">
-														<img src="images/GitHub_Logo.png" style="width:4em">
-													</a>
-												</td>	
-											</tr>											
 
 											<tr>
 												<td style="width:25%">USD and MaterialX Graphs
@@ -621,20 +463,10 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_usd_notebook.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/mtlx_usd_notebook.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/mtlx_usd_notebook.ipynb">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/notebooks/mtlx_usd_notebook.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
+												</td>
 											</tr>
 
 											<tr>
@@ -645,20 +477,11 @@ print('Loaded library file: %d' % len(libFiles))
 													</ul>
 												</td>
 												<td style="width:25%">
-													<a href="../pymaterialx/blender_export_mtlx_noui.py">
-														<img src="images/python-logo-only.svg" style="width:4em">
-													</a>
-												</td>
-												<td style="width:25%">
-													<a href="../pymaterialx/blender_export_mtlx_noui.ipynb">
-														<img src="images/Jupyter_logo.svg" style="width:4em">
-													</a>
-												<td style="width:25%">
-													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/blender_export_mtlx_noui.ipynb">
+													<a href="https://github.com/kwokcb/MaterialX_Learn/blob/main/pymaterialx/notebooks/blender_export_mtlx_noui.ipynb">
 														<img src="images/GitHub_Logo.png" style="width:4em">
 													</a>
-												</td>	
-											</tr>												
+												</td>
+											</tr>
 
 											</tbody>
 										</table>
@@ -672,7 +495,7 @@ print('Loaded library file: %d' % len(libFiles))
 									<img src="./images/VSCode_Environment.png" style="width: 70%">
 									<p></p>
 									<p>
-										Below is a snapshot of Python and Markdown with meta data tags 
+										Below is a snapshot of Python and Markdown with meta data tags
 										within a Python generated from a notebook.
 									</p>
 									<img src="./images/VSCode_Python_Markdown_Example.png" style="width: 70%">
@@ -680,6 +503,7 @@ print('Loaded library file: %d' % len(libFiles))
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
