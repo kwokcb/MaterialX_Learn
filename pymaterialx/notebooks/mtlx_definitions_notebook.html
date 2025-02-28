@@ -7540,15 +7540,15 @@ of a working document.</p>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># MaterialX and MaterialX utilities</span>
-<span class="kn">import</span> <span class="nn">MaterialX</span> <span class="k">as</span> <span class="nn">mx</span>
-<span class="kn">import</span> <span class="nn">mtlxutils.mxfile</span> <span class="k">as</span> <span class="nn">mxf</span>
-<span class="kn">from</span> <span class="nn">mtlxutils.mxnodegraph</span> <span class="kn">import</span> <span class="n">MtlxNodeGraph</span> <span class="k">as</span> <span class="n">mxg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mx</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mtlxutils.mxfile</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mxf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mtlxutils.mxnodegraph</span><span class="w"> </span><span class="kn">import</span> <span class="n">MtlxNodeGraph</span> <span class="k">as</span> <span class="n">mxg</span>
 <span class="c1"># For markdown display</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display_markdown</span>
-<span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display_markdown</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="c1"># Version check</span>
-<span class="kn">from</span> <span class="nn">mtlxutils.mxbase</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mtlxutils.mxbase</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="n">haveVersion1387</span> <span class="o">=</span> <span class="n">haveVersion</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">haveVersion1387</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"** Warning: Recommended minimum version is 1.38.7 for tutorials. Have version: "</span><span class="p">,</span> <span class="n">mx</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
@@ -7568,7 +7568,7 @@ of a working document.</p>
 <span class="n">doc</span><span class="o">.</span><span class="n">importLibrary</span><span class="p">(</span><span class="n">stdlib</span><span class="p">)</span>
 
 <span class="c1"># Write predicate</span>
-<span class="k">def</span> <span class="nf">skipLibraryElement</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">skipLibraryElement</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
     <span class="k">return</span> <span class="ow">not</span> <span class="n">elem</span><span class="o">.</span><span class="n">hasSourceUri</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -7595,6 +7595,43 @@ of a working document.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Some additional utilities are proved to write the contents of the new definition document for display.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">writeDocToString</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+    <span class="n">writeOptions</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">XmlWriteOptions</span><span class="p">()</span>
+    <span class="n">writeOptions</span><span class="o">.</span><span class="n">writeXIncludeEnable</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">writeOptions</span><span class="o">.</span><span class="n">elementPredicate</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">skipLibraryElement</span>
+
+    <span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">documentContents</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">writeDocToMarkdown</span><span class="p">(</span><span class="n">documentContents</span><span class="p">):</span>
+    <span class="n">display_markdown</span><span class="p">(</span><span class="s1">'```xml</span><span class="se">\n</span><span class="s1">'</span> <span class="o">+</span> <span class="n">documentContents</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">```</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">writeToMarkdown</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="n">display_markdown</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Moving-Comments-into-Node-Definitions">Moving Comments into Node Definitions<a class="anchor-link" href="#Moving-Comments-into-Node-Definitions">¶</a></h2>
 </div>
 </div>
@@ -7604,10 +7641,10 @@ of a working document.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sanitizeXMLString</span><span class="p">(</span><span class="n">xmlString</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sanitizeXMLString</span><span class="p">(</span><span class="n">xmlString</span><span class="p">):</span>
     <span class="c1"># Add more here as needed</span>
     <span class="n">replacements</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">'&lt;'</span><span class="p">:</span> <span class="s1">'&amp;lt;'</span><span class="p">,</span>
@@ -7630,7 +7667,7 @@ of a working document.</p>
     <span class="n">xmlString</span> <span class="o">=</span> <span class="n">xmlString</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">xmlString</span>
 
-<span class="k">def</span> <span class="nf">transferCommentsToNodeDefs</span><span class="p">(</span><span class="n">libFile</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">transferCommentsToNodeDefs</span><span class="p">(</span><span class="n">libFile</span><span class="p">):</span>
     
     <span class="n">readOptions</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">XmlReadOptions</span><span class="p">()</span>
     <span class="n">readOptions</span><span class="o">.</span><span class="n">readComments</span> <span class="o">=</span> <span class="kc">True</span>
@@ -7744,16 +7781,8 @@ of a working document.</p>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-intense-fg ansi-bold">In[2], line 117</span>
-<span class="ansi-green-fg">    115</span> <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">&gt; Write transferred document to file: data/stdlib_defs_doc_transfer.mtlx</span><span style="color: rgb(175,0,0)">'</span>)
-<span class="ansi-green-fg">    116</span> mx<span style="color: rgb(98,98,98)">.</span>writeToXmlFile(transferredDoc, <span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">data/stdlib_defs_doc_transfer.mtlx</span><span style="color: rgb(175,0,0)">'</span>)
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 117</span> <span class="ansi-yellow-bg">writeToMarkdown</span>(<span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">&amp;gt; [Download stdlib_defs_doc_transfer.mtlx](data/stdlib_defs_doc_transfer.mtlx)</span><span style="color: rgb(175,0,0)">'</span>)
-
-<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name 'writeToMarkdown' is not defined</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
+<p>&gt; <a href="data/stdlib_defs_doc_transfer.mtlx">Download stdlib_defs_doc_transfer.mtlx</a></p>
 </div>
 </div>
 </div>
@@ -7805,10 +7834,10 @@ Cell <span class="ansi-green-intense-fg ansi-bold">In[2], line 117</span>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">createDefinitionAndFunctionalGraph</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="n">cparam</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">createDefinitionAndFunctionalGraph</span><span class="p">(</span><span class="n">nodeGraph</span><span class="p">,</span> <span class="n">cparam</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Example of creating a definition. This has a fixed version, nodegroup and graph names. </span>
 
@@ -7864,10 +7893,10 @@ definition creation workflows.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getNodeGroups</span><span class="p">(</span><span class="n">library</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">getNodeGroups</span><span class="p">(</span><span class="n">library</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Find all the existing node group names on definitions </span>
 
@@ -7902,10 +7931,10 @@ definition creation workflows.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'Existing node groups on definitions:'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'Available node groups on definitions:'</span><span class="p">)</span>
 <span class="n">nodeGroups</span> <span class="o">=</span> <span class="n">getNodeGroups</span><span class="p">(</span><span class="n">stdlib</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">ng</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nodeGroups</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">' - </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">ng</span><span class="p">)</span>
@@ -7921,7 +7950,7 @@ definition creation workflows.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Existing node groups on definitions:
+<pre>Available node groups on definitions:
  - adjustment
  - application
  - channel
@@ -7969,10 +7998,10 @@ library.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">findCompoundGraphs</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">findCompoundGraphs</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">libFiles</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Search for compound graphs in a document. Skips any graphs found in </span>
 <span class="sd">    library files (passed in a a list of source URIs)</span>
@@ -8022,17 +8051,17 @@ MaterialX.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getAllImplementations</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">getAllImplementations</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Print out all implementations</span>
 <span class="sd">    '''</span>
     <span class="k">for</span> <span class="n">impl</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">getImplementations</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">impl</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">getImplementationForNodedef</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">definition</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">getImplementationForNodedef</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">definition</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Get an implemenation which matches a definition which is implemented</span>
 <span class="sd">    as a functional nodegraph</span>
@@ -8108,10 +8137,10 @@ and copying it's contents over.</li>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">addDefinitionToDocument</span><span class="p">(</span><span class="n">definition</span><span class="p">,</span> <span class="n">funcgraph</span><span class="p">,</span> <span class="n">defDoc</span><span class="p">,</span> <span class="n">graphDoc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">defComment</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">graphComment</span><span class="o">=</span><span class="s1">''</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">addDefinitionToDocument</span><span class="p">(</span><span class="n">definition</span><span class="p">,</span> <span class="n">funcgraph</span><span class="p">,</span> <span class="n">defDoc</span><span class="p">,</span> <span class="n">graphDoc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">defComment</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">graphComment</span><span class="o">=</span><span class="s1">''</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Copy a definition and functional node graph to a new document.</span>
 <span class="sd">    If there is a implementation which associates the definition and graph</span>
@@ -8168,43 +8197,6 @@ and copying it's contents over.</li>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Some additional utilities are proved to write the contents of the new definition document for display.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">writeDocToString</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
-    <span class="n">writeOptions</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">XmlWriteOptions</span><span class="p">()</span>
-    <span class="n">writeOptions</span><span class="o">.</span><span class="n">writeXIncludeEnable</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">writeOptions</span><span class="o">.</span><span class="n">elementPredicate</span> <span class="o">=</span> <span class="n">mxf</span><span class="o">.</span><span class="n">MtlxFile</span><span class="o">.</span><span class="n">skipLibraryElement</span>
-
-    <span class="n">documentContents</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">writeOptions</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">documentContents</span>
-
-<span class="k">def</span> <span class="nf">writeDocToMarkdown</span><span class="p">(</span><span class="n">documentContents</span><span class="p">):</span>
-    <span class="n">display_markdown</span><span class="p">(</span><span class="s1">'```xml</span><span class="se">\n</span><span class="s1">'</span> <span class="o">+</span> <span class="n">documentContents</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">```</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">writeToMarkdown</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-    <span class="n">display_markdown</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="Example">Example<a class="anchor-link" href="#Example">¶</a></h3><p>As an example we will load in an example compound graph and use it to create a definition. The Python utility <a href="createdefinition.py" target="_blank">(<code>createdefinition</code>)</a> encapsulates this logic and provides a command line interface for various options.</p>
 <p>The main logic loads in an example file, creates new definition/functional graph pairs and writes them to
 separate separate document(s).</p>
@@ -8237,7 +8229,7 @@ could be used in a shared definition library.</li>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">generateIdentifier</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">generateIdentifier</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">nodeGraph</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Utility to generate a unique identifier for a definition. Takes into account</span>
 <span class="sd">    category, version and a node graphs signature.</span>
@@ -8247,7 +8239,7 @@ could be used in a shared definition library.</li>
         <span class="n">outputTypes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">getType</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">generateIdentifierFromOutputs</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">outputTypes</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">generateIdentifierFromOutputs</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">outputTypes</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generateIdentifierFromOutputs</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">outputTypes</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Utility to generate a unique identifier for a definition. Takes into account</span>
 <span class="sd">    category, version and list of output types.</span>
@@ -8262,21 +8254,21 @@ could be used in a shared definition library.</li>
 
     <span class="k">return</span> <span class="n">mx</span><span class="o">.</span><span class="n">createValidName</span><span class="p">(</span><span class="n">identifier</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">createDefinitionIdentifier</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">createDefinitionIdentifier</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">''' </span>
 <span class="sd">    Create the definition element id</span>
 <span class="sd">    '''</span>
     <span class="n">nodedefName</span> <span class="o">=</span> <span class="s1">'ND_'</span> <span class="o">+</span> <span class="n">identifier</span>
     <span class="k">return</span> <span class="n">nodedefName</span>
 
-<span class="k">def</span> <span class="nf">createGraphIdentifier</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">createGraphIdentifier</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">''' </span>
 <span class="sd">    Create the functional node graph element id</span>
 <span class="sd">    '''</span>
     <span class="n">nodegraphName</span> <span class="o">=</span> <span class="s1">'NG_'</span> <span class="o">+</span> <span class="n">identifier</span>
     <span class="k">return</span> <span class="n">nodegraphName</span>
 
-<span class="k">def</span> <span class="nf">createImplIdentifier</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">createImplIdentifier</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">''' </span>
 <span class="sd">    Create the implementation element id</span>
 <span class="sd">    '''</span>
@@ -8420,7 +8412,7 @@ Both the definition and functional graph need to be patched.</li>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">patchDefinition</span><span class="p">(</span><span class="n">definition</span><span class="p">,</span> <span class="n">funcgraph</span><span class="p">,</span> <span class="n">documentation</span><span class="p">,</span> <span class="n">namespace</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">patchDefinition</span><span class="p">(</span><span class="n">definition</span><span class="p">,</span> <span class="n">funcgraph</span><span class="p">,</span> <span class="n">documentation</span><span class="p">,</span> <span class="n">namespace</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">documentation</span><span class="p">:</span>
         <span class="n">definition</span><span class="o">.</span><span class="n">setDocString</span><span class="p">(</span><span class="n">documentation</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">namespace</span><span class="p">:</span>
@@ -8635,7 +8627,7 @@ output type is <code>color3</code> which is incorporated into the identifier as 
 <div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">addSourceNodeDefinition</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">cparam</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">addSourceNodeDefinition</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">cparam</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Add a node definition which uses the standard naming convention.</span>
 <span class="sd">    No definition is created if a node of the same name already exists in the document </span>
@@ -8741,7 +8733,7 @@ output type is <code>color3</code> which is incorporated into the identifier as 
 <div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">copyGraphInterface</span><span class="p">(</span><span class="n">newDef</span><span class="p">,</span> <span class="n">refNodeGraph</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">copyGraphInterface</span><span class="p">(</span><span class="n">newDef</span><span class="p">,</span> <span class="n">refNodeGraph</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Create a source code definition with the interface being provided by a reference node graph</span>
 <span class="sd">    '''</span>
@@ -8885,7 +8877,7 @@ IMPL_myadd_1_0_color3_genosl for target: genosl
 <div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getTargetDefs</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">getTargetDefs</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
     <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">getChildren</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">element</span><span class="o">.</span><span class="n">getCategory</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'targetdef'</span><span class="p">:</span>
@@ -8893,7 +8885,7 @@ IMPL_myadd_1_0_color3_genosl for target: genosl
                 <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">targets</span>
 
-<span class="k">def</span> <span class="nf">createImplementations</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">nodedef</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">createImplementations</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">nodedef</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Create implementation elements for a set of targets based on a given definition (nodedef).</span>
 <span class="sd">    All implementation names are of the form:</span>
@@ -8975,7 +8967,7 @@ IMPL_myadd_1_0_color3_genosl for target: genosl
 <div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">setImplementationSourceCode_v1</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">nodedef</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">sourceCode</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">setImplementationSourceCode_v1</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">nodedef</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">sourceCode</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Set the same inlined source code for all targets of a nodedef. </span>
 <span class="sd">    '''</span>
@@ -9063,7 +9055,7 @@ Implementation.setFile()</a></p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">setImplementationSourceCode</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">nodedef</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">sourceCode</span><span class="p">,</span> <span class="n">inlined</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">setImplementationSourceCode</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">nodedef</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">sourceCode</span><span class="p">,</span> <span class="n">inlined</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Add source code references.</span>
 <span class="sd">    - If inlined then the code is embedded in the `sourcecode` attribute</span>
@@ -9156,7 +9148,7 @@ Implementation.setFile()</a></p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="3.-Adding-Definitions-To-A-%22Library%22">3. Adding Definitions To A "Library"<a class="anchor-link" href="#3.-Adding-Definitions-To-A-%22Library%22">¶</a></h2><p>When a definition is refined to the point where it can be made available generally, there are a few choices to how they are organized and where they will reside. For instance a new definition could either be part of a custom library or potentially contributed back the the MaterialX standard libraries.</p>
 <h3 id="3.1-%22Standard%22-Library-Organization">3.1 "Standard" Library Organization<a class="anchor-link" href="#3.1-%22Standard%22-Library-Organization">¶</a></h3><p>Below shows a layout for how the standard libraries are organized on the left.</p>
-<img alt="No description has been provided for this image" src="../documents/images/definition_library_org.jpg" width="80%"/>
+<img alt="No description has been provided for this image" src="../../documents/images/definition_library_org.jpg" width="80%"/>
 <p>For example if we consider the grouping on the left to be <code>stdlib</code>, then it is composed of:</p>
 <ul>
 <li>A separate file <code>stdlib_defs.mtlx</code> containing all definitions (<code>_defs</code>)</li>
@@ -9363,7 +9355,7 @@ any implementation files per target.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getStandardLibraryFilePaths</span><span class="p">(</span><span class="n">library</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[]):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">getStandardLibraryFilePaths</span><span class="p">(</span><span class="n">library</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="p">[]):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Get file paths based on a "standard" library configuration</span>
 <span class="sd">    '''</span>    
@@ -9598,7 +9590,7 @@ add all of it's implementations to eh appropriate per target implementation file
 <div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">addSourceDefinitionToDocument</span><span class="p">(</span><span class="n">definition</span><span class="p">,</span> <span class="n">impls</span><span class="p">,</span> <span class="n">defDoc</span><span class="p">,</span> <span class="n">implDocs</span><span class="p">,</span> <span class="n">defComment</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">implComment</span><span class="o">=</span><span class="s1">''</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">addSourceDefinitionToDocument</span><span class="p">(</span><span class="n">definition</span><span class="p">,</span> <span class="n">impls</span><span class="p">,</span> <span class="n">defDoc</span><span class="p">,</span> <span class="n">implDocs</span><span class="p">,</span> <span class="n">defComment</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">implComment</span><span class="o">=</span><span class="s1">''</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">'''</span>
 <span class="sd">    Copy a definition and implementations to a new document.</span>
 <span class="sd">    </span>
