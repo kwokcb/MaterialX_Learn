@@ -121,7 +121,7 @@ def main():
             exit(-1)
 
         # Load in geometry.
-        geometryShape = './data/sphere.obj'
+        geometryShape = './notebooks/data/sphere.obj'
         if len(opts.geometryPath) > 0:
             geometryShape = opts.geometryPath
         if not os.path.exists(geometryShape):
