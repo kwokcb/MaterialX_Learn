@@ -135,6 +135,8 @@
                             <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
                                 Revisions</a>
                             <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1392_vs_1393.html">
+                                    1.39.2 vs 1.39.3</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1391_vs_1392.html">
                                         1.39.1 vs 1.39.2</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1390_vs_1391.html">
@@ -382,6 +384,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="dotproduct.html">dotproduct</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="exp.html">exp</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="floor.html">floor</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fract.html">fract</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="invert.html">invert</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="invertmatrix.html">invertmatrix</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ln.html">ln</a>
@@ -663,83 +666,28 @@ Category: time
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+<img class="bg-light" src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_time_float">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-8">
-      <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_time_float() </textarea>
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_time_float">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">File:</label>
-   <div class="col-8">
-  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_time_float.osl" target="_blank">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_time_float.osl">
-  </a>
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
-   <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_time_float">
-   </div>
-  </div>
-<hr>
+<button id="ND_time_float_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
+<button id="ND_time_float_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_time_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
+</div>
+<div id="ND_time_float_mrender_mermaid_input" class="mermaid" hidden>
+graph TB
+    subgraph NG_time_float_genglsl
+    NG_time_float_genglsl_frame[frame]
+    NG_time_float_genglsl_time[time]
+    style NG_time_float_genglsl_out  fill:#0C0, color:#FFF
+    NG_time_float_genglsl_out([out])
+    end
+    NG_time_float_genglsl_frame --"in1"--> NG_time_float_genglsl_time
+    NG_time_float_genglsl_time --> NG_time_float_genglsl_out
+
+
+</div></code></pre>
+
 </details>
 </p>
 </div>

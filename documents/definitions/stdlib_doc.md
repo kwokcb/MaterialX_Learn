@@ -23,7 +23,7 @@
 * [surfacematerial](#node-surfacematerial) [volumematerial](#node-volumematerial) 
 ---------
 ### Node Group: math
-* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [creatematrix](#node-creatematrix) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [reflect](#node-reflect) [refract](#node-refract) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [round](#node-round) [safepower](#node-safepower) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) [trianglewave](#node-trianglewave) 
+* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [creatematrix](#node-creatematrix) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [fract](#node-fract) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [reflect](#node-reflect) [refract](#node-refract) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [round](#node-round) [safepower](#node-safepower) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) [trianglewave](#node-trianglewave) 
 ---------
 ### Node Group: organization
 * [dot](#node-dot) 
@@ -5911,12 +5911,15 @@ graph TB
     NG_bump_vector3_scale([scale])
     style NG_bump_vector3_tangent  fill:#09D, color:#FFF
     NG_bump_vector3_tangent([tangent])
+    style NG_bump_vector3_bitangent  fill:#09D, color:#FFF
+    NG_bump_vector3_bitangent([bitangent])
     end
     NG_bump_vector3_height --"in"--> NG_bump_vector3_N_heighttonormal
     NG_bump_vector3_N_heighttonormal --"in"--> NG_bump_vector3_N_normalmap
     NG_bump_vector3_normal --"normal"--> NG_bump_vector3_N_normalmap
     NG_bump_vector3_scale --"scale"--> NG_bump_vector3_N_normalmap
     NG_bump_vector3_tangent --"tangent"--> NG_bump_vector3_N_normalmap
+    NG_bump_vector3_bitangent --"bitangent"--> NG_bump_vector3_N_normalmap
     NG_bump_vector3_N_normalmap --> NG_bump_vector3_out
 ```
  
@@ -5927,6 +5930,7 @@ graph TB
 | **scale** | float | 1.0 | Scale |  |  | 0.0 | 1.0 |  |  |  | Scalar to adjust the height amount. |  |
 | **normal** | vector3 | None | Normal |  |  |  |  |  |  |  | Surface normal; defaults to the current world-space normal. |  |
 | **tangent** | vector3 | None | Tangent |  |  |  |  |  |  |  | Surface tangent vector, defaults to the current world-space tangent vector. |  |
+| **bitangent** | vector3 | None | Bitangent |  |  |  |  |  |  |  | Surface bitangent vector, defaults to the current world-space bitangent vector. |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  | Offset surface normal; connect this to a shader's 'normal' input. |  |
 ### Category: *frame*
 <details open><summary>ND_frame_float</summary>
@@ -5952,7 +5956,20 @@ graph TB
 * *Group*: application
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_time_float_genglsl
+
+
+```mermaid
+graph TB
+    subgraph NG_time_float_genglsl
+    NG_time_float_genglsl_frame[frame]
+    NG_time_float_genglsl_time[time]
+    style NG_time_float_genglsl_out  fill:#0C0, color:#FFF
+    NG_time_float_genglsl_out([out])
+    end
+    NG_time_float_genglsl_frame --"in1"--> NG_time_float_genglsl_time
+    NG_time_float_genglsl_time --> NG_time_float_genglsl_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -7067,6 +7084,97 @@ graph TB
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in1** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **in2** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *fract*
+<details open><summary>ND_fract_float</summary>
+<p>
+ 
+* *Nodedef*: ND_fract_float
+* *Type*: float
+* *Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fract_color3</summary>
+<p>
+ 
+* *Nodedef*: ND_fract_color3
+* *Type*: color3
+* *Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fract_color4</summary>
+<p>
+ 
+* *Nodedef*: ND_fract_color4
+* *Type*: color4
+* *Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fract_vector2</summary>
+<p>
+ 
+* *Nodedef*: ND_fract_vector2
+* *Type*: vector2
+* *Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fract_vector3</summary>
+<p>
+ 
+* *Nodedef*: ND_fract_vector3
+* *Type*: vector3
+* *Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fract_vector4</summary>
+<p>
+ 
+* *Nodedef*: ND_fract_vector4
+* *Type*: vector4
+* *Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *invert*
 <details open><summary>ND_invert_float</summary>
