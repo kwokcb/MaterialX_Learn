@@ -35,7 +35,7 @@ print_prs "PRs authored by you" "author:@me"
 
 #print_prs "PRs assigned to you" "assignee:@me"
 
-print_prs "PRs mention you" "mention:@me"
+print_prs "PRs mention you" "mentions:@me"
 
 echo ""
 echo "## All Open PRs"

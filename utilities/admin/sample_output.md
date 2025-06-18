@@ -3,6 +3,7 @@
 
 | Title | Branch | Created At | Updated At | URL |
 |-------|--------|------------|-----|-----|
+| Static analysis fixes | main | 2025-06-18 13:52 | 2025-06-18 14:01 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2455) |
 
 ## PRs authored by you
 
@@ -20,18 +21,20 @@
 
 | Title | Branch | Created At | Updated At | URL |
 |-------|--------|------------|-----|-----|
-| Optimizations to `heighttonormal` | main | 2025-06-14 13:06 | 2025-06-18 10:14 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2453) |
-| Add `fractal2d` node | fractal2d | 2025-01-13 23:34 | 2025-06-17 12:43 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2183) |
-| Generating Python API docs | #342-PythonAPI-docs | 2024-09-29 20:59 | 2025-04-12 14:50 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2038) |
+| Web Viewer: Fix uniforms not being updated per object, leading to incorrect object rendering | feature/fix-uniform-update-loop | 2025-06-09 11:07 | 2025-06-18 11:18 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2446) |
+| Graph Editor: Add graph editor background color option | graph_editor_bg_colour | 2025-05-07 11:49 | 2025-06-05 09:44 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2371) |
+| Graph Editor : Support Node Up/Down Stream Connection Traversal in Property Editor | node_editor_traversal | 2025-02-12 14:14 | 2025-06-05 15:07 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2225) |
+| Improve render test compare performance | render_test_perf | 2025-02-11 11:21 | 2025-06-05 09:43 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2223) |
+| Add API to allow input reordering on node graphs | reorder_inputs | 2024-11-15 09:27 | 2025-06-05 09:43 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2116) |
 
 ## All Open PRs
 
 | Title | Branch | Created At | Updated At | URL |
 |-------|--------|------------|------------|-----|
-| Optimizations to `heighttonormal` | main | 2025-06-14 13:06 | 2025-06-18 10:14 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2453) |
+| Static analysis fixes | main | 2025-06-18 13:52 | 2025-06-18 14:01 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2455) |
 | add a MATERIALX_INSTALL_BIN_PATH CMake option to guide installation of executables and Windows shared libraries | pr/add_bin_path_CMake_option | 2025-06-13 11:46 | 2025-06-13 21:27 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2452) |
 | Draft : Data Library Template + Specification Generation tools | template/generate-spec-docs | 2025-06-11 18:26 | 2025-06-13 17:10 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2451) |
-| Web Viewer: Fix uniforms not being updated per object, leading to incorrect object rendering | feature/fix-uniform-update-loop | 2025-06-09 11:07 | 2025-06-09 13:07 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2446) |
+| Web Viewer: Fix uniforms not being updated per object, leading to incorrect object rendering | feature/fix-uniform-update-loop | 2025-06-09 11:07 | 2025-06-18 11:18 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2446) |
 | Web Viewer: Use original object names from loaded glTF files for DAG matching and keep material names | feature/use-original-names | 2025-06-09 10:45 | 2025-06-09 10:46 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2445) |
 | Translation for specular anisotropy, rotation from Standard surface to gltf_pbr | gltf-stdsurf-anisotropy-translation | 2025-06-05 11:23 | 2025-06-14 20:09 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2440) |
 | Add genvulkan target definition | mtlx_add_vulkan_target_definition | 2025-06-05 09:15 | 2025-06-05 09:32 | [Link](https://github.com/AcademySoftwareFoundation/MaterialX/pull/2439) |
