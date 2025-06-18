@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub PR Viewer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light py-4">
+  <div class="container">
+    <h1 class="mb-4">GitHub Pull Request Viewer</h1>
+
+    <div class="mb-3">
+      <label for="repo" class="form-label">Repository (owner/repo):</label>
+      <input type="text" class="form-control" id="repo" value="AcademySoftwareFoundation/MaterialX">
+    </div>
+
+    <div class="mb-3">
+      <label for="username" class="form-label">GitHub Username:</label>
+      <input type="text" class="form-control" id="username" placeholder="e.g., bernardkwok">
+    </div>
+
+    <div class="mb-3">
+      <label for="token" class="form-label">GitHub Personal Access Token (required):</label>
+      <input type="password" class="form-control" id="token" placeholder="ghp_...">
+    </div>
+
+    <button class="btn btn-primary mb-4" onclick="queryPRs()">Query</button>
+
+    <div id="results"></div>
+  </div>
+
+  <script>
+    async function queryPRs() {
+      const repo = document.getElementById("repo").value.trim();
+      const username = document.getElementById("username").value.trim();
+      const token = document.getElementById("token").value.trim();
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = '<div class="alert alert-info">Loading...</div>';
+
+      if (!repo || !username || !token) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github+json"
+      };
+
+      const queries = [
+        {
+          title: "PRs Authored by You",
+          url: `https://api.github.com/search/issues?q=repo:${repo}+author:${username}+is:pr+is:open`
+        },
+        {
+          title: "PRs Requesting Your Review",
+          url: `https://api.github.com/search/issues?q=repo:${repo}+review-requested:${username}+is:pr+is:open`
+        },
+        {
+          title: "PRs Mentioning You",
+          url: `https://api.github.com/search/issues?q=repo:${repo}+mentions:${username}+is:pr+is:open`
+        },
+        {
+          title: "All Open PRs",
+          url: `https://api.github.com/repos/${repo}/pulls?state=open`
+        }
+      ];
+
+      let html = "";
+
+      for (const { title, url } of queries) {
+        try {
+          const res = await fetch(url, { headers });
+          const data = await res.json();
+          const items = Array.isArray(data) ? data : data.items || [];
+
+          html += `<h2 class="mt-4">${title}</h2>`;
+          if (items.length === 0) {
+            html += `<div class="alert alert-secondary"><em>No results found.</em></div>`;
+            continue;
+          }
+
+          html += `
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered align-middle" style="max-height: 400px; overflow-y: auto;"">
+                <thead class="table-light">
+                  <tr>
+                    <th>Title</th>
+                    <th>Branch</th>
+                    <th>Created</th>
+                    <th>Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+          `;
+
+          for (const pr of items) {
+            const prTitle = pr.title;
+            const prUrl = pr.html_url;
+            const createdAt = new Date(pr.created_at).toLocaleString();
+            const branch = pr.head?.ref || "-";
+            html += `
+              <tr>
+                <td>${prTitle}</td>
+                <td>${branch}</td>
+                <td>${createdAt}</td>
+                <td><a href="${prUrl}" target="_blank" class="btn btn-sm btn-outline-primary">View PR</a></td>
+              </tr>
+            `;
+          }
+
+          html += `</tbody></table></div>`;
+        } catch (error) {
+          html += `<div class="alert alert-danger">Error fetching ${title}: ${error.message}</div>`;
+        }
+      }
+
+      resultsDiv.innerHTML = html;
+    }
+  </script>
+</body>
+</html>

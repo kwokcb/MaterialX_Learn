@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub “@mention” Scanner</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light py-4">
+  <div class="container">
+    <h1 class="mb-4">GitHub “@mention” Scanner</h1>
+
+    <div class="mb-3">
+      <label for="repo" class="form-label">Repository (owner/repo):</label>
+      <input id="repo" type="text" class="form-control" value="AcademySoftwareFoundation/MaterialX">
+    </div>
+
+    <div class="mb-3">
+      <label for="username" class="form-label">Your GitHub Username:</label>
+      <input id="username" type="text" class="form-control" placeholder="e.g. github_user">
+    </div>
+
+    <div class="mb-3">
+      <label for="token" class="form-label">Personal Access Token (with repo scope):</label>
+      <input id="token" type="password" class="form-control" placeholder="ghp_...">
+    </div>
+
+    <button class="btn btn-primary mb-4" onclick="scanMentions()">Scan for Mentions</button>
+
+    <div id="results"></div>
+  </div>
+
+  <script>
+    async function scanMentions() {
+      const repo = document.getElementById('repo').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const token = document.getElementById('token').value.trim();
+      const out = document.getElementById('results');
+
+      if (!repo || !username || !token) {
+        return alert("Please fill all fields.");
+      }
+
+      out.innerHTML = `<div class="alert alert-info">Loading…</div>`;
+
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/vnd.github+json'
+      };
+
+      let prs = await fetch(`https://api.github.com/repos/${repo}/pulls?state=open`, { headers })
+        .then(r => r.json());
+
+      if (!Array.isArray(prs)) {
+        out.innerHTML = `<div class="alert alert-danger">Error fetching PRs: ${prs.message || 'Unknown error'}</div>`;
+        return;
+      }
+
+      const matches = { title: [], comments: [], review_comments: [] };
+      const mention = new RegExp(`@${username}\\b`, 'i');
+
+      for (const pr of prs) {
+        const base = `https://api.github.com/repos/${repo}`;
+        const [
+          issueComments,
+          reviewComments
+        ] = await Promise.all([
+          fetch(`${base}/issues/${pr.number}/comments`, { headers }).then(r => r.json()),
+          fetch(`${base}/pulls/${pr.number}/comments`, { headers }).then(r => r.json())
+        ]);
+
+        if (mention.test(pr.title + "\n" + (pr.body || ''))) {
+          matches.title.push(pr);
+          continue;
+        }
+
+        if (Array.isArray(issueComments) && issueComments.some(c => mention.test(c.body))) {
+          matches.comments.push(pr);
+          continue;
+        }
+
+        if (Array.isArray(reviewComments) && reviewComments.some(c => mention.test(c.body))) {
+          matches.review_comments.push(pr);
+        }
+      }
+
+      let html = '';
+      const sections = [
+        ['PR Title/Description Mentions', 'title'],
+        ['Issue Comments Mentions', 'comments'],
+        ['Inline Review Comments Mentions', 'review_comments']
+      ];
+
+      for (const [sectionTitle, key] of sections) {
+        html += `<h2 class="mt-4">${sectionTitle}</h2>`;
+        if (matches[key].length === 0) {
+          html += `<div class="alert alert-secondary"><em>No matches found.</em></div>`;
+        } else {
+          html += `
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped">
+                <thead class="table-light">
+                  <tr><th>#</th><th>Title</th><th>Branch</th><th>Created</th><th>Link</th></tr>
+                </thead>
+                <tbody>
+          `;
+          for (const pr of matches[key]) {
+            html += `
+              <tr>
+                <td>${pr.number}</td>
+                <td>${pr.title}</td>
+                <td>${pr.head.ref}</td>
+                <td>${new Date(pr.created_at).toLocaleString()}</td>
+                <td><a href="${pr.html_url}" target="_blank" class="btn btn-sm btn-outline-primary">View PR</a></td>
+              </tr>
+            `;
+          }
+          html += `</tbody></table></div>`;
+        }
+      }
+
+      out.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
