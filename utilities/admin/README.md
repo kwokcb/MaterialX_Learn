@@ -2,7 +2,7 @@
 
 ## Web `gh` Rest API Query
 - mx_gh_mentions.html : Page to find places where user name is mentioned using @.
-<img src="sample_html_mention_snapshot.png.png" width=100%>
+<img src="sample_html_mention_snapshot.png" width=100%>
 
 - mx_gh_status.html : Page to get PR status.
 <img src="sample_html_output_snapshot.png" width=100%>
