@@ -41,7 +41,7 @@ def build_nodedef_info():
     # Append "targets" to the library_dict
     library_dict["targets"] = { "children" : currTargets }
 
-    print("Target List:", currTargets)
+    print("Target List:", targetNames)
 
     # Build a mapping from library name to its node entry in the children list
     library_entries = {}
@@ -68,6 +68,18 @@ def build_nodedef_info():
                 # Add nodedef as a child if not already present
                 if not any(child["name"] == nodedef_name for child in node_entry["children"]):
                     new_child = {"name": nodedef_name, "type": "nodedef"}
+                    version = nodedef.getVersionString()
+                    if version:
+                        new_child["version"] = version
+                    nodegroup = nodedef.getNodeGroup()
+                    if nodegroup:
+                        new_child["nodegroup"] = nodegroup                    
+                    docstring = nodedef.getAttribute('doc')
+                    if docstring:
+                        # Escape any quotes in the docstring
+                        docstring = docstring.replace('"', '\\"')
+                        docstring = docstring.replace("'", '\\"')
+                        new_child["doc"] = docstring
 
                     # Add implementation children if they exist
                     implementation = nodedef.getImplementation()
@@ -105,6 +117,7 @@ def build_nodedef_info():
     
     sort_children(library_dict["children"])
 
+                                        
     json_string = json.dumps(library_dict, indent=2)
     # Write the json string to a file    
     with open('materialX_libraries_dictionary.json', 'w') as f:
