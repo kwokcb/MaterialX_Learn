@@ -1038,6 +1038,82 @@
       ]
     },
     {
+      "name": "geompropdefs",
+      "type": "geompropdef_group",
+      "children": [
+        {
+          "name": "Bobject",
+          "type": "vector3",
+          "geomprop": "bitangent",
+          "space": "object",
+          "index": "0"
+        },
+        {
+          "name": "Bworld",
+          "type": "vector3",
+          "geomprop": "bitangent",
+          "space": "world",
+          "index": "0"
+        },
+        {
+          "name": "Nobject",
+          "type": "vector3",
+          "geomprop": "normal",
+          "space": "object",
+          "index": ""
+        },
+        {
+          "name": "Nworld",
+          "type": "vector3",
+          "geomprop": "normal",
+          "space": "world",
+          "index": ""
+        },
+        {
+          "name": "Pobject",
+          "type": "vector3",
+          "geomprop": "position",
+          "space": "object",
+          "index": ""
+        },
+        {
+          "name": "Pworld",
+          "type": "vector3",
+          "geomprop": "position",
+          "space": "world",
+          "index": ""
+        },
+        {
+          "name": "Tobject",
+          "type": "vector3",
+          "geomprop": "tangent",
+          "space": "object",
+          "index": "0"
+        },
+        {
+          "name": "Tworld",
+          "type": "vector3",
+          "geomprop": "tangent",
+          "space": "world",
+          "index": "0"
+        },
+        {
+          "name": "UV0",
+          "type": "vector2",
+          "geomprop": "texcoord",
+          "space": "",
+          "index": "0"
+        },
+        {
+          "name": "Vworld",
+          "type": "vector3",
+          "geomprop": "viewdirection",
+          "space": "world",
+          "index": ""
+        }
+      ]
+    },
+    {
       "name": "lights",
       "type": "library",
       "children": [
@@ -20666,30 +20742,137 @@
       "name": "targets",
       "type": "library",
       "children": []
+    },
+    {
+      "name": "typedefs",
+      "type": "typedef_group",
+      "children": [
+        {
+          "name": "BSDF",
+          "type": "typedef"
+        },
+        {
+          "name": "EDF",
+          "type": "typedef"
+        },
+        {
+          "name": "VDF",
+          "type": "typedef"
+        },
+        {
+          "name": "boolean",
+          "type": "typedef"
+        },
+        {
+          "name": "color3",
+          "type": "typedef"
+        },
+        {
+          "name": "color3array",
+          "type": "typedef"
+        },
+        {
+          "name": "color4",
+          "type": "typedef"
+        },
+        {
+          "name": "color4array",
+          "type": "typedef"
+        },
+        {
+          "name": "displacementshader",
+          "type": "typedef"
+        },
+        {
+          "name": "filename",
+          "type": "typedef"
+        },
+        {
+          "name": "float",
+          "type": "typedef"
+        },
+        {
+          "name": "floatarray",
+          "type": "typedef"
+        },
+        {
+          "name": "geomname",
+          "type": "typedef"
+        },
+        {
+          "name": "geomnamearray",
+          "type": "typedef"
+        },
+        {
+          "name": "integer",
+          "type": "typedef"
+        },
+        {
+          "name": "integerarray",
+          "type": "typedef"
+        },
+        {
+          "name": "lightshader",
+          "type": "typedef"
+        },
+        {
+          "name": "material",
+          "type": "typedef"
+        },
+        {
+          "name": "matrix33",
+          "type": "typedef"
+        },
+        {
+          "name": "matrix44",
+          "type": "typedef"
+        },
+        {
+          "name": "none",
+          "type": "typedef"
+        },
+        {
+          "name": "string",
+          "type": "typedef"
+        },
+        {
+          "name": "stringarray",
+          "type": "typedef"
+        },
+        {
+          "name": "surfaceshader",
+          "type": "typedef"
+        },
+        {
+          "name": "vector2",
+          "type": "typedef"
+        },
+        {
+          "name": "vector2array",
+          "type": "typedef"
+        },
+        {
+          "name": "vector3",
+          "type": "typedef"
+        },
+        {
+          "name": "vector3array",
+          "type": "typedef"
+        },
+        {
+          "name": "vector4",
+          "type": "typedef"
+        },
+        {
+          "name": "vector4array",
+          "type": "typedef"
+        },
+        {
+          "name": "volumeshader",
+          "type": "typedef"
+        }
+      ]
     }
   ],
-  "targets": {
-    "children": [
-      {
-        "name": "essl",
-        "type": "targetdef"
-      },
-      {
-        "name": "genglsl",
-        "type": "targetdef"
-      },
-      {
-        "name": "genmdl",
-        "type": "targetdef"
-      },
-      {
-        "name": "genmsl",
-        "type": "targetdef"
-      },
-      {
-        "name": "genosl",
-        "type": "targetdef"
-      }
-    ]
-  }
+  "targets": "essl, genglsl, genmdl, genmsl, genosl"
 }

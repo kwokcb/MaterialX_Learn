@@ -40,9 +40,47 @@ def build_nodedef_info(insert_nodegroup=True):
         currTargets.append( { 'name' : target.getName(), 'type' : 'targetdef' } )
         targetNames.append(target.getName())
     # Append "targets" to the library_dict
-    library_dict["targets"] = { "children" : currTargets }
+    targetNameString = ', '.join(targetNames)
+    library_dict['targets']  = targetNameString
 
     print("Target List:", targetNames)
+
+    # Emit typedefs if they exist
+    typedefs = doc.getTypeDefs()
+    if typedefs:
+        typedef_group = {
+            "name": "typedefs",
+            "type": "typedef_group",
+            "children": []
+        }
+        for typedef in typedefs:
+            typedef_entry = {
+                "name": typedef.getName(),
+                "type": "typedef"
+            }
+            typedef_group["children"].append(typedef_entry)
+        library_dict["children"].append(typedef_group)
+        print("TypeDefs:", [typedef.getName() for typedef in typedefs])
+
+    geompropdefs = doc.getGeomPropDefs()
+    if geompropdefs:
+        
+        geompropdef_group = {
+            "name": "geompropdefs",
+            "type": "geompropdef_group",
+            "children": []
+        }
+        for geompropdef in geompropdefs:
+            geompropdef_entry = {
+                "name": geompropdef.getName(),
+                "type": geompropdef.getType(),
+                "geomprop": geompropdef.getGeomProp(),
+                "space": geompropdef.getSpace(),
+                "index": geompropdef.getIndex()
+            }
+            geompropdef_group["children"].append(geompropdef_entry)
+        library_dict["children"].append(geompropdef_group)
+        print("GeomPropDefs:", [geompropdef.getName() for geompropdef in geompropdefs])
 
     # Build a mapping from library name to its node entry in the children list
     library_entries = {}
