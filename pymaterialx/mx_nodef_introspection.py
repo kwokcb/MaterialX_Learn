@@ -1,8 +1,9 @@
 import MaterialX as mx
 import os
 import json
+import argparse
 
-def build_nodedef_info():
+def build_nodedef_info(insert_nodegroup=True):
 
     searchPath = mx.getDefaultDataSearchPath().asString()
     searchPath = os.path.normpath(searchPath)
@@ -57,13 +58,26 @@ def build_nodedef_info():
             if library_name in sourceuri:
                 node_name = nodedef.getNodeString()
                 nodedef_name = nodedef.getName()
+                nodegroup = nodedef.getNodeGroup()
                 lib_entry = library_entries[library_name]
 
-                # Find or create node entry
-                node_entry = next((item for item in lib_entry["children"] if item["name"] == node_name), None)
+                # Determine the parent container based on whether nodegroup exists and option is enabled
+                if nodegroup and insert_nodegroup:
+                    # Find or create nodegroup entry under library
+                    nodegroup_entry = next((item for item in lib_entry["children"] if item["name"] == nodegroup and item["type"] == "nodegroup"), None)
+                    if nodegroup_entry is None:
+                        nodegroup_entry = {"name": nodegroup, "type": "nodegroup", "children": []}
+                        lib_entry["children"].append(nodegroup_entry)
+                    parent_container = nodegroup_entry
+                else:
+                    # Use library as parent container (either no nodegroup or insert_nodegroup is False)
+                    parent_container = lib_entry
+
+                # Find or create node entry under the parent container
+                node_entry = next((item for item in parent_container["children"] if item["name"] == node_name and item["type"] == "node"), None)
                 if node_entry is None:
                     node_entry = {"name": node_name, "type": "node", "children": []}
-                    lib_entry["children"].append(node_entry)
+                    parent_container["children"].append(node_entry)
 
                 # Add nodedef as a child if not already present
                 if not any(child["name"] == nodedef_name for child in node_entry["children"]):
@@ -71,9 +85,11 @@ def build_nodedef_info():
                     version = nodedef.getVersionString()
                     if version:
                         new_child["version"] = version
-                    nodegroup = nodedef.getNodeGroup()
-                    if nodegroup:
-                        new_child["nodegroup"] = nodegroup                    
+                    
+                    # Add nodegroup as metadata when not inserting nodegroup level
+                    if nodegroup and not insert_nodegroup:
+                        new_child["nodegroup"] = nodegroup
+                        
                     docstring = nodedef.getAttribute('doc')
                     if docstring:
                         # Escape any quotes in the docstring
@@ -117,17 +133,29 @@ def build_nodedef_info():
     
     sort_children(library_dict["children"])
 
-                                        
-    json_string = json.dumps(library_dict, indent=2)
-    # Write the json string to a file    
-    with open('materialX_libraries_dictionary.json', 'w') as f:
-        f.write(json_string)
+    return library_dict                                        
 
 def main():
+    parser = argparse.ArgumentParser(description="Build MaterialX NodeDef Introspection JSON")
+    parser.add_argument('-ng', '--insert_nodegroup', action='store_true', help="Insert nodegroup entries in the JSON output")
+    args = parser.parse_args()
+
     print("MaterialX Version:", mx.__version__)
+    insert_nodegroup = args.insert_nodegroup
+    if insert_nodegroup:
+        print("Inserting nodegroup entries in the JSON output.")
+    else:
+        print("Not inserting nodegroup entries in the JSON output.")
 
-    build_nodedef_info()
-
+    library_dict = build_nodedef_info(insert_nodegroup)  
+    if library_dict:
+        if insert_nodegroup:
+            output_file = "nodedef_introspection.json"
+        else:
+            output_file = "nodedef_introspection_no_nodegroup.json"
+        with open(output_file, 'w') as f:
+            json.dump(library_dict, f, indent=2)
+        print(f"NodeDef introspection JSON written to {output_file}")
 
 if __name__ == "__main__":
     main()
