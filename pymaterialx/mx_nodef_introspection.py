@@ -58,31 +58,54 @@ def build_nodedef_info():
                 node_name = nodedef.getNodeString()
                 nodedef_name = nodedef.getName()
                 lib_entry = library_entries[library_name]
+
                 # Find or create node entry
                 node_entry = next((item for item in lib_entry["children"] if item["name"] == node_name), None)
                 if node_entry is None:
                     node_entry = {"name": node_name, "type": "node", "children": []}
                     lib_entry["children"].append(node_entry)
+
                 # Add nodedef as a child if not already present
                 if not any(child["name"] == nodedef_name for child in node_entry["children"]):
                     new_child = {"name": nodedef_name, "type": "nodedef"}
-                    for target in targetNames:
-                        implementation = nodedef.getImplementation(target)
-                        if implementation:
-                            # Add "children" array to new_child
+
+                    # Add implementation children if they exist
+                    implementation = nodedef.getImplementation()
+                    if implementation:
+
+                        # Add nodegraph
+                        if implementation.isA(mx.NodeGraph):
                             if "children" not in new_child:
                                 new_child["children"] = []
                             # Append children to node_entry if implementation exists
-                            new_child["children"].append({"target" : target, "type": "implementation", "name": implementation.getName()})                        
+                            new_child["children"].append({"target" : "all", "type": "nodegraph", "name": implementation.getName()})                        
+
+                        # Add non-nodegraph implementation
+                        else:
+                            for target in targetNames:
+                                implementation = nodedef.getImplementation(target)
+                                if implementation:
+                                    # Add "children" array to new_child
+                                    if "children" not in new_child:
+                                        new_child["children"] = []
+                                    # Append children to node_entry if implementation exists
+                                    new_child["children"].append({"target" : target, "type": "implementation", "name": implementation.getName()})                        
 
                     node_entry["children"].append(new_child)
-                    #node_entry["children"].append({"name": nodedef_name})
-                    #node_entry["children"].append({"type": "nodedef", "name": nodedef_name})                
                 break
 
     # Create json string from the library_dict
 
-    json_string = json.dumps(library_dict, indent=4)
+    # Sort all children by name
+    def sort_children(children):
+        children.sort(key=lambda x: x['name'])
+        for child in children:
+            if 'children' in child:
+                sort_children(child['children'])
+    
+    sort_children(library_dict["children"])
+
+    json_string = json.dumps(library_dict, indent=2)
     # Write the json string to a file    
     with open('materialX_libraries_dictionary.json', 'w') as f:
         f.write(json_string)
