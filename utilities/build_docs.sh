@@ -29,6 +29,9 @@ python mdhtml.py ../documents_internal/python_MaterialX.html -t template.html --
 python mdhtml.py ../documents_internal/node_definitions.html -t template.html --top ".." -o ../documents -of node_definitions.html
 python mdhtml.py ../documents_internal/gltfViewer.html -t template.html --top ".." -o ../documents -of gltfViewer.html
 python mdhtml.py ../documents_internal/property_editor_ui.md -t template.html --top ".." -o ../documents -of property_editor_ui.html
+python mdhtml.py ../documents_internal/TreeVisualizer.html -t template.html --top ".." -o ../documents -of TreeVisualizer.html
+cp ../documents_internal/TreeVisualizer.js ../documents/TreeVisualizer.js
+cp ../pymaterialx/nodedef_introspection.json ../documents/nodedef_introspection.json
 
 python mdhtml.py ./README.md -t template.html --top ".." -o ../documents -of build_site.html -cm True
 

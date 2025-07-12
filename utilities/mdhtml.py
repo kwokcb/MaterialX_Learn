@@ -110,7 +110,7 @@ def convertToHtml(inputFileName, outputFileName, templateFileName=None, iframe=F
             html = html.replace('<script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>', '')
         t.close()
 
-    outf = open(outputFileName, 'w')
+    outf = open(outputFileName, 'w', encoding='utf-8')
     outf.write(html)
     outf.close()
 
