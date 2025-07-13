@@ -131,8 +131,8 @@ def build_nodedef_info(insert_nodegroup=True):
                     docstring = nodedef.getAttribute('doc')
                     if docstring:
                         # Escape any quotes in the docstring
-                        docstring = docstring.replace('"', '\\"')
-                        docstring = docstring.replace("'", '\\"')
+                        #docstring = docstring.replace('"', '\\"')
+                        #docstring = docstring.replace("'", '\\"')
                         new_child["doc"] = docstring
 
                     # Add implementation children if they exist
@@ -151,11 +151,58 @@ def build_nodedef_info(insert_nodegroup=True):
                             for target in targetNames:
                                 implementation = nodedef.getImplementation(target)
                                 if implementation:
+                                    implementation_name = implementation.getName()
                                     # Add "children" array to new_child
                                     if "children" not in new_child:
                                         new_child["children"] = []
-                                    # Append children to node_entry if implementation exists
-                                    new_child["children"].append({"target" : target, "type": "implementation", "name": implementation.getName()})                        
+                                    # Check if a child with the same name and type already exists
+                                    existing_child = next(
+                                        (c for c in new_child["children"]
+                                         if c.get("name") == implementation_name),
+                                        None
+                                    )
+                                    if existing_child:
+                                        # Append the target to the "target" string (comma-separated, unique)
+                                        targets = set(existing_child["target"].split(", ")) if existing_child["target"] else set()
+                                        targets.add(target)
+                                        existing_child["target"] = ", ".join(sorted(targets))
+                                    else:
+                                        # Append new implementation entry
+                                        new_item = {
+                                            "name": implementation_name,
+                                            "target": target,
+                                            "type": "implementation",
+                                        }
+
+                                        # Check for source file
+                                        srcfile = implementation.getAttribute('file')
+                                        hrefString = ''
+                                        if len(srcfile) > 0:                        
+                                            isURL = srcfile.startswith('http')
+                                            if not isURL:
+                                                sourceUri = mx.FilePath(implementation.getSourceUri())
+                                                sourceUri = sourceUri.getParentPath()
+                                                # Scan starring from based name. Keep track of each parent in leafPath
+                                                # Stop when reaching 'libraries' directory
+                                                leafPath = sourceUri.getBaseName()
+                                                totalPath = leafPath
+                                                while leafPath != 'libraries':
+                                                    sourceUri = sourceUri.getParentPath()
+                                                    leafPath = sourceUri.getBaseName()
+                                                    totalPath = leafPath + '/' + totalPath 
+
+                                                print("... Leaft URI:", totalPath)
+                                                libraryName = "https://github.com/AcademySoftwareFoundation/MaterialX/tree/main"
+                                                libraryName = libraryName + '/' + totalPath
+                                                libraryName = libraryName + '/' + srcfile
+                                                print("Source URI:", sourceUri.asString(), "Source File:", srcfile, "Library Name:", libraryName)
+                                                hrefString = libraryName 
+                                            else:
+                                                hrefString = srcfile
+                                        if len(hrefString) > 0:
+                                            new_item["linkurl"] = hrefString
+
+                                        new_child["children"].append(new_item)
 
                     node_entry["children"].append(new_child)
                 break

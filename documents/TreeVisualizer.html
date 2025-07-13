@@ -702,8 +702,7 @@
                     let label = 'Image URL'; // Rename key for display
                     selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> <img src="${currentNode[key]}" alt="Node Image" class="img-fluid mt-2" style="max-height: 200px; width: auto;"></div>`;
                 } else if (key === 'linkurl' && currentNode[key]) {
-                    let label = 'Link URL'; // Rename key for display
-                    selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> <a href="${currentNode[key]}" target="_blank">${currentNode[key]}</a></div>`;
+                    selectedNodeInfo.innerHTML += `<div><a href="${currentNode[key]}" target="_blank">Reference</a></div>`;
                 } else if (key !== 'children') { // Exclude children from display
                     let label = key.charAt(0).toUpperCase() + key.slice(1); // Capitalize first letter
                     selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> ${currentNode[key] || 'N/A'}</div>`;
