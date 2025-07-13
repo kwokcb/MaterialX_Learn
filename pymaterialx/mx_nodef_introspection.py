@@ -3,6 +3,164 @@ import os
 import json
 import argparse
 
+def extractSourceURL(implementation):
+    srcfile = implementation.getAttribute('file')
+    hrefString = ''
+    if len(srcfile) > 0:                        
+        isURL = srcfile.startswith('http')
+        if not isURL:
+            sourceUri = mx.FilePath(implementation.getSourceUri())
+            sourceUri = sourceUri.getParentPath()
+            # Look for path starting from 'libraries' downwards 
+            leafPath = sourceUri.getBaseName()
+            totalPath = leafPath
+            while leafPath != 'libraries':
+                sourceUri = sourceUri.getParentPath()
+                leafPath = sourceUri.getBaseName()
+                totalPath = leafPath + '/' + totalPath 
+
+            libraryName = "https://github.com/AcademySoftwareFoundation/MaterialX/tree/main"
+            libraryName = libraryName + '/' + totalPath
+            libraryName = libraryName + '/' + srcfile
+            hrefString = libraryName 
+        else:
+            hrefString = srcfile
+
+    return hrefString 
+
+def add_nodegraph_node(parent, implementation):
+    if "children" not in parent:
+        parent["children"] = []
+    icon = "bi-diagram-3"
+    impl_string = implementation.getName()
+    nodegraph = {
+        "target" : "all", 
+        "type": "nodegraph", 
+        "icon": icon, 
+        "name": impl_string
+    }
+    parent["children"].append(nodegraph)
+
+def add_implementation_node(parent, nodedef, implementation, targetNames):
+    '''
+    Add implementation node to the parent node with all targets.
+    If a child with the same name already exists, append the target to the "target" string.
+    If no child exists, create a new child node with the implementation name and target.
+    @param parent: The parent node to which the implementation node will be added.
+    @param nodedef: The definitions for the implementation.
+    @param implementation: The implementation to be added.
+    @param targetNames: List of target names to be associated with the implementation.
+    '''
+    for target in targetNames:
+        implementation = nodedef.getImplementation(target)
+        if implementation:
+            implementation_name = implementation.getName()
+            # Add "children" array to new_child
+            if "children" not in parent:
+                parent["children"] = []
+
+            # Check if a child with the same name and type already exists
+            existing_child = next(
+                (c for c in parent["children"]
+                    if c.get("name") == implementation_name),
+                None
+            )
+            if existing_child:
+                # Append the target to the "target" string (comma-separated, unique)
+                targets = set(existing_child["target"].split(", ")) if existing_child["target"] else set()
+                targets.add(target)
+                existing_child["target"] = ", ".join(sorted(targets))
+            else:
+                # Append new implementation entry
+                new_node = {
+                    "icon": "bi-file-code",
+                    "name": implementation_name,
+                    "target": target,
+                    "type": "implementation",
+                }
+
+                # Get source file if any
+                hrefString = extractSourceURL(implementation)
+                if len(hrefString) > 0:
+                    new_node["linkurl"] = hrefString
+
+                parent["children"].append(new_node)    
+
+def add_geompropdefs(doc, parent):
+    geompropdefs = doc.getGeomPropDefs()
+    if geompropdefs:
+        
+        geompropdef_group = {
+            "icon": "bi-journals",
+            "name": "geompropdefs",
+            "type": "geompropdef_group",
+            "children": []
+        }
+        for geompropdef in geompropdefs:
+            geompropdef_entry = {
+                "icon": "bi-circle-square",
+                "name": geompropdef.getName(),
+                "type": geompropdef.getType(),
+                "geomprop": geompropdef.getGeomProp(),
+                "space": geompropdef.getSpace(),
+                "index": geompropdef.getIndex()
+            }
+            geompropdef_group["children"].append(geompropdef_entry)
+        parent["children"].append(geompropdef_group)
+        #print("GeomPropDefs:", [geompropdef.getName() for geompropdef in geompropdefs])
+
+def add_typedefs(doc, parent):
+    typedefs = doc.getTypeDefs()
+    if typedefs:
+        typedef_group = {
+            "icon": "bi-journals",            
+            "name": "typedefs",
+            "type": "typedef_group",
+            "children": []
+        }
+        for typedef in typedefs:
+            typedef_entry = {
+                "icon": "bi-braces",
+                "name": typedef.getName(),
+                "type": "typedef"
+            }
+            typedef_group["children"].append(typedef_entry)
+        
+        parent["children"].append(typedef_group)
+        #print("TypeDefs:", [typedef.getName() for typedef in typedefs])
+
+def add_library(doc, library_name):
+    library_dict = {"icon" : "bi-database","name": library_name, "version" :mx.getVersionString(), "children": []}
+    currTargets = []
+    targetNames = []
+    for target in doc.getTargetDefs():
+        currTargets.append( { 'name' : target.getName(), 'type' : 'targetdef' } )
+        target_name = target.getName()
+        targetNames.append(target_name)
+                
+    # Append "targets" to the library_dict
+    targetNameString = ', '.join(targetNames)
+    library_dict['targets']  = targetNameString
+
+    return library_dict, targetNames
+
+def get_library_names(libFiles, searchPath):
+    library_names = []
+    if libFiles:
+        for libFile in libFiles:
+            # remove search path from the file name
+            libFile = os.path.relpath(libFile, searchPath)
+            # The first child path is the library name
+            library_name = libFile.split(os.sep)[0]
+            if library_name not in library_names:
+                library_names.append(library_name)
+    else:
+        print('No library files loaded.')
+    return library_names      
+
+def load_libraries():
+    return
+
 def build_nodedef_info(insert_nodegroup=True):
 
     searchPath = mx.getDefaultDataSearchPath().asString()
@@ -17,75 +175,25 @@ def build_nodedef_info(insert_nodegroup=True):
     doc = mx.createDocument()
     doc.importLibrary(stdlib)
 
-    # Print out the names of the library files loaded
-    library_names = []
-    if libFiles:
-        for libFile in libFiles:
-            # remove search path from the file name
-            libFile = os.path.relpath(libFile, searchPath)
-            #print('Loaded library file: %s' % libFile)
-            # The first child path is the library name
-            library_name = libFile.split(os.sep)[0]
-            if library_name not in library_names:
-                library_names.append(library_name)
-    else:
-        print('No library files loaded.')
-
+    # Extract names of the library files based on files loaded
+    library_names = get_library_names(libFiles, searchPath)
     print("Loaded libraries:", library_names)
 
-    library_dict = {"icon" : "bi-database","name": "Definitions", "version" :mx.getVersionString(), "children": []}
-    currTargets = []
-    targetNames = []
-    for target in doc.getTargetDefs():
-        currTargets.append( { 'name' : target.getName(), 'type' : 'targetdef' } )
-        targetNames.append(target.getName())
-    # Append "targets" to the library_dict
-    targetNameString = ', '.join(targetNames)
-    library_dict['targets']  = targetNameString
-
+    library_dict, targetNames = add_library(doc, "Standard Libraries")
     print("Target List:", targetNames)
 
-    # Emit typedefs if they exist
-    typedefs = doc.getTypeDefs()
-    if typedefs:
-        typedef_group = {
-            "name": "typedefs",
-            "type": "typedef_group",
-            "children": []
-        }
-        for typedef in typedefs:
-            typedef_entry = {
-                "name": typedef.getName(),
-                "type": "typedef"
-            }
-            typedef_group["children"].append(typedef_entry)
-        library_dict["children"].append(typedef_group)
-        print("TypeDefs:", [typedef.getName() for typedef in typedefs])
-
-    geompropdefs = doc.getGeomPropDefs()
-    if geompropdefs:
-        
-        geompropdef_group = {
-            "name": "geompropdefs",
-            "type": "geompropdef_group",
-            "children": []
-        }
-        for geompropdef in geompropdefs:
-            geompropdef_entry = {
-                "name": geompropdef.getName(),
-                "type": geompropdef.getType(),
-                "geomprop": geompropdef.getGeomProp(),
-                "space": geompropdef.getSpace(),
-                "index": geompropdef.getIndex()
-            }
-            geompropdef_group["children"].append(geompropdef_entry)
-        library_dict["children"].append(geompropdef_group)
-        print("GeomPropDefs:", [geompropdef.getName() for geompropdef in geompropdefs])
+    # Emit support definitions
+    add_typedefs(doc, library_dict)
+    add_geompropdefs(doc, library_dict)
 
     # Build a mapping from library name to its node entry in the children list
     library_entries = {}
     for library_name in library_names:
         entry = {"icon": "bi-journals", "name": library_name, "type": "library", "children": []}
+        if library_name == 'targets':
+            # Append target names as children of the library entry
+            for target in targetNames:
+                entry["children"].append({"icon": "bi-bullseye", "name": target, "type": "target"})
         library_dict["children"].append(entry)
         library_entries[library_name] = entry    
 
@@ -131,9 +239,6 @@ def build_nodedef_info(insert_nodegroup=True):
                         
                     docstring = nodedef.getAttribute('doc')
                     if docstring:
-                        # Escape any quotes in the docstring
-                        #docstring = docstring.replace('"', '\\"')
-                        #docstring = docstring.replace("'", '\\"')
                         new_child["doc"] = docstring
 
                     # Add implementation children if they exist
@@ -142,71 +247,11 @@ def build_nodedef_info(insert_nodegroup=True):
 
                         # Add nodegraph
                         if implementation.isA(mx.NodeGraph):
-                            if "children" not in new_child:
-                                new_child["children"] = []
-                            # Append children to node_entry if implementation exists
-                            icon = "bi-diagram-3"
-                            impl_string = implementation.getName()
-                            new_child["children"].append({"target" : "all", "type": "nodegraph", "icon": icon, "name": impl_string})
+                            add_nodegraph_node(new_child, implementation)
 
                         # Add non-nodegraph implementation
                         else:
-                            for target in targetNames:
-                                implementation = nodedef.getImplementation(target)
-                                if implementation:
-                                    implementation_name = implementation.getName()
-                                    # Add "children" array to new_child
-                                    if "children" not in new_child:
-                                        new_child["children"] = []
-                                    # Check if a child with the same name and type already exists
-                                    existing_child = next(
-                                        (c for c in new_child["children"]
-                                         if c.get("name") == implementation_name),
-                                        None
-                                    )
-                                    if existing_child:
-                                        # Append the target to the "target" string (comma-separated, unique)
-                                        targets = set(existing_child["target"].split(", ")) if existing_child["target"] else set()
-                                        targets.add(target)
-                                        existing_child["target"] = ", ".join(sorted(targets))
-                                    else:
-                                        # Append new implementation entry
-                                        new_item = {
-                                            "icon": "bi-file-code",
-                                            "name": implementation_name,
-                                            "target": target,
-                                            "type": "implementation",
-                                        }
-
-                                        # Check for source file
-                                        srcfile = implementation.getAttribute('file')
-                                        hrefString = ''
-                                        if len(srcfile) > 0:                        
-                                            isURL = srcfile.startswith('http')
-                                            if not isURL:
-                                                sourceUri = mx.FilePath(implementation.getSourceUri())
-                                                sourceUri = sourceUri.getParentPath()
-                                                # Scan starring from based name. Keep track of each parent in leafPath
-                                                # Stop when reaching 'libraries' directory
-                                                leafPath = sourceUri.getBaseName()
-                                                totalPath = leafPath
-                                                while leafPath != 'libraries':
-                                                    sourceUri = sourceUri.getParentPath()
-                                                    leafPath = sourceUri.getBaseName()
-                                                    totalPath = leafPath + '/' + totalPath 
-
-                                                print("... Leaft URI:", totalPath)
-                                                libraryName = "https://github.com/AcademySoftwareFoundation/MaterialX/tree/main"
-                                                libraryName = libraryName + '/' + totalPath
-                                                libraryName = libraryName + '/' + srcfile
-                                                print("Source URI:", sourceUri.asString(), "Source File:", srcfile, "Library Name:", libraryName)
-                                                hrefString = libraryName 
-                                            else:
-                                                hrefString = srcfile
-                                        if len(hrefString) > 0:
-                                            new_item["linkurl"] = hrefString
-
-                                        new_child["children"].append(new_item)
+                            add_implementation_node(new_child, nodedef, implementation, targetNames)
 
                     node_entry["children"].append(new_child)
                 break

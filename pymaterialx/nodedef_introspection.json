@@ -1,7 +1,7 @@
 {
   "icon": "bi-database",
-  "name": "Definitions",
-  "version": "1.39.4",
+  "name": "Standard Libraries",
+  "version": "1.39.3",
   "children": [
     {
       "icon": "bi-journals",
@@ -484,30 +484,6 @@
                       "name": "IMP_UsdPreviewSurface_surfaceshader"
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "icon": "bi-key",
-              "name": "disney_brdf_2012",
-              "type": "node",
-              "children": [
-                {
-                  "icon": "bi-usb-plug",
-                  "name": "ND_disney_brdf_2012_surface",
-                  "type": "nodedef"
-                }
-              ]
-            },
-            {
-              "icon": "bi-key",
-              "name": "disney_bsdf_2015",
-              "type": "node",
-              "children": [
-                {
-                  "icon": "bi-usb-plug",
-                  "name": "ND_disney_bsdf_2015_surface",
-                  "type": "nodedef"
                 }
               ]
             },
@@ -1260,10 +1236,12 @@
       ]
     },
     {
+      "icon": "bi-journals",
       "name": "geompropdefs",
       "type": "geompropdef_group",
       "children": [
         {
+          "icon": "bi-circle-square",
           "name": "Bobject",
           "type": "vector3",
           "geomprop": "bitangent",
@@ -1271,6 +1249,7 @@
           "index": "0"
         },
         {
+          "icon": "bi-circle-square",
           "name": "Bworld",
           "type": "vector3",
           "geomprop": "bitangent",
@@ -1278,6 +1257,7 @@
           "index": "0"
         },
         {
+          "icon": "bi-circle-square",
           "name": "Nobject",
           "type": "vector3",
           "geomprop": "normal",
@@ -1285,6 +1265,7 @@
           "index": ""
         },
         {
+          "icon": "bi-circle-square",
           "name": "Nworld",
           "type": "vector3",
           "geomprop": "normal",
@@ -1292,6 +1273,7 @@
           "index": ""
         },
         {
+          "icon": "bi-circle-square",
           "name": "Pobject",
           "type": "vector3",
           "geomprop": "position",
@@ -1299,6 +1281,7 @@
           "index": ""
         },
         {
+          "icon": "bi-circle-square",
           "name": "Pworld",
           "type": "vector3",
           "geomprop": "position",
@@ -1306,6 +1289,7 @@
           "index": ""
         },
         {
+          "icon": "bi-circle-square",
           "name": "Tobject",
           "type": "vector3",
           "geomprop": "tangent",
@@ -1313,6 +1297,7 @@
           "index": "0"
         },
         {
+          "icon": "bi-circle-square",
           "name": "Tworld",
           "type": "vector3",
           "geomprop": "tangent",
@@ -1320,6 +1305,7 @@
           "index": "0"
         },
         {
+          "icon": "bi-circle-square",
           "name": "UV0",
           "type": "vector2",
           "geomprop": "texcoord",
@@ -1327,6 +1313,7 @@
           "index": "0"
         },
         {
+          "icon": "bi-circle-square",
           "name": "Vworld",
           "type": "vector3",
           "geomprop": "viewdirection",
@@ -3888,19 +3875,13 @@
                     {
                       "icon": "bi-file-code",
                       "name": "IM_time_float_genglsl",
-                      "target": "essl, genglsl",
+                      "target": "essl, genglsl, genmsl",
                       "type": "implementation"
                     },
                     {
                       "icon": "bi-file-code",
                       "name": "IM_time_float_genmdl",
                       "target": "genmdl",
-                      "type": "implementation"
-                    },
-                    {
-                      "icon": "bi-file-code",
-                      "name": "IM_time_float_genmsl",
-                      "target": "genmsl",
                       "type": "implementation"
                     },
                     {
@@ -8586,7 +8567,7 @@
                     {
                       "icon": "bi-file-code",
                       "name": "IM_heighttonormal_vector3_genglsl",
-                      "target": "essl, genglsl, genmsl",
+                      "target": "essl, genglsl",
                       "type": "implementation",
                       "linkurl": "https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_heighttonormal_vector3.glsl"
                     },
@@ -8594,6 +8575,12 @@
                       "icon": "bi-file-code",
                       "name": "IM_heighttonormal_vector3_genmdl",
                       "target": "genmdl",
+                      "type": "implementation"
+                    },
+                    {
+                      "icon": "bi-file-code",
+                      "name": "IM_heighttonormal_vector3_genmsl",
+                      "target": "genmsl",
                       "type": "implementation"
                     },
                     {
@@ -18742,7 +18729,7 @@
                     {
                       "icon": "bi-file-code",
                       "name": "IM_surface_unlit_genglsl",
-                      "target": "essl, genglsl, genmsl",
+                      "target": "essl, genglsl",
                       "type": "implementation",
                       "linkurl": "https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_surface_unlit.glsl"
                     },
@@ -18750,6 +18737,12 @@
                       "icon": "bi-file-code",
                       "name": "IM_surface_unlit_genmdl",
                       "target": "genmdl",
+                      "type": "implementation"
+                    },
+                    {
+                      "icon": "bi-file-code",
+                      "name": "IM_surface_unlit_genmsl",
+                      "target": "genmsl",
                       "type": "implementation"
                     },
                     {
@@ -19234,138 +19227,196 @@
       "icon": "bi-journals",
       "name": "targets",
       "type": "library",
-      "children": []
+      "children": [
+        {
+          "icon": "bi-bullseye",
+          "name": "essl",
+          "type": "target"
+        },
+        {
+          "icon": "bi-bullseye",
+          "name": "genglsl",
+          "type": "target"
+        },
+        {
+          "icon": "bi-bullseye",
+          "name": "genmdl",
+          "type": "target"
+        },
+        {
+          "icon": "bi-bullseye",
+          "name": "genmsl",
+          "type": "target"
+        },
+        {
+          "icon": "bi-bullseye",
+          "name": "genosl",
+          "type": "target"
+        }
+      ]
     },
     {
+      "icon": "bi-journals",
       "name": "typedefs",
       "type": "typedef_group",
       "children": [
         {
+          "icon": "bi-braces",
           "name": "BSDF",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "EDF",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "VDF",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "boolean",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "color3",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "color3array",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "color4",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "color4array",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "displacementshader",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "filename",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "float",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "floatarray",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "geomname",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "geomnamearray",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "integer",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "integerarray",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "lightshader",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "material",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "matrix33",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "matrix44",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "none",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "string",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "stringarray",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "surfaceshader",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "vector2",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "vector2array",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "vector3",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "vector3array",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "vector4",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "vector4array",
           "type": "typedef"
         },
         {
+          "icon": "bi-braces",
           "name": "volumeshader",
           "type": "typedef"
         }
       ]
     }
   ],
-  "targets": "genosl, genmsl, genglsl, essl, genmdl"
+  "targets": "essl, genglsl, genmdl, genmsl, genosl"
 }
