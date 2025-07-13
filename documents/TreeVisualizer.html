@@ -703,10 +703,20 @@
                     selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> <img src="${currentNode[key]}" alt="Node Image" class="img-fluid mt-2" style="max-height: 200px; width: auto;"></div>`;
                 } else if (key === 'linkurl' && currentNode[key]) {
                     selectedNodeInfo.innerHTML += `<div><a href="${currentNode[key]}" target="_blank">Reference</a></div>`;
-                } else if (key !== 'children') { // Exclude children from display
+                } else if (key === 'name') {
+                    icon = ''
+                    // 'icon' key exists get it
+                    if (currentNode.icon) {
+                        icon = `<i class="bi ${currentNode.icon}"></i> `;
+                    }
+                    selectedNodeInfo.innerHTML += `<div><strong>${icon}Name:</strong> ${currentNode[key]}</div>`;
+                }
+                else if (key !== 'children' && key !== 'icon')
+                {
                     let label = key.charAt(0).toUpperCase() + key.slice(1); // Capitalize first letter
                     selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> ${currentNode[key] || 'N/A'}</div>`;
                 }
+                
             }
         }
 

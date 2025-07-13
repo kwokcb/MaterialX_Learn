@@ -144,7 +144,9 @@ def build_nodedef_info(insert_nodegroup=True):
                             if "children" not in new_child:
                                 new_child["children"] = []
                             # Append children to node_entry if implementation exists
-                            new_child["children"].append({"target" : "all", "type": "nodegraph", "name": implementation.getName()})                        
+                            icon = "bi-diagram-3"
+                            impl_string = implementation.getName()
+                            new_child["children"].append({"target" : "all", "type": "nodegraph", "icon": icon, "name": impl_string})
 
                         # Add non-nodegraph implementation
                         else:
@@ -169,6 +171,7 @@ def build_nodedef_info(insert_nodegroup=True):
                                     else:
                                         # Append new implementation entry
                                         new_item = {
+                                            "icon": "bi-file-code",
                                             "name": implementation_name,
                                             "target": target,
                                             "type": "implementation",
