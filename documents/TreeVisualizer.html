@@ -706,8 +706,8 @@
             let skipKeys = ['children', 'icon', 'name'];
             for (let key in currentNode) {
                 if (key === 'imageurl' && currentNode[key]) {
-                    let label = 'Image URL'; // Rename key for display
-                    selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> <img src="${currentNode[key]}" alt="Node Image" class="img-fluid mt-2" style="max-height: 200px; width: auto;"></div>`;
+                    let label = 'Preview'; // Rename key for display
+                    selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> <img src="${currentNode[key]}" alt="Node Image" loading="lazy" class="img-fluid mt-2" style="max-height: 200px; width: auto;" onerror="this.onerror=null;this.src='images/no_image.png';"></div>`;
                 }
                 else if (key === 'linkurl' && currentNode[key]) {
                     selectedNodeInfo.innerHTML += `<div><a href="${currentNode[key]}" target="_blank">Reference</a></div>`;

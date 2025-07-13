@@ -28,14 +28,34 @@ def extractSourceURL(implementation):
 
     return hrefString 
 
+def compute_image_names(nodedef):
+    outputList = nodedef.getActiveOutputs() #if opts.showInherited  else nd.getOutputs()
+    image_list = []
+    #multiimage = len(outputList) > 1
+    for out in outputList:
+        outName = out.getName()
+
+        imageName = 'material_' + nodedef.getName().removeprefix('ND_') + '_' + outName + '_genglsl.png'
+        imageName = '../resources/mtlx/nodedef_materials/' + imageName                
+        if not os.path.exists(imageName):
+            imageName = 'images/no_image.png'
+        else:
+            print('-- Found image: ', imageName)
+            #imageName = 'https://kwokcb.github.io/MaterialX_Learn/resources/mtlx/nodedef_materials/' + imageName
+            image_list.append( { "output": outName, "imageurl" : imageName })
+            
+    return image_list
+
 def add_nodegraph_node(parent, implementation):
     if "children" not in parent:
         parent["children"] = []
     icon = "bi-diagram-3"
     impl_string = implementation.getName()
+
     nodegraph = {
         "target" : "all", 
-        "type": "nodegraph", 
+        "type": "nodegraph",
+        #"output_type": implementation.getType(),
         "icon": icon, 
         "name": impl_string
     }
@@ -221,14 +241,21 @@ def build_nodedef_info(insert_nodegroup=True):
                     parent_container = lib_entry
 
                 # Find or create node entry under the parent container
+                url = "https://kwokcb.github.io/MaterialX_Learn/documents/definitions/" + node_name + ".html"
                 node_entry = next((item for item in parent_container["children"] if item["name"] == node_name and item["type"] == "node"), None)
                 if node_entry is None:
-                    node_entry = {"icon": "bi-key", "name": node_name, "type": "node", "children": []}
+                    node_entry = {"icon": "bi-key", "name": node_name, "type": "node", "output_type": nodedef.getType(), "linkurl" : url}
+                    node_entry["children"] = []
                     parent_container["children"].append(node_entry)
 
                 # Add nodedef as a child if not already present
                 if not any(child["name"] == nodedef_name for child in node_entry["children"]):
                     new_child = {"icon" : "bi-usb-plug", "name": nodedef_name, "type": "nodedef"}
+                    image_list = compute_image_names(nodedef)
+                    for image in image_list:
+                        new_child["imageurl"] = image["imageurl"]
+                        break # Fix to add all
+
                     version = nodedef.getVersionString()
                     if version:
                         new_child["version"] = version
