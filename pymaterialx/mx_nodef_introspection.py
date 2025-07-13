@@ -33,7 +33,7 @@ def build_nodedef_info(insert_nodegroup=True):
 
     print("Loaded libraries:", library_names)
 
-    library_dict = {"name": "Definitions", "version" :mx.getVersionString(), "children": []}
+    library_dict = {"icon" : "bi-database","name": "Definitions", "version" :mx.getVersionString(), "children": []}
     currTargets = []
     targetNames = []
     for target in doc.getTargetDefs():
@@ -85,7 +85,7 @@ def build_nodedef_info(insert_nodegroup=True):
     # Build a mapping from library name to its node entry in the children list
     library_entries = {}
     for library_name in library_names:
-        entry = {"name": library_name, "type": "library", "children": []}
+        entry = {"icon": "bi-journals", "name": library_name, "type": "library", "children": []}
         library_dict["children"].append(entry)
         library_entries[library_name] = entry    
 
@@ -105,6 +105,7 @@ def build_nodedef_info(insert_nodegroup=True):
                     nodegroup_entry = next((item for item in lib_entry["children"] if item["name"] == nodegroup and item["type"] == "nodegroup"), None)
                     if nodegroup_entry is None:
                         nodegroup_entry = {"name": nodegroup, "type": "nodegroup", "children": []}
+                        nodegroup_entry["icon"] = "bi-collection"
                         lib_entry["children"].append(nodegroup_entry)
                     parent_container = nodegroup_entry
                 else:
@@ -114,12 +115,12 @@ def build_nodedef_info(insert_nodegroup=True):
                 # Find or create node entry under the parent container
                 node_entry = next((item for item in parent_container["children"] if item["name"] == node_name and item["type"] == "node"), None)
                 if node_entry is None:
-                    node_entry = {"name": node_name, "type": "node", "children": []}
+                    node_entry = {"icon": "bi-key", "name": node_name, "type": "node", "children": []}
                     parent_container["children"].append(node_entry)
 
                 # Add nodedef as a child if not already present
                 if not any(child["name"] == nodedef_name for child in node_entry["children"]):
-                    new_child = {"name": nodedef_name, "type": "nodedef"}
+                    new_child = {"icon" : "bi-usb-plug", "name": nodedef_name, "type": "nodedef"}
                     version = nodedef.getVersionString()
                     if version:
                         new_child["version"] = version

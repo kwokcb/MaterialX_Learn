@@ -697,21 +697,22 @@
 
             // For each field in currentNode, add a new div with the field name and value
             // If it's 'imageurl' or 'linkurl', create a link or image element
+            icon = ''
+            // 'icon' key exists get it
+            if (currentNode.icon) {
+                icon = `<i class="bi ${currentNode.icon}"></i> `;
+            }
+            selectedNodeInfo.innerHTML += `<div>${icon}<strong>${currentNode.name}</strong></div>`;
+            let skipKeys = ['children', 'icon', 'name'];
             for (let key in currentNode) {
                 if (key === 'imageurl' && currentNode[key]) {
                     let label = 'Image URL'; // Rename key for display
                     selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> <img src="${currentNode[key]}" alt="Node Image" class="img-fluid mt-2" style="max-height: 200px; width: auto;"></div>`;
-                } else if (key === 'linkurl' && currentNode[key]) {
-                    selectedNodeInfo.innerHTML += `<div><a href="${currentNode[key]}" target="_blank">Reference</a></div>`;
-                } else if (key === 'name') {
-                    icon = ''
-                    // 'icon' key exists get it
-                    if (currentNode.icon) {
-                        icon = `<i class="bi ${currentNode.icon}"></i> `;
-                    }
-                    selectedNodeInfo.innerHTML += `<div><strong>${icon}Name:</strong> ${currentNode[key]}</div>`;
                 }
-                else if (key !== 'children' && key !== 'icon')
+                else if (key === 'linkurl' && currentNode[key]) {
+                    selectedNodeInfo.innerHTML += `<div><a href="${currentNode[key]}" target="_blank">Reference</a></div>`;
+                }
+                else if (key && !skipKeys.includes(key)) // Skip keys that are not needed
                 {
                     let label = key.charAt(0).toUpperCase() + key.slice(1); // Capitalize first letter
                     selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> ${currentNode[key] || 'N/A'}</div>`;
