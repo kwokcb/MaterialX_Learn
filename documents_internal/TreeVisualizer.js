@@ -327,14 +327,16 @@ class TreeVisualizer {
     searchNodes(searchTerm, expandMatches = true) {
         try {
             const regex = new RegExp(searchTerm, 'i');
-            this.matches = [];
+            let new_matches = [];
 
-            this.root.each(d => {
-                if (regex.test(d.data.name)) {
-                    this.matches.push(d);
+            // Function to recursively traverse all nodes, including collapsed ones
+            const traverseAll = (node) => {
+                if (regex.test(node.data.name)) {
+                    new_matches.push(node);
 
                     if (expandMatches) {
-                        let parent = d.parent;
+                        // Expand all ancestors to make this match visible
+                        let parent = node.parent;
                         while (parent) {
                             if (parent._children) {
                                 parent.children = parent._children;
@@ -344,20 +346,38 @@ class TreeVisualizer {
                         }
                     }
                 }
-            });
 
-            this.render();
+                // Continue traversing children regardless of expansion state
+                const children = node.children || node._children;
+                if (children) {
+                    children.forEach(child => traverseAll(child));
+                }
+            };
 
-            if (this.matches.length > 0) {
-                this.fitToMatches();
+            if (expandMatches) {
+                // When expandMatches is true, traverse the entire tree structure
+                traverseAll(this.root);
+            } else {
+                // When expandMatches is false, only search visible nodes
+                this.root.each(d => {
+                    if (regex.test(d.data.name)) {
+                        new_matches.push(d);
+                    }
+                });
             }
 
-            return this.matches;
-        } catch (e) {
-            console.error("Invalid regular expression:", e);
-            return [];
+        if (new_matches != this.matches) {
+            this.matches = new_matches;
+            this.render();
+            this.fitToMatches();
         }
+
+        return this.matches;
+    } catch (e) {
+        console.error("Invalid regular expression:", e);
+        return [];
     }
+}
 
     fitToMatches() {
         if (this.matches.length === 0) return;

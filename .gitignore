@@ -3,3 +3,4 @@ pymaterialx/python/build/
 pymaterialx/python/MaterialX/__pycache__/
 myserver.py
 pymaterialx/render_log.txt
+pymaterialx/downloaded_release_libraries/

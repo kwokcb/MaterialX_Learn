@@ -138,6 +138,8 @@
                             <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
                                 Revisions</a>
                             <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1393_vs_1394.html">
+                                    1.39.3 vs 1.39.4</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1392_vs_1393.html">
                                     1.39.2 vs 1.39.3</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1391_vs_1392.html">
@@ -388,6 +390,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="exp.html">exp</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="floor.html">floor</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fract.html">fract</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hextilednormalmap.html">hextilednormalmap</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="invert.html">invert</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="invertmatrix.html">invertmatrix</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ln.html">ln</a>
@@ -513,6 +516,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="circle.html">circle</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="cloverleaf.html">cloverleaf</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="crosshatch.html">crosshatch</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fractal2d.html">fractal2d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="grid.html">grid</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hexagon.html">hexagon</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="line.html">line</a>
@@ -559,11 +563,14 @@
 <div class="collapse ps-5" id="collapse_texture2d">
 <div class="d-grid gap-0 col-6">
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="UsdUVTexture.html">UsdUVTexture</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_anisotropy_image.html">gltf_anisotropy_image</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_colorimage.html">gltf_colorimage</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_image.html">gltf_image</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_iridescence_thickness.html">gltf_iridescence_thickness</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_normalmap.html">gltf_normalmap</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hextiledimage.html">hextiledimage</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="image.html">image</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="latlongimage.html">latlongimage</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="tiledimage.html">tiledimage</a>
 </div>
 </div>
@@ -627,6 +634,8 @@ Category: heighttonormal
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_heighttonormal_vector3_scale" role="tab" aria-controls="pills-ND_heighttonormal_vector3_scale" aria-selected="true"  onclick="document.getElementById('ND_heighttonormal_vector3_menu').textContent = this.textContent;" >scale</div></li>
 <li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_heighttonormal_vector3_texcoord" role="tab" aria-controls="pills-ND_heighttonormal_vector3_texcoord" aria-selected="true"  onclick="document.getElementById('ND_heighttonormal_vector3_menu').textContent = this.textContent;" >texcoord</div></li>
+<li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_heighttonormal_vector3_out" role="tab" aria-controls="pills-ND_heighttonormal_vector3_out" aria-selected="true"  onclick="document.getElementById('ND_heighttonormal_vector3_menu').textContent = this.textContent;" ><b>out</b></div></li>
 </ul>
 </ul>
@@ -665,6 +674,36 @@ Category: heighttonormal
    <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
    </div>
+  </div>
+<div class="form-group row g-1">
+<label class="col-2 col-form-label col-form-label-sm">UI Min | Max | Step: </label>
+ <div class="col-4">
+  <input type="text" class="form-control form-control-sm" value="0.0" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="" disabled>
+ </div>
+</div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_heighttonormal_vector3_texcoord"
+  role="tabpanel" aria-labelledby="pills-ND_heighttonormal_vector3_texcoord-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Geometry Input: </label>
+      <div class="col-2">
+          <input type="text" class="form-control form-control-sm" value="UV0" disabled>
+      </div>
   </div>
  </div>
 </div>
@@ -705,29 +744,24 @@ Category: heighttonormal
    </div>
   </div>
   <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_heighttonormal_vector3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_heighttonormal_vector3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_heighttonormal_vector3">
+   </div>
   </div>
 <hr>
   <div class="form-group row g-2">
   <label class="col-2 col-form-label col-form-label-sm">Target:</label>
    <div class="col-2">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
    </div>
   </div>
   <div class="form-group row g-2">

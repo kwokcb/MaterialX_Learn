@@ -38,9 +38,9 @@ def compute_image_names(nodedef):
         imageName = 'material_' + nodedef.getName().removeprefix('ND_') + '_' + outName + '_genglsl.png'
         imageName = '../resources/mtlx/nodedef_materials/' + imageName                
         if not os.path.exists(imageName):
+            print('-- Missing image: ', imageName)
             imageName = 'images/no_image.png'
         else:
-            print('-- Found image: ', imageName)
             #imageName = 'https://kwokcb.github.io/MaterialX_Learn/resources/mtlx/nodedef_materials/' + imageName
             image_list.append( { "output": outName, "imageurl" : imageName })
             

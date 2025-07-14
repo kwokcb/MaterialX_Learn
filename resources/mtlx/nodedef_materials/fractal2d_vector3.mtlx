@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <fractal2d name="fractal2d_vector3" type="vector3">
+    <input name="amplitude" type="vector3" value="1.0, 1.0, 1.0" />
+    <input name="octaves" type="integer" value="3" />
+    <input name="lacunarity" type="float" value="2.0" />
+    <input name="diminish" type="float" value="0.5" />
+  </fractal2d>
+  <convert name="shader_fractal2d_vector3_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="fractal2d_vector3" />
+  </convert>
+  <surfacematerial name="material_fractal2d_vector3_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_fractal2d_vector3_out" />
+  </surfacematerial>
+</materialx>

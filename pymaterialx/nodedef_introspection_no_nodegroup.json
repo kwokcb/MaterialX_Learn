@@ -1,7 +1,7 @@
 {
   "icon": "bi-database",
   "name": "Standard Libraries",
-  "version": "1.39.3",
+  "version": "1.39.4",
   "children": [
     {
       "icon": "bi-journals",
@@ -619,6 +619,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_gltf_anisotropy_image",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_gltf_anisotropy_image_anisotropy_strength_out_genglsl.png",
               "version": "1.0",
               "nodegroup": "texture2d",
               "children": [
@@ -8817,6 +8818,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_fractal2d_color3",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_fractal2d_color3_out_genglsl.png",
               "nodegroup": "procedural2d",
               "children": [
                 {
@@ -8831,6 +8833,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_fractal2d_color3FA",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_fractal2d_color3FA_out_genglsl.png",
               "nodegroup": "procedural2d",
               "children": [
                 {
@@ -8845,6 +8848,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_fractal2d_color4",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_fractal2d_color4_out_genglsl.png",
               "nodegroup": "procedural2d",
               "children": [
                 {
@@ -8859,6 +8863,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_fractal2d_color4FA",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_fractal2d_color4FA_out_genglsl.png",
               "nodegroup": "procedural2d",
               "children": [
                 {
@@ -8873,6 +8878,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_fractal2d_float",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_fractal2d_float_out_genglsl.png",
               "nodegroup": "procedural2d",
               "children": [
                 {
@@ -8901,6 +8907,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_fractal2d_vector2",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_fractal2d_vector2_out_genglsl.png",
               "nodegroup": "procedural2d",
               "children": [
                 {
@@ -8929,6 +8936,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_fractal2d_vector2FA",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_fractal2d_vector2FA_out_genglsl.png",
               "nodegroup": "procedural2d",
               "children": [
                 {
@@ -8943,6 +8951,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_fractal2d_vector3",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_fractal2d_vector3_out_genglsl.png",
               "nodegroup": "procedural2d",
               "children": [
                 {
@@ -8971,6 +8980,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_fractal2d_vector3FA",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_fractal2d_vector3FA_out_genglsl.png",
               "nodegroup": "procedural2d",
               "children": [
                 {
@@ -8985,6 +8995,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_fractal2d_vector4",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_fractal2d_vector4_out_genglsl.png",
               "nodegroup": "procedural2d",
               "children": [
                 {
@@ -9013,6 +9024,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_fractal2d_vector4FA",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_fractal2d_vector4FA_out_genglsl.png",
               "nodegroup": "procedural2d",
               "children": [
                 {
@@ -9806,7 +9818,7 @@
                 {
                   "icon": "bi-file-code",
                   "name": "IM_heighttonormal_vector3_genglsl",
-                  "target": "essl, genglsl",
+                  "target": "essl, genglsl, genmsl",
                   "type": "implementation",
                   "linkurl": "https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_heighttonormal_vector3.glsl"
                 },
@@ -9814,12 +9826,6 @@
                   "icon": "bi-file-code",
                   "name": "IM_heighttonormal_vector3_genmdl",
                   "target": "genmdl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_heighttonormal_vector3_genmsl",
-                  "target": "genmsl",
                   "type": "implementation"
                 },
                 {
@@ -9868,6 +9874,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_hextiledimage_color3",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_hextiledimage_color3_out_genglsl.png",
               "nodegroup": "texture2d",
               "children": [
                 {
@@ -9889,6 +9896,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_hextiledimage_color4",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_hextiledimage_color4_out_genglsl.png",
               "nodegroup": "texture2d",
               "children": [
                 {
@@ -9919,6 +9927,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_hextilednormalmap_vector3",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_hextilednormalmap_vector3_out_genglsl.png",
               "nodegroup": "math",
               "children": [
                 {
@@ -12676,6 +12685,7 @@
               "icon": "bi-usb-plug",
               "name": "ND_latlongimage",
               "type": "nodedef",
+              "imageurl": "../resources/mtlx/nodedef_materials/material_latlongimage_out_genglsl.png",
               "nodegroup": "texture2d",
               "children": [
                 {
@@ -19490,7 +19500,7 @@
                 {
                   "icon": "bi-file-code",
                   "name": "IM_surface_unlit_genglsl",
-                  "target": "essl, genglsl",
+                  "target": "essl, genglsl, genmsl",
                   "type": "implementation",
                   "linkurl": "https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_surface_unlit.glsl"
                 },
@@ -19498,12 +19508,6 @@
                   "icon": "bi-file-code",
                   "name": "IM_surface_unlit_genmdl",
                   "target": "genmdl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_surface_unlit_genmsl",
-                  "target": "genmsl",
                   "type": "implementation"
                 },
                 {
@@ -20225,13 +20229,19 @@
                 {
                   "icon": "bi-file-code",
                   "name": "IM_time_float_genglsl",
-                  "target": "essl, genglsl, genmsl",
+                  "target": "essl, genglsl",
                   "type": "implementation"
                 },
                 {
                   "icon": "bi-file-code",
                   "name": "IM_time_float_genmdl",
                   "target": "genmdl",
+                  "type": "implementation"
+                },
+                {
+                  "icon": "bi-file-code",
+                  "name": "IM_time_float_genmsl",
+                  "target": "genmsl",
                   "type": "implementation"
                 },
                 {

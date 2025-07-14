@@ -23,7 +23,7 @@
 * [surfacematerial](#node-surfacematerial) [volumematerial](#node-volumematerial) 
 ---------
 ### Node Group: math
-* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [creatematrix](#node-creatematrix) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [fract](#node-fract) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [reflect](#node-reflect) [refract](#node-refract) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [round](#node-round) [safepower](#node-safepower) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) [trianglewave](#node-trianglewave) 
+* [absval](#node-absval) [acos](#node-acos) [add](#node-add) [asin](#node-asin) [atan2](#node-atan2) [ceil](#node-ceil) [clamp](#node-clamp) [cos](#node-cos) [creatematrix](#node-creatematrix) [crossproduct](#node-crossproduct) [determinant](#node-determinant) [distance](#node-distance) [divide](#node-divide) [dotproduct](#node-dotproduct) [exp](#node-exp) [floor](#node-floor) [fract](#node-fract) [hextilednormalmap](#node-hextilednormalmap) [invert](#node-invert) [invertmatrix](#node-invertmatrix) [ln](#node-ln) [magnitude](#node-magnitude) [max](#node-max) [min](#node-min) [modulo](#node-modulo) [multiply](#node-multiply) [normalize](#node-normalize) [normalmap](#node-normalmap) [place2d](#node-place2d) [power](#node-power) [reflect](#node-reflect) [refract](#node-refract) [rotate2d](#node-rotate2d) [rotate3d](#node-rotate3d) [round](#node-round) [safepower](#node-safepower) [sign](#node-sign) [sin](#node-sin) [sqrt](#node-sqrt) [subtract](#node-subtract) [tan](#node-tan) [transformmatrix](#node-transformmatrix) [transformnormal](#node-transformnormal) [transformpoint](#node-transformpoint) [transformvector](#node-transformvector) [transpose](#node-transpose) [trianglewave](#node-trianglewave) 
 ---------
 ### Node Group: organization
 * [dot](#node-dot) 
@@ -32,7 +32,7 @@
 * [constant](#node-constant) [randomfloat](#node-randomfloat) 
 ---------
 ### Node Group: procedural2d
-* [cellnoise2d](#node-cellnoise2d) [checkerboard](#node-checkerboard) [circle](#node-circle) [cloverleaf](#node-cloverleaf) [crosshatch](#node-crosshatch) [grid](#node-grid) [hexagon](#node-hexagon) [line](#node-line) [noise2d](#node-noise2d) [ramp](#node-ramp) [ramp4](#node-ramp4) [ramp_gradient](#node-ramp_gradient) [ramplr](#node-ramplr) [ramptb](#node-ramptb) [splitlr](#node-splitlr) [splittb](#node-splittb) [tiledcircles](#node-tiledcircles) [tiledcloverleafs](#node-tiledcloverleafs) [tiledhexagons](#node-tiledhexagons) [unifiednoise2d](#node-unifiednoise2d) [worleynoise2d](#node-worleynoise2d) 
+* [cellnoise2d](#node-cellnoise2d) [checkerboard](#node-checkerboard) [circle](#node-circle) [cloverleaf](#node-cloverleaf) [crosshatch](#node-crosshatch) [fractal2d](#node-fractal2d) [grid](#node-grid) [hexagon](#node-hexagon) [line](#node-line) [noise2d](#node-noise2d) [ramp](#node-ramp) [ramp4](#node-ramp4) [ramp_gradient](#node-ramp_gradient) [ramplr](#node-ramplr) [ramptb](#node-ramptb) [splitlr](#node-splitlr) [splittb](#node-splittb) [tiledcircles](#node-tiledcircles) [tiledcloverleafs](#node-tiledcloverleafs) [tiledhexagons](#node-tiledhexagons) [unifiednoise2d](#node-unifiednoise2d) [worleynoise2d](#node-worleynoise2d) 
 ---------
 ### Node Group: procedural3d
 * [cellnoise3d](#node-cellnoise3d) [fractal3d](#node-fractal3d) [noise3d](#node-noise3d) [randomcolor](#node-randomcolor) [unifiednoise3d](#node-unifiednoise3d) [worleynoise3d](#node-worleynoise3d) 
@@ -41,7 +41,7 @@
 * [convert](#node-convert) [surface_unlit](#node-surface_unlit) 
 ---------
 ### Node Group: texture2d
-* [image](#node-image) [tiledimage](#node-tiledimage) 
+* [hextiledimage](#node-hextiledimage) [image](#node-image) [latlongimage](#node-latlongimage) [tiledimage](#node-tiledimage) 
 ---------
 ### Node Group: texture3d
 * [triplanarprojection](#node-triplanarprojection) 
@@ -709,6 +709,125 @@ graph TB
 | **frameoffset** | integer | 0 |  |  |  |  |  |  |  |  |  | true |
 | **frameendaction** | string | constant |  |  |  |  |  |  |  |  |  | true |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *latlongimage*
+<details open><summary>ND_latlongimage</summary>
+<p>
+ 
+* *Nodedef*: ND_latlongimage
+* *Type*: color3
+* *Group*: texture2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_latlongimage
+
+
+```mermaid
+graph TB
+    subgraph NG_latlongimage
+    NG_latlongimage_viewDirChannels[viewDirChannels]
+    NG_latlongimage_angleXZ[angleXZ]
+    NG_latlongimage_scaleXZ[scaleXZ]
+    NG_latlongimage_longitude[longitude]
+    NG_latlongimage_rotationRadians[rotationRadians]
+    NG_latlongimage_offsetLongitude[offsetLongitude]
+    NG_latlongimage_angleY[angleY]
+    NG_latlongimage_scaleY[scaleY]
+    NG_latlongimage_latitude[latitude]
+    NG_latlongimage_mapUvs[mapUvs]
+    NG_latlongimage_envImage[envImage]
+    style NG_latlongimage_out  fill:#0C0, color:#FFF
+    NG_latlongimage_out([out])
+    style NG_latlongimage_viewdir  fill:#09D, color:#FFF
+    NG_latlongimage_viewdir([viewdir])
+    style NG_latlongimage_rotation  fill:#09D, color:#FFF
+    NG_latlongimage_rotation([rotation])
+    style NG_latlongimage_file  fill:#09D, color:#FFF
+    NG_latlongimage_file([file])
+    style NG_latlongimage_default1  fill:#09D, color:#FFF
+    NG_latlongimage_default1([default])
+    end
+    NG_latlongimage_viewdir --"in"--> NG_latlongimage_viewDirChannels
+    NG_latlongimage_viewDirChannels --"outx-->iny"--> NG_latlongimage_angleXZ
+    NG_latlongimage_viewDirChannels --"outz-->inx"--> NG_latlongimage_angleXZ
+    NG_latlongimage_angleXZ --"in1"--> NG_latlongimage_scaleXZ
+    NG_latlongimage_scaleXZ --"in1"--> NG_latlongimage_longitude
+    NG_latlongimage_rotation --"in1"--> NG_latlongimage_rotationRadians
+    NG_latlongimage_rotationRadians --"in1"--> NG_latlongimage_offsetLongitude
+    NG_latlongimage_longitude --"in2"--> NG_latlongimage_offsetLongitude
+    NG_latlongimage_viewDirChannels --"outy-->in"--> NG_latlongimage_angleY
+    NG_latlongimage_angleY --"in1"--> NG_latlongimage_scaleY
+    NG_latlongimage_scaleY --"in1"--> NG_latlongimage_latitude
+    NG_latlongimage_offsetLongitude --"in1"--> NG_latlongimage_mapUvs
+    NG_latlongimage_latitude --"in2"--> NG_latlongimage_mapUvs
+    NG_latlongimage_file --"file"--> NG_latlongimage_envImage
+    NG_latlongimage_default1 --"default"--> NG_latlongimage_envImage
+    NG_latlongimage_mapUvs --"texcoord"--> NG_latlongimage_envImage
+    NG_latlongimage_envImage --> NG_latlongimage_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **file** | filename |  | Filename |  |  |  |  |  |  |  |  | true |
+| **default** | color3 | 0, 0, 0 | Default Color |  |  |  |  |  |  |  |  |  |
+| **viewdir** | vector3 | 0, 0, 1 | View Direction |  |  |  |  |  |  |  |  |  |
+| **rotation** | float | 0.0 | Longitude Offset | 0 | 360 |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *hextiledimage*
+<details open><summary>ND_hextiledimage_color3</summary>
+<p>
+ 
+* *Nodedef*: ND_hextiledimage_color3
+* *Type*: color3
+* *Group*: texture2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **file** | filename |  |  |  |  |  |  |  |  |  |  | true |
+| **default** | color3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| **tiling** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **rotation** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **rotationrange** | vector2 | 0, 360 |  |  |  |  |  |  |  |  |  |  |
+| **scale** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **scalerange** | vector2 | 0.5, 2 |  |  |  |  |  |  |  |  |  |  |
+| **offset** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **offsetrange** | vector2 | 0, 1 |  |  |  |  |  |  |  |  |  |  |
+| **falloff** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **falloffcontrast** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **lumacoeffs** | color3 | 0.272229, 0.674082, 0.0536895 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_hextiledimage_color4</summary>
+<p>
+ 
+* *Nodedef*: ND_hextiledimage_color4
+* *Type*: color4
+* *Group*: texture2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **file** | filename |  |  |  |  |  |  |  |  |  |  | true |
+| **default** | color4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| **tiling** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **rotation** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **rotationrange** | vector2 | 0, 360 |  |  |  |  |  |  |  |  |  |  |
+| **scale** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **scalerange** | vector2 | 0.5, 2 |  |  |  |  |  |  |  |  |  |  |
+| **offset** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **offsetrange** | vector2 | 0, 1 |  |  |  |  |  |  |  |  |  |  |
+| **falloff** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **falloffcontrast** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **lumacoeffs** | color3 | 0.272229, 0.674082, 0.0536895 |  |  |  |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *triplanarprojection*
 <details open><summary>ND_triplanarprojection_float</summary>
 <p>
@@ -3719,6 +3838,412 @@ graph TB
 | **pivot** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **position** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *fractal2d*
+<details open><summary>ND_fractal2d_float</summary>
+<p>
+ 
+* *Nodedef*: ND_fractal2d_float
+* *Type*: float
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **amplitude** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **octaves** | integer | 3 |  |  |  |  |  |  |  |  |  |  |
+| **lacunarity** | float | 2.0 |  |  |  |  |  |  |  |  |  |  |
+| **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fractal2d_color3</summary>
+<p>
+ 
+* *Nodedef*: ND_fractal2d_color3
+* *Type*: color3
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_fractal2d_color3
+
+
+```mermaid
+graph TB
+    subgraph NG_fractal2d_color3
+    NG_fractal2d_color3_N_fractal2d[N_fractal2d]
+    NG_fractal2d_color3_N_convert[N_convert]
+    style NG_fractal2d_color3_out  fill:#0C0, color:#FFF
+    NG_fractal2d_color3_out([out])
+    style NG_fractal2d_color3_amplitude  fill:#09D, color:#FFF
+    NG_fractal2d_color3_amplitude([amplitude])
+    style NG_fractal2d_color3_octaves  fill:#09D, color:#FFF
+    NG_fractal2d_color3_octaves([octaves])
+    style NG_fractal2d_color3_lacunarity  fill:#09D, color:#FFF
+    NG_fractal2d_color3_lacunarity([lacunarity])
+    style NG_fractal2d_color3_diminish  fill:#09D, color:#FFF
+    NG_fractal2d_color3_diminish([diminish])
+    style NG_fractal2d_color3_texcoord  fill:#09D, color:#FFF
+    NG_fractal2d_color3_texcoord([texcoord])
+    end
+    NG_fractal2d_color3_amplitude --"amplitude"--> NG_fractal2d_color3_N_fractal2d
+    NG_fractal2d_color3_octaves --"octaves"--> NG_fractal2d_color3_N_fractal2d
+    NG_fractal2d_color3_lacunarity --"lacunarity"--> NG_fractal2d_color3_N_fractal2d
+    NG_fractal2d_color3_diminish --"diminish"--> NG_fractal2d_color3_N_fractal2d
+    NG_fractal2d_color3_texcoord --"texcoord"--> NG_fractal2d_color3_N_fractal2d
+    NG_fractal2d_color3_N_fractal2d --"in"--> NG_fractal2d_color3_N_convert
+    NG_fractal2d_color3_N_convert --> NG_fractal2d_color3_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **amplitude** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **octaves** | integer | 3 |  |  |  |  |  |  |  |  |  |  |
+| **lacunarity** | float | 2.0 |  |  |  |  |  |  |  |  |  |  |
+| **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fractal2d_color4</summary>
+<p>
+ 
+* *Nodedef*: ND_fractal2d_color4
+* *Type*: color4
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_fractal2d_color4
+
+
+```mermaid
+graph TB
+    subgraph NG_fractal2d_color4
+    NG_fractal2d_color4_N_fractal2d[N_fractal2d]
+    NG_fractal2d_color4_N_convert[N_convert]
+    style NG_fractal2d_color4_out  fill:#0C0, color:#FFF
+    NG_fractal2d_color4_out([out])
+    style NG_fractal2d_color4_amplitude  fill:#09D, color:#FFF
+    NG_fractal2d_color4_amplitude([amplitude])
+    style NG_fractal2d_color4_octaves  fill:#09D, color:#FFF
+    NG_fractal2d_color4_octaves([octaves])
+    style NG_fractal2d_color4_lacunarity  fill:#09D, color:#FFF
+    NG_fractal2d_color4_lacunarity([lacunarity])
+    style NG_fractal2d_color4_diminish  fill:#09D, color:#FFF
+    NG_fractal2d_color4_diminish([diminish])
+    style NG_fractal2d_color4_texcoord  fill:#09D, color:#FFF
+    NG_fractal2d_color4_texcoord([texcoord])
+    end
+    NG_fractal2d_color4_amplitude --"amplitude"--> NG_fractal2d_color4_N_fractal2d
+    NG_fractal2d_color4_octaves --"octaves"--> NG_fractal2d_color4_N_fractal2d
+    NG_fractal2d_color4_lacunarity --"lacunarity"--> NG_fractal2d_color4_N_fractal2d
+    NG_fractal2d_color4_diminish --"diminish"--> NG_fractal2d_color4_N_fractal2d
+    NG_fractal2d_color4_texcoord --"texcoord"--> NG_fractal2d_color4_N_fractal2d
+    NG_fractal2d_color4_N_fractal2d --"in"--> NG_fractal2d_color4_N_convert
+    NG_fractal2d_color4_N_convert --> NG_fractal2d_color4_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **amplitude** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **octaves** | integer | 3 |  |  |  |  |  |  |  |  |  |  |
+| **lacunarity** | float | 2.0 |  |  |  |  |  |  |  |  |  |  |
+| **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fractal2d_vector2</summary>
+<p>
+ 
+* *Nodedef*: ND_fractal2d_vector2
+* *Type*: vector2
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **amplitude** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **octaves** | integer | 3 |  |  |  |  |  |  |  |  |  |  |
+| **lacunarity** | float | 2.0 |  |  |  |  |  |  |  |  |  |  |
+| **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fractal2d_vector3</summary>
+<p>
+ 
+* *Nodedef*: ND_fractal2d_vector3
+* *Type*: vector3
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **amplitude** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **octaves** | integer | 3 |  |  |  |  |  |  |  |  |  |  |
+| **lacunarity** | float | 2.0 |  |  |  |  |  |  |  |  |  |  |
+| **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fractal2d_vector4</summary>
+<p>
+ 
+* *Nodedef*: ND_fractal2d_vector4
+* *Type*: vector4
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **amplitude** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **octaves** | integer | 3 |  |  |  |  |  |  |  |  |  |  |
+| **lacunarity** | float | 2.0 |  |  |  |  |  |  |  |  |  |  |
+| **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fractal2d_color3FA</summary>
+<p>
+ 
+* *Nodedef*: ND_fractal2d_color3FA
+* *Type*: color3
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_fractal2d_color3FA
+
+
+```mermaid
+graph TB
+    subgraph NG_fractal2d_color3FA
+    NG_fractal2d_color3FA_N_convert[N_convert]
+    NG_fractal2d_color3FA_N_fractal2d[N_fractal2d]
+    style NG_fractal2d_color3FA_out  fill:#0C0, color:#FFF
+    NG_fractal2d_color3FA_out([out])
+    style NG_fractal2d_color3FA_amplitude  fill:#09D, color:#FFF
+    NG_fractal2d_color3FA_amplitude([amplitude])
+    style NG_fractal2d_color3FA_octaves  fill:#09D, color:#FFF
+    NG_fractal2d_color3FA_octaves([octaves])
+    style NG_fractal2d_color3FA_lacunarity  fill:#09D, color:#FFF
+    NG_fractal2d_color3FA_lacunarity([lacunarity])
+    style NG_fractal2d_color3FA_diminish  fill:#09D, color:#FFF
+    NG_fractal2d_color3FA_diminish([diminish])
+    style NG_fractal2d_color3FA_texcoord  fill:#09D, color:#FFF
+    NG_fractal2d_color3FA_texcoord([texcoord])
+    end
+    NG_fractal2d_color3FA_amplitude --"in"--> NG_fractal2d_color3FA_N_convert
+    NG_fractal2d_color3FA_N_convert --"amplitude"--> NG_fractal2d_color3FA_N_fractal2d
+    NG_fractal2d_color3FA_octaves --"octaves"--> NG_fractal2d_color3FA_N_fractal2d
+    NG_fractal2d_color3FA_lacunarity --"lacunarity"--> NG_fractal2d_color3FA_N_fractal2d
+    NG_fractal2d_color3FA_diminish --"diminish"--> NG_fractal2d_color3FA_N_fractal2d
+    NG_fractal2d_color3FA_texcoord --"texcoord"--> NG_fractal2d_color3FA_N_fractal2d
+    NG_fractal2d_color3FA_N_fractal2d --> NG_fractal2d_color3FA_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **amplitude** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **octaves** | integer | 3 |  |  |  |  |  |  |  |  |  |  |
+| **lacunarity** | float | 2.0 |  |  |  |  |  |  |  |  |  |  |
+| **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fractal2d_color4FA</summary>
+<p>
+ 
+* *Nodedef*: ND_fractal2d_color4FA
+* *Type*: color4
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_fractal2d_color4FA
+
+
+```mermaid
+graph TB
+    subgraph NG_fractal2d_color4FA
+    NG_fractal2d_color4FA_N_convert[N_convert]
+    NG_fractal2d_color4FA_N_fractal2d[N_fractal2d]
+    style NG_fractal2d_color4FA_out  fill:#0C0, color:#FFF
+    NG_fractal2d_color4FA_out([out])
+    style NG_fractal2d_color4FA_amplitude  fill:#09D, color:#FFF
+    NG_fractal2d_color4FA_amplitude([amplitude])
+    style NG_fractal2d_color4FA_octaves  fill:#09D, color:#FFF
+    NG_fractal2d_color4FA_octaves([octaves])
+    style NG_fractal2d_color4FA_lacunarity  fill:#09D, color:#FFF
+    NG_fractal2d_color4FA_lacunarity([lacunarity])
+    style NG_fractal2d_color4FA_diminish  fill:#09D, color:#FFF
+    NG_fractal2d_color4FA_diminish([diminish])
+    style NG_fractal2d_color4FA_texcoord  fill:#09D, color:#FFF
+    NG_fractal2d_color4FA_texcoord([texcoord])
+    end
+    NG_fractal2d_color4FA_amplitude --"in"--> NG_fractal2d_color4FA_N_convert
+    NG_fractal2d_color4FA_N_convert --"amplitude"--> NG_fractal2d_color4FA_N_fractal2d
+    NG_fractal2d_color4FA_octaves --"octaves"--> NG_fractal2d_color4FA_N_fractal2d
+    NG_fractal2d_color4FA_lacunarity --"lacunarity"--> NG_fractal2d_color4FA_N_fractal2d
+    NG_fractal2d_color4FA_diminish --"diminish"--> NG_fractal2d_color4FA_N_fractal2d
+    NG_fractal2d_color4FA_texcoord --"texcoord"--> NG_fractal2d_color4FA_N_fractal2d
+    NG_fractal2d_color4FA_N_fractal2d --> NG_fractal2d_color4FA_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **amplitude** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **octaves** | integer | 3 |  |  |  |  |  |  |  |  |  |  |
+| **lacunarity** | float | 2.0 |  |  |  |  |  |  |  |  |  |  |
+| **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | color4 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fractal2d_vector2FA</summary>
+<p>
+ 
+* *Nodedef*: ND_fractal2d_vector2FA
+* *Type*: vector2
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_fractal2d_vector2FA
+
+
+```mermaid
+graph TB
+    subgraph NG_fractal2d_vector2FA
+    NG_fractal2d_vector2FA_N_convert[N_convert]
+    NG_fractal2d_vector2FA_N_fractal2d[N_fractal2d]
+    style NG_fractal2d_vector2FA_out  fill:#0C0, color:#FFF
+    NG_fractal2d_vector2FA_out([out])
+    style NG_fractal2d_vector2FA_amplitude  fill:#09D, color:#FFF
+    NG_fractal2d_vector2FA_amplitude([amplitude])
+    style NG_fractal2d_vector2FA_octaves  fill:#09D, color:#FFF
+    NG_fractal2d_vector2FA_octaves([octaves])
+    style NG_fractal2d_vector2FA_lacunarity  fill:#09D, color:#FFF
+    NG_fractal2d_vector2FA_lacunarity([lacunarity])
+    style NG_fractal2d_vector2FA_diminish  fill:#09D, color:#FFF
+    NG_fractal2d_vector2FA_diminish([diminish])
+    style NG_fractal2d_vector2FA_texcoord  fill:#09D, color:#FFF
+    NG_fractal2d_vector2FA_texcoord([texcoord])
+    end
+    NG_fractal2d_vector2FA_amplitude --"in"--> NG_fractal2d_vector2FA_N_convert
+    NG_fractal2d_vector2FA_N_convert --"amplitude"--> NG_fractal2d_vector2FA_N_fractal2d
+    NG_fractal2d_vector2FA_octaves --"octaves"--> NG_fractal2d_vector2FA_N_fractal2d
+    NG_fractal2d_vector2FA_lacunarity --"lacunarity"--> NG_fractal2d_vector2FA_N_fractal2d
+    NG_fractal2d_vector2FA_diminish --"diminish"--> NG_fractal2d_vector2FA_N_fractal2d
+    NG_fractal2d_vector2FA_texcoord --"texcoord"--> NG_fractal2d_vector2FA_N_fractal2d
+    NG_fractal2d_vector2FA_N_fractal2d --> NG_fractal2d_vector2FA_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **amplitude** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **octaves** | integer | 3 |  |  |  |  |  |  |  |  |  |  |
+| **lacunarity** | float | 2.0 |  |  |  |  |  |  |  |  |  |  |
+| **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fractal2d_vector3FA</summary>
+<p>
+ 
+* *Nodedef*: ND_fractal2d_vector3FA
+* *Type*: vector3
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_fractal2d_vector3FA
+
+
+```mermaid
+graph TB
+    subgraph NG_fractal2d_vector3FA
+    NG_fractal2d_vector3FA_N_convert[N_convert]
+    NG_fractal2d_vector3FA_N_fractal2d[N_fractal2d]
+    style NG_fractal2d_vector3FA_out  fill:#0C0, color:#FFF
+    NG_fractal2d_vector3FA_out([out])
+    style NG_fractal2d_vector3FA_amplitude  fill:#09D, color:#FFF
+    NG_fractal2d_vector3FA_amplitude([amplitude])
+    style NG_fractal2d_vector3FA_octaves  fill:#09D, color:#FFF
+    NG_fractal2d_vector3FA_octaves([octaves])
+    style NG_fractal2d_vector3FA_lacunarity  fill:#09D, color:#FFF
+    NG_fractal2d_vector3FA_lacunarity([lacunarity])
+    style NG_fractal2d_vector3FA_diminish  fill:#09D, color:#FFF
+    NG_fractal2d_vector3FA_diminish([diminish])
+    style NG_fractal2d_vector3FA_texcoord  fill:#09D, color:#FFF
+    NG_fractal2d_vector3FA_texcoord([texcoord])
+    end
+    NG_fractal2d_vector3FA_amplitude --"in"--> NG_fractal2d_vector3FA_N_convert
+    NG_fractal2d_vector3FA_N_convert --"amplitude"--> NG_fractal2d_vector3FA_N_fractal2d
+    NG_fractal2d_vector3FA_octaves --"octaves"--> NG_fractal2d_vector3FA_N_fractal2d
+    NG_fractal2d_vector3FA_lacunarity --"lacunarity"--> NG_fractal2d_vector3FA_N_fractal2d
+    NG_fractal2d_vector3FA_diminish --"diminish"--> NG_fractal2d_vector3FA_N_fractal2d
+    NG_fractal2d_vector3FA_texcoord --"texcoord"--> NG_fractal2d_vector3FA_N_fractal2d
+    NG_fractal2d_vector3FA_N_fractal2d --> NG_fractal2d_vector3FA_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **amplitude** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **octaves** | integer | 3 |  |  |  |  |  |  |  |  |  |  |
+| **lacunarity** | float | 2.0 |  |  |  |  |  |  |  |  |  |  |
+| **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_fractal2d_vector4FA</summary>
+<p>
+ 
+* *Nodedef*: ND_fractal2d_vector4FA
+* *Type*: vector4
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Nodegraph*: NG_fractal2d_vector4FA
+
+
+```mermaid
+graph TB
+    subgraph NG_fractal2d_vector4FA
+    NG_fractal2d_vector4FA_N_convert[N_convert]
+    NG_fractal2d_vector4FA_N_fractal2d[N_fractal2d]
+    style NG_fractal2d_vector4FA_out  fill:#0C0, color:#FFF
+    NG_fractal2d_vector4FA_out([out])
+    style NG_fractal2d_vector4FA_amplitude  fill:#09D, color:#FFF
+    NG_fractal2d_vector4FA_amplitude([amplitude])
+    style NG_fractal2d_vector4FA_octaves  fill:#09D, color:#FFF
+    NG_fractal2d_vector4FA_octaves([octaves])
+    style NG_fractal2d_vector4FA_lacunarity  fill:#09D, color:#FFF
+    NG_fractal2d_vector4FA_lacunarity([lacunarity])
+    style NG_fractal2d_vector4FA_diminish  fill:#09D, color:#FFF
+    NG_fractal2d_vector4FA_diminish([diminish])
+    style NG_fractal2d_vector4FA_texcoord  fill:#09D, color:#FFF
+    NG_fractal2d_vector4FA_texcoord([texcoord])
+    end
+    NG_fractal2d_vector4FA_amplitude --"in"--> NG_fractal2d_vector4FA_N_convert
+    NG_fractal2d_vector4FA_N_convert --"amplitude"--> NG_fractal2d_vector4FA_N_fractal2d
+    NG_fractal2d_vector4FA_octaves --"octaves"--> NG_fractal2d_vector4FA_N_fractal2d
+    NG_fractal2d_vector4FA_lacunarity --"lacunarity"--> NG_fractal2d_vector4FA_N_fractal2d
+    NG_fractal2d_vector4FA_diminish --"diminish"--> NG_fractal2d_vector4FA_N_fractal2d
+    NG_fractal2d_vector4FA_texcoord --"texcoord"--> NG_fractal2d_vector4FA_N_fractal2d
+    NG_fractal2d_vector4FA_N_fractal2d --> NG_fractal2d_vector4FA_out
+```
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **amplitude** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **octaves** | integer | 3 |  |  |  |  |  |  |  |  |  |  |
+| **lacunarity** | float | 2.0 |  |  |  |  |  |  |  |  |  |  |
+| **diminish** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *fractal3d*
 <details open><summary>ND_fractal3d_float</summary>
 <p>
@@ -4900,6 +5425,7 @@ graph TB
 graph TB
     subgraph NG_cloverleaf_float
     NG_cloverleaf_float_sample_double[sample_double]
+    NG_cloverleaf_float_center_double[center_double]
     NG_cloverleaf_float_sample_add[sample_add]
     NG_cloverleaf_float_sample_subtract[sample_subtract]
     NG_cloverleaf_float_sample_double_separate[sample_double_separate]
@@ -4920,13 +5446,15 @@ graph TB
     NG_cloverleaf_float_out([out])
     style NG_cloverleaf_float_texcoord  fill:#09D, color:#FFF
     NG_cloverleaf_float_texcoord([texcoord])
-    style NG_cloverleaf_float_radius  fill:#09D, color:#FFF
-    NG_cloverleaf_float_radius([radius])
     style NG_cloverleaf_float_center  fill:#09D, color:#FFF
     NG_cloverleaf_float_center([center])
+    style NG_cloverleaf_float_radius  fill:#09D, color:#FFF
+    NG_cloverleaf_float_radius([radius])
     end
     NG_cloverleaf_float_texcoord --"in1"--> NG_cloverleaf_float_sample_double
     NG_cloverleaf_float_texcoord --"in2"--> NG_cloverleaf_float_sample_double
+    NG_cloverleaf_float_center --"in1"--> NG_cloverleaf_float_center_double
+    NG_cloverleaf_float_center --"in2"--> NG_cloverleaf_float_center_double
     NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_sample_add
     NG_cloverleaf_float_radius --"in2"--> NG_cloverleaf_float_sample_add
     NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_sample_subtract
@@ -4943,16 +5471,16 @@ graph TB
     NG_cloverleaf_float_sample_double_separate --"outx-->in1"--> NG_cloverleaf_float_coord4
     NG_cloverleaf_float_sample_add_separate --"outy-->in2"--> NG_cloverleaf_float_coord4
     NG_cloverleaf_float_coord1 --"texcoord"--> NG_cloverleaf_float_circle1
-    NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle1
+    NG_cloverleaf_float_center_double --"center"--> NG_cloverleaf_float_circle1
     NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle1
     NG_cloverleaf_float_coord2 --"texcoord"--> NG_cloverleaf_float_circle2
-    NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle2
+    NG_cloverleaf_float_center_double --"center"--> NG_cloverleaf_float_circle2
     NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle2
     NG_cloverleaf_float_coord3 --"texcoord"--> NG_cloverleaf_float_circle3
-    NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle3
+    NG_cloverleaf_float_center_double --"center"--> NG_cloverleaf_float_circle3
     NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle3
     NG_cloverleaf_float_coord4 --"texcoord"--> NG_cloverleaf_float_circle4
-    NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle4
+    NG_cloverleaf_float_center_double --"center"--> NG_cloverleaf_float_circle4
     NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle4
     NG_cloverleaf_float_circle1 --"in1"--> NG_cloverleaf_float_max1
     NG_cloverleaf_float_circle2 --"in2"--> NG_cloverleaf_float_max1
@@ -5956,20 +6484,7 @@ graph TB
 * *Group*: application
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Nodegraph*: NG_time_float_genglsl
-
-
-```mermaid
-graph TB
-    subgraph NG_time_float_genglsl
-    NG_time_float_genglsl_frame[frame]
-    NG_time_float_genglsl_time[time]
-    style NG_time_float_genglsl_out  fill:#0C0, color:#FFF
-    NG_time_float_genglsl_out([out])
-    end
-    NG_time_float_genglsl_frame --"in1"--> NG_time_float_genglsl_time
-    NG_time_float_genglsl_time --> NG_time_float_genglsl_out
-```
+* *Implementation*: Non-graph
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -10011,6 +10526,37 @@ graph TB
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | vector3 | 0.5, 0.5, 1 |  |  |  |  |  |  |  |  |  |  |
 | **scale** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **bitangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *hextilednormalmap*
+<details open><summary>ND_hextilednormalmap_vector3</summary>
+<p>
+ 
+* *Nodedef*: ND_hextilednormalmap_vector3
+* *Type*: vector3
+* *Group*: math
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **file** | filename |  |  |  |  |  |  |  |  |  |  | true |
+| **default** | vector3 | 0.5, 0.5, 1 |  |  |  |  |  |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| **tiling** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **rotation** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **rotationrange** | vector2 | 0, 360 |  |  |  |  |  |  |  |  |  |  |
+| **scale** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **scalerange** | vector2 | 0.5, 2 |  |  |  |  |  |  |  |  |  |  |
+| **offset** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **offsetrange** | vector2 | 0, 1 |  |  |  |  |  |  |  |  |  |  |
+| **falloff** | float | 0.5 |  |  |  |  |  |  |  |  |  |  |
+| **strength** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **flip_g** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **bitangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
@@ -18668,7 +19214,8 @@ graph TB
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | **in** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
-| **scale** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **scale** | float | 1.0 |  | 0.0 |  |  | 5.0 |  |  |  |  |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *and*
 <details open><summary>ND_logical_and</summary>
