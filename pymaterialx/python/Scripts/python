@@ -1,0 +1,7 @@
+---------- Generate code for file:  ..\..\resources\Materials\Examples\StandardSurface\standard_surface_brass_tiled.mtlx --------------------
+- Set up CMS ...
+- Set up Units ...
+- Shader output path: D:\Work\materialx\ILM_materialx\build\installed\resources\Materials\Examples\StandardSurface
+-- Generate code for element: Tiled_Brass
+--- Wrote pixel shader to: D:\Work\materialx\ILM_materialx\build\installed\resources\Materials\Examples\StandardSurface/Tiled_Brass.mdl
+--- Validation passed for element: Tiled_Brass

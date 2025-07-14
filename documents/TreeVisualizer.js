@@ -327,12 +327,12 @@ class TreeVisualizer {
     searchNodes(searchTerm, expandMatches = true) {
         try {
             const regex = new RegExp(searchTerm, 'i');
-            this.matches = [];
+            let new_matches = [];
 
             // Function to recursively traverse all nodes, including collapsed ones
             const traverseAll = (node) => {
                 if (regex.test(node.data.name)) {
-                    this.matches.push(node);
+                    new_matches.push(node);
 
                     if (expandMatches) {
                         // Expand all ancestors to make this match visible
@@ -361,12 +361,13 @@ class TreeVisualizer {
                 // When expandMatches is false, only search visible nodes
                 this.root.each(d => {
                     if (regex.test(d.data.name)) {
-                        this.matches.push(d);
+                        new_matches.push(d);
                     }
                 });
             }
 
-        if (this.matches.length > 0) {
+        if (new_matches != this.matches) {
+            this.matches = new_matches;
             this.render();
             this.fitToMatches();
         }

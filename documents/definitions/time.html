@@ -388,6 +388,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="exp.html">exp</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="floor.html">floor</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fract.html">fract</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hextilednormalmap.html">hextilednormalmap</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="invert.html">invert</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="invertmatrix.html">invertmatrix</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ln.html">ln</a>
@@ -513,6 +514,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="circle.html">circle</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="cloverleaf.html">cloverleaf</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="crosshatch.html">crosshatch</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fractal2d.html">fractal2d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="grid.html">grid</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hexagon.html">hexagon</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="line.html">line</a>
@@ -559,11 +561,14 @@
 <div class="collapse ps-5" id="collapse_texture2d">
 <div class="d-grid gap-0 col-6">
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="UsdUVTexture.html">UsdUVTexture</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_anisotropy_image.html">gltf_anisotropy_image</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_colorimage.html">gltf_colorimage</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_image.html">gltf_image</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_iridescence_thickness.html">gltf_iridescence_thickness</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_normalmap.html">gltf_normalmap</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hextiledimage.html">hextiledimage</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="image.html">image</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="latlongimage.html">latlongimage</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="tiledimage.html">tiledimage</a>
 </div>
 </div>
@@ -655,7 +660,7 @@ Category: time
       <label
           class="col-2 col-form-label col-form-label-sm">Disabled Value </label>
       <div class="col">
-          <input id="ND_time_float_out" type="number" class="form-control form-control-sm" step="0.01" value="0.0416667" disabled>
+          <input id="ND_time_float_out" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
   <div class="form-group row g-2">
@@ -669,28 +674,83 @@ Category: time
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Node Graph</b>
-<img class="bg-light" src="../images/diagram-3.svg">
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
 </summary>
-<button id="ND_time_float_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
-<button id="ND_time_float_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
-<pre><code class="language-mermaid">
-<div id="ND_time_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
-</div>
-<div id="ND_time_float_mrender_mermaid_input" class="mermaid" hidden>
-graph TB
-    subgraph NG_time_float_genglsl
-    NG_time_float_genglsl_frame[frame]
-    NG_time_float_genglsl_time[time]
-    style NG_time_float_genglsl_out  fill:#0C0, color:#FFF
-    NG_time_float_genglsl_out([out])
-    end
-    NG_time_float_genglsl_frame --"in1"--> NG_time_float_genglsl_time
-    NG_time_float_genglsl_time --> NG_time_float_genglsl_out
-
-
-</div></code></pre>
-
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_time_float">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_time_float() </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_time_float">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_time_float.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_time_float.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_time_float">
+   </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>

@@ -388,6 +388,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="exp.html">exp</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="floor.html">floor</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fract.html">fract</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hextilednormalmap.html">hextilednormalmap</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="invert.html">invert</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="invertmatrix.html">invertmatrix</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ln.html">ln</a>
@@ -513,6 +514,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="circle.html">circle</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="cloverleaf.html">cloverleaf</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="crosshatch.html">crosshatch</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fractal2d.html">fractal2d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="grid.html">grid</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hexagon.html">hexagon</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="line.html">line</a>
@@ -559,11 +561,14 @@
 <div class="collapse ps-5" id="collapse_texture2d">
 <div class="d-grid gap-0 col-6">
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="UsdUVTexture.html">UsdUVTexture</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_anisotropy_image.html">gltf_anisotropy_image</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_colorimage.html">gltf_colorimage</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_image.html">gltf_image</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_iridescence_thickness.html">gltf_iridescence_thickness</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_normalmap.html">gltf_normalmap</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hextiledimage.html">hextiledimage</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="image.html">image</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="latlongimage.html">latlongimage</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="tiledimage.html">tiledimage</a>
 </div>
 </div>
@@ -1174,12 +1179,12 @@ graph TB
     NG_standard_surface_to_UsdPreviewSurface_constantOneThirdVector[constantOneThirdVector]
     NG_standard_surface_to_UsdPreviewSurface_metallic[metallic]
     NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor[scaledBaseColor]
-    NG_standard_surface_to_UsdPreviewSurface_albedoOpaqueDielectric[albedoOpaqueDielectric]
+    NG_standard_surface_to_UsdPreviewSurface_baseSubsurfaceColor[baseSubsurfaceColor]
     NG_standard_surface_to_UsdPreviewSurface_coatAttenuation[coatAttenuation]
     NG_standard_surface_to_UsdPreviewSurface_diffuseColor[diffuseColor]
     NG_standard_surface_to_UsdPreviewSurface_roughness[roughness]
     NG_standard_surface_to_UsdPreviewSurface_ior[ior]
-    NG_standard_surface_to_UsdPreviewSurface_coatColor[coatColor]
+    NG_standard_surface_to_UsdPreviewSurface_scaledCoatColor[scaledCoatColor]
     NG_standard_surface_to_UsdPreviewSurface_coatColorVector[coatColorVector]
     NG_standard_surface_to_UsdPreviewSurface_clearcoat[clearcoat]
     NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness[clearcoatRoughness]
@@ -1236,18 +1241,18 @@ graph TB
     NG_standard_surface_to_UsdPreviewSurface_metalness --"in"--> NG_standard_surface_to_UsdPreviewSurface_metallic
     NG_standard_surface_to_UsdPreviewSurface_base_color --"in1"--> NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor
     NG_standard_surface_to_UsdPreviewSurface_base --"in2"--> NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor
-    NG_standard_surface_to_UsdPreviewSurface_subsurface_color --"fg"--> NG_standard_surface_to_UsdPreviewSurface_albedoOpaqueDielectric
-    NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor --"bg"--> NG_standard_surface_to_UsdPreviewSurface_albedoOpaqueDielectric
-    NG_standard_surface_to_UsdPreviewSurface_subsurface --"mix"--> NG_standard_surface_to_UsdPreviewSurface_albedoOpaqueDielectric
+    NG_standard_surface_to_UsdPreviewSurface_subsurface_color --"fg"--> NG_standard_surface_to_UsdPreviewSurface_baseSubsurfaceColor
+    NG_standard_surface_to_UsdPreviewSurface_scaledBaseColor --"bg"--> NG_standard_surface_to_UsdPreviewSurface_baseSubsurfaceColor
+    NG_standard_surface_to_UsdPreviewSurface_subsurface --"mix"--> NG_standard_surface_to_UsdPreviewSurface_baseSubsurfaceColor
     NG_standard_surface_to_UsdPreviewSurface_coat_color --"fg"--> NG_standard_surface_to_UsdPreviewSurface_coatAttenuation
     NG_standard_surface_to_UsdPreviewSurface_coat --"mix"--> NG_standard_surface_to_UsdPreviewSurface_coatAttenuation
-    NG_standard_surface_to_UsdPreviewSurface_albedoOpaqueDielectric --"in1"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor
+    NG_standard_surface_to_UsdPreviewSurface_baseSubsurfaceColor --"in1"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor
     NG_standard_surface_to_UsdPreviewSurface_coatAttenuation --"in2"--> NG_standard_surface_to_UsdPreviewSurface_diffuseColor
     NG_standard_surface_to_UsdPreviewSurface_specular_roughness --"in"--> NG_standard_surface_to_UsdPreviewSurface_roughness
     NG_standard_surface_to_UsdPreviewSurface_specular_IOR --"in"--> NG_standard_surface_to_UsdPreviewSurface_ior
-    NG_standard_surface_to_UsdPreviewSurface_coat_color --"in1"--> NG_standard_surface_to_UsdPreviewSurface_coatColor
-    NG_standard_surface_to_UsdPreviewSurface_coat --"in2"--> NG_standard_surface_to_UsdPreviewSurface_coatColor
-    NG_standard_surface_to_UsdPreviewSurface_coatColor --"in"--> NG_standard_surface_to_UsdPreviewSurface_coatColorVector
+    NG_standard_surface_to_UsdPreviewSurface_coat_color --"in1"--> NG_standard_surface_to_UsdPreviewSurface_scaledCoatColor
+    NG_standard_surface_to_UsdPreviewSurface_coat --"in2"--> NG_standard_surface_to_UsdPreviewSurface_scaledCoatColor
+    NG_standard_surface_to_UsdPreviewSurface_scaledCoatColor --"in"--> NG_standard_surface_to_UsdPreviewSurface_coatColorVector
     NG_standard_surface_to_UsdPreviewSurface_coatColorVector --"in1"--> NG_standard_surface_to_UsdPreviewSurface_clearcoat
     NG_standard_surface_to_UsdPreviewSurface_constantOneThirdVector --"in2"--> NG_standard_surface_to_UsdPreviewSurface_clearcoat
     NG_standard_surface_to_UsdPreviewSurface_coat_roughness --"in"--> NG_standard_surface_to_UsdPreviewSurface_clearcoatRoughness

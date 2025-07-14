@@ -388,6 +388,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="exp.html">exp</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="floor.html">floor</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fract.html">fract</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hextilednormalmap.html">hextilednormalmap</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="invert.html">invert</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="invertmatrix.html">invertmatrix</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="ln.html">ln</a>
@@ -513,6 +514,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="circle.html">circle</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="cloverleaf.html">cloverleaf</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="crosshatch.html">crosshatch</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fractal2d.html">fractal2d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="grid.html">grid</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hexagon.html">hexagon</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="line.html">line</a>
@@ -559,11 +561,14 @@
 <div class="collapse ps-5" id="collapse_texture2d">
 <div class="d-grid gap-0 col-6">
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="UsdUVTexture.html">UsdUVTexture</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_anisotropy_image.html">gltf_anisotropy_image</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_colorimage.html">gltf_colorimage</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_image.html">gltf_image</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_iridescence_thickness.html">gltf_iridescence_thickness</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="gltf_normalmap.html">gltf_normalmap</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hextiledimage.html">hextiledimage</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="image.html">image</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="latlongimage.html">latlongimage</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="tiledimage.html">tiledimage</a>
 </div>
 </div>
@@ -716,6 +721,7 @@ Category: cloverleaf
 graph TB
     subgraph NG_cloverleaf_float
     NG_cloverleaf_float_sample_double[sample_double]
+    NG_cloverleaf_float_center_double[center_double]
     NG_cloverleaf_float_sample_add[sample_add]
     NG_cloverleaf_float_sample_subtract[sample_subtract]
     NG_cloverleaf_float_sample_double_separate[sample_double_separate]
@@ -736,13 +742,15 @@ graph TB
     NG_cloverleaf_float_out([out])
     style NG_cloverleaf_float_texcoord  fill:#09D, color:#FFF
     NG_cloverleaf_float_texcoord([texcoord])
-    style NG_cloverleaf_float_radius  fill:#09D, color:#FFF
-    NG_cloverleaf_float_radius([radius])
     style NG_cloverleaf_float_center  fill:#09D, color:#FFF
     NG_cloverleaf_float_center([center])
+    style NG_cloverleaf_float_radius  fill:#09D, color:#FFF
+    NG_cloverleaf_float_radius([radius])
     end
     NG_cloverleaf_float_texcoord --"in1"--> NG_cloverleaf_float_sample_double
     NG_cloverleaf_float_texcoord --"in2"--> NG_cloverleaf_float_sample_double
+    NG_cloverleaf_float_center --"in1"--> NG_cloverleaf_float_center_double
+    NG_cloverleaf_float_center --"in2"--> NG_cloverleaf_float_center_double
     NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_sample_add
     NG_cloverleaf_float_radius --"in2"--> NG_cloverleaf_float_sample_add
     NG_cloverleaf_float_sample_double --"in1"--> NG_cloverleaf_float_sample_subtract
@@ -759,16 +767,16 @@ graph TB
     NG_cloverleaf_float_sample_double_separate --"outx-->in1"--> NG_cloverleaf_float_coord4
     NG_cloverleaf_float_sample_add_separate --"outy-->in2"--> NG_cloverleaf_float_coord4
     NG_cloverleaf_float_coord1 --"texcoord"--> NG_cloverleaf_float_circle1
-    NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle1
+    NG_cloverleaf_float_center_double --"center"--> NG_cloverleaf_float_circle1
     NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle1
     NG_cloverleaf_float_coord2 --"texcoord"--> NG_cloverleaf_float_circle2
-    NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle2
+    NG_cloverleaf_float_center_double --"center"--> NG_cloverleaf_float_circle2
     NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle2
     NG_cloverleaf_float_coord3 --"texcoord"--> NG_cloverleaf_float_circle3
-    NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle3
+    NG_cloverleaf_float_center_double --"center"--> NG_cloverleaf_float_circle3
     NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle3
     NG_cloverleaf_float_coord4 --"texcoord"--> NG_cloverleaf_float_circle4
-    NG_cloverleaf_float_center --"center"--> NG_cloverleaf_float_circle4
+    NG_cloverleaf_float_center_double --"center"--> NG_cloverleaf_float_circle4
     NG_cloverleaf_float_radius --"radius"--> NG_cloverleaf_float_circle4
     NG_cloverleaf_float_circle1 --"in1"--> NG_cloverleaf_float_max1
     NG_cloverleaf_float_circle2 --"in2"--> NG_cloverleaf_float_max1
