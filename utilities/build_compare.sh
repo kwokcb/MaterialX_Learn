@@ -1,4 +1,5 @@
-python ../pymaterialx/compareVersions.py ../resources/libraries_1.39.2 --sourceLibrary ../pymaterialx/python/MaterialX/libraries > ../resources/mtlx_1392_vs_1393.md
+python ../pymaterialx/compareVersions.py ../resources/libraries_1.39.3 --sourceLibrary ../pymaterialx/python/MaterialX/libraries > ../resources/mtlx_1393_vs_1394.md
+python ../pymaterialx/compareVersions.py ../resources/libraries_1.39.2 --sourceLibrary ../resources/libraries_1.39.3 > ../resources/mtlx_1392_vs_1393.md
 python ../pymaterialx/compareVersions.py ../resources/libraries_1.39.1 --sourceLibrary ../resources/libraries_1.39.2 > ../resources/mtlx_1391_vs_1392.md
 python ../pymaterialx/compareVersions.py ../resources/libraries_1.39.0 --sourceLibrary ../resources/libraries_1.39.1 > ../resources/mtlx_1390_vs_1391.md
 python ../pymaterialx/compareVersions.py ../resources/libraries_1.38.0 --sourceLibrary ../resources/libraries_1.39.0 > ../resources/mtlx_1380_vs_1390.md
@@ -13,6 +14,7 @@ python ../pymaterialx/compareVersions.py ../resources/libraries_1.38.2 --sourceL
 python ../pymaterialx/compareVersions.py ../resources/libraries_1.38.1 --sourceLibrary ../resources/libraries_1.38.2 > ../resources/mtlx_1381_vs_1382.md
 python ../pymaterialx/compareVersions.py ../resources/libraries_1.38.0 --sourceLibrary ../resources/libraries_1.38.1 > ../resources/mtlx_1380_vs_1381.md
 
+python mdhtml.py ../resources/mtlx_1393_vs_1394.md -t template.html --top ".." -o ../documents
 python mdhtml.py ../resources/mtlx_1392_vs_1393.md -t template.html --top ".." -o ../documents
 python mdhtml.py ../resources/mtlx_1391_vs_1392.md -t template.html --top ".." -o ../documents
 python mdhtml.py ../resources/mtlx_1390_vs_1391.md -t template.html --top ".." -o ../documents
