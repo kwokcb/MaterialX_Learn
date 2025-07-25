@@ -4133,28 +4133,10 @@
               "nodegroup": "convolution2d",
               "children": [
                 {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_color3_genglsl",
-                  "target": "essl, genglsl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_color3_genmdl",
-                  "target": "genmdl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_color3_genmsl",
-                  "target": "genmsl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_color3_genosl",
-                  "target": "genosl",
-                  "type": "implementation"
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_blur_color3"
                 }
               ]
             },
@@ -4166,28 +4148,10 @@
               "nodegroup": "convolution2d",
               "children": [
                 {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_color4_genglsl",
-                  "target": "essl, genglsl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_color4_genmdl",
-                  "target": "genmdl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_color4_genmsl",
-                  "target": "genmsl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_color4_genosl",
-                  "target": "genosl",
-                  "type": "implementation"
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_blur_color4"
                 }
               ]
             },
@@ -4199,28 +4163,10 @@
               "nodegroup": "convolution2d",
               "children": [
                 {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_float_genglsl",
-                  "target": "essl, genglsl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_float_genmdl",
-                  "target": "genmdl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_float_genmsl",
-                  "target": "genmsl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_float_genosl",
-                  "target": "genosl",
-                  "type": "implementation"
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_blur_float"
                 }
               ]
             },
@@ -4232,28 +4178,10 @@
               "nodegroup": "convolution2d",
               "children": [
                 {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_vector2_genglsl",
-                  "target": "essl, genglsl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_vector2_genmdl",
-                  "target": "genmdl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_vector2_genmsl",
-                  "target": "genmsl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_vector2_genosl",
-                  "target": "genosl",
-                  "type": "implementation"
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_blur_vector2"
                 }
               ]
             },
@@ -4265,28 +4193,10 @@
               "nodegroup": "convolution2d",
               "children": [
                 {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_vector3_genglsl",
-                  "target": "essl, genglsl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_vector3_genmdl",
-                  "target": "genmdl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_vector3_genmsl",
-                  "target": "genmsl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_vector3_genosl",
-                  "target": "genosl",
-                  "type": "implementation"
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_blur_vector3"
                 }
               ]
             },
@@ -4298,28 +4208,10 @@
               "nodegroup": "convolution2d",
               "children": [
                 {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_vector4_genglsl",
-                  "target": "essl, genglsl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_vector4_genmdl",
-                  "target": "genmdl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_vector4_genmsl",
-                  "target": "genmsl",
-                  "type": "implementation"
-                },
-                {
-                  "icon": "bi-file-code",
-                  "name": "IM_blur_vector4_genosl",
-                  "target": "genosl",
-                  "type": "implementation"
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_blur_vector4"
                 }
               ]
             }
@@ -19556,7 +19448,8 @@
                   "icon": "bi-file-code",
                   "name": "IM_surfacematerial_genosl",
                   "target": "genosl",
-                  "type": "implementation"
+                  "type": "implementation",
+                  "linkurl": "https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_surfacematerial.osl"
                 }
               ]
             }

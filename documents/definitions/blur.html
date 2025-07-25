@@ -730,62 +730,30 @@ Category: blur
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+<img class="bg-light" src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
+<button id="ND_blur_float_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
+<button id="ND_blur_float_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_blur_float_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
+</div>
+<div id="ND_blur_float_mrender_mermaid_input" class="mermaid" hidden>
+graph TB
+    subgraph NG_blur_float
+    style NG_blur_float_const  fill:#500, color:#FFF
+    NG_blur_float_const([const])
+    style NG_blur_float_out  fill:#0C0, color:#FFF
+    NG_blur_float_out([out])
+    style NG_blur_float_in  fill:#09D, color:#FFF
+    NG_blur_float_in([in])
+    end
+    NG_blur_float_in --"value"--> NG_blur_float_const
+    NG_blur_float_const --> NG_blur_float_out
+
+
+</div></code></pre>
+
 </details>
 </p>
 </div>
@@ -923,62 +891,30 @@ Category: blur
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+<img class="bg-light" src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
+<button id="ND_blur_color3_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
+<button id="ND_blur_color3_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_blur_color3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
+</div>
+<div id="ND_blur_color3_mrender_mermaid_input" class="mermaid" hidden>
+graph TB
+    subgraph NG_blur_color3
+    style NG_blur_color3_const  fill:#500, color:#FFF
+    NG_blur_color3_const([const])
+    style NG_blur_color3_out  fill:#0C0, color:#FFF
+    NG_blur_color3_out([out])
+    style NG_blur_color3_in  fill:#09D, color:#FFF
+    NG_blur_color3_in([in])
+    end
+    NG_blur_color3_in --"value"--> NG_blur_color3_const
+    NG_blur_color3_const --> NG_blur_color3_out
+
+
+</div></code></pre>
+
 </details>
 </p>
 </div>
@@ -1119,62 +1055,30 @@ Category: blur
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+<img class="bg-light" src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
+<button id="ND_blur_color4_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
+<button id="ND_blur_color4_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_blur_color4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
+</div>
+<div id="ND_blur_color4_mrender_mermaid_input" class="mermaid" hidden>
+graph TB
+    subgraph NG_blur_color4
+    style NG_blur_color4_const  fill:#500, color:#FFF
+    NG_blur_color4_const([const])
+    style NG_blur_color4_out  fill:#0C0, color:#FFF
+    NG_blur_color4_out([out])
+    style NG_blur_color4_in  fill:#09D, color:#FFF
+    NG_blur_color4_in([in])
+    end
+    NG_blur_color4_in --"value"--> NG_blur_color4_const
+    NG_blur_color4_const --> NG_blur_color4_out
+
+
+</div></code></pre>
+
 </details>
 </p>
 </div>
@@ -1306,62 +1210,30 @@ Category: blur
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+<img class="bg-light" src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
+<button id="ND_blur_vector2_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
+<button id="ND_blur_vector2_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_blur_vector2_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
+</div>
+<div id="ND_blur_vector2_mrender_mermaid_input" class="mermaid" hidden>
+graph TB
+    subgraph NG_blur_vector2
+    style NG_blur_vector2_const  fill:#500, color:#FFF
+    NG_blur_vector2_const([const])
+    style NG_blur_vector2_out  fill:#0C0, color:#FFF
+    NG_blur_vector2_out([out])
+    style NG_blur_vector2_in  fill:#09D, color:#FFF
+    NG_blur_vector2_in([in])
+    end
+    NG_blur_vector2_in --"value"--> NG_blur_vector2_const
+    NG_blur_vector2_const --> NG_blur_vector2_out
+
+
+</div></code></pre>
+
 </details>
 </p>
 </div>
@@ -1496,62 +1368,30 @@ Category: blur
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+<img class="bg-light" src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
+<button id="ND_blur_vector3_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
+<button id="ND_blur_vector3_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_blur_vector3_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
+</div>
+<div id="ND_blur_vector3_mrender_mermaid_input" class="mermaid" hidden>
+graph TB
+    subgraph NG_blur_vector3
+    style NG_blur_vector3_const  fill:#500, color:#FFF
+    NG_blur_vector3_const([const])
+    style NG_blur_vector3_out  fill:#0C0, color:#FFF
+    NG_blur_vector3_out([out])
+    style NG_blur_vector3_in  fill:#09D, color:#FFF
+    NG_blur_vector3_in([in])
+    end
+    NG_blur_vector3_in --"value"--> NG_blur_vector3_const
+    NG_blur_vector3_const --> NG_blur_vector3_out
+
+
+</div></code></pre>
+
 </details>
 </p>
 </div>
@@ -1689,62 +1529,30 @@ Category: blur
 </div>
 </div>
 <p class="card-text"><b></b>
-<details><summary><b>Code Implementation</b>
-<img src="../images/code-square.svg">
+<details><summary><b>Node Graph</b>
+<img class="bg-light" src="../images/diagram-3.svg">
 </summary>
-<br>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmsl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
-   <div class="col-2">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
-   </div>
-  </div>
-  <div class="form-group row g-2">
-  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
-    <div class="col-4">
-     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="Via Code Generation">
-    </div>
-  </div>
-<hr>
+<button id="ND_blur_vector4_mrender" class="mrender btn btn-sm btn-outline-secondary">Draw Graph</button>
+<button id="ND_blur_vector4_mrcopy" class="mrcopy btn btn-sm btn-outline-secondary">Copy Graph</button>
+<pre><code class="language-mermaid">
+<div id="ND_blur_vector4_mrender_mermaid_output" class="border rounded p-2 mermaid" hidden>
+</div>
+<div id="ND_blur_vector4_mrender_mermaid_input" class="mermaid" hidden>
+graph TB
+    subgraph NG_blur_vector4
+    style NG_blur_vector4_const  fill:#500, color:#FFF
+    NG_blur_vector4_const([const])
+    style NG_blur_vector4_out  fill:#0C0, color:#FFF
+    NG_blur_vector4_out([out])
+    style NG_blur_vector4_in  fill:#09D, color:#FFF
+    NG_blur_vector4_in([in])
+    end
+    NG_blur_vector4_in --"value"--> NG_blur_vector4_const
+    NG_blur_vector4_const --> NG_blur_vector4_out
+
+
+</div></code></pre>
+
 </details>
 </p>
 </div>
