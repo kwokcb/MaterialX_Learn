@@ -19105,7 +19105,22 @@ graph TB
 * *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_blur_float
+
+
+```mermaid
+graph TB
+    subgraph NG_blur_float
+    style NG_blur_float_const  fill:#500, color:#FFF
+    NG_blur_float_const([const])
+    style NG_blur_float_out  fill:#0C0, color:#FFF
+    NG_blur_float_out([out])
+    style NG_blur_float_in  fill:#09D, color:#FFF
+    NG_blur_float_in([in])
+    end
+    NG_blur_float_in --"value"--> NG_blur_float_const
+    NG_blur_float_const --> NG_blur_float_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -19122,7 +19137,22 @@ graph TB
 * *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_blur_color3
+
+
+```mermaid
+graph TB
+    subgraph NG_blur_color3
+    style NG_blur_color3_const  fill:#500, color:#FFF
+    NG_blur_color3_const([const])
+    style NG_blur_color3_out  fill:#0C0, color:#FFF
+    NG_blur_color3_out([out])
+    style NG_blur_color3_in  fill:#09D, color:#FFF
+    NG_blur_color3_in([in])
+    end
+    NG_blur_color3_in --"value"--> NG_blur_color3_const
+    NG_blur_color3_const --> NG_blur_color3_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -19139,7 +19169,22 @@ graph TB
 * *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_blur_color4
+
+
+```mermaid
+graph TB
+    subgraph NG_blur_color4
+    style NG_blur_color4_const  fill:#500, color:#FFF
+    NG_blur_color4_const([const])
+    style NG_blur_color4_out  fill:#0C0, color:#FFF
+    NG_blur_color4_out([out])
+    style NG_blur_color4_in  fill:#09D, color:#FFF
+    NG_blur_color4_in([in])
+    end
+    NG_blur_color4_in --"value"--> NG_blur_color4_const
+    NG_blur_color4_const --> NG_blur_color4_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -19156,7 +19201,22 @@ graph TB
 * *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_blur_vector2
+
+
+```mermaid
+graph TB
+    subgraph NG_blur_vector2
+    style NG_blur_vector2_const  fill:#500, color:#FFF
+    NG_blur_vector2_const([const])
+    style NG_blur_vector2_out  fill:#0C0, color:#FFF
+    NG_blur_vector2_out([out])
+    style NG_blur_vector2_in  fill:#09D, color:#FFF
+    NG_blur_vector2_in([in])
+    end
+    NG_blur_vector2_in --"value"--> NG_blur_vector2_const
+    NG_blur_vector2_const --> NG_blur_vector2_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -19173,7 +19233,22 @@ graph TB
 * *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_blur_vector3
+
+
+```mermaid
+graph TB
+    subgraph NG_blur_vector3
+    style NG_blur_vector3_const  fill:#500, color:#FFF
+    NG_blur_vector3_const([const])
+    style NG_blur_vector3_out  fill:#0C0, color:#FFF
+    NG_blur_vector3_out([out])
+    style NG_blur_vector3_in  fill:#09D, color:#FFF
+    NG_blur_vector3_in([in])
+    end
+    NG_blur_vector3_in --"value"--> NG_blur_vector3_const
+    NG_blur_vector3_const --> NG_blur_vector3_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
@@ -19190,7 +19265,22 @@ graph TB
 * *Group*: convolution2d
 * *Version*: 1.0. Is default: False
 * *Doc*: UNDOCUMENTED
-* *Implementation*: Non-graph
+* *Nodegraph*: NG_blur_vector4
+
+
+```mermaid
+graph TB
+    subgraph NG_blur_vector4
+    style NG_blur_vector4_const  fill:#500, color:#FFF
+    NG_blur_vector4_const([const])
+    style NG_blur_vector4_out  fill:#0C0, color:#FFF
+    NG_blur_vector4_out([out])
+    style NG_blur_vector4_in  fill:#09D, color:#FFF
+    NG_blur_vector4_in([in])
+    end
+    NG_blur_vector4_in --"value"--> NG_blur_vector4_const
+    NG_blur_vector4_const --> NG_blur_vector4_out
+```
  
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
