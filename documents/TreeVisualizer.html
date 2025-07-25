@@ -664,6 +664,44 @@
             gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
         });
 
+        function showReferenceModal(url) {
+            let modal = document.getElementById('referenceModal');
+            if (modal) {
+                // If modal already exists, just update the URL
+                let iframe = document.getElementById("referenceModalIframe");
+                if (iframe) {
+                    iframe.src = url; // Update the iframe source
+                } else {
+                    console.error("Iframe not found in modal.");
+                }
+            }
+            else if (!modal) {
+                modal = document.createElement('div');
+                modal.className = 'modal fade';
+                modal.id = 'referenceModal';
+                modal.tabIndex = -1;
+                modal.innerHTML = `
+                    <div class="modal-dialog" style="max-width: 70vw; max-height: 70vh; margin-top: 20vh;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="modelModalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <div id="modalContent">
+                            <iframe id="referenceModalIframe" src="${url}" style="width:100%; height:600px; border:none;" allow="fullscreen"></iframe>
+                        </div>
+                    </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+        }
+
+
         function updateInfoArea(path) {
 
             let selectedNodeInfo = document.getElementById('selectedNodeInfo');
@@ -684,7 +722,39 @@
                     const found = findNodeByPath(child, parts, idx + 1);
                     if (found) return found;
                 }
-                return null;
+                document.body.appendChild(modal);
+
+                // Check to see if the modal loaded and provide a fallback if it didn't
+                setTimeout(() => {
+                    const iframe = document.getElementById('referenceModalIframe');
+                    if (iframe) {
+                        iframe.addEventListener('load', function() {
+                            let crossOrigin = false;
+                            try {
+                                // Try to access the iframe's contentDocument
+                                const doc = this.contentDocument;
+                                const innerIframe = doc ? doc.querySelector('iframe') : null;
+                                if (innerIframe) {
+                                    innerIframe.style.width = '100%';
+                                    innerIframe.style.height = '100%';
+                                    innerIframe.style.border = 'none';
+                                }
+                            } catch (e) {
+                                // Cross-origin iframes cannot be accessed
+                                crossOrigin = true;
+                            }
+                            if (crossOrigin) {
+                                // Open the URL in a new tab and close the modal
+                                window.open(this.src, '_blank');
+                                const modalEl = document.getElementById('referenceModal');
+                                if (modalEl) {
+                                    const bsModal = bootstrap.Modal.getInstance(modalEl);
+                                    if (bsModal) bsModal.hide();
+                                }
+                            }
+                        });
+                    }
+                }, 0);
             }
 
             // Get current data from the tree
@@ -712,7 +782,11 @@
                     selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> <img src="${currentNode[key]}" alt="Node Image" loading="lazy" class="img-fluid mt-2" style="max-height: 200px; width: auto;" onerror="this.onerror=null;this.src='images/no_image.png';"></div>`;
                 }
                 else if (key === 'linkurl' && currentNode[key]) {
-                    selectedNodeInfo.innerHTML += `<div><a href="${currentNode[key]}" target="_blank">Reference</a></div>`;
+                    selectedNodeInfo.innerHTML += `
+                        <div>
+                            <button type="button" class="btn mt-2 btn-outline-primary btn-sm" onclick="showReferenceModal('${currentNode[key]}')">Reference</button>
+                        </div>
+                    `;
                 }
                 else if (key && !skipKeys.includes(key)) // Skip keys that are not needed
                 {
