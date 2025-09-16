@@ -608,7 +608,7 @@
 <b><a id="standard_surface_to_gltf_pbr" class="ms-2 mb-0">
 Category: standard_surface_to_gltf_pbr
 </a></b>
-<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_standard_surface_to_gltf_pbr <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.38.0 or earlier</button></summary>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_standard_surface_to_gltf_pbr <button type="button" class="btn bit-sm disabled btn-outline-info pt-0 pb-0">1.38.6</button></summary>
 <div class="m-0 mt-0">
 <div class="row">
 <div class="col-12">
@@ -636,6 +636,14 @@ Category: standard_surface_to_gltf_pbr
 <div class="col ps-0 pe-0 ms-0 me-0">
 <img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_roughness_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_roughness_out_genglsl.png>
 <div style="font-size: 70%">roughness_out</div>
+</div>
+<div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_anisotropy_strength_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_anisotropy_strength_out_genglsl.png>
+<div style="font-size: 70%">anisotropy_strength_out</div>
+</div>
+<div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_anisotropy_rotation_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_anisotropy_rotation_out_genglsl.png>
+<div style="font-size: 70%">anisotropy_rotation_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
 <img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_transmission_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_transmission_out_genglsl.png>
@@ -684,6 +692,10 @@ Category: standard_surface_to_gltf_pbr
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_metalness" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_metalness" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" >metalness</div></li>
 <li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_specular_anisotropy" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_specular_anisotropy" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" >specular_anisotropy</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_specular_rotation" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_specular_rotation" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" >specular_rotation</div></li>
+<li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_specular_roughness" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_specular_roughness" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" >specular_roughness</div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_transmission" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_transmission" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" >transmission</div></li>
@@ -713,6 +725,10 @@ Category: standard_surface_to_gltf_pbr
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_metallic_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_metallic_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>metallic_out</b></div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_roughness_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_roughness_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>roughness_out</b></div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_anisotropy_strength_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_anisotropy_strength_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>anisotropy_strength_out</b></div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_anisotropy_rotation_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_anisotropy_rotation_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>anisotropy_rotation_out</b></div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_transmission_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_transmission_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>transmission_out</b></div></li>
 <li class="nav-item dropdown-item" role="presentation">
@@ -785,6 +801,42 @@ Category: standard_surface_to_gltf_pbr
           class="col-2 col-form-label col-form-label-sm">Value  </label>
       <div class="col">
           <input id="ND_standard_surface_to_gltf_pbr_metalness" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_specular_anisotropy"
+  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_specular_anisotropy-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_standard_surface_to_gltf_pbr_specular_anisotropy" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_specular_rotation"
+  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_specular_rotation-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_standard_surface_to_gltf_pbr_specular_rotation" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
       </div>
   </div>
   <div class="form-group row g-2">
@@ -1077,6 +1129,28 @@ Category: standard_surface_to_gltf_pbr
  </div>
 </div>
 <div class="tab-content">
+ <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_anisotropy_strength_out"
+  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_anisotropy_strength_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_anisotropy_rotation_out"
+  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_anisotropy_rotation_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
  <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_transmission_out"
   role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_transmission_out-tab" tabindex="0">
   <div class="form-group row g-2">
@@ -1180,6 +1254,8 @@ graph TB
     subgraph NG_standard_surface_to_gltf_pbr
     NG_standard_surface_to_gltf_pbr_constantOneThird[constantOneThird]
     NG_standard_surface_to_gltf_pbr_constantOneThirdVector[constantOneThirdVector]
+    style NG_standard_surface_to_gltf_pbr_negativeTwoPI  fill:#500, color:#FFF
+    NG_standard_surface_to_gltf_pbr_negativeTwoPI([negativeTwoPI:-6.283])
     NG_standard_surface_to_gltf_pbr_coatColorVector[coatColorVector]
     NG_standard_surface_to_gltf_pbr_hasCoatColor[hasCoatColor]
     NG_standard_surface_to_gltf_pbr_scaledBaseColor[scaledBaseColor]
@@ -1193,7 +1269,16 @@ graph TB
     NG_standard_surface_to_gltf_pbr_transmissionBaseColor[transmissionBaseColor]
     NG_standard_surface_to_gltf_pbr_base_color[base_color]
     NG_standard_surface_to_gltf_pbr_metallic[metallic]
+    NG_standard_surface_to_gltf_pbr_roughness_anisotropy[roughness_anisotropy]
+    NG_standard_surface_to_gltf_pbr_separate_roughness[separate_roughness]
     NG_standard_surface_to_gltf_pbr_roughness[roughness]
+    NG_standard_surface_to_gltf_pbr_numerator[numerator]
+    NG_standard_surface_to_gltf_pbr_denumerator[denumerator]
+    NG_standard_surface_to_gltf_pbr_anisotropy_sq[anisotropy_sq]
+    NG_standard_surface_to_gltf_pbr_anisotropy[anisotropy]
+    NG_standard_surface_to_gltf_pbr_anisotropy_rotation[anisotropy_rotation]
+    style NG_standard_surface_to_gltf_pbr_anisotropy_strength  fill:#C72, color:#FFF
+    NG_standard_surface_to_gltf_pbr_anisotropy_strength{anisotropy_strength}
     NG_standard_surface_to_gltf_pbr_transmission[transmission]
     NG_standard_surface_to_gltf_pbr_thickness[thickness]
     NG_standard_surface_to_gltf_pbr_transmissionAttenuationColor[transmissionAttenuationColor]
@@ -1210,6 +1295,10 @@ graph TB
     NG_standard_surface_to_gltf_pbr_metallic_out([metallic_out])
     style NG_standard_surface_to_gltf_pbr_roughness_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_roughness_out([roughness_out])
+    style NG_standard_surface_to_gltf_pbr_anisotropy_strength_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_anisotropy_strength_out([anisotropy_strength_out])
+    style NG_standard_surface_to_gltf_pbr_anisotropy_rotation_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_anisotropy_rotation_out([anisotropy_rotation_out])
     style NG_standard_surface_to_gltf_pbr_transmission_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_transmission_out([transmission_out])
     style NG_standard_surface_to_gltf_pbr_thickness_out  fill:#0C0, color:#FFF
@@ -1240,6 +1329,10 @@ graph TB
     NG_standard_surface_to_gltf_pbr_metalness([metalness])
     style NG_standard_surface_to_gltf_pbr_specular_roughness  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_specular_roughness([specular_roughness])
+    style NG_standard_surface_to_gltf_pbr_specular_anisotropy  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_specular_anisotropy([specular_anisotropy])
+    style NG_standard_surface_to_gltf_pbr_specular_rotation  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_specular_rotation([specular_rotation])
     style NG_standard_surface_to_gltf_pbr_transmission:in  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_transmission:in([transmission:in])
     style NG_standard_surface_to_gltf_pbr_sheen_color:in  fill:#09D, color:#FFF
@@ -1278,7 +1371,20 @@ graph TB
     NG_standard_surface_to_gltf_pbr_transmissionBaseColor --"in1"--> NG_standard_surface_to_gltf_pbr_base_color
     NG_standard_surface_to_gltf_pbr_baseColor --"in2"--> NG_standard_surface_to_gltf_pbr_base_color
     NG_standard_surface_to_gltf_pbr_metalness --"in"--> NG_standard_surface_to_gltf_pbr_metallic
-    NG_standard_surface_to_gltf_pbr_specular_roughness --"in"--> NG_standard_surface_to_gltf_pbr_roughness
+    NG_standard_surface_to_gltf_pbr_specular_roughness --"roughness"--> NG_standard_surface_to_gltf_pbr_roughness_anisotropy
+    NG_standard_surface_to_gltf_pbr_specular_anisotropy --"anisotropy"--> NG_standard_surface_to_gltf_pbr_roughness_anisotropy
+    NG_standard_surface_to_gltf_pbr_roughness_anisotropy --"in"--> NG_standard_surface_to_gltf_pbr_separate_roughness
+    NG_standard_surface_to_gltf_pbr_separate_roughness --"outy-->in"--> NG_standard_surface_to_gltf_pbr_roughness
+    NG_standard_surface_to_gltf_pbr_separate_roughness --"outx-->in1"--> NG_standard_surface_to_gltf_pbr_numerator
+    NG_standard_surface_to_gltf_pbr_separate_roughness --"outy-->in2"--> NG_standard_surface_to_gltf_pbr_numerator
+    NG_standard_surface_to_gltf_pbr_separate_roughness --"outy-->in2"--> NG_standard_surface_to_gltf_pbr_denumerator
+    NG_standard_surface_to_gltf_pbr_numerator --"in1"--> NG_standard_surface_to_gltf_pbr_anisotropy_sq
+    NG_standard_surface_to_gltf_pbr_denumerator --"in2"--> NG_standard_surface_to_gltf_pbr_anisotropy_sq
+    NG_standard_surface_to_gltf_pbr_anisotropy_sq --"in"--> NG_standard_surface_to_gltf_pbr_anisotropy
+    NG_standard_surface_to_gltf_pbr_specular_rotation --"in1"--> NG_standard_surface_to_gltf_pbr_anisotropy_rotation
+    NG_standard_surface_to_gltf_pbr_negativeTwoPI --"in2"--> NG_standard_surface_to_gltf_pbr_anisotropy_rotation
+    NG_standard_surface_to_gltf_pbr_denumerator --"value2"--> NG_standard_surface_to_gltf_pbr_anisotropy_strength
+    NG_standard_surface_to_gltf_pbr_anisotropy --"in2"--> NG_standard_surface_to_gltf_pbr_anisotropy_strength
     NG_standard_surface_to_gltf_pbr_transmission:in --"in"--> NG_standard_surface_to_gltf_pbr_transmission
     NG_standard_surface_to_gltf_pbr_transmission_depth --"in"--> NG_standard_surface_to_gltf_pbr_thickness
     NG_standard_surface_to_gltf_pbr_transmission_depth --"value1"--> NG_standard_surface_to_gltf_pbr_transmissionAttenuationColor
@@ -1298,6 +1404,8 @@ graph TB
     NG_standard_surface_to_gltf_pbr_base_color --> NG_standard_surface_to_gltf_pbr_base_color_out
     NG_standard_surface_to_gltf_pbr_metallic --> NG_standard_surface_to_gltf_pbr_metallic_out
     NG_standard_surface_to_gltf_pbr_roughness --> NG_standard_surface_to_gltf_pbr_roughness_out
+    NG_standard_surface_to_gltf_pbr_anisotropy_strength --> NG_standard_surface_to_gltf_pbr_anisotropy_strength_out
+    NG_standard_surface_to_gltf_pbr_anisotropy_rotation --> NG_standard_surface_to_gltf_pbr_anisotropy_rotation_out
     NG_standard_surface_to_gltf_pbr_transmission --> NG_standard_surface_to_gltf_pbr_transmission_out
     NG_standard_surface_to_gltf_pbr_thickness --> NG_standard_surface_to_gltf_pbr_thickness_out
     NG_standard_surface_to_gltf_pbr_attenuation_color --> NG_standard_surface_to_gltf_pbr_attenuation_color_out

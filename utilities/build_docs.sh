@@ -1,11 +1,11 @@
 rm -rf ./mtlxutils
 cp -R ../pymaterialx/mtlxutils .
-python mxdoclib.py --compareLib ../resources/ --docType html --nodegraph --outputPath ../documents/definitions --outputFile all_definitions ../pymaterialx/python/MaterialX/libraries
-python mxdoclib.py --compareLib ../resources/ --docType html --nodegraph --outputPath ../documents/definitions  ../pymaterialx/python/MaterialX/libraries --outputFile definitions_by_group --separateFiles True
+python mxdoclib.py --compareLib ../pymaterialx/downloaded_release_libraries/ --docType html --nodegraph --outputPath ../documents/definitions --outputFile all_definitions ../pymaterialx/python/MaterialX/libraries
+python mxdoclib.py --compareLib ../pymaterialx/downloaded_release_libraries/ --docType html --nodegraph --outputPath ../documents/definitions  ../pymaterialx/python/MaterialX/libraries --outputFile definitions_by_group --separateFiles True
 
-python mxdoclib.py --docType md --nodegraph --outputPath ../documents/definitions  ../pymaterialx/python/MaterialX/libraries/stdlib --outputFile stdlib_doc
-python mxdoclib.py --docType md --nodegraph --outputPath ../documents/definitions  ../pymaterialx/python/MaterialX/libraries/pbrlib --outputFile pbrlib_doc 
-python mxdoclib.py --docType md --nodegraph --outputPath ../documents/definitions  ../pymaterialx/python/MaterialX/libraries/bxdf --outputFile bxdf_doc 
+python mxdoclib.py --compareLib ../pymaterialx/downloaded_release_libraries/ --docType md --nodegraph --outputPath ../documents/definitions  ../pymaterialx/python/MaterialX/libraries/stdlib --outputFile stdlib_doc
+python mxdoclib.py --compareLib ../pymaterialx/downloaded_release_libraries/ --docType md --nodegraph --outputPath ../documents/definitions  ../pymaterialx/python/MaterialX/libraries/pbrlib --outputFile pbrlib_doc 
+python mxdoclib.py --compareLib ../pymaterialx/downloaded_release_libraries/ --docType md --nodegraph --outputPath ../documents/definitions  ../pymaterialx/python/MaterialX/libraries/bxdf --outputFile bxdf_doc 
 
 source build_compare.sh
 

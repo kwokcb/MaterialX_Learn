@@ -556,7 +556,7 @@ def printNodeDefs(doc, opts, nodedict, f, compareLibDict):
                 #print('------ library version is', implName, ' for def: ', nd.getName())
                 print('<details open class="p-0">'
                         '<summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">'
-                        '%s <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">%s</button></summary>' 
+                        '%s <button type="button" class="btn bit-sm disabled btn-outline-info pt-0 pb-0">%s</button></summary>' 
                         % (nd.getName(), implName), file=f)
             else:
                 print('<details open class="p-0">'
@@ -1530,13 +1530,18 @@ def main():
             minor = minor - 1
         else:
             patch = patch - 1
+        if minor < 38:
+            break
+
         prevVersion = '%d.%d.%d' % (major, minor, patch)
-        compareLibPath = comparePath / ("libraries_" + prevVersion)
+        compareLibPath = comparePath / ("v" + prevVersion)
         if compareLibPath.exists():
             compareDoc = mx.createDocument()
             readDocuments(compareLibPath.asString(), compareDoc)
             compareLibDict[prevVersion] = compareDoc 
-            print('Add comparison version %s from %s' % (prevVersion, compareLibPath.asString()))
+            print(f'Add comparison version {prevVersion} from {compareLibPath.asString()}. {len(compareDoc.getNodeDefs())}')
+        else:
+            print("Skipping comparison path does not exist : ", compareLibPath.asString())
 
     nodedict = getNodeDictionary(doc)
     printNodeDefs(doc, opts, nodedict, f, compareLibDict) 
