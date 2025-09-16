@@ -1530,13 +1530,18 @@ def main():
             minor = minor - 1
         else:
             patch = patch - 1
+        if minor < 38:
+            break
+
         prevVersion = '%d.%d.%d' % (major, minor, patch)
-        compareLibPath = comparePath / ("libraries_" + prevVersion)
+        compareLibPath = comparePath / ("v" + prevVersion)
         if compareLibPath.exists():
             compareDoc = mx.createDocument()
             readDocuments(compareLibPath.asString(), compareDoc)
             compareLibDict[prevVersion] = compareDoc 
-            print('Add comparison version %s from %s' % (prevVersion, compareLibPath.asString()))
+            print(f'Add comparison version {prevVersion} from {compareLibPath.asString()}. {len(compareDoc.getNodeDefs())}')
+        else:
+            print("Skipping comparison path does not exist : ", compareLibPath.asString())
 
     nodedict = getNodeDictionary(doc)
     printNodeDefs(doc, opts, nodedict, f, compareLibDict) 

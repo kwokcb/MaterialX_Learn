@@ -182,18 +182,17 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_alpha_roughness[alpha_roughness]
     IMPL_gltf_pbr_surfaceshader_strength_2[strength_2]
     IMPL_gltf_pbr_surfaceshader_at[at]
-    IMPL_gltf_pbr_surfaceshader_transmission_inv[transmission_inv]
     IMPL_gltf_pbr_surfaceshader_diffuse_bsdf[diffuse_bsdf]
     IMPL_gltf_pbr_surfaceshader_transmission_bsdf[transmission_bsdf]
-    IMPL_gltf_pbr_surfaceshader_transmission_blend[transmission_blend]
-    IMPL_gltf_pbr_surfaceshader_iridescence_inv[iridescence_inv]
     IMPL_gltf_pbr_surfaceshader_reflection_bsdf[reflection_bsdf]
-    IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf[reflection_bsdf_tf]
-    IMPL_gltf_pbr_surfaceshader_reflection_bsdf_blend[reflection_bsdf_blend]
-    IMPL_gltf_pbr_surfaceshader_dielectric_layer[dielectric_layer]
+    IMPL_gltf_pbr_surfaceshader_transmission_mix[transmission_mix]
+    IMPL_gltf_pbr_surfaceshader_dielectric_bsdf[dielectric_bsdf]
+    IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[tf_reflection_bsdf]
+    IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[tf_dielectric_bsdf]
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix_iridescent_dielectric_bsdf]
     IMPL_gltf_pbr_surfaceshader_metal_bsdf[metal_bsdf]
-    IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf[metal_bsdf_tf]
-    IMPL_gltf_pbr_surfaceshader_metal_blend[metal_blend]
+    IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[tf_metal_bsdf]
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix_iridescent_metal_bsdf]
     IMPL_gltf_pbr_surfaceshader_base_mix[base_mix]
     IMPL_gltf_pbr_surfaceshader_sheen_color_r[sheen_color_r]
     IMPL_gltf_pbr_surfaceshader_sheen_color_g[sheen_color_g]
@@ -237,18 +236,18 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_roughness([roughness])
     style IMPL_gltf_pbr_surfaceshader_anisotropy_strength  fill:#09D, color:#FFF
     IMPL_gltf_pbr_surfaceshader_anisotropy_strength([anisotropy_strength])
-    style IMPL_gltf_pbr_surfaceshader_transmission  fill:#09D, color:#FFF
-    IMPL_gltf_pbr_surfaceshader_transmission([transmission])
     style IMPL_gltf_pbr_surfaceshader_base_color  fill:#09D, color:#FFF
     IMPL_gltf_pbr_surfaceshader_base_color([base_color])
     style IMPL_gltf_pbr_surfaceshader_normal  fill:#09D, color:#FFF
     IMPL_gltf_pbr_surfaceshader_normal([normal])
-    style IMPL_gltf_pbr_surfaceshader_iridescence  fill:#09D, color:#FFF
-    IMPL_gltf_pbr_surfaceshader_iridescence([iridescence])
+    style IMPL_gltf_pbr_surfaceshader_transmission  fill:#09D, color:#FFF
+    IMPL_gltf_pbr_surfaceshader_transmission([transmission])
     style IMPL_gltf_pbr_surfaceshader_iridescence_thickness  fill:#09D, color:#FFF
     IMPL_gltf_pbr_surfaceshader_iridescence_thickness([iridescence_thickness])
     style IMPL_gltf_pbr_surfaceshader_iridescence_ior  fill:#09D, color:#FFF
     IMPL_gltf_pbr_surfaceshader_iridescence_ior([iridescence_ior])
+    style IMPL_gltf_pbr_surfaceshader_iridescence  fill:#09D, color:#FFF
+    IMPL_gltf_pbr_surfaceshader_iridescence([iridescence])
     style IMPL_gltf_pbr_surfaceshader_metallic  fill:#09D, color:#FFF
     IMPL_gltf_pbr_surfaceshader_metallic([metallic])
     style IMPL_gltf_pbr_surfaceshader_sheen_color  fill:#09D, color:#FFF
@@ -304,53 +303,50 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_anisotropy_strength --"in2"--> IMPL_gltf_pbr_surfaceshader_strength_2
     IMPL_gltf_pbr_surfaceshader_alpha_roughness --"bg"--> IMPL_gltf_pbr_surfaceshader_at
     IMPL_gltf_pbr_surfaceshader_strength_2 --"mix"--> IMPL_gltf_pbr_surfaceshader_at
-    IMPL_gltf_pbr_surfaceshader_transmission --"in"--> IMPL_gltf_pbr_surfaceshader_transmission_inv
-    IMPL_gltf_pbr_surfaceshader_transmission_inv --"weight"--> IMPL_gltf_pbr_surfaceshader_diffuse_bsdf
     IMPL_gltf_pbr_surfaceshader_base_color --"color"--> IMPL_gltf_pbr_surfaceshader_diffuse_bsdf
     IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_diffuse_bsdf
-    IMPL_gltf_pbr_surfaceshader_transmission --"weight"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf
     IMPL_gltf_pbr_surfaceshader_base_color --"tint"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf
     IMPL_gltf_pbr_surfaceshader_ior --"ior"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf
     IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf
     IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf
     IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf
-    IMPL_gltf_pbr_surfaceshader_diffuse_bsdf --"in1"--> IMPL_gltf_pbr_surfaceshader_transmission_blend
-    IMPL_gltf_pbr_surfaceshader_transmission_bsdf --"in2"--> IMPL_gltf_pbr_surfaceshader_transmission_blend
-    IMPL_gltf_pbr_surfaceshader_iridescence --"in"--> IMPL_gltf_pbr_surfaceshader_iridescence_inv
-    IMPL_gltf_pbr_surfaceshader_iridescence_inv --"weight"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_dielectric_f0 --"color0"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_dielectric_f90 --"color90"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf
-    IMPL_gltf_pbr_surfaceshader_iridescence --"weight"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_dielectric_f0 --"color0"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_dielectric_f90 --"color90"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thinfilm_thickness"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_iridescence_ior --"thinfilm_ior"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_reflection_bsdf --"in1"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_blend
-    IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf --"in2"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_blend
-    IMPL_gltf_pbr_surfaceshader_reflection_bsdf_blend --"top"--> IMPL_gltf_pbr_surfaceshader_dielectric_layer
-    IMPL_gltf_pbr_surfaceshader_transmission_blend --"base"--> IMPL_gltf_pbr_surfaceshader_dielectric_layer
-    IMPL_gltf_pbr_surfaceshader_iridescence_inv --"weight"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_diffuse_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_transmission_mix
+    IMPL_gltf_pbr_surfaceshader_transmission_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_transmission_mix
+    IMPL_gltf_pbr_surfaceshader_transmission --"mix"--> IMPL_gltf_pbr_surfaceshader_transmission_mix
+    IMPL_gltf_pbr_surfaceshader_reflection_bsdf --"top"--> IMPL_gltf_pbr_surfaceshader_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_transmission_mix --"base"--> IMPL_gltf_pbr_surfaceshader_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_dielectric_f0 --"color0"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_dielectric_f90 --"color90"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thinfilm_thickness"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_iridescence_ior --"thinfilm_ior"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf --"top"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_transmission_mix --"base"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_dielectric_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_iridescence --"mix"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
     IMPL_gltf_pbr_surfaceshader_base_color --"color0"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
-    IMPL_gltf_pbr_surfaceshader_iridescence --"weight"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_base_color --"color0"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thinfilm_thickness"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_iridescence_ior --"thinfilm_ior"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_metal_bsdf --"in1"--> IMPL_gltf_pbr_surfaceshader_metal_blend
-    IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf --"in2"--> IMPL_gltf_pbr_surfaceshader_metal_blend
-    IMPL_gltf_pbr_surfaceshader_dielectric_layer --"bg"--> IMPL_gltf_pbr_surfaceshader_base_mix
-    IMPL_gltf_pbr_surfaceshader_metal_blend --"fg"--> IMPL_gltf_pbr_surfaceshader_base_mix
+    IMPL_gltf_pbr_surfaceshader_base_color --"color0"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thinfilm_thickness"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_iridescence_ior --"thinfilm_ior"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_metal_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_iridescence --"mix"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_base_mix
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_base_mix
     IMPL_gltf_pbr_surfaceshader_metallic --"mix"--> IMPL_gltf_pbr_surfaceshader_base_mix
     IMPL_gltf_pbr_surfaceshader_sheen_color --"in"--> IMPL_gltf_pbr_surfaceshader_sheen_color_r
     IMPL_gltf_pbr_surfaceshader_sheen_color --"in"--> IMPL_gltf_pbr_surfaceshader_sheen_color_g
@@ -1173,18 +1169,15 @@ graph TB
     NG_open_pbr_surface_surfaceshader_dielectric_transmission[dielectric_transmission]
     NG_open_pbr_surface_surfaceshader_dielectric_volume_transmission[dielectric_volume_transmission]
     NG_open_pbr_surface_surfaceshader_dielectric_substrate[dielectric_substrate]
-    NG_open_pbr_surface_surfaceshader_thin_film_weight_inv[thin_film_weight_inv]
     NG_open_pbr_surface_surfaceshader_dielectric_reflection[dielectric_reflection]
     NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf[dielectric_reflection_tf]
-    NG_open_pbr_surface_surfaceshader_dielectric_reflection_blend[dielectric_reflection_blend]
+    NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf_mix[dielectric_reflection_tf_mix]
     NG_open_pbr_surface_surfaceshader_dielectric_base[dielectric_base]
     NG_open_pbr_surface_surfaceshader_metal_reflectivity[metal_reflectivity]
     NG_open_pbr_surface_surfaceshader_metal_edgecolor[metal_edgecolor]
-    NG_open_pbr_surface_surfaceshader_specular_weight_tf[specular_weight_tf]
-    NG_open_pbr_surface_surfaceshader_specular_weight_tf_inv[specular_weight_tf_inv]
     NG_open_pbr_surface_surfaceshader_metal_bsdf[metal_bsdf]
     NG_open_pbr_surface_surfaceshader_metal_bsdf_tf[metal_bsdf_tf]
-    NG_open_pbr_surface_surfaceshader_metal_bsdf_tf_blend[metal_bsdf_tf_blend]
+    NG_open_pbr_surface_surfaceshader_metal_bsdf_tf_mix[metal_bsdf_tf_mix]
     NG_open_pbr_surface_surfaceshader_base_substrate[base_substrate]
     NG_open_pbr_surface_surfaceshader_one_minus_coat_F0[one_minus_coat_F0]
     NG_open_pbr_surface_surfaceshader_coat_ior_sqr[coat_ior_sqr]
@@ -1269,12 +1262,12 @@ graph TB
     NG_open_pbr_surface_surfaceshader_geometry_tangent([geometry_tangent])
     style NG_open_pbr_surface_surfaceshader_transmission_weight  fill:#09D, color:#FFF
     NG_open_pbr_surface_surfaceshader_transmission_weight([transmission_weight])
-    style NG_open_pbr_surface_surfaceshader_thin_film_weight  fill:#09D, color:#FFF
-    NG_open_pbr_surface_surfaceshader_thin_film_weight([thin_film_weight])
     style NG_open_pbr_surface_surfaceshader_specular_color  fill:#09D, color:#FFF
     NG_open_pbr_surface_surfaceshader_specular_color([specular_color])
     style NG_open_pbr_surface_surfaceshader_thin_film_ior  fill:#09D, color:#FFF
     NG_open_pbr_surface_surfaceshader_thin_film_ior([thin_film_ior])
+    style NG_open_pbr_surface_surfaceshader_thin_film_weight  fill:#09D, color:#FFF
+    NG_open_pbr_surface_surfaceshader_thin_film_weight([thin_film_weight])
     style NG_open_pbr_surface_surfaceshader_base_metalness  fill:#09D, color:#FFF
     NG_open_pbr_surface_surfaceshader_base_metalness([base_metalness])
     style NG_open_pbr_surface_surfaceshader_coat_darkening  fill:#09D, color:#FFF
@@ -1419,14 +1412,11 @@ graph TB
     NG_open_pbr_surface_surfaceshader_dielectric_volume_transmission --"fg"--> NG_open_pbr_surface_surfaceshader_dielectric_substrate
     NG_open_pbr_surface_surfaceshader_opaque_base --"bg"--> NG_open_pbr_surface_surfaceshader_dielectric_substrate
     NG_open_pbr_surface_surfaceshader_transmission_weight --"mix"--> NG_open_pbr_surface_surfaceshader_dielectric_substrate
-    NG_open_pbr_surface_surfaceshader_thin_film_weight --"in"--> NG_open_pbr_surface_surfaceshader_thin_film_weight_inv
-    NG_open_pbr_surface_surfaceshader_thin_film_weight_inv --"weight"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection
     NG_open_pbr_surface_surfaceshader_specular_color --"tint"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection
     NG_open_pbr_surface_surfaceshader_modulated_eta_s --"ior"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection
     NG_open_pbr_surface_surfaceshader_main_roughness --"roughness"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection
     NG_open_pbr_surface_surfaceshader_geometry_normal --"normal"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection
     NG_open_pbr_surface_surfaceshader_geometry_tangent --"tangent"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection
-    NG_open_pbr_surface_surfaceshader_thin_film_weight --"weight"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf
     NG_open_pbr_surface_surfaceshader_specular_color --"tint"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf
     NG_open_pbr_surface_surfaceshader_modulated_eta_s --"ior"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf
     NG_open_pbr_surface_surfaceshader_main_roughness --"roughness"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf
@@ -1434,25 +1424,22 @@ graph TB
     NG_open_pbr_surface_surfaceshader_geometry_tangent --"tangent"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf
     NG_open_pbr_surface_surfaceshader_thin_film_thickness_nm --"thinfilm_thickness"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf
     NG_open_pbr_surface_surfaceshader_thin_film_ior --"thinfilm_ior"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf
-    NG_open_pbr_surface_surfaceshader_dielectric_reflection --"in1"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection_blend
-    NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf --"in2"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection_blend
-    NG_open_pbr_surface_surfaceshader_dielectric_reflection_blend --"top"--> NG_open_pbr_surface_surfaceshader_dielectric_base
+    NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf --"fg"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf_mix
+    NG_open_pbr_surface_surfaceshader_dielectric_reflection --"bg"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf_mix
+    NG_open_pbr_surface_surfaceshader_thin_film_weight --"mix"--> NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf_mix
+    NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf_mix --"top"--> NG_open_pbr_surface_surfaceshader_dielectric_base
     NG_open_pbr_surface_surfaceshader_dielectric_substrate --"base"--> NG_open_pbr_surface_surfaceshader_dielectric_base
     NG_open_pbr_surface_surfaceshader_base_color --"in1"--> NG_open_pbr_surface_surfaceshader_metal_reflectivity
     NG_open_pbr_surface_surfaceshader_base_weight --"in2"--> NG_open_pbr_surface_surfaceshader_metal_reflectivity
     NG_open_pbr_surface_surfaceshader_specular_color --"in1"--> NG_open_pbr_surface_surfaceshader_metal_edgecolor
     NG_open_pbr_surface_surfaceshader_specular_weight --"in2"--> NG_open_pbr_surface_surfaceshader_metal_edgecolor
-    NG_open_pbr_surface_surfaceshader_specular_weight --"in1"--> NG_open_pbr_surface_surfaceshader_specular_weight_tf
-    NG_open_pbr_surface_surfaceshader_thin_film_weight --"in2"--> NG_open_pbr_surface_surfaceshader_specular_weight_tf
-    NG_open_pbr_surface_surfaceshader_specular_weight --"in1"--> NG_open_pbr_surface_surfaceshader_specular_weight_tf_inv
-    NG_open_pbr_surface_surfaceshader_thin_film_weight_inv --"in2"--> NG_open_pbr_surface_surfaceshader_specular_weight_tf_inv
-    NG_open_pbr_surface_surfaceshader_specular_weight_tf_inv --"weight"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
+    NG_open_pbr_surface_surfaceshader_specular_weight --"weight"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_metal_reflectivity --"color0"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_metal_edgecolor --"color82"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_main_roughness --"roughness"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_geometry_normal --"normal"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_geometry_tangent --"tangent"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
-    NG_open_pbr_surface_surfaceshader_specular_weight_tf --"weight"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
+    NG_open_pbr_surface_surfaceshader_specular_weight --"weight"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_metal_reflectivity --"color0"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_metal_edgecolor --"color82"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_main_roughness --"roughness"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
@@ -1460,9 +1447,10 @@ graph TB
     NG_open_pbr_surface_surfaceshader_geometry_tangent --"tangent"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_thin_film_thickness_nm --"thinfilm_thickness"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_thin_film_ior --"thinfilm_ior"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
-    NG_open_pbr_surface_surfaceshader_metal_bsdf --"in1"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf_blend
-    NG_open_pbr_surface_surfaceshader_metal_bsdf_tf --"in2"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf_blend
-    NG_open_pbr_surface_surfaceshader_metal_bsdf_tf_blend --"fg"--> NG_open_pbr_surface_surfaceshader_base_substrate
+    NG_open_pbr_surface_surfaceshader_metal_bsdf_tf --"fg"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf_mix
+    NG_open_pbr_surface_surfaceshader_metal_bsdf --"bg"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf_mix
+    NG_open_pbr_surface_surfaceshader_thin_film_weight --"mix"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf_mix
+    NG_open_pbr_surface_surfaceshader_metal_bsdf_tf_mix --"fg"--> NG_open_pbr_surface_surfaceshader_base_substrate
     NG_open_pbr_surface_surfaceshader_dielectric_base --"bg"--> NG_open_pbr_surface_surfaceshader_base_substrate
     NG_open_pbr_surface_surfaceshader_base_metalness --"mix"--> NG_open_pbr_surface_surfaceshader_base_substrate
     NG_open_pbr_surface_surfaceshader_coat_ior_to_F0 --"in2"--> NG_open_pbr_surface_surfaceshader_one_minus_coat_F0
@@ -1678,24 +1666,18 @@ graph TB
     NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
     NG_standard_surface_surfaceshader_100_subsurface_selector[subsurface_selector]
     NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[selected_subsurface_bsdf]
-    NG_standard_surface_surfaceshader_100_subsurface_inv[subsurface_inv]
-    NG_standard_surface_surfaceshader_100_diffuse_bsdf_non_subsurface[diffuse_bsdf_non_subsurface]
-    NG_standard_surface_surfaceshader_100_subsurface_blend[subsurface_blend]
+    NG_standard_surface_surfaceshader_100_subsurface_mix[subsurface_mix]
     NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
     NG_standard_surface_surfaceshader_100_sheen_layer[sheen_layer]
     NG_standard_surface_surfaceshader_100_transmission_bsdf[transmission_bsdf]
-    NG_standard_surface_surfaceshader_100_transmission_inv[transmission_inv]
-    NG_standard_surface_surfaceshader_100_sheen_layer_non_transmission[sheen_layer_non_transmission]
-    NG_standard_surface_surfaceshader_100_transmission_blend[transmission_blend]
+    NG_standard_surface_surfaceshader_100_transmission_mix[transmission_mix]
     NG_standard_surface_surfaceshader_100_specular_bsdf[specular_bsdf]
     NG_standard_surface_surfaceshader_100_specular_layer[specular_layer]
     NG_standard_surface_surfaceshader_100_metal_reflectivity[metal_reflectivity]
     NG_standard_surface_surfaceshader_100_metal_edgecolor[metal_edgecolor]
     NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior]
     NG_standard_surface_surfaceshader_100_metal_bsdf[metal_bsdf]
-    NG_standard_surface_surfaceshader_100_metalness_inv[metalness_inv]
-    NG_standard_surface_surfaceshader_100_specular_layer_non_metal[specular_layer_non_metal]
-    NG_standard_surface_surfaceshader_100_metalness_blend[metalness_blend]
+    NG_standard_surface_surfaceshader_100_metalness_mix[metalness_mix]
     NG_standard_surface_surfaceshader_100_coat_attenuation[coat_attenuation]
     NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[thin_film_layer_attenuated]
     NG_standard_surface_surfaceshader_100_coat_roughness_vector[coat_roughness_vector]
@@ -1751,8 +1733,6 @@ graph TB
     NG_standard_surface_surfaceshader_100_base([base])
     style NG_standard_surface_surfaceshader_100_diffuse_roughness  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_diffuse_roughness([diffuse_roughness])
-    style NG_standard_surface_surfaceshader_100_subsurface  fill:#09D, color:#FFF
-    NG_standard_surface_surfaceshader_100_subsurface([subsurface])
     style NG_standard_surface_surfaceshader_100_subsurface_radius  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_subsurface_radius([subsurface_radius])
     style NG_standard_surface_surfaceshader_100_subsurface_scale  fill:#09D, color:#FFF
@@ -1761,18 +1741,20 @@ graph TB
     NG_standard_surface_surfaceshader_100_subsurface_anisotropy([subsurface_anisotropy])
     style NG_standard_surface_surfaceshader_100_thin_walled  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_thin_walled([thin_walled])
+    style NG_standard_surface_surfaceshader_100_subsurface  fill:#09D, color:#FFF
+    NG_standard_surface_surfaceshader_100_subsurface([subsurface])
     style NG_standard_surface_surfaceshader_100_sheen  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_sheen([sheen])
     style NG_standard_surface_surfaceshader_100_sheen_color  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_sheen_color([sheen_color])
     style NG_standard_surface_surfaceshader_100_sheen_roughness  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_sheen_roughness([sheen_roughness])
-    style NG_standard_surface_surfaceshader_100_transmission  fill:#09D, color:#FFF
-    NG_standard_surface_surfaceshader_100_transmission([transmission])
     style NG_standard_surface_surfaceshader_100_transmission_color  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_transmission_color([transmission_color])
     style NG_standard_surface_surfaceshader_100_specular_IOR  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_specular_IOR([specular_IOR])
+    style NG_standard_surface_surfaceshader_100_transmission  fill:#09D, color:#FFF
+    NG_standard_surface_surfaceshader_100_transmission([transmission])
     style NG_standard_surface_surfaceshader_100_specular  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_specular([specular])
     style NG_standard_surface_surfaceshader_100_specular_color  fill:#09D, color:#FFF
@@ -1839,12 +1821,10 @@ graph TB
     NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color --"color"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf
     NG_standard_surface_surfaceshader_100_diffuse_roughness --"roughness"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf
     NG_standard_surface_surfaceshader_100_normal --"normal"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf
-    NG_standard_surface_surfaceshader_100_subsurface --"weight"--> NG_standard_surface_surfaceshader_100_translucent_bsdf
     NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color --"color"--> NG_standard_surface_surfaceshader_100_translucent_bsdf
     NG_standard_surface_surfaceshader_100_normal --"normal"--> NG_standard_surface_surfaceshader_100_translucent_bsdf
     NG_standard_surface_surfaceshader_100_subsurface_radius --"in1"--> NG_standard_surface_surfaceshader_100_subsurface_radius_scaled
     NG_standard_surface_surfaceshader_100_subsurface_scale --"in2"--> NG_standard_surface_surfaceshader_100_subsurface_radius_scaled
-    NG_standard_surface_surfaceshader_100_subsurface --"weight"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf
     NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color --"color"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf
     NG_standard_surface_surfaceshader_100_subsurface_radius_scaled --"radius"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf
     NG_standard_surface_surfaceshader_100_subsurface_anisotropy --"anisotropy"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf
@@ -1853,28 +1833,23 @@ graph TB
     NG_standard_surface_surfaceshader_100_translucent_bsdf --"fg"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf
     NG_standard_surface_surfaceshader_100_subsurface_bsdf --"bg"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf
     NG_standard_surface_surfaceshader_100_subsurface_selector --"mix"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf
-    NG_standard_surface_surfaceshader_100_subsurface --"in"--> NG_standard_surface_surfaceshader_100_subsurface_inv
-    NG_standard_surface_surfaceshader_100_diffuse_bsdf --"in1"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf_non_subsurface
-    NG_standard_surface_surfaceshader_100_subsurface_inv --"in2"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf_non_subsurface
-    NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf --"in1"--> NG_standard_surface_surfaceshader_100_subsurface_blend
-    NG_standard_surface_surfaceshader_100_diffuse_bsdf_non_subsurface --"in2"--> NG_standard_surface_surfaceshader_100_subsurface_blend
+    NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf --"fg"--> NG_standard_surface_surfaceshader_100_subsurface_mix
+    NG_standard_surface_surfaceshader_100_diffuse_bsdf --"bg"--> NG_standard_surface_surfaceshader_100_subsurface_mix
+    NG_standard_surface_surfaceshader_100_subsurface --"mix"--> NG_standard_surface_surfaceshader_100_subsurface_mix
     NG_standard_surface_surfaceshader_100_sheen --"weight"--> NG_standard_surface_surfaceshader_100_sheen_bsdf
     NG_standard_surface_surfaceshader_100_sheen_color --"color"--> NG_standard_surface_surfaceshader_100_sheen_bsdf
     NG_standard_surface_surfaceshader_100_sheen_roughness --"roughness"--> NG_standard_surface_surfaceshader_100_sheen_bsdf
     NG_standard_surface_surfaceshader_100_normal --"normal"--> NG_standard_surface_surfaceshader_100_sheen_bsdf
     NG_standard_surface_surfaceshader_100_sheen_bsdf --"top"--> NG_standard_surface_surfaceshader_100_sheen_layer
-    NG_standard_surface_surfaceshader_100_subsurface_blend --"base"--> NG_standard_surface_surfaceshader_100_sheen_layer
-    NG_standard_surface_surfaceshader_100_transmission --"weight"--> NG_standard_surface_surfaceshader_100_transmission_bsdf
+    NG_standard_surface_surfaceshader_100_subsurface_mix --"base"--> NG_standard_surface_surfaceshader_100_sheen_layer
     NG_standard_surface_surfaceshader_100_transmission_color --"tint"--> NG_standard_surface_surfaceshader_100_transmission_bsdf
     NG_standard_surface_surfaceshader_100_specular_IOR --"ior"--> NG_standard_surface_surfaceshader_100_transmission_bsdf
     NG_standard_surface_surfaceshader_100_transmission_roughness --"roughness"--> NG_standard_surface_surfaceshader_100_transmission_bsdf
     NG_standard_surface_surfaceshader_100_normal --"normal"--> NG_standard_surface_surfaceshader_100_transmission_bsdf
     NG_standard_surface_surfaceshader_100_main_tangent --"tangent"--> NG_standard_surface_surfaceshader_100_transmission_bsdf
-    NG_standard_surface_surfaceshader_100_transmission --"in"--> NG_standard_surface_surfaceshader_100_transmission_inv
-    NG_standard_surface_surfaceshader_100_sheen_layer --"in1"--> NG_standard_surface_surfaceshader_100_sheen_layer_non_transmission
-    NG_standard_surface_surfaceshader_100_transmission_inv --"in2"--> NG_standard_surface_surfaceshader_100_sheen_layer_non_transmission
-    NG_standard_surface_surfaceshader_100_transmission_bsdf --"in1"--> NG_standard_surface_surfaceshader_100_transmission_blend
-    NG_standard_surface_surfaceshader_100_sheen_layer_non_transmission --"in2"--> NG_standard_surface_surfaceshader_100_transmission_blend
+    NG_standard_surface_surfaceshader_100_transmission_bsdf --"fg"--> NG_standard_surface_surfaceshader_100_transmission_mix
+    NG_standard_surface_surfaceshader_100_sheen_layer --"bg"--> NG_standard_surface_surfaceshader_100_transmission_mix
+    NG_standard_surface_surfaceshader_100_transmission --"mix"--> NG_standard_surface_surfaceshader_100_transmission_mix
     NG_standard_surface_surfaceshader_100_specular --"weight"--> NG_standard_surface_surfaceshader_100_specular_bsdf
     NG_standard_surface_surfaceshader_100_specular_color --"tint"--> NG_standard_surface_surfaceshader_100_specular_bsdf
     NG_standard_surface_surfaceshader_100_specular_IOR --"ior"--> NG_standard_surface_surfaceshader_100_specular_bsdf
@@ -1884,14 +1859,13 @@ graph TB
     NG_standard_surface_surfaceshader_100_thin_film_thickness --"thinfilm_thickness"--> NG_standard_surface_surfaceshader_100_specular_bsdf
     NG_standard_surface_surfaceshader_100_thin_film_IOR --"thinfilm_ior"--> NG_standard_surface_surfaceshader_100_specular_bsdf
     NG_standard_surface_surfaceshader_100_specular_bsdf --"top"--> NG_standard_surface_surfaceshader_100_specular_layer
-    NG_standard_surface_surfaceshader_100_transmission_blend --"base"--> NG_standard_surface_surfaceshader_100_specular_layer
+    NG_standard_surface_surfaceshader_100_transmission_mix --"base"--> NG_standard_surface_surfaceshader_100_specular_layer
     NG_standard_surface_surfaceshader_100_base_color --"in1"--> NG_standard_surface_surfaceshader_100_metal_reflectivity
     NG_standard_surface_surfaceshader_100_base --"in2"--> NG_standard_surface_surfaceshader_100_metal_reflectivity
     NG_standard_surface_surfaceshader_100_specular_color --"in1"--> NG_standard_surface_surfaceshader_100_metal_edgecolor
     NG_standard_surface_surfaceshader_100_specular --"in2"--> NG_standard_surface_surfaceshader_100_metal_edgecolor
     NG_standard_surface_surfaceshader_100_metal_reflectivity --"reflectivity"--> NG_standard_surface_surfaceshader_100_artistic_ior
     NG_standard_surface_surfaceshader_100_metal_edgecolor --"edge_color"--> NG_standard_surface_surfaceshader_100_artistic_ior
-    NG_standard_surface_surfaceshader_100_metalness --"weight"--> NG_standard_surface_surfaceshader_100_metal_bsdf
     NG_standard_surface_surfaceshader_100_artistic_ior --"ior-->ior"--> NG_standard_surface_surfaceshader_100_metal_bsdf
     NG_standard_surface_surfaceshader_100_artistic_ior --"extinction-->extinction"--> NG_standard_surface_surfaceshader_100_metal_bsdf
     NG_standard_surface_surfaceshader_100_main_roughness --"roughness"--> NG_standard_surface_surfaceshader_100_metal_bsdf
@@ -1899,14 +1873,12 @@ graph TB
     NG_standard_surface_surfaceshader_100_main_tangent --"tangent"--> NG_standard_surface_surfaceshader_100_metal_bsdf
     NG_standard_surface_surfaceshader_100_thin_film_thickness --"thinfilm_thickness"--> NG_standard_surface_surfaceshader_100_metal_bsdf
     NG_standard_surface_surfaceshader_100_thin_film_IOR --"thinfilm_ior"--> NG_standard_surface_surfaceshader_100_metal_bsdf
-    NG_standard_surface_surfaceshader_100_metalness --"in"--> NG_standard_surface_surfaceshader_100_metalness_inv
-    NG_standard_surface_surfaceshader_100_specular_layer --"in1"--> NG_standard_surface_surfaceshader_100_specular_layer_non_metal
-    NG_standard_surface_surfaceshader_100_metalness_inv --"in2"--> NG_standard_surface_surfaceshader_100_specular_layer_non_metal
-    NG_standard_surface_surfaceshader_100_metal_bsdf --"in1"--> NG_standard_surface_surfaceshader_100_metalness_blend
-    NG_standard_surface_surfaceshader_100_specular_layer_non_metal --"in2"--> NG_standard_surface_surfaceshader_100_metalness_blend
+    NG_standard_surface_surfaceshader_100_metal_bsdf --"fg"--> NG_standard_surface_surfaceshader_100_metalness_mix
+    NG_standard_surface_surfaceshader_100_specular_layer --"bg"--> NG_standard_surface_surfaceshader_100_metalness_mix
+    NG_standard_surface_surfaceshader_100_metalness --"mix"--> NG_standard_surface_surfaceshader_100_metalness_mix
     NG_standard_surface_surfaceshader_100_coat_color --"fg"--> NG_standard_surface_surfaceshader_100_coat_attenuation
     NG_standard_surface_surfaceshader_100_coat --"mix"--> NG_standard_surface_surfaceshader_100_coat_attenuation
-    NG_standard_surface_surfaceshader_100_metalness_blend --"in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated
+    NG_standard_surface_surfaceshader_100_metalness_mix --"in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated
     NG_standard_surface_surfaceshader_100_coat_attenuation --"in2"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated
     NG_standard_surface_surfaceshader_100_coat_roughness --"roughness"--> NG_standard_surface_surfaceshader_100_coat_roughness_vector
     NG_standard_surface_surfaceshader_100_coat_anisotropy --"anisotropy"--> NG_standard_surface_surfaceshader_100_coat_roughness_vector
@@ -1991,24 +1963,18 @@ graph TB
     NG_standard_surface_surfaceshader_100_subsurface_bsdf[subsurface_bsdf]
     NG_standard_surface_surfaceshader_100_subsurface_selector[subsurface_selector]
     NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf[selected_subsurface_bsdf]
-    NG_standard_surface_surfaceshader_100_subsurface_inv[subsurface_inv]
-    NG_standard_surface_surfaceshader_100_diffuse_bsdf_non_subsurface[diffuse_bsdf_non_subsurface]
-    NG_standard_surface_surfaceshader_100_subsurface_blend[subsurface_blend]
+    NG_standard_surface_surfaceshader_100_subsurface_mix[subsurface_mix]
     NG_standard_surface_surfaceshader_100_sheen_bsdf[sheen_bsdf]
     NG_standard_surface_surfaceshader_100_sheen_layer[sheen_layer]
     NG_standard_surface_surfaceshader_100_transmission_bsdf[transmission_bsdf]
-    NG_standard_surface_surfaceshader_100_transmission_inv[transmission_inv]
-    NG_standard_surface_surfaceshader_100_sheen_layer_non_transmission[sheen_layer_non_transmission]
-    NG_standard_surface_surfaceshader_100_transmission_blend[transmission_blend]
+    NG_standard_surface_surfaceshader_100_transmission_mix[transmission_mix]
     NG_standard_surface_surfaceshader_100_specular_bsdf[specular_bsdf]
     NG_standard_surface_surfaceshader_100_specular_layer[specular_layer]
     NG_standard_surface_surfaceshader_100_metal_reflectivity[metal_reflectivity]
     NG_standard_surface_surfaceshader_100_metal_edgecolor[metal_edgecolor]
     NG_standard_surface_surfaceshader_100_artistic_ior[artistic_ior]
     NG_standard_surface_surfaceshader_100_metal_bsdf[metal_bsdf]
-    NG_standard_surface_surfaceshader_100_metalness_inv[metalness_inv]
-    NG_standard_surface_surfaceshader_100_specular_layer_non_metal[specular_layer_non_metal]
-    NG_standard_surface_surfaceshader_100_metalness_blend[metalness_blend]
+    NG_standard_surface_surfaceshader_100_metalness_mix[metalness_mix]
     NG_standard_surface_surfaceshader_100_coat_attenuation[coat_attenuation]
     NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated[thin_film_layer_attenuated]
     NG_standard_surface_surfaceshader_100_coat_roughness_vector[coat_roughness_vector]
@@ -2064,8 +2030,6 @@ graph TB
     NG_standard_surface_surfaceshader_100_base([base])
     style NG_standard_surface_surfaceshader_100_diffuse_roughness  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_diffuse_roughness([diffuse_roughness])
-    style NG_standard_surface_surfaceshader_100_subsurface  fill:#09D, color:#FFF
-    NG_standard_surface_surfaceshader_100_subsurface([subsurface])
     style NG_standard_surface_surfaceshader_100_subsurface_radius  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_subsurface_radius([subsurface_radius])
     style NG_standard_surface_surfaceshader_100_subsurface_scale  fill:#09D, color:#FFF
@@ -2074,18 +2038,20 @@ graph TB
     NG_standard_surface_surfaceshader_100_subsurface_anisotropy([subsurface_anisotropy])
     style NG_standard_surface_surfaceshader_100_thin_walled  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_thin_walled([thin_walled])
+    style NG_standard_surface_surfaceshader_100_subsurface  fill:#09D, color:#FFF
+    NG_standard_surface_surfaceshader_100_subsurface([subsurface])
     style NG_standard_surface_surfaceshader_100_sheen  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_sheen([sheen])
     style NG_standard_surface_surfaceshader_100_sheen_color  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_sheen_color([sheen_color])
     style NG_standard_surface_surfaceshader_100_sheen_roughness  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_sheen_roughness([sheen_roughness])
-    style NG_standard_surface_surfaceshader_100_transmission  fill:#09D, color:#FFF
-    NG_standard_surface_surfaceshader_100_transmission([transmission])
     style NG_standard_surface_surfaceshader_100_transmission_color  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_transmission_color([transmission_color])
     style NG_standard_surface_surfaceshader_100_specular_IOR  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_specular_IOR([specular_IOR])
+    style NG_standard_surface_surfaceshader_100_transmission  fill:#09D, color:#FFF
+    NG_standard_surface_surfaceshader_100_transmission([transmission])
     style NG_standard_surface_surfaceshader_100_specular  fill:#09D, color:#FFF
     NG_standard_surface_surfaceshader_100_specular([specular])
     style NG_standard_surface_surfaceshader_100_specular_color  fill:#09D, color:#FFF
@@ -2152,12 +2118,10 @@ graph TB
     NG_standard_surface_surfaceshader_100_coat_affected_diffuse_color --"color"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf
     NG_standard_surface_surfaceshader_100_diffuse_roughness --"roughness"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf
     NG_standard_surface_surfaceshader_100_normal --"normal"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf
-    NG_standard_surface_surfaceshader_100_subsurface --"weight"--> NG_standard_surface_surfaceshader_100_translucent_bsdf
     NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color --"color"--> NG_standard_surface_surfaceshader_100_translucent_bsdf
     NG_standard_surface_surfaceshader_100_normal --"normal"--> NG_standard_surface_surfaceshader_100_translucent_bsdf
     NG_standard_surface_surfaceshader_100_subsurface_radius --"in1"--> NG_standard_surface_surfaceshader_100_subsurface_radius_scaled
     NG_standard_surface_surfaceshader_100_subsurface_scale --"in2"--> NG_standard_surface_surfaceshader_100_subsurface_radius_scaled
-    NG_standard_surface_surfaceshader_100_subsurface --"weight"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf
     NG_standard_surface_surfaceshader_100_coat_affected_subsurface_color --"color"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf
     NG_standard_surface_surfaceshader_100_subsurface_radius_scaled --"radius"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf
     NG_standard_surface_surfaceshader_100_subsurface_anisotropy --"anisotropy"--> NG_standard_surface_surfaceshader_100_subsurface_bsdf
@@ -2166,28 +2130,23 @@ graph TB
     NG_standard_surface_surfaceshader_100_translucent_bsdf --"fg"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf
     NG_standard_surface_surfaceshader_100_subsurface_bsdf --"bg"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf
     NG_standard_surface_surfaceshader_100_subsurface_selector --"mix"--> NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf
-    NG_standard_surface_surfaceshader_100_subsurface --"in"--> NG_standard_surface_surfaceshader_100_subsurface_inv
-    NG_standard_surface_surfaceshader_100_diffuse_bsdf --"in1"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf_non_subsurface
-    NG_standard_surface_surfaceshader_100_subsurface_inv --"in2"--> NG_standard_surface_surfaceshader_100_diffuse_bsdf_non_subsurface
-    NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf --"in1"--> NG_standard_surface_surfaceshader_100_subsurface_blend
-    NG_standard_surface_surfaceshader_100_diffuse_bsdf_non_subsurface --"in2"--> NG_standard_surface_surfaceshader_100_subsurface_blend
+    NG_standard_surface_surfaceshader_100_selected_subsurface_bsdf --"fg"--> NG_standard_surface_surfaceshader_100_subsurface_mix
+    NG_standard_surface_surfaceshader_100_diffuse_bsdf --"bg"--> NG_standard_surface_surfaceshader_100_subsurface_mix
+    NG_standard_surface_surfaceshader_100_subsurface --"mix"--> NG_standard_surface_surfaceshader_100_subsurface_mix
     NG_standard_surface_surfaceshader_100_sheen --"weight"--> NG_standard_surface_surfaceshader_100_sheen_bsdf
     NG_standard_surface_surfaceshader_100_sheen_color --"color"--> NG_standard_surface_surfaceshader_100_sheen_bsdf
     NG_standard_surface_surfaceshader_100_sheen_roughness --"roughness"--> NG_standard_surface_surfaceshader_100_sheen_bsdf
     NG_standard_surface_surfaceshader_100_normal --"normal"--> NG_standard_surface_surfaceshader_100_sheen_bsdf
     NG_standard_surface_surfaceshader_100_sheen_bsdf --"top"--> NG_standard_surface_surfaceshader_100_sheen_layer
-    NG_standard_surface_surfaceshader_100_subsurface_blend --"base"--> NG_standard_surface_surfaceshader_100_sheen_layer
-    NG_standard_surface_surfaceshader_100_transmission --"weight"--> NG_standard_surface_surfaceshader_100_transmission_bsdf
+    NG_standard_surface_surfaceshader_100_subsurface_mix --"base"--> NG_standard_surface_surfaceshader_100_sheen_layer
     NG_standard_surface_surfaceshader_100_transmission_color --"tint"--> NG_standard_surface_surfaceshader_100_transmission_bsdf
     NG_standard_surface_surfaceshader_100_specular_IOR --"ior"--> NG_standard_surface_surfaceshader_100_transmission_bsdf
     NG_standard_surface_surfaceshader_100_transmission_roughness --"roughness"--> NG_standard_surface_surfaceshader_100_transmission_bsdf
     NG_standard_surface_surfaceshader_100_normal --"normal"--> NG_standard_surface_surfaceshader_100_transmission_bsdf
     NG_standard_surface_surfaceshader_100_main_tangent --"tangent"--> NG_standard_surface_surfaceshader_100_transmission_bsdf
-    NG_standard_surface_surfaceshader_100_transmission --"in"--> NG_standard_surface_surfaceshader_100_transmission_inv
-    NG_standard_surface_surfaceshader_100_sheen_layer --"in1"--> NG_standard_surface_surfaceshader_100_sheen_layer_non_transmission
-    NG_standard_surface_surfaceshader_100_transmission_inv --"in2"--> NG_standard_surface_surfaceshader_100_sheen_layer_non_transmission
-    NG_standard_surface_surfaceshader_100_transmission_bsdf --"in1"--> NG_standard_surface_surfaceshader_100_transmission_blend
-    NG_standard_surface_surfaceshader_100_sheen_layer_non_transmission --"in2"--> NG_standard_surface_surfaceshader_100_transmission_blend
+    NG_standard_surface_surfaceshader_100_transmission_bsdf --"fg"--> NG_standard_surface_surfaceshader_100_transmission_mix
+    NG_standard_surface_surfaceshader_100_sheen_layer --"bg"--> NG_standard_surface_surfaceshader_100_transmission_mix
+    NG_standard_surface_surfaceshader_100_transmission --"mix"--> NG_standard_surface_surfaceshader_100_transmission_mix
     NG_standard_surface_surfaceshader_100_specular --"weight"--> NG_standard_surface_surfaceshader_100_specular_bsdf
     NG_standard_surface_surfaceshader_100_specular_color --"tint"--> NG_standard_surface_surfaceshader_100_specular_bsdf
     NG_standard_surface_surfaceshader_100_specular_IOR --"ior"--> NG_standard_surface_surfaceshader_100_specular_bsdf
@@ -2197,14 +2156,13 @@ graph TB
     NG_standard_surface_surfaceshader_100_thin_film_thickness --"thinfilm_thickness"--> NG_standard_surface_surfaceshader_100_specular_bsdf
     NG_standard_surface_surfaceshader_100_thin_film_IOR --"thinfilm_ior"--> NG_standard_surface_surfaceshader_100_specular_bsdf
     NG_standard_surface_surfaceshader_100_specular_bsdf --"top"--> NG_standard_surface_surfaceshader_100_specular_layer
-    NG_standard_surface_surfaceshader_100_transmission_blend --"base"--> NG_standard_surface_surfaceshader_100_specular_layer
+    NG_standard_surface_surfaceshader_100_transmission_mix --"base"--> NG_standard_surface_surfaceshader_100_specular_layer
     NG_standard_surface_surfaceshader_100_base_color --"in1"--> NG_standard_surface_surfaceshader_100_metal_reflectivity
     NG_standard_surface_surfaceshader_100_base --"in2"--> NG_standard_surface_surfaceshader_100_metal_reflectivity
     NG_standard_surface_surfaceshader_100_specular_color --"in1"--> NG_standard_surface_surfaceshader_100_metal_edgecolor
     NG_standard_surface_surfaceshader_100_specular --"in2"--> NG_standard_surface_surfaceshader_100_metal_edgecolor
     NG_standard_surface_surfaceshader_100_metal_reflectivity --"reflectivity"--> NG_standard_surface_surfaceshader_100_artistic_ior
     NG_standard_surface_surfaceshader_100_metal_edgecolor --"edge_color"--> NG_standard_surface_surfaceshader_100_artistic_ior
-    NG_standard_surface_surfaceshader_100_metalness --"weight"--> NG_standard_surface_surfaceshader_100_metal_bsdf
     NG_standard_surface_surfaceshader_100_artistic_ior --"ior-->ior"--> NG_standard_surface_surfaceshader_100_metal_bsdf
     NG_standard_surface_surfaceshader_100_artistic_ior --"extinction-->extinction"--> NG_standard_surface_surfaceshader_100_metal_bsdf
     NG_standard_surface_surfaceshader_100_main_roughness --"roughness"--> NG_standard_surface_surfaceshader_100_metal_bsdf
@@ -2212,14 +2170,12 @@ graph TB
     NG_standard_surface_surfaceshader_100_main_tangent --"tangent"--> NG_standard_surface_surfaceshader_100_metal_bsdf
     NG_standard_surface_surfaceshader_100_thin_film_thickness --"thinfilm_thickness"--> NG_standard_surface_surfaceshader_100_metal_bsdf
     NG_standard_surface_surfaceshader_100_thin_film_IOR --"thinfilm_ior"--> NG_standard_surface_surfaceshader_100_metal_bsdf
-    NG_standard_surface_surfaceshader_100_metalness --"in"--> NG_standard_surface_surfaceshader_100_metalness_inv
-    NG_standard_surface_surfaceshader_100_specular_layer --"in1"--> NG_standard_surface_surfaceshader_100_specular_layer_non_metal
-    NG_standard_surface_surfaceshader_100_metalness_inv --"in2"--> NG_standard_surface_surfaceshader_100_specular_layer_non_metal
-    NG_standard_surface_surfaceshader_100_metal_bsdf --"in1"--> NG_standard_surface_surfaceshader_100_metalness_blend
-    NG_standard_surface_surfaceshader_100_specular_layer_non_metal --"in2"--> NG_standard_surface_surfaceshader_100_metalness_blend
+    NG_standard_surface_surfaceshader_100_metal_bsdf --"fg"--> NG_standard_surface_surfaceshader_100_metalness_mix
+    NG_standard_surface_surfaceshader_100_specular_layer --"bg"--> NG_standard_surface_surfaceshader_100_metalness_mix
+    NG_standard_surface_surfaceshader_100_metalness --"mix"--> NG_standard_surface_surfaceshader_100_metalness_mix
     NG_standard_surface_surfaceshader_100_coat_color --"fg"--> NG_standard_surface_surfaceshader_100_coat_attenuation
     NG_standard_surface_surfaceshader_100_coat --"mix"--> NG_standard_surface_surfaceshader_100_coat_attenuation
-    NG_standard_surface_surfaceshader_100_metalness_blend --"in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated
+    NG_standard_surface_surfaceshader_100_metalness_mix --"in1"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated
     NG_standard_surface_surfaceshader_100_coat_attenuation --"in2"--> NG_standard_surface_surfaceshader_100_thin_film_layer_attenuated
     NG_standard_surface_surfaceshader_100_coat_roughness --"roughness"--> NG_standard_surface_surfaceshader_100_coat_roughness_vector
     NG_standard_surface_surfaceshader_100_coat_anisotropy --"anisotropy"--> NG_standard_surface_surfaceshader_100_coat_roughness_vector
@@ -4320,6 +4276,8 @@ graph TB
     subgraph NG_standard_surface_to_gltf_pbr
     NG_standard_surface_to_gltf_pbr_constantOneThird[constantOneThird]
     NG_standard_surface_to_gltf_pbr_constantOneThirdVector[constantOneThirdVector]
+    style NG_standard_surface_to_gltf_pbr_negativeTwoPI  fill:#500, color:#FFF
+    NG_standard_surface_to_gltf_pbr_negativeTwoPI([negativeTwoPI:-6.283])
     NG_standard_surface_to_gltf_pbr_coatColorVector[coatColorVector]
     NG_standard_surface_to_gltf_pbr_hasCoatColor[hasCoatColor]
     NG_standard_surface_to_gltf_pbr_scaledBaseColor[scaledBaseColor]
@@ -4333,7 +4291,16 @@ graph TB
     NG_standard_surface_to_gltf_pbr_transmissionBaseColor[transmissionBaseColor]
     NG_standard_surface_to_gltf_pbr_base_color[base_color]
     NG_standard_surface_to_gltf_pbr_metallic[metallic]
+    NG_standard_surface_to_gltf_pbr_roughness_anisotropy[roughness_anisotropy]
+    NG_standard_surface_to_gltf_pbr_separate_roughness[separate_roughness]
     NG_standard_surface_to_gltf_pbr_roughness[roughness]
+    NG_standard_surface_to_gltf_pbr_numerator[numerator]
+    NG_standard_surface_to_gltf_pbr_denumerator[denumerator]
+    NG_standard_surface_to_gltf_pbr_anisotropy_sq[anisotropy_sq]
+    NG_standard_surface_to_gltf_pbr_anisotropy[anisotropy]
+    NG_standard_surface_to_gltf_pbr_anisotropy_rotation[anisotropy_rotation]
+    style NG_standard_surface_to_gltf_pbr_anisotropy_strength  fill:#C72, color:#FFF
+    NG_standard_surface_to_gltf_pbr_anisotropy_strength{anisotropy_strength}
     NG_standard_surface_to_gltf_pbr_transmission[transmission]
     NG_standard_surface_to_gltf_pbr_thickness[thickness]
     NG_standard_surface_to_gltf_pbr_transmissionAttenuationColor[transmissionAttenuationColor]
@@ -4350,6 +4317,10 @@ graph TB
     NG_standard_surface_to_gltf_pbr_metallic_out([metallic_out])
     style NG_standard_surface_to_gltf_pbr_roughness_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_roughness_out([roughness_out])
+    style NG_standard_surface_to_gltf_pbr_anisotropy_strength_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_anisotropy_strength_out([anisotropy_strength_out])
+    style NG_standard_surface_to_gltf_pbr_anisotropy_rotation_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_anisotropy_rotation_out([anisotropy_rotation_out])
     style NG_standard_surface_to_gltf_pbr_transmission_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_transmission_out([transmission_out])
     style NG_standard_surface_to_gltf_pbr_thickness_out  fill:#0C0, color:#FFF
@@ -4380,6 +4351,10 @@ graph TB
     NG_standard_surface_to_gltf_pbr_metalness([metalness])
     style NG_standard_surface_to_gltf_pbr_specular_roughness  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_specular_roughness([specular_roughness])
+    style NG_standard_surface_to_gltf_pbr_specular_anisotropy  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_specular_anisotropy([specular_anisotropy])
+    style NG_standard_surface_to_gltf_pbr_specular_rotation  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_specular_rotation([specular_rotation])
     style NG_standard_surface_to_gltf_pbr_transmission:in  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_transmission:in([transmission:in])
     style NG_standard_surface_to_gltf_pbr_sheen_color:in  fill:#09D, color:#FFF
@@ -4418,7 +4393,20 @@ graph TB
     NG_standard_surface_to_gltf_pbr_transmissionBaseColor --"in1"--> NG_standard_surface_to_gltf_pbr_base_color
     NG_standard_surface_to_gltf_pbr_baseColor --"in2"--> NG_standard_surface_to_gltf_pbr_base_color
     NG_standard_surface_to_gltf_pbr_metalness --"in"--> NG_standard_surface_to_gltf_pbr_metallic
-    NG_standard_surface_to_gltf_pbr_specular_roughness --"in"--> NG_standard_surface_to_gltf_pbr_roughness
+    NG_standard_surface_to_gltf_pbr_specular_roughness --"roughness"--> NG_standard_surface_to_gltf_pbr_roughness_anisotropy
+    NG_standard_surface_to_gltf_pbr_specular_anisotropy --"anisotropy"--> NG_standard_surface_to_gltf_pbr_roughness_anisotropy
+    NG_standard_surface_to_gltf_pbr_roughness_anisotropy --"in"--> NG_standard_surface_to_gltf_pbr_separate_roughness
+    NG_standard_surface_to_gltf_pbr_separate_roughness --"outy-->in"--> NG_standard_surface_to_gltf_pbr_roughness
+    NG_standard_surface_to_gltf_pbr_separate_roughness --"outx-->in1"--> NG_standard_surface_to_gltf_pbr_numerator
+    NG_standard_surface_to_gltf_pbr_separate_roughness --"outy-->in2"--> NG_standard_surface_to_gltf_pbr_numerator
+    NG_standard_surface_to_gltf_pbr_separate_roughness --"outy-->in2"--> NG_standard_surface_to_gltf_pbr_denumerator
+    NG_standard_surface_to_gltf_pbr_numerator --"in1"--> NG_standard_surface_to_gltf_pbr_anisotropy_sq
+    NG_standard_surface_to_gltf_pbr_denumerator --"in2"--> NG_standard_surface_to_gltf_pbr_anisotropy_sq
+    NG_standard_surface_to_gltf_pbr_anisotropy_sq --"in"--> NG_standard_surface_to_gltf_pbr_anisotropy
+    NG_standard_surface_to_gltf_pbr_specular_rotation --"in1"--> NG_standard_surface_to_gltf_pbr_anisotropy_rotation
+    NG_standard_surface_to_gltf_pbr_negativeTwoPI --"in2"--> NG_standard_surface_to_gltf_pbr_anisotropy_rotation
+    NG_standard_surface_to_gltf_pbr_denumerator --"value2"--> NG_standard_surface_to_gltf_pbr_anisotropy_strength
+    NG_standard_surface_to_gltf_pbr_anisotropy --"in2"--> NG_standard_surface_to_gltf_pbr_anisotropy_strength
     NG_standard_surface_to_gltf_pbr_transmission:in --"in"--> NG_standard_surface_to_gltf_pbr_transmission
     NG_standard_surface_to_gltf_pbr_transmission_depth --"in"--> NG_standard_surface_to_gltf_pbr_thickness
     NG_standard_surface_to_gltf_pbr_transmission_depth --"value1"--> NG_standard_surface_to_gltf_pbr_transmissionAttenuationColor
@@ -4438,6 +4426,8 @@ graph TB
     NG_standard_surface_to_gltf_pbr_base_color --> NG_standard_surface_to_gltf_pbr_base_color_out
     NG_standard_surface_to_gltf_pbr_metallic --> NG_standard_surface_to_gltf_pbr_metallic_out
     NG_standard_surface_to_gltf_pbr_roughness --> NG_standard_surface_to_gltf_pbr_roughness_out
+    NG_standard_surface_to_gltf_pbr_anisotropy_strength --> NG_standard_surface_to_gltf_pbr_anisotropy_strength_out
+    NG_standard_surface_to_gltf_pbr_anisotropy_rotation --> NG_standard_surface_to_gltf_pbr_anisotropy_rotation_out
     NG_standard_surface_to_gltf_pbr_transmission --> NG_standard_surface_to_gltf_pbr_transmission_out
     NG_standard_surface_to_gltf_pbr_thickness --> NG_standard_surface_to_gltf_pbr_thickness_out
     NG_standard_surface_to_gltf_pbr_attenuation_color --> NG_standard_surface_to_gltf_pbr_attenuation_color_out
@@ -4454,6 +4444,8 @@ graph TB
 | **base** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **base_color** | color3 | 0.8, 0.8, 0.8 |  |  |  |  |  |  |  |  |  |  |
 | **metalness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **specular_anisotropy** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **specular_rotation** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **specular_roughness** | float | 0.2 |  |  |  |  |  |  |  |  |  |  |
 | **transmission** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **transmission_color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
@@ -4469,6 +4461,8 @@ graph TB
 | *base_color_out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 | *metallic_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *roughness_out* | float | None |  |  |  |  |  |  |  |  |  |  |
+| *anisotropy_strength_out* | float | None |  |  |  |  |  |  |  |  |  |  |
+| *anisotropy_rotation_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *transmission_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *thickness_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *attenuation_color_out* | color3 | None |  |  |  |  |  |  |  |  |  |  |

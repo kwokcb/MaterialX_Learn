@@ -4,6 +4,8 @@
     <input name="base" type="float" value="1" />
     <input name="base_color" type="color3" value="0.8, 0.8, 0.8" />
     <input name="metalness" type="float" value="0" />
+    <input name="specular_anisotropy" type="float" value="0.0" />
+    <input name="specular_rotation" type="float" value="0.0" />
     <input name="specular_roughness" type="float" value="0.2" />
     <input name="transmission" type="float" value="0" />
     <input name="transmission_color" type="color3" value="1, 1, 1" />
@@ -34,6 +36,18 @@
   </convert>
   <surfacematerial name="material_standard_surface_to_gltf_pbr_roughness_out" type="material">
     <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_roughness_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_anisotropy_strength_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="anisotropy_strength_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_anisotropy_strength_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_anisotropy_strength_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_anisotropy_rotation_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="anisotropy_rotation_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_anisotropy_rotation_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_anisotropy_rotation_out" />
   </surfacematerial>
   <convert name="shader_standard_surface_to_gltf_pbr_transmission_out" type="surfaceshader">
     <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="transmission_out" />

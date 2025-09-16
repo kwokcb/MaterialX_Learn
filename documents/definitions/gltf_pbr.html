@@ -608,7 +608,7 @@
 <b><a id="gltf_pbr" class="ms-2 mb-0">
 Category: gltf_pbr
 </a></b>
-<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_gltf_pbr_surfaceshader <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.38.0 or earlier</button></summary>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_gltf_pbr_surfaceshader <button type="button" class="btn bit-sm disabled btn-outline-secondary pt-0 pb-0">1.38.4</button></summary>
 <div class="m-0 mt-0">
 <div class="row">
 <div class="col-12">
@@ -2001,18 +2001,17 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_alpha_roughness[alpha_roughness]
     IMPL_gltf_pbr_surfaceshader_strength_2[strength_2]
     IMPL_gltf_pbr_surfaceshader_at[at]
-    IMPL_gltf_pbr_surfaceshader_transmission_inv[transmission_inv]
     IMPL_gltf_pbr_surfaceshader_diffuse_bsdf[diffuse_bsdf]
     IMPL_gltf_pbr_surfaceshader_transmission_bsdf[transmission_bsdf]
-    IMPL_gltf_pbr_surfaceshader_transmission_blend[transmission_blend]
-    IMPL_gltf_pbr_surfaceshader_iridescence_inv[iridescence_inv]
     IMPL_gltf_pbr_surfaceshader_reflection_bsdf[reflection_bsdf]
-    IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf[reflection_bsdf_tf]
-    IMPL_gltf_pbr_surfaceshader_reflection_bsdf_blend[reflection_bsdf_blend]
-    IMPL_gltf_pbr_surfaceshader_dielectric_layer[dielectric_layer]
+    IMPL_gltf_pbr_surfaceshader_transmission_mix[transmission_mix]
+    IMPL_gltf_pbr_surfaceshader_dielectric_bsdf[dielectric_bsdf]
+    IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[tf_reflection_bsdf]
+    IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[tf_dielectric_bsdf]
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix_iridescent_dielectric_bsdf]
     IMPL_gltf_pbr_surfaceshader_metal_bsdf[metal_bsdf]
-    IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf[metal_bsdf_tf]
-    IMPL_gltf_pbr_surfaceshader_metal_blend[metal_blend]
+    IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[tf_metal_bsdf]
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix_iridescent_metal_bsdf]
     IMPL_gltf_pbr_surfaceshader_base_mix[base_mix]
     IMPL_gltf_pbr_surfaceshader_sheen_color_r[sheen_color_r]
     IMPL_gltf_pbr_surfaceshader_sheen_color_g[sheen_color_g]
@@ -2056,18 +2055,18 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_roughness([roughness])
     style IMPL_gltf_pbr_surfaceshader_anisotropy_strength  fill:#09D, color:#FFF
     IMPL_gltf_pbr_surfaceshader_anisotropy_strength([anisotropy_strength])
-    style IMPL_gltf_pbr_surfaceshader_transmission  fill:#09D, color:#FFF
-    IMPL_gltf_pbr_surfaceshader_transmission([transmission])
     style IMPL_gltf_pbr_surfaceshader_base_color  fill:#09D, color:#FFF
     IMPL_gltf_pbr_surfaceshader_base_color([base_color])
     style IMPL_gltf_pbr_surfaceshader_normal  fill:#09D, color:#FFF
     IMPL_gltf_pbr_surfaceshader_normal([normal])
-    style IMPL_gltf_pbr_surfaceshader_iridescence  fill:#09D, color:#FFF
-    IMPL_gltf_pbr_surfaceshader_iridescence([iridescence])
+    style IMPL_gltf_pbr_surfaceshader_transmission  fill:#09D, color:#FFF
+    IMPL_gltf_pbr_surfaceshader_transmission([transmission])
     style IMPL_gltf_pbr_surfaceshader_iridescence_thickness  fill:#09D, color:#FFF
     IMPL_gltf_pbr_surfaceshader_iridescence_thickness([iridescence_thickness])
     style IMPL_gltf_pbr_surfaceshader_iridescence_ior  fill:#09D, color:#FFF
     IMPL_gltf_pbr_surfaceshader_iridescence_ior([iridescence_ior])
+    style IMPL_gltf_pbr_surfaceshader_iridescence  fill:#09D, color:#FFF
+    IMPL_gltf_pbr_surfaceshader_iridescence([iridescence])
     style IMPL_gltf_pbr_surfaceshader_metallic  fill:#09D, color:#FFF
     IMPL_gltf_pbr_surfaceshader_metallic([metallic])
     style IMPL_gltf_pbr_surfaceshader_sheen_color  fill:#09D, color:#FFF
@@ -2123,53 +2122,50 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_anisotropy_strength --"in2"--> IMPL_gltf_pbr_surfaceshader_strength_2
     IMPL_gltf_pbr_surfaceshader_alpha_roughness --"bg"--> IMPL_gltf_pbr_surfaceshader_at
     IMPL_gltf_pbr_surfaceshader_strength_2 --"mix"--> IMPL_gltf_pbr_surfaceshader_at
-    IMPL_gltf_pbr_surfaceshader_transmission --"in"--> IMPL_gltf_pbr_surfaceshader_transmission_inv
-    IMPL_gltf_pbr_surfaceshader_transmission_inv --"weight"--> IMPL_gltf_pbr_surfaceshader_diffuse_bsdf
     IMPL_gltf_pbr_surfaceshader_base_color --"color"--> IMPL_gltf_pbr_surfaceshader_diffuse_bsdf
     IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_diffuse_bsdf
-    IMPL_gltf_pbr_surfaceshader_transmission --"weight"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf
     IMPL_gltf_pbr_surfaceshader_base_color --"tint"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf
     IMPL_gltf_pbr_surfaceshader_ior --"ior"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf
     IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf
     IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf
     IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_transmission_bsdf
-    IMPL_gltf_pbr_surfaceshader_diffuse_bsdf --"in1"--> IMPL_gltf_pbr_surfaceshader_transmission_blend
-    IMPL_gltf_pbr_surfaceshader_transmission_bsdf --"in2"--> IMPL_gltf_pbr_surfaceshader_transmission_blend
-    IMPL_gltf_pbr_surfaceshader_iridescence --"in"--> IMPL_gltf_pbr_surfaceshader_iridescence_inv
-    IMPL_gltf_pbr_surfaceshader_iridescence_inv --"weight"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_dielectric_f0 --"color0"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_dielectric_f90 --"color90"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf
-    IMPL_gltf_pbr_surfaceshader_iridescence --"weight"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_dielectric_f0 --"color0"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_dielectric_f90 --"color90"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thinfilm_thickness"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_iridescence_ior --"thinfilm_ior"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_reflection_bsdf --"in1"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_blend
-    IMPL_gltf_pbr_surfaceshader_reflection_bsdf_tf --"in2"--> IMPL_gltf_pbr_surfaceshader_reflection_bsdf_blend
-    IMPL_gltf_pbr_surfaceshader_reflection_bsdf_blend --"top"--> IMPL_gltf_pbr_surfaceshader_dielectric_layer
-    IMPL_gltf_pbr_surfaceshader_transmission_blend --"base"--> IMPL_gltf_pbr_surfaceshader_dielectric_layer
-    IMPL_gltf_pbr_surfaceshader_iridescence_inv --"weight"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_diffuse_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_transmission_mix
+    IMPL_gltf_pbr_surfaceshader_transmission_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_transmission_mix
+    IMPL_gltf_pbr_surfaceshader_transmission --"mix"--> IMPL_gltf_pbr_surfaceshader_transmission_mix
+    IMPL_gltf_pbr_surfaceshader_reflection_bsdf --"top"--> IMPL_gltf_pbr_surfaceshader_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_transmission_mix --"base"--> IMPL_gltf_pbr_surfaceshader_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_dielectric_f0 --"color0"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_dielectric_f90 --"color90"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thinfilm_thickness"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_iridescence_ior --"thinfilm_ior"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
+    IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf --"top"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_transmission_mix --"base"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_dielectric_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_iridescence --"mix"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
     IMPL_gltf_pbr_surfaceshader_base_color --"color0"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
-    IMPL_gltf_pbr_surfaceshader_iridescence --"weight"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_base_color --"color0"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thinfilm_thickness"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_iridescence_ior --"thinfilm_ior"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf
-    IMPL_gltf_pbr_surfaceshader_metal_bsdf --"in1"--> IMPL_gltf_pbr_surfaceshader_metal_blend
-    IMPL_gltf_pbr_surfaceshader_metal_bsdf_tf --"in2"--> IMPL_gltf_pbr_surfaceshader_metal_blend
-    IMPL_gltf_pbr_surfaceshader_dielectric_layer --"bg"--> IMPL_gltf_pbr_surfaceshader_base_mix
-    IMPL_gltf_pbr_surfaceshader_metal_blend --"fg"--> IMPL_gltf_pbr_surfaceshader_base_mix
+    IMPL_gltf_pbr_surfaceshader_base_color --"color0"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thinfilm_thickness"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_iridescence_ior --"thinfilm_ior"--> IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_metal_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_iridescence --"mix"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_base_mix
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_base_mix
     IMPL_gltf_pbr_surfaceshader_metallic --"mix"--> IMPL_gltf_pbr_surfaceshader_base_mix
     IMPL_gltf_pbr_surfaceshader_sheen_color --"in"--> IMPL_gltf_pbr_surfaceshader_sheen_color_r
     IMPL_gltf_pbr_surfaceshader_sheen_color --"in"--> IMPL_gltf_pbr_surfaceshader_sheen_color_g
