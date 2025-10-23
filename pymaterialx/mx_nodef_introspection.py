@@ -5,8 +5,9 @@ import argparse
 
 def extractSourceURL(implementation):
     srcfile = implementation.getAttribute('file')
+    srcURL = implementation.getSourceUri()
     hrefString = ''
-    if len(srcfile) > 0:                        
+    if len(srcfile) > 0:    
         isURL = srcfile.startswith('http')
         if not isURL:
             sourceUri = mx.FilePath(implementation.getSourceUri())
@@ -20,13 +21,19 @@ def extractSourceURL(implementation):
                 totalPath = leafPath + '/' + totalPath 
 
             libraryName = "https://github.com/AcademySoftwareFoundation/MaterialX/tree/main"
+            libraryName = "https://raw.githubusercontent.com/AcademySoftwareFoundation/MaterialX/refs/heads/main/"
             libraryName = libraryName + '/' + totalPath
             libraryName = libraryName + '/' + srcfile
             hrefString = libraryName 
+            #print(f"{implementation.getName()} impl source file: {srcfile}. Source URI: {srcURL}")                    
         else:
             hrefString = srcfile
 
     return hrefString 
+
+def extractSource(implementation):
+    src = implementation.getAttribute('sourcecode')
+    return src
 
 def compute_image_names(nodedef):
     outputList = nodedef.getActiveOutputs() #if opts.showInherited  else nd.getOutputs()
@@ -38,7 +45,7 @@ def compute_image_names(nodedef):
         imageName = 'material_' + nodedef.getName().removeprefix('ND_') + '_' + outName + '_genglsl.png'
         imageName = '../resources/mtlx/nodedef_materials/' + imageName                
         if not os.path.exists(imageName):
-            print('-- Missing image: ', imageName)
+            #print('-- Missing image: ', imageName)
             imageName = 'images/no_image.png'
         else:
             #imageName = 'https://kwokcb.github.io/MaterialX_Learn/resources/mtlx/nodedef_materials/' + imageName
@@ -103,8 +110,24 @@ def add_implementation_node(parent, nodedef, implementation, targetNames):
                 hrefString = extractSourceURL(implementation)
                 if len(hrefString) > 0:
                     new_node["linkurl"] = hrefString
+                else:
+                    code = extractSource(implementation)
+                    if len(code) > 0:
+                        new_node["doc"] = code
 
                 parent["children"].append(new_node)    
+        else:
+            #print(f'---- No implementation for target: {target} in nodedef: {nodedef.getName()}')
+            if "children" not in parent:
+                parent["children"] = []
+            new_node = {
+                "icon": "bi-exclamation-diamond",
+                "name": "MISSING: " + target,
+                "target": target,
+                "type": "implementation",
+            }
+            parent["children"].append(new_node)    
+
 
 def add_geompropdefs(doc, parent):
     geompropdefs = doc.getGeomPropDefs()
@@ -279,6 +302,8 @@ def build_nodedef_info(insert_nodegroup=True):
                         # Add non-nodegraph implementation
                         else:
                             add_implementation_node(new_child, nodedef, implementation, targetNames)
+                    else:
+                        print(f'-- No implementation for nodedef: {nodedef_name}')
 
                     node_entry["children"].append(new_child)
                 break
