@@ -118,7 +118,7 @@
     <div class="container-fluid p-3">
         <nav class="navbar navbar-expand-lg rounded mb-3 px-3">
             <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
-                <span class="navbar-brand mb-0 h5">Tree Visualizer</span>
+                <span id="tree_title" class="navbar-brand mb-0 h5">Tree Visualizer</span>
                 <div class="d-flex gap-2">
                     <button id="helpBtn" class="btn btn-outline-secondary btn-sm" title="Keyboard shortcuts"
                         data-bs-toggle="modal" data-bs-target="#helpModal">
@@ -435,7 +435,8 @@
         let tree = new TreeVisualizer("chart-container", "tree_chart1", "zoomGroup", sampleData, nodeColors);
 
         // Auto-load nodedef_introspection.json if it exists
-        fetch('nodedef_introspection.json')
+        let startupFile = 'source_reference/nodedef_introspection_1_39_4.json'
+        fetch(startupFile)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -443,13 +444,13 @@
                 return response.json();
             })
             .then(jsonData => {
-                console.log('Auto-loaded nodedef_introspection.json');
+                console.log('Auto-loaded ' + startupFile);
                 jsonEditor.setValue(JSON.stringify(jsonData, null, 2));
                 tree.updateData(jsonData);
                 document.getElementById('searchResultsContainer').style.display = 'none';
             })
             .catch(error => {
-                console.log('nodedef_introspection.json not found or failed to load:', error.message);
+                console.log(startupFile + ' not found or failed to load:', error.message);
                 // Fall back to sample data (already loaded)
             });
 
@@ -804,6 +805,8 @@
                 try {
                     const jsonData = JSON.parse(e.target.result);
                     jsonEditor.setValue(JSON.stringify(jsonData, null, 2));
+                    tree.updateData(jsonData);
+                    document.getElementById('searchResultsContainer').style.display = 'none';
                 } catch (error) {
                     alert('Error parsing JSON file: ' + error.message);
                 }
