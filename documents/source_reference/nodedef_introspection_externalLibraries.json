@@ -1,0 +1,1753 @@
+{
+  "icon": "bi-database",
+  "name": "externalLibraries Libraries",
+  "version": "externalLibraries",
+  "children": [
+    {
+      "icon": "bi-journals",
+      "name": "adsklib",
+      "type": "library",
+      "children": [
+        {
+          "icon": "bi-key",
+          "name": "Usd_height_map",
+          "type": "node",
+          "output_type": "vector3",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_Usd_height_map",
+              "type": "nodedef",
+              "version": "1.0.1",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_Usd_height_map"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "adjustment",
+          "type": "nodegroup",
+          "children": [
+            {
+              "icon": "bi-key",
+              "name": "colorcorrect",
+              "type": "node",
+              "output_type": "multioutput",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "adsk:ND_colorcorrect",
+                  "type": "nodedef",
+                  "version": "1.0",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "adsk:NG_colorcorrect"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "icon": "bi-collection"
+        },
+        {
+          "name": "adsk_legacy",
+          "type": "nodegroup",
+          "children": [
+            {
+              "icon": "bi-key",
+              "name": "combinenormals_vector3",
+              "type": "node",
+              "output_type": "vector3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_combinenormals_vector3",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_combinenormals_vector3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_ceramic",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_ceramic",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_ceramic"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_checker",
+              "type": "node",
+              "output_type": "multioutput",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_checker_color3",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_checker_color3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_concrete",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_concrete",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_concrete"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_generic",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_generic",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_generic"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_glass",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_glass",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_glass"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_glazing",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_glazing",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_glazing"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_gradient",
+              "type": "node",
+              "output_type": "float",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_gradient_color3",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_gradient_color3"
+                    }
+                  ]
+                },
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_gradient_float",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_gradient_float"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_hardwood",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_hardwood",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_hardwood"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_knurl",
+              "type": "node",
+              "output_type": "multioutput",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_knurl",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_knurl"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_marble",
+              "type": "node",
+              "output_type": "color3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_marble_color3",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_marble_color3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_masonry",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_masonry",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_masonry"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_metal",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_metal",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_metal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_metallicpaint",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_metallicpaint",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_metallicpaint"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_mirror",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_mirror",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_mirror"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_noise",
+              "type": "node",
+              "output_type": "color3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_noise_color3",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_noise_color3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_plastic",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_plastic",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_plastic"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_speckle",
+              "type": "node",
+              "output_type": "color3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_speckle_color3",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_speckle_color3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_stain",
+              "type": "node",
+              "output_type": "color3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_stain_color3",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_stain_color3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_stone",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_stone",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_stone"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_tiles",
+              "type": "node",
+              "output_type": "multioutput",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_tiles_color3",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_tiles_color3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_wallpaint",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_wallpaint",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_wallpaint"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_water",
+              "type": "node",
+              "output_type": "surfaceshader",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_water",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_water"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_waves",
+              "type": "node",
+              "output_type": "color3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_waves_color3",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_waves_color3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "legacy_wood",
+              "type": "node",
+              "output_type": "color3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_legacy_wood_color3",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_legacy_wood_color3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "norm2spherical",
+              "type": "node",
+              "output_type": "multioutput",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_norm2spherical",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_norm2spherical"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "transformnormal_w2t_vector3",
+              "type": "node",
+              "output_type": "vector3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_transformnormal_w2t_vector3",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_transformnormal_w2t_vector3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "util_noise2d_units",
+              "type": "node",
+              "output_type": "color3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_util_noise2d_units",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_util_noise2d_units"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "util_proc_to_norm",
+              "type": "node",
+              "output_type": "vector3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_util_proc_to_norm",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_util_proc_to_norm"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "util_sinewave",
+              "type": "node",
+              "output_type": "float",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_util_sinewave_float",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_util_sinewave_float"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "util_specklenoise",
+              "type": "node",
+              "output_type": "float",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_util_specklenoise_float",
+                  "type": "nodedef",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_util_specklenoise_float"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "util_wave",
+              "type": "node",
+              "output_type": "float",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_util_wave_float",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_util_wave_float"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "util_woodfactor",
+              "type": "node",
+              "output_type": "float",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_util_woodfactor_float",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_util_woodfactor_float"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "util_woodnoise",
+              "type": "node",
+              "output_type": "float",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_util_woodnoise_float",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_util_woodnoise_float"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "icon": "bi-collection"
+        },
+        {
+          "icon": "bi-key",
+          "name": "backface_util",
+          "type": "node",
+          "output_type": "color3",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "adsk:ND_backface_util",
+              "type": "nodedef",
+              "version": "1.0.1",
+              "children": [
+                {
+                  "icon": "bi-exclamation-diamond",
+                  "name": "Undefined",
+                  "target": "all",
+                  "type": "implementation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "glazing",
+          "type": "node",
+          "output_type": "surfaceshader",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "adsk:ND_adsk_glazing",
+              "type": "nodedef",
+              "version": "1.0.1",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "adsk:NG_adsk_glazing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "layered",
+          "type": "node",
+          "output_type": "surfaceshader",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "adsk:ND_adsk_layered",
+              "type": "nodedef",
+              "version": "1.0.1",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "adsk:NG_adsk_layered"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "metal",
+          "type": "node",
+          "output_type": "surfaceshader",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "adsk:ND_adsk_metal",
+              "type": "nodedef",
+              "version": "1.0.1",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "adsk:NG_adsk_metal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "opaque",
+          "type": "node",
+          "output_type": "surfaceshader",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "adsk:ND_adsk_opaque",
+              "type": "nodedef",
+              "version": "1.0.1",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "adsk:NG_adsk_opaque"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "organization",
+          "type": "nodegroup",
+          "children": [
+            {
+              "icon": "bi-key",
+              "name": "token_node",
+              "type": "node",
+              "output_type": "color3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "adsk:ND_token_node",
+                  "type": "nodedef",
+                  "children": [
+                    {
+                      "icon": "bi-exclamation-diamond",
+                      "name": "Undefined",
+                      "target": "all",
+                      "type": "implementation"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "icon": "bi-collection"
+        },
+        {
+          "name": "texture2d",
+          "type": "nodegroup",
+          "children": [
+            {
+              "icon": "bi-key",
+              "name": "Usd_bitmap",
+              "type": "node",
+              "output_type": "float",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_usd_bitmap_color3",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_usd_bitmap_color3"
+                    }
+                  ]
+                },
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_usd_bitmap_float",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_usd_bitmap_float"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "Usd_normal_map",
+              "type": "node",
+              "output_type": "vector3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_Usd_normal_map",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_Usd_normal_map"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "bitmap",
+              "type": "node",
+              "output_type": "color3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "adsk:ND_adsk_bitmap_color3",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "adsk:NG_adsk_bitmap_color3"
+                    }
+                  ]
+                },
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "adsk:ND_adsk_bitmap_color4",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "adsk:NG_adsk_bitmap_color4"
+                    }
+                  ]
+                },
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "adsk:ND_adsk_bitmap_float",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "adsk:NG_adsk_bitmap_float"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "bitmap_remap",
+              "type": "node",
+              "output_type": "float",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "adsk:ND_adsk_bitmap_remap_float",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "adsk:NG_adsk_bitmap_remap_float"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "fractal2d_max8",
+              "type": "node",
+              "output_type": "float",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_fractal2d_max8_float",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_fractal2d_max8_float"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "height_map",
+              "type": "node",
+              "output_type": "vector3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "adsk:ND_adsk_height_map",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "adsk:NG_adsk_height_map"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "normal_map",
+              "type": "node",
+              "output_type": "vector3",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "adsk:ND_adsk_normal_map",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "adsk:NG_adsk_normal_map"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "turbulence2d",
+              "type": "node",
+              "output_type": "float",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_turbulence2d_max8_float",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_turbulence2d_max8_float"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "icon": "bi-collection"
+        },
+        {
+          "name": "texture3d",
+          "type": "nodegroup",
+          "children": [
+            {
+              "icon": "bi-key",
+              "name": "fractal3d_max8",
+              "type": "node",
+              "output_type": "float",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_fractal3d_max8_float",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_fractal3d_max8_float"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "turbulence3d",
+              "type": "node",
+              "output_type": "float",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_turbulence3d_max8_float",
+                  "type": "nodedef",
+                  "version": "0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_turbulence3d_max8_float"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "wood3d",
+              "type": "node",
+              "output_type": "multioutput",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_wood3d",
+                  "type": "nodedef",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_wood3d"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "icon": "bi-collection"
+        },
+        {
+          "name": "translation",
+          "type": "nodegroup",
+          "children": [
+            {
+              "icon": "bi-key",
+              "name": "adsk:glazing_to_UsdPreviewSurface",
+              "type": "node",
+              "output_type": "multioutput",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_adsk_glazing_to_UsdPreviewSurface",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_adsk:glazing_to_UsdPreviewSurface"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "adsk:layered_to_UsdPreviewSurface",
+              "type": "node",
+              "output_type": "multioutput",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_adsk_layered_to_UsdPreviewSurface",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_adsk:layered_to_UsdPreviewSurface"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "adsk:metal_to_UsdPreviewSurface",
+              "type": "node",
+              "output_type": "multioutput",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_adsk_metal_to_UsdPreviewSurface",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_adsk:metal_to_UsdPreviewSurface"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "adsk:opaque_to_UsdPreviewSurface",
+              "type": "node",
+              "output_type": "multioutput",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_adsk_opaque_to_UsdPreviewSurface",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_adsk:opaque_to_UsdPreviewSurface"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "bi-key",
+              "name": "adsk:transparent_to_UsdPreviewSurface",
+              "type": "node",
+              "output_type": "multioutput",
+              "linkurl": "",
+              "children": [
+                {
+                  "icon": "bi-usb-plug",
+                  "name": "ND_adsk_transparent_to_UsdPreviewSurface",
+                  "type": "nodedef",
+                  "version": "1.0.1",
+                  "children": [
+                    {
+                      "target": "all",
+                      "type": "nodegraph",
+                      "icon": "bi-diagram-3",
+                      "name": "NG_adsk:transparent_to_UsdPreviewSurface"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "icon": "bi-collection"
+        },
+        {
+          "icon": "bi-key",
+          "name": "transparent",
+          "type": "node",
+          "output_type": "surfaceshader",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "adsk:ND_adsk_transparent",
+              "type": "nodedef",
+              "version": "1.0.1",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "adsk:NG_adsk_transparent"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_bump",
+          "type": "node",
+          "output_type": "vector3",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_bump",
+              "type": "nodedef",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_wood3d_util_bump"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_earlywood_color",
+          "type": "node",
+          "output_type": "color3",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_earlywood_color",
+              "type": "nodedef",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_wood3d_util_earlywood_color"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_fiber_cosine_distortion",
+          "type": "node",
+          "output_type": "vector3",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_fiber_cosine_distortion",
+              "type": "nodedef",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_wood3d_util_fiber_cosine_distortion"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_fiber_perlin_distortion",
+          "type": "node",
+          "output_type": "vector3",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_fiber_perlin_distortion",
+              "type": "nodedef",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_wood3d_util_fiber_perlin_distortion"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_growth_perlin",
+          "type": "node",
+          "output_type": "float",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_growth_perlin",
+              "type": "nodedef",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_wood3d_util_growth_perlin"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_hashnoise2d",
+          "type": "node",
+          "output_type": "vector3",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_hashnoise2d_vector3",
+              "type": "nodedef",
+              "children": [
+                {
+                  "icon": "bi-exclamation-diamond",
+                  "name": "Undefined",
+                  "target": "all",
+                  "type": "implementation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_latewood_color",
+          "type": "node",
+          "output_type": "color3",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_latewood_color",
+              "type": "nodedef",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_wood3d_util_latewood_color"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_noise1d",
+          "type": "node",
+          "output_type": "float",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_noise1d_float",
+              "type": "nodedef",
+              "children": [
+                {
+                  "icon": "bi-exclamation-diamond",
+                  "name": "Undefined",
+                  "target": "all",
+                  "type": "implementation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_perlin_color",
+          "type": "node",
+          "output_type": "color3",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_perlin_color",
+              "type": "nodedef",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_wood3d_util_perlin_color"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_pore_impulse",
+          "type": "node",
+          "output_type": "float",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_pore_impulse",
+              "type": "nodedef",
+              "children": [
+                {
+                  "icon": "bi-exclamation-diamond",
+                  "name": "Undefined",
+                  "target": "all",
+                  "type": "implementation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_ratio",
+          "type": "node",
+          "output_type": "float",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_ratio",
+              "type": "nodedef",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_wood3d_util_ratio"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_ray",
+          "type": "node",
+          "output_type": "multioutput",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_ray",
+              "type": "nodedef",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_wood3d_util_ray"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "wood3d_util_roughness",
+          "type": "node",
+          "output_type": "float",
+          "linkurl": "",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_wood3d_util_roughness",
+              "type": "nodedef",
+              "children": [
+                {
+                  "target": "all",
+                  "type": "nodegraph",
+                  "icon": "bi-diagram-3",
+                  "name": "NG_wood3d_util_roughness"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "targets": ""
+}

@@ -315,7 +315,7 @@
           <div class="container-fluid p-3">
         <nav class="navbar navbar-expand-lg rounded mb-3 px-3">
             <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
-                <span class="navbar-brand mb-0 h5">Tree Visualizer</span>
+                <span id="tree_title" class="navbar-brand mb-0 h5">Tree Visualizer</span>
                 <div class="d-flex gap-2">
                     <button id="helpBtn" class="btn btn-outline-secondary btn-sm" title="Keyboard shortcuts"
                         data-bs-toggle="modal" data-bs-target="#helpModal">
@@ -394,7 +394,7 @@
                                     id="clearSearchBtn">Clear</button>
                             </div>
                             <div id="searchResultsInfo" class="text-muted"></div>
-                            
+
                             <div class="form-check form-switch mt-2">
                                 <input class="form-check-input" type="checkbox" id="expandMatchesCheck" checked>
                                 <label class="form-check-label" for="expandMatchesCheck">Expand matches</label>
@@ -430,11 +430,20 @@
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
+                            <div class="btn-group me-2" role="group">
+                                <button type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="bi bi-collection"></span> Libraries
+                                </button>
+                                <ul class="dropdown-menu" id="sourceReferenceDropdown">
+                                    <!-- Dropdown items will be populated by JavaScript -->
+                                </ul>
+                            </div>
                             <button type="button" class="btn btn-outline-secondary btn-sm"
                                 onclick="document.getElementById('jsonFileInput').click();">
                                 <i class="bi bi-folder2-open"></i>
                             </button>
-                            <span id="selectedFileName" class="ms-2 text-muted"></span>
+                            <!-- <span id="selectedFileName" class="ms-2 text-muted"></span> -->
                             <input class="form-control" type="file" id="jsonFileInput" accept=".json"
                                 style="display: none;">
                             <button id="loadJsonBtn" class="btn btn-outline-secondary btn-sm">
@@ -460,227 +469,319 @@
                     <div class="card-body">
                         <div class="mb-2 d-flex flex-wrap gap-2">
                             <span class="d-inline-flex align-items-center px-2 py-1 rounded border" ">
-                                <span style="display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: #0d6efd; margin-right: 6px; border: 2px solid #0d6efd; vertical-align: middle;"></span>
-                                <span class="text-muted" style="font-size: 0.9em;">Collapsed</span>
+                                <span style=" display: inline-block; width: 18px; height: 18px; border-radius: 50%;
+                                background: #0d6efd; margin-right: 6px; border: 2px solid #0d6efd; vertical-align:
+                                middle;"></span>
+                            <span class="text-muted" style="font-size: 0.9em;">Collapsed</span>
                             </span>
                             <span class="d-inline-flex align-items-center px-2 py-1 rounded border" ">
-                                <span style="display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: #198754; margin-right: 6px; border: 2px solid #198754; vertical-align: middle;"></span>
-                                <span class="text-muted" style="font-size: 0.9em;">Expanded</span>
+                                <span style=" display: inline-block; width: 18px; height: 18px; border-radius: 50%;
+                                background: #198754; margin-right: 6px; border: 2px solid #198754; vertical-align:
+                                middle;"></span>
+                            <span class="text-muted" style="font-size: 0.9em;">Expanded</span>
                             </span>
                             <span class="d-inline-flex align-items-center px-2 py-1 rounded border" ">
-                                <span style="display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 2px solid #6c757d; vertical-align: middle; margin-right: 6px;"></span>
-                                <span class="text-muted" style="font-size: 0.9em;">Leaf</span>
+                                <span style=" display: inline-block; width: 18px; height: 18px; border-radius: 50%;
+                                background: #fff; border: 2px solid #6c757d; vertical-align: middle; margin-right:
+                                6px;"></span>
+                            <span class="text-muted" style="font-size: 0.9em;">Leaf</span>
                             </span>
                             <span class="d-inline-flex align-items-center px-2 py-1 rounded border" ">
-                                <span style="display: inline-block; width: 24px; height: 16px; border: 4px solid #145a32; background: none; vertical-align: middle; border-radius: 4px; margin-right: 6px;"></span>
-                                <span class="text-muted" style="font-size: 0.9em;">Search match</span>
+                                <span style=" display: inline-block; width: 24px; height: 16px; border: 4px solid
+                                #145a32; background: none; vertical-align: middle; border-radius: 4px; margin-right:
+                                6px;"></span>
+                            <span class="text-muted" style="font-size: 0.9em;">Search match</span>
                             </span>
                             <span class="d-inline-flex align-items-center px-2 py-1 rounded border">
-                                <span style="display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: none; border: 4px solid #0d6efd; margin-right: 6px; vertical-align: middle;"></span>
+                                <span
+                                    style="display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: none; border: 4px solid #0d6efd; margin-right: 6px; vertical-align: middle;"></span>
                                 <span class="text-muted" style="font-size: 0.9em;">Selected match</span>
                             </span>
                         </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Help Modal -->
-    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="helpModalLabel">Keyboard Shortcuts</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6>Navigation</h6>
-                            <ul class="list-unstyled">
-                                <li><kbd>F</kbd> - Fit to view (current)</li>
-                                <li><kbd>G</kbd> - Fit all to view</li>
-                                <li><kbd>/</kbd> - Focus search</li>
-                            </ul>
-                            <h6>Node Navigation</h6>
-                            <ul class="list-unstyled">
-                                <li><kbd><i class="bi bi-arrow-up"></i></kbd> or <kbd>W</kbd> - Navigate to parent</li>
-                                <li><kbd><i class="bi bi-arrow-down"></i></kbd> or <kbd>S</kbd> - Navigate to first child</li>
-                                <li><kbd><i class="bi bi-arrow-left"></i></kbd> or <kbd>A</kbd> - Previous sibling</li>
-                                <li><kbd><i class="bi bi-arrow-right"></i></kbd> or <kbd>D</kbd> - Next sibling</li>
-                                <li><kbd>Home</kbd> - First sibling</li>
-                                <li><kbd>End</kbd> - Last sibling</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h6>Tree Controls</h6>
-                            <ul class="list-unstyled">
-                                <li><kbd>E</kbd> - Expand all</li>
-                                <li><kbd>C</kbd> - Collapse all</li>
-                                <li><kbd>O</kbd> - Toggle orientation</li>
-                                <li><kbd>T</kbd> - Toggle theme</li>
-                            </ul>
-                        </div>
                     </div>
-                    <hr>
-                    <h6>Mouse Controls</h6>
-                    <ul class="list-unstyled">
-                        <li><strong>Click node:</strong> Expand/collapse or select</li>
-                        <li><strong>Click label:</strong> Same as clicking node</li>
-                        <li><strong>Drag:</strong> Pan the tree</li>
-                        <li><strong>Scroll:</strong> Zoom in/out</li>
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="TreeVisualizer.js"></script>
-    <script>
-        // Sample data with large tree
-        const sampleData = {
-            name: 'Photographs',
-            children: [
-                {
-                    name: 'Child 1',
-                    children: [
-                        {
-                            name: 'Grandchild 1',
-                            imageurl: "car.png",
-                            linkurl: "",
-                            children: []
-                        },
-                        {
-                            name: 'Grandchild 2',
-                            imageurl: "car.png",
-                            linkurl: "",
-                            children: []
-                        }
-                    ]
-                },
-                {
-                    name: 'Child 2',
-                    children: [
-                        {
-                            name: 'DDD 1',
-                            imageurl: "car.png",
-                            linkurl: "",
-                            children: []
-                        },
-                        {
-                            name: 'DDD 2',
-                            imageurl: "car.png",
-                            linkurl: "",
-                            children: []
-                        }
-                    ]
+        <!-- Help Modal -->
+        <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="helpModalLabel">Keyboard Shortcuts</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Navigation</h6>
+                                <ul class="list-unstyled">
+                                    <li><kbd>F</kbd> - Fit to view (current)</li>
+                                    <li><kbd>G</kbd> - Fit all to view</li>
+                                    <li><kbd>/</kbd> - Focus search</li>
+                                </ul>
+                                <h6>Node Navigation</h6>
+                                <ul class="list-unstyled">
+                                    <li><kbd><i class="bi bi-arrow-up"></i></kbd> or <kbd>W</kbd> - Navigate to parent
+                                    </li>
+                                    <li><kbd><i class="bi bi-arrow-down"></i></kbd> or <kbd>S</kbd> - Navigate to first
+                                        child</li>
+                                    <li><kbd><i class="bi bi-arrow-left"></i></kbd> or <kbd>A</kbd> - Previous sibling
+                                    </li>
+                                    <li><kbd><i class="bi bi-arrow-right"></i></kbd> or <kbd>D</kbd> - Next sibling</li>
+                                    <li><kbd>Home</kbd> - First sibling</li>
+                                    <li><kbd>End</kbd> - Last sibling</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Tree Controls</h6>
+                                <ul class="list-unstyled">
+                                    <li><kbd>E</kbd> - Expand all</li>
+                                    <li><kbd>C</kbd> - Collapse all</li>
+                                    <li><kbd>O</kbd> - Toggle orientation</li>
+                                    <li><kbd>T</kbd> - Toggle theme</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <h6>Mouse Controls</h6>
+                        <ul class="list-unstyled">
+                            <li><strong>Click node:</strong> Expand/collapse or select</li>
+                            <li><strong>Click label:</strong> Same as clicking node</li>
+                            <li><strong>Drag:</strong> Pan the tree</li>
+                            <li><strong>Scroll:</strong> Zoom in/out</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="TreeVisualizer.js"></script>
+        <script>
+            // Sample data with large tree
+            const sampleData = {
+                name: 'Photographs',
+                children: [
+                    {
+                        name: 'Child 1',
+                        children: [
+                            {
+                                name: 'Grandchild 1',
+                                imageurl: "car.png",
+                                linkurl: "",
+                                children: []
+                            },
+                            {
+                                name: 'Grandchild 2',
+                                imageurl: "car.png",
+                                linkurl: "",
+                                children: []
+                            }
+                        ]
+                    },
+                    {
+                        name: 'Child 2',
+                        children: [
+                            {
+                                name: 'DDD 1',
+                                imageurl: "car.png",
+                                linkurl: "",
+                                children: []
+                            },
+                            {
+                                name: 'DDD 2',
+                                imageurl: "car.png",
+                                linkurl: "",
+                                children: []
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            for (let i = 0; i < 100; i++) {
+                sampleData.children[1].children[0].children.push({ name: `Great-Grandchild ${i + 1}`, imageurl: "car.png", linkurl: "" });
+                sampleData.children[0].children[0].children.push({ name: `Great-Grandchild ${i + 1}`, imageurl: "car.png", linkurl: "" });
+                if (i % 10 === 0) {
+                    sampleData.children[0].children.push({ name: `Child ${i / 10 + 1}`, imageurl: "car.png", linkurl: "" });
+                    sampleData.children[1].children.push({ name: `Child ${i / 10 + 1}`, imageurl: "car.png", linkurl: "" });
                 }
-            ]
-        };
-
-        for (let i = 0; i < 100; i++) {
-            sampleData.children[1].children[0].children.push({ name: `Great-Grandchild ${i + 1}`, imageurl: "car.png", linkurl: "" });
-            sampleData.children[0].children[0].children.push({ name: `Great-Grandchild ${i + 1}`, imageurl: "car.png", linkurl: "" });
-            if (i % 10 === 0) {
-                sampleData.children[0].children.push({ name: `Child ${i / 10 + 1}`, imageurl: "car.png", linkurl: "" });
-                sampleData.children[1].children.push({ name: `Child ${i / 10 + 1}`, imageurl: "car.png", linkurl: "" });
             }
-        }
-        for (let i = 0; i < 20; i++) {
-            sampleData.children[1].children.push({ name: `Grandchild ${i + 3}`, imageurl: "car.png", linkurl: "" });
-            sampleData.children[0].children.push({ name: `Grandchild ${i + 3}`, imageurl: "car.png", linkurl: "" });
-        }
-        for (let i = 0; i < 10; i++) {
-            sampleData.children[0].children = sampleData.children[0].children || [];
-            sampleData.children[0].children.push({ name: `Child ${i + 1}`, imageurl: "car.png", linkurl: "" });
-        }
+            for (let i = 0; i < 20; i++) {
+                sampleData.children[1].children.push({ name: `Grandchild ${i + 3}`, imageurl: "car.png", linkurl: "" });
+                sampleData.children[0].children.push({ name: `Grandchild ${i + 3}`, imageurl: "car.png", linkurl: "" });
+            }
+            for (let i = 0; i < 10; i++) {
+                sampleData.children[0].children = sampleData.children[0].children || [];
+                sampleData.children[0].children.push({ name: `Child ${i + 1}`, imageurl: "car.png", linkurl: "" });
+            }
 
-        // Create new node names for each node starting with "node #".
-        sampleData.children.forEach((child, index) => {
-            child.name = `Node ${index + 1}`;
-            child.children.forEach((grandchild, gIndex) => {
-                grandchild.name = `Node ${index + 1}.${gIndex + 1}`;
-                if (!grandchild.children) {
-                    grandchild.children = [];
-                }
-                grandchild.children.forEach((greatGrandchild, ggIndex) => {
-                    greatGrandchild.name = `Node ${index + 1}.${gIndex + 1}.${ggIndex + 1}`;
+            // Create new node names for each node starting with "node #".
+            sampleData.children.forEach((child, index) => {
+                child.name = `Node ${index + 1}`;
+                child.children.forEach((grandchild, gIndex) => {
+                    grandchild.name = `Node ${index + 1}.${gIndex + 1}`;
+                    if (!grandchild.children) {
+                        grandchild.children = [];
+                    }
+                    grandchild.children.forEach((greatGrandchild, ggIndex) => {
+                        greatGrandchild.name = `Node ${index + 1}.${gIndex + 1}.${ggIndex + 1}`;
+                    });
                 });
             });
-        });
 
-        const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; // Instantiate tree
+            const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; // Instantiate tree
 
-        function getNodeColors(isDarkMode) {
-            return {
-                collapsedColor: isDarkMode ? '#28a745' : '#28a745',
-                expandedColor: isDarkMode ? '#007bff' : '#007bff',
-                leafColor: isDarkMode ? '#ffffff' : '#ffffff',
-                linkColor: isDarkMode ? '#ffffff' : '#002e5b',
-                labelBackgroundColor: isDarkMode ? '#343a40' : '#ffffff',
-                labelTextColor: isDarkMode ? '#ffffff' : '#000000',
-                labelBorderColor: isDarkMode ? 'rgba(0, 132, 228, 0.9)' : 'rgba(0, 132, 228, 0.9)',
-                highlightBorderColor: isDarkMode ? 'rgb(0, 100, 52)' : 'rgb(0, 124, 62)',
-                hoverColor: isDarkMode ? 'rgba(255, 255, 0, 0.8)' : 'rgba(255, 255, 0, 0.8)'
-            };
-        }
+            function getNodeColors(isDarkMode) {
+                return {
+                    collapsedColor: isDarkMode ? '#28a745' : '#28a745',
+                    expandedColor: isDarkMode ? '#007bff' : '#007bff',
+                    leafColor: isDarkMode ? '#ffffff' : '#ffffff',
+                    linkColor: isDarkMode ? '#ffffff' : '#002e5b',
+                    labelBackgroundColor: isDarkMode ? '#343a40' : '#ffffff',
+                    labelTextColor: isDarkMode ? '#ffffff' : '#000000',
+                    labelBorderColor: isDarkMode ? 'rgba(0, 132, 228, 0.9)' : 'rgba(0, 132, 228, 0.9)',
+                    highlightBorderColor: isDarkMode ? 'rgb(0, 100, 52)' : 'rgb(0, 124, 62)',
+                    hoverColor: isDarkMode ? 'rgba(255, 255, 0, 0.8)' : 'rgba(255, 255, 0, 0.8)'
+                };
+            }
 
-        let nodeColors = getNodeColors(isDarkMode);
-        let tree = new TreeVisualizer("chart-container", "tree_chart1", "zoomGroup", sampleData, nodeColors);
-
-        // Auto-load nodedef_introspection.json if it exists
-        fetch('nodedef_introspection.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+            let nodeColors = getNodeColors(isDarkMode);
+            let tree = new TreeVisualizer("chart-container", "tree_chart1", "zoomGroup", sampleData, nodeColors);
+            // Source reference files with UI names
+            const source_reference_files = [
+                {
+                    file: 'source_reference/nodedef_introspection_1_39_5.json',
+                    name: '1.39.5 Library'
+                },
+                {
+                    file: 'source_reference/nodedef_introspection_1_39_4.json',
+                    name: '1.39.4 Library'
+                },
+                {
+                    file: 'source_reference/nodedef_introspection_1_39_3.json',
+                    name: '1.39.3 Library'
+                },
+                {
+                    file: 'source_reference/nodedef_introspection_1_39_2.json',
+                    name: '1.39.2 Library'
+                },
+                {
+                    file: 'source_reference/nodedef_introspection_1_39_1.json',
+                    name: '1.39.1 Library'
+                },
+                {
+                    file: 'source_reference/nodedef_introspection_externalLibraries.json',
+                    name: 'External Libraries'
                 }
-                return response.json();
-            })
-            .then(jsonData => {
-                console.log('Auto-loaded nodedef_introspection.json');
-                jsonEditor.setValue(JSON.stringify(jsonData, null, 2));
-                tree.updateData(jsonData);
-                document.getElementById('searchResultsContainer').style.display = 'none';
-            })
-            .catch(error => {
-                console.log('nodedef_introspection.json not found or failed to load:', error.message);
-                // Fall back to sample data (already loaded)
+            ];
+
+            // Populate the source reference dropdown
+            function populateSourceReferenceDropdown() {
+                const dropdown = document.getElementById('sourceReferenceDropdown');
+                dropdown.innerHTML = '';
+
+                source_reference_files.forEach(item => {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.className = 'dropdown-item';
+                    link.href = '#';
+                    link.textContent = item.name; // Use the UI name instead of filename
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        loadSourceReferenceFile(item.file, item.name);
+                    });
+                    listItem.appendChild(link);
+                    dropdown.appendChild(listItem);
+                });
+            }
+
+            // Function to load a source reference file
+            function loadSourceReferenceFile(filePath, displayName) {
+                fetch(filePath)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(jsonData => {
+                        console.log('Loaded ' + filePath);
+                        jsonEditor.setValue(JSON.stringify(jsonData, null, 2));
+                        tree.updateData(jsonData);
+                        document.getElementById('searchResultsContainer').style.display = 'none';
+
+                        // Update the selected file name display with the UI name
+                        //document.getElementById('selectedFileName').textContent = displayName || filePath.split('/').pop();
+                    })
+                    .catch(error => {
+                        console.error('Failed to load ' + filePath + ':', error.message);
+                        alert('Error loading file: ' + filePath + '\n' + error.message);
+                    });
+            }
+
+            // Initialize the dropdown
+            populateSourceReferenceDropdown();
+
+            // Auto-load the first entry on page load
+            let startupFile = source_reference_files[0]; // Use the first file in the list
+            loadSourceReferenceFile(startupFile.file, startupFile.name);
+
+
+            // Auto-load nodedef_introspection.json if it exists
+            /* let startupFile = 'source_reference/nodedef_introspection_1_39_4.json'
+            fetch(startupFile)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(jsonData => {
+                    console.log('Auto-loaded ' + startupFile);
+                    jsonEditor.setValue(JSON.stringify(jsonData, null, 2));
+                    tree.updateData(jsonData);
+                    document.getElementById('searchResultsContainer').style.display = 'none';
+                })
+                .catch(error => {
+                    console.log(startupFile + ' not found or failed to load:', error.message);
+                    // Fall back to sample data (already loaded)
+                }); */
+
+            // Initialize CodeMirror for JSON syntax highlighting
+            let jsonEditor = CodeMirror.fromTextArea(document.getElementById('jsonTextArea'), {
+                mode: { name: "javascript", json: true },
+                theme: isDarkMode ? "material" : "default",
+                lineNumbers: true,
+                lineWrapping: true,
+                autoCloseBrackets: true,
+                matchBrackets: true,
+                indentUnit: 2,
+                tabSize: 2,
+                foldGutter: true,
+                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
             });
 
-        // Initialize CodeMirror for JSON syntax highlighting
-        let jsonEditor = CodeMirror.fromTextArea(document.getElementById('jsonTextArea'), {
-            mode: { name: "javascript", json: true },
-            theme: isDarkMode ? "material" : "default",
-            lineNumbers: true,
-            lineWrapping: true,
-            autoCloseBrackets: true,
-            matchBrackets: true,
-            indentUnit: 2,
-            tabSize: 2,
-            foldGutter: true,
-            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
-        });
-
-        function showReferenceModal(url) {
-            let modal = document.getElementById('referenceModal');
-            if (modal) {
-                // If modal already exists, just update the URL
-                let iframe = document.getElementById("referenceModalIframe");
-                if (iframe) {
-                    iframe.src = url; // Update the iframe source
-                } else {
-                    console.error("Iframe not found in modal.");
+            function showReferenceModal(url) {
+                let modal = document.getElementById('referenceModal');
+                if (modal) {
+                    // If modal already exists, just update the URL
+                    let iframe = document.getElementById("referenceModalIframe");
+                    if (iframe) {
+                        iframe.src = url; // Update the iframe source
+                    } else {
+                        console.error("Iframe not found in modal.");
+                    }
                 }
-            }
-            else if (!modal) {
-                modal = document.createElement('div');
-                modal.className = 'modal fade';
-                modal.id = 'referenceModal';
-                modal.tabIndex = -1;
-                modal.innerHTML = `
+                else if (!modal) {
+                    modal = document.createElement('div');
+                    modal.className = 'modal fade';
+                    modal.id = 'referenceModal';
+                    modal.tabIndex = -1;
+                    modal.innerHTML = `
                     <div class="modal-dialog" style="max-width: 70vw; max-height: 70vh; margin-top: 20vh;">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -694,415 +795,417 @@
                     </div>
                     </div>
                 `;
-                document.body.appendChild(modal);
-            }
-
-            const bsModal = new bootstrap.Modal(modal);
-            bsModal.show();
-        }
-
-
-        function updateInfoArea(path) {
-
-            let selectedNodeInfo = document.getElementById('selectedNodeInfo');
-            selectedNodeInfo.innerHTML = ''; // Clear the info area
-
-            if (!path) {
-                return;
-            }
-
-            // Find item in sampleData based on path using recursion
-            const pathParts = path.split('/');
-            function findNodeByPath(node, parts, idx) {
-                if (!node || idx >= parts.length) return node;
-                if (node.name !== parts[idx]) return null;
-                if (idx === parts.length - 1) return node;
-                if (!Array.isArray(node.children)) return null;
-                for (const child of node.children) {
-                    const found = findNodeByPath(child, parts, idx + 1);
-                    if (found) return found;
+                    document.body.appendChild(modal);
                 }
-                document.body.appendChild(modal);
 
-                // Check to see if the modal loaded and provide a fallback if it didn't
-                setTimeout(() => {
-                    const iframe = document.getElementById('referenceModalIframe');
-                    if (iframe) {
-                        iframe.addEventListener('load', function() {
-                            let crossOrigin = false;
-                            try {
-                                // Try to access the iframe's contentDocument
-                                const doc = this.contentDocument;
-                                const innerIframe = doc ? doc.querySelector('iframe') : null;
-                                if (innerIframe) {
-                                    innerIframe.style.width = '100%';
-                                    innerIframe.style.height = '100%';
-                                    innerIframe.style.border = 'none';
-                                }
-                            } catch (e) {
-                                // Cross-origin iframes cannot be accessed
-                                crossOrigin = true;
-                            }
-                            if (crossOrigin) {
-                                // Open the URL in a new tab and close the modal
-                                window.open(this.src, '_blank');
-                                const modalEl = document.getElementById('referenceModal');
-                                if (modalEl) {
-                                    const bsModal = bootstrap.Modal.getInstance(modalEl);
-                                    if (bsModal) bsModal.hide();
-                                }
-                            }
-                        });
+                const bsModal = new bootstrap.Modal(modal);
+                bsModal.show();
+            }
+
+
+            function updateInfoArea(path) {
+
+                let selectedNodeInfo = document.getElementById('selectedNodeInfo');
+                selectedNodeInfo.innerHTML = ''; // Clear the info area
+
+                if (!path) {
+                    return;
+                }
+
+                // Find item in sampleData based on path using recursion
+                const pathParts = path.split('/');
+                function findNodeByPath(node, parts, idx) {
+                    if (!node || idx >= parts.length) return node;
+                    if (node.name !== parts[idx]) return null;
+                    if (idx === parts.length - 1) return node;
+                    if (!Array.isArray(node.children)) return null;
+                    for (const child of node.children) {
+                        const found = findNodeByPath(child, parts, idx + 1);
+                        if (found) return found;
                     }
-                }, 0);
-            }
+                    document.body.appendChild(modal);
 
-            // Get current data from the tree
-            //const text = JSON.stringify(tree.root.data, null, 2);
-            let currentData = tree.root.data; // Update sampleData with the current tree data
-            const currentNode = findNodeByPath(currentData, pathParts, 0);
-            if (!currentNode) {
-                console.warn(`Node not found for path: ${path}`);
-                return;
-            }
-            //console.log("Path parts:", pathParts, "Current node:", currentNode);
-
-            // For each field in currentNode, add a new div with the field name and value
-            // If it's 'imageurl' or 'linkurl', create a link or image element
-            icon = ''
-            // 'icon' key exists get it
-            if (currentNode.icon) {
-                icon = `<i class="bi ${currentNode.icon}"></i> `;
-            }
-            selectedNodeInfo.innerHTML += `<div>${icon}<strong>${currentNode.name}</strong></div>`;
-            let skipKeys = ['children', 'icon', 'name'];
-            for (let key in currentNode) {
-                if (key === 'imageurl' && currentNode[key]) {
-                    let label = 'Preview'; // Rename key for display
-                    selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> <img src="${currentNode[key]}" alt="Node Image" loading="lazy" class="img-fluid mt-2" style="max-height: 200px; width: auto;" onerror="this.onerror=null;this.src='images/no_image.png';"></div>`;
+                    // Check to see if the modal loaded and provide a fallback if it didn't
+                    setTimeout(() => {
+                        const iframe = document.getElementById('referenceModalIframe');
+                        if (iframe) {
+                            iframe.addEventListener('load', function () {
+                                let crossOrigin = false;
+                                try {
+                                    // Try to access the iframe's contentDocument
+                                    const doc = this.contentDocument;
+                                    const innerIframe = doc ? doc.querySelector('iframe') : null;
+                                    if (innerIframe) {
+                                        innerIframe.style.width = '100%';
+                                        innerIframe.style.height = '100%';
+                                        innerIframe.style.border = 'none';
+                                    }
+                                } catch (e) {
+                                    // Cross-origin iframes cannot be accessed
+                                    crossOrigin = true;
+                                }
+                                if (crossOrigin) {
+                                    // Open the URL in a new tab and close the modal
+                                    window.open(this.src, '_blank');
+                                    const modalEl = document.getElementById('referenceModal');
+                                    if (modalEl) {
+                                        const bsModal = bootstrap.Modal.getInstance(modalEl);
+                                        if (bsModal) bsModal.hide();
+                                    }
+                                }
+                            });
+                        }
+                    }, 0);
                 }
-                else if (key === 'linkurl' && currentNode[key]) {
-                    selectedNodeInfo.innerHTML += `
+
+                // Get current data from the tree
+                //const text = JSON.stringify(tree.root.data, null, 2);
+                let currentData = tree.root.data; // Update sampleData with the current tree data
+                const currentNode = findNodeByPath(currentData, pathParts, 0);
+                if (!currentNode) {
+                    console.warn(`Node not found for path: ${path}`);
+                    return;
+                }
+                //console.log("Path parts:", pathParts, "Current node:", currentNode);
+
+                // For each field in currentNode, add a new div with the field name and value
+                // If it's 'imageurl' or 'linkurl', create a link or image element
+                icon = ''
+                // 'icon' key exists get it
+                if (currentNode.icon) {
+                    icon = `<i class="bi ${currentNode.icon}"></i> `;
+                }
+                selectedNodeInfo.innerHTML += `<div>${icon}<strong>${currentNode.name}</strong></div>`;
+                let skipKeys = ['children', 'icon', 'name'];
+                for (let key in currentNode) {
+                    if (key === 'imageurl' && currentNode[key]) {
+                        let label = 'Preview'; // Rename key for display
+                        selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> <img src="${currentNode[key]}" alt="Node Image" loading="lazy" class="img-fluid mt-2" style="max-height: 200px; width: auto;" onerror="this.onerror=null;this.src='images/no_image.png';"></div>`;
+                    }
+                    else if (key === 'linkurl' && currentNode[key]) {
+                        selectedNodeInfo.innerHTML += `
                         <div>
                             <button type="button" class="btn mt-2 btn-outline-primary btn-sm" onclick="showReferenceModal('${currentNode[key]}')">Reference</button>
                         </div>
                     `;
+                    }
+                    else if (key && currentNode[key] && !skipKeys.includes(key)) // Skip keys that are not needed
+                    {
+                        let label = key.charAt(0).toUpperCase() + key.slice(1); // Capitalize first letter
+                        selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> ${currentNode[key] || 'N/A'}</div>`;
+                    }
+
                 }
-                else if (key && !skipKeys.includes(key)) // Skip keys that are not needed
-                {
-                    let label = key.charAt(0).toUpperCase() + key.slice(1); // Capitalize first letter
-                    selectedNodeInfo.innerHTML += `<div><strong>${label}:</strong> ${currentNode[key] || 'N/A'}</div>`;
-                }
-                
-            }
-        }
-
-        // Set click action
-        tree.setNodeClickAction(updateInfoArea);
-
-        // Add click handler to SVG background to clear highlight when clicking outside nodes
-        document.getElementById("tree_chart1").addEventListener("click", function (event) {
-            // Only trigger if the click is directly on the SVG, not on a node (which stops propagation)
-            if (event.target === this) {
-                tree.clearHighlights();
-                updateInfoArea(null);
-            }
-        }); // Add 'f' key to call fit to view and other keyboard shortcuts
-        document.addEventListener('keydown', function (event) {
-            // Prevent shortcuts when typing in input fields
-            if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA' ||
-                event.target.classList.contains('CodeMirror')) {
-                return;
             }
 
-            switch (event.key.toLowerCase()) {
-                case 'f':
-                    tree.fitToView(false);
-                    break;
-                case 'g': // Shift+F for fit all
-                    tree.fitToView(true);
-                    break;
-                case 'e':
-                    tree.performExpandAll();
-                    break;
-                case 'c':
-                    tree.performCollapseAll();
-                    break;
-                case 'o':
-                    document.getElementById("toggleOrientationBtn").click();
-                    break;
-                case 't':
-                    document.getElementById("toggleDarkModeBtn").click();
-                    break;
-                /* case 'escape':
+            // Set click action
+            tree.setNodeClickAction(updateInfoArea);
+
+            // Add click handler to SVG background to clear highlight when clicking outside nodes
+            document.getElementById("tree_chart1").addEventListener("click", function (event) {
+                // Only trigger if the click is directly on the SVG, not on a node (which stops propagation)
+                if (event.target === this) {
                     tree.clearHighlights();
                     updateInfoArea(null);
-                    break; */
-                case '/':
-                    event.preventDefault();
-                    document.getElementById('searchInput').focus();
-                    break;
-                case 'arrowup':
-                case 'w':
-                    event.preventDefault();
-                    tree.navigateToParent();
-                    break;
-                case 'arrowdown':
-                case 's':
-                    event.preventDefault();
-                    tree.navigateToFirstChild();
-                    break;
-                case 'arrowleft':
-                case 'a':
-                    event.preventDefault();
-                    tree.navigateToPreviousSibling();
-                    break;
-                case 'arrowright':
-                case 'd':
-                    event.preventDefault();
-                    tree.navigateToNextSibling();
-                    break;
-                case 'home':
-                    event.preventDefault();
-                    tree.navigateToFirstSibling();
-                    break;
-                case 'end':
-                    event.preventDefault();
-                    tree.navigateToLastSibling();
-                    break;
-            }
-        });
-
-        // Check for dark mode and set body to dark / light using boostrap 5.3.2 tag
-        let chartBackgroundDarkColor = "rgb(50, 55, 62)"; // Dark mode background color
-        let chartBackgroundLightColor = "rgb(198, 223, 247)"; // Light mode background color
-        let chartBackgroundColor = chartBackgroundDarkColor;
-        if (isDarkMode) {
-            document.body.setAttribute('data-bs-theme', 'dark');
-            chartBackgroundColor = chartBackgroundDarkColor;
-        } else {
-            document.body.setAttribute('data-bs-theme', 'light');
-            chartBackgroundColor = chartBackgroundLightColor;
-        }
-
-        // Toggle dark mode button functionality
-        const toggleDarkModeBtn = document.getElementById('toggleDarkModeBtn');
-        const darkModeIcon = document.getElementById('darkModeIcon');
-        toggleDarkModeBtn.addEventListener('click', () => {
-            let isDarkMode = false;
-            if (document.body.getAttribute('data-bs-theme') === 'dark') {
-                document.body.setAttribute('data-bs-theme', 'light');
-                chartBackgroundColor = chartBackgroundLightColor;
-                darkModeIcon.className = 'bi bi-moon';
-                jsonEditor.setOption("theme", "default");
-            } else {
-                document.body.setAttribute('data-bs-theme', 'dark');
-                chartBackgroundColor = chartBackgroundDarkColor
-                darkModeIcon.className = 'bi bi-sun';
-                isDarkMode = true;
-                jsonEditor.setOption("theme", "material");
-            }
-            // Reapply background color to the chart
-            const tree_chart1 = document.getElementById("tree_chart1");
-            tree_chart1.style.backgroundColor = chartBackgroundColor;
-            tree.updateChartColors(getNodeColors(isDarkMode));
-        });
-
-        const tree_chart1 = document.getElementById("tree_chart1");
-        tree_chart1.style.backgroundColor = chartBackgroundColor;
-
-        // Controls
-        document.getElementById("expandAllBtn").addEventListener("click", () => {
-            tree.performExpandAll();
-        });
-
-        document.getElementById("collapseAllBtn").addEventListener("click", () => {
-            tree.performCollapseAll();
-        });
-
-        document.getElementById("fitViewBtn").addEventListener("click", () => {
-            tree.fitToView(false);
-        });
-
-        document.getElementById("fitAllBtn").addEventListener("click", () => {
-            tree.fitToView(true);
-        });
-
-        document.getElementById("toggleOrientationBtn").addEventListener("click", () => {
-            tree.toggleOrientation();
-            const orientationIcon = document.getElementById('orientationIcon');
-            const orientationBtn = document.getElementById('toggleOrientationBtn');
-
-            if (tree.isVertical) {
-                orientationIcon.className = 'bi bi-arrow-down';
-                orientationBtn.innerHTML = '<span id="orientationIcon" class="bi bi-arrow-down"></span> Vertical';
-            } else {
-                orientationIcon.className = 'bi bi-arrow-right';
-                orientationBtn.innerHTML = '<span id="orientationIcon" class="bi bi-arrow-right"></span> Horizontal';
-            }
-        });
-
-        // Navigation button event listeners
-        document.getElementById("navParentBtn").addEventListener("click", () => {
-            tree.navigateToParent();
-        });
-
-        document.getElementById("navPrevSiblingBtn").addEventListener("click", () => {
-            tree.navigateToPreviousSibling();
-        });
-
-        document.getElementById("navNextSiblingBtn").addEventListener("click", () => {
-            tree.navigateToNextSibling();
-        });
-
-        document.getElementById("navChildBtn").addEventListener("click", () => {
-            tree.navigateToFirstChild();
-        });
-
-        // Export functionality
-        document.getElementById("exportSvgBtn").addEventListener("click", () => {
-            tree.exportAsSVG();
-        });
-
-        document.getElementById("exportPngBtn").addEventListener("click", () => {
-            tree.exportAsPNG();
-        });
-
-
-        document.getElementById("saveGraphToText").addEventListener("click", () => {
-            const text = JSON.stringify(tree.root.data, null, 2);
-            // Update JSON editor with the current tree data
-            jsonEditor.setValue(text);
-            // Scroll to end of the editor
-            jsonEditor.setCursor(jsonEditor.lineCount(), 0);
-        });
-
-        document.getElementById("saveGraphToFile").addEventListener("click", () => {
-            const text = JSON.stringify(tree.root.data, null, 2);
-            // Create a blob and download it as a file
-            const blob = new Blob([text], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'tree_data.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        });
-
-        // JSON file upload handler
-        document.getElementById('jsonFileInput').addEventListener('change', function (event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                try {
-                    const jsonData = JSON.parse(e.target.result);
-                    jsonEditor.setValue(JSON.stringify(jsonData, null, 2));
-                } catch (error) {
-                    alert('Error parsing JSON file: ' + error.message);
                 }
-            };
-            reader.readAsText(file);
-        });
-
-        // Load JSON button handler
-        document.getElementById('loadJsonBtn').addEventListener('click', function () {
-            try {
-                const jsonText = jsonEditor.getValue();
-                if (!jsonText.trim()) {
-                    alert('Please enter or upload JSON data');
+            }); // Add 'f' key to call fit to view and other keyboard shortcuts
+            document.addEventListener('keydown', function (event) {
+                // Prevent shortcuts when typing in input fields
+                if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA' ||
+                    event.target.classList.contains('CodeMirror')) {
                     return;
                 }
 
-                const jsonData = JSON.parse(jsonText);
-                tree.updateData(jsonData);
-                document.getElementById('searchResultsContainer').style.display = 'none';
-            } catch (error) {
-                alert('Error parsing JSON: ' + error.message);
+                switch (event.key.toLowerCase()) {
+                    case 'f':
+                        tree.fitToView(false);
+                        break;
+                    case 'g': // Shift+F for fit all
+                        tree.fitToView(true);
+                        break;
+                    case 'e':
+                        tree.performExpandAll();
+                        break;
+                    case 'c':
+                        tree.performCollapseAll();
+                        break;
+                    case 'o':
+                        document.getElementById("toggleOrientationBtn").click();
+                        break;
+                    case 't':
+                        document.getElementById("toggleDarkModeBtn").click();
+                        break;
+                    /* case 'escape':
+                        tree.clearHighlights();
+                        updateInfoArea(null);
+                        break; */
+                    case '/':
+                        event.preventDefault();
+                        document.getElementById('searchInput').focus();
+                        break;
+                    case 'arrowup':
+                    case 'w':
+                        event.preventDefault();
+                        tree.navigateToParent();
+                        break;
+                    case 'arrowdown':
+                    case 's':
+                        event.preventDefault();
+                        tree.navigateToFirstChild();
+                        break;
+                    case 'arrowleft':
+                    case 'a':
+                        event.preventDefault();
+                        tree.navigateToPreviousSibling();
+                        break;
+                    case 'arrowright':
+                    case 'd':
+                        event.preventDefault();
+                        tree.navigateToNextSibling();
+                        break;
+                    case 'home':
+                        event.preventDefault();
+                        tree.navigateToFirstSibling();
+                        break;
+                    case 'end':
+                        event.preventDefault();
+                        tree.navigateToLastSibling();
+                        break;
+                }
+            });
+
+            // Check for dark mode and set body to dark / light using boostrap 5.3.2 tag
+            let chartBackgroundDarkColor = "rgb(50, 55, 62)"; // Dark mode background color
+            let chartBackgroundLightColor = "rgb(198, 223, 247)"; // Light mode background color
+            let chartBackgroundColor = chartBackgroundDarkColor;
+            if (isDarkMode) {
+                document.body.setAttribute('data-bs-theme', 'dark');
+                chartBackgroundColor = chartBackgroundDarkColor;
+            } else {
+                document.body.setAttribute('data-bs-theme', 'light');
+                chartBackgroundColor = chartBackgroundLightColor;
             }
-        });
 
-        // Search functionality
-        function updateSearchResultsList(matches) {
-            const resultsList = document.getElementById('searchResultsList');
-            resultsList.innerHTML = '';
+            // Toggle dark mode button functionality
+            const toggleDarkModeBtn = document.getElementById('toggleDarkModeBtn');
+            const darkModeIcon = document.getElementById('darkModeIcon');
+            toggleDarkModeBtn.addEventListener('click', () => {
+                let isDarkMode = false;
+                if (document.body.getAttribute('data-bs-theme') === 'dark') {
+                    document.body.setAttribute('data-bs-theme', 'light');
+                    chartBackgroundColor = chartBackgroundLightColor;
+                    darkModeIcon.className = 'bi bi-moon';
+                    jsonEditor.setOption("theme", "default");
+                } else {
+                    document.body.setAttribute('data-bs-theme', 'dark');
+                    chartBackgroundColor = chartBackgroundDarkColor
+                    darkModeIcon.className = 'bi bi-sun';
+                    isDarkMode = true;
+                    jsonEditor.setOption("theme", "material");
+                }
+                // Reapply background color to the chart
+                const tree_chart1 = document.getElementById("tree_chart1");
+                tree_chart1.style.backgroundColor = chartBackgroundColor;
+                tree.updateChartColors(getNodeColors(isDarkMode));
+            });
 
-            if (matches.length === 0) {
-                const item = document.createElement('div');
-                item.className = 'list-group-item text-muted';
-                item.textContent = 'No matches found';
-                resultsList.appendChild(item);
-                return;
-            }
+            const tree_chart1 = document.getElementById("tree_chart1");
+            tree_chart1.style.backgroundColor = chartBackgroundColor;
 
-            matches.forEach((match, index) => {
-                const path = match.ancestors().map(n => n.data.name).reverse().join('/');
+            // Controls
+            document.getElementById("expandAllBtn").addEventListener("click", () => {
+                tree.performExpandAll();
+            });
 
-                const item = document.createElement('button');
-                item.className = 'list-group-item list-group-item-action';
-                item.innerHTML = `
+            document.getElementById("collapseAllBtn").addEventListener("click", () => {
+                tree.performCollapseAll();
+            });
+
+            document.getElementById("fitViewBtn").addEventListener("click", () => {
+                tree.fitToView(false);
+            });
+
+            document.getElementById("fitAllBtn").addEventListener("click", () => {
+                tree.fitToView(true);
+            });
+
+            document.getElementById("toggleOrientationBtn").addEventListener("click", () => {
+                tree.toggleOrientation();
+                const orientationIcon = document.getElementById('orientationIcon');
+                const orientationBtn = document.getElementById('toggleOrientationBtn');
+
+                if (tree.isVertical) {
+                    orientationIcon.className = 'bi bi-arrow-down';
+                    orientationBtn.innerHTML = '<span id="orientationIcon" class="bi bi-arrow-down"></span> Vertical';
+                } else {
+                    orientationIcon.className = 'bi bi-arrow-right';
+                    orientationBtn.innerHTML = '<span id="orientationIcon" class="bi bi-arrow-right"></span> Horizontal';
+                }
+            });
+
+            // Navigation button event listeners
+            document.getElementById("navParentBtn").addEventListener("click", () => {
+                tree.navigateToParent();
+            });
+
+            document.getElementById("navPrevSiblingBtn").addEventListener("click", () => {
+                tree.navigateToPreviousSibling();
+            });
+
+            document.getElementById("navNextSiblingBtn").addEventListener("click", () => {
+                tree.navigateToNextSibling();
+            });
+
+            document.getElementById("navChildBtn").addEventListener("click", () => {
+                tree.navigateToFirstChild();
+            });
+
+            // Export functionality
+            document.getElementById("exportSvgBtn").addEventListener("click", () => {
+                tree.exportAsSVG();
+            });
+
+            document.getElementById("exportPngBtn").addEventListener("click", () => {
+                tree.exportAsPNG();
+            });
+
+
+            document.getElementById("saveGraphToText").addEventListener("click", () => {
+                const text = JSON.stringify(tree.root.data, null, 2);
+                // Update JSON editor with the current tree data
+                jsonEditor.setValue(text);
+                // Scroll to end of the editor
+                jsonEditor.setCursor(jsonEditor.lineCount(), 0);
+            });
+
+            document.getElementById("saveGraphToFile").addEventListener("click", () => {
+                const text = JSON.stringify(tree.root.data, null, 2);
+                // Create a blob and download it as a file
+                const blob = new Blob([text], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'tree_data.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+
+            // JSON file upload handler
+            document.getElementById('jsonFileInput').addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    try {
+                        const jsonData = JSON.parse(e.target.result);
+                        jsonEditor.setValue(JSON.stringify(jsonData, null, 2));
+                        tree.updateData(jsonData);
+                        document.getElementById('searchResultsContainer').style.display = 'none';
+                    } catch (error) {
+                        alert('Error parsing JSON file: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            });
+
+            // Load JSON button handler
+            document.getElementById('loadJsonBtn').addEventListener('click', function () {
+                try {
+                    const jsonText = jsonEditor.getValue();
+                    if (!jsonText.trim()) {
+                        alert('Please enter or upload JSON data');
+                        return;
+                    }
+
+                    const jsonData = JSON.parse(jsonText);
+                    tree.updateData(jsonData);
+                    document.getElementById('searchResultsContainer').style.display = 'none';
+                } catch (error) {
+                    alert('Error parsing JSON: ' + error.message);
+                }
+            });
+
+            // Search functionality
+            function updateSearchResultsList(matches) {
+                const resultsList = document.getElementById('searchResultsList');
+                resultsList.innerHTML = '';
+
+                if (matches.length === 0) {
+                    const item = document.createElement('div');
+                    item.className = 'list-group-item text-muted';
+                    item.textContent = 'No matches found';
+                    resultsList.appendChild(item);
+                    return;
+                }
+
+                matches.forEach((match, index) => {
+                    const path = match.ancestors().map(n => n.data.name).reverse().join('/');
+
+                    const item = document.createElement('button');
+                    item.className = 'list-group-item list-group-item-action';
+                    item.innerHTML = `
                     <div>${match.data.name}</div>
                     <div class="search-result-path">${path}</div>
                 `;
 
-                item.addEventListener('click', () => {
-                    document.querySelectorAll('#searchResultsList .list-group-item').forEach(el => {
-                        el.classList.remove('active');
+                    item.addEventListener('click', () => {
+                        document.querySelectorAll('#searchResultsList .list-group-item').forEach(el => {
+                            el.classList.remove('active');
+                        });
+
+                        item.classList.add('active');
+                        tree.highlightNode(match);
                     });
 
-                    item.classList.add('active');
-                    tree.highlightNode(match);
+                    resultsList.appendChild(item);
                 });
 
-                resultsList.appendChild(item);
+                document.getElementById('searchResultsCount').textContent = `${matches.length} item${matches.length !== 1 ? 's' : ''}`;
+            }
+
+            document.getElementById('searchBtn').addEventListener('click', function () {
+                const searchTerm = document.getElementById('searchInput').value.trim();
+                if (!searchTerm) {
+                    return;
+                }
+
+                const expandMatches = document.getElementById('expandMatchesCheck').checked;
+                const matches = tree.searchNodes(searchTerm, expandMatches);
+
+                const infoElement = document.getElementById('searchResultsInfo');
+                if (matches.length > 0) {
+                    infoElement.textContent = `Found ${matches.length} matching nodes`;
+                    infoElement.className = 'text-success';
+                    document.getElementById('searchResultsContainer').style.display = 'block';
+                    updateSearchResultsList(matches);
+                } else {
+                    infoElement.textContent = 'No matches found';
+                    infoElement.className = 'text-danger';
+                    document.getElementById('searchResultsContainer').style.display = 'none';
+                }
             });
 
-            document.getElementById('searchResultsCount').textContent = `${matches.length} item${matches.length !== 1 ? 's' : ''}`;
-        }
-
-        document.getElementById('searchBtn').addEventListener('click', function () {
-            const searchTerm = document.getElementById('searchInput').value.trim();
-            if (!searchTerm) {
-                return;
-            }
-
-            const expandMatches = document.getElementById('expandMatchesCheck').checked;
-            const matches = tree.searchNodes(searchTerm, expandMatches);
-
-            const infoElement = document.getElementById('searchResultsInfo');
-            if (matches.length > 0) {
-                infoElement.textContent = `Found ${matches.length} matching nodes`;
-                infoElement.className = 'text-success';
-                document.getElementById('searchResultsContainer').style.display = 'block';
-                updateSearchResultsList(matches);
-            } else {
-                infoElement.textContent = 'No matches found';
-                infoElement.className = 'text-danger';
+            document.getElementById('clearSearchBtn').addEventListener('click', function () {
+                document.getElementById('searchInput').value = '';
+                document.getElementById('searchResultsInfo').textContent = '';
                 document.getElementById('searchResultsContainer').style.display = 'none';
-            }
-        });
+                tree.clearHighlights();
+            });
 
-        document.getElementById('clearSearchBtn').addEventListener('click', function () {
-            document.getElementById('searchInput').value = '';
-            document.getElementById('searchResultsInfo').textContent = '';
-            document.getElementById('searchResultsContainer').style.display = 'none';
-            tree.clearHighlights();
-        });
+            document.getElementById('searchInput').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('searchBtn').click();
+                }
+            });
 
-        document.getElementById('searchInput').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                document.getElementById('searchBtn').click();
-            }
-        });
-
-        const resizeObserver = new ResizeObserver(() => {
-            tree.resize();
-        });
-        resizeObserver.observe(document.getElementById("chart-container"));
-    </script>
+            const resizeObserver = new ResizeObserver(() => {
+                tree.resize();
+            });
+            resizeObserver.observe(document.getElementById("chart-container"));
+        </script>
 
     </div>
   </section>
