@@ -1,5 +1,11 @@
 # Github Utilities
 
+## Examine Gihub Workflow
+- `test_grid.py` : Examines a YAML workflow file and pulls of matrix information and steps.
+- Example of results for MaterialX main github workflow file:
+<img src="test_grid.png" width=100%>
+
+
 ## Web `gh` Rest API Query
 - mx_gh_mentions.html : Page to find places where user name is mentioned using @.
 <img src="sample_html_mention_snapshot.png" width=100%>

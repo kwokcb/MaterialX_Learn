@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>README.md</title>
+<title>x.md</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
 <style>
@@ -365,90 +365,279 @@ code {
           : 'default'
     });
   </script>
-<h1 id="github-utilities">Github Utilities</h1>
-<h2 id="examine-gihub-workflow">Examine Gihub Workflow</h2>
-<ul>
-<li><code>test_grid.py</code> : Examines a YAML workflow file and pulls of matrix information and steps.</li>
-<li>Example of results for MaterialX main github workflow file:<br>
-<img src="test_grid.png" width=100%></li>
-</ul>
-<h2 id="web-gh-rest-api-query">Web <code>gh</code> Rest API Query</h2>
-<ul>
-<li>
-<p>mx_gh_mentions.html : Page to find places where user name is mentioned using @.<br>
-<img src="sample_html_mention_snapshot.png" width=100%></p>
-</li>
-<li>
-<p>mx_gh_status.html : Page to get PR status.<br>
-<img src="sample_html_output_snapshot.png" width=100%></p>
-</li>
-</ul>
-<h2 id="shell-gh-api-query">Shell <code>gh</code> API Query</h2>
-<ul>
-<li>mx_gh.sh : Shell script to get github status.</li>
-<li>mx_gh_md.sh : Shell script to get github status and output Markdown
-<ul>
-<li>sample_output.md : Sample Markdown output.</li>
-</ul>
-</li>
-</ul>
-<h2 id="python-request-query">Python Request Query</h2>
-<ul>
-<li>
-<p>mx_gh.py : Python query. Handles PR and issue query via command line options</p>
-</li>
-<li>
-<p>Sample Markdown output:</p>
-<h2 id="github-query">Github Query</h2>
-<ul>
-<li>User: kwokcb</li>
-<li>Repository: AcademySoftwareFoundation/MaterialX</li>
-<li>5 pr items found. Query type: mentioned</li>
-</ul>
+<h2 id="steps-for-c--python-build-jobs">Steps for C++ / Python Build Jobs</h2>
 <table>
 <thead>
 <tr>
-<th>Title</th>
-<th>Link</th>
-<th>Created By</th>
-<th>Created At</th>
+<th>Job Name</th>
+<th>OS</th>
+<th>Compiler</th>
+<th>Python</th>
+<th>Build Flags</th>
+<th>Test Flags</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Web Viewer: Fix uniforms not being updated per object, leading to incorrect object rendering</td>
-<td><a href="https://github.com/AcademySoftwareFoundation/MaterialX/pull/2446">2446</a></td>
-<td>hybridherbst</td>
-<td>2025-06-09 15:07</td>
+<td>Linux_GCC_10_Python39</td>
+<td>ubuntu-22.04</td>
+<td>gcc, 10</td>
+<td>3.9</td>
+<td>-DMATERIALX_BUILD_SHARED_LIBS=ON -DMATERIALX_BUILD_MONOLITHIC=ON</td>
+<td></td>
 </tr>
 <tr>
-<td>Graph Editor: Add graph editor background color option</td>
-<td><a href="https://github.com/AcademySoftwareFoundation/MaterialX/pull/2371">2371</a></td>
-<td>kwokcb</td>
-<td>2025-05-07 15:49</td>
+<td>Linux_GCC_14_Python312</td>
+<td>ubuntu-24.04</td>
+<td>gcc, 14</td>
+<td>3.12</td>
+<td>None</td>
+<td></td>
 </tr>
 <tr>
-<td>Graph Editor : Support Node Up/Down Stream Connection Traversal in Property Editor</td>
-<td><a href="https://github.com/AcademySoftwareFoundation/MaterialX/pull/2225">2225</a></td>
-<td>kwokcb</td>
-<td>2025-02-12 19:14</td>
+<td>Linux_GCC_14_Python313</td>
+<td>ubuntu-24.04</td>
+<td>gcc, 14</td>
+<td>3.13</td>
+<td>None</td>
+<td>test_render</td>
 </tr>
 <tr>
-<td>Improve render test compare performance</td>
-<td><a href="https://github.com/AcademySoftwareFoundation/MaterialX/pull/2223">2223</a></td>
-<td>kwokcb</td>
-<td>2025-02-11 16:21</td>
+<td>Linux_GCC_CoverageAnalysis</td>
+<td>ubuntu-24.04</td>
+<td>gcc, None</td>
+<td>None</td>
+<td>-DMATERIALX_COVERAGE_ANALYSIS=ON -DMATERIALX_BUILD_RENDER=OFF -DMATERIALX_BUILD_PYTHON=OFF</td>
+<td>coverage_analysis</td>
 </tr>
 <tr>
-<td>Add API to allow input reordering on node graphs</td>
-<td><a href="https://github.com/AcademySoftwareFoundation/MaterialX/pull/2116">2116</a></td>
-<td>kwokcb</td>
-<td>2024-11-15 14:27</td>
+<td>Linux_Clang_13_Python39</td>
+<td>ubuntu-22.04</td>
+<td>clang, 13</td>
+<td>3.9</td>
+<td>-DMATERIALX_BUILD_SHARED_LIBS=ON</td>
+<td></td>
+</tr>
+<tr>
+<td>Linux_Clang_18_Python313</td>
+<td>ubuntu-24.04</td>
+<td>clang, 18</td>
+<td>3.13</td>
+<td>None</td>
+<td>clang_format</td>
+</tr>
+<tr>
+<td>MacOS_Xcode_15_Python311</td>
+<td>macos-14</td>
+<td>xcode, 15.4</td>
+<td>3.11</td>
+<td>-DMATERIALX_BUILD_SHARED_LIBS=ON</td>
+<td></td>
+</tr>
+<tr>
+<td>MacOS_Xcode_16_Python313</td>
+<td>macos-15</td>
+<td>xcode, 16.4</td>
+<td>3.13</td>
+<td>None</td>
+<td>test_shaders</td>
+</tr>
+<tr>
+<td>MacOS_Xcode_26_Python313</td>
+<td>macos-26</td>
+<td>xcode, 26.0</td>
+<td>3.13</td>
+<td>-DCMAKE_EXPORT_COMPILE_COMMANDS=ON</td>
+<td>static_analysis</td>
+</tr>
+<tr>
+<td>MacOS_Xcode_DynamicAnalysis</td>
+<td>macos-26</td>
+<td>xcode, 26.0</td>
+<td>None</td>
+<td>-DMATERIALX_DYNAMIC_ANALYSIS=ON</td>
+<td>dynamic_analysis</td>
+</tr>
+<tr>
+<td>iOS_Xcode_26</td>
+<td>macos-26</td>
+<td>xcode, 26.0</td>
+<td>None</td>
+<td>-DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=<code>xcrun --sdk iphoneos --show-sdk-path</code> -DCMAKE_OSX_ARCHITECTURES=arm64</td>
+<td></td>
+</tr>
+<tr>
+<td>Windows_VS2022_Win32_Python39</td>
+<td>windows-2022 x86</td>
+<td>Default,</td>
+<td>3.9</td>
+<td>-G &quot;Visual Studio 17 2022&quot; -A &quot;Win32&quot;</td>
+<td></td>
+</tr>
+<tr>
+<td>Windows_VS2022_x64_Python313</td>
+<td>windows-2025 x64</td>
+<td>Default,</td>
+<td>3.13</td>
+<td>-G &quot;Visual Studio 17 2022&quot; -A &quot;x64&quot;</td>
+<td>test_shaders, extended_build_oiio</td>
+</tr>
+<tr>
+<td>Windows_VS2022_x64_SharedLibs</td>
+<td>windows-2025 x64</td>
+<td>Default,</td>
+<td>None</td>
+<td>-G &quot;Visual Studio 17 2022&quot; -A &quot;x64&quot; -DMATERIALX_BUILD_SHARED_LIBS=ON</td>
+<td>upload_shaders</td>
 </tr>
 </tbody>
 </table>
-</li>
-</ul>
+<h2 id="steps-for-job-build">Steps For Job: build</h2>
+<table>
+<tr>
+<th>Linux Steps</th>
+<th>Windows Steps</th>
+<th>macOS Steps</th>
+</tr>
+<tr>
+<td><ol><li>Sync Repository
+<li>If (runner.os == 'Linux')
+    - Install Dependencies (Linux)
+<li>If (*python* != 'None')
+    - Install Python ${{ matrix.python }}
+<li>If (*python* != 'None')
+    - Install Python Dependencies
+<li>If (*clang_format* == 'ON')
+    - Run Clang Format
+<li>CMake Generate
+<li>CMake Build
+<li>CMake Unit Tests
+<li>If (*python* != 'None')
+    - Python Tests
+<li>If (*coverage_analysis* == 'ON')
+    - Coverage Analysis Tests
+<li>If (*static_analysis* == 'ON')
+    - Static Analysis Tests
+<li>If (*test_render* == 'ON' && runner.os == 'Linux')
+    - Initialize Virtual Framebuffer
+<li>If (*test_render* == 'ON')
+    - Render Script Tests
+<li>If (*test_render* == 'ON')
+    - Render Application Tests
+<li>If (*python* != 'None')
+    - Upload Installed Package
+<li>If (*clang_format* == 'ON')
+    - Upload Formatted Source
+<li>If (*upload_shaders* == 'ON')
+    - Upload Reference Shaders
+<li>If (*test_render* == 'ON')
+    - Upload Renders
+<li>If (*coverage_analysis* == 'ON')
+    - Upload Coverage Report
+</ol><td><ol><li>Sync Repository
+<li>If (runner.os == 'Windows')
+    - Install Dependencies (Windows)
+<li>If (env.IS_EXTENDED_BUILD == 'true' && *extended_build_oiio* == 'ON' && runner.os == 'Windows')
+    - Install OpenImageIO
+<li>If (*python* != 'None')
+    - Install Python ${{ matrix.python }}
+<li>If (*python* != 'None')
+    - Install Python Dependencies
+<li>If (*clang_format* == 'ON')
+    - Run Clang Format
+<li>CMake Generate
+<li>CMake Build
+<li>CMake Unit Tests
+<li>If (*python* != 'None')
+    - Python Tests
+<li>If (*test_shaders* == 'ON' && runner.os == 'Windows')
+    - Install Naga Validator (Windows)
+<li>If (*test_shaders* == 'ON' && runner.os == 'Windows')
+    - Shader Validation Tests (Windows)
+<li>If (*coverage_analysis* == 'ON')
+    - Coverage Analysis Tests
+<li>If (*static_analysis* == 'ON')
+    - Static Analysis Tests
+<li>If (*test_render* == 'ON')
+    - Render Script Tests
+<li>If (*test_render* == 'ON')
+    - Render Application Tests
+<li>If (*python* != 'None')
+    - Upload Installed Package
+<li>If (*clang_format* == 'ON')
+    - Upload Formatted Source
+<li>If (*upload_shaders* == 'ON')
+    - Upload Reference Shaders
+<li>If (*test_render* == 'ON')
+    - Upload Renders
+<li>If (*coverage_analysis* == 'ON')
+    - Upload Coverage Report
+<td><ol><li>Sync Repository
+<li>If (runner.os == 'macOS')
+    - Install Dependencies (MacOS)
+<li>If (*python* != 'None')
+    - Install Python ${{ matrix.python }}
+<li>If (*python* != 'None')
+    - Install Python Dependencies
+<li>If (*clang_format* == 'ON')
+    - Run Clang Format
+<li>CMake Generate
+<li>CMake Build
+<li>CMake Unit Tests
+<li>If (*python* != 'None')
+    - Python Tests
+<li>If (*test_shaders* == 'ON' && runner.os == 'macOS')
+    - Shader Validation Tests (MacOS)
+<li>If (*coverage_analysis* == 'ON')
+    - Coverage Analysis Tests
+<li>If (*static_analysis* == 'ON')
+    - Static Analysis Tests
+<li>If (*test_render* == 'ON')
+    - Render Script Tests
+<li>If (*test_render* == 'ON')
+    - Render Application Tests
+<li>If (*python* != 'None')
+    - Upload Installed Package
+<li>If (*clang_format* == 'ON')
+    - Upload Formatted Source
+<li>If (*upload_shaders* == 'ON')
+    - Upload Reference Shaders
+<li>If (*test_render* == 'ON')
+    - Upload Renders
+<li>If (*coverage_analysis* == 'ON')
+    - Upload Coverage Report
+</tr>
+</table>
+<h2 id="steps-for-job-javascript">Steps For Job: javascript</h2>
+<ol>
+<li>Sync Repository
+<li>Install Emscripten
+<li>Install Node
+<li>JavaScript CMake Generate
+<li>JavaScript CMake Build
+<li>JavaScript Unit Tests
+<li>Build Web Viewer
+<li>If (github.event_name != 'pull_request')
+    - Deploy Web Viewer
+<li>Upload JavaScript Package
+</ol>
+<h2 id="steps-for-job-sdist">Steps For Job: sdist</h2>
+<ol>
+<li>Sync Repository
+<li>Install Python
+<li>Build SDist
+<li>Upload SDist
+</ol>
+<h2 id="steps-for-job-wheels">Steps For Job: wheels</h2>
+<ol>
+<li>Sync Repository
+<li>Install Python 3.${{ matrix.python-minor }}
+<li>Download Sdist
+<li>Build Wheel
+<li>Install Wheel
+<li>Python Tests
+<li>Upload Wheel
+</ol>
 
 </body>
 </html>
