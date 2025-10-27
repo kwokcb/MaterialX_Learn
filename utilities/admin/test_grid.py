@@ -78,33 +78,49 @@ def create_step_description(jobs):
         result += f"## Steps For Job: {job_name}\n"
         steps = job_details.get('steps', [])
         for idx, step in enumerate(steps, start=1):
-            step_list.append(f" {idx}. {create_step_line(step)}")
+            step_list.append(f"{create_step_line(step)}")
    
         # Split into 3 lists. One per os
         if job_name == 'build':
+            result += "<table>\n"
+            result += "<tr>\n"
+            result += "<th>Linux Steps</th>\n"
+            result += "<th>Windows Steps</th>\n"
+            result += "<th>macOS Steps</th>\n"
+            result += "</tr>\n"
+
+            result += "<tr>\n"
+
             linux_list = step_list
             # Strip out anything that has 'runner.os == 'Windows' or 
             # 'runner.os == 'macOS'
             linux_list = [step for step in step_list if 'runner.os' not in step or 'Linux' in step]
-            result += "### Linux Steps\n"
+            #result += "### Linux Steps\n"
+            result += "<td><ol>"
             for step in linux_list:
-                result += step + '\n'
+                result += f"<li>{step}\n"
 
             wndows_list = step_list
             windows_list = [step for step in step_list if 'runner.os' not in step or 'Windows' in step]
-            result += "\n### Windows Steps\n"
+            #result += "\n### Windows Steps\n"
+            result += "</ol><td><ol>"
             for step in windows_list:
-                result += step + '\n'
+                result += f"<li>{step}\n"
 
             macos_list = step_list
             macos_list = [step for step in step_list if 'runner.os' not in step or 'macOS' in step]
-            result += "\n### macOS Steps\n"
+            #result += "\n### macOS Steps\n"
+            result += "<td><ol>"
             for step in macos_list:
-                result += step + '\n'
+                result += f"<li>{step}\n"
+            result += "</tr>\n"
+            result += "</table>\n\n"
 
         else:
+            result += "<ol>\n"
             for step in step_list:
-                result += step + '\n'
+                result += '<li>' + step + '\n'
+            result += "</ol>\n\n"
     return result
     
 def create_table(jobs):
