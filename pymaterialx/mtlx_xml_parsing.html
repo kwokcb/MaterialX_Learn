@@ -7515,7 +7515,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mx</span>
@@ -7524,10 +7524,11 @@ a.anchor-link {
 <span class="k">def</span><span class="w"> </span><span class="nf">is_well_formed_xml</span><span class="p">(</span><span class="n">xml_string</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">xml_string</span><span class="p">)</span>  
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"XML is well-formed."</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"- XML : is well-formed."</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">ET</span><span class="o">.</span><span class="n">ParseError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"XML is not well-formed:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>    
-        <span class="nb">print</span><span class="p">(</span><span class="n">xml_string</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"- XML :"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>    
+    <span class="nb">print</span><span class="p">(</span><span class="n">xml_string</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"*"</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 <span class="n">test_string</span> <span class="o">=</span> <span class="s1">'&lt;?xml version="1.0"?&gt;&lt;materialx version="1.39"&gt;&lt;implementation name="IM_logical_and_genglsl" nodedef="ND_logical_and" target="genglsl" sourcecode="{{in1}} &amp;&amp; {{in2}}"/&gt;&lt;/materialx&gt;'</span>
@@ -7538,7 +7539,6 @@ a.anchor-link {
 <span class="n">impl</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getImplementation</span><span class="p">(</span><span class="s2">"IM_logical_and_genglsl"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'- Source code: :'</span><span class="p">,</span> <span class="n">impl</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">"sourcecode"</span><span class="p">))</span>
 <span class="n">out_string</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'- Output XML: :'</span><span class="p">,</span> <span class="n">out_string</span><span class="p">)</span>
 <span class="n">is_well_formed_xml</span><span class="p">(</span><span class="n">out_string</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"*"</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
@@ -7548,7 +7548,6 @@ a.anchor-link {
 <span class="n">mx</span><span class="o">.</span><span class="n">readFromXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">test_string</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'- Source code: :'</span><span class="p">,</span> <span class="n">impl</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">"sourcecode"</span><span class="p">))</span>
 <span class="n">out_string</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">writeToXmlString</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'- Output Bad XML: :'</span><span class="p">,</span> <span class="n">out_string</span><span class="p">)</span>
 <span class="n">is_well_formed_xml</span><span class="p">(</span><span class="n">out_string</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -7563,27 +7562,28 @@ a.anchor-link {
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>****************************************
-XML is not well-formed: not well-formed (invalid token): line 1, column 156
+- XML : not well-formed (invalid token): line 1, column 156
 &lt;?xml version="1.0"?&gt;&lt;materialx version="1.39"&gt;&lt;implementation name="IM_logical_and_genglsl" nodedef="ND_logical_and" target="genglsl" sourcecode="{{in1}} &amp;&amp; {{in2}}"/&gt;&lt;/materialx&gt;
+
+
 - Source code: : {{in1}} &amp;&amp; {{in2}}
-- Output XML: : &lt;?xml version="1.0"?&gt;
+- XML : is well-formed.
+&lt;?xml version="1.0"?&gt;
 &lt;materialx version="1.39"&gt;
   &lt;implementation name="IM_logical_and_genglsl" nodedef="ND_logical_and" target="genglsl" sourcecode="{{in1}} &amp;amp;&amp;amp; {{in2}}" /&gt;
 &lt;/materialx&gt;
 
-XML is well-formed.
+
+
 ****************************************
 - Source code: : {{in1}} &amp;&amp; {{in2}}
-- Output Bad XML: : &lt;?xml version="1.0"?&gt;
-&lt;materialx version="1.39"&gt;
-  &lt;implementation name="IM_logical_and_genglsl" nodedef="ND_logical_and" target="genglsl" sourcecode="{{in1}} &amp;amp;&amp;amp; &lt; {{in2}}" /&gt;
-&lt;/materialx&gt;
-
-XML is not well-formed: not well-formed (invalid token): line 3, column 121
+- XML : not well-formed (invalid token): line 3, column 121
 &lt;?xml version="1.0"?&gt;
 &lt;materialx version="1.39"&gt;
   &lt;implementation name="IM_logical_and_genglsl" nodedef="ND_logical_and" target="genglsl" sourcecode="{{in1}} &amp;amp;&amp;amp; &lt; {{in2}}" /&gt;
 &lt;/materialx&gt;
+
+
 
 </pre>
 </div>
