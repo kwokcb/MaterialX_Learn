@@ -7,6 +7,8 @@ python mxdoclib.py --compareLib ../pymaterialx/downloaded_release_libraries/ --d
 python mxdoclib.py --compareLib ../pymaterialx/downloaded_release_libraries/ --docType md --nodegraph --outputPath ../documents/definitions  ../pymaterialx/python/MaterialX/libraries/pbrlib --outputFile pbrlib_doc 
 python mxdoclib.py --compareLib ../pymaterialx/downloaded_release_libraries/ --docType md --nodegraph --outputPath ../documents/definitions  ../pymaterialx/python/MaterialX/libraries/bxdf --outputFile bxdf_doc 
 
+source build_tree_viewer.sh
+source build_python_docs.sh
 source build_compare.sh
 
 python mdhtml.py ../documents_internal/index.html -t template.html --top "." -o ../ -of index.html --removeMermaid True
@@ -29,9 +31,9 @@ python mdhtml.py ../documents_internal/python_MaterialX.html -t template.html --
 python mdhtml.py ../documents_internal/node_definitions.html -t template.html --top ".." -o ../documents -of node_definitions.html
 python mdhtml.py ../documents_internal/gltfViewer.html -t template.html --top ".." -o ../documents -of gltfViewer.html
 python mdhtml.py ../documents_internal/property_editor_ui.md -t template.html --top ".." -o ../documents -of property_editor_ui.html
-python mdhtml.py ../documents_internal/TreeVisualizer.html -t template.html --top ".." -o ../documents -of TreeVisualizer.html
-cp ../documents_internal/TreeVisualizer.js ../documents/TreeVisualizer.js
-cp ../pymaterialx/nodedef_introspection.json ../documents/nodedef_introspection.json
+#python mdhtml.py ../documents_internal/TreeVisualizer.html -t template.html --top ".." -o ../documents -of TreeVisualizer.html
+#cp ../documents_internal/TreeVisualizer.js ../documents/TreeVisualizer.js
+#cp ../pymaterialx/nodedef_introspection.json ../documents/nodedef_introspection.json
 
 python mdhtml.py ./README.md -t template.html --top ".." -o ../documents -of build_site.html -cm True
 
