@@ -59,7 +59,24 @@ class PythonDocumentationGenerator:
                             if isinstance(attr, (staticmethod, classmethod)):
                                 attr = attr.__func__
                             if callable(attr):
-                                cls_info["methods"][m] = (attr.__doc__ or '').strip()
+                                import re
+                                
+                                doc = attr.__doc__ or ''
+                                lines = doc.splitlines()
+                                if lines and lines[0].startswith(attr.__name__ + '(*args'):
+                                    doc = '\n'.join(lines[1:]).strip()
+                                
+                                # Add newline before numbered overloads
+                                doc = re.sub(r'(?<!^)(\d+\.)', r'<br>\1', doc)
+                                
+                                # Replace newlines with <br> for HTML display
+                                #doc = doc.replace('\n', '<br>')
+                                
+                                cls_info["methods"][m] = doc
+
+                                #cls_info["methods"][m] = doc                                
+                                
+                                #cls_info["methods"][m] = (attr.__doc__ or '').strip()
                             else:
                                 cls_info["attributes"].append(m)
 
@@ -130,7 +147,6 @@ class PythonDocumentationGenerator:
         html.append('<!--StyleStart-->')
         html.append("<style>")
         html.append("""
-        body { font-size: small; }
         #sidebar { width: 300px; height: 100vh; overflow-y: auto; position: fixed; }
         #content { margin-left: 320px; padding: 1rem; }
         pre { white-space: pre-wrap; }
@@ -175,7 +191,18 @@ class PythonDocumentationGenerator:
         html.append("<script>")
         html.append("const data = " + json.dumps(structure) + ";")
         html.append(r"""
+                    
     function escapeHtml(text) {
+        if (!text) return '';
+        return text.replace(/&(?!amp;)/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;')
+                .replace(/&lt;br&gt;/g, '<br>');
+    }
+
+    function escapeHtml_2(text) {
         if (!text) return '';
         return text.replace(/[&<>"']/g, function(m) {
             return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
