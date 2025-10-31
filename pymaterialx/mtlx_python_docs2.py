@@ -63,6 +63,8 @@ class PythonDocumentationGenerator:
                                 
                                 doc = attr.__doc__ or ''
                                 lines = doc.splitlines()
+                                for l in lines:
+                                    print(l)
                                 if lines and lines[0].startswith(attr.__name__ + '(*args'):
                                     doc = '\n'.join(lines[1:]).strip()
                                 
@@ -70,9 +72,11 @@ class PythonDocumentationGenerator:
                                 doc = re.sub(r'(?<!^)(\d+\.)', r'<br>\1', doc)
                                 
                                 # Replace newlines with <br> for HTML display
-                                #doc = doc.replace('\n', '<br>')
+                                doc = doc.replace('\n\n', '<br>')
+                                doc = doc.replace('\n', '<br>')
+                                doc = doc + '<br>'
                                 
-                                cls_info["methods"][m] = doc
+                                cls_info["methods"][m] = lines
 
                                 #cls_info["methods"][m] = doc                                
                                 
@@ -121,17 +125,18 @@ class PythonDocumentationGenerator:
                     if cls_info["methods"]:
                         md.append(f"  - Methods:\n")
                         for m, doc in cls_info["methods"].items():
-                            md.append(f"    - `{m}`: {doc}\n")
+                            doc_string = "\n        ".join(doc)
+                            md.append(f"    - `{m}`: {doc_string}\n\n")
                     if cls_info["attributes"]:
                         md.append(f"  - Attributes: {', '.join(cls_info['attributes'])}\n")
 
             if mod_info["functions"]:
-                md.append("### Functions\n")
+                md.append("\n### Functions\n")
                 for fn, doc in mod_info["functions"].items():
                     md.append(f"- `{fn}`: {doc}\n")
 
             if mod_info["globals"]:
-                md.append("### Globals\n")
+                md.append("\n### Globals\n")
                 md.append(", ".join(mod_info["globals"]))
                 md.append("\n")
 
@@ -234,11 +239,15 @@ class PythonDocumentationGenerator:
             let html = `<h3>${module} - ${name}</h3>`;
             if (type === 'class') {
                 const cls = mod.classes[name];
-                html += `<h4>Class</h4><p>${escapeHtml(cls.doc)}</p>`;
+                html += `<h4>Class</h4><p>${cls.doc}</p>`;
                 if (Object.keys(cls.methods).length) {
                     html += '<h5>Methods</h5><ul>';
                     for (const [m, doc] of Object.entries(cls.methods)) {
-                        html += `<li><code>${m}</code>: ${escapeHtml(doc)}</li>`;
+                        for (let i = 0; i < doc.length; i++) {
+                            doc[i] = doc[i] + "";
+                        }
+                        doc_string = doc.join('<br>');
+                        html += `<li><code>${m}</code>: <pre>${doc_string}</pre></li>`;
                     }
                     html += '</ul>';
                 }
