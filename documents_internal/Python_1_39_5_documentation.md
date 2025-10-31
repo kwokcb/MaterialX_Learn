@@ -2420,7 +2420,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 ### Functions
 
-- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000020A638BA670>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
+- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000022A3068A6F0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
 
 - `getEnvironmentPath`: getEnvironmentPath(sep: str = ';') -> MaterialX.PyMaterialXFormat.FileSearchPath
 
@@ -2432,15 +2432,15 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 - `loadLibraries`: loadLibraries(libraryFolders: list[MaterialX.PyMaterialXFormat.FilePath], searchPath: MaterialX.PyMaterialXFormat.FileSearchPath, doc: MaterialX.PyMaterialXCore.Document, excludeFiles: set[str] = set(), readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> set[str]
 
-- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000020A638BA270>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000022A30688BF0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 - `prependXInclude`: prependXInclude(arg0: MaterialX.PyMaterialXCore.Document, arg1: MaterialX.PyMaterialXFormat.FilePath) -> None
 
 - `readFile`: readFile(arg0: MaterialX.PyMaterialXFormat.FilePath) -> str
 
-- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000020A6388CB30>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000022A30658930>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
-- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000020A6383CBF0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000022A3064BB30>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 - `writeToXmlFile`: writeToXmlFile(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, writeOptions: MaterialX.PyMaterialXFormat.XmlWriteOptions = None) -> None
 
@@ -3262,7 +3262,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
     - `saveImage`: saveImage(self: MaterialX.PyMaterialXRender.ImageHandler, filePath: MaterialX.PyMaterialXFormat.FilePath, image: MaterialX.PyMaterialXRender.Image, verticalFlip: bool = False) -> bool
 
 
-    - `acquireImage`: acquireImage(self: MaterialX.PyMaterialXRender.ImageHandler, filePath: MaterialX.PyMaterialXFormat.FilePath, defaultColor: MaterialX.PyMaterialXCore.Color4 = <MaterialX.PyMaterialXCore.Color4 object at 0x0000020A63DC4F30>) -> MaterialX.PyMaterialXRender.Image
+    - `acquireImage`: acquireImage(self: MaterialX.PyMaterialXRender.ImageHandler, filePath: MaterialX.PyMaterialXFormat.FilePath, defaultColor: MaterialX.PyMaterialXCore.Color4 = <MaterialX.PyMaterialXCore.Color4 object at 0x0000022A30BA9CB0>) -> MaterialX.PyMaterialXRender.Image
 
 
     - `bindImage`: bindImage(self: MaterialX.PyMaterialXRender.ImageHandler, arg0: MaterialX.PyMaterialXRender.Image, arg1: MaterialX.PyMaterialXRender.ImageSamplingProperties) -> bool
@@ -10968,7 +10968,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
            createValueFromStrings('0.1', 'float') -> 0.1
            createValueFromStrings('0.1, 0.2, 0.3', 'color3') -> mx.Color3(0.1, 0.2, 0.3)
 
-- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000020A638BA670>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
+- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000022A3068A6F0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
 
 - `geomStringsMatch`: geomStringsMatch(arg0: str, arg1: str, arg2: bool) -> bool
 
@@ -11022,7 +11022,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 - `loadLibraries`: loadLibraries(libraryFolders: list[MaterialX.PyMaterialXFormat.FilePath], searchPath: MaterialX.PyMaterialXFormat.FileSearchPath, doc: MaterialX.PyMaterialXCore.Document, excludeFiles: set[str] = set(), readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> set[str]
 
-- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000020A638BA270>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000022A30688BF0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 - `parentNamePath`: parentNamePath(arg0: str) -> str
 
@@ -11032,11 +11032,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 - `readFile`: readFile(arg0: MaterialX.PyMaterialXFormat.FilePath) -> str
 
-- `readFromXmlFile`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000020A6388CB30>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlFile`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000022A30658930>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
-- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000020A6388CB30>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000022A30658930>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
-- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000020A6383CBF0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000022A3064BB30>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 - `replaceSubstrings`: replaceSubstrings(arg0: str, arg1: dict[str, str]) -> str
 
