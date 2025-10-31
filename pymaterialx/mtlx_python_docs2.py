@@ -142,28 +142,36 @@ class PythonDocumentationGenerator:
         html = []
         html.append("<html><head>")
         html.append('<meta charset="utf-8">')
+        html.append('<meta name="viewport" content="width=device-width, initial-scale=1">')
         html.append(f"<title>{title}</title>")
         html.append('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">')
         html.append('<!--StyleStart-->')
         html.append("<style>")
         html.append("""
-        #sidebar { width: 300px; height: 100vh; overflow-y: auto; position: fixed; }
-        #content { margin-left: 320px; padding: 1rem; }
         pre { white-space: pre-wrap; }
         a { cursor: pointer; }
         """)
         html.append("</style>")
         html.append('<!--StyleEnd-->')
         html.append("</head><body data-bs-theme='dark'>")
-
         html.append("<!--Start-->")
-        html.append("<div id='sidebar' class='bg-dark text-light p-3'>")
-        html.append("<h5>Python Modules</h5>")
+        # Simple header row inside content to avoid conflicting site nav
+        html.append("<div class='container-fluid py-2'>")
+        html.append("  <div class='d-flex align-items-center gap-2'>")
+        html.append("    <button class='btn btn-outline-light' type='button' data-bs-toggle='offcanvas' data-bs-target='#mxdoc-sidebar' aria-controls='mxdoc-sidebar'>Index</button>")
+        html.append(f"    <span class='h5 mb-0'>{title}</span>")
+        html.append("  </div>")
+        html.append("</div>")
 
-        # Add search input
-        html.append('<input type="text" id="searchBox" class="form-control mb-2" placeholder="Filter...">')
-
-        html.append("<ul class='list-unstyled' id='indexList'>")
+        # Offcanvas sidebar index
+        html.append("<div class='offcanvas offcanvas-start text-bg-dark' tabindex='-1' id='mxdoc-sidebar' aria-labelledby='mxdoc-sidebarLabel'>")
+        html.append("  <div class='offcanvas-header'>")
+        html.append("    <h5 class='offcanvas-title' id='mxdoc-sidebarLabel'>Python Modules</h5>")
+        html.append("    <button type='button' class='btn-close btn-close-white' data-bs-dismiss='offcanvas' aria-label='Close'></button>")
+        html.append("  </div>")
+        html.append("  <div class='offcanvas-body'>")
+        html.append('    <input type="text" id="mxdoc-search" class="form-control mb-2" placeholder="Filter...">')
+        html.append("    <ul class='list-unstyled' id='mxdoc-index'>")
 
         # Sidebar tree
         for mod_name, mod_info in structure.items():
@@ -171,22 +179,28 @@ class PythonDocumentationGenerator:
             if mod_info["classes"]:
                 html.append("<li>Classes<ul>")
                 for cls in mod_info["classes"]:
-                    html.append(f"<li><a class='link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' data-type='class' data-module='{mod_name}' data-name='{cls}'>{cls}</a></li>")
+                    html.append(f"<li><a class='link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover list-group-item-action' data-bs-dismiss='offcanvas' role='button' data-type='class' data-module='{mod_name}' data-name='{cls}'>{cls}</a></li>")
                 html.append("</ul></li>")
             if mod_info["functions"]:
                 html.append("<li>Functions<ul>")
                 for fn in mod_info["functions"]:
-                    html.append(f"<li><a class='link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' data-type='function' data-module='{mod_name}' data-name='{fn}'>{fn}</a></li>")
+                    html.append(f"<li><a class='link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover list-group-item-action' data-bs-dismiss='offcanvas' role='button' data-type='function' data-module='{mod_name}' data-name='{fn}'>{fn}</a></li>")
                 html.append("</ul></li>")
             if mod_info["globals"]:
                 html.append("<li>Globals<ul>")
                 for g in mod_info["globals"]:
-                    html.append(f"<li><a class='link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover' data-type='global' data-module='{mod_name}' data-name='{g}'>{g}</a></li>")
+                    html.append(f"<li><a class='link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover list-group-item-action' data-bs-dismiss='offcanvas' role='button' data-type='global' data-module='{mod_name}' data-name='{g}'>{g}</a></li>")
                 html.append("</ul></li>")
             html.append("</ul></li>")
-        html.append("</ul></div>")
+        html.append("    </ul>")
+        html.append("  </div>")
+        html.append("</div>")
 
-        html.append("<div id='content'><h3>Select interface item from index.</h3></div>")
+        # Main content area
+        html.append("<main class='container-fluid py-3' id='mxdoc-content'><h3>Select interface item from index.</h3></main>")
+
+        # Conditionally load Bootstrap bundle only if not present to avoid conflicts when embedded
+        html.append("<script>(function(){if(!window.bootstrap){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js';s.crossOrigin='anonymous';document.head.appendChild(s);}})();</script>")
 
         html.append("<script>")
         html.append("const data = " + json.dumps(structure) + ";")
@@ -209,8 +223,9 @@ class PythonDocumentationGenerator:
         });
     }
 
-    // Click to show content
-    document.querySelectorAll('a[data-type]').forEach(el => {
+    // Click to show content and auto-hide offcanvas
+    // Scope listeners to our offcanvas only to avoid affecting site menus
+    document.querySelectorAll('#mxdoc-sidebar a[data-type]').forEach(el => {
         el.addEventListener('click', () => {
             const module = el.dataset.module;
             const name = el.dataset.name;
@@ -240,14 +255,21 @@ class PythonDocumentationGenerator:
             } else if (type === 'global') {
                 html += `<h4>Global</h4><p>${name}</p>`;
             }
-            document.getElementById('content').innerHTML = html;
+            document.getElementById('mxdoc-content').innerHTML = html;
+
+            // Auto-close the offcanvas if open
+            const sidebar = document.getElementById('mxdoc-sidebar');
+            if (sidebar && window.bootstrap) {
+                const oc = bootstrap.Offcanvas.getOrCreateInstance(sidebar);
+                oc.hide();
+            }
         });
     });
 
     // Sidebar search filter
-    document.getElementById('searchBox').addEventListener('keyup', function() {
+    document.getElementById('mxdoc-search').addEventListener('keyup', function() {
         const filter = this.value.toLowerCase();
-        document.querySelectorAll('#indexList li').forEach(li => {
+        document.querySelectorAll('#mxdoc-index li').forEach(li => {
             const text = li.textContent.toLowerCase();
             li.style.display = text.includes(filter) ? '' : 'none';
         });
