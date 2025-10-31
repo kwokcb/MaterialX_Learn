@@ -2,7 +2,11 @@
 
 ### Classes
 
+<a id='materialx-pymaterialxcore-attributedef'></a>
+
 - **AttributeDef**: 
+
+  - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -50,7 +54,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-backdrop'></a>
+
 - **Backdrop**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -111,7 +119,11 @@
 
   - Attributes: CATEGORY, CONTAINS_ATTRIBUTE, WIDTH_ATTRIBUTE, HEIGHT_ATTRIBUTE
 
+<a id='materialx-pymaterialxcore-collection'></a>
+
 - **Collection**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -187,7 +199,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-color3'></a>
+
 - **Color3**: 
+
+  - Inherits from: [VectorBase](#materialx-pymaterialxcore-vectorbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -226,7 +242,11 @@
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Color3) -> tuple[float, float, float]
 
 
+<a id='materialx-pymaterialxcore-color4'></a>
+
 - **Color4**: 
+
+  - Inherits from: [VectorBase](#materialx-pymaterialxcore-vectorbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -255,11 +275,19 @@
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Color4) -> tuple[float, float, float, float]
 
 
+<a id='materialx-pymaterialxcore-commentelement'></a>
+
 - **CommentElement**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-document'></a>
+
 - **Document**: 
+
+  - Inherits from: [GraphElement](#materialx-pymaterialxcore-graphelement), [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -759,7 +787,11 @@
     - `getMaterials`: (Deprecated) Return a vector of all materials in the document.
 
 
+<a id='materialx-pymaterialxcore-edge'></a>
+
 - **Edge**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -783,7 +815,11 @@
         Return the ColorManagementSystem name.
 
 
+<a id='materialx-pymaterialxcore-element'></a>
+
 - **Element**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -1190,23 +1226,51 @@
 
   - Attributes: NAME_ATTRIBUTE, FILE_PREFIX_ATTRIBUTE, GEOM_PREFIX_ATTRIBUTE, COLOR_SPACE_ATTRIBUTE, INHERIT_ATTRIBUTE, NAMESPACE_ATTRIBUTE, DOC_ATTRIBUTE, XPOS_ATTRIBUTE, YPOS_ATTRIBUTE
 
+<a id='materialx-pymaterialxcore-elementequivalenceoptions'></a>
+
 - **ElementEquivalenceOptions**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Attributes: performValueComparisons, floatFormat, floatPrecision, attributeExclusionList
 
+<a id='materialx-pymaterialxcore-elementpredicate'></a>
+
 - **ElementPredicate**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
+
+<a id='materialx-pymaterialxcore-exception'></a>
 
 - **Exception**: 
 
+  - Inherits from: [Exception](#materialx-pymaterialxcore-exception), [BaseException](#materialx-pymaterialxcore-baseexception)
+
+<a id='materialx-pymaterialxcore-exceptionfoundcycle'></a>
+
 - **ExceptionFoundCycle**: 
+
+  - Inherits from: [Exception](#materialx-pymaterialxcore-exception), [BaseException](#materialx-pymaterialxcore-baseexception)
+
+<a id='materialx-pymaterialxcore-exceptionorphanedelement'></a>
 
 - **ExceptionOrphanedElement**: 
 
+  - Inherits from: [Exception](#materialx-pymaterialxcore-exception), [BaseException](#materialx-pymaterialxcore-baseexception)
+
+<a id='materialx-pymaterialxcore-genericelement'></a>
+
 - **GenericElement**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-geomelement'></a>
+
 - **GeomElement**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -1250,7 +1314,11 @@
         Return the Collection, if any, with the given name.
 
 
+<a id='materialx-pymaterialxcore-geominfo'></a>
+
 - **GeomInfo**: 
+
+  - Inherits from: [GeomElement](#materialx-pymaterialxcore-geomelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -1323,11 +1391,19 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-geomprop'></a>
+
 - **GeomProp**: 
+
+  - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-geompropdef'></a>
+
 - **GeomPropDef**: 
+
+  - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -1399,7 +1475,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-graphelement'></a>
+
 - **GraphElement**: 
+
+  - Inherits from: [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -1494,7 +1574,11 @@
         If declarations for the contained nodes are provided as nodedefs in the owning document, then they will be used to provide additional formatting details.
 
 
+<a id='materialx-pymaterialxcore-graphiterator'></a>
+
 - **GraphIterator**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -1541,7 +1625,11 @@
         Return the prune subgraph flag, which controls whether the current subgraph is pruned from traversal.
 
 
+<a id='materialx-pymaterialxcore-implementation'></a>
+
 - **Implementation**: 
+
+  - Inherits from: [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -1602,9 +1690,17 @@
 
   - Attributes: CATEGORY, FILE_ATTRIBUTE, FUNCTION_ATTRIBUTE
 
+<a id='materialx-pymaterialxcore-inheritanceiterator'></a>
+
 - **InheritanceIterator**: 
 
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
+
+<a id='materialx-pymaterialxcore-input'></a>
+
 - **Input**: 
+
+  - Inherits from: [PortElement](#materialx-pymaterialxcore-portelement), [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -1647,7 +1743,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-interfaceelement'></a>
+
 - **InterfaceElement**: 
+
+  - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -1935,7 +2035,11 @@
 
   - Attributes: NODE_DEF_ATTRIBUTE
 
+<a id='materialx-pymaterialxcore-linearunitconverter'></a>
+
 - **LinearUnitConverter**: 
+
+  - Inherits from: [UnitConverter](#materialx-pymaterialxcore-unitconverter), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2001,7 +2105,11 @@
         Returns Empty string if not found
 
 
+<a id='materialx-pymaterialxcore-look'></a>
+
 - **Look**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2163,7 +2271,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-lookgroup'></a>
+
 - **LookGroup**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2189,7 +2301,11 @@
 
   - Attributes: CATEGORY, LOOKS_ATTRIBUTE, ACTIVE_ATTRIBUTE
 
+<a id='materialx-pymaterialxcore-materialassign'></a>
+
 - **MaterialAssign**: 
+
+  - Inherits from: [GeomElement](#materialx-pymaterialxcore-geomelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2230,7 +2346,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-matrix33'></a>
+
 - **Matrix33**: 
+
+  - Inherits from: [MatrixBase](#materialx-pymaterialxcore-matrixbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2309,7 +2429,11 @@
 
   - Attributes: IDENTITY
 
+<a id='materialx-pymaterialxcore-matrix44'></a>
+
 - **Matrix44**: 
+
+  - Inherits from: [MatrixBase](#materialx-pymaterialxcore-matrixbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2394,17 +2518,33 @@
 
   - Attributes: IDENTITY
 
+<a id='materialx-pymaterialxcore-matrixbase'></a>
+
 - **MatrixBase**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
+
+<a id='materialx-pymaterialxcore-member'></a>
 
 - **Member**: 
 
+  - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
+
   - Attributes: CATEGORY
+
+<a id='materialx-pymaterialxcore-newlineelement'></a>
 
 - **NewlineElement**: 
 
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
+
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-node'></a>
+
 - **Node**: 
+
+  - Inherits from: [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2473,7 +2613,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-nodedef'></a>
+
 - **NodeDef**: 
+
+  - Inherits from: [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2528,7 +2672,11 @@
 
   - Attributes: CATEGORY, NODE_ATTRIBUTE, TEXTURE_NODE_GROUP, PROCEDURAL_NODE_GROUP, GEOMETRIC_NODE_GROUP, ADJUSTMENT_NODE_GROUP, CONDITIONAL_NODE_GROUP, CHANNEL_NODE_GROUP, ORGANIZATION_NODE_GROUP, TRANSLATION_NODE_GROUP
 
+<a id='materialx-pymaterialxcore-nodegraph'></a>
+
 - **NodeGraph**: 
+
+  - Inherits from: [GraphElement](#materialx-pymaterialxcore-graphelement), [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2588,9 +2736,17 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-nodepredicate'></a>
+
 - **NodePredicate**: 
 
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
+
+<a id='materialx-pymaterialxcore-output'></a>
+
 - **Output**: 
+
+  - Inherits from: [PortElement](#materialx-pymaterialxcore-portelement), [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2601,7 +2757,11 @@
 
   - Attributes: CATEGORY, DEFAULT_INPUT_ATTRIBUTE
 
+<a id='materialx-pymaterialxcore-portelement'></a>
+
 - **PortElement**: 
+
+  - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2671,11 +2831,19 @@
         If the given input is not present, then an empty OutputPtr is returned.
 
 
+<a id='materialx-pymaterialxcore-property'></a>
+
 - **Property**: 
+
+  - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-propertyassign'></a>
+
 - **PropertyAssign**: 
+
+  - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2736,7 +2904,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-propertyset'></a>
+
 - **PropertySet**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2771,7 +2943,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-propertysetassign'></a>
+
 - **PropertySetAssign**: 
+
+  - Inherits from: [GeomElement](#materialx-pymaterialxcore-geomelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2802,7 +2978,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-stringresolver'></a>
+
 - **StringResolver**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2865,7 +3045,11 @@
         Given an input string and type, apply all appropriate modifiers and return the resulting string.
 
 
+<a id='materialx-pymaterialxcore-targetdef'></a>
+
 - **TargetDef**: 
+
+  - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2878,11 +3062,19 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-token'></a>
+
 - **Token**: 
+
+  - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-treeiterator'></a>
+
 - **TreeIterator**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2907,7 +3099,11 @@
         Return the prune subtree flag, which controls whether the current subtree is pruned from traversal.
 
 
+<a id='materialx-pymaterialxcore-typedef'></a>
+
 - **TypeDef**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -2967,7 +3163,11 @@
 
   - Attributes: CATEGORY, SEMANTIC_ATTRIBUTE, CONTEXT_ATTRIBUTE
 
+<a id='materialx-pymaterialxcore-typedelement'></a>
+
 - **TypedElement**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3003,7 +3203,11 @@
 
   - Attributes: TYPE_ATTRIBUTE
 
+<a id='materialx-pymaterialxcore-typedvalue_boolean'></a>
+
 - **TypedValue_boolean**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3022,7 +3226,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_booleanarray'></a>
+
 - **TypedValue_booleanarray**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3041,7 +3249,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_color3'></a>
+
 - **TypedValue_color3**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3060,7 +3272,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_color4'></a>
+
 - **TypedValue_color4**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3079,7 +3295,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_float'></a>
+
 - **TypedValue_float**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3098,7 +3318,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_floatarray'></a>
+
 - **TypedValue_floatarray**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3117,7 +3341,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_integer'></a>
+
 - **TypedValue_integer**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3136,7 +3364,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_integerarray'></a>
+
 - **TypedValue_integerarray**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3155,7 +3387,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_matrix33'></a>
+
 - **TypedValue_matrix33**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3174,7 +3410,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_matrix44'></a>
+
 - **TypedValue_matrix44**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3193,7 +3433,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_string'></a>
+
 - **TypedValue_string**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3212,7 +3456,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_stringarray'></a>
+
 - **TypedValue_stringarray**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3231,7 +3479,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_vector2'></a>
+
 - **TypedValue_vector2**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3250,7 +3502,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_vector3'></a>
+
 - **TypedValue_vector3**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3269,7 +3525,11 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-typedvalue_vector4'></a>
+
 - **TypedValue_vector4**: 
+
+  - Inherits from: [Value](#materialx-pymaterialxcore-value), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3288,11 +3548,19 @@
 
   - Attributes: TYPE
 
+<a id='materialx-pymaterialxcore-unit'></a>
+
 - **Unit**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-unitconverter'></a>
+
 - **UnitConverter**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3350,7 +3618,11 @@
         Returns Empty string if not found
 
 
+<a id='materialx-pymaterialxcore-unitconverterregistry'></a>
+
 - **UnitConverterRegistry**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3381,7 +3653,11 @@
         Clear all unit converters from the registry.
 
 
+<a id='materialx-pymaterialxcore-unitdef'></a>
+
 - **UnitDef**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3423,7 +3699,11 @@
 
   - Attributes: CATEGORY, UNITTYPE_ATTRIBUTE
 
+<a id='materialx-pymaterialxcore-unittypedef'></a>
+
 - **UnitTypeDef**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3434,7 +3714,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-value'></a>
+
 - **Value**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3451,7 +3735,11 @@
     - `createValueFromStrings`: createValueFromStrings(value: str, type: str, typeDefPtr: MaterialX_v1_39_5::TypeDef = None) -> MaterialX.PyMaterialXCore.Value
 
 
+<a id='materialx-pymaterialxcore-valueelement'></a>
+
 - **ValueElement**: 
+
+  - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3564,11 +3852,19 @@
 
   - Attributes: VALUE_ATTRIBUTE, INTERFACE_NAME_ATTRIBUTE, IMPLEMENTATION_NAME_ATTRIBUTE, IMPLEMENTATION_TYPE_ATTRIBUTE, ENUM_ATTRIBUTE, ENUM_VALUES_ATTRIBUTE, UNIT_ATTRIBUTE, UI_NAME_ATTRIBUTE, UI_FOLDER_ATTRIBUTE, UI_MIN_ATTRIBUTE, UI_MAX_ATTRIBUTE, UI_SOFT_MIN_ATTRIBUTE, UI_SOFT_MAX_ATTRIBUTE, UI_STEP_ATTRIBUTE, UI_ADVANCED_ATTRIBUTE
 
+<a id='materialx-pymaterialxcore-variant'></a>
+
 - **Variant**: 
+
+  - Inherits from: [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-variantassign'></a>
+
 - **VariantAssign**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3604,7 +3900,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-variantset'></a>
+
 - **VariantSet**: 
+
+  - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3636,7 +3936,11 @@
 
   - Attributes: CATEGORY
 
+<a id='materialx-pymaterialxcore-vector2'></a>
+
 - **Vector2**: 
+
+  - Inherits from: [VectorBase](#materialx-pymaterialxcore-vectorbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3670,7 +3974,11 @@
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Vector2) -> tuple[float, float]
 
 
+<a id='materialx-pymaterialxcore-vector3'></a>
+
 - **Vector3**: 
+
+  - Inherits from: [VectorBase](#materialx-pymaterialxcore-vectorbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3704,7 +4012,11 @@
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Vector3) -> tuple[float, float, float]
 
 
+<a id='materialx-pymaterialxcore-vector4'></a>
+
 - **Vector4**: 
+
+  - Inherits from: [VectorBase](#materialx-pymaterialxcore-vectorbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3733,9 +4045,17 @@
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Vector4) -> tuple[float, float, float, float]
 
 
+<a id='materialx-pymaterialxcore-vectorbase'></a>
+
 - **VectorBase**: 
 
+  - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
+
+<a id='materialx-pymaterialxcore-visibility'></a>
+
 - **Visibility**: 
+
+  - Inherits from: [GeomElement](#materialx-pymaterialxcore-geomelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
@@ -3860,11 +4180,23 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 ### Classes
 
+<a id='materialx-pymaterialxformat-exceptionfilemissing'></a>
+
 - **ExceptionFileMissing**: 
+
+  - Inherits from: [Exception](#materialx-pymaterialxformat-exception), [BaseException](#materialx-pymaterialxformat-baseexception)
+
+<a id='materialx-pymaterialxformat-exceptionparseerror'></a>
 
 - **ExceptionParseError**: 
 
+  - Inherits from: [Exception](#materialx-pymaterialxformat-exception), [BaseException](#materialx-pymaterialxformat-baseexception)
+
+<a id='materialx-pymaterialxformat-filepath'></a>
+
 - **FilePath**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
 
   - Methods:
 
@@ -3953,7 +4285,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `getModulePath`: getModulePath() -> MaterialX.PyMaterialXFormat.FilePath
 
 
+<a id='materialx-pymaterialxformat-filesearchpath'></a>
+
 - **FileSearchPath**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
 
   - Methods:
 
@@ -4001,6 +4337,8 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         On success, the combined path is returned; otherwise the original filename is returned unmodified.
 
 
+<a id='materialx-pymaterialxformat-format'></a>
+
 - **Format**: Members:
 
   FormatWindows
@@ -4009,7 +4347,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   FormatNative
 
+  - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
+
   - Attributes: name, value, FormatWindows, FormatPosix, FormatNative
+
+<a id='materialx-pymaterialxformat-type'></a>
 
 - **Type**: Members:
 
@@ -4019,20 +4361,30 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   TypeNetwork
 
+  - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
+
   - Attributes: name, value, TypeRelative, TypeAbsolute, TypeNetwork
+
+<a id='materialx-pymaterialxformat-xmlreadoptions'></a>
 
 - **XmlReadOptions**: 
 
+  - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
+
   - Attributes: readXIncludeFunction, readComments, readNewlines, upgradeVersion, parentXIncludes
 
+<a id='materialx-pymaterialxformat-xmlwriteoptions'></a>
+
 - **XmlWriteOptions**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
 
   - Attributes: writeXIncludeEnable, elementPredicate
 
 
 ### Functions
 
-- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x00000235A36D1230>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
+- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932EB0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
 
 - `getEnvironmentPath`: getEnvironmentPath(sep: str = ';') -> MaterialX.PyMaterialXFormat.FileSearchPath
 
@@ -4044,7 +4396,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 - `loadLibraries`: loadLibraries(libraryFolders: list[MaterialX.PyMaterialXFormat.FilePath], searchPath: MaterialX.PyMaterialXFormat.FileSearchPath, doc: MaterialX.PyMaterialXCore.Document, excludeFiles: set[str] = set(), readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> set[str]
 
-- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x00000235A3730A30>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932C30>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 Load a library of implementations from the provided document, replacing any previously loaded content.
 
@@ -4052,9 +4404,9 @@ Load a library of implementations from the provided document, replacing any prev
 
 - `readFile`: readFile(arg0: MaterialX.PyMaterialXFormat.FilePath) -> str
 
-- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x00000235A36D18F0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932570>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
-- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x00000235A32B0FF0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932330>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 - `writeToXmlFile`: writeToXmlFile(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, writeOptions: MaterialX.PyMaterialXFormat.XmlWriteOptions = None) -> None
 
@@ -4073,7 +4425,11 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 ### Classes
 
+<a id='materialx-pymaterialxgenglsl-esslshadergenerator'></a>
+
 - **EsslShaderGenerator**: 
+
+  - Inherits from: [GlslShaderGenerator](#materialx-pymaterialxgenglsl-glslshadergenerator), [HwShaderGenerator](#materialx-pymaterialxgenglsl-hwshadergenerator), [ShaderGenerator](#materialx-pymaterialxgenglsl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenglsl-pybind11_object)
 
   - Methods:
 
@@ -4095,7 +4451,11 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
         Return the version string for the ESSL version this generator is for.
 
 
+<a id='materialx-pymaterialxgenglsl-glslresourcebindingcontext'></a>
+
 - **GlslResourceBindingContext**: 
+
+  - Inherits from: [HwResourceBindingContext](#materialx-pymaterialxgenglsl-hwresourcebindingcontext), [GenUserData](#materialx-pymaterialxgenglsl-genuserdata), [pybind11_object](#materialx-pymaterialxgenglsl-pybind11_object)
 
   - Methods:
 
@@ -4108,7 +4468,11 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
     - `emitResourceBindings`: emitResourceBindings(self: MaterialX.PyMaterialXGenGlsl.GlslResourceBindingContext, arg0: MaterialX.PyMaterialXGenShader.GenContext, arg1: MaterialX.PyMaterialXGenShader.VariableBlock, arg2: MaterialX.PyMaterialXGenShader.ShaderStage) -> None
 
 
+<a id='materialx-pymaterialxgenglsl-glslshadergenerator'></a>
+
 - **GlslShaderGenerator**: 
+
+  - Inherits from: [HwShaderGenerator](#materialx-pymaterialxgenglsl-hwshadergenerator), [ShaderGenerator](#materialx-pymaterialxgenglsl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenglsl-pybind11_object)
 
   - Methods:
 
@@ -4130,7 +4494,11 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
         Return the version string for the ESSL version this generator is for.
 
 
+<a id='materialx-pymaterialxgenglsl-vkshadergenerator'></a>
+
 - **VkShaderGenerator**: 
+
+  - Inherits from: [GlslShaderGenerator](#materialx-pymaterialxgenglsl-glslshadergenerator), [HwShaderGenerator](#materialx-pymaterialxgenglsl-hwshadergenerator), [ShaderGenerator](#materialx-pymaterialxgenglsl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenglsl-pybind11_object)
 
   - Methods:
 
@@ -4152,7 +4520,11 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
         Return the version string for the ESSL version this generator is for.
 
 
+<a id='materialx-pymaterialxgenglsl-wgslshadergenerator'></a>
+
 - **WgslShaderGenerator**: 
+
+  - Inherits from: [GlslShaderGenerator](#materialx-pymaterialxgenglsl-glslshadergenerator), [HwShaderGenerator](#materialx-pymaterialxgenglsl-hwshadergenerator), [ShaderGenerator](#materialx-pymaterialxgenglsl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenglsl-pybind11_object)
 
   - Methods:
 
@@ -4181,7 +4553,11 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 ### Classes
 
+<a id='materialx-pymaterialxgenmdl-mdlshadergenerator'></a>
+
 - **MdlShaderGenerator**: 
+
+  - Inherits from: [ShaderGenerator](#materialx-pymaterialxgenmdl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenmdl-pybind11_object)
 
   - Methods:
 
@@ -4200,7 +4576,11 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 ### Classes
 
+<a id='materialx-pymaterialxgenmsl-mslresourcebindingcontext'></a>
+
 - **MslResourceBindingContext**: 
+
+  - Inherits from: [HwResourceBindingContext](#materialx-pymaterialxgenmsl-hwresourcebindingcontext), [GenUserData](#materialx-pymaterialxgenmsl-genuserdata), [pybind11_object](#materialx-pymaterialxgenmsl-pybind11_object)
 
   - Methods:
 
@@ -4213,7 +4593,11 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
     - `emitResourceBindings`: emitResourceBindings(self: MaterialX.PyMaterialXGenMsl.MslResourceBindingContext, arg0: MaterialX.PyMaterialXGenShader.GenContext, arg1: MaterialX.PyMaterialXGenShader.VariableBlock, arg2: MaterialX.PyMaterialXGenShader.ShaderStage) -> None
 
 
+<a id='materialx-pymaterialxgenmsl-mslshadergenerator'></a>
+
 - **MslShaderGenerator**: 
+
+  - Inherits from: [HwShaderGenerator](#materialx-pymaterialxgenmsl-hwshadergenerator), [ShaderGenerator](#materialx-pymaterialxgenmsl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenmsl-pybind11_object)
 
   - Methods:
 
@@ -4242,7 +4626,11 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 ### Classes
 
+<a id='materialx-pymaterialxgenosl-oslshadergenerator'></a>
+
 - **OslShaderGenerator**: 
+
+  - Inherits from: [ShaderGenerator](#materialx-pymaterialxgenosl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenosl-pybind11_object)
 
   - Methods:
 
@@ -4272,9 +4660,17 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 ### Classes
 
+<a id='materialx-pymaterialxgenshader-applicationvariablehandler'></a>
+
 - **ApplicationVariableHandler**: 
 
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
+
+<a id='materialx-pymaterialxgenshader-colormanagementsystem'></a>
+
 - **ColorManagementSystem**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4293,11 +4689,19 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Returns whether this color management system supports a provided transform.
 
 
+<a id='materialx-pymaterialxgenshader-colorspacetransform'></a>
+
 - **ColorSpaceTransform**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Attributes: sourceSpace, targetSpace, type
 
+<a id='materialx-pymaterialxgenshader-defaultcolormanagementsystem'></a>
+
 - **DefaultColorManagementSystem**: 
+
+  - Inherits from: [ColorManagementSystem](#materialx-pymaterialxgenshader-colormanagementsystem), [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4309,7 +4713,11 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Return the ColorManagementSystem name.
 
 
+<a id='materialx-pymaterialxgenshader-gencontext'></a>
+
 - **GenContext**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4360,11 +4768,19 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Get handler for application variables.
 
 
+<a id='materialx-pymaterialxgenshader-genoptions'></a>
+
 - **GenOptions**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Attributes: shaderInterfaceType, fileTextureVerticalFlip, targetColorSpaceOverride, targetDistanceUnit, addUpstreamDependencies, libraryPrefix, emitColorTransforms, hwTransparency, hwSpecularEnvironmentMethod, hwSrgbEncodeOutput, hwWriteDepthMoments, hwShadowMap, hwMaxActiveLightSources, hwNormalizeUdimTexCoords, hwAmbientOcclusion, hwWriteAlbedoTable, hwWriteEnvPrefilter, hwImplicitBitangents
 
+<a id='materialx-pymaterialxgenshader-genuserdata'></a>
+
 - **GenUserData**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4373,7 +4789,11 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Return our self pointer.
 
 
+<a id='materialx-pymaterialxgenshader-hwresourcebindingcontext'></a>
+
 - **HwResourceBindingContext**: 
+
+  - Inherits from: [GenUserData](#materialx-pymaterialxgenshader-genuserdata), [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4383,7 +4803,11 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
     - `emitResourceBindings`: emitResourceBindings(self: MaterialX.PyMaterialXGenShader.HwResourceBindingContext, arg0: MaterialX.PyMaterialXGenShader.GenContext, arg1: MaterialX.PyMaterialXGenShader.VariableBlock, arg2: MaterialX.PyMaterialXGenShader.ShaderStage) -> None
 
 
+<a id='materialx-pymaterialxgenshader-hwshadergenerator'></a>
+
 - **HwShaderGenerator**: 
+
+  - Inherits from: [ShaderGenerator](#materialx-pymaterialxgenshader-shadergenerator), [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4396,6 +4820,8 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
     - `unbindLightShaders`: unbindLightShaders(self: MaterialX.PyMaterialXGenShader.GenContext) -> None
 
 
+<a id='materialx-pymaterialxgenshader-hwspecularenvironmentmethod'></a>
+
 - **HwSpecularEnvironmentMethod**: Members:
 
   SPECULAR_ENVIRONMENT_PREFILTER
@@ -4404,9 +4830,15 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
   SPECULAR_ENVIRONMENT_NONE
 
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
+
   - Attributes: name, value, SPECULAR_ENVIRONMENT_PREFILTER, SPECULAR_ENVIRONMENT_FIS, SPECULAR_ENVIRONMENT_NONE
 
+<a id='materialx-pymaterialxgenshader-shader'></a>
+
 - **Shader**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4466,7 +4898,11 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Set the value string of the given attribute.
 
 
+<a id='materialx-pymaterialxgenshader-shadergenerator'></a>
+
 - **ShaderGenerator**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4515,15 +4951,23 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Register metadata that should be exported to the generated shaders.
 
 
+<a id='materialx-pymaterialxgenshader-shaderinterfacetype'></a>
+
 - **ShaderInterfaceType**: Members:
 
   SHADER_INTERFACE_COMPLETE
 
   SHADER_INTERFACE_REDUCED
 
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
+
   - Attributes: name, value, SHADER_INTERFACE_COMPLETE, SHADER_INTERFACE_REDUCED
 
+<a id='materialx-pymaterialxgenshader-shaderport'></a>
+
 - **ShaderPort**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4639,9 +5083,17 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Return the emitted state of this port.
 
 
+<a id='materialx-pymaterialxgenshader-shaderportpredicate'></a>
+
 - **ShaderPortPredicate**: 
 
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
+
+<a id='materialx-pymaterialxgenshader-shaderstage'></a>
+
 - **ShaderStage**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4705,7 +5157,11 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Return a map of all output blocks.
 
 
+<a id='materialx-pymaterialxgenshader-shadertranslator'></a>
+
 - **ShaderTranslator**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4722,7 +5178,11 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Translate each material in the input document to the destination shading model.
 
 
+<a id='materialx-pymaterialxgenshader-typedesc'></a>
+
 - **TypeDesc**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4781,7 +5241,11 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Return true if the type represents a closure.
 
 
+<a id='materialx-pymaterialxgenshader-unitsystem'></a>
+
 - **UnitSystem**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4813,11 +5277,19 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Returns the currently assigned unit converter registry.
 
 
+<a id='materialx-pymaterialxgenshader-unittransform'></a>
+
 - **UnitTransform**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Attributes: sourceUnit, targetUnit, type, unitType
 
+<a id='materialx-pymaterialxgenshader-variableblock'></a>
+
 - **VariableBlock**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
@@ -4897,6 +5369,8 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
 ### Classes
 
+<a id='materialx-pymaterialxrender-basetype'></a>
+
 - **BaseType**: Members:
 
   UINT8
@@ -4907,9 +5381,15 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
   FLOAT
 
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
+
   - Attributes: name, value, UINT8, UINT16, HALF, FLOAT
 
+<a id='materialx-pymaterialxrender-camera'></a>
+
 - **Camera**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -4993,7 +5473,11 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
     - `transformPointPerspective`: transformPointPerspective(arg0: MaterialX.PyMaterialXCore.Matrix44, arg1: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
 
 
+<a id='materialx-pymaterialxrender-cgltfloader'></a>
+
 - **CgltfLoader**: 
+
+  - Inherits from: [GeometryLoader](#materialx-pymaterialxrender-geometryloader), [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5005,9 +5489,17 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Load geometry from file path.
 
 
+<a id='materialx-pymaterialxrender-exceptionrendererror'></a>
+
 - **ExceptionRenderError**: 
 
+  - Inherits from: [Exception](#materialx-pymaterialxrender-exception), [BaseException](#materialx-pymaterialxrender-baseexception)
+
+<a id='materialx-pymaterialxrender-geometryhandler'></a>
+
 - **GeometryHandler**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5064,7 +5556,11 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Return the minimum bounds for all meshes.
 
 
+<a id='materialx-pymaterialxrender-geometryloader'></a>
+
 - **GeometryLoader**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5078,7 +5574,11 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Load geometry from file path.
 
 
+<a id='materialx-pymaterialxrender-image'></a>
+
 - **Image**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5207,9 +5707,17 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Return the resource buffer deallocator for this image.
 
 
+<a id='materialx-pymaterialxrender-imagebufferdeallocator'></a>
+
 - **ImageBufferDeallocator**: 
 
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
+
+<a id='materialx-pymaterialxrender-imagehandler'></a>
+
 - **ImageHandler**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5237,7 +5745,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
             if save succeeded
 
 
-    - `acquireImage`: acquireImage(self: MaterialX.PyMaterialXRender.ImageHandler, filePath: MaterialX.PyMaterialXFormat.FilePath, defaultColor: MaterialX.PyMaterialXCore.Color4 = <MaterialX.PyMaterialXCore.Color4 object at 0x00000235A370C8F0>) -> MaterialX.PyMaterialXRender.Image
+    - `acquireImage`: acquireImage(self: MaterialX.PyMaterialXRender.ImageHandler, filePath: MaterialX.PyMaterialXFormat.FilePath, defaultColor: MaterialX.PyMaterialXCore.Color4 = <MaterialX.PyMaterialXCore.Color4 object at 0x0000026BC6931B70>) -> MaterialX.PyMaterialXRender.Image
         
         Acquire an image from the cache or file system.
         
@@ -5309,7 +5817,11 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Acquire all images referenced by the given document, and return the images in a vector.
 
 
+<a id='materialx-pymaterialxrender-imageloader'></a>
+
 - **ImageLoader**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5336,11 +5848,19 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
   - Attributes: BMP_EXTENSION, EXR_EXTENSION, GIF_EXTENSION, HDR_EXTENSION, JPG_EXTENSION, JPEG_EXTENSION, PIC_EXTENSION, PNG_EXTENSION, PSD_EXTENSION, TGA_EXTENSION, TIF_EXTENSION, TIFF_EXTENSION, TXT_EXTENSION
 
+<a id='materialx-pymaterialxrender-imagesamplingproperties'></a>
+
 - **ImageSamplingProperties**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Attributes: uaddressMode, vaddressMode, filterType, defaultColor
 
+<a id='materialx-pymaterialxrender-lighthandler'></a>
+
 - **LightHandler**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5476,7 +5996,11 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
             context: Context to update
 
 
+<a id='materialx-pymaterialxrender-mesh'></a>
+
 - **Mesh**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5659,7 +6183,11 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Split the mesh into a single partition per UDIM.
 
 
+<a id='materialx-pymaterialxrender-meshpartition'></a>
+
 - **MeshPartition**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5706,7 +6234,11 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Set face count.
 
 
+<a id='materialx-pymaterialxrender-meshstream'></a>
+
 - **MeshStream**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5765,7 +6297,11 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
   - Attributes: POSITION_ATTRIBUTE, NORMAL_ATTRIBUTE, TEXCOORD_ATTRIBUTE, TANGENT_ATTRIBUTE, BITANGENT_ATTRIBUTE, COLOR_ATTRIBUTE, GEOMETRY_PROPERTY_ATTRIBUTE
 
+<a id='materialx-pymaterialxrender-shaderrenderer'></a>
+
 - **ShaderRenderer**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5854,7 +6390,11 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Render the current program to an offscreen buffer.
 
 
+<a id='materialx-pymaterialxrender-stbimageloader'></a>
+
 - **StbImageLoader**: 
+
+  - Inherits from: [ImageLoader](#materialx-pymaterialxrender-imageloader), [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5877,7 +6417,11 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
     - `loadImage`: loadImage(self: MaterialX.PyMaterialXRender.StbImageLoader, arg0: MaterialX.PyMaterialXFormat.FilePath) -> MaterialX.PyMaterialXRender.Image
 
 
+<a id='materialx-pymaterialxrender-tinyobjloader'></a>
+
 - **TinyObjLoader**: 
+
+  - Inherits from: [GeometryLoader](#materialx-pymaterialxrender-geometryloader), [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
@@ -5911,7 +6455,11 @@ FLOAT, HALF, UINT16, UINT8
 
 ### Classes
 
+<a id='materialx-pymaterialxrenderglsl-gltexturehandler'></a>
+
 - **GLTextureHandler**: 
+
+  - Inherits from: [ImageHandler](#materialx-pymaterialxrenderglsl-imagehandler), [pybind11_object](#materialx-pymaterialxrenderglsl-pybind11_object)
 
   - Methods:
 
@@ -5938,7 +6486,11 @@ FLOAT, HALF, UINT16, UINT8
         Release rendering resources for the given image, or for all cached images if no image pointer is specified.
 
 
+<a id='materialx-pymaterialxrenderglsl-glslprogram'></a>
+
 - **GlslProgram**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrenderglsl-pybind11_object)
 
   - Methods:
 
@@ -6086,7 +6638,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: UNDEFINED_OPENGL_RESOURCE_ID, UNDEFINED_OPENGL_PROGRAM_LOCATION
 
+<a id='materialx-pymaterialxrenderglsl-glslrenderer'></a>
+
 - **GlslRenderer**: 
+
+  - Inherits from: [ShaderRenderer](#materialx-pymaterialxrenderglsl-shaderrenderer), [pybind11_object](#materialx-pymaterialxrenderglsl-pybind11_object)
 
   - Methods:
 
@@ -6143,11 +6699,19 @@ FLOAT, HALF, UINT16, UINT8
         Return the underlying GLSL program.
 
 
+<a id='materialx-pymaterialxrenderglsl-input'></a>
+
 - **Input**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrenderglsl-pybind11_object)
 
   - Attributes: INVALID_OPENGL_TYPE, location, gltype, size, typeString, value, isConstant, path
 
+<a id='materialx-pymaterialxrenderglsl-texturebaker'></a>
+
 - **TextureBaker**: 
+
+  - Inherits from: [GlslRenderer](#materialx-pymaterialxrenderglsl-glslrenderer), [ShaderRenderer](#materialx-pymaterialxrenderglsl-shaderrenderer), [pybind11_object](#materialx-pymaterialxrenderglsl-pybind11_object)
 
   - Methods:
 
@@ -6314,7 +6878,11 @@ FLOAT, HALF, UINT16, UINT8
 
 ### Classes
 
+<a id='materialx-pymaterialxrenderosl-oslrenderer'></a>
+
 - **OslRenderer**: 
+
+  - Inherits from: [ShaderRenderer](#materialx-pymaterialxrenderosl-shaderrenderer), [pybind11_object](#materialx-pymaterialxrenderosl-pybind11_object)
 
   - Methods:
 
@@ -6468,7 +7036,11 @@ FLOAT, HALF, UINT16, UINT8
 
 ### Classes
 
+<a id='materialx-datatype-attributedef'></a>
+
 - **AttributeDef**: 
+
+  - Inherits from: [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -6516,7 +7088,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-backdrop'></a>
+
 - **Backdrop**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -6577,7 +7153,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY, CONTAINS_ATTRIBUTE, WIDTH_ATTRIBUTE, HEIGHT_ATTRIBUTE
 
+<a id='materialx-datatype-collection'></a>
+
 - **Collection**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -6653,7 +7233,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-color3'></a>
+
 - **Color3**: 
+
+  - Inherits from: [VectorBase](#materialx-datatype-vectorbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -6692,7 +7276,11 @@ FLOAT, HALF, UINT16, UINT8
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Color3) -> tuple[float, float, float]
 
 
+<a id='materialx-datatype-color4'></a>
+
 - **Color4**: 
+
+  - Inherits from: [VectorBase](#materialx-datatype-vectorbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -6721,11 +7309,19 @@ FLOAT, HALF, UINT16, UINT8
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Color4) -> tuple[float, float, float, float]
 
 
+<a id='materialx-datatype-commentelement'></a>
+
 - **CommentElement**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-document'></a>
+
 - **Document**: 
+
+  - Inherits from: [GraphElement](#materialx-datatype-graphelement), [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -7225,7 +7821,11 @@ FLOAT, HALF, UINT16, UINT8
     - `getMaterials`: (Deprecated) Return a vector of all materials in the document.
 
 
+<a id='materialx-datatype-edge'></a>
+
 - **Edge**: 
+
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -7249,7 +7849,11 @@ FLOAT, HALF, UINT16, UINT8
         Return the ColorManagementSystem name.
 
 
+<a id='materialx-datatype-element'></a>
+
 - **Element**: 
+
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -7656,23 +8260,51 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: NAME_ATTRIBUTE, FILE_PREFIX_ATTRIBUTE, GEOM_PREFIX_ATTRIBUTE, COLOR_SPACE_ATTRIBUTE, INHERIT_ATTRIBUTE, NAMESPACE_ATTRIBUTE, DOC_ATTRIBUTE, XPOS_ATTRIBUTE, YPOS_ATTRIBUTE
 
+<a id='materialx-datatype-elementequivalenceoptions'></a>
+
 - **ElementEquivalenceOptions**: 
+
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Attributes: performValueComparisons, floatFormat, floatPrecision, attributeExclusionList
 
+<a id='materialx-datatype-elementpredicate'></a>
+
 - **ElementPredicate**: 
+
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
+
+<a id='materialx-datatype-exception'></a>
 
 - **Exception**: 
 
+  - Inherits from: [Exception](#materialx-datatype-exception), [BaseException](#materialx-datatype-baseexception)
+
+<a id='materialx-datatype-exceptionfoundcycle'></a>
+
 - **ExceptionFoundCycle**: 
+
+  - Inherits from: [Exception](#materialx-datatype-exception), [BaseException](#materialx-datatype-baseexception)
+
+<a id='materialx-datatype-exceptionorphanedelement'></a>
 
 - **ExceptionOrphanedElement**: 
 
+  - Inherits from: [Exception](#materialx-datatype-exception), [BaseException](#materialx-datatype-baseexception)
+
+<a id='materialx-datatype-genericelement'></a>
+
 - **GenericElement**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-geomelement'></a>
+
 - **GeomElement**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -7716,7 +8348,11 @@ FLOAT, HALF, UINT16, UINT8
         Return the Collection, if any, with the given name.
 
 
+<a id='materialx-datatype-geominfo'></a>
+
 - **GeomInfo**: 
+
+  - Inherits from: [GeomElement](#materialx-datatype-geomelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -7789,11 +8425,19 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-geomprop'></a>
+
 - **GeomProp**: 
+
+  - Inherits from: [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-geompropdef'></a>
+
 - **GeomPropDef**: 
+
+  - Inherits from: [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -7865,7 +8509,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-graphelement'></a>
+
 - **GraphElement**: 
+
+  - Inherits from: [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -7960,7 +8608,11 @@ FLOAT, HALF, UINT16, UINT8
         If declarations for the contained nodes are provided as nodedefs in the owning document, then they will be used to provide additional formatting details.
 
 
+<a id='materialx-datatype-graphiterator'></a>
+
 - **GraphIterator**: 
+
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -8007,7 +8659,11 @@ FLOAT, HALF, UINT16, UINT8
         Return the prune subgraph flag, which controls whether the current subgraph is pruned from traversal.
 
 
+<a id='materialx-datatype-implementation'></a>
+
 - **Implementation**: 
+
+  - Inherits from: [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -8068,9 +8724,17 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY, FILE_ATTRIBUTE, FUNCTION_ATTRIBUTE
 
+<a id='materialx-datatype-inheritanceiterator'></a>
+
 - **InheritanceIterator**: 
 
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
+
+<a id='materialx-datatype-input'></a>
+
 - **Input**: 
+
+  - Inherits from: [PortElement](#materialx-datatype-portelement), [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -8113,7 +8777,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-interfaceelement'></a>
+
 - **InterfaceElement**: 
+
+  - Inherits from: [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -8401,7 +9069,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: NODE_DEF_ATTRIBUTE
 
+<a id='materialx-datatype-linearunitconverter'></a>
+
 - **LinearUnitConverter**: 
+
+  - Inherits from: [UnitConverter](#materialx-datatype-unitconverter), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -8467,7 +9139,11 @@ FLOAT, HALF, UINT16, UINT8
         Returns Empty string if not found
 
 
+<a id='materialx-datatype-look'></a>
+
 - **Look**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -8629,7 +9305,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-lookgroup'></a>
+
 - **LookGroup**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -8655,7 +9335,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY, LOOKS_ATTRIBUTE, ACTIVE_ATTRIBUTE
 
+<a id='materialx-datatype-materialassign'></a>
+
 - **MaterialAssign**: 
+
+  - Inherits from: [GeomElement](#materialx-datatype-geomelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -8696,7 +9380,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-matrix33'></a>
+
 - **Matrix33**: 
+
+  - Inherits from: [MatrixBase](#materialx-datatype-matrixbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -8775,7 +9463,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: IDENTITY
 
+<a id='materialx-datatype-matrix44'></a>
+
 - **Matrix44**: 
+
+  - Inherits from: [MatrixBase](#materialx-datatype-matrixbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -8860,17 +9552,33 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: IDENTITY
 
+<a id='materialx-datatype-matrixbase'></a>
+
 - **MatrixBase**: 
+
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
+
+<a id='materialx-datatype-member'></a>
 
 - **Member**: 
 
+  - Inherits from: [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
+
   - Attributes: CATEGORY
+
+<a id='materialx-datatype-newlineelement'></a>
 
 - **NewlineElement**: 
 
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
+
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-node'></a>
+
 - **Node**: 
+
+  - Inherits from: [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -8939,7 +9647,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-nodedef'></a>
+
 - **NodeDef**: 
+
+  - Inherits from: [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -8994,7 +9706,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY, NODE_ATTRIBUTE, TEXTURE_NODE_GROUP, PROCEDURAL_NODE_GROUP, GEOMETRIC_NODE_GROUP, ADJUSTMENT_NODE_GROUP, CONDITIONAL_NODE_GROUP, CHANNEL_NODE_GROUP, ORGANIZATION_NODE_GROUP, TRANSLATION_NODE_GROUP
 
+<a id='materialx-datatype-nodegraph'></a>
+
 - **NodeGraph**: 
+
+  - Inherits from: [GraphElement](#materialx-datatype-graphelement), [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9054,9 +9770,17 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-nodepredicate'></a>
+
 - **NodePredicate**: 
 
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
+
+<a id='materialx-datatype-output'></a>
+
 - **Output**: 
+
+  - Inherits from: [PortElement](#materialx-datatype-portelement), [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9067,7 +9791,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY, DEFAULT_INPUT_ATTRIBUTE
 
+<a id='materialx-datatype-portelement'></a>
+
 - **PortElement**: 
+
+  - Inherits from: [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9137,11 +9865,19 @@ FLOAT, HALF, UINT16, UINT8
         If the given input is not present, then an empty OutputPtr is returned.
 
 
+<a id='materialx-datatype-property'></a>
+
 - **Property**: 
+
+  - Inherits from: [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-propertyassign'></a>
+
 - **PropertyAssign**: 
+
+  - Inherits from: [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9202,7 +9938,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-propertyset'></a>
+
 - **PropertySet**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9237,7 +9977,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-propertysetassign'></a>
+
 - **PropertySetAssign**: 
+
+  - Inherits from: [GeomElement](#materialx-datatype-geomelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9268,7 +10012,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-stringresolver'></a>
+
 - **StringResolver**: 
+
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9331,7 +10079,11 @@ FLOAT, HALF, UINT16, UINT8
         Given an input string and type, apply all appropriate modifiers and return the resulting string.
 
 
+<a id='materialx-datatype-targetdef'></a>
+
 - **TargetDef**: 
+
+  - Inherits from: [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9344,11 +10096,19 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-token'></a>
+
 - **Token**: 
+
+  - Inherits from: [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-treeiterator'></a>
+
 - **TreeIterator**: 
+
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9373,7 +10133,11 @@ FLOAT, HALF, UINT16, UINT8
         Return the prune subtree flag, which controls whether the current subtree is pruned from traversal.
 
 
+<a id='materialx-datatype-typedef'></a>
+
 - **TypeDef**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9433,7 +10197,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY, SEMANTIC_ATTRIBUTE, CONTEXT_ATTRIBUTE
 
+<a id='materialx-datatype-typedelement'></a>
+
 - **TypedElement**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9469,7 +10237,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE_ATTRIBUTE
 
+<a id='materialx-datatype-typedvalue_boolean'></a>
+
 - **TypedValue_boolean**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9488,7 +10260,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_booleanarray'></a>
+
 - **TypedValue_booleanarray**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9507,7 +10283,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_color3'></a>
+
 - **TypedValue_color3**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9526,7 +10306,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_color4'></a>
+
 - **TypedValue_color4**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9545,7 +10329,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_float'></a>
+
 - **TypedValue_float**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9564,7 +10352,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_floatarray'></a>
+
 - **TypedValue_floatarray**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9583,7 +10375,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_integer'></a>
+
 - **TypedValue_integer**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9602,7 +10398,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_integerarray'></a>
+
 - **TypedValue_integerarray**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9621,7 +10421,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_matrix33'></a>
+
 - **TypedValue_matrix33**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9640,7 +10444,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_matrix44'></a>
+
 - **TypedValue_matrix44**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9659,7 +10467,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_string'></a>
+
 - **TypedValue_string**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9678,7 +10490,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_stringarray'></a>
+
 - **TypedValue_stringarray**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9697,7 +10513,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_vector2'></a>
+
 - **TypedValue_vector2**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9716,7 +10536,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_vector3'></a>
+
 - **TypedValue_vector3**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9735,7 +10559,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-typedvalue_vector4'></a>
+
 - **TypedValue_vector4**: 
+
+  - Inherits from: [Value](#materialx-datatype-value), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9754,11 +10582,19 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: TYPE
 
+<a id='materialx-datatype-unit'></a>
+
 - **Unit**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-unitconverter'></a>
+
 - **UnitConverter**: 
+
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9816,7 +10652,11 @@ FLOAT, HALF, UINT16, UINT8
         Returns Empty string if not found
 
 
+<a id='materialx-datatype-unitconverterregistry'></a>
+
 - **UnitConverterRegistry**: 
+
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9847,7 +10687,11 @@ FLOAT, HALF, UINT16, UINT8
         Clear all unit converters from the registry.
 
 
+<a id='materialx-datatype-unitdef'></a>
+
 - **UnitDef**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9889,7 +10733,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY, UNITTYPE_ATTRIBUTE
 
+<a id='materialx-datatype-unittypedef'></a>
+
 - **UnitTypeDef**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9900,7 +10748,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-value'></a>
+
 - **Value**: 
+
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -9917,7 +10769,11 @@ FLOAT, HALF, UINT16, UINT8
     - `createValueFromStrings`: createValueFromStrings(value: str, type: str, typeDefPtr: MaterialX_v1_39_5::TypeDef = None) -> MaterialX.PyMaterialXCore.Value
 
 
+<a id='materialx-datatype-valueelement'></a>
+
 - **ValueElement**: 
+
+  - Inherits from: [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -10030,11 +10886,19 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: VALUE_ATTRIBUTE, INTERFACE_NAME_ATTRIBUTE, IMPLEMENTATION_NAME_ATTRIBUTE, IMPLEMENTATION_TYPE_ATTRIBUTE, ENUM_ATTRIBUTE, ENUM_VALUES_ATTRIBUTE, UNIT_ATTRIBUTE, UI_NAME_ATTRIBUTE, UI_FOLDER_ATTRIBUTE, UI_MIN_ATTRIBUTE, UI_MAX_ATTRIBUTE, UI_SOFT_MIN_ATTRIBUTE, UI_SOFT_MAX_ATTRIBUTE, UI_STEP_ATTRIBUTE, UI_ADVANCED_ATTRIBUTE
 
+<a id='materialx-datatype-variant'></a>
+
 - **Variant**: 
+
+  - Inherits from: [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-variantassign'></a>
+
 - **VariantAssign**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -10070,7 +10934,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-variantset'></a>
+
 - **VariantSet**: 
+
+  - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -10102,7 +10970,11 @@ FLOAT, HALF, UINT16, UINT8
 
   - Attributes: CATEGORY
 
+<a id='materialx-datatype-vector2'></a>
+
 - **Vector2**: 
+
+  - Inherits from: [VectorBase](#materialx-datatype-vectorbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -10136,7 +11008,11 @@ FLOAT, HALF, UINT16, UINT8
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Vector2) -> tuple[float, float]
 
 
+<a id='materialx-datatype-vector3'></a>
+
 - **Vector3**: 
+
+  - Inherits from: [VectorBase](#materialx-datatype-vectorbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -10170,7 +11046,11 @@ FLOAT, HALF, UINT16, UINT8
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Vector3) -> tuple[float, float, float]
 
 
+<a id='materialx-datatype-vector4'></a>
+
 - **Vector4**: 
+
+  - Inherits from: [VectorBase](#materialx-datatype-vectorbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -10199,9 +11079,17 @@ FLOAT, HALF, UINT16, UINT8
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Vector4) -> tuple[float, float, float, float]
 
 
+<a id='materialx-datatype-vectorbase'></a>
+
 - **VectorBase**: 
 
+  - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
+
+<a id='materialx-datatype-visibility'></a>
+
 - **Visibility**: 
+
+  - Inherits from: [GeomElement](#materialx-datatype-geomelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
@@ -10356,7 +11244,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 ### Classes
 
+<a id='materialx-main-attributedef'></a>
+
 - **AttributeDef**: 
+
+  - Inherits from: [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -10404,7 +11296,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-backdrop'></a>
+
 - **Backdrop**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -10465,7 +11361,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY, CONTAINS_ATTRIBUTE, WIDTH_ATTRIBUTE, HEIGHT_ATTRIBUTE
 
+<a id='materialx-main-collection'></a>
+
 - **Collection**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -10541,7 +11441,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-color3'></a>
+
 - **Color3**: 
+
+  - Inherits from: [VectorBase](#materialx-main-vectorbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -10580,7 +11484,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Color3) -> tuple[float, float, float]
 
 
+<a id='materialx-main-color4'></a>
+
 - **Color4**: 
+
+  - Inherits from: [VectorBase](#materialx-main-vectorbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -10609,11 +11517,19 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Color4) -> tuple[float, float, float, float]
 
 
+<a id='materialx-main-commentelement'></a>
+
 - **CommentElement**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-document'></a>
+
 - **Document**: 
+
+  - Inherits from: [GraphElement](#materialx-main-graphelement), [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -11113,7 +12029,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `getMaterials`: (Deprecated) Return a vector of all materials in the document.
 
 
+<a id='materialx-main-edge'></a>
+
 - **Edge**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -11137,7 +12057,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Return the ColorManagementSystem name.
 
 
+<a id='materialx-main-element'></a>
+
 - **Element**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -11544,23 +12468,55 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: NAME_ATTRIBUTE, FILE_PREFIX_ATTRIBUTE, GEOM_PREFIX_ATTRIBUTE, COLOR_SPACE_ATTRIBUTE, INHERIT_ATTRIBUTE, NAMESPACE_ATTRIBUTE, DOC_ATTRIBUTE, XPOS_ATTRIBUTE, YPOS_ATTRIBUTE
 
+<a id='materialx-main-elementequivalenceoptions'></a>
+
 - **ElementEquivalenceOptions**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Attributes: performValueComparisons, floatFormat, floatPrecision, attributeExclusionList
 
+<a id='materialx-main-elementpredicate'></a>
+
 - **ElementPredicate**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
+
+<a id='materialx-main-exception'></a>
 
 - **Exception**: 
 
+  - Inherits from: [Exception](#materialx-main-exception), [BaseException](#materialx-main-baseexception)
+
+<a id='materialx-main-exceptionfilemissing'></a>
+
 - **ExceptionFileMissing**: 
+
+  - Inherits from: [Exception](#materialx-main-exception), [BaseException](#materialx-main-baseexception)
+
+<a id='materialx-main-exceptionfoundcycle'></a>
 
 - **ExceptionFoundCycle**: 
 
+  - Inherits from: [Exception](#materialx-main-exception), [BaseException](#materialx-main-baseexception)
+
+<a id='materialx-main-exceptionorphanedelement'></a>
+
 - **ExceptionOrphanedElement**: 
+
+  - Inherits from: [Exception](#materialx-main-exception), [BaseException](#materialx-main-baseexception)
+
+<a id='materialx-main-exceptionparseerror'></a>
 
 - **ExceptionParseError**: 
 
+  - Inherits from: [Exception](#materialx-main-exception), [BaseException](#materialx-main-baseexception)
+
+<a id='materialx-main-filepath'></a>
+
 - **FilePath**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -11649,7 +12605,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `getModulePath`: getModulePath() -> MaterialX.PyMaterialXFormat.FilePath
 
 
+<a id='materialx-main-filesearchpath'></a>
+
 - **FileSearchPath**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -11697,6 +12657,8 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         On success, the combined path is returned; otherwise the original filename is returned unmodified.
 
 
+<a id='materialx-main-format'></a>
+
 - **Format**: Members:
 
   FormatWindows
@@ -11705,13 +12667,23 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   FormatNative
 
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
+
   - Attributes: name, value, FormatWindows, FormatPosix, FormatNative
+
+<a id='materialx-main-genericelement'></a>
 
 - **GenericElement**: 
 
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
+
   - Attributes: CATEGORY
 
+<a id='materialx-main-geomelement'></a>
+
 - **GeomElement**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -11755,7 +12727,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Return the Collection, if any, with the given name.
 
 
+<a id='materialx-main-geominfo'></a>
+
 - **GeomInfo**: 
+
+  - Inherits from: [GeomElement](#materialx-main-geomelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -11828,11 +12804,19 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-geomprop'></a>
+
 - **GeomProp**: 
+
+  - Inherits from: [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-geompropdef'></a>
+
 - **GeomPropDef**: 
+
+  - Inherits from: [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -11904,7 +12888,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-graphelement'></a>
+
 - **GraphElement**: 
+
+  - Inherits from: [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -11999,7 +12987,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         If declarations for the contained nodes are provided as nodedefs in the owning document, then they will be used to provide additional formatting details.
 
 
+<a id='materialx-main-graphiterator'></a>
+
 - **GraphIterator**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -12046,7 +13038,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Return the prune subgraph flag, which controls whether the current subgraph is pruned from traversal.
 
 
+<a id='materialx-main-implementation'></a>
+
 - **Implementation**: 
+
+  - Inherits from: [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -12107,9 +13103,17 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY, FILE_ATTRIBUTE, FUNCTION_ATTRIBUTE
 
+<a id='materialx-main-inheritanceiterator'></a>
+
 - **InheritanceIterator**: 
 
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
+
+<a id='materialx-main-input'></a>
+
 - **Input**: 
+
+  - Inherits from: [PortElement](#materialx-main-portelement), [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -12152,7 +13156,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-interfaceelement'></a>
+
 - **InterfaceElement**: 
+
+  - Inherits from: [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -12440,7 +13448,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: NODE_DEF_ATTRIBUTE
 
+<a id='materialx-main-linearunitconverter'></a>
+
 - **LinearUnitConverter**: 
+
+  - Inherits from: [UnitConverter](#materialx-main-unitconverter), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -12506,7 +13518,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Returns Empty string if not found
 
 
+<a id='materialx-main-look'></a>
+
 - **Look**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -12668,7 +13684,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-lookgroup'></a>
+
 - **LookGroup**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -12694,7 +13714,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY, LOOKS_ATTRIBUTE, ACTIVE_ATTRIBUTE
 
+<a id='materialx-main-materialassign'></a>
+
 - **MaterialAssign**: 
+
+  - Inherits from: [GeomElement](#materialx-main-geomelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -12735,7 +13759,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-matrix33'></a>
+
 - **Matrix33**: 
+
+  - Inherits from: [MatrixBase](#materialx-main-matrixbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -12814,7 +13842,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: IDENTITY
 
+<a id='materialx-main-matrix44'></a>
+
 - **Matrix44**: 
+
+  - Inherits from: [MatrixBase](#materialx-main-matrixbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -12899,17 +13931,33 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: IDENTITY
 
+<a id='materialx-main-matrixbase'></a>
+
 - **MatrixBase**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
+
+<a id='materialx-main-member'></a>
 
 - **Member**: 
 
+  - Inherits from: [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
+
   - Attributes: CATEGORY
+
+<a id='materialx-main-newlineelement'></a>
 
 - **NewlineElement**: 
 
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
+
   - Attributes: CATEGORY
 
+<a id='materialx-main-node'></a>
+
 - **Node**: 
+
+  - Inherits from: [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -12978,7 +14026,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-nodedef'></a>
+
 - **NodeDef**: 
+
+  - Inherits from: [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13033,7 +14085,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY, NODE_ATTRIBUTE, TEXTURE_NODE_GROUP, PROCEDURAL_NODE_GROUP, GEOMETRIC_NODE_GROUP, ADJUSTMENT_NODE_GROUP, CONDITIONAL_NODE_GROUP, CHANNEL_NODE_GROUP, ORGANIZATION_NODE_GROUP, TRANSLATION_NODE_GROUP
 
+<a id='materialx-main-nodegraph'></a>
+
 - **NodeGraph**: 
+
+  - Inherits from: [GraphElement](#materialx-main-graphelement), [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13093,9 +14149,17 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-nodepredicate'></a>
+
 - **NodePredicate**: 
 
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
+
+<a id='materialx-main-output'></a>
+
 - **Output**: 
+
+  - Inherits from: [PortElement](#materialx-main-portelement), [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13106,7 +14170,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY, DEFAULT_INPUT_ATTRIBUTE
 
+<a id='materialx-main-portelement'></a>
+
 - **PortElement**: 
+
+  - Inherits from: [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13176,11 +14244,19 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         If the given input is not present, then an empty OutputPtr is returned.
 
 
+<a id='materialx-main-property'></a>
+
 - **Property**: 
+
+  - Inherits from: [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-propertyassign'></a>
+
 - **PropertyAssign**: 
+
+  - Inherits from: [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13241,7 +14317,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-propertyset'></a>
+
 - **PropertySet**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13276,7 +14356,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-propertysetassign'></a>
+
 - **PropertySetAssign**: 
+
+  - Inherits from: [GeomElement](#materialx-main-geomelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13307,7 +14391,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-stringresolver'></a>
+
 - **StringResolver**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13370,7 +14458,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Given an input string and type, apply all appropriate modifiers and return the resulting string.
 
 
+<a id='materialx-main-targetdef'></a>
+
 - **TargetDef**: 
+
+  - Inherits from: [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13383,11 +14475,19 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-token'></a>
+
 - **Token**: 
+
+  - Inherits from: [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-treeiterator'></a>
+
 - **TreeIterator**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13412,6 +14512,8 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Return the prune subtree flag, which controls whether the current subtree is pruned from traversal.
 
 
+<a id='materialx-main-type'></a>
+
 - **Type**: Members:
 
   TypeRelative
@@ -13420,9 +14522,15 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   TypeNetwork
 
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
+
   - Attributes: name, value, TypeRelative, TypeAbsolute, TypeNetwork
 
+<a id='materialx-main-typedef'></a>
+
 - **TypeDef**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13482,7 +14590,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY, SEMANTIC_ATTRIBUTE, CONTEXT_ATTRIBUTE
 
+<a id='materialx-main-typedelement'></a>
+
 - **TypedElement**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13518,7 +14630,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE_ATTRIBUTE
 
+<a id='materialx-main-typedvalue_boolean'></a>
+
 - **TypedValue_boolean**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13537,7 +14653,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_booleanarray'></a>
+
 - **TypedValue_booleanarray**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13556,7 +14676,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_color3'></a>
+
 - **TypedValue_color3**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13575,7 +14699,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_color4'></a>
+
 - **TypedValue_color4**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13594,7 +14722,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_float'></a>
+
 - **TypedValue_float**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13613,7 +14745,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_floatarray'></a>
+
 - **TypedValue_floatarray**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13632,7 +14768,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_integer'></a>
+
 - **TypedValue_integer**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13651,7 +14791,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_integerarray'></a>
+
 - **TypedValue_integerarray**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13670,7 +14814,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_matrix33'></a>
+
 - **TypedValue_matrix33**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13689,7 +14837,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_matrix44'></a>
+
 - **TypedValue_matrix44**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13708,7 +14860,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_string'></a>
+
 - **TypedValue_string**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13727,7 +14883,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_stringarray'></a>
+
 - **TypedValue_stringarray**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13746,7 +14906,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_vector2'></a>
+
 - **TypedValue_vector2**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13765,7 +14929,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_vector3'></a>
+
 - **TypedValue_vector3**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13784,7 +14952,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-typedvalue_vector4'></a>
+
 - **TypedValue_vector4**: 
+
+  - Inherits from: [Value](#materialx-main-value), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13803,11 +14975,19 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: TYPE
 
+<a id='materialx-main-unit'></a>
+
 - **Unit**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-unitconverter'></a>
+
 - **UnitConverter**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13865,7 +15045,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Returns Empty string if not found
 
 
+<a id='materialx-main-unitconverterregistry'></a>
+
 - **UnitConverterRegistry**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13896,7 +15080,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Clear all unit converters from the registry.
 
 
+<a id='materialx-main-unitdef'></a>
+
 - **UnitDef**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13938,7 +15126,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY, UNITTYPE_ATTRIBUTE
 
+<a id='materialx-main-unittypedef'></a>
+
 - **UnitTypeDef**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13949,7 +15141,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-value'></a>
+
 - **Value**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -13966,7 +15162,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `createValueFromStrings`: createValueFromStrings(value: str, type: str, typeDefPtr: MaterialX_v1_39_5::TypeDef = None) -> MaterialX.PyMaterialXCore.Value
 
 
+<a id='materialx-main-valueelement'></a>
+
 - **ValueElement**: 
+
+  - Inherits from: [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -14079,11 +15279,19 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: VALUE_ATTRIBUTE, INTERFACE_NAME_ATTRIBUTE, IMPLEMENTATION_NAME_ATTRIBUTE, IMPLEMENTATION_TYPE_ATTRIBUTE, ENUM_ATTRIBUTE, ENUM_VALUES_ATTRIBUTE, UNIT_ATTRIBUTE, UI_NAME_ATTRIBUTE, UI_FOLDER_ATTRIBUTE, UI_MIN_ATTRIBUTE, UI_MAX_ATTRIBUTE, UI_SOFT_MIN_ATTRIBUTE, UI_SOFT_MAX_ATTRIBUTE, UI_STEP_ATTRIBUTE, UI_ADVANCED_ATTRIBUTE
 
+<a id='materialx-main-variant'></a>
+
 - **Variant**: 
+
+  - Inherits from: [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-variantassign'></a>
+
 - **VariantAssign**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -14119,7 +15327,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-variantset'></a>
+
 - **VariantSet**: 
+
+  - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -14151,7 +15363,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-vector2'></a>
+
 - **Vector2**: 
+
+  - Inherits from: [VectorBase](#materialx-main-vectorbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -14185,7 +15401,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Vector2) -> tuple[float, float]
 
 
+<a id='materialx-main-vector3'></a>
+
 - **Vector3**: 
+
+  - Inherits from: [VectorBase](#materialx-main-vectorbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -14219,7 +15439,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Vector3) -> tuple[float, float, float]
 
 
+<a id='materialx-main-vector4'></a>
+
 - **Vector4**: 
+
+  - Inherits from: [VectorBase](#materialx-main-vectorbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -14248,9 +15472,17 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Vector4) -> tuple[float, float, float, float]
 
 
+<a id='materialx-main-vectorbase'></a>
+
 - **VectorBase**: 
 
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
+
+<a id='materialx-main-visibility'></a>
+
 - **Visibility**: 
+
+  - Inherits from: [GeomElement](#materialx-main-geomelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
@@ -14311,11 +15543,19 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
   - Attributes: CATEGORY
 
+<a id='materialx-main-xmlreadoptions'></a>
+
 - **XmlReadOptions**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Attributes: readXIncludeFunction, readComments, readNewlines, upgradeVersion, parentXIncludes
 
+<a id='materialx-main-xmlwriteoptions'></a>
+
 - **XmlWriteOptions**: 
+
+  - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Attributes: writeXIncludeEnable, elementPredicate
 
@@ -14340,7 +15580,7 @@ Create a new Document.
            createValueFromStrings('0.1', 'float') -> 0.1
            createValueFromStrings('0.1, 0.2, 0.3', 'color3') -> mx.Color3(0.1, 0.2, 0.3)
 
-- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x00000235A36D1230>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
+- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932EB0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
 
 - `geomStringsMatch`: geomStringsMatch(arg0: str, arg1: str, arg2: bool) -> bool
 
@@ -14398,7 +15638,7 @@ Return the version string of this interface.
 
 - `loadLibraries`: loadLibraries(libraryFolders: list[MaterialX.PyMaterialXFormat.FilePath], searchPath: MaterialX.PyMaterialXFormat.FileSearchPath, doc: MaterialX.PyMaterialXCore.Document, excludeFiles: set[str] = set(), readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> set[str]
 
-- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x00000235A3730A30>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932C30>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 Load a library of implementations from the provided document, replacing any previously loaded content.
 
@@ -14410,11 +15650,11 @@ Load a library of implementations from the provided document, replacing any prev
 
 - `readFile`: readFile(arg0: MaterialX.PyMaterialXFormat.FilePath) -> str
 
-- `readFromXmlFile`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x00000235A36D18F0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlFile`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932570>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
-- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x00000235A36D18F0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932570>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
-- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x00000235A32B0FF0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932330>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 - `replaceSubstrings`: replaceSubstrings(arg0: str, arg1: dict[str, str]) -> str
 

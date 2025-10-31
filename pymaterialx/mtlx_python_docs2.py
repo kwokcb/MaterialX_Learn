@@ -50,8 +50,17 @@ class PythonDocumentationGenerator:
                         cls_info = {
                             "doc": (obj.__doc__ or '').strip(),
                             "methods": {},
-                            "attributes": []
+                            "attributes": [],
+                            "bases": []
                         }
+
+                        bases = []
+                        for base in getattr(obj, "__mro__", [])[1:]:  # skip the class itself
+                            base_name = getattr(base, "__name__", str(base))
+                            if base_name != "object" and base_name not in bases:
+                                bases.append(base_name)
+                        cls_info["bases"] = bases
+
                         for m, attr in obj.__dict__.items():
                             if m.startswith('_'):
                                 continue
@@ -121,7 +130,23 @@ class PythonDocumentationGenerator:
             if mod_info["classes"]:
                 md.append("### Classes\n")
                 for cls_name, cls_info in mod_info["classes"].items():
+                    #md.append(f"- **{cls_name}**: {cls_info['doc']}\n")
+                    #if cls_info.get("bases"):
+                    #    md.append(f"  - Inherits from: {', '.join(cls_info['bases'])}\n")
+                    # Add an HTML anchor for this class so we can link to it
+                    anchor = f"materialx-{mod_name.lower()}-{cls_name.lower()}"
+                    md.append(f"<a id='{anchor}'></a>\n")
                     md.append(f"- **{cls_name}**: {cls_info['doc']}\n")
+
+                    # Add linked base classes
+                    if cls_info.get("bases"):
+                        linked_bases = []
+                        for base in cls_info["bases"]:
+                            # Search all modules for the base to link properly
+                            base_anchor = f"#{'materialx-' + mod_name.lower() + '-' + base.lower()}"
+                            linked_bases.append(f"[{base}]({base_anchor})")
+                        md.append(f"  - Inherits from: {', '.join(linked_bases)}\n")
+
                     if cls_info["methods"]:
                         md.append(f"  - Methods:\n")
                         for m, doc in cls_info["methods"].items():
@@ -161,7 +186,7 @@ class PythonDocumentationGenerator:
         html.append("</head><body data-bs-theme='dark'>")
         html.append("<!--Start-->")
         # Simple header row inside content to avoid conflicting site nav
-        html.append("<div class='container-fluid py-2'>")
+        html.append("<div class='rounded-4 container-fluid py-2 bg-primary bg-gradient sticky-top'>")
         html.append("  <div class='d-flex align-items-center gap-2'>")
         html.append("    <button class='btn btn-outline-light' type='button' data-bs-toggle='offcanvas' data-bs-target='#mxdoc-sidebar' aria-controls='mxdoc-sidebar'>Index</button>")
         html.append(f"    <span class='h5 mb-0'>{title}</span>")
@@ -202,7 +227,7 @@ class PythonDocumentationGenerator:
         html.append("</div>")
 
         # Main content area
-        html.append("<main class='container-fluid py-3' id='mxdoc-content'><h3>Select interface item from index.</h3></main>")
+        html.append("<p><main class='border rounded-4 container-fluid py-3' id='mxdoc-content'><p>Select interface item from index.</p></main>")
 
         # Conditionally load Bootstrap bundle only if not present to avoid conflicts when embedded
         html.append("<script>(function(){if(!window.bootstrap){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js';s.crossOrigin='anonymous';document.head.appendChild(s);}})();</script>")
@@ -210,7 +235,51 @@ class PythonDocumentationGenerator:
         html.append("<script>")
         html.append("const data = " + json.dumps(structure) + ";")
         html.append(r"""
-                    
+
+        // Handle clicks on base class links
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.classList.contains('mxdoc-base')) {
+                e.preventDefault();
+                const baseName = e.target.dataset.basename;
+
+                // Search for the base class in all modules
+                for (const [moduleName, module] of Object.entries(data)) {
+                    if (module.classes && module.classes[baseName]) {
+                        // Simulate selecting this class
+                        const cls = module.classes[baseName];
+                        let html = `<h3>${moduleName} - ${baseName}</h3>`;
+                        html += `<h4>Class</h4><p>${cls.doc}</p>`;
+                        if (cls.bases && cls.bases.length) {
+                            html += `<h5>Inherits from</h5><ul>`;
+                            for (const base of cls.bases) {
+                                html += `<li><a href="#" class="link-info mxdoc-base" data-basename="${base}">${base}</a></li>`;
+                            }
+                            html += `</ul>`;
+                        }
+                        if (Object.keys(cls.methods).length) {
+                            html += '<h5>Methods</h5><ul>';
+                            for (const [m, doc] of Object.entries(cls.methods)) {
+                                doc_string = doc.join('<br>');
+                                html += `<li><code>${m}</code>: <pre>${doc_string}</pre></li>`;
+                            }
+                            html += '</ul>';
+                        }
+                        if (cls.attributes.length) {
+                            html += '<h5>Attributes</h5><ul>';
+                            for (const a of cls.attributes) {
+                                html += `<li><code>${a}</code></li>`;
+                            }
+                            html += '</ul>';
+                        }
+
+                        document.getElementById('mxdoc-content').innerHTML = html;
+                        return; // Stop after first found
+                    }
+                }
+            }
+        });
+
+
     function escapeHtml(text) {
         if (!text) return '';
         return text.replace(/&(?!amp;)/g, '&amp;')
@@ -237,8 +306,25 @@ class PythonDocumentationGenerator:
             const type = el.dataset.type;
             const mod = data[module];
             let html = `<h3>${module} - ${name}</h3>`;
+            //if (type === 'class') {
             if (type === 'class') {
                 const cls = mod.classes[name];
+                html += `<h4>Class</h4><p>${cls.doc}</p>`;
+                    
+                if (cls.bases && cls.bases.length) {
+                    html += `<h5>Inherits from</h5><ul>`;
+                    for (const base of cls.bases) {
+                        // Create a clickable link for base class
+                        html += `<li><a href="#" class="link-info mxdoc-base" data-basename="${base}">${base}</a></li>`;
+                    }
+                    html += `</ul>`;
+                }
+
+                //if (cls.bases && cls.bases.length) {
+                //    html += `<h5>Inherits from</h5><p>${cls.bases.join('-> ')}</p>`;
+                //}                    
+
+                //const cls = mod.classes[name];
                 html += `<h4>Class</h4><p>${cls.doc}</p>`;
                 if (Object.keys(cls.methods).length) {
                     html += '<h5>Methods</h5><ul>';
@@ -254,7 +340,7 @@ class PythonDocumentationGenerator:
                 if (cls.attributes.length) {
                     html += '<h5>Attributes</h5><ul>';
                     for (const a of cls.attributes) {
-                        html += `<li>${a}</li>`;
+                        html += `<li><code>${a}</code></li>`;
                     }
                     html += '</ul>';
                 }
