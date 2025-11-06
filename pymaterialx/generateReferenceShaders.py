@@ -8,6 +8,7 @@ import MaterialX.PyMaterialXGenShader as mx_gen_shader
 import os
 import argparse
 import logging
+import json
 
 logger = logging.getLogger('MXGR')
 logging.basicConfig(level=logging.INFO) 
@@ -71,6 +72,7 @@ def main():
     parser.add_argument('-op', '--outputPath', dest='outputPath', help='File path to output shaders to. If not specified, is the location of the input document is used.')
     parser.add_argument('-ot', '--outputTree', dest='outputTree', action='store_true', help='If set, output shaders to a tree structure mirroring the library structure.')
     parser.add_argument('-d', '--debug', dest='debug', action='store_true', help='If set, enable debug logging.')
+    parser.add_argument('-r', '--remap_table', dest='remap_table', help='Optional remap table file to map nodedef names to alternative names.')
 
     opts = parser.parse_args()
 
@@ -79,9 +81,10 @@ def main():
         logger.debug("Debug logging enabled.")
 
     outputPath = opts.outputPath if opts.outputPath else "./reference_" + opts.target + "_shaders"
+    outputPath = os.path.normpath(outputPath)
     os.makedirs(outputPath, exist_ok=True)
     logger.info(f'Output path: {outputPath}')
-    pathPrefix = outputPath + os.path.sep
+    pathPrefix = outputPath
 
     logger.info("Using MaterialX version: {mx.getVersionString()}")
     datalib, searchPaths = loadDefinitions(opts)
@@ -101,6 +104,8 @@ def main():
     search_path_string = searchPaths.asString(",")
     search_path_list = search_path_string.split(",")
 
+    names_used = set()
+    remap_table = dict()
     for nodedef in nodedefs:
         nodeName = nodedef.getName()
         nodeType = nodedef.getType()
@@ -116,7 +121,7 @@ def main():
                     break
             if sourceURL:
                 dir_path = os.path.dirname(sourceURL)
-                final_path = pathPrefix + dir_path
+                final_path = os.path.join(pathPrefix, dir_path)
                 os.makedirs(final_path, exist_ok=True)
 
         logger.debug(f"[{count}] Generating reference for node: {nodeName} {nodeType}")
@@ -126,9 +131,24 @@ def main():
             logger.debug(f"Skipping material node definition: '{nodeName}'")
             continue
 
-        nodeNode = nodedef.getNodeString()
-        if nodeName.startswith("ND_"):
-            nodeName = nodeName[3:]
+        nodeString = nodedef.getQualifiedName(nodedef.getNodeString())
+        outputs = nodedef.getOutputs()
+        for output in outputs:
+            nodeString += '_' + output.getType()
+        # Check if windows. If so clamp length to smaller than max size 
+        if os.name == 'nt':
+            max_path = 200
+            nodeString = nodeString[:max_path]
+        if nodeString in names_used:
+            orig_nodeString = nodeString
+            inputs = nodedef.getInputs()
+            for input in inputs:
+                nodeString += '_' + input.getType()
+                if nodeString not in names_used:
+                    logger.debug(f'Resolve node string collision {orig_nodeString} -> {nodeString}')
+                    break
+        names_used.add(nodeString)
+        remap_table[nodedef.getName()] = nodeString
 
         interface = nodedef.getImplementation(target)
         if not interface:
@@ -136,21 +156,21 @@ def main():
             continue
 
         try:
-            node = datalib.addNodeInstance(nodedef, nodeName)
+            node = datalib.addNodeInstance(nodedef, nodeString)
         except Exception as err:
             logger.warning(f"Error creating node instance for '{nodeName}' : {str(err)}")
             continue
 
         try:
-            shader = generator.generate(node.getName(), node, context)
+            shader = generator.generate(nodeString, node, context)
         except Exception as err:
-            logger.error(f"Error generating shader for node '{nodeName}': {str(err)}")
-            datalib.removeChild(node.getName())
+            logger.error(f"Error generating shader for node '{nodeString}': {str(err)}")
+            datalib.removeChild(nodeString)
             continue
 
         if opts.target in ['glsl', 'essl', 'vulkan', 'msl', 'wgsl']:
             pixelSource = shader.getSourceCode(mx_gen_shader.PIXEL_STAGE)
-            filename = final_path + "/" + shader.getName() + "." + opts.target + ".frag"
+            filename = os.path.join(final_path, nodeString + "." + opts.target + ".frag")
             logger.debug(f"- Wrote pixel shader to: {filename}")
             file = open(filename, 'w+')
             file.write(pixelSource)
@@ -158,7 +178,7 @@ def main():
             #errors = validateCode(filename, opts.validator, opts.validatorArgs)                
 
             vertexSource = shader.getSourceCode(mx_gen_shader.VERTEX_STAGE)
-            filename = final_path + "/" + shader.getName() + "." + opts.target + ".vert"
+            filename = os.path.join(final_path, nodeString + "." + opts.target + ".vert")
             logger.debug(f"- Wrote vertex shader to: {filename}")
             file = open(filename, 'w+')
             file.write(vertexSource)
@@ -167,14 +187,20 @@ def main():
 
         else:
             pixelSource = shader.getSourceCode(mx_gen_shader.PIXEL_STAGE)
-            filename = final_path + "/" + shader.getName() + "." + opts.target
+            filename = os.path.join(final_path, nodeString + "." + opts.target)
             logger.debug(f"- Wrote shader to: {filename}")
             file = open(filename, 'w+')
             file.write(pixelSource)
             file.close()
             #errors = validateCode(filename, opts.validator, opts.validatorArgs)        
         
-        datalib.removeChild(node.getName())
+        datalib.removeChild(nodeString)
+
+    if opts.remap_table:
+        filename = os.path.join(final_path, "remap_table.json")
+        with open(filename, 'w') as remap_file:
+            json.dump(remap_table, remap_file, indent=4)
+        logger.info(f"Wrote remap table to: {filename}")
 
 if __name__ == '__main__':
     main()
