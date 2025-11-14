@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>x.md</title>
+<title>test_grid.md</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
 <style>
@@ -365,11 +365,11 @@ code {
           : 'default'
     });
   </script>
-<h2 id="steps-for-c--python-build-jobs">Steps for C++ / Python Build Jobs</h2>
+<h2 id="workflow-matrix-for-build">Workflow Matrix for build</h2>
 <table>
 <thead>
 <tr>
-<th>Job Name</th>
+<th>Workflow Name</th>
 <th>OS</th>
 <th>Compiler</th>
 <th>Python</th>
@@ -447,7 +447,7 @@ code {
 <td>macos-26</td>
 <td>xcode, 26.0</td>
 <td>3.13</td>
-<td>-DCMAKE_EXPORT_COMPILE_COMMANDS=ON</td>
+<td>-DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DMATERIALX_BUILD_DATA_LIBRARY=ON</td>
 <td>static_analysis</td>
 </tr>
 <tr>
@@ -480,7 +480,7 @@ code {
 <td>Default,</td>
 <td>3.13</td>
 <td>-G &quot;Visual Studio 17 2022&quot; -A &quot;x64&quot;</td>
-<td>test_shaders, extended_build_oiio</td>
+<td>test_shaders, extended_build_oiio, extended_build_mdl_sdk</td>
 </tr>
 <tr>
 <td>Windows_VS2022_x64_SharedLibs</td>
@@ -492,17 +492,19 @@ code {
 </tr>
 </tbody>
 </table>
-<h2 id="steps-for-job-build">Steps For Job: build</h2>
-<table>
-<tr>
-<th>Linux Steps</th>
-<th>Windows Steps</th>
-<th>macOS Steps</th>
-</tr>
-<tr>
-<td><ol><li>Sync Repository
+<h2 id="steps-for-job-build">Steps For Job: <code>Build</code></h2>
+<ol>
+<li>Sync Repository
 <li>If (runner.os == 'Linux')
     - Install Dependencies (Linux)
+<li>If (runner.os == 'macOS')
+    - Install Dependencies (MacOS)
+<li>If (runner.os == 'Windows')
+    - Install Dependencies (Windows)
+<li>If (env.IS_EXTENDED_BUILD == 'true' && *extended_build_oiio* == 'ON' && runner.os == 'Windows')
+    - Install OpenImageIO
+<li>If (env.IS_EXTENDED_BUILD == 'true' && *extended_build_mdl_sdk* == 'ON' && runner.os == 'Windows')
+    - Install MDL SDK
 <li>If (*python* != 'None')
     - Install Python ${{ matrix.python }}
 <li>If (*python* != 'None')
@@ -514,6 +516,10 @@ code {
 <li>CMake Unit Tests
 <li>If (*python* != 'None')
     - Python Tests
+<li>If (*test_shaders* == 'ON' && runner.os == 'Windows')
+    - Shader Validation Tests (Windows)
+<li>If (*test_shaders* == 'ON' && runner.os == 'macOS')
+    - Shader Validation Tests (MacOS)
 <li>If (*coverage_analysis* == 'ON')
     - Coverage Analysis Tests
 <li>If (*static_analysis* == 'ON')
@@ -534,81 +540,8 @@ code {
     - Upload Renders
 <li>If (*coverage_analysis* == 'ON')
     - Upload Coverage Report
-</ol><td><ol><li>Sync Repository
-<li>If (runner.os == 'Windows')
-    - Install Dependencies (Windows)
-<li>If (env.IS_EXTENDED_BUILD == 'true' && *extended_build_oiio* == 'ON' && runner.os == 'Windows')
-    - Install OpenImageIO
-<li>If (*python* != 'None')
-    - Install Python ${{ matrix.python }}
-<li>If (*python* != 'None')
-    - Install Python Dependencies
-<li>If (*clang_format* == 'ON')
-    - Run Clang Format
-<li>CMake Generate
-<li>CMake Build
-<li>CMake Unit Tests
-<li>If (*python* != 'None')
-    - Python Tests
-<li>If (*test_shaders* == 'ON' && runner.os == 'Windows')
-    - Install Naga Validator (Windows)
-<li>If (*test_shaders* == 'ON' && runner.os == 'Windows')
-    - Shader Validation Tests (Windows)
-<li>If (*coverage_analysis* == 'ON')
-    - Coverage Analysis Tests
-<li>If (*static_analysis* == 'ON')
-    - Static Analysis Tests
-<li>If (*test_render* == 'ON')
-    - Render Script Tests
-<li>If (*test_render* == 'ON')
-    - Render Application Tests
-<li>If (*python* != 'None')
-    - Upload Installed Package
-<li>If (*clang_format* == 'ON')
-    - Upload Formatted Source
-<li>If (*upload_shaders* == 'ON')
-    - Upload Reference Shaders
-<li>If (*test_render* == 'ON')
-    - Upload Renders
-<li>If (*coverage_analysis* == 'ON')
-    - Upload Coverage Report
-<td><ol><li>Sync Repository
-<li>If (runner.os == 'macOS')
-    - Install Dependencies (MacOS)
-<li>If (*python* != 'None')
-    - Install Python ${{ matrix.python }}
-<li>If (*python* != 'None')
-    - Install Python Dependencies
-<li>If (*clang_format* == 'ON')
-    - Run Clang Format
-<li>CMake Generate
-<li>CMake Build
-<li>CMake Unit Tests
-<li>If (*python* != 'None')
-    - Python Tests
-<li>If (*test_shaders* == 'ON' && runner.os == 'macOS')
-    - Shader Validation Tests (MacOS)
-<li>If (*coverage_analysis* == 'ON')
-    - Coverage Analysis Tests
-<li>If (*static_analysis* == 'ON')
-    - Static Analysis Tests
-<li>If (*test_render* == 'ON')
-    - Render Script Tests
-<li>If (*test_render* == 'ON')
-    - Render Application Tests
-<li>If (*python* != 'None')
-    - Upload Installed Package
-<li>If (*clang_format* == 'ON')
-    - Upload Formatted Source
-<li>If (*upload_shaders* == 'ON')
-    - Upload Reference Shaders
-<li>If (*test_render* == 'ON')
-    - Upload Renders
-<li>If (*coverage_analysis* == 'ON')
-    - Upload Coverage Report
-</tr>
-</table>
-<h2 id="steps-for-job-javascript">Steps For Job: javascript</h2>
+</ol>
+<h2 id="steps-for-job-javascript">Steps For Job: <code>JavaScript</code></h2>
 <ol>
 <li>Sync Repository
 <li>Install Emscripten
@@ -621,14 +554,14 @@ code {
     - Deploy Web Viewer
 <li>Upload JavaScript Package
 </ol>
-<h2 id="steps-for-job-sdist">Steps For Job: sdist</h2>
+<h2 id="steps-for-job-python-sdist">Steps For Job: <code>Python SDist</code></h2>
 <ol>
 <li>Sync Repository
 <li>Install Python
 <li>Build SDist
 <li>Upload SDist
 </ol>
-<h2 id="steps-for-job-wheels">Steps For Job: wheels</h2>
+<h2 id="steps-for-job-python-wheels">Steps For Job: <code>Python Wheels</code></h2>
 <ol>
 <li>Sync Repository
 <li>Install Python 3.${{ matrix.python-minor }}

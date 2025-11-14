@@ -72,7 +72,7 @@ def main():
     parser.add_argument('-op', '--outputPath', dest='outputPath', help='File path to output shaders to. If not specified, is the location of the input document is used.')
     parser.add_argument('-ot', '--outputTree', dest='outputTree', action='store_true', help='If set, output shaders to a tree structure mirroring the library structure.')
     parser.add_argument('-d', '--debug', dest='debug', action='store_true', help='If set, enable debug logging.')
-    parser.add_argument('-r', '--remap_table', dest='remap_table', help='Optional remap table file to map nodedef names to alternative names.')
+    parser.add_argument('-r', '--remap_table', dest='remap_table', action='store_true', help='Optional remap table file to map nodedef names to alternative names.')
 
     opts = parser.parse_args()
 
@@ -86,7 +86,7 @@ def main():
     logger.info(f'Output path: {outputPath}')
     pathPrefix = outputPath
 
-    logger.info("Using MaterialX version: {mx.getVersionString()}")
+    logger.info(f"Using MaterialX version: {mx.getVersionString()}")
     datalib, searchPaths = loadDefinitions(opts)
     nodedefs = datalib.getNodeDefs()
     nodedef_count = len(nodedefs)
@@ -94,7 +94,7 @@ def main():
         logger.error("No node definitions were loaded. Exiting.")
         return
     
-    logger.info(f"Loaded in %d node definitions {nodedef_count}") 
+    logger.info(f"Loaded in {nodedef_count} node definitions") 
     generator = createGenerator(opts)
     target = generator.getTarget()
     logger.info(f"Using generator: {target}")
@@ -105,6 +105,10 @@ def main():
     search_path_list = search_path_string.split(",")
 
     names_used = set()
+    # Get all children of document and add their names
+    for child in datalib.getChildren():
+        names_used.add(child.getName())
+
     remap_table = dict()
     for nodedef in nodedefs:
         nodeName = nodedef.getName()
@@ -127,18 +131,38 @@ def main():
         logger.debug(f"[{count}] Generating reference for node: {nodeName} {nodeType}")
         count = count + 1
 
-        if nodeType == "material":
-            logger.debug(f"Skipping material node definition: '{nodeName}'")
+        if nodeType == mx.MATERIAL_TYPE_STRING:
+            logger.warning(f"Skipping material node definition: '{nodeName}'")
             continue
 
         nodeString = nodedef.getQualifiedName(nodedef.getNodeString())
-        outputs = nodedef.getOutputs()
-        for output in outputs:
-            nodeString += '_' + output.getType()
-        # Check if windows. If so clamp length to smaller than max size 
-        if os.name == 'nt':
-            max_path = 200
-            nodeString = nodeString[:max_path]
+
+        # If not multitoutput, add first output type
+        outputs = nodedef.getOutputs()        
+        if (len(outputs) > 0): # and not outputs[0] == mx.MULTI_OUTPUT_TYPE_STRING):
+            nodeString += "_" + outputs[0].getType()
+            #outputs.remove(outputs[0])
+
+        # Append version string to avoid name clashes
+        if nodeString in names_used:            
+            version = nodedef.getVersionString()
+            version = mx.createValidName(version)
+            if version:
+                orig_nodeString = nodeString
+                nodeString += f"_v{version}"
+                if nodeString not in names_used:
+                    logger.info(f'Resolve node string collision {orig_nodeString} -> {nodeString}')
+
+        # Append additional output names to resolve clash
+        if nodeString in names_used:            
+            orig_nodeString = nodeString
+            for output in outputs:
+                nodeString += '_' + output.getType()
+                if nodeString not in names_used:
+                    logger.debug(f'Resolve node string collision {orig_nodeString} -> {nodeString}')
+                    break
+
+        # If clash with output names, append input types
         if nodeString in names_used:
             orig_nodeString = nodeString
             inputs = nodedef.getInputs()
@@ -147,6 +171,23 @@ def main():
                 if nodeString not in names_used:
                     logger.debug(f'Resolve node string collision {orig_nodeString} -> {nodeString}')
                     break
+
+        # Last result, append a counter
+        if nodeString in names_used:
+            idx = 1
+            orig_nodeString = nodeString
+            while nodeString in names_used:
+                nodeString = f"{orig_nodeString}_{idx}"
+                idx += 1
+            logger.debug(f'Resolve node string collision with counter {orig_nodeString} -> {nodeString}')
+
+        # Clamp to avoid long path names
+        max_path = 200
+        nodeString = nodeString[:max_path]
+
+        # Convert to lower case
+        nodeString = nodeString.lower()
+
         names_used.add(nodeString)
         remap_table[nodedef.getName()] = nodeString
 
@@ -158,7 +199,7 @@ def main():
         try:
             node = datalib.addNodeInstance(nodedef, nodeString)
         except Exception as err:
-            logger.warning(f"Error creating node instance for '{nodeName}' : {str(err)}")
+            logger.warning(f"Error creating node instance for '{nodeString}' : {str(err)}")
             continue
 
         try:
@@ -197,6 +238,7 @@ def main():
         datalib.removeChild(nodeString)
 
     if opts.remap_table:
+        final_path = pathPrefix
         filename = os.path.join(final_path, "remap_table.json")
         with open(filename, 'w') as remap_file:
             json.dump(remap_table, remap_file, indent=4)
