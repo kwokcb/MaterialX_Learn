@@ -9,7 +9,7 @@
 #endif
 
 
-#line 5 "shader.slang"
+#line 5 "test_data/shader.slang"
 RWStructuredBuffer<uint > outputBuffer_0 : register(u0);
 
 

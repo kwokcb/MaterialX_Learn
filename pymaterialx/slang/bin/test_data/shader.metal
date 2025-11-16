@@ -3,7 +3,7 @@
 #include <metal_texture>
 using namespace metal;
 
-#line 10 "shader.slang"
+#line 10 "test_data/shader.slang"
 [[kernel]] void main_0(uint3 tid_0 [[thread_position_in_grid]], uint device* outputBuffer_0 [[buffer(0)]])
 {
 

@@ -51,12 +51,29 @@ def choose_asset(assets):
                     candidates.append(a)
                     break
 
-    # Prefer .zip over .tar.gz
-    for candidate in candidates:
-        if candidate["name"].lower().endswith(".zip"):
-            return candidate
+    # On Unix-like systems, prefer .tar.gz (preserves permissions better)
+    # On Windows, prefer .zip
+    system = platform.system().lower()
+    if system in ("linux", "darwin"):
+        # Prefer .tar.gz on Unix systems
+        for candidate in candidates:
+            if candidate["name"].lower().endswith(".tar.gz"):
+                return candidate
+        # Fall back to .zip if no tar.gz available
+        for candidate in candidates:
+            if candidate["name"].lower().endswith(".zip"):
+                return candidate
+    else:
+        # Prefer .zip on Windows
+        for candidate in candidates:
+            if candidate["name"].lower().endswith(".zip"):
+                return candidate
+        # Fall back to .tar.gz
+        for candidate in candidates:
+            if candidate["name"].lower().endswith(".tar.gz"):
+                return candidate
     
-    # Fall back to any candidate (likely .tar.gz)
+    # Fall back to any candidate
     if candidates:
         return candidates[0]
 
@@ -77,12 +94,23 @@ def download(url, path):
 # ----------------------------------------------------------------------
 def extract(path, out_dir="slang"):
     print(f"Extracting {path}...")
-    if path.endswith(".zip"):
-        with zipfile.ZipFile(path, "r") as z:
-            z.extractall(out_dir)
-    elif path.endswith(".tar.gz"):
+    if path.endswith(".tar.gz"):
+        # tarfile properly preserves permissions, no manual intervention needed
         with tarfile.open(path, "r:gz") as t:
             t.extractall(out_dir)
+    elif path.endswith(".zip"):
+        with zipfile.ZipFile(path, "r") as z:
+            z.extractall(out_dir)
+            # zipfile doesn't preserve Unix permissions, so set them manually
+            # Only needed on Unix-like systems
+            if platform.system().lower() in ("linux", "darwin"):
+                for info in z.infolist():
+                    extracted_path = os.path.join(out_dir, info.filename)
+                    # Check if this is a file in a bin directory
+                    if "/bin/" in info.filename and not info.filename.endswith("/"):
+                        # Set executable permissions (0o755 = rwxr-xr-x)
+                        if os.path.exists(extracted_path):
+                            os.chmod(extracted_path, 0o755)
     else:
         raise RuntimeError("Unsupported archive format.")
     print(f"Extracted to: {out_dir}")

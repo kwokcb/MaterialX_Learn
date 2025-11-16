@@ -1,7 +1,7 @@
-#include "D:/Work/materialx/MaterialX_Learn/pymaterialx/slang/include/slang-cuda-prelude.h"
+#include "/Users/bernardkwok/work/MaterialX_Plus/pymaterialx/slang/include/slang-cuda-prelude.h"
 
 
-#line 14 "shader.slang"
+#line 14 "test_data/shader.slang"
 struct GlobalParams_0
 {
     RWStructuredBuffer<uint> outputBuffer_0;
