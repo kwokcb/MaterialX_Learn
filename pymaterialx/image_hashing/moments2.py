@@ -26,6 +26,8 @@ def main():
     # Compare the hashes
     similarity = cm_hash.compare(hash1, hash2)
 
+    print('Color Moment Hash for Image 1:', hash1.flatten())
+    print('Color Moment Hash for Image 2:', hash2.flatten())
     print(f"Color Moment Hash similarity: {similarity}")
     # Note: The compare function returns a value that represents the similarity.
     # Lower values mean more similar.
