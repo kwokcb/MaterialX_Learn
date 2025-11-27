@@ -1,0 +1,307 @@
+<?xml version="1.0" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:mx="http://www.materialx.org/">
+  <!-- MaterialX Type Definitions: AttributeDef -->
+  <xs:complexType name="attributedef">
+    <xs:complexContent>
+      <xs:extension base="typedelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Backdrop -->
+  <xs:complexType name="backdrop">
+    <xs:complexContent>
+      <xs:extension base="element">
+        <xs:attribute name="contains" type="xs:string"/>
+        <xs:attribute name="width" type="xs:string"/>
+        <xs:attribute name="height" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Collection -->
+  <xs:complexType name="collection">
+    <xs:complexContent>
+      <xs:extension base="element"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: CommentElement -->
+  <xs:complexType name="commentelement">
+    <xs:complexContent>
+      <xs:extension base="element"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Document -->
+  <xs:complexType name="document">
+    <xs:complexContent>
+      <xs:extension base="graphelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Element -->
+  <xs:complexType name="element">
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="fileprefix" type="xs:string"/>
+    <xs:attribute name="geomprefix" type="xs:string"/>
+    <xs:attribute name="colorspace" type="xs:string"/>
+    <xs:attribute name="inherit" type="xs:string"/>
+    <xs:attribute name="namespace" type="xs:string"/>
+    <xs:attribute name="doc" type="xs:string"/>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: GenericElement -->
+  <xs:complexType name="genericelement">
+    <xs:complexContent>
+      <xs:extension base="element"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: GeomElement -->
+  <xs:complexType name="geomelement">
+    <xs:complexContent>
+      <xs:extension base="element"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: GeomInfo -->
+  <xs:complexType name="geominfo">
+    <xs:complexContent>
+      <xs:extension base="geomelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: GeomProp -->
+  <xs:complexType name="geomprop">
+    <xs:complexContent>
+      <xs:extension base="valueelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: GeomPropDef -->
+  <xs:complexType name="geompropdef">
+    <xs:complexContent>
+      <xs:extension base="typedelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: GraphElement -->
+  <xs:complexType name="graphelement">
+    <xs:complexContent>
+      <xs:extension base="interfaceelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Implementation -->
+  <xs:complexType name="implementation">
+    <xs:complexContent>
+      <xs:extension base="interfaceelement">
+        <xs:attribute name="file" type="xs:string"/>
+        <xs:attribute name="function" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Input -->
+  <xs:complexType name="input">
+    <xs:complexContent>
+      <xs:extension base="portelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: InterfaceElement -->
+  <xs:complexType name="interfaceelement">
+    <xs:complexContent>
+      <xs:extension base="typedelement">
+        <xs:attribute name="nodedef" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Look -->
+  <xs:complexType name="look">
+    <xs:complexContent>
+      <xs:extension base="element"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: LookGroup -->
+  <xs:complexType name="lookgroup">
+    <xs:complexContent>
+      <xs:extension base="element">
+        <xs:attribute name="looks" type="xs:string"/>
+        <xs:attribute name="active" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: MaterialAssign -->
+  <xs:complexType name="materialassign">
+    <xs:complexContent>
+      <xs:extension base="geomelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Member -->
+  <xs:complexType name="member">
+    <xs:complexContent>
+      <xs:extension base="typedelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: NewlineElement -->
+  <xs:complexType name="newlineelement">
+    <xs:complexContent>
+      <xs:extension base="element"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Node -->
+  <xs:complexType name="node">
+    <xs:complexContent>
+      <xs:extension base="interfaceelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: NodeDef -->
+  <xs:complexType name="nodedef">
+    <xs:complexContent>
+      <xs:extension base="interfaceelement">
+        <xs:attribute name="node" type="xs:string"/>
+        <xs:attribute name="texture" type="xs:string"/>
+        <xs:attribute name="procedural" type="xs:string"/>
+        <xs:attribute name="geometric" type="xs:string"/>
+        <xs:attribute name="adjustment" type="xs:string"/>
+        <xs:attribute name="conditional" type="xs:string"/>
+        <xs:attribute name="channel" type="xs:string"/>
+        <xs:attribute name="organization" type="xs:string"/>
+        <xs:attribute name="translation" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: NodeGraph -->
+  <xs:complexType name="nodegraph">
+    <xs:complexContent>
+      <xs:extension base="graphelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Output -->
+  <xs:complexType name="output">
+    <xs:complexContent>
+      <xs:extension base="portelement">
+        <xs:attribute name="defaultinput" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: PortElement -->
+  <xs:complexType name="portelement">
+    <xs:complexContent>
+      <xs:extension base="valueelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Property -->
+  <xs:complexType name="property">
+    <xs:complexContent>
+      <xs:extension base="valueelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: PropertyAssign -->
+  <xs:complexType name="propertyassign">
+    <xs:complexContent>
+      <xs:extension base="valueelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: PropertySet -->
+  <xs:complexType name="propertyset">
+    <xs:complexContent>
+      <xs:extension base="element"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: PropertySetAssign -->
+  <xs:complexType name="propertysetassign">
+    <xs:complexContent>
+      <xs:extension base="geomelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: TargetDef -->
+  <xs:complexType name="targetdef">
+    <xs:complexContent>
+      <xs:extension base="typedelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Token -->
+  <xs:complexType name="token">
+    <xs:complexContent>
+      <xs:extension base="valueelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: TypeDef -->
+  <xs:complexType name="typedef">
+    <xs:complexContent>
+      <xs:extension base="element">
+        <xs:attribute name="semantic" type="xs:string"/>
+        <xs:attribute name="context" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: TypedElement -->
+  <xs:complexType name="typedelement">
+    <xs:complexContent>
+      <xs:extension base="element">
+        <xs:attribute name="type" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Unit -->
+  <xs:complexType name="unit">
+    <xs:complexContent>
+      <xs:extension base="element"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: UnitDef -->
+  <xs:complexType name="unitdef">
+    <xs:complexContent>
+      <xs:extension base="element">
+        <xs:attribute name="unittype" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: UnitTypeDef -->
+  <xs:complexType name="unittypedef">
+    <xs:complexContent>
+      <xs:extension base="element"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: ValueElement -->
+  <xs:complexType name="valueelement">
+    <xs:complexContent>
+      <xs:extension base="typedelement">
+        <xs:attribute name="value" type="xs:string"/>
+        <xs:attribute name="interfacename" type="xs:string"/>
+        <xs:attribute name="implname" type="xs:string"/>
+        <xs:attribute name="impltype" type="xs:string"/>
+        <xs:attribute name="enum" type="xs:string"/>
+        <xs:attribute name="enumvalues" type="xs:string"/>
+        <xs:attribute name="unit" type="xs:string"/>
+        <xs:attribute name="uiname" type="xs:string"/>
+        <xs:attribute name="uifolder" type="xs:string"/>
+        <xs:attribute name="uimin" type="xs:string"/>
+        <xs:attribute name="uimax" type="xs:string"/>
+        <xs:attribute name="uisoftmin" type="xs:string"/>
+        <xs:attribute name="uisoftmax" type="xs:string"/>
+        <xs:attribute name="uistep" type="xs:string"/>
+        <xs:attribute name="uiadvanced" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Variant -->
+  <xs:complexType name="variant">
+    <xs:complexContent>
+      <xs:extension base="interfaceelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: VariantAssign -->
+  <xs:complexType name="variantassign">
+    <xs:complexContent>
+      <xs:extension base="element"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: VariantSet -->
+  <xs:complexType name="variantset">
+    <xs:complexContent>
+      <xs:extension base="element"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <!-- MaterialX Type Definitions: Visibility -->
+  <xs:complexType name="visibility">
+    <xs:complexContent>
+      <xs:extension base="geomelement"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="materialx">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

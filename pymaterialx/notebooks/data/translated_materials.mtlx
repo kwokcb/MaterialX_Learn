@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <disney_principled name="test_ND_disney_principled" type="surfaceshader" nodedef="ND_disney_principled" />
+  <gltf_pbr name="test_ND_gltf_pbr_surfaceshader" type="surfaceshader" nodedef="ND_gltf_pbr_surfaceshader" />
+  <standard_surface name="test_ND_open_pbr_surface_surfaceshader" type="surfaceshader">
+    <input name="base" type="float" output="base_out" nodegraph="nodegraph1" />
+    <input name="base_color" type="color3" output="base_color_out" nodegraph="nodegraph1" />
+    <input name="diffuse_roughness" type="float" output="diffuse_roughness_out" nodegraph="nodegraph1" />
+    <input name="metalness" type="float" output="metalness_out" nodegraph="nodegraph1" />
+    <input name="specular" type="float" output="specular_out" nodegraph="nodegraph1" />
+    <input name="specular_color" type="color3" output="specular_color_out" nodegraph="nodegraph1" />
+    <input name="specular_roughness" type="float" output="specular_roughness_out" nodegraph="nodegraph1" />
+    <input name="specular_IOR" type="float" output="specular_IOR_out" nodegraph="nodegraph1" />
+    <input name="specular_anisotropy" type="float" output="specular_anisotropy_out" nodegraph="nodegraph1" />
+    <input name="transmission" type="float" output="transmission_out" nodegraph="nodegraph1" />
+    <input name="transmission_color" type="color3" output="transmission_color_out" nodegraph="nodegraph1" />
+    <input name="transmission_depth" type="float" output="transmission_depth_out" nodegraph="nodegraph1" />
+    <input name="transmission_scatter" type="color3" output="transmission_scatter_out" nodegraph="nodegraph1" />
+    <input name="transmission_scatter_anisotropy" type="float" output="transmission_scatter_anisotropy_out" nodegraph="nodegraph1" />
+    <input name="transmission_dispersion" type="float" output="transmission_dispersion_out" nodegraph="nodegraph1" />
+    <input name="subsurface" type="float" output="subsurface_out" nodegraph="nodegraph1" />
+    <input name="subsurface_color" type="color3" output="subsurface_color_out" nodegraph="nodegraph1" />
+    <input name="subsurface_radius" type="color3" output="subsurface_radius_out" nodegraph="nodegraph1" />
+    <input name="subsurface_scale" type="float" output="subsurface_scale_out" nodegraph="nodegraph1" />
+    <input name="subsurface_anisotropy" type="float" output="subsurface_anisotropy_out" nodegraph="nodegraph1" />
+    <input name="sheen" type="float" output="sheen_out" nodegraph="nodegraph1" />
+    <input name="sheen_color" type="color3" output="sheen_color_out" nodegraph="nodegraph1" />
+    <input name="sheen_roughness" type="float" output="sheen_roughness_out" nodegraph="nodegraph1" />
+    <input name="coat" type="float" output="coat_out" nodegraph="nodegraph1" />
+    <input name="coat_color" type="color3" output="coat_color_out" nodegraph="nodegraph1" />
+    <input name="coat_roughness" type="float" output="coat_roughness_out" nodegraph="nodegraph1" />
+    <input name="coat_anisotropy" type="float" output="coat_anisotropy_out" nodegraph="nodegraph1" />
+    <input name="coat_IOR" type="float" output="coat_IOR_out" nodegraph="nodegraph1" />
+    <input name="coat_affect_roughness" type="float" output="coat_affect_roughness_out" nodegraph="nodegraph1" />
+    <input name="thin_film_thickness" type="float" output="thin_film_thickness_out" nodegraph="nodegraph1" />
+    <input name="thin_film_IOR" type="float" output="thin_film_IOR_out" nodegraph="nodegraph1" />
+    <input name="emission" type="float" output="emission_out" nodegraph="nodegraph1" />
+    <input name="emission_color" type="color3" output="emission_color_out" nodegraph="nodegraph1" />
+    <input name="opacity" type="color3" output="opacity_out" nodegraph="nodegraph1" />
+    <input name="thin_walled" type="boolean" output="thin_walled_out" nodegraph="nodegraph1" />
+  </standard_surface>
+  <standard_surface name="test_ND_standard_surface_surfaceshader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader" />
+  <standard_surface name="test_ND_standard_surface_surfaceshader_100" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader_100" />
+  <UsdPreviewSurface name="test_ND_UsdPreviewSurface_surfaceshader" type="surfaceshader" nodedef="ND_UsdPreviewSurface_surfaceshader" />
+  <nodegraph name="nodegraph1">
+    <open_pbr_surface_to_standard_surface name="node1" type="multioutput" nodedef="ND_open_pbr_surface_to_standard_surface" />
+    <output name="base_out" type="float" nodename="node1" output="base_out" />
+    <output name="base_color_out" type="color3" nodename="node1" output="base_color_out" />
+    <output name="diffuse_roughness_out" type="float" nodename="node1" output="diffuse_roughness_out" />
+    <output name="metalness_out" type="float" nodename="node1" output="metalness_out" />
+    <output name="specular_out" type="float" nodename="node1" output="specular_out" />
+    <output name="specular_color_out" type="color3" nodename="node1" output="specular_color_out" />
+    <output name="specular_roughness_out" type="float" nodename="node1" output="specular_roughness_out" />
+    <output name="specular_IOR_out" type="float" nodename="node1" output="specular_IOR_out" />
+    <output name="specular_anisotropy_out" type="float" nodename="node1" output="specular_anisotropy_out" />
+    <output name="transmission_out" type="float" nodename="node1" output="transmission_out" />
+    <output name="transmission_color_out" type="color3" nodename="node1" output="transmission_color_out" />
+    <output name="transmission_depth_out" type="float" nodename="node1" output="transmission_depth_out" />
+    <output name="transmission_scatter_out" type="color3" nodename="node1" output="transmission_scatter_out" />
+    <output name="transmission_scatter_anisotropy_out" type="float" nodename="node1" output="transmission_scatter_anisotropy_out" />
+    <output name="transmission_dispersion_out" type="float" nodename="node1" output="transmission_dispersion_out" />
+    <output name="subsurface_out" type="float" nodename="node1" output="subsurface_out" />
+    <output name="subsurface_color_out" type="color3" nodename="node1" output="subsurface_color_out" />
+    <output name="subsurface_radius_out" type="color3" nodename="node1" output="subsurface_radius_out" />
+    <output name="subsurface_scale_out" type="float" nodename="node1" output="subsurface_scale_out" />
+    <output name="subsurface_anisotropy_out" type="float" nodename="node1" output="subsurface_anisotropy_out" />
+    <output name="sheen_out" type="float" nodename="node1" output="sheen_out" />
+    <output name="sheen_color_out" type="color3" nodename="node1" output="sheen_color_out" />
+    <output name="sheen_roughness_out" type="float" nodename="node1" output="sheen_roughness_out" />
+    <output name="coat_out" type="float" nodename="node1" output="coat_out" />
+    <output name="coat_color_out" type="color3" nodename="node1" output="coat_color_out" />
+    <output name="coat_roughness_out" type="float" nodename="node1" output="coat_roughness_out" />
+    <output name="coat_anisotropy_out" type="float" nodename="node1" output="coat_anisotropy_out" />
+    <output name="coat_IOR_out" type="float" nodename="node1" output="coat_IOR_out" />
+    <output name="coat_affect_roughness_out" type="float" nodename="node1" output="coat_affect_roughness_out" />
+    <output name="thin_film_thickness_out" type="float" nodename="node1" output="thin_film_thickness_out" />
+    <output name="thin_film_IOR_out" type="float" nodename="node1" output="thin_film_IOR_out" />
+    <output name="emission_out" type="float" nodename="node1" output="emission_out" />
+    <output name="emission_color_out" type="color3" nodename="node1" output="emission_color_out" />
+    <output name="opacity_out" type="color3" nodename="node1" output="opacity_out" />
+    <output name="thin_walled_out" type="boolean" nodename="node1" output="thin_walled_out" />
+  </nodegraph>
+</materialx>
