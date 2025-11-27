@@ -7556,7 +7556,7 @@ The script is overly packaged to include texture baking as well which is not a r
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [43]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mx</span>
@@ -7612,7 +7612,7 @@ The script is overly packaged to include texture baking as well which is not a r
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [44]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Look for nodedefs which are translators.</span>
@@ -7633,6 +7633,11 @@ The script is overly packaged to include texture baking as well which is not a r
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Found 4 translators in the standard library.
+Translator: ND_open_pbr_surface_to_standard_surface for target: 
+Translator: ND_standard_surface_to_gltf_pbr for target: 
+Translator: ND_standard_surface_to_open_pbr_surface for target: 
+Translator: ND_standard_surface_to_UsdPreviewSurface for target: 
+
 Translator: ND_open_pbr_surface_to_standard_surface for target: 
 Translator: ND_standard_surface_to_gltf_pbr for target: 
 Translator: ND_standard_surface_to_open_pbr_surface for target: 
@@ -7663,7 +7668,7 @@ Translator: ND_standard_surface_to_UsdPreviewSurface for target:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [45]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">derive_translator_name_from_targets</span><span class="p">(</span><span class="n">source</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -7688,7 +7693,7 @@ Translator: ND_standard_surface_to_UsdPreviewSurface for target:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [46]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Get source and target from name</span>
@@ -7725,7 +7730,7 @@ Translator name 'ND_standard_surface_to_UsdPreviewSurface' maps source: 'standar
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [47]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_translator</span><span class="p">(</span><span class="n">doc</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">Document</span><span class="p">,</span> <span class="n">source</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mx</span><span class="o">.</span><span class="n">NodeDef</span><span class="p">:</span>
@@ -7779,7 +7784,7 @@ provides the name of shading models that can as input to search for translators.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Scan all nodedefs with output type of "surfaceshader"</span>
@@ -7824,7 +7829,7 @@ provides the name of shading models that can as input to search for translators.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [49]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create one of each shading model node</span>
@@ -7929,7 +7934,7 @@ as it halts if there are any failures, and there is no way to decide which mater
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [50]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyMaterialXGenShader</span> <span class="k">as</span> <span class="n">mx_gen_shader</span>
@@ -7960,7 +7965,7 @@ as it halts if there are any failures, and there is no way to decide which mater
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_surface_shader_nodes</span><span class="p">(</span><span class="n">doc</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">Document</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">mx</span><span class="o">.</span><span class="n">Node</span><span class="p">]:</span>
@@ -8017,7 +8022,7 @@ We remove them here as a post cleanup step for clarity.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [52]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyMaterialXGenShader</span> <span class="k">as</span> <span class="n">mx_gen_shader</span>
@@ -8079,158 +8084,7 @@ We remove them here as a post cleanup step for clarity.</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Below is the result shown as a Mermaid diagram:</p>
-<div class="jp-Mermaid"><pre class="mermaid">
-graph LR
-    test_ND_disney_principled[disney_principled:surfaceshader]
-    test_ND_gltf_pbr_surfaceshader[gltf_pbr:surfaceshader]
-    test_ND_open_pbr_surface_surfaceshader[standard_surface:surfaceshader]
-    test_ND_standard_surface_surfaceshader[standard_surface:surfaceshader]
-    test_ND_standard_surface_surfaceshader_100[standard_surface:surfaceshader]
-    test_ND_UsdPreviewSurface_surfaceshader[UsdPreviewSurface:surfaceshader]
-    subgraph nodegraph3
-    nodegraph3_base_out([output:float])
-    style nodegraph3_base_out  fill:#09D, color:#FFF
-    nodegraph3_base_color_out([output:color3])
-    style nodegraph3_base_color_out  fill:#09D, color:#FFF
-    nodegraph3_diffuse_roughness_out([output:float])
-    style nodegraph3_diffuse_roughness_out  fill:#09D, color:#FFF
-    nodegraph3_metalness_out([output:float])
-    style nodegraph3_metalness_out  fill:#09D, color:#FFF
-    nodegraph3_specular_out([output:float])
-    style nodegraph3_specular_out  fill:#09D, color:#FFF
-    nodegraph3_specular_color_out([output:color3])
-    style nodegraph3_specular_color_out  fill:#09D, color:#FFF
-    nodegraph3_specular_roughness_out([output:float])
-    style nodegraph3_specular_roughness_out  fill:#09D, color:#FFF
-    nodegraph3_specular_IOR_out([output:float])
-    style nodegraph3_specular_IOR_out  fill:#09D, color:#FFF
-    nodegraph3_specular_anisotropy_out([output:float])
-    style nodegraph3_specular_anisotropy_out  fill:#09D, color:#FFF
-    nodegraph3_transmission_out([output:float])
-    style nodegraph3_transmission_out  fill:#09D, color:#FFF
-    nodegraph3_transmission_color_out([output:color3])
-    style nodegraph3_transmission_color_out  fill:#09D, color:#FFF
-    nodegraph3_transmission_depth_out([output:float])
-    style nodegraph3_transmission_depth_out  fill:#09D, color:#FFF
-    nodegraph3_transmission_scatter_out([output:color3])
-    style nodegraph3_transmission_scatter_out  fill:#09D, color:#FFF
-    nodegraph3_transmission_scatter_anisotropy_out([output:float])
-    style nodegraph3_transmission_scatter_anisotropy_out  fill:#09D, color:#FFF
-    nodegraph3_transmission_dispersion_out([output:float])
-    style nodegraph3_transmission_dispersion_out  fill:#09D, color:#FFF
-    nodegraph3_subsurface_out([output:float])
-    style nodegraph3_subsurface_out  fill:#09D, color:#FFF
-    nodegraph3_subsurface_color_out([output:color3])
-    style nodegraph3_subsurface_color_out  fill:#09D, color:#FFF
-    nodegraph3_subsurface_radius_out([output:color3])
-    style nodegraph3_subsurface_radius_out  fill:#09D, color:#FFF
-    nodegraph3_subsurface_scale_out([output:float])
-    style nodegraph3_subsurface_scale_out  fill:#09D, color:#FFF
-    nodegraph3_subsurface_anisotropy_out([output:float])
-    style nodegraph3_subsurface_anisotropy_out  fill:#09D, color:#FFF
-    nodegraph3_sheen_out([output:float])
-    style nodegraph3_sheen_out  fill:#09D, color:#FFF
-    nodegraph3_sheen_color_out([output:color3])
-    style nodegraph3_sheen_color_out  fill:#09D, color:#FFF
-    nodegraph3_sheen_roughness_out([output:float])
-    style nodegraph3_sheen_roughness_out  fill:#09D, color:#FFF
-    nodegraph3_coat_out([output:float])
-    style nodegraph3_coat_out  fill:#09D, color:#FFF
-    nodegraph3_coat_color_out([output:color3])
-    style nodegraph3_coat_color_out  fill:#09D, color:#FFF
-    nodegraph3_coat_roughness_out([output:float])
-    style nodegraph3_coat_roughness_out  fill:#09D, color:#FFF
-    nodegraph3_coat_anisotropy_out([output:float])
-    style nodegraph3_coat_anisotropy_out  fill:#09D, color:#FFF
-    nodegraph3_coat_IOR_out([output:float])
-    style nodegraph3_coat_IOR_out  fill:#09D, color:#FFF
-    nodegraph3_coat_affect_roughness_out([output:float])
-    style nodegraph3_coat_affect_roughness_out  fill:#09D, color:#FFF
-    nodegraph3_thin_film_thickness_out([output:float])
-    style nodegraph3_thin_film_thickness_out  fill:#09D, color:#FFF
-    nodegraph3_thin_film_IOR_out([output:float])
-    style nodegraph3_thin_film_IOR_out  fill:#09D, color:#FFF
-    nodegraph3_emission_out([output:float])
-    style nodegraph3_emission_out  fill:#09D, color:#FFF
-    nodegraph3_emission_color_out([output:color3])
-    style nodegraph3_emission_color_out  fill:#09D, color:#FFF
-    nodegraph3_opacity_out([output:color3])
-    style nodegraph3_opacity_out  fill:#09D, color:#FFF
-    nodegraph3_thin_walled_out([output:boolean])
-    style nodegraph3_thin_walled_out  fill:#09D, color:#FFF
-    nodegraph3_node1[open_pbr_surface_to_standard_surface:multioutput]
-    end
-    nodegraph3_base_out --"base"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_base_color_out --"base_color"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_diffuse_roughness_out --"diffuse_roughness"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_metalness_out --"metalness"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_specular_out --"specular"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_specular_color_out --"specular_color"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_specular_roughness_out --"specular_roughness"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_specular_IOR_out --"specular_IOR"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_specular_anisotropy_out --"specular_anisotropy"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_transmission_out --"transmission"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_transmission_color_out --"transmission_color"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_transmission_depth_out --"transmission_depth"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_transmission_scatter_out --"transmission_scatter"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_transmission_scatter_anisotropy_out --"transmission_scatter_anisotropy"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_transmission_dispersion_out --"transmission_dispersion"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_subsurface_out --"subsurface"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_subsurface_color_out --"subsurface_color"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_subsurface_radius_out --"subsurface_radius"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_subsurface_scale_out --"subsurface_scale"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_subsurface_anisotropy_out --"subsurface_anisotropy"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_sheen_out --"sheen"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_sheen_color_out --"sheen_color"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_sheen_roughness_out --"sheen_roughness"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_coat_out --"coat"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_coat_color_out --"coat_color"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_coat_roughness_out --"coat_roughness"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_coat_anisotropy_out --"coat_anisotropy"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_coat_IOR_out --"coat_IOR"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_coat_affect_roughness_out --"coat_affect_roughness"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_thin_film_thickness_out --"thin_film_thickness"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_thin_film_IOR_out --"thin_film_IOR"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_emission_out --"emission"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_emission_color_out --"emission_color"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_opacity_out --"opacity"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_thin_walled_out --"thin_walled"--&gt; test_ND_open_pbr_surface_surfaceshader
-    nodegraph3_node1 --"base_out"--&gt; nodegraph3_base_out
-    nodegraph3_node1 --"base_color_out"--&gt; nodegraph3_base_color_out
-    nodegraph3_node1 --"diffuse_roughness_out"--&gt; nodegraph3_diffuse_roughness_out
-    nodegraph3_node1 --"metalness_out"--&gt; nodegraph3_metalness_out
-    nodegraph3_node1 --"specular_out"--&gt; nodegraph3_specular_out
-    nodegraph3_node1 --"specular_color_out"--&gt; nodegraph3_specular_color_out
-    nodegraph3_node1 --"specular_roughness_out"--&gt; nodegraph3_specular_roughness_out
-    nodegraph3_node1 --"specular_IOR_out"--&gt; nodegraph3_specular_IOR_out
-    nodegraph3_node1 --"specular_anisotropy_out"--&gt; nodegraph3_specular_anisotropy_out
-    nodegraph3_node1 --"transmission_out"--&gt; nodegraph3_transmission_out
-    nodegraph3_node1 --"transmission_color_out"--&gt; nodegraph3_transmission_color_out
-    nodegraph3_node1 --"transmission_depth_out"--&gt; nodegraph3_transmission_depth_out
-    nodegraph3_node1 --"transmission_scatter_out"--&gt; nodegraph3_transmission_scatter_out
-    nodegraph3_node1 --"transmission_scatter_anisotropy_out"--&gt; nodegraph3_transmission_scatter_anisotropy_out
-    nodegraph3_node1 --"transmission_dispersion_out"--&gt; nodegraph3_transmission_dispersion_out
-    nodegraph3_node1 --"subsurface_out"--&gt; nodegraph3_subsurface_out
-    nodegraph3_node1 --"subsurface_color_out"--&gt; nodegraph3_subsurface_color_out
-    nodegraph3_node1 --"subsurface_radius_out"--&gt; nodegraph3_subsurface_radius_out
-    nodegraph3_node1 --"subsurface_scale_out"--&gt; nodegraph3_subsurface_scale_out
-    nodegraph3_node1 --"subsurface_anisotropy_out"--&gt; nodegraph3_subsurface_anisotropy_out
-    nodegraph3_node1 --"sheen_out"--&gt; nodegraph3_sheen_out
-    nodegraph3_node1 --"sheen_color_out"--&gt; nodegraph3_sheen_color_out
-    nodegraph3_node1 --"sheen_roughness_out"--&gt; nodegraph3_sheen_roughness_out
-    nodegraph3_node1 --"coat_out"--&gt; nodegraph3_coat_out
-    nodegraph3_node1 --"coat_color_out"--&gt; nodegraph3_coat_color_out
-    nodegraph3_node1 --"coat_roughness_out"--&gt; nodegraph3_coat_roughness_out
-    nodegraph3_node1 --"coat_anisotropy_out"--&gt; nodegraph3_coat_anisotropy_out
-    nodegraph3_node1 --"coat_IOR_out"--&gt; nodegraph3_coat_IOR_out
-    nodegraph3_node1 --"coat_affect_roughness_out"--&gt; nodegraph3_coat_affect_roughness_out
-    nodegraph3_node1 --"thin_film_thickness_out"--&gt; nodegraph3_thin_film_thickness_out
-    nodegraph3_node1 --"thin_film_IOR_out"--&gt; nodegraph3_thin_film_IOR_out
-    nodegraph3_node1 --"emission_out"--&gt; nodegraph3_emission_out
-    nodegraph3_node1 --"emission_color_out"--&gt; nodegraph3_emission_color_out
-    nodegraph3_node1 --"opacity_out"--&gt; nodegraph3_opacity_out
-    nodegraph3_node1 --"thin_walled_out"--&gt; nodegraph3_thin_walled_out
-</pre></div>
+<img alt="No description has been provided for this image" src="data/translated_materials.svg" widht="100%"/>
 </div>
 </div>
 </div>
@@ -8239,7 +8093,7 @@ graph LR
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [53]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyMaterialXGenShader</span> <span class="k">as</span> <span class="n">mx_gen_shader</span>
@@ -8304,7 +8158,7 @@ graph LR
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [54]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">create_translator</span><span class="p">(</span><span class="n">doc</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">Document</span><span class="p">,</span> 
@@ -8426,7 +8280,7 @@ no translator is created.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [55]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">source_target</span> <span class="o">=</span> <span class="s2">"open_pbr_surface"</span>
@@ -8481,7 +8335,7 @@ Failed to create translator nodedef.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [56]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">source_version</span> <span class="o">=</span> <span class="s1">'1.1'</span>
@@ -8634,6 +8488,7 @@ Created new translator nodedef: 'ND_open_pbr_surface_to_gltf_pbr' from 'open_pbr
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>- Document validation: True. Errors: ''
+
 </pre>
 </div>
 </div>

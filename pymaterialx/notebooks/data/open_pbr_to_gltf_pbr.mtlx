@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
-  <nodedef name="ND_open_pbr_surface_to_gltf_pbr" node="open_pbr_surface_to_gltf_pbr" nodegroup="translation" doc="Translator from 'open_pbr_surface' to 'gltf_pbr'" source_version="1.1" target_version="2.0.1">
+  <nodedef name="ND_open_pbr_surface_to_gltf_pbr" node="open_pbr_surface_to_gltf_pbr" nodegroup="translation" doc="Translator from 'open_pbr_surface' to 'gltf_pbr'" source_version="1.1" source="open_pbr_surface" target_version="2.0.1" target="gltf_pbr">
     <!--Inputs (inputs from source 'open_pbr_surface')-->
     <input name="base_weight" type="float" value="1.0" />
     <input name="base_color" type="color3" value="0.8, 0.8, 0.8" />
@@ -74,7 +74,7 @@
     <output name="anisotropy_rotation_out" type="float" />
     <output name="dispersion_out" type="float" />
   </nodedef>
-  <nodegraph name="NG_open_pbr_surface_to_gltf_pbr" nodedef="ND_open_pbr_surface_to_gltf_pbr" doc="NodeGraph implementation of translator from 'open_pbr_surface' to 'gltf_pbr'" source_version="1.1" target_version="2.0.1">
+  <nodegraph name="NG_open_pbr_surface_to_gltf_pbr" nodedef="ND_open_pbr_surface_to_gltf_pbr" doc="NodeGraph implementation of translator from 'open_pbr_surface' to 'gltf_pbr'" source_version="1.1" source="open_pbr_surface" target_version="2.0.1" target="gltf_pbr">
     <output name="base_color_out" type="color3" />
     <output name="metallic_out" type="float" />
     <output name="roughness_out" type="float" />
