@@ -39,22 +39,26 @@
           <button class="nav-link" id="pills-libusage-tab" data-bs-toggle="pill" data-bs-target="#pills-libusage"
             type="button" role="tab" aria-controls="pills-libusage" aria-selected="true">Node Usage</button>
         </li>        
+        <li class="nav-item shadow-sm" role="presentation">
+          <button class="nav-link" id="pills-translators-tab" data-bs-toggle="pill" data-bs-target="#pills-translators"
+            type="button" role="tab" aria-controls="pills-translators" aria-selected="true">Shader Translation (int.)</button>
+        </li>
         <li class="nav-item  shadow-sm" role="presentation">
           <button class="nav-link" id="pills-createdefs-tab" data-bs-toggle="pill" data-bs-target="#pills-createdefs"
-            type="button" role="tab" aria-controls="pills-createdefs" aria-selected="true">Creating Definitions</button>
+            type="button" role="tab" aria-controls="pills-createdefs" aria-selected="true">Creating Definitions (int.)</button>
         </li>
         <li class="nav-item shadow-sm" role="presentation">
           <button class="nav-link" id="pills-shadergen-tab" data-bs-toggle="pill" data-bs-target="#pills-shadergen"
-            type="button" role="tab" aria-controls="pills-shadergen" aria-selected="true">Shader Generation</button>
+            type="button" role="tab" aria-controls="pills-shadergen" aria-selected="true">Shader Generation (adv.)</button>
         </li>
         <li class="nav-item  shadow-sm" role="presentation">
           <button class="nav-link" id="pills-render-tab" data-bs-toggle="pill" data-bs-target="#pills-render"
-            type="button" role="tab" aria-controls="pills-render" aria-selected="true">Rendering (Advanced)</button>
+            type="button" role="tab" aria-controls="pills-render" aria-selected="true">Rendering (adv.)</button>
         </li>
         <li class="nav-item  shadow-sm" role="presentation">
           <button class="nav-link" id="pills-impltargets-tab" data-bs-toggle="pill" data-bs-target="#pills-impltargets"
             type="button" role="tab" aria-controls="pills-impltargets" aria-selected="true">Implementations / Targets
-            (Advanced)</button>
+            (adv.)</button>
         </li>
         <li class="nav-item  shadow-sm" role="presentation">
           <button class="nav-link link-success" id="pills-ocio-tab" data-bs-toggle="pill" data-bs-target="#pills-ocio"
@@ -169,10 +173,21 @@
       </div>      
 
       <div class="tab-content" id="pills-tabContent3">
+        <div class="tab-pane fade" id="pills-translators" role="tabpanel" aria-labelledby="pills-translators-tab">
+
+          <div class="card border-secondary shadow border mb-0">
+            <iframe class="rounded" src="../pymaterialx/notebooks/mtlx_translators_nodtebook.html" title="Shader Translators (int.)"
+              width="100%" height="800"></iframe>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tab-content" id="pills-tabContent3">
         <div class="tab-pane fade" id="pills-createdefs" role="tabpanel" aria-labelledby="pills-createdefs-tab">
 
           <div class="card border-secondary shadow border mb-0">
-            <iframe class="rounded" src="../pymaterialx/notebooks/mtlx_definitions_notebook.html" title="Creating Definitions"
+            <iframe class="rounded" src="../pymaterialx/notebooks/mtlx_definitions_notebook.html" title="Creating Definitions (int.)"
               width="100%" height="800"></iframe>
           </div>
         </div>
