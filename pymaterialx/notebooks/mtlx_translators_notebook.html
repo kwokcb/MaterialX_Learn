@@ -7556,7 +7556,7 @@ The script is overly packaged to include texture baking as well which is not a r
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mx</span>
@@ -7612,7 +7612,7 @@ The script is overly packaged to include texture baking as well which is not a r
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [49]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Look for nodedefs which are translators.</span>
@@ -7633,11 +7633,6 @@ The script is overly packaged to include texture baking as well which is not a r
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Found 4 translators in the standard library.
-Translator: ND_open_pbr_surface_to_standard_surface for target: 
-Translator: ND_standard_surface_to_gltf_pbr for target: 
-Translator: ND_standard_surface_to_open_pbr_surface for target: 
-Translator: ND_standard_surface_to_UsdPreviewSurface for target: 
-
 Translator: ND_open_pbr_surface_to_standard_surface for target: 
 Translator: ND_standard_surface_to_gltf_pbr for target: 
 Translator: ND_standard_surface_to_open_pbr_surface for target: 
@@ -7668,7 +7663,7 @@ Translator: ND_standard_surface_to_UsdPreviewSurface for target:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [50]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">derive_translator_name_from_targets</span><span class="p">(</span><span class="n">source</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -7693,7 +7688,7 @@ Translator: ND_standard_surface_to_UsdPreviewSurface for target:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Get source and target from name</span>
@@ -7730,7 +7725,7 @@ Translator name 'ND_standard_surface_to_UsdPreviewSurface' maps source: 'standar
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [52]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_translator</span><span class="p">(</span><span class="n">doc</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">Document</span><span class="p">,</span> <span class="n">source</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mx</span><span class="o">.</span><span class="n">NodeDef</span><span class="p">:</span>
@@ -7784,7 +7779,7 @@ provides the name of shading models that can as input to search for translators.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [53]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Scan all nodedefs with output type of "surfaceshader"</span>
@@ -7829,7 +7824,7 @@ provides the name of shading models that can as input to search for translators.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [54]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create one of each shading model node</span>
@@ -7934,7 +7929,7 @@ as it halts if there are any failures, and there is no way to decide which mater
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [55]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyMaterialXGenShader</span> <span class="k">as</span> <span class="n">mx_gen_shader</span>
@@ -7965,7 +7960,7 @@ as it halts if there are any failures, and there is no way to decide which mater
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [56]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_surface_shader_nodes</span><span class="p">(</span><span class="n">doc</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">Document</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">mx</span><span class="o">.</span><span class="n">Node</span><span class="p">]:</span>
@@ -8022,7 +8017,7 @@ We remove them here as a post cleanup step for clarity.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [57]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyMaterialXGenShader</span> <span class="k">as</span> <span class="n">mx_gen_shader</span>
@@ -8093,7 +8088,7 @@ We remove them here as a post cleanup step for clarity.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [58]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyMaterialXGenShader</span> <span class="k">as</span> <span class="n">mx_gen_shader</span>
@@ -8158,7 +8153,7 @@ We remove them here as a post cleanup step for clarity.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [59]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">create_translator</span><span class="p">(</span><span class="n">doc</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">Document</span><span class="p">,</span> 
@@ -8280,7 +8275,7 @@ no translator is created.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [60]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">source_target</span> <span class="o">=</span> <span class="s2">"open_pbr_surface"</span>
@@ -8335,7 +8330,7 @@ Failed to create translator nodedef.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [61]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">source_version</span> <span class="o">=</span> <span class="s1">'1.1'</span>
@@ -8488,8 +8483,114 @@ Created new translator nodedef: 'ND_open_pbr_surface_to_gltf_pbr' from 'open_pbr
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>- Document validation: True. Errors: ''
-
 </pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=88209346">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Updated-Translation-Search">Updated Translation Search<a class="anchor-link" href="#Updated-Translation-Search">¶</a></h2><p>To improve the translation search to account for versions, we can implement a more robust search mechanism
+such as the following:</p>
+<p>This could be incorporated into the <code>ShaderTranslator</code> API which performs the translation replacing
+the existing literal string search.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f0ccc666">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [62]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_translator</span><span class="p">(</span><span class="n">doc</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">Document</span><span class="p">,</span> 
+                    <span class="n">source</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+                    <span class="n">source_version</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mx</span><span class="o">.</span><span class="n">NodeDef</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    @brief Find a translator nodedef from source to target with specific versions.</span>
+<span class="sd">    @param doc The document to search in.</span>
+<span class="sd">    @param source The source nodedef nodeString.</span>
+<span class="sd">    @param target The target nodedef nodeString.</span>
+<span class="sd">    @param source_version The source version string.</span>
+<span class="sd">    @param target_version The target version string.</span>
+<span class="sd">    @return The found translator nodedef or None.</span>
+<span class="sd">    '''</span>
+    <span class="n">nodedefs</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getNodeDefs</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">nodedef</span> <span class="ow">in</span> <span class="n">nodedefs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getNodeGroup</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"translation"</span><span class="p">:</span>
+            <span class="n">nodedef_source</span> <span class="o">=</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">'source'</span><span class="p">)</span>
+            <span class="n">nodedef_target</span> <span class="o">=</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">'target'</span><span class="p">)</span>
+            <span class="n">nodedef_source_version</span> <span class="o">=</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">'source_version'</span><span class="p">)</span>
+            <span class="n">nodedef_target_version</span> <span class="o">=</span> <span class="n">nodedef</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">'target_version'</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">nodedef_source</span> <span class="o">==</span> <span class="n">source</span> <span class="ow">and</span> <span class="n">nodedef_target</span> <span class="o">==</span> <span class="n">target</span> <span class="ow">and</span>
+                <span class="n">nodedef_source_version</span> <span class="o">==</span> <span class="n">source_version</span> <span class="ow">and</span>
+                <span class="n">nodedef_target_version</span> <span class="o">==</span> <span class="n">target_version</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">nodedef</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="n">nodedef</span> <span class="o">=</span> <span class="n">find_translator</span><span class="p">(</span><span class="n">new_doc</span><span class="p">,</span> <span class="n">source_target</span><span class="p">,</span> <span class="n">dest_target</span><span class="p">,</span> <span class="n">source_version</span><span class="p">,</span> <span class="n">target_version</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">nodedef</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Found translator nodedef: '</span><span class="si">{</span><span class="n">nodedef</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span><span class="si">}</span><span class="s2">' from '</span><span class="si">{</span><span class="n">source_target</span><span class="si">}</span><span class="s2">' to '</span><span class="si">{</span><span class="n">dest_target</span><span class="si">}</span><span class="s2">' with versions '</span><span class="si">{</span><span class="n">source_version</span><span class="si">}</span><span class="s2">' to '</span><span class="si">{</span><span class="n">target_version</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Translator not found for '</span><span class="si">{</span><span class="n">source_target</span><span class="si">}</span><span class="s2">' to '</span><span class="si">{</span><span class="n">dest_target</span><span class="si">}</span><span class="s2">' with versions '</span><span class="si">{</span><span class="n">source_version</span><span class="si">}</span><span class="s2">' to </span><span class="si">{</span><span class="n">target_version</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+
+<span class="n">target_version</span> <span class="o">=</span> <span class="s2">"0.9"</span>
+<span class="n">nodedef</span> <span class="o">=</span> <span class="n">find_translator</span><span class="p">(</span><span class="n">new_doc</span><span class="p">,</span> <span class="n">source_target</span><span class="p">,</span> <span class="n">dest_target</span><span class="p">,</span> <span class="n">source_version</span><span class="p">,</span> <span class="n">target_version</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">nodedef</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Found translator nodedef: '</span><span class="si">{</span><span class="n">nodedef</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span><span class="si">}</span><span class="s2">' from '</span><span class="si">{</span><span class="n">source_target</span><span class="si">}</span><span class="s2">' to '</span><span class="si">{</span><span class="n">dest_target</span><span class="si">}</span><span class="s2">' with versions '</span><span class="si">{</span><span class="n">source_version</span><span class="si">}</span><span class="s2">' to '</span><span class="si">{</span><span class="n">target_version</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Translator not found for '</span><span class="si">{</span><span class="n">source_target</span><span class="si">}</span><span class="s2">' to '</span><span class="si">{</span><span class="n">dest_target</span><span class="si">}</span><span class="s2">' with versions '</span><span class="si">{</span><span class="n">source_version</span><span class="si">}</span><span class="s2">' to </span><span class="si">{</span><span class="n">target_version</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Found translator nodedef: 'ND_open_pbr_surface_to_gltf_pbr' from 'open_pbr_surface' to 'gltf_pbr' with versions '1.1' to '2.0.1'
+Translator not found for 'open_pbr_surface' to 'gltf_pbr' with versions '1.1' to 0.9.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d4a9fe84">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8d50f7d6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
 </div>
 </div>
 </div>
