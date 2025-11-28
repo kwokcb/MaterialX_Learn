@@ -134,12 +134,6 @@
         #searchResultsList .list-group-item {
             padding: 0.5rem 1rem;
             cursor: pointer;
-            border-left: none;
-            border-right: none;
-        }
-
-        #searchResultsList .list-group-item:first-child {
-            border-top: none;
         }
 
         .search-result-path {
@@ -314,7 +308,7 @@
   <!-- Section Information -->
   <section class="py-0 px-0 g-0">
     <div class="container-fluid p-4">
-          <div class="container-fluid p-3">
+          <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg rounded mb-3 px-3">
             <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
                 <span id="tree_title" class="navbar-brand mb-0 h5">Tree Visualizer</span>
@@ -372,11 +366,11 @@
                 </ul>
             </div>
         </div>
-        <div class="border rounded p-2" style="height: 600px;">
-            <div class="row h-100 p-2">
+        <div class="container-fluid rounded p-0">
+            <div class="row p-0">
                 <div class="col-sm">
                     <!-- Chart -->
-                    <div id="chart-container">
+                    <div id="chart-container" class="p-2" style="min-height: 600px;">
                         <div class="svg-wrapper">
                             <svg class="border rounded" id="tree_chart1" preserveAspectRatio="xMinYMin meet">
                                 <g id="zoomGroup"></g>
@@ -384,39 +378,44 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3 p-2">
-                    <div class="card" style="max-height: 600px; overflow-y: auto;">
-                        <div class="card-header">Filter</div>
-                        <div class="card-body">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="searchInput" placeholder="Regex">
-                                <button class="btn btn-sm btn-outline-secondary" type="button"
-                                    id="searchBtn">Search</button>
-                                <button class="btn btn-sm btn-outline-secondary" type="button"
-                                    id="clearSearchBtn">Clear</button>
-                            </div>
-                            <div id="searchResultsInfo" class="text-muted"></div>
+                <div class="col-sm-3">
+                    <div class="row max-height-vh-80 overflow-auto">
 
-                            <div class="form-check form-switch mt-2">
-                                <input class="form-check-input" type="checkbox" id="expandMatchesCheck" checked>
-                                <label class="form-check-label" for="expandMatchesCheck">Expand matches</label>
-                            </div>
-                            <div id="searchResultsContainer" style="display: none;">
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <small class="text-muted">Search results:</small>
-                                    <small class="text-muted" id="searchResultsCount">0 items</small>
+                        <!-- Search Filter -->
+                        <div class="card p-0" style="max-height: 240px; overflow-y: auto;">
+                            <div class="card-header">Filter</div>
+                            <div class="card-body">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="searchInput" placeholder="Regex">
+                                    <button class="btn btn-sm btn-outline-secondary" type="button"
+                                        id="searchBtn">Search</button>
+                                    <button class="btn btn-sm btn-outline-secondary" type="button"
+                                        id="clearSearchBtn">Clear</button>
                                 </div>
-                                <div id="searchResultsList" class="list-group list-group-flush"></div>
+                                <div id="searchResultsInfo" class="text-muted"></div>
+
+                                <div class="form-check form-switch mt-2">
+                                    <input class="form-check-input" type="checkbox" id="expandMatchesCheck" checked>
+                                    <label class="form-check-label" for="expandMatchesCheck">Expand matches</label>
+                                </div>
+                                <div id="searchResultsContainer" style="display: none;">
+                                    <div class="d-flex justify-content-between align-items-center mt-2">
+                                        <small class="text-muted">Search results:</small>
+                                        <small class="text-muted" id="searchResultsCount">0 items</small>
+                                    </div>
+                                    <div id="searchResultsList" class="list-group list-group-flush"></div>
+                                </div>
                             </div>
                         </div>
 
-
-
-                        <div class="card-header">
-                            Node Information
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3" id="selectedNodeInfo" style="max-height: 400px; overflow-y: auto;">
+                        <!-- Node information -->
+                        <div class="card mt-2 p-0" style="max-height: 600px; overflow-y: auto">
+                            <div class="card-header">
+                                Node Information
+                            </div>
+                            <div class="card-body">
+                                <div class="" id="selectedNodeInfo" style="max-height: 400px; overflow-y: auto;">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -424,11 +423,13 @@
             </div>
         </div>
 
+        <p></p>
+
         <div class="row mt-3">
             <div class="col-sm">
                 <div class="card">
                     <div class="card-header">
-                        Data
+                        Input Data
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
@@ -504,6 +505,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- Help Modal -->
         <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
@@ -1179,13 +1181,13 @@
 
                 const infoElement = document.getElementById('searchResultsInfo');
                 if (matches.length > 0) {
-                    infoElement.textContent = `Found ${matches.length} matching nodes`;
-                    infoElement.className = 'text-success';
+                    //infoElement.textContent = `Found ${matches.length} matching nodes`;
+                    //infoElement.className = 'text-success';
                     document.getElementById('searchResultsContainer').style.display = 'block';
                     updateSearchResultsList(matches);
                 } else {
-                    infoElement.textContent = 'No matches found';
-                    infoElement.className = 'text-danger';
+                    //infoElement.textContent = 'No matches found';
+                    //infoElement.className = 'text-danger';
                     document.getElementById('searchResultsContainer').style.display = 'none';
                 }
             });
