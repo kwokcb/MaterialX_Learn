@@ -94,6 +94,9 @@ def add_implementation_node(parent, nodedef, implementation, targetNames):
         return
 
     for target in targetNames:
+        if target == 'genoslnetwork':
+            # This is not a true shader language target so skip it
+            continue
         implementation = nodedef.getImplementation(target)
         if implementation:
             implementation_name = implementation.getName()
@@ -352,12 +355,18 @@ def build_nodedef_info(insert_nodegroup=True, input_path='', libraryFolders=['li
                     implementation = nodedef.getImplementation()
                     if implementation:
 
+                        node_graph_attr = implementation.getAttribute('nodegraph')
+                        if node_graph_attr:
+                            implementation = doc.getNodeGraph(node_graph_attr)
+
                         # Add nodegraph
                         if implementation.isA(mx.NodeGraph):
+                            print("Add nodegraph implementation for nodedef:", nodedef_name)
                             add_nodegraph_node(new_child, implementation)
 
                         # Add non-nodegraph implementation
                         else:
+                            print("Add non-nodegraph implementation for nodedef:", nodedef_name, "name", implementation.getNamePath())
                             add_implementation_node(new_child, nodedef, implementation, targetNames)
                     else:
                         print(f'-- No implementation for nodedef: {nodedef_name}')
