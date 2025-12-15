@@ -18193,7 +18193,7 @@
                   "name": "IM_ramptb_color3_genosl",
                   "target": "genosl",
                   "type": "implementation",
-                  "doc": "mix({{valuet}}, {{valueb}}, clamp({{texcoord}}.y, 0, 1))"
+                  "doc": "mix({{valueb}}, {{valuet}}, clamp({{texcoord}}.y, 0, 1))"
                 }
               ]
             },
@@ -18223,7 +18223,7 @@
                   "name": "IM_ramptb_color4_genosl",
                   "target": "genosl",
                   "type": "implementation",
-                  "doc": "mix({{valuet}}, {{valueb}}, clamp({{texcoord}}.y, 0, 1))"
+                  "doc": "mix({{valueb}}, {{valuet}}, clamp({{texcoord}}.y, 0, 1))"
                 }
               ]
             },
@@ -18253,7 +18253,7 @@
                   "name": "IM_ramptb_float_genosl",
                   "target": "genosl",
                   "type": "implementation",
-                  "doc": "mix({{valuet}}, {{valueb}}, clamp({{texcoord}}.y, 0, 1))"
+                  "doc": "mix({{valueb}}, {{valuet}}, clamp({{texcoord}}.y, 0, 1))"
                 }
               ]
             },
@@ -18283,7 +18283,7 @@
                   "name": "IM_ramptb_vector2_genosl",
                   "target": "genosl",
                   "type": "implementation",
-                  "doc": "mix({{valuet}}, {{valueb}}, clamp({{texcoord}}.y, 0, 1))"
+                  "doc": "mix({{valueb}}, {{valuet}}, clamp({{texcoord}}.y, 0, 1))"
                 }
               ]
             },
@@ -18313,7 +18313,7 @@
                   "name": "IM_ramptb_vector3_genosl",
                   "target": "genosl",
                   "type": "implementation",
-                  "doc": "mix({{valuet}}, {{valueb}}, clamp({{texcoord}}.y, 0, 1))"
+                  "doc": "mix({{valueb}}, {{valuet}}, clamp({{texcoord}}.y, 0, 1))"
                 }
               ]
             },
@@ -18343,7 +18343,7 @@
                   "name": "IM_ramptb_vector4_genosl",
                   "target": "genosl",
                   "type": "implementation",
-                  "doc": "mix({{valuet}}, {{valueb}}, clamp({{texcoord}}.y, 0, 1))"
+                  "doc": "mix({{valueb}}, {{valuet}}, clamp({{texcoord}}.y, 0, 1))"
                 }
               ]
             }
@@ -20499,7 +20499,7 @@
                   "name": "IM_splittb_color3_genosl",
                   "target": "genosl",
                   "type": "implementation",
-                  "doc": "mix({{valuet}}, {{valueb}}, aastep({{center}}, {{texcoord}}.y))"
+                  "doc": "mix({{valueb}}, {{valuet}}, aastep({{center}}, {{texcoord}}.y))"
                 }
               ]
             },
@@ -20529,7 +20529,7 @@
                   "name": "IM_splittb_color4_genosl",
                   "target": "genosl",
                   "type": "implementation",
-                  "doc": "mix({{valuet}}, {{valueb}}, aastep({{center}}, {{texcoord}}.y))"
+                  "doc": "mix({{valueb}}, {{valuet}}, aastep({{center}}, {{texcoord}}.y))"
                 }
               ]
             },
@@ -20559,7 +20559,7 @@
                   "name": "IM_splittb_float_genosl",
                   "target": "genosl",
                   "type": "implementation",
-                  "doc": "mix({{valuet}}, {{valueb}}, aastep({{center}}, {{texcoord}}.y))"
+                  "doc": "mix({{valueb}}, {{valuet}}, aastep({{center}}, {{texcoord}}.y))"
                 }
               ]
             },
@@ -20589,7 +20589,7 @@
                   "name": "IM_splittb_vector2_genosl",
                   "target": "genosl",
                   "type": "implementation",
-                  "doc": "mix({{valuet}}, {{valueb}}, aastep({{center}}, {{texcoord}}.y))"
+                  "doc": "mix({{valueb}}, {{valuet}}, aastep({{center}}, {{texcoord}}.y))"
                 }
               ]
             },
@@ -20619,7 +20619,7 @@
                   "name": "IM_splittb_vector3_genosl",
                   "target": "genosl",
                   "type": "implementation",
-                  "doc": "mix({{valuet}}, {{valueb}}, aastep({{center}}, {{texcoord}}.y))"
+                  "doc": "mix({{valueb}}, {{valuet}}, aastep({{center}}, {{texcoord}}.y))"
                 }
               ]
             },
@@ -20649,7 +20649,7 @@
                   "name": "IM_splittb_vector4_genosl",
                   "target": "genosl",
                   "type": "implementation",
-                  "doc": "mix({{valuet}}, {{valueb}}, aastep({{center}}, {{texcoord}}.y))"
+                  "doc": "mix({{valueb}}, {{valuet}}, aastep({{center}}, {{texcoord}}.y))"
                 }
               ]
             }
