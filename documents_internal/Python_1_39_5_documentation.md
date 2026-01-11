@@ -4100,9 +4100,33 @@ An empty target string matches all targets.
 
 ### Globals
 
-ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYPE_STRING, DISPLACEMENT_SHADER_TYPE_STRING, EDF_TYPE_STRING, FILENAME_TYPE_STRING, GEOMNAME_TYPE_STRING, GEOM_PATH_SEPARATOR, LIGHT_SHADER_TYPE_STRING, MATERIAL_TYPE_STRING, MULTI_OUTPUT_TYPE_STRING, NAME_PATH_SEPARATOR, NAME_PREFIX_SEPARATOR, NONE_TYPE_STRING, STRING_TYPE_STRING, SURFACE_MATERIAL_NODE_STRING, SURFACE_SHADER_TYPE_STRING, UDIM_SET_PROPERTY, UDIM_TOKEN, UNIVERSAL_GEOM_NAME, UV_TILE_TOKEN, VALUE_STRING_FALSE, VALUE_STRING_TRUE, VDF_TYPE_STRING, VOLUME_MATERIAL_NODE_STRING, VOLUME_SHADER_TYPE_STRING
-
-
+- ARRAY_PREFERRED_SEPARATOR = ', '
+- ARRAY_VALID_SEPARATORS = ', '
+- BSDF_TYPE_STRING = 'BSDF'
+- DEFAULT_TYPE_STRING = 'color3'
+- DISPLACEMENT_SHADER_TYPE_STRING = 'displacementshader'
+- EDF_TYPE_STRING = 'EDF'
+- FILENAME_TYPE_STRING = 'filename'
+- GEOMNAME_TYPE_STRING = 'geomname'
+- GEOM_PATH_SEPARATOR = '/'
+- LIGHT_SHADER_TYPE_STRING = 'lightshader'
+- MATERIAL_TYPE_STRING = 'material'
+- MULTI_OUTPUT_TYPE_STRING = 'multioutput'
+- NAME_PATH_SEPARATOR = '/'
+- NAME_PREFIX_SEPARATOR = ':'
+- NONE_TYPE_STRING = 'none'
+- STRING_TYPE_STRING = 'string'
+- SURFACE_MATERIAL_NODE_STRING = 'surfacematerial'
+- SURFACE_SHADER_TYPE_STRING = 'surfaceshader'
+- UDIM_SET_PROPERTY = 'udimset'
+- UDIM_TOKEN = '(UDIM)'
+- UNIVERSAL_GEOM_NAME = '/'
+- UV_TILE_TOKEN = '(UVTILE)'
+- VALUE_STRING_FALSE = 'false'
+- VALUE_STRING_TRUE = 'true'
+- VDF_TYPE_STRING = 'VDF'
+- VOLUME_MATERIAL_NODE_STRING = 'volumematerial'
+- VOLUME_SHADER_TYPE_STRING = 'volumeshader'
 
 ---
 
@@ -4316,7 +4340,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 ### Functions
 
-- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6eab0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
+- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102b029b0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
 
 Flatten all filenames in the given document, applying string resolvers at the scope of each element and removing all fileprefix attributes.
 
@@ -4345,7 +4369,7 @@ Scans for all documents under a root path and returns documents which can be loa
 
 Load all MaterialX files within the given library folders into a document, using the given search path to locate the folders on the file system.
 
-- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6e870>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102b026b0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 Load a given MaterialX library into a document.
 
@@ -4355,7 +4379,7 @@ Load a given MaterialX library into a document.
 
 Read the given file and return a string containing its contents; if the read is not successful, then the empty string is returned.
 
-- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6ddb0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102b01d70>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 Read a Document as XML from the given filename.
 
@@ -4365,7 +4389,7 @@ Args:
     searchPath: An optional sequence of file paths that will be applied in order when searching for the given file and its includes. This argument can be supplied either as a FileSearchPath, or as a standard string with paths separated by the PATH_SEPARATOR character.
     readOptions: An optional pointer to an XmlReadOptions object. If provided, then the given options will affect the behavior of the read function. Defaults to a null pointer.
 
-- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6de70>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102b01e70>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 Read a Document as XML from the given string.
 
@@ -4382,9 +4406,14 @@ Args:
 
 ### Globals
 
-FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LIST_SEPARATOR, TypeAbsolute, TypeNetwork, TypeRelative
-
-
+- FormatNative = (Format.FormatPosix: 1)
+- FormatPosix = (Format.FormatPosix: 1)
+- FormatWindows = (Format.FormatWindows: 0)
+- MATERIALX_SEARCH_PATH_ENV_VAR = 'MATERIALX_SEARCH_PATH'
+- PATH_LIST_SEPARATOR = ':'
+- TypeAbsolute = (Type.TypeAbsolute: 1)
+- TypeNetwork = (Type.TypeNetwork: 2)
+- TypeRelative = (Type.TypeRelative: 0)
 
 ---
 
@@ -4605,9 +4634,9 @@ A generator for a specific OSL target should be derived from this class.
 
 ### Globals
 
-OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
-
-
+- OSL_INPUTS = 'i'
+- OSL_OUTPUTS = 'o'
+- OSL_UNIFORMS = 'u'
 
 ---
 
@@ -5339,9 +5368,20 @@ Tokens are required to start with '$' and can only consist of alphanumeric chara
 
 ### Globals
 
-HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PUBLIC_UNIFORMS, HW_VERTEX_DATA, HW_VERTEX_INPUTS, PIXEL_STAGE, SHADER_INTERFACE_COMPLETE, SHADER_INTERFACE_REDUCED, SPECULAR_ENVIRONMENT_FIS, SPECULAR_ENVIRONMENT_NONE, SPECULAR_ENVIRONMENT_PREFILTER, VERTEX_STAGE
-
-
+- HW_ATTR_TRANSPARENT = 'transparent'
+- HW_LIGHT_DATA = 'LightData'
+- HW_PIXEL_OUTPUTS = 'PixelOutputs'
+- HW_PRIVATE_UNIFORMS = 'PrivateUniforms'
+- HW_PUBLIC_UNIFORMS = 'PublicUniforms'
+- HW_VERTEX_DATA = 'VertexData'
+- HW_VERTEX_INPUTS = 'VertexInputs'
+- PIXEL_STAGE = 'pixel'
+- SHADER_INTERFACE_COMPLETE = (ShaderInterfaceType.SHADER_INTERFACE_COMPLETE: 0)
+- SHADER_INTERFACE_REDUCED = (ShaderInterfaceType.SHADER_INTERFACE_REDUCED: 1)
+- SPECULAR_ENVIRONMENT_FIS = (HwSpecularEnvironmentMethod.SPECULAR_ENVIRONMENT_FIS: 1)
+- SPECULAR_ENVIRONMENT_NONE = (HwSpecularEnvironmentMethod.SPECULAR_ENVIRONMENT_NONE: 0)
+- SPECULAR_ENVIRONMENT_PREFILTER = (HwSpecularEnvironmentMethod.SPECULAR_ENVIRONMENT_PREFILTER: 2)
+- VERTEX_STAGE = 'vertex'
 
 ---
 
@@ -5794,7 +5834,7 @@ Keeps track of images which are loaded from disk via supplied ImageLoader. Deriv
             if save succeeded
 
 
-    - `acquireImage`: acquireImage(self: MaterialX.PyMaterialXRender.ImageHandler, filePath: MaterialX.PyMaterialXFormat.FilePath, defaultColor: MaterialX.PyMaterialXCore.Color4 = <MaterialX.PyMaterialXCore.Color4 object at 0x102d2b2f0>) -> MaterialX.PyMaterialXRender.Image
+    - `acquireImage`: acquireImage(self: MaterialX.PyMaterialXRender.ImageHandler, filePath: MaterialX.PyMaterialXFormat.FilePath, defaultColor: MaterialX.PyMaterialXCore.Color4 = <MaterialX.PyMaterialXCore.Color4 object at 0x10319a7b0>) -> MaterialX.PyMaterialXRender.Image
         
         Acquire an image from the cache or file system.
         
@@ -6489,9 +6529,12 @@ Compute the maximum width and height of all images in the given vector.
 
 ### Globals
 
-FLOAT, HALF, INT16, INT8, UINT16, UINT8
-
-
+- FLOAT = (BaseType.FLOAT: 5)
+- HALF = (BaseType.HALF: 4)
+- INT16 = (BaseType.INT16: 3)
+- INT8 = (BaseType.INT8: 1)
+- UINT16 = (BaseType.UINT16: 2)
+- UINT8 = (BaseType.UINT8: 0)
 
 ---
 
@@ -11390,9 +11433,33 @@ An empty target string matches all targets.
 
 ### Globals
 
-ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYPE_STRING, DISPLACEMENT_SHADER_TYPE_STRING, EDF_TYPE_STRING, FILENAME_TYPE_STRING, GEOMNAME_TYPE_STRING, GEOM_PATH_SEPARATOR, LIGHT_SHADER_TYPE_STRING, MATERIAL_TYPE_STRING, MULTI_OUTPUT_TYPE_STRING, NAME_PATH_SEPARATOR, NAME_PREFIX_SEPARATOR, NONE_TYPE_STRING, STRING_TYPE_STRING, SURFACE_MATERIAL_NODE_STRING, SURFACE_SHADER_TYPE_STRING, UDIM_SET_PROPERTY, UDIM_TOKEN, UNIVERSAL_GEOM_NAME, UV_TILE_TOKEN, VALUE_STRING_FALSE, VALUE_STRING_TRUE, VDF_TYPE_STRING, VOLUME_MATERIAL_NODE_STRING, VOLUME_SHADER_TYPE_STRING
-
-
+- ARRAY_PREFERRED_SEPARATOR = ', '
+- ARRAY_VALID_SEPARATORS = ', '
+- BSDF_TYPE_STRING = 'BSDF'
+- DEFAULT_TYPE_STRING = 'color3'
+- DISPLACEMENT_SHADER_TYPE_STRING = 'displacementshader'
+- EDF_TYPE_STRING = 'EDF'
+- FILENAME_TYPE_STRING = 'filename'
+- GEOMNAME_TYPE_STRING = 'geomname'
+- GEOM_PATH_SEPARATOR = '/'
+- LIGHT_SHADER_TYPE_STRING = 'lightshader'
+- MATERIAL_TYPE_STRING = 'material'
+- MULTI_OUTPUT_TYPE_STRING = 'multioutput'
+- NAME_PATH_SEPARATOR = '/'
+- NAME_PREFIX_SEPARATOR = ':'
+- NONE_TYPE_STRING = 'none'
+- STRING_TYPE_STRING = 'string'
+- SURFACE_MATERIAL_NODE_STRING = 'surfacematerial'
+- SURFACE_SHADER_TYPE_STRING = 'surfaceshader'
+- UDIM_SET_PROPERTY = 'udimset'
+- UDIM_TOKEN = '(UDIM)'
+- UNIVERSAL_GEOM_NAME = '/'
+- UV_TILE_TOKEN = '(UVTILE)'
+- VALUE_STRING_FALSE = 'false'
+- VALUE_STRING_TRUE = 'true'
+- VDF_TYPE_STRING = 'VDF'
+- VOLUME_MATERIAL_NODE_STRING = 'volumematerial'
+- VOLUME_SHADER_TYPE_STRING = 'volumeshader'
 
 ---
 
@@ -15620,7 +15687,7 @@ Create a valid MaterialX name from the given string.
            createValueFromStrings('0.1', 'float') -> 0.1
            createValueFromStrings('0.1, 0.2, 0.3', 'color3') -> mx.Color3(0.1, 0.2, 0.3)
 
-- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6eab0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
+- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102b029b0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
 
 Flatten all filenames in the given document, applying string resolvers at the scope of each element and removing all fileprefix attributes.
 
@@ -15725,7 +15792,7 @@ Scans for all documents under a root path and returns documents which can be loa
 
 Load all MaterialX files within the given library folders into a document, using the given search path to locate the folders on the file system.
 
-- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6e870>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102b026b0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 Load a given MaterialX library into a document.
 
@@ -15743,7 +15810,7 @@ Pretty print the given element tree, calling asString recursively on each elemen
 
 Read the given file and return a string containing its contents; if the read is not successful, then the empty string is returned.
 
-- `readFromXmlFile`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6ddb0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlFile`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102b01d70>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 Read a Document as XML from the given filename.
 
@@ -15753,7 +15820,7 @@ Args:
     searchPath: An optional sequence of file paths that will be applied in order when searching for the given file and its includes. This argument can be supplied either as a FileSearchPath, or as a standard string with paths separated by the PATH_SEPARATOR character.
     readOptions: An optional pointer to an XmlReadOptions object. If provided, then the given options will affect the behavior of the read function. Defaults to a null pointer.
 
-- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6ddb0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102b01d70>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 Read a Document as XML from the given filename.
 
@@ -15763,7 +15830,7 @@ Args:
     searchPath: An optional sequence of file paths that will be applied in order when searching for the given file and its includes. This argument can be supplied either as a FileSearchPath, or as a standard string with paths separated by the PATH_SEPARATOR character.
     readOptions: An optional pointer to an XmlReadOptions object. If provided, then the given options will affect the behavior of the read function. Defaults to a null pointer.
 
-- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6de70>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102b01e70>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 Read a Document as XML from the given string.
 
@@ -15814,8 +15881,34 @@ An empty target string matches all targets.
 
 ### Globals
 
-ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYPE_STRING, DISPLACEMENT_SHADER_TYPE_STRING, EDF_TYPE_STRING, FILENAME_TYPE_STRING, GEOMNAME_TYPE_STRING, GEOM_PATH_SEPARATOR, LIGHT_SHADER_TYPE_STRING, MATERIALX_SEARCH_PATH_ENV_VAR, MATERIAL_TYPE_STRING, MULTI_OUTPUT_TYPE_STRING, NAME_PATH_SEPARATOR, NAME_PREFIX_SEPARATOR, NONE_TYPE_STRING, PATH_LIST_SEPARATOR, STRING_TYPE_STRING, SURFACE_MATERIAL_NODE_STRING, SURFACE_SHADER_TYPE_STRING, UDIM_SET_PROPERTY, UDIM_TOKEN, UNIVERSAL_GEOM_NAME, UV_TILE_TOKEN, VALUE_STRING_FALSE, VALUE_STRING_TRUE, VDF_TYPE_STRING, VOLUME_MATERIAL_NODE_STRING, VOLUME_SHADER_TYPE_STRING
-
-
+- ARRAY_PREFERRED_SEPARATOR = ', '
+- ARRAY_VALID_SEPARATORS = ', '
+- BSDF_TYPE_STRING = 'BSDF'
+- DEFAULT_TYPE_STRING = 'color3'
+- DISPLACEMENT_SHADER_TYPE_STRING = 'displacementshader'
+- EDF_TYPE_STRING = 'EDF'
+- FILENAME_TYPE_STRING = 'filename'
+- GEOMNAME_TYPE_STRING = 'geomname'
+- GEOM_PATH_SEPARATOR = '/'
+- LIGHT_SHADER_TYPE_STRING = 'lightshader'
+- MATERIALX_SEARCH_PATH_ENV_VAR = 'MATERIALX_SEARCH_PATH'
+- MATERIAL_TYPE_STRING = 'material'
+- MULTI_OUTPUT_TYPE_STRING = 'multioutput'
+- NAME_PATH_SEPARATOR = '/'
+- NAME_PREFIX_SEPARATOR = ':'
+- NONE_TYPE_STRING = 'none'
+- PATH_LIST_SEPARATOR = ':'
+- STRING_TYPE_STRING = 'string'
+- SURFACE_MATERIAL_NODE_STRING = 'surfacematerial'
+- SURFACE_SHADER_TYPE_STRING = 'surfaceshader'
+- UDIM_SET_PROPERTY = 'udimset'
+- UDIM_TOKEN = '(UDIM)'
+- UNIVERSAL_GEOM_NAME = '/'
+- UV_TILE_TOKEN = '(UVTILE)'
+- VALUE_STRING_FALSE = 'false'
+- VALUE_STRING_TRUE = 'true'
+- VDF_TYPE_STRING = 'VDF'
+- VOLUME_MATERIAL_NODE_STRING = 'volumematerial'
+- VOLUME_SHADER_TYPE_STRING = 'volumeshader'
 
 ---

@@ -16,7 +16,6 @@ class PythonDocumentationGenerator:
         print('Scanning for MaterialX modules...')
         module_list = []
         for module_info in pkgutil.iter_modules(importlib.import_module('MaterialX').__path__):
-            print('Found module:', module_info.name)
             module_list.append(module_info.name)
         print("Found MaterialX modules:", module_list)
 
@@ -39,7 +38,7 @@ class PythonDocumentationGenerator:
             if mod_name.startswith('_'):
                 continue
 
-            mod_info = {"classes": {}, "functions": {}, "globals": []}
+            mod_info = {"classes": {}, "functions": {}, "globals": {}}
             for name in dir(mod):
                 if name.startswith('_'):
                     continue
@@ -60,7 +59,7 @@ class PythonDocumentationGenerator:
                             if base_name != "object" and base_name not in bases:
                                 bases.append(base_name)
                         cls_info["bases"] = bases
-
+                        
                         for m, attr in obj.__dict__.items():
                             if m.startswith('_'):
                                 continue
@@ -72,8 +71,8 @@ class PythonDocumentationGenerator:
                                 
                                 doc = attr.__doc__ or ''
                                 lines = doc.splitlines()
-                                for l in lines:
-                                    print(l)
+                                #for l in lines:
+                                #    print(l)
                                 if lines and lines[0].startswith(attr.__name__ + '(*args'):
                                     doc = '\n'.join(lines[1:]).strip()
                                 
@@ -117,7 +116,15 @@ class PythonDocumentationGenerator:
                     owner = getattr(obj, "__module__", None)
                     if owner not in (None, mod.__name__) and not name.isupper():
                         continue
-                    mod_info["globals"].append(name)
+                    # Find value of global variable
+                    value = getattr(mod, name, '')
+                    if value:
+                        name_value = repr(value)
+                        # replace non-XML safe characters
+                        name_value = name_value.replace('<', '(').replace('>', ')')
+                    else:
+                        name_value = ''
+                    mod_info["globals"][name] = name_value
 
             structure[mod_name] = mod_info
         return structure
@@ -162,8 +169,12 @@ class PythonDocumentationGenerator:
 
             if mod_info["globals"]:
                 md.append("\n### Globals\n")
-                md.append(", ".join(mod_info["globals"]))
-                md.append("\n")
+                for g in mod_info["globals"]:
+                    str = g
+                    if mod_info["globals"][g]:
+                        str += f" = {mod_info['globals'][g]}"
+                    md.append(f"- {str}")
+                #md.append("\n")
 
             md.append("\n---\n")
         return "\n".join(md)
@@ -219,7 +230,7 @@ class PythonDocumentationGenerator:
             if mod_info["globals"]:
                 html.append("<li>Globals<ul>")
                 for g in mod_info["globals"]:
-                    html.append(f"<li><a class='link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover list-group-item-action' data-bs-dismiss='offcanvas' role='button' data-type='global' data-module='{mod_name}' data-name='{g}'>{g}</a></li>")
+                    html.append(f"<li><a class='link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover list-group-item-action' data-bs-dismiss='offcanvas' role='button' data-type='global' data-module='{mod_name}' data-name='{g}'>{g}</a></li>")
                 html.append("</ul></li>")
             html.append("</ul></li>")
         html.append("    </ul>")
@@ -309,10 +320,10 @@ class PythonDocumentationGenerator:
             //if (type === 'class') {
             if (type === 'class') {
                 const cls = mod.classes[name];
-                html += `<h4>Class</h4><p>${cls.doc}</p>`;
+                html += `<h5>Class</h5><p>${cls.doc}</p>`;
                     
                 if (cls.bases && cls.bases.length) {
-                    html += `<h5>Inherits from</h5><ul>`;
+                    html += `<h6>Inherits from</h6><ul>`;
                     for (const base of cls.bases) {
                         // Create a clickable link for base class
                         html += `<li><a href="#" class="link-info mxdoc-base" data-basename="${base}">${base}</a></li>`;
@@ -325,9 +336,9 @@ class PythonDocumentationGenerator:
                 //}                    
 
                 //const cls = mod.classes[name];
-                html += `<h4>Class</h4><p>${cls.doc}</p>`;
+                html += `<h5>Class</h5><p>${cls.doc}</p>`;
                 if (Object.keys(cls.methods).length) {
-                    html += '<h5>Methods</h5><ul>';
+                    html += '<h6>Methods</h6><ul>';
                     for (const [m, doc] of Object.entries(cls.methods)) {
                         for (let i = 0; i < doc.length; i++) {
                             doc[i] = doc[i] + "";
@@ -338,7 +349,7 @@ class PythonDocumentationGenerator:
                     html += '</ul>';
                 }
                 if (cls.attributes.length) {
-                    html += '<h5>Attributes</h5><ul>';
+                    html += '<h6>Attributes</h6><ul>';
                     for (const a of cls.attributes) {
                         html += `<li><code>${a}</code></li>`;
                     }
@@ -346,9 +357,14 @@ class PythonDocumentationGenerator:
                 }
             } else if (type === 'function') {
                 const fn = mod.functions[name];
-                html += `<h4>Function</h4><pre>${escapeHtml(fn)}</pre>`;
+                html += `<h5>Function</h5><pre>${escapeHtml(fn)}</pre>`;
             } else if (type === 'global') {
-                html += `<h4>Global</h4><p>${name}</p>`;
+                const g = mod.globals[name];
+                if (g) {
+                    html += `<p>Global : ${name} = ${escapeHtml_2(g)}</p>`;
+                } else {    
+                    html += `<p>Global : ${name}</p>`;
+                }
             }
             document.getElementById('mxdoc-content').innerHTML = html;
 
