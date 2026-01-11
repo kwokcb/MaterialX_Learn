@@ -1,3 +1,7 @@
+'''
+MaterialX Python API Documentation Generator
+Generates Markdown and HTML documentation based on installed MaterialX Python modules.
+''' 
 try:
     import MaterialX as mx
 except ImportError:
@@ -15,19 +19,27 @@ class PythonDocumentationGenerator:
     def import_modules(self) -> dict:
         print('Scanning for MaterialX modules...')
         module_list = []
-        for module_info in pkgutil.iter_modules(importlib.import_module('MaterialX').__path__):
-            module_list.append(module_info.name)
-        print("Found MaterialX modules:", module_list)
+        ignore_list = ['_scripts', 'datatype']
+        for module_info in pkgutil.iter_modules(importlib.import_module('MaterialX').__path__):    
+            if module_info.name not in ignore_list:        
+                module_list.append(module_info.name)
+        print(f"Found {len(module_list)} MaterialX modules:", module_list)
 
         imported_modules = {}
-
+        imported_module_names = []
+        failed_to_import_module_names = []
         for mod in module_list:
             try:
                 imported = __import__('MaterialX.' + mod, fromlist=[''])
                 imported_modules[mod] = imported
-                print(f"Imported MaterialX.{mod}")
+                imported_module_names.append(mod)
             except Exception as e:
-                print(f"Could not import MaterialX.{mod}: {e}")
+                failed_to_import_module_names.append(mod)
+    
+        print(f'Imported modules: {len(imported_module_names)}')
+        num_failed = len(failed_to_import_module_names)
+        if num_failed> 0:
+            print(f'WARNING : Failed to import {failed_to_import_module_names}')
         return imported_modules
 
     def build_structure(self, imported_modules):
@@ -44,7 +56,9 @@ class PythonDocumentationGenerator:
                     continue
                 obj = getattr(mod, name, None)
 
-                if callable(obj):
+                is_python_defined = callable(obj) and getattr(obj, '__module__', None) == mod.__name__
+                if is_python_defined:
+
                     if isinstance(obj, type):  # class
                         cls_info = {
                             "doc": (obj.__doc__ or '').strip(),
@@ -86,33 +100,18 @@ class PythonDocumentationGenerator:
                                 
                                 cls_info["methods"][m] = lines
 
-                                #cls_info["methods"][m] = doc                                
-                                
-                                #cls_info["methods"][m] = (attr.__doc__ or '').strip()
                             else:
                                 cls_info["attributes"].append(m)
 
-                        #for m, attr in obj.__dict__.items():
-                        #    if m.startswith('_'):
-                        #        continue
-                        #    if callable(attr):
-                        #        cls_info["methods"][m] = (attr.__doc__ or '').strip()
-                        #    else:
-                        #        cls_info["attributes"].append(m)                        
-                        #for m in dir(obj):
-                        #    if m.startswith('_'):
-                        #        continue
-                        #    attr = getattr(obj, m, None)
-                        #    if callable(attr):
-                        #        cls_info["methods"][m] = (attr.__doc__ or '').strip()
-                        #    else:
-                        #        cls_info["attributes"].append(m)
                         mod_info["classes"][name] = cls_info
                     else:  # function
                         mod_info["functions"][name] = (obj.__doc__ or '').strip()
                 else:
                     if isinstance(obj, types.ModuleType):
                         continue
+                    if (mod_name == 'main'):
+                        continue
+
                     owner = getattr(obj, "__module__", None)
                     if owner not in (None, mod.__name__) and not name.isupper():
                         continue
@@ -185,7 +184,7 @@ class PythonDocumentationGenerator:
         html.append('<meta charset="utf-8">')
         html.append('<meta name="viewport" content="width=device-width, initial-scale=1">')
         html.append(f"<title>{title}</title>")
-        html.append('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">')
+        html.append('<link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">')
         html.append('<!--StyleStart-->')
         html.append("<style>")
         html.append("""
@@ -212,7 +211,7 @@ class PythonDocumentationGenerator:
         html.append("  </div>")
         html.append("  <div class='offcanvas-body'>")
         html.append('    <input type="text" id="mxdoc-search" class="form-control mb-2" placeholder="Filter...">')
-        html.append("    <ul class='list-unstyled' id='mxdoc-index'>")
+        html.append("    <ul class='list-unstyled' style=\"font-size: small;\" id='mxdoc-index'>")
 
         # Sidebar tree
         for mod_name, mod_info in structure.items():
@@ -238,7 +237,7 @@ class PythonDocumentationGenerator:
         html.append("</div>")
 
         # Main content area
-        html.append("<p><main class='border rounded-4 container-fluid py-3' id='mxdoc-content'><p>Select interface item from index.</p></main>")
+        html.append("<p><main style=\"font-size: small;\" class='border rounded-4 container-fluid py-3' id='mxdoc-content'><p>Select interface item from index.</p></main>")
 
         # Conditionally load Bootstrap bundle only if not present to avoid conflicts when embedded
         html.append("<script>(function(){if(!window.bootstrap){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js';s.crossOrigin='anonymous';document.head.appendChild(s);}})();</script>")
@@ -394,22 +393,21 @@ class PythonDocumentationGenerator:
     def write_to_file(self, structure, output_folder):
         version = mx.getVersionString()
         version_safe = mx.createValidName(version)
-        md_filename = os.path.join(output_folder, f"Python_{version_safe}_documentation.md")
-        html_filename = os.path.join(output_folder, f"Python_{version_safe}_documentation.html")
 
-        print("Writing Markdown...")
+        print("Generating Markdown...")
+        md_filename = os.path.join(output_folder, f"Python_{version_safe}_documentation.md")
         md_content = self.generate_markdown(structure)
+
+        print("Generating HTML...")
+        html_filename = os.path.join(output_folder, f"Python_{version_safe}_documentation.html")
+        html_content = self.generate_html(structure, f"MaterialX {version} Python Documentation")
+
         with open(md_filename, "w", encoding="utf-8") as f:
             f.write(md_content)
-
-        print("Writing HTML...")
-        html_content = self.generate_html(structure, f"MaterialX {version} Python Documentation")
+        print("Wrote:", md_filename)
         with open(html_filename, "w", encoding="utf-8") as f:
             f.write(html_content)
-
-        print("Wrote:", md_filename)
         print("Wrote:", html_filename)
-
 
 def main():
     parser = argparse.ArgumentParser(description='Generate MaterialX Python API documentation.')
