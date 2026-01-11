@@ -4,7 +4,7 @@
 
 <a id='materialx-pymaterialxcore-attributedef'></a>
 
-- **AttributeDef**: 
+- **AttributeDef**: An attribute definition element within a Document.
 
   - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -37,7 +37,7 @@
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.AttributeDef) -> str
         
-        Return value string.
+        Get the value string of a element.
 
 
     - `setExportable`: setExportable(self: MaterialX.PyMaterialXCore.AttributeDef, arg0: bool) -> None
@@ -56,7 +56,7 @@
 
 <a id='materialx-pymaterialxcore-backdrop'></a>
 
-- **Backdrop**: 
+- **Backdrop**: A layout element used to contain, group and document nodes within a graph.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -77,7 +77,7 @@
         Return the contains string for this backdrop.
 
 
-    - `setWidth`: setWidth(self: MaterialX.PyMaterialXCore.Backdrop, arg0: float) -> None
+    - `setWidth`: setWidth(self: MaterialX.PyMaterialXCore.Backdrop, arg0: typing.SupportsFloat) -> None
         
         Set the width attribute of the backdrop.
 
@@ -92,7 +92,7 @@
         Return the width attribute of the backdrop.
 
 
-    - `setHeight`: setHeight(self: MaterialX.PyMaterialXCore.Backdrop, arg0: float) -> None
+    - `setHeight`: setHeight(self: MaterialX.PyMaterialXCore.Backdrop, arg0: typing.SupportsFloat) -> None
         
         Set the height attribute of the backdrop.
 
@@ -107,7 +107,7 @@
         Return the height attribute of the backdrop.
 
 
-    - `setContainsElements`: setContainsElements(self: MaterialX.PyMaterialXCore.Backdrop, arg0: list[MaterialX.PyMaterialXCore.TypedElement]) -> None
+    - `setContainsElements`: setContainsElements(self: MaterialX.PyMaterialXCore.Backdrop, arg0: collections.abc.Sequence[MaterialX.PyMaterialXCore.TypedElement]) -> None
         
         Set the vector of elements that this backdrop contains.
 
@@ -121,7 +121,7 @@
 
 <a id='materialx-pymaterialxcore-collection'></a>
 
-- **Collection**: 
+- **Collection**: A collection element within a Document.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -177,7 +177,7 @@
         Set the collection that is directly included by this element.
 
 
-    - `setIncludeCollections`: setIncludeCollections(self: MaterialX.PyMaterialXCore.Collection, arg0: list[MaterialX.PyMaterialXCore.Collection]) -> None
+    - `setIncludeCollections`: setIncludeCollections(self: MaterialX.PyMaterialXCore.Collection, arg0: collections.abc.Sequence[MaterialX.PyMaterialXCore.Collection]) -> None
         
         Set the vector of collections that are directly included by this element.
 
@@ -201,32 +201,22 @@
 
 <a id='materialx-pymaterialxcore-color3'></a>
 
-- **Color3**: 
+- **Color3**: A three-component color value.
 
   - Inherits from: [VectorBase](#materialx-pymaterialxcore-vectorbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Color3) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Color3) -> MaterialX.PyMaterialXCore.Color3
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Color3, arg0: MaterialX.PyMaterialXCore.Color3) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Color3) -> MaterialX.PyMaterialXCore.Color3
-        
-        Create a deep copy of the value.
 
 
     - `linearToSrgb`: linearToSrgb(self: MaterialX.PyMaterialXCore.Color3) -> MaterialX.PyMaterialXCore.Color3
@@ -244,32 +234,22 @@
 
 <a id='materialx-pymaterialxcore-color4'></a>
 
-- **Color4**: 
+- **Color4**: A four-component color value.
 
   - Inherits from: [VectorBase](#materialx-pymaterialxcore-vectorbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Color4) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Color4) -> MaterialX.PyMaterialXCore.Color4
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Color4, arg0: MaterialX.PyMaterialXCore.Color4) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Color4) -> MaterialX.PyMaterialXCore.Color4
-        
-        Create a deep copy of the value.
 
 
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Color4) -> tuple[float, float, float, float]
@@ -277,7 +257,9 @@
 
 <a id='materialx-pymaterialxcore-commentelement'></a>
 
-- **CommentElement**: 
+- **CommentElement**: An element representing a block of descriptive text within a document, which will be stored a comment when the document is written out.
+
+The comment text may be accessed with the methods Element::setDocString and Element::getDocString.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -285,7 +267,9 @@
 
 <a id='materialx-pymaterialxcore-document'></a>
 
-- **Document**: 
+- **Document**: A MaterialX document, which represents the top-level element in the MaterialX ownership hierarchy.
+
+Use the factory function createDocument() to create a Document instance.
 
   - Inherits from: [GraphElement](#materialx-pymaterialxcore-graphelement), [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -293,14 +277,12 @@
 
     - `initialize`: initialize(self: MaterialX.PyMaterialXCore.Document) -> None
         
-        Initialize with the given implementation element.
-        
-        Initialization must set the name and hash for the implementation, as well as any other data needed to emit code for the node.
+        Initialize the document, removing any existing content.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Document) -> MaterialX.PyMaterialXCore.Document
         
-        Create a deep copy of the value.
+        Create a deep copy of the document.
 
 
     - `setDataLibrary`: setDataLibrary(self: MaterialX.PyMaterialXCore.Document, arg0: MaterialX.PyMaterialXCore.Document) -> None
@@ -555,7 +537,7 @@
 
     - `getNodeDef`: getNodeDef(self: MaterialX.PyMaterialXCore.Document, arg0: str) -> MaterialX.PyMaterialXCore.NodeDef
         
-        Returns a nodedef for a given transform.
+        Return the NodeDef, if any, with the given name.
 
 
     - `getNodeDefs`: getNodeDefs(self: MaterialX.PyMaterialXCore.Document) -> list[MaterialX.PyMaterialXCore.NodeDef]
@@ -789,7 +771,7 @@
 
 <a id='materialx-pymaterialxcore-edge'></a>
 
-- **Edge**: 
+- **Edge**: An edge between two connected Elements, returned during graph traversal.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -812,12 +794,14 @@
 
     - `getName`: getName(self: MaterialX.PyMaterialXCore.Edge) -> str
         
-        Return the ColorManagementSystem name.
+        Return the name of this edge, if any.
 
 
 <a id='materialx-pymaterialxcore-element'></a>
 
-- **Element**: 
+- **Element**: The base class for MaterialX elements.
+
+An Element is a named object within a Document, which may possess any number of child elements and attributes.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -855,7 +839,7 @@
 
     - `getName`: getName(self: MaterialX.PyMaterialXCore.Element) -> str
         
-        Return the ColorManagementSystem name.
+        Return the element's name string.
 
 
     - `getNamePath`: getNamePath(self: MaterialX.PyMaterialXCore.Element, relativeTo: MaterialX.PyMaterialXCore.Element = None) -> str
@@ -1030,7 +1014,7 @@
         The returned vector maintains the order in which children were added.
 
 
-    - `setChildIndex`: setChildIndex(self: MaterialX.PyMaterialXCore.Element, arg0: str, arg1: int) -> None
+    - `setChildIndex`: setChildIndex(self: MaterialX.PyMaterialXCore.Element, arg0: str, arg1: typing.SupportsInt) -> None
         
         Set the index of the child, if any, with the given name.
         
@@ -1077,23 +1061,15 @@
 
 
     - `getSelf`: getSelf(self: MaterialX.PyMaterialXCore.Element) -> MaterialX.PyMaterialXCore.Element
-        
-        Return our self pointer.
 
 
     - `getParent`: getParent(self: MaterialX.PyMaterialXCore.Element) -> MaterialX.PyMaterialXCore.Element
-        
-        Return our parent element.
 
 
     - `getRoot`: getRoot(self: MaterialX.PyMaterialXCore.Element) -> MaterialX.PyMaterialXCore.Element
-        
-        Return the root element of our tree.
 
 
     - `getDocument`: getDocument(self: MaterialX.PyMaterialXCore.Element) -> MaterialX_v1_39_5::Document
-        
-        Return the root document of our tree.
 
 
     - `traverseTree`: traverseTree(self: MaterialX.PyMaterialXCore.Element) -> MaterialX_v1_39_5::TreeIterator
@@ -1112,7 +1088,7 @@
             A GraphIterator object.
 
 
-    - `getUpstreamEdge`: getUpstreamEdge(self: MaterialX.PyMaterialXCore.Element, index: int = 0) -> MaterialX_v1_39_5::Edge
+    - `getUpstreamEdge`: getUpstreamEdge(self: MaterialX.PyMaterialXCore.Element, index: typing.SupportsInt = 0) -> MaterialX_v1_39_5::Edge
         
         Return the Edge with the given index that lies directly upstream from this element in the dataflow graph.
         
@@ -1128,9 +1104,15 @@
         Return the number of queryable upstream edges for this element.
 
 
-    - `getUpstreamElement`: getUpstreamElement(self: MaterialX.PyMaterialXCore.Element, index: int = 0) -> MaterialX.PyMaterialXCore.Element
+    - `getUpstreamElement`: getUpstreamElement(self: MaterialX.PyMaterialXCore.Element, index: typing.SupportsInt = 0) -> MaterialX.PyMaterialXCore.Element
         
-        Return the upstream element of the edge.
+        Return the Element with the given index that lies directly upstream from this one in the dataflow graph.
+        
+        Args:
+            index: An optional index of the element to be returned, where the valid index range may be determined with getUpstreamEdgeCount.
+        
+        Returns:
+            The upstream Element, if valid, or an empty ElementPtr.
 
 
     - `traverseInheritance`: traverseInheritance(self: MaterialX.PyMaterialXCore.Element) -> MaterialX_v1_39_5::InheritanceIterator
@@ -1166,7 +1148,13 @@
 
     - `validate`: validate(self: MaterialX.PyMaterialXCore.Element) -> tuple[bool, str]
         
-        Validate that the given element tree, including all descendants, is consistent with the MaterialX specification.
+        Validate that the given document is consistent with the MaterialX specification.
+        
+        Args:
+            message: An optional output string, to which a description of each error will be appended.
+        
+        Returns:
+            True if the document passes all tests, false otherwise.
 
 
     - `copyContentFrom`: copyContentFrom(self: MaterialX.PyMaterialXCore.Element, arg0: MaterialX.PyMaterialXCore.Element) -> None
@@ -1228,7 +1216,7 @@
 
 <a id='materialx-pymaterialxcore-elementequivalenceoptions'></a>
 
-- **ElementEquivalenceOptions**: 
+- **ElementEquivalenceOptions**: A set of options for comparing the functional equivalence of elements.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -1260,7 +1248,7 @@
 
 <a id='materialx-pymaterialxcore-genericelement'></a>
 
-- **GenericElement**: 
+- **GenericElement**: A generic element subclass, for instantiating elements with unrecognized categories.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -1268,7 +1256,7 @@
 
 <a id='materialx-pymaterialxcore-geomelement'></a>
 
-- **GeomElement**: 
+- **GeomElement**: The base class for geometric elements, which support bindings to geometries and geometric collections.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -1311,12 +1299,12 @@
 
     - `getCollection`: getCollection(self: MaterialX.PyMaterialXCore.GeomElement) -> MaterialX_v1_39_5::Collection
         
-        Return the Collection, if any, with the given name.
+        Return the Collection that is assigned to this element.
 
 
 <a id='materialx-pymaterialxcore-geominfo'></a>
 
-- **GeomInfo**: 
+- **GeomInfo**: A geometry info element within a Document.
 
   - Inherits from: [GeomElement](#materialx-pymaterialxcore-geomelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -1393,7 +1381,7 @@
 
 <a id='materialx-pymaterialxcore-geomprop'></a>
 
-- **GeomProp**: 
+- **GeomProp**: A geometric property element within a GeomInfo.
 
   - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -1401,7 +1389,9 @@
 
 <a id='materialx-pymaterialxcore-geompropdef'></a>
 
-- **GeomPropDef**: 
+- **GeomPropDef**: An element representing a declaration of geometric property data.
+
+A GeomPropDef element contains a reference to a geometric node and a set of modifiers for that node. For example, a world-space normal can be declared as a reference to the "normal" geometric node with a space setting of "world", or a specific set of texture coordinates can be declared as a reference to the "texcoord" geometric node with an index setting of "1".
 
   - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -1436,11 +1426,11 @@
         
         1. getGeomProp(self: MaterialX.PyMaterialXCore.GeomPropDef) -> str
         
-        Return the GeomProp, if any, with the given name.
+        Return the geometric property string of this element.
         
         2. getGeomProp(self: MaterialX.PyMaterialXCore.GeomPropDef) -> str
         
-        Return the GeomProp, if any, with the given name.
+        Return the geometric property string of this element.
 
 
     - `setSpace`: setSpace(self: MaterialX.PyMaterialXCore.GeomPropDef, arg0: str) -> None
@@ -1477,7 +1467,7 @@
 
 <a id='materialx-pymaterialxcore-graphelement'></a>
 
-- **GraphElement**: 
+- **GraphElement**: The base class for graph elements such as NodeGraph and Document.
 
   - Inherits from: [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -1546,7 +1536,7 @@
         Remove the Backdrop, if any, with the given name.
 
 
-    - `flattenSubgraphs`: flattenSubgraphs(self: MaterialX.PyMaterialXCore.GraphElement, target: str = '', filter: Callable[[MaterialX.PyMaterialXCore.Node], bool] = None) -> None
+    - `flattenSubgraphs`: flattenSubgraphs(self: MaterialX.PyMaterialXCore.GraphElement, target: str = '', filter: collections.abc.Callable[[MaterialX.PyMaterialXCore.Node], bool] = None) -> None
         
         Flatten all subgraphs at the root scope of this graph element, recursively replacing each graph-defined node with its equivalent node network.
         
@@ -1576,7 +1566,7 @@
 
 <a id='materialx-pymaterialxcore-graphiterator'></a>
 
-- **GraphIterator**: 
+- **GraphIterator**: An iterator object representing the state of an upstream graph traversal.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -1584,17 +1574,17 @@
 
     - `getDownstreamElement`: getDownstreamElement(self: MaterialX.PyMaterialXCore.GraphIterator) -> MaterialX.PyMaterialXCore.Element
         
-        Return the downstream element of the edge.
+        Return the downstream element of the current edge.
 
 
     - `getConnectingElement`: getConnectingElement(self: MaterialX.PyMaterialXCore.GraphIterator) -> MaterialX.PyMaterialXCore.Element
         
-        Return the connecting element of the edge, if any.
+        Return the connecting element, if any, of the current edge.
 
 
     - `getUpstreamElement`: getUpstreamElement(self: MaterialX.PyMaterialXCore.GraphIterator) -> MaterialX.PyMaterialXCore.Element
         
-        Return the upstream element of the edge.
+        Return the upstream element of the current edge.
 
 
     - `getUpstreamIndex`: getUpstreamIndex(self: MaterialX.PyMaterialXCore.GraphIterator) -> int
@@ -1627,7 +1617,9 @@
 
 <a id='materialx-pymaterialxcore-implementation'></a>
 
-- **Implementation**: 
+- **Implementation**: An implementation element within a Document.
+
+An Implementation is used to associate external source code with a specific NodeDef, providing a definition for the node that may either be universal or restricted to a specific target.
 
   - Inherits from: [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -1670,7 +1662,7 @@
 
     - `getNodeDef`: getNodeDef(self: MaterialX.PyMaterialXCore.Implementation) -> MaterialX.PyMaterialXCore.NodeDef
         
-        Returns a nodedef for a given transform.
+        Return the NodeDef element referenced by the Implementation.
 
 
     - `setNodeGraph`: setNodeGraph(self: MaterialX.PyMaterialXCore.Implementation, arg0: str) -> None
@@ -1685,20 +1677,22 @@
 
     - `getNodeGraph`: getNodeGraph(self: MaterialX.PyMaterialXCore.Implementation) -> str
         
-        Return the NodeGraph, if any, with the given name.
+        Return the nodegraph string for the Implementation.
 
 
   - Attributes: CATEGORY, FILE_ATTRIBUTE, FUNCTION_ATTRIBUTE
 
 <a id='materialx-pymaterialxcore-inheritanceiterator'></a>
 
-- **InheritanceIterator**: 
+- **InheritanceIterator**: An iterator object representing the current state of an inheritance traversal.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
 <a id='materialx-pymaterialxcore-input'></a>
 
-- **Input**: 
+- **Input**: An input element within a Node or NodeDef.
+
+An Input holds either a uniform value or a connection to a spatially-varying Output, either of which may be modified within the scope of a Material.
 
   - Inherits from: [PortElement](#materialx-pymaterialxcore-portelement), [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -1745,7 +1739,9 @@
 
 <a id='materialx-pymaterialxcore-interfaceelement'></a>
 
-- **InterfaceElement**: 
+- **InterfaceElement**: The base class for interface elements such as Node, NodeDef, and NodeGraph.
+
+An InterfaceElement supports a set of Input and Output elements, with an API for setting their values.
 
   - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -1866,7 +1862,7 @@
 
     - `addToken`: addToken(self: MaterialX.PyMaterialXCore.InterfaceElement, name: str = 'color3') -> MaterialX.PyMaterialXCore.Token
         
-        Add a Token to this element.
+        Add a Token to this interface.
         
         Args:
             name: The name of the new Token. If no name is specified, then a unique name will automatically be generated.
@@ -1936,7 +1932,7 @@
 
     - `getTarget`: getTarget(self: MaterialX.PyMaterialXCore.InterfaceElement) -> str
         
-        Return a unique identifier for the target this generator is for.
+        Return the target string of this interface.
 
 
     - `setVersionString`: setVersionString(self: MaterialX.PyMaterialXCore.InterfaceElement, arg0: str) -> None
@@ -1954,7 +1950,7 @@
         Return the version string of this interface.
 
 
-    - `setVersionIntegers`: setVersionIntegers(self: MaterialX.PyMaterialXCore.InterfaceElement, arg0: int, arg1: int) -> None
+    - `setVersionIntegers`: setVersionIntegers(self: MaterialX.PyMaterialXCore.InterfaceElement, arg0: typing.SupportsInt, arg1: typing.SupportsInt) -> None
         
         Set the major and minor versions as an integer pair.
 
@@ -1977,6 +1973,12 @@
     - `getDeclaration`: getDeclaration(self: MaterialX.PyMaterialXCore.InterfaceElement, target: str = '') -> MaterialX.PyMaterialXCore.InterfaceElement
         
         Return the first declaration of this interface, optionally filtered by the given target name.
+        
+        Args:
+            target: An optional target name, which will be used to filter the declarations that are considered.
+        
+        Returns:
+            A shared pointer to declaration, or an empty shared pointer if no declaration was found.
 
 
     - `clearContent`: clearContent(self: MaterialX.PyMaterialXCore.InterfaceElement) -> None
@@ -2037,13 +2039,15 @@
 
 <a id='materialx-pymaterialxcore-linearunitconverter'></a>
 
-- **LinearUnitConverter**: 
+- **LinearUnitConverter**: A converter class for linear units that require only a scalar multiplication.
 
   - Inherits from: [UnitConverter](#materialx-pymaterialxcore-unitconverter), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
     - `create`: create(arg0: MaterialX.PyMaterialXCore.UnitTypeDef) -> MaterialX.PyMaterialXCore.LinearUnitConverter
+        
+        Creator.
 
 
     - `getUnitScale`: getUnitScale(self: MaterialX.PyMaterialXCore.LinearUnitConverter) -> dict[str, float]
@@ -2054,41 +2058,13 @@
     - `convert`: convert(*args, **kwargs)
         Overloaded function.
         
-        1. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: float, arg1: str, arg2: str) -> float
-        
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
+        1. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: typing.SupportsFloat, arg1: str, arg2: str) -> float
         
         2. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: MaterialX.PyMaterialXCore.Vector2, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector2
         
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
-        
         3. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: MaterialX.PyMaterialXCore.Vector3, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector3
         
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
-        
         4. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: MaterialX.PyMaterialXCore.Vector4, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector4
-        
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
 
 
     - `getUnitAsInteger`: getUnitAsInteger(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: str) -> int
@@ -2098,7 +2074,7 @@
         Returns -1 value if not found
 
 
-    - `getUnitFromInteger`: getUnitFromInteger(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: int) -> str
+    - `getUnitFromInteger`: getUnitFromInteger(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: typing.SupportsInt) -> str
         
         Given an integer index return the unit name in the map used by the converter.
         
@@ -2107,7 +2083,7 @@
 
 <a id='materialx-pymaterialxcore-look'></a>
 
-- **Look**: 
+- **Look**: A look element within a Document.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2273,7 +2249,7 @@
 
 <a id='materialx-pymaterialxcore-lookgroup'></a>
 
-- **LookGroup**: 
+- **LookGroup**: A look group element within a Document.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2281,7 +2257,7 @@
 
     - `getLooks`: getLooks(self: MaterialX.PyMaterialXCore.LookGroup) -> str
         
-        Return a vector of all Look elements in the document.
+        Get comma-separated list of looks.
 
 
     - `setLooks`: setLooks(self: MaterialX.PyMaterialXCore.LookGroup, arg0: str) -> None
@@ -2303,7 +2279,7 @@
 
 <a id='materialx-pymaterialxcore-materialassign'></a>
 
-- **MaterialAssign**: 
+- **MaterialAssign**: A material assignment element within a Look.
 
   - Inherits from: [GeomElement](#materialx-pymaterialxcore-geomelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2326,7 +2302,7 @@
 
     - `getMaterialOutputs`: getMaterialOutputs(self: MaterialX.PyMaterialXCore.MaterialAssign) -> list[MaterialX.PyMaterialXCore.Output]
         
-        Return material-type outputs for all nodegraphs in the document.
+        Return the outputs on any referenced material.
 
 
     - `setExclusive`: setExclusive(self: MaterialX.PyMaterialXCore.MaterialAssign, arg0: bool) -> None
@@ -2348,48 +2324,30 @@
 
 <a id='materialx-pymaterialxcore-matrix33'></a>
 
-- **Matrix33**: 
+- **Matrix33**: A 3x3 matrix of floating-point values.
+
+Vector transformation methods follow the row-vector convention, with matrix-vector multiplication computed as v' = vM.
 
   - Inherits from: [MatrixBase](#materialx-pymaterialxcore-matrixbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Matrix33) -> MaterialX.PyMaterialXCore.Matrix33
-        
-        Create a deep copy of the value.
 
 
-    - `isEquivalent`: isEquivalent(self: MaterialX.PyMaterialXCore.Matrix33, arg0: MaterialX.PyMaterialXCore.Matrix33, arg1: float) -> bool
-        
-        Return true if the given element tree, including all descendents, is considered to be equivalent to this one based on the equivalence criteria provided.
-        
-        Args:
-            rhs: Element to compare against
-            options: Equivalence criteria
-            message: Optional text description of differences
-        
-        Returns:
-            True if the elements are equivalent. False otherwise.
+    - `isEquivalent`: isEquivalent(self: MaterialX.PyMaterialXCore.Matrix33, arg0: MaterialX.PyMaterialXCore.Matrix33, arg1: typing.SupportsFloat) -> bool
 
 
     - `getTranspose`: getTranspose(self: MaterialX.PyMaterialXCore.Matrix33) -> MaterialX.PyMaterialXCore.Matrix33
-        
-        Return the transpose of the matrix.
 
 
     - `getDeterminant`: getDeterminant(self: MaterialX.PyMaterialXCore.Matrix33) -> float
-        
-        Return the determinant of the matrix.
 
 
     - `getAdjugate`: getAdjugate(self: MaterialX.PyMaterialXCore.Matrix33) -> MaterialX.PyMaterialXCore.Matrix33
-        
-        Return the adjugate of the matrix.
 
 
     - `getInverse`: getInverse(self: MaterialX.PyMaterialXCore.Matrix33) -> MaterialX.PyMaterialXCore.Matrix33
-        
-        Return the inverse of the matrix.
 
 
     - `createScale`: createScale(arg0: MaterialX.PyMaterialXCore.Vector2) -> MaterialX.PyMaterialXCore.Matrix33
@@ -2424,55 +2382,42 @@
         Transform the given 3D normal vector.
 
 
-    - `createRotation`: createRotation(arg0: float) -> MaterialX.PyMaterialXCore.Matrix33
+    - `createRotation`: createRotation(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix33
+        
+        Create a rotation matrix.
+        
+        Args:
+            angle: Angle in radians
 
 
   - Attributes: IDENTITY
 
 <a id='materialx-pymaterialxcore-matrix44'></a>
 
-- **Matrix44**: 
+- **Matrix44**: A 4x4 matrix of floating-point values.
+
+Vector transformation methods follow the row-vector convention, with matrix-vector multiplication computed as v' = vM.
 
   - Inherits from: [MatrixBase](#materialx-pymaterialxcore-matrixbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Matrix44) -> MaterialX.PyMaterialXCore.Matrix44
-        
-        Create a deep copy of the value.
 
 
-    - `isEquivalent`: isEquivalent(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Matrix44, arg1: float) -> bool
-        
-        Return true if the given element tree, including all descendents, is considered to be equivalent to this one based on the equivalence criteria provided.
-        
-        Args:
-            rhs: Element to compare against
-            options: Equivalence criteria
-            message: Optional text description of differences
-        
-        Returns:
-            True if the elements are equivalent. False otherwise.
+    - `isEquivalent`: isEquivalent(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Matrix44, arg1: typing.SupportsFloat) -> bool
 
 
     - `getTranspose`: getTranspose(self: MaterialX.PyMaterialXCore.Matrix44) -> MaterialX.PyMaterialXCore.Matrix44
-        
-        Return the transpose of the matrix.
 
 
     - `getDeterminant`: getDeterminant(self: MaterialX.PyMaterialXCore.Matrix44) -> float
-        
-        Return the determinant of the matrix.
 
 
     - `getAdjugate`: getAdjugate(self: MaterialX.PyMaterialXCore.Matrix44) -> MaterialX.PyMaterialXCore.Matrix44
-        
-        Return the adjugate of the matrix.
 
 
     - `getInverse`: getInverse(self: MaterialX.PyMaterialXCore.Matrix44) -> MaterialX.PyMaterialXCore.Matrix44
-        
-        Return the inverse of the matrix.
 
 
     - `createScale`: createScale(arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Matrix44
@@ -2489,17 +2434,17 @@
 
     - `multiply`: multiply(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Vector4) -> MaterialX.PyMaterialXCore.Vector4
         
-        Return the product of this matrix and a 3D vector.
+        Return the product of this matrix and a 4D vector.
 
 
     - `transformPoint`: transformPoint(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
         
-        Transform the given 2D point.
+        Transform the given 3D point.
 
 
     - `transformVector`: transformVector(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
         
-        Transform the given 2D direction vector.
+        Transform the given 3D direction vector.
 
 
     - `transformNormal`: transformNormal(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
@@ -2507,26 +2452,41 @@
         Transform the given 3D normal vector.
 
 
-    - `createRotationX`: createRotationX(arg0: float) -> MaterialX.PyMaterialXCore.Matrix44
+    - `createRotationX`: createRotationX(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix44
+        
+        Create a rotation matrix about the X-axis.
+        
+        Args:
+            angle: Angle in radians
 
 
-    - `createRotationY`: createRotationY(arg0: float) -> MaterialX.PyMaterialXCore.Matrix44
+    - `createRotationY`: createRotationY(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix44
+        
+        Create a rotation matrix about the Y-axis.
+        
+        Args:
+            angle: Angle in radians
 
 
-    - `createRotationZ`: createRotationZ(arg0: float) -> MaterialX.PyMaterialXCore.Matrix44
+    - `createRotationZ`: createRotationZ(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix44
+        
+        Create a rotation matrix about the Z-axis.
+        
+        Args:
+            angle: Angle in radians
 
 
   - Attributes: IDENTITY
 
 <a id='materialx-pymaterialxcore-matrixbase'></a>
 
-- **MatrixBase**: 
+- **MatrixBase**: The base class for square matrices of scalar values.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
 <a id='materialx-pymaterialxcore-member'></a>
 
-- **Member**: 
+- **Member**: A member element within a TypeDef.
 
   - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2534,7 +2494,7 @@
 
 <a id='materialx-pymaterialxcore-newlineelement'></a>
 
-- **NewlineElement**: 
+- **NewlineElement**: An element representing a newline within a document.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2542,7 +2502,9 @@
 
 <a id='materialx-pymaterialxcore-node'></a>
 
-- **Node**: 
+- **Node**: A node element within a NodeGraph or Document.
+
+A Node represents an instance of a NodeDef within a graph, and its Input elements apply specific values and connections to that instance.
 
   - Inherits from: [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2557,7 +2519,9 @@
 
     - `getConnectedNode`: getConnectedNode(self: MaterialX.PyMaterialXCore.Node, arg0: str) -> MaterialX.PyMaterialXCore.Node
         
-        Return the node, if any, to which this input is connected.
+        Return the Node connected to the given input.
+        
+        If the given input is not present, then an empty NodePtr is returned.
 
 
     - `setConnectedNodeName`: setConnectedNodeName(self: MaterialX.PyMaterialXCore.Node, arg0: str, arg1: str) -> None
@@ -2574,12 +2538,25 @@
 
     - `getNodeDef`: getNodeDef(self: MaterialX.PyMaterialXCore.Node, target: str = '', allowRoughMatch: bool = False) -> MaterialX.PyMaterialXCore.NodeDef
         
-        Returns a nodedef for a given transform.
+        Return the first NodeDef that declares this node, optionally filtered by the given target name.
+        
+        Args:
+            target: An optional target name, which will be used to filter the nodedefs that are considered.
+            allowRoughMatch: If specified, then a rough match will be allowed when an exact match is not found. An exact match requires that each node input corresponds to a nodedef input of the same name and type.
+        
+        Returns:
+            A NodeDef for this node, or an empty shared pointer if none was found.
 
 
     - `getImplementation`: getImplementation(self: MaterialX.PyMaterialXCore.Node, target: str = '') -> MaterialX.PyMaterialXCore.InterfaceElement
         
-        Return the Implementation, if any, with the given name.
+        Return the first implementation for this node, optionally filtered by the given target and language names.
+        
+        Args:
+            target: An optional target name, which will be used to filter the implementations that are considered.
+        
+        Returns:
+            An implementation for this node, or an empty shared pointer if none was found. Note that a node implementation may be either an Implementation element or a NodeGraph element.
 
 
     - `getDownstreamPorts`: getDownstreamPorts(self: MaterialX.PyMaterialXCore.Node) -> list[MaterialX.PyMaterialXCore.PortElement]
@@ -2615,7 +2592,9 @@
 
 <a id='materialx-pymaterialxcore-nodedef'></a>
 
-- **NodeDef**: 
+- **NodeDef**: A node definition element within a Document.
+
+A NodeDef provides the declaration of a node interface, which may then be instantiated as a Node.
 
   - Inherits from: [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2651,16 +2630,16 @@
         Return the node group of the NodeDef.
 
 
-    - `getImplementation`: getImplementation(*args, **kwargs)
-        Overloaded function.
+    - `getImplementation`: getImplementation(self: MaterialX.PyMaterialXCore.NodeDef, target: str = '', resolveNodeGraph: bool = True) -> MaterialX.PyMaterialXCore.InterfaceElement
         
-        1. getImplementation(self: MaterialX.PyMaterialXCore.NodeDef, arg0: str) -> MaterialX.PyMaterialXCore.InterfaceElement
+        Return the first implementation for this nodedef, optionally filtered by the given target name.
         
-        Return the Implementation, if any, with the given name.
+        Args:
+            target: An optional target name, which will be used to filter the implementations that are considered.
+            resolveNodeGraph: Allow resolution of Implementation elements to their linked NodeGraph elements. Defaults to true.
         
-        2. getImplementation(self: MaterialX.PyMaterialXCore.NodeDef, target: str = '') -> MaterialX.PyMaterialXCore.InterfaceElement
-        
-        Return the Implementation, if any, with the given name.
+        Returns:
+            An implementation for this nodedef, or an empty shared pointer if none was found. Note that a node implementation may be either an Implementation element or a NodeGraph element.
 
 
     - `isVersionCompatible`: isVersionCompatible(self: MaterialX.PyMaterialXCore.NodeDef, arg0: str) -> bool
@@ -2674,7 +2653,7 @@
 
 <a id='materialx-pymaterialxcore-nodegraph'></a>
 
-- **NodeGraph**: 
+- **NodeGraph**: A node graph element within a Document.
 
   - Inherits from: [GraphElement](#materialx-pymaterialxcore-graphelement), [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2682,17 +2661,17 @@
 
     - `getMaterialOutputs`: getMaterialOutputs(self: MaterialX.PyMaterialXCore.NodeGraph) -> list[MaterialX.PyMaterialXCore.Output]
         
-        Return material-type outputs for all nodegraphs in the document.
+        Return all material-type outputs of the nodegraph.
 
 
     - `setNodeDef`: setNodeDef(self: MaterialX.PyMaterialXCore.NodeGraph, arg0: MaterialX.PyMaterialXCore.NodeDef) -> None
         
-        Set the NodeDef element referenced by the Implementation.
+        Set the NodeDef element referenced by this NodeGraph.
 
 
     - `getNodeDef`: getNodeDef(self: MaterialX.PyMaterialXCore.NodeGraph) -> MaterialX.PyMaterialXCore.NodeDef
         
-        Returns a nodedef for a given transform.
+        Return the NodeDef element referenced by this NodeGraph.
 
 
     - `getDeclaration`: getDeclaration(self: MaterialX.PyMaterialXCore.NodeGraph, arg0: str) -> MaterialX.PyMaterialXCore.InterfaceElement
@@ -2731,7 +2710,7 @@
 
     - `getDownstreamPorts`: getDownstreamPorts(self: MaterialX.PyMaterialXCore.NodeGraph) -> list[MaterialX.PyMaterialXCore.PortElement]
         
-        Return a vector of all downstream ports that connect to this node, ordered by the names of the port elements.
+        Return a vector of all downstream ports that connect to this graph, ordered by the names of the port elements.
 
 
   - Attributes: CATEGORY
@@ -2744,7 +2723,7 @@
 
 <a id='materialx-pymaterialxcore-output'></a>
 
-- **Output**: 
+- **Output**: A spatially-varying output element within a NodeGraph or NodeDef.
 
   - Inherits from: [PortElement](#materialx-pymaterialxcore-portelement), [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2759,7 +2738,9 @@
 
 <a id='materialx-pymaterialxcore-portelement'></a>
 
-- **PortElement**: 
+- **PortElement**: The base class for port elements such as Input and Output.
+
+Port elements support spatially-varying upstream connections to nodes.
 
   - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2807,33 +2788,31 @@
 
     - `setConnectedNode`: setConnectedNode(self: MaterialX.PyMaterialXCore.PortElement, arg0: MaterialX_v1_39_5::Node) -> None
         
-        Set the node to which the given input is connected, creating a child input if needed.
+        Set the node to which this element is connected.
         
-        If the node argument is null, then any existing node connection on the input will be cleared.
+        The given node must belong to the same node graph. If the node argument is null, then any existing node connection will be cleared.
 
 
     - `getConnectedNode`: getConnectedNode(self: MaterialX.PyMaterialXCore.PortElement) -> MaterialX_v1_39_5::Node
         
-        Return the node, if any, to which this input is connected.
+        Return the node, if any, to which this element is connected.
 
 
     - `setConnectedOutput`: setConnectedOutput(self: MaterialX.PyMaterialXCore.PortElement, arg0: MaterialX_v1_39_5::Output) -> None
         
-        Set the output to which the given input is connected, creating a child input if needed.
+        Set the output to which this input is connected.
         
-        If the node argument is null, then any existing output connection on the input will be cleared.
+        If the output argument is null, then any existing output connection will be cleared.
 
 
     - `getConnectedOutput`: getConnectedOutput(self: MaterialX.PyMaterialXCore.PortElement) -> MaterialX_v1_39_5::Output
         
-        Return the output connected to the given input.
-        
-        If the given input is not present, then an empty OutputPtr is returned.
+        Return the output, if any, to which this input is connected.
 
 
 <a id='materialx-pymaterialxcore-property'></a>
 
-- **Property**: 
+- **Property**: A property element within a PropertySet.
 
   - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2841,7 +2820,7 @@
 
 <a id='materialx-pymaterialxcore-propertyassign'></a>
 
-- **PropertyAssign**: 
+- **PropertyAssign**: A property assignment element within a Look.
 
   - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2899,14 +2878,14 @@
 
     - `getCollection`: getCollection(self: MaterialX.PyMaterialXCore.PropertyAssign) -> MaterialX.PyMaterialXCore.Collection
         
-        Return the Collection, if any, with the given name.
+        Return the Collection that is assigned to this element.
 
 
   - Attributes: CATEGORY
 
 <a id='materialx-pymaterialxcore-propertyset'></a>
 
-- **PropertySet**: 
+- **PropertySet**: A property set element within a Document.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2945,7 +2924,7 @@
 
 <a id='materialx-pymaterialxcore-propertysetassign'></a>
 
-- **PropertySetAssign**: 
+- **PropertySetAssign**: A property set assignment element within a Look.
 
   - Inherits from: [GeomElement](#materialx-pymaterialxcore-geomelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2973,14 +2952,20 @@
 
     - `getPropertySet`: getPropertySet(self: MaterialX.PyMaterialXCore.PropertySetAssign) -> MaterialX.PyMaterialXCore.PropertySet
         
-        Return the PropertySet, if any, with the given name.
+        Return the property set that is assigned to this element.
 
 
   - Attributes: CATEGORY
 
 <a id='materialx-pymaterialxcore-stringresolver'></a>
 
-- **StringResolver**: 
+- **StringResolver**: A helper object for applying string modifiers to data values in the context of a specific element and geometry.
+
+A StringResolver may be constructed through the Element::createStringResolver method, which initializes it in the context of a specific element, geometry, and material.
+
+Calling the StringResolver::resolve method applies all modifiers to a particular string value.
+
+Methods such as StringResolver::setFilePrefix may be used to edit the stored string modifiers before calling StringResolver::resolve.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -2988,22 +2973,22 @@
 
     - `setFilePrefix`: setFilePrefix(self: MaterialX.PyMaterialXCore.StringResolver, arg0: str) -> None
         
-        Set the element's file prefix string.
+        Set the file prefix for this context.
 
 
     - `getFilePrefix`: getFilePrefix(self: MaterialX.PyMaterialXCore.StringResolver) -> str
         
-        Return the element's file prefix string.
+        Return the file prefix for this context.
 
 
     - `setGeomPrefix`: setGeomPrefix(self: MaterialX.PyMaterialXCore.StringResolver, arg0: str) -> None
         
-        Set the element's geom prefix string.
+        Set the geom prefix for this context.
 
 
     - `getGeomPrefix`: getGeomPrefix(self: MaterialX.PyMaterialXCore.StringResolver) -> str
         
-        Return the element's geom prefix string.
+        Return the geom prefix for this context.
 
 
     - `setUdimString`: setUdimString(self: MaterialX.PyMaterialXCore.StringResolver, arg0: str) -> None
@@ -3047,7 +3032,7 @@
 
 <a id='materialx-pymaterialxcore-targetdef'></a>
 
-- **TargetDef**: 
+- **TargetDef**: A definition of an implementation target.
 
   - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3064,7 +3049,9 @@
 
 <a id='materialx-pymaterialxcore-token'></a>
 
-- **Token**: 
+- **Token**: A token element representing a string value.
+
+Token elements are used to define input and output values for string substitutions in image filenames.
 
   - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3072,18 +3059,20 @@
 
 <a id='materialx-pymaterialxcore-treeiterator'></a>
 
-- **TreeIterator**: 
+- **TreeIterator**: An iterator object representing the state of a tree traversal.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
     - `getElement`: getElement(self: MaterialX.PyMaterialXCore.TreeIterator) -> MaterialX.PyMaterialXCore.Element
+        
+        Return the current element in the traversal.
 
 
     - `getElementDepth`: getElementDepth(self: MaterialX.PyMaterialXCore.TreeIterator) -> int
         
-        Return the element depth of the current traversal, where a single edge between two elements represents a depth of one.
+        Return the element depth of the current traversal, where the starting element represents a depth of zero.
 
 
     - `setPruneSubtree`: setPruneSubtree(self: MaterialX.PyMaterialXCore.TreeIterator, arg0: bool) -> None
@@ -3101,7 +3090,7 @@
 
 <a id='materialx-pymaterialxcore-typedef'></a>
 
-- **TypeDef**: 
+- **TypeDef**: A type definition element within a Document.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3109,7 +3098,7 @@
 
     - `setSemantic`: setSemantic(self: MaterialX.PyMaterialXCore.TypeDef, arg0: str) -> None
         
-        Set the variable semantic of this port.
+        Set the semantic string of the TypeDef.
 
 
     - `hasSemantic`: hasSemantic(self: MaterialX.PyMaterialXCore.TypeDef) -> bool
@@ -3119,7 +3108,7 @@
 
     - `getSemantic`: getSemantic(self: MaterialX.PyMaterialXCore.TypeDef) -> str
         
-        Return the variable semantic of this port.
+        Return the semantic string of the TypeDef.
 
 
     - `setContext`: setContext(self: MaterialX.PyMaterialXCore.TypeDef, arg0: str) -> None
@@ -3154,6 +3143,8 @@
 
 
     - `getMembers`: getMembers(self: MaterialX.PyMaterialXCore.TypeDef) -> list[MaterialX_v1_39_5::Member]
+        
+        Return a vector of all Member elements in the TypeDef.
 
 
     - `removeMember`: removeMember(self: MaterialX.PyMaterialXCore.TypeDef, arg0: str) -> None
@@ -3165,7 +3156,7 @@
 
 <a id='materialx-pymaterialxcore-typedelement'></a>
 
-- **TypedElement**: 
+- **TypedElement**: The base class for typed elements.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3173,7 +3164,7 @@
 
     - `setType`: setType(self: MaterialX.PyMaterialXCore.TypedElement, arg0: str) -> None
         
-        Set the data type for this port.
+        Set the element's type string.
 
 
     - `hasType`: hasType(self: MaterialX.PyMaterialXCore.TypedElement) -> bool
@@ -3183,7 +3174,7 @@
 
     - `getType`: getType(self: MaterialX.PyMaterialXCore.TypedElement) -> str
         
-        Get stream attribute name.
+        Return the element's type string.
 
 
     - `isColorType`: isColorType(self: MaterialX.PyMaterialXCore.TypedElement) -> bool
@@ -3198,7 +3189,9 @@
 
     - `getTypeDef`: getTypeDef(self: MaterialX.PyMaterialXCore.TypedElement) -> MaterialX_v1_39_5::TypeDef
         
-        Return the TypeDef, if any, with the given name.
+        Return the TypeDef declaring the type string of this element.
+        
+        If no matching TypeDef is found, then an empty shared pointer is returned.
 
 
   - Attributes: TYPE_ATTRIBUTE
@@ -3212,13 +3205,9 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_boolean) -> bool
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_boolean) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: bool) -> MaterialX.PyMaterialXCore.Value
@@ -3235,16 +3224,12 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_booleanarray) -> list[bool]
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_booleanarray) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: list[bool]) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: collections.abc.Sequence[bool]) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -3258,13 +3243,9 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_color3) -> MaterialX_v1_39_5::Color3
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_color3) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Color3) -> MaterialX.PyMaterialXCore.Value
@@ -3281,13 +3262,9 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_color4) -> MaterialX_v1_39_5::Color4
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_color4) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Color4) -> MaterialX.PyMaterialXCore.Value
@@ -3304,16 +3281,12 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_float) -> float
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_float) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: float) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -3327,16 +3300,12 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_floatarray) -> list[float]
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_floatarray) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: list[float]) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: collections.abc.Sequence[typing.SupportsFloat]) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -3350,16 +3319,12 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_integer) -> int
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_integer) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: int) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: typing.SupportsInt) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -3373,16 +3338,12 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_integerarray) -> list[int]
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_integerarray) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: list[int]) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: collections.abc.Sequence[typing.SupportsInt]) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -3396,13 +3357,9 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_matrix33) -> MaterialX_v1_39_5::Matrix33
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_matrix33) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Matrix33) -> MaterialX.PyMaterialXCore.Value
@@ -3419,13 +3376,9 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_matrix44) -> MaterialX_v1_39_5::Matrix44
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_matrix44) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Matrix44) -> MaterialX.PyMaterialXCore.Value
@@ -3442,13 +3395,9 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_string) -> str
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_string) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: str) -> MaterialX.PyMaterialXCore.Value
@@ -3465,16 +3414,12 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_stringarray) -> list[str]
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_stringarray) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: list[str]) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: collections.abc.Sequence[str]) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -3488,13 +3433,9 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_vector2) -> MaterialX_v1_39_5::Vector2
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_vector2) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Vector2) -> MaterialX.PyMaterialXCore.Value
@@ -3511,13 +3452,9 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_vector3) -> MaterialX_v1_39_5::Vector3
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_vector3) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Vector3) -> MaterialX.PyMaterialXCore.Value
@@ -3534,13 +3471,9 @@
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_vector4) -> MaterialX_v1_39_5::Vector4
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_vector4) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Vector4) -> MaterialX.PyMaterialXCore.Value
@@ -3550,7 +3483,7 @@
 
 <a id='materialx-pymaterialxcore-unit'></a>
 
-- **Unit**: 
+- **Unit**: A unit declaration within a UnitDef.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3558,7 +3491,9 @@
 
 <a id='materialx-pymaterialxcore-unitconverter'></a>
 
-- **UnitConverter**: 
+- **UnitConverter**: An abstract base class for unit converters.
+
+Each unit converter instance is responsible for a single unit type.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3567,66 +3502,36 @@
     - `convert`: convert(*args, **kwargs)
         Overloaded function.
         
-        1. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: float, arg1: str, arg2: str) -> float
-        
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
+        1. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: typing.SupportsFloat, arg1: str, arg2: str) -> float
         
         2. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: MaterialX.PyMaterialXCore.Vector2, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector2
         
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
-        
         3. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: MaterialX.PyMaterialXCore.Vector3, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector3
         
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
-        
         4. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: MaterialX.PyMaterialXCore.Vector4, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector4
-        
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
 
 
     - `getUnitAsInteger`: getUnitAsInteger(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: str) -> int
         
-        Given a unit name return a value that it can map to as an integer.
-        
-        Returns -1 value if not found
+        Given a unit name return a value that it can map to as an integer Returns -1 value if not found.
 
 
-    - `getUnitFromInteger`: getUnitFromInteger(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: int) -> str
+    - `getUnitFromInteger`: getUnitFromInteger(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: typing.SupportsInt) -> str
         
-        Given an integer index return the unit name in the map used by the converter.
-        
-        Returns Empty string if not found
+        Given an integer index return the unit name in the map used by the converter Returns Empty string if not found.
 
 
 <a id='materialx-pymaterialxcore-unitconverterregistry'></a>
 
-- **UnitConverterRegistry**: 
+- **UnitConverterRegistry**: A registry for unit converters.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
     - `create`: create() -> MaterialX.PyMaterialXCore.UnitConverterRegistry
+        
+        Creator.
 
 
     - `addUnitConverter`: addUnitConverter(self: MaterialX.PyMaterialXCore.UnitConverterRegistry, arg0: MaterialX.PyMaterialXCore.UnitTypeDef, arg1: MaterialX.PyMaterialXCore.UnitConverter) -> bool
@@ -3655,7 +3560,7 @@
 
 <a id='materialx-pymaterialxcore-unitdef'></a>
 
-- **UnitDef**: 
+- **UnitDef**: A unit definition element within a Document.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3673,7 +3578,7 @@
 
     - `getUnitType`: getUnitType(self: MaterialX.PyMaterialXCore.UnitDef) -> str
         
-        Return the unit type string.
+        Return the element's type string.
 
 
     - `addUnit`: addUnit(self: MaterialX.PyMaterialXCore.UnitDef, arg0: str) -> MaterialX.PyMaterialXCore.Unit
@@ -3689,7 +3594,7 @@
 
     - `getUnit`: getUnit(self: MaterialX.PyMaterialXCore.UnitDef, arg0: str) -> MaterialX.PyMaterialXCore.Unit
         
-        Return the unit type for the value on this port.
+        Return the Unit, if any, with the given name.
 
 
     - `getUnits`: getUnits(self: MaterialX.PyMaterialXCore.UnitDef) -> list[MaterialX.PyMaterialXCore.Unit]
@@ -3701,7 +3606,7 @@
 
 <a id='materialx-pymaterialxcore-unittypedef'></a>
 
-- **UnitTypeDef**: 
+- **UnitTypeDef**: A unit type definition element within a Document.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3709,14 +3614,14 @@
 
     - `getUnitDefs`: getUnitDefs(self: MaterialX.PyMaterialXCore.UnitTypeDef) -> list[MaterialX.PyMaterialXCore.UnitDef]
         
-        Return a vector of all Member elements in the TypeDef.
+        Find all UnitDefs for the UnitTypeDef.
 
 
   - Attributes: CATEGORY
 
 <a id='materialx-pymaterialxcore-value'></a>
 
-- **Value**: 
+- **Value**: A generic, discriminated value, whose type may be queried dynamically.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3724,20 +3629,25 @@
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.Value) -> str
         
-        Return value string.
+        Return the value string for this value.
 
 
     - `getTypeString`: getTypeString(self: MaterialX.PyMaterialXCore.Value) -> str
         
-        Return type string.
+        Return the type string for this value.
 
 
     - `createValueFromStrings`: createValueFromStrings(value: str, type: str, typeDefPtr: MaterialX_v1_39_5::TypeDef = None) -> MaterialX.PyMaterialXCore.Value
+        
+        Create a new value instance from value and type strings.
+        
+        Returns:
+            A shared pointer to a typed value, or an empty shared pointer if the conversion to the given data type cannot be performed.
 
 
 <a id='materialx-pymaterialxcore-valueelement'></a>
 
-- **ValueElement**: 
+- **ValueElement**: The base class for elements that support typed values.
 
   - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3755,7 +3665,7 @@
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.ValueElement) -> str
         
-        Return value string.
+        Get the value string of a element.
 
 
     - `getResolvedValueString`: getResolvedValueString(self: MaterialX.PyMaterialXCore.ValueElement, resolver: MaterialX_v1_39_5::StringResolver = None) -> str
@@ -3798,7 +3708,7 @@
 
     - `setUnit`: setUnit(self: MaterialX.PyMaterialXCore.ValueElement, arg0: str) -> None
         
-        Set a unit type for the value on this port.
+        Set the unit string of an element.
 
 
     - `hasUnit`: hasUnit(self: MaterialX.PyMaterialXCore.ValueElement) -> bool
@@ -3808,7 +3718,7 @@
 
     - `getUnit`: getUnit(self: MaterialX.PyMaterialXCore.ValueElement) -> str
         
-        Return the unit type for the value on this port.
+        Return the unit string of an element.
 
 
     - `getActiveUnit`: getActiveUnit(self: MaterialX.PyMaterialXCore.ValueElement) -> str
@@ -3818,17 +3728,17 @@
 
     - `setUnitType`: setUnitType(self: MaterialX.PyMaterialXCore.ValueElement, arg0: str) -> None
         
-        Set the element's unittype string.
+        Set the unit type of an element.
 
 
     - `hasUnitType`: hasUnitType(self: MaterialX.PyMaterialXCore.ValueElement) -> bool
         
-        Return true if the given element has a unittype string.
+        Return true if the given element has a unit type.
 
 
     - `getUnitType`: getUnitType(self: MaterialX.PyMaterialXCore.ValueElement) -> str
         
-        Return the unit type string.
+        Return the unit type of an element.
 
 
     - `getIsUniform`: getIsUniform(self: MaterialX.PyMaterialXCore.ValueElement) -> bool
@@ -3854,7 +3764,7 @@
 
 <a id='materialx-pymaterialxcore-variant'></a>
 
-- **Variant**: 
+- **Variant**: A variant element within a VariantSet.
 
   - Inherits from: [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3862,7 +3772,7 @@
 
 <a id='materialx-pymaterialxcore-variantassign'></a>
 
-- **VariantAssign**: 
+- **VariantAssign**: A variant assignment element within a Look.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3902,7 +3812,7 @@
 
 <a id='materialx-pymaterialxcore-variantset'></a>
 
-- **VariantSet**: 
+- **VariantSet**: A variant set element within a Document.
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -3938,32 +3848,22 @@
 
 <a id='materialx-pymaterialxcore-vector2'></a>
 
-- **Vector2**: 
+- **Vector2**: A vector of two floating-point values.
 
   - Inherits from: [VectorBase](#materialx-pymaterialxcore-vectorbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Vector2) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Vector2) -> MaterialX.PyMaterialXCore.Vector2
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Vector2, arg0: MaterialX.PyMaterialXCore.Vector2) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Vector2) -> MaterialX.PyMaterialXCore.Vector2
-        
-        Create a deep copy of the value.
 
 
     - `cross`: cross(self: MaterialX.PyMaterialXCore.Vector2, arg0: MaterialX.PyMaterialXCore.Vector2) -> float
@@ -3976,32 +3876,22 @@
 
 <a id='materialx-pymaterialxcore-vector3'></a>
 
-- **Vector3**: 
+- **Vector3**: A vector of three floating-point values.
 
   - Inherits from: [VectorBase](#materialx-pymaterialxcore-vectorbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Vector3) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Vector3, arg0: MaterialX.PyMaterialXCore.Vector3) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
-        
-        Create a deep copy of the value.
 
 
     - `cross`: cross(self: MaterialX.PyMaterialXCore.Vector3, arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
@@ -4014,32 +3904,22 @@
 
 <a id='materialx-pymaterialxcore-vector4'></a>
 
-- **Vector4**: 
+- **Vector4**: A vector of four floating-point values.
 
   - Inherits from: [VectorBase](#materialx-pymaterialxcore-vectorbase), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Vector4) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Vector4) -> MaterialX.PyMaterialXCore.Vector4
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Vector4, arg0: MaterialX.PyMaterialXCore.Vector4) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Vector4) -> MaterialX.PyMaterialXCore.Vector4
-        
-        Create a deep copy of the value.
 
 
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Vector4) -> tuple[float, float, float, float]
@@ -4047,13 +3927,15 @@
 
 <a id='materialx-pymaterialxcore-vectorbase'></a>
 
-- **VectorBase**: 
+- **VectorBase**: The base class for vectors of scalar values.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
 <a id='materialx-pymaterialxcore-visibility'></a>
 
-- **Visibility**: 
+- **Visibility**: A visibility element within a Look.
+
+A Visibility describes the visibility relationship between two geometries or geometric collections.
 
   - Inherits from: [GeomElement](#materialx-pymaterialxcore-geomelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
@@ -4121,51 +4003,99 @@
 
 - `createDocument`: createDocument() -> MaterialX_v1_39_5::Document
 
-Create a new document of the given subclass.
+- `createNamePath`: createNamePath(arg0: collections.abc.Sequence[str]) -> str
 
-Create a new Document.
-
-- `createNamePath`: createNamePath(arg0: list[str]) -> str
+Create a name path from a string vector.
 
 - `createValidName`: createValidName(name: str, replaceChar: str = '_') -> str
 
+Create a valid MaterialX name from the given string.
+
 - `geomStringsMatch`: geomStringsMatch(arg0: str, arg1: str, arg2: bool) -> bool
+
+Given two geometry strings, each containing an array of geom names, return true if they have any geometries in common.
+
+An empty geometry string matches no geometries, while the universal geometry string "/" matches all non-empty geometries.
+
+If the contains argument is set to true, then we require that a geom path in the first string completely contains a geom path in the second string.
 
 - `getConnectedOutputs`: getConnectedOutputs(arg0: MaterialX.PyMaterialXCore.Node) -> list[MaterialX.PyMaterialXCore.Output]
 
+Return a vector of all outputs connected to the given node's inputs.
+
 - `getGeometryBindings`: getGeometryBindings(materialNode: MaterialX_v1_39_5::Node, geom: str = '/') -> list[MaterialX.PyMaterialXCore.MaterialAssign]
+
+Return a vector of all MaterialAssign elements that bind this material node to the given geometry string.
+
+Args:
+    materialNode: Node to examine
+    geom: The geometry for which material bindings should be returned. By default, this argument is the universal geometry string "/", and all material bindings are returned.
+
+Returns:
+    Vector of MaterialAssign elements
 
 - `getShaderNodes`: getShaderNodes(materialNode: MaterialX.PyMaterialXCore.Node, nodeType: str = 'surfaceshader', target: str = '') -> list[MaterialX.PyMaterialXCore.Node]
 
+Return a vector of all shader nodes connected to the given material node's inputs, filtered by the given shader type and target.
+
+Args:
+    materialNode: The node to examine.
+    nodeType: THe shader node type to return. Defaults to the surface shader type.
+    target: An optional target name, which will be used to filter the returned nodes.
+
 - `getVersionIntegers`: getVersionIntegers() -> tuple[int, int, int]
 
-Return the major and minor versions as an integer pair.
+Return the major, minor, and build versions of the MaterialX library as an integer tuple.
 
 - `getVersionString`: getVersionString() -> str
 
-Return the version string of this interface.
+Return the version of the MaterialX library as a string.
 
 - `incrementName`: incrementName(arg0: str) -> str
 
+Increment the numeric suffix of a name.
+
 - `isValidName`: isValidName(arg0: str) -> bool
 
-- `joinStrings`: joinStrings(arg0: list[str], arg1: str) -> str
+Return true if the given string is a valid MaterialX name.
+
+- `joinStrings`: joinStrings(arg0: collections.abc.Sequence[str], arg1: str) -> str
+
+Join a vector of substrings into a single string, placing the given separator between each substring.
 
 - `parentNamePath`: parentNamePath(arg0: str) -> str
 
+Given a name path, return the parent name path.
+
 - `prettyPrint`: prettyPrint(arg0: MaterialX.PyMaterialXCore.Element) -> str
 
-- `replaceSubstrings`: replaceSubstrings(arg0: str, arg1: dict[str, str]) -> str
+Pretty print the given element tree, calling asString recursively on each element in depth-first order.
+
+- `replaceSubstrings`: replaceSubstrings(arg0: str, arg1: collections.abc.Mapping[str, str]) -> str
+
+Apply the given substring substitutions to the input string.
 
 - `splitNamePath`: splitNamePath(arg0: str) -> list[str]
 
+Split a name path into string vector.
+
 - `splitString`: splitString(arg0: str, arg1: str) -> list[str]
+
+Split a string into a vector of substrings using the given set of separator characters.
 
 - `stringEndsWith`: stringEndsWith(arg0: str, arg1: str) -> bool
 
+Return true if the given string ends with the given suffix.
+
 - `stringStartsWith`: stringStartsWith(arg0: str, arg1: str) -> bool
 
+Return true if the given string starts with the given prefix.
+
 - `targetStringsMatch`: targetStringsMatch(arg0: str, arg1: str) -> bool
+
+Given two target strings, each containing a string array of target names, return true if they have any targets in common.
+
+An empty target string matches all targets.
 
 
 ### Globals
@@ -4194,15 +4124,15 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-pymaterialxformat-filepath'></a>
 
-- **FilePath**: 
+- **FilePath**: A generic file path, supporting both syntactic and file system operations.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
 
   - Methods:
 
-    - `asString`: asString(self: MaterialX.PyMaterialXFormat.FilePath, format: MaterialX.PyMaterialXFormat.Format = <Format.FormatWindows: 0>) -> str
+    - `asString`: asString(self: MaterialX.PyMaterialXFormat.FilePath, format: MaterialX.PyMaterialXFormat.Format = <Format.FormatPosix: 1>) -> str
         
-        Return a single-line description of this element, including its category, name, and attributes.
+        Return this path as a standard string with the given format.
 
 
     - `isEmpty`: isEmpty(self: MaterialX.PyMaterialXFormat.FilePath) -> bool
@@ -4267,6 +4197,8 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `getFilesInDirectory`: getFilesInDirectory(self: MaterialX.PyMaterialXFormat.FilePath, arg0: str) -> list[MaterialX.PyMaterialXFormat.FilePath]
         
         Return a vector of all files in the given directory with the given extension.
+        
+        If extension is empty all files are returned.
 
 
     - `getSubDirectories`: getSubDirectories(self: MaterialX.PyMaterialXFormat.FilePath) -> list[MaterialX.PyMaterialXFormat.FilePath]
@@ -4280,22 +4212,26 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 
     - `getCurrentPath`: getCurrentPath() -> MaterialX.PyMaterialXFormat.FilePath
+        
+        Return the current working directory of the file system.
 
 
     - `getModulePath`: getModulePath() -> MaterialX.PyMaterialXFormat.FilePath
+        
+        Return the directory containing the executable module.
 
 
 <a id='materialx-pymaterialxformat-filesearchpath'></a>
 
-- **FileSearchPath**: 
+- **FileSearchPath**: A sequence of file paths, which may be queried to find the first instance of a given filename on the file system.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
 
   - Methods:
 
-    - `asString`: asString(self: MaterialX.PyMaterialXFormat.FileSearchPath, sep: str = ';') -> str
+    - `asString`: asString(self: MaterialX.PyMaterialXFormat.FileSearchPath, sep: str = ':') -> str
         
-        Return a single-line description of this element, including its category, name, and attributes.
+        Convert this sequence to a string using the given separator.
 
 
     - `append`: append(*args, **kwargs)
@@ -4303,11 +4239,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         
         1. append(self: MaterialX.PyMaterialXFormat.FileSearchPath, arg0: MaterialX.PyMaterialXFormat.FilePath) -> None
         
-        Append the given search path to the sequence.
-        
         2. append(self: MaterialX.PyMaterialXFormat.FileSearchPath, arg0: MaterialX.PyMaterialXFormat.FileSearchPath) -> None
-        
-        Append the given search path to the sequence.
 
 
     - `prepend`: prepend(self: MaterialX.PyMaterialXFormat.FileSearchPath, arg0: MaterialX.PyMaterialXFormat.FilePath) -> None
@@ -4322,12 +4254,12 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `size`: size(self: MaterialX.PyMaterialXFormat.FileSearchPath) -> int
         
-        Return the number of strings in the path.
+        Return the number of paths in the sequence.
 
 
     - `isEmpty`: isEmpty(self: MaterialX.PyMaterialXFormat.FileSearchPath) -> bool
         
-        Return true if the given path is empty.
+        Return true if the search path is empty.
 
 
     - `find`: find(self: MaterialX.PyMaterialXFormat.FileSearchPath, arg0: MaterialX.PyMaterialXFormat.FilePath) -> MaterialX.PyMaterialXFormat.FilePath
@@ -4367,7 +4299,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-pymaterialxformat-xmlreadoptions'></a>
 
-- **XmlReadOptions**: 
+- **XmlReadOptions**: A set of options for controlling the behavior of XML read functions.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
 
@@ -4375,7 +4307,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-pymaterialxformat-xmlwriteoptions'></a>
 
-- **XmlWriteOptions**: 
+- **XmlWriteOptions**: A set of options for controlling the behavior of XML write functions.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
 
@@ -4384,29 +4316,64 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 ### Functions
 
-- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932EB0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
+- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6eab0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
 
-- `getEnvironmentPath`: getEnvironmentPath(sep: str = ';') -> MaterialX.PyMaterialXFormat.FileSearchPath
+Flatten all filenames in the given document, applying string resolvers at the scope of each element and removing all fileprefix attributes.
+
+Args:
+    doc: The document to modify.
+    searchPath: An optional search path for relative to absolute path conversion.
+    customResolver: An optional custom resolver to apply.
+
+- `getEnvironmentPath`: getEnvironmentPath(sep: str = ':') -> MaterialX.PyMaterialXFormat.FileSearchPath
+
+Return a FileSearchPath object from search path environment variable.
 
 - `getSourceSearchPath`: getSourceSearchPath(arg0: MaterialX.PyMaterialXCore.Document) -> MaterialX.PyMaterialXFormat.FileSearchPath
 
-- `getSubdirectories`: getSubdirectories(arg0: list[MaterialX.PyMaterialXFormat.FilePath], arg1: MaterialX.PyMaterialXFormat.FileSearchPath, arg2: list[MaterialX.PyMaterialXFormat.FilePath]) -> None
+Return a file search path containing the parent folder of each source URI in the given document.
 
-- `loadDocuments`: loadDocuments(rootPath: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath, skipFiles: set[str], includeFiles: set[str], documents: list[MaterialX.PyMaterialXCore.Document], documentsPaths: list[str], readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None, errors: list[str] = None) -> None
+- `getSubdirectories`: getSubdirectories(arg0: collections.abc.Sequence[MaterialX.PyMaterialXFormat.FilePath], arg1: MaterialX.PyMaterialXFormat.FileSearchPath, arg2: collections.abc.Sequence[MaterialX.PyMaterialXFormat.FilePath]) -> None
 
-- `loadLibraries`: loadLibraries(libraryFolders: list[MaterialX.PyMaterialXFormat.FilePath], searchPath: MaterialX.PyMaterialXFormat.FileSearchPath, doc: MaterialX.PyMaterialXCore.Document, excludeFiles: set[str] = set(), readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> set[str]
+Get all subdirectories for a given set of directories and search paths.
 
-- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932C30>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `loadDocuments`: loadDocuments(rootPath: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath, skipFiles: collections.abc.Set[str], includeFiles: collections.abc.Set[str], documents: collections.abc.Sequence[MaterialX.PyMaterialXCore.Document], documentsPaths: collections.abc.Sequence[str], readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None, errors: collections.abc.Sequence[str] = None) -> None
 
-Load a library of implementations from the provided document, replacing any previously loaded content.
+Scans for all documents under a root path and returns documents which can be loaded.
+
+- `loadLibraries`: loadLibraries(libraryFolders: collections.abc.Sequence[MaterialX.PyMaterialXFormat.FilePath], searchPath: MaterialX.PyMaterialXFormat.FileSearchPath, doc: MaterialX.PyMaterialXCore.Document, excludeFiles: collections.abc.Set[str] = set(), readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> set[str]
+
+Load all MaterialX files within the given library folders into a document, using the given search path to locate the folders on the file system.
+
+- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6e870>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+
+Load a given MaterialX library into a document.
 
 - `prependXInclude`: prependXInclude(arg0: MaterialX.PyMaterialXCore.Document, arg1: MaterialX.PyMaterialXFormat.FilePath) -> None
 
 - `readFile`: readFile(arg0: MaterialX.PyMaterialXFormat.FilePath) -> str
 
-- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932570>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+Read the given file and return a string containing its contents; if the read is not successful, then the empty string is returned.
 
-- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932330>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6ddb0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+
+Read a Document as XML from the given filename.
+
+Args:
+    doc: The Document into which data is read.
+    filename: The filename from which data is read. This argument can be supplied either as a FilePath or a standard string.
+    searchPath: An optional sequence of file paths that will be applied in order when searching for the given file and its includes. This argument can be supplied either as a FileSearchPath, or as a standard string with paths separated by the PATH_SEPARATOR character.
+    readOptions: An optional pointer to an XmlReadOptions object. If provided, then the given options will affect the behavior of the read function. Defaults to a null pointer.
+
+- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6de70>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+
+Read a Document as XML from the given string.
+
+Args:
+    doc: The Document into which data is read.
+    str: The string from which data is read.
+    searchPath: An optional sequence of file paths that will be applied in order when searching for the given file and its includes. This argument can be supplied either as a FileSearchPath, or as a standard string with paths separated by the PATH_SEPARATOR character.
+    readOptions: An optional pointer to an XmlReadOptions object. If provided, then the given options will affect the behavior of the read function. Defaults to a null pointer.
 
 - `writeToXmlFile`: writeToXmlFile(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, writeOptions: MaterialX.PyMaterialXFormat.XmlWriteOptions = None) -> None
 
@@ -4427,7 +4394,7 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 <a id='materialx-pymaterialxgenglsl-esslshadergenerator'></a>
 
-- **EsslShaderGenerator**: 
+- **EsslShaderGenerator**: An ESSL (OpenGL ES Shading Language) shader generator.
 
   - Inherits from: [GlslShaderGenerator](#materialx-pymaterialxgenglsl-glslshadergenerator), [HwShaderGenerator](#materialx-pymaterialxgenglsl-hwshadergenerator), [ShaderGenerator](#materialx-pymaterialxgenglsl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenglsl-pybind11_object)
 
@@ -4437,8 +4404,6 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 
     - `generate`: generate(self: MaterialX.PyMaterialXGenGlsl.EsslShaderGenerator, arg0: str, arg1: MaterialX.PyMaterialXCore.Element, arg2: MaterialX.PyMaterialXGenShader.GenContext) -> MaterialX.PyMaterialXGenShader.Shader
-        
-        Generate a shader starting from the given element, translating the element and all dependencies upstream into shader code.
 
 
     - `getTarget`: getTarget(self: MaterialX.PyMaterialXGenGlsl.EsslShaderGenerator) -> str
@@ -4453,13 +4418,13 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 <a id='materialx-pymaterialxgenglsl-glslresourcebindingcontext'></a>
 
-- **GlslResourceBindingContext**: 
+- **GlslResourceBindingContext**: Class representing a resource binding for Glsl shader resources.
 
   - Inherits from: [HwResourceBindingContext](#materialx-pymaterialxgenglsl-hwresourcebindingcontext), [GenUserData](#materialx-pymaterialxgenglsl-genuserdata), [pybind11_object](#materialx-pymaterialxgenglsl-pybind11_object)
 
   - Methods:
 
-    - `create`: create(arg0: int, arg1: int) -> MaterialX.PyMaterialXGenGlsl.GlslResourceBindingContext
+    - `create`: create(arg0: typing.SupportsInt, arg1: typing.SupportsInt) -> MaterialX.PyMaterialXGenGlsl.GlslResourceBindingContext
 
 
     - `emitDirectives`: emitDirectives(self: MaterialX.PyMaterialXGenGlsl.GlslResourceBindingContext, arg0: MaterialX.PyMaterialXGenShader.GenContext, arg1: MaterialX.PyMaterialXGenShader.ShaderStage) -> None
@@ -4470,7 +4435,9 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 <a id='materialx-pymaterialxgenglsl-glslshadergenerator'></a>
 
-- **GlslShaderGenerator**: 
+- **GlslShaderGenerator**: Base class for GLSL (OpenGL Shading Language) code generation.
+
+A generator for a specific GLSL target should be derived from this class.
 
   - Inherits from: [HwShaderGenerator](#materialx-pymaterialxgenglsl-hwshadergenerator), [ShaderGenerator](#materialx-pymaterialxgenglsl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenglsl-pybind11_object)
 
@@ -4491,12 +4458,12 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
     - `getVersion`: getVersion(self: MaterialX.PyMaterialXGenGlsl.GlslShaderGenerator) -> str
         
-        Return the version string for the ESSL version this generator is for.
+        Return the version string for the GLSL version this generator is for.
 
 
 <a id='materialx-pymaterialxgenglsl-vkshadergenerator'></a>
 
-- **VkShaderGenerator**: 
+- **VkShaderGenerator**: A Vulkan GLSL shader generator.
 
   - Inherits from: [GlslShaderGenerator](#materialx-pymaterialxgenglsl-glslshadergenerator), [HwShaderGenerator](#materialx-pymaterialxgenglsl-hwshadergenerator), [ShaderGenerator](#materialx-pymaterialxgenglsl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenglsl-pybind11_object)
 
@@ -4506,8 +4473,6 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 
     - `generate`: generate(self: MaterialX.PyMaterialXGenGlsl.VkShaderGenerator, arg0: str, arg1: MaterialX.PyMaterialXCore.Element, arg2: MaterialX.PyMaterialXGenShader.GenContext) -> MaterialX.PyMaterialXGenShader.Shader
-        
-        Generate a shader starting from the given element, translating the element and all dependencies upstream into shader code.
 
 
     - `getTarget`: getTarget(self: MaterialX.PyMaterialXGenGlsl.VkShaderGenerator) -> str
@@ -4517,12 +4482,12 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
     - `getVersion`: getVersion(self: MaterialX.PyMaterialXGenGlsl.VkShaderGenerator) -> str
         
-        Return the version string for the ESSL version this generator is for.
+        Return the version string for the GLSL version this generator is for.
 
 
 <a id='materialx-pymaterialxgenglsl-wgslshadergenerator'></a>
 
-- **WgslShaderGenerator**: 
+- **WgslShaderGenerator**: WGSL Flavor of Vulkan GLSL shader generator.
 
   - Inherits from: [GlslShaderGenerator](#materialx-pymaterialxgenglsl-glslshadergenerator), [HwShaderGenerator](#materialx-pymaterialxgenglsl-hwshadergenerator), [ShaderGenerator](#materialx-pymaterialxgenglsl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenglsl-pybind11_object)
 
@@ -4532,18 +4497,12 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 
     - `generate`: generate(self: MaterialX.PyMaterialXGenGlsl.WgslShaderGenerator, arg0: str, arg1: MaterialX.PyMaterialXCore.Element, arg2: MaterialX.PyMaterialXGenShader.GenContext) -> MaterialX.PyMaterialXGenShader.Shader
-        
-        Generate a shader starting from the given element, translating the element and all dependencies upstream into shader code.
 
 
     - `getTarget`: getTarget(self: MaterialX.PyMaterialXGenGlsl.WgslShaderGenerator) -> str
-        
-        Return a unique identifier for the target this generator is for.
 
 
     - `getVersion`: getVersion(self: MaterialX.PyMaterialXGenGlsl.WgslShaderGenerator) -> str
-        
-        Return the version string for the ESSL version this generator is for.
 
 
 
@@ -4555,7 +4514,7 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 <a id='materialx-pymaterialxgenmdl-mdlshadergenerator'></a>
 
-- **MdlShaderGenerator**: 
+- **MdlShaderGenerator**: Shader generator for MDL (Material Definition Language).
 
   - Inherits from: [ShaderGenerator](#materialx-pymaterialxgenmdl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenmdl-pybind11_object)
 
@@ -4584,7 +4543,7 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
   - Methods:
 
-    - `create`: create(arg0: int, arg1: int) -> MaterialX.PyMaterialXGenMsl.MslResourceBindingContext
+    - `create`: create(arg0: typing.SupportsInt, arg1: typing.SupportsInt) -> MaterialX.PyMaterialXGenMsl.MslResourceBindingContext
 
 
     - `emitDirectives`: emitDirectives(self: MaterialX.PyMaterialXGenMsl.MslResourceBindingContext, arg0: MaterialX.PyMaterialXGenShader.GenContext, arg1: MaterialX.PyMaterialXGenShader.ShaderStage) -> None
@@ -4605,18 +4564,12 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 
     - `generate`: generate(self: MaterialX.PyMaterialXGenMsl.MslShaderGenerator, arg0: str, arg1: MaterialX.PyMaterialXCore.Element, arg2: MaterialX.PyMaterialXGenShader.GenContext) -> MaterialX.PyMaterialXGenShader.Shader
-        
-        Generate a shader starting from the given element, translating the element and all dependencies upstream into shader code.
 
 
     - `getTarget`: getTarget(self: MaterialX.PyMaterialXGenMsl.MslShaderGenerator) -> str
-        
-        Return a unique identifier for the target this generator is for.
 
 
     - `getVersion`: getVersion(self: MaterialX.PyMaterialXGenMsl.MslShaderGenerator) -> str
-        
-        Return the version string for the ESSL version this generator is for.
 
 
 
@@ -4628,7 +4581,9 @@ FormatNative, FormatPosix, FormatWindows, MATERIALX_SEARCH_PATH_ENV_VAR, PATH_LI
 
 <a id='materialx-pymaterialxgenosl-oslshadergenerator'></a>
 
-- **OslShaderGenerator**: 
+- **OslShaderGenerator**: Base class for OSL (Open Shading Language) shader generators.
+
+A generator for a specific OSL target should be derived from this class.
 
   - Inherits from: [ShaderGenerator](#materialx-pymaterialxgenosl-shadergenerator), [pybind11_object](#materialx-pymaterialxgenosl-pybind11_object)
 
@@ -4668,7 +4623,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 <a id='materialx-pymaterialxgenshader-colormanagementsystem'></a>
 
-- **ColorManagementSystem**: 
+- **ColorManagementSystem**: Abstract base class for color management systems.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
@@ -4691,7 +4646,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 <a id='materialx-pymaterialxgenshader-colorspacetransform'></a>
 
-- **ColorSpaceTransform**: 
+- **ColorSpaceTransform**: Structure that represents color space transform information.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
@@ -4699,23 +4654,27 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 <a id='materialx-pymaterialxgenshader-defaultcolormanagementsystem'></a>
 
-- **DefaultColorManagementSystem**: 
+- **DefaultColorManagementSystem**: Class for a default color management system.
 
   - Inherits from: [ColorManagementSystem](#materialx-pymaterialxgenshader-colormanagementsystem), [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
     - `create`: create(arg0: str) -> MaterialX.PyMaterialXGenShader.DefaultColorManagementSystem
+        
+        Create a new DefaultColorManagementSystem.
 
 
     - `getName`: getName(self: MaterialX.PyMaterialXGenShader.DefaultColorManagementSystem) -> str
         
-        Return the ColorManagementSystem name.
+        Return the DefaultColorManagementSystem name.
 
 
 <a id='materialx-pymaterialxgenshader-gencontext'></a>
 
-- **GenContext**: 
+- **GenContext**: A context class for shader generation.
+
+Used for thread local storage of data needed during shader generation.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
@@ -4727,8 +4686,6 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 
     - `getOptions`: getOptions(self: MaterialX.PyMaterialXGenShader.GenContext) -> MaterialX_v1_39_5::GenOptions
-        
-        Return shader generation options.
 
 
     - `getTypeDesc`: getTypeDesc(self: MaterialX.PyMaterialXGenShader.GenContext, arg0: str) -> MaterialX_v1_39_5::TypeDesc
@@ -4741,11 +4698,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         
         1. registerSourceCodeSearchPath(self: MaterialX.PyMaterialXGenShader.GenContext, arg0: MaterialX.PyMaterialXFormat.FilePath) -> None
         
-        Register a user search path for finding source code during code generation.
-        
         2. registerSourceCodeSearchPath(self: MaterialX.PyMaterialXGenShader.GenContext, arg0: MaterialX.PyMaterialXFormat.FileSearchPath) -> None
-        
-        Register a user search path for finding source code during code generation.
 
 
     - `resolveSourceFile`: resolveSourceFile(self: MaterialX.PyMaterialXGenShader.GenContext, arg0: MaterialX.PyMaterialXFormat.FilePath, arg1: MaterialX.PyMaterialXFormat.FilePath) -> MaterialX.PyMaterialXFormat.FilePath
@@ -4758,19 +4711,19 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Add user data to the context to make it available during shader generator.
 
 
-    - `setApplicationVariableHandler`: setApplicationVariableHandler(self: MaterialX.PyMaterialXGenShader.GenContext, arg0: Callable[[MaterialX_v1_39_5::ShaderNode, MaterialX.PyMaterialXGenShader.GenContext], None]) -> None
+    - `setApplicationVariableHandler`: setApplicationVariableHandler(self: MaterialX.PyMaterialXGenShader.GenContext, arg0: collections.abc.Callable[[MaterialX_v1_39_5::ShaderNode, MaterialX.PyMaterialXGenShader.GenContext], None]) -> None
         
         Set handler for application variables.
 
 
-    - `getApplicationVariableHandler`: getApplicationVariableHandler(self: MaterialX.PyMaterialXGenShader.GenContext) -> Callable[[MaterialX_v1_39_5::ShaderNode, MaterialX.PyMaterialXGenShader.GenContext], None]
+    - `getApplicationVariableHandler`: getApplicationVariableHandler(self: MaterialX.PyMaterialXGenShader.GenContext) -> collections.abc.Callable[[MaterialX_v1_39_5::ShaderNode, MaterialX.PyMaterialXGenShader.GenContext], None]
         
         Get handler for application variables.
 
 
 <a id='materialx-pymaterialxgenshader-genoptions'></a>
 
-- **GenOptions**: 
+- **GenOptions**: Class holding options to configure shader generation.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
@@ -4778,15 +4731,13 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 <a id='materialx-pymaterialxgenshader-genuserdata'></a>
 
-- **GenUserData**: 
+- **GenUserData**: Base class for custom user data needed during shader generation.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
     - `getSelf`: getSelf(self: MaterialX.PyMaterialXGenShader.GenUserData) -> MaterialX.PyMaterialXGenShader.GenUserData
-        
-        Return our self pointer.
 
 
 <a id='materialx-pymaterialxgenshader-hwresourcebindingcontext'></a>
@@ -4811,10 +4762,10 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
   - Methods:
 
-    - `bindLightShader`: bindLightShader(self: MaterialX.PyMaterialXCore.NodeDef, arg0: int, arg1: MaterialX.PyMaterialXGenShader.GenContext) -> None
+    - `bindLightShader`: bindLightShader(self: MaterialX.PyMaterialXCore.NodeDef, arg0: typing.SupportsInt, arg1: MaterialX.PyMaterialXGenShader.GenContext) -> None
 
 
-    - `unbindLightShader`: unbindLightShader(self: int, arg0: MaterialX.PyMaterialXGenShader.GenContext) -> None
+    - `unbindLightShader`: unbindLightShader(self: typing.SupportsInt, arg0: MaterialX.PyMaterialXGenShader.GenContext) -> None
 
 
     - `unbindLightShaders`: unbindLightShaders(self: MaterialX.PyMaterialXGenShader.GenContext) -> None
@@ -4836,7 +4787,11 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 <a id='materialx-pymaterialxgenshader-shader'></a>
 
-- **Shader**: 
+- **Shader**: Class containing all data needed during shader generation.
+
+After generation is completed it will contain the resulting source code emitted by shader generators.
+
+The class contains a default implementation using a single shader stage. Derived shaders can override this, as well as overriding all methods that add code to the shader.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
@@ -4844,7 +4799,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
     - `getName`: getName(self: MaterialX.PyMaterialXGenShader.Shader) -> str
         
-        Return the ColorManagementSystem name.
+        Return the shader name.
 
 
     - `hasStage`: hasStage(self: MaterialX.PyMaterialXGenShader.Shader, arg0: str) -> bool
@@ -4860,13 +4815,9 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
     - `getStage`: getStage(*args, **kwargs)
         Overloaded function.
         
-        1. getStage(self: MaterialX.PyMaterialXGenShader.Shader, arg0: int) -> MaterialX_v1_39_5::ShaderStage
-        
-        Return a stage by name.
+        1. getStage(self: MaterialX.PyMaterialXGenShader.Shader, arg0: typing.SupportsInt) -> MaterialX_v1_39_5::ShaderStage
         
         2. getStage(self: MaterialX.PyMaterialXGenShader.Shader, arg0: str) -> MaterialX_v1_39_5::ShaderStage
-        
-        Return a stage by name.
 
 
     - `getSourceCode`: getSourceCode(self: MaterialX.PyMaterialXGenShader.Shader, arg0: str) -> str
@@ -4876,14 +4827,12 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
     - `hasAttribute`: hasAttribute(self: MaterialX.PyMaterialXGenShader.Shader, arg0: str) -> bool
         
-        Return true if the given attribute is present.
+        Return true if the shader has a given named attribute.
 
 
     - `getAttribute`: getAttribute(self: MaterialX.PyMaterialXGenShader.Shader, arg0: str) -> MaterialX.PyMaterialXCore.Value
         
-        Return the value string of the given attribute.
-        
-        If the given attribute is not present, then an empty string is returned.
+        Return the value for a named attribute, or nullptr if no such attribute is found.
 
 
     - `setAttribute`: setAttribute(*args, **kwargs)
@@ -4891,16 +4840,14 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         
         1. setAttribute(self: MaterialX.PyMaterialXGenShader.Shader, arg0: str) -> None
         
-        Set the value string of the given attribute.
-        
         2. setAttribute(self: MaterialX.PyMaterialXGenShader.Shader, arg0: str, arg1: MaterialX.PyMaterialXCore.Value) -> None
-        
-        Set the value string of the given attribute.
 
 
 <a id='materialx-pymaterialxgenshader-shadergenerator'></a>
 
-- **ShaderGenerator**: 
+- **ShaderGenerator**: Base class for shader generators All third-party shader generators should derive from this class.
+
+Derived classes should use DECLARE_SHADER_GENERATOR / DEFINE_SHADER_GENERATOR in their declaration / definition, and register with the Registry class.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
@@ -4908,7 +4855,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
     - `getTarget`: getTarget(self: MaterialX.PyMaterialXGenShader.ShaderGenerator) -> str
         
-        Return a unique identifier for the target this generator is for.
+        Return the name of the target this generator is for.
 
 
     - `generate`: generate(self: MaterialX.PyMaterialXGenShader.ShaderGenerator, arg0: str, arg1: MaterialX.PyMaterialXCore.Element, arg2: MaterialX_v1_39_5::GenContext) -> MaterialX.PyMaterialXGenShader.Shader
@@ -4918,12 +4865,12 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
     - `setColorManagementSystem`: setColorManagementSystem(self: MaterialX.PyMaterialXGenShader.ShaderGenerator, arg0: MaterialX.PyMaterialXGenShader.ColorManagementSystem) -> None
         
-        Set the color management system string.
+        Sets the color management system.
 
 
     - `getColorManagementSystem`: getColorManagementSystem(self: MaterialX.PyMaterialXGenShader.ShaderGenerator) -> MaterialX.PyMaterialXGenShader.ColorManagementSystem
         
-        Return the color management system string.
+        Returns the color management system.
 
 
     - `setUnitSystem`: setUnitSystem(self: MaterialX.PyMaterialXGenShader.ShaderGenerator, arg0: MaterialX_v1_39_5::UnitSystem) -> None
@@ -4949,6 +4896,8 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
     - `registerShaderMetadata`: registerShaderMetadata(self: MaterialX.PyMaterialXGenShader.ShaderGenerator, arg0: MaterialX.PyMaterialXCore.Document, arg1: MaterialX_v1_39_5::GenContext) -> None
         
         Register metadata that should be exported to the generated shaders.
+        
+        Supported metadata includes standard UI attributes like "uiname", "uifolder", "uimin", "uimax", etc. But it is also extendable by defining custom attributes using AttributeDefs. Any AttributeDef in the given document with exportable="true" will be exported as shader metadata when found on nodes during shader generation. Derived shader generators may override this method to change the registration. Applications must explicitly call this method before shader generation to enable export of metadata.
 
 
 <a id='materialx-pymaterialxgenshader-shaderinterfacetype'></a>
@@ -4965,7 +4914,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 <a id='materialx-pymaterialxgenshader-shaderport'></a>
 
-- **ShaderPort**: 
+- **ShaderPort**: An input or output port on a ShaderNode.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
@@ -4978,17 +4927,17 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
     - `getType`: getType(self: MaterialX.PyMaterialXGenShader.ShaderPort) -> MaterialX_v1_39_5::TypeDesc
         
-        Get stream attribute name.
+        Return the data type for this port.
 
 
     - `setName`: setName(self: MaterialX.PyMaterialXGenShader.ShaderPort, arg0: str) -> None
         
-        Set the element's name string.
+        Set the name of this port.
 
 
     - `getName`: getName(self: MaterialX.PyMaterialXGenShader.ShaderPort) -> str
         
-        Return the ColorManagementSystem name.
+        Return the name of this port.
 
 
     - `getFullName`: getFullName(self: MaterialX.PyMaterialXGenShader.ShaderPort) -> str
@@ -5016,31 +4965,29 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         Return the variable semantic of this port.
 
 
-    - `setValue`: setValue(self: MaterialX.PyMaterialXGenShader.ShaderPort, arg0: MaterialX.PyMaterialXCore.Value) -> None
+    - `setValue`: setValue(self: MaterialX.PyMaterialXGenShader.ShaderPort, arg0: MaterialX.PyMaterialXCore.Value, arg1: bool) -> None
         
-        Set the typed value of an element from a C-style string.
+        Set a value on this port.
 
 
     - `getValue`: getValue(self: MaterialX.PyMaterialXGenShader.ShaderPort) -> MaterialX.PyMaterialXCore.Value
         
-        Returns a value formatted according to this type syntax.
-        
-        The value is constructed from the given value object.
+        Return the value set on this port.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXGenShader.ShaderPort) -> str
         
-        Return value string.
+        Return the value set on this port as a string, or an empty string if there is no value.
 
 
     - `setGeomProp`: setGeomProp(self: MaterialX.PyMaterialXGenShader.ShaderPort, arg0: str) -> None
         
-        Set the geometric property string of this element.
+        Set geomprop name if the input has a default geomprop to be assigned when it is unconnected.
 
 
     - `getGeomProp`: getGeomProp(self: MaterialX.PyMaterialXGenShader.ShaderPort) -> str
         
-        Return the GeomProp, if any, with the given name.
+        Get geomprop name.
 
 
     - `setPath`: setPath(self: MaterialX.PyMaterialXGenShader.ShaderPort, arg0: str) -> None
@@ -5065,12 +5012,12 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
     - `setColorSpace`: setColorSpace(self: MaterialX.PyMaterialXGenShader.ShaderPort, arg0: str) -> None
         
-        Set the element's color space string.
+        Set a source color space for the value on this port.
 
 
     - `getColorSpace`: getColorSpace(self: MaterialX.PyMaterialXGenShader.ShaderPort) -> str
         
-        Return the element's color space string.
+        Return the source color space for the value on this port.
 
 
     - `isUniform`: isUniform(self: MaterialX.PyMaterialXGenShader.ShaderPort) -> bool
@@ -5091,7 +5038,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 <a id='materialx-pymaterialxgenshader-shaderstage'></a>
 
-- **ShaderStage**: 
+- **ShaderStage**: A shader stage, containing the state and resulting source code for the stage.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
@@ -5099,7 +5046,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
     - `getName`: getName(self: MaterialX.PyMaterialXGenShader.ShaderStage) -> str
         
-        Return the ColorManagementSystem name.
+        Return the stage name.
 
 
     - `getFunctionName`: getFunctionName(self: MaterialX.PyMaterialXGenShader.ShaderStage) -> str
@@ -5109,27 +5056,19 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
     - `getSourceCode`: getSourceCode(self: MaterialX.PyMaterialXGenShader.ShaderStage) -> str
         
-        Return the shader source code for a given shader stage.
+        Return the stage source code.
 
 
     - `getUniformBlock`: getUniformBlock(self: MaterialX.PyMaterialXGenShader.ShaderStage, arg0: str) -> MaterialX.PyMaterialXGenShader.VariableBlock
-        
-        Return the uniform variable block with given name.
 
 
     - `getInputBlock`: getInputBlock(self: MaterialX.PyMaterialXGenShader.ShaderStage, arg0: str) -> MaterialX.PyMaterialXGenShader.VariableBlock
-        
-        Return the input variable block with given name.
 
 
     - `getOutputBlock`: getOutputBlock(self: MaterialX.PyMaterialXGenShader.ShaderStage, arg0: str) -> MaterialX.PyMaterialXGenShader.VariableBlock
-        
-        Return the output variable block with given name.
 
 
     - `getConstantBlock`: getConstantBlock(self: MaterialX.PyMaterialXGenShader.ShaderStage) -> MaterialX.PyMaterialXGenShader.VariableBlock
-        
-        Return the constant variable block.
 
 
     - `getUniformBlocks`: getUniformBlocks(self: MaterialX.PyMaterialXGenShader.ShaderStage) -> dict[str, MaterialX.PyMaterialXGenShader.VariableBlock]
@@ -5159,7 +5098,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 <a id='materialx-pymaterialxgenshader-shadertranslator'></a>
 
-- **ShaderTranslator**: 
+- **ShaderTranslator**: A helper class for translating content between shading models.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
@@ -5180,7 +5119,9 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 <a id='materialx-pymaterialxgenshader-typedesc'></a>
 
-- **TypeDesc**: 
+- **TypeDesc**: A type descriptor for MaterialX data types.
+
+All types need to have a type descriptor registered in order for shader generators to know about the type. It can be used for type comparisons as well as getting more information about the type. Type descriptors for all standard library data types are defined by default and can be accessed from the Type namespace, e.g. Type::FLOAT. Custom struct types defined through typedef elements in a data library are loaded in and registered by calling the ShaderGenerator::registerTypeDefs method. The TypeSystem class, see below, is used to manage all type descriptions. It can be used to query the registered types.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
@@ -5188,22 +5129,24 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
     - `getName`: getName(self: MaterialX.PyMaterialXGenShader.TypeDesc) -> str
         
-        Return the ColorManagementSystem name.
+        Return the name of the type.
 
 
     - `getBaseType`: getBaseType(self: MaterialX.PyMaterialXGenShader.TypeDesc) -> int
         
-        Return the base type of the image.
+        Return the basetype for the type.
 
 
     - `getSemantic`: getSemantic(self: MaterialX.PyMaterialXGenShader.TypeDesc) -> int
         
-        Return the variable semantic of this port.
+        Return the semantic for the type.
 
 
     - `getSize`: getSize(self: MaterialX.PyMaterialXGenShader.TypeDesc) -> int
         
-        Get the number of elements.
+        Return the number of elements the type is composed of.
+        
+        Will return 1 for scalar types and a size greater than 1 for aggregate type. For array types 0 is returned since the number of elements is undefined until an array is instantiated.
 
 
     - `isScalar`: isScalar(self: MaterialX.PyMaterialXGenShader.TypeDesc) -> bool
@@ -5243,28 +5186,30 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 <a id='materialx-pymaterialxgenshader-unitsystem'></a>
 
-- **UnitSystem**: 
+- **UnitSystem**: Base unit system support.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
   - Methods:
 
     - `create`: create(arg0: str) -> MaterialX.PyMaterialXGenShader.UnitSystem
+        
+        Create a new UnitSystem.
 
 
     - `getName`: getName(self: MaterialX.PyMaterialXGenShader.UnitSystem) -> str
         
-        Return the ColorManagementSystem name.
+        Return the UnitSystem name.
 
 
     - `loadLibrary`: loadLibrary(self: MaterialX.PyMaterialXGenShader.UnitSystem, arg0: MaterialX.PyMaterialXCore.Document) -> None
         
-        Load a library of implementations from the provided document, replacing any previously loaded content.
+        assign document with unit implementations replacing any previously loaded content.
 
 
     - `supportsTransform`: supportsTransform(self: MaterialX.PyMaterialXGenShader.UnitSystem, arg0: MaterialX.PyMaterialXGenShader.UnitTransform) -> bool
         
-        Returns whether this color management system supports a provided transform.
+        Returns whether this unit system supports a provided transform.
 
 
     - `setUnitConverterRegistry`: setUnitConverterRegistry(self: MaterialX.PyMaterialXGenShader.UnitSystem, arg0: MaterialX.PyMaterialXCore.UnitConverterRegistry) -> None
@@ -5279,7 +5224,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 <a id='materialx-pymaterialxgenshader-unittransform'></a>
 
-- **UnitTransform**: 
+- **UnitTransform**: Structure that represents unit transform information.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
@@ -5287,7 +5232,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 <a id='materialx-pymaterialxgenshader-variableblock'></a>
 
-- **VariableBlock**: 
+- **VariableBlock**: A block of variables in a shader stage.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
@@ -5295,7 +5240,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
     - `getName`: getName(self: MaterialX.PyMaterialXGenShader.VariableBlock) -> str
         
-        Return the ColorManagementSystem name.
+        Get the name of this block.
 
 
     - `getInstance`: getInstance(self: MaterialX.PyMaterialXGenShader.VariableBlock) -> str
@@ -5310,7 +5255,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
     - `size`: size(self: MaterialX.PyMaterialXGenShader.VariableBlock) -> int
         
-        Return the number of strings in the path.
+        Return the number of variables in this block.
 
 
     - `find`: find(*args, **kwargs)
@@ -5318,15 +5263,7 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
         
         1. find(self: MaterialX.PyMaterialXGenShader.VariableBlock, arg0: str) -> MaterialX.PyMaterialXGenShader.ShaderPort
         
-        Given an input filename, iterate through each path in this sequence, returning the first combined path found on the file system.
-        
-        On success, the combined path is returned; otherwise the original filename is returned unmodified.
-        
-        2. find(self: MaterialX.PyMaterialXGenShader.VariableBlock, arg0: Callable[[MaterialX.PyMaterialXGenShader.ShaderPort], bool]) -> MaterialX.PyMaterialXGenShader.ShaderPort
-        
-        Given an input filename, iterate through each path in this sequence, returning the first combined path found on the file system.
-        
-        On success, the combined path is returned; otherwise the original filename is returned unmodified.
+        2. find(self: MaterialX.PyMaterialXGenShader.VariableBlock, arg0: collections.abc.Callable[[MaterialX.PyMaterialXGenShader.ShaderPort], bool]) -> MaterialX.PyMaterialXGenShader.ShaderPort
 
 
 
@@ -5334,7 +5271,17 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 - `connectsToWorldSpaceNode`: connectsToWorldSpaceNode(arg0: MaterialX.PyMaterialXCore.Output) -> MaterialX.PyMaterialXCore.Node
 
+Determine whether the given output is directly connected to a node that generates world-space coordinates (e.g.
+
+Args:
+    output: Output to check
+
+Returns:
+    Return the node if found.
+
 - `elementRequiresShading`: elementRequiresShading(arg0: MaterialX.PyMaterialXCore.TypedElement) -> bool
+
+Determine if a given element requires shading / lighting for rendering.
 
 - `findRenderableElements`: findRenderableElements(doc: MaterialX.PyMaterialXCore.Document, includeReferencedGraphs: bool = False) -> list[MaterialX.PyMaterialXCore.TypedElement]
 
@@ -5342,24 +5289,92 @@ OSL_INPUTS, OSL_OUTPUTS, OSL_UNIFORMS
 
 - `getNodeDefInput`: getNodeDefInput(arg0: MaterialX.PyMaterialXCore.Input, arg1: str) -> MaterialX.PyMaterialXCore.Input
 
-- `getUdimCoordinates`: getUdimCoordinates(arg0: list[str]) -> list[MaterialX.PyMaterialXCore.Vector2]
+Given a node input, return the corresponding input within its matching nodedef.
 
-- `getUdimScaleAndOffset`: getUdimScaleAndOffset(arg0: list[MaterialX.PyMaterialXCore.Vector2], arg1: MaterialX.PyMaterialXCore.Vector2, arg2: MaterialX.PyMaterialXCore.Vector2) -> None
+The optional target string can be used to guide the selection of nodedef declarations.
 
-- `hasElementAttributes`: hasElementAttributes(arg0: MaterialX.PyMaterialXCore.Output, arg1: list[str]) -> bool
+- `getUdimCoordinates`: getUdimCoordinates(arg0: collections.abc.Sequence[str]) -> list[MaterialX.PyMaterialXCore.Vector2]
+
+Compute the UDIM coordinates for a set of UDIM identifiers.
+
+Returns:
+    List of UDIM coordinates
+
+- `getUdimScaleAndOffset`: getUdimScaleAndOffset(arg0: collections.abc.Sequence[MaterialX.PyMaterialXCore.Vector2], arg1: MaterialX.PyMaterialXCore.Vector2, arg2: MaterialX.PyMaterialXCore.Vector2) -> None
+
+Get the UV scale and offset to transform uv coordinates from UDIM uv space to 0..1 space.
+
+- `hasElementAttributes`: hasElementAttributes(arg0: MaterialX.PyMaterialXCore.Output, arg1: collections.abc.Sequence[str]) -> bool
+
+Returns true if there is are any value elements with a given set of attributes either on the starting node or any graph upsstream of that node.
+
+Args:
+    output: Starting node
+    attributes: Attributes to test for
 
 - `isTransparentSurface`: isTransparentSurface(arg0: MaterialX.PyMaterialXCore.Element, arg1: str) -> bool
 
+Returns true if the given element is a surface shader with the potential of being transparent.
+
+This can be used by HW shader generators to determine if a shader will require transparency handling.
+
+Note: This function will check some common cases for how a surface shader can be transparent. It is not covering all possible cases for how transparency can be done and target applications might need to do additional checks to track transparency correctly. For example, custom surface shader nodes implemented in source code will not be tracked by this function and transparency for such nodes must be tracked separately by the target application.
+
 - `mapValueToColor`: mapValueToColor(arg0: MaterialX.PyMaterialXCore.Value, arg1: MaterialX.PyMaterialXCore.Color4) -> None
+
+Maps a value to a four channel color if it is of the appropriate type.
+
+Supported types include float, Vector2, Vector3, Vector4, and Color4. If not mapping is possible the color value is set to opaque black.
 
 - `requiresImplementation`: requiresImplementation(arg0: MaterialX.PyMaterialXCore.NodeDef) -> bool
 
-- `tokenSubstitution`: tokenSubstitution(arg0: dict[str, str], arg1: str) -> None
+Return whether a nodedef requires an implementation.
+
+- `tokenSubstitution`: tokenSubstitution(arg0: collections.abc.Mapping[str, str], arg1: str) -> None
+
+Perform token substitutions on the given source string, using the given substitution map.
+
+Tokens are required to start with '$' and can only consist of alphanumeric characters. The full token name, including '$' and all following alphanumeric character, will be replaced by the corresponding string in the substitution map, if the token exists in the map.
 
 
 ### Globals
 
 HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PUBLIC_UNIFORMS, HW_VERTEX_DATA, HW_VERTEX_INPUTS, PIXEL_STAGE, SHADER_INTERFACE_COMPLETE, SHADER_INTERFACE_REDUCED, SPECULAR_ENVIRONMENT_FIS, SPECULAR_ENVIRONMENT_NONE, SPECULAR_ENVIRONMENT_PREFILTER, VERTEX_STAGE
+
+
+
+---
+
+## Module: MaterialX.PyMaterialXGenSlang
+
+### Classes
+
+<a id='materialx-pymaterialxgenslang-slangshadergenerator'></a>
+
+- **SlangShaderGenerator**: Base class for Slang code generation.
+
+A generator for a specific Slang target should be derived from this class.
+
+  - Inherits from: [HwShaderGenerator](#materialx-pymaterialxgenslang-hwshadergenerator), [ShaderGenerator](#materialx-pymaterialxgenslang-shadergenerator), [pybind11_object](#materialx-pymaterialxgenslang-pybind11_object)
+
+  - Methods:
+
+    - `create`: create() -> MaterialX.PyMaterialXGenShader.ShaderGenerator
+
+
+    - `generate`: generate(self: MaterialX.PyMaterialXGenSlang.SlangShaderGenerator, arg0: str, arg1: MaterialX.PyMaterialXCore.Element, arg2: MaterialX.PyMaterialXGenShader.GenContext) -> MaterialX.PyMaterialXGenShader.Shader
+        
+        Generate a shader starting from the given element, translating the element and all dependencies upstream into shader code.
+
+
+    - `getTarget`: getTarget(self: MaterialX.PyMaterialXGenSlang.SlangShaderGenerator) -> str
+        
+        Return a unique identifier for the target this generator is for.
+
+
+    - `getVersion`: getVersion(self: MaterialX.PyMaterialXGenSlang.SlangShaderGenerator) -> str
+        
+        Return the version string for the Slang version this generator is for.
 
 
 
@@ -5375,7 +5390,11 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
   UINT8
 
+  INT8
+
   UINT16
+
+  INT16
 
   HALF
 
@@ -5383,17 +5402,19 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
-  - Attributes: name, value, UINT8, UINT16, HALF, FLOAT
+  - Attributes: name, value, UINT8, INT8, UINT16, INT16, HALF, FLOAT
 
 <a id='materialx-pymaterialxrender-camera'></a>
 
-- **Camera**: 
+- **Camera**: A simple camera class, supporting transform matrices and arcball functionality for object-viewing applications.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
     - `create`: create() -> MaterialX.PyMaterialXRender.Camera
+        
+        Create a new camera.
 
 
     - `setWorldMatrix`: setWorldMatrix(self: MaterialX.PyMaterialXRender.Camera, arg0: MaterialX.PyMaterialXCore.Matrix44) -> None
@@ -5462,29 +5483,39 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
 
     - `createViewMatrix`: createViewMatrix(arg0: MaterialX.PyMaterialXCore.Vector3, arg1: MaterialX.PyMaterialXCore.Vector3, arg2: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Matrix44
+        
+        Create a view matrix given an eye position, a target position and an up vector.
 
 
-    - `createPerspectiveMatrix`: createPerspectiveMatrix(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float) -> MaterialX.PyMaterialXCore.Matrix44
+    - `createPerspectiveMatrix`: createPerspectiveMatrix(arg0: typing.SupportsFloat, arg1: typing.SupportsFloat, arg2: typing.SupportsFloat, arg3: typing.SupportsFloat, arg4: typing.SupportsFloat, arg5: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix44
+        
+        Create a perspective projection matrix given a set of clip planes with [-1,1] projected Z.
 
 
-    - `createOrthographicMatrix`: createOrthographicMatrix(arg0: float, arg1: float, arg2: float, arg3: float, arg4: float, arg5: float) -> MaterialX.PyMaterialXCore.Matrix44
+    - `createOrthographicMatrix`: createOrthographicMatrix(arg0: typing.SupportsFloat, arg1: typing.SupportsFloat, arg2: typing.SupportsFloat, arg3: typing.SupportsFloat, arg4: typing.SupportsFloat, arg5: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix44
+        
+        Create an orthographic projection matrix given a set of clip planes with [-1,1] projected Z.
 
 
     - `transformPointPerspective`: transformPointPerspective(arg0: MaterialX.PyMaterialXCore.Matrix44, arg1: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
+        
+        Apply a perspective transform to the given 3D point, performing a homogeneous divide on the transformed result.
 
 
 <a id='materialx-pymaterialxrender-cgltfloader'></a>
 
-- **CgltfLoader**: 
+- **CgltfLoader**: Wrapper for loader to read in GLTF files using the Cgltf library.
 
   - Inherits from: [GeometryLoader](#materialx-pymaterialxrender-geometryloader), [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
     - `create`: create() -> MaterialX.PyMaterialXRender.CgltfLoader
+        
+        Create a new loader.
 
 
-    - `load`: load(self: MaterialX.PyMaterialXRender.CgltfLoader, arg0: MaterialX.PyMaterialXFormat.FilePath, arg1: list[MaterialX.PyMaterialXRender.Mesh], arg2: bool) -> bool
+    - `load`: load(self: MaterialX.PyMaterialXRender.CgltfLoader, arg0: MaterialX.PyMaterialXFormat.FilePath, arg1: collections.abc.Sequence[MaterialX.PyMaterialXRender.Mesh], arg2: bool) -> bool
         
         Load geometry from file path.
 
@@ -5497,13 +5528,17 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
 <a id='materialx-pymaterialxrender-geometryhandler'></a>
 
-- **GeometryHandler**: 
+- **GeometryHandler**: Class which holds a set of geometry loaders.
+
+Each loader is associated with a given set of file extensions.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
     - `create`: create() -> MaterialX.PyMaterialXRender.GeometryHandler
+        
+        Create a new geometry handler.
 
 
     - `addLoader`: addLoader(self: MaterialX.PyMaterialXRender.GeometryHandler, arg0: MaterialX.PyMaterialXRender.GeometryLoader) -> None
@@ -5522,7 +5557,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
     - `hasGeometry`: hasGeometry(self: MaterialX.PyMaterialXRender.GeometryHandler, arg0: str) -> bool
 
 
-    - `getGeometry`: getGeometry(self: MaterialX.PyMaterialXRender.GeometryHandler, arg0: list[MaterialX.PyMaterialXRender.Mesh], arg1: str) -> None
+    - `getGeometry`: getGeometry(self: MaterialX.PyMaterialXRender.GeometryHandler, arg0: collections.abc.Sequence[MaterialX.PyMaterialXRender.Mesh], arg1: str) -> None
 
 
     - `loadGeometry`: loadGeometry(self: MaterialX.PyMaterialXRender.GeometryHandler, arg0: MaterialX.PyMaterialXFormat.FilePath, arg1: bool) -> bool
@@ -5558,7 +5593,9 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
 <a id='materialx-pymaterialxrender-geometryloader'></a>
 
-- **GeometryLoader**: 
+- **GeometryLoader**: Base class representing a geometry loader.
+
+A loader can be associated with one or more file extensions.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
@@ -5566,33 +5603,46 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
     - `supportedExtensions`: supportedExtensions(self: MaterialX.PyMaterialXRender.GeometryLoader) -> set[str]
         
-        Get a list of extensions supported by the handler.
-
-
-    - `load`: load(self: MaterialX.PyMaterialXRender.GeometryLoader, arg0: MaterialX.PyMaterialXFormat.FilePath, arg1: list[MaterialX.PyMaterialXRender.Mesh], arg2: bool) -> bool
+        Returns a list of supported extensions.
         
-        Load geometry from file path.
+        Returns:
+            List of support extensions
+
+
+    - `load`: load(self: MaterialX.PyMaterialXRender.GeometryLoader, arg0: MaterialX.PyMaterialXFormat.FilePath, arg1: collections.abc.Sequence[MaterialX.PyMaterialXRender.Mesh], arg2: bool) -> bool
+        
+        Load geometry from disk.
+        
+        Args:
+            filePath: Path to file to load
+            meshList: List of meshes to update
+            texcoordVerticalFlip: Flip texture coordinates in V when loading
+        
+        Returns:
+            True if load was successful
 
 
 <a id='materialx-pymaterialxrender-image'></a>
 
-- **Image**: 
+- **Image**: Class representing an image in system memory.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
-    - `create`: create(arg0: int, arg1: int, arg2: int, arg3: MaterialX.PyMaterialXRender.BaseType) -> MaterialX.PyMaterialXRender.Image
+    - `create`: create(arg0: typing.SupportsInt, arg1: typing.SupportsInt, arg2: typing.SupportsInt, arg3: MaterialX.PyMaterialXRender.BaseType) -> MaterialX.PyMaterialXRender.Image
+        
+        Create an empty image with the given properties.
 
 
     - `getWidth`: getWidth(self: MaterialX.PyMaterialXRender.Image) -> int
         
-        Return the width attribute of the backdrop.
+        Return the width of the image.
 
 
     - `getHeight`: getHeight(self: MaterialX.PyMaterialXRender.Image) -> int
         
-        Return the height attribute of the backdrop.
+        Return the height of the image.
 
 
     - `getChannelCount`: getChannelCount(self: MaterialX.PyMaterialXRender.Image) -> int
@@ -5615,14 +5665,14 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Return the maximum number of mipmaps for this image.
 
 
-    - `setTexelColor`: setTexelColor(self: MaterialX.PyMaterialXRender.Image, arg0: int, arg1: int, arg2: MaterialX.PyMaterialXCore.Color4) -> None
+    - `setTexelColor`: setTexelColor(self: MaterialX.PyMaterialXRender.Image, arg0: typing.SupportsInt, arg1: typing.SupportsInt, arg2: MaterialX.PyMaterialXCore.Color4) -> None
         
         Set the texel color at the given coordinates.
         
         If the coordinates or image resource buffer are invalid, then an exception is thrown.
 
 
-    - `getTexelColor`: getTexelColor(self: MaterialX.PyMaterialXRender.Image, arg0: int, arg1: int) -> MaterialX.PyMaterialXCore.Color4
+    - `getTexelColor`: getTexelColor(self: MaterialX.PyMaterialXRender.Image, arg0: typing.SupportsInt, arg1: typing.SupportsInt) -> MaterialX.PyMaterialXCore.Color4
         
         Return the texel color at the given coordinates.
         
@@ -5647,14 +5697,14 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Apply the given matrix transform to all texels of this image.
 
 
-    - `applyGammaTransform`: applyGammaTransform(self: MaterialX.PyMaterialXRender.Image, arg0: float) -> None
+    - `applyGammaTransform`: applyGammaTransform(self: MaterialX.PyMaterialXRender.Image, arg0: typing.SupportsFloat) -> None
         
         Apply the given gamma transform to all texels of this image.
 
 
-    - `copy`: copy(self: MaterialX.PyMaterialXRender.Image, arg0: int, arg1: MaterialX.PyMaterialXRender.BaseType) -> MaterialX.PyMaterialXRender.Image
+    - `copy`: copy(self: MaterialX.PyMaterialXRender.Image, arg0: typing.SupportsInt, arg1: MaterialX.PyMaterialXRender.BaseType) -> MaterialX.PyMaterialXRender.Image
         
-        Create a deep copy of the value.
+        Create a copy of this image with the given channel count and base type.
 
 
     - `applyBoxBlur`: applyBoxBlur(self: MaterialX.PyMaterialXRender.Image) -> MaterialX.PyMaterialXRender.Image
@@ -5667,22 +5717,22 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Apply a 7x7 Gaussian blur to this image, returning a new blurred image.
 
 
-    - `applyBoxDownsample`: applyBoxDownsample(self: MaterialX.PyMaterialXRender.Image, arg0: int) -> MaterialX.PyMaterialXRender.Image
+    - `applyBoxDownsample`: applyBoxDownsample(self: MaterialX.PyMaterialXRender.Image, arg0: typing.SupportsInt) -> MaterialX.PyMaterialXRender.Image
         
         Downsample this image by an integer factor using a box filter, returning the new reduced image.
 
 
-    - `splitByLuminance`: splitByLuminance(self: MaterialX.PyMaterialXRender.Image, arg0: float) -> tuple[MaterialX.PyMaterialXRender.Image, MaterialX.PyMaterialXRender.Image]
+    - `splitByLuminance`: splitByLuminance(self: MaterialX.PyMaterialXRender.Image, arg0: typing.SupportsFloat) -> tuple[MaterialX.PyMaterialXRender.Image, MaterialX.PyMaterialXRender.Image]
         
         Split this image by the given luminance threshold, returning the resulting underflow and overflow images.
 
 
-    - `setResourceBuffer`: setResourceBuffer(self: MaterialX.PyMaterialXRender.Image, arg0: capsule) -> None
+    - `setResourceBuffer`: setResourceBuffer(self: MaterialX.PyMaterialXRender.Image, arg0: typing_extensions.CapsuleType) -> None
         
         Set the resource buffer for this image.
 
 
-    - `getResourceBuffer`: getResourceBuffer(self: MaterialX.PyMaterialXRender.Image) -> capsule
+    - `getResourceBuffer`: getResourceBuffer(self: MaterialX.PyMaterialXRender.Image) -> int
         
         Return the resource buffer for this image.
 
@@ -5697,12 +5747,12 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Release the resource buffer for this image.
 
 
-    - `setResourceBufferDeallocator`: setResourceBufferDeallocator(self: MaterialX.PyMaterialXRender.Image, arg0: Callable[[capsule], None]) -> None
+    - `setResourceBufferDeallocator`: setResourceBufferDeallocator(self: MaterialX.PyMaterialXRender.Image, arg0: collections.abc.Callable[[typing_extensions.CapsuleType], None]) -> None
         
         Set the resource buffer deallocator for this image.
 
 
-    - `getResourceBufferDeallocator`: getResourceBufferDeallocator(self: MaterialX.PyMaterialXRender.Image) -> Callable[[capsule], None]
+    - `getResourceBufferDeallocator`: getResourceBufferDeallocator(self: MaterialX.PyMaterialXRender.Image) -> collections.abc.Callable[[typing_extensions.CapsuleType], None]
         
         Return the resource buffer deallocator for this image.
 
@@ -5715,7 +5765,9 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
 <a id='materialx-pymaterialxrender-imagehandler'></a>
 
-- **ImageHandler**: 
+- **ImageHandler**: Base image handler class.
+
+Keeps track of images which are loaded from disk via supplied ImageLoader. Derived classes are responsible for determining how to perform the logic for "binding" of these resources for a given target (such as a given shading language).
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
@@ -5726,10 +5778,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
     - `addLoader`: addLoader(self: MaterialX.PyMaterialXRender.ImageHandler, arg0: MaterialX.PyMaterialXRender.ImageLoader) -> None
         
-        Add a geometry loader.
-        
-        Args:
-            loader: Loader to add to list of available loaders.
+        Add another image loader to the handler, which will be invoked if existing loaders cannot load a given image.
 
 
     - `saveImage`: saveImage(self: MaterialX.PyMaterialXRender.ImageHandler, filePath: MaterialX.PyMaterialXFormat.FilePath, image: MaterialX.PyMaterialXRender.Image, verticalFlip: bool = False) -> bool
@@ -5745,7 +5794,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
             if save succeeded
 
 
-    - `acquireImage`: acquireImage(self: MaterialX.PyMaterialXRender.ImageHandler, filePath: MaterialX.PyMaterialXFormat.FilePath, defaultColor: MaterialX.PyMaterialXCore.Color4 = <MaterialX.PyMaterialXCore.Color4 object at 0x0000026BC6931B70>) -> MaterialX.PyMaterialXRender.Image
+    - `acquireImage`: acquireImage(self: MaterialX.PyMaterialXRender.ImageHandler, filePath: MaterialX.PyMaterialXFormat.FilePath, defaultColor: MaterialX.PyMaterialXCore.Color4 = <MaterialX.PyMaterialXCore.Color4 object at 0x102d2b2f0>) -> MaterialX.PyMaterialXRender.Image
         
         Acquire an image from the cache or file system.
         
@@ -5759,17 +5808,24 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
     - `bindImage`: bindImage(self: MaterialX.PyMaterialXRender.ImageHandler, arg0: MaterialX.PyMaterialXRender.Image, arg1: MaterialX.PyMaterialXRender.ImageSamplingProperties) -> bool
         
-        Bind a single image.
+        Bind an image for rendering.
+        
+        Args:
+            image: The image to bind.
+            samplingProperties: Sampling properties for the image.
 
 
     - `unbindImage`: unbindImage(self: MaterialX.PyMaterialXRender.ImageHandler, arg0: MaterialX.PyMaterialXRender.Image) -> bool
         
-        Unbind an image.
+        Unbind an image, making it no longer active for rendering.
+        
+        Args:
+            image: The image to unbind.
 
 
     - `unbindImages`: unbindImages(self: MaterialX.PyMaterialXRender.ImageHandler) -> None
         
-        Unbbind all images for this material.
+        Unbind all images that are currently stored in the cache.
 
 
     - `setSearchPath`: setSearchPath(self: MaterialX.PyMaterialXRender.ImageHandler, arg0: MaterialX.PyMaterialXFormat.FileSearchPath) -> None
@@ -5819,7 +5875,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
 <a id='materialx-pymaterialxrender-imageloader'></a>
 
-- **ImageLoader**: 
+- **ImageLoader**: Abstract base class for file-system image loaders.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
@@ -5827,12 +5883,15 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
     - `supportedExtensions`: supportedExtensions(self: MaterialX.PyMaterialXRender.ImageLoader) -> set[str]
         
-        Get a list of extensions supported by the handler.
+        Returns a list of supported extensions.
+        
+        Returns:
+            List of support extensions
 
 
     - `saveImage`: saveImage(self: MaterialX.PyMaterialXRender.ImageLoader, arg0: MaterialX.PyMaterialXFormat.FilePath, arg1: MaterialX.PyMaterialXRender.Image, arg2: bool) -> bool
         
-        Save image to disk.
+        Save an image to the file system.
         
         Args:
             filePath: File path to be written
@@ -5844,13 +5903,21 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
 
     - `loadImage`: loadImage(self: MaterialX.PyMaterialXRender.ImageLoader, arg0: MaterialX.PyMaterialXFormat.FilePath) -> MaterialX.PyMaterialXRender.Image
+        
+        Load an image from the file system.
+        
+        Args:
+            filePath: The requested image file path.
+        
+        Returns:
+            On success, a shared pointer to the loaded image; otherwise an empty shared pointer.
 
 
   - Attributes: BMP_EXTENSION, EXR_EXTENSION, GIF_EXTENSION, HDR_EXTENSION, JPG_EXTENSION, JPEG_EXTENSION, PIC_EXTENSION, PNG_EXTENSION, PSD_EXTENSION, TGA_EXTENSION, TIF_EXTENSION, TIFF_EXTENSION, TXT_EXTENSION
 
 <a id='materialx-pymaterialxrender-imagesamplingproperties'></a>
 
-- **ImageSamplingProperties**: 
+- **ImageSamplingProperties**: Interface to describe sampling properties for images.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
@@ -5858,13 +5925,15 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
 <a id='materialx-pymaterialxrender-lighthandler'></a>
 
-- **LightHandler**: 
+- **LightHandler**: Utility light handler for creating and providing light data for shader binding.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
     - `create`: create() -> MaterialX.PyMaterialXRender.LightHandler
+        
+        Create a new light handler.
 
 
     - `setLightTransform`: setLightTransform(self: MaterialX.PyMaterialXRender.LightHandler, arg0: MaterialX.PyMaterialXCore.Matrix44) -> None
@@ -5927,7 +5996,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Return the directional albedo table.
 
 
-    - `setEnvSampleCount`: setEnvSampleCount(self: MaterialX.PyMaterialXRender.LightHandler, arg0: int) -> None
+    - `setEnvSampleCount`: setEnvSampleCount(self: MaterialX.PyMaterialXRender.LightHandler, arg0: typing.SupportsInt) -> None
         
         Set the environment lighting sample count.
 
@@ -5952,7 +6021,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Add a light source.
 
 
-    - `setLightSources`: setLightSources(self: MaterialX.PyMaterialXRender.LightHandler, arg0: list[MaterialX.PyMaterialXCore.Node]) -> None
+    - `setLightSources`: setLightSources(self: MaterialX.PyMaterialXRender.LightHandler, arg0: collections.abc.Sequence[MaterialX.PyMaterialXCore.Node]) -> None
         
         Set the vector of light sources.
 
@@ -5972,12 +6041,12 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Get a list of identifiers associated with a given light nodedef.
 
 
-    - `computeLightIdMap`: computeLightIdMap(self: MaterialX.PyMaterialXRender.LightHandler, arg0: list[MaterialX.PyMaterialXCore.Node]) -> dict[str, int]
+    - `computeLightIdMap`: computeLightIdMap(self: MaterialX.PyMaterialXRender.LightHandler, arg0: collections.abc.Sequence[MaterialX.PyMaterialXCore.Node]) -> dict[str, int]
         
         From a set of nodes, create a mapping of corresponding nodedef identifiers to numbers.
 
 
-    - `findLights`: findLights(self: MaterialX.PyMaterialXRender.LightHandler, arg0: MaterialX.PyMaterialXCore.Document, arg1: list[MaterialX.PyMaterialXCore.Node]) -> None
+    - `findLights`: findLights(self: MaterialX.PyMaterialXRender.LightHandler, arg0: MaterialX.PyMaterialXCore.Document, arg1: collections.abc.Sequence[MaterialX.PyMaterialXCore.Node]) -> None
         
         Find lights to use based on an input document.
         
@@ -5986,7 +6055,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
             lights: List of lights found in document
 
 
-    - `registerLights`: registerLights(self: MaterialX.PyMaterialXRender.LightHandler, arg0: MaterialX.PyMaterialXCore.Document, arg1: list[MaterialX.PyMaterialXCore.Node], arg2: MaterialX.PyMaterialXGenShader.GenContext) -> None
+    - `registerLights`: registerLights(self: MaterialX.PyMaterialXRender.LightHandler, arg0: MaterialX.PyMaterialXCore.Document, arg1: collections.abc.Sequence[MaterialX.PyMaterialXCore.Node], arg2: MaterialX.PyMaterialXGenShader.GenContext) -> None
         
         Register light node definitions and light count with a given generation context.
         
@@ -5998,36 +6067,35 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
 <a id='materialx-pymaterialxrender-mesh'></a>
 
-- **Mesh**: 
+- **Mesh**: Container for mesh data.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
     - `create`: create(arg0: str) -> MaterialX.PyMaterialXRender.Mesh
+        
+        Create a new mesh.
 
 
     - `getName`: getName(self: MaterialX.PyMaterialXRender.Mesh) -> str
         
-        Return the ColorManagementSystem name.
+        Return the name of this mesh.
 
 
     - `setSourceUri`: setSourceUri(self: MaterialX.PyMaterialXRender.Mesh, arg0: str) -> None
         
-        Set the element's source URI.
-        
-        Args:
-            sourceUri: A URI string representing the resource from which this element originates. This string may be used by serialization and deserialization routines to maintain hierarchies of include references.
+        Set the mesh's source URI.
 
 
     - `hasSourceUri`: hasSourceUri(self: MaterialX.PyMaterialXRender.Mesh) -> bool
         
-        Return true if this element has a source URI.
+        Return true if this mesh has a source URI.
 
 
     - `getSourceUri`: getSourceUri(self: MaterialX.PyMaterialXRender.Mesh) -> str
         
-        Return the element's source URI.
+        Return the mesh's source URI.
 
 
     - `getStream`: getStream(*args, **kwargs)
@@ -6035,25 +6103,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         
         1. getStream(self: MaterialX.PyMaterialXRender.Mesh, arg0: str) -> MaterialX.PyMaterialXRender.MeshStream
         
-        Get a mesh stream by type and index.
-        
-        Args:
-            type: Type of stream
-            index: Index of stream
-        
-        Returns:
-            Reference to a mesh stream if found
-        
-        2. getStream(self: MaterialX.PyMaterialXRender.Mesh, arg0: str, arg1: int) -> MaterialX.PyMaterialXRender.MeshStream
-        
-        Get a mesh stream by type and index.
-        
-        Args:
-            type: Type of stream
-            index: Index of stream
-        
-        Returns:
-            Reference to a mesh stream if found
+        2. getStream(self: MaterialX.PyMaterialXRender.Mesh, arg0: str, arg1: typing.SupportsInt) -> MaterialX.PyMaterialXRender.MeshStream
 
 
     - `addStream`: addStream(self: MaterialX.PyMaterialXRender.Mesh, arg0: MaterialX.PyMaterialXRender.MeshStream) -> None
@@ -6061,7 +6111,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Add a mesh stream.
 
 
-    - `setVertexCount`: setVertexCount(self: MaterialX.PyMaterialXRender.Mesh, arg0: int) -> None
+    - `setVertexCount`: setVertexCount(self: MaterialX.PyMaterialXRender.Mesh, arg0: typing.SupportsInt) -> None
         
         Set vertex count.
 
@@ -6078,7 +6128,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
     - `getMinimumBounds`: getMinimumBounds(self: MaterialX.PyMaterialXRender.Mesh) -> MaterialX.PyMaterialXCore.Vector3
         
-        Return the minimum bounds for all meshes.
+        Return the minimum bounds for the geometry.
 
 
     - `setMaximumBounds`: setMaximumBounds(self: MaterialX.PyMaterialXRender.Mesh, arg0: MaterialX.PyMaterialXCore.Vector3) -> None
@@ -6088,7 +6138,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
     - `getMaximumBounds`: getMaximumBounds(self: MaterialX.PyMaterialXRender.Mesh) -> MaterialX.PyMaterialXCore.Vector3
         
-        Return the minimum bounds for all meshes.
+        Return the minimum bounds for the geometry.
 
 
     - `setSphereCenter`: setSphereCenter(self: MaterialX.PyMaterialXRender.Mesh, arg0: MaterialX.PyMaterialXCore.Vector3) -> None
@@ -6101,7 +6151,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Return center of the bounding sphere.
 
 
-    - `setSphereRadius`: setSphereRadius(self: MaterialX.PyMaterialXRender.Mesh, arg0: float) -> None
+    - `setSphereRadius`: setSphereRadius(self: MaterialX.PyMaterialXRender.Mesh, arg0: typing.SupportsFloat) -> None
         
         Set radius of the bounding sphere.
 
@@ -6121,7 +6171,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Add a partition.
 
 
-    - `getPartition`: getPartition(self: MaterialX.PyMaterialXRender.Mesh, arg0: int) -> MaterialX.PyMaterialXRender.MeshPartition
+    - `getPartition`: getPartition(self: MaterialX.PyMaterialXRender.Mesh, arg0: typing.SupportsInt) -> MaterialX.PyMaterialXRender.MeshPartition
         
         Return a reference to a mesh partition.
 
@@ -6185,28 +6235,32 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
 <a id='materialx-pymaterialxrender-meshpartition'></a>
 
-- **MeshPartition**: 
+- **MeshPartition**: Class that describes a sub-region of a mesh using vertex indexing.
+
+Note that a face is considered to be a triangle.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
     - `create`: create() -> MaterialX.PyMaterialXRender.MeshPartition
+        
+        Create a new mesh partition.
 
 
-    - `resize`: resize(self: MaterialX.PyMaterialXRender.MeshPartition, arg0: int) -> None
+    - `resize`: resize(self: MaterialX.PyMaterialXRender.MeshPartition, arg0: typing.SupportsInt) -> None
         
         Resize data to the given number of indices.
 
 
     - `setName`: setName(self: MaterialX.PyMaterialXRender.MeshPartition, arg0: str) -> None
         
-        Set the element's name string.
+        Set the name of this partition.
 
 
     - `getName`: getName(self: MaterialX.PyMaterialXRender.MeshPartition) -> str
         
-        Return the ColorManagementSystem name.
+        Return the name of this partition.
 
 
     - `addSourceName`: addSourceName(self: MaterialX.PyMaterialXRender.MeshPartition, arg0: str) -> None
@@ -6220,8 +6274,6 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
 
     - `getIndices`: getIndices(self: MaterialX.PyMaterialXRender.MeshPartition) -> list[int]
-        
-        Return indexing.
 
 
     - `getFaceCount`: getFaceCount(self: MaterialX.PyMaterialXRender.MeshPartition) -> int
@@ -6229,35 +6281,37 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Return number of faces.
 
 
-    - `setFaceCount`: setFaceCount(self: MaterialX.PyMaterialXRender.MeshPartition, arg0: int) -> None
+    - `setFaceCount`: setFaceCount(self: MaterialX.PyMaterialXRender.MeshPartition, arg0: typing.SupportsInt) -> None
         
         Set face count.
 
 
 <a id='materialx-pymaterialxrender-meshstream'></a>
 
-- **MeshStream**: 
+- **MeshStream**: Class to represent a mesh data stream.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
-    - `create`: create(arg0: str, arg1: str, arg2: int) -> MaterialX.PyMaterialXRender.MeshStream
+    - `create`: create(arg0: str, arg1: str, arg2: typing.SupportsInt) -> MaterialX.PyMaterialXRender.MeshStream
+        
+        Create a new mesh stream.
 
 
-    - `reserve`: reserve(self: MaterialX.PyMaterialXRender.MeshStream, arg0: int) -> None
+    - `reserve`: reserve(self: MaterialX.PyMaterialXRender.MeshStream, arg0: typing.SupportsInt) -> None
         
         Reserve memory for a given number of elements.
 
 
-    - `resize`: resize(self: MaterialX.PyMaterialXRender.MeshStream, arg0: int) -> None
+    - `resize`: resize(self: MaterialX.PyMaterialXRender.MeshStream, arg0: typing.SupportsInt) -> None
         
-        Resize data to the given number of indices.
+        Resize data to an given number of elements.
 
 
     - `getName`: getName(self: MaterialX.PyMaterialXRender.MeshStream) -> str
         
-        Return the ColorManagementSystem name.
+        Get stream name.
 
 
     - `getType`: getType(self: MaterialX.PyMaterialXRender.MeshStream) -> str
@@ -6267,12 +6321,10 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
     - `getIndex`: getIndex(self: MaterialX.PyMaterialXRender.MeshStream) -> int
         
-        Return the index string of this element.
+        Get stream index.
 
 
     - `getData`: getData(self: MaterialX.PyMaterialXRender.MeshStream) -> list[float]
-        
-        Return the raw float vector.
 
 
     - `getStride`: getStride(self: MaterialX.PyMaterialXRender.MeshStream) -> int
@@ -6280,7 +6332,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Get stride between elements.
 
 
-    - `setStride`: setStride(self: MaterialX.PyMaterialXRender.MeshStream, arg0: int) -> None
+    - `setStride`: setStride(self: MaterialX.PyMaterialXRender.MeshStream, arg0: typing.SupportsInt) -> None
         
         Set stride between elements.
 
@@ -6299,17 +6351,15 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
 
 <a id='materialx-pymaterialxrender-shaderrenderer'></a>
 
-- **ShaderRenderer**: 
+- **ShaderRenderer**: Base class for renderers that generate shader code to produce images.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
-    - `initialize`: initialize(self: MaterialX.PyMaterialXRender.ShaderRenderer, renderContextHandle: capsule = None) -> None
+    - `initialize`: initialize(self: MaterialX.PyMaterialXRender.ShaderRenderer, renderContextHandle: typing_extensions.CapsuleType = None) -> None
         
-        Initialize with the given implementation element.
-        
-        Initialization must set the name and hash for the implementation, as well as any other data needed to emit code for the node.
+        Initialize the renderer.
 
 
     - `setCamera`: setCamera(self: MaterialX.PyMaterialXRender.ShaderRenderer, arg0: MaterialX.PyMaterialXRender.Camera) -> None
@@ -6357,17 +6407,7 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         
         1. createProgram(self: MaterialX.PyMaterialXRender.ShaderRenderer, arg0: MaterialX.PyMaterialXGenShader.Shader) -> None
         
-        Create GLSL program based on shader stage source code.
-        
-        Args:
-            stages: Map of name and source code for the shader stages.
-        
-        2. createProgram(self: MaterialX.PyMaterialXRender.ShaderRenderer, arg0: dict[str, str]) -> None
-        
-        Create GLSL program based on shader stage source code.
-        
-        Args:
-            stages: Map of name and source code for the shader stages.
+        2. createProgram(self: MaterialX.PyMaterialXRender.ShaderRenderer, arg0: collections.abc.Mapping[str, str]) -> None
 
 
     - `validateInputs`: validateInputs(self: MaterialX.PyMaterialXRender.ShaderRenderer) -> None
@@ -6380,72 +6420,76 @@ HW_ATTR_TRANSPARENT, HW_LIGHT_DATA, HW_PIXEL_OUTPUTS, HW_PRIVATE_UNIFORMS, HW_PU
         Update the program with value of the uniform.
 
 
-    - `setSize`: setSize(self: MaterialX.PyMaterialXRender.ShaderRenderer, arg0: int, arg1: int) -> None
+    - `setSize`: setSize(self: MaterialX.PyMaterialXRender.ShaderRenderer, arg0: typing.SupportsInt, arg1: typing.SupportsInt) -> None
         
         Set the size of the rendered image.
 
 
     - `render`: render(self: MaterialX.PyMaterialXRender.ShaderRenderer) -> None
         
-        Render the current program to an offscreen buffer.
+        Render the current program to produce an image.
 
 
 <a id='materialx-pymaterialxrender-stbimageloader'></a>
 
-- **StbImageLoader**: 
+- **StbImageLoader**: Stb image file loader.
 
   - Inherits from: [ImageLoader](#materialx-pymaterialxrender-imageloader), [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
     - `create`: create() -> MaterialX.PyMaterialXRender.StbImageLoader
+        
+        Create a new stb image loader.
 
 
     - `saveImage`: saveImage(self: MaterialX.PyMaterialXRender.StbImageLoader, arg0: MaterialX.PyMaterialXFormat.FilePath, arg1: MaterialX.PyMaterialXRender.Image, arg2: bool) -> bool
         
-        Save image to disk.
-        
-        Args:
-            filePath: File path to be written
-            image: The image to be saved
-            verticalFlip: Whether the image should be flipped in Y during save
-        
-        Returns:
-            if save succeeded
+        Save an image to the file system.
 
 
     - `loadImage`: loadImage(self: MaterialX.PyMaterialXRender.StbImageLoader, arg0: MaterialX.PyMaterialXFormat.FilePath) -> MaterialX.PyMaterialXRender.Image
+        
+        Load an image from the file system.
 
 
 <a id='materialx-pymaterialxrender-tinyobjloader'></a>
 
-- **TinyObjLoader**: 
+- **TinyObjLoader**: Wrapper for geometry loader to read in OBJ files using the TinyObj library.
 
   - Inherits from: [GeometryLoader](#materialx-pymaterialxrender-geometryloader), [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
   - Methods:
 
     - `create`: create() -> MaterialX.PyMaterialXRender.TinyObjLoader
-
-
-    - `load`: load(self: MaterialX.PyMaterialXRender.TinyObjLoader, arg0: MaterialX.PyMaterialXFormat.FilePath, arg1: list[MaterialX.PyMaterialXRender.Mesh], arg2: bool) -> bool
         
-        Load geometry from file path.
+        Create a new TinyObjLoader.
+
+
+    - `load`: load(self: MaterialX.PyMaterialXRender.TinyObjLoader, arg0: MaterialX.PyMaterialXFormat.FilePath, arg1: collections.abc.Sequence[MaterialX.PyMaterialXRender.Mesh], arg2: bool) -> bool
+        
+        Load geometry from disk.
 
 
 
 ### Functions
 
-- `createImageStrip`: createImageStrip(arg0: list[MaterialX.PyMaterialXRender.Image]) -> MaterialX.PyMaterialXRender.Image
+- `createImageStrip`: createImageStrip(arg0: collections.abc.Sequence[MaterialX.PyMaterialXRender.Image]) -> MaterialX.PyMaterialXRender.Image
 
-- `createUniformImage`: createUniformImage(arg0: int, arg1: int, arg2: int, arg3: MaterialX.PyMaterialXRender.BaseType, arg4: MaterialX.PyMaterialXCore.Color4) -> MaterialX.PyMaterialXRender.Image
+Create a horizontal image strip from a vector of images with identical resolutions and formats.
 
-- `getMaxDimensions`: getMaxDimensions(arg0: list[MaterialX.PyMaterialXRender.Image]) -> tuple[int, int]
+- `createUniformImage`: createUniformImage(arg0: typing.SupportsInt, arg1: typing.SupportsInt, arg2: typing.SupportsInt, arg3: MaterialX.PyMaterialXRender.BaseType, arg4: MaterialX.PyMaterialXCore.Color4) -> MaterialX.PyMaterialXRender.Image
+
+Create a uniform-color image with the given properties.
+
+- `getMaxDimensions`: getMaxDimensions(arg0: collections.abc.Sequence[MaterialX.PyMaterialXRender.Image]) -> tuple[int, int]
+
+Compute the maximum width and height of all images in the given vector.
 
 
 ### Globals
 
-FLOAT, HALF, UINT16, UINT8
+FLOAT, HALF, INT16, INT8, UINT16, UINT8
 
 
 
@@ -6457,7 +6501,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-pymaterialxrenderglsl-gltexturehandler'></a>
 
-- **GLTextureHandler**: 
+- **GLTextureHandler**: An OpenGL texture handler class.
 
   - Inherits from: [ImageHandler](#materialx-pymaterialxrenderglsl-imagehandler), [pybind11_object](#materialx-pymaterialxrenderglsl-pybind11_object)
 
@@ -6468,7 +6512,9 @@ FLOAT, HALF, UINT16, UINT8
 
     - `bindImage`: bindImage(self: MaterialX.PyMaterialXRenderGlsl.GLTextureHandler, arg0: MaterialX.PyMaterialXRender.Image, arg1: MaterialX.PyMaterialXRender.ImageSamplingProperties) -> bool
         
-        Bind a single image.
+        Bind an image.
+        
+        This method will bind the texture to an active texture unit as defined by the corresponding image description. The method will fail if there are not enough available image units to bind to.
 
 
     - `unbindImage`: unbindImage(self: MaterialX.PyMaterialXRenderGlsl.GLTextureHandler, arg0: MaterialX.PyMaterialXRender.Image) -> bool
@@ -6488,13 +6534,17 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-pymaterialxrenderglsl-glslprogram'></a>
 
-- **GlslProgram**: 
+- **GlslProgram**: A class representing an executable GLSL program.
+
+There are two main interfaces which can be used. One which takes in a HwShader and one which allows for explicit setting of shader stage code.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrenderglsl-pybind11_object)
 
   - Methods:
 
     - `create`: create() -> MaterialX.PyMaterialXRenderGlsl.GlslProgram
+        
+        Create a GLSL program instance.
 
 
     - `setStages`: setStages(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram, arg0: MaterialX.PyMaterialXGenShader.Shader) -> None
@@ -6558,7 +6608,7 @@ FLOAT, HALF, UINT16, UINT8
             Program attributes list.
 
 
-    - `findInputs`: findInputs(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram, arg0: str, arg1: dict[str, MaterialX_v1_39_5::GlslProgram::Input], arg2: dict[str, MaterialX_v1_39_5::GlslProgram::Input], arg3: bool) -> None
+    - `findInputs`: findInputs(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram, arg0: str, arg1: collections.abc.Mapping[str, MaterialX_v1_39_5::GlslProgram::Input], arg2: collections.abc.Mapping[str, MaterialX_v1_39_5::GlslProgram::Input], arg3: bool) -> None
         
         Find the locations in the program which starts with a given variable name.
         
@@ -6587,7 +6637,7 @@ FLOAT, HALF, UINT16, UINT8
         Bind a value to the uniform with the given name.
 
 
-    - `bindAttribute`: bindAttribute(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram, arg0: dict[str, MaterialX_v1_39_5::GlslProgram::Input], arg1: MaterialX.PyMaterialXRender.Mesh) -> None
+    - `bindAttribute`: bindAttribute(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram, arg0: collections.abc.Mapping[str, MaterialX_v1_39_5::GlslProgram::Input], arg1: MaterialX.PyMaterialXRender.Mesh) -> None
         
         Bind attribute buffers to attribute inputs.
         
@@ -6598,17 +6648,17 @@ FLOAT, HALF, UINT16, UINT8
 
     - `bindPartition`: bindPartition(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram, arg0: MaterialX.PyMaterialXRender.MeshPartition) -> None
         
-        Bind a mesh partition to this material.
+        Bind input geometry partition (indexing).
 
 
     - `bindMesh`: bindMesh(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram, arg0: MaterialX.PyMaterialXRender.Mesh) -> None
         
-        Bind the given mesh to this material.
+        Bind input geometry streams.
 
 
     - `unbindGeometry`: unbindGeometry(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram) -> None
         
-        Unbind all geometry from this material.
+        Unbind any bound geometry.
 
 
     - `bindTextures`: bindTextures(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram, arg0: MaterialX.PyMaterialXRender.ImageHandler) -> None
@@ -6618,15 +6668,15 @@ FLOAT, HALF, UINT16, UINT8
 
     - `bindLighting`: bindLighting(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram, arg0: MaterialX.PyMaterialXRender.LightHandler, arg1: MaterialX.PyMaterialXRender.ImageHandler) -> None
         
-        Bind lights to shader.
+        Bind lighting.
 
 
     - `bindViewInformation`: bindViewInformation(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram, arg0: MaterialX.PyMaterialXRender.Camera) -> None
         
-        Bind viewing information for this material.
+        Bind view information.
 
 
-    - `bindTimeAndFrame`: bindTimeAndFrame(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram, time: float = 0.0, frame: float = 1.0) -> None
+    - `bindTimeAndFrame`: bindTimeAndFrame(self: MaterialX.PyMaterialXRenderGlsl.GlslProgram, time: typing.SupportsFloat = 0.0, frame: typing.SupportsFloat = 1.0) -> None
         
         Bind time and frame.
 
@@ -6640,20 +6690,27 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-pymaterialxrenderglsl-glslrenderer'></a>
 
-- **GlslRenderer**: 
+- **GlslRenderer**: Helper class for rendering generated GLSL code to produce images.
+
+There are two main interfaces which can be used. One which takes in a HwShader and one which allows for explicit setting of shader stage code.
+
+The main services provided are: Validation: All shader stages are compiled and atteched to a GLSL shader program. Introspection: The compiled shader program is examined for uniforms and attributes. Binding: Uniforms and attributes which match the predefined variables generated the GLSL code generator will have values assigned to this. This includes matrices, attribute streams, and textures. Rendering: The program with bound inputs will be used to drawing geometry to an offscreen buffer. An interface is provided to save this offscreen buffer to disk using an externally defined image handler.
 
   - Inherits from: [ShaderRenderer](#materialx-pymaterialxrenderglsl-shaderrenderer), [pybind11_object](#materialx-pymaterialxrenderglsl-pybind11_object)
 
   - Methods:
 
-    - `create`: create(arg0: int, arg1: int, arg2: MaterialX.PyMaterialXRender.BaseType) -> MaterialX.PyMaterialXRenderGlsl.GlslRenderer
+    - `create`: create(arg0: typing.SupportsInt, arg1: typing.SupportsInt, arg2: MaterialX.PyMaterialXRender.BaseType) -> MaterialX.PyMaterialXRenderGlsl.GlslRenderer
+        
+        Create a GLSL renderer instance.
 
 
-    - `initialize`: initialize(self: MaterialX.PyMaterialXRenderGlsl.GlslRenderer, renderContextHandle: capsule = None) -> None
+    - `initialize`: initialize(self: MaterialX.PyMaterialXRenderGlsl.GlslRenderer, renderContextHandle: typing_extensions.CapsuleType = None) -> None
         
-        Initialize with the given implementation element.
+        Internal initialization of stages and OpenGL constructs required for program validation and rendering.
         
-        Initialization must set the name and hash for the implementation, as well as any other data needed to emit code for the node.
+        Args:
+            renderContextHandle: allows initializing the GlslRenderer with a Shared OpenGL Context
 
 
     - `createProgram`: createProgram(*args, **kwargs)
@@ -6661,17 +6718,7 @@ FLOAT, HALF, UINT16, UINT8
         
         1. createProgram(self: MaterialX.PyMaterialXRenderGlsl.GlslRenderer, arg0: MaterialX.PyMaterialXGenShader.Shader) -> None
         
-        Create GLSL program based on shader stage source code.
-        
-        Args:
-            stages: Map of name and source code for the shader stages.
-        
-        2. createProgram(self: MaterialX.PyMaterialXRenderGlsl.GlslRenderer, arg0: dict[str, str]) -> None
-        
-        Create GLSL program based on shader stage source code.
-        
-        Args:
-            stages: Map of name and source code for the shader stages.
+        2. createProgram(self: MaterialX.PyMaterialXRenderGlsl.GlslRenderer, arg0: collections.abc.Mapping[str, str]) -> None
 
 
     - `validateInputs`: validateInputs(self: MaterialX.PyMaterialXRenderGlsl.GlslRenderer) -> None
@@ -6696,12 +6743,14 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getProgram`: getProgram(self: MaterialX.PyMaterialXRenderGlsl.GlslRenderer) -> MaterialX.PyMaterialXRenderGlsl.GlslProgram
         
-        Return the underlying GLSL program.
+        Return the GLSL program.
 
 
 <a id='materialx-pymaterialxrenderglsl-input'></a>
 
-- **Input**: 
+- **Input**: An input element within a Node or NodeDef.
+
+An Input holds either a uniform value or a connection to a spatially-varying Output, either of which may be modified within the scope of a Material.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrenderglsl-pybind11_object)
 
@@ -6709,166 +6758,343 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-pymaterialxrenderglsl-texturebaker'></a>
 
-- **TextureBaker**: 
+- **TextureBaker**: A helper class for baking procedural material content to textures.
+
+TODO: Add support for graphs containing geometric nodes such as position and normal.
 
   - Inherits from: [GlslRenderer](#materialx-pymaterialxrenderglsl-glslrenderer), [ShaderRenderer](#materialx-pymaterialxrenderglsl-shaderrenderer), [pybind11_object](#materialx-pymaterialxrenderglsl-pybind11_object)
 
   - Methods:
 
-    - `create`: create(arg0: int, arg1: int, arg2: MaterialX.PyMaterialXRender.BaseType) -> MaterialX.PyMaterialXRenderGlsl.TextureBaker
+    - `create`: create(arg0: typing.SupportsInt, arg1: typing.SupportsInt, arg2: MaterialX.PyMaterialXRender.BaseType) -> MaterialX.PyMaterialXRenderGlsl.TextureBaker
 
 
     - `setExtension`: setExtension(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: str) -> None
-        
-        Set the file extension for baked textures.
 
 
     - `getExtension`: getExtension(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker) -> str
-        
-        Return the file extension of the given path.
 
 
     - `setColorSpace`: setColorSpace(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: str) -> None
-        
-        Set the element's color space string.
 
 
     - `getColorSpace`: getColorSpace(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker) -> str
-        
-        Return the element's color space string.
 
 
     - `setDistanceUnit`: setDistanceUnit(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: str) -> None
-        
-        Set the distance unit to which textures are baked. Defaults to meters.
 
 
     - `getDistanceUnit`: getDistanceUnit(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker) -> str
-        
-        Return the distance unit to which textures are baked.
 
 
     - `setAverageImages`: setAverageImages(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: bool) -> None
-        
-        Set whether images should be averaged to generate constants. Defaults to false.
 
 
     - `getAverageImages`: getAverageImages(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker) -> bool
-        
-        Return whether images should be averaged to generate constants.
 
 
     - `setOptimizeConstants`: setOptimizeConstants(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: bool) -> None
-        
-        Set whether uniform textures should be stored as constants. Defaults to true.
 
 
     - `getOptimizeConstants`: getOptimizeConstants(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker) -> bool
-        
-        Return whether uniform textures should be stored as constants.
 
 
     - `setOutputImagePath`: setOutputImagePath(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: MaterialX.PyMaterialXFormat.FilePath) -> None
-        
-        Set the output location for baked texture images.
-        
-        Defaults to the root folder of the destination material.
 
 
     - `getOutputImagePath`: getOutputImagePath(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker) -> MaterialX.PyMaterialXFormat.FilePath
-        
-        Get the current output location for baked texture images.
 
 
     - `setBakedGraphName`: setBakedGraphName(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: str) -> None
-        
-        Set the name of the baked graph element.
 
 
     - `getBakedGraphName`: getBakedGraphName(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker) -> str
-        
-        Return the name of the baked graph element.
 
 
     - `setBakedGeomInfoName`: setBakedGeomInfoName(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: str) -> None
-        
-        Set the name of the baked geometry info element.
 
 
     - `getBakedGeomInfoName`: getBakedGeomInfoName(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker) -> str
-        
-        Return the name of the baked geometry info element.
 
 
     - `setTextureFilenameTemplate`: setTextureFilenameTemplate(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: str) -> None
-        
-        Set the texture filename template.
 
 
     - `getTextureFilenameTemplate`: getTextureFilenameTemplate(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker) -> str
-        
-        Get the texture filename template.
 
 
     - `setFilenameTemplateVarOverride`: setFilenameTemplateVarOverride(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: str, arg1: str) -> None
-        
-        Set texFilenameOverrides if template variable exists.
 
 
     - `setHashImageNames`: setHashImageNames(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: bool) -> None
-        
-        Set whether to create a short name for baked images by hashing the baked image filenames This is useful for file systems which may have a maximum limit on filename size.
-        
-        By default names are not hashed.
 
 
     - `getHashImageNames`: getHashImageNames(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker) -> bool
-        
-        Return whether automatic baked texture resolution is set.
 
 
     - `setTextureSpaceMin`: setTextureSpaceMin(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: MaterialX.PyMaterialXCore.Vector2) -> None
-        
-        Set the minimum texcoords used in texture baking. Defaults to 0, 0.
 
 
     - `getTextureSpaceMin`: getTextureSpaceMin(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker) -> MaterialX.PyMaterialXCore.Vector2
-        
-        Return the minimum texcoords used in texture baking.
 
 
     - `setTextureSpaceMax`: setTextureSpaceMax(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: MaterialX.PyMaterialXCore.Vector2) -> None
-        
-        Set the maximum texcoords used in texture baking. Defaults to 1, 1.
 
 
     - `getTextureSpaceMax`: getTextureSpaceMax(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker) -> MaterialX.PyMaterialXCore.Vector2
-        
-        Return the maximum texcoords used in texture baking.
 
 
     - `setupUnitSystem`: setupUnitSystem(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: MaterialX.PyMaterialXCore.Document) -> None
-        
-        Set up the unit definitions to be used in baking.
 
 
-    - `bakeMaterialToDoc`: bakeMaterialToDoc(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: MaterialX.PyMaterialXCore.Document, arg1: MaterialX.PyMaterialXFormat.FileSearchPath, arg2: str, arg3: list[str], arg4: str) -> MaterialX.PyMaterialXCore.Document
-        
-        Bake material to document in memory and write baked textures to disk.
+    - `bakeMaterialToDoc`: bakeMaterialToDoc(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: MaterialX.PyMaterialXCore.Document, arg1: MaterialX.PyMaterialXFormat.FileSearchPath, arg2: str, arg3: collections.abc.Sequence[str], arg4: str) -> MaterialX.PyMaterialXCore.Document
 
 
     - `bakeAllMaterials`: bakeAllMaterials(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: MaterialX.PyMaterialXCore.Document, arg1: MaterialX.PyMaterialXFormat.FileSearchPath, arg2: MaterialX.PyMaterialXFormat.FilePath) -> None
-        
-        Bake materials in the given document and write them to disk.
-        
-        If multiple documents are written, then the given output filename will be used as a template.
 
 
     - `writeDocumentPerMaterial`: writeDocumentPerMaterial(self: MaterialX.PyMaterialXRenderGlsl.TextureBaker, arg0: bool) -> None
+
+
+
+---
+
+## Module: MaterialX.PyMaterialXRenderMsl
+
+### Classes
+
+<a id='materialx-pymaterialxrendermsl-input'></a>
+
+- **Input**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrendermsl-pybind11_object)
+
+  - Attributes: location, size, typeString, value, isConstant, path
+
+<a id='materialx-pymaterialxrendermsl-metaltexturehandler'></a>
+
+- **MetalTextureHandler**: 
+
+  - Inherits from: [ImageHandler](#materialx-pymaterialxrendermsl-imagehandler), [pybind11_object](#materialx-pymaterialxrendermsl-pybind11_object)
+
+  - Methods:
+
+    - `create`: create(arg0: objc_object<MTLDevice>, arg1: MaterialX.PyMaterialXRender.ImageLoader) -> MaterialX.PyMaterialXRenderMsl.MetalTextureHandler
+
+
+    - `bindImage`: bindImage(self: MaterialX.PyMaterialXRenderMsl.MetalTextureHandler, arg0: MaterialX.PyMaterialXRender.Image) -> bool
+
+
+    - `unbindImage`: unbindImage(self: MaterialX.PyMaterialXRenderMsl.MetalTextureHandler, arg0: MaterialX.PyMaterialXRender.Image) -> bool
+
+
+    - `createRenderResources`: createRenderResources(self: MaterialX.PyMaterialXRenderMsl.MetalTextureHandler, arg0: MaterialX.PyMaterialXRender.Image, arg1: bool, arg2: bool) -> bool
+
+
+    - `releaseRenderResources`: releaseRenderResources(self: MaterialX.PyMaterialXRenderMsl.MetalTextureHandler, image: MaterialX.PyMaterialXRender.Image = None) -> None
+
+
+<a id='materialx-pymaterialxrendermsl-mslprogram'></a>
+
+- **MslProgram**: 
+
+  - Inherits from: [pybind11_object](#materialx-pymaterialxrendermsl-pybind11_object)
+
+  - Methods:
+
+    - `create`: create() -> MaterialX.PyMaterialXRenderMsl.MslProgram
+
+
+    - `setStages`: setStages(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: MaterialX.PyMaterialXGenShader.Shader) -> None
+
+
+    - `addStage`: addStage(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: str, arg1: str) -> None
+
+
+    - `getStageSourceCode`: getStageSourceCode(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: str) -> str
+
+
+    - `getShader`: getShader(self: MaterialX.PyMaterialXRenderMsl.MslProgram) -> MaterialX.PyMaterialXGenShader.Shader
+
+
+    - `build`: build(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: objc_object<MTLDevice>, arg1: MaterialX_v1_39_5::MetalFramebuffer) -> objc_object<MTLRenderPipelineState>
+
+
+    - `prepareUsedResources`: prepareUsedResources(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: objc_object<MTLRenderCommandEncoder>, arg1: MaterialX.PyMaterialXRender.Camera, arg2: MaterialX.PyMaterialXRender.GeometryHandler, arg3: MaterialX.PyMaterialXRender.ImageHandler, arg4: MaterialX.PyMaterialXRender.LightHandler) -> None
+
+
+    - `getUniformsList`: getUniformsList(self: MaterialX.PyMaterialXRenderMsl.MslProgram) -> dict[str, MaterialX_v1_39_5::MslProgram::Input]
+
+
+    - `getAttributesList`: getAttributesList(self: MaterialX.PyMaterialXRenderMsl.MslProgram) -> dict[str, MaterialX_v1_39_5::MslProgram::Input]
+
+
+    - `findInputs`: findInputs(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: str, arg1: collections.abc.Mapping[str, MaterialX_v1_39_5::MslProgram::Input], arg2: collections.abc.Mapping[str, MaterialX_v1_39_5::MslProgram::Input], arg3: bool) -> None
+
+
+    - `bind`: bind(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: objc_object<MTLRenderCommandEncoder>) -> bool
+
+
+    - `bindUniform`: bindUniform(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: str, arg1: MaterialX.PyMaterialXCore.Value, arg2: bool) -> None
+
+
+    - `bindAttribute`: bindAttribute(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: objc_object<MTLRenderCommandEncoder>, arg1: collections.abc.Mapping[str, MaterialX_v1_39_5::MslProgram::Input], arg2: MaterialX.PyMaterialXRender.Mesh) -> None
+
+
+    - `bindPartition`: bindPartition(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: MaterialX.PyMaterialXRender.MeshPartition) -> None
+
+
+    - `bindMesh`: bindMesh(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: objc_object<MTLRenderCommandEncoder>, arg1: MaterialX.PyMaterialXRender.Mesh) -> None
+
+
+    - `unbindGeometry`: unbindGeometry(self: MaterialX.PyMaterialXRenderMsl.MslProgram) -> None
+
+
+    - `bindTextures`: bindTextures(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: objc_object<MTLRenderCommandEncoder>, arg1: MaterialX.PyMaterialXRender.LightHandler, arg2: MaterialX.PyMaterialXRender.ImageHandler) -> None
+
+
+    - `bindLighting`: bindLighting(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: MaterialX.PyMaterialXRender.LightHandler, arg1: MaterialX.PyMaterialXRender.ImageHandler) -> None
+
+
+    - `bindViewInformation`: bindViewInformation(self: MaterialX.PyMaterialXRenderMsl.MslProgram, arg0: MaterialX.PyMaterialXRender.Camera) -> None
+
+
+    - `bindTimeAndFrame`: bindTimeAndFrame(self: MaterialX.PyMaterialXRenderMsl.MslProgram, time: typing.SupportsFloat = 0.0, frame: typing.SupportsFloat = 1.0) -> None
+
+
+<a id='materialx-pymaterialxrendermsl-mslrenderer'></a>
+
+- **MslRenderer**: 
+
+  - Inherits from: [ShaderRenderer](#materialx-pymaterialxrendermsl-shaderrenderer), [pybind11_object](#materialx-pymaterialxrendermsl-pybind11_object)
+
+  - Methods:
+
+    - `create`: create(arg0: typing.SupportsInt, arg1: typing.SupportsInt, arg2: MaterialX.PyMaterialXRender.BaseType) -> MaterialX.PyMaterialXRenderMsl.MslRenderer
+
+
+    - `initialize`: initialize(self: MaterialX.PyMaterialXRenderMsl.MslRenderer, renderContextHandle: typing_extensions.CapsuleType = None) -> None
+
+
+    - `createProgram`: createProgram(*args, **kwargs)
+        Overloaded function.
         
-        Set whether to write a separate document per material when calling bakeAllMaterials.
+        1. createProgram(self: MaterialX.PyMaterialXRenderMsl.MslRenderer, arg0: MaterialX.PyMaterialXGenShader.Shader) -> None
         
-        By default separate documents are written.
+        2. createProgram(self: MaterialX.PyMaterialXRenderMsl.MslRenderer, arg0: collections.abc.Mapping[str, str]) -> None
+
+
+    - `validateInputs`: validateInputs(self: MaterialX.PyMaterialXRenderMsl.MslRenderer) -> None
+
+
+    - `render`: render(self: MaterialX.PyMaterialXRenderMsl.MslRenderer) -> None
+
+
+    - `renderTextureSpace`: renderTextureSpace(self: MaterialX.PyMaterialXRenderMsl.MslRenderer, arg0: MaterialX.PyMaterialXCore.Vector2, arg1: MaterialX.PyMaterialXCore.Vector2) -> None
+
+
+    - `captureImage`: captureImage(self: MaterialX.PyMaterialXRenderMsl.MslRenderer, arg0: MaterialX.PyMaterialXRender.Image) -> MaterialX.PyMaterialXRender.Image
+
+
+    - `getProgram`: getProgram(self: MaterialX.PyMaterialXRenderMsl.MslRenderer) -> MaterialX.PyMaterialXRenderMsl.MslProgram
+
+
+<a id='materialx-pymaterialxrendermsl-texturebaker'></a>
+
+- **TextureBaker**: 
+
+  - Inherits from: [MslRenderer](#materialx-pymaterialxrendermsl-mslrenderer), [ShaderRenderer](#materialx-pymaterialxrendermsl-shaderrenderer), [pybind11_object](#materialx-pymaterialxrendermsl-pybind11_object)
+
+  - Methods:
+
+    - `create`: create(arg0: typing.SupportsInt, arg1: typing.SupportsInt, arg2: MaterialX.PyMaterialXRender.BaseType) -> MaterialX.PyMaterialXRenderMsl.TextureBaker
+
+
+    - `setExtension`: setExtension(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: str) -> None
+
+
+    - `getExtension`: getExtension(self: MaterialX.PyMaterialXRenderMsl.TextureBaker) -> str
+
+
+    - `setColorSpace`: setColorSpace(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: str) -> None
+
+
+    - `getColorSpace`: getColorSpace(self: MaterialX.PyMaterialXRenderMsl.TextureBaker) -> str
+
+
+    - `setDistanceUnit`: setDistanceUnit(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: str) -> None
+
+
+    - `getDistanceUnit`: getDistanceUnit(self: MaterialX.PyMaterialXRenderMsl.TextureBaker) -> str
+
+
+    - `setAverageImages`: setAverageImages(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: bool) -> None
+
+
+    - `getAverageImages`: getAverageImages(self: MaterialX.PyMaterialXRenderMsl.TextureBaker) -> bool
+
+
+    - `setOptimizeConstants`: setOptimizeConstants(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: bool) -> None
+
+
+    - `getOptimizeConstants`: getOptimizeConstants(self: MaterialX.PyMaterialXRenderMsl.TextureBaker) -> bool
+
+
+    - `setOutputImagePath`: setOutputImagePath(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: MaterialX.PyMaterialXFormat.FilePath) -> None
+
+
+    - `getOutputImagePath`: getOutputImagePath(self: MaterialX.PyMaterialXRenderMsl.TextureBaker) -> MaterialX.PyMaterialXFormat.FilePath
+
+
+    - `setBakedGraphName`: setBakedGraphName(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: str) -> None
+
+
+    - `getBakedGraphName`: getBakedGraphName(self: MaterialX.PyMaterialXRenderMsl.TextureBaker) -> str
+
+
+    - `setBakedGeomInfoName`: setBakedGeomInfoName(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: str) -> None
+
+
+    - `getBakedGeomInfoName`: getBakedGeomInfoName(self: MaterialX.PyMaterialXRenderMsl.TextureBaker) -> str
+
+
+    - `setTextureFilenameTemplate`: setTextureFilenameTemplate(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: str) -> None
+
+
+    - `getTextureFilenameTemplate`: getTextureFilenameTemplate(self: MaterialX.PyMaterialXRenderMsl.TextureBaker) -> str
+
+
+    - `setFilenameTemplateVarOverride`: setFilenameTemplateVarOverride(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: str, arg1: str) -> None
+
+
+    - `setHashImageNames`: setHashImageNames(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: bool) -> None
+
+
+    - `getHashImageNames`: getHashImageNames(self: MaterialX.PyMaterialXRenderMsl.TextureBaker) -> bool
+
+
+    - `setTextureSpaceMin`: setTextureSpaceMin(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: MaterialX.PyMaterialXCore.Vector2) -> None
+
+
+    - `getTextureSpaceMin`: getTextureSpaceMin(self: MaterialX.PyMaterialXRenderMsl.TextureBaker) -> MaterialX.PyMaterialXCore.Vector2
+
+
+    - `setTextureSpaceMax`: setTextureSpaceMax(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: MaterialX.PyMaterialXCore.Vector2) -> None
+
+
+    - `getTextureSpaceMax`: getTextureSpaceMax(self: MaterialX.PyMaterialXRenderMsl.TextureBaker) -> MaterialX.PyMaterialXCore.Vector2
+
+
+    - `setupUnitSystem`: setupUnitSystem(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: MaterialX.PyMaterialXCore.Document) -> None
+
+
+    - `bakeMaterialToDoc`: bakeMaterialToDoc(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: MaterialX.PyMaterialXCore.Document, arg1: MaterialX.PyMaterialXFormat.FileSearchPath, arg2: str, arg3: collections.abc.Sequence[str], arg4: str) -> MaterialX.PyMaterialXCore.Document
+
+
+    - `bakeAllMaterials`: bakeAllMaterials(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: MaterialX.PyMaterialXCore.Document, arg1: MaterialX.PyMaterialXFormat.FileSearchPath, arg2: MaterialX.PyMaterialXFormat.FilePath) -> None
+
+
+    - `writeDocumentPerMaterial`: writeDocumentPerMaterial(self: MaterialX.PyMaterialXRenderMsl.TextureBaker, arg0: bool) -> None
 
 
 
@@ -6880,20 +7106,24 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-pymaterialxrenderosl-oslrenderer'></a>
 
-- **OslRenderer**: 
+- **OslRenderer**: Helper class for rendering generated OSL code to produce images.
+
+The main services provided are: Source code validation: Use of "oslc" to compile and test output results Introspection check: None at this time. Binding: None at this time. Render validation: Use of "testrender" to output rendered images. Assumes source compilation was success as it depends on the existence of corresponding .oso files.
 
   - Inherits from: [ShaderRenderer](#materialx-pymaterialxrenderosl-shaderrenderer), [pybind11_object](#materialx-pymaterialxrenderosl-pybind11_object)
 
   - Methods:
 
-    - `create`: create(arg0: int, arg1: int, arg2: MaterialX.PyMaterialXRender.BaseType) -> MaterialX.PyMaterialXRenderOsl.OslRenderer
+    - `create`: create(arg0: typing.SupportsInt, arg1: typing.SupportsInt, arg2: MaterialX.PyMaterialXRender.BaseType) -> MaterialX.PyMaterialXRenderOsl.OslRenderer
+        
+        Create an OSL renderer instance.
 
 
-    - `initialize`: initialize(self: MaterialX.PyMaterialXRenderOsl.OslRenderer, renderContextHandle: capsule = None) -> None
+    - `initialize`: initialize(self: MaterialX.PyMaterialXRenderOsl.OslRenderer, renderContextHandle: typing_extensions.CapsuleType = None) -> None
         
-        Initialize with the given implementation element.
+        Internal initialization required for program validation and rendering.
         
-        Initialization must set the name and hash for the implementation, as well as any other data needed to emit code for the node.
+        An exception is thrown on failure. The exception will contain a list of initialization errors.
 
 
     - `createProgram`: createProgram(*args, **kwargs)
@@ -6901,32 +7131,28 @@ FLOAT, HALF, UINT16, UINT8
         
         1. createProgram(self: MaterialX.PyMaterialXRenderOsl.OslRenderer, arg0: MaterialX.PyMaterialXGenShader.Shader) -> None
         
-        Create GLSL program based on shader stage source code.
-        
-        Args:
-            stages: Map of name and source code for the shader stages.
-        
-        2. createProgram(self: MaterialX.PyMaterialXRenderOsl.OslRenderer, arg0: dict[str, str]) -> None
-        
-        Create GLSL program based on shader stage source code.
-        
-        Args:
-            stages: Map of name and source code for the shader stages.
+        2. createProgram(self: MaterialX.PyMaterialXRenderOsl.OslRenderer, arg0: collections.abc.Mapping[str, str]) -> None
 
 
     - `validateInputs`: validateInputs(self: MaterialX.PyMaterialXRenderOsl.OslRenderer) -> None
         
-        Validate inputs for the program.
+        Validate inputs for the compiled OSL program.
+        
+        Note: Currently no validation has been implemented.
 
 
     - `render`: render(self: MaterialX.PyMaterialXRenderOsl.OslRenderer) -> None
         
-        Render the current program to an offscreen buffer.
+        Render OSL program to disk.
+        
+        This is done by using either "testshade" or "testrender". Currently only "testshade" is supported.
+        
+        Usage of both executables requires compiled source (.oso) files as input. A shader output must be set before running this test via the setOslOutputName() method to ensure that the appropriate .oso files can be located.
 
 
     - `captureImage`: captureImage(self: MaterialX.PyMaterialXRenderOsl.OslRenderer, arg0: MaterialX.PyMaterialXRender.Image) -> MaterialX.PyMaterialXRender.Image
         
-        Capture the current contents of the off-screen hardware buffer as an image.
+        Capture the current rendered output as an image.
 
 
     - `setOslCompilerExecutable`: setOslCompilerExecutable(self: MaterialX.PyMaterialXRenderOsl.OslRenderer, arg0: MaterialX.PyMaterialXFormat.FilePath) -> None
@@ -6953,7 +7179,7 @@ FLOAT, HALF, UINT16, UINT8
             dirPath: Path to output location
 
 
-    - `setShaderParameterOverrides`: setShaderParameterOverrides(self: MaterialX.PyMaterialXRenderOsl.OslRenderer, arg0: list[str]) -> None
+    - `setShaderParameterOverrides`: setShaderParameterOverrides(self: MaterialX.PyMaterialXRenderOsl.OslRenderer, arg0: collections.abc.Sequence[str]) -> None
         
         Set shader parameter strings to be added to the scene XML file.
         
@@ -7038,7 +7264,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-attributedef'></a>
 
-- **AttributeDef**: 
+- **AttributeDef**: An attribute definition element within a Document.
 
   - Inherits from: [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -7071,7 +7297,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.AttributeDef) -> str
         
-        Return value string.
+        Get the value string of a element.
 
 
     - `setExportable`: setExportable(self: MaterialX.PyMaterialXCore.AttributeDef, arg0: bool) -> None
@@ -7090,7 +7316,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-backdrop'></a>
 
-- **Backdrop**: 
+- **Backdrop**: A layout element used to contain, group and document nodes within a graph.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -7111,7 +7337,7 @@ FLOAT, HALF, UINT16, UINT8
         Return the contains string for this backdrop.
 
 
-    - `setWidth`: setWidth(self: MaterialX.PyMaterialXCore.Backdrop, arg0: float) -> None
+    - `setWidth`: setWidth(self: MaterialX.PyMaterialXCore.Backdrop, arg0: typing.SupportsFloat) -> None
         
         Set the width attribute of the backdrop.
 
@@ -7126,7 +7352,7 @@ FLOAT, HALF, UINT16, UINT8
         Return the width attribute of the backdrop.
 
 
-    - `setHeight`: setHeight(self: MaterialX.PyMaterialXCore.Backdrop, arg0: float) -> None
+    - `setHeight`: setHeight(self: MaterialX.PyMaterialXCore.Backdrop, arg0: typing.SupportsFloat) -> None
         
         Set the height attribute of the backdrop.
 
@@ -7141,7 +7367,7 @@ FLOAT, HALF, UINT16, UINT8
         Return the height attribute of the backdrop.
 
 
-    - `setContainsElements`: setContainsElements(self: MaterialX.PyMaterialXCore.Backdrop, arg0: list[MaterialX.PyMaterialXCore.TypedElement]) -> None
+    - `setContainsElements`: setContainsElements(self: MaterialX.PyMaterialXCore.Backdrop, arg0: collections.abc.Sequence[MaterialX.PyMaterialXCore.TypedElement]) -> None
         
         Set the vector of elements that this backdrop contains.
 
@@ -7155,7 +7381,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-collection'></a>
 
-- **Collection**: 
+- **Collection**: A collection element within a Document.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -7211,7 +7437,7 @@ FLOAT, HALF, UINT16, UINT8
         Set the collection that is directly included by this element.
 
 
-    - `setIncludeCollections`: setIncludeCollections(self: MaterialX.PyMaterialXCore.Collection, arg0: list[MaterialX.PyMaterialXCore.Collection]) -> None
+    - `setIncludeCollections`: setIncludeCollections(self: MaterialX.PyMaterialXCore.Collection, arg0: collections.abc.Sequence[MaterialX.PyMaterialXCore.Collection]) -> None
         
         Set the vector of collections that are directly included by this element.
 
@@ -7235,32 +7461,22 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-color3'></a>
 
-- **Color3**: 
+- **Color3**: A three-component color value.
 
   - Inherits from: [VectorBase](#materialx-datatype-vectorbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Color3) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Color3) -> MaterialX.PyMaterialXCore.Color3
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Color3, arg0: MaterialX.PyMaterialXCore.Color3) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Color3) -> MaterialX.PyMaterialXCore.Color3
-        
-        Create a deep copy of the value.
 
 
     - `linearToSrgb`: linearToSrgb(self: MaterialX.PyMaterialXCore.Color3) -> MaterialX.PyMaterialXCore.Color3
@@ -7278,32 +7494,22 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-color4'></a>
 
-- **Color4**: 
+- **Color4**: A four-component color value.
 
   - Inherits from: [VectorBase](#materialx-datatype-vectorbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Color4) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Color4) -> MaterialX.PyMaterialXCore.Color4
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Color4, arg0: MaterialX.PyMaterialXCore.Color4) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Color4) -> MaterialX.PyMaterialXCore.Color4
-        
-        Create a deep copy of the value.
 
 
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Color4) -> tuple[float, float, float, float]
@@ -7311,7 +7517,9 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-commentelement'></a>
 
-- **CommentElement**: 
+- **CommentElement**: An element representing a block of descriptive text within a document, which will be stored a comment when the document is written out.
+
+The comment text may be accessed with the methods Element::setDocString and Element::getDocString.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -7319,7 +7527,9 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-document'></a>
 
-- **Document**: 
+- **Document**: A MaterialX document, which represents the top-level element in the MaterialX ownership hierarchy.
+
+Use the factory function createDocument() to create a Document instance.
 
   - Inherits from: [GraphElement](#materialx-datatype-graphelement), [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -7327,14 +7537,12 @@ FLOAT, HALF, UINT16, UINT8
 
     - `initialize`: initialize(self: MaterialX.PyMaterialXCore.Document) -> None
         
-        Initialize with the given implementation element.
-        
-        Initialization must set the name and hash for the implementation, as well as any other data needed to emit code for the node.
+        Initialize the document, removing any existing content.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Document) -> MaterialX.PyMaterialXCore.Document
         
-        Create a deep copy of the value.
+        Create a deep copy of the document.
 
 
     - `setDataLibrary`: setDataLibrary(self: MaterialX.PyMaterialXCore.Document, arg0: MaterialX.PyMaterialXCore.Document) -> None
@@ -7589,7 +7797,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getNodeDef`: getNodeDef(self: MaterialX.PyMaterialXCore.Document, arg0: str) -> MaterialX.PyMaterialXCore.NodeDef
         
-        Returns a nodedef for a given transform.
+        Return the NodeDef, if any, with the given name.
 
 
     - `getNodeDefs`: getNodeDefs(self: MaterialX.PyMaterialXCore.Document) -> list[MaterialX.PyMaterialXCore.NodeDef]
@@ -7823,7 +8031,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-edge'></a>
 
-- **Edge**: 
+- **Edge**: An edge between two connected Elements, returned during graph traversal.
 
   - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -7846,12 +8054,14 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getName`: getName(self: MaterialX.PyMaterialXCore.Edge) -> str
         
-        Return the ColorManagementSystem name.
+        Return the name of this edge, if any.
 
 
 <a id='materialx-datatype-element'></a>
 
-- **Element**: 
+- **Element**: The base class for MaterialX elements.
+
+An Element is a named object within a Document, which may possess any number of child elements and attributes.
 
   - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -7889,7 +8099,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getName`: getName(self: MaterialX.PyMaterialXCore.Element) -> str
         
-        Return the ColorManagementSystem name.
+        Return the element's name string.
 
 
     - `getNamePath`: getNamePath(self: MaterialX.PyMaterialXCore.Element, relativeTo: MaterialX.PyMaterialXCore.Element = None) -> str
@@ -8064,7 +8274,7 @@ FLOAT, HALF, UINT16, UINT8
         The returned vector maintains the order in which children were added.
 
 
-    - `setChildIndex`: setChildIndex(self: MaterialX.PyMaterialXCore.Element, arg0: str, arg1: int) -> None
+    - `setChildIndex`: setChildIndex(self: MaterialX.PyMaterialXCore.Element, arg0: str, arg1: typing.SupportsInt) -> None
         
         Set the index of the child, if any, with the given name.
         
@@ -8111,23 +8321,15 @@ FLOAT, HALF, UINT16, UINT8
 
 
     - `getSelf`: getSelf(self: MaterialX.PyMaterialXCore.Element) -> MaterialX.PyMaterialXCore.Element
-        
-        Return our self pointer.
 
 
     - `getParent`: getParent(self: MaterialX.PyMaterialXCore.Element) -> MaterialX.PyMaterialXCore.Element
-        
-        Return our parent element.
 
 
     - `getRoot`: getRoot(self: MaterialX.PyMaterialXCore.Element) -> MaterialX.PyMaterialXCore.Element
-        
-        Return the root element of our tree.
 
 
     - `getDocument`: getDocument(self: MaterialX.PyMaterialXCore.Element) -> MaterialX_v1_39_5::Document
-        
-        Return the root document of our tree.
 
 
     - `traverseTree`: traverseTree(self: MaterialX.PyMaterialXCore.Element) -> MaterialX_v1_39_5::TreeIterator
@@ -8146,7 +8348,7 @@ FLOAT, HALF, UINT16, UINT8
             A GraphIterator object.
 
 
-    - `getUpstreamEdge`: getUpstreamEdge(self: MaterialX.PyMaterialXCore.Element, index: int = 0) -> MaterialX_v1_39_5::Edge
+    - `getUpstreamEdge`: getUpstreamEdge(self: MaterialX.PyMaterialXCore.Element, index: typing.SupportsInt = 0) -> MaterialX_v1_39_5::Edge
         
         Return the Edge with the given index that lies directly upstream from this element in the dataflow graph.
         
@@ -8162,9 +8364,15 @@ FLOAT, HALF, UINT16, UINT8
         Return the number of queryable upstream edges for this element.
 
 
-    - `getUpstreamElement`: getUpstreamElement(self: MaterialX.PyMaterialXCore.Element, index: int = 0) -> MaterialX.PyMaterialXCore.Element
+    - `getUpstreamElement`: getUpstreamElement(self: MaterialX.PyMaterialXCore.Element, index: typing.SupportsInt = 0) -> MaterialX.PyMaterialXCore.Element
         
-        Return the upstream element of the edge.
+        Return the Element with the given index that lies directly upstream from this one in the dataflow graph.
+        
+        Args:
+            index: An optional index of the element to be returned, where the valid index range may be determined with getUpstreamEdgeCount.
+        
+        Returns:
+            The upstream Element, if valid, or an empty ElementPtr.
 
 
     - `traverseInheritance`: traverseInheritance(self: MaterialX.PyMaterialXCore.Element) -> MaterialX_v1_39_5::InheritanceIterator
@@ -8200,7 +8408,13 @@ FLOAT, HALF, UINT16, UINT8
 
     - `validate`: validate(self: MaterialX.PyMaterialXCore.Element) -> tuple[bool, str]
         
-        Validate that the given element tree, including all descendants, is consistent with the MaterialX specification.
+        Validate that the given document is consistent with the MaterialX specification.
+        
+        Args:
+            message: An optional output string, to which a description of each error will be appended.
+        
+        Returns:
+            True if the document passes all tests, false otherwise.
 
 
     - `copyContentFrom`: copyContentFrom(self: MaterialX.PyMaterialXCore.Element, arg0: MaterialX.PyMaterialXCore.Element) -> None
@@ -8262,7 +8476,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-elementequivalenceoptions'></a>
 
-- **ElementEquivalenceOptions**: 
+- **ElementEquivalenceOptions**: A set of options for comparing the functional equivalence of elements.
 
   - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -8294,7 +8508,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-genericelement'></a>
 
-- **GenericElement**: 
+- **GenericElement**: A generic element subclass, for instantiating elements with unrecognized categories.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -8302,7 +8516,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-geomelement'></a>
 
-- **GeomElement**: 
+- **GeomElement**: The base class for geometric elements, which support bindings to geometries and geometric collections.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -8345,12 +8559,12 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getCollection`: getCollection(self: MaterialX.PyMaterialXCore.GeomElement) -> MaterialX_v1_39_5::Collection
         
-        Return the Collection, if any, with the given name.
+        Return the Collection that is assigned to this element.
 
 
 <a id='materialx-datatype-geominfo'></a>
 
-- **GeomInfo**: 
+- **GeomInfo**: A geometry info element within a Document.
 
   - Inherits from: [GeomElement](#materialx-datatype-geomelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -8427,7 +8641,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-geomprop'></a>
 
-- **GeomProp**: 
+- **GeomProp**: A geometric property element within a GeomInfo.
 
   - Inherits from: [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -8435,7 +8649,9 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-geompropdef'></a>
 
-- **GeomPropDef**: 
+- **GeomPropDef**: An element representing a declaration of geometric property data.
+
+A GeomPropDef element contains a reference to a geometric node and a set of modifiers for that node. For example, a world-space normal can be declared as a reference to the "normal" geometric node with a space setting of "world", or a specific set of texture coordinates can be declared as a reference to the "texcoord" geometric node with an index setting of "1".
 
   - Inherits from: [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -8470,11 +8686,11 @@ FLOAT, HALF, UINT16, UINT8
         
         1. getGeomProp(self: MaterialX.PyMaterialXCore.GeomPropDef) -> str
         
-        Return the GeomProp, if any, with the given name.
+        Return the geometric property string of this element.
         
         2. getGeomProp(self: MaterialX.PyMaterialXCore.GeomPropDef) -> str
         
-        Return the GeomProp, if any, with the given name.
+        Return the geometric property string of this element.
 
 
     - `setSpace`: setSpace(self: MaterialX.PyMaterialXCore.GeomPropDef, arg0: str) -> None
@@ -8511,7 +8727,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-graphelement'></a>
 
-- **GraphElement**: 
+- **GraphElement**: The base class for graph elements such as NodeGraph and Document.
 
   - Inherits from: [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -8580,7 +8796,7 @@ FLOAT, HALF, UINT16, UINT8
         Remove the Backdrop, if any, with the given name.
 
 
-    - `flattenSubgraphs`: flattenSubgraphs(self: MaterialX.PyMaterialXCore.GraphElement, target: str = '', filter: Callable[[MaterialX.PyMaterialXCore.Node], bool] = None) -> None
+    - `flattenSubgraphs`: flattenSubgraphs(self: MaterialX.PyMaterialXCore.GraphElement, target: str = '', filter: collections.abc.Callable[[MaterialX.PyMaterialXCore.Node], bool] = None) -> None
         
         Flatten all subgraphs at the root scope of this graph element, recursively replacing each graph-defined node with its equivalent node network.
         
@@ -8610,7 +8826,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-graphiterator'></a>
 
-- **GraphIterator**: 
+- **GraphIterator**: An iterator object representing the state of an upstream graph traversal.
 
   - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -8618,17 +8834,17 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getDownstreamElement`: getDownstreamElement(self: MaterialX.PyMaterialXCore.GraphIterator) -> MaterialX.PyMaterialXCore.Element
         
-        Return the downstream element of the edge.
+        Return the downstream element of the current edge.
 
 
     - `getConnectingElement`: getConnectingElement(self: MaterialX.PyMaterialXCore.GraphIterator) -> MaterialX.PyMaterialXCore.Element
         
-        Return the connecting element of the edge, if any.
+        Return the connecting element, if any, of the current edge.
 
 
     - `getUpstreamElement`: getUpstreamElement(self: MaterialX.PyMaterialXCore.GraphIterator) -> MaterialX.PyMaterialXCore.Element
         
-        Return the upstream element of the edge.
+        Return the upstream element of the current edge.
 
 
     - `getUpstreamIndex`: getUpstreamIndex(self: MaterialX.PyMaterialXCore.GraphIterator) -> int
@@ -8661,7 +8877,9 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-implementation'></a>
 
-- **Implementation**: 
+- **Implementation**: An implementation element within a Document.
+
+An Implementation is used to associate external source code with a specific NodeDef, providing a definition for the node that may either be universal or restricted to a specific target.
 
   - Inherits from: [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -8704,7 +8922,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getNodeDef`: getNodeDef(self: MaterialX.PyMaterialXCore.Implementation) -> MaterialX.PyMaterialXCore.NodeDef
         
-        Returns a nodedef for a given transform.
+        Return the NodeDef element referenced by the Implementation.
 
 
     - `setNodeGraph`: setNodeGraph(self: MaterialX.PyMaterialXCore.Implementation, arg0: str) -> None
@@ -8719,20 +8937,22 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getNodeGraph`: getNodeGraph(self: MaterialX.PyMaterialXCore.Implementation) -> str
         
-        Return the NodeGraph, if any, with the given name.
+        Return the nodegraph string for the Implementation.
 
 
   - Attributes: CATEGORY, FILE_ATTRIBUTE, FUNCTION_ATTRIBUTE
 
 <a id='materialx-datatype-inheritanceiterator'></a>
 
-- **InheritanceIterator**: 
+- **InheritanceIterator**: An iterator object representing the current state of an inheritance traversal.
 
   - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
 <a id='materialx-datatype-input'></a>
 
-- **Input**: 
+- **Input**: An input element within a Node or NodeDef.
+
+An Input holds either a uniform value or a connection to a spatially-varying Output, either of which may be modified within the scope of a Material.
 
   - Inherits from: [PortElement](#materialx-datatype-portelement), [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -8779,7 +8999,9 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-interfaceelement'></a>
 
-- **InterfaceElement**: 
+- **InterfaceElement**: The base class for interface elements such as Node, NodeDef, and NodeGraph.
+
+An InterfaceElement supports a set of Input and Output elements, with an API for setting their values.
 
   - Inherits from: [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -8900,7 +9122,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `addToken`: addToken(self: MaterialX.PyMaterialXCore.InterfaceElement, name: str = 'color3') -> MaterialX.PyMaterialXCore.Token
         
-        Add a Token to this element.
+        Add a Token to this interface.
         
         Args:
             name: The name of the new Token. If no name is specified, then a unique name will automatically be generated.
@@ -8970,7 +9192,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getTarget`: getTarget(self: MaterialX.PyMaterialXCore.InterfaceElement) -> str
         
-        Return a unique identifier for the target this generator is for.
+        Return the target string of this interface.
 
 
     - `setVersionString`: setVersionString(self: MaterialX.PyMaterialXCore.InterfaceElement, arg0: str) -> None
@@ -8988,7 +9210,7 @@ FLOAT, HALF, UINT16, UINT8
         Return the version string of this interface.
 
 
-    - `setVersionIntegers`: setVersionIntegers(self: MaterialX.PyMaterialXCore.InterfaceElement, arg0: int, arg1: int) -> None
+    - `setVersionIntegers`: setVersionIntegers(self: MaterialX.PyMaterialXCore.InterfaceElement, arg0: typing.SupportsInt, arg1: typing.SupportsInt) -> None
         
         Set the major and minor versions as an integer pair.
 
@@ -9011,6 +9233,12 @@ FLOAT, HALF, UINT16, UINT8
     - `getDeclaration`: getDeclaration(self: MaterialX.PyMaterialXCore.InterfaceElement, target: str = '') -> MaterialX.PyMaterialXCore.InterfaceElement
         
         Return the first declaration of this interface, optionally filtered by the given target name.
+        
+        Args:
+            target: An optional target name, which will be used to filter the declarations that are considered.
+        
+        Returns:
+            A shared pointer to declaration, or an empty shared pointer if no declaration was found.
 
 
     - `clearContent`: clearContent(self: MaterialX.PyMaterialXCore.InterfaceElement) -> None
@@ -9071,13 +9299,15 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-linearunitconverter'></a>
 
-- **LinearUnitConverter**: 
+- **LinearUnitConverter**: A converter class for linear units that require only a scalar multiplication.
 
   - Inherits from: [UnitConverter](#materialx-datatype-unitconverter), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
     - `create`: create(arg0: MaterialX.PyMaterialXCore.UnitTypeDef) -> MaterialX.PyMaterialXCore.LinearUnitConverter
+        
+        Creator.
 
 
     - `getUnitScale`: getUnitScale(self: MaterialX.PyMaterialXCore.LinearUnitConverter) -> dict[str, float]
@@ -9088,41 +9318,13 @@ FLOAT, HALF, UINT16, UINT8
     - `convert`: convert(*args, **kwargs)
         Overloaded function.
         
-        1. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: float, arg1: str, arg2: str) -> float
-        
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
+        1. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: typing.SupportsFloat, arg1: str, arg2: str) -> float
         
         2. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: MaterialX.PyMaterialXCore.Vector2, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector2
         
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
-        
         3. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: MaterialX.PyMaterialXCore.Vector3, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector3
         
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
-        
         4. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: MaterialX.PyMaterialXCore.Vector4, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector4
-        
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
 
 
     - `getUnitAsInteger`: getUnitAsInteger(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: str) -> int
@@ -9132,7 +9334,7 @@ FLOAT, HALF, UINT16, UINT8
         Returns -1 value if not found
 
 
-    - `getUnitFromInteger`: getUnitFromInteger(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: int) -> str
+    - `getUnitFromInteger`: getUnitFromInteger(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: typing.SupportsInt) -> str
         
         Given an integer index return the unit name in the map used by the converter.
         
@@ -9141,7 +9343,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-look'></a>
 
-- **Look**: 
+- **Look**: A look element within a Document.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9307,7 +9509,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-lookgroup'></a>
 
-- **LookGroup**: 
+- **LookGroup**: A look group element within a Document.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9315,7 +9517,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getLooks`: getLooks(self: MaterialX.PyMaterialXCore.LookGroup) -> str
         
-        Return a vector of all Look elements in the document.
+        Get comma-separated list of looks.
 
 
     - `setLooks`: setLooks(self: MaterialX.PyMaterialXCore.LookGroup, arg0: str) -> None
@@ -9337,7 +9539,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-materialassign'></a>
 
-- **MaterialAssign**: 
+- **MaterialAssign**: A material assignment element within a Look.
 
   - Inherits from: [GeomElement](#materialx-datatype-geomelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9360,7 +9562,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getMaterialOutputs`: getMaterialOutputs(self: MaterialX.PyMaterialXCore.MaterialAssign) -> list[MaterialX.PyMaterialXCore.Output]
         
-        Return material-type outputs for all nodegraphs in the document.
+        Return the outputs on any referenced material.
 
 
     - `setExclusive`: setExclusive(self: MaterialX.PyMaterialXCore.MaterialAssign, arg0: bool) -> None
@@ -9382,48 +9584,30 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-matrix33'></a>
 
-- **Matrix33**: 
+- **Matrix33**: A 3x3 matrix of floating-point values.
+
+Vector transformation methods follow the row-vector convention, with matrix-vector multiplication computed as v' = vM.
 
   - Inherits from: [MatrixBase](#materialx-datatype-matrixbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Matrix33) -> MaterialX.PyMaterialXCore.Matrix33
-        
-        Create a deep copy of the value.
 
 
-    - `isEquivalent`: isEquivalent(self: MaterialX.PyMaterialXCore.Matrix33, arg0: MaterialX.PyMaterialXCore.Matrix33, arg1: float) -> bool
-        
-        Return true if the given element tree, including all descendents, is considered to be equivalent to this one based on the equivalence criteria provided.
-        
-        Args:
-            rhs: Element to compare against
-            options: Equivalence criteria
-            message: Optional text description of differences
-        
-        Returns:
-            True if the elements are equivalent. False otherwise.
+    - `isEquivalent`: isEquivalent(self: MaterialX.PyMaterialXCore.Matrix33, arg0: MaterialX.PyMaterialXCore.Matrix33, arg1: typing.SupportsFloat) -> bool
 
 
     - `getTranspose`: getTranspose(self: MaterialX.PyMaterialXCore.Matrix33) -> MaterialX.PyMaterialXCore.Matrix33
-        
-        Return the transpose of the matrix.
 
 
     - `getDeterminant`: getDeterminant(self: MaterialX.PyMaterialXCore.Matrix33) -> float
-        
-        Return the determinant of the matrix.
 
 
     - `getAdjugate`: getAdjugate(self: MaterialX.PyMaterialXCore.Matrix33) -> MaterialX.PyMaterialXCore.Matrix33
-        
-        Return the adjugate of the matrix.
 
 
     - `getInverse`: getInverse(self: MaterialX.PyMaterialXCore.Matrix33) -> MaterialX.PyMaterialXCore.Matrix33
-        
-        Return the inverse of the matrix.
 
 
     - `createScale`: createScale(arg0: MaterialX.PyMaterialXCore.Vector2) -> MaterialX.PyMaterialXCore.Matrix33
@@ -9458,55 +9642,42 @@ FLOAT, HALF, UINT16, UINT8
         Transform the given 3D normal vector.
 
 
-    - `createRotation`: createRotation(arg0: float) -> MaterialX.PyMaterialXCore.Matrix33
+    - `createRotation`: createRotation(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix33
+        
+        Create a rotation matrix.
+        
+        Args:
+            angle: Angle in radians
 
 
   - Attributes: IDENTITY
 
 <a id='materialx-datatype-matrix44'></a>
 
-- **Matrix44**: 
+- **Matrix44**: A 4x4 matrix of floating-point values.
+
+Vector transformation methods follow the row-vector convention, with matrix-vector multiplication computed as v' = vM.
 
   - Inherits from: [MatrixBase](#materialx-datatype-matrixbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Matrix44) -> MaterialX.PyMaterialXCore.Matrix44
-        
-        Create a deep copy of the value.
 
 
-    - `isEquivalent`: isEquivalent(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Matrix44, arg1: float) -> bool
-        
-        Return true if the given element tree, including all descendents, is considered to be equivalent to this one based on the equivalence criteria provided.
-        
-        Args:
-            rhs: Element to compare against
-            options: Equivalence criteria
-            message: Optional text description of differences
-        
-        Returns:
-            True if the elements are equivalent. False otherwise.
+    - `isEquivalent`: isEquivalent(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Matrix44, arg1: typing.SupportsFloat) -> bool
 
 
     - `getTranspose`: getTranspose(self: MaterialX.PyMaterialXCore.Matrix44) -> MaterialX.PyMaterialXCore.Matrix44
-        
-        Return the transpose of the matrix.
 
 
     - `getDeterminant`: getDeterminant(self: MaterialX.PyMaterialXCore.Matrix44) -> float
-        
-        Return the determinant of the matrix.
 
 
     - `getAdjugate`: getAdjugate(self: MaterialX.PyMaterialXCore.Matrix44) -> MaterialX.PyMaterialXCore.Matrix44
-        
-        Return the adjugate of the matrix.
 
 
     - `getInverse`: getInverse(self: MaterialX.PyMaterialXCore.Matrix44) -> MaterialX.PyMaterialXCore.Matrix44
-        
-        Return the inverse of the matrix.
 
 
     - `createScale`: createScale(arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Matrix44
@@ -9523,17 +9694,17 @@ FLOAT, HALF, UINT16, UINT8
 
     - `multiply`: multiply(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Vector4) -> MaterialX.PyMaterialXCore.Vector4
         
-        Return the product of this matrix and a 3D vector.
+        Return the product of this matrix and a 4D vector.
 
 
     - `transformPoint`: transformPoint(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
         
-        Transform the given 2D point.
+        Transform the given 3D point.
 
 
     - `transformVector`: transformVector(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
         
-        Transform the given 2D direction vector.
+        Transform the given 3D direction vector.
 
 
     - `transformNormal`: transformNormal(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
@@ -9541,26 +9712,41 @@ FLOAT, HALF, UINT16, UINT8
         Transform the given 3D normal vector.
 
 
-    - `createRotationX`: createRotationX(arg0: float) -> MaterialX.PyMaterialXCore.Matrix44
+    - `createRotationX`: createRotationX(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix44
+        
+        Create a rotation matrix about the X-axis.
+        
+        Args:
+            angle: Angle in radians
 
 
-    - `createRotationY`: createRotationY(arg0: float) -> MaterialX.PyMaterialXCore.Matrix44
+    - `createRotationY`: createRotationY(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix44
+        
+        Create a rotation matrix about the Y-axis.
+        
+        Args:
+            angle: Angle in radians
 
 
-    - `createRotationZ`: createRotationZ(arg0: float) -> MaterialX.PyMaterialXCore.Matrix44
+    - `createRotationZ`: createRotationZ(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix44
+        
+        Create a rotation matrix about the Z-axis.
+        
+        Args:
+            angle: Angle in radians
 
 
   - Attributes: IDENTITY
 
 <a id='materialx-datatype-matrixbase'></a>
 
-- **MatrixBase**: 
+- **MatrixBase**: The base class for square matrices of scalar values.
 
   - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
 <a id='materialx-datatype-member'></a>
 
-- **Member**: 
+- **Member**: A member element within a TypeDef.
 
   - Inherits from: [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9568,7 +9754,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-newlineelement'></a>
 
-- **NewlineElement**: 
+- **NewlineElement**: An element representing a newline within a document.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9576,7 +9762,9 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-node'></a>
 
-- **Node**: 
+- **Node**: A node element within a NodeGraph or Document.
+
+A Node represents an instance of a NodeDef within a graph, and its Input elements apply specific values and connections to that instance.
 
   - Inherits from: [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9591,7 +9779,9 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getConnectedNode`: getConnectedNode(self: MaterialX.PyMaterialXCore.Node, arg0: str) -> MaterialX.PyMaterialXCore.Node
         
-        Return the node, if any, to which this input is connected.
+        Return the Node connected to the given input.
+        
+        If the given input is not present, then an empty NodePtr is returned.
 
 
     - `setConnectedNodeName`: setConnectedNodeName(self: MaterialX.PyMaterialXCore.Node, arg0: str, arg1: str) -> None
@@ -9608,12 +9798,25 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getNodeDef`: getNodeDef(self: MaterialX.PyMaterialXCore.Node, target: str = '', allowRoughMatch: bool = False) -> MaterialX.PyMaterialXCore.NodeDef
         
-        Returns a nodedef for a given transform.
+        Return the first NodeDef that declares this node, optionally filtered by the given target name.
+        
+        Args:
+            target: An optional target name, which will be used to filter the nodedefs that are considered.
+            allowRoughMatch: If specified, then a rough match will be allowed when an exact match is not found. An exact match requires that each node input corresponds to a nodedef input of the same name and type.
+        
+        Returns:
+            A NodeDef for this node, or an empty shared pointer if none was found.
 
 
     - `getImplementation`: getImplementation(self: MaterialX.PyMaterialXCore.Node, target: str = '') -> MaterialX.PyMaterialXCore.InterfaceElement
         
-        Return the Implementation, if any, with the given name.
+        Return the first implementation for this node, optionally filtered by the given target and language names.
+        
+        Args:
+            target: An optional target name, which will be used to filter the implementations that are considered.
+        
+        Returns:
+            An implementation for this node, or an empty shared pointer if none was found. Note that a node implementation may be either an Implementation element or a NodeGraph element.
 
 
     - `getDownstreamPorts`: getDownstreamPorts(self: MaterialX.PyMaterialXCore.Node) -> list[MaterialX.PyMaterialXCore.PortElement]
@@ -9649,7 +9852,9 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-nodedef'></a>
 
-- **NodeDef**: 
+- **NodeDef**: A node definition element within a Document.
+
+A NodeDef provides the declaration of a node interface, which may then be instantiated as a Node.
 
   - Inherits from: [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9685,16 +9890,16 @@ FLOAT, HALF, UINT16, UINT8
         Return the node group of the NodeDef.
 
 
-    - `getImplementation`: getImplementation(*args, **kwargs)
-        Overloaded function.
+    - `getImplementation`: getImplementation(self: MaterialX.PyMaterialXCore.NodeDef, target: str = '', resolveNodeGraph: bool = True) -> MaterialX.PyMaterialXCore.InterfaceElement
         
-        1. getImplementation(self: MaterialX.PyMaterialXCore.NodeDef, arg0: str) -> MaterialX.PyMaterialXCore.InterfaceElement
+        Return the first implementation for this nodedef, optionally filtered by the given target name.
         
-        Return the Implementation, if any, with the given name.
+        Args:
+            target: An optional target name, which will be used to filter the implementations that are considered.
+            resolveNodeGraph: Allow resolution of Implementation elements to their linked NodeGraph elements. Defaults to true.
         
-        2. getImplementation(self: MaterialX.PyMaterialXCore.NodeDef, target: str = '') -> MaterialX.PyMaterialXCore.InterfaceElement
-        
-        Return the Implementation, if any, with the given name.
+        Returns:
+            An implementation for this nodedef, or an empty shared pointer if none was found. Note that a node implementation may be either an Implementation element or a NodeGraph element.
 
 
     - `isVersionCompatible`: isVersionCompatible(self: MaterialX.PyMaterialXCore.NodeDef, arg0: str) -> bool
@@ -9708,7 +9913,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-nodegraph'></a>
 
-- **NodeGraph**: 
+- **NodeGraph**: A node graph element within a Document.
 
   - Inherits from: [GraphElement](#materialx-datatype-graphelement), [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9716,17 +9921,17 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getMaterialOutputs`: getMaterialOutputs(self: MaterialX.PyMaterialXCore.NodeGraph) -> list[MaterialX.PyMaterialXCore.Output]
         
-        Return material-type outputs for all nodegraphs in the document.
+        Return all material-type outputs of the nodegraph.
 
 
     - `setNodeDef`: setNodeDef(self: MaterialX.PyMaterialXCore.NodeGraph, arg0: MaterialX.PyMaterialXCore.NodeDef) -> None
         
-        Set the NodeDef element referenced by the Implementation.
+        Set the NodeDef element referenced by this NodeGraph.
 
 
     - `getNodeDef`: getNodeDef(self: MaterialX.PyMaterialXCore.NodeGraph) -> MaterialX.PyMaterialXCore.NodeDef
         
-        Returns a nodedef for a given transform.
+        Return the NodeDef element referenced by this NodeGraph.
 
 
     - `getDeclaration`: getDeclaration(self: MaterialX.PyMaterialXCore.NodeGraph, arg0: str) -> MaterialX.PyMaterialXCore.InterfaceElement
@@ -9765,7 +9970,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getDownstreamPorts`: getDownstreamPorts(self: MaterialX.PyMaterialXCore.NodeGraph) -> list[MaterialX.PyMaterialXCore.PortElement]
         
-        Return a vector of all downstream ports that connect to this node, ordered by the names of the port elements.
+        Return a vector of all downstream ports that connect to this graph, ordered by the names of the port elements.
 
 
   - Attributes: CATEGORY
@@ -9778,7 +9983,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-output'></a>
 
-- **Output**: 
+- **Output**: A spatially-varying output element within a NodeGraph or NodeDef.
 
   - Inherits from: [PortElement](#materialx-datatype-portelement), [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9793,7 +9998,9 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-portelement'></a>
 
-- **PortElement**: 
+- **PortElement**: The base class for port elements such as Input and Output.
+
+Port elements support spatially-varying upstream connections to nodes.
 
   - Inherits from: [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9841,33 +10048,31 @@ FLOAT, HALF, UINT16, UINT8
 
     - `setConnectedNode`: setConnectedNode(self: MaterialX.PyMaterialXCore.PortElement, arg0: MaterialX_v1_39_5::Node) -> None
         
-        Set the node to which the given input is connected, creating a child input if needed.
+        Set the node to which this element is connected.
         
-        If the node argument is null, then any existing node connection on the input will be cleared.
+        The given node must belong to the same node graph. If the node argument is null, then any existing node connection will be cleared.
 
 
     - `getConnectedNode`: getConnectedNode(self: MaterialX.PyMaterialXCore.PortElement) -> MaterialX_v1_39_5::Node
         
-        Return the node, if any, to which this input is connected.
+        Return the node, if any, to which this element is connected.
 
 
     - `setConnectedOutput`: setConnectedOutput(self: MaterialX.PyMaterialXCore.PortElement, arg0: MaterialX_v1_39_5::Output) -> None
         
-        Set the output to which the given input is connected, creating a child input if needed.
+        Set the output to which this input is connected.
         
-        If the node argument is null, then any existing output connection on the input will be cleared.
+        If the output argument is null, then any existing output connection will be cleared.
 
 
     - `getConnectedOutput`: getConnectedOutput(self: MaterialX.PyMaterialXCore.PortElement) -> MaterialX_v1_39_5::Output
         
-        Return the output connected to the given input.
-        
-        If the given input is not present, then an empty OutputPtr is returned.
+        Return the output, if any, to which this input is connected.
 
 
 <a id='materialx-datatype-property'></a>
 
-- **Property**: 
+- **Property**: A property element within a PropertySet.
 
   - Inherits from: [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9875,7 +10080,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-propertyassign'></a>
 
-- **PropertyAssign**: 
+- **PropertyAssign**: A property assignment element within a Look.
 
   - Inherits from: [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9933,14 +10138,14 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getCollection`: getCollection(self: MaterialX.PyMaterialXCore.PropertyAssign) -> MaterialX.PyMaterialXCore.Collection
         
-        Return the Collection, if any, with the given name.
+        Return the Collection that is assigned to this element.
 
 
   - Attributes: CATEGORY
 
 <a id='materialx-datatype-propertyset'></a>
 
-- **PropertySet**: 
+- **PropertySet**: A property set element within a Document.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -9979,7 +10184,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-propertysetassign'></a>
 
-- **PropertySetAssign**: 
+- **PropertySetAssign**: A property set assignment element within a Look.
 
   - Inherits from: [GeomElement](#materialx-datatype-geomelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10007,14 +10212,20 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getPropertySet`: getPropertySet(self: MaterialX.PyMaterialXCore.PropertySetAssign) -> MaterialX.PyMaterialXCore.PropertySet
         
-        Return the PropertySet, if any, with the given name.
+        Return the property set that is assigned to this element.
 
 
   - Attributes: CATEGORY
 
 <a id='materialx-datatype-stringresolver'></a>
 
-- **StringResolver**: 
+- **StringResolver**: A helper object for applying string modifiers to data values in the context of a specific element and geometry.
+
+A StringResolver may be constructed through the Element::createStringResolver method, which initializes it in the context of a specific element, geometry, and material.
+
+Calling the StringResolver::resolve method applies all modifiers to a particular string value.
+
+Methods such as StringResolver::setFilePrefix may be used to edit the stored string modifiers before calling StringResolver::resolve.
 
   - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10022,22 +10233,22 @@ FLOAT, HALF, UINT16, UINT8
 
     - `setFilePrefix`: setFilePrefix(self: MaterialX.PyMaterialXCore.StringResolver, arg0: str) -> None
         
-        Set the element's file prefix string.
+        Set the file prefix for this context.
 
 
     - `getFilePrefix`: getFilePrefix(self: MaterialX.PyMaterialXCore.StringResolver) -> str
         
-        Return the element's file prefix string.
+        Return the file prefix for this context.
 
 
     - `setGeomPrefix`: setGeomPrefix(self: MaterialX.PyMaterialXCore.StringResolver, arg0: str) -> None
         
-        Set the element's geom prefix string.
+        Set the geom prefix for this context.
 
 
     - `getGeomPrefix`: getGeomPrefix(self: MaterialX.PyMaterialXCore.StringResolver) -> str
         
-        Return the element's geom prefix string.
+        Return the geom prefix for this context.
 
 
     - `setUdimString`: setUdimString(self: MaterialX.PyMaterialXCore.StringResolver, arg0: str) -> None
@@ -10081,7 +10292,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-targetdef'></a>
 
-- **TargetDef**: 
+- **TargetDef**: A definition of an implementation target.
 
   - Inherits from: [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10098,7 +10309,9 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-token'></a>
 
-- **Token**: 
+- **Token**: A token element representing a string value.
+
+Token elements are used to define input and output values for string substitutions in image filenames.
 
   - Inherits from: [ValueElement](#materialx-datatype-valueelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10106,18 +10319,20 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-treeiterator'></a>
 
-- **TreeIterator**: 
+- **TreeIterator**: An iterator object representing the state of a tree traversal.
 
   - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
     - `getElement`: getElement(self: MaterialX.PyMaterialXCore.TreeIterator) -> MaterialX.PyMaterialXCore.Element
+        
+        Return the current element in the traversal.
 
 
     - `getElementDepth`: getElementDepth(self: MaterialX.PyMaterialXCore.TreeIterator) -> int
         
-        Return the element depth of the current traversal, where a single edge between two elements represents a depth of one.
+        Return the element depth of the current traversal, where the starting element represents a depth of zero.
 
 
     - `setPruneSubtree`: setPruneSubtree(self: MaterialX.PyMaterialXCore.TreeIterator, arg0: bool) -> None
@@ -10135,7 +10350,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-typedef'></a>
 
-- **TypeDef**: 
+- **TypeDef**: A type definition element within a Document.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10143,7 +10358,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `setSemantic`: setSemantic(self: MaterialX.PyMaterialXCore.TypeDef, arg0: str) -> None
         
-        Set the variable semantic of this port.
+        Set the semantic string of the TypeDef.
 
 
     - `hasSemantic`: hasSemantic(self: MaterialX.PyMaterialXCore.TypeDef) -> bool
@@ -10153,7 +10368,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getSemantic`: getSemantic(self: MaterialX.PyMaterialXCore.TypeDef) -> str
         
-        Return the variable semantic of this port.
+        Return the semantic string of the TypeDef.
 
 
     - `setContext`: setContext(self: MaterialX.PyMaterialXCore.TypeDef, arg0: str) -> None
@@ -10188,6 +10403,8 @@ FLOAT, HALF, UINT16, UINT8
 
 
     - `getMembers`: getMembers(self: MaterialX.PyMaterialXCore.TypeDef) -> list[MaterialX_v1_39_5::Member]
+        
+        Return a vector of all Member elements in the TypeDef.
 
 
     - `removeMember`: removeMember(self: MaterialX.PyMaterialXCore.TypeDef, arg0: str) -> None
@@ -10199,7 +10416,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-typedelement'></a>
 
-- **TypedElement**: 
+- **TypedElement**: The base class for typed elements.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10207,7 +10424,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `setType`: setType(self: MaterialX.PyMaterialXCore.TypedElement, arg0: str) -> None
         
-        Set the data type for this port.
+        Set the element's type string.
 
 
     - `hasType`: hasType(self: MaterialX.PyMaterialXCore.TypedElement) -> bool
@@ -10217,7 +10434,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getType`: getType(self: MaterialX.PyMaterialXCore.TypedElement) -> str
         
-        Get stream attribute name.
+        Return the element's type string.
 
 
     - `isColorType`: isColorType(self: MaterialX.PyMaterialXCore.TypedElement) -> bool
@@ -10232,7 +10449,9 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getTypeDef`: getTypeDef(self: MaterialX.PyMaterialXCore.TypedElement) -> MaterialX_v1_39_5::TypeDef
         
-        Return the TypeDef, if any, with the given name.
+        Return the TypeDef declaring the type string of this element.
+        
+        If no matching TypeDef is found, then an empty shared pointer is returned.
 
 
   - Attributes: TYPE_ATTRIBUTE
@@ -10246,13 +10465,9 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_boolean) -> bool
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_boolean) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: bool) -> MaterialX.PyMaterialXCore.Value
@@ -10269,16 +10484,12 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_booleanarray) -> list[bool]
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_booleanarray) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: list[bool]) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: collections.abc.Sequence[bool]) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -10292,13 +10503,9 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_color3) -> MaterialX_v1_39_5::Color3
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_color3) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Color3) -> MaterialX.PyMaterialXCore.Value
@@ -10315,13 +10522,9 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_color4) -> MaterialX_v1_39_5::Color4
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_color4) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Color4) -> MaterialX.PyMaterialXCore.Value
@@ -10338,16 +10541,12 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_float) -> float
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_float) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: float) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -10361,16 +10560,12 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_floatarray) -> list[float]
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_floatarray) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: list[float]) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: collections.abc.Sequence[typing.SupportsFloat]) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -10384,16 +10579,12 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_integer) -> int
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_integer) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: int) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: typing.SupportsInt) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -10407,16 +10598,12 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_integerarray) -> list[int]
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_integerarray) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: list[int]) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: collections.abc.Sequence[typing.SupportsInt]) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -10430,13 +10617,9 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_matrix33) -> MaterialX_v1_39_5::Matrix33
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_matrix33) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Matrix33) -> MaterialX.PyMaterialXCore.Value
@@ -10453,13 +10636,9 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_matrix44) -> MaterialX_v1_39_5::Matrix44
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_matrix44) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Matrix44) -> MaterialX.PyMaterialXCore.Value
@@ -10476,13 +10655,9 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_string) -> str
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_string) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: str) -> MaterialX.PyMaterialXCore.Value
@@ -10499,16 +10674,12 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_stringarray) -> list[str]
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_stringarray) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: list[str]) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: collections.abc.Sequence[str]) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -10522,13 +10693,9 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_vector2) -> MaterialX_v1_39_5::Vector2
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_vector2) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Vector2) -> MaterialX.PyMaterialXCore.Value
@@ -10545,13 +10712,9 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_vector3) -> MaterialX_v1_39_5::Vector3
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_vector3) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Vector3) -> MaterialX.PyMaterialXCore.Value
@@ -10568,13 +10731,9 @@ FLOAT, HALF, UINT16, UINT8
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_vector4) -> MaterialX_v1_39_5::Vector4
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_vector4) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Vector4) -> MaterialX.PyMaterialXCore.Value
@@ -10584,7 +10743,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-unit'></a>
 
-- **Unit**: 
+- **Unit**: A unit declaration within a UnitDef.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10592,7 +10751,9 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-unitconverter'></a>
 
-- **UnitConverter**: 
+- **UnitConverter**: An abstract base class for unit converters.
+
+Each unit converter instance is responsible for a single unit type.
 
   - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10601,66 +10762,36 @@ FLOAT, HALF, UINT16, UINT8
     - `convert`: convert(*args, **kwargs)
         Overloaded function.
         
-        1. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: float, arg1: str, arg2: str) -> float
-        
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
+        1. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: typing.SupportsFloat, arg1: str, arg2: str) -> float
         
         2. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: MaterialX.PyMaterialXCore.Vector2, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector2
         
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
-        
         3. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: MaterialX.PyMaterialXCore.Vector3, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector3
         
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
-        
         4. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: MaterialX.PyMaterialXCore.Vector4, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector4
-        
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
 
 
     - `getUnitAsInteger`: getUnitAsInteger(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: str) -> int
         
-        Given a unit name return a value that it can map to as an integer.
-        
-        Returns -1 value if not found
+        Given a unit name return a value that it can map to as an integer Returns -1 value if not found.
 
 
-    - `getUnitFromInteger`: getUnitFromInteger(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: int) -> str
+    - `getUnitFromInteger`: getUnitFromInteger(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: typing.SupportsInt) -> str
         
-        Given an integer index return the unit name in the map used by the converter.
-        
-        Returns Empty string if not found
+        Given an integer index return the unit name in the map used by the converter Returns Empty string if not found.
 
 
 <a id='materialx-datatype-unitconverterregistry'></a>
 
-- **UnitConverterRegistry**: 
+- **UnitConverterRegistry**: A registry for unit converters.
 
   - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
     - `create`: create() -> MaterialX.PyMaterialXCore.UnitConverterRegistry
+        
+        Creator.
 
 
     - `addUnitConverter`: addUnitConverter(self: MaterialX.PyMaterialXCore.UnitConverterRegistry, arg0: MaterialX.PyMaterialXCore.UnitTypeDef, arg1: MaterialX.PyMaterialXCore.UnitConverter) -> bool
@@ -10689,7 +10820,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-unitdef'></a>
 
-- **UnitDef**: 
+- **UnitDef**: A unit definition element within a Document.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10707,7 +10838,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getUnitType`: getUnitType(self: MaterialX.PyMaterialXCore.UnitDef) -> str
         
-        Return the unit type string.
+        Return the element's type string.
 
 
     - `addUnit`: addUnit(self: MaterialX.PyMaterialXCore.UnitDef, arg0: str) -> MaterialX.PyMaterialXCore.Unit
@@ -10723,7 +10854,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getUnit`: getUnit(self: MaterialX.PyMaterialXCore.UnitDef, arg0: str) -> MaterialX.PyMaterialXCore.Unit
         
-        Return the unit type for the value on this port.
+        Return the Unit, if any, with the given name.
 
 
     - `getUnits`: getUnits(self: MaterialX.PyMaterialXCore.UnitDef) -> list[MaterialX.PyMaterialXCore.Unit]
@@ -10735,7 +10866,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-unittypedef'></a>
 
-- **UnitTypeDef**: 
+- **UnitTypeDef**: A unit type definition element within a Document.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10743,14 +10874,14 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getUnitDefs`: getUnitDefs(self: MaterialX.PyMaterialXCore.UnitTypeDef) -> list[MaterialX.PyMaterialXCore.UnitDef]
         
-        Return a vector of all Member elements in the TypeDef.
+        Find all UnitDefs for the UnitTypeDef.
 
 
   - Attributes: CATEGORY
 
 <a id='materialx-datatype-value'></a>
 
-- **Value**: 
+- **Value**: A generic, discriminated value, whose type may be queried dynamically.
 
   - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10758,20 +10889,25 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.Value) -> str
         
-        Return value string.
+        Return the value string for this value.
 
 
     - `getTypeString`: getTypeString(self: MaterialX.PyMaterialXCore.Value) -> str
         
-        Return type string.
+        Return the type string for this value.
 
 
     - `createValueFromStrings`: createValueFromStrings(value: str, type: str, typeDefPtr: MaterialX_v1_39_5::TypeDef = None) -> MaterialX.PyMaterialXCore.Value
+        
+        Create a new value instance from value and type strings.
+        
+        Returns:
+            A shared pointer to a typed value, or an empty shared pointer if the conversion to the given data type cannot be performed.
 
 
 <a id='materialx-datatype-valueelement'></a>
 
-- **ValueElement**: 
+- **ValueElement**: The base class for elements that support typed values.
 
   - Inherits from: [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10789,7 +10925,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.ValueElement) -> str
         
-        Return value string.
+        Get the value string of a element.
 
 
     - `getResolvedValueString`: getResolvedValueString(self: MaterialX.PyMaterialXCore.ValueElement, resolver: MaterialX_v1_39_5::StringResolver = None) -> str
@@ -10832,7 +10968,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `setUnit`: setUnit(self: MaterialX.PyMaterialXCore.ValueElement, arg0: str) -> None
         
-        Set a unit type for the value on this port.
+        Set the unit string of an element.
 
 
     - `hasUnit`: hasUnit(self: MaterialX.PyMaterialXCore.ValueElement) -> bool
@@ -10842,7 +10978,7 @@ FLOAT, HALF, UINT16, UINT8
 
     - `getUnit`: getUnit(self: MaterialX.PyMaterialXCore.ValueElement) -> str
         
-        Return the unit type for the value on this port.
+        Return the unit string of an element.
 
 
     - `getActiveUnit`: getActiveUnit(self: MaterialX.PyMaterialXCore.ValueElement) -> str
@@ -10852,17 +10988,17 @@ FLOAT, HALF, UINT16, UINT8
 
     - `setUnitType`: setUnitType(self: MaterialX.PyMaterialXCore.ValueElement, arg0: str) -> None
         
-        Set the element's unittype string.
+        Set the unit type of an element.
 
 
     - `hasUnitType`: hasUnitType(self: MaterialX.PyMaterialXCore.ValueElement) -> bool
         
-        Return true if the given element has a unittype string.
+        Return true if the given element has a unit type.
 
 
     - `getUnitType`: getUnitType(self: MaterialX.PyMaterialXCore.ValueElement) -> str
         
-        Return the unit type string.
+        Return the unit type of an element.
 
 
     - `getIsUniform`: getIsUniform(self: MaterialX.PyMaterialXCore.ValueElement) -> bool
@@ -10888,7 +11024,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-variant'></a>
 
-- **Variant**: 
+- **Variant**: A variant element within a VariantSet.
 
   - Inherits from: [InterfaceElement](#materialx-datatype-interfaceelement), [TypedElement](#materialx-datatype-typedelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10896,7 +11032,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-variantassign'></a>
 
-- **VariantAssign**: 
+- **VariantAssign**: A variant assignment element within a Look.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10936,7 +11072,7 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-variantset'></a>
 
-- **VariantSet**: 
+- **VariantSet**: A variant set element within a Document.
 
   - Inherits from: [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -10972,32 +11108,22 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-vector2'></a>
 
-- **Vector2**: 
+- **Vector2**: A vector of two floating-point values.
 
   - Inherits from: [VectorBase](#materialx-datatype-vectorbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Vector2) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Vector2) -> MaterialX.PyMaterialXCore.Vector2
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Vector2, arg0: MaterialX.PyMaterialXCore.Vector2) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Vector2) -> MaterialX.PyMaterialXCore.Vector2
-        
-        Create a deep copy of the value.
 
 
     - `cross`: cross(self: MaterialX.PyMaterialXCore.Vector2, arg0: MaterialX.PyMaterialXCore.Vector2) -> float
@@ -11010,32 +11136,22 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-vector3'></a>
 
-- **Vector3**: 
+- **Vector3**: A vector of three floating-point values.
 
   - Inherits from: [VectorBase](#materialx-datatype-vectorbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Vector3) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Vector3, arg0: MaterialX.PyMaterialXCore.Vector3) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
-        
-        Create a deep copy of the value.
 
 
     - `cross`: cross(self: MaterialX.PyMaterialXCore.Vector3, arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
@@ -11048,32 +11164,22 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-vector4'></a>
 
-- **Vector4**: 
+- **Vector4**: A vector of four floating-point values.
 
   - Inherits from: [VectorBase](#materialx-datatype-vectorbase), [pybind11_object](#materialx-datatype-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Vector4) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Vector4) -> MaterialX.PyMaterialXCore.Vector4
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Vector4, arg0: MaterialX.PyMaterialXCore.Vector4) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Vector4) -> MaterialX.PyMaterialXCore.Vector4
-        
-        Create a deep copy of the value.
 
 
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Vector4) -> tuple[float, float, float, float]
@@ -11081,13 +11187,15 @@ FLOAT, HALF, UINT16, UINT8
 
 <a id='materialx-datatype-vectorbase'></a>
 
-- **VectorBase**: 
+- **VectorBase**: The base class for vectors of scalar values.
 
   - Inherits from: [pybind11_object](#materialx-datatype-pybind11_object)
 
 <a id='materialx-datatype-visibility'></a>
 
-- **Visibility**: 
+- **Visibility**: A visibility element within a Look.
+
+A Visibility describes the visibility relationship between two geometries or geometric collections.
 
   - Inherits from: [GeomElement](#materialx-datatype-geomelement), [Element](#materialx-datatype-element), [pybind11_object](#materialx-datatype-pybind11_object)
 
@@ -11155,13 +11263,13 @@ FLOAT, HALF, UINT16, UINT8
 
 - `createDocument`: createDocument() -> MaterialX_v1_39_5::Document
 
-Create a new document of the given subclass.
+- `createNamePath`: createNamePath(arg0: collections.abc.Sequence[str]) -> str
 
-Create a new Document.
-
-- `createNamePath`: createNamePath(arg0: list[str]) -> str
+Create a name path from a string vector.
 
 - `createValidName`: createValidName(name: str, replaceChar: str = '_') -> str
+
+Create a valid MaterialX name from the given string.
 
 - `createValueFromStrings`: Convert a MaterialX value and type strings to the corresponding
        Python value.  If the given conversion cannot be performed, then None
@@ -11173,11 +11281,35 @@ Create a new Document.
 
 - `geomStringsMatch`: geomStringsMatch(arg0: str, arg1: str, arg2: bool) -> bool
 
+Given two geometry strings, each containing an array of geom names, return true if they have any geometries in common.
+
+An empty geometry string matches no geometries, while the universal geometry string "/" matches all non-empty geometries.
+
+If the contains argument is set to true, then we require that a geom path in the first string completely contains a geom path in the second string.
+
 - `getConnectedOutputs`: getConnectedOutputs(arg0: MaterialX.PyMaterialXCore.Node) -> list[MaterialX.PyMaterialXCore.Output]
+
+Return a vector of all outputs connected to the given node's inputs.
 
 - `getGeometryBindings`: getGeometryBindings(materialNode: MaterialX_v1_39_5::Node, geom: str = '/') -> list[MaterialX.PyMaterialXCore.MaterialAssign]
 
+Return a vector of all MaterialAssign elements that bind this material node to the given geometry string.
+
+Args:
+    materialNode: Node to examine
+    geom: The geometry for which material bindings should be returned. By default, this argument is the universal geometry string "/", and all material bindings are returned.
+
+Returns:
+    Vector of MaterialAssign elements
+
 - `getShaderNodes`: getShaderNodes(materialNode: MaterialX.PyMaterialXCore.Node, nodeType: str = 'surfaceshader', target: str = '') -> list[MaterialX.PyMaterialXCore.Node]
+
+Return a vector of all shader nodes connected to the given material node's inputs, filtered by the given shader type and target.
+
+Args:
+    materialNode: The node to examine.
+    nodeType: THe shader node type to return. Defaults to the surface shader type.
+    target: An optional target name, which will be used to filter the returned nodes.
 
 - `getTypeString`: Return the MaterialX type string associated with the given Python value
        If the type of the given Python value is not recognized by MaterialX,
@@ -11197,13 +11329,15 @@ Create a new Document.
 
 - `getVersionIntegers`: getVersionIntegers() -> tuple[int, int, int]
 
-Return the major and minor versions as an integer pair.
+Return the major, minor, and build versions of the MaterialX library as an integer tuple.
 
 - `getVersionString`: getVersionString() -> str
 
-Return the version string of this interface.
+Return the version of the MaterialX library as a string.
 
 - `incrementName`: incrementName(arg0: str) -> str
+
+Increment the numeric suffix of a name.
 
 - `isColorType`: Return True if the given type is a MaterialX color.
 
@@ -11211,25 +11345,47 @@ Return the version string of this interface.
 
 - `isValidName`: isValidName(arg0: str) -> bool
 
-- `joinStrings`: joinStrings(arg0: list[str], arg1: str) -> str
+Return true if the given string is a valid MaterialX name.
+
+- `joinStrings`: joinStrings(arg0: collections.abc.Sequence[str], arg1: str) -> str
+
+Join a vector of substrings into a single string, placing the given separator between each substring.
 
 - `parentNamePath`: parentNamePath(arg0: str) -> str
 
+Given a name path, return the parent name path.
+
 - `prettyPrint`: prettyPrint(arg0: MaterialX.PyMaterialXCore.Element) -> str
 
-- `replaceSubstrings`: replaceSubstrings(arg0: str, arg1: dict[str, str]) -> str
+Pretty print the given element tree, calling asString recursively on each element in depth-first order.
+
+- `replaceSubstrings`: replaceSubstrings(arg0: str, arg1: collections.abc.Mapping[str, str]) -> str
+
+Apply the given substring substitutions to the input string.
 
 - `splitNamePath`: splitNamePath(arg0: str) -> list[str]
 
+Split a name path into string vector.
+
 - `splitString`: splitString(arg0: str, arg1: str) -> list[str]
+
+Split a string into a vector of substrings using the given set of separator characters.
 
 - `stringEndsWith`: stringEndsWith(arg0: str, arg1: str) -> bool
 
+Return true if the given string ends with the given suffix.
+
 - `stringStartsWith`: stringStartsWith(arg0: str, arg1: str) -> bool
+
+Return true if the given string starts with the given prefix.
 
 - `stringToBoolean`: Return boolean value found in a string. Throws and exception if a boolean value could not be parsed
 
 - `targetStringsMatch`: targetStringsMatch(arg0: str, arg1: str) -> bool
+
+Given two target strings, each containing a string array of target names, return true if they have any targets in common.
+
+An empty target string matches all targets.
 
 
 ### Globals
@@ -11246,7 +11402,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-attributedef'></a>
 
-- **AttributeDef**: 
+- **AttributeDef**: An attribute definition element within a Document.
 
   - Inherits from: [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -11279,7 +11435,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.AttributeDef) -> str
         
-        Return value string.
+        Get the value string of a element.
 
 
     - `setExportable`: setExportable(self: MaterialX.PyMaterialXCore.AttributeDef, arg0: bool) -> None
@@ -11298,7 +11454,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-backdrop'></a>
 
-- **Backdrop**: 
+- **Backdrop**: A layout element used to contain, group and document nodes within a graph.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -11319,7 +11475,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Return the contains string for this backdrop.
 
 
-    - `setWidth`: setWidth(self: MaterialX.PyMaterialXCore.Backdrop, arg0: float) -> None
+    - `setWidth`: setWidth(self: MaterialX.PyMaterialXCore.Backdrop, arg0: typing.SupportsFloat) -> None
         
         Set the width attribute of the backdrop.
 
@@ -11334,7 +11490,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Return the width attribute of the backdrop.
 
 
-    - `setHeight`: setHeight(self: MaterialX.PyMaterialXCore.Backdrop, arg0: float) -> None
+    - `setHeight`: setHeight(self: MaterialX.PyMaterialXCore.Backdrop, arg0: typing.SupportsFloat) -> None
         
         Set the height attribute of the backdrop.
 
@@ -11349,7 +11505,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Return the height attribute of the backdrop.
 
 
-    - `setContainsElements`: setContainsElements(self: MaterialX.PyMaterialXCore.Backdrop, arg0: list[MaterialX.PyMaterialXCore.TypedElement]) -> None
+    - `setContainsElements`: setContainsElements(self: MaterialX.PyMaterialXCore.Backdrop, arg0: collections.abc.Sequence[MaterialX.PyMaterialXCore.TypedElement]) -> None
         
         Set the vector of elements that this backdrop contains.
 
@@ -11363,7 +11519,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-collection'></a>
 
-- **Collection**: 
+- **Collection**: A collection element within a Document.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -11419,7 +11575,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Set the collection that is directly included by this element.
 
 
-    - `setIncludeCollections`: setIncludeCollections(self: MaterialX.PyMaterialXCore.Collection, arg0: list[MaterialX.PyMaterialXCore.Collection]) -> None
+    - `setIncludeCollections`: setIncludeCollections(self: MaterialX.PyMaterialXCore.Collection, arg0: collections.abc.Sequence[MaterialX.PyMaterialXCore.Collection]) -> None
         
         Set the vector of collections that are directly included by this element.
 
@@ -11443,32 +11599,22 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-color3'></a>
 
-- **Color3**: 
+- **Color3**: A three-component color value.
 
   - Inherits from: [VectorBase](#materialx-main-vectorbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Color3) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Color3) -> MaterialX.PyMaterialXCore.Color3
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Color3, arg0: MaterialX.PyMaterialXCore.Color3) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Color3) -> MaterialX.PyMaterialXCore.Color3
-        
-        Create a deep copy of the value.
 
 
     - `linearToSrgb`: linearToSrgb(self: MaterialX.PyMaterialXCore.Color3) -> MaterialX.PyMaterialXCore.Color3
@@ -11486,32 +11632,22 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-color4'></a>
 
-- **Color4**: 
+- **Color4**: A four-component color value.
 
   - Inherits from: [VectorBase](#materialx-main-vectorbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Color4) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Color4) -> MaterialX.PyMaterialXCore.Color4
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Color4, arg0: MaterialX.PyMaterialXCore.Color4) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Color4) -> MaterialX.PyMaterialXCore.Color4
-        
-        Create a deep copy of the value.
 
 
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Color4) -> tuple[float, float, float, float]
@@ -11519,7 +11655,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-commentelement'></a>
 
-- **CommentElement**: 
+- **CommentElement**: An element representing a block of descriptive text within a document, which will be stored a comment when the document is written out.
+
+The comment text may be accessed with the methods Element::setDocString and Element::getDocString.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -11527,7 +11665,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-document'></a>
 
-- **Document**: 
+- **Document**: A MaterialX document, which represents the top-level element in the MaterialX ownership hierarchy.
+
+Use the factory function createDocument() to create a Document instance.
 
   - Inherits from: [GraphElement](#materialx-main-graphelement), [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -11535,14 +11675,12 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `initialize`: initialize(self: MaterialX.PyMaterialXCore.Document) -> None
         
-        Initialize with the given implementation element.
-        
-        Initialization must set the name and hash for the implementation, as well as any other data needed to emit code for the node.
+        Initialize the document, removing any existing content.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Document) -> MaterialX.PyMaterialXCore.Document
         
-        Create a deep copy of the value.
+        Create a deep copy of the document.
 
 
     - `setDataLibrary`: setDataLibrary(self: MaterialX.PyMaterialXCore.Document, arg0: MaterialX.PyMaterialXCore.Document) -> None
@@ -11797,7 +11935,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getNodeDef`: getNodeDef(self: MaterialX.PyMaterialXCore.Document, arg0: str) -> MaterialX.PyMaterialXCore.NodeDef
         
-        Returns a nodedef for a given transform.
+        Return the NodeDef, if any, with the given name.
 
 
     - `getNodeDefs`: getNodeDefs(self: MaterialX.PyMaterialXCore.Document) -> list[MaterialX.PyMaterialXCore.NodeDef]
@@ -12031,7 +12169,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-edge'></a>
 
-- **Edge**: 
+- **Edge**: An edge between two connected Elements, returned during graph traversal.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
@@ -12054,12 +12192,14 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getName`: getName(self: MaterialX.PyMaterialXCore.Edge) -> str
         
-        Return the ColorManagementSystem name.
+        Return the name of this edge, if any.
 
 
 <a id='materialx-main-element'></a>
 
-- **Element**: 
+- **Element**: The base class for MaterialX elements.
+
+An Element is a named object within a Document, which may possess any number of child elements and attributes.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
@@ -12097,7 +12237,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getName`: getName(self: MaterialX.PyMaterialXCore.Element) -> str
         
-        Return the ColorManagementSystem name.
+        Return the element's name string.
 
 
     - `getNamePath`: getNamePath(self: MaterialX.PyMaterialXCore.Element, relativeTo: MaterialX.PyMaterialXCore.Element = None) -> str
@@ -12272,7 +12412,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         The returned vector maintains the order in which children were added.
 
 
-    - `setChildIndex`: setChildIndex(self: MaterialX.PyMaterialXCore.Element, arg0: str, arg1: int) -> None
+    - `setChildIndex`: setChildIndex(self: MaterialX.PyMaterialXCore.Element, arg0: str, arg1: typing.SupportsInt) -> None
         
         Set the index of the child, if any, with the given name.
         
@@ -12319,23 +12459,15 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 
     - `getSelf`: getSelf(self: MaterialX.PyMaterialXCore.Element) -> MaterialX.PyMaterialXCore.Element
-        
-        Return our self pointer.
 
 
     - `getParent`: getParent(self: MaterialX.PyMaterialXCore.Element) -> MaterialX.PyMaterialXCore.Element
-        
-        Return our parent element.
 
 
     - `getRoot`: getRoot(self: MaterialX.PyMaterialXCore.Element) -> MaterialX.PyMaterialXCore.Element
-        
-        Return the root element of our tree.
 
 
     - `getDocument`: getDocument(self: MaterialX.PyMaterialXCore.Element) -> MaterialX_v1_39_5::Document
-        
-        Return the root document of our tree.
 
 
     - `traverseTree`: traverseTree(self: MaterialX.PyMaterialXCore.Element) -> MaterialX_v1_39_5::TreeIterator
@@ -12354,7 +12486,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
             A GraphIterator object.
 
 
-    - `getUpstreamEdge`: getUpstreamEdge(self: MaterialX.PyMaterialXCore.Element, index: int = 0) -> MaterialX_v1_39_5::Edge
+    - `getUpstreamEdge`: getUpstreamEdge(self: MaterialX.PyMaterialXCore.Element, index: typing.SupportsInt = 0) -> MaterialX_v1_39_5::Edge
         
         Return the Edge with the given index that lies directly upstream from this element in the dataflow graph.
         
@@ -12370,9 +12502,15 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Return the number of queryable upstream edges for this element.
 
 
-    - `getUpstreamElement`: getUpstreamElement(self: MaterialX.PyMaterialXCore.Element, index: int = 0) -> MaterialX.PyMaterialXCore.Element
+    - `getUpstreamElement`: getUpstreamElement(self: MaterialX.PyMaterialXCore.Element, index: typing.SupportsInt = 0) -> MaterialX.PyMaterialXCore.Element
         
-        Return the upstream element of the edge.
+        Return the Element with the given index that lies directly upstream from this one in the dataflow graph.
+        
+        Args:
+            index: An optional index of the element to be returned, where the valid index range may be determined with getUpstreamEdgeCount.
+        
+        Returns:
+            The upstream Element, if valid, or an empty ElementPtr.
 
 
     - `traverseInheritance`: traverseInheritance(self: MaterialX.PyMaterialXCore.Element) -> MaterialX_v1_39_5::InheritanceIterator
@@ -12408,7 +12546,13 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `validate`: validate(self: MaterialX.PyMaterialXCore.Element) -> tuple[bool, str]
         
-        Validate that the given element tree, including all descendants, is consistent with the MaterialX specification.
+        Validate that the given document is consistent with the MaterialX specification.
+        
+        Args:
+            message: An optional output string, to which a description of each error will be appended.
+        
+        Returns:
+            True if the document passes all tests, false otherwise.
 
 
     - `copyContentFrom`: copyContentFrom(self: MaterialX.PyMaterialXCore.Element, arg0: MaterialX.PyMaterialXCore.Element) -> None
@@ -12470,7 +12614,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-elementequivalenceoptions'></a>
 
-- **ElementEquivalenceOptions**: 
+- **ElementEquivalenceOptions**: A set of options for comparing the functional equivalence of elements.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
@@ -12514,15 +12658,15 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-filepath'></a>
 
-- **FilePath**: 
+- **FilePath**: A generic file path, supporting both syntactic and file system operations.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
-    - `asString`: asString(self: MaterialX.PyMaterialXFormat.FilePath, format: MaterialX.PyMaterialXFormat.Format = <Format.FormatWindows: 0>) -> str
+    - `asString`: asString(self: MaterialX.PyMaterialXFormat.FilePath, format: MaterialX.PyMaterialXFormat.Format = <Format.FormatPosix: 1>) -> str
         
-        Return a single-line description of this element, including its category, name, and attributes.
+        Return this path as a standard string with the given format.
 
 
     - `isEmpty`: isEmpty(self: MaterialX.PyMaterialXFormat.FilePath) -> bool
@@ -12587,6 +12731,8 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `getFilesInDirectory`: getFilesInDirectory(self: MaterialX.PyMaterialXFormat.FilePath, arg0: str) -> list[MaterialX.PyMaterialXFormat.FilePath]
         
         Return a vector of all files in the given directory with the given extension.
+        
+        If extension is empty all files are returned.
 
 
     - `getSubDirectories`: getSubDirectories(self: MaterialX.PyMaterialXFormat.FilePath) -> list[MaterialX.PyMaterialXFormat.FilePath]
@@ -12600,22 +12746,26 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 
     - `getCurrentPath`: getCurrentPath() -> MaterialX.PyMaterialXFormat.FilePath
+        
+        Return the current working directory of the file system.
 
 
     - `getModulePath`: getModulePath() -> MaterialX.PyMaterialXFormat.FilePath
+        
+        Return the directory containing the executable module.
 
 
 <a id='materialx-main-filesearchpath'></a>
 
-- **FileSearchPath**: 
+- **FileSearchPath**: A sequence of file paths, which may be queried to find the first instance of a given filename on the file system.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
-    - `asString`: asString(self: MaterialX.PyMaterialXFormat.FileSearchPath, sep: str = ';') -> str
+    - `asString`: asString(self: MaterialX.PyMaterialXFormat.FileSearchPath, sep: str = ':') -> str
         
-        Return a single-line description of this element, including its category, name, and attributes.
+        Convert this sequence to a string using the given separator.
 
 
     - `append`: append(*args, **kwargs)
@@ -12623,11 +12773,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         
         1. append(self: MaterialX.PyMaterialXFormat.FileSearchPath, arg0: MaterialX.PyMaterialXFormat.FilePath) -> None
         
-        Append the given search path to the sequence.
-        
         2. append(self: MaterialX.PyMaterialXFormat.FileSearchPath, arg0: MaterialX.PyMaterialXFormat.FileSearchPath) -> None
-        
-        Append the given search path to the sequence.
 
 
     - `prepend`: prepend(self: MaterialX.PyMaterialXFormat.FileSearchPath, arg0: MaterialX.PyMaterialXFormat.FilePath) -> None
@@ -12642,12 +12788,12 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `size`: size(self: MaterialX.PyMaterialXFormat.FileSearchPath) -> int
         
-        Return the number of strings in the path.
+        Return the number of paths in the sequence.
 
 
     - `isEmpty`: isEmpty(self: MaterialX.PyMaterialXFormat.FileSearchPath) -> bool
         
-        Return true if the given path is empty.
+        Return true if the search path is empty.
 
 
     - `find`: find(self: MaterialX.PyMaterialXFormat.FileSearchPath, arg0: MaterialX.PyMaterialXFormat.FilePath) -> MaterialX.PyMaterialXFormat.FilePath
@@ -12673,7 +12819,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-genericelement'></a>
 
-- **GenericElement**: 
+- **GenericElement**: A generic element subclass, for instantiating elements with unrecognized categories.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -12681,7 +12827,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-geomelement'></a>
 
-- **GeomElement**: 
+- **GeomElement**: The base class for geometric elements, which support bindings to geometries and geometric collections.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -12724,12 +12870,12 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getCollection`: getCollection(self: MaterialX.PyMaterialXCore.GeomElement) -> MaterialX_v1_39_5::Collection
         
-        Return the Collection, if any, with the given name.
+        Return the Collection that is assigned to this element.
 
 
 <a id='materialx-main-geominfo'></a>
 
-- **GeomInfo**: 
+- **GeomInfo**: A geometry info element within a Document.
 
   - Inherits from: [GeomElement](#materialx-main-geomelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -12806,7 +12952,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-geomprop'></a>
 
-- **GeomProp**: 
+- **GeomProp**: A geometric property element within a GeomInfo.
 
   - Inherits from: [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -12814,7 +12960,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-geompropdef'></a>
 
-- **GeomPropDef**: 
+- **GeomPropDef**: An element representing a declaration of geometric property data.
+
+A GeomPropDef element contains a reference to a geometric node and a set of modifiers for that node. For example, a world-space normal can be declared as a reference to the "normal" geometric node with a space setting of "world", or a specific set of texture coordinates can be declared as a reference to the "texcoord" geometric node with an index setting of "1".
 
   - Inherits from: [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -12849,11 +12997,11 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         
         1. getGeomProp(self: MaterialX.PyMaterialXCore.GeomPropDef) -> str
         
-        Return the GeomProp, if any, with the given name.
+        Return the geometric property string of this element.
         
         2. getGeomProp(self: MaterialX.PyMaterialXCore.GeomPropDef) -> str
         
-        Return the GeomProp, if any, with the given name.
+        Return the geometric property string of this element.
 
 
     - `setSpace`: setSpace(self: MaterialX.PyMaterialXCore.GeomPropDef, arg0: str) -> None
@@ -12890,7 +13038,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-graphelement'></a>
 
-- **GraphElement**: 
+- **GraphElement**: The base class for graph elements such as NodeGraph and Document.
 
   - Inherits from: [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -12959,7 +13107,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Remove the Backdrop, if any, with the given name.
 
 
-    - `flattenSubgraphs`: flattenSubgraphs(self: MaterialX.PyMaterialXCore.GraphElement, target: str = '', filter: Callable[[MaterialX.PyMaterialXCore.Node], bool] = None) -> None
+    - `flattenSubgraphs`: flattenSubgraphs(self: MaterialX.PyMaterialXCore.GraphElement, target: str = '', filter: collections.abc.Callable[[MaterialX.PyMaterialXCore.Node], bool] = None) -> None
         
         Flatten all subgraphs at the root scope of this graph element, recursively replacing each graph-defined node with its equivalent node network.
         
@@ -12989,7 +13137,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-graphiterator'></a>
 
-- **GraphIterator**: 
+- **GraphIterator**: An iterator object representing the state of an upstream graph traversal.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
@@ -12997,17 +13145,17 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getDownstreamElement`: getDownstreamElement(self: MaterialX.PyMaterialXCore.GraphIterator) -> MaterialX.PyMaterialXCore.Element
         
-        Return the downstream element of the edge.
+        Return the downstream element of the current edge.
 
 
     - `getConnectingElement`: getConnectingElement(self: MaterialX.PyMaterialXCore.GraphIterator) -> MaterialX.PyMaterialXCore.Element
         
-        Return the connecting element of the edge, if any.
+        Return the connecting element, if any, of the current edge.
 
 
     - `getUpstreamElement`: getUpstreamElement(self: MaterialX.PyMaterialXCore.GraphIterator) -> MaterialX.PyMaterialXCore.Element
         
-        Return the upstream element of the edge.
+        Return the upstream element of the current edge.
 
 
     - `getUpstreamIndex`: getUpstreamIndex(self: MaterialX.PyMaterialXCore.GraphIterator) -> int
@@ -13040,7 +13188,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-implementation'></a>
 
-- **Implementation**: 
+- **Implementation**: An implementation element within a Document.
+
+An Implementation is used to associate external source code with a specific NodeDef, providing a definition for the node that may either be universal or restricted to a specific target.
 
   - Inherits from: [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -13083,7 +13233,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getNodeDef`: getNodeDef(self: MaterialX.PyMaterialXCore.Implementation) -> MaterialX.PyMaterialXCore.NodeDef
         
-        Returns a nodedef for a given transform.
+        Return the NodeDef element referenced by the Implementation.
 
 
     - `setNodeGraph`: setNodeGraph(self: MaterialX.PyMaterialXCore.Implementation, arg0: str) -> None
@@ -13098,20 +13248,22 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getNodeGraph`: getNodeGraph(self: MaterialX.PyMaterialXCore.Implementation) -> str
         
-        Return the NodeGraph, if any, with the given name.
+        Return the nodegraph string for the Implementation.
 
 
   - Attributes: CATEGORY, FILE_ATTRIBUTE, FUNCTION_ATTRIBUTE
 
 <a id='materialx-main-inheritanceiterator'></a>
 
-- **InheritanceIterator**: 
+- **InheritanceIterator**: An iterator object representing the current state of an inheritance traversal.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
 <a id='materialx-main-input'></a>
 
-- **Input**: 
+- **Input**: An input element within a Node or NodeDef.
+
+An Input holds either a uniform value or a connection to a spatially-varying Output, either of which may be modified within the scope of a Material.
 
   - Inherits from: [PortElement](#materialx-main-portelement), [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -13158,7 +13310,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-interfaceelement'></a>
 
-- **InterfaceElement**: 
+- **InterfaceElement**: The base class for interface elements such as Node, NodeDef, and NodeGraph.
+
+An InterfaceElement supports a set of Input and Output elements, with an API for setting their values.
 
   - Inherits from: [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -13279,7 +13433,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `addToken`: addToken(self: MaterialX.PyMaterialXCore.InterfaceElement, name: str = 'color3') -> MaterialX.PyMaterialXCore.Token
         
-        Add a Token to this element.
+        Add a Token to this interface.
         
         Args:
             name: The name of the new Token. If no name is specified, then a unique name will automatically be generated.
@@ -13349,7 +13503,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getTarget`: getTarget(self: MaterialX.PyMaterialXCore.InterfaceElement) -> str
         
-        Return a unique identifier for the target this generator is for.
+        Return the target string of this interface.
 
 
     - `setVersionString`: setVersionString(self: MaterialX.PyMaterialXCore.InterfaceElement, arg0: str) -> None
@@ -13367,7 +13521,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Return the version string of this interface.
 
 
-    - `setVersionIntegers`: setVersionIntegers(self: MaterialX.PyMaterialXCore.InterfaceElement, arg0: int, arg1: int) -> None
+    - `setVersionIntegers`: setVersionIntegers(self: MaterialX.PyMaterialXCore.InterfaceElement, arg0: typing.SupportsInt, arg1: typing.SupportsInt) -> None
         
         Set the major and minor versions as an integer pair.
 
@@ -13390,6 +13544,12 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `getDeclaration`: getDeclaration(self: MaterialX.PyMaterialXCore.InterfaceElement, target: str = '') -> MaterialX.PyMaterialXCore.InterfaceElement
         
         Return the first declaration of this interface, optionally filtered by the given target name.
+        
+        Args:
+            target: An optional target name, which will be used to filter the declarations that are considered.
+        
+        Returns:
+            A shared pointer to declaration, or an empty shared pointer if no declaration was found.
 
 
     - `clearContent`: clearContent(self: MaterialX.PyMaterialXCore.InterfaceElement) -> None
@@ -13450,13 +13610,15 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-linearunitconverter'></a>
 
-- **LinearUnitConverter**: 
+- **LinearUnitConverter**: A converter class for linear units that require only a scalar multiplication.
 
   - Inherits from: [UnitConverter](#materialx-main-unitconverter), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
     - `create`: create(arg0: MaterialX.PyMaterialXCore.UnitTypeDef) -> MaterialX.PyMaterialXCore.LinearUnitConverter
+        
+        Creator.
 
 
     - `getUnitScale`: getUnitScale(self: MaterialX.PyMaterialXCore.LinearUnitConverter) -> dict[str, float]
@@ -13467,41 +13629,13 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `convert`: convert(*args, **kwargs)
         Overloaded function.
         
-        1. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: float, arg1: str, arg2: str) -> float
-        
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
+        1. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: typing.SupportsFloat, arg1: str, arg2: str) -> float
         
         2. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: MaterialX.PyMaterialXCore.Vector2, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector2
         
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
-        
         3. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: MaterialX.PyMaterialXCore.Vector3, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector3
         
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
-        
         4. convert(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: MaterialX.PyMaterialXCore.Vector4, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector4
-        
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
 
 
     - `getUnitAsInteger`: getUnitAsInteger(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: str) -> int
@@ -13511,7 +13645,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Returns -1 value if not found
 
 
-    - `getUnitFromInteger`: getUnitFromInteger(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: int) -> str
+    - `getUnitFromInteger`: getUnitFromInteger(self: MaterialX.PyMaterialXCore.LinearUnitConverter, arg0: typing.SupportsInt) -> str
         
         Given an integer index return the unit name in the map used by the converter.
         
@@ -13520,7 +13654,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-look'></a>
 
-- **Look**: 
+- **Look**: A look element within a Document.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -13686,7 +13820,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-lookgroup'></a>
 
-- **LookGroup**: 
+- **LookGroup**: A look group element within a Document.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -13694,7 +13828,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getLooks`: getLooks(self: MaterialX.PyMaterialXCore.LookGroup) -> str
         
-        Return a vector of all Look elements in the document.
+        Get comma-separated list of looks.
 
 
     - `setLooks`: setLooks(self: MaterialX.PyMaterialXCore.LookGroup, arg0: str) -> None
@@ -13716,7 +13850,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-materialassign'></a>
 
-- **MaterialAssign**: 
+- **MaterialAssign**: A material assignment element within a Look.
 
   - Inherits from: [GeomElement](#materialx-main-geomelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -13739,7 +13873,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getMaterialOutputs`: getMaterialOutputs(self: MaterialX.PyMaterialXCore.MaterialAssign) -> list[MaterialX.PyMaterialXCore.Output]
         
-        Return material-type outputs for all nodegraphs in the document.
+        Return the outputs on any referenced material.
 
 
     - `setExclusive`: setExclusive(self: MaterialX.PyMaterialXCore.MaterialAssign, arg0: bool) -> None
@@ -13761,48 +13895,30 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-matrix33'></a>
 
-- **Matrix33**: 
+- **Matrix33**: A 3x3 matrix of floating-point values.
+
+Vector transformation methods follow the row-vector convention, with matrix-vector multiplication computed as v' = vM.
 
   - Inherits from: [MatrixBase](#materialx-main-matrixbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Matrix33) -> MaterialX.PyMaterialXCore.Matrix33
-        
-        Create a deep copy of the value.
 
 
-    - `isEquivalent`: isEquivalent(self: MaterialX.PyMaterialXCore.Matrix33, arg0: MaterialX.PyMaterialXCore.Matrix33, arg1: float) -> bool
-        
-        Return true if the given element tree, including all descendents, is considered to be equivalent to this one based on the equivalence criteria provided.
-        
-        Args:
-            rhs: Element to compare against
-            options: Equivalence criteria
-            message: Optional text description of differences
-        
-        Returns:
-            True if the elements are equivalent. False otherwise.
+    - `isEquivalent`: isEquivalent(self: MaterialX.PyMaterialXCore.Matrix33, arg0: MaterialX.PyMaterialXCore.Matrix33, arg1: typing.SupportsFloat) -> bool
 
 
     - `getTranspose`: getTranspose(self: MaterialX.PyMaterialXCore.Matrix33) -> MaterialX.PyMaterialXCore.Matrix33
-        
-        Return the transpose of the matrix.
 
 
     - `getDeterminant`: getDeterminant(self: MaterialX.PyMaterialXCore.Matrix33) -> float
-        
-        Return the determinant of the matrix.
 
 
     - `getAdjugate`: getAdjugate(self: MaterialX.PyMaterialXCore.Matrix33) -> MaterialX.PyMaterialXCore.Matrix33
-        
-        Return the adjugate of the matrix.
 
 
     - `getInverse`: getInverse(self: MaterialX.PyMaterialXCore.Matrix33) -> MaterialX.PyMaterialXCore.Matrix33
-        
-        Return the inverse of the matrix.
 
 
     - `createScale`: createScale(arg0: MaterialX.PyMaterialXCore.Vector2) -> MaterialX.PyMaterialXCore.Matrix33
@@ -13837,55 +13953,42 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Transform the given 3D normal vector.
 
 
-    - `createRotation`: createRotation(arg0: float) -> MaterialX.PyMaterialXCore.Matrix33
+    - `createRotation`: createRotation(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix33
+        
+        Create a rotation matrix.
+        
+        Args:
+            angle: Angle in radians
 
 
   - Attributes: IDENTITY
 
 <a id='materialx-main-matrix44'></a>
 
-- **Matrix44**: 
+- **Matrix44**: A 4x4 matrix of floating-point values.
+
+Vector transformation methods follow the row-vector convention, with matrix-vector multiplication computed as v' = vM.
 
   - Inherits from: [MatrixBase](#materialx-main-matrixbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Matrix44) -> MaterialX.PyMaterialXCore.Matrix44
-        
-        Create a deep copy of the value.
 
 
-    - `isEquivalent`: isEquivalent(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Matrix44, arg1: float) -> bool
-        
-        Return true if the given element tree, including all descendents, is considered to be equivalent to this one based on the equivalence criteria provided.
-        
-        Args:
-            rhs: Element to compare against
-            options: Equivalence criteria
-            message: Optional text description of differences
-        
-        Returns:
-            True if the elements are equivalent. False otherwise.
+    - `isEquivalent`: isEquivalent(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Matrix44, arg1: typing.SupportsFloat) -> bool
 
 
     - `getTranspose`: getTranspose(self: MaterialX.PyMaterialXCore.Matrix44) -> MaterialX.PyMaterialXCore.Matrix44
-        
-        Return the transpose of the matrix.
 
 
     - `getDeterminant`: getDeterminant(self: MaterialX.PyMaterialXCore.Matrix44) -> float
-        
-        Return the determinant of the matrix.
 
 
     - `getAdjugate`: getAdjugate(self: MaterialX.PyMaterialXCore.Matrix44) -> MaterialX.PyMaterialXCore.Matrix44
-        
-        Return the adjugate of the matrix.
 
 
     - `getInverse`: getInverse(self: MaterialX.PyMaterialXCore.Matrix44) -> MaterialX.PyMaterialXCore.Matrix44
-        
-        Return the inverse of the matrix.
 
 
     - `createScale`: createScale(arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Matrix44
@@ -13902,17 +14005,17 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `multiply`: multiply(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Vector4) -> MaterialX.PyMaterialXCore.Vector4
         
-        Return the product of this matrix and a 3D vector.
+        Return the product of this matrix and a 4D vector.
 
 
     - `transformPoint`: transformPoint(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
         
-        Transform the given 2D point.
+        Transform the given 3D point.
 
 
     - `transformVector`: transformVector(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
         
-        Transform the given 2D direction vector.
+        Transform the given 3D direction vector.
 
 
     - `transformNormal`: transformNormal(self: MaterialX.PyMaterialXCore.Matrix44, arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
@@ -13920,26 +14023,41 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Transform the given 3D normal vector.
 
 
-    - `createRotationX`: createRotationX(arg0: float) -> MaterialX.PyMaterialXCore.Matrix44
+    - `createRotationX`: createRotationX(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix44
+        
+        Create a rotation matrix about the X-axis.
+        
+        Args:
+            angle: Angle in radians
 
 
-    - `createRotationY`: createRotationY(arg0: float) -> MaterialX.PyMaterialXCore.Matrix44
+    - `createRotationY`: createRotationY(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix44
+        
+        Create a rotation matrix about the Y-axis.
+        
+        Args:
+            angle: Angle in radians
 
 
-    - `createRotationZ`: createRotationZ(arg0: float) -> MaterialX.PyMaterialXCore.Matrix44
+    - `createRotationZ`: createRotationZ(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Matrix44
+        
+        Create a rotation matrix about the Z-axis.
+        
+        Args:
+            angle: Angle in radians
 
 
   - Attributes: IDENTITY
 
 <a id='materialx-main-matrixbase'></a>
 
-- **MatrixBase**: 
+- **MatrixBase**: The base class for square matrices of scalar values.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
 <a id='materialx-main-member'></a>
 
-- **Member**: 
+- **Member**: A member element within a TypeDef.
 
   - Inherits from: [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -13947,7 +14065,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-newlineelement'></a>
 
-- **NewlineElement**: 
+- **NewlineElement**: An element representing a newline within a document.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -13955,7 +14073,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-node'></a>
 
-- **Node**: 
+- **Node**: A node element within a NodeGraph or Document.
+
+A Node represents an instance of a NodeDef within a graph, and its Input elements apply specific values and connections to that instance.
 
   - Inherits from: [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -13970,7 +14090,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getConnectedNode`: getConnectedNode(self: MaterialX.PyMaterialXCore.Node, arg0: str) -> MaterialX.PyMaterialXCore.Node
         
-        Return the node, if any, to which this input is connected.
+        Return the Node connected to the given input.
+        
+        If the given input is not present, then an empty NodePtr is returned.
 
 
     - `setConnectedNodeName`: setConnectedNodeName(self: MaterialX.PyMaterialXCore.Node, arg0: str, arg1: str) -> None
@@ -13987,12 +14109,25 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getNodeDef`: getNodeDef(self: MaterialX.PyMaterialXCore.Node, target: str = '', allowRoughMatch: bool = False) -> MaterialX.PyMaterialXCore.NodeDef
         
-        Returns a nodedef for a given transform.
+        Return the first NodeDef that declares this node, optionally filtered by the given target name.
+        
+        Args:
+            target: An optional target name, which will be used to filter the nodedefs that are considered.
+            allowRoughMatch: If specified, then a rough match will be allowed when an exact match is not found. An exact match requires that each node input corresponds to a nodedef input of the same name and type.
+        
+        Returns:
+            A NodeDef for this node, or an empty shared pointer if none was found.
 
 
     - `getImplementation`: getImplementation(self: MaterialX.PyMaterialXCore.Node, target: str = '') -> MaterialX.PyMaterialXCore.InterfaceElement
         
-        Return the Implementation, if any, with the given name.
+        Return the first implementation for this node, optionally filtered by the given target and language names.
+        
+        Args:
+            target: An optional target name, which will be used to filter the implementations that are considered.
+        
+        Returns:
+            An implementation for this node, or an empty shared pointer if none was found. Note that a node implementation may be either an Implementation element or a NodeGraph element.
 
 
     - `getDownstreamPorts`: getDownstreamPorts(self: MaterialX.PyMaterialXCore.Node) -> list[MaterialX.PyMaterialXCore.PortElement]
@@ -14028,7 +14163,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-nodedef'></a>
 
-- **NodeDef**: 
+- **NodeDef**: A node definition element within a Document.
+
+A NodeDef provides the declaration of a node interface, which may then be instantiated as a Node.
 
   - Inherits from: [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14064,16 +14201,16 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
         Return the node group of the NodeDef.
 
 
-    - `getImplementation`: getImplementation(*args, **kwargs)
-        Overloaded function.
+    - `getImplementation`: getImplementation(self: MaterialX.PyMaterialXCore.NodeDef, target: str = '', resolveNodeGraph: bool = True) -> MaterialX.PyMaterialXCore.InterfaceElement
         
-        1. getImplementation(self: MaterialX.PyMaterialXCore.NodeDef, arg0: str) -> MaterialX.PyMaterialXCore.InterfaceElement
+        Return the first implementation for this nodedef, optionally filtered by the given target name.
         
-        Return the Implementation, if any, with the given name.
+        Args:
+            target: An optional target name, which will be used to filter the implementations that are considered.
+            resolveNodeGraph: Allow resolution of Implementation elements to their linked NodeGraph elements. Defaults to true.
         
-        2. getImplementation(self: MaterialX.PyMaterialXCore.NodeDef, target: str = '') -> MaterialX.PyMaterialXCore.InterfaceElement
-        
-        Return the Implementation, if any, with the given name.
+        Returns:
+            An implementation for this nodedef, or an empty shared pointer if none was found. Note that a node implementation may be either an Implementation element or a NodeGraph element.
 
 
     - `isVersionCompatible`: isVersionCompatible(self: MaterialX.PyMaterialXCore.NodeDef, arg0: str) -> bool
@@ -14087,7 +14224,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-nodegraph'></a>
 
-- **NodeGraph**: 
+- **NodeGraph**: A node graph element within a Document.
 
   - Inherits from: [GraphElement](#materialx-main-graphelement), [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14095,17 +14232,17 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getMaterialOutputs`: getMaterialOutputs(self: MaterialX.PyMaterialXCore.NodeGraph) -> list[MaterialX.PyMaterialXCore.Output]
         
-        Return material-type outputs for all nodegraphs in the document.
+        Return all material-type outputs of the nodegraph.
 
 
     - `setNodeDef`: setNodeDef(self: MaterialX.PyMaterialXCore.NodeGraph, arg0: MaterialX.PyMaterialXCore.NodeDef) -> None
         
-        Set the NodeDef element referenced by the Implementation.
+        Set the NodeDef element referenced by this NodeGraph.
 
 
     - `getNodeDef`: getNodeDef(self: MaterialX.PyMaterialXCore.NodeGraph) -> MaterialX.PyMaterialXCore.NodeDef
         
-        Returns a nodedef for a given transform.
+        Return the NodeDef element referenced by this NodeGraph.
 
 
     - `getDeclaration`: getDeclaration(self: MaterialX.PyMaterialXCore.NodeGraph, arg0: str) -> MaterialX.PyMaterialXCore.InterfaceElement
@@ -14144,7 +14281,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getDownstreamPorts`: getDownstreamPorts(self: MaterialX.PyMaterialXCore.NodeGraph) -> list[MaterialX.PyMaterialXCore.PortElement]
         
-        Return a vector of all downstream ports that connect to this node, ordered by the names of the port elements.
+        Return a vector of all downstream ports that connect to this graph, ordered by the names of the port elements.
 
 
   - Attributes: CATEGORY
@@ -14157,7 +14294,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-output'></a>
 
-- **Output**: 
+- **Output**: A spatially-varying output element within a NodeGraph or NodeDef.
 
   - Inherits from: [PortElement](#materialx-main-portelement), [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14172,7 +14309,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-portelement'></a>
 
-- **PortElement**: 
+- **PortElement**: The base class for port elements such as Input and Output.
+
+Port elements support spatially-varying upstream connections to nodes.
 
   - Inherits from: [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14220,33 +14359,31 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `setConnectedNode`: setConnectedNode(self: MaterialX.PyMaterialXCore.PortElement, arg0: MaterialX_v1_39_5::Node) -> None
         
-        Set the node to which the given input is connected, creating a child input if needed.
+        Set the node to which this element is connected.
         
-        If the node argument is null, then any existing node connection on the input will be cleared.
+        The given node must belong to the same node graph. If the node argument is null, then any existing node connection will be cleared.
 
 
     - `getConnectedNode`: getConnectedNode(self: MaterialX.PyMaterialXCore.PortElement) -> MaterialX_v1_39_5::Node
         
-        Return the node, if any, to which this input is connected.
+        Return the node, if any, to which this element is connected.
 
 
     - `setConnectedOutput`: setConnectedOutput(self: MaterialX.PyMaterialXCore.PortElement, arg0: MaterialX_v1_39_5::Output) -> None
         
-        Set the output to which the given input is connected, creating a child input if needed.
+        Set the output to which this input is connected.
         
-        If the node argument is null, then any existing output connection on the input will be cleared.
+        If the output argument is null, then any existing output connection will be cleared.
 
 
     - `getConnectedOutput`: getConnectedOutput(self: MaterialX.PyMaterialXCore.PortElement) -> MaterialX_v1_39_5::Output
         
-        Return the output connected to the given input.
-        
-        If the given input is not present, then an empty OutputPtr is returned.
+        Return the output, if any, to which this input is connected.
 
 
 <a id='materialx-main-property'></a>
 
-- **Property**: 
+- **Property**: A property element within a PropertySet.
 
   - Inherits from: [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14254,7 +14391,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-propertyassign'></a>
 
-- **PropertyAssign**: 
+- **PropertyAssign**: A property assignment element within a Look.
 
   - Inherits from: [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14312,14 +14449,14 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getCollection`: getCollection(self: MaterialX.PyMaterialXCore.PropertyAssign) -> MaterialX.PyMaterialXCore.Collection
         
-        Return the Collection, if any, with the given name.
+        Return the Collection that is assigned to this element.
 
 
   - Attributes: CATEGORY
 
 <a id='materialx-main-propertyset'></a>
 
-- **PropertySet**: 
+- **PropertySet**: A property set element within a Document.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14358,7 +14495,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-propertysetassign'></a>
 
-- **PropertySetAssign**: 
+- **PropertySetAssign**: A property set assignment element within a Look.
 
   - Inherits from: [GeomElement](#materialx-main-geomelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14386,14 +14523,20 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getPropertySet`: getPropertySet(self: MaterialX.PyMaterialXCore.PropertySetAssign) -> MaterialX.PyMaterialXCore.PropertySet
         
-        Return the PropertySet, if any, with the given name.
+        Return the property set that is assigned to this element.
 
 
   - Attributes: CATEGORY
 
 <a id='materialx-main-stringresolver'></a>
 
-- **StringResolver**: 
+- **StringResolver**: A helper object for applying string modifiers to data values in the context of a specific element and geometry.
+
+A StringResolver may be constructed through the Element::createStringResolver method, which initializes it in the context of a specific element, geometry, and material.
+
+Calling the StringResolver::resolve method applies all modifiers to a particular string value.
+
+Methods such as StringResolver::setFilePrefix may be used to edit the stored string modifiers before calling StringResolver::resolve.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14401,22 +14544,22 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `setFilePrefix`: setFilePrefix(self: MaterialX.PyMaterialXCore.StringResolver, arg0: str) -> None
         
-        Set the element's file prefix string.
+        Set the file prefix for this context.
 
 
     - `getFilePrefix`: getFilePrefix(self: MaterialX.PyMaterialXCore.StringResolver) -> str
         
-        Return the element's file prefix string.
+        Return the file prefix for this context.
 
 
     - `setGeomPrefix`: setGeomPrefix(self: MaterialX.PyMaterialXCore.StringResolver, arg0: str) -> None
         
-        Set the element's geom prefix string.
+        Set the geom prefix for this context.
 
 
     - `getGeomPrefix`: getGeomPrefix(self: MaterialX.PyMaterialXCore.StringResolver) -> str
         
-        Return the element's geom prefix string.
+        Return the geom prefix for this context.
 
 
     - `setUdimString`: setUdimString(self: MaterialX.PyMaterialXCore.StringResolver, arg0: str) -> None
@@ -14460,7 +14603,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-targetdef'></a>
 
-- **TargetDef**: 
+- **TargetDef**: A definition of an implementation target.
 
   - Inherits from: [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14477,7 +14620,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-token'></a>
 
-- **Token**: 
+- **Token**: A token element representing a string value.
+
+Token elements are used to define input and output values for string substitutions in image filenames.
 
   - Inherits from: [ValueElement](#materialx-main-valueelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14485,18 +14630,20 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-treeiterator'></a>
 
-- **TreeIterator**: 
+- **TreeIterator**: An iterator object representing the state of a tree traversal.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
     - `getElement`: getElement(self: MaterialX.PyMaterialXCore.TreeIterator) -> MaterialX.PyMaterialXCore.Element
+        
+        Return the current element in the traversal.
 
 
     - `getElementDepth`: getElementDepth(self: MaterialX.PyMaterialXCore.TreeIterator) -> int
         
-        Return the element depth of the current traversal, where a single edge between two elements represents a depth of one.
+        Return the element depth of the current traversal, where the starting element represents a depth of zero.
 
 
     - `setPruneSubtree`: setPruneSubtree(self: MaterialX.PyMaterialXCore.TreeIterator, arg0: bool) -> None
@@ -14528,7 +14675,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-typedef'></a>
 
-- **TypeDef**: 
+- **TypeDef**: A type definition element within a Document.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14536,7 +14683,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `setSemantic`: setSemantic(self: MaterialX.PyMaterialXCore.TypeDef, arg0: str) -> None
         
-        Set the variable semantic of this port.
+        Set the semantic string of the TypeDef.
 
 
     - `hasSemantic`: hasSemantic(self: MaterialX.PyMaterialXCore.TypeDef) -> bool
@@ -14546,7 +14693,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getSemantic`: getSemantic(self: MaterialX.PyMaterialXCore.TypeDef) -> str
         
-        Return the variable semantic of this port.
+        Return the semantic string of the TypeDef.
 
 
     - `setContext`: setContext(self: MaterialX.PyMaterialXCore.TypeDef, arg0: str) -> None
@@ -14581,6 +14728,8 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 
     - `getMembers`: getMembers(self: MaterialX.PyMaterialXCore.TypeDef) -> list[MaterialX_v1_39_5::Member]
+        
+        Return a vector of all Member elements in the TypeDef.
 
 
     - `removeMember`: removeMember(self: MaterialX.PyMaterialXCore.TypeDef, arg0: str) -> None
@@ -14592,7 +14741,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-typedelement'></a>
 
-- **TypedElement**: 
+- **TypedElement**: The base class for typed elements.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14600,7 +14749,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `setType`: setType(self: MaterialX.PyMaterialXCore.TypedElement, arg0: str) -> None
         
-        Set the data type for this port.
+        Set the element's type string.
 
 
     - `hasType`: hasType(self: MaterialX.PyMaterialXCore.TypedElement) -> bool
@@ -14610,7 +14759,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getType`: getType(self: MaterialX.PyMaterialXCore.TypedElement) -> str
         
-        Get stream attribute name.
+        Return the element's type string.
 
 
     - `isColorType`: isColorType(self: MaterialX.PyMaterialXCore.TypedElement) -> bool
@@ -14625,7 +14774,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getTypeDef`: getTypeDef(self: MaterialX.PyMaterialXCore.TypedElement) -> MaterialX_v1_39_5::TypeDef
         
-        Return the TypeDef, if any, with the given name.
+        Return the TypeDef declaring the type string of this element.
+        
+        If no matching TypeDef is found, then an empty shared pointer is returned.
 
 
   - Attributes: TYPE_ATTRIBUTE
@@ -14639,13 +14790,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_boolean) -> bool
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_boolean) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: bool) -> MaterialX.PyMaterialXCore.Value
@@ -14662,16 +14809,12 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_booleanarray) -> list[bool]
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_booleanarray) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: list[bool]) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: collections.abc.Sequence[bool]) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -14685,13 +14828,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_color3) -> MaterialX_v1_39_5::Color3
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_color3) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Color3) -> MaterialX.PyMaterialXCore.Value
@@ -14708,13 +14847,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_color4) -> MaterialX_v1_39_5::Color4
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_color4) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Color4) -> MaterialX.PyMaterialXCore.Value
@@ -14731,16 +14866,12 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_float) -> float
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_float) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: float) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -14754,16 +14885,12 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_floatarray) -> list[float]
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_floatarray) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: list[float]) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: collections.abc.Sequence[typing.SupportsFloat]) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -14777,16 +14904,12 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_integer) -> int
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_integer) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: int) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: typing.SupportsInt) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -14800,16 +14923,12 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_integerarray) -> list[int]
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_integerarray) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: list[int]) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: collections.abc.Sequence[typing.SupportsInt]) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -14823,13 +14942,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_matrix33) -> MaterialX_v1_39_5::Matrix33
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_matrix33) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Matrix33) -> MaterialX.PyMaterialXCore.Value
@@ -14846,13 +14961,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_matrix44) -> MaterialX_v1_39_5::Matrix44
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_matrix44) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Matrix44) -> MaterialX.PyMaterialXCore.Value
@@ -14869,13 +14980,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_string) -> str
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_string) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: str) -> MaterialX.PyMaterialXCore.Value
@@ -14892,16 +14999,12 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_stringarray) -> list[str]
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_stringarray) -> str
-        
-        Return value string.
 
 
-    - `createValue`: createValue(arg0: list[str]) -> MaterialX.PyMaterialXCore.Value
+    - `createValue`: createValue(arg0: collections.abc.Sequence[str]) -> MaterialX.PyMaterialXCore.Value
 
 
   - Attributes: TYPE
@@ -14915,13 +15018,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_vector2) -> MaterialX_v1_39_5::Vector2
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_vector2) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Vector2) -> MaterialX.PyMaterialXCore.Value
@@ -14938,13 +15037,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_vector3) -> MaterialX_v1_39_5::Vector3
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_vector3) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Vector3) -> MaterialX.PyMaterialXCore.Value
@@ -14961,13 +15056,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
   - Methods:
 
     - `getData`: getData(self: MaterialX.PyMaterialXCore.TypedValue_vector4) -> MaterialX_v1_39_5::Vector4
-        
-        Return the raw float vector.
 
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.TypedValue_vector4) -> str
-        
-        Return value string.
 
 
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Vector4) -> MaterialX.PyMaterialXCore.Value
@@ -14977,7 +15068,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-unit'></a>
 
-- **Unit**: 
+- **Unit**: A unit declaration within a UnitDef.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14985,7 +15076,9 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-unitconverter'></a>
 
-- **UnitConverter**: 
+- **UnitConverter**: An abstract base class for unit converters.
+
+Each unit converter instance is responsible for a single unit type.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
@@ -14994,66 +15087,36 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
     - `convert`: convert(*args, **kwargs)
         Overloaded function.
         
-        1. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: float, arg1: str, arg2: str) -> float
-        
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
+        1. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: typing.SupportsFloat, arg1: str, arg2: str) -> float
         
         2. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: MaterialX.PyMaterialXCore.Vector2, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector2
         
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
-        
         3. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: MaterialX.PyMaterialXCore.Vector3, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector3
         
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
-        
         4. convert(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: MaterialX.PyMaterialXCore.Vector4, arg1: str, arg2: str) -> MaterialX.PyMaterialXCore.Vector4
-        
-        Convert a given value in a given unit to a desired unit.
-        
-        Args:
-            input: Input value to convert
-            inputUnit: Unit of input value
-            outputUnit: Unit for output value
 
 
     - `getUnitAsInteger`: getUnitAsInteger(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: str) -> int
         
-        Given a unit name return a value that it can map to as an integer.
-        
-        Returns -1 value if not found
+        Given a unit name return a value that it can map to as an integer Returns -1 value if not found.
 
 
-    - `getUnitFromInteger`: getUnitFromInteger(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: int) -> str
+    - `getUnitFromInteger`: getUnitFromInteger(self: MaterialX.PyMaterialXCore.UnitConverter, arg0: typing.SupportsInt) -> str
         
-        Given an integer index return the unit name in the map used by the converter.
-        
-        Returns Empty string if not found
+        Given an integer index return the unit name in the map used by the converter Returns Empty string if not found.
 
 
 <a id='materialx-main-unitconverterregistry'></a>
 
-- **UnitConverterRegistry**: 
+- **UnitConverterRegistry**: A registry for unit converters.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
     - `create`: create() -> MaterialX.PyMaterialXCore.UnitConverterRegistry
+        
+        Creator.
 
 
     - `addUnitConverter`: addUnitConverter(self: MaterialX.PyMaterialXCore.UnitConverterRegistry, arg0: MaterialX.PyMaterialXCore.UnitTypeDef, arg1: MaterialX.PyMaterialXCore.UnitConverter) -> bool
@@ -15082,7 +15145,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-unitdef'></a>
 
-- **UnitDef**: 
+- **UnitDef**: A unit definition element within a Document.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -15100,7 +15163,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getUnitType`: getUnitType(self: MaterialX.PyMaterialXCore.UnitDef) -> str
         
-        Return the unit type string.
+        Return the element's type string.
 
 
     - `addUnit`: addUnit(self: MaterialX.PyMaterialXCore.UnitDef, arg0: str) -> MaterialX.PyMaterialXCore.Unit
@@ -15116,7 +15179,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getUnit`: getUnit(self: MaterialX.PyMaterialXCore.UnitDef, arg0: str) -> MaterialX.PyMaterialXCore.Unit
         
-        Return the unit type for the value on this port.
+        Return the Unit, if any, with the given name.
 
 
     - `getUnits`: getUnits(self: MaterialX.PyMaterialXCore.UnitDef) -> list[MaterialX.PyMaterialXCore.Unit]
@@ -15128,7 +15191,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-unittypedef'></a>
 
-- **UnitTypeDef**: 
+- **UnitTypeDef**: A unit type definition element within a Document.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -15136,14 +15199,14 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getUnitDefs`: getUnitDefs(self: MaterialX.PyMaterialXCore.UnitTypeDef) -> list[MaterialX.PyMaterialXCore.UnitDef]
         
-        Return a vector of all Member elements in the TypeDef.
+        Find all UnitDefs for the UnitTypeDef.
 
 
   - Attributes: CATEGORY
 
 <a id='materialx-main-value'></a>
 
-- **Value**: 
+- **Value**: A generic, discriminated value, whose type may be queried dynamically.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
@@ -15151,20 +15214,25 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.Value) -> str
         
-        Return value string.
+        Return the value string for this value.
 
 
     - `getTypeString`: getTypeString(self: MaterialX.PyMaterialXCore.Value) -> str
         
-        Return type string.
+        Return the type string for this value.
 
 
     - `createValueFromStrings`: createValueFromStrings(value: str, type: str, typeDefPtr: MaterialX_v1_39_5::TypeDef = None) -> MaterialX.PyMaterialXCore.Value
+        
+        Create a new value instance from value and type strings.
+        
+        Returns:
+            A shared pointer to a typed value, or an empty shared pointer if the conversion to the given data type cannot be performed.
 
 
 <a id='materialx-main-valueelement'></a>
 
-- **ValueElement**: 
+- **ValueElement**: The base class for elements that support typed values.
 
   - Inherits from: [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -15182,7 +15250,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getValueString`: getValueString(self: MaterialX.PyMaterialXCore.ValueElement) -> str
         
-        Return value string.
+        Get the value string of a element.
 
 
     - `getResolvedValueString`: getResolvedValueString(self: MaterialX.PyMaterialXCore.ValueElement, resolver: MaterialX_v1_39_5::StringResolver = None) -> str
@@ -15225,7 +15293,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `setUnit`: setUnit(self: MaterialX.PyMaterialXCore.ValueElement, arg0: str) -> None
         
-        Set a unit type for the value on this port.
+        Set the unit string of an element.
 
 
     - `hasUnit`: hasUnit(self: MaterialX.PyMaterialXCore.ValueElement) -> bool
@@ -15235,7 +15303,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `getUnit`: getUnit(self: MaterialX.PyMaterialXCore.ValueElement) -> str
         
-        Return the unit type for the value on this port.
+        Return the unit string of an element.
 
 
     - `getActiveUnit`: getActiveUnit(self: MaterialX.PyMaterialXCore.ValueElement) -> str
@@ -15245,17 +15313,17 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
     - `setUnitType`: setUnitType(self: MaterialX.PyMaterialXCore.ValueElement, arg0: str) -> None
         
-        Set the element's unittype string.
+        Set the unit type of an element.
 
 
     - `hasUnitType`: hasUnitType(self: MaterialX.PyMaterialXCore.ValueElement) -> bool
         
-        Return true if the given element has a unittype string.
+        Return true if the given element has a unit type.
 
 
     - `getUnitType`: getUnitType(self: MaterialX.PyMaterialXCore.ValueElement) -> str
         
-        Return the unit type string.
+        Return the unit type of an element.
 
 
     - `getIsUniform`: getIsUniform(self: MaterialX.PyMaterialXCore.ValueElement) -> bool
@@ -15281,7 +15349,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-variant'></a>
 
-- **Variant**: 
+- **Variant**: A variant element within a VariantSet.
 
   - Inherits from: [InterfaceElement](#materialx-main-interfaceelement), [TypedElement](#materialx-main-typedelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -15289,7 +15357,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-variantassign'></a>
 
-- **VariantAssign**: 
+- **VariantAssign**: A variant assignment element within a Look.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -15329,7 +15397,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-variantset'></a>
 
-- **VariantSet**: 
+- **VariantSet**: A variant set element within a Document.
 
   - Inherits from: [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -15365,32 +15433,22 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-vector2'></a>
 
-- **Vector2**: 
+- **Vector2**: A vector of two floating-point values.
 
   - Inherits from: [VectorBase](#materialx-main-vectorbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Vector2) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Vector2) -> MaterialX.PyMaterialXCore.Vector2
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Vector2, arg0: MaterialX.PyMaterialXCore.Vector2) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Vector2) -> MaterialX.PyMaterialXCore.Vector2
-        
-        Create a deep copy of the value.
 
 
     - `cross`: cross(self: MaterialX.PyMaterialXCore.Vector2, arg0: MaterialX.PyMaterialXCore.Vector2) -> float
@@ -15403,32 +15461,22 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-vector3'></a>
 
-- **Vector3**: 
+- **Vector3**: A vector of three floating-point values.
 
   - Inherits from: [VectorBase](#materialx-main-vectorbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Vector3) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Vector3, arg0: MaterialX.PyMaterialXCore.Vector3) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
-        
-        Create a deep copy of the value.
 
 
     - `cross`: cross(self: MaterialX.PyMaterialXCore.Vector3, arg0: MaterialX.PyMaterialXCore.Vector3) -> MaterialX.PyMaterialXCore.Vector3
@@ -15441,32 +15489,22 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-vector4'></a>
 
-- **Vector4**: 
+- **Vector4**: A vector of four floating-point values.
 
   - Inherits from: [VectorBase](#materialx-main-vectorbase), [pybind11_object](#materialx-main-pybind11_object)
 
   - Methods:
 
     - `getMagnitude`: getMagnitude(self: MaterialX.PyMaterialXCore.Vector4) -> float
-        
-        Return the magnitude of the vector.
 
 
     - `getNormalized`: getNormalized(self: MaterialX.PyMaterialXCore.Vector4) -> MaterialX.PyMaterialXCore.Vector4
-        
-        Return a normalized version of the given path, collapsing current path and parent path references so that 'a/.
-        
-        /b' and 'c/../d/../a/b' become 'a/b'.
 
 
     - `dot`: dot(self: MaterialX.PyMaterialXCore.Vector4, arg0: MaterialX.PyMaterialXCore.Vector4) -> float
-        
-        Return the dot product of two vectors.
 
 
     - `copy`: copy(self: MaterialX.PyMaterialXCore.Vector4) -> MaterialX.PyMaterialXCore.Vector4
-        
-        Create a deep copy of the value.
 
 
     - `asTuple`: asTuple(self: MaterialX.PyMaterialXCore.Vector4) -> tuple[float, float, float, float]
@@ -15474,13 +15512,15 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-vectorbase'></a>
 
-- **VectorBase**: 
+- **VectorBase**: The base class for vectors of scalar values.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
 <a id='materialx-main-visibility'></a>
 
-- **Visibility**: 
+- **Visibility**: A visibility element within a Look.
+
+A Visibility describes the visibility relationship between two geometries or geometric collections.
 
   - Inherits from: [GeomElement](#materialx-main-geomelement), [Element](#materialx-main-element), [pybind11_object](#materialx-main-pybind11_object)
 
@@ -15545,7 +15585,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-xmlreadoptions'></a>
 
-- **XmlReadOptions**: 
+- **XmlReadOptions**: A set of options for controlling the behavior of XML read functions.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
@@ -15553,7 +15593,7 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 <a id='materialx-main-xmlwriteoptions'></a>
 
-- **XmlWriteOptions**: 
+- **XmlWriteOptions**: A set of options for controlling the behavior of XML write functions.
 
   - Inherits from: [pybind11_object](#materialx-main-pybind11_object)
 
@@ -15564,13 +15604,13 @@ ARRAY_PREFERRED_SEPARATOR, ARRAY_VALID_SEPARATORS, BSDF_TYPE_STRING, DEFAULT_TYP
 
 - `createDocument`: createDocument() -> MaterialX_v1_39_5::Document
 
-Create a new document of the given subclass.
+- `createNamePath`: createNamePath(arg0: collections.abc.Sequence[str]) -> str
 
-Create a new Document.
-
-- `createNamePath`: createNamePath(arg0: list[str]) -> str
+Create a name path from a string vector.
 
 - `createValidName`: createValidName(name: str, replaceChar: str = '_') -> str
+
+Create a valid MaterialX name from the given string.
 
 - `createValueFromStrings`: Convert a MaterialX value and type strings to the corresponding
        Python value.  If the given conversion cannot be performed, then None
@@ -15580,25 +15620,62 @@ Create a new Document.
            createValueFromStrings('0.1', 'float') -> 0.1
            createValueFromStrings('0.1, 0.2, 0.3', 'color3') -> mx.Color3(0.1, 0.2, 0.3)
 
-- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932EB0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
+- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6eab0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
+
+Flatten all filenames in the given document, applying string resolvers at the scope of each element and removing all fileprefix attributes.
+
+Args:
+    doc: The document to modify.
+    searchPath: An optional search path for relative to absolute path conversion.
+    customResolver: An optional custom resolver to apply.
 
 - `geomStringsMatch`: geomStringsMatch(arg0: str, arg1: str, arg2: bool) -> bool
 
+Given two geometry strings, each containing an array of geom names, return true if they have any geometries in common.
+
+An empty geometry string matches no geometries, while the universal geometry string "/" matches all non-empty geometries.
+
+If the contains argument is set to true, then we require that a geom path in the first string completely contains a geom path in the second string.
+
 - `getConnectedOutputs`: getConnectedOutputs(arg0: MaterialX.PyMaterialXCore.Node) -> list[MaterialX.PyMaterialXCore.Output]
+
+Return a vector of all outputs connected to the given node's inputs.
 
 - `getDefaultDataLibraryFolders`: Return list of default data library folders
 
 - `getDefaultDataSearchPath`: Return the default data search path.
 
-- `getEnvironmentPath`: getEnvironmentPath(sep: str = ';') -> MaterialX.PyMaterialXFormat.FileSearchPath
+- `getEnvironmentPath`: getEnvironmentPath(sep: str = ':') -> MaterialX.PyMaterialXFormat.FileSearchPath
+
+Return a FileSearchPath object from search path environment variable.
 
 - `getGeometryBindings`: getGeometryBindings(materialNode: MaterialX_v1_39_5::Node, geom: str = '/') -> list[MaterialX.PyMaterialXCore.MaterialAssign]
 
+Return a vector of all MaterialAssign elements that bind this material node to the given geometry string.
+
+Args:
+    materialNode: Node to examine
+    geom: The geometry for which material bindings should be returned. By default, this argument is the universal geometry string "/", and all material bindings are returned.
+
+Returns:
+    Vector of MaterialAssign elements
+
 - `getShaderNodes`: getShaderNodes(materialNode: MaterialX.PyMaterialXCore.Node, nodeType: str = 'surfaceshader', target: str = '') -> list[MaterialX.PyMaterialXCore.Node]
+
+Return a vector of all shader nodes connected to the given material node's inputs, filtered by the given shader type and target.
+
+Args:
+    materialNode: The node to examine.
+    nodeType: THe shader node type to return. Defaults to the surface shader type.
+    target: An optional target name, which will be used to filter the returned nodes.
 
 - `getSourceSearchPath`: getSourceSearchPath(arg0: MaterialX.PyMaterialXCore.Document) -> MaterialX.PyMaterialXFormat.FileSearchPath
 
-- `getSubdirectories`: getSubdirectories(arg0: list[MaterialX.PyMaterialXFormat.FilePath], arg1: MaterialX.PyMaterialXFormat.FileSearchPath, arg2: list[MaterialX.PyMaterialXFormat.FilePath]) -> None
+Return a file search path containing the parent folder of each source URI in the given document.
+
+- `getSubdirectories`: getSubdirectories(arg0: collections.abc.Sequence[MaterialX.PyMaterialXFormat.FilePath], arg1: MaterialX.PyMaterialXFormat.FileSearchPath, arg2: collections.abc.Sequence[MaterialX.PyMaterialXFormat.FilePath]) -> None
+
+Get all subdirectories for a given set of directories and search paths.
 
 - `getTypeString`: Return the MaterialX type string associated with the given Python value
        If the type of the given Python value is not recognized by MaterialX,
@@ -15618,13 +15695,15 @@ Create a new Document.
 
 - `getVersionIntegers`: getVersionIntegers() -> tuple[int, int, int]
 
-Return the major and minor versions as an integer pair.
+Return the major, minor, and build versions of the MaterialX library as an integer tuple.
 
 - `getVersionString`: getVersionString() -> str
 
-Return the version string of this interface.
+Return the version of the MaterialX library as a string.
 
 - `incrementName`: incrementName(arg0: str) -> str
+
+Increment the numeric suffix of a name.
 
 - `isColorType`: Return True if the given type is a MaterialX color.
 
@@ -15632,45 +15711,97 @@ Return the version string of this interface.
 
 - `isValidName`: isValidName(arg0: str) -> bool
 
-- `joinStrings`: joinStrings(arg0: list[str], arg1: str) -> str
+Return true if the given string is a valid MaterialX name.
 
-- `loadDocuments`: loadDocuments(rootPath: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath, skipFiles: set[str], includeFiles: set[str], documents: list[MaterialX.PyMaterialXCore.Document], documentsPaths: list[str], readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None, errors: list[str] = None) -> None
+- `joinStrings`: joinStrings(arg0: collections.abc.Sequence[str], arg1: str) -> str
 
-- `loadLibraries`: loadLibraries(libraryFolders: list[MaterialX.PyMaterialXFormat.FilePath], searchPath: MaterialX.PyMaterialXFormat.FileSearchPath, doc: MaterialX.PyMaterialXCore.Document, excludeFiles: set[str] = set(), readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> set[str]
+Join a vector of substrings into a single string, placing the given separator between each substring.
 
-- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932C30>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `loadDocuments`: loadDocuments(rootPath: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath, skipFiles: collections.abc.Set[str], includeFiles: collections.abc.Set[str], documents: collections.abc.Sequence[MaterialX.PyMaterialXCore.Document], documentsPaths: collections.abc.Sequence[str], readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None, errors: collections.abc.Sequence[str] = None) -> None
 
-Load a library of implementations from the provided document, replacing any previously loaded content.
+Scans for all documents under a root path and returns documents which can be loaded.
+
+- `loadLibraries`: loadLibraries(libraryFolders: collections.abc.Sequence[MaterialX.PyMaterialXFormat.FilePath], searchPath: MaterialX.PyMaterialXFormat.FileSearchPath, doc: MaterialX.PyMaterialXCore.Document, excludeFiles: collections.abc.Set[str] = set(), readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> set[str]
+
+Load all MaterialX files within the given library folders into a document, using the given search path to locate the folders on the file system.
+
+- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6e870>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+
+Load a given MaterialX library into a document.
 
 - `parentNamePath`: parentNamePath(arg0: str) -> str
+
+Given a name path, return the parent name path.
 
 - `prependXInclude`: prependXInclude(arg0: MaterialX.PyMaterialXCore.Document, arg1: MaterialX.PyMaterialXFormat.FilePath) -> None
 
 - `prettyPrint`: prettyPrint(arg0: MaterialX.PyMaterialXCore.Element) -> str
 
+Pretty print the given element tree, calling asString recursively on each element in depth-first order.
+
 - `readFile`: readFile(arg0: MaterialX.PyMaterialXFormat.FilePath) -> str
 
-- `readFromXmlFile`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932570>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+Read the given file and return a string containing its contents; if the read is not successful, then the empty string is returned.
 
-- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932570>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlFile`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6ddb0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
-- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x0000026BC6932330>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+Read a Document as XML from the given filename.
 
-- `replaceSubstrings`: replaceSubstrings(arg0: str, arg1: dict[str, str]) -> str
+Args:
+    doc: The Document into which data is read.
+    filename: The filename from which data is read. This argument can be supplied either as a FilePath or a standard string.
+    searchPath: An optional sequence of file paths that will be applied in order when searching for the given file and its includes. This argument can be supplied either as a FileSearchPath, or as a standard string with paths separated by the PATH_SEPARATOR character.
+    readOptions: An optional pointer to an XmlReadOptions object. If provided, then the given options will affect the behavior of the read function. Defaults to a null pointer.
+
+- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6ddb0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+
+Read a Document as XML from the given filename.
+
+Args:
+    doc: The Document into which data is read.
+    filename: The filename from which data is read. This argument can be supplied either as a FilePath or a standard string.
+    searchPath: An optional sequence of file paths that will be applied in order when searching for the given file and its includes. This argument can be supplied either as a FileSearchPath, or as a standard string with paths separated by the PATH_SEPARATOR character.
+    readOptions: An optional pointer to an XmlReadOptions object. If provided, then the given options will affect the behavior of the read function. Defaults to a null pointer.
+
+- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102d6de70>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+
+Read a Document as XML from the given string.
+
+Args:
+    doc: The Document into which data is read.
+    str: The string from which data is read.
+    searchPath: An optional sequence of file paths that will be applied in order when searching for the given file and its includes. This argument can be supplied either as a FileSearchPath, or as a standard string with paths separated by the PATH_SEPARATOR character.
+    readOptions: An optional pointer to an XmlReadOptions object. If provided, then the given options will affect the behavior of the read function. Defaults to a null pointer.
+
+- `replaceSubstrings`: replaceSubstrings(arg0: str, arg1: collections.abc.Mapping[str, str]) -> str
+
+Apply the given substring substitutions to the input string.
 
 - `splitNamePath`: splitNamePath(arg0: str) -> list[str]
 
+Split a name path into string vector.
+
 - `splitString`: splitString(arg0: str, arg1: str) -> list[str]
+
+Split a string into a vector of substrings using the given set of separator characters.
 
 - `stringEndsWith`: stringEndsWith(arg0: str, arg1: str) -> bool
 
+Return true if the given string ends with the given suffix.
+
 - `stringStartsWith`: stringStartsWith(arg0: str, arg1: str) -> bool
+
+Return true if the given string starts with the given prefix.
 
 - `stringToBoolean`: Return boolean value found in a string. Throws and exception if a boolean value could not be parsed
 
 - `stringToValue`: (Deprecated) Convert a MaterialX value string and Python type to the corresponding Python value.
 
 - `targetStringsMatch`: targetStringsMatch(arg0: str, arg1: str) -> bool
+
+Given two target strings, each containing a string array of target names, return true if they have any targets in common.
+
+An empty target string matches all targets.
 
 - `typeToName`: (Deprecated) Return the MaterialX type string associated with the given Python type.
 
