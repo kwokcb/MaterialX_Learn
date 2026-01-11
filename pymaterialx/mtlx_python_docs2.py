@@ -101,7 +101,13 @@ class PythonDocumentationGenerator:
                                 cls_info["methods"][m] = lines
 
                             else:
-                                cls_info["attributes"].append(m)
+                                value = getattr(obj, m, None)
+                                value = repr(value)
+                                if '<' in value:
+                                    value = "(property)"
+                                value = value.replace('<', '(').replace('>', ')')
+                                cls_info["attributes"].append((m, value))
+                                #cls_info["attributes"].append(m)
 
                         mod_info["classes"][name] = cls_info
                     else:  # function
@@ -159,7 +165,8 @@ class PythonDocumentationGenerator:
                             doc_string = "\n        ".join(doc)
                             md.append(f"    - `{m}`: {doc_string}\n\n")
                     if cls_info["attributes"]:
-                        md.append(f"  - Attributes: {', '.join(cls_info['attributes'])}\n")
+                        attrs = [f"{name} = {value}" for name, value in cls_info["attributes"]]
+                        md.append(f"  - Attributes: {', '.join(attrs)}\n")
 
             if mod_info["functions"]:
                 md.append("\n### Functions\n")
@@ -277,7 +284,11 @@ class PythonDocumentationGenerator:
                         if (cls.attributes.length) {
                             html += '<h5>Attributes</h5><ul>';
                             for (const a of cls.attributes) {
-                                html += `<li><code>${a}</code></li>`;
+                                if (!a[1]) {
+                                    a[1] = '';
+                                } else {
+                                    a[1] = ' = ' + escapeHtml_2(a[1]);}
+                                html += `<li><code>${a[0]}</code><i>${a[1]}</i></li>`;
                             }
                             html += '</ul>';
                         }
@@ -350,7 +361,11 @@ class PythonDocumentationGenerator:
                 if (cls.attributes.length) {
                     html += '<h6>Attributes</h6><ul>';
                     for (const a of cls.attributes) {
-                        html += `<li><code>${a}</code></li>`;
+                        if (!a[1]) {
+                            a[1] = '';
+                        } else {
+                            a[1] = ' = ' + escapeHtml_2(a[1]);}
+                        html += `<li><code>${a[0]}</code><i>${a[1]}</i></li>`;
                     }
                     html += '</ul>';
                 }

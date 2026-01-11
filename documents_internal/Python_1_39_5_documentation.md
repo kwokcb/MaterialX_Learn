@@ -52,7 +52,7 @@
         Defaults to false if exportable is not set.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'attributedef'
 
 <a id='materialx-pymaterialxcore-backdrop'></a>
 
@@ -117,7 +117,7 @@
         Return the vector of elements that this backdrop contains.
 
 
-  - Attributes: CATEGORY, CONTAINS_ATTRIBUTE, WIDTH_ATTRIBUTE, HEIGHT_ATTRIBUTE
+  - Attributes: CATEGORY = 'backdrop', CONTAINS_ATTRIBUTE = 'contains', WIDTH_ATTRIBUTE = 'width', HEIGHT_ATTRIBUTE = 'height'
 
 <a id='materialx-pymaterialxcore-collection'></a>
 
@@ -197,7 +197,7 @@
         Return true if this collection and the given geometry string have any geometries in common.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'collection'
 
 <a id='materialx-pymaterialxcore-color3'></a>
 
@@ -263,7 +263,7 @@ The comment text may be accessed with the methods Element::setDocString and Elem
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'comment'
 
 <a id='materialx-pymaterialxcore-document'></a>
 
@@ -1212,7 +1212,7 @@ An Element is a named object within a Document, which may possess any number of 
     - `removeChildOfType`: Remove the typed child element, if any, with the given name.
 
 
-  - Attributes: NAME_ATTRIBUTE, FILE_PREFIX_ATTRIBUTE, GEOM_PREFIX_ATTRIBUTE, COLOR_SPACE_ATTRIBUTE, INHERIT_ATTRIBUTE, NAMESPACE_ATTRIBUTE, DOC_ATTRIBUTE, XPOS_ATTRIBUTE, YPOS_ATTRIBUTE
+  - Attributes: NAME_ATTRIBUTE = 'name', FILE_PREFIX_ATTRIBUTE = 'fileprefix', GEOM_PREFIX_ATTRIBUTE = 'geomprefix', COLOR_SPACE_ATTRIBUTE = 'colorspace', INHERIT_ATTRIBUTE = 'inherit', NAMESPACE_ATTRIBUTE = 'namespace', DOC_ATTRIBUTE = 'doc', XPOS_ATTRIBUTE = 'xpos', YPOS_ATTRIBUTE = 'ypos'
 
 <a id='materialx-pymaterialxcore-elementequivalenceoptions'></a>
 
@@ -1220,7 +1220,7 @@ An Element is a named object within a Document, which may possess any number of 
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
-  - Attributes: performValueComparisons, floatFormat, floatPrecision, attributeExclusionList
+  - Attributes: performValueComparisons = (property), floatFormat = (property), floatPrecision = (property), attributeExclusionList = (property)
 
 <a id='materialx-pymaterialxcore-elementpredicate'></a>
 
@@ -1252,7 +1252,7 @@ An Element is a named object within a Document, which may possess any number of 
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'generic'
 
 <a id='materialx-pymaterialxcore-geomelement'></a>
 
@@ -1377,7 +1377,7 @@ An Element is a named object within a Document, which may possess any number of 
     - `setGeomAttrValue`: (Deprecated) Set the value of a geomattr by its name.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'geominfo'
 
 <a id='materialx-pymaterialxcore-geomprop'></a>
 
@@ -1385,7 +1385,7 @@ An Element is a named object within a Document, which may possess any number of 
 
   - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'geomprop'
 
 <a id='materialx-pymaterialxcore-geompropdef'></a>
 
@@ -1463,7 +1463,7 @@ A GeomPropDef element contains a reference to a geometric node and a set of modi
         Return the index string of this element.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'geompropdef'
 
 <a id='materialx-pymaterialxcore-graphelement'></a>
 
@@ -1680,7 +1680,7 @@ An Implementation is used to associate external source code with a specific Node
         Return the nodegraph string for the Implementation.
 
 
-  - Attributes: CATEGORY, FILE_ATTRIBUTE, FUNCTION_ATTRIBUTE
+  - Attributes: CATEGORY = 'implementation', FILE_ATTRIBUTE = 'file', FUNCTION_ATTRIBUTE = 'function'
 
 <a id='materialx-pymaterialxcore-inheritanceiterator'></a>
 
@@ -1735,7 +1735,7 @@ An Input holds either a uniform value or a connection to a spatially-varying Out
         Return the input on the parent graph corresponding to the interface name for this input.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'input'
 
 <a id='materialx-pymaterialxcore-interfaceelement'></a>
 
@@ -2035,7 +2035,7 @@ An InterfaceElement supports a set of Input and Output elements, with an API for
     - `getBindTokens`: (Deprecated) Return a vector of all BindToken elements in this shader reference.
 
 
-  - Attributes: NODE_DEF_ATTRIBUTE
+  - Attributes: NODE_DEF_ATTRIBUTE = 'nodedef'
 
 <a id='materialx-pymaterialxcore-linearunitconverter'></a>
 
@@ -2245,7 +2245,7 @@ An InterfaceElement supports a set of Input and Output elements, with an API for
         Remove the Visibility, if any, with the given name.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'look'
 
 <a id='materialx-pymaterialxcore-lookgroup'></a>
 
@@ -2275,7 +2275,7 @@ An InterfaceElement supports a set of Input and Output elements, with an API for
         Set the active look.
 
 
-  - Attributes: CATEGORY, LOOKS_ATTRIBUTE, ACTIVE_ATTRIBUTE
+  - Attributes: CATEGORY = 'lookgroup', LOOKS_ATTRIBUTE = 'looks', ACTIVE_ATTRIBUTE = 'active'
 
 <a id='materialx-pymaterialxcore-materialassign'></a>
 
@@ -2320,7 +2320,7 @@ An InterfaceElement supports a set of Input and Output elements, with an API for
         Return the material node, if any, referenced by the MaterialAssign.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'materialassign'
 
 <a id='materialx-pymaterialxcore-matrix33'></a>
 
@@ -2390,7 +2390,7 @@ Vector transformation methods follow the row-vector convention, with matrix-vect
             angle: Angle in radians
 
 
-  - Attributes: IDENTITY
+  - Attributes: IDENTITY = (property)
 
 <a id='materialx-pymaterialxcore-matrix44'></a>
 
@@ -2476,7 +2476,7 @@ Vector transformation methods follow the row-vector convention, with matrix-vect
             angle: Angle in radians
 
 
-  - Attributes: IDENTITY
+  - Attributes: IDENTITY = (property)
 
 <a id='materialx-pymaterialxcore-matrixbase'></a>
 
@@ -2490,7 +2490,7 @@ Vector transformation methods follow the row-vector convention, with matrix-vect
 
   - Inherits from: [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'typedef'
 
 <a id='materialx-pymaterialxcore-newlineelement'></a>
 
@@ -2498,7 +2498,7 @@ Vector transformation methods follow the row-vector convention, with matrix-vect
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'newline'
 
 <a id='materialx-pymaterialxcore-node'></a>
 
@@ -2588,7 +2588,7 @@ A Node represents an instance of a NodeDef within a graph, and its Input element
     - `getActiveShaderRefs`: (Deprecated) Return a vector of all shader references in this material element, taking material inheritance into account.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'node'
 
 <a id='materialx-pymaterialxcore-nodedef'></a>
 
@@ -2649,7 +2649,7 @@ A NodeDef provides the declaration of a node interface, which may then be instan
         This may be used to test, for example, whether a NodeDef and Node may be used together.
 
 
-  - Attributes: CATEGORY, NODE_ATTRIBUTE, TEXTURE_NODE_GROUP, PROCEDURAL_NODE_GROUP, GEOMETRIC_NODE_GROUP, ADJUSTMENT_NODE_GROUP, CONDITIONAL_NODE_GROUP, CHANNEL_NODE_GROUP, ORGANIZATION_NODE_GROUP, TRANSLATION_NODE_GROUP
+  - Attributes: CATEGORY = 'nodedef', NODE_ATTRIBUTE = 'node', TEXTURE_NODE_GROUP = 'texture', PROCEDURAL_NODE_GROUP = 'procedural', GEOMETRIC_NODE_GROUP = 'geometric', ADJUSTMENT_NODE_GROUP = 'adjustment', CONDITIONAL_NODE_GROUP = 'conditional', CHANNEL_NODE_GROUP = 'channel', ORGANIZATION_NODE_GROUP = 'organization', TRANSLATION_NODE_GROUP = 'translation'
 
 <a id='materialx-pymaterialxcore-nodegraph'></a>
 
@@ -2713,7 +2713,7 @@ A NodeDef provides the declaration of a node interface, which may then be instan
         Return a vector of all downstream ports that connect to this graph, ordered by the names of the port elements.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'nodegraph'
 
 <a id='materialx-pymaterialxcore-nodepredicate'></a>
 
@@ -2734,7 +2734,7 @@ A NodeDef provides the declaration of a node interface, which may then be instan
         Return true if a cycle exists in any upstream path from this element.
 
 
-  - Attributes: CATEGORY, DEFAULT_INPUT_ATTRIBUTE
+  - Attributes: CATEGORY = 'output', DEFAULT_INPUT_ATTRIBUTE = 'defaultinput'
 
 <a id='materialx-pymaterialxcore-portelement'></a>
 
@@ -2816,7 +2816,7 @@ Port elements support spatially-varying upstream connections to nodes.
 
   - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'property'
 
 <a id='materialx-pymaterialxcore-propertyassign'></a>
 
@@ -2881,7 +2881,7 @@ Port elements support spatially-varying upstream connections to nodes.
         Return the Collection that is assigned to this element.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'propertyassign'
 
 <a id='materialx-pymaterialxcore-propertyset'></a>
 
@@ -2920,7 +2920,7 @@ Port elements support spatially-varying upstream connections to nodes.
                is not found, then None is returned.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'property'
 
 <a id='materialx-pymaterialxcore-propertysetassign'></a>
 
@@ -2955,7 +2955,7 @@ Port elements support spatially-varying upstream connections to nodes.
         Return the property set that is assigned to this element.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'propertysetassign'
 
 <a id='materialx-pymaterialxcore-stringresolver'></a>
 
@@ -3045,7 +3045,7 @@ Methods such as StringResolver::setFilePrefix may be used to edit the stored str
         The vector is ordered by priority starting with this targetdef itself and then upwards in the inheritance hierarchy.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'targetdef'
 
 <a id='materialx-pymaterialxcore-token'></a>
 
@@ -3055,7 +3055,7 @@ Token elements are used to define input and output values for string substitutio
 
   - Inherits from: [ValueElement](#materialx-pymaterialxcore-valueelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'token'
 
 <a id='materialx-pymaterialxcore-treeiterator'></a>
 
@@ -3152,7 +3152,7 @@ Token elements are used to define input and output values for string substitutio
         Remove the Member, if any, with the given name.
 
 
-  - Attributes: CATEGORY, SEMANTIC_ATTRIBUTE, CONTEXT_ATTRIBUTE
+  - Attributes: CATEGORY = 'typedef', SEMANTIC_ATTRIBUTE = 'semantic', CONTEXT_ATTRIBUTE = 'context'
 
 <a id='materialx-pymaterialxcore-typedelement'></a>
 
@@ -3194,7 +3194,7 @@ Token elements are used to define input and output values for string substitutio
         If no matching TypeDef is found, then an empty shared pointer is returned.
 
 
-  - Attributes: TYPE_ATTRIBUTE
+  - Attributes: TYPE_ATTRIBUTE = 'type'
 
 <a id='materialx-pymaterialxcore-typedvalue_boolean'></a>
 
@@ -3213,7 +3213,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: bool) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'boolean'
 
 <a id='materialx-pymaterialxcore-typedvalue_booleanarray'></a>
 
@@ -3232,7 +3232,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: collections.abc.Sequence[bool]) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'booleanarray'
 
 <a id='materialx-pymaterialxcore-typedvalue_color3'></a>
 
@@ -3251,7 +3251,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Color3) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'color3'
 
 <a id='materialx-pymaterialxcore-typedvalue_color4'></a>
 
@@ -3270,7 +3270,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Color4) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'color4'
 
 <a id='materialx-pymaterialxcore-typedvalue_float'></a>
 
@@ -3289,7 +3289,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: typing.SupportsFloat) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'float'
 
 <a id='materialx-pymaterialxcore-typedvalue_floatarray'></a>
 
@@ -3308,7 +3308,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: collections.abc.Sequence[typing.SupportsFloat]) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'floatarray'
 
 <a id='materialx-pymaterialxcore-typedvalue_integer'></a>
 
@@ -3327,7 +3327,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: typing.SupportsInt) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'integer'
 
 <a id='materialx-pymaterialxcore-typedvalue_integerarray'></a>
 
@@ -3346,7 +3346,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: collections.abc.Sequence[typing.SupportsInt]) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'integerarray'
 
 <a id='materialx-pymaterialxcore-typedvalue_matrix33'></a>
 
@@ -3365,7 +3365,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Matrix33) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'matrix33'
 
 <a id='materialx-pymaterialxcore-typedvalue_matrix44'></a>
 
@@ -3384,7 +3384,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Matrix44) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'matrix44'
 
 <a id='materialx-pymaterialxcore-typedvalue_string'></a>
 
@@ -3403,7 +3403,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: str) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'string'
 
 <a id='materialx-pymaterialxcore-typedvalue_stringarray'></a>
 
@@ -3422,7 +3422,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: collections.abc.Sequence[str]) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'stringarray'
 
 <a id='materialx-pymaterialxcore-typedvalue_vector2'></a>
 
@@ -3441,7 +3441,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Vector2) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'vector2'
 
 <a id='materialx-pymaterialxcore-typedvalue_vector3'></a>
 
@@ -3460,7 +3460,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Vector3) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'vector3'
 
 <a id='materialx-pymaterialxcore-typedvalue_vector4'></a>
 
@@ -3479,7 +3479,7 @@ Token elements are used to define input and output values for string substitutio
     - `createValue`: createValue(arg0: MaterialX_v1_39_5::Vector4) -> MaterialX.PyMaterialXCore.Value
 
 
-  - Attributes: TYPE
+  - Attributes: TYPE = 'vector4'
 
 <a id='materialx-pymaterialxcore-unit'></a>
 
@@ -3487,7 +3487,7 @@ Token elements are used to define input and output values for string substitutio
 
   - Inherits from: [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'unit'
 
 <a id='materialx-pymaterialxcore-unitconverter'></a>
 
@@ -3602,7 +3602,7 @@ Each unit converter instance is responsible for a single unit type.
         Return a vector of all Unit elements in the UnitDef.
 
 
-  - Attributes: CATEGORY, UNITTYPE_ATTRIBUTE
+  - Attributes: CATEGORY = 'unitdef', UNITTYPE_ATTRIBUTE = 'unittype'
 
 <a id='materialx-pymaterialxcore-unittypedef'></a>
 
@@ -3617,7 +3617,7 @@ Each unit converter instance is responsible for a single unit type.
         Find all UnitDefs for the UnitTypeDef.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'unittypedef'
 
 <a id='materialx-pymaterialxcore-value'></a>
 
@@ -3760,7 +3760,7 @@ Each unit converter instance is responsible for a single unit type.
     - `getDefaultValue`: Return the default value for this element.
 
 
-  - Attributes: VALUE_ATTRIBUTE, INTERFACE_NAME_ATTRIBUTE, IMPLEMENTATION_NAME_ATTRIBUTE, IMPLEMENTATION_TYPE_ATTRIBUTE, ENUM_ATTRIBUTE, ENUM_VALUES_ATTRIBUTE, UNIT_ATTRIBUTE, UI_NAME_ATTRIBUTE, UI_FOLDER_ATTRIBUTE, UI_MIN_ATTRIBUTE, UI_MAX_ATTRIBUTE, UI_SOFT_MIN_ATTRIBUTE, UI_SOFT_MAX_ATTRIBUTE, UI_STEP_ATTRIBUTE, UI_ADVANCED_ATTRIBUTE
+  - Attributes: VALUE_ATTRIBUTE = 'value', INTERFACE_NAME_ATTRIBUTE = 'interfacename', IMPLEMENTATION_NAME_ATTRIBUTE = 'implname', IMPLEMENTATION_TYPE_ATTRIBUTE = 'impltype', ENUM_ATTRIBUTE = 'enum', ENUM_VALUES_ATTRIBUTE = 'enumvalues', UNIT_ATTRIBUTE = 'unit', UI_NAME_ATTRIBUTE = 'uiname', UI_FOLDER_ATTRIBUTE = 'uifolder', UI_MIN_ATTRIBUTE = 'uimin', UI_MAX_ATTRIBUTE = 'uimax', UI_SOFT_MIN_ATTRIBUTE = 'uisoftmin', UI_SOFT_MAX_ATTRIBUTE = 'uisoftmax', UI_STEP_ATTRIBUTE = 'uistep', UI_ADVANCED_ATTRIBUTE = 'uiadvanced'
 
 <a id='materialx-pymaterialxcore-variant'></a>
 
@@ -3768,7 +3768,7 @@ Each unit converter instance is responsible for a single unit type.
 
   - Inherits from: [InterfaceElement](#materialx-pymaterialxcore-interfaceelement), [TypedElement](#materialx-pymaterialxcore-typedelement), [Element](#materialx-pymaterialxcore-element), [pybind11_object](#materialx-pymaterialxcore-pybind11_object)
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'variant'
 
 <a id='materialx-pymaterialxcore-variantassign'></a>
 
@@ -3808,7 +3808,7 @@ Each unit converter instance is responsible for a single unit type.
         Return the element's variant string.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'variantassign'
 
 <a id='materialx-pymaterialxcore-variantset'></a>
 
@@ -3844,7 +3844,7 @@ Each unit converter instance is responsible for a single unit type.
         Remove the Variant, if any, with the given name.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'variantset'
 
 <a id='materialx-pymaterialxcore-vector2'></a>
 
@@ -3996,7 +3996,7 @@ A Visibility describes the visibility relationship between two geometries or geo
         Return the visible boolean of the element.
 
 
-  - Attributes: CATEGORY
+  - Attributes: CATEGORY = 'visibility'
 
 
 ### Functions
@@ -4305,7 +4305,7 @@ An empty target string matches all targets.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
 
-  - Attributes: name, value, FormatWindows, FormatPosix, FormatNative
+  - Attributes: name = (property), value = (property), FormatWindows = (property), FormatPosix = (property), FormatNative = (property)
 
 <a id='materialx-pymaterialxformat-type'></a>
 
@@ -4319,7 +4319,7 @@ An empty target string matches all targets.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
 
-  - Attributes: name, value, TypeRelative, TypeAbsolute, TypeNetwork
+  - Attributes: name = (property), value = (property), TypeRelative = (property), TypeAbsolute = (property), TypeNetwork = (property)
 
 <a id='materialx-pymaterialxformat-xmlreadoptions'></a>
 
@@ -4327,7 +4327,7 @@ An empty target string matches all targets.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
 
-  - Attributes: readXIncludeFunction, readComments, readNewlines, upgradeVersion, parentXIncludes
+  - Attributes: readXIncludeFunction = (property), readComments = (property), readNewlines = (property), upgradeVersion = (property), parentXIncludes = (property)
 
 <a id='materialx-pymaterialxformat-xmlwriteoptions'></a>
 
@@ -4335,12 +4335,12 @@ An empty target string matches all targets.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxformat-pybind11_object)
 
-  - Attributes: writeXIncludeEnable, elementPredicate
+  - Attributes: writeXIncludeEnable = (property), elementPredicate = (property)
 
 
 ### Functions
 
-- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102f84230>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
+- `flattenFilenames`: flattenFilenames(doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x100a5ecf0>, customResolver: MaterialX.PyMaterialXCore.StringResolver = None) -> None
 
 Flatten all filenames in the given document, applying string resolvers at the scope of each element and removing all fileprefix attributes.
 
@@ -4369,7 +4369,7 @@ Scans for all documents under a root path and returns documents which can be loa
 
 Load all MaterialX files within the given library folders into a document, using the given search path to locate the folders on the file system.
 
-- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102f77ef0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `loadLibrary`: loadLibrary(file: MaterialX.PyMaterialXFormat.FilePath, doc: MaterialX.PyMaterialXCore.Document, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x100a5eaf0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 Load a given MaterialX library into a document.
 
@@ -4379,7 +4379,7 @@ Load a given MaterialX library into a document.
 
 Read the given file and return a string containing its contents; if the read is not successful, then the empty string is returned.
 
-- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102f70670>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlFileBase`: readFromXmlFileBase(doc: MaterialX.PyMaterialXCore.Document, filename: MaterialX.PyMaterialXFormat.FilePath, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x100a06430>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 Read a Document as XML from the given filename.
 
@@ -4389,7 +4389,7 @@ Args:
     searchPath: An optional sequence of file paths that will be applied in order when searching for the given file and its includes. This argument can be supplied either as a FileSearchPath, or as a standard string with paths separated by the PATH_SEPARATOR character.
     readOptions: An optional pointer to an XmlReadOptions object. If provided, then the given options will affect the behavior of the read function. Defaults to a null pointer.
 
-- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x102f77530>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
+- `readFromXmlString`: readFromXmlString(doc: MaterialX.PyMaterialXCore.Document, str: str, searchPath: MaterialX.PyMaterialXFormat.FileSearchPath = <MaterialX.PyMaterialXFormat.FileSearchPath object at 0x100a364f0>, readOptions: MaterialX.PyMaterialXFormat.XmlReadOptions = None) -> None
 
 Read a Document as XML from the given string.
 
@@ -4679,7 +4679,7 @@ A generator for a specific OSL target should be derived from this class.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
-  - Attributes: sourceSpace, targetSpace, type
+  - Attributes: sourceSpace = (property), targetSpace = (property), type = (property)
 
 <a id='materialx-pymaterialxgenshader-defaultcolormanagementsystem'></a>
 
@@ -4756,7 +4756,7 @@ Used for thread local storage of data needed during shader generation.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
-  - Attributes: shaderInterfaceType, fileTextureVerticalFlip, targetColorSpaceOverride, targetDistanceUnit, addUpstreamDependencies, libraryPrefix, emitColorTransforms, hwTransparency, hwSpecularEnvironmentMethod, hwSrgbEncodeOutput, hwWriteDepthMoments, hwShadowMap, hwMaxActiveLightSources, hwNormalizeUdimTexCoords, hwAmbientOcclusion, hwWriteAlbedoTable, hwWriteEnvPrefilter, hwImplicitBitangents
+  - Attributes: shaderInterfaceType = (property), fileTextureVerticalFlip = (property), targetColorSpaceOverride = (property), targetDistanceUnit = (property), addUpstreamDependencies = (property), libraryPrefix = (property), emitColorTransforms = (property), hwTransparency = (property), hwSpecularEnvironmentMethod = (property), hwSrgbEncodeOutput = (property), hwWriteDepthMoments = (property), hwShadowMap = (property), hwMaxActiveLightSources = (property), hwNormalizeUdimTexCoords = (property), hwAmbientOcclusion = (property), hwWriteAlbedoTable = (property), hwWriteEnvPrefilter = (property), hwImplicitBitangents = (property)
 
 <a id='materialx-pymaterialxgenshader-genuserdata'></a>
 
@@ -4812,7 +4812,7 @@ Used for thread local storage of data needed during shader generation.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
-  - Attributes: name, value, SPECULAR_ENVIRONMENT_PREFILTER, SPECULAR_ENVIRONMENT_FIS, SPECULAR_ENVIRONMENT_NONE
+  - Attributes: name = (property), value = (property), SPECULAR_ENVIRONMENT_PREFILTER = (property), SPECULAR_ENVIRONMENT_FIS = (property), SPECULAR_ENVIRONMENT_NONE = (property)
 
 <a id='materialx-pymaterialxgenshader-shader'></a>
 
@@ -4939,7 +4939,7 @@ Derived classes should use DECLARE_SHADER_GENERATOR / DEFINE_SHADER_GENERATOR in
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
-  - Attributes: name, value, SHADER_INTERFACE_COMPLETE, SHADER_INTERFACE_REDUCED
+  - Attributes: name = (property), value = (property), SHADER_INTERFACE_COMPLETE = (property), SHADER_INTERFACE_REDUCED = (property)
 
 <a id='materialx-pymaterialxgenshader-shaderport'></a>
 
@@ -5257,7 +5257,7 @@ All types need to have a type descriptor registered in order for shader generato
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxgenshader-pybind11_object)
 
-  - Attributes: sourceUnit, targetUnit, type, unitType
+  - Attributes: sourceUnit = (property), targetUnit = (property), type = (property), unitType = (property)
 
 <a id='materialx-pymaterialxgenshader-variableblock'></a>
 
@@ -5442,7 +5442,7 @@ A generator for a specific Slang target should be derived from this class.
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
-  - Attributes: name, value, UINT8, INT8, UINT16, INT16, HALF, FLOAT
+  - Attributes: name = (property), value = (property), UINT8 = (property), INT8 = (property), UINT16 = (property), INT16 = (property), HALF = (property), FLOAT = (property)
 
 <a id='materialx-pymaterialxrender-camera'></a>
 
@@ -5834,7 +5834,7 @@ Keeps track of images which are loaded from disk via supplied ImageLoader. Deriv
             if save succeeded
 
 
-    - `acquireImage`: acquireImage(self: MaterialX.PyMaterialXRender.ImageHandler, filePath: MaterialX.PyMaterialXFormat.FilePath, defaultColor: MaterialX.PyMaterialXCore.Color4 = <MaterialX.PyMaterialXCore.Color4 object at 0x102f4cff0>) -> MaterialX.PyMaterialXRender.Image
+    - `acquireImage`: acquireImage(self: MaterialX.PyMaterialXRender.ImageHandler, filePath: MaterialX.PyMaterialXFormat.FilePath, defaultColor: MaterialX.PyMaterialXCore.Color4 = <MaterialX.PyMaterialXCore.Color4 object at 0x10106c3b0>) -> MaterialX.PyMaterialXRender.Image
         
         Acquire an image from the cache or file system.
         
@@ -5953,7 +5953,7 @@ Keeps track of images which are loaded from disk via supplied ImageLoader. Deriv
             On success, a shared pointer to the loaded image; otherwise an empty shared pointer.
 
 
-  - Attributes: BMP_EXTENSION, EXR_EXTENSION, GIF_EXTENSION, HDR_EXTENSION, JPG_EXTENSION, JPEG_EXTENSION, PIC_EXTENSION, PNG_EXTENSION, PSD_EXTENSION, TGA_EXTENSION, TIF_EXTENSION, TIFF_EXTENSION, TXT_EXTENSION
+  - Attributes: BMP_EXTENSION = 'bmp', EXR_EXTENSION = 'exr', GIF_EXTENSION = 'gif', HDR_EXTENSION = 'hdr', JPG_EXTENSION = 'jpg', JPEG_EXTENSION = 'jpeg', PIC_EXTENSION = 'pic', PNG_EXTENSION = 'png', PSD_EXTENSION = 'psd', TGA_EXTENSION = 'tga', TIF_EXTENSION = 'tif', TIFF_EXTENSION = 'tiff', TXT_EXTENSION = 'txt'
 
 <a id='materialx-pymaterialxrender-imagesamplingproperties'></a>
 
@@ -5961,7 +5961,7 @@ Keeps track of images which are loaded from disk via supplied ImageLoader. Deriv
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrender-pybind11_object)
 
-  - Attributes: uaddressMode, vaddressMode, filterType, defaultColor
+  - Attributes: uaddressMode = (property), vaddressMode = (property), filterType = (property), defaultColor = (property)
 
 <a id='materialx-pymaterialxrender-lighthandler'></a>
 
@@ -6387,7 +6387,7 @@ Note that a face is considered to be a triangle.
         Transform elements by a matrix.
 
 
-  - Attributes: POSITION_ATTRIBUTE, NORMAL_ATTRIBUTE, TEXCOORD_ATTRIBUTE, TANGENT_ATTRIBUTE, BITANGENT_ATTRIBUTE, COLOR_ATTRIBUTE, GEOMETRY_PROPERTY_ATTRIBUTE
+  - Attributes: POSITION_ATTRIBUTE = 'position', NORMAL_ATTRIBUTE = 'normal', TEXCOORD_ATTRIBUTE = 'texcoord', TANGENT_ATTRIBUTE = 'tangent', BITANGENT_ATTRIBUTE = 'bitangent', COLOR_ATTRIBUTE = 'color', GEOMETRY_PROPERTY_ATTRIBUTE = 'geomprop'
 
 <a id='materialx-pymaterialxrender-shaderrenderer'></a>
 
@@ -6729,7 +6729,7 @@ There are two main interfaces which can be used. One which takes in a HwShader a
         Unbind the program. Equivalent to binding no program.
 
 
-  - Attributes: UNDEFINED_OPENGL_RESOURCE_ID, UNDEFINED_OPENGL_PROGRAM_LOCATION
+  - Attributes: UNDEFINED_OPENGL_RESOURCE_ID = 0, UNDEFINED_OPENGL_PROGRAM_LOCATION = -1
 
 <a id='materialx-pymaterialxrenderglsl-glslrenderer'></a>
 
@@ -6797,7 +6797,7 @@ An Input holds either a uniform value or a connection to a spatially-varying Out
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrenderglsl-pybind11_object)
 
-  - Attributes: INVALID_OPENGL_TYPE, location, gltype, size, typeString, value, isConstant, path
+  - Attributes: INVALID_OPENGL_TYPE = -1, location = (property), gltype = (property), size = (property), typeString = (property), value = (property), isConstant = (property), path = (property)
 
 <a id='materialx-pymaterialxrenderglsl-texturebaker'></a>
 
@@ -6912,7 +6912,7 @@ TODO: Add support for graphs containing geometric nodes such as position and nor
 
   - Inherits from: [pybind11_object](#materialx-pymaterialxrendermsl-pybind11_object)
 
-  - Attributes: location, size, typeString, value, isConstant, path
+  - Attributes: location = (property), size = (property), typeString = (property), value = (property), isConstant = (property), path = (property)
 
 <a id='materialx-pymaterialxrendermsl-metaltexturehandler'></a>
 
@@ -7296,7 +7296,7 @@ The main services provided are: Source code validation: Use of "oslc" to compile
             oslFilePath: OSL file path.
 
 
-  - Attributes: OSL_CLOSURE_COLOR_STRING
+  - Attributes: OSL_CLOSURE_COLOR_STRING = 'closure color'
 
 
 ---
