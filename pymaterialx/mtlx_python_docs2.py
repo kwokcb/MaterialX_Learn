@@ -134,6 +134,16 @@ class PythonDocumentationGenerator:
             structure[mod_name] = mod_info
         return structure
 
+    def escape_html(self, text):
+        if not text:
+            return ''
+        return (text.replace('&', '&amp;')
+                    .replace('<', '&lt;')
+                    .replace('>', '&gt;')
+                    .replace('"', '&quot;')
+                    .replace("'", '&#39;')
+                    .replace('\n', '<br>'))
+
     def generate_markdown(self, structure):
         md = []
         mod_number = 1
@@ -169,6 +179,7 @@ class PythonDocumentationGenerator:
                         md.append(f"##### Methods\n")
                         for m, doc in cls_info["methods"].items():
                             doc_string = "\n        ".join(doc)
+                            doc_string = self.escape_html(doc_string)
                             md.append(f"- `{m}`: {doc_string}\n")
                     if cls_info["attributes"]:
                         md.append(f"##### Attributes\n")
