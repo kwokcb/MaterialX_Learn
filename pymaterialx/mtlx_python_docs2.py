@@ -70,7 +70,7 @@ class PythonDocumentationGenerator:
                         bases = []
                         for base in getattr(obj, "__mro__", [])[1:]:  # skip the class itself
                             base_name = getattr(base, "__name__", str(base))
-                            if base_name != "object" and base_name not in bases:
+                            if "pybind" not in base_name and base_name != "object" and base_name not in bases:
                                 bases.append(base_name)
                         cls_info["bases"] = bases
                         
@@ -136,19 +136,23 @@ class PythonDocumentationGenerator:
 
     def generate_markdown(self, structure):
         md = []
+        mod_number = 1
         for mod_name, mod_info in structure.items():
-            md.append(f"## Module: MaterialX.{mod_name}\n")
+            md.append(f"## {mod_number}. Module: MaterialX.{mod_name}\n")
+            mod_number += 1
 
             if mod_info["classes"]:
                 md.append("### Classes\n")
+                class_number = 1
                 for cls_name, cls_info in mod_info["classes"].items():
                     #md.append(f"- **{cls_name}**: {cls_info['doc']}\n")
                     #if cls_info.get("bases"):
                     #    md.append(f"  - Inherits from: {', '.join(cls_info['bases'])}\n")
                     # Add an HTML anchor for this class so we can link to it
                     anchor = f"materialx-{mod_name.lower()}-{cls_name.lower()}"
-                    md.append(f"<a id='{anchor}'></a>\n")
-                    md.append(f"- **{cls_name}**: {cls_info['doc']}\n")
+                    md.append(f"<hr><h4>{class_number}. <a id='{anchor}'>{cls_name}</a></h4>\n")
+                    md.append(f"{cls_info['doc']}\n")
+                    class_number += 1
 
                     # Add linked base classes
                     if cls_info.get("bases"):
@@ -157,16 +161,21 @@ class PythonDocumentationGenerator:
                             # Search all modules for the base to link properly
                             base_anchor = f"#{'materialx-' + mod_name.lower() + '-' + base.lower()}"
                             linked_bases.append(f"[{base}]({base_anchor})")
-                        md.append(f"  - Inherits from: {', '.join(linked_bases)}\n")
+                        md.append(f'##### Inheritance')
+                        for lb in linked_bases:
+                            md.append(f"- {lb}")                        
 
                     if cls_info["methods"]:
-                        md.append(f"  - Methods:\n")
+                        md.append(f"##### Methods\n")
                         for m, doc in cls_info["methods"].items():
                             doc_string = "\n        ".join(doc)
-                            md.append(f"    - `{m}`: {doc_string}\n\n")
+                            md.append(f"- `{m}`: {doc_string}\n")
                     if cls_info["attributes"]:
-                        attrs = [f"{name} = {value}" for name, value in cls_info["attributes"]]
-                        md.append(f"  - Attributes: {', '.join(attrs)}\n")
+                        md.append(f"##### Attributes\n")
+                        for name, value in cls_info["attributes"]:
+                            md.append(f"- `{name}` = {value}")
+                        #attrs = [f"{name} = {value}" for name, value in cls_info["attributes"]]
+                        #md.append(f"  - Attributes: {', '.join(attrs)}\n")
 
             if mod_info["functions"]:
                 md.append("\n### Functions\n")
@@ -176,10 +185,9 @@ class PythonDocumentationGenerator:
             if mod_info["globals"]:
                 md.append("\n### Globals\n")
                 for g in mod_info["globals"]:
-                    str = g
+                    md.append(f"- `{g}`")
                     if mod_info["globals"][g]:
-                        str += f" = {mod_info['globals'][g]}"
-                    md.append(f"- {str}")
+                        md.append(f" = {mod_info['globals'][g]}")
                 #md.append("\n")
 
             md.append("\n---\n")
@@ -264,7 +272,7 @@ class PythonDocumentationGenerator:
                     if (module.classes && module.classes[baseName]) {
                         // Simulate selecting this class
                         const cls = module.classes[baseName];
-                        let html = `<h3>${moduleName} - ${baseName}</h3>`;
+                        let html = `<h3>${moduleName}.${baseName}</h3>`;
                         html += `<h4>Class</h4><p>${cls.doc}</p>`;
                         if (cls.bases && cls.bases.length) {
                             html += `<h5>Inherits from</h5><ul>`;
@@ -326,7 +334,7 @@ class PythonDocumentationGenerator:
             const name = el.dataset.name;
             const type = el.dataset.type;
             const mod = data[module];
-            let html = `<h3>${module} - ${name}</h3>`;
+            let html = `<h3>${module}.${name}</h3>`;
             //if (type === 'class') {
             if (type === 'class') {
                 const cls = mod.classes[name];
@@ -346,7 +354,7 @@ class PythonDocumentationGenerator:
                 //}                    
 
                 //const cls = mod.classes[name];
-                html += `<h5>Class</h5><p>${cls.doc}</p>`;
+                //html += `<h5>Class</h5><p>${cls.doc}</p>`;
                 if (Object.keys(cls.methods).length) {
                     html += '<h6>Methods</h6><ul>';
                     for (const [m, doc] of Object.entries(cls.methods)) {
