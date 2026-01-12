@@ -180,7 +180,7 @@ class PythonDocumentationGenerator:
                         for m, doc in cls_info["methods"].items():
                             doc_string = "\n        ".join(doc)
                             doc_string = self.escape_html(doc_string)
-                            md.append(f"- `{m}`: {doc_string}\n")
+                            md.append(f"- **`{m}`**: {doc_string}\n")
                     if cls_info["attributes"]:
                         md.append(f"##### Attributes\n")
                         for name, value in cls_info["attributes"]:
