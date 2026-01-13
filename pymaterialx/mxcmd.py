@@ -8,37 +8,67 @@ Usage:
 """
 
 import sys
-from importlib.metadata import entry_points
+#from importlib.metadata imporett entry_points
+import importlib.metadata as importlib_metadata
 
 class MaterialXCommandRunner:
 
     def __init__(self) -> None:
-        self.ENTRYPOINT_GROUP = "console_scripts"
-        self.PACKAGE_PREFIX = "MaterialX."
+        self.ENTRYPOINT_GROUP = "console_scripts"   # Entry point group for commands
+        self.PACKAGE = "MaterialX"                  # MaterialX package name
+        self.PACKAGE_PREFIX = f"{self.PACKAGE}."    # Module prefix for MaterialX
         self.ep = None
+        self.commands = {}
 
-    def find_materialx_commands(self) -> dict:
+    def get_commands(self) -> dict | None:
+        """
+        Get the available MaterialX commands.
+        """
+        if not self.commands:
+            self._cache_commands()
+        return self.commands
+
+    def _cache_commands(self):
         """
         Find all MaterialX commands registered as entry points.
-        Returns:
-            Dictionary mapping command names to entry points.
         """
-        commands = {}
-        self.eps = entry_points().select(group=self.ENTRYPOINT_GROUP)
-        for ep in self.eps:
-            if ep.value.startswith(self.PACKAGE_PREFIX):
-                commands[ep.name] = ep
-        return commands
+        self.commands = {}
 
+        scan_distributions = False
+        # Scan distributions for MaterialX entry points
+        if scan_distributions:
+            for dist in importlib_metadata.distributions():
+                if dist.metadata["Name"] == self.PACKAGE:
+                    for ep in dist.entry_points:
+                        if ep.group == self.ENTRYPOINT_GROUP:
+                            self.commands[ep.name] = ep
+                    break
+        # Scan all entry points for MaterialX commands
+        else:
+            self.eps = importlib_metadata.entry_points().select(group=self.ENTRYPOINT_GROUP)
+            for ep in self.eps:
+                if ep.value.startswith(self.PACKAGE_PREFIX):
+                    self.commands[ep.name] = ep
 
-    def list_commands(self, commands: dict) -> None:
+    def list_commands(self) -> None:
         """
-        Print a list of available commands.
+        Print available commands for the MaterialX package.
 
         @param commands: Dictionary of available commands
+        @return: None
         """
-        print("Available MaterialX commands:")
-        for name in sorted(commands):
+        cmds = self.get_commands()
+        if not cmds:
+            print("No MaterialX commands found.")
+            return
+
+        try:
+            version = importlib_metadata.version("MaterialX")
+            version = f" v{version}"
+        except importlib_metadata.PackageNotFoundError:
+            version = ""
+        print(f"MaterialX{version} commands:")
+        for name in sorted(cmds):
             print(f"  {name}")
 
     def help(self) -> None:
@@ -56,7 +86,7 @@ class MaterialXCommandRunner:
             "  -l, --list      List available commands\n"
         )
 
-    def parse_args(self, argv : list, commands: dict) -> tuple[bool, str, list[str]]:
+    def parse_args(self, argv : list) -> tuple[bool, str, list[str]]:
         """
         Determine if we are listing or running a command.
 
@@ -78,14 +108,15 @@ class MaterialXCommandRunner:
         command = argv[0]
         command_args = argv[1:]
 
-        if command not in commands:
+        cmds = self.get_commands()
+        if command not in cmds:
             print(f"Unknown command: {command}")
             return False, "", []
 
         return False, command, command_args
 
 
-    def run_command(self, command : str, command_args : list, commands: dict) -> str:
+    def run_command(self, command : str, command_args : list) -> str:
         """
         Load and run the specified command.
 
@@ -93,7 +124,11 @@ class MaterialXCommandRunner:
         @param command_args: List of arguments to pass to the command
         @param commands: Dictionary of available commands
         """
-        ep = commands[command]
+        cmds = self.get_commands()
+        if not cmds:
+            return "No MaterialX commands found."
+        
+        ep = cmds[command]
 
         try:
             func = ep.load()
@@ -117,19 +152,18 @@ def main():
     Main entry point for the MaterialX command runner.
     """
     runner = MaterialXCommandRunner()
-    commands = runner.find_materialx_commands()
     argv = sys.argv[1:]
 
-    list_only, command, command_args = runner.parse_args(argv, commands)
+    list_only, command, command_args = runner.parse_args(argv)
 
     # Just list commands
     if list_only:
-        runner.list_commands(commands)
+        runner.list_commands()
         return
 
     # Run the specified command
     if command:
-        result = runner.run_command(command, command_args, commands)
+        result = runner.run_command(command, command_args)
         if result:
             print(result, file=sys.stderr)  
     
