@@ -336,7 +336,225 @@ class MtlxNodeGraph:
             elif child.isA(mx.Output):
                 childInterfaceName = child.getAttribute('interfacename')
                 if childInterfaceName == interfaceName:
-                    input.removeAttribute('interfacename')
+                    child.removeAttribute('interfacename')
 
         if removeInterface:
             nodegraph.removeChild(interfaceName)
+
+    @staticmethod
+    def connectToGraphInput(node, outputName, nodegraph, inputName, transferNodeInput):
+        '''
+        Connect an output on a node to an input on a nodegraph
+        @param node The node to connect from
+        @param outputName The name of the output on the node
+        @param nodegraph The nodegraph to connect to
+        @param inputName The name of the input on the nodegraph
+        @param transferNodeInput If specified, the name of an input on the node to transfer the value from the graph input
+        @return The input port on the nodegraph if successful, otherwise None
+        '''
+
+        if not node or not nodegraph:
+            print('No node or nodegraph specified')
+            return None
+
+        nodedef = node.getNodeDef()
+        if not nodedef:
+            print('Cannot find node definition for node:', node.getName())
+            return None
+
+        outputPort = nodedef.getOutput(outputName)
+        if not outputPort:
+            print('Cannot find output port:', outputName, 'for the node:', node.getName())
+            return None
+
+        inputPort = nodegraph.getInput(inputName)
+        if not inputPort:
+            print('Cannot find input port:', inputName, 'for the nodegraph:', nodegraph.getName())
+            return None
+
+        if outputPort.getType() != inputPort.getType():
+            print('Output type:', outputPort.getType(), 'does not match input type:', inputPort.getType())
+            return None
+
+        # Transfer the value from the graph input to a specified upstream input
+        if transferNodeInput: 
+            if inputPort.getValue():
+                newInput = node.addInputFromNodeDef(transferNodeInput)
+                if newInput and (newInput.getType() == inputPort.getType()):
+                    newInput.setValueString(inputPort.getValueString())
+
+        # Remove any value, and set a "connection" but setting the node name        
+        inputPort.removeAttribute('value')
+        inputPort.setAttribute('nodename', node.getName())
+        if node.getType() == 'multioutput':
+            inputPort.setOutputString(outputName)
+
+        return inputPort
+
+    @staticmethod
+    def ungroup(doc: mx.Document, graph: mx.NodeGraph):
+        '''        
+        Flatten a MaterialX NodeGraph into its parent graph.
+        @param doc The MaterialX document
+        @param graph The NodeGraph to ungroup
+        '''
+
+        parent = graph.getParent()
+        if not isinstance(parent, (mx.Document, mx.NodeGraph)):
+            return
+
+        node_map = {}
+        
+        nodegraph_name = graph.getName()
+        doc = graph.getDocument()
+
+        # Promote the nodes to parent
+        # Also create a map from old to new nodes.
+        for node in graph.getNodes():
+            new_name = f'{nodegraph_name}_{node.getName()}'
+            new_name = parent.createValidChildName(new_name)
+
+            new_node = parent.addNode(
+                node.getCategory(),
+                new_name,
+                node.getType()
+            )
+            new_node.copyContentFrom(node)
+            print(f'Add maping of old: {node.getNamePath()} to new: {new_node.getNamePath()}')
+
+            node_map[node.getName()] = new_node
+
+        # Rewrite internal node inputs.
+        # - Handle references in new node inputs to other internal nodes which have been remapped to new names
+        # - Handle graph input connections (interfacename) by routingg any upstream node to the input, or just eliding the value
+        for new_node in node_map.values():
+            for new_input in new_node.getInputs():
+                nodeattribute = new_input.getAttribute('nodename')
+                if nodeattribute in node_map:
+                    print(f'node connection match: {nodeattribute} in {[node.getName() for node in node_map.values()]}')
+                    mapped_node = node_map[nodeattribute]
+                    if mapped_node:
+                        #old_node_name = old_node.getName()
+                        mapped_attribute = mapped_node.getName()
+                        new_input.setAttribute('nodename', mapped_attribute)
+                        print(f'Rename {nodeattribute}, to node: {mapped_attribute} on input {new_input.getNamePath()}')
+
+                nodeinterface = new_input.getAttribute('interfacename')
+                graph_input = graph.getInput(nodeinterface)
+                if graph_input:
+                    upstream_node = graph_input.getConnectedNode()
+                    if upstream_node:
+                        new_input.setAttribute('nodename', upstream_node.getName())
+                        new_input.removeAttribute('interfacename')
+                        print(f'Connect input {new_input.getNamePath()} to upstream node: {upstream_node.getNamePath()} from graph input: {graph_input.getNamePath()}')
+                    else:
+                        new_input.setValue(graph_input.getValue())
+                        new_input.removeAttribute('interfacename')
+                        print(f'Set value on input {new_input.getNamePath()} from graph input: {graph_input.getNamePath()}')
+
+        # Restore any downstream graph connections
+        downstream_ports = graph.getDownstreamPorts()
+        print(f'Graph downstream ports: {[port.getNamePath() for port in downstream_ports]}')
+        old_graph_outputs = graph.getOutputs()
+        if old_graph_outputs:
+            for port in downstream_ports:
+                port_node = port.getParent()
+                port_output = port.getOutputString()
+                if port_output:
+                    src = graph.getOutput(port_output).getConnectedNode()
+                else:
+                    src = old_graph_outputs[0].getConnectedNode()
+                if src:
+                    new_src = node_map[src.getName()]
+                    print(f'Found downstream port: {port.getNamePath()} connected to graph output source node: {new_src.getNamePath()}')
+                    port.removeAttribute('nodegraph')
+                    port.setAttribute('nodename', new_src.getName())
+
+        # Remove existing graph
+        parent.removeNodeGraph(graph.getName())
+
+    @staticmethod
+    def group(parent: mx.GraphElement, nodes: list[mx.Node], nodegraph_name: str) :
+        '''
+        Group nodes in a MaterialX Document into a NodeGraph.
+        @param parent The parent graph element containing the nodes to group
+        @param nodes The list of nodes to group
+        @param nodegraph_name The name of the new NodeGraph        
+        '''
+        graph : mx.NodeGraph = parent.addChildOfCategory('nodegraph', nodegraph_name)
+
+        # Copy nodes into the graph
+        node_map = {}
+        for node in nodes:
+            new_node = graph.addNode(
+                node.getCategory(),
+                node.getName(),
+                node.getType()
+            )
+            new_node.copyContentFrom(node)
+
+            # Keep mapping from old to new node
+            node_map[node.getName()] = new_node
+
+        # Find nodes under parent not in node_map
+        for parent_node in parent.getNodes():
+            if parent_node.getName() not in node_map:
+                print(f'Parent node {parent_node.getNamePath()} is external to the group')
+                # check if parent inputs reference any of the nodes in the group
+                for parent_input in parent_node.getInputs():
+                    nodeattribute = parent_input.getAttribute('nodename')
+                    nodeoutput = parent_input.getOutputString()
+                    if nodeattribute in node_map:
+                        print(f'  > Parent input {parent_input.getNamePath()} references internal node: {nodeattribute}')
+                        internal_node = node_map[nodeattribute]
+                        # Create an interface output on the graph. Reuse the same output if the same node is referenced multiple times
+                        output_name = graph.createValidChildName('out_' + nodeattribute + (('_' + nodeoutput) if nodeoutput else ''))
+                        graph_output = graph.getOutput(output_name)
+                        if not graph_output:
+                            graph_output = graph.addOutput(
+                                output_name,
+                                parent_input.getType()
+                            )
+
+                        # Connect the graph output to the upstream internal node (output)
+                        graph_output.setAttribute('nodename', internal_node.getName())
+                        if nodeoutput:
+                            graph_output.setOutputString(nodeoutput)
+
+                        # Connect the parent input to the graph output
+                        parent_input.setAttribute('nodegraph', graph.getName())
+                        parent_input.removeAttribute('nodename')
+                        #if len(graph.getOutputs()) > 1:
+                        parent_input.setOutputString(output_name)
+                        print(f'    > Created graph output: {graph_output.getNamePath()} and connected to input: {parent_input.getNamePath()}')
+
+
+        # Check if any inputs reference nodes not in the graph
+        connection_types = ['nodename', 'nodegraph']
+        for new_node in graph.getNodes():
+            for new_input in new_node.getInputs():
+
+                for conn_type in connection_types:
+                    nodeattribute = new_input.getAttribute(conn_type)
+                    if nodeattribute and nodeattribute not in node_map:
+                        node_output = new_input.getOutputString()
+
+                        print(f'Input {new_input.getNamePath()} references external node: {nodeattribute}')
+
+                        # Create an interface input on the graph. Reuse the same input if the same node + output is referenced multiple times
+                        new_input_name = graph.createValidChildName('in' + '_' + nodeattribute + (('_' + node_output) if node_output else ''))
+                        graph_input = graph.getInput(new_input_name)
+                        if not graph_input:
+                            graph_input = graph.addInput(
+                                new_input_name,
+                                new_input.getType()
+                            )
+                            # Connect graph input to external node. Add output port connection if needed
+                            graph_input.setAttribute('nodename', nodeattribute)
+                            if node_output:
+                                graph_input.setOutputString(node_output)
+
+                        # Connect the internal node's input to the new interface input 
+                        new_input.setAttribute('interfacename', graph_input.getName())
+                        new_input.removeAttribute('nodename')
+                        print(f'  > Created graph input: {graph_input.getNamePath()} and connected to input: {new_input.getNamePath()}')
