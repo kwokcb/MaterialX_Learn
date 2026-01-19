@@ -1082,6 +1082,96 @@ class MxDrawIOExporter:
         
         self.diagram = root
         
+    
+    def create_slots(self, slot_type, fill_color, class_id, slots, current_y, x, y):
+        '''
+        Create slots for a class instance
+        @param slot_type: 'input' or 'output'
+        @param fill_color: Fill color for the slot
+        @param class_id: The class instance ID
+        @param slots: List of slot names
+        @param current_y: Current Y position within the class instance
+        @param x: X position of the class instance
+        @param y: Y position of the class instance
+        @return List of slot IDs and updated current_y
+        '''
+        if self.diagram is None:
+            raise ValueError("Diagram not created. Call create_diagram() first.")
+
+        slot_ids = []
+        for i, slot_name in enumerate(slots):
+            slot_id = self.get_unique_id(f"{class_id}_{slot_type}_{i}")
+            
+            slot_cell = ET.SubElement(self.diagram, 'mxCell')
+            slot_cell.set('id', slot_id)
+            slot_cell.set('value', slot_name)
+            slot_cell.set('style', f'html=1;strokeColor=none;fillColor={fill_color};align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;')
+            slot_cell.set('vertex', '1')
+            slot_cell.set('parent', class_id)
+            
+            slot_geom = ET.SubElement(slot_cell, 'mxGeometry')
+            slot_geom.set('y', str(current_y))
+            slot_geom.set('width', str(self.class_width))
+            slot_geom.set('height', str(self.slot_height))
+            slot_geom.set('as', 'geometry')
+            
+            # Store slot position for connections
+            slot_center_x = x + (self.class_width / 2)
+            slot_center_y = y + current_y + (self.slot_height / 2)
+            self.slot_positions[slot_id] = (slot_center_x, slot_center_y)
+            
+            # Store in existing slots map
+            self.existing_slots[(class_id, slot_name, slot_type)] = slot_id
+            slot_ids.append(slot_id)
+            
+            current_y += self.slot_height
+
+        return slot_ids, current_y        
+    
+    def create_input_slots(self, class_id, input_slots, current_y, x, y):
+        '''
+        Create input slots for a class instance
+        @param class_id: The class instance ID
+        @param input_slots: List of input slot names
+        @param current_y: Current Y position within the class instance
+        @param x: X position of the class instance
+        @param y: Y position of the class instance
+        @return List of input slot IDs and updated current_y
+        '''
+        if self.diagram is None:
+            raise ValueError("Diagram not created. Call create_diagram() first.")
+
+        input_slot_ids = []
+        
+        for i, slot_name in enumerate(input_slots):
+            slot_id = self.get_unique_id(f"{class_id}_input_{i}")
+            
+            slot_cell = ET.SubElement(self.diagram, 'mxCell')
+            slot_cell.set('id', slot_id)
+            slot_cell.set('value', slot_name)
+            slot_cell.set('style', 'html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;')
+            slot_cell.set('vertex', '1')
+            slot_cell.set('parent', class_id)
+            
+            slot_geom = ET.SubElement(slot_cell, 'mxGeometry')
+            slot_geom.set('y', str(current_y))
+            slot_geom.set('width', str(self.class_width))
+            slot_geom.set('height', str(self.slot_height))
+            slot_geom.set('as', 'geometry')
+            
+            # Store slot position for connections
+            slot_center_x = x + (self.class_width / 2)
+            slot_center_y = y + current_y + (self.slot_height / 2)
+            self.slot_positions[slot_id] = (slot_center_x, slot_center_y)
+            
+            # Store in existing slots map
+            self.existing_slots[(class_id, slot_name, 'input')] = slot_id
+            input_slot_ids.append(slot_id)
+            
+            current_y += self.slot_height
+
+        return input_slots, current_y        
+
     def create_class_instance(self, class_id, class_name, class_type, x, y, input_slots, output_slots, parent="1", header_height=None):
         if self.diagram is None:
             raise ValueError("Diagram not created. Call create_diagram() first.")
@@ -1113,64 +1203,12 @@ class MxDrawIOExporter:
         
         # Create input slots
         current_y = header_height
-        input_slot_ids = []
-        
-        for i, slot_name in enumerate(input_slots):
-            slot_id = self.get_unique_id(f"{class_id}_input_{i}")
-            
-            slot_cell = ET.SubElement(self.diagram, 'mxCell')
-            slot_cell.set('id', slot_id)
-            slot_cell.set('value', slot_name)
-            slot_cell.set('style', 'html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;')
-            slot_cell.set('vertex', '1')
-            slot_cell.set('parent', class_id)
-            
-            slot_geom = ET.SubElement(slot_cell, 'mxGeometry')
-            slot_geom.set('y', str(current_y))
-            slot_geom.set('width', str(self.class_width))
-            slot_geom.set('height', str(self.slot_height))
-            slot_geom.set('as', 'geometry')
-            
-            # Store slot position for connections
-            slot_center_x = x + (self.class_width / 2)
-            slot_center_y = y + current_y + (self.slot_height / 2)
-            self.slot_positions[slot_id] = (slot_center_x, slot_center_y)
-            
-            # Store in existing slots map
-            self.existing_slots[(class_id, slot_name, 'input')] = slot_id
-            input_slot_ids.append(slot_id)
-            
-            current_y += self.slot_height
-        
+        fill_color = self.node_colors.get(class_type, ['#AAF', '#FFF'])[0]
+        input_slot_ids, current_y =  self.create_slots('input', fill_color, class_id, input_slots, current_y, x, y)
+
         # Create output slots
-        output_slot_ids = []
-        
-        for i, slot_name in enumerate(output_slots):
-            slot_id = self.get_unique_id(f"{class_id}_output_{i}")
-            
-            slot_cell = ET.SubElement(self.diagram, 'mxCell')
-            slot_cell.set('id', slot_id)
-            slot_cell.set('value', slot_name)
-            slot_cell.set('style', 'html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;')
-            slot_cell.set('vertex', '1')
-            slot_cell.set('parent', class_id)
-            
-            slot_geom = ET.SubElement(slot_cell, 'mxGeometry')
-            slot_geom.set('y', str(current_y))
-            slot_geom.set('width', str(self.class_width))
-            slot_geom.set('height', str(self.slot_height))
-            slot_geom.set('as', 'geometry')
-            
-            # Store slot position for connections
-            slot_center_x = x + (self.class_width / 2)
-            slot_center_y = y + current_y + (self.slot_height / 2)
-            self.slot_positions[slot_id] = (slot_center_x, slot_center_y)
-            
-            # Store in existing slots map
-            self.existing_slots[(class_id, slot_name, 'output')] = slot_id
-            output_slot_ids.append(slot_id)
-            
-            current_y += self.slot_height
+        fill_color = self.node_colors.get(class_type, ['#AFA', '#FFF'])[0]
+        output_slot_ids, current_y = self.create_slots('output', fill_color, class_id, output_slots, current_y, x, y)
         
         # Create separator line
         separator_id = self.get_unique_id(f"{class_id}_separator")
