@@ -460,6 +460,10 @@ class MtlxGraphBuilder():
             self.connections = data['connections']
 
 class MxMermaidGraphExporter:
+    '''
+    Class to export a MaterialX graph to Mermaid format
+    Uses as input the graph dictionary and connections from MtlxGraphBuilder
+    '''
     def __init__(self, graphDictionary, connections):
         self.graphDictionary = graphDictionary
         self.connections = connections
@@ -908,6 +912,10 @@ class MtlxMermaid:
         return outputGraph
     
 class MxDrawIOExporter:
+    '''
+    Class to export a MaterialX graph to Draw.io format
+    Uses as input the graph dictionary and connections from MtlxGraphBuilder
+    '''
     def __init__(self, graphDictionary, connections):
         self.graphDictionary = graphDictionary
         self.connections = connections
@@ -918,6 +926,7 @@ class MxDrawIOExporter:
         # Draw.io specific settings for class instances
         self.class_width = 140
         self.header_height = 30
+        self.value_height = 20
         self.slot_height = 30
         self.separator_height = 8
         self.horizontal_spacing = 200
@@ -938,7 +947,22 @@ class MxDrawIOExporter:
         self.current_row_nodes = 0
         self.max_nodes_per_row = 4
 
-        self.debug = False
+        self.node_colors = dict()
+        self.node_colors['input'] = ['#09D', '#FFF']
+        self.node_colors['output'] = ['#0C0', '#FFF']
+        self.node_colors['surfacematerial'] = ['#090', '#FFF']
+        self.node_colors['nodedef'] = ['#00C', '#FFF']
+        self.node_colors['token'] = ['#222', '#FFF']
+        self.node_colors['constant'] = ['#500', '#FFF']
+        self.node_colors['ifequal'] = ['#C72', '#FFF']
+        self.node_colors['ifgreatereq'] = ['#C72', '#FFF']
+        self.node_colors['switch'] = ['#C72', '#FFF']
+
+        self.emitCategory = False
+        self.emitType = False
+        self.emitValue = True
+
+        self.debug = True
         
     def set_debug(self, debug):
         self.debug = debug
@@ -969,33 +993,26 @@ class MxDrawIOExporter:
             self._debug_print(f"Warning: Unknown orientation '{orientation}'. Using default 'LR'.")
     
     def setEmitCategory(self, emitCategory):
-        """TODO"""
-        pass
-    
+        self.emitCategory = emitCategory
+
     def setEmitType(self, emitType):
-        """TODO"""
-        pass
-    
+        self.emitType = emitType
+
     def setEmitValue(self, emitValue):
-        """TODO"""
-        pass
-    
+        self.emitValue = emitValue
+
     def getNodeColors(self):
-        """TODO"""
-        return {}
+        '''
+        Get node colors
+        '''
+        return self.node_colors
     
     def setNodeColors(self, colors):
-        """TODO"""
-        pass
-    
-    def getNodeShapes(self):
-        """TODO"""
-        return {}
-    
-    def setNodeShapes(self, shapes):
-        """TODO"""
-        pass
-    
+        '''
+        Set node colors
+        '''
+        self.node_colors = colors
+        
     def get_unique_id(self, base_id):
         """Generate a unique ID"""
         if base_id not in self.used_ids:
@@ -1025,7 +1042,7 @@ class MxDrawIOExporter:
         self.xml_root.set('modified', date_time)    
         self.xml_root.set('agent', 'MaterialX DrawIO Exporter')
         self.xml_root.set('version', '0.1.39.5')
-        self.xml_root.set('copyright', 'Copyright 2024, NanMu Consulting. kwokcb@gmail.com')
+        self.xml_root.set('copyright', 'Copyright 2026, NanMu Consulting. kwokcb@gmail.com')
         
     def create_diagram(self, name="MaterialX Graph"):
         """Create a diagram within the mxfile"""
@@ -1065,20 +1082,25 @@ class MxDrawIOExporter:
         
         self.diagram = root
         
-    def create_class_instance(self, class_id, class_name, x, y, input_slots, output_slots, parent="1"):
+    def create_class_instance(self, class_id, class_name, class_type, x, y, input_slots, output_slots, parent="1", header_height=None):
         if self.diagram is None:
             raise ValueError("Diagram not created. Call create_diagram() first.")
 
         """Create a class instance with swimlane layout"""
         # Calculate total height
         total_slots = len(input_slots) + len(output_slots)
-        total_height = self.header_height + (total_slots * self.slot_height) + self.separator_height
+        if header_height is None:
+            header_height = self.header_height
+        total_height = header_height + (total_slots * self.slot_height) + self.separator_height
         
         # Create the swimlane (class container)
         swimlane = ET.SubElement(self.diagram, 'mxCell')
         swimlane.set('id', class_id)
         swimlane.set('value', class_name)
-        swimlane.set('style', 'swimlane;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;')
+        
+        # Set header style. Make sure to use the proper header height for start size.
+        swimlane_style = f'swimlane;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize={header_height};horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;'
+        swimlane.set('style', swimlane_style)
         swimlane.set('vertex', '1')
         swimlane.set('parent', parent)
         
@@ -1090,7 +1112,7 @@ class MxDrawIOExporter:
         geometry.set('as', 'geometry')
         
         # Create input slots
-        current_y = self.header_height
+        current_y = header_height
         input_slot_ids = []
         
         for i, slot_name in enumerate(input_slots):
@@ -1169,7 +1191,7 @@ class MxDrawIOExporter:
         self.node_positions[class_id] = (x, y, self.class_width, total_height)
         
         return class_id, input_slot_ids, output_slot_ids
-    
+
     def create_edge(self, edge_id, source, target, parent="1"):
         """Create an edge (connection) between slots"""
 
@@ -1206,7 +1228,9 @@ class MxDrawIOExporter:
         return edge
     
     def update_layout_position(self, node_width, node_height):
-        """Update layout position based on orientation"""
+        '''
+        Update layout position based on orientation
+        '''
         if self.orientation in ['LR', 'RL']:
             # Horizontal layout
             self.next_x += node_width + self.horizontal_spacing
@@ -1227,7 +1251,9 @@ class MxDrawIOExporter:
                 self.current_row_nodes = 0
     
     def collect_node_slots(self, node_name):
-        """Collect unique input and output slots for a node from connections"""
+        '''
+        Collect unique input and output slots for a node from connections
+        '''
         input_slots = {}
         output_slots = {}
         
@@ -1265,7 +1291,15 @@ class MxDrawIOExporter:
         return node_name
     
     def create_class_for_node(self, node_path, node_info):
-        """Create a class instance for a node"""
+        '''
+        Create a class instance for a node. This includes:
+        - Create the header with node name/type/value
+        - Collect input/output slots from connections
+    
+        @param node_path: The full path of the node
+        @param node_info: The node information tuple/list
+        @return: The class ID of the created node
+        '''
         node_name = self.extract_base_node_name(node_path)
         class_id = self.sanitize_id(node_path)
         
@@ -1276,10 +1310,15 @@ class MxDrawIOExporter:
         node_type = node_info[1] if len(node_info) > 1 else 'node'
         node_value = node_info[3] if len(node_info) > 3 else ''
         
-        # Build class name
+        # Build class name. Use node name or node type depending on options
+        header_height = self.header_height
         class_name = node_name
-        if node_type and node_type != 'node':
-            class_name += f"\n({node_type})"
+        if self.emitType:
+            class_name = node_type
+        # Emit value if specified and found. Increase header height accordingly.
+        if self.emitValue and node_value:
+            class_name += f" = {node_value}"
+            header_height += self.value_height
         
         # Collect slots from connections
         input_slots, output_slots = self.collect_node_slots(node_name)
@@ -1296,22 +1335,30 @@ class MxDrawIOExporter:
         class_id, input_slot_ids, output_slot_ids = self.create_class_instance(
             class_id=class_id,
             class_name=class_name,
+            class_type=node_type,
             x=x,
             y=y,
             input_slots=input_slots,
             output_slots=output_slots,
-            parent="1"
+            parent="1",
+            header_height=header_height
         )
         
         # Update layout for next node
         total_slots = len(input_slots) + len(output_slots)
-        node_height = self.header_height + (total_slots * self.slot_height) + self.separator_height
+        node_height = header_height + (total_slots * self.slot_height) + self.separator_height
         self.update_layout_position(self.class_width, node_height)
         
         return class_id
     
     def find_node_id_for_connection(self, connection_node):
-        """Find the class ID for a connection node reference"""
+        '''
+        Find the class ID for a connection node reference
+        - Extract base name from connection_node
+        - Look up in node_name_to_id mapping        
+        @param connection_node: The node path from the connection
+        @return: The class ID if found, else None
+        '''
         # First, try to extract base name
         if '/' in connection_node:
             node_name = connection_node.split('/')[-1]
