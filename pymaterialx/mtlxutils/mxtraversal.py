@@ -933,7 +933,7 @@ class MxDrawIOExporter:
         self.vertical_spacing = 150
         
         # Orientation settings
-        self.orientation = 'LR'  # Default: Left to Right
+        self.orientation = 'TB'  # Default: Left to Right
         
         # Tracking for layout and port reuse
         self.node_positions = {}
@@ -957,6 +957,8 @@ class MxDrawIOExporter:
         self.node_colors['ifequal'] = ['#C72', '#FFF']
         self.node_colors['ifgreatereq'] = ['#C72', '#FFF']
         self.node_colors['switch'] = ['#C72', '#FFF']
+        self.default_node_colors = ['#e1d5e7', '#000']
+        self.default_port_colors = ['#FFF', '#000']
 
         self.emitCategory = False
         self.emitType = False
@@ -1083,11 +1085,11 @@ class MxDrawIOExporter:
         self.diagram = root
         
     
-    def create_slots(self, slot_type, fill_color, class_id, slots, current_y, x, y):
+    def create_slots(self, slot_type, fill_colors, class_id, slots, current_y, x, y):
         '''
         Create slots for a class instance
         @param slot_type: 'input' or 'output'
-        @param fill_color: Fill color for the slot
+        @param fill_color: Fill and font colors for the slot
         @param class_id: The class instance ID
         @param slots: List of slot names
         @param current_y: Current Y position within the class instance
@@ -1099,13 +1101,15 @@ class MxDrawIOExporter:
             raise ValueError("Diagram not created. Call create_diagram() first.")
 
         slot_ids = []
+        fillc = fill_colors[0]
+        fontc = fill_colors[1]
         for i, slot_name in enumerate(slots):
             slot_id = self.get_unique_id(f"{class_id}_{slot_type}_{i}")
             
             slot_cell = ET.SubElement(self.diagram, 'mxCell')
             slot_cell.set('id', slot_id)
             slot_cell.set('value', slot_name)
-            slot_cell.set('style', f'html=1;strokeColor=none;fillColor={fill_color};align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;')
+            slot_cell.set('style', f'html=1;strokeColor=none;fontColor={fontc};fillColor={fillc};align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;')
             slot_cell.set('vertex', '1')
             slot_cell.set('parent', class_id)
             
@@ -1128,55 +1132,23 @@ class MxDrawIOExporter:
 
         return slot_ids, current_y        
     
-    def create_input_slots(self, class_id, input_slots, current_y, x, y):
+    def create_class_instance(self, class_id, class_name, class_type, x, y, input_slots, output_slots, parent="1", header_height=None):
         '''
-        Create input slots for a class instance
-        @param class_id: The class instance ID
-        @param input_slots: List of input slot names
-        @param current_y: Current Y position within the class instance
+        Create a class instance (swimlane) with input and output slots
+        @param class_id: Unique ID for the class instance
+        @param class_name: Name of the class instance
+        @param class_type: Type/category of the class instance
         @param x: X position of the class instance
         @param y: Y position of the class instance
-        @return List of input slot IDs and updated current_y
+        @param input_slots: List of input slot names
+        @param output_slots: List of output slot names
+        @param parent: Parent ID in the diagram
+        @param header_height: Optional header height
+        @return class_id, list of input slot IDs, list of output slot IDs
         '''
         if self.diagram is None:
             raise ValueError("Diagram not created. Call create_diagram() first.")
 
-        input_slot_ids = []
-        
-        for i, slot_name in enumerate(input_slots):
-            slot_id = self.get_unique_id(f"{class_id}_input_{i}")
-            
-            slot_cell = ET.SubElement(self.diagram, 'mxCell')
-            slot_cell.set('id', slot_id)
-            slot_cell.set('value', slot_name)
-            slot_cell.set('style', 'html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;')
-            slot_cell.set('vertex', '1')
-            slot_cell.set('parent', class_id)
-            
-            slot_geom = ET.SubElement(slot_cell, 'mxGeometry')
-            slot_geom.set('y', str(current_y))
-            slot_geom.set('width', str(self.class_width))
-            slot_geom.set('height', str(self.slot_height))
-            slot_geom.set('as', 'geometry')
-            
-            # Store slot position for connections
-            slot_center_x = x + (self.class_width / 2)
-            slot_center_y = y + current_y + (self.slot_height / 2)
-            self.slot_positions[slot_id] = (slot_center_x, slot_center_y)
-            
-            # Store in existing slots map
-            self.existing_slots[(class_id, slot_name, 'input')] = slot_id
-            input_slot_ids.append(slot_id)
-            
-            current_y += self.slot_height
-
-        return input_slots, current_y        
-
-    def create_class_instance(self, class_id, class_name, class_type, x, y, input_slots, output_slots, parent="1", header_height=None):
-        if self.diagram is None:
-            raise ValueError("Diagram not created. Call create_diagram() first.")
-
-        """Create a class instance with swimlane layout"""
         # Calculate total height
         total_slots = len(input_slots) + len(output_slots)
         if header_height is None:
@@ -1189,7 +1161,10 @@ class MxDrawIOExporter:
         swimlane.set('value', class_name)
         
         # Set header style. Make sure to use the proper header height for start size.
-        swimlane_style = f'swimlane;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize={header_height};horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;'
+        fill_color = self.node_colors.get(class_type, self.default_node_colors)[0]
+        font_color = self.node_colors.get(class_type, self.default_node_colors)[1]
+
+        swimlane_style = f'swimlane;fontColor={font_color};fillColor={fill_color};fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize={header_height};horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;'
         swimlane.set('style', swimlane_style)
         swimlane.set('vertex', '1')
         swimlane.set('parent', parent)
@@ -1203,27 +1178,29 @@ class MxDrawIOExporter:
         
         # Create input slots
         current_y = header_height
-        fill_color = self.node_colors.get(class_type, ['#AAF', '#FFF'])[0]
-        input_slot_ids, current_y =  self.create_slots('input', fill_color, class_id, input_slots, current_y, x, y)
+        fill_colors = self.default_port_colors
+        input_slot_ids, current_y =  self.create_slots('input', fill_colors, class_id, input_slots, current_y, x, y)
 
         # Create output slots
-        fill_color = self.node_colors.get(class_type, ['#AFA', '#FFF'])[0]
-        output_slot_ids, current_y = self.create_slots('output', fill_color, class_id, output_slots, current_y, x, y)
+        fill_colors = self.default_port_colors
+        output_slot_ids, current_y = self.create_slots('output', fill_colors, class_id, output_slots, current_y, x, y)
         
         # Create separator line
-        separator_id = self.get_unique_id(f"{class_id}_separator")
-        separator = ET.SubElement(self.diagram, 'mxCell')
-        separator.set('id', separator_id)
-        separator.set('value', '')
-        separator.set('style', 'line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;')
-        separator.set('vertex', '1')
-        separator.set('parent', class_id)
-        
-        separator_geom = ET.SubElement(separator, 'mxGeometry')
-        separator_geom.set('y', str(current_y))
-        separator_geom.set('width', str(self.class_width))
-        separator_geom.set('height', str(self.separator_height))
-        separator_geom.set('as', 'geometry')
+        need_separator = False
+        if need_separator:
+            separator_id = self.get_unique_id(f"{class_id}_separator")
+            separator = ET.SubElement(self.diagram, 'mxCell')
+            separator.set('id', separator_id)
+            separator.set('value', '')
+            separator.set('style', 'line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;')
+            separator.set('vertex', '1')
+            separator.set('parent', class_id)
+            
+            separator_geom = ET.SubElement(separator, 'mxGeometry')
+            separator_geom.set('y', str(current_y))
+            separator_geom.set('width', str(self.class_width))
+            separator_geom.set('height', str(self.separator_height))
+            separator_geom.set('as', 'geometry')
         
         # Store node position
         self.node_positions[class_id] = (x, y, self.class_width, total_height)
@@ -1312,12 +1289,14 @@ class MxDrawIOExporter:
                 if slot_name not in input_slots:
                     input_slots[slot_name] = []
                 input_slots[slot_name].append(conn)
-        
+
         # Return sorted lists of slot names
         return list(input_slots.keys()), list(output_slots.keys())
     
     def extract_base_node_name(self, node_path):
-        """Extract the base node name from a path, removing any numeric suffix"""
+        '''
+        Extract the base node name from a path, removing any numeric suffix
+        '''
         # Get the last part of the path
         node_name = node_path.split('/')[-1]
         # Remove any numeric suffix like _1, _2, etc.
@@ -1355,11 +1334,17 @@ class MxDrawIOExporter:
             class_name = node_type
         # Emit value if specified and found. Increase header height accordingly.
         if self.emitValue and node_value:
-            class_name += f" = {node_value}"
+            class_name += f' = "{node_value}"'
             header_height += self.value_height
         
         # Collect slots from connections
         input_slots, output_slots = self.collect_node_slots(node_name)
+
+        # Collects slots for unconnected inputs
+        #if node_type == 'input' and not input_slots:
+        #    input_slots += ["in"]
+        #if node_type == 'output' and not output_slots:
+        #    output_slots += ["out"]
         
         # Add default output slot if needed
         if not output_slots and node_type not in ['input', 'output']:
@@ -1508,10 +1493,11 @@ class MxDrawIOExporter:
         
         NODE_STYLE = 'shape=ellipse;fillColor=#ffeb3b;strokeColor=#fbc02d;html=1;whiteSpace=wrap;'
 
+        non_value = ['nodename', 'interfacename']
         for i, conn in enumerate(self.connections):
-            if len(conn) > 4 and conn[4] == 'value':
+            if len(conn) > 4 and conn[4] not in non_value:
                 value_id = self.sanitize_id(f"value_{conn[0]}")
-                self._debug_print('Creating value node for connection:', conn)
+                self._debug_print('Creating value node for connection:' + conn)
                 if value_id not in value_nodes:
                     # Create a simple value node (not a class instance)
                     x = self.next_x
@@ -1544,6 +1530,73 @@ class MxDrawIOExporter:
         
         return value_nodes
     
+    def _group_nodes(self, group_name, node_ids, fill_color='#f4f1f7'):
+        '''
+        Create a group around existing nodes
+        @param group_name: Name of the group
+        @param node_ids: List of node IDs to include in the group
+        '''
+        if self.diagram is None:
+            raise ValueError("Diagram not created. Call create_diagram() first.")
+        
+        if not node_ids:
+            return
+        
+        # Find bounds of all nodes in the group
+        min_x = float('inf')
+        min_y = float('inf')
+        max_x = float('-inf')
+        max_y = float('-inf')
+        
+        for node_id in node_ids:
+            if node_id in self.node_positions:
+                x, y, width, height = self.node_positions[node_id]
+                min_x = min(min_x, x)
+                min_y = min(min_y, y)
+                max_x = max(max_x, x + width)
+                max_y = max(max_y, y + height)
+        
+        # Add padding
+        padding = 30
+        group_x = min_x - padding
+        group_y = min_y - padding - 20  # Extra space for group label
+        group_width = (max_x - min_x) + (padding * 2)
+        group_height = (max_y - min_y) + (padding * 2)
+        
+        # Create group ID
+        group_id = self.sanitize_id(f"group_{group_name}")
+        
+        # Create the group cell (a simple rectangle)
+        group_cell = ET.SubElement(self.diagram, 'mxCell')
+        group_cell.set('id', group_id)
+        group_cell.set('value', group_name)  # Group label
+        
+        group_style = f'rounded=1;whiteSpace=wrap;html=1;fillColor={fill_color};strokeColor=#9673a6;fontStyle=1;fontSize=12;'
+        
+        group_cell.set('style', group_style)
+        group_cell.set('vertex', '1')
+        group_cell.set('parent', '1')
+        
+        geometry = ET.SubElement(group_cell, 'mxGeometry')
+        geometry.set('x', str(group_x))
+        geometry.set('y', str(group_y))
+        geometry.set('width', str(group_width))
+        geometry.set('height', str(group_height))
+        geometry.set('as', 'geometry')
+        
+        # Store group position
+        self.node_positions[group_id] = (group_x, group_y, group_width, group_height)
+        
+        # Move nodes to be children of the group (optional, but keeps hierarchy clean)
+        # Note: In draw.io, connections still work even if nodes are inside groups
+        for node_id in node_ids:
+            # Find the node cell and update its parent
+            for cell in self.diagram.findall(f".//mxCell[@id='{node_id}']"):
+                cell.set('parent', group_id)
+                break
+        
+        self._debug_print(f"Created group '{group_name}' with {len(node_ids)} nodes")
+
     def execute(self):
         """Main execution method to create the draw.io diagram"""
         # Reset tracking structures
@@ -1560,16 +1613,34 @@ class MxDrawIOExporter:
         self.create_diagram()
         
         # First pass: create all class instances
+        # Cache graph path -> node pairs for grouping later
         node_ids = []
+        graph_info = []
         for graph_path in self.graphDictionary:
             for item in self.graphDictionary[graph_path]:
                 node_path = item[0]
                 node_id = self.create_class_for_node(node_path, item)
-                node_ids.append(node_id)
+                node_ids.append((node_id))
+                graph_info.append((graph_path, node_id))
         
         # Create value nodes if any
         self.create_value_nodes()
         
+        # Create groups around nodes that share the same non-empty graph path
+        groups_created = {}
+        
+        # Find all nodes in each group
+        for graph_path, node_id in graph_info:
+            if graph_path:  # Skip empty graph paths as nodes are at root level
+                if graph_path not in groups_created:
+                    groups_created[graph_path] = []
+                groups_created[graph_path].append(node_id)
+        
+        # Create groups for each graph path
+        for graph_path, node_ids_in_group in groups_created.items():
+            if len(node_ids_in_group) > 0:
+                self._group_nodes(graph_path, node_ids_in_group)
+
         # Debug: Print all created slots and node mappings
         self._debug_print(f"Created {len(self.existing_slots)} slots:")
         for key, slot_id in self.existing_slots.items():
