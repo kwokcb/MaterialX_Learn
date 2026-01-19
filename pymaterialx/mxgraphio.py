@@ -1,6 +1,6 @@
 import MaterialX as mx
 import argparse, os
-from mtlxutils.mxtraversal import MtlxGraphBuilder, MxMermaidGraphExporter
+from mtlxutils.mxtraversal import MtlxGraphBuilder, MxMermaidGraphExporter, MxDrawIOExporter
 
 # Version check
 from mtlxutils.mxbase import *
@@ -70,8 +70,16 @@ def main():
     parser.add_argument('--graphs', dest='graphs', default='', help='Comma separated list of graphs to include in the graph. If empty, all node definitions are included. Example: "image,material"')
     parser.add_argument('--emitCategory', dest='emitCategory', default=False, help='Emit category information in the graph. Default is false.')
     parser.add_argument('--emitType', dest='emitType', default=False, help='Emit node type information in the graph. Default is false.')
+    parser.add_argument('-f', '--format', dest='format', default='mermaid', help='Format of the output graph. Supported formats are: mermaid, drawio. Default is mermaid.')
 
     opts = parser.parse_args()
+
+    # Check output format
+    output_format = opts.format.lower()
+    allowed_formats = ['mermaid', 'drawio']
+    if output_format not in allowed_formats:
+        print('Error: Unsupported output format "%s". Allowed formats are: %s' % (opts.format, ', '.join(allowed_formats)))
+        exit(-1)
 
     # Load standard libraries
     libraries = []
@@ -156,13 +164,20 @@ def main():
             # Export to Mermaid in Markdown file
             #graphBuilder2 = MtlxGraphBuilder(None)
             #graphBuilder2.importFromJSON(outputFileName)
-            exporter = MxMermaidGraphExporter(graphBuilder.getDictionary(), graphBuilder.getConnections())
+            if output_format == 'mermaid':
+                exporter = MxMermaidGraphExporter(graphBuilder.getDictionary(), graphBuilder.getConnections())
+            else:
+                exporter = MxDrawIOExporter(graphBuilder.getDictionary(), graphBuilder.getConnections())
+
             exporter.setOrientation(opts.orientation)
             exporter.setEmitCategory(opts.emitCategory)
             exporter.setEmitType(opts.emitType)
             exporter.execute()
 
-            outputFileName = mx.FilePath(inputFilename.replace('.mtlx', '.md'))
+            extension = '.md' 
+            if output_format == 'drawio':
+                extension = '.drawio'
+            outputFileName = mx.FilePath(inputFilename.replace('.mtlx', extension))
             if opts.outputPath:
                 outputFileName = mx.FilePath(opts.outputPath) / outputFileName.getBaseName()
 
