@@ -1505,7 +1505,7 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         
         return value_nodes
     
-    def _group_nodes(self, group_name, node_ids, fill_color='#f4f1f7'):
+    def group_nodes(self, group_name, node_ids, fill_color='#f4f1f7'):
         '''
         Create a group around existing nodes
         @param group_name: Name of the group
@@ -1607,7 +1607,7 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         # Create groups for each graph path
         for graph_path, node_ids_in_group in groups_created.items():
             if len(node_ids_in_group) > 0:
-                self._group_nodes(graph_path, node_ids_in_group)
+                self.group_nodes(graph_path, node_ids_in_group)
 
     def layout_nodes(self, x_spacing=80, y_spacing=40, start_x=50, start_y=50):
         """
