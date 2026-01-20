@@ -144,13 +144,13 @@ def main():
 
             # Build the graph dictionary and connections
             graphBuilder = MtlxGraphBuilder(doc)
-            graphBuilder.setIncludeGraphs(opts.graphs)
+            graphBuilder.set_include_graphs(opts.graphs)
             graphBuilder.execute()
 
-            if not graphBuilder.getDictionary():
+            if not graphBuilder.get_dictionary():
                 print('No nodes found.')
                 continue
-            if not graphBuilder.getConnections():
+            if not graphBuilder.get_connections():
                 print('No connections found.')
                 continue
 
@@ -159,19 +159,18 @@ def main():
             if opts.outputPath:
                 outputFileName = mx.FilePath(opts.outputPath) / outputFileName.getBaseName()
             print('- Write connectivity file:', outputFileName.asString())
-            graphBuilder.exportToJSON(outputFileName.asString(), baseInputFileName)
-
+            graphBuilder.export_to_json(outputFileName.asString(), baseInputFileName)
             # Export to Mermaid in Markdown file
             #graphBuilder2 = MtlxGraphBuilder(None)
-            #graphBuilder2.importFromJSON(outputFileName)
+            #graphBuilder2.import_from_json(outputFileName)
             if output_format == 'mermaid':
-                exporter = MxMermaidGraphExporter(graphBuilder.getDictionary(), graphBuilder.getConnections())
+                exporter = MxMermaidGraphExporter(graphBuilder.get_dictionary(), graphBuilder.get_connections())
             else:
-                exporter = MxDrawIOExporter(graphBuilder.getDictionary(), graphBuilder.getConnections())
+                exporter = MxDrawIOExporter(graphBuilder.get_dictionary(), graphBuilder.get_connections())
 
-            exporter.setOrientation(opts.orientation)
-            exporter.setEmitCategory(opts.emitCategory)
-            exporter.setEmitType(opts.emitType)
+            exporter.set_orientation(opts.orientation)
+            exporter.set_emit_category(opts.emitCategory)
+            exporter.set_emit_type(opts.emitType)
             exporter.execute()
 
             extension = '.md' 

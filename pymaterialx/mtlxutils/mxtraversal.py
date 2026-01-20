@@ -8,7 +8,7 @@ import datetime
 
 class MtlxTraversal:
     @staticmethod
-    def printEdge(edge):
+    def print_edge(edge):
         "Sample utility to print out the basic information about an edge"
 
         upstreamElem = edge.getUpstreamElement()
@@ -26,7 +26,7 @@ class MtlxTraversal:
         print('Edge: ' + upstreamElem.getNamePath() + ' --> ' + downstreamPath)
 
     @staticmethod
-    def findEdge(edge, processedEdges):
+    def find_edge(edge, processedEdges):
         "Edge equality comparitor"
         for pe in processedEdges:
             # Note: the comparison (pe == edge) does not work 
@@ -37,7 +37,7 @@ class MtlxTraversal:
         return False
 
     @staticmethod
-    def updateGraphDictionaryPath(key, value, graphDictionary):
+    def update_graph_dictionary_path(key, value, graphDictionary):
         """
         Add a parent / child to the GraphElement dictionary
         """
@@ -47,14 +47,14 @@ class MtlxTraversal:
             graphDictionary[key] = {value}
 
     @staticmethod
-    def addStyle(key, value, styleDictionary):
+    def add_style(key, value, styleDictionary):
         if key in styleDictionary:
             styleDictionary[key].add(value)
         else:
             styleDictionary[key] = {value}
 
     @staticmethod
-    def updateGraphDictionaryItem(item, graphDictionary):
+    def update_graph_dictionary_item(item, graphDictionary):
         """
         Add a Element to the GraphElement dictionary, where the keys are the GraphElement's path, and the value
         is a list of child Element paths
@@ -68,19 +68,19 @@ class MtlxTraversal:
 
         key = parentElem.getNamePath()
         value = item.getNamePath()
-        MtlxTraversal.updateGraphDictionaryPath(key, value, graphDictionary)
+        MtlxTraversal.update_graph_dictionary_path(key, value, graphDictionary)
 
     @staticmethod
-    def updateGraphDictionary(edge, graphDictionary):
+    def update_graph_dictionary(edge, graphDictionary):
         """
         Add nodes from either end of the connection to a GraphElement dictionary
         """
         ends = [edge.getUpstreamElement(), edge.getDownstreamElement()]
         for end in ends:
-            MtlxTraversal.updateGraphDictionaryItem(end, graphDictionary)
+            MtlxTraversal.update_graph_dictionary_item(end, graphDictionary)
 
     @staticmethod
-    def printGraphDictionary(graphDictionary):
+    def print_graph_dictionary(graphDictionary):
         """
         Print out the sub-graph dictionary
         """
@@ -103,16 +103,16 @@ class MtlxGraphBuilder():
         self.connections = []
         self.includeGraphs = ''
 
-    def setIncludeGraphs(self, graphs):
+    def set_include_graphs(self, graphs):
         self.includeGraphs = graphs
 
-    def getDictionary(self):
+    def get_dictionary(self):
         return self.graphDictionary
     
-    def getConnections(self):
+    def get_connections(self):
         return self.connections
 
-    def updateGraphDictionaryPath(self, key, item, nodetype, type, value, graphDictionary):
+    def update_graph_dictionary_path(self, key, item, nodetype, type, value, graphDictionary):
         """
         Add a parent / child to the GraphElement dictionary
         """
@@ -124,7 +124,7 @@ class MtlxGraphBuilder():
             graphDictionary[key] = [[item, nodetype, type, value]]
 
 
-    def updateGraphDictionaryItem(self, item, graphDictionary):
+    def update_graph_dictionary_item(self, item, graphDictionary):
         """
         Add a Element to the GraphElement dictionary, where the keys are the GraphElement's path, and the value
         is a list of child Element paths
@@ -155,15 +155,15 @@ class MtlxGraphBuilder():
         #    itemInput = item.getInput('value')
         #    if itemInput:
         #        itemValue =  itemInput.getValueString()
-        self.updateGraphDictionaryPath(key, value, itemCategory, itemType, itemValue, graphDictionary)
+        self.update_graph_dictionary_path(key, value, itemCategory, itemType, itemValue, graphDictionary)
 
         #if item.isA(mx.Input):
         #    valueString = item.getActiveValueString()
         #    print('Got value: ' + valueString + ' for item:' + item.getNamePath())
         #    if valueString:
-        #        updateGraphDictionaryPath(key, mx.createValidName(valueString), 'value', graphDictionary)
+        #        update_graph_dictionary_path(key, mx.createValidName(valueString), 'value', graphDictionary)
 
-    def printGraphDictionary(self, graphDictionary):
+    def print_graph_dictionary(self, graphDictionary):
         """
         Print out the sub-graph dictionary
         """
@@ -191,12 +191,12 @@ class MtlxGraphBuilder():
                 if item[1] not in filter:
                     print('- ', item)
 
-    def getParentGraph(self, elem):
+    def get_parent_graph(self, elem):
         while (elem and not elem.isA(mx.GraphElement)):
             elem = elem.getParent()
         return elem
 
-    def getDefaultOutput(self, node):
+    def get_default_output(self, node):
 
         if not node:
             return ''
@@ -215,12 +215,12 @@ class MtlxGraphBuilder():
             return defaultOutput.getName()
         return ''    
 
-    def appendPath(self, p1, p2):
+    def append_path(self, p1, p2):
         if p2:
             return p1 + '/' + p2
         return p1
 
-    def buildPortConnection(self, doc, portPath, connections, portIsNode):
+    def build_port_connection(self, doc, portPath, connections, portIsNode):
         '''
         Build a list of connections for the given graphElement.
 
@@ -242,7 +242,7 @@ class MtlxGraphBuilder():
 
         parent = port.getParent()
         parentPath = parent.getNamePath()
-        parentGraph = self.getParentGraph(port)
+        parentGraph = self.get_parent_graph(port)
 
         # Need to "jump out" of current graph if considering an input interfae
         # on a graph
@@ -261,11 +261,11 @@ class MtlxGraphBuilder():
         nodename = port.getAttribute('nodename')
         if nodename:
             if len(parentGraphPath) == 0:
-                result = [self.appendPath(nodename, ''), outputName, destNode, destPort, 'nodename']
+                result = [self.append_path(nodename, ''), outputName, destNode, destPort, 'nodename']
             else:
                 #if not doc.getDescendant(parentGraphPath + '/' + nodename):
                 #    print('Cannot find nodename:', nodename, 'in graph:', parentGraphPath)
-                result = [self.appendPath(parentGraphPath, nodename), outputName, destNode, destPort, 'nodename']
+                result = [self.append_path(parentGraphPath, nodename), outputName, destNode, destPort, 'nodename']
             #if portIsNode:
             #print('append nodename connection:', result)
             connections.append(result)
@@ -274,13 +274,13 @@ class MtlxGraphBuilder():
         nodegraph = port.getNodeGraphString()
         if nodegraph:
             if not outputName:
-                outputName = self.getDefaultOutput(parentGraph.getChild(nodegraph))
+                outputName = self.get_default_output(parentGraph.getChild(nodegraph))
             if len(parentGraphPath) == 0:
-                result = [self.appendPath(nodegraph, outputName), '', destNode, destPort, 'nodename']
+                result = [self.append_path(nodegraph, outputName), '', destNode, destPort, 'nodename']
             else:
                 #if not doc.getDescendant(parentGraphPath + '/' + interfaceName):
                 #    print('- Dyanmically add in nodegraph:', nodegraph, 'to  graph:', parentGraphPath)
-                result = [self.appendPath(parentGraphPath, nodegraph), outputName, destNode, destPort, 'nodegraph']
+                result = [self.append_path(parentGraphPath, nodegraph), outputName, destNode, destPort, 'nodegraph']
             #if portIsNode:
             #print('append nodegraph connection:', result)
             connections.append(result)
@@ -290,9 +290,9 @@ class MtlxGraphBuilder():
         if interfaceName:
             if len(parentGraphPath) == 0:
                 if not outputName:
-                    outputName = self.getDefaultOutput(parentGraph.getChild(interfaceName))
+                    outputName = self.get_default_output(parentGraph.getChild(interfaceName))
                 #print('- Dyanmically add in interfaceName:', interfaceName, 'to NO graph:', parentGraphPath)
-                result = [self.appendPath(interfaceName, outputName), '', destNode, destPort, 'nodename']
+                result = [self.append_path(interfaceName, outputName), '', destNode, destPort, 'nodename']
             else:
                 outputName = ''
                 # This should be invalid but you can have an input name on a nodedef be the
@@ -321,8 +321,8 @@ class MtlxGraphBuilder():
                 if not found:
                     # TODO: Grab the input value from the nodedef.
                     #print('- Dyanmically add in interfaceName:', interfaceName, 'to  graph:', parentGraphPath, '.Value: ', itemValue)
-                    self.updateGraphDictionaryPath(parentGraphPath, parentGraphPath + '/' + interfaceName, 'input', port.getType(), itemValue, self.graphDictionary)
-                result = [self.appendPath(parentGraphPath, interfaceName), outputName, destNode, destPort, 'interfacename']
+                    self.update_graph_dictionary_path(parentGraphPath, parentGraphPath + '/' + interfaceName, 'input', port.getType(), itemValue, self.graphDictionary)
+                result = [self.append_path(parentGraphPath, interfaceName), outputName, destNode, destPort, 'interfacename']
             #if portIsNode:
             #print('append interface connection:', result)
             connections.append(result)
@@ -330,9 +330,9 @@ class MtlxGraphBuilder():
 
         if outputName:
             if len(parentGraphPath) == 0:
-                result = [self.appendPath(outputName, ''), '', parentPath, port.getName(), 'nodename']
+                result = [self.append_path(outputName, ''), '', parentPath, port.getName(), 'nodename']
             else:
-                result = [self.appendPath(parentGraphPath, outputName), '', parentPath, port.getName(), 'output']
+                result = [self.append_path(parentGraphPath, outputName), '', parentPath, port.getName(), 'output']
             #if portIsNode:
             #print('append connection:', result)
             connections.append(result)
@@ -344,20 +344,20 @@ class MtlxGraphBuilder():
         #        result = [portValue, '', destNode, destPort, 'value']
         #        connections.append(result)
 
-    def buildConnections(self, doc, graphElement, connections):
+    def build_connections(self, doc, graphElement, connections):
         
         #print('get children for graph: "%s"' % graphElement.getNamePath())
         root = doc.getDocument()
         for elem in graphElement.getChildren():            
             if not elem.hasSourceUri():
                 if elem.isA(mx.Input):
-                    self.buildPortConnection(root, elem.getNamePath(), connections, True)
+                    self.build_port_connection(root, elem.getNamePath(), connections, True)
                 elif elem.isA(mx.Output):
-                    self.buildPortConnection(root, elem.getNamePath(), connections, True)
+                    self.build_port_connection(root, elem.getNamePath(), connections, True)
                 elif elem.isA(mx.Node):
                     nodeInputs = elem.getInputs()
                     for nodeInput in nodeInputs:
-                        self.buildPortConnection(root, nodeInput.getNamePath(), connections, False)
+                        self.build_port_connection(root, nodeInput.getNamePath(), connections, False)
                 elif elem.isA(mx.NodeGraph):
                     nodedef = elem.getNodeDef()
                     if nodedef:
@@ -366,9 +366,9 @@ class MtlxGraphBuilder():
                     path = elem.getNamePath()
                     if path not in visited:
                         visited.add(path)
-                        self.buildConnections(root, elem, connections)
+                        self.build_connections(root, elem, connections)
 
-    def buildGraphDictionary(self, doc):
+    def build_graph_dictionary(self, doc):
         '''
         Build a dictionary of the graph elements in the document. The dictionary
         has the graph path as the key, and a list of child elements as the value.
@@ -389,7 +389,7 @@ class MtlxGraphBuilder():
                 skipped.append(elem.getNamePath())
             else:
                 if elem.isA(mx.Input) or elem.isA(mx.Output) or elem.isA(mx.Node):
-                    self.updateGraphDictionaryItem(elem, graphDictionary)
+                    self.update_graph_dictionary_item(elem, graphDictionary)
                 elif (elem.isA(mx.NodeGraph)):
                     # Temporarily copy over inputs and from nodedef this is a
                     # functional graph
@@ -403,17 +403,17 @@ class MtlxGraphBuilder():
                                 newInput.copyContentFrom(nodeDefInput)
 
                     for node in elem.getInputs():
-                        self.updateGraphDictionaryItem(node, graphDictionary)
+                        self.update_graph_dictionary_item(node, graphDictionary)
                     for node in elem.getOutputs():
-                        self.updateGraphDictionaryItem(node, graphDictionary)
+                        self.update_graph_dictionary_item(node, graphDictionary)
                     for node in elem.getNodes():
-                        self.updateGraphDictionaryItem(node, graphDictionary)
+                        self.update_graph_dictionary_item(node, graphDictionary)
                     for node in elem.getTokens():
-                        self.updateGraphDictionaryItem(node, graphDictionary)
+                        self.update_graph_dictionary_item(node, graphDictionary)
                 elif elem.isA(mx.NodeDef):
-                    self.updateGraphDictionaryItem(elem, graphDictionary)
+                    self.update_graph_dictionary_item(elem, graphDictionary)
                 elif elem.isA(mx.Token):            
-                    self.updateGraphDictionaryItem(elem, graphDictionary)
+                    self.update_graph_dictionary_item(elem, graphDictionary)
         
         return graphDictionary
     
@@ -436,10 +436,10 @@ class MtlxGraphBuilder():
             else:
                 print('Graph not found:', graph)
 
-        self.graphDictionary = self.buildGraphDictionary(graphElement)
-        self.buildConnections(self.doc, graphElement, self.connections)
+        self.graphDictionary = self.build_graph_dictionary(graphElement)
+        self.build_connections(self.doc, graphElement, self.connections)
 
-    def exportToJSON(self, filename, inputFileName):
+    def export_to_json(self, filename, inputFileName):
         data = {}
         data['doc'] = 'Graph connections for: ' + inputFileName
         data['copyright'] = 'Copyright 2026, NanMu Consulting. kwokcb@gmail.com'
@@ -452,29 +452,30 @@ class MtlxGraphBuilder():
             outfile.write('\n')
             outfile.close()
 
-    def importFromJSON(self, filename):
+    def import_from_json(self, filename):
         with open(filename, 'r') as infile:
             data = json.load(infile)
             infile.close()
             self.graphDictionary = data['graph']
             self.connections = data['connections']
 
-class MxMermaidGraphExporter:
+class MxBaseGraphExporter:
     '''
-    Class to export a MaterialX graph to Mermaid format
+    Base class for exporting a MaterialX graph
     Uses as input the graph dictionary and connections from MtlxGraphBuilder
     '''
     def __init__(self, graphDictionary, connections):
+
         self.graphDictionary = graphDictionary
         self.connections = connections
-        self.mermaid = []
+
+        # Layout options
         self.orientation = 'LR'
         self.emitCategory = False
         self.emitType = False
         self.emitValue = True
 
-        # Formatting options: colors and shape
-
+        # Coloring options
         self.node_colors = dict()
         self.node_colors['input'] = ['#09D', '#FFF']
         self.node_colors['output'] = ['#0C0', '#FFF']
@@ -485,7 +486,44 @@ class MxMermaidGraphExporter:
         self.node_colors['ifequal'] = ['#C72', '#FFF']
         self.node_colors['ifgreatereq'] = ['#C72', '#FFF']
         self.node_colors['switch'] = ['#C72', '#FFF']
+        self.default_node_colors = ['#e1d5e7', '#000']
+        self.default_port_colors = ['#FFF', '#000']
 
+    def set_orientation(self, orientation):
+        self.orientation = orientation
+
+    def set_emit_category(self, emitCategory):
+        self.emitCategory = emitCategory
+
+    def set_emit_type(self, emitType):
+        self.emitType = emitType
+
+    def set_emit_value(self, emitValue):
+        self.emitValue = emitValue
+
+    def get_node_colors(self):
+        return self.node_colors
+    
+    def set_node_colors(self, colors):
+        self.node_colors = colors
+
+    def execute(self):
+        raise NotImplementedError("Subclasses should implement this!")
+    
+
+class MxMermaidGraphExporter (MxBaseGraphExporter):
+    '''
+    Class to export a MaterialX graph to Mermaid format
+    Uses as input the graph dictionary and connections from MtlxGraphBuilder
+    '''
+    def __init__(self, graphDictionary, connections):
+        super().__init__(graphDictionary, connections)
+
+        self.graphDictionary = graphDictionary
+        self.connections = connections
+        self.mermaid = []
+
+        # Node shape options
         self.FONT_COLOR = '#FFF'
         self.RECT_START = '['
         self.RECT_END = ']'
@@ -507,38 +545,20 @@ class MxMermaidGraphExporter:
         self.node_shapes['ifgreatereq'] = [self.DIAMOND_START, self.DIAMOND_END]
         self.node_shapes['switch'] = [self.DIAMOND_START, self.DIAMOND_END]
 
-    def setOrientation(self, orientation):
-        self.orientation = orientation
-
-    def setEmitCategory(self, emitCategory):
-        self.emitCategory = emitCategory
-
-    def setEmitType(self, emitType):
-        self.emitType = emitType
-
-    def setEmitValue(self, emitValue):
-        self.emitValue = emitValue
-
-    def getNodeColors(self):
-        return self.node_colors
-    
-    def setNodeColors(self, colors):
-        self.node_colors = colors
-
-    def getNodeShapes(self):
+    def get_node_shapes(self):
         return self.node_shapes
     
-    def setNodeShapes(self, shapes):
+    def set_node_shapes(self, shapes):
         self.node_shapes = shapes
 
-    def sanitizeString(self, path):
+    def sanitize_string(self, path):
         #return path
         path = path.replace('/default', '/default1')
         path = path.replace('/', '_')
         path = path.replace(' ', '_')
         return path
 
-    def edgeString(self, label):
+    def edge_string(self, label):
         if len(label) > 0:
             return '--"%s"-->' % (label)
         else:
@@ -562,7 +582,7 @@ class MxMermaidGraphExporter:
                 # Get "base name" of the path
                 label = path.split('/')[-1]
                 # Sanitize the path name
-                path = self.sanitizeString(path)
+                path = self.sanitize_string(path)
 
                 if self.emitCategory:
                     label = item[CATEGORY_INDEX]
@@ -590,8 +610,8 @@ class MxMermaidGraphExporter:
             source = ''
 
             # Sanitize path names
-            connection[0] = self.sanitizeString(connection[0])
-            connection[2] = self.sanitizeString(connection[2])
+            connection[0] = self.sanitize_string(connection[0])
+            connection[2] = self.sanitize_string(connection[2])
 
             # Set source node. If nodes is in a graph then we use <graph>/<node> as source
             source = connection[0]
@@ -610,9 +630,9 @@ class MxMermaidGraphExporter:
 
             sourceNode = mx.createValidName(source)
             if connection[4] == 'value':
-                connectString = '    %s["%s"] %s %s' % (sourceNode, source, self.edgeString(edge), dest)
+                connectString = '    %s["%s"] %s %s' % (sourceNode, source, self.edge_string(edge), dest)
             else:
-                connectString = '    %s %s %s' % (sourceNode, self.edgeString(edge), dest)
+                connectString = '    %s %s %s' % (sourceNode, self.edge_string(edge), dest)
             mermaid.append(connectString)
 
         return mermaid
@@ -622,7 +642,7 @@ class MxMermaidGraphExporter:
             for line in self.export():
                 f.write('%s\n' % line)
 
-    def getGraph(self, wrap=True):
+    def get_graph(self, wrap=True):
         result = ''
         if wrap:
             result = '```mermaid\n' + '\n'.join(self.mermaid) + '\n```'
@@ -633,11 +653,11 @@ class MxMermaidGraphExporter:
         return result
 
     #def display(self):
-    #    display_markdown(self.getGraph(), raw=True)
+    #    display_markdown(self.get_graph(), raw=True)
 
      # Export mermaid
     def export(self, filename):
-        mermaidGraph = self.getGraph()
+        mermaidGraph = self.get_graph()
         with open(filename, 'w') as outFile:
             outFile.write(mermaidGraph)
 
@@ -706,7 +726,7 @@ class MtlxMermaid:
         # Find all edges, and build up the GraphElement dictionary
         for root in roots:
             for edge in root.traverseGraph():
-                if not MtlxTraversal.findEdge(edge,processedEdges):
+                if not MtlxTraversal.find_edge(edge,processedEdges):
                     processedEdges.add(edge)
                     MtlxMermaid.updateGraphDictionary(edge, subgraphs)
 
@@ -752,7 +772,7 @@ class MtlxMermaid:
                     styleOutput.add(indent + 'style ' + interfaceNameM + ' fill:#0CF, color:#111')
 
                 # Update subgraphs to include this input
-                MtlxTraversal.updateGraphDictionaryItem(interfaceInput, subgraphs)
+                MtlxTraversal.update_graph_dictionary_item(interfaceInput, subgraphs)
 
         return outVal
 
@@ -800,7 +820,7 @@ class MtlxMermaid:
                         edgeOutput.add(outVal)
                         styleOutput.add(indent + 'style ' + upstreamOutputNameM + ' fill:#0C0, color:#111')
 
-                    MtlxTraversal.updateGraphDictionaryItem(upstreamOutput, subgraphs)
+                    MtlxTraversal.update_graph_dictionary_item(upstreamOutput, subgraphs)
 
                     # The upstream output is the upstream path instead of the node.
                     upstreamPath = upstreamOutput.getNamePath()
@@ -819,7 +839,7 @@ class MtlxMermaid:
                         edgeOutput.add(outVal)
                         styleOutput.add(indent + 'style ' + upstreamOutputNameM + ' fill:#0C0, color:#111')
 
-                    MtlxTraversal.updateGraphDictionaryPath(graphElementPath, upstreamOutputPath, subgraphs)
+                    MtlxTraversal.update_graph_dictionary_path(graphElementPath, upstreamOutputPath, subgraphs)
 
                     # The upstream output is the upstream path instead of the node.
                     upstreamPath = upstreamOutputPath
@@ -879,9 +899,9 @@ class MtlxMermaid:
         # Find all edges, and build up the GraphElement dictionary
         for root in roots:
             for edge in root.traverseGraph():
-                if not MtlxTraversal.findEdge(edge,processedEdges):
+                if not MtlxTraversal.find_edge(edge,processedEdges):
                     processedEdges.add(edge)
-                    MtlxTraversal.updateGraphDictionary(edge, subgraphs)
+                    MtlxTraversal.update_graph_dictionary(edge, subgraphs)
 
         # Get string output for each edge in Mermaid format
         edgeOutput = set()
@@ -911,12 +931,14 @@ class MtlxMermaid:
 
         return outputGraph
     
-class MxDrawIOExporter:
+class MxDrawIOExporter(MxBaseGraphExporter):
     '''
     Class to export a MaterialX graph to Draw.io format
     Uses as input the graph dictionary and connections from MtlxGraphBuilder
     '''
     def __init__(self, graphDictionary, connections):
+        super().__init__(graphDictionary, connections)
+
         self.graphDictionary = graphDictionary
         self.connections = connections
         self.xml_root = None
@@ -947,23 +969,6 @@ class MxDrawIOExporter:
         self.current_row_nodes = 0
         self.max_nodes_per_row = 4
 
-        self.node_colors = dict()
-        self.node_colors['input'] = ['#09D', '#FFF']
-        self.node_colors['output'] = ['#0C0', '#FFF']
-        self.node_colors['surfacematerial'] = ['#090', '#FFF']
-        self.node_colors['nodedef'] = ['#00C', '#FFF']
-        self.node_colors['token'] = ['#222', '#FFF']
-        self.node_colors['constant'] = ['#500', '#FFF']
-        self.node_colors['ifequal'] = ['#C72', '#FFF']
-        self.node_colors['ifgreatereq'] = ['#C72', '#FFF']
-        self.node_colors['switch'] = ['#C72', '#FFF']
-        self.default_node_colors = ['#e1d5e7', '#000']
-        self.default_port_colors = ['#FFF', '#000']
-
-        self.emitCategory = False
-        self.emitType = False
-        self.emitValue = True
-
         self.debug = True
         
     def set_debug(self, debug):
@@ -973,7 +978,7 @@ class MxDrawIOExporter:
         if self.debug:
             print(message)
 
-    def setOrientation(self, orientation):
+    def set_orientation(self, orientation):
         """Set the graph orientation (LR, RL, TB, BT)"""
         if orientation in ['LR', 'RL', 'TB', 'BT']:
             self.orientation = orientation
@@ -993,28 +998,7 @@ class MxDrawIOExporter:
                 self.max_nodes_per_row = 6
         else:
             self._debug_print(f"Warning: Unknown orientation '{orientation}'. Using default 'LR'.")
-    
-    def setEmitCategory(self, emitCategory):
-        self.emitCategory = emitCategory
-
-    def setEmitType(self, emitType):
-        self.emitType = emitType
-
-    def setEmitValue(self, emitValue):
-        self.emitValue = emitValue
-
-    def getNodeColors(self):
-        '''
-        Get node colors
-        '''
-        return self.node_colors
-    
-    def setNodeColors(self, colors):
-        '''
-        Set node colors
-        '''
-        self.node_colors = colors
-        
+            
     def get_unique_id(self, base_id):
         """Generate a unique ID"""
         if base_id not in self.used_ids:
@@ -1597,6 +1581,26 @@ class MxDrawIOExporter:
         
         self._debug_print(f"Created group '{group_name}' with {len(node_ids)} nodes")
 
+    def create_groups(self, graph_info):
+        '''
+        Create groups based on graph paths
+        @param graph_info: List of tuples (graph_path, node_id)
+        '''
+        # Create groups around nodes that share the same non-empty graph path
+        groups_created = {}
+        
+        # Find all nodes in each group
+        for graph_path, node_id in graph_info:
+            if graph_path:  # Skip empty graph paths as nodes are at root level
+                if graph_path not in groups_created:
+                    groups_created[graph_path] = []
+                groups_created[graph_path].append(node_id)
+        
+        # Create groups for each graph path
+        for graph_path, node_ids_in_group in groups_created.items():
+            if len(node_ids_in_group) > 0:
+                self._group_nodes(graph_path, node_ids_in_group)
+
     def execute(self):
         """Main execution method to create the draw.io diagram"""
         # Reset tracking structures
@@ -1624,22 +1628,10 @@ class MxDrawIOExporter:
                 graph_info.append((graph_path, node_id))
         
         # Create value nodes if any
-        self.create_value_nodes()
+        #self.create_value_nodes()
         
-        # Create groups around nodes that share the same non-empty graph path
-        groups_created = {}
-        
-        # Find all nodes in each group
-        for graph_path, node_id in graph_info:
-            if graph_path:  # Skip empty graph paths as nodes are at root level
-                if graph_path not in groups_created:
-                    groups_created[graph_path] = []
-                groups_created[graph_path].append(node_id)
-        
-        # Create groups for each graph path
-        for graph_path, node_ids_in_group in groups_created.items():
-            if len(node_ids_in_group) > 0:
-                self._group_nodes(graph_path, node_ids_in_group)
+        # Create groups based on graph paths
+        self.create_groups(graph_info)
 
         # Debug: Print all created slots and node mappings
         self._debug_print(f"Created {len(self.existing_slots)} slots:")
@@ -1650,7 +1642,7 @@ class MxDrawIOExporter:
         for name, node_id in self.node_name_to_id.items():
             self._debug_print(f"  {name} -> {node_id}")
         
-        # Second pass: create all connections
+        # Create connections (edges)
         created_edges = 0
         for i, connection in enumerate(self.connections):
             self._debug_print(f"\nProcessing connection {i}: {connection}")

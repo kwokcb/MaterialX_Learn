@@ -1,6 +1,6 @@
 {
-  "doc": "Graph connections for: ..\\resources\\Materials\\Examples\\GltfPbr\\gltf_pbr_boombox.mtlx",
-  "copyright": "Copyright 2024, NanMu Consulting. kwokcb@gmail.com",
+  "doc": "Graph connections for: ../resources/Materials/Examples/GltfPbr/gltf_pbr_boombox.mtlx",
+  "copyright": "Copyright 2026, NanMu Consulting. kwokcb@gmail.com",
   "graph": {
     "": [
       [
@@ -28,6 +28,24 @@
         "BoomBox_emissive.png"
       ],
       [
+        "swizzle",
+        "extract",
+        "float",
+        ""
+      ],
+      [
+        "swizzle2",
+        "extract",
+        "float",
+        ""
+      ],
+      [
+        "swizzle3",
+        "extract",
+        "float",
+        ""
+      ],
+      [
         "SR_boombox",
         "gltf_pbr",
         "surfaceshader",
@@ -43,6 +61,27 @@
   },
   "connections": [
     [
+      "image_orm",
+      "",
+      "swizzle",
+      "in",
+      "nodename"
+    ],
+    [
+      "image_orm",
+      "",
+      "swizzle2",
+      "in",
+      "nodename"
+    ],
+    [
+      "image_orm",
+      "",
+      "swizzle3",
+      "in",
+      "nodename"
+    ],
+    [
       "image_basecolor",
       "outcolor",
       "SR_boombox",
@@ -57,21 +96,21 @@
       "nodename"
     ],
     [
-      "image_orm",
+      "swizzle",
       "",
       "SR_boombox",
       "metallic",
       "nodename"
     ],
     [
-      "image_orm",
+      "swizzle2",
       "",
       "SR_boombox",
       "roughness",
       "nodename"
     ],
     [
-      "image_orm",
+      "swizzle3",
       "",
       "SR_boombox",
       "occlusion",
