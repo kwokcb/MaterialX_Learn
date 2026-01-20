@@ -1436,9 +1436,9 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         # Set edge style based on connection type
         edge_style = ''
         if conn_type == 'value':
-            edge_style = 'strokeColor=#ff6b6b;strokeWidth=2;dashed=1;'
-        elif conn_type == 'nodedef':
-            edge_style = 'strokeColor=#4ecdc4;strokeWidth=3;'
+           edge_style = 'strokeColor=#ff6b6b;strokeWidth=2;dashed=1;'
+        #if conn_type == 'nodedef':
+        #    edge_style = 'strokeColor=#4ecdc4;strokeWidth=3;'
 
         edge = self.create_edge(
             edge_id=edge_id,
@@ -1456,20 +1456,23 @@ class MxDrawIOExporter(MxBaseGraphExporter):
     
     def create_definition_nodes(self):
         '''
-        Create definition nodes 
+        Create definition nodes.
+        TODO: This creates a implementation node connected to a nodedef.
+        Instead we want a reference from the graph created.
         '''
         if self.diagram is None:
             raise ValueError("Diagram not created. Call create_diagram() first.")
 
         value_nodes = {}
         
-        NODE_STYLE = 'shape=ellipse;fillColor=#ffeb3b;strokeColor=#fbc02d;html=1;whiteSpace=wrap;'
+        fill_color = self.node_colors['nodedef'][0]
+        font_color = self.node_colors['nodedef'][1]
+        NODE_STYLE = f'fontColor={font_color};fillColor={fill_color};strokeColor=#fbc02d;html=1;whiteSpace=wrap;'
 
-        non_value = ['nodename', 'interfacename']
         for i, conn in enumerate(self.connections):
-            if len(conn) > 4 and conn[4] not in non_value:
+            if len(conn) > 4 and conn[4] in ['nodedef']:
                 value_id = self.sanitize_id(f"value_{conn[0]}")
-                self._debug_print('Creating value node for connection:' + conn)
+                self._debug_print('Creating value node for connection:' + str(conn))
                 if value_id not in value_nodes:
                     # Create a simple value node (not a class instance)
                     x = self.next_x
@@ -1477,7 +1480,7 @@ class MxDrawIOExporter(MxBaseGraphExporter):
                     
                     value_cell = ET.SubElement(self.diagram, 'mxCell')
                     value_cell.set('id', value_id)
-                    value_cell.set('value', f"Value: {conn[0]}")
+                    value_cell.set('value', f"{conn[0]}")
                     value_cell.set('style', NODE_STYLE)
                     value_cell.set('vertex', '1')
                     value_cell.set('parent', '1')
@@ -1485,8 +1488,8 @@ class MxDrawIOExporter(MxBaseGraphExporter):
                     value_geom = ET.SubElement(value_cell, 'mxGeometry')
                     value_geom.set('x', str(x))
                     value_geom.set('y', str(y))
-                    value_geom.set('width', '80')
-                    value_geom.set('height', '40')
+                    value_geom.set('width', str(self.class_width))
+                    value_geom.set('height', str(self.header_height))
                     value_geom.set('as', 'geometry')
                     
                     value_nodes[value_id] = True
@@ -1519,21 +1522,38 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         min_y = float('inf')
         max_x = float('-inf')
         max_y = float('-inf')
-        
+        self._debug_print(f"\nGrouping nodes for group '{group_name}':")
         for node_id in node_ids:
             if node_id in self.node_positions:
                 x, y, width, height = self.node_positions[node_id]
+                self._debug_print(f"  Node '{node_id}': x={x}, y={y}, w={width}, h={height}")
                 min_x = min(min_x, x)
                 min_y = min(min_y, y)
                 max_x = max(max_x, x + width)
                 max_y = max(max_y, y + height)
-        
+            else:
+                self._debug_print(f"  Node '{node_id}' not found in node_positions!")
         # Add padding
         padding = 30
         group_x = min_x - padding
         group_y = min_y - padding - 20  # Extra space for group label
         group_width = (max_x - min_x) + (padding * 2)
         group_height = (max_y - min_y) + (padding * 2)
+        self._debug_print(f"  Computed group bounds: x={group_x}, y={group_y}, w={group_width}, h={group_height}")
+
+        # Adjust all child node positions to be relative to the group origin
+        for node_id in node_ids:
+            if node_id in self.node_positions:
+                abs_x, abs_y, width, height = self.node_positions[node_id]
+                rel_x = abs_x - group_x
+                rel_y = abs_y - group_y
+                self.node_positions[node_id] = (rel_x, rel_y, width, height)
+                # Update mxGeometry for this node
+                for cell in self.diagram.findall(f".//mxCell[@id='{node_id}']"):
+                    geom = cell.find('mxGeometry')
+                    if geom is not None:
+                        geom.set('x', str(rel_x))
+                        geom.set('y', str(rel_y))
         
         # Create group ID
         group_id = self.sanitize_id(f"group_{group_name}")
