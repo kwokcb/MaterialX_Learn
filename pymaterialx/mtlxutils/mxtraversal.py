@@ -1,10 +1,11 @@
-
-import MaterialX as mx
-import json
-import xml.etree.ElementTree as ET
-from xml.dom import minidom
 import re
 import datetime
+from collections import defaultdict, deque
+
+import MaterialX as mx
+import xml.etree.ElementTree as ET
+from xml.dom import minidom
+import json
 
 class MtlxTraversal:
     @staticmethod
@@ -931,7 +932,7 @@ class MtlxMermaid:
 
         return outputGraph
     
-class MxDrawIOExporter(MxBaseGraphExporter):
+class MxDrawIOExporter(MxBaseGraphExporter):    
     '''
     Class to export a MaterialX graph to Draw.io format
     Uses as input the graph dictionary and connections from MtlxGraphBuilder
@@ -1555,7 +1556,7 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         group_cell.set('id', group_id)
         group_cell.set('value', group_name)  # Group label
         
-        group_style = f'rounded=1;whiteSpace=wrap;html=1;fillColor={fill_color};strokeColor=#9673a6;fontStyle=1;fontSize=12;'
+        group_style = f'rounded=0;whiteSpace=wrap;html=1;fillColor={fill_color};strokeColor=#9673a6;fontStyle=1;fontSize=12;opacity=80;'
         
         group_cell.set('style', group_style)
         group_cell.set('vertex', '1')
@@ -1601,6 +1602,75 @@ class MxDrawIOExporter(MxBaseGraphExporter):
             if len(node_ids_in_group) > 0:
                 self._group_nodes(graph_path, node_ids_in_group)
 
+    def layout_nodes(self, x_spacing=80, y_spacing=40, start_x=50, start_y=50):
+        """
+        Layout nodes in columns based on connection dependencies (topological sort), using actual node sizes.
+        Updates self.node_positions and mxGeometry for each node.
+        """
+        # Build adjacency and reverse adjacency
+        graph = defaultdict(list)
+        reverse_graph = defaultdict(list)
+        all_nodes = set(self.node_positions.keys())
+        for conn in self.connections:
+            src_id = self.find_node_id_for_connection(conn[0])
+            dst_id = self.find_node_id_for_connection(conn[2])
+            if src_id and dst_id:
+                graph[src_id].append(dst_id)
+                reverse_graph[dst_id].append(src_id)
+                all_nodes.add(src_id)
+                all_nodes.add(dst_id)
+
+        # Kahn's algorithm for topological sort
+        in_degree = {n: 0 for n in all_nodes}
+        for dsts in graph.values():
+            for dst in dsts:
+                in_degree[dst] += 1
+        queue = deque([n for n in all_nodes if in_degree[n] == 0])
+        topo_order = []
+        while queue:
+            n = queue.popleft()
+            topo_order.append(n)
+            for m in graph[n]:
+                in_degree[m] -= 1
+                if in_degree[m] == 0:
+                    queue.append(m)
+
+        # Assign columns by longest path from any input node
+        node_column = {}
+        def get_column(n):
+            if n not in reverse_graph or not reverse_graph[n]:
+                return 0
+            if n in node_column:
+                return node_column[n]
+            col = 1 + max(get_column(p) for p in reverse_graph[n])
+            node_column[n] = col
+            return col
+        for n in topo_order:
+            get_column(n)
+
+        # Group nodes by column
+        columns = defaultdict(list)
+        for n in topo_order:
+            col = node_column.get(n, 0)
+            columns[col].append(n)
+
+        # Assign x/y positions using node sizes
+        for col in sorted(columns):
+            nodes = columns[col]
+            y = start_y
+            for n in nodes:
+                width, height = self.node_positions[n][2], self.node_positions[n][3]
+                x = start_x + col * (self.class_width + x_spacing)
+                # Update node_positions
+                self.node_positions[n] = (x, y, width, height)
+                # Update mxGeometry for this node
+                for cell in self.diagram.findall(f".//mxCell[@id='{n}']"):
+                    geom = cell.find('mxGeometry')
+                    if geom is not None:
+                        geom.set('x', str(x))
+                        geom.set('y', str(y))
+                y += height + y_spacing
+
     def execute(self):
         """Main execution method to create the draw.io diagram"""
         # Reset tracking structures
@@ -1628,10 +1698,8 @@ class MxDrawIOExporter(MxBaseGraphExporter):
                 graph_info.append((graph_path, node_id))
         
         # Create value nodes if any
-        #self.create_value_nodes()
+        self.create_value_nodes()
         
-        # Create groups based on graph paths
-        self.create_groups(graph_info)
 
         # Debug: Print all created slots and node mappings
         self._debug_print(f"Created {len(self.existing_slots)} slots:")
@@ -1653,6 +1721,12 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         
         self._debug_print(f"\nCreated {created_edges} connections out of {len(self.connections)}")
         
+        # Layout nodes 
+        self.layout_nodes()
+
+        # Create groups based on graph paths
+        self.create_groups(graph_info)
+
         return self.xml_root
     
     def export(self, filename):

@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<mxfile host="app.diagrams.net" modified="January 19, 2026" agent="MaterialX DrawIO Exporter" version="0.1.39.5" copyright="Copyright 2026, NanMu Consulting. kwokcb@gmail.com">
+  <diagram id="diagram_1" name="MaterialX Graph">
+    <mxGraphModel dx="1422" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="SR_carpaint" value="SR_carpaint" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="140" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="SR_carpaint_output_0" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="SR_carpaint">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="PBR_Car_Paint" value="PBR_Car_Paint" style="swimlane;fontColor=#FFF;fillColor=#090;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="270" y="50" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="PBR_Car_Paint_input_0" value="surfaceshader" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="PBR_Car_Paint">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="PBR_Car_Paint_output_0" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="PBR_Car_Paint">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_0" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="SR_carpaint_output_0" target="PBR_Car_Paint_input_0">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
