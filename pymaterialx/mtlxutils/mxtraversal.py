@@ -1297,95 +1297,63 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         Create a class instance for a node. This includes:
         - Create the header with node name/type/value
         - Collect input/output slots from connections
-    
         @param node_path: The full path of the node
         @param node_info: The node information tuple/list
         @return: The class ID of the created node
         '''
-        node_name = self.extract_base_node_name(node_path)
         class_id = self.sanitize_id(node_path)
-        
-        # Store mapping from simple name to class ID
-        self.node_name_to_id[node_name] = class_id
-        
-        # Get node type for display
+        self.node_name_to_id[node_path] = class_id
         node_type = node_info[1] if len(node_info) > 1 else 'node'
         node_value = node_info[3] if len(node_info) > 3 else ''
-        
-        # Build class name. Use node name or node type depending on options
         header_height = self.header_height
-        class_name = node_name
+        class_name = node_path
         if self.emitType:
             class_name = node_type
-        # Emit value if specified and found. Increase header height accordingly.
         if self.emitValue and node_value:
             class_name += f' = "{node_value}"'
             header_height += self.value_height
-        
-        # Collect slots from connections
-        input_slots, output_slots = self.collect_node_slots(node_name)
 
-        # Collects slots for unconnected inputs
-        #if node_type == 'input' and not input_slots:
-        #    input_slots += ["in"]
-        #if node_type == 'output' and not output_slots:
-        #    output_slots += ["out"]
-        
-        # Add default output slot if needed
-        if not output_slots and node_type not in ['input', 'output']:
-            output_slots = ["out"]
-        
-        # Calculate position
+        # Collect all slots from all connections for this node (using full path)
+        input_slots = set()
+        output_slots = set()
+        for conn in self.connections:
+            src = conn[0]
+            tgt = conn[2]
+            src_slot = conn[1] if conn[1] else 'out'
+            tgt_slot = conn[3] if conn[3] else 'in'
+            if src == node_path:
+                output_slots.add(src_slot)
+            if tgt == node_path:
+                input_slots.add(tgt_slot)
+        if not output_slots:
+            output_slots.add('out')
+        if not input_slots:
+            input_slots.add('in')
+
         x = self.next_x
         y = self.next_y
-        
-        # Create the class instance
         class_id, input_slot_ids, output_slot_ids = self.create_class_instance(
             class_id=class_id,
             class_name=class_name,
             class_type=node_type,
             x=x,
             y=y,
-            input_slots=input_slots,
-            output_slots=output_slots,
+            input_slots=list(input_slots),
+            output_slots=list(output_slots),
             parent="1",
             header_height=header_height
         )
-        
-        # Update layout for next node
-        total_slots = len(input_slots) + len(output_slots)
+        total_slots = len(input_slot_ids) + len(output_slot_ids)
         node_height = header_height + (total_slots * self.slot_height) + self.separator_height
         self.update_layout_position(self.class_width, node_height)
-        
         return class_id
     
     def find_node_id_for_connection(self, connection_node):
         '''
         Find the class ID for a connection node reference
-        - Extract base name from connection_node
-        - Look up in node_name_to_id mapping        
-        @param connection_node: The node path from the connection
-        @return: The class ID if found, else None
+        - Use the full node path for lookup
         '''
-        # First, try to extract base name
-        if '/' in connection_node:
-            node_name = connection_node.split('/')[-1]
-        else:
-            node_name = connection_node
-        
-        # Remove any numeric suffix
-        base_name = self.extract_base_node_name(node_name)
-        
-        # Look up in our mapping
-        if base_name in self.node_name_to_id:
-            return self.node_name_to_id[base_name]
-        
-        # If not found, try to find a partial match
-        for stored_name, class_id in self.node_name_to_id.items():
-            if stored_name.startswith(base_name) or base_name.startswith(stored_name):
-                return class_id
-        
-        return None
+        return self.node_name_to_id.get(connection_node)
     
     def create_connection(self, connection, connection_index):
         """Create a connection between slots"""
@@ -1394,11 +1362,11 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         target_path = connection[2]
         target_slot = connection[3]
         conn_type = connection[4] if len(connection) > 4 else ''
-        
-        # Find the node IDs using our mapping
+
+        # Find the node IDs using our mapping (full path)
         source_node_id = self.find_node_id_for_connection(source_path)
         target_node_id = self.find_node_id_for_connection(target_path)
-        
+
         if not source_node_id:
             self._debug_print(f"Warning: Could not find source node for '{source_path}'")
             self._debug_print(f"Available nodes: {list(self.node_name_to_id.keys())}")
@@ -1407,64 +1375,71 @@ class MxDrawIOExporter(MxBaseGraphExporter):
             self._debug_print(f"Warning: Could not find target node for '{target_path}'")
             self._debug_print(f"Available nodes: {list(self.node_name_to_id.keys())}")
             return None
-        
-        # Determine slot names
+
+        # Use slot names as-is
         source_slot_name = source_slot if source_slot else "out"
         target_slot_name = target_slot if target_slot else "in"
-        
+
         # Look up existing slot IDs
         source_slot_key = (source_node_id, source_slot_name, 'output')
         target_slot_key = (target_node_id, target_slot_name, 'input')
-        
+
         source_id = self.existing_slots.get(source_slot_key)
         target_id = self.existing_slots.get(target_slot_key)
-        
+
+        # If slot doesn't exist, create it on the fly
         if not source_id:
-            # Try without numeric suffix in slot name
-            if source_slot_name and '_' in source_slot_name and source_slot_name.split('_')[-1].isdigit():
-                base_slot_name = '_'.join(source_slot_name.split('_')[:-1])
-                source_slot_key = (source_node_id, base_slot_name, 'output')
-                source_id = self.existing_slots.get(source_slot_key)
-            
-            if not source_id:
-                self._debug_print(f"Warning: Could not find source slot {source_slot_key}")
-                self._debug_print(f"Available slots: {list(self.existing_slots.keys())}")
-                return None
-        
+            slot_cell = ET.SubElement(self.diagram, 'mxCell')
+            slot_cell.set('id', self.get_unique_id(f"{source_node_id}_{source_slot_name}_out"))
+            slot_cell.set('value', source_slot_name)
+            slot_cell.set('style', f'html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;resizeWidth=1;whiteSpace=wrap;')
+            slot_cell.set('vertex', '1')
+            slot_cell.set('parent', source_node_id)
+            slot_geom = ET.SubElement(slot_cell, 'mxGeometry')
+            slot_geom.set('y', str(self.header_height))
+            slot_geom.set('width', str(self.class_width))
+            slot_geom.set('height', str(self.slot_height))
+            slot_geom.set('as', 'geometry')
+            self.existing_slots[source_slot_key] = slot_cell.get('id')
+            source_id = slot_cell.get('id')
+
         if not target_id:
-            # Try without numeric suffix in slot name
-            if target_slot_name and '_' in target_slot_name and target_slot_name.split('_')[-1].isdigit():
-                base_slot_name = '_'.join(target_slot_name.split('_')[:-1])
-                target_slot_key = (target_node_id, base_slot_name, 'input')
-                target_id = self.existing_slots.get(target_slot_key)
-            
-            if not target_id:
-                self._debug_print(f"Warning: Could not find target slot {target_slot_key}")
-                self._debug_print(f"Available slots: {list(self.existing_slots.keys())}")
-                return None
-        
+            slot_cell = ET.SubElement(self.diagram, 'mxCell')
+            slot_cell.set('id', self.get_unique_id(f"{target_node_id}_{target_slot_name}_in"))
+            slot_cell.set('value', target_slot_name)
+            slot_cell.set('style', f'html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;resizeWidth=1;whiteSpace=wrap;')
+            slot_cell.set('vertex', '1')
+            slot_cell.set('parent', target_node_id)
+            slot_geom = ET.SubElement(slot_cell, 'mxGeometry')
+            slot_geom.set('y', str(self.header_height))
+            slot_geom.set('width', str(self.class_width))
+            slot_geom.set('height', str(self.slot_height))
+            slot_geom.set('as', 'geometry')
+            self.existing_slots[target_slot_key] = slot_cell.get('id')
+            target_id = slot_cell.get('id')
+
         # Create edge if both source and target exist
         edge_id = self.get_unique_id(f"edge_{connection_index}")
-        
+
         # Set edge style based on connection type
         edge_style = ''
         if conn_type == 'value':
             edge_style = 'strokeColor=#ff6b6b;strokeWidth=2;dashed=1;'
         elif conn_type == 'nodedef':
             edge_style = 'strokeColor=#4ecdc4;strokeWidth=3;'
-        
+
         edge = self.create_edge(
             edge_id=edge_id,
             source=source_id,
             target=target_id,
             parent="1"
         )
-        
+
         # Update edge style if needed
         if edge_style:
             current_style = edge.get('style', '')
             edge.set('style', current_style + edge_style)
-        
+
         return edge_id
     
     def create_value_nodes(self):
