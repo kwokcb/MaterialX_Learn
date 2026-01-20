@@ -1,6 +1,6 @@
 import MaterialX as mx
 import argparse, os
-from mtlxutils.mxtraversal import MtlxGraphBuilder, MxMermaidGraphExporter, MxDrawIOExporter
+from mtlxutils.mxtraversal import MtlxGraphBuilder, MxMermaidGraphExporter, MxDrawIOExporter, MxD3GraphExporter
 
 # Version check
 from mtlxutils.mxbase import *
@@ -76,7 +76,7 @@ def main():
 
     # Check output format
     output_format = opts.format.lower()
-    allowed_formats = ['mermaid', 'drawio']
+    allowed_formats = ['mermaid', 'drawio', 'd3']
     if output_format not in allowed_formats:
         print('Error: Unsupported output format "%s". Allowed formats are: %s' % (opts.format, ', '.join(allowed_formats)))
         exit(-1)
@@ -165,6 +165,8 @@ def main():
             #graphBuilder2.import_from_json(outputFileName)
             if output_format == 'mermaid':
                 exporter = MxMermaidGraphExporter(graphBuilder.get_dictionary(), graphBuilder.get_connections())
+            elif output_format == 'd3':
+                exporter = MxD3GraphExporter(graphBuilder.get_dictionary(), graphBuilder.get_connections())
             else:
                 exporter = MxDrawIOExporter(graphBuilder.get_dictionary(), graphBuilder.get_connections())
 
@@ -176,12 +178,20 @@ def main():
             extension = '.md' 
             if output_format == 'drawio':
                 extension = '.drawio'
+            elif output_format == 'd3':
+                #extension = '_d3.html'
+                extension = '_d3.json'
             outputFileName = mx.FilePath(inputFilename.replace('.mtlx', extension))
+
             if opts.outputPath:
                 outputFileName = mx.FilePath(opts.outputPath) / outputFileName.getBaseName()
 
-            print('- Write Mermaid graph to file:' + outputFileName.asString())
-            exporter.export(outputFileName.asString())
+            print('- Write graph to file:' + outputFileName.asString())
+            if output_format == 'd3':
+                #exporter.export_html(outputFileName.asString())
+                exporter.export_json(outputFileName.asString())
+            else:
+                exporter.export(outputFileName.asString())
 
         except mx.ExceptionFileMissing as err:
             print(err)

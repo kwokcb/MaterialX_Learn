@@ -661,276 +661,6 @@ class MxMermaidGraphExporter (MxBaseGraphExporter):
         mermaidGraph = self.get_graph()
         with open(filename, 'w') as outFile:
             outFile.write(mermaidGraph)
-
-### Old graph builder.
-class MtlxMermaid:
-
-    @staticmethod
-    def emitMermaidEdge_nointerfaces(indent, edge):
-        """
-        Sample utility to print out edge information in Mermaid format
-        Returns a string of form: `(upstream node path) --[downstream node input name]--> (downstream node path)`
-        which represents a connection from an upstream node to a downstream one via a given input port.
-        """
-        outVal = ''
-
-        upstreamElem = edge.getUpstreamElement()
-        downstreamElem = edge.getDownstreamElement()
-        connectingElem = edge.getConnectingElement()
-
-        downstreamPath = ''
-        connectionString = ''
-        if connectingElem:
-            connectionString = ' --".' + connectingElem.getName() + '"--> '
-        else:
-            connectionString = ' --> '
-        downstreamPath  = downstreamElem.getNamePath()
-
-        upstreamPath = upstreamElem.getNamePath()
-
-        # Sanitize names for Mermaid output
-        upstreamPathM = mx.createValidName(upstreamPath)
-        downstreamPathM = mx.createValidName(downstreamPath)
-
-        # Print out information about the edge with an "arrow" to show direction
-        # of data flow  
-        outVal = indent + upstreamPathM + '([' + upstreamPath + '])' + connectionString + downstreamPathM + '([' + downstreamPath + '])'
-        return outVal
-
-    @staticmethod
-    def emitMermaidSubgraphs(subgraphs):
-        """
-        Emit GraphElement dictionary in Mermaid format
-        """
-        subGraphOutput = []
-
-        for subgraph in subgraphs:
-            if subgraph == '':
-                continue
-                
-            subgraphM = mx.createValidName(subgraph)  
-            subGraphOutput.append('subgraph ' + subgraphM + ':')
-            for node in subgraphs[subgraph]:
-                subGraphOutput.append('   ' + mx.createValidName(node))
-            subGraphOutput.append('end')
-
-        return subGraphOutput
-
-    @staticmethod
-    def generateMermaidGraph_nointerfaces(roots, orientation):
-        """
-        Output a Mermaid graph diagram given a set of root nodes
-        """ 
-        subgraphs = {}
-        processedEdges = set()
-
-        # Find all edges, and build up the GraphElement dictionary
-        for root in roots:
-            for edge in root.traverseGraph():
-                if not MtlxTraversal.find_edge(edge,processedEdges):
-                    processedEdges.add(edge)
-                    MtlxMermaid.updateGraphDictionary(edge, subgraphs)
-
-        # Get string output for each edge in Mermaid format
-        edgeOutput = set()
-        for edge in processedEdges:
-            outVal = MtlxMermaid.emitMermaidEdge_nointerfaces('    ', edge)
-            if outVal not in edgeOutput:
-                edgeOutput.add(outVal)
-
-        # Print graph header, edges, and sub-graphs
-        outputGraph = []
-        outputGraph.append('  graph %s;' % orientation)
-        for outVal in edgeOutput:
-            outputGraph.append(outVal)
-        for line in MtlxMermaid.emitMermaidSubgraphs(subgraphs):
-            outputGraph.append(line)
-
-        return outputGraph
-
-    @staticmethod
-    def emitInterfaceInputs(indent, edge, subgraphs, edgeOutput, styleOutput):
-        '''Emit interface inputs:
-        - All inputerface inputs are colored "blue"
-        - The links from interface inputs are drawn with thicker lines.
-        '''
-        outVal = ''
-
-        # Look for upstream interface inputs
-        upstreamElem = edge.getUpstreamElement()
-        for input in upstreamElem.getInputs():
-            # getInterfaceInput() will find the interface input if it exists
-            interfaceInput = input.getInterfaceInput()
-            if interfaceInput:
-
-                # Emit connection from interface input to node input
-                interfaceName = interfaceInput.getName()
-                interfaceNameM = mx.createValidName(interfaceInput.getNamePath())
-                nodeName = mx.createValidName(upstreamElem.getNamePath())
-                outVal = indent + interfaceNameM + '([' + interfaceName + ']) ==".' + input.getName() + '"==> ' + nodeName
-                if outVal not in edgeOutput:
-                    edgeOutput.add(outVal)
-                    styleOutput.add(indent + 'style ' + interfaceNameM + ' fill:#0CF, color:#111')
-
-                # Update subgraphs to include this input
-                MtlxTraversal.update_graph_dictionary_item(interfaceInput, subgraphs)
-
-        return outVal
-
-    @staticmethod
-    def emitMermaidEdge(indent, edge, subgraphs, edgeOutput, styleOutput):
-        "Sample utility to print out edge information in Mermaid format"
-        "The interface getConnectedOuput() is used to determine what output the dowstream input is connected to"
-
-        outVal = ''
-
-        # Current set of conditionals.
-        # Will work even if the standard library is not loaded.
-        conditionals = ['ifequal', 'ifgreater', 'ifgreatereq', 'switch']
-
-        upstreamElem = edge.getUpstreamElement()
-        if upstreamElem.getType() == mx.MATERIAL_TYPE_STRING:
-            print('Material upstream: ' + upstreamElem.getNamePath())
-        downstreamElem = edge.getDownstreamElement()
-        connectingElem = edge.getConnectingElement()
-
-        downstreamPath  = downstreamElem.getNamePath()
-        upstreamPath = upstreamElem.getNamePath()
-        upstreamPathM = mx.createValidName(upstreamPath)
-
-        # Add a connection from the upstream output to the downstream 
-        upstreamOutput = None
-        if connectingElem:
-            outputString = connectingElem.getAttribute("output")
-            if outputString:
-                leftBrace = '(['
-                rightBrace = '])'
-                if upstreamElem.getCategory() in conditionals:
-                    leftBrace = '{'
-                    rightBrace = '}'
-                    styleOutput.add(indent + 'style ' + mx.createValidName(upstreamPath) + ' fill:#F80, color:#111')
-                    
-                upstreamOutput = downstreamElem.getConnectedOutput(connectingElem.getName())
-                if upstreamOutput:
-                    upstreamOutputName = upstreamOutput.getName()
-                    upstreamOutputNameM = mx.createValidName(upstreamOutput.getNamePath())
-                    outConnectionString =  upstreamOutputNameM + leftBrace + upstreamOutputName + rightBrace
-
-                    outVal = indent + upstreamPathM + leftBrace + upstreamPath + rightBrace + ' --> ' + outConnectionString
-                    if outVal not in edgeOutput:
-                        edgeOutput.add(outVal)
-                        styleOutput.add(indent + 'style ' + upstreamOutputNameM + ' fill:#0C0, color:#111')
-
-                    MtlxTraversal.update_graph_dictionary_item(upstreamOutput, subgraphs)
-
-                    # The upstream output is the upstream path instead of the node.
-                    upstreamPath = upstreamOutput.getNamePath()
-                    upstreamElem = upstreamOutput
-
-                # <output> is not explicitly specified. This occurs for Node outputs
-                else:
-                    upstreamOutputName = outputString
-                    graphElementPath = upstreamElem.getParent().getNamePath()
-                    upstreamOutputPath = graphElementPath + '/' + outputString
-                    upstreamOutputNameM = mx.createValidName(upstreamOutputPath)
-                    outConnectionString =  upstreamOutputNameM + '([' + upstreamOutputName + '])'
-
-                    outVal = indent + upstreamPathM + leftBrace + upstreamPath + rightBrace + ' --> ' + outConnectionString
-                    if outVal not in edgeOutput:
-                        edgeOutput.add(outVal)
-                        styleOutput.add(indent + 'style ' + upstreamOutputNameM + ' fill:#0C0, color:#111')
-
-                    MtlxTraversal.update_graph_dictionary_path(graphElementPath, upstreamOutputPath, subgraphs)
-
-                    # The upstream output is the upstream path instead of the node.
-                    upstreamPath = upstreamOutputPath
-                    upstreamElem = upstreamOutput
-
-        inputConnectionString = ''
-        if connectingElem:
-            inputConnectionString = ' --".' + connectingElem.getName() + '"--> '
-        else:
-            inputConnectionString = ' --> '
-
-        # Sanitize names for Mermaid output
-        upstreamPathM = mx.createValidName(upstreamPath)
-        downstreamPathM = mx.createValidName(downstreamPath)
-
-        # Print out information about the edge with an "arrow" to show direction
-        # of data flow  
-        upConditional = False
-        leftBrace = '(['
-        rightBrace = '])'
-        if upstreamElem and upstreamElem.getCategory() in conditionals:
-            upConditional = True
-            leftBrace = '{'
-            rightBrace = '}'
-        outVal = indent + upstreamPathM
-        outVal = outVal + leftBrace + upstreamPath + rightBrace
-        
-        outVal = outVal + inputConnectionString + downstreamPathM 
-
-        downConditional = False
-        leftBrace = '(['
-        rightBrace = '])'
-        if downstreamElem and downstreamElem.getCategory() in conditionals:
-            downConditional = True
-            leftBrace = '{'
-            rightBrace = '}'
-        outVal = outVal + leftBrace + downstreamPath + rightBrace
-
-        if outVal not in edgeOutput:
-            edgeOutput.add(outVal)
-            if downstreamElem.getType() == mx.MATERIAL_TYPE_STRING:
-                styleOutput.add(indent + 'style ' + downstreamPathM + ' fill:#0C0, color:#111')
-            else:
-                if downConditional:
-                    styleOutput.add(indent + 'style ' + downstreamPathM + ' fill:#F80, color:#111')
-                if upConditional:
-                    styleOutput.add(indent + 'style ' + upstreamPathM + ' fill:#F80, color:#111')
-
-    @staticmethod
-    def generateMermaidGraph(roots, orientation):
-        """
-        Output a Mermaid graph diagram given a set of root nodes
-        """ 
-        subgraphs = {}
-        processedEdges = set()
-
-        # Find all edges, and build up the GraphElement dictionary
-        for root in roots:
-            for edge in root.traverseGraph():
-                if not MtlxTraversal.find_edge(edge,processedEdges):
-                    processedEdges.add(edge)
-                    MtlxTraversal.update_graph_dictionary(edge, subgraphs)
-
-        # Get string output for each edge in Mermaid format
-        edgeOutput = set()
-        styleOutput = set()
-        for edge in processedEdges:
-            outVal = MtlxMermaid.emitMermaidEdge('    ', edge, subgraphs, edgeOutput, styleOutput)
-            if outVal not in edgeOutput:
-                edgeOutput.add(outVal)
-
-        # Include interface input edges
-        for edge in processedEdges:
-            MtlxMermaid.emitInterfaceInputs('    ', edge, subgraphs, edgeOutput, styleOutput)            
-
-        # Print graph header, edges, sub-graphs, and styling
-        outputGraph = []
-        outputGraph.append('  graph %s;' % orientation)
-        for outVal in edgeOutput:
-            outputGraph.append(outVal)
-
-        outputGraph.append('%% Subgraphs')
-        for line in MtlxMermaid.emitMermaidSubgraphs(subgraphs):
-            outputGraph.append(line)
-
-        outputGraph.append('%% Style')
-        for line in styleOutput:
-            outputGraph.append(line)
-
-        return outputGraph
     
 class MxDrawIOExporter(MxBaseGraphExporter):    
     '''
@@ -1252,48 +982,6 @@ class MxDrawIOExporter(MxBaseGraphExporter):
                 self.next_y = 50
                 self.next_x += node_width + self.horizontal_spacing
                 self.current_row_nodes = 0
-    
-    def collect_node_slots(self, node_name):
-        '''
-        Collect unique input and output slots for a node from connections
-        '''
-        input_slots = {}
-        output_slots = {}
-        
-        for conn in self.connections:
-            source_node = conn[0].split('/')[-1] if '/' in conn[0] else conn[0]
-            target_node = conn[2].split('/')[-1] if '/' in conn[2] else conn[2]
-            
-            # Check if this node is the source (has outputs)
-            if source_node == node_name:
-                slot_name = conn[1] if conn[1] else "out"
-                if slot_name not in output_slots:
-                    output_slots[slot_name] = []
-                output_slots[slot_name].append(conn)
-            
-            # Check if this node is the target (has inputs)
-            if target_node == node_name:
-                slot_name = conn[3] if conn[3] else "in"
-                if slot_name not in input_slots:
-                    input_slots[slot_name] = []
-                input_slots[slot_name].append(conn)
-
-        # Return sorted lists of slot names
-        return list(input_slots.keys()), list(output_slots.keys())
-    
-    def extract_base_node_name(self, node_path):
-        '''
-        Extract the base node name from a path, removing any numeric suffix
-        '''
-        # Get the last part of the path
-        node_name = node_path.split('/')[-1]
-        # Remove any numeric suffix like _1, _2, etc.
-        if '_' in node_name and node_name.split('_')[-1].isdigit():
-            # Remove the numeric suffix
-            parts = node_name.split('_')
-            if len(parts) > 1 and parts[-1].isdigit():
-                node_name = '_'.join(parts[:-1])
-        return node_name
     
     def create_node_instance(self, node_path, node_info):
         '''
@@ -1765,5 +1453,989 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         dom = minidom.parseString(xml_str)
         return dom.toprettyxml(indent='  ')
 
+import json
+import os
+from collections import defaultdict
 
+class MxD3GraphExporter(MxBaseGraphExporter):
+    '''
+    Class to export a MaterialX graph to interactive D3.js HTML format
+    '''
+    def __init__(self, graphDictionary, connections):
+        super().__init__(graphDictionary, connections)
+        self.graph_data = {}
+        self.node_width = 200
+        self.node_header_height = 40
+        self.slot_height = 25
+        self.slot_margin = 4
+        
+        # Slot colors
+        self.slot_colors = {
+            'input': '#3498db',  # Blue
+            'output': '#2ecc71',  # Green
+            'default': '#95a5a6'  # Gray
+        }
+        
+    def _get_node_slots(self, node_path):
+        """Extract input and output slots for a node from connections"""
+        input_slots = {}
+        output_slots = {}
+        
+        for conn in self.connections:
+            src_path = conn[0]
+            dst_path = conn[2]
+            src_slot = conn[1] if conn[1] else 'out'
+            dst_slot = conn[3] if conn[3] else 'in'
+            
+            # Check if this node is the source (has outputs)
+            if src_path == node_path:
+                output_slots[src_slot] = {
+                    'name': src_slot,
+                    'type': 'output',
+                    'connections': []
+                }
+            
+            # Check if this node is the target (has inputs)
+            if dst_path == node_path:
+                input_slots[dst_slot] = {
+                    'name': dst_slot,
+                    'type': 'input',
+                    'connections': []
+                }
+        
+        return list(input_slots.values()), list(output_slots.values())
+    
+    def _build_graph_data(self):
+        """Build the complete graph data structure"""
+        nodes = []
+        links = []
+        node_id_map = {}
+        
+        # First pass: create all nodes
+        for graph_path in self.graphDictionary:
+            for item in self.graphDictionary[graph_path]:
+                node_path = item[0]
+                
+                # If node_path doesn't contain graph_path, prepend it
+                if graph_path and not node_path.startswith(graph_path):
+                    node_path = f"{graph_path}/{node_path}" if graph_path else node_path
+                
+                # Sanitize ID
+                node_id = node_path.replace('/', '_').replace(' ', '_')
+                
+                # Get slot information
+                input_slots, output_slots = self._get_node_slots(node_path)
+                
+                # Calculate node height based on slots
+                max_slots = max(len(input_slots), len(output_slots))
+                node_height = self.node_header_height + (max_slots * self.slot_height) + 20
+                
+                # Create node data
+                node = {
+                    'id': node_id,
+                    'path': node_path,
+                    'label': node_path.split('/')[-1],  # Base name
+                    'type': item[1] if len(item) > 1 else 'node',
+                    'value': item[3] if len(item) > 3 else '',
+                    'graph': graph_path,
+                    'slots': {
+                        'inputs': input_slots,
+                        'outputs': output_slots
+                    },
+                    'position': {
+                        'x': 0,  # Will be set by layout
+                        'y': 0,
+                        'width': self.node_width,
+                        'height': node_height
+                    },
+                    'color': self.node_colors.get(item[1], self.default_node_colors)[0],
+                    'textColor': self.node_colors.get(item[1], self.default_node_colors)[1]
+                }
+                
+                nodes.append(node)
+                node_id_map[node_path] = node_id
+        
+        # Second pass: create links between nodes
+        for i, conn in enumerate(self.connections):
+            src_path = conn[0]
+            dst_path = conn[2]
+            
+            src_id = node_id_map.get(src_path)
+            dst_id = node_id_map.get(dst_path)
+            
+            if src_id and dst_id:
+                link = {
+                    'id': f'link_{i}',
+                    'source': src_id,
+                    'target': dst_id,
+                    'sourceSlot': conn[1] if conn[1] else 'out',
+                    'targetSlot': conn[3] if conn[3] else 'in',
+                    'type': conn[4] if len(conn) > 4 else 'connection',
+                    'color': '#95a5a6',
+                    'width': 2
+                }
+                
+                # Style based on connection type
+                if conn[4] == 'value':
+                    link['color'] = '#e74c3c'
+                    link['dashed'] = True
+                elif conn[4] == 'nodedef':
+                    link['color'] = '#9b59b6'
+                    link['width'] = 3
+                
+                links.append(link)
+        
+        return {
+            'nodes': nodes,
+            'links': links,
+            'metadata': {
+                'totalNodes': len(nodes),
+                'totalLinks': len(links),
+                'nodeWidth': self.node_width,
+                'nodeHeaderHeight': self.node_header_height,
+                'slotHeight': self.slot_height
+            }
+        }
+    
+    def _apply_auto_layout(self, graph_data):
+        """Apply automatic layout to nodes"""
+        nodes = graph_data['nodes']
+        links = graph_data['links']
+        
+        # Build adjacency lists
+        successors = defaultdict(list)
+        predecessors = defaultdict(list)
+        
+        for link in links:
+            successors[link['source']].append(link['target'])
+            predecessors[link['target']].append(link['source'])
+        
+        # Find nodes with no incoming edges (sources)
+        source_nodes = [node for node in nodes if len(predecessors.get(node['id'], [])) == 0]
+        
+        # Simple grid layout
+        cols = 4
+        node_spacing_x = 250
+        node_spacing_y = 200
+        
+        for i, node in enumerate(nodes):
+            row = i // cols
+            col = i % cols
+            node['position']['x'] = 50 + col * node_spacing_x
+            node['position']['y'] = 50 + row * node_spacing_y
+        
+        return graph_data
+    
+    def execute(self):
+        """Generate the complete D3.js graph data"""
+        self.graph_data = self._build_graph_data()
+        self.graph_data = self._apply_auto_layout(self.graph_data)
+        return self.graph_data
+    
+    def export_json(self, filename):
+        """Export graph data as JSON"""
+        data = self.execute()
+        with open(filename, 'w') as f:
+            json.dump(data, f, indent=2)
+    
+    def export_html(self, filename, title="MaterialX Graph"):
+        """Export complete interactive HTML visualization"""
+        data = self.execute()
+        
+        html_template = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}}</title>
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-drag@3"></script>
+    <script src="https://unpkg.com/d3-zoom@3"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .container {
+            display: flex;
+            gap: 20px;
+            height: calc(100vh - 180px);
+        }
+        
+        .graph-container {
+            flex: 1;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        #graph-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        .sidebar {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+        
+        .controls {
+            margin-bottom: 20px;
+        }
+        
+        .control-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        select, input[type="range"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+        }
+        
+        .node-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .node-item {
+            padding: 10px;
+            margin-bottom: 5px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .node-item:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+        
+        .node-type {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 2px;
+        }
+        
+        .node-slots {
+            font-size: 11px;
+            color: #95a5a6;
+            margin-top: 5px;
+        }
+        
+        /* Node styling */
+        .node {
+            cursor: move;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        
+        .node-header {
+            fill: #2c3e50;
+            stroke: #2c3e50;
+            stroke-width: 2;
+            rx: 5;
+            ry: 5;
+        }
+        
+        .node-body {
+            fill: white;
+            stroke: #bdc3c7;
+            stroke-width: 1;
+            rx: 5;
+            ry: 5;
+        }
+        
+        .node-title {
+            fill: white;
+            font-size: 14px;
+            font-weight: bold;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            pointer-events: none;
+        }
+        
+        .slot-row {
+            cursor: pointer;
+        }
+        
+        .input-slot {
+            fill: #3498db;
+        }
+        
+        .output-slot {
+            fill: #2ecc71;
+        }
+        
+        .slot-rect {
+            rx: 3;
+            ry: 3;
+        }
+        
+        .slot-text {
+            fill: white;
+            font-size: 11px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            pointer-events: none;
+        }
+        
+        .port {
+            fill: white;
+            stroke: #7f8c8d;
+            stroke-width: 2;
+            r: 8;
+            cursor: crosshair;
+        }
+        
+        .link {
+            fill: none;
+            stroke: #95a5a6;
+            stroke-width: 2;
+            marker-end: url(#arrowhead);
+        }
+        
+        .link:hover {
+            stroke: #e74c3c;
+            stroke-width: 3;
+        }
+        
+        .dashed-link {
+            stroke-dasharray: 5,5;
+        }
+        
+        .tooltip {
+            position: absolute;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 5px;
+            pointer-events: none;
+            font-size: 12px;
+            max-width: 300px;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .legend {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 10px;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        
+        /* Zoom controls */
+        .zoom-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 5px;
+        }
+        
+        .zoom-btn {
+            width: 30px;
+            height: 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            margin: 2px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .zoom-btn:hover {
+            background: #2980b9;
+        }
+        
+        /* Highlight styles */
+        .highlighted {
+            stroke: #f39c12 !important;
+            stroke-width: 3 !important;
+        }
+        
+        .selected {
+            filter: drop-shadow(0 0 10px rgba(243, 156, 18, 0.5));
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{TITLE}}</h1>
+        <div class="stats">
+            <div>Nodes: <span id="node-count">0</span></div>
+            <div>Connections: <span id="link-count">0</span></div>
+            <div>Last Updated: <span id="update-time">{{TIMESTAMP}}</span></div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="graph-container">
+            <div class="zoom-controls">
+                <button class="zoom-btn" onclick="zoomIn()">+</button>
+                <button class="zoom-btn" onclick="zoomOut()">-</button>
+                <button class="zoom-btn" onclick="resetZoom()">↺</button>
+            </div>
+            <svg id="graph-svg"></svg>
+            <div class="tooltip" id="tooltip"></div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="layout">Layout:</label>
+                    <select id="layout" onchange="changeLayout(this.value)">
+                        <option value="force">Force-Directed</option>
+                        <option value="grid">Grid</option>
+                        <option value="hierarchical">Hierarchical</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="node-size">Node Size:</label>
+                    <input type="range" id="node-size" min="100" max="300" value="200" oninput="updateNodeSize(this.value)">
+                </div>
+                
+                <div class="control-group">
+                    <label for="show-values">Show Values:</label>
+                    <input type="checkbox" id="show-values" checked onchange="toggleValues(this.checked)">
+                </div>
+                
+                <div class="control-group">
+                    <label for="highlight-path">Highlight Path:</label>
+                    <input type="text" id="highlight-path" placeholder="Enter node path..." oninput="highlightPath(this.value)">
+                </div>
+            </div>
+            
+            <div class="legend">
+                <h3>Node Types</h3>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #09D;"></div>
+                    <span>Input</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #0C0;"></div>
+                    <span>Output</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #090;"></div>
+                    <span>Surface Material</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #00C;"></div>
+                    <span>Node Definition</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #500;"></div>
+                    <span>Constant</span>
+                </div>
+            </div>
+            
+            <div class="node-list">
+                <h3>Nodes ({{NODE_COUNT}})</h3>
+                <div id="node-list-container"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Graph data loaded from Python
+        const graphData = {{GRAPH_DATA}};
+        
+        // Initialize variables
+        let nodes = graphData.nodes;
+        let links = graphData.links;
+        let metadata = graphData.metadata;
+        
+        let selectedNode = null;
+        let simulation = null;
+        let zoom = null;
+        
+        // Update stats
+        document.getElementById('node-count').textContent = metadata.totalNodes;
+        document.getElementById('link-count').textContent = metadata.totalLinks;
+        
+        // Initialize visualization
+        initGraph();
+        
+        function initGraph() {
+            const svg = d3.select('#graph-svg');
+            const width = svg.node().getBoundingClientRect().width;
+            const height = svg.node().getBoundingClientRect().height;
+            
+            // Clear previous content
+            svg.selectAll('*').remove();
+            
+            // Create main group
+            const g = svg.append('g');
+            
+            // Add arrowhead marker
+            svg.append('defs').append('marker')
+                .attr('id', 'arrowhead')
+                .attr('viewBox', '-0 -5 10 10')
+                .attr('refX', 15)
+                .attr('refY', 0)
+                .attr('orient', 'auto')
+                .attr('markerWidth', 6)
+                .attr('markerHeight', 6)
+                .append('path')
+                .attr('d', 'M 0,-5 L 10,0 L 0,5')
+                .attr('fill', '#95a5a6');
+            
+            // Create zoom behavior
+            zoom = d3.zoom()
+                .scaleExtent([0.1, 4])
+                .on('zoom', (event) => {
+                    g.attr('transform', event.transform);
+                });
+            
+            svg.call(zoom);
+            
+            // Draw links first (so they appear behind nodes)
+            const link = g.selectAll('.link')
+                .data(links)
+                .enter().append('path')
+                .attr('class', d => `link ${d.type === 'value' ? 'dashed-link' : ''}`)
+                .attr('stroke', d => d.color)
+                .attr('stroke-width', d => d.width)
+                .attr('id', d => d.id)
+                .on('mouseover', function(event, d) {
+                    d3.select(this).classed('highlighted', true);
+                    showTooltip(event, `
+                        <strong>Connection</strong><br>
+                        Source: ${d.source}<br>
+                        Target: ${d.target}<br>
+                        Type: ${d.type}<br>
+                        From: ${d.sourceSlot} → To: ${d.targetSlot}
+                    `);
+                })
+                .on('mouseout', function() {
+                    d3.select(this).classed('highlighted', false);
+                    hideTooltip();
+                });
+            
+            // Draw nodes
+            const node = g.selectAll('.node')
+                .data(nodes)
+                .enter().append('g')
+                .attr('class', 'node')
+                .attr('id', d => d.id)
+                .attr('transform', d => `translate(${d.position.x}, ${d.position.y})`)
+                .call(d3.drag()
+                    .on('start', dragStarted)
+                    .on('drag', dragged)
+                    .on('end', dragEnded))
+                .on('click', function(event, d) {
+                    selectNode(d);
+                    event.stopPropagation();
+                });
+            
+            // Draw node background
+            node.append('rect')
+                .attr('class', 'node-header')
+                .attr('width', d => d.position.width)
+                .attr('height', metadata.nodeHeaderHeight)
+                .attr('fill', d => d.color)
+                .attr('stroke', d => d.textColor);
+            
+            // Draw node title
+            node.append('text')
+                .attr('class', 'node-title')
+                .attr('x', d => d.position.width / 2)
+                .attr('y', metadata.nodeHeaderHeight / 2)
+                .attr('fill', d => d.textColor)
+                .text(d => {
+                    let label = d.label;
+                    if (d.value) label += ` = ${d.value}`;
+                    return label;
+                });
+            
+            // Draw node body
+            node.append('rect')
+                .attr('class', 'node-body')
+                .attr('x', 0)
+                .attr('y', metadata.nodeHeaderHeight)
+                .attr('width', d => d.position.width)
+                .attr('height', d => d.position.height - metadata.nodeHeaderHeight);
+            
+            // Draw slots
+            nodes.forEach((nodeData, nodeIndex) => {
+                const nodeGroup = d3.select(`#${nodeData.id}`);
+                const inputSlots = nodeData.slots.inputs;
+                const outputSlots = nodeData.slots.outputs;
+                const maxSlots = Math.max(inputSlots.length, outputSlots.length);
+                
+                // Calculate starting position for slots
+                const startY = metadata.nodeHeaderHeight + 10;
+                
+                // Draw input slots (left side)
+                inputSlots.forEach((slot, i) => {
+                    const y = startY + (i * metadata.slotHeight);
+                    
+                    const slotGroup = nodeGroup.append('g')
+                        .attr('class', 'slot-row')
+                        .attr('transform', `translate(0, ${y})`);
+                    
+                    // Input port
+                    slotGroup.append('circle')
+                        .attr('class', 'port input-port')
+                        .attr('cx', 0)
+                        .attr('cy', metadata.slotHeight / 2)
+                        .attr('data-slot', slot.name)
+                        .attr('data-node', nodeData.id)
+                        .attr('data-type', 'input');
+                    
+                    // Slot rectangle
+                    slotGroup.append('rect')
+                        .attr('class', 'slot-rect input-slot')
+                        .attr('x', 10)
+                        .attr('width', 80)
+                        .attr('height', metadata.slotHeight - 2);
+                    
+                    // Slot text
+                    slotGroup.append('text')
+                        .attr('class', 'slot-text')
+                        .attr('x', 50)
+                        .attr('y', metadata.slotHeight / 2)
+                        .text(slot.name);
+                });
+                
+                // Draw output slots (right side)
+                outputSlots.forEach((slot, i) => {
+                    const y = startY + (i * metadata.slotHeight);
+                    
+                    const slotGroup = nodeGroup.append('g')
+                        .attr('class', 'slot-row')
+                        .attr('transform', `translate(${nodeData.position.width}, ${y})`);
+                    
+                    // Output port
+                    slotGroup.append('circle')
+                        .attr('class', 'port output-port')
+                        .attr('cx', 0)
+                        .attr('cy', metadata.slotHeight / 2)
+                        .attr('data-slot', slot.name)
+                        .attr('data-node', nodeData.id)
+                        .attr('data-type', 'output');
+                    
+                    // Slot rectangle
+                    slotGroup.append('rect')
+                        .attr('class', 'slot-rect output-slot')
+                        .attr('x', -90)
+                        .attr('width', 80)
+                        .attr('height', metadata.slotHeight - 2);
+                    
+                    // Slot text
+                    slotGroup.append('text')
+                        .attr('class', 'slot-text')
+                        .attr('x', -50)
+                        .attr('y', metadata.slotHeight / 2)
+                        .text(slot.name);
+                });
+            });
+            
+            // Update link paths after nodes are drawn
+            updateLinkPaths();
+            
+            // Populate node list
+            populateNodeList();
+        }
+        
+        function updateLinkPaths() {
+            d3.selectAll('.link').attr('d', function(d) {
+                const sourceNode = nodes.find(n => n.id === d.source);
+                const targetNode = nodes.find(n => n.id === d.target);
+                
+                if (!sourceNode || !targetNode) return '';
+                
+                // Find source and target ports
+                const sourcePort = d3.select(`circle[data-node="${d.source}"][data-slot="${d.sourceSlot}"]`);
+                const targetPort = d3.select(`circle[data-node="${d.target}"][data-slot="${d.targetSlot}"]`);
+                
+                if (sourcePort.empty() || targetPort.empty()) return '';
+                
+                const sourceTransform = d3.select(`#${d.source}`).attr('transform');
+                const targetTransform = d3.select(`#${d.target}`).attr('transform');
+                
+                const sourceX = parseFloat(sourceTransform.match(/translate\(([^,]+),/)[1]) + 
+                                 parseFloat(sourcePort.attr('cx'));
+                const sourceY = parseFloat(sourceTransform.match(/,[^)]+\)/)[0].slice(1, -1)) + 
+                                 parseFloat(sourcePort.attr('cy'));
+                
+                const targetX = parseFloat(targetTransform.match(/translate\(([^,]+),/)[1]) + 
+                                 parseFloat(targetPort.attr('cx'));
+                const targetY = parseFloat(targetTransform.match(/,[^)]+\)/)[0].slice(1, -1)) + 
+                                 parseFloat(targetPort.attr('cy'));
+                
+                // Create curved path
+                const midX = (sourceX + targetX) / 2;
+                return `M ${sourceX},${sourceY} C ${midX},${sourceY} ${midX},${targetY} ${targetX},${targetY}`;
+            });
+        }
+        
+        function dragStarted(event, d) {
+            if (!event.active) simulation?.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+        
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+            updateLinkPaths();
+        }
+        
+        function dragEnded(event, d) {
+            if (!event.active) simulation?.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+        
+        function selectNode(node) {
+            // Remove previous selection
+            d3.selectAll('.node').classed('selected', false);
+            
+            // Highlight selected node
+            d3.select(`#${node.id}`).classed('selected', true);
+            selectedNode = node;
+            
+            // Update sidebar with node details
+            document.getElementById('node-list-container').innerHTML = `
+                <div class="node-item" style="background: #e3f2fd; border-left-color: #f39c12;">
+                    <strong>${node.label}</strong>
+                    <div class="node-type">Type: ${node.type}</div>
+                    <div class="node-type">Path: ${node.path}</div>
+                    <div class="node-slots">
+                        Inputs: ${node.slots.inputs.map(s => s.name).join(', ')}<br>
+                        Outputs: ${node.slots.outputs.map(s => s.name).join(', ')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function showTooltip(event, content) {
+            const tooltip = d3.select('#tooltip');
+            tooltip.html(content)
+                .style('left', (event.pageX + 10) + 'px')
+                .style('top', (event.pageY - 10) + 'px')
+                .style('opacity', 1);
+        }
+        
+        function hideTooltip() {
+            d3.select('#tooltip').style('opacity', 0);
+        }
+        
+        function populateNodeList() {
+            const container = document.getElementById('node-list-container');
+            container.innerHTML = '';
+            
+            nodes.forEach(node => {
+                const div = document.createElement('div');
+                div.className = 'node-item';
+                div.innerHTML = `
+                    <strong>${node.label}</strong>
+                    <div class="node-type">${node.type}</div>
+                    <div class="node-slots">
+                        ${node.slots.inputs.length} inputs, 
+                        ${node.slots.outputs.length} outputs
+                    </div>
+                `;
+                div.onclick = () => {
+                    // Center view on node
+                    const svg = document.getElementById('graph-svg');
+                    const nodeEl = document.getElementById(node.id);
+                    if (nodeEl) {
+                        const bbox = nodeEl.getBBox();
+                        const transform = d3.zoomTransform(svg);
+                        const centerX = bbox.x + bbox.width / 2;
+                        const centerY = bbox.y + bbox.height / 2;
+                        
+                        svg.transition()
+                            .duration(750)
+                            .call(zoom.transform, 
+                                transform.translate(
+                                    svg.clientWidth / 2 - centerX,
+                                    svg.clientHeight / 2 - centerY
+                                )
+                            );
+                    }
+                    selectNode(node);
+                };
+                container.appendChild(div);
+            });
+        }
+        
+        // Control functions
+        function changeLayout(layoutType) {
+            // Implement different layouts
+            if (layoutType === 'force') {
+                // Force-directed layout
+                simulation = d3.forceSimulation(nodes)
+                    .force('link', d3.forceLink(links).id(d => d.id).distance(150))
+                    .force('charge', d3.forceManyBody().strength(-300))
+                    .force('center', d3.forceCenter(
+                        document.getElementById('graph-svg').clientWidth / 2,
+                        document.getElementById('graph-svg').clientHeight / 2
+                    ))
+                    .on('tick', () => {
+                        d3.selectAll('.node')
+                            .attr('transform', d => `translate(${d.x}, ${d.y})`);
+                        updateLinkPaths();
+                    });
+            } else if (layoutType === 'grid') {
+                // Grid layout
+                const cols = Math.ceil(Math.sqrt(nodes.length));
+                nodes.forEach((node, i) => {
+                    const row = Math.floor(i / cols);
+                    const col = i % cols;
+                    node.x = 100 + col * 250;
+                    node.y = 100 + row * 150;
+                    node.fx = node.x;
+                    node.fy = node.y;
+                });
+                updateLinkPaths();
+            }
+        }
+        
+        function updateNodeSize(size) {
+            metadata.nodeWidth = parseInt(size);
+            nodes.forEach(node => {
+                node.position.width = metadata.nodeWidth;
+            });
+            initGraph();
+        }
+        
+        function toggleValues(show) {
+            d3.selectAll('.node-title').text(d => {
+                if (show && d.value) {
+                    return `${d.label} = ${d.value}`;
+                }
+                return d.label;
+            });
+        }
+        
+        function highlightPath(path) {
+            // Reset all highlights
+            d3.selectAll('.node').classed('highlighted', false);
+            
+            if (!path) return;
+            
+            // Highlight nodes matching the path
+            nodes.forEach(node => {
+                if (node.path.toLowerCase().includes(path.toLowerCase())) {
+                    d3.select(`#${node.id}`).classed('highlighted', true);
+                }
+            });
+        }
+        
+        function zoomIn() {
+            const svg = d3.select('#graph-svg');
+            svg.transition().call(zoom.scaleBy, 1.2);
+        }
+        
+        function zoomOut() {
+            const svg = d3.select('#graph-svg');
+            svg.transition().call(zoom.scaleBy, 0.8);
+        }
+        
+        function resetZoom() {
+            const svg = d3.select('#graph-svg');
+            svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
+        }
+        
+        // Initialize with force layout
+        setTimeout(() => changeLayout('force'), 100);
+    </script>
+</body>
+</html>'''
+        
+        # Format the timestamp
+        import datetime
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # Replace placeholders
+        html_content = html_template\
+            .replace('{{TITLE}}', title)\
+            .replace('{{TIMESTAMP}}', timestamp)\
+            .replace('{{NODE_COUNT}}', str(len(data['nodes'])))\
+            .replace('{{GRAPH_DATA}}', json.dumps(data, indent=2))
+        
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(html_content)
+        
+        print(f"HTML visualization exported to: {filename}")
+        print(f"Open this file in your web browser to view the interactive graph.")
+    
+    def export_single_file(self, filename):
+        """
+        Export everything as a single HTML file for easy sharing
+        This includes all CSS and JavaScript inline
+        """
+        self.export_html(filename)
 
