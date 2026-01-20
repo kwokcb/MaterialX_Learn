@@ -1328,10 +1328,10 @@ class MxDrawIOExporter(MxBaseGraphExporter):
                 output_slots.add(src_slot)
             if target == node_path:
                 input_slots.add(target_slot)
-        if not output_slots:
-            output_slots.add('out')
-        if not input_slots:
-            input_slots.add('in')
+        #if not output_slots:
+        #    output_slots.add('out')
+        #if not input_slots:
+        #    input_slots.add('in')
 
         x = self.next_x
         y = self.next_y
@@ -1668,8 +1668,8 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         self.node_positions.clear()
         self.slot_positions.clear()
         self.node_name_to_id.clear()
-        self.next_x = 30
-        self.next_y = 30
+        self.next_x = 50
+        self.next_y = 50
         self.current_row_nodes = 0
         
         self.create_mxfile()
@@ -1680,7 +1680,7 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         node_ids = []
         graph_info = []
         for graph_path in self.graphDictionary:
-            print(f'Scan path:', graph_path)
+            #print(f'Scan path:', graph_path)
             for item in self.graphDictionary[graph_path]:
                 node_path = item[0]
                 # Prepend graph path if was not in name
@@ -1708,20 +1708,21 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         
         # Create connections (edges)
         created_edges = 0
+        print('\nCreating connections...')
         for i, connection in enumerate(self.connections):
-            self._debug_print(f"\n...Processing connection {i}: {connection}")
             edge_id = self.create_connection(connection, i)
+            self._debug_print(f"  Connection {i}: {connection}. Created edge: {edge_id if edge_id else 'Failed'}")
             if edge_id:
                 created_edges += 1
-                self._debug_print(f"  Created edge: {edge_id}")
         
-        self._debug_print(f"\nCreated {created_edges} connections out of {len(self.connections)}")
+        self._debug_print(f"Created {created_edges} connections out of {len(self.connections)}")
         
         # Layout nodes 
+        print("\nPerforming node layout...")
         self.layout_nodes()
 
         # Create groups based on graph paths
-        #self.create_groups(graph_info)
+        self.create_groups(graph_info)
 
         return self.xml_root
     
