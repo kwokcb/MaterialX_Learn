@@ -1006,20 +1006,22 @@ class MxDrawIOExporter(MxBaseGraphExporter):
             self.used_ids.add(base_id)
             return base_id
         
-        counter = 1
-        while True:
-            new_id = f"{base_id}_{counter}"
-            if new_id not in self.used_ids:
-                self.used_ids.add(new_id)
-                return new_id
-            counter += 1    
+        print('----------------- ID is not unique ', base_id)
+        #counter = 1
+        #while True:
+        #    new_id = f"{base_id}_{counter}"
+        #    if new_id not in self.used_ids:
+        #        self.used_ids.add(new_id)
+        #        return new_id
+        #    counter += 1    
 
     def sanitize_id(self, path):
         """Create a valid ID for draw.io cells"""
-        id_str = re.sub(r'[\/\s:\.\(\)\[\]\{\}]', '_', path)
-        if id_str and id_str[0].isdigit():
-            id_str = 'id_' + id_str
-        return self.get_unique_id(id_str)
+        #id_str = re.sub(r'[\/\s:\.\(\)\[\]\{\}]', '_', path)
+        #if id_str and id_str[0].isdigit():
+        #    id_str = 'id_' + id_str
+        #return self.get_unique_id(id_str)
+        return self.get_unique_id(path)
     
     def create_mxfile(self):
         """Create the root mxfile structure"""
@@ -1089,8 +1091,9 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         fillc = fill_colors[0]
         fontc = fill_colors[1]
         for i, slot_name in enumerate(slots):
-            slot_id = self.get_unique_id(f"{class_id}_{slot_type}_{i}")
-            
+            #slot_id = self.get_unique_id(f"{class_id}_{slot_type}_{i}")
+            slot_id = f"{class_id}/{slot_name}"
+
             slot_cell = ET.SubElement(self.diagram, 'mxCell')
             slot_cell.set('id', slot_id)
             slot_cell.set('value', slot_name)
@@ -1292,7 +1295,7 @@ class MxDrawIOExporter(MxBaseGraphExporter):
                 node_name = '_'.join(parts[:-1])
         return node_name
     
-    def create_class_for_node(self, node_path, node_info):
+    def create_node_instance(self, node_path, node_info):
         '''
         Create a class instance for a node. This includes:
         - Create the header with node name/type/value
@@ -1318,13 +1321,13 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         output_slots = set()
         for conn in self.connections:
             src = conn[0]
-            tgt = conn[2]
+            target = conn[2]
             src_slot = conn[1] if conn[1] else 'out'
-            tgt_slot = conn[3] if conn[3] else 'in'
+            target_slot = conn[3] if conn[3] else 'in'
             if src == node_path:
                 output_slots.add(src_slot)
-            if tgt == node_path:
-                input_slots.add(tgt_slot)
+            if target == node_path:
+                input_slots.add(target_slot)
         if not output_slots:
             output_slots.add('out')
         if not input_slots:
@@ -1356,7 +1359,12 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         return self.node_name_to_id.get(connection_node)
     
     def create_connection(self, connection, connection_index):
-        """Create a connection between slots"""
+        '''
+        Create a connection between slots
+        '''
+        if self.diagram is None:
+            raise ValueError("Diagram not created. Call create_diagram() first.")
+
         source_path = connection[0]
         source_slot = connection[1]
         target_path = connection[2]
@@ -1365,10 +1373,12 @@ class MxDrawIOExporter(MxBaseGraphExporter):
 
         # Find the node IDs using our mapping (full path)
         source_node_id = self.find_node_id_for_connection(source_path)
+        if not source_node_id:
+            source_node_id = self.find_node_id_for_connection(source_path+"/"+source_slot)
         target_node_id = self.find_node_id_for_connection(target_path)
 
         if not source_node_id:
-            self._debug_print(f"Warning: Could not find source node for '{source_path}'")
+            self._debug_print(f"Warning: Could not find source node for '{source_path}'. {source_slot}")
             self._debug_print(f"Available nodes: {list(self.node_name_to_id.keys())}")
             return None
         if not target_node_id:
@@ -1389,8 +1399,9 @@ class MxDrawIOExporter(MxBaseGraphExporter):
 
         # If slot doesn't exist, create it on the fly
         if not source_id:
+            id = self.get_unique_id(f"{source_node_id}_{source_slot_name}_out")
             slot_cell = ET.SubElement(self.diagram, 'mxCell')
-            slot_cell.set('id', self.get_unique_id(f"{source_node_id}_{source_slot_name}_out"))
+            slot_cell.set('id', str(id))
             slot_cell.set('value', source_slot_name)
             slot_cell.set('style', f'html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;resizeWidth=1;whiteSpace=wrap;')
             slot_cell.set('vertex', '1')
@@ -1404,8 +1415,9 @@ class MxDrawIOExporter(MxBaseGraphExporter):
             source_id = slot_cell.get('id')
 
         if not target_id:
+            id = self.get_unique_id(f"{target_node_id}_{target_slot_name}_in")
             slot_cell = ET.SubElement(self.diagram, 'mxCell')
-            slot_cell.set('id', self.get_unique_id(f"{target_node_id}_{target_slot_name}_in"))
+            slot_cell.set('id', str(id))
             slot_cell.set('value', target_slot_name)
             slot_cell.set('style', f'html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;resizeWidth=1;whiteSpace=wrap;')
             slot_cell.set('vertex', '1')
@@ -1442,9 +1454,9 @@ class MxDrawIOExporter(MxBaseGraphExporter):
 
         return edge_id
     
-    def create_value_nodes(self):
+    def create_definition_nodes(self):
         '''
-        Create nodes for value connections
+        Create definition nodes 
         '''
         if self.diagram is None:
             raise ValueError("Diagram not created. Call create_diagram() first.")
@@ -1647,48 +1659,57 @@ class MxDrawIOExporter(MxBaseGraphExporter):
                 y += height + y_spacing
 
     def execute(self):
-        """Main execution method to create the draw.io diagram"""
+        '''
+        Main execution method to create the draw.io diagram
+        '''
         # Reset tracking structures
         self.used_ids.clear()
         self.existing_slots.clear()
         self.node_positions.clear()
         self.slot_positions.clear()
         self.node_name_to_id.clear()
-        self.next_x = 50
-        self.next_y = 50
+        self.next_x = 30
+        self.next_y = 30
         self.current_row_nodes = 0
         
         self.create_mxfile()
         self.create_diagram()
         
-        # First pass: create all class instances
-        # Cache graph path -> node pairs for grouping later
+        # Create nodes first
+        # - Cache graph path -> node pairs for grouping later
         node_ids = []
         graph_info = []
         for graph_path in self.graphDictionary:
+            print(f'Scan path:', graph_path)
             for item in self.graphDictionary[graph_path]:
                 node_path = item[0]
-                node_id = self.create_class_for_node(node_path, item)
+                # Prepend graph path if was not in name
+                # to give a full path
+                if graph_path and graph_path not in node_path:
+                    node_path = graph_path + '/' + node_path
+                node_id = self.create_node_instance(node_path, item)
                 node_ids.append((node_id))
+
+                # Cache path, node id pair for grouping
                 graph_info.append((graph_path, node_id))
         
-        # Create value nodes if any
-        self.create_value_nodes()
-        
+        # Create definition nodes if any
+        self.create_definition_nodes()    
 
-        # Debug: Print all created slots and node mappings
-        self._debug_print(f"Created {len(self.existing_slots)} slots:")
-        for key, slot_id in self.existing_slots.items():
-            self._debug_print(f"  {key} -> {slot_id}")
-        
-        self._debug_print(f"\nNode name to ID mappings:")
+        # Debug: Print node mappings
+        self._debug_print(f"Created {len(self.node_name_to_id)} nodes:")
         for name, node_id in self.node_name_to_id.items():
-            self._debug_print(f"  {name} -> {node_id}")
+            self._debug_print(f"  Path: {name} -> Id: {node_id}")    
+
+        # Debug: Print slot mappings
+        self._debug_print(f"\nCreated {len(self.existing_slots)} slots:")
+        for key, slot_id in self.existing_slots.items():
+            self._debug_print(f"  Path: {key[0]}/{key[1]}. Type: {key[2]} -> Id: {slot_id}")        
         
         # Create connections (edges)
         created_edges = 0
         for i, connection in enumerate(self.connections):
-            self._debug_print(f"\nProcessing connection {i}: {connection}")
+            self._debug_print(f"\n...Processing connection {i}: {connection}")
             edge_id = self.create_connection(connection, i)
             if edge_id:
                 created_edges += 1
@@ -1700,7 +1721,7 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         self.layout_nodes()
 
         # Create groups based on graph paths
-        self.create_groups(graph_info)
+        #self.create_groups(graph_info)
 
         return self.xml_root
     
