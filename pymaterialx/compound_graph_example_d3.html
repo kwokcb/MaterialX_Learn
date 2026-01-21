@@ -286,7 +286,7 @@
         <div class="stats">
             <div>Nodes: <span id="node-count">0</span></div>
             <div>Connections: <span id="link-count">0</span></div>
-            <div>Last Updated: <span id="update-time">2026-01-21 01:32:42</span></div>
+            <div>Last Updated: <span id="update-time">2026-01-21 01:31:10</span></div>
         </div>
     </div>
     
@@ -353,7 +353,7 @@
             </div>
             
             <div class="node-list">
-                <h3>Nodes (9)</h3>
+                <h3>Nodes (23)</h3>
                 <div id="node-list-container"></div>
             </div>
         </div>
@@ -364,125 +364,16 @@
         const graphData = {
   "nodes": [
     {
-      "id": "image_basecolor",
-      "path": "image_basecolor",
-      "label": "image_basecolor",
-      "type": "gltf_colorimage",
-      "value": "BoomBox_baseColor.png",
-      "graph": "",
-      "slots": {
-        "inputs": [],
-        "outputs": [
-          {
-            "name": "outcolor",
-            "type": "output",
-            "connections": []
-          },
-          {
-            "name": "outa",
-            "type": "output",
-            "connections": []
-          }
-        ]
-      },
-      "position": {
-        "x": 50,
-        "y": 300,
-        "width": 200,
-        "height": 110
-      },
-      "color": "#969aee",
-      "textColor": "#000000"
-    },
-    {
-      "id": "image_orm",
-      "path": "image_orm",
-      "label": "image_orm",
-      "type": "gltf_image",
-      "value": "BoomBox_occlusionRoughnessMetallic.png",
-      "graph": "",
-      "slots": {
-        "inputs": [],
-        "outputs": [
-          {
-            "name": "out",
-            "type": "output",
-            "connections": []
-          }
-        ]
-      },
-      "position": {
-        "x": 50,
-        "y": 50,
-        "width": 200,
-        "height": 85
-      },
-      "color": "#969aee",
-      "textColor": "#000000"
-    },
-    {
-      "id": "image_normal",
-      "path": "image_normal",
-      "label": "image_normal",
-      "type": "gltf_normalmap",
-      "value": "BoomBox_normal.png",
-      "graph": "",
-      "slots": {
-        "inputs": [],
-        "outputs": [
-          {
-            "name": "out",
-            "type": "output",
-            "connections": []
-          }
-        ]
-      },
-      "position": {
-        "x": 50,
-        "y": 175,
-        "width": 200,
-        "height": 85
-      },
-      "color": "#969aee",
-      "textColor": "#000000"
-    },
-    {
-      "id": "image_emission",
-      "path": "image_emission",
-      "label": "image_emission",
-      "type": "gltf_image",
-      "value": "BoomBox_emissive.png",
-      "graph": "",
-      "slots": {
-        "inputs": [],
-        "outputs": [
-          {
-            "name": "out",
-            "type": "output",
-            "connections": []
-          }
-        ]
-      },
-      "position": {
-        "x": 50,
-        "y": 450,
-        "width": 200,
-        "height": 85
-      },
-      "color": "#969aee",
-      "textColor": "#000000"
-    },
-    {
-      "id": "swizzle",
-      "path": "swizzle",
-      "label": "swizzle",
-      "type": "extract",
+      "id": "ramplr_color3",
+      "path": "ramplr_color3",
+      "label": "ramplr_color3",
+      "type": "ramplr",
       "value": "",
       "graph": "",
       "slots": {
         "inputs": [
           {
-            "name": "in",
+            "name": "texcoord",
             "type": "input",
             "connections": []
           }
@@ -505,16 +396,16 @@
       "textColor": "#000000"
     },
     {
-      "id": "swizzle2",
-      "path": "swizzle2",
-      "label": "swizzle2",
-      "type": "extract",
+      "id": "tiledhexagons_color3",
+      "path": "tiledhexagons_color3",
+      "label": "tiledhexagons_color3",
+      "type": "tiledhexagons",
       "value": "",
       "graph": "",
       "slots": {
         "inputs": [
           {
-            "name": "in",
+            "name": "texcoord",
             "type": "input",
             "connections": []
           }
@@ -537,103 +428,9 @@
       "textColor": "#000000"
     },
     {
-      "id": "swizzle3",
-      "path": "swizzle3",
-      "label": "swizzle3",
-      "type": "extract",
-      "value": "",
-      "graph": "",
-      "slots": {
-        "inputs": [
-          {
-            "name": "in",
-            "type": "input",
-            "connections": []
-          }
-        ],
-        "outputs": [
-          {
-            "name": "out",
-            "type": "output",
-            "connections": []
-          }
-        ]
-      },
-      "position": {
-        "x": 330,
-        "y": 300,
-        "width": 200,
-        "height": 85
-      },
-      "color": "#969aee",
-      "textColor": "#000000"
-    },
-    {
-      "id": "SR_boombox",
-      "path": "SR_boombox",
-      "label": "SR_boombox",
-      "type": "gltf_pbr",
-      "value": "",
-      "graph": "",
-      "slots": {
-        "inputs": [
-          {
-            "name": "base_color",
-            "type": "input",
-            "connections": []
-          },
-          {
-            "name": "alpha",
-            "type": "input",
-            "connections": []
-          },
-          {
-            "name": "metallic",
-            "type": "input",
-            "connections": []
-          },
-          {
-            "name": "roughness",
-            "type": "input",
-            "connections": []
-          },
-          {
-            "name": "occlusion",
-            "type": "input",
-            "connections": []
-          },
-          {
-            "name": "normal",
-            "type": "input",
-            "connections": []
-          },
-          {
-            "name": "emissive",
-            "type": "input",
-            "connections": []
-          }
-        ],
-        "outputs": [
-          {
-            "name": "out",
-            "type": "output",
-            "connections": []
-          }
-        ]
-      },
-      "position": {
-        "x": 610,
-        "y": 50,
-        "width": 200,
-        "height": 235
-      },
-      "color": "#969aee",
-      "textColor": "#000000"
-    },
-    {
-      "id": "Material_boombox",
-      "path": "Material_boombox",
-      "label": "Material_boombox",
+      "id": "gltf_patternMaterial",
+      "path": "gltf_patternMaterial",
+      "label": "gltf_patternMaterial",
       "type": "surfacematerial",
       "value": "",
       "graph": "",
@@ -648,40 +445,764 @@
         "outputs": []
       },
       "position": {
-        "x": 890,
+        "x": 1450,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "usd_shader",
+      "path": "usd_shader",
+      "label": "usd_shader",
+      "type": "UsdPreviewSurface",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "diffuseColor",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "gltf_shader",
+      "path": "gltf_shader",
+      "label": "gltf_shader",
+      "type": "gltf_pbr",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "base_color",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "unlit_patternMaterial",
+      "path": "unlit_patternMaterial",
+      "label": "unlit_patternMaterial",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 1450,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "unlit_shader",
+      "path": "unlit_shader",
+      "label": "unlit_shader",
+      "type": "surface_unlit",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "emission_color",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "texcoord_vector2",
+      "path": "texcoord_vector2",
+      "label": "texcoord_vector2",
+      "type": "texcoord",
+      "value": "0",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 425,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "usd_patternMaterial",
+      "path": "usd_patternMaterial",
+      "label": "usd_patternMaterial",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 1450,
         "y": 50,
         "width": 200,
         "height": 85
       },
       "color": "#090",
       "textColor": "#FFF"
+    },
+    {
+      "id": "openpbr_shader",
+      "path": "openpbr_shader",
+      "label": "openpbr_shader",
+      "type": "open_pbr_surface",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "base_color",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 425,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "openpbr_patternMaterial",
+      "path": "openpbr_patternMaterial",
+      "label": "openpbr_patternMaterial",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 1450,
+        "y": 425,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "multiply_color3",
+      "path": "multiply_color3",
+      "label": "multiply_color3",
+      "type": "multiply",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 610,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "stdsurf_shader",
+      "path": "stdsurf_shader",
+      "label": "stdsurf_shader",
+      "type": "standard_surface",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "base_color",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "stdsurf_patternMaterial",
+      "path": "stdsurf_patternMaterial",
+      "label": "stdsurf_patternMaterial",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 1450,
+        "y": 550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "patternGraph_ramp_right",
+      "path": "patternGraph/ramp_right",
+      "label": "ramp_right",
+      "type": "input",
+      "value": "0.8392156862745098,0.12156862745098039,0.12156862745098039",
+      "graph": "patternGraph",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "patternGraph_ramp_left",
+      "path": "patternGraph/ramp_left",
+      "label": "ramp_left",
+      "type": "input",
+      "value": "0.08627450980392157,0.44313725490196076,0.7137254901960784",
+      "graph": "patternGraph",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 675,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "patternGraph_hex_size",
+      "path": "patternGraph/hex_size",
+      "label": "hex_size",
+      "type": "input",
+      "value": "0.4",
+      "graph": "patternGraph",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "patternGraph_hex_tiling",
+      "path": "patternGraph/hex_tiling",
+      "label": "hex_tiling",
+      "type": "input",
+      "value": "20,10",
+      "graph": "patternGraph",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "patternGraph_out",
+      "path": "patternGraph/out",
+      "label": "out",
+      "type": "output",
+      "value": "",
+      "graph": "patternGraph",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "patternGraph_texcoord_vector3",
+      "path": "patternGraph/texcoord_vector3",
+      "label": "texcoord_vector3",
+      "type": "texcoord",
+      "value": "0",
+      "graph": "patternGraph",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "patternGraph_multiply_color4",
+      "path": "patternGraph/multiply_color4",
+      "label": "multiply_color4",
+      "type": "multiply",
+      "value": "",
+      "graph": "patternGraph",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 200,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "patternGraph_tiledhexagons_color4",
+      "path": "patternGraph/tiledhexagons_color4",
+      "label": "tiledhexagons_color4",
+      "type": "tiledhexagons",
+      "value": "",
+      "graph": "patternGraph",
+      "slots": {
+        "inputs": [
+          {
+            "name": "texcoord",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "uvtiling",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "size",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 300,
+        "width": 200,
+        "height": 135
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "patternGraph_ramplr_color4",
+      "path": "patternGraph/ramplr_color4",
+      "label": "ramplr_color4",
+      "type": "ramplr",
+      "value": "",
+      "graph": "patternGraph",
+      "slots": {
+        "inputs": [
+          {
+            "name": "valuel",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "valuer",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "texcoord",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 475,
+        "width": 200,
+        "height": 135
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
     }
   ],
   "links": [
     {
       "id": "link_0",
-      "source": "image_orm",
-      "target": "swizzle",
+      "source": "texcoord_vector2",
+      "target": "ramplr_color3",
       "sourceSlot": "out",
-      "targetSlot": "in",
+      "targetSlot": "texcoord",
       "type": "nodename",
       "color": "#95a5a6",
       "width": 2
     },
     {
       "id": "link_1",
-      "source": "image_orm",
-      "target": "swizzle2",
+      "source": "texcoord_vector2",
+      "target": "tiledhexagons_color3",
       "sourceSlot": "out",
-      "targetSlot": "in",
+      "targetSlot": "texcoord",
       "type": "nodename",
       "color": "#95a5a6",
       "width": 2
     },
     {
       "id": "link_2",
-      "source": "image_orm",
-      "target": "swizzle3",
+      "source": "gltf_shader",
+      "target": "gltf_patternMaterial",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_3",
+      "source": "patternGraph_out",
+      "target": "usd_shader",
+      "sourceSlot": "out",
+      "targetSlot": "diffuseColor",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_4",
+      "source": "patternGraph_out",
+      "target": "gltf_shader",
+      "sourceSlot": "out",
+      "targetSlot": "base_color",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_5",
+      "source": "unlit_shader",
+      "target": "unlit_patternMaterial",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_6",
+      "source": "patternGraph_out",
+      "target": "unlit_shader",
+      "sourceSlot": "out",
+      "targetSlot": "emission_color",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_7",
+      "source": "usd_shader",
+      "target": "usd_patternMaterial",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_8",
+      "source": "patternGraph_out",
+      "target": "openpbr_shader",
+      "sourceSlot": "out",
+      "targetSlot": "base_color",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_9",
+      "source": "openpbr_shader",
+      "target": "openpbr_patternMaterial",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_10",
+      "source": "tiledhexagons_color3",
+      "target": "multiply_color3",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_11",
+      "source": "ramplr_color3",
+      "target": "multiply_color3",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_12",
+      "source": "patternGraph_out",
+      "target": "stdsurf_shader",
+      "sourceSlot": "out",
+      "targetSlot": "base_color",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_13",
+      "source": "stdsurf_shader",
+      "target": "stdsurf_patternMaterial",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_14",
+      "source": "patternGraph_multiply_color4",
+      "target": "patternGraph_out",
       "sourceSlot": "out",
       "targetSlot": "in",
       "type": "nodename",
@@ -689,89 +1210,89 @@
       "width": 2
     },
     {
-      "id": "link_3",
-      "source": "image_basecolor",
-      "target": "SR_boombox",
-      "sourceSlot": "outcolor",
-      "targetSlot": "base_color",
-      "type": "nodename",
-      "color": "#95a5a6",
-      "width": 2
-    },
-    {
-      "id": "link_4",
-      "source": "image_basecolor",
-      "target": "SR_boombox",
-      "sourceSlot": "outa",
-      "targetSlot": "alpha",
-      "type": "nodename",
-      "color": "#95a5a6",
-      "width": 2
-    },
-    {
-      "id": "link_5",
-      "source": "swizzle",
-      "target": "SR_boombox",
+      "id": "link_15",
+      "source": "patternGraph_tiledhexagons_color4",
+      "target": "patternGraph_multiply_color4",
       "sourceSlot": "out",
-      "targetSlot": "metallic",
+      "targetSlot": "in1",
       "type": "nodename",
       "color": "#95a5a6",
       "width": 2
     },
     {
-      "id": "link_6",
-      "source": "swizzle2",
-      "target": "SR_boombox",
+      "id": "link_16",
+      "source": "patternGraph_ramplr_color4",
+      "target": "patternGraph_multiply_color4",
       "sourceSlot": "out",
-      "targetSlot": "roughness",
+      "targetSlot": "in2",
       "type": "nodename",
       "color": "#95a5a6",
       "width": 2
     },
     {
-      "id": "link_7",
-      "source": "swizzle3",
-      "target": "SR_boombox",
+      "id": "link_17",
+      "source": "patternGraph_texcoord_vector3",
+      "target": "patternGraph_tiledhexagons_color4",
       "sourceSlot": "out",
-      "targetSlot": "occlusion",
+      "targetSlot": "texcoord",
       "type": "nodename",
       "color": "#95a5a6",
       "width": 2
     },
     {
-      "id": "link_8",
-      "source": "image_normal",
-      "target": "SR_boombox",
+      "id": "link_18",
+      "source": "patternGraph_hex_tiling",
+      "target": "patternGraph_tiledhexagons_color4",
       "sourceSlot": "out",
-      "targetSlot": "normal",
-      "type": "nodename",
+      "targetSlot": "uvtiling",
+      "type": "interfacename",
       "color": "#95a5a6",
       "width": 2
     },
     {
-      "id": "link_9",
-      "source": "image_emission",
-      "target": "SR_boombox",
+      "id": "link_19",
+      "source": "patternGraph_hex_size",
+      "target": "patternGraph_tiledhexagons_color4",
       "sourceSlot": "out",
-      "targetSlot": "emissive",
-      "type": "nodename",
+      "targetSlot": "size",
+      "type": "interfacename",
       "color": "#95a5a6",
       "width": 2
     },
     {
-      "id": "link_10",
-      "source": "SR_boombox",
-      "target": "Material_boombox",
+      "id": "link_20",
+      "source": "patternGraph_ramp_left",
+      "target": "patternGraph_ramplr_color4",
       "sourceSlot": "out",
-      "targetSlot": "surfaceshader",
+      "targetSlot": "valuel",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_21",
+      "source": "patternGraph_ramp_right",
+      "target": "patternGraph_ramplr_color4",
+      "sourceSlot": "out",
+      "targetSlot": "valuer",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_22",
+      "source": "patternGraph_texcoord_vector3",
+      "target": "patternGraph_ramplr_color4",
+      "sourceSlot": "out",
+      "targetSlot": "texcoord",
       "type": "nodename",
       "color": "#95a5a6",
       "width": 2
     }
   ],
   "metadata": {
-    "totalNodes": 9,
-    "totalLinks": 11,
+    "totalNodes": 23,
+    "totalLinks": 23,
     "nodeWidth": 200,
     "nodeHeaderHeight": 40,
     "slotHeight": 25

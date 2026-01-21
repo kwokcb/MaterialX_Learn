@@ -1633,10 +1633,81 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         
         return graph_data
     
+    def layout_nodes_hierarchical(self, x_spacing=80, y_spacing=40, start_x=50, start_y=50):
+        """
+        Layout nodes in columns based on connection dependencies (topological sort), using actual node sizes.
+        Updates node['position']['x'] and node['position']['y'] for each node in self.graph_data['nodes'].
+        """
+        nodes = self.graph_data.get('nodes', [])
+        links = self.graph_data.get('links', [])
+        node_map = {n['id']: n for n in nodes}
+        # Build adjacency and reverse adjacency
+        from collections import defaultdict, deque
+        graph = defaultdict(list)
+        reverse_graph = defaultdict(list)
+        all_nodes = set(node_map.keys())
+        for link in links:
+            graph[link['source']].append(link['target'])
+            reverse_graph[link['target']].append(link['source'])
+            all_nodes.add(link['source'])
+            all_nodes.add(link['target'])
+
+        # Kahn's algorithm for topological sort
+        in_degree = {n: 0 for n in all_nodes}
+        for dsts in graph.values():
+            for dst in dsts:
+                in_degree[dst] += 1
+        queue = deque([n for n in all_nodes if in_degree[n] == 0])
+        topo_order = []
+        while queue:
+            n = queue.popleft()
+            topo_order.append(n)
+            for m in graph[n]:
+                in_degree[m] -= 1
+                if in_degree[m] == 0:
+                    queue.append(m)
+
+        # Assign columns by longest path from any input node
+        node_column = {}
+        def get_column(n):
+            if n not in reverse_graph or not reverse_graph[n]:
+                return 0
+            if n in node_column:
+                return node_column[n]
+            col = 1 + max(get_column(p) for p in reverse_graph[n])
+            node_column[n] = col
+            return col
+        for n in topo_order:
+            get_column(n)
+
+        # Group nodes by column
+        from collections import defaultdict
+        columns = defaultdict(list)
+        for n in topo_order:
+            col = node_column.get(n, 0)
+            columns[col].append(n)
+
+        # Assign x/y positions using node sizes
+        for col in sorted(columns):
+            y = start_y
+            for nid in columns[col]:
+                node = node_map.get(nid)
+                if not node:
+                    continue
+                width = node['position']['width']
+                height = node['position']['height']
+                node['position']['x'] = start_x + col * (width + x_spacing)
+                node['position']['y'] = y
+                y += height + y_spacing
+
+        return self.graph_data
+
     def execute(self):
         """Generate the complete D3.js graph data"""
         self.graph_data = self._build_graph_data()
-        self.graph_data = self._apply_auto_layout(self.graph_data)
+        self.graph_data = self.layout_nodes_hierarchical()
+        # Alternatively, use simple auto layout
+        #self.graph_data = self._apply_auto_layout(self.graph_data)
         return self.graph_data
     
     def export_json(self, filename):
@@ -2402,6 +2473,75 @@ class MxD3GraphExporter(MxBaseGraphExporter):
                     node.y = 100 + row * 150;
                     node.fx = node.x;
                     node.fy = node.y;
+                });
+                updateLinkPaths();
+            } else if (layoutType === 'hierarchical') {
+                // Hierarchical (topological) layout
+                // Build adjacency and reverse adjacency
+                const graph = {};
+                const reverseGraph = {};
+                const allNodes = new Set(nodes.map(n => n.id));
+                links.forEach(link => {
+                    if (!graph[link.source]) graph[link.source] = [];
+                    if (!reverseGraph[link.target]) reverseGraph[link.target] = [];
+                    graph[link.source].push(link.target);
+                    reverseGraph[link.target].push(link.source);
+                    allNodes.add(link.source);
+                    allNodes.add(link.target);
+                });
+
+                // Kahn's algorithm for topological sort
+                const inDegree = {};
+                allNodes.forEach(n => { inDegree[n] = 0; });
+                Object.values(graph).forEach(dsts => {
+                    dsts.forEach(dst => { inDegree[dst] += 1; });
+                });
+                const queue = [];
+                allNodes.forEach(n => { if (inDegree[n] === 0) queue.push(n); });
+                const topoOrder = [];
+                while (queue.length > 0) {
+                    const n = queue.shift();
+                    topoOrder.push(n);
+                    (graph[n] || []).forEach(m => {
+                        inDegree[m] -= 1;
+                        if (inDegree[m] === 0) queue.push(m);
+                    });
+                }
+
+                // Assign columns by longest path from any input node
+                const nodeColumn = {};
+                function getColumn(n) {
+                    if (!reverseGraph[n] || reverseGraph[n].length === 0) return 0;
+                    if (nodeColumn[n] !== undefined) return nodeColumn[n];
+                    let col = 1 + Math.max(...reverseGraph[n].map(getColumn));
+                    nodeColumn[n] = col;
+                    return col;
+                }
+                topoOrder.forEach(n => { getColumn(n); });
+
+                // Group nodes by column
+                const columns = {};
+                topoOrder.forEach(n => {
+                    const col = nodeColumn[n] || 0;
+                    if (!columns[col]) columns[col] = [];
+                    columns[col].push(n);
+                });
+
+                // Assign x/y positions using node sizes
+                const x_spacing = 80, y_spacing = 40, start_x = 50, start_y = 50;
+                Object.keys(columns).sort((a,b)=>a-b).forEach(col => {
+                    let y = start_y;
+                    columns[col].forEach(nid => {
+                        const node = nodes.find(nn => nn.id === nid);
+                        if (!node) return;
+                        const width = node.position.width;
+                        const height = node.position.height;
+                        node.x = start_x + col * (width + x_spacing);
+                        node.y = y;
+                        node.fx = node.x;
+                        node.fy = node.y;
+                        y += height + y_spacing;
+                    });
                 });
                 updateLinkPaths();
             }
