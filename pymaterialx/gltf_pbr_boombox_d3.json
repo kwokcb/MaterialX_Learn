@@ -1,0 +1,416 @@
+{
+  "nodes": [
+    {
+      "id": "image_basecolor",
+      "path": "image_basecolor",
+      "label": "image_basecolor",
+      "type": "gltf_colorimage",
+      "value": "BoomBox_baseColor.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "outcolor",
+            "type": "output",
+            "connections": []
+          },
+          {
+            "name": "outa",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "image_orm",
+      "path": "image_orm",
+      "label": "image_orm",
+      "type": "gltf_image",
+      "value": "BoomBox_occlusionRoughnessMetallic.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 300,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "image_normal",
+      "path": "image_normal",
+      "label": "image_normal",
+      "type": "gltf_normalmap",
+      "value": "BoomBox_normal.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 550,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "image_emission",
+      "path": "image_emission",
+      "label": "image_emission",
+      "type": "gltf_image",
+      "value": "BoomBox_emissive.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 800,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "swizzle",
+      "path": "swizzle",
+      "label": "swizzle",
+      "type": "extract",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 250,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "swizzle2",
+      "path": "swizzle2",
+      "label": "swizzle2",
+      "type": "extract",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 300,
+        "y": 250,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "swizzle3",
+      "path": "swizzle3",
+      "label": "swizzle3",
+      "type": "extract",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 550,
+        "y": 250,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "SR_boombox",
+      "path": "SR_boombox",
+      "label": "SR_boombox",
+      "type": "gltf_pbr",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "base_color",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "alpha",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "metallic",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "roughness",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "occlusion",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "normal",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "emissive",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 800,
+        "y": 250,
+        "width": 200,
+        "height": 235
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "Material_boombox",
+      "path": "Material_boombox",
+      "label": "Material_boombox",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 50,
+        "y": 450,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    }
+  ],
+  "links": [
+    {
+      "id": "link_0",
+      "source": "image_orm",
+      "target": "swizzle",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_1",
+      "source": "image_orm",
+      "target": "swizzle2",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_2",
+      "source": "image_orm",
+      "target": "swizzle3",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_3",
+      "source": "image_basecolor",
+      "target": "SR_boombox",
+      "sourceSlot": "outcolor",
+      "targetSlot": "base_color",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_4",
+      "source": "image_basecolor",
+      "target": "SR_boombox",
+      "sourceSlot": "outa",
+      "targetSlot": "alpha",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_5",
+      "source": "swizzle",
+      "target": "SR_boombox",
+      "sourceSlot": "out",
+      "targetSlot": "metallic",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_6",
+      "source": "swizzle2",
+      "target": "SR_boombox",
+      "sourceSlot": "out",
+      "targetSlot": "roughness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_7",
+      "source": "swizzle3",
+      "target": "SR_boombox",
+      "sourceSlot": "out",
+      "targetSlot": "occlusion",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_8",
+      "source": "image_normal",
+      "target": "SR_boombox",
+      "sourceSlot": "out",
+      "targetSlot": "normal",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_9",
+      "source": "image_emission",
+      "target": "SR_boombox",
+      "sourceSlot": "out",
+      "targetSlot": "emissive",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_10",
+      "source": "SR_boombox",
+      "target": "Material_boombox",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    }
+  ],
+  "metadata": {
+    "totalNodes": 9,
+    "totalLinks": 11,
+    "nodeWidth": 200,
+    "nodeHeaderHeight": 40,
+    "slotHeight": 25
+  }
+}
