@@ -2207,35 +2207,70 @@ class MxD3GraphExporter(MxBaseGraphExporter):
             populateNodeList();
         }
         
-        function updateLinkPaths() {
+    function updateLinkPaths() {
             d3.selectAll('.link').attr('d', function(d) {
-                const sourceNode = nodes.find(n => n.id === d.source);
-                const targetNode = nodes.find(n => n.id === d.target);
-                
-                if (!sourceNode || !targetNode) return '';
-                
-                // Find source and target ports
-                const sourcePort = d3.select(`circle[data-node="${d.source}"][data-slot="${d.sourceSlot}"]`);
-                const targetPort = d3.select(`circle[data-node="${d.target}"][data-slot="${d.targetSlot}"]`);
-                
+                // Helper to get port absolute position from node/slot data
+                function getPortPos(nodeId, slotName, type) {
+                    const node = nodes.find(n => n.id === nodeId);
+                    if (!node) return null;
+                    const startY = metadata.nodeHeaderHeight + 10;
+                    let slotIdx = -1;
+                    let x = node.position.x;
+                    let y = node.position.y;
+                    if (type === 'input') {
+                        slotIdx = node.slots.inputs.findIndex(s => s.name === slotName);
+                        if (slotIdx === -1) return null;
+                        x += 0; // input port at left edge
+                        y += startY + slotIdx * metadata.slotHeight + metadata.slotHeight / 2;
+                    } else if (type === 'output') {
+                        slotIdx = node.slots.outputs.findIndex(s => s.name === slotName);
+                        if (slotIdx === -1) return null;
+                        x += node.position.width; // output port at right edge
+                        y += startY + slotIdx * metadata.slotHeight + metadata.slotHeight / 2;
+                    } else {
+                        return null;
+                    }
+                    return { x, y };
+                }
+
+                const src = getPortPos(d.source, d.sourceSlot, 'output');
+                const tgt = getPortPos(d.target, d.targetSlot, 'input');
+                if (!src || !tgt) {
+                    console.log('Missing port for link', d.source, d.target, d.sourceSlot, d.targetSlot);
+                    return '';
+                }
+                // Draw a simple straight line (or a curve if you prefer)
+                const midX = (src.x + tgt.x) / 2;
+                return `M ${src.x},${src.y} C ${midX},${src.y} ${midX},${tgt.y} ${tgt.x},${tgt.y}`;
+            });
+        }
+
+        function updateLinkPaths2() {
+            d3.selectAll('.link').attr('d', function(d) {
+                // Find the SVG port elements for the source output and target input slots
+                const sourcePort = d3.select(`circle[data-node="${d.source}"][data-slot="${d.sourceSlot}"][data-type="output"]`);
+                const targetPort = d3.select(`circle[data-node="${d.target}"][data-slot="${d.targetSlot}"][data-type="input"]`);
+
                 if (sourcePort.empty() || targetPort.empty()) return '';
-                
-                const sourceTransform = d3.select(`#${d.source}`).attr('transform');
-                const targetTransform = d3.select(`#${d.target}`).attr('transform');
-                
-                const sourceX = parseFloat(sourceTransform.match(/translate\(([^,]+),/)[1]) + 
-                                 parseFloat(sourcePort.attr('cx'));
-                const sourceY = parseFloat(sourceTransform.match(/,[^)]+\)/)[0].slice(1, -1)) + 
-                                 parseFloat(sourcePort.attr('cy'));
-                
-                const targetX = parseFloat(targetTransform.match(/translate\(([^,]+),/)[1]) + 
-                                 parseFloat(targetPort.attr('cx'));
-                const targetY = parseFloat(targetTransform.match(/,[^)]+\)/)[0].slice(1, -1)) + 
-                                 parseFloat(targetPort.attr('cy'));
-                
-                // Create curved path
-                const midX = (sourceX + targetX) / 2;
-                return `M ${sourceX},${sourceY} C ${midX},${sourceY} ${midX},${targetY} ${targetX},${targetY}`;
+
+                // Get the absolute position of each port
+                function getPortCenter(portSel) {
+                    const nodeGroup = portSel.node().closest('g.node');
+                    const nodeTransform = d3.select(nodeGroup).attr('transform');
+                    const match = nodeTransform.match(/translate\(([^,]+),\s*([^)]+)\)/);
+                    const nodeX = parseFloat(match[1]);
+                    const nodeY = parseFloat(match[2]);
+                    const cx = parseFloat(portSel.attr('cx'));
+                    const cy = parseFloat(portSel.attr('cy'));
+                    return { x: nodeX + cx, y: nodeY + cy };
+                }
+
+                const src = getPortCenter(sourcePort);
+                const tgt = getPortCenter(targetPort);
+
+                // Draw a simple straight line (or a curve if you prefer)
+                const midX = (src.x + tgt.x) / 2;
+                return `M ${src.x},${src.y} C ${midX},${src.y} ${midX},${tgt.y} ${tgt.x},${tgt.y}`;
             });
         }
         
@@ -2246,12 +2281,16 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         }
         
         function dragged(event, d) {
-            d.fx = event.x;
-            d.fy = event.y;
+            //d.fx = event.x;
+            //d.fy = event.y;
+            d.position.x = event.x;
+            d.position.y = event.y;            
+            d3.select(this).attr('transform', `translate(${d.position.x}, ${d.position.y})`);
             updateLinkPaths();
         }
         
         function dragEnded(event, d) {
+            d3.select(this).attr('transform', `translate(${d.position.x}, ${d.position.y})`);
             if (!event.active) simulation?.alphaTarget(0);
             d.fx = null;
             d.fy = null;
@@ -2410,7 +2449,7 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         }
         
         // Initialize with force layout
-        setTimeout(() => changeLayout('force'), 100);
+        //setTimeout(() => changeLayout('force'), 100);
     </script>
 </body>
 </html>'''
