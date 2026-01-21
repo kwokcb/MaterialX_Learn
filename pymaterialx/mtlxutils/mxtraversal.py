@@ -1739,14 +1739,14 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         }
         
         body {
+            background: #111111;
+            color: #EEEEEE;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 4px;
         }
         
         .header {
-            background: rgba(255, 255, 255, 0.95);
             padding: 20px;
             border-radius: 0px;
             margin-bottom: 20px;
@@ -1754,14 +1754,12 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         }
         
         h1 {
-            color: #2c3e50;
             margin-bottom: 10px;
         }
         
         .stats {
             display: flex;
             gap: 20px;
-            color: #7f8c8d;
             font-size: 14px;
         }
         
@@ -1788,7 +1786,6 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         
         .sidebar {
             width: 300px;
-            background: rgba(255, 255, 255, 0.95);
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -1806,7 +1803,6 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         label {
             display: block;
             margin-bottom: 5px;
-            color: #2c3e50;
             font-weight: 500;
         }
         
@@ -1826,7 +1822,6 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         .node-item {
             padding: 10px;
             margin-bottom: 5px;
-            background: #f8f9fa;
             border-radius: 0px;
             border-left: 4px solid #3498db;
             cursor: pointer;
@@ -1834,19 +1829,18 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         }
         
         .node-item:hover {
-            background: #e3f2fd;
+            /* background: #e3f2fd; */
+            background: rgba(152, 152, 219, 0.1);
             transform: translateX(5px);
         }
         
         .node-type {
             font-size: 12px;
-            color: #7f8c8d;
             margin-top: 2px;
         }
         
         .node-slots {
             font-size: 11px;
-            color: #95a5a6;
             margin-top: 5px;
         }
         
@@ -1944,7 +1938,6 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         .legend {
             margin-top: 20px;
             padding: 10px;
-            background: #f8f9fa;
             border-radius: 5px;
         }
         
@@ -2382,7 +2375,7 @@ class MxD3GraphExporter(MxBaseGraphExporter):
             
             // Update sidebar with node details
             document.getElementById('node-list-container').innerHTML = `
-                <div class="node-item" style="background: #e3f2fd; border-left-color: #f39c12;">
+                <div class="node-item">
                     <strong>${node.label}</strong>
                     <div class="node-type">Type: ${node.type}</div>
                     <div class="node-type">Path: ${node.path}</div>
