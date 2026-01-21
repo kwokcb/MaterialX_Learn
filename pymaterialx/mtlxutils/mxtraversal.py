@@ -1475,6 +1475,9 @@ class MxD3GraphExporter(MxBaseGraphExporter):
             'output': '#2ecc71',  # Green
             'default': '#95a5a6'  # Gray
         }
+        background_color = "#969aee"
+        text_color = "#000000"
+        self.default_node_colors = [background_color, text_color]
         
     def _get_node_slots(self, node_path):
         """Extract input and output slots for a node from connections"""
@@ -1531,6 +1534,10 @@ class MxD3GraphExporter(MxBaseGraphExporter):
                 node_height = self.node_header_height + (max_slots * self.slot_height) + 20
                 
                 # Create node data
+                color = self.node_colors.get(item[1], self.default_node_colors)[0]
+                textColor = self.node_colors.get(item[1], self.default_node_colors)[1]
+                print(f'Color for node {node_path} of type {item[1]}: {color}, textColor: {textColor}')
+
                 node = {
                     'id': node_id,
                     'path': node_path,
@@ -1548,8 +1555,8 @@ class MxD3GraphExporter(MxBaseGraphExporter):
                         'width': self.node_width,
                         'height': node_height
                     },
-                    'color': self.node_colors.get(item[1], self.default_node_colors)[0],
-                    'textColor': self.node_colors.get(item[1], self.default_node_colors)[1]
+                    'color': color,
+                    'textColor': textColor
                 }
                 
                 nodes.append(node)
@@ -1670,7 +1677,7 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         .header {
             background: rgba(255, 255, 255, 0.95);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 0px;
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -1695,7 +1702,7 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         
         .graph-container {
             flex: 1;
-            background: white;
+            background: rgb(20, 40, 60);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -1736,7 +1743,7 @@ class MxD3GraphExporter(MxBaseGraphExporter):
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 0px;
             background: white;
         }
         
@@ -1749,7 +1756,7 @@ class MxD3GraphExporter(MxBaseGraphExporter):
             padding: 10px;
             margin-bottom: 5px;
             background: #f8f9fa;
-            border-radius: 5px;
+            border-radius: 0px;
             border-left: 4px solid #3498db;
             cursor: pointer;
             transition: all 0.2s;
@@ -1779,15 +1786,13 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         }
         
         .node-header {
-            fill: #2c3e50;
-            stroke: #2c3e50;
             stroke-width: 2;
             rx: 5;
             ry: 5;
         }
         
         .node-body {
-            fill: white;
+            fill: rgb(250, 250, 250);
             stroke: #bdc3c7;
             stroke-width: 1;
             rx: 5;
@@ -1891,7 +1896,7 @@ class MxD3GraphExporter(MxBaseGraphExporter):
             top: 20px;
             right: 20px;
             background: white;
-            border-radius: 5px;
+            border-radius: 0px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             padding: 5px;
         }
@@ -1902,7 +1907,7 @@ class MxD3GraphExporter(MxBaseGraphExporter):
             background: #3498db;
             color: white;
             border: none;
-            border-radius: 3px;
+            border-radius: 0px;
             margin: 2px;
             cursor: pointer;
             font-size: 18px;
@@ -1917,12 +1922,12 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         
         /* Highlight styles */
         .highlighted {
-            stroke: #f39c12 !important;
+            stroke: #f39f12 !important;
             stroke-width: 3 !important;
         }
         
         .selected {
-            filter: drop-shadow(0 0 10px rgba(243, 156, 18, 0.5));
+            filter: drop-shadow(0 0 10px rgba(243, 243, 60, 1.0));
         }
     </style>
 </head>
